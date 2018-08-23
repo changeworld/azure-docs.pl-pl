@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578528"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057680"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scenariusze uwierzytelniania dla usługi Azure AD
 
@@ -52,7 +52,7 @@ Dzięki powyższym diagramie pamiętając poniżej przedstawiono, co musisz wied
 * Usługa Azure AD jest dostawcy tożsamości, która odpowiada za weryfikację tożsamości użytkowników i aplikacje, które istnieją w katalogu organizacji, a ostatecznie wystawianie tokenów zabezpieczających po pomyślnym uwierzytelnieniu tych użytkowników i aplikacji.
 * Aplikacja, która chce oddelegowania procesów uwierzytelniania do usługi Azure AD, musi być zarejestrowany w usłudze Azure AD, który rejestruje i unikatowo identyfikuje aplikację w katalogu.
 * Deweloperzy mogą używać biblioteki uwierzytelniania typu open-source w usłudze Azure AD, aby ułatwić uwierzytelnianie dzięki obsłudze szczegółów protokołu dla Ciebie. Aby uzyskać więcej informacji, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](active-directory-authentication-libraries.md).
-* Po uwierzytelnieniu użytkownika aplikacja musi go zweryfikować tokenu zabezpieczeń użytkownika, aby upewnić się, że uwierzytelnianie zakończyło się pomyślnie. Mamy przykłady, co musi robić aplikacja w różnych języków i struktur w [GitHub](https://github.com/Azure-Samples?q=active-directory). Jeśli tworzysz aplikację sieci web na platformie ASP.NET, zobacz [dodać logowanie dla przewodnika aplikacji sieci web platformy ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Jeśli tworzysz zasobu internetowego interfejsu API na platformie ASP.NET, zobacz [interfejsu API sieci web — wprowadzenie](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Po uwierzytelnieniu użytkownika aplikacja musi go zweryfikować tokenu zabezpieczeń użytkownika, aby upewnić się, że uwierzytelnianie zakończyło się pomyślnie. Mamy przykłady, co musi robić aplikacja w różnych języków i struktur w [GitHub](https://github.com/Azure-Samples?q=active-directory). Jeśli tworzysz aplikację sieci web na platformie ASP.NET, zobacz [dodać logowanie dla przewodnika aplikacji sieci web platformy ASP.NET](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Jeśli tworzysz zasobu internetowego interfejsu API na platformie ASP.NET, zobacz [interfejsu API sieci web — wprowadzenie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * Przepływ żądań i odpowiedzi do procesu uwierzytelniania jest określana przez protokół uwierzytelniania, który został użyty, takich jak OAuth 2.0, OpenID Connect, WS-Federation oraz SAML 2.0. Te protokoły są omówione bardziej szczegółowo w [protokoły uwierzytelniania usługi Azure Active Directory](active-directory-authentication-protocols.md) artykułu w poniższych sekcjach.
 
 > [!NOTE]

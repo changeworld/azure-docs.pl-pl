@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420361"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Samouczek: Integracja usługi Azure Active Directory z Fieldglass
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Fieldglass, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Fieldglass logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Fieldglass w usłudze Azure AD, należy dodać Fi
 
 **Aby dodać Fieldglass z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -121,7 +121,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołu pomocy technicznej Fieldglass](http://www.fieldglass.com/solutions/support) do uzyskania tych wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołu pomocy technicznej Fieldglass](https://www.fieldglass.com/customer-support) do uzyskania tych wartości.
  
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -135,7 +135,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **Fieldglass** stronie, musisz wysłać pobrany **Certificate(Base64)** i **adres URL wylogowania, identyfikator jednostki SAML** do [ Zespołu pomocy technicznej Fieldglass](http://www.fieldglass.com/solutions/support). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Fieldglass** stronie, musisz wysłać pobrany **Certificate(Base64)** i **adres URL wylogowania, identyfikator jednostki SAML** do [ Zespołu pomocy technicznej Fieldglass](https://www.fieldglass.com/customer-support). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-a-fieldglass-test-user"></a>Tworzenie użytkownika testowego Fieldglass
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w FieldGlass. Skontaktuj się z Twojego [zespołu pomocy technicznej Fieldglass](http://www.fieldglass.com/solutions/support) Aby dodać użytkowników w ramach konta Fieldglass.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w FieldGlass. Skontaktuj się z Twojego [zespołu pomocy technicznej Fieldglass](https://www.fieldglass.com/customer-support) Aby dodać użytkowników w ramach konta Fieldglass.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

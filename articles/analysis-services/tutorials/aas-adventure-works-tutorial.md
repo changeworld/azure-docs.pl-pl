@@ -8,22 +8,21 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b6e642c86c5e618cae2d46aad84a61b3f4866ae
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a53bcbe90f39999a838c84807ca834a1e6cd1813
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446150"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059594"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – samouczek Adventure Works
 
-Ten samouczek zawiera lekcje na temat sposobu tworzenia i wdrażania modelu tabelarycznego na poziomie zgodności 1400 przy użyciu programu Visual Studio z narzędziami [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
-
+Ten samouczek zawiera lekcje na temat sposobu tworzenia i wdrażania modelu tabelarycznego na poziomie zgodności 1400 przy użyciu programu Visual Studio [projektów usług Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects) lub [programu SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 Jeśli usługi Analysis Services i modelowanie tabelaryczne to dla Ciebie nowość, ukończenie tego samouczka jest najszybszym sposobem nauczenia się, jak tworzyć i wdrażać podstawowy model tabelaryczny przy użyciu programu Visual Studio. Po spełnieniu wymagań wstępnych ukończenie samouczka powinno zająć od dwóch do trzech godzin.  
   
 ## <a name="what-you-learn"></a>Omawiane zagadnienia   
   
--   Tworzenie nowego projektu modelu tabelarycznego na **poziomie zgodności 1400** w programie Visual Studio z narzędziami SSDT.
+-   Tworzenie nowego projektu modelu tabelarycznego na **poziomie zgodności 1400** w programie Visual Studio.
   
 -   Importowanie danych z relacyjnej bazy danych do bazy danych obszaru roboczego w projekcie modelu tabelarycznego.  
   
@@ -37,7 +36,7 @@ Jeśli usługi Analysis Services i modelowanie tabelaryczne to dla Ciebie nowoś
   
 -   Zabezpieczanie obiektów i danych modelu przez tworzenie ról z użytkownikami jako członkami.  
   
--   Wdrażanie modelu tabelarycznego na serwerze usług **Azure Analysis Services** lub serwerze **SQL Server 2017 Analysis Services** przy użyciu programu SSDT.  
+-   Sposób wdrażania modelu tabelarycznego na **usług Azure Analysis Services** serwera lub **programu SQL Server 2017 Analysis Services** serwera za pomocą programu Visual Studio.  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
 Do ukończenia tego samouczka niezbędne są następujące elementy:  

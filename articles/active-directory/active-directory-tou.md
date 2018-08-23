@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 07/31/2018
+ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622079"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616867"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -122,6 +122,8 @@ Po utworzeniu warunków użytkowania i wymuszane, użytkownicy, którzy znajduj�
 Na poniższym ekranie przedstawiono, w jaki sposób warunki użytkowania są wyświetlane na urządzeniach przenośnych.
 
 ![Zdarzenie inspekcji](media/active-directory-tou/mobile-tou.png)
+
+Tylko użytkownicy muszą zaakceptować warunki użytkowania raz, a użytkownicy nie zobaczą warunki użytkowania, ponownie dla kolejnych logowań.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak użytkownicy mogą przeglądać warunki użytkowania
 Użytkownicy mogą wyświetlać i przeglądać warunki użytkowania, które zaakceptowali, korzystając z poniższej procedury.

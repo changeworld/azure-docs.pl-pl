@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343292"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056483"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 
@@ -38,7 +38,7 @@ Korzystanie z haseł aplikacji, to należy pamiętać:
 
 Podczas rejestracji weryfikacji dwuetapowej początkowej otrzymuje hasła aplikacji. Jeśli potrzebujesz więcej niż jeden hasło, można utworzyć dodatkowe haseł, w oparciu o sposobie korzystania z weryfikacji dwuetapowej:
 
-- **Weryfikacja dwuetapowa jest używany z konta usługi Microsoft Azure.** Tworzenie i usuwanie hasła aplikacji przy użyciu [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
+- **Weryfikacja dwuetapowa jest używany z konta usługi Microsoft Azure.** Tworzenie i usuwanie hasła aplikacji przy użyciu [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
 
 - **Weryfikacja dwuetapowa jest używany z osobistego konta Microsoft.** Tworzenie i usuwanie hasła aplikacji przy użyciu [podstawy zabezpieczeń](https://account.microsoft.com/account/) strony z Twoim kontem Microsoft. Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
 

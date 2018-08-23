@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 92be187a1c593742feb90409f2b8cc305bf9a6c8
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161655"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056382"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 
@@ -63,7 +63,7 @@ Poniższa tabela zawiera listę funkcji, które są dostępne w różnych wersja
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Jak włączyć usługę Azure Multi-Factor Authentication dla administratorów usługi Azure AD
 
-Użytkownicy z przypisaną rolą administratora globalnego w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową dla kont administratora globalnego usługi Azure AD bez ponoszenia dodatkowych kosztów. Jeśli korzystasz z Account firmy Microsoft, możesz zarejestrować uwierzytelnianie wieloskładnikowe zgodnie ze wskazówkami zawartymi w artykule pomocy technicznej konta Microsoft, [o weryfikacji dwuetapowej](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification). Jeśli nie używasz Account firmy Microsoft, włączyć uwierzytelnianie wieloskładnikowe dla administratorów globalnych, zgodnie ze wskazówkami zawartymi w artykule [jak, które wymuszają weryfikację dwuetapową dla użytkownika lub grupy](howto-mfa-userstates.md).
+Użytkownicy z przypisaną rolą administratora globalnego w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową dla kont administratora globalnego usługi Azure AD bez ponoszenia dodatkowych kosztów. Jeśli korzystasz z Account firmy Microsoft, możesz zarejestrować uwierzytelnianie wieloskładnikowe zgodnie ze wskazówkami zawartymi w artykule pomocy technicznej konta Microsoft, [o weryfikacji dwuetapowej](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). Jeśli nie używasz Account firmy Microsoft, włączyć uwierzytelnianie wieloskładnikowe dla administratorów globalnych, zgodnie ze wskazówkami zawartymi w artykule [jak, które wymuszają weryfikację dwuetapową dla użytkownika lub grupy](howto-mfa-userstates.md).
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 

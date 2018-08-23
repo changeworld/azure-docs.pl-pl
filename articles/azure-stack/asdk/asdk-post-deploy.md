@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 23d99c498c139da3a145a1df230f419b4591b256
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38598445"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057344"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -43,7 +43,7 @@ Profilami wersji interfejsu API można użyć do określenia zgodne modułów Az
 Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połączenia internetowego z komputera hosta ASDK:
 
 > [!IMPORTANT]
-> Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, że możesz [Odinstaluj wszystkie istniejące moduły programu Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-the-azure-stack-powershell-modules).
+> Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, że możesz [Odinstaluj wszystkie istniejące moduły programu Azure PowerShell](.\.\azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
 - **Połączenie z Internetem** z komputera hosta ASDK. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły w rozwoju instalacji zestawu:
 
@@ -56,8 +56,8 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
   Use-AzureRmProfile `
     -Profile 2017-03-09-profile -Force
 
-  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
-  Install-Module -Name AzureStack -RequiredVersion 1.3.0 
+  # Install Azure Stack Module Version 1.4.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
+  Install-Module -Name AzureStack -RequiredVersion 1.4.0 
 
   ```
 
@@ -82,8 +82,8 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
     -Name AzureStack `
     -Path $Path `
     -Force `
-  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.  
-    -RequiredVersion 1.3.0
+  # Install Azure Stack Module Version 1.4.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.  
+    -RequiredVersion 1.4.0
   ```
 
   Następnie skopiuj pakiety pobrane na komputer ASDK i zarejestrować lokalizację jako repozytorium domyślne i zainstaluj moduł AzureRM i AzureStack z tego repozytorium:

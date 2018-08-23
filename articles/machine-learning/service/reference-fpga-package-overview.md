@@ -1,35 +1,35 @@
 ---
-title: Pakiet układu FPGA dla przyspieszanie sprzętowe dla usługi Azure Machine Learning
-description: Więcej informacji na temat dostępnych dla użytkowników usługi Azure Machine Learning pakietów języka python.
+title: Pakiet FPGA przyspieszanie sprzętowe dla usługi Azure Machine Learning
+description: Więcej informacji na temat pakietów języka python, dostępne dla użytkowników usługi Azure Machine Learning.
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: routlaw
-author: rloutlaw
+ms.author: tedway
+author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832982"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061722"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Pakiet Azure Machine Learning sprzętowego przyspieszania
 
-Pakiet Azure Machine Learning sprzętowego przyspieszania to rozszerzenie instalowalnych pip języka Python dla usługi Azure Machine Learning, który umożliwia szybkie danych i analityków AI do:
+Pakiet Azure Machine Learning sprzętowego przyspieszania jest rozszerzeniem do zainstalowania narzędzia pip języka Python dla usługi Azure Machine Learning, która umożliwia analitykom danych i deweloperom sztucznej Inteligencji szybko:
 
-+ Obrazy Featurize wersją quantized ResNet 50
++ Cechowanie obrazów przy użyciu wersji wykonywanie kwantyzowanych siecią ResNet-50
 
-+ Szkolenie klasyfikatory na podstawie tych funkcji
++ Uczyć klasyfikatory na podstawie tych funkcji
 
-+ Wdrażanie modeli do [pola Tablice bramek programowane (układu FPGA)](concept-accelerate-with-fpgas.md) na platformie Azure dla inferencing niezwykle małe opóźnienia
++ Wdrażanie modeli do [pola Tablice bramek programowane (FPGA)](concept-accelerate-with-fpgas.md) na platformie Azure bardzo niskimi opóźnieniami wnioskowania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Należy utworzyć konta Azure Machine Learning Model zarządzania. Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [Szybki Start Azure Machine Learning i Workbench instalacji](../service/quickstart-installation.md) dokumentu. 
+1. Musisz utworzyć konto usługi Zarządzanie modelami w usłudze Azure Machine Learning. Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../service/quickstart-installation.md) dokumentu. 
 
 1. Musi być zainstalowany pakiet. 
 
@@ -38,20 +38,20 @@ Pakiet Azure Machine Learning sprzętowego przyspieszania to rozszerzenie instal
 
 1. Pobierz i zainstaluj najnowszą wersję [Git](https://git-scm.com/downloads).
 
-2. Zainstaluj [Anaconda (Python 3,6)](https://conda.io/miniconda.html)
+2. Zainstaluj [Anaconda (Python 3.6)](https://conda.io/miniconda.html)
 
-3. Aby pobrać wstępnie skonfigurowane środowisko Anaconda, użyj następującego polecenia w wierszu Git:
+   Aby pobrać wstępnie skonfigurowane środowisko Anaconda, użyj następującego polecenia w wierszu polecenia Git:
 
     ```
     git clone https://aka.ms/aml-real-time-ai
     ```
-5. Aby utworzyć środowisko, otwórz **Anaconda monitu** i użyj następującego polecenia:
+1. Aby utworzyć środowisko, otwórz **Anaconda monitu** i użyj następującego polecenia:
 
     ```
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. Aby aktywować środowiska, użyj następującego polecenia:
+1. Aby aktywować tę funkcję w środowisku, użyj następującego polecenia:
 
     ```
     conda activate amlrealtimeai
@@ -59,7 +59,7 @@ Pakiet Azure Machine Learning sprzętowego przyspieszania to rozszerzenie instal
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model układu FPGA.
+Ten przykładowy kod opisano sposób korzystania z zestawu SDK do wdrożenia modelu FPGA.
 
 1. Importowanie pakietu:
    ```python
@@ -67,7 +67,7 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    from amlrealtimeai import resnet50
    ```
 
-1. Wstępnie przetworzyć obrazu:
+1. Wstępne przetwarzanie obrazu:
    ```python 
    from amlrealtimeai.resnet50.model import LocalQuantizedResNet50
    model_path = os.path.expanduser('~/models')
@@ -75,7 +75,7 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    print(model.version)
    ```
 
-1. Featurize obrazów:
+1. Cechowanie obrazów:
    ```python 
    from amlrealtimeai.resnet50.model import LocalQuantizedResNet50
    model_path = os.path.expanduser('~/models')
@@ -83,7 +83,7 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    print(model.version)
    ```
 
-1. Utworzenie klasyfikatora programu:
+1. Tworzenie klasyfikatora:
    ```python
    model.import_graph_def(include_featurizer=False)
    print(model.classifier_input)
@@ -104,7 +104,7 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    print(service_def_path)
    ```
  
-1. Przygotowanie do uruchomienia na układu FPGA modelu:
+1. Przygotuj modelu do uruchamiania na FPGA:
    ```python
    from amlrealtimeai import DeploymentClient
 
@@ -118,7 +118,7 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account)
    ```
 
-1. Wdróż model do uruchamiania na układu FPGA:
+1. Wdrażanie modelu do uruchamiania na FPGA:
    ```python
    service = deployment_client.get_service_by_name(service_name)
    model_id = deployment_client.register_model(model_name, service_def_path)
@@ -135,16 +135,16 @@ Ten przykładowy kod przedstawia przy użyciu zestawu SDK, aby wdrożyć model u
    client = PredictionClient(service.ipAddress, service.port)  
    ```
 
-1. Wywołanie interfejsu API:
+1. Wywoływanie interfejsu API:
    ```python
    image_file = R'C:\path_to_file\image.jpg'
    results = client.score_image(image_file)
    ```
 
-## <a name="reporting-issues"></a>Zgłaszanie problemów
+## <a name="reporting-issues"></a>Raportowanie problemów
 
-Użyj [forum](https://aka.ms/aml-forum) zgłosić jakiekolwiek problemy wystąpią z pakietem.
+Użyj [forum](https://aka.ms/aml-forum) zgłosić problemy wystąpią z pakietem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdróż model jako usługę sieci web na układu FPGA](how-to-deploy-fpga-web-service.md)
+[Wdrażanie modelu jako usługi sieci web na FPGA](how-to-deploy-fpga-web-service.md)

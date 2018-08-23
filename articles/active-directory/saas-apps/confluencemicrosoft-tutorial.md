@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 68d8ba6b08811b96df8b8b2daa074166301ffcd0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 856809d6eb480d0112eb7ed85c33560950be7d64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421993"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML Confluence przez firmę Microsoft
 
@@ -42,7 +42,7 @@ Korzystać z serwera Atlassian Confluence konta Microsoft Azure Active Directory
 
 Aby skonfigurować integrację usługi Azure AD za pomocą logowania jednokrotnego SAML Confluence przez firmę Microsoft, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Aplikacja serwera confluence zainstalowane na serwerze Windows 64-bitowych (lokalnie lub w chmurze infrastruktury IaaS)
 - Serwer confluence jest obsługujące protokół HTTPS
 - Należy pamiętać, że obsługiwane wersje dla wtyczki Confluence są wymienione w poniżej sekcji.
@@ -76,7 +76,7 @@ Aby skonfigurować integrację logowania jednokrotnego SAML Confluence przez fir
 
 **Aby dodać logowania jednokrotnego SAML Confluence przez firmę Microsoft w galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -150,7 +150,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     
     ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon1.png)
 
-1. Pobierz wtyczkę z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56503). Ręcznie przekazać wtyczkę udostępniane przez Microsoft za pomocą **przekazywanie dodatku** menu. Pobieranie wtyczki jest objęta [Umowa serwisowa usługi Microsoft](https://www.microsoft.com/en-us/servicesagreement/). 
+1. Pobierz wtyczkę z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56503). Ręcznie przekazać wtyczkę udostępniane przez Microsoft za pomocą **przekazywanie dodatku** menu. Pobieranie wtyczki jest objęta [Umowa serwisowa usługi Microsoft](https://www.microsoft.com/servicesagreement/). 
     
     ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon12.png)
 

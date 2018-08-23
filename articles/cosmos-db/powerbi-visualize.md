@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249118"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055889"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Usługa Power BI samouczek dotyczący usługi Azure Cosmos DB: wizualizuj dane przy użyciu łącznika usługi Power BI
 [PowerBI.com](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty z danymi, które są ważne dla Ciebie i Twojej organizacji.  Usługa Power BI Desktop jest dedykowany raport narzędziu, która pozwala pobierać dane z różnych źródeł danych, scalania i przekształcać dane, tworzyć zaawansowane raporty i wizualizacje i publikowania raportów usługi Power BI.  Z najnowszą wersją programu Power BI Desktop możesz teraz połączyć z kontem usługi Azure Cosmos DB za pomocą łącznika usługi Azure Cosmos DB dla usługi Power BI.   
@@ -42,8 +42,8 @@ Przed wykonaniem instrukcji zawartych w tym samouczku usługa Power BI, upewnij 
 * [Najnowszą wersję programu Power BI Desktop](https://powerbi.microsoft.com/desktop).
 * Dostęp do naszego pokaz konta lub dane na Twoim koncie usługi Azure Cosmos DB.
   * Konto pokaz jest wypełniana danymi swe dzieła przedstawiona w tym samouczku. To konto Pokaz nie jest związana żadnych umów SLA i jest przeznaczona wyłącznie w celach demonstracyjnych.  Firma Microsoft zastrzega sobie prawo do wprowadzania zmian w tej wersji demonstracyjnej konta, w tym, ale nie są ograniczone do przerywa konta, zmiana klucza, ograniczanie dostępu, zmiana i Usuń dane, w dowolnym momencie bez uprzedzenia lub przyczyny.
-    * ADRES URL: https://analytics.documents.azure.com
-    * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
+    * ADRES URL: `https://analytics.documents.azure.com`
+    * Klucz tylko do odczytu: `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
   * Lub, aby utworzyć konto usługi, zobacz [Tworzenie konta bazy danych usługi Azure Cosmos DB przy użyciu witryny Azure portal](https://azure.microsoft.com/documentation/articles/create-account/). Następnie można pobrać swe dzieła przykładowe dane, które są zbliżone do jest używana w tym samouczku (ale nie zawiera bloki GeoJSON), zobacz [witryny NOAA](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) , a następnie zaimportować dane przy użyciu [narzędzia migracji danych usługi Azure Cosmos DB](import-data.md).
 
 Udostępnianie raportów w witrynie PowerBI.com, musisz mieć konto w witrynie PowerBI.com.  Aby dowiedzieć się więcej o usłudze Power BI bezpłatna i usługi Power BI Pro, odwiedź stronę [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).

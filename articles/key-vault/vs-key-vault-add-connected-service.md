@@ -1,79 +1,80 @@
 ---
 title: Dodaj obsługę usługi Key Vault do projektu programu ASP.NET przy użyciu programu Visual Studio | Dokumentacja firmy Microsoft
-description: Użyj tego samouczka, aby dowiedzieć się, jak dodać obsługę usługi Key Vault w aplikacji sieci web ASP.NET lub ASP.NET Core.
+description: Użyj tego samouczka, aby dowiedzieć się, jak dodać obsługę usługi Key Vault do aplikacji sieci web programu ASP.NET lub ASP.NET Core.
 services: key-vault
 author: ghogen
 manager: douge
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: b4fed559b6364149170dc8b1da421c9c3ee1203c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5b3cea87e7762e492432722c54a1a8aaa342b84a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635767"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055543"
 ---
-# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodaj magazyn kluczy do aplikacji sieci web za pomocą programu Visual Studio usługami
+# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodawanie usługi Key Vault do aplikacji sieci web za pomocą programu Visual Studio podłączone usługi
 
-Z tego samouczka dowiesz się, jak łatwo dodać wszystkie elementy potrzebne do uruchomienia zarządzanie za pomocą usługi Azure Key Vault tajnych dla projektów sieci web w programie Visual Studio, czy używasz platformy ASP.NET Core lub dowolnego typu projektu programu ASP.NET. Korzystając z funkcji usług połączonych w Visual Studio 2017, może mieć Visual Studio automatyczne dodawanie pakietów NuGet i ustawień konfiguracji, potrzebne do nawiązania połączenia usługi Key Vault na platformie Azure. 
+W tym samouczku dowiesz się, jak łatwo dodać wszystko, czego potrzebujesz, aby rozpocząć korzystanie z usługi Azure Key Vault do zarządzania klucze tajne dla projektów sieci web w programie Visual Studio, czy używasz platformy ASP.NET Core lub dowolnego typu projektu programu ASP.NET. Korzystając z funkcji usług połączonych programu Visual Studio 2017, możesz mieć programu Visual Studio automatycznie dodać wszystkie pakiety NuGet i ustawienia konfiguracji, które musisz nawiązać połączenie z usługi Key Vault na platformie Azure. 
 
-Aby uzyskać więcej informacji na temat zmian, dzięki usługom połączone w projekcie do włączenia usługi Key Vault, zobacz [klucza magazynu połączone usługi - co się stało z mojej ASP.NET 4.7.1 projektu](vs-key-vault-aspnet-what-happened.md) lub [klucza magazynu połączone usługi - co się stało z projektu platformy ASP.NET Core](vs-key-vault-aspnet-core-what-happened.md).
+Aby uzyskać więcej informacji na temat zmian dzięki usługom połączone w projekcie do włączenia usługi Key Vault, zobacz [usługi Key Vault i połączone - co się stało z Moje ASP.NET 4.7.1 projektu](vs-key-vault-aspnet-what-happened.md) lub [usługi Key Vault i połączone - co się stało z Mój projekt platformy ASP.NET Core](vs-key-vault-aspnet-core-what-happened.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual Studio 2017 wersji 15.7** z **projektowanie witryn sieci Web** obciążenia zainstalowane. [Pobierz teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Dla platformy ASP.NET (nie podstawowych) należy .NET Framework 4.7.1 narzędziami programistycznymi, które nie są instalowane domyślnie. Mają być instalowane, należy uruchomić Instalator programu Visual Studio, wybierz **Modyfikuj**, a następnie wybierz pozycję **pojedynczych składników**, następnie po prawej stronie, rozwiń węzeł **ASP.NET i sieć web development**i wybierz polecenie **narzędzia do programowania .NET Framework 4.7.1**.
+- **Visual Studio 2017 w wersji 15.7** z **programowania dla sieci Web** zainstalowanym obciążeniem. [Pobierz teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- ASP.NET (nie-rdzeniowe) wymaga platformy .NET Framework 4.7.1 narzędzi deweloperskich, które nie są instalowane domyślnie. Na ich instalację, uruchom Instalatora programu Visual Studio, wybierz polecenie **Modyfikuj**, a następnie wybierz **poszczególne składniki**, następnie po prawej stronie, rozwiń węzeł **ASP.NET i tworzenie aplikacji internetowych**i wybierz polecenie **narzędzi programistycznych platformy .NET Framework 4.7.1**.
 - ASP.NET 4.7.1 lub Otwórz projekt sieci web platformy ASP.NET Core 2.0.
 
-## <a name="add-key-vault-support-to-your-project"></a>Dodaj obsługę usługi Key Vault do projektu
+## <a name="add-key-vault-support-to-your-project"></a>Dodanie obsługi usługi Key Vault do projektu
 
-1. W **Eksploratora rozwiązań**, wybierz **Dodaj** > **podłączonej usługi**.
-   Z usług, które można dodać do projektu zostanie wyświetlona strona połączonych usług.
-1. W menu dostępnych usług wybierz **bezpiecznego hasła z usługą Azure Key Vault**.
+1. W **Eksploratora rozwiązań**, wybierz **Dodaj** > **podłączoną usługę**.
+   Na stronie usługi połączonej pojawia się z usługami, które można dodać do projektu.
+1. W menu dostępnych usług wybierz **zabezpieczyć wpisy tajne przy użyciu usługi Azure Key Vault**.
 
-   ![Wybierz pozycję "Bezpiecznych haseł z usługi Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
+   ![Wybierz pozycję "Bezpieczne wpisów tajnych za pomocą usługi Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Jeśli po zalogowaniu do Visual Studio i mieć subskrypcję platformy Azure skojarzonych z Twoim kontem, zostanie wyświetlona strona z listy rozwijanej z subskrypcji.
-1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz nowy lub istniejący magazyn kluczy, lub łącza edycji, aby zmodyfikować nazwy wygenerowanej automatycznie.
+   Jeśli po zalogowaniu się do programu Visual Studio i subskrypcji platformy Azure skojarzony z Twoim kontem, zostanie wyświetlona strona, która za pomocą listy rozwijanej z subskrypcjami.
+1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz nowy lub istniejący magazyn kluczy, lub wybierz link edycji, aby zmodyfikować nazwy wygenerowanej automatycznie.
 
    ![Wybierz swoją subskrypcję](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)
 
-1. Wpisz nazwę, którą chcesz użyć dla usługi Key Vault.
+1. Wpisz nazwę, którą chcesz używać usługi Key Vault.
 
-   ![Zmień nazwę magazynu kluczy i wybierz grupę zasobów](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
+   ![Zmień nazwę usługi Key Vault, a następnie wybierz grupę zasobów](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. Wybierz istniejącą grupę zasobów, lub utworzyć nową z użyciem nazwy wygenerowanej automatycznie unqiue.  Jeśli chcesz utworzyć nową grupę o innej nazwie, możesz użyć [Azure Portal](https://portal.azure.com), a następnie zamknij stronę i uruchom ponownie, aby ponownie załadować listy grup zasobów.
-1. Wybierz region, w którym ma zostać utworzony magazyn kluczy. Jeśli aplikacja sieci web jest hostowana na platformie Azure, wybierz region, który jest hostem aplikacji sieci web w celu uzyskania optymalnej wydajności.
-1. Wybierz modelu cenowego. Aby uzyskać więcej informacji, zobacz [klucza magazynu cennik](https://azure.microsoft.com/pricing/details/key-vault/).
-1. Kliknij przycisk OK, aby zaakceptować opcje konfiguracji.
-1. Wybierz **Dodaj** do utworzenia magazynu kluczy. Proces tworzenia może zakończyć się niepowodzeniem, jeśli wybrana nazwa, który został już użyty.  Jeśli tak się stanie, należy użyć **Edytuj** łącze, aby zmienić nazwę magazynu kluczy i spróbuj ponownie.
+1. Wybierz istniejącą grupę zasobów lub wybrać opcję utworzenia nowego z automatycznie wygenerowanego unikatowa nazwa.  Jeśli chcesz utworzyć nową grupę o innej nazwie, możesz użyć [witryny Azure Portal](https://portal.azure.com), a następnie zamknij stronę i uruchom ponownie, aby ponownie załadować listy grup zasobów.
+1. Wybierz region, w której chcesz utworzyć usługi Key Vault. Jeśli aplikacja sieci web jest hostowana na platformie Azure, wybierz region, który jest hostem aplikacji sieci web w celu uzyskania optymalnej wydajności.
+1. Wybierz model cenowy. Aby uzyskać więcej informacji, zobacz [cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
+1. Wybierz przycisk OK, aby zaakceptować opcje konfiguracji.
+1. Wybierz **Dodaj** do utworzenia magazynu kluczy. Proces tworzenia może zakończyć się niepowodzeniem, jeśli wybrana nazwa, który został już użyty.  Jeśli tak się stanie, należy użyć **Edytuj** link, aby zmienić nazwę usługi Key Vault i spróbuj ponownie.
 
-   ![Trwa dodawanie podłączonej usługi do projektu](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
+   ![Dodawanie usługi połączonej do projektu](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Teraz Dodaj klucz tajny w magazynie kluczy na platformie Azure. Aby uzyskać we właściwym miejscu w portalu, kliknij łącze dla kluczy tajnych Zarządzaj przechowywane w tym magazynie kluczy. Jeśli został zamknięty, strona lub projektu, można przejść do niego w [portalu Azure](https://portal.azure.com) , wybierając **wszystkie usługi**w obszarze **zabezpieczeń**, wybierz **Key Vault**, a następnie wybierz utworzony magazyn kluczy.
+1. Teraz Dodaj klucz tajny w usłudze Key Vault na platformie Azure. Aby uzyskać we właściwym miejscu w portalu, kliknij link dla Zarządzaj kluczy tajnych przechowywanych w tym magazynie kluczy. Jeśli został zamknięty, strony lub projektu, możesz przejść do niego w [witryny Azure portal](https://portal.azure.com) , wybierając **wszystkich usług**w obszarze **zabezpieczeń**, wybierz **usługi Key Vault**, następnie wybierz nowo utworzoną w usłudze Key Vault.
 
-   ![Przejście do portalu](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
+   ![Przejdź do portalu](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. Wybierz, w sekcji magazynu kluczy dla klucza magazynu utworzonego **kluczy tajnych**, następnie **Generuj/Import**.
+1. W sekcji Key Vault dla klucza magazynu został utworzony, wybierz polecenie **wpisów tajnych**, następnie **Generuj/Import**.
 
-   ![Generowanie/Import klucz tajny](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
+   ![Wygeneruj/zaimportuj klucz tajny](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
 1. Wprowadź klucz tajny, takie jak "MySecret" i nadaj mu dowolną wartość ciągu, która jest testem, a następnie wybierz **Utwórz** przycisku.
 
    ![Utwórz klucz tajny](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
-1. (opcjonalnie) Wprowadź inny klucz tajny, ale tym razem umieszcza je w kategorii, nadając "Kluczy tajnych--MySecret". Ta składnia określa kategorię "Kluczy tajnych", która zawiera klucz tajny "MySecret."
+1. (opcjonalnie) Wprowadź inny klucz tajny, ale tym razem, umieścić go w kategorii, nadając mu nazwę "Wpisy tajne — MySecret". Ta składnia określa kategorię "Wpisy tajne", która zawiera wpis tajny "MySecret."
  
-Teraz możesz uzyskać dostęp tajnych w kodzie. Następne kroki są różne w zależności od tego, czy używasz ASP.NET 4.7.1 lub ASP.NET Core.
+Teraz może uzyskać dostęp do wpisów tajnych w kodzie. Następne kroki są różne w zależności od tego, czy przy użyciu 4.7.1 platformy ASP.NET lub ASP.NET Core.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Dostęp do tajnych w kodzie (projektów platformy ASP.NET Core)
+## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Dostęp do wpisów tajnych w kodzie (projektów ASP.NET Core)
 
-1. W programie Visual Studio w projekcie platformy ASP.NET Core, teraz możesz odwoływać się tych kluczy tajnych przy użyciu następujących wyrażeń w kodzie:
+1. W programie Visual Studio w projekcie platformy ASP.NET Core teraz możesz odwoływać się tych kluczy tajnych przy użyciu następujących wyrażeń w kodzie:
  
    ```csharp
       config["MySecret"] // Access a secret without a section
@@ -81,13 +82,13 @@ Teraz możesz uzyskać dostęp tajnych w kodzie. Następne kroki są różne w z
       config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
    ```
 
-1. Na stronie .cshtml powiedzieć About.cshtml, Dodaj @inject dyrektywy w górnej części pliku, aby skonfigurować zmienną można uzyskać dostępu do konfiguracji usługi Key Vault.
+1. Na stronie cshtml, powiedz About.cshtml, Dodaj @inject dyrektywę w górnej części pliku, aby zdefiniować zmienną możesz uzyskiwać dostęp do konfiguracji usługi Key Vault.
 
    ```cshtml
       @inject Microsoft.Extensions.Configuration.IConfiguration config
    ```
 
-1. Jako testu można potwierdzić wartość klucz tajny jest dostępna, wyświetlając go w jednym stron. Użyj @config można odwoływać się do zmiennej konfiguracji.
+1. Jako test można potwierdzić, czy wartość wpisu tajnego jest dostępna, wyświetlając na jedną ze stron. Użyj @config można odwoływać się do zmiennej konfiguracji.
  
    ```cshtml
       <p> @config["MySecret"] </p>
@@ -95,11 +96,11 @@ Teraz możesz uzyskać dostęp tajnych w kodzie. Następne kroki są różne w z
       <p> @config["Secrets:MySecret"] </p>
    ```
 
-1. Tworzenie i uruchomienia aplikacji sieci web, przejdź do strony informacje i widoczna wartość "secret".
+1. Tworzenie i uruchamianie aplikacji sieci web, przejdź do strony informacje i zobaczyć wartość "wpis tajny".
 
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Dostęp do tajnych w kodzie (ASP.NET 4.7.1 projekty)
+## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Dostęp do wpisów tajnych w kodzie (ASP.NET 4.7.1 projektów)
 
-1. Zmodyfikuj plik web.config w następujący sposób. Klucze są symbole zastępcze, które zostaną zastąpione AzureKeyVault ConfigurationBuilder z wartości kluczy tajnych w magazynie kluczy.
+1. Zmodyfikuj plik web.config w następujący sposób. Klucze są symbolami zastępczymi, które zostaną zastąpione przez AzureKeyVault ConfigurationBuilder z wartościami wpisów tajnych w usłudze Key Vault.
 
    ```xml
      <appSettings configBuilders="AzureKeyVault">
@@ -112,7 +113,7 @@ Teraz możesz uzyskać dostęp tajnych w kodzie. Następne kroki są różne w z
      </appSettings>
    ```
 
-1. W HomeController, w metodzie kontrolera informacje Dodaj następujące wiersze, aby pobrać klucz tajny i zapisz go w obiekt ViewBag.
+1. W HomeController, w metodzie kontrolera informacje Dodaj następujące wiersze do pobierania klucza tajnego i zapisz go w obiekt ViewBag.
  
    ```csharp
             var secret = ConfigurationManager.AppSettings["MySecret"];
@@ -121,18 +122,18 @@ Teraz możesz uzyskać dostęp tajnych w kodzie. Następne kroki są różne w z
             ViewBag.Secret2 = $"Secret2: {secret2}";
    ```
 
-1. W widoku About.cshtml Dodaj następujący kod do wyświetlenia wartości hasła (tylko do celów testowych).
+1. W widoku About.cshtml Dodaj następujące polecenie, aby wyświetlić wartość wpisu tajnego (tylko do celów testowych).
 
    ```csharp
       <h3>@ViewBag.Secret</h3>
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Gratulacje, teraz potwierdzeniu aplikacji sieci web za pomocą usługi Key Vault dostęp do kluczy tajnych bezpiecznie przechowywane.
+Gratulacje, teraz potwierdzeniu, że Twoja aplikacja sieci web umożliwia usługi Key Vault dostęp do danych poufnych w zabezpieczonym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, Usuń grupę zasobów. Spowoduje to usunięcie magazyn kluczy i powiązanych zasobów. Aby usunąć grupę zasobów za pośrednictwem portalu:
+Gdy nie są już potrzebne, Usuń grupę zasobów. Spowoduje to usunięcie usługi Key Vault i pokrewne zasoby. Aby usunąć grupę zasobów za pośrednictwem portalu:
 
 1. Wprowadź nazwę grupy zasobów w polu wyszukiwania w górnej części portalu. Gdy w wynikach wyszukiwania zobaczysz grupę zasobów używaną w tym przewodniku Szybki start, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
@@ -140,4 +141,4 @@ Gdy nie jest już potrzebny, Usuń grupę zasobów. Spowoduje to usunięcie maga
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o programowanie Key Vault, odczytując [klucza magazynu przewodnik dewelopera](key-vault-developers-guide.md)
+Dowiedz się więcej o programowaniu dla usługi Key Vault, zapoznając [Key Vault przewodnik dewelopera](key-vault-developers-guide.md)

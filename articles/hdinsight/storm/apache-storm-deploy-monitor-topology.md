@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1ad1d6662d276039ae1e01e49c60fc06682cb54a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b71dd51547365503ac4ce76f07d6c783d26acd50
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622820"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058229"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Wdrażanie i zarządzanie topologiami Apache Storm na HDInsight z systemem Windows
 
@@ -88,7 +88,7 @@ Link z wybraniu **podsumowanie topologii** sekcja wyświetla następujące infor
 
   * **Ponowne zrównoważenie**: to dostosować równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Dzięki temu topologię, aby dostosować równoległość topologii w celu kompensacji zwiększenia lub zmniejszenia liczby węzłów w klastrze.
 
-      Aby uzyskać więcej informacji, zobacz [pojęcie równoległości w topologii Storm (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      Aby uzyskać więcej informacji, zobacz temat [Pojęcie równoległości w topologii Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
   * **Kill**: kończy topologii Storm po określonym czasie.
 

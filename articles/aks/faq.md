@@ -1,19 +1,19 @@
 ---
-title: Często zadawane pytania dotyczące usługi Azure Kubernetes Service
-description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Kubernetes Service.
+title: Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
+description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b910b6cdf55ae7c2a220543bdb555d8e9bff59a0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345858"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056497"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -21,73 +21,87 @@ Ten artykuł adresy częste pytania dotyczące usługi Azure Kubernetes Service 
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Azure Kubernetes Service (AKS) jest świadczona w których regionach platformy Azure już dzisiaj?
 
-Zobacz usługi Azure Kubernetes Service [regiony i dostępność] [ aks-regions] dokumentacji, aby uzyskać pełną listę.
-
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Aktualizacje zabezpieczeń są stosowane do węzłów agentów AKS?
-
-Azure automatycznie stosuje poprawki zabezpieczeń do węzłów w klastrze nocne zgodnie z harmonogramem. Jednak odpowiedzialność za zapewnienie, że węzły są ponownie uruchamiane zgodnie z wymaganiami. Masz kilka opcji umożliwiających wykonywanie ponownego uruchamiania węzła:
-
-- Ręcznie za pośrednictwem witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
-- Po uaktualnieniu klastra usługi AKS. Uaktualnienia klastrowania automatycznie [odizolowywanie i opróżnianie węzłów](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), przenieś je wykonać kopię zapasową przy użyciu najnowszego obrazu systemu Ubuntu. Aktualizacja obrazu systemu operacyjnego w węzłach usługi bez wprowadzania zmian w wersji rozwiązania Kubernetes, określając bieżącą wersję klastra `az aks upgrade`.
-- Za pomocą [Kured](https://github.com/weaveworks/kured), demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Następnie zarządza ponownego uruchamiania systemu operacyjnego w klastrze, korzystania z tego samego cordon i opróżniania proces opisany wcześniej.
+Aby uzyskać pełną listę dostępnych regionów, zobacz [AKS regiony i dostępność][aks-regions].
 
 ## <a name="does-aks-support-node-autoscaling"></a>Usługa AKS obsługuje automatyczne skalowanie węzłów?
 
-Tak, automatycznego skalowania jest dostępna za pośrednictwem [skalowania automatycznego platformy Kubernetes] [ auto-scaler] od Kubernetes 1.10.
+Tak, automatycznego skalowania jest dostępna za pośrednictwem [skalowania automatycznego platformy Kubernetes] [ auto-scaler] od Kubernetes 1.10. Aby uzyskać więcej informacji na temat sposobu konfigurowania i używania skalowanie klastra, zobacz [klastra funkcja automatycznego skalowania w usłudze AKS][aks-cluster-autoscale].
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Usługa AKS obsługuje kontroli dostępu opartej na rolach Kubernetes (RBAC)?
 
-Tak, może być RBAC włączone, gdy [wdrażanie klastra usługi AKS z wiersza polecenia platformy Azure lub usługi Azure Resource Manager szablon](https://docs.microsoft.com/en-us/azure/aks/aad-integration). Ta funkcja niebawem do witryny Azure portal.
+Tak, Kubernetes RBAC jest domyślnie włączona, gdy klastry są tworzone przy użyciu wiersza polecenia platformy Azure. RBAC można włączyć w przypadku klastrów utworzonych za pomocą witryny Azure portal lub szablonów.
+
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć usługi AKS w mojej istniejącej sieci wirtualnej?
+
+Tak, można wdrożyć klaster usługi AKS do istniejącej sieci wirtualnej przy użyciu [zaawansowanych funkcji sieciowych][aks-advanced-networking].
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Można ograniczyć serwera interfejsu API rozwiązania Kubernetes, aby tylko był dostępny w ramach sieci wirtualnej?
+
+Nie w tej chwili. Serwera interfejsu API rozwiązania Kubernetes jest udostępniany jako publiczny w pełni kwalifikowana nazwa domeny (FQDN). Możesz kontrolować dostęp do klastra za pomocą [Kubernetes opartej na rolach kontrola dostępu (RBAC) i Azure Active Directory (AAD)][aks-rbac-aad]
+
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Aktualizacje zabezpieczeń są stosowane do węzłów agentów AKS?
+
+Tak, Azure automatycznie stosuje poprawki zabezpieczeń do węzłów w klastrze nocne zgodnie z harmonogramem. Jednak odpowiedzialność za zapewnienie, że węzły są ponownie uruchamiane zgodnie z wymaganiami. Masz kilka opcji umożliwiających wykonywanie ponownego uruchamiania węzła:
+
+- Ręcznie za pośrednictwem witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
+- Po uaktualnieniu klastra usługi AKS. Klaster automatycznie uaktualnienia [odizolowywanie i opróżnianie węzłów][cordon-drain], następnie przełączyć każdy węzeł kopii zapasowej przy użyciu najnowszego obrazu systemu Ubuntu i nowa wersja poprawki lub pomocniczej wersji platformy Kubernetes. Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi AKS][aks-upgrade].
+- Za pomocą [Kured](https://github.com/weaveworks/kured), demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie systemu operacyjnego są zarządzane w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu] [ cordon-drain] jako uaktualniania klastra.
+
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego dwie grupy zasobów są tworzone za pomocą usługi AKS
+
+Każde wdrożenie usługi AKS obejmuje dwie grupy zasobów:
+
+- Pierwszej grupy zasobów jest tworzony przez użytkownika i zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi podczas wdrażania, takie jak *MC_myResourceGroup_myAKSCluster_eastus*.
+- Ten zasób drugiej grupy, takie jak *MC_myResourceGroup_myAKSCluster_eastus*, zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem. Te zasoby obejmują maszyny wirtualne z węzła usługi Kubernetes, sieci wirtualnych i magazynu. Ta grupa osobny zasób jest tworzony uprościć czyszczenie zasobów.
+
+Jeśli tworzysz zasoby przeznaczone do użycia z klastrem usługi AKS, takich jak konta magazynu lub zastrzeżone publiczne adresy IP, należy je umieścić w grupie zasobów automatycznie wygenerowany.
+
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w grupie zasobów MC_ *?
+
+Modyfikowanie i usuwanie tagów i innych właściwości zasobów w *MC_** grupy zasobów może prowadzić do nieoczekiwanych wyników, takich jak skalowanie i uaktualnianie błędy. Modyfikowanie zasobów w ramach *MC_** w usłudze AKS klastra przerywa poziomu usługi.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery dopuszczenie Kubernetes obsługuje AKS? Można kontrolerów dopuszczenie dodane lub usunięte?
 
 AKS obsługuje następujące [kontrolerów dopuszczenie][admission-controllers]:
 
-* NamespaceLifecycle
-* LimitRanger
-* ServiceAccount
-* DefaultStorageClass
-* DefaultTolerationSeconds
-* MutatingAdmissionWebhook
-* ValidatingAdmissionWebhook
-* ResourceQuota
-* DenyEscalatingExec
-* AlwaysPullImages
+- *NamespaceLifecycle*
+- *LimitRanger*
+- *ServiceAccount*
+- *DefaultStorageClass*
+- *DefaultTolerationSeconds*
+- *MutatingAdmissionWebhook*
+- *ValidatingAdmissionWebhook*
+- *ResourceQuota*
+- *DenyEscalatingExec*
+- *AlwaysPullImages*
 
 Nie jest obecnie możliwe zmodyfikować listę kontrolerów przyjęcia w usłudze AKS.
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć usługi AKS w mojej istniejącej sieci wirtualnej?
-
-Tak, można wdrożyć klaster usługi AKS do istniejącej sieci wirtualnej przy użyciu [zaawansowanych funkcji sieciowych](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
-
-## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Można ograniczyć serwera interfejsu API rozwiązania Kubernetes, aby tylko był dostępny w ramach sieci wirtualnej?
-
-Nie w tej chwili. Serwera interfejsu API rozwiązania Kubernetes jest udostępniany jako publiczny w pełni kwalifikowana nazwa domeny (FQDN). Należy kontrolować dostęp do klastra za pomocą [Kubernetes opartej na rolach kontrola dostępu (RBAC) i Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
-
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Czy usługa Azure Key Vault jest zintegrowana z usługą AKS?
 
-AKS nie jest natywnie zintegrowany z usługą Azure Key Vault w tej chwili. Jednak [projektu woluminu Flex KeyVault](https://github.com/Azure/kubernetes-keyvault-flexvol) umożliwia bezpośrednią integrację z zasobników Kubernetes do wpisów tajnych usługi KeyVault.
+Obecnie natywnie AKS nie jest zintegrowany z usługą Azure Key Vault. Jednak [Azure klucza magazynu FlexVolume dla projektu Kubernetes] [ keyvault-flexvolume] umożliwia bezpośrednią integrację z zasobników Kubernetes do wpisów tajnych usługi KeyVault.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Czy można uruchamiać kontenery systemu Windows Server w usłudze AKS
 
 Do uruchamiania kontenerów systemu Windows Server, musisz uruchomić węzłów z systemem Windows Server. Węzły na serwerze z systemem Windows nie są dostępne w usłudze AKS w tej chwili. Jednak umożliwia rozwiązania Virtual Kubelet planowanie kontenerów Windows w usłudze Azure Container Instances i zarządzać nimi w ramach klastra usługi AKS. Aby uzyskać więcej informacji, zobacz [rozwiązania Virtual Kubelet użycia za pomocą usługi AKS][virtual-kubelet].
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego dwie grupy zasobów są tworzone za pomocą usługi AKS
-
-Każde wdrożenie usługi AKS obejmuje dwie grupy zasobów. Pierwszy jest tworzony przez użytkownika i zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi podczas wdrażania przy użyciu nazwy, takie jak *MC_myResourceGroup_myAKSCluster_eastus*. Druga grupa zasobów zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem, takie jak maszyny wirtualne, sieci i magazynu. Aby uprościć czyszczenie zasobów zostanie utworzony.
-
-W przypadku tworzenia zasobów, które będą używane na potrzeby klastra AKS, takich jak konta magazynu lub zastrzeżone publiczne adresy IP, należy umieścić je w grupie zasobów automatycznie wygenerowany.
-
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS oferuje Umowa dotycząca poziomu usług?
 
-Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta kosztu usługi powinien poziom opublikowanej usługi nie będzie spełniony. Ponieważ AKS, sama jest bezpłatna, ma żadnych dostępnych do zwrotu kosztów i dlatego formalne umowa SLA nie. Jednak AKS dąży do zapewnienia dostępności co najmniej 99,5% do serwera interfejsu API rozwiązania Kubernetes.
+Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta kosztu usługi, jeśli poziom opublikowanej usługi nie jest spełniony. Ponieważ AKS, sama jest bezpłatna, ma żadnych dostępnych do zwrotu kosztów i dlatego formalne umowa SLA nie. Jednak AKS dąży do zapewnienia dostępności co najmniej 99,5% do serwera interfejsu API rozwiązania Kubernetes.
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md
+[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-upgrade]: ./upgrade-cluster.md
+[aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
+[aks-advanced-networking]: ./networking-overview.md#advanced-networking
+[aks-rbac-aad]: ./aad-integration.md
 
 <!-- LINKS - external -->
+
 [auto-scaler]: https://github.com/kubernetes/autoscaler
+[cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol

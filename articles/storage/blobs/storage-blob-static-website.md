@@ -5,20 +5,20 @@ services: storage
 author: MichaelHauss
 ms.service: storage
 ms.topic: article
-ms.date: 06/26/18
+ms.date: 08/17/18
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: e53b573a27f0b1462ccf1170bbde2f8af01d0d3a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 65a1cd85baf18ac1f0d193e7e6d6c3139919fb59
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397479"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617401"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage (wersja zapoznawcza)
-Usługa Azure Storage oferuje teraz statycznej witryny internetowej hostingu (wersja zapoznawcza), dzięki czemu można wdrażać ekonomiczne i skalowalne nowoczesnych aplikacji sieci web na platformie Azure. W statycznej witryny internetowej stron sieci Web zawierać zawartość statyczną i JavaScript lub inny kod po stronie klienta. Z drugiej strony dynamicznych witryn sieci Web są zależne od kodu po stronie serwera i może być hostowana przy użyciu [Azure Web Apps](/app-service/app-service-web-overview.md).
+Usługa Azure Storage oferuje teraz statycznej witryny internetowej hostingu (wersja zapoznawcza), dzięki czemu można wdrażać ekonomiczne i skalowalne nowoczesnych aplikacji sieci web na platformie Azure. W statycznej witryny internetowej stron sieci Web zawierać zawartość statyczną i JavaScript lub inny kod po stronie klienta. Z drugiej strony dynamicznych witryn sieci Web są zależne od kodu po stronie serwera i może być hostowana przy użyciu [Azure Web Apps](/azure/app-service/app-service-web-overview).
 
-Jak wdrożeń zmiana kierunku modeli elastyczne i niedrogie rozwiązanie zdolności do dostarczania zawartości sieci web bez konieczności zarządzania serwerem jest krytyczny. Wprowadzenie hostowania statycznej witryny internetowej w usłudze Azure Storage sprawia, że jest to możliwe, włączania funkcji zaawansowanych zaplecza za pomocą architektury bezserwerowe, wykorzystując [usługi Azure Functions](/azure-functions/functions-overview.md) i inne usługi PaaS.
+Jak wdrożeń zmiana kierunku modeli elastyczne i niedrogie rozwiązanie zdolności do dostarczania zawartości sieci web bez konieczności zarządzania serwerem jest krytyczny. Wprowadzenie hostowania statycznej witryny internetowej w usłudze Azure Storage sprawia, że jest to możliwe, włączania funkcji zaawansowanych zaplecza za pomocą architektury bezserwerowe, wykorzystując [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 Po włączeniu statycznych witryn internetowych na swoim koncie magazynu nowy punkt końcowy usługi sieci web jest tworzony w postaci `<account-name>.<zone-name>.web.core.windows.net`.
@@ -31,14 +31,14 @@ Podczas przekazywania zawartości do witryny sieci Web, użyj punktu końcowego 
 
 
 ## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
-Domenę niestandardową można użyć do hostowania zawartości sieci web. Aby to zrobić, postępuj zgodnie ze wskazówkami w [Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage](storage-custom-domain-name.md). Aby uzyskać dostęp do witryny sieci Web hostowanych na niestandardowej nazwy domeny za pośrednictwem protokołu HTTPS, zobacz [dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md).
+Domenę niestandardową można użyć do hostowania zawartości sieci web. Aby to zrobić, postępuj zgodnie ze wskazówkami w [Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage](storage-custom-domain-name.md). Aby uzyskać dostęp do witryny sieci Web hostowanych na niestandardowej nazwy domeny za pośrednictwem protokołu HTTPS, zobacz [dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md). Wskaż sieci CDN punktu końcowego sieci web, w przeciwieństwie do punktu końcowego obiektu blob i pamiętaj, że konfiguracja sieci CDN nie jest realizowane natychmiast, więc może być konieczne odczekanie kilku minut, zanim Twoja zawartość jest widoczna.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 Podano hostowania statycznej witryny internetowej bez ponoszenia dodatkowych kosztów. Aby uzyskać szczegółowe informacje na temat cen usługi Azure Blob Storage, zapoznaj się [stronie cennika usługi Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Szybki start
 ### <a name="azure-portal"></a>Azure Portal
-Aby rozpocząć, hostowanie aplikacji sieci web w usłudze Azure Storage, można skonfigurować funkcję przy użyciu witryny Azure Portal i wybierz polecenie "Statyczna witryna internetowa (wersja zapoznawcza)" w obszarze "Settings" na pasku nawigacyjnym po lewej stronie. Kliknij pozycję "Włączone", a następnie wprowadź nazwę dokumentu indeksu i (opcjonalnie) ścieżka dokumentu błędu niestandardowego.
+Jeśli jeszcze nie, [Tworzenie konta magazynu GPv2](../common/storage-quickstart-create-account.md) aby rozpocząć, hostowanie aplikacji sieci web, można skonfigurować funkcję przy użyciu witryny Azure Portal i kliknij pozycję "Statyczna witryna internetowa (wersja zapoznawcza)" w obszarze "Settings" w lewym pasku nawigacyjnym. Kliknij pozycję "Włączone", a następnie wprowadź nazwę dokumentu indeksu i (opcjonalnie) ścieżka dokumentu błędu niestandardowego.
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
@@ -49,6 +49,29 @@ Twoje zasoby sieci web należy przekazać do kontenera "$web", który został ut
 
 Na koniec przejdź do punktu końcowego usługi sieci web do testowania witryny sieci Web.
 
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+Zainstaluj rozszerzenie w wersji zapoznawczej magazynu:
+
+```azurecli-interactive
+az extension add --name storage-preview
+```
+Włącz tę funkcję:
+
+```azurecli-interactive
+az storage blob service-properties update --account-name <account-name> --static-website --404-document <error-doc-name> --index-document <index-doc-name>
+```
+Zapytanie adresu URL punktu końcowego sieci web:
+
+```azurecli-interactive
+az storage account show -n <account-name> -g <resource-group> --query "primaryEndpoints.web" --output tsv
+```
+
+Obiekty można przekazać do kontenera $web:
+
+```azurecli-interactive
+az storage blob upload-batch -s deploy -d $web --account-name <account-name>
+```
+
 ## <a name="faq"></a>Często zadawane pytania
 **Statycznej witryny sieci Web jest dostępna dla wszystkich typów kont magazynu?**  
 Nie, hostowania statycznej witryny internetowej jest dostępna tylko na kontach magazynu w warstwie standardowa GPv2.
@@ -56,9 +79,12 @@ Nie, hostowania statycznej witryny internetowej jest dostępna tylko na kontach 
 **Czy magazynu w sieci Wirtualnej i reguł zapory, obsługiwane na nowy punkt końcowy sieci web?**  
 Tak, nowy punkt końcowy web przestrzegają zasad sieci Wirtualnej i zapory, skonfigurowany dla konta magazynu.
 
+**Punkt końcowy sieci web jest uwzględniana wielkość liter?**  
+Tak, punkt końcowy sieci web jest uwzględniana wielkość liter, podobnie jak punkt końcowy obiektu blob. 
+
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md)
 * [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi blob Storage lub sieci web](storage-custom-domain-name.md)
-* [Azure Functions](/azure-functions/functions-overview.md)
-* [Azure Web Apps](/app-service/app-service-web-overview.md)
+* [Azure Functions](/azure/azure-functions/functions-overview)
+* [Azure Web Apps](/azure/app-service/app-service-web-overview)
 * [Utwórz swoją pierwszą aplikację sieci web bez użycia serwera](https://aka.ms/static-serverless-webapp)

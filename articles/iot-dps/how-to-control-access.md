@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522870"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056766"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Kontrola dostępu do usługi Azure IoT Hub Device Provisioning Service
 
-W tym artykule opisano opcje dotyczące zabezpieczania usługi aprowizacji urządzeń IoT. Używane przez usługę aprowizacji *uprawnienia* do udzielania dostępu do każdego punktu końcowego. Uprawnienia ograniczają dostęp do wystąpienia usługi, w oparciu o funkcjonalność.
+W tym artykule opisano opcje dotyczące zabezpieczania usługi IoT Device Provisioning. Używane przez usługę aprowizacji *uprawnienia* do udzielania dostępu do każdego punktu końcowego. Uprawnienia ograniczają dostęp do wystąpienia usługi, w oparciu o funkcjonalność.
 
 W tym artykule opisano:
 
@@ -26,7 +26,7 @@ W tym artykule opisano:
 
 ### <a name="when-to-use"></a>Kiedy stosować
 
-Musi mieć odpowiednie uprawnienia dostępu do żadnego inicjowania obsługi administracyjnej punktów końcowych usługi. Na przykład aplikacji zaplecza mogą zawierać token zawierający poświadczenia zabezpieczeń wraz z każdej wiadomości wysyłanych do usługi.
+Musi mieć odpowiednie uprawnienia dostępu do żadnego inicjowania obsługi administracyjnej punktów końcowych usługi. Na przykład aplikacja wewnętrznej bazy danych musi zawierać token zawierający poświadczenia zabezpieczeń wraz z każdej wiadomości wysyłanych do usługi.
 
 ## <a name="access-control-and-permissions"></a>Kontrola dostępu i uprawnień
 
@@ -34,7 +34,7 @@ Możesz nadawać [uprawnienia](#device-provisioning-service-permissions) w nast�
 
 * **Udostępnione zasady autoryzacji dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#device-provisioning-service-permissions). Można zdefiniować zasady w [witryny Azure portal][lnk-management-portal], lub programowo przy użyciu [interfejsów API REST usługi urządzenia aprowizacji][lnk-resource-provider-apis]. Nowo utworzonej usługi aprowizacji ma następujące domyślne zasady:
 
-  * **provisioningserviceowner**: zasada o wszystkie uprawnienia.
+   **provisioningserviceowner**: zasada o wszystkie uprawnienia.
 
 > [!NOTE]
 > Zobacz [uprawnienia](#device-provisioning-service-permissions) Aby uzyskać szczegółowe informacje.
@@ -51,12 +51,16 @@ Aby uzyskać więcej informacji dotyczących sposobu tworzenia i używania token
 Protokół HTTP jest jedynym protokołem obsługiwanych i implementuje uwierzytelniania umieszczając prawidłowy token w **autoryzacji** nagłówek żądania.
 
 #### <a name="example"></a>Przykład
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`
+```csharp
+SharedAccessSignature sr = 
+   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+```
 
 > [!NOTE]
 > [Azure inicjowania obsługi usługi zestawy SDK urządzeń IoT] [ lnk-sdks] automatycznie generować tokeny podczas nawiązywania połączenia z usługą.
 
 ## <a name="security-tokens"></a>Tokeny zabezpieczające
+
 Usługi Device Provisioning Service używa tokenów zabezpieczających do uwierzytelniania usługi, aby unikać wysyłania kluczy na potrzeby przesyłu. Ponadto tokeny zabezpieczające są ograniczony czas ważności i zakresu. [Usługa Azure inicjowania obsługi usługi zestawy SDK urządzeń IoT] [ lnk-sdks] automatycznego generowania tokenów bez konieczności żadnej specjalnej konfiguracji. Niektóre scenariusze wymagają do generowania i używania tokenów zabezpieczających bezpośrednio. Takie scenariusze obejmują bezpośredniemu wykorzystaniu powierzchni HTTP.
 
 ### <a name="security-token-structure"></a>Struktura tokenu zabezpieczeń
@@ -131,7 +135,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 > [!NOTE]
 > Ponieważ czas ważności tokenu jest sprawdzana na maszynach IoT Device Provisioning Service, dryfu zegara komputera, która generuje token musi być minimalny.
 
-
 ### <a name="use-security-tokens-from-service-components"></a>Używanie tokenów zabezpieczeń ze składników usługi
 
 Składniki usługi może generować jedynie tokeny zabezpieczające, za pomocą zasad dostępu współdzielonego przyznawanie odpowiednich uprawnień, jak wyjaśniono wcześniej.
@@ -150,9 +153,9 @@ Na przykład usługa wygenerowany za pomocą wstępnie utworzonych współużytk
 * Identyfikator URI zasobu: `{mydps}.azure-devices-provisioning.net`,
 * klucz podpisywania: jeden z kluczy `enrollmentread` zasad
 * Nazwa zasady: `enrollmentread`,
-* wszelkie czas wygaśnięcia.
+* wszelkie time.backn wygaśnięcia
 
-![Tworzenie zasad dostępu współdzielonego dla swojego wystąpienia usługi DPS w portalu][img-add-shared-access-policy]
+![Tworzenie zasad dostępu współdzielonego danego wystąpienia usługi Device Provisioning w witrynie portal][img-add-shared-access-policy]
 
 ```nodejs
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -170,17 +173,17 @@ Wynik, którym przyznano dostęp do odczytu wszystkich rekordów rejestracji, b�
 
 W poniższych tematach odwołania udostępnić więcej informacji na temat kontrolowania dostępu do usługi IoT Device Provisioning Service.
 
-## <a name="device-provisioning-service-permissions"></a>Uprawnienia usługi aprowizacji urządzeń
+### <a name="device-provisioning-service-permissions"></a>Uprawnienia usługi aprowizacji urządzeń
 
 W poniższej tabeli wymieniono uprawnienia, których można użyć do kontrolowania dostępu do usługi IoT Device Provisioning Service.
 
 | Uprawnienie | Uwagi |
 | --- | --- |
-| **ServiceConfig** |Przyznaje dostęp do zmiany konfiguracji usługi. <br/>To uprawnienie jest używany przez usługi w chmurze wewnętrznej. |
-| **EnrollmentRead** |Przyznaje dostęp do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używany przez usługi w chmurze wewnętrznej. |
-| **EnrollmentWrite** |Przyznaje dostęp do zapisu są do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używany przez usługi w chmurze wewnętrznej. |
-| **RegistrationStatusRead** |Przyznaje dostęp do stanu rejestracji urządzenia. <br/>To uprawnienie jest używany przez usługi w chmurze wewnętrznej. |
-| **RegistrationStatusWrite**  |Przyznaje usunąć dostęp do stanu rejestracji urządzenia. <br/>To uprawnienie jest używany przez usługi w chmurze wewnętrznej. |
+| **ServiceConfig** |Przyznaje dostęp do zmiany konfiguracji usługi. <br/>To uprawnienie jest używany przez usług zaplecza w chmurze. |
+| **EnrollmentRead** |Przyznaje dostęp do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używany przez usług zaplecza w chmurze. |
+| **EnrollmentWrite** |Przyznaje dostęp do zapisu są do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używany przez usług zaplecza w chmurze. |
+| **RegistrationStatusRead** |Przyznaje dostęp do stanu rejestracji urządzenia. <br/>To uprawnienie jest używany przez usług zaplecza w chmurze. |
+| **RegistrationStatusWrite**  |Przyznaje usunąć dostęp do stanu rejestracji urządzenia. <br/>To uprawnienie jest używany przez usług zaplecza w chmurze. |
 
 <!-- links and images -->
 

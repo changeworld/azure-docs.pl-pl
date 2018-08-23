@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 6712fb0865284ccc2b84e3c2fcd49972f541f69b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 270228e73243e6b2670e7ccb30765526a5db6463
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004219"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056301"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -50,6 +50,7 @@ Zobacz przykład specyficzny dla języka:
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="c-example"></a>Przykład w języku C#
 
@@ -151,6 +152,21 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+### <a name="java-example"></a>Przykładzie w języku Java
+
+Poniższy przykład funkcja wyzwala i wykonuje co pięć minut. `@TimerTrigger` Adnotacja dla funkcji definiuje harmonogramu przy użyciu tego samego formatu ciągu jako [wyrażeń CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ## <a name="attributes"></a>Atrybuty
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
@@ -178,7 +194,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt czasomierza w kodzie funkcji. | 
-|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` mogą służyć tylko do aplikacji funkcji, które jest uruchamiane na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniach aplikacji i ustawić tę właściwość na ustawienie Nazwa otoczona aplikacji ** % ** znaków, jak w poniższym przykładzie: "% ScheduleAppSetting %". |
+|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` mogą służyć tylko do aplikacji funkcji, które jest uruchamiane na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniach aplikacji i ustawić tę właściwość na ustawienie Nazwa otoczona aplikacji **%** znaków, jak w poniższym przykładzie: "% ScheduleAppSetting %". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe rozpoczyna się, gdy aplikacja funkcji zostanie wznowiona po bezczynności z powodu braku aktywności. gdy funkcja liczby ponownych uruchomień aplikacji z powodu zmiany funkcji oraz podczas skalowania aplikacji funkcji. Dlatego **runOnStartup** powinna rzadko, jeśli nigdy nie być równa `true`, ponieważ spowoduje to, że kod, wykonaj w godzinach wysoce nieprzewidywalne.|
 |**useMonitor**|**UseMonitor**|Ustaw `true` lub `false` do wskazania, czy harmonogram powinny być monitorowane. Harmonogram monitorowania są utrwalane wystąpień harmonogramu do pomocy w celu zapewnienia, że harmonogram jest obsługiwane poprawnie, nawet wtedy, gdy ponowne uruchomienie wystąpienia aplikacji funkcji. Jeśli nie jawnie ustawiona, wartość domyślna to `true` harmonogramów, które mają większe niż 1 minuta interwał cyklu. W przypadku harmonogramów, które mogą powodować więcej niż jeden raz na minutę, wartość domyślna to `false`.
 

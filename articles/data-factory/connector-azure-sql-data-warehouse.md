@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430743"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442243"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -71,6 +71,9 @@ Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotycz
 - [Uwierzytelnianie SQL](#sql-authentication)
 - Uwierzytelnianie usługi Azure AD aplikacji tokenu: [nazwy głównej usługi](#service-principal-authentication)
 - Uwierzytelnianie usługi Azure AD aplikacji tokenu: [tożsamości usługi zarządzanej](#managed-service-identity-authentication)
+
+>[!TIP]
+>Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
 
 ### <a name="sql-authentication"></a>Uwierzytelnianie SQL
 
@@ -397,7 +400,7 @@ Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob pla
 
 Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia sprawdzenie ustawień i automatycznie powraca do przenoszenia danych przy użyciu mechanizmu BULKINSERT.
 
-1. **Źródła połączoną usługę** typ jest **AzureStorage** lub **AzureDataLakeStore** przy użyciu uwierzytelniania jednostki usługi.
+1. **Źródła połączoną usługę** typ jest usługi Azure Blob storage (**usłudze Azure blob Storage**/**AzureStorage**) przy użyciu klucza uwierzytelniania konta lub usługi Azure Data Lake Gen1 magazynu (**AzureDataLakeStore**) przy użyciu uwierzytelniania jednostki usługi.
 1. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
 
    1. `rowDelimiter` musi być **\n**.
@@ -558,7 +561,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | Datetimeoffset | DateTimeOffset |
 | Dziesiętna | Dziesiętna |
 | Atrybut FILESTREAM (varbinary(max)) | Byte[] |
-| float | Podwójne |
+| Liczba zmiennoprzecinkowa | Podwójne |
 | image | Byte[] |
 | Int | Int32 |
 | pieniędzy | Dziesiętna |
@@ -575,7 +578,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | tekst | Ciąg, Char] |
 | time | Przedział czasu |
 | sygnatura czasowa | Byte[] |
-| tinyint | Bajtów |
+| tinyint | Bajt |
 | uniqueidentifier | Identyfikator GUID |
 | varbinary | Byte[] |
 | varchar | Ciąg, Char] |

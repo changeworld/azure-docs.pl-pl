@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492896"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055834"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
@@ -55,6 +55,9 @@ Użytkownicy, którzy są monit o zarejestrowanie podczas logowania zostanie wy�
 > Doświadczenia te będą wyświetlane tylko po użytkownik jest monitowany o rejestrowanie podczas logowania. Użytkownicy, którzy przejść bezpośrednio do nowego środowiska w aka.ms/setupsecurityinfo zobaczą inną wersję środowiska, który jest opisany w dalszej części tego artykułu.
 
 Metody uwierzytelniania, pokazano zmieni się zależnie od metody włączone w zasadach uwierzytelniania Wieloskładnikowego lub samoobsługowego resetowania HASEŁ. Użytkownik będzie monitowany zarejestrować minimalną liczbę metod uwierzytelniania, konieczne jest zgodne z zasadami uwierzytelniania Wieloskładnikowego i/lub zasad samoobsługowego resetowania HASEŁ. W przypadku elastyczność w metody uwierzytelniania, które użytkownik może zarejestrować, użytkownik może wybrać **wybierz informacje o zabezpieczeniach** wybrać inne metody uwierzytelniania.  
+
+> [!NOTE]
+> Po włączeniu zarówno powiadomienia aplikacji mobilnej, jak i kodu aplikacji mobilnej, użytkowników, którzy rejestracji aplikacji Microsoft Authenticator, przy użyciu powiadomienia będą mogli Użyj powiadomienie i kod, aby zweryfikować swoją tożsamość.
 
 W przeciwieństwie do poprzednich proces rejestracji usługi MFA użytkownicy nie będą monitowani zarejestrować hasła aplikacji, podczas realizacji nowego środowiska rejestracji. Powinny one zamiast tego wykonaj czynności opisane w naszym samouczku haseł aplikacji do rejestrowania haseł aplikacji w nowym środowisku.  
 

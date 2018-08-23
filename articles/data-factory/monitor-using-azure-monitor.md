@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495302"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616848"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -26,7 +26,7 @@ Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie za
 Usługa Azure Monitor zapewnia podstawowy poziom infrastrukturą metryk i dzienników dla większości usług na platformie Microsoft Azure. Aby uzyskać więcej informacji, zobacz [monitorowanie — Przegląd](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Dzienniki diagnostyczne platformy Azure są dzienniki emitowane przez zasób, które zapewniają bogate, często dane o działaniu tego zasobu. Data Factory danych wyjściowych dzienników diagnostycznych w usłudze Azure Monitor.
 
 ## <a name="persist-data-factory-data"></a>Utrwalanie danych fabryki danych
-Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Jeśli chcesz zachować uruchomieniom danych przez ponad 45 dni, za pomocą usługi Azure Monitor, można nie tylko skierować dzienniki diagnostyczne na potrzeby analizy, jednak można utrwalić je na konto magazynu pozwala uzyskać informacje o fabryce w czasie trwania operacji usługi roli.
+Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Jeśli chcesz zachować uruchomieniom danych przez ponad 45 dni, za pomocą usługi Azure Monitor, można nie tylko skierować dzienniki diagnostyczne na potrzeby analizy, jednak można utrwalić je na konto magazynu pozwala uzyskać informacje o fabryce na czas trwania wybrane.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
@@ -398,6 +398,70 @@ ADFV2 emituje następujące metryki
 | TriggerFailedRuns    | Nie powiodło się metryki uruchomień wyzwalacza     | Licznik    | Łącznie                | Wyzwalacz łączna liczba przebiegów zakończonych niepowodzeniem w minutowym oknie      |
 
 Aby uzyskać dostęp do metryk, postępuj zgodnie z instrukcjami w artykule- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
+
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Metryki fabryki danych monitorowania z usługą Azure Monitor
+
+Za pomocą integracji usługi Azure Data Factory i Azure Monitor do kierowania danych do usługi Azure Monitor. Jest to przydatne w następujących scenariuszach:
+
+1.  Chcesz napisać złożonych zapytań w bogaty zestaw metryk, która zostanie opublikowana przez usługę Data Factory do usługi Azure Monitor. Można również utworzyć niestandardowe alerty na te zapytania za pomocą usługi Azure Monitor.
+
+2.  Chcesz monitorować całej fabryki danych. Za przekazywanie danych z różnych fabryk danych z jednym obszarem roboczym usługi Azure Monitor.
+
+7 minutowym wprowadzenie i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
+
+### <a name="configure-diagnostic-settings-and-workspace"></a>Konfigurowanie ustawień diagnostycznych i obszaru roboczego
+
+Włączanie ustawień diagnostycznych dla fabryki danych.
+
+1.  Wybierz **usługi Azure Monitor** -> **ustawień diagnostycznych** -> Wybierz usługi data factory -> Włącz diagnostykę.
+
+    ![Monitor — oms — image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+2.  Podaj ustawienia diagnostyczne, w tym konfiguracją obszaru roboczego.
+
+    ![Monitor — oms — image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Instalowanie usługi Azure Data Factory Analytics z witryny Azure Marketplace
+
+![Monitor — oms — image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+
+![Monitor — oms — image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+
+Kliknij przycisk **Utwórz** i wybierz obszar roboczy oraz obszaru roboczego ustawienia.
+
+![Monitor — oms — image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+
+### <a name="monitor-data-factory-metrics"></a>Metryki fabryki danych monitorowania
+
+Instalowanie **usługi Azure Data Factory Analytics** tworzy domyślny zestaw widoków umożliwiająca następujące metryki:
+
+- Uruchomienia potoku usługi ADF przebiegów-1) przez usługę Data Factory
+
+- Uruchomienia działania usługi ADF przebiegów-2) przez usługę Data Factory
+
+- Przebiegi ADF-3) uruchomienia wyzwalacza przez usługę Data Factory
+
+- Błędy usługi ADF-1) 10 najważniejszych potoku błędów przez usługę Data Factory
+
+- Uruchomienia działania pierwszych 10 błędy ADF-2) przez usługę Data Factory
+
+- Błędy usługi ADF-3) 10 najważniejszych wyzwalacza błędów przez usługę Data Factory
+
+- Uruchomienia działania usługi ADF statystyki-1) według typu
+
+- Uruchomienia wyzwalacza statystyki ADF-2) według typu
+
+- Czas trwania uruchomienia potoku Max statystyki ADF-3)
+
+![Monitor — oms — image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+
+![Monitor — oms — image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+
+Można wizualizować metryki powyżej, Przyjrzyj się zapytania za te metryki, edytowanie zapytań, tworzenie alertów i tak dalej.
+
+![Monitor — oms — image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>Alerty
 

@@ -1,41 +1,42 @@
 ---
-title: Konfigurowanie poświadczeń uwierzytelniania o nazwie | Dokumentacja firmy Microsoft
-description: Informacje o podanie poświadczeń, które Visual Studio można użyć do uwierzytelniania żądań do usługi Azure, co umożliwia publikowanie aplikacji na platformie Azure w programie Visual Studio lub monitorować istniejącą usługę w chmurze.
+title: Skonfiguruj poświadczenia uwierzytelniania o nazwie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Podaj poświadczenia, które Visual Studio może użyć do uwierzytelniania żądań do platformy Azure, dzięki czemu można opublikować aplikację na platformie Azure z programu Visual Studio lub monitorowanie istniejącej usługi w chmurze.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 61570907-42a1-40e8-bcd6-952b21a55786
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 3dce80f5c6611cb2a22293d1a574980db5ea8378
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 48c410df1768c2cae7807aa1538d76867a581c71
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791583"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059911"
 ---
-# <a name="set-up-named-authentication-credentials"></a>Konfigurowanie poświadczeń uwierzytelniania o nazwie
+# <a name="set-up-named-authentication-credentials"></a>Skonfiguruj poświadczenia uwierzytelniania o nazwie
 
-Aby opublikować aplikację na platformie Azure lub do monitorowania istniejącą usługę w chmurze, program Visual Studio wymaga poświadczeń do uwierzytelniania żądań na platformie Azure, czyli identyfikator subskrypcji platformy Azure i X.509 v3 certyfikat z kluczem co najmniej 2048 bitów. Te poświadczenia przy użyciu jednej z następujących metod:
+Aby opublikować aplikację na platformie Azure lub do monitorowania istniejącej usługi w chmurze, program Visual Studio wymaga poświadczeń do uwierzytelniania żądań do systemu Azure, a mianowicie swój identyfikator subskrypcji platformy Azure i prawidłowy certyfikat X.509 v3 kluczem do co najmniej 2048 bitów. Te poświadczenia przy użyciu jednej z następujących metod:
 
-- W programie Visual Studio wybierz **Widok > Eksploratora serwera**, kliknij prawym przyciskiem myszy **Azure** węzła, wybierz opcję **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure**i zaloguj się.
-- Utwórz plik subskrypcji (`.publishsettings`), który zawiera klucz publiczny certyfikatu. Plik subskrypcji może zawierać poświadczeń dla więcej niż jedną subskrypcję, zgodnie z opisem w tym artykule.
+- W programie Visual Studio wybierz **Widok > Eksploratora serwera**, kliknij prawym przyciskiem myszy **Azure** węzeł **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure**i zaloguj się.
+- Utwórz plik subskrypcji (`.publishsettings`), który zawiera klucz publiczny dla certyfikatu. Plik subskrypcji może zawierać poświadczenia dla więcej niż jedną subskrypcję, zgodnie z opisem w tym artykule.
 
-Uwaga: te poświadczenia są inne niż poświadczenia używane do uwierzytelniania żądań do usługi Magazyn Azure.
+Uwaga: te poświadczenia są inne niż poświadczenia używane do uwierzytelniania żądań do usługi Azure storage.
 
 ## <a name="create-a-subscription-file"></a>Utwórz plik subskrypcji
 
-W Eksploratorze serwera, kliknij prawym przyciskiem myszy **Azure** a następnie wybierz węzeł **zarządzanie i subskrypcje filtru**. Następnie wybierz **certyfikaty** karcie, a następnie wykonaj jedną z następujących czynności:
+W Eksploratorze serwera, kliknij prawym przyciskiem myszy **Azure** a następnie wybierz węzeł **subskrypcji filtru i Zarządzaj**. Następnie wybierz pozycję **certyfikaty** kartę, a następnie wykonaj jedną z następujących czynności:
 
-- Wybierz **importu** otworzyć **importu subskrypcji platformy Microsoft Azure** okno dialogowe. Wybierz **pobierania pliku subskrypcji** łącza, a w przeglądarce Zapisz pobrany plik do lokalizacji tymczasowej. W oknie dialogowym Przejdź do lokalizacji pobierania i zaimportuj go do użytku podczas uwierzytelniania.
-- Wybierz subskrypcję active **Edytuj**, które otwiera okno dialogowe edycji istniejącej subskrypcji do użytku podczas uwierzytelniania.
-- Wybierz **nowy** otworzyć **nową subskrypcję** okna dialogowego polu oraz wymagane informacje. Aby przekazać certyfikat do chmury usługi są wymienione w oknie dialogowym Zaloguj się do portalu Azure, przejdź do usługi w chmurze, wybierz opcję **Ustawienia > certyfikaty zarządzania**, wybierz pozycję **przekazać**, następnie Określ ścieżkę do `.cer` pliku.
+- Wybierz **importu** otworzyć **subskrypcji platformy Microsoft Azure Import** okno dialogowe. Wybierz **pobierania pliku subskrypcji** połączyć, a w przeglądarce Zapisz pobrany plik do lokalizacji tymczasowej. W oknie dialogowym Przejdź do lokalizacji pobierania, a następnie zaimportuj go do użycia w przypadku uwierzytelniania.
+- Wybierz aktywną subskrypcję i wybierz pozycję **Edytuj**, która otwiera okno dialogowe, w którym można edytować istniejącą subskrypcję do użycia w przypadku uwierzytelniania.
+- Wybierz **New** otworzyć **nową subskrypcję** okna dialogowego pole, a następnie podaj wymagane szczegóły. Aby przekazać certyfikat z Twoją chmurą usługi są podane w oknie dialogowym Zaloguj się do witryny Azure portal, przejdź do usługi w chmurze, wybierz opcję **Ustawienia > certyfikaty zarządzania**, wybierz opcję **przekazywanie**, następnie Określ ścieżkę do `.cer` pliku.
 
-Jeśli chcesz samodzielnie utworzyć certyfikat mogą odwoływać się do instrukcji w [tworzenie i przekazywanie certyfikatu zarządzania platformy Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) , a następnie ręcznie przekazać certyfikat do [portalu Azure](https://portal.azure.com/).
+Jeśli chcesz samodzielnie utworzyć certyfikat, mogą odwoływać się do instrukcji w [tworzenie i przekazywanie certyfikatów zarządzania dla platformy Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) a następnie ręcznie przekazać certyfikat do [witryny Azure portal](https://portal.azure.com/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

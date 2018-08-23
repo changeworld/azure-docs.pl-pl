@@ -1,9 +1,9 @@
 ---
-title: Analizowanie dzienników przepływu grupy zabezpieczeń sieci platformy Azure - Graylog | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać i analizować dzienniki przepływu grupy zabezpieczeń sieci na platformie Azure przy użyciu obserwatora sieciowego i Graylog.
+title: Analizowanie dzienników przepływów grupy zabezpieczeń sieci platformy Azure — z narzędzia Graylog | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać i analizowanie dzienników przepływów grupy zabezpieczeń sieci na platformie Azure przy użyciu usługi Network Watcher i z narzędzia Graylog
 services: network-watcher
 documentationcenter: na
-author: mareat
+author: mattreatMSFT
 manager: vitinnan
 editor: ''
 tags: azure-resource-manager
@@ -15,66 +15,66 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 8d82ffa84c3d75ec3acd102a2de2bdce3718a995
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 87d7c39a9340a82813f4df971c03a10be56e8f94
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26639288"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057393"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie danymi i analizowanie dzienników przepływu grupy zabezpieczeń sieci na platformie Azure przy użyciu obserwatora sieciowego i Graylog
+# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie i analizowanie dzienników przepływów grupy zabezpieczeń sieci na platformie Azure przy użyciu usługi Network Watcher i z narzędzia Graylog
 
-[Dzienniki przepływu grupy zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md) Podaj informacje umożliwiające zrozumienie przychodzące i wychodzące ruchu IP dla interfejsów sieci platformy Azure. Dzienniki przepływu Pokaż przepływów wychodzącego i przychodzącego na na podstawie reguły grupy zabezpieczeń sieci, interfejsu sieciowego przepływ stosuje się do, 5-elementowej informacji (protokół źródłowego i docelowego adresu IP, portu źródłowego i docelowego) o przepływie, i jeśli ruch został dozwolony lub niedozwolony .
+[Dzienników przepływu grupy zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md) informacje, które można użyć, aby zrozumieć przychodzący i wychodzący ruch IP dla interfejsów sieciowych platformy Azure. Dzienniki przepływów Pokaż przepływy wychodzące i przychodzące na na podstawie reguł grupy zabezpieczeń sieci, interfejs sieciowy przepływ ma zastosowanie do 5-elementowe spójne kolekcje informacji (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol) na temat przepływu, a jeśli zezwolenie lub odrzucenie ruchu .
 
-Przy włączonym rejestrowaniu przepływu, może mieć wielu grup zabezpieczeń sieci w sieci. Kilka grup zabezpieczeń sieci przy włączonym rejestrowaniu przepływu można tworzyć skomplikowane, aby przeanalizować i uzyskaj informacje z dzienników. Ten artykuł zawiera rozwiązanie centralnie zarządzać tych sieci grupy przepływu dzienniki zabezpieczeń przy użyciu Graylog, zarządzanie dziennikiem typu open source, a narzędzie do analizy i Logstash, typu open source potoku przetwarzania danych po stronie serwera.
+Może mieć wiele grup zabezpieczeń sieci w sieci, z włączono rejestrowanie usługi flow. Kilka grup zabezpieczeń sieci z włączone rejestrowanie przepływu można tworzyć i kłopotliwe przeanalizować oraz uzyskiwanie szczegółowych informacji z dzienników. Ten artykuł zawiera rozwiązanie, aby centralnie zarządzać te dzienniki sieciowych grup zabezpieczeń usługi flow przy użyciu z narzędzia Graylog, Zarządzanie dziennikami "open source" oraz narzędzia do analizy i Logstash, potok przetwarzania danych po stronie serwera "open source".
 
 ## <a name="scenario"></a>Scenariusz
 
-Dzienniki przepływu grupy zabezpieczeń sieci są włączone, za pomocą Monitora sieci. Przepływu dzienniki przepływu w magazynie obiektów blob Azure. Dodatek Logstash służy do połączenia i przetwarzania przepływu dzienniki z magazynu obiektów blob i wysyłać je do Graylog. Gdy przepływ dzienniki są przechowywane w Graylog, mogą być przeanalizowane i wizualizowane w dostosowanych pulpitów nawigacyjnych.
+Dzienniki przepływu sieciowych grup zabezpieczeń są włączane przy użyciu usługi Network Watcher. Przepływ dzienników przepływu w usłudze Azure blob storage. Dodatek Logstash służy do łączenia i przetwarzanie dzienników przepływu z usługi blob storage i wysyłać je do z narzędzia Graylog. Gdy dzienników przepływu są przechowywane w z narzędzia Graylog, mogą być analizowane i wizualizowane w dostosowanych pulpitów nawigacyjnych.
 
-! [Przepływu pracy Graylog]] (. / media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
+! [Przepływu pracy z narzędzia Graylog]] (. / media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>Etapy instalacji
 
-### <a name="enable-network-security-group-flow-logging"></a>Włącz rejestrowanie przepływu grupy zabezpieczeń sieci
+### <a name="enable-network-security-group-flow-logging"></a>Włącz rejestrowanie przepływu grup zabezpieczeń sieci
 
-W tym scenariuszu musi mieć włączone na co najmniej jeden sieciowej grupy zabezpieczeń na Twoim koncie sieci zabezpieczeń grupy przepływu rejestrowanie. Instrukcje dotyczące włączania sieci dzienniki przepływu grupy zabezpieczeń, zapoznaj się z następującym artykułem [wprowadzenie do przepływu rejestrowania dla grup zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md).
+W tym scenariuszu konieczne jest posiadanie sieci zabezpieczeń grupy przepływu Rejestrowanie włączone na co najmniej jedną sieciową grupę zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania sieci dzienników przepływu grupy zabezpieczeń, zapoznaj się z następującym artykułem [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
-### <a name="setting-up-graylog"></a>Konfigurowanie Graylog
+### <a name="setting-up-graylog"></a>Konfigurowanie z narzędzia Graylog
 
-W tym przykładzie zarówno Graylog, jak i Logstash są skonfigurowane na serwerze Ubuntu 14.04, wdrożona na platformie Azure.
+W tym przykładzie z narzędzia Graylog i Logstash są skonfigurowane w systemie Ubuntu Server 14.04, wdrożonych na platformie Azure.
 
-- Zapoznaj się [dokumentacji](http://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) z Graylog, aby uzyskać instrukcje krok po kroku dotyczące instalowania na Ubuntu.
-- Upewnij się, że także skonfigurować interfejs sieci web Graylog wykonując [dokumentacji](http://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif).
+- Zapoznaj się [dokumentacji](http://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) z z narzędzia Graylog, aby uzyskać instrukcje krok po kroku na temat instalacji na Ubuntu.
+- Upewnij się, że również Skonfiguruj interfejs sieci web z narzędzia Graylog zgodnie z poniższymi [dokumentacji](http://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif).
 
-W tym przykładzie użyto minimalnej konfiguracji Graylog (tj. pojedyncze wystąpienie Graylog), ale Graylog może być zaprojektowana skalowania między zasobami w zależności od używanego systemu i produkcji potrzeb. Aby uzyskać więcej informacji na architektury uwag ani głębokość architektury przewodnik, zobacz Graylog w [dokumentacji](http://docs.graylog.org/en/2.2/pages/architecture.html) i [przewodnik dotyczący architektury](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
+W tym przykładzie użyto minimalnej konfiguracji z narzędzia Graylog (tj.) pojedyncze wystąpienie z narzędzia Graylog), ale z narzędzia Graylog może być architektura zaprojektowana pod kątem skalować w zasobach w zależności od używanego systemu i produkcji potrzeb. Aby uzyskać więcej informacji na temat architektury uwag ani architektury szczegółowe wskazówki, zobacz temat z narzędzia Graylog firmy [dokumentacji](http://docs.graylog.org/en/2.2/pages/architecture.html) i [Przewodnik po architekturze](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
 
-Graylog można zainstalować na wiele sposobów, w zależności od platformy, a preferencje. Pełną listę metod instalacji można odwoływać się do urzędnika Graylog w [dokumentacji](http://docs.graylog.org/en/2.2/pages/installation.html). Graylog aplikacja serwera działa na dystrybucje systemu Linux i ma następujące wymagania wstępne:
+Z narzędzia Graylog można zainstalować na wiele sposobów, w zależności od platformy i preferencje. Pełną listę metody instalacji to możliwe, można znaleźć w oficjalnej z narzędzia Graylog firmy [dokumentacji](http://docs.graylog.org/en/2.2/pages/installation.html). Aplikacja serwera z narzędzia Graylog działa w dystrybucjach systemu Linux i ma następujące wymagania wstępne:
 
--   Oracle Java SE 8 lub nowszym — [dokumentacja instalacji programu Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
--   Elastyczne wyszukiwania 2.x (2.1.0 lub nowszym)- [Elasticsearch instalacji dokumentacji](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
--   Bazy danych MongoDB 2.4 lub nowszym — [dokumentacją usługi MongoDB instalacji](https://docs.mongodb.com/manual/administration/install-on-linux/)
+-  Oracle Java SE 8 lub nowszym — [dokumentacji instalacji programu Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Elastyczne wyszukiwanie 2.x (2.1.0 lub nowszej)- [dokumentacji instalacji usługi Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
+-  Bazy danych MongoDB 2.4 lub nowszym — [dokumentacji instalacji bazy danych MongoDB](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
-### <a name="install-logstash"></a>Zainstaluj Logstash
+### <a name="install-logstash"></a>Instalowanie programu Logstash
 
-Logstash służy do spłaszczenia dzienniki przepływu formatu JSON do poziomu przepływu spójnej kolekcji. Spłaszczanie dzienniki przepływu ułatwia dzienniki wyszukiwania w Graylog i zorganizować.
+Program Logstash jest używany do spłaszczenia dzienników przepływu formatu JSON do poziomu krotki przepływu. Spłaszczanie dzienników przepływu ułatwia dzienniki do organizowania i wyszukiwanie z narzędzia Graylog.
 
-1.  Aby zainstalować Logstash, uruchom następujące polecenia:
+1. Aby zainstalować program Logstash, uruchom następujące polecenia:
 
-    ```bash
-    curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
-    sudo dpkg -i logstash-5.2.0.deb
-    ```
+   ```bash
+   curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
+   sudo dpkg -i logstash-5.2.0.deb
+   ```
 
-2.  Skonfiguruj Logstash do analizowania dzienników przepływu i wysyłać je do Graylog. Utwórz plik Logstash.conf:
+2. Konfigurowanie usługi Logstash w celu analizowania dzienników przepływu i wysyłać je do z narzędzia Graylog. Utwórz plik Logstash.conf:
 
-    ```bash
-    sudo touch /etc/logstash/conf.d/logstash.conf
-    ```
+   ```bash
+   sudo touch /etc/logstash/conf.d/logstash.conf
+   ```
 
-3.  Dodaj następującą zawartość do pliku. Zmień wyróżnione wartości do uwzględnienia informacji o koncie magazynu:
+3. Dodaj następującą zawartość do pliku. Zmień wyróżnione wartości, aby odzwierciedlić szczegółów konta magazynu:
 
-    ```
+   ```
     input {
         azureblob
         {
@@ -147,104 +147,101 @@ Logstash służy do spłaszczenia dzienniki przepływu formatu JSON do poziomu p
         }
     }
     ```
-W pliku config Logstash podane składa się z trzech części: dane wejściowe, filtrów i danych wyjściowych. Źródło danych wejściowych dzienników, które przetwarzają Logstash wyznacza sekcji wejściowej — w takim przypadku zamierzamy Użyj Azure blog wejściowych wtyczki (zainstalowany w następnych krokach) umożliwiający dostęp do przepływ grupy zabezpieczeń sieci dzienniki JSON przechowywane w magazynie obiektów blob.
+Plik konfiguracji Logstash, pod warunkiem składa się z trzech części: dane wejściowe, filtrować i danych wyjściowych. Wejściowy sekcji wyznacza źródła danych wejściowych dzienników, które będą przetwarzać Logstash — w tym przypadku ma używać Blog dotyczący platformy Azure danych wejściowych (zainstalowaną wtyczką w następnych krokach) umożliwiający dostęp do grupy zabezpieczeń sieciowego pliki JSON przechowywane w magazynie obiektów blob dziennika.
 
-Sekcji filtra spłaszcza następnie każdego pliku dziennika przepływu tak, aby każda krotka poszczególnych przepływu i jego właściwości staje się oddzielne zdarzenie Logstash.
+Sekcja filtru następnie spłaszcza każdego pliku dziennika przepływu, aby każda krotka poszczególnych przepływ i jego właściwości staje się oddzielne zdarzenie Logstash.
 
-Na koniec sekcji Wyjście przekazuje każdego zdarzenia Logstash serwerowi Graylog. Do konkretnej musi, zmodyfikuj plik konfiguracji Logstash, zgodnie z wymaganiami.
+Na koniec sekcji danych wyjściowych przekazuje każde zdarzenie Logstash do serwera z narzędzia Graylog. Do własnych konkretne potrzeby, zmodyfikować plik konfiguracji Logstash, zgodnie z potrzebami.
 
    > [!NOTE]
-   > Poprzedni plik konfiguracji przyjęto założenie, że serwer Graylog został skonfigurowany na adres IP hosta lokalnego sprzężenia zwrotnego 127.0.0.1. Jeśli nie, należy zmienić parametr hosta w sekcji Wyjście poprawny adres IP.
+   > Poprzedni plik config przyjęto założenie, że serwer z narzędzia Graylog został skonfigurowany na adres IP hosta lokalnego sprzężenie zwrotne 127.0.0.1. W przeciwnym razie należy zmienić parametru hostów, w sekcji danych wyjściowych do prawidłowego adresu IP.
 
-Aby uzyskać dalsze instrukcje na temat instalowania Logstash, zobacz Logstash [dokumentacji](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Aby uzyskać dalsze instrukcje na temat instalowania programu Logstash, zobacz Logstash [dokumentacji](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
 
-### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Instalowanie wtyczki dla magazynu obiektów blob Azure wprowadzania Logstash
+### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Instalowanie wtyczki dla usługi Azure blob storage dane wejściowe Logstash
 
-Dodatek Logstash umożliwia bezpośredni dostęp do dzienników przepływu ze swojego konta magazynu wyznaczonego obiektu blob. Aby zainstalować wtyczkę, z domyślnego katalogu instalacji Logstash (w tym /usr/share/logstash/bin przypadków), uruchom następujące polecenie:
+Dodatek Logstash pozwala uzyskać bezpośredni dostęp do dzienników przepływu ze swojego konta magazynu wyznaczonego obiektu blob. Aby zainstalować dodatek typu plug-in, z domyślnego katalogu instalacji programu Logstash (w tym /usr/share/logstash/bin wielkości liter), uruchom następujące polecenie:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Aby uzyskać więcej informacji na temat tej wtyczki w temacie [dokumentacji](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Aby uzyskać więcej informacji na temat tej wtyczki w zobacz [dokumentacji](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="set-up-connection-from-logstash-to-graylog"></a>Skonfiguruj połączenie z Logstash do Graylog
+### <a name="set-up-connection-from-logstash-to-graylog"></a>Skonfiguruj połączenie z programu Logstash, aby z narzędzia Graylog
 
-Teraz, możemy ustanowić połączenie przy użyciu Logstash dzienniki przepływu i konfigurowanie serwera Graylog, należy skonfigurować Graylog do akceptowania przychodzących plików dziennika.
+Skoro masz do nawiązania połączenia i dzienników przepływów przy użyciu programu Logstash i skonfigurować serwer z narzędzia Graylog, należy skonfigurować z narzędzia Graylog do akceptowania przychodzących plików dziennika.
 
-1.  Przejdź do serwera Graylog interfejsu sieci web przy użyciu adresu URL, skonfigurowane pod jego kątem. Dostęp do interfejsu, kierując przy użyciu przeglądarki`http://<graylog-server-ip>:9000/`
+1. Przejdź do serwera z narzędzia Graylog interfejsu sieci web przy użyciu adresu URL skonfigurowany dla niego. Dostęp do interfejsu programu przez kierowanie przeglądarkę, aby `http://<graylog-server-ip>:9000/`
 
-2.  Aby przejść do strony konfiguracji, wybierz **systemu** menu rozwijane w górnym menu nawigacyjnym pasek po prawej stronie, a następnie kliknij przycisk **dane wejściowe**.
-    Alternatywnie przejdź do`http://<graylog-server-ip>:9000/system/inputs`
+2. Aby przejść do strony konfiguracji, wybierz pozycję **systemu** menu rozwijane w górnym menu nawigacyjnym pasek po prawej stronie, a następnie kliknij przycisk **dane wejściowe**.
+   Ewentualnie przejdź do `http://<graylog-server-ip>:9000/system/inputs`
 
-    ![Wprowadzenie](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![Wprowadzenie](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3.  Aby uruchomić nowe dane wejściowe, wybierz *GELF UDP* w **wybierz dane wejściowe** listy rozwijanej, a następnie wypełnij formularz. GELF oznacza Graylog rozszerzony Format dziennika. GELF format opracowanego przez Graylog. Aby dowiedzieć się więcej na temat jego zalety, zobacz Graylog [dokumentacji](http://docs.graylog.org/en/2.2/pages/gelf.html).
+3. Aby uruchomić nowe dane wejściowe, wybierz *GELF UDP* w **zaznacz dane wejściowe** listy rozwijanej, a następnie wypełnij formularz. GELF oznacza z narzędzia Graylog rozszerzony Format dziennika. GELF format jest opracowany przez z narzędzia Graylog. Aby dowiedzieć się więcej na temat jego zalety, zobacz artykuł z narzędzia Graylog [dokumentacji](http://docs.graylog.org/en/2.2/pages/gelf.html).
 
-    Pamiętaj powiązać dane wejściowe skonfigurowany serwer Graylog na adres IP. Adres IP powinien być zgodny **hosta** pola danych wyjściowych UDP Logstash pliku konfiguracji. Domyślny port powinien być *12201*. Upewnij się, port odpowiada **portu** pola w protokołu UDP output wymienionych w pliku konfiguracyjnym Logstash.
+   Upewnij się powiązać dane wejściowe na adres IP został skonfigurowany na serwerze z narzędzia Graylog. Adres IP powinien być zgodny **hosta** pola danych wyjściowych UDP plik konfiguracji Logstash. Domyślny port powinien być *12201*. Upewnij się, port odpowiada **portu** pola w protokołu UDP danych wyjściowych wymienionych na plik konfiguracji Logstash.
 
-    ![Dane wejściowe](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Dane wejściowe](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-    Po uruchomieniu dane wejściowe powinny pojawić się on znajdować się pod **lokalne dane wejściowe** sekcji, jak pokazano na poniższej ilustracji:
+   Po uruchomieniu dane wejściowe, możesz powinna zostać wyświetlona w obszarze **lokalnych danych wejściowych** sekcji, jak pokazano na poniższej ilustracji:
 
-    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-    Aby dowiedzieć się więcej na temat Graylog komunikatów wejściowych, zajrzyj do [dokumentacji](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
+   Aby dowiedzieć się więcej na temat z narzędzia Graylog komunikatów wejściowych, zapoznaj się [dokumentacji](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
-4.  Po tych konfiguracji zostały wprowadzone, możesz uruchomić Logstash ma rozpocząć się odczyt w dziennikach przepływu przy użyciu następującego polecenia:
+4. Po tych konfiguracji zostały wprowadzone, można uruchomić program Logstash, aby rozpocząć odczytywanie dzienników przepływu za pomocą następującego polecenia: `sudo systemctl start logstash.service`.
 
-    `sudo systemctl start logstash.service`
+### <a name="search-through-graylog-messages"></a>Przeszukiwanie wiadomości z narzędzia Graylog
 
-### <a name="search-through-graylog-messages"></a>Przeszukaj Graylog wiadomości
-
-Po co pewien czas serwera Graylog zbierać komunikaty, będą mogli wyszukiwać wiadomości. Aby sprawdzić wiadomości wysyłane do serwera Graylog, z **dane wejściowe** strony konfiguracji, kliknij przycisk "**Pokaż odebranych komunikatów**" przycisk GELF UDP wejściowych utworzonego. Nastąpi przekierowanie do ekranu, która wygląda podobnie do poniższej ilustracji: 
+Po co pewien czas dla serwera z narzędzia Graylog zbierać komunikaty, jesteś w stanie przeszukiwanie wiadomości. Aby sprawdzić komunikaty przesyłane na serwer z narzędzia Graylog z **dane wejściowe** strony konfiguracji, kliknij przycisk "**Pokaż Odebrane komunikaty**" przycisk GELF UDP wejściowy został utworzony. Nastąpi przekierowanie do ekranu, który wygląda podobnie do poniższej ilustracji: 
 
 ![Histogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
-Kliknięcie łącza niebieski "% {Message}" rozszerza każdy komunikat, aby wyświetlić parametry poszczególne krotki przepływu, jak pokazano na poniższej ilustracji:
+Kliknięcie linku niebieski "% {Message}" rozwija każdy komunikat, aby wyświetlić parametry każda krotka przepływu, jak pokazano na poniższej ilustracji:
 
 ![Komunikaty](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
-Domyślnie wszystkie pola wiadomości są umieszczane w wyszukiwania, jeśli nie zaznaczysz pola wiadomości do wyszukania. Jeśli chcesz wyszukiwanie określonych wiadomości (tj. — krotek przepływ z określonego źródłowy adres IP), można użyć języka zapytań wyszukiwania Graylog jako [udokumentowane](http://docs.graylog.org/en/2.2/pages/queries.html)
+Domyślnie wszystkie pola wiadomości są uwzględnione w wyszukiwania, jeśli nie zaznaczysz pola szczegółowy komunikat o błędzie, aby wyszukać. Jeśli chcesz wyszukać określone komunikaty (tj.) — kolekcje przepływów z określonego źródłowy adres IP), można użyć języka zapytań wyszukiwania z narzędzia Graylog jako [udokumentowane](http://docs.graylog.org/en/2.2/pages/queries.html)
 
+## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Analizuj dzienniki sieciowych grup zabezpieczeń usługi flow przy użyciu narzędzia Graylog
 
-## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Analizowanie sieci zabezpieczeń grupy przepływu dzienników przy użyciu Graylog
+Skoro już z narzędzia Graylog ją skonfigurować z systemem, można użyć niektóre swoje funkcje aby lepiej zrozumieć dane dzienników przepływów. Jest jeden taki sposób, przy użyciu pulpitów nawigacyjnych w celu utworzenia określonych widoków danych.
 
-Teraz, kiedy Graylog go skonfigurowane systemem, możemy użyć niektóre jej funkcje aby lepiej zrozumieć przepływu danych dziennika. Jedną z metod jest za pomocą pulpitów nawigacyjnych można utworzyć konkretnych widoków danych.
+### <a name="create-a-dashboard"></a>Tworzenie pulpitu nawigacyjnego
 
-### <a name="create-a-dashboard"></a>Utwórz pulpit nawigacyjny
+1. Na górnym pasku nawigacyjnym, wybierz **pulpity nawigacyjne** ścieżkę fizyczną lub przejdź do `http://<graylog-server-ip>:9000/dashboards/`
 
-1.  W górnym pasku nawigacyjnym, wybierz **pulpity nawigacyjne** lub przejdź do`http://<graylog-server-ip>:9000/dashboards/`
-
-2.  Z tego miejsca, kliknij zielony **Utwórz pulpit nawigacyjny** przycisk i wypełnianie Krótka forma z tytuł i opis pulpitu nawigacyjnego. Trafienia **zapisać** przycisk, aby utworzyć nowy pulpit nawigacyjny. Zostanie wyświetlony pulpit nawigacyjny podobnie do poniższej ilustracji:
+2. W tym miejscu, kliknij zielony **Utwórz pulpit nawigacyjny** przycisk i wypełnij formularz krótka, tytuł i opis pulpitu nawigacyjnego. Trafienia **Zapisz** przycisk, aby utworzyć nowy pulpit nawigacyjny. Zostanie wyświetlony pulpit nawigacyjny podobnie do poniższej ilustracji:
 
     ![Pulpity nawigacyjne](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
-### <a name="add-widgets"></a>Dodaj elementy widget
+### <a name="add-widgets"></a>Dodawanie widgetów
 
-Możesz kliknąć tytuł jest widoczny, ale w tej chwili jego puste, ponieważ nie dodano żadnych elementów widget pulpitu nawigacyjnego. Widżet typu łatwe i przydatne do dodania do pulpitu nawigacyjnego są **szybkie wartości** wykresy, które zawierają listę wartości pola i ich dystrybucji.
+Możesz kliknąć tytuł pulpitu nawigacyjnego, aby zobaczyć, jak to, ale w tej chwili jego jest pusta, ponieważ firma Microsoft nie dodano żadnych elementów widget. Element widget łatwy i przydatne typu, aby dodać do pulpitu nawigacyjnego są **szybkie wartości** wykresów, które zawierają listę wartości pola i ich dystrybucji.
 
-1.  Przejdź z powrotem do wyniki wyszukiwania danych wejściowych UDP, która odbiera dzienniki przepływu wybierając **wyszukiwania** z górnym pasku nawigacyjnym.
+1. Przejdź z powrotem do wyniki wyszukiwania danych wejściowych UDP, który otrzymuje dzienników przepływów, wybierając **wyszukiwania** z górnego paska nawigacyjnego.
 
-2.  W obszarze **wynik wyszukiwania** panelu po lewej stronie ekranu, Znajdź **pola** kartę, która zawiera różne pola każdej wiadomości przychodzącej krotki przepływu.
+2. W obszarze **wynik wyszukiwania** panelu po lewej stronie ekranu, Znajdź **pola** kartę, która wyświetla listę różnych pól Każdy przychodzący komunikat krotki przepływu.
 
-3.  Wybierz wszystkie żądany parametr, w którym do wizualizacji (w tym przykładzie Wybraliśmy źródłowy adres IP). Aby wyświetlić listę możliwych elementy widget, kliknij niebieską strzałką listy rozwijanej w lewo pola, a następnie wybierz **szybkie wartości** do generowania elementu widget. Powinny pojawić się podobnie do poniższej ilustracji:
+3. Wybierz wszystkie żądane parametr w której ma zostać wizualizacji (w tym przykładzie jest wybrane źródło IP). Aby wyświetlić listę możliwych elementów widget, kliknij strzałkę listy rozwijanej niebieskim po lewej stronie pola, a następnie wybierz **szybkie wartości** można wygenerować elementu widget. Powinien zostać wyświetlony podobny do poniższej ilustracji:
 
-    ![Źródłowy adres IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
+   ![Źródłowy adres IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4.  Z tego miejsca, można wybrać **dodawać do pulpitu nawigacyjnego** w prawym górnym rogu elementu widget i wybrać odpowiedni pulpitu nawigacyjnego do dodania.
+4. Z tego miejsca możesz wybrać **dodać do pulpitu nawigacyjnego** znajdujący się w prawym górnym rogu elementu widget i wybierz odpowiedni pulpit nawigacyjny, aby dodać.
 
-5.  Przejdź z powrotem do pulpitu nawigacyjnego, aby zobaczyć widget, który właśnie został dodany.
+5. Przejdź z powrotem do pulpitu nawigacyjnego, aby zobaczyć widżet, który właśnie został dodany.
 
-    Różne inne elementy widget, takie jak histogramów i liczby można dodawać do pulpitu nawigacyjnego do śledzenia ważnych metryk, takich jak przedstawiono na rysunku poniżej przykładowy pulpit nawigacyjny:
+   Szereg innych widżetów, takich jak histogramów i liczby można dodać do pulpitu nawigacyjnego, aby śledzić ważne metryki, takie jak przykładowy pulpit nawigacyjny, pokazane na poniższej ilustracji:
 
-    ![Pulpit nawigacyjny Flowlogs](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
+   ![Pulpit nawigacyjny Flowlogs](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
-    Dodatkowo wyjaśnienie na pulpitach nawigacyjnych i innych typów elementów widget można znaleźć w Graylog w [dokumentacji](http://docs.graylog.org/en/2.2/pages/dashboards.html).
+    Dodatkowo wyjaśnienie na pulpitach nawigacyjnych i innych rodzajów elementów widget, można znaleźć w z narzędzia Graylog firmy [dokumentacji](http://docs.graylog.org/en/2.2/pages/dashboards.html).
 
-Integrowanie obserwatora sieciowego z Graylog, teraz zostały sposób wygodne i scentralizowane zarządzanie i wizualizacji dzienniki przepływu grupy zabezpieczeń sieci. Graylog ma liczbę inne zaawansowane funkcje, takie jak strumienie i alertów, które mogą służyć do dalszego zarządzania dziennikami przepływu i Poznaj lepiej ruchu sieciowego. Teraz, gdy masz Graylog skonfigurować i podłączone do platformy Azure, możesz także kontynuować do eksplorowania innych funkcji, która zapewnia.
+Dzięki integracji usługi Network Watcher z z narzędzia Graylog, masz są teraz wygodne i scentralizowany sposób wizualizowanie dzienniki przepływu sieciowych grup zabezpieczeń i zarządzanie nimi. Z narzędzia Graylog numerem inne zaawansowane funkcje, takie jak strumienie i alerty, które może również służyć do dalszego zarządzania dzienników przepływu i lepiej zrozumieć ruchu sieciowego. Teraz, gdy masz z narzędzia Graylog Konfigurowanie połączony z platformą Azure, możesz ją także zapoznaj się z innych funkcji, która zapewnia w dalszym ciągu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak wizualizacji dzienniki przepływu grupy zabezpieczeń sieci przy użyciu usługi Power BI, odwiedzając [wizualizacja sieciowej grupy zabezpieczeń przepływa dzienników przy użyciu usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Dowiedz się, jak wizualizować swoje dzienniki sieciowych grup zabezpieczeń usługi flow z usługą Power BI, odwiedzając [Visualize sieciowej grupy zabezpieczeń przepływy dzienników za pomocą usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).

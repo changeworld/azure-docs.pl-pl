@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160107"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055926"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -175,7 +175,7 @@ Zasady autoryzacji połączeń usług pulpitu zdalnego (RD CAP) określenie wyma
 
   ![Usługi pulpitu zdalnego](./media/howto-mfa-nps-extension-rdg/image8.png)
 
-3. W Menedżer bramy usług pulpitu zdalnego, kliknij prawym przyciskiem myszy  **\[nazwy serwera\] (Local)** i kliknij przycisk **właściwości**.
+3. W Menedżerze bramy usług pulpitu zdalnego, kliknij prawym przyciskiem myszy  **\[nazwy serwera\] (Local)** i kliknij przycisk **właściwości**.
 
   ![Nazwa serwera](./media/howto-mfa-nps-extension-rdg/image9.png)
 
@@ -226,7 +226,7 @@ Aby upewnić się, że jest czas na przeprowadzenie walidacji poświadczeń uży
 Domyślnie podczas konfigurowania bramy usług pulpitu zdalnego na potrzeby magazynu zasady centralne zasady autoryzacji połączeń, bramy usług pulpitu zdalnego jest skonfigurowany do przekazywania limit żądań do serwera NPS. Serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure MFA zainstalowano, przetwarza żądanie dostępu usługi RADIUS. Poniższe kroki pokazują jak zweryfikować domyślnej zasady żądań połączeń. 
 
 1. W bramie usług pulpitu zdalnego, w konsoli serwera NPS (lokalny), rozwiń węzeł **zasady**i wybierz **zasady żądań połączeń**.
-2. Kliknij prawym przyciskiem myszy **połączyć zasady żądań**i kliknij dwukrotnie **zasady autoryzacji bramy usług terminalowych**.
+2. Kliknij dwukrotnie **zasady autoryzacji bramy usług terminalowych**.
 3. W **właściwości zasady autoryzacji bramy usług terminalowych** okno dialogowe, kliknij przycisk **ustawienia** kartę.
 4. Na **ustawienia** kliknij kartę pod przesyłanie dalej żądania połączenia **uwierzytelniania**. Klient usługi RADIUS jest skonfigurowany do przesyłania żądań uwierzytelniania.
 
@@ -266,7 +266,7 @@ Brama usług pulpitu zdalnego musi być skonfigurowany jako klient usługi RADIU
 ### <a name="configure-network-policy"></a>Konfigurowanie zasad sieciowych
 Pamiętaj, że serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure MFA jest magazynem wyznaczonym centralne zasady dla zasad autoryzacji połączeń (CAP). W związku z tym należy zaimplementować limit na serwerze NPS w celu autoryzowania połączeń prawidłowe żądania.  
 
-1. W konsoli serwera NPS (lokalny) rozwiń **zasady**i kliknij przycisk **zasad sieciowych**.
+1. Na serwerze NPS Otwórz konsoli serwera NPS (lokalny), rozwiń węzeł **zasady**i kliknij przycisk **zasad sieciowych**.
 2. Kliknij prawym przyciskiem myszy **połączenia z innymi serwerami dostępu**i kliknij przycisk **Duplikuj zasady**. 
 
  ![Duplikuj zasady](./media/howto-mfa-nps-extension-rdg/image19.png)
@@ -275,7 +275,7 @@ Pamiętaj, że serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure M
 
  ![Właściwości sieci](./media/howto-mfa-nps-extension-rdg/image20.png)
 
-4. W **kopiowania połączenia z innymi serwerami dostępu** okno dialogowe, **Nazwa_zasad**, wprowadź odpowiednią nazwę, taką jak _RDG_CAP_. Sprawdź **włączone zasady**i wybierz **udzielić dostępu**. Opcjonalnie w **typ serwera dostępu do sieci**, wybierz opcję **bramy usług pulpitu zdalnego**, można także pozostawić ją jako **nieokreślony**.
+4. W **kopiowania połączenia z innymi serwerami dostępu** okno dialogowe, **nazwa_zasad**, wprowadź odpowiednią nazwę, taką jak _RDG_CAP_. Sprawdź **włączone zasady**i wybierz **udzielić dostępu**. Opcjonalnie w **typ serwera dostępu do sieci**, wybierz opcję **bramy usług pulpitu zdalnego**, można także pozostawić ją jako **nieokreślony**.
 
  ![Kopiuj połączeń](./media/howto-mfa-nps-extension-rdg/image21.png)
 

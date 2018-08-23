@@ -1,71 +1,71 @@
 ---
-title: Przy użyciu profilów wersji interfejsu API z Przejdź w stosie Azure | Dokumentacja firmy Microsoft
-description: Informacje o używaniu profile w wersji interfejsu API z Przejdź w stosie Azure.
+title: Za pomocą profilami wersji interfejsu API za pomocą języka GO w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o korzystaniu z profilami wersji interfejsu API za pomocą języka GO w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ad4402098e938f72cf4b8c61cce8d0d46b5a147
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010068"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054389"
 ---
-# <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profile w wersji interfejsu API za pomocą Przejdź w stosie Azure
+# <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Go w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-## <a name="go-and-version-profiles"></a>Profile Przejdź i wersji
+## <a name="go-and-version-profiles"></a>Profile z rzeczywistym użyciem i wersji
 
-Profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnych usług. Przy użyciu profilu pomoże Ci mieszać i dopasowywać między różnych typów zasobów. Profile zapewniają następujące korzyści:
+Profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnymi usługami. Przy użyciu profilu pomoże Ci mieszać i dopasowywać między różnych typów zasobów. Profile zapewniają następujące korzyści:
 
- - Trwałość aplikacji poprzez zablokowanie do określonej wersji interfejsu API.
- - Zgodność aplikacji z stosu Azure i regionalnych centrach danych platformy Azure.
+ - Stabilność aplikacji przez blokowanie do konkretnych wersji interfejsu API.
+ - Zgodność aplikacji za pomocą usługi Azure Stack i regionalnych centrach danych platformy Azure.
 
-W zestawie SDK Przejdź profile są dostępne w obszarze Profile / ścieżki z ich wersji w **RRRR-MM-DD** format. Teraz, najnowsze Azure stosu jest wersja profilu **2017-03-09**. Aby zaimportować danej usługi z profilu, należy zaimportować jego odpowiedniego modułu z profilu. Na przykład, aby zaimportować **obliczeniowe** usługi **2017-03-09** profilu:
+W zestawie SDK Przejdź profile są dostępne w obszarze Profile / ścieżki mają wersję w **RRRR-MM-DD** formatu. Od razu, najnowsze usługi Azure Stack jest wersja profilu **2017-03-09**. Aby zaimportować profil dla danej usługi, należy zaimportować jego odpowiedniego modułu z profilu. Na przykład, aby zaimportować **obliczenia** usługi z **2017-03-09** profilu:
 
 ````go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
-## <a name="install-azure-sdk-for-go"></a>Zainstaluj zestaw Azure SDK dla przejdź
+## <a name="install-azure-sdk-for-go"></a>Zainstaluj zestaw Azure SDK dla języka Go
 
-  1. Zainstaluj usługę Git. Aby uzyskać instrukcje, zobacz [wprowadzenie — instalowanie Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+  1. Zainstaluj oprogramowanie Git. Aby uzyskać instrukcje, zobacz [wprowadzenie — Instalowanie usługi Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
   2. Zainstaluj [Przejdź język programowania](https://golang.org/dl).  
-  Profile interfejsu API platformy Azure będzie wymagać Przejdź wersji 1,9 lub nowszej.
-  3. Zainstaluj zestaw Azure SDK Przejdź i jego zależności, uruchamiając następujące polecenie bash:
+  Profile interfejsu API dla platformy Azure będzie wymagać Go w wersji 1.9 lub nowsza.
+  3. Zainstaluj zestaw Azure SDK Go i jego zależności, uruchamiając poniższe polecenie powłoki bash:
   ```
     go get -u -d github.com/Azure/azure-sdk-for-go/...
   ```
 
-### <a name="the-go-sdk"></a>Wybierz zestaw SDK
+### <a name="the-go-sdk"></a>Zestaw GO SDK
 
-Można znaleźć więcej informacji o zestawie SDK Azure przejdź na:
-- Azure Przejdź SDK w [Instalowanie zestawu Azure SDK dla Przejdź](https://docs.microsoft.com/go/azure/azure-sdk-go-install).
-- Przejdź zestaw SDK usługi Azure jest ogólnie dostępna w witrynie GitHub pod [azure sdk dla Przejdź](https://github.com/Azure/azure-sdk-for-go).
+Można znaleźć więcej informacji na temat Przejdź zestawu SDK usługi Azure na:
+- Azure Przejdź SDK [Instalowanie zestawu Azure SDK dla języka Go](https://docs.microsoft.com/go/azure/azure-sdk-go-install).
+- Przejdź zestawu SDK usługi Azure jest ogólnie dostępna w witrynie GitHub pod [azure sdk dla go](https://github.com/Azure/azure-sdk-for-go).
 
-### <a name="go-autorest-dependencies"></a>Przejdź AutoRest zależności
+### <a name="go-autorest-dependencies"></a>Zależności AutoRest z rzeczywistym użyciem
 
-Zestaw SDK Przejdź zależy od modułów Azure Przejdź-AutoRest do wysyłania żądań REST do punktów końcowych usługi Azure Resource Manager. Musisz zaimportować zależności modułu Azure Przejdź-AutoRest z [Azure Przejdź-AutoRest w serwisie GitHub](https://github.com/Azure/go-autorest). Można znaleźć polecenia install bash w **zainstalować** sekcji.
+Zestaw SDK języka GO, zależy od modułów platformy Azure z rzeczywistym użyciem — AutoRest wysyłać żądania REST z punktami końcowymi usługi Azure Resource Manager. Musisz zaimportować zależności modułów platformy Azure z rzeczywistym użyciem — AutoRest z [platformy Azure z rzeczywistym użyciem — AutoRest w serwisie GitHub](https://github.com/Azure/go-autorest). Możesz znaleźć polecenia powłoki bash instalacji w **zainstalować** sekcji.
 
-## <a name="how-to-use-go-sdk-profiles-on-azure-stack"></a>Sposobu używania profilów SDK przejdź na stosie Azure
+## <a name="how-to-use-go-sdk-profiles-on-azure-stack"></a>Jak używać profilów zestaw SDK języka GO w usłudze Azure Stack
 
-Aby uruchomić przykładowy kod przejdź na stosie Azure:
-  1. Zainstaluj zestaw Azure SDK dla Przejdź i jego zależności. Instrukcje zawiera Poprzednia sekcja, [Zainstaluj zestaw Azure SDK for Przejdź](#install-azure-sdk-for-go).
-  2. Pobierz informacje metadanych z punktu końcowego Menedżera zasobów. Punkt końcowy zwraca informacje wymagane do uruchomienia kodu Przejdź pliku JSON.
+Aby uruchomić próbkę kodu języka Go w usłudze Azure Stack:
+  1. Zainstaluj zestaw Azure SDK dla języka Go i jego zależności. Aby uzyskać instrukcje, zobacz poprzednią sekcję, [Zainstaluj zestaw Azure SDK dla języka Go](#install-azure-sdk-for-go).
+  2. Uzyskaj informacje o metadanych z punktu końcowego usługi Resource Manager. Punkt końcowy zwraca plik w formacie JSON za pomocą informacji wymaganych do uruchomienia kodu języka Go.
 
   > [!Note]  
-  > **ResourceManagerUrl** jest w Azure stosu Development Kit (ASDK): `https://management.local.azurestack.external/`  
-  > **ResourceManagerUrl** w systemach zintegrowane jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+  > **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/`  
+  > **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
   Przykładowy plik JSON:
@@ -81,16 +81,16 @@ Aby uruchomić przykładowy kod przejdź na stosie Azure:
   }
   ```
 
-  3. Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji do użycia później. Aby uzyskać informacje na temat tworzenia subskrypcji, zobacz [tworzyć subskrypcje ofert w stosie Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
-  4. Tworzenie nazwy głównej usługi z zakresem "Subskrypcji" i **właściciela** roli. Zapisz nazwy główne usług, identyfikator i klucz tajny. Informacje dotyczące tworzenia nazwy głównej usługi dla stosu Azure, zobacz [Tworzenie nazwy głównej usługi](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Konfigurowanie środowiska Azure stosu.
-  5. Zaimportuj moduł usługi z profilu SDK Przejdź w kodzie. Bieżąca wersja profilu stosu Azure to **2017-03-09**. Na przykład, aby zaimportować moduł sieci z **2017-03-09** typ profilu: 
+  3. Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji ma być używany w dalszej części. Aby uzyskać informacje na temat tworzenia subskrypcji, zobacz [Tworzenie subskrypcji ofert w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
+  4. Tworzenie jednostki usługi z zakresem "Subskrypcja" i **właściciela** roli. Zapisz jednostki usługi, identyfikator i klucz tajny. Aby uzyskać informacje na temat tworzenia jednostki usługi dla usługi Azure Stack, zobacz [Tworzenie jednostki usługi](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Konfigurowanie środowiska usługi Azure Stack.
+  5. Zaimportuj moduł usługi z Przejdź profilu zestawu SDK w kodzie. Bieżąca wersja profilu usługi Azure Stack to **2017-03-09**. Na przykład w celu zaimportowania modułu sieciowego na podstawie **2017-03-09** typ profilu: 
 
   ````go
     package main 
     import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/network/mgmt/network"
   ````
   
-  6. W funkcji, Utwórz i uwierzytelniania klienta z **nowy** wywołanie funkcji klienta. Aby utworzyć klienta sieci wirtualnej, można użyć poniższego kodu:  
+  6. W funkcji, należy utworzyć i uwierzytelnić klienta z **New** wywołanie funkcji klienta. Można utworzyć klienta sieci wirtualnej, można użyć następującego kodu:  
 
   ````go
   package main 
@@ -106,7 +106,7 @@ Aby uruchomić przykładowy kod przejdź na stosie Azure:
   Ustaw `<subscriptionID>` do **SubscriptionID** wartości zapisane w kroku 3.
   Aby utworzyć token, zobacz Uwierzytelnianie poniższej sekcji.  
 
-  7. Wywołanie metody interfejsu API przy użyciu klienta, który został utworzony w poprzednim kroku. Na przykład, aby utworzyć sieć wirtualną przy użyciu naszego klienta w poprzednim kroku: 
+  7. Wywoływanie metod interfejsu API przy użyciu klienta, który został utworzony w poprzednim kroku. Na przykład, aby utworzyć sieć wirtualną przy użyciu naszego klienta z poprzedniego kroku: 
   
 ````go
 package main
@@ -119,26 +119,26 @@ func main() {
   vnetClient .CreateOrUpdate( ) 
 ````
   
-  Pełny przykład tworzenia sieci wirtualnej na stosie Azure przy użyciu profilu przejdź zestawu SDK, zobacz [przykład](#example).
+  Aby uzyskać kompletny przykład tworzenia sieci wirtualnej w usłudze Azure Stack przy użyciu profilu zestaw SDK języka Go, zobacz [przykład](#example).
 
 ## <a name="authentication"></a>Authentication
 
-Można pobrać właściwości autoryzujący z usługi Azure Active Directory przy użyciu Przejdź zestawu SDK, należy zainstalować moduły Go AutoRest. Te moduły powinna już zainstalowany z instalacją "Przejdź zestawu SDK"; Jeśli nie, zainstaluj [pakiet uwierzytelniania w usłudze GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
+Można pobrać właściwości Autoryzatora z usługi Azure Active Directory przy użyciu zestaw SDK języka Go, należy zainstalować moduły AutoRest z rzeczywistym użyciem. Tych modułów powinny zostały już zainstalowane z instalacją "Zestaw SDK języka Go"; Jeśli nie, zainstaluj [pakietów uwierzytelniania w usłudze GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 
-Obiekt autoryzujący musi być ustawiona jako autoryzujący klienta zasobów. Dostępnych jest kilka metod, aby uzyskać obiekt autoryzujący; Aby uzyskać pełną listę można znaleźć tutaj.
+Obiekt autoryzujący musi być ustawiona jako obiekt autoryzujący dla klienta zasobów. Dostępnych jest kilka metod, aby uzyskać obiekt autoryzujący; Aby uzyskać pełną listę, zobacz tutaj.
 
-W tej sekcji przedstawiono typowy sposób uzyskać tokeny autoryzujący na stosie Azure przy użyciu poświadczeń klienta:
+W tej sekcji przedstawiono typową metodą uzyskiwać tokeny autoryzujący w usłudze Azure Stack przy użyciu poświadczeń klienta:
 
-  1. Jeśli nazwy głównej usługi z rolą właściciela subskrypcji jest dostępna, Pomiń ten krok. W przeciwnym razie tworzenie nazwy głównej usługi [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) i przypisz go w roli "właściciela" ograniczone do subskrypcji [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Zapisz identyfikator podmiotu zabezpieczeń aplikacji usługi i klucz tajny. 
+  1. Jeśli jednostka usługi przy użyciu roli właściciela subskrypcji jest dostępny, Pomiń ten krok. W przeciwnym razie utwórz jednostkę usługi [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) i przypisać ją w roli "właściciel" ograniczone do subskrypcji [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Zapisz identyfikator aplikacji nazwy głównej usługi i klucza tajnego. 
 
-  2. Importuj **adal** pakietu z AutoRest Przejdź w kodzie. 
+  2. Importuj **adal** pakiet z Go AutoRest w kodzie. 
   
   ````go
   package main
   import "github.com/Azure/go-autorest/autorest/adal" 
   ````
 
-  3. Utwórz oauthConfig przy użyciu metody NewOAuthConfig z **adal** modułu. 
+  3. Tworzenie oauthConfig przy użyciu metody NewOAuthConfig z **adal** modułu. 
   
   ````go
   package main 
@@ -150,10 +150,10 @@ W tej sekcji przedstawiono typowy sposób uzyskać tokeny autoryzujący na stosi
       oauthConfig, err := adal.NewOAuthConfig(activeDirectoryEndpoint, tenantID)
   ````
    
-  Ustaw `<activeDirectoryEndpoint>` na wartość "loginEndpoint" właściwości z metadanych ResourceManagerUrl pobrany w poprzedniej sekcji tego dokumentu.
-  Ustaw `<tenantID>` wartość identyfikatora dzierżawy usługi Azure stosu 
+  Ustaw `<activeDirectoryEndpoint>` na wartość "loginEndpoint" właściwości z metadanych ResourceManagerUrl odtworzona w poprzedniej sekcji niniejszego dokumentu.
+  Ustaw `<tenantID>` wartość identyfikatora dzierżawy usługi Azure Stack. 
 
-  4. Na koniec Utwórz token główna usługi przy użyciu metody NewServicePrincipalToken z modułu biblioteki adal. 
+  4. Na koniec Utwórz token jednostki usługi przy użyciu metody NewServicePrincipalToken z modułu biblioteki adal. 
 
   ````go
   package main 
@@ -171,18 +171,18 @@ W tej sekcji przedstawiono typowy sposób uzyskać tokeny autoryzujący na stosi
       return token, err
   ````
   
-  Ustaw `<activeDirectoryResourceID>` na jedną z wartości "odbiorców" pobrać listy z metadanych ResourceManagerUrl w poprzedniej sekcji tego dokumentu.  
-  Ustaw `<clientID>` do aplikacji głównej usługi zapisać nazwy głównej usługi został utworzony w poprzedniej sekcji tego dokumentu Identyfikator.  
-  Ustaw `<clientSecret>` do aplikacji głównej usługi zapisać nazwy głównej usługi został utworzony w poprzedniej sekcji tego dokumentu klucz tajny.  
+  Ustaw `<activeDirectoryResourceID>` na jedną z wartości w "audience" pobrać listy z metadanych ResourceManagerUrl w poprzedniej sekcji niniejszego dokumentu.  
+  Ustaw `<clientID>` identyfikator aplikacji nazwy głównej usługi zapisany podczas tworzenia nazwy głównej usługi w poprzedniej sekcji niniejszego dokumentu.  
+  Ustaw `<clientSecret>` do aplikacji nazwy głównej usługi klucz tajny zapisywana, gdy nazwa główna usługi została utworzona w poprzedniej sekcji niniejszego dokumentu.  
 
 ## <a name="example"></a>Przykład
 
-W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wirtualnej Azure stosu. Przykłady pełną Przejdź zestawu SDK można znaleźć [repozytorium przykłady Azure SDk Przejdź](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Stos przykładów dla platformy Azure są dostępne w ramach hybrydowego / ścieżce wewnątrz usługi folderów repozytorium.
+W tej sekcji przedstawiono przykładowy kod języka Go, aby utworzyć sieć wirtualną w usłudze Azure Stack. Kompletne przykłady Go SDK można znaleźć [repozytorium przykładów usługi Azure zestaw SDk dla języka Go](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Przykłady usługi Azure Stack są dostępne w ramach hybrydowego / ścieżce wewnątrz usługi folderów w repozytorium.
 
 > [!Note]  
-> Aby uruchomić kod w tym przykładzie, sprawdź, czy z subskrypcją użytą ma **sieci** dostawcy zasobów wymienionym **zarejestrowanej**. Aby go zweryfikować, wyszukaj subskrypcję w portalu Azure stosu, a następnie kliknij polecenie **dostawców zasobów.**
+> Aby uruchomić kod, w tym przykładzie, należy sprawdzić, czy subskrypcja używana jest **sieci** dostawcy zasobów wymieniony jako **zarejestrowanej**. W celu zweryfikowania, Szukaj w ramach subskrypcji w portalu usługi Azure Stack, a następnie kliknij polecenie **dostawców zasobów.**
 
-1. Zaimportuj wymagane pakiety w kodzie. Aby zaimportować moduł sieci należy używać najnowszej profilu na stosie Azure. 
+1. Zaimportuj wymagane pakiety w kodzie. Aby zaimportować moduł sieci, należy używać najnowszej profilu w usłudze Azure Stack. 
   
   ````go
   package main
@@ -197,7 +197,7 @@ W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wir
   )
   ````
 
-2. Zdefiniuj zmienne środowiskowe. Aby utworzyć sieć wirtualną, musisz mieć grupę zasobów. 
+2. Zdefiniuj zmienne środowiskowe. Aby utworzyć sieć wirtualną, musi być grupą zasobów. 
 
   ````go
   var (
@@ -212,7 +212,7 @@ W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wir
   )
   ````
 
-3. Teraz, gdy zdefiniowano zmienne środowiskowe, Dodaj metodę, aby utworzyć token uwierzytelniania przy użyciu **adal** pakietu. Zobacz szczegółowe informacje o uwierzytelnianiu w poprzedniej sekcji.
+3. Skoro zdefiniowano zmienne środowiskowe, Dodaj metodę, aby utworzyć token uwierzytelniania za pomocą **adal** pakietu. Szczegółowe informacje o uwierzytelnianiu w poprzedniej sekcji.
   
   ````go
   //CreateToken creates a service principal token
@@ -228,7 +228,7 @@ W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wir
   }
   ````
 
-4. Dodaj metodę main. Metoda główna najpierw pobiera tokenu przy użyciu metody, która jest zdefiniowana w poprzednim kroku. Następnie tworzy klienta przy użyciu modułu sieciowej z profilu. Na koniec tworzy sieć wirtualną. 
+4. Dodaj metodę głównego. Metoda główna najpierw pobiera token przy użyciu metody, która jest zdefiniowana w poprzednim kroku. Następnie tworzy klienta przy użyciu modułu sieciowego na podstawie profilu. Na koniec tworzy sieć wirtualną. 
   
 ````go
 package main
@@ -300,4 +300,4 @@ func main() {
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalowanie programu PowerShell dla usługi Azure Stack)
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)  
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md)  

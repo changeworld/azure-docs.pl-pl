@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872396"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061030"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
@@ -63,7 +63,7 @@ Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie u
 
 Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 3 dni, przy użyciu Microsoft Store dla firm Centrum administracyjnego. Ta funkcja będzie wkrótce dostępna do Centrum administracyjnego usługi Office 365.
 
-1. Zaloguj się do [Microsoft Store dla firm Centrum administracyjnego](https://businessstore.microsoft.com/en-us/manage/) przy użyciu konta, które jest administratorem globalnym w dzierżawie. Jeśli próbujesz usunąć dzierżawę "Contoso", który ma contoso.onmicrosoft.com domeny początkowej domyślnej, zaloguj się przy użyciu nazwy UPN takich jak admin@contoso.onmicrosoft.com.
+1. Zaloguj się do [Microsoft Store dla firm Centrum administracyjnego](https://businessstore.microsoft.com/manage/) przy użyciu konta, które jest administratorem globalnym w dzierżawie. Jeśli próbujesz usunąć dzierżawę "Contoso", który ma contoso.onmicrosoft.com domeny początkowej domyślnej, zaloguj się przy użyciu nazwy UPN takich jak admin@contoso.onmicrosoft.com.
 
 2. Przejdź do **Zarządzaj** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować. Po kliknięciu **anulować**, Odśwież stronę.
   

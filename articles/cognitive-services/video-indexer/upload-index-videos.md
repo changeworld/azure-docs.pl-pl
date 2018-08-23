@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390973"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41988147"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksować wideo  
 
@@ -47,15 +47,15 @@ Adres URL wpisu na potrzeby powiadomień podczas indeksowania zostanie ukończon
 
 Można również dodać więcej parametrów do adresu URL, przed opublikowaniem wywołań do usługi Video Indexer i te parametry zostaną uwzględnione podczas wywołania zwrotnego. Później w kodzie, można przeanalizować ciągu zapytania i uzyskać kopii wszystkich określonych parametrów ciągu zapytania (dane, który pierwotnie miały możesz dołączyć do adresu URL, a także informacje Video Indexer dostarczone.) 
 
-### <a name="streamingpereset"></a>streamingPereset
+### <a name="streamingpreset"></a>streamingPreset
 
 Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo. Następnie przechodzi do indeksowania i analizowanie filmu wideo. Po zakończeniu Video Indexer analizowanie, otrzymasz powiadomienie z identyfikatorem wideo.  
 
-Korzystając z [Przekaż wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [ponownie Poindeksuj wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) interfejsu API jest jeden z parametrów opcjonalnych `streamingPreset`. Jeśli ustawisz `streamingPereset` do `Default`, `SingleBitrate`, lub `AdaptiveBitrate`, zostanie wywołany procesu kodowania. Po operacji indeksowania i zadań kodowania wideo został opublikowany, więc również strumieniowego przesyłania wideo. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo musi znajdować się w **systemem** stanu.
+Korzystając z [Przekaż wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [ponownie Poindeksuj wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) interfejsu API jest jeden z parametrów opcjonalnych `streamingPreset`. Jeśli ustawisz `streamingPreset` do `Default`, `SingleBitrate`, lub `AdaptiveBitrate`, zostanie wywołany procesu kodowania. Po operacji indeksowania i zadań kodowania wideo został opublikowany, więc również strumieniowego przesyłania wideo. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo musi znajdować się w **systemem** stanu.
 
 Aby można było uruchomić indeksowanie i zadań kodowania oraz [konta usługi Azure Media Services połączyć swoje konto usługi Video Indexer](connect-to-azure.md), wymaga jednostek zarezerwowanych. Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Ponieważ te zadania intensywnie korzystających z obliczeń, zdecydowanie zaleca się typ jednostki S3. Liczbę jednostek zarezerwowanych określa maksymalną liczbę zadań, które mogą działać równolegle. Zalecenie dotyczące planu bazowego jest 10 jednostki zarezerwowane S3. 
 
-Jeśli chcesz tylko indeksować wideo, ale nie Koduj go ustawić `streamingPereset`do `NoStreaming`.
+Jeśli chcesz tylko indeksować wideo, ale nie Koduj go ustawić `streamingPreset`do `NoStreaming`.
 
 ## <a name="code-sample"></a>Przykład kodu
 

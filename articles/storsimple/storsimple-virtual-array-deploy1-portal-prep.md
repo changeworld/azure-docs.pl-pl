@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477928"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059726"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — przygotowanie witryny Azure portal
 
@@ -144,7 +144,7 @@ Wykonaj poniższe kroki w [witryny Azure portal](https://portal.azure.com/).
 
 Ten krok jest opcjonalny i należy wykonać tylko wtedy, gdy nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi.
 
-Jeśli musisz utworzyć konto usługi Azure storage w innym regionie, zobacz [sposób tworzenia konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) instrukcje krok po kroku.
+Jeśli musisz utworzyć konto usługi Azure storage w innym regionie, zobacz [sposób tworzenia konta magazynu](../storage/common/storage-quickstart-create-account.md) instrukcje krok po kroku.
 
 Wykonaj poniższe kroki w [witryny Azure portal](https://ms.portal.azure.com/) na stronie usługi Menedżer urządzeń StorSimple, aby dodać istniejące konto magazynu Microsoft Azure.
 

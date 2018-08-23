@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346491"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056305"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Rozpoczynanie pracy z aplikacją Microsoft Authenticator
 
-Aplikacja Microsoft Authenticator pomagają zapobiegać nieautoryzowanemu dostępowi do kont i zatrzymania fałszywe transakcje dzięki zapewnieniu dodatkowego poziomu zabezpieczeń dla Twojej pracy konta służbowego (na przykład alain@contoso.com) lub osobistego konta Microsoft (w przypadku przykład alain@outlook.com). Możesz użyć go jako drugi metodę weryfikacji lub zastąpienie o podanie hasła przy użyciu logowanie za pomocą telefonu. Aby uzyskać więcej informacji na temat sposobu konfigurowania i używania logowanie za pomocą telefonu bez hasła, zobacz [Zaloguj się przy użyciu telefonu, nie hasła](microsoft-authenticator-app-phone-signin-faq.md).
+Aplikacja Microsoft Authenticator pomagają zapobiegać nieautoryzowanemu dostępowi do kont i zatrzymania fałszywe transakcje dzięki zapewnieniu dodatkowego poziomu zabezpieczeń dla Twojej pracy konta służbowego (na przykład alain@contoso.com) lub osobistego konta Microsoft (w przypadku przykład alain@outlook.com).
 
 Podczas korzystania z aplikacji, podczas weryfikacji dwuetapowej, pracy w jeden z dwóch sposobów:
 
@@ -110,8 +110,6 @@ Jeśli została wybrana opcja używania kodów weryfikacyjnych w aplikacji, uży
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli masz więcej ogólne pytania dotyczące aplikacji, zobacz [Microsoft Authenticator często zadawane pytania](microsoft-authenticator-app-faq.md)
-
-- Jeśli masz pytania dotyczące sposobu używania logowanie telefonem, zobacz [Zaloguj się przy użyciu telefonu, nie hasła](microsoft-authenticator-app-phone-signin-faq.md)
 
 - Jeśli chcesz, aby dowiedzieć się więcej o weryfikację dwuetapową, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md)
 

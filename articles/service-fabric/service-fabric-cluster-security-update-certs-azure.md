@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie certyfikatami w klastrze usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób dodawać nowe certyfikaty, certyfikat przerzucania i Usuń certyfikat do lub z klastra sieci szkieletowej usług.
+title: Zarządzanie certyfikatami w klastrze usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak dodawać nowe certyfikaty, certyfikat przerzucania i Usuń certyfikat do / z klastra usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,58 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 16758cc85b552e82d3daa63893558e1048bcefb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207557"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055820"
 ---
-# <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodaj lub Usuń certyfikaty dla klastra usługi sieć szkieletowa na platformie Azure
-Zalecane jest, zapoznaj się z używaniu certyfikatów X.509 w sieci szkieletowej usług, a następnie należy zapoznać się z [klastra scenariusze zabezpieczeń](service-fabric-cluster-security.md). Trzeba zrozumieć, jakie certyfikat klastra jest i do czego służy, przed przejściem dalej.
+# <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
+Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
 
-Sieć szkieletowa usług pozwala określić dwa certyfikaty klastra, podstawowego i pomocniczego, podczas konfigurowania certyfikatu zabezpieczeń podczas tworzenia klastra, oprócz certyfikatów klienta. Zapoznaj się [tworzenia klastra platformy azure za pośrednictwem portalu](service-fabric-cluster-creation-via-portal.md) lub [tworzenia klastra platformy azure za pomocą usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) dla informacji o konfiguracji na czas utworzenia. Jeśli określisz tylko jeden certyfikat klastra na czas utworzenia, następnie używany jako podstawowego certyfikatu. Po utworzeniu klastra można dodać nowego certyfikatu jako dodatkowej.
+Azure sieci szkieletowe zestawu SDK usług domyślne zachowanie obciążenia certyfikatu, to wdrożenie i używanie certyfikatów zdefiniowanych najdalej wygasające datę późniejszą; niezależnie od ich definicji podstawowej lub dodatkowej konfiguracji. Nastąpi powrót do klasycznego zachowanie jest zalecana Akcja zaawansowane i wymaga ustawienia wartości parametru "UseSecondaryIfNever" ustawienie na wartość false w ramach konfiguracji Fabric.Code.
+
+Usługi Service fabric umożliwia określenie dwóch certyfikatów klastra, podstawowy i pomocniczy, po skonfigurowaniu zabezpieczeń certyfikatu podczas tworzenia klastra, aby oprócz certyfikatów klienta. Zapoznaj się [tworzenia klastra usługi azure za pośrednictwem portalu](service-fabric-cluster-creation-via-portal.md) lub [tworzenia klastra usługi azure za pomocą usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) dla szczegółowe informacje na temat konfigurowania na czas utworzenia. Jeśli określisz tylko jeden certyfikat klastra na czas utworzenia, następnie używany jako podstawowego certyfikatu. Po utworzeniu klastra można dodać nowego certyfikatu jako pomocniczego.
 
 > [!NOTE]
-> Bezpieczne klastra zawsze należy co najmniej jeden prawidłowy klastra (nie odwołane i niewygasły) certyfikatu (podstawowe lub pomocnicze) wdrożony (Jeśli nie, zatrzymuje klastra działa). 90 dni, zanim wszystkie prawidłowe certyfikaty osiągną wygaśnięcia, system generuje ostrzeżenie śledzenia, a także zdarzenie kondycji ostrzeżenia w węźle. Jest obecnie Brak poczty e-mail ani innych powiadomień, który wysyła sieci szkieletowej usług w tym artykule. 
+> W przypadku bezpiecznego klastra zawsze należy co najmniej jeden prawidłowy klastra (nie odwołane i musi być ważny) certyfikatu (podstawowe lub pomocnicze) wdrożony (Jeśli nie, zatrzymuje klaster działa). 90 dni, zanim wszystkie prawidłowe certyfikaty osiągną wygaśnięcia, system generuje ostrzeżenie śledzenia, a także zdarzenia kondycji ostrzeżenia w węźle. Obecnie jest brak poczty e-mail lub innych powiadomień, które wysyła usługi Service Fabric w tym artykule. 
 > 
 > 
 
-## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Dodawanie certyfikatu dodatkowej klastra przy użyciu portalu
-Nie można dodać certyfikatu dodatkowej klastra za pośrednictwem portalu Azure, użyj programu Azure powershell. Proces jest opisane w dalszej części tego dokumentu.
+## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Dodaj certyfikat pomocniczy klastra przy użyciu portalu
+Nie można dodać certyfikat pomocniczy klastra za pośrednictwem witryny Azure portal, użyj programu Azure powershell. Proces jest opisany w dalszej części tego dokumentu.
 
-## <a name="swap-the-cluster-certificates-using-the-portal"></a>Wymiana certyfikatów klastra przy użyciu portalu
-Po pomyślnie wdrożeniu certyfikatu klastra pomocniczego, jeśli chcesz zamienić podstawowe i pomocnicze, następnie przejdź do sekcji zabezpieczeń i wybierz opcję "Zamiany z podstawowej" z menu kontekstowego, można zamienić dodatkowej certyfikatu z serwera podstawowego certyfikat.
+## <a name="remove-a-cluster-certificate-using-the-portal"></a>Usuń certyfikat klastra przy użyciu portalu
+W przypadku bezpiecznego klastra należy zawsze co najmniej jeden prawidłowy certyfikat (nie odwołane i musi być ważny). Certyfikat wdrożony za pomocą najdalej w przyszłości wygasające równolegle będą używane i usuwając go wprowadzi swoje działanie stop klastra; Upewnij się, że tylko usunięcie certyfikatu, który wygasł lub nieużywane certyfikat, który się wkrótce wygaśnie.
 
-![Wymiany certyfikatów][Delete_Swap_Cert]
+Aby usunąć certyfikat zabezpieczeń klastra nieużywane, przejdź do sekcji Zabezpieczenia, a następnie wybierz opcję "Usuń" z menu kontekstowego na nieużywany certyfikat.
 
-## <a name="remove-a-cluster-certificate-using-the-portal"></a>Usuń certyfikat klastra za pomocą portalu
-Bezpieczne klastra należy zawsze co najmniej jeden prawidłowy (nie odwołane i niewygasły) certyfikat (podstawowe lub pomocnicze) wdrożone w przeciwnym razie klaster przestanie działać.
+Jeśli jest zgodne z zamiarami użytkownika można usunąć certyfikatu, który jest oznaczony jako podstawowy, należy wdrożyć certyfikat pomocniczy dalsze wygasające datę późniejszą niż podstawowy certyfikat włączenie automatycznego przerzucania zachowanie; Po zakończeniu automatycznego przerzucania, należy usunąć podstawowego certyfikatu.
 
-Aby usunąć dodatkowego certyfikatu z używany do zabezpieczenia klastra, przejdź do sekcji Zabezpieczenia i zaznacz opcję "Delete" z menu kontekstowego na dodatkowego certyfikatu.
-
-Jeśli Twoje zamierzeniu można usunąć certyfikatu, który jest oznaczony jako podstawowy, następnie należy najpierw wymiany z lokacji dodatkowej, a następnie usuń pomocniczą po zakończeniu uaktualniania.
-
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Dodania dodatkowego certyfikatu przy użyciu programu Powershell Menedżera zasobów
+## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Dodawanie certyfikatu pomocniczego przy użyciu programu Powershell usługi Resource Manager
 > [!TIP]
-> Teraz jest lepsze i łatwiejsze w sposób dodać dodatkowego certyfikatu za pomocą [AzureRmServiceFabricClusterCertificate Dodaj](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonaj pozostałe kroki opisane w tej sekcji.  Ponadto nie trzeba pierwotnie używana do tworzenia i wdrażania klastra przy użyciu szablonu [AzureRmServiceFabricClusterCertificate Dodaj](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet.
+> Teraz jest lepsze i łatwiejsze w sposób dodać certyfikat pomocniczy przy użyciu [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonać pozostałe kroki w tej sekcji.  Ponadto nie trzeba szablonu pierwotnie używana do tworzenia i wdrażania klastra, korzystając z [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet.
 
-Tych krokach przyjęto założenie, zapoznali się z działania Menedżera zasobów i zostaną wdrożone co najmniej jeden klaster sieci szkieletowej usług za pomocą szablonu usługi Resource Manager i szablon, który został użyty do skonfigurowania klastra pod ręką. Zakłada się również, że masz doświadczenia, za pomocą formatu JSON.
+Tej procedury przyjęto są zaznajomieni z działaniem Menedżera zasobów i zostaną wdrożone co najmniej jeden klaster usługi Service Fabric przy użyciu szablonu usługi Resource Manager i szablon, którego użyto do skonfigurowania klastra w wygodny. Zakłada również, czy masz doświadczenia, przy użyciu formatu JSON.
 
 > [!NOTE]
-> Jeśli szukasz przykładowy szablon i parametrów, które można wykonać wzdłuż lub jako punkt początkowy, następnie pobierz go z tego [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Jeśli szukasz przykładowy szablon i parametry, które można użyć do wykonania wzdłuż lub jako punktu wyjścia, pobierz go z tego [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
 > 
 > 
 
-### <a name="edit-your-resource-manager-template"></a>Edytuj szablon Menedżera zasobów
+### <a name="edit-your-resource-manager-template"></a>Edytuj szablon usługi Resource Manager
 
-W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Secure_Step2.JSON zawiera wszystkie wprowadzamy zmiany. przykład jest dostępny w [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+W celu ułatwienia następujące wzdłuż przykładowe 5-VM-1 — elementy NodeType — Secure_Step2.JSON zawiera wszystkie zmiany, które wprowadzamy. przykład znajduje się w temacie [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
 
 **Upewnij się, że wszystkie kroki**
 
-1. Otwórz szablon usługi Resource Manager można używać do wdrażania należy klastra. (Jeśli pobrano próbki z poprzednim repozytorium, następnie użyj 5-VM-1-elementów NodeType-Secure_Step1.JSON, aby wdrożyć klaster bezpiecznego i następnie otwarcia tego szablonu).
+1. Otwórz szablon usługi Resource Manager został użyty do wdrożenia możesz klastra. (Jeśli zostały pobrane próbki z poprzednim repozytorium, następnie wdrażanie zabezpieczonego klastra, korzystając z 5-VM-1-elementy NodeType-Secure_Step1.JSON i następnie otworzyć tego szablonu).
 
-2. Dodaj **dwa nowe parametry** "secCertificateThumbprint" i "secCertificateUrlValue" z typu "string" w sekcji parametrów szablonu. Można skopiować poniższy fragment kodu i dodaj go do szablonu. W zależności od źródła do szablonu może już istnieć te zdefiniowane, jeśli więc Przenieś do następnego kroku. 
+2. Dodaj **dwa nowe parametry** "secCertificateThumbprint" i "secCertificateUrlValue" dla typu "string", do sekcji parametrów szablonu. Można skopiować poniższy fragment kodu i dodaj go do szablonu. W zależności od źródła do szablonu może już istnieć są zdefiniowane, jeśli więc Przenieś do następnego kroku. 
  
     ```json
        "secCertificateThumbprint": {
@@ -83,7 +80,7 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
     
     ```
 
-3. Wprowadzanie zmian do **Microsoft.ServiceFabric/clusters** zasobu, zlokalizować definicji zasobu "Microsoft.ServiceFabric/clusters" w szablonie. We właściwościach tej definicji, można znaleźć "Certyfikatu" JSON tagu, który powinien być podobny do następującego fragmentu kodu JSON:
+3. Wprowadzanie zmian w **Microsoft.ServiceFabric/clusters** zasób — Znajdź definicję zasobu "Microsoft.ServiceFabric/clusters" w szablonie. W obszarze właściwości tej definicji, można znaleźć "Certificate" JSON znacznik, który powinien wyglądać podobnie do następującego fragmentu kodu JSON:
    
     ```JSON
           "properties": {
@@ -93,9 +90,9 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
          }
     ``` 
 
-    Dodaj nowy znacznik "thumbprintSecondary" i nadaj mu wartość "[parameters('secCertificateThumbprint')]".  
+    Dodaj nowy tag "thumbprintSecondary" i nadaj mu wartość "[parameters('secCertificateThumbprint')]".  
 
-    Tak, teraz definicji zasobu powinna wyglądać następująco (w zależności od źródła szablonu, może nie być dokładnie takie same jak poniższy fragment). 
+    Teraz w definicji zasobu powinna wyglądać podobnie do następującej (w zależności od źródła szablonu może nie być tak samo jak poniższy fragment kodu). 
 
     ```JSON
           "properties": {
@@ -106,7 +103,7 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
          }
     ``` 
 
-    Jeśli chcesz **przerzucane cert**, określ nowego certyfikatu jako podstawowego i przenoszenie bieżącej podstawowej pomocniczym. W efekcie Przerzucanie bieżącego certyfikatu podstawowego do nowego świadectwa w jednym kroku wdrożenia.
+    Jeśli chcesz **przechodzą cert**, a następnie określ nowy certyfikat główny i przeniesienie bieżącego podstawowego pomocniczym. Skutkuje to przerzucania bieżącego certyfikatu podstawowego na nowy certyfikat w jednym kroku wdrażania.
     
     ```JSON
           "properties": {
@@ -117,9 +114,9 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
          }
     ``` 
 
-4. Wprowadzanie zmian do **wszystkie** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź Microsoft.Compute/virtualMachineScaleSets definicji zasobu. Przewiń do "publisher": "Microsoft.Azure.ServiceFabric", w obszarze "virtualMachineProfile".
+4. Wprowadzanie zmian w **wszystkich** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź definicję zasobu Microsoft.Compute/virtualMachineScaleSets. Przewiń do "publisher": "Microsoft.Azure.ServiceFabric" w obszarze "virtualMachineProfile".
 
-    W ustawieniach wydawcy sieci szkieletowej usług powinny zostać wyświetlone informacje podobne.
+    W ustawieniach wydawcy usługi Service Fabric powinien zostać wyświetlony podobny do poniższego.
     
     ![Json_Pub_Setting1][Json_Pub_Setting1]
     
@@ -134,11 +131,11 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
     
     ```
 
-    Właściwości powinna wyglądać tak jak to
+    Właściwości powinny teraz wyglądać następująco
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    Jeśli chcesz **przerzucane cert**, określ nowego certyfikatu jako podstawowego i przenoszenie bieżącej podstawowej pomocniczym. W efekcie Przerzucanie bieżącego certyfikatu do nowego świadectwa w jednym kroku wdrożenia.     
+    Jeśli chcesz **przechodzą cert**, a następnie określ nowy certyfikat główny i przeniesienie bieżącego podstawowego pomocniczym. Skutkuje to przerzucania bieżącego certyfikatu na nowy certyfikat w jednym kroku wdrażania.     
 
     ```json
                    "certificate": {
@@ -152,14 +149,14 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
                       },
     ```
 
-    Właściwości powinna wyglądać tak jak to    
+    Właściwości powinny teraz wyglądać następująco    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. Wprowadzanie zmian do **wszystkie** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź Microsoft.Compute/virtualMachineScaleSets definicji zasobu. Przewiń do "vaultCertificates":, w obszarze "OSProfile". powinien on wyglądać następująco.
+5. Wprowadzanie zmian w **wszystkich** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź definicję zasobu Microsoft.Compute/virtualMachineScaleSets. Przewiń do "vaultCertificates":, w obszarze "OSProfile". powinno to wyglądać mniej więcej tak.
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
-    Dodaj secCertificateUrlValue do niej. Użyj następującego fragmentu kodu:
+    SecCertificateUrlValue należy dodać do niego. Użyj następującego fragmentu kodu:
     
     ```json
                       {
@@ -168,19 +165,19 @@ W celu ułatwienia następujące wzdłuż próbki 5-VM-1-elementów NodeType-Sec
                       }
     
     ```
-    Teraz wynikowy Json powinien wyglądać następująco.
+    Wynikowy Json powinien wyglądać mniej więcej następująco.
     ![Json_Pub_Setting5][Json_Pub_Setting5]
 
 
 > [!NOTE]
-> Upewnij się, że zostało wpisane kroki 4 i 5, wszystkie definicje zasobów Nodetypes/Microsoft.Compute/virtualMachineScaleSets szablonu. Jeśli pominiesz jeden z nich, certyfikat zostanie zainstalować na czy zestawu skalowania maszyn wirtualnych i może spowodować nieprzewidywalne skutki w klastrze, w tym klastrze przechodzi w dół (Jeśli na końcu nie prawidłowe certyfikaty, które klaster może używać zabezpieczeń. Dlatego dwukrotnie wyboru przed kontynuacją.
+> Upewnij się, że zostało wpisane kroki 4 i 5, dla wszystkich definicji zasobu Nodetypes/Microsoft.Compute/virtualMachineScaleSets szablonu. Jeśli pominiesz jeden z nich certyfikat będzie zainstalować na czy zestawu skalowania maszyn wirtualnych i może spowodować nieprzewidywalne skutki w klastrze, w tym klastrze, przechodząc w dół (Jeśli na końcu nie ważne certyfikaty, które klaster może używać zabezpieczeń. Dlatego Sprawdź, przed kontynuowaniem.
 > 
 > 
 
-### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Edytowanie pliku szablonu, aby uwzględnić nowe parametry dodanych powyżej
-Jeśli używasz próbki z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) aby z niego skorzystać, można uruchomić wprowadzić zmiany w próbki 5-VM-1-elementów NodeType — Secure.paramters_Step2.JSON 
+### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Edytuj plik szablonu, aby odzwierciedlić nowe parametry, z którą dodałeś powyżej
+Jeśli używasz próbkę z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) z nich skorzystać, można uruchomić do wprowadzania zmian w przykładowe 5-VM-1 — elementy NodeType — Secure.paramters_Step2.JSON 
 
-Przeprowadź edycję pliku parametru szablonu usługi Resource Manager, dodaj dwa nowe parametry secCertificateThumbprint i secCertificateUrlValue. 
+Edycja parametru szablonu usługi Resource Manager pliku i dodaj dwa nowe parametry secCertificateThumbprint i secCertificateUrlValue. 
 
 ```JSON
     "secCertificateThumbprint": {
@@ -194,8 +191,8 @@ Przeprowadź edycję pliku parametru szablonu usługi Resource Manager, dodaj dw
 
 ### <a name="deploy-the-template-to-azure"></a>Wdrażanie szablonu na platformie Azure
 
-- Teraz można przystąpić do wdrażania szablonu Azure. Otwórz wiersz polecenia w wersji 1 + Azure PS.
-- Zaloguj się do konta platformy Azure i wybierz określoną subskrypcję platformy azure. Jest to ważny krok do pracowników, którzy mają dostęp do więcej niż jedną subskrypcją platformy azure.
+- Teraz można przystąpić do wdrażania szablonu na platformie Azure. Otwórz wiersz polecenia w wersji 1 + PS platformy Azure.
+- Zaloguj się do konta platformy Azure, a następnie wybierz określoną subskrypcję platformy azure. Jest to ważny krok dla osób, które mają dostęp do więcej niż jedną subskrypcję platformy azure.
 
 ```powershell
 Connect-AzureRmAccount
@@ -203,17 +200,17 @@ Select-AzureRmSubscription -SubscriptionId <Subcription ID>
 
 ```
 
-Przetestuj szablon przed jego wdrożeniem. Użyj tej samej grupie zasobów, który obecnie jest wdrożony klastra.
+Testuj szablon przed jego wdrożeniem. Użyj tej samej grupie zasobów, który aktualnie jest wdrażany klaster.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Wdrażanie szablonu w danej grupie zasobów. Użyj tej samej grupie zasobów, który obecnie jest wdrożony klastra. Uruchom polecenie New-AzureRmResourceGroupDeployment. Nie trzeba określać trybu, ponieważ wartość domyślna to **przyrostowe**.
+Wdróż szablon do grupy zasobów. Użyj tej samej grupie zasobów, który aktualnie jest wdrażany klaster. Uruchom polecenie New-AzureRmResourceGroupDeployment. Nie trzeba określić tryb, ponieważ wartość domyślna to **przyrostowe**.
 
 > [!NOTE]
-> Jeśli tryb jest zakończone, możesz usunąć przypadkowo zasobów, które nie znajdują się w szablonie. Dlatego nie jest używana w tym scenariuszu.
+> Jeśli tryb jest zakończone, możesz przypadkowo usunąć zasoby, które nie są w szablonie. Dlatego nie jest używana w tym scenariuszu.
 > 
 > 
 
@@ -221,7 +218,7 @@ Wdrażanie szablonu w danej grupie zasobów. Użyj tej samej grupie zasobów, kt
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Oto wypełnionego przykład tego samego środowiska powershell.
+Oto przykład wypełnionego tego samego narzędzia.
 
 ```powershell
 $ResouceGroup2 = "chackosecure5"
@@ -232,9 +229,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-Po zakończeniu wdrażania należy połączyć się z klastrem przy użyciu nowego certyfikatu i wykonywania niektórych zapytań. Jeśli można zrobić. Następnie można usunąć starego certyfikatu. 
+Po zakończeniu wdrożenia połączenia z klastrem przy użyciu nowego certyfikatu i wykonywania zapytań. Jeśli jest to możliwe zrobić. Następnie można usunąć starego certyfikatu. 
 
-Jeśli używasz certyfikatu z podpisem własnym, pamiętaj je zaimportować do magazynu certyfikatów TrustedPeople lokalnego.
+Jeśli używasz certyfikatu z podpisem własnym, pamiętaj je zaimportować do magazynu lokalnego certyfikatu TrustedPeople.
 
 ```powershell
 ######## Set up the certs on your local box
@@ -242,7 +239,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-Dla wygody Oto polecenia do nawiązania bezpiecznego klastra 
+Jako podręczna karta informacyjna Oto polecenie, aby nawiązać połączenie z zabezpieczonym klastrem 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -256,7 +253,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-Dla wygody Oto polecenie, aby pobrać stan klastra
+Jako podręczna karta informacyjna Oto polecenie, aby pobrać stan klastra
 
 ```powershell
 Get-ServiceFabricClusterHealth 
@@ -264,38 +261,37 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="deploying-application-certificates-to-the-cluster"></a>Wdrażanie certyfikatów aplikacji do klastra.
 
-Te same kroki można użyć w sposób opisany w poprzedzających kroki 5 mają certyfikaty wdrożone z keyvault do węzłów. Możesz po prostu należy zdefiniować i użyć innych parametrów.
+Umożliwia te same czynności co zostało opisane w poprzednim kroki 5 mają certyfikaty wdrożone z magazynu kluczy do węzłów. Możesz po prostu należy zdefiniować i użyć innych parametrów.
 
 
 ## <a name="adding-or-removing-client-certificates"></a>Dodanie lub usunięcie certyfikatów klienta
 
-Poza certyfikatami z klastra można dodawać certyfikatów klienta do wykonywania operacji zarządzania w klastrze usługi sieć szkieletowa usług.
+Oprócz certyfikatów klastra można dodać certyfikatów klienta do wykonywania operacji zarządzania w klastrze usługi Service Fabric.
 
-Możesz dodać dwa rodzaje certyfikatów klienta — administratora lub w trybie tylko do odczytu. Następnie mogą one być używane do kontrolowania dostępu do operacji zapytania w klastrze i operacje administracyjne. Domyślnie certyfikaty klastra zostaną dodane do listy dozwolonych certyfikatów administratora.
+Możesz dodać dwa rodzaje certyfikatami klienta - Admin lub tylko do odczytu. Są następnie może służyć do kontrolowania dostępu do operacje administracyjne i operacje zapytań w klastrze. Domyślnie certyfikaty klastra są dodawane do listy dozwolonych certyfikatów administratora.
 
-można określić dowolną liczbę certyfikatów klienta. Każdy dodanie/usunięcie powoduje aktualizacji konfiguracji klastra sieci szkieletowej usług
+można określić dowolną liczbę certyfikatów klienta. Każdego dodawania/usuwania nie powoduje aktualizacji konfiguracji w klastrze usługi Service Fabric
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Dodawanie certyfikatów klienta — administratora lub w trybie tylko do odczytu za pomocą portalu
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Dodawanie certyfikatów klienta — administratora lub tylko do odczytu za pomocą portalu
 
-1. Przejdź do sekcji zabezpieczeń, a następnie wybierz pozycję "+ uwierzytelniania" przycisk u góry sekcji zabezpieczeń.
-2. W sekcji "Dodaj uwierzytelniania" Wybierz "Typ uwierzytelniania" - "Tylko do odczytu" lub "Admin klienta"
-3. Teraz wybierz metodę autoryzacji. Wskazuje sieci szkieletowej usług czy powinna wyszukiwać ten certyfikat za pomocą nazwy podmiotu lub odcisku palca. Ogólnie rzecz biorąc nie jest dobrą praktyką przy użyciu metody autoryzacji nazwy podmiotu. 
+1. Przejdź do sekcji Zabezpieczenia, a następnie wybierz pozycję "+ uwierzytelniania" przycisk na górze sekcji Zabezpieczenia.
+2. W sekcji "Dodawanie uwierzytelniania" Wybierz "Typ uwierzytelniania" - "Tylko do odczytu" lub "Administrator klienta"
+3. Teraz można wybrać metody autoryzacji. Oznacza to, do usługi Service Fabric czy powinna wyszukiwać ten certyfikat za pomocą nazwy podmiotu lub odcisku palca. Ogólnie rzecz biorąc nie jest dobrą praktyką, należy użyć metody autoryzacji nazwy podmiotu. 
 
-![Dodawanie certyfikatu klienta][Add_Client_Cert]
+![Dodaj certyfikat klienta][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Usunięcie certyfikatów klienta — administratora lub tylko do odczytu za pomocą portalu
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Usuwanie certyfikatów klienta — administrator lub tylko do odczytu przy użyciu portalu
 
-Aby usunąć dodatkowego certyfikatu z używany do zabezpieczenia klastra, przejdź do sekcji Zabezpieczenia i zaznacz opcję "Delete" z menu kontekstowego na określonego certyfikatu.
+Aby usunąć certyfikat pomocniczy używany do zabezpieczania klastra, przejdź do sekcji Zabezpieczenia, a następnie wybierz opcję "Usuń" z menu kontekstowe dla określonego certyfikatu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj następujące artykuły, aby uzyskać więcej informacji na temat zarządzania klastrem:
 
-* [Proces uaktualniania klastra sieci szkieletowej usług oraz oczekiwań od użytkownika](service-fabric-cluster-upgrade.md)
-* [Ustawienia dostępu opartego na rolach dla klientów](service-fabric-cluster-security-roles.md)
+* [Proces uaktualniania klastra usługi Service Fabric i oczekiwania ze strony użytkownika](service-fabric-cluster-upgrade.md)
+* [Konfigurowanie dostępu opartej na rolach dla klientów](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Delete_Swap_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_09.PNG
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG

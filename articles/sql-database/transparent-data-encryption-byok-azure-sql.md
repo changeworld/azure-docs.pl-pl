@@ -17,16 +17,16 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 4a2f751c55a3bd386c6a984a3b5a16a24166f90c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: d3e8d34599600512a1d9d0308c0d6014691bf519
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043904"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442726"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Transparent Data Encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database i Data Warehouse
 
-Bring Your Own Key (BYOK), obsługa [Transparent Data Encryption (TDE)] ((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) umożliwia zaszyfrowanie klucza szyfrowania bazy danych (DEK) przy użyciu klucza asymetrycznego, nazywane ochrony TDE.  Funkcja ochrony TDE znajduje się pod kontrolą w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Usługa Azure Key Vault to pierwsze Usługa zarządzania kluczami, za pomocą którego TDE została zintegrowana obsługa dla funkcji BYOK. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych zostaje zaszyfrowany i odszyfrować za pomocą funkcji ochrony TDE. Funkcja ochrony TDE jest przechowywany w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy. Odwołania dostępu do magazynu kluczy z serwera bazy danych nie można odszyfrować i odczytu do pamięci.  Funkcja ochrony TDE jest ustawiona na poziomie serwera logicznego i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. 
+Bring Your Own Key (BYOK), obsługa [przezroczystego szyfrowania danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) umożliwia zaszyfrowanie klucza szyfrowania bazy danych (DEK) przy użyciu klucza asymetrycznego, nazywane ochrony TDE.  Funkcja ochrony TDE znajduje się pod kontrolą w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Usługa Azure Key Vault to pierwsze Usługa zarządzania kluczami, za pomocą którego TDE została zintegrowana obsługa dla funkcji BYOK. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych zostaje zaszyfrowany i odszyfrować za pomocą funkcji ochrony TDE. Funkcja ochrony TDE jest przechowywany w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy. Odwołania dostępu do magazynu kluczy z serwera bazy danych nie można odszyfrować i odczytu do pamięci.  Funkcja ochrony TDE jest ustawiona na poziomie serwera logicznego i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. 
 
 Z obsługą funkcji BYOK użytkownicy mogą teraz kontrolować zadania zarządzania kluczami, w tym wymiany kluczy, uprawnień usługi key vault, usuwanie kluczy i Włącz inspekcję/raportowanie na wszystkie funkcje ochrony TDE, za pomocą funkcji usługi Azure Key Vault. Usługa Key Vault umożliwia centralne zarządzanie kluczami, wykorzystuje ściśle monitorowanych sprzętowych modułach zabezpieczeń (HSM) i umożliwia rozdzielenie obowiązków między zarządzanie kluczami i danych może zapewnić zgodność z przepisami.  
 

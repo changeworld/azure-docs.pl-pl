@@ -5,24 +5,28 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3dd90fc862e64812c0ba17bef74818d18788f4b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a2855ca5dbb76d3fcc30c4b1007c20bb48c91c9b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440992"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056038"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importowanie pliku programu Power BI Desktop
 
 Model danych w pliku programu Power BI Desktop (pbix) można zaimportować do usługi Azure Analysis Services. Metadane modelu danych w pamięci podręcznej i połączenia źródła danych są importowane. Raporty i wizualizacje nie są importowane. Zaimportowane dane, które są modele z programu Power BI Desktop, na poziomie zgodności 1400.
 
 **Ograniczenia**   
-- Pbix model mogą łączyć się z **usługi Azure SQL Database** i **Azure SQL Data Warehouse** tylko źródła danych. 
+
+- Importowanie pliku pbix używa funkcji projektanta internetowego w portalu, który jest **Podgląd**. Funkcja jest ograniczona. Dla bardziej zaawansowanych modeli programowania i testowania najlepiej jest używać programu Visual Studio (SSDT) i SQL Server Management Studio (SSMS).
+- Musi mieć uprawnienia administratora serwera, aby zaimportować z pliku pbix.
+- Pbix model mogą łączyć się z **usługi Azure SQL Database** i **Azure SQL Data Warehouse** tylko źródła danych.
 - Pbix model nie może mieć na żywo lub zapytania bezpośredniego połączenia. 
 - Import może zakończyć się niepowodzeniem, jeśli model danych plik pbix zawiera metadane, które nie są obsługiwane w usługach Analysis Services.
+
 
 ## <a name="to-import-from-pbix"></a>Aby zaimportować z pliku pbix
 
@@ -41,6 +45,27 @@ Model danych w pliku programu Power BI Desktop (pbix) można zaimportować do us
 4. W **importu**Znajdź i wybierz swój plik.
 
      ![Łączenie z okna dialogowego w witrynie Azure portal](./media/analysis-services-import-pbix/aas-import-pbix-select-file.png)
+
+## <a name="change-credentials"></a>Zmienianie poświadczeń
+
+Po zaimportowaniu modelu danych z pliku pbix, domyślnie, poświadczenia używane do połączenia ze źródłem danych można ustawić ServiceAccount. Po zaimportowaniu modelu z pliku pbix można zmienić poświadczenia, za pomocą następujących metod:
+
+- Użyj lipca 2018 r. (wersja 17.8.1) lub nowsza wersja programu SSMS do edytowania poświadczeń. Jest to najprostszy sposób.
+- Użyj TMSL [polecenia Alter](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/alter-command-tmsl) na [obiektu źródła danych](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/datasources-object-tmsl) zmodyfikować właściwość parametrów połączenia. 
+- Otwórz model w programie Visual Studio, Edytuj poświadczenia dla połączenia źródła danych i ponownie Wdróż model.
+
+Aby zmienić poświadczenia przy użyciu programu SSMS. 
+
+1. W programie SSMS, rozwiń węzeł bazy danych > **połączeń**. 
+2. Kliknij prawym przyciskiem myszy połączenie z bazą danych, a następnie kliknij przycisk **odświeżyć poświadczenia**. 
+
+    ![Odśwież poświadczenia](./media/analysis-services-import-pbix/aas-import-pbix-creds.png)
+
+3. W oknie dialogowym poświadczeń wybierz typ poświadczenia, a następnie wprowadź poświadczenia. Uwierzytelnienie SQL wybierz bazę danych. Konto organizacji (OAuth) wybierz konto Microsoft.
+    ![Edytuj poświadczenia](./media/analysis-services-import-pbix/aas-import-pbix-edit-creds.png)
+
+Lipca 2018 r. wersję programu Power BI Desktop zawiera nową funkcję dla zmiany uprawnień źródła danych. Na **Home** kliknij pozycję **Edytuj zapytania**  > **ustawienia źródła danych**. Wybierz połączenie źródła danych, a następnie kliknij przycisk **Edytuj uprawnienia**.
+
 
 ## <a name="see-also"></a>Zobacz także
 

@@ -7,26 +7,29 @@ author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights
-ms.workload: tbd
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
-ms.author: mbullwin; daviste
-ms.openlocfilehash: 77ed0b5809a1da4629b80f65d1a27da2a2758236
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 17303186b176c6d14b1c895d17d21c0f29cdcdcf
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441793"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analizowanie trendów w programie Visual Studio
-Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważne zdarzenia telemetrii aplikacji sieci Web zmieniają się z upływem czasu, co ułatwia szybkie identyfikowanie problemów i anomalii. Łącząc Cię z bardziej szczegółowymi informacjami diagnostycznymi, narzędzie Trendy może ułatwić zwiększenie wydajności aplikacji, śledzenie przyczyn wyjątków oraz odkrywanie szczegółowych danych w zdarzeniach niestandardowych.
+Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważne zdarzenia telemetrii aplikacji internetowej zmieniają się z upływem czasu, co ułatwia szybkie identyfikowanie problemów i anomalii. Łącząc Cię z bardziej szczegółowymi informacjami diagnostycznymi, narzędzie Trendy może ułatwić zwiększenie wydajności aplikacji, śledzenie przyczyn wyjątków oraz odkrywanie szczegółowych danych w zdarzeniach niestandardowych.
 
 ![Przykładowe okno narzędzia Trendy](./media/app-insights-visual-studio-trends/app-insights-trends-hero-750.png)
 
-## <a name="configure-your-web-app-for-application-insights"></a>Konfigurowanie aplikacji sieci Web na potrzeby usługi Application Insights
+## <a name="configure-your-web-app-for-application-insights"></a>Konfigurowanie aplikacji internetowej na potrzeby usługi Application Insights
 
-Jeśli nie zostało to jeszcze zrobione, [skonfiguruj swoją aplikację sieci Web na potrzeby usługi Application Insights](app-insights-overview.md). Dzięki temu będzie można wysyłać dane telemetryczne do portalu usługi Application Insights. Narzędzie Trendy odczytuje dane telemetryczne z tego miejsca.
+Jeśli nie zostało to jeszcze zrobione, [skonfiguruj swoją aplikację internetową na potrzeby usługi Application Insights](app-insights-overview.md). Dzięki temu będzie można wysyłać dane telemetryczne do portalu usługi Application Insights. Narzędzie Trendy odczytuje dane telemetryczne z tego miejsca.
 
 Narzędzie Trendy usługi Application Insights jest dostępne w programie Visual Studio 2015 Update 3 i nowszych wersjach.
 
@@ -57,7 +60,7 @@ Narzędzie Trendy usługi Application Insights tworzy wizualizację szeregu czas
 
 Aby dostosować wyświetlane typy telemetrii, użyj kontrolek w górnej części okna. Najpierw wybierz interesujące Cię typy telemetrii:
 
-* **Typ danych telemetrycznych** -żądań serwera, wyjątków, zależności lub zdarzeń niestandardowych
+* **Typ telemetrii** — żądania serwera, wyjątki, zależności lub zdarzenia niestandardowe
 * **Zakres czasu** — dowolny zakres od ostatnich 30 minut do ostatnich 3 dni
 * **Grupuj według** — typ wyjątku, identyfikator problemu, kraj/region itd.
 

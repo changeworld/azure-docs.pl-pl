@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358838"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056294"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
-> Otrzymaj powiadomienie o tym, kiedy Odwiedzaj tę stronę w celu aktualizacji subskrybując [ ![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [kanału informacyjnego](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us).
+>Otrzymaj powiadomienie o tym, kiedy Odwiedzaj tę stronę w celu aktualizacji, dodając następujący kod [adresu URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) do Twojej ![ikonę RSS Widoczną](./media/whats-new/feed-icon-16x16.png) czytnik źródła.
 
 Usługa Azure AD odbiera ulepszenia w sposób ciągły. Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
 
@@ -39,7 +39,25 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie.
 
 ## <a name="july-2018"></a>Lipiec 2018 r.
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Ulepszenia powiadomień e-mail w usłudze Azure Active Directory
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Zmiany do zakresów adresów adresów IP platformy Azure Active Directory
+
+**Typ:** Planowanie zmian  
+**Kategoria usług:** innych  
+**Możliwości produktu:** platformy
+
+Wprowadzamy większych zakresów adresów IP do usługi Azure AD, co oznacza, że jeśli skonfigurowano zakresów adresów IP usługi AD platformy Azure dla zapory, routery lub grupy zabezpieczeń sieci, należy je zaktualizować. Wprowadzamy aktualizację, dzięki czemu nie trzeba ponownie zmienić zapory, router lub konfiguracje zakresu adresów IP z grup zabezpieczeń sieci, gdy usługa Azure AD dodaje nowe punkty końcowe. 
+
+Ruch sieciowy przechodzi do tych nowych zakresów w ciągu następnych dwóch miesięcy. Aby kontynuować nieprzerwane działanie usług, należy dodać te zaktualizowane wartości do adresów IP przed 10 września 2018 r.:
+
+- 20.190.128.0/18 
+
+- 40.126.0.0/18 
+
+Zdecydowanie zaleca się nie usuwa starych zakresów adresów IP, dopóki wszystkie ruchu sieciowego została przeniesiona do nowego zakresu. Aktualizacje dotyczące przenoszenia i dowiedzieć się, usunięcie starych zakresów, zobacz [URL usługi Office 365 i zakresy adresów IP](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+
+---
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Udoskonalenia powiadomień e-mail w usłudze Azure Active Directory
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** innych  
@@ -63,7 +81,7 @@ Na przykład niektóre nowe projekty poczty e-mail i więcej informacji, zobacz 
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności w usłudze Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności usługi Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -81,7 +99,7 @@ Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzien
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodany do raportów logowania usługi Azure AD
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodane do raportu operacji logowania usługi Azure AD
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -91,7 +109,7 @@ Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik l
 
 ---
 
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Wyświetlanie starszych metod uwierzytelniania za pomocą dzienników aktywności logowań
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Wyświetlanie starszych uwierzytelnień za pomocą dzienników aktywności logowań
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -101,7 +119,7 @@ Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logow
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipca 2018 r.
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipiec 2018
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -115,7 +133,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nowy użytkownik inicjowania obsługi administracyjnej integracji aplikacji SaaS — lipca 2018 r.
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Integracje aplikacji SaaS służące do aprowizacji nowych użytkowników — lipiec 2018
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** Aprowizację aplikacji  
@@ -133,7 +151,7 @@ Aby uzyskać listę wszystkich aplikacji, które obsługują aprowizowania użyt
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health do celów synchronizacji — łatwiejszy sposób naprawić błędy synchronizacji oddzielone i zduplikowanego atrybutu
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync — prostszy sposób naprawiania błędów synchronizacji związanych z osieroconymi lub zduplikowanymi atrybutami
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** AD Connect  
@@ -151,7 +169,7 @@ Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie błędó
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Visual aktualizacji do usługi Azure AD i logowania konta Microsoft napotyka
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Aktualizacje wizualne w środowiskach logowania usługi Azure AD i MSA.
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** usługi Azure AD  
@@ -161,7 +179,7 @@ Zaktualizowaliśmy interfejs użytkownika dla usług online firmy Microsoft śro
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipca 2018 r.
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipiec 2018
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** Aprowizację aplikacji  
@@ -179,7 +197,7 @@ Aby uzyskać więcej informacji na temat tej aktualizacji, zobacz [program Azure
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje do Interfejsu użytkownika końcowego warunków użytkowania (ToU)
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje interfejsu użytkownika końcowego warunków użytkowania
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** warunki użytkowania  
@@ -213,7 +231,7 @@ Uwierzytelnianie przekazywane teraz obsługuje starszych protokołów i aplikacj
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zabezpieczeniami konwergentnej informacje samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zbieżnymi informacjami zabezpieczającymi na potrzeby samoobsługowego resetowania hasła i uwierzytelniania wieloskładnikowego
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
@@ -227,7 +245,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator do zweryfikowania Twojej tożsamości podczas resetowania hasła
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator w celu weryfikowania swojej tożsamości podczas resetowania hasła
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
@@ -419,7 +437,7 @@ Jeśli musisz nadal używać dedykowanego obwodów, konieczne będzie komunikowa
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Interfejsy API programu Graph firmy Microsoft dla scenariuszy administracyjnych dla warunków użytkowania
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Interfejsy API programu Microsoft Graph dla administracyjnych scenariuszy dotyczących warunków użytkowania
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** warunki użytkowania  
@@ -497,7 +515,7 @@ Dzienniki aktywności usługi AD platformy Azure, co obejmuje dzienniki inspekcj
 
 ---
  
-### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>Ulepszenia środowiska akceptowania w modelu B2B i możliwość opuszczania organizacji
+### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>Ulepszenia środowiska realizacji B2B i pozostawienie organizacji
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** B2B  
@@ -511,7 +529,7 @@ Dzienniki aktywności usługi AD platformy Azure, co obejmuje dzienniki inspekcj
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — maj 2018 r.
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — maj 2018
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -549,13 +567,13 @@ Problem ze znalezieniem informacji aplikacji / jednostki usług? Dodaliśmy moż
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>May wersji AADConnect zawiera publiczną wersję zapoznawczą integracji z serwerem PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek usterek i nowe great nowych narzędzi do rozwiązywania problemów. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Majowe wydanie programu AADConnect zawiera publiczną wersję zapoznawczą integracji z aplikacją PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek błędów i nowe, bardzo użyteczne narzędzia do rozwiązywania problemów. 
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** AD Connect  
 **Możliwości produktu:** Zarządzanie cyklem życia tożsamości
  
-May wersji AADConnect zawiera publiczną wersję zapoznawczą integracji z serwerem PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek usterek i nowe great nowych narzędzi do rozwiązywania problemów. Można znaleźć informacje o wersji [tutaj](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+Majowe wydanie programu AADConnect zawiera publiczną wersję zapoznawczą integracji z aplikacją PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek błędów i nowe, bardzo użyteczne narzędzia do rozwiązywania problemów. Można znaleźć informacje o wersji [tutaj](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
 
 ---
 
@@ -795,7 +813,7 @@ Dowiedz się więcej w naszym [wpis w blogu](https://cloudblogs.microsoft.com/en
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Konfigurowanie dostępu warunkowego opartego na aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Konfigurowanie dostępu warunkowego opartego na aplikacji](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 - [Konfigurowanie zasad programu managed browser](https://aka.ms/managedbrowser)  
 
@@ -1155,7 +1173,7 @@ Następujące aplikacje zostaną dodane do końca lutego:
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1447,13 +1465,13 @@ Aby uzyskać więcej informacji, zobacz [dostęp warunkowy w usłudze Azure AD](
 
 Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
-- [Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
+- [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1491,9 +1509,9 @@ Aby uzyskać więcej informacji, zobacz [integracji lokalnego](https://docs.micr
 **Kategoria usług:** usługi Azure AD  
 **Możliwości produktu:** tożsamość, zabezpieczenia i ochrona
 
-Teraz można ograniczyć dostęp do usługi Office 365 i innych aplikacji połączonych AD chmury platformy Azure do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) obsługujące zasady ochrony aplikacji usługi Intune przy użyciu [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
+Teraz można ograniczyć dostęp do usługi Office 365 i innych aplikacji połączonych AD chmury platformy Azure do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) obsługujące zasady ochrony aplikacji usługi Intune przy użyciu [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
 
-Łącząc [opartego na aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) z [opartego na urządzeniach](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zasady dostępu warunkowego, masz możliwość ochrony danych osobistych i urządzeniach firmy.
+Łącząc [opartego na aplikacji](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) z [opartego na urządzeniach](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zasady dostępu warunkowego, masz możliwość ochrony danych osobistych i urządzeniach firmy.
 
 Następujące warunki i kontrolki są teraz dostępne do użycia przy użyciu dostępu warunkowego opartego na aplikacji:
 
@@ -1510,7 +1528,7 @@ Następujące warunki i kontrolki są teraz dostępne do użycia przy użyciu do
 
 - Wymagaj zatwierdzonej aplikacji klienckiej
 
-Aby uzyskać więcej informacji, zobacz [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam).
+Aby uzyskać więcej informacji, zobacz [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
  
 ---
 
@@ -1607,7 +1625,7 @@ Następujące aplikacje zostały dodane do listy [zatwierdzonych aplikacji klien
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 
 ---

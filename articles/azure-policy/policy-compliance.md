@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343556"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058254"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych zgodności
 
@@ -26,6 +26,9 @@ Istnieje kilka sposobów na dostęp do informacji o zgodności, generowane przez
 - Za pomocą [wiersza polecenia](#command_line) skryptów
 
 Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy się po zaktualizowaniu informacje o zgodności oraz częstotliwości i zdarzenia, które mogą powodować cykl oceny.
+
+> [!WARNING]
+> Jeśli stan zgodności jest zgłaszany jako **"N/d"**, upewnij się, że **Microsoft.PolicyInsights** zarejestrowaniu dostawcy zasobów i czy użytkownik ma kontroli odpowiedniego dostępu opartej na rolach (RBAC) uprawnienia, zgodnie z opisem [tutaj](azure-policy-introduction.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Wyzwalacze oceny
 

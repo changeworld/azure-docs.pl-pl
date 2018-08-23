@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 0f7b19b0848886c7a906e79d63a814fddf5ef5a6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398975"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42062108"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -67,7 +67,7 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
 1. Usuń wszystkie trasy statycznej trwałego w tabeli routingu:
    
    * Aby wyświetlić tabelę tras, uruchom `route print` w wierszu polecenia.
-   * Sprawdź **trasy trwałości** sekcje. Jeśli trasę, użyj [route delete](https://technet.microsoft.com/library/cc739598.apx) go usunąć.
+   * Sprawdź **trasy trwałości** sekcje. Jeśli trasę, użyj **route delete** polecenie, aby go usunąć.
 2. Usuwanie serwera proxy WinHTTP:
    
     ```PowerShell
@@ -90,7 +90,7 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
-    Set-Service -Name w32time -StartupType Auto
+    Set-Service -Name w32time -StartupType Automatic
     ```
 5. Ustaw profil zasilania **o wysokiej wydajności**:
 
@@ -102,17 +102,17 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
 Upewnij się, że każda z następujących usług Windows jest ustawiona na **wartości domyślne Windows**. Są to minimalne liczby usług, które należy skonfigurować, aby upewnić się, że maszyna wirtualna ma łączność. Aby zresetować ustawienia uruchamiania, uruchom następujące polecenia:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Auto
-Set-Service -Name dhcp -StartupType Auto
-Set-Service -Name dnscache -StartupType Auto
-Set-Service -Name IKEEXT -StartupType Auto
-Set-Service -Name iphlpsvc -StartupType Auto
+Set-Service -Name bfe -StartupType Automatic
+Set-Service -Name dhcp -StartupType Automatic
+Set-Service -Name dnscache -StartupType Automatic
+Set-Service -Name IKEEXT -StartupType Automatic
+Set-Service -Name iphlpsvc -StartupType Automatic
 Set-Service -Name netlogon -StartupType Manual
 Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Auto
+Set-Service -Name nsi -StartupType Automatic
 Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Auto
-Set-Service -Name RemoteRegistry -StartupType Auto
+Set-Service -Name MpsSvc -StartupType Automatic
+Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualizowanie ustawień rejestru usług pulpitu zdalnego
@@ -307,11 +307,22 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
     - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw użytkownika\odmowa logowania za pomocą usług pulpitu zdalnego
 
 
-9. Ponowne uruchomienie maszyny Wirtualnej, aby upewnić się, że Windows jest nadal działa prawidłowo, jest osiągalna przy użyciu połączenia RDP. W tym momencie możesz utworzyć Maszynę wirtualną w sieci lokalnej funkcji Hyper-V upewnij się, że maszyna wirtualna jest uruchamiana całkowite, a następnie sprawdź, czy jest dostępny protokołu RDP.
+9. Sprawdź następujące zasady usługi AD, aby upewnić się, że nie jest usuwana dowolną z następujących kont dostępu wymagana do:
 
-10. Usuń wszelkie dodatkowe filtry interfejs sterownika transportu, takiego jak oprogramowanie, które analizuje TCP pakietów lub dodatkowe zapory. Możesz również sprawdzić to na późniejszym etapie po wdrożeniu maszyny Wirtualnej na platformie Azure, jeśli to konieczne.
+    - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw Assignment\Access to obliczeń z sieci
 
-11. Odinstaluj każde inne oprogramowanie innych firm i sterownika, który jest powiązany z składniki fizyczne lub jakakolwiek inna technologia wirtualizacji.
+    Tych zasad, powinny zostać wyświetlone następujące grupy:
+
+    - Administratorzy
+    - Operatorzy kopii zapasowych
+    - Wszyscy
+    - Użytkownicy
+
+10. Ponowne uruchomienie maszyny Wirtualnej, aby upewnić się, że Windows jest nadal działa prawidłowo, jest osiągalna przy użyciu połączenia RDP. W tym momencie możesz utworzyć Maszynę wirtualną w sieci lokalnej funkcji Hyper-V upewnij się, że maszyna wirtualna jest uruchamiana całkowite, a następnie sprawdź, czy jest dostępny protokołu RDP.
+
+11. Usuń wszelkie dodatkowe filtry interfejs sterownika transportu, takiego jak oprogramowanie, które analizuje TCP pakietów lub dodatkowe zapory. Możesz również sprawdzić to na późniejszym etapie po wdrożeniu maszyny Wirtualnej na platformie Azure, jeśli to konieczne.
+
+12. Odinstaluj każde inne oprogramowanie innych firm i sterownika, który jest powiązany z składniki fizyczne lub jakakolwiek inna technologia wirtualizacji.
 
 ### <a name="install-windows-updates"></a>Instalowanie aktualizacji Windows
 Jest optymalną konfigurację **ma poziom poprawki maszyny r**. Jeśli nie jest to możliwe, upewnij się, że zainstalowano następujące aktualizacje:

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie koszt danych Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić planu cenowego i zarządzania zasadami wolumin i przechowywania danych obszaru roboczego analizy dzienników na platformie Azure.
+title: Zarządzanie kosztami danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zmienić plan taryfowy i zarządzanie zasadami ilości i przechowywania danych obszaru roboczego usługi Log Analytics na platformie Azure.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,112 +12,118 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1d797df3f03e9b92569d37495310a5c162f5f981
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3586804a8384273e5c0589bef9c586cee162939e
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130932"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055003"
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania w analizy dzienników
-Analiza dzienników jest przeznaczone do skali i pomocy technicznej zbierania, indeksowanie i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożona na platformie Azure.  Może to być podstawowy sterownik dla Twojej organizacji, niskich kosztów jest ostatecznie sterownika. W tym celu jego wziąć pod uwagę, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na ilość danych zebranych, również jest zależny od plan wybrany, i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
-W tym artykule, firma Microsoft analizuje jak aktywnego monitorowania wzrostu wielkości i magazynu danych i zdefiniować limity, aby kontrolować te koszty. 
+> [!NOTE]
+> W tym artykule opisano sposób kontrolowania kosztów w usłudze Log Analytics, ustawiając okres przechowywania danych.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
+> - [Analizowanie użycia danych w usłudze Log Analytics](log-analytics-manage-cost-storage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
+> - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
-Koszt danych mogą być znaczące w zależności od następujących czynników: 
+Usługa log Analytics została zaprojektowana do skalowania i zbieranie pomocy technicznej, indeksowanie i przechowywanie dużych ilości danych na dzień z dowolnego źródła w przedsiębiorstwie lub wdrożonych na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu, istotne jest dowiedzieć się, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na temat ilości zebranych danych, również jest zależny od wybranym planem i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
+
+W tym artykule omówimy, jak można proaktywnie monitorować wzrostu wielkości i magazynu danych i definiowania ograniczeń do kontrolowania tych powiązanych z nimi kosztów. 
+
+Koszt dane mogą być znaczące w zależności od następujących czynników: 
 
 - Liczba systemów, składników infrastruktury, zasobów w chmurze, itp., które są zbierane z 
-- Typ danych utworzonych przez źródło, takich jak kolejki komunikatów, dzienniki, zdarzenia, dane związane z zabezpieczeniami lub metryki wydajności 
-- Ilość danych wygenerowanych przez tych źródeł i pozyskanych do obszaru roboczego 
+- Typ danych utworzone przez źródła, takich jak kolejki komunikatów, dzienniki, zdarzenia, dane związane z zabezpieczeniami i metryki wydajności 
+- Ilość danych generowanych przez te źródła i pozyskane do obszaru roboczego 
 - Okresu dane są przechowywane w obszarze roboczym  
-- Liczba rozwiązań do zarządzania włączone, źródła danych i częstotliwość kolekcji 
+- Liczba rozwiązań do zarządzania włączone, źródła danych i częstotliwość zbierania 
 
 > [!NOTE]
-> Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
+> Zapoznaj się z dokumentacją dla każdego rozwiązania ponieważ umożliwia szacowanie ilości danych, które są zbierane.   
 
-Klienci z umową Enterprise podpisu przed 1 lipca 2018 lub obszar roboczy analizy dzienników kto już utworzone w ramach subskrypcji, możesz nadal mieć dostęp do *wolne* planu. Jeśli subskrypcja nie jest związana z istniejących rejestracji EA *wolne* warstwa nie jest dostępna podczas tworzenia obszaru roboczego w nową subskrypcję po 2 kwietnia 2018.  Dane są ograniczone do 7 dni przechowywania dla *wolne* warstwy.  Aby uzyskać *autonomiczny* lub *zapłacone* warstwy, dane zbierane są dostępne w ciągu ostatnich 31 dni. *Wolne* warstwa ma 500 MB dzienny limit wprowadzanie i odnalezienie stale przekracza dozwolone woluminu kwoty obszaru roboczego można zmienić na plan płatnej do zbierania danych po przekroczeniu tego limitu. 
+Klienci z umową Enterprise Agreement podpisaną przed 1 lipca 2018 r. lub twórcę już obszar roboczy usługi Log Analytics w ramach subskrypcji, możesz nadal mieć dostęp do *bezpłatna* planu. Jeśli Twoja subskrypcja nie jest związany z istniejącą rejestracją umowy EA *bezpłatna* warstwa nie jest dostępna podczas tworzenia obszaru roboczego w nowej subskrypcji po 2 kwietnia 2018 r.  Dane są ograniczone do 7 dni przechowywania dla *bezpłatna* warstwy.  Dla *autonomiczny* lub *płatnych* warstwy, zebrane dane są dostępne w ciągu ostatnich 31 dni. *Bezpłatna* warstwa ma dziennego limitu pozyskiwania 500 MB, a jeśli okaże się stale przekraczać kwoty dozwolone woluminu, można zmienić obszaru roboczego do płatnego planu, aby zbierać dane powyżej tego limitu. 
 
 > [!NOTE]
-> Opłaty za wybranie opcji wybierz dłuższy okres przechowywania dla warstwy płatną. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
+> Opłaty są naliczane, jeśli zdecydujesz wybrać dłuższy okres przechowywania danych w warstwie płatnej. Możesz zmienić typ planu w dowolnym momencie i aby uzyskać więcej informacji na temat cen, zobacz [cennik](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Istnieją takie dwa sposoby, w których ilość danych może być ograniczona i pomóc kontrolować koszty, są codziennie przechowywania danych i zakończenia.  
+Istnieją dwa sposoby, w których ilości danych może być ograniczona i pomocy kontrolowanie kosztów, są one dzienny limit i przechowywania danych.  
 
 ## <a name="review-estimated-cost"></a>Przejrzyj szacowany koszt
-Sprawia, że analiza dziennika go łatwo zrozumieć, co prawdopodobnie koszty oparte na najnowszych wzorców użycia.  Aby to zrobić, wykonaj następujące czynności.  
+Log Analytics sprawia, że ułatwiają zrozumienie, co prawdopodobnie koszty oparte na najnowszych wzorców użycia.  Aby to zrobić, wykonaj następujące czynności.  
 
 1. Zaloguj się do [Azure Portal](http://portal.azure.com). 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
-3. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie kliknij przycisk **użycia i szacowane koszty** w lewym okienku.<br><br> ![Strona szacowanych kosztów i użycia](media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+3. W okienku subskrypcji usługi Log Analytics wybierz swój obszar roboczy, a następnie kliknij przycisk **użycie i szacunkowe koszty** z okienka po lewej stronie.<br><br> ![Użycie i szacowane koszty strony](media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
 
-W tym miejscu możesz przejrzeć woluminu dane dla danego miesiąca. Dotyczy to wszystkich danych odebranych i przechowywane w obszarze roboczym analizy dzienników.  Kliknij przycisk **szczegóły użycia** w górnej części strony, aby wyświetlić pulpit nawigacyjny użycia z informacjami na temat tendencji wolumin danych przez źródło, komputery i oferty. Aby wyświetlić i ustawić dzienny limit lub zmodyfikować okres przechowywania, kliknij przycisk **Zarządzanie woluminami danych**.
+W tym miejscu możesz przejrzeć ilość danych na miesiąc. Obejmuje to wszystkie dane odebrane i przechowywane w obszarze roboczym usługi Log Analytics.  Kliknij przycisk **szczegóły użycia** w górnej części strony Aby wyświetlić pulpit nawigacyjny użycia z informacjami na temat tendencji woluminu danych źródła, komputerów i oferty. Aby wyświetlić i określić dzienny limit lub zmodyfikować okres przechowywania, kliknij przycisk **zarządzanie ilością danych**.
  
-Dziennik analizy opłaty są dodawane do rachunku platformy Azure. Można wyświetlić szczegóły Azure naliczać opłaty sekcji rozliczeń w portalu Azure lub w [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
+Log Analytics opłaty są dodawane na rachunku dotyczącym platformy Azure. Aby wyświetlić szczegóły subskrypcji platformy Azure, w sekcji rozliczeń w witrynie Azure Portal lub w przypadku płatności [portalu rozliczeń systemu Azure](https://account.windowsazure.com/Subscriptions).  
 
 ## <a name="daily-cap"></a>Dzienny limit
-Podczas tworzenia obszaru roboczego analizy dzienników z portalu Azure i wybierz *wolne* planu, ma ustawioną wartość 500 MB limitu dnia. Nie ma żadnego limitu do innych planów cenowych. Możesz skonfigurować dzienny limit i ograniczyć wprowadzanie dziennych obszaru roboczego, ale zachować ostrożność, zgodnie z celem nie powinno być trafienie dzienny limit.  W przeciwnym razie utraty danych do końca dnia, w którym może wpłynąć na innych usług platformy Azure i rozwiązań, funkcje, których może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W związku z tym możliwość obserwować i otrzymywać alerty, po wpływ na warunki kondycji zasobów Obsługa usług IT.  Dzienny limit jest przeznaczony do użycia jako sposobu zarządzania nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostać w ramach limitu lub gdy chcesz po prostu ograniczyć nieplanowane opłat obszaru roboczego.  
+Podczas tworzenia obszaru roboczego usługi Log Analytics z witryny Azure portal i wybierz *bezpłatna* planu, ustawiana jest na 500 MB dziennie, limit na. Nie ma limitu dla innych planów cenowych. Możesz skonfigurować dzienny limit i ograniczyć dziennie pozyskiwanie informacji do obszaru roboczego, ale zachować ostrożność, ponieważ cel nie powinno być osiągnięty dzienny limit.  W przeciwnym razie możesz utracić dane na pozostałą część dnia, w którym mogą mieć wpływ na inne usługi platformy Azure i rozwiązania, którego funkcja może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W rezultacie możliwość obserwowania i otrzymywać powiadamia, gdy warunki zdrowia w zasobach obsługujących usługi IT ma wpływ.  Dzienny limit jest przeznaczona do użycia jako sposób na zarządzanie nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostają w zakupionym limicie lub gdy chcesz po prostu ograniczaniu nieplanowanych opłat za obszar roboczy.  
 
-Po osiągnięciu dzienny limit kolekcję typów danych rozliczeniowy zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego analizy dzienników i zdarzenia operacji są wysyłane do *operacji* tabeli w obszarze **LogManagement** kategorii. Zbieranie danych wznawia działanie po czasie resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Zaleca się definiowania zasady alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy zostanie osiągnięty dzienny limit danych. 
+Po osiągnięciu dziennego limitu kolekcję typów danych płatnych zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego usługi Log Analytics i zdarzenie operacji są wysyłane do *operacji* tabeli w ramach **LogManagement** kategorii. Zbieranie danych wznawia działanie po podczas resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Firma Microsoft zaleca, definiując reguły alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy został osiągnięty dzienny limit danych. 
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Określenie, jakie dzienny limit danych, aby zdefiniować 
-Przegląd [dziennika analizy użycia i szacowane koszty](log-analytics-usage.md) trend wprowadzanie danych i co to jest codziennie zakończenia woluminu do definiowania. Należy rozważyć ostrożnie, ponieważ nie można monitorować zasobów, po osiągnięciu limitu. 
+### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować 
+Przegląd [użycie usługi Log Analytics i szacowane koszty](log-analytics-usage.md) , aby zrozumieć trend pozyskiwania danych i co to jest dziennego limitu woluminu w celu zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
 
-### <a name="manage-the-maximum-daily-data-volume"></a>Maksymalna ilość danych codziennego zarządzania 
-W poniższych krokach opisano sposób konfigurowania limitu do zarządzania ilość danych, które Log Analytics będzie pozyskiwania na dzień.  
+### <a name="manage-the-maximum-daily-data-volume"></a>Zarządzanie Maksymalna dzienna ilość danych 
+Poniżej opisano sposób konfigurowania limit zarządzanie ilością danych, która będzie obsługiwać usługi Log Analytics, dziennie.  
 
-1. Z obszaru roboczego wybierz **użycia i szacowane koszty** w lewym okienku.
-2. Na **użycia i szacowane koszty** dla wybranego obszaru roboczego kliknij pozycję **Zarządzanie woluminami danych** w górnej części strony. 
-5. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** aby ją włączyć, a następnie ustaw limit wolumin danych w GB/dzień.<br><br> ![Limit danych skonfiguruj analizy dzienników](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
+1. W obszarze roboczym wybierz **użycie i szacunkowe koszty** z okienka po lewej stronie.
+2. Na **użycie i szacunkowe koszty** dla wybranego obszaru roboczego strony, kliknij przycisk **zarządzanie ilością danych** w górnej części strony. 
+5. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.<br><br> ![Usługa log Analytics skonfigurować limit danych](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
-### <a name="alert-when-limit-reached"></a>Generuj alert, jeśli osiągnięto limit
-Podczas możemy przedstawić wizualnie w portalu Azure po spełnieniu Twojej próg limitu danych to zachowanie nie zawsze są wyrównane do sposób zarządzania problemami z działaniem wymagający natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, należy utworzyć nową regułę alertu w monitorze Azure.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać alerty i zarządzaj nimi](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).      
+### <a name="alert-when-limit-reached"></a>Zgłoś alert, gdy osiągnięto limit
+Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać alerty i zarządzaj nimi](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).      
 
-Aby zacząć, Oto zalecanych ustawień dla alertu:
+Aby ułatwić rozpoczęcie pracy, Oto zalecane ustawienia dla alertu:
 
-* Cel: Wybierz zasób analizy dzienników
+* Cel: Wybierz zasób usługi Log Analytics
 * Kryteria: 
-   * Nazwa sygnału: wyszukiwanie dziennika niestandardowe
-   * Zapytania wyszukiwania: operacja | gdzie szczegółów ma "OverQuota"
+   * Nazwa sygnału: przeszukiwanie dzienników niestandardowych
+   * Zapytanie wyszukiwania: operacja | których szczegóły zawiera "Przekroczenie"
    * Na podstawie: liczba wyników
    * Warunek: Większa niż
    * Próg: 0
    * Okres: 5 (w minutach)
    * Częstotliwość: 5 (w minutach)
-* Nazwa reguły alertów: Osiągnięto limit dzienny danych
-* Ważność: Ostrzeżenie (ważność: 1)
+* Nazwa reguły alertu: osiągnięto dzienny limit danych
+* Ważność: Ostrzegawczy (ważność 1)
 
-Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wywołany i wykonuje odpowiedzi zdefiniowaną w grupie akcji. Można powiadomić Twojego zespołu za pośrednictwem wiadomości e-mail i SMS lub automatyzować czynności za pomocą elementów webhook, element runbook usługi Automatyzacja lub [integracji z rozwiązaniem zewnętrzne Zarządzanie usługami IT —](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
+Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wyzwolony i wykonuje odpowiedzi zdefiniowany w grupy akcji. Powiadamiaj zespół za pośrednictwem wiadomości e-mail i SMS lub Automatyzuj akcje przy użyciu elementów webhook i runbook usługi Automation lub [integrację z zewnętrznego rozwiązaniem ITSM](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych 
-W poniższych krokach opisano sposób konfigurowania dziennika jak długo dane są przechowywane przez w obszarze roboczym.
+Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowywane w obszarze roboczym.
  
-1. Z obszaru roboczego wybierz **użycia i szacowane koszty** w lewym okienku.
-2. Na **użycia i szacowane koszty** kliknij przycisk **Zarządzanie woluminami danych** w górnej części strony.
-5. W okienku poruszając suwakiem, możesz zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli pracujesz w *wolnego* warstwy, nie można zmodyfikować okres przechowywania danych i trzeba Uaktualnij do planu płatną w celu kontrolowania tego ustawienia.<br><br> ![Zmiana ustawienia przechowywania danych obszaru roboczego](media/log-analytics-manage-cost-storage/manage-cost-change-retention-01.png)
+1. W obszarze roboczym wybierz **użycie i szacunkowe koszty** z okienka po lewej stronie.
+2. Na **użycie i szacunkowe koszty** kliknij **zarządzanie ilością danych** w górnej części strony.
+5. W okienku, przesuń suwak, aby zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli użytkownik pracuje na *bezpłatne* warstwy, nie można zmodyfikować okres przechowywania danych i należy uaktualnić do warstwy płatnej w celu kontrolowania tego ustawienia.<br><br> ![Zmiana ustawienia przechowywania danych w obszarze roboczym](media/log-analytics-manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-**Pytanie**: jak rozwiązać Jeśli analizy dzienników nie zbiera danych? 
-**Odpowiedzi**: Jeśli są na wolnych warstwy cenowej i zostały wysłane więcej niż 500 MB danych w ciągu dnia, zbieranie danych przestanie do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną analizy dzienników zatrzymuje zbieranie danych lub dane są prawdopodobnie brakuje.  
-Analiza dzienników tworzy zdarzenie typu operacji podczas zbierania danych uruchamiania i zatrzymywania.  
-W polu wyszukiwania, aby sprawdzić, czy osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: operacja | gdzie OperationCategory == "Stan zbierania danych"   
+**Pytanie**: jak rozwiązać, jeśli nie jest już usługi Log Analytics zbiera dane? 
+**Odpowiedź**: Jeśli są na bezpłatną warstwę cenową i wysłane w ciągu dnia więcej niż 500 MB danych, zbieranie danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  
+Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje.  
+Uruchom następujące zapytanie w polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i Brak danych: operacja | gdzie OperationCategory == "Stan zbierania danych"   
 Po zatrzymaniu zbierania danych OperationStatus jest ostrzeżenie. Podczas uruchamiania zbierania danych OperationStatus jest zakończyło się pomyślnie.  
-W poniższej tabeli opisano przyczyn, które zatrzymania zbierania danych i zalecaną akcję umożliwiającą wznowienie zbierania danych:  
+W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i zalecaną akcję, aby wznowić zbieranie danych:  
 
-|Zatrzymuje Przyczyna kolekcji| Rozwiązanie| 
+|Zatrzymuje kolekcję Przyczyna| Rozwiązanie| 
 |-----------------------|---------|
-|Osiągnięty dzienny limit dane w warstwie bezpłatna<sup>1</sup>|Zaczekaj do następnego dnia dla kolekcji do automatycznego ponownego uruchamiania lub zmień płatną warstwę cenową.|
-|Osiągnięto limit dzienny zdefiniowanych w zarządzanie woluminami danych|Zaczekaj do następnego dnia dla kolekcji do automatycznego ponownego uruchamiania, lub zwiększ dzienny limit woluminów danych opisanych w [zarządzania codziennych maksymalna ilość danych](#manage-the-maximum-daily-volume)|
-|Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na:<br> Bezpłatna wersja próbna została zakończona<br> Ważność Azure — dostęp próbny<br> Osiągnięto limit wydatków co miesiąc (na przykład na subskrypcję MSDN lub Visual Studio)|Konwertuj na płatną subskrypcję<br> Usuń limit lub poczekaj na zresetowanie limitu|
+|Osiągnięto dzienny limit bezpłatnych danych<sup>1</sup>|Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie lub Zmień na płatną warstwę cenową.|
+|Osiągnięto dzienny limit, które zostały zdefiniowane w zarządzanie ilością danych|Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie, lub zwiększ dziennego limitu woluminu danych opisanych w [Zarządzanie Maksymalna dzienna ilość danych](#manage-the-maximum-daily-volume)|
+|Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na:<br> Bezpłatny okres próbny zakończył się<br> Azure — dostęp próbny wygasł<br> Co miesiąc limit wydatków osiągnięto (na przykład w ramach subskrypcji MSDN lub Visual Studio)|Konwertuj na płatną subskrypcję<br> Usuń limit lub poczekaj na zresetowanie limitu|
 
-<sup>1</sup> czy obszaru roboczego znajduje się na warstwę cenową bezpłatna, jest ograniczona do wysyłania do usługi 500 MB danych na dzień. Po osiągnięciu dzienny limit gromadzenie danych zatrzymuje się do następnego dnia. Dane wysyłane podczas zatrzymania zbierania danych nie jest indeksowana i nie jest dostępny do wyszukiwania. Po wznowieniu pracy zbierania danych, przetwarzanie odbywa się tylko w przypadku nowych wysłane dane. 
+<sup>1</sup> przypadku obszaru roboczego w ramach warstwy cenowej bezpłatna jest ograniczona do wysyłanie 500 MB danych dziennie do usługi. Po osiągnięciu dziennego limitu gromadzenie danych zatrzymuje się od następnego dnia. Dane wysłane podczas zatrzymania zbierania danych nie jest indeksowana i nie jest dostępna dla wyszukiwania. Po wznowieniu pracy zbierania danych, przetwarzanie odbywa się tylko w przypadku nowych przesłanych danych. 
 
-Analiza dzienników korzysta z czasu UTC. Podczas resetowania różnie w przypadku obszarów roboczych, aby uniemożliwić wszystkie start ograniczone obszary robocze wprowadzania danych w tym samym czasie. Jeśli obszar roboczy osiągnie limit dzienny, przetwarzania wznawia działanie po czas resetowania zdefiniowany w **dzienny limit jest ustawiony na**.<br><br> ![Strefę czasową UTC ograniczenia analizy dzienników](media/log-analytics-manage-cost-storage/data-volume-mgmt-limit-utc.png)
+Usługa log Analytics korzysta z czasu UTC. Podczas resetowania waha się między obszarami roboczymi, aby uniemożliwić wszystkie zaczynają ograniczona obszary robocze, które dane są wprowadzane w tym samym czasie. Jeśli obszar roboczy osiągnie limit dzienny, przetwarzanie wznawia działanie po czas resetowania zdefiniowany w **dzienny limit jest ustawiony na**.<br><br> ![Usługa log Analytics ograniczyć strefą czasową UTC](media/log-analytics-manage-cost-storage/data-volume-mgmt-limit-utc.png)
 
-**Pytanie**: jak można zostanie wyświetlone powiadomienie po zatrzymaniu zbierania danych? 
-**Odpowiedzi**: wykonaj kroki opisane w *Utwórz dzienne dane zakończenia* alert zgłaszane po zatrzymaniu zbierania danych i wykonaj kroki, wykonaj czynności opisane w dodać skonfigurować akcje reguły alertów e-mail, element runbook lub elementu webhook Akcja reguły alertów. 
+**Pytanie**: jak mogę otrzymywać powiadomienia po zatrzymaniu zbierania danych? 
+**Odpowiedź**: wykonaj czynności opisane w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych i postępuj zgodnie z instrukcjami, wykonaj czynności opisane w Dodawanie akcji do reguły alertów skonfigurować wiadomości e-mail, element webhook lub runbook Akcja reguły alertu. 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-Aby określić, ile danych są zbierane, jakie źródła są wysyłania, a także różne typy danych wysyłanych do zarządzania konsumenckich i kosztów, zobacz [analizowanie danych użycia w analizy dzienników](log-analytics-usage.md).
+Aby określić, ile dane są zbierane, jakie źródła są wysyłania, a także różne rodzaje danych wysyłanych ułatwiające zarządzanie użycia i kosztów, zobacz [Analizowanie użycia danych w usłudze Log Analytics](log-analytics-usage.md).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413675"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057697"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterowników procesora GPU NVIDIA dla systemu Linux
 
@@ -63,7 +63,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | apiVersion | 2015-06-15 | data |
 | Wydawcy | Microsoft.HpcCompute | ciąg |
 | type | NvidiaGpuDriverLinux | ciąg |
-| typeHandlerVersion | 1.0 | Int |
+| typeHandlerVersion | 1.1 | Int |
 
 
 ## <a name="deployment"></a>Wdrożenie
@@ -103,7 +104,8 @@ W poniższym przykładzie założono, że rozszerzenie jest zagnieżdżona w obr
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.1 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.1 `
   --settings '{ `
   }'
 ```
@@ -166,6 +168,8 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 | 1 | Niepoprawne użycie rozszerzenia. | Skontaktuj się z pomocą techniczną, podając dziennika danych wyjściowych wykonywania. |
 | 10 | Usługi integracji systemu Linux dla funkcji Hyper-V i na platformie Azure nie dostępne lub zainstalowane. | Sprawdzanie danych wyjściowych lspci. |
 | 11 | Procesor GPU NVIDIA nie można odnaleźć tego rozmiaru maszyny Wirtualnej. | Użyj [obsługiwany rozmiar maszyny Wirtualnej i systemu operacyjnego](../linux/n-series-driver-setup.md). |
+| 12 | Oferta obrazu nie jest obsługiwane |
+| 13 | Rozmiar maszyny Wirtualnej nie jest obsługiwane | Wdrażanie przy użyciu maszyn wirtualnych serii N |
 | 14 | Operacja powiodła się | |
 | 21 | Aktualizacja nie powiodła się w systemie Ubuntu | Sprawdzanie danych wyjściowych "Aktualizuj" sudo"polecenia apt-get" |
 

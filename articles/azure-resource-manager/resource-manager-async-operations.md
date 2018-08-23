@@ -1,62 +1,60 @@
 ---
-title: Operacje asynchroniczne platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje dotyczące śledzenia operacji asynchronicznych na platformie Azure.
+title: Operacji asynchronicznych na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak śledzić operacji asynchronicznych na platformie Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f62212f0488e4d1be49b419615b3a16b80033fd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 601f4a899393d8ddd5ea698d4d01ade7141ee91f
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358714"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056240"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Śledzenie Azure operacji asynchronicznych
-Niektóre operacje Azure REST jest uruchamiane asynchronicznie, ponieważ nie można ukończyć operacji, szybko. W tym temacie opisano, jak śledzić stan operacji asynchronicznych za pomocą wartości zwracanych w odpowiedzi.  
+# <a name="track-asynchronous-azure-operations"></a>Śledzenie operacji asynchronicznych na platformie Azure
+Niektóre operacje REST platformy Azure jest uruchamiane asynchronicznie, ponieważ nie można ukończyć operacji, szybko. W tym artykule opisano, jak śledzić stan operacji asynchronicznych za pomocą wartości zwracanych w odpowiedzi.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Kody stanu dla operacji asynchronicznych
 Operacja asynchroniczna początkowo zwraca kod stanu HTTP albo:
 
 * 201 (utworzono)
-* 202 (zaakceptowane) 
+* 202 (zaakceptowano) 
 
 Po pomyślnym zakończeniu operacji zwraca albo:
 
 * 200 (OK)
 * 204 (Brak zawartości) 
 
-Zapoznaj się [dokumentacja interfejsu API REST](/rest/api/) do odpowiedzi dla operacji są wykonywane. 
+Zapoznaj się [dokumentację interfejsu API REST](/rest/api/) do odpowiedzi dla operacji wykonujesz.
 
-## <a name="monitor-status-of-operation"></a>Monitor stanu operacji
-Operacje asynchroniczne REST nagłówka wartości zwracane, które można określić stanu operacji. Istnieją potencjalnie trzy wartości nagłówka do sprawdzenia:
+## <a name="monitor-status-of-operation"></a>Monitorowanie stanu operacji
+Asynchroniczne operacje REST zwracają wartości nagłówka, które można określić stanu operacji. Istnieją potencjalnie trzy wartości nagłówka do sprawdzenia:
 
-* `Azure-AsyncOperation` — Adres URL do sprawdzania stanu trwających operacji. Jeśli operacja zwraca tę wartość, zawsze używać go (a nie lokalizacja) do śledzenia stanu operacji.
-* `Location` — Adres URL, określając po zakończeniu operacji. Użyj tej wartości, tylko wtedy, gdy nie są zwracane przez operację asynchroniczną Azure.
-* `Retry-After` -Liczbę sekund oczekiwania przed sprawdzeniem stanu operacji asynchronicznej.
+* `Azure-AsyncOperation` — Adres URL do sprawdzania stanu trwających operacji. Jeśli operacja zwraca tę wartość, zawsze używać go (a nie lokalizację) do śledzenia stanu operacji.
+* `Location` — Adres URL do określania, po zakończeniu operacji. Użyj tej wartości, tylko wtedy, gdy elementu Azure-AsyncOperation nie jest zwracany.
+* `Retry-After` -Liczba sekund oczekiwania przed sprawdzania stanu operacji asynchronicznej.
 
-Jednak nie każda operacja asynchroniczna zwraca wszystkie te wartości. Na przykład może być konieczne obliczyć wartość nagłówka operację asynchroniczną Azure dla jednej operacji, a wartość nagłówka lokalizacji innej operacji. 
+Nie każda operacja asynchroniczna zwraca wszystkie te wartości. Na przykład może być konieczne należy ocenić wartość nagłówka elementu Azure-AsyncOperation jeden raz i wartość nagłówka lokalizacji innej operacji. 
 
-Można pobrać wartości nagłówka, ponieważ może pobrać wartości nagłówka żądania. Na przykład w języku C#, możesz pobrać wartość nagłówka z `HttpWebResponse` obiektu o nazwie `response` z następującym kodem:
+Możesz pobrać wartości nagłówka, jak będzie pobierać dowolną wartość nagłówka żądania. Na przykład w języku C#, możesz pobrać wartość nagłówka z `HttpWebResponse` obiektu o nazwie `response` następującym kodem:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure AsyncOperation żądań i odpowiedzi
+## <a name="azure-asyncoperation-request-and-response"></a>Elementu Azure-AsyncOperation żądań i odpowiedzi
 
-Aby uzyskać stan operacji asynchronicznej, Wyślij żądanie GET do adresu URL w wartości nagłówka operację asynchroniczną na platformie Azure.
+Aby pobrać stan operacji asynchronicznej, Wyślij żądanie Pobierz do adresu URL w elementu Azure-AsyncOperation wartość nagłówka.
 
-Treść odpowiedzi z tej operacji zawiera informacje na temat operacji. W poniższym przykładzie przedstawiono możliwe wartości zwrócony przez operację:
+Treść odpowiedzi z tej operacji zawiera informacje na temat operacji. Możliwe wartości zwrócony przez operację można znaleźć w poniższym przykładzie:
 
 ```json
 {
@@ -76,42 +74,42 @@ Treść odpowiedzi z tej operacji zawiera informacje na temat operacji. W poniż
 }
 ```
 
-Tylko `status` są zwracane do wszystkich odpowiedzi. Obiekt błąd jest zwracany, gdy stan to niepowodzenie lub anulowane. Wszystkie inne wartości są opcjonalne; w związku z tym odpowiedzi otrzymywanych może różnić się od tego przykładu.
+Tylko `status` jest zwracane są wszystkie odpowiedzi. Obiekt błąd jest zwracany, jeśli jest w stanie Niepowodzenie lub anulowane. Wszystkie inne wartości są opcjonalne; w związku z tym odpowiedzi, które otrzymujesz mogą różnić się od tego przykładu.
 
-## <a name="provisioningstate-values"></a>wartości właściwości provisioningState
+## <a name="provisioningstate-values"></a>wartości provisioningState
 
-Operacje, które tworzenie, aktualizowanie lub usuwanie (PUT, PATCH, Usuń) zasobu zwracają zazwyczaj `provisioningState` wartość. Po ukończeniu operacji, zwracany jest jeden z trzech następujących wartości: 
+Operacje, które utworzenia, aktualizacji lub usunięcia (PUT, PATCH, DELETE) zasobu zwracają zazwyczaj `provisioningState` wartość. Po zakończeniu operacji jest jedną z następujących trzech wartości zwracane: 
 
 * Powodzenie
 * Niepowodzenie
 * Anulowane
 
-Wszystkie inne wartości oznaczają, że operacji jest nadal uruchomiona. Dostawca zasobów można zwrócić dostosowanych wartości wskazującej, jego stan. Na przykład może zostać wyświetlony **zaakceptowane** podczas żądania jest odebrane i uruchomiona.
+Wszystkie inne wartości oznaczają, że operacja jest nadal uruchomiona. Dostawca zasobów może zwrócić dostosowane wartość, która wskazuje jej stan. Na przykład, może pojawić się **zaakceptowano** po żądania otrzymane i uruchomione.
 
 ## <a name="example-requests-and-responses"></a>Przykład żądań i odpowiedzi
 
-### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Uruchom maszynę wirtualną (202 z operację asynchroniczną Azure)
-W tym przykładzie pokazano, jak ustalić stan **start** operacji dla maszyn wirtualnych. Początkowe żądanie znajduje się w następującym formacie:
+### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Uruchom maszynę wirtualną (202 przy użyciu elementu Azure-AsyncOperation)
+W tym przykładzie pokazano, jak ustalić stan **start** operacji dla maszyn wirtualnych. Wstępne żądanie jest w następującym formacie:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-Zwraca kod stanu 202. Wśród wartości nagłówka wyświetlane są:
+Zwraca kod stanu: 202. Między wartościami nagłówka zostaną wyświetlone następujące czynności:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Aby sprawdzić stan operacji asynchronicznej, wysyłanie innego żądania do tego adresu URL.
+Aby sprawdzić stan operacji asynchronicznej, wysłanie kolejnego żądania do tego adresu URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Treść odpowiedzi zawiera stan operacji:
+Treść odpowiedzi zawiera stanu operacji:
 
 ```json
 {
@@ -121,9 +119,9 @@ Treść odpowiedzi zawiera stan operacji:
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Wdrażanie zasobów (201 z operację asynchroniczną Azure)
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Wdrażanie zasobów (201 przy użyciu elementu Azure-AsyncOperation)
 
-W tym przykładzie pokazano, jak ustalić stan **wdrożeń** Operacja wdrażania zasobów na platformie Azure. Początkowe żądanie znajduje się w następującym formacie:
+W tym przykładzie pokazano, jak ustalić stan **wdrożeń** Operacja wdrażania zasobów na platformie Azure. Wstępne żądanie jest w następującym formacie:
 
 ```HTTP
 PUT
@@ -136,63 +134,63 @@ Zwraca kod stanu 201. Treść odpowiedzi zawiera:
 "provisioningState":"Accepted",
 ```
 
-Wśród wartości nagłówka wyświetlane są:
+Między wartościami nagłówka zostaną wyświetlone następujące czynności:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Aby sprawdzić stan operacji asynchronicznej, wysyłanie innego żądania do tego adresu URL.
+Aby sprawdzić stan operacji asynchronicznej, wysłanie kolejnego żądania do tego adresu URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Treść odpowiedzi zawiera stan operacji:
+Treść odpowiedzi zawiera stanu operacji:
 
 ```json
 {"status":"Running"}
 ```
 
-Po zakończeniu wdrożenia, zawiera odpowiedzi:
+Po zakończeniu wdrożenia odpowiedź zawiera:
 
 ```json
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a>Tworzenie konta magazynu (202 z lokalizacji i ponów próbę po)
+### <a name="create-storage-account-202-with-location-and-retry-after"></a>Tworzenie konta usługi storage (202 lokalizacją i Retry-After)
 
-W tym przykładzie pokazano, jak ustalić stan **utworzyć** operacji dla kont magazynu. Początkowe żądanie znajduje się w następującym formacie:
+W tym przykładzie pokazano, jak ustalić stan **tworzenie** operacji dla kont magazynu. Wstępne żądanie jest w następującym formacie:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-I treść żądania zawiera właściwości konta magazynu:
+I treść żądania zawiera właściwości dla konta magazynu:
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-Zwraca kod stanu 202. Wśród wartości nagłówka zobacz temat dwóch wartości:
+Zwraca kod stanu: 202. Między wartościami nagłówka zostaną wyświetlone następujące dwie wartości:
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-Po oczekiwanie na liczbę sekund określonej w ponownych prób po, sprawdź stan operacji asynchronicznej, wysyłając innego żądania do tego adresu URL.
+Po oczekiwanie na liczbę (w sekundach) określonego w Retry-After, sprawdź stan operacji asynchronicznej, wysyłając kolejne żądanie do tego adresu URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-Jeśli żądanie jest nadal uruchomiony, zostanie wyświetlony kod stanu 202. Jeśli żądanie zostało ukończone, z kodem stanu 200 odbierania i treść odpowiedzi zawiera właściwości konta magazynu, który został utworzony.
+Jeśli żądanie jest nadal uruchomione, zostanie wyświetlony kod stanu: 202. Jeśli żądanie zostało ukończone, Twoje wyświetlany kod stanu 200, a treść odpowiedzi zawiera właściwości konta magazynu, który został utworzony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać dokumentację każdej operacji REST, zobacz [dokumentacja interfejsu API REST](/rest/api/).
-* informacje o wdrażaniu szablonów za pomocą interfejsu REST API usługi Resource Manager, zobacz [wdrożenie zasobów z szablonami usługi Resource Manager i interfejsu REST API usługi Resource Manager](resource-group-template-deploy-rest.md).
+* Aby dokumentacji dotyczącej operacji REST, zobacz [dokumentację interfejsu API REST](/rest/api/).
+* Aby uzyskać informacji na temat wdrażania szablonów przy użyciu interfejsu REST API usługi Resource Manager, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu REST API usługi Resource Manager](resource-group-template-deploy-rest.md).

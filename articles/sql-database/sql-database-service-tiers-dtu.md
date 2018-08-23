@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 5d16763fc8f3331082b98216d25190b945d95b60
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411824"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058262"
 ---
 # <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Wybieranie warstwy usług oparte na jednostkach DTU, poziom wydajności i zasobów magazynu 
 
@@ -67,6 +67,91 @@ Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transactio
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+
+## <a name="dtu-benchmark"></a>Test porównawczy jednostek DTU
+
+Właściwości fizyczne (procesor CPU, pamięć, we/wy) powiązanych z Każda miara jednostek DTU są kalibrowane testów porównawczych, która symuluje obciążenie bazy danych rzeczywistych.
+
+### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelowanie wyników testów porównawczych wydajności bazy danych rzeczywistych
+Jest ważne dowiedzieć się, że wszystkie testy porównawcze są reprezentatywne ale wskazuje tylko. Stawki za transakcje osiągane przy użyciu aplikacji testu porównawczego nie będzie taka sama, jak te, które mogą być osiągnięte z innymi aplikacjami. Testu porównawczego składa się z kolekcją innej transakcji, które typy uruchamiać schemat zawierający szeroką gamę tabele i typy danych. Podczas testu porównawczego skorzysta z tego samego podstawowe operacje, które są wspólne dla wszystkich obciążeń OLTP, nie reprezentuje dowolnej klasy określonej bazy danych lub aplikacji. Cel testu porównawczego jest zapewnienie uzasadnione przewodnik względnej wydajności można oczekiwać podczas skalowania w górę lub w dół od poziomów wydajności bazy danych. W rzeczywistości bazy danych o różnych rozmiarach i złożoności, występują różne kombinacje obciążeń i będzie odpowiadać na różne sposoby. Na przykład aplikacji intensywnie korzystających z operacji We/Wy może wystąpić wcześniej progów we/wy lub aplikacji intensywnie korzystających z procesora CPU mogą występować limity procesora CPU, wcześniej. Nie ma żadnej gwarancji, które dowolnej określonej bazy danych będzie skalowane w taki sam sposób jak testów porównawczych, zgodnie z rosnącym obciążeniem.
+
+Testu wydajności i jego metody są opisane bardziej szczegółowo poniżej.
+
+### <a name="benchmark-summary"></a>Podsumowanie testu porównawczego
+ASDB mierzy wydajność operacje podstawowej bazy danych, najczęściej występujące w obciążeń OLTP przetwarzania transakcji online. Mimo że testu porównawczego zaprojektowano z chmury obliczeniowej w uwadze, schemat bazy danych, wypełnianie danymi, a transakcje zostały zaprojektowane, aby być szeroko reprezentatywne podstawowych elementów, które są najczęściej używane w obciążeń OLTP.
+
+### <a name="schema"></a>Schemat
+Schemat jest przeznaczona do ma za mało różnorodność i złożoność do obsługi szerokiej gamy operacji. Testu porównawczego działa na bazie danych składające się z sześciu tabel. Tabele można podzielić na trzy kategorie: stałym rozmiarze, skalowanie i powiększania. Istnieją dwie tabele stałym rozmiarze; trzy tabele skalowania; i jedna tabela rosnącą. Tabele o stałym rozmiarze ma stałą liczbę wierszy. Skalowanie tabele mają Kardynalność, jest proporcjonalna do wydajności bazy danych, ale nie zmienia się podczas testów porównawczych. Rosnąca tabeli ma rozmiar tak, jak skalowanie tabeli na ładowania początkowego, ale zmiany Kardynalność w trakcie uruchamiania testu porównawczego wiersze są wstawiane i usunięte.
+
+Schemat obejmuje różne typy danych, w tym liczba całkowita, numeryczne, znak i daty/godziny. Schemat zawiera klucze podstawowe i pomocnicze, ale nie ma żadnych kluczy obcych — oznacza to, że istnieją nie ograniczenia integralności referencyjnej między tabelami.
+
+Program generowania danych generuje dane dla początkowej bazy danych. Liczba całkowita i numeryczne dane są generowane przy użyciu różnych strategii. W niektórych przypadkach wartości są rozprowadzone w losowo zakresu. W innych przypadkach zbiór wartości jest losowo cieniowania do zapewnienia utrzymania określonych dystrybucji. Pola tekstowe są generowane na podstawie długą listę wyrazów do tworzenia realistycznych danych wyglądających.
+
+Baza danych ma rozmiar, oparte na "współczynnik skali". Współczynnik skali (skrót SF) określa Kardynalność skalowanie i rozwijaniu tabel. Zgodnie z poniższym opisem w sekcji Użytkownicy i Pacing, rozmiaru bazy danych, liczby użytkowników i maksymalną wydajność, wszystkie skalowanie proporcjonalnie do siebie nawzajem.
+
+### <a name="transactions"></a>Transakcje
+Obciążenia składa się z dziewięciu typów transakcji, jak pokazano w poniższej tabeli. Każda transakcja jest przeznaczony do wyróżnienia z określonym zestawem właściwości systemu w bazie danych systemu i aparat sprzęt, wysoki kontrast z innych transakcji. Takie podejście ułatwia ocenę wpływu różnych składników na ogólną wydajność. Na przykład "Odczytu Heavy" transakcji tworzy znaczna liczba operacji odczytu z dysku.
+
+| Typ transakcji | Opis |
+| --- | --- |
+| Przeczytaj Lite |WYBÓR; w pamięci. tylko do odczytu |
+| Średni odczyt |WYBÓR; przede wszystkim w pamięci; tylko do odczytu |
+| Duże odczytu |WYBÓR; przede wszystkim nie w pamięci; tylko do odczytu |
+| Aktualizacja Lite |AKTUALIZACJI. w pamięci. odczytu / zapisu |
+| Duże aktualizacji |AKTUALIZACJI. przede wszystkim nie w pamięci; odczytu / zapisu |
+| Wstaw Lite |WSTAW; w pamięci. odczytu / zapisu |
+| Wstaw obciążenie |WSTAW; przede wszystkim nie w pamięci; odczytu / zapisu |
+| Usuwanie |USUŃ; Kombinacja w pamięci, a nie w pamięci; odczytu / zapisu |
+| Obciążenie procesora CPU |WYBÓR; w pamięci. stosunkowo duże obciążenie procesora CPU; tylko do odczytu |
+
+### <a name="workload-mix"></a>Różne obciążenia
+Transakcje są wybierane losowo w ważona dystrybucji przy użyciu następujących mieszanego ogólnej. Ogólny mieszanego ma współczynnik odczyt/zapis w około 2:1.
+
+| Typ transakcji | % mieszanego |
+| --- | --- |
+| Przeczytaj Lite |35 |
+| Średni odczyt |20 |
+| Duże odczytu |5 |
+| Aktualizacja Lite |20 |
+| Duże aktualizacji |3 |
+| Wstaw Lite |3 |
+| Wstaw obciążenie |2 |
+| Usuwanie |2 |
+| Obciążenie procesora CPU |10 |
+
+### <a name="users-and-pacing"></a>Użytkownicy i rozkład
+Obciążenia porównawczego jest uzyskiwana z narzędziem, które prześle transakcji w zestawie połączeń, aby symulować liczba równoczesnych użytkowników. Mimo że wszystkie połączenia i transakcji są generowane maszyny, dla uproszczenia nazywamy tych połączeń "Użytkownicy". Mimo że każdy użytkownik działa niezależnie od innych użytkowników, wszyscy użytkownicy wykonania tego samego cyklu kroki opisane poniżej:
+
+1. Nawiązać połączenia z bazą danych.
+2. Powtórz sygnalizowane, aby zakończyć pracę:
+   * Wybierz transakcji (z ważona dystrybucja).
+   * Przeprowadź wybraną transakcję i pomiar czasu odpowiedzi.
+   * Poczekaj, aż pacing opóźnienia.
+3. Zamknij połączenie z bazą danych.
+4. Zakończ.
+
+Pacing opóźnienie (w kroku 2c) jest wybranych losowo, ale z dystrybucją, która ma średniej wersji 1.0 sekundy. Ten sposób każdy użytkownik średnio wygenerować co najwyżej jednej transakcji na sekundę.
+
+### <a name="scaling-rules"></a>Zasady skalowania
+Liczba użytkowników, zależy od rozmiaru bazy danych (w jednostkach współczynnik skali). Brak jednego użytkownika dla każdej z pięciu jednostek współczynnik skali. Ze względu na opóźnienie pacing jeden użytkownik może generować co najwyżej jednej transakcji na sekundę, średnio.
+
+Na przykład-współczynnik skali 500 (SF = 500) bazy danych będzie mieć 100 użytkowników i osiągnąć maksymalny stopień 100 TPS. Można dostarczać TPS wyższe szybkości wymaga większej liczby użytkowników i większe bazy danych.
+
+### <a name="measurement-duration"></a>Pomiar czasu trwania
+Nieprawidłowa uruchomienia testu porównawczego wymaga stabilnym pomiaru czas trwania wynoszący co najmniej jedną godzinę.
+
+### <a name="metrics"></a>Metryki
+Kluczowe metryki w uruchomionym teście są przepływności i czasu odpowiedzi.
+
+* Przepływność jest miary wydajności podstawowych w uruchomionym teście. Przepływność jest zgłaszany w transakcji na jednostkę of-time, inwentaryzacji wszystkich typów transakcji.
+* Czas odpowiedzi jest miarą przewidywalność wydajności. Ograniczenie czasu odpowiedzi zależy od klasy usług z wyższej klasy usługę, której bardziej rygorystyczne wymagania dotyczące czasu reakcji, jak pokazano poniżej.
+
+| Klasa usługi | Pomiar przepływności | Wymagania dotyczące czasu odpowiedzi |
+| --- | --- | --- |
+| Premium |Transakcje na sekundę |95. percentyl na 0,5 sekund |
+| Standardowa (Standard) |Transakcje na minutę |90. percentyla w wersji 1.0 w ciągu kilku sekund |
+| Podstawowa |Transakcje na godzinę |80. percentylu, w sekundach 2.0 |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

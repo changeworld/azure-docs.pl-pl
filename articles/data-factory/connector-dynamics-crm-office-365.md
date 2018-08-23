@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f45f9337a5522f490c268bbdae3ef1a41205175
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859378"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444864"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -109,7 +109,7 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | deploymentType | Typ wdrażania wystąpienia programu Dynamics. Musi to być **"OnPremisesWithIfd"** Dynamics i lokalnych przy użyciu IFD.| Yes |
 | Nazwa hosta | Nazwa hosta na lokalnym serwerze Dynamics. | Yes |
 | port | Port lokalny serwer Dynamics. | Nie, port domyślny to 443 |
-| nazwa_organizacji | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
+| Nazwa_organizacji | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
 | Element authenticationType | Typ uwierzytelniania, aby nawiązać połączenie z serwerem Dynamics. Określ **"Ifd"** Dynamics i lokalnych przy użyciu IFD. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania pobierania w tym miejscu podczas kopiowania danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -333,7 +333,7 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 | AttributeType.Double | Podwójne | ✓ | ✓ |
 | AttributeType.EntityName | Ciąg | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Identyfikator GUID | ✓ | ✓ (z jednego typu na skojarzony) |
+| AttributeType.Lookup | Identyfikator GUID | ✓ | ✓ (ze skojarzonego pojedynczy element docelowy) |
 | AttributeType.ManagedProperty | Wartość logiczna | ✓ | |
 | AttributeType.Memo | Ciąg | ✓ | ✓ |
 | AttributeType.Money | Dziesiętna | ✓ | ✓ |

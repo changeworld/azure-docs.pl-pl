@@ -1,54 +1,54 @@
 ---
 title: Diagnostyka w usłudze Azure Stack
-description: Jak zbierać pliki dziennika diagnostyki Azure stosu
+description: Jak zbierać pliki dziennika dotyczące diagnostyki w usłudze Azure Stack
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063920"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616953"
 ---
-# <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyki stosu Azure
+# <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyczne w usłudze Azure Stack
 
-Stos Azure jest duży zbiór elementów pracy ze sobą i interakcji ze sobą. Wszystkie te składniki generowania unikatowych dzienników. To ułatwia diagnozowanie problemów lada wyzwanie, szczególnie w przypadku błędów pochodzących z wielu interakcji składniki stosu Azure. 
+Usługa Azure Stack jest duży zbiór składników, współpracując i wchodzenie w interakcje ze sobą. Wszystkie te składniki generować własne unikatowe dzienniki. Dzięki temu może być trudniejszym zadaniem, szczególnie w przypadku błędów pochodzących z wielu interakcja składników usługi Azure Stack diagnozowanie problemów. 
 
-Upewnij się, że mechanizm kolekcji dziennika jest łatwe i skuteczne pomoc do narzędzi naszych diagnostyki. Na poniższym diagramie przedstawiono sposób dziennika narzędzia kolekcji w pracach Azure stosu:
+Nasze narzędzia diagnostyczne pewność, że mechanizm zbierania dzienników jest proste i wydajne. Na poniższym diagramie przedstawiono sposób Zaloguj narzędzia kolekcji pracy usługi Azure Stack:
 
-![Azure stosu narzędzia diagnostyczne](media/azure-stack-diagnostics/get-azslogs.png)
+![Narzędzia diagnostyczne platformy Azure Stack](media/azure-stack-diagnostics/get-azslogs.png)
  
  
 ## <a name="trace-collector"></a>Moduł zbierający śledzenia
  
-Moduł zbierający śledzenia jest domyślnie włączona i działa w sposób ciągły w tle, aby zbierać wszystkie dzienniki zdarzeń śledzenia dla systemu Windows (ETW) z usługi składowe stosu Azure. Dzienniki zdarzeń systemu Windows są przechowywane w udziale lokalnym wspólnej limit wieku pięć dni. Po osiągnięciu tego limitu najstarsze pliki są usuwane, ponieważ są tworzone nowe. Domyślny maksymalny rozmiar dozwolony dla każdego pliku jest 200 MB. Sprawdzanie rozmiaru występuje co 2 minuty, a jeśli bieżący plik jest > = 200 MB jest zapisywany i utworzony nowy plik. Na rozmiar pliku generowane zdarzenie sesji istnieje również limit 8 GB. 
+Moduł śledzenia jest domyślnie włączona i działa w sposób ciągły w tle, aby zbierać wszystkie dzienniki zdarzeń śledzenia dla Windows (ETW) z usługi składowe w usłudze Azure Stack. Dzienniki zdarzeń systemu Windows są przechowywane w typowych lokalny udział z limitem wiek pięć dni. Po osiągnięciu tego limitu najstarsze pliki są usuwane w miarę tworzenia nowych. Domyślny maksymalny dozwolony rozmiar każdego pliku jest 200 MB. Sprawdzanie rozmiaru jest wykonywane co 2 minuty, a jeśli bieżący plik jest > = 200 MB jest zapisywana i generowany jest nowy plik. Na całkowity rozmiar plików wygenerowanych zdarzeń sesji istnieje również limit 8 GB. 
 
 ## <a name="log-collection-tool"></a>Narzędzie do zbierania dzienników
  
-Polecenia cmdlet programu PowerShell **Get-AzureStackLog** może służyć do zbierania dzienników z wszystkich składników w środowisku Azure stosu. Zapisuje je w plikach zip w lokalizacji zdefiniowanej przez użytkownika. Jeśli zespołowi pomocy technicznej platformy Azure stos musi dzienników rozwiązywania problemu, ich może poprosić o uruchamianiu tego narzędzia.
+Polecenia cmdlet programu PowerShell **Get AzureStackLog** może służyć do zbierania dzienników ze wszystkich składników w środowisku usługi Azure Stack. Zapisuje je w plikach zip w lokalizacji zdefiniowanej przez użytkownika. Jeśli zespół pomocy technicznej usługi Azure Stack wymaga swoje dzienniki, aby pomóc w rozwiązywaniu problemu, może poprosić Cię do uruchomienia tego narzędzia.
 
 > [!CAUTION]
-> Te pliki dziennika może zawierać dane osobowe (dane osobowe). To brać pod uwagę przed publicznie post wszystkie pliki dziennika.
+> Te pliki dzienników mogą zawierać identyfikowalne dane osobowe (PII). To brać pod uwagę przed opublikowaniem publicznie wszystkich plików dziennika.
  
-Poniżej przedstawiono kilka przykładowych typów dziennika, które są zbierane:
-*   **Dzienniki wdrożenia usługi Azure stosu**
-*   **Dzienniki zdarzeń systemu Windows**
+Niektóre typy dziennika przykładu, które są zbierane są następujące:
+*   **Dzienniki wdrożenia usługi Azure Stack**
+*   **Dzienniki zdarzeń Windows**
 *   **Dzienniki Panther**
 *   **Dzienniki klastra**
 *   **Dzienniki diagnostyczne magazynu**
 *   **Dzienniki zdarzeń systemu Windows**
 
-Te pliki są zbierane i zapisywane w udziale przez moduł zbierający śledzenia. **Get-AzureStackLog** polecenia cmdlet programu PowerShell można następnie używany do gromadzenia je w razie potrzeby.
+Te pliki są zbierane i zapisywane w udziale przez moduł śledzenia. **Get AzureStackLog** polecenia cmdlet programu PowerShell, następnie może służyć do zbierania je, gdy jest to konieczne.
 
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>Do uruchomienia Get-AzureStackLog na stosie Azure zintegrowanych systemów 
-Aby uruchomić narzędzie do zbierania dzienników na zintegrowany system, należy mieć dostęp do uprzywilejowanych punktu końcowego (program ten). Poniżej przedstawiono przykładowy skrypt można uruchomić przy użyciu program ten zbierania dzienników na zintegrowany system:
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>Aby uruchomić Get AzureStackLog w usłudze Azure Stack zintegrowane systemy 
+Aby uruchomić narzędzie do zbierania dzienników w zintegrowanym systemie, musisz mieć dostęp do uprzywilejowanych punktu końcowego (program ten). Poniżej przedstawiono przykładowy skrypt można uruchomić za pomocą program ten do zbierania dzienników na zintegrowanym systemie:
 
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
@@ -71,100 +71,102 @@ if($s)
 }
 ```
 
-- Parametry **OutputSharePath** i **OutputShareCredential** są używane do przekazywania dzienników do zewnętrznego folderu udostępnionego.
-- Jak pokazano w poprzednim przykładzie **FromDate** i **ToDate** parametry może służyć do zbierania dzienników dla danego okresu. To są dostępne w przydatne w scenariuszach, takich jak zbieranie dzienników po zastosowaniu pakietu aktualizacji na zintegrowany system.
+- Parametry **OutputSharePath** i **OutputShareCredential** służą do przekazywania dzienników do udostępnionego folderu zewnętrznego.
+- Jak pokazano w poprzednim przykładzie **FromDate** i **ToDate** parametrów może służyć do zbierania dzienników dla określonego okresu. To może okazać się przydatna dla scenariuszy, takich jak zbieranie dzienników po zastosowaniu pakietu aktualizacji w zintegrowanym systemie.
 
 
  
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Aby uruchomić Get AzureStackLog w systemie Azure stosu Development Kit (ASDK)
+### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Aby uruchomić Get AzureStackLog w systemie Azure Stack Development Kit (ASDK)
 1. Zaloguj się jako **AzureStack\CloudAdmin** na hoście.
 2. Otwórz okno programu PowerShell jako administrator.
-3. Uruchom **Get-AzureStackLog** polecenia cmdlet programu PowerShell.
+3. Uruchom **Get AzureStackLog** polecenia cmdlet programu PowerShell.
 
 **Przykłady:**
 
-  Zbieraj wszystkie dzienniki dla wszystkich ról:
+  Zbierz wszystkie dzienniki dla wszystkich ról:
 
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs
   ```
 
-  Zbierz dzienniki ról maszyn wirtualnych i BareMetal:
+  Zbieranie dzienników z ról maszyn wirtualnych i BareMetal:
 
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
   ```
 
-  Zbierz dzienniki ról maszyn wirtualnych i BareMetal, oraz datę filtrowania dla plików dziennika przez ostatnie 8 godzin:
+  Zbieranie dzienników z ról maszyn wirtualnych i BareMetal z datą filtrowania dla plików dziennika w ciągu ostatnich 8 godzin:
     
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
   ```
 
-  Zbierz dzienniki ról maszyn wirtualnych i BareMetal, oraz datę filtrowania dla plików dziennika w okresie między 8 godz i 2 godz. temu:
+  Zbieranie dzienników z ról maszyn wirtualnych i BareMetal z datą filtrowania dla plików dziennika w okresie między 8 godz i 2 godz. temu:
 
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Zagadnienia dotyczące parametru dla ASDK i zintegrowanych systemów
+### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Parametr zagadnienia dotyczące ASDK i zintegrowanych systemów
 
-- Jeśli **FromDate** i **ToDate** parametry nie są określone, dzienniki są domyślnie zbierane przez ostatnie cztery godziny.
-- Można użyć **TimeOutInMinutes** parametr, aby ustawić limit czasu zbierania dzienników. Domyślnie jest ustawiona na 150 (2,5 godzin).
-- W wersji 1805 i nowszych zbierania dzienników plik zrzutu jest domyślnie wyłączona. Aby go włączyć, należy użyć **IncludeDumpFile** przełącznik parametru. 
-- Obecnie można używać **FilterByRole** parametru do kolekcji filtrów dziennika przez następujące role:
+- Jeśli **FromDate** i **ToDate** parametry nie są określone, domyślnie dzienniki są zbierane w ciągu ostatnich czterech godzin.
+- Użyj **FilterByNode** parametru, aby filtrować dzienniki według nazwy komputera. Na przykład: ```Get-AzureStackLog -OutputPath <path> -FilterByNode azs-xrp01```
+- Użyj **FilterByLogType** parametru, aby filtrować dzienniki według typu. Można filtrować według plików, udziału lub WindowsEvent. Na przykład: ```Get-AzureStackLog -OutputPath <path> -FilterByLogType File```
+- Możesz użyć **TimeOutInMinutes** parametru, aby ustawić limit czasu zbierania dzienników. Jego jest domyślnie do 150 (2,5 godziny).
+- W wersji 1805 i nowsze zbieranie danych dziennika plik zrzutu jest domyślnie wyłączona. Aby ją włączyć, należy użyć **IncludeDumpFile** parametr przełącznika. 
+- Obecnie można używać **FilterByRole** parametru, aby zbieranie danych dziennika filtrowania przez następujące role:
 
-   |   |   |   |
-   | - | - | - |
-   | ACS                    | DeploymentMachine                | NC                         |
-   | ACSBlob                | DiskRP                           | Sieć                    |
-   | ACSFabric              | Domena                           | NonPrivilegedAppGateway    |
-   | ACSFrontEnd            | ECE                              | DOSTAWCA NRP                        |
-   | ACSMetrics             | ExternalDNS                      | Producent OEM                        |
-   | ACSMigrationService    | Fabric                           | ŚRODOWISKO PXE                        |
-   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
-   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
-   | ACSTableMaster         | FRP                              | SLB                        |   
-   | ACSTableServer         | Galeria                          | SlbVips                    |
-   | ACSWac                 | Brama                          | SQL                        |   
-   | ADFS                   | HealthMonitoring                 | SRP                        |
-   | ASAppGateway           | HRP                              | Magazyn                    |   
-   | NCAzureBridge          | IBC                              | StorageAccounts            |    
-   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
-   | AzureStackBitlocker    | międzynarodowych nazw domen.                             | Dzierżawa                     |
-   | BareMetal              | InfraServiceController           | TraceCollector             |
-   | BRP                    | Infrastruktura                   | URP                        |
-   | Urząd certyfikacji                     | KeyVaultAdminResourceProvider    | UsageBridge                |
-   | Chmura                  | KeyVaultControlPlane             | VirtualMachines            |
-   | Klaster                | KeyVaultDataPlane                | WAS                        |
-   | Wystąpienia obliczeniowe                | KeyVaultInternalControlPlane     | WASBootstrap               |
-   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
-   | CRP                    | KeyVaultNamingService            |                            |
-   | DatacenterIntegration  | MonitoringAgent                  |                            |
-   |                        |                                  |                            |
+ |   |   |   |    |
+ | - | - | - | -  |   
+ |ACS|Wystąpienia obliczeniowe|InfraServiceController|QueryServiceCoordinator|
+ |ACSBlob|CPI|Infrastruktura|QueryServiceWorker|
+ |ACSDownloadService|CRP|KeyVaultAdminResourceProvider|SeedRing|
+ |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
+ |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
+ |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
+ |ACSMigrationService|Domena|KeyVaultInternalDataPlane|SQL|
+ |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
+ |ACSSettingsService|EventAdminRP|MDM|Magazyn|
+ |ACSTableMaster|EventRP|MetricsAdminRP|StorageAccounts|
+ |ACSTableServer|ExternalDNS|MetricsRP|StorageController|
+ |ACSWac|Fabric|MetricsServer|Dzierżawa|
+ |ADFS|FabricRing|MetricsStoreService|TraceCollector|
+ |ApplicationController|FabricRingServices|MonAdminRP|URP|
+ |ASAppGateway|FirstTierAggregationService|MonitoringAgent|Sposób użycia|
+ |AzureBridge|FRP|MonRP|UsageBridge|
+ |AzureMonitor|Galeria|KONTROLER SIECI|VirtualMachines|
+ |AzureStackBitlocker|Brama|Sieć|WAS|
+ |BareMetal|HealthMonitoring|NonPrivilegedAppGateway|WASBootstrap|
+ |BRP|HintingServiceV2|DOSTAWCA NRP|WASPUBLIC|
+ |Urząd certyfikacji|HRP|OboService|WindowsDefender|
+ |CacheService|IBC|Producent OEM|     |
+ |Chmura|Dostawca tożsamości|OnboardRP|     |   
+ |Klaster|międzynarodowych nazw domen.|ŚRODOWISKA PXE|     |
+ |   |   |   |    |
+
 
 ### <a name="bkmk_gui"></a>Zbieranie dzienników przy użyciu graficznego interfejsu użytkownika
-Zamiast dostarczanie wymaganych parametrów polecenia cmdlet Get-AzureStackLog pobrać dzienników stosu Azure, można też skorzystać narzędzia Azure stosu dostępne typu open source, znajduje się w głównym stosu Azure narzędzia narzędzia repozytorium GitHub w http://aka.ms/AzureStackTools.
+Zamiast udostępniać wymaganych parametrów polecenia cmdlet Get-AzureStackLog do pobierania dzienników usługi Azure Stack, można również korzystać z dostępnych narzędzi typu open source usługi Azure Stack znajduje się w głównym usługi Azure Stack narzędzia narzędzia repozytorium GitHub na http://aka.ms/AzureStackTools.
 
-**ERCS_AzureStackLogs.ps1** skrypt programu PowerShell znajduje się w repozytorium GitHub narzędzia i są aktualizowane na bieżąco. Aby upewnić się, że masz najnowszej dostępnej wersji, należy pobrać go bezpośrednio z http://aka.ms/ERCS. Uruchomiony administracyjne sesji programu PowerShell, skrypt nawiązuje połączenie z punktem końcowym uprzywilejowanych i uruchamia Get AzureStackLog z podanych parametrów. Jeśli są podane żadne parametry, skrypt domyślnie monitowania parametrów za pomocą graficznego interfejsu użytkownika.
+**ERCS_AzureStackLogs.ps1** skrypt programu PowerShell jest przechowywany w repozytorium GitHub narzędzi i jest aktualizowana w regularnych odstępach czasu. Aby upewnić się, że masz najnowszą wersją dostępną, należy pobrać go bezpośrednio http://aka.ms/ERCS. Pracy administracyjnej sesji programu PowerShell, skrypt łączy do endpoint uprzywilejowanych i uruchamia Get AzureStackLog z podanych parametrów. Jeśli nie dostarczono żadnych parametrów, skrypt domyślnie monitowania o parametry za pomocą graficznego interfejsu użytkownika.
 
-Aby dowiedzieć się więcej na temat skryptów środowiska PowerShell ERCS_AzureStackLogs.ps1, obejrzyj [krótki film](https://www.youtube.com/watch?v=Utt7pLsXEBc) i wyświetlanie skryptu [plik readme](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) znajduje się w repozytorium GitHub narzędzia Azure stosu. 
+Aby dowiedzieć się więcej na temat skryptu programu ERCS_AzureStackLogs.ps1 PowerShell, możesz obejrzeć [krótki film wideo](https://www.youtube.com/watch?v=Utt7pLsXEBc) lub wyświetlić skryptu [pliku readme](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) znajduje się w repozytorium GitHub narzędzia usługi Azure Stack. 
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
-* Polecenie wymaga pewnego czasu do uruchomienia w oparciu o role, które są zbierane w dziennikach. Czynników także czas trwania zbierania dzienników i liczby węzłów w środowisku Azure stosu.
-* Jak rejestrować uruchamia kolekcji, sprawdź nowy folder utworzony w **OutputSharePath** określony w poleceniu parametru.
-* Każda rola ma jej dzienników wewnątrz zip poszczególnych plików. W zależności od rozmiaru zebranych dzienniki rola może być jej dzienników podzielony na wiele plików zip. Dla roli Jeśli chcesz, aby rozpakować w celu pojedynczy folder plików dziennika, użycie narzędzia, które można rozpakować zbiorczo (na przykład 7zip). Zaznacz wszystkie pliki zip dla roli, a następnie wybierz **wyodrębnić tutaj**. To unzips wszystkich plików dziennika dla tej roli w jednym folderze scalone.
-* Plik o nazwie **Get AzureStackLog_Output.log** również jest tworzony w folderze, który zawiera pliki dziennika zip. Ten plik znajduje się w dzienniku danych wyjściowych polecenia, które mogą służyć do rozwiązywania problemów podczas zbierania dzienników. Czasami plik dziennika zawiera `PS>TerminatingError` wpisów, które można bezpiecznie zignorować, chyba że brakuje plików dziennika w oczekiwanym po dziennika uruchamia kolekcji.
-* Do sprawdzania, czy określony błąd, dzienniki mogą być wymagane z więcej niż jednego składnika.
-    -   W dziennikach zdarzeń dla wszystkich maszyn wirtualnych infrastruktury i systemu są gromadzone w *VirtualMachines* roli.
-    -   System i dzienniki zdarzeń, dla wszystkich hostów są gromadzone w *BareMetal* roli.
-    -   Dzienniki zdarzeń klastra trybu failover i funkcja Hyper-V są gromadzone w *magazynu* roli.
-    -   Usługi ACS dzienniki są gromadzone w *magazynu* i *ACS* ról.
+* Polecenie wymaga pewnego czasu do uruchomienia w oparciu o na role, które dzienniki są zbierane dane. Powiązanych czynników także czas trwania określonych dla zbieranie dzienników i liczby węzłów w środowisku usługi Azure Stack.
+* Jak rejestrować uruchomień kolekcji, sprawdź nowy folder utworzony w **OutputSharePath** parametr określony w poleceniu.
+* Każda rola ma jej dzienników wewnątrz zip poszczególnych plików. W zależności od rozmiaru zebranych dzienników roli może być jej dzienników podzielony na wiele plików zip. W roli Jeśli chcesz mieć wszystkich plików dziennika rozpakowano w jednym folderze użycie narzędzia, które można rozpakować zbiorczo (na przykład 7zip). Zaznacz wszystkie pliki zip dla roli, a następnie wybierz pozycję **wyodrębnić tutaj**. To unzips wszystkich plików dziennika dla tej roli w jednym folderze scalone.
+* Plik o nazwie **Get AzureStackLog_Output.log** również jest tworzony w folderze, który zawiera pliki zip dziennika. Ten plik jest dziennika danych wyjściowych polecenia, który może służyć do rozwiązywania problemów podczas zbierania dzienników. Czasami plik dziennika zawiera `PS>TerminatingError` wpisów, które można bezpiecznie zignorować, chyba że pliki dziennika w oczekiwanym brakuje po dziennika uruchomień kolekcji.
+* Aby zbadać określonego błędu, dzienniki mogą być potrzebne z więcej niż jednego składnika.
+    -   System i dzienniki zdarzeń dla wszystkich maszyn wirtualnych infrastruktury, które są zbierane w *VirtualMachines* roli.
+    -   System i dzienniki zdarzeń dla wszystkich hostów, które są zbierane w *BareMetal* roli.
+    -   Dzienniki zdarzeń klastra trybu failover i funkcji Hyper-V są zbierane w *magazynu* roli.
+    -   Zbierane są dzienniki usługi ACS w *magazynu* i *ACS* ról.
 
 > [!NOTE]
-> Limity rozmiaru i wiek są wymuszane na dzienniki zebrane, ponieważ jest, aby zapewnić jego efektywne wykorzystanie przestrzeni dyskowej, aby upewnić się, że nie pobierają rozpływową z dziennikami. Podczas diagnozowania problemu czasami potrzebny, dzienniki, które już nie istnieje z powodu tych ograniczeń. W związku z tym jest **zdecydowanie zalecane** czy odciążania dzienników do obszaru magazynu zewnętrznego (konto magazynu na platformie Azure, urządzenie magazynu lokalnego dodatkowe itp.) co 8 do 12 godzin i przechowywać je tam 1 – 3 miesiące, w zależności od sieci wymagania. Ponadto upewnij się, że ta lokalizacja magazynu jest zaszyfrowany.
+> Rozmiar i wiek limity są wymuszane w dziennikach zbieranych jako istotne jest zapewnienie efektywnego wykorzystania miejsca do magazynowania, aby upewnić się, że nie nastąpi pobranie propagowane za pomocą dzienników. Podczas diagnozowania problemu czasami potrzebny, dzienników, które już nie istnieje ze względu na limity. Dlatego jest **zdecydowanie zaleca się** czy odciążania dzienniki do miejsca do magazynowania zewnętrznych (konto magazynu na platformie Azure, urządzenie magazynu lokalnego dodatkowe itp.) co 8 do 12 godzin i Zatrzymaj ich tam 1 – 3 miesięcy, w zależności od usługi wymagania. Ponadto upewnij się, że ta lokalizacja magazynu jest zaszyfrowany.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Rozwiązywanie problemów z Microsoft Azure stosu](azure-stack-troubleshooting.md)
+[Rozwiązywanie problemów z usługi Microsoft Azure Stack](azure-stack-troubleshooting.md)
 

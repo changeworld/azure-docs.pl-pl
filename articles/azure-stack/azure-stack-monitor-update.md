@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie aktualizacji w stosie Azure przy użyciu punktu końcowego uprzywilejowanych | Dokumentacja firmy Microsoft
-description: Informacje o sposobie użycia uprzywilejowanego punktu końcowego do monitorowania stanu aktualizacji dla stosu Azure zintegrowanych systemów.
+title: Monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować stan aktualizacji dla usługi Azure Stack, zintegrowanych systemów za pomocą uprzywilejowanych punktu końcowego.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,50 +12,49 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 08/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2018
-ms.locfileid: "27621865"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060336"
 ---
-# <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorowanie aktualizacji w stosie Azure przy użyciu uprzywilejowanych punktu końcowego
+# <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Można monitorować postęp przebiegu aktualizacji stosu Azure uprzywilejowanych punktu końcowego, a wznowienie aktualizacji nie powiodło się, uruchom w ostatnim kroku pomyślne powinien stosu Azure portal staną się niedostępne.  Przy użyciu portalu Azure stos jest to zalecana metoda zarządzania aktualizacjami w stosie Azure.
+Uprzywilejowanych punktu końcowego można użyć, aby monitorować postęp przebiegu aktualizacji usługi Azure Stack, a do wznowienia aktualizacji nie powiodło się, uruchom w ostatnim kroku pomyślnie powinien usługi Azure Stack portal staną się niedostępne.  Za pomocą portalu usługi Azure Stack jest zalecaną metodą do zarządzania aktualizacjami w usłudze Azure Stack.
 
-Następujące nowe polecenia cmdlet programu PowerShell do zarządzania aktualizacjami są zawarte w aktualizacji 1710 stosu Azure zintegrowanych systemów.
+Następujące nowe polecenia cmdlet programu PowerShell do zarządzania aktualizacjami są zawarte w aktualizacji 1710 systemów zintegrowanych w usłudze Azure Stack.
 
 | Polecenie cmdlet  | Opis  |
 |---------|---------|
-| `Get-AzureStackUpdateStatus` | Zwraca informacje o stanie aktualizacji aktualnie uruchomione, zakończone lub nie powiodło się. Zawiera ogólny stan operacji aktualizacji, a dokument XML, który opisuje zarówno bieżącego kroku, jak i odpowiadający mu stan. |
-| `Get-AzureStackUpdateVerboseLog` | Zwraca pełne dzienniki, które zostały wygenerowane przez aktualizację. |
-| `Resume-AzureStackUpdate` | Wznawia nieudana aktualizacja w momencie, w których nie powiodło się. W niektórych scenariuszach może być konieczne kroki zaradcze ukończenie wznowienie aktualizacji.         |
+| `Get-AzureStackUpdateStatus` | Zwraca stan aktualizacji aktualnie uruchomione, ukończone lub nie powiodło się. Zapewnia ogólny stan operacji aktualizacji i dokumentu XML, który opisuje bieżący krok i odpowiadający mu stan. |
+| `Resume-AzureStackUpdate` | Wznawia aktualizacji zakończonych niepowodzeniem w punkcie, w którym nie powiodło się. W niektórych scenariuszach może być konieczne kroki zaradcze ukończenie wznowienia aktualizacji.         |
 | | |
 
-## <a name="verify-the-cmdlets-are-available"></a>Sprawdź, czy dostępne są następujące polecenia cmdlet
-Ponieważ polecenia cmdlet są nowe w pakiecie aktualizacji 1710 stosu Azure, proces aktualizacji 1710 musi pobrać pewnym przed udostępnieniem możliwość monitorowania. Zazwyczaj te polecenia cmdlet są dostępne, jeśli stan w portalu administratora wskazuje, że aktualizacja 1710 znajduje się w **ponowne uruchomienie magazynu hostów** kroku. W szczególności aktualizacji polecenia cmdlet występuje w ciągu **krok: uruchamiania kroku 2.6 - dozwolonych aktualizacji PrivilegedEndpoint**.
+## <a name="verify-the-cmdlets-are-available"></a>Upewnij się, że polecenia cmdlet są dostępne
+Ponieważ polecenia cmdlet są nowe w pakiecie aktualizacji 1710 usługi Azure Stack, proces aktualizacji 1710 serwer musi pobrać do pewnego momentu przed funkcją monitorowania jest dostępna. Zazwyczaj polecenia cmdlet są dostępne, jeśli jego stan w portalu administratora wskazuje, że aktualizacji 1710 znajduje się na **ponownie uruchomić Magazyn hosty** kroku. W szczególności aktualizacji polecenie cmdlet występuje w ciągu **krok: uruchamianie kroku 2.6 — dozwolonych aktualizacji PrivilegedEndpoint**.
 
-Można również określić, czy polecenia cmdlet są dostępne programowo badając listy poleceń z uprzywilejowanego punktu końcowego. Aby to zrobić, uruchom następujące polecenia z hosta cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej. Ponadto upewnij się, że zaufanego hosta jest uprzywilejowane punktu końcowego. Aby uzyskać więcej informacji, zobacz krok 1 [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
+Można również określić, czy polecenia cmdlet są dostępne programowo, badając lista poleceń z uprzywilejowanym punktu końcowego. Aby to zrobić, uruchom następujące polecenia z hosta cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem. Ponadto upewnij się, że uprzywilejowanych punkt końcowy jest zaufanego hosta. Aby uzyskać więcej informacji, zobacz krok 1 [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 
-1. Tworzenie sesji programu PowerShell na każdym ERCS maszyn wirtualnych w środowisku Azure stosu (*prefiksu*-ERCS01, *prefiksu*-ERCS02, lub *prefiksu*-ERCS03). Zastąp *prefiks* z Ciąg prefiksu maszyny wirtualnej, które są specyficzne dla danego środowiska.
+1. Tworzenie sesji programu PowerShell na każdym ERCS maszyn wirtualnych w środowisku usługi Azure Stack (*prefiksu*-ERCS01, *prefiksu*-ERCS02, lub *prefiksu*-ERCS03). Zastąp *prefiks* z Ciąg prefiksu maszyn wirtualnych, które są specyficzne dla danego środowiska.
 
    ```powershell
    $cred = Get-Credential
 
    $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
    ```
-   Po wyświetleniu monitu o poświadczenia, użyj &lt; *domeny stosu Azure*&gt;\cloudadmin konta lub konta, które jest członkiem grupy CloudAdmins. Dla konta CloudAdmin wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+   Gdy zostanie wyświetlony monit o poświadczenia, &lt; *domeny usługi Azure Stack*&gt;\cloudadmin konto lub konta które jest członkiem grupy CloudAdmins. Dla konta CloudAdmin wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
 2. Pobierz pełną listę poleceń, które są dostępne w punkcie końcowym uprzywilejowanych. 
 
    ```powershell
    $commands = Invoke-Command -Session $pepSession -ScriptBlock { Get-Command } 
    ```
-3. Ustal, jeśli uprzywilejowanych punkt końcowy został zaktualizowany.
+3. Określ, jeśli uprzywilejowanych punkt końcowy został zaktualizowany.
 
    ```powershell
    $updateManagementModuleName = "Microsoft.Azurestack.UpdateManagement"
@@ -66,7 +65,7 @@ Można również określić, czy polecenia cmdlet są dostępne programowo badaj
     } 
    ```
 
-4. Lista poleceń specyficznych dla modułu Microsoft.AzureStack.UpdateManagement.
+4. Utwórz listę poleceń, które są specyficzne dla modułu Microsoft.AzureStack.UpdateManagement.
 
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName 
@@ -78,29 +77,28 @@ Można również określić, czy polecenia cmdlet są dostępne programowo badaj
    CommandType     Name                                               Version    Source                                                  PSComputerName
     -----------     ----                                               -------    ------                                                  --------------
    Function        Get-AzureStackUpdateStatus                         0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
-   Function        Get-AzureStackUpdateVerboseLog                     0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
 
-## <a name="use-the-update-management-cmdlets"></a>Użyj polecenia cmdlet do zarządzania aktualizacji
+## <a name="use-the-update-management-cmdlets"></a>Użyj poleceń cmdlet do zarządzania aktualizacji
 
 > [!NOTE]
-> Uruchom następujące polecenia z hosta cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej. Ponadto upewnij się, że zaufanego hosta jest uprzywilejowane punktu końcowego. Aby uzyskać więcej informacji, zobacz krok 1 [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
+> Uruchom następujące polecenia z hosta cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem. Ponadto upewnij się, że uprzywilejowanych punkt końcowy jest zaufanego hosta. Aby uzyskać więcej informacji, zobacz krok 1 [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
 
-### <a name="connect-to-the-privileged-endpoint-and-assign-session-variable"></a>Podłącz do punktu końcowego uprzywilejowanych i przypisz zmiennej sesji
+### <a name="connect-to-the-privileged-endpoint-and-assign-session-variable"></a>Podłącz do endpoint uprzywilejowanych i przypisz zmiennej sesji
 
-Uruchom następujące polecenia, aby utworzyć sesję programu PowerShell na każdym ERCS maszyn wirtualnych w środowisku Azure stosu (*prefiksu*-ERCS01, *prefiksu*-ERCS02, lub *prefiksu*-ERCS03) i przypisać zmiennej sesji.
+Uruchom następujące polecenia, aby utworzyć sesję programu PowerShell na każdym ERCS maszyn wirtualnych w środowisku usługi Azure Stack (*prefiksu*-ERCS01, *prefiksu*-ERCS02, lub *prefiksu*-ERCS03), a także przypisać zmiennej sesji.
 
 ```powershell
 $cred = Get-Credential
 
 $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
 ```
- Po wyświetleniu monitu o poświadczenia, użyj &lt; *domeny stosu Azure*&gt;\cloudadmin konta lub konta, które jest członkiem grupy CloudAdmins. Dla konta CloudAdmin wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+ Gdy zostanie wyświetlony monit o poświadczenia, &lt; *domeny usługi Azure Stack*&gt;\cloudadmin konto lub konta które jest członkiem grupy CloudAdmins. Dla konta CloudAdmin wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
-### <a name="get-high-level-status-of-the-current-update-run"></a>Pobierz stan wysokiego poziomu bieżącego przebiegu aktualizacji 
+### <a name="get-high-level-status-of-the-current-update-run"></a>Uzyskaj ogólny stan bieżący przebieg aktualizacji 
 
-Aby uzyskać ogólny stan bieżącego przebiegu aktualizacji, uruchom następujące polecenia: 
+Aby uzyskać ogólny stan bieżący przebieg aktualizacji, uruchom następujące polecenia: 
 
 ```powershell
 $statusString = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus -StatusOnly }
@@ -110,16 +108,16 @@ $statusString.Value
 
 Możliwe wartości obejmują:
 
-- Działa
-- Ukończono
-- Błąd 
+- Działanie
+- Zakończone
+- Niepowodzenie 
 - Anulowane
 
-Można uruchomić te polecenia, aby zobaczyć stan najbardziej aktualne. Nie trzeba ponownie ustanowić połączenia, aby ponownie sprawdzić.
+Można uruchomić te polecenia wielokrotnie, aby wyświetlić najbardziej aktualny stan. Nie trzeba ponownie ustanowić połączenia, aby ponownie sprawdzić.
 
-### <a name="get-the-full-update-run-status-with-details"></a>Pobierz aktualizację pełny stan uruchomienia przy użyciu szczegółów 
+### <a name="get-the-full-update-run-status-with-details"></a>Uzyskaj pełną aktualizację stan uruchomienia ze szczegółowymi informacjami 
 
-Możesz uzyskać pełnej aktualizacji uruchom podsumowanie jako ciągu XML. Możesz zapisać ciąg do pliku w celu zbadania, lub przekonwertować go do dokumentu XML i przeanalizować go przy użyciu programu PowerShell. Polecenie analizuje XML w celu uzyskania listy hierarchiczne aktualnie uruchomionych kroków.
+Możesz uzyskać pełną aktualizację Uruchom podsumowanie jako ciąg znaków XML. Możesz zapisać ciąg do pliku w celu badania, lub przekonwertować go do dokumentu XML i analizy przy użyciu programu PowerShell. Następujące polecenie analizuje XML hierarchiczną listę aktualnie uruchomionych kroki.
 
 ```powershell
 [xml]$updateStatus = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus }
@@ -127,7 +125,7 @@ Możesz uzyskać pełnej aktualizacji uruchom podsumowanie jako ciągu XML. Moż
 $updateStatus.SelectNodes("//Step[@Status='InProgress']")
 ```
 
-W poniższym przykładzie kroku najwyższego poziomu (aktualizacja chmury) ma planu podrzędnych zaktualizować i uruchomić ponownie hostów magazynu. Pokazuje, że plan ponownego uruchomienia hostów magazynu jest aktualizacji usługi magazynu obiektów Blob na jednym z hostów.
+W poniższym przykładzie kroku najwyższego poziomu (aktualizacja chmury) ma plan podrzędnych do aktualizacji i ponownie uruchom hosty magazynu. Pokazuje, czy plan hostów ponownie uruchomić Magazyn aktualizuje usługi Blob Storage na jednym z hostów.
 
 ```powershell
 [xml]$updateStatus = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus }
@@ -160,32 +158,9 @@ $updateStatus.SelectNodes("//Step[@Status='InProgress']")
     Task          : Task
 ```
 
-### <a name="get-the-verbose-progress-log"></a>Pobierz dziennik pełne postępu
+### <a name="resume-a-failed-update-operation"></a>Wznów operacja aktualizacji nie powiodło się
 
-Dziennik może zapisać do pliku w celu zbadania. Może to pomóc w diagnozowaniu Niepowodzenie aktualizacji.
-
-```powershell
-$log = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateVerboseLog }
-
-$log > ".\UpdateVerboseLog.txt" 
-```
-
-### <a name="actively-view-the-verbose-logging"></a>Aktywnie wyświetlić pełne rejestrowanie
-
-Aby aktywnie widoku pełnego dziennika podczas aktualizacji uruchom i przejść do najnowsze wpisy uruchom następujące polecenia wprowadzenia sesji w trybie interakcyjnym i wyświetlania dziennika:
-
-```powershell
-Enter-PSSession -Session $pepSession 
-
-Get-AzureStackUpdateVerboseLog -Wait 
-```
-Dziennik aktualizuje co 60 sekund i nową zawartość (jeśli jest dostępny) jest wyświetlony w konsoli. 
-
-Podczas długotrwałych procesów w tle dane wyjściowe konsoli może nie można zapisać konsolę przez pewien czas. Aby anulować interakcyjne dane wyjściowe, naciśnij klawisze Ctrl + C. 
-
-### <a name="resume-a-failed-update-operation"></a>Operacja aktualizacji nie powiodło się wznowienie
-
-Jeśli aktualizacja nie powiedzie się, można wznowić przebiegu, którym przerwał aktualizacji.
+W przypadku niepowodzenia aktualizacji można wznowić przebiegu, tam, gdzie ją przerwaliśmy aktualizacji.
 
 ```powershell
 Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate } 
@@ -193,10 +168,10 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Uprzywilejowane punkt końcowy jest dostępny na wszystkich maszynach wirtualnych ERCS w środowisku Azure stosu. Ponieważ połączenie nie jest możliwe do punktu końcowego wysokiej dostępności, mogą wystąpić przerwy okazjonalne, ostrzeżenia lub komunikaty o błędach. Te komunikaty może wskazywać, że sesja została rozłączona lub wystąpił błąd podczas komunikacji z usługą NZ. To zachowanie jest oczekiwane. Można ponowić próbę za kilka minut lub utworzyć nową sesję uprzywilejowanych punktu końcowego na jednym z innych maszyn wirtualnych ERCS. 
+Uprzywilejowane końcowy jest dostępny na wszystkich maszynach wirtualnych ERCS w środowisku usługi Azure Stack. Ponieważ nie nawiązujesz połączenie z punktu końcowego o wysokiej dostępności, mogą występować sporadycznie przerw w działaniu, ostrzeżenia lub komunikaty o błędach. Te komunikaty może wskazywać, że sesja została rozłączona lub wystąpił błąd podczas komunikacji z usługą ONZ. To zachowanie jest oczekiwane. Można ponowić próbę wykonania operacji za kilka minut lub utworzyć nową sesję uprzywilejowanych punktu końcowego na jednym z innych maszyn wirtualnych ERCS. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zarządzanie aktualizacjami w stosie Azure](azure-stack-updates.md) 
+- [Zarządzanie aktualizacjami w usłudze Azure Stack](azure-stack-updates.md) 
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056804"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057088"
 ---
 # <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
@@ -28,7 +28,7 @@ Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie m
 
 ## <a name="scenario"></a>Scenariusz
 
-W poniższym scenariuszu znajduje się przykład dziennika przepływu, który jest przechowywany na koncie magazynu. Firma Microsoft przejrzeć jak selektywnie odczytu najnowszych zdarzeń w dzienników przepływu sieciowych grup zabezpieczeń. W tym artykule używamy programu PowerShell, jednak kwestie omówione w artykule, nie są ograniczone do języka programowania i mają zastosowanie do wszystkich językach obsługiwanych przez interfejsy API usługi Azure Storage
+W poniższym scenariuszu znajduje się przykład dziennika przepływu, który jest przechowywany na koncie magazynu. Dowiesz się, jak można selektywnie odczytać najnowszych zdarzeń w dzienników przepływu sieciowych grup zabezpieczeń. W tym artykule używasz programu PowerShell, jednak kwestie omówione w artykule nie są ograniczone do języka programowania i mające zastosowanie do wszystkich języków obsługiwanych przez interfejsy API usługi Azure Storage.
 
 ## <a name="setup"></a>Konfigurowanie
 
@@ -98,7 +98,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Przeczytaj blokowych obiektów blob
 
-Następnie należy odczytać `$blocklist` zmiennej w celu pobrania danych. W tym przykładzie, który możemy wykonać iterację listy blokowania odczytu bajtów z każdego bloku i ich historii w tablicy. Używamy [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody do pobierania danych.
+Następnie należy odczytać `$blocklist` zmiennej w celu pobrania danych. W tym przykładzie, który możemy wykonać iterację listy blokowania odczytu bajtów z każdego bloku i ich historii w tablicy. Użyj [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody do pobierania danych.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -132,7 +132,7 @@ $valuearray += $value
 }
 ```
 
-Teraz `$valuearray` tablica zawiera wartość ciągu każdy blok. Aby sprawdzić, czy wpis, Pobierz drugi na ostatnią wartość z tablicy, uruchamiając `$valuearray[$valuearray.Length-2]`. Firma Microsoft nie chcę ostatnią wartość jest po prostu nawias zamykający.
+Teraz `$valuearray` tablica zawiera wartość ciągu każdy blok. Aby sprawdzić, czy wpis, Pobierz drugi na ostatnią wartość z tablicy, uruchamiając `$valuearray[$valuearray.Length-2]`. Nie ma zostać zwrócona wartość ostatniego, ponieważ jest nawias zamykający.
 
 Wyniki tej wartości zostaną wyświetlone w następującym przykładzie:
 
@@ -157,7 +157,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ```
 
 Ten scenariusz jest przykładem sposobu odczytywania wpisów dzienników przepływu sieciowych grup zabezpieczeń bez konieczności przeanalizować cały dziennik. Może odczytywać nowe wpisy w dzienniku, jak zostały napisane przy użyciu Identyfikatora bloku lub przez śledzenie długość bloki przechowywane w blokowych obiektów blob. Dzięki temu można odczytać tylko nowe wpisy.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

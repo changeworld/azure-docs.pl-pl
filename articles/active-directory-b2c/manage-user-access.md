@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716148"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055537"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ W zależności od rozporządzenie aplikacji zgody rodziców, może być konieczn
 
 Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
-1. [Interfejsu API usługi Azure Active Directory Graph](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) operacji identyfikuje użytkownika jako pomocnicze i zwraca dane użytkownika do aplikacji w postaci bez znaku token JSON.
+1. [Interfejsu API usługi Azure Active Directory Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) operacji identyfikuje użytkownika jako pomocnicze i zwraca dane użytkownika do aplikacji w postaci bez znaku token JSON.
 
 2. Aplikacja przetwarza JSON token i zawiera ekran z pomocnicze, powiadamianie mu, że wymagana jest zgoda rodzica i żądanie wyrażenia zgody przez nadrzędne w trybie online. 
 
@@ -56,7 +56,7 @@ Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
 5. W przypadku drobnych lub osobą dorosłą odwołuje zgody, interfejsu API programu Graph usługi Azure AD może służyć do zmiany **consentProvidedForMinor** do **odmowa**. Aplikacja może też usunąć pomocnicze, w których zgody został odwołany. Użytkownik może opcjonalnie można dostosowywać przepływ użytkownika, tak aby uwierzytelniony pomocnicze (lub obiektu nadrzędnego, który jest przy użyciu jego konta), można odwołać zgody. Usługa Azure AD B2C rekordów **consentProvidedForMinor** jako **odmowa**.
 
-Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**, i **grupy wiekowej**, zobacz [typ zasobu użytkownika](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji na temat atrybutów niestandardowych, zobacz [Wykorzystaj niestandardowe atrybuty do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). Po wykonaniu atrybuty rozszerzone przy użyciu interfejsu API programu Graph usługi Azure AD możesz korzystać tylko długiej atrybutu, takich jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**, i **grupy wiekowej**, zobacz [typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji na temat atrybutów niestandardowych, zobacz [Wykorzystaj niestandardowe atrybuty do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). Po wykonaniu atrybuty rozszerzone przy użyciu interfejsu API programu Graph usługi Azure AD możesz korzystać tylko długiej atrybutu, takich jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-country-data"></a>Zbierz daty urodzenia i kraju danych
 

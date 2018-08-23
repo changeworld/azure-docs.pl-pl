@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e007fd5e616b24b3a802b7ded0cd879bb0d7f34b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 994df42557ebd99d159e531f11ffa892be2e9870
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436012"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918001"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -75,7 +75,7 @@ Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Serve
 1. W widoku drzewa kliknij prawym przyciskiem myszy utworzoną bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
 
 ### <a name="azure-storage-account"></a>Konto magazynu Azure
-W tym samouczku używasz konta usługi Azure Storage ogólnego przeznaczenia (konkretnie usługi Blob Storage) jako magazynu danych: docelowego/ujścia. Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account). Potok w fabryce danych tworzony w tym samouczku kopiuje dane z lokalnej bazy danych programu SQL Server (źródła) do tej usługi Blob Storage (ujścia). 
+W tym samouczku używasz konta usługi Azure Storage ogólnego przeznaczenia (konkretnie usługi Blob Storage) jako magazynu danych: docelowego/ujścia. Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md). Potok w fabryce danych tworzony w tym samouczku kopiuje dane z lokalnej bazy danych programu SQL Server (źródła) do tej usługi Blob Storage (ujścia). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Pobieranie nazwy konta i klucza konta magazynu
 W tym samouczku używasz nazwy i klucza swojego konta magazynu. Pobierz nazwę i klucz konta magazynu, wykonując następujące kroki: 
@@ -269,15 +269,15 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
 1. Powinien nastąpić powrót do okna z otwartym zestawem danych ujścia. Na karcie **Połączenie** wykonaj następujące kroki: 
 
-       a. In **Linked service**, confirm that **AzureStorageLinkedService** is selected.
+    a. Upewnij się, że w polu **Połączona usługa** wybrano wartość **AzureStorageLinkedService**.
 
-       b. For the **folder**/ **Directory** part of **File path**, enter **adftutorial/fromonprem**. If the output folder doesn't exist in the adftutorial container, Data Factory automatically creates the output folder.
+    b. Jako część **folder**/ **katalog** w polu **Ścieżka pliku** wprowadź wartość **adftutorial/incrementalcopy**. Jeśli folder wyjściowy nie istnieje w kontenerze adftutorial, usługa Data Factory automatycznie utworzy folder wyjściowy.
 
-       c. For the **file name** part of **File path**, select **Add dynamic content**.   
+    d. W przypadku części **nazwa pliku** w polu **Ścieżka pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.   
 
     ![dynamiczna wartość nazwy pliku](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-       d. Add `@CONCAT(pipeline().RunId, '.txt')`, select **Finish**. This will rename the file with PipelineRunID.txt. 
+    d. Dodaj test `@CONCAT(pipeline().RunId, '.txt')` i wybierz pozycję **Zakończ**. Spowoduje to zmianę nazwy pliku na PipelineRunID.txt. 
 
     ![wyrażenie dynamiczne do rozpoznawania nazwy pliku](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
 

@@ -1,25 +1,26 @@
 ---
 title: Publikowanie WebApplicationVM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć aplikację sieci web do maszyny wirtualnej. Ten skrypt tworzy wymaganych zasobów w Twojej subskrypcji platformy Azure, jeśli nie istnieją.
+description: Dowiedz się, jak wdrożyć aplikację sieci web, do maszyny wirtualnej. Ten skrypt tworzy wymagane zasoby w subskrypcji platformy Azure, jeśli nie istnieją.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 3fdd11387096d95359fb5f578ca64720f2182c45
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c2dc6057eeb4eba1306309785e13192674bc43c6
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795915"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058228"
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publikowanie WebApplicationVM (skrypt programu Windows PowerShell)
-Wdraża aplikację sieci web do maszyny wirtualnej. Skrypt tworzy wymaganych zasobów w Twojej subskrypcji platformy Azure, jeśli nie istnieją.
+Wdraża aplikację sieci web do maszyny wirtualnej. Skrypt tworzy wymagane zasoby w subskrypcji platformy Azure, jeśli nie istnieją.
 
 ```
 Publish-WebApplicationVM
@@ -33,48 +34,48 @@ Publish-WebApplicationVM
 ```
 
 ### <a name="configuration"></a>Konfigurowanie
-Ścieżka do pliku konfiguracji JSON, który opisuje szczegóły wdrożenia.
+Ścieżka do pliku konfiguracji JSON opisujące szczegóły wdrożenia.
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |true |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |brak |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="subscriptionname"></a>Nazwa subskrypcji
-Nazwa subskrypcji platformy Azure, w którym chcesz utworzyć maszynę wirtualną.
+Nazwa subskrypcji platformy Azure, w której chcesz utworzyć maszynę wirtualną.
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |Używa pierwszej subskrypcji w pliku subskrypcji |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
-Ścieżka do pakietu wdrożeniowego sieci web do publikowania do maszyny wirtualnej. Ten pakiet można utworzyć za pomocą kreatora Publikowanie w sieci Web w programie Visual Studio. Zobacz [jak: utworzyć pakiet wdrożeniowy sieci Web w programie Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
+Ścieżka do pakietu wdrożeniowego sieci web do publikowania do maszyny wirtualnej. Ten pakiet jest tworzony za pomocą kreatora Publikowanie w sieci Web w programie Visual Studio. Zobacz [jak: utworzyć pakiet wdrożeniowy sieci Web w programie Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |brak |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
-Jeśli PRAWDA, Zezwalaj na korzystanie z certyfikatów, które nie są podpisane przez zaufanego głównego urzędu.
+Jeśli PRAWDA, Zezwalaj na korzystanie z certyfikatów, które nie są podpisane przez zaufanego głównego urzędu certyfikacji.
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |false |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="vmpassword"></a>VMPassword
 Poświadczenia dla konta maszyny wirtualnej. Przykład: - VMPassword @{nazwa = "admin"; Hasło = "password"}
@@ -82,37 +83,37 @@ Poświadczenia dla konta maszyny wirtualnej. Przykład: - VMPassword @{nazwa = "
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |brak |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-Poświadczenia bazy danych SQL platformy Azure. Przykład: - DatabaseServerPassword @{nazwa = "admin"; Hasło = "password"}
+Poświadczenia bazy danych SQL na platformie Azure. Przykład: - DatabaseServerPassword @{nazwa = "admin"; Hasło = "password"}
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |brak |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-Jeśli PRAWDA, Drukuj komunikaty z skrypt do strumienia wyjściowego.
+W przypadku opcji true drukowania komunikatów ze skryptu do strumienia wyjściowego.
 
 | Aliasy | brak |
 | --- | --- |
 | Wymagana? |false |
-| Położenie |o nazwie |
+| Pozycja |o nazwie |
 | Wartość domyślna |false |
-| Akceptowanie danych wejściowych potoku? |false |
-| Akceptowanie symboli wieloznacznych? |false |
+| Akceptować wejście potokowe? |false |
+| Akceptować symbole wieloznaczne? |false |
 
 ## <a name="remarks"></a>Uwagi
-Pełny opis sposobów użycia skryptu do tworzenia środowisk do tworzenia i testowania, zobacz [za pomocą skryptów programu PowerShell systemu Windows do opublikowania deweloperów i środowisk testowych](vs-azure-tools-publishing-using-powershell-scripts.md).
+Aby uzyskać pełne wyjaśnienie sposobu użyć skryptu, aby utworzyć środowiska deweloperskie i testowe, zobacz [za pomocą skryptów programu PowerShell Windows Publikuj deweloperskim i testowym](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-Plik JSON konfiguracji określa szczegóły co ma zostać wdrożona. Zawiera informacje, które zostało określone podczas tworzenia projektu, takie jak nazwa grupy koligacji, obrazu wirtualnego dysku twardego i rozmiar maszyny wirtualnej. Także zawiera punkty końcowe na maszynie wirtualnej, baz danych, aby było możliwe, jeśli istnieje i parametry wdrażania w sieci web. Poniższy kod przedstawia przykładowy plik konfiguracji JSON:
+Plik konfiguracji JSON określa szczegóły co ma zostać wdrożony. Zawiera informacje, które zostały określone podczas tworzenia projektu, takie jak nazwa grupy koligacji, obraz wirtualnego dysku twardego i rozmiar maszyny wirtualnej. Ponadto zawiera punkty końcowe na maszynie wirtualnej, baz danych, aby zainicjować obsługę, jeśli istnieje i sieci web parametrów wdrożenia. Poniższy kod przedstawia przykładowy plik konfiguracji JSON:
 
 ```
 {
@@ -181,5 +182,5 @@ Plik JSON konfiguracji określa szczegóły co ma zostać wdrożona. Zawiera inf
 }
 ```
 
-Można edytować plik JSON konfiguracji do zmiany, jakie są obsługiwane. Maszyny wirtualne i usługi w chmurze są wymagane, ale w sekcji bazy danych jest opcjonalna.
+Można edytować plik JSON konfiguracji do zmiany, co jest aprowizowana. Maszyny wirtualne i usługi w chmurze są wymagane, ale sekcja bazy danych jest opcjonalna.
 

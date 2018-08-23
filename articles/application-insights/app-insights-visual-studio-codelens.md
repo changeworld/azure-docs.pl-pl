@@ -1,26 +1,29 @@
 ---
-title: "Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio | Microsoft Docs"
-description: "Szybki dostęp do żądania usługi Application Insights i wyjątków telemetrii za pomocą funkcji CodeLens w programie Visual Studio."
+title: Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio | Microsoft Docs
+description: Szybki dostęp do żądania usługi Application Insights i wyjątków telemetrii za pomocą funkcji CodeLens w programie Visual Studio.
 services: application-insights
 documentationcenter: .net
-author: numberbycolors
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
 ms.service: application-insights
-ms.workload: tbd
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
+ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 418c391f896ac60f509b963f0aff70ad699fc43b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 7df49258895aa0dfa5c8cc592914ba6998a97cb8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442114"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio
-Metody w kodzie aplikacji sieci Web mogą być adnotowane przy użyciu telemetrii dotyczącej wyjątków czasu wykonywania i czasu odpowiedzi na żądanie. W przypadku instalowania usługi [Azure Application Insights](app-insights-overview.md) w aplikacji dane telemetryczne pojawią się w funkcji [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) programu Visual Studio — w uwagach na górze każdej funkcji, w których są wyświetlane użyteczne informacje, takie jak liczba miejsc, w których odwoływano się do funkcji i nazwisko ostatniej osoby, która ją edytowała.
+Metody w kodzie aplikacji internetowej mogą być adnotowane przy użyciu telemetrii dotyczącej wyjątków czasu wykonywania i czasu odpowiedzi na żądanie. W przypadku instalowania usługi [Azure Application Insights](app-insights-overview.md) w aplikacji dane telemetryczne pojawią się w funkcji [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) programu Visual Studio — w uwagach na górze każdej funkcji, w których są wyświetlane użyteczne informacje, takie jak liczba miejsc, w których odwoływano się do funkcji i nazwisko ostatniej osoby, która ją edytowała.
 
 ![CodeLens](./media/app-insights-visual-studio-codelens/codelens-overview.png)
 
@@ -30,7 +33,7 @@ Metody w kodzie aplikacji sieci Web mogą być adnotowane przy użyciu telemetri
 > 
 
 ## <a name="where-to-find-application-insights-data"></a>Znajdywanie danych usługi Application Insights
-Poszukaj danych telemetrycznych usługi Application Insights we wskaźnikach CodeLens dla metod publicznych żądań aplikacji sieci Web. Wskaźniki CodeLens są wyświetlane powyżej metody i innych deklaracji w kodzie języka C# i Visual Basic. Jeśli dane usługi Application Insights są dostępne dla metody, zobaczysz wskaźniki dla żądań i wyjątków, takie jak „100 żądań, 1% zakończony niepowodzeniem” lub „Liczba wyjątków: 10”. Kliknij wskaźnik CodeLens, aby uzyskać więcej szczegółów. 
+Poszukaj danych telemetrycznych usługi Application Insights we wskaźnikach CodeLens dla metod publicznych żądań aplikacji internetowej. Wskaźniki CodeLens są wyświetlane powyżej metody i innych deklaracji w kodzie języka C# i Visual Basic. Jeśli dane usługi Application Insights są dostępne dla metody, zobaczysz wskaźniki dla żądań i wyjątków, takie jak „100 żądań, 1% zakończony niepowodzeniem” lub „Liczba wyjątków: 10”. Kliknij wskaźnik CodeLens, aby uzyskać więcej szczegółów. 
 
 > [!TIP]
 > Ładowanie wskaźników żądań i wyjątków usługi Application Insights może potrwać kilka dodatkowych sekund dłużej niż wyświetlenie innych wskaźników CodeLens.

@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363618"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055223"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie aprowizacja kont użytkowników
 
 
-Usługa Azure Active Directory obejmuje [konta użytkownika usługi aprowizacji](active-directory-saas-app-provisioning.md) który ułatwia automatyzację inicjowania obsługi anulowania obsługi administracyjnej kont użytkowników w aplikacji SaaS i innych systemów, na potrzeby cyklu życia tożsamości end-to-end Zarządzanie. Usługa Azure AD obsługuje wstępnie zintegrowanych użytkownika aprowizacji łączniki dla wszystkich aplikacji i systemów, w sekcji "Proponowany" [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Usługa Azure Active Directory obejmuje [konta użytkownika usługi aprowizacji](active-directory-saas-app-provisioning.md) który ułatwia automatyzację inicjowania obsługi anulowania obsługi administracyjnej kont użytkowników w aplikacji SaaS i innych systemów, na potrzeby cyklu życia tożsamości end-to-end Zarządzanie. Usługa Azure AD obsługuje wstępnie zintegrowanych użytkownika aprowizacji łączniki dla wszystkich aplikacji i systemów, w sekcji "Proponowany" [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 W tym artykule opisano, jak sprawdzić stan zadań inicjowania obsługi administracyjnej po zostało skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
 

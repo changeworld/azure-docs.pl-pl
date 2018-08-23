@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 7d371a5a44f44ca743294f3f73f84e81d390cdea
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867780"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987458"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Tworzenie klienta wyszukiwania aplikacji konsoli w języku C#
 
@@ -46,7 +46,7 @@ Nazwij aplikację **MyConsoleSearchApp**, a następnie kliknij przycisk **OK**.
 Zezwala na składnik JSON.net do pracy z odpowiedziami JSON zwracane przez interfejs API. Dodawanie pakietu NuGet do projektu:
 
 - W **Eksploratora rozwiązań** prawym przyciskiem myszy projekt i wybierz **Zarządzaj pakietami NuGet...** . 
-- Na **Przeglądaj** karta, wyszukiwania, wyszukaj `Newtonsoft.Json`. Wybierz najnowszą wersję, a następnie kliknij przycisk **zainstalować**. 
+- Na **Przeglądaj** kartę, wyszukaj `Newtonsoft.Json`. Wybierz najnowszą wersję, a następnie kliknij przycisk **zainstalować**. 
 - Kliknij przycisk **OK** znajdujący się na **przeglądanie zmian** okna.
 - Zamknij kartę programu Visual Studio o nazwie **NuGet: MyConsoleSearchApp**.
 
@@ -308,7 +308,7 @@ Te metody współpracują w celu wyświetlenia wyników wyszukiwania do konsoli.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację. Dane wyjściowe powinny wyglądać podobnie do poniższej:
+Uruchom aplikację. Dane wyjściowe powinny wyglądać mniej więcej tak:
 
 ```
 Enter Bing query: sailing lessons seattle

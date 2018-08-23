@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502332"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061026"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services — przewodnik rozwiązywania problemów
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, które można napotkać podczas konfigurowania lub administrowania usługi domenowe Azure Active Directory (AD).
@@ -139,7 +139,7 @@ Jeśli co najmniej jeden użytkownik w dzierżawie usługi Azure AD są w stanie
 * **Konta zewnętrzne:** upewnij się, że konto użytkownika nie jest kontem zewnętrznym w dzierżawie usługi Azure AD. Zewnętrzne konta przykłady kont Microsoft (na przykład "joe@live.com") lub kont użytkowników z zewnętrznej katalog usługi Azure AD. Ponieważ usługi domenowe Azure AD nie ma poświadczeń dla takich kont użytkownika, tych użytkowników nie Zaloguj się do domeny zarządzanej.
 * **Zsynchronizowane konta:** Jeśli konta użytkownika są synchronizowane z katalogu lokalnego, upewnij się, że:
 
-  * Wdrożeniu lub zaktualizowane w celu [najnowsze zalecana wersja programu Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+  * Wdrożeniu lub zaktualizowane w celu [najnowsze zalecana wersja programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Skonfigurowano usługi Azure AD Connect, aby [przeprowadzić pełną synchronizację](active-directory-ds-getting-started-password-sync.md).
   * W zależności od rozmiaru katalogu może zająć trochę czasu kont użytkowników i poświadczeń skróty, które mają być dostępne w usługach domenowych Azure AD. Upewnij się, że czekasz wystarczająco długo przed ponowieniem próby uwierzytelnienia.
   * Jeśli problem nie zniknie po sprawdzeniu w poprzednich krokach, spróbuj ponownie uruchomić usługę Microsoft Azure AD Sync. Na maszynie synchronizacji Uruchom wiersz polecenia i uruchom następujące polecenia:

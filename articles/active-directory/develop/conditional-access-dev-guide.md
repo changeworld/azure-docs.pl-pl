@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 7b41d3af5fbbbef90676fe37056b69d89c4f6c48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581544"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056203"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ Deweloperzy mogą zająć temu wyzwaniu i dołącz go na nowe żądanie do usłu
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Dostęp warunkowy usługi Azure AD jest to funkcja dostępna w [usługi Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis#choose-an-edition). Dowiedz się więcej na temat licencjonowania wymagań [raport użycia nielicencjonowane](../active-directory-conditional-access-unlicensed-usage-report.md). Deweloperzy mogą dołączyć do [sieci Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), co obejmuje bezpłatna subskrypcja pakietu Enterprise Mobility Suite, która obejmuje usługi Azure AD Premium.
+Dostęp warunkowy usługi Azure AD jest to funkcja dostępna w [usługi Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition). Dowiedz się więcej na temat licencjonowania wymagań [raport użycia nielicencjonowane](../active-directory-conditional-access-unlicensed-usage-report.md). Deweloperzy mogą dołączyć do [sieci Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), co obejmuje bezpłatna subskrypcja pakietu Enterprise Mobility Suite, która obejmuje usługi Azure AD Premium.
 
 ### <a name="considerations-for-specific-scenarios"></a>Zagadnienia dotyczące konkretnych scenariuszy
 

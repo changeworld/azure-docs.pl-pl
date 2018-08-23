@@ -1,22 +1,49 @@
 ---
-title: Dokumentacja zestawu SDK usługi rozpoznawania mowy usług cognitive Services
+title: Dokumentacja zestawu SDK usługi rozpoznawania mowy usług cognitive Services | Dokumentacja firmy Microsoft
 description: Informacje o wersji — co zmieniło się w najnowszych wersjach
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502462"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41994395"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Services cognitive mowy wersji zestawu SDK 0.6.0: sierpnia 2018 r.
+
+**Nowe funkcje**
+
+* Aplikacje platformy UWP skompilowanych przy użyciu zestawu SDK rozpoznawania mowy, można teraz przekazywać Windows App certyfikacji Kit (WACK).
+  Zapoznaj się z naszym [Szybki Start platformy uniwersalnej systemu Windows](quickstart-csharp-uwp.md).
+* Obsługa .NET Standard 2.0 w systemie Linux (Ubuntu 16.04 x 64).
+* Eksperymentalne: Obsługuje Java 8 Windows (wersja 64-bitowa) i systemu Linux (Ubuntu 16.04 x 64).
+  Zapoznaj się z [Szybki Start środowiska wykonawczego języka Java](quickstart-java-jre.md)
+
+**Zmiany funkcjonalne**
+
+* Udostępnianie dodatkowe szczegółowe informacje na temat błędów połączenia.
+
+**Fundamentalne zmiany**
+
+* W języku Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkcja nie wymaga już parametr ścieżki. Ścieżka teraz jest wykrywany automatycznie na wszystkich obsługiwanych platformach.
+* Get akcesora właściwości `EndpointUrl` w środowiskach Java i C# został usunięty.
+
+**Poprawki błędów**
+
+* W języku Java wynik rozpoznawania translacji dla syntezy audio jest teraz implementowane.
+* Naprawiono usterkę, która może spowodować, że nieaktywny wątków i zwiększonej liczby gniazd nieużywane i Otwórz.
+* Rozwiązano problem, gdzie długotrwałe rozpoznawania można zakończyć w środku transmisji.
+* Stała wyścigu rozpoznawania zamknięcia.
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Services cognitive mowy wersji zestawu SDK wersję 0.5.0: lipca 2018 r.
 

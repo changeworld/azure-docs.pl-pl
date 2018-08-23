@@ -3,17 +3,16 @@ title: Schemat zdarzeń grupy zasobów platformy Azure Event Grid
 description: Opisuje właściwości, które są dostarczane dla zdarzenia grupę zasobów za pomocą usługi Azure Event Grid
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 407d9fd5b6f4d554af37b60edf12422f8816ac00
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 22629ba553cc58435f99ed0fed97be252b24b409
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495326"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059263"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schemat zdarzeń Azure Event Grid dla grup zasobów
 
@@ -27,7 +26,9 @@ Po dokonaniu subskrypcji zdarzeń dla grupy zasobów, punkt końcowy usługi odb
 
 Programowe obsługi zdarzeń, zdarzenia można sortować, analizując `operationName` wartość. Na przykład zdarzenie punktu końcowego może przetwarzać tylko zdarzenia dla operacji, które są równe `Microsoft.Compute/virtualMachines/write` lub `Microsoft.Storage/storageAccounts/write`.
 
-Temat zdarzenia jest identyfikator zasobu, zasób, który jest miejscem docelowym operacji. Aby filtrować zdarzenia dla zasobu, należy podać tego zasobu IDENTYFIKATORA podczas tworzenia subskrypcji zdarzeń. Aby uzyskać przykładowe skrypty, zobacz [subskrypcji i filtr dla grupy zasobów — program PowerShell](scripts/event-grid-powershell-resource-group-filter.md) lub [subskrypcji i filtr dla grupy zasobów — interfejs wiersza polecenia platformy Azure](scripts/event-grid-cli-resource-group-filter.md). Aby filtrować według typu zasobu, należy użyć wartości w następującym formacie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Temat zdarzenia jest identyfikator zasobu, zasób, który jest miejscem docelowym operacji. Aby filtrować zdarzenia dla zasobu, należy podać tego zasobu IDENTYFIKATORA podczas tworzenia subskrypcji zdarzeń.  Aby filtrować według typu zasobu, należy użyć wartości w następującym formacie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń w grupie zasobów](event-sources.md#resource-groups).
 
 ## <a name="available-event-types"></a>Zdarzenie dostępne typy
 

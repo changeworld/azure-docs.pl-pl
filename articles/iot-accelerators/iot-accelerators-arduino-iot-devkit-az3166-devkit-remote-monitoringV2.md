@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 88ce34125009665d346cf034f5d02ba7e21f48fc
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969456"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056223"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT DevKit az3166 usługi do akceleratora rozwiązań IoT zdalnego monitorowania
 
@@ -139,12 +139,6 @@ W ciągu kilku sekund fizycznych modułem MX należy zmienić kolor RGB prowadzo
 
 ![Prowadziły mikroukładu MX](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
 
-
-## <a name="change-device-id"></a>Zmiana Identyfikatora urządzenia
-
-Identyfikator urządzenia w usłudze IoT Hub można zmienić, wykonując poniższe [tego przewodnika](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
-
-
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
 Jeśli napotkasz problemy, zapoznaj się [— często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub się z nami od następujące kanały:
@@ -158,3 +152,4 @@ Teraz, gdy wiesz jak połączyć urządzenie Mxchip Akceleratory rozwiązań IoT
 
 * [Omówienie akceleratorów rozwiązań IoT](https://docs.microsoft.com/azure/iot-suite/)
 * [Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją Microsoft IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Zestaw dla deweloperów IoT](https://microsoft.github.io/azure-iot-developer-kit/)

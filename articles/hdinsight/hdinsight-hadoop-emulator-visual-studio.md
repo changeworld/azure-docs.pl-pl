@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
 ms.openlocfilehash: 53bd629bcdf272e97c03dfb60c2693158698b837
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597382"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056324"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools for Visual Studio z Piaskownicą Hortonworks
 

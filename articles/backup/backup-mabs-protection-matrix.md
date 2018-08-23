@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 7/14/2018
+ms.date: 08/17/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 4167e8214674527039fd838f81c3489840e6ef68
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ff12428027225c62bec03b05da8e43d60cae9739
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284916"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055925"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
 
@@ -80,7 +80,7 @@ W tym artykule wymieniono różne serwerów i obciążeń, które można chroni�
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2012 — wersja Datacenter i Standard|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Tak|Tak|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2008 R2 z dodatkiem SP1 — Enterprise i Standard|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Tak|Tak|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2008 SP2|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Nie|Nie|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
-|Maszyny wirtualne VMware|Serwer VMware 5.5 i 6.0 lub 6.5 |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Y (z UR1)|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów, które są dostępne tylko dla Windows<br /> Oprogramowania vApps VMware nie jest obsługiwane|
+|Maszyny wirtualne VMware|VMware vCenter/vSphere ESX/ESXi licencjonowane 5.5/6.0/6.5 wersji |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Y (z UR1)|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
 |Linux|System Linux uruchomiony jako gość funkcji Hyper-V lub VMware|Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Funkcji Hyper-V musi działać w systemie Windows Server 2012 R2 lub Windows Server 2016. Ochrona: Cała maszyna wirtualna<br /><br />Odzyskiwanie: Cała maszyna wirtualna <br/><br/> Aby uzyskać pełną listę obsługiwanych dystrybucjach systemu Linux i wersji, zobacz artykuł [systemu Linux na dystrybucje zalecane dla platformy Azure](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="cluster-support"></a>Obsługa klastrów

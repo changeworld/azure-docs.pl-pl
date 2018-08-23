@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/21/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505515"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061064"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -59,7 +59,7 @@ Dostępne są następujące role administratora:
 
 * **[Zapisywanie katalogów](#directory-writers)**: jest to rola starszej wersji, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Nie powinien zostać przypisany do żadnych użytkowników.
 
-* **[Administrator usługi Dynamics 365 / Administrator usługi CRM](#dynamics-365-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Dynamics 365 Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i Monitorowanie kondycji usługi. Więcej informacji o [używać roli administratora usługi do zarządzania dzierżawą](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
+* **[Administrator usługi Dynamics 365 / Administrator usługi CRM](#dynamics-365-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Dynamics 365 Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i Monitorowanie kondycji usługi. Więcej informacji o [używać roli administratora usługi do zarządzania dzierżawą](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Administrator usługi Exchange](#exchange-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -74,7 +74,7 @@ Dostępne są następujące role administratora:
 
 * **[Administrator usługi Information Protection](#information-protection-administrator)**: użytkownicy z tą rolą mają wszystkie uprawnienia w usłudze Azure Information Protection. Ta rola umożliwia konfigurowanie etykiet w zasadach usługi Azure Information Protection, Zarządzanie szablonami ochrony i aktywacja ochrony. Ta rola nie przyznaje wszystkie uprawnienia w Centrum usługi Identity Protection, Privileged Identity Management, kondycji usługi Monitor Office 365, lub Office 365 Centrum zabezpieczeń i zgodności.
 
-* **[Administrator usługi Intune](#intune-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Ponadto ta rola oferuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenie grup i zarządzanie nimi. Więcej informacji o [kontrola administracji opartej na rolach (RBAC) w usłudze Microsoft Intune](https://docs.microsoft.com/en-us/intune/role-based-access-control)
+* **[Administrator usługi Intune](#intune-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Ponadto ta rola oferuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenie grup i zarządzanie nimi. Więcej informacji o [kontrola administracji opartej na rolach (RBAC) w usłudze Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
 
 * **[Komunikat czytnika Centrum](#message-center-reader)**: użytkownicy w tej roli można monitorować powiadomienia i aktualizacje porad dotyczących kondycji w [Centrum wiadomości usługi Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) dla swojej organizacji w skonfigurowanych usług, takich jak Exchange i usługi Intune i Microsoft Teams. Czytelnicy Centrum wiadomości otrzymasz tygodniowy skróty e-mail wpisów i aktualizacji i mogą udostępniać wpisy Centrum wiadomości w usłudze Office 365. W usłudze Azure AD użytkownicy przypisani do tej roli tylko mają dostęp tylko do odczytu w usługach Azure AD, takich jak użytkownicy i grupy. 
 
@@ -89,7 +89,7 @@ Dostępne są następujące role administratora:
   >
   >
   
-* **[Administrator usługi Power BI](#power-bi-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, gdy usługa jest obecna, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/en-us/power-bi/service-admin-role).
+* **[Administrator usługi Power BI](#power-bi-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, gdy usługa jest obecna, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
 
 * **[Administrator ról uprzywilejowanych](#privileged-role-administrator)**: użytkownicy z tą rolą mogą zarządzać przypisaniami ról w usłudze Azure Active Directory, a także w ramach usługi Azure AD Privileged Identity Management. Ponadto ta rola umożliwia zarządzanie wszystkimi aspektami Privileged Identity Management.
 
@@ -163,7 +163,7 @@ W poniższych tabelach opisano określone uprawnienia w usłudze Azure Active Di
 Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębiorstwa oraz zarządzać nimi.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -198,7 +198,7 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 Rejestracje aplikacji można tworzyć niezależnie od **użytkownicy mogą rejestrować aplikacje** ustawienie.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -213,7 +213,7 @@ Rejestracje aplikacji można tworzyć niezależnie od **użytkownicy mogą rejes
 Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowanie informacji o płatności.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -235,7 +235,7 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębiorstwa (z wyjątkiem serwera proxy aplikacji) oraz zarządzać nimi.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -318,7 +318,7 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 Może odczytywać konfigurację i raporty zgodności oraz zarządzać nimi w usługach Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -341,7 +341,7 @@ Może odczytywać konfigurację i raporty zgodności oraz zarządzać nimi w us�
 Może zarządzać możliwościami dostępu warunkowego.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -360,7 +360,7 @@ Może zarządzać możliwościami dostępu warunkowego.
 Użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach z systemem Windows 10 dołączonych do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -472,7 +472,7 @@ Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania do
 Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -493,7 +493,7 @@ Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 Może zarządzać wszystkimi aspektami produktu Exchange.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -536,7 +536,7 @@ Może zapraszać użytkowników-gości niezależnie od **członkowie mogą zapra
 Może resetować hasła dla użytkowników niebędących administratorami i administratorów pomocy.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -553,7 +553,7 @@ Może resetować hasła dla użytkowników niebędących administratorami i admi
 Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -574,7 +574,7 @@ Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
 Może zarządzać wszystkimi aspektami produktu Intune.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -615,7 +615,7 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -654,7 +654,7 @@ Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum 
 Nie używaj — nie są przeznaczone do użytku ogólnego.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -690,7 +690,7 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 Nie używaj — nie są przeznaczone do użytku ogólnego.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -729,7 +729,7 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 Może zarządzać wszystkimi aspektami produktu Power BI.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -750,7 +750,7 @@ Może zarządzać wszystkimi aspektami produktu Power BI.
 Mogą zarządzać przypisaniami ról w usłudze Azure AD
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -787,7 +787,7 @@ Może odczytywać raporty logowania i inspekcji.
 Może odczytywać informacje o zabezpieczeniach i raporty
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -836,7 +836,7 @@ Może odczytywać informacje i raporty o zabezpieczeniach w usługach Azure AD i
 Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy technicznej.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -856,7 +856,7 @@ Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy tec
 Może zarządzać wszystkimi aspektami usługi SharePoint.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -876,7 +876,7 @@ Może zarządzać wszystkimi aspektami usługi SharePoint.
 Może zarządzać wszystkimi aspektami użytkowników i grup
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 

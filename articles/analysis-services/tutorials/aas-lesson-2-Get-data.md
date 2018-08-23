@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443770"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055529"
 ---
 # <a name="get-data"></a>Pobieranie danych
 
@@ -52,11 +52,11 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
   
 5.  W oknie Nawigator wybierz bazę danych **AdventureWorksDW2014**, a następnie kliknij przycisk **OK**. Spowoduje to utworzenie połączenia z bazą danych. 
   
-6.  W oknie Nawigator zaznacz pole wyboru dla następujących tabel: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** i **FactInternetSales**.  
+6.  W oknie Nawigator zaznacz pole wyboru dla następujących tabel: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, i **FactInternetSales**, a następnie kliknij przycisk **Edytuj**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Kliknięcie przycisku OK spowoduje otwarcie edytora zapytań. W następnej sekcji należy wybrać jedynie te dane, które mają zostać zaimportowane.
+    Zostanie otwarty Edytor zapytań. W następnej sekcji należy wybrać jedynie te dane, które mają zostać zaimportowane.
 
   
 ## <a name="filter-the-table-data"></a>Filtrowanie danych tabeli  

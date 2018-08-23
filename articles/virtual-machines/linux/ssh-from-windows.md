@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630215"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059639"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Jak używanie kluczy SSH w systemie Windows na platformie Azure
 
@@ -33,9 +33,9 @@ W tym artykule przedstawiono sposób generowania i użytkowania kluczy protokoł
 ## <a name="windows-packages-and-ssh-clients"></a>Pakiety Windows i klientów SSH
 Nawiązywanie połączenia i zarządzanie maszynami wirtualnymi systemu Linux w systemie Azure za pomocą *klienta SSH*. Komputery z systemem Linux lub macOS, zwykle mają zestawu poleceń SSH, aby wygenerować i zarządzać kluczami SSH i nawiązywanie połączeń SSH. 
 
-Windows komputery nie zawsze mają porównywalne polecenia SSH zainstalowane. Wersje systemu Windows 10, które obejmują [podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/about) umożliwiają uruchamianie i dostęp do narzędzia, takie jak klient SSH natywnie w powłoce Bash. 
+Windows komputery nie zawsze mają porównywalne polecenia SSH zainstalowane. Najnowsze wersje systemu Windows 10 zapewniają [poleceń klienta OpenSSH](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) do tworzenia i zarządzania kluczami SSH i nawiązywać połączenia SSH z poziomu wiersza polecenia. Najnowsze wersje systemu Windows 10 również zawierają [podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/about) do uruchamiania i dostępu do narzędzi, takich jak klient SSH natywnie w powłoce Bash. 
 
-Jeśli chcesz użyć czegoś innego niż Bash Windows, typowe Windows SSH klienci instalowanej lokalnie znajdują się w następujących pakietów:
+Jeśli chcesz użyć innego narzędzia SSH dla Windows wspólnej Windows SSH klienci instalowanej lokalnie znajdują się w następujących pakietów:
 
 * [Programu puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git Pro Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ W tej sekcji przedstawiono dwie opcje, aby utworzyć parę kluczy SSH na Windows
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Tworzenie kluczy SSH przy użyciu protokołu ssh-keygen
 
-Jeśli uruchamiasz powłoki poleceń, takiej jak powłoka Bash Windows GitBash (lub Bash w usłudze Azure Cloud Shell), utworzyć parę kluczy SSH przy użyciu `ssh-keygen` polecenia. Wpisz następujące polecenie, a następnie wprowadź dane w monitach. Jeśli istnieje parę kluczy SSH w bieżącej lokalizacji, te pliki zostaną zastąpione. 
+Uruchom powłokę poleceń w Windows, który obsługuje narzędzia klienta SSH (lub użyć usługi Azure Cloud Shell), należy utworzyć parę kluczy SSH przy użyciu `ssh-keygen` polecenia. Wpisz następujące polecenie, a następnie wprowadź dane w monitach. Jeśli istnieje parę kluczy SSH w bieżącej lokalizacji, te pliki zostaną zastąpione. 
 
 ```bash
 ssh-keygen -t rsa -b 2048

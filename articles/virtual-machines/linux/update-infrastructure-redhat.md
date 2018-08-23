@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426755"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055877"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -29,7 +29,7 @@ Red Hat Enterprise Linux (RHEL) płatność za rzeczywiste użycie (PAYG) pochod
 ## <a name="important-information-about-azure-rhui"></a>Ważne informacje na temat usługi RHUI platformy Azure
 * RHUI platformy Azure obsługuje obecnie tylko najnowszą wersję pomocniczą w każdej rodziny RHEL (RHEL6 lub RHEL7). Aby uaktualnić wystąpienia maszyny Wirtualnej z systemem RHEL podłączony do usługi RHUI do najnowszej wersji pomocniczej, uruchom `sudo yum update`.
 
-    Na przykład, jeśli możesz aprowizować maszynę Wirtualną z obrazu systemu RHEL 7.2 PAYG i uruchomić `sudo yum update`, na końcu RHEL 7.4 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
+    Na przykład, jeśli możesz aprowizować maszynę Wirtualną z obrazu systemu RHEL 7.2 PAYG i uruchomić `sudo yum update`, na końcu RHEL w wersji 7.5 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
 
     Aby uniknąć tego zachowania, potrzebne do tworzenia własnego obrazu, zgodnie z opisem w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat na platformie Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykułu. Musisz połączyć go z infrastruktury inną aktualizację ([bezpośrednio do firmy Red Hat zawartości serwerów dostarczania](https://access.redhat.com/solutions/253273) lub [serwera Red Hat satelitarnej](https://access.redhat.com/products/red-hat-satellite)).
 

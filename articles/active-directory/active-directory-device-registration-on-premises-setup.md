@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629076"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056780"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia
 Gdy możesz wymagać od użytkowników dołączenie do miejsca pracy swoje urządzenia osobiste do usługi rejestracji urządzeń usługi Azure Active Directory (Azure AD), ich urządzeń można oznaczyć jako znane w organizacji. Oto przewodnik krok po kroku dotyczące włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
@@ -48,7 +48,7 @@ Te możliwości są dostępne dla klientów, którzy zakupią licencji usługi A
 * Licencja usługi Azure Active Directory — wersja Premium
 * Windows Server 2012 R2 Federation Services, skonfigurowane na potrzeby logowania jednokrotnego do usługi Azure AD
 * Serwer Proxy aplikacji sieci Web systemu Windows Server 2012 R2 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Pobieranie programu Azure AD Connect)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Pobieranie programu Azure AD Connect)](http://www.microsoft.com/download/details.aspx?id=47594)
 * Zweryfikowana domena
 
 ## <a name="known-issues-in-this-release"></a>Znane problemy w tej wersji
@@ -158,7 +158,7 @@ Istnieje wiele różnych sposobów informację o adresie URL dla użytkowników.
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Przyłącz urządzenie Windows 8.1 za pomocą usługi Azure Active Directory rejestracji urządzenia
 1. Na urządzeniu z systemem Windows 8.1, wybierz **ustawienia komputera** > **sieci** > **pracy**.
-2. Wprowadź swoją nazwę użytkownika w formacie UPN. na przykład ** dan@contoso.com **.
+2. Wprowadź swoją nazwę użytkownika w formacie UPN. na przykład **dan@contoso.com**.
 3. Wybierz **Dołącz**.
 4. Po wyświetleniu monitu zaloguj się przy użyciu poświadczeń. Urządzenie zostało przyłączone.
 

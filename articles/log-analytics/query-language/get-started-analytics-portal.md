@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z portalu usługi analiza w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z portalu usługi analiza pisać zapytania w usłudze Log Analytics.
+title: Rozpoczynanie pracy ze stroną usługi Log Analytics w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek dla Pisanie zapytań przy użyciu strony usługi Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634644"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057411"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Rozpoczynanie pracy z usługą portalu analizy
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Rozpoczynanie pracy ze stroną usługi Log Analytics w witrynie Azure portal
 
-W tym samouczku dowiesz się, jak pisać zapytania usługi Azure Log Analytics za pomocą portalu usługi analiza. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się, jak pisać zapytania usługi Log Analytics za pomocą strony usługi Log Analytics w witrynie Azure portal (obecnie w wersji zapoznawczej). Jego nauczą Cię, jak do:
 
 - Tworzenie prostych zapytań
 - Zrozumieć schemat danych
@@ -35,12 +35,12 @@ W tym samouczku dowiesz się, jak pisać zapytania usługi Azure Log Analytics z
 - Eksportowanie i udostępnianie zapytań
 
 
-## <a name="meet-the-analytics-portal"></a>Spełnia portalu analizy
-Portal analiza jest sieci web narzędzie służące do zapisu i wykonywania zapytań usługi Azure Log Analytics. 
+## <a name="meet-the-log-analytics-page"></a>Spełnia strony usługi Log Analytics 
+Strona usługi Log Analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań usługi Azure Log Analytics. Otwórz go, wybierając **dzienniki (wersja zapoznawcza)** w menu usługi Log Analytics. Rozpoczynają się one od nowego pustego zapytania.
 
 ![Strona główna](media/get-started-analytics-portal/homepage.png)
 
-Strona główna zapewnia łatwy dostęp do przydatnych zasobów, takich jak najnowsze i zapisanych zapytań i przykłady. Otwórz nową kartę do rozpoczęcia pisania własnych zapytań.
+
 
 ## <a name="basic-queries"></a>Podstawowe zapytania
 Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, analizować wzorce i wiele innych informacji na podstawie danych. Uruchom przy użyciu podstawowego zapytania:
@@ -83,7 +83,7 @@ Od zebrania wszystko _zdarzeń_ tabeli.
 Event
 ```
 
-Portal analiza zakresów automatycznie wyniki według:
+Na stronie usługi Log Analytics zakresów automatycznie wyniki według:
 
 - Zakres czasu: domyślnie zapytania są ograniczone do ostatnich 24 godzin.
 - Liczba wyników: wyniki są ograniczone do maksymalnie 10 000 rekordów.
@@ -121,7 +121,7 @@ Tabela wyników zawiera często wiele kolumn. Może okazać się, że niektóre 
 
 
 ## <a name="select-a-time-range"></a>Wybierz zakres czasu
-Domyślnie stosuje się do portalu usługi Analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
+Domyślnie stosuje się na stronie usługi Log Analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
 
 ![Selektor godziny](media/get-started-analytics-portal/time-picker.png)
 
@@ -131,7 +131,7 @@ Jeśli zapytanie zawiera jawnie filtr _TimeGenerated_, czas selektora tytuł zos
 
 
 ## <a name="charts"></a>Wykresy
-Oprócz zwracania wyników w tabeli, wyniki zapytania można prezentowane w formatach visual. Użyj następującego zapytania, na przykład:
+Oprócz zwracania wyników w tabeli, wyniki zapytania mogą być przedstawiane na formaty wizualne. Użyj następującego zapytania, na przykład:
 
 ```OQL
 Event 
@@ -183,7 +183,7 @@ Ikona Eksplorator zapytań, znajduje się w prawym górnym rogu obszaru. Ta list
 ![Eksplorator zapytań](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Eksportuj i Udostępnij jako łącze
-Portal analizy obsługuje kilka metod eksportowania:
+Na stronie usługi Log Analytics obsługuje kilka metod eksportowania:
 
 - Excel: Zapisać wyniki w postaci pliku CSV.
 - Usługa Power BI: Wyeksportować wyniki do power BI. Zobacz [danych importu usługi Azure Log Analytics w usłudze Power BI](../log-analytics-powerbi.md) Aby uzyskać szczegółowe informacje.

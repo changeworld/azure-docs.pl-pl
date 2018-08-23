@@ -1,6 +1,6 @@
 ---
-title: Tożsamość usługi fabryka danych Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji o tożsamości usługi fabryka danych z fabryki danych Azure.
+title: Tożsamości usługi w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat tożsamość usługi fabryki danych w usłudze Azure Data Factory.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -10,50 +10,50 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050869"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056058"
 ---
-# <a name="azure-data-factory-service-identity"></a>Tożsamość usługi fabryka danych Azure
+# <a name="azure-data-factory-service-identity"></a>Tożsamości usługi w usłudze Azure Data Factory
 
-Ten artykuł pomaga zrozumieć, co to jest tożsamość usługi fabryki danych i jak działa.
+Ten artykuł pomaga zrozumieć, jaka jest tożsamość usługi fabryki danych i sposób jej działania.
 
 ## <a name="overview"></a>Przegląd
 
-Podczas tworzenia fabryki danych, można utworzyć tożsamości usługi oraz tworzenie fabryki. Tożsamość usługi jest zarejestrowany do usługi Azure Directory działania aplikacji zarządzanej i reprezentuje tej fabryki danych.
+Podczas tworzenia fabryki danych, można utworzyć tożsamości usługi oraz tworzenie fabryki. Tożsamość usługi jest aplikacji zarządzanej, zarejestrowany w usłudze Azure Active Directory i przedstawia tę fabrykę danych z konkretnych.
 
-Tożsamość usługi fabryka danych przynosi korzyści następujące dwie funkcje:
+Tożsamość usługi fabryki danych korzyści następujące funkcje:
 
-- [Przechowywania poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md), w którym to przypadku tożsamość usługi fabryka danych jest używany do uwierzytelniania usługi Azure Key Vault.
-- [Kopiowanie danych z i do usługi Azure Data Lake Store](connector-azure-data-lake-store.md), w którym to przypadku tożsamość usługi fabryka danych może służyć jako jednego z obsługiwanych typów uwierzytelniania usługi Data Lake Store.
+- [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md), w którym to przypadku tożsamość usługi fabryki danych jest używany do uwierzytelniania usługi Azure Key Vault.
+- Łączników, takich jak [usługi Azure Blob storage](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [usługi Azure SQL Database](connector-azure-sql-database.md), i [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
 
 ## <a name="generate-service-identity"></a>Generowanie tożsamości usługi
 
-Tożsamość usługi fabryka danych jest generowany w następujący sposób:
+Tożsamość usługi fabryki danych jest generowany w następujący sposób:
 
-- Podczas tworzenia fabryki danych za pośrednictwem **portalu Azure lub programu PowerShell**, tożsamość usługi zawsze zostaną utworzone automatycznie.
-- Podczas tworzenia fabryki danych za pośrednictwem **SDK**, tożsamość usługi zostanie utworzona tylko w przypadku określenia "tożsamości = FactoryIdentity() nowy" w obiekcie fabrykę do tworzenia. Zobacz przykład w [.NET — Szybki Start — tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Podczas tworzenia fabryki danych za pośrednictwem **interfejsu API REST**, tożsamość usługi zostanie utworzona tylko, jeśli określono sekcję "identity" w treści żądania. Zobacz przykład w [REST Szybki Start — tworzenie fabryki danych](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Podczas tworzenia fabryki danych za pośrednictwem **witryny Azure portal lub programu PowerShell**, tożsamość usługi zawsze zostaną utworzone automatycznie.
+- Podczas tworzenia fabryki danych za pośrednictwem **SDK**, tożsamość usługi zostanie utworzona tylko wtedy, gdy należy określić "tożsamość = FactoryIdentity() nowy" w obiekcie fabryka do tworzenia. Zobacz przykład w [.NET Przewodnik Szybki Start — tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Podczas tworzenia fabryki danych za pośrednictwem **interfejsu API REST**, tożsamość usługi zostanie utworzona tylko wtedy, gdy określasz sekcji "identity" w treści żądania. Zobacz przykład w [REST Szybki Start — Tworzenie usługi data factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
-Jeśli okaże się fabrykę danych nie ma usługi tożsamość skojarzoną po [pobrać tożsamość usługi](#retrieve-service-identity) instrukcji, jawnie wygenerowany przez programowane aktualizowanie fabryki danych za pomocą inicjatora tożsamości:
+Możesz odnaleźć fabryki danych nie ma usługi tożsamość skojarzoną następujące [pobrać tożsamości usługi](#retrieve-service-identity) instrukcji, można jawnie generować za programowe aktualizowanie fabryki danych za pomocą inicjatora tożsamości:
 
 - [Generowanie tożsamości usługi za pomocą programu PowerShell](#generate-service-identity-using-powershell)
 - [Generowanie tożsamości usługi za pomocą interfejsu API REST](#generate-service-identity-using-rest-api)
-- [Generowanie tożsamość usługi przy użyciu zestawu SDK](#generate-service-identity-using-sdk)
+- [Generowanie tożsamości usługi za pomocą zestawu SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]
->- Nie można zmodyfikować tożsamości usługi. Aktualizowanie fabryki danych, które mają już tożsamość usługi nie będą miały wpływu, tożsamość usługi pozostaje bez zmian.
->- Jeśli zaktualizujesz fabryki danych, które mają już tożsamości usługi bez określania "identity" parametru w obiekt fabryki lub bez określania sekcji "identity" w treści żądania REST, wystąpi błąd.
->- Podczas usuwania fabryki danych tożsamości skojarzonej usługi zostaną usunięte wraz z.
+>- Nie można zmodyfikować tożsamości usługi. Aktualizowanie data factory, która jeszcze tożsamość usługi nie ma żadnego wpływu, tożsamość usługi pozostaje bez zmian.
+>- Jeśli zaktualizujesz data factory, która jeszcze tożsamości usługi bez określenia parametru "tożsamość" w obiekcie fabryki lub bez określenia sekcji "identity" w treści żądania REST, zostanie wyświetlony błąd.
+>- Podczas usuwania fabryki danych zostanie usunięta tożsamość skojarzona usługa wzdłuż.
 
 ### <a name="generate-service-identity-using-powershell"></a>Generowanie tożsamości usługi za pomocą programu PowerShell
 
-Wywołanie **AzureRmDataFactoryV2 zestaw** polecenie ponownie, a następnie zostanie wyświetlony pola "Identity" nowo tworzone:
+Wywołaj **Set-AzureRmDataFactoryV2** polecenie ponownie, a następnie zostanie wyświetlony "Tożsamość" fields nowo generowany:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -69,13 +69,13 @@ ProvisioningState : Succeeded
 
 ### <a name="generate-service-identity-using-rest-api"></a>Generowanie tożsamości usługi za pomocą interfejsu API REST
 
-Wywołanie poniżej interfejsu API z sekcją "identity" w treści żądania:
+Wywołanie poniżej interfejsu API z sekcją "tożsamość" w treści żądania:
 
 ```
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**Treść żądania**: Dodaj "identity": {"type": "SystemAssigned"}.
+**Treść żądania**: Dodaj "tożsamość": {"type": "wartość SystemAssigned"}.
 
 ```json
 {
@@ -88,7 +88,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Odpowiedź**: tożsamość usługi jest tworzony automatycznie i odpowiednio zawiera sekcja "identity".
+**Odpowiedź**: tożsamość usługi jest tworzony automatycznie i sekcji "identity" jest wypełniana odpowiednio.
 
 ```json
 {
@@ -111,9 +111,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-service-identity-using-sdk"></a>Generowanie tożsamość usługi przy użyciu zestawu SDK
+### <a name="generate-service-identity-using-sdk"></a>Generowanie tożsamości usługi za pomocą zestawu SDK
 
-Wywołaj funkcję create_or_update fabryka danych z tożsamością = FactoryIdentity() nowe. Przykładowy kod przy użyciu platformy .NET:
+Wywołaj funkcję create_or_update fabryki danych przy użyciu tożsamości = FactoryIdentity() nowe. Przykładowy kod przy użyciu platformy .NET:
 
 ```csharp
 Factory dataFactory = new Factory
@@ -126,24 +126,24 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ## <a name="retrieve-service-identity"></a>Pobieranie tożsamości usługi
 
-Możesz pobrać z portalu Azure lub programistycznie tożsamości usługi. W poniższych sekcjach przedstawiono kilka przykładów.
+Możesz pobrać tożsamości usługi w witrynie Azure portal lub programowo. W poniższych sekcjach przedstawiono kilka przykładów.
 
 >[!TIP]
-> Jeśli nie widzisz tożsamość usługi [Generowanie tożsamość usługi](#generate-service-identity) , aktualizując fabryce.
+> Jeśli nie widzisz tożsamości usługi [usługi tożsamości wygenerowania](#generate-service-identity) , aktualizując fabryką.
 
-### <a name="retrieve-service-identity-using-azure-portal"></a>Pobieranie tożsamości usługi za pomocą portalu Azure
+### <a name="retrieve-service-identity-using-azure-portal"></a>Pobieranie tożsamości usługi za pomocą witryny Azure portal
 
-Można znaleźć informacje o tożsamości usługi z portalu Azure -> fabrykę danych -> Ustawienia -> Właściwości:
+Można znaleźć informacje o tożsamości usługi w witrynie Azure portal -> fabryki danych -> Ustawienia -> Właściwości:
 
 - IDENTYFIKATOR TOŻSAMOŚCI USŁUGI
 - DZIERŻAWA TOŻSAMOŚCI USŁUGI
-- **Identyfikator aplikacji tożsamości usługi** > skopiować tę wartość
+- **Identyfikator aplikacji tożsamości usługi** > Skopiuj tę wartość
 
 ![Pobieranie tożsamości usługi](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
 ### <a name="retrieve-service-identity-using-powershell"></a>Pobieranie tożsamości usługi za pomocą programu PowerShell
 
-Tożsamość usługi identyfikator podmiotu zabezpieczeń i identyfikator dzierżawcy zostaną zwrócone w wyniku pobrania fabryki danych określonego w następujący sposób:
+Tożsamość usługi identyfikator podmiotu zabezpieczeń i identyfikator dzierżawy zostanie zwrócona po otrzymaniu fabrykę danych określonego w następujący sposób:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -153,7 +153,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Skopiuj identyfikator podmiotu zabezpieczeń, a następnie uruchom poniżej polecenia usługi Azure Active Directory z identyfikator podmiotu zabezpieczeń jako parametr, aby uzyskać **ApplicationId**, używanego w celu udzielenia dostępu:
+Skopiuj identyfikator podmiotu zabezpieczeń, a następnie uruchom poniższe polecenie w usłudze Azure Active Directory o identyfikatorze podmiotu zabezpieczeń jako parametru, aby pobrać **ApplicationId**, którego używasz, aby udzielić dostępu:
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -166,9 +166,9 @@ Type                  : ServicePrincipal
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące tematy, które wprowadzenie, kiedy i jak używać tożsamości usługi fabryka danych:
+Zobacz następujące tematy, które wprowadzają, kiedy i jak używać tożsamość usługi fabryki danych:
 
-- [Przechowywania poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md)
-- [Skopiuj dane z/do usługi Azure Data Lake Store przy użyciu uwierzytelniania tożsamości zarządzanych usług](connector-azure-data-lake-store.md)
+- [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md)
+- [Kopiowanie danych z i do usługi Azure Data Lake Store, przy użyciu uwierzytelniania tożsamości usługi zarządzanej](connector-azure-data-lake-store.md)
 
-Zobacz [omówienie MSI](~/articles/active-directory/msi-overview.md) więcej tła na tożsamość usługi zarządzane, na podstawie jest tożsamość usługi fabryka danych. 
+Zobacz [Przegląd MSI](~/articles/active-directory/msi-overview.md) Aby uzyskać więcej ogólnych informacji o tożsamości usługi zarządzanej, których tożsamość usługi fabryki danych opiera się na. 

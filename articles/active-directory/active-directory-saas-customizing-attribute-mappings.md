@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366b89d3db0db634e239ac2d99188c7ea0444c13
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365196"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057000"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, Google Apps i innych. Jeśli aprowizacja użytkowników dla aplikacji SaaS innych firm, włączone, witryny Azure portal steruje jego wartości atrybutów w formie mapowania atrybutów.
@@ -121,7 +121,7 @@ Podczas edytowania listę obsługiwanych atrybutów, dostępne są następujące
 * **Multi-value?** -Czy ten atrybut obsługuje wiele wartości.
 * **Dokładne dopasowanie wielkości liter?** -Czy wartości atrybutów są obliczane w taki sposób, wielkość liter.
 * **Wyrażenie interfejsu API** — nie jest używany, o ile nie zdecyduje, aby to zrobić przez w dokumentacji dla określonego łącznika inicjowania obsługi administracyjnej (na przykład Workday).
-* **Odwołanie do atrybutu obiektu** — Jeśli to jest odwołanie do atrybutu typu, to menu umożliwia wybranie tabeli i atrybutów w aplikacji docelowej, która zawiera wartość skojarzoną z atrybutem. Na przykład w przypadku atrybutu o nazwie "Dział", którego przechowywana wartość odwołuje się do obiektu, w osobnej tabeli "Działów" Wybierz "Departments.Name". Należy zauważyć, że tabele odwołań i pól identyfikator podstawowego obsługiwane dla danej aplikacji są wstępnie skonfigurowane i obecnie nie można edytować za pomocą witryny Azure portal, ale można edytować za pomocą [interfejsu API programu Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+* **Odwołanie do atrybutu obiektu** — Jeśli to jest odwołanie do atrybutu typu, to menu umożliwia wybranie tabeli i atrybutów w aplikacji docelowej, która zawiera wartość skojarzoną z atrybutem. Na przykład w przypadku atrybutu o nazwie "Dział", którego przechowywana wartość odwołuje się do obiektu, w osobnej tabeli "Działów" Wybierz "Departments.Name". Należy zauważyć, że tabele odwołań i pól identyfikator podstawowego obsługiwane dla danej aplikacji są wstępnie skonfigurowane i obecnie nie można edytować za pomocą witryny Azure portal, ale można edytować za pomocą [interfejsu API programu Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 Aby dodać nowy atrybut, przewiń do końca listę obsługiwanych atrybutów, wypełnij pola powyżej przy użyciu podanych danych wejściowych, a wybierz **Dodawanie atrybutu**. Wybierz **Zapisz** po zakończeniu dodawania atrybutów. Następnie konieczne będzie ponowne załadowanie **aprowizacji** kartę dla nowych atrybutów, które staną się dostępne w edytorze mapowanie atrybutu.
 

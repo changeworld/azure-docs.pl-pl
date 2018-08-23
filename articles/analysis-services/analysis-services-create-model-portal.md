@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441679"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057361"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Tworzenie modelu w witrynie Azure portal
 
@@ -23,9 +23,10 @@ Należy pamiętać, Projektant stron sieci web jest **Podgląd**. Funkcja jest o
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-- Serwer usługi Azure Analysis Services w warstwie standardowa lub dewelopera. Nowe modele utworzone przy użyciu narzędzia Projektant sieci Web są zapytania bezpośredniego, które są obsługiwane tylko przez te warstwy.
+- Serwer usług Azure Analysis Services musi być w warstwie standardowa lub dewelopera. Nowe modele utworzone przy użyciu narzędzia Projektant sieci Web są zapytania bezpośredniego, które są obsługiwane tylko przez te warstwy.
 - Usługi Azure SQL Database, Azure SQL Data Warehouse lub plik programu Power BI Desktop (pbix) jako źródła danych. Nowe modele utworzone na podstawie pomocy technicznej usługi Power BI Desktop plików usługi Azure SQL Database i Azure SQL Data Warehouse.
 - Konto programu SQL Server i hasło dla połączenia ze źródłami danych Azure SQL Database lub Azure SQL Data Warehouse.
+- Musi mieć uprawnienia administratora serwera, aby utworzyć nowy model. Do edytowania i wykonywanie zapytań modelu przy użyciu narzędzia Projektant wymagane są uprawnienia administratora bazy danych.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 

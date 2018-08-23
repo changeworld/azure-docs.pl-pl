@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 5039399ac875add02319e1a745d99344956c7bee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860218"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42312167"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oprogramowania Oracle przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,6 +64,12 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej b
 
 >[!TIP]
 >Jeśli napotkasz błąd powiedzenie "ORA 01025: parametr zaległej płatności za przedmiot poza zakresem" i usługi oprogramowania Oracle jest wersji 8i, Dodaj `WireProtocolMode=1` parametry połączenia i spróbuj ponownie.
+
+Aby włączyć szyfrowanie połączenia Oracle, masz dwie opcje:
+
+1.  Po stronie serwera Oracle, przejdź do bazy danych Oracle zaawansowane zabezpieczenia (OAS), a następnie skonfiguruj ustawienia szyfrowania, który obsługuje szyfrowanie Triple-DES (3DES) i Advanced Encryption Standard (AES), zobacz szczegóły dotyczące [tutaj](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik ADF Oracle automatycznie negocjuje metodę szyfrowania, użyj skonfigurowanych w OAS, podczas ustanawiania połączenia Oracle.
+
+2.  Po stronie klienta, można dodać `EncryptionMethod=1` w parametrach połączenia. Użyje protokołu SSL/TLS jako metody szyfrowania. Aby użyć tej opcji, należy wyłączyć bez użycia protokołu SSL ustawienia szyfrowania w OAS po stronie serwera Oracle w celu uniknięcia konfliktów szyfrowania.
 
 **Przykład:**
 

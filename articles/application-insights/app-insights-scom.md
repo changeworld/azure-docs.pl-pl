@@ -1,8 +1,8 @@
 ---
-title: "Integracja programu SCOM z usługi Application Insights | Dokumentacja firmy Microsoft"
-description: "Jeśli jesteś użytkownikiem SCOM monitorowania wydajności i diagnozowanie problemów z usługą Application Insights. Kompleksowe pulpity nawigacyjne, inteligentne alertów, zaawansowanych narzędzi diagnostycznych i zapytań analiz."
+title: Integracja programu SCOM z usługą Application Insights | Dokumentacja firmy Microsoft
+description: Jeśli jesteś użytkownikiem programu SCOM, monitorować wydajność i diagnozować problemy z usługą Application Insights. Wszechstronne pulpity nawigacyjne, inteligentne alertów, zaawansowane narzędzia diagnostyczne i zapytań analiz.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
@@ -10,92 +10,96 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 08/12/2016
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8880fbeaad85bc2615292820527c6a9e87000d66
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060345"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
-Jeśli używasz programu System Center Operations Manager (SCOM) do zarządzania serwerami, można monitorować wydajność i diagnozowanie problemów z wydajnością przy pomocy [Azure Application Insights](app-insights-asp-net.md). Usługi Application Insights monitoruje aplikację sieci web żądania przychodzące, wychodzące REST i wywołania SQL, wyjątków i ślady dziennika. Zapewnia on pulpity nawigacyjne z wykresami metryki i inteligentne alerty, a także zaawansowane wyszukiwanie diagnostycznych i zapytania analityczne przez ten telemetrii. 
+Jeśli używasz programu System Center Operations Manager (SCOM) do zarządzania serwerami z można monitorować wydajność i diagnozować problemy z wydajnością za pomocą [usługi Azure Application Insights](app-insights-asp-net.md). Application Insights monitoruje aplikację sieci web przychodzące żądania wychodzące, REST i wywołania SQL, wyjątki i ślady dzienników. Usługa udostępnia pulpity nawigacyjne wykresy metryk i inteligentne alerty, a także zaawansowane wyszukiwanie diagnostyczne i zapytań analitycznych za pośrednictwem tych danych telemetrycznych. 
 
-Można przełączyć na monitorowanie usługi Application Insights przy użyciu pakietu administracyjnego programu SCOM.
+Możesz włączyć monitorowanie usługi Application Insights przy użyciu pakietu administracyjnego programu SCOM.
+
+> [!IMPORTANT]
+> Ten pakiet administracyjny System Center Operations Manager jest teraz **przestarzałe**. Go nie obsługuje najnowsze zestawów SDK Application Insights i nie jest już zalecany.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
-Przyjęto założenie:
+Przyjęto założenie, że:
 
-* Serwery sieci web znasz SCOM i użyj SCOM 2012 R2 lub 2016 do zarządzania programu IIS.
-* Zostały już zainstalowane na serwerach aplikacji sieci web, który chcesz monitorować za pomocą usługi Application Insights.
+* Użytkownicy zaznajomieni z programu SCOM i użyć programu SCOM 2012 R2 lub 2016 do zarządzania usługi IIS serwery sieci web.
+* Masz już zainstalowany na serwerach aplikacji sieci web, którą chcesz monitorować za pomocą usługi Application Insights.
 * Wersja platformy aplikacji jest .NET 4.5 lub nowszej.
-* Masz dostęp do subskrypcji w [Microsoft Azure](https://azure.com) i zalogować się do [portalu Azure](https://portal.azure.com). Twoja organizacja może mieć subskrypcję, a do niej dodać konto Microsoft.
+* Masz dostęp do subskrypcji w [Microsoft Azure](https://azure.com) i zalogować się do [witryny Azure portal](https://portal.azure.com). Twoja organizacja może mieć subskrypcji i do niego dodać konta Microsoft.
 
-(Zespół deweloperów może zbudować [zestaw SDK usługi Application Insights](app-insights-asp-net.md) do aplikacji sieci web. Instrumentacja to czas kompilacji daje im większa elastyczność w pisaniu telemetria niestandardowa. Jednak nie ma znaczenia: możesz wykonać kroki opisane w tym miejscu lub bez wbudowany zestaw SDK.)
+(Zespół deweloperów może zbudować [zestawu SDK usługi Application Insights](app-insights-asp-net.md) do aplikacji sieci web. Ten czas kompilacji Instrumentacji daje im większą elastyczność w zapisywanie niestandardowych danych telemetrycznych. Jednak nie ma znaczenia: możesz wykonać kroki opisane w tym miejscu, bez wbudowany zestaw SDK.)
 
 ## <a name="one-time-install-application-insights-management-pack"></a>(Jeden raz) Zainstaluj pakiet administracyjny usługi Application Insights
 Na komputerze, na którym uruchamiasz programu Operations Manager:
 
-1. Odinstaluj wszelkie starą wersję pakietu administracyjnego:
-   1. W programie Operations Manager Otwórz administracji, pakietów administracyjnych. 
+1. Odinstaluj wszystkie starą wersję pakietu administracyjnego:
+   1. W programie Operations Manager Otwórz administrację, pakietów administracyjnych. 
    2. Usuń starą wersję.
 2. Pobierz i zainstaluj pakiet administracyjny z katalogu.
 3. Ponowne uruchomienie programu Operations Manager.
 
-## <a name="create-a-management-pack"></a>Utwórz pakiet administracyjny
-1. W programie Operations Manager, otwórz **tworzenie**, **.NET... with usługi Application Insights**, **Kreator dodawania monitorowania**i ponownie wybierz **.NET... z aplikacją Informacje na temat technologii**.
+## <a name="create-a-management-pack"></a>Tworzenie pakietu administracyjnego
+1. W programie Operations Manager Otwórz **tworzenie**, **.NET... with Application Insights**, **Kreator dodawania monitorowania**i ponownie wybierz **.NET... z aplikacją Szczegółowe informacje**.
    
     ![](./media/app-insights-scom/020.png)
-2. Nazwa konfiguracji po aplikacji. (Należy Instrumentacja jedną aplikację naraz.)
+2. Nazwa konfiguracji po swojej aplikacji. (Masz do instrumentacji aplikacji w czasie).
    
     ![](./media/app-insights-scom/030.png)
-3. Na tej samej stronie kreatora Utwórz nowy pakiet administracyjny albo wybierz pakiet, który wcześniej utworzony dla usługi Application Insights.
+3. Na tej samej stronie Kreatora tworzenia nowego pakietu administracyjnego lub wybierz pakiet, który został utworzony dla usługi Application Insights wcześniej.
    
-     (W usłudze Application Insights [pakiet administracyjny](https://technet.microsoft.com/library/cc974491.aspx) szablonem, z którego można utworzyć wystąpienia. Można ponownie użyć tego samego wystąpienia później.)
+     (W usłudze Application Insights [pakiet administracyjny](https://technet.microsoft.com/library/cc974491.aspx) jest szablonem, z którego można utworzyć wystąpienie. Można ponownie użyć tego samego wystąpienia później.)
 
-    ![Na karcie Ogólne właściwości wpisz nazwę aplikacji. Kliknij przycisk Nowy, a następnie wpisz nazwę dla pakietu administracyjnego. Kliknij przycisk OK, a następnie kliknij przycisk Dalej.](./media/app-insights-scom/040.png)
+    ![Na karcie Ogólne właściwości wpisz nazwę aplikacji. Kliknij pozycję Nowy, a następnie wpisz nazwę dla pakietu administracyjnego. Kliknij przycisk OK, a następnie kliknij przycisk Dalej.](./media/app-insights-scom/040.png)
 
-1. Wybierz jedną aplikację, która ma być monitorowany. Funkcja wyszukiwania wyszukuje między aplikacji zainstalowanych na serwerach.
+1. Wybierz jedną aplikację, którą chcesz monitorować. Funkcja wyszukiwania wyszukuje między aplikacje zainstalowane na Twoich serwerach.
    
-    ![Co na karcie monitorowanie kliknij przycisk Dodaj, wpisz część nazwy aplikacji, kliknij przycisk Wyszukaj, wybierz aplikację, a następnie dodaj OK.](./media/app-insights-scom/050.png)
+    ![W celu karcie monitorowanie kliknij przycisk Dodaj, wpisz część nazwy aplikacji, kliknij przycisk Wyszukaj, wybierz aplikację, a następnie dodaj OK.](./media/app-insights-scom/050.png)
    
-    Pole opcjonalne zakresu monitorowania można określić podzestaw serwerów, jeśli nie chcesz monitorować aplikację na wszystkich serwerach.
-2. Na następnej stronie kreatora musisz podać swoje poświadczenia, aby zalogować się do systemu Microsoft Azure.
+    Pole opcjonalne zakres monitorowania może służyć do określenia podzestawu serwerów, jeśli nie chcesz monitorować aplikację na wszystkich serwerach.
+2. Na następnej stronie kreatora najpierw należy podać swoje poświadczenia, aby zarejestrować się w usłudze Microsoft Azure.
    
-    Na tej stronie wybierz polecenie zasobu usługi Application Insights miejscu danych telemetrycznych i przeanalizowane. 
+    Na tej stronie możesz wybrać zasobu usługi Application Insights, w którym mają być analizowane i wyświetlane dane telemetryczne. 
    
-   * Jeśli aplikacja została skonfigurowana pod kątem usługi Application Insights podczas tworzenia, wybierz jej istniejącego zasobu.
-   * W przeciwnym razie utwórz nowy zasób o nazwie aplikacji. Jeśli istnieją inne aplikacje, które są składnikami tego samego systemu, umieść je w tej samej grupie zasobów, aby ułatwić dostęp na podstawie danych telemetrycznych do zarządzania.
+   * Jeśli aplikacja została skonfigurowana dla usługi Application Insights podczas programowania, wybierz jego istniejącego zasobu.
+   * W przeciwnym razie utwórz nowy zasób o nazwie dla aplikacji. Jeśli istnieją inne aplikacje, które są składnikami tego samego systemu, umieść je w tej samej grupie zasobów, aby ułatwić dostęp do danych telemetrycznych na łatwiejsze w zarządzaniu.
      
      Te ustawienia można zmienić później.
      
-     ![Na karcie Ustawienia usługi Application Insights kliknij przycisk "Zarejestruj" i podaj poświadczenia konta Microsoft Azure. Następnie wybierz pozycję subskrypcji, grupy zasobów i zasobów.](./media/app-insights-scom/060.png)
+     ![Na karcie Ustawienia usługi Application Insights kliknij przycisk "Zaloguj", a następnie podaj swoje poświadczenia konta Microsoft na platformie Azure. Następnie wybierz subskrypcję, grupy zasobów i zasobów.](./media/app-insights-scom/060.png)
 3. Ukończ pracę kreatora.
    
     ![Kliknięcie pozycji Utwórz](./media/app-insights-scom/070.png)
 
-Powtórz tę procedurę dla każdej aplikacji, które chcesz monitorować.
+Powtórz tę procedurę dla każdej aplikacji, którą chcesz monitorować.
 
-Jeśli trzeba zmienić ustawienia, ponownie otwórz właściwości monitora z okna Tworzenie.
+Jeśli musisz zmienić ustawienia później, ponownie otwórz właściwości monitora z okna Tworzenie.
 
-![W tworzenie, wybierz opcję monitorowanie wydajności aplikacji .NET z usługi Application Insights, wybierz monitora, a następnie kliknij przycisk Właściwości.](./media/app-insights-scom/080.png)
+![W tworzenie, wybierz opcję monitorowanie wydajności aplikacji .NET za pomocą usługi Application Insights Wybierz monitor i kliknij polecenie Właściwości.](./media/app-insights-scom/080.png)
 
-## <a name="verify-monitoring"></a>Sprawdź monitorowania
-Monitor, na każdym serwerze zainstalowano wyszukiwania dla aplikacji. Gdy znajdzie aplikacji, ponieważ konfiguruje Monitor stanu usługi Application Insights do monitorowania aplikacji. W razie potrzeby najpierw instaluje Monitor stanu na serwerze.
+## <a name="verify-monitoring"></a>Sprawdź, monitorowanie
+Monitor, na każdym serwerze zainstalowano wyszukiwania dla aplikacji. Gdy znajdzie aplikacji, ponieważ konfiguruje na Monitor stanu usługi Application Insights do monitorowania aplikacji. Jeśli to konieczne, najpierw instaluje Monitora stanu na serwerze.
 
-Aby sprawdzić, które wystąpienia aplikacji znalazła:
+Aby sprawdzić, które wystąpienia aplikacji ma znaleźć:
 
-![Monitorowanie, otwórz usługę Application Insights](./media/app-insights-scom/100.png)
+![W obszarze monitorowanie, otwórz usługę Application Insights](./media/app-insights-scom/100.png)
 
-## <a name="view-telemetry-in-application-insights"></a>Dane telemetryczne wyświetleń w usłudze Application Insights
-W [portalu Azure](https://portal.azure.com), przejdź do zasobów dla aplikacji. Możesz [zobaczyć wykresy przedstawiający telemetrii](app-insights-dashboards.md) z aplikacji. (Jeśli go nie nie pojawiają na stronie głównej jeszcze, kliknij strumień na żywo metryk).
+## <a name="view-telemetry-in-application-insights"></a>Wyświetlanie telemetrii w usłudze Application Insights
+W [witryny Azure portal](https://portal.azure.com), przejdź do zasobu dla aplikacji. Możesz [zobaczyć wykresy pokazujące dane telemetryczne](app-insights-dashboards.md) ze swojej aplikacji. (Jeśli go nie nie pojawiają na stronie głównej jeszcze, kliknij pozycję Live Stream metryk).
 
-## <a name="next-steps"></a>Następne kroki
-* [Konfigurowanie pulpitu nawigacyjnego](app-insights-dashboards.md) ze sobą najważniejszych wykresy monitorowania to i inne aplikacje.
-* [Dowiedz się więcej o metryk](app-insights-metrics-explorer.md)
+## <a name="next-steps"></a>Kolejne kroki
+* [Ustawianie pulpitu nawigacyjnego](app-insights-dashboards.md) ze sobą najważniejszych wykresów monitorowania to i inne aplikacje.
+* [Dowiedz się więcej o metrykach](app-insights-metrics-explorer.md)
 * [Konfigurowanie alertów](app-insights-alerts.md)
 * [Diagnozowanie problemów z wydajnością](app-insights-detect-triage-diagnose.md)
-* [Zaawansowane zapytania analityczne](app-insights-analytics.md)
-* [Dostępność testy sieci web](app-insights-monitor-web-app-availability.md)
+* [Zaawansowane zapytania usługi Analytics](app-insights-analytics.md)
+* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md)
 

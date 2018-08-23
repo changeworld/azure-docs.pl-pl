@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577292"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061696"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ Konteneryzowana usługa wymaga punktu końcowego dla celów komunikacyjnych. Dod
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> Dodatkowe punkty końcowe usługi można dodawać przez zadeklarowanie dodatkowe elementy punktu końcowego przy użyciu wartości odpowiednich właściwości. Każdy Port można zadeklarować tylko jedną wartość protokołu.
 
 Definiując punkt końcowy, usługa Service Fabric publikuje punkt końcowy w usłudze Naming. Inne usługi działające w klastrze mogą rozpoznać ten kontener. Komunikację między kontenerami można również realizować za pomocą [odwrotnego serwera proxy](service-fabric-reverseproxy.md). Aby zrealizować komunikację, należy podać port nasłuchujący HTTP odwrotnego serwera proxy i nazwę usług, z którymi chcesz się komunikować, jako zmienne środowiskowe.
 
@@ -247,6 +249,8 @@ Skonfiguruj port hosta używany do komunikacji z kontenerem. Powiązanie portu m
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> Można dodać dodatkowe PortBindings dla usługi przez zadeklarowanie dodatkowe elementy PortBinding przy użyciu wartości odpowiednich właściwości.
 
 ## <a name="configure-container-registry-authentication"></a>Konfigurowanie uwierzytelniania rejestru kontenerów
 Skonfiguruj uwierzytelnianie rejestru kontenerów przez dodanie elementu `RepositoryCredentials` do elementu `ContainerHostPolicies` pliku ApplicationManifest.xml. Dodaj nazwę konta i hasło dla rejestru kontenerów myregistry.azurecr.io, dzięki czemu usługa będzie mogła pobrać obraz kontenera z repozytorium.
@@ -598,13 +602,13 @@ Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `C
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

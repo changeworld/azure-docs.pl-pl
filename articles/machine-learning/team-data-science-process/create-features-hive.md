@@ -1,6 +1,6 @@
 ---
-title: Tworzenie funkcji danych klastra platformy Hadoop za pomocą zapytań Hive | Dokumentacja firmy Microsoft
-description: Przykłady zapytań Hive, które generują funkcje w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop.
+title: Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive | Dokumentacja firmy Microsoft
+description: Przykłady zapytań programu Hive, które generują funkcji w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,43 +15,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 0e46ce327bb4beffd631ef6369864a0888580c11
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: bca1e609570d9ea0dee9845969de8bb4b29cc1ff
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836667"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056139"
 ---
-# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji danych klastra usługi Hadoop przy użyciu zapytań programu Hive
-Ten dokument przedstawia sposób tworzenia funkcji danych przechowywanych w klastrze usługi Azure HDInsight Hadoop za pomocą zapytań Hive. Te zapytania Hive funkcji osadzonych Hive User-Defined (UDF), skryptów, dla której są dostarczane.
+# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
+W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
 
-Operacje potrzebne do utworzenia funkcje mogą być pamięci. Wydajność zapytań programu Hive staje się ważniejsze w takich przypadkach i można zwiększyć przez dostrajanie określonych parametrów. Dostrajanie parametrów została szczegółowo opisana w sekcji końcowego.
+Operacje wymagane do utworzenia funkcji może być intensywnie korzystających z pamięci. Wydajność zapytań technologii Hive staje się ważniejsze w takich przypadkach i można zwiększyć przez dostrojenie określonych parametrów. Dostrajanie tych parametrów jest omówiona w sekcji końcowej.
 
-Przykłady zapytań, które są przedstawiane są specyficzne dla [danych podróży taksówki NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scenariuszy znajdują się również w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mieć określony schemat danych i jest gotowe do przesłania do uruchomienia. W końcowej sekcji omówiono również parametry, które użytkownicy można dostosować tak, aby ulepszyć wydajność zapytań programu Hive.
+Przykłady zapytań, które są prezentowane są specyficzne dla [danych podróży taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scenariusze są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia. W sekcji końcowej parametry, które użytkownicy można dostrajanie, dzięki czemu można zwiększyć wydajność zapytań technologii Hive zostały również omówione.
 
 [!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
 
-To **menu** linki do tematów opisujących sposób tworzenia funkcji dla danych w różnych środowiskach. To zadanie jest krokiem w [zespołu danych nauki procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To **menu** łącza do tematów opisujących sposób tworzenia funkcji dla danych w różnych środowiskach. To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że masz:
+W tym artykule założono, że masz:
 
-* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Zainicjowano obsługę administracyjną dostosowane klastra usługi Hadoop w usłudze HDInsight.  Aby uzyskać instrukcje, zobacz [dostosować Azure klastrów usługi HDInsight Hadoop zaawansowane analizy](customize-hadoop-cluster.md).
-* Dane przekazane do tabele programu Hive w klastrach usługi Azure HDInsight Hadoop. Jeśli nie, wykonaj [tworzenie i ładowanie danych do tabel Hive](move-hive-tables.md) najpierw przekazywać dane do tabele programu Hive.
-* Włączyć dostęp zdalny do klastra. Aby uzyskać instrukcje, zobacz [dostęp węzła Head klastra usługi Hadoop](customize-hadoop-cluster.md).
+* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Zainicjowano obsługę administracyjną dostosowane klaster Hadoop w usłudze HDInsight.  Aby uzyskać instrukcje, zobacz [dostosować Azure HDInsight klastry Hadoop dla usługi Advanced Analytics](customize-hadoop-cluster.md).
+* Danych został przekazany do tabel programu Hive w klastrach usługi Azure HDInsight Hadoop. Jeśli nie, postępuj zgodnie z [tworzenie i ładowanie danych do tabel programu Hive](move-hive-tables.md) najpierw przekazywania danych do tabel programu Hive.
+* Włączony zdalny dostęp do klastra. Aby uzyskać instrukcje, zobacz [dostęp węzeł główny klastra Hadoop](customize-hadoop-cluster.md).
 
-## <a name="hive-featureengineering"></a>Funkcja generowania
-W tej sekcji opisano kilka przykładów sposoby, w którym można generowania funkcji za pomocą zapytań Hive. Po wygenerowaniu dodatkowe funkcje, możesz dodać je jako kolumny do istniejącej tabeli lub Utwórz nową tabelę z dodatkowych funkcji i klucza podstawowego, który następnie może być połączony z oryginalnej tabeli. Poniżej przedstawiono w przykładach przedstawionych:
+## <a name="hive-featureengineering"></a>Generowanie funkcji
+W tej sekcji opisano kilka przykładów sposobów, w którym można generowania funkcji przy użyciu zapytań programu Hive. Po wygenerowaniu dodatkowe funkcje, możesz dodać je jako kolumny do istniejącej tabeli lub Utwórz nową tabelę z dodatkowych funkcji i klucza podstawowego, który następnie może być łączone z oryginalnej tabeli. Poniżej przedstawiono w przykładach przedstawionych:
 
 1. [Generowanie na podstawie częstotliwości funkcji](#hive-frequencyfeature)
-2. [Ryzyko podzielone na kategorie zmiennych w klasyfikacji binarnej](#hive-riskfeature)
-3. [Wyodrębnij funkcji z pola daty/godziny](#hive-datefeatures)
-4. [Wyodrębnij funkcji z pola tekstowego.](#hive-textfeatures)
-5. [Oblicz odległość między współrzędne GPS](#hive-gpsdistance)
+2. [Ryzyko związane z kategorii zmiennych w klasyfikacji binarnej](#hive-riskfeature)
+3. [Wyodrębnianie funkcji z pola daty/godziny](#hive-datefeatures)
+4. [Wyodrębnianie funkcji z pola tekstowego](#hive-textfeatures)
+5. [Obliczyć odległość między współrzędne GPS](#hive-gpsdistance)
 
 ### <a name="hive-frequencyfeature"></a>Generowanie na podstawie częstotliwości funkcji
-Często jest przydatne do obliczania częstotliwości poziomów podzielone na kategorie zmiennej lub częstotliwości niektórych kombinacji poziomy wiele zmiennych podzielone na kategorie. Użytkownicy mogą używać poniższy skrypt, aby obliczyć częstotliwości te:
+Często jest to przydatne do obliczania częstotliwości poziomów podzielonych na kategorie zmiennej lub częstotliwości niektórych kombinacji poziomów od wielu zmiennych podzielonych na kategorie. Użytkownicy, można użyć poniższego skryptu do obliczania tych częstotliwości:
 
         select
             a.<column_name1>, a.<column_name2>, a.sub_count/sum(a.sub_count) over () as frequency
@@ -64,8 +64,8 @@ Często jest przydatne do obliczania częstotliwości poziomów podzielone na ka
         order by frequency desc;
 
 
-### <a name="hive-riskfeature"></a>Ryzyko podzielone na kategorie zmiennych w klasyfikacji binarnej
-W klasyfikacji binarnej zmienne podzielone na kategorie nieliczbowy musi konwertowane na funkcje numeryczne, po modelach tylko używane mieć funkcje numeryczne. Ta konwersja odbywa się przez zastąpienie każdy poziom nieliczbowy liczbowych ryzyka. W tej sekcji przedstawiono pewne ogólne zapytań programu Hive obliczające wartości ryzyka (dziennika prawdopodobieństwo) podzielone na kategorie zmiennej.
+### <a name="hive-riskfeature"></a>Ryzyko związane z kategorii zmiennych w klasyfikacji binarnej
+W klasyfikacji binarnej nieliczbową zmienne podzielonych na kategorie muszą konwertowane na funkcje numeryczne, gdy są używane tylko trwają liczbowe funkcje. Ta konwersja odbywa się przez zamianę każdy poziom nieliczbową liczbowe o podwyższonym ryzyku. W tej sekcji przedstawiono pewne ogólne zapytań programu Hive, obliczających wartości ryzyka (dziennik kolizję) zmiennej podzielonych na kategorie.
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -85,40 +85,40 @@ W klasyfikacji binarnej zmienne podzielone na kategorie nieliczbowy musi konwert
             group by <column_name1>, <column_name2>
             )b
 
-W tym przykładzie zmienne `smooth_param1` i `smooth_param2` ustawioną smooth wartości ryzyka obliczana na podstawie danych. Ryzyko ma zakresie -Inf Inf. Ryzyko > 0 wskazuje, że prawdopodobieństwo, że element docelowy jest równa 1, jest większa niż 0,5.
+W tym przykładzie zmienne `smooth_param1` i `smooth_param2` są ustawione do wygładzania wartości o podwyższonym ryzyku obliczane na podstawie danych. Ryzyko ma zakres od -Inf do pliku Inf. Ryzyko > 0 wskazuje, że prawdopodobieństwo, że obiekt docelowy jest równy 1 jest większa niż 0,5.
 
-Po ryzyko jest obliczana tabeli, użytkownicy mogą przypisywać wartości ryzyka do tabeli przez dołączenie go do tabeli ryzyka. Zapytanie łącząca Hive została dostarczona w poprzedniej sekcji.
+Po ryzyko tabeli jest obliczane, użytkownicy mogą przypisywać wartości ryzyka do tabeli, łącząc go z tabeli o podwyższonym ryzyku. Przyłączany zapytania programu Hive podano w poprzedniej sekcji.
 
-### <a name="hive-datefeatures"></a>Wyodrębnij funkcji z pól daty i godziny
-Gałąź jest dostarczany z zestawem funkcji UDF przetwarzania pól daty i godziny. W gałęzi, domyślny format daty/godziny jest "RRRR MM-dd 00:00:00" ("1970-01-01-12:21:32" na przykład). W tej sekcji przedstawiono przykłady, które wyodrębnianie dnia miesiąca, miesiąc z polem datetime i inne przykłady, które konwertowanie ciągu daty i godziny w formacie innym niż domyślny format ciąg daty i godziny w domyślnym formacie.
+### <a name="hive-datefeatures"></a>Wyodrębnianie funkcji z pól daty i godziny
+Gałąź jest dostarczany z zestawu funkcji zdefiniowanych przez użytkownika do przetwarzania pola daty/godziny. W gałęzi, domyślny format daty/godziny jest "RRRR MM-dd 00:00:00" ("01-01-1970 12:21:32" na przykład). W tej sekcji przedstawiono przykłady, które umożliwiają wyodrębnianie dnia miesiąca, miesięcy od pola daty/godziny, a także inne przykłady, które konwertują ciąg daty/godziny w formacie innym niż domyślny format ciągu daty/godziny w domyślnym formatowania.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-To zapytanie Hive przy założeniu, że *<datetime field>* jest w formacie daty/godziny domyślne.
+To zapytanie Hive założono, że *<datetime field>* znajduje się w domyślnym formacie daty/godziny.
 
-Pole daty i godziny nie ma domyślnego formatu, należy najpierw przekonwertuj pole daty/godziny na sygnatury czasowej systemu Unix, a następnie wykonać konwersję sygnaturę czasową Unix ciąg daty i godziny w formacie domyślne. W przypadku datę i godzinę w domyślnym formacie, użytkownicy mogą stosować osadzonych funkcji UDF, aby wyodrębnić funkcji daty/godziny.
+Pole daty i godziny nie jest w domyślnym formacie, musisz najpierw przekonwertuj pole daty/godziny na sygnatura czasowa systemu Unix, a następnie wykonać konwersję sygnatura czasowa systemu Unix ciąg daty/godziny, który jest w domyślnym formacie. Gdy daty/godziny jest w domyślnym formatem, użytkownicy mogą stosować osadzone funkcje zdefiniowane przez użytkownika, aby wyodrębnić funkcji daty i godziny.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-W tym zapytaniu Jeśli *<datetime field>* ma wzorzec, takich jak *2015-03-26 12:04:39*,  *<pattern of the datetime field>"* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby ją przetestować, użytkownicy mogą uruchamiać
+W tym zapytaniu Jeśli *<datetime field>* ma wzorca, takich jak *2015-03-26 12:04:39*,  *<pattern of the datetime field>"* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby przetestować go, użytkownicy mogą uruchamiać
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-*Hivesampletable* w tym zapytaniu preinstalowane na wszystkich klastrach Azure HDInsight Hadoop domyślnie podczas przydzielania klastrów.
+*Hivesampletable* w tym zapytaniu preinstalowane na wszystkich klastrach usługi Azure HDInsight Hadoop domyślnie, gdy klastry są udostępnione.
 
-### <a name="hive-textfeatures"></a>Wyodrębnij funkcji z pola tekstowe
-Jeśli w tabeli Hive pola tekstowego, który zawiera ciąg słowa, które są rozdzielone spacjami, następujące zapytanie wyodrębnia długość ciągu i liczbę słów w ciągu.
+### <a name="hive-textfeatures"></a>Wyodrębnianie funkcji z pól tekstowych
+Gdy pole tekstowe, który zawiera ciąg wyrazów, które są rozdzielane spacjami znajdują się w tabeli programu Hive, następujące zapytanie wyodrębnia długość ciągu i liczbę słów w ciągu.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="hive-gpsdistance"></a>Obliczanie odległości między zestawami współrzędne GPS
-Zapytanie podane w tej sekcji można bezpośrednio odnosić się do danych podróży taksówki NYC. To zapytanie ma na celu pokazują, jak zastosować osadzonych funkcji matematycznych w gałęzi do generowania funkcji.
+### <a name="hive-gpsdistance"></a>Oblicz odległości między zestawami współrzędne GPS
+Zapytanie podane w tej części mogą być stosowane bezpośrednio do danych podróży NYC taksówek. Ta kwerenda ma na celu pokazują, jak zastosować osadzonych funkcji matematycznych, w gałęzi do generowania funkcji.
 
-Pola, które są używane w tym zapytaniu są współrzędne GPS odbiór i dropoff lokalizacji o nazwie *podnoszenia\_geograficzne*, *podnoszenia\_szerokości geograficznej*,  *dropoff\_geograficzne*, i *dropoff\_szerokości geograficznej*. Zapytania obliczające bezpośrednie odległość między współrzędne odbiór i dropoff są:
+Pola, które są używane w tym zapytaniu są współrzędne GPS odbiór i dropoff lokalizacji o nazwie *odbioru\_długości geograficznej*, *odbioru\_latitude*,  *dropoff\_długości geograficznej*, i *dropoff\_latitude*. Zapytania, które obliczyć bezpośrednie odległość między współrzędne odbiór i dropoff są:
 
         set R=3959;
         set pi=radians(180);
@@ -136,44 +136,44 @@ Pola, które są używane w tym zapytaniu są współrzędne GPS odbiór i dropo
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Równania matematyczne, które obliczyć odległość między dwoma współrzędne GPS można znaleźć w <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">skryptów typu ruchome</a> lokacji utworzone przez Lapisu Peterowi. W języku Javascript, ta funkcja `toRad()` jest po prostu *lat_or_lon*pi/180 *, który Konwertuje stopnie na radiany. W tym miejscu *lat_or_lon* jest zakres lub długość geograficzną. Ponieważ gałąź nie zawiera funkcji `atan2`, ale udostępnia funkcję `atan`, `atan2` funkcji jest implementowany przez `atan` funkcji w powyższym zapytaniu gałęzi przy użyciu definicji w <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+Wyrażenia matematyczne, które obliczyć odległość między dwoma współrzędne GPS znajduje się na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">skryptów typu ruchome</a> witryny, opracowane przez Peter Lapisu. W tym Javascript, funkcja `toRad()` jest po prostu *lat_or_lon*pi/180 *, która konwertuje stopnie na radiany. W tym miejscu *lat_or_lon* jest geograficzna i szerokość geograficzną. Ponieważ gałąź nie zapewnia funkcji `atan2`, ale zapewnia funkcję `atan`, `atan2` funkcja jest zaimplementowana przez `atan` funkcji w powyższym zapytaniu Hive przy użyciu definicji w <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
-![Utwórz obszar roboczy](./media/create-features-hive/atan2new.png)
+![Tworzenie obszaru roboczego](./media/create-features-hive/atan2new.png)
 
-Pełną listę gałęzi funkcji UDF embedded znajdują się w **wbudowanych funkcji** sekcji na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
+Pełną listę gałęzi osadzone funkcje zdefiniowane przez użytkownika można znaleźć w **funkcje wbudowane** sekcji na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Tematy zaawansowane: parametry strojenia gałęzi do zwiększenia szybkości zapytania
-Domyślne ustawienia parametru gałęzi klastra może nie być odpowiednie dla zapytań Hive i dane, które są przetwarzania zapytania. W tej sekcji omówiono niektóre parametry, które użytkownicy można dostosować w celu poprawy wydajności zapytań programu Hive. Użytkownicy muszą dodać parametr strojenia kwerendy przed zapytania przetwarzania danych.
+## <a name="tuning"></a> Tematy zaawansowane: gałąź dostrajanie parametrów do zwiększenia szybkości zapytań
+Domyślne parametry Hive klastra może nie być odpowiednie dla zapytań programu Hive i dane, które są przetwarzania zapytań. W tej sekcji omówiono niektóre parametry, które użytkownicy można dostrajanie poprawić wydajność zapytań technologii Hive. Użytkownicy musieli dodać parametr dostrajania kwerendy przed zapytania przetwarzania danych.
 
-1. **Miejsce na stercie Java**: dla zapytań obejmujących dołączenie dużych zestawów danych lub przetwarzania rekordów długi **kończy się wolne miejsce na stercie** jest jednym z typowych błędów. Tego błędu można uniknąć przez ustawienie parametrów *mapreduce.map.java.opts* i *mapreduce.task.io.sort.mb* do żądanej wartości. Oto przykład:
+1. **Miejsca na stercie Java**: dla zapytań obejmujących dołączenie do dużych zestawów danych lub przetwarzania rekordów długie **brakować miejsca na stercie** jest jednym z typowych problemów. Ten błąd można uniknąć przez ustawienie parametrów *mapreduce.map.java.opts* i *mapreduce.task.io.sort.mb* na odpowiednie wartości. Oto przykład:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Ten parametr przydziela 4GB pamięci, aby miejsce na stercie Java i powoduje sortowanie efektywniejsze przez przydzielanie większej ilości pamięci. Należy dobrze gry z tych przydziałów, jeśli istnieją wszystkie zadania błędy związane z miejsca na stercie.
+    Ten parametr przydziela pamięci 4GB miejsca na stercie Java i sprawia, że sortowanie bardziej wydajne przez przydzielanie większej ilości pamięci dla niego. To dobry pomysł, aby odtworzyć za pomocą tych środków w przypadku dowolnego zadania, błędy związane z miejsca na stercie.
 
-1. **Rozmiaru bloku systemu plików DFS**: ten parametr określa najmniejsza jednostka danych przechowywanych w systemie plików. Na przykład jeśli rozmiar bloku systemu plików DFS jest 128 MB, a następnie żadnych danych o rozmiarze mniejsza i maksymalnie 128 MB są przechowywane w jeden blok. Przydzielony dodatkowe bloki danych, który jest większy niż 128 MB. 
-2. Wybieranie mały rozmiar bloku powoduje duże koszty Hadoop, ponieważ nazwa węzła ma przetwarzać wiele żądań więcej można znaleźć odpowiedniego bloku odnoszące się do pliku. Zalecane ustawienia po dotyczących gigabajty (lub więcej) danych jest:
+1. **Systemu plików DFS rozmiaru bloku**: ten parametr określa najmniejsza jednostka danych przechowywanych w systemie plików. Na przykład jeśli rozmiar bloku systemu plików DFS jest 128 MB, a następnie dowolnych danych o rozmiarze mniejsza i maksymalnie 128 MB jest przechowywany w jednym bloku. Dane, które są większe niż 128 MB jest przydzielony dodatkowe bloki. 
+2. Wybierając rozmiar małych blokach powoduje dużych kosztów ogólnych na platformie Hadoop, ponieważ węzeł nazw ma do przetworzenia wiele więcej żądań w celu znalezienia odpowiedniego bloku odnoszących się do pliku. Zalecane ustawienie w przypadku, gdy zajmujących się gigabajty (lub więcej) danych:
 
         set dfs.block.size=128m;
 
-2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: podczas operacji łączenia w ramach mapy/Zmniejsz zazwyczaj miejsce w fazie Zmniejsz czasami znaczne zyski można osiągnąć poprzez zaplanowanie sprzężenia w fazie mapy (zwane również "mapjoins"). Aby skierować gałąź, aby to zrobić, jeśli to możliwe, należy ustawić:
+2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: podczas operacji łączenia w ramach map/reduce zazwyczaj miejsce w fazie Zmniejsz czasami ogromne korzyści można osiągnąć, planowanie sprzężeń w fazie mapy (zwane również "mapjoins"). Aby skierować gałęzi, aby to zrobić, jeśli to możliwe, należy ustawić:
    
        set hive.auto.convert.join=true;
 
-3. **Określanie liczby mapowań do gałęzi**: podczas Hadoop zezwala użytkownikowi na określenie liczby reduktory, liczba mapowań jest zwykle nie jest ustawiony przez użytkownika. Lewy, umożliwiający pewien stopień kontroli tego numeru jest wybranie zmienne Hadoop *mapred.min.split.size* i *mapred.max.split.size* jako rozmiar map zadań zależy od:
+3. **Określanie liczby liczby maperów do gałęzi**: Hadoop podczas zezwala użytkownikowi na ustawianie liczby reduktorów, liczba liczby maperów jest zwykle nie można ustawić przez użytkownika. Lewy, umożliwiająca pewien stopień kontroli o tym numerze jest wybranie zmienne Hadoop *mapred.min.split.size* i *mapred.max.split.size* jako rozmiar każdej mapy zadania jest określana przez:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Zwykle wartość domyślna:
+    Zazwyczaj wartość domyślna:
     
-    - *mapred.min.split.SIZE* ma wartość 0, który z
+    - *mapred.min.split.SIZE* ma wartość 0, w przypadku
     - *mapred.max.split.SIZE* jest **Long.MAX** i 
     - *DFS.Block.SIZE* to 64 MB.
 
-    Jak możemy stwierdzić, podany rozmiar danych dostrajanie parametrów "ustawienia" ich pozwala nam dostosować liczbę mapowań używane.
+    Jak widać, uwzględniając rozmiar danych dostosowywania tych parametrów, ustawiając wartość"" ich pozwala nam dostosować liczbę liczby maperów używane.
 
-4. Poniżej przedstawiono kilka innych kolejnych **zaawansowane opcje** optymalizacji wydajności Hive. Te umożliwiają skonfigurowanie pamięć przydzielona do mapowania i zmniejszyć zadań i mogą być przydatne w Dostosowywanie wydajności. Należy pamiętać, że *mapreduce.reduce.memory.mb* nie może być większa niż rozmiar pamięci fizycznej w każdym węźle procesu roboczego klastra usługi Hadoop.
+4. Oto kilka innych kolejnych **zaawansowane opcje** optymalizacji wydajności technologii Hive. Te umożliwiają ustawianie pamięć przydzielona programowi mapowania i redukcji zadań i może być przydatne w Dostosowywanie wydajności. Należy pamiętać, że *mapreduce.reduce.memory.mb* nie może być większa niż rozmiar pamięci fizycznej w każdym węzłem procesu roboczego w klastrze usługi Hadoop.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

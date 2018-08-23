@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446769"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057707"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych CentOS Linux na platformie Azure
 
@@ -38,7 +38,7 @@ Maszyna wirtualna do nauki o danych systemu Linux jest opartych na systemie Cent
   * [Zestaw narzędzi cognitive Toolkit](https://github.com/Microsoft/CNTK): toolkit oprogramowania przez firmę Microsoft Research do uczenia głębokiego.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Obsługa technik, takich jak online, wyznaczania wartości skrótu, allreduce, redukcji, learning2search, są aktywne, system uczenia maszynowego, szybkie i interaktywne szkolenia.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): to narzędzie, zapewniając szybkie i dokładne wzmocnionego drzewa wykonania.
-  * [Rattle](http://rattle.togaware.com/) (R analitycznych narzędzie do Dowiedz się, łatwo): to narzędzie, które ułatwia rozpoczęcie korzystania z analizy danych i uczenia maszynowego w języku R, udostępniając eksplorację danych z Graficznym interfejsem użytkownika i modelowanie za pomocą automatycznego generowania kodu języka R.
+  * [Rattle](https://togaware.com/rattle/) (R analitycznych narzędzie do Dowiedz się, łatwo): to narzędzie, które ułatwia rozpoczęcie korzystania z analizy danych i uczenia maszynowego w języku R, udostępniając eksplorację danych z Graficznym interfejsem użytkownika i modelowanie za pomocą automatycznego generowania kodu języka R.
 * Zestaw Azure SDK w języku Java, Python, node.js, Ruby, PHP
 * Bibliotek języka R i Python do użycia w usłudze Azure Machine Learning i innymi usługami platformy Azure
 * Narzędzia programistyczne i Redaktorzy (RStudio, platformy PyCharm, IntelliJ, Emacs, gedit, vi)
@@ -63,7 +63,7 @@ Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o 
 Przed utworzeniem maszyny wirtualnej do nauki o danych systemu Linux, musisz mieć następujące czynności:
 
 * **Subskrypcja platformy Azure**: Aby można było go uzyskać, zobacz [uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/).
-* **Konto usługi Azure storage**: aby go utworzyć, zobacz [Tworzenie konta usługi Azure storage](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Alternatywnie Jeśli nie chcesz użyć istniejącego konta, konta magazynu można utworzyć w ramach procesu tworzenia maszyny Wirtualnej.
+* **Konto usługi Azure storage**: aby go utworzyć, zobacz [Tworzenie konta usługi Azure storage](../../storage/common/storage-quickstart-create-account.md). Alternatywnie Jeśli nie chcesz użyć istniejącego konta, konta magazynu można utworzyć w ramach procesu tworzenia maszyny Wirtualnej.
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Tworzenie maszyny wirtualnej do nauki o danych z systemem Linux
 Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny wirtualnej analizy danych:

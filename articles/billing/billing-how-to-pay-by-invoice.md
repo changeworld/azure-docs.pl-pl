@@ -1,6 +1,6 @@
 ---
-title: Płać za subskrypcje platformy Azure przez faktury | Dokumentacja firmy Microsoft
-description: Opisuje sposób płacić za subskrypcje platformy Azure przez faktury
+title: Płatność dla subskrypcji platformy Azure przy użyciu faktury | Dokumentacja firmy Microsoft
+description: Opisuje sposób płatności dla subskrypcji platformy Azure przy użyciu faktury
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: ac8262da05837dcdb4ebddd5029f9b5ece3dbc6f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cc174822af436e7c31eb5ad4bfa419e1fa022f44
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067951"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617373"
 ---
-# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Prześlij żądanie zapłacenia subskrypcji platformy Azure przez faktury
+# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Prześlij żądanie dotyczące płatności subskrypcji platformy Azure przy użyciu faktury
 
-Można zmienić formę płatności dla Twojej subskrypcji platformy Azure na potrzeby faktury po przesłaniu żądania pomocy technicznej platformy Azure. Po zatwierdzeniu żądania podano instrukcje dotyczące sposobu konfigurowania subskrypcji dla metody płatności faktury.
+Możesz zmienić metodę płatności dla subskrypcji platformy Azure do faktury, przesyłając żądanie pomocy technicznej platformy Azure. Po zatwierdzeniu żądania podano instrukcje dotyczące sposobu konfigurowania subskrypcji do używania faktury jako formy płatności.
 
 > [!IMPORTANT]
-> * Płatności faktura jest dostępna tylko dla kont biznesowych.
-> * [Zewnętrzne usług i innych firm](billing-understand-your-azure-marketplace-charges.md) nie można zakupić lub za pomocą faktury płatności. Jeśli subskrypcja zawiera zasoby z usług zewnętrznych, takich jak ClearDB lub SendGrid, muszą można usunąć przed zmianą na potrzeby faktury płatności. Aby dokonać zakupu usług zewnętrznych po przełączeniu do faktury płatności, należy oddzielnej subskrypcji z kartą kredytową lub debetową.
-> * Po zmianie formy płatności faktury, nie można przełączyć do płatności kartą kredytową lub debetową.
+> * Płatność faktur jest dostępna tylko dla konta firmowe.
+> * [Innych firm i usługami zewnętrznymi](billing-understand-your-azure-marketplace-charges.md) nie może zostać zakupione lub opłacony przy użyciu faktury płatności. Jeśli Twoja subskrypcja będzie zawierać zasoby z usług zewnętrznych, takich jak SendGrid, należy można usunąć przed zmianą na fakturę płatności. Aby dokonać zakupu usług zewnętrznych, po przełączeniu do faktury płatności, należy oddzielną subskrypcję za pomocą karty kredytowej lub debetowej.
+> * Kiedy przełączysz się do faktury płatność nie Przełącz się do płatności Karta kredytowa lub debetowa.
 
-## <a name="request-pay-by-invoice"></a>Żądanie płatności za faktury
+## <a name="request-pay-by-invoice"></a>Żądanie płatności za pomocą faktury
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/). Wybierz **Pomoc i obsługa techniczna** > **nowy obsługuje żądania**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/). Wybierz **Pomoc i obsługa techniczna** > **nowe żądanie obsługi**.
 
     ![Pomoc i obsługa techniczna przycisku](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 
-1. Wybierz **rozliczeń** jako typ problem, wybierz subskrypcję, dla którego chcesz płacić za faktury, wybierz plan pomocy technicznej, a następnie wybierz **dalej**.
+1. Wybierz pozycję **Rozliczenia** jako typ problemu, wybierz subskrypcję, która ma być opłacana za pomocą faktury, wybierz plan pomocy technicznej, a następnie pozycję **Dalej**.
 
-1. Wybierz **płacić za faktury** w **typ problemu** pole.
+1. Wybierz wartość **Płatność za pomocą faktury** w polu **Typ problemu**.
 
 1. Wprowadź następujące informacje w **szczegóły** , a następnie wybierz **dalej**.
 
@@ -46,10 +46,10 @@ Można zmienić formę płatności dla Twojej subskrypcji platformy Azure na pot
     * Adres do faktury
     * [Adres e-mail administratora konta](billing-add-change-azure-subscription-administrator.md#check-the-account-administrator-of-the-subscription)
 
-1. Sprawdź informacje kontaktowe i preferowaną metodę kontaktu, a następnie kliknij przycisk **Utwórz**.
+1. Zweryfikuj informacje kontaktowe i preferowaną metodę kontaktu, a następnie kliknij polecenie **Utwórz**.
 
-Musimy sprawdzenie zdolności kredytowej ze względu na ilość środki, które są potrzebne, możemy wysyłać że kredyt aplikacji. Po przesłaniu aplikacji aplikacji środki może zająć 5-7 dni do przetworzenia.
+Jeśli będzie trzeba przeprowadzić kontrolę kredytową przez ze względu na ilość środków, które są potrzebne, wyślemy wniosek środki sprawdzenia aplikacji. Po przesłaniu aplikacji wniosku o kredyt może zająć 5 – 7 dni, aby przetworzyć.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

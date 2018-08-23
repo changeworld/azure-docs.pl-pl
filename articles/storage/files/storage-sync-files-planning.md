@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521826"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617196"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -151,7 +151,7 @@ Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego z�
 Znane następujących rozwiązań do obsługi zostanie pominięty, pliki trybu offline:
 
 - [Usługa Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Usługa Windows Defender automatycznie pomija odczytu tych plików. Firma Microsoft po przetestowaniu Defender i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
+    - Usługa Windows Defender automatycznie pomija odczytu plików, które mają ustawiony atrybut trybu offline. Firma Microsoft po przetestowaniu Defender i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
 - [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
     - SCEP działa tak samo, jak usługa Defender; Zobacz powyżej
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
@@ -192,11 +192,13 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Australia Południowo-Wschodnia | Stan Wiktoria |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Quebec |
+| Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
 | Azja Wschodnia | Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Europa Północna | Irlandia |
+| Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
@@ -212,15 +214,17 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 
 | Region podstawowy      | Region sparowany      |
 |---------------------|--------------------|
-| Australia Wschodnia      | Australia Southest |
+| Australia Wschodnia      | Australia Południowo-Wschodnia |
 | Australia Południowo-Wschodnia | Australia Wschodnia     |
 | Kanada Środkowa      | Kanada Wschodnia        |
 | Kanada Wschodnia         | Kanada Środkowa     |
+| Indie Środkowe       | Indie Południowe        |
 | Środkowe stany USA          | Wschodnie stany USA 2          |
 | Azja Wschodnia           | Azja Południowo-Wschodnia     |
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Europa Północna        | Europa Zachodnia        |
+| Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |

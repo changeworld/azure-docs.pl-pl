@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/21/2018
 ms.author: carlrab
-ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308817"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057102"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -46,7 +46,6 @@ Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora,
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Czy istnieją praw produktów podwójnego zastosowania dzięki korzyści użycia hybrydowego platformy Azure dla programu SQL Server?
 Masz prawa do używania dwóch licencji na upewnij się, że migracja działają bezproblemowo na 180 dni. Po tym okresie 180-dniowy licencję programu SQL Server można używać tylko w chmurze w usłudze SQL Database i nie ma podwójnego zastosowania praw w środowisku lokalnym i w chmurze.
-
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Czym różni się korzyści użycia hybrydowego platformy Azure dla programu SQL Server z przenoszenia licencji?
 Obecnie firma Microsoft oferuje korzyści przenoszenia licencji dla klientów programu SQL Server z pakietem Software Assurance, która umożliwia ponowne przypisanie licencji do udostępnionego serwerów innych firm. Ta korzyść może służyć w modelu IaaS platformy Azure i usługi EC2 usług AWS.
@@ -168,7 +167,10 @@ Inspekcja jest wbudowana w usługę SQL Database, które nie wymagają ponoszeni
 W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **serwerów SQL**, wybierz serwer z listy, a następnie kliknij przycisk **resetowania hasła**.
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>Jak zarządzać bazami danych i logowaniami
-Zobacz [Zarządzanie bazami danych i logowaniami](sql-database-manage-logins.md).
+Zobacz [Zarządzanie bazami danych i logowaniami](sql-database-manage-logins.md). 
+
+> [!NOTE]
+> Nie można zmienić nazwy konta administratora serwera, po jego utworzeniu.
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Jak upewnić się, że tylko adresów IP autoryzowanych mogą uzyskać dostęp do serwera?
 Zobacz [porady: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md).

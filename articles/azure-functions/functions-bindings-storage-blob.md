@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 0bd14e85496da8c6c12ecb98b7c8f1730a16e640
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a5a0634e371e4a762b3877b0c3e45682924a27d
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524570"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42062086"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -84,6 +84,7 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#trigger---c-example)
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -181,6 +182,45 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+
+W poniższym przykładzie pokazano obiekt blob wyzwalacza powiązanie w *function.json* pliku i [kodu Java](functions-reference-java.md) powiązania, który używa. Jeśli obiekt blob jest dodane lub zaktualizowane w funkcji zapisuje dziennik `myblob` kontenera.
+
+Oto *function.json* pliku:
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "name": "file",
+            "type": "blobTrigger",
+            "direction": "in",
+            "path": "myblob/{name}",
+            "connection":"MyStorageAccountAppSetting"
+        }
+    ]
+}
+```
+
+Oto kodu Java:
+
+```java
+ @FunctionName("blobprocessor")
+ public void run(
+    @BlobTrigger(name = "file",
+                  dataType = "binary",
+                  path = "myblob/filepath",
+                  connection = "myconnvarname") byte[] content,
+    @BindingName("name") String filename,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info("Name: " + name + " Size: " + content.length + " bytes");
+ }
+
+```
+
 
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
@@ -391,6 +431,7 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#input---c-example)
 * [Skryptu C# (csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example"></a>Dane wejściowe — przykład w języku C#
 
@@ -505,6 +546,23 @@ module.exports = function(context) {
 };
 ```
 
+### <a name="input---java-example"></a>Dane wejściowe - przykładzie w języku Java
+
+Poniższy przykład jest funkcją języka Java, która korzysta z wyzwalaczem kolejki i powiązania wejściowego obiektu blob. Komunikat w kolejce zawiera nazwy obiektu blob, a funkcja rejestruje rozmiar obiektu blob.
+
+```java
+@FunctionName("getBlobSize")
+@StorageAccount("AzureWebJobsStorage")
+public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
+                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
+       final ExecutionContext context) {
+      context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
+ }
+ ```
+
+  W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobInput` adnotacji w parametrach przybyły, którego wartość z obiektu blob.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`. 
+
+
 ## <a name="input---attributes"></a>Dane wejściowe — atrybuty
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
@@ -587,6 +645,7 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#output---c-example)
 * [Skryptu C# (csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
@@ -718,6 +777,24 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
+
+W poniższym przykładzie przedstawiono obiektu blob danych wejściowych i wyjściowych powiązania w funkcji języka Java. Funkcja tworzy kopię tekstu obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie {originalblobname} — kopia
+
+```java
+@FunctionName("copyTextBlob")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
+public String blobCopy(
+    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
+    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+      return content;
+ }
+ ```
+
+ W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobOutput` adnotacja dla parametrów funkcji, której wartość będzie zapisany do obiektu w usłudze blob storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
+
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 

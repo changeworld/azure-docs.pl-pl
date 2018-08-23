@@ -1,6 +1,6 @@
 ---
 title: Sieć wirtualna platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Odpowiedzi na najczęściej zadawane pytania dotyczące sieci wirtualne Microsoft Azure.
+description: Odpowiedzi na najczęściej zadawane pytania na temat sieci wirtualnych Microsoft Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -12,213 +12,250 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854193"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056062"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
-## <a name="virtual-network-basics"></a>Podstawy sieci wirtualnej
+## <a name="virtual-network-basics"></a>Wirtualne sieci — podstawy
 
-### <a name="what-is-an-azure-virtual-network-vnet"></a>Co to jest sieci wirtualnej platformy Azure (VNet)?
-Sieci wirtualnej platformy Azure (VNet) to reprezentacja sieci w chmurze. Jest logiczną izolacją chmury Azure przeznaczoną dla Twojej subskrypcji. Można Użyj sieci wirtualnych, aby udostępnić i zarządzanie wirtualnych sieci prywatnych (VPN) na platformie Azure i, opcjonalnie, połączyć sieci wirtualnych z innych sieci wirtualnych na platformie Azure lub z lokalnej infrastruktury IT w celu utworzenia rozwiązania hybrydowe lub między lokalizacjami. Każdej sieci wirtualnej, którą utworzysz ma bloku CIDR i może odnosić się do innych sieci wirtualnych i lokalnej sieci tak długo, jak bloków CIDR nie mogą się pokrywać. Masz również kontroli ustawienia serwera DNS dla sieci wirtualnych i segmentacji sieci wirtualnej do podsieci.
+### <a name="what-is-an-azure-virtual-network-vnet"></a>Co to jest Azure Virtual Network (VNet)?
+Usługi Azure Virtual Network (VNet) jest reprezentacją Twojej własnej sieci w chmurze. Jest logiczną izolacją chmury Azure przeznaczoną dla Twojej subskrypcji. Można Użyj sieci wirtualnych, aby aprowizować i zarządzać wirtualnych sieci prywatnych (VPN) na platformie Azure i, opcjonalnie połączyć sieci wirtualne z innymi sieciami wirtualnymi na platformie Azure lub z lokalną infrastrukturą informatyczną w celu tworzenia rozwiązań hybrydowych i obejmujących wiele lokalizacji. Każda sieć wirtualna, którą tworzysz ma bloku CIDR i mogą być połączone z innymi sieciami wirtualnymi i lokalnymi sieciami, tak długo, jak bloków CIDR nakłada się na. Masz również kontroli ustawień serwera DNS dla sieci wirtualnych i segmentacji sieci wirtualnej w podsieci.
 
-Użyj sieci wirtualnych do:
+Użyj sieci wirtualnych:
 
-* Utwórz dedykowane prywatnej tylko w chmurze sieci wirtualnej czasami konfiguracji między lokalizacjami nie jest wymagany do rozwiązania. Po utworzeniu sieci wirtualnej, usług i maszyn wirtualnych w ramach sieci wirtualnej mogą komunikować się bezpośrednio i bezpiecznie ze sobą w chmurze. Nadal można skonfigurować punktu końcowego połączenia dla maszyn wirtualnych i usług, które wymagają komunikacja z Internetem, w ramach rozwiązania.
-* Bezpiecznie rozszerzanie centrum danych z sieci wirtualnych, można tworzyć tradycyjnych sieci VPN (S2S) do lokacji można bezpiecznie skalować wydajność centrum danych. Sieci VPN S2S używaj protokołu IPSEC do zapewnienia bezpiecznego połączenia między bramą sieci VPN firmy i Azure.
-* Scenariuszach chmur hybrydowych Włącz sieci wirtualne zapewniają elastyczność do obsługi zakresu scenariuszy hybrydowych chmury. Można bezpiecznie łączyć z aplikacji opartych na chmurze do dowolnego typu systemów Unix i lokalnego systemu, takich jak Komputery mainframe firmy.
+* Utwórz dedykowane prywatne tylko na chmurze sieci wirtualnej czasami nie wymagają konfiguracji między środowiskami lokalnymi dla Twojego rozwiązania. Podczas tworzenia sieci wirtualnej, usług i maszyn wirtualnych w ramach sieci wirtualnej mogą komunikować się bezpośrednio i bezpiecznie ze sobą w chmurze. Nadal można skonfigurować punktu końcowego połączenia dla maszyn wirtualnych i usług, które wymagają komunikację z Internetem, jako część rozwiązania.
+* Bezpiecznie Rozszerz centrum danych przy użyciu sieci wirtualnych, możesz tworzyć tradycyjnych lokacja lokacja (S2S) sieci VPN na bezpieczne skalowanie pojemności Twojego Centrum danych. Sieci VPN S2S używaj protokołu IPSEC w celu zapewnienia bezpiecznego połączenia między korporacyjną bramą sieci VPN i usługi Azure.
+* Włącz scenariuszy w chmurze hybrydowej sieci wirtualne zapewniają elastyczność obsługuje szeroką gamę scenariuszy hybrydowych w chmurze. Możesz bezpiecznie łączyć aplikacje oparte na chmurze do dowolnego typu i lokalnym systemem, takich jak Komputery mainframe i komputerach z systemem Unix.
 
 ### <a name="how-do-i-get-started"></a>Jak rozpocząć?
-Odwiedź stronę [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/) rozpocząć pracę. Ta zawartość zawiera informacje o przegląd i wdrażania dla wszystkich funkcji VNet.
+Odwiedź stronę [dokumentacja usługi Virtual network](https://docs.microsoft.com/azure/virtual-network/) na rozpoczęcie pracy. Ta zawartość zawiera przegląd i wdrożenie informacje dla wszystkich funkcji sieci wirtualnej.
 
-### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Sieci wirtualne można używać bez łączności między lokalizacjami?
-Tak. Bez konieczności nawiązywania lokalnej można użyć sieci wirtualnej. Na przykład wyłącznie w sieć wirtualną platformy Azure można uruchomić kontrolerów domeny usługi Active Directory firmy Microsoft Windows Server i farmy programu SharePoint.
+### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Sieci wirtualne można używać bez łączności między środowiskami lokalnymi?
+Tak. Możesz użyć sieci wirtualnej, bez łączenia go w środowisku lokalnym. Na przykład wyłącznie w sieci wirtualnej platformy Azure może uruchomić kontrolery domeny usługi Active Directory Microsoft Windows Server i farmy programu SharePoint.
 
-### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Można przeprowadzić optymalizacji sieci WAN między sieciami wirtualnymi lub sieci wirtualnej i Moje lokalnego centrum danych?
-
-Tak. Można wdrożyć [urządzenie wirtualne sieci WAN optymalizacji](https://azure.microsoft.com/marketplace/?term=wan+optimization) z kilku dostawców za pośrednictwem portalu Azure Marketplace.
+### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Czy można wykonać Optymalizacja sieci WAN między sieciami wirtualnymi lub sieci wirtualnej i Moje lokalne centrum danych?
+Tak. Możesz wdrożyć [wirtualnego urządzenia sieciowego Optymalizacja sieci WAN](https://azure.microsoft.com/marketplace/?term=wan+optimization) z kilku dostawców w portalu Azure Marketplace.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jakie narzędzia należy używać, aby utworzyć sieć wirtualną?
-Następujące narzędzia służy do tworzenia lub konfigurowania sieci wirtualnej:
+### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jakie narzędzia należy używać do tworzenia sieci wirtualnej?
+Można użyć następujących narzędzi do tworzenia i konfigurowania sieci wirtualnej:
 
 * Azure Portal
 * PowerShell
 * Interfejs wiersza polecenia platformy Azure
-* Plik konfiguracji sieci (netcfg - tylko klasyczne sieci wirtualne). Zobacz [skonfigurować sieć wirtualną przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md) artykułu.
+* Plik konfiguracji sieci (netcfg — tylko klasyczne sieci wirtualne). Zobacz [Konfigurowanie sieci wirtualnej przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md) artykułu.
 
-### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Jakie zakresów adresów można używać w mojej sieci wirtualnych?
-Wszelkie zakres adresów IP zdefiniowanych w [RFC 1918](http://tools.ietf.org/html/rfc1918). Na przykład 10.0.0.0/16.
+### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Zakresy adresów, które można użyć w mojej sieci wirtualne?
+Dowolny zakres adresów IP określonych w [RFC 1918](http://tools.ietf.org/html/rfc1918). Na przykład: 10.0.0.0/16.
 
-### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Czy można mieć publicznych adresów IP w mojej sieci wirtualnych
-Tak. Aby uzyskać więcej informacji na temat zakresy publicznych adresów IP, zobacz [utworzyć sieć wirtualną](manage-virtual-network.md#create-a-virtual-network). Publiczne adresy IP nie są dostępne bezpośrednio z Internetu.
+### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>W mojej sieci wirtualne mogą mieć publiczne adresy IP?
+Tak. Aby uzyskać więcej informacji na temat zakresy publicznych adresów IP, zobacz [tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network). Publiczne adresy IP nie są bezpośrednio dostępne z Internetu.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Czy istnieje ograniczona liczba podsieci w mojej sieci wirtualnej?
-Tak. Zobacz [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) szczegółowe informacje. Przestrzeni adresowej podsieci nie może nakładać się wzajemnie.
+Tak. Zobacz [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) Aby uzyskać szczegółowe informacje. Przestrzeni adresowej podsieci nie może nakładać się na siebie nawzajem.
 
-### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją wszystkie ograniczenia dotyczące używania adresów IP w ramach tych podsieci?
-Tak. Azure rezerwuje niektórych adresów IP w każdej podsieci. Imię i nazwisko adresy IP każdej podsieci są zastrzeżone dla protokołu zgodność, wraz z x.x.x.1 x.x.x.3 adresy każdej podsieci, które służą do usług Azure.
+### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakiekolwiek ograniczenia dotyczące używania adresów IP w ramach tych podsieci?
+Tak. Platforma Azure rezerwuje pewnych adresów IP w każdej podsieci. Pierwsze i ostatnie adresy IP każdej podsieci są zarezerwowane dla zgodności protokołów, a adresy x.x.x.1 x.x.x.3 każdej podsieci, które są używane dla usług platformy Azure.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak małe i jak duży może być sieci wirtualnych i podsieci?
-Najmniejsza obsługiwana podsieci jest /29, a największa /8 (przy użyciu definicje podsieci CIDR).
+Najmniejsza obsługiwana podsieci jest rozmiarze/29, a największa /8 (przy użyciu definicje podsieci CIDR).
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Czy mogę przenieść mój sieci VLAN na platformie Azure przy użyciu sieci wirtualnych?
-Nie. Sieci wirtualne są nakładki warstwy 3. Azure nie obsługuje żadnych semantyki warstwy 2.
+Nie. Sieci wirtualne znajdują się warstwy 3 nakładki. Azure nie obsługuje żadnych semantyki warstwy 2.
 
-### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Czy mogę określić niestandardowe zasady routingu w mojej sieci wirtualnych i podsieci
-Tak. Można utworzyć tabelę tras i skojarzyć go z podsiecią. Aby uzyskać więcej informacji dotyczących routingu na platformie Azure, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#custom-routes).
+### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>W mojej sieci wirtualnych i podsieci można określić niestandardowe zasady routingu?
+Tak. Można utworzyć tabelę tras i skojarzyć ją z podsiecią. Aby uzyskać więcej informacji o trasach na platformie Azure, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#custom-routes).
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>Sieci wirtualne obsługują multiemisji lub emisji?
-Nie. Emisji i multiemisji nie są obsługiwane.
+Nie. Multiemisji i emisji nie są obsługiwane.
 
-### <a name="what-protocols-can-i-use-within-vnets"></a>Jakie protokoły można używać w ramach sieci wirtualnych?
-Można używać protokołów TCP, UDP i ICMP TCP/IP w ramach sieci wirtualnych. Emisji pojedynczej jest obsługiwana w ramach sieci wirtualnych, z wyjątkiem konfiguracji protokołu DHCP (Dynamic Host) za pośrednictwem emisji pojedynczej (źródłowy port UDP/68 / docelowy port UDP i 67). Multiemisji, emisji hermetyzowany IP-in-IP pakiety i pakiety Generic Routing Encapsulation (GRE) są zablokowane w ramach sieci wirtualnych. 
+### <a name="what-protocols-can-i-use-within-vnets"></a>Jakie protokołów można używać w ramach sieci wirtualnych?
+Możesz użyć protokoły TCP, UDP i ICMP TCP/IP w ramach sieci wirtualnych. Emisji pojedynczej jest obsługiwana w ramach sieci wirtualnych, z wyjątkiem DHCP Dynamic Host Configuration Protocol () za pośrednictwem emisji (port UDP/68 źródłowy / docelowy port UDP/67). Multiemisji, emisji i pakietów hermetyzowanych IP-in-IP oraz pakiety Generic Routing Encapsulation (GRE) są blokowane w ramach sieci wirtualnych. 
 
-### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Czy można wywołać Moje domyślne routery w sieci wirtualnej?
+### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Czy mogę wysłać polecenie ping do mojego routery domyślne w ramach sieci wirtualnej?
 Nie.
 
-### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Aby zdiagnozować łączności można używać tracert?
+### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Czy można używać polecenia tracert, diagnozować łączność?
 Nie.
 
-### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Czy mogę dodać podsieci po utworzeniu sieci wirtualnej?
-Tak. Podsieci można dodać do sieci wirtualnych w dowolnym momencie tak długo, jak zakres adresów podsieci nie jest częścią innej podsieci i dostępne miejsca w zakresie adresów sieci wirtualnej.
+### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Czy można dodać podsieci po utworzeniu sieci wirtualnej?
+Tak. Podsieci można dodać do sieci wirtualnych w dowolnym momencie tak długo, jak zakres adresów podsieci nie jest częścią innej podsieci i dostępnego miejsca, które pozostanie w zakresie adresów sieci wirtualnej.
 
-### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Rozmiar mojej podsieci można modyfikować po jej utworzeniu?
-Tak. Można dodać, usunąć, rozszerzenia lub zmniejszyć rozmiar podsieci, jeśli nie ma żadnych maszyn wirtualnych wdrożonych w niej usługi.
+### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Rozmiar mojej podsieci można zmodyfikować po utworzeniu?
+Tak. Można dodać, usunąć, rozwiń węzeł lub zmniejszyć podsieć, jeśli nie ma żadnych maszyn wirtualnych ani usług wdrożonych w niej.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Podsieci można zmodyfikować po ich utworzeniu?
-Tak. Można dodać, usuwanie i modyfikowanie bloków CIDR używane przez sieci wirtualnej.
+Tak. Możesz dodawać, usuwania i modyfikowania bloków CIDR posługują się z siecią wirtualną.
 
-### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Czy Moje usług w sieci wirtualnej, można podłączyć do Internetu?
-Tak. Wszystkie usługi wdrożyć w ramach sieci wirtualnej mogą łączyć ruch wychodzący do Internetu. Aby dowiedzieć się więcej na temat połączenia wychodzące internet na platformie Azure, zobacz [połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Jeśli chcesz się połączyć przychodzącego z zasobem, który został wdrożony za pomocą Menedżera zasobów, muszą mieć publicznego adresu IP przypisane do niej. Aby dowiedzieć się więcej na temat publiczne adresy IP, zobacz [publicznego adresu IP, adresy](virtual-network-public-ip-address.md). Wdrożona na platformie Azure co usługa w chmurze Azure ma publicznie adresowanego wirtualne adresy IP przypisane do niej. Należy zdefiniować wejściowe punkty końcowe dla ról PaaS i maszyn wirtualnych do włączania tych usług do akceptowania połączeń z Internetu.
+### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Jeśli używam wykaz usług w sieci wirtualnej, czy można połączyć się z Internetem?
+Tak. Wszystkie usługi wdrożonego w ramach sieci wirtualnej, można połączyć z Internetem. Aby dowiedzieć się więcej na temat połączeń wychodzących internetowych na platformie Azure, zobacz [połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Jeśli chcesz się połączyć dla ruchu przychodzącego z zasobem, który został wdrożony za pomocą usługi Resource Manager, zasobu musi mieć przypisany do niego publiczny adres IP. Aby dowiedzieć się więcej na temat publicznych adresów IP, zobacz [publiczne adresy IP](virtual-network-public-ip-address.md). Każdej usługi w chmurze platformy Azure wdrożonych na platformie Azure ma adresowaną publicznie adresu VIP do niej przypisany. Należy zdefiniować wejściowych punktów końcowych dla ról PaaS i punkty końcowe dla maszyn wirtualnych włączyć te usługi do akceptowania połączeń z Internetu.
 
-### <a name="do-vnets-support-ipv6"></a>Sieci wirtualne obsługują IPv6?
-Nie. W tej chwili nie można używać protokołu IPv6 sieci wirtualnych. Możesz natomiast, przypisz IPv6 adresy usługi równoważenia obciążenia Azure załadować saldo maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [Omówienie protokołu IPv6 dla modułu równoważenia obciążenia Azure](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="do-vnets-support-ipv6"></a>Sieci wirtualne są obsługiwane przez protokół IPv6?
+Nie. Z sieciami wirtualnymi w tej chwili nie możesz użyć protokołu IPv6. Możesz natomiast, przypisz IPv6 adresów do modułów równoważenia obciążenia Azure, aby załadować saldo maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [Omówienie protokołu IPv6 dla usługi Azure Load Balancer](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="can-a-vnet-span-regions"></a>Sieci wirtualnej może obejmować regionów?
-Nie. Sieci wirtualnej jest ograniczony do jednego regionu. Sieć wirtualna jednak span stref dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Możesz połączyć sieci wirtualnych w różnych regionach, z sieci wirtualnej komunikacji równorzędnej. Aby uzyskać więcej informacji, zobacz [komunikacji równorzędnej omówienie sieci wirtualnej](virtual-network-peering-overview.md)
+### <a name="can-a-vnet-span-regions"></a>Sieć wirtualną, może obejmować regionach?
+Nie. Sieć wirtualna jest ograniczona do jednego regionu. Sieć wirtualna jednak zakresu strefy dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Łączenie z sieciami wirtualnymi w różnych regionach, za pomocą komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md)
 
-### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Do innej sieci wirtualnej platformy Azure można połączyć sieć wirtualną?
-Tak. Jeden sieci wirtualnej mogą łączyć się przy użyciu innej sieci wirtualnej:
-- **Sieci wirtualnej komunikacji równorzędnej**: Aby uzyskać więcej informacji, zobacz [sieci wirtualnej komunikacji równorzędnej — omówienie](virtual-network-peering-overview.md)
-- **Brama sieci VPN Azure**: Aby uzyskać więcej informacji, zobacz [skonfigurować połączenia do wirtualnymi](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Czy można połączyć sieć wirtualną z inną siecią wirtualną na platformie Azure?
+Tak. Jednej sieci wirtualnej można połączyć z inną siecią wirtualną za pomocą:
+- **Wirtualne sieci równorzędne**: Aby uzyskać więcej informacji, zobacz [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md)
+- **Bramy sieci VPN Azure**: Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Rozpoznawanie nazw (domen DNS)
 
-### <a name="what-are-my-dns-options-for-vnets"></a>Jakie są moje opcje DNS dla sieci wirtualnych?
-Skorzystaj z tabeli decyzji na [rozpoznawanie nazwy dla maszyn wirtualnych i wystąpień roli](virtual-networks-name-resolution-for-vms-and-role-instances.md) dostępne opcje strony do przeprowadzenia wszystkich DNS.
+### <a name="what-are-my-dns-options-for-vnets"></a>Jakie są moje opcje serwera DNS dla sieci wirtualnych?
+Skorzystaj z tabeli decyzji na [rozpoznawania nazw dla maszyn wirtualnych i wystąpień roli](virtual-networks-name-resolution-for-vms-and-role-instances.md) dostępne opcje strony przeprowadzenie Cię za pośrednictwem systemu DNS.
 
-### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Dla sieci wirtualnej można określić serwerów DNS?
-Tak. Można określić adresy IP serwerów DNS w ustawieniach sieci wirtualnej. Ustawienie jest stosowane jako domyślne serwery DNS dla wszystkich maszyn wirtualnych w sieci wirtualnej.
+### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Czy mogę określić, serwery DNS dla sieci wirtualnej?
+Tak. W ustawieniach sieci wirtualnej, można określić adresy IP serwera DNS. To ustawienie jest stosowane jako domyślne serwery DNS dla wszystkich maszyn wirtualnych w sieci wirtualnej.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Jak wiele serwerów DNS można określić?
-Odwołanie [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Odwołanie [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
-### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Moje serwery DNS można zmodyfikować po utworzono sieci?
-Tak. Lista serwerów DNS dla sieci wirtualnej można zmienić w dowolnym momencie. Lista serwerów DNS w przypadku zmiany, konieczne będzie ponowne uruchomienie wszystkich maszyn wirtualnych w sieci wirtualnej w kolejności ich do pobrania nowego serwera DNS.
+### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Moje serwery DNS można zmodyfikować po użytkownik utworzył sieci?
+Tak. Lista serwerów DNS dla sieci wirtualnej można zmienić w dowolnym momencie. Jeśli zmienisz lista serwerów DNS, konieczne będzie ponowne uruchomienie wszystkich maszyn wirtualnych w sieci wirtualnej w kolejności ich do pobrania nowego serwera DNS.
 
-### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Co to jest DNS platformy Azure i działa z sieci wirtualnych?
-DNS platformy Azure to usługa DNS wielodostępne oferowanych przez firmę Microsoft. Azure rejestruje wszystkich maszyn wirtualnych i wystąpień roli usługi chmury w tej usłudze. Ta usługa udostępnia rozpoznawanie nazw przez nazwę hosta dla maszyn wirtualnych i wystąpień roli zawartych w tej samej usługi w chmurze oraz nazwy FQDN dla maszyn wirtualnych i wystąpień roli w tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat DNS, zobacz [rozpoznawanie nazwy dla wystąpień roli maszyny wirtualne i usługi w chmurze](virtual-networks-name-resolution-for-vms-and-role-instances.md).
+### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Co to jest dostarczane do usługi Azure DNS i działa z sieciami wirtualnymi?
+DNS platformy Azure jest oferowana przez firmę Microsoft usługa DNS dla wielu dzierżawców. Azure rejestruje wszystkich maszyn wirtualnych i wystąpień ról usługi w chmurze w tej usłudze. Ta usługa zapewnia rozpoznawanie nazwy hosta dla maszyn wirtualnych i wystąpień roli zawartych w tej samej usługi w chmurze i nazwy FQDN dla maszyn wirtualnych i wystąpień roli w tej samej sieci wirtualnej. Aby dowiedzieć się więcej o usłudze DNS, zobacz [rozpoznawania nazw dla wystąpień ról maszyn wirtualnych i usług w chmurze](virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-Jest to ograniczenie, aby pierwsze 100 usługi w chmurze w sieci wirtualnej do rozpoznawania nazw między dzierżawcy przy użyciu DNS platformy Azure. Jeśli używasz serwera DNS, to ograniczenie nie ma zastosowania.
+Istnieje ograniczenie do pierwsze 100 usług w chmurze w sieci wirtualnej do rozpoznawania nazw międzydzierżawowa, przy użyciu systemu DNS platformy Azure. To ograniczenie nie ma zastosowania, jeśli używasz własnego serwera DNS.
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Można zastąpić ustawienia DNS na podstawie usługi dla maszyny Wirtualnej lub w chmurze?
-Tak. Można skonfigurować serwery DNS dla maszyny Wirtualnej lub w chmurze usługi, aby zastąpić domyślne ustawienia sieci. Jednak zalecane jest, że używasz możliwie DNS sieci.
+### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Czy można zastąpić ustawienia DNS na podstawie usługi na maszynie Wirtualnej lub w chmurze?
+Tak. Możesz ustawić serwerów DNS na maszynie Wirtualnej lub usługi w chmurze, aby zastąpić domyślne ustawienia sieciowe. Jednak zalecane jest użycie możliwie w całej sieci DNS.
 
-### <a name="can-i-bring-my-own-dns-suffix"></a>Czy mogę przenieść mój własny sufiks DNS
-Nie. Nie można określić niestandardowego sufiksu DNS dla Twojej sieci wirtualnych.
+### <a name="can-i-bring-my-own-dns-suffix"></a>Czy mogę przenieść moją własną sufiks DNS
+Nie. Nie można określić niestandardowe sufiks DNS dla sieci wirtualnych.
 
-## <a name="connecting-virtual-machines"></a>Łączenie maszyny wirtualne
+## <a name="connecting-virtual-machines"></a>Łączenie maszyn wirtualnych
 
-### <a name="can-i-deploy-vms-to-a-vnet"></a>Aby sieć wirtualną można wdrożyć maszyn wirtualnych?
-Tak. Wszystkich interfejsów sieciowych (NIC) dołączona do maszyny Wirtualnej wdrożone za pośrednictwem modelu wdrażania usługi Resource Manager musi być podłączony do sieci wirtualnej. Opcjonalnie można podłączyć do sieci wirtualnej maszyn wirtualnych wdrożonych za pośrednictwem klasycznego modelu wdrażania.
+### <a name="can-i-deploy-vms-to-a-vnet"></a>Czy mogę wdrożyć maszyny wirtualne z siecią wirtualną?
+Tak. Wszystkie interfejsy sieciowe (NIC) dołączonych do maszyny Wirtualnej wdrożonej za pomocą modelu wdrażania usługi Resource Manager muszą być podłączone do sieci wirtualnej. Maszyny wirtualne wdrożone za pośrednictwem klasycznego modelu wdrażania można opcjonalnie połączyć z siecią wirtualną.
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jakie są różne typy adresów IP, które można przypisać do maszyn wirtualnych?
-* **Prywatne:** przypisane do każdej karty Sieciowej w ramach każdej maszyny Wirtualnej. Przypisany adres za pomocą metody statyczne lub dynamiczne. Prywatne adresy IP są przypisywane z zakresu, który określono w ustawieniach podsieci sieci wirtualnej. Zasoby wdrożone za pośrednictwem klasycznego modelu wdrażania są przypisywane prywatnych adresów IP, nawet jeśli nie masz połączenia sieci wirtualnej. Metody alokacji jest różny w zależności od tego, czy zasób został wdrożony za pomocą Menedżera zasobów lub klasycznego modelu wdrażania: 
+* **Prywatne:** przypisane do poszczególnych kart Sieciowych w ramach każdej maszyny Wirtualnej. Adres jest przypisany, używając metody statyczne lub dynamiczne. Prywatne adresy IP są przypisywane z zakresu, który określono w ustawieniach podsieci sieci wirtualnej. Zasoby wdrożone za pośrednictwem klasycznego modelu wdrażania są przypisywane prywatnych adresów IP, nawet jeśli nie masz połączenia z siecią wirtualną. Zachowanie metody alokacji różni się w zależności od tego, czy zasób został wdrożony za pomocą usługi Resource Manager lub Klasyczny model wdrażania: 
 
-  - **Menedżer zasobów**: prywatnego adresu IP przypisanego dynamicznej lub statycznej metody jest przypisana do maszyny wirtualnej (Resource Manager), aż do usunięcia zasobu. Różnica polega na zaznacz adres można przypisać przy użyciu statyczne, czy wybierze Azure przy użyciu dynamicznych. 
-  - **Klasycznym**: prywatny adres IP przypisany za pomocą metody dynamicznej mogą ulec zmianie, gdy maszyna wirtualna (klasyczna) ponownego uruchomienia maszyny Wirtualnej po przejściu w stan zatrzymania (cofnięciu przydziału). Jeśli potrzebujesz upewnić się, że prywatnego adresu IP zasobu wdrożone za pośrednictwem klasycznego modelu wdrażania nigdy nie zmienia się, należy przypisać prywatnego adresu IP z metody statycznej.
+  - **Menedżer zasobów**: przypisany przy użyciu metody dynamiczny lub statyczny prywatny adres IP pozostanie przydzielony do maszyny wirtualnej (Resource Manager), aż do usunięcia zasobu. Różnica polega na, wybierz adres, który zostanie przypisany przy użyciu statycznej i wybierze platformy Azure, korzystając z dynamicznych. 
+  - **Klasyczne**: prywatnego adresu IP są przypisywane przy użyciu metody dynamiczne mogą ulec zmianie, gdy maszyna wirtualna (klasyczna) ponownego uruchomienia maszyny Wirtualnej po przejściu w stan zatrzymania (przydział zostanie cofnięty). Jeśli potrzebujesz upewnić się, że prywatny adres IP zasobu wdrożone za pośrednictwem klasycznego modelu wdrażania nigdy się nie zmienia, należy przypisać prywatny adres IP za pomocą metody statycznej.
 
-* **Publicznego:** opcjonalnie przypisane do kart sieciowych dołączonych do maszyn wirtualnych wdrożonych za pośrednictwem modelu wdrażania usługi Azure Resource Manager. Adres można przypisać za pomocą metody statyczne lub dynamiczne alokacji. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli wdrożone za pośrednictwem klasycznego modelu wdrażania istnieje w ramach usługi w chmurze, która jest przypisana *dynamiczne*, publiczny wirtualny adres IP (VIP). Publiczny *statycznych* adres IP, nazywany [zastrzeżony adres IP](virtual-networks-reserved-public-ip.md), opcjonalnie można przypisać jako adresu VIP. Publiczne adresy IP można przypisać do poszczególnych maszyn wirtualnych lub usługi w chmurze wystąpień roli wdrożone za pośrednictwem klasycznego modelu wdrażania. Te adresy są nazywane [wystąpienie poziomu publicznego adresu IP (ILPIP](virtual-networks-instance-level-public-ip.md) adresów i może być przypisywany dynamicznie.
+* **Public:** opcjonalnie przypisane do kart sieciowych dołączonych do maszyn wirtualnych wdrożonych za pomocą modelu wdrażania usługi Azure Resource Manager. Przy użyciu metody alokacji statycznej lub dynamicznej można przypisać adresu. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożone za pośrednictwem klasycznego modelu wdrażania istnieje w ramach usługi w chmurze, która jest przypisana *dynamiczne*, publiczny wirtualny adres IP (VIP). Publiczny *statyczne* adres IP, nazywany [zastrzeżony adres IP](virtual-networks-reserved-public-ip.md), opcjonalnie może być przypisany jako adres VIP. Publiczne adresy IP można przypisać do poszczególnych maszyn wirtualnych ani usług w chmurze wystąpień roli wdrożone za pośrednictwem klasycznego modelu wdrażania. Te adresy są nazywane [poziomu publicznego adresu IP wystąpienia (ILPIP](virtual-networks-instance-level-public-ip.md) adresów, a także mogą być przypisywane dynamicznie.
 
-### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Dla maszyny Wirtualnej, który utworzy w późniejszym czasie można rezerwować prywatnego adresu IP?
-Nie. Nie można zarezerwować prywatnego adresu IP. Jeśli dostępny jest prywatny adres IP, jest przypisany do maszyny Wirtualnej lub roli wystąpienia przez serwer DHCP. Maszyna wirtualna może lub nie może być jedną, która ma przypisany prywatny adres IP. Można jednak zmienić prywatnego adresu IP maszyny wirtualnej utworzone, wszystkie dostępne prywatny adres IP.
+### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Czy mogę zarezerwować prywatny adres IP dla maszyny Wirtualnej, która utworzy w późniejszym czasie?
+Nie. Nie można zarezerwować prywatny adres IP. Jeśli prywatny adres IP jest dostępna, jest przypisany do maszyny Wirtualnej lub wystąpienie roli przez serwer DHCP. Maszyna wirtualna może lub nie może być ten, który ma przypisany prywatny adres IP. Prywatny adres IP już utworzonej maszyny Wirtualnej, można jednak zmienić na dowolny dostępny prywatny adres IP.
 
-### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Czy prywatnej zmiany adresów IP dla maszyn wirtualnych w sieci wirtualnej?
-To zależy. Jeśli maszyna wirtualna została wdrożona za pomocą Menedżera zasobów nie, niezależnie od tego, czy został przypisany adres IP za pomocą metody statyczne lub dynamiczne alokacji. Jeśli maszyna wirtualna została wdrożona za pośrednictwem klasycznego modelu wdrażania, dynamicznych adresów IP można zmienić po uruchomieniu maszyny Wirtualnej po przejściu w stan zatrzymania (cofnięciu przydziału). Ten adres jest zwalniany z maszyny Wirtualnej wdrożone za pośrednictwem albo model wdrażania, gdy maszyna wirtualna zostanie usunięta.
+### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Czy prywatne zmiana adresów IP dla maszyn wirtualnych w sieci wirtualnej?
+To zależy. Jeśli maszyna wirtualna została wdrożona przy użyciu usługi Resource Manager nie, niezależnie od tego, czy został przypisany adres IP przy użyciu metody alokacji statycznej lub dynamicznej. Jeśli maszyna wirtualna była wdrożona za pomocą klasycznego modelu wdrażania, dynamiczne adresy IP można zmienić po uruchomieniu maszyny Wirtualnej po przejściu w stan zatrzymania (przydział zostanie cofnięty). Adres jest zwalniany z maszyny Wirtualnej wdrożone za pośrednictwem modelu wdrażania przy użyciu obu, gdy maszyna wirtualna zostanie usunięty.
 
-### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Można ręcznie przypisać adresy IP do karty sieciowe w systemie operacyjnym maszyny Wirtualnej?
-Tak, ale nie jest zalecane, chyba że niezbędne, np. gdy przypisywanie wielu adresów IP do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Dodawanie wielu IP adresów do maszyny wirtualnej](virtual-network-multiple-ip-addresses-portal.md#os-config). Dołączenia adresu IP przypisanego do usługi Azure karty Sieciowej do maszyny Wirtualnej zmian i adresu IP w systemie operacyjnym maszyny Wirtualnej jest inny, utracić łączność z maszyną wirtualną.
+### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Można ręcznie przypisać adresy IP do kart sieciowych w ramach systemu operacyjnego maszyny Wirtualnej?
+Tak, ale nie jest to zalecane, chyba że to konieczne, takie jak kiedy przypisywanie wielu adresów IP do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Dodawanie wielu adresów IP adresy do maszyny wirtualnej](virtual-network-multiple-ip-addresses-portal.md#os-config). Jeśli adres IP przypisany do karty Sieciowej z platformy Azure dołączonych do maszyny Wirtualnej zmiany i adres IP w ramach systemu operacyjnego maszyny Wirtualnej jest inny, utracić łączność z maszyną wirtualną.
 
-### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Jeśli zatrzymać miejsce wdrożenia usługi w chmurze lub zamknięcie maszyny Wirtualnej z poziomu systemu operacyjnego, co się dzieje z mojej adresów IP?
-Brak elementów. Adresy IP (VIP publiczne, publiczne i prywatne) pozostają przypisane do maszyny Wirtualnej lub miejsca wdrożenia usługi w chmurze.
+### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Jeśli zatrzymać miejsce wdrożenia usługi w chmurze lub zamknij maszynę Wirtualną z poziomu systemu operacyjnego, co się dzieje z moich adresów IP?
+Brak elementów. Adresy IP (publicznych adresów VIP, publiczne i prywatne) pozostają przypisane do miejsce wdrożenie usługi w chmurze lub maszyny Wirtualnej.
 
-### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Można przenieść maszyny wirtualne z jednej podsieci do innej podsieci w sieci wirtualnej bez ponownego wdrożenia?
-Tak. Więcej informacji można znaleźć [jak przenieść do innej podsieci maszyny Wirtualnej lub roli wystąpienia](virtual-networks-move-vm-role-to-subnet.md) artykułu.
+### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Czy mogę przenieść maszyny wirtualne z jednej podsieci do innej podsieci w sieci wirtualnej bez konieczności ponownego wdrażania?
+Tak. Więcej informacji można znaleźć [sposób przenoszenia maszyny Wirtualnej lub wystąpienie roli do innej podsieci](virtual-networks-move-vm-role-to-subnet.md) artykułu.
 
-### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Moje maszyny wirtualnej można skonfigurować statyczny adres MAC?
+### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Czy można skonfigurować statyczny adres MAC w przypadku mojej maszyny Wirtualnej?
 Nie. Adres MAC nie można skonfigurować statycznie.
 
-### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Adres MAC jest taka sama dla moich maszyny Wirtualnej po jej utworzeniu?
-Tak, adres MAC jest taka sama dla maszyny Wirtualnej wdrożone za pośrednictwem usługi Resource Manager i klasycznych modeli wdrażania, dopóki zostanie usunięty. Wcześniej adres MAC został wydany, jeśli maszyna wirtualna została zatrzymana (cofnięciu przydziału), ale teraz adres MAC jest zachowywana nawet wtedy, gdy maszyna wirtualna jest w stanie deallocated.
+### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Adres MAC pozostaną takie same dla mojej maszyny Wirtualnej po jej utworzeniu?
+Tak, adres MAC, pozostaje taka sama dla maszyny Wirtualnej wdrożone za pośrednictwem usługi Resource Manager i klasycznych modeli wdrażania, dopóki zostanie usunięty. Adres MAC zostało wydane wcześniej, jeśli maszyna wirtualna została zatrzymana (przydział zostanie cofnięty), ale teraz adres MAC jest zachowywane nawet wtedy, gdy maszyna wirtualna jest w stanie cofnięcia przydziału.
 
-### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Można podłączyć do Internetu z maszyny Wirtualnej w sieci wirtualnej?
-Tak. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli wdrożyć w ramach sieci wirtualnej można połączyć z Internetem.
+### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Czy można połączyć się z Internetem z maszyny Wirtualnej w sieci wirtualnej?
+Tak. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożonego w ramach sieci wirtualnej można połączyć się z Internetem.
 
-## <a name="azure-services-that-connect-to-vnets"></a>Usług Azure, które nawiązać połączenia z sieciami wirtualnymi
+## <a name="azure-services-that-connect-to-vnets"></a>Usługi platformy Azure, które łączą się z sieciami wirtualnymi
 
-### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Z sieci wirtualnej można używać aplikacji sieci Web usługi aplikacji Azure?
-Tak. Można wdrażać aplikacje sieci Web w sieci wirtualnej przy użyciu ASE (środowiska usługi aplikacji). Jeśli masz połączenie punkt lokacja skonfigurowane dla sieci wirtualnej, wszystkie aplikacje sieci Web bezpiecznie łączyć i uzyskiwać dostęp do zasobów w sieci wirtualnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
+### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Czy można używać usługi Azure App Service Web Apps, z siecią wirtualną?
+Tak. Możesz wdrażać aplikacje sieci Web w sieci wirtualnej przy użyciu środowisko ASE wewnętrznego (App Service Environment). W przypadku połączenia punkt lokacja skonfigurowanego dla sieci wirtualnej, wszystkie aplikacje sieci Web można bezpiecznie połączyć i uzyskiwać dostęp do zasobów w sieci wirtualnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Tworzenie aplikacji sieci Web w środowisku usługi aplikacji](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Integracja aplikacji z sieci wirtualnej platformy Azure](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Przy użyciu integracji sieci wirtualnej i połączeń hybrydowych z aplikacji sieci Web](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
+* [Tworzenie aplikacji sieci Web w środowisku usługi App Service](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Integrowanie aplikacji z siecią wirtualną platformy Azure](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Przy użyciu połączeń hybrydowych i integracja z siecią wirtualną z funkcją Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
 
-### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Z sieci web i proces roboczy ról (PaaS) w sieci wirtualnej można wdrożyć usługi w chmurze?
-Tak. Usługi w chmurze wystąpień roli w ramach sieci wirtualnych (opcjonalnie) można wdrożyć. Aby to zrobić, możesz Określ nazwę sieci wirtualnej i mapowania roli/podsieci w sekcji konfiguracji sieci konfiguracji usługi. Nie należy do żadnego z plików binarnych aktualizacji.
+### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Czy mogę wdrożyć usługi w chmurze przy użyciu ról sieć web i proces roboczy (PaaS) w sieci wirtualnej?
+Tak. (Opcjonalnie) można wdrożyć wystąpień roli usług Cloud Services w ramach sieci wirtualnych. Aby to zrobić, należy określić nazwę sieci wirtualnej i mapowania podsieć/roli w sekcji konfiguracji usługi w konfiguracji sieci. Nie trzeba do aktualizacji plików binarnych.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>Ustawianie skalowania maszyny wirtualnej (VMSS) można podłączyć do sieci wirtualnej?
-Tak. VMSS należy nawiązać połączenie sieci wirtualnej.
+### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>Czy można połączyć zestawu skalowania maszyn wirtualnych (VMSS) do sieci wirtualnej?
+Tak. Zestawu skalowania maszyn wirtualnych należy połączyć z siecią wirtualną.
 
-### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Jest pełna lista Azure usługi, że można wdrożyć zasobów w sieci wirtualnej?
+### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Jest pełna lista Azure usług, czy mogę wdrożyć zasobów w sieci wirtualnej?
+Tak, aby uzyskać więcej informacji, zobacz [Integracja sieci wirtualnej dla usług platformy Azure](virtual-network-for-azure-services.md).
 
-Tak, aby uzyskać więcej informacji, zobacz [integracji sieci wirtualnej dla usługi Azure](virtual-network-for-azure-services.md).
+### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Jakie zasoby PaaS platformy Azure można ograniczyć dostęp do sieci wirtualnej?
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Zasoby Azure PaaS można ograniczyć dostęp do z sieci wirtualnej?
+Zasoby wdrożone za pośrednictwem niektórych usług PaaS platformy Azure (np. usługi Azure Storage i Azure SQL Database), można ograniczyć dostęp do sieci, tylko do zasobów w sieci wirtualnej za pomocą punktów końcowych usługi sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md).
 
-Zasoby wdrożone za pośrednictwem niektórych usług Azure PaaS (takich jak usługi Azure Storage i Azure SQL Database), można ograniczyć dostęp do sieci do tylko do zasobów w sieci wirtualnej przy użyciu punktów końcowych usługi sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md).
-
-### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Czy mogę przenieść mój usług i sieci wirtualnych
-Nie. Nie można przenieść usług i sieci wirtualnych. Aby przenieść zasobu do innej sieci wirtualnej, należy usunąć i ponownie wdrożyć zasobu.
+### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Czy mogę przenieść mój usług i sieciami wirtualnymi
+Nie. Nie można przenieść usług i sieciami wirtualnymi. Aby przenieść zasób do innej sieci wirtualnej, należy do usunięcia i ponownego wdrożenia zasobów.
 
 ## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="what-is-the-security-model-for-vnets"></a>Co to jest model zabezpieczeń dla sieci wirtualnych?
-Sieci wirtualne są odizolowane od siebie i innych usług hostowanych w infrastrukturze Azure. Sieci wirtualnej jest granicą zaufania.
+Sieci wirtualne są odizolowane od siebie i innych usług, hostowanych w infrastrukturze platformy Azure. Sieć wirtualna jest granicy zaufania.
 
-### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Czy mogę ograniczyć przepływ ruchu przychodzącego i wychodzącego do zasobów połączone sieci wirtualnej
-Tak. Możesz zastosować [grup zabezpieczeń sieci](security-overview.md) do poszczególnych podsieci w sieci wirtualnej, kart sieciowych jest dołączony do sieci wirtualnej, lub obie.
+### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Do zasobów połączonych z siecią wirtualną można ograniczyć ruch przychodzący i wychodzący przepływ?
+Tak. Można zastosować [sieciowych grup zabezpieczeń](security-overview.md) do poszczególnych podsieci w sieci wirtualnej, kart sieciowych dołączonych do sieci wirtualnej i / lub.
 
-### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Czy można zaimplementować zapory między zasobami połączone sieci wirtualnej?
-Tak. Można wdrożyć [urządzenie wirtualne zapory sieciowej](https://azure.microsoft.com/marketplace/?term=firewall) z kilku dostawców za pośrednictwem portalu Azure Marketplace.
+### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Czy można zaimplementować zapory między zasobami podłączonej do sieci wirtualnej?
+Tak. Możesz wdrożyć [zapory sieciowe urządzenie wirtualne](https://azure.microsoft.com/marketplace/?term=firewall) z kilku dostawców w portalu Azure Marketplace.
 
-### <a name="is-there-information-available-about-securing-vnets"></a>Dostępne Zabezpieczanie sieci wirtualne są informacje?
-Tak. Aby uzyskać więcej informacji, zobacz [Przegląd zabezpieczeń sieci Azure](../security/security-network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="is-there-information-available-about-securing-vnets"></a>Dostępne na temat zabezpieczania sieci wirtualne są informacje?
+Tak. Aby uzyskać więcej informacji, zobacz [Omówienie zabezpieczeń sieci platformy Azure](../security/security-network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="apis-schemas-and-tools"></a>Interfejsy API, schematy i narzędzia
+## <a name="apis-schemas-and-tools"></a>Interfejsy API, schematów i narzędzia
 
-### <a name="can-i-manage-vnets-from-code"></a>Sieci wirtualne można zarządzać z kodu?
-Tak. Można użyć interfejsów API REST dla sieci wirtualnych w [usługi Azure Resource Manager](/rest/api/virtual-network) i [klasyczny (Zarządzanie usługą)](http://go.microsoft.com/fwlink/?LinkId=296833) modele wdrażania.
+### <a name="can-i-manage-vnets-from-code"></a>Z poziomu kodu może zarządzać sieciami wirtualnymi?
+Tak. Można użyć interfejsów API REST dla sieci wirtualnych w [usługi Azure Resource Manager](/rest/api/virtual-network) i [klasyczny (Zarządzanie usługami)](http://go.microsoft.com/fwlink/?LinkId=296833) modeli wdrażania.
 
-### <a name="is-there-tooling-support-for-vnets"></a>Istnieje już obsługę narzędzi dla sieci wirtualnych?
+### <a name="is-there-tooling-support-for-vnets"></a>Czy istnieje obsługę narzędzi dla sieci wirtualnych?
 Tak. Dowiedz się więcej o korzystaniu z:
-- Portalu Azure, aby wdrożyć sieci wirtualnych za pośrednictwem [usługi Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i [klasycznego](virtual-networks-create-vnet-classic-pportal.md) modele wdrażania.
-- PowerShell do zarządzania sieciami wirtualnymi, wdrażać przy użyciu [Resource Manager](/powershell/module/azurerm.network) i [klasycznego](/powershell/module/azure/?view=azuresmps-3.7.0) modele wdrażania.
-- Azure interfejsu wiersza polecenia (CLI) do wdrażania i zarządzania wdrożone za pośrednictwem sieci wirtualnych [Resource Manager](/cli/azure/network/vnet) i [klasycznego](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modele wdrażania.  
+- Witryny Azure portal, aby wdrożyć sieci wirtualnych za pośrednictwem [usługi Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i [klasycznego](virtual-networks-create-vnet-classic-pportal.md) modeli wdrażania.
+- Zarządzanie sieciami wirtualnymi wdrożonymi za pośrednictwem programu PowerShell [usługi Resource Manager](/powershell/module/azurerm.network) i [klasycznego](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
+- Interfejsu wiersza polecenia platformy Azure (CLI), wdrażanie i zarządzanie nimi sieci wirtualnych wdrożonych za pośrednictwem [usługi Resource Manager](/cli/azure/network/vnet) i [klasycznego](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania.  
+
+## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+
+### <a name="what-is-vnet-peering"></a>Co to jest komunikacja równorzędna sieci wirtualnych?
+Komunikacji równorzędnej sieci wirtualnej (lub komunikacji równorzędnej sieci wirtualnych) umożliwia łączenie sieci wirtualnych. Połączenia komunikacji równorzędnej sieci wirtualnej między sieciami wirtualnymi umożliwia kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Tak, jakby leżą one w tej samej sieci maszyn wirtualnych w wirtualnych sieciach równorzędnych mogą komunikować się ze sobą. Te sieci wirtualne można w tym samym regionie lub w różnych regionach (znany także jako globalnych wirtualnych sieci równorzędnych). Można również tworzyć połączenia komunikacji równorzędnej sieci wirtualnej między subskrypcjami platformy Azure.
+
+### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>W innym regionie można utworzyć połączenie komunikacji równorzędnej z siecią wirtualną?
+Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure do chmur krajowych. Globalnej komunikacji równorzędnej nie ma obecnie w chmurach krajowych.
+
+### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Można włączyć komunikację równorzędną sieci wirtualnej Jeśli Moje sieci wirtualne należą do subskrypcji w ramach różnych dzierżaw usługi Azure Active Directory?
+Obecnie nie jest możliwe ustalenie, komunikacja równorzędna sieci wirtualnych (czy lokalnych lub globalnych) gdy Twoje subskrypcje należą do różnych dzierżaw usługi Azure Active Directory.
+
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Mojej sieci wirtualnej połączenie komunikacji równorzędnej jest *zainicjowano* stanu, dlaczego nie mogę połączyć?
+Jeśli połączenie komunikacji równorzędnej jest w stanie zainicjowano, oznacza to, że utworzono tylko jedno połączenie. Link dwukierunkowe musi zostać utworzona, aby możliwe było nawiązanie połączenia pomyślnie. Na przykład aby nawiązać komunikację równorzędną między sieciami wirtualnymi A siecią wirtualną b, łącze należy utworzyć z zachodzi komunikacja równorzędna między do Vnetc i Vnetc, aby komunikacja równorzędna między. Tworzenie łączy główny zarówno zmieni stan na *połączone.*
+
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Mojej sieci wirtualnej połączenie komunikacji równorzędnej jest *Disconnected* stanu, dlaczego nie można utworzyć połączenie komunikacji równorzędnej?
+Jeśli połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie rozłączenia, oznacza to, że jeden z linków utworzony został usunięty. Aby ponownie ustanowić połączenie komunikacji równorzędnej, konieczne będzie usunięcie linku i ponowne utworzenie.
+
+### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Czy można peer mojej sieci wirtualnej z siecią wirtualną w innej subskrypcji?
+Tak. Komunikacja równorzędna może sieci wirtualnych między subskrypcjami i regionach.
+
+### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Można nawiązywana jest komunikacja równorzędna dwóch sieci wirtualnych za pomocą dopasowania i nakładających się zakresów adresów?
+Nie. Przestrzenie adresowe musi nie overalap o włączenie komunikacji równorzędnej sieci wirtualnej.
+
+### <a name="how-much-do-vnet-peering-links-cost"></a>Ile zrobić, wirtualne sieci równorzędne łącza kosztów?
+Brak opłat za utworzenie połączenia komunikacji równorzędnej sieci wirtualnej. Transfer danych we połączenia komunikacji równorzędnej jest rozliczane. [Zobacz tutaj](https://azure.microsoft.com/pricing/details/virtual-network/).
+
+### <a name="is-vnet-peering-traffic-encrypted"></a>Ruch komunikacji równorzędnej sieci wirtualnej są szyfrowane?
+Nie. Ruch między zasobami w wirtualnych sieciach równorzędnych jest prywatny i izolowany. Pozostaje całkowicie Backbone firmy Microsoft.
+
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Dlaczego jest moje połączenie komunikacji równorzędnej w stanie rozłączonym?
+Połączenia komunikacji równorzędnej, przejdź do sieci wirtualnej *Disconnected* stanie po usunięciu jedno połączenie komunikacji równorzędnej sieci wirtualnej. Aby ponownie ustanowić połączenia komunikacji równorzędnej, musisz usunąć obu połączeń.
+
+### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Jeśli nawiązywana jest komunikacja równorzędna zachodzi komunikacja równorzędna między do Vnetc, nawiązywana jest komunikacja równorzędna Vnetc zachodzi komunikacja równorzędna między oznacza, że komunikacja równorzędna między i komunikacja skomunikowane równorzędnie?
+Nie. Przechodnie komunikacja równorzędna nie jest obsługiwana. Należy równorzędne zachodzi komunikacja równorzędna między i oraz tego, została wykonana.
+
+### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Czy istnieją jakiekolwiek ograniczenia przepustowości, dla połączenia komunikacji równorzędnej?
+Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest tylko limites przez zasób maszynę Wirtualną lub obliczeń.
+

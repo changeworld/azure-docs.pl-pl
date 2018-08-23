@@ -1,6 +1,6 @@
 ---
-title: Typowe problemy, aby rozwiązać problemy w programie Azure Stream Analytics
-description: W tym artykule opisano kilka typowych problemów w Azure Stream Analytics i kroki, aby je rozwiązać.
+title: Typowe problemy można rozwiązać w usłudze Azure Stream Analytics
+description: W tym artykule opisano kilka typowych problemów z usługi Azure Stream Analytics i kroki, aby rozwiązać te problemy.
 services: stream-analytics
 author: jasonwhowell
 manager: kfile
@@ -9,83 +9,85 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: e04d1072acee635235b0a5bd8465ca38c861017b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3b01e75a9b34ce4e38138816935bdae2e0ea778
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523527"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056050"
 ---
-# <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Typowe problemy Stream Analytics i kroki rozwiązywania problemów z
+# <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Typowe problemy w usłudze Stream Analytics i kroki umożliwiające rozwiązywanie problemów
 
 ## <a name="troubleshoot-malformed-input-events"></a>Rozwiązywanie problemów z źle sformułowane zdarzenia wejściowe
 
- Strumień wejściowy zadania Stream Analytics zawiera źle sformułowane wiadomości są spowodowane problemów serializacji. Na przykład nieprawidłowo sformułowany komunikat może być spowodowane przez brak nawiasu lub w obiekcie JSON brakuje nawiasu klamrowego lub niepoprawny format sygnatury w polu czasu do czasu. 
+ Przyczyną są problemy z serializacją, gdy strumień wejściowy zadania usługi Stream Analytics zawiera źle sformułowane komunikaty. Na przykład nieprawidłowo sformułowany komunikat może być spowodowane przez brak nawiasu lub Brak nawiasu klamrowego w obiekcie JSON lub niepoprawny format sygnatury w polu czasu do czasu. 
  
- Gdy zadanie usługi Stream Analytics odbiera nieprawidłowo sformułowany komunikat z wartością wejściową, porzuca wiadomości i powiadamia użytkownika z ostrzeżeniem. Symbol ostrzeżenie jest wyświetlane na **dane wejściowe** kafelka zadania usługi analiza strumienia (znaku ostrzeżenie istnieje tak długo, jak zadanie jest w stanie uruchomienia):
+ Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komunikat z danych wejściowych, porzuca wiadomość i powiadamia użytkownika z ostrzeżeniem. Symbol ostrzeżenia jest wyświetlany na **dane wejściowe** Kafelek zadania usługi Stream Analytics (ta oznaczeniem ostrzeżenia istnieje tak długo, jak długo zadanie jest w stanie uruchomienia):
 
-![Dane wejściowe kafelka](media/stream-analytics-malformed-events/inputs_tile.png)
+![Kafelku dane wejściowe](media/stream-analytics-malformed-events/inputs_tile.png)
 
-Aby uzyskać więcej informacji, Włącz dzienniki diagnostyczne, aby wyświetlić szczegóły ostrzeżenia. Źle sformułowane zdarzenia wejściowe, dzienniki wykonywania zawierać wpis ze komunikat, który wygląda następująco: "komunikat: nie można deserializować wejściowego zdarzenia z zasobu <blob URI> jako json". 
+Aby uzyskać więcej informacji, Włącz dzienniki diagnostyczne wyświetlić szczegóły ostrzeżenia. Źle sformułowane zdarzenia wejściowe, dzienniki wykonywania zawierać wpis ze komunikat, który wygląda następująco: "komunikat: nie można przeprowadzić deserializacji zdarzeń wejściowych z zasobu <blob URI> jako dane json". 
 
 ### <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 
-1. Przejdź do wprowadzania kafelka i kliknij, aby wyświetlić ostrzeżenia.
+1. Przejdź do kafelka danych wejściowych i kliknij, aby wyświetlić ostrzeżenia.
 
-2. Dane wejściowe kafelka Wyświetla zestaw ostrzeżenia o szczegółowe informacje o problemie. Poniżej przedstawiono przykładowy komunikat ostrzegawczy, zawiera komunikat ostrzegawczy partycji, przesunięcia i liczby sekwencji przypadku źle sformułowane dane JSON. 
+2. Na kafelku dane wejściowe, wyświetla zestaw ostrzeżeń wraz ze szczegółów o problemie. Poniżej przedstawiono przykładowy komunikat ostrzegawczy, komunikat ostrzegawczy pokazuje partycji, przesunięcie i sekwencji cyfry w przypadku, gdy są źle sformułowane dane JSON. 
 
    ![Komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning_message_with_offset.png)
 
-3. Aby uzyskać dane JSON, który ma niepoprawny format, należy uruchomić kod CheckMalformedEvents.cs. Ten przykład jest dostępny w [repozytorium GitHub przykłady](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji, przesunięcie i odbitek dane, które znajduje się w tym przesunięcia. 
+3. Aby uzyskać dane JSON, który ma niepoprawny format, należy uruchomić kod CheckMalformedEvents.cs. Ten przykład jest dostępny w [repozytorium przykładów usługi GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji: przesunięcie i drukuje dane, które znajdują się w tym przesunięciu. 
 
-4. Po odczytaniu danych możesz przeanalizować i poprawić format serializacji. 
+4. Po odczytaniu danych możesz przeanalizować i poprawić format serializacji.
+
+5. Możesz również [odczytywać zdarzenia z usługi IoT Hub za pomocą Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
 
 ## <a name="delayed-output"></a>Opóźnione danych wyjściowych
 
-### <a name="first-output-is-delayed"></a>Pierwszy danych wyjściowych jest opóźnione
-Po uruchomieniu zadania usługi analiza strumienia zdarzenia wejściowe są odczytywane, ale w danych wyjściowych tworzonym w pewnych okolicznościach może następować z opóźnieniem.
+### <a name="first-output-is-delayed"></a>Pierwsze dane wyjściowe jest opóźnione
+Po uruchomieniu zadania usługi Stream Analytics, zdarzenia wejściowe są odczytywane, ale w danych wyjściowych jest generowany w pewnych okolicznościach może nastąpić z opóźnieniem.
 
-Wartości czasu dużych danych czasowych zapytań elementów może przyczynić się do opóźnienia danych wyjściowych. Aby wygenerować poprawne dane wyjściowe w dużych czas systemu windows, zadanie przesyłania strumieniowego jest uruchamiany za odczytywanie danych z najnowszych możliwości czasu (do siedmiu dni temu) do wypełnienia przedział czasu. W tym okresie nie wygenerowania danych wyjściowych do czasu ukończenia wyrównującej odczytu zaległych zdarzeń wejściowych. Ten problem można powierzchni, gdy system uaktualnia zadań przesyłania strumieniowego, w związku z tym ponowne uruchamianie zadania. Takie uaktualnień zazwyczaj wykonywane raz co kilka miesięcy. 
+Wartości czasu duże w elementach danych czasowych zapytań można przekazywać do opóźnienie danych wyjściowych. Aby wygenerować poprawne dane wyjściowe za pośrednictwem okna czasowe dużych, zadanie przesyłania strumieniowego jest uruchamiany za odczytywanie danych z najnowszych możliwości czasu (maksymalnie siedem dni temu) do wypełnienia przedziału czasu. W tym czasie żadnych danych wyjściowych jest generowany, aż do zakończenia wyrównującej odczytu zaległe zdarzenia wejściowe. System uaktualnia zadania przesyłania strumieniowego, w związku z tym ponowne uruchamianie zadania, może pojawić się ten problem. Takie uaktualnień są zazwyczaj wykonywane raz co kilka miesięcy. 
 
-Dlatego należy zachować ostrożność podczas projektowania zapytania Stream Analytics. Jeśli używasz okno czasu duże (więcej niż kilka godzin, maksymalnie 7 dni) dla danych czasowych elementów w składni zapytania zadania, może to prowadzić do opóźnienia na pierwszym dane wyjściowe po uruchomieniu lub ponownym uruchomieniu zadania.  
+Dlatego należy zachować ostrożność podczas projektowania zapytania usługi Stream Analytics. Jeśli używasz dużym oknie czasowym (więcej niż kilka godzin, maksymalnie siedem dni) dla danych czasowych elementów w składni zapytania zadania, może to prowadzić do opóźnienia na pierwszym dane wyjściowe po uruchomieniu lub ponownym uruchomieniu zadania.  
 
-Jeden środki zaradcze dla tego rodzaju pierwszy opóźnienie danych wyjściowych jest przy użyciu technik paralelizacja kwerendy (partycjonowanie danych), lub Dodaj więcej jednostek przesyłania strumieniowego w celu zwiększenia wydajności, dopóki zadanie wyrównania.  Aby uzyskać więcej informacji, zobacz [zagadnień dotyczących tworzenia zadania usługi analiza strumienia](stream-analytics-concepts-checkpoint-replay.md)
+Jeden środki zaradcze dla tego rodzaju pierwszy opóźnienie danych wyjściowych jest przy użyciu technik przetwarzania równoległego zapytań (partycjonowanie danych) lub dodanie większej liczby jednostek przesyłania strumieniowego w celu zwiększenia przepływności, dopóki zadanie wyrównywane.  Aby uzyskać więcej informacji, zobacz [zagadnień dotyczących tworzenia zadania usługi Stream Analytics](stream-analytics-concepts-checkpoint-replay.md)
 
-Te czynniki mieć wpływ na osi czasu pierwszego danych wyjściowych, generowany jest:
+Te czynniki mają wpływ aktualności pierwszy danych wyjściowych, który jest generowany:
 
-1. Użyj agregacjami (grupy przez z wirowania, skaczące i przedłużanie systemu windows)
-   - Wirowania lub skaczące agreguje okna, wyniki są generowane na koniec przedziału czasu okna. 
-   - W metodzie przesuwanego okna wyniki są generowane, gdy zdarzenie wprowadza lub opuszcza metodzie przesuwanego okna. 
-   - Jeśli planujesz użyć rozmiaru okna duże (> 1 godz.), najlepiej wybrać przeskoku lub metodzie przesuwanego okna, aby wyświetlić dane wyjściowe w częściej.
+1. Użycie okna agregacji (grupy według elementu wirowania, przeskokiem i przesuwanie systemu windows)
+   - Wirowania lub przeskokiem oknie, agregacje, wyniki są generowane na końcu przedział czasu okna. 
+   - Przesuwającego się okna wyniki są generowane, gdy zdarzenie wnoszone lub zamyka przesuwającego się okna. 
+   - Jeśli planujesz użyć rozmiaru okna duży (> 1 godzina), najlepiej wybrać przeskoku lub przesuwanego okna, aby wyświetlić dane wyjściowe w częściej.
 
-2. Użyj danych czasowych sprzężeń (połączenie z DATEDIFF)
-   - Dopasowań są generowane zaraz po obu stronach dopasowane zdarzeń przychodzących.
-   - Dane, które nie ma dopasowania (LEWEGO sprzężenia zewnętrznego) jest generowany na końcu okna DATEDIFF względem każdego zdarzenia po lewej stronie.
+2. Korzystanie z danych czasowych sprzężenia (POŁĄCZ za pomocą funkcji DATEDIFF)
+   - Dopasowania są generowane, zaraz po obu stronach dopasowane zdarzenia odbierane.
+   - Dane, które nie ma dopasowania (po lewej stronie OUTER JOIN) jest generowany na końcu okna DATEDIFF w odniesieniu do każdego zdarzenia po lewej stronie.
 
-3. Użyj danych czasowych funkcje analityczne (ISFIRST, LAST i opóźnienie z LIMIT czasu trwania)
-   - Funkcje analityczne dane wyjściowe jest generowany dla każdego zdarzenia, nie ma żadnego opóźnienia.
+3. Korzystanie z danych czasowych funkcje analityczne (ISFIRST, LAST i OPÓŹNIENIEM przy użyciu LIMIT DURATION)
+   - Dla funkcji analitycznych danych wyjściowych jest generowany dla każdego zdarzenia, nie ma żadnego opóźnienia.
 
 ### <a name="output-falls-behind"></a>Dane wyjściowe wykracza poza
-Podczas normalnego działania zadania Jeśli okaże się, że dane wyjściowe zadania jest objęte za (dłużej i dłuższego czasu oczekiwania), użytkownik może w określeniu głównych przyczyn, sprawdzając czynniki te:
-- Określa, czy jest ograniczany zbiornika podrzędne
-- Określa, czy jest ograniczany nadrzędnego źródła
-- Określa, czy logika przetwarzania w zapytaniu jest obliczeniowych
+Podczas normalnego działania zadania Jeśli okaże się, że dane wyjściowe zadania jest objęte za (dłużej i dłuższego opóźnienia), można wyznaczyć głównych przyczyn, sprawdzając te czynniki:
+- Czy jest ograniczany podrzędne obiektu sink
+- Czy jest ograniczany nadrzędne źródło
+- Czy logikę przetwarzania w zapytaniu jest intensywnych obliczeń
 
-Aby wyświetlić te szczegóły w portalu Azure, wybierz zadanie przesyłania strumieniowego, a następnie wybierz **diagram zadania**. Dla każdego wejścia istnieje na partycji zaległych zdarzeń metryki. Jeśli Metryka zdarzenia zaległości stale, jest wskaźnik, że zasoby systemu są ograniczone. Potencjalnie to z powodu ograniczania ujście danych wyjściowych lub wysokie procesora CPU. Aby uzyskać więcej informacji na temat używania diagram zadania zobacz [danymi debugowanie przy użyciu diagramu zadania](stream-analytics-job-diagram-with-metrics.md).
+Aby zobaczyć te szczegółowe informacje w witrynie Azure portal, wybierz zadanie przesyłania strumieniowego, a następnie wybierz **diagram zadania**. Dla każdego danych wejściowych, nie istnieje na partycji zaległości zdarzeń metrykę. Jeśli Metryka zdarzenia zaległości stale rośnie, jest wskaźnik, że zasoby systemu są ograniczone. Potencjalnie to ze względu na ograniczenie ujścia danych wyjściowych lub wysokie użycie procesora CPU. Aby uzyskać więcej informacji na temat korzystania z diagramu zadania, zobacz [opartych na danych debugowanie za pomocą diagramu zadania](stream-analytics-job-diagram-with-metrics.md).
 
-## <a name="handle-duplicate-records-in-azure-sql-database-output"></a>Obsługi zduplikowanych rekordów w danych wyjściowych bazy danych SQL Azure
+## <a name="handle-duplicate-records-in-azure-sql-database-output"></a>Obsługa zduplikowanych rekordów w danych wyjściowych usługi Azure SQL Database
 
-Po skonfigurowaniu bazy danych Azure SQL jako dane wyjściowe do zadania usługi analiza strumienia masowo wstawia rekordy do tabeli docelowej. Ogólnie rzecz biorąc, usługi Azure stream analytics zapewnia [co najmniej raz dostarczania]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics) do ujścia danych wyjściowych jednego nadal [dokładnie osiągnięcia — raz dostarczania]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL output, gdy tabeli SQL ma zdefiniowane ograniczenia unique. 
+Po skonfigurowaniu bazy danych Azure SQL jako wyjścia zadania usługi Stream Analytics zbiorczo wstawia rekordy w tabeli docelowej. Ogólnie rzecz biorąc, usługa Azure stream analytics gwarantuje [co najmniej jednokrotnego dostarczenia]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics) do ujścia danych wyjściowych jednego nadal [osiągnąć dokładnie-jednokrotnego dostarczenia]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) do bazy danych SQL. dane wyjściowe po tabeli SQL zdefiniowane ograniczenia unique. 
 
-Po w tabeli SQL są skonfigurowane ograniczenia klucza unique i zduplikowane rekordy wstawiane do tabeli SQL, usługi Azure Stream Analytics usuwa zduplikowany rekord. Dzieli dane w partii i rekursywnie Wstawianie partii, dopóki nie zostanie znaleziony jeden zduplikowany rekord. Jeśli zadanie przesyłania strumieniowego ma znaczną liczbę zduplikowane wiersze, tego podziału i Wstaw procesu musi Ignoruj duplikaty pojedynczo, który jest mniej wydajne i czasochłonny. Jeśli widzisz wielu komunikaty ostrzegawcze naruszenie klucza w dzienniku aktywności w ciągu ostatniej godziny jest prawdopodobne, że dane wyjściowe SQL jest spowolnienie całego zadania. 
+Gdy unikatowych ograniczeń klucza są konfigurowane w tabeli SQL i zduplikowane rekordy, które są wstawiane do tabeli SQL, Azure Stream Analytics usuwa zduplikowany rekord. Dzieli dane na partie i rekursywnie wstawiania partii, dopóki nie zostanie znaleziony jeden zduplikowany rekord. Jeśli zadanie przesyłania strumieniowego ma znaczną liczbę zduplikowane wiersze, w tym podziału i Wstaw procesu ma ignorowanie duplikaty pojedynczo, który jest mniej wydajne i czasochłonny proces. Jeśli widzisz kilka komunikaty ostrzegawcze naruszenie klucza w dzienniku aktywności w ciągu ostatniej godziny, prawdopodobnie danych wyjściowych SQL spowalnia całego zadania. 
 
-Aby rozwiązać ten problem, należy [skonfigurować indeks]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) który powoduje naruszenie klucza przez włączenie opcji IGNORE_DUP_KEY. Włączenie tej opcji umożliwia zduplikowanych wartości, które mają być ignorowane przez SQL podczas operacji wstawiania zbiorczego i SQL Azure po prostu tworzy komunikat ostrzegawczy zamiast błędu. Usługa Azure Stream Analytics nie tworzy już błędy naruszenia dotyczącego klucza podstawowego.
+Aby rozwiązać ten problem, należy [skonfigurować indeks]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , powoduje naruszenie klucza po włączeniu opcji IGNORE_DUP_KEY. Włączenie tej opcji umożliwia zduplikowanych wartości, które mają być ignorowane przez SQL podczas operacji wstawiania zbiorczego i SQL Azure, po prostu tworzy komunikat ostrzegawczy, a nie błąd. Usługa Azure Stream Analytics nie generuje już błędów naruszenia klucza podstawowego.
 
-Podczas konfigurowania IGNORE_DUP_KEY dla kilku typów indeksów, należy zwrócić uwagę następujące uwagi:
+Podczas konfigurowania IGNORE_DUP_KEY pod kątem kilku typów indeksów, należy zwrócić uwagę następujących obserwacjach:
 
-* Nie można ustawić IGNORE_DUP_KEY klucza podstawowego lub ograniczenia unique, która używa ALTER INDEX, musisz porzucić i ponownie utwórz indeks.  
-* Można ustawić dla opcji IGNORE_DUP_KEY wartość przy użyciu ALTER INDEX dla unikatowego indeksu, która różni się od klucza podstawowego/UNIQUE, ograniczenia i utworzyć za pomocą definicji CREATE INDEX lub INDEKSU.  
-* IGNORE_DUP_KEY nie dotyczy indeksy magazynu kolumn, ponieważ nie można wymuszać unikatowość takich indeksów.  
+* Nie można ustawić IGNORE_DUP_KEY klucza podstawowego lub ograniczenia unique, który używa ALTER INDEX, musisz porzucić i ponownie utwórz indeks.  
+* Można ustawić opcji IGNORE_DUP_KEY przy użyciu ALTER INDEX dla unikatowego indeksu, który różni się od ograniczenia klucza podstawowego/unikatowe i utworzone za pomocą definicji CREATE INDEX lub INDEKSU.  
+* IGNORE_DUP_KEY nie ma zastosowania do indeksy magazynu kolumn, ponieważ nie można wymuszać unikatowość takich indeksów.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)

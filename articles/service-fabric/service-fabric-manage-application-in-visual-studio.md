@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj aplikacjami Azure Servic sieci szkieletowej w programie Visual Studio | Dokumentacja firmy Microsoft
-description: Tworzenie, tworzenie, pakietów, wdrażanie i debugowania aplikacji usługi Azure Service Fabric i usług za pomocą programu Visual Studio.
+title: Zarządzanie aplikacjami Servic sieci szkieletowej platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft
+description: Visual Studio umożliwia tworzenie, opracowywanie, pakietów, wdrażanie i debugowanie aplikacji usługi Azure Service Fabric i usług.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -11,81 +11,82 @@ ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 25c7f0e8d6ebc31121e29870026a735495ef7900
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206503"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442173"
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Uproszczenie pisanie aplikacji i zarządzanie nimi z sieci szkieletowej usług za pomocą programu Visual Studio
-Można zarządzać sieć szkieletowa usług Azure, aplikacji i usług za pomocą programu Visual Studio. Po wprowadzeniu [Konfigurowanie środowiska deweloperskiego](service-fabric-get-started.md), można użyć programu Visual Studio do tworzenia aplikacji usługi Service Fabric, Dodaj rejestru usług lub pakietu i wdrażania aplikacji w klastrze lokalnym programowanie.
+# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Upraszczanie pisania i zarządzania nimi aplikacje usługi Service Fabric przy użyciu programu Visual Studio
+Możesz zarządzać aplikacje usługi Azure Service Fabric i usługi za pomocą programu Visual Studio. Po [Konfigurowanie środowiska projektowego](service-fabric-get-started.md), można użyć programu Visual Studio do tworzenia aplikacji usługi Service Fabric, dodawanie usług lub pakietu, zarejestruj się i wdrażanie aplikacji w lokalnego klastra projektowego.
 
-## <a name="deploy-your-service-fabric-application"></a>Wdrażanie aplikacji sieci szkieletowej usług
-Domyślnie wdrażania aplikacji zawierają następujące kroki w jednej operacji prosty:
+## <a name="deploy-your-service-fabric-application"></a>Wdrażanie aplikacji usługi Service Fabric
+Domyślnie wdrażanie aplikacji obejmuje następujące kroki w jednej operacji proste:
 
 1. Tworzenie pakietu aplikacji
-2. Przekazywanie pakietu aplikacji do magazynu w obrazie
-3. Rejestracja typu aplikacji
-4. Usunąć wszystkie uruchomione wystąpienia aplikacji
-5. Tworzenie wystąpienia aplikacji
+2. Przekazywanie pakietu aplikacji do magazynu obrazów
+3. Rejestrowanie typu aplikacji
+4. Usuwając wszelkie uruchomione wystąpienia aplikacji
+5. Tworzenie instancji aplikacji
 
-W programie Visual Studio naciskając klawisz **F5** wdraża aplikację i Dołącz debuger do wszystkich wystąpień aplikacji. Można użyć **Ctrl + F5** do wdrożenia aplikacji bez debugowania, lub można opublikować do klastra lokalnego lub zdalnego za pomocą profilu publikowania.
+W programie Visual Studio naciskając klawisz **F5** wdraża twoją aplikację i dołączyć debuger do wszystkich wystąpień aplikacji. Możesz użyć **kombinację klawiszy Ctrl + F5** wdrożyć aplikację bez debugowania, lub można opublikować w klastrze lokalnym lub zdalnym za pomocą profilu publikowania.
 
 ### <a name="application-debug-mode"></a>Tryb debugowania aplikacji
-Visual Studio Udostępnij właściwość o nazwie **tryb debugowania aplikacji**, która kontroluje sposób Visual Studio do obsługi wdrażania aplikacji w ramach debugowania.
+Program Visual Studio zapewniają właściwość o nazwie **tryb debugowania aplikacji**, która kontroluje, w jaki sposób program Visual Studio do obsługi wdrażania aplikacji w ramach debugowania.
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Aby ustawić właściwość tryb debugowania aplikacji
-1. W sieci szkieletowej usług aplikacji projektu (*.sfproj) menu skrótów wybierz **właściwości** (lub naciśnij klawisz **F4** klucza).
-2. W **właściwości** ustaw **tryb debugowania aplikacji** właściwości.
+1. W usłudze Service Fabric application projektu (*.sfproj) menu skrótów wybierz **właściwości** (lub naciśnij **F4** klucza).
+2. W **właściwości** oknie **tryb debugowania aplikacji** właściwości.
 
 ![Ustaw właściwość tryb debugowania aplikacji][debugmodeproperty]
 
 #### <a name="application-debug-modes"></a>Tryb debugowania aplikacji
 
-1. **Odświeżanie aplikacji** ten tryb pozwala na szybkie zmiany i debugować kod i obsługuje edycję plików statycznych sieci web podczas debugowania. W tym trybie działa tylko wtedy, jeśli klaster lokalny rozwój jest w trybie [węzła 1]. Jest to domyślny tryb debugowania aplikacji. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Aktualizovat aplikaci** ten tryb pozwala szybko zmienić, i debugowania kodu oraz obsługuje edycję plików statyczną sieci web podczas debugowania. W tym trybie tylko wtedy, gdy lokalnego klastra projektowego jest w trybie [węzła 1]. Jest to domyślny tryb debugowania aplikacji. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
 2. **Usuń aplikację** powoduje, że aplikacja ma zostać usunięty podczas kończenia sesji debugowania.
-3. **Automatyczne uaktualnienie** aplikacji będzie kontynuował działanie podczas kończenia sesji debugowania. Następnej sesji debugowania, będą traktować jako uaktualnienia wdrożenia. Proces uaktualniania zachowuje dane, które wprowadzono w poprzedniej sesji debugowania.
-4. **Zachowaj aplikacji** aplikacja przechowuje uruchomiona w klastrze podczas kończenia sesji debugowania. Na początku następnej sesji debugowania aplikacji zostaną usunięte.
+3. **Automatyczne uaktualnienie** aplikacji będzie kontynuował działanie podczas kończenia sesji debugowania. Następnej sesji debugowania traktują wdrożenia jako uaktualnienie. Proces uaktualniania zachowuje wszelkie dane, które zostały wprowadzone w poprzedniej sesji debugowania.
+4. **Aplikacja** aplikacji utrzymuje uruchomionych w klastrze podczas kończenia sesji debugowania. Po rozpoczęciu następnej sesji debugowania aplikacji zostaną usunięte.
 
-Aby uzyskać **automatycznego uaktualnienia** dane zostaną zachowane, stosując możliwości uaktualnienia aplikacji sieci szkieletowej usług. Aby uzyskać więcej informacji o uaktualnianiu aplikacji i jak może wykonać uaktualnienie w środowisku prawdziwe, zobacz [uaktualniania aplikacji sieci szkieletowej usług](service-fabric-application-upgrade.md).
+Aby uzyskać **automatycznego uaktualniania** dane zostaną zachowane, stosując możliwości uaktualniania aplikacji usługi Service Fabric. Aby uzyskać więcej informacji na temat uaktualnienia aplikacji i jak może wykonać uaktualnienie w środowisku rzeczywistych zobacz [uaktualnianie aplikacji usługi Service Fabric](service-fabric-application-upgrade.md).
 
-## <a name="add-a-service-to-your-service-fabric-application"></a>Dodawanie usługi do aplikacji sieci szkieletowej usług
-Możesz dodać nowe usługi do aplikacji, aby rozszerzyć jego funkcjonalność. Aby zapewnić, że usługa jest zawarte w pakiecie aplikacji, Dodaj usługi za pośrednictwem **nowa sieci szkieletowej usług...**  elementu menu.
+## <a name="add-a-service-to-your-service-fabric-application"></a>Dodać usługę do aplikacji usługi Service Fabric
+Możesz dodać nowe usługi do aplikacji w taki sposób, w celu rozszerzenia ich funkcji. Aby upewnić się, że usługa znajduje się w pakiecie aplikacji, Dodaj usługi za pośrednictwem **Nowa usługa Service Fabric...**  elementu menu.
 
-![Dodaj nową usługę sieci szkieletowej usług][newservice]
+![Dodaj nową usługę Service Fabric][newservice]
 
-Wybierz typ projektu sieci szkieletowej usług, aby dodać do aplikacji, a następnie określ nazwę usługi.  Zobacz [Wybieranie framework usługi](service-fabric-choose-framework.md) Aby określić typ usługi do użycia.
+Wybierz typ projektu usługi Service Fabric, aby dodać do swojej aplikacji, a następnie określ nazwę usługi.  Zobacz [wybierając framework dla usługi](service-fabric-choose-framework.md) ułatwią podjęcie decyzji o jakiego typu Usługa do użycia.
 
-![Wybierz typ projektu usługi sieci szkieletowej usług, aby dodać do aplikacji][addserviceproject]
+![Wybierz typ projektu usługi Service Fabric można dodać do aplikacji][addserviceproject]
 
-Nowa usługa zostanie dodany do rozwiązania, a istniejący pakiet aplikacji. Odwołania do usług i domyślnego wystąpienia usługi zostaną dodane do manifestu aplikacji, co powoduje usługi można utworzyć i uruchomić przy następnym możesz wdrożyć aplikację.
+Nowa usługa jest dodawany do rozwiązania i istniejący pakiet aplikacji. Odwołania do usług i domyślnego wystąpienia usługi zostaną dodane do manifestu aplikacji, co powoduje usługi zostać utworzona i uruchomiona przy następnym wdrożenia aplikacji.
 
-![Nowa usługa jest dodawany do manifest aplikacji][newserviceapplicationmanifest]
+![Nowa usługa zostanie dodany do manifest aplikacji][newserviceapplicationmanifest]
 
-## <a name="package-your-service-fabric-application"></a>Pakiet aplikacji sieci szkieletowej usług
-Aby wdrożyć aplikację i jej usługi do klastra, należy utworzyć pakiet aplikacji.  Pakiet organizuje manifest aplikacji, usługi manifesty i inne niezbędne pliki w określonym układzie.  Visual Studio konfiguruje i zarządza pakietu w folderze projektu aplikacji, w katalogu "pkg".  Kliknięcie przycisku **pakietu** z **aplikacji** menu kontekstowe tworzy lub aktualizuje pakiet aplikacji.
+## <a name="package-your-service-fabric-application"></a>Pakiet aplikacji usługi Service Fabric
+Do wdrożenia aplikacji i usług w klastrze, należy utworzyć pakiet aplikacji.  Pakiet organizuje manifest aplikacji, manifesty usługi i inne niezbędne pliki w określonym układzie.  Program Visual Studio ustawia i zarządza pakietu w folderze projektu aplikacji w katalogu "pakietu".  Klikając **pakietu** z **aplikacji** menu kontekstowe tworzy lub aktualizuje pakiet aplikacji.
 
-## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Usuwanie aplikacji i typów aplikacji, w Eksploratorze chmury
-Można wykonać operacji zarządzania podstawowy klaster z poziomu programu Visual Studio za pomocą Eksploratora chmury, które można uruchomić z **widoku** menu. Na przykład można usunąć aplikacji i wstrzymał obsługi administracyjnej typy aplikacji w klastrze lokalnym lub zdalnym.
+## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Usuwanie aplikacji i typów aplikacji za pomocą Eksploratora chmury
+Można wykonać operacji zarządzania podstawowy klaster z poziomu programu Visual Studio za pomocą Eksploratora chmury, który można uruchomić z **widoku** menu. Na przykład można usunąć aplikacje i wstrzymał obsługi administracyjnej typy aplikacji w klastrach lokalnym lub zdalnym.
 
 ![Usuwanie aplikacji][removeapplication]
 
 > [!TIP]
-> Aby uzyskać bardziej rozbudowane funkcje zarządzania klastrem, zobacz [wizualizacja klastra za pomocą Eksploratora usługi sieć szkieletowa](service-fabric-visualizing-your-cluster.md).
+> Aby uzyskać bardziej zaawansowane funkcje zarządzania klastrem, zobacz [wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 >
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
-* [Model aplikacji sieci szkieletowej usług](service-fabric-application-model.md)
-* [Wdrażanie aplikacji sieci szkieletowej usług](service-fabric-deploy-remove-applications.md)
-* [Zarządzanie parametry aplikacji dla wielu środowisk](service-fabric-manage-multiple-environment-app-configuration.md)
-* [Debugowanie aplikacji sieci szkieletowej usług](service-fabric-debugging-your-application.md)
-* [Wizualizacja klastra przy użyciu Eksploratora usługi sieć szkieletowa](service-fabric-visualizing-your-cluster.md)
+* [Model aplikacji usługi Service Fabric](service-fabric-application-model.md)
+* [Wdrażanie aplikacji usługi Service Fabric](service-fabric-deploy-remove-applications.md)
+* [Zarządzanie parametrami aplikacji dla wielu środowisk](service-fabric-manage-multiple-environment-app-configuration.md)
+* [Debugowanie aplikacji usługi Service Fabric](service-fabric-debugging-your-application.md)
+* [Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png

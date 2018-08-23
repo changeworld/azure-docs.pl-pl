@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: sngun
-ms.openlocfilehash: 9f7744c7743107b3587bd63a6e7681a6f1e42c00
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 43c5b8beef523684a405f1396ad0a9d862c123e8
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39608974"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918011"
 ---
 # <a name="_Toc395783175"></a>Tworzenie aplikacji internetowej Node.js za pomocą usługi Azure Cosmos DB i zestawu SDK dla platformy Node.js (wersja zapoznawcza)
 > [!div class="op_single_selector"]
@@ -413,13 +413,13 @@ Teraz skupimy się na tworzeniu interfejsu użytkownika, aby użytkownik mógł 
                     input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
           button.btn.btn-primary(type="submit") Update tasks
         hr
-       form.well(action="/addtask", method="post")
-        label Item Name:
-        input(name="name", type="textbox")
-        label Item Category:
-        input(name="category", type="textbox")
-        br
-        button.btn(type="submit") Add item
+        form.well(action="/addtask", method="post")
+          label Item Name:
+          input(name="name", type="textbox")
+          label Item Category:
+          input(name="category", type="textbox")
+          br
+          button.btn(type="submit") Add item
    ```
 
 Rozszerza on układ i udostępnia zawartość dla symbolu zastępczego **content**, który wcześniej widzieliśmy w pliku **layout.jade**.

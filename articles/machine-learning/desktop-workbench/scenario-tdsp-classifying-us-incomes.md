@@ -1,187 +1,187 @@
 ---
-title: Klasyfikacji dochodu — proces nauki danych zespołu - Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jak używać szablonu procesu nauki danych Team do tworzenia projektu w usługi Azure Machine Learning klasyfikuje przychodów Stanów Zjednoczonych.
+title: Klasyfikacja dochodu - zespołu danych dla celów naukowych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jak utworzyć projekt w usłudze Azure Machine Learning, które klasyfikują przychodów USA za pomocą szablonu procesu do nauki o danych zespołu.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832683"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058271"
 ---
-# <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasyfikacja przychody z projektu zespołowego danych nauki procesu (TDSP)
+# <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasyfikacja dochodu z projektem zespołu Data Science naukowych
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Normalizacji struktury i analizy danych w dokumentacji projektów, który jest zakotwiczona ustalonych [analizy danych w cyklu życia](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), ma kluczowe znaczenie dla ułatwienia skutecznej współpracy w zespołach analizy danych. Tworzenie projektów usługi Azure Machine Learning z [zespołu danych nauki procesu (TDSP)](https://github.com/Azure/Microsoft-TDSP) szablonu zapewnia platformę dla takich normalizacji.
+Normalizacji struktury i dokumentacji do nauki o danych projektów, to znaczy zakotwiczona ustanowionych [cykl życia analizy danych](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), ma kluczowe znaczenie dla ułatwienia skutecznych współpracy w usłudze teams do nauki o danych. Tworzenie projektów usługi Azure Machine Learning za pomocą [Team Data Science naukowych](https://github.com/Azure/Microsoft-TDSP) szablonu zapewnia platformę do takich normalizacji.
 
-Była wcześniej opublikowane [repozytorium GitHub TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Ale nie było możliwe, dopóki teraz do tworzenia wystąpienia struktury TDSP i szablonów w ramach narzędzia analizy danych. Firma Microsoft ma teraz włączone tworzenia projektów usługi Azure Machine Learning, które zostały utworzone z [TDSP struktury i dokumentacja szablonów dla usługi Azure Machine Learning](https://github.com/amlsamples/tdsp). Podano instrukcje dotyczące sposobu używania struktury TDSP i szablonów w usłudze Azure Machine Learning [tutaj](https://aka.ms/how-to-use-tdsp-in-aml). W tym miejscu udostępniamy przykładem jak uczenia maszynowego rzeczywiste projektu można tworzyć przy użyciu struktury TDSP, wypełniane przy użyciu określonego projektu kodu, artefakty i dokumentów i wykonywane w ramach usługi Azure Machine Learning.
+Firma Microsoft ma wcześniej wydane [repozytorium GitHub przeznaczone dla przetwarzania TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Ale nie było możliwe, dopóki teraz utworzyć wystąpienie przetwarzania TDSP struktury i szablony w narzędziu do nauki o danych. Teraz włączyliśmy tworzenia projektów usługi Azure Machine Learning, które są tworzone za pomocą [przetwarzania TDSP struktury i dokumentacji szablonów dla usługi Azure Machine Learning](https://github.com/amlsamples/tdsp). Podano instrukcje dotyczące sposobu używania przetwarzania TDSP struktury i szablony w usłudze Azure Machine Learning [tutaj](https://aka.ms/how-to-use-tdsp-in-aml). W tym miejscu udostępniamy przykład jak uczenie maszynowe rzeczywistego projektu można tworzyć przy użyciu przetwarzania TDSP struktury, wypełniony kod specyficzny dla projektu, artefakty i dokumentów i wykonywane w ramach usługi Azure Machine Learning.
 
 ## <a name="link-to-github-repository"></a>Połącz z repozytorium GitHub
-Firma Microsoft udostępnia podsumowania dokumentacji [tutaj](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) dotyczących przykładu. Bardziej szczegółową dokumentację można znaleźć w witrynie GitHub.
+Firma Microsoft zapewnia podsumowania dokumentacji [tutaj](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) dotyczących przykładu. Bardziej szczegółową dokumentację można znaleźć w witrynie GitHub.
 
 ### <a name="purpose"></a>Przeznaczenie
-Głównym celem tego przykładu jest przedstawiają sposób tworzenia wystąpienia i wykonać maszynę uczenia projekt za pomocą [zespołu danych nauki procesu (TDSP)](https://github.com/Azure/Microsoft-TDSP) struktury i szablonów w programie Azure Machine Learning. W tym celu używamy dobrze znanego [danych spisu nam 1994 r. z repozytorium UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/adult). Zadanie modelowania jest do prognozowania USA roczne klasy przychody z NAMI spisu informacji (na przykład, wieku, wyścigu, poziom edukacji, kraj pochodzenia, itp.)
+Głównym celem tego przykładu jest przedstawiają sposób tworzenia wystąpienia i wykonywania usługi machine learning projekt za pomocą [Team Data Science naukowych](https://github.com/Azure/Microsoft-TDSP) struktury i szablony usługi Azure Machine Learning. W tym celu użyjemy dobrze znanych [1994 r. spisu nam dane z repozytorium Learning maszyny na](https://archive.ics.uci.edu/ml/datasets/adult). Zadanie modelowania jest prognozowanie, roczne klasy dochodu USA z nam spisu informacji (na przykład, wiek, wyścigu, poziomie wykształcenia, kraju pochodzenia, itp.)
 
 ### <a name="scope"></a>Zakres
- * Eksploracja danych, szkolenia i wdrażanie modelu uczenia maszynowego, której adres prognozowania problem opisany w przeglądzie przypadek użycia. 
- * Wykonanie projektu w usłudze Azure Machine Learning przy użyciu szablonu zespołu danych nauki procesu (TDSP) z usługi Azure Machine Learning dla tego projektu. Do wykonania projektu i raportowania chcemy użyć cyklu życia TDSP.
- * Operationalization rozwiązanie bezpośrednio z usługi Azure Machine Learning w usługi kontenera platformy Azure.
+ * Eksploracja danych, szkolenia i wdrażania modelu uczenia maszynowego, która rozwiązać problem prognozowania opisanego w omówieniu przypadku użycia. 
+ * Wykonywanie projektu w usłudze Azure Machine Learning, używając szablonu Team Data Science naukowych z usługi Azure Machine Learning dla tego projektu. Wykonywanie projektu i raportowania będziemy używać cyklu przetwarzania TDSP.
+ * Operacjonalizacja rozwiązania bezpośrednio z usługi Azure Machine Learning w usłudze Azure Container Service.
 
- Projekt zawiera wyróżnione kilka funkcji usługi Azure Machine Learning takie podczas tworzenia wystąpienia struktury TDSP i użycia, wykonanie kodu z notesów Jupyter, a także pliki języka Python i łatwe operationalization w usługi kontenera platformy Azure przy użyciu rozwiązania Docker i Kubernetes.
+ Projekt prezentuje kilka funkcji usługi Azure Machine Learning, takie tworzenia wystąpienia struktury przetwarzania TDSP i użycia, wykonywanie kodu w notesów programu Jupyter, a także pliki języka Python i łatwe operacjonalizacji w usłudze Azure Container Service przy użyciu platformy Docker i Kubernetes.
 
 
-## <a name="team-data-science-process-tdsp-lifecycle"></a>Cykl życia procesu nauki danych (TDSP) zespołu
-Zobacz [zespołu cyklu życia procesu (TDSP) nauki danych](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)
+## <a name="team-data-science-process-tdsp-lifecycle"></a>Cykl życia danych do analizy naukowych zespołu
+Zobacz [zespołu cykl życia naukowych (TDSP) do nauki o danych](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)
 
 ![](./media/scenario-tdsp-classifying-us-incomes/tdsp-lifecycle.jpg)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-### <a name="required-subscription-hardware-software"></a>Wymagane: subskrypcji, sprzęt, oprogramowanie
-1. Azure [subskrypcji](https://azure.microsoft.com). Możesz uzyskać [wolne subskrypcji](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) można również wykonać w tym przykładzie.
-2. [Azure danych nauki maszyny wirtualnej (DSVM) systemu Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (rozmiar maszyny Wirtualnej: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), 4 procesory wirtualne i 14 Gb pamięci RAM). Mimo że przetestowane na DSVM Azure, prawdopodobnie będzie działać na dowolnym komputerze z systemem Windows 10.
-3. Przejrzyj dokumentację dotyczącą uczenie maszynowe Azure i jej powiązane usługi (poniżej podano linki).
-4. Upewnij się, że poprawnie zainstalowano uczenia maszynowego Azure przez [Przewodnik Szybki start instalacji](../service/quickstart-installation.md).
+### <a name="required-subscription-hardware-software"></a>Wymagane: subskrypcja, sprzęt, oprogramowanie
+1. Azure [subskrypcji](https://azure.microsoft.com). Możesz uzyskać [bezpłatnej subskrypcji](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) można również wykonać w tym przykładzie.
+2. [Azure danych do analizy maszyny wirtualnej (DSVM) systemu Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (rozmiar maszyny Wirtualnej: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)z 4 procesory wirtualne i 14 Gb pamięci RAM). Mimo że przetestowane na DSVM platformy Azure, prawdopodobnie działać na dowolnym komputerze z systemem Windows 10.
+3. Zapoznaj się z dokumentacją usługi Azure Machine Learning i jej powiązane usługi (poniżej podano linki).
+4. Upewnij się, że poprawnie zainstalowano usługi Azure Machine Learning, [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md).
 
-Zestaw danych dla tego przykładu znajduje się w repozytorium ML UCI [[łącze]](https://archive.ics.uci.edu/ml/datasets/adult). On jest pobierana z bazy danych spisu nam 1994 r. i zawiera informacje o około 50 000 użytkowników indywidualnych spisu i przychody. To strukturze zestawu danych o wartości liczbowych i funkcji podzielone na kategorie i docelowy podzielone na kategorie, składające się z dwóch kategorii dochodu ("> 50 K" lub "< = 50 K"). 
+Zestaw danych dla tego przykładu jest z repozytorium ML UCI [[łącze]](https://archive.ics.uci.edu/ml/datasets/adult). On jest pobierana z bazy danych spisu nam 1994 r. i zawiera informacje o około 50 000 użytkowników indywidualnych spisu i przychody. Jest to ze strukturą zestaw danych o wartości liczbowych, funkcjami podzielonych na kategorie i docelowej podzielonych na kategorie, składający się z dwóch kategorii dochodu ("> 50 tys" lub "< = 50 K"). 
 
 ### <a name="optional-version-control-repository"></a>Opcjonalne: Repozytorium kontroli wersji
-Jeśli chcesz zapisać i wersji projektu i jego zawartość, musisz mieć repozytorium kontroli wersji, gdy będzie to możliwe. Podczas tworzenia nowego projektu przy użyciu szablonu TDSP w usłudze Azure Machine Learning, można wprowadzić lokalizację repozytorium Git. Zobacz [sposób użycia narzędzia Git w usłudze Azure Machine Learning](using-git-ml-project.md) uzyskać więcej szczegółowych informacji.
+Jeśli chcesz zapisać i wersji projektu i jego zawartość, musisz mieć repozytorium kontroli wersji, gdzie można to zrobić. Podczas tworzenia nowego projektu za pomocą szablonu TDSP w usłudze Azure Machine Learning, można wprowadzić lokalizację repozytorium Git. Zobacz [jak za pomocą narzędzia Git w usłudze Azure Machine Learning](using-git-ml-project.md) więcej szczegółowych informacji.
 
-### <a name="informational-about-azure-machine-learning"></a>Informacja: O uczenie maszynowe Azure
-* [Często zadawane pytania — wprowadzenie](frequently-asked-questions.md)
+### <a name="informational-about-azure-machine-learning"></a>Komunikat informacyjny: O usłudze Azure Machine Learning
+* [Często zadawane pytania — jak rozpocząć pracę](frequently-asked-questions.md)
 * [Omówienie](../service/overview-what-is-azure-ml.md)
 * [Instalacja](../service/quickstart-installation.md)
 * [Wykonanie](experimentation-service-configuration.md)
-* [Przy użyciu TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
+* [Przy użyciu przetwarzania TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Odczytywanie i zapisywanie plików](how-to-read-write-files.md)
 * [Using Git with Azure Machine Learning (Używanie usługi Git z usługą Azure Machine Learning)](using-git-ml-project.md)
-* [Wdrażanie model usługi uczenie Maszynowe jako usługi sieci web](model-management-service-deploy.md)
+* [Wdrażanie modeli uczenia Maszynowego jako usługi sieci web](model-management-service-deploy.md)
 
-### <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt workbench
+### <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji workbench
 
-Utwórz nowy projekt za pomocą tego przykładu jako szablon:
-1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
-3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
-4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Przychody Klasyfikuj USA - TDSP projektu" i wybierz szablon
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
+1.  Otwieranie usługi Azure Machine Learning Workbench
+2.  Na **projektów** kliknij **+** zalogować się i wybrać **nowy projekt**
+3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu
+4.  W **Wyszukaj szablony projektów** polu wyszukiwania wpisz "Przychody Klasyfikuj stany USA — przetwarzanie TDSP projektu" i wybierz szablon
 5.  Kliknij przycisk **Utwórz**
 
-Jeśli podasz pustą lokalizację repozytorium Git podczas tworzenia projektu (w odpowiednim polu), a następnie tego repozytorium zostanie wypełniona zawartości i struktury projektu po utworzeniu projektu.
+Jeśli podasz pustą lokalizację repozytorium Git podczas tworzenia projektu (w odpowiednim polu), a następnie tego repozytorium zostanie wypełniony zawartości i struktury projektu po utworzeniu projektu.
 
 ## <a name="use-case-overview"></a>Omówienie przypadków użycia
-Problem jest, aby zrozumieć, jak socjoekonomicznych dane zarejestrowane w nam spisu może pomóc przewidzieć rocznego dochodu osobom w USA. W oparciu o takich funkcji spisu, zadania uczenia maszyny jest określenie, czy dochód osoby ponad 50 000 $ nie jest (zadanie klasyfikacji binarnej).
+Problem polega na tym, aby zrozumieć, jak socjoekonomiczne dane przechwycone w USA spisu można ułatwiania prognozowania roczny przychód poszczególne osoby w Stanach Zjednoczonych. Oparte na takich funkcji spisu, zadanie uczenia maszyny jest do prognozowania, jeśli dochód osoba jest ponad 50 000 zł, czy nie (Klasyfikacja binarna zadanie).
 
-## <a name="data-description"></a>Opis elementu danych
+## <a name="data-description"></a>Opis danych
 Aby uzyskać szczegółowe informacje o danych, zobacz [opis](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names) w repozytorium UCI. 
 
-Te dane został wyodrębniony z bazy danych spisu Biuro znaleźć pod adresem: https://www.census.gov/en.html. 
+Te dane został wyodrębniony z bazy danych spisu Biuro adrese: https://www.census.gov/en.html. 
 
 
-* Istnieją łączną liczbę wystąpień 48,842 (przed żadnego filtrowania), mieszać ciągłych i dyskretnych (uczenia = 32 561, przetestować = 16, 281)
-* Prawdopodobieństwo etykiety "> 50 K": 23.93% / 24.78% (bez elementy nieznane)
-* Prawdopodobieństwo etykiety "< = 50 K": 76.07% / 75.22% (bez elementy nieznane)  
+* Ma w sumie 48,842 wystąpienia (przed żadnego filtrowania), mieszać ciągła i dyskretnych (szkolenie = 32 561, test = 16, 281)
+* Prawdopodobieństwo etykiety "> 50 K': 23.93% / 24.78% (bez elementy nieznane)
+* Prawdopodobieństwo etykiety "< = 50 K': 76.07% / 75.22% (bez elementy nieznane)  
 
-* **DOCELOWY**: klasa dochodu "> 50 K", "< = 50 K". Te zostały zastąpione przez 1 i 0 odpowiednio w fazie przygotowywania danych.
-* **Funkcje**: wiek, klasa pracy, poziom wykształcenia, poziom wykształcenia, wyścigu, płeć, godzin pracy na tydzień itp.
+* **DOCELOWY**: klasa dochodu "> 50 tys", "< = 50 K". Te są zastępowane przez 1 i 0 odpowiednio w fazie przygotowywania danych.
+* **Funkcje**: wiek, klasa pracy, poziomie wykształcenia, poziomie wykształcenia, wyścigu, płeć, godzin pracy w ciągu tygodnia itp.
 
 
-## <a name="project-structure-execution-and-reporting"></a>Struktury projektu, wykonanie i raportowanie
+## <a name="project-structure-execution-and-reporting"></a>Struktura projektu, wykonywania i raportowanie
 
 ### <a name="structure"></a>Struktura
-Dla tego projektu, możemy użyć TDSP folderu struktury i dokumentacji szablonów (patrz poniżej), które następujące [cyklu życia TDSP](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md). 
+Dla tego projektu, używamy przetwarzania TDSP folder struktury i dokumentacji szablonów (patrz poniżej), który następuje [przetwarzania TDSP w cyklu życia](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md). 
 
-Projekt jest tworzone w oparciu instrukcjami [tutaj](https://aka.ms/how-to-use-tdsp-in-aml). Po jest wypełniany kodu projektu i artefaktów, struktura wygląda następująco (patrz struktury projektu opakowany na czerwono na poniższym rysunku).
+Projekt jest oparta na instrukcjami [tutaj](https://aka.ms/how-to-use-tdsp-in-aml). Po wypełnieniu z kodem i artefakty projektu strukturę wyglądają następująco (patrz struktury projektu opakowany na czerwono na poniższej ilustracji).
 
 
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
 ### <a name="execution"></a>Wykonanie
-W tym przykładzie mamy wykonanie kodu w **lokalnym środowisku**. Odwołuje się do usługi Azure Machine Learning dokumentów, aby uzyskać więcej informacji na [opcje wykonywania](experimentation-service-configuration.md).
+W tym przykładzie wykonywania kodu w **środowiska obliczeniowego lokalnego**. Odnoszą się do dokumentów usługi Azure Machine Learning, aby uzyskać więcej informacji na [opcje wykonywania](experimentation-service-configuration.md).
 
-Wykonywanie skryptu języka Python w lokalnym środowisku uruchomieniowym języka Python jest prosty:
+Wykonywanie skryptu w języku Python w lokalnym środowisku uruchomieniowym Python jest łatwe:
 
     az ml experiment submit -c local my_script.py
 
-Pliki notesu IPython można dwukrotnie kliknięty ze struktury projektu po lewej stronie interfejsu użytkownika Azure Machine Learning i uruchom na serwerze Jypyter notesu.
+Program IPython notebook plików można dwukrotnym kliknięciu ze struktury projektu w lewej części interfejsu użytkownika usługi Azure Machine Learning i uruchomić na serwerze notes Jypyter.
 
 
-Pracy do analizy danych krok został w następujący sposób:
+Przepływ nauki krok po kroku danych zakończyło się w następujący sposób:
 
-* [**Uzyskiwanie danych i zrozumienie**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding)
+* [**Pozyskiwanie danych i opis**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding)
 
-Pobrano dane w postaci pliku CSV z adresów URL w repozytorium ML UCI [[łącze]](https://archive.ics.uci.edu/ml/datasets/adult). Funkcje i celu oraz ich przekształcenia opisano szczegółowo w pliku ProjectReport.md.
+Pobrano dane w postaci pliku CSV z adresów URL w repozytorium ML UCI [[łącze]](https://archive.ics.uci.edu/ml/datasets/adult). Funkcje i celu oraz ich przekształcenia zostały szczegółowo opisane w pliku ProjectReport.md.
 
-Kod gromadzenia danych i zrozumienie znajduje się w: / kod/01_data_acquisition_and_understanding.
+Kod dla pozyskiwanie danych i opis znajduje się w: / kod/01_data_acquisition_and_understanding.
 
-Eksploracja danych odbywa się przy użyciu Python 3 [IDEAR (interaktywne Eksplorowanie danych oraz raportowania) Narzędzie](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) opublikowane jako część [TDSP pakietu narzędzi do analizy danych](https://github.com/Azure/Azure-TDSP-Utilities). Pomaga to narzędzie do generowania raportów Eksploracja danych standardowych danych zawierający funkcje numeryczne i podzielone na kategorie i obiekt docelowy. Szczegółowe informacje dotyczące korzystania z narzędzia Python 3 IDEAR podano poniżej. 
+Eksploracja danych odbywa się przy użyciu Python 3 [IDEAR (interakcyjna Eksploracja danych i raportowania) Narzędzie](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) opublikowane jako część [przetwarzania TDSP zestawu narzędzi nauki o danych](https://github.com/Azure/Azure-TDSP-Utilities). Pomaga to narzędzie do generowania raportów eksploracji danych standardowych dla danych zawierających funkcje numeryczne i podzielonych na kategorie i docelowej. Szczegóły dotyczące używania narzędzia języka Python 3 IDEAR znajduje się poniżej. 
 
-Lokalizacja raportu Eksploracja danych końcowych jest [IDEAR.html](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/docs/deliverable_docs). Widok raportu IDEAR przedstawiono poniżej:
+Lokalizacja raportu eksploracji danych końcowych jest [IDEAR.html](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/docs/deliverable_docs). Widok raportu IDEAR znajdują się poniżej:
 
 ![](./media/scenario-tdsp-classifying-us-incomes/idear.png)
 
 * [**Modeling**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/02_modeling)
 
-Utworzyliśmy dwa modele z 3-fold krzyżowego sprawdzania poprawności: elastycznej Net oraz losowe lasu. My używamy [próbkowania 59 punktu](http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf) wyszukiwania losowe siatki jako strategii optymalizacji parametr krzyżowego sprawdzania poprawności i modelu. Dokładność modeli zostały zmierzone za pomocą AUC (obszarze krzywej) na testowego zestawu danych. 
+Utworzyliśmy dwa modele z 3-fold krzyżowego sprawdzania poprawności: elastyczne Net oraz Random lasu. Użyliśmy [próbkowanie punktu 59](http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf) wyszukiwania losowe siatki jako strategii optymalizacji parametr krzyżowego sprawdzania poprawności i modelu. Dokładność modele zostały mierzone przy użyciu AUC (powierzchni pod krzywą) na testowego zestawu danych. 
 
 Kod dla modelowania znajduje się w: / kod/02_modeling.
 
-AUC elastycznej Net i modele lasu losowe zostały > 0.85. Firma Microsoft zapisywania oba modele pickled.pkl pliki i dane wyjściowe, które ROC geograficzne dla obu modeli. Model AUC losowe lasu było 0.92 i który Net elastyczny model został 0,90. Interpretacji modelu funkcji znaczenie dla model lasu losowe są dodatkowo danych wyjściowych w pliku CSV i pdf (pierwsza 20. wg funkcji predykcyjnej tylko) na wykresie.
+AUC elastycznej netto i modele lasu Random były 0,85 >. Oszczędzamy oba modele w plikach pickled.pkl i danych wyjściowych, który ROC, które w przypadku obu modeli. Model AUC losowych lasu było 0.92 i elastycznych netto modelu było 0,90. Ponadto interpretacji modelu funkcji znaczenie dla model lasu Random są dane wyjściowe w pliku CSV i wykreślane w formacie pdf (20 najpopularniejszych funkcji predykcyjne tylko).
 
-Krzywą ROC **model lasu losowe** na test dane są wyświetlane poniżej. To model, który został wdrożony:
+Krzywa ROC **model lasu Random** na test danych znajdują się poniżej. Jest to model, który został wdrożony:
 
 ![](./media/scenario-tdsp-classifying-us-incomes/rf-auc.png)
 
-Poniżej przedstawiono znaczenie funkcji (u góry 20) model lasu losowych. Zawiera funkcje kwota kapitału korzyści, eduction, stanu cywilnego, mieć najwyższą ważność funkcji.
+Poniżej przedstawiono model lasu Random funkcji znaczenie (pierwsze 20). Pokazuje funkcje kapitału, przyrost ilości, eduction, stan cywilny, mają najwyższą ważność funkcji.
 
 ![](./media/scenario-tdsp-classifying-us-incomes/featImportance.png)
 
-* [**wdrożenia**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
+* [**Wdrożenia**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
 
-Wdrożyliśmy model lasu losowe jako usługę sieci web w klastrze w [usługi kontenera platformy Azure (ACS)](https://azure.microsoft.com/services/container-service/). Operationalization środowiska przepisy Docker i Kubernetes w klastrze, aby zarządzać wdrażaniem usługi sieci web. Można znaleźć dodatkowe informacje na temat procesu operationalization [tutaj](model-management-service-deploy.md). 
+Wdrożone jako usługę internetową w klastrze w model lasu Random [usługi Azure Container Service (ACS)](https://azure.microsoft.com/services/container-service/). Środowisko obsługi operacji Inicjuje obsługę platformy Docker i Kubernetes w klastrze, aby zarządzać wdrożeniem usługi sieci web. Można znaleźć więcej informacji na temat procesu operacjonalizacji [tutaj](model-management-service-deploy.md). 
 
 Kod dla wdrożenia znajduje się w: / kod/03_deployment.
 
 
 ### <a name="final-project-reporthttpsgithubcomazuremachinelearningsamples-tdspuciadultincomeblobmasterdocsdeliverabledocsprojectreportmd"></a>[Raport końcowy projektu](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md)
-Szczegółowe informacje o każdym z powyższej sekcji znajdują się w raporcie skompilowany projekt końcowego [ProjectReport](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Raport projektu zawiera także szczegółowe informacje na temat przypadek użycia, metryki wydajności modelu, wdrożenia i infrastruktury, na którym projekt został opracowany i wdrożone.
+Szczegółowe informacje o każdej z powyższej sekcjach znajdują się w raporcie skompilowanego ostatecznego projektu [ProjectReport](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Raport projektu zawiera także szczegółowe informacje na temat przypadek użycia, metryki wydajności modelu, wdrożenie i infrastruktury, na którym opracowane i wdrożyć projektu.
 
-Raport projektu oraz zawartość folderu całego projektu i wersji repozytorium kontroli mogą być dostarczane do klienta.
+Raport projektu wraz z zawartości całego folderu projektu, a wersja repozytorium kontroli może być dostarczony do klienta.
 
 
 ## <a name="conclusion"></a>Podsumowanie
 
-W tym przykładzie pokazano, możemy teraz, aby używać struktury TDSP i szablonów w usłudze Azure Machine Learning. Za pomocą szablonów dokumentów i artefaktu można wykonać następujące czynności:
+W tym przykładzie pokazaliśmy teraz, aby użyć środowiska TDSP struktury i szablony w usłudze Azure Machine Learning. Za pomocą szablonów i artefaktów dokumentów można wykonywać następujące czynności:
 1. Poprawnie zdefiniować cel i zakres projektu
-2. Tworzenie zespołu projektu z rozproszonego role i obowiązki
-3. Struktury i wykonywanie projektów zgodnie z TDSP etapy cyklu życia
-4. Opracowywanie standardowych raportów za pomocą narzędzi analizy danych TDSP (na przykład IDEAR danych eksploracji i wizualizacja raportu).
-5. Przygotowanie raportu projektu nauki ostateczne dane mogą być dostarczane do klienta
+2. Tworzenie zespołu projektu za pomocą rozproszonej role i obowiązki
+3. Struktury, a następnie wykonaj projekty zgodnie z przetwarzania TDSP etapy cyklu życia
+4. Twórz standardowe raporty za pomocą narzędzi nauki o danych przetwarzania TDSP, (na przykład IDEAR danych eksploracji i wizualizacji raportu).
+5. Przygotowywanie raportu projektu do nauki o danych końcowych, które mogą być dostarczane do klienta
 
-Mamy nadzieję, że ułatwienia normalizacji i współpracy w obrębie zespołów nauki danych za pomocą tej funkcji usługi Azure Machine Learning.
+Mamy nadzieję, że używasz tej funkcji usługi Azure Machine Learning ułatwienia z Normalizacyjna i współpracę w obrębie zespołów do nauki o danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz informacje poniżej, aby rozpocząć:
+Zobacz informacje poniżej, aby rozpocząć pracę:
 
-[Jak używać zespołu danych nauki procesu (TDSP) w usłudze Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
+[Jak używać Team Data Science naukowych w usłudze Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
 
-[Proces nauki danych zespołu (TDSP)](https://github.com/Azure/Microsoft-TDSP)
+[Zespołowe przetwarzanie danych naukowych (TDSP)](https://github.com/Azure/Microsoft-TDSP)
 
-[Szablon projektu TDSP dla usługi Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
+[Szablon projektu przetwarzania TDSP dla usługi Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
 
-[Przychód USA zestaw danych z repozytorium UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)
+[Dochodu USA zestawu danych z repozytorium UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)

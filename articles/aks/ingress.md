@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b5adf161c99ebe6d7b8b2d7b0c7b5b73c67bec02
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145601"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058230"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Wdrażanie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,40 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 Utworzono jeszcze żadnych reguł ruchu przychodzącego. Po przejściu do publicznego adresu IP, zostanie wyświetlona strona 404 domyślna serwera NGINX kontrolera danych przychodzących, jak pokazano w poniższym przykładzie:
 
 ![Domyślna serwera NGINX wewnętrznej bazy danych](media/ingress/default-back-end.png)
+
+### <a name="use-an-existing-static-public-ip-address"></a>Użyj istniejącego statycznego publicznego adresu IP
+
+W ciągu poprzednich `helm install` kroku kontrolera danych przychodzących serwera NGINX została utworzona przy użyciu nowych, dynamicznych publicznych przypisywania adresów IP. Typowym wymogiem konfiguracji ma na celu dostarczenie, istniejące *statyczne* publicznego adresu IP. Takie podejście umożliwia korzystanie z istniejących rekordów DNS i konfiguracji sieci w spójny sposób. Następujące opcjonalne czynności można używać zamiast poprzedniej `helm install` polecenia, którym przypisano dynamicznego publicznego adresu IP dla Ciebie.
+
+Jeśli musisz utworzyć statyczny publiczny adres IP, najpierw uzyskać nazwę grupy zasobów klastra usługi AKS z [az aks show] [ az-aks-show] polecenia:
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
+
+Następnie utwórz publiczny adres IP z *statyczne* przy użyciu metody alokacji [tworzenie sieci az public-ip] [ az-network-public-ip-create] polecenia. Poniższy przykład tworzy publiczny adres IP o nazwie *myAKSPublicIP* w usłudze AKS klastra grupy zasobów uzyskane w poprzednim kroku:
+
+```azurecli
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```
+
+Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Dodaj `--set controller.service.loadBalancerIP` parametru i Podaj własny publiczny adres IP utworzony w poprzednim kroku:
+
+```console
+helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+```
+
+Po utworzeniu rozwiązania Kubernetes usługi równoważenia obciążenia dla kontrolera danych przychodzących NGINX jest przypisany statycznego adresu IP, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
+
+NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
+dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+```
+
+Ponownie żadnych reguł ruchu przychodzącego zostały utworzone, aby strona 404 domyślna serwera NGINX kontrolera danych przychodzących jest wyświetlana, jeśli przejdziesz do publicznego adresu IP. Reguły ruchu przychodzącego są konfigurowane w poniższych krokach.
 
 ## <a name="configure-a-dns-name"></a>Konfigurowanie nazwy DNS
 
@@ -119,10 +153,10 @@ spec:
     http01: {}
 ```
 
-Aby utworzyć wystawcy, użyj `kubectl create -f cluster-issuer.yaml` polecenia.
+Aby utworzyć wystawcy, użyj `kubectl apply -f cluster-issuer.yaml` polecenia.
 
 ```
-$ kubectl create -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
@@ -153,10 +187,10 @@ spec:
     kind: ClusterIssuer
 ```
 
-Aby utworzyć zasób certyfikatu, użyj `kubectl create -f certificates.yaml` polecenia.
+Aby utworzyć zasób certyfikatu, użyj `kubectl apply -f certificates.yaml` polecenia.
 
 ```
-$ kubectl create -f certificates.yaml
+$ kubectl apply -f certificates.yaml
 
 certificate.certmanager.k8s.io/tls-secret created
 ```
@@ -219,10 +253,10 @@ spec:
           servicePort: 80
 ```
 
-Tworzenie przy użyciu zasobów ruch przychodzący `kubectl create -f hello-world-ingress.yaml` polecenia.
+Tworzenie przy użyciu zasobów ruch przychodzący `kubectl apply -f hello-world-ingress.yaml` polecenia.
 
 ```
-$ kubectl create -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -267,3 +301,5 @@ W tym artykule uwzględnione niektóre składniki zewnętrzne w usłudze AKS. Ab
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

@@ -1,51 +1,51 @@
 ---
-title: Wersje interfejsu API dostawcy zasobów obsługiwane przez profile w stosie Azure | Dokumentacja firmy Microsoft
-description: Informacje o wersji usługi Azure Resource Manager obsługiwane przez profil w stosie Azure.
+title: Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Informacje o wersji usługi Azure Resource Manager, obsługiwanej przez profilów w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054385"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056208"
 ---
-# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profile w stosie Azure
+# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack
 
-Dla każdego profilu interfejsu API używanych przez stos Azure w tym artykule można znaleźć dostawcy zasobów i numery wersji. W tabelach w tym artykule przedstawiono wersje obsługiwanych wersji interfejsu API profilów i każdy dostawca zasobów. Każdy dostawca zasobów zawiera zestaw typów zasobów i numerów wersji.
+Dla każdego profilu interfejsu API używanych przez usługę Azure Stack, w tym artykule, można znaleźć dostawcy zasobów i numery wersji. W tym artykule tabelach wersje obsługiwanych wersji interfejsu API profilów i każdy dostawca zasobów. Każdy dostawca zasobów zawiera zestaw typów zasobów i numery określonej wersji.
 
 Profil interfejsu API używa trzech konwencji nazewnictwa:
  - najnowsza
- - rrrr mm-dd hybrydowego
- - rrrr mm-dd profilu
+ - Rrrr mm-dd hybrydowe
+ - rrrr mm-dd-profile
 
-Opis profilów interfejsu API oraz wersji release okresach stosu Azure można znaleźć [profile wersji Zarządzanie interfejsu API w stosie Azure](azure-stack-version-profiles.md).
+Objaśnienia dotyczące profilów interfejsu API i cykl wersji wersji dla usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
 
 > [!Note]  
-> **Najnowsze** profilu interfejsu API zawiera najnowszą wersję interfejsu API dostawcy zasobu, a nie znajduje się w tym artykule.
+> **Najnowsze** profilu interfejsu API zawiera najnowszej wersji interfejsu API dostawcy zasobów i nie znajduje się w tym artykule.
 
-## <a name="overview-of-2018--03-01-hybrid"></a>Omówienie 2018-03-01-hybrydowego
+## <a name="overview-of-2018--03-01-hybrid"></a>Omówienie 2018-03-01-hybrydowe
 
 | Dostawca zasobów | wersja interfejsu API |
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-03-30 |
 | Microsoft.Network | 2017-10-01<br>Brama sieci VPN będzie 2017-03-01 |
-| Microsoft.Storage (płaszczyzna danych) | 2017-04-17 |
-| Microsoft.Storage (płaszczyzna sterowania) | 2016-01-01 |
-| Firmy Microsoft. Sieć Web | 2016-08-01<br>czyli r (od tej chwili) na platformie Azure |
-| Microsoft.KeyVault | 2016-10-01 (nie zmieniając) |
-| Microsoft.Resources (usługi Azure Resource Manager SAM) | 2016-02-01 |
-| Microsoft.Authorization (operacje zasad) | 2015-11-01 |
+| Microsoft.Storage (płaszczyzny danych) | 2017-04-17 |
+| Microsoft.Storage (płaszczyznę kontroli) | 2016-01-01 |
+| Firmy Microsoft. Sieć Web | 2016-08-01<br>czyli r (teraz) na platformie Azure |
+| Microsoft.KeyVault | 2016-10-01 (nie zostanie zmieniona) |
+| Microsoft.Resources (Azure Resource Manager SAM) | 2016-02-01 |
+| Microsoft.Authorization (operacje dotyczące zasad) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zasady | 2016-10-01 |
@@ -54,20 +54,20 @@ Opis profilów interfejsu API oraz wersji release okresach stosu Azure można zn
 | Resources_Locks | 2016-10-01 |
 | Subskrypcje | 2016-10-01 |
 
-Aby uzyskać więcej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2018-03-01-hybrydowego](#details-for-the-2018-03-01-hybrid) profilu.
+Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2018-03-01-hybrydowego](#details-for-the-2018-03-01-hybrid) profilu.
 
-## <a name="overview-of-2017-03-09-profile"></a>Omówienie 2017-03-09-profilu
+## <a name="overview-of-2017-03-09-profile"></a>Omówienie 2017-03-09-profile
 
 | Dostawca zasobów | wersja interfejsu API |
 |------------------------------------------------|------------------------------|
 | Microsoft.Compute | 2016-03-30 |
 | Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (płaszczyzna danych) | 2015-04-05  |
-| Microsoft.Storage (płaszczyzna sterowania) | 2016-01-01   |
+| Microsoft.Storage (płaszczyzny danych) | 2015-04-05  |
+| Microsoft.Storage (płaszczyznę kontroli) | 2016-01-01   |
 | Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>(Nie zmieniając) |
+| Microsoft.KeyVault | 2016-10-01<br>(Nie zostanie zmieniona) |
 | Microsoft.Resources<br>(Usługa azure Resource Manager SAM) | 2016-02-01 |
-| Microsoft.Authorization<Br>(operacje zasad) | 2015-11-01 |
+| Microsoft.Authorization<Br>(operacje dotyczące zasad) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zasady | 2015-10-01-preview |
@@ -76,13 +76,13 @@ Aby uzyskać więcej listę wersji dla każdego typu zasobu dla dostawców w pro
 | Resources_Locks | 2016-09-01 |
 | Subskrypcje | 2016-06-1 |
 
-Aby uzyskać więcej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2017-03-09-profilu](#details-for-the-2017-03-09-profile)
+Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2017-03-09-profile](#details-for-the-2017-03-09-profile)
 
-## <a name="details-for-the-2018-03-01-hybrid"></a>Szczegóły dotyczące 2018-03-01-hybrydowego
+## <a name="details-for-the-2018-03-01-hybrid"></a>Szczegóły dotyczące 2018-03-01-rozwiązania hybrydowego
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Kontrola dostępu oparta na rolach umożliwia zarządzanie działania, które użytkownicy w organizacji można wykonać na zasobach. Ten zestaw operacji umożliwia definiowanie ról, Przypisz role do użytkowników lub grup i uzyskać informacje na temat uprawnień. Aby uzyskać więcej informacji, zobacz [autoryzacji](https://docs.microsoft.com/rest/api/authorization/).
+Kontrola dostępu oparta na rolach umożliwia zarządzanie akcjami, które użytkownicy w organizacji mogą wykonywać względem zasobów. Ten zestaw operacji umożliwia definiowanie ról, przypisywanie ról użytkownikom lub grupom i uzyskiwanie informacji o uprawnieniach. Aby uzyskać więcej informacji, zobacz [autoryzacji](https://docs.microsoft.com/rest/api/authorization/).
 
 | Typy zasobów | Wersje interfejsu API |
 |---------------------|--------------------|
@@ -99,22 +99,22 @@ Kontrola dostępu oparta na rolach umożliwia zarządzanie działania, które u�
 
 | Typ zasobu | Wersja interfejsu API |
 |----------------------------------|----------------------|
-| Subskrypcje delegowanego dostawcy | 2015-06-01 - preview |
-| Agreguje delegowanego użycia | 2015-06-01 - preview |
-| Spędzają oszacowanie zasobów | 2015-06-01-preview |
-| Operacje | 2015-06-01 - preview |
-| Agreguje użycia subskrybenta | 2015-06-01 - preview |
-| Agregacje użycia | 2015-06-01 - preview |
+| Delegowani dostawcy subskrypcji | 2015-06-01 — wersja zapoznawcza |
+| Agregacje użycia delegowanego | 2015-06-01 — wersja zapoznawcza |
+| Wydatki oszacowanie zasobów | 2015-06-01 — wersja zapoznawcza |
+| Operacje | 2015-06-01 — wersja zapoznawcza |
+| Agregacje użycia subskrybenta | 2015-06-01 — wersja zapoznawcza |
+| Agregacje użycia | 2015-06-01 — wersja zapoznawcza |
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Obliczeniowe interfejsów API usługi Azure umożliwiają programowy dostęp do maszyn wirtualnych i ich obsługi zasobów. Aby uzyskać więcej informacji, zobacz [rozwiązań usługi obliczenia Azure](https://docs.microsoft.com/rest/api/compute/).
+Obliczenia interfejsów API usługi Azure umożliwiają dostęp programowy do maszyn wirtualnych i obsługujących je zasobów. Aby uzyskać więcej informacji, zobacz [usługi Azure Compute](https://docs.microsoft.com/rest/api/compute/).
 
 | Typ zasobu | Wersja interfejsu API |
 |---------------------------------------------------------------|-------------|
 | Zestawy dostępności | 2016-03-30 |
 | Lokalizacje | 2016-03-30 |
-| Lokalizacje działań | 2016-03-30 |
+| Lokalizacje/operations | 2016-03-30 |
 | Lokalizacje/wydawcy | 2016-03-30 |
 | Lokalizacje/użycia | 2016-03-30 |
 | Lokalizacje/vmSizes | 2016-03-30 |
@@ -122,10 +122,10 @@ Obliczeniowe interfejsów API usługi Azure umożliwiają programowy dostęp do 
 | Maszyny wirtualne | 2016-03-30 |
 | Maszyny wirtualne/rozszerzenia | 2016-03-30 |
 | Zestawy skali maszyn wirtualnych | 2016-03-30 |
-| Zestawy skalowania maszyny wirtualnej/rozszerzenia | 2016-03-30 |
-| Zestawy skalowania maszyny wirtualnej/interfejsów | 2016-03-30 |
-| Maszyn wirtualnych/zestawów skali maszyny wirtualnej | 2016-03-30 |
-| Ustawia/virtualMachines/elementów Networkinterface skali maszyny wirtualne | 2016-03-30 |
+| Zestawy skalowania maszyn wirtualnych/rozszerzenia | 2016-03-30 |
+| Zestawy skalowania maszyn wirtualnych/interfejsów | 2016-03-30 |
+| Maszyna wirtualna skalowanie zestawów/maszyn wirtualnych | 2016-03-30 |
+| Skalowanie maszyn wirtualnych zestawów/maszyn wirtualnych/interfejsy | 2016-03-30 |
 
 ### <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -149,24 +149,24 @@ Obliczeniowe interfejsów API usługi Azure umożliwiają programowy dostęp do 
 | Kategorie zdarzeń | 2015-04-01 |
 | Definicje metryk | 2018-01-01 |
 | Metryki | 2018-01-01 |
-| Ustawienia diagnostyki | 2017-05-01-preview |
+| Ustawienia diagnostyczne | 2017-05-01-preview |
 | Kategorie ustawień diagnostycznych | 2017-05-01-preview |
 
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Zarządzanie kluczem magazynów oraz kluczy, kluczy tajnych i certyfikaty w sieci magazynów kluczy. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST magazynu kluczy Azure](https://docs.microsoft.com/rest/api/keyvault/).
+Magazyny zarządzania kluczem, a także klucze, wpisy tajne i certyfikaty w ramach Twoich magazynów kluczy. Aby uzyskać więcej informacji, zobacz [odwołania API REST usługi Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/).
 
 | Typy zasobów | Wersje interfejsu API |
 |-------------------------|--------------|
 | Operacje | 2016-10-01 |
-| magazynów | 2016-10-01 |
+| Magazyny | 2016-10-01 |
 | Magazyny / zasady dostępu | 2016-10-01 |
 | Magazyny/klucze tajne | 2016-10-01 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Wynik wywołania operacji jest reprezentację lista dostępnych operacji chmury w sieci. Aby uzyskać więcej informacji, zobacz [operacji interfejsu API REST](https://docs.microsoft.com/rest/api/operation/).
+Wynik wywołania usługi Operations jest reprezentacją listy dostępnych operacji chmury w sieci. Aby uzyskać więcej informacji, zobacz [interfejsu API REST operacji](https://docs.microsoft.com/rest/api/operation/).
 
 | Typy zasobów | Wersje interfejsu API |
 |---------------------------|--------------|
@@ -176,7 +176,7 @@ Wynik wywołania operacji jest reprezentację lista dostępnych operacji chmury 
 | Brama sieci lokalnej | 2015-06-15 |
 | Lokalizacje | 2016-04-01 |
 | Lokalizacja/operationResults | 2016-04-01 |
-| Lokalizacje działań | 2016-04-01 |
+| Lokalizacje/operations | 2016-04-01 |
 | Lokalizacje/użycia | 2016-04-01 |
 | Interfejsy sieciowe | 2015-06-15 |
 | Grupy zabezpieczeń sieci | 2015-06-15 |
@@ -188,50 +188,50 @@ Wynik wywołania operacji jest reprezentację lista dostępnych operacji chmury 
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrastruktury dla rozwiązań do platformy Azure. Organizowanie powiązanych zasobów w grupach zasobów i wdrażanie zasobów z szablony JSON. Aby obejrzeć wprowadzenie do wdrażania i zarządzania zasobami za pomocą Menedżera zasobów, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrastruktura rozwiązaniach platformy Azure. Grupujesz powiązane zasoby w grupy zasobów i wdrażasz swoje zasoby za pomocą szablonów JSON. Wprowadzenie do wdrażania zasobów i zarządzania nimi przy użyciu usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 | Typy zasobów | Wersje interfejsu API |
 |-----------------------------------------|-------------------|
-| Rejestracji aplikacji | 2015-01-01 |
-| Sprawdź nazwę zasobu | 2015-012016-09-01 |
-| Delegowane dostawców | 2015-01-01 |
-| Delegowane dostawców/oferty | 2015-01-01 |
-| EstimatePrice-DelegatedProviders/oferty | 2015-01-01 |
+| Rejestracje aplikacji | 2015-01-01 |
+| Sprawdź nazwę zasobu | 2016-09-01 |
+| Delegowani dostawcy | 2015-01-01 |
+| Delegowani dostawcy/oferty | 2015-01-01 |
+| DelegatedProviders/oferty/estimatePrice | 2015-01-01 |
 | Wdrożenia | 2016-0209-01 |
 | Wdrożenia/operations | 2016-0209-01 |
 | Metadane rozszerzenia | 2015-01-01 |
-| Linki | 2015-012016-09-01 |
+| Linki | 2016-09-01 |
 | Lokalizacje | 2015-01-01 |
 | Oferta | 2015-01-01 |
 | Operacje | 2015-01-01 |
 | Dostawcy | 2015-012017-08-01 |
-| Grupy zasobów | 2015-012016-09-01 |
-| Zasoby | 2015-012016-09-01 |
-| Subskrypcje | 2015-012016-09-01 |
-| Subskrypcje/lokalizacji | 2015-012016-09-01 |
-| Wyniki subskrypcji na operację | 2015-012016-09-01 |
+| Grupy zasobów | 2016-09-01 |
+| Zasoby | 2016-09-01 |
+| Subskrypcje | 2016-09-01 |
+| Subskrypcje/lokalizacja | 2016-09-01 |
+| Wyniki operacji/subskrypcji | 2016-09-01 |
 | Subskrypcje/dostawców | 2015-012017-08-01 |
-| Subskrypcji lub grupy zasobów | 2015-012016-09-01 |
-| Subskrypcje/resourceGroups/zasobów | 2015-012016-09-01 |
-| Subskrypcje/zasobów. | 2015-012016-09-01 |
+| Subskrypcjach/grupach zasobów | 2016-09-01 |
+| Zasobów/resourceGroups/subskrypcji | 2016-09-01 |
+| Zasobów/subskrypcji | 2016-09-01 |
 | Subskrypcje/tagNames | 2016-0609-01 |
 | Subskrypcje/tagNames/tagValues | 2016-0609-01 |
-| Dzierżawcy | 2015-012017-08-01 |
+| Dzierżaw | 2015-012017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze programowo. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](https://docs.microsoft.com/rest/api/storagerp/).
+Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim kontem magazynu i kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://docs.microsoft.com/rest/api/storagerp/).
 
 | Typy zasobów | Wersje interfejsu API |
 |-------------------------|--------------|
 | Sprawdź dostępność nazwy | 2016-01-01 |
 | Lokalizacje | 2016-01-01 |
-| Lokalizacje/przydziałów | 2016-01-01 |
+| Lokalizacje/przydziały | 2016-01-01 |
 | Operacje | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
-| Użycia | 2016-01-01 |
+| Sposoby użycia | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>Szczegóły dotyczące 2017-03-09-profilu
+## <a name="details-for-the-2017-03-09-profile"></a>Szczegóły dotyczące 2017-03-09-profile
 
 ### <a name="microsoft-authorization"></a>Autoryzacja Microsoft
 
@@ -252,7 +252,7 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 |---------------------------------------------------------------|-------------|
 | Zestawy dostępności | 2016-03-30 |
 | Lokalizacje | 2016-03-30 |
-| Lokalizacje działań | 2016-03-30 |
+| Lokalizacje/operations | 2016-03-30 |
 | Lokalizacje/wydawcy | 2016-03-30 |
 | Lokalizacje/użycia | 2016-03-30 |
 | Lokalizacje/vmSizes | 2016-03-30 |
@@ -260,10 +260,10 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 | Maszyny wirtualne | 2016-03-30 |
 | Maszyny wirtualne/rozszerzenia | 2016-03-30 |
 | Zestawy skali maszyn wirtualnych | 2016-03-30 |
-| Zestawy skalowania maszyny wirtualnej/rozszerzenia | 2016-03-30 |
-| Zestawy skalowania maszyny wirtualnej/interfejsów | 2016-03-30 |
-| Maszyn wirtualnych/zestawów skali maszyny wirtualnej | 2016-03-30 |
-| Ustawia/virtualMachines/elementów Networkinterface skali maszyny wirtualne | 2016-03-30 |
+| Zestawy skalowania maszyn wirtualnych/rozszerzenia | 2016-03-30 |
+| Zestawy skalowania maszyn wirtualnych/interfejsów | 2016-03-30 |
+| Maszyna wirtualna skalowanie zestawów/maszyn wirtualnych | 2016-03-30 |
+| Skalowanie maszyn wirtualnych zestawów/maszyn wirtualnych/interfejsy | 2016-03-30 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -275,7 +275,7 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 | Brama sieci lokalnej | 2015-06-15 |
 | Lokalizacje | 2016-04-01 |
 | Lokalizacja/operationResults | 2016-04-01 |
-| Lokalizacje działań | 2016-04-01 |
+| Lokalizacje/operations | 2016-04-01 |
 | Lokalizacje/użycia | 2016-04-01 |
 | Interfejsy sieciowe | 2015-06-15 |
 | Grupy zabezpieczeń sieci | 2015-06-15 |
@@ -289,11 +289,11 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 
 | Typy zasobów | Wersje interfejsu API |
 |-----------------------------------------|--------------|
-| Rejestracji aplikacji | 2015-01-01 |
+| Rejestracje aplikacji | 2015-01-01 |
 | Sprawdź nazwę zasobu | 2016-09-01 |
-| Delegowane dostawców | 2015-01-01 |
-| Delegowane dostawców/oferty | 2015-01-01 |
-| EstimatePrice-DelegatedProviders/oferty | 2015-01-01 |
+| Delegowani dostawcy | 2015-01-01 |
+| Delegowani dostawcy/oferty | 2015-01-01 |
+| DelegatedProviders/oferty/estimatePrice | 2015-01-01 |
 | Wdrożenia | 2016-09-01 |
 | Wdrożenia/operations | 2016-09-01 |
 | Metadane rozszerzenia | 2015-01-01 |
@@ -305,15 +305,15 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 | Grupy zasobów | 2016-09-01 |
 | Zasoby | 2016-09-01 |
 | Subskrypcje | 2016-09-01 |
-| Subskrypcje/lokalizacji | 2016-09-01 |
-| Wyniki subskrypcji na operację | 2016-09-01 |
+| Subskrypcje/lokalizacja | 2016-09-01 |
+| Wyniki operacji/subskrypcji | 2016-09-01 |
 | Subskrypcje/dostawców | 2017-08-01 |
-| Subskrypcji lub grupy zasobów | 2016-09-01 |
-| Subskrypcje/resourceGroups/zasobów | 2016-09-01 |
-| Subskrypcje/zasobów. | 2016-09-01 |
+| Subskrypcjach/grupach zasobów | 2016-09-01 |
+| Zasobów/resourceGroups/subskrypcji | 2016-09-01 |
+| Zasobów/subskrypcji | 2016-09-01 |
 | Subscriptiosn/tagNames | 2016-09-01 |
 | Subskrypcje/tagNames/tagValues | 2016-09-01 |
-| Dzierżawcy | 2017-08-01 |
+| Dzierżaw | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -321,12 +321,12 @@ Dostawcy zasobów magazynu (SRP) umożliwia zarządzanie konta magazynu i klucze
 |-------------------------|--------------|
 | Sprawdź dostępność nazwy | 2016-01-01 |
 | Lokalizacje | 2016-01-01 |
-| Lokalizacje/przydziałów | 2016-01-01 |
+| Lokalizacje/przydziały | 2016-01-01 |
 | Operacje | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
-| Użycia | 2016-01-01 |
+| Sposoby użycia | 2016-01-01 |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalowanie programu PowerShell dla usługi Azure Stack)
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)  
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md)  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440433"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059616"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Alerty dzienników w usłudze Azure Monitor — alerty 
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników to jeden z typów alertów, które obsługują nowe [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.

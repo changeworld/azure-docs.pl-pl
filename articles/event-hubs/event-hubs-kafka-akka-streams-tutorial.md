@@ -13,23 +13,28 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 06/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f6671e05c53b8be2e06eb969adc8a4d5736aff37
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 674c3b5cbd3b4253833a785b32e2bc4b0f1928da
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284457"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055904"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Stosowanie strumieni Akka z usługą Event Hubs dla platformy Apache Kafka
-
-Jednym z kluczowych korzyści z używania platformy Apache Kafka jest ekosystemu platform, którymi można nawiązać. Włączone platformy Kafka z usługi Event Hubs łączy swobodne korzystanie z platformy Kafka z skalowalności, spójności i obsługa ekosystem platformy Azure.
-
 W tym samouczku przedstawiono sposób łączenia strumieni Akka do centrów zdarzeń z obsługą platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Azure Event Hubs dla platformy Kafka obsługuje [platformy Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Event Hubs
+> * Sklonuj projekt przykładowy
+> * Uruchom Flink producenta 
+> * Uruchom Flink konsumenta
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka, upewnij się, że masz następujące wymagania wstępne:
 
+* Zapoznaj się z artykułem [usługi Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) artykułu. 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Zestaw Java Development Kit (JDK 1.8 +)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
@@ -52,7 +57,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/akka
 ```
 
-## <a name="akka-streams-producer"></a>Producent strumieni Akka
+## <a name="run-akka-streams-producer"></a>Uruchom producentów Akka strumieni
 
 Korzystając z podanego przykładu producenta Akka strumieni, wysyłają komunikaty do usługi Event Hubs.
 
@@ -89,7 +94,7 @@ mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 
 Producent rozpoczyna wysyłanie zdarzeń do Centrum zdarzeń z obsługą platformy Kafka w temacie `test`i wyświetla zdarzenia do strumienia wyjściowego stdout.
 
-## <a name="akka-streams-consumer"></a>Akka strumieni konsumenta
+## <a name="run-akka-streams-consumer"></a>Uruchom konsumenta Akka strumieni
 
 Korzystając z przykładu podanych odbiorców, odbiera komunikaty z Centrum zdarzeń z obsługą platformy Kafka.
 
@@ -132,6 +137,15 @@ Jeśli Centrum zdarzeń z obsługą platformy Kafka zdarzeń (na przykład jeśl
 Zapoznaj się z [Akka strumieni platformy Kafka przewodnik](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) więcej szczegółowych informacji na temat Akka strumieni.
 
 ## <a name="next-steps"></a>Kolejne kroki
+W tym samouczku przedstawiono sposób łączenia strumieni Akka do centrów zdarzeń z obsługą platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Azure Event Hubs dla platformy Kafka obsługuje [platformy Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html). Udało Ci następujące akcje w ramach tego samouczka: 
+
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Event Hubs
+> * Sklonuj projekt przykładowy
+> * Uruchom Flink producenta 
+> * Uruchom Flink konsumenta
+
+Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
 
 * [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Dowiedz się więcej o usłudze Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)

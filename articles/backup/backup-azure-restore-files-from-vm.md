@@ -7,14 +7,14 @@ manager: shivamg
 keywords: odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure; Przywracanie plików z maszyny Wirtualnej platformy Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: fecdb54af58faaf601ab74f89039a47e0d32e650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493385"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616913"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -33,13 +33,17 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
 
 2. W menu maszyny wirtualnej, kliknij przycisk **kopii zapasowej** aby otworzyć pulpit nawigacyjny kopii zapasowej.
 
-    ![Otwórz element kopii zapasowej magazynu usług Recovery Services](./media/backup-azure-restore-files-from-vm/open-vault-from-vm.png)
+    ![Otwórz element kopii zapasowej magazynu usług Recovery Services](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. W menu pulpitu nawigacyjnego kopii zapasowej, kliknij przycisk **odzyskiwanie plików** otworzyć jego menu.
+3. W menu pulpitu nawigacyjnego kopii zapasowej, kliknij przycisk **odzyskiwanie plików**.
+
+    ![Przycisk odzyskiwania plików](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+
+    **Odzyskiwanie plików** zostanie otwarte menu.
 
     ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. Z **wybierz punkt odzyskiwania** menu rozwijanego wybierz punkt odzyskiwania zawiera pliki. Domyślnie najnowszy punkt odzyskiwania jest zaznaczona.
+4. Z **wybierz punkt odzyskiwania** menu rozwijanego wybierz punkt odzyskiwania, który zawiera pliki mają. Domyślnie najnowszy punkt odzyskiwania jest zaznaczona.
 
 5. Aby pobrać oprogramowanie używany do kopiowania plików z punktu odzyskiwania, kliknij przycisk **Pobierz plik wykonywalny** (w przypadku maszyn wirtualnych platformy Azure Windows) lub **Pobierz skrypt** (dla systemu Linux maszyny Wirtualnej platformy Azure).
 
@@ -95,7 +99,7 @@ Po Trwa identyfikowanie plików i skopiować je do lokalizacji magazynu lokalneg
 
 ![Odinstaluj dyski](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-Gdy dyski zostały odinstalowane, otrzymasz komunikat z informacją o tym, że było pomyślne. Może upłynąć kilka minut, zanim połączenie w celu odświeżenia, aby usunąć dyski.
+Gdy dyski zostały odinstalowane, komunikat o błędzie. Może upłynąć kilka minut, zanim połączenie w celu odświeżenia, aby usunąć dyski.
 
 W systemie Linux, po połączenie punkt odzyskiwania jest oddzielone, system operacyjny nie powoduje usunięcia odpowiednich ścieżkach instalacji automatycznie. Ścieżki instalacji istnieją jako woluminy "porzucone" i są widoczne, ale sygnalizować błąd, gdy użytkownik dostęp do zapisu plików. Można je ręcznie usunąć. Skrypt uruchamiania, identyfikuje tych woluminów, istniejący element z poprzednich punktów odzyskiwania i czyści podczas wyrażania zgody.
 
@@ -213,7 +217,7 @@ Jeśli masz problemy podczas odzyskiwania pliki z maszyn wirtualnych, sprawdź p
 | Dane wyjściowe pliku exe: *wyjątek nawiązywania połączenia z docelowym* |Skrypt nie jest w stanie uzyskać dostępu do punktu odzyskiwania    | Sprawdź, czy komputer spełnia poprzednie wymagania dostępu. |  
 | Dane wyjściowe pliku exe: *element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt została już wykonana na tym samym komputerze, a dyski zostały dołączone | Zostały już dołączone woluminy punktu odzyskiwania. Mogą one nie można zainstalować przy użyciu tych samych liter dysków w pierwotnej maszyny wirtualnej. Przeglądaj dostępne woluminy w Eksploratorze plików w pliku |
 | Dane wyjściowe pliku exe: *ten skrypt jest nieprawidłowy, ponieważ dyski mają został odinstalowany za pośrednictwem portalu/przekracza 12-godzinnego limitu. Pobierz nowy skrypt z witryny portal.* |    Dyski mają został odinstalowany z portalu lub przekroczono limit 12 godz. | Tego konkretnego pliku exe teraz jest nieprawidłowy i nie można go uruchomić. Jeśli chcesz uzyskać dostęp do plików w tym odzyskiwania punktu w czasie, odwiedź portal dla nowego pliku exe|
-| Na komputerze, na którym jest uruchamiane plik exe: nowe woluminy nie są odinstalowane, po kliknięciu przycisku odinstalowywanie | Inicjator iSCSI na maszynie nie odpowiada/odświeżania połączenia z docelowym i obsługi pamięci podręcznej |    Poczekaj kilka minut, po naciśnięciu przycisku odinstalowywanie. Jeśli nowe woluminy są nadal nie został odinstalowany, można przeglądać wszystkie woluminy. Zmusza to inicjatora można odświeżyć połączenia, a ten wolumin został odinstalowany z komunikatem o błędzie, że dysk nie jest dostępna|
+| Na komputerze, na którym jest uruchamiane plik exe: nowe woluminy nie są odinstalowane, po kliknięciu przycisku odinstalowywanie | Inicjator iSCSI na maszynie nie odpowiada/odświeżania połączenia z docelowym i nie obsługi pamięci podręcznej. |  Po kliknięciu przycisku **odinstalować**, poczekaj kilka minut. Nowe woluminy nie są odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów wymusza inicjatora można odświeżyć połączenia, a ten wolumin został odinstalowany z komunikatem o błędzie, że dysk nie jest dostępna.|
 | Dane wyjściowe pliku exe: skrypt jest uruchamiany pomyślnie, ale "Nowe woluminy dołączony" nie jest wyświetlany w danych wyjściowych skryptu |    Jest to błąd przejściowy    | Woluminy będą zostały już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli do uruchamiania skryptów za każdym razem, gdy używane są tym samym komputerze, należy rozważyć ponowne uruchomienie komputera i lista powinna być wyświetlana w uruchamia kolejne exe. |
 | Określonych w systemie Linux: nie można wyświetlić żądanego woluminy | Maszyny, na którym skrypt jest uruchamiany system operacyjny nie może rozpoznać bazowego systemu plików chronionych maszyn wirtualnych | Sprawdź, czy punkt odzyskiwania jest awarii zgodne lub spójna na poziomie plików. Jeśli plik spójne, uruchom skrypt na innej maszyny którego OS rozpoznaje chronionej maszyny Wirtualnej w systemie plików |
 | Windows określonego: nie można wyświetlić żądanego woluminy | Dyski zostały dołączone, ale nie skonfigurowano woluminów | Na ekranie zarządzania dyskami zidentyfikować dodatkowe dyski powiązane z punktem odzyskiwania. Jeśli dowolny z tych dysków znajdują się w trybie offline stan spróbuj, dzięki czemu ich w trybie online, klikając prawym przyciskiem myszy na dysku, a następnie kliknij przycisk "Online"|

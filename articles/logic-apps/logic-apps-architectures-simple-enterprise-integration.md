@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 982a5eabf8c6c3012a9b3e8fdbe2ff32ba439972
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f73a9e59c0add664128b506172182afe566ca670
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113596"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444514"
 ---
 # <a name="reference-architecture-simple-enterprise-integration"></a>Architektura referencyjna: integracja w przedsiębiorstwie prosty
 
@@ -38,7 +38,7 @@ Architektura zawiera następujące składniki:
 - **Azure portal dla deweloperów programu interfejsu API zarządzania**. Każde wystąpienie usługi Azure API Management jest dostarczany z dostępem do [portalu dla deweloperów](https://docs.microsoft.com/azure/api-management/api-management-customize-styles). Portalu dla deweloperów programu interfejsu API zarządzania zapewnia dostęp do dokumentacji i przykładowy kod. Interfejsy API można sprawdzić w portalu dla deweloperów.
 - **Usługi Azure Logic Apps**. [Usługa Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) jest platformą bez użycia serwera, który jest używany do tworzenia przepływów pracy przedsiębiorstwa i integracji.
 - **Łączniki**. Usługa Logic Apps używa [łączników](https://docs.microsoft.com/azure/connectors/apis-list) połączyć się z często używane usługi. Usługa Logic Apps jest już setki różne łączniki, ale można również utworzyć łącznik niestandardowy.
-- **Adres IP**. Usługa Azure API Management ma stały publicznego [adresu IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) i nazwy domeny. Nazwa domeny jest poddomeną azure-api.net, takich jak contoso.azure-api.net. Logic Apps i Service Bus również mieć publiczny adres IP. Jednak w ramach tej architektury, będziemy ograniczać przydziału obowiązków dostępu do wywoływania aplikacji logiki punktów końcowych tylko adres IP usługi API Management (dla zabezpieczeń). Wywołania do usługi Service Bus są chronione przez sygnaturę dostępu współdzielonego (SAS).
+- **Adres IP**. Usługa Azure API Management ma stały publicznego [adresu IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) i nazwy domeny. Domyślna nazwa domeny jest poddomeną azure-api.net, takich jak contoso.azure-api.net, ale [domen niestandardowych](https://docs.microsoft.com/azure/api-management/configure-custom-domain) można również skonfigurować. Logic Apps i Service Bus również mieć publiczny adres IP. Jednak w ramach tej architektury, będziemy ograniczać przydziału obowiązków dostępu do wywoływania aplikacji logiki punktów końcowych tylko adres IP usługi API Management (dla zabezpieczeń). Wywołania do usługi Service Bus są chronione przez sygnaturę dostępu współdzielonego (SAS).
 - **Azure DNS**. [Usługa Azure DNS](https://docs.microsoft.com/azure/dns/) to usługa hostingowa przeznaczona dla domen DNS. Usługa Azure DNS udostępnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Hostowanie domen na platformie Azure, pozwala na zarządzanie rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń, że używasz innych usług platformy Azure. Aby użyć nazwy domeny niestandardowej, np. contoso.com, Utwórz rekordy DNS mapujące niestandardową nazwę domeny na adres IP. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny w usłudze API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
 - **Azure Active Directory (Azure AD)**. Użyj [usługi Azure AD](https://docs.microsoft.com/azure/active-directory/) lub innego dostawcy tożsamości do uwierzytelniania. Usługa Azure AD umożliwia uwierzytelnianie do uzyskiwania dostępu do punktów końcowych interfejsu API, przekazując [JSON Web Token dla usługi API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) do sprawdzania poprawności. Usługa Azure AD można zabezpieczyć dostęp do portalu dla deweloperów programu interfejsu API zarządzania (tylko warstw standardowa i Premium).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5d4fa878197732daf188fcc318569b178e608684
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345964"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616976"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -208,27 +208,20 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
 
 1. Zainstaluj środowisko Node.js i menedżera npm na swojej maszynie.
 
-    * Ubuntu
-        ```bash
-        curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-        sudo apt-get install -y nodejs 
-        ```
-
-    * Red Hat Enterprise Linux 7.4 (obsługa wersji zapoznawczej usługi Service Fabric)
-        ```bash
-        sudo yum install nodejs
-        sudo yum install npm
-        ```
+    ```bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    nvm install node
+    ```
 2. Z poziomu menedżera npm zainstaluj generator szablonów narzędzia [Yeoman](http://yeoman.io/) na swojej maszynie.
 
     ```bash
-    sudo npm install -g yo
+    npm install -g yo
     ```
 3. Zainstaluj generator kontenerów Yeo i generator plików wykonywalnych gościa usługi Service Fabric z poziomu narzędzia npm.
 
     ```bash
-    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 Po zainstalowaniu generatorów utwórz plik wykonywalny gościa lub usługi kontenera, uruchamiając odpowiednio polecenie `yo azuresfguest` lub `yo azuresfcontainer`.
@@ -260,7 +253,7 @@ W celu kompilowania usług Service Fabric za pomocą języka Java zainstaluj roz
 Należy również zainstalować generator Yeo usługi Service Fabric na potrzeby plików wykonywalnych języka Java. Upewnij się, że masz [zainstalowane narzędzie Yeoman](#set-up-yeoman-generators-for-containers-and-guest-executables), a następnie uruchom następujące polecenie:
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
  
 ## <a name="install-the-eclipse-plug-in-optional"></a>Instalowanie wtyczki środowiska Eclipse (opcjonalnie)
@@ -310,8 +303,8 @@ Aby usunąć zestawy Service Fabric SDK, uruchom poniższe polecenia.
 
     ```bash
     sudo apt-get remove servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     sudo apt-get install -f
     ```
 
@@ -319,9 +312,9 @@ Aby usunąć zestawy Service Fabric SDK, uruchom poniższe polecenia.
 * Red Hat Enterprise Linux 7.4 (obsługa wersji zapoznawczej usługi Service Fabric)
 
     ```bash
-    sudo yum remote servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    sudo yum remove servicefabric servicefabicsdkcommon
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki

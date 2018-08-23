@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622174"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061031"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Jak kontrolować dołączenie do hybrydowej usługi Azure AD urządzeń
 
@@ -116,7 +116,7 @@ Należy połączyć to ustawienie klienta z wybraną lokalizację. Na przykład 
 
 ## <a name="control-windows-down-level-devices"></a>Urządzenia niskiego poziomu Windows
 
-Aby zarejestrować urządzenia niskiego poziomu Windows, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania na [Microsoft dołączania komputerów do systemu Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554) strony.
+Aby zarejestrować urządzenia niskiego poziomu Windows, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania na [Microsoft dołączania komputerów do systemu Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) strony.
 
 Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takich jak System Center Configuration Manager. Pakiet obsługuje opcje standardowej instalacji dyskretnej, za pomocą parametru cichy. [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) Current Branch zapewnia dodatkowe korzyści z wcześniejszych wersji, takich jak możliwość śledzenia rejestracje ukończone.
 

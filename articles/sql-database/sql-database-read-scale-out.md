@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: sashan
-ms.openlocfilehash: 7ca033be8a27802db55aec827509b46fed8e471e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2fe27f93bb48e0581902fd380813c878a4883a5c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090068"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055971"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -22,7 +22,11 @@ ms.locfileid: "39090068"
 
 ## <a name="overview-of-read-scale-out"></a>Omówienie odczytu skalowalnego w poziomie
 
-Każda baza danych w warstwie Premium ([modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md)) lub w warstwie krytyczne dla działania firmy ([modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md)) są automatycznie konfigurowani przy użyciu kilku zawsze włączonych replik na obsługuje umowa SLA dotycząca dostępności. Te repliki są aprowizowane na tym samym poziomie wydajności co replika odczytu i zapisu, używanych przez połączenia bazy danych w regularnych. **Odczytu skalowalnego w poziomie** funkcja pozwala załadować saldo bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza, a w związku z tym można także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
+Każda baza danych w warstwie Premium ([modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md)) lub w warstwie krytyczne dla działania firmy ([modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md)) są automatycznie konfigurowani przy użyciu kilku zawsze włączonych replik na obsługuje umowa SLA dotycząca dostępności.
+
+![Repliki tylko do odczytu](media/sql-database-managed-instance/business-critical-service-tier.png)
+
+Te repliki są aprowizowane na tym samym poziomie wydajności co replika odczytu i zapisu, używanych przez połączenia bazy danych w regularnych. **Odczytu skalowalnego w poziomie** funkcja pozwala załadować saldo bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza, a w związku z tym można także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
 
 Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, należy go najpierw włączyć podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [ Nowy-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody. 
 
@@ -112,7 +116,7 @@ Aby uzyskać więcej informacji, zobacz [baz danych — Utwórz lub zaktualizuj]
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Odczyt skalowalnego w poziomie przy użyciu replikacji geograficznej bazy danych
 
-Jeśli jesteś za pomocą odczytu skalowalnego w poziomie można załadować saldo tylko do odczytu na obciążenie bazy danych, która jest replikowana geograficznie (np. jako członek grupy trybu failover), upewnij się, że odczytu skalowalnego w poziomie jest włączona na podstawowe i pomocnicze bazy danych replikowanej geograficznie. Pozwoli to zagwarantować ten sam efekt równoważenia obciążenia, gdy aplikacja nawiązuje połączenie z nową podstawową po włączeniu trybu failover. Jeśli łączysz się do pomocniczej bazy danych replikowanej geograficznie skalę odczytu włączone, sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik taki sam sposób, firma Microsoft trasy połączeń w głównej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do repliki podstawowej replikowanej geograficznie pomocniczej, który również jest tylko do odczytu. Replikowanej geograficznie pomocniczej bazy danych jest inny punkt końcowy niż podstawowa baza danych, dlatego w przeszłości pomocniczy dostęp do jej nie muszą ustawić `ApplicationIntent=ReadOnly`. Aby zapewnić zgodność z poprzednimi wersjami `sys.geo_replication_links` Pokazuje widok DMV `secondary_allow_connections=2` (każde połączenie klienta jest dozwolone).
+Jeśli używasz odczytu skalowalnego w poziomie można załadować saldo tylko do odczytu na obciążenie bazy danych, która jest replikowana geograficznie (np. jako członek grupy trybu failover), upewnij się, że odczytu skalowalnego w poziomie jest włączona na podstawowe i pomocnicze bazy danych replikowanej geograficznie. Pozwoli to zagwarantować ten sam efekt równoważenia obciążenia, gdy aplikacja nawiązuje połączenie z nową podstawową po włączeniu trybu failover. Jeśli łączysz się do pomocniczej bazy danych replikowanej geograficznie skalę odczytu włączone, sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik taki sam sposób, firma Microsoft trasy połączeń w głównej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do repliki podstawowej replikowanej geograficznie pomocniczej, który również jest tylko do odczytu. Replikowanej geograficznie pomocniczej bazy danych jest inny punkt końcowy niż podstawowa baza danych, dlatego w przeszłości pomocniczy dostęp do jej nie muszą ustawić `ApplicationIntent=ReadOnly`. Aby zapewnić zgodność z poprzednimi wersjami `sys.geo_replication_links` Pokazuje widok DMV `secondary_allow_connections=2` (każde połączenie klienta jest dozwolone).
 
 > [!NOTE]
 > Podczas korzystania z wersji zapoznawczej firma Microsoft nie będzie wykonywać działania okrężnego lub wszelkie inne ze zrównoważonym obciążeniem: routing między lokalnym repliki pomocniczej bazy danych. 

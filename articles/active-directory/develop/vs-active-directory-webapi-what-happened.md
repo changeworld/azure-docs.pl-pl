@@ -7,17 +7,17 @@ manager: douge
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: 60b51f28f5836fcc0f1f2da2d17971ea4f24eaca
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 04732d6541fd6132360d4c235b35979c70772922
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495193"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058521"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem WebAPI (usługa połączona programu Visual Studio usługi Azure Active Directory)
 

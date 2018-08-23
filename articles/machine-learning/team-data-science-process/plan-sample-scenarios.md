@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 62e035c0d28a797ae08480b982598d8265b18767
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bf5ee52c98c173dbdde0a00c5657b8694b363279
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423848"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055924"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning
 W tym artykule przedstawiono różne źródła danych przykładowych i scenariusze docelowe, które są obsługiwane przez [Team Data Science naukowych](overview.md). Przetwarzania TDSP zapewnia to systematyczne podejście dla zespołów usługi umożliwiające wspólną pracę nad tworzeniem inteligentnych aplikacji. Scenariusze przedstawione w tym miejscu przedstawiono opcje dostępne w przepływie pracy przetwarzania danych, które są zależne od właściwości danych, lokalizacji źródłowych i docelowych repozytoriów na platformie Azure.
@@ -37,7 +37,7 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 > **Wszystkie z poniższych scenariuszy należy:**
 > <br/>
 > 
-> * [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md)
+> * [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md)
 >   <br/>
 > * [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md)
 > 

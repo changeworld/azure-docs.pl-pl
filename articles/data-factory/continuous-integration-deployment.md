@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448445"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060341"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
 
@@ -47,6 +47,10 @@ Ta akcja spowoduje przejście do witryny Azure portal, gdzie można zaimportowa�
 Wybierz **Załaduj plik** wybierz wyeksportowany szablon usługi Resource Manager i podaj wszystkie wartości konfiguracji (na przykład, połączonych usług).
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
+
+**Parametry połączenia**. Można znaleźć informacje wymagane do utworzenia parametry połączenia zawierają artykuły dotyczące poszczególnych łączników. Na przykład usługi Azure SQL Database, zobacz [kopiowanie danych do i z usługi Azure SQL Database przy użyciu usługi Azure Data Factory](connector-azure-sql-database.md). Aby sprawdzić prawidłowych parametrów połączenia — dla połączonej usługi, na przykład — możesz również otworzyć widok kodu dla zasobu w interfejs użytkownika usługi Data Factory. W widoku kodu jednak część klucza, konto lub hasło parametrów połączenia zostaną usunięte. Aby otworzyć widok kodu, wybierz ikonę wyróżnione na poniższym zrzucie ekranu.
+
+![Otwórz widok kodu, aby wyświetlić parametry połączenia](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Cykl życia ciągłej integracji
 Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, którego można używać po włączeniu integracji VSTS GIT w interfejs użytkownika usługi Data Factory:
@@ -174,11 +178,7 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta prób
 
 Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV2Trigger` funkcji) do ponownego uruchomienia wyzwalacze po wdrożeniu.
 
-## <a name="sample-template-and-script"></a>Przykładowy szablon i skryptu
-Poniżej przedstawiono dwa przykłady, które umożliwiają wprowadzenie do ciągłej integracji i ciągłego wdrażania dla usługi Data Factory:
-
--   Przykładowy szablon wdrożenia, który można zaimportować w usłudze VSTS.
--   Przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i uruchom ponownie uaktywnia się później. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte.
+## <a name="sample-deployment-template"></a>Przykładowy szablon wdrożenia
 
 Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w usłudze VSTS.
 
@@ -718,7 +718,9 @@ Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportow
 }
 ```
 
-Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i później ponownego uruchomienia wyzwalaczy:
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Przykładowy skrypt, aby zatrzymać i ponownie uruchomić wyzwalaczy i wyczyścić
+
+Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i później ponownego uruchomienia wyzwalaczy. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte.
 
 ```powershell
 param

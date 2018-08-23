@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f4f3939b1e8fc50c1a942498d7f90d6e0db0633
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 03b22e3a4c2c0b8eb87ee0b61edba3c6f0923170
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003098"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443819"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC usługi Azure Automation stanu konfiguracji
 
@@ -55,7 +55,9 @@ Możesz użyć [ `Start-AzureRmAutomationDscCompilationJob` ](/powershell/module
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` Zwraca obiekt zadania kompilacji za pomocą którego można użyć, aby śledzić jego stan. Następnie można ten obiekt zadania kompilacji za pomocą [ `Get-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) do określenia stanu zadania kompilacji i [ `Get-AzureRmAutomationDscCompilationJobOutput` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) Aby wyświetlić jego strumieni (dane wyjściowe). Następujący przykładowy kod uruchamia kompilację **SampleConfig** konfiguracji, czeka, dopóki nie zostanie zakończona, a następnie wyświetla jego strumieni.
+`Start-AzureRmAutomationDscCompilationJob` Zwraca obiekt zadania kompilacji za pomocą którego można użyć, aby śledzić jego stan. Następnie można użyć tego obiektu zadania kompilacji [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
+do określenia stanu zadania kompilacji i [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+Aby wyświetlić jego strumieni (dane wyjściowe). Następujący przykładowy kod uruchamia kompilację **SampleConfig** konfiguracji, czeka, dopóki nie zostanie zakończona, a następnie wyświetla jego strumieni.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -167,7 +169,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 }
 ```
 
-## <a name="configurationdata"></a>Danych konfiguracji
+## <a name="configurationdata"></a>ConfigurationData
 
 **ConfigurationData** umożliwia rozdzielenie strukturalnych konfiguracji z żadnej konfiguracji specyficznych dla środowiska, podczas korzystania z programu PowerShell DSC. Zobacz [oddzielenie "Co" od "Where" w programie PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) Aby dowiedzieć się więcej na temat **ConfigurationData**.
 
@@ -233,8 +235,7 @@ Odwołania do zasobów są takie same, w konfiguracji stan automatyzacji platfor
 
 ### <a name="credential-assets"></a>Zasobów poświadczeń
 
-Konfiguracje DSC w usłudze Azure Automation mogą odwoływać się do zasobów poświadczeń usługi Automation przy użyciu `Get-AzureRmAutomationCredential`. Jeśli konfiguracja ma parametr, który ma **PSCredential** typ, a następnie można użyć `Get-AutomationRmAutomationCredential` polecenia cmdlet, przekazując nazwę ciągu elementu zasób poświadczenia usługi Azure Automation do polecenia cmdlet, aby pobrać poświadczenie. Możesz następnie użyć a następnie użyć obiektu wymagająca parametr **PSCredential** obiektu. Za kulisami zasób poświadczenia usługi Azure Automation, o tej nazwie jest pobierane i przekazywane do konfiguracji.
-W poniższym przykładzie pokazano to w działaniu.
+Konfiguracje DSC w usłudze Azure Automation mogą odwoływać się do zasobów poświadczeń usługi Automation przy użyciu `Get-AzureRmAutomationCredential`. Jeśli konfiguracja ma parametr, który ma **PSCredential** typ, a następnie można użyć `Get-AutomationRmAutomationCredential` polecenia cmdlet, przekazując nazwę ciągu elementu zasób poświadczenia usługi Azure Automation do polecenia cmdlet, aby pobrać poświadczenie. Można użyć obiektu wymagająca parametr **PSCredential** obiektu. Za kulisami zasób poświadczenia usługi Azure Automation, o tej nazwie jest pobierane i przekazywane do konfiguracji. W poniższym przykładzie pokazano to w działaniu.
 
 Przechowywanie poświadczeń zabezpieczone w konfiguracji węzła (pliku MOF konfiguracji dokumenty) wymaga szyfrowania poświadczeń w pliku MOF konfiguracji węzła. Jednak obecnie musisz poinformować DSC programu PowerShell nie jest akceptowalne o poświadczenia, które mają zostać zwrócone w postaci zwykłego tekstu podczas generowania pliku MOF konfiguracji węzła, ponieważ DSC programu PowerShell nie wie, że usługi Azure Automation będzie można szyfrowanie całego pliku MOF po jej generacji za pomocą zadania kompilacji.
 
@@ -246,7 +247,7 @@ Konfiguracja DSC, która używa zasób poświadczenia usługi Automation można 
 Configuration CredentialSample
 {
     Import-DscResource -ModuleName PSDesiredStateConfiguration
-    $Cred = Get-AutomationRmAutomationCredential -ResourceGroupName 'ResourceGroup01' -AutomationAccountName 'ContosoAutomationAccount' -Name 'SomeCredentialAsset'
+    $Cred = Get-AutomationPSCredential 'SomeCredentialAsset'
 
     Node $AllNodes.NodeName
     {

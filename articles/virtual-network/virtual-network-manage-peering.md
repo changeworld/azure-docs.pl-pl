@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 08/16/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 1b9807b587b6b52594133e8c792c72b21e8bd4ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d27b95f9c7d21f49f547534ca99a44657062abc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503625"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054188"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
-Dowiedz się, jak tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej. Komunikacja równorzędna sieci wirtualnych umożliwia łączenie sieci wirtualnych za pośrednictwem sieci szkieletowej platformy Azure. Po nawiązaniu komunikacji równorzędnej, sieci wirtualne są nadal zarządzane jako oddzielne zasoby. Jeśli dopiero zaczynasz pracę z wirtualnymi sieciami równorzędnymi, możesz dowiedzieć się więcej o nim w [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md) lub wykonując [samouczek](tutorial-connect-virtual-networks-portal.md).
+Dowiedz się, jak tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej. Komunikacja równorzędna sieci wirtualnych umożliwia łączenie sieci wirtualnych w tym samym regionie i w różnych regionach (znany także jako globalnych wirtualnych sieci równorzędnych) za pośrednictwem sieci szkieletowej platformy Azure. Po nawiązaniu komunikacji równorzędnej, sieci wirtualne są nadal zarządzane jako oddzielne zasoby. Jeśli dopiero zaczynasz pracę z wirtualnymi sieciami równorzędnymi, możesz dowiedzieć się więcej o nim w [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md) lub wykonując [samouczek](tutorial-connect-virtual-networks-portal.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -112,10 +112,10 @@ Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia 
 
-- <a name="cross-region"></a>Można nawiązać komunikację równorzędną między sieciami wirtualnymi w tym samym regionie lub w różnych regionach. Następujące ograniczenia nie są stosowane, gdy obie sieci wirtualne znajdują się w *tego samego* regionu, ale są stosowane, gdy globalnie równorzędnych sieci wirtualnych: 
-    - Sieci wirtualne mogą znajdować się w dowolnym regionie chmury publicznej platformy Azure, ale nie znajduje się w chmurach narodowych platformy Azure.
-    - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP Azure wewnętrznego modułu równoważenia obciążenia w równorzędnej sieci wirtualnej. Moduł równoważenia obciążenia i zasoby, które komunikują się z nim muszą być w tej samej sieci wirtualnej.
-    - Nie można użyć bram zdalnych lub zezwolić na tranzyt przez bramę. Aby użyć bram zdalnych lub zezwolić na tranzyt przez bramę, obie sieci wirtualne w komunikacji równorzędnej muszą istnieć w tym samym regionie. 
+- <a name="cross-region"></a>Można nawiązać komunikację równorzędną między sieciami wirtualnymi w tym samym regionie lub w różnych regionach. Komunikacja równorzędna sieci wirtualnych w różnych regionach jest również nazywany *globalnej komunikacji równorzędnej*. 
+- Podczas tworzenia, globalnej komunikacji równorzędnej, wirtualne sieci równorzędne może znajdować się w dowolnym regionie chmury publicznej platformy Azure, ale nie znajduje się w chmurach narodowych platformy Azure. Można tylko komunikacji równorzędnej sieci wirtualnych w tym samym regionie, w chmurach krajowych.
+- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu Azure wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Moduł równoważenia obciążenia i zasoby, które komunikują się z nim muszą być w sieci wirtualnej, w tym samym regionie. Jeśli wirtualne sieci równorzędne są jednak w tym samym regionie, zasoby w dowolnej sieci wirtualnej mogą komunikować się z adresu IP frontonu Azure wewnętrznego modułu równoważenia obciążenia w dowolnej sieci wirtualnej w komunikacji równorzędnej.
+- Nie można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne. Aby użyć bram zdalnych lub Zezwalaj na tranzyt bramy, wirtualne sieci równorzędne musi być w tym samym regionie.
 - Sieci wirtualne mogą być w tej samej lub innej subskrypcji. Jeśli możesz nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych subskrypcjach, obie subskrypcje musi być skojarzone z tą samą dzierżawą usługi Azure Active Directory. Jeśli nie masz już dzierżawę usługi AD, możesz szybko [utworzyć](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Możesz użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) połączyć dwie sieci wirtualne znajdujące się w różnych subskrypcjach, które są skojarzone z różnych dzierżawach usługi Active Directory.
 - Sieci wirtualne, z którymi możesz komunikacji równorzędnej musi mieć nienakładające się przestrzenie adresów IP.
 - Nie można dodać zakresy adresów do lub usuwanie zakresów adresów z przestrzeni adresowej sieci wirtualnej, gdy sieć wirtualna a jest połączona z inną siecią wirtualną. Aby dodać lub usunąć zakresów adresów, usuwanie komunikacji równorzędnej, dodać lub usunąć zakresów adresów, następnie ponownie utworzyć komunikację równorzędną. Aby zakresy adresów, aby dodać lub usunąć zakresów adresów z sieciami wirtualnymi, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md).

@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 570eee6cc849c474cfeacf5a9ba1798f64f27183
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188083"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054187"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -35,7 +35,8 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 
 > [!NOTE]
 > Należy podkreślić przydziały dla zasobów w grupach zasobów platformy Azure są regionu dostępny dla Twojej subskrypcji i nie są każdej subskrypcji, ponieważ przydziały zarządzania usługi. Jako przykładu użyjemy limity przydziału procesorów wirtualnych. Jeśli potrzebujesz zażądać zwiększenia limitu przydziału z obsługą procesorów wirtualnych Vcpu, musisz zdecydować, jak wiele procesorów wirtualnych, które chcesz użyć w jakich regionach, a następnie dokonaj określonego żądania dla limity przydziału procesorów wirtualnych grupy zasobów platformy Azure dotyczące wielkości i regionów, które mają. W związku z tym w razie potrzeby na potrzeby uruchamiania aplikacji ma 30 procesorów wirtualnych Vcpu w regionie Europa Zachodnia, należy zażądać specjalnie 30 procesorów wirtualnych Vcpu w regionie Europa Zachodnia. Ale nie ma limit przydziału procesorów wirtualnych rosną z każdym innym regionie — tylko Europa Zachodnia, będzie mieć limit przydziału procesorów wirtualnych 30.
-> <!-- --> W rezultacie może warto wziąć pod uwagę przy wyborze rozwiązania, które limity przydziału grupy zasobów platformy Azure muszą zostać dla obciążenia w dowolnym regionie, co i zażądać kwota w każdym regionie, w którym rozważane jest wdrożenie. Zobacz [Rozwiązywanie problemów dotyczących wdrożenia](resource-manager-common-deployment-errors.md) Aby uzyskać dodatkową pomoc, odnajdywanie bieżące limity przydziału dla konkretnych regionów.
+> <!-- -->
+> W rezultacie może warto wziąć pod uwagę przy wyborze rozwiązania, które limity przydziału grupy zasobów platformy Azure muszą zostać dla obciążenia w dowolnym regionie, co i zażądać kwota w każdym regionie, w którym rozważane jest wdrożenie. Zobacz [Rozwiązywanie problemów dotyczących wdrożenia](resource-manager-common-deployment-errors.md) Aby uzyskać dodatkową pomoc, odnajdywanie bieżące limity przydziału dla konkretnych regionów.
 >
 >
 
@@ -51,6 +52,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
@@ -293,6 +295,9 @@ Aby dowiedzieć się więcej o limitach na bardziej szczegółowym poziomie, tak
 
 ### <a name="azure-maps-limits"></a>Limity usługi platformy Azure Maps
 [!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
+### <a name="azure-policy-limits"></a>Limity usługi Azure Policy
+[!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>Limity systemu StorSimple
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]

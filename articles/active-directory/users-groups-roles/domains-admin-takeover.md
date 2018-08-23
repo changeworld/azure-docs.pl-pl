@@ -14,15 +14,15 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 52ae7da666acaf234920a7f03afe3766f29a1e85
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 210526e105793820a2e8a80a11b356b1d7d764da
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629127"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057367"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
-W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestrowania w usłudze, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup)
+W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestrowania w usłudze, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Decyzja w sprawie sposobu przejmowanie katalogu niezarządzanego
 Podczas procesu przejęcia przez administratora możesz udowodnić własność w sposób opisany w artykule [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md). W kolejnych sekcjach objaśniono środowisko pracy administratora bardziej szczegółowo, ale w tym miejscu znajduje się podsumowanie:
@@ -56,13 +56,13 @@ Po ukończeniu powyższych kroków, jesteś teraz administratorem globalnym dzie
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Dodawanie nazwy domeny do zarządzanej dzierżawy w usłudze Azure AD 
 
 1. Otwórz [Centrum administracyjnego usługi Office 365](https://portal.office.com/adminportal/Home).
-2. Wybierz **użytkowników** , a następnie utworzyć nowe konto użytkownika o nazwie, takich jak * user@fourthcoffeexyz.onmicrosoft.com * nie używa nazwy domeny niestandardowej. 
+2. Wybierz **użytkowników** , a następnie utworzyć nowe konto użytkownika o nazwie, takich jak *user@fourthcoffeexyz.onmicrosoft.com* nie używa nazwy domeny niestandardowej. 
 3. Upewnij się, że nowe konto użytkownika ma uprawnienia administratora globalnego dla dzierżawy usługi Azure AD.
 4. Otwórz **domen** kartę w Centrum administracyjnym usługi Office 365, wybierz nazwę domeny i wybierz **Usuń**. 
   
   ![usunąć nazwę domeny w usłudze Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. W przypadku jakichkolwiek użytkowników lub grup w usłudze Office 365, odwołujące się do nazwy domeny usunięte, musi zostać zmieniona na. domeny onmicrosoft.com. Jeśli wymusisz usunięcie nazwy domeny, wszyscy użytkownicy są automatycznie zmieniono jego nazwę, w tym przykładzie * user@fourthcoffeexyz.onmicrosoft.com *.
+5. W przypadku jakichkolwiek użytkowników lub grup w usłudze Office 365, odwołujące się do nazwy domeny usunięte, musi zostać zmieniona na. domeny onmicrosoft.com. Jeśli wymusisz usunięcie nazwy domeny, wszyscy użytkownicy są automatycznie zmieniono jego nazwę, w tym przykładzie *user@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta administratora globalnego dla dzierżawy usługi Azure AD.
   
@@ -71,7 +71,7 @@ Po ukończeniu powyższych kroków, jesteś teraz administratorem globalnym dzie
   ![Domena dodana do usługi Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Użytkowników usługi Power BI lub usługi Azure Rights Management, którzy mają licencje przypisane w ramach dzierżawy usługi Office 365 należy zapisać swoje pulpity nawigacyjne, jeśli nazwa domeny została usunięta. Muszą się zalogować się przy użyciu nazwy użytkownika, takich jak * user@fourthcoffeexyz.onmicrosoft.com * zamiast * user@fourthcoffee.xyz *.
+> Użytkowników usługi Power BI lub usługi Azure Rights Management, którzy mają licencje przypisane w ramach dzierżawy usługi Office 365 należy zapisać swoje pulpity nawigacyjne, jeśli nazwa domeny została usunięta. Muszą się zalogować się przy użyciu nazwy użytkownika, takich jak *user@fourthcoffeexyz.onmicrosoft.com* zamiast *user@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Przejęcia przez administratora zewnętrznych
 

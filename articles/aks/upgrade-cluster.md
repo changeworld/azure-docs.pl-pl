@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144588"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058209"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -39,7 +39,7 @@ default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.
 Mamy trzy wersje dostępne do uaktualnienia: 1.9.1, 1.9.2 i pytanie 1.9.6. Możemy użyć polecenia `az aks upgrade` w celu przeprowadzenia uaktualnienia do najnowszej dostępnej wersji.  Podczas procesu uaktualniania AKS spowoduje dodanie nowego węzła do klastra, następnie dokładnie [odizolowywanie i opróżnianie] [ kubernetes-drain] jeden węzeł w czasie, aby zminimalizować zakłócenia dla działających aplikacji.
 
 > [!NOTE]
-> Podczas uaktualniania klastra usługi AKS, nie pominięto pomocniczej wersji rozwiązania Kubernetes. Na przykład uaktualnienia między 1.8.x -> 1.9.x lub 1.9.x -> 1.10.x są dozwolone, jest jednak 1.8 -> 1.10.
+> Podczas uaktualniania klastra usługi AKS, nie pominięto pomocniczej wersji rozwiązania Kubernetes. Na przykład uaktualnienia między 1.8.x -> 1.9.x lub 1.9.x -> 1.10.x są dozwolone, jest jednak 1.8 -> 1.10. Aby przeprowadzić uaktualnienie, z 1.8 -> 1.10, należy najpierw uaktualnić z 1.8 -> 1.9, a następnie inny innego wykonaj uaktualnienie z 1.9 -> 1.10
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

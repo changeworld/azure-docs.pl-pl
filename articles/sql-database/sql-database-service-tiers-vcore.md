@@ -6,33 +6,43 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/15/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 68343f3fcdd2275012207d7ac5a5f3bcdc71d1b8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414378"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443586"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
-Warstwy usługi są zróżnicowane według szeroką gamę poziomów wydajności, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych. Za pomocą modelu rdzenia wirtualnego pojedyncze bazy danych i pul elastycznych kwalifikują się do 30 procent oszczędności w przypadku [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Umożliwia również można wybrać generacji sprzętu:
+- 4. generacji — maksymalnie 24 logiczne procesory CPU oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów, pamięci rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
+- 5. generacji — maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.5. GB na rdzeń procesora, szybkie eNVM dysków SSD
+
+model rdzenia wirtualnego pozwala również na używanie [hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) uzyskanie oszczędności kosztów.
+
+## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
+
+Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę poziomów wydajności, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych.
 
 Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 
 ||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|
 |---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|
-|Wystąpienia obliczeniowe|1 do 80 (rdzeń wirtualny), 4. generacji i 5. generacji |1 do 80 (rdzeń wirtualny), 4. generacji i 5. generacji|
+|Wystąpienia obliczeniowe|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|
 |Memory (Pamięć)|4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń | 4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń |
-|Magazyn|Magazyn zdalny w warstwie Premium, 5 GB – 4 TB|Lokalny magazyn SSD, 5 GB – 4 TB|
-|Przepustowość operacji We/Wy (w przybliżeniu)|500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS|5000 operacji We/Wy na każdy rdzeń za pomocą 200000 maksymalna liczba IOPS|
-|Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skalę odczytywania](sql-database-read-scale-out.md), strefa nadmiarowe wysokiej dostępności|
-|Tworzenie kopii zapasowych|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)|
+|Magazyn|[Usługa Premium storage zdalnego](../virtual-machines/windows/premium-storage.md),<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 8 TB |Lokalny magazyn SSD<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 4 TB |
+|Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienia zarządzanego: Zależy [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na każdy rdzeń za pomocą 200000 maksymalna liczba IOPS|
+|Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|
+|Tworzenie kopii zapasowych|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|
 |W pamięci|ND|Obsługiwane|
 |||
+
+Aby uzyskać więcej informacji, zobacz [limity zasobów — rdzeń wirtualny w bazie danych Singelton](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów — rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model). 
 
 > [!IMPORTANT]
 > Jeśli potrzebujesz mniejszej niż jeden rdzeń wirtualny mocy obliczeniowej, przy użyciu modelu zakupu opartego na jednostkach DTU.
@@ -43,9 +53,10 @@ Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) o
 
 Rozważ następujące źródła:
 - Przydzielenia pamięci, która jest używana przez pliki danych (MDF) i plików (LDF) dziennika.
-- Każdy poziom wydajności obsługuje maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
-- Po skonfigurowaniu rozmiar wymaganej bazy danych (MDF o rozmiarze), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
-- Można wybrać dowolnego rozmiaru bazy danych między 10 GB i maksymalnej obsługiwanej
+- Każdy poziom wydajności pojedynczego wystąpienia bazy danych obsługuje maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
+- Po skonfigurowaniu wymagany rozmiar pojedyncze bazy danych (rozmiar MDF), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
+- Określony rozmiar magazynu w wystąpieniu zarządzanym usługi musi być wielokrotność 32 GB.
+- Można wybrać dowolnego rozmiaru bazy danych pojedyncze między 10 GB i maksymalnej obsługiwanej
  - Dla magazynu w warstwie standardowa należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
  - Dla usługi Premium storage należy zwiększyć lub zmniejszyć rozmiar w partiach po 250 GB
 - W przypadku warstwy usług ogólnego przeznaczenia `tempdb` używa dołączone dyski SSD i ten koszt przechowywania jest uwzględniona w cenie — rdzeń wirtualny.
@@ -61,9 +72,9 @@ Aby monitorować bieżący łączny rozmiar plików MDF i LDF, użyj [sp_spaceus
 
 ## <a name="backups-and-storage"></a>Tworzenie kopii zapasowych i magazynu
 
-Magazyn kopii zapasowych bazy danych jest przydzielany do obsługi punktu w czasie przywracania (Odzyskiwanie) i długi okres przechowywania (LTR) możliwościach usługi SQL Database. Ten magazyn jest przydzielany osobno dla każdej bazy danych i rozliczane jako dwie osobne bazy danych opłaty. 
+Magazyn kopii zapasowych bazy danych jest przydzielany do obsługi punktu w czasie przywracania (Odzyskiwanie) i [długi okres przechowywania (LTR)](sql-database-long-term-retention.md) możliwości bazy danych SQL. Ten magazyn jest przydzielany osobno dla każdej bazy danych i rozliczane jako dwie osobne bazy danych opłaty. 
 
-- **Odzyskiwanie**: poszczególnych baz danych, kopie zapasowe są kopiowane do magazynu RA-GRS są wykonywane automatycznie. Rozmiar magazynu zwiększa dynamicznie w miarę tworzenia nowych kopii zapasowych.  Magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe oraz kopie zapasowe dzienników transakcji kopiowane co 5 minut. Użycie magazynu zależy od szybkości zmian bazy danych i okres przechowywania. Można skonfigurować okres przechowywania osobne dla każdej bazy danych od 7 do 35 dni. Minimalna wielkość magazynu równy 1 x rozmiaru danych znajduje się bez dodatkowych opłat. Większość baz danych ta wartość jest wystarczający, aby przechowywać kopie zapasowe z 7 dni.
+- **Odzyskiwanie**: poszczególnych baz danych kopie zapasowe są kopiowane do [magazynu RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md) są wykonywane automatycznie. Rozmiar magazynu zwiększa dynamicznie w miarę tworzenia nowych kopii zapasowych.  Magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe oraz kopie zapasowe dzienników transakcji kopiowane co 5 minut. Użycie magazynu zależy od szybkości zmian bazy danych i okres przechowywania. Można skonfigurować okres przechowywania osobne dla każdej bazy danych od 7 do 35 dni. Minimalna wielkość magazynu równy 1 x rozmiaru danych znajduje się bez dodatkowych opłat. Większość baz danych ta wartość jest wystarczający, aby przechowywać kopie zapasowe z 7 dni.
 - **Od lewej do prawej**: usługa SQL Database oferuje opcję Konfigurowanie długoterminowego przechowywania pełnych kopii zapasowych dla maksymalnie 10 lat. Jeśli od lewej do prawej jest włączona, te kopie zapasowe są przechowywane w magazynach RA-GRS automatycznie, ale można kontrolować, jak często kopie zapasowe są kopiowane. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Ta konfiguracja określi, ile pamięci masowej, będzie używany do tworzenia kopii zapasowych LTR. Aby oszacować koszt magazynu od lewej do prawej, można użyć Kalkulator cen od lewej do prawej. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 ## <a name="azure-hybrid-use-benefit"></a>Korzyść użycia hybrydowego platformy Azure
@@ -72,7 +83,9 @@ Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejący
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 
-## <a name="migration-of-single-databases-with-geo-replication-links"></a>Migracja pojedynczej bazy danych za pomocą łącza replikacji geograficznej
+## <a name="migration-from-dtu-model-to-vcore-model"></a>Migracja z modelu jednostek DTU do modelu rdzenia wirtualnego
+
+### <a name="migration-of-single-databases-with-geo-replication-links"></a>Migracja pojedynczej bazy danych za pomocą łącza replikacji geograficznej
 
 Migrowanie do modelu opartego na jednostkach DTU do modelu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję relacje replikacji geograficznej między bazami danych w warstwach standardowa i Premium. Nie jest wymagane, czy zakończenie replikacji geograficznej, ale użytkownik musi być zgodna z zasadami sekwencjonowania. Podczas uaktualniania, należy najpierw uaktualnić pomocnicze bazy danych, a następnie Uaktualnij podstawowy. Przed obniżeniem, odwrócić kolejność: należy najpierw obniżyć podstawowej bazy danych, a następnie obniżenia poziomu pomocniczej. 
 
@@ -94,15 +107,15 @@ W poniższej tabeli przedstawiono wskazówki dotyczące scenariuszy migracji:
 
 \* Każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 jednostek DTU w warstwie Premium co najmniej 1 rdzeń wirtualny
 
-## <a name="migration-of-failover-groups"></a>Migracja grupy trybu failover 
+### <a name="migration-of-failover-groups"></a>Migracja grupy trybu failover 
 
 Migracja grup trybu failover z wieloma bazami danych wymaga migracji poszczególnych baz danych podstawowych i pomocniczych. Podczas tego procesu rozważenia tych samych czynników i sekwencjonowania zasady są stosowane. Po przekonwertowaniu baz danych do modelu opartego na rdzeniach wirtualnych, grupy trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad. 
 
-## <a name="creation-of-a-geo-replication-secondary"></a>Tworzenie pomocniczej replikacji geograficznej
+### <a name="creation-of-a-geo-replication-secondary"></a>Tworzenie pomocniczej replikacji geograficznej
 
 Można utworzyć tylko przy użyciu tej samej warstwy usługi jako podstawowy pomocniczej geograficznej. Baza danych o szybkości generowania rekordów dziennika wysoka zalecane jest, czy pomocniczy został utworzony na tym samym poziomie wydajności jako podstawowy. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla pojedynczej podstawowej bazy danych, zaleca się że pula ma `maxVCore` ustawienia jest zgodny z poziomem wydajności podstawowej bazy danych. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla podstawowego w innej puli elastycznej, zalecane pule mają taką samą `maxVCore` ustawienia
 
-## <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Przy użyciu kopii bazy danych do przekonwertowania bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych.
+### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Przy użyciu kopii bazy danych do przekonwertowania bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych.
 
 Można skopiować dowolną bazę danych z poziomem wydajności oparty na jednostkach DTU do bazy danych o wydajności oparty na rdzeniach wirtualnych poziomu bez ograniczeń lub specjalne, sekwencjonowanie tak długo, jak poziom wydajności miejsca docelowego obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Jest to spowodowane kopii bazy danych tworzy migawkę danych od godziny rozpoczęcia operacji kopiowania i nie wykonuje synchronizację danych między źródłowym a docelowym. 
 

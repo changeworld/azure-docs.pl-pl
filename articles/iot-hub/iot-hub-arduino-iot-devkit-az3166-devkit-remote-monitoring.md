@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 806ae38f614c44ce25b8fcc159b74f1bda3f00f3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343121"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059711"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT Mxchip do zdalnego monitorowania usługi Azure IoT akceleratora rozwiązań
 
@@ -120,7 +120,7 @@ Po uruchomieniu aplikacji przykładowej, Mxchip wysyła dane czujników za pośr
 
 ## <a name="change-device-id"></a>Zmiana Identyfikatora urządzenia
 
-Identyfikator urządzenia w usłudze IoT Hub można zmienić, wykonując poniższe [Przewodnik dostosowywania identyfikator urządzenia](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/). Jeśli chcesz zmienić zapisane na stałe **az3166 usługi** ID urządzenia niestandardowe w kodzie, należy zmodyfikować wiersz oi kod wyświetlany [zdalnego monitorowania przykład](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
+Jeśli chcesz zmienić zapisane na stałe **az3166 usługi** ID urządzenia niestandardowe w kodzie, należy zmodyfikować wiersza kod wyświetlany w [zdalnego monitorowania przykład](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
@@ -136,3 +136,5 @@ Teraz, gdy wiesz jak połączyć urządzenie Mxchip Twój akcelerator rozwiąza�
 * [Omówienie akceleratorów rozwiązań w usłudze Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
 
 * [Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+
+* [Zestaw dla deweloperów IoT](https://microsoft.github.io/azure-iot-developer-kit/) 

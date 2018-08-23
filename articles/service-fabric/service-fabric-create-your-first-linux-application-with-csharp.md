@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7427af3e814752801c4738675f7cd2263843f9b8
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020549"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617090"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Tworzenie pierwszej aplikacji usługi Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -41,27 +41,19 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
 
 1. Zainstaluj środowisko NodeJs i menedżera NPM na swojej maszynie
 
-   Ubuntu
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-   sudo apt-get install -y nodejs 
+   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
+   nvm install node 
    ```
-
-   Red Hat Enterprise Linux 7.4 (obsługa wersji zapoznawczej usługi Service Fabric)
-   ```bash
-   sudo yum install nodejs
-   sudo yum install npm
-   ```
-
 2. Zainstaluj generator szablonów [narzędzia Yeoman](http://yeoman.io/) na swoim komputerze z poziomu narzędzia NPM
 
   ```bash
-  sudo npm install -g yo
+  npm install -g yo
   ```
 3. Zainstaluj generator aplikacji C# Yeoman usługi Service Fabric z poziomu menedżera NPM
 
   ```bash
-  sudo npm install -g generator-azuresfcsharp
+  npm install -g generator-azuresfcsharp
   ```
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
@@ -109,7 +101,7 @@ Parametry tych poleceń można znaleźć w manifestach wygenerowanych w pakiecie
 Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pod adresem [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 > [!IMPORTANT]
-> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby zweryfikować Twojej aplikacji ze środowiskiem uruchomieniowym usługi sieć szkieletowa usług. Umożliwi to usługi niezawodne usługi, aby komunikować się z podstawowego środowiska uruchomieniowego platformy Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację niezawodne usługi, do uruchamiania na systemie Linux klastrów](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Aby wdrożyć aplikację do zabezpieczonego klastra systemu Linux na platformie Azure, musisz skonfigurować certyfikat na potrzeby weryfikacji aplikacji w środowisku uruchomieniowym usługi Service Fabric. Umożliwi to usług Reliable Services do komunikowania się z podstawowego środowiska uruchomieniowego usługi Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Uruchamianie klienta testowego i przechodzenie w tryb failover
@@ -117,7 +109,7 @@ Projekty aktora nie działają samodzielnie. Wymagają one wysyłania im komunik
 
 1. Uruchom skrypt za pomocą narzędzia kontrolnego, aby wyświetlić dane wyjściowe usługi aktora.
 
-   W przypadku systemu MAC OS X należy skopiować myactorsvcTestClient folder do określonej lokalizacji w kontenerze, uruchamiając następujące polecenia dodatkowe.
+   W przypadku systemu MAC OS X należy skopiować myactorsvcTestClient folder w jakimś miejscu wewnątrz kontenera, uruchamiając następujące polecenia dodatkowe.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

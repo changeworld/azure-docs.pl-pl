@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 07f739243b80230fbf4914535ea65183c3590937
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020445"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617421"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Tworzenie pierwszej aplikacji Java z interfejsem Reliable Actors usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Zainstaluj także [interfejs wiersza polecenia usługi Service Fabric](service-f
 Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletu, które ułatwiają tworzenie aplikacji Java usługi Service Fabric z poziomu terminalu przy użyciu generatora szablonów Yeoman.  Jeśli narzędzie Yeoman nie jest jeszcze zainstalowane, zobacz [Service Fabric getting started with Linux](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables) (Pierwsze kroki z usługą Service Fabric w systemie Linux), aby uzyskać instrukcje konfigurowania narzędzia Yeoman. Uruchom następujące polecenie, aby zainstalować generator szablonów narzędzia Yeoman usługi Service Fabric dla języka Java.
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
@@ -220,18 +220,18 @@ Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service
 Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 > [!IMPORTANT]
-> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby zweryfikować Twojej aplikacji ze środowiskiem uruchomieniowym usługi sieć szkieletowa usług. Umożliwi to usługi Reliable Actors, aby komunikować się z podstawowego środowiska uruchomieniowego platformy Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację niezawodne usługi, do uruchamiania na systemie Linux klastrów](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Aby wdrożyć aplikację do zabezpieczonego klastra systemu Linux na platformie Azure, musisz skonfigurować certyfikat na potrzeby weryfikacji aplikacji w środowisku uruchomieniowym usługi Service Fabric. Umożliwi to usługi Reliable Actors do komunikowania się z podstawowego środowiska uruchomieniowego usługi Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Uruchamianie klienta testowego i przechodzenie w tryb failover
 Aktorzy nie pełnią samodzielnie żadnej funkcji. Wymagają wysyłania do nich komunikatów przez inną usługę lub innego klienta. Szablon aktora zawiera prosty skrypt testowy, którego można użyć do interakcji z usługą aktora.
 
 > [!Note]
-> Klient testowy używa klasy ActorProxy do komunikowania się z podmiotów, które muszą uruchamiane w ramach tego samego klastra jako usługa aktora lub udział z tą samą przestrzenią adresów IP.  Na tym samym komputerze co klaster lokalny rozwój można uruchomić klienta testowego.  Jednak komunikację z uczestników klastra zdalnego, należy wdrożyć bramę w klastrze, która obsługuje zewnętrzne komunikacji z podmiotami.
+> Klient testowy korzysta klasa ActorProxy do komunikacji z podmiotów, które należy uruchomić w tym samym klastrze, aby usługa aktora lub udostępnianie tą samą przestrzenią adresów IP.  Możesz uruchomić klienta testowego na komputerze lokalnym klastrze projektowym.  Jednak do komunikacji z aktorów w klastrze zdalnym, należy wdrożyć bramy w klastrze, który obsługuje zewnętrzne komunikację z uczestnikami.
 
 1. Uruchom skrypt za pomocą narzędzia kontrolnego, aby wyświetlić dane wyjściowe usługi aktora.  Skrypt testowy wywołuje metodę `setCountAsync()` dla aktora w celu zwiększenia wartości licznika, wywołuje metodę `getCountAsync()` dla aktora w celu pobrania nowej wartości licznika i wyświetla tę wartość w konsoli.
 
-   W przypadku systemu MAC OS X należy skopiować HelloWorldTestClient folder do określonej lokalizacji w kontenerze, uruchamiając następujące polecenia dodatkowe.    
+   W przypadku systemu MAC OS X należy skopiować HelloWorldTestClient folder w jakimś miejscu wewnątrz kontenera, uruchamiając następujące polecenia dodatkowe.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home

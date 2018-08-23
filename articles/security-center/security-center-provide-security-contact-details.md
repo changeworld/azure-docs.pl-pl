@@ -1,6 +1,6 @@
 ---
-title: Podaj szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Ten dokument przedstawia sposób podać szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure.
+title: Podawanie szczegółów dotyczących kontaktu zabezpieczeń w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: W tym dokumencie pokazano, jak Podaj dane kontaktowe osoby w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,49 +12,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 726b59c45e2eb18eebe28a180db23336ae141408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c268538cf401b29f68210c6d017c2eac55e88939
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866527"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056217"
 ---
-# <a name="provide-security-contact-details-in-azure-security-center"></a>Podaj szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure
-Centrum zabezpieczeń Azure zaleca Podaj szczegóły dotyczące kontaktu zabezpieczeń dla subskrypcji platformy Azure, jeśli nie jest jeszcze. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. MSRC wykonuje monitorowanie zabezpieczeń wybierz sieć platformy Azure i infrastruktury i odbiera zagrożeń analizy i nadużycia utrudnień od osób trzecich.
+# <a name="provide-security-contact-details-in-azure-security-center"></a>Podawanie szczegółów dotyczących kontaktu zabezpieczeń w usłudze Azure Security Center
+Usługa Azure Security Center zaleci, podaj szczegóły dotyczące kontaktu zabezpieczeń dla subskrypcji platformy Azure, jeśli jeszcze nie. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. MSRC wykonuje monitorowania zabezpieczeń wybierz sieć platformy Azure i infrastrukturą i odbiera skarg analizy i nadużyć zagrożenia pochodzące od innych firm.
 
-Wiadomość e-mail z powiadomieniem jest wysyłany na pierwsze wystąpienie codzienne alertu oraz tylko alerty o wysokim znaczeniu. Preferencje poczty e-mail można konfigurować tylko dla zasad subskrypcji. Grupy zasobów w ramach subskrypcji odziedziczy te ustawienia.
+Wiadomość e-mail z powiadomieniem są wysyłane na pierwsze wystąpienie codzienne alertu i tylko w przypadku alertów o wysokiej ważności. Preferencje poczty e-mail można konfigurować tylko dla zasad subskrypcji. Grupy zasobów w ramach subskrypcji będą dziedziczyć te ustawienia.
 
 > [!NOTE]
 > Informacje na temat usługi przedstawiono w tym dokumencie za pomocą przykładowego wdrożenia.  Nie jest to przewodnik krok po kroku.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Wykonania zalecenia
-1. W obszarze **zalecenia**, wybierz pozycję **podać szczegóły dotyczące kontaktu zabezpieczeń**.
+## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
+1. W obszarze **zalecenia**, wybierz opcję **podawanie szczegółów dotyczących kontaktu zabezpieczeń**.
    ![Podaj kontaktu zabezpieczeń][1]
-2. Wybierz subskrypcję platformy Azure, aby udostępnić informacje kontaktowe na.
-3. Spowoduje to otwarcie **zasady zabezpieczeń — powiadomienia E-mail**.
+2. Wybierz subskrypcję platformy Azure, aby podać informacje kontaktowe na.
+3. Spowoduje to otwarcie **wiadomości E-mail z powiadomieniami**.
 
    ![Podawanie szczegółów dotyczących kontaktu ds. zabezpieczeń][2]
 
-   * Wprowadź adres e-mail kontaktu zabezpieczeń lub adresów rozdzielonych przecinkami. Nie jest ograniczona liczba adresów e-mail, które można wprowadzić.
-   * Wprowadź jeden zabezpieczeń kontaktu międzynarodowy numer telefonu.
-   * Aby otrzymywać wiadomości e-mail o alertach o wysokim znaczeniu, włącz opcję **Wyślij do mnie wiadomość e-mail o alertach**.
-   * W przyszłości konieczne będzie opcja do wysyłania powiadomień e-mail do właścicieli subskrypcji. Ta opcja jest obecnie wygaszone.
-   * Wybierz **zapisać** do zastosowania zabezpieczeń informacji kontaktowych do subskrypcji.
+   * Wprowadź adres kontaktowy adres e-mail zabezpieczeń lub adresów rozdzielonych przecinkami. Nie jest ograniczona liczba adresów e-mail, które można wprowadzić.
+   * Wprowadź jeden zabezpieczeń międzynarodowy numer telefonu kontaktu.
+   * Aby otrzymywać wiadomości e-mail o alertach o wysokiej ważności, włącz opcję **Wyślij do mnie wiadomości e-mail o alertach**.
+   * W przyszłości będzie mieć możliwość wysyłania powiadomień e-mail do właścicieli subskrypcji. Ta opcja jest obecnie wyszarzone.
+   * Wybierz **Zapisz** dotyczą informacje kontaktowe zabezpieczeń subskrypcji.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Uzyskaj najnowsze informacje zabezpieczeń platformy Azure i informacje.
+* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Uzyskaj najnowsze informacje o zabezpieczeniach platformy Azure i informacji.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

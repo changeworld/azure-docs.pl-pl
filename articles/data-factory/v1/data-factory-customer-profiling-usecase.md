@@ -1,6 +1,6 @@
 ---
 title: Przypadek użycia — profilowanie klientów
-description: Dowiedz się, jak fabryki danych Azure służy do tworzenia opartych na danych przepływu pracy (potoku) do profilu gier klientów.
+description: Dowiedz się, jak usługi Azure Data Factory służy do tworzenia opartych na danych przepływu pracy (potok) do profilowania klientów gier.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,58 +14,58 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: cc9dad4584c8edc47181e4a73ffe11a2e08de2f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b60e4f3547e049dc35c08ce115bdfcbbf6ebb18a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620816"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056508"
 ---
 # <a name="use-case---customer-profiling"></a>Przypadek użycia — profilowanie klientów
-Fabryka danych Azure to jedna z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence Suite akceleratorów rozwiązania.  Aby uzyskać więcej informacji na temat Cortana Intelligence, odwiedź stronę [pakietu Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). W tym dokumencie opisano przypadek użycia prostego, aby pomóc Ci rozpocząć zrozumienie, jak fabryki danych Azure można rozwiązywania typowych problemów analytics.
+Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Aby uzyskać więcej informacji na temat pakietu Cortana Intelligence, odwiedź stronę [pakietu Cortana Intelligence](http://www.microsoft.com/cortanaanalytics). W tym dokumencie opisano prosty przypadek użycia, aby pomóc Ci rozpocząć pracę z zrozumienie, jak usługi Azure Data Factory można rozwiązywania typowych problemów analitycznych.
 
 ## <a name="scenario"></a>Scenariusz
-Contoso to firma gier, która tworzy gry dla wielu platform: gier konsole, ręcznie posiadanych urządzeń i komputerów osobistych (komputery). Jak gry te odtwarzacze, duża ilość danych dziennika jest tworzony śledzący wzorce użycia, gier, styl i preferencje użytkownika.  W połączeniu z demograficznych, regionalnych i danych produktu Contoso można wykonywać analizy prowadzące ich temat udoskonalenie graczy docelowe ich do uaktualnienia i w grze zakupów. 
+Contoso to firma gier, który tworzy gry dla wielu platform: gier, konsole, dłoni skierowanej do urządzenia i komputery osobiste (komputery). Ponieważ gracze tych gier, dużej ilości danych dziennika jest generowany, umożliwiający śledzenie wzorców użycia, styl gier i preferencji użytkownika.  W połączeniu z demograficznych, regionalne i dane produktów Contoso można wykonać analizy, które przeprowadzą ich o tym, jak można poprawić funkcjonalność z perspektywy graczy zakupów docelowej je w ramach uaktualnień i gry. 
 
-Celem firmy Contoso jest określenie możliwości up sprzedaje/sprzedaży w oparciu o historię gier jego odtwarzaczy i dodawania atrakcyjnych funkcji do rozwoju firmy dysku i skuteczniejsze do klientów. Dla tego przypadku użycia używamy firmy gier na przykład firma. Firma chce, aby zoptymalizować jego gry, w oparciu o zachowanie graczy. Te zasady mają zastosowanie do dowolnego rodzaju działalności, które chce zaangażowania klientów wokół jego towarów i usług oraz ulepszanie środowiska swoich klientów.
+Celem firmy Contoso polega na określeniu możliwości up sprzedaży/sprzedaży na podstawie historii gier swoich graczy i Dodaj ciekawe funkcje do przyspieszania rozwoju ich firm i zapewnić lepsze doświadczenia klientom. Dla ten przypadek użycia używany na przykład firma tworząca gry. Firma chce zoptymalizować jej gier na podstawie zachowania graczy. Te zasady mają zastosowanie w przypadku każdej firmy, który chce angażować swoich klientów na całym jego towarów i usług oraz ulepszanie środowiska swoim klientom.
 
-W tym rozwiązaniu firma Contoso chce ocenić skuteczność marketing kampanii, która została ostatnio uruchomiona. Możemy zaczynać dzienniki raw gier, przetworzyć i wzbogacić je z danymi używanie funkcji geolokalizacji przyłączyć go z danych referencyjnych reklamy i koniec skopiuj je do bazy danych SQL Azure do analizy wpływu kampanii.
+W tym rozwiązaniu firma Contoso chce ocena skuteczności kampanii marketingowej, który niedawno został uruchomiony. Firma Microsoft zaczynać od dzienników gier raw, przetwarzania i wzbogacanie je za pomocą dane geolokalizacji, przyłączyć ją z danymi referencyjnymi reklamowych i wreszcie skopiuj je do usługi Azure SQL Database do analizy wpływu kampanii.
 
 ## <a name="deploy-solution"></a>Wdrażanie rozwiązania
-Dostęp i wypróbować ten przypadek użycia prostego wystarczy [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/), [konta magazynu obiektów Blob Azure](../../storage/common/storage-create-storage-account.md#create-a-storage-account)i [bazy danych SQL Azure](../../sql-database/sql-database-get-started.md). Wdrażanie klienta profilowania potoku z **przykładowe potoki** kafelka na stronie głównej w fabryce danych.
+Wszystko, czego potrzebujesz, aby otworzyć i wypróbować ten prosty przypadek użycia jest [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/), [konta usługi Azure Blob storage](../../storage/common/storage-quickstart-create-account.md)i [usługi Azure SQL Database](../../sql-database/sql-database-get-started.md). Wdrażanie profilowanie potoku z poziomu klientów **przykładowe potoki** kafelków na stronie głównej fabryki danych.
 
-1. Tworzenie fabryki danych lub Otwórz istniejącą fabrykę danych. Zobacz [skopiowanie danych z magazynu obiektów Blob do bazy danych SQL przy użyciu fabryki danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) czynności można utworzyć fabryki danych.
-2. W **FABRYKI danych** bloku dla fabryki danych, kliknij przycisk **przykładowe potoki** kafelka.
+1. Utwórz fabrykę danych lub Otwórz istniejącą fabrykę danych. Zobacz [kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kroki utworzyć fabrykę danych.
+2. W **usługi DATA FACTORY** bloku fabryka danych kliknij **przykładowe potoki** kafelka.
 
     ![Przykładowe potoki kafelka](./media/data-factory-samples/SamplePipelinesTile.png)
-3. W **przykładowe potoki** bloku, kliknij przycisk **klienta profilowania** , który chcesz wdrożyć.
+3. W **przykładowe potoki** bloku kliknij **profilowanie klientów** , którą chcesz wdrożyć.
 
-    ![Przykład potoki bloku](./media/data-factory-samples/SampleTile.png)
-4. Określ ustawienia konfiguracji przykładowej. Na przykład z nazwy konta magazynu Azure i klucza, nazwy serwera Azure SQL bazy danych, identyfikator użytkownika i hasło.
+    ![Przykładowe potoki bloku](./media/data-factory-samples/SampleTile.png)
+4. Określ ustawienia konfiguracji dla przykładu. Na przykład Twoja nazwa konta usługi Azure storage i klucz, nazwy serwera Azure SQL, bazy danych, identyfikator użytkownika i hasło.
 
-    ![Przykładowe bloku](./media/data-factory-samples/SampleBlade.png)
-5. Po wykonaniu Określanie ustawień konfiguracji, kliknij przycisk **Utwórz** Utwórz/wdrażania potoki próbki i usług/tabel połączonych używane przez potoków.
-6. Wyświetlany jest stan wdrożenia na kafelku próbki kliknięto wcześniej na **przykładowe potoki** bloku.
+    ![Przykładowy blok](./media/data-factory-samples/SampleBlade.png)
+5. Po wykonaniu Określanie ustawień konfiguracji, kliknij przycisk **Utwórz** do tworzenia/wdrożyć przykładowe potoki i usług/tabel połączonych posługują się potoków.
+6. Zostanie wyświetlony stan wdrożenia na kafelku przykładowe wcześniej kliknięta **przykładowe potoki** bloku.
 
     ![Stan wdrożenia](./media/data-factory-samples/DeploymentStatus.png)
-7. Po wyświetleniu **wdrożenie zakończyło się pomyślnie** wiadomości na kafelku, próbki, Zamknij **przykładowe potoki** bloku.  
-8. Na **FABRYKI danych** bloku, zostanie wyświetlony połączone usługi, zestawy danych i potoki są dodawane z fabryką danych.  
+7. Po wyświetleniu **wdrażanie zakończyło się pomyślnie** wiadomości na kafelku dla przykładu, Zamknij **przykładowe potoki** bloku.  
+8. Na **usługi DATA FACTORY** wyświetlony blok usługi połączone, zestawy danych i potoki są dodawane do usługi data factory.  
 
     ![Blok Fabryka danych](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="solution-overview"></a>Przegląd rozwiązania
-Ten przypadek użycia prostego może służyć jako przykład sposobu użycia usługi fabryka danych Azure w celu pozyskiwania, przygotowywanie, przekształcanie, analizowanie i publikować dane.
+Ten prosty przypadek użycia może służyć jako przykładu sposobu użycia usługi Azure Data Factory w celu pozyskiwania, przygotowywania, przekształcania, analizowanie i publikować dane.
 
 ![Kompletny przepływ pracy](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
 
-Ilustracja przedstawia, jak potoki danych są wyświetlane w portalu Azure po ich wdrożeniu.
+Na poniższej ilustracji przedstawiono sposób potoków danych pojawiają się w witrynie Azure portal po ich wdrożeniu.
 
-1. **PartitionGameLogsPipeline** odczytuje raw gier zdarzenia z magazynu obiektów blob i tworzy partycje oparte na rok, miesiąc i dzień.
-2. **EnrichGameLogsPipeline** przyłączy partycjonowanej gier zdarzenia z danych referencyjnych kod: replikacji geograficznej — warstwa i poszerza dane mapowania adresów IP do odpowiedniej lokalizacji geo.
-3. **AnalyzeMarketingCampaignPipeline** potoku wykorzystuje wzbogaconego danych i przetwarza je z danymi reklamy przez sieć do utworzenia ostateczne dane wyjściowe, który zawiera skuteczności kampanii marketingowych.
+1. **PartitionGameLogsPipeline** odczytuje nieprzetworzonych zdarzeń w grach z magazynu obiektów blob i tworzy partycje oparte na rok, miesiąc i dzień.
+2. **EnrichGameLogsPipeline** sprzężenia partycjonowane zdarzeń w grach z danymi referencyjnymi kodu geograficznej i uzupełnia danych przez mapowanie adresów IP do odpowiedniej lokalizacji geograficznej.
+3. **AnalyzeMarketingCampaignPipeline** potoku korzysta z danych wzbogaconego i przetwarza je za pomocą danych reklam, aby utworzyć końcowych danych wyjściowych, który zawiera skuteczności kampanii marketingowych.
 
-W tym przykładzie fabryki danych jest używany do organizowania działań, które kopiowania danych wejściowych, przekształcanie i przetwarzania danych, a dane wyjściowe ostateczne dane do bazy danych SQL Azure.  Można również wizualizacji sieci danych, potoki, zarządzać nimi i monitorowanie ich stan w interfejsie użytkownika.
+W tym przykładzie usługi Data Factory służy do organizowania działań, które będzie kopiować dane wejściowe, przekształcanie i przetwarzanie tych danych, a końcowe dane wyjściowe do usługi Azure SQL Database.  Można również wizualizować sieć potoków danych, zarządzanie nimi i monitorowanie ich stan w interfejsie użytkownika.
 
 ## <a name="benefits"></a>Korzyści
-Optymalizacja ich analytics profilu użytkownika i dostosowanie jej cele biznesowe, gier firmy jest szybko wzorców użycia zbieranie i analizowanie skuteczności jego kampanii marketingowych.
+Optymalizacji ich analizy profilu użytkownika i dostosowanie jej cele biznesowe, gry firmy jest w stanie szybko zbierać wzorców użycia i analizować efektywność swoich kampanii marketingowych.
 

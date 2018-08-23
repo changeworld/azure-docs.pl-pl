@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159845"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060942"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -218,7 +218,7 @@ Obejście tego problemu dla tego błędu jest posiadanie oddzielnego konta dla a
 
 Jeśli Twoje pytanie nie ma tutaj odpowiedzi, pozostaw je w komentarzach u dołu strony. Lub, w tym miejscu są pewne dodatkowe opcje w celu uzyskania pomocy:
 
-* Wyszukiwanie [baza wiedzy pomocy technicznej firmy Microsoft](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) dla rozwiązania typowych problemów technicznych.
+* Wyszukiwanie [baza wiedzy pomocy technicznej firmy Microsoft](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) dla rozwiązania typowych problemów technicznych.
 * Wyszukiwanie i Przeglądaj techniczne pytań i odpowiedzi od społeczności lub Zadaj pytanie w [Forum usługi Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Jeśli jesteś klientem PhoneFactor starszej wersji, a masz pytania lub potrzebujesz pomocy dotyczącej resetowania hasła, użyj [resetowania hasła](mailto:phonefactorsupport@microsoft.com) link, aby otworzyć zgłoszenie do pomocy technicznej.
 * Skontaktuj się z pracownikiem pomocy technicznej za pośrednictwem [pomocy technicznej usługi Azure Multi-Factor Authentication serwer (PhoneFactor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Podczas nawiązywania kontaktu z nami, jest przydatne, Jeśli dołączysz jak najwięcej informacji o problemie, jak to możliwe. Możesz podać informacje dotyczące strony, w którym wystąpił błąd, kod błędu, identyfikator określonej sesji i identyfikator użytkownika, który wystąpił błąd.

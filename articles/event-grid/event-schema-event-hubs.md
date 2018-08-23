@@ -1,31 +1,32 @@
 ---
-title: Azure schematu zdarzeń centra zdarzeń siatki zdarzeń
-description: Opisuje właściwości, które są dostępne dla zdarzeń centra zdarzeń Azure zdarzeń siatki
+title: Azure schematu zdarzeń centra zdarzeń usługi Event Grid
+description: Opisuje właściwości, które są dostarczane dla centrów zdarzeń za pomocą usługi Azure Event Grid
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6fac70a8837245e6d60a5a61db8a22ab718d4b49
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34302665"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055209"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure schematu zdarzeń siatki zdarzeń usługi event hubs
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schemat zdarzeń Azure Event Grid dla usługi event hubs
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń centrów zdarzeń. Aby obejrzeć wprowadzenie do schematów zdarzeń, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla centrów zdarzeń. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
-### <a name="available-event-types"></a>Typy dostępnych zdarzeń
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi Event Hubs](event-sources.md#event-hubs).
 
-Centra zdarzeń emituje **Microsoft.EventHub.CaptureFileCreated** typ zdarzenia podczas tworzenia pliku przechwytywania.
+### <a name="available-event-types"></a>Zdarzenie dostępne typy
 
-## <a name="example-event"></a>Przykład zdarzeń
+Usługa Event Hubs emituje **Microsoft.EventHub.CaptureFileCreated** typ zdarzenia, gdy tworzony jest plik przechwytywania.
 
-To zdarzenie próbkowania zawiera schemat centra zdarzeń zdarzenia wywoływane, gdy funkcja przechwytywania są przechowywane w pliku: 
+## <a name="example-event"></a>Przykład zdarzenia
+
+To zdarzenie próbki przedstawia schematu event hubs Zdarzenie wywoływane, gdy funkcja przechwytywania są przechowywane w pliku: 
 
 ```json
 [
@@ -54,35 +55,35 @@ To zdarzenie próbkowania zawiera schemat centra zdarzeń zdarzenia wywoływane,
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie ma następujące dane najwyższego poziomu:
+Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalny. Zdarzenie siatki udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana wydawcy podmiotem zdarzeń. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzenia. |
-| eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
+| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia Centrum zdarzeń. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | fileUrl | ciąg | Ścieżka do pliku przechwytywania. |
-| Typ pliku | ciąg | Typ pliku przechwytywania. |
-| partitionId | ciąg | Identyfikator niezależnego fragmentu. |
+| Typ pliku | ciąg | Typ pliku pliku przechwytywania. |
+| Identyfikator partycji | ciąg | Identyfikator fragmentu. |
 | sizeInBytes | liczba całkowita | Rozmiar pliku. |
 | eventCount | liczba całkowita | Liczba zdarzeń w pliku. |
 | firstSequenceNumber | liczba całkowita | Najmniejsza liczba sekwencji z kolejki. |
 | lastSequenceNumber | liczba całkowita | Ostatni numer sekwencji z kolejki. |
-| firstEnqueueTime | ciąg | Przy pierwszym z kolejki. |
+| firstEnqueueTime | ciąg | Po raz pierwszy z kolejki. |
 | lastEnqueueTime | ciąg | Czas ostatniego z kolejki. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do usługi Azure Event siatki, zobacz [co to jest zdarzenie siatki?](overview.md)
-* Aby uzyskać więcej informacji o tworzeniu subskrypcji platformy Azure zdarzeń siatki, zobacz [schematu subskrypcji zdarzeń siatki](subscription-creation-schema.md).
-* Aby uzyskać informacje na temat obsługi zdarzeń centra zdarzeń, zobacz [strumienia danych big data do magazynu danych](event-grid-event-hubs-integration.md).
+* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+* Aby uzyskać informacje na temat obsługi centrów zdarzeń, zobacz [Stream danych big data do magazynu danych](event-grid-event-hubs-integration.md).

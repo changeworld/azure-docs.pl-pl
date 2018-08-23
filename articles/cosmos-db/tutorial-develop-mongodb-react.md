@@ -2,7 +2,7 @@
 title: Samouczek dotyczący bazy danych MongoDB, platformy React i języka Node.js na platformie Azure | Microsoft Docs
 description: Dowiedz się, jak utworzyć aplikację bazy danych MongoDB na platformie React i Node.js w usłudze Azure Cosmos DB przy użyciu tych samych interfejsów API, co używane w usłudze MongoDB, oglądając tę serię samouczków opartą na filmach wideo.
 services: cosmos-db
-author: SnehaGunda
+author: johnpapa
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: sngun
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: cfd6138d02038d812b3857202ef8d8232e861a72
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: eac537c5b068b795fee7fb845eb7a98fb11316d3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763497"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41919581"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu platformy React i usługi Azure Cosmos DB  
 

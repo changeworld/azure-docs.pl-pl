@@ -1,6 +1,6 @@
 ---
-title: Publikowanie aplikacji sieci Web do maszyny Wirtualnej platformy Azure w programie Visual Studio
-description: Publikowanie aplikacji sieci Web ASP.NET do maszyny wirtualnej platformy Azure w programie Visual Studio
+title: Publikowanie aplikacji sieci Web na maszynie Wirtualnej platformy Azure z programu Visual Studio
+description: Publikowanie aplikacji sieci Web platformy ASP.NET na maszynie wirtualnej platformy Azure z programu Visual Studio
 services: virtual-machines-windows
 author: ghogen
 manager: douge
@@ -8,60 +8,61 @@ tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: aspnet
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d9e2c1a941c25aedd9048f2784350106b8739dba
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 561de3ac9073fe5cfdfadf2dc61d3f7807bf9e46
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "31797198"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060315"
 ---
-# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikowanie aplikacji sieci Web platformy ASP.NET dla maszyny Wirtualnej platformy Azure w programie Visual Studio
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikowanie aplikacji sieci Web platformy ASP.NET na maszynie Wirtualnej platformy Azure z programu Visual Studio
 
-W tym dokumencie opisano sposób publikowania aplikacji sieci web ASP.NET przy użyciu maszyny wirtualnej platformy Azure (VM) **maszyny wirtualne Microsoft Azure** funkcja publikowania w programie Visual Studio 2017 r.  
+W tym dokumencie opisano sposób publikowania aplikacji sieci web ASP.NET przy użyciu maszyn wirtualnych (VM) **Microsoft Azure Virtual Machines** funkcja publikowania w programie Visual Studio 2017.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby można było używać programu Visual Studio do publikowania projektu programu ASP.NET w maszynie Wirtualnej platformy Azure, maszyny Wirtualnej musi być prawidłowo ustawiony.
+Aby można było używać programu Visual Studio do publikowania projektu programu ASP.NET na Maszynie wirtualnej platformy Azure, maszyna wirtualna musi być skonfigurowany prawidłowo.
 
-- Komputer musi być skonfigurowany do uruchamiania aplikacji sieci web ASP.NET i ma zainstalowany pakiet WebDeploy.
+- Maszyna musi być skonfigurowany w celu uruchomienia aplikacji sieci web ASP.NET i WebDeploy zainstalowane.
 
-- Maszyna wirtualna musi mieć skonfigurowaną nazwę DNS. Aby uzyskać więcej informacji, zobacz [utworzenia w pełni kwalifikowaną nazwą domeny w portalu Azure dla maszyny Wirtualnej systemu Windows](portal-create-fqdn.md).
+- Maszyna wirtualna musi mieć nazwę DNS skonfigurowane. Aby uzyskać więcej informacji, zobacz [tworzenie w pełni kwalifikowanej nazwy domeny w witrynie Azure portal dla maszyny Wirtualnej z systemem Windows](portal-create-fqdn.md).
 
-## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikowanie aplikacji sieci web ASP.NET do maszyny Wirtualnej platformy Azure przy użyciu programu Visual Studio
-W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci web platformy ASP.NET do maszyny wirtualnej platformy Azure.
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikowanie aplikacji sieci web platformy ASP.NET do maszyny Wirtualnej platformy Azure przy użyciu programu Visual Studio
+W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci web platformy ASP.NET na maszynie wirtualnej platformy Azure.
 
-1. Otwórz rozwiązanie aplikacji sieci web w programie Visual Studio 2017 r.
+1. Otwórz swoje rozwiązanie aplikacji sieci web w programie Visual Studio 2017.
 2. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz polecenie **publikowania...**
-3. Użyj strzałki po prawej stronie, aby przewijać opcje publikowania do momentu znalezienia **maszyny wirtualne Microsoft Azure**.  
+3. Użyj strzałki w prawym rogu strony, aby przewijać opcje publikowania, dopóki nie znajdziesz **Microsoft Azure Virtual Machines**.  
 
-   ![Publikowanie strony - strzałki w prawo]
+   ![Publikowanie strony - strzałkę w prawo]
 
-4. Wybierz **maszyny wirtualne Microsoft Azure** ikony, jak i wybierz **publikowania**.
+4. Wybierz **Microsoft Azure Virtual Machines** ikonę i wybierz pozycję **Publikuj**.
 
-   ![Publikowanie strony — ikona maszyny wirtualnej platformy Microsoft Azure]
+   ![Publikowanie strony — ikona maszyny wirtualnej Microsoft Azure]
 
-5. Wybierz odpowiednie konto (z subskrypcją platformy Azure, połączony z maszyną wirtualną).  
-   - Jeśli użytkownik jest zarejestrowany programie Visual Studio, z listy kont jest wypełniana uwierzytelnionego konta.  
-   - Jeśli nie jest zalogowany lub nie ma konta należy, wybierz polecenie "Dodaj konto..." i postępuj zgodnie z monitami, aby się zalogować.  
-   ![Selektor konto platformy Azure]  
+5. Wybierz odpowiednie konto (w ramach subskrypcji platformy Azure, połączone z maszyną wirtualną).  
+   - Jeśli zalogowano się do programu Visual Studio, z listy kont zostanie wypełniona uwierzytelnionego konta.  
+   - Jeśli użytkownik nie zalogowany lub konto, należy nie ma na liście, wybierz pozycję "Dodaj konto..." i postępuj zgodnie z monitami, aby zalogować się.  
+   ![Selektor konta platformy Azure]  
 
 6. Wybierz odpowiednią maszynę Wirtualną z listy z istniejących maszyn wirtualnych.
 
    > [!Note]
    > Wypełnianie tej listy może zająć trochę czasu.
 
-   ![Selektor maszyna wirtualna platformy Azure]
+   ![Selektor maszyny Wirtualnej platformy Azure]
 
 7. Kliknij przycisk OK, aby rozpocząć publikowanie.
 
-8. Po wyświetleniu monitu o poświadczenia, podaj nazwę użytkownika i hasło konta użytkownika na docelowej maszynie Wirtualnej, która jest skonfigurowana z publikowaniem praw (zazwyczaj nazwa użytkownika i hasło używane podczas tworzenia maszyny Wirtualnej).  
+8. Po wyświetleniu monitu o poświadczenia, należy podać nazwę użytkownika i hasło konta użytkownika na docelowej maszynie Wirtualnej, który jest skonfigurowany z publikowaniem prawa (zazwyczaj nazwa użytkownika administratora i hasło użyte podczas tworzenia maszyny Wirtualnej).  
 
-   ![Pakiet WebDeploy logowania]
+   ![WebDeploy logowania]
 
-9. Zaakceptować certyfikat zabezpieczeń.
+9. Zaakceptuj ten certyfikat zabezpieczeń.
 
    ![Błąd certyfikatu]
 
@@ -69,63 +70,63 @@ W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci w
 
     ![Okno danych wyjściowych]
 
-11. Jeśli publikowanie zakończy się pomyślnie, przeglądarce uruchamia otworzyć adres URL witryny nowo opublikowana.
+11. Jeśli publikowanie zakończy się pomyślnie, otworzyć adres URL witryny nowo opublikowana spowoduje uruchomienie przeglądarki.
 
-**Powodzenie!**
+**SUKCES!**
 
-Teraz został pomyślnie opublikowany aplikacji sieci web do maszyny wirtualnej platformy Azure.
+Twoja aplikacja sieci web teraz został pomyślnie opublikowany na maszynie wirtualnej platformy Azure.
 
-## <a name="publish-page-options"></a>Strona opcji publikowania
+## <a name="publish-page-options"></a>Strona Opcje publikowania
 
-Po zakończeniu pracy Kreatora publikowania, strony publikowania jest otwarty w dokumencie z wybrany nowy profil publikowania.
+Po zakończeniu pracy Kreatora publikowania strony publikowania zostanie otwarty w dokumencie dobrze z wybrany nowy profil publikowania.
 
-### <a name="re-publish"></a>Ponownie opublikować
+### <a name="re-publish"></a>Ponowne publikowanie
 
-Aby opublikować aplikację sieci web aktualizacji, zaznacz **publikowania** przycisk na stronie publikowania.  
+Aby publikować aktualizacje do aplikacji sieci web, wybierz **Publikuj** przycisk na stronie publikowania.  
 - Jeśli zostanie wyświetlony monit, wprowadź nazwę użytkownika i hasło.  
 - Publikowanie rozpocznie się natychmiast.
 
-![Strona publikowania — przycisk Publikuj]
+![Strona publikowania — przycisk Opublikuj]
 
-### <a name="modify-publish-profile-settings"></a>Zmodyfikuj ustawienia profilu publikowania
+### <a name="modify-publish-profile-settings"></a>Modyfikowanie ustawień profilu publikowania
 
-Wyświetlanie i modyfikowanie ustawień profilu publikowania, wybierz **ustawień...** .  
+Aby wyświetlić i zmodyfikować ustawienia profilu publikowania, wybierz pozycję **ustawień...** .  
 
 ![Strona — przycisk Ustawienia publikowania]
 
-Twoje ustawienia powinny wyglądać mniej więcej tak:  
+Twoje ustawienia powinny wyglądać następująco:  
 
-![Publikowanie ustawienia — strona połączenia]
+![Ustawienia — strona połączenia publikowania]
 
 #### <a name="save-user-name-and-password"></a>Zapisz nazwę użytkownika i hasło
-- Aby uniknąć, podając informacje o uwierzytelnianiu za każdym razem, gdy opublikujesz, można go wypełnić **nazwy użytkownika** i **hasło** pola i wybierz pozycję **Zapisz hasło** pole.
-- Użyj **sprawdzania poprawności połączenia** przycisk, aby potwierdzić, że wprowadzono odpowiednie informacje.
+- Aby uniknąć, podając informacje o uwierzytelnianiu za każdym razem, gdy opublikujesz, które możesz wypełnić **nazwa_użytkownika** i **hasło** pola i wybierz pozycję **Zapisz hasło** pole.
+- Użyj **Waliduj połączenie** przycisk, aby upewnić się, że wprowadzono odpowiednie informacje.
 
-#### <a name="deploy-to-clean-web-server"></a>Wdróż do usunięcia serwera sieci web
+#### <a name="deploy-to-clean-web-server"></a>Wdrażanie do czyszczenia serwera sieci web
 
-- Jeśli chcesz upewnij się, że serwer sieci web ma poprawną kopię aplikacji sieci web po każdej przekazywania (i pozostanie żadne inne pliki wiszące z poprzedniego wdrożenia), można sprawdzić **Usuń dodatkowe pliki w miejscu docelowym** pole wyboru w **ustawienia** kartę.
+- Jeśli chcesz się upewnić, czy serwer sieci web jest czysta kopia aplikacji sieci web po każdym przekazywania (i żadne inne pliki nie są pozostawiane, zawiesza się z poprzedniego wdrożenia), możesz sprawdzić **Usuń dodatkowe pliki w lokalizacji docelowej** Zaznacz pole wyboru w **ustawienia** kartę.
 
-- Ostrzeżenie: Publikowanie za pomocą tego ustawienia usuwa wszystkie pliki, które istnieją na serwerze sieci web (katalogu wwwroot). Upewnij się, że znasz stan maszyny przed opublikowaniem włączeniu tej opcji. 
+- Ostrzeżenie: Publikowanie za pomocą tego ustawienia spowoduje usunięcie wszystkich plików, które istnieją na serwerze sieci web (katalogu wwwroot). Upewnij się, że znasz stan maszyny przed opublikowaniem po włączeniu tej opcji. 
 
 ![Ustawienia — strona Ustawienia publikowania]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Ustawienia elementu konfiguracji/CD dla automatycznego wdrażania do maszyny Wirtualnej Azure
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Konfigurowanie ciągłej integracji/ciągłego Dostarczania dla automatycznego wdrażania na maszynie Wirtualnej platformy Azure
 
-Aby skonfigurować potoku ciągłego dostarczania z programu Visual Studio Team Service, zobacz [Wdróż maszynę wirtualną systemu Windows](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+Aby skonfigurować potok ciągłego dostarczania za pomocą programu Visual Studio Team Service, zobacz [Wdróż maszynę wirtualną Windows](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[Publikowanie strony - strzałki w prawo]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[Publikowanie strony — ikona maszyny wirtualnej platformy Microsoft Azure]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
-[Selektor konto platformy Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
-[Selektor maszyna wirtualna platformy Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
-[Pakiet WebDeploy logowania]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
+[Publikowanie strony - strzałkę w prawo]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[Publikowanie strony — ikona maszyny wirtualnej Microsoft Azure]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Selektor konta platformy Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
+[Selektor maszyny Wirtualnej platformy Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[WebDeploy logowania]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [Błąd certyfikatu]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
 [Okno danych wyjściowych]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[Strona publikowania — przycisk Publikuj]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Strona publikowania — przycisk Opublikuj]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
 [Strona — przycisk Ustawienia publikowania]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[Publikowanie ustawienia — strona połączenia]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Ustawienia — strona połączenia publikowania]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
 [Ustawienia — strona Ustawienia publikowania]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

@@ -8,29 +8,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/18/2017
+ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042014"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057392"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Dokumentacja składni w usłudze Azure Cosmos DB SQL
 
-Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten temat zawiera dokumentacja dotycząca języka zapytań SQL, co jest zgodne z kontami interfejsu API SQL.
-
-Aby uzyskać wskazówki dotyczące języka zapytania SQL, zobacz [zapytań SQL usługi Azure Cosmos DB](sql-api-sql-query.md).  
+Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten artykuł zawiera dokumentacja odwołania/składni język zapytań SQL, które są zgodne z kontami interfejsu API SQL. Przewodnik SQL zapytań z przykładowych danych w temacie [wysyłania zapytań dotyczących danych usługi Azure Cosmos DB](sql-api-sql-query.md).  
   
-Zachęcamy także do odwiedzenia [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo) gdzie możesz wypróbować usługę Azure Cosmos DB i uruchamiać zapytania SQL względem naszego zestawu danych.  
+Odwiedź stronę [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo) gdzie możesz wypróbować usługę Azure Cosmos DB i uruchamiać zapytania SQL względem naszego zestawu danych.  
   
 ## <a name="select-query"></a>Wybierz zapytanie  
-Pobiera dokumentów JSON z bazy danych. Obsługuje oceny wyrażenia, projekcji, filtrowanie i dołączania.  W sekcji Konwencji składni wyszczególniono w Konwencji używanych do opisywania instrukcji "SELECT".  
+Każdego zapytania, który składa się z klauzuli SELECT i opcjonalnie FROM a klauzulach WHERE w standardy ANSI SQL. Zwykle dla każdego zapytania do źródła w klauzuli FROM są wyliczane. Następnie w klauzuli WHERE filtrowaniu na "source" do pobrania podzbioru dokumentów JSON. Na koniec klauzuli SELECT jest używany do projektu wymagane wartości JSON na liście wyboru. W sekcji Konwencji składni wyszczególniono w Konwencji używanych do opisywania instrukcji "SELECT". Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause)
   
 **Składnia**  
   
-```
+```sql
 <select_query> ::=  
 SELECT <select_specification>   
     [ FROM <from_specification>]   
@@ -42,17 +40,14 @@ SELECT <select_specification>
   
  Zobacz następujące sekcje, aby uzyskać szczegółowe informacje o każdej klauzuli:  
   
--   [Klauzula SELECT](#bk_select_query)  
-  
--   [FROM — klauzula](#bk_from_clause)  
-  
--   [Klauzula WHERE](#bk_where_clause)  
-  
+-   [Klauzula SELECT](#bk_select_query)    
+-   [FROM — klauzula](#bk_from_clause)    
+-   [Klauzula WHERE](#bk_where_clause)    
 -   [Klauzula ORDER BY](#bk_orderby_clause)  
   
 Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności.  
   
-**Logiczna kolejność przetwarzania instrukcji SELECT**  
+### <a name="logical-processing-order-of-the-select-statement"></a>Logiczna kolejność przetwarzania instrukcji SELECT  
   
 Kolejność, w jakiej są przetwarzane klauzule jest:  
 
@@ -63,7 +58,7 @@ Kolejność, w jakiej są przetwarzane klauzule jest:
 
 Należy pamiętać, że to różni się od kolejności, w jakiej występują w składni. Kolejność jest tak, aby wszystkie nowe symbole wynikające z klauzulą przetwarzania są widoczne i mogą być używane w klauzulach późniejszego przetworzenia. Na przykład zadeklarowanych w klauzuli FROM aliasy są dostępne w przypadku gdy i klauzule SELECT.  
 
-**Białych znaków i komentarze**  
+### <a name="whitespace-characters-and-comments"></a>Białych znaków i komentarze  
 
 Wszystkie białe znaki, które nie są częścią ciągów w cudzysłowach lub identyfikator w cudzysłowach nie są częścią gramatyki języka i są ignorowane podczas analizowania.  
 
@@ -74,10 +69,11 @@ Język zapytań obsługuje komentarze style języka T-SQL, takich jak
 Gdy białych znaków i komentarze nie ma żadnego znaczenia w gramatyce, muszą one używane do oddzielania tokenów. Na przykład: `-1e5` chwilę jednego tokenu, liczba jest`: – 1 e5` minus token następuje numer 1 i identyfikatora e5.  
 
 ##  <a name="bk_select_query"></a> Klauzula SELECT  
-Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności.  
+Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności. Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause)
 
 **Składnia**  
-```  
+
+```sql
 SELECT <select_specification>  
 
 <select_specification> ::=   
@@ -90,27 +86,27 @@ SELECT <select_specification>
   
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
- `<select_specification>`  
+- `<select_specification>`  
+
+  Właściwości lub wartość należy wybrać zestaw wyników.  
   
- Właściwości lub wartość należy wybrać zestaw wyników.  
+- `'*'`  
+
+  Określa, że wartość należy pobrać bez wprowadzania żadnych zmian. W szczególności, jeśli przetworzonych wartość jest obiektem, wszystkie właściwości będą pobierane.  
   
- `'*'`  
+- `<object_property_list>`  
   
-Określa, że wartość należy pobrać bez wprowadzania żadnych zmian. W szczególności, jeśli przetworzonych wartość jest obiektem, wszystkie właściwości będą pobierane.  
+  Określa listę właściwości, które mają zostać pobrane. Każdy zwrócona wartość będzie obiektu przy użyciu właściwości określonych.  
   
- `<object_property_list>`  
+- `VALUE`  
+
+  Określa, że wartość JSON mają zostać pobrane zamiast kompletnego obiektu JSON. To, w przeciwieństwie do `<property_list>` nie jest zawijany przewidywane wartości w obiekcie.  
   
-Określa listę właściwości, które mają zostać pobrane. Każdy zwrócona wartość będzie obiektu przy użyciu właściwości określonych.  
-  
-`VALUE`  
-  
-Określa, że wartość JSON mają zostać pobrane zamiast kompletnego obiektu JSON. To, w przeciwieństwie do `<property_list>` nie jest zawijany przewidywane wartości w obiekcie.  
-  
-`<scalar_expression>`  
-  
-Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
+- `<scalar_expression>`  
+
+  Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
   
 **Uwagi**  
   
@@ -118,17 +114,17 @@ Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia sk
   
 Należy pamiętać, że `SELECT <select_list>` i `SELECT *` są "sugar składni" i można również wyrazić za pomocą prostych instrukcji "SELECT", jak pokazano poniżej.  
   
-1.  `SELECT * FROM ... AS from_alias ...`  
+1. `SELECT * FROM ... AS from_alias ...`  
   
-     jest równoważne:  
+   jest równoważne:  
   
-     `SELECT from_alias FROM ... AS from_alias ...`  
+   `SELECT from_alias FROM ... AS from_alias ...`  
   
-2.  `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
+2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-     jest równoważne:  
+   jest równoważne:  
   
-     `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
+   `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 **Zobacz też**  
   
@@ -136,11 +132,11 @@ Należy pamiętać, że `SELECT <select_list>` i `SELECT *` są "sugar składni"
 [Klauzula SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM — klauzula  
-Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalne. Jeśli nie zostanie określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu.  
+Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Ta klauzula ma na celu określania źródła danych, na którym zapytanie musi działać. Często jest źródłem w całej kolekcji, ale zamiast tego można określić podzbiór kolekcji. Jeśli ta klauzula nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu. Aby uzyskać przykłady, zobacz [z przykładów — klauzula](sql-api-sql-query.md#FromClause)
   
 **Składnia**  
   
-```  
+```sql  
 FROM <from_specification>  
   
 <from_specification> ::=   
@@ -158,57 +154,57 @@ FROM <from_specification>
      | <collection_expression> '[' "property_name" | array_index ']'  
 ```  
   
-**argumenty**  
+**Argumenty**  
   
-`<from_source>`  
+- `<from_source>`  
   
-Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<collection_expression>` za pomocą następujących reguł:  
+  Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<collection_expression>` za pomocą następujących reguł:  
   
--   Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
+  -  Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
   
--   Jeśli wyrażenie ma `<collection_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
+  -  Jeśli wyrażenie ma `<collection_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
   
-AS `input_alias`  
+- AS `input_alias`  
   
-Określa, że `input_alias` to zbiór wartości zwracanych przez wyrażenie kolekcji źródłowej.  
+  Określa, że `input_alias` to zbiór wartości zwracanych przez wyrażenie kolekcji źródłowej.  
  
-`input_alias` INDIE  
+- `input_alias` INDIE  
   
-Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy tablic zwracanym przez wyrażenie kolekcji źródłowej. Dowolna wartość zwracanych przez wyrażenie kolekcji źródłowej, który nie jest tablicą jest ignorowany.  
+  Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy tablic zwracanym przez wyrażenie kolekcji źródłowej. Dowolna wartość zwracanych przez wyrażenie kolekcji źródłowej, który nie jest tablicą jest ignorowany.  
   
-`<collection_expression>`  
+- `<collection_expression>`  
   
-Określa wyrażenie kolekcji ma być używany do pobierania dokumentów.  
+  Określa wyrażenie kolekcji ma być używany do pobierania dokumentów.  
   
-`ROOT`  
+- `ROOT`  
   
-Określa, że w tym dokumencie mają zostać pobrane z domyślnej kolekcji aktualnie połączonych.  
+  Określa, że w tym dokumencie mają zostać pobrane z domyślnej kolekcji aktualnie połączonych.  
   
-`collection_name`  
+- `collection_name`  
   
-Określa, że w tym dokumencie mają zostać pobrane z określonej kolekcji. Nazwa kolekcji musi odpowiadać Nazwa kolekcji połączone obecnie z usługą.  
+  Określa, że w tym dokumencie mają zostać pobrane z określonej kolekcji. Nazwa kolekcji musi odpowiadać Nazwa kolekcji połączone obecnie z usługą.  
   
-`input_alias`  
+- `input_alias`  
   
-Określa, że w tym dokumencie mają zostać pobrane ze źródła, zdefiniowane przez podany alias.  
+  Określa, że w tym dokumencie mają zostać pobrane ze źródła, zdefiniowane przez podany alias.  
   
-`<collection_expression> '.' property_`  
+- `<collection_expression> '.' property_`  
   
-Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
+  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
   
-`<collection_expression> '[' "property_name" | array_index ']'`  
+- `<collection_expression> '[' "property_name" | array_index ']'`  
   
-Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
+  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
   
 **Uwagi**  
   
 Wszystkie aliasy podany lub wnioskowany w `<from_source>(`s) musi być unikatowa. Składnia `<collection_expression>.`property_name jest taka sama jak `<collection_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znaki inne niż identyfikator.  
   
-**Brak elementów tablicy, nie ma właściwości niezdefiniowane wartości obsługi**  
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Obsługa brakujących elementów tablicy i wartości niezdefiniowanego nie ma właściwości
   
 Wyrażenie kolekcji uzyskuje dostęp do właściwości lub elementów tablicy i wartości nie istnieje, ta wartość będą ignorowane i nie przetwarzane dalej.  
   
-**Wyznaczanie zakresu kontekście wyrażenia kolekcji**  
+### <a name="collection-expression-context-scoping"></a>Wyznaczanie zakresu kontekście wyrażenia kolekcji  
   
 Wyrażenie kolekcji mogą być zakresem kolekcji lub dokumentu o określonym zakresie:  
   
@@ -216,11 +212,11 @@ Wyrażenie kolekcji mogą być zakresem kolekcji lub dokumentu o określonym zak
   
 -   Wyrażenie jest dokument należące do zakresu, jeśli bazowe źródło wyrażeniu kolekcji jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kolekcji w zakresie każdego dokumentu należących do zestawu, skojarzone z tą kolekcją aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kolekcji dla wszystkich dokumentów w podstawowym zestawie.  
   
-**Sprzężenia**  
+### <a name="joins"></a>Sprzężenia 
   
-W bieżącej wersji usługi Azure Cosmos DB obsługuje sprzężeń wewnętrznych. Zapowiadane są sprzężenia dodatkowe możliwości.
+W bieżącej wersji usługi Azure Cosmos DB obsługuje sprzężeń wewnętrznych. Zapowiadane są sprzężenia dodatkowe możliwości. 
 
-Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul.  
+Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul. Aby uzyskać przykłady, zobacz [przykłady — słowo kluczowe sprzężenia](sql-api-sql-query.md#Joins)
   
 Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zestawów:  
   
@@ -230,13 +226,13 @@ Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zes
   
  W bieżącej wersji więcej niż jedno wyrażenie należące do kolekcji jest obsługiwana przez procesor zapytań.  
   
-**Przykłady sprzężeń:**  
+### <a name="examples-of-joins"></a>Przykłady połączeń  
   
 Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka zawiera wartości utworzone przez wszystkie aliasy kolekcji Iterowanie po ich odpowiednich zestawów.  
   
-*Dołącz do przykładu 1 z 2 źródeł:*  
+**Przykład 1** -2 źródeł  
   
 - Pozwól `<from_source1>` kolekcji należące i reprezentują zestawu {A, B, C}.  
   
@@ -254,7 +250,7 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*Dołącz do przykładu 2, 3 źródeł:*  
+**Przykład 2** -3 źródła  
   
 - Pozwól `<from_source1>` kolekcji należące i reprezentują zestawu {A, B, C}.  
   
@@ -278,10 +274,10 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
-> [!NOTE]
-> Brak spójnych kolekcji dla innych wartości parametru `input_alias1`, `input_alias2`, dla którego `<from_source3>` nie zwrócił żadnych wartości.  
+  > [!NOTE]
+  > Brak spójnych kolekcji dla innych wartości parametru `input_alias1`, `input_alias2`, dla którego `<from_source3>` nie zwrócił żadnych wartości.  
   
-*Dołącz do przykład 3 z 3 źródeł:*  
+**Przykład 3** -3 źródła  
   
 - Pozwól < from_source1 > być zakresem kolekcji i reprezentują zestawu {A, B, C}.  
   
@@ -307,25 +303,25 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
-> [!NOTE]
-> Pozwoliło to odnotować iloczyn między `<from_source2>` i `<from_source3>` ponieważ zarówno dostosowanych do tej samej `<from_source1>`.  Pozwoliło to odnotować 4 (2 x 2) krotki o wartości A, 0 krotek mających wartość B (1 x 0) i 2 (2 x 1) krotek mających wartość C.  
+  > [!NOTE]
+  > Pozwoliło to odnotować iloczyn między `<from_source2>` i `<from_source3>` ponieważ zarówno dostosowanych do tej samej `<from_source1>`.  Pozwoliło to odnotować 4 (2 x 2) krotki o wartości A, 0 krotek mających wartość B (1 x 0) i 2 (2 x 1) krotek mających wartość C.  
   
 **Zobacz też**  
   
  [Klauzula SELECT](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> Klauzula WHERE  
- Określa warunek wyszukiwania określający dokumenty zwrócone przez zapytanie.  
+ Określa warunek wyszukiwania określający dokumenty zwrócone przez zapytanie. Aby uzyskać przykłady, zobacz [przykłady klauzuli WHERE](sql-api-sql-query.md#WhereClause)
   
  **Składnia**  
   
-```  
+```sql  
 WHERE <filter_condition>  
 <filter_condition> ::= <scalar_expression>  
   
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `<filter_condition>`  
   
@@ -340,18 +336,18 @@ WHERE <filter_condition>
  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku.  
   
 ##  <a name="bk_orderby_clause"></a> Klauzula ORDER BY  
- Określa kolejność sortowania wyników zwróconych przez zapytanie.  
+ Określa kolejność sortowania wyników zwróconych przez zapytanie. Aby uzyskać przykłady, zobacz [ORDER BY przykłady klauzuli](sql-api-sql-query.md#OrderByClause)
   
  **Składnia**  
   
-```  
+```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
 <sort_expression> ::= <scalar_expression> [ASC | DESC]  
   
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `<sort_specification>`  
   
@@ -378,13 +374,13 @@ ORDER BY <sort_specification>
  Natomiast gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytań usługi Azure Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości, czyli nie względem obliczone właściwości. Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
   
 ##  <a name="bk_scalar_expressions"></a> Wyrażenia skalarne  
- Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów.  
+ Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów. Aby uzyskać przykłady, zobacz [przykłady wyrażenia skalarne](sql-api-sql-query.md#scalar-expressions)
   
  Szczegółowe informacje na temat wartości, które wyrażenie skalarne, które mogą mieć, [stałe](#bk_constants) sekcji.  
   
  **Składnia**  
   
-```  
+```sql  
 <scalar_expression> ::=  
        <constant>   
      | input_alias   
@@ -411,7 +407,7 @@ ORDER BY <sort_specification>
   
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `<constant>`  
   
@@ -550,7 +546,7 @@ ORDER BY <sort_specification>
   
  **Składnia**  
   
-```  
+```sql  
 <constant> ::=  
    <undefined_constant>  
      | <null_constant>   
@@ -578,47 +574,47 @@ ORDER BY <sort_specification>
   
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
-1.  `<undefined_constant>; undefined`  
+* `<undefined_constant>; undefined`  
   
-     Wartość reprezentuje Niezdefiniowany typ niezdefiniowane.  
+  Wartość reprezentuje Niezdefiniowany typ niezdefiniowane.  
   
-2.  `<null_constant>; null`  
+* `<null_constant>; null`  
   
-     Reprezentuje **null** wartości typu **Null**.  
+  Reprezentuje **null** wartości typu **Null**.  
   
-3.  `<boolean_constant>`  
+* `<boolean_constant>`  
   
-     Reprezentuje stałą typu Boolean.  
+  Reprezentuje stałą typu Boolean.  
   
-4.  `false`  
+* `false`  
   
-     Reprezentuje **false** wartość typu Boolean.  
+  Reprezentuje **false** wartość typu Boolean.  
   
-5.  `true`  
+* `true`  
   
-     Reprezentuje **true** wartość typu Boolean.  
+  Reprezentuje **true** wartość typu Boolean.  
   
-6.  `<number_constant>`  
+* `<number_constant>`  
   
-     Reprezentuje stałą.  
+  Reprezentuje stałą.  
   
-7.  `decimal_literal`  
+* `decimal_literal`  
   
-     Literały dziesiętna są cyfry, reprezentowane za pomocą notacji dziesiętnej lub notacji wykładniczej.  
+  Literały dziesiętna są cyfry, reprezentowane za pomocą notacji dziesiętnej lub notacji wykładniczej.  
   
-8.  `hexadecimal_literal`  
+* `hexadecimal_literal`  
   
-     Literały szesnastkowe są cyfry, reprezentowane za pomocą prefiks "0 x" następuje co najmniej jedna cyfra szesnastkowa.  
+  Literały szesnastkowe są cyfry, reprezentowane za pomocą prefiks "0 x" następuje co najmniej jedna cyfra szesnastkowa.  
   
-9. `<string_constant>`  
+* `<string_constant>`  
   
-     Reprezentuje stałą typu String.  
+  Reprezentuje stałą typu String.  
   
-10. `string _literal`  
+* `string _literal`  
   
-     Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągu są ujmowane w cudzysłów pojedynczy (apostrof: ") lub podwójny cudzysłów (cudzysłów:").  
+  Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągu są ujmowane w cudzysłów pojedynczy (apostrof: ") lub podwójny cudzysłów (cudzysłów:").  
   
  Poniższe sekwencje ucieczki są dozwolone:  
   
@@ -711,7 +707,7 @@ ORDER BY <sort_specification>
 ABS (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -744,7 +740,7 @@ SELECT ABS(-1), ABS(0), ABS(1)
 ACOS(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -777,7 +773,7 @@ SELECT ACOS(-1)
 ASIN(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -810,7 +806,7 @@ SELECT ASIN(-1)
 ATAN(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -843,7 +839,7 @@ SELECT ATAN(-45.01)
 ATN2(<numeric_expression>, <numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -876,7 +872,7 @@ SELECT ATN2(35.175643, 129.44)
 CEILING (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -909,7 +905,7 @@ SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)
 COS(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -942,7 +938,7 @@ SELECT COS(14.78)
 COT(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -975,7 +971,7 @@ SELECT COT(124.1332)
 DEGREES (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1008,7 +1004,7 @@ SELECT DEGREES(PI()/2)
 FLOOR (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1041,7 +1037,7 @@ SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)
 EXP (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1094,7 +1090,7 @@ SELECT EXP(LOG(20)), LOG(EXP(20))
 LOG (<numeric_expression> [, <base>])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1151,7 +1147,7 @@ SELECT EXP(LOG(10))
 LOG10 (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1188,7 +1184,7 @@ SELECT LOG10(100)
 PI ()  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1221,7 +1217,7 @@ SELECT PI()
 POWER (<numeric_expression>, <y>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1258,7 +1254,7 @@ SELECT POWER(2, 3), POWER(2.5, 3)
 RADIANS (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1297,7 +1293,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ROUND(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1330,7 +1326,7 @@ SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)
 SIGN(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1363,7 +1359,7 @@ SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)
 SIN(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1396,7 +1392,7 @@ SELECT SIN(45.175643)
 SQRT(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1429,7 +1425,7 @@ SELECT SQRT(1), SQRT(2.0), SQRT(3)
 SQUARE(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1462,7 +1458,7 @@ SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)
 TAN (<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1495,7 +1491,7 @@ SELECT TAN(PI()/2);
 TRUNC(<numeric_expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `numeric_expression`  
   
@@ -1537,7 +1533,7 @@ SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)
 IS_ARRAY(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1577,7 +1573,7 @@ SELECT
 IS_BOOL(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1617,7 +1613,7 @@ SELECT
 IS_DEFINED(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1653,7 +1649,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
 IS_NULL(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1693,7 +1689,7 @@ SELECT
 IS_NUMBER(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1733,7 +1729,7 @@ SELECT
 IS_OBJECT(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1773,7 +1769,7 @@ SELECT
 IS_PRIMITIVE(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1813,7 +1809,7 @@ SELECT
 IS_STRING(<expression>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expression`  
   
@@ -1854,7 +1850,7 @@ SELECT
 |[NIŻSZY](#bk_lower)|[PRZYTP](#bk_ltrim)|[ZASTĄP](#bk_replace)|  
 |[REPLIKUJ](#bk_replicate)|[REVERSE](#bk_reverse)|[PO PRAWEJ STRONIE](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[PODCIĄG](#bk_substring)|  
-|[ToString](#bk_tostring)|[GÓRNY](#bk_upper)|||  
+|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  Zwraca ciąg, który jest wynikiem złączenie co najmniej dwóch wartości ciągu.  
@@ -1865,7 +1861,7 @@ SELECT
 CONCAT(<str_expr>, <str_expr> [, <str_expr>])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -1898,7 +1894,7 @@ SELECT CONCAT("abc", "def")
 CONTAINS(<str_expr>, <str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -1931,7 +1927,7 @@ SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")
 ENDSWITH(<str_expr>, <str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -1964,7 +1960,7 @@ SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")
 INDEX_OF(<str_expr>, <str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -1997,7 +1993,7 @@ SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")
 LEFT(<str_expr>, <num_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2034,7 +2030,7 @@ SELECT LEFT("abc", 1), LEFT("abc", 2)
 LENGTH(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2067,7 +2063,7 @@ SELECT LENGTH("abc")
 LOWER(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2101,7 +2097,7 @@ SELECT LOWER("Abc")
 LTRIM(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2134,7 +2130,7 @@ SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")
 REPLACE(<str_expr>, <str_expr>, <str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2167,7 +2163,7 @@ SELECT REPLACE("This is a Test", "Test", "desk")
 REPLICATE(<str_expr>, <num_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2204,7 +2200,7 @@ SELECT REPLICATE("a", 3)
 REVERSE(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2237,7 +2233,7 @@ SELECT REVERSE("Abc")
 RIGHT(<str_expr>, <num_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2274,7 +2270,7 @@ SELECT RIGHT("abc", 1), RIGHT("abc", 2)
 RTRIM(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2307,7 +2303,7 @@ SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")
 STARTSWITH(<str_expr>, <str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2340,7 +2336,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
 SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2376,7 +2372,7 @@ SELECT SUBSTRING("abc", 1, 1)
 ToString(<expr>)
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `expr`  
   
@@ -2440,7 +2436,40 @@ JOIN n IN food.nutrients
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ```  
+ ``` 
+ 
+####  <a name="bk_trim"></a> TRIM  
+ Zwraca wyrażenie ciągu, po usuwa wiodące i końcowe spacje.  
+  
+ **Składnia**  
+  
+```  
+TRIM(<str_expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `str_expr`  
+  
+     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+  
+ **Typy zwracane**  
+  
+ Zwraca wyrażenie ciągu.  
+  
+ **Przykłady**  
+  
+ Poniższy przykład pokazuje, jak używać TRIM w zapytaniu.  
+  
+```  
+SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+``` 
 ####  <a name="bk_upper"></a> GÓRNY  
  Zwraca wyrażenie ciągu po przekonwertowaniu danych małej litery na wielkie litery.  
   
@@ -2450,7 +2479,7 @@ JOIN n IN food.nutrients
 UPPER(<str_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `str_expr`  
   
@@ -2491,7 +2520,7 @@ SELECT UPPER("Abc")
 ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `arr_expr`  
   
@@ -2524,7 +2553,7 @@ Zwraca wartość Boolean wskazującą, czy tablica zawiera określoną wartość
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `arr_expr`  
   
@@ -2586,7 +2615,7 @@ SELECT
 ARRAY_LENGTH(<arr_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `arr_expr`  
   
@@ -2619,7 +2648,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])
 ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `arr_expr`  
   
@@ -2669,7 +2698,7 @@ SELECT
 ST_DISTANCE (<spatial_expr>, <spatial_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `spatial_expr`  
   
@@ -2706,7 +2735,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ST_WITHIN (<spatial_expr>, <spatial_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `spatial_expr`  
   
@@ -2748,7 +2777,7 @@ WHERE ST_WITHIN(f.location, {
 ST_INTERSECTS (<spatial_expr>, <spatial_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `spatial_expr`  
   
@@ -2790,7 +2819,7 @@ WHERE ST_INTERSECTS(a.location, {
 ST_ISVALID(<spatial_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `spatial_expr`  
   
@@ -2827,7 +2856,7 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ST_ISVALID(<spatial_expr>)  
 ```  
   
- **argumenty**  
+ **Argumenty**  
   
 -   `spatial_expr`  
   

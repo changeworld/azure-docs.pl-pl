@@ -1,6 +1,6 @@
 ---
 title: Instalowanie narzędzi Azure Data Lake Tools for Visual Studio
-description: W tym artykule opisano sposób instalowania usługi Azure Data Lake Tools dla programu Visual Studio.
+description: W tym artykule opisano sposób instalowania narzędzi Azure Data Lake Tools dla programu Visual Studio.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -11,11 +11,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: c520c437212c23cc9dc8327c95b9f2a77b08e1ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622874"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058263"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalacja narzędzi Data Lake Tools for Visual Studio
 
@@ -48,4 +48,4 @@ Narzędzia Azure Data Lake Tools for Visual Studio możesz pobrać i zainstalowa
 ## <a name="next-steps"></a>Następne kroki
 * Aby rejestrować informacje diagnostyczne, zobacz [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics)
 * Aby uzyskać informacje na temat bardziej złożonego zapytania, zobacz temat [Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Aby użyć widoku wykonania wierzchołka, zobacz [użyć widoku wykonania wierzchołka w narzędzi Data Lake Tools dla programu Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* Aby użyć widoku wykonania wierzchołka, zobacz [korzystanie z widoku wykonania wierzchołka w narzędziach Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

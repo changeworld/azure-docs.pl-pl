@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697946"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056764"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -45,10 +45,10 @@ Gdy wdrażasz zestaw skalowania, istnieje również możliwość wdrożenia apli
 
 ### <a name="zone-balancing"></a>Strefa równoważenia
 
-Na koniec dla zestawów skalowania, wdrożonych w wielu strefach, również masz możliwość wyboru "najlepsze równowadze stref nakład pracy" lub "równowadze stref strict". Zestaw skalowania jest uznawany za "zrównoważone" Liczba maszyn wirtualnych w każdej strefie jest w ramach jednej z wielu maszyn wirtualnych w innych strefach dla zestawu skalowania. Na przykład:
+Na koniec dla zestawów skalowania, wdrożonych w wielu strefach, również masz możliwość wyboru "najlepsze równowadze stref nakład pracy" lub "równowadze stref strict". Zestaw skalowania jest uznawany za "zrównoważone", jeśli każda strefa taką samą liczbę maszyn wirtualnych lub +\\-1 maszyna wirtualna w innych strefach dla zestawu skalowania. Na przykład:
 
-- Zestaw skalowania z 2 maszyn wirtualnych w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za zrównoważone.
-- Zestaw skalowania z 1 maszyny Wirtualnej w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za niezrównoważone.
+- Zestaw skalowania z 2 maszyn wirtualnych w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za zrównoważone. Ma tylko jedną strefę z różnych liczba maszyn wirtualnych i jest tylko 1, mniejsze niż w innych strefach. 
+- Zestaw skalowania z 1 maszyny Wirtualnej w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za niezrównoważone. Strefa 1 ma 2 maszyny wirtualne z mniej niż strefy 2 i 3.
 
 Istnieje możliwość, że pomyślnie tworzone są maszyny wirtualne w zestawie skalowania, ale rozszerzenia na tych maszynach wirtualnych nie można wdrożyć. Te maszyny wirtualne z błędami rozszerzeń nadal są uwzględniane podczas określania, jeśli zestaw skalowania jest równoważone. Na przykład, zestaw skalowania z 3 maszyn wirtualnych w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za równoważenia nawet wtedy, gdy wszystkie rozszerzenia nie powiodła się w strefie 1 i wszystkie rozszerzenia zakończyło się pomyślnie w strefach 2 i 3.
 
@@ -98,7 +98,7 @@ Pełny przykład Skaluj jednostrefowego zestawu i zasobów sieciowych, zobacz [t
 
 ### <a name="zone-redundant-scale-set"></a>Zestaw skalowania strefowo nadmiarowy
 
-Aby utworzyć skalę strefowo nadmiarowy zestaw, należy użyć *standardowa* jednostki SKU publicznego adresu IP adres i obciążenia równoważenia. Rozszerzone nadmiarowość *standardowa* jednostki SKU tworzy zasobów sieciowych strefowo nadmiarowe. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md).
+Aby utworzyć skalę strefowo nadmiarowy zestaw, należy użyć *standardowa* jednostki SKU publicznego adresu IP adres i obciążenia równoważenia. Rozszerzone nadmiarowość *standardowa* jednostki SKU tworzy zasobów sieciowych strefowo nadmiarowe. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wieloma strefami z `--zones` parametru. Poniższy przykład tworzy strefowo nadmiarowego zestawu skalowania o nazwie *myScaleSet* w strefach *1,2,3*:
 
@@ -215,7 +215,7 @@ Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wiele wa
 }
 ```
 
-W przypadku tworzenia publicznego adresu IP lub równoważenia obciążenia, określić *"sku": {"name": "Standardowa"} "* właściwości, aby utworzyć zasoby sieciowe strefowo nadmiarowe. Należy również utworzyć sieciową grupę zabezpieczeń i reguł, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md).
+W przypadku tworzenia publicznego adresu IP lub równoważenia obciążenia, określić *"sku": {"name": "Standardowa"} "* właściwości, aby utworzyć zasoby sieciowe strefowo nadmiarowe. Należy również utworzyć sieciową grupę zabezpieczeń i reguł, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Pełny przykład skalowania strefowo nadmiarowego zestawu i zasobów sieciowych, zobacz [ten przykładowy szablon usługi Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

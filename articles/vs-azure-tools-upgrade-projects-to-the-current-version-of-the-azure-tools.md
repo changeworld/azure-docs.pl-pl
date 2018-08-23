@@ -1,47 +1,48 @@
 ---
 title: Uaktualnianie projektów do bieżącej wersji narzędzi platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie uaktualniania projektu platformy Azure w programie Visual Studio do bieżącej wersji narzędzi platformy Azure
+description: Dowiedz się, jak uaktualnić projekt platformy Azure w programie Visual Studio do bieżącej wersji narzędzi platformy Azure
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 1d64070a-078d-468a-87f4-e6715de6475f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/18/2016
 ms.author: ghogen
-ms.openlocfilehash: 738c9d12beed6ba73872d520cb16bd3a6c813a35
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 19d6edd9f5aa4fd33611a25143f36c6365c26761
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791396"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056116"
 ---
-# <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>Jak uaktualnić projekty na bieżącą wersję narzędzia Azure dla programu Visual Studio
+# <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>Uaktualnianie projektów do bieżącej wersji narzędzi platformy Azure dla programu Visual Studio
 ## <a name="overview"></a>Przegląd
-Po zainstalowaniu bieżącej wersji narzędzi Azure (lub poprzedniej wersji, która jest nowsza niż 1.6), wszystkie projekty, które zostały utworzone przy użyciu narzędzia Azure Zwolnij przed 1.6 (listopad 2011) zostaną automatycznie uaktualnione jak je otworzyć. Nadal masz zainstalowany zwolnienia projektów został utworzony za pomocą wersji 1.6 (listopad 2011) tych narzędzi, możesz otworzyć te projekty w starszej wersji i zdecyduje później, czy należy uaktualnić ich.
+Po zainstalowaniu bieżąca wersja narzędzi platformy Azure (lub poprzedniej wersji, która jest nowsza niż 1.6), wszystkie projekty, które zostały utworzone przy użyciu narzędzi Azure Zwolnij przed 1.6 (listopad 2011) zostaną automatycznie uaktualnione zaraz po ich otwarciu. Jeśli nadal masz tej wersji zainstalowane projekty są tworzone za pomocą wersji 1.6 (listopad 2011) wersję tych narzędzi, możesz otworzyć te projekty w starszej wersji i później zdecydować, czy należy uaktualnić ich.
 
-## <a name="how-your-project-changes-when-you-upgrade-it"></a>Jak projekt zmiany po uaktualnieniu
-Jeśli projekt zostanie automatycznie uaktualniony, określ, czy chcesz ją uaktualnić projektu są modyfikowane w celu pracy z bieżącymi wersjami niektóre zestawy, a niektóre właściwości również są zmieniane, zgodnie z opisem w tej sekcji. Jeśli projekt wymaga inne zmiany, aby był zgodny z nowszą wersją narzędzia, musisz wprowadzić te zmiany ręcznie.
+## <a name="how-your-project-changes-when-you-upgrade-it"></a>Jak projekt zmienia się po uaktualnieniu
+Jeśli projekt zostanie automatycznie uaktualniony lub określ, czy chcesz go uaktualnić, projekt zostanie zmodyfikowany na potrzeby pracy z bieżącymi wersjami określone zestawy, a niektóre właściwości również są zmieniane, zgodnie z opisem w tej sekcji. Jeśli Twój projekt wymaga innych zmian, aby był zgodny z nowszą wersją narzędzia, musisz wprowadzić te zmiany ręcznie.
 
-* Plik web.config dla ról sieć web i plik app.config dla roli proces roboczy są aktualizowane do nowszej wersji Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitoirTraceListener.dll odwołania.
-* Zestawy Microsoft.WindowsAzure.StorageClient.dll, Microsoft.WindowsAzure.Diagnostics.dll i Microsoft.WindowsAzure.ServiceRuntime.dll zostaną uaktualnione do nowej wersji.
-* Profilów publikowania, które były przechowywane w pliku projektu platformy Azure (ccproj) są przenoszone do osobnego pliku z .azurePubXml rozszerzenia w **publikowania** podkatalogu.
-* Niektóre właściwości w profilu publikowania zostały zaktualizowane do obsługi nowych i zmienionych funkcji. **AllowUpgrade** zastępuje **DeploymentReplacementMethod** ponieważ równocześnie lub przyrostowo można zaktualizować usługi w chmurze wdrożone.
-* Właściwość **UseIISExpressByDefault** zostanie dodany i wartość false, aby serwer sieci web, który jest używany do debugowania zmienią się automatycznie z Internet Information Services (IIS) do programu IIS Express. Usługi IIS Express to domyślnego serwera sieci web dla projektów, które zostały utworzone z nowszą wersją narzędzi.
-* Jeśli buforowanie Azure znajduje się w co najmniej jeden z projektów ról, niektóre właściwości w konfiguracji usługi (plik .cscfg) i definicji usługi (plik csdef) są zmieniane po uaktualnieniu projektu. Projekt korzysta z pakietu NuGet buforowanie Azure, projekt jest uaktualniony do najnowszej wersji pakietu. Należy otworzyć plik web.config i sprawdź, czy konfiguracja klienta została zachowana poprawnie podczas procesu uaktualniania. Jeśli dodano odwołań do buforowania Azure zestawy klientów bez użycia pakietu NuGet, te zestawy nie zostaną zaktualizowane; należy ręcznie zaktualizować te odwołania do nowej wersji.
+* Plik web.config dla ról sieć web i w pliku app.config dla ról procesów roboczych zostaną zaktualizowane do odniesienia nowszą wersję Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitoirTraceListener.dll.
+* Zestawy Microsoft.WindowsAzure.StorageClient.dll Microsoft.WindowsAzure.Diagnostics.dll i Microsoft.WindowsAzure.ServiceRuntime.dll są uaktualniane do nowych wersji.
+* Profile publikowania, które były przechowywane w pliku projektu platformy Azure (ccproj) są przenoszone do osobnego pliku przy użyciu .azurePubXml rozszerzenia, w **Publikuj** podkatalogu.
+* Niektóre właściwości w profilu publikowania są aktualizowane, aby obsługiwać nowe i zmienione funkcje. **AllowUpgrade** zastępuje **DeploymentReplacementMethod** ponieważ możesz zaktualizować wdrożonej usłudze w chmurze, jednocześnie lub przyrostowo.
+* Właściwość **UseIISExpressByDefault** zostaną dodane i ustawiona na wartość false, aby serwer sieci web, która jest używana do debugowania zmienią się automatycznie z Internet Information Services (IIS) do usług IIS Express. Usługi IIS Express jest domyślny serwer sieci web dla projektów, które są tworzone przy użyciu nowszych wersjach narzędzi.
+* Jeśli pamięć podręczna systemu Azure jest hostowana w co najmniej jednej z ról projektu, niektóre właściwości w definicji usługi (plik csdef) i usługi konfiguracji (plik cscfg) są zmieniane, gdy projekt zostanie uaktualniony. Jeśli projekt używa pakietu NuGet usługi pamięć podręczna Azure, projekt jest uaktualniony do najnowszej wersji pakietu. Należy otworzyć plik web.config i sprawdź, czy konfiguracja klienta została zachowana poprawnie podczas procesu uaktualniania. Jeśli dodano odwołania do zestawów klienta pamięci podręcznej systemu Azure bez przy użyciu pakietu NuGet, te zestawy nie będą aktualizowane; należy ręcznie zaktualizować te odwołania do nowych wersji.
 
 > [!IMPORTANT]
-> Dla projektów języka F # należy ręcznie zaktualizować odwołania do zestawów platformy Azure, aby odwołujących się do nowszych wersji tych zestawów.
+> Dla projektów F # należy ręcznie zaktualizować odwołania do zestawów platformy Azure, dlatego, że odwołują się do nowszych wersji te zestawy.
 > 
 > 
 
 ### <a name="how-to-upgrade-an-azure-project-to-the-current-release"></a>Jak uaktualnić projekt platformy Azure do bieżącej wersji
-1. Zainstaluj bieżącą wersję narzędzia Azure do instalacji programu Visual Studio, który ma być używany w uaktualnionym projekcie, a następnie otworzyć projekt, który chcesz uaktualnić. Jeżeli projekt został utworzony przy użyciu narzędzi Azure Zwolnij przed 1.6 (listopad 2011), projekt zostanie automatycznie uaktualniony do wersji bieżącej. Jeżeli projekt został utworzony z listopad 2011 wersji i zwolnienia nadal jest zainstalowany, projekt zostanie otwarty w tej wersji.
-2. W Eksploratorze rozwiązań Otwórz menu skrótów węzła projektu, wybierz pozycję **właściwości**, a następnie wybierz pozycję **aplikacji** kartę w wyświetlonym oknie dialogowym.
+1. Zainstaluj bieżącą wersję narzędzi platformy Azure do instalacji programu Visual Studio, której chcesz użyć dla uaktualnionego projektu, a następnie otworzyć projekt, który chcesz uaktualnić. Jeśli projekt został utworzony za pomocą narzędzi Azure Zwolnij przed 1.6 (listopad 2011) projekt zostaje automatycznie uaktualnione do bieżącej wersji. Jeżeli projekt został utworzony za pomocą listopad 2011 wydania tej wersji jest nadal zainstalowany, projekt zostanie otwarty w tej wersji.
+2. W Eksploratorze rozwiązań Otwórz menu skrótów dla węzła projektu, wybierz polecenie **właściwości**, a następnie wybierz **aplikacji** karty zostanie wyświetlone okno dialogowe.
    
-    **Aplikacji** karta jest wyświetlana wersja narzędzia skojarzoną z projektem. Jeśli pojawi się bieżącą wersję narzędzia Azure, Projekt już został uaktualniony. Jeśli po zainstalowaniu nowsza wersja narzędzi niż jakie karcie są wyświetlane, **uaktualnienia** pojawi się przycisk.
-3. Wybierz **uaktualnienia** przycisk, aby uaktualnić projekt na bieżącą wersję narzędzia.
-4. Skompiluj projekt, a następnie adresować błędów wynikających z interfejsu API zmiany. Aby uzyskać informacje dotyczące modyfikowania kodu dla nowej wersji zobacz dokumentację dla określonego interfejsu API.
+    **Aplikacji** karta przedstawia wersja narzędzi, który jest skojarzony z projektem. Jeśli pojawi się bieżącą wersję narzędzia platformy Azure, projekt został już uaktualniony. Jeśli została zainstalowana nowsza wersja narzędzi niż pokazuje, jakie karty, **uaktualnienia** pojawi się przycisk.
+3. Wybierz **uaktualnienia** przycisk, aby uaktualnić projekt do bieżącej wersji narzędzia.
+4. Skompiluj projekt, a następnie adresować wszelkie błędy powstałe w wyniku zmiany interfejsu API. Aby dowiedzieć się, jak zmodyfikować kod do nowej wersji zobacz dokumentację dla określonego interfejsu API.
 

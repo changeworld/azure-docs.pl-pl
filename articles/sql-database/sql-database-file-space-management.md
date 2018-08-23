@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 08/15/2018
 ms.author: moslake
-ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003862"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055008"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
@@ -122,6 +122,8 @@ Zmodyfikuj następujący skrypt programu PowerShell, aby zwrócić tabelę z lis
 
 Wyniki zapytania do określania ilość miejsca przydzielonego dla każdej bazy danych w puli można dodać razem do określenia łączne miejsce przydzielone dla puli elastycznej. Przydzielone miejsce puli elastycznej nie może przekraczać maksymalny rozmiar puli elastycznej.  
 
+Skrypt programu PowerShell wymaga modułu programu PowerShell programu SQL Server — zobacz [modułu PowerShell Pobierz](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017) do zainstalowania.
+
 ```powershell
 # Resource group name
 $resourceGroupName = "rg1" 
@@ -143,7 +145,7 @@ $databaseStorageMetrics = @()
 
 # For each database in the elastic pool,
 # get its space allocated in MB and space allocated unused in MB.
-# Requires SQL Server PowerShell module – see here to install.  
+  
 foreach ($database in $databasesInPool)
 {
     $sqlCommand = "SELECT DB_NAME() as DatabaseName, `

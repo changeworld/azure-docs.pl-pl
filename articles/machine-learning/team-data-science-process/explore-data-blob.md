@@ -1,6 +1,6 @@
 ---
-title: Eksploruj dane w magazynie obiektów blob platformy Azure z Pandas | Dokumentacja firmy Microsoft
-description: Jak Eksplorowanie danych przechowywanych w kontenerze obiektów blob platformy Azure przy użyciu Pandas.
+title: Eksplorowanie danych w usłudze Azure blob storage za pomocą usług Panda | Dokumentacja firmy Microsoft
+description: Jak do eksplorowania danych, który jest przechowywany w kontenerze obiektów blob platformy Azure przy użyciu Pandas.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: c727df985f3285f5def9bfdc249ee27b4d748a01
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 61943da154483d8e815fa135fba30b136724b011
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837052"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056230"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Eksplorowanie danych usługi Azure Blob Storage za pomocą usług Panda
-W tym dokumencie opisano sposób eksplorować dane przechowywane w użyciu kontenera obiektów blob platformy Azure [Pandas](http://pandas.pydata.org/) pakiet języka Python.
+W tym dokumencie opisano, jak eksplorować dane, które są przechowywane w kontenerze obiektów blob platformy Azure za pomocą [Pandas](http://pandas.pydata.org/) pakiet języka Python.
 
-Następujące **menu** linki do tematów opisujących sposób użycia narzędzia, aby eksplorować dane w różnych środowiskach magazynu. To zadanie jest krokiem w [proces nauki danych]().
+Następujące **menu** łącza do tematów opisujących, jak używać narzędzi, aby eksplorować dane w różnych środowiskach magazynu. To zadanie jest to krok w [danych dla celów naukowych](overview.md).
 
 [!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że masz:
+W tym artykule założono, że masz:
 
-* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md)
 * Przechowywane dane na koncie magazynu obiektów blob platformy Azure. Aby uzyskać instrukcje, zobacz [przenoszenie danych do i z usługi Azure Storage](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Ładowanie danych do Pandas DataFrame
-Aby eksplorować i manipulowania zestawu danych, musi najpierw zostać pobrana od źródła obiektu blob do pliku lokalnego, który następnie będzie można załadować Pandas DataFrame. Poniżej przedstawiono kroki do wykonania w przypadku tej procedury:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Ładowanie danych do elementów DataFrame Pandas
+Aby eksplorować i modyfikować zestaw danych, jej należy najpierw pobrać ze źródła obiektów blob w lokalnym pliku, który może zostać załadowana w Pandas DataFrame. Poniżej przedstawiono kroki do wykonania tej procedury:
 
-1. Pobieranie danych z usługi Azure blob z Poniższy przykładowy kod języka Python za pomocą usługi blob. Zastąp zmienną w poniższym kodzie z określonymi wartościami: 
+1. Pobieranie danych z usługi Azure blob przy użyciu Poniższy przykładowy kod języka Python przy użyciu usługi blob. Zastąp swoje określone wartości zmiennej w poniższym kodzie: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -55,51 +55,51 @@ Aby eksplorować i manipulowania zestawu danych, musi najpierw zostać pobrana o
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Dane do odczytu do Pandas danych ramki z pobranego pliku.
+2. Odczytać dane w ramce Pandas danych — z pobranego pliku.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Teraz można przystąpić do eksplorowania danych oraz do generowania funkcji dla tego zestawu danych.
+Teraz wszystko jest gotowe do eksplorowania danych i wygenerować funkcje, w tym zestawie danych.
 
-## <a name="blob-dataexploration"></a>Przykłady Eksploracja danych przy użyciu Pandas
-Oto kilka przykładów sposobów, aby eksplorować dane przy użyciu Pandas:
+## <a name="blob-dataexploration"></a>Przykłady eksplorację danych za pomocą biblioteki Pandas
+Poniżej przedstawiono kilka przykładów sposobów eksploracji danych przy użyciu Pandas:
 
-1. Sprawdź **liczba wierszy i kolumn** 
+1. Sprawdzanie **liczby wierszy i kolumn** 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. **Sprawdź** kilka pierwszego lub ostatniego **wierszy** następujących danych:
+2. **Sprawdzanie** kilka pierwszej lub ostatniej **wierszy** następujących danych:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Sprawdź **— typ danych** każda kolumna została zaimportowana jako przy użyciu następujący przykładowy kod
+3. Sprawdź **— typ danych** każdej kolumny został zaimportowany, używając następującego przykładowego kodu
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Sprawdź **podstawowe statystyki** kolumn danych, ustaw następujący
+4. Sprawdź **podstawowe statystyki** dla kolumn w danych, ustaw następujący
    
         dataframe_blobdata.describe()
-5. Przyjrzyj się liczba wpisów dla każdej wartości w kolumnie w następujący sposób
+5. Spójrz na liczbę wpisów dla każdej wartości kolumny w następujący sposób
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. **Liczba brakujących wartości** zależności od rzeczywistej liczby wpisów w każdej kolumnie, za pomocą następujący przykładowy kod
+6. **Liczba brakujących wartości** a rzeczywista liczba wpisów w poszczególnych kolumnach, za pomocą następującego przykładowego kodu
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Jeśli masz **brakujące wartości** dla określonej kolumny danych, można umieszczać je w następujący sposób:
+7. Jeśli masz **brakujących wartości** dla określonej kolumny w danych, można upuścić je w następujący sposób:
    
      dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape
    
-   Zastąp brakujące wartości w inny sposób jest funkcją trybu:
+   Innym sposobem, aby zastąpić wartości Brak jest funkcją trybu:
    
      dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Utwórz **histogram** wykreślenia przy użyciu zmiennej liczby bins do wykreślenia dystrybucji zmiennej    
+8. Tworzenie **histogram** wykresu, do wykreślenia dystrybucji zmiennej za pomocą zmiennej liczba pojemników    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Przyjrzyj się **korelacji** między zmienne przy użyciu scatterplot lub funkcja wbudowana korelacji
+9. Przyjrzyj się **korelacji** między zmiennymi za pomocą wykres punktowy lub przy użyciu funkcji wbudowanych korelacji
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])

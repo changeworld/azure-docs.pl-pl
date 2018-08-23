@@ -16,12 +16,12 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2fe80f01faae89256c96e23944025d3bd0c55811
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617194"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617073"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania dotyczące subskrypcji usługi Azure Active Directory Privileged Identity Management
 
@@ -42,7 +42,7 @@ To polecenie pobiera listę subskrypcji w ramach dzierżawy. Jeśli nie ma żadn
 
 Jeśli to polecenie zwróci wiersz, w które SkuPartNumber jest "AAD_PREMIUM_P2" lub "EMSPREMIUM" i IsTrial jest "True", oznacza to, że wersji próbnej usługi Azure AD Premium P2 znajduje się w dzierżawie.  Jeśli stan subskrypcji nie jest włączona, a nie masz subskrypcji P2 usługi Azure AD Premium lub EMS E5 zakupu, następnie należy zakupić subskrypcję usługi Azure AD Premium P2 lub EMS E5 aby kontynuować korzystanie z usługi Azure AD Privileged Identity Management.
 
-Usługa Azure AD Premium P2 jest dostępna za pośrednictwem [umowy Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu licencjonowania zbiorowego Open](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)i [programu dostawców rozwiązań w chmurze](https://partner.microsoft.com/en-US/cloud-solution-provider). Subskrybenci platformy Azure i usługi Office 365 mogą też kupić usługę Azure AD Premium P2 w trybie online.  Więcej informacji na temat cen usługi Azure AD Premium i jak Zamów w trybie online, można znaleźć w folderze [usługi Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
+Usługa Azure AD Premium P2 jest dostępna za pośrednictwem [umowy Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu licencjonowania zbiorowego Open](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)i [programu dostawców rozwiązań w chmurze](https://partner.microsoft.com/cloud-solution-provider). Subskrybenci platformy Azure i usługi Office 365 mogą też kupić usługę Azure AD Premium P2 w trybie online.  Więcej informacji na temat cen usługi Azure AD Premium i jak Zamów w trybie online, można znaleźć w folderze [usługi Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Usługa Azure AD Privileged Identity Management nie jest dostępna w dzierżawie
 

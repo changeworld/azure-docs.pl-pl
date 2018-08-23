@@ -7,16 +7,17 @@ manager: douge
 assetId: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 02d38f49a1bfe490acbcfee95a8a703cf0d7594f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 97d78bd61f7cf2a651fea1ac29e2a952a8f8ced3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "31795983"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056122"
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Za pomocą programu Visual Studio Azure Kreatorze publikacji aplikacji
 
@@ -93,7 +94,7 @@ Konto usługi Azure storage przechowuje pakietu dla wdrożenia aplikacji. Po wdr
 
 ## <a name="diagnostics-settings-page"></a>Strona Ustawienia diagnostyki
 
-![Ustawienia diagnostyki](./media/vs-azure-tools-publish-azure-application-wizard/diagnostic-settings.png)
+![Ustawienia diagnostyczne](./media/vs-azure-tools-publish-azure-application-wizard/diagnostic-settings.png)
 
 Diagnostyka umożliwia rozwiązywanie problemów z usługą w chmurze platformy Azure (lub maszyn wirtualnych platformy Azure). Aby uzyskać informacje o diagnostyce, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i Virtual Machines](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md). Aby uzyskać informacje na temat usługi Application Insights, zobacz [co to jest usługa Application Insights?](./application-insights/app-insights-overview.md).
 

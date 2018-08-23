@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4e062b1bc56eada2fa2c27797151e265271022e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 86a2fba7730a653a254a2fd996f9e45ed322fbe3
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621161"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055967"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -391,8 +391,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.Authorization/checkAccess/action | Sprawdza, czy element wywołujący ma autoryzację do wykonania określonej akcji |
 > | Akcja | Microsoft.Authorization/classicAdministrators/delete | Usuwa administratora z subskrypcji. |
+> | Akcja | Microsoft.Authorization/classicAdministrators/operationstatuses/read | Pobiera administrator stany opreation subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/read | Odczytuje administratorów dla subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/write | Dodaje lub modyfikuje administratora dla subskrypcji. |
+> | Akcja | Microsoft.Authorization/denyAssignments/delete | Usuń przypisanie odmowy w podanym zakresie. |
+> | Akcja | Microsoft.Authorization/denyAssignments/read | Pobierz informacje o przypisaniu odmowy. |
+> | Akcja | Microsoft.Authorization/denyAssignments/write | Utwórz przypisanie odmowy w podanym zakresie. |
 > | Akcja | Microsoft.Authorization/elevateAccess/action | Przyznaje osobie wywołującej uprawnienia administratora dostępu użytkowników w zakresie dzierżawy |
 > | Akcja | Microsoft.Authorization/locks/delete | Usuwa blokady w podanym zakresie. |
 > | Akcja | Microsoft.Authorization/locks/read | Pobiera blokady w podanym zakresie. |
@@ -1165,6 +1169,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/instanceView/read | Pobiera widok wystąpienia zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/manualUpgrade/action | Ręcznie aktualizuje wystąpienia do najnowszego modelu zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/networkInterfaces/read | Pobierz właściwości wszystkich interfejsów sieciowych zestawu skalowania maszyn wirtualnych |
+> | Akcja | Microsoft.Compute/virtualMachineScaleSets/osRollingUpgrade/action | Uruchamia uaktualnienie stopniowe, aby przenieść wszystkie wystąpienia zestawu skalowania maszyn wirtualnych do najnowszej dostępnej wersji obrazu systemu operacyjnego. |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | Pobiera historię uaktualniania systemu operacyjnego dla zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | Przeprowadza planowaną konserwację na wystąpieniach zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | Wyłącza wystąpienia zestawu skalowania maszyn wirtualnych |
@@ -1229,7 +1234,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla grupy kontenerów. |
 > | Akcja | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla grupy kontenerów. |
 > | Akcja | Microsoft.ContainerInstance/containerGroups/read | Pobierz wszystkie grupy kontenerów. |
-> | Akcja | Microsoft.ContainerInstance/containerGroups/restart/action | Ponownie uruchamia określoną grupę kontenerów. |
+> | Akcja | Microsoft.ContainerInstance/containerGroups/restart/action | Uruchamia ponownie konkretną grupę kontenerów. |
 > | Akcja | Microsoft.ContainerInstance/containerGroups/stop/action | Zatrzymuje określoną grupę kontenerów. Obliczenia, będzie można cofnąć alokacji zasobów i rozliczanie zostanie zatrzymane. |
 > | Akcja | Microsoft.ContainerInstance/containerGroups/write | Utwórz lub zaktualizuj określoną grupę kontenerów. |
 > | Akcja | Microsoft.ContainerInstance/register/action | Rejestruje subskrypcję dostawcy zasobów wystąpień kontenerów i umożliwia tworzenie grup kontenerów. |
@@ -1244,10 +1249,23 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ContainerRegistry/locations/operationResults/read | Pobiera wynik operacji asynchronicznej |
 > | Akcja | Microsoft.ContainerRegistry/operations/read | Wyświetla listę wszystkich dostępnych operacji API REST usługi Azure Container Registry |
 > | Akcja | Microsoft.ContainerRegistry/register/action | Rejestruje subskrypcję dostawcy zasobów rejestru kontenera i włącza funkcję tworzenia rejestrów kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/builds/cancel/action | Anuluje istniejącą kompilację. |
+> | Akcja | Microsoft.ContainerRegistry/registries/builds/getLogLink/action | Pobiera link do pobierania dzienników kompilacji. |
+> | Akcja | Microsoft.ContainerRegistry/registries/builds/read | Pobiera właściwości określonej kompilacji lub wyświetla wszystkie kompilacje dla określonego rejestru kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/builds/write | Aktualizuje kompilacji dla rejestru kontenerów przy użyciu określonych parametrów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/delete | Usuwa zadanie kompilacji z rejestru kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/listSourceRepositoryProperties/action | Zawiera listę właściwości kontroli źródła dla zadania kompilacji. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/read | Pobiera właściwości zadania określonej kompilacji lub wyświetla listę wszystkich zadań kompilacji dla określonego rejestru kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/steps/delete | Usuwa kroku budowania z zadania kompilacji. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/steps/listBuildArguments/action | Wyświetla listę argumentów kompilacji dla kroku kompilacji, łącznie z argumentami wpisu tajnego. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/steps/read | Pobiera właściwości kroku kompilacji określonego lub wyświetla ich listę wszystkich kroków kompilacji dla zadania określonej kompilacji. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/steps/write | Tworzy lub aktualizuje kroku kompilacji dla zadania kompilacji z określonymi parametrami. |
+> | Akcja | Microsoft.ContainerRegistry/registries/buildTasks/write | Tworzy lub aktualizuje zadanie kompilacji dla rejestru kontenerów przy użyciu określonych parametrów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/delete | Usuwa z rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/eventGridFilters/delete | Usuwa filtr siatki zdarzeń z rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/eventGridFilters/read | Pobiera właściwości filtru siatki określonego zdarzenia lub wyświetla listę wszystkich filtrów siatki zdarzeń dla określonego rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/eventGridFilters/write | Tworzy lub aktualizuje filtr siatki zdarzeń dla rejestru kontenerów przy użyciu określonych parametrów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/getBuildSourceUploadUrl/action | Pobiera lokalizację przekazywania dla użytkownika można było przekazać źródła. |
 > | Akcja | Microsoft.ContainerRegistry/registries/importImage/action | Importuj obraz do rejestru kontenerów przy użyciu określonych parametrów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/listCredentials/action | Wyświetla listę poświadczenia logowania dla określonego rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/listPolicies/read | Wyświetla listę zasad dla określonego rejestru kontenerów |
@@ -1256,12 +1274,18 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla ContainerRegistry firmy Microsoft |
+> | Akcja | Microsoft.ContainerRegistry/registries/pull/read | Ściągnij lub pobieranie obrazów z rejestru kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/push/write | Wypychanie lub zapisanie obrazów do rejestru kontenerów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/quarantineRead/read | Ściąganie lub uzyskać poddane kwarantannie obrazów z rejestru kontenerów |
+> | Akcja | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Zapisu/modyfikowania stan kwarantanny obrazów poddane kwarantannie |
+> | Akcja | Microsoft.ContainerRegistry/registries/queueBuild/action | Tworzy nową kompilację na podstawie parametrów żądania i dodać go do kolejki kompilacji. |
 > | Akcja | Microsoft.ContainerRegistry/registries/read | Pobiera właściwości określonego rejestru kontenerów lub wyświetla ich listę rejestrów kontenerów w ramach określonej grupy zasobów lub subskrypcji. |
 > | Akcja | Microsoft.ContainerRegistry/registries/regenerateCredential/action | Ponownie generuje jednego poświadczenia logowania dla określonego rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/replications/delete | Usuwa replikacji z rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/replications/operationStatuses/read | Pobiera stan operacji asynchronicznej replikacji |
 > | Akcja | Microsoft.ContainerRegistry/registries/replications/read | Pobiera właściwości określonej replikacji lub wyświetla ich listę wszystkich replikacji dla określonego rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/replications/write | Tworzy lub aktualizuje replikacji dla rejestru kontenerów przy użyciu określonych parametrów. |
+> | Akcja | Microsoft.ContainerRegistry/registries/sign/write | / Wypychania zawartości zaufania metadanych dla rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/updatePolicies/write | Aktualizuje zasady dla określonego rejestru kontenerów |
 > | Akcja | Microsoft.ContainerRegistry/registries/webhooks/delete | Usuwa element webhook z rejestru kontenerów. |
 > | Akcja | Microsoft.ContainerRegistry/registries/webhooks/getCallbackConfig/action | Pobiera konfigurację identyfikator URI usługi i nagłówki niestandardowe dla elementu webhook. |
@@ -1524,9 +1548,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataFactory/factories/pipelineruns/activityruns/read | Odczytuje uruchomienia działania określony identyfikator uruchomienia potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelineruns/cancel/action | Anuluje uruchomienie określonego przez identyfikator uruchomienia potoku |
 > | Akcja | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/action | Zapytania, których działanie zostanie uruchomione dla określonego potoku Uruchom identyfikatora. |
+> | Akcja | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/read | Odczytuje wynik działania zapytanie działa przez określony identyfikator uruchomienia potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelineruns/read | Odczytuje uruchomienia potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelines/createrun/action | Tworzy przebiegu potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelines/delete | Usuwa potoku. |
+> | Akcja | Microsoft.DataFactory/factories/pipelines/pipelineruns/activityruns/progress/read | Pobiera postęp uruchomienia działania. |
 > | Akcja | Microsoft.DataFactory/factories/pipelines/pipelineruns/read | Odczytuje uruchomienia potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelines/read | Odczytuje potoku. |
 > | Akcja | Microsoft.DataFactory/factories/pipelines/write | Utwórz lub zaktualizuj potoku |
@@ -1535,7 +1561,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataFactory/factories/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla fabryki |
 > | Akcja | Microsoft.DataFactory/factories/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla fabryki |
 > | Akcja | Microsoft.DataFactory/factories/querypipelineruns/action | Wysyła zapytanie do uruchomienia potoku. |
+> | Akcja | Microsoft.DataFactory/factories/querypipelineruns/read | Odczytuje wynik uruchomienia potoku zapytania. |
 > | Akcja | Microsoft.DataFactory/factories/querytriggerruns/action | Wysyła zapytanie do uruchomienia wyzwalacza. |
+> | Akcja | Microsoft.DataFactory/factories/querytriggerruns/read | Odczytuje wynik uruchomienia wyzwalacza. |
 > | Akcja | Microsoft.DataFactory/factories/read | Odczytuje fabryki danych. |
 > | Akcja | Microsoft.DataFactory/factories/triggerruns/read | Odczytuje uruchomienia wyzwalacza. |
 > | Akcja | Microsoft.DataFactory/factories/triggers/delete | Usuwa wszystkie wyzwalacza. |
@@ -1546,6 +1574,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataFactory/factories/triggers/write | Tworzy lub aktualizuje dowolnego wyzwalacza. |
 > | Akcja | Microsoft.DataFactory/factories/write | Utwórz lub zaktualizuj usługi Data Factory |
 > | Akcja | Microsoft.DataFactory/locations/configureFactoryRepo/action | Umożliwia skonfigurowanie repozytorium fabryki. |
+> | Akcja | Microsoft.DataFactory/operations/read | Odczytuje wszystkie operacje w dostawcy fabryki danych firmy Microsoft. |
 > | Akcja | Microsoft.DataFactory/register/action | Rejestruje subskrypcję dostawcy zasobów fabryki danych. |
 > | Akcja | Microsoft.DataFactory/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów fabryki danych. |
 
@@ -2071,6 +2100,14 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Features/providers/features/unregister/action | Wyrejestrowuje funkcję subskrypcji danego dostawcy zasobów. |
 > | Akcja | Microsoft.Features/register/action | Rejestruje funkcję subskrypcji. |
 
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Typ akcji | Operacja | Opis |
+> | --- | --- | --- |
+> | Akcja | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Przypisanie konfiguracji gościa GET. |
+> | Akcja | Microsoft.GuestConfiguration/guestConfigurationAssignments/write | Utwórz nowe przypisanie konfiguracji gościa. |
+
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -2356,155 +2393,156 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Odczyt danych z tabeli ADAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Odczyt danych z tabeli ADReplicationResult |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Odczyt danych z tabeli ADSecurityAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Alert/read | Odczytywanie danych z tabeli alertu |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Odczyt danych z tabeli AlertHistory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Odczyt danych z tabeli dotycząca usługi Application Insights |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Odczyt danych z tabeli AzureActivity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Odczyt danych z tabeli AzureMetrics |
-> | Element DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Odczyt danych z tabeli BoundPort |
-> | Element DataAction | Microsoft.LogAnalytics/logs/CommonSecurityLog/read | Odczyt danych z tabeli CommonSecurityLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ComputerGroup/read | Odczyt danych z tabeli Grupa_komputerów |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | Odczyt danych z tabeli Zmianakonfiguracji |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationData/read | Odczyt danych z tabeli danych konfiguracji |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerImageInventory/read | Odczyt danych z tabeli ContainerImageInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Odczyt danych z tabeli ContainerInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Odczyt danych z tabeli ContainerLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Odczyt danych z tabeli ContainerServiceLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/CustomLogs/read | Odczytywanie danych z żadnych dzienników niestandardowych |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Odczyt danych z tabeli DeviceAppCrash |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Odczyt danych z tabeli DeviceAppLaunch |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Odczyt danych z tabeli DeviceCalendar |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCleanup/read | Odczyt danych z tabeli DeviceCleanup |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceConnectSession/read | Odczyt danych z tabeli DeviceConnectSession |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceEtw/read | Odczyt danych z tabeli DeviceEtw |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHardwareHealth/read | Odczyt danych z tabeli DeviceHardwareHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHealth/read | Odczyt danych z tabeli kondycji urządzenia Zameldowaniem |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHeartbeat/read | Odczyt danych z tabeli DeviceHeartbeat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeHeartbeat/read | Odczyt danych z tabeli DeviceSkypeHeartbeat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeSignIn/read | Odczyt danych z tabeli DeviceSkypeSignIn |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSleepState/read | Odczyt danych z tabeli DeviceSleepState |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppFailure/read | Odczyt danych z tabeli DHAppFailure |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppReliability/read | Odczyt danych z tabeli DHAppReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHDriverReliability/read | Odczyt danych z tabeli DHDriverReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonFailures/read | Odczyt danych z tabeli DHLogonFailures |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonMetrics/read | Odczyt danych z tabeli DHLogonMetrics |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSCrashData/read | Odczyt danych z tabeli DHOSCrashData |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSReliability/read | Odczyt danych z tabeli DHOSReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHWipAppLearning/read | Odczyt danych z tabeli DHWipAppLearning |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DnsEvents/read | Odczyt danych z tabeli DnsEvents |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DnsInventory/read | Odczyt danych z tabeli DnsInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Odczyt danych z tabeli ETWEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Event/read | Odczyt danych z tabeli zdarzeń |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Odczyt danych z tabeli ExchangeAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Odczyt danych z tabeli ExchangeOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Odczyt danych z tabeli pulsu |
-> | Element DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Odczyt danych z tabeli IISAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Odczyt danych z tabeli InboundConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Odczyt danych z tabeli KubeNodeInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Odczyt danych z tabeli KubePodInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Odczyt danych z tabeli LinuxAuditLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Odczyt danych z tabeli MAApplication |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Odczyt danych z tabeli MAApplicationHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Odczyt danych z tabeli MAApplicationHealthAlternativeVersions |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Odczyt danych z tabeli MAApplicationHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Odczyt danych z tabeli MAApplicationInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Odczyt danych z tabeli MAApplicationInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Odczyt danych z tabeli MAApplicationReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Odczyt danych z tabeli MADeploymentPlan |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Odczyt danych z tabeli MADevice |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Odczyt danych z tabeli MADevicePnPHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Odczyt danych z tabeli MADevicePnPHealthAlternativeVersions |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Odczyt danych z tabeli MADevicePnPHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Odczyt danych z tabeli MADeviceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Odczyt danych z tabeli MADriverInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Odczyt danych z tabeli MADriverReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Odczyt danych z tabeli MAOfficeAddin |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Odczyt danych z tabeli MAOfficeAddinHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Odczyt danych z tabeli MAOfficeAddinHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Odczyt danych z tabeli MAOfficeAddinInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Odczyt danych z tabeli MAOfficeAddinInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Odczyt danych z tabeli MAOfficeAddinReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Odczyt danych z tabeli MAOfficeApp |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Odczyt danych z tabeli MAOfficeAppHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Odczyt danych z tabeli MAOfficeAppInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Odczyt danych z tabeli MAOfficeAppReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Odczyt danych z tabeli MAOfficeBuildInfo |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Odczyt danych z tabeli MAOfficeCurrencyAssessment |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Odczyt danych z tabeli MAOfficeCurrencyAssessmentDailyCounts |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Odczyt danych z tabeli MAOfficeDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Odczyt danych z tabeli MAOfficeMacroHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Odczyt danych z tabeli MAOfficeMacroHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Odczyt danych z tabeli MAOfficeMacroIssueInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Odczyt danych z tabeli MAOfficeMacroIssueReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Odczyt danych z tabeli MAOfficeMacroSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Odczyt danych z tabeli MAOfficeSuite |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Odczyt danych z tabeli MAOfficeSuiteInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Odczyt danych z tabeli MAProposedPilotDevices |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Odczyt danych z tabeli MAWindowsBuildInfo |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Odczyt danych z tabeli MAWindowsCurrencyAssessment |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Odczyt danych z tabeli MAWindowsCurrencyAssessmentDailyCounts |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Odczyt danych z tabeli MAWindowsDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Odczyt danych z tabeli MAWindowsSysReqInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Odczyt danych z tabeli NetworkMonitoring |
-> | Element DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Odczyt danych z tabeli OfficeActivity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Operation/read | Odczyt danych z tabeli operacji |
-> | Element DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Odczyt danych z tabeli OutboundConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Perf/read | Odczyt danych z tabeli danych o wydajności |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ProtectionStatus/read | Odczyt danych z tabeli ProtectionStatus |
-> | Akcja | Microsoft.LogAnalytics/logs/read | Odczytywanie danych z wszystkich dzienników |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedAzureCommonFields/read | Odczyt danych z tabeli ReservedAzureCommonFields |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedCommonFields/read | Odczyt danych z tabeli ReservedCommonFields |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Odczyt danych z tabeli SCCMAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Odczyt danych z tabeli SCOMAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityAlert/read | Odczyt danych z tabeli SecurityAlert |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaseline/read | Odczyt danych z tabeli SecurityBaseline |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaselineSummary/read | Odczyt danych z tabeli SecurityBaselineSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityDetection/read | Odczyt danych z tabeli SecurityDetection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityEvent/read | Odczyt danych z tabeli SecurityEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricOperationalEvent/read | Odczyt danych z tabeli ServiceFabricOperationalEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableActorEvent/read | Odczyt danych z tabeli ServiceFabricReliableActorEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableServiceEvent/read | Odczyt danych z tabeli ServiceFabricReliableServiceEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Odczyt danych z tabeli SfBAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Odczyt danych z tabeli SfBOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Odczyt danych z tabeli SharePointOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Odczyt danych z tabeli SPAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Odczyt danych z tabeli SQLAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Odczyt danych z tabeli SQLQueryPerformance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Odczyt danych z tabeli dziennika systemu |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Odczyt danych z tabeli SysmonEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Odczyt danych z tabeli UAApp |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Odczyt danych z tabeli UAComputer |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Odczyt danych z tabeli UAComputerRank |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Odczyt danych z tabeli UADriver |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Odczyt danych z tabeli UADriverProblemCodes |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Odczyt danych z tabeli UAFeedback |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Odczyt danych z tabeli UAHardwareSecurity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Odczyt danych z tabeli UAIESiteDiscovery |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Odczyt danych z tabeli UAOfficeAddIn |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Odczyt danych z tabeli UAProposedActionPlan |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Odczyt danych z tabeli UASysReqIssue |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Odczyt danych z tabeli UAUpgradedComputer |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Update/read | Odczytywanie danych z tabeli aktualizacji |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Odczyt danych z tabeli UpdateRunProgress |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Odczyt danych z tabeli UpdateSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Usage/read | Odczytywanie danych z tabeli użycia |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Odczytaj dane z tabeli ADAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Odczytaj dane z tabeli ADReplicationResult |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Odczytaj dane z tabeli ADSecurityAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Alert/read | Odczytaj dane z tabeli Alert |
+> | Element DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Odczytaj dane z tabeli AlertHistory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Odczytaj dane z tabeli ApplicationInsights |
+> | Element DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Odczytaj dane z tabeli AzureActivity |
+> | Element DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Odczytaj dane z tabeli AzureMetrics |
+> | Element DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Odczytaj dane z tabeli BoundPort |
+> | Element DataAction | Microsoft.LogAnalytics/logs/CommonSecurityLog/read | Odczytaj dane z tabeli CommonSecurityLog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ComputerGroup/read | Odczytaj dane z tabeli ComputerGroup |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | Odczytaj dane z tabeli ConfigurationChange |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationData/read | Odczytaj dane z tabeli ConfigurationData |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerImageInventory/read | Odczytaj dane z tabeli ContainerImageInventory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Odczytaj dane z tabeli ContainerInventory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Odczytaj dane z tabeli ContainerLog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Odczytaj dane z tabeli ContainerServiceLog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/CustomLogs/read | Odczytywanie danych z dowolnego dziennika niestandardowego |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Odczytaj dane z tabeli DeviceAppCrash |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Odczytaj dane z tabeli DeviceAppLaunch |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Odczytaj dane z tabeli DeviceCalendar |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCleanup/read | Odczytaj dane z tabeli DeviceCleanup |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceConnectSession/read | Odczytaj dane z tabeli DeviceConnectSession |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceEtw/read | Odczytaj dane z tabeli DeviceEtw |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHardwareHealth/read | Odczytaj dane z tabeli DeviceHardwareHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHealth/read | Odczytaj dane z tabeli DeviceHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHeartbeat/read | Odczytaj dane z tabeli DeviceHeartbeat |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeHeartbeat/read | Odczytaj dane z tabeli DeviceSkypeHeartbeat |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeSignIn/read | Odczytaj dane z tabeli DeviceSkypeSignIn |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSleepState/read | Odczytaj dane z tabeli DeviceSleepState |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppFailure/read | Odczytaj dane z tabeli DHAppFailure |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppReliability/read | Odczytaj dane z tabeli DHAppReliability |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHDriverReliability/read | Odczytaj dane z tabeli DHDriverReliability |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonFailures/read | Odczytaj dane z tabeli DHLogonFailures |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonMetrics/read | Odczytaj dane z tabeli DHLogonMetrics |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSCrashData/read | Odczytaj dane z tabeli DHOSCrashData |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSReliability/read | Odczytaj dane z tabeli DHOSReliability |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DHWipAppLearning/read | Odczytaj dane z tabeli DHWipAppLearning |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DnsEvents/read | Odczytaj dane z tabeli DnsEvents |
+> | Element DataAction | Microsoft.LogAnalytics/logs/DnsInventory/read | Odczytaj dane z tabeli DnsInventory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Odczytaj dane z tabeli ETWEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Event/read | Odczytaj dane z tabeli Event |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeOnlineAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Odczytaj dane z tabeli Heartbeat |
+> | Element DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Odczytaj dane z tabeli IISAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Odczytaj dane z tabeli InboundConnection |
+> | Element DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Odczytaj dane z tabeli KubeNodeInventory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Odczytaj dane z tabeli KubePodInventory |
+> | Element DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Odczytaj dane z tabeli LinuxAuditLog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Odczytaj dane z tabeli MAApplication |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Odczytaj dane z tabeli MAApplicationHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Odczytaj dane z tabeli MAApplicationHealthAlternativeVersions |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Odczytaj dane z tabeli MAApplicationHealthIssues |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Odczytaj dane z tabeli MAApplicationInstance |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Odczytaj dane z tabeli MAApplicationInstanceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Odczytaj dane z tabeli MAApplicationReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Odczytaj dane z tabeli MADeploymentPlan |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Odczytaj dane z tabeli MADevice |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Odczytaj dane z tabeli MADevicePnPHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Odczytaj dane z tabeli MADevicePnPHealthAlternativeVersions |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Odczytaj dane z tabeli MADevicePnPHealthIssues |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Odczytaj dane z tabeli MADeviceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Odczytaj dane z tabeli MADriverInstanceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Odczytaj dane z tabeli MADriverReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Odczytaj dane z tabeli MAOfficeAddin |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Odczytaj dane z tabeli MAOfficeAddinHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Odczytaj dane z tabeli MAOfficeAddinHealthIssues |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Odczytaj dane z tabeli MAOfficeAddinInstance |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeAddinInstanceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Odczytaj dane z tabeli MAOfficeAddinReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Odczytaj dane z tabeli MAOfficeApp |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Odczytaj dane z tabeli MAOfficeAppHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Odczytaj dane z tabeli MAOfficeAppInstance |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Odczytaj dane z tabeli MAOfficeAppReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Odczytaj dane z tabeli MAOfficeBuildInfo |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessment |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessmentDailyCounts |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Odczytaj dane z tabeli MAOfficeDeploymentStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Odczytaj dane z tabeli MAOfficeMacroHealth |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Odczytaj dane z tabeli MAOfficeMacroHealthIssues |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueInstanceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Odczytaj dane z tabeli MAOfficeMacroSummary |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Odczytaj dane z tabeli MAOfficeSuite |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Odczytaj dane z tabeli MAOfficeSuiteInstance |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Odczytaj dane z tabeli MAProposedPilotDevices |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Odczytaj dane z tabeli MAWindowsBuildInfo |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessment |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessmentDailyCounts |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Odczytaj dane z tabeli MAWindowsDeploymentStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Odczytaj dane z tabeli MAWindowsSysReqInstanceReadiness |
+> | Element DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Odczytaj dane z tabeli NetworkMonitoring |
+> | Element DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Odczytaj dane z tabeli OfficeActivity |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Operation/read | Odczytaj dane z tabeli Operation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Odczytaj dane z tabeli OutboundConnection |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Perf/read | Odczytaj dane z tabeli Perf |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ProtectionStatus/read | Odczytaj dane z tabeli ProtectionStatus |
+> | Akcja | Microsoft.LogAnalytics/logs/read | Odczytywanie danych ze wszystkich dzienników |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedAzureCommonFields/read | Odczytaj dane z tabeli ReservedAzureCommonFields |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedCommonFields/read | Odczytaj dane z tabeli ReservedCommonFields |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Odczytaj dane z tabeli SCCMAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Odczytaj dane z tabeli SCOMAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityAlert/read | Odczytaj dane z tabeli SecurityAlert |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaseline/read | Odczytaj dane z tabeli SecurityBaseline |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaselineSummary/read | Odczytaj dane z tabeli SecurityBaselineSummary |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityDetection/read | Odczytaj dane z tabeli SecurityDetection |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityEvent/read | Odczytaj dane z tabeli SecurityEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricOperationalEvent/read | Odczytaj dane z tabeli ServiceFabricOperationalEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableActorEvent/read | Odczytaj dane z tabeli ServiceFabricReliableActorEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableServiceEvent/read | Odczytaj dane z tabeli ServiceFabricReliableServiceEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Odczytaj dane z tabeli SfBAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SfBOnlineAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SharePointOnlineAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Odczytaj dane z tabeli SPAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Odczytaj dane z tabeli SQLAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Odczytaj dane z tabeli SQLQueryPerformance |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Odczytaj dane z tabeli Syslog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Odczytaj dane z tabeli SysmonEvent |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Odczytaj dane z tabeli UAApp |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Odczytaj dane z tabeli UAComputer |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Odczytaj dane z tabeli UAComputerRank |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Odczytaj dane z tabeli UADriver |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Odczytaj dane z tabeli UADriverProblemCodes |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Odczytaj dane z tabeli UAFeedback |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Odczytaj dane z tabeli UAHardwareSecurity |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Odczytaj dane z tabeli UAIESiteDiscovery |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Odczytaj dane z tabeli UAOfficeAddIn |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Odczytaj dane z tabeli UAProposedActionPlan |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Odczytaj dane z tabeli UASysReqIssue |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Odczytaj dane z tabeli UAUpgradedComputer |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Update/read | Odczytaj dane z tabeli Update |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Odczytaj dane z tabeli UpdateRunProgress |
+> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Odczytaj dane z tabeli UpdateSummary |
+> | Element DataAction | Microsoft.LogAnalytics/logs/Usage/read | Odczytaj dane z tabeli Usage |
 > | Element DataAction | Microsoft.LogAnalytics/logs/VMBoundPort/read | Odczyt danych z tabeli VMBoundPort |
 > | Element DataAction | Microsoft.LogAnalytics/logs/VMConnection/read | Odczyt danych z tabeli VMConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Odczyt danych z tabeli W3CIISLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSDeploymentStatus/read | Odczyt danych z tabeli WaaSDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSInsiderStatus/read | Odczyt danych z tabeli WaaSInsiderStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSUpdateStatus/read | Odczyt danych z tabeli WaaSUpdateStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVStatus/read | Odczyt danych z tabeli WDAVStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVThreat/read | Odczyt danych z tabeli WDAVThreat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Odczyt danych z tabeli WindowsClientAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Odczyt danych z tabeli WindowsFirewall |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Odczyt danych z tabeli WindowsServerAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WireData/read | Odczyt danych z tabeli danych o komunikacji sieciowej |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | Odczyt danych z tabeli WUDOAggregatedStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | Odczyt danych z tabeli WUDOStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Odczytaj dane z tabeli W3CIISLog |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSDeploymentStatus/read | Odczytaj dane z tabeli WaaSDeploymentStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSInsiderStatus/read | Odczytaj dane z tabeli WaaSInsiderStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSUpdateStatus/read | Odczytaj dane z tabeli WaaSUpdateStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVStatus/read | Odczytaj dane z tabeli WDAVStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVThreat/read | Odczytaj dane z tabeli WDAVThreat |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsClientAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Odczytaj dane z tabeli WindowsFirewall |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsServerAssessmentRecommendation |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WireData/read | Odczytaj dane z tabeli WireData |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WorkloadMonitoringPerf/read | Odczyt danych z tabeli WorkloadMonitoringPerf |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | Odczytaj dane z tabeli WUDOAggregatedStatus |
+> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | Odczytaj dane z tabeli WUDOStatus |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -2715,6 +2753,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Element DataAction | Microsoft.Maps/accounts/data/read | Daje dostęp do odczytu danych na konto usługi maps. |
 > | Akcja | Microsoft.Maps/accounts/delete | Usuwanie konta usługi Maps. |
 > | Akcja | Microsoft.Maps/accounts/listKeys/action | Wyświetl klucze konta usługi Maps |
 > | Akcja | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zasobu |
@@ -3449,8 +3488,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.PolicyInsights/asyncOperationResults/read | Pobiera wynik operacji asynchronicznej. |
 > | Akcja | Microsoft.PolicyInsights/policyEvents/queryResults/action | Wykonaj zapytanie o informacje dotyczące zdarzeń zasad. |
+> | Akcja | Microsoft.PolicyInsights/policyEvents/queryResults/read | Wykonaj zapytanie o informacje dotyczące zdarzeń zasad. |
 > | Akcja | Microsoft.PolicyInsights/policyStates/queryResults/action | Wykonaj zapytanie o informacje dotyczące stanów zasad. |
+> | Akcja | Microsoft.PolicyInsights/policyStates/queryResults/read | Wykonaj zapytanie o informacje dotyczące stanów zasad. |
 > | Akcja | Microsoft.PolicyInsights/policyStates/summarize/action | Wykonaj zapytanie o informacje podsumowujące dotyczące najnowszych stanów zasad. |
+> | Akcja | Microsoft.PolicyInsights/policyStates/summarize/read | Wykonaj zapytanie o informacje podsumowujące dotyczące najnowszych stanów zasad. |
 > | Akcja | Microsoft.PolicyInsights/policyStates/triggerEvaluation/action | Wyzwala nową ocenę zgodności dla wybranego zakresu. |
 > | Akcja | Microsoft.PolicyInsights/register/action | Rejestruje dostawcę zasobów Policy Insights i umożliwia wykonywanie akcji względem niego. |
 
@@ -4809,6 +4851,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/config/DELETE | Usuwanie konfiguracji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/config/list/Action | Lista aplikacji sieci Web poufne ustawienia zabezpieczeń, takich jak publikowanie poświadczeń, ustawienia aplikacji i parametrów połączenia |
 > | Akcja | Microsoft.Web/sites/config/Read | Pobieranie ustawień konfiguracji aplikacji sieci Web |
+> | Akcja | Microsoft.Web/Sites/config/snapshots/Read | Pobierz migawki konfiguracji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/config/Write | Aktualizowanie ustawień konfiguracji aplikacji sieci Web |
 > | Akcja | Microsoft.Web/Sites/containerlogs/Action | Pobierz pliki z rozszerzeniem zip dzienniki kontenerów dla aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/continuouswebjobs/DELETE | Usuwanie zadania Webjob ciągłej aplikacji sieci Web. |
@@ -4857,6 +4900,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/hostnamebindings/DELETE | Usuwanie powiązania nazwy hosta aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hostnamebindings/Read | Uzyskaj powiązania nazwy hosta aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hostnamebindings/Write | Zaktualizuj powiązania nazwy hosta aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/sites/hostruntime/host/_master/read | Pobierz klucz główny w aplikacji funkcji dla operacji administratora |
+> | Akcja | Microsoft.Web/sites/hostruntime/host/action | Wykonywanie aplikacji funkcji środowiska uruchomieniowego akcji, takich jak synchronizowanie wyzwalaczy, Dodaj funkcje, wywoływać funkcje i usuwanie funkcji itp. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/DELETE | Usuwanie połączenia hybrydowego aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/Read | Uzyskaj połączenie hybrydowe aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/Write | Zaktualizuj połączenie hybrydowe aplikacje sieci Web. |
@@ -4871,6 +4916,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/instances/Extensions/Read | Można pobierać rozszerzenia wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/processes/DELETE | Usuń procesy wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/processes/Read | Uzyskaj procesy wystąpienia aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/instances/processes/threads/Read | Rozpoczynanie wątków procesów wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/Read | Pobierz wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/listsyncfunctiontriggerstatus/Action | Lista synchronizacji funkcji wyzwalacza stan aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/metricdefinitions/Read | Pobierz definicje metryki aplikacji sieci Web. |
@@ -4886,6 +4932,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/premieraddons/DELETE | Usuń dodatków Premier aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/premieraddons/Read | Uzyskaj dodatków Premier aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/premieraddons/Write | Zaktualizuj dodatków Premier aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/privateaccess/Read | Pobierz dane dotyczące włączania dostępu do prywatnej witryny i autoryzowanych sieci wirtualnych, które mogą uzyskać dostęp do witryny. |
 > | Akcja | Microsoft.Web/Sites/processes/Read | Uzyskaj procesy aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zasobu |
 > | Akcja | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
@@ -4907,6 +4954,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/sites/restart/Action | Uruchom ponownie aplikację internetową |
 > | Akcja | Microsoft.Web/Sites/Restore/Read | Rozpoczynanie przywracania aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Restore/Write | Przywracanie aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/restorefrombackupblob/Action | Przywracanie aplikacji internetowej z kopii zapasowej magazynu obiektów Blob. |
 > | Akcja | Microsoft.Web/Sites/restorefromdeletedwebapp/Action | Przywracanie aplikacji sieci Web z usunięto aplikację. |
 > | Akcja | Microsoft.Web/Sites/restoresnapshot/Action | Przywracanie migawki aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/siteextensions/DELETE | Usuwanie rozszerzenia aplikacji sieci Web. |
@@ -4917,6 +4965,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/sites/slots/backup/Action | Utwórz nową kopię zapasową miejsca aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Backup/Read | Pobierz kopię zapasową miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Backup/Write | Aktualizacja kopii zapasowej miejsc aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/Slots/Backups/Action | Wykryj kopie zapasowe miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Backups/DELETE | Usuwanie kopii zapasowych miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Backups/list/Action | Lista miejsca kopii zapasowych aplikacji internetowych. |
 > | Akcja | Microsoft.Web/sites/slots/backups/Read | Pobierz właściwości kopia zapasowa miejsc aplikacji sieci web |
@@ -4925,6 +4974,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/sites/slots/config/list/Action | Lista miejsca aplikacji sieci Web poufne ustawienia zabezpieczeń, takich jak publikowanie poświadczeń, ustawienia aplikacji i parametrów połączenia |
 > | Akcja | Microsoft.Web/sites/slots/config/Read | Pobieranie ustawień konfiguracji miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/config/Write | Aktualizowanie ustawień konfiguracji miejsca aplikacji sieci Web |
+> | Akcja | Microsoft.Web/Sites/Slots/containerlogs/Action | Pobierz pliki z rozszerzeniem zip dzienniki kontenera dla miejsca aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/continuouswebjobs/DELETE | Usuwanie sieci Web Apps miejsc ciągłe zadania Web Job. |
 > | Akcja | Microsoft.Web/Sites/Slots/continuouswebjobs/Read | Uzyskaj Web Apps miejsc ciągłe zadania Web Job. |
 > | Akcja | Microsoft.Web/Sites/Slots/continuouswebjobs/Start/Action | Uruchom Web Apps miejsc ciągłe zadania Web Job. |
@@ -4934,6 +4984,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/Slots/Deployments/log/Read | Pobierz dziennik wdrożeń miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Deployments/Read | Uzyskaj wdrożeń miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Deployments/Write | Aktualizowanie wdrożenia miejsc aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/Slots/detectors/Read | Uzyskaj detektory miejsc aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | Uruchom analizę diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/analyses/Read | Uzyskaj analizy diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/aspnetcore/Read | Uzyskiwanie diagnostyki miejsc aplikacji sieci Web dla aplikacji platformy ASP.NET Core. |
@@ -4958,6 +5009,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/workeravailability/Read | Uzyskaj Workeravailability diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/workerprocessrecycle/Read | Uzyskaj odtworzenia procesu procesu roboczego diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/domainownershipidentifiers/Read | Uzyskaj sieci Web Apps miejsc domeny własność identyfikatorów. |
+> | Akcja | Microsoft.Web/Sites/Slots/Functions/Read | Uzyskaj funkcji miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/DELETE | Usuwanie powiązania nazwy hosta miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/Read | Uzyskaj powiązania nazwy hosta miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/Write | Zaktualizuj powiązania nazwy hosta miejsc aplikacji sieci Web. |
@@ -4999,6 +5051,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/sites/slots/restart/Action | Uruchom ponownie miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/Sites/Slots/Restore/Read | Rozpoczynanie przywracania miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/Restore/Write | Przywróć miejsc aplikacji sieci Web. |
+> | Akcja | Microsoft.Web/Sites/Slots/restorefrombackupblob/Action | Przywróć miejsca aplikacji sieci Web z obiektów Blob kopii zapasowej. |
 > | Akcja | Microsoft.Web/Sites/Slots/restorefromdeletedwebapp/Action | Przywróć miejsc aplikacji sieci Web z usunięto aplikację. |
 > | Akcja | Microsoft.Web/Sites/Slots/restoresnapshot/Action | Przywracanie migawki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/siteextensions/DELETE | Usuń rozszerzenia witryny miejsc aplikacji sieci Web. |
@@ -5057,21 +5110,15 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.WorkloadMonitor/components/read | Odczytaj operacje zasobów |
-> | Akcja | Microsoft.WorkloadMonitor/healthInstances/read | Odczytaj operacje zasobów |
-> | Akcja | Microsoft.WorkloadMonitor/Operations/read | Odczytaj operacje zasobów |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/delete | Usuwa zasób workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/delete | Usuwa zasób workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/read | Odczytuje zasób workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/read | Odczytuje zasób workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/write | Zapisuje zasobów workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloadInsights/write | Zapisuje zasobów workloadInsights |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/read | Odczytuje zasób obciążenia |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/read | Odczytuje zasób obciążenia |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/write | Zapisuje zasobów obciążenia |
-> | Akcja | Microsoft.WorkloadMonitor/workloads/write | Zapisuje zasobów obciążenia |
+> | Akcja | Microsoft.WorkloadMonitor/components/read | Pobiera składników dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/componentsSummary/read | Pobiera podsumowanie składników |
+> | Akcja | Microsoft.WorkloadMonitor/monitorInstances/read | Pobiera wystąpienia monitorów dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/monitorInstancesSummary/read | Pobiera podsumowanie wystąpień |
+> | Akcja | Microsoft.WorkloadMonitor/monitors/read | Pobiera monitorów dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/monitors/write | Konfigurowanie monitorowania dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/notificationSettings/read | Pobiera ustawienia powiadomień dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/notificationSettings/write | Skonfiguruj ustawienia powiadomień dla zasobu |
+> | Akcja | Microsoft.WorkloadMonitor/operations/read | Pobiera obsługiwane operacje |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

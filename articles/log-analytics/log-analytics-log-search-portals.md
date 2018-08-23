@@ -1,6 +1,6 @@
 ---
-title: Portale tworzenia i edytowania dziennika zapytań w programie Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano portali, których można używać w Azure Log Analytics można tworzyć i edytować dziennika wyszukiwania.
+title: Wyświetlanie i analizowanie danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: W tym artykule opisano portale, które można używać w przeszukiwania dzienników w usłudze Azure Log Analytics można tworzyć i edytować.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,38 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 08/20/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: e2ea0bf1fb3f1c63f4e6f037e465e8fdfd9a4374
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133028"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059626"
 ---
-# <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portale tworzenia i edytowania dziennika zapytań w programie Azure Log Analytics
+# <a name="viewing-and-analyzing-data-in-log-analytics"></a>Wyświetlanie i analizowanie danych w usłudze Log Analytics
+Dostępne są dwie opcje dostępne w witrynie Azure portal do analizowania danych przechowywanych w usłudze Log analytics oraz do tworzenia zapytań dotyczących analizy ad-hoc. Zapytania, które możesz utworzyć przy użyciu tych portali może służyć do innych funkcji, takich jak alerty i pulpity nawigacyjne.
 
-Dziennik wyszukiwania w różnych miejscach analizy dzienników służy do pobierania danych z obszaru roboczego.  Faktycznie tworzenie i edytowanie zapytań oprócz pracy interakcyjnie z dane zwrotne jednak, masz dwie opcje, które są opisane poniżej.  
+## <a name="log-analytics-page-preview"></a>Strona analizy dziennika (wersja zapoznawcza)
+Otwórz stronę usługi Log Analytics z **dzienniki (wersja zapoznawcza)** w menu usługi Log Analytics. Jest to nowe środowisko pracy z danymi dzienników i tworzenie zapytań. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [wprowadzenie stronie Log Analytics w witrynie Azure portal](query-language/get-started-analytics-portal.md).
 
-## <a name="log-search"></a>Wyszukiwanie w dzienniku 
-Strona wyszukiwania dziennika jest dostępna z portalu Azure.  Jest ona odpowiednia dla tworzenia podstawowych zapytań, które mogą zostać utworzone w jednym wierszu.  Dziennik wyszukiwania może być używany bez uruchamiania zewnętrznego portalu i służy do wykonywania różnych funkcji z dziennika wyszukiwania w tym tworzenie reguły alertu, tworzenie grup komputerów i eksportowanie wyników zapytania.  
+Na stronie usługi Log Analytics udostępnia następujące ulepszenia w porównaniu z [wyszukiwanie w dzienniku](#log-search) środowiska.
 
-Dziennik wyszukiwania zawiera wiele funkcji do edycji zapytanie bez pełnej znajomości języka kwerend.  Można uzyskać podsumowanie informacji o tych funkcji w [Utwórz dziennik wyszukiwania w Analiza dzienników Azure przy użyciu wyszukiwania dziennika](log-analytics-log-search-log-search-portal.md).
+* Wiele kart — Utwórz osobne karty, aby pracować z wieloma zapytaniami.
+* Rozbudowane wizualizacje — różne opcje wykresów.
+* Ulepszona funkcja Intellisense i język automatycznego uzupełniania.
+* Wyróżnianie składni — poprawia czytelność zapytań. 
+* Eksplorator zapytań — dostęp zapisane zapytania i funkcje.
+* Schemat wyświetlić — Przejrzyj strukturę danych, aby pomóc w pisaniu zapytań.
+* Udostępnianie — tworzenie łączy do zapytań lub zapytań numeru pin do dowolnego udostępnionego pulpitu nawigacyjnego platformy Azure.
+* Blokada Smart analizy — identyfikuje skoków wykresów i szybka analiza przyczyn.
+* Wybór kolumn — sortowanie i grupowanie kolumn w wynikach zapytania.
 
+> [!NOTE]
+> Strona usługi Log Analytics ma taką samą funkcjonalność jak portalu analizy zaawansowanej, czyli narzędzie zewnętrzne poza witryny Azure portal. Portalu analizy zaawansowanej jest nadal dostępna, ale linki i inne odwołania do niego w witrynie Azure portal są zastępowane przy użyciu tej nowej strony.
 
-![Strona wyszukiwania dziennika](media/log-analytics-log-search-portals/log-search-portal.png)
+![Portal analizy zaawansowanej](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
-## <a name="advanced-analytics-portal"></a>Zaawansowane portal analityka
-Portal zaawansowana analityka jest dedykowany portal, który udostępnia zaawansowane funkcje, które nie jest dostępne w dzienniku wyszukiwania z portalu Azure.  Funkcje obejmują możliwość edytowania zapytania w wielu wierszach, selektywnego wykonywania kodu, kontekstowego używania funkcji IntelliSense oraz korzystania z funkcji analizy inteligentnej.  Portal analityka zaawansowane jest najbardziej odpowiednie dla projektowania złożonych zapytań, które są albo zapisywane jako dziennik wyszukiwania lub kopiować i wklejać do innych elementów analizy dzienników.  Można uruchomić portal analityka Zaawansowane z łącza na stronie dziennik wyszukiwania.
-
-![Zaawansowane portal analityka](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
-
-
-Ze względu na jego funkcje zaawansowane zwykle użyjesz portalu zaawansowana analityka jako narzędzia do głównej tworzenia i edytowania zapytania.  Po określeniu, czy zapytanie działa zgodnie z oczekiwaniami, a następnie należy go skopiować i wkleić go w innym miejscu takich jak strony wyszukiwania dziennika lub Widok projektanta.  
 
 ### <a name="firewall-requirements"></a>Wymagania dotyczące zapory
-Przeglądarka wymaga dostępu do następujących adresów do dostępu do portalu analityka zaawansowane.  Jeśli przeglądarka uzyskuje dostęp do portalu Azure za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
+Przeglądarka wymaga dostępu do następujących adresów, aby uzyskać dostęp do strony usługi Log Analytics i portalu analizy zaawansowanej.  Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
 
 | Identyfikator URI | Adres IP | Porty |
 |:---|:---|:---|
@@ -51,8 +55,15 @@ Przeglądarka wymaga dostępu do następujących adresów do dostępu do portalu
 | docs.loganalytics.io   | Dynamiczny | 80,443 |
 
 
+## <a name="log-search"></a>Wyszukiwanie w dzienniku
+Otwórz stronę wyszukiwania dziennika z **dzienniki** w menu usługi Log Analytics lub z **usługi Log Analytics** w menu usługi Azure Monitor. Jest to odpowiednie do analizowania danych dziennika przy użyciu podstawowych zapytań. Oferuje ona wiele funkcji edytowania zapytania bez konieczności pełnej znajomości języka zapytań.  Może uzyskać podsumowanie informacji o tych funkcji w [tworzenia wyszukiwań w dziennikach w usłudze Azure Log Analytics przy użyciu wyszukiwania dziennika](log-analytics-log-search-log-search-portal.md). 
+
+
+![Strona wyszukiwania dziennika](media/log-analytics-log-search-portals/log-search-portal.png)
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zapoznaj się z artykułem samouczek na temat używania [wyszukiwania dziennika](log-analytics-tutorial-viewdata.md) Aby dowiedzieć się, jak tworzyć zapytania przy użyciu języka zapytań
-- Zapoznaj się z [portal analityka zaawansowane](https://go.microsoft.com/fwlink/?linkid=856587) można tworzyć zaawansowane zapytania i używać jako środowisko projektowe dla wyszukiwań dziennika.
+- Przeprowadzenie [samouczku, korzystając z wyszukiwania w dziennikach](log-analytics-tutorial-viewdata.md) dowiesz się, jak tworzyć zapytania przy użyciu języka zapytań
+- Przeprowadzenie [lekcja przy użyciu portalu analizy zaawansowanej](query-language/get-started-analytics-portal.md) zapewniającą taki sam sposób jak strona usługi Log Analytics.
 

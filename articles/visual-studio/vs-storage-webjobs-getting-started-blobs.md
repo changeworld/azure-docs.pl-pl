@@ -1,36 +1,37 @@
 ---
-title: Rozpoczynanie pracy z obiektu blob magazynu i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft
-description: Jak rozpocząć korzystanie z magazynu obiektów Blob projektu zadania WebJob, po nawiązaniu połączenia z magazynem platformy Azure przy użyciu programu Visual Studio połączone usługi.
+title: Rozpoczynanie pracy z usługą blob storage i Visual Studio podłączone usługi (projekty, zadania WebJob) | Dokumentacja firmy Microsoft
+description: Jak rozpocząć korzystanie z magazynu obiektów Blob projektu zadania WebJob, po nawiązaniu połączenia z usługi Azure storage przy użyciu programu Visual Studio podłączone usługi.
 services: storage
 author: ghogen
 manager: douge
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 4800d6ad0482462b9eccb72de34de56e4f7c370c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 798073d5510e50ead35ed118b03e981d133cd32a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796996"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061683"
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do obiektów Blob platformy Azure magazynu i Visual Studio połączone usługi (zadania WebJob projekty)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Przegląd
-Ten artykuł zawiera C# przykłady kodu, których pokazano, jak do wyzwalania procesu podczas tworzenia lub aktualizowania obiektów blob platformy Azure. Kod przykłady użycia [zestaw SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki) wersja 1.x. Podczas dodawania konta magazynu do projektu zadania WebJob za pomocą programu Visual Studio **dodać usług połączonych** okna dialogowego, odpowiedniego pakietu NuGet usługi Magazyn Azure jest zainstalowany, odpowiednie odwołania .NET są dodawane do projektu i parametry połączenia dla konta magazynu są aktualizowane w pliku App.config.
+Ten artykuł zawiera C# przykłady kodu, które pokazują, jak wyzwolić proces w przypadku tworzenia lub aktualizowania obiektu blob platformy Azure. Przykłady kodu, użyj [zestawu SDK usługi WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki) wersji 1.x. Po dodaniu konta magazynu do projektu zadania WebJob przy użyciu programu Visual Studio **Dodaj usługi połączone** okno dialogowe, jest zainstalowany odpowiedni pakiet NuGet usługi Azure Storage, odpowiednie odwołania .NET są dodawane do projektu, i Parametry połączenia dla konta magazynu są aktualizowane w pliku App.config.
 
-## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Sposób włączania funkcji podczas tworzenia lub aktualizowania obiektu blob
-W tej sekcji przedstawiono sposób użycia **BlobTrigger** atrybutu.
+## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Jak wyzwolić funkcję podczas tworzenia lub aktualizowania obiektu blob
+W tej sekcji pokazano, jak używać **BlobTrigger** atrybutu.
 
- **Uwaga:** zestaw SDK zadań Webjob skanuje pliki dzienników, które należy obserwować nowych lub zmienionych obiektów blob. Ten proces jest z założenia powolne; funkcja może nie pobrać są uruchamiane kilka minut lub dłużej po utworzeniu obiektu blob.  Jeśli aplikacja wymaga natychmiast przetwarza obiekty BLOB, zalecaną metodą jest utworzenie komunikatu w kolejce podczas tworzenia obiektu blob i użyj **QueueTrigger** atrybutu zamiast **BlobTrigger** atrybutu w funkcji, która przetwarza obiektu blob.
+ **Uwaga:** zestaw SDK zadań Webjob skanuje pliki dziennika, aby obejrzeć dla nowych lub zmienionych obiektów blob. Ten proces jest natury powolne; funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob.  Jeśli aplikacja wymaga w celu przetwarzania obiektów BLOB od razu, zalecaną metodą jest utworzenia komunikatu w kolejce, podczas tworzenia obiektu blob i używania **QueueTrigger** atrybutu zamiast **BlobTrigger** atrybut dla funkcji, która przetwarza obiekt blob.
 
-### <a name="single-placeholder-for-blob-name-with-extension"></a>Jeden symbol zastępczy dla obiektu blob nazwy z rozszerzeniem
-Poniższy przykładowy kod kopiuje tekst obiektów blob, które są widoczne w *wejściowych* kontener, aby *dane wyjściowe* kontenera:
+### <a name="single-placeholder-for-blob-name-with-extension"></a>Pojedynczego symbolu zastępczego dla nazwy obiektu blob z rozszerzeniem
+Poniższy przykładowy kod kopiuje tekst obiektów blob, które pojawiają się w *wejściowych* kontener *dane wyjściowe* kontenera:
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -38,9 +39,9 @@ Poniższy przykładowy kod kopiuje tekst obiektów blob, które są widoczne w *
             output = input.ReadToEnd();
         }
 
-Konstruktor atrybutu ma parametr typu string, który określa nazwę kontenera i nazwę obiektu blob. W tym przykładzie o nazwie obiektu blob *Blob1.txt* jest tworzony w *wejściowych* kontenera, funkcja ta umożliwia tworzenie obiektu blob o nazwie *Blob1.txt* w *dane wyjściowe* kontenera.
+Konstruktor atrybutu ma parametr ciągu, który określa nazwę kontenera i symbolu zastępczego dla nazwy obiektu blob. W tym przykładzie, jeśli nazwę obiektu blob *Blob1.txt* jest tworzony w *wejściowych* kontenera, funkcja tworzy obiekt blob o nazwie *Blob1.txt* w *danychwyjściowych* kontenera.
 
-Wzorzec nazwy można określić za pomocą nazwy obiektu blob — symbol zastępczy, jak pokazano w poniższym przykładzie kodu:
+Należy określić wzorzec nazwy z symbolem zastępczym nazwa obiektu blob, jak pokazano w następującym przykładzie kodu:
 
         public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
             [Blob("output/copy-{name}")] out string output)
@@ -48,20 +49,20 @@ Wzorzec nazwy można określić za pomocą nazwy obiektu blob — symbol zastęp
             output = input.ReadToEnd();
         }
 
-Ten kod kopiuje tylko obiekty BLOB o nazwach rozpoczynających się od "oryginalnego-". Na przykład *Blob1.txt oryginalne* w *wejściowych* kontenera jest kopiowany do *Blob1.txt kopiowania* w *dane wyjściowe* kontenera.
+Ten kod powoduje skopiowanie tylko obiekty BLOB, które mają nazwy rozpoczynające się od "oryginalnego-". Na przykład *Blob1.txt oryginalny* w *wejściowych* kontenera zostanie skopiowany do *Blob1.txt kopiowania* w *dane wyjściowe* kontenera.
 
-Jeśli musisz określić wzorzec nazw dla nazwy obiektów blob, które mają nawiasy klamrowe w nazwie dwukrotnie nawiasów klamrowych. Na przykład, jeśli chcesz znaleźć obiekty BLOB w *obrazów* kontenera, w którym mają nazwy w następujący sposób:
+Jeśli musisz określić wzorzec nazw dla nazw obiektów blob, mających nawiasów klamrowych w nazwie dwukrotnie nawiasów klamrowych. Na przykład, jeśli chcesz znaleźć obiekty BLOB w *obrazów* kontenera, w którym mają nazwy w następujący sposób:
 
         {20140101}-soundfile.mp3
 
-Użyj tego deseniu:
+Użyj tego wzorca usługi:
 
         images/{{20140101}}-{name}
 
 W tym przykładzie *nazwa* wartość symbolu zastępczego będzie *soundfile.mp3*.
 
 ### <a name="separate-blob-name-and-extension-placeholders"></a>Symbole zastępcze nazwę i rozszerzenie oddzielnych obiektów blob
-Poniższy przykładowy kod powoduje zmianę rozszerzenia pliku jako kopiowania obiektów blob, które są widoczne w *wejściowych* kontener, aby *dane wyjściowe* kontenera. Kod rejestruje rozszerzenie *wejściowych* obiektu blob i Ustawia rozszerzenie *dane wyjściowe* obiektu blob do *.txt*.
+Poniższy przykładowy kod powoduje zmianę rozszerzenia pliku jako kopiowania obiektów blob, które pojawiają się w *wejściowych* kontener *dane wyjściowe* kontenera. Ten kod rejestruje rozszerzenie *wejściowych* obiektów blob i Ustawia rozszerzenie *dane wyjściowe* obiektu blob do *.txt*.
 
         public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
             [Blob("output/{name}.txt")] out string output,
@@ -75,20 +76,20 @@ Poniższy przykładowy kod powoduje zmianę rozszerzenia pliku jako kopiowania o
         }
 
 ## <a name="types-that-you-can-bind-to-blobs"></a>Typy, które można powiązać obiekty BLOB
-Można użyć **BlobTrigger** atrybutu w następujących typów:
+Możesz użyć **BlobTrigger** atrybutu w następujących typów:
 
-* **Ciąg**
+* **ciąg**
 * **TextReader**
 * **Stream**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* Inne typy deserializacji przez [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
+* Inne typy przeprowadzona przez [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
-Jeśli chcesz pracować bezpośrednio z kontem magazynu platformy Azure, możesz także dodać **CloudStorageAccount** parametru w podpisie metody.
+Jeśli chcesz współpracować bezpośrednio z konta magazynu platformy Azure, możesz również dodać **CloudStorageAccount** parametr podpis metody.
 
-## <a name="getting-text-blob-content-by-binding-to-string"></a>Pobieranie zawartości obiektu blob tekstu przez powiązanie do ciągu
-Jeśli oczekiwano tekstu w obiektach blob, **BlobTrigger** można zastosować do **ciąg** parametru. Poniższy przykładowy kod wiąże obiektu blob tekstu do **ciąg** parametru o nazwie **logMessage**. Funkcja używa parametru do zapisania zawartości obiektu blob do pulpitu nawigacyjnego, zestaw SDK zadań Webjob.
+## <a name="getting-text-blob-content-by-binding-to-string"></a>Pobieranie zawartości obiektu blob tekstu przez powiązanie parametrów
+Jeżeli oczekuje tekstu obiektów blob **BlobTrigger** mogą być stosowane do **ciąg** parametru. Poniższy przykładowy kod wiąże obiekt blob tekstu do **ciąg** parametr o nazwie **logmessage —**. Funkcja używa tego parametru do zapisania zawartość obiektu blob do pulpitu nawigacyjnego zestawu SDK usługi WebJobs.
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
             string name,
@@ -99,8 +100,8 @@ Jeśli oczekiwano tekstu w obiektach blob, **BlobTrigger** można zastosować do
              logger.WriteLine(logMessage);
         }
 
-## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Pobieranie serializacji zawartość obiektu blob przy użyciu ICloudBlobStreamBinder
-Poniższy przykład kodu wykorzystuje klasy, która implementuje **ICloudBlobStreamBinder** umożliwiające **BlobTrigger** atrybutu będzie tworzone powiązanie obiektu blob do **WebImage** typu.
+## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Wprowadzenie serializacji zawartość obiektu blob przy użyciu ICloudBlobStreamBinder
+Poniższy przykładowy kod używa klasy, która implementuje **ICloudBlobStreamBinder** umożliwiające **BlobTrigger** atrybut do powiązania obiektu blob do **WebImage** typu.
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -119,7 +120,7 @@ Poniższy przykład kodu wykorzystuje klasy, która implementuje **ICloudBlobStr
             output = input.Resize(width, height);
         }
 
-**WebImage** powiązanie kod znajduje się w **WebImageBinder** klasą pochodzącą z **ICloudBlobStreamBinder**.
+**WebImage** kod powiązania jest podawany jako **WebImageBinder** klasę pochodzącą od **ICloudBlobStreamBinder**.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -136,20 +137,20 @@ Poniższy przykład kodu wykorzystuje klasy, która implementuje **ICloudBlobStr
             }
         }
 
-## <a name="how-to-handle-poison-blobs"></a>Sposób obsługi skażone obiektów blob
-Gdy **BlobTrigger** funkcja kończy się niepowodzeniem, zestaw SDK wymaga go ponownie, w przypadku, gdy błąd został spowodowany przez błąd przejściowy. Jeśli niepowodzenie jest spowodowane zawartość obiektu blob, funkcja zakończy się niepowodzeniem, za każdym razem, gdy próbuje przetworzyć obiektu blob. Domyślnie zestaw SDK wywołuje funkcję maksymalnie 5 razy dla danego obiektu blob. Jeśli piątym spróbuj kończy się niepowodzeniem, zestaw SDK dodaje komunikat do kolejki o nazwie *webjob blobtrigger-poison*.
+## <a name="how-to-handle-poison-blobs"></a>Jak obsługiwać skażone obiektów blob
+Gdy **BlobTrigger** funkcja kończy się niepowodzeniem, zestaw SDK wywołuje go ponownie w przypadku, gdy przyczyną niepowodzenia był błąd przejściowy. Jeśli błąd jest spowodowany przez zawartość obiektu blob, funkcja kończy się niepowodzeniem, za każdym razem, gdy próbuje przetworzyć obiektu blob. Domyślnie zestaw SDK wywołuje funkcję maksymalnie 5 razy dla danego obiektu blob. Jeśli piątym kończy się niepowodzeniem, zestaw SDK dodaje komunikat do kolejki o nazwie *webjobs-blobtrigger-poison*.
 
-Konfiguruje się maksymalnej liczby ponownych prób. Taki sam **MaxDequeueCount** ustawienie służy do obsługi skażone obiektów blob i kolejki skażone komunikat — Obsługa.
+Maksymalna liczba ponownych prób może zostać skonfigurowana. Taki sam **MaxDequeueCount** ustawienie jest używane do obsługi skażone obiektów blob i obsługa komunikatów w kolejce skażone.
 
-Komunikat z kolejki skażone obiektów blob jest obiekt JSON, który zawiera następujące właściwości:
+Komunikat w kolejce dla obiektów blob poison to obiekt JSON, który zawiera następujące właściwości:
 
 * FunctionId (w formacie *{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*, na przykład: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" lub "PageBlob")
-* ContainerName
+* NazwaKontenera
 * BlobName
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
-W poniższym przykładzie kodu **CopyBlob** funkcja ma kod powodujący niepowodzenie za każdym razem, gdy jest ona wywoływana. Po zestaw SDK wymaga on maksymalnej liczby ponownych prób, wiadomość jest tworzony w kolejce skażone obiektów blob, a ten komunikat jest przetwarzany przez **LogPoisonBlob** funkcji.
+W poniższym przykładzie kodu **CopyBlob** funkcja ma kod, który powoduje, że niepowodzenie za każdym razem, gdy jest wywoływana. Po zestaw SDK wymaga ona maksymalną liczbę ponownych prób, komunikat jest tworzony w kolejce skażone obiektów blob i ten komunikat jest przetwarzany przez **LogPoisonBlob** funkcji.
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("textblobs/output-{name}")] out string output)
@@ -181,40 +182,40 @@ Zestaw SDK automatycznie deserializuje komunikat JSON. Oto **PoisonBlobMessage**
         }
 
 ### <a name="blob-polling-algorithm"></a>Algorytm sondowania obiektów blob
-Zestaw SDK zadań Webjob skanuje wszystkie kontenery określony przez **BlobTrigger** atrybuty podczas uruchamiania aplikacji. Na koncie magazynu dużych ten tryb skanowania może zająć trochę czasu, dlatego może być trochę czasu, zanim znajdują się nowe obiekty BLOB i **BlobTrigger** funkcje są wykonywane.
+Zestaw SDK zadań Webjob skanuje wszystkie kontenery, określony przez **BlobTrigger** atrybuty przy uruchamianiu aplikacji. W ramach konta magazynu dużych to skanowanie może zająć trochę czasu, więc może być chwilę, zanim zostaną znalezione nowe obiekty BLOB i **BlobTrigger** są wykonywane funkcje.
 
-Aby wykryć nowe lub zmienione obiekty BLOB po uruchomieniu aplikacji, zestaw SDK okresowo odczytuje z dzienników magazynu obiektów blob. Dzienniki obiektów blob są buforowane oraz tylko fizycznie zapisane co 10 minut lub tak, więc mogą występować znaczne opóźnienie po obiektu blob jest tworzony lub aktualizowany przed odpowiadającego **BlobTrigger** wykonuje funkcji.
+Aby wykryć nowe lub zmienione obiekty BLOB, po uruchomieniu aplikacji, zestaw SDK co jakiś czas odczytuje z dzienników magazynu obiektów blob. Dzienniki obiektów blob są buforowane i tylko fizycznie są zapisywane co 10 minut lub tak, dlatego mogą występować znaczne opóźnienie po obiekt blob jest tworzony lub aktualizowany przed odpowiednimi **BlobTrigger** funkcja wykonuje.
 
-Występuje wyjątek dla obiektów blob, które utworzono za pomocą **obiektu Blob** atrybutu. Gdy zestaw SDK zadań Webjob tworzy nowy obiekt blob, przekazaniem nowego obiektu blob natychmiast żadnych zgodnych **BlobTrigger** funkcji. W związku z tym jeśli łańcuch blob wejściach i wyjściach, zestaw SDK może je przetwarzać wydajnie. Ale jeśli chcesz małych opóźnieniach uruchomiona z obiektu blob funkcji przetwarzania dla obiektów blob, które są tworzone lub zaktualizowany w inny sposób, firma Microsoft zaleca używanie **QueueTrigger** zamiast **BlobTrigger**.
+Występuje wyjątek dla obiektów blob, które tworzysz przy użyciu **Blob** atrybutu. Gdy zestaw SDK zadań Webjob tworzy nowy obiekt blob, przekazuje on nowy obiekt blob bezpośrednio do żadnych pasujących **BlobTrigger** funkcji. W związku z tym jeśli łańcuch obiektu blob danych wejściowych i wyjściowych, zestaw SDK może je przetwarzać wydajnie. Ale jeśli chcesz małych opóźnień uruchamiania funkcji do przetwarzania dla obiektów blob, które są tworzone lub zaktualizowany w inny sposób obiekt blob, zalecamy użycie **QueueTrigger** zamiast **BlobTrigger**.
 
 ### <a name="blob-receipts"></a>Potwierdzenia obiektów blob
-Zestaw SDK zadań Webjob, sprawdza nie **BlobTrigger** funkcja jest wywoływana więcej niż raz dla tego samego obiektu blob nowe lub zaktualizowane. Dzieje się tak dzięki utrzymywaniu *obiektu blob potwierdzenia* w celu ustalenia, czy wersja danego obiektu blob został przetworzony.
+Zestaw SDK zadań Webjob zapewniają, że nie **BlobTrigger** funkcja jest wywoływana więcej niż jeden raz dla tego samego obiektu blob nowe lub zaktualizowane. Jest to realizowane poprzez utrzymywanie *blob potwierdzenia* w celu ustalenia, jeśli wersja danego obiektu blob została przetworzona.
 
-Potwierdzenia obiektów blob są przechowywane w kontenerze o nazwie *azure webjobs hostów* w określona przez ciąg połączenia AzureWebJobsStorage konto magazynu Azure. Potwierdzenie obiektu blob zawiera następujące informacje:
+Potwierdzenia obiektów blob są przechowywane w kontenerze o nazwie *azure webjobs hostów* koncie magazynu platformy Azure, określona przez ciąg połączenia AzureWebJobsStorage. Odbieranie obiektów blob zawiera następujące informacje:
 
 * Funkcja, która została wywołana dla obiektu blob ("*{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*", na przykład:"WebJob1.Functions.CopyBlob")
 * Nazwa kontenera
-* Typ obiektów blob ("BlockBlob" lub "PageBlob")
+* Typ obiektu blob ("BlockBlob" lub "PageBlob")
 * Nazwa obiektu blob
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
-Jeśli chcesz wymusić ponowne przetworzenie obiektu blob, należy ręcznie usunąć potwierdzenia obiektu blob dla tego obiektu blob z *azure webjobs hostów* kontenera.
+Jeśli chcesz wymusić ponowne przetworzenie obiektu blob, można ręcznie usunąć potwierdzenia obiektów blob, dla tego obiektu blob z *azure webjobs hostów* kontenera.
 
 ## <a name="related-topics-covered-by-the-queues-article"></a>Tematy pokrewne objętych artykułem kolejek
-Informacje dotyczące obsługi przetwarzania obiektu blob wyzwalane przez komunikatu w kolejce, lub zestaw SDK zadań Webjob do obiektu blob nie są typowe scenariusze przetwarzania, zobacz [jak używać magazynu kolejek Azure przy użyciu zestawu SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Aby uzyskać informacje dotyczące obsługi przetwarzania obiektów blob wyzwolone przez komunikatu w kolejce lub dla zestawu SDK usługi WebJobs scenariuszy nie odnoszą się do obiektu blob przetwarzania, zapoznaj się z [sposób użycia usługi Azure queue storage z zestawem SDK usługi WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Tematy pokrewne omówione w tym artykule są następujące:
 
 * Funkcje asynchroniczne
 * Wiele wystąpień
 * Łagodne zamykanie
-* Użyj zestawu SDK zadań Webjob atrybutów w treści funkcji
+* Używanie atrybutów zestawu SDK usługi WebJobs w treści funkcji
 * Ustaw parametry połączenia SDK w kodzie.
-* Ustawianie wartości dla zestawu SDK zadań Webjob parametrami konstruktora w kodzie
-* Skonfiguruj **MaxDequeueCount** obsługi skażone obiektu blob.
-* Wyzwalanie funkcji ręcznie
+* Ustawianie wartości dla zestawu SDK usługi WebJobs parametry konstruktora w kodzie
+* Konfigurowanie **MaxDequeueCount** obsługi skażone obiektu blob.
+* Ręczne wyzwalanie funkcji
 * Zapisywanie dzienników
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule udostępnił przykłady kodu, które przedstawiają sposób obsługi typowe scenariusze dotyczące pracy z obiektami blob Azure. Aby uzyskać więcej informacji o sposobie używania zadań Webjob Azure i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji zadań Webjob Azure](http://go.microsoft.com/fwlink/?linkid=390226).
+W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z obiektami blob platformy Azure. Aby uzyskać więcej informacji o sposobie używania usługi Azure WebJobs i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji usługi Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

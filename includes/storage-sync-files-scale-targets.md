@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39277917"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42059946"
 ---
 | Zasób | Środowisko docelowe | Stały limit |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39277917"
 | Obiekty systemu (plików i katalogów) dla każdej grupy synchronizacji plików | 25 milionów obiektów | Nie |
 | Maksymalna liczba obiektów systemu plików (pliki i katalogi) w katalogu | 200 000 obiektów. | Yes |
 | Obiekt maksymalna długość nazwy (pliki i katalogi) | 255 znaków | Yes |
+| Maksymalna (pliki i katalogi) zabezpieczeń deskryptora rozmiar obiektu | 4 KiB | Yes |
 | Rozmiar pliku | 100 GiB | Nie |
 | Minimalny rozmiar pliku do się warstwy | 64 KiB | Yes |

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622256"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059923"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -136,6 +136,8 @@ Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostę
 >
 > Gdy wymagane są dwie metody użytkownicy będą mogli resetować przy użyciu **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
 >
+
+Jeśli korzystanie z obu powiadomienia za pomocą aplikacji mobilnej oraz kodu weryfikacyjnego z aplikacji mobilnej, użytkowników, którzy rejestracji aplikacji Microsoft Authenticator, przy użyciu powiadomienia będą mogli Użyj powiadomienie i kod, aby zweryfikować swoją tożsamość.
 
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 

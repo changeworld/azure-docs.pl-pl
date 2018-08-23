@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: d864a663604794a249b08a7c7be471c3abba32af
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971540"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056295"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -27,7 +27,7 @@ Istnieje wiele często zadawane pytania o możliwościach usługi Service Fabric
 
 ## <a name="cluster-setup-and-management"></a>Konfiguracja klastra i zarządzanie
 
-### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Jak mogę wycofania certyfikatu klastra usługi Service Fabric?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Jak czy mogę wycofać certyfikatu klastra usługi Service Fabric?
 
 Wycofywanie jakiegokolwiek uaktualnienia do aplikacji wymaga wykrywanie awarii kondycji przed kworum klastra usługi Service Fabric, Twoje zatwierdzenie zmiany; zatwierdzone zmiany tylko może być przeniesiona do przodu. Inżynierem eskalacji za pośrednictwem usług obsługi klienta, może być wymagane w celu odzyskania klastra, jeśli wprowadzono niemonitorowane istotną zmianę certyfikatu.  [Uaktualnianie aplikacji usługi Service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) stosuje [parametry uaktualniania aplikacji](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), i oferuje zero promise uaktualnienia przestojów.  Następujących zalecanych aplikacji monitorowanych tryb uaktualniania, automatyczne postęp za pomocą domeny aktualizacji opiera się na kontrole kondycji, przekazując, stopniowe wstecz automatycznie, jeśli aktualizacja usługi domyślnej nie powiedzie się.
  
@@ -119,6 +119,12 @@ Tak.  Aby uzyskać więcej informacji, zobacz [utworzyć klaster z dołączonymi
 | FabricRM.exe |
 | FileStoreService.exe |
  
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak Moja aplikacja może wykonać uwierzytelnienie do magazynu kluczy do pobrania wpisów tajnych?
+Oznacza, że dla aplikacji, aby uzyskać poświadczenia dla uwierzytelniania do magazynu kluczy są następujące:
+
+A. Podczas kompilacji/pakowania zadania aplikacji można ściągnąć certyfikatu do pakietu danych aplikacji SF i służy do uwierzytelniania do magazynu kluczy.
+B. Dla hostów z włączoną tożsamością usługi Zarządzanej zestaw skalowania maszyn wirtualnych, możesz tworzyć proste SetupEntryPoint programu PowerShell dla aplikacji SF można pobrać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać Wpisy tajne z magazynu kluczy](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
+
 ## <a name="application-design"></a>Projekt aplikacji
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Co to jest najlepszym sposobem na zapytania o dane w partycjach Reliable Collection?

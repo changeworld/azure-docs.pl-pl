@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449778"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617253"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: PaaS Web Hosting aplikacji w przypadku obciążeń oficjalne UK
 
@@ -23,7 +23,7 @@ Plany usługi Azure składają się z dokumentów ze wskazówkami dotyczącymi i
 
 ## <a name="overview"></a>Przegląd
 
-Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia wskazówki i automatyzacji skrypty dopasowane do dostarczania Microsoft Azure [platforma jako usługa (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) hostowane odpowiednie do obsługi obciążeń sklasyfikowane Architektura aplikacji sieci web jako [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf). Ta klasyfikacja zabezpieczeń obejmuje większość informacji utworzone lub przetworzone przez usługę z sektora publicznego. Obejmuje to operacje biznesowe procedur i usług, które if utracone, skradzione lub opublikowane na nośniku, z których część może mieć konsekwencje szkodliwe. Profil typowych zagrożeń oficjalne klasyfikacji jest bardzo podobne do firm prywatnych, który udostępnia cenne informacje i usługi. OFICJALNE UK oszacowano, trzeba chronić dane Rządu Zjednoczonego Królestwa lub usług zagrożenie lub naruszenia przez osoby atakujące przy użyciu ograniczonych możliwości i zasobów takich jak (ale nie jest ograniczona do) hactivists single-issue grup wykorzystanie dochodzeniowych dziennikarzy właściwe poszczególnych przed hakerami i większość osób karnego i grup.
+Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia wskazówki i automatyzacji skrypty dopasowane do dostarczania Microsoft Azure [platforma jako usługa (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) hostowane odpowiednie do obsługi obciążeń sklasyfikowane Architektura aplikacji sieci web jako [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Ta klasyfikacja zabezpieczeń obejmuje większość informacji utworzone lub przetworzone przez usługę z sektora publicznego. Obejmuje to operacje biznesowe procedur i usług, które if utracone, skradzione lub opublikowane na nośniku, z których część może mieć konsekwencje szkodliwe. Profil typowych zagrożeń oficjalne klasyfikacji jest bardzo podobne do firm prywatnych, który udostępnia cenne informacje i usługi. OFICJALNE UK oszacowano, trzeba chronić dane Rządu Zjednoczonego Królestwa lub usług zagrożenie lub naruszenia przez osoby atakujące przy użyciu ograniczonych możliwości i zasobów takich jak (ale nie jest ograniczona do) hactivists single-issue grup wykorzystanie dochodzeniowych dziennikarzy właściwe poszczególnych przed hakerami i większość osób karnego i grup.
 
 Ten plan został przejrzany, Zjednoczone Królestwo National Cybernetycznymi zabezpieczeń Centrum (NCSC) i zgodne z zasadami zabezpieczeń NCSC 14 chmury.
 

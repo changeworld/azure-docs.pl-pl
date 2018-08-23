@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036942"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056081"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -282,7 +282,7 @@ Jeśli usługa Menedżera naprawy nie zostanie znaleziony w klastrze, raport dot
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-PYTANIA I ODPOWIEDZI. **Dlaczego widzisz Mój klaster w stanie błędu, gdy uruchomiona jest aplikacja orchestration poprawki?**
+PYTANIE: **Dlaczego widzisz Mój klaster w stanie błędu, gdy uruchomiona jest aplikacja orchestration poprawki?**
 
 A. Podczas procesu instalacji aplikacji patch orchestration wyłącza lub ponowne uruchomienie węzły, które tymczasowo może spowodować kondycji klastra zostanie wyłączona.
 
@@ -296,15 +296,15 @@ W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo z uwzgl
 
 Jeśli problem będzie się powtarzać, zapoznaj się z sekcją rozwiązywanie problemów.
 
-PYTANIA I ODPOWIEDZI. **Aplikacja orchestration poprawki jest w stanie ostrzeżenia**
+PYTANIE: **Aplikacja orchestration poprawki jest w stanie ostrzeżenia**
 
 A. Sprawdź, czy raport o kondycji opublikowane w związku z aplikacją główną przyczynę. Zazwyczaj ostrzeżenie zawiera szczegółowe informacje o problemie. Jeśli problem będzie się przejściowy, aplikacja powinna automatyczne odzyskiwanie z tego stanu.
 
-PYTANIA I ODPOWIEDZI. **Co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę wykonać aktualizację pilne systemu operacyjnego?**
+PYTANIE: **Co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę wykonać aktualizację pilne systemu operacyjnego?**
 
 A. Aplikacji patch orchestration nie instaluje aktualizacji, podczas gdy klaster jest w złej kondycji. Spróbuj przełączyć klaster do stanu prawidłowego, aby odblokować poprawki aplikacji przepływu pracy.
 
-PYTANIA I ODPOWIEDZI. **Należy ustawić TaskApprovalPolicy jako "NodeWise" lub "UpgradeDomainWise" dla mojego klastra?**
+PYTANIE: **Należy ustawić TaskApprovalPolicy jako "NodeWise" lub "UpgradeDomainWise" dla mojego klastra?**
 
 A. "UpgradeDomainWise" sprawia, że ogólny klastra poprawki szybciej poprzez wdrażanie poprawek wszystkie węzły należące do domeny uaktualnienia równoległe. Oznacza to, węzłach należących do całej domeny uaktualnienia byłyby niedostępne (w [wyłączone](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) stanu) podczas procesu stosowania poprawek.
 
@@ -312,7 +312,7 @@ W odróżnieniu od nich "NodeWise" zasady poprawki tylko jeden węzeł w czasie,
 
 Jeśli klaster może tolerować systemem n-1-Liczba domen uaktualnienia podczas stosowania poprawek cyklu (gdzie N to liczba domen uaktualnienia w klastrze), a następnie ustawić zasady "UpgradeDomainWise", w przeciwnym razie ustaw ją na "NodeWise".
 
-PYTANIA I ODPOWIEDZI. **Ile czasu zajmuje take zastosowania poprawki względem węzła?**
+PYTANIE: **Ile czasu zajmuje take zastosowania poprawki względem węzła?**
 
 A. Stosowanie poprawek węzła może potrwać (na przykład: [aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/wdsi/definitions)) do godzin (na przykład: [aktualizacji zbiorczej Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
  - Rozmiar aktualizacji
@@ -320,7 +320,7 @@ A. Stosowanie poprawek węzła może potrwać (na przykład: [aktualizacje defin
  - Czas wymagany do zainstalowania aktualizacji, ponowny rozruch węzła (jeśli jest to wymagane) i Zakończ kroki instalacji po ponownym uruchomieniu.
  - Wydajność maszyny Wirtualnej/machine i warunki sieciowe.
 
-PYTANIA I ODPOWIEDZI. **Jak długo trwa stosowanie poprawek do całego klastra?**
+PYTANIE: **Jak długo trwa stosowanie poprawek do całego klastra?**
 
 A. Czas potrzebny na stosowanie poprawek do całego klastra zależy od następujących czynników:
 
@@ -331,11 +331,11 @@ A. Czas potrzebny na stosowanie poprawek do całego klastra zależy od następuj
 - Obciążenie klastra — każda operacja stosowania poprawek wymaga przenoszenie obciążenia klientów do innych dostępnych węzłów w klastrze. Węzeł w trakcie poprawki będą miały [wyłączenie](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) stanu, w tym czasie. Jeśli klaster działa w pobliżu szczytowego obciążenia, wyłączenie procesu zajęłoby dłuższy czas. Dlatego całego procesu stosowania poprawek może wydawać się wolno w takich warunkach stressed.
 - Wszelkie klastra błędy kondycji podczas stosowania poprawek - [degradacji](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) w [kondycji klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) spowoduje przerwanie procesu stosowania poprawek. Spowoduje to dodanie całkowity czas wymagany do poprawiania całego klastra.
 
-PYTANIA I ODPOWIEDZI. **Dlaczego widzę niektórych aktualizacji w aktualizacji Windows wyniki uzyskane za pośrednictwem interfejsu API REST, ale nie w obszarze Historia Windows Update na komputerze?**
+PYTANIE: **Dlaczego widzę niektórych aktualizacji w aktualizacji Windows wyniki uzyskane za pośrednictwem interfejsu API REST, ale nie w obszarze Historia Windows Update na komputerze?**
 
 A. Niektóre aktualizacje produktu pojawią się tylko w ich historii odpowiednich aktualizacji/poprawek. Na przykład aktualizacje programu Windows Defender może lub nie może być wyświetlany w historii aktualizacji Windows w systemie Windows Server 2016.
 
-PYTANIA I ODPOWIEDZI. **Może służyć do poprawiania Mój klaster dev (klastra z jednym węzłem) Orkiestracji poprawek aplikacji?**
+PYTANIE: **Może służyć do poprawiania Mój klaster dev (klastra z jednym węzłem) Orkiestracji poprawek aplikacji?**
 
 A. Nie, Patch orchestration aplikacji nie może służyć do klastra z jednym węzłem poprawki. To ograniczenie jest zgodne z projektem, jako [usługi usługi systemowe Service fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) lub wszystkie aplikacje klienta będzie może wystąpić Przestój, a więc wszystkie zadania naprawy dla stosowania poprawek nigdy nie będzie zatwierdzenia przez Menedżera naprawy.
 
@@ -391,6 +391,10 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 - Naprawienie usterki w procesie tworzenia zadań Menedżera zasobów z powodu której kondycji wyboru podczas przygotowywania zadania naprawy nie działa zgodnie z oczekiwaniami.
 - Zmienić trybu uruchamiania dla usługi systemu windows POANodeSvc z auto opóźnione automatycznie.
 
-### <a name="version-121-latest"></a>Wersji 1.2.1 (Najnowsza wersja)
+### <a name="version-121"></a>Wersji 1.2.1
 
 - Naprawienie usterki w dół klastra w przepływie pracy. Wprowadzono logikę kolekcji wyrzucania elementów POA naprawy zadania należące do nieistniejącej węzłów.
+
+### <a name="version-122-latest"></a>Wersja 1.2.2 (Najnowsza wersja)
+
+- Różne poprawki.

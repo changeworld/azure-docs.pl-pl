@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345947"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054408"
 ---
 # <a name="what-is-the-access-panel"></a>Co to jest panelu dostępu?
 
@@ -79,7 +79,7 @@ Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć ro
 - Zaloguj się do aplikacji bezpośrednio za pomocą aplikacji **adres URL logowania**. Korzystając z adresu URL aplikacji, rozszerzenie wykrywa akcji i zapewnia możliwość logowania z rozszerzenia.
 - Aby uruchomić aplikacji z poziomu panelu dostępu za pomocą *szybkie wyszukiwanie* funkcji rozszerzenia. 
 - Rozszerzenie pokazuje ostatnie trzy aplikacje, które można uruchomić **ostatnio używane** sekcji.
-- Możesz użyć firmy wewnętrznych adresów URL, podczas pracy zdalnej za pośrednictwem [serwera Proxy aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)
+- Możesz użyć firmy wewnętrznych adresów URL, podczas pracy zdalnej za pośrednictwem [serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
 > Dodatkowe funkcje są dostępne tylko dla przeglądarki Edge, Chrome i Firefox.
@@ -97,8 +97,8 @@ Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.c
 5. Wybierz **Zaloguj się rozpocząć**.
 
 Aby użyć wewnętrznego firmy adresy URL, podczas pracy zdalnej przy użyciu rozszerzenia, wykonaj następujące czynności:
-1. [Skonfiguruj serwer Proxy aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) w dzierżawie.
-2. [Opublikuj aplikację](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) i adresem URL za pośrednictwem serwera Proxy aplikacji.
+1. [Skonfiguruj serwer Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) w dzierżawie.
+2. [Opublikuj aplikację](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) i adresem URL za pośrednictwem serwera Proxy aplikacji.
 3. Zainstaluj rozszerzenie, a następnie zalogować się w niej, wybierając pozycję Zaloguj się na rozpoczęcie pracy.
 4. Możesz teraz przejść do adresu URL wewnętrzne firmy, nawet w trakcie zdalnego.
 

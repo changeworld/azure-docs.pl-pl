@@ -1,6 +1,6 @@
 ---
-title: Za pomocą portalu wyszukiwania dziennika w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek, który opisuje sposób tworzenia dziennik wyszukiwania i analizowania danych przechowywanych w obszarze roboczym analizy dzienników przy użyciu portalu wyszukiwania dziennika.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników.
+title: Za pomocą portalu przeszukiwania dzienników w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek, w którym opisano sposób tworzenia wyszukiwań w dziennikach i analizowania danych przechowywanych w obszarze roboczym usługi Log Analytics przy użyciu portalu przeszukiwania dzienników.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,41 +11,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8468186d545d7aae484b037f3962b01b0ed4cd2e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127554"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056135"
 ---
-# <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Tworzenie wyszukiwań dziennika w Analiza dzienników Azure przy użyciu portalu wyszukiwania dziennika
+# <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Tworzenie przeszukiwania dzienników w usłudze Azure Log Analytics przy użyciu portalu przeszukiwania dzienników
 
-> [!NOTE]
-> W tym artykule opisano portalu wyszukiwania dziennika w przy użyciu nowego języka zapytań usługi Analiza dzienników Azure.  Możesz dowiedzieć się więcej o nowy język i uzyskać Procedura uaktualniania obszaru roboczego na [uaktualnienia obszaru roboczego analizy dzienników Azure do nowego wyszukiwania dziennika](log-analytics-log-search-upgrade.md).  
->
-> Jeśli nowy język kwerendy nie została ona uaktualniona obszaru roboczego, należy zapoznać się [wyszukiwanie danych przy użyciu dziennika wyszukiwania w analizy dzienników](log-analytics-log-searches.md) Aby uzyskać informacje o bieżącej wersji portalu wyszukiwania dziennika.
+Ten artykuł zawiera samouczek, w którym opisano sposób tworzenia wyszukiwań w dziennikach i analizowania danych przechowywanych w obszarze roboczym usługi Log Analytics przy użyciu portalu przeszukiwania dzienników.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników.  Koncentruje się ona na funkcje w portalu przeszukiwania dzienników, modyfikując zapytanie, zamiast modyfikowania go bezpośrednio.  Szczegółowe informacje na temat bezpośredniego edytowania zapytania, [dokumentacja języka zapytań](https://go.microsoft.com/fwlink/?linkid=856079).
 
-Ten artykuł zawiera samouczek, który opisuje sposób tworzenia dziennik wyszukiwania i analizowania danych przechowywanych w obszarze roboczym analizy dzienników przy użyciu portalu wyszukiwania dziennika.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników.  Głównie funkcji w portalu wyszukiwania dziennika modyfikowania zapytania, a nie ich modyfikować.  Aby uzyskać więcej informacji dotyczących bezpośredniego edytowania zapytania, zobacz [Query Language reference](https://go.microsoft.com/fwlink/?linkid=856079).
-
-Aby utworzyć wyszukiwania w portalu analityka zaawansowane zamiast portalu wyszukiwania dziennika, zobacz [wprowadzenie do korzystania z portalu usługi analiza](https://go.microsoft.com/fwlink/?linkid=856587).  Obu portalach używany ten sam język kwerendy można uzyskać dostępu do tych samych danych, w obszarze roboczym analizy dzienników.
+Aby utworzyć wyszukiwania w portalu analizy zaawansowanej zamiast portalu przeszukiwania dzienników, zobacz [rozpoczęcie korzystania z portalu usługi analiza](https://go.microsoft.com/fwlink/?linkid=856587).  Obu portalach umożliwia dostęp do tych samych danych w obszarze roboczym usługi Log Analytics na ten sam język zapytań.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że masz już obszar roboczy analizy dzienników z co najmniej jedno źródło połączonych, który generuje dane dla zapytań do analizowania.  
+Ten samouczek zakłada, że masz już obszar roboczy usługi Log Analytics przy użyciu co najmniej jedno źródło połączonych, która generuje dane dla zapytania do analizy.  
 
-- Jeśli nie masz obszaru roboczego, możesz utworzyć bezpłatne przy użyciu procedury na [Rozpoczynanie pracy z obszaru roboczego analizy dzienników](log-analytics-get-started.md).
-- Co najmniej jednego połączenia [agenta Windows](log-analytics-windows-agent.md) lub [agenta systemu Linux](log-analytics-linux-agents.md) do obszaru roboczego.  
+- Jeśli nie masz obszaru roboczego, możesz utworzyć za darmo, korzystając z procedury w [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](log-analytics-get-started.md).
+- Co najmniej jednego połączenia [Windows agent](log-analytics-windows-agent.md) lub jeden [agenta systemu Linux](log-analytics-linux-agents.md) do obszaru roboczego.  
 
 ## <a name="open-the-log-search-portal"></a>Otwieranie portalu do wyszukiwania w dziennikach
 Zacznij od otwarcia portalu do wyszukiwania w dziennikach. 
 
 1. Otwórz witrynę Azure Portal.
-2. Przejdź do analizy dzienników i wybierz obszar roboczy.
-3. Wybierz **dziennika wyszukiwania**.
+2. Przejdź do usługi Log Analytics i wybierz swój obszar roboczy.
+3. Wybierz **wyszukiwania w dzienniku**.
 
-![Przycisk wyszukiwania dziennika](media/log-analytics-log-search-log-search-portal/log-search-button.png)
+![Przycisk Wyszukiwanie w dziennikach](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>Tworzenie prostego wyszukiwania
 Najszybszym sposobem pobrania danych do pracy jest użycie prostego zapytania zwracającego wszystkie rekordy w tabeli.  Jeśli z obszarem roboczym są połączeni jacyś klienci z systemem Windows lub Linux, istnieją dane w tabeli Event („Zdarzenie”, system Windows) lub Syslog („Dziennik systemu”, system Linux).
@@ -68,16 +63,16 @@ Wyświetlanych jest tylko kilka pierwszych właściwości każdego rekordu.  Kli
 ![Szczegóły rekordu](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
 
 ## <a name="set-the-time-scope"></a>Ustaw zakres czasu
-Każdy rekord zebrane przez analizy dzienników ma **TimeGenerated** właściwość, która zawiera Data i godzina utworzenia rekordu.  Zapytania w portalu wyszukiwania dziennika zwraca tylko rekordy z **TimeGenerated** w zakresie czasu, który jest wyświetlany po lewej stronie ekranu.  
+Każdy rekord zebrane przez usługę Log Analytics ma **TimeGenerated** właściwość, która zawiera datę i godzinę utworzenia rekordu.  Zapytania w portalu przeszukiwania dzienników zwraca tylko rekordy z **TimeGenerated** w zakresie czasu, który jest wyświetlany po lewej stronie ekranu.  
 
-Filtr czasu można zmienić, wybierając z menu rozwijanego albo modyfikując suwaka.  Suwak Wyświetla wykres słupkowy przedstawiający względną liczbę rekordów dla każdego segmentu czasu w zakresie.  Ten segment będą się różnić w zależności od zakresu.
+Filtr czasu można zmienić, wybierając przycisk listy rozwijanej lub modyfikując suwaka.  Suwak Wyświetla wykres słupkowy pokazujący względną liczbę rekordów dla każdego segmentu czasu w zakresie.  Ten segment różnią się w zależności od zakresu.
 
-Domyślny zakres czasu to **1 dzień**.  Zmień tę wartość na **7 dni**, i zwiększyć całkowita liczba rekordów.
+Domyślny zakres czasu jest **1 dzień**.  Zmienić tę wartość na **7 dni**, i zwiększyć całkowitej liczbie rekordów.
 
 ![Zakres czasu daty](media/log-analytics-log-search-log-search-portal/log-search-portal-03.png)
 
 ## <a name="filter-results-of-the-query"></a>Filtrowanie wyników zapytania
-Po lewej stronie ekranu znajduje się okienko filtrowania, które pozwala dodać filtrowanie do zapytania bez modyfikowania go bezpośrednio.  Kilka właściwości zwracanych rekordów są wyświetlane z wartościami pierwszych dziesięciu z ich liczba rekordów.
+Po lewej stronie ekranu znajduje się okienko filtrowania, które pozwala dodać filtrowanie do zapytania bez modyfikowania go bezpośrednio.  Kilka właściwości zwracanych rekordów są wyświetlane z wartościami dziesięć z ich liczba rekordów.
 
 Jeśli pracujesz z tabelą **Event** (Zdarzenie), zaznacz pole wyboru obok pozycji **Error** (Błąd) w obszarze **EVENTLEVELNAME** (Nazwa zdarzenia).   Jeśli pracujesz z tabelą **Syslog** (Dziennik systemu), zaznacz pole wyboru obok pozycji **err** (Błąd) w obszarze **SEVERITYLEVEL** (Poziom ważności).  Spowoduje to zmianę zapytania na jedno z następujących w celu ograniczenia wyników do zdarzeń błędów.
 
@@ -96,11 +91,11 @@ Dodaj właściwości do okienka filtrowania, wybierając pozycję **Dodaj do fil
 
 Ten sam filtr można ustawić, wybierając pozycję **Filtruj** z menu właściwości rekordu z wartością do odfiltrowania.  
 
-Masz tylko **filtru** opcji dla właściwości o nazwie ich w kolorze niebieskim.  Są to pola *z możliwością wyszukiwania*, które są indeksowane na potrzeby warunków wyszukiwania.  Pola oznaczone kolorem szarym są polami *wyszukiwania dowolnego tekstu*, dla których jest dostępna tylko opcja **Pokaż odwołania**.  Ta opcja zwraca rekordy, dla których ta wartość istnieje w dowolnej właściwości.
+Masz tylko **filtru** opcję właściwości, których nazwy są w kolorze niebieskim.  Są to pola *z możliwością wyszukiwania*, które są indeksowane na potrzeby warunków wyszukiwania.  Pola oznaczone kolorem szarym są polami *wyszukiwania dowolnego tekstu*, dla których jest dostępna tylko opcja **Pokaż odwołania**.  Ta opcja zwraca rekordy, dla których ta wartość istnieje w dowolnej właściwości.
 
 ![Menu filtrowania](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-Wyniki można grupować według pojedynczej właściwości, wybierając opcję **Grupuj według** z menu rekordu.  Spowoduje to dodanie do zapytania operatora [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) wyświetlającego wyniki na wykresie.  Można grupować według więcej niż jednej właściwości, ale w tym celu trzeba edytować zapytanie bezpośrednio.  Następnie wybierz menu rekordu **komputera** właściwości i wybierz **Grupuj według "Komputer"**.  
+Wyniki można grupować według pojedynczej właściwości, wybierając opcję **Grupuj według** z menu rekordu.  Spowoduje to dodanie do zapytania operatora [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) wyświetlającego wyniki na wykresie.  Można grupować według więcej niż jednej właściwości, ale w tym celu trzeba edytować zapytanie bezpośrednio.  Wybierz menu rekordu obok właściwości **Computer** (Komputer) i wybierz pozycję **Grupuj według „Computer”**.  
 
 ![Grupowanie według komputerów](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
@@ -130,7 +125,7 @@ Grupuj według kolumny przez przeciągnięcie nagłówka kolumny do góry listy 
 
 
 ## <a name="work-with-performance-data"></a>Praca z danymi wydajności
-Dane wydajności dla agentów systemów Windows i Linux są przechowywane w obszarze roboczym usługi Log Analytics w tabeli **Perf**.  Rejestruje wydajności wyglądać podobnie jak dowolny inny rekord i firma Microsoft może zapisywać prostego zapytania, która zwraca wszystkie rekordy wydajności, podobnie jak ze zdarzeniami.
+Dane wydajności dla agentów systemów Windows i Linux są przechowywane w obszarze roboczym usługi Log Analytics w tabeli **Perf**.  Rekordy wydajności wyglądają podobnie jak dowolne inne rekordy i napiszemy proste zapytanie, które zwróci wszystkie rekordy wydajności, podobnie jak zdarzenia.
 
 ```
 Perf
@@ -164,5 +159,5 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o język zapytań usługi Analiza dzienników w [wprowadzenie do korzystania z portalu usługi analiza](https://go.microsoft.com/fwlink/?linkid=856079).
-- Przewodnik po użyciu samouczka [portal analityka zaawansowane](https://go.microsoft.com/fwlink/?linkid=856587) co pozwala na tej samej kwerend i dostęp do tych samych danych jako portal wyszukiwania dziennika.
+- Dowiedz się więcej o języku zapytań usługi Log Analytics w [rozpoczęcie korzystania z portalu usługi analiza](https://go.microsoft.com/fwlink/?linkid=856079).
+- Przeprowadzenie samouczek przy użyciu [portalu analizy zaawansowanej](https://go.microsoft.com/fwlink/?linkid=856587) pozwalający na uruchamianie tego samego zapytania i dostęp do tych samych danych, co portalu przeszukiwania dzienników.

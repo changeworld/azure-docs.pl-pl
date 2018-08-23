@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714489"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061039"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -38,7 +38,7 @@ Ten błąd występuje, jeśli nazwa zasobu poświadczeń jest nieprawidłowa lub
 
 Aby można było określić, na czym polega problem, wykonaj następujące czynności:  
 
-1. Upewnij się, że nie masz żadnych znaków specjalnych, w tym ** @ ** znaków w nazwie zasobu poświadczeń usługi Automation, którego używasz do połączenia z platformą Azure.  
+1. Upewnij się, że nie masz żadnych znaków specjalnych, w tym **@** znaków w nazwie zasobu poświadczeń usługi Automation, którego używasz do połączenia z platformą Azure.  
 2. Sprawdź, czy można użyć nazwy użytkownika i hasła, które są przechowywane w poświadczeniach usługi Azure Automation w edytorze lokalnym środowisku PowerShell ISE. Można to zrobić, uruchamiając następujące polecenia cmdlet w środowisku PowerShell ISE:  
 
    ```powershell
@@ -137,7 +137,43 @@ Ten błąd może być spowodowany przy użyciu nieaktualnych moduły platformy A
 
 Ten błąd można rozwiązać, aktualizując swoje moduły platformy Azure do najnowszej wersji.
 
-Na koncie usługi Automation kliknij **modułów**i kliknij przycisk **modułów Azure aktualizacji**. Aktualizacja trwa około 15 minut, po pełną ponownie uruchomić element runbook, który został kończy się niepowodzeniem.
+Na koncie usługi Automation kliknij **modułów**i kliknij przycisk **modułów Azure aktualizacji**. Aktualizacja trwa około 15 minut, po pełną ponownie uruchomić element runbook, który został kończy się niepowodzeniem. Aby dowiedzieć się więcej o aktualizowaniu moduły, zobacz [modułów Azure aktualizacji w usłudze Azure Automation](../automation-update-azure-modules.md).
+
+### <a name="child-runbook-auth-failure"></a>Scenariusz: Podrzędny element runbook nie powiodło się podczas pracy z wieloma subskrypcjami
+
+#### <a name="issue"></a>Problem
+
+Podczas wykonywania podrzędne elementy runbook za pomocą `Start-AzureRmRunbook`, podrzędny element runbook nie może zarządzać zasobami platformy Azure.
+
+#### <a name="cause"></a>Przyczyna
+
+Podrzędny element runbook nie używa poprawny kontekst podczas uruchamiania.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Podczas pracy z wieloma subskrypcjami kontekstu subskrypcji mogą zostać utracone podczas wywoływania podrzędnych elementów runbook. Aby upewnić się, że kontekstu subskrypcji jest przekazywany do podrzędnych elementów runbook, należy dodać `DefaultProfile` parametru do polecenia cmdlet i przekazać kontekst do niego.
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>Scenariusz: Element runbook zakończy się niepowodzeniem ze względu na brak polecenia cmdlet
 
@@ -189,6 +225,8 @@ Dowolne z poniższych rozwiązań rozwiązać ten problem:
 * Sugerowane metody do pracy w ramach limitu pamięci są podziału obciążenia między wiele elementów runbook, nie chcesz przetworzyć tak dużej ilości danych w pamięci, aby nie zapisywać niepotrzebne dane wyjściowe z elementami runbook lub należy wziąć pod uwagę liczbę punktów kontrolnych zapis do Twojego przepływu pracy programu PowerShell elementy runbook.  
 
 * Aktualizuj moduły platformy Azure przez wykonanie kroków [jak aktualizowanie modułów programu Azure PowerShell w usłudze Azure Automation](../automation-update-azure-modules.md).  
+
+* Innym rozwiązaniem jest uruchomienie elementu runbook na [hybrydowego procesu roboczego Runbook](../automation-hrw-run-runbooks.md). Hybrydowe procesy robocze nie są ograniczone przez [udział](../automation-runbook-execution.md#fair-share) ogranicza czy piaskownic platformy Azure.
 
 ### <a name="fails-deserialized-object"></a>Scenariusz: Element Runbook nie powiodło się z powodu zdeserializowany obiekt
 
@@ -309,7 +347,7 @@ Niektóre typowe przyczyny, które moduł nie może pomyślnie zaimportować do 
 
 Dowolne z poniższych rozwiązań rozwiązać ten problem:
 
-* Upewnij się, że moduł następuje w następującym formacie: ModuleName.Zip ** -> ** ModuleName lub numer wersji ** -> ** (ModuleName.psm1, ModuleName.psd1)
+* Upewnij się, że moduł następuje w następującym formacie: ModuleName.Zip **->** ModuleName lub numer wersji **->** (ModuleName.psm1, ModuleName.psd1)
 * Otwórz plik psd1 i sprawdzić, czy moduł wszelkie zależności. Jeśli tak jest, należy przekazać te moduły, do konta usługi Automation.
 * Upewnij się, że wszystkie odwołania dll debuggle znajdują się w folderze modułu.
 

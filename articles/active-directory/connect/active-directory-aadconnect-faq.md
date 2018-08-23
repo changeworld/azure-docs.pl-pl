@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264999"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056291"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -65,7 +65,7 @@ Aby zachować ich prostotę, zaleca się użytkownicy, którzy instalują progra
 Całe oprogramowanie sieciowe, urządzenia fizyczne lub jakichkolwiek innych czynności, która ogranicza maksymalny czas, w którym połączenia mogą pozostawać otwarte, należy używać równy co najmniej pięć minut (300 sekund) dla łączności między serwerem, na którym jest zainstalowany klient programu Azure AD Connect i Azure Active Directory. To zalecenie dotyczy także wszystkie wcześniej wydanych narzędzia synchronizacji Microsoft Identity.
 
 **P: czy domen z nazwą (domeny drugiego poziomu) obsługiwane?**  
-Chociaż zaleca się względem tej konfiguracji sieci ([artykuł](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), za pomocą synchronizacji programu Azure AD Connect z nazwą domeny jest obsługiwany, tak długo, jak działa konfiguracja sieci dla jednej domeny poziomu poprawnie.
+Chociaż zaleca się względem tej konfiguracji sieci ([artykuł](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)), za pomocą synchronizacji programu Azure AD Connect z nazwą domeny jest obsługiwany, tak długo, jak działa konfiguracja sieci dla jednej domeny poziomu poprawnie.
 
 **P: czy lasów z rozłączną domeny usługi AD obsługiwane?**  
 Nie, usługa Azure AD Connect nie obsługuje lokalnymi lasami, które zawierają rozłączne przestrzenie nazw.
@@ -91,8 +91,8 @@ Nie. Zmiana nazwy serwera renderuje aparatem synchronizacji nie może połączy�
 **Pytanie: Dlaczego atrybut userPrincipalName (UPN) w usłudze Azure AD nie zgodne lokalnymi nazwami UPN?**  
 Aby uzyskać informacje zobacz następujące artykuły:
 
-* [Nazwy użytkowników w usłudze Office 365, Azure lub Intune nie są zgodne lokalnymi nazwami UPN lub alternatywnym Identyfikatorem logowania](https://support.microsoft.com/en-us/kb/2523192)
-* [Zmiany nie są synchronizowane przez narzędzie do synchronizacji usługi Azure Active Directory, po zmianie nazwy UPN konta użytkownika do użycia z innej domeny federacyjnej](https://support.microsoft.com/en-us/kb/2669550)
+* [Nazwy użytkowników w usłudze Office 365, Azure lub Intune nie są zgodne lokalnymi nazwami UPN lub alternatywnym Identyfikatorem logowania](https://support.microsoft.com/kb/2523192)
+* [Zmiany nie są synchronizowane przez narzędzie do synchronizacji usługi Azure Active Directory, po zmianie nazwy UPN konta użytkownika do użycia z innej domeny federacyjnej](https://support.microsoft.com/kb/2669550)
 
 Można również skonfigurować usługi Azure AD, aby umożliwić aparatu synchronizacji można zaktualizować nazwy UPN, zgodnie z opisem w [funkcji Usługa synchronizacji Azure AD Connect](active-directory-aadconnectsyncservice-features.md).
 
@@ -134,11 +134,11 @@ Aby uruchomić skrypt programu PowerShell [Pobierz skrypt](https://aka.ms/repair
 
 Aby ręcznie przeprowadzić uaktualnienie, musisz pobrać i uruchomić najnowszą wersję pliku AADConnect.msi.
  
--  Jeśli Twoja bieżąca wersja jest starsza niż 1.1.750.0, [pobierania i przeprowadzić uaktualnienie do najnowszej wersji](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+-  Jeśli Twoja bieżąca wersja jest starsza niż 1.1.750.0, [pobierania i przeprowadzić uaktualnienie do najnowszej wersji](https://www.microsoft.com/download/details.aspx?id=47594).
 - Jeśli wersja usługi Azure AD Connect jest 1.1.750.0 lub później, są wymagane nie dalsze działania. Już używasz wersji, który zawiera poprawkę automatyczną aktualizację. 
 
 **P: czy mogę Odebrano wiadomość e-mail z informacją, aby uaktualnić do najnowszej wersji, aby ponownie włączyć automatyczne uaktualnianie. Używam wersji 1.1.654.0. Należy uaktualnić?**  
-Tak, musisz uaktualnić do wersji 1.1.750.0 lub nowszej, aby ponownie włączyć automatyczne uaktualnianie. [Pobierz i przeprowadzić uaktualnienie do najnowszej wersji](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+Tak, musisz uaktualnić do wersji 1.1.750.0 lub nowszej, aby ponownie włączyć automatyczne uaktualnianie. [Pobierz i przeprowadzić uaktualnienie do najnowszej wersji](https://www.microsoft.com/download/details.aspx?id=47594).
 
 **P: czy mogę Odebrano wiadomość e-mail z informacją, aby uaktualnić do najnowszej wersji, aby ponownie włączyć automatyczne uaktualnianie. Jeśli masz używany programu PowerShell umożliwia automatyczne uaktualnianie, nadal należy zainstalować najnowszą wersję?**  
 Tak, nadal należy do uaktualnienia do wersji 1.1.750.0 lub nowszej. Włączanie usługi automatyczną aktualizację przy użyciu programu PowerShell nie chroni przed znalezione w wersjach starszych niż 1.1.750.0 problemy automatycznej aktualizacji.
@@ -190,7 +190,7 @@ Jeśli potrzebujesz pomocy, uaktualnienie do nowszej wersji programu Azure AD Co
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 **P: jak mogę uzyskać pomoc przy użyciu usługi Azure AD Connect?**
 
-[Wyszukiwanie w bazie wiedzy Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Wyszukiwanie w bazie wiedzy Microsoft Knowledge Base (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * Wyszukaj KB dla rozwiązań technicznych typowych problemów wymagających usunięcia awarii dotyczące pomocy technicznej dla usługi Azure AD Connect.
 

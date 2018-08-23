@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264965"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061725"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 Ten artykuł zawiera informacje o krokach można skonfigurować raportów dla usługi Azure Backup przy użyciu magazynu usługi Recovery Services i dostępu do tych raportów przy użyciu usługi Power BI. Po wykonaniu tych kroków, możesz bezpośrednio przejść do usługi Power BI, aby wyświetlić wszystkie raporty, dostosowywanie i tworzenie raportów. 
@@ -26,7 +26,7 @@ Ten artykuł zawiera informacje o krokach można skonfigurować raportów dla us
 4. Częstotliwość zaplanowanego odświeżania raportów wynosi 24 godziny w usłudze Power BI. Odświeżanie zapytań ad-hoc raportów można również wykonać w usłudze Power BI, w którym wielkość najnowsze dane na koncie magazynu klienta jest używany do renderowania raportów. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Tworzenie [konta usługi Azure storage](../storage/common/storage-create-storage-account.md#create-a-storage-account) ją skonfigurować do raportów. To konto magazynu jest używane do przechowywania danych powiązanych raportów.
+1. Tworzenie [konta usługi Azure storage](../storage/common/storage-quickstart-create-account.md) ją skonfigurować do raportów. To konto magazynu jest używane do przechowywania danych powiązanych raportów.
 2. [Utwórz konto usługi Power BI](https://powerbi.microsoft.com/landing/signin/) wyświetlić, dostosowywanie i tworzenie własnych raportów za pomocą portalu usługi Power BI.
 3. Zarejestruj dostawcę zasobów **Microsoft.insights** czy już nie zarejestrowane, subskrypcja konta magazynu, a także subskrypcji magazynu usług Recovery Services, aby włączyć raportowanie przepływ do magazynu danych konto. Aby zrobić to samo, należy przejść do witryny Azure portal > subskrypcji > dostawcy zasobów i wyboru dla tego dostawcy go zarejestrować. 
 

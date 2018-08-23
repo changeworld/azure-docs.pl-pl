@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
+ms.date: 08/21/2018
 ms.author: rithorn
-ms.openlocfilehash: 13eea4f2b5125d7ab25b05a9e20021ebc6a2e0c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 114c3c03b49468b6130243bbf9f881a5de42740f
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435377"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056526"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -27,7 +27,7 @@ Pierwsza grupa zarządzania tworzony w katalogu może potrwać do 15 minut. Brak
 
 ## <a name="create-a-management-group"></a>Utwórz grupę zarządzania
 
-Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy Azure, można utworzyć grupy zarządzania.
+Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy Azure, można utworzyć grupy zarządzania. Obecnie nie możesz użyć szablonów usługi Resource Manager do tworzenia grup zarządzania.
 
 ### <a name="create-in-portal"></a>Tworzenie w portalu
 

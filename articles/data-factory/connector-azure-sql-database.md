@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 59a48d06ca3c3bced73ed4043691b33784a4f81a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ce3a3d28a25c8e904eeebbfc4cf68003fdda07a5
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006031"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443636"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -66,6 +66,9 @@ Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotycz
 - [Uwierzytelnianie usługi Azure AD aplikacji token: Nazwa główna usługi](#service-principal-authentication)
 - [Uwierzytelnianie usługi Azure AD aplikacji tokenu: tożsamość usługi zarządzanej](#managed-service-identity-authentication)
 
+>[!TIP]
+>Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
+
 ### <a name="sql-authentication"></a>Uwierzytelnianie SQL
 
 #### <a name="linked-service-example-that-uses-sql-authentication"></a>Przykład połączonej usługi, który używa uwierzytelniania SQL
@@ -93,15 +96,15 @@ Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotycz
 
 Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi Azure AD, wykonaj następujące kroki:
 
-1. **[Tworzenie aplikacji usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) ** w witrynie Azure portal. Zanotuj nazwę aplikacji i następujące wartości, które definiują połączonej usługi:
+1. **[Tworzenie aplikacji usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  w witrynie Azure portal. Zanotuj nazwę aplikacji i następujące wartości, które definiują połączonej usługi:
 
     - Identyfikator aplikacji
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) ** dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD, musisz być użytkownika usługi Azure AD lub grupy usługi Azure AD, ale nie może być nazwy głównej usługi. W tym kroku odbywa się tak, aby w następnym kroku można użyć tożsamości usługi Azure AD, aby utworzyć użytkownika zawartej bazy danych dla usługi jednostkę.
+1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD, musisz być użytkownika usługi Azure AD lub grupy usługi Azure AD, ale nie może być nazwy głównej usługi. W tym kroku odbywa się tak, aby w następnym kroku można użyć tożsamości usługi Azure AD, aby utworzyć użytkownika zawartej bazy danych dla usługi jednostkę.
 
-1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) ** dla jednostki usługi. Łączenie z bazą danych z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL: 
+1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  dla jednostki usługi. Łączenie z bazą danych z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL: 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -159,9 +162,9 @@ Aby użyć uwierzytelniania tokenu aplikacji opartych na MSI usługi Azure AD, w
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) ** dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD może być użytkownika usługi Azure AD lub grupy usługi Azure AD. Przyznanie grupie za pomocą pliku MSI roli administratora, pomiń kroki 3 i 4. Administrator będą mieć pełny dostęp do bazy danych.
+1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD może być użytkownika usługi Azure AD lub grupy usługi Azure AD. Przyznanie grupie za pomocą pliku MSI roli administratora, pomiń kroki 3 i 4. Administrator będą mieć pełny dostęp do bazy danych.
 
-1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) ** grupy usługi Azure AD. Łączenie z bazą danych z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL: 
+1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  grupy usługi Azure AD. Łączenie z bazą danych z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL: 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;

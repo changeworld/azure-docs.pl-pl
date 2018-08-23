@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601675"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056778"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Biblioteki uwierzytelniania v2.0 usługi Azure Active Directory
 
@@ -44,7 +44,7 @@ Punkt końcowy v2.0 usługi Azure AD działa z dwoma typami biblioteki:
 
 ## <a name="library-support"></a>Obsługa bibliotek
 
-Ponieważ można wybrać wszystkie biblioteki zgodnych ze standardami, korzystając z punktu końcowego v2.0, warto wiedzieć, gdzie szukać pomocy technicznej. Problemy i sugestie funkcji w kodzie biblioteki skontaktuj się z właścicielem biblioteki. Problemy i sugestie funkcji w implementacji protokołu po stronie usługi skontaktuj się z pomocą firmy Microsoft. [Plik wniosek dotyczący funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) dodatkowych funkcji, które chcesz zobaczyć w protokole. [Utwórz żądanie obsługi](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request) Jeśli znajdziesz problem gdzie punktu końcowego v2.0 usługi Azure AD nie jest zgodna z protokołu OAuth 2.0 lub OpenID Connect 1.0.
+Ponieważ można wybrać wszystkie biblioteki zgodnych ze standardami, korzystając z punktu końcowego v2.0, warto wiedzieć, gdzie szukać pomocy technicznej. Problemy i sugestie funkcji w kodzie biblioteki skontaktuj się z właścicielem biblioteki. Problemy i sugestie funkcji w implementacji protokołu po stronie usługi skontaktuj się z pomocą firmy Microsoft. [Plik wniosek dotyczący funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) dodatkowych funkcji, które chcesz zobaczyć w protokole. [Utwórz żądanie obsługi](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Jeśli znajdziesz problem gdzie punktu końcowego v2.0 usługi Azure AD nie jest zgodna z protokołu OAuth 2.0 lub OpenID Connect 1.0.
 
 Biblioteki są dostępne w dwóch kategoriach pomocy technicznej:
 

@@ -10,23 +10,30 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 06/06/2018
 ms.author: bahariri
-ms.openlocfilehash: ce1665c3cfd58d0d5aa8e253b5db317505b1959e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: f0d581ade0b09015bca1c8aee58170ef7aee11eb
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284581"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057080"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Na użytek Apache Flink przy użyciu usługi Azure Event Hubs platformy Apache Kafka
+W tym samouczku dowiesz się, jak Apache Flink łączyć się z centrów zdarzeń z obsługą platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Azure Event Hubs obsługuje [platformy Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html).
 
 Jednym z kluczowych korzyści z używania platformy Apache Kafka jest ekosystemu platform, którymi można nawiązać. Platforma Kafka łączy usługi Event Hubs swobodne korzystanie z platformy Kafka z włączoną skalowalności, spójności i obsługa ekosystem platformy Azure.
 
-W tym samouczku dowiesz się, jak Apache Flink łączyć się z centrów zdarzeń z obsługą platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Azure Event Hubs obsługuje [platformy Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Event Hubs
+> * Sklonuj projekt przykładowy
+> * Uruchom Flink producenta 
+> * Uruchom Flink konsumenta
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka, upewnij się, że masz następujące wymagania wstępne:
 
+* Zapoznaj się z artykułem [usługi Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) artykułu. 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Zestaw Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
@@ -49,7 +56,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/flink
 ```
 
-## <a name="flink-producer"></a>Producent Flink
+## <a name="run-flink-producer"></a>Uruchom Flink producenta
 
 Korzystając z podanego przykładu producenta Flink, wysyłają komunikaty do usługi Event Hubs.
 
@@ -80,7 +87,7 @@ mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 
 Producent rozpocznie się teraz na temat wysyłania zdarzeń do Kafka włączone Centrum zdarzeń `test` i drukowanie zdarzenia do strumienia wyjściowego stdout.
 
-## <a name="flink-consumer"></a>Konsument Flink
+## <a name="run-flink-consumer"></a>Uruchom Flink konsumenta
 
 Korzystając z przykładu podana konsumenta odbierają wiadomości ze Kafka włączone usługi Event Hubs.
 
@@ -114,8 +121,15 @@ Jeśli Centrum zdarzeń z obsługą platformy Kafka zdarzeń (na przykład, jeś
 Zapoznaj się z [przewodnik dotyczący łącznika platformy Kafka w Flink](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) więcej szczegółowych informacji na temat łączenia Flink do platformy Kafka.
 
 ## <a name="next-steps"></a>Kolejne kroki
+W tym samouczku swoje nauczony jak Apache Flink łączyć się z centrów zdarzeń z obsługą platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Poniższe kroki są wykonywane w ramach tego samouczka: 
 
-* [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Dowiedz się więcej o usłudze Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-* Użyj narzędzia [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330), aby [przesyłać strumieniowo zdarzenia z lokalnego środowiska platformy Kafka do usługi Event Hubs z obsługą platformy Kafka w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
-* Dowiedz się, jak przesyłać strumieniowo do platformy Kafka włączone za pomocą usługi Event Hubs [natywnych aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md) lub [strumieni Akka](event-hubs-kafka-akka-streams-tutorial.md).
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Event Hubs
+> * Sklonuj projekt przykładowy
+> * Uruchom Flink producenta 
+> * Uruchom Flink konsumenta
+
+Przejdź do następnego artykułu, aby dowiedzieć się więcej o usłudze Event Hubs dla platformy Apache Kafka:
+
+> [!div class="nextstepaction"]
+> [Strumienie Akka korzystanie z usługi Azure Event Hubs dla platformy Kafka](event-hubs-kafka-akka-streams-tutorial.md)

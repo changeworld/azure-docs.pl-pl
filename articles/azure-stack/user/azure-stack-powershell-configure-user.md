@@ -1,9 +1,9 @@
 ---
-title: Konfigurowanie środowiska PowerShell użytkownika stosu Azure | Dokumentacja firmy Microsoft
-description: Konfigurowanie środowiska PowerShell użytkownika Azure stosu
+title: Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
@@ -12,99 +12,86 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/15/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: bcd1c53221028a852550fa429abcb9f8e9523ed4
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d8b245666989552208f8cbcf0dddfdfc310f65e0
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752425"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059707"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurowanie środowiska PowerShell użytkownika Azure stosu
+# <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Do konfigurowania środowiska PowerShell dla użytkownika stosu Azure, wykonaj instrukcje w tym artykule.
-Po skonfigurowaniu środowiska może zarządzać zasobami stosu Azure za pomocą programu PowerShell. Na przykład umożliwia PowerShell subskrybować oferty, Tworzenie maszyn wirtualnych i wdrażanie szablonów usługi Azure Resource Manager.
+Ten artykuł zawiera kroki, aby nawiązać połączenie z wystąpieniem usługi Azure Stack. Należy połączyć do zarządzania zasobami usługi Azure Stack przy użyciu programu PowerShell. Na przykład można użyć programu PowerShell do subskrybować oferty, Tworzenie maszyn wirtualnych i wdrażania szablonów usługi Azure Resource Manager. Aby można było wykonać polecenia cmdlet programu PowerShell.
 
->[!NOTE]
->W tym artykule znajduje się w zakresie stosu Azure środowiska użytkownika. Ustanowienie środowiska PowerShell dla operatora środowiska chmury, zapoznaj się [konfigurowania środowiska PowerShell operator stosu Azure](../azure-stack-powershell-configure-admin.md) artykułu.
+Aby skonfigurować:
+  - Upewnij się, że masz wymagania.
+  - Połącz się z usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS). 
+  - Zarejestruj dostawców zasobów.
+  - Przetestuj połączenie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Możesz skonfigurować te składniki z [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klienta zewnętrznych w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Można skonfigurować następujące wstępnie wymagane składniki z [deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
-* Zainstaluj [modułów programu Azure PowerShell platformy Azure zgodnego stosu](azure-stack-powershell-install.md).
-* Pobierz [narzędzia niezbędne do pracy z stosu Azure](azure-stack-powershell-download.md).
+* Zainstaluj [modułów programu Azure PowerShell dla usługi Azure Stack zgodnego](azure-stack-powershell-install.md).
+* Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md).
 
-## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Konfigurowanie środowiska użytkownika i zaloguj się do stosu Azure
+Upewnij się, że należy zastąpić następujące zmienne skryptu wartości z konfiguracji usługi Azure Stack:
 
-Na podstawie typu wdrożenia stosu Azure (Azure AD lub AD FS), uruchom jedno z poniższych skryptów można skonfigurować programu PowerShell dla usługi Azure stosu.
+- **Nazwa dzierżawy usługi Azure AD**  
+  Nazwa dzierżawy usługi Azure AD używany do zarządzania usługi Azure Stack, na przykład yourdirectory.onmicrosoft.com.
+- **Punkt końcowy usługi Azure Resource Manager**  
+  Dla zestawu SDK usługi Azure Stack, ta wartość jest równa https://management.local.azurestack.external. Aby zyskać tę wartość dla usługi Azure Stack zintegrowane systemy, skontaktuj się z dostawcą usług.
 
-Upewnij się, że następujące zmienne skryptu zastąpić wartościami z konfiguracji Azure stosu:
+## <a name="connect-with-azure-ad"></a>Łączenie z usługą Azure AD
 
-* TenantName usługi AAD
-* ArmEndpoint
+  ```PowerShell
+  $AADTenantName = "yourdirectory.onmicrosoft.com"
+  $ArmEndpoint = "https://management.local.azurestack.external"
 
-### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) na podstawie wdrożenia
-
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
-
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
-
-  # Register an AzureRM environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
-  $TenantID = Get-AzsDirectoryTenantId `
-    -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID
+    -TenantId $TenantId
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Wdrożenia na podstawie usługi Active Directory Federation Services (AD FS)
+## <a name="connect-with-ad-fs"></a>Łączenie z usługami AD FS
 
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
+  ```PowerShell  
+  $ArmEndpoint = "https://management.local.azurestack.external"
 
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
-
-  # Register an AzureRM environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
-  $TenantID = Get-AzsDirectoryTenantId `
-    -ADFS `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID
+    -TenantId $tenantId
   ```
 
-## <a name="register-resource-providers"></a>Zarejestruj dostawców zasobów
+## <a name="register-resource-providers"></a>Rejestrowanie dostawcy zasobów
 
-Dostawcy zasobów nie są automatycznie zarejestrowane dla nowej subskrypcji użytkownika, które nie mają żadnych zasobów wdrożone za pośrednictwem portalu. Jawnie można zarejestrować dostawcy zasobów za pomocą następującego skryptu:
+Dostawcy zasobów nie są automatycznie rejestrowane w przypadku nowych subskrypcji użytkownika, które nie mają żadnych zasobów wdrożonych za pośrednictwem portalu. Można jawnie zarejestrować dostawcę zasobów, uruchamiając następujący skrypt:
 
-```powershell
+```PowerShell  
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
@@ -114,13 +101,14 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 
-Jeśli masz wszystko Konfigurowanie testowanie łączności za pomocą programu PowerShell na tworzenie zasobów Azure stosu. Badanie Utwórz grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Uruchom następujące polecenie, aby utworzyć grupę zasobów o nazwie "MyResourceGroup":
+Gdy masz wszystko, konfigurowanie, przetestuj łączność przy użyciu programu PowerShell do tworzenia zasobów w usłudze Azure Stack. Jako test Utwórz grupę zasobów dla aplikacji, a następnie dodaj maszynę wirtualną. Uruchom następujące polecenie, aby utworzyć grupę zasobów o nazwie "MyResourceGroup":
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie szablonów dla stosu Azure](azure-stack-develop-templates.md)
-* [Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)
+- [Tworzenie szablonów usługi Azure Stack](azure-stack-develop-templates.md)
+- [Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)
+- Jeśli chcesz skonfigurować program PowerShell w środowisku — operator chmury, odnoszą się do [Konfigurowanie środowiska PowerShell usługi Azure Stack — operator](../azure-stack-powershell-configure-admin.md) artykułu.

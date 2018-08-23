@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 91d1be062dbf05f4c7c9c5c4a1eb3dfcfdb001af
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144571"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441698"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.
@@ -85,21 +85,26 @@ Administrator dzierżawy usługi Azure Active Directory nie ma bezpośredni dost
 
 5. Wykonaj zadania, które należy wprowadzić w podwyższonego poziomu dostępu. Gdy wszystko będzie gotowe, ustaw przełącznik na **nie**.
 
-### <a name="open-or-refresh-security-center"></a>Otwórz lub Odśwież usługi Security Center
-Gdy mieli podwyższony poziom dostępu, Otwórz lub Odśwież usługę Azure Security Center, aby sprawdzić, czy masz wgląd we wszystkie subskrypcje w ramach dzierżawy usługi Azure AD. 
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-2. Upewnij się, że wybrano wszystkie subskrypcje w selektorze subskrypcji, który chcesz wyświetlić w usłudze Security Center.
-    ![Zrzut ekranu selektor subskrypcji](./media/security-center-management-groups/subscription-selector.png)
-1. Wybierz **wszystkich usług** w menu głównym platformy Azure i w wybierz **usługi Security Center**.
-2. W **Przegląd**, znajduje się wykres pokrycie subskrypcji. 
-    ![Zrzut ekranu wykresu pokrycie subskrypcji](./media/security-center-management-groups/security-center-subscription-coverage.png)
-3. Kliknij pozycję **pokrycia** Aby wyświetlić listę subskrypcji objętych usługą. 
-    ![Zrzut ekranu listy pokrycie subskrypcji](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="assign-rbac-roles-to-users"></a>Przypisz role RBAC do użytkowników
-Gdy administrator dzierżawy ma podwyższonego poziomu dostępu, można przypisać rolę RBAC, do odpowiednich użytkowników na głównym poziomie grupy zarządzania. Zalecaną rolą można przypisać jest [ **czytnika**](../role-based-access-control/built-in-roles.md#reader). Ta rola jest wymagana w celu zapewnienia widoczności na poziomie dzierżawy. Przypisaną rolę będzie automatycznie propagowane do wszystkich grup zarządzania, jak i subskrypcje w ramach głównej grupy zarządzania. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [dostępnych ról](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles). 
+Wgląd do wszystkich subskrypcji, Administratorzy dzierżawy należy przypisać odpowiednie role RBAC do wszystkich użytkowników, które chcą przyznaną widoczność w całej dzierżawie, same, w tym na poziomie grupy zarządzania głównym. Zalecane role można przypisać są albo **Administrator zabezpieczeń** lub **Czytelnik zabezpieczeń**. Ogólnie rzecz biorąc rolę administratora zabezpieczeń jest wymagany do stosowania zasad na poziomie głównym, podczas gdy rola Czytelnik zabezpieczeń wystarczy wgląd na poziomie dzierżawy. Aby uzyskać więcej informacji na temat uprawnień przyznanych przez te role, zobacz [opis wbudowanej roli zabezpieczeń administratora](../role-based-access-control/built-in-roles.md#security-admin) lub [opis wbudowana rola Czytelnik zabezpieczeń](../role-based-access-control/built-in-roles.md#security-reader).
 
+
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Przypisz role RBAC użytkownikom za pośrednictwem witryny Azure portal: 
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+2. Aby wyświetlić grupy zarządzania, wybierz **wszystkich usług** w menu głównym platformy Azure i w wybierz **grup zarządzania**.
+3.  Wybierz grupę zarządzania, a następnie kliknij przycisk **szczegóły**.
+
+    ![Zrzut ekranu szczegóły grupy zarządzania](./media/security-center-management-groups/management-group-details.PNG)
+ 
+4. Kliknij przycisk **kontrola dostępu (IAM)** następnie **Dodaj**.
+5. Wybierz rolę do przypisania i użytkownika, a następnie kliknij przycisk **Zapisz**.  
+   
+   ![Dodaj zrzut ekranu z rolą Czytelnik zabezpieczeń](./media/security-center-management-groups/asc-security-reader.png)
+
+
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Przypisz role RBAC do użytkowników przy użyciu programu PowerShell: 
 1. Zainstaluj program [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 2. Uruchom następujące polecenia: 
 
@@ -128,19 +133,17 @@ Gdy administrator dzierżawy ma podwyższonego poziomu dostępu, można przypisa
     Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-<!-- Currently, PowerShell method only 6/26/18
+### <a name="open-or-refresh-security-center"></a>Otwórz lub Odśwież usługi Security Center
+Gdy mieli podwyższony poziom dostępu, Otwórz lub Odśwież usługę Azure Security Center, aby sprawdzić, czy masz wgląd we wszystkie subskrypcje w ramach dzierżawy usługi Azure AD. 
 
-1. Sign in to the [Azure portal](https://portal.azure.com). 
-2. To view management groups, select **All services** under the Azure main menu then select **Management Groups**.
-3.  Select a management group and click **details**.
-
-    ![Management Groups details screenshot](./media/security-center-management-groups/management-group-details.PNG)
- 
-4. Click **Access control (IAM)** then **Add**.
-5. Select the role to assign and the user, then click **Save**.  
-   
-   ![Add Security Reader role screenshot](./media/security-center-management-groups/asc-security-reader.png)
--->
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+2. Upewnij się, że wybrano wszystkie subskrypcje w selektorze subskrypcji, który chcesz wyświetlić w usłudze Security Center.
+    ![Zrzut ekranu selektor subskrypcji](./media/security-center-management-groups/subscription-selector.png)
+1. Wybierz **wszystkich usług** w menu głównym platformy Azure i w wybierz **usługi Security Center**.
+2. W **Przegląd**, znajduje się wykres pokrycie subskrypcji. 
+    ![Zrzut ekranu wykresu pokrycie subskrypcji](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. Kliknij pozycję **pokrycia** Aby wyświetlić listę subskrypcji objętych usługą. 
+    ![Zrzut ekranu listy pokrycie subskrypcji](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Usuń podwyższonego poziomu dostępu 
 Gdy role RBAC zostały przypisane do użytkowników, administrator dzierżawy należy usunąć samego z roli administrator dostępu użytkownika.

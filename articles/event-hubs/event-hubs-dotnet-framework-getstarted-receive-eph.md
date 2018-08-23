@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 8fbce92c8c703b86d86367f83329cfa853bc5e4d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 15c2ec0aa8b795a826eae29026b7039491dbb64f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003505"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061690"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą programu .NET Framework
 
@@ -164,7 +164,7 @@ Gratulacje! Odebrano komunikaty z centrum zdarzeń za pomocą hosta procesora zd
 
 
 > [!NOTE]
-> Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy [EventProcessorHost][EventProcessorHost]. W celu zwiększenia przepływności zaleca się uruchomienie wielu wystąpień klasy [EventProcessorHost][EventProcessorHost], jak przedstawiono w przykładzie [Skalowanie przetwarzania zdarzeń][Skalowanie przetwarzania zdarzeń]. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych maszyn dobrym rozwiązaniem może być określenie nazw wystąpień klasy [EventProcessorHost][EventProcessorHost] w oparciu o maszyny (lub role), w których są one wdrażane. Więcej informacji można znaleźć w artykułach [Omówienie usługi Azure Event Hubs][Event Hubs overview] i [Event Hubs programming guide][Event Hubs Programming Guide] (Przewodnik programowania w usłudze Event Hubs).
+> Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy [EventProcessorHost][EventProcessorHost]. Aby zwiększyć przepływność, zaleca się uruchomienie wielu wystąpień [EventProcessorHost][EventProcessorHost], jak pokazano na [skalowanie przetwarzania zdarzeń](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) próbki. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych maszyn dobrym rozwiązaniem może być określenie nazw wystąpień klasy [EventProcessorHost][EventProcessorHost] w oparciu o maszyny (lub role), w których są one wdrażane. Więcej informacji można znaleźć w artykułach [Omówienie usługi Azure Event Hubs][Event Hubs overview] i [Event Hubs programming guide][Event Hubs Programming Guide] (Przewodnik programowania w usłudze Event Hubs).
 > 
 > 
 

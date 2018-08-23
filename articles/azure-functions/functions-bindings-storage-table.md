@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 28a6082718080314a769b59c81cf51a20ff7e120
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523669"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055962"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -58,6 +58,7 @@ Zobacz przykład specyficzny dla języka:
 * [C# script powiązania CloudTable](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example---one-entity"></a>Dane wejściowe — przykład C# — jedną jednostkę.
 
@@ -414,6 +415,25 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
+### <a name="input---java-example"></a>Dane wejściowe - przykładzie w języku Java
+
+Poniższy przykład przedstawia funkcję wyzwalaną przez protokół HTTP, która zwraca łączną liczbę elementów w określonej partycji w usłudze Table storage.
+
+```java
+@FunctionName("getallcount")
+public int run(
+   @HttpTrigger(name = "req",
+                 methods = {"get"},
+                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
+   @TableInput(name = "items",
+                tableName = "mytablename",  partitionKey = "myparkey",
+                connection = "myconnvarname") MyItem[] items
+) {
+    return items.length;
+}
+```
+
+
 ## <a name="input---attributes"></a>Dane wejściowe — atrybuty
  
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następujących atrybutów, aby skonfigurować powiązania danych wejściowych w tabeli:
@@ -471,6 +491,10 @@ Konto magazynu do użycia, jest określana w następującej kolejności:
 * `StorageAccount` Zastosowany do funkcji.
 * `StorageAccount` Zastosowany do klasy.
 * Domyślne konto magazynu dla aplikacji funkcji (ustawienie aplikacji "AzureWebJobsStorage").
+
+## <a name="input---java-annotations"></a>Dane wejściowe — Java adnotacji
+
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@TableInput` adnotacji w parametrach, którego wartość może pochodzić z usługi Table storage.  Ta adnotacja mogą być używane z natywnych typów języka Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu opcjonalnie<T>. 
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345961"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057006"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -57,6 +57,9 @@ Platforma Azure obsługuje kilka typów kontroli dostępu do sieci, takich jak:
 ### <a name="network-layer-control"></a>Kontrola warstwy sieci
 
 Wszelkie bezpieczne wdrożenie wymaga niektóre miary kontroli dostępu do sieci. Celem kontroli dostępu do sieci jest ograniczenia komunikacji maszyny wirtualnej na potrzeby systemów. Inne próby komunikacji są blokowane.
+
+>[!NOTE]
+Zapór usługi Storage są objęte [Omówienie zabezpieczeń usługi Azure storage](security-storage-overview.md) artykułu
 
 #### <a name="network-security-rules-nsgs"></a>Reguły zabezpieczeń sieci (NSG)
 
@@ -323,7 +326,6 @@ Można również użyć [Microsoft Power BI](https://powerbi.microsoft.com/what-
 Więcej informacji:
 
 * [Usługa log Analytics dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 

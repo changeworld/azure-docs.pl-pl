@@ -4,7 +4,7 @@ description: Dowiedz się, jak do obsługi zdarzeń usługi Event Grid w usłudz
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715390"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060339"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -53,6 +53,7 @@ Zobacz przykład charakterystyczny dla wyzwalacza usługi Event Grid:
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 Na przykład wyzwalacz protokołu HTTP, zobacz [sposób użycia wyzwalacza HTTP](#use-an-http-trigger-as-an-event-grid-trigger) w dalszej części tego artykułu.
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) wykorzystuje powiązania i zdarzenia do drukowania.
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Oto kodu Java:
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `EventGridTrigger` adnotacji w parametrach, którego wartość może pochodzić z EventGrid. Parametry z tymi adnotacjami spowodować, że funkcja do uruchomienia po odebraniu zdarzenia.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`. 
      
 ## <a name="attributes"></a>Atrybuty
 
@@ -310,7 +341,7 @@ Klucz systemu można uzyskać za pomocą następujący interfejs API (HTTP GET):
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-To jest administratorem interfejsu API, dzięki czemu wymaga Twoja [klucz administratora](functions-bindings-http-webhook.md#authorization-keys). Nie należy mylić klucz systemu (w przypadku wywoływania funkcji wyzwalacza usługi Event Grid) przy użyciu klucza administratora (w przypadku wykonywania zadań administracyjnych na aplikację funkcji). Podczas subskrybowania tematu usługi Event Grid, pamiętaj użyć klucza systemu.
+Umożliwia to administrator interfejsu API wymaga, aby Twoja aplikacja funkcji [klucz główny](functions-bindings-http-webhook.md#authorization-keys). Nie należy mylić klucz systemu (w przypadku wywoływania funkcji wyzwalacza usługi Event Grid) za pomocą klucza głównego (w przypadku wykonywania zadań administracyjnych na aplikację funkcji). Podczas subskrybowania tematu usługi Event Grid, pamiętaj użyć klucza systemu. 
 
 Poniżej przedstawiono przykład odpowiedzi, który zawiera klucz systemu:
 

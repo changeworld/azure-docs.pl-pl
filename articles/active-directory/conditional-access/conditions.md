@@ -2,7 +2,7 @@
 title: Jakie są warunki dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
 description: Dowiedz się, jak używane warunków do wyzwolenia zasad dostępu warunkowego usługi Azure Active Directory.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f5e2051f9c67fa4e37ce0e1213e14e197222f05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627546"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056383"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
-Można kontrolować sposób autoryzowanym użytkownikom aplikacje w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego należy zdefiniować odpowiedź Przyczyna wyzwalanie zasad. Przykładową odpowiedź jest **to zrobić**. Z powodu przykład jest **w takim przypadku**.
+Można kontrolować sposób autoryzowanym użytkownikom aplikacje w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
 
 ![Przyczyna i odpowiedzi](./media/conditions/10.png)
 
@@ -64,15 +64,17 @@ Przeznaczone dla konkretnych zestawów użytkowników jest przydatne w przypadku
 
 ## <a name="cloud-apps"></a>Aplikacje w chmurze 
 
-Aplikacja w chmurze jest witryny sieci Web lub usługi. Witryny sieci Web chronionych przez serwer Proxy aplikacji usługi AD systemu Azure są również aplikacje w chmurze. Aby uzyskać szczegółowy opis obsługiwanymi aplikacjami w chmurze, zobacz [przypisań aplikacji w chmurze](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+Aplikacja w chmurze jest witryny sieci Web lub usługi. Witryny sieci Web chronionych przez serwer Proxy aplikacji usługi AD systemu Azure są również aplikacje w chmurze. Aby uzyskać szczegółowy opis obsługiwanymi aplikacjami w chmurze, zobacz [przypisań aplikacji w chmurze](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
 
 **Aplikacje w chmurze** warunek jest obowiązkowe w zasadach dostępu warunkowego. W zasadach, możesz wybrać operator **wszystkie aplikacje w chmurze** lub wybierz określone aplikacje.
 
 ![Obejmują aplikacje w chmurze](./media/conditions/03.png)
 
-- Wybierz **wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkie aplikacje w chmurze** dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na **Wybierz aplikacje** listy. 
+Wybierz pozycję:
 
-- Wybierz aplikacje w chmurze poszczególnych do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
+- **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkie aplikacje w chmurze** dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na **Wybierz aplikacje** listy. 
+
+- Aplikacje w chmurze poszczególnych do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
 
 Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp. 
 
@@ -80,18 +82,18 @@ Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal po
 
 ## <a name="sign-in-risk"></a>Ryzyko logowania
 
-Ryzyko logowania jest wskaźnikiem wysoki, średni lub niski prawdopodobieństwo, że próba logowania nie zostało wprowadzone przez prawowitym właścicielem konta użytkownika. Usługa Azure AD oblicza poziom ryzyka logowania przez użytkownika użytkownika logowania. Poziom ryzyka obliczeniowe logowania może być warunku w zasadach dostępu warunkowego. 
+Ryzyko logowania jest wskaźnikiem prawdopodobieństwa (wysoki, średni lub niski), że próba logowania nie zostało wprowadzone przez prawowitym właścicielem konta użytkownika. Usługa Azure AD oblicza poziom ryzyka logowania przez użytkownika użytkownika logowania. Można użyć poziomu obliczeniowego ryzyka logowania jako warunku w zasadach dostępu warunkowego.
 
 ![Poziomy ryzyka logowania](./media/conditions/22.png)
 
-Aby użyć tego warunku, musisz mieć [usługi Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable) włączone.
+Aby użyć tego warunku, musisz mieć [usługi Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable) włączone.
  
 Typowe przypadki użycia dla tego warunku są zasady, które mają następujące ochrony: 
 
 - Blokuj użytkownikom wysoki ryzyka logowania. Ta ochrona uniemożliwia potencjalnie innych wiarygodnych użytkownikom uzyskiwanie dostępu do aplikacji w chmurze. 
 - Wymagaj uwierzytelniania wieloskładnikowego dla użytkowników z średniego ryzyka logowania. Wymuszając uwierzytelnianie wieloskładnikowe, możesz podać dodatkowe pewność, że logowanie jest realizowane przez prawowitym właścicielem konta.
 
-Aby uzyskać więcej informacji, zobacz [Ryzykowne logowania](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
+Aby uzyskać więcej informacji, zobacz [Ryzykowne logowania](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
 
 ## <a name="device-platforms"></a>Platformy urządzeń
 
@@ -114,7 +116,7 @@ Warunek stanu urządzenia wyklucza hybrydowe przyłączone do usługi Azure AD, 
 
 ![Skonfiguruj Stany urządzeń](./media/conditions/112.png)
 
-Jeśli chcesz zablokować dostęp dla urządzeń niezarządzanych, zaimplementować [dostępu warunkowego opartego na urządzeniu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Jeśli chcesz zablokować dostęp dla urządzeń niezarządzanych, zaimplementować [dostępu warunkowego opartego na urządzeniu](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 
 ## <a name="locations"></a>Lokalizacje
@@ -148,7 +150,7 @@ Aby uzyskać listę aplikacji klienckich, w których można używać w zasadach 
 
 Typowe przypadki użycia dla tego warunku są zasady za pomocą następujących ochrony: 
 
-- Wymagaj [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dla aplikacji mobilnych i klasycznych, które pobieranie dużych ilości danych na urządzeniu. W tym samym czasie Zezwalaj na dostęp z dowolnego urządzenia za pomocą przeglądarki.
+- Wymagaj [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dla aplikacji mobilnych i klasycznych, które pobieranie dużych ilości danych na urządzeniu. W tym samym czasie Zezwalaj na dostęp z dowolnego urządzenia za pomocą przeglądarki.
 
 - Blokuj dostęp z aplikacji sieci web, ale zezwalaj na dostęp z aplikacji mobilnych i komputerowych.
 
@@ -163,7 +165,7 @@ Wybieranie **programu Exchange ActiveSync** jako klient stan aplikacji jest obs�
  
 ![Zastosuj zasady tylko do obsługiwanych platform](./media/conditions/33.png)
 
-Zastosowanie tego warunku tylko do obsługiwanych platform jest taki sam dla wszystkich platform urządzeń w [warunek platformy urządzenia](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Zastosowanie tego warunku tylko do obsługiwanych platform jest taki sam dla wszystkich platform urządzeń w [warunek platformy urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 ![Konfiguruj platformy urządzeń](./media/conditions/34.png)
 
@@ -172,7 +174,7 @@ Zastosowanie tego warunku tylko do obsługiwanych platform jest taki sam dla wsz
 
 - [Konfigurowanie usługi SharePoint Online i usługi Exchange Online dla dostępu warunkowego usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). 
+- [Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 ### <a name="legacy-authentication"></a>Starsze uwierzytelnianie  

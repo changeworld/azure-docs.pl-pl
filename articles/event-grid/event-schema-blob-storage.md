@@ -1,36 +1,37 @@
 ---
-title: Schematu zdarzeń magazynu obiektów blob Azure siatki zdarzeń
-description: Opisuje właściwości, które są dostępne dla zdarzenia magazynu obiektów blob Azure zdarzeń siatki
+title: Schemat zdarzenia magazynu obiektów blob Azure Event Grid
+description: Opisuje właściwości, które są dostarczane dla zdarzeń usługi blob storage za pomocą usługi Azure Event Grid
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301393"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054401"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure schematu zdarzeń siatki zdarzeń dla magazynu obiektów Blob
+# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schemat zdarzeń Azure Event Grid dla magazynu obiektów Blob
 
-Ten artykuł zawiera właściwości i schematu dla zdarzenia magazynu obiektów blob. Aby obejrzeć wprowadzenie do schematów zdarzeń, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi blob storage. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
-## <a name="available-event-types"></a>Typy dostępnych zdarzeń
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródło zdarzenia magazynu](event-sources.md#storage).
+
+## <a name="available-event-types"></a>Zdarzenie dostępne typy
 
 Magazyn obiektów blob emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Storage.BlobCreated | Uruchamiany po utworzeniu obiektu blob. |
-| Microsoft.Storage.BlobDeleted | Uruchamiany po usunięciu obiektu blob. |
+| Microsoft.Storage.BlobCreated | Wywoływane, gdy zostanie utworzony obiekt blob. |
+| Microsoft.Storage.BlobDeleted | Wywoływane, gdy obiekt blob zostanie usunięty. |
 
-## <a name="example-event"></a>Przykład zdarzeń
+## <a name="example-event"></a>Przykład zdarzenia
 
-W poniższym przykładzie przedstawiono schematu obiektu blob utworzone zdarzenie: 
+Poniższy przykład przedstawia schematu obiektu blob utworzone zdarzenie: 
 
 ```json
 [{
@@ -58,7 +59,7 @@ W poniższym przykładzie przedstawiono schematu obiektu blob utworzone zdarzeni
 }]
 ```
 
-Schemat dla zdarzenia usunąć obiektu blob jest podobne: 
+Schemat zdarzenia usunięto obiekt blob jest podobne: 
 
 ```json
 [{
@@ -85,36 +86,36 @@ Schemat dla zdarzenia usunąć obiektu blob jest podobne:
  
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie ma następujące dane najwyższego poziomu:
+Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalny. Zdarzenie siatki udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana wydawcy podmiotem zdarzeń. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzenia. |
-| eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
+| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| api | ciąg | Operacja, który wywołał zdarzenie. |
-| clientRequestId | ciąg | Generowane przez klientów, nieprzezroczyste wartość Limit znaków 1 KB. Włączenie rejestrowania analityka magazynu jest rejestrowane w dziennikach analytics. |
-| requestId | ciąg | Unikatowy identyfikator dla żądania. Użyj go do rozwiązywania problemów z żądania. |
-| Element ETag | ciąg | Wartość, która służy do wykonywania operacji warunkowo. |
-| Typ zawartości | ciąg | Typ zawartości określony dla obiektu blob. |
-| contentLength | liczba całkowita | Rozmiar obiektu blob w bajtach. |
+| api | ciąg | Operacja, która wyzwoliła zdarzenie. |
+| clientRequestId | ciąg | Generowane przez klientów, nieprzezroczysta wartość Limit znaków 1 KB. Po włączeniu usługa storage analytics, rejestrowanie, zostało zapisane w dziennikach analizy. |
+| requestId | ciąg | Unikatowy identyfikator dla żądania. Używać go do rozwiązywania problemów z żądania. |
+| Element eTag | ciąg | Wartość, która służy do wykonywania operacji warunkowo. |
+| Typ zawartości | ciąg | Typ zawartości, określony dla obiektu blob. |
+| właściwości contentLength | liczba całkowita | Rozmiar obiektu blob w bajtach. |
 | blobType | ciąg | Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
 | url | ciąg | Ścieżka do obiektu blob. |
-| Program Sequencer | ciąg | Wartość kontrolowane przez użytkownika, która służy do śledzenia żądań. |
-| storageDiagnostics | obiekt | Informacje o diagnostyki magazynu. |
+| Program Sequencer | ciąg | Wartość kontrolowanej przez użytkownika, która służy do śledzenia żądań. |
+| storageDiagnostics | obiekt | Informacje o diagnostyce magazynu. |
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do usługi Azure Event siatki, zobacz [co to jest zdarzenie siatki?](overview.md)
-* Aby uzyskać więcej informacji o tworzeniu subskrypcji platformy Azure zdarzeń siatki, zobacz [schematu subskrypcji zdarzeń siatki](subscription-creation-schema.md).
-* Wprowadzenie do pracy z zdarzenia magazynu obiektów blob, zobacz [zdarzenia magazynu obiektów Blob trasy - Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+* Wprowadzenie do pracy z zdarzeń usługi blob storage, zobacz [zdarzeń usługi Blob trasy storage — interfejs wiersza polecenia Azure](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

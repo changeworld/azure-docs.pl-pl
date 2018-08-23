@@ -1,6 +1,6 @@
 ---
-title: Pobieranie narzędzia Azure stosu z serwisu GitHub | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać narzędzia, które są wymagane do pracy z stosu Azure.
+title: Pobierz narzędzia usługi Azure Stack z repozytorium GitHub | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać narzędzia, które są wymagane do pracy z usługą Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5800cb1bf0badce6e1d0c53c3164f7d2bd2d8b1b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075293"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056206"
 ---
-# <a name="download-azure-stack-tools-from-github"></a>Pobieranie narzędzia Azure stosu z usługi GitHub
+# <a name="download-azure-stack-tools-from-github"></a>Pobierz narzędzia usługi Azure Stack z usługi GitHub
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-**Narzędzia AzureStack** to repozytorium GitHub obsługującego moduły programu PowerShell do zarządzania i wdrażanie zasobów Azure stosu. Jeśli planujesz nawiązać połączenie z siecią VPN, możesz pobrać te moduły programu PowerShell Azure stosu Development Kit lub klient zewnętrznych z systemem Windows. Aby uzyskać te narzędzia, klonowanie repozytorium GitHub lub pobrać **AzureStack narzędzia** folderu za pomocą następującego skryptu:
+**Narzędzia AzureStack** jest [repozytorium GitHub](https://github.com/Azure/AzureStack-Tools) obsługujący modułów programu PowerShell do zarządzania i wdrażania zasobów w usłudze Azure Stack. Jeśli zamierzasz nawiązać połączenie z siecią VPN, możesz pobrać te moduły programu PowerShell usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows. Aby uzyskać tych narzędzi, sklonuj repozytorium GitHub lub pobrać **AzureStack narzędzia** folderu, uruchamiając następujący skrypt:
 
 ```PowerShell
 # Change directory to the root directory. 
@@ -47,20 +47,20 @@ cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionality-provided-by-the-modules"></a>Funkcje zapewniane przez moduły
+## <a name="functionality-provided-by-the-modules"></a>Funkcje udostępniane przez moduły
 
-**AzureStack narzędzia** repozytorium zawiera moduły programu PowerShell, które obsługuje następujące funkcje Azure stosu:  
+**AzureStack narzędzia** repozytorium zawiera moduły programu PowerShell, które obsługują następujące funkcje dla usługi Azure Stack:  
 
-| Funkcjonalność | Opis | kto może używać tego modułu? |
+| Funkcjonalność | Opis | Kto może używać tego modułu? |
 | --- | --- | --- |
-| [Funkcje dotyczące chmury](user/azure-stack-validate-templates.md) | Ten moduł służy do skorzystaj z możliwości chmury chmury. Na przykład za pomocą tego modułu, można uzyskać funkcji chmury, takich jak wersja interfejsu API i zasoby usługi Azure Resource Manager. Można także uzyskać rozszerzeń maszyny Wirtualnej Azure stosu i chmury Azure za pomocą tego modułu. | Operatorzy chmur i użytkowników |
-| [Zasada Menedżera zasobów Azure stosu](user/azure-stack-policy-module.md) | Ten moduł służy do konfigurowania subskrypcji platformy Azure lub grupy zasobów platformy Azure z tej samej wersji i usługi dostępności jako stosu Azure. | Operatorzy chmur i użytkowników |
-| [Zarejestrować w usłudze Azure](azure-stack-register.md) | Ten moduł służy do zarejestrowania wystąpienia development kit z platformy Azure. Po zarejestrowaniu można pobrać elementów marketplace z platformy Azure i używać ich w stosie Azure. | Operatorzy chmury |
-| [Azure wdrożenia stosu](azure-stack-run-powershell-script.md) | Ten moduł służy do przygotowania stosu Azure komputer do wdrożenia i wdrożenie za pomocą obrazu wirtualnego dysku twardego (VHD) Azure stosu. | Operatorzy chmury|
-| [Łączenie z Azure stosu](azure-stack-connect-powershell.md) | Ten moduł służy do konfigurowania połączeń sieci VPN Azure stosu. | Operatorzy chmur i użytkowników |
-| [Moduł sprawdzania poprawności szablonu](user/azure-stack-validate-templates.md) | Używaj tego modułu, aby sprawdzić, czy istniejącego lub nowego szablonu można wdrożyć do stosu Azure. | Operatorzy chmur i użytkowników|
+| [Możliwości chmury](user/azure-stack-validate-templates.md) | Ten moduł umożliwia dostęp do możliwości chmury, chmury. Na przykład za pomocą tego modułu, można uzyskać możliwości chmury, takich jak wersja interfejsu API i zasoby usługi Azure Resource Manager. Możesz również uzyskać rozszerzeń maszyny Wirtualnej dla usługi Azure Stack i chmury platformy Azure za pomocą tego modułu. | Operatorzy chmur i użytkowników |
+| [Zasady usługi Resource Manager dla usługi Azure Stack](user/azure-stack-policy-module.md) | Ten moduł służy do konfigurowania subskrypcji platformy Azure lub grupę zasobów platformy Azure przy użyciu tej samej wersji i usługi dostępności jako usługi Azure Stack. | Operatorzy chmur i użytkowników |
+| [Rejestrowania na platformie Azure](azure-stack-register.md) | Ten moduł służy do rejestrowania wystąpienia development kit na platformie Azure. Po zarejestrowaniu możesz pobieranie elementów portalu marketplace z platformy Azure i używać ich w usłudze Azure Stack. | Operatorzy chmury |
+| [Wdrożenie usługi Azure Stack](azure-stack-run-powershell-script.md) | Ten moduł służy do przygotowania komputera hosta usługi Azure Stack, aby wdrożyć i ponowne wdrażanie przy użyciu usługi Azure Stack obrazu wirtualnego dysku twardego (VHD). | Operatorzy chmury|
+| [Nawiązywanie połączenia z usługi Azure Stack](azure-stack-connect-powershell.md) | Ten moduł służy do konfigurowania połączeń sieci VPN do usługi Azure Stack. | Operatorzy chmur i użytkowników |
+| [Moduł sprawdzania poprawności szablonu](user/azure-stack-validate-templates.md) | Ten moduł służy do Sprawdź, jeśli istniejącego lub nowego szablonu można wdrożyć w usłudze Azure Stack. | Operatorzy chmur i użytkowników|
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](user/azure-stack-powershell-configure-user.md)   
-* [Nawiązywanie połączeń zestaw deweloperski stosu Azure za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md)  
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](user/azure-stack-powershell-configure-user.md)   
+* [Łączenie usługi Azure Stack Development Kit za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md)  

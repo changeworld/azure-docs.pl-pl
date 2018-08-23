@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d55139a6b0c4da4869c65f0a19eb3f6f3bf31066
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a497ceab45bb3ace4e3f1ea063ef9c3e33818426
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39481036"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057352"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory
 Ten artykuł zawiera instrukcje aprowizacji środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory. Następnie możesz użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS) do wdrożenia pakietów usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. 
@@ -68,7 +68,7 @@ W poniższej tabeli porównano niektórych funkcji bazy danych SQL i wystąpieni
 | **Uwierzytelnianie** | Można utworzyć bazę danych przy użyciu konta użytkownika zawartej bazy danych, który reprezentuje dowolnego użytkownika usługi Azure Active Directory **dbmanager** roli.<br/><br/>Zobacz [włączyć usługi Azure AD w usłudze Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Nie można utworzyć bazę danych przy użyciu konta użytkownika zawartej bazy danych, który reprezentuje wszystkie konta użytkownika usługi Azure Active Directory niż administrator usługi Azure AD <br/><br/>Zobacz [włączyć usługi Azure AD na wystąpienie zarządzane usługi Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Warstwa usług** | Podczas tworzenia środowiska Azure-SSIS IR w bazie danych SQL, można wybrać warstwę usług dla bazy danych SSISDB. Istnieje wiele warstw usług. | Po utworzeniu środowiska IR Azure-SSIS na wystąpieniu zarządzanym nie można wybrać warstwę usług dla bazy danych SSISDB. Wszystkie bazy danych na tym samym wystąpieniu zarządzanym współużytkują ten sam zasób przydzielony do tego wystąpienia. |
 | **Sieć wirtualna** | Obsługuje zarówno usługi Azure Resource Manager i klasycznych sieci wirtualnych. | Obsługuje tylko sieć wirtualną usługi Azure Resource Manager. Sieć wirtualna jest wymagana.<br/><br/>Jeśli dołączysz do środowiska Azure-SSIS IR do tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Azure-SSIS IR znajduje się w innej podsieci niż wystąpienia zarządzanego. Jeśli dołączysz do środowiska Azure-SSIS IR do sieci wirtualnej inną niż wystąpienie zarządzane, firma Microsoft zaleca komunikacji równorzędnej sieci wirtualnej (który jest ograniczona do tego samego regionu) lub sieci wirtualnej do połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Transakcje rozproszone** | Obsługiwane przez transakcje elastyczne i kod niestandardowy. Transakcje rozproszone transakcji Koordynator MSDTC (Microsoft) nie są obsługiwane. Jeśli pakiety za pomocą usługi MSDTC koordynowanie transakcji rozproszonych, należy wziąć pod uwagę migracji do transakcji elastycznej bazy danych SQL. Aby móc używać transakcji elastycznych w pakiecie usług SSIS, masz do napisania kodu niestandardowego w zadaniu skryptu, ponieważ SSIS nie ma wbudowaną obsługę transakcje elastyczne. Aby uzyskać więcej informacji, zobacz [transakcje rozproszone w bazach danych w chmurze](../sql-database/sql-database-elastic-transactions-overview.md). | Nieobsługiwane. |
+| **Transakcje rozproszone** | Transakcje rozproszone transakcji Koordynator MSDTC (Microsoft) nie są obsługiwane. Jeśli pakiety koordynowanie transakcji rozproszonych za pomocą usługi MSDTC, można zaimplementować rozwiązanie tymczasowe przy użyciu transakcje elastyczne usługi SQL Database. W tej chwili SSIS nie ma wbudowaną obsługę transakcje elastyczne. Aby móc używać transakcji elastycznych w pakiecie usług SSIS, masz pisania niestandardowego kodu ADO.NET w zadaniu skryptu. To zadanie skryptu musi zawierać początku i końcu transakcji, a wszystkie czynności, które muszą występować wewnątrz transakcji.<br/><br/>Aby uzyskać więcej informacji na temat kodowania transakcje elastyczne, zobacz [transakcje Elastic Database w usłudze Azure SQL Database](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/). Aby uzyskać więcej informacji na temat transakcje elastyczne, zobacz [transakcje rozproszone w bazach danych w chmurze](../sql-database/sql-database-elastic-transactions-overview.md). | Nieobsługiwane. |
 | | | |
 
 ## <a name="azure-portal"></a>Azure Portal

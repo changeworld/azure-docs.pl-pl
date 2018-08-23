@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/18/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627716"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056159"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -53,6 +53,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Bramy aplikacji |[Rejestrowanie diagnostyczne bramy Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Usługa log analytics dla usługi Azure Automation](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Usługa Azure Batch rejestrowanie diagnostyczne](../batch/batch-diagnostics.md) |
+| Cognitive Services | Schemat nie jest dostępna. |
 | Content Delivery Network | [Dzienniki diagnostyczne platformy Azure dla usługi CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Rejestrowanie usługi Azure Cosmos DB](../cosmos-db/logging.md) |
 | Fabryka danych | [Monitorowanie fabryki danych przy użyciu usługi Azure Monitor](../data-factory/monitor-using-azure-monitor.md) |
@@ -61,13 +62,14 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | DB dla PostgreSQL |  Schemat nie jest dostępna. |
 | Event Hubs |[Dzienniki diagnostyczne platformy Azure Event Hubs](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schemat nie jest dostępna. |
+| Azure Firewall | Schemat nie jest dostępna. |
 | Usługa IoT Hub | [Operacje usługi IoT Hub](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Usługa Key Vault |[Funkcja rejestrowania usługi Azure Key Vault](../key-vault/key-vault-logging.md) |
 | Moduł równoważenia obciążenia |[Analiza dzienników dotyczących usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps — niestandardowy schemat śledzenia B2B](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Grupy zabezpieczeń sieci |[Usługa Log Analytics dla sieciowych grup zabezpieczeń](../virtual-network/virtual-network-nsg-manage-log.md) |
 | Ochrona przed atakami DDOS | [Zarządzanie standardowa ochrona platformy Azure przed atakami DDoS](../virtual-network/manage-ddos-protection.md) |
-| Usługi Power BI w wersji dedykowanej | Schemat nie jest dostępna. |
+| Usługi Power BI w wersji dedykowanej | [Rejestrowanie diagnostyczne dla usługi Power BI Embedded na platformie Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Model danych usługi Azure Backup](../backup/backup-azure-reports-data-model.md)|
 | Wyszukiwanie |[Włączanie i korzystanie z analizy ruchu wyszukiwania](../search/search-traffic-analytics.md) |
 | Service Bus |[Dzienniki diagnostyczne platformy Azure Service Bus](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +90,12 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Stan węzła DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Dzienniki usługi|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Pobiera metryki punktu końcowego (np. przepustowość, ruch wychodzący itd.).|
+|Microsoft.ClassicNetwork/networksecuritygroups|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|
+|Microsoft.CognitiveServices/accounts|Inspekcja|Inspekcja|
+|Microsoft.ContainerService/managedClusters|apiserver rozwiązania kubernetes|Serwera interfejsu API rozwiązania Kubernetes|
+|Microsoft.ContainerService/managedClusters|menedżerem w przypadku kontroli rozwiązania kubernetes|Menedżerem kontroli rozwiązania Kubernetes|
+|Microsoft.ContainerService/managedClusters|Usługa scheduler rozwiązania kubernetes|Harmonogram usługi Kubernetes|
+|Microsoft.ContainerService/managedClusters|Ochrona|Uwierzytelnianie elementu Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|Dziennik uruchomienia działania potoku|
 |Microsoft.DataFactory/factories|PipelineRuns|Potok jest uruchamiany dziennika|
@@ -97,7 +105,6 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.DataLakeStore/accounts|Inspekcja|Dzienniki inspekcji|
 |Microsoft.DataLakeStore/accounts|Żądania|Dziennik żądań|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Dzienniki serwera PostgreSQL|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|Zdarzenia kopii zapasowej PostgreSQL|
 |Microsoft.Devices/IotHubs|Połączenia|Połączenia|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Danych Telemetrycznych z urządzenia|
 |Microsoft.Devices/IotHubs|C2DCommands|Polecenia C2D|
@@ -110,6 +117,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Devices/IotHubs|JobsOperations|Operacje dotyczące zadań|
 |Microsoft.Devices/IotHubs|DirectMethods|Metody bezpośrednie|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|Diagnostyka E2E (wersja zapoznawcza)|
+|Microsoft.Devices/IotHubs|Konfiguracje|Konfiguracje|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Operacje dotyczące urządzenia|
 |Microsoft.Devices/provisioningServices|Serviceoperation|Operacje usługi|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -130,13 +138,17 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Dziennik bramy Application Gateway dostępu|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Dziennik wydajności bramy Application Gateway|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Dziennik bramy Application Gateway zapory|
+|Microsoft.Network/securegateways|AzureFirewallApplicationRule|Reguły aplikacji zapory platformy Azure|
+|Microsoft.Network/securegateways|AzureFirewallNetworkRule|Reguła sieci zapory platformy Azure|
+|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Reguły aplikacji zapory platformy Azure|
+|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Reguła sieci zapory platformy Azure|
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Dzienniki diagnostyczne bramy|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Dzienniki diagnostyczne tunelu|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Przekierowywanie dzienników diagnostycznych|
 |Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|Dzienniki diagnostyczne protokołu IKE|
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Dzienniki diagnostyczne P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Zdarzenie wyniki usługi Traffic Manager sondy kondycji|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabela GWM liczników|
+|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Komunikacja równorzędna dzienniki tabel tras|
 |Microsoft.PowerBIDedicated/capacities|Aparat|Aparat|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Raportowania danych usługi Azure Backup|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery Jobs|
@@ -148,15 +160,19 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Usługa Azure Site Recovery chronione współczynnik zmian danych na dysku|
 |Microsoft.Search/searchServices|OperationLogs|Dzienniki operacji |
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Dzienniki operacyjne|
+|Microsoft.Sql/servers/databases|SQLInsights|Szczegółowe informacje SQL|
+|Microsoft.Sql/servers/databases|AutomaticTuning|Automatyczne dostrajanie|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statystyki środowiska uruchomieniowego Query Store|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statystyki oczekiwania Query Store|
 |Microsoft.Sql/servers/databases|Błędy|Błędy|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Statystyki oczekiwania bazy danych|
 |Microsoft.Sql/servers/databases|Limity czasu|Limity czasu|
 |Microsoft.Sql/servers/databases|bloki|bloki|
-|Microsoft.Sql/servers/databases|SQLInsights|Szczegółowe informacje SQL|
+|Microsoft.Sql/servers/databases|Zakleszczenia|Zakleszczenia|
 |Microsoft.Sql/servers/databases|Inspekcja|Dzienniki inspekcji|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Zdarzenia inspekcji zabezpieczeń SQL|
+|Microsoft.Sql/servers/databases|SqlDw_Requests|Żądania usługi Magazyn danych SQL|
+|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|Kroki żądania magazynu danych SQL|
 |Microsoft.StreamAnalytics/streamingjobs|Wykonanie|Wykonanie|
 |Microsoft.StreamAnalytics/streamingjobs|Tworzenie|Tworzenie|
 

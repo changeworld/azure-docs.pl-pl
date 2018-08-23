@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216531"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060984"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -109,7 +109,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
    - W witrynie Azure portal kliknij pozycję **+** można otworzyć portalu Azure Marketplace. Wyszukaj **zestawu dostępności**.
    - Kliknij przycisk **zestawu dostępności**.
-   - Kliknij przycisk **Utwórz**.
+   - Kliknij pozycję **Utwórz**.
    - Na **Tworzenie zestawu dostępności** bloku, ustaw następujące wartości:
       - **Nazwa**: Nazwa zestawu dostępności.
       - **Subskrypcja**: Twoja subskrypcja platformy Azure.
@@ -359,7 +359,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Kliknij pozycję **+ Dodaj**. Wyszukaj w witrynie Marketplace **moduł równoważenia obciążenia**. Kliknij przycisk **moduł równoważenia obciążenia**.
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 1. Konfigurowanie równoważenia obciążenia za pomocą:
 
@@ -481,7 +481,13 @@ Aby przetestować łączność, zaloguj się do innej maszyny wirtualnej w tej s
 >Jeśli to konieczne, możesz to zrobić [pobieranie programu SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Ograniczenia
-Na maszynach wirtualnych platformy Azure Koordynator transakcji rozproszonych (DTC) nie jest obsługiwane na występowanie ponieważ portu RPC nie jest obsługiwany przez moduł równoważenia obciążenia.
+
+Maszyny wirtualne platformy Azure obsługuje transakcji Koordynator MSDTC (Microsoft Distributed) 2019 serwera systemu Windows z magazynem w udostępnione woluminy klastra (CSV) i [standardowego modułu równoważenia obciążenia](../../../load-balancer/load-balancer-standard-overview.md).
+
+Na maszynach wirtualnych platformy Azure usługi MSDTC nie jest obsługiwana w systemie Windows Server 2016 i wcześniej ponieważ:
+
+- Aby korzystać z udostępnionego magazynu, nie można skonfigurować zasobów klastra MSDTC. Z systemu Windows Server 2016 Jeśli utworzysz zasób usługi MSDTC nie będą widoczne każdy udostępniony Magazyn dostępny do użycia, nawet jeśli magazyn jest dostępne. Ten problem został rozwiązany w 2019 r Server systemu Windows.
+- Podstawowego modułu równoważenia obciążenia nie obsługuje portów usługi RPC.
 
 ## <a name="see-also"></a>Zobacz też
 

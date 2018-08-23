@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629654"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058522"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -97,7 +97,7 @@ Jeśli używasz migawkę maszyny wirtualnej (VM), aby utworzyć dodatkowe maszyn
 
 Rejestracja urządzenia niskiego poziomu Windows nie jest obsługiwane dla urządzeń skonfigurowanych do obsługi mobilny profil użytkownika lub mobilny dostęp do poświadczeń. Jeśli polegasz na roaming profilów lub ustawienia, należy użyć systemu Windows 10.
 
-- Rejestracja urządzenia niskiego poziomu Windows **jest** obsługiwane w środowiskach inne niż federacyjne za pomocą bezproblemowego logowania jednokrotnego [usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
+- Rejestracja urządzenia niskiego poziomu Windows **jest** obsługiwane w środowiskach inne niż federacyjne za pomocą bezproblemowego logowania jednokrotnego [usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
  
 - Rejestracja urządzenia niskiego poziomu Windows **nie** obsługiwane w przypadku korzystania z uwierzytelniania usługi Azure AD przekazywanego bez bezproblemowego logowania jednokrotnego.
 

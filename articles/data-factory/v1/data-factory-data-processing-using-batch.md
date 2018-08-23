@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77bb891dd8e7d6a3cb6363b06eaf361d09db594c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6ad3b4c1f59f5c46fd31aa24d6d2ceb4d7411abd
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422421"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056332"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -91,10 +91,10 @@ Przykładowe rozwiązanie jest celowo proste. Został zaprojektowany tak, aby po
 Jeśli nie masz subskrypcji platformy Azure, można szybko utworzyć bezpłatne konto próbne. Aby uzyskać więcej informacji, zobacz [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Konto magazynu Azure
-Konto usługi storage umożliwia przechowywanie danych w ramach tego samouczka. Jeśli nie masz konta magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Przykładowe rozwiązanie korzysta z magazynu obiektów blob.
+Konto usługi storage umożliwia przechowywanie danych w ramach tego samouczka. Jeśli nie masz konta magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md). Przykładowe rozwiązanie korzysta z magazynu obiektów blob.
 
 #### <a name="azure-batch-account"></a>Konto usługi Azure Batch
-Utwórz konto usługi Batch za pomocą [witryny Azure portal](http://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Utwórz konto usługi Batch za pomocą [witryny Azure portal](http://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Przykładowe rozwiązanie używa usługi Batch (pośrednio za pośrednictwem potoku fabryki danych) do przetwarzania danych w sposób równoległy, w ramach puli węzłów obliczeniowych (zarządzanej kolekcji maszyn wirtualnych).
 

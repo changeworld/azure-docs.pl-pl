@@ -1,6 +1,6 @@
 ---
-title: Tworzenie widoków w celu analizowania danych w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Przy użyciu projektanta widoków analizy dzienników, można utworzyć niestandardowe widoki, które są wyświetlane w portalu Azure i zawierają różne wizualizacje danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i przedstawia procedury tworzenia i edytowania widoków niestandardowych.
+title: Tworzenie widoków w celu analizowania danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoku w usłudze Log Analytics, można utworzyć niestandardowe widoki, które są wyświetlane w witrynie Azure portal i zawierać wiele wizualizacji danych w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i przedstawiono procedury tworzenia i edytowania widoków niestandardowych.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,82 +15,82 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131858"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061043"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoków w analizy dzienników
-Przy użyciu narzędzia Projektant widoku w [Azure Log Analytics](log-analytics-overview.md), możesz utworzyć różne widoki niestandardowe w portalu Azure, które mogą pomóc w wizualizacji danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i procedur tworzenia i edytowania widoków niestandardowych.
+# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
+Przy użyciu projektanta widoku w [usługi Azure Log Analytics](log-analytics-overview.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
 
-Aby uzyskać więcej informacji na temat Projektant widoków zobacz:
+Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
-* [Kafelek odwołanie](log-analytics-view-designer-tiles.md): zawiera przewodnik odwołanie do ustawienia dla każdego z dostępnych kafelków w niestandardowych widoków.
-* [Odwołanie do części wizualizacji](log-analytics-view-designer-parts.md): zawiera przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w niestandardowych widoków.
+* [Kafelek odwołanie](log-analytics-view-designer-tiles.md): Przewodnik odwołanie do ustawienia dla wszystkich dostępnych kafelków w widoki niestandardowe.
+* [Dokumentacja części wizualizacji](log-analytics-view-designer-parts.md): Przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 
 
 ## <a name="concepts"></a>Pojęcia
-Widoki są wyświetlane na **omówienie** strony obszaru roboczego analizy dzienników w portalu Azure. Kafelki w każdym widoku niestandardowym są wyświetlane w kolejności alfabetycznej i zainstalowano Kafelki rozwiązań do tego samego obszaru roboczego.
+Widoki są wyświetlane na **Przegląd** stronie obszaru roboczego usługi Log Analytics w witrynie Azure portal. Kafelki w każdym widoku niestandardowego są wyświetlane w kolejności alfabetycznej, a kafelków rozwiązań są zainstalowane tego samego obszaru roboczego.
 
 ![Strona przeglądu](media/log-analytics-view-designer/overview-page.png)
 
-Widoki, które można utworzyć z projektanta widoków zawiera elementy, które zostały opisane w poniższej tabeli:
+Widoki, które tworzysz przy użyciu projektanta widoku zawierają elementy, które są opisane w poniższej tabeli:
 
 | Część | Opis |
 |:--- |:--- |
-| Kafelki | Są wyświetlane w obszarze roboczym analizy dzienników **omówienie** strony. Każdego kafelka Wyświetla podsumowanie visual widok niestandardowy, który reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Należy wybrać Kafelek, aby wyświetlić widok niestandardowy. |
-| Widok niestandardowy | Wyświetlane po wybraniu kafelka. Każdy widok zawiera co najmniej jeden części wizualizacji. |
-| Części wizualizacji | Przedstawia wizualizacji danych w obszarze roboczym analizy dzienników oparte na co najmniej jeden [dziennika wyszukiwania](log-analytics-log-searches.md). Większość elementów obejmują nagłówka, co zapewnia wizualizacji wysokiego poziomu, i listy są wyświetlane wyniki top. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym analizy dzienników. Należy wybrać elementy w element do wyszukiwania dziennika, który udostępnia szczegółowe dane. |
+| Kafelki | Są wyświetlane w obszarze roboczym usługi Log Analytics **Przegląd** strony. Każdy Kafelek Wyświetla wizualnego podsumowania widoku niestandardowego, który go reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Możesz wybrać Kafelek, aby wyświetlić widok niestandardowy. |
+| Widok niestandardowy | Wyświetlane po wybraniu kafelka. Każdy widok zawiera jedną lub więcej z części wizualizacji. |
+| Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [dziennikach](log-analytics-log-searches.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać wyszukiwanie w dzienniku, który zawiera szczegółową dokumentację. |
 
 
 ## <a name="work-with-an-existing-view"></a>Praca z istniejącego widoku
-Widoki, które zostały utworzone z projektanta widoków do wyświetlenia następujących opcji:
+Widoki, które zostały utworzone przy użyciu projektanta widoku są wyświetlane następujące opcje:
 
-![Menu — omówienie](media/log-analytics-view-designer/overview-menu.png)
+![Menu Przegląd](media/log-analytics-view-designer/overview-menu.png)
 
 W poniższej tabeli opisano opcje:
 
 | Opcja | Opis |
 |:--|:--|
 | Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
-| Analiza | Otwiera [portal analityka zaawansowane](log-analytics-log-search-portals.md#advanced-analytics-portal) do analizowania danych z dziennika wyszukiwania. |
-| Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartości i konfiguracji.  |
-| Klonuj      | Tworzy nowy widok i otwarcie go w widoku projektanta. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale *kopiowania* dołączone do niego. |
-| Zakres dat | Ustaw datę i godzinę Filtr zakresu danych, który znajduje się w widoku. |
+| Analiza | Otwiera [portalu analizy zaawansowanej](log-analytics-log-search-portals.md) do analizowania danych za pomocą zapytań log. |
+| Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartość i konfigurację.  |
+| Klonuj      | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
+| Zakres dat | Ustaw datę i godzinę filtru zakresu danych, który znajduje się w widoku. |
 | +          | Definiowanie niestandardowego filtru, który jest zdefiniowany dla widoku. |
 
 
-## <a name="create-a-new-view"></a>Utwórz nowy widok
-Możesz utworzyć nowy widok w widoku projektanta, wybierając **Widok projektanta** w menu obszaru roboczego analizy dzienników.
+## <a name="create-a-new-view"></a>Tworzenie nowego widoku
+Można utworzyć nowy widok w Projektancie widoku, wybierając **Projektant widoków** w menu obszaru roboczego usługi Log Analytics.
 
-![Widok projektanta kafelka](media/log-analytics-view-designer/view-designer-tile.png)
+![Wyświetlanie kafelka projektanta](media/log-analytics-view-designer/view-designer-tile.png)
 
 
 ## <a name="work-with-view-designer"></a>Praca z projektanta widoków
 Projektant widoków umożliwia tworzenie nowych widoków lub edytować istniejące. 
 
-Widok projektanta ma trzy sekcje: 
+Projektant widoków ma trzy okienka: 
 * **Projekt**: zawiera widok niestandardowy, który podczas tworzenia lub edycji. 
-* **Formanty**: zawiera Kafelki i elementy, które dodajesz do **projekt** okienka. 
-* **Właściwości**: Wyświetla właściwości Kafelki lub zaznaczonych części.
+* **Formanty**: zawiera Kafelki i części, które dodajesz do **projektowania** okienka. 
+* **Właściwości**: Wyświetla właściwości kafelków lub zaznaczonych części.
 
 ![Projektant widoków](media/log-analytics-view-designer/view-designer-screenshot.png)
 
-### <a name="configure-the-view-tile"></a>Konfigurowanie widoku kafelków
-Widok niestandardowy może mieć tylko jednego kafelka. Aby wyświetlić bieżący Kafelek lub wybierz alternatywny, wybierz **Kafelek** karcie w **kontroli** okienka. **Właściwości** okienku są wyświetlane właściwości bieżącego fragmentu. 
+### <a name="configure-the-view-tile"></a>Konfiguruj Kafelek widoku
+Widok niestandardowy może mieć tylko pojedynczego kafelka. Aby wyświetlić bieżący Kafelek, lub wybierz jeden z alternatywnych, wybierz **Kafelek** karcie **kontroli** okienka. **Właściwości** okienko wyświetla właściwości bieżącego fragmentu. 
 
-Można skonfigurować właściwości kafelka zgodnie z informacjami w [Kafelek odwołania](log-analytics-view-designer-tiles.md) , a następnie kliknij przycisk **Zastosuj** Aby zapisać zmiany.
+Można skonfigurować właściwości kafelka, zgodnie z informacjami w [Kafelek odwołania](log-analytics-view-designer-tiles.md) a następnie kliknij przycisk **Zastosuj** Aby zapisać zmiany.
 
-### <a name="configure-the-visualization-parts"></a>Skonfiguruj części wizualizacji
-Widok może zawierać dowolną liczbę części wizualizacji. Aby dodać elementy do widoku, wybierz **widoku** , a następnie wybierz część wizualizacji. **Właściwości** okienku są wyświetlane właściwości wybranej części. 
+### <a name="configure-the-visualization-parts"></a>Konfigurowanie części wizualizacji
+Widok może zawierać dowolną liczbę części wizualizacji. Aby dodać elementy do widoku, wybierz **widoku** kartę, a następnie wybierz element wizualizacji. **Właściwości** okienko wyświetla właściwości wybranej części. 
 
-Można skonfigurować właściwości widoku zgodnie z informacjami w [odwołanie do części wizualizacji](log-analytics-view-designer-parts.md) , a następnie kliknij przycisk **Zastosuj** Aby zapisać zmiany.
+Można skonfigurować właściwości widoku zgodnie z informacjami w [dokumentacja części wizualizacji](log-analytics-view-designer-parts.md) a następnie kliknij przycisk **Zastosuj** Aby zapisać zmiany.
 
-Widoki mają tylko jeden wiersz części wizualizacji. Możesz zmienić kolejność istniejących części, przeciągając je do nowej lokalizacji.
+Widoki mają tylko jeden wiersz części wizualizacji. Możesz zmienić kolejność istniejące składniki, przeciągając je do nowej lokalizacji.
 
-Z widoku można usunąć część wizualizacji, zaznaczając **X** u góry po prawej części.
+Możesz usunąć część wizualizacji z widoku, wybierając **X** u góry po prawej części.
 
 
 ### <a name="menu-options"></a>Opcje menu
@@ -103,10 +103,10 @@ Praca z widokami w trybie edycji opcje są opisane w poniższej tabeli.
 | Zapisz        | Zapisuje zmiany i zamyka widoku. |
 | Cancel      | Odrzuca wszystkie zmiany i zamyka widoku. |
 | Usuń widok | Usuwa widok. |
-| Eksportowanie      | Eksportuje widok, aby [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) , który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |
-| Import      | Importy *omsview* pliku, który został wyeksportowany z innego obszaru roboczego. Ta akcja spowoduje zastąpienie konfigurację istniejącego widoku. |
-| Klonuj       | Tworzy nowy widok i otwarcie go w widoku projektanta. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale *kopiowania* dołączone do niego. |
+| Eksportowanie      | Eksportuje widoku na potrzeby [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |
+| Import      | Importy *omsview* pliku, który został wyeksportowany z innym obszarem roboczym. Ta akcja zastępuje konfigurację istniejącego widoku. |
+| Klonuj       | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dodaj [Kafelki](log-analytics-view-designer-tiles.md) do widoku niestandardowym.
-* Dodaj [części wizualizacji](log-analytics-view-designer-parts.md) do widoku niestandardowym.
+* Dodaj [Kafelki](log-analytics-view-designer-tiles.md) do widoku niestandardowego.
+* Dodaj [części wizualizacji](log-analytics-view-designer-parts.md) do widoku niestandardowego.

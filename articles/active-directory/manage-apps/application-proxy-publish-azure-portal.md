@@ -2,25 +2,22 @@
 title: Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD | Microsoft Docs
 description: Publikowanie aplikacji lokalnych do chmury przy użyciu serwera Proxy aplikacji usługi Azure AD w witrynie Azure portal.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 1224642bb7e6fc0c51b3f839a78449132db5b4bb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 973a6201a227e6c2e295e6e5ea2f40c302572504
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364261"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061066"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD
 
@@ -72,6 +69,7 @@ Wykonaj następujące kroki, aby opublikować swoje aplikacje za pomocą serwera
    ![Konfigurowanie aplikacji](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Jeśli to konieczne, należy skonfigurować dodatkowe ustawienia. W przypadku większości aplikacji należy zachować te ustawienia w ich domyślnymi stanami. 
    - **Limit czasu aplikacji zaplecza**: Ustaw tę wartość na **długie** tylko wtedy, gdy aplikacja jest powolne uwierzytelnienia i nawiązania połączenia. 
+   - **Używaj plików Cookie HTTP-Only**: Ustaw tę wartość na **tak** aby serwer Proxy aplikacji pliki cookie dołączyć flagę HTTPOnly nagłówka odpowiedzi HTTP.
    - **Przekształć adresy URL w nagłówkach**: Zachowaj tę wartość jako **tak** aplikacji wymagane oryginalnego nagłówka hosta w żądaniu uwierzytelnienia.
    - **Przekształć adresy URL w treści aplikacji**: Zachowaj tę wartość jako **nie** chyba że zostały zapisane na stałe HTML łącza do innych aplikacji w środowisku lokalnym, a nie Użyj domen niestandardowych. Aby uzyskać więcej informacji, zobacz [Link tłumaczenie przy użyciu serwera Proxy aplikacji](application-proxy-configure-hard-coded-link-translation.md).
    

@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283140"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424373"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -44,11 +44,11 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, zbieranie
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
 
-1. Podłącz zasilacz zestaw development kit. Wskaźnik zielono powinien dostarczone w górnym tablicy.
+1. Wzmocnij deweloperski przy użyciu mini kabla USB podłączone do komputera lub adptor zasilania. Wskaźnik zielono powinien dostarczone w górnym tablicy.
 
-1. Zestaw development kit nawiązać połączenia z komputerem za pomocą mini kabla USB.
+1. Zestaw development kit nawiązać połączenia z komputerem za pomocą drugiego mini kabla USB.
 
-    ![Łączenie zestawu dla deweloperów](media/speech-devices-sdk/qsg-1.jpg)
+    ![Łączenie zestawu dla deweloperów](media/speech-devices-sdk/qsg-1.png)
 
 1. Orientacja odpowiednio z zestawu SDK.
 
@@ -57,7 +57,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, zbieranie
     |Cykliczne|Prawidłowa z mikrofon połączonego z limitu|
     |Liniowe|Stronie z mikrofon przodu (pokazana poniżej)|
 
-    ![Orientacja kit liniowej dev](media/speech-devices-sdk/qsg-2.jpg)
+    ![Orientacja kit liniowej dev](media/speech-devices-sdk/qsg-2.png)
 
 1. Zainstaluj certyfikaty i plik tabeli wznawiania programu word (słowo kluczowe), a następnie ustaw uprawnienia urządzenia dźwiękowego. Wpisz następujące polecenia w oknie poleceń.
 
@@ -82,9 +82,22 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, zbieranie
 
 1.  Urządzenia muszą być wymienione w obszarze "Wybierz urządzenie". Kliknij przycisk **widoku** przycisk obok niej. 
  
-1.  Łączenie się z siecią bezprzewodową, klikając **ustawienia**, następnie **WLAN**.
+1.  Łączenie z siecią bezprzewodową, klikając ikonę folderu następnie **ustawienia**, następnie **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > Jeśli Twoja firma ma zasady dotyczące urządzenia do sieci Wi-Fi, należy uzyskać adres Mac i skontaktuj się z działem IT o tym, jak połączyć go do sieci Wi-Fi systemu. Aby znaleźć adres Mac zestaw deweloperski, kliknij ikonę folderu plików na pulpicie deweloperski, następnie **ustawienia**, wyszukaj "Mac address", kliknij pozycję **adres Mac** w **WLAN zaawansowane** , wpisz adres Mac, znaleziono w dolnej. Ponadto niektóre firmy mogą mieć czas, który limit jak długo urządzenie może być połączony z ich systemami sieci Wi-Fi. Może być konieczne rozszerzenie rejestracji zestawu dla deweloperów w systemie sieci Wi-Fi, po określonej liczbie dni.  
+ 
+ 
+   ![Folder plików Vysor](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Adres Vysor Mac](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > Aby dołączyć osoby mówiącej do zestawu dla deweloperów, należy go połączyć z wierszem Audio się. Należy również wybrać głośnika 3,5 mm dobrej jakości.
+ 
+   ![Vysor Audio](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>Uruchamianie przykładowej aplikacji
 
@@ -126,7 +139,7 @@ Aby uruchomić testy Roobo i weryfikowanie konfiguracji development kit, tworzen
         exit
         ```
 
-    * Skopiuj pliki `kws.table`, `kws_g.fst`, `kws_k.fst`, i `words_kw.txt`) do folderu \data\keyword\ urządzenia. Uruchom następujące polecenia w oknie polecenia o.
+    * Skopiuj pliki `kws.table`, `kws_g.fst`, `kws_k.fst`, i `words_kw.txt`) do folderu \data\keyword\ urządzenia. Uruchom następujące polecenia w oknie polecenia o. Jeśli utworzono [niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md), plik kws.table generowany z sieci web będzie znajdować się w tym samym katalogu co `kws.table`, `kws_g.fst`, `kws_k.fst`, i `words_kw.txt` są pliki. Użyj wypychania adb C:\SDSDK\Android-Sample-Release\keyword\[polecenie wake_word_name]\kws.table/data/słowa kluczowego zamiast wypychania pliku kws.table do zestawu dla deweloperów.
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ Aby uruchomić testy Roobo i weryfikowanie konfiguracji development kit, tworzen
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli otrzymujesz błędy certyfikatów podczas korzystania z usługi rozpoznawania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę.
+Jeśli otrzymujesz błędy certyfikatów podczas korzystania z usługi rozpoznawania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę. Przejdź do **ustawienia**, kliknij pozycję **daty i godziny** w ramach systemu i **wybierz strefę czasową** do Twojej bieżącej strefy czasowej. Zachowaj **automatycznej daty i godziny** dalej. Po wyświetleniu czas zestawu dla deweloperów jest zgodny czas na komputerze, a następnie będzie wiadomo, zestaw deweloperski jest połączony z Internetem. 
+
+ ![Folder plików Vysor](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Folder plików Vysor](media/speech-devices-sdk/qsg-13.png)
 
 Aby uzyskać więcej informacji rozwoju, zobacz firmy Roobo [Podręcznik programowania](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 

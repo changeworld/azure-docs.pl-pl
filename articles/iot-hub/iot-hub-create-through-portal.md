@@ -1,178 +1,161 @@
 ---
-title: Umożliwia utworzenie Centrum IoT w portalu Azure | Dokumentacja firmy Microsoft
-description: Sposób tworzenia, zarządzania i usuwania centra Azure IoT za pośrednictwem portalu Azure. Zawiera informacje na temat warstw cenowych, skalowania, zabezpieczeń i konfiguracji do obsługi komunikatów.
+title: Tworzenie Centrum IoT za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
+description: Sposób tworzenia, zarządzania i usuwania usługi Azure IoT hubs za pomocą witryny Azure portal. Zawiera informacje na temat warstw cenowych, skalowanie, zabezpieczeń i komunikatów konfiguracji.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b03ae434e93dbab45235fe67c499497e1257064
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635937"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054808"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu portalu Azure
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu witryny Azure portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 W tym artykule opisano:
 
-* Jak znaleźć usługi Centrum IoT w portalu Azure.
-* Jak utworzyć i zarządzać centra IoT.
+* Jak znaleźć tę usługę IoT Hub w witrynie Azure portal.
+* Jak tworzyć i zarządzać nimi centra IoT Hub.
 
-## <a name="where-to-find-the-iot-hub-service"></a>Gdzie można znaleźć usługi Centrum IoT
+## <a name="where-to-find-the-iot-hub-service"></a>Gdzie można znaleźć usługi IoT Hub
 
-Usługa Centrum IoT można znaleźć w następujących lokalizacjach w portalu:
+Usługa IoT Hub można znaleźć w następujących lokalizacjach w portalu:
 
-* Wybierz **+ nowy**, a następnie wybierz **Internetu rzeczy**.
-* W witrynie Marketplace, wybierz **Internetu rzeczy**.
+* Wybierz **+ nowy**, następnie wybierz **Internet of Things**.
+* W witrynie Marketplace, wybierz **Internet of Things**.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-Można utworzyć Centrum IoT przy użyciu następujących metod:
+Można utworzyć usługi IoT hub przy użyciu następujących metod:
 
-* **+ Nowy** opcji Otwiera blok pokazano na poniższym zrzucie ekranu. Procedura tworzenia Centrum IoT, za pomocą tej metody i za pośrednictwem portalu marketplace są identyczne.
+* **+ Nowy** opcja powoduje otwarcie bloku pokazano na poniższym zrzucie ekranu. Kroki tworzenia Centrum IoT hub za pośrednictwem tej metody, jak i w witrynie marketplace są identyczne.
+
 * W witrynie Marketplace, wybierz **Utwórz** aby otworzyć blok pokazano na poniższym zrzucie ekranu.
 
-W poniższych sekcjach opisano kilka czynności, aby utworzyć Centrum IoT:
+W poniższych sekcjach opisano kilka kroków, aby utworzyć Centrum IoT.
 
-### <a name="choose-the-name-of-the-iot-hub"></a>Wybierz nazwę Centrum IoT
+### <a name="choose-the-name-of-the-iot-hub"></a>Wybierz nazwę Centrum IoT hub
 
-Aby utworzyć Centrum IoT, nazwę Centrum IoT. Ta nazwa musi być unikatowa w wszystkie centra IoT.
+Aby utworzyć Centrum IoT hub, nadaj nazwę Centrum IoT hub. Ta nazwa musi być unikatowa we wszystkich centrach IoT.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 ### <a name="choose-the-pricing-tier"></a>Wybierz warstwę cenową
 
-Możesz wybrać spośród kilku warstw w zależności od liczby funkcji chcesz i ile komunikatów można wysyłać za pośrednictwem rozwiązania na dzień. Warstwa bezpłatna służy do testowania i oceny. Umożliwia on 500 urządzeń do podłączenia do Centrum IoT i maksymalnie 8000 wiadomości na dzień. Każda subskrypcja platformy Azure można utworzyć jeden Centrum IoT w warstwie bezpłatna. 
+Można wybrać z kilku warstwach, w zależności od tego, ile funkcje chcesz i ile komunikatów można wysyłać za pośrednictwem tego rozwiązania na dzień. Bezpłatna warstwa jest przeznaczona do testowania i oceny. Umożliwia ona 500 urządzeń do podłączenia do usługi IoT hub i maksymalnie 8000 komunikatów dziennie. Każda subskrypcja platformy Azure można utworzyć jedno centrum IoT w ramach warstwy bezpłatna. 
 
-Aby uzyskać szczegółowe informacje o innych opcjach warstwy, zobacz [wybrać prawa warstwy Centrum IoT](iot-hub-scaling.md).
+Aby uzyskać szczegółowe informacje na temat innych opcji warstwy, zobacz [wybierając właściwą warstwę usługi IoT Hub](iot-hub-scaling.md).
 
-### <a name="iot-hub-units"></a>Jednostki Centrum IoT
+### <a name="iot-hub-units"></a>Jednostek usługi IoT hub
 
-Liczbę wiadomości dozwolonych dla jednej jednostki dziennie zależy od warstwy cenowej Twoje Centrum. Na przykład jeśli chcesz, aby Centrum IoT, aby obsługiwać ruch przychodzący 700 000 komunikatów, wybierz dwie jednostki warstwy S1.
+Liczba komunikatów dopuszczalną na jednostkę dziennie zależy od warstwy cenowej Twojego Centrum. Na przykład chcąc usługi IoT hub do obsługi przychodzących 700 000 wiadomości, możesz wybrać dwie jednostki warstwy S1.
 
-### <a name="device-to-cloud-partitions-and-resource-group"></a>Urządzenia do chmury partycji i grupy zasobów
+### <a name="device-to-cloud-partitions-and-resource-group"></a>Urządzenia do chmury, partycji i grupy zasobów
 
-Można zmienić liczbę partycji dla Centrum IoT. Domyślny numer partycji jest 4, z listy rozwijanej można wybrać inny numer.
+Można zmienić liczby partycji Centrum IoT. Domyślna liczba partycji wynosi 4; z listy rozwijanej, można wybrać inny numer.
 
-Nie trzeba jawnie utworzyć pustej grupy zasobów. Podczas tworzenia zasobu, można wybrać opcję, aby utworzyć nową lub użyć istniejącej grupy zasobów.
+Nie trzeba jawnie Utwórz pustą grupę zasobów. Podczas tworzenia zasobu, możesz utworzyć nową grupę zasobów lub użyj istniejącej grupy zasobów.
 
-![][5]
+![Zrzut ekranu przedstawiający tworzenie Centrum w witrynie Azure portal](./media/iot-hub-create-through-portal/location1.png)
 
 ### <a name="choose-subscription"></a>Wybierz subskrypcję
 
-Centrum IoT Azure automatycznie wyświetla listę subskrypcji platformy Azure, z którą połączony jest konto użytkownika. Można wybrać subskrypcji platformy Azure do Centrum IoT do skojarzenia.
+Usługa Azure IoT Hub automatycznie wyświetla listę subskrypcji platformy Azure, z którą połączony jest konto użytkownika. Możesz wybrać subskrypcję platformy Azure do skojarzenia z Centrum IoT.
 
 ### <a name="choose-the-location"></a>Wybierz lokalizację
 
-Opcja lokalizacji zawiera listę regionów, w którym Centrum IoT jest dostępna.
+Opcja lokalizacji zapewnia listę regionów, w których jest dostępna usługa IoT Hub.
 
-### <a name="create-the-iot-hub"></a>Tworzenie Centrum IoT
+### <a name="create-the-iot-hub"></a>Tworzenie Centrum IoT hub
 
-Po zakończeniu wszystkich poprzednich kroków, można utworzyć Centrum IoT. Kliknij przycisk **Utwórz** do rozpoczęcia procesu zaplecza możesz utworzyć i wdrożyć Centrum IoT z opcji wybrania.
+Po ukończeniu wszystkich poprzednich kroków można utworzyć usługi IoT hub. Kliknij przycisk **Utwórz** można uruchomić procesu zaplecza, do tworzenia i wdrażania usługi IoT hub przy użyciu opcji została wybrana opcja.
 
-Może upłynąć kilka minut na utworzenie Centrum IoT, jak czas wdrożenia zaplecza do uruchomienia na serwerach odpowiednią lokalizację.
+Może upłynąć kilka minut, aby utworzyć Centrum IoT hub, ponieważ zajmuje trochę czasu wdrożenia zaplecza do uruchamiania na serwerach z odpowiedniej lokalizacji.
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Zmień ustawienia Centrum IoT
+## <a name="change-the-settings-of-the-iot-hub"></a>Zmień ustawienia usługi IoT hub
+<!--robinsh these screenshots are out of date -->
 
-Po utworzeniu jest ono w bloku Centrum IoT można zmienić ustawienia istniejących Centrum IoT.
+Możesz zmienić ustawienia już istniejące Centrum IoT, utworzony z bloku usługi IoT Hub.
 
-![][8]
+![Zrzut ekranu przedstawiający ustawienia dla usługi IoT hub](./media/iot-hub-create-through-portal/portal-settings.png)
 
-**Zasady dostępu do udostępnionych**: te zasady definiowania uprawnień do urządzeń i usług do nawiązania połączenia Centrum IoT. Te zasady można uzyskać, klikając **zasady dostępu współużytkowanego** w obszarze **ogólne**. W tym bloku należy modyfikowania istniejących zasad lub Dodaj nowe zasady.
+**Udostępnione zasady dostępu**: te zasady zdefiniować uprawnienia dla urządzeń i usług do łączenia z usługą IoT Hub. Te zasady można skorzystać, klikając **zasady dostępu współdzielonego** w obszarze **ogólne**. W tym bloku możesz zmodyfikować istniejące zasady lub Dodaj nowe zasady.
 
 ### <a name="create-a-policy"></a>Utwórz zasady
 
-* Kliknij przycisk **Dodaj** aby otworzyć blok. Można w tym miejscu wprowadź nową nazwę zasady i uprawnienia, które chcesz skojarzyć z tymi zasadami, jak pokazano na poniższej ilustracji:
+* Kliknij przycisk **Dodaj** aby otworzyć blok. W tym miejscu można wprowadzić nową nazwę zasady i uprawnienia, które chcesz skojarzyć z zasadami, jak pokazano na poniższej ilustracji:
 
-    Istnieje kilka uprawnienia, które mogą być skojarzone z tych zasad udostępnionych. **Odczytać rejestru** i **zapisu rejestru** zasady prawa odczytu i zapisu w rejestrze tożsamości. Wybranie opcji zapisu automatycznie wybierze opcję odczytu.
+    Istnieje kilka uprawnienia, które mogą być skojarzone z tymi zasadami udostępnionych. **Odczyt rejestru** i **zapis w rejestrze** zasady przyznają uprawnienia dostępu odczytu i zapisu w rejestrze tożsamości. Wybranie opcji zapisu automatycznie wybiera wybranie opcji odczytu.
 
-    **Usługa połączyć** zasada nie udziela uprawnienia dostępu punktów końcowych usług, takich jak **odbierania urządzenia do chmury**. **Urządzenie połączyć** zasad przyznaje uprawnienia do wysyłania i odbierania wiadomości za pomocą punktów końcowych po stronie urządzenia IoT Hub.
+    **Połączenie z usługą** zasad udziela uprawnień do dostępu do punktów końcowych usług, takich jak **otrzymywać urządzenia do chmury**. **Połączenie urządzenia** zasad przyznaje uprawnienia do wysyłania i odbierania komunikatów za pomocą punktów końcowych po stronie urządzenia usługi IoT Hub.
 
-* Kliknij przycisk **Utwórz** można dodać nowo utworzonej zasady do istniejącej listy.
+* Kliknij przycisk **Utwórz** można dodać tę nowo utworzoną zasad do istniejącej listy.
 
-![][10]
+   ![Zrzut ekranu przedstawiający dodawanie zasad dostępu współdzielonego](./media/iot-hub-create-through-portal/shared-access-policies.png)
 
 ## <a name="endpoints"></a>Punkty końcowe
 
-Kliknij przycisk **punkty końcowe** do wyświetlenia na liście punktów końcowych dla Centrum IoT, która jest modyfikowana. Istnieją dwa typy punktów końcowych: punkty końcowe, które są wbudowane w Centrum IoT i punkty końcowe, które dodajesz do Centrum IoT po jego utworzeniu.
+Kliknij przycisk **punktów końcowych** do wyświetlania listy punktów końcowych usługi IoT hub, która jest modyfikowana. Istnieją dwa typy punktów końcowych: punkty końcowe, które są wbudowane w usługę IoT hub i punktów końcowych, które dodajesz do usługi IoT hub po jego utworzeniu.
 
-![][11]
+![Zrzut ekranu przedstawiający dodawanie punktu końcowego](./media/iot-hub-create-through-portal/messaging-settings.png)
 
 ### <a name="built-in-endpoints"></a>Wbudowane punkty końcowe
 
-Istnieją dwa punkty końcowe wbudowanych: **chmury do urządzenia opinii** i **zdarzenia**.
+Istnieją dwie wbudowane punkty końcowe: **chmury do urządzenia opinii** i **zdarzenia**.
 
-* **Chmury do urządzenia opinii** ustawienia: to ustawienie nie ma dwa subsettings: **chmury do urządzenia TTL** (time-to-live) i **czas przechowywania** (w godzinach) dla wiadomości. Podczas pierwszego tworzenia Centrum IoT, oba te ustawienia mają wartość domyślną jedną godzinę. Aby zmienić te ustawienia, za pomocą suwaków lub wpisz wartości.
-* **Zdarzenia** ustawienia: to ustawienie nie ma kilka subsettings, niektóre z nich są tylko do odczytu. Poniższa lista zawiera opis tych ustawień:
+* **Chmury do urządzenia opinii** ustawień: to ustawienie ma dwa subsettings: **TTL urządzenia w chmurze** (time-to-live) i **czas przechowywania** (w godzinach) dla wiadomości. Podczas pierwszego tworzenia Centrum IoT hub, oba te ustawienia mają wartość domyślną jedną godzinę. Aby dostosować te ustawienia, za pomocą suwaków lub wpisz wartości.
 
-  * **Partycje**: ustawiono wartość domyślną, podczas tworzenia Centrum IoT. Liczba partycji za pomocą tego ustawienia można zmienić.
+* **Zdarzenia** ustawień: to ustawienie ma kilka subsettings, niektóre z nich są przeznaczone tylko do odczytu. Na poniższej liście opisano te ustawienia:
 
-  * **Nazwa zgodnych z Centrum zdarzeń i punktu końcowego**: Centrum IoT po utworzeniu, Centrum zdarzeń jest utworzone wewnętrznie czy może być wymagany dostęp do określonych warunkach. Nie można przypisać wartości nazwy i punktu końcowego zgodnego Centrum zdarzeń, ale można je skopiować, klikając **kopiowania**.
+  * **Partycje**: ustawiono wartość domyślną, po utworzeniu Centrum IoT hub. Można zmienić liczby partycji za pomocą tego ustawienia.
 
-  * **Czas przechowywania**: Domyślnie ustawiany na jeden dzień, ale można zmienić za pomocą listy rozwijanej. Ta wartość jest w dni w obszarze Ustawienia urządzenia do chmury.
+  * **Nazwę zgodną z Centrum zdarzeń i punkt końcowy**: gdy usługa IoT hub jest tworzony, Centrum zdarzeń jest tworzone wewnętrznie, może być wymagany dostęp do w pewnych okolicznościach. Nie można dostosować wartości nazwy i punktu końcowego zgodnego z Centrum zdarzeń, ale można je skopiować, klikając **kopiowania**.
 
-  * **Grupy konsumentów**: grupy konsumentów umożliwić wielu czytelnikom niezależnie odczytywać wiadomości z Centrum IoT. Każdy Centrum IoT tworzona jest domyślna grupa odbiorców. Można jednak dodać lub usunąć grupy konsumentów do Twojej centra IoT za pomocą tego ustawienia.
+  * **Czas przechowywania**: Domyślnie ustawiany na jeden dzień, ale można zmienić za pomocą listy rozwijanej. Ta wartość jest Days ustawienia urządzenia do chmury.
+
+  * **Grupy konsumentów**: grupy konsumentów włączyć wielu elementów odczytujących niezależnie odczytywanie komunikatów z usługi IoT hub. Każde wystąpienie usługi IoT hub jest tworzony z domyślna grupa odbiorców. Można jednak dodać lub usunąć grupy konsumentów do usługi IoT Hub przy użyciu tego ustawienia.
 
   > [!NOTE]
   > Domyślna grupa odbiorców nie można edytować ani usunąć.
 
 ### <a name="custom-endpoints"></a>Niestandardowe punkty końcowe
 
-Można dodać niestandardowe punkty końcowe Centrum IoT przy użyciu portalu. Z **punkty końcowe** bloku, kliknij przycisk **Dodaj** u góry, aby otworzyć **dodać punkt końcowy** bloku. Wprowadź wymagane informacje, a następnie kliknij przycisk **OK**. Niestandardowe punktu końcowego zostanie wyświetlony w oknie głównym **punkty końcowe** bloku.
+Możesz dodać niestandardowe punkty końcowe Centrum IoT przy użyciu portalu. Z **punktów końcowych** bloku kliknij **Dodaj** u góry, aby otworzyć **Dodaj punkt końcowy** bloku. Wprowadź wymagane informacje, a następnie kliknij przycisk **OK**. Niestandardowy punkt końcowy zostanie wyświetlony w oknie głównym **punktów końcowych** bloku.
 
-![][13]
+![Zrzut ekranu przedstawiający tworzenie niestandardowego punktu końcowego](./media/iot-hub-create-through-portal/endpoint-creation.png)
 
-Więcej informacje niestandardowe punkty końcowe w [odwołanie — punkty końcowe Centrum IoT][lnk-devguide-endpoints].
+Możesz dowiedzieć się więcej o niestandardowych punktach końcowych w [odwołanie — punkty końcowe IoT hub]( iot-hub-devguide-endpoints.md).
 
 ## <a name="routes"></a>Trasy
 
-Kliknij przycisk **tras** do zarządzania, jak Centrum IoT wysyła wiadomości urządzenia do chmury.
+Kliknij przycisk **trasy** do zarządzania, jak usługa IoT Hub wywołuje komunikatów przesyłanych z chmury do urządzenia.
 
-![][14]
+![Zrzut ekranu przedstawiający dodawanie nowego trasy](./media/iot-hub-create-through-portal/routes-list.png)
 
-Można dodać trasy do Centrum IoT, klikając **Dodaj** w górnej części **tras*** bloku, wprowadzając wymagane informacje, a następnie klikając polecenie **OK**. Dostęp jest następnie wyświetlane w głównym **tras** bloku. Można edytować trasę, klikając go na liście tras. Aby włączyć trasy, kliknij go na liście tras i ustaw **włączone** Przełącz, aby **poza**. Aby zapisać wprowadzone zmiany, kliknij przycisk **OK** w dolnej części bloku.
+Można dodać trasy do usługi IoT hub, klikając **Dodaj** w górnej części **trasy*** bloku, wprowadzając wymagane informacje i kliknięcie **OK**. Trasy następnie znajduje się w głównym **trasy** bloku. Można edytować trasę, klikając go na liście trasy. Aby włączyć trasy, kliknij je na liście tras i ustaw **włączone** Przełącz, aby **poza**. Aby zapisać zmiany, kliknij przycisk **OK** w dolnej części bloku.
 
-![][15]
+![Zrzut ekranu przedstawiający edytowanie nowej reguły routingu](./media/iot-hub-create-through-portal/route-edit.png)
 
-## <a name="delete-the-iot-hub"></a>Usuń Centrum IoT
+## <a name="delete-the-iot-hub"></a>Usuwanie IoT hub
 
-Możesz przejść do Centrum IoT, które chcesz usunąć, klikając **Przeglądaj**, a następnie wybierając odpowiedni koncentratora do usunięcia. Aby usunąć Centrum IoT kliknij **usunąć** znajdujący się poniżej nazwę Centrum IoT.
+Możesz przejść do Centrum IoT, które chcesz usunąć, klikając **Przeglądaj**, a następnie wybierając odpowiednie koncentratora do usunięcia. Aby usunąć Centrum IoT, kliknij przycisk **Usuń** znajdujący się poniżej nazwę Centrum IoT.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
-* [Zbiorcze zarządzania urządzeniami IoT][lnk-bulk]
-* [Metryki Centrum IoT][lnk-metrics]
-* [Operacje monitorowania][lnk-monitor]
+* [Zbiorcze zarządzanie urządzeniami IoT](iot-hub-bulk-identity-mgmt.md)
+* [Metryki usługi IoT Hub](iot-hub-metrics.md)
+* [Monitorowanie operacji](iot-hub-operations-monitoring.md)
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
-* [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
-
-[4]: ./media/iot-hub-create-through-portal/create-iothub.png
-[5]: ./media/iot-hub-create-through-portal/location1.png
-[8]: ./media/iot-hub-create-through-portal/portal-settings.png
-[10]: ./media/iot-hub-create-through-portal/shared-access-policies.png
-[11]: ./media/iot-hub-create-through-portal/messaging-settings.png
-[12]: ./media/iot-hub-create-through-portal/pricing-error.png
-[13]: ./media/iot-hub-create-through-portal/endpoint-creation.png
-[14]: ./media/iot-hub-create-through-portal/routes-list.png
-[15]: ./media/iot-hub-create-through-portal/route-edit.png
-
-[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
+* [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Zabezpieczać rozwiązanie IoT od podstaw w górę](../iot-fundamentals/iot-security-ground-up.md)

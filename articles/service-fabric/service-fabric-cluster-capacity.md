@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494212"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617222"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -82,7 +82,8 @@ Warstwa trwałości jest używany do wskazania systemowi uprawnienia, których m
 
 > [!WARNING]
 > Typy węzłów z trwałością brązowa uzyskać _brakiem uprawnień_. Oznacza to, że zadania infrastruktury, które wpływają na obciążeń bezstanowych będzie nie można zatrzymać lub opóźnione, co może mieć wpływ na Twoich obciążeń. Tylko brązowa na użytek typy węzłów, które są uruchamiane tylko na obciążeniach bezstanowych. W przypadku obciążeń produkcyjnych systemem Silver lub powyżej jest zalecane. 
->
+
+> Niezależnie od tego, dowolny poziom trwałości [dezalokacji](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) operacji na zestawie skalowania maszyn wirtualnych zniszcz klaster
 
 **Korzyści wynikające z używania poziomów niezawodności na poziomie Silver lub Gold**
  
@@ -150,7 +151,7 @@ Poniżej przedstawiono zalecenia na temat wybierania warstwy niezawodności.
 
 Poniżej przedstawiono wskazówki dotyczące planowania pojemności typu węzła podstawowego:
 
-- **Liczba wystąpień maszyn wirtualnych do uruchamiania dowolnych obciążeń produkcyjnych na platformie Azure:** należy określić minimalny rozmiar typu węzła podstawowego 5. 
+- **Liczba wystąpień maszyn wirtualnych do uruchamiania dowolnych obciążeń produkcyjnych na platformie Azure:** należy określić minimalny rozmiar typu węzła podstawowego 5 i warstwy niezawodności Silver.  
 - **Liczba wystąpień maszyn wirtualnych do uruchamiania testów obciążenia na platformie Azure** można określić rozmiar typu węzła podstawowego minimalnej 1 i 3. Jeden węzeł klastra, jest uruchamiana przy użyciu specjalnej konfiguracji, a tym samym, skalowanie poza tego klastra nie jest obsługiwane. Jeden węzeł klastra, ma nie niezawodności, a więc w szablonie usługi Resource Manager, należy usunąć/nie określić tę konfigurację (to ustawienie nie zostanie wartość konfiguracji nie jest wystarczająco dużo). Jeśli jeden węzeł klastra, skonfigurować za pośrednictwem portalu zostanie skonfigurowany, następnie konfiguracji są automatycznie wykonywane. Jednego do trzech klastrów nie są obsługiwane dla obciążeń produkcyjnych. 
 - **Jednostka SKU maszyny Wirtualnej:** typu węzła podstawowego jest której działają usługi systemu, więc jednostki SKU maszyny Wirtualnej, możesz wybrać, musi take pod uwagę ogólną szczytowego obciążenia należy zaplanować umieścić w klastrze. W tym miejscu jest odpowiednio do zilustrowania co mam na myśli tutaj — traktować typu węzła podstawowego jako swojej "płuca", jest to, co zapewnia tlenu do Twoich myśli, a więc jeśli mózg nie uzyska wystarczającą ilość tlenu, niska treści wywołania. 
 
@@ -166,8 +167,7 @@ W przypadku obciążeń produkcyjnych:
 - Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
 
 > [!WARNING]
-> Zmiana węzła podstawowego rozmiar jednostki SKU maszyny Wirtualnej na działającego klastra nie jest obecnie obsługiwana. Dlatego rozważnych podstawowy typ węzła jednostki SKU maszyny Wirtualnej, biorąc pod uwagę przyszłe zapotrzebowanie w zakresie pojemności. W tej chwili obsługiwana jedynie przenieść typu węzła podstawowego do nowej jednostki SKU maszyny Wirtualnej (mniejszy lub większy) jest utworzenie nowego klastra przy użyciu prawo pojemność wdrażania aplikacji go, a następnie Przywracanie stanu aplikacji (jeśli dotyczy) z [ Najnowsza wersja usługi tworzenia kopii zapasowych](service-fabric-reliable-services-backup-restore.md) podjęciu ze starego klastra. Nie należy przywrócić wszystkie stanu usługi systemu, zostaną ponownie utworzone podczas wdrażania aplikacji do nowego klastra. Jeśli po prostu systemem aplikacji bezstanowych klastra, a następnie wszystko, co możesz zrobić to wdrażanie aplikacji do nowego klastra, masz nic nie można przywrócić.
-> 
+> Zmiana węzła podstawowego rozmiar jednostki SKU maszyny Wirtualnej w klastrze uruchomiona operacja skalowania jest i udokumentowane w artykule [zestawu skalowania maszyn wirtualnych skalowania w poziomie](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentacji.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Typ węzła podstawowego bez — wskazówki dotyczące wydajności, w przypadku obciążeń stanowych
 

@@ -2,18 +2,18 @@
 title: Najlepsze rozwiązania dotyczące usługi Azure SQL Data Sync | Dokumentacja firmy Microsoft
 description: Poznaj najlepsze rozwiązania dotyczące konfigurowania i uruchamiania usługi Azure SQL Data Sync.
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620804"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061710"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -75,17 +75,16 @@ W tej sekcji omówiono ograniczenia obsługi synchronizacji danych SQL.
 
 #### <a name="autoprovisioning-limitations"></a>Ograniczenia Autoprovisioning
 
-SQL Data Sync ma następujące ograniczenia na autoprovisioning:
+SQL Data Sync ma następujące ograniczenia dotyczące autoprovisioning:
 
--   Wybierz kolumny, które są tworzone w tabeli docelowej.  
-    Wszelkie kolumny, które nie należą do grupy synchronizacji nie są aprowizowane w tabelach docelowych.
--   Indeksy są tworzone tylko dla wybranych kolumn.  
-    Jeśli źródło tabeli indeksu zawiera kolumny, które nie należą do grupy synchronizacji, te indeksy nie są aprowizowane w tabelach docelowych.  
+-   Wybierz kolumny, które są tworzone w tabeli docelowej. Wszelkie kolumny, które nie należą do grupy synchronizacji nie są aprowizowane w tabelach docelowych.
+-   Indeksy są tworzone tylko dla wybranych kolumn. Jeśli źródło tabeli indeksu zawiera kolumny, które nie należą do grupy synchronizacji, te indeksy nie są aprowizowane w tabelach docelowych.  
 -   Indeksy w kolumnach typu XML nie są aprowizowane.  
 -   Ograniczenia CHECK nie zainicjowano obsługi administracyjnej.  
 -   Istniejące wyzwalacze w tabelach źródłowych nie są aprowizowane.  
 -   Widoki i procedury składowane nie są tworzone w docelowej bazie danych.
 -   UPDATE CASCADE i ON DELETE CASCADE akcje na ograniczenia klucza obcego nie są odtwarzane w tabelach docelowych.
+-   W przypadku kolumn dziesiętnego lub liczbowego o dokładności większej niż 28 SQL Data Sync może wystąpić problem przepełnienia konwersji podczas synchronizacji. Zaleca się ograniczenie dokładność dziesiętnego lub liczbowego kolumn do 28 lub mniej.
 
 #### <a name="recommendations"></a>Zalecenia
 

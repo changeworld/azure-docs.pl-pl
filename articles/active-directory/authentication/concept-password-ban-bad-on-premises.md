@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308480"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055530"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -37,7 +37,7 @@ Istnieją trzy składniki oprogramowania, które tworzą ochrona za pomocą has�
 ## <a name="requirements"></a>Wymagania
 
 * Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny musi działać system Windows Server 2012 lub nowszy.
-* Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C. Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
+* Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C. Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Łączność sieciowa musi istnieć między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer obsługujący usługę serwera proxy ochrony haseł usługi Azure AD.
 * Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.
 * Konta administratora globalnego, aby zarejestrować usługę serwera proxy ochrony haseł usługi Azure AD z usługą Azure AD.

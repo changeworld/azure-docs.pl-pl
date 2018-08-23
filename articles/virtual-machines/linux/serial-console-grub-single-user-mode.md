@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e0b5978f1c0254cdd4c0216a4188e84f67eb4263
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177658"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061067"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne w przypadku badanie problemy lub problemy z siecią mniejszą liczbę usług może działać w tle i, w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany. Dzięki takiemu grupowaniu można zbadać sytuacjach, takich jak system plików uszkodzony, fstab przerwany, lub (iptables niepoprawna konfiguracja) połączenia sieciowego.
@@ -64,7 +64,7 @@ Jeśli po skonfigurowaniu CHODNIKÓW i głównego dostępu przy użyciu powyższ
 1. Naciśnij klawisze Ctrl + X, aby zakończyć proces i ponowne uruchomienie przy użyciu ustawień zastosowanych
 1. Zostanie wyświetlony monit o hasło administratora zanim będzie mógł przejść do trybu jednego użytkownika — jest to samo hasło utworzone w powyższych instrukcji    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-systemd-unit-rescue-target.png)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Wejdź w tryb jednego użytkownika bez konta głównego włączone w RHEL
 Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użytkownik root, możesz zresetować hasła użytkownika root. Skorzystaj z poniższych instrukcji:
@@ -81,7 +81,7 @@ Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użyt
 1. Po uruchomieniu w trybie jednego użytkownika, wpisz w `chroot /sysroot` przełączyć się do `sysroot` zdjęto zabezpieczeń systemu
 1. Jesteś teraz głównego. Możesz zresetować hasła głównego przy użyciu `passwd` , a następnie użyć z powyższymi instrukcjami, aby przejść do trybu jednego użytkownika. Typ `reboot -f` ponowne uruchomienie, gdy wszystko będzie gotowe.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-rd-break.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Uwaga: Uruchomiona przy użyciu powyższych instrukcji spowoduje porzucenie należy do awaryjnego shell, dzięki czemu można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika. 
 
@@ -136,7 +136,7 @@ Program GRUB dostępu w systemie SLES wymaga konfiguracji programu rozruchowego 
 1. Aby wprowadzić CHODNIKÓW, ponowne uruchomienie maszyny Wirtualnej, a następnie naciśnij dowolny klawisz, podczas sekwencji rozruchu się CHODNIKÓW pozostają na ekranie
     - Domyślny limit czasu CHODNIKÓW jest wartości 1. Można to modyfikować, zmieniając `GRUB_TIMEOUT` zmienną `/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-bootloader.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Tryb jednego użytkownika w systemie SLES SUSE
 Użytkownik zostanie automatycznie usunięty do awaryjnego shell Jeśli SLES nie normalny rozruch. Aby ręcznie wprowadzić awaryjnego powłoki, użyj poniższych instrukcji:

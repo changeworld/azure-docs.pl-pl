@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: d1245b07ac0de680c13542b9af86b25bdf517c21
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 551439d28bcd7c64faf7ac6ac7388145456f7a53
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576138"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987568"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w aplikacji platformy uniwersalnej systemu Windows przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -67,7 +67,7 @@ Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zest
 1. Następujący wiersz danych wyjściowych zostanie wyświetlony w konsoli Menedżera pakietów.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
    ```
 
 ## <a name="add-the-sample-code"></a>Dodaj kod przykładowy

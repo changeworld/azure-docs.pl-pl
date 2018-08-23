@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 69e3e308fb5af98dd5763c56503cc28bd4ecfa9e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125252"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442058"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,7 +184,7 @@ Aby skopiować dane z usług Salesforce, należy ustawić typ źródła w dział
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania musi być równa **SalesforceSource**. | Yes |
-| query |Użyj zapytania niestandardowe można odczytać danych. Można użyć zapytań SQL 92 lub [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) zapytania. Może to być na przykład `select * from MyTable__c`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| query |Użyj zapytania niestandardowe można odczytać danych. Możesz użyć [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SQL 92 lub kwerendy. Zobacz więcej porad w [zapytania porady](#query-tips) sekcji. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | readBehavior | Wskazuje, czy wysyłać zapytania o istniejące rekordy lub wysyłać zapytania o wszystkie rekordy, włącznie z tymi usunięte. Jeśli nie zostanie określony, domyślnym zachowaniem jest pierwsza. <br>Dozwolone wartości: **zapytania** (ustawienie domyślne), **queryAll**.  | Nie |
 
 > [!IMPORTANT]
@@ -282,10 +282,20 @@ Można pobierać dane z raportów usług Salesforce, określając zapytania jako
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Pobieranie rekordów usuniętych z usługi Salesforce Kosza usługi
 
-Aby wysłać zapytanie nietrwale usunięte rekordy z usług Salesforce Kosza, można określić **"IsDeleted = 1"** w zapytaniu. Na przykład:
+Aby wysłać zapytanie nietrwale usunięte rekordy z usług Salesforce Kosza, można określić `readBehavior` jako `queryAll`. 
 
-* Aby wysłać zapytanie usuniętych rekordów, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 1**."
-* Do wykonywania zapytań, wszystkie rekordy, w tym istniejących i usunięte, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 0 lub IsDeleted = 1**."
+### <a name="difference-between-soql-and-sql-query-syntax"></a>Różnica między SOQL, SQL i składnia zapytań
+
+Podczas kopiowania danych z usług Salesforce, można użyć SOQL zapytania lub zapytanie SQL. Zwróć uwagę, te dwie zawiera różnej składni i obsługę funkcji, nie należy mieszać. Zaleca się użyć tej kwerendy SOQL, co jest natywnie obsługiwane przez usługi Salesforce. W poniższej tabeli wymieniono najważniejsze różnice:
+
+| Składnia | Tryb SOQL | Tryb SQL |
+|:--- |:--- |:--- |
+| Wybór kolumn | Należy wyliczyć pola, które mają zostać skopiowane do zapytania, np. `SELECT field1, filed2 FROM objectname` | `SELECT *` jest obsługiwane, oprócz kolumnę zaznaczenia. |
+| Znaki cudzysłowu | Nazwy wprowadzone obiektów nie może być ujmowane w cudzysłów. | Nazwy pól/obiektów mogą być ujmowane w cudzysłów, np. `SELECT "id" FROM "Account"` |
+| Format daty/godziny |  Zobacz szczegóły dotyczące [tutaj](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) i przykłady w następnej sekcji. | Zobacz szczegóły dotyczące [tutaj](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) i przykłady w następnej sekcji. |
+| Wartości logiczne | Reprezentowana jako `False` i `Ture`, np. `SELECT … WHERE IsDeleted=True`. | Reprezentowana jako 0 lub 1, np. `SELECT … WHERE IsDeleted=1`. |
+| Zmiana nazwy kolumny | Nieobsługiwane. | Obsługiwane, np.: `SELECT a AS b FROM …`. |
+| Relacja | Obsługiwane, np. `Account_vod__r.nvs_Country__c`. | Nieobsługiwane. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Pobierać dane przy użyciu klauzuli where klauzuli kolumny daty i godziny
 
@@ -306,7 +316,7 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 | Date |DateTime |
 | Data/godzina |DateTime |
 | Email |Ciąg |
-| Id |Ciąg |
+| Identyfikator |Ciąg |
 | Relacje odnośników |Ciąg |
 | Lista wyboru wielokrotnego |Ciąg |
 | Liczba |Dziesiętna |

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93b9075831db356607438288a7c153dde2f8b210
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238526"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059701"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
@@ -33,13 +33,19 @@ Dodatek wdraża dwa składniki: [kontrolera danych przychodzących rozwiązania 
 W przypadku wdrażania klastra usługi AKS, można włączyć dodatek routing aplikacji protokołu HTTP przy użyciu wiersza polecenia platformy Azure. Aby to zrobić, należy użyć [tworzenie az aks] [ az-aks-create] polecenia `--enable-addons` argumentu.
 
 ```azurecli
-az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
-Po wdrożeniu klastra za pomocą [az aks show] [ az-aks-show] polecenie, aby pobrać nazwę strefy DNS. Ta nazwa jest wymagane do wdrażania aplikacji w klastrze AKS.
+Można również włączyć routing protokołu HTTP na istniejące usługi AKS klastra przy użyciu [az aks enable dodatków] [ az-aks-enable-addons] polecenia. Aby włączyć routing protokołu HTTP w istniejącym klastrze, należy dodać `--addons` parametru i określ *http_application_routing* jak pokazano w poniższym przykładzie:
 
 ```azurecli
-$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
+```
+
+Po wdrożeniu klastra lub zaktualizowaniu [az aks show] [ az-aks-show] polecenie, aby pobrać nazwę strefy DNS. Ta nazwa jest wymagane do wdrażania aplikacji w klastrze AKS.
+
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 
 Result
 -----------------------------------------------------
@@ -155,7 +161,7 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 Rozwiązanie routing protokołu HTTP można je usunąć za pomocą wiersza polecenia platformy Azure. W tym celu uruchom następujące polecenie, zastępując usługi AKS klastra i zasobu Nazwa grupy.
 
 ```azurecli
-az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
@@ -232,6 +238,7 @@ Aby uzyskać informacje na temat sposobu instalowania kontrolera transferu danyc
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 
 
 <!-- LINKS - external -->

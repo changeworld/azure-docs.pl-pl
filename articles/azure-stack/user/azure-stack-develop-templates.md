@@ -1,9 +1,9 @@
 ---
-title: Tworzenie szablonów dla stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, najlepsze rozwiązania szablonu Azure stosu
+title: Tworzenie szablonów usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Poznaj najlepsze rozwiązania dla szablonu usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 046866d9ed7ce65e3b46be1c67b4ab2058cefa4d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d09dec2f327d8b5911a4e55832ba106838c7ebc3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304151"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057681"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Zagadnienia dotyczące szablonów usługi Azure Resource Manager
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Podczas opracowywania aplikacji jest zapewnienie przenośność szablonu platformy Azure i stosu Azure. W tym artykule przedstawiono zagadnienia związane z opracowywaniem usługi Azure Resource Manager [szablony](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), co może prototypu wdrożenia aplikacji i testowania na platformie Azure bez dostępu do środowiska Azure stosu.
+Podczas opracowywania aplikacji, jest ważne, aby zapewnić Przenoszalność szablonu między platformą Azure i usługi Azure Stack. Ten artykuł zawiera informacje dotyczące tworzenia usługi Azure Resource Manager [szablony](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), dzięki czemu możesz prototypu w Twojej aplikacji i przetestuj wdrożenie na platformie Azure bez dostępu do środowiska usługi Azure Stack.
 
 ## <a name="resource-provider-availability"></a>Dostępność dostawcy zasobów
 
-Szablon, który planujesz wdrożyć należy używać tylko usług Microsoft Azure, które są już dostępne lub w wersji zapoznawczej w stosie Azure.
+Szablon, który zamierzasz wdrożyć należy używać tylko usług Microsoft Azure, które są już dostępne lub w wersji zapoznawczej w usłudze Azure Stack.
 
 ## <a name="public-namespaces"></a>Publiczne obszary nazw
 
-Ponieważ stosu Azure znajduje się w centrum danych, ma przestrzeni nazw punktu końcowego usługi innej niż chmurze publicznej Azure. W związku z tym zapisane na stałe publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem podczas próby wdrażania ich na stosie Azure. Dynamiczne można tworzyć za pomocą punktów końcowych usługi *odwołania* i *łączenie* funkcje do pobierania wartości z dostawcy zasobów podczas wdrażania. Na przykład zamiast hardcoding *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) dynamicznie ustawić *osDisk.URI* punktu końcowego:
+Ponieważ usługi Azure Stack znajduje się w centrum danych, ma przestrzenie nazw punktu końcowego innej usługi niż chmury publicznej platformy Azure. W rezultacie zapisane na stałe publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem podczas próby wdróż je w usłudze Azure Stack. Można tworzyć dynamicznie przy użyciu punktów końcowych usługi *odwołania* i *łączenie* funkcji można pobrać wartości od dostawcy zasobów podczas wdrażania. Na przykład zamiast hardcoding *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) aby dynamicznie ustawić *osDisk.URI* punktu końcowego:
 
      "osDisk": {"name": "osdisk","vhd": {"uri":
      "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
@@ -42,7 +42,7 @@ Ponieważ stosu Azure znajduje się w centrum danych, ma przestrzeni nazw punktu
 
 ## <a name="api-versioning"></a>Obsługa wersji interfejsu API
 
-Wersje usługi Azure może się różnić między Azure i stosu Azure. Każdy zasób wymaga **apiVersion** atrybutu, który definiuje możliwości oferowane. Aby zapewnić zgodność wersji interfejsu API Azure stosu, następujące wersje interfejsu API są prawidłowe dla każdego dostawcy zasobów:
+Wersje usługi platformy Azure mogą się różnić między platformą Azure i usługi Azure Stack. Każdy zasób wymaga **apiVersion** atrybut, który definiuje możliwości oferowane. Aby zapewnić zgodność wersji interfejsu API w usłudze Azure Stack, następujących wersji interfejsu API są prawidłowe dla każdego dostawcy zasobów:
 
 | Dostawca zasobów | apiVersion |
 | --- | --- |
@@ -54,20 +54,20 @@ Wersje usługi Azure może się różnić między Azure i stosu Azure. Każdy za
 
 ## <a name="template-functions"></a>Funkcje szablonów
 
-Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) zapewniają możliwości wymagane do tworzenia dynamicznych szablonów. Na przykład można użyć funkcji dla zadania, takie jak:
+Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) zapewniają możliwości, które są wymagane do tworzenia dynamicznych szablonów. Na przykład można użyć funkcji zadań, takich jak:
 
 * Łączenie lub przycinanie ciągów.
-* Odwołuje się do wartości od innych zasobów.
-* Iteracja zasobów, aby wdrożyć wiele wystąpień.
+* Odwołuje się do wartości, z poziomu innych zasobów.
+* Iteracja na zasoby do wdrożenia w wielu wystąpieniach.
 
-Te funkcje nie są dostępne w stosie Azure:
+Te funkcje nie są dostępne w usłudze Azure Stack:
 
 * Pomiń
-* podejmij
+* Wypełnij
 
 ## <a name="resource-location"></a>Lokalizacja zasobu
 
-Szablony usługi Azure Resource Manager umożliwia atrybut lokalizacji umieść zasoby podczas wdrażania. Na platformie Azure lokalizacje odwoływać się do regionu zachodnie stany USA lub Azji. W stosie Azure lokalizacje są różnych, ponieważ stos Azure znajduje się w centrum danych. Aby zapewnić, że szablony są możliwej platformy Azure i stosu Azure, powinien odwoływać lokalizacja grupy zasobów, zgodnie z wdrożeniem poszczególnych zasobów. Można to zrobić przy użyciu `[resourceGroup().Location]` zapewnienie wszystkie zasoby dziedziczą lokalizacja grupy zasobów. Poniższy fragment jest przykładem korzystania z tej funkcji podczas wdrażania konta magazynu:
+Szablony usługi Azure Resource Manager umożliwia umieść zasoby podczas wdrażania przez atrybut lokalizacji. Na platformie Azure lokalizacje dotyczą regionu zachodnie stany USA lub Ameryki Południowej. W usłudze Azure Stack lokalizacje są różne, ponieważ usługa Azure Stack znajduje się w centrum danych. Aby upewnić się, że szablony są możliwej między platformą Azure i usługi Azure Stack, powinny odwoływać lokalizację grupy zasobów, podczas wdrażania poszczególnych zasobów. Można to zrobić za pomocą `[resourceGroup().Location]` aby upewnić się, wszystkie zasoby dziedziczą lokalizację grupy zasobów. Poniższy fragment jest przykładem korzystania z tej funkcji podczas wdrażania konta magazynu:
 
     "resources": [
     {
@@ -85,5 +85,5 @@ Szablony usługi Azure Resource Manager umożliwia atrybut lokalizacji umieść 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)
-* [Wdrażanie szablonów z wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
+* [Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
 * [Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)

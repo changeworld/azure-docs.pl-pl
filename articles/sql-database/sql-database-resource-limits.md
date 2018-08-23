@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412114"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061708"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów usługi Azure SQL Database — omówienie 
 
@@ -22,15 +22,15 @@ Ten artykuł zawiera omówienie zasobów usługi Azure SQL Database ogranicza i 
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Co to jest maksymalna liczba serwerów i baz danych?
 
-| Maksimum | Wartość |
-| :--- | :--- |
-| Baz danych na jednym serwerze | 5000 |
-| Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
-| Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |
-| Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 |
-| przydział (rdzeń wirtualny) na serwer | 540 |
-| Maksymalna liczba pul na serwer | ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych |
-|||
+| Maksimum | Serwer logiczny | Wystąpienie zarządzane |
+| :--- | :--- | :--- |
+| Baz danych na serwerze/wystąpienie | 5000 | 100 |
+| Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 | ND |
+| Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 | ND | 
+| Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 | ND |  
+| Rdzeń wirtualny przydziału na server/wystąpienie | 540 | 80 |
+| Maksymalna liczba pul na serwer | ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych | ND |
+||||
 
 > [!NOTE]
 > Aby uzyskać więcej /eDTU limitu przydziału, przydziału pamięci rdzeń wirtualny lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze. 

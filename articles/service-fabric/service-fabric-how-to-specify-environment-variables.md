@@ -1,6 +1,6 @@
 ---
-title: Instrukcje określania zmiennych środowiskowych dla usług w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Przedstawiono sposób używać zmiennych środowiskowych dla aplikacji w sieci szkieletowej usług
+title: Instrukcje określania zmiennych środowiskowych dla usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiesz się, jak używać zmiennych środowiskowych dla aplikacji w usłudze Service Fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 4325b3acd3cbc73ee5976021bebe96c267b2a6dd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206032"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058210"
 ---
-# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Sposób określania zmiennych środowiskowych dla usług w sieci szkieletowej usług
+# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Sposobu określania zmiennych środowiskowych dla usług w usłudze Service Fabric
 
-W tym artykule przedstawiono sposób określania zmiennych środowiskowych dla danej usługi lub kontenera w sieci szkieletowej usług.
+W tym artykule przedstawiono sposób określania zmiennych środowiskowych dla usługi lub kontenera w usłudze Service Fabric.
 
-## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedura określania zmiennych środowiskowych dla usług
+## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedura do określania zmiennych środowiskowych dla usług
 
-W tym przykładzie należy ustawić wartość zmiennej środowiskowej dla kontenera. Artykule przyjęto założenie, że masz już manifest aplikacji i usług.
+W tym przykładzie możesz ustawić zmienną środowiskową dla kontenera. Tego artykułu przyjęto założenie, że masz już manifest aplikacji i usługi.
 
 1. Otwórz plik ServiceManifest.xml.
-1. W `CodePackage` elementu, Dodaj nową `EnvironmentVariables` elementu i `EnvironmentVariable` elementu dla każdej zmiennej środowiskowej.
+1. W `CodePackage` elementu, Dodaj nowy `EnvironmentVariables` elementu i `EnvironmentVariable` element dla każdej zmiennej środowiskowej.
 
     ```xml
       <CodePackage Name="MyCode" Version="CodeVersion1">
       ...
         <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DeafultValue"/>
+          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
           <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
         </EnvironmentVariables>
       </CodePackage>
     ```
 
-    Zmienne środowiskowe może zostać zastąpiona w manifeście aplikacji.
+    Zmienne środowiskowe można przesłonić w manifeście aplikacji.
 
-1. Aby zastąpić zmienne środowiskowe w manifeście aplikacji, użyj `EnvironmentOverrides` elementu.
+1. Aby zastąpić zmiennych środowiskowych w manifeście aplikacji, użyj `EnvironmentOverrides` elementu.
 
     ```xml
       <ServiceManifestImport>
@@ -54,6 +54,6 @@ W tym przykładzie należy ustawić wartość zmiennej środowiskowej dla konten
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat niektórych podstawowych pojęciach, które zostały omówione w tym artykule, zobacz [zarządzania aplikacjami dla wielu artykułach środowisk](service-fabric-manage-multiple-environment-app-configuration.md).
+Aby dowiedzieć się więcej na temat niektóre podstawowe pojęcia, które zostały omówione w tym artykule, zobacz [Zarządzanie aplikacjami dla wielu środowisk artykułach](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Aby uzyskać informacje o inne funkcje zarządzania aplikacjami, które są dostępne w programie Visual Studio, zobacz [Zarządzaj aplikacjami sieci szkieletowej usług w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Aby uzyskać informacji na temat innych funkcji zarządzania aplikacji, które są dostępne w programie Visual Studio, zobacz [Zarządzanie aplikacjami usługi Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).

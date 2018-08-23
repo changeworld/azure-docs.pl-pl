@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578732"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056043"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
@@ -89,7 +89,7 @@ Aby skonfigurować usługę Azure AD, wprowadź podstawową konfigurację protok
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-Aby uzyskać więcej informacji, zobacz [żądania uwierzytelniania SAML 2.0 i odpowiedzi, które obsługuje usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+Aby uzyskać więcej informacji, zobacz [żądania uwierzytelniania SAML 2.0 i odpowiedzi, które obsługuje usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Przeglądanie lub dostosowywanie oświadczeń wystawionych w tokenie języka SAML

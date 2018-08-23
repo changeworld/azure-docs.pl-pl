@@ -1,208 +1,222 @@
 ---
-title: Partii przetwarzania komunikatów przez grupę lub kolekcji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Wysyłanie i odbieranie wiadomości dla przetwarzania wsadowego w aplikacji logiki
-keywords: partii, przetwarzanie wsadowe
-author: jonfancey
-manager: jeconnoc
-editor: ''
+title: Batch przetwarzania komunikatów, grupę lub kolekcji — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wysyłania i odbierania wiadomości jako partie w usłudze Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
 ms.topic: article
-ms.date: 08/7/2017
-ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: 2815ce7fe0e10aadb60eaa77b58e5395fb5c98d8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/19/2018
+ms.reviewer: estfan, LADocs
+ms.suite: integration
+ms.openlocfilehash: 5190e5d4191cb4d07b000920dd1be1b53e679350
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298019"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059717"
 ---
-# <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Wyślij, odbierania i partii przetwarzania komunikatów w aplikacji logiki
+# <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i wsadowe przetwarzanie komunikatów w usłudze Azure Logic Apps
 
-Do przetwarzania komunikatów razem w grupach, możesz wysłać elementy danych lub komunikaty, do *partii*, a następnie przetwarzania tych elementów jako plik wsadowy. Takie rozwiązanie jest przydatne, gdy użytkownik chce upewnij się, że elementy danych są grupowane w szczególny sposób i przetwarzane są ze sobą. 
+Wysyłanie i przetwarzać komunikaty ze sobą w określony sposób jako grupy, można utworzyć rozwiązania przetwarzania wsadowego, które zbiera komunikaty do *partii* aż określone kryteria są spełnione dla zwalniając i przetwarzanie komunikatów wsadowej. Przetwarzanie wsadowe może zmniejszyć, jak często aplikacja logiki przetwarza wiadomości. W tym artykule pokazano, jak zbudować rozwiązanie do przetwarzania wsadowego, tworząc dwie aplikacje logiki w ramach tej samej subskrypcji platformy Azure, region platformy Azure, a po następującej kolejności: 
 
-Można tworzyć aplikacje logiki, otrzymujących elementów jako plik wsadowy za pomocą **partii** wyzwalacza. Umożliwia tworzenie aplikacji logiki, wysyłających elementów na partię przy użyciu **partii** akcji.
+* ["Odbiornik usługi batch"](#batch-receiver) aplikację logiki, która akceptuje i zbiera komunikaty w partii, aż do spełnienia określone kryteria zwalniania i przetwarzania wiadomości.
 
-W tym temacie pokazano, jak można tworzyć przetwarzanie wsadowe rozwiązanie, wykonując następujące zadania: 
+  Upewnij się, że należy najpierw utworzyć odbiornik usługi batch, docelowej usługi batch można wybrać później, po utworzeniu nadawcy usługi batch.
 
-* [Tworzenie aplikacji logiki, która odbiera i zbiera elementów jako plik wsadowy](#batch-receiver). Ta aplikacja logiki "partii odbiorcy" Określa kryteria nazwa i wersja partii do spełnienia przed aplikacji logiki odbiornika zwalnia i przetwarza elementy. 
+* Co najmniej jeden ["sender usługi batch"](#batch-sender) aplikacji logiki, które wysyłają komunikaty do odbiorcy wcześniej utworzonej usługi batch. 
 
-* [Tworzenie aplikacji logiki, która wysyła elementów na partię](#batch-sender). Ta aplikacja logiki "partii sender" Określa, gdzie można wysłać elementy, które muszą być istniejących aplikacji logiki odbiornika partii. Można również określić unikatowy klucz, takich jak numer klienta, aby "partycji" lub dzielenia partii docelowego na podzbiory na podstawie tego klucza. W ten sposób wszystkie elementy z tego klucza są zbierane i przetwarzane razem. 
+   Można również określić unikatowy klucz, takie jak numer klienta, który *partycje* lub dzieli partii docelowego na podzestawy logiczną na podstawie tego klucza. W ten sposób aplikacja odbiorcy można zbierać wszystkie elementy z tego samego klucza i przetwarzać je ze sobą.
 
-## <a name="requirements"></a>Wymagania
+Upewnij się, że usługi batch odbiorcy i nadawcy partii udostępnianie tej samej subskrypcji platformy Azure *i* region platformy Azure. Jeśli nie, nie możesz wybrać odbiornik usługi batch podczas tworzenia nadawcy partii, ponieważ nie są widoczne dla siebie.
 
-Aby użyć tego przykładu, potrzebne są następujące elementy:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). W przeciwnym razie możesz [skorzystać z subskrypcji z płatnością zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/purchase-options/).
+Aby skorzystać z tego przykładu, potrzebne są następujące elementy:
+
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). Ewentualnie [logowania do subskrypcji płatności](https://azure.microsoft.com/pricing/purchase-options/).
+
+* Konto e-mail ze wszystkimi [dostawcy poczty e-mail obsługiwanego przez usługę Azure Logic Apps](../connectors/apis-list.md)
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
-* Konto e-mail ze wszystkimi [dostawcy poczty e-mail obsługiwane przez usługi Azure Logic Apps](../connectors/apis-list.md)
+* Aby korzystać z programu Visual Studio, a nie w witrynie Azure portal, upewnij się, że [Konfigurowanie programu Visual Studio do pracy z usługą Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="batch-receiver"></a>
 
-## <a name="create-logic-apps-that-receive-messages-as-a-batch"></a>Tworzenie aplikacji logiki, który odbiera komunikaty jako partii
+## <a name="create-batch-receiver"></a>Utwórz odbiornik usługi batch
 
-Przed wysłaniem wiadomości do partii, należy najpierw utworzyć "partii odbiornika" aplikacji logiki z **partii** wyzwalacza. W ten sposób można wybrać tę aplikację logiki odbiornika podczas tworzenia aplikacji logiki nadawcy. Dla odbiornika należy określić nazwę instancji, kryteriów wersji i inne ustawienia. 
+Przed może wysyłać komunikaty do usługi batch, tej partii najpierw musi istnieć jako miejsca docelowego, gdzie wysłać te komunikaty. Dlatego najpierw należy utworzyć aplikację logiki "odbiornik usługi batch", która rozpoczyna się od **partii** wyzwalacza. W ten sposób podczas tworzenia aplikacji logiki "sender usługi batch", możesz wybrać aplikację logiki odbiornika usługi batch. Odbiornik usługi batch kontynuuje zbieranie wiadomości do momentu spełnienia określone kryteria zwalniania i przetwarzania wiadomości. Podczas odbiorniki usługi batch nie muszą nic wiedzieć o nadawców usługi batch, nadawców usługi batch musi znać miejsca docelowego, gdzie one wysyłać wiadomości. 
 
-Aplikacje logiki nadawcy musi wiedzieć, gdzie wysłać elementy, gdy aplikacje logiki odbiorcy nie muszą mieć żadnych informacji o nadawcy.
+1. W [witryny Azure portal](https://portal.azure.com) lub Visual Studio, tworzenie aplikacji logiki o tej nazwie: "BatchReceiver" 
 
-1. W [portalu Azure](https://portal.azure.com), tworzenie aplikacji logiki o tej nazwie: "BatchReceiver" 
+2. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "batch" jako filtr. Wybierz następujący wyzwalacz: **partii komunikatów**
 
-2. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacza, która uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "partii" jako filtr. Wybierz ten wyzwalacz: **partii — komunikaty wsadowe**
+   ![Dodawanie wyzwalacza "Partii komunikatów"](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
-   ![Dodaj wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
+3. Ustaw partii właściwości odbiorcy: 
 
-3. Podaj nazwę dla partii, a następnie określ kryteria wydanie partii, na przykład:
-
-   * **Nazwa partii**: Nazwa używana do identyfikowania partii, czyli "TestBatch" w tym przykładzie.
-   * **Zwolnij kryteria**: kryteria wersji usługi partia zadań, które mogą być oparte na liczbie komunikatów i harmonogram.
+   | Właściwość | Opis | 
+   |----------|-------------|
+   | **Tryb partii** | - **Wbudowane**: Definiowanie kryteriów wersji wewnątrz wyzwalacza partii <br>- **Konto integracji**: Definiowanie wielu wersji konfiguracji kryteria za pośrednictwem [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Z kontem integracji możesz zachować te konfiguracje, wszystko w jednym miejscu, a nie w oddzielnych logic apps. | 
+   | **Nazwa partii** | Nazwa usługi batch, jest "TestBatch" w tym przykładzie, która ma zastosowanie tylko do **wbudowane** tryb usługi batch |  
+   | **Kryteria zwalniania** | Ma zastosowanie tylko do **wbudowane** usługi batch w trybie i określa kryteria, aby spełnić przed przetworzeniem każdej partii: <p>- **Na podstawie liczby komunikatów**: liczba komunikatów do zbierania w usłudze batch, na przykład 10 wiadomości <br>- **Rozmiar na podstawie**: maksymalny rozmiar partii w bajtach, na przykład 100 MB <br>- **Na podstawie harmonogramu**: interwał i częstotliwość między partii wydania, na przykład 10 minut. Można również określić datę i godzinę. <br>- **Zaznacz wszystko**: Użyj określone kryteria. | 
+   ||| 
    
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+   W tym przykładzie wybiera wszystkie kryteria:
 
-   * **Liczba komunikatów**: liczba komunikatów do przechowywania jako partii przed zwolnieniem do przetwarzania, czyli "5" w tym przykładzie.
+   ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
+4. Teraz Dodaj jedną lub więcej akcji, które przetwarzają każdej partii. 
 
-   * **Harmonogram**: harmonogram zlecenia partii do przetworzenia, czyli "co 5 minut" w tym przykładzie.
+   W tym przykładzie Dodaj akcję, która wysyła wiadomość e-mail po aktywowaniu wyzwalacza usługi batch. 
+   Wyzwalacz jest uruchamiany i wysyła wiadomość e-mail, gdy usługi batch ma 10 wiadomości, osiągnie 10 MB albo po upływie 10 minut przekazywania.
 
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/receive-batch-schedule-based.png)
+   1. W obszarze wyzwalacza usługi batch wybierz **nowy krok**.
 
+   2. W polu wyszukiwania wprowadź „wyślij wiadomość e-mail” jako filtr.
+   Oparta na dostawcy poczty e-mail, wybierz łącznik poczty e-mail.
+      
+      Na przykład, jeśli masz konto osobiste, takie jak @outlook.com lub @hotmail.com, wybierz łącznik usługi Outlook.com. 
+      W przypadku kont usługi Gmail wybierz łącznik usługi Gmail. 
+      W tym przykładzie użyto usługi Office 365 Outlook. 
 
-4. Dodaj inną akcję, która wysyła wiadomość e-mail, gdy partii wyzwalacza. Zawsze partii jest pięć lub jego ostatnich 5 minut aplikacji logiki wysyła wiadomość e-mail.
-
-   1. W obszarze wyzwalacza partii wybierz **+ nowy krok** > **Dodaj akcję**.
-
-   2. W polu wyszukiwania wprowadź wartość „e-mail” jako filtr.
-   W oparciu o dostawcę poczty e-mail, wybierz łącznik poczty e-mail.
-   
-      Na przykład jeśli masz konto służbowe, wybierz łącznik programu Outlook pakietu Office 365. 
-      Jeśli masz konto usługi Gmail, wybierz łącznik usługi Gmail.
-
-   3. Wybierz tę akcję dla Twojego łącznika: **{*dostawcy e-mail*} — Wyślij wiadomość e-mail**
+   3. Wybierz tę akcję: **Wyślij wiadomość e-mail — <*dostawcy poczty e-mail*>**
 
       Na przykład:
 
-      ![Wybierz akcję "Wyślij wiadomość e-mail" dla dostawcy usługi poczty e-mail](./media/logic-apps-batch-process-send-receive-messages/add-send-email-action.png)
+      ![Wybierz akcję "Wyślij wiadomość e-mail" dla dostawcy poczty e-mail](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
-5. Jeśli wcześniej nie utworzono połączenia dla dostawcy usługi poczty e-mail, wprowadź swoje poświadczenia poczty e-mail dla uwierzytelniania po wyświetleniu monitu. Dowiedz się więcej o [uwierzytelniania poświadczeń e-mail](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+5. W razie potrzeby zaloguj się do swojego konta e-mail. 
 
-6. Ustaw właściwości akcji, którą właśnie został dodany.
+6. Ustaw właściwości dla akcji, którą dodałeś.
 
    * W polu **Do** wprowadź adres e-mail adresata. 
    Do celów testowych możesz użyć własnego adresu e-mail.
 
-   * W **podmiotu** pole, jeśli **zawartości dynamicznej** zostanie wyświetlona lista, wybierz **nazwa partycji** pola.
+   * W **podmiotu** pole, po wyświetleniu listy zawartości dynamicznej wybierz **nazwa partycji** pola.
 
-     ![Wybierz z listy "Zawartość dynamiczna", "Nazwa partycji"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
+     ![Z listy zawartości dynamicznej wybierz pozycję "Nazwa partycji"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
-     W dalszej części artykułu można określić klucz partycji unikatowy, który dzieli partii docelowy logicznej zestawów do wysyłania wiadomości. 
-     Każdy zestaw ma unikatowy numer, który jest generowany przez aplikację logiki nadawcy. 
-     Ta funkcja umożliwia pojedyncza partia za pomocą wielu podzestawy i zdefiniować każdy podzbiór o nazwie podane.
+     W dalszej części tego tematu można określić unikatowego klucza partycji dzielącą partii docelowego na logiczne podzestawy do wysyłania wiadomości. 
+     Każdy zestaw ma unikatowy numer, który jest generowany przez aplikację logiki nadawcy usługi batch. 
+     Ta funkcja umożliwia pojedyncza partia za pomocą wielu podzestawy i zdefiniować każdy podzbiór nazwą, której należy podać.
 
-   * W **treści** pole, jeśli **zawartości dynamicznej** zostanie wyświetlona lista, wybierz **identyfikator komunikatu** pola.
+     > [!IMPORTANT]
+     > Partycja obowiązuje limit 5000 wiadomości lub 80 MB. Spełnieniu tych warunków Logic Apps może zwolnić partii, nawet wtedy, gdy nie jest spełniony warunek określonych wersji.
 
-     !["Identyfikator komunikatu" Wybierz "Treść"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
+   * W **treści** pole, po wyświetleniu listy zawartości dynamicznej wybierz **identyfikator komunikatu** pola. 
 
-     Ponieważ dane wejściowe dla działania wysyłania poczty e-mail jest tablicą, Projektant automatycznie dodaje **dla każdego** pętli wokół **wysłać wiadomość e-mail** akcji. 
-     Ta pętla dokonuje wewnętrzny akcji każdego elementu w partii. 
-     Dlatego z wyzwalaczem partii ustawioną pięć elementów, możesz uzyskać pięć wiadomości czasu uruchamiany wyzwalacza.
+     Projektant aplikacji logiki automatycznie dodaje pętlę "For each" wokół akcji Wyślij wiadomość e-mail, ponieważ ta akcja nie akceptuje tablicę jako dane wejściowe. 
+     Ta pętla wysyła wiadomość e-mail dla każdego komunikatu w partii. 
+     Tak, gdy wyzwalacz partii jest ustawiony na 10 wiadomości, zostanie wyświetlona 10 wiadomości czasu aktywowaniu wyzwalacza.
 
-7.  Teraz, gdy utworzono aplikacji logiki odbiornika partii, Zapisz aplikację logiki.
+     !["Treść" Wybierz "Identyfikator komunikatu"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
+
+7.  Zapisz aplikację logiki. Utworzono odbiornik usługi batch.
 
     ![Zapisywanie aplikacji logiki](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
-    > [!IMPORTANT]
-    > Partycja ma limit 5000 komunikatów lub 80 MB. Jeśli albo warunek jest spełniony, partii może być zwolnione, nawet wtedy, gdy nie jest spełniony warunek zdefiniowane przez użytkownika.
-
+8. Jeśli używasz programu Visual Studio, upewnij się, że [wdrażanie aplikacji logiki odbiornika usługi batch na platformie Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). W przeciwnym razie nie można wybrać odbiornik usługi batch podczas tworzenia nadawcy usługi batch.
 
 <a name="batch-sender"></a>
 
-## <a name="create-logic-apps-that-send-messages-to-a-batch"></a>Tworzenie aplikacji logiki, który wysyła wiadomości do partii
+## <a name="create-batch-sender"></a>Tworzenie nadawcy usługi batch
 
-Teraz należy utworzyć co najmniej jedną aplikację logiki, wysyłających elementów do partii zdefiniowane przez aplikację logiki odbiornika. Dla nadawcy należy określić aplikację logiki odbiornik i nazwa usługi partia zadań, zawartość komunikatu i inne ustawienia. Opcjonalnie można podać klucz partycji unikatowy do dzielenia partii na podzestawy służąca do gromadzenia elementów z tym kluczem.
+Teraz należy utworzyć co najmniej jedną aplikację logiki nadawcy usługi batch, wysyłania wiadomości do aplikacji logiki odbiornika usługi batch. W każdej partii nadawcy Określ odbiornik usługi batch i Nazwa instancji, zawartość komunikatu i inne ustawienia. Opcjonalnie możesz podać unikatowego klucza partycji do dzielenia partii na logiczne podzestawy pobierania komunikatów za pomocą tego klucza. 
 
-Aplikacje logiki nadawcy musi wiedzieć, gdzie wysłać elementy, gdy aplikacje logiki odbiorcy nie muszą mieć żadnych informacji o nadawcy.
+* Upewnij się, że masz już [utworzony odbiornik usługi batch](#batch-receiver) , podczas tworzenia usługi batch nadawcy jako miejsce docelowe można wybrać istniejący odbiornik usługi batch. Gdy odbiorniki usługi batch nie muszą nic wiedzieć o nadawców usługi batch, nadawców partii musisz wiedzieć, gdzie wysyłać wiadomości. 
 
-1. Tworzenie aplikacji logiki innej o tej nazwie: "BatchSender"
+* Upewnij się, usługi batch odbiorcy i nadawcy partii udostępnić tym samym regionie Azure *i* subskrypcji platformy Azure. Jeśli nie, nie możesz wybrać odbiornik usługi batch podczas tworzenia nadawcy partii, ponieważ nie są widoczne dla siebie.
 
-   1. W polu wyszukiwania wprowadź "cyklu" jako filtr. 
-   Wybierz wyzwalacz **Harmonogram — cyklicznie**
+1. Tworzenie innej aplikacji logiki o tej nazwie: "BatchSender"
 
-      ![Dodaj wyzwalacza "Harmonogram cyklu"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-receiver.png)
+   1. W polu wyszukiwania wprowadź ciąg "cyklicznie" jako filtr. 
+   Wybierz następujący wyzwalacz: **cykl - harmonogramu**
 
-   2. Ustaw częstotliwość i interwał uruchamiania nadawca aplikacji logiki co minutę.
+      ![Dodawanie wyzwalacza "Harmonogram — cykl"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
-      ![Ustaw częstotliwość i interwał cyklu wyzwalacza](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-receiver-details.png)
+   2. Ustaw częstotliwość i interwał uruchamiania nadawcy aplikacji logiki na minutę.
 
-2. Dodaj nowy krok do wysyłania wiadomości do partii.
+      ![Ustaw częstotliwość i interwał cyklu wyzwalacza](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-sender-details.png)
 
-   1. W obszarze wyzwalacza cyklu wybierz **+ nowy krok** > **Dodaj akcję**.
+2. Dodaj nową akcję do wysyłania komunikatów do partii.
 
-   2. W polu wyszukiwania wprowadź "partii" jako filtr. 
+   1. W obszarze wyzwalacza, wybierz opcję **nowy krok**.
 
-   3. Wybierz tę akcję: **wysyłanie komunikatów do partii — wybierz przepływ pracy aplikacji logiki z wyzwalaczem partii**
+   2. W polu wyszukiwania wprowadź "batch" jako filtr. 
+   Wybierz **akcje** listy, a następnie wybierz tę akcję: **wybierz przepływ pracy usługi Logic Apps z wyzwalaczem partii — Wyślij komunikaty do przetwarzania zbiorczego**
 
-      ![Zaznacz pole wyboru "Wyślij komunikaty do przetwarzania wsadowego"](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
+      ![Wybierz pozycję "Wybierz przepływ pracy aplikacji logiki z wyzwalaczem partii"](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
-   4. Teraz wybierz "BatchReceiver" aplikację logiki utworzony wcześniej, która jest teraz wyświetlany jako akcja.
+   3. Wybierz swoją aplikację logiki odbiornika usługi batch, która została wcześniej utworzona.
 
-      ![Wybierz aplikację logiki "partii odbiornika"](./media/logic-apps-batch-process-send-receive-messages/send-batch-select-batch-receiver.png)
+      ![Wybieranie aplikacji logiki "odbiornik usługi batch"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch-receiver.png)
 
       > [!NOTE]
-      > Lista zawiera również inne aplikacje logiki mających wyzwalaczy partii.
+      > Lista zawiera również inne aplikacje logiki, które może mieć wyzwalaczy usługi batch. 
+      > 
+      > Jeśli używasz programu Visual Studio, a nie widać żadnych odbiorników usługi batch wybierz pozycję, sprawdź, czy odbiornik usługi batch jest wdrożona na platformie Azure. Jeśli jeszcze tego nie, Dowiedz się, jak [wdrażanie aplikacji logiki odbiornika usługi batch na platformie Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-3. Ustaw właściwości partii.
+   4. Wybierz tę akcję: **Batch_messages — <*odbiornika usługi batch*>**
 
-   * **Nazwa partii**: Nazwa instancji zdefiniowane przez aplikację logiki odbiornika, który jest "TestBatch" w tym przykładzie i sprawdzania poprawności w czasie wykonywania.
+      ![Wybierz tę akcję: "Batch_messages - < Twój logic-app >"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
-     > [!IMPORTANT]
-     > Upewnij się, że nie zmieniaj nazwy usługi partia zadań, która musi odpowiadać nazwie partii, określonym przez aplikację logiki odbiornika.
-     > Zmiana nazwy partii powoduje, że nadawca aplikację logiki, aby zakończyć się niepowodzeniem.
+3. Ustaw partii właściwości nadawcy:
 
-   * **Zawartość komunikatu**: zawartość komunikatu, który chcesz wysłać. 
-   Na przykład dodać to wyrażenie, które wstawia bieżącą datę i godzinę do zawartość komunikatu, który możesz wysłać do partii:
+   | Właściwość | Opis | 
+   |----------|-------------| 
+   | **Nazwa partii** | Nazwa partii, zdefiniowane przez aplikację logiki odbiornik, który jest "TestBatch" w tym przykładzie <p>**Ważne**: Nazwa partii zostanie zweryfikowane w czasie wykonywania i musi pasować do nazwy określonej przez aplikację logiki odbiorcy. Zmienianie nazwy usługi batch powoduje, że nadawca partii nie powiedzie się. | 
+   | **Zawartość komunikatu** | Zawartość wiadomości, do której chcesz wysłać | 
+   ||| 
 
-     1. Gdy **zawartości dynamicznej** zostanie wyświetlona lista, wybierz **wyrażenia**. 
-     2. Wprowadź wyrażenie **utcnow()** i wybierz polecenie **OK**. 
+   W tym przykładzie należy dodać to wyrażenie, który wstawia bieżącą datę i godzinę na zawartość komunikatu, który możesz wysłać do usługi batch:
 
-        ![W "Zawartość komunikatu" Wybierz opcję "Wyrażenie". Wprowadź "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
+   1. Kliknij wewnątrz **zawartość wiadomości** pole. 
 
-4. Teraz należy skonfigurować partycję dla partii. W operacji "BatchReceiver" Wybierz **Pokaż zaawansowane opcje**.
+   2. Po wyświetleniu listy zawartości dynamicznej wybierz **wyrażenie**. 
 
-   * **Nazwa partycji**: klucz opcjonalne unikatowy partycji do użycia podczas dzielenia partii docelowej. Na przykład Dodaj wyrażenie, które generuje losową liczbę między jeden a pięć.
+   3. Wprowadź wyrażenie `utcnow()`, a następnie wybierz **OK**. 
+
+      ![W "Zawartość komunikatu" "Wyrażenie", wprowadź "utcnow()" lub wybrać "OK".](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
+
+4. Teraz należy skonfigurować partycji dla usługi batch. W akcji "BatchReceiver" Wybierz **Pokaż opcje zaawansowane** i ustaw następujące właściwości:
+
+   | Właściwość | Opis | 
+   |----------|-------------| 
+   | **Nazwa partycji** | Opcjonalne unikatowego klucza partycji dla dzielenia partii docelowego na podzestawy logicznych oraz zbierać komunikaty, na podstawie tego klucza | 
+   | **Identyfikator komunikatu** | Identyfikator opcjonalną wiadomość, który jest wygenerowany Unikatowy identyfikator globalny (GUID), gdy jest pusty | 
+   ||| 
+
+   W tym przykładzie w **nazwa partycji** Dodaj wyrażenie, które generuje losową liczbę między jednym i 5. Pozostaw **identyfikator komunikatu** puste pole.
    
-     1. Gdy **zawartości dynamicznej** zostanie wyświetlona lista, wybierz **wyrażenia**.
-     2. Wprowadź wyrażenie: **rand(1,6)**
+   1. Kliknij wewnątrz **nazwa partycji** pola tak, aby wyświetlić listę zawartości dynamicznej. 
 
-        ![Konfigurowanie partycji dla partii użytkownika docelowego](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-partition-advanced-options.png)
+   2. Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**.
+   
+   3. Wprowadź wyrażenie `rand(1,6)`, a następnie wybierz **OK**.
 
-        To **rand** funkcja generuje do zakresu od jednej do pięciu. 
-        Dlatego są podzielenie tej partii na pięć numerowane partycje, które dynamicznie ustawia tego wyrażenia.
+      ![Konfigurowanie partycji dla usługi batch docelowej](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 
-   * **Identyfikator wiadomości**: identyfikator komunikatu opcjonalne i jest generowanym identyfikatorze GUID, gdy parametr jest pusty. 
-   W tym przykładzie pozostaw to pole puste.
+      To **rand** funkcja generuje liczbę od jednej do pięciu. 
+      Dlatego są podzielenie tej partii na pięć numerowane partycje, które dynamicznie ustawia to wyrażenie.
 
-5. Zapisz aplikację logiki. Aplikację logiki nadawcy powinna wyglądać w tym przykładzie:
+5. Zapisz aplikację logiki. Twoja aplikacja logiki nadawcy powinna wyglądać następująco:
 
-   ![Zapisz aplikację logiki nadawcy](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details-finished.png)
+   ![Zapisz aplikację logiki nadawcy](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 
 ## <a name="test-your-logic-apps"></a>Testowanie aplikacji logiki
 
-Aby przetestować rozwiązania przetwarzanie wsadowe, pozostaw aplikacje logiki uruchomione kilka minut. Szybko możesz uruchomić uzyskiwania wiadomości e-mail w grupach pięć wszystkich mających taki sam klucz partycji.
+Aby przetestować rozwiązania do przetwarzania wsadowego, pozostaw aplikacje logiki uruchomione przez kilka minut. Szybko możesz rozpocząć pobieranie wiadomości e-mail w grupach pięć wszystko w tym samym kluczem partycji.
 
-Aplikację logiki BatchSender działa co minutę, generuje losową liczbę między jeden a pięć i używa tego numeru wygenerowane jako klucza partycji dla partii docelowego, którego wysyłane są wiadomości. Zawsze partii ma pięć elementów z tym samym kluczem partycji aplikacji logiki BatchReceiver generowane i wysyła poczty dla każdego komunikatu.
+Twoja aplikacja logiki nadawcy partii jest uruchamiany co minutę, generuje losową liczbę między jednym i 5 i używa tego numeru wygenerowany jako klucza partycji dla usługi batch docelowej, w której są wysyłane wiadomości. Każdorazowo usługi batch ma pięć elementów mających taki sam klucz partycji, aplikacja logiki odbiornika usługi batch wyzwala i wysyła wiadomość e-mail dla każdego komunikatu.
 
 > [!IMPORTANT]
-> Po zakończeniu testowania, upewnij się, że wyłączenie BatchSender aplikację logiki, aby zatrzymać wysyłanie wiadomości i nie przeciążać skrzynki odbiorczej.
+> Po zakończeniu testowania, upewnij się, aby wyłączyć aplikację logiki BatchSender, aby zatrzymać wysyłanie komunikatów i nie przeciążać skrzynki odbiorczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie w definicji aplikacji logiki za pomocą formatu JSON](../logic-apps/logic-apps-author-definitions.md)
-* [Tworzenie aplikacji bez serwera w programie Visual Studio z usługi Azure Logic Apps i funkcje](../logic-apps/logic-apps-serverless-get-started-vs.md)
+* [Tworzenie definicji aplikacji logiki przy użyciu pliku JSON](../logic-apps/logic-apps-author-definitions.md)
+* [Tworzenie aplikacji bezserwerowej w programie Visual Studio za pomocą usługi Azure Logic Apps i Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Obsługa wyjątków i rejestrowania błędów dla usługi logic apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

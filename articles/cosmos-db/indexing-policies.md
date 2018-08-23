@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618771"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056055"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jakie usługi Azure Cosmos DB indeksuje dane?
 
@@ -36,6 +36,22 @@ Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na na
 * Jak skonfigurować indeksowanie w celu wykonywania zapytań ORDER BY i zakresu?
 * Jak dokonać zmian do zasady indeksowania kolekcji
 * Jak porównać magazynu oraz wydajności różnych zasad indeksowania
+
+## <a id="Indexing"></a> Indeksowania usługi cosmos DB
+
+Celem indeksy bazy danych jest do obsługi zapytań w ich różnych formularzy i kształty o użyciu zasobów minimalny (na przykład procesora CPU lub we/wy) przy jednoczesnym zapewnieniu dobrej przepływności i małego opóźnienia. Często wybranego indeksu prawo do wykonywania zapytań bazy danych wymaga dużej ilości planowania i eksperymentowania. To podejście stanowi wyzwanie dla baz danych bez schematu, gdy dane nie są zgodne z ścisłego schematu i szybkiego rozwoju. 
+
+W związku z tym Projektując podsystemu indeksowania usługi Cosmos DB, możemy ustawić następujące cele:
+
+* Indeksować dokumenty bez schematu: indeksowania podsystem nie wymagają żadnych informacji o schemacie ani nie należy czynić żadnych założeń o schemacie dokumentów.  
+
+* Obsługa zapytań efektywne, bogate hierarchicznych i relacyjne: indeks obsługuje język zapytań usługi Cosmos DB, takie jak obsługa projekcje relacyjnych i hierarchicznych.  
+
+* Obsługa zapytań spójne in face of dużych ilości zapisów: w przypadku obciążeń zapisu o wysokiej przepływności za pomocą zapytań spójne zaktualizowaniu indeksu przyrostowo, sprawnie i online w przypadku dużych ilości zapisy. Aktualizacja spójne indeksu jest do obsługi zapytań na poziomie spójności, w którym użytkownik skonfigurowany usługa dokumentów.  
+
+* Obsługa wielu dzierżawców: podana model oparty na rezerwacji dla nadzór nad zasobami dla dzierżaw, aktualizacje indeksu będą wprowadzane w ramach budżetu zasobów systemowych (CPU, pamięci i operacji wejścia/wyjścia na sekundę) przydzielone dla replik.  
+
+* Wydajność magazynu: efektywność kosztową narzut na przechowywanie na dysku, indeksu jest ograniczony i przewidywalne. Jest to istotne, ponieważ usługi Cosmos DB umożliwia deweloperom kompromisy opartych na kosztach między narzut indeksu w odniesieniu do wydajności zapytań.  
 
 ## Dostosuj zasady indeksowania kolekcji <a id="CustomizingIndexingPolicy"></a>  
 Kompromis między magazynu, zapisu i wydajności zapytań oraz spójności zapytań można dostosować poprzez zastąpienie domyślnej indeksowania zasad w kolekcji usługi Azure Cosmos DB. Można skonfigurować następujące aspekty:

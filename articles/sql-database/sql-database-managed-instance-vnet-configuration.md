@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258104"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057402"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienie zarządzane usługi Azure SQL Database
 
@@ -29,7 +29,7 @@ Wystąpienie usługi Azure SQL Database Managed (wersja zapoznawcza) musi zosta�
 Zaplanuj, jak wdrożyć wystąpienie zarządzane w sieci wirtualnej przy użyciu odpowiedzi na następujące pytania: 
 - Czy planowane jest wdrażanie jednego lub wielu wystąpień zarządzanych? 
 
-  Liczba wystąpień zarządzanych Określa minimalny rozmiar podsieci, aby przydzielić dla swoich wystąpień zarządzanych. Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci dla wystąpienia zarządzanego](#create-a-new-virtual-network-for-managed-instances). 
+  Liczba wystąpień zarządzanych Określa minimalny rozmiar podsieci, aby przydzielić dla swoich wystąpień zarządzanych. Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci dla wystąpienia zarządzanego](#determine-the-size-of-subnet-for-managed-instances). 
 - Muszą wdrożenia wystąpienia zarządzanego w istniejącej sieci wirtualnej, czy tworzysz nową sieć? 
 
    Jeśli planujesz użyć istniejącej sieci wirtualnej, należy zmodyfikować tej konfiguracji sieci, aby pomieścić wystąpienia zarządzanego. Aby uzyskać więcej informacji, zobacz [zmodyfikować istniejącą sieć wirtualną dla wystąpienia zarządzanego](#modify-an-existing-virtual-network-for-managed-instances). 
@@ -38,7 +38,7 @@ Zaplanuj, jak wdrożyć wystąpienie zarządzane w sieci wirtualnej przy użyciu
 
 ## <a name="requirements"></a>Wymagania
 
-Do tworzenia wystąpienia zarządzanego należy przeznaczyć podsieci w sieci wirtualnej, który jest zgodny, następujące wymagania:
+Tworzenie wystąpienia zarządzanego należy przeznaczyć podsieci w sieci wirtualnej, który spełnia następujące wymagania:
 - **Być puste**: podsieci nie może zawierać innych usług cloud, powiązany i nie może być podsieć bramy. Nie można utworzyć wystąpienie zarządzane usługi w podsieci, która zawiera zasobów innych niż wystąpienia zarządzanego lub dodanie innych zasobów w obrębie podsieci później.
 - **Brak sieciowej grupy zabezpieczeń**: podsieci nie może mieć skojarzonych z nią sieciową grupę zabezpieczeń.
 - **Tabela jest określoną trasę**: podsieć musi mieć użytkownika tabeli (UDR) za pomocą internetowej następnego przeskoku 0.0.0.0/0 jako tylko trasy do niej przypisany. Aby uzyskać więcej informacji, zobacz [Tworzenie tabeli tras wymagane i skojarz go](#create-the-required-route-table-and-associate-it)
@@ -63,7 +63,28 @@ Jeśli planujesz wdrożyć wiele wystąpień zarządzanych w tej podsieci i nale
 
 **Przykład**: ma trzy ogólnego przeznaczenia i dwa biznesowe krytyczne wystąpienia zarządzane przez usługę. Czy potrzebujesz 5 + 3 * 2 + 2 * 4 = 19 oznacza, że adresy IP. Zakresy adresów IP określonych w potęgą liczby 2 należy zakresu adresów IP 32 (2 ^ 5) adresy IP. W związku z tym należy zarezerwować podsieć z maską podsieci/27. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>Utwórz nową sieć wirtualną dla wystąpienia zarządzanego 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Utwórz nową sieć wirtualną dla wystąpienia zarządzanego przy użyciu wdrożenia usługi Azure Resource Manager
+
+Najprostszym sposobem tworzenia i konfigurowania sieci wirtualnej jest użycie szablonu wdrożenia usługi Azure Resource Manager.
+
+1. Zaloguj się do Portalu Azure.
+
+2. Użyj **Wdróż na platformie Azure** przycisk, aby wdrożyć sieć wirtualną w chmurze platformy Azure:
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  Kliknięcie tego przycisku zostanie otwarty formularz, który można użyć do konfigurowania środowisko sieciowe, w którym można wdrożyć wystąpienie zarządzane usługi.
+
+  > [!Note]
+  > Ten szablon usługi Azure Resource Manager umożliwia wdrożenie sieci wirtualnej z dwiema podsieciami. Jedną podsieć o nazwie **ManagedInstances** jest zarezerwowany dla wystąpienia zarządzanego i ma wstępnie skonfigurowane na tabelę tras, podczas gdy inne podsieci o nazwie **domyślne** służy do innych zasobów, które powinien uzyskiwać dostęp do zarządzanego Wystąpienie (na przykład maszyny wirtualne platformy Azure). Możesz usunąć **domyślne** podsieci, o ile nie są potrzebne.
+
+3. Konfigurowanie środowiska sieciowego. W następującej postaci można skonfigurować parametrów środowiska sieciowego:
+
+![Skonfiguruj sieć platformy azure](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+Może zmieniać nazwy sieci wirtualnej i podsieci i dostosować zakresów adresów IP skojarzonych z zasobami w sieci. Po naciśnięciu przycisku "Kup", ta forma będzie tworzyć i konfigurować środowiska. Jeśli dwie podsieci nie są potrzebne, można usunąć domyślny. 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>Utwórz nową sieć wirtualną dla wystąpienia zarządzane przy użyciu portalu
 
 Tworzenie sieci wirtualnej platformy Azure jest wymaganiem wstępnym dla tworzenia wystąpienia zarządzanego. Można użyć witryny Azure portal [PowerShell](../virtual-network/quick-create-powershell.md), lub [wiersza polecenia platformy Azure](../virtual-network/quick-create-cli.md). W poniższej sekcji pokazano kroki w witrynie Azure portal. Szczegóły omówionych w tym miejscu Zastosuj do każdego z tych metod.
 
@@ -92,7 +113,7 @@ Tworzenie sieci wirtualnej platformy Azure jest wymaganiem wstępnym dla tworzen
 
    ![formularz tworzenia sieci wirtualnej](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>Tworzenie tabeli tras wymagane i skojarz go
+### <a name="create-the-required-route-table-and-associate-it"></a>Tworzenie tabeli tras wymagane i skojarz go
 
 1. Logowanie się do witryny Azure Portal  
 2. Zlokalizuj i kliknij opcję **Tabela tras**, a następnie kliknij opcję **Utwórz** na stronie tabeli tras.

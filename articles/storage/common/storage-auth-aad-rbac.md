@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 9efd9470982f0afaa357114828d51df37a7c2890
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520932"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058510"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Usługa A
 
 Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
-Można również definiować role niestandardowe do użycia z kontenerami i kolejek. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md). 
+Można również definiować role niestandardowe do użycia z kontenerami i kolejek. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
 > [!IMPORTANT]
 > Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).

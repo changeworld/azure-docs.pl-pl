@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/11/2017
+ms.date: 08/15/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1307fc455cacde81cb25ad58c5e99df21f126568
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ca4da794aaa6c96908976400d9a8452f6a644f39
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448258"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054390"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Usługa Azure Active Directory B2C: Zaloguj się przy użyciu konta usługi Salesforce za pośrednictwem protokołu SAML
 
@@ -114,7 +114,7 @@ Przekaż certyfikat podpisywania z dzierżawą usługi Azure AD B2C:
     2. Wprowadź **nazwa** (na przykład SAMLSigningCert). Prefiks *B2C_1A_* jest automatycznie dodawany do nazwy klucza.
     3. Aby wybrać certyfikat, wybierz **przekazywanie pliku sterowania**. 
     4. Wprowadź hasło do certyfikatu, który zostało ustawiony w skrypcie programu PowerShell.
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 4. Sprawdź, czy utworzono klucza (na przykład B2C_1A_SAMLSigningCert). Zwróć uwagę, pełna nazwa (włącznie z *B2C_1A_*). Będzie odnosił się do tego klucza w dalszej części zasad.
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>Tworzenie usługi Salesforce SAML dostawcy oświadczeń w zasadach podstawowych
@@ -150,7 +150,7 @@ Należy zdefiniować Salesforce jako dostawcy oświadczeń, dzięki czemu użytk
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="username"/>
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="externalIdp"/>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="SAMLIdp" />
           </OutputClaims>
           <OutputClaimsTransformations>

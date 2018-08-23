@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 1869b25756693a4a3626d713b6bd2adab035cea6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d820898b1a0cc26d6832be9d302c74306fa4882f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716906"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056487"
 ---
+# <a name="read-before-you-scale"></a>Przeczytaj przed przystąpieniem do skalowania
+Skalowanie zasobów obliczeniowych do źródła obciążenia robocze aplikacji wymaga planowania zamierzone, prawie zawsze będzie trwać dłużej niż godzinę w środowisku produkcyjnym i wymagają zrozumieć swoje obciążenia i kontekst biznesowy; w rzeczywistości Jeśli to działanie przed nigdy nie zostały wykonane, zaleca się uruchamiania, odczytując i interpretując kolejne [zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity), przed kontynuowaniem pozostałej części tego dokumentu. To zalecenie jest uniknięcie niezamierzone problemy LiveSite i zalecane jest również, że testujesz operacje, które użytkownik chce wykonać w środowisku nieprodukcyjnym. W dowolnym momencie możesz [zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla platformy Azure](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Dla inżynierów przydzielone do wykonywania tych operacji, które posiadają odpowiedniego kontekstu w tym artykule opisano operacje skalowania, ale należy zdecydować i zrozumieć, jakie operacje są odpowiednie dla danego przypadku użycia; jakie zasoby do skali (procesor CPU, Magazyn, pamięć), np. jakie kierunek skalowania (w pionie lub poziomie) i jakie operacje do wykonania (wdrożenie szablonu zasobów, Portal, programu PowerShell/interfejsu wiersza polecenia).
+
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz przy użyciu reguł skalowania automatycznego lub ręcznego
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze usługi Service Fabric zostanie określony jako oddzielne maszyny wirtualnej zestawu skalowania. Każdy typ węzła może następnie być skalowana w lub się niezależnie od siebie, mają różne zestawy otwartych portów i może mieć różne metryki pojemności. Dowiedz się więcej o go w [elementy NodeType usługi Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ typy węzłów usługi Service Fabric w klastrze składają się z zestawami skalowania maszyn wirtualnych na zapleczu, należy skonfigurować reguły automatycznego skalowania dla zestawu skalowania maszyn typu/wirtualnej każdego węzła.
 
 > [!NOTE]
-> Twoja subskrypcja musi mieć wystarczającej liczby rdzeni, aby dodać nowe maszyny wirtualne, które tworzą ten klaster. Nie ma nie nastąpi sprawdzanie poprawności modelu, dzięki czemu uzyskujesz czas niepowodzenie wdrożenia, jeśli dowolny z limitów przydziału są osiągane.
+> Twoja subskrypcja musi mieć wystarczającej liczby rdzeni, aby dodać nowe maszyny wirtualne, które tworzą ten klaster. Nie ma nie nastąpi sprawdzanie poprawności modelu, dzięki czemu uzyskujesz czas niepowodzenie wdrożenia, jeśli dowolny z limitów przydziału są osiągane. Typ jednego węzła nie można także po prostu przekracza 100 węzłów na zestawu skalowania maszyn wirtualnych. Użytkownik może być konieczne dodanie zestawu skalowania maszyn wirtualnych w celu osiągnięcia skali docelowej i automatyczne skalowanie nie może automagically Dodaj VMSS firmy. Dodawanie firmy VMSS w miejscu do klastra na żywo to trudne zadanie i często skutkuje to użytkownikom inicjowanie obsługi administracyjnej nowych klastrów z typami odpowiedniego węzła, aprowizowane w czasie tworzenia; [Planowanie pojemności klastra](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity) odpowiednio. 
 > 
 > 
 

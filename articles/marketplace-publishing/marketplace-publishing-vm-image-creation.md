@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 9199c9fc9a46e6b09eb066be5125c74420ad6cd6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715339"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056142"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Przewodnik, aby utworzyć obraz maszyny wirtualnej w portalu Azure Marketplace
 W tym artykule **kroku 2**, przeprowadzi Cię przez przygotowywania wirtualnych dysków twardych (VHD), które zostanie wdrożone w portalu Azure Marketplace. Twoje dyski VHD są podstawą dla jednostki SKU. Ten proces różni się w zależności od tego, czy udostępniasz opartych na systemie Linux lub Windows, na podstawie jednostki SKU. W tym artykule opisano oba scenariusze. Ten proces można wykonać równolegle z [o tworzeniu konta i rejestracji][link-acct-creation].
@@ -69,9 +69,9 @@ Wirtualny dysk twardy systemu operacyjnego obrazu maszyny Wirtualnej musi być o
 
 Aby rozpocząć, Utwórz Maszynę wirtualną z jednego z następujących obrazów znajdujących się na [portalu Microsoft Azure][link-azure-portal]:
 
-* System Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 z dodatkiem SP1] [link-datactr-2008-r2])
-* Program SQL Server 2014 ([Enterprise][link-sql-2014-ent], [standardowa][link-sql-2014-std], [Web] [ link-sql-2014-web])
-* SQL Server 2012 z dodatkiem SP2 ([Enterprise][link-sql-2012-ent], [standardowa][link-sql-2012-std], [Web] [ link-sql-2012-web])
+* System Windows Server ([2012 R2 Datacenter] [link-datactr-2012-r2], [2012 Datacenter] [link-datactr-2012], [2008 R2 SP1][link-datactr-2008-r2])
+* SQL Server 2014 
+* SQL Server 2012 SP2 
 
 Te linki można również znaleźć w Portalu wydawców na stronie Jednostka SKU.
 
@@ -431,7 +431,7 @@ Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Wspó�
 
 Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Współdzielonego przy użyciu wiersza polecenia platformy Azure
 
-1.  Pobierz interfejs wiersza polecenia Microsoft Azure, z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różne linki dla ** [Windows](http://aka.ms/webpi-azure-cli) ** i ** [systemu MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Pobierz interfejs wiersza polecenia Microsoft Azure, z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różne linki dla **[Windows](http://aka.ms/webpi-azure-cli)** i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po jej pobraniu, zainstaluj
 
@@ -515,11 +515,11 @@ Po utworzeniu oferty i jednostki SKU należy wprowadzić szczegółowe informacj
 
 |Problem|Komunikat o błędzie|Napraw|Link do dokumentacji|
 |---|---|---|---|
-|Wystąpił błąd podczas kopiowania obrazy — "?" nie znajduje się w adresie url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Zaktualizować adres Url sygnatury dostępu Współdzielonego za pomocą zalecane narzędzia|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Wystąpił błąd podczas kopiowania obrazy - parametrów "st" i "se" nie w url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Zaktualizuj adres Url sygnatury dostępu Współdzielonego za pomocą daty rozpoczęcia i zakończenia na nim|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Wystąpił błąd podczas kopiowania obrazów — "sp = rl" nie w url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego|Zaktualizuj adres Url sygnatury dostępu Współdzielonego z uprawnieniami ustawionymi jako "Odczyt" i "Lista|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Wystąpił błąd podczas kopiowania obrazów — adres url sygnatury dostępu Współdzielonego mają białych znaków w nazwie wirtualnego dysku twardego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Aktualizacja adresu Url sygnatury dostępu Współdzielonego bez białych znaków|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Wystąpił błąd podczas kopiowania obrazów — błąd Autoryzacja adresów Url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na błąd autoryzacji|Ponowne generowanie adresu Url sygnatury dostępu Współdzielonego|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazy — "?" nie znajduje się w adresie url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Zaktualizować adres Url sygnatury dostępu Współdzielonego za pomocą zalecane narzędzia|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazy - parametrów "st" i "se" nie w url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Zaktualizuj adres Url sygnatury dostępu Współdzielonego za pomocą daty rozpoczęcia i zakończenia na nim|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazów — "sp = rl" nie w url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego|Zaktualizuj adres Url sygnatury dostępu Współdzielonego z uprawnieniami ustawionymi jako "Odczyt" i "Lista|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazów — adres url sygnatury dostępu Współdzielonego mają białych znaków w nazwie wirtualnego dysku twardego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Aktualizacja adresu Url sygnatury dostępu Współdzielonego bez białych znaków|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazów — błąd Autoryzacja adresów Url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na błąd autoryzacji|Ponowne generowanie adresu Url sygnatury dostępu Współdzielonego|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Wystąpił błąd podczas kopiowania obrazów — adres Url sygnatury dostępu Współdzielonego "st" i "se" parametry bez specyfikacji pełnej daty i godziny|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na nieprawidłowy adres Url sygnatury dostępu Współdzielonego |Uruchom adres Url sygnatury dostępu Współdzielonego i Data zakończenia parametry ("st", "se") muszą mieć specyfikację pełnej daty i godziny, takich jak 11-02-2017T00:00:00Z, a nie tylko datę lub skróconą wersji po raz. Użytkownik może wystąpić ten scenariusz przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 (polecenie az). Pamiętaj podać specyfikację pełnej daty i godziny lub ponownie wygenerować adresu Url sygnatury dostępu Współdzielonego.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Następny krok
@@ -557,15 +557,6 @@ Po wykonaniu szczegółów jednostki SKU, możesz przejść do [portalu Azure Ma
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
 [link-azure-portal]:https://portal.azure.com
 [link-pubportal]:https://publish.windowsazure.com
-[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/

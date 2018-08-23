@@ -1,56 +1,57 @@
 ---
-title: Konfigurowanie i używanie emulatora magazynu z programem Visual Studio | Dokumentacja firmy Microsoft
-description: Konfigurowanie i używanie emulatora magazynu z programem Visual Studio
+title: Konfigurowanie i używanie emulatora usługi Storage z programem Visual Studio | Dokumentacja firmy Microsoft
+description: Konfigurowanie i używanie emulatora usługi Storage z programem Visual Studio
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: c8e7996f-6027-4762-806e-614b93131867
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: c502d5e0869d35ded5c3ba7e790da0558d219e0e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792246"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055897"
 ---
-# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora magazynu z programem Visual Studio
+# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora usługi Storage z programem Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Przegląd
-Środowisko projektowe zestawu Azure SDK zawiera emulator magazynu, narzędzia, która symuluje obiektów Blob, kolejki i tabeli magazynu usługi dostępnej na platformie Azure na komputerze deweloperskim lokalnego. W przypadku tworzenia usługi w chmurze, która jest stosowana do usług Azure storage lub zapisywanie zewnętrznej aplikacji, która wywołuje usług magazynu, należy przetestować Twój kod lokalnie emulatora magazynu. Azure Tools dla programu Microsoft Visual Studio zintegrować Zarządzanie emulator magazynu programu Visual Studio. Narzędzia Azure Zainicjuj bazę danych emulatora magazynu przy pierwszym użyciu, uruchamia usługę emulatora magazynu, podczas uruchamiania lub debugowania kodu w programie Visual Studio i umożliwia dostęp tylko do odczytu do danych emulatora magazynu za pomocą Eksploratora magazynu Azure.
+Środowisko projektowe zestawu Azure SDK zawiera w emulatorze magazynu, narzędzia, która symuluje obiektów Blob, kolejek i tabel magazynu usług dostępnych na platformie Azure na lokalnej maszynie do programowania. Jeśli jesteś tworzenia usługi w chmurze, która używa usług Azure storage lub pisania aplikacji zewnętrznej, która wywołuje usług magazynu, można przetestować kod lokalnie z emulatora magazynu. Azure Tools dla programu Microsoft Visual Studio zintegrować Zarządzanie emulatora magazynu w programie Visual Studio. Narzędzia systemu Azure zainicjować bazy danych emulatora magazynu przy pierwszym użyciu uruchamia usługę emulatora magazynu, podczas uruchamiania lub debugowania kodu w programie Visual Studio i zapewnia dostęp tylko do odczytu do danych emulatora magazynu za pomocą Eksploratora usługi Azure Storage.
 
-Aby uzyskać szczegółowe informacje w emulatorze magazynu, w tym wymagania systemowe i instrukcje dotyczące konfigurowania niestandardowych, zobacz [użyć emulatora magazynu Azure do programowania i testowania](storage/common/storage-use-emulator.md).
+Aby uzyskać szczegółowe informacje w emulatorze magazynu, takie jak wymagania systemowe i konfiguracji niestandardowej, zobacz [korzystanie z emulatora magazynu Azure do tworzenia i testowania](storage/common/storage-use-emulator.md).
 
 > [!NOTE]
-> Istnieją pewne różnice w działaniu między Symulacja emulatora magazynu i usług Azure storage. Zobacz [różnice między emulatora magazynu i usług magazynu Azure](storage/common/storage-use-emulator.md) w dokumentacji zestawu SDK usługi Azure poznać konkretne różnice.
+> Istnieją pewne różnice w funkcjonalności między symulacji emulatora magazynu i usług Azure storage. Zobacz [różnice między emulatora magazynu i usług Azure Storage](storage/common/storage-use-emulator.md) w dokumentacji zestawu Azure SDK dla informacji na temat konkretne różnice.
 > 
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurowanie parametrów połączenia dla emulatora magazynu
-Dostęp do emulatora magazynu z kodu w ramach roli, należy skonfigurować parametry połączenia wskazującego emulator magazynu, a później można to zmienić wskaż konto magazynu platformy Azure. Ciąg połączenia jest ustawienie konfiguracji, który może być odczytany roli użytkownika w czasie wykonywania, aby nawiązać połączenie z konta magazynu. Aby uzyskać więcej informacji o sposobie tworzenia parametrów połączenia, zobacz [Konfigurowanie aplikacji Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+Aby uzyskać dostęp z emulatora magazynu, z kodu w ramach roli, należy skonfigurować parametry połączenia, który wskazuje na emulator magazynu i można to zmienić później, aby wskazać konto usługi Azure storage. Parametry połączenia to ustawienie konfiguracji, który może być odczytany przez Twoją rolę w czasie wykonywania, aby nawiązać połączenie z kontem magazynu. Aby uzyskać więcej informacji na temat tworzenia parametrów połączenia, zobacz [konfigurowania aplikacji na platformie Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
 
 > [!NOTE]
-> Odwołanie do konta emulatora magazynu w kodzie można zwrócić przy użyciu **DevelopmentStorageAccount** właściwości. Ta metoda działa prawidłowo, jeśli chcesz uzyskać dostęp emulator magazynu w kodzie, ale jeśli planujesz opublikować aplikację na platformie Azure, musisz utworzyć parametry połączenia dostępu do konta magazynu Azure i zmodyfikuj kod, aby używał tego połączenia ciąg przed opublikowaniem. Aby przełączyć między konto emulatora magazynu i konto magazynu platformy Azure często, ciąg połączenia upraszcza ten proces.
+> Może zwrócić odwołanie do konta emulatora magazynu w kodzie za pomocą **DevelopmentStorageAccount** właściwości. Ta metoda działa prawidłowo, jeśli chcesz uzyskać dostęp do emulatora magazynu w kodzie, ale jeśli zamierzasz opublikować aplikację na platformie Azure, musisz utworzyć parametry połączenia można uzyskać dostępu do konta usługi Azure storage i modyfikować kodu, aby użyć tego połączenia ciąg przed jego opublikowaniem. Aby przełączyć się między kontem emulatora magazynu, a konto usługi Azure storage często, ciąg połączenia upraszcza ten proces.
 > 
 > 
 
-## <a name="initializing-and-running-the-storage-emulator"></a>Inicjowanie i uruchomiony emulator magazynu
-Można określić, że podczas uruchamiania lub debugowania w programie Visual Studio usługi Visual Studio automatycznie uruchamia emulatora magazynu. W Eksploratorze rozwiązań Otwórz menu skrótów dla Twojego **Azure** projekt i wybierz pozycję **właściwości**. Na **programowanie** karcie **uruchomić emulatora magazynu Azure** wybierz **True** (Jeśli nie jest już ustawiona na tę wartość).
+## <a name="initializing-and-running-the-storage-emulator"></a>Inicjowanie i uruchamianie emulatora magazynu
+Można określić, że podczas uruchamiania lub debugowania usługi w programie Visual Studio, Visual Studio powoduje automatyczne uruchomienie emulatora magazynu. W Eksploratorze rozwiązań Otwórz menu skrótów dla swojej **Azure** projektu, a następnie wybierz **właściwości**. Na **rozwoju** na karcie **Uruchom Emulator usługi Azure Storage** wybierz **True** (Jeśli nie jest już ustawione do tej wartości).
 
-Podczas pierwszego uruchamiania lub debugowania usługi z programu Visual Studio emulator magazynu uruchamia proces inicjowania. Ten proces rezerwuje portów lokalnych dla emulatora magazynu i tworzy bazy danych emulatora magazynu. Po zakończeniu tego procesu nie musiał ponownie uruchomić, chyba że bazy danych emulator magazynu jest usuwany.
+Podczas pierwszego uruchamiania lub debugowania usługi w programie Visual Studio emulator magazynu uruchamia proces inicjowania. Ten proces rezerwy portów lokalnych dla emulatora magazynu i tworzy bazę danych z emulatora magazynu. Po zakończeniu tego procesu nie trzeba uruchomić ponownie, chyba że zostanie usunięty emulatora bazy danych magazynu.
 
 > [!NOTE]
-> Począwszy od wersji czerwca 2012 narzędzi Azure, emulator magazynu działa domyślnie w SQL Express LocalDB. We wcześniejszych wersjach narzędzi Azure, emulator magazynu jest uruchamiana dla domyślnego wystąpienia programu SQL Express 2005 lub 2008, które należy zainstalować przed można zainstalować zestaw Azure SDK. Można również uruchomić emulatora magazynu nazwanego wystąpienia programu SQL Express lub nazwanym lub domyślnego wystąpienia programu Microsoft SQL Server. Jeśli konieczne będzie skonfigurowanie emulator magazynu, aby uruchomić dla wystąpienia innych niż domyślne wystąpienie, zobacz [użyć emulatora magazynu Azure do programowania i testowania](storage/common/storage-use-emulator.md).
+> Począwszy od czerwca 2012 wersję narzędzi platformy Azure, emulator magazynu działa domyślnie, SQL Express LocalDB. We wcześniejszych wersjach programu Azure Tools, emulator magazynu jest uruchamiana dla domyślnego wystąpienia programu SQL Express 2005 lub 2008, które należy zainstalować przed zainstalowaniem zestawu Azure SDK. Można również uruchomić emulator magazynu przed nazwane wystąpienie programu SQL Express lub nazwane i domyślne wystąpienie programu Microsoft SQL Server. Jeśli potrzebujesz skonfigurować emulator magazynu, aby uruchamiać instancji innych niż domyślne wystąpienie, zobacz [korzystanie z emulatora magazynu Azure do tworzenia i testowania](storage/common/storage-use-emulator.md).
 > 
 > 
 
-Emulator magazynu udostępnia interfejs użytkownika, aby wyświetlić stan usługi Magazyn lokalny i uruchomić, zatrzymać, a ich ponownie. Po rozpoczęciu usługę emulatora magazynu można wyświetlić interfejs użytkownika lub rozpocząć lub zatrzymać usługi przez kliknięcie prawym przyciskiem myszy ikonę w obszarze powiadomień Microsoft Azure Emulator na pasku zadań systemu Windows.
+Emulator magazynu zapewnia interfejs użytkownika, aby wyświetlić stan usług magazynu lokalnego i można uruchomić, zatrzymać, a następnie je zresetować. Po rozpoczęciu usługa emulatora magazynu możesz wyświetlać interfejsu użytkownika lub uruchom lub Zatrzymaj usługę przez kliknięcie prawym przyciskiem myszy ikonę w obszarze powiadomień emulatorze Microsoft Azure, na pasku zadań Windows.
 
-## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Wyświetlanie danych emulatora magazynu w Eksploratorze serwera
-Węzeł magazynu Azure w Eksploratorze serwera umożliwia przeglądanie danych i zmienianie ustawień danych obiektów blob i tabeli na kontach magazynu, w tym emulatora magazynu. Zobacz [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Aby uzyskać więcej informacji.
+## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Wyświetlanie danych emulatora magazynu, w Eksploratorze serwera
+Węzła usługi Azure Storage w Eksploratorze serwera umożliwia wyświetlanie danych i zmienić ustawienia dla obiektów blob oraz tabel danych na kontach usługi storage, łącznie z emulatora magazynu. Zobacz [zasoby zarządzania usługi Azure Blob Storage za pomocą Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Aby uzyskać więcej informacji.
 

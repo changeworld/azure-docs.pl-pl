@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki Start języka C# dla usługi Azure Cognitive Services, interfejs API analizy tekstu | Dokumentacja firmy Microsoft
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
+title: Przewodnik Szybki Start języka C# dla usług Cognitive Services, interfejs API analizy tekstu | Dokumentacja firmy Microsoft
+description: Uzyskaj informacje i przykłady kodu, które ułatwią Ci szybkie rozpoczęcie pracy przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284334"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987607"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>Przewodnik Szybki start dotyczący interfejsu API w języku C# analizy tekstu 
+# <a name="quickstart-for-the-text-analytics-api-with-c"></a>Przewodnik Szybki start dotyczący usługi Text Analytics interfejsu API w języku C# 
 <a name="HOLTop"></a>
 
-W tym artykule pokazano, jak wykrywanie języka, analizowanie tonacji i wyodrębnianie kluczowych fraz przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) przy użyciu języka C#. Ten kod został zapisany do pracy nad.Net Core aplikacji, z minimalnym odwołaniami do zewnętrznych bibliotekach, dzięki czemu można ją również uruchomić w systemie Linux lub MacOS.
+W tym artykule pokazano, jak wykrywanie języka, analizowanie tonacji i wyodrębnianie kluczowych fraz przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) przy użyciu języka C#. Ten kod został zapisany do pracy w aplikacji .NET Core, z minimalnym odwołaniami do zewnętrznych bibliotekach, aby można było również uruchomić w systemie Linux lub MacOS.
 
 Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna w przypadku interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API analizy tekstu**. Możesz użyć **5000 transakcji miesięcznie w warstwie bezpłatna** aby ukończyć ten przewodnik Szybki Start.
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) przy użyciu interfejsu API analizy tekstu. Możesz użyć *5000 transakcji miesięcznie w warstwie bezpłatna* aby ukończyć ten przewodnik Szybki Start.
 
-Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas logowania się. 
+Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) które zostały wygenerowane automatycznie podczas tworzenia konta. 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Instalowanie pakietu Nuget zestawu SDK
+## <a name="install-the-nuget-sdk-package"></a>Instalowanie pakietu NuGet zestawu SDK
 1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio.
-1. Kliknij prawym przyciskiem myszy rozwiązanie i kliknij przycisk **Zarządzaj pakietami NuGet dla rozwiązania**
-1. Oznacz **Uwzględnij wydania wstępne** pola wyboru.
-1. Wybierz **Przeglądaj** kartę i wyszukaj **Microsoft.Azure.CognitiveServices.Language**
-1. Wybierz pakiet Nuget i zainstaluj go.
+1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
+1. Wybierz **Uwzględnij wydania wstępne** pole wyboru.
+1. Wybierz **Przeglądaj** kartę i wyszukaj **Microsoft.Azure.CognitiveServices.Language**.
+1. Wybierz pakiet NuGet i zainstaluj go.
 
 > [!Tip]
->  Chociaż można wywołać [punktów końcowych HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) bezpośrednio z kodu C#, zestaw SDK Microsoft.Azure.CognitiveServices.Language sprawia, że łatwiej do wywołania tej usługi bez konieczności martwienia się o serializację i deserializację formatu JSON.
+> Mimo że można wywołać [punktów końcowych HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) bezpośrednio z kodu C#, zestaw SDK Microsoft.Azure.CognitiveServices.Language sprawia, że łatwiej do wywołania tej usługi bez konieczności martwienia się o serializację i deserializację formatu JSON.
 >
-> Kilka przydatne linki:
-> - [Stronę pakietu Nuget zestawu SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
-> - [Kod zestawu SDK ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
+> Oto przydatne łącza:
+> - [Stronę pakietu NuGet zestawu SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [Kod zestawu SDK](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>Wywołanie interfejsu API analizy tekstu przy użyciu zestawu SDK
-1. Zastąp plik Program.cs kodem przedstawione poniżej. Ten program pokazuje możliwości interfejsu API analizy tekstu w sekcjach 3 (język wyodrębniania, wyodrębnianie kluczowych fraz i analiza opinii).
-1. Zastąp `Ocp-Apim-Subscription-Key` wartość nagłówka z prawidłowy klucz dostępu dla Twojej subskrypcji.
-1. Zastąp lokalizację w `Endpoint` do punktu końcowego, możesz w konkursie. Punkt końcowy znajdziesz w zasobie witryny Azure Portal. Punkt końcowy zwykle zaczyna się od "https://[region].api.cognitive.microsoft.com", a w tym miejscu, zawierać wyłącznie protokołu i nazwy hosta.
+## <a name="call-the-text-analytics-api-by-using-the-sdk"></a>Wywołanie interfejsu API analizy tekstu, korzystając z zestawu SDK
+1. Zastąp plik Program.cs następującym kodem. Ten program pokazuje możliwości interfejsu API analizy tekstu w trzy sekcje (język wyodrębniania, wyodrębnianie kluczowych fraz i analiza opinii).
+1. Zastąp `Ocp-Apim-Subscription-Key` wartość nagłówka przy użyciu klucza dostępu, który jest prawidłowy dla Twojej subskrypcji.
+1. Zastąp lokalizację w `Endpoint` do punktu końcowego, który możesz w konkursie. Punkt końcowy można znaleźć zasobu portalu platformy Azure. Punkt końcowy zwykle zaczyna się od "https://[region].api.cognitive.microsoft.com." Na przykład tylko nazwa protokołu i hosta.
 1. Uruchom program.
 
 ```csharp
@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Extracting language
+            // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
             var result =  client.DetectLanguageAsync(new BatchInput(
@@ -105,7 +105,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
 
-            // Getting key-phrases
+            // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
             KeyPhraseBatchResult result2 = client.KeyPhrasesAsync(new MultiLanguageBatchInput(
@@ -117,7 +117,7 @@ namespace ConsoleApp1
                           new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
                         })).Result;
 
-            // Printing keyphrases
+            // Printing key phrases.
             foreach (var document in result2.Documents)
             {
                 Console.WriteLine("Document ID: {0} ", document.Id);
@@ -130,7 +130,7 @@ namespace ConsoleApp1
                 }
             }
 
-            // Extracting sentiment
+            // Extracting sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                         })).Result;
 
 
-            // Printing sentiment results
+            // Printing sentiment results.
             foreach (var document in result3.Documents)
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
@@ -162,5 +162,5 @@ namespace ConsoleApp1
 ## <a name="see-also"></a>Zobacz także 
 
  [Omówienie analizy tekstu](../overview.md)  
- [Często zadawane pytania (FAQ)](../text-analytics-resource-faq.md)
+ [Często zadawane pytania](../text-analytics-resource-faq.md)
 

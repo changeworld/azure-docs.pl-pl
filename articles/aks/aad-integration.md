@@ -1,36 +1,36 @@
 ---
 title: Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
-description: Jak utworzyć klastry z obsługą usługi Azure Active Directory Azure Kubernetes Service.
+description: Jak utworzyć klastry z włączoną obsługą usługi Azure Active Directory Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/17/2018
+ms.date: 8/9/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9bbf7ad201a70a315b75ed5e1f35671e4a5604fc
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579031"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059695"
 ---
-# <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrowanie usługi Azure Active Directory za pomocą usługi AKS — wersja zapoznawcza
+# <a name="integrate-azure-active-directory-with-aks"></a>Integrowanie usługi Azure Active Directory za pomocą usługi AKS
 
-Usługa Azure Kubernetes Service (AKS) można skonfigurować do użycia usługi Azure Active Directory do uwierzytelniania użytkowników. W tej konfiguracji możesz zalogować się do klastra usługi Azure Kubernetes Service przy użyciu tokenu uwierzytelniania usługi Azure Active Directory. Ponadto administratorzy klastra mogą Konfigurowanie kontroli dostępu opartej na rolach platformy Kubernetes, oparte na tożsamości lub katalog członkostwem w grupach użytkowników.
+Usługa Azure Kubernetes Service (AKS) można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). W tej konfiguracji możesz zalogować się do klastra usługi AKS przy użyciu tokenu uwierzytelniania usługi Azure Active Directory. Ponadto administratorzy klastra mogą skonfigurować Kubernetes kontroli dostępu opartej na rolach (RBAC) oparte na tożsamości lub katalog członkostwem w grupach użytkowników.
 
-W tym dokumencie przedstawiono tworzenie wszystkie niezbędne wymagania wstępne dotyczące usługi AKS i Azure AD, wdrażanie klastra z obsługą usługi AD systemu Azure i tworzenie prostego rolę RBAC w klastrze AKS. Należy pamiętać, że istniejących klastrów usługi AKS bez RBAC włączone obecnie nie można zaktualizować RBAC do używania.
+W tym artykule dowiesz się, jak wdrażanie wstępnie wymaganych składników dla usługi AKS i Azure AD, a następnie jak wdrożyć klaster usługi platformy Azure z obsługą usługi AD i utworzyć prosty rolę RBAC w klastrze AKS.
 
-> [!IMPORTANT]
-> Integracja z platformą Azure Kubernetes Service (AKS) RBAC a usługą Azure AD jest obecnie w **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
->
+Obowiązują następujące ograniczenia:
+
+- Obecnie nie można zaktualizować istniejących klastrów usługi AKS bez RBAC włączone, RBAC do używania.
+- *Gość* użytkowników w usłudze Azure AD, takie jak, jeśli używasz federacyjnego logowania z innego katalogu, nie są obsługiwane.
 
 ## <a name="authentication-details"></a>Szczegóły uwierzytelniania
 
-Uwierzytelnianie usługi Azure AD znajduje się w klastrach usługi Azure Kubernetes za pomocą protokołu OpenID Connect. OpenID Connect jest warstwy tożsamości korzystających z protokołu OAuth 2.0. Więcej informacji na temat protokołu OpenID Connect można znaleźć w [Open ID connect dokumentacji][open-id-connect].
+Uwierzytelnianie usługi Azure AD jest udostępniane na klastry usługi AKS przy użyciu protokołu OpenID Connect. OpenID Connect jest warstwy tożsamości korzystających z protokołu OAuth 2.0. Aby uzyskać więcej informacji na temat protokołu OpenID Connect, zobacz [Open ID connect dokumentacji][open-id-connect].
 
-Z wewnątrz klastra Kubernetes uwierzytelnianie przy użyciu elementu Webhook tokenów służy do Sprawdź tokeny uwierzytelniania. Uwierzytelnianie przy użyciu elementu Webhook tokenów jest konfigurowane i zarządzane w ramach klastra AKS. Więcej informacji na temat elementu Webhook, uwierzytelnianie przy użyciu tokenów można znaleźć w [dokumentacji uwierzytelniania elementu webhook][kubernetes-webhook].
+Z wewnątrz klastra Kubernetes uwierzytelnianie przy użyciu elementu Webhook tokenów służy do Sprawdź tokeny uwierzytelniania. Uwierzytelnianie przy użyciu elementu Webhook tokenów jest konfigurowane i zarządzane w ramach klastra AKS. Aby uzyskać więcej informacji na temat uwierzytelniania tokenu elementu Webhook, zobacz [dokumentacji uwierzytelniania elementu webhook][kubernetes-webhook].
 
 > [!NOTE]
 > Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, dwóch aplikacji usługi Azure AD są skonfigurowane. Musi być zakończona przez administratora dzierżawy usługi Azure.
@@ -72,6 +72,10 @@ Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy 
 7. Wybierz **gotowe**, wybierz *programu Microsoft Graph* wybierz z listy interfejsów API, następnie **Udziel uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy.
 
   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/grant-permissions.png)
+
+  Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
+
+  ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
 
 8. Wróć do aplikacji i zwróć uwagę na **identyfikator aplikacji**. W przypadku wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Server application ID`.
 
@@ -131,7 +135,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 
 ## <a name="create-rbac-binding"></a>Utwórz powiązanie RBAC
 
-Konto usługi Azure Active Directory można było korzystać z klastrem usługi AKS, powiązanie roli lub powiązania roli klastra musi zostać utworzona.
+Konto usługi Azure Active Directory można było korzystać z klastrem usługi AKS, powiązanie roli lub powiązania roli klastra musi zostać utworzona. *Role* zdefiniować uprawnienia, aby przyznać użytkownikom, i *powiązania* zastosować je do odpowiednich użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub dla całego klastra. Aby uzyskać więcej informacji, zobacz [autoryzacji RBAC przy użyciu][rbac-authorization].
 
 Najpierw za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia `--admin` argumentu, aby zalogować się do klastra z prawami dostępu administratora.
 
@@ -139,7 +143,7 @@ Najpierw za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster --admin
 ```
 
-Następnie użyj następujących manifestu, aby utworzyć ClusterRoleBinding dla konta usługi Azure AD. Zaktualizuj nazwę użytkownika przy użyciu jednego z dzierżawą usługi Azure AD. W tym przykładzie daje pełny dostęp konta do wszystkie obszary nazw klastra.
+Następnie użyj następujących manifestu, aby utworzyć ClusterRoleBinding dla konta usługi Azure AD. Zaktualizuj nazwę użytkownika przy użyciu jednego z dzierżawą usługi Azure AD. W tym przykładzie zapewnia pełny dostęp konta do wszystkie obszary nazw klastra:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -156,7 +160,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Powiązanie roli można również tworzyć dla wszystkich członków grupy usługi Azure AD. Grupy usługi Azure AD są określane za pomocą identyfikatora grupy obiektów.
+Powiązanie roli można również tworzyć dla wszystkich członków grupy usługi Azure AD. Grupy usługi Azure AD są określane za pomocą identyfikator obiektu grupy, jak pokazano w poniższym przykładzie:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

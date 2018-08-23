@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931732"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920755"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: tworzenie infrastruktury programowania na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu usług Jenkins, GitHub i Docker
 
@@ -151,7 +151,7 @@ W witrynie internetowej usługi Jenkins wybierz na stronie głównej pozycję **
 - W sekcji **Ogólne** wybierz projekt **GitHub** i wprowadź adres URL rozwidlonego repozytorium, taki jak *https://github.com/cynthn/nodejs-docs-hello-world*
 - W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **Git** i wprowadź adres URL *.git* rozwidlonego repozytorium, taki jak *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - W sekcji **Kompilowanie wyzwalaczy** wybierz pozycję **Wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITscm**.
-- W sekcji **Kompilowanie** wybierz pozycję **Dodaj krok kompilacji**. Wybierz pozycję **Wykonaj powłokę**, a następnie wprowadź `echo "Testing"` w oknie wiersza polecenia.
+- W sekcji **Kompilowanie** wybierz pozycję **Dodaj krok kompilacji**. Wybierz pozycję **Wykonaj powłokę**, a następnie wprowadź `echo "Test"` w oknie wiersza polecenia.
 - Wybierz pozycję **Zapisz** w dolnej części okna zadań.
 
 

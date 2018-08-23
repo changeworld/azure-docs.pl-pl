@@ -3,7 +3,7 @@ title: Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Azure Relay
 description: Napisz aplikację konsolową w języku C# do obsługi żądań HTTP połączeń hybrydowych usługi Azure Relay na platformie .NET.
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/15/2017
-ms.author: sethm
-ms.openlocfilehash: 743e5c5a44f2ed9e6f6d2df9388ef3f01c501bff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 08/16/2018
+ms.author: spelluru
+ms.openlocfilehash: 4f7aa0b0c5142237f3b6fc66bb8593302c95f5af
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611103"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918660"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay na platformie .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]

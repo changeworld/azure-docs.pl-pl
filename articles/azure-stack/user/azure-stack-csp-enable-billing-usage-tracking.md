@@ -1,9 +1,9 @@
 ---
-title: Włącz dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu | Dokumentacja firmy Microsoft
-description: Włączenie subskrypcji Azure stosu dostępu do dostawcy usług.
+title: Włącz dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Włącz dostawcę usług można uzyskać dostępu do subskrypcji w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,47 +11,47 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: f0cff8f575b87872c0032854f1916b140d7fd62b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f309b86578f340040927735c067656158f3198fc
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357847"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42061522"
 ---
-# <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Włącz dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu
+# <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Włącz dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Jeśli używasz stosu Azure z dostawcy usług chmury (CSP), możesz wybrać do zarządzania subskrypcją dostęp do zasobów na platformie Azure i w stosie Azure. Można także pozwolić dostawcy na Zarządzanie subskrypcją za Ciebie. W tym artykule opisano sposób do:
+Jeśli używasz usługi Azure Stack przy użyciu dostawcy usług chmury (CSP), możesz wybrać do zarządzania subskrypcją dostępu do zasobów na platformie Azure i w usłudze Azure Stack. Można także pozwolić dostawcy na Zarządzanie subskrypcją za Ciebie. W tym artykule przedstawiono, jak do:
 
- * Nadaj subskrypcji dostęp dostawcy usługi.
- * Upewnij się, że dostawca usług można zarządzać usługą.
+ * Zapewnij dostęp dostawcy usługi w Twojej subskrypcji.
+ * Upewnij się, że dostawcy usług mogą zarządzać swoją usługą.
 
 > [!Note]
->  Jeśli dostawca usług Kryptograficznych nie jest zarządzanie kontem i pominęli następujące kroki, dostawca usług Kryptograficznych nie może zarządzać subskrypcją Azure stosu dla Ciebie.
+>  Jeśli dostawca usług Kryptograficznych nie jest zarządzanie kontem i pominęli następujące kroki, dostawcy usług Kryptograficznych nie może zarządzać subskrypcją usługi Azure Stack dla Ciebie.
 
-## <a name="manage-your-subscription-with-a-cloud-service-provider"></a>Zarządzanie subskrypcją z dostawcy usług w chmurze
+## <a name="manage-your-subscription-with-a-cloud-service-provider"></a>Zarządzanie subskrypcją za pomocą dostawcy usług w chmurze
 
-Dodawanie dostawcy usług Kryptograficznych jako **użytkownika** do subskrypcji.
+Dodawanie dostawcy rozwiązań w Chmurze jako **użytkownika** do Twojej subskrypcji.
 
-1. Dodawanie do dostawcy usług Kryptograficznych jako gość z rolą użytkownika do katalogu dzierżawcy.  Aby uzyskać instrukcje dotyczące dodawania użytkownika, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
-2. Dostawca usług Kryptograficznych tworzy lokalne subskrypcji Azure stosu dla Ciebie.
-3. Wszystko jest gotowe rozpocząć korzystanie z usługi Azure stosu.
-4. Dostawca usług Kryptograficznych, należy utworzyć zasobu w ramach subskrypcji, aby sprawdzić, czy można również zarządzać zasobami. Na przykład można [Utwórz maszynę wirtualną z systemem Windows przy użyciu portalu Azure stosu](azure-stack-quick-windows-portal.md).
+1. Dodaj do dostawcy usług Kryptograficznych jako użytkownika-gościa z rolą użytkownika do katalogu dzierżawy.  Aby uzyskać instrukcje dotyczące dodawania użytkownika, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
+2. Dostawca CSP tworzy lokalne subskrypcji usługi Azure Stack dla Ciebie.
+3. Jesteś gotowy rozpocząć korzystanie z usługi Azure Stack.
+4. Dostawca usług Kryptograficznych, należy utworzyć zasób w ramach subskrypcji, aby sprawdzić, czy można również zarządzać zasobami. Na przykład mogą oni [utworzyć maszynę wirtualną Windows za pomocą portalu usługi Azure Stack](azure-stack-quick-windows-portal.md).
 
-## <a name="enable-the-cloud-service-provider-to-manage-your-subscription-using-rbac-rights"></a>Włącz dostawcy usług w chmurze umożliwiający Zarządzanie subskrypcją za pomocą praw RBAC
+## <a name="enable-the-cloud-service-provider-to-manage-your-subscription-using-rbac-rights"></a>Włącz dostawcy usług w chmurze umożliwiający Zarządzanie subskrypcją za pomocą uprawnień RBAC
 
-Dodawanie dostawcy usług Kryptograficznych jako **właściciela** do subskrypcji.
+Dodawanie dostawcy rozwiązań w Chmurze jako **właściciela** do Twojej subskrypcji.
 
-1. Dodawanie do dostawcy usług Kryptograficznych jako gość do katalogu dzierżawcy.  Aby uzyskać instrukcje dotyczące dodawania użytkownika, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
-2. Dodaj rolę właściciela na użytkownika gościa dostawcy usług Kryptograficznych. Aby uzyskać instrukcje dotyczące dodawania użytkownika dostawcy usług Kryptograficznych do subskrypcji, zobacz [Use Role-Based kontroli dostępu, aby zarządzać dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-3. Dostawca usług Kryptograficznych tworzy lokalne subskrypcji Azure stosu dla Ciebie.
-4. Wszystko jest gotowe rozpocząć korzystanie z usługi Azure stosu.
-5. Dostawca usług Kryptograficznych, należy utworzyć zasobu w ramach subskrypcji, aby sprawdzić, czy mogą zarządzać zasobami.
+1. Dodaj do dostawcy usług Kryptograficznych jako użytkownika-gościa do katalogu dzierżawy.  Aby uzyskać instrukcje dotyczące dodawania użytkownika, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
+2. Dodaj rolę właściciela użytkownik-Gość dostawcy usług Kryptograficznych. Aby uzyskać instrukcje dotyczące dodawania użytkownika dostawcy usług Kryptograficznych do Twojej subskrypcji, zobacz [Use Role-Based kontroli dostępu w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+3. Dostawca CSP tworzy lokalne subskrypcji usługi Azure Stack dla Ciebie.
+4. Jesteś gotowy rozpocząć korzystanie z usługi Azure Stack.
+5. Dostawca usług Kryptograficznych, należy utworzyć zasób w ramach subskrypcji, aby zweryfikować, że mogą zarządzać zasobami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](../azure-stack-billing-and-chargeback.md).
+Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](../azure-stack-billing-and-chargeback.md).

@@ -1,175 +1,198 @@
 ---
 title: Batch przetwarzania komunikatów EDI jako grupy lub kolekcji — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Wysyłanie komunikatów EDI wsadowo w usłudze logic apps
-keywords: Przetwarzanie wsadowe partii, kodowanie zbiorcze
-author: divswa
-manager: jeconnoc
-editor: ''
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
 ms.topic: article
-ms.date: 09/21/2017
-ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: fb15688968cb29039fc669ed6b8685ba64df9e81
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 08/19/2018
+ms.reviewer: estfan, LADocs
+ms.openlocfilehash: 77965e20e7d42d12b34bcb2f7cc6c8680ba34b3a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432137"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061044"
 ---
-# <a name="send-x12-messages-in-batch-to-trading-partners"></a>Wyślij X12 komunikatów w partii do partnerów handlowych
+# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do obrotu partnerzy korzystający z usługi Azure Logic Apps
 
-W przypadkach firmami (B2B) partnerów często wymieniać wiadomości w grupach lub partii. Do wysyłania wiadomości w grupach lub partii do partnerów handlowych, można utworzyć partię przy wielu elementów, a następnie użyj X12 akcji usługi batch do przetwarzania tych elementów jako zadania wsadowego.
+W przypadkach firmami (B2B) partnerów często wymieniać wiadomości w grupach lub *partie*. Podczas kompilowania rozwiązania przetwarzania wsadowego za pomocą aplikacji logiki można wysyłać komunikaty do partnerów handlowych i przetworzyć te komunikaty razem w partii. Ten artykuł pokazuje, jak możesz wsadowego przetwarzania komunikatów EDI, używając X12 na przykład tworzenia aplikacji logiki "sender usługi batch" i aplikacji logiki "odbiornik usługi batch". 
 
+Przetwarzanie wsadowe X12 komunikatów działa podobnie jak inne komunikaty; dzielenia na partie Możesz użyć wyzwalacza usługi batch, który gromadzi informacje o wiadomości w zadaniu wsadowym i działanie usługi batch, która wysyła komunikaty do usługi batch. Ponadto X12 dzielenia na partie obejmuje X12 kodowanie kroku przed komunikaty partner handlowy lub innego miejsca docelowego. Aby dowiedzieć się więcej na temat akcji i wyzwalaczy usługi batch, zobacz [komunikaty przetwarzania wsadowego](../logic-apps/logic-apps-batch-process-send-receive-messages.md).
 
-Partie dla X12 wiadomości, takich jak inne komunikaty, korzysta z wyzwalaczem partii i akcji. Również dla X12, partii przechodzi przez X12 Koduj kroku przed przejściem do partnera lub dowolnego miejsca docelowego. Aby uzyskać więcej informacji na temat akcji i wyzwalaczy usługi batch, zobacz [komunikaty przetwarzania wsadowego](logic-apps-batch-process-send-receive-messages.md).
+W tym artykule będziesz tworzyć rozwiązania przetwarzania wsadowego, tworząc dwie aplikacje logiki w ramach tej samej subskrypcji platformy Azure, region platformy Azure i poniżej następującej kolejności:
 
-W tym temacie pokazano, jak może przetwarzać X12 wiadomości jako zadaniu wsadowym, wykonując następujące czynności:
-* [Utwórz aplikację logiki, która odbiera elementy i tworzy partię](#receiver). Ta aplikacja logiki "odbiornik" wykonuje następujące działania:
- 
-   * Określa kryteria nazwa i wersja usługi batch, aby spełnić przed zwolnieniem elementy jako zadania wsadowego.
+* A ["odbiornik usługi batch"](#receiver) aplikację logiki, która akceptuje i zbiera komunikaty w partii, aż do spełnienia określone kryteria zwalniania i przetwarzania wiadomości. W tym scenariuszu odbiornika usługi batch są również kodowane komunikatów w partii przy użyciu określonego X12 umowy lub partnera tożsamości.
 
-   * Przetwarza lub koduje elementów w usłudze batch przy użyciu określonego X12 umowy lub partnera tożsamości.
+  Upewnij się, że należy najpierw utworzyć odbiornik usługi batch, docelowej usługi batch można wybrać później, po utworzeniu nadawcy usługi batch.
 
-* [Utwórz aplikację logiki, która wysyła elementów do przetworzenia wsadowego](#sender). Ta aplikacja logiki "sender" Określa, gdzie wysyłać elementów dla przetwarzania wsadowego, które muszą być istniejącą aplikację logiki odbiorcy.
+* A ["sender usługi batch"](#sender) aplikację logiki, która wysyła komunikaty do odbiorcy wcześniej utworzonej usługi batch. 
 
+Upewnij się, że usługi batch odbiorcy i nadawcy partii udostępnianie tej samej subskrypcji platformy Azure *i* region platformy Azure. Jeśli nie, nie możesz wybrać odbiornik usługi batch podczas tworzenia nadawcy partii, ponieważ nie są widoczne dla siebie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skorzystać z tego przykładu, potrzebne są następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). W przeciwnym razie możesz [skorzystać z subskrypcji z płatnością zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/purchase-options/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). Ewentualnie [logowania do subskrypcji płatności](https://azure.microsoft.com/pricing/purchase-options/).
 
-* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) zdefiniowanego na koncie integracji. Upewnij się, że każdy partner używa X12 (standardowy kod operatora alfa) kwalifikator we właściwościach partnera jako tożsamość firmy.
+* Istniejące [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) który jest skojarzony z subskrypcją platformy Azure i jest połączona z aplikacji logiki
 
-* [X12 umowy](logic-apps-enterprise-integration-x12.md) jest już zdefiniowany w ramach konta integracji
+* Co najmniej dwa istniejące [partnerów](../logic-apps/logic-apps-enterprise-integration-partners.md) na koncie integracji. Wszystkich partnerów, należy użyć X12 (standardowy kod operatora alfa) kwalifikator jako tożsamość firmy we właściwościach partnera.
+
+* Istniejące [X12 umowy](../logic-apps/logic-apps-enterprise-integration-x12.md) na koncie integracji
+
+* Aby korzystać z programu Visual Studio, a nie w witrynie Azure portal, upewnij się, że [Konfigurowanie programu Visual Studio do pracy z usługą Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="receiver"></a>
 
-## <a name="create-a-logic-app-that-receives-x12-messages-and-creates-a-batch"></a>Utwórz logikę aplikacji, która odbiera X12 komunikatów i tworzy partię
+## <a name="create-x12-batch-receiver"></a>Utwórz X12 odbiornika usługi batch
 
-Przed może wysyłać komunikaty do usługi batch, należy najpierw utworzyć aplikację logiki "odbiornik" za pomocą **partii** wyzwalacza. W ten sposób można wybrać tę aplikację logiki odbiorcy podczas tworzenia aplikacji logiki nadawcy. Odbiornik, należy określić nazwę instancji, kryteria, X12 zwalniania umowy i inne ustawienia. 
+Przed może wysyłać komunikaty do usługi batch, tej partii najpierw musi istnieć jako miejsca docelowego, gdzie wysłać te komunikaty. Dlatego najpierw należy utworzyć aplikację logiki "odbiornik usługi batch", która rozpoczyna się od **partii** wyzwalacza. W ten sposób podczas tworzenia aplikacji logiki "sender usługi batch", możesz wybrać aplikację logiki odbiornika usługi batch. Odbiornik usługi batch kontynuuje zbieranie wiadomości do momentu spełnienia określone kryteria zwalniania i przetwarzania wiadomości. Podczas odbiorniki usługi batch nie muszą nic wiedzieć o nadawców usługi batch, nadawców usługi batch musi znać miejsca docelowego, gdzie one wysyłać wiadomości. 
 
+Dla tego odbiornika usługi batch, należy określić tryb usługi batch, nazwa, kryteriów wersji X12 umowy i inne ustawienia. 
 
-1. W [witryny Azure portal](https://portal.azure.com), tworzenie aplikacji logiki o tej nazwie: "BatchX12Messages".
+1. W [witryny Azure portal](https://portal.azure.com) lub Visual Studio, tworzenie aplikacji logiki o tej nazwie: "BatchX12Messages"
 
-1. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "batch" jako filtr. Wybierz następujący wyzwalacz: **usługi Batch — komunikaty przetwarzania wsadowego**
+2. [Połącz swoją aplikację logiki z kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
+
+3. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "batch" jako filtr. Wybierz następujący wyzwalacz: **partii komunikatów**
 
    ![Dodawanie wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
-1. Podaj nazwę dla usługi batch i określić kryteria zwalniania partii, na przykład:
+4. Ustaw partii właściwości odbiorcy: 
 
-   * **Nazwa partii**: Nazwa używana do identyfikowania usługi batch, czyli "TestBatch" w tym przykładzie.
+   | Właściwość | Wartość | Uwagi | 
+   |----------|-------|-------|
+   | **Tryb partii** | W tekście |  |  
+   | **Nazwa partii** | TestBatch | Dostępne tylko w przypadku **wbudowane** tryb usługi batch | 
+   | **Kryteria zwalniania** | Na podstawie harmonogramu na podstawie liczby komunikatów | Dostępne tylko w przypadku **wbudowane** tryb usługi batch | 
+   | **Liczba komunikatów** | 10 | Dostępne tylko w przypadku **komunikat na podstawie liczby** kryteria zwalniania | 
+   | **Interwał** | 10 | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
+   | **Częstotliwość** | minuta | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
+   ||| 
 
-   * **Kryteria zwalniania**: kryteriów publikowania partii, które mogą być oparte na liczba komunikatów i/lub harmonogramu.
-   
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+   ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
 
-   * **Liczba komunikatów**: liczba komunikatów do przechowywania jako zadania wsadowego przed zwolnieniem do przetworzenia, czyli "5" w tym przykładzie.
+   > [!NOTE]
+   > W tym przykładzie nie skonfigurować pod kątem partycji dla usługi batch, dzięki czemu w każdej partii używa tego samego klucza partycji. Aby dowiedzieć się więcej na temat partycji, zobacz [komunikaty przetwarzania wsadowego](../logic-apps/logic-apps-batch-process-send-receive-messages.md#batch-sender).
 
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
+5. Teraz Dodaj akcję, która koduje każdej partii: 
 
-   * **Harmonogram**: Planowanie wydania usługi batch do przetwarzania, czyli "co 10 minut" w tym przykładzie.
+   1. W obszarze wyzwalacza usługi batch wybierz **nowy krok**.
 
-     ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/receive-batch-schedule-based.png)
+   2. W polu wyszukiwania wpisz "X 12 usługi batch" jako filtr, a następnie wybierz tę akcję (dowolna wersja): **kodowanie zbiorcze <*wersji*>-X12** 
 
+      ![Wybierz X12 kodowanie zbiorcze akcji](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
-1. Dodaj kolejną akcję, która koduje zgrupowane lub partii komunikatów i tworzy X12 partii komunikatów. 
+   3. Jeśli nie została wcześniej nawiąż połączenie z kontem integracji, należy utworzyć połączenie teraz. Podaj nazwę połączenia, wybierz konto integracji, a następnie wybierz **Utwórz**.
 
-   a. Wybierz **+ nowy krok** > **Dodaj akcję**.
+      ![Utwórz połączenie między usługą batch encoder i konto integracji](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encoder-connect-integration-account.png)
 
-   b. W polu wyszukiwania wpisz "X 12 usługi batch" jako filtr, a następnie wybierz akcję dla **X12 — kodowanie zbiorcze**. X12, takie jak kodowanie connector znajduje się wielu wariantów partii kodowanie akcji. Można wybrać jedną z nich.
+   4. Ustaw te właściwości akcji encoder usługi batch:
 
-   ![Wybierz X12 kodowanie zbiorcze akcji](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
-   
-1. Ustaw właściwości dla akcji, który właśnie został dodany.
+      | Właściwość | Opis |
+      |----------|-------------|
+      | **Nazwa X12 umowy** | Otwórz listę, a następnie wybierz swoje istniejące umowy. <p>Jeśli lista jest pusta, upewnij się, że [połączyć swoją aplikację logiki z konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) zawierającej Umowy ma. | 
+      | **BatchName** | Kliknij wewnątrz tego pola, a po wyświetleniu listy zawartości dynamicznej wybierz **Nazwa partii** tokenu. | 
+      | **PartitionName** | Kliknij wewnątrz tego pola, a po wyświetleniu listy zawartości dynamicznej wybierz **nazwa partycji** tokenu. | 
+      | **Elementy** | Zamknij okno Szczegóły elementu, a następnie kliknij wewnątrz tego pola. Po wyświetleniu listy zawartości dynamicznej wybierz **partii elementów** tokenu. | 
+      ||| 
 
-   * W **nazwa X12 umowy** wybierz umowę z listy rozwijanej. Jeśli lista jest pusta, upewnij się, że połączenie nie zostało utworzone na koncie integracji.
+      ![Szczegóły akcji Koduj usługi Batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
 
-   * W **BatchName** wybierz opcję **Nazwa partii** pola z listy zawartości dynamicznej.
-   
-   * W **PartitionName** wybierz opcję **nazwa partycji** pola z listy zawartości dynamicznej.
+      Aby uzyskać **elementów** pola:
 
-   * W **elementów** wybierz opcję **partii elementów** z listy zawartości dynamicznej.
+      ![Czynności do wykonania Koduj usługi Batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
-   ![Szczegóły akcji Koduj usługi Batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
+6. Zapisz aplikację logiki. 
 
-1. Do celów testowych, dodawanie akcji HTTP do wysyłania wsadowej komunikat, który ma [Bin żądania usługi](https://requestbin.fullcontact.com/). 
+7. Jeśli używasz programu Visual Studio, upewnij się, że [wdrażanie aplikacji logiki odbiornika usługi batch na platformie Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). W przeciwnym razie nie można wybrać odbiornik usługi batch podczas tworzenia nadawcy usługi batch.
 
-   1. Wprowadź "HTTP" jako filtr w polu wyszukiwania. Wybierz tę akcję: **HTTP - HTTP**
+### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+
+Zapewnienie usługi batch odbiorcy działa zgodnie z oczekiwaniami, można dodać akcji HTTP do celów testowych i wysłać wiadomość wsadowej [Bin żądania usługi](https://requestbin.fullcontact.com/). 
+
+1. W obszarze X12 kodowanie akcji, wybierz polecenie **nowy krok**. 
+
+2. W polu wyszukiwania wprowadź "http" jako filtr. Wybierz tę akcję: **HTTP - HTTP**
     
-      ![Wybieranie akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action.png)
+   ![Wybieranie akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
-   1. Z **metoda** listy wybierz **WPIS**. Aby uzyskać **Uri** , wygenerować identyfikator URI dla pojemnika Twoje żądanie i wpisz tego identyfikatora URI. W **treści** pola, gdy zostanie otwarta lista dynamiczna, wybierz **treści** pola pod **kodowanie zbiorcze według nazwy umowy** sekcji. Jeśli nie widzisz **treści**, wybierz **Zobacz więcej** obok **kodowanie zbiorcze według nazwy umowy**.
+3. Ustaw właściwości dla akcji HTTP:
 
-      ![Podaj szczegóły akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action-details.png)
+   | Właściwość | Opis | 
+   |----------|-------------|
+   | **— Metoda** | Na tej liście, wybierz **WPIS**. | 
+   | **Identyfikator URI** | Wygenerować identyfikator URI dla pojemnika swoje żądania, a następnie wprowadź tego identyfikatora URI, w tym polu. | 
+   | **Treść** | Kliknij wewnątrz tego pola, a po otwarciu listy zawartości dynamicznej wybierz **treści** token, który znajduje się w sekcji, **kodowanie zbiorcze według nazwy umowy**. <p>Jeśli nie widzisz **treści** token obok **kodowanie zbiorcze według nazwy umowy**, wybierz opcję **Zobacz więcej**. | 
+   ||| 
 
-1.  Teraz, gdy utworzono aplikację logiki odbiorcy, Zapisz aplikację logiki.
+   ![Podaj szczegóły akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
 
-    ![Zapisywanie aplikacji logiki](./media/logic-apps-scenario-EDI-send-batch-messages/save-batch-receiver-logic-app.png)
+4. Zapisz aplikację logiki. 
 
-    > [!IMPORTANT]
-    > Partycja obowiązuje limit 5000 wiadomości lub 80 MB. Spełnieniu tych warunków usługi batch mogą zostać zwolnione, nawet wtedy, gdy zdefiniowana przez użytkownika warunek nie jest spełniony.
+   Twoja aplikacja logiki odbiornika usługi batch wygląda następująco: 
+
+   ![Zapisz aplikację logiki odbiornika usługi batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-finished.png)
 
 <a name="sender"></a>
 
-## <a name="create-a-logic-app-that-sends-x12-messages-to-a-batch"></a>Tworzenie aplikacji logiki, która wysyła X12 komunikatów do partii
+## <a name="create-x12-batch-sender"></a>Utwórz X12 nadawcy usługi batch
 
-Teraz należy utworzyć co najmniej jedną aplikację logiki, które wysyłają elementów do przetworzenia wsadowego zdefiniowane przez aplikację logiki odbiorcy. Dla nadawcy należy określić aplikację logiki odbiornik i nazwę instancji, zawartość komunikatu i inne ustawienia. Opcjonalnie możesz podać unikatowego klucza partycji do dzielenia partii na podzestawy do zbierania elementów za pomocą tego klucza.
+Teraz należy utworzyć co najmniej jedną aplikację logiki, wysyłania wiadomości do aplikacji logiki odbiornika usługi batch. W każdej partii nadawcy określasz aplikacji logiki odbiornika usługi batch i Nazwa instancji, zawartość komunikatu i inne ustawienia. Opcjonalnie możesz podać unikatowego klucza partycji do dzielenia partii na podzestawy zbierać komunikaty przy użyciu tego klucza. 
 
-Nadawca aplikacje logiki muszą wiedzieć, dokąd wysyłać elementów, gdy aplikacje logiki odbiorcy nie muszą nic wiedzieć o nadawcy.
+* Upewnij się, że masz już [utworzony odbiornik usługi batch](#receiver) , podczas tworzenia usługi batch nadawcy jako miejsce docelowe można wybrać istniejący odbiornik usługi batch. Gdy odbiorniki usługi batch nie muszą nic wiedzieć o nadawców usługi batch, nadawców partii musisz wiedzieć, gdzie wysyłać wiadomości. 
 
+* Upewnij się, usługi batch odbiorcy i nadawcy partii udostępnić tym samym regionie Azure *i* subskrypcji platformy Azure. Jeśli nie, nie możesz wybrać odbiornik usługi batch podczas tworzenia nadawcy partii, ponieważ nie są widoczne dla siebie.
 
-1. Tworzenie innej aplikacji logiki o tej nazwie: "X12MessageSender". Dodaj ten wyzwalacz aplikacji logiki: **żądanie / odpowiedź — żądanie** 
+1. Tworzenie innej aplikacji logiki o tej nazwie: "SendX12MessagesToBatch" 
+
+2. W polu wyszukiwania wprowadź "podczas żądania http" jako filtr. Wybierz następujący wyzwalacz: **zostanie odebrane żądanie po HTTP** 
    
    ![Dodawanie wyzwalacza żądania](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
-1. Dodawanie nowego kroku do wysyłania komunikatów do partii.
+3. Dodawanie akcji do wysyłania komunikatów do partii.
 
-   1. Wybierz **+ nowy krok** > **Dodaj akcję**.
+   1. W obszarze akcji żądania HTTP, wybierz opcję **nowy krok**.
 
-   1. W polu wyszukiwania wprowadź "batch" jako filtr. 
+   2. W polu wyszukiwania wprowadź "batch" jako filtr. 
+   Wybierz **akcje** listy, a następnie wybierz tę akcję: **wybierz przepływ pracy usługi Logic Apps z wyzwalaczem partii — Wyślij komunikaty do przetwarzania zbiorczego**
 
-1. Wybierz tę akcję: **wysyłać komunikaty do usługi batch — wybierz przepływ pracy usługi Logic Apps z wyzwalaczem partii**
+      ![Wybierz pozycję "Wybierz przepływ pracy aplikacji logiki z wyzwalaczem partii"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
-   ![Wybierz pozycję "Wyślij komunikaty do przetwarzania zbiorczego"](./media/logic-apps-scenario-EDI-send-batch-messages/send-messages-batch-action.png)
+   3. Teraz wybierz aplikację logiki "BatchX12Messages", która została wcześniej utworzona.
 
-1. Teraz wybierz aplikację logiki "BatchX12Messages", która została wcześniej utworzona, który teraz jest wyświetlany jako akcję.
+      ![Wybieranie aplikacji logiki "odbiornik usługi batch"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   ![Wybieranie aplikacji logiki "odbiornik usługi batch"](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-receiver.png)
+   4. Wybierz tę akcję: **Batch_messages — <*odbiornika usługi batch*>**
 
-   > [!NOTE]
-   > Lista zawiera również inne aplikacje logiki, które może mieć wyzwalaczy usługi batch.
+      ![Wybierz akcję "Batch_messages"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
-1. Ustaw właściwości usługi batch.
+4. Ustaw partii właściwości nadawcy.
 
-   * **Nazwa partii**: Nazwa usługi batch, zdefiniowane przez aplikację logiki odbiorcy, który jest "TestBatch" w tym przykładzie i sprawdzania poprawności w czasie wykonywania.
-
-     > [!IMPORTANT]
-     > Upewnij się, że nie zmieniaj nazwy usługi batch, która musi pasować do nazwy usługi batch, który jest określony przez aplikację logiki odbiorcy.
-     > Zmienianie nazwy usługi batch powoduje, że nadawca aplikację logiki, aby zakończyć się niepowodzeniem.
-
-   * **Zawartość komunikatu**: zawartość komunikatu, który chcesz wysłać do usługi batch
+   | Właściwość | Opis | 
+   |----------|-------------| 
+   | **Nazwa partii** | Nazwa partii, zdefiniowane przez aplikację logiki odbiornik, który jest "TestBatch" w tym przykładzie <p>**Ważne**: Nazwa partii zostanie zweryfikowane w czasie wykonywania i musi pasować do nazwy określonej przez aplikację logiki odbiorcy. Zmienianie nazwy usługi batch powoduje, że nadawca partii nie powiedzie się. | 
+   | **Zawartość komunikatu** | Zawartość komunikatu chcesz wysłać, która jest **treści** tokenu w tym przykładzie | 
+   ||| 
    
-   ![Ustawianie właściwości usługi batch](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-properties.png)
+   ![Ustawianie właściwości usługi batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-set-batch-properties.png)
 
-1. Zapisz aplikację logiki. Twoja aplikacja logiki nadawcy powinna wyglądać następująco:
+5. Zapisz aplikację logiki. 
 
-   ![Zapisz aplikację logiki nadawcy](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-finished.png)
+   Twoja aplikacja logiki nadawcy partii wygląda następująco:
+
+   ![Zapisz aplikację logiki nadawcy usługi batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-finished.png)
 
 ## <a name="test-your-logic-apps"></a>Testowanie aplikacji logiki
 
-Aby przetestować rozwiązania do przetwarzania wsadowego, post X12 wiadomości do aplikacji logiki nadawcy [Postman](https://www.getpostman.com/postman) lub podobnego narzędzia. Wkrótce, należy rozpocząć pobieranie X12 wiadomości jako partii pięć elementów lub co 10 minut w pojemniku Twoje żądanie — wszystko w tym samym kluczem partycji.
+Aby przetestować rozwiązania do przetwarzania wsadowego, post X12 komunikaty przetwarzania wsadowego nadawcy aplikacji logiki [Postman](https://www.getpostman.com/postman) lub podobnego narzędzia. Po chwili uruchomić wprowadzenie X12 wiadomości w pojemniku Twoje żądanie, co 10 minut lub w partiach 10, wszystko w tym samym kluczem partycji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przetwarzanie komunikatów jako partie](logic-apps-batch-process-send-receive-messages.md) 
-* [Tworzenie aplikacji bezserwerowej w programie Visual Studio za pomocą usługi Azure Logic Apps i Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
-* [Obsługa wyjątków i rejestrowania błędów dla usługi logic apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Przetwarzanie komunikatów jako partie](../logic-apps/logic-apps-batch-process-send-receive-messages.md) 

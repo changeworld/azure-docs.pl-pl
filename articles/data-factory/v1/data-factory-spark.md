@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb46347e82063d2e990b319ab108cf257c7e6b88
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4c7dddcb5e39eb1f72fb59af753ab167bc44d3e3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440630"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056515"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów platformy Spark z potoków usługi Azure Data Factory
 
@@ -56,7 +56,7 @@ Poniżej przedstawiono typowe czynności, aby utworzyć potok usługi data facto
 * Tworzenie potoku za pomocą działania platformy Spark, które odwołuje się do usługi połączonej HDInsight utworzony. Działanie jest skonfigurowane z zestawu danych utworzonego w poprzednim kroku jako wyjściowy zestaw danych. Wyjściowy zestaw danych jest elementem wpływającym na harmonogram (co godzinę, codziennie). W związku z tym należy określić wyjściowy zestaw danych, nawet jeśli działanie tak naprawdę nie generuje dane wyjściowe.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-1. Utwórz konto magazynu ogólnego przeznaczenia zgodnie z instrukcjami w [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+1. Utwórz konto magazynu ogólnego przeznaczenia zgodnie z instrukcjami w [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 
 1. Tworzenie klastra Spark w HDInsight, wykonując instrukcje podane w tym samouczku [Tworzenie klastra Spark w HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Skojarz konto magazynu, do którego został utworzony w kroku 1, z tym klastrem.
 

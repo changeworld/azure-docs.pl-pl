@@ -1,6 +1,6 @@
 ---
-title: Centrum IoT Azure schematu siatki zdarzeń | Dokumentacja firmy Microsoft
-description: Strona referencyjna format schematu zdarzeń i właściwości Centrum IoT
+title: Schemat usługi Azure Event Grid dla Centrum IoT Hub | Dokumentacja firmy Microsoft
+description: Strona odwołań format schematu zdarzeń i właściwości działania usługi IoT Hub
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -8,31 +8,33 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34303542"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055016"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Centrum IoT Azure schematu zdarzeń siatki zdarzeń
+# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schemat zdarzeń Azure Event Grid dla Centrum IoT Hub
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń Centrum IoT Azure. Aby obejrzeć wprowadzenie do schematów zdarzeń, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md). 
+Ten artykuł zawiera właściwości i schematów zdarzeń usługi Azure IoT Hub. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md). 
 
-## <a name="available-event-types"></a>Typy dostępnych zdarzeń
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi IoT Hub](event-sources.md#iot-hub).
 
-Centrum IoT Azure emituje następujące typy zdarzeń:
+## <a name="available-event-types"></a>Zdarzenie dostępne typy
+
+Usługa Azure IoT Hub emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Gdy urządzenie jest zarejestrowane do Centrum IoT opublikowany. |
-| Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięta z Centrum IoT. | 
+| Microsoft.Devices.DeviceCreated | Opublikowane po zarejestrowaniu urządzenia do usługi IoT hub. |
+| Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięty z usługi IoT hub. | 
 
-## <a name="example-event"></a>Przykład zdarzeń
+## <a name="example-event"></a>Przykład zdarzenia
 
-Schemat dla zdarzenia DeviceCreated i DeviceDeleted ma taką samą strukturę. To zdarzenie próbkowania zawiera schemat zdarzenia wywoływane, gdy urządzenie jest zarejestrowane do Centrum IoT:
+Schemat zdarzeń DeviceCreated i DeviceDeleted mieć tę samą strukturę. To zdarzenie próbki przedstawia schematu zdarzenia wywoływane, gdy urządzenie jest zarejestrowane w Centrum IoT:
 
 ```json
 [{
@@ -83,45 +85,45 @@ Schemat dla zdarzenia DeviceCreated i DeviceDeleted ma taką samą strukturę. T
 
 ### <a name="event-properties"></a>Właściwości zdarzenia
 
-Wszystkie zdarzenia zawierają tych samych danych najwyższego poziomu: 
+Wszystkie zdarzenia zawierają te same dane najwyższego poziomu: 
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
-| Temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalny. Zdarzenie siatki udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana wydawcy podmiotem zdarzeń. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzenia. |
-| eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
-| dane | obiekt | Dane zdarzenia Centrum IoT.  |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| dane | obiekt | Dane zdarzeń usługi IoT Hub.  |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
-Zawartość obiektu danych są różne dla każdego wydawca zdarzeń. Centrum IoT zdarzeń obiekt danych zawiera następujące właściwości:
+Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Dla zdarzeń usługi IoT Hub obiekt danych zawiera następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| hubName | ciąg | Nazwa centrum IoT, gdy urządzenie zostało utworzone lub usunięte. |
-| deviceId | ciąg | Unikatowy identyfikator urządzenia. Ten ciąg z uwzględnieniem wielkości liter może mieć maksymalnie 128 znaków długości i obsługuje znaki alfanumeryczne ASCII 7-bitowego oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| hubName | ciąg | Nazwa usługi IoT Hub, gdy urządzenie utworzony lub został usunięty. |
+| deviceId | ciąg | Unikatowy identyfikator urządzenia. Ten ciąg uwzględniający wielkość liter może mieć długości maksymalnie 128 znaków i obsługuje znaki ASCII 7-bitowe znaki alfanumeryczne oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | operationTimestamp | ciąg | Sygnatura czasowa ISO8601 operacji. |
-| opType | ciąg | Typ zdarzenia określonych dla tej operacji przez Centrum IoT: albo `DeviceCreated` lub `DeviceDeleted`.
-| twin | obiekt | Informacje o dwie urządzeń, czyli represenation chmury metadanych urządzenia aplikacji. | 
-| Identyfikator urządzenia | ciąg | Unikatowy identyfikator dwie urządzenia. | 
-| Element etag | ciąg | Fragment informacje opisujące zawartość dwie urządzenia. Każdy element etag jest musi być unikatowy na dwie urządzenia. | 
-| status | ciąg | Określa, czy dwie urządzenia jest włączone lub wyłączone. | 
-| statusUpdateTime | ciąg | Sygnatura czasowa ostatniego stanu dwie urządzenia ISO8601 aktualizacji. |
-| Element connectionState | ciąg | Określa, czy urządzenie jest połączone lub rozłączone. | 
+| opType | ciąg | Typ zdarzenia, określony dla tej operacji przez usługę IoT Hub: albo `DeviceCreated` lub `DeviceDeleted`.
+| twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli represenation chmury metadanych urządzenia w aplikacji. | 
+| Identyfikator urządzenia | ciąg | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
+| Element etag | ciąg | Fragment informacje opisujące zawartość bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. | 
+| status | ciąg | Bliźniacza reprezentacja urządzenia jest włączone czy wyłączone. | 
+| statusUpdateTime | ciąg | Zaktualizuj ISO8601 sygnatura czasowa ostatniego stanu bliźniaczej reprezentacji urządzenia. |
+| Element connectionState | ciąg | Czy urządzenie jest połączone lub odłączone. | 
 | lastActivityTime | ciąg | ISO8601 sygnaturę czasową ostatniej aktywności. | 
-| cloudToDeviceMessageCount | liczba całkowita | Liczba chmury do urządzenia komunikaty wysyłane do tego urządzenia. | 
-| Typ authenticationType | ciąg | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
-| X509Thumbprint | ciąg | Unikatową wartość x509 jest odcisk palca certyfikatu, najczęściej używanych można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca dynamicznie jest generowany przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
-| primaryThumbprint | ciąg | X509 głównej odcisku palca certyfikatu. |
-| secondaryThumbprint | ciąg | X509 dodatkowej odcisku palca certyfikatu. | 
-| wersja | liczba całkowita | Liczba całkowita, która jest zwiększany o jednej godziny urządzenia dwie jest aktualizowany. |
-| żądany | obiekt | Część właściwości, które mogą być zapisywane tylko przez zaplecza aplikacji i odczytywane przez urządzenie. | 
-| zgłoszone | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez zaplecza aplikacji. |
-| lastUpdated | ciąg | Sygnatura czasowa ostatniego właściwości dwie urządzenia ISO8601 aktualizacji. | 
+| cloudToDeviceMessageCount | liczba całkowita | Liczba komunikatów urządzeń, wysyłane do tego urządzenia w chmurze. | 
+| Element authenticationType | ciąg | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
+| x509Thumbprint | ciąg | Odcisk palca jest unikatową wartość dla x509 certyfikatu, często używane, można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca jest generowana dynamicznie przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
+| primaryThumbprint | ciąg | Podstawowy odcisk palca dla x509 certyfikatu. |
+| secondaryThumbprint | ciąg | Pomocniczy odcisk palca dla x509 certyfikatu. | 
+| wersja | liczba całkowita | Liczba całkowita, która jest zwiększany o jeden każdy Godzina aktualizacji bliźniaczej reprezentacji. |
+| żądany | obiekt | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
+| zgłoszone | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
+| lastUpdated | ciąg | Zaktualizuj ISO8601 sygnatura czasowa ostatniej właściwości bliźniaczej reprezentacji urządzenia. | 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do usługi Azure Event siatki, zobacz [co to jest zdarzenie siatki?](overview.md)
-* Aby dowiedzieć się, jak Centrum IoT i siatki zdarzeń współdziałać ze sobą, zobacz [reagowania na zdarzenia Centrum IoT przy użyciu siatki zdarzeń do akcje wyzwalacza](../iot-hub/iot-hub-event-grid.md).
+* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby dowiedzieć się, jak usługa IoT Hub i Event Grid współpracują ze sobą, zobacz [reagować na zdarzenia IoT Hub przy użyciu usługi Event Grid do wyzwalania akcji](../iot-hub/iot-hub-event-grid.md).

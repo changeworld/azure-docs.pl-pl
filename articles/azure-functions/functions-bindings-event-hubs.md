@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: 961126f62c3e8fbb947b9d1b34ac157bf37a8cba
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 610771e659a80e330fbb1c9d6fd97c15ff832386
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480941"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056129"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -79,6 +79,7 @@ Zobacz przykład specyficzny dla języka:
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -312,6 +313,34 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+
+W poniższym przykładzie pokazano wyzwalacza Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcja Java](functions-reference-java.md) powiązania, który używa. Funkcja rejestruje treści wyzwalacza Centrum zdarzeń.
+
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "msg",
+  "direction": "in",
+  "eventHubName": "myeventhubname",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+
+```java
+@FunctionName("ehprocessor")
+public void eventHubProcessor(
+  @EventHubTrigger(name = "msg",
+                  eventHubName = "myeventhubname",
+                  connection = "myconnvarname") String message,
+       final ExecutionContext context ) 
+       {
+          context.getLogger().info(message);
+ }
+ ```
+
+ W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `EventHubTrigger` adnotacji w parametrach, którego wartość może pochodzić z Centrum zdarzeń. Parametry z tymi adnotacjami spowodować, że funkcja do uruchomienia po odebraniu zdarzenia.  Ta adnotacja mogą być używane z natywnych typów języka Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu opcjonalnie<T>. 
+
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) atrybutu.
@@ -381,6 +410,7 @@ Zobacz przykład specyficzny dla języka:
 * [Skryptu C# (csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
@@ -530,6 +560,21 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
+
+Poniższy przykład przedstawia funkcję języka Java, która zapisuje bieżący czas pomocy komunikatów do Centrum zdarzeń.
+
+```java
+@}FunctionName("sendTime")
+@EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
+public String sendTime(
+   @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
+     return LocalDateTime.now().toString();
+ }
+ ```
+
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@EventHubOutput` adnotacji w parametrach, którego wartość będzie wynosić poublished do Centrum zdarzeń.  Parametr powinien być typu `OutputBinding<T>` , gdzie T jest obiektu typu POJO lub dowolnego typu natywnego języka Java. 
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 

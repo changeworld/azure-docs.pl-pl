@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: a519cd242b88916d1a11df47c0b7450594848ef5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d7ed440ba794bcdfab4744e0ac4864aab6896ca8
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920553"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055990"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem należy [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) do której można Archiwizuj dziennik aktywności. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie dzienniki diagnostyczne i metryki na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla także dziennik aktywności. Konto magazynu nie musi znajdować się w tej samej subskrypcji co emitowane dzienniki, tak długo, jak użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji subskrypcji.
+Przed rozpoczęciem należy [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md) do której można Archiwizuj dziennik aktywności. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie dzienniki diagnostyczne i metryki na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla także dziennik aktywności. Konto magazynu nie musi znajdować się w tej samej subskrypcji co emitowane dzienniki, tak długo, jak użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji subskrypcji.
 
 > [!NOTE]
 >  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.

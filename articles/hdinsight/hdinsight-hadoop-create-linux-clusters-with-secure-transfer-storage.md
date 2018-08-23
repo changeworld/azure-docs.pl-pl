@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: hero-article
 ms.date: 07/24/2018
-ms.openlocfilehash: e6d84229af459d18df8d9dfd7f048f6075ea47f3
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: fd7f9095d7ac00de3ad031f08db49785863176a1
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594596"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920920"
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra usługi Hadoop z kontami magazynu z bezpiecznym transferem w usłudze Azure HDInsight
 
@@ -24,7 +24,7 @@ Funkcja [Wymagany bezpieczny transfer](../storage/common/storage-require-secure-
 Przed rozpoczęciem tego samouczka potrzebna będzie:
 
 * **Subskrypcja platformy Azure**: aby utworzyć bezpłatne konto próbne na jeden miesiąc, przejdź do [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* **Konto usługi Azure Storage z włączonym bezpiecznym transferem**. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md).
+* **Konto usługi Azure Storage z włączonym bezpiecznym transferem**. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md).
 * **Kontener obiektów blob na koncie magazynu**. 
 
 ## <a name="create-cluster"></a>Tworzenie klastra

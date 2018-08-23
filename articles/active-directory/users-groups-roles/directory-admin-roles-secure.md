@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627937"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42062075"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
 Bezpieczeństwo większości lub wszystkich zasobów biznesowych w nowoczesnej organizacji, zależy od integralności uprzywilejowanych kont służących do administrowania i zarządzania systemami IT. Uczestników złośliwych działań, w tym osoby przeprowadzające ataki cybernetyczne często docelowych kont administratorów i inne elementy uprzywilejowanego dostępu, aby szybko uzyskać dostęp do poufnych danych i systemy przy użyciu przed atakami kradzieży poświadczeń. Chmury usługi, zapobiegania i odpowiedzi są wspólnego obowiązków dostawcy usług w chmurze i klienta. Aby uzyskać więcej informacji o najnowszych zagrożeniach do punktów końcowych i w chmurze, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Ten artykuł może pomóc Ci opracować plan kierunku zamykanie przerw między bieżącym planów i wytyczne opisane w tym miejscu.
 
 > [!NOTE] 
-> Firma Microsoft dba do zapewnienia najwyższych poziomów zaufania, przejrzystości, zgodność ze standardami i zgodności z przepisami. Dowiedz się więcej o jak zespół reagowania na zdarzenia globalne Microsoft zmniejsza skutki ataków na usługi w chmurze i jak bezpieczeństwo jest wbudowane w produktów firmy Microsoft i usługi w chmurze w [Microsoft Trust Center — bezpieczeństwo](https://www.microsoft.com/en-us/trustcenter/security)i elementy docelowe zgodności firmy Microsoft w [Microsoft Trust Center - zgodności](https://www.microsoft.com/en-us/trustcenter/compliance).
+> Firma Microsoft dba do zapewnienia najwyższych poziomów zaufania, przejrzystości, zgodność ze standardami i zgodności z przepisami. Dowiedz się więcej o jak zespół reagowania na zdarzenia globalne Microsoft zmniejsza skutki ataków na usługi w chmurze i jak bezpieczeństwo jest wbudowane w produktów firmy Microsoft i usługi w chmurze w [Microsoft Trust Center — bezpieczeństwo](https://www.microsoft.com/trustcenter/security)i elementy docelowe zgodności firmy Microsoft w [Microsoft Trust Center - zgodności](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -337,7 +337,7 @@ Oprócz zarządzania konta uprzywilejowanego dostępu, zaleca się, że zostały
 * Tylko udzielić dostępu uprzywilejowanego w razie i usunąć go później (just-in-time).
 * Zatrzymuje i przejrzyj działania inspekcji odnoszących się do kont uprzywilejowanych.
 
-Aby uzyskać więcej informacji dotyczących tworzenia pełnego planu zabezpieczeń, zobacz [IT architektury zasobów w chmurze firmy Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Aby uzyskać więcej informacji dotyczących angażowania usług firmy Microsoft na potrzeby z dowolnym z tych tematów, skontaktuj się z przedstawicielem handlowym firmy Microsoft, lub zobacz [twórz krytyczne cybernetycznymi mechanizmów obronnych w celu Chroń swoje przedsiębiorstwo](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Aby uzyskać więcej informacji dotyczących tworzenia pełnego planu zabezpieczeń, zobacz [IT architektury zasobów w chmurze firmy Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Aby uzyskać więcej informacji dotyczących angażowania usług firmy Microsoft na potrzeby z dowolnym z tych tematów, skontaktuj się z przedstawicielem handlowym firmy Microsoft, lub zobacz [twórz krytyczne cybernetycznymi mechanizmów obronnych w celu Chroń swoje przedsiębiorstwo](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Ten końcowy etap trwającą planu zabezpieczone uprzywilejowanego dostępu obejmuje następujące składniki.
 
@@ -440,16 +440,16 @@ Aby uzyskać więcej informacji na temat obsługi zdarzenia związane z bezpiecz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Microsoft Trust Center zabezpieczeń produktu](https://www.microsoft.com/en-us/trustcenter/security) — funkcje zabezpieczeń firmy Microsoft w chmurze produktów i usług
+* [Microsoft Trust Center zabezpieczeń produktu](https://www.microsoft.com/trustcenter/security) — funkcje zabezpieczeń firmy Microsoft w chmurze produktów i usług
 
-* [Microsoft Trust Center - zgodności](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) — wszechstronny zestaw ofert zgodności dla usług w chmurze firmy Microsoft
+* [Microsoft Trust Center - zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings) — wszechstronny zestaw ofert zgodności dla usług w chmurze firmy Microsoft
 
-* [Wskazówki dotyczące sposobu przeprowadzania oceny ryzyka](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) -zarządzania wymaganiami bezpieczeństwa i zgodności dla usług w chmurze firmy Microsoft
+* [Wskazówki dotyczące sposobu przeprowadzania oceny ryzyka](https://www.microsoft.com/trustcenter/guidance/risk-assessment) -zarządzania wymaganiami bezpieczeństwa i zgodności dla usług w chmurze firmy Microsoft
 
 ### <a name="other-ms-online-services"></a>Inne usługi Online MS 
 
-* [Usługa Microsoft Intune Security](https://www.microsoft.com/en-us/trustcenter/security/intune-security) — usługa Intune umożliwia zarządzanie urządzeniami przenośnymi, zarządzanie aplikacjami mobilnymi i możliwości zarządzania Komputerami z chmury.
+* [Usługa Microsoft Intune Security](https://www.microsoft.com/trustcenter/security/intune-security) — usługa Intune umożliwia zarządzanie urządzeniami przenośnymi, zarządzanie aplikacjami mobilnymi i możliwości zarządzania Komputerami z chmury.
 
-* [Microsoft Dynamics 365 zabezpieczeń](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) — Dynamics 365 to rozwiązanie oparte na chmurze firmy Microsoft, które łączy zarządzanie relacjami z klientami (CRM) i możliwości (ERP) do planowania zasobów przedsiębiorstwa.
+* [Microsoft Dynamics 365 zabezpieczeń](https://www.microsoft.com/trustcenter/security/dynamics365-security) — Dynamics 365 to rozwiązanie oparte na chmurze firmy Microsoft, które łączy zarządzanie relacjami z klientami (CRM) i możliwości (ERP) do planowania zasobów przedsiębiorstwa.
 
  

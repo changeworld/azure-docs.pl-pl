@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1121bc9e34f0e544ba5d7acb9179944ee2382efd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: aad2b4c3edcdc488257940062e8861613ece25e8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414959"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059918"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -57,7 +57,7 @@ Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu r
 
 - Zawiera wiele wpisów dla urządzenia, na karcie informacje użytkownika z powodu ponownej instalacji systemu operacyjnego lub ręcznej ponownej rejestracji. 
 
-- Upewnij się, że [KB4284842](https://support.microsoft.com/en-us/help/4284842) jest zainstalowana w razie Windows 7 z dodatkiem SP1 lub Windows Server 2008 R2 z dodatkiem SP1. Ta aktualizacja zapobiega niepowodzeń uwierzytelniania przyszłych z powodu utraty dostępu klienta do klucze chronione po zmianie hasła.
+- Upewnij się, że [KB4284842](https://support.microsoft.com/help/4284842) jest zainstalowana w razie Windows 7 z dodatkiem SP1 lub Windows Server 2008 R2 z dodatkiem SP1. Ta aktualizacja zapobiega niepowodzeń uwierzytelniania przyszłych z powodu utraty dostępu klienta do klucze chronione po zmianie hasła.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Pobieranie stanu rejestracji 
 

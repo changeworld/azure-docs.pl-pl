@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 2d5bc3d0167c08c41b38bb324d55c239041f1fba
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: c94b5d4800f5776b51247c6ec2f6662a6ab26abc
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34630429"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058215"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
@@ -147,7 +147,7 @@ Jeśli korzystasz z modułu TPM, postępuj zgodnie z instrukcjami z sekcji [„C
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę DPS.
+2. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning.
    - Indywidualna rejestracja w trybie X **.** 509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości i przekaż certyfikat liścia zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
    - Grupowa rejestracja w trybie X **.** 509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości, podaj nazwę grupy i nazwę certyfikacji, a następnie przekaż certyfikat głównego urzędu certyfikacji lub pośredniczący zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
 

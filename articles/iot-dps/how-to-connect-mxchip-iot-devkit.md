@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 300bde27f956b449d1e0e73f7efb54a13df27b0c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: d8912a5da8c4df2069d8bc53454748b5fb3d5c39
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145669"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058253"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Użyj usługi Azure IoT Hub Device Provisioning Service automatycznej aprowizacji można zarejestrować zestawu deweloperskiego IoT Mxchip z usługą IoT Hub
 
 W tym artykule opisano sposób użycia usługi Azure IoT Hub Device Provisioning Service [automatycznej aprowizacji](concepts-auto-provisioning.md), można zarejestrować zestawu deweloperskiego IoT Mxchip z usługą Azure IoT Hub. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-* Skonfiguruj globalny punkt końcowy usługi device provisioning na urządzeniu.
+* Skonfiguruj globalny punkt końcowy usługi Device Provisioning na urządzeniu.
 * Użyj Unikatowy klucz tajny (domenami aktualizacji), aby wygenerować certyfikat X.509.
 * Rejestrowanie poszczególnych urządzeń.
 * Sprawdź, czy urządzenie jest zarejestrowane.
@@ -32,18 +32,18 @@ Wykonanie czynności opisanych w tym samouczku, należy najpierw wykonać nastę
 
 * Przygotuj swoje Mxchip wykonując kroki opisane w [połączyć DevKit az3166 usługi IoT dla usługi Azure IoT Hub w chmurze](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Przeprowadź uaktualnienie do najnowszego oprogramowania układowego (1.3.0 lub nowszej) z [Mxchip aktualizacji oprogramowania układowego](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) samouczka.
-* Tworzenie i łączenie Centrum IoT Hub z urządzeniem inicjowania obsługi administracyjnej wystąpienia usługi, wykonując kroki opisane w [Konfigurowanie IoT Hub Device Provisioning Service, za pomocą witryny Azure portal](/azure/iot-dps/quick-setup-auto-provision).
+* Utwórz i Połącz z wystąpieniem usługi Device Provisioning Centrum IoT Hub, wykonując kroki opisane w [Konfigurowanie IoT Hub Device Provisioning Service, za pomocą witryny Azure portal](/azure/iot-dps/quick-setup-auto-provision).
 
 ## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>Tworzenie i wdrażanie automatycznej aprowizacji oprogramowanie do rejestracji na urządzeniu
 
-Aby podłączyć Mxchip do utworzonego wystąpienia usługi aprowizacji urządzeń:
+Nawiązać Mxchip utworzone wystąpienie usługi Device Provisioning:
 
-1. W witrynie Azure portal wybierz **Przegląd** urządzenia usługę aprowizacji i notatki w dół w okienku **globalny punkt końcowy urządzenia** i **zakres identyfikatorów** wartości.
-  ![Usługa DPS globalny punkt końcowy i zakres identyfikatorów](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+1. W witrynie Azure portal wybierz **Przegląd** okienku swojej usługi Device Provisioning i Zapisz **globalny punkt końcowy urządzenia** i **zakres identyfikatorów** wartości.
+  ![Inicjowanie obsługi administracyjnej globalny punkt końcowy usługi i zakres identyfikatorów urządzeń](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 2. Upewnij się, że masz `git` zainstalowana na tym komputerze i że jest ona dodawana do zmiennych środowiskowych dostępnych z okna poleceń. Zobacz [narzędziami klienckimi Git Software Freedom Conservancy](https://git-scm.com/download/) mieć zainstalowaną najnowszą wersję.
 
-3. Otwórz wiersz polecenia. Sklonuj repozytorium GitHub dla usługi przykładowego kodu do aprowizacji urządzeń:
+3. Otwórz wiersz polecenia. Sklonuj repozytorium GitHub dla Device Provisioning service przykładowego kodu:
   ```bash
   git clone https://github.com/DevKitExamples/DevKitDPS.git
   ```
@@ -51,7 +51,7 @@ Aby podłączyć Mxchip do utworzonego wystąpienia usługi aprowizacji urządze
 4. Otwórz program Visual Studio Code, podłącz Mxchip do komputera, a następnie otwórz folder, który zawiera kod, który zostało sklonowane.
 
 5. Otwórz **DevKitDPS.ino**. Znajdź i Zamień `[Global Device Endpoint]` i `[ID Scope]` wartościami zanotowanymi w dół.
-  ![Punkt końcowy usługi DPS](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) można pozostawić **identyfikator** puste. Aplikacja wygeneruje go dla Ciebie na podstawie wersji adresu i oprogramowanie układowe MAC. Chcesz dostosować identyfikator rejestracji, należy użyć tylko alfanumeryczne, małe litery i łącznik kombinacje dłuższą niż 128 znaków. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracjami urządzeń przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
+  ![Punkt końcowy usługi aprowizacji urządzeń](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) można pozostawić **identyfikator** puste. Aplikacja wygeneruje go dla Ciebie na podstawie wersji adresu i oprogramowanie układowe MAC. Chcesz dostosować identyfikator rejestracji, należy użyć tylko alfanumeryczne, małe litery i łącznik kombinacje dłuższą niż 128 znaków. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracjami urządzeń przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 6. Użyj szybkiego otwierania w programie VS Code (Windows: `Ctrl+P`, z systemem macOS: `Cmd+P`) i typ *zadań przekazywania urządzenia* tworzenie i przekazywanie kodu do Mxchip.
 
@@ -59,7 +59,7 @@ Aby podłączyć Mxchip do utworzonego wystąpienia usługi aprowizacji urządze
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>Zapisz klucz tajny unikatowych urządzeń w układzie zabezpieczeń STSAFE
 
-Automatyczne inicjowanie obsługi administracyjnej można skonfigurować na urządzeniu, w oparciu o urządzenia [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism). Używa zestawu deweloperskiego IoT Mxchip [aparat kompozycji tożsamości urządzenia](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *urządzenia Unikatowy klucz tajny* (domenami aktualizacji) zapisane w usłudze security STSAFE mikroukład na Mxchip służy do generowania urządzenia, jego unikatowy [certyfikat X.509](concepts-security.md#x509-certificates). Certyfikat jest używany w dalszej części procesu rejestracji na urządzeniu usługi aprowizacji i podczas rejestracji w czasie wykonywania.
+Automatyczne inicjowanie obsługi administracyjnej można skonfigurować na urządzeniu, w oparciu o urządzenia [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism). Używa zestawu deweloperskiego IoT Mxchip [aparat kompozycji tożsamości urządzenia](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *urządzenia Unikatowy klucz tajny* (domenami aktualizacji) zapisane w usłudze security STSAFE mikroukład na Mxchip służy do generowania urządzenia, jego unikatowy [certyfikat X.509](concepts-security.md#x509-certificates). Certyfikat jest używany w dalszej części procesu rejestracji w usłudze Device Provisioning i podczas rejestracji w czasie wykonywania.
 
 Typowe urządzenie Unikatowy klucz tajny jest ciąg 64 znaków, jak pokazano w następującym przykładzie:
 
@@ -88,9 +88,11 @@ Aby zapisać wpis tajny unikatowych urządzeń w Mxchip:
 
 ## <a name="generate-an-x509-certificate"></a>Generowanie certyfikatu X.509
 
+Teraz należy wygenerować certyfikat X.609. 
+
 ### <a name="windows"></a>Windows
 
-1. Otwórz Eksplorator plików i przejdź do folderu, który zawiera inicjowania obsługi usługi przykładowy kod, który zostało wcześniej sklonowane urządzeń. W **.kompilacja** folderu, Znajdź i kopiowanie **DPS.ino.bin** i **DPS.ino.map**.
+1. Otwórz Eksplorator plików i przejdź do folderu, który zawiera przykładowy kod usługi Device Provisioning Service, który zostało wcześniej sklonowane. W **.kompilacja** folderu, Znajdź i kopiowanie **DPS.ino.bin** i **DPS.ino.map**.
   ![Wygenerowane pliki](./media/how-to-connect-mxchip-iot-devkit/generated-files.png)
   > [!NOTE]
   > Jeśli zmienisz `built.path` konfiguracji Arduino do innego folderu, musisz znaleźć tych plików w folderze, który został skonfigurowany.
@@ -102,17 +104,18 @@ Aby zapisać wpis tajny unikatowych urządzeń w Mxchip:
 
 4. Po wygenerowaniu certyfikatu X.509, **PEM** certyfikatu jest zapisywany w tym samym folderze.
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Tworzenie wpisu rejestracji urządzenia w usługi device provisioning
+## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Tworzenie wpisu rejestracji urządzenia w usłudze Device Provisioning
 
-1. W witrynie Azure portal przejdź do swojego wystąpienia usługi Device Provisioning. Wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę. ![Rejestracje indywidualne](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. W witrynie Azure portal przejdź do wystąpienia usługi Device Provisioning. Wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę. ![Rejestracje indywidualne](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
 2. Wybierz pozycję **Dodaj**.
 
 3. Na panelu "Dodaj rejestrację":
-   - Wybierz **X.509** w obszarze **mechanizm**
-   - Kliknij przycisk "Wybierz plik" w obszarze **plik PEM lub cer certyfikatu podstawowego**
-   - w oknie dialogowym otwierania pliku, przejdź do, a następnie przekaż **PEM** certyfikatu wygenerowane przed chwilą
-   - Pozostaw resztę jako domyślne i kliknij przycisk **Zapisz**
+
+   - Wybierz **X.509** w obszarze **mechanizm**.
+   - Kliknij przycisk "Wybierz plik" w obszarze **plik PEM lub cer certyfikatu podstawowego**.
+   - W oknie dialogowym otwierania pliku, przejdź do, a następnie przekaż **PEM** certyfikatu został wygenerowany.
+   - Pozostaw resztę jako domyślne i kliknij przycisk **Zapisz**.
 
    ![Przekazywanie certyfikatu](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
@@ -126,14 +129,13 @@ Aby zapisać wpis tajny unikatowych urządzeń w Mxchip:
   > `"-----BEGIN CERTIFICATE-----"` i `"-----END CERTIFICATE-----"`.
   >
 
-
 ## <a name="start-the-devkit"></a>Rozpocznij Mxchip
 
 1. Otwórz program VS Code i szeregowe monitora.
 
 2. Naciśnij klawisz **resetowania** przycisk na Twoje Mxchip.
 
-Początek Mxchip rejestracji zostanie wyświetlony z Twoją usługą aprowizacji urządzenia.
+Zobaczysz start Mxchip rejestracji z usługi Device Provisioning.
 
 ![Wyjście z kodu programu VS](./media/how-to-connect-mxchip-iot-devkit/vscode-output.png)
 
@@ -141,16 +143,12 @@ Początek Mxchip rejestracji zostanie wyświetlony z Twoją usługą aprowizacji
 
 Po uruchomieniu urządzenia, zostaną wykonane następujące czynności:
 
-1. Urządzenie wysyła żądanie rejestracji do swojej usługi device provisioning.
-2. Usługi device provisioning przesyła żądanie rejestracji, które odpowiada urządzenie.
-3. Po pomyślnej rejestracji usługi device provisioning wysyła identyfikator URI centrum IoT, identyfikator urządzenia i zaszyfrowany klucz do urządzenia.
+1. Urządzenie wysyła żądanie rejestracji do usługi Device Provisioning.
+2. Usługi Device Provisioning service wysyła z powrotem wezwanie rejestracji, które odpowiada urządzenie.
+3. Po pomyślnej rejestracji usługi Device Provisioning service wysyła identyfikator URI centrum IoT, identyfikator urządzenia i zaszyfrowany klucz do urządzenia.
 4. Aplikacja kliencka usługi IoT Hub na urządzeniu łączy się z Centrum.
 5. Po pomyślnym nawiązaniu połączenia z koncentratorem zobaczysz urządzenia są wyświetlane w Device Explorer Centrum IoT.
   ![Liczba zarejestrowanych urządzeń](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
-
-## <a name="change-the-device-id"></a>Zmiana Identyfikatora urządzenia
-
-Identyfikator urządzenia domyślne, które są zarejestrowane w usłudze Azure IoT Hub jest *az3166 usługi*. Jeśli chcesz zmodyfikować identyfikator, postępuj zgodnie z instrukcjami [dostosować identyfikator urządzenia](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
@@ -161,12 +159,12 @@ Jeśli napotkasz problemy, zapoznaj się mxchip Iot DevKit [— często zadawane
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono rejestrowanie urządzenia do usługi device provisioning przy użyciu aparat kompozycji tożsamości urządzenia, tak aby urządzenia automatycznie zarejestrować się w usłudze Azure IoT Hub. 
+W tym samouczku przedstawiono rejestrowanie urządzeń do usługi Device Provisioning przy użyciu aparat kompozycji tożsamości urządzenia, tak, aby automatycznie zarejestrować urządzenie z usługą Azure IoT Hub. 
 
 Podsumowanie pokazaliśmy ci, jak:
 
 > [!div class="checklist"]
-> * Skonfiguruj globalny punkt końcowy usługi device provisioning na urządzeniu.
+> * Skonfiguruj globalny punkt końcowy usługi Device Provisioning na urządzeniu.
 > * Użyj Unikatowy klucz tajny, aby wygenerować certyfikat X.509.
 > * Rejestrowanie poszczególnych urządzeń.
 > * Sprawdź, czy urządzenie jest zarejestrowane.

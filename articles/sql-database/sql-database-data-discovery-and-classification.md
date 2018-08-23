@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: giladm
-ms.openlocfilehash: cc093bebb4b3c39140d6fa5370a78d59168990fa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950814"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054392"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
@@ -107,6 +107,13 @@ T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszyst
 * Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 * Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 * Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+Interfejsów API REST można również użyć do programowego zarządzania klasyfikacje. Opublikowanych interfejsów API REST obsługują następujące operacje:
+* [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny
+* [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -usuwa etykietę czułości w danej kolumnie
+* [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) — pobiera etykieta poufności danej kolumny
+* [Lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) — pobiera etykiety ważności określonej bazy danych
+
 
 ## <a id="subheading-5"></a>Następne kroki
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 463a00823997f1acfb65fdd739a093e556982a61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411954"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056218"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Procesor GPU NVIDIA sterownika rozszerzenia dla Windows
 
@@ -63,7 +63,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | apiVersion | 2015-06-15 | data |
 | Wydawcy | Microsoft.HpcCompute | ciąg |
 | type | NvidiaGpuDriverWindows | ciąg |
-| typeHandlerVersion | 1.0 | Int |
+| typeHandlerVersion | 1.2 | Int |
 
 
 ## <a name="deployment"></a>Wdrożenie
@@ -103,7 +104,8 @@ W poniższym przykładzie założono, że rozszerzenie jest zagnieżdżona w obr
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverWindows `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.2 `
   --settings '{ `
   }'
 ```
@@ -164,7 +166,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Operacja zakończona powodzeniem |
 | 1 | Operacja zakończona powodzeniem. Wymagany jest ponowny rozruch. |
-| 4, 10 | Limit czasu operacji. | Ponów próbę wykonania operacji.
+| 100 | Operacja nie obsługiwany lub nie można ukończyć. | Możliwe przyczyny: nieobsługiwana wersja programu PowerShell rozmiar maszyny Wirtualnej nie jest maszyn wirtualnych serii N niepowodzenia pobierania danych. Sprawdź pliki dziennika, aby ustalić przyczynę błędu. |
+| 240, 840 operacji | Limit czasu operacji. | Ponów próbę wykonania operacji. |
 | -1 | Wystąpił wyjątek. | Sprawdź pliki dziennika, aby ustalić przyczynę wystąpienia wyjątku. |
 | -5 x | Operacja została przerwana ze względu na oczekujące na ponowny rozruch. | Uruchom ponownie maszynę Wirtualną. Instalacja będzie kontynuowana po ponownym uruchomieniu. Odinstaluj powinno zostać uruchomione ręcznie. |
 

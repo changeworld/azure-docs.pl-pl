@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 7c6bade68e6190ec52cbc136c057906be6d9d37c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 6a375da3c97790bd6a7a6fa505de82b2fc298385
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634817"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059261"
 ---
 # <a name="search-queries-in-log-analytics"></a>Zapytania wyszukiwania w usłudze Log Analytics
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz więcej samouczków w [lokacji języka zapytań usługi Log Analytics](http://http://docs.loganalytics.io)
+- Zobacz więcej samouczków w [lokacji języka zapytań usługi Log Analytics](https://docs.loganalytics.io)

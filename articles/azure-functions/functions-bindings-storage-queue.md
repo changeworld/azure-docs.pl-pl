@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 04502e80cea096ce384f97559bc7bad95ee2bcd8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e034d6c57c619ea74003f531d3309f7da17210b0
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344103"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061037"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -54,6 +54,7 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#trigger---c-example)
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---Java-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -166,6 +167,22 @@ module.exports = function (context) {
 ```
 
 [Użycia](#trigger---usage) sekcji opisano `myQueueItem`, który jest nazwany przez `name` właściwość function.json.  [Komunikatu sekcji metadanych](#trigger---message-metadata) wyjaśniono wszystkie zmienne, wyświetlane.
+
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+
+W poniższym przykładzie Java pokazano wyzwalacz kolejki magazynu funkcji, które rejestruje wyzwalane komunikat umieszczony w kolejce `myqueuename`.
+ 
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
 
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
  
@@ -299,6 +316,7 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#output---c-example)
 * [Skryptu C# (csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
@@ -428,6 +446,25 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
+
+ Poniższy przykład przedstawia funkcję języka Java, która tworzy komunikatu w kolejce dla po wyzwoleniu przez żądanie HTTP.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+ ```
+
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@QueueOutput` adnotacji w parametrach, którego wartość będzie zapisany do usługi Queue storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
+
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
  

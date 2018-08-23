@@ -1,95 +1,95 @@
 ---
-title: Zarządzanie profilami wersji interfejsu API w stosie Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat profilów wersji interfejsu API Azure stosu.
+title: Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Zapoznaj się z profilami wersji interfejsu API w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604441"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055803"
 ---
-# <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API Azure stosu
+# <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Profile interfejsu API Określ dostawcy zasobów platformy Azure i wersja interfejsu API Azure REST punktów końcowych. Można tworzyć niestandardowe klientów w różnych językach przy użyciu interfejsu API profilów. Każdy klient używa profil interfejsu API można skontaktować się z dostawcy zasobów poprawne i wersja interfejsu API Azure stosu.
+Profile interfejsu API Określ dostawca zasobów platformy Azure i wersja interfejsu API dla punkty końcowe REST platformy Azure. Można tworzyć niestandardowych klientów w różnych językach, przy użyciu profilów interfejsu API. Każdy klient korzysta z profilu usługi interfejsu API do kontaktowania się z dostawcy zasobu jest prawidłowy i wersja interfejsu API dla usługi Azure Stack.
 
-Możesz utworzyć aplikację do pracy z dostawców zasobów platformy Azure, bez konieczności przystąpić dokładnie wersji każdego z dostawców zasobów interfejsu API jest zgodny z stosu Azure. Po prostu Dopasuj aplikacji do profilu; zestaw SDK umożliwia przywrócenie do prawidłowej wersji interfejsu API.
+Możesz utworzyć aplikację do pracy z dostawcami zasobów platformy Azure bez konieczności sortowania się dokładnie wersję każdy dostawca zasobów interfejsu API jest zgodna z usługą Azure Stack. Wyrównaj tylko aplikacji z profilem; zestaw SDK powraca do poprawnej wersji interfejsu API.
 
 Ten temat ułatwia:
 
- - Zrozumienie profile interfejsu API Azure stosu.
- - Dowiedz się, jak można użyć interfejsu API profile do opracowywania rozwiązań.
- - Zobacz, gdzie można znaleźć wskazówki dotyczące kodu.
+ - Dowiedz się, profilami interfejsu API dla usługi Azure Stack.
+ - Dowiedz się, jak można użyć profilami interfejsu API do tworzenia rozwiązań usługi.
+ - Zobacz, gdzie można znaleźć ze wskazówek specyficznych dla kodu.
 
-## <a name="summary-of-api-profiles"></a>Podsumowanie profilów interfejsu API
+## <a name="summary-of-api-profiles"></a>Podsumowanie profilami interfejsu API
 
-- Profile interfejsu API są używane do reprezentowania zestaw dostawców zasobów platformy Azure i ich wersje interfejsu API.
-- Profile interfejsu API zostały utworzone do tworzenia szablonów w wielu chmury Azure. Profile są przeznaczone do spełnia potrzeby interfejs zgodny i stabilna.
+- Profile interfejsu API są używane do reprezentowania zestawu dostawcy zasobów platformy Azure i ich wersje interfejsu API.
+- Profile interfejsu API zostały utworzone w celu utworzenia szablonów dla wielu chmur platformy Azure. Profile są zaprojektowanych do spełniania Twoje potrzeby zgodne i stabilnych interfejsu.
 - Profile są wydawane cztery razy w roku.
 - Używane są trzy profile konwencji nazewnictwa:
     - **latest**  
-        Zawiera najnowsze wersje interfejsu API wydane w ramach globalnego Azure.
+        Zawiera najnowsze wersje interfejsu API, wydanej w globalnej platformy Azure.
     - **yyyy-mm-dd-hybrid**  
-    Wydawane w okresach organizowanych, to wydanie koncentruje się na spójność i stabilność przez wiele chmur. Optymalne zgodności stosu Azure jest przeznaczony dla tego profilu.
-    - **rrrr mm-dd profilu** znajduje się pomiędzy optymalną stabilności i najnowszych funkcji.
+    Wydane w erze kwartalna, ta wersja koncentruje się na spójność i stabilność między wieloma chmurami. Ten profil jest przeznaczony dla optymalnej zgodności usługi Azure Stack.
+    - **rrrr mm-dd-profile** znajduje się pomiędzy optymalne stabilności i najnowszych funkcji.
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Profile interfejsu API platformy Azure i zgodności Azure stosu
+### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Profilami interfejsu API platformy Azure i zgodności usługi Azure Stack
 
-Najnowsze profile interfejsu API Azure nie są zgodne z stosu Azure. Można użyć następujących konwencji nazewnictwa do identyfikowania profile dla rozwiązań stosu Azure.
+Najnowsze profile interfejsu API platformy Azure nie są zgodne z usługą Azure Stack. Można użyć następujących konwencji nazewnictwa do identyfikowania profile dla rozwiązań usługi Azure Stack.
 
 **najnowsze**  
-Ten profil jest najbardziej aktualne wersje interfejsu API w Azure globalne, które nie będą działać w stosie Azure. **Najnowsze** ma największą liczbę zmian, które psuły. Profil umieszcza Odłóż stabilności i zgodności z innych chmur. Jeśli użytkownik próbuje użyć najbardziej aktualne wersje interfejsu API, **najnowsze** jest profil, należy użyć.
+Ten profil jest najbardziej aktualne wersje interfejsu API w globalnej platformy Azure, której nie będzie działać w usłudze Azure Stack. **Najnowsze** ma największą liczbę przełomowe zmiany. Profil, który umieszcza specjalnie stabilności i zgodności z innych chmur. Jeśli próbujesz użyć najbardziej aktualne wersje interfejsu API **najnowsze** jest profil, należy użyć.
 
-**Rrrr mm-dd hybrydowego**  
-Ten profil jest zwalniany marca i września co roku. Ten profil ma optymalną stabilności i zgodności z różnych chmury. **Rrrr mm-dd hybrydowego** zaprojektowano pod kątem globalne Azure i stosu Azure. Wersje interfejsu API Azure wymienione w tym profilu będą takie same jak te, które są wyświetlane na stosie Azure. Tworzenie kodu dla hybrydowych rozwiązań w chmurze, można użyć tego profilu.
+**Rrrr mm-dd hybrydowe**  
+Ten profil jest zwalniany marca i września co roku. Ten profil jest optymalne stabilności i zgodności z różnych chmur. **Rrrr mm-dd hybrydowego** zaprojektowano pod kątem globalnej platformy Azure i usługi Azure Stack. Wersje interfejsu API platformy Azure wymienionych w tym profilu będą takie same jak te, które są wyświetlane w usłudze Azure Stack. Ten profil umożliwia opracowywanie kodu dla rozwiązań w chmurze hybrydowej.
 
-**rrrr mm-dd profilu**  
-Ten profil jest wydane dla globalnych Azure w czerwcu i grudnia. Ten profil nie będzie działać względem stosu Azure; Zazwyczaj będzie wiele zmian podziału. Mimo że znajduje się pomiędzy optymalną stabilności i najnowszych funkcji, to różnica między **najnowsze** i ten profil jest to, że **najnowsze** zawsze składają się z najnowszej wersji interfejsu API, niezależnie od tego, kiedy interfejsu API została wydana. Na przykład, jeśli nowa wersja interfejsu API jest tworzony dla interfejsu API obliczeniowe jutro, ta wersja interfejsu API będzie wyświetlane w w **najnowsze**, ale nie **rrrr mm-dd profilu** ponieważ istnieje już w tym profilu.  **rrrr mm-dd profilu** obejmuje najnowsze wersje wydane przed czerwca lub przed grudnia.
+**rrrr mm-dd-profile**  
+Ten profil jest zwalniany globalnej platformy Azure w czerwcu i grudnia. Ten profil nie będzie działać względem usługi Azure Stack; Zazwyczaj będzie istnieć wiele przełomowych zmianach. Mimo że znajduje się pomiędzy optymalne stabilności i najnowszych funkcji, różnica między **najnowsze** i ten profil jest fakt, że **najnowsze** zawsze składają się z najnowszej wersji interfejsu API, niezależnie od tego, kiedy interfejsu API został wydany. Na przykład, jeśli nowa wersja interfejsu API jest tworzona dla interfejsu API obliczenia jutro, ta wersja interfejsu API znajdzie się w **najnowsze**, ale nie w **rrrr mm-dd-profile** ponieważ istnieje już profil.  **rrrr mm-dd-profile** obejmuje najbardziej aktualne wersje wydane przed czerwca lub przed grudnia.
 
-## <a name="azure-resource-manager-api-profiles"></a>Profile interfejs API Menedżera zasobów Azure
+## <a name="azure-resource-manager-api-profiles"></a>Usługa Azure profilami interfejsu API usługi Resource Manager
 
-Azure stosu nie używać najnowszej wersji wersji interfejsu API w globalnej Azure. Podczas tworzenia rozwiązania, należy znaleźć wersji interfejsu API dla każdego dostawcy zasobów platformy Azure zgodnego z stosu Azure.
+Usługa Azure Stack nie używa najnowszą wersję wersji interfejsu API w globalnej platformy Azure. Podczas tworzenia rozwiązania, należy znaleźć wersję interfejsu API dla każdego dostawcy zasobów platformy Azure, która jest zgodna z usługą Azure Stack.
 
-Zamiast niż badania każdy dostawca zasobów i obsługiwane przez stos Azure wersji, można użyć profilu interfejsu API. Profil określa zestaw dostawców zasobów i wersje interfejsu API. Zestaw SDK lub skompilowane przy użyciu zestawu SDK narzędzia zostaną przywrócone do wersji interfejsu api docelowej określona w profilu. Przy użyciu profilów interfejsu API można określić wersji profilu, która ma zastosowanie do całego szablonu, a następnie w czasie wykonywania, usługi Azure Resource Manager wybierze właściwej wersji zasobu.
+Raczej niż badania, każdy dostawca zasobów i określonych wersji obsługiwanych przez usługę Azure Stack, możesz użyć profilu interfejsu API. Profil określa zestaw dostawców zasobów i wersje interfejsów API. Zestaw SDK lub narzędzia za pomocą zestawu SDK, zostaną przywrócone do wersji interfejsu api docelowego określonego w profilu. Przy użyciu profilów interfejsu API możesz określić wersję profilu, który ma zastosowanie do całego szablonu, a następnie w czasie wykonywania, usługi Azure Resource Manager wybierze prawidłową wersję zasobu.
 
-Interfejs API profile pracować z narzędziami, które używają usługi Azure Resource Manager, takich jak programu PowerShell, interfejsu wiersza polecenia Azure, kod w zestawie SDK i programu Microsoft Visual Studio. Profile można użyć narzędzia i zestawy SDK można odczytać wersji modułów i biblioteki do uwzględnienia podczas tworzenia aplikacji.
+Profile interfejsu API Pracuj z narzędziami, które używają usługi Azure Resource Manager, takich jak program PowerShell, interfejsu wiersza polecenia platformy Azure, kodu podanego w zestaw SDK oraz programu Microsoft Visual Studio. Narzędzia i zestawy SDK Profile umożliwiają odczytu wersję moduły i biblioteki do uwzględnienia podczas tworzenia aplikacji.
 
-Na przykład użyj programu PowerShell do utworzenia magazynu konta przy użyciu **Microsoft.Storage** dostawcy zasobów, która obsługuje interfejs api-version 2016-03-30 i maszyny Wirtualnej za pomocą dostawcy zasobów Microsoft.Compute z interfejsu api-version 2015-12-01 , należy wyszukać obsługujący moduł PowerShell 2016-03-30 dla magazynu i który moduł obsługuje 2015-02-01 obliczania i zainstaluj je. Zamiast tego można użyć profilu. Użyj polecenia cmdlet ** instalacji profilu * profilename *** i programu PowerShell ładuje właściwej wersji modułów.
+Na przykład użyj programu PowerShell do utworzenia magazynu konta przy użyciu **Microsoft.Storage** dostawcy zasobów, który obsługuje parametru api-version 2016-03-30, jak i maszyny Wirtualnej za pomocą dostawcy zasobów Microsoft.Compute przy użyciu interfejsu api w wersji 2015-12-01 , należy wyszukać obsługujący modułu programu PowerShell 2016-03-30 dla magazynu i modułu, którego obsługuje 2015-02-01, zasobów obliczeniowych i zainstaluj je. Zamiast tego można użyć profilu. Użyj polecenia cmdlet ** Zainstaluj profil * profilename *** programu PowerShell i ładuje właściwej wersji modułów.
 
-Podobnie podczas tworzenia aplikacji opartych na języku Python za pomocą zestawu SDK Python, można określić profil. Zestaw SDK ładuje prawo modułów dla dostawców zasobów, określonych w skrypcie.
+Podobnie korzystając z zestawu SDK języka Python do tworzenia aplikacji opartych na języku Python, można określić profil. Zestaw SDK ładuje odpowiednie moduły dla dostawców zasobów, które zostały określone w skrypcie.
 
-Deweloperzy mogą skupić się na zapisywanie rozwiązania. Zamiast badanie, której wersji interfejsu api, dostawca zasobów i które chmurze współpracuje ze sobą, Użyj profilu i dowiedzieć się, że kod będzie działać we wszystkich chmur, które obsługują tego profilu.
+Deweloperzy mogą skoncentrować się na pisaniu rozwiązania. Zamiast badanie, które wersje interfejsu api, dostawcy zasobów i współpracują ze sobą, jaka chmura, Użyj profilu i dowiedzieć się, że Twój kod będzie działać we wszystkich chmur, które obsługują ten profil.
 
-## <a name="api-profile-code-samples"></a>Przykłady kodu interfejsu API profilu
+## <a name="api-profile-code-samples"></a>Przykłady kodu profilu interfejsu API
 
-Przykłady kodu, aby pomóc w zintegrowaniu rozwiązania w języku preferowanym stosu Azure przy użyciu profilów można znaleźć. Obecnie wskazówki i przykłady można znaleźć w następujących językach:
+Można znaleźć przykłady kodu, aby pomóc w zintegrowaniu rozwiązania przy użyciu preferowanego języka dzięki usłudze Azure Stack przy użyciu profilów. Obecnie wskazówki i przykłady można znaleźć w następujących językach:
 
 - **Program PowerShell**  
-Można użyć **AzureRM.Bootstrapper** modułu dostępne za pośrednictwem galerii programu PowerShell, można pobrać poleceń cmdlet programu PowerShell wymaganych do pracy z profilami wersji interfejsu API. Aby uzyskać informacje, zobacz [profile w wersji Użyj interfejsu API środowiska PowerShell](azure-stack-version-profiles-powershell.md).
+Możesz użyć **AzureRM.Bootstrapper** modułu dostępnych za pośrednictwem galerii programu PowerShell, aby uzyskać polecenia cmdlet programu PowerShell, wymagane do pracy z profilami wersji interfejsu API. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API środowiska PowerShell](azure-stack-version-profiles-powershell.md).
 - **Interfejs wiersza polecenia platformy Azure 2.0**  
-Można aktualizować konfiguracji środowiska, aby użyć określonego profilu wersji interfejsu API Azure stosu. Aby uzyskać informacje, zobacz [wersji profilów Użyj interfejsu API Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+Można zaktualizować konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby uzyskać informacje, zobacz [korzystanie z interfejsu API w wersji profilów dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
-W zestawie SDK Przejdź profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnych usług. Profile są dostępne w obszarze Profile / ścieżki z ich wersji w **RRRR-MM-DD** format. Aby uzyskać informacje, zobacz [Użyj interfejsu API w wersji profilów dla Przejdź](azure-stack-version-profiles-go.md).
+W zestawie SDK Przejdź profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnymi usługami. Profile są dostępne w obszarze Profile / ścieżki mają wersję w **RRRR-MM-DD** formatu. Aby uzyskać informacje, zobacz [korzystanie z interfejsu API w wersji profilów dla języka GO](azure-stack-version-profiles-go.md).
 - **Ruby**  
-Ruby zestawu SDK dla usługi Azure stosu Resource Manager udostępnia narzędzia umożliwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu w języku Ruby. Aby uzyskać informacje, zobacz [profile w wersji interfejsu API używany z Ruby](azure-stack-version-profiles-ruby.md)
+Ruby SDK dla usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu przy użyciu języka Ruby. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API za pomocą języka Ruby](azure-stack-version-profiles-ruby.md)
 - **Python**  
-- Zestaw SDK Python obsługuje profile w wersji interfejsu API pod kątem platformy inną chmurę, na przykład stosu Azure i globalnych Azure. Można użyć interfejsu API profile tworzenia rozwiązań chmur hybrydowych. Aby uzyskać informacje, zobacz [Użyj interfejsu API w wersji profile z użyciem języka Python](azure-stack-version-profiles-python.md)
+- Zestaw SDK języka Python obsługuje profilami wersji interfejsu API pod kątem platform inną chmurę, takich jak Azure Stack i globalnej platformy Azure. Można używać profilów interfejsu API w tworzeniu rozwiązań dla chmury hybrydowej. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API za pomocą języka Python](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalowanie programu PowerShell dla usługi Azure Stack)
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md)
 * [Szczegółowe informacje o wersji interfejsu API dostawcy zasobów obsługiwanych przez profile](azure-stack-profiles-azure-resource-manager-versions.md).

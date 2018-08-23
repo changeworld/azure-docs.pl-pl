@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597157"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059688"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -99,12 +99,12 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 **Pytanie: Moja użytkownicy nie mogą wyszukiwać drukarki z usługi Azure AD urządzeń w miejscu pracy. Jak włączyć drukowanie z usługi Azure AD urządzeń w miejscu pracy?**
 
-**Odp.:** wdrażania drukarek dla usługi Azure AD urządzeń w miejscu pracy, zobacz [drukowania chmury hybrydowej](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Oparte na chmurze usługi drukowania nie jest obecnie dostępna. 
+**Odp.:** wdrażania drukarek dla usługi Azure AD urządzeń w miejscu pracy, zobacz [drukowania chmury hybrydowej](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Oparte na chmurze usługi drukowania nie jest obecnie dostępna. 
 
 ---
 
 **P: jak podłączyć do zdalnej usługi Azure AD przyłączone urządzenie? ** 
- **A:** można znaleźć w artykule https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc Aby uzyskać szczegółowe informacje.
+ **A:** można znaleźć w artykule https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc Aby uzyskać szczegółowe informacje.
 
 ---
 

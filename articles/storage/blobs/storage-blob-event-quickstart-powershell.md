@@ -8,12 +8,12 @@ ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 26e80f166e1add5cebb837c1c05e45f25ff2d086
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 502f378bd1eddc0a104438037dce50bafd508ad9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262756"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056128"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Kierowanie zdarzeń usługi Blob storage do niestandardowego internetowego punktu końcowego przy użyciu programu PowerShell
 
@@ -36,9 +36,6 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureR
 ```powershell
 Connect-AzureRmAccount
 ```
-
-> [!NOTE]
-> Dostępność zdarzeń magazynu jest powiązana z [dostępnością](../../event-grid/overview.md) usługi Event Grid. Będą one dostępne w innych regionach, w których będzie dostępna usługa Event Grid.
 
 W tym przykładzie użyto **westus2** i przechowuje zaznaczenie w zmiennej, do wykorzystania w całej.
 

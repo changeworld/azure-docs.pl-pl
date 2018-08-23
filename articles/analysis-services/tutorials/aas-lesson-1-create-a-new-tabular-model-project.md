@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441505"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058511"
 ---
 # <a name="create-a-tabular-model-project"></a>Tworzenie projektu modelu tabelarycznego
 
-W tej lekcji utworzysz nowy projekt modelu tabelarycznego przy użyciu programu Visual Studio z narzędziami SQL Server Data Tools (SSDT) na poziomie zgodności 1400. Po utworzeniu nowego projektu będzie można rozpocząć dodawanie danych i tworzenie modelu. W tej lekcji zostanie również pokrótce omówione środowisko tworzenia modelu tabelarycznego w programie Visual Studio.  
+W tej lekcji używasz programu Visual Studio z projektów usługi Analysis Services lub SQL Server Data Tools (SSDT) do tworzenia nowego projektu modelu tabelarycznego na poziomie zgodności 1400. Po utworzeniu nowego projektu będzie można rozpocząć dodawanie danych i tworzenie modelu. W tej lekcji zostanie również pokrótce omówione środowisko tworzenia modelu tabelarycznego w programie Visual Studio.  
   
 Szacowany czas trwania lekcji: **10 minut**  
   
@@ -49,7 +49,7 @@ Ten temat jest pierwszą lekcją samouczka poświęconego tworzeniu modelu tabel
     Jeśli nie widzisz pozycji SQL Server 2017/Azure Analysis Services (1400) w polu listy Poziom zgodności, nie używasz najnowszej wersji programu SQL Server Data Tools. Aby uzyskać najnowszą wersję, zobacz temat [Instalowanie programu SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Opis środowiska tworzenia modelu tabelarycznego programu SSDT  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>Informacje o środowisku tworzenia modelu tabelarycznego programu Visual Studio  
 Po utworzeniu nowego projektu modelu tabelarycznego możemy się przyjrzeć środowisku tworzenia modelu tabelarycznego w programie Visual Studio.  
   
 Utworzony projekt zostanie otwarty w programie Visual Studio. W **Eksploratorze modeli tabelarycznych** po prawej stronie jest wyświetlany widok drzewa obiektów modelu. Ponieważ dane nie zostały jeszcze zaimportowane, foldery są puste. Możesz kliknąć prawym przyciskiem myszy folder obiektu, aby wykonać akcje, podobnie jak pasek menu. W kolejnych krokach tego samouczka będziesz używać Eksploratora modeli tabelarycznych do nawigowania po różnych obiektach w projekcie modelu.
@@ -68,7 +68,7 @@ Po utworzeniu projektu modelu niektóre właściwości modelu są ustawiane auto
 
 W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt **AW Internet Sales** (Sprzedaż internetowa AW), a następnie kliknij przycisk **Właściwości**. Zostanie wyświetlone okno dialogowe **Strony właściwości AW Internet Sales**. Niektóre z tych właściwości ustawisz później podczas wdrażania modelu.  
   
-Po zainstalowaniu programu SSDT w środowisku Visual Studio dodawanych jest kilka nowych pozycji menu. Kliknij menu **Model**. Z poziomu tego menu możesz importować dane, odświeżać dane obszaru roboczego, przeglądać model w programie Excel, tworzyć perspektywy i role, wybierać widok modelu i ustawiać opcje obliczania. Kliknij menu **Tabela**. Z poziomu tego menu możesz tworzyć relacje i zarządzać nimi, określać ustawienia tabeli dat, tworzyć partycje i edytować właściwości tabeli. Po kliknięciu menu **Kolumna** możesz dodawać i usuwać kolumny w tabeli, blokować kolumny i określać kolejność sortowania. Program SSDT powoduje też dodanie kilku przycisków do paska. Najbardziej przydatna jest funkcja autosumowania, która pozwala utworzyć standardową miarę agregacji dla wybranej kolumny. Inne przyciski paska narzędzi zapewniają szybki dostęp do często używanych funkcji i poleceń.  
+Po zainstalowaniu projektów usług Analysis Services lub program SSDT kilka nowych pozycji menu zostały dodane do środowiska Visual Studio. Kliknij menu **Model**. Z poziomu tego menu możesz importować dane, odświeżać dane obszaru roboczego, przeglądać model w programie Excel, tworzyć perspektywy i role, wybierać widok modelu i ustawiać opcje obliczania. Kliknij menu **Tabela**. Z poziomu tego menu możesz tworzyć relacje i zarządzać nimi, określać ustawienia tabeli dat, tworzyć partycje i edytować właściwości tabeli. Po kliknięciu menu **Kolumna** możesz dodawać i usuwać kolumny w tabeli, blokować kolumny i określać kolejność sortowania. Visual Studio dodaje również niektóre przyciski do paska. Najbardziej przydatna jest funkcja autosumowania, która pozwala utworzyć standardową miarę agregacji dla wybranej kolumny. Inne przyciski paska narzędzi zapewniają szybki dostęp do często używanych funkcji i poleceń.  
   
 Zapoznaj się z oknami dialogowymi i umiejscowieniem różnych funkcji związanych z tworzeniem modeli tabelarycznych. Chociaż niektóre elementy nie są jeszcze aktywne, pozwoli Ci to zorientować się w środowisku tworzenia modelu tabelarycznego.  
   

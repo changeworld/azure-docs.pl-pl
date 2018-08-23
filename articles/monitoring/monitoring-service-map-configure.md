@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 0140c34a14f67064eaa28df65360cee6e92ff31a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: faf4e06b714714fce206ef8227a934df8c290447
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618458"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055994"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -87,19 +87,12 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 | 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 
-### <a name="red-hat-linux-5"></a>Red Hat Linux 5
-
-| Wersja systemu operacyjnego | Wersja jądra |
-|:--|:--|
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
-
 ### <a name="ubuntu-server"></a>Ubuntu Server
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
+| Ubuntu 18.04 | jądra 4.15. * |
+| Systemu Ubuntu 16.04.3 | jądra 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
@@ -119,13 +112,12 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
-### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
+## <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Wersja systemu operacyjnego | Wersja jądra
 |:--|:--|
-| 11 SP2 | 3.0.101-0.7 |
-| 11 SP3 | 3.0.101-0.47 |
-| 11 SP4 | 3.0.101-65 |
+|12 Z DODATKIEM SP2 | 4.4. * |
+|12 Z DODATKIEM SP3 | 4.4. * |
 
 ## <a name="dependency-agent-downloads"></a>Pobieranie agenta zależności
 
@@ -264,7 +256,7 @@ Agent zależności jest zainstalowany na komputerach z systemem Linux z `Install
 
 Aby zainstalować agenta zależności na każdy komputer z systemem Linux, wykonaj następujące kroki:
 
-1.  Zainstaluj agenta pakietu OMS, po jednej z metod opisanych w [zbierania danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Zainstaluj agenta usługi Log Analytics, zgodnie z jedną z metod opisanych w [zbierania danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics](../log-analytics/log-analytics-concept-hybrid.md).
 2.  Zainstaluj agenta zależności systemu Linux jako użytkownik główny, uruchamiając następujące polecenie:
     
     `sh InstallDependencyAgent-Linux64.bin`
@@ -394,9 +386,9 @@ Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie wid
 
 * To Twoje wysyłania dziennika serwera i danych o wydajności do usługi Log Analytics? Przejdź do wyszukiwania w dziennikach i uruchom następujące zapytanie dla danego komputera: 
 
-        * Computer="<your computer name here>" | measure count() by Type
-        
-  Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, agenta pakietu OMS jest prawidłowo i komunikacji z usługą Log Analytics. Jeśli nie, sprawdź agenta pakietu OMS na serwerze: [Rozwiązywanie problemów z pakietu OMS Agent for Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [OMS Agent for Linux Rozwiązywanie problemów z](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+        Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+
+Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. Jeśli nie, sprawdź agenta na serwerze: [agenta usługi Log Analytics na potrzeby rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../log-analytics/log-analytics-agent-linux-support.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w rozwiązania Service Map, ale żadne procesy nie ma
 Jeśli zostanie wyświetlony na mapie usługi serwera, ale nie zawiera on procesu lub połączenia danych, który wskazuje agenta zależności jest zainstalowana i uruchomiona, że sterownik jądra nie została załadowana. 

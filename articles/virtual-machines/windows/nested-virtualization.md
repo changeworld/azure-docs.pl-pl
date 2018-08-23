@@ -11,22 +11,24 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0d47b89a468aade8cec51ec04709ed99bfd4684c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857948"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060718"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć wirtualizacji zagnieżdżonej na Maszynie wirtualnej platformy Azure
 
-Wirtualizacja zagnieżdżona jest obsługiwana w serii Dv3 i Ev3 maszyn wirtualnych platformy Azure. Ta funkcja zapewnia dużą elastyczność w obsłudze scenariuszy, takich jak środowiska programowania, testowania, szkolenia i demonstracyjnych. 
+Wirtualizacja zagnieżdżona jest obsługiwana w kilku rodzin maszyn wirtualnych platformy Azure. Ta funkcja zapewnia dużą elastyczność w obsłudze scenariuszy, takich jak środowiska programowania, testowania, szkolenia i demonstracyjnych.   
 
-Wszystkie Dv3 i Ev3 maszyn wirtualnych z serii obsługuje zagnieżdżone wirtualizacji bez konieczności dodano czynności konfiguracyjnych.  Tym artykule omówiono włączanie funkcji Hyper-V na Maszynie wirtualnej platformy Azure i konfigurowanie połączenia internetowego z tej maszyny wirtualnej gościa.
+Tym artykule omówiono włączanie funkcji Hyper-V na Maszynie wirtualnej platformy Azure i konfigurowanie połączenia internetowego z tej maszyny wirtualnej gościa.
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Tworzenie maszyny Wirtualnej platformy Azure serii Dv3 i Ev3
+## <a name="create-a-nesting-capable-azure-vm"></a>Tworzenie zagnieżdżenia zdolne do maszyny Wirtualnej platformy Azure
 
-Utwórz nowy systemu Windows Server 2016 maszyny Wirtualnej platformy Azure i wybierz rozmiar z serii Dv3 i Ev3. Upewnij się, że zdecydujesz o rozmiarze wystarczająco duży, do obsługi wymagań maszyny wirtualnej gościa. W tym przykładzie używamy D3_v3 rozmiar maszyny Wirtualnej platformy Azure. 
+Utwórz nowy systemu Windows Server 2016 maszyny Wirtualnej platformy Azure.  Do szybkiego odniesienia wszystkie maszyny wirtualne w wersji 3 obsługuje wirtualizacji zagnieżdżonej. Aby uzyskać pełną listę maszyn wirtualnych o rozmiarach zagnieżdżanie tej pomocy technicznej, zapoznaj się z [artykułu jednostek obliczeniowych Azure](acu.md).
+
+Pamiętaj wybrać rozmiar maszyny Wirtualnej wystarczająco duży, do obsługi wymagań maszyny wirtualnej gościa. W tym przykładzie używamy D3_v3 rozmiar maszyny Wirtualnej platformy Azure. 
 
 Możesz wyświetlić dostępności regionalnej maszyn wirtualnych serii Dv3 i Ev3 [tutaj](https://azure.microsoft.com/regions/services/).
 

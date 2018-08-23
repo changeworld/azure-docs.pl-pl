@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie — przewodnik dla operatorów IT na platformie Azure | Dokumentacja firmy Microsoft
-description: Przewodnik Wprowadzenie dla operatorów IT na platformie Azure
+description: Pobierz Przewodnik Wprowadzenie dla operatorów IT na platformie Azure
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 06/12/2017
+ms.date: 08/21/2018
 ms.author: mibender
-ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072338"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056533"
 ---
-# <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Wprowadzenie do chmur obliczeniowych i Microsoft Azure
+# <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
 Ten przewodnik opisuje podstawowe pojęcia związane z wdrażaniem i zarządzaniem infrastrukturą Microsoft Azure. Jeśli dopiero zaczynasz do chmury obliczeniowej lub na platformie Azure, ten przewodnik pomaga szybko rozpocząć pracę z założenia, wdrożenia oraz szczegóły dotyczące zarządzania. Wiele sekcji, w tym przewodniku omówiono operacji takich jak wdrażanie maszyny wirtualnej i podajemy link do pogłębionych szczegółów technicznych.
 
@@ -53,27 +53,33 @@ Dla małych firm platforma Azure zezwoli dla punktu wejścia niskich kosztach z 
 
 Aby uzyskać więcej informacji na temat dostępnych regionów platformy Azure, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-is-classified-into-three-categories-saas-paas-and-iaas"></a>Chmura obliczeniowa jest przydzielane do trzech kategorii: rozwiązania SaaS, PaaS i IaaS.
+### <a name="cloud-computing-model"></a>Model przetwarzania w chmurze
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Oprogramowanie jako usługa
-
-SaaS to oprogramowanie, które centralne hostowaną i zarządzaną. Zazwyczaj jest on oparty na architektury wielodostępnej — jednej wersji aplikacji jest używany dla wszystkich klientów. Może być skalowana do wielu wystąpień, aby zapewnić najlepszą wydajność we wszystkich lokalizacjach. Oprogramowanie SaaS zwykle jest licencjonowane w ramach miesięcznej lub rocznej subskrypcji.
-
-Microsoft Office 365 jest dobrym przykładem SaaS oferty. Subskrybenci zapłacić opłatę, miesięcznej lub rocznej subskrypcji i staną się Microsoft Exchange, Microsoft OneDrive i pozostałą część pakietu Microsoft Office jako usługa. Subskrybenci uzyskują zawsze najnowszej wersji i Exchange server jest zarządzana za Ciebie. W porównaniu do instalowania i uaktualniania pakietu Office, co roku, jest to mniej kosztowne i wymaga mniej wysiłku.
-
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako usługa
-
-Dzięki temu możesz wdrożyć aplikację w środowisku, które zapewnia dostawcy usług chmury. Dostawca wykonuje całą zarządzania infrastrukturą, dzięki czemu możesz skupić się na tworzeniu aplikacji.
-
-Platforma Azure udostępnia kilka PaaS obliczeniowe ofert, łącznie z funkcji Web Apps w usłudze Azure App Service i Azure Cloud Services (role sieć web i proces roboczy). W obu przypadkach deweloperzy mają wiele sposobów, aby wdrożyć swoją aplikację bez znajomości bolt i nuts, które go obsługują. Deweloperzy nie muszą tworzyć maszyny wirtualne (VM), użyj protokołu RDP (Remote Desktop), aby zalogować się do każdego z nich lub zainstalować aplikację. One po prostu kliknij przycisk (lub Zamknij, aby ją) i narzędzi dostarczanych przez firmę Microsoft, aprowizowanie maszyn wirtualnych i wdrożyć i zainstalować aplikację na nich.
+Platforma Azure używa chmurowego przetwarzania danych modelu na podstawie kategorii usługi udostępniane klientom. Trzy kategorie usług obejmują infrastruktury jako usługi (IaaS), platforma jako usługa (PaaS) i oprogramowanie jako usługa (SaaS). Dostawców udostępnić część lub całość odpowiedzialność składniki stosu obliczeń w każdej z tych kategorii. Przyjrzyjmy się każdej z kategorii dla chmury obliczeniowej.
+![Chmury obliczeniowej porównania stosu](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktura jako usługa
 
-Dostawcy chmury IaaS działa i zarządza wszystkie zasoby obliczeniowe fizycznych oraz wymaganego oprogramowania, aby włączyć wirtualizacji komputerów. Maszyny wirtualne w tych hostowanych centrach danych jest wdrażane przez klienta tej usługi. Mimo że maszyny wirtualne znajdują się w centrum danych poza siedzibą firmy, klient IaaS ma kontrolę nad Konfiguracja i zarządzanie nimi.
+Dostawcy chmury IaaS działa i zarządza wszystkie zasoby obliczeniowe fizycznych oraz wymaganego oprogramowania, aby włączyć wirtualizacji komputerów. Maszyny wirtualne w tych hostowanych centrach danych jest wdrażane przez klienta tej usługi. Mimo że maszyny wirtualne znajdują się w centrum danych poza siedzibą firmy, klient IaaS ma kontrolę konfiguracji i zarządzania, pozostawiając podstawowej infrastruktury dostawcy chmury systemu operacyjnego.
 
 System Azure zawiera kilka rozwiązań IaaS, w tym maszyny wirtualne, zestawy skalowania maszyn wirtualnych i powiązanych infrastruktury sieci. Maszyny wirtualne są popularne wybór początkowo migracji usług na platformie Azure, ponieważ umożliwia modelu migracji "metodą lift and shift". Można skonfigurować Maszynę wirtualną infrastrukturą aktualnie uruchomione usługi w centrum danych, a następnie przeprowadzić migrację oprogramowania do nowej maszyny Wirtualnej. Może być konieczne aktualizowanie konfiguracji, takie jak adresy URL do innych usług lub magazynu, ale wiele aplikacji w ten sposób można migrować.
 
 Zestawy skalowania maszyn wirtualnych są tworzone na podstawie maszyn wirtualnych platformy Azure i zapewniają łatwy sposób wdrażania klastrów identycznych maszyn wirtualnych. Zestawy skalowania maszyn wirtualnych obsługują także skalowania automatycznego, aby nowe maszyny wirtualne można wdrożyć automatycznie gdy jest to wymagane. To sprawia, że zestawy skalowania maszyn wirtualnych jest idealną platformą w klastrach hostów z wyższego poziomu mikrousług obliczeniowych, takich jak Azure Service Fabric i usługi Azure Container Service.
+
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako usługa
+
+Dzięki temu możesz wdrożyć aplikację w środowisku, które zapewnia dostawcy usług chmury. Dostawca zawiera wszystkie zarządzania infrastrukturą, dzięki czemu możesz skupić się na tworzeniu aplikacji i zarządzania danymi.
+
+Platforma Azure udostępnia kilka PaaS obliczeniowe ofert, łącznie z funkcji Web Apps w usłudze Azure App Service i Azure Cloud Services (role sieć web i proces roboczy). W obu przypadkach deweloperzy mają wiele sposobów, aby wdrożyć swoją aplikację bez znajomości bolt i nuts, które go obsługują. Deweloperzy nie muszą tworzyć maszyny wirtualne (VM), użyj protokołu RDP (Remote Desktop), aby zalogować się do każdego z nich lub zainstalować aplikację. One po prostu kliknij przycisk (lub Zamknij, aby ją) i narzędzi dostarczanych przez firmę Microsoft, aprowizowanie maszyn wirtualnych i wdrożyć i zainstalować aplikację na nich.
+
+#### <a name="saas-software-as-a-service"></a>SaaS: Oprogramowanie jako usługa
+
+SaaS to oprogramowanie, które centralne hostowaną i zarządzaną. Zazwyczaj jest on oparty na architektury wielodostępnej — jednej wersji aplikacji jest używany dla wszystkich klientów. Może być skalowana do wielu wystąpień, aby zapewnić najlepszą wydajność we wszystkich lokalizacjach. Oprogramowanie SaaS zwykle jest licencjonowane w ramach miesięcznej lub rocznej subskrypcji. Oprogramowanie SaaS zwykle jest licencjonowane w ramach miesięcznej lub rocznej subskrypcji. SaaS dostawców oprogramowania są odpowiedzialne za wszystkie składniki stosu oprogramowania, więc wszystko, czego możesz zarządzać świadczonych usług.
+
+Microsoft Office 365 jest dobrym przykładem SaaS oferty. Subskrybenci zapłacić opłatę, miesięcznej lub rocznej subskrypcji i staną się Microsoft Exchange, Microsoft OneDrive i pozostałą część pakietu Microsoft Office jako usługa. Subskrybenci uzyskują zawsze najnowszej wersji i Exchange server jest zarządzana za Ciebie. W porównaniu do instalowania i uaktualniania pakietu Office, co roku, jest to mniej kosztowne i wymaga mniej wysiłku.
+
+
+
 
 ## <a name="azure-services"></a>Usługi platformy Azure
 
@@ -175,6 +181,9 @@ Interfejs wiersza polecenia platformy Azure jest narzędziem, które służy do 
 
 **Interfejsów API REST** Azure jest oparta na zestaw interfejsów API REST, która obsługuje interfejs użytkownika witryny Azure portal. Większość tych interfejsów API REST są również obsługiwane umożliwia programowe obsługi administracyjnej i zarządzanie zasobami platformy Azure i aplikacji z dowolnego urządzenia z włączoną funkcją łączności internetowej. Aby uzyskać więcej informacji, zobacz [odwołanie do zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/index).
 
+### <a name="azure-cloud-shell"></a>Azure Cloud Shell
+
+Administratorzy mogą uzyskiwać dostęp do programu Azure PowerShell i wiersza polecenia platformy Azure za pośrednictwem przeglądarki dostępne środowisko o nazwie usługi Azure Cloud Shell. Ten interfejs interakcyjne zapewnia elastyczne narzędzia dla systemów Linux i Windows administratorzy mogą używać ich interfejsu wiersza polecenia, wyboru, Bash lub programu PowerShell. Usługa Azure Cloud Shell może być dostęp za pośrednictwem portalu, jako interfejs autonomicznej w sieci web w [shell.azure.com](https://shell.azure.com), lub z wielu innych punktów dostępu. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 ## <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
 Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Wystąpieniu konta platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Subskrypcje platformy Azure ma administrator konta, który ma pełną kontrolę nad subskrypcji i administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure przy użyciu RBAC.
@@ -355,6 +364,7 @@ Uzyskiwanie dostępu do maszyny wirtualnej z Internetu wymaga skojarzonej siecio
 
 Zarządzanie dostępem do maszyny wirtualnej za pośrednictwem publicznego adresu IP odbywa się przy użyciu zasób Sieciowej grupy zabezpieczeń sieci. Sieciowa grupa zabezpieczeń i działa jak zapora zezwala lub nie zezwala na ruch przez interfejs sieciowy lub podsieci na zestaw zdefiniowanych portów. Na przykład aby utworzyć sesję pulpitu zdalnego z Maszyną wirtualną platformy Azure, należy skonfigurować sieciowej grupy zabezpieczeń, aby zezwolić na ruch przychodzący na porcie 3389. Aby uzyskać więcej informacji, zobacz [Otwieranie portów dla maszyny Wirtualnej na platformie Azure przy użyciu witryny Azure portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
+
 Na koniec podobnie jak w przypadku zarządzania dowolnego systemu komputera, należy podać zabezpieczeń maszyny wirtualnej platformy Azure w systemie operacyjnym przy użyciu poświadczeń zabezpieczeń i zapór programowych.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -415,7 +425,7 @@ Dostępnych jest kilka opcji wdrażania konta magazynu.
 
 **Portal**
 
-Wdrażanie na koncie magazynu przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wdrożyć nowe konto magazynu do nowej lub istniejącej grupy zasobów. Po utworzeniu konta magazynu można utworzyć obiektu blob kontener lub udział plików przy użyciu portalu. Można utworzyć tabelę i programowo kolejki magazynu jednostki. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Wdrażanie na koncie magazynu przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wdrożyć nowe konto magazynu do nowej lub istniejącej grupy zasobów. Po utworzeniu konta magazynu można utworzyć obiektu blob kontener lub udział plików przy użyciu portalu. Można utworzyć tabelę i programowo kolejki magazynu jednostki. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 
 Oprócz wdrażania konta magazynu w witrynie Azure portal, można wdrożyć szablonu usługi Azure Resource Manager z poziomu portalu. To wdroży i skonfiguruje wszystkie zasoby, zgodnie z definicją w szablonie, w tym wszystkie konta magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

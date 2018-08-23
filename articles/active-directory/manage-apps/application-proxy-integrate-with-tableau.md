@@ -1,26 +1,23 @@
 ---
 title: Serwer Proxy aplikacji usługi Azure Active Directory i Tableau | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), aby zapewnić dostęp zdalny dla danego wdrożenia Tableau.  .
+description: Dowiedz się, jak użyć serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), aby zapewnić dostęp zdalny dla danego wdrożenia Tableau.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365026"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055917"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Serwer Proxy aplikacji usługi Azure Active Directory i Tableau 
 
@@ -35,19 +32,10 @@ Scenariusz, w tym artykule założono, że masz:
 - [Łącznik serwera Proxy aplikacji](application-proxy-enable.md) zainstalowane. 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>Włączanie serwera Proxy aplikacji dla firmy Tableau 
 
-Jeśli chcesz użyć serwera Proxy aplikacji dla firmy Tableau, musisz wysłać wiadomość e-mail na adres [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) można pobrać w tym scenariuszu włączone.
-W wiadomości e-mail:
+Serwer Proxy aplikacji obsługuje uwierzytelniania OAuth 2.0 przepływ przyznawania, co jest niezbędne do Tableau zapewnić prawidłowe działanie. Oznacza to, że już nie ma żadnych specjalnych czynności wymagane do włączenia tej aplikacji, niż jego konfigurowania, wykonując poniższe kroki publikowania.
 
--   Na użytek Włączanie serwera Proxy aplikacji Tableau jako podmiot
--   Uwzględnić swój identyfikator dzierżawy w treści    
-
-Otrzymasz potwierdzenie, gdy jesteś gotowy do korzystania z aplikacji. Możesz ukończyć konfiguracji podczas oczekiwania na potwierdzenie.
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>Publikuj swoje aplikacje na platformie Azure 
 

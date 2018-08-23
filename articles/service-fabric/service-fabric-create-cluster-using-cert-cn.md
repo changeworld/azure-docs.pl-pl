@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastra usługi sieć szkieletowa usług Azure przy użyciu nazwa pospolita certyfikatu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć klaster sieci szkieletowej usług za pomocą nazwa pospolita certyfikatu na podstawie szablonu.
+title: Tworzenie klastra usługi Azure Service Fabric przy użyciu nazwy pospolitej certyfikatu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć klaster usługi Service Fabric przy użyciu nazwy pospolitej certyfikatu na podstawie szablonu.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8725dd1931b120b0369d0810fa49108a00c71e8e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c4c60cccb890c883e9e57c9f146cc93aae99f224
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211069"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060324"
 ---
-# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi sieć szkieletowa usług używającej nazwa pospolita certyfikatu zamiast odcisk palca
-Nie dwa certyfikaty mogą mieć tym samym odciskiem palca, dzięki czemu Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu wspólnej nazwy certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsza. W tym artykule opisano sposób wdrażania klastra sieci szkieletowej usług, aby użyć nazwa pospolita certyfikatu zamiast odcisk palca certyfikatu.
+# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi Service Fabric, która używa nazwy pospolitej certyfikatu zamiast odcisku palca
+Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu nazwy pospolite certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.
  
-## <a name="get-a-certificate"></a>Pobieranie certyfikatu
+## <a name="get-a-certificate"></a>Uzyskaj certyfikat
 Najpierw należy uzyskać certyfikat z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Nazwa pospolita certyfikatu powinna być nazwą hosta klastra.  Na przykład "myclustername.southcentralus.cloudapp.azure.com".  
 
-Do celów testowych można pobrać certyfikatu podpisanego przez urząd certyfikacji od urzędu certyfikacji wolne lub otwarte.
+Do celów testowych można pobrać certyfikatu podpisanego przez urząd certyfikacji od urzędu certyfikacji bezpłatnej lub otwarte.
 
 > [!NOTE]
-> Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra sieci szkieletowej usług w portalu Azure, nie są obsługiwane.
+> Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra usługi Service Fabric w witrynie Azure portal nie są obsługiwane.
 
 ## <a name="upload-the-certificate-to-a-key-vault"></a>Przekaż certyfikat do magazynu kluczy
-Na platformie Azure klaster sieci szkieletowej usług jest wdrożony na zestaw skali maszyny wirtualnej.  Przekaż certyfikat do magazynu kluczy.  Podczas wdrażania klastra, certyfikat instaluje na zestaw skali maszyny wirtualnej uruchomionej na klastrze.
+Na platformie Azure klaster usługi Service Fabric jest wdrażany w zestawie skalowania maszyn wirtualnych.  Przekaż certyfikat do magazynu kluczy.  Podczas wdrażania klastra, certyfikat instaluje na zestaw skalowania maszyn wirtualnych, że klaster działa na.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -72,8 +72,8 @@ Write-Host "SourceVault              :"  $SourceVault
 Write-Host "Common Name              :"  $CommName    
 ```
 
-## <a name="download-and-update-a-sample-template"></a>Pobieranie i aktualizowanie przykładowego szablonu
-W tym artykule wykorzystano [przykład 5 węzłów klastra bezpiecznego](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) szablon i parametrów szablonu. Pobierz *azuredeploy.json* i *azuredeploy.parameters.json* plików do tego komputera.
+## <a name="download-and-update-a-sample-template"></a>Pobierz i zaktualizuj przykładowy szablon
+W tym artykule wykorzystano [przykład bezpiecznego klastra z 5 węzłami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) szablon i parametry szablonu. Pobierz *azuredeploy.json* i *azuredeploy.parameters.json* plików do tego komputera.
 
 ### <a name="update-parameters-file"></a>Aktualizowanie pliku parametrów
 Najpierw otwórz *azuredeploy.parameters.json* plik w edytorze tekstów i dodaj następującą wartość parametru:
@@ -83,7 +83,7 @@ Najpierw otwórz *azuredeploy.parameters.json* plik w edytorze tekstów i dodaj 
 },
 ```
 
-Następnie należy ustawić *certificateCommonName*, *sourceVaultValue*, i *certificateUrlValue* wartości parametrów do wartości zwracanych przez powyższy skrypt:
+Następnym etapem jest skonfigurowanie *certificateCommonName*, *sourceVaultValue*, i *certificateUrlValue* wartości parametrów do wartości zwracanych przez powyższy skrypt:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -97,7 +97,7 @@ Następnie należy ustawić *certificateCommonName*, *sourceVaultValue*, i *cert
 ```
 
 ### <a name="update-the-template-file"></a>Zaktualizuj plik szablonu
-Następnie otwórz folder *azuredeploy.json* plik w edytorze tekstów i trzy aktualizacje do obsługi nazwa pospolita certyfikatu.
+Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizacje do obsługi nazwy pospolitej certyfikatu.
 
 1. W **parametry** Dodaj *certificateCommonName* parametru:
     ```json
@@ -109,14 +109,22 @@ Następnie otwórz folder *azuredeploy.json* plik w edytorze tekstów i trzy akt
     },
     ```
 
-    Należy również rozważyć usunięcie *certificateThumbprint*, nie mogą być potrzebne.
+    Należy również rozważyć usunięcie *certificateThumbprint*, może nie będą już potrzebne.
 
 2. Ustaw wartość *sfrpApiVersion* zmienną "2018-02-01":
     ```json
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. W **Microsoft.Compute/virtualMachineScaleSets** zasobów, zaktualizuj rozszerzenie maszyny wirtualnej, aby użyć nazwy pospolitej w ustawieniach certyfikatu zamiast odcisk palca.  W **virtualMachineProfile**->**extenstionProfile**->**rozszerzenia**->**właściwości** -> **ustawienia**->**certyfikatu**, Dodaj `"commonNames": ["[parameters('certificateCommonName')]"],` i Usuń `"thumbprint": "[parameters('certificateThumbprint')]",`.
+3. W **Microsoft.Compute/virtualMachineScaleSets** zasób, zaktualizuj rozszerzenie maszyny wirtualnej do użycia nazwy pospolitej w ustawieniach certyfikatu zamiast odcisku palca.  W **virtualMachineProfile**->**extenstionProfile**->**rozszerzenia**->**właściwości** -> **ustawienia**->**certyfikatu**, Dodaj 
+    ```json
+       "commonNames": [
+        "[parameters('certificateCommonName')]"
+       ],
+    ```
+
+    i Usuń `"thumbprint": "[parameters('certificateThumbprint')]",`.
+
     ```json
     "virtualMachineProfile": {
       "extensionProfile": {
@@ -139,7 +147,9 @@ Następnie otwórz folder *azuredeploy.json* plik w edytorze tekstów i trzy akt
                 "enableParallelJobs": true,
                 "nicPrefixOverride": "[variables('subnet0Prefix')]",
                 "certificate": {
-                  "commonNames": ["[parameters('certificateCommonName')]"],
+                  "commonNames": [
+                     "[parameters('certificateCommonName')]"
+                  ],
                   "x509StoreName": "[parameters('certificateStoreValue')]"
                 }
               },
@@ -148,7 +158,7 @@ Następnie otwórz folder *azuredeploy.json* plik w edytorze tekstów i trzy akt
           },
     ```
 
-4.  W **Microsoft.ServiceFabric/clusters** zasobów, wersja aktualizacji interfejsu API, aby "2018-02-01".  Dodaj również **certificateCommonNames** ustawienie **commonNames** właściwości i Usuń **certyfikatu** ustawienie (za pomocą właściwości odcisk palca) w następującej przykład:
+4.  W **Microsoft.ServiceFabric/clusters** zasobu wersji aktualizacji interfejsu API "2018-02-01".  Również dodać **certificateCommonNames** ustawienie z **commonNames** właściwości i Usuń **certyfikatu** ustawienie (za pomocą właściwości odcisk palca), w następującej przykład:
     ```json
     {
         "apiVersion": "2018-02-01",
@@ -175,7 +185,7 @@ Następnie otwórz folder *azuredeploy.json* plik w edytorze tekstów i trzy akt
         ...
     ```
 
-## <a name="deploy-the-updated-template"></a>Wdrażanie zaktualizowany szablon
+## <a name="deploy-the-updated-template"></a>Wdrożyć zaktualizowany szablon
 Po wprowadzeniu zmian, należy ponownie wdrożyć zaktualizowany szablon.
 
 ```powershell
@@ -195,7 +205,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParame
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [klastra zabezpieczeń](service-fabric-cluster-security.md).
-* Dowiedz się, jak [przerzucania certyfikatu klastra](service-fabric-cluster-rollover-cert-cn.md)
-* [Aktualizowanie certyfikatów i zarządzania nimi klastra](service-fabric-cluster-security-update-certs-azure.md)
+* Dowiedz się, jak [Przerzucanie certyfikatów klastra](service-fabric-cluster-rollover-cert-cn.md)
+* [Aktualizowanie i zarządzanie certyfikatami klastra](service-fabric-cluster-security-update-certs-azure.md)
+* Uproszczenie zarządzania certyfikatu przez [klastra zmiana z odcisk palca certyfikatu na nazwę pospolitą](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

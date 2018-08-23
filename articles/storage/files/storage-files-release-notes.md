@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/21/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525141"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445026"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,7 +25,8 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Punkt kontrolny | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| Ogólna dostępność | 3.1 | 19 lipca 2018 r. | Obsługiwane (zalecana wersja) |
+| Pakiet zbiorczy aktualizacji z sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane (zalecana wersja) |
+| Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 r. | Obsługiwane |
 | Pakiet zbiorczy aktualizacji czerwca | 3.0.13.0 | 29 czerwca 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
 | Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
 | Pakiet zbiorczy aktualizacji kwietnia | 2.3.0.0 | 8 maja 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
@@ -39,6 +40,12 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3200"></a>Wersja agenta 3.2.0.0
+Poniższe informacje o wersji dotyczą wersji 3.2.0.0 agenta usługi Azure File Sync wydanej 15 sierpnia 2018. Te informacje są uzupełnieniem informacji o wersji 3.1.0.0 informacje o wersji.
+
+Ta wersja zawiera następujące poprawki:
+- Synchronizacji kończy się niepowodzeniem błąd braku pamięci (0x8007000e) z powodu przeciek pamięci
 
 ## <a name="agent-version-3100"></a>Wersja agenta 3.1.0.0
 Poniższe informacje o wersji dotyczą wersji 3.1.0.0 agenta usługi Azure File Sync (wydanej 19 lipca 2018 r.).
@@ -84,6 +91,7 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
 
 ### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
 - Usługa Azure File Sync nie obsługuje bezpośrednio wprowadzania zmian do udziału plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw konieczne ich odnalezienie przez zadanie wykrywania zmian usługi Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze, co 24 godziny. Ponadto zmiany wprowadzone do udziału plików platformy Azure za pośrednictwem protokołu REST nie może zaktualizować SMB godzina ostatniej modyfikacji i nie będą widoczne jako zmiany przez sync.
+- Usługa synchronizacji magazynu i/lub konta magazynu można przenieść do innej grupy zasobów lub subskrypcji. Jeśli konto magazynu zostanie przeniesiony, należy udzielić dostępu usługi hybrydowe File Sync do konta magazynu (zobacz [upewnij się, usługa Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.

@@ -1,5 +1,5 @@
 ---
-title: Debugowanie usługi w chmurze Azure lub maszyny wirtualnej w programie Visual Studio | Dokumentacja firmy Microsoft
+title: Debugowanie usługi w chmurze platformy Azure lub maszynie wirtualnej w programie Visual Studio | Dokumentacja firmy Microsoft
 description: Debugowanie usługi w chmurze lub maszyny wirtualnej w programie Visual Studio
 services: visual-studio-online
 documentationcenter: na
@@ -11,60 +11,61 @@ ms.service: visual-studio-online
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: d230632fe49874385e3c337a7b07d1f1acec585e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: af961533648ce3a939c25fca32173684255a52a8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292802"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444694"
 ---
-# <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Debugowanie usługi w chmurze Azure lub maszyny wirtualnej w programie Visual Studio
+# <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Debugowanie usługi w chmurze platformy Azure lub maszynie wirtualnej w programie Visual Studio
 
-Visual Studio zapewnia różne opcje do debugowania usług w chmurze Azure i maszyn wirtualnych.
+Program Visual Studio zapewnia różne opcje debugowania usług Azure cloud services i maszyn wirtualnych.
 
-## <a name="debug-your-cloud-service-on-your-local-computer"></a>Usługi w chmurze na komputerze lokalnym debugowania
+## <a name="debug-your-cloud-service-on-your-local-computer"></a>Debugowanie usługi w chmurze na komputerze lokalnym
 
-Można oszczędzić czas i pieniądze przy użyciu platformy Azure obliczeniowe emulatora debugowania usługi w chmurze na komputerze lokalnym. Przez lokalnie debugowania usługi przed wdrożeniem, można zwiększyć niezawodność i wydajność bez płatności dla czasu obliczeniowego. Jednak niektóre mogą wystąpić błędy tylko po uruchomieniu usługi w chmurze na platformie Azure samej siebie. Te błędy można debugować po włączeniu zdalnego debugowania podczas publikowania usługi, a następnie dołącz debuger do wystąpienia roli.
+Możesz zaoszczędzić czas i pieniądze za pomocą usługi Azure compute emulatora do debugowania na maszynie lokalnej usługi w chmurze. Debugowanie usługi lokalnie przed przystąpieniem do wdrażania, może zwiększyć niezawodność i wydajność bez konieczności płacenia za czas obliczeń. Jednak niektóre mogą wystąpić błędy, tylko po uruchomieniu usługi w chmurze na platformie Azure sam. Te błędy można debugować po włączeniu zdalnego debugowania, gdy Opublikuj usługę i następnie dołączyć debuger do wystąpienia roli.
 
-Emulator symuluje rozwiązań usługi obliczenia Azure usługi i jest uruchamiany w środowisku lokalnym, aby umożliwić testowanie i debugowanie usługi w chmurze, przed przystąpieniem do wdrażania. Emulator obsługuje cyklem życia wystąpienia roli i zapewnia dostęp do symulowanego zasoby, takie jak magazyn lokalny. Podczas debugowania i uruchamiania usługi z programu Visual Studio emulator jest automatycznie uruchamiana jako aplikacja w tle, a następnie wdraża emulator usługi. Aby wyświetlić usługi, gdy jest uruchamiany w środowisku lokalnym można użyć emulatora. Można uruchomić pełną wersję lub ekspresowej wersji emulatora. (Począwszy od wersji 2.3 Azure ekspresowej wersji emulatora jest wartość domyślna). Zobacz [by przeprowadzić debugowanie usługi w chmurze lokalnie za pomocą ekspresowej wersji emulatora](vs-azure-tools-emulator-express-debug-run.md).
+Emulator usługi Azure Compute symuluje i jest uruchamiana w środowisku lokalnym, tak aby umożliwić testowanie i debugowanie usługi w chmurze, przed przystąpieniem do wdrażania. Emulator obsługuje cyklu życia wystąpienia ról użytkownika i zapewnia dostęp do zasobów symulowane, takich jak magazyn lokalny. Podczas debugowania i uruchamiania usługi za pomocą programu Visual Studio automatycznie uruchomienie emulatora, jako tło aplikacji, a następnie wdraża usługi w emulatorze. Emulator można użyć, aby wyświetlić usługi, po uruchomieniu w środowisku lokalnym. Możesz uruchomić pełną wersję lub wersja ekspresowa emulatora. (Począwszy od 2.3 do platformy Azure, wersja ekspresowa emulatora jest wartość domyślna). Zobacz [uruchamianie i debugowanie usługi w chmurze lokalnie za pomocą Emulator Express](vs-azure-tools-emulator-express-debug-run.md).
 
-### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>Aby debugować usługi w chmurze na komputerze lokalnym
+### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>Debugowanie usługi w chmurze na komputerze lokalnym
 
-1. Na pasku menu wybierz **debugowania**, **Rozpocznij debugowanie** do uruchomienia projektu usługi chmury Azure. Alternatywnie naciśnij klawisz F5. Zobaczysz komunikat, który uruchamia emulatora obliczeniowe. Po uruchomieniu emulatora, ikona na pasku zadań systemu potwierdza go.
+1. Na pasku menu wybierz **debugowania**, **Rozpocznij debugowanie** do uruchomienia projekt usługi w chmurze platformy Azure. Alternatywnie naciśnij klawisz F5. Zostanie wyświetlony komunikat, który rozpocznie się emulatora obliczeń. Po uruchomieniu emulatora ikoną w zasobniku systemowym potwierdza go.
 
     ![Emulator usługi Azure na pasku zadań](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC783828.png)
 
 2. Wyświetlanie interfejsu użytkownika dla emulatora obliczeń, otwierając menu skrótów dla usługi Azure ikony w obszarze powiadomień, a następnie wybierz **Pokaż interfejs użytkownika emulatora obliczeń**.
 
-    W okienku po lewej stronie interfejsu użytkownika pokazano usług, które obecnie są wdrażane na emulator obliczeń i wystąpień ról, które każda usługa jest uruchomiona. Można wybrać usługi lub role do wyświetlania w okienku po prawej stronie Cykl życia, rejestrowania i informacji diagnostycznych. Fokus jest włączony w górny margines dołączone okna, jego rozszerzeniu wypełnienia w okienku po prawej stronie.
+    Okienka po lewej stronie interfejsu użytkownika zawiera usługi, które są aktualnie zaimplementowane w emulatorze obliczeń i wystąpień roli, które każda usługa jest uruchomiona. Możesz wybrać usługi lub role do wyświetlenia w okienku po prawej stronie cyklu życia, rejestrowanie i informacji diagnostycznych. Jeśli umieścisz fokus na górnym marginesie dołączone okno rozwija Wypełnij okienku po prawej stronie.
 
-3. Kroki do aplikacji przez wybranie polecenia na **debugowania** menu i ustawianie punktów przerwania w kodzie. Podczas wykonywania kroków przy użyciu aplikacji w debugerze okienka są aktualizowane przy bieżącym stanie aplikacji. Po zatrzymaniu debugowania, wdrażania aplikacji jest usuwana. Jeśli aplikacja zawiera rolę sieci web i ustawiono właściwość Akcja uruchamiania dla uruchomienia przeglądarki sieci web, Visual Studio uruchamia aplikację sieci web w przeglądarce. W przypadku zmiany liczby wystąpień roli w konfiguracji usługi, należy zatrzymać usługi w chmurze i ponownie uruchom debugowanie, aby umożliwić debugowanie tych nowych wystąpień roli.
+3. Krok za pośrednictwem aplikacji, wybierając polecenia na **debugowania** menu i ustawiania punktów przerwania w kodzie. Podczas wykonywania kroków za pomocą aplikacji w debugerze okienka zostaną zaktualizowane o bieżący stan aplikacji. Gdy zatrzymasz debugowanie, wdrażanie aplikacji zostaną usunięte. Jeśli aplikacja zawiera rolę sieci web i ustawiono właściwość akcji uruchamiania do uruchomienia przeglądarki sieci web, programu Visual Studio uruchamia aplikację sieci web w przeglądarce. Jeśli zmienisz liczbę wystąpień roli w konfiguracji usługi, należy zatrzymać usługi w chmurze i ponownie uruchom debugowanie tak, aby można było debugować te nowe wystąpienia roli.
 
-    **Uwaga:** po zatrzymaniu uruchamiania lub debugowania usługi emulatora obliczeń lokalnych i emulatora magazynu nie są zablokowane. Musisz zatrzymać je bezpośrednio z poziomu obszaru powiadomień.
+    **Uwaga:** po zatrzymaniu działania lub debugowania usługi emulatora obliczeń lokalnych i emulatora magazynu nie są zablokowane. Należy zatrzymać je jawnie przy użyciu obszaru powiadomień.
 
-## <a name="debug-a-cloud-service-in-azure"></a>Usługi w chmurze na platformie Azure debugowania
+## <a name="debug-a-cloud-service-in-azure"></a>Debugowanie usługi w chmurze na platformie Azure
 
-Aby debugować usługi w chmurze z komputera zdalnego, należy włączyć te funkcje jawnie podczas wdrażania usługi w chmurze tak, że wymagane usługi (na przykład msvsmon.exe) są zainstalowane na maszynach wirtualnych, które uruchomienie wystąpienia roli. Jeśli nie zostanie włączone, zdalne debugowanie po opublikowaniu usługi, należy ponownie opublikować usługi z włączonym debugowaniem zdalnym.
+Aby debugować usługę w chmurze z komputera zdalnego, należy włączyć tę funkcję jawnie podczas wdrażania usługi w chmurze, więc, że wymagane usługi (na przykład msvsmon.exe) są zainstalowane na maszynach wirtualnych działających wystąpień roli. Jeśli nie zostały włączone, zdalne debugowanie po opublikowaniu usługi, musisz ponownie opublikować usługę z włączonym debugowaniem zdalnym.
 
-Włączenie debugowania zdalnego dla usługi w chmurze, on nie działać z mniejszą wydajnością lub spowodować naliczenie dodatkowych opłat. Nie należy używać zdalnego debugowania na usługi produkcji, ponieważ klienci korzystający z usługi może mieć niekorzystny wpływ na.
+Po włączeniu funkcji debugowania zdalnego dla usługi w chmurze, go nie wykazują pogorszenie wydajności lub naliczone dodatkowe opłaty za. Nie należy używać zdalnego debugowania na usługę produkcyjną, ponieważ klienci, którzy korzystają z usługi może to mieć niekorzystny wpływ.
 
 > [!NOTE]
-> Po opublikowaniu usługi w chmurze w programie Visual Studio, aby umożliwić **IntelliTrace** wszystkich ról tej usługi, które są przeznaczone dla platformy .NET Framework 4 lub .NET Framework 4.5. Za pomocą **IntelliTrace**, można zbadać zdarzenia, które wystąpiły w wystąpieniu roli w przeszłości i Odtwórz kontekstu od tego momentu. Zobacz [debugowania usługi opublikowana chmura za pomocą funkcji IntelliTrace i Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016) i [przy użyciu funkcji IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx).
+> Podczas publikowania usługi w chmurze w programie Visual Studio, aby umożliwić **IntelliTrace** wszystkich ról w tej usłudze, których platformą docelową jest program .NET Framework 4 lub .NET Framework 4.5. Za pomocą **IntelliTrace**, można zbadać zdarzenia, które wystąpiły w wystąpieniu roli w przeszłości i odtworzenia kontekstu po tym czasie. Zobacz [debugowanie opublikowanych usług w chmurze za pomocą IntelliTrace i Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016) i [przy użyciu funkcji IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx).
 
-### <a name="to-enable-remote-debugging-for-a-cloud-service"></a>Aby włączyć debugowanie zdalne usługi w chmurze
+### <a name="to-enable-remote-debugging-for-a-cloud-service"></a>Aby włączyć zdalne debugowanie dla usługi w chmurze
 
-1. Otwórz menu skrótów projektu platformy Azure, a następnie wybierz **publikowania**.
+1. Otwórz menu skrótów dla projektu platformy Azure, a następnie wybierz pozycję **Publikuj**.
 
 2. Wybierz **przemieszczania** środowiska i **debugowania** konfiguracji.
 
-    Jest to tylko wytyczne. Można wybrać do uruchomienia środowiska testowego w środowisku produkcyjnym. Jednak użytkownik może niekorzystnie wpłynąć na użytkowników po włączeniu zdalnego debugowania w środowisku produkcyjnym. Można wybrać do konfiguracji wydania, ale z konfiguracji debugowania powoduje, że ułatwia debugowanie.
+    To jest tylko wskazówką. Możesz zdecydować się na uruchomienie środowiska testowego w środowisku produkcyjnym. Jednak użytkownik może niekorzystnie wpłynąć na użytkowników po włączeniu zdalnego debugowania w środowisku produkcyjnym. Można wybrać konfigurację wydania, ale z konfiguracji debugowania sprawia, że ułatwia debugowanie.
 
     ![Wybierz konfigurację debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746717.gif)
 
-3. Wykonaj kroki zwykle, ale wybierz **Włącz zdalny debuger dla wszystkich ról** pole wyboru na **Zaawansowane ustawienia** kartę.
+3. Postępuj zgodnie z instrukcjami zwykle, ale wybierz **Włączanie zdalnego debugera dla wszystkich ról** pole wyboru na **Zaawansowane ustawienia** kartę.
 
     ![Konfiguracja debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746718.gif)
 
@@ -74,121 +75,121 @@ Włączenie debugowania zdalnego dla usługi w chmurze, on nie działać z mniej
 
 2. Otwórz menu skrótów dla roli lub wystąpienia roli, do której chcesz dołączyć, a następnie wybierz **dołączyć debuger**.
 
-    Jeśli debugowania roli debuger programu Visual Studio dołącza do każdego wystąpienia tej roli. Debuger przerwie na punkt przerwania w pierwszym wystąpieniu roli, uruchamia wiersza kodu, który spełnia wszystkie warunki tego punktu przerwania. Jeśli wystąpienie dołącza debuger do tego wystąpienia i podziału na punkt przerwania tylko wtedy, gdy to wystąpienie określonego wiersza kodu spełnia warunki punkt przerwania debugowania.
+    Jeśli debugujesz rolę, debuger programu Visual Studio dołącza do każde wystąpienie tej roli. Debuger przerywał działanie punkt przerwania w pierwszym wystąpieniu roli, uruchamia ten wiersz kodu, który spełnia wszelkie warunki ten punkt przerwania. Jeśli debugujesz wystąpienie dołącza debuger do tego wystąpienia i podziału punkt przerwania tylko wtedy, gdy tego konkretnego wystąpienia uruchamia ten wiersz kodu i spełnia warunki punktu przerwania.
 
     ![Dołącz debuger](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746719.gif)
 
-3. Po dołącza debuger do wystąpienia, debugowania w zwykły sposób. Debuger automatyczne dołączenie do procesu odpowiedniego hosta dla roli użytkownika. W zależności od tego, co to jest rola debuger dołącza do w3wp.exe, WaWorkerHost.exe lub WaIISHost.exe. Aby sprawdzić procesu, do której jest dołączony debuger, rozwiń węzeł wystąpienia w Eksploratorze serwera. Zobacz [Azure roli architektura](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Aby uzyskać więcej informacji o procesach platformy Azure.
+3. Po dołącza debuger do wystąpienia, debugowanie w zwykły sposób. Debuger automatycznie dołącza do procesu odpowiedniego hosta dla roli użytkownika. W zależności od roli debuger dołącza do w3wp.exe, WaWorkerHost.exe lub WaIISHost.exe. Aby sprawdzić, czy Proces, do której jest dołączony debuger, rozwiń węzeł wystąpienia w Eksploratorze serwera. Zobacz [architektura ról platformy](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Aby uzyskać więcej informacji na temat przetwarzanych przez platformę Azure.
 
-    ![Wybór typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Wybieranie typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-4. Do identyfikacji procesów, do których jest dołączony debuger, Otwórz okno dialogowe procesów, z menu, wybierając debugowania, Windows, procesów. (Klawiatury: Ctrl + Alt + Z) Aby odłączyć określonego procesu, otwórz menu skrótów, a następnie wybierz **odłączyć procesu**. Lub, zlokalizuj węzeł wystąpienia w Eksploratorze serwera, Znajdź proces, otwórz menu skrótów, a następnie wybierz **odłączyć procesu**.
+4. Aby zidentyfikować procesy, do których jest dołączony debuger, należy otworzyć okno dialogowe procesów, na pasku menu, wybierając debugowania, Windows, procesy. (Klawiatura: Ctrl + Alt + Z) Aby odłączyć określonego procesu, otwórz jego menu skrótów, a następnie wybierz **odłączanie procesu**. Lub, zlokalizuj węzeł wystąpienia w Eksploratorze serwera, Znajdź proces, otwórz jego menu skrótów, a następnie wybierz **odłączanie procesu**.
 
     ![Debugowanie procesów](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC690787.gif)
 
 > [!WARNING]
-> Uniknąć długich zatrzymane na punktów przerwania podczas zdalnego debugowania. Azure traktuje procesu, który został zatrzymany przez czas dłuższy niż kilka minut odpowiada, a następnie zatrzymuje wysyłania ruchu do tego wystąpienia. Jeśli zatrzymasz zbyt długo, msvsmon.exe odłączenie od procesu.
+> Unikaj długich zatrzymuje w punktach przerwania podczas zdalnego debugowania. Azure traktuje procesu, który jest zablokowany przez czas dłuższy niż kilka minut. nie odpowiada i przestaje wysyłać ruch do tego wystąpienia. Jeśli użytkownik zaprzestanie zbyt długo msvsmon.exe odłączy się od procesu.
 
-Aby odłączyć debugera od wszystkich procesów w roli lub wystąpienia, otwórz menu skrótów dla roli lub wystąpienia, debugowanie, a następnie wybierz **odłączyć debugera**.
+Aby odłączyć debuger od wszystkich procesów w ramach wystąpienia lub roli, otwórz menu skrótów dla roli lub wystąpienia, debugowania, a następnie wybierz pozycję **odłączyć debuger**.
 
-## <a name="limitations-of-remote-debugging-in-azure"></a>Ograniczenia debugowania zdalnego na platformie Azure
+## <a name="limitations-of-remote-debugging-in-azure"></a>Ograniczenia dotyczące zdalnego debugowania na platformie Azure
 
-Z 2.3 zestawu SDK platformy Azure zdalnego debugowania ma następujące ograniczenia:
+W systemie Azure SDK 2.3 debugowania zdalnego ma następujące ograniczenia:
 
-* Z funkcją debugowania zdalnego włączone, nie można opublikować w którym dowolnej roli ma więcej niż 25 wystąpień usługi w chmurze.
-* Debuger używa portów 30400 do 30424, 31400 do 31424 i 32400 do 32424. Jeśli spróbujesz użyć dowolnego z tych portów, nie będzie można opublikować usługi, a jeden z następujących komunikatów o błędach pojawi się w dzienniku aktywności platformy Azure:
+* Dzięki zdalnemu debugowaniu, włączone, nie można opublikować w którym znajduje się więcej niż 25 wystąpień każdej roli usługi w chmurze.
+* Debuger korzysta z portów 30400 do 30424, 31400 do 31424 i 32400 do 32424. Jeśli spróbujesz użyć dowolnego z tych portów, nie będzie można opublikować usługę, a jeden z następujących komunikatów o błędzie pojawi się w dzienniku aktywności platformy Azure:
 
   * Wystąpił błąd podczas sprawdzania pliku .cscfg względem pliku csdef.
-    Zakres zarezerwowanych portów "range" dla punktu końcowego Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector roli "roli" nakłada się na już zdefiniowany port lub zakresu.
-  * Alokacja nie powiodła się. Spróbuj ponownie później, spróbuj zmniejszyć rozmiar maszyny Wirtualnej lub liczbę wystąpień roli lub spróbuj przeprowadzić wdrożenie w innym regionie.
+    Zakres portów zarezerwowanych "range" dla punktu końcowego Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector roli "rola" nakłada się na już zdefiniowany port lub zakres.
+  * Alokacja nie powiodła się. Spróbuj ponownie później, Ogranicz rozmiar maszyny Wirtualnej lub liczbę wystąpień roli lub spróbuj wdrożyć w innym regionie.
 
-## <a name="debugging-azure-virtual-machines"></a>Debugowanie maszyn wirtualnych platformy Azure
+## <a name="debugging-azure-virtual-machines"></a>Profilowanie maszyn wirtualnych platformy Azure
 
-Można debugować programy uruchamiane na maszynach wirtualnych Azure za pomocą Eksploratora serwera w programie Visual Studio. Po włączeniu zdalnego debugowania na maszynie wirtualnej platformy Azure, Azure instaluje zdalnego debugowania rozszerzenia na maszynie wirtualnej. Następnie można dołączyć do procesów na maszynie wirtualnej i debugowania w zwykły sposób.
+Umożliwia debugowanie programów uruchamianych na maszynach wirtualnych platformy Azure za pomocą Eksploratora serwera w programie Visual Studio. Po włączeniu zdalnego debugowania na maszynie wirtualnej platformy Azure, Azure instaluje rozszerzenie debugowania zdalnego na maszynie wirtualnej. Następnie można dołączyć do procesów na maszynie wirtualnej, a debugowanie w zwykły sposób.
 
 > [!NOTE]
-> Maszyny wirtualne utworzone przez stos Menedżera zasobów platformy Azure można zdalnie debugować przy użyciu Eksplorator chmury w programie Visual Studio 2015. Aby uzyskać więcej informacji, zobacz [zarządzania zasobami Azure za pomocą Eksploratora chmury](http://go.microsoft.com/fwlink/?LinkId=623031).
+> Maszyny wirtualne utworzone za pomocą stosu usługi Azure resource manager można zdalnie debugować za pomocą programu Cloud Explorer programu Visual Studio 2015. Aby uzyskać więcej informacji, zobacz [zarządzania zasobami platformy Azure za pomocą Eksploratora chmury](http://go.microsoft.com/fwlink/?LinkId=623031).
 
-### <a name="to-debug-an-azure-virtual-machine"></a>Aby debugować maszyny wirtualnej platformy Azure
+### <a name="to-debug-an-azure-virtual-machine"></a>Aby debugować maszynie wirtualnej platformy Azure
 
-1. W Eksploratorze serwera rozwiń węzeł maszyny wirtualnej, a następnie wybierz węzeł maszynę wirtualną, którą chcesz debugować.
+1. W Eksploratorze serwera rozwiń węzeł maszyn wirtualnych, a następnie wybierz węzeł maszyny wirtualnej, który chcesz debugować.
 
-2. Otwórz menu kontekstowe i wybierz **włączyć debugowanie**. Po otrzymaniu monitu, jeśli masz pewności, jeśli chcesz włączyć debugowanie na maszynie wirtualnej, wybierz opcję **tak**.
+2. Otwórz menu kontekstowe i wybierz **włączyć debugowanie**. Po wyświetleniu monitu, jeśli wiesz, jeśli chcesz umożliwić debugowanie na maszynie wirtualnej, wybierz opcję **tak**.
 
-    Azure instaluje zdalnego debugowania rozszerzenia na maszynie wirtualnej, aby włączyć debugowanie.
+    Azure instaluje rozszerzenie debugowania zdalnego na maszynie wirtualnej, aby włączyć debugowanie.
 
-    ![Maszyna wirtualna włączyć polecenie debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
+    ![Maszyny wirtualnej Włącz polecenie debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
     ![Dziennik aktywności platformy Azure](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-3. Po zakończeniu instalowania rozszerzenia debugowania zdalnego otwórz menu kontekstowe maszyny wirtualnej i wybierz **dołączyć debuger...**
+3. Po ukończeniu instalowania zdalnego debugowania rozszerzenia, otwórz menu kontekstowe maszyny wirtualnej i wybierz **dołączanie debugera...**
 
-    Azure pobiera listę procesów w maszynie wirtualnej i spowoduje dołączanie do procesu, okno dialogowe.
+    Platforma Azure pobiera listę procesów na maszynie wirtualnej i pokazuje, w oknie Dołącz do procesu, okno dialogowe.
 
-    ![Dołącz debuger polecenia](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
+    ![Dołącz polecenia debugera](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-4. W **dołączyć do procesu** okno dialogowe, wybierz opcję **wybierz** do ograniczania listy wyników, aby wyświetlić tylko typy kodu, które chcesz debugować. Można debugować 32-bitowy lub 64-bitowego kodu zarządzanego i kodu natywnego.
+4. W **dołączyć do procesu** okno dialogowe, wybierz opcję **wybierz** ograniczyć listę wyników, aby wyświetlić tylko typy kodu, który chcesz debugować. Można debugować 32-bitową lub 64-bitowego kodu zarządzanego i natywnego kodu.
 
-    ![Wybór typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Wybieranie typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-5. Wybierz procesy, które mają debugowania na maszynie wirtualnej, a następnie wybierz **Attach**. Na przykład możesz wybrać procesu w3wp.exe, jeśli chcesz debugować aplikację sieci web na maszynie wirtualnej. Zobacz [debugowania jeden lub więcej procesów w programie Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) i [Azure roli architektura](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Aby uzyskać więcej informacji.
+5. Wybierz procesy, aby debugować na maszynie wirtualnej, a następnie wybierz pozycję **Dołącz**. Na przykład wybierz proces w3wp.exe, jeśli chcesz debugować aplikację sieci web na maszynie wirtualnej. Zobacz [debugować jeden lub więcej procesów w programie Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) i [architektura ról platformy](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Aby uzyskać więcej informacji.
 
 ## <a name="create-a-web-project-and-a-virtual-machine-for-debugging"></a>Tworzenie projektu sieci web i maszyny wirtualnej do debugowania
 
-Przed opublikowaniem projektu platformy Azure, użytkownik może być bardzo przydatne testowania go w środowisku zawartych w niej obsługującej debugowania i testowania scenariuszy i której można zainstalować testowania i monitorowanie programów. Jednym ze sposobów uruchamianie tych testów jest zdalne debugowanie aplikacji na maszynie wirtualnej.
+Przed opublikowaniem projekt platformy Azure, może okazać przydatne w celu przetestowania jej w środowisku zawarte, która obsługuje debugowania i testowania scenariuszy i gdzie można zainstalować testowaniu i monitorowaniu programów. Jednym ze sposobów uruchamiania tych testów jest zdalne debugowanie aplikacji na maszynie wirtualnej.
 
-Projekty Visual Studio ASP.NET oferują możliwość utworzenia przydatną maszyny wirtualnej, która służy do testowania aplikacji. Maszyna wirtualna zawiera potrzebnych punktów końcowych, takie jak środowiska PowerShell, pulpitu zdalnego i WebDeploy.
+Projekty języka Visual Studio ASP.NET oferuje opcję, aby utworzyć maszynę wirtualną pod ręką, używanej do testowania aplikacji. Maszyna wirtualna zawiera potrzebnych punktów końcowych, takich jak program PowerShell, pulpitu zdalnego i WebDeploy.
 
 ### <a name="to-create-a-web-project-and-a-virtual-machine-for-debugging"></a>Aby utworzyć projekt sieci web i maszyny wirtualnej do debugowania
 
-1. W programie Visual Studio Utwórz nową aplikację sieci Web ASP.NET.
+1. W programie Visual Studio Utwórz nową aplikację sieci Web platformy ASP.NET.
 
-2. W oknie dialogowym Nowy projekt ASP.NET, w sekcji platformy Azure, wybierz **maszyny wirtualnej** w polu listy rozwijanej. Pozostaw **Utwórz zasoby zdalne** zaznaczone pole wyboru. Wybierz **OK** aby kontynuować.
+2. W oknie dialogowym Nowy projekt ASP.NET, w sekcji platformy Azure wybierz **maszyny wirtualnej** w polu listy rozwijanej. Pozostaw **Utwórz zasoby zdalne** zaznaczone pole wyboru. Wybierz **OK** aby kontynuować.
 
-    **Utwórz maszynę wirtualną na platformie Azure** zostanie wyświetlone okno dialogowe.
+    **Utwórz maszynę wirtualną na platformie Azure** pojawi się okno dialogowe.
 
-    ![Tworzenie projektu sieci web platformy ASP.NET — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746723.png)
+    ![Utwórz okno dialogowe projektu sieci web platformy ASP.NET](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746723.png)
 
-    **Uwaga:** użytkownik zostanie zapytany do logowania się do konta platformy Azure, jeśli użytkownik nie jest jeszcze zarejestrowany.
+    **Uwaga:** zostanie wyświetlony monit do logowania się do konta platformy Azure, jeśli jeszcze nie zostało to zrobione.
 
-3. Wybierz różne ustawienia dla maszyny wirtualnej, a następnie wybierz **OK**. Zobacz [maszyn wirtualnych](http://go.microsoft.com/fwlink/?LinkId=623033) Aby uzyskać więcej informacji.
+3. Wybierz różne ustawienia dla maszyny wirtualnej, a następnie wybierz pozycję **OK**. Zobacz [maszyn wirtualnych](http://go.microsoft.com/fwlink/?LinkId=623033) Aby uzyskać więcej informacji.
 
-    Nazwa wprowadzona dla nazwy DNS będzie nazwę maszyny wirtualnej.
+    Nazwa wprowadzona dla nazwy DNS będzie nazwa maszyny wirtualnej.
 
-    ![Utwórz maszynę wirtualną na okno dialogowe Azure](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746724.png)
+    ![Tworzenie maszyny wirtualnej na okno dialogowe platformy Azure](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746724.png)
 
-    Azure tworzy maszynę wirtualną, a następnie przepisów i konfiguruje punkty końcowe, takie jak pulpitu zdalnego i narzędzia Web Deploy
+    Platforma Azure tworzy maszynę wirtualną, a następnie aprowizuje i konfiguruje punktów końcowych, takich jak pulpitu zdalnego i narzędzia Web Deploy
 
-4. Po pełnej konfiguracji maszyny wirtualnej, wybierz węzeł maszyny wirtualnej w Eksploratorze serwera.
+4. Po maszyny wirtualnej jest w pełni skonfigurowane, wybierz węzeł maszyny wirtualnej, w Eksploratorze serwera.
 
-5. Otwórz menu kontekstowe i wybierz **włączyć debugowanie**. Po otrzymaniu monitu, jeśli masz pewności, jeśli chcesz włączyć debugowanie na maszynie wirtualnej, wybierz opcję **tak**.
+5. Otwórz menu kontekstowe i wybierz **włączyć debugowanie**. Po wyświetleniu monitu, jeśli wiesz, jeśli chcesz umożliwić debugowanie na maszynie wirtualnej, wybierz opcję **tak**.
 
-    Azure instaluje zdalnego debugowania rozszerzenie do maszyny wirtualnej, aby włączyć debugowanie.
+    Azure instaluje rozszerzenie debugowania zdalnego z maszyną wirtualną, aby włączyć debugowanie.
 
-    ![Maszyna wirtualna włączyć polecenie debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
+    ![Maszyny wirtualnej Włącz polecenie debugowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
     ![Dziennik aktywności platformy Azure](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-6. Opublikować projekt w sposób opisany w [porady: Wdrażanie publikowania projektu sieci Web za pomocą jednego kliknięcia w programie Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx). Ponieważ chcesz debugować na maszynie wirtualnej na **ustawienia** strony **publikowanie w sieci Web** kreatora wybierz **debugowania** jako konfiguracji. Dzięki temu symbole kodu są dostępne podczas debugowania.
+6. Publikowanie projektu, co zostało opisane w [jak: wdrożyć publikowania projektu sieci Web za pomocą jednego kliknięcia w programie Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx). Aby można było debugować na maszynie wirtualnej na **ustawienia** strony **publikowanie w sieci Web** kreatora wybierz pozycję **debugowania** jako konfiguracji. Dzięki temu kod symbole są dostępne podczas debugowania.
 
     ![Ustawienia publikowania](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718349.png)
 
-7. W **opcji publikowania pliku**, wybierz pozycję **Usuń dodatkowe pliki w miejscu docelowym** Jeśli wcześniej została już wdrożony projekt.
+7. W **opcji publikowania pliku**, wybierz opcję **Usuń dodatkowe pliki w lokalizacji docelowej** Jeżeli projekt został już wdrożony wcześniej.
 
-8. Po publikuje projektu, w menu kontekstowym maszyny wirtualnej w Eksploratorze serwera wybierz **dołączyć debuger...**
+8. Po publikuje projektu, w menu kontekstowym maszyny wirtualnej w Eksploratorze serwera wybierz **dołączanie debugera...**
 
-    Azure pobiera listę procesów w maszynie wirtualnej i spowoduje dołączanie do procesu, okno dialogowe.
+    Platforma Azure pobiera listę procesów na maszynie wirtualnej i pokazuje, w oknie Dołącz do procesu, okno dialogowe.
 
-    ![Dołącz debuger polecenia](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
+    ![Dołącz polecenia debugera](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-9. W **dołączyć do procesu** okno dialogowe, wybierz opcję **wybierz** do ograniczania listy wyników, aby wyświetlić tylko typy kodu, które chcesz debugować. Można debugować 32-bitowy lub 64-bitowego kodu zarządzanego i kodu natywnego.
+9. W **dołączyć do procesu** okno dialogowe, wybierz opcję **wybierz** ograniczyć listę wyników, aby wyświetlić tylko typy kodu, który chcesz debugować. Można debugować 32-bitową lub 64-bitowego kodu zarządzanego i natywnego kodu.
 
-    ![Wybór typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Wybieranie typu kodu — okno dialogowe](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-10. Wybierz procesy, które mają debugowania na maszynie wirtualnej, a następnie wybierz **Attach**. Na przykład możesz wybrać procesu w3wp.exe, jeśli chcesz debugować aplikację sieci web na maszynie wirtualnej. Zobacz [debugowania jeden lub więcej procesów w programie Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) Aby uzyskać więcej informacji.
+10. Wybierz procesy, aby debugować na maszynie wirtualnej, a następnie wybierz pozycję **Dołącz**. Na przykład wybierz proces w3wp.exe, jeśli chcesz debugować aplikację sieci web na maszynie wirtualnej. Zobacz [debugować jeden lub więcej procesów w programie Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Użyj **Intellitrace** do zbierania dzienników wywołań i zdarzenia z wersji serwera. Zobacz [debugowania usługi opublikowana chmura za pomocą funkcji IntelliTrace i Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016).
+* Użyj **Intellitrace** zebrać dziennik wywołania i zdarzenia z wersji serwera. Zobacz [debugowanie opublikowanych usług w chmurze za pomocą IntelliTrace i programu Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016).
 
-* Użyj **diagnostyki Azure** logowania szczegółowe informacje o uruchamianiu kodu w ramach ról, czy role są uruchomione w środowisku programistycznym lub na platformie Azure. Zobacz [zbierania danych rejestrowania za pomocą diagnostyki Azure](http://go.microsoft.com/fwlink/p/?LinkId=400450).
+* Użyj **diagnostyki Azure** się szczegółowe informacje na uruchamianie kodu w ramach ról, czy role są uruchomione w środowisku deweloperskim lub na platformie Azure. Zobacz [zbieranie danych rejestrowania przy użyciu usługi Azure Diagnostics](http://go.microsoft.com/fwlink/p/?LinkId=400450).

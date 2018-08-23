@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 6474b34abeceb58c2eff9e7a2d2237ec47e61933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 225fd7800f05514e989ec0153b5de22e63b62bde
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447527"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055006"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania tożsamość usługi zarządzanej (MSI) przy użyciu wiersza polecenia platformy Azure
 
@@ -43,7 +43,10 @@ W tym artykule dowiesz się, jak wykonywać następujące operacje tożsamości 
 - Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
     - Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
     - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
-    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
+    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) Jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
+      
+      > [!NOTE]
+      > Polecenia zostały zaktualizowanie, aby odzwierciedlić najnowszą wersję [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -116,7 +119,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 W tej sekcji dowiesz się, jak włączyć i usuwanie tożsamości przypisanych przez użytkownika, przy użyciu wiersza polecenia platformy Azure.
 
-### <a name="assign-a-user-assigned-identity-during-the-creation-of-an-azure-vmss"></a>Przypisywanie użytkownika tożsamości przypisanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Przypisz tożsamości przypisanych przez użytkownika podczas tworzenia zestawu skalowania maszyn wirtualnych
 
 Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnych i przypisanie użytkownika tożsamości przypisanej do zestawu skalowania maszyn wirtualnych. Jeśli masz już VMSS, którego chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
 
@@ -150,13 +153,13 @@ Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnyc
    }
    ```
 
-3. Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az-vmss-create). Poniższy przykład obejmuje tworzenie zestawu skalowania maszyn wirtualnych skojarzonych z nowej tożsamości przypisanych przez użytkownika określony przez `--assign-identity` parametru. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY ID>` zostały zastąpione własnymi wartościami. Aby uzyskać `<USER ASSIGNED IDENTITY ID>`, użyj tożsamości przypisanych przez użytkownika zasobu `id` właściwości utworzonej w poprzednim kroku: 
+3. Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az-vmss-create). Poniższy przykład obejmuje tworzenie zestawu skalowania maszyn wirtualnych skojarzonych z nowej tożsamości przypisanych przez użytkownika określony przez `--assign-identity` parametru. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY>` zostały zastąpione własnymi wartościami. 
 
    ```azurecli-interactive 
-   az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY ID>
+   az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
    ```
 
-### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Przypisywanie użytkownika tożsamości przypisanej do istniejącej maszyny Wirtualnej platformy Azure
+### <a name="assign-a-user-assigned-identity-to-an-existing-virtual-machine-scale-set"></a>Przypisz tożsamości przypisanych przez użytkownika do istniejącego zestawu skalowania maszyn wirtualnych
 
 1. Utwórz użytkownika przypisane przy użyciu tożsamości [Utwórz tożsamość az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupy zasobów, w której został utworzony tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Upewnij się, że parametry `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami:
 
@@ -166,7 +169,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnyc
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-Odpowiedź zawiera szczegóły dotyczące utworzonej, podobne do następujących tożsamości przypisanych przez użytkownika. Zasób `id` przypisane do tożsamości przypisanych przez użytkownika jest wykorzystywana w następnym kroku.
+Odpowiedź zawiera szczegóły dotyczące utworzonej, podobne do następujących tożsamości przypisanych przez użytkownika.
 
    ```json
    {
@@ -183,18 +186,18 @@ Odpowiedź zawiera szczegóły dotyczące utworzonej, podobne do następujących
    }
    ```
 
-2. Przypisz tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych za pomocą [przypisać az vmss tożsamości](/cli/azure/vmss/identity#az-vm-assign-identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY ID>` Będzie zasobów tożsamości przypisanych przez użytkownika `id` właściwości utworzonemu w poprzednim kroku:
+2. Przypisz tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych za pomocą [przypisać az vmss tożsamości](/cli/azure/vmss/identity#az-vm-assign-identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Zasób tożsamości przypisanych przez użytkownika jest `name` właściwości utworzonemu w poprzednim kroku:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych platformy Azure
 
-Usuwanie tożsamości przypisanych przez użytkownika użycia zestawu skalowania maszyn wirtualnych [Usuń az vmss tożsamości](/cli/azure/vmss/identity#az-vmss-identity-remove). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<MSI NAME>` Będzie tożsamości przypisanych przez użytkownika `name` właściwości, który można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu przez `az vmss identity show`:
+Usuwanie tożsamości przypisanych przez użytkownika użycia zestawu skalowania maszyn wirtualnych [Usuń az vmss tożsamości](/cli/azure/vmss/identity#az-vmss-identity-remove). Jeśli jest to tylko tożsamości przypisanych przez użytkownika, przypisane do zestawu skalowania maszyn wirtualnych, `UserAssigned` zostaną usunięte z wartości typu tożsamości.  Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Będzie tożsamości przypisanych przez użytkownika `name` właściwość, która znajduje się w sekcji tożsamości maszyny wirtualnej zestawu skalowania przy użyciu `az vmss identity show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 Jeśli chcesz usunąć wszystkich użytkowników tożsamości przypisanych przez z niego zestawu skalowania maszyny wirtualnej bez zainstalowanego systemu tożsamości przypisanej, użyj następującego polecenia:
@@ -203,13 +206,13 @@ Jeśli chcesz usunąć wszystkich użytkowników tożsamości przypisanych przez
 > Wartość `none` jest uwzględniana wielkość liter. Musi być mała.
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.identityIds=null
+az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null
 ```
 
 Jeśli zestaw skalowania maszyn wirtualnych ma przypisanej w systemie i tożsamości przypisanych przez użytkownika, możesz usunąć wszystkich użytkowników tożsamości przypisanych przez przełączenie na system tylko przypisane. Użyj następującego polecenia:
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null 
+az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

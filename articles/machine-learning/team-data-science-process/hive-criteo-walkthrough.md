@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 4c368c3f06347b1164731d056a7341bdabb759b4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b368bf76516b0b6f87ad8ff57ca886a44b71926c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837348"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056331"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB
 
@@ -64,7 +64,7 @@ Dwa przykładowe prognozowania problemy zostały rozwiązane w tym przewodniku:
 
 Konfigurowanie środowiska nauki o danych platformy Azure do tworzenia rozwiązań do analizy predykcyjnej przy użyciu klastrów HDInsight w trzech krokach:
 
-1. [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md): to konto magazynu jest używane do przechowywania danych w usłudze Azure Blob Storage. Dane używane w klastrach HDInsight są przechowywane w tym miejscu.
+1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md): to konto magazynu jest używane do przechowywania danych w usłudze Azure Blob Storage. Dane używane w klastrach HDInsight są przechowywane w tym miejscu.
 2. [Dostosowywanie klastrów Hadoop w usłudze Azure HDInsight do analizy danych](customize-hadoop-cluster.md): ten krok umożliwia utworzenie klastra usługi Azure HDInsight Hadoop za pomocą 64-bitowego pakietu Anaconda Python 2.7 zainstalowane we wszystkich węzłach. Istnieją dwie ważne czynności (opisanych w tym temacie) do wykonania podczas dostosowywania klastra HDInsight.
    
    * Musisz połączyć konta magazynu utworzonego w kroku 1 z klastrem usługi HDInsight podczas jego tworzenia. To konto magazynu jest używane do uzyskiwania dostępu do danych, które mogą być przetwarzane w klastrze.

@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620134"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056504"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -26,7 +26,7 @@ SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy A
 
 ## <a name="what-is-a-sql-database-backup"></a>Co to jest kopię zapasową bazy danych SQL?
 
-SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
+SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
 
 
 Możesz użyć tych kopii zapasowych:
@@ -51,12 +51,14 @@ Jeśli zachodzi potrzeba przechowywanie kopii zapasowych przez okres dłuższy n
 > [!IMPORTANT]
 > Jeśli usuniesz serwera Azure SQL, który jest hostem bazy danych SQL, wszystkie elastycznych pul i baz danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Nie można przywrócić usuniętego serwera. Ale jeśli skonfigurowano przechowywanie długoterminowe kopie zapasowe baz danych przy użyciu od lewej do prawej, nie zostaną usunięte i te bazy danych, które mogą zostać przywrócone.
 
-### <a name="pitr-retention-for-dtu-based-service-tiers"></a>Odzyskiwanie przechowywania dla warstwy usług oparte na jednostkach DTU
+### <a name="pitr-retention-period"></a>Okres przechowywania Odzyskiwanie
 Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakupu opartego na jednostkach DTU zależy od warstwy usługi:
 
 * Warstwa podstawowa usług jest 1 tydzień.
 * Warstwy usług w warstwie standardowa wynosi 5 tygodni.
 * Warstwa Premium usług jest 5 tygodni.
+
+Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), przechowywania kopii zapasowych jest możliwość konfiguracji do 35 dni. 
 
 Czy można zmniejszyć bieżącym okresem przechowywania Odzyskiwanie, wszystkie istniejące kopie zapasowe starsze niż nowy okres przechowywania nie będzie już dostępna. 
 

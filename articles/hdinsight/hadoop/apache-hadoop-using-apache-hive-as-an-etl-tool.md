@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: d4f07896e835821612971f1558ca5a030a59d154
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2bdfe35c7ce705966904487c3de6691e05c09098
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597443"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056768"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Użyj Apache Hive jako narzędzia do wyodrębniania, przekształcania i ładowania (ETL)
 
@@ -92,4 +92,5 @@ Jeśli musisz wykonać kilka operacji na danych w ramach procesu ETL, należy wz
 
 * [ETL na dużą skalę](apache-hadoop-etl-at-scale.md)
 * [Operacjonalizacja potoku danych](../hdinsight-operationalize-data-pipeline.md)
+
 <!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->

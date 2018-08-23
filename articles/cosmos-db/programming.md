@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618900"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055974"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure Cosmos DB: procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie usługi Cosmos DB, a także dostęp do obiektów żądań i odpowiedzi. W tym przypadku obiekt odpowiedzi używany do ustawiania treść odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [serwera usługi Azure Cosmos DB JavaScript dokumentacji zestawu SDK](http://azure.github.io/azure-documentdb-js-server/).  
+Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie usługi Cosmos DB, a także dostęp do obiektów żądań i odpowiedzi. W tym przypadku obiekt odpowiedzi używany do ustawiania treść odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [serwera usługi Azure Cosmos DB JavaScript dokumentacji zestawu SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Daj nam rozwinąć w tym przykładzie i dodać więcej funkcji związanych z bazy danych do procedury składowanej. Procedury składowane można utworzyć, zaktualizować, odczytu, zapytania i usuwania dokumentów i załączników w kolekcji.    
 
@@ -591,7 +591,7 @@ Następujące elementy języka JavaScript nie uzyskać zoptymalizowane pod kąte
 * Przepływ sterowania (na przykład, jeśli, podczas gdy)
 * Wywołania funkcji
 
-Aby uzyskać więcej informacji, zobacz [JSDocs po stronie serwera](http://azure.github.io/azure-documentdb-js-server/).
+Aby uzyskać więcej informacji, zobacz [JSDocs po stronie serwera](https://azure.github.io/azure-cosmosdb-js-server/).
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>Przykład: Napisać procedury składowanej przy użyciu interfejsu API zapytań języka JavaScript
 Poniższy przykładowy kod znajduje się przykład jak JavaScript API zapytania mogą być używane w kontekście procedury składowanej. Procedura składowana wstawia dokumentu, określone przez parametr wejściowy, a metadane aktualizacji dokumentów, używając `__.filter()` metoda minSize, maxSize i totalSize na podstawie właściwości rozmiaru dokument wejściowy.
@@ -674,7 +674,7 @@ Poniższe opisy wyjaśnienia każdego zapytania w powyższej tabeli.
 
 
 ## <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
-Azure Cosmos DB [interfejsu API po stronie serwera języka JavaScript](http://azure.github.io/azure-documentdb-js-server/) zapewnia obsługę najbardziej typowe funkcje języka JavaScript jako standardowy przez [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Azure Cosmos DB [interfejsu API po stronie serwera języka JavaScript](https://azure.github.io/azure-cosmosdb-js-server/) zapewnia obsługę najbardziej typowe funkcje języka JavaScript jako standardowy przez [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Bezpieczeństwo
 Procedury składowane JavaScript i wyzwalacze są w trybie piaskownicy tak, aby skutki jednego skryptu w nie nastąpił przeciek do drugiego bez pośrednictwa izolacji transakcji migawki na poziomie bazy danych. Środowiska uruchomieniowe w puli, ale oczyszczone kontekstu po każdym uruchomieniu. Dlatego mają gwarancję, że bezpieczne z dowolnego wystąpienie niezamierzonych skutków ubocznych od siebie nawzajem.
@@ -683,7 +683,7 @@ Procedury składowane JavaScript i wyzwalacze są w trybie piaskownicy tak, aby 
 Procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika są niejawnie wstępnie skompilowane do formatu kod bajtowy, aby uniknąć kosztów kompilacji w czasie wywołania każdego skryptu. Wstępna kompilacja zapewnia wywołania procedur składowanych jest szybkie i mają niewielki rozmiar.
 
 ## <a name="client-sdk-support"></a>Obsługa zestawu SDK klienta
-Oprócz usługi Azure Cosmos DB [Node.js](sql-api-sdk-node.md) interfejsu API, usługa Azure Cosmos DB ma [.NET](sql-api-sdk-dotnet.md), [platformy .NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [języka JavaScript ](http://azure.github.io/azure-documentdb-js/), i [Python SDK](sql-api-sdk-python.md) dla interfejsu API SQL. Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika mogą być tworzone i wykonywane przy użyciu dowolnej z tych zestawów SDK oraz. Poniższy przykład przedstawia sposób tworzenia i wykonywanie procedury przechowywanej za pomocą klienta platformy .NET. Należy zauważyć, jak przekazany do procedury składowanej w formacie JSON i odczytywania typów .NET.
+Oprócz usługi Azure Cosmos DB [Node.js](sql-api-sdk-node.md) interfejsu API, usługa Azure Cosmos DB ma [.NET](sql-api-sdk-dotnet.md), [platformy .NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [języka JavaScript ](sql-api-sdk-node.md), i [Python SDK](sql-api-sdk-python.md) dla interfejsu API SQL. Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika mogą być tworzone i wykonywane przy użyciu dowolnej z tych zestawów SDK oraz. Poniższy przykład przedstawia sposób tworzenia i wykonywanie procedury przechowywanej za pomocą klienta platformy .NET. Należy zauważyć, jak przekazany do procedury składowanej w formacie JSON i odczytywania typów .NET.
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ Wyzwalacze, w przeciwieństwie do procedur przechowywanych, nie można wykonać 
 W tym miejscu przed wyzwalacza do uruchamiania z tym żądaniem jest określony w nagłówku x-ms-documentdb-pre-trigger-include. Odpowiednio żadne po wyzwalacze są podane w nagłówku x-ms-documentdb-post-trigger-include. Przed i po wyzwalaczy może być określony dla danego żądania.
 
 ## <a name="sample-code"></a>Przykładowy kod
-Można znaleźć więcej przykładów kodu po stronie serwera (w tym [zbiorczego usuwania](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), i [aktualizacji](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) w [repozytorium GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Można znaleźć więcej przykładów kodu po stronie serwera (w tym [zbiorczego usuwania](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js), i [aktualizacji](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)) w [repozytorium GitHub](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples).
 
 Chcesz udostępnić swoje awesome procedury składowanej? przyczynia się do repozytorium i Utwórz żądanie ściągnięcia. 
 

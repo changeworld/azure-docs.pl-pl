@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: a6b987d9815cfabed6dd986a0d9842a97f5b5868
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2378a4d5bb7d7f52ee2e96224db01e5e386b4c46
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092056"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055849"
 ---
 # <a name="scale-database-resources"></a>Skalowanie zasobów bazy danych
 
@@ -38,10 +38,12 @@ Ponosząc niewielki miesięczny koszt, możesz utworzyć pierwszą aplikację na
 > Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów.
 >
 
-
 Pojedyncza baza danych SQL Azure Database obsługuje ręczną dynamiczną skalowalność, ale nie skalowanie automatyczne. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb.
 Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla pojedynczej bazy danych SQL Azure. Na przykład zobacz temat [Monitorowanie i skalowanie pojedynczej bazy danych SQL za pomocą programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
+Możesz zmienić [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.md) lub [charakterystyki — rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) w dowolnym momencie przy minimalnych przestojach do Twojej aplikacji (zwykle poniżej czterech sekund). W przypadku wielu firm i aplikacji możliwość tworzenia baz danych i dostosowywania wydajności na żądanie jest wystarczająca, zwłaszcza jeśli wzorce użycia są względnie przewidywalne. Jednak w przypadku nieprzewidywalnych wzorców zarządzanie kosztami i modelem biznesowym może być trudne. W tym scenariuszu należy użyć puli elastycznej z określoną liczbą jednostek Edtu, które są współużytkowane przez wiele baz danych w puli.
+
+![Wprowadzenie do usługi SQL Database: jednostki DTU z jedną bazą danych według warstwy i poziomu.](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 Wszystkich trzech wersjach usługi Azure SQL Database oferuje możliwość ich dynamicznie skalować bazy danych:
 -   W [pojedynczej bazy danych SQL Azure](sql-database-single-database-scale.md), można użyć dowolnego [jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) lub [— rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) modele, aby określić maksymalną ilość zasobów, które zostaną przypisane do każdej bazy danych.

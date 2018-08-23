@@ -1,40 +1,38 @@
 ---
-title: Pobierz dzienniki kubelet z usługi Kubernetes Azure (AKS)
-description: Pobieranie dzienników kubelet z węzłów klastra usługi Kubernetes Azure (AKS)
+title: Wyświetl agenta kubelet dzienników w usłudze Azure Kubernetes Service (AKS)
+description: Jak wyświetlić informacje dotyczące rozwiązywania problemów w dzienników agenta kubelet z węzłów usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 08/21/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 6fadc502812ea0d983b86c94914d86fcb21a54cd
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100174"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441952"
 ---
-# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników kubelet z węzłów klastra usługi Kubernetes Azure (AKS)
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników agenta kubelet z węzłów klastra Azure Kubernetes Service (AKS)
 
-Czasami może być konieczne pobieranie dzienników kubelet z węzła usługi Kubernetes Azure (AKS) na potrzeby rozwiązywania problemów. Ten dokument zawiera szczegóły jedną z opcji ściąganie tych dzienników.
+Czasami konieczne może być pobieranie *agenta kubelet* dzienników z węzła usługi Azure Kubernetes Service (AKS) w celu rozwiązywania problemów. W tym artykule pokazano, jak można użyć `journalctl` do wyświetlania *agenta kubelet* dzienniki.
 
 ## <a name="create-an-ssh-connection"></a>Utwórz połączenie SSH
 
-Najpierw należy utworzyć połączenie SSH z węzłem, na którym trzeba pobierać dzienników kubelet. Ta operacja została szczegółowo opisana w [SSH w węzłach klastra usługi Kubernetes Azure (AKS)] [ aks-ssh] dokumentu.
+Najpierw utwórz połączenie SSH z węzłem, w którym należy wyświetlić *agenta kubelet* dzienniki. Ta operacja została szczegółowo opisana w [SSH do węzłów klastra Azure Kubernetes Service (AKS)] [ aks-ssh] dokumentu.
 
 ## <a name="get-kubelet-logs"></a>Pobieranie dzienników agenta kubelet
 
-Po podłączeniu do węzła, uruchom następujące polecenie, aby pobierać dzienników kubelet.
-
-```azurecli-interactive
-journalctl -u kubelet -o cat
-```
-
-Przykładowe dane wyjściowe:
+Po nawiązaniu połączenia z węzłem, uruchom następujące polecenie, aby ściągnąć *agenta kubelet* dzienników:
 
 ```console
+sudo journalctl -u kubelet -o cat
+```
+
+Następujące przykładowe dane wyjściowe *agenta kubelet* dane dziennika:
+
+```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 I0508 12:26:27.943494    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 I0508 12:26:28.920125    8672 server.go:796] GET /stats/summary: (10.370874ms) 200 [[Ruby] 10.244.0.2:52292]
@@ -58,5 +56,10 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby uzyskać dodatkowe informacje dotyczące rozwiązywania problemów z głównej usługi Kubernetes, zobacz [Wyświetl dzienniki węzła głównego, w usłudze AKS rozwiązania Kubernetes][aks-master-logs].
+
 <!-- LINKS - internal -->
-[aks-ssh]: aks-ssh.md
+[aks-ssh]: ssh.md
+[aks-master-logs]: view-master-logs.md

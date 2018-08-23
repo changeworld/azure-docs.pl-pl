@@ -13,46 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 83436fe7f47c156f70995d66922e9fc0564ef872
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601948"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057120"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikatu AppSource dla usługi Azure Active Directory
+
 [Microsoft AppSource](https://appsource.microsoft.com/) jest docelowym dla użytkowników biznesowych do odnalezienia, spróbuj oraz zarządzanie aplikacjami SaaS line-of-business (SaaS, jak i dodatku do istniejących produktów SaaS firmy Microsoft).
 
-Aby wyświetlić listę samodzielnej aplikacji SaaS w usłudze AppSource, aplikacja musi zaakceptować logowanie jednokrotne z kont służbowych z firmy lub organizacji, która ma usługę Azure Active Directory. Proces logowania, należy użyć [OpenID Connect](v1-protocols-openid-connect-code.md) lub [OAuth 2.0](v1-protocols-oauth-code.md) protokołów. Integracja języka SAML nie jest akceptowana w przypadku certyfikacja usługi AppSource.
+Aby wyświetlić listę samodzielnej aplikacji SaaS w usłudze AppSource, aplikacja musi zaakceptować logowanie jednokrotne z kont służbowych z firmy lub organizacji, która ma usługi Azure Active Directory (Azure AD). Proces logowania, należy użyć [OpenID Connect](v1-protocols-openid-connect-code.md) lub [OAuth 2.0](v1-protocols-oauth-code.md) protokołów. Integracja języka SAML nie jest akceptowana w przypadku certyfikacja usługi AppSource.
 
 ## <a name="guides-and-code-samples"></a>Przewodniki i przykłady kodu
-Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji za pomocą usługi Azure Active Directory przy użyciu Identyfikatora Otwórz łączenie, postępuj zgodnie z naszymi przewodnikami i przykłady w kodu [przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md#get-started "Rozpoczynanie pracy z platformą Azure Usługi AD dla deweloperów").
+
+Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji z usługą Azure AD przy użyciu Identyfikatora Otwórz łączenie, postępuj zgodnie z naszymi przewodnikami i przykłady w kodu [przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md#get-started "Rozpoczynanie pracy z usługą Azure AD Deweloperzy").
 
 ## <a name="multi-tenant-applications"></a>Aplikacje wielodostępne
 
-Aplikacja, która akceptuje logowania użytkowników z firmy lub organizacji, które mają usługę Azure Active Directory bez konieczności osobnego wystąpienia, konfiguracji lub wdrażania jest znane jako *aplikację wielodostępną*. Usługa AppSource zaleca się, że aplikacje implementują wielodostępność, aby włączyć *jednym kliknięciem* bezpłatna wersja próbna.
+A *aplikację wielodostępną* to aplikacja, która akceptuje logowania użytkowników z firmy lub organizacji, które mają usługę Azure AD bez konieczności osobnego wystąpienia, konfiguracji lub wdrożenia. Usługa AppSource zaleca się, że aplikacje implementują wielodostępność, aby włączyć *jednym kliknięciem* bezpłatna wersja próbna.
 
-Aby włączyć obsługę wielu dzierżawców w swojej aplikacji:
-- Ustaw `Multi-Tenanted` właściwości `Yes` informacjami rejestrację aplikacji w [witryny Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (domyślnie aplikacje utworzone w witrynie Azure Portal są skonfigurowane jako *pojedynczejdzierżawy*)
-- Zaktualizuj kod w celu wysyłania żądań do "`common`" punktu końcowego (Zaktualizuj punkt końcowy z *https://login.microsoftonline.com/{yourtenant}* do *https://login.microsoftonline.com/common*)
-- W przypadku niektórych platform, takich jak ASP.NET należy również zaktualizować swój kod, aby zaakceptować wielu wystawców
+Aby włączyć wielu dzierżawców w swojej aplikacji, wykonaj następujące kroki:
+1. Ustaw `Multi-Tenanted` właściwości `Yes` informacjami rejestrację aplikacji w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Domyślnie aplikacje utworzone w witrynie Azure portal są skonfigurowane jako  *[pojedynczej dzierżawy](#single-tenant-applications)*.
+1. Zaktualizuj kod w celu wysyłania żądań do `common` punktu końcowego. Aby to zrobić, należy zaktualizować punkt końcowy z `https://login.microsoftonline.com/{yourtenant}` do `https://login.microsoftonline.com/common*`.
+1. W przypadku niektórych platform, takich jak ASP .NET należy również zaktualizować swój kod, aby zaakceptować wielu wystawców.
 
-Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz: [jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD), za pomocą wzorca aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md).
+Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz [jak zalogować dowolnego użytkownika usługi Azure Active Directory (Azure AD), za pomocą wzorca aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Aplikacje z jedną dzierżawą
-Aplikacje, które akceptują tylko operacje logowania użytkowników zdefiniowanych wystąpienia usługi Azure Active Directory są znane jako *aplikacji z jedną dzierżawą*. Użytkownicy zewnętrzni (w tym kont służbowych z innych organizacji lub konta osobistego) zalogować się do aplikacji pojedynczej dzierżawy, po dodaniu każdego użytkownika jako *konta gościa* z usługą Azure Active Directory wystąpienia aplikacja będzie zarejestrowana. Można dodać użytkowników jako konta gościa do usługi Azure Active Directory za pośrednictwem [ *współpracy B2B usługi Azure AD* ](../b2b/what-is-b2b.md) — i może być wykonywane [programowo](../../active-directory-b2c/code-samples.md). Po dodaniu użytkownika jako konta gościa do usługi Azure Active Directory wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, który musi zaakceptować zaproszenie, klikając łącze w wiadomości e-mail z zaproszeniem. Zaproszenia, które są wysyłane do dodatkowych użytkowników w organizacji zapraszającej będącego również członkiem organizacji partnera nie są wymagane, aby zaakceptować zaproszenie, aby zalogować się.
 
-Aby umożliwić aplikacji z jedną dzierżawą *skontaktuj się ze mną* środowiska, ale jeśli chcesz włączyć jednym kliknięciem / bezpłatna wersja próbna z zaleceniem usługi AppSource, włączanie wielodostępu na aplikacji zamiast tego.
+A *aplikacji z jedną dzierżawą* to aplikacja, która akceptuje tylko operacje logowania użytkowników zdefiniowanych Azure wystąpienia usługi AD. Użytkownicy zewnętrzni (w tym pracy lub kont służbowych z innych organizacji lub kont osobistych) zalogować się do aplikacji pojedynczej dzierżawy, po dodaniu każdego użytkownika jako konto gościa do wystąpienia usługi Azure AD, czy aplikacja jest zarejestrowana. 
 
+Można dodać użytkowników jako konta gościa do usługi Azure AD za pomocą [współpracy B2B usługi Azure AD](../b2b/what-is-b2b.md) i można to zrobić [programowo](../../active-directory-b2c/code-samples.md). Korzystając z B2B, użytkownicy mogą tworzyć portalu samoobsługowego, który nie wymaga zaproszenia do zarejestrowania. Aby uzyskać więcej informacji, zobacz [portalu samoobsługowego do obsługi współpracy B2B usługi Azure AD, Utwórz konto](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+
+Aby umożliwić aplikacji z jedną dzierżawą *skontaktuj się ze mną* środowiska, ale jeśli chcesz włączyć środowisko pojedynczego kliknij/bezpłatnych wersji próbnej, z zaleceniem usługi AppSource, włączanie wielodostępu na aplikacji zamiast tego.
 
 ## <a name="appsource-trial-experiences"></a>Środowiska wersji próbnej usługi AppSource
 
 ### <a name="free-trial-customer-led-trial-experience"></a>Bezpłatna wersja próbna (środowisko wersji próbnej prowadzonej przez klienta) 
-*Wersji próbnej prowadzonej przez klienta* to środowisko, z zaleceniem usługi AppSource, ponieważ oferuje on dostęp jednym kliknięciem, do aplikacji. Poniżej w jaki sposób to środowisko wygląda następująco:<br/><br/>
+
+Wersji próbnej prowadzonej przez klienta to środowisko, z zaleceniem usługi AppSource, ponieważ oferuje on dostęp jednym kliknięciem, do aplikacji. Poniżej w jaki sposób to środowisko wygląda następująco:<br/><br/>
 
 <table >
 <tr>
@@ -68,7 +73,8 @@ Aby umożliwić aplikacji z jedną dzierżawą *skontaktuj się ze mną* środow
 </table>
 
 ### <a name="contact-me-partner-led-trial-experience"></a>Kontakt ze mną (środowisko wersji próbnej prowadzonej przez partnera)
-*Partnera wersja próbna* mogą być używane podczas ręcznego lub długoterminowej operacja ma miejsce aprowizacja użytkownika / company: na przykład Twoja aplikacja potrzebuje do aprowizowania maszyn wirtualnych, wystąpień bazy danych lub operacji który zająć dużo czasu. W takim przypadku po użytkownik wybiera *"Żądania okres próbny"* przycisk i wypełnia formularz AppSource wysyła informacje kontaktowe użytkownika. Po otrzymaniu tych informacji, możesz następnie aprowizować środowiska i Wyślij instrukcje użytkownika dotyczące dostępu próbnego środowisko do:<br/><br/>
+
+Podczas ręcznego lub długoterminowej operacja musi zostać przeprowadzona do aprowizacja użytkownika/firmy — na przykład, aplikacja potrzebuje aprowizować maszyny wirtualne, wystąpień bazy danych lub operacji, które zająć dużo czasu, mogą użyć środowiska próbne partnera. W takim przypadku po użytkownik wybiera **żądania wersji próbnej** przycisk i wypełnia formularz AppSource wysyła informacje kontaktowe użytkownika. Po otrzymaniu tych informacji możesz następnie aprowizować środowiska i Wyślij instrukcje użytkownika dotyczące dostępu próbnego środowisko do:<br/><br/>
 
 <table valign="top">
 <tr>
@@ -101,17 +107,18 @@ Aby umożliwić aplikacji z jedną dzierżawą *skontaktuj się ze mną* środow
 </table>
 
 ### <a name="more-information"></a>Więcej informacji
+
 Aby uzyskać więcej informacji na temat doświadczeń z wersji próbnej usługi AppSource, zobacz [ten film wideo](https://aka.ms/trialexperienceforwebapps). 
  
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat tworzenia aplikacji, które obsługują usługę Azure Active Directory, logowania, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) 
-
+- Aby uzyskać więcej informacji na temat tworzenia aplikacji, które obsługują usługę Azure AD, logowania, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Aby uzyskać informacje na temat wyświetlić listę aplikacji SaaS w usłudze AppSource, zobacz [informacje dla partnerów usługi AppSource](https://appsource.microsoft.com/partners)
 
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
-W przypadku integracji usługi Azure Active Directory, używamy [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) ze społecznością świadczenia pomocy technicznej. 
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+W przypadku integracji z usługą Azure AD, używamy [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) ze społecznością świadczenia pomocy technicznej. 
 
 Zdecydowanie zalecamy najpierw zadać pytanie w witrynie Stack Overflow i przeglądanie istniejących problemów, aby zobaczyć, jeśli ktoś poprosił pytanie przed. Upewnij się, że pytania lub komentarze są oznaczane za pomocą [ `[azure-active-directory]` i `[appsource]` ](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 

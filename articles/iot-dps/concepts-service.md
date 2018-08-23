@@ -1,6 +1,6 @@
 ---
-title: Pojęcia dotyczące usługi Azure IoT Hub urządzenia inicjowania obsługi usługi | Dokumentacja firmy Microsoft
-description: W tym artykule opisano inicjowania obsługi administracyjnej pojęcia dotyczące usługi specyficzne dla urządzeń z punktu dystrybucji i Centrum IoT
+title: Pojęcia dotyczące usługi Azure IoT Hub Device Provisioning Service | Dokumentacja firmy Microsoft
+description: W tym artykule opisano inicjowania obsługi administracyjnej pojęcia dotyczące usługi specyficzne dla urządzeń z usługą Device Provisioning i IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
@@ -8,68 +8,71 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ca2ea3c000e811223ded3022021c2516f547ae66
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628304"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060726"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>Pojęcia dotyczące inicjowania obsługi usługi IoT Hub urządzeń
+# <a name="iot-hub-device-provisioning-service-concepts"></a>Pojęcia dotyczące IoT Hub Device Provisioning Service
 
-Usługa inicjowania obsługi urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, które są używane do konfigurowania urządzenia bezobsługową alokacji dla określonego Centrum IoT. Za pomocą usługi udostępniania urządzenia można [auto-provision](concepts-auto-provisioning.md) milionów urządzeń w sposób bezpieczny i skalowalności.
+IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, możesz użyć do skonfigurowania urządzenia i bezobsługowa aprowizacja w określonej usługi IoT hub. Przy użyciu usługi Device Provisioning, można [automatycznej obsługi](concepts-auto-provisioning.md) milionów urządzeń w bezpieczny i skalowalny sposób.
 
-Inicjowanie obsługi administracyjnej urządzeń jest procesem dwie części. Pierwsza część jest nawiązywania początkowego połączenia między urządzeniem a rozwiązaniem IoT przez *rejestrowanie* urządzenia. Druga część stosuje poprawne *konfiguracji* do urządzenia, zależnie od konkretnych wymogów obowiązujących w rozwiązaniu. Po wykonaniu obu czynności urządzenie zostało całkowicie *elastycznie*. Usługa Device Provisioning automatyzuje oba kroki, aby zapewnić bezproblemowe środowisko aprowizowania dla urządzenia.
+Inicjowanie obsługi administracyjnej urządzeń jest procesem dwóch części. Pierwsza część jest ustanowienie początkowego połączenia między urządzeniem i rozwiązań IoT przez *rejestrowanie* urządzenia. Druga część jest stosowanie właściwego *konfiguracji* na urządzeniu, w zależności od określonych wymagań rozwiązania. Po wykonaniu obu kroków urządzenie zostało całkowicie *aprowizowane*. Usługa Device Provisioning automatyzuje oba kroki, aby zapewnić bezproblemowe środowisko aprowizowania dla urządzenia.
 
-Ten artykuł zawiera omówienie pojęć inicjowania obsługi administracyjnej najbardziej odpowiednią do zarządzania *usługi*. W tym artykule jest najodpowiedniejsze do osoby objętego [kroku konfiguracji chmury](about-iot-dps.md#cloud-setup-step) pobierania urządzenie jest gotowe do wdrożenia.
+Ten artykuł zawiera omówienie koncepcji aprowizacji, najlepiej dostosowanymi do zarządzania *usługi*. Ten artykuł jest najważniejsze dla osób zajmujących się [kroku konfiguracji chmury](about-iot-dps.md#cloud-setup-step) jakim urządzenie jest gotowe do wdrożenia.
 
-## <a name="service-operations-endpoint"></a>Punkt końcowy operacji usługi
+## <a name="service-operations-endpoint"></a>Punkt końcowy usługi operations
 
-Punkt końcowy usługi operacji jest punkt końcowy Zarządzanie ustawieniami usługi i konserwowania listy rejestracji. Ten punkt końcowy jest używana tylko przez administratora usługi; nie jest on używany przez urządzenia.
+Punkt końcowy usługi operations jest punkt końcowy zarządzania ustawienia usługi i konserwacji na liście rejestracji. Ten punkt końcowy jest używany tylko przez administratora usługi; nie jest używana przez urządzenia.
 
-## <a name="device-provisioning-endpoint"></a>Urządzenie inicjowania obsługi administracyjnej punktu końcowego
+## <a name="device-provisioning-endpoint"></a>Punkt końcowy aprowizacji urządzenia
 
-Punkt końcowy inicjowania obsługi administracyjnej urządzeniu jest jeden punkt końcowy, wszystkie urządzenia używanego do automatycznego inicjowania obsługi. Adres URL jest taka sama dla wszystkich inicjowania obsługi administracyjnej wystąpień usługi, aby wyeliminować potrzebę reflash urządzeniami przy użyciu nowych informacji o połączeniu w scenariuszach łańcucha dostaw. [Identyfikator zakresu](#id-scope) zapewnia izolacji dzierżawców.
+Punkt końcowy aprowizacji urządzenia jest w jednym punkcie końcowym wszystkie urządzenia na użytek automatycznego aprowizowania. Adres URL jest taka sama dla wszystkich inicjowania obsługi administracyjnej wystąpień usługi, aby wyeliminować konieczność reflash urządzeń przy użyciu nowych informacji o połączeniu w scenariuszach łańcucha dostaw. Zakres identyfikatorów zapewnia izolację dzierżawy.
 
 ## <a name="linked-iot-hubs"></a>Połączone centra IoT Hub
 
-Usługa inicjowania obsługi urządzeń można udostępnić tylko urządzenia do centra IoT, które zostały połączone z jej. Połączenie usługi inicjowania obsługi urządzeń Centrum IoT zapewnia usługi uprawnienia odczytu/zapisu w rejestrze urządzenia Centrum IoT; łącze usługi inicjowania obsługi urządzeń można zarejestrować identyfikator urządzenia i ustawienia początkowej konfiguracji w dwie urządzenia. Połączone centra IoT można w dowolnym regionie Azure. Koncentratory w innych subskrypcji może połączyć inicjowania obsługi usługi.
+Usługi Device Provisioning Service można aprowizować tylko urządzeń do centrów IoT Hub, połączone do niego. Łączenie Centrum IoT hub na wystąpienie usługi Device Provisioning service zapewnia usługi uprawnienia odczytu/zapisu do rejestru urządzeń usługi IoT hub; za pomocą linku usługi Device Provisioning service można zarejestrować identyfikator urządzenia i ustawienia początkowej konfiguracji w bliźniaczej reprezentacji urządzenia. Połączone centra IoT Hub może występować w dowolnym regionie systemu Azure. Możesz połączyć koncentratory w innych subskrypcjach, do usługi aprowizacji.
 
 ## <a name="allocation-policy"></a>Zasady alokacji
 
-Ustawienie poziomu usługi określa, jak usługa inicjowania obsługi urządzeń przypisuje urządzenia do Centrum IoT. Są obsługiwane trzy zasady alokacji:
-* **Równomiernie ważone dystrybucji**: połączone centra IoT prawdopodobnie jednakowo urządzenia udostępnione do nich. Ustawieniem domyślnym. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie.
-* **Można uzyskać najmniejsze opóźnienia**: urządzeń są udostępniane w Centrum IoT z najniższym opóźnieniu na urządzeniu. Jeśli wiele połączone centra IoT zapewni tego samego uzyskać najmniejsze opóźnienia, inicjowania obsługi usługi skróty urządzeń między tymi koncentratorami
-* **Statyczne konfiguracji za pomocą listy rejestracji**: specyfikacja żądaną Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji poziomu usług.
+Ustawienie poziomie usługi określa, jak usługi Device Provisioning Service przypisuje urządzeń do usługi IoT hub. Są obsługiwane trzy zasady alokacji:
 
-## <a name="enrollment"></a>Rejestracji
+* **Dystrybucja z równymi wagami**: połączone centra IoT Hub jest jednakowo prawdopodobna, urządzeń, które mu udostępnionych. Ustawieniem domyślnym. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie.
 
-Rejestracja jest rekord urządzeń lub grup urządzeń, które mogą rejestrować się za pośrednictwem automatycznego inicjowania obsługi administracyjnej. Rekord rejestracji zawiera informacje dotyczące urządzenia lub grupy urządzeń, w tym:
-- [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) używany przez urządzenie
-- opcjonalne żądanej konfiguracji początkowej
-- żądany Centrum IoT
+* **Najmniejsze opóźnienie**: urządzenia są aprowizowane do Centrum IoT hub z najmniejszym opóźnieniem do urządzenia. Jeśli wiele połączone centra IoT Hub będzie podać takie samo opóźnienie najniższy, inicjowania obsługi usługi wyznacza wartość skrótu urządzeń w tych centrach
+
+* **Konfiguracja statyczna za pośrednictwem listy rejestracji**: określenie żądanego Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji na poziomie usługi.
+
+## <a name="enrollment"></a>Rejestracja
+
+Rejestracja to rekord urządzeń lub grup urządzeń, które może zarejestrować się za pomocą automatycznej aprowizacji. Rekord rejestracji zawiera informacje o urządzeniu lub grupie urządzeń, w tym:
+- [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) wykorzystywany przez to urządzenie
+- opcjonalne początkowe wymaganą konfiguracją
+- wymagane Centrum IoT hub
 - Identyfikator żądanego urządzenia
 
-Istnieją dwa rodzaje rejestracji obsługiwane przez usługi inicjowania obsługi urządzeń:
+Istnieją dwa rodzaje rejestracji obsługiwane przez usługę Device Provisioning:
 
-### <a name="enrollment-group"></a>Grupa rejestracji
+### <a name="enrollment-group"></a>Grupy rejestracji
 
-Grupa rejestracji jest grupy urządzeń mających mechanizm określone poświadczenie. Wszystkie urządzenia w grupie rejestracji stanowi certyfikatów X.509, które zostały podpisane przez ten sam główny lub pośredni urząd certyfikacji. Grupy rejestracji można używać tylko mechanizm zaświadczania X.509. Nazwa grupy rejestracji i nazwę certyfikatu musi być alfanumeryczny, małe litery i może zawierać łączników.
-
-> [!TIP]
-> Firma Microsoft zaleca używanie grupy rejestracji dużej liczby urządzeń mających żądanej konfiguracji początkowej lub urządzeń wszystkich przejść do tej samej dzierżawy.
-
-### <a name="individual-enrollment"></a>Poszczególne rejestracji
-
-Wpis dla pojedynczego urządzenia, które mogą zarejestrować jest poszczególnych rejestracji. Poszczególne rejestracji może używać certyfikatów X.509 liścia lub tokeny sygnatury dostępu Współdzielonego (z modułem TPM fizycznych lub wirtualnych) jako mechanizmy zaświadczania. Identyfikator rejestracji w poszczególnych rejestracji jest alfanumeryczne, małe litery i może zawierać łączniki. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.
+Grupy rejestracji jest grupy urządzeń, które współużytkują specyficzny mechanizm zaświadczania. Wszystkie urządzenia w grupie rejestracji przedstawiają certyfikatów X.509, które zostały podpisane przez ten sam główny lub pośredni urząd certyfikacji (CA). Grupy rejestracji można używać tylko mechanizm zaświadczania X.509. Nazwa grupy i nazwę certyfikatu musi być alfanumeryczne, małe litery i może zawierać łączników.
 
 > [!TIP]
-> Zalecamy używanie poszczególnych rejestracji dla urządzeń, które wymagają szczególnej konfiguracji początkowej lub urządzeń, które tylko uwierzytelniania z użyciem tokeny sygnatury dostępu Współdzielonego za pośrednictwem zaświadczenia modułu TPM.
+> Zalecamy używanie grupę rejestracji dla dużej liczby urządzeń, które współużytkują wybranej konfiguracji początkowej lub urządzeń wszystkich przejść do tej samej dzierżawy.
+
+### <a name="individual-enrollment"></a>Rejestracja indywidualna
+
+Wpis dla jednego urządzenia, które może zarejestrować jest rejestracji indywidualnej. Rejestracje indywidualne mogą używać certyfikatów liścia X.509 lub tokenów SAS (z fizycznym lub wirtualnym module TPM) jako mechanizmów zaświadczania. Identyfikator rejestracji w rejestracji indywidualnej alfanumeryczne, małe litery i może zawierać łączników. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.
+
+> [!TIP]
+> Firma Microsoft zaleca używanie rejestracji indywidualnych w przypadku urządzeń, które wymagają unikatowej konfiguracji początkowej lub urządzeń, które mogą tylko uwierzytelniać przy użyciu tokenów SAS za pośrednictwem zaświadczenia modułu TPM.
 
 ## <a name="registration"></a>Rejestracja
 
-Rejestracja jest rekord pomyślnie rejestrowanie/inicjowania obsługi urządzeń do Centrum IoT za pomocą usługi udostępniania urządzeń. Rejestrację rekordów są tworzone automatycznie. można go usunąć, ale nie można zaktualizować.
+Rejestracja to rekord urządzenia pomyślnie rejestrowanie/Inicjowanie obsługi administracyjnej do usługi IoT Hub przy użyciu usługi Device Provisioning Service. Rejestrację rekordów są tworzone automatycznie. można je usunąć, ale nie można ich zaktualizować.
 
 ## <a name="operations"></a>Operacje
 
-Operacje są rozliczeniowym jednostki usługi inicjowania obsługi urządzeń. Jedna operacja jest pomyślne zakończenie jedną instrukcję do usługi. Operacje obejmują rejestrowanie i ponowne rejestrowanie urządzeń, a także zmiany po stronie serwera, takie jak dodawanie i aktualizowanie wpisów na liście rejestracji.
+Operacje to jednostka rozliczeniowa usługi aprowizacji urządzeń. Jedna operacja jest pomyślne zakończenie jedną instrukcję do usługi. Operacje obejmują rejestrowanie i ponowne rejestrowanie urządzeń, a także zmiany po stronie serwera, takie jak dodawanie i aktualizowanie wpisów na liście rejestracji.

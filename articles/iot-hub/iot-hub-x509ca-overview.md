@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185496"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058833"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji
 
@@ -64,7 +64,7 @@ Tutaj dowiesz się jak [zarejestrować certyfikat urzędu certyfikacji](iot-hub-
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Jak utworzyć urządzenie w Centrum IoT Hub
 
-Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga Niech wiedzieć, jakie urządzenia można oczekiwać.  Możesz to zrobić, tworząc wpis urządzenia w rejestrze urządzeń usługi IoT Hub.  Proces ten jest zautomatyzować, korzystając z usługi IoT Hub [usługi Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS). 
+Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga Niech wiedzieć, jakie urządzenia można oczekiwać.  Możesz to zrobić, tworząc wpis urządzenia w rejestrze urządzeń usługi IoT Hub.  Proces ten jest zautomatyzować, korzystając z usługi IoT Hub [usługi Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
 Tutaj dowiesz się jak [ręcznie utworzyć urządzenie w usłudze IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
 

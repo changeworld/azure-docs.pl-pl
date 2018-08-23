@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 725a705f746bbf5e32fcc410ba4153ac29e3fc3d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003857"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057105"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 
@@ -58,7 +58,7 @@ Podczas tworzenia poszczególnych ról programu Visual Studio dodaje rozszerzeni
 
 ## <a name="setup-diagnostics-extension"></a>Konfigurowanie rozszerzenia diagnostyki
 
-Pierwsze, jeśli nie masz **klasycznego** konta magazynu, [utworzyć](../storage/common/storage-create-storage-account.md#create-a-storage-account). Upewnij się, że konto magazynu jest tworzone za pomocą **klasycznego modelu wdrażania** określony.
+Pierwsze, jeśli nie masz **klasycznego** konta magazynu, [utworzyć](../storage/common/storage-quickstart-create-account.md). Upewnij się, że konto magazynu jest tworzone za pomocą **klasycznego modelu wdrażania** określony.
 
 Następnie przejdź do **konto magazynu (klasyczne)** zasobów. Wybierz **ustawienia** > **klucze dostępu** i skopiuj **podstawowe parametry połączenia** wartość. Ta wartość jest potrzebna dla usługi w chmurze. 
 

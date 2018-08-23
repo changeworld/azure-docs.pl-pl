@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1bb96821b61647f5dfad54c8b0cb6248eb0db4af
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128568"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059249"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
+
+> [!NOTE]
+> W tym artykule opisano sposób analizowania użycia danych w usłudze Log Analytics.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
+> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](log-analytics-manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
+> - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
+
 Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, źródeł, z których zostały one wysłane, oraz typów danych.  Użyj pulpitu nawigacyjnego **Użycie usługi Log Analytics** do przeglądania i analizowania użycia danych. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
 
 ## <a name="understand-the-usage-dashboard"></a>Objaśnienie pulpitu nawigacyjnego Użycie

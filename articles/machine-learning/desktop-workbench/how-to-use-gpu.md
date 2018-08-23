@@ -1,6 +1,6 @@
 ---
 title: Sposób użycia procesora GPU dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób użycia graficznego przetwarzania jednostki GPU do uczenia się sieci neuronowej głębokości w Azure Machine Learning Workbench.
+description: W tym artykule opisano sposób używania graficzny przetwarzania jednostek (GPU) to w opracowywaniu głębokich sieciach neuronowych w aplikacji Azure Machine Learning Workbench.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,31 +11,31 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 852f514a36ea640f478c5cc5ebbb137ca962703a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116059"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056079"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Sposób użycia procesora GPU w usłudze Azure Machine Learning
-Graficzny przetwarzania jednostka GPU jest powszechnie używany do przetworzenia w praktyce znacznym zadań, które zwykle mogą wystąpić w przypadku uczenie niektórych modeli sieci neuronowej głębokość. Przy użyciu GPU, można znacznie skrócić czas szkolenia modeli. W tym dokumencie zostanie przedstawiony sposób konfigurowania środowiska roboczego uczenia Maszynowego Azure do użycia [DSVM (danych maszyny wirtualnej nauki)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) wyposażone GPU jako cel wykonywania. 
+Graficzny przetwarzania jednostki (GPU) powszechnie używanych przetwarzania zadań wymaga dużej mocy obliczeniowej, które zazwyczaj mogą wystąpić podczas uczenia modeli niektórych sieci neuronowej. Za pomocą procesorów GPU, można znacznie zmniejszyć czas szkolenie modeli. W tym dokumencie, dowiesz się, jak skonfigurować aplikację Azure ML Workbench, aby użyć [DSVM (maszyna wirtualna do nauki o danych)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) wyposażone w procesory GPU jako element docelowy wykonywania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Aby kroków opisanych w tym przewodnik, musisz najpierw [zainstalować Azure ML Workbench](../service/quickstart-installation.md).
-- Musisz mieć dostęp do komputerów z NVidia GPU.
-    - Skrypty można uruchomić bezpośrednio na komputerze lokalnym (Windows lub macOS) z GPU.
-    - Można również uruchamiać skrypty w kontenerze Docker na maszynie z GPU.
+- Do wykonania kroków w tym przewodniku, trzeba wcześniej [zainstalować aplikację Azure ML Workbench](../service/quickstart-installation.md).
+- Musisz mieć dostęp do komputerów wyposażonych w procesory GPU NVidia.
+    - Można uruchamiać skrypty bezpośrednio na komputerze lokalnym (Windows lub macOS) za pomocą procesorów GPU.
+    - Można również uruchamiać skrypty w kontenerze platformy Docker na maszynie z systemem Linux za pomocą procesorów GPU...
 
-## <a name="execute-in-local-environment-with-gpus"></a>Wykonaj w _lokalnego_ środowisko z GPU
-Można zainstalować usługi Azure ML Workbench na komputerze wyposażonym GPU i wykonać _lokalnego_ środowiska. Może to być:
-- Fizyczny komputer z systemem Windows lub macOS.
-- Wirtualna systemu Windows (maszyna wirtualna), takich jak DSVM systemu Windows zainicjowana przy użyciu szablonu Azure NC serii maszyn wirtualnych.
+## <a name="execute-in-local-environment-with-gpus"></a>Wykonaj w _lokalnego_ środowiska za pomocą procesorów GPU
+Można zainstalować aplikację Azure ML Workbench na komputerze wyposażonym za pomocą procesorów GPU i wykonywania względem _lokalnego_ środowiska. Może to być:
+- Fizyczny komputer Windows lub macOS.
+- VM Windows (maszyna wirtualna), takie jak Windows DSVM aprowizowane przy użyciu szablonu maszyny wirtualne z serii NC platformy Azure.
 
-W tym przypadku są wymagane w konsoli usługi Azure ML Workbench specjalnej konfiguracji. Po prostu upewnij się, że masz wszystkie niezbędne sterowniki, zestaw narzędzi i maszyny z obsługą procesora GPU uczenia biblioteki zainstalowane lokalnie. Po prostu wykonać _lokalnego_ środowiska umożliwiający środowiska uruchomieniowego języka Python bezpośrednio dostęp do lokalnych sprzętu procesora GPU.
+W tym przypadku są wymagane w aplikacji Azure ML Workbench specjalnej konfiguracji. Po prostu upewnij się, że masz wszystkie niezbędne sterowniki, zestaw narzędzi i obsługujące procesor GPU usługi machine learning biblioteki zainstalowane lokalnie. Po prostu Działaj _lokalnego_ środowisko, w której środowisko uruchomieniowe języka Python można uzyskać dostęp do lokalnego sprzęcie procesora GPU.
 
-1. Otwórz AML Workbench. Przejdź do **pliku** i **Otwórz okno wiersza polecenia**. 
-2. Z wiersza polecenia Zainstaluj strukturę włączone GPU głębokie learning jak kognitywnych zestaw narzędzi firmy Microsoft, TensorFlow i itp. Na przykład:
+1. Otwórz AML aplikacji Workbench. Przejdź do **pliku** i **Otwórz wiersz polecenia**. 
+2. Z wiersza polecenia należy zainstalować uczenia głębokiego z włączonymi procesorami GPU struktury, takiej jak Microsoft Cognitive Toolkit, TensorFlow i itp. Na przykład:
 
 ```batch
 REM install latest TensorFlow with GPU support
@@ -45,48 +45,48 @@ REM install Microsoft Cognitive Toolkit 2.5 with GPU support on Windows
 C:\MyProj> pip install https://cntk.ai/PythonWheel/GPU/cntk_gpu-2.5.1-cp35-cp35m-win_amd64.whl
 ```
 
-3. Pisanie kodu języka Python, który wykorzystuje dokładnego uczenia bibliotek.
-4. Wybierz _lokalnego_ środowiska obliczeniowe i wykonanie kodu języka Python.
+3. Pisanie kodu w języku Python, który korzysta z bibliotek do uczenia głębokiego.
+4. Wybierz _lokalnego_ jako środowisko obliczeniowe i wykonywanie kodu w języku Python.
 
 ```batch
 REM execute Python script in local environment
 C:\MyProj> az ml experiment submit -c local my-deep-learning-script.py
 ```
 
-## <a name="execute-in-docker-environment-on-linux-vm-with-gpus"></a>Wykonaj w _docker_ środowiska na maszynie Wirtualnej systemu Linux z GPU
-Azure ML Workbench obsługują także wykonanie w Docker w maszynie Wirtualnej systemu Linux platformy Azure. W tym miejscu masz doskonałe rozwiązanie do uruchomienia zadań praktyce znacznym na element zaawansowanych sprzęt wirtualny i zapłać tylko za użycie przez wyłączenie, po zakończeniu. Zasadniczo jest możliwe użycie procesorów graficznych maszyny wirtualnej systemu Linux, DSVM systemem Ubuntu zawiera wymagane sterowniki CUDA i wstępnie zainstalowanymi bibliotekami znacznie ułatwiając konfiguracji. Wykonaj następujące czynności:
+## <a name="execute-in-docker-environment-on-linux-vm-with-gpus"></a>Wykonaj w _docker_ środowiska na maszynie Wirtualnej z systemem Linux za pomocą procesorów GPU
+Usługa Azure ML Workbench również obsługiwać wykonywania na platformie Docker na maszynie Wirtualnej systemu Linux platformy Azure. W tym miejscu masz świetnym rozwiązaniem umożliwiającym uruchamianie zadań wymaga dużej mocy obliczeniowej na elemencie silny sprzęt wirtualny i płać tylko za użycie przez wyłączenie, po zakończeniu. Zasadniczo jest możliwe użycie procesorów GPU na dowolnej maszynie wirtualnej systemu Linux, maszyny wirtualnej DSVM oparta na systemie Ubuntu dołączono wymagane sterowniki CUDA i wstępnie zainstalowanymi bibliotekami dzięki czemu konfiguracji. Wykonaj poniższe kroki:
 
-### <a name="create-a-ubuntu-based-linux-data-science-virtual-machine-in-azure"></a>Utwórz maszynę wirtualną nauki danych opartych na Ubuntu Linux na platformie Azure
-1. Otwórz przeglądarkę sieci web i przejdź do [portalu Azure](https://portal.azure.com)
+### <a name="create-a-ubuntu-based-linux-data-science-virtual-machine-in-azure"></a>Utwórz maszynę wirtualną do nauki o danych opartych na systemie Ubuntu Linux na platformie Azure
+1. Otwórz przeglądarkę internetową i przejdź do [witryny Azure portal](https://portal.azure.com)
 
 2. Wybierz **+ nowy** po lewej stronie portalu.
 
-3. Wyszukaj "Data nauki maszyny wirtualnej dla systemu Linux (Ubuntu)" w witrynie marketplace.
+3. Wyszukaj "Maszyny wirtualnej analizy danych dla systemu Linux (Ubuntu)" w witrynie marketplace.
 
-4. Kliknij przycisk **Utwórz** utworzyć DSVM Ubuntu.
+4. Kliknij przycisk **Utwórz** do utworzenia maszyny wirtualnej DSVM z systemem Ubuntu.
 
-5. Wypełnij **podstawy** formularza z wymaganych informacji.
-Podczas wybierania lokalizacji dla maszyny Wirtualnej, należy pamiętać, że procesor GPU maszyny wirtualne są dostępne tylko w określonych regionach platformy Azure, na przykład **południowo-środkowe stany**. Zobacz [obliczeniowe produkty, które są dostępne w regionie](https://azure.microsoft.com/regions/services/).
+5. Wypełnij **podstawy** formularz, podając wymagane informacje.
+Podczas wybierania lokalizacji dla maszyny Wirtualnej, należy pamiętać, że procesora GPU maszyny wirtualne są dostępne tylko w niektórych regionach platformy Azure, na przykład **południowo-środkowe stany USA**. Zobacz [obliczenia dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
 Kliknij przycisk OK, aby zapisać **podstawy** informacji.
 
-6. Wybierz rozmiar maszyny wirtualnej. Wybierz jeden z rozmiarów z prefiksem NC maszyn wirtualnych z mikroukłady NVidia GPU.  Kliknij przycisk **Wyświetl wszystko** Aby zapoznać się z pełną listą zgodnie z potrzebami. Dowiedz się więcej o [wyposażone w procesor GPU maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+6. Wybierz rozmiar maszyny wirtualnej. Wybierz jeden z rozmiary z prefiksem przez kontroler sieci maszyn wirtualnych są wyposażone w procesor GPU NVidia mikroukłady.  Kliknij przycisk **Wyświetl wszystko** aby zobaczyć pełną listę, stosownie do potrzeb. Dowiedz się więcej o [wyposażone w procesor GPU maszyny wirtualne platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
-7. Zakończ pozostałe ustawienia i przejrzyj informacje o zakupie. Kliknij przycisk zakupu, aby utworzyć maszynę Wirtualną. Zanotuj adres IP przydzielone do maszyny wirtualnej. 
+7. Zakończ pozostałych ustawień i przejrzyj informacje o zakupie. Kliknij opcję zakupu, aby utworzyć maszynę Wirtualną. Zwróć uwagę na adres IP z przydzielonej do maszyny wirtualnej. 
 
-### <a name="create-a-new-project-in-azure-ml-workbench"></a>Utwórz nowy projekt w Workbench uczenia Maszynowego Azure 
-Można użyć _MNIST klasyfikacji za pomocą TensorFlow_ przykład lub _MNIST klasyfikowania dataset z CNTK_ przykład.
+### <a name="create-a-new-project-in-azure-ml-workbench"></a>Utwórz nowy projekt w aplikacji Azure ML Workbench 
+Możesz użyć _klasyfikowania mnist ręcznie ZAPISANYCH przy użyciu TensorFlow_ przykład lub _zestawu klasyfikowania mnist ręcznie ZAPISANYCH danych za pomocą CNTK_ przykład.
 
-### <a name="create-a-new-compute-target"></a>Utwórz nowy obiekt docelowy obliczeniowe
-Uruchom wiersz polecenia z Workbench uczenia Maszynowego Azure. Wprowadź następujące polecenie. Zastąp tekst zastępczy w poniższym przykładzie własne wartości Nazwa, adres IP, nazwę użytkownika i hasło. 
+### <a name="create-a-new-compute-target"></a>Utwórz nowy obiekt docelowy obliczeń
+Uruchom wiersz polecenia z aplikacji Azure ML Workbench. Wprowadź następujące polecenie. Przy użyciu własnych wartości, aby uzyskać nazwę, adres IP, nazwy użytkownika i hasło, należy zastąpić tekst symbolu zastępczego w poniższym przykładzie. 
 
 ```batch
 C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "my_dsvm_ip_address" --username "my_name" --password "my_password" 
 ```
 
-### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Konfigurowanie usługi Azure ML Workbench do dostępu do procesora GPU
-Wróć do projektu i Otwórz **widoku pliku**i trafień **Odśwież** przycisku. Teraz można zobaczyć dwa nowe pliki konfiguracji `my_dsvm.compute` i `my_dsvm.runconfig`.
+### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Konfigurowanie usługi Azure ML Workbench dostęp do procesora GPU
+Wróć do projektu i Otwórz **widok pliku**i kliknij przycisk **Odśwież** przycisku. Teraz możesz zobaczyć dwa nowe pliki konfiguracji `my_dsvm.compute` i `my_dsvm.runconfig`.
  
-Otwórz `my_dsvm.compute`. Zmień `baseDockerImage` do `microsoft/mmlspark:plus-gpu-0.7.9` i Dodaj nowy wiersz `nvidiaDocker: true`. Dlatego ten plik powinien mieć następujące dwa wiersze:
+Otwórz `my_dsvm.compute`. Zmiana `baseDockerImage` do `microsoft/mmlspark:plus-gpu-0.7.9` i Dodaj nowy wiersz `nvidiaDocker: true`. Więc ten plik powinien zawierać następujące dwa wiersze:
  
 ```yaml
 ...
@@ -94,15 +94,15 @@ baseDockerImage: microsoft/mmlspark:plus-gpu-0.9.9
 nvidiaDocker: true
 ```
  
-Teraz otworzyć `my_dsvm.runconfig`, zmień `Framework` wartość z `PySpark` do `Python`. Jeśli nie widzisz ten wiersz, dodaj go, ponieważ wartość domyślna będzie `PySpark`.
+Teraz Otwórz `my_dsvm.runconfig`, zmień `Framework` wartość z `PySpark` do `Python`. Jeśli nie widzisz ten wiersz ją dodać, ponieważ wartość domyślna będzie `PySpark`.
 
 ```yaml
 "Framework": "Python"
 ```
-### <a name="reference-deep-learning-framework"></a>Odwołanie głębokie Learning Framework 
-Otwórz `conda_dependencies.yml` plików i upewnij się, że używasz wersji procesora GPU dokładnego learning framework pakietów języka Python. Przykładowych projektach listy wersji procesora CPU, więc należy wprowadzić tę zmianę.
+### <a name="reference-deep-learning-framework"></a>Platforma do uczenia głębokiego odwołania 
+Otwórz `conda_dependencies.yml` pliku i upewnij się, używają procesorów GPU wersję framework pakiety języka Python do uczenia głębokiego. Przykładowe projekty listę wersji procesora CPU, więc trzeba wprowadzić tę zmianę.
 
-Przykład TensorFlow: 
+Przykład dotyczący TensorFlow: 
 ```
 name: project_environment
 dependencies:
@@ -111,7 +111,7 @@ dependencies:
   - tensorflow-gpu
 ```
 
-Przykład kognitywnych zestaw narzędzi firmy Microsoft:
+Przykład dotyczący Microsoft Cognitive Toolkit:
 ```yaml
 name: project_environment
 dependencies:
@@ -122,13 +122,13 @@ dependencies:
 ```
 
 ### <a name="execute"></a>Realizacja
-Teraz można przystąpić do uruchamiania skryptów języka Python. Mogły być uruchamiane w ramach przy użyciu usługi Azure ML Workbench `my_dsvm` kontekstu, lub uruchomić go z wiersza polecenia:
+Teraz można przystąpić do uruchamiania skryptów w języku Python. Można je też uruchamiać w obrębie za pomocą aplikacji Azure ML Workbench `my_dsvm` kontekstu lub uruchomić go z wiersza polecenia:
  
 ```batch
 C:\myProj> az ml experiment submit -c my_dsvm my_tensorflow_or_cntk_script.py
 ```
  
-Aby sprawdzić, czy jest używany procesora GPU, sprawdź, czy wyjście wykonywania wyświetlić postać zbliżoną do następującej:
+Aby sprawdzić, czy procesor GPU jest używany, sprawdź dane wyjściowe wykonywania będzie podobny do poniższego:
 
 ```
 name: Tesla K80
@@ -138,7 +138,7 @@ Total memory: 11.17GiB
 Free memory: 11.11GiB
 ```
 
-Gratulacje! Skrypt po prostu wykorzystana mocy procesora GPU za pomocą kontenera Docker!
+Gratulacje! Skrypt po prostu zaprzęgnięte możliwości procesora GPU przez kontener platformy Docker!
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz przykład użycia procesora GPU w celu przyspieszenia sieci neuronowej głębokość szkolenia w galerii Azure ML.
+Zobacz przykład użycia procesora GPU, aby przyspieszyć sieci neuronowej szkolenia w galerii usługi Azure ML.

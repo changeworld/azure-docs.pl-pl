@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 07/19/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 51b54de39e24cfd69b7823c17dc5f7c9d7e885a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524077"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056519"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -191,6 +191,10 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Mam problem z usługi Azure File Sync na serwerze (synchronizacja chmury warstw itp). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
+    
+* <a id="afs-resource-move"></a>
+**Czy mogę przenieść usługę synchronizacji magazynu i/lub konta magazynu do innej grupy zasobów lub subskrypcji?**  
+   Tak, usługa synchronizacji magazynu i/lub konta magazynu można przenieść do innej grupy zasobów lub subskrypcji. Jeśli konto magazynu zostanie przeniesiony, należy udzielić dostępu usługi hybrydowe File Sync do konta magazynu (zobacz [upewnij się, usługa Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
 ## <a name="security-authentication-and-access-control"></a>Zabezpieczenia, uwierzytelnianie i kontrola dostępu
 * <a id="ad-support"></a>
@@ -221,7 +225,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="data-compliance-policies"></a>
 **Jakie zasady zgodności danych obsługuje usługa Azure Files?**  
-   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage, możesz pobrać i odwoływać się do [dokumentu Microsoft Azure Data Protection](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Dostęp lokalny
 * <a id="expressroute-not-required"></a>

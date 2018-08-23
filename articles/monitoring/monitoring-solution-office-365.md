@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2cc00aefb6099eb053aac321625a9b94cb7b4188
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3772b03d9a9d688b9d0eac42d51af7a2f2e0c5bd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888878"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060923"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -122,23 +122,18 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     )
     
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-        
+    
     IF ($Subscription -eq $null)
         {Login-AzureRmAccount -ErrorAction Stop}
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
     $WorkspaceLocation
     
     Function AdminConsent{
     
     $domain='login.microsoftonline.com'
-    $mmsDomain = 'login.mms.microsoft.com'
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
-    $WorkspaceLocationShort
-    $WorkspaceLocation
     switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
            "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
@@ -152,16 +147,13 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
            "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
            "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us';
-                             $mmsDomain = 'usbn1.login.oms.microsoft.us'; break} # US Gov Virginia
+                             $domain='login.microsoftonline.us'; break}
            default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
                     $domain='login.windows-ppe.net'; break} #Int
         }
     
-        $OfficeAppRedirectUrl="https://$($WorkspaceLocationShort).$($mmsDomain)/Office365/Authorize"
-        $OfficeAppRedirectUrl
         $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345&redirect_uri=$($OfficeAppRedirectUrl)"
+        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
     }
     
     AdminConsent -ErrorAction Stop
@@ -231,12 +223,6 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -364,7 +350,7 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troublshooting"></a>Rozwiązywanie problemów
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Może zostać wyświetlony następujący błąd, Jeśli spróbujesz utworzyć subskrypcję, po Subskrypcja już istnieje.
 
@@ -436,12 +422,6 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -540,7 +520,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, partiallysucceded i Failed. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
 | UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
 | UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory

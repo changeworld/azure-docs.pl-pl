@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f4b57241085381f4b975c07038b41133b8a4319b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436195"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056517"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -130,7 +130,7 @@ Jeśli **typ kodera** ustawiono **standardowa**, prawidłowe opcje to:
 * Pojedyncza szybkość transmisji bitów **pofragmentowany plik MP4** (Smooth Streaming)
 
 #### <a id="single_bitrate_RTMP"></a>Pojedyncza szybkość transmisji bitów RTMP
-Kwestie:
+Zagadnienia do rozważenia:
 
 * Przychodzący strumień nie może zawierać wideo o różnych szybkościach transmisji bitów
 * Strumienia wideo powinien mieć średnia szybkość transmisji bitów poniżej 15 MB/s
@@ -153,7 +153,7 @@ Typowy przypadek użycia:
 
 Lokalne korzystanie koderów na żywo od dostawców, takich jak Elemental technologii Ericsson, Ateme, Envivio do wysyłania strumienia wejściowego za pośrednictwem otwartego Internetu w pobliżu Azure centrum danych.
 
-Kwestie:
+Zagadnienia do rozważenia:
 
 Takie same jak dla [pojedyncza szybkość transmisji bitów RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
@@ -220,15 +220,16 @@ Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnyc
 | Szybkość transmisji bitów | Szerokość | Wysokość | MaxFPS | Profil | Nazwa Stream wyjściowego |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Główny |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Główny |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Główny |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Główny |Video_384x216_550kbps |
+| 2200 |960 |540 |30 |Main |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Main |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Main |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Main |Video_384x216_550kbps |
 | 350 |340 |192 |30 |Punkt odniesienia |Video_340x192_350kbps |
 | 200 |340 |192 |30 |Punkt odniesienia |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Dane wyjściowe Audio Stream
-Dźwięk jest zakodowany w celu stereo AAC-LC na 64 KB/s, częstotliwość próbkowania 44,1 kHz.
+
+Dźwięk jest zakodowany w celu stereo AAC-LC na 128 Kb/s, częstotliwość próbkowania kHz 48.
 
 ## <a name="signaling-advertisements"></a>Sygnalizowanie anonsów
 Kanał ma włączone kodowanie na żywo, ma składnika w potoku, który jest przetwarzanie filmu wideo, a można manipulować go. Można wysłać sygnału dla kanału wstawiania plansz i/lub reklam do strumienia o adaptacyjnej szybkości transmisji bitów wychodzących. Plansz nadal są obrazy, które można użyć w celu ukrycia się wejściowy Kanał informacyjny na żywo w niektórych przypadkach (na przykład podczas reklamowej). Anonsowanie sygnały, są sygnały zsynchronizowany czas, który osadzania do strumienia wychodzącego mówić odtwarzacz wideo, aby podejmować żadnych specjalnych czynności — tak, aby przełączyć się do anonsu w odpowiednim czasie. Zobacz ten [blogu](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) omówienie mechanizm sygnalizowanie SCTE 35 używanym do tego celu. Poniżej przedstawiono typowy scenariusz, którą można implementować w zdarzenia na żywo.
@@ -281,7 +282,7 @@ Jeśli **domyślne łupków identyfikator elementu zawartości** nie zostanie ok
 ## <a name="channels-programs"></a>Programy kanału
 Kanał jest skojarzony z programami, które umożliwiają kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobne do tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
 
-Można określić liczbę godzin, aby zachować zarejestrowaną zawartość na potrzeby programu przez ustawienie długości **Okna archiwum**. Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin. Długość okna archiwum określa również dostępny dla klientów zakres cofania odtwarzania pliku od bieżącego momentu transmisji na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
+Można określić liczbę godzin, aby zachować zarejestrowaną zawartość na potrzeby programu przez ustawienie długości **Okna archiwum**. Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin. Długość okna archiwizacji również mówią, że maksymalna liczba klientów można wyszukać w czasie od bieżącej pozycji na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
 
 Każdy program jest skojarzony z elementem zawartości, która przechowuje zawartości przesyłanej strumieniowo. Element zawartości jest mapowany do bloku kontenera obiektów blob na koncie usługi Azure Storage, a pliki w elemencie zawartości są przechowywane jako obiekty BLOB w kontenerze. Aby opublikować program, dzięki czemu klienci mogą wyświetlać strumień, należy utworzyć Lokalizator OnDemand dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
 
@@ -338,7 +339,7 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 
 ## <a name="known-issues"></a>Znane problemy
 * Czas uruchamiania kanał został ulepszony, aby średnio 2 minuty, ale czasami z rosnący popyt trwało do ponad 20 minut.
-* Obrazy planszy powinna być zgodna ograniczenia [tutaj](media-services-manage-live-encoder-enabled-channels.md#default_slate). Jeśli spróbujesz utworzyć kanał za pomocą plansz domyślny, który jest większy niż 1920 x 1080 pikseli, żądanie po pewnym czasie zgłosi błąd.
+* Obrazy planszy powinna być zgodna ograniczenia [tutaj](media-services-manage-live-encoder-enabled-channels.md#default_slate). Jeśli użytkownik podejmie próbę utworzenia kanału z plansz domyślny, który jest większy niż 1920 x 1080 pikseli, żądanie po pewnym czasie zgłosi błąd.
 * Jeszcze raz... nie zapomnij STOP YOUR kanały, po zakończeniu przesyłania strumieniowego. Jeśli tego nie zrobisz, będą nadal rozliczeń.
 
 ## <a name="next-step"></a>Następny krok

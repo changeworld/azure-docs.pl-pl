@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 67a7a701eb7700fab9aa9d0ec22354cc1618f856
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 9b4d992d690bb3237f8c92e44020c0ac83978d7e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004698"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054192"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostępność i spójność w usłudze Event Hubs
 
@@ -37,7 +37,7 @@ Firmy Brewera kolejnego elementu teorii definiuje spójności i dostępności w 
 Usługa Event Hubs jest oparty na modelu danych podzielonych na partycje. Liczba partycji w Centrum zdarzeń można skonfigurować podczas instalacji, ale nie można później zmienić tę wartość. Ponieważ partycje musi być używany z usługą Event Hubs, należy podjąć decyzję o dostępności i spójności aplikacji.
 
 ## <a name="availability"></a>Dostępność
-Najprostszym sposobem rozpoczęcia pracy z usługą Event Hubs jest Użyj zachowania domyślnego. Jeśli tworzysz nową ** [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) ** obiektu i użyj ** [wysyłania](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_) ** metody, zdarzenia są automatycznie rozpraszane między partycji w Centrum zdarzeń. To zachowanie umożliwia największą ilość czasu.
+Najprostszym sposobem rozpoczęcia pracy z usługą Event Hubs jest Użyj zachowania domyślnego. Jeśli tworzysz nową **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** obiektu i użyj **[wysyłania](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metody, zdarzenia są automatycznie rozpraszane między partycji w Centrum zdarzeń. To zachowanie umożliwia największą ilość czasu.
 
 Zastosowań, które wymagają maksymalny czas działania, aby uzyskać ten model jest preferowana.
 

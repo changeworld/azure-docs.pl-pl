@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d29676b107885350785ceb1c17eb3010cc0907d2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 47f02c008a0498492af3503d90fda8ff6e2eefa8
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928349"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055805"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie i zarządzanie nimi maszynę wirtualną Windows, który ma wiele kart sieciowych
-Maszyny wirtualne (VM) na platformie Azure może mieć wiele wirtualnych kart sieciowych (NIC) dołączonych do nich. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności lub sieci z rozwiązaniem monitorowania lub tworzenia kopii zapasowych w wersji dedykowanej. Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej, która ma wiele kart sieciowych dołączonych do niego. Poznasz również sposób dodawania lub usuwania karty sieciowe z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
+Maszyny wirtualne (VM) na platformie Azure może mieć wiele wirtualnych kart sieciowych (NIC) dołączonych do nich. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności. Można skojarzyć wiele kart sieciowych na maszynie Wirtualnej z wieloma podsieciami, ale te podsieci wszystkie znajdować się w tej samej sieci wirtualnej (vNet). Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej, która ma wiele kart sieciowych dołączonych do niego. Poznasz również sposób dodawania lub usuwania karty sieciowe z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że masz [najnowszą wersję programu Azure PowerShell, zainstalować i skonfigurować](/powershell/azure/overview).

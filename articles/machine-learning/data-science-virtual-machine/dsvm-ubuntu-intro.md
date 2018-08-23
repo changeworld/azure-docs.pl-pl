@@ -3,7 +3,8 @@ title: Aprowizowanie maszyny wirtualnej do nauki o danych z systemu Linux (Ubunt
 description: Skonfiguruj i Utwórz Data Science maszyny wirtualnej dla systemu Linux (Ubuntu) na platformie Azure w celu analizy i uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
@@ -13,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422379"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057090"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -53,7 +53,7 @@ Maszyna wirtualna do nauki o danych dla systemu Linux zawiera także popularne n
 * Machine learning narzędzia
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Obsługa technik, takich jak online, wyznaczania wartości skrótu, allreduce, redukcji, learning2search, są aktywne, system uczenia maszynowego, szybkie i interaktywne szkolenia
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): to narzędzie, zapewniając szybkie i dokładne wzmocnionego drzewa wykonania
-  * [Rattle](http://rattle.togaware.com/): graficznego narzędzia, który ułatwia rozpoczęcie korzystania z analizy danych i uczenia maszynowego w R łatwo
+  * [Rattle](https://togaware.com/rattle/): graficznego narzędzia, który ułatwia rozpoczęcie korzystania z analizy danych i uczenia maszynowego w R łatwo
   * [LightGBM](https://github.com/Microsoft/LightGBM): ulepszanie framework gradientu, szybka i rozproszonej o wysokiej wydajności
 * Zestaw Azure SDK w języku Java, Python, node.js, Ruby, PHP
 * Bibliotek języka R i Python do użycia w usłudze Azure Machine Learning i innymi usługami platformy Azure
@@ -149,7 +149,7 @@ Po zalogowaniu do maszyny Wirtualnej przy użyciu klienta SSH lub graficznego pu
 
 Uruchamia Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), serwer programu Jupyter wielu użytkowników. Aby nawiązać połączenie, przejdź do https://your-vm-ip:8000 na komputerze przenośnym lub pulpit, wprowadź nazwę użytkownika i hasło, których użyto do utworzenia maszyny Wirtualnej, a następnie zaloguj się. Wiele notesów próbki są dostępne do przeglądania i wypróbować.
 
-JupyterLab, następna generacja notesów Jupyter i JupyterHub, jest również dostępna. Aby uzyskać do niego dostęp, zaloguj się do JupyterHub, a następnie przejdź do adresu URL https://your-vm-ip:8000/lab. JupyterLab można ustawić jako domyślny serwer notesu, dodając ten wiersz do /etc/jupyterhub/jupyterhub_config.py:
+JupyterLab, następna generacja notesów Jupyter i JupyterHub, jest również dostępna. Aby uzyskać do niego dostęp, zaloguj się do JupyterHub, a następnie przejdź do adresu URL https://your-vm-ip:8000/user/your-username/lab. JupyterLab można ustawić jako domyślny serwer notesu, dodając ten wiersz do /etc/jupyterhub/jupyterhub_config.py:
 
     c.Spawner.default_url = '/lab'
 

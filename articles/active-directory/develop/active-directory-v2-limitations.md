@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590753"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057098"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
@@ -101,6 +101,7 @@ Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli c
 * Jeśli tworzysz aplikację na komputerze lub urządzeniu przenośnym, można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL) w wersji zapoznawczej. Tych bibliotek znajdują się w obsługiwane w środowisku produkcyjnym wersji zapoznawczej, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz dowiedzieć się więcej o warunkach korzystania z wersji zapoznawczej i dostępnych bibliotek w [dokumentacja bibliotek uwierzytelniania](reference-v2-libraries.md).
 * W przypadku platform nie są objęte biblioteki Microsoft można zintegrować z punktem końcowym v2.0 przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth 2.0 [są udokumentowane](active-directory-v2-protocols.md) ułatwiające wykonanie takiej integracji.
 * Na koniec można użyć bibliotek typu open-source Otwórz ID Connect i OAuth do integracji z punktem końcowym v2.0. Protokół v2.0 powinien być zgodny z wielu bibliotek typu open-source protokołu bez znaczące zmiany. Dostępność tych rodzajów bibliotek zależy od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) witryn sieci Web utrzymywać listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](reference-v2-libraries.md)i listy, biblioteki klienckie typu open source i przykładów, które zostały przetestowane z punktem końcowym v2.0.
+  * Odwołanie `.well-known` endpoint wspólnego punktu końcowego v2.0 jest `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` .  Zastąp `common` identyfikatorem dzierżawy można pobrać danych określonego dla Twojej dzierżawy.  
 
 ## <a name="restrictions-on-protocols"></a>Ograniczenia dotyczące protokołów
 
@@ -109,7 +110,6 @@ Nie obsługuje punktu końcowego v2.0, SAML lub WS-Federation; obsługuje tylko 
 Następujące funkcje protokołu i funkcje są obecnie *nie jest dostępna* w punkcie końcowym v2.0:
 
 * Obecnie `email` oświadczeń jest zwracany tylko jeśli skonfigurowano opcjonalnego roszczenia, a zakres jest zakresem = wiadomość e-mail została określona w żądaniu. Jednak to zachowanie zmieni się zgodnie z punktem końcowym v2.0 jest aktualizowana w celu dalszego są zgodne ze standardami Open ID Connect i OAuth 2.0.
-* Informacje o użytkowniku OpenID Connect punkt końcowy nie został zaimplementowany dla punktu końcowego v2.0. Jednak wszystkie dane profilu użytkownika, które potencjalnie otrzyma tego punktu końcowego jest dostępna z programu Microsoft Graph `/me` punktu końcowego.
 * Punktu końcowego v2.0 nie obsługuje wystawiającego oświadczeń roli lub grupy w tokeny Identyfikatora.
 * [Przydział poświadczeń hasła właściciela zasobów OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) nie jest obsługiwana przez punktu końcowego v2.0.
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621535"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057679"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -96,7 +96,7 @@ Jeśli organizacja ma Windows Server Active Directory w środowisku lokalnym, wr
 |:---:| --- |
 | Omówienie opcje logowania jednokrotnego jest oferowana w Azure AD Connect, a także informacje na temat zarządzania środowisk hybrydowych |[Logowanie użytkownika na temat opcji w usłudze Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Ogólne wskazówki dotyczące zarządzania środowiskami zarówno lokalnej usługi Active Directory i Azure Active Directory |[Zagadnienia dotyczące projektowania tożsamości hybrydowej platformy Azure AD](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md) |
-| Wskazówki na temat korzystania z synchronizacji haseł w celu włączenia funkcji logowania jednokrotnego |[Implementowanie synchronizacji haseł z usługą Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Rozwiązywanie problemów z synchronizacją haseł](https://support.microsoft.com/en-us/kb/2855271) |
+| Wskazówki na temat korzystania z synchronizacji haseł w celu włączenia funkcji logowania jednokrotnego |[Implementowanie synchronizacji haseł z usługą Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Rozwiązywanie problemów z synchronizacją haseł](https://support.microsoft.com/kb/2855271) |
 | Wskazówki na temat korzystania z funkcji zapisywania zwrotnego haseł w celu włączenia funkcji logowania jednokrotnego |[Wprowadzenie do zarządzania hasłami w usłudze Azure AD](authentication/quickstart-sspr.md)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Wskazówki dotyczące przy użyciu dostawców tożsamości innych firm, aby włączyć logowanie Jednokrotne |[Lista dostawców zgodne tożsamości innych firm, których można użyć, aby włączyć logowanie jednokrotne](https://aka.ms/ssoproviders) |
 | Jak użytkownicy systemu Windows 10 można wykorzystać zalety logowania jednokrotnego za pośrednictwem usługi Azure AD Join |[Rozszerzanie możliwości chmury do systemu Windows 10 urządzeń za pomocą usługi Azure Active Directory Join](active-directory-azureadjoin-overview.md) |

@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436913"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42446068"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
 
@@ -19,7 +19,7 @@ ms.locfileid: "37436913"
 
 Platforma Azure działa w wielu lokalizacji geograficznych na całym świecie. Lokalizacja geograficzna platformy Azure jest zdefiniowany obszar świata, który zawiera co najmniej jednego regionu platformy Azure. Region platformy Azure jest obszar w lokalizacji geograficznej, zawierający co najmniej jedno centrum danych.
 
-Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej.
+Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej. Różnych par regionów, które będzie serializować Azure platformy aktualizacji (planowana konserwacja), tak że tylko jeden region sparowany zostanie zaktualizowany w danym momencie. Ponadto go zdarzeń mających wpływ na wiele regionów, co najmniej jeden region z każdej pary, które będą wysyłane do odzyskiwania po awarii.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
@@ -57,7 +57,7 @@ Tabela 1 — mapowanie pary regionalne platformy Azure
 - (4) Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas, ale nie jest w regionie pomocniczym Administracja USA — Teksas Administracja USA — Wirginia.
 
 
-Firma Microsoft zaleca replikować obciążenia w pary regionalne do korzystania z zasad izolacji i dostępności platformy Azure. Na przykład aktualizacje systemu platformy Azure planowane są wdrażane po kolei (nie w tym samym czasie) w sparowanych regionach. Oznacza to, że nawet w przypadku rzadko wadliwe aktualizacji, oba regiony nie zostaną zmienione jednocześnie. Ponadto w mało prawdopodobnym przypadku odzyskiwanie co najmniej jednego regionu z każdej pary ma przydzielany wyższy priorytet.
+Zaleca się konfigurowania odzyskiwania po awarii ciągłość działania firmy (BCDR) w pary regionalne do korzystania z zasad izolacji i dostępności platformy Azure. Dla aplikacji, które obsługują wiele aktywnych regionów zaleca się przy użyciu obu regionów w parze regionów, jeśli jest to możliwe. Zapewni to optymalne dostępność dla aplikacji i odzyskiwania w trybie zminimalizowanym w wypadku awarii. 
 
 ## <a name="an-example-of-paired-regions"></a>Przykładem sparowane regiony
 Na rysunku 2 poniżej przedstawiono hipotetyczny aplikację, która używa pary regionalnej dla odzyskiwania po awarii. Zielony numery zaznacz działań między regionami w trzech usług platformy Azure (Azure compute, storage i bazy danych) i jak są skonfigurowane do replikacji między regionami. Z wyjątkowych zalet wdrażania w sparowanych regionach zostały wyróżnione na pomarańczowy liczb.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448540"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058247"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory
 
@@ -40,7 +40,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
 * Usługa Azure SQL Data Warehouse: Magazyn danych przechowuje dane, które jest kopiowana z bazy danych SQL. Jeśli nie masz usługi Azure SQL Data Warehouse, zapoznaj się z instrukcjami w [utworzyć SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Usługa Azure SQL Database: W tym samouczku kopiuje dane z usługi Azure SQL database za pomocą Adventure Works LT przykładowych danych. Można utworzyć bazę danych SQL, postępując zgodnie z instrukcjami wyświetlanymi w [utworzyć bazę danych Azure SQL](../sql-database/sql-database-get-started-portal.md). 
-* Konto usługi Azure storage: Usługa Azure Storage jest używana jako _przemieszczania_ obiektu blob w operacji kopiowania zbiorczego. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Konto usługi Azure storage: Usługa Azure Storage jest używana jako _przemieszczania_ obiektu blob w operacji kopiowania zbiorczego. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 

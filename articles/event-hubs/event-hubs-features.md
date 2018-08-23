@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 09/08/2018
 ms.author: shvija
-ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c41612b46102dc8fef67887c164ff6e48a8cf6c6
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006636"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059705"
 ---
 # <a name="event-hubs-features-overview"></a>Omówienie funkcji usługi Event Hubs
 
@@ -94,7 +94,10 @@ Każda jednostka, która odczytuje dane zdarzenia z centrum zdarzeń, jest *odbi
 
 Mechanizm publikowania/subskrypcji usługi Event Hubs jest włączany za pomocą *grup odbiorców*. Grupa odbiorców stanowi widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom odbiorców wiele aplikacji odbiorczych może mieć osobny widok strumienia zdarzeń i niezależnie odczytywać strumień we własnym tempie i przy użyciu własnego przesunięcia.
 
-W architekturze przetwarzania strumieni każda aplikacja podrzędna odpowiada grupie odbiorców. Jeśli chcesz zapisać dane zdarzenia do magazynu długoterminowego, to ta aplikacja edytora magazynu odpowiada grupie odbiorców. Przetwarzanie złożonych zdarzeń może być wtedy wykonywane przez inną, oddzielną grupę odbiorców. Dostęp do partycji można uzyskać tylko za pośrednictwem grupy odbiorców. Może istnieć maksymalnie 5 współbieżnych czytników na partycji dla każdej grupy odbiorców; jednak **zaleca się, że na partycji dla każdej grupy odbiorców jest tylko jeden aktywny odbiornik**. W centrum zdarzeń zawsze istnieje domyślna grupa odbiorców, a w przypadku centrum zdarzeń warstwy Standardowa można utworzyć maksymalnie 20 grup odbiorców.
+W architekturze przetwarzania strumieni każda aplikacja podrzędna odpowiada grupie odbiorców. Jeśli chcesz zapisać dane zdarzenia do magazynu długoterminowego, to ta aplikacja edytora magazynu odpowiada grupie odbiorców. Przetwarzanie złożonych zdarzeń może być wtedy wykonywane przez inną, oddzielną grupę odbiorców. Dostęp do partycji można uzyskać tylko za pośrednictwem grupy odbiorców. W centrum zdarzeń zawsze istnieje domyślna grupa odbiorców, a w przypadku centrum zdarzeń warstwy Standardowa można utworzyć maksymalnie 20 grup odbiorców.
+
+Może istnieć maksymalnie 5 współbieżnych czytników na partycji dla każdej grupy odbiorców; jednak **zaleca się, że na partycji dla każdej grupy odbiorców jest tylko jeden aktywny odbiornik**. W ramach jednej partycji każdy czytnik odbiera wszystkie komunikaty. Jeśli masz wielu elementów odczytujących na tej samej partycji, możesz przetwarzać zduplikowanych komunikatów. Wymagana jest obsługa to w kodzie, które nie mogą być proste. Jest jednak nieprawidłowa podejście w niektórych scenariuszach.
+
 
 Oto przykłady konwencji identyfikatora URI grupy odbiorców:
 

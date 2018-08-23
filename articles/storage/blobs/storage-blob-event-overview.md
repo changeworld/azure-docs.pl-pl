@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262688"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057690"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
@@ -21,7 +21,7 @@ Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagować na tworzenie 
 
 Typowe scenariusze zdarzenia magazynu obiektów Blob obejmują przetwarzanie obrazu lub filmu wideo, indeksowanie wyszukiwania lub przepływ pracy korzystający z pliku.  Przekazywanie plików asynchroniczne są doskonałe rozwiązanie dla zdarzenia.  Gdy zmiany są rzadkie, ale dany scenariusz wymaga natychmiastowej reakcji, oparte na zdarzeniach architektury może być szczególnie wydajne.
 
-Dostępność zdarzeń magazynu jest powiązana z [dostępnością](../../event-grid/overview.md) usługi Event Grid. Będą one dostępne w innych regionach, w których będzie dostępna usługa Event Grid. Przyjrzyj się [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego — interfejs wiersza polecenia](storage-blob-event-quickstart.md) lub [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego - PowerShell](storage-blob-event-quickstart-powershell.md) potrzeby krótkiego przykładu. 
+Przyjrzyj się [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego — interfejs wiersza polecenia](storage-blob-event-quickstart.md) lub [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego - PowerShell](storage-blob-event-quickstart-powershell.md) potrzeby krótkiego przykładu. 
 
 ![Model siatki zdarzeń](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
@@ -36,7 +36,7 @@ Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.m
 > |`Microsoft.Storage.BlobCreated`|Wywoływane, gdy obiekt blob zostanie utworzony lub zastąpiony przez `PutBlob`, `PutBlockList`, lub `CopyBlob` operacji|
 > |`Microsoft.Storage.BlobDeleted`|Wywoływane, gdy obiekt blob jest usuwane przez `DeleteBlob` operacji|
 
-## <a name="event-schema"></a>Schemat zdarzeń
+## <a name="event-schema"></a>Schemat zdarzenia
 Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowania na zmiany w danych.  Można zidentyfikować zdarzenia magazynu obiektów Blob, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Storage". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany w [schematu zdarzeń usługi Event Grid](../../event-grid/event-schema.md).  
 
 > |Właściwość|Typ|Opis|
@@ -46,7 +46,7 @@ Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowa
 > |eventTime|ciąg|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
 > |Typ zdarzenia|ciąg|"Microsoft.Storage.BlobCreated" lub "Microsoft.Storage.BlobDeleted"|
 > |Identyfikator|ciąg|Unikatowy identyfikator, jeśli to zdarzenie|
-> |dataVersion|ciąg|Wersja schematu obiektu danych.|
+> |dataVersion|ciąg|Wersja schematu dla obiektu danych.|
 > |metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|
 > |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
 > |data.contentType|ciąg|Typ zawartości obiektu blob, ponieważ do zwrócenia w nagłówku Content-Type z obiektu blob|

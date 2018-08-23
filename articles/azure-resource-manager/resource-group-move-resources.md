@@ -4,22 +4,20 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503584"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617294"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -113,11 +111,11 @@ Skontaktuj się z pomocą [obsługuje](https://portal.azure.com/#blade/Microsoft
 
 Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji są:
 
+* Analysis Services
 * API Management
 * Aplikacje usługi App Service (aplikacje sieci web) — zobacz [ograniczenia usługi App Service](#app-service-limitations)
 * Certyfikaty usługi App Service
 * Application Insights
-* Analysis Services
 * Automatyzacja
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Cognitive Services
 * Container Registry
 * Content Moderator
+* Cost Management
+* Customer Insights
 * Data Catalog
 * Fabryka danych
 * Data Lake Analytics
@@ -141,12 +141,14 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Event Grid
 * Event Hubs
 * Klastry HDInsight — zobacz [ograniczenia HDInsight](#hdinsight-limitations)
+* Iot Central
 * Centra IoT Hub
 * Usługa Key Vault
 * Moduły równoważenia obciążenia — zobacz [ograniczenia modułu równoważenia obciążenia](#lb-limitations)
 * Log Analytics
 * Logic Apps
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
+* Tożsamość zarządzana — przypisanych przez użytkownika
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -160,6 +162,7 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Wyszukiwanie
 * Service Bus
 * Service Fabric
+* Usługa Service Fabric siatki
 * Usługa SignalR
 * Magazyn
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
@@ -187,15 +190,19 @@ Usługi, które aktualnie nie umożliwiają przenoszenia zasobu są:
 * Azure Databricks
 * Usługa Batch — sztuczna inteligencja
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
+* Container Instances
 * Container Service
+* Data Box
+* Miejsca do magazynowania dev
 * Dynamics LCS
 * ExpressRoute
-* Usługa Kubernetes
+* Kubernetes Service
 * Włączono Lab Services — przejście do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenie między subskrypcjami nie jest włączona.
 * Moduły równoważenia obciążenia — zobacz [ograniczenia modułu równoważenia obciążenia](#lb-limitations)
 * Aplikacje zarządzane
 * Managed Disks — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Microsoft Genomics
+* NetApp
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
 * Magazyn usługi Recovery Services - również nie przeniesienie zasobów obliczeniowych, sieci i magazynu skojarzonego z magazynem usługi Recovery Services, zobacz [ograniczenia usług Recovery Services](#recovery-services-limitations).
 * Oprogramowanie SAP HANA na platformie Azure
@@ -225,7 +232,7 @@ Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault
 
 ## <a name="virtual-networks-limitations"></a>Wirtualne sieci ograniczenia
 
-Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasobów zależnych. Na przykład należy przenieść bramy przy użyciu sieci wirtualnej.
+Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasobów zależnych. Dla bramy sieci VPN należy przenieść adresy IP, bramy sieci wirtualnej i wszystkie zasoby skojarzone z nimi połączenie. Bramy sieci lokalnej może znajdować się w innej grupie zasobów.
 
 Aby przenieść równorzędnej sieci wirtualnej, należy najpierw wyłączyć komunikacji równorzędnej sieci wirtualnej. Po wyłączeniu można przenieść sieci wirtualnej. Po przeniesieniu ponownie włączyć komunikację równorzędną sieci wirtualnej.
 

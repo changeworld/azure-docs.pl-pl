@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618343"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987581"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -82,7 +82,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |privacyMode|Podział usługi może mieć jedną z następujących trybów: **prywatnej**, **publicznych**. **Publiczne** — film wideo jest widoczny dla wszystkich użytkowników w swoje konto i każda osoba, która zawiera link do filmu wideo. **Prywatne** — film wideo jest widoczny dla wszystkich użytkowników na Twoim koncie.|
 |czas trwania|Zawiera jeden czas trwania, opisujący godzina wystąpienia w szczegółowe informacje. Czas trwania to w ciągu kilku sekund.|
 |thumbnailVideoId|Identyfikator wideo, z których pochodzi się miniaturę.
-|thumbnailId|Identyfikator miniatury wideo. Aby uzyskać rzeczywiste miniatury wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
+|thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
 |twarzy|Może zawierać zero lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
 |słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać więcej informacji, zobacz [słowa kluczowe](#keywords).|
 |opinie|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
@@ -107,7 +107,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |metadane|Wideo metadane zewnętrznych (jeśli jest określony przez użytkownika).|
 |isAdult|Wskazuje, czy wideo został ręcznie przejrzeć i zidentyfikowane jako przeznaczonej dla osób dorosłych wideo.|
 |szczegółowe informacje|Obiekt szczegółowych informacji. Aby uzyskać więcej informacji, zobacz [insights](#insights).|
-|thumbnailId|Identyfikator miniatury wideo. Aby uzyskać rzeczywiste miniatury wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go identyfikator wideo i thumbnailId.|
+|thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go, identyfikator i thumbnailId wideo.|
 |publishedUrl|Adres url do przesyłania strumieniowego wideo.|
 |publishedUrlProxy|Adres url do przesyłania strumieniowego wideo z (dla urządzeń firmy Apple).|
 |viewToken|Token krótkotrwałe widoku służącą do strumieniowego przesyłania wideo.|
@@ -670,7 +670,7 @@ Filmy wideo, które znajdują się na zawierać treści dla dorosłych lub eroty
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Interfejsu API indeksatora wideo](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[Interfejsu API indeksatora wideo](https://api-portal.videoindexer.ai)
 
 Aby uzyskać informacje o sposobie osadzanie widżetów w aplikacji, zobacz [widżetów osadzić indeksatora wideo we własnych aplikacjach](video-indexer-embed-widgets.md). 
 

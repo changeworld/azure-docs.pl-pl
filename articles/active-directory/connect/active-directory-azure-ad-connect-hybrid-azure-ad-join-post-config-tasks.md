@@ -4,7 +4,7 @@ description: Szczegóły tego dokumentu, wpis zadania konfiguracji potrzebne do 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: samueld
+manager: mtillman
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9949275b18206ca66f38bab036337a00fdde6ee5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05cb6d10a7e4269cbe5f9c97ef70cd9eb5a4d68e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916551"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055535"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Zadania po konfiguracji dla dołączenie do hybrydowej usługi Azure AD
 
@@ -62,7 +62,7 @@ Jeśli Twoja organizacja używa usługi federacyjnej, aby zarejestrować się w 
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Włączanie usługi Azure AD bezproblemowego logowania jednokrotnego dla Windows niższego poziomu urządzeń
 
-Jeśli Twoja organizacja korzysta z synchronizacji skrótów haseł lub uwierzytelniania przekazywanego, aby zarejestrować się w usłudze Azure AD, należy włączyć Azure bezproblemowe logowanie Jednokrotne usługi AD za pomocą tej metody logowania do uwierzytelniania systemu Windows niższego poziomu urządzeń: https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Jeśli Twoja organizacja korzysta z synchronizacji skrótów haseł lub uwierzytelniania przekazywanego, aby zarejestrować się w usłudze Azure AD, należy włączyć Azure bezproblemowe logowanie Jednokrotne usługi AD za pomocą tej metody logowania do uwierzytelniania systemu Windows niższego poziomu urządzeń: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Ustaw zasady usługi Azure AD dla Windows niższego poziomu urządzeń
 
@@ -81,7 +81,7 @@ Jeśli używasz [bezproblemowe logowanie Jednokrotne](https://aka.ms/hybrid/sso)
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Zainstaluj Microsoft dołączanie do miejsca pracy na urządzeniach z Windows niższego poziomu
 
-Ten Instalator jest utworzenie zaplanowanego zadania w systemie urządzenia, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnieniu przy użyciu zintegrowanego uwierzytelniania Windows. Centrum pobierania wynosi https://www.microsoft.com/en-us/download/details.aspx?id=53554. 
+Ten Instalator jest utworzenie zaplanowanego zadania w systemie urządzenia, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnieniu przy użyciu zintegrowanego uwierzytelniania Windows. Centrum pobierania wynosi https://www.microsoft.com/download/details.aspx?id=53554. 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurowanie zasad grupy, aby zezwolić na rejestrację urządzeń
 

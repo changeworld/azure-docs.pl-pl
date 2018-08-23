@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd810f6e5a4211f64044a88ae6ca6bb6dc044e28
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415225"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060264"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Zarządzanie urządzeniami za pomocą witryny Azure portal
 
@@ -46,7 +46,7 @@ Witryna Azure portal udostępnia centralne miejsce do zarządzania urządzeniami
 
 3. W **Zarządzaj** kliknij **urządzeń**.
 
-    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/11.png)
+    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/74.png)
  
 **Urządzeń** strony umożliwia:
 
@@ -70,13 +70,13 @@ Na stronie ustawień urządzenia można skonfigurować:
 ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/21.png)
 
 
-- **Użytkownicy mogą dołączać urządzania do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą [dołączać urządzenia](overview.md#azure-ad-joined-devices) do usługi Azure AD. Wartość domyślna to **wszystkich**.
+- **Użytkownicy mogą dołączać urządzania do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą [dołączać urządzenia](overview.md#azure-ad-joined-devices) do usługi Azure AD. Wartość domyślna to **wszystkich**. To ustawienie ma zastosowanie tylko do usługi Azure AD Join w systemie Windows 10.
 
 - **Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD** — możesz wybrać użytkowników, którzy mają prawa administratora lokalnego na urządzeniu. Użytkowników dodanych w tym miejscu są dodawane do *Administratorzy urządzenia* roli w usłudze Azure AD. Administratorzy globalni w usłudze Azure AD i właścicielom urządzeń są domyślnie udzielone prawa administratora lokalnego. Ta opcja jest dostępna za pośrednictwem produktów, takich jak Azure AD Premium lub Enterprise Mobility Suite (EMS) możliwości w wersji premium. 
 
 - **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić urządzeniom na być [zarejestrowany](overview.md#azure-ad-registered-devices) z usługą Azure AD. Jeśli wybierzesz **Brak**, urządzenia nie są dozwolone do rejestru, jeśli nie są one przyłączony Azure AD lub hybrydowe przyłączone do usługi Azure AD. Rejestracja w usłudze Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla usługi Office 365 wymaga rejestracji. Jeśli skonfigurowano którąś z tych usług **wszystkich** jest zaznaczone i **NONE** nie jest dostępna.
 
-- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, musisz zapewnić, że skonfigurowano uwierzytelniania wieloskładnikowego dla użytkowników, które rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat usług innej usługi Azure Multi-Factor authentication, zobacz [wprowadzenie do usługi Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). 
+- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, musisz zapewnić, że skonfigurowano uwierzytelniania wieloskładnikowego dla użytkowników, które rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat usług innej usługi Azure Multi-Factor authentication, zobacz [wprowadzenie do usługi Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). To ustawienie nie ma wpływu na dołączenie do hybrydowej dla systemu Windows 10 lub Windows 7. To ma zastosowanie tylko do usługi Azure AD Join w systemie Windows 10 i ang. rejestrację urządzeń dla systemu Windows 10, iOS i Android. 
 
 - **Maksymalna liczba urządzeń** — to ustawienie umożliwia wybranie maksymalną liczbę urządzeń, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, są one być nie mógł dodać dodatkowych urządzeń dopóki jedna lub więcej istniejących urządzeń są usuwane. Oferta urządzenie jest liczone dla wszystkich urządzeń, które są dołączone do usługi Azure AD lub usługi Azure AD obecnie zarejestrowane. Wartość domyślna to **20**.
 

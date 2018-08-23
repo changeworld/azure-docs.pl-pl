@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/26/2018
+ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d0bd7dba5d50445cb681c16d9575b1bd69167e2f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126715"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42062089"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table — interfejs API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -39,8 +39,8 @@ ms.locfileid: "39126715"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
-* Naprawiono zależności pakietów Nuget Microsoft.Azure.Storage.Common i Microsoft.Azure.DocumentDB.
-* Poprawki błędów w tabeli serializacji w przypadku skonfigurowania JsonConvert.DefaultSettings.
+* Naprawiono zależności pakietów NuGet Microsoft.Azure.Storage.Common i Microsoft.Azure.DocumentDB.
+* Po skonfigurowaniu JsonConvert.DefaultSettings Naprawiono błędy serializacji tabeli.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * Dodano sprawdzanie poprawności źle sformułowane elementów etag w trybie bezpośredniego.
@@ -60,7 +60,7 @@ ms.locfileid: "39126715"
 ## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) pakiet (wersja zapoznawcza) została przestarzały i zastąpiony [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) pakietu. Zestaw SDK WindowsAzure.Storage-PremiumTable zostaną wycofane w dniu 15 listopada 2018, w tym czasie żądania do wycofanych zestaw SDK nie może.
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) pakiet (wersja zapoznawcza) została przestarzały i zastąpiony [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) pakietu. Zestaw SDK WindowsAzure.Storage-PremiumTable zostaną wycofane w dniu 15 listopada 2018, w tym czasie żądania do wycofanych zestaw SDK nie może. `Microsoft.Azure.CosmosDB.Table` Tylko biblioteka jest obecnie dostępna dla platformy .NET Standard, nie jest jeszcze dostępna dla platformy .NET Core.
 
 Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
@@ -91,7 +91,7 @@ Podczas próby użycia pakietu Microsoft.Azure.CosmosDB.Table NuGet, masz dwie o
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* Za pomocą preferowanym narzędziem zarządzania pakietu Nuget, zainstaluj pakiet Microsoft.Azure.Storage.Common Nuget przed zainstalowaniem Microsoft.Azure.CosmosDB.Table.
+* Za pomocą preferowanym narzędziem zarządzania pakietu NuGet, zainstaluj pakiet Microsoft.Azure.Storage.Common NuGet przed zainstalowaniem Microsoft.Azure.CosmosDB.Table.
 
 ## <a name="faq"></a>Często zadawane pytania
 

@@ -5,15 +5,15 @@ services: service-bus-relay
 author: clemensv
 ms.service: service-bus-relay
 ms.topic: include
-ms.date: 05/02/2018
+ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: 4a3f38e1423db0755d8c76f8850e41173d250f43
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e07d82b8a3aea4f0db0f5a071d78ea360cd611ab
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33904990"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177257"
 ---
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
@@ -36,6 +36,7 @@ W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framewo
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net.Http;
     using Microsoft.Azure.Relay;
     ```
 2. Dodaj stałe do klasy `Program` na potrzeby szczegółów połączenia hybrydowego. Zastąp symbole zastępcze w nawiasach wartościami uzyskanymi podczas tworzenia połączenia hybrydowego. Pamiętaj, aby użyć w pełni kwalifikowanej nazwy przestrzeni nazw.
@@ -63,7 +64,7 @@ W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framewo
         };
         request.Headers.Add("ServiceBusAuthorization", token);
         var response = await client.SendAsync(request);
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+        Console.WriteLine(await response.Content.ReadAsStringAsync());        Console.ReadLine();
     }
     ```
 4. Dodaj następujący wiersz kodu do metody `Main` w klasie `Program`.

@@ -7,21 +7,21 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 20ad738541554279ff9fd6dd6babe90a38676c00
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263194"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060334"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Dodawanie i uruchamianie niestandardowych fragmentach kodu w usłudze Azure Logic Apps z usługą Azure Functions
 
-Gdy chcesz utworzyć i uruchomić wystarczającą ilość kodu, odnoszący się do konkretnego problemu w aplikacjach logiki, możesz utworzyć własne funkcje przy użyciu [usługi Azure Functions](../azure-functions/functions-overview.md). Ta usługa zapewnia możliwości tworzenia i wykonywania niestandardowych fragmentach kodu napisanej dla platformy Node.js lub C# w aplikacjach logiki bez konieczności martwienia się o tworzeniu całą aplikację ani infrastrukturę do uruchamiania kodu. Usługa Azure Functions zapewnia bezserwerowych obliczeń w chmurze i jest przydatne w przypadku wykonywania zadania, takie jak te przykłady:
+Jeśli chcesz uruchomić tylko za mało kod, który wykonuje określone zlecenie w aplikacjach logiki, można utworzyć funkcji za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md). Ta usługa ułatwia tworzenie Node.js, C# i F #, fragmenty kodu, dzięki czemu nie trzeba utworzyć pełną aplikację lub infrastrukturę do uruchamiania kodu. Usługa Azure Functions zapewnia bezserwerowych obliczeń w chmurze i jest przydatne w przypadku wykonywania zadania, takie jak te przykłady:
 
-* Rozszerzanie zachowania aplikacji logiki przy użyciu funkcji obsługiwanych przez Node.js lub C#.
+* Rozszerz zachowanie aplikacji logiki z usługą functions w środowisku Node.js lub C#.
 * Wykonywanie obliczeń w przepływie pracy aplikacji logiki.
 * Zastosuj zaawansowane formatowanie lub obliczeniowych pól w aplikacjach logiki.
 
@@ -29,69 +29,57 @@ Możesz również [wywoływanie aplikacji logiki z wewnątrz usługi Azure funct
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skorzystać z tego artykułu, Oto elementy, które są potrzebne:
+Aby wykonać instrukcje opisane w tym artykule, będą potrzebne następujące elementy:
 
 * Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>. 
 
-* Aplikacja logiki, w której chcesz dodać funkcję
+* Aplikacja funkcji platformy Azure, który jest kontenerem dla funkcji platformy Azure i funkcji platformy Azure. Jeśli masz aplikację funkcji [najpierw utworzyć aplikację funkcji](../azure-functions/functions-create-first-azure-function.md). Następnie można utworzyć funkcję albo [oddzielnie poza aplikację logiki](#create-function-external), lub [z wewnątrz aplikacji logiki](#create-function-designer) w Projektancie aplikacji logiki.
+
+  Nowych i istniejących aplikacji funkcji i funkcji mają te same wymagania dotyczące pracy z usługą logic apps:
+
+  * Aplikacja funkcji musi mieć tej samej subskrypcji platformy Azure jako swoją aplikację logiki.
+
+  * Na przykład wyzwalacz HTTP używa funkcji, **wyzwalacza HTTP** szablon funkcji **JavaScript** lub **C#**. 
+
+    Szablon wyzwalacza HTTP może akceptować zawartość, która ma `application/json` typu z aplikacji logiki. 
+    Po dodaniu funkcji platformy Azure do aplikacji logiki Projektant aplikacji logiki zawiera funkcje niestandardowe utworzone na podstawie tego szablonu w ramach subskrypcji platformy Azure. 
+
+  * Funkcja nie używa trasy niestandardowe, chyba że zostały zdefiniowane [definicji interfejsu OpenAPI](../azure-functions/functions-openapi-definition.md), wcześniej znany jako [plik struktury Swagger](http://swagger.io/). 
+  
+  * Jeśli zdefiniowano definicji interfejsu OpenAPI dla funkcji, Projektant aplikacji logiki zapewnia bardziej rozbudowane środowisko do pracy z parametrów funkcji. Zanim aplikacja logiki można znaleźć i dostęp do funkcji, które mają definicji interfejsu OpenAPI [Konfigurowanie aplikacji funkcji, wykonując następujące czynności](#function-swagger).
+
+* Aplikacja logiki gdzie chcesz dodać funkcję, w tym [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
+
+  Przed dodaniem akcje, które można uruchomić funkcji, aplikacja logiki musi rozpoczynać wyzwalacza.
 
   Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-* A [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
-
-  Przed dodaniem akcji dla działających funkcji, aplikacja logiki musi rozpoczynać wyzwalacza.
-
-* Aplikacja funkcji platformy Azure, który jest kontenerem dla funkcji platformy Azure i funkcji platformy Azure. Jeśli nie masz aplikacji funkcji, musisz najpierw [najpierw utworzyć aplikację funkcji](../azure-functions/functions-create-first-azure-function.md). Następnie można utworzyć funkcję albo [oddzielnie poza aplikację logiki](#create-function-external), lub [z wewnątrz aplikacji logiki](#create-function-designer) w Projektancie aplikacji logiki.
-
-  Zarówno aplikacje nowych i istniejących funkcji platformy Azure, jak i funkcji mają te same wymagania dotyczące pracy z aplikacjami logiki:
-
-  * Aplikacja funkcji musi należeć do tej samej subskrypcji platformy Azure jako swoją aplikację logiki.
-
-  * Należy użyć funkcji **ogólny element webhook** szablonu funkcji dla dowolnego **JavaScript** lub **C#**. Ten szablon może akceptować zawartość, która ma `application/json` typu z aplikacji logiki. Te szablony są również pomóc w Projektancie aplikacji logiki, znajdowanie i wyświetlanie niestandardowych funkcji, utworzonych za pomocą tych szablonów po dodaniu tych funkcji do aplikacji logiki.
-
-  * Sprawdź, czy szablon funkcji **tryb** właściwość jest ustawiona na **elementu Webhook** i **typu elementu Webhook** właściwość jest ustawiona na **ogólnego JSON**.
-
-    1. Zaloguj się w <a href="https://portal.azure.com" target="_blank">Portalu Azure</a>.
-    2. W głównym menu platformy Azure, wybierz **aplikacje funkcji**. 
-    3. W **aplikacje funkcji** listy, wybierz aplikację funkcji, rozwiń swoją funkcję i wybierz **integracja**. 
-    4. Sprawdź swoje szablon **tryb** właściwość jest ustawiona na **elementu Webhook** i **typu elementu Webhook** właściwość jest ustawiona na **ogólnego JSON**. 
-
-  * Jeśli funkcja [definicji interfejsu API](../azure-functions/functions-openapi-definition.md), wcześniej znany jako [plik struktury Swagger](http://swagger.io/), Projektant aplikacji usługi Logic Apps oferuje więcej możliwości for work za pomocą parametrów funkcji. 
-  Zanim aplikacja logiki można znaleźć i dostęp do funkcji, które mają opisy struktury Swagger [Konfigurowanie aplikacji funkcji, wykonując następujące czynności](#function-swagger).
 
 <a name="create-function-external"></a>
 
 ## <a name="create-functions-outside-logic-apps"></a>Tworzenie funkcji aplikacji logiki poza
 
-W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Utwórz aplikację funkcji platformy Azure, która musi mieć tej samej subskrypcji platformy Azure jako swoją aplikację logiki, a następnie utwórz funkcji platformy Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, Dowiedz się, jak [tworzenie pierwszej funkcji w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md), ale należy pamiętać, następujące wymagania w celu tworzenia funkcji platformy Azure, które można dodać, a także wywoływać z aplikacji logiki.
+W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Utwórz aplikację funkcji platformy Azure, która musi mieć tej samej subskrypcji platformy Azure jako swoją aplikację logiki, a następnie utwórz funkcji platformy Azure.
+Jeśli dopiero zaczynasz Tworzenie funkcji platformy Azure, Dowiedz się, jak [tworzenie pierwszej funkcji w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md), ale należy pamiętać, następujące wymagania w celu tworzenia funkcji, które można wywoływać z aplikacji logiki:
 
-* Upewnij się, możesz wybrać **ogólny element webhook** szablonu funkcji dla dowolnego **JavaScript** lub **C#**.
+* Upewnij się, możesz wybrać **wyzwalacza HTTP** szablonu funkcji dla dowolnego **JavaScript** lub **C#**.
 
-  ![Ogólny element webhook — JavaScript i C#](./media/logic-apps-azure-functions/generic-webhook.png)
-
-* Po utworzeniu funkcji platformy Azure, sprawdź, czy szablon **tryb** i **typu elementu Webhook** właściwości są ustawione poprawnie.
-
-  1. W **aplikacje funkcji** listy, rozwiń swoją funkcję i wybierz **integracja**. 
-
-  2. Sprawdź, czy w szablonie **trybu** właściwość jest ustawiona na **elementu Webhook** i **typu elementu Webhook** właściwość jest ustawiona na **ogólnego JSON**. 
-
-     ![Szablon funkcji "Integracja" właściwości](./media/logic-apps-azure-functions/function-integrate-properties.png)
+  ![Wyzwalacz HTTP - JavaScript i C#](./media/logic-apps-azure-functions/http-trigger-function.png)
 
 <a name="function-swagger"></a>
 
-* Opcjonalnie Jeśli użytkownik [Generowanie definicji interfejsu API](../azure-functions/functions-openapi-definition.md), wcześniej znany jako [plik struktury Swagger](http://swagger.io/), funkcji, można uzyskać więcej możliwości podczas pracy z parametrów funkcji w Projektancie aplikacji logiki. Aby skonfigurować aplikację funkcji, dzięki czemu Twoja aplikacja logiki może znajdować i dostęp do funkcji, które mają opisy struktury Swagger:
+* Opcjonalnie Jeśli użytkownik [Generowanie definicji interfejsu API](../azure-functions/functions-openapi-definition.md), wcześniej znany jako [plik struktury Swagger](http://swagger.io/), funkcji, można uzyskać więcej możliwości podczas pracy z parametrów funkcji w Projektancie aplikacji logiki. Aby skonfigurować aplikację funkcji, aplikacja logiki może znaleźć i użyć funkcji, które mają opisy struktury Swagger, wykonaj następujące kroki:
 
-  * Upewnij się, że aplikacja funkcji jest aktywnie uruchomiona.
+  1. Upewnij się, że aplikacja funkcji jest aktywnie uruchomiona.
 
-  * W aplikacji funkcji, skonfiguruj [udostępniania zasobów między źródłami (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) więc wszystkie źródła są dozwolone:
+  2. W aplikacji funkcji, skonfiguruj [udostępniania zasobów między źródłami (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) więc wszystkie źródła są dozwolone, wykonując następujące czynności:
 
-    1. Począwszy od **aplikacje funkcji** , wybierz aplikację funkcji na liście > **funkcje platformy** > **CORS**.
+     1. Z **aplikacje funkcji** , wybierz aplikację funkcji na liście > **funkcje platformy** > **CORS**.
 
-       ![Wybierz aplikację funkcji > "Funkcje platformy" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+        ![Wybierz aplikację funkcji > "Funkcje platformy" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-    2. W obszarze **CORS**, Dodaj `*` symboli wieloznacznych znaków, ale Usuń wszystkie inne źródła z listy, a następnie wybierz **Zapisz**.
+     2. W obszarze **CORS**, Dodaj `*` symboli wieloznacznych znaków, ale Usuń wszystkie inne źródła z listy, a następnie wybierz **Zapisz**.
 
-       ![Wybierz aplikację funkcji > "Funkcje platformy" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+        ![Ustaw "CORS * znak symbolu wieloznacznego" * "](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
 ### <a name="access-property-values-inside-http-requests"></a>Dostęp do wartości właściwości wewnątrz żądania HTTP
 
@@ -130,7 +118,11 @@ Zanim będzie można utworzyć funkcję platformy Azure, począwszy od wewnątrz
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
-2. W obszarze danego kroku, w którym chcesz utworzyć i Dodaj funkcję, wybierz opcję **nowy krok** > **Dodaj akcję**. 
+2. Aby utworzyć i dodać funkcję, wykonaj krok, który ma zastosowanie do danego scenariusza:
+
+   * W obszarze ostatni krok w przepływie pracy aplikacji logiki, wybierz opcję **nowy krok**.
+
+   * Istniejące kroków w przepływie pracy aplikacji logiki, przesuń wskaźnik myszy nad strzałkę, wybierz znak plus (+) Zaloguj się, a następnie wybierz **Dodaj akcję**.
 
 3. W polu wyszukiwania wprowadź "azure functions" jako filtr.
 Z listy akcji wybierz następującą akcję: **wybierz funkcję platformy Azure — usłudze Azure Functions** 
@@ -145,36 +137,34 @@ Z listy akcji wybierz następującą akcję: **wybierz funkcję platformy Azure 
 
    1. W **nazwy funkcji** Podaj nazwę funkcji. 
 
-   2. W **kodu** Dodaj kod funkcji w szablonie, łącznie z odpowiedzi i ładunku ma zwrócony do aplikacji logiki po zakończeniu funkcji. 
-   Obiekt kontekstu w kodzie szablonu w tym artykule opisano wiadomości i zawartość, która przekazuje do funkcji, na przykład Twoja aplikacja logiki:
+   2. W **kodu** Dodaj swój kod szablonu funkcji, łącznie z odpowiedzi i ładunku ma zwrócony do aplikacji logiki po zakończeniu funkcji. 
 
       ![Definiowanie funkcji](./media/logic-apps-azure-functions/function-definition.png)
 
-      Wewnątrz funkcji możesz się odwoływać do właściwości w obiekcie kontekstu, używając następującej składni:
+      W kodzie szablonu  *`context` obiektu* odwołuje się do wiadomości, że Twoja aplikacja logiki wysyła za pośrednictwem **treść żądania** pola w późniejszym kroku. 
+      Aby uzyskać dostęp do `context` obiektu właściwości z wewnątrz funkcji, należy użyć następującej składni: 
 
-      ```text
-      context.<token-name>.<property-name>
-      ```
-      Na przykład poniżej przedstawiono składnię, z której należy użyć:
+      `context.body.<property-name>`
 
-      ```text
-      context.body.content
-      ```
+      Na przykład, aby dokumentacja `content` właściwości wewnątrz `context` obiektu, należy użyć następującej składni: 
 
+      `context.body.content`
+
+      Zawiera również kod szablonu `input` zmienną, która przechowuje wartość z `data` parametru, więc funkcja mogą wykonywać operacje na tę wartość. 
+      Wewnątrz funkcji JavaScript `data` zmienna jest również skrót dla `context.body`.
+
+      > [!NOTE]
+      > `body` Tutaj właściwość ma zastosowanie do `context` obiektu i nie jest taka sama jak **treści** token z akcji danych wyjściowych, która również może zostać przekazany do funkcji. 
+ 
    3. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-6. W **treść żądania** należy określić obiekt kontekstu do przekazania jako wejściowych funkcji, które muszą być sformatowane w JavaScript Object Notation (JSON). Po kliknięciu **treść żądania** , lista zawartości dynamicznej zostanie otwarte okno, można wybrać tokenów dla właściwości dostępne z poprzednich kroków. 
+6. W **treść żądania** Podaj wejściowych funkcji, które muszą być sformatowane jako obiekt JavaScript Object Notation (JSON). 
 
-   Ten przykład przekazuje obiekt w **treści** tokenu z wyzwalacza poczty e-mail:  
+   Jest to wejściowy *obiektu kontekstu* lub wiadomości, które Twoja aplikacja logiki wysyła do funkcji. Po kliknięciu **treść żądania** pola listy zawartości dynamicznej pojawia się, można wybrać tokenów dla dane wyjściowe z poprzednich kroków. W tym przykładzie określa, że ładunek kontekst zawiera właściwość o nazwie `content` zawierający **z** tokenu użytkownika wartości dla wyzwalacza poczty e-mail:
 
    !["Treść żądania" przykład — kontekst obiekt ładunku](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Na podstawie zawartości w obiekt kontekstu, Projektant aplikacji logiki generuje szablon funkcji, następnie można edytować wbudowanego. 
-   Usługa Logic Apps tworzy także zmienne w oparciu o obiekt kontekstu danych wejściowych.
-
-   W tym przykładzie obiekt kontekstu nie jest rzutowanie jako ciąg znaków, więc zawartość pobiera bezpośrednio dodać do ładunku JSON. 
-   Jednakże jeśli obiekt nie jest token JSON, który musi być ciąg, obiekt JSON lub tablicę JSON, wystąpi błąd. 
-   Można rzutować obiektu context w postaci ciągu, Dodaj w podwójny cudzysłów, na przykład:
+   W tym miejscu jako ciąg nie jest rzutowanie obiektu context, aby zawartości obiektu pobiera dodać bezpośrednio do ładunku JSON. Jednakże gdy obiekt kontekstu nie jest token JSON, który przekazuje ciąg, obiekt JSON lub tablicę JSON, wystąpi błąd. Dlatego w tym przykładzie użyto **Received Time** tokenu zamiast tego można rzutować obiektu context jako ciąg znaków, dodając w podwójny cudzysłów:  
 
    ![Rzutowanie obiektu jako ciąg](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -199,20 +189,17 @@ Z listy akcji wybierz następującą akcję: **wybierz funkcję platformy Azure 
 
    ![Wybierz aplikację funkcji i funkcji platformy Azure](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   Dla funkcji, w tym definicji interfejsu API (opisy struktury Swagger), które są [Konfigurowanie, dzięki czemu Twoja aplikacja logiki może znajdować i dostęp do tych funkcji](#function-swagger), możesz wybrać **akcje programu Swagger**:
+   Dla funkcji, definicji interfejsu API (opisy struktury Swagger), które zostały [Konfigurowanie, dzięki czemu Twoja aplikacja logiki może znajdować i dostęp do tych funkcji](#function-swagger), możesz wybrać **akcje programu Swagger**:
 
    ![Wybierz Twojej aplikacji funkcji, "Swagger akcje" "i funkcji platformy Azure](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-5. W **treść żądania** należy określić obiekt kontekstu do przekazania jako wejściowych funkcji, które muszą być sformatowane w JavaScript Object Notation (JSON). Ten obiekt kontekstu w tym artykule opisano wiadomości i zawartość, która aplikacja logiki wyśle do funkcji. 
+5. W **treść żądania** Podaj wejściowych funkcji, które muszą być sformatowane jako obiekt JavaScript Object Notation (JSON). 
 
-   Po kliknięciu **treść żądania** , lista zawartości dynamicznej zostanie otwarte okno, można wybrać tokenów dla właściwości dostępne z poprzednich kroków. 
-   Ten przykład przekazuje obiekt w **treści** tokenu z wyzwalacza poczty e-mail:
+   Jest to wejściowy *obiektu kontekstu* lub wiadomości, które Twoja aplikacja logiki wysyła do funkcji. Po kliknięciu **treść żądania** pola listy zawartości dynamicznej pojawia się, można wybrać tokenów dla dane wyjściowe z poprzednich kroków. W tym przykładzie określa, że ładunek kontekst zawiera właściwość o nazwie `content` zawierający **z** tokenu użytkownika wartości dla wyzwalacza poczty e-mail:
 
    !["Treść żądania" przykład — kontekst obiekt ładunku](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   W tym przykładzie obiekt kontekstu nie jest rzutowanie jako ciąg znaków, więc zawartość pobiera bezpośrednio dodać do ładunku JSON. 
-   Jednakże jeśli obiekt nie jest token JSON, który musi być ciąg, obiekt JSON lub tablicę JSON, wystąpi błąd. 
-   Można rzutować obiektu context w postaci ciągu, Dodaj w podwójny cudzysłów, na przykład:
+   W tym miejscu jako ciąg nie jest rzutowanie obiektu context, aby zawartości obiektu pobiera dodać bezpośrednio do ładunku JSON. Jednakże gdy obiekt kontekstu nie jest token JSON, który przekazuje ciąg, obiekt JSON lub tablicę JSON, wystąpi błąd. Dlatego w tym przykładzie użyto **Received Time** tokenu zamiast tego można rzutować obiektu context jako ciąg znaków, dodając w podwójny cudzysłów: 
 
    ![Rzutowanie obiektu jako ciąg](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -222,7 +209,7 @@ Z listy akcji wybierz następującą akcję: **wybierz funkcję platformy Azure 
 
 ## <a name="call-logic-apps-from-functions"></a>Wywoływanie aplikacji logiki z funkcji
 
-Aby wyzwolić aplikacji logiki od wewnątrz funkcji platformy Azure, ta aplikacja logiki musi mieć wywoływalnej punktu końcowego, lub dokładniej, **żądania** wyzwalacza. Następnie z wewnątrz funkcji, Wyślij żądanie HTTP POST na adres URL dla tego **żądania** wyzwalacza i Uwzględnij ładunek, chcesz, aby ta aplikacja logiki przetwarzania. Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie aplikacji logiki](../logic-apps/logic-apps-http-endpoint.md). 
+Chcesz wyzwalacza aplikacji logiki od wewnątrz funkcji platformy Azure, aplikacja logiki musi rozpoczynać wyzwalacz, który udostępnia punkt końcowy, możliwy do wywołania. Na przykład, można uruchomić aplikacji logiki z **HTTP**, **żądania**, **Azure Queues**, lub **usługi Event Grid** wyzwalacza. Wewnątrz funkcji Wyślij żądanie HTTP POST do adresu URL wyzwalacza i Uwzględnij ładunek, chcesz, aby ta aplikacja logiki przetwarzania. Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie aplikacji logiki](../logic-apps/logic-apps-http-endpoint.md). 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

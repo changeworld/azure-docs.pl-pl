@@ -1,6 +1,6 @@
 ---
-title: Omówienie punktu końcowego usług Azure bazy danych MySQL serwera sieci wirtualnej | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak działają punktów końcowych usługi sieci wirtualnej Azure bazy danych dla serwera MySQL.
+title: Usługa Azure Database for MySQL Server w sieci wirtualnej usługi punktu końcowego — omówienie | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak działają punkty końcowe usługi sieci wirtualnej dla usługi Azure Database for MySQL server.
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,38 +8,38 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: 652657c8891f2320c026251ffa32e4787028ee18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655654"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058243"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł dla bazy danych Azure dla programu MySQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for MySQL
 
-*Zasady sieci wirtualnej* są jedną funkcję zabezpieczeń zapory, która kontroluje, czy bazy danych Azure, aby serwer MySQL akceptuje komunikacji, które są wysyłane z określonej podsieci w sieci wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym dotycząca bezpiecznie stosowanie komunikatu do bazy danych Azure, serwer MySQL.
+*Reguły sieci wirtualnej* są jedną funkcję zabezpieczeń zapory, która kontroluje, czy usługi Azure Database for MySQL server akceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację z usługi Azure Database dla serwera MySQL.
 
-Aby utworzyć regułę sieci wirtualnej, najpierw należy [sieci wirtualnej] [ vm-virtual-network-overview] (VNet) i [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] dla reguły do odwołania. Poniżej przedstawiono, jak działa punkt końcowy usługi sieci wirtualnej z bazą danych Azure dla programu MySQL:
+Aby utworzyć regułę sieci wirtualnej musi najpierw mieć [sieci wirtualnej] [ vm-virtual-network-overview] (VNet) i [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] dla reguły do odwołania. Poniższej ilustracji przedstawiono, jak działa punkt końcowy usługi sieci wirtualnej z usługą Azure Database for MySQL:
 
 ![Przykład działania punkt końcowy usługi sieci wirtualnej](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> W bazie danych Azure dla programu MySQL ta funkcja jest dostępna w publicznej wersji zapoznawczej we wszystkich regionach chmurze publicznej Azure wdrożonym bazy danych Azure dla programu MySQL.
+> Ta funkcja jest dostępna we wszystkich regionach platformy Azure — Azure Database for MySQL jest wdrożonym dla serwerów z ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
 <a name="anch-terminology-and-description-82f" />
 
 ## <a name="terminology-and-description"></a>Terminologia i opis
 
-**Sieć wirtualna:** może mieć skojarzone z subskrypcją platformy Azure sieci wirtualnych.
+**Sieć wirtualna:** może mieć sieci wirtualne, skojarzony z subskrypcją platformy Azure.
 
-**Podsieci:** sieć wirtualna zawiera **podsieci**. Wszelkie Azure maszyn wirtualnych (VM), które masz przypisanych do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia bazy danych węzłów, które znajdują się poza sieci wirtualnej nie może uzyskiwać dostępu do sieci wirtualnej, dopiero po skonfigurowaniu zabezpieczeń, aby zezwolić na dostęp.
+**Podsieć:** sieć wirtualna zawiera **podsieci**. Żadnych maszyn wirtualnych (VM), do których masz są przypisywane do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia, że węzły, które znajdują się poza siecią wirtualną nie może uzyskiwać dostęp do sieci wirtualnej, chyba, że konfigurowanie zabezpieczeń w taki sposób, aby zezwolić na dostęp.
 
-**Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] podsieć, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi Azure. W tym artykule Dbamy o nazwę typu **Microsoft.Sql**, które odwołuje się do usługi Azure o nazwie bazy danych SQL. Ten numer seryjny usługi ma również zastosowanie do bazy danych MySQL i PostgreSQL usług Azure. Ważne jest, aby podczas stosowania należy uwzględnić **Microsoft.Sql** usługi tagu dla punktu końcowego sieci wirtualnej zostanie ona skonfigurowana ruch punkt końcowy usługi dla bazy danych SQL Azure, Azure bazy danych MySQL i bazą danych Azure dla serwerów PostgreSQL w tej podsieci. 
+**Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. W tym artykule jesteśmy zainteresowani nazwę typu **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL. Tego tagu usługi ma zastosowanie również do usługi Azure Database for MySQL i PostgreSQL. Ważne jest, aby pamiętać podczas stosowania **Microsoft.Sql** tag usługi punktu końcowego usługi sieci wirtualnej zostanie skonfigurowany ruchu w ramach punktu końcowego usługi dla usługi Azure SQL Database, Azure Database for MySQL i — Azure Database for postgresql w warstwie serwerów w tej podsieci. 
 
-**Reguła sieci wirtualnej:** reguła sieci wirtualnej Azure bazy danych MySQL serwera jest podsieć, która znajduje się na liście kontroli dostępu (ACL) bazy danych Azure, aby serwer MySQL. Się na liście ACL bazy danych Azure, aby serwer MySQL, musi zawierać podsieci **Microsoft.Sql** nazwy typu.
+**Reguła sieci wirtualnej:** reguły sieci wirtualnej dla usługi Azure Database for MySQL server ma podsieci, który znajduje się na liście kontroli dostępu (ACL) usługi Azure Database for MySQL server. Należy na liście kontroli dostępu dla usługi Azure Database for MySQL server musi zawierać podsieci **Microsoft.Sql** nazwy typu.
 
-Reguła sieci wirtualnej informuje Azure bazy danych, serwer MySQL do akceptowania komunikacji z każdego węzła, który znajduje się w podsieci.
+Reguły sieci wirtualnej informuje usługi Azure Database for MySQL server aby akceptował komunikację z każdego węzła, który znajduje się w podsieci.
 
 
 
@@ -49,96 +49,100 @@ Reguła sieci wirtualnej informuje Azure bazy danych, serwer MySQL do akceptowan
 
 <a name="anch-benefits-of-a-vnet-rule-68b" />
 
-## <a name="benefits-of-a-virtual-network-rule"></a>Korzyści wynikające z reguły sieci wirtualnej
+## <a name="benefits-of-a-virtual-network-rule"></a>Zalety reguły sieci wirtualnej
 
-Aż do wprowadzenia akcji, maszyn wirtualnych w podsieci nie może komunikować się z bazą danych Azure dla serwera MySQL. Jedną akcję, która nawiązuje komunikację jest tworzenie reguły sieci wirtualnej. Uzasadnienie Wybieranie sieci wirtualnej podejście reguły wymaga dyskusji Porównaj kontrast, obejmujące konkurencyjnych opcji zabezpieczeń oferowanych przez zaporę.
+Do momentu podejmowanie akcji maszyny wirtualne w podsieci nie może komunikować się za pomocą usługi Azure Database for MySQL server. Jedna akcja, która ustanawia komunikacji jest tworzenie reguły sieci wirtualnej. Racjonalne uzasadnienie wyboru podejście reguły sieci wirtualnej wymaga to dyskusji porównania i kontrast, obejmujące konkurencyjnych opcje zabezpieczeń oferowanych przez zaporę.
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Zezwalaj na dostęp do usług platformy Azure
 
-W okienku zabezpieczeń połączenia jest **ON/OFF** przycisk o nazwie **zezwolić na dostęp do usług platformy Azure**. **ON** ustawienie umożliwia komunikację z wszystkie adresy IP platformy Azure i wszystkie podsieci platformy Azure. Te adresy IP platformy Azure lub podsieci nie może należeć do przez użytkownika. To **ON** ustawienie jest prawdopodobnie bardziej otwarte niż bazy danych Azure, jako baza danych MySQL. Funkcja reguły sieci wirtualnej oferuje znacznie skuteczniejszą kontrolę.
+Okienko zabezpieczeń połączenia ma **włączyć/wyłączyć** przycisku, która jest oznaczona etykietą **zezwolić na dostęp do usług platformy Azure**. **ON** ustawienie umożliwia komunikację ze wszystkich adresów IP platformy Azure i wszystkie podsieci platformy Azure. Te adresy IP platformy Azure lub podsieci może nie być własnością użytkownika. To **ON** ustawienie jest prawdopodobnie mniej rygorystyczne, niż potrzebujesz bazy danych Azure Database for MySQL to. Funkcja reguły sieci wirtualnej oferuje znacznie bardziej szczegółową kontrolę.
 
 ### <a name="b-ip-rules"></a>B. Reguły IP
 
-Azure bazy danych MySQL zapory można określić zakresów adresów IP, z których łączności są akceptowane do bazy danych Azure dla bazy danych MySQL. Ta metoda jest poprawnie stabilna adresów IP jest spoza sieci prywatnej platformy Azure. Ale wiele węzłów w prywatnej sieci platformy Azure są skonfigurowane przy użyciu *dynamiczne* adresów IP. Dynamiczne adresy IP mogą ulec zmianie, np. podczas ponownego uruchamiania maszyny Wirtualnej. Byłoby folly, aby określić dynamicznego adresu IP w regule zapory w środowisku produkcyjnym.
+Azure Database for MySQL — zapora zezwala na określ zakresy adresów IP, z których łączności są akceptowane w bazie danych Azure for MySQL Database. To podejście jest odpowiednie dla stabilne adresów IP, które są spoza sieci prywatnej platformy Azure. Jednak wiele węzłów w sieci prywatnej platformy Azure są skonfigurowane przy użyciu *dynamiczne* adresów IP. Dynamiczne adresy IP mogą zmienić, np. po ponownym uruchomieniu maszyny Wirtualnej. Byłoby folly, aby określić dynamiczny adres IP dla reguły zapory w środowisku produkcyjnym.
 
-Opcji IP może być odzyskana, uzyskując *statycznych* adres IP dla maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [skonfigurować prywatnych adresów IP dla maszyny wirtualnej przy użyciu portalu Azure][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
+Opcja IP można odzyskana, uzyskując *statyczne* adresu IP dla maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [skonfigurować prywatnych adresów IP dla maszyny wirtualnej przy użyciu witryny Azure portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
-Jednak ujęciu statycznego adresu IP może być trudne do zarządzania i jest kosztowne, jeśli zostaną wykonane na dużą skalę. Zasady sieci wirtualnej mają ułatwić ustalenie, jak i do zarządzania.
+Jednak podejście statycznego adresu IP może być trudne do zarządzania i jest kosztowny w przypadku na dużą skalę. Reguły sieci wirtualnej są łatwiejsze ustalenie, jak i do zarządzania.
 
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Nie można jeszcze bazy danych platformy Azure dla programu MySQL w podsieci bez zdefiniowania punkt końcowy usługi
+### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Nie można jeszcze — Azure Database for MySQL w podsieci bez definiowania punktu końcowego usługi
 
-Jeśli Twoje **Microsoft.Sql** serwer był węzłem w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej może komunikować się z bazy danych Azure, aby serwer MySQL. W takim przypadku maszyn wirtualnych może komunikować się z bazy danych Azure dla programu MySQL bez konieczności wszystkie reguły sieci wirtualnej lub reguły IP.
+Jeśli Twoje **Microsoft.Sql** serwer był węzłem w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej można nawiązać komunikacji z usługi Azure Database for MySQL server. W tym przypadku maszyn wirtualnych można nawiązać komunikacji z usługą Azure Database for MySQL bez żadnych reguł sieci wirtualnej lub reguły IP.
 
-Jednak począwszy od 2018 maja bazą danych Azure dla usługi MySQL nie jest jeszcze pomiędzy usługami, które można przypisać bezpośrednio do podsieci.
+Jednak począwszy od sierpnia 2018 r. Usługa Azure Database for MySQL nie jest jeszcze między usługami, które można przypisać bezpośrednio do podsieci.
 
 <a name="anch-details-about-vnet-rules-38q" />
 
-## <a name="details-about-virtual-network-rules"></a>Szczegółowe informacje o zasadach sieci wirtualnej
+## <a name="details-about-virtual-network-rules"></a>Szczegóły dotyczące reguł sieci wirtualnej
 
-W tej sekcji opisano kilka szczegółowe informacje o regułach sieci wirtualnej.
+W tej sekcji opisano kilka szczegóły dotyczące reguł sieci wirtualnej.
 
 ### <a name="only-one-geographic-region"></a>Tylko jeden region geograficzny
 
-Każdy punkt końcowy usługi sieci wirtualnej dotyczy tylko jeden region platformy Azure. Punkt końcowy nie obsługuje innych regionów akceptował komunikację z podsieci.
+Każdy punkt końcowy usługi sieci wirtualnej mają zastosowanie do tylko jednego regionu platformy Azure. Punkt końcowy nie uwzględnia innych regionach akceptował komunikację z podsieci.
 
-Wszystkie reguły sieci wirtualnej jest ograniczone do regionu, który dotyczy jej podstawowy punkt końcowy.
+Reguły sieci wirtualnej jest ograniczona do regionu, który dotyczy podstawowym punktem końcowym.
 
 ### <a name="server-level-not-database-level"></a>Poziom serwera, nie poziom bazy danych
 
-Każda reguła sieci wirtualnej ma zastosowanie do całej bazy danych Azure, aby serwer MySQL, a nie tylko do jednej konkretnej bazy danych na serwerze. Innymi słowy sieć wirtualną reguła jest stosowana na poziomie serwera, nie na poziomie bazy danych.
+Każda reguła sieci wirtualnej ma zastosowanie do Twojej całego serwera Azure Database for MySQL, nie tylko do jednej konkretnej bazy danych na serwerze. Innymi słowy sieć wirtualną reguła ma zastosowanie na poziomie serwera, nie na poziomie bazy danych.
 
-### <a name="security-administration-roles"></a>Role zabezpieczeń administracji
+### <a name="security-administration-roles"></a>Ról administracyjnych zabezpieczeń
 
-Brak separacji ról zabezpieczeń w administrowanie punktów końcowych usługi sieci wirtualnej. Akcja jest wymagany z każdej z następujących ról:
+Brak separacji ról zabezpieczeń w administracji punkty końcowe usługi sieci wirtualnej. Akcja jest wymagana z każdej z następujących ról:
 
 - **Administrator sieci:** &nbsp; włączyć punkt końcowy.
-- **Administrator bazy danych:** &nbsp; aktualizowanie listy kontroli dostępu (ACL), aby dodać jednej podsieci do bazy danych MySQL serwera Azure.
+- **Administrator bazy danych:** &nbsp; aktualizacji listy kontroli dostępu (ACL), aby dodać danej podsieci do usługi Azure Database for MySQL server.
 
 *Alternatywa RBAC:*
 
-Role administratora sieci i administratora bazy danych ma więcej możliwości niż są wymagane do zarządzania zasadami sieci wirtualnej. Wymagany jest tylko podzestaw możliwości ich.
+Role bazy danych i administratora sieci mają więcej możliwości niż są wymagane do zarządzania reguł sieci wirtualnej. Potrzebny jest tylko podzbiór ich możliwości.
 
-Istnieje możliwość użycia [kontroli dostępu opartej na rolach (RBAC)] [ rbac-what-is-813s] na platformie Azure, aby utworzyć jednej roli niestandardowej, która ma niezbędne podzestaw możliwości. Tworzona rola niestandardowa można użyć zamiast z administratorem sieci lub administratorem bazy danych. Powierzchni z zagrożenie bezpieczeństwa jest mniejszy, jeśli użytkownik zostanie dodany do niestandardowej roli zabezpieczeń, i dodanie użytkownika do dwóch innych ról administratora głównych.
+Masz możliwość korzystania z [kontroli dostępu opartej na rolach (RBAC)] [ rbac-what-is-813s] na platformie Azure, aby utworzyć pojedynczy rolę niestandardową, która zawiera tylko niezbędne podzbiór funkcji. Rola niestandardowa, można użyć zamiast obejmujące administratora sieci lub administrator bazy danych. Obszar powierzchni usługi ekspozycji zabezpieczeń jest mniejszy, jeśli Dodawanie użytkownika do roli niestandardowej, a dodanie użytkownika do dwóch innych ról administratora głównych.
 
 > [!NOTE]
-> W niektórych przypadkach bazy danych MySQL i podsieci sieci wirtualnej Azure znajdują się w różnych subskrypcji. W takich sytuacjach należy następujące konfiguracje:
-> - Obie subskrypcje muszą być w tej samej dzierżawy usługi Azure Active Directory.
-> - Użytkownik ma uprawnienia wymagane do zainicjowania operacji, takich jak włączanie punktów końcowych usługi i dodawanie podsieci sieci wirtualnej do danego serwera.
+> W niektórych przypadkach usługi Azure Database for MySQL i podsieciami sieci wirtualnej znajdują się w różnych subskrypcjach. W takich sytuacjach należy zapewnić następujące konfiguracje:
+> - Obie subskrypcje muszą być w tej samej dzierżawie usługi Azure Active Directory.
+> - Użytkownik ma uprawnienia wymagane do zainicjowania operacje, takie jak włączenie punktów końcowych usługi i dodawanie podsieci sieci wirtualnej do danego serwera.
 
 ## <a name="limitations"></a>Ograniczenia
 
-W bazie danych Azure dla programu MySQL funkcja reguł sieci wirtualnej ma następujące ograniczenia:
+Usługi Azure Database for MySQL — funkcja reguł sieci wirtualnej ma następujące ograniczenia:
 
-- W zaporze dla bazy danych Azure, MySQL każda reguła sieci wirtualnej odwołuje się do podsieci. Te przywoływanego podsieci muszą być obsługiwane w tym samym regionie geograficznym, który jest hostem bazy danych Azure dla programu MySQL.
+- W zaporze dla usługi Azure Database for MySQL każdą regułę sieci wirtualnej odwołuje się do podsieci. Te odwołania podsieci muszą być hostowane w tym samym regionie geograficznym, który obsługuje usługi Azure Database for MySQL.
 
-- Każda baza danych Azure MySQL serwera może mieć maksymalnie 128 wpisy list kontroli dostępu dla dowolnego danej sieci wirtualnej.
+- Każdy serwer Azure Database for MySQL może mieć maksymalnie 128 wpisy listy ACL dla dowolnego danej sieci wirtualnej.
 
-- Reguły sieci wirtualnej mają zastosowanie tylko do sieci wirtualnych Azure Resource Manager. i nie [klasycznego modelu wdrażania] [ arm-deployment-model-568f] sieci.
+- Reguły sieci wirtualnej mają zastosowanie tylko do sieci wirtualnej usługi Azure Resource Manager. i nie [klasycznego modelu wdrażania] [ arm-deployment-model-568f] sieci.
 
-- Włączanie w sieci wirtualnej usługi punktów końcowych bazy danych Azure dla MySQL przy użyciu **Microsoft.Sql** numer seryjny umożliwia również punkty końcowe dla wszystkich usług Azure bazy danych: baza danych Azure dla programu MySQL, PostgreSQL, bazy danych Azure Baza danych Azure SQL i magazyn danych Azure SQL.
+- Włączenie w sieci wirtualnej punktów końcowych usług — Azure Database for MySQL za pomocą **Microsoft.Sql** tag usługi umożliwia również punkty końcowe dla wszystkich usług platformy Azure, bazy danych: — Azure Database for MySQL, Azure Database for PostgreSQL, Usługa Azure SQL Database i Azure SQL Data Warehouse.
 
-- W czasie publicznej wersji zapoznawczej nie jest obsługiwane dla operacji przenoszenia sieci wirtualnej. Aby przenieść regułę sieci wirtualnej, Porzuć i utwórz ją ponownie.
+- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
-- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
-
-- W zaporze zakresów adresów IP są stosowane do następujących elementów sieci, ale zasady sieci wirtualnej nie:
-    - [Lokacja-lokacja (S2S) wirtualnej sieci prywatnej (VPN)][vpn-gateway-indexmd-608y]
-    - Lokalnymi za pośrednictwem [ExpressRoute][expressroute-indexmd-744v]
+- Na zaporze zakresów adresów IP są stosowane do następujących elementów sieci, ale nie obsługują reguł sieci wirtualnej:
+    - [Wirtualnej sieci prywatnej (VPN) lokacja-lokacja (S2S)][vpn-gateway-indexmd-608y]
+    - W środowisku lokalnym za pośrednictwem [usługi ExpressRoute][expressroute-indexmd-744v]
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Jeśli sieć jest podłączony do sieci Azure przy użyciu [ExpressRoute][expressroute-indexmd-744v], każdy obwód jest skonfigurowany z dwóch publicznych adresów IP w Microsoft Edge. Dwa adresy IP są używane nawiązać Services firmy Microsoft, takich jak do magazynu Azure, korzystając z publicznej komunikacji równorzędnej platformy Azure.
+Jeśli sieć jest połączony z siecią platformy Azure za pośrednictwem [ExpressRoute][expressroute-indexmd-744v], każdy obwód jest skonfigurowany przy użyciu dwóch publicznych adresów IP w Microsoft Edge. Dwa adresy IP są używane połączyć się programem Microsoft Services, takich jak do usługi Azure Storage, korzystając z publicznej komunikacji równorzędnej Azure.
 
-Aby umożliwić komunikację z obwodu bazą danych Azure dla programu MySQL, należy utworzyć zasady sieci IP dla publicznych adresów IP w sieci obwodów. Aby można było znaleźć publiczne adresy IP obwodu ExpressRoute, otwórz bilet pomocy technicznej z ExpressRoute przy użyciu portalu Azure.
+Aby zezwalać na komunikację z obwodu do usługi Azure Database for MySQL, należy utworzyć zasady sieci IP publiczne adresy IP obwodów usługi. Aby można było znaleźć publiczne adresy IP obwodów usługi ExpressRoute, należy otworzyć bilet pomocy technicznej przy użyciu usługi ExpressRoute za pomocą witryny Azure portal.
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci Wirtualnej do serwera bez włączania na sieć Wirtualną punktów końcowych usługi
+
+Tylko ustawienie reguły zapory nie pomaga zabezpieczyć serwer do sieci wirtualnej. Należy również włączyć punkty końcowe usługi sieci wirtualnej **na** zabezpieczeń, które zostały wprowadzone. Po włączeniu punktów końcowych usługi **na**, podsieciami sieci wirtualnej, wystąpi przestój przed zakończeniem tego procesu przejścia z **poza** do **na**. Jest to szczególnie istotne w kontekście dużych sieciach wirtualnych. Możesz użyć **IgnoreMissingServiceEndpoint** flagę, aby zredukować lub całkowicie wyeliminować przestój podczas przejścia.
+
+Możesz ustawić **IgnoreMissingServiceEndpoint** flagi przy użyciu wiersza polecenia platformy Azure lub portalu.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-- [Sieci wirtualnych platformy Azure][vm-virtual-network-overview]
+- [Sieci wirtualne platformy Azure][vm-virtual-network-overview]
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Kolejne kroki
-W przypadku artykułów na temat tworzenia zasad sieci wirtualnej zobacz:
-- [Tworzenie i zarządzanie bazą danych Azure dla reguły MySQL sieci wirtualnej przy użyciu portalu Azure](howto-manage-vnet-using-portal.md)
-- [Tworzenie i zarządzanie bazą danych Azure dla reguł MySQL sieci wirtualnej za pomocą wiersza polecenia platformy Azure](howto-manage-vnet-using-cli.md)
+W przypadku artykułów na temat tworzenia reguł sieci wirtualnej zobacz:
+- [Tworzenie i zarządzanie nimi — Azure Database dla reguł sieci wirtualnej MySQL przy użyciu witryny Azure portal](howto-manage-vnet-using-portal.md)
+- [Tworzenie i zarządzanie nimi — Azure Database dla reguł sieci wirtualnej MySQL przy użyciu wiersza polecenia platformy Azure](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same Github repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md

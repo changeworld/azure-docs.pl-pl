@@ -1,74 +1,74 @@
 ---
-title: Struktura projektów z szablonem procesu nauki danych Team | Dokumentacja firmy Microsoft
-description: Jak utworzyć wystąpienia zespołu danych nauki procesu (TDSP) szablonów usługi Azure Machine Learning struktury projektów współpracy
+title: Tworzenie struktury projektów za pomocą szablonu procesu do nauki o danych Team | Dokumentacja firmy Microsoft
+description: Jak utworzyć szablony Team Data Science naukowych w usłudze Azure Machine Learning struktury projektów do współpracy
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: bradsev
-ms.openlocfilehash: 5b53bd3ec479ba6e096b4d00089f968e37f0135c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831772"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059618"
 ---
-# <a name="structure-projects-with-the-team-data-science-process-template"></a>Struktura projektów z szablonem procesu nauki danych zespołu
+# <a name="structure-projects-with-the-team-data-science-process-template"></a>Tworzenie struktury projektów za pomocą szablonu procesu do nauki o danych zespołu
 
-Ten dokument zawiera instrukcje dotyczące sposobu tworzenia projektów analizy danych w usłudze Azure Machine Learning z szablonami zespołu danych nauki procesu (TDSP). Szablony ułatwiają do projektów struktury współpracy i powtarzalności. 
+Niniejszy dokument zawiera instrukcje dotyczące sposobu tworzenia projektów do nauki o danych w usłudze Azure Machine Learning za pomocą szablonów Team Data Science naukowych. Te szablony ułatwiają tworzenie struktury projektów do współpracy i powtarzalności. 
 
 
 ## <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
-TDSP jest procesem nauki danych agile, iteracji, wykonywanie i opracowywania rozwiązań zaawansowana analityka. Został zaprojektowany tak, aby poprawić współpracy i wydajności zespołów nauki danych w organizacji przedsiębiorstwa. Obsługuje ona tych celów z czterech najważniejsze składniki:
+Przetwarzania TDSP jest agile, iteracji, danych dla celów naukowych wykonywania i dostarczanie zaawansowanych rozwiązań analizy. Został zaprojektowany tak, aby poprawić współpracę i wydajności zespołów do nauki o danych w przedsiębiorstwach. Obsługuje ona te cele przy użyciu czterech kluczowych składników:
 
-   * Standard [analizy danych w cyklu życia](../team-data-science-process/lifecycle.md) definicji.
-   * Struktury projektu standardowych, [dokumentacji i raportowania szablonów projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
-   * Infrastrukturę i zasobów do wykonania projektu, takie jak odpowiednio obliczeniowej i pamięci masowej infrastruktury i kodu repozytoriów.
-   * [Narzędzia](https://github.com/Azure/Azure-TDSP-Utilities) do analizy danych zadania w projekcie, takich jak:
+   * Standardowa [cykl życia analizy danych](../team-data-science-process/lifecycle.md) definicji.
+   * Strukturę projektu standardowych [dokumentacji i raportowania szablony projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+   * Infrastruktura i zasoby dotyczące wykonywania projektu, takiej jak, odpowiednio, zasobów obliczeniowych i magazynu infrastruktury i kodu repozytoriów.
+   * [Narzędzia i programy narzędziowe](https://github.com/Azure/Azure-TDSP-Utilities) do analizy danych zadania w projekcie, takich jak:
       - Kontrola wersji współpracy
       - Przegląd kodu
-      - Eksploracja danych i modelowanie
+      - Eksplorowanie i modelowanie danych
       - Planowanie pracy
 
-Aby uzyskać bardziej szczegółowe omówienie TDSP, zobacz [Omówienie procesu nauki danych zespołu](../team-data-science-process/overview.md).
+Pełniejsze omówienie przetwarzania TDSP, zobacz [przegląd danych zespołu dla celów naukowych](../team-data-science-process/overview.md).
 
-## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>Dlaczego należy użyć TDSP struktury i szablony?
-Standaryzacja struktury, cykl życia i dokumentacji projektów nauki danych ma kluczowe znaczenie dla ułatwienia skutecznej współpracy w zespołach analizy danych. Tworzenie projektów learning maszyny z szablonem TDSP do zapewnienia takiego framework zespołową skoordynowany sposób.
+## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>Dlaczego należy użyć środowiska TDSP struktury i szablony?
+Standaryzacja struktury, cykl życia i projekty do nauki o danych w dokumentacji jest kluczem ułatwienia skutecznych współpracy w zespołach do nauki o danych. Utwórz machine learning projektów za pomocą szablonu TDSP do zapewnienia takiego framework skoordynowanego pracę zespołową.
 
-Wcześniej wydane [repozytorium GitHub TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate) celu osiągnięcie tych celów. Ale nie było możliwe, do tej pory do tworzenia wystąpienia struktury TDSP i szablonów w ramach narzędzia analizy danych. Obecnie istnieje możliwość utworzenia projektu uczenia maszynowego, tworzącym TDSP Szablony struktury i dokumentacji. 
+Wcześniej wydana [repozytorium GitHub przeznaczone dla przetwarzania TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate) aby ułatwić osiągnięcie tych celów. Ale nie było możliwe, do tej pory do utworzenia wystąpienia struktury przetwarzania TDSP i szablonów w ramach narzędzia do analizy danych. Teraz jest możliwa do utworzenia projektu usługi machine learning, tworzącym przetwarzania TDSP Szablony struktury i dokumentację. 
 
-## <a name="things-to-note-before-creating-a-new-project"></a>Rzeczy do uwzględnienia przed utworzeniem nowego projektu
+## <a name="things-to-note-before-creating-a-new-project"></a>Zapamiętaj przed utworzeniem nowego projektu
 Sprawdź następujące elementy *przed* Tworzenie nowego projektu:
-* Przejrzyj uczenia maszynowego TDSP [szablonu](https://aka.ms/tdspamlgithubrepo).
-* Zawartość (inne niż co to jest już obecna w folderze "dokumenty") muszą zawierać mniej niż 25 MB. Patrz Notatka poniżej tej listy.
-* Przykład\_folderu danych jest tylko dla małych plików danych (mniej niż 5 MB) z którymi można przetestować kod lub uruchomić wczesne programowanie.
-* Przechowywanie plików, takich jak Word i pliki programu PowerPoint, może znacznie zwiększyć rozmiar folderu "dokumenty". Zaleca się, że wyszukiwanie współpracy typu Wiki, [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), lub innego zasobu współpracy do przechowywania tych plików.
-* Aby dowiedzieć się, jak obsługiwać duże pliki i dane wyjściowe w uczeniu maszynowym, przeczytaj [wprowadzeniem trwałych zmian i pracy z dużymi plikami](http://aka.ms/aml-largefiles).
+* Przejrzyj uczenia maszynowego przetwarzania TDSP [szablonu](https://aka.ms/tdspamlgithubrepo).
+* Zawartość (inne niż co znajduje się już w folderze "dokumenty") są wymagane do mniej niż 25 MB rozmiar. Zobacz uwagi poniżej tej listy.
+* Przykład\_folderu danych jest tylko w przypadku małych plików danych (mniej niż 5 MB) za pomocą których można przetestować kod lub rozpocząć projektowanie wcześniejsze.
+* Przechowywanie plików, takich jak Word i pliki programu PowerPoint, można znacznie zwiększyć rozmiar folderu "docs". Zaleca się, że znajdowanie współpracy witrynę typu Wiki, [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), lub innego zasobu współpracy do przechowywania tych plików.
+* Aby dowiedzieć się, jak do obsługi dużych plików i danych wyjściowych w usłudze Machine Learning, przeczytaj [utrwalania zmian i rozwiązywania problemów związanych z dużymi plikami](http://aka.ms/aml-largefiles).
 
 > [!NOTE]
-> Wszystkie powiązane dokumentacji zawartości (tekstu, promocjach cenowych obrazów i inne pliki dokumentu) *nie* używane podczas wykonywania projekt, inne niż plik readme.md musi znajdować się w folderze o nazwie "dokumenty" (tylko małe litery). Folder "dokumenty" jest specjalne ignorowane przez wykonanie uczenia maszynowego, więc zawartość w tym folderze nie pobrać kopiowana niepotrzebnie obliczeniowe elementy docelowe. Obiekty w tym folderze również nie są wliczane do zakończenia 25 MB rozmiar projektu. Folder "dokumenty" jest na przykład miejsce do przechowywania plików duży obraz potrzebnych w dokumentacji. Te pliki nadal są śledzone przez Git za pomocą historii uruchamiania. 
+> Wszystkie związane z dokumentacją zawartość (tekst, promocjach cenowych, obrazy i inne pliki dokumentów) *nie* używane podczas wykonywania projektów, innego niż plik readme.md musi znajdować się w folderze o nazwie "docs" (tylko małe litery). Folder "docs" jest ignorowane przez wykonanie uczenia maszynowego, więc zawartość w tym folderze nie uzyskać kopiowana do celów obliczeń niepotrzebnie specjalnego folderu. Obiekty w tym folderze również nie są wliczane do limitu 25 MB rozmiar projektu. Folder "docs" jest na przykład miejsce do przechowywania plików duży obraz, potrzebnych w dokumentacji. Pliki te nadal są śledzone przez usługi Git za pomocą historii uruchamiania. 
 
-## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>Utwórz wystąpienie struktury TDSP i szablony z galerii szablonów uczenia maszynowego
-Aby utworzyć nowy projekt z szablonami TDSP struktury i dokumentacji, wykonaj następujące procedury.
+## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>Utwórz wystąpienie struktury przetwarzania TDSP i szablonów z galerii szablonów usługi Machine Learning
+Aby utworzyć nowy projekt za pomocą szablonów środowiska TDSP struktury i dokumentacji, wykonaj następujące procedury.
 
 ### <a name="create-a-new-project"></a>Tworzenie nowego projektu
-Aby utworzyć nowy projekt, otwórz uczenia maszynowego Azure. W obszarze **projekty** w lewym górnym okienku wybierz znak plus (**+**), a następnie wybierz **nowy projekt**.
+Aby utworzyć nowy projekt, należy otworzyć usługi Azure Machine Learning. W obszarze **projektów** w lewym górnym rogu okienka, wybierz znak plus (**+**), a następnie wybierz pozycję **nowy projekt**.
 
 ![Nowy projekt](./media/how-to-use-tdsp-in-azure-ml/instantiation-1.png)
 
 
-### <a name="create-a-new-tdsp-structured-project"></a>Utwórz nowy projekt strukturę TDSP
-   1. Określ parametry i informacje w odpowiednie pole wyboru lub na liście:
+### <a name="create-a-new-tdsp-structured-project"></a>Utwórz nowy projekt ze strukturą przetwarzania TDSP
+   1. Określ parametry i informacje w odpowiednie pole lub na liście:
 
       - Project name (Nazwa projektu)
       - Katalog projektu
@@ -77,44 +77,44 @@ Aby utworzyć nowy projekt, otwórz uczenia maszynowego Azure. W obszarze **proj
       - Nazwa obszaru roboczego
 
    2. Następnie w **wyszukiwania** wprowadź **TDSP**. 
-   3. Gdy **struktury projektu z TDSP** opcja jest dostępna, zaznacz ten szablon. 
-   4. Wybierz **Utwórz** przycisk, aby utworzyć nowy projekt o strukturze TDSP. Jeśli podasz puste repozytorium Git podczas tworzenia projektu (w odpowiednim polu tekstowym), a następnie tego repozytorium po utworzeniu projektu zostaną wyświetlone zawartości i struktury projektu.
+   3. Gdy **struktury projektu przy użyciu przetwarzania TDSP** opcja jest wyświetlana, zaznacz ten szablon. 
+   4. Wybierz **Utwórz** przycisk, aby utworzyć nowy projekt z przetwarzania TDSP struktury. Jeśli podasz puste repozytorium Git podczas tworzenia projektu (w odpowiednim polu tekstowym), a następnie tego repozytorium zostanie wypełniona zawartości i struktury projektu po utworzeniu projektu.
 
-![Tworzenie projektu TDSP](./media/how-to-use-tdsp-in-azure-ml/instantiation-2.png)
+![Utwórz projekt środowiska TDSP](./media/how-to-use-tdsp-in-azure-ml/instantiation-2.png)
 
 
-## <a name="examine-the-tdsp-project-structure"></a>Sprawdź TDSP struktury projektu
-Po utworzeniu nowego projektu można sprawdzić jego struktury (zobacz lewego panelu na poniższej ilustracji). Zawiera wszystkie aspekty standardowych dokumentacji dla zrozumienia biznesowych. Elementy te obejmują etapy cyklu życia TDSP, lokalizacja danych definicje i architektura ten szablon dokumentacji. 
+## <a name="examine-the-tdsp-project-structure"></a>Sprawdź struktury projektu przetwarzania TDSP
+Po utworzeniu nowego projektu można sprawdzić jego strukturę (zobacz w lewym panelu na poniższej ilustracji). Zawiera ona wszystkie aspekty standardowych dokumentacji poznawanie firmy. Elementy te zawierają etapy cyklu życia przetwarzania TDSP, lokalizacja danych, definicji i architektury ten szablon dokumentacji. 
 
-Struktura wyświetlany jest pochodną struktury TDSP, który jest opublikowany w [szablony projektów TDSP struktury, dokumentów i artefaktu](https://github.com/Azure/Azure-TDSP-ProjectTemplate), z niektórych zmian. Na przykład kilka szablonów dokumentów są scalane w jednym języku znaczników markdown, to znaczy, [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport). 
+Struktura przedstawiona jest tworzony na podstawie struktury przetwarzania TDSP, który został opublikowany w [Szablony struktury, dokumentów i artefaktów projektu przetwarzania TDSP](https://github.com/Azure/Azure-TDSP-ProjectTemplate), za pomocą niektórych modyfikacji. Na przykład kilka szablonów dokumentów są scalane w jednym języku znaczników markdown, to znaczy, [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport). 
 
 ### <a name="project-folder-structure"></a>Struktura folderów projektu
-Szablon projektu TDSP zawiera następujące foldery najwyższego poziomu:
+Szablon projektu przetwarzania TDSP zawiera następujące foldery najwyższego poziomu:
    - **Kod**: zawiera kod.
-   - **Dokumentacja**: zawiera niezbędne dokumentację dotyczącą projektu (na przykład pliki markdown i powiązane z).
-   - **sample_data**: zawiera **próbki (małe)** dane, które można użyć do wczesnego rozwoju lub testowania. Te zestawy nie są zwykle większych niż kilka (5) MB. Ten folder nie jest pełny lub dużych zestawów danych.
+   - **Dokumentacja**: zawiera niezbędne dokumentacji dotyczącej projektu (na przykład pliki markdown i powiązane z).
+   - **sample_data**: zawiera **próbki (mała liczba godzin)** dane, które można użyć do początku tworzenia i testowania. Zazwyczaj te zestawy nie są większe niż kilka (5) MB. Ten folder nie jest pełny lub dużych zestawów danych.
 
 ![Dane przykładowe](./media/how-to-use-tdsp-in-azure-ml/instantiation-3.png)
 
 
-## <a name="use-the-tdsp-structure-and-templates"></a>Użyj TDSP struktury i szablony
-Należy dodać informacje specyficzne dla projektu do struktury i szablony. W przypadku oczekiwać wypełnić je z kodem i informacje niezbędne do wykonania i dostarczania projektu. [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) plik jest szablon, który należy zmodyfikować informacje istotne dla projektu. Zawiera zestaw pytań, które ułatwiają Wypełnij informacje dla każdego z czterech etapów [cyklu życia TDSP](../team-data-science-process/lifecycle.md).
+## <a name="use-the-tdsp-structure-and-templates"></a>Skorzystaj z przetwarzania TDSP struktury i szablony
+Musisz dodać informacje specyficzne dla projektu do struktury i szablony. W przypadku oczekiwano do wypełniania tych kodem i informacje niezbędne do wykonywania i dostarczania projektu. [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) plików jest szablon, który trzeba będzie zmodyfikować informacje istotne dla projektu. Zawiera on zestaw pytań, które ułatwiają Wypełnij informacje dla każdego z czterech etapów [przetwarzania TDSP w cyklu życia](../team-data-science-process/lifecycle.md).
 
-Przykład struktury projektu wygląd podczas wykonywania lub zakończenia jest wyświetlany w lewym panelu na poniższej ilustracji. Ten projekt jest z [proces nauki danych zespołu przykładowy projekt: klasyfikowania przychody z USA danych spisu w usłudze Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) przykładowy projekt.
+Przykład struktury projektu wygląda podobnie jak podczas wykonywania lub po zakończeniu jest wyświetlany w lewym panelu na poniższej ilustracji. Ten projekt jest z [zespołu danych dla celów naukowych przykładowy projekt: klasyfikowanie przychodów USA danych spisu w usłudze Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) przykładowy projekt.
 
 ![Przykład struktury projektu](./media/how-to-use-tdsp-in-azure-ml/instantiation-4.png)
 
-## <a name="document-your-project"></a>Dokument projektu
-Zapoznaj się [TDSP dokumentacji szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate) informacji dotyczących dokumentu projektu. W bieżącym szablonie dokumentacji Machine Learning TDSP, zaleca się, czy zawiera wszystkie informacje w [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) pliku. Ten szablon powinien zostać wypełnione informacje specyficzne dla projektu. 
+## <a name="document-your-project"></a>Dokumentowanie projektu
+Zapoznaj się [przetwarzania TDSP dokumentacji szablonów](https://github.com/Azure/Azure-TDSP-ProjectTemplate) instrukcje dotyczące sposobu dokumentowania projektu. W bieżącym szablonie dokumentacja usługi Machine Learning TDSP firma Microsoft zaleca, aby uwzględnić wszystkie informacje w [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) pliku. Ten szablon powinien wypełnione informacjami, które są specyficzne dla projektu. 
 
-Firma Microsoft udostępnia również [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnings) szablonu. Można użyć tego szablonu, aby uwzględnić wszystkie informacje, która nie znajduje się w dokumencie projekt podstawowy, ale jest nadal przydatne do dokumentu. 
+Firma Microsoft udostępnia również [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnings) szablonu. Możesz użyć tego szablonu, aby uwzględnić wszystkie informacje, która nie znajduje się w dokumencie projektu podstawowego, ale która nadal jest użyteczne do dokumentu. 
 
 ### <a name="example-project-report"></a>Przykładowy raport projektu
-Możesz uzyskać [przykładowy raport projektu](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Ten raport projektu dla [USA dochodu klasyfikacji przykładowy projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) pokazano, jak utworzyć wystąpienia i szablon TDSP dla projektu analizy danych.
+Możesz uzyskać [przykładowy projekt raport](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Ten raport projektu, aby [USA dochodu klasyfikacji przykładowy projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) pokazuje, jak tworzyć wystąpienie i użyj szablonu TDSP dla projektu nauki o danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby ułatwić zrozumienie działania dotyczące sposobu używania struktury TDSP i szablonów w projektach uczenia maszynowego, udostępniamy kilka przykładów projektu zakończone w dokumentacji dotyczącej usługi Machine Learning:
+Aby ułatwić zrozumienie na temat korzystania z przetwarzania TDSP struktury i szablony w projektach usługi Machine Learning, firma Microsoft zapewnia kilka przykładów projektu ukończone w dokumentacji dotyczącej usługi Machine Learning:
 
-- Dla przykładu, który pokazuje, jak utworzyć projekt TDSP w uczeniu maszynowym, zobacz [proces nauki danych zespołu przykładowy projekt: klasyfikowania przychody z danych nam spisu w usłudze Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
-- Dla przykładu korzystającego z głębokiego learning w języku naturalnym przetwarzania (NLP) w projekcie wystąpienia TDSP w Machine Learning, zobacz [mnie medyczne rozpoznawania jednostek przy użyciu języka naturalnego przetwarzania za pomocą bezpośrednich learning](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction).
+- Dla przykładu, który pokazuje, jak utworzyć projekt przetwarzania TDSP w usłudze Machine Learning, zobacz [zespołu danych dla celów naukowych przykładowy projekt: klasyfikowanie przychodów dane spisu NAS w usłudze Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
+- Dla przykładu, który korzysta z uczenia głębokiego w języka naturalnego (NLP) w projekcie wystąpienia przetwarzania TDSP w usługi Machine Learning, zobacz [rozpoznawania jednostek medycznych biografia przy użyciu języka naturalnego za pomocą uczenia głębokiego](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction).
 
