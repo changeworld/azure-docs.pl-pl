@@ -11,22 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989761"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056980"
 ---
 # <a name="import-data-into-analytics"></a>Importowanie danych do analizy
 
 Importowanie danych tabelarycznych w [Analytics](app-insights-analytics.md), albo aby dołączyć ją za pomocą [usługi Application Insights](app-insights-overview.md) danych telemetrycznych z Twojej aplikacji, lub tak, aby przeanalizować je jako oddzielne strumienia. Analytics to zaawansowany język zapytań dobrze nadaje się do analizowania strumieni oznaczony sygnaturą czasową dużych ilości danych telemetrycznych.
-
 Możesz zaimportować dane do analizy przy użyciu własnego schematu. Nie trzeba używać standardowych schematów usługi Application Insights, takich jak żądania lub śledzenia.
 
 Można zaimportować JSON lub widoku źródła danych (wartości rozdzielonych ogranicznikami - przecinek, średnik lub kartę) plików.
+
+> [!IMPORTANT]
+> Ten artykuł został **przestarzałe**. Zalecaną metodę pobierania danych do usługi Log Analytics jest za pośrednictwem [moduł zbierający dane usługi Log Analytics interfejsu API.](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 Istnieją trzy sytuacje, w których jest użyteczny importowania danych do analizy:
 

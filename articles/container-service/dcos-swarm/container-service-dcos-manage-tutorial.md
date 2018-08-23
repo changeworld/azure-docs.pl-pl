@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c4f1b63e2d564f0480508c3ec5a5a24c76ea6bc4
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440681"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920327"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
 
@@ -72,7 +72,7 @@ sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 
 ## <a name="install-dcos-cli"></a>Instalowanie interfejsu wiersza polecenia DC/OS
 
-Zainstaluj interfejs wiersza polecenia DC/OS, używając polecenia [az acs dcos install-cli](/azure/acs/dcos#install-cli). Jeśli korzystasz z usługi Azure CloudShell, interfejs wiersza polecenia DC/OS jest już zainstalowany. Jeśli używasz interfejsu wiersza polecenia platformy Azure w systemie macOS lub Linux, konieczne może być uruchomienie polecenia za pomocą programu sudo.
+Zainstaluj interfejs wiersza polecenia DC/OS, używając polecenia [az acs dcos install-cli](/cli/azure/acs/dcos#az-acs-dcos-install-cli). Jeśli korzystasz z usługi Azure CloudShell, interfejs wiersza polecenia DC/OS jest już zainstalowany. Jeśli używasz interfejsu wiersza polecenia platformy Azure w systemie macOS lub Linux, konieczne może być uruchomienie polecenia za pomocą programu sudo.
 
 ```azurecli
 az acs dcos install-cli

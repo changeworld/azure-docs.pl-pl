@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 3fe717cb60791d24637ccd5b9a3c08fd34801524
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617945"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054569"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -35,9 +35,9 @@ Podobnie jak wiele innych usług, które obsługują elementy webhook EventGrid 
 
 Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą EventGrid. EventGrid obsługuje dwa modele uzgadnianie różnych sprawdzania poprawności:
 
-1. Uzgadnianie ValidationCode na podstawie: podczas tworzenia subskrypcji zdarzeń EventGrid wpisy "zdarzenie sprawdzania poprawności subskrypcji" do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych EventGridEvent i część danych to zdarzenie zawiera właściwość "validationCode". Gdy aplikacja sprawdziła, to żądanie weryfikacji subskrypcji oczekiwanego zdarzenia, kod aplikacji musi reagowała wyświetlania ponownie kod sprawdzania poprawności, aby EventGrid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach EventGrid.
+1. **Uzgadnianie ValidationCode**: podczas tworzenia subskrypcji zdarzeń EventGrid wpisy "zdarzenie sprawdzania poprawności subskrypcji" do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych EventGridEvent i zawiera część danych to zdarzenie `validationCode` właściwości. Gdy aplikacja sprawdziła, to żądanie weryfikacji subskrypcji oczekiwanego zdarzenia, kod aplikacji musi reagowała wyświetlania ponownie kod sprawdzania poprawności, aby EventGrid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach EventGrid.
 
-2. Uzgadnianie ValidationURL na podstawie (ręczne uzgadnianie): W niektórych przypadkach, może nie mieć kontroli kodu źródłowego punktu końcowego, aby można było zaimplementować uzgadnianie ValidationCode na podstawie. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie może być stanie odpowiedzieć programowo z powrotem kod sprawdzania poprawności. W związku z tym począwszy od wersji 2018-05-01-preview EventGrid obsługuje teraz uzgadniania ręcznej weryfikacji. W przypadku tworzenia subskrypcji zdarzeń za pomocą narzędzi zestawu SDK/korzystających z tej nowej wersji interfejsu API (2018-05-01-preview), EventGrid wyśle właściwość "validationUrl" (oprócz właściwość "validationCode") w ramach części danych sprawdzania poprawności subskrypcji zdarzenie. Aby ukończyć uzgadnianie, po prostu GET żądania na ten adres URL, za pomocą klienta REST lub przy użyciu przeglądarki sieci web. Podana validationUrl jest prawidłowy tylko w przypadku około 10 minut, więc jeśli nie wykonasz ręcznej weryfikacji, w tym czasie, provisioningState subskrypcji zdarzeń zostanie zastąpiona usługą "Niepowodzenie", a trzeba będzie ponownie Tworzenie zdarzenia Subskrypcja, przed podjęciem próby wykonaj ponownie ręcznej weryfikacji.
+2. **Uzgadnianie ValidationURL (ręczne uzgadnianie)**: W niektórych przypadkach, może nie mieć kontroli kodu źródłowego punktu końcowego, aby można było zaimplementować uzgadnianie ValidationCode na podstawie. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie może być stanie odpowiedzieć programowo z powrotem kod sprawdzania poprawności. W związku z tym począwszy od wersji 2018-05-01-preview EventGrid obsługuje teraz uzgadniania ręcznej weryfikacji. W przypadku tworzenia subskrypcji zdarzeń za pomocą narzędzi zestawu SDK/korzystających z tego nowego wysyła EventGrid (2018-05-01-preview), wersja interfejsu API `validationUrl` właściwości (oprócz `validationCode` właściwości) jako część część danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, po prostu GET żądania na ten adres URL, za pomocą klienta REST lub przy użyciu przeglądarki sieci web. Adres URL podany sprawdzania poprawności jest prawidłowy tylko w przypadku około 10 minut. W tym czasie jest stan aprowizacji subskrypcji zdarzeń `AwaitingManualAction`. Jeśli nie wykonasz ręcznej weryfikacji w ciągu 10 minut, stanu aprowizacji jest równa `Failed`. Trzeba będzie ponownie Tworzenie subskrypcji zdarzeń, przed podjęciem próby wykonaj ponownie ręcznej weryfikacji.
 
 Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
 
@@ -48,7 +48,7 @@ Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, m
 * Treść zdarzeń ma ten sam schemat, jak inne zdarzenia usługi Event Grid.
 * Właściwość Typ zdarzenia, które zdarzenia jest "Microsoft.EventGrid.SubscriptionValidationEvent".
 * Właściwości danych zdarzenia zawiera właściwość "validationCode" ciągiem generowanym losowo. Na przykład "validationCode: acb13...".
-* Jeśli używasz interfejsu API w wersji 2018-05-01-preview dane zdarzenia zawierają ręcznie weryfikowania subskrypcji właściwość "validationUrl" z adresem URL.
+* Jeśli używasz interfejsu API w wersji 2018-05-01-preview dane zdarzenia obejmowały `validationUrl` właściwość adres URL ręcznej weryfikacji subskrypcji.
 * Tablica zawiera tylko zdarzenia sprawdzania poprawności. Inne zdarzenia są wysyłane w oddzielnym żądaniu po odsyłania kod sprawdzania poprawności.
 * Zestawy SDK płaszczyzny danych EventGrid mają klas odpowiadających danych zdarzeń sprawdzania poprawności subskrypcji i odpowiedź weryfikacji subskrypcji.
 

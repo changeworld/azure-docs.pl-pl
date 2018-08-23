@@ -7,17 +7,17 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/06/2018
+ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 1f3b17f3163c29f9b9e1e47e14ccdbc1e37e1010
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 27030256b88f429d080c7a7ce69ed3c83eca337c
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39635005"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059139"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Sierpnia 2018
+# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Sierpień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w sierpnia 2018.
 
 ## <a name="automatic-intelligent-insights"></a>Automatyczne Intelligent Insights
@@ -26,6 +26,15 @@ Firma Microsoft wprowadziła [automatyczne intelligent insights](https://azure.m
 Zalecenia można wyświetlić w portalu usługi Azure Advisor: ![Azure Advisor Portal zalecenia dotyczące usługi Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
 Możesz przejść do każdej kategorii, aby wyświetlić zalecenia dotyczące określonego alertu: ![szczegóły zalecenia portalu usługi Azure Advisor, Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+
+
+## <a name="bug-fixes"></a>Poprawki błędów
+
+| Stanowisko | Opis |
+|:---|:---|
+| **Potencjalnych awarii zapytania, gdy liczba podziałów przekracza maksymalny limit** |Po przekroczeniu limitu pliku podziału 1 milion górną granicę nieobsługiwany wyjątek spowodowany aparatu SQL do porzucenia i wszystkie zapytania nie powiodło się. Tej poprawki adresem problem, Obsługa wyjątku poprawnie i zwróci błąd bez powodowania zapytania, aby zakończyć się niepowodzeniem. |
+| **Zwiększona wartość domyślną ExternalMoveReadersPerNode usprawniających obciążenia wydajności** |Ten problem został spowodowany przez ustawienie właściwości ExternalMoveReadersPerNode są zsynchronizowane z usługą Service fabric, ustawienie. Ta regresji spowodowała pogorszenie wydajności obciążenia Gen2. Poprawka zapewnia wydajność ładowania Gen2 wróć tutaj parametry zoptymalizowane projektu.|
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
@@ -45,6 +54,6 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md

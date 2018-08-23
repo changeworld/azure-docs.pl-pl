@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857535"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059221"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -107,7 +107,7 @@ Użyj zakodowany hasła wraz z lokalizacji nazwy i repozytorium użytkownika do 
 git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 ```
 
-Po został sklonowany repozytorium można wyświetlić i pracować w lokalnym systemie plików. Aby uzyskać więcej informacji, zobacz [plików i folderów struktury odwołania do lokalnego repozytorium Git](#file-and-folder-structure-reference-of-local-git-repository).
+Po repozytorium zostanie sklonowany, można przeglądać i pracować w lokalnym systemie plików. Aby uzyskać więcej informacji, zobacz [plików i folderów struktury odwołania do lokalnego repozytorium Git](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Aby zaktualizować repozytorium lokalne przy użyciu najnowszej konfiguracji wystąpienia usługi
 
@@ -166,7 +166,7 @@ Każdy folder może zawierać jeden lub więcej plików, a w niektórych przypad
 | xml |Instrukcje zasad |
 | CSS |Arkusze stylów dla Dostosowywanie portalu dla deweloperów |
 
-Te pliki można tworzyć, usunięte, edytować i zarządzane w lokalnym systemie plików, a zmiany wdrożonych z powrotem do wystąpienia usługi API Management.
+Te pliki można utworzyć, usunięte, edytować i zarządzane w lokalnym systemie plików, a zmiany wdrożone wystąpienia usługi API Management.
 
 > [!NOTE]
 > Następujące jednostki nie znajdują się w repozytorium Git i nie można skonfigurować przy użyciu narzędzia Git.
@@ -177,7 +177,7 @@ Te pliki można tworzyć, usunięte, edytować i zarządzane w lokalnym systemie
 > * Jednostki portalu dla deweloperów, inne niż style
 > 
 
-### <a name="root-api-management-folder"></a>Głównego folderu usługi api management
+### <a name="root-api-management-folder"></a>głównego folderu usługi api management
 Katalog główny `api-management` folder zawiera `configuration.json` pliku, który zawiera najwyższego poziomu informacji o wystąpieniu usługi, w następującym formacie.
 
 ```json
@@ -259,8 +259,8 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 Aby uzyskać informacji na temat innych sposobów zarządzania wystąpienia usługi zobacz:
 
 * Zarządzanie wystąpienia usługi przy użyciu następujących poleceń cmdlet programu PowerShell
-  * [Wdrożenie usługi w dokumentacji dotyczącej poleceń cmdlet programu PowerShell](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Zarządzanie usługą Dokumentacja poleceń cmdlet programu PowerShell](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Wdrożenie usługi w dokumentacji dotyczącej poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/wds)
+  * [Zarządzanie usługą Dokumentacja poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Zarządzanie przy użyciu interfejsu API REST wystąpienia usługi
   * [Dokumentacja interfejsu API REST zarządzania interfejsu API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

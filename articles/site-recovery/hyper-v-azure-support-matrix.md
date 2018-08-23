@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442772"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054978"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia dla o
 
 **Scenariusz** | **Szczegóły**
 --- | ---
-Funkcji Hyper-V za pomocą programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V, które są zarządzane w sieci szkieletowej programu System Center Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w witrynie Azure portal lub przy użyciu programu PowerShell.<br/><br/> Jeśli hosty funkcji Hyper-V są zarządzane przez Menedżera maszyny wirtualnej, można również wykonać odzyskiwanie po awarii do lokacji dodatkowej w środowisku lokalnym. Aby dowiedzieć się więcej na temat tego scenariusza, przeczytaj [w tym samouczku](tutorial-vmm-to-vmm.md).
+Funkcji Hyper-V za pomocą programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V, które są zarządzane w sieci szkieletowej programu System Center Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w witrynie Azure portal lub przy użyciu programu PowerShell.<br/><br/> Jeśli hosty funkcji Hyper-V są zarządzane przez Menedżera maszyny wirtualnej, można również wykonać odzyskiwanie po awarii do lokacji dodatkowej w środowisku lokalnym. Aby dowiedzieć się więcej na temat tego scenariusza, przeczytaj [w tym samouczku](hyper-v-vmm-disaster-recovery.md).
 Funkcji Hyper-V bez programu Virtual Machine Manager | Dla maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V, które nie są zarządzane przez Menedżera maszyny wirtualnej można wykonać odzyskiwania po awarii na platformie Azure.<br/><br/> Można wdrożyć ten scenariusz, w witrynie Azure portal lub przy użyciu programu PowerShell.
 
 
@@ -44,8 +44,8 @@ Poniższa tabela zawiera podsumowanie obsługi maszyny Wirtualnej. Usługa Site 
 
  **Składnik** | **Szczegóły**
 --- | ---
-Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#failed-over-azure-vm-requirements).
-System operacyjny gościa | Dowolny Gość system operacyjny obsługiwany przez platformę Azure.<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwane.
+Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
+System operacyjny gościa | Dowolnego systemu operacyjnego gościa [obsługiwane na platformie Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)...<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwane.
 
 
 ## <a name="vmdisk-management"></a>Zarządzanie maszyna wirtualna/dysk

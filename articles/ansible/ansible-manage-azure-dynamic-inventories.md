@@ -6,14 +6,14 @@ keywords: rozwiązanie ansible, azure, metodyki devops, bash, cloudshell, dynami
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449421"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057296"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Zarządzanie usługi platformy Azure spisami dynamicznymi za pomocą rozwiązania Ansible
 Rozwiązanie Ansible może służyć do pobierania informacji o spisie z różnych źródeł (w tym źródeł w chmurze takich jak Azure) do *dynamiczny spis*. W tym artykule używasz [usługi Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurowanie rozwiązania Ansible Azure dynamiczne spisu w której opisano tworzenie dwóch maszyn wirtualnych, tag jednej z tych maszyn wirtualnych i zainstalować rozwiązanie Nginx otagowane maszyny wirtualnej.
@@ -31,6 +31,9 @@ Rozwiązanie Ansible może służyć do pobierania informacji o spisie z różny
 1. Otwórz [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Utwórz grupę zasobów platformy Azure do przechowywania maszyn wirtualnych na potrzeby tego samouczka.
+
+    > [!IMPORTANT]  
+    > Grupa zasobów platformy Azure, który zostanie utworzony w tym kroku musi mieć nazwę, która jest całkowicie małe. W przeciwnym razie Generowanie dynamiczny spis zakończy się niepowodzeniem.
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ W tej sekcji przedstawiono jedna z technik do przetestowania, czy serwer Nginx j
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. [Nginx - v](https://nginx.org/en/docs/switches.html) polecenia jest zazwyczaj używany do drukowania wersji serwera Nginx. Jednak może również służyć do określenia, czy jest zainstalowany serwer Nginx. Wprowadź go podczas połączenia z `ansible-inventory-test-vm1` maszyny wirtualnej.
+1. Po nawiązaniu połączenia do `ansible-inventory-test-vm1` maszyny wirtualnej, uruchom [nginx - v](https://nginx.org/en/docs/switches.html) polecenie, aby określić, czy jest zainstalowany serwer Nginx.
 
     ```azurecli-interactive
     nginx -v

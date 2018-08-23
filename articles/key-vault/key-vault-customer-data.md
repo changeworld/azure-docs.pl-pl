@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235537"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054969"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkcje danych klienta w usłudze Azure Key Vault
 
@@ -48,11 +48,11 @@ Usuwanie nietrwałe umożliwia odzyskanie danych usuniętych przez 90 dni po usu
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Tych samych interfejsów API REST, środowisko portalu i zestawy SDK, które są używane do tworzenia magazynów, kluczy, wpisów tajnych i certyfikatów oraz magazynu zarządzanego, które konta są również umożliwiają wyświetlanie i eksportowanie tych obiektów.
+Tych samych interfejsów API REST, środowisko portalu i zestawów SDK, które są używane do tworzenia magazynów, kluczy, wpisów tajnych i certyfikatów, a także zarządzane konta usługi storage umożliwiają wyświetlanie i eksportowanie tych obiektów.
 
 Usługa Azure Key Vault, rejestrowanie dostępu jest opcjonalna funkcja, która można włączyć w celu generowania dzienników dla każdego wywołania interfejsu API REST. Te dzienniki będą przekazywane do konta magazynu w ramach subskrypcji, którym zastosować zasady przechowywania, który spełnia wymagania organizacji.
 
-Usługa Key Vault dzienniki diagnostyczne platformy Azure zawierające dane osobowe mogą być pobierane przez wysłał żądanie eksportu w portalu rozwiązania prywatność użytkownika. Żądanie musi zostać wykonane przez administratora dzierżawy.
+Usługa Key Vault dzienniki diagnostyczne platformy Azure, które zawierają dane osobowe mogą być pobierane przez wysłał żądanie eksportu w portalu rozwiązania prywatność użytkownika. Żądanie musi zostać wykonane przez administratora dzierżawy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -60,14 +60,10 @@ Usługa Key Vault dzienniki diagnostyczne platformy Azure zawierające dane osob
 
 - [Omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-soft-delete-cli.md)
 
-- [Magazyny](https://docs.microsoft.com/rest/api/keyvault/vaults)
-
 - [Usługa Azure Key Vault kluczowych operacji](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
 - [Usługa Azure operacji dla wpisu tajnego usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
 - [Usługa Azure Key Vault certyfikaty i zasady](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
-
-- [Wystawców certyfikatów](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)
 
 - [Operacje konta magazynu w usłudze Azure usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

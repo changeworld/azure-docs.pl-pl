@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z Centrum IoT Azure modułu tożsamości i moduł dwie (Node.js) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć moduł tożsamości i zaktualizuj dwie modułu przy użyciu IoT zestawy SDK dla środowiska Node.js.
+title: Rozpoczynanie pracy z usługą Azure IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu (Node.js) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć moduł tożsamości i zaktualizować bliźniaczą reprezentację modułu przy użyciu zestawów SDK usługi IoT dla środowiska Node.js.
 author: chrissie926
 manager: ''
 ms.service: iot-hub
@@ -9,19 +9,19 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: e1fcca7f37f928c488b1111d6d3299cb03c73cc1
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036660"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060819"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Rozpoczynanie pracy z Centrum IoT modułu tożsamości i moduł dwie przy użyciu zaplecza Node.js i Node.js urządzenia
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu zaplecza Node.js i urządzenia środowiska Node.js
 
 > [!NOTE]
 > [Tożsamości modułów i bliźniacze reprezentacje modułów](iot-hub-devguide-module-twins.md) są podobne do tożsamości urządzenia i bliźniaczej reprezentacji urządzenia usługi Azure IoT Hub, ale zapewniają większy stopień szczegółowości. Tożsamość urządzenia i bliźniacza reprezentacja urządzenia usługi Azure IoT Hub umożliwiają aplikacji zaplecza skonfigurowanie urządzenia i zapewniają widoczność warunków urządzenia, natomiast tożsamość modułu i bliźniacza reprezentacja modułu zapewniają te możliwości dla poszczególnych składników urządzenia. Na odpowiednich urządzeniach z wieloma składnikami, takich jak urządzenia oparte na systemie operacyjnym lub urządzenia z oprogramowaniem układowym, pozwala to na zastosowanie odrębnej konfiguracji i odrębnych warunków dla każdego składnika.
 
-Na końcu tego samouczka znajdują się dwie aplikacje Node.js:
+Na końcu tego samouczka będziesz mieć dwie aplikacje Node.js:
 
 * **CreateIdentities**, która tworzy tożsamość urządzenia, tożsamość modułu oraz skojarzony klucz zabezpieczeń na potrzeby łączenia klientów modułu i urządzenia.
 * **UpdateModuleTwinReportedProperties**, która wysyła zaktualizowane zgłoszone właściwości bliźniaczej reprezentacji modułu do Twojego centrum IoT Hub.
@@ -32,25 +32,24 @@ Na końcu tego samouczka znajdują się dwie aplikacje Node.js:
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
-* Centrum IoT.
-* Zainstaluj najnowszą [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
+* Centrum IoT Hub.
+* Zainstaluj najnowszą wersję [zestawu SDK środowiska Node.js](https://github.com/Azure/azure-iot-sdk-node).
 
 
 Centrum IoT zostało już utworzone i masz nazwę hosta oraz parametry połączenia usługi IoT Hub potrzebne do ukończenia pozostałej części tego samouczka.
 
-<a id="DeviceIdentity_csharp"></a>
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Tworzenie tożsamości urządzenia i tożsamości modułu w Centrum IoT
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Tworzenie tożsamości urządzenia i tożsamości modułu w usłudze IoT Hub
 
-W tej sekcji utworzysz aplikację Node.js, która tworzy tożsamości urządzenia i tożsamości modułu w rejestrze tożsamości w Centrum IoT. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Więcej informacji znajduje się w sekcji „Identity registry” (Rejestr tożsamości) artykułu [IoT Hub Developer Guide][lnk-devguide-identity] (Usługa IoT Hub — przewodnik dewelopera). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
+W tej sekcji utworzysz aplikację Node.js, która tworzy tożsamość urządzenia i tożsamości modułu w rejestrze tożsamości w usłudze IoT hub. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Więcej informacji znajduje się w sekcji „Identity registry” (Rejestr tożsamości) artykułu [IoT Hub Developer Guide][lnk-devguide-identity] (Usługa IoT Hub — przewodnik dewelopera). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
 
 1.  Utwórz katalog do przechowywania kodu.
-2. Wewnątrz tego katalogu, najpierw uruchom **npm init -y** utworzyć pusty plik package.json przy użyciu ustawień domyślnych. To jest plik projektu dla kodu.
-3. Uruchom **-S instalacji narzędzia npm azure-iothub@modules-preview**  ma zostać zainstalowana usługa SDK wewnątrz **node_modules** podkatalogu. 
+2. W tym katalogu, należy najpierw uruchomić **npm init -y** utworzyć pusty plik package.json przy użyciu ustawień domyślnych. Jest to plik projektu kodu.
+3. Uruchom **npm zainstalować -S azure-iothub@modules-preview**  instalacji zestawu SDK usługi wewnątrz **node_modules** podkatalogu. 
 
     > [!NOTE] 
-    > Node_modules nazwę podkatalogu używa modułu word oznacza "biblioteki węzła". Termin w tym miejscu nie ma nic wspólnego z modułów Centrum IoT.
+    > Node_modules nazwę podkatalogu używa modułu program word oznacza "bibliotekę węzła". Okres, w tym miejscu nie ma nic wspólnego z modułów usługi IoT Hub.
 
-4. Utworzyć następującego pliku .js w katalogu. Wywołać ją **add.js**. Skopiuj i Wklej parametry połączenia koncentratora, a nazwa koncentratora.
+4. Utwórz następujący plik js w Twoim katalogu. Wywołaj go **add.js**. Kopiuj i wklejaj parametry połączenia Centrum i nazwy Centrum.
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -107,32 +106,30 @@ W tej sekcji utworzysz aplikację Node.js, która tworzy tożsamości urządzeni
 
     ```
 
-Ta aplikacja tworzy tożsamość urządzenia o identyfikatorze **myFirstDevice** i tożsamością modułu o identyfikatorze **myFirstModule** obszarze urządzenie **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
+Ta aplikacja tworzy tożsamość urządzenia o identyfikatorze **myFirstDevice** i tożsamości modułu o identyfikatorze **myFirstModule** obszarze urządzenie **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
 
-5. Uruchom to za pomocą add.js węzła. Podaje ciąg połączenia dla Twojej tożsamości urządzenia i kolejnego dla tożsamości użytkownika modułu.
+5. Uruchom to za pomocą add.js węzła. Podaje ciąg połączenia dla Twojej tożsamości urządzenia i inny dla Twojej tożsamości modułu.
 
     > [!NOTE]
     > Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Więcej informacji znajduje się w temacie [IoT Hub Developer Guide][lnk-devguide-identity] (Usługa IoT Hub — przewodnik dewelopera).
 
+## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Zaktualizować bliźniaczą reprezentację modułu przy użyciu zestawu SDK urządzenia środowiska Node.js
 
-<a id="D2C_csharp"></a>
-## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Zaktualizuj dwie modułu przy użyciu urządzenia Node.js SDK
-
-W tej sekcji utworzysz Node.js aplikacji na urządzeniu symulowane, która aktualizuje dwie moduł zgłosił właściwości.
+W tej sekcji opisano tworzenie środowiska Node.js aplikacji na urządzenie symulowane, która aktualizuje bliźniaczą reprezentację modułu zgłoszonych właściwości.
 
 1. **Pobierz parametry połączenia modułu** — teraz zaloguj się do witryny [Azure Portal][lnk-portal]. Przejdź do centrum IoT Hub i kliknij pozycję Urządzenia IoT. Znajdź tożsamość myFirstDevice i otwórz ją. Zobaczysz, że tożsamość myFirstModule została pomyślnie utworzona. Skopiuj parametry połączenia modułu. Będą potrzebne w następnym kroku.
 
     ![Szczegóły modułu w witrynie Azure Portal][15]
 
-2. Czy podobny do Ciebie w poprzednim kroku, Utwórz katalog dla kodu urządzenia i umożliwia NPM go zainicjować i zainstaluj zestaw SDK urządzenia (**-S instalacji narzędzia npm azure-iot-device-amqp@modules-preview** ).
+2. Jest podobna do Ciebie została w poprzednim kroku, Utwórz katalog dla kodu urządzenia i zainicjować go i zainstaluj zestaw SDK urządzeń za pomocą usługi NPM (**npm zainstalować -S azure-iot-device-amqp@modules-preview** ).
 
     > [!NOTE]
-    > Polecenie install npm mogą uznać powolne. Cierpliwość, jego jest ściąganie dół partii kodu z repozytorium pakietów.
+    > Polecenia npm install mogą czuć się wolno. O cierpliwość, go to przeciągnij w dół mnóstwo kodu z repozytorium pakietów.
 
     > [!NOTE] 
-    > Jeśli zostanie wyświetlony komunikat o błędzie informujący npm błąd! rejestru błąd podczas analizowania json jest bezpiecznie zignorować. Jeśli zostanie wyświetlony komunikat o błędzie informujący npm błąd! rejestru błąd podczas analizowania json jest bezpiecznie zignorować.
+    > Jeśli zostanie wyświetlony błąd informujący, że npm błąd! Rejestr błąd analizy json jest bezpiecznie zignorować. Jeśli zostanie wyświetlony błąd informujący, że npm błąd! Rejestr błąd analizy json jest bezpiecznie zignorować.
 
-3. Utwórz plik o nazwie twin.js. Skopiuj i Wklej ciąg tożsamości z modułu.
+3. Utwórz plik o nazwie twin.js. Skopiuj i Wklej ciąg tożsamości użytkownika modułu.
 
     ```javascript
     var Client = require('azure-iot-device').Client;
@@ -183,7 +180,7 @@ W tej sekcji utworzysz Node.js aplikacji na urządzeniu symulowane, która aktua
     });
     ```
 
-2. Teraz uruchom polecenie **twin.js węzła**.
+2. Teraz uruchom za pomocą polecenia **twin.js węzła**.
 
     ```
     F:\temp\module_twin>node twin.js

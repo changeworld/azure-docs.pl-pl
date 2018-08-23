@@ -4,16 +4,15 @@ description: Wyświetla listę partnerów migracji innych firm z rozwiązaniami,
 services: mysql
 author: HJToland3
 ms.author: jtoland
-manager: craigg
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 4fba09c7d655fa835fffc324826e5dba93e647b0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e50cd285d904830bd7332f39d51aaa149f38b82a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631031"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059130"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Usługa Azure Database for MySQL — partnerzy migracji
 Aby szeroko obsługuje usługi Azure Database dla MySQL rozwiązania, możesz wybrać z wielu różnych partnerów wiodące w branży i narzędzi. W tym artykule przedstawiono partnerów firmy Microsoft przy użyciu rozwiązania migracji, które obsługują usługi Azure Database for MySQL.

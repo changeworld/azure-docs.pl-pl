@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480560"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056978"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Wygasanie danych w kolekcjach usługi Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia
 Aplikacje można tworzyć i przechowywać ogromne ilości danych. Niektóre z tych danych, takich jak maszyny wygenerowanych zdarzeń danych, dzienników i użytkownika sesji informacji przydaje się tylko na czas określony czas. Gdy dane będą nadwyżki na potrzeby aplikacji, jest bezpieczne przeczyścić dane i zmniejszyć wymagania magazynu aplikacji.
@@ -41,11 +41,11 @@ Jak najszybciej wygasł dokumentu (`ttl`  +  `_ts` < = bieżący czas serwera), 
 
 Powyższe logiki można wyświetlać w poniższej tabeli:
 
-|  | DefaultTTL brakuje nie nastavit kolekcji | DefaultTTL = -1 w kolekcji | DefaultTTL = "n" w kolekcji |
+|  | DefaultTTL brakuje nie nastavit kolekcji | DefaultTTL = -1 w kolekcji | DefaultTTL = n' w kolekcji |
 | --- |:--- |:--- |:--- |
-| Czas wygaśnięcia Brak dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ dokumentu i kolekcji mają koncepcja czasu wygaśnięcia. |Wygaśnie żaden dokument w tej kolekcji. |Dokumenty w tej kolekcji wygaśnie po upływie interwału n. |
-| Czas wygaśnięcia = -1 w dokumencie |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ kolekcja nie definiuje właściwości DefaultTTL, którą można zastąpić dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Wygaśnie żaden dokument w tej kolekcji. |Nigdy nie wygasa dokumentu z czasem wygaśnięcia = 1 w tej kolekcji. Inne dokumenty wygaśnie po upływie interwału "n". |
-| Czas wygaśnięcia = n dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć z przedziału od -1 i nigdy nie wygasa. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć "n" Interwał kolekcji. |
+| Czas wygaśnięcia Brak dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ dokumentu i kolekcji mają koncepcja czasu wygaśnięcia. |Wygaśnie żaden dokument w tej kolekcji. |Dokumenty w tej kolekcji wygaśnie po n interwał "upływa. |
+| Czas wygaśnięcia = -1 w dokumencie |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ kolekcja nie definiuje właściwości DefaultTTL, którą można zastąpić dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Wygaśnie żaden dokument w tej kolekcji. |Nigdy nie wygasa dokumentu z czasem wygaśnięcia = 1 w tej kolekcji. Inne dokumenty wygasną po upływie n "Interwał. |
+| Czas wygaśnięcia = n dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć z przedziału od -1 i nigdy nie wygasa. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć n "Interwał z kolekcji. |
 
 ## <a name="configuring-ttl"></a>Konfigurowanie czasu wygaśnięcia
 Domyślny czas wygaśnięcia jest domyślnie wyłączona, we wszystkich kolekcjach usługi Cosmos DB i na wszystkich dokumentach. Czas wygaśnięcia można ustawić programowo lub za pomocą witryny Azure portal. Aby skonfigurować czas wygaśnięcia z witryny Azure portal, wykonaj następujące kroki:

@@ -1,7 +1,7 @@
 ---
-title: ALM w Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Zastosuj najlepsze rozwiązania dotyczące zarządzania cyklem życia aplikacji w usłudze Azure Machine Learning Studio
-keywords: Kontrola wersji ALM, AML, Azure ML, Zarządzanie cyklem życia aplikacji,
+title: ALM w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplikacji w usłudze Azure Machine Learning Studio
+keywords: ALM, AML, uczenie Maszynowe systemu Azure, zapewniają Zarządzanie cyklem życia aplikacji, systemu kontroli wersji
 services: machine-learning
 documentationcenter: ''
 author: hning86
@@ -16,89 +16,89 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: 49d1a228132cc220b30091481bb542623b1e222d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835869"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060709"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
-Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty uczenia maszynowego, które są operationalized na platformie Azure cloud. Podobnie jak Visual Studio IDE i usługą w chmurze skalowalne scalania w pojedynczą platformę. Standardowe rozwiązania zarządzania cyklem życia aplikacji (ALM) z wersji można zastosować różne zasoby do wykonywania automatycznych i wdrażania w Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
+Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
 
 ## <a name="versioning-experiment"></a>Przechowywanie wersji eksperymentu
-Istnieją dwa sposoby zalecana wersja eksperymentów. Może polegać na wbudowanych Historia uruchomień lub wyeksportować eksperymentu w formacie JSON, aby zarządzać nim zewnętrznie. Każde podejście jest dostarczany z jej zalet i wad.
+Istnieją dwa sposoby zalecana wersja eksperymenty. Możesz polegać na wbudowane historii uruchamiania lub wyeksportować eksperymentu w formacie JSON w taki sposób, aby zarządzać nim zewnętrznie. Każde podejście ma swoje zalety i wady.
 
-### <a name="experiment-snapshots-using-run-history"></a>Za pomocą historii Uruchom migawki eksperymentu
-Model wykonania Azure Machine Learning Studio eksperymentu uczenia, niezmienne migawki doświadczenia jest przesyłany do usługi Harmonogram zadań przy każdym kliknięciu **Uruchom** w edytorze eksperymentu. Aby wyświetlić tę listę migawek, kliknij przycisk **Uruchom historii** na pasku poleceń w widoku edytora eksperymentu.
+### <a name="experiment-snapshots-using-run-history"></a>Migawki eksperymentu za pomocą historii uruchamiania
+W modelu wykonywania usługi Azure Machine Learning Studio eksperymentu uczenia niezmienne migawki eksperymentu jest przesyłany do usługi Harmonogram zadań przy każdym kliknięciu **Uruchom** w edytorze eksperymentu. Aby wyświetlić tę listę migawek, kliknij przycisk **historii uruchamiania** na pasku poleceń, w widoku edytora eksperymentów.
 
-![Przycisk historii wykonywania](./media/version-control/runhistory.png)
+![Przycisk historii uruchamiania](./media/version-control/runhistory.png)
 
-Mogą być następnie otwórz migawki w trybie zablokowany, klikając nazwę eksperymentu w momencie eksperyment zostało przesłane do uruchomienia i migawka została wykonana. Należy zauważyć, że tylko pierwszy element na liście, która reprezentuje bieżący eksperymentu, jest w stanie edycji. Również należy zauważyć, że każdy migawki mogą znajdować się w różnych stan stany również tym Zakończono (Uruchom), częściowego nie powiodła się i nie powiodło się (Uruchom), częściowego lub projekt.
+Można, a następnie Otwórz migawkę w trybie zablokowany, klikając nazwę eksperymentu w momencie przesłania eksperyment do uruchomienia i migawka została wykonana. Zauważ, że tylko pierwszy element na liście, który reprezentuje bieżący eksperymentu, jest w stanie edycji. Ponadto należy zauważyć, że każdy migawki mogą znajdować się w różnych stan stany, łącznie z gotowego (częściowa Obsługa uruchamiania), nie powiodło się nie powiodło się (częściowa Obsługa uruchamiania), lub wersję roboczą.
 
-![Listy historii wykonywania](./media/version-control/runhistorylist.png)
+![Listy historii uruchamiania](./media/version-control/runhistorylist.png)
 
-Po otwarciu, można zapisać jako nowy eksperyment eksperymentu migawki, a następnie zmodyfikować go. Jeśli migawki eksperymentu zawiera zasoby, takie jak przeszkolone modeli, transformacji lub zestawów danych, które zostały zaktualizowane wersje, migawki zachowuje odwołań do oryginalnej wersji, gdy migawki. Zablokowane migawki zostanie zapisany jako nowy eksperyment, Azure Machine Learning Studio wykrywa istnienie nowszej wersji tych zasobów i automatycznie aktualizuje je w nowy eksperyment.
+Po jego otwarciu, możesz zapisać migawkę eksperymentu jako nowy eksperyment, a następnie zmodyfikuj go. Jeśli migawek eksperymentu zawiera zasoby, takie jak przeszkolone modele, przekształcenia lub zestawów danych, które zostały zaktualizowane wersje, migawka zachowuje odniesienia do oryginalnej wersji, gdy migawka została utworzona. Zablokowane migawka zostanie zapisany jako nowy eksperyment, Azure Machine Learning Studio wykryje obecność nowszą wersję tych zasobów i automatycznie aktualizuje je w nowy eksperyment.
 
-Jeśli usuniesz eksperyment, są usuwane wszystkie migawki tego eksperymentu.
+Jeśli usuniesz eksperymentu, zostaną usunięte wszystkie migawki tego eksperymentu.
 
-### <a name="exportimport-experiment-in-json-format"></a>Eksperymentu eksportu/importu w formacie JSON
-Migawki historii wykonywania zachować niezmienne wersję eksperymentu w usłudze Azure Machine Learning Studio, za każdym razem, gdy jest przesyłany do uruchomienia. Można także zapisać lokalną kopię eksperyment i go zaewidencjonować w systemie kontroli źródła Ulubione, takich jak Team Foundation Server i później ponownie utworzyć eksperyment z tym plikiem lokalnym. Można użyć [programu PowerShell usługi Azure Machine Learning](http://aka.ms/amlps) polecenia cmdlet [ *AmlExperimentGraph eksportu* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) i [ *AmlExperimentGraph importu* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) znajdują się.
+### <a name="exportimport-experiment-in-json-format"></a>Operacja eksportu/importu eksperymentu w formacie JSON
+Migawki historii uruchamiania zachować niezmienne wersję eksperymentu w usłudze Azure Machine Learning Studio, za każdym razem, gdy zostanie przesłana do uruchomienia. Możesz także zapisać lokalną kopię eksperymentu i go zaewidencjonować w systemie kontroli źródła Ulubione, takie jak Team Foundation Server i później ponownie utworzyć eksperyment z tego pliku lokalnego. Możesz użyć [programu PowerShell usługi Azure Machine Learning](http://aka.ms/amlps) polecenia cmdlet [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) i [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) to zrobić.
 
-Plik JSON jest tekstowa reprezentacja wykresu eksperymentu, która może zawierać odwołania do zasobów w obszarze roboczym, takie jak element dataset lub uczonego modelu. Nie zawiera on wersja po serializacji jest trwałego. Próba importowania dokument JSON do obszaru roboczego zasoby, do którego istnieje odwołanie musi już istnieć z tej samej zawartości identyfikatorów, które są używane w eksperymencie. W przeciwnym razie nie można uzyskać dostępu importowanych eksperymentu.
+Plik JSON jest tekstową reprezentację wartości wykres eksperymentu, który może zawierać odwołania do zasobów w obszarze roboczym, takich jak zestaw danych lub uczonego modelu. Nie zawiera Zserializowany wersję zasobu. Jeśli użytkownik podejmie próbę ponownego importowania danych dokumentów JSON do obszaru roboczego, zasoby, do którego istnieje odwołanie musi już istnieć z tej samej zawartości identyfikatorów, które są określone w eksperymencie. W przeciwnym razie nie można uzyskać dostępu importowanych eksperymentu.
 
 ## <a name="versioning-trained-model"></a>Przechowywanie wersji uczonego modelu
-Uczonego modelu w usłudze Azure Machine Learning jest serializowany w formacie znane jako plik iLearner (`.iLearner`) i są przechowywane na koncie magazynu obiektów Blob platformy Azure skojarzone z obszaru roboczego. Jest jednym ze sposobów uzyskać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](retrain-models-programmatically.md) wyjaśniono sposób działania ponownego trenowania interfejsu API. Ogólne kroki:
+Uczonego modelu w usłudze Azure Machine Learning jest serializowany do formatu, znany jako plik iLearner (`.iLearner`) i jest przechowywany na koncie magazynu obiektów Blob platformy Azure, które są skojarzone z obszarem roboczym. Jest jednym ze sposobów, aby pobrać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](retrain-models-programmatically.md) wyjaśniono, jak działa interfejs API ponownego trenowania. Ogólne kroki:
 
-1. Konfigurowanie eksperymentu szkolenia.
-2. Dodaj port wyjście usługi sieci web do modułu Train Model lub moduł, który tworzy trenowanego modelu, takie jak dostosować Hyperparameter modelu lub utworzyć Model R.
-3. Uruchamianie eksperymentu uczenia, a następnie wdrożyć go jako usługi sieci web szkolenia modelu.
-4. Wywołanie usługi BES punkt końcowy usługi sieci web szkolenia i określ nazwę pliku żądanego iLearner i lokalizacja konta magazynu obiektów Blob którym będą przechowywane.
-5. Zebrać plik iLearner utworzonych po zakończeniu wywołania BES.
+1. Skonfiguruj eksperymentu szkolenia.
+2. Dodaj port wyjściowy usługi sieci web do modułu Train Model lub moduł, który tworzy trenowanego modelu, takie jak dostrajanie Hiperparametrycznego Model lub utworzyć Model języka R.
+3. Uruchomienie eksperymentu szkolenia, a następnie wdrożyć go jako usługę sieci web szkolenia modelu.
+4. Wywołanie punktu końcowego usługi BES usługi sieci web, szkolenia i określ nazwę pliku odpowiednią iLearner i gdzie będą przechowywane lokalizacji konta magazynu obiektów Blob.
+5. Po zakończeniu wywołania usługi BES, należy zebrać plik iLearner utworzone.
 
-Inny sposób, aby pobrać plik iLearner jest za pomocą polecenia programu PowerShell [ *AmlExperimentNodeOutput pobierania*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Może to być łatwiejsze, jeśli chcesz uzyskać kopię pliku iLearner bez konieczności programowo retrain modelu.
+Innym sposobem, aby pobrać plik iLearner jest za pomocą polecenia cmdlet programu PowerShell [ *AmlExperimentNodeOutput pobierania*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Może to być łatwiejsze, jeśli po prostu chcesz pobrać kopię pliku iLearner, bez konieczności programowe ponowne trenowanie modelu.
 
-Po umieszczeniu pliku iLearner zawierającego trenowanego modelu, można następnie wdrożyć strategii przechowywania wersji. Strategia może być tak proste, jak stosowanie sprzed/przyrostek jako konwencji nazewnictwa i pozostawienie plik iLearner w magazynie obiektów Blob lub kopiowania/importowania go do systemu kontroli wersji.
+Po utworzeniu plik iLearner, zawierający trenowanego modelu, można następnie zastosować strategię obsługi wersji. Strategia mogą być proste i polega na zastosowaniu wstępnie/przyrostkowe jako konwencji nazewnictwa i pozostawienie plik iLearner w magazynie obiektów Blob lub kopiowanie/zaimportowanie go w systemie kontroli wersji.
 
-Następnie można plik iLearner zapisanych przez oceniania za pośrednictwem usług sieci web wdrożone.
+Plik iLearner zapisany, następnie może służyć do oceniania za pośrednictwem wdrożonymi usługami sieci web.
 
 ## <a name="versioning-web-service"></a>Przechowywanie wersji usługi sieci web
-Można wdrożyć dwa typy usług sieci web z eksperymentu uczenia maszynowego Azure. Usługi sieci web klasycznego jest ściśle powiązane z doświadczenia, jak również w obszarze roboczym. Nowa usługa sieci web używa w ramach usługi Azure Resource Manager i nie jest już połączone z oryginalnym eksperymentu lub obszar roboczy.
+Aby wdrożyć dwa typy usług sieci web z eksperymentu usługi Azure Machine Learning. Klasyczna usługa sieci web jest ściśle powiązany z eksperymentu, a także obszaru roboczego. W ramach usługi Azure Resource Manager korzysta z nowej usługi sieci web, a nie jest już połączone z oryginalnego eksperymentu lub obszar roboczy.
 
-### <a name="classic-web-service"></a>Usługa sieci web klasycznego
-Do wersji usługi sieci web klasycznego można wykorzystać konstrukcji punkt końcowy usługi sieci web. Oto typowy przepływ:
+### <a name="classic-web-service"></a>Klasyczna usługa sieci web
+Do wersji klasyczna usługa sieci web możesz korzystać z zalet konstrukcji punktu końcowego usługi sieci web. Oto typowy przepływ:
 
-1. Z predykcyjnej eksperymentu możesz wdrożyć nowe klasycznego usługi sieci web, który zawiera domyślny punkt końcowy.
-2. Możesz utworzyć nowy punkt końcowy o nazwie ep2, który udostępnia bieżącą wersję eksperymentu/uczenia modelu.
-3. Przejdź wstecz i aktualizowanie eksperyment predykcyjny i trenowanego modelu.
-4. Należy ponownie wdrożyć eksperyment predykcyjny, który zostanie następnie zaktualizuj domyślnego punktu końcowego. Ale nie zmieni ep2.
-5. Możesz utworzyć dodatkowe punktu końcowego o nazwie ep3, który udostępnia nową wersję eksperymentu i trenowanego modelu.
-6. Wróć do kroku 3 w razie potrzeby.
+1. Z eksperymentu predykcyjnego możesz wdrożyć nowe klasyczne usługi sieci web, która zawiera domyślny punkt końcowy.
+2. Możesz utworzyć nowy punkt końcowy o nazwie ep2, który uwidacznia bieżącą wersję eksperymentu/uczony model.
+3. Przejdź wstecz i zaktualizować eksperyment predykcyjny i uczonego modelu.
+4. Możesz ponownie wdrożyć eksperyment predykcyjny, który następnie zostanie zaktualizowana domyślnego punktu końcowego. Ale to nie ma wpływu na ep2.
+5. Możesz utworzyć dodatkowe punktu końcowego o nazwie ep3, który udostępnia nową wersję eksperyment i uczonego modelu.
+6. Wróć do kroku 3, jeśli to konieczne.
 
-W czasie może mieć wiele punktów końcowych utworzone w tej samej usługi sieci web. Każdy punkt końcowy reprezentuje kopię w momencie eksperymentu zawierającą wersję w momencie trenowanego modelu. Następnie można użyć zewnętrznej logika do określenia, który punkt końcowy do wywołania, co skutecznie oznacza wybranie wersja trenowanego modelu dla wyników przebiegu.
+Wraz z upływem czasu może mieć wiele punktów końcowych, utworzony w tej samej usługi sieci web. Każdy punkt końcowy reprezentuje punkt w czasie kopię eksperymentu, zawierającą wersję w momencie nauczony model. Następnie można użyć zewnętrznego logika do określenia, który punkt końcowy do wywołania, oznacza to efektywne Wybieranie wersja trenowanego modelu dla wyników przebiegu.
 
-Można również utworzyć wiele punktów końcowych usługi sieci web identyczne i zastosować poprawki różne wersje pliku iLearner do punktu końcowego, aby osiągnąć ten sam efekt. [W tym artykule](create-models-and-endpoints-with-powershell.md) omówiono bardziej szczegółowo znajdują się.
+Można również utworzyć wiele punktów końcowych usługi sieci web identyczne, a następnie stosowanie poprawek do różnych wersji plik iLearner do punktu końcowego, aby osiągnąć ten sam efekt. [W tym artykule](create-models-and-endpoints-with-powershell.md) wyjaśnia, bardziej szczegółowo, jak to zrobić.
 
 ### <a name="new-web-service"></a>Nowa usługa sieci web
-Jeśli utworzysz nową usługę sieci web opartej na usłudze Azure Resource Manager konstrukcja punktu końcowego nie jest już dostępny. Zamiast tego można wygenerować plików definicji (WSD) usługi sieci web w formacie JSON z predykcyjnej eksperymentu przy użyciu [AmlWebServiceDefinitionFromExperiment eksportu](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) polecenia programu PowerShell lub przy użyciu [ *AzureRmMlWebservice eksportu* ](https://msdn.microsoft.com/library/azure/mt767935.aspx) polecenia programu PowerShell z usługi sieci web na podstawie Resource Manager wdrożone.
+Jeśli tworzysz nową usługę sieci web opartych na usłudze Azure Resource Manager, konstrukcja punkt końcowy nie jest już dostępna. Zamiast tego możesz wygenerować plików definicji (WSD) usługi sieci web, w formacie JSON z eksperymentu predykcyjnego przy użyciu [AmlWebServiceDefinitionFromExperiment eksportu](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) polecenia cmdlet programu PowerShell lub za pomocą [ *AzureRmMlWebservice eksportu* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) polecenia cmdlet programu PowerShell z usługą sieci web opartych na usłudze Resource Manager wdrożone.
 
-Po umieszczeniu wyeksportowany plik WSD i nad nim kontroli wersji, można także wdrożyć WSD jako nową usługę sieci web w planie usługi innej witryny sieci web w innym regionie Azure. Po prostu upewnij się, że użytkownik poda prawidłowego magazynu konfiguracji konta, a także nowy identyfikator planu usługi sieci web. Zastosować poprawki w różnych iLearner pliki, do można zmodyfikować pliku WSD i zaktualizuj odwołanie do lokalizacji trenowanego modelu i wdróż je jako nową usługę sieci web.
+Po utworzeniu wyeksportowany plik WSD i nad nim kontroli wersji, można także wdrożyć WSD jako nowej usługi sieci web w ramach planu usługi sieci web w różnych w innym regionie platformy Azure. Po prostu upewnij się, że użytkownik poda prawidłowego magazynu konfiguracji konta, a także nowy identyfikator planu usługi sieci web. Zastosowania poprawki w plikach różnych iLearner, można zmodyfikować plik WSD i zaktualizuj odwołanie do lokalizacji trenowanego modelu i wdrożyć go jako nowej usługi sieci web.
 
-## <a name="automate-experiment-execution-and-deployment"></a>Automatyzacja wdrażania i wykonywania eksperymentu
-Ważnym aspektem ALM ma być w stanie zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning, można to zrobić za pomocą [modułu PowerShell](http://aka.ms/amlps). Oto przykład end-to-end kroki, które mają zastosowanie w standardowe ALM zautomatyzowanego procesu wdrożenia/wykonywania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps). Każdy krok jest połączony z co najmniej jednego polecenia cmdlet środowiska PowerShell służące do wykonania tego kroku.
+## <a name="automate-experiment-execution-and-deployment"></a>Automatyzowanie wykonywania eksperymentów i wdrażania
+Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning, można to zrobić za pomocą [modułu programu PowerShell](http://aka.ms/amlps). Oto przykład czynności end-to-end, które są istotne dla standardowych ALM zautomatyzować proces wykonywania/ciągłego wdrażania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps). Każdy krok jest połączony z co najmniej jeden polecenia cmdlet środowiska PowerShell służących do wykonywania tego kroku.
 
-1. [Przekaż zestawu danych](https://github.com/hning86/azuremlps#upload-amldataset).
-2. Skopiuj eksperyment uczenia do obszaru roboczego z [obszaru roboczego](https://github.com/hning86/azuremlps#copy-amlexperiment) lub [galerii](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), lub [zaimportować](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [wyeksportowane](https://github.com/hning86/azuremlps#export-amlexperimentgraph) Poeksperymentuj z dysku lokalnego.
-3. [Zaktualizować dataset](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) w eksperymencie szkolenia.
-4. [Uruchom eksperyment uczenia](https://github.com/hning86/azuremlps#start-amlexperiment).
-5. [Podwyższ poziom trenowanego modelu](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
+1. [Przekaż zestaw danych](https://github.com/hning86/azuremlps#upload-amldataset).
+2. Skopiuj eksperyment do obszaru roboczego z [obszaru roboczego](https://github.com/hning86/azuremlps#copy-amlexperiment) lub z [galerii](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), lub [zaimportować](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [wyeksportowane](https://github.com/hning86/azuremlps#export-amlexperimentgraph) eksperymentów na podstawie danych lokalnych dysk.
+3. [Aktualizowanie zestawu danych](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) w eksperymentu szkolenia.
+4. [Uruchomienie eksperymentu szkolenia](https://github.com/hning86/azuremlps#start-amlexperiment).
+5. [Podwyższanie poziomu uczonego modelu](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
 6. [Skopiuj eksperyment predykcyjny](https://github.com/hning86/azuremlps#copy-amlexperiment) do obszaru roboczego.
-7. [Zaktualizuj trenowanego modelu](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) w eksperyment predykcyjny.
+7. [Aktualizowanie uczonego modelu](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) w eksperyment predykcyjny.
 8. [Uruchom eksperyment predykcyjny](https://github.com/hning86/azuremlps#start-amlexperiment).
 9. [Wdrażanie usługi sieci web](https://github.com/hning86/azuremlps#new-amlwebservice) z eksperyment predykcyjny.
-10. Testowanie usługi sieci web [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) lub [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) punktu końcowego.
+10. Test usługi sieci web [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) lub [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) punktu końcowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps) modułu i początek w celu zautomatyzowania zadań ALM.
-* Dowiedz się, jak [tworzenie i zarządzanie dużą liczbą modeli uczenia Maszynowego przy użyciu tylko jednego eksperymentu](create-models-and-endpoints-with-powershell.md) za pośrednictwem programu PowerShell i ponownego trenowania interfejsu API.
+* Pobierz [programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps) moduł i początek w celu zautomatyzowania zadań ALM.
+* Dowiedz się, jak [tworzenie i zarządzanie dużą liczbą modeli uczenia Maszynowego przy użyciu tylko jednego eksperymentu](create-models-and-endpoints-with-powershell.md) za pośrednictwem programów PowerShell i ponownego trenowania interfejsu API.
 * Dowiedz się więcej o [wdrażanie usług sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).

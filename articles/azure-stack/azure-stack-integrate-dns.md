@@ -1,6 +1,6 @@
 ---
-title: Integracja Azure datacenter stosu - DNS
-description: Dowiedz się, jak zintegrować usługę Azure DNS stosu z centrum danych DNS
+title: Usługa Azure Stack Integracja z centrum danych — DNS
+description: Dowiedz się, jak zintegrować usługę Azure Stack DNS z centrum danych DNS
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,29 +10,29 @@ ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b4935dc95ccf525c0a40b10dcc8c59ec8aba710e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733863"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059219"
 ---
-# <a name="azure-stack-datacenter-integration---dns"></a>Integracja Azure datacenter stosu - DNS
-Aby można było uzyskać dostępu do punktów końcowych stosu Azure (`portal`, `adminportal`, `management`, `adminmanagement`itp.)  ze stosu poza Azure musisz Integrowanie usług DNS stosu Azure z serwerów DNS, które hostuje stref DNS, który ma być używany w stosie Azure.
+# <a name="azure-stack-datacenter-integration---dns"></a>Usługa Azure Stack Integracja z centrum danych — DNS
+Aby móc uzyskiwać dostęp punktów końcowych usługi Azure Stack (`portal`, `adminportal`, `management`, `adminmanagement`itp.)  z zewnętrznej usługi Azure Stack konieczna Integracja usługi Azure Stack DNS przy użyciu serwerów DNS, które hostuje stref DNS, którego chcesz użyć w usłudze Azure Stack.
 
-## <a name="azure-stack-dns-namespace"></a>Azure nazw DNS stosu
-Jesteś wymagane jest podanie niektóre istotne informacje związane z usługą DNS podczas wdrażania usługi Azure stosu.
+## <a name="azure-stack-dns-namespace"></a>Azure — przestrzeń nazw DNS stosu
+Jest wymagane podanie pewnych informacji ważnych związane z usługą DNS podczas wdrażania usługi Azure Stack.
 
 
 |Pole  |Opis  |Przykład|
 |---------|---------|---------|
-|Region|Lokalizację geograficzną wdrożenia stosu Azure.|`east`|
-|Nazwy domen zewnętrznych|Nazwa strefy, który ma być używany dla danego wdrożenia stosu Azure.|`cloud.fabrikam.com`|
-|Internal Domain Name|Nazwa strefy wewnętrzny używany dla infrastruktury usług Azure stosu.  Jest zintegrowana usługa katalogowa i prywatne (nieosiągalny z poza wdrożenia stosu Azure).|`azurestack.local`|
-|DNS Forwarder|Serwery DNS, które są używane do przesyłania zapytań DNS, strefy DNS i rekordów, które znajdują się poza Azure stosu, w intranecie firmy lub publicznego Internetu.|`10.57.175.34`<br>`8.8.8.8`|
-|Prefiks nazwy (opcjonalnie)|Nazewnictwa prefiks nazwy użytkownika stosu Azure infrastruktury roli wystąpienia w maszyny mają mieć.  Jeśli nie zostanie podana, wartość domyślna to `azs`.|`azs`|
+|Region|Geograficzna lokalizacja wdrożenia usługi Azure Stack.|`east`|
+|Nazwa domeny zewnętrznej|Nazwa strefy, w której chcesz użyć dla wdrożenia usługi Azure Stack.|`cloud.fabrikam.com`|
+|Nazwa domeny wewnętrznej|Nazwa wewnętrznego strefy, który jest używany dla usług infrastruktury w usłudze Azure Stack.  Jest zintegrowany z usługą katalogową i prywatne (nie jest dostępny z zewnątrz wdrożenia usługi Azure Stack).|`azurestack.local`|
+|Usługa przesyłania dalej DNS|Serwery DNS, które są używane do przesyłania zapytań DNS, strefy i rekordy DNS, które znajdują się poza usługi Azure Stack w intranecie firmy lub publicznego Internetu.|`10.57.175.34`<br>`8.8.8.8`|
+|Prefiks nazwy (opcjonalnie)|Prefiks nazw, które mają nazwy maszyny wystąpienia roli infrastruktury Azure Stack mieć.  Jeśli nie zostanie podana, wartość domyślna to `azs`.|`azs`|
 
-W pełni kwalifikowaną nazwę (FQDN) wdrożenia stosu Azure i punkty końcowe jest kombinacją parametr regionu i parametr zewnętrzną nazwę domeny. Używając wartości z przykładów w poprzedniej tabeli, nazwy FQDN dla tego wdrożenia stosu Azure będzie następującej nazwy:
+W pełni kwalifikowana nazwa domeny (FQDN) punktów końcowych czy wdrożenia usługi Azure Stack jest kombinacją Region i parametru zewnętrznej nazwy domeny. Używając wartości z przykładów w poprzedniej tabeli, nazwy FQDN dla tego wdrożenia usługi Azure Stack będą następującą nazwę:
 
 `east.cloud.fabrikam.com`
 
@@ -42,13 +42,13 @@ W efekcie przykłady niektórych punktów końcowych dla tego wdrożenia będzie
 
 `https://adminportal.east.cloud.fabrikam.com`
 
-Aby użyć tej przestrzeni nazw DNS na przykład wdrożenia stosu Azure, wymagane są następujące warunki:
+Aby użyć tej przestrzeni nazw DNS na przykład podczas wdrażania usługi Azure Stack, wymagane są następujące warunki:
 
-- Strefa `fabrikam.com` został zarejestrowany z Rejestratora domen, wewnętrznego serwera DNS firmy lub obu w zależności od wymagań rozpoznawania nazw.
-- Domena podrzędna `cloud.fabrikam.com` istnieje w ramach strefy `fabrikam.com`.
-- Serwery DNS, które zawierają stref `fabrikam.com` i `cloud.fabrikam.com` można nawiązać połączenia z wdrożenia stosu Azure.
+- Strefa `fabrikam.com` został zarejestrowany przy użyciu rejestratora domen, wewnętrznego serwera DNS firmy lub obu, w zależności od Twojego wymagania dotyczące rozpoznawania nazw.
+- Domeny podrzędnej `cloud.fabrikam.com` istnieje w ramach strefy `fabrikam.com`.
+- Serwery DNS, obsługujące strefy `fabrikam.com` i `cloud.fabrikam.com` jest osiągalna z wdrożenia usługi Azure Stack.
 
-Aby można było do rozpoznawania nazw DNS dla punktów końcowych stosu Azure i wystąpień ze stosu Azure poza, konieczny do integracji serwerów DNS obsługujących zewnętrznych strefę DNS stosu Azure z serwerów DNS obsługujących strefę nadrzędną, który ma być używany.
+Aby można było do rozpoznawania nazw DNS dla punktów końcowych usługi Azure Stack i instancji z zewnętrznej usługi Azure Stack, konieczna integracja serwerów DNS, które hostują zewnętrznych strefy DNS dla usługi Azure Stack przy użyciu serwerów DNS obsługujących strefę nadrzędną, do którego chcesz użyć.
 
 
 ## <a name="resolution-and-delegation"></a>Rozpoznawanie i delegowanie
@@ -56,85 +56,85 @@ Aby można było do rozpoznawania nazw DNS dla punktów końcowych stosu Azure i
 Istnieją dwa typy serwerów DNS:
 
 - Autorytatywny serwer DNS hostuje strefy DNS. Odpowiada na zapytania DNS dotyczące rekordów tylko w tych strefach.
-- Rekursywny serwer DNS nie obsługuje stref DNS. Odpowiada na zapytania DNS, wywołując autorytatywne serwery DNS w celu zebrania danych, których potrzebuje.
+- Rekursywny serwer DNS nie hostuje stref DNS. Odpowiada na zapytania DNS, wywołując autorytatywne serwery DNS w celu zebrania danych, których potrzebuje.
 
-Stos Azure obejmuje zarówno autorytatywne i serwery DNS cyklicznego. Serwery cykliczne są używane do rozpoznawania nazw wszystkich elementów z wyjątkiem wewnętrznej strefy prywatnych i zewnętrznych publicznego strefy DNS dla tego wdrożenia stosu Azure. 
+Usługa Azure Stack obejmuje zarówno autorytatywne i cykliczne serwery DNS. Cykliczne serwery są używane do rozpoznawania nazw wszystkich elementów z wyjątkiem wewnętrznych prywatnej strefy i zewnętrznych publicznej strefie DNS dla tego wdrożenia usługi Azure Stack. 
 
-![Architektura usługi Azure DNS stosu](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
+![Architektura usługi Azure Stack DNS](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
 
-## <a name="resolving-external-dns-names-from-azure-stack"></a>Rozpoznawanie nazw DNS zewnętrznych ze stosu Azure
+## <a name="resolving-external-dns-names-from-azure-stack"></a>Rozpoznawanie nazw DNS zewnętrznych z usługi Azure Stack
 
-Do rozpoznawania nazw DNS dla punktów końcowych poza stosu Azure (na przykład: www.bing.com), musisz podać serwerów DNS, które stosu Azure służy do przekazywania żądań DNS, dla których nie jest autorytatywny stosu Azure. W przypadku wdrożenia serwerów DNS, które stosu Azure przekazuje żądania są wymagane w arkuszu wdrożenia (w tym polu usługi przesyłania dalej DNS). Podaj co najmniej dwóch serwerów, w tym polu odporności na uszkodzenia. Bez tych wartości stos Azure wdrożenie zakończy się niepowodzeniem.
+Rozpoznawanie nazw DNS dla punktów końcowych spoza usługi Azure Stack (na przykład: www.bing.com), musisz podać serwerów DNS, które usługi Azure Stack można użyć do przekazywania żądań DNS, dla których nie jest autorytatywny usługi Azure Stack. W przypadku wdrożenia serwerów DNS, usługi Azure Stack przekazuje żądania, które są wymagane w arkusz wdrażania (w polu usługi przesyłania dalej DNS). Podaj co najmniej dwa serwery w tym polu odporności na uszkodzenia. Bez tych wartości wdrożenie usługi Azure Stack zakończy się niepowodzeniem.
 
 ### <a name="configure-conditional-dns-forwarding"></a>Konfigurowanie warunkowego przesyłania dalej DNS
 
 > [!IMPORTANT]
-> Dotyczy to tylko wdrożenia usług AD FS.
+> Dotyczy to tylko wdrożenie usług AD FS.
 
-Aby włączyć rozpoznawanie nazw z istniejącą infrastrukturą DNS, należy skonfigurować przekierowanie warunkowe.
+Aby włączyć rozpoznawanie nazw z istniejącą infrastrukturą DNS, należy skonfigurować warunkowego przesyłania dalej.
 
 Aby dodać warunkowego przesyłania dalej, należy użyć uprzywilejowanych punktu końcowego.
 
-Do wykonania tej procedury należy użyć komputera w sieci centrum danych, który może komunikować się z punktem końcowym uprzywilejowanych w stosie Azure.
+Do wykonania tej procedury należy użyć komputera w sieci centrum danych, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack.
 
-1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i łączyć się z adresem IP uprzywilejowanych punktu końcowego. Użyj poświadczeń do uwierzytelniania CloudAdmin.
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i nawiązać połączenie z adresu IP uprzywilejowanych punktu końcowego. Użyj poświadczeń do uwierzytelniania CloudAdmin.
 
    ```
    $cred=Get-Credential 
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred
    ```
 
-2. Po nawiązaniu połączenia z punktem końcowym uprzywilejowane, uruchom następujące polecenie programu PowerShell. Zastąp przykładowe wartości wyposażone nazwę domeny i adresy IP serwerów DNS, który ma być używany.
+2. Po podłączeniu do endpoint uprzywilejowanego, uruchom następujące polecenie programu PowerShell. Zastąp przykładowe wartości, podane nazwę domeny oraz adresy IP serwerów DNS chcesz użyć.
 
    ```
    Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
 
-## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Rozpoznawanie nazw DNS stosu Azure ze stosu Azure poza
-Autorytatywne serwery są te, które są przechowywane informacje dotyczące zewnętrznego strefy DNS i wszystkich stref utworzonych przez użytkownika. Integracja z tymi serwerami, aby umożliwić delegowanie strefy lub warunkowego przesyłania dalej do rozpoznawania nazw DNS stosu Azure z zewnętrznego stosu Azure.
+## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Rozpoznawanie nazw System DNS Azure Stack z zewnętrznej usługi Azure Stack
+Autorytatywne serwery są te, które pełnią zewnętrznych informacji o strefie DNS i wszystkich stref utworzonych przez użytkownika. Integracja z tych serwerów, aby umożliwić delegowanie strefy lub warunkowego przesyłania dalej do rozpoznawania nazw usługi system DNS Azure Stack z zewnętrznej usługi Azure Stack.
 
-## <a name="get-dns-server-external-endpoint-information"></a>Uzyskiwanie informacji o serwerze DNS zewnętrznego punktu końcowego
+## <a name="get-dns-server-external-endpoint-information"></a>Uzyskaj informacje zewnętrzny punkt końcowy serwera DNS
 
-Aby zintegrować wdrożenia stosu Azure z infrastrukturą DNS, potrzebne są następujące informacje:
+Aby zintegrować wdrożenia usługi Azure Stack z infrastrukturą DNS, potrzebne są następujące informacje:
 
-- Serwer DNS nazwy FQDN
+- Serwer DNS, nazwy FQDN
 - Adresy IP serwera DNS
 
-Nazwy FQDN dla serwerów DNS stosu Azure mają następujący format:
+Nazwy FQDN dla serwerów usługi Azure Stack DNS mają następujący format:
 
 `<NAMINGPREFIX>-ns01.<REGION>.<EXTERNALDOMAINNAME>`
 
 `<NAMINGPREFIX>-ns02.<REGION>.<EXTERNALDOMAINNAME>`
 
-Serwery przy użyciu przykładowe wartości nazwy FQDN dla serwera DNS są:
+Serwery przy użyciu przykładowych wartości nazw FQDN DNS to:
 
 `azs-ns01.east.cloud.fabrikam.com`
 
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Te informacje jest tworzona na końcu wszystkie wdrożenia stosu Azure w pliku o nazwie `AzureStackStampDeploymentInfo.json`. Ten plik znajduje się w `C:\CloudDeployment\logs` folderu wdrożenia maszyny wirtualnej. Jeśli nie masz pewności, jakie wartości były używane do wdrożenia usługi Azure stosu, w tym miejscu można pobrać wartości.
+Te informacje również jest tworzony na końcu wszystkich wdrożeń usługi Azure Stack w pliku o nazwie `AzureStackStampDeploymentInfo.json`. Ten plik znajduje się w `C:\CloudDeployment\logs` folderu wdrożenia maszyny wirtualnej. Jeśli nie masz pewności, jakie wartości zostały użyte do wdrożenia usługi Azure Stack, w tym miejscu można pobrać wartości.
 
-Jeśli wdrożenie maszyny wirtualnej nie jest już dostępny, lub jest niedostępna, łącząc się z punktem końcowym uprzywilejowanych i uruchamiając mogą uzyskać wartości `Get-AzureStackInfo` polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji na temat uprzywilejowanych punktu końcowego zobacz (link do artykułu w tym miejscu Wstaw).
+Jeśli wdrożenie maszyny wirtualnej nie jest już dostępny lub jest niedostępny, można uzyskać wartości nawiązywania połączenia z uprzywilejowanym punktu końcowego, a następnie uruchamiając `Get-AzureStackInfo` polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji, zobacz [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md).
 
-## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Konfigurowanie warunkowego przesyłania dalej do stosu Azure
+## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Konfigurowanie warunkowego przesyłania dalej do usługi Azure Stack
 
-Najprostsza i najbardziej bezpieczny sposób integracji stosu Azure z infrastrukturą DNS jest przesyłanie warunkowe strefy od serwera, który hostuje strefy nadrzędnej. Takie podejście jest zalecane, jeśli masz bezpośrednią kontrolę nad serwerów DNS obsługujących strefę nadrzędną dla przestrzeni nazw DNS z zewnętrznego stosu Azure.
+Najprostszy i najbezpieczniejszy sposób integracji usługi Azure Stack z infrastruktury DNS jest przesyłanie warunkowe strefy z serwera, który obsługuje strefę nadrzędną. Takie podejście jest zalecane, jeśli masz bezpośrednią kontrolę nad serwerów DNS obsługujących strefę nadrzędną dla usługi Azure Stack zewnętrzny obszar nazw DNS.
 
-Jeśli nie masz doświadczenia w obsłudze jak to zrobić warunkowego przesyłania dalej z serwerem DNS, zobacz następujący artykuł w witrynie TechNet: [przypisać warunkowego przesyłania dalej dla nazwy domeny](https://technet.microsoft.com/library/cc794735), lub z dokumentacją specyficzną dla rozwiązania DNS.
+Jeśli nie znasz dobrze jak to zrobić warunkowego przesyłania dalej z serwerem DNS, zobacz następujący artykuł w witrynie TechNet: [przypisać warunkowego przesyłania dalej dla nazwy domeny](https://technet.microsoft.com/library/cc794735), lub z dokumentacją specyficzną dla rozwiązania DNS.
 
-W scenariuszach, w którym określone zewnętrznych strefy DNS stosu Azure, aby wyglądały jak domeny podrzędnej z nazwą domeny firmy nie można użyć warunkowego przesyłania dalej. Należy skonfigurować delegowanie usługi DNS.
+W scenariuszach, gdzie określone zewnętrznych strefy DNS stosu Azure wyglądać domeny podrzędnej z nazwą domeny firmowej warunkowego przesyłania dalej nie można użyć. Należy skonfigurować delegowanie usługi DNS.
 
 Przykład:
 
-- Nazwa domeny firmowej usłudze DNS: `contoso.com`
-- Nazwa domeny DNS zewnętrznego stosu Azure: `azurestack.contoso.com`
+- Nazwa domeny firmowego serwera DNS: `contoso.com`
+- Nazwa domeny zewnętrznego serwera DNS w usłudze Azure Stack: `azurestack.contoso.com`
 
-## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>Delegowanie zewnętrznych strefę DNS do stosu Azure
+## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>Delegowanie strefy DNS zewnętrznego do usługi Azure Stack
 
-Nazwy DNS jest rozpoznawana z poza wdrożenia stosu Azure należy skonfigurować delegowanie DNS.
+Dla nazw DNS jako możliwej do rozpoznania z spoza wdrożenia usługi Azure Stack należy skonfigurować delegowanie DNS.
 
-Każdy rejestrator ma swoje własne narzędzia do zarządzania systemem DNS służące do zmiany rekordów serwerów nazw dla domeny. Na stronie zarządzania DNS rejestratora Edytuj rekordy NS i Zastąp rekordy NS dla strefy widocznych w stosie Azure.
+Każdy rejestrator ma swoje własne narzędzia do zarządzania systemem DNS służące do zmiany rekordów serwerów nazw dla domeny. W stronie zarządzania systemem DNS rejestratora Edytuj rekordy NS i Zastąp rekordy NS dla strefy w usłudze Azure Stack.
 
 Większość rejestratorów DNS wymaga podania co najmniej dwa serwery DNS, aby ukończyć delegowanie.
 

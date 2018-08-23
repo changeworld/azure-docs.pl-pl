@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie źródeł danych w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Źródła danych do definiowania danych czy zbiera analizy dzienników z agentów i inne połączenie źródeł.  W tym artykule opisano pojęcia jak analizy dzienników korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie dostępnych źródeł danych.
+title: Konfigurowanie źródeł danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Źródła danych definiują dane, czy usługi Log Analytics zbiera z agentów i inne połączone źródła.  W tym artykule opisano pojęcia, jak usługa Log Analytics korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie informacji o różnych źródeł danych dostępne.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,58 +15,58 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130088"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057652"
 ---
-# <a name="data-sources-in-log-analytics"></a>Źródła danych w analizy dzienników
-Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym analizy dzienników.  Dane są zbierane z każdej jest zdefiniowany przez źródła danych, które można skonfigurować.  Dane analizy dziennika są przechowywane jako zestaw rekordów.  Dla każdego źródła danych tworzy rekordy określonego typu z każdym typem o własny zestaw właściwości.
+# <a name="data-sources-in-log-analytics"></a>Źródła danych w usłudze Log Analytics
+Log Analytics zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym usługi Log Analytics.  Dane, które są zbierane z każdego jest definiowany przez źródeł danych, które konfigurujesz.  Dane w usłudze Log Analytics są przechowywane jako zestaw rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
 
-![Zbierania danych analizy dzienników](./media/log-analytics-data-sources/overview.png)
+![Zaloguj się zbieranie danych analitycznych](./media/log-analytics-data-sources/overview.png)
 
-Źródła danych są inne niż [rozwiązań do zarządzania](log-analytics-add-solutions.md), które również zbieranie danych z połączonych źródeł i tworzenie rekordów w analizy dzienników.  Oprócz zbierania danych, rozwiązań zwykle zawierają dziennik wyszukiwania i widoki, które ułatwiają analizowanie operacji określonej aplikacji lub usługi.
+Źródła danych różnią się od [rozwiązań do zarządzania](log-analytics-add-solutions.md), który również zbierać dane z połączonych źródeł i tworzenie rekordów w usłudze Log Analytics.  Oprócz zbierania danych, rozwiązania zwykle zawierają wyszukiwań w dziennikach i widoków, aby pomóc w analizie operacji określonej aplikacji lub usługi.
 
 
 ## <a name="summary-of-data-sources"></a>Podsumowanie źródeł danych
-W poniższej tabeli wymieniono źródeł danych, które są aktualnie dostępne w analizy dzienników.  Każdy ma łącze do oddzielnym artykule podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwość zbierania danych do analizy dzienników.  Do identyfikacji różnych rozwiązań dostępne i zrozumienie wymagań przepływu i połączenia danych rozwiązania do zarządzania różnych, możesz skorzystać z informacji w tym artykule. Wyjaśnień kolumn, zobacz [szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md).
+Poniższa tabela zawiera listę źródeł danych, które są obecnie dostępne w usłudze Log Analytics.  Każda ma link do artykułu oddzielne podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. Objaśnienia dotyczące kolumn, zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md).
 
 
-| Źródło danych | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
+| Źródło danych | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | po przybyciu |
-| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | po przybyciu |
+| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | Po dostarczeniu |
+| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | Po dostarczeniu |
 | [Dzienniki usług IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |zależy od ustawienia Przerzucanie pliku dziennika |
-| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |jako zaplanowane, co najmniej 10 sekund |
-| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |jako zaplanowane, co najmniej 10 sekund |
-| [Dziennik systemu](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: Przy nadejściu |
-| [Dzienniki zdarzeń systemu Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | po przybyciu |
+| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
+| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
+| [Dziennik systemu](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: po przybyciu |
+| [Dzienniki zdarzeń Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Po dostarczeniu |
 
 
 ## <a name="configuring-data-sources"></a>Konfigurowanie źródeł danych
-Konfigurowanie źródeł danych z **danych** menu analizy dzienników **Zaawansowane ustawienia**.  Żadnej konfiguracji są dostarczane do wszystkich połączonych źródeł w obszarze roboczym.  Nie można obecnie wykluczyć wszystkich agentów z tej konfiguracji.
+Konfigurowanie źródła danych z **danych** menu w usłudze Log Analytics **Zaawansowane ustawienia**.  Dowolna konfiguracja jest dostarczana do wszystkich połączonych źródeł, w obszarze roboczym.  Obecnie nie możesz wykluczać wszelkich agentów z tej konfiguracji.
 
-![Skonfiguruj zdarzenia systemu Windows](./media/log-analytics-data-sources/configure-events.png)
+![Konfiguruj zdarzenia Windows](./media/log-analytics-data-sources/configure-events.png)
 
-1. W portalu Azure wybierz **analizy dzienników** > obszar roboczy > **Zaawansowane ustawienia**.
+1. W witrynie Azure portal wybierz **usługi Log Analytics** > obszar roboczy > **Zaawansowane ustawienia**.
 2. Wybierz **danych**.
 3. Kliknij źródło danych, które chcesz skonfigurować.
-4. Skorzystaj z linku do dokumentacji dla każdego źródła danych w tabeli powyżej, aby uzyskać szczegółowe informacje na ich konfiguracji.
+4. Kliknij link do dokumentacji dla każdego źródła danych w powyższej tabeli, aby uzyskać szczegółowe informacje na ich konfiguracji.
 
 
 ## <a name="data-collection"></a>Zbieranie danych
-Konfiguracje źródła danych są dostarczane do agentów, które są podłączone bezpośrednio do analizy dzienników w ciągu kilku minut.  Określony dane są zbierane z agenta i dostarczane bezpośrednio do analizy dzienników w odstępach czasu określonych dla każdego źródła danych.  Zobacz dokumentację dla każdego źródła danych dla tych szczegółowych informacji.
+Konfiguracje źródeł danych są dostarczane do agentów, które są podłączone bezpośrednio do usługi Log Analytics w ciągu kilku minut.  Określone dane jest zbierane z programu agent i dostarczane bezpośrednio do usługi Log Analytics w odstępach specyficzne dla każdego źródła danych.  Zobacz dokumentację dla każdego źródła danych dla tych szczegółowych informacji.
 
-Agenci programu System Center Operations Manager w podłączonej grupie zarządzania konfiguracji źródła danych są przetłumaczyć pakietów administracyjnych i dostarczonych w grupie zarządzania co 5 minut domyślnie.  Agent pobiera pakiet administracyjny jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą się, że albo wysłane do serwera zarządzania, który przesyła dane do analizy dzienników lub agent będzie wysyłać dane do analizy dzienników bez przechodzenia przez serwer zarządzania. Zapoznaj się [szczegóły kolekcji danych](log-analytics-add-solutions.md#data-collection-details) szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i analizy dzienników i modyfikowanie częstotliwości tej konfiguracji jest dostarczany w [skonfigurować integrację z programem System Center Operations Manager](log-analytics-om-agents.md).
+Agenci programu System Center Operations Manager w podłączonej grupy zarządzania konfiguracje źródeł danych są przetłumaczone na pakiety administracyjne i dostarczane do grupy zarządzania co 5 minut, domyślnie.  Agent pobiera pakiet administracyjny, jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą albo wysłane do serwera zarządzania, która przekazuje dane do usługi Log Analytics lub agent będzie wysyłać dane do usługi Log Analytics bez przechodzenia przez serwer zarządzania. Zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md) Aby uzyskać szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i usługi Log Analytics i modyfikowanie częstotliwości tej konfiguracji jest dostarczana w [konfigurowania integracji z programem System Center Operations Manager](log-analytics-om-agents.md).
 
-Jeśli agent nie może nawiązać połączenia analizy dzienników lub Operations Manager, będzie zbierać dane, które będzie dostarczać, podczas nawiązywania połączenia.  Dane mogą zostać utracone, jeśli ilość danych osiągnie maksymalny rozmiar pamięci podręcznej klienta, lub jeśli agent nie jest w stanie nawiązać połączenia w ciągu 24 godzin.
+Jeśli agent jest w stanie połączyć się z usługi Log Analytics lub Operations Manager, będzie zbierać dane, które będzie dostarczać, jeśli go nawiązuje połączenie.  Dane mogą zostać utracone, jeśli ilość danych osiągnie maksymalny rozmiar pamięci podręcznej klienta lub jeśli agent nie jest w stanie nawiązać połączenie w ciągu 24 godzin.
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Wszystkie dane zebrane przez analizy dzienników znajduje się w obszarze roboczym jako rekordy.  Rejestruje zebrane przez różnych źródeł danych będą mieć własny zestaw właściwości i zostać zidentyfikowane na podstawie ich **typu** właściwości.  Dla każdego typu rekordu, zobacz dokumentację dla każdego źródła danych i rozwiązania, aby uzyskać szczegółowe informacje.
+Wszystkie dane zebrane przez usługę Log Analytics jest przechowywane w obszarze roboczym jako rekordy.  Rekordów zbieranych przez różne źródła danych będą mieć własne zestawy właściwości i zostać zidentyfikowane na podstawie ich **typu** właściwości.  Zobacz dokumentację dla każdego źródła danych i rozwiązań, aby uzyskać szczegółowe informacje dla każdego typu rekordu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [rozwiązań](log-analytics-add-solutions.md) czy dodać funkcje do analizy dzienników i również zbieranie danych do obszaru roboczego.
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania.  
-* Skonfiguruj [alerty](log-analytics-alerts.md) do aktywnego powiadomienia o krytyczne dane zebrane ze źródeł danych i rozwiązań.
+* Dowiedz się więcej o [rozwiązania](../monitoring/monitoring-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Konfigurowanie [alerty](log-analytics-alerts.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.

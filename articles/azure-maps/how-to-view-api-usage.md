@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9eb58f41ec89d084cc388eeadb335046fb587bc3
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e62d2ff1fdd6bc94244511a2de95c4268a58d6f9
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581575"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054357"
 ---
 # <a name="how-to-view-the-azure-maps-api-usage"></a>Jak wyświetlić informacje o użyciu interfejsu API usługi Azure Maps
 W tym artykule przedstawiono sposób wyświetlania metryk użycia interfejsu API dla konta usługi Azure Maps w [portal](https://portal.azure.com). Metryki są wyświetlane w postaci wykresu wygodne wzdłuż można dostosować czas trwania. 
@@ -59,10 +59,6 @@ Przejdź do następnej sekcji Jeżeli trzeba dostosować te wykresy dla konkretn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak śledzić użycie usługi Azure Maps, można przejść do informacji bardziej zaawansowane funkcje, takie jak:
+Teraz, gdy wiesz jak śledzić użycie usługi Azure Maps może kontynuować, aby dowiedzieć się więcej o interfejsach API za pomocą:
 
-* [Użycie w pojeździe](consumption-model.md), lub
-* [Rozszerzanie GeoJSON](extend-geojson.md)
-
-Ponadto Dowiedz się więcej o interfejsach API za pomocą:
 * [Dokumentacja interfejsu API REST usługi mapy platformy Azure](https://docs.microsoft.com/rest/api/maps)

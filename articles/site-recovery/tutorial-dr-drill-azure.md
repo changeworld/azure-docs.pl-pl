@@ -4,14 +4,14 @@ description: Informacje o uruchamianiu próbnego odzyskiwania po awarii ze środ
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 33cbe29771573bd234548f549ed6027fb5801945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920175"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919932"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Przygotowywanie do połączenia z maszyną wirtualną platformy Azure po przejściu do trybu failover
 > * Uruchamianie testowego przełączania w tryb failover dla pojedynczej maszyny
 
-Ten samouczek umożliwia opanowanie następujących czynności:
+
 
 ## <a name="verify-vm-properties"></a>Sprawdzanie właściwości maszyn wirtualnych
 

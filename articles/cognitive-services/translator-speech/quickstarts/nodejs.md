@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0c0f3120811bba164a07783bc7ce3b7af389fd2b
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: e652ee1e201e60d0d75f10bb8fceb4fbcd205381
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205218"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41987983"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Przewodnik Szybki start dotyczący usługi Microsoft Translator interfejs API rozpoznawania mowy w środowisku Node.js 
 <a name="HOLTop"></a>
@@ -169,4 +169,4 @@ Pomyślne wynikiem jest utworzenie pliku o nazwie "speak2.wav". Plik zawiera tł
 ## <a name="see-also"></a>Zobacz także 
 
 [Omówienie funkcji rozpoznawania mowy w usłudze Translator](../overview.md)
-[dokumentacja interfejsu API](http://docs.microsofttranslator.com/speech-translate.html)
+[dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

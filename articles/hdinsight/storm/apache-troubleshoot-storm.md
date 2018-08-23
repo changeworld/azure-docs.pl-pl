@@ -4,17 +4,17 @@ description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące korzystan
 keywords: Usługa Azure HDInsight, Storm, często zadawane pytania, przewodnik, typowych problemów dotyczących rozwiązywania problemów
 services: hdinsight
 ms.service: hdinsight
-author: raviperi
-ms.author: raviperi
+author: jasonwhowell
+ms.author: jasonwhowell
 editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 313cade8a6d840f41c7912cbea87cc989d5b76fa
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c90c793949f1c37d18d0227fd9407e65c332ed0c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620688"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055092"
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemu Storm przy użyciu usługi Azure HDInsight
 

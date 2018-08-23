@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 05/30/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d8d911acf3e3eff2cf3340972b9b77a10be0a5f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 79bdab4c7a867117f6473864f1654f77603f7b26
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35649346"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056931"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Usługi Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
@@ -72,20 +72,20 @@ Z tego powodu następujące ograniczenia mają zastosowanie do programu Azure AD
 * Możesz zainstalować inny serwer program Azure AD Connect, musisz wybrać ten sam atrybut sourceAnchor wcześniej używane. Jeśli wcześniej została przy użyciu narzędzia DirSync i przenieść do usługi Azure AD Connect, a następnie należy użyć **objectGUID** ponieważ atrybut używany przez narzędzie DirSync.
 * Jeśli wartość sourceAnchor zostało zmienione po obiekcie zostały wyeksportowane do usługi Azure AD, a następnie program Azure AD Connect sync zgłasza błąd i nie zezwala na jakichkolwiek kolejnych zmian na obiekt, zanim problem został rozwiązany i sourceAnchor zmodyfikowaniu w źródłowej Dyrektor ds. y.
 
-## <a name="using-msds-consistencyguid-as-sourceanchor"></a>Przy użyciu właściwości msDS-ConsistencyGuid jako sourceAnchor
-Domyślnie program Azure AD Connect (wersja 1.1.486.0 i starsze) używa objectGUID jako atrybutu sourceAnchor. ObjectGUID jest generowany przez system. Nie można określić wartość podczas tworzenia w środowisku lokalnym obiektami usługi AD. Zgodnie z opisem w sekcji [sourceAnchor](#sourceanchor), istnieją scenariusze, w którym należy określić wartość sourceAnchor. Jeśli te scenariusze mają zastosowanie do Ciebie, należy użyć konfigurowalne atrybutu usługi AD (na przykład msDS-ConsistencyGuid) jako atrybut sourceAnchor.
+## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>Przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor
+Domyślnie program Azure AD Connect (wersja 1.1.486.0 i starsze) używa objectGUID jako atrybutu sourceAnchor. ObjectGUID jest generowany przez system. Nie można określić wartość podczas tworzenia w środowisku lokalnym obiektami usługi AD. Zgodnie z opisem w sekcji [sourceAnchor](#sourceanchor), istnieją scenariusze, w którym należy określić wartość sourceAnchor. Scenariusze mają zastosowanie do użytkownika, należy użyć konfigurowalne atrybutu usługi AD (na przykład, ms-DS-ConsistencyGuid) jako atrybut sourceAnchor.
 
-Program Azure AD Connect (wersja w 1.1.524.0 oraz po) teraz ułatwia korzystanie z właściwości msDS-ConsistencyGuid jako atrybutu sourceAnchor. Podczas korzystania z tej funkcji Azure AD Connect automatycznie konfiguruje reguły synchronizacji:
+Program Azure AD Connect (wersja w 1.1.524.0 oraz po) teraz ułatwia korzystanie z ms-DS-ConsistencyGuid jako atrybutu sourceAnchor. Podczas korzystania z tej funkcji Azure AD Connect automatycznie konfiguruje reguły synchronizacji:
 
-1. Na użytek msDS-ConsistencyGuid jako atrybutu sourceAnchor obiektów użytkowników. ObjectGUID jest używana do innych obiektów.
+1. Na użytek ms-DS-ConsistencyGuid jako atrybutu sourceAnchor obiektów użytkowników. ObjectGUID jest używana do innych obiektów.
 
-2. Dla dowolnej podanej w środowisku lokalnym użytkownika AD obiektu, którego atrybut msDS-ConsistencyGuid nie jest wypełnione, Azure zapisów AD Connect, jego wartość objectGUID z powrotem do atrybutu msDS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Po wypełnieniu atrybutu msDS-ConsistencyGuid program Azure AD Connect eksportowany jest obiekt do usługi Azure AD.
+2. Dla dowolnej podanej w środowisku lokalnym użytkownika AD obiektu, którego atrybut ms-DS-ConsistencyGuid nie jest wypełnione, Azure zapisów AD Connect, jego wartość objectGUID z powrotem do atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Po wypełnieniu atrybutu ms-DS-ConsistencyGuid program Azure AD Connect eksportowany jest obiekt do usługi Azure AD.
 
 >[!NOTE]
-> Raz lokalnego obiektu usługi AD jest importowany do usługi Azure AD Connect (który jest importowany do obszaru łącznika usługi AD i odwzorowane w obiekcie Metaverse), nie można już zmienić wartością sourceAnchor. Aby określić wartość sourceAnchor dla podanej w środowisku lokalnym AD obiektu, skonfiguruj jego atrybut msDS-ConsistencyGuid, przed zaimportowaniem ich do usługi Azure AD Connect.
+> Raz lokalnego obiektu usługi AD jest importowany do usługi Azure AD Connect (który jest importowany do obszaru łącznika usługi AD i odwzorowane w obiekcie Metaverse), nie można już zmienić wartością sourceAnchor. Aby określić wartość sourceAnchor dla podanej w środowisku lokalnym AD obiektu, skonfiguruj jego atrybut ms-DS-ConsistencyGuid, przed zaimportowaniem ich do usługi Azure AD Connect.
 
 ### <a name="permission-required"></a>Wymagane jest uprawnienie
-Ta funkcja działała konto usług AD DS, używane do synchronizacji z usługą Active Directory w środowisku lokalnym musi otrzymać uprawnienia do zapisu do atrybutu msDS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym.
+Ta funkcja działała konto usług AD DS, używane do synchronizacji z usługą Active Directory w środowisku lokalnym musi otrzymać uprawnienia do zapisu do atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym.
 
 ### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>Jak włączyć funkcję ConsistencyGuid — nowa instalacja
 Korzystanie z ConsistencyGuid jako sourceAnchor można włączyć podczas instalacji nowego. Ta sekcja obejmuje instalację zarówno Express, jak i niestandardowe, w szczegółach.
@@ -104,7 +104,7 @@ Instalując program Azure AD Connect z trybem Express, Kreator Azure AD Connect 
   >[!NOTE]
   > Tylko nowsze wersje programu Azure AD Connect (1.1.524.0 oraz po) służy do przechowywania informacji w dzierżawie usługi Azure AD o atrybut sourceAnchor jest używany podczas instalacji. Nie są starsze wersje programu Azure AD Connect.
 
-* Jeśli informacje o atrybut sourceAnchor jest niedostępna, Kreator sprawdza stan atrybutu msDS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, kreator używa msDS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje, a nie nadaje się jako atrybut sourceAnchor...
+* Jeśli informacje o atrybut sourceAnchor jest niedostępna, Kreator sprawdza stan atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, kreator używa ms-DS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje, a nie nadaje się jako atrybut sourceAnchor...
 
 * W takim przypadku Kreator powraca do korzystania objectGUID jako atrybutu sourceAnchor.
 
@@ -140,7 +140,7 @@ Aby przełączyć się z objectGUID ConsistencyGuid jako atrybutu zakotwiczenia 
 
 3. Wprowadź swoje poświadczenia administratora usługi Azure AD, a następnie kliknij przycisk **dalej**.
 
-4. Kreator Azure AD Connect analizuje stan atrybutu msDS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, program Azure AD Connect stwierdza, że żadna inna aplikacja używa obecnie atrybut i bezpiecznym rozwiązaniem jest użycie go jako atrybut zakotwiczenia źródła. Kliknij przycisk **dalej** aby kontynuować.
+4. Kreator Azure AD Connect analizuje stan atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, program Azure AD Connect stwierdza, że żadna inna aplikacja używa obecnie atrybut i bezpiecznym rozwiązaniem jest użycie go jako atrybut zakotwiczenia źródła. Kliknij przycisk **dalej** aby kontynuować.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 4](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -148,7 +148,7 @@ Aby przełączyć się z objectGUID ConsistencyGuid jako atrybutu zakotwiczenia 
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 5](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
 
-6. Po zakończeniu konfiguracji kreatora oznacza, że jest teraz używany msDS-ConsistencyGuid jako atrybutu zakotwiczenia źródła.
+6. Po zakończeniu konfiguracji kreatora oznacza, że jest teraz używany tego ms-DS-ConsistencyGuid jako atrybutu zakotwiczenia źródła.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
@@ -170,11 +170,11 @@ Jeśli zarządzasz usług AD FS poza programem Azure AD Connect lub używasz ser
 ![Konfiguracja Federacji innej firmy](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
-Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu mSDS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, należy się z pomocą techniczną, aby uzyskać informacje dotyczące pomijania błędu.
+Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, należy się z pomocą techniczną, aby uzyskać informacje dotyczące pomijania błędu.
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Usługa Azure AD logowania
+## <a name="azure-ad-sign-in"></a>Logowanie się w usłudze Azure AD
 Podczas integracji katalogu lokalnego z usługą Azure AD, ważne jest, aby zrozumieć, jak ustawienia synchronizacji wpływa na sposób użytkownik jest uwierzytelniany. Usługa Azure AD używa userPrincipalName (UPN) do uwierzytelnienia użytkownika. Jednak po zsynchronizowaniu użytkowników, możesz wybrać atrybut, który ma być używany dla wartości userPrincipalName ostrożnie.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Wybieranie atrybut userPrincipalName

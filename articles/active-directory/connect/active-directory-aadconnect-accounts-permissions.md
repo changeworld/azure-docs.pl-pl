@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cfb6fb512ecb7d57cf411a31b2e04726bfc4b743
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a628e28e9e6bd603fb2a3789c3281bc2181c91fe
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263406"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42059548"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 
@@ -121,7 +121,7 @@ Wymagane uprawnienia, które jest zależny od funkcji opcjonalnych można włąc
 
 | Cecha | Uprawnienia |
 | --- | --- |
-| Funkcja msDS-ConsistencyGuid |Uprawnienia do zapisu do atrybutu msDS-ConsistencyGuid udokumentowane w artykule [pojęć dotyczących projektowania — przy użyciu właściwości msDS-ConsistencyGuid jako sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
+| funkcja MS-DS-ConsistencyGuid |Uprawnienia do zapisu do atrybutu ms-DS-ConsistencyGuid udokumentowane w artykule [pojęć dotyczących projektowania — przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Synchronizacja skrótów haseł |<li>Replikuj zmiany katalogu</li>  <li>Replikacja katalogu zmienia wszystkie |
 | Wdrożenie hybrydowe programu Exchange |Uprawnienia do zapisu do atrybutów w [zapisywania zwrotnego hybrydowego programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontakty. |
 | Folder publiczne poczty programu Exchange |Odczyt atrybutów udokumentowane w artykule [folderu publicznego poczty Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 

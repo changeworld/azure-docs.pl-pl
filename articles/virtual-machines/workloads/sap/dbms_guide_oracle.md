@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076305"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055523"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
@@ -311,7 +311,7 @@ ms.locfileid: "39076305"
 
 
 ## <a name="specifics-to-oracle-database"></a>Charakterystyka bazą danych Oracle
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w dokumencie. Jako żądanie ściągnięcia — Odczyt do tego dokumentu, powinien mieć odczytu dokumentu [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) oraz inne przewodniki w [obciążeń SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
@@ -384,7 +384,7 @@ W przypadku wdrożeń oprogramowania Oracle na Windows zalecane jest zgodnie z o
 Zastosuj wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie, zgodnie z opisem w dokumencie [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) wdrożeń maszyn wirtualnych przy użyciu bazy danych programu Oracle jako dobrze.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Charakterystyka do bazy danych Oracle w systemie Oracle Linux
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tej części dokumentu.
 

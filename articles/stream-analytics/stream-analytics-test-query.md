@@ -1,7 +1,7 @@
 ---
-title: Zadania usługi analiza strumienia Azure z przykładowymi danymi testowego
-description: Jak przetestować zapytań w zadania usługi analiza strumienia.
-keywords: W tym artykule opisano sposób użycia portalu Azure do testowania zadania usługi analiza strumienia Azure, przykładowe dane wejściowe i przekaż przykładowe dane.
+title: Testowanie zadania usługi Azure Stream Analytics z przykładowymi danymi
+description: Jak jest przetestowanie kwerend w zadania usługi Stream Analytics.
+keywords: W tym artykule opisano sposób użycia witryny Azure portal do testowania zadania usługi Azure Stream Analytics, przykładowe dane wejściowe i Przekaż dane przykładowe.
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -10,44 +10,42 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 3dc9091934f3db8ededc13f74d2f302eccace4d6
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d699d69362b2d28c205aab14a4bfb26570a68a4e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312994"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060230"
 ---
-# <a name="test-a-stream-analytics-query-with-sample-data"></a>Testowanie kwerendy Stream Analytics z przykładowymi danymi
+# <a name="test-a-stream-analytics-query-with-sample-data"></a>Testowanie zapytania usługi Stream Analytics z przykładowymi danymi
 
-Za pomocą usługi Azure Stream Analytics, możesz przekazać przykładowe dane i testowania zapytania w portalu Azure, bez uruchamiania lub zatrzymywania zadania.
+Za pomocą usługi Azure Stream Analytics, możesz przekazać przykładowe dane i testowanie zapytań w witrynie Azure portal, bez uruchamiania lub zatrzymywania zadania.
 
-## <a name="upload-sample-data-and-test-the-query"></a>Przekaż przykładowe dane i przetestować zapytanie
+## <a name="upload-sample-data-and-test-the-query"></a>Przekazywanie przykładowych danych i przetestować zapytanie
 
 1. Zaloguj się do Portalu Azure. 
 
-2. Znajdź istniejące zadania usługi analiza strumienia i zaznacz je.
+2. Znajdź istniejące zadanie usługi Stream Analytics i zaznacz je.
 
-3. Na usługi analiza strumienia zadania w obszarze strony, **topologii zadania** nagłówek, wybierz **zapytania** otwarte okno edytora zapytań. 
+3. W usłudze Stream Analytics zadania stronie w obszarze **topologia zadań** nagłówka, wybierz **zapytania** otwarte okno edytora zapytań. 
 
-4. Aby przetestować zapytanie z przykładowych danych wejściowych, kliknij prawym przyciskiem myszy dowolne dane wejściowe.  Następnie wybierz **przekazać dane przykładowe z pliku**.
+4. Aby przetestować zapytanie za pomocą przykładowych danych wejściowych, kliknij prawym przyciskiem myszy dowolne dane wejściowe.  Następnie wybierz pozycję **Przekaż dane przykładowe z pliku**. Dane muszą być zserializowane w formacie JSON, CSV lub AVRO.
 
-   Dane muszą być tylko dane w formacie JSON. Jeśli dane są w różnych formatach, takich jak CSV, należy ją przekonwertować na format JSON, przed przesłaniem. Można użyć dowolnego narzędzia konwersji opensource, takich jak [woluminu CSV do przetwarzania JSON](http://www.convertcsv.com/csv-to-json.htm) można przekonwertować danych na notację JSON.
+    ![Zapytanie testowe edytora zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-    ![Edytor testów zapytania zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
+5. Po zakończeniu pobierania wybierz **Test** do testowania to zapytanie względem przykładowych danych zostały podane.
 
-5. Po zakończeniu przekazywania wybierz **Test** do przetestowania tego zapytania dotyczącego podano przykładowe dane.
+    ![Edytor testu przykładowych danych zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
-    ![Edytor testów przykładowych danych zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
+6. Jeśli potrzebujesz danych wyjściowych testu w celu późniejszego użycia danych wyjściowych zapytania jest wyświetlany w przeglądarce z linkiem do pobierania wyników. 
 
-6. Jeśli potrzebujesz danych wyjściowych testu do późniejszego użycia, danych wyjściowych kwerendy jest wyświetlana w przeglądarce z łączem do pobierania wyników. 
-
-7. Wielokrotnie powtarzane zmodyfikuj zapytanie i przetestować go ponownie, aby zobaczyć, jak zmiany danych wyjściowych.
+7. Iteracyjne zmodyfikuj zapytanie i przetestować go ponownie, aby zobaczyć, jak zmienią się dane wyjściowe.
 
    ![Edytor przykładowe dane wyjściowe zapytań usługi Stream Analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
 
-   Użycie wielu wyjść w zapytaniu, wyniki są wyświetlane na osobnych kartach i możliwość łatwego przełączania między nimi.
+   Gdy używasz wiele wyjść w zapytaniu, wyniki są wyświetlane w osobnych kartach, a następnie można łatwo przełączać się między nimi.
 
-8. Po zweryfikowaniu wyniki wyświetlane w przeglądarce, **zapisać** zapytania. Następnie **Start** zadania i pozwól mu przetwarzania zdarzenia przychodzącego.
+8. Po upewnieniu się wyniki wyświetlane w przeglądarce, **Zapisz** zapytania. Następnie **Start** zadania i pozwól mu przetwarzanie zdarzeń przychodzących.
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

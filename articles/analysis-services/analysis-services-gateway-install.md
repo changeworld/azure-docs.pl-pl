@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444943"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054152"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie, łączenie ze źródłami danych w środowisku lokalnym. Aby dowiedzieć się więcej na temat bramy, zobacz [lokalnej bramy danych](analysis-services-gateway.md).
@@ -38,6 +38,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
 * Instalowanie bramy na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
 * Nie należy instalować bramy na komputerze bezprzewodowo podłączonej do sieci. Wydajność może być mniejsza.
 * Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) co subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
+* W przypadku źródeł danych znajdują się na usługi Azure Virtual Network (VNet), należy skonfigurować [AlwaysUseGateway](analysis-services-vnet-gateway.md) właściwości serwera.
 * (Ujednoliconej) bramy, które są opisane w tym miejscu nie jest obsługiwana w niezależne regiony platformy Azure Government, Azure (Niemcy) i Azure (Chiny). Użyj **dedykowanych lokalnej bramy dla usług Azure Analysis Services**zainstalowanego na serwerze server **— Szybki Start** w portalu. 
 
 
@@ -114,4 +115,5 @@ To już wszystko. Jeśli potrzebujesz otwarcie portów lub wykonaj rozwiązywani
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie usług Analysis Services](analysis-services-manage.md)   
-* [Pobieranie danych z usług Azure Analysis Services](analysis-services-connect.md)
+* [Pobieranie danych z usług Azure Analysis Services](analysis-services-connect.md)   
+* [Używanie bramy dla źródeł danych w usłudze Azure Virtual Network](analysis-services-vnet-gateway.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 6c288e4492ac56436d40d1e3db98af8eb7b173c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436322"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056676"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory w usłudze Azure API Management
 
@@ -63,7 +63,7 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
     **Utwórz** zostanie wyświetlone okienko po prawej stronie. To, gdzie możesz wprowadzić informacje istotne dla aplikacji usługi Azure AD.
 1. Wprowadź nazwę aplikacji.
 1. Typ aplikacji wybierz **aplikacji/interfejs API sieci Web**.
-1. Zaloguj się adres URL wprowadź adres URL logowania swojego portalu dla deweloperów. W tym przykładzie adres URL logowania jest https://apimwithaad.portal.azure-api.net/signin.
+1. Zaloguj się adres URL wprowadź adres URL logowania swojego portalu dla deweloperów. W tym przykładzie adres URL logowania jest `https://apimwithaad.portal.azure-api.net/signin`.
 1. Wybierz **Utwórz** do tworzenia aplikacji.
 1. Aby znaleźć aplikację, wybierz **rejestracje aplikacji** i wyszukiwanie według nazwy.
 

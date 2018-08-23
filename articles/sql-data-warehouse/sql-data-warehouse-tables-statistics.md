@@ -1,6 +1,6 @@
 ---
-title: Tworzenie, aktualizowanie statystyk - Azure SQL Data Warehouse | Dokumenty Microsoft
-description: Zalecenia i przykłady dotyczące tworzenia i zaktualizowanie statystyk optymalizacji kwerend w tabelach w usłudze Azure SQL Data Warehouse.
+title: Tworzenie, aktualizowanie statystyk — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zalecenia i przykłady do tworzenia i aktualizowania statystyk optymalizacji zapytań dotyczących tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg-msft
@@ -10,71 +10,74 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 778da6d244561d87e7070ab244fd92dba043488e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643434"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056755"
 ---
-# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Tworzenie, aktualizowanie statystyk dotyczących tabel w magazynie danych SQL Azure
-Zalecenia i przykłady dotyczące tworzenia i zaktualizowanie statystyk optymalizacji kwerend w tabelach w usłudze Azure SQL Data Warehouse.
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Tworzenie i aktualizowanie statystyk dotyczących tabel w usłudze Azure SQL Data Warehouse
+Zalecenia i przykłady do tworzenia i aktualizowania statystyk optymalizacji zapytań dotyczących tabel w usłudze Azure SQL Data Warehouse.
 
 ## <a name="why-use-statistics"></a>Dlaczego warto używać statystyki?
-Im bardziej zna danych Azure SQL Data Warehouse, tym szybciej jego wykonywanie zapytań względem jego. Zbieranie statystyk na podstawie danych i załadowanie go do usługi SQL Data Warehouse jest jednym z najważniejszych czynności, które pozwalają zoptymalizować zapytania. Jest to spowodowane Optymalizator zapytań SQL Data Warehouse jest Optymalizator opartych na kosztach. Porównuje koszty różnych planów zapytań, a następnie wybiera plan o najniższych kosztach, który w większości przypadków jest planem zapewniającym najszybsze wykonanie. Na przykład jeśli Optymalizator szacuje się, że data filtrowania kwerendy zwróci jeden wiersz, ją wybrać inny plan niż w przypadku szacuje go, że wybrana data zwraca 1 milion wierszy.
+Im więcej obsługującemu danych Azure SQL Data Warehouse, szybciej można wykonywać zapytania względem jego. Zbieranie statystyk na podstawie danych i załadowanie go do usługi SQL Data Warehouse jest jednym z najważniejszych czynników, które można zrobić w celu optymalizacji zapytań. Jest to spowodowane Optymalizator zapytań SQL Data Warehouse jest Optymalizator opartych na kosztach. Porównuje koszty różnych planów zapytań, a następnie wybiera plan o najniższych kosztach, który w większości przypadków jest planem zapewniającym najszybsze wykonanie. Na przykład jeśli Optymalizator szacuje się, że termin filtrowania w zapytaniu zwróci jeden wiersz, go wybrać inny plan niż w przypadku szacunków, wybraną datą będzie zwracać 1 milion wierszy.
 
 ## <a name="automatic-creation-of-statistics"></a>Automatyczne tworzenie statystyk
-Podczas automatycznego tworzenia statystyk opcja jest włączona, AUTO_CREATE_STATISTICS, SQL Data Warehouse analizuje zapytania przychodzące użytkownika, których statystyki pojedynczej kolumny są tworzone dla kolumny, których brakuje statystyki. Optymalizator zapytań tworzy statystyki dla poszczególnych kolumn w warunek predykatu lub sprzężenia zapytania zwiększające szacowania kardynalności dla planu zapytania. Automatyczne tworzenie statystyk jest obecnie włączona domyślnie.
+Podczas automatycznego tworzenia opcja statystyk na AUTO_CREATE_STATISTICS, usługa SQL Data Warehouse analizuje przychodzące zapytania użytkownika tworzona jednokolumnową statystyki dla kolumn, których brakuje statystyk. Optymalizator zapytań umożliwia utworzenie statystyk dotyczących poszczególnych kolumn w warunek predykatu lub łączony albo oczekuje kwerendy do poprawy szacowania kardynalności dla planu zapytania. Automatyczne tworzenie statystyk jest obecnie włączona domyślnie.
 
-Możesz sprawdzić, czy magazynu danych ma to skonfigurować, uruchamiając następujące polecenie:
+Możesz sprawdzić, czy magazyn danych ma to konfigurowane przez uruchomienie następującego polecenia:
 
 ```sql
 SELECT name, is_auto_create_stats_on 
 FROM sys.databases
 ```
-Jeśli magazyn danych nie ma AUTO_CREATE_STATISTICS skonfigurowane, zalecamy włączenie tej właściwości, uruchamiając następujące polecenie:
+Jeśli magazyn danych nie ma AUTO_CREATE_STATISTICS skonfigurowane, firma Microsoft zaleca włączenie tej właściwości, uruchamiając następujące polecenie:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-Poniższe instrukcje wyzwoli automatyczne tworzenie statystyk: wykrycia obecności predykat lub wybierz INSERT SELECT, CTAS, UPDATE, DELETE i WYJAŚNIJ po zawierających sprzężenia. 
+Poniższe instrukcje wywoła automatyczne tworzenie statystyk: wykrycia obecności predykat lub wybrać, wybierz OPCJĘ Wstaw, CTAS, AKTUALIZOWANIA, usuwania i wyjaśnienia podczas zawierających sprzężenia. 
 
 > [!NOTE]
 > Automatyczne tworzenie statystyk nie są tworzone w tabelach tymczasowych lub zewnętrznego.
 > 
 
-Automatyczne tworzenie statystyk jest generowany synchronicznie, więc jeśli kolumn nie zostały utworzone dla nich statystyki może zostać obciążony nieznaczne zapytania obniżeniem wydajności. Tworzenie statystyk może zająć kilka sekund na jednej kolumny w zależności od rozmiaru tabeli. Aby uniknąć pomiaru spadek wydajności, szczególnie w testowanie wydajności, powinien zapewnić, że statystyka zostały utworzone najpierw przed rozpoczęciem profilowania system, wykonując testu obciążenia.
+Automatyczne tworzenie statystyk jest generowany synchronicznie, więc jeśli kolumny nie zostały jeszcze utworzone dla nich statystyki może spowodować naliczenie nieznaczne zapytania o obniżonym poziomie wydajności. Tworzenie statystyk może potrwać kilka sekund na jedną kolumnę w zależności od rozmiaru tabeli. Aby uniknąć pomiaru spadek wydajności, szczególnie w przypadku testów porównawczych wydajności, należy upewnij się, że statystyki mają najpierw utworzyć, wykonując obciążenia porównawczego przed rozpoczęciem profilowania systemu.
 
 > [!NOTE]
-> Tworzenie statystyk, również są rejestrowane w [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) w kontekście innego użytkownika.
+> Tworzenie statystyk również będą rejestrowane w [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) w kontekście innego użytkownika.
 > 
 
-Po utworzeniu automatycznego statystyki one będzie mieć postać: _WA_Sys_< identyfikator kolumny 8 cyfr szesnastkowo > _ < identyfikator tabeli 8 cyfr szesnastkowo >. Możesz wyświetlić statystyki, które zostały już utworzone, uruchamiając [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) polecenia:
+Po utworzeniu automatyczne statystyk, będą one miały formularza: _WA_Sys_< 8-cyfrowy identyfikator kolumny w zapisie szesnastkowym > _ < 8-cyfrowy identyfikator tabeli w zapisie szesnastkowym >. Możesz wyświetlić statystyki, które zostały już utworzone, uruchamiając [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) polecenia:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
-Pierwszy argument jest tabelę zawierającą statystyki do wyświetlenia. Nie może to być tabeli zewnętrznej. Drugi argument jest nazwą indeksu docelowego, statystyk lub kolumny, dla którego mają być wyświetlone informacje statystyczne.
+Pierwszy argument jest tabeli zawierającej statystykę do wyświetlenia. Nie może to być tabeli zewnętrznej. Drugi argument jest nazwą indeksu docelowego, statystyk lub kolumny, dla którego chcesz wyświetlić informacje statystyczne.
 
 
 
 ## <a name="updating-statistics"></a>Zaktualizowanie statystyk
 
-Jeden najlepszym rozwiązaniem jest aktualizację statystyk dotyczących kolumn dat każdego dnia, gdy zostaną dodane nowe daty. Każdy czas nowe wiersze są załadowane do magazynu danych, nowe obciążenia daty lub daty transakcji zostaną dodane. Te zmiany dystrybucji danych i utworzyć statystyki nieaktualny. Z drugiej strony statystyki dotyczące kraju kolumny w tabeli klienta może nigdy nie muszą zostać zaktualizowane, ponieważ rozkład wartości zwykle nie ulega zmianie. Zakładając, że dystrybucja jest stałe między klientami, dodawanie nowych wierszy do zmiany tabeli nie jest będzie zmienić dystrybucji danych. Jednak jeśli magazyn danych zawiera tylko jeden kraj, należy przenieść dane z nowego kraju dane z różnych krajach przechowywane, następnie należy aktualizować statystyki w kolumnie kraju.
+Jeden najlepszym rozwiązaniem jest można zaktualizować statystyki dla kolumn daty każdego dnia, ponieważ są dodawane nowe daty. Każdy czas nowe wiersze są ładowane do magazynu danych, nowe obciążenia daty lub daty transakcji są dodawane. Te zmiany dystrybucję danych i upewnij się nieaktualna statystyki. Z drugiej strony, statystyki dotyczące kraju kolumny w tabeli klientów nigdy nie potrzebować do zaktualizowania, ponieważ rozkładu wartości zwykle nie ulega zmianie. Przy założeniu, że dystrybucja jest stałe od klientów, dodawanie nowych wierszy do tabeli zmian nie zamierza zmienić dystrybucję danych. Jednak jeśli magazyn danych zawiera tylko w jednym kraju, możesz wyświetlić dane z nowego kraju wynikające dane z wielu krajów i przechowywane, następnie należy zaktualizować statystyki dotyczące kolumn kraju.
 
 Poniżej przedstawiono zalecenia dotyczące zaktualizowanie statystyk:
 
-| **Częstotliwość aktualizacji Statystyka** | Zachowawcze: codziennie <br></br> Po ładowania i przekształcania danych || **Próbkowania** |  Mniej niż 1 miliard wierszy, użyj domyślnej próbkowania (% 20) <br></br> Z więcej niż 1 miliard wierszy, statystyki dotyczące 2-procentowy zakres jest dobrym |
+|||
+|-|-|
+| **Częstotliwości aktualizacji statystyk**  | Zachowawcze: dzienne <br></br> Po ładowania i przekształcania danych |
+| **Próbkowanie** |  Mniej niż 1 miliard wierszy, użyj domyślnej próbkowania (20 procent) <br></br> Za pomocą więcej niż 1 miliard wierszy statystyki 2-procentowy zakres jest dobra |
 
-Jedno z pierwszym pytań podczas rozwiązywaniu zapytania jest, **"Są statystyki aktualne?"**
+Jeden z pierwszych pytań zadać, kiedy rozwiązywaniu zapytania jest, **"Są statystyki na bieżąco?"**
 
-To pytanie nie jest taki, który należy odpowiedzieć przy wiek danych. Obiekt aktualne statystyki może być stare, jeśli nie ma w niej żadnych istotnych zmian w danych źródłowych. Liczba wierszy zmienił znacząco lub istotne zmiany w dystrybucji wartości kolumny, *następnie* nadszedł czas, aby zaktualizować statystyk.
+To pytanie nie jest taki, który można uzyskać od wieku danych. Statystyki aktualne obiektu może być stare, jeśli został bez znaczących zmian w danych źródłowych. Gdy liczba wierszy zmienił znacząco lub jest istotna zmiana rozkładu wartości dla kolumny, *następnie* nadszedł czas na aktualizowanie statystyk.
 
-Ponieważ nie ma widoku dynamicznego zarządzania do określenia, czy dane w tabeli zmienił się od czasu ostatniego statystyk czasu zostały zaktualizowane, wiedząc, wieku statystyk może umożliwić z część obrazu.  Następujące zapytanie służy do określenia czasu ostatniego statystyk zostały zaktualizowane w każdej tabeli.  
+Ponieważ nie istnieje żadne dynamicznego widoku zarządzania można określić, jeśli dane w tabeli został zmieniony od czasu ostatniego statystyk czasu zostały zaktualizowane, wiedząc wiek statystyk może dostarczyć z część obrazu.  Następujące zapytanie służy do określenia czasu, gdy zaktualizowano statystyk dla każdej tabeli.  
 
 > [!NOTE]
-> Należy pamiętać, że w przypadku istotnych zmian w dystrybucji wartości kolumny, należy zaktualizować statystyk niezależnie od tego czasu, gdy są one zostały zaktualizowane.  
+> Należy pamiętać, że jest istotna zmiana rozkładu wartości dla kolumny, należy zaktualizować statystyk, niezależnie od tego czasu, gdy zostały one aktualizowane.  
 > 
 > 
 
@@ -105,30 +108,30 @@ WHERE
     st.[user_created] = 1;
 ```
 
-**Data kolumny** w magazynie danych, na przykład zwykle wymagają częstego aktualizacji statystyk. Każdy czas nowe wiersze są załadowane do magazynu danych, nowe obciążenia daty lub daty transakcji zostaną dodane. Te zmiany dystrybucji danych i utworzyć statystyki nieaktualny.  Z drugiej strony statystyk dotyczących płci kolumny w tabeli klienta nigdy nie może być konieczne do zaktualizowania. Zakładając, że dystrybucja jest stałe między klientami, dodawanie nowych wierszy do zmiany tabeli nie jest będzie zmienić dystrybucji danych. Jednak jeśli magazyn danych zawiera tylko jeden płci i nowe wyniki wymaganie w wielu płci, następnie należy aktualizować statystyki w kolumnie płci.
+**Data kolumny** w magazynie danych, na przykład, zwykle wymagają częstego aktualizacji statystyk. Każdy czas nowe wiersze są ładowane do magazynu danych, nowe obciążenia daty lub daty transakcji są dodawane. Te zmiany dystrybucję danych i upewnij się nieaktualna statystyki.  Z drugiej strony statystyki płeć kolumny w tabeli klientów nigdy nie może być konieczne do zaktualizowania. Przy założeniu, że dystrybucja jest stałe od klientów, dodawanie nowych wierszy do tabeli zmian nie zamierza zmienić dystrybucję danych. Jednak jeśli magazyn danych zawiera tylko jeden płeć i nowe wyniki wymagania w wielu płci, następnie należy zaktualizować statystyk w kolumnie płci.
 
 Aby uzyskać więcej informacji, zobacz ogólne wskazówki dotyczące [statystyki](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Implementowanie zarządzania statystyki
-Często jest dobrym pomysłem jest rozszerzenie procesie ładowania danych, aby upewnić się, że statystyki są aktualizowane na końcu obciążenia. Ładowanie danych jest tabel najczęściej zmiany ich rozmiaru i/lub ich rozkład wartości. W związku z tym jest to logiczne miejsca do wykonania niektórych procesów zarządzania.
+Często jest dobry pomysł, aby rozszerzyć proces ładowania danych, aby upewnić się, że statystyki są aktualizowane na końcu obciążenia. Ładowanie danych to tabele najczęściej zmiany ich rozmiaru i/lub ich dystrybucji wartości. Dlatego jest logiczne miejsce do wykonania niektórych procesów zarządzania.
 
-Dostępne są następujące wytyczne aktualizowania statystyk podczas procesu obciążenia:
+Do aktualizowania statystyk podczas procesu ładowania, dostępne są następujące wytyczne:
 
-* Sprawdź, czy każdy załadowanej tabeli ma co najmniej jeden obiekt statystyki aktualizacji. Spowoduje to zaktualizowanie informacje o rozmiarze (liczba wierszy i liczba stron) tabeli w ramach aktualizacji statystyk.
-* Skoncentruj się na kolumn uczestniczących w klauzuli sprzężenia, GROUP BY, ORDER BY i DISTINCT.
-* Należy rozważyć aktualizowanie kolumn "rosnącej klucza" takie jak transakcji daty częściej, ponieważ te wartości nie zostaną uwzględnione w postaci histogramu statystyk.
-* Należy rozważyć aktualizowanie kolumn dystrybucji statycznych często.
-* Należy pamiętać, że każdy obiekt Statystyka jest aktualizowany w sekwencji. Po prostu implementacja `UPDATE STATISTICS <TABLE_NAME>` nie zawsze jest idealnym rozwiązaniem, zwłaszcza szerokie tabele z dużą liczbą obiektów statystyk.
+* Upewnij się, że każda tabela załadować zawiera co najmniej jeden obiekt statystyki aktualizacji. Spowoduje to zaktualizowanie informacji o rozmiarze (liczba wierszy i liczbę stron) tabeli w ramach aktualizacji statystyk.
+* Skup się na kolumn uczestniczących w klauzuli sprzężenia, GROUP BY, klauzula ORDER BY i DISTINCT.
+* Należy rozważyć aktualizowanie kolumny "w kolejności rosnącej klucza", takie jak transakcji daty częściej, ponieważ te wartości nie zostaną uwzględnione na histogramie statystyki.
+* Należy rozważyć aktualizowanie kolumn dystrybucji statyczne często.
+* Należy pamiętać, że każdy obiekt Statystyka zostanie zaktualizowany w sekwencji. Po prostu Implementowanie `UPDATE STATISTICS <TABLE_NAME>` nie zawsze jest idealnym rozwiązaniem, zwłaszcza w przypadku szerokich tabel z dużą liczbą obiektów statystyk.
 
-Aby uzyskać więcej informacji, zobacz [szacowania kardynalności](/sql/relational-databases/performance/cardinality-estimation-sql-server).
+Aby uzyskać więcej informacji, zobacz [szacunkowa ocena kardynalności](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Przykłady: Tworzenie statystyk
-Poniższe przykłady pokazują, jak tworzenie statystyk na użytek różnych opcji. Opcje używane dla każdej kolumny są zależne od właściwości danych i jak kolumna będzie używane w zapytaniach.
+Te przykłady przedstawiają sposób tworzenie statystyk na użytek różnych opcji. Opcje używane dla każdej kolumny są zależne od właściwości danych i używania kolumny w zapytaniach.
 
-### <a name="create-single-column-statistics-with-default-options"></a>Tworzenie statystyk pojedynczej kolumny z opcji domyślnych
-Aby utworzyć statystyki dla kolumny, wystarczy podać nazwę obiektu statystyk i nazwę kolumny.
+### <a name="create-single-column-statistics-with-default-options"></a>Tworzenie statystyk jedna kolumna z użyciem opcji domyślnych
+Aby utworzyć statystyki dla kolumny, wystarczy podać nazwę dla obiektu statystyk i nazwę kolumny.
 
-Ta składnia wykorzystuje wszystkie domyślne opcje. Domyślnie program SQL Data Warehouse przykłady **20 procent** podczas tworzenia statystyk tabeli.
+Ta składnia wykorzystuje wszystkie opcje domyślne. Domyślnie usługa SQL Data Warehouse przykłady **20 procent** tabeli podczas tworzenia statystyk.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -140,10 +143,10 @@ Na przykład:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
-### <a name="create-single-column-statistics-by-examining-every-row"></a>Tworzenie statystyk pojedynczej kolumny, sprawdzając każdego wiersza
+### <a name="create-single-column-statistics-by-examining-every-row"></a>Tworzenie statystyk jednokolumnową, sprawdzając każdy wiersz
 Domyślna częstotliwość próbkowania równy 20% jest wystarczające w większości sytuacji. Można jednak dostosować częstotliwość próbkowania.
 
-Do próbkowania pełne tabeli, należy użyć następującej składni:
+Do próbkowania pełną tabelę, użyj następującej składni:
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
@@ -155,53 +158,53 @@ Na przykład:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
-### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Tworzenie statystyk pojedynczej kolumny, określając rozmiar próbki
-Alternatywnie można określić rozmiar próbki w procentach:
+### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Tworzenie statystyk jednokolumnową, określając wielkość próbki
+Alternatywnie można określić rozmiar próbki jako procent:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
-### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Tworzenie statystyk pojedynczej kolumny dla niektórych wierszy
-Można też utworzyć statystyki w części wiersze w tabeli. Jest to filtrowane statystyki.
+### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Tworzenie statystyk jednokolumnową tylko na niektórych wierszy
+Można również utworzyć statystyki w części wiersze w tabeli. Jest to nazywane filtrowane statystyki.
 
-Na przykład można użyć statystykę filtrowaną, planując zapytania określonej partycji tabeli partycjonowanej duże. Tworzenie statystyk na tylko wartości partycji, prawidłowość statystyki będzie poprawić, a w związku z tym poprawiać wydajność zapytań.
+Na przykład można użyć statystykę filtrowaną, planując zapytania na określoną partycję dużych tabeli partycjonowanej. Tworzenie statystyk na podstawie wartości partycji, dokładność danych statystycznych będzie poprawić, a zatem poprawić wydajność zapytań.
 
-Ten przykład tworzy statystyki zakresu wartości. Łatwo można zdefiniować wartości odpowiadające zakres wartości w partycji.
+Ten przykład umożliwia utworzenie statystyk na zakres wartości. Łatwo można zdefiniować wartości do dopasowania zakres wartości w partycji.
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
-> Optymalizator zapytań należy rozważyć użycie statystykę filtrowaną, gdy wybiera plan zapytania rozproszonego zapytanie musi mieścić się w definicji obiektu statystyk. W poprzednim przykładzie, kwerendy gdzie należy określić wartości col1 między 2000101 i 20001231 klauzuli.
+> Optymalizator zapytań należy wziąć pod uwagę przy użyciu statystykę filtrowaną, gdy go wybierze planu zapytania rozproszonego zapytanie musi mieścić się w definicji obiektu statystyk. W poprzednim przykładzie, zapytania gdzie klauzula wymaga określenia wartości col1 między 2000101 i 20001231.
 > 
 > 
 
-### <a name="create-single-column-statistics-with-all-the-options"></a>Tworzenie statystyk pojedynczej kolumny przy użyciu opcji
-Opcje można także połączyć ze sobą. Poniższy przykład tworzy obiekt statystykę filtrowaną z niestandardowych próbkowania:
+### <a name="create-single-column-statistics-with-all-the-options"></a>Tworzenie statystyk jednokolumnową ze wszystkimi opcjami
+Opcje można również połączyć ze sobą. Poniższy przykład tworzy obiekt statystykę filtrowaną o rozmiarze próbki niestandardowe:
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Aby uzyskać pełną dokumentację, zobacz [instrukcji CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
+Aby uzyskać pełną dokumentację, zobacz [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
 
-### <a name="create-multi-column-statistics"></a>Tworzenie statystyk wielokolumnowego
-Utwórz obiekt wielokolumnowego statystyk, po prostu użyć poprzednich przykładach, lecz określ większą liczbę kolumn.
+### <a name="create-multi-column-statistics"></a>Tworzenie statystyk na wielu kolumnach
+Aby utworzyć obiekt wielokolumnowych statystyki, po prostu użyć poprzednich przykładach jednak określić większą liczbę kolumn.
 
 > [!NOTE]
-> Histogram, służąca do oszacować liczbę wierszy w wyniku zapytania, jest dostępna tylko dla pierwszej kolumny na liście definicji obiektu statystyk.
+> Histogram, który jest używany, aby oszacować liczbę wierszy w wyniku zapytania, jest dostępna tylko dla pierwszej kolumny, które są wymienione w definicji obiektu statystyk.
 > 
 > 
 
-W tym przykładzie histogram znajduje się na *produktu\_kategorii*. Statystyki między kolumny są obliczane na *produktu\_kategorii* i *produktu\_sub_category*:
+W tym przykładzie histogram znajduje się na *produktu\_kategorii*. Statystyki dla wielu kolumny są obliczane na *produktu\_kategorii* i *produktu\_sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Ponieważ korelacji między *produktu\_kategorii* i *produktu\_sub\_kategorii*, obiekt statystyki wielokolumnowego może być przydatne, jeśli te kolumny są dostępne w tym samym czasie.
+Ponieważ istnieje korelacja między *produktu\_kategorii* i *produktu\_sub\_kategorii*, obiekt statystyki wielokolumnowych może być przydatne, jeśli te kolumny są dostępne w tym samym czasie.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Tworzenie statystyk dla wszystkich kolumn w tabeli
 Jednym ze sposobów tworzenia statystyk jest wydawać polecenia CREATE STATISTICS po utworzeniu tabeli:
@@ -225,9 +228,9 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Użyj procedury składowanej utworzyć statystyki dla wszystkich kolumn w bazie danych
-Magazyn danych SQL nie ma systemowej procedury składowanej odpowiednikiem sp_create_stats w programie SQL Server. Tę procedurę składowaną tworzy obiekt statystyki jednej kolumny w każdej kolumnie bazy danych, który nie ma jeszcze statystyk.
+Usługa SQL Data Warehouse ma systemowej procedury składowanej odpowiednikiem sp_create_stats w programie SQL Server. Tę procedurę składowaną tworzy obiekt statystyki jedną kolumnę dla każdej z kolumn bazy danych, która nie ma jeszcze statystyk.
 
-Poniższy przykład ułatwiają rozpoczęcie pracy z projektu bazy danych. Możesz dostosować go do własnych potrzeb:
+Poniższy przykład pomoże Ci rozpocząć pracę z projektu bazy danych. Możesz dostosować ją do własnych potrzeb:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -315,7 +318,7 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-Aby utworzyć statystyki dla wszystkich kolumn w tabeli, używając wartości domyślne, po prostu wywołania tej procedury.
+Aby utworzyć statystyki dla wszystkich kolumn w tabeli z użyciem wartości domyślnych, wystarczy wywołać procedurę.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
@@ -325,23 +328,23 @@ Aby utworzyć statystyki dla wszystkich kolumn w tabeli, używając fullscan, wy
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
-Aby utworzyć próbkowanych statystyki dla wszystkich kolumn w tabeli, wprowadź 3 i procent próbki.  Częstotliwość próbkowania 20 procent korzysta z tej procedury.
+Aby utworzyć próbkowanych statystyk dla wszystkich kolumn w tabeli, wprowadź 3 i procentu próbki.  Częstotliwość próbkowania 20 procent korzysta z tej procedury.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
 
 
-Aby utworzyć próbkowany statystyki dla wszystkich kolumn 
+Aby utworzyć próbkowanych statystyk dla wszystkich kolumn 
 
-## <a name="examples-update-statistics"></a>Przykłady: Aktualizuj statystyki
-Aby zaktualizować statystyk, można:
+## <a name="examples-update-statistics"></a>Przykłady: Update statistics
+Aktualizowanie statystyk, możesz wykonywać następujące czynności:
 
-- Zaktualizuj jeden obiekt statystyk. Określ nazwę obiektu statystyk, które chcesz zaktualizować.
-- Zaktualizuj wszystkie obiekty statystyki dla tabeli. Określ nazwę tabeli zamiast jeden obiekt poszczególnych statystyk.
+- Aktualizacja statystyk jeden obiekt. Określ nazwę obiektu statystyki, który chcesz zaktualizować.
+- Zaktualizuj wszystkie obiekty statystyk na tabelę. Określ nazwę tabeli zamiast jednego obiektu poszczególnych statystyk.
 
 ### <a name="update-one-specific-statistics-object"></a>Zaktualizuj jeden obiekt poszczególnych statystyk
-Aby zaktualizować obiekt poszczególnych statystyk, należy użyć następującej składni:
+Aby zaktualizować obiekt poszczególnych statystyk, użyj następującej składni:
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
@@ -353,10 +356,10 @@ Na przykład:
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-Aktualizacja poszczególnych statystyk obiektów, można zminimalizować czas i zasoby wymagane do zarządzania statystyk. Wymaga to niektóre traktować wybrać najlepsze obiekty statystyki do aktualizacji.
+Aktualizując poszczególnych statystyk obiektów, można zminimalizować czas i zasoby wymagane do zarządzania statystyk. To wymaga pewnego traktować wybrać najlepsze obiektów statystyki do zaktualizowania.
 
-### <a name="update-all-statistics-on-a-table"></a>Aktualizuj wszystkie statystyki dla tabeli
-Oznacza to prosta metoda aktualizowania wszystkich obiektów statystyki dla tabeli:
+### <a name="update-all-statistics-on-a-table"></a>Zaktualizuj wszystkie statystyki tabeli
+Pokazano to w prosty sposób aktualizowania wszystkich obiektów statystyki dla tabeli:
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
@@ -368,43 +371,43 @@ Na przykład:
 UPDATE STATISTICS dbo.table1;
 ```
 
-Ta instrukcja jest łatwy w użyciu. Należy jednak pamiętać, że aktualizacje *wszystkie* statystyk dotyczących tabeli i dlatego może wykonywać więcej pracy, niż jest to konieczne. Jeśli wydajność nie stanowi to problemu, to najprostszy i najbardziej kompleksowe sposobem zagwarantowania, że statystyki są aktualne.
+Ta instrukcja jest łatwa w użyciu. Należy jednak pamiętać, że powoduje zaktualizowanie *wszystkie* statystyk dotyczących tabeli, a w związku z tym może wykonać więcej pracy niż jest to konieczne. Jeśli wydajność nie jest problemem, jest to najprostszy i najbardziej zaawansowane sposobem zagwarantowania, że statystyki są aktualne.
 
 > [!NOTE]
-> Podczas aktualizowania wszystkich statystyk dotyczących tabeli, SQL Data Warehouse nie skanowanie w celu przykładowej tabeli dla każdego obiektu statystyk. Jeśli tabela jest duża i ma wiele kolumn i ilość danych statystycznych, może być bardziej wydajne, można zaktualizować poszczególnych statystyki, w zależności od potrzeb.
+> Podczas aktualizowania wszystkich statystyk dotyczących tabeli, usługa SQL Data Warehouse wykonuje skanowanie, aby przykładowej tabeli dla każdego obiektu statystyk. Jeśli tabela jest duża i ma wiele kolumn i ilość danych statystycznych, może być bardziej efektywne aktualizowanie statystyk indywidualnych potrzeb.
 > 
 > 
 
-Dla implementacji `UPDATE STATISTICS` procedury, zobacz [tabel tymczasowych](sql-data-warehouse-tables-temporary.md). Metoda wdrażania jest nieco inne niż w poprzednim `CREATE STATISTICS` procedura, ale wynik jest taka sama.
+Na implementację `UPDATE STATISTICS` procedury, zobacz [tabele tymczasowe](sql-data-warehouse-tables-temporary.md). Metoda wdrażania jest nieco różne od poprzedniego `CREATE STATISTICS` procedura, ale wynik jest taki sam.
 
-Dla pełnej składni, zobacz [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
+Aby uzyskać pełną składnię, zobacz [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="statistics-metadata"></a>Statystyki metadanych
-Istnieje kilka widoków systemowych i funkcje, które umożliwia znalezienie informacji na temat statystyk. Na przykład widać, jeśli obiekt statystyki może być nieaktualna za pomocą funkcji daty Statystyka wyświetlać podczas statystyki ostatnio zostały utworzone lub zaktualizowane.
+Istnieje kilka widoków systemowych i funkcje, które można użyć, aby znaleźć informacje dotyczące statystyk. Na przykład możesz zobaczyć, jeśli obiekt statystyki może być nieaktualna przy użyciu funkcji date statystyki pozwalają zobaczyć, kiedy ostatnio utworzono lub zaktualizowano statystyk.
 
-### <a name="catalog-views-for-statistics"></a>Widoków wykazu statystyk
+### <a name="catalog-views-for-statistics"></a>Widoki wykazu dla statystyk
 Widoki te systemu zawierają informacje o statystyki:
 
-| Przeglądanie katalogu | Opis |
+| Widok katalogu | Opis |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden wiersz dla każdej kolumny. |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego obiektu w bazie danych. |
 | [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego schematu w bazie danych. |
 | [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden wiersz dla każdego obiektu statystyk. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden wiersz dla każdej kolumny w obiekcie statystyk. Łącza do sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (w tym tabel zewnętrznych). |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden wiersz dla każdej kolumny w obiekcie statystyk. Zawiera łącza do sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (z uwzględnieniem tabel zewnętrznych). |
 | [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden wiersz dla każdego typu danych. |
 
-### <a name="system-functions-for-statistics"></a>Funkcje systemu statystyk
-Funkcje systemu są przydatne w przypadku pracy z statystyki:
+### <a name="system-functions-for-statistics"></a>Funkcje systemu dla statystyk
+Te funkcje systemu są przydatne do pracy ze statystykami:
 
-| System — funkcja | Opis |
+| Funkcja systemowa | Opis |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Data ostatniej aktualizacji obiektu statystyk. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Podsumowanie poziomu i szczegółowe informacje o rozkład wartości rozumieniu obiektu statystyk. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Podsumowanie poziomu i szczegółowe informacje o rozkładu wartości rozumieniu obiektu statystyk. |
 
-### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Łączenie statystyk kolumny i funkcji w jednym widoku
-Ten widok wywołuje kolumn, które dotyczą statystyk i wyniki z funkcji STATS_DATE() ze sobą.
+### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Łączenie statystyki kolumn i funkcje w jednym widoku
+Ten widok udostępnia kolumn, które odnoszą się do statystyk i wynikiem funkcji STATS_DATE() ze sobą.
 
 ```sql
 CREATE VIEW dbo.vstats_columns
@@ -443,15 +446,15 @@ AND     st.[user_created] = 1
 ```
 
 ## <a name="dbcc-showstatistics-examples"></a>Przykłady DBCC SHOW_STATISTICS()
-Polecenie DBCC SHOW_STATISTICS() zawiera dane przechowywane w obiekcie statystyk. Te dane składa się z trzech części:
+DBCC SHOW_STATISTICS() pokazuje dane przechowywane w obiekcie statystyk. Te dane składa się z trzech części:
 
 - Nagłówek
 - Wektor gęstość
 - Histogram
 
-Metadane nagłówka o statystyki. Histogram przedstawia rozkład wartości z pierwszej kolumny klucza obiektu statystyk. Wektor gęstość mierzy korelacji między kolumny. Usługa SQL Data Warehouse oblicza szacowania kardynalności o dane w obiekcie statystyk.
+Nagłówek metadanych dotyczących statystyk. Histogram przedstawia rozkład wartości w pierwszej kolumnie klucza obiektu statystyk. Wektor gęstość środki korelacji między kolumną. Usługa SQL Data Warehouse oblicza szacowania kardynalności o jakichkolwiek danych w obiekcie statystyk.
 
-### <a name="show-header-density-and-histogram"></a>Pokaż nagłówka, gęstości i histogramu
+### <a name="show-header-density-and-histogram"></a>Pokaż nagłówek, gęstość i histogramu
 Ten prosty przykład przedstawia trzy części obiektu statystyki:
 
 ```sql
@@ -465,7 +468,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
 ### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Pokaż co najmniej jeden części DBCC SHOW_STATISTICS()
-Jeśli interesuje Cię tylko wyświetlanie określonych części, użyj `WITH` klauzuli i określ części, które chcesz wyświetlić:
+Jeśli interesuje Cię tylko wyświetlanie określonych części, użyj `WITH` klauzuli i określić elementy, które mają być wyświetlane:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -477,17 +480,17 @@ Na przykład:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>Polecenie DBCC SHOW_STATISTICS() różnic
-DBCC SHOW_STATISTICS() bardziej ściśle jest zaimplementowana w usłudze SQL Data Warehouse w porównaniu z programem SQL Server:
+## <a name="dbcc-showstatistics-differences"></a>Polecenie DBCC SHOW_STATISTICS() różnice
+Polecenie DBCC SHOW_STATISTICS() bardziej restrykcyjnie jest implementowane w usłudze SQL Data Warehouse w porównaniu do programu SQL Server:
 
-- Nieudokumentowanej funkcje nie są obsługiwane.
+- Nieudokumentowany funkcje nie są obsługiwane.
 - Nie można użyć Stats_stream.
-- Nie można dołączyć wyniki konkretne podzestawy danych statystyk. Na przykład (STAT_HEADER JOIN DENSITY_VECTOR).
-- Nie można ustawić NO_INFOMSGS dla pomijania wiadomości.
-- Nie można użyć nazwy statystyki nawiasy kwadratowe.
-- Nie można użyć nazwy kolumn, aby zidentyfikować obiekty statystyki.
-- Błąd niestandardowy 2767 nie jest obsługiwane.
+- Nie można dołączyć wyniki dla konkretnych podzestawów danych statystyk. Na przykład (STAT_HEADER JOIN DENSITY_VECTOR).
+- Nie można ustawić NO_INFOMSGS do pomijania wiadomości.
+- Nie można używać nazw statystyk nawiasy kwadratowe.
+- Nie można użyć nazwy kolumn do identyfikowania obiektów statystyk.
+- Błąd niestandardowy 2767 nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dla dalszego zwiększenia wydajności zapytań, zobacz [monitorować obciążenie](sql-data-warehouse-manage-monitor.md)
+Dla dodatkowo poprawić wydajność zapytań, zobacz [monitorowanie obciążenia](sql-data-warehouse-manage-monitor.md)
 

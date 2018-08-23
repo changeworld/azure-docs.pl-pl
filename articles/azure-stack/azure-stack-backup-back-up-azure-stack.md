@@ -3,7 +3,7 @@ title: Tworzenie kopii zapasowej usługi Azure Stack | Dokumentacja firmy Micros
 description: Wykonaj kopię zapasową na żądanie w usłudze Azure Stack, przy użyciu kopii zapasowej na miejscu.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 9565DDFB-2CDB-40CD-8964-697DA2FFF70A
@@ -12,63 +12,79 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/08/2017
-ms.author: mabrigg
+ms.date: 08/01/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: c9e7ffae1b988d0940d10acdb1b387a25e0466ec
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: 578bb864f56b788db77d1201533e73d3b9616669
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242890"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054684"
 ---
 # <a name="back-up-azure-stack"></a>Tworzenie kopii zapasowych usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Wykonaj kopię zapasową na żądanie w usłudze Azure Stack, przy użyciu kopii zapasowej na miejscu. Aby uzyskać instrukcje dotyczące konfigurowania środowiska PowerShell, zobacz [Instalowanie programu PowerShell dla usługi Azure Stack ](azure-stack-powershell-install.md). Aby zalogować się do usługi Azure Stack, zobacz [skonfigurować środowisko operatora i zaloguj się do usługi Azure Stack](azure-stack-powershell-configure-admin.md).
+Wykonaj kopię zapasową na żądanie w usłudze Azure Stack, przy użyciu kopii zapasowej na miejscu. Aby uzyskać instrukcje dotyczące konfigurowania środowiska PowerShell, zobacz [Instalowanie programu PowerShell dla usługi Azure Stack ](azure-stack-powershell-install.md). Aby zalogować się do usługi Azure Stack, zobacz [korzystanie z portalu administratora w usłudze Azure Stack](azure-stack-manage-portals.md).
 
 ## <a name="start-azure-stack-backup"></a>Rozpocznij wykonywanie kopii zapasowej usługi Azure Stack
 
-Użyj Start AzSBackup, aby uruchomić nową kopię zapasową za pomocą zmiennej - AsJob do śledzenia postępu. 
+### <a name="start-a-new-backup-without-job-progress-tracking"></a>Uruchom nową kopię zapasową bez śledzenia postępu zadań
+Użyj Start AzSBackup, aby natychmiast rozpocząć nową kopię zapasową nie śledzenia postępu zadań.
 
 ```powershell
-    $backupjob = Start-AzsBackup -Force -AsJob
-    "Start time: " + $backupjob.PSBeginTime;While($backupjob.State -eq "Running"){("Job is currently: " + $backupjob.State+" ;Duration: " + (New-TimeSpan -Start ($backupjob.PSBeginTime) -End (Get-Date)).Minutes);Start-Sleep -Seconds 30};$backupjob.Output
+   Start-AzsBackup -Force
 ```
 
-## <a name="confirm-backup-completed-via-powershell"></a>Upewnij się, kopia zapasowa została wykonana za pomocą programu PowerShell
+### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>Kopia zapasowa Azure Stack rozpoczynać się śledzenia postępu zadań
+Użyj Start AzSBackup, aby uruchomić nową kopię zapasową za pomocą zmiennej - AsJob do śledzenia postępu zadania tworzenia kopii zapasowej.
 
 ```powershell
+    $backupjob = Start-AzsBackup -Force -AsJob 
+    "Start time: " + $backupjob.PSBeginTime;While($backupjob.State -eq "Running"){("Job is currently: " `
+    + $backupjob.State+" ;Duration: " + (New-TimeSpan -Start ($backupjob.PSBeginTime) `
+    -End (Get-Date)).Minutes);Start-Sleep -Seconds 30};$backupjob.Output
+
     if($backupjob.State -eq "Completed"){Get-AzsBackup | where {$_.BackupId -eq $backupjob.Output.BackupId}}
 ```
 
-- Wynik powinien wyglądać następujące dane wyjściowe:
+## <a name="confirm-backup-has-completed"></a>Upewnij się, że kopii zapasowej zostało ukończone
 
-  ```powershell
-      BackupDataVersion : 1.0.1
-      BackupId          : <backup ID>
-      RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
-      Status            : Succeeded
-      CreatedDateTime   : 7/6/2018 6:46:24 AM
-      TimeTakenToCreate : PT20M32.364138S
-      DeploymentID      : <deployment ID>
-      StampVersion      : 1.1807.0.41
-      OemVersion        : 
-      Id                : /subscriptions/<subscription ID>/resourceGroups/System.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/<backup ID>
-      Name              : local/<local name>
-      Type              : Microsoft.Backup.Admin/backupLocations/backups
-      Location          : local
-      Tags              : {}
-  ```
+### <a name="confirm-backup-has-completed-using-powershell"></a>Upewnij się, że kopii zapasowej zostało ukończone, przy użyciu programu PowerShell
+Aby upewnić się, że tej kopii zapasowej zakończyła się pomyślnie, należy użyć następujących poleceń programu PowerShell:
 
-## <a name="confirm-backup-completed-in-the-administration-portal"></a>Upewnij się, kopia zapasowa została wykonana w portalu administracyjnym
+```powershell
+   Get-AzsBackup
+```
 
-1. Otwórz w portalu administratora usługi Azure Stack w [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+Wynik powinien wyglądać następujące dane wyjściowe:
+
+```powershell
+    BackupDataVersion : 1.0.1
+    BackupId          : <backup ID>
+    RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
+    Status            : Succeeded
+    CreatedDateTime   : 7/6/2018 6:46:24 AM
+    TimeTakenToCreate : PT20M32.364138S
+    DeploymentID      : <deployment ID>
+    StampVersion      : 1.1807.0.41
+    OemVersion        : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/System.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/<backup ID>
+    Name              : local/<local name>
+    Type              : Microsoft.Backup.Admin/backupLocations/backups
+    Location          : local
+    Tags              : {}
+```
+
+### <a name="confirm-backup-has-completed-in-the-administration-portal"></a>Upewnij się, że kopii zapasowej zostało ukończone w portalu administracyjnym
+Użyj portalu administracyjnego usługi Azure Stack, aby upewnij się, że tej kopii zapasowej została ukończona pomyślnie, wykonując następujące czynności:
+
+1. Otwórz [portalu administratora usługi Azure Stack](azure-stack-manage-portals.md).
 2. Wybierz **więcej usług** > **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
 3. Znajdź **nazwa** i **Data ukończenia** kopii zapasowej w **dostępnych kopii zapasowych** listy.
 4. Sprawdź **stanu** jest **Powodzenie**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat przepływu pracy do odzyskiwania od zdarzenia utraty danych. Zobacz [sprawności po utracie danych w wyniku katastrofy](azure-stack-backup-recover-data.md).
+Dowiedz się więcej na temat przepływu pracy do odzyskiwania od zdarzenia utraty danych. Zobacz [sprawności po utracie danych w wyniku katastrofy](azure-stack-backup-recover-data.md).

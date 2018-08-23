@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i zarządzanie Azure bazy danych dla punktów końcowych usługi sieci wirtualnej PostgreSQL i reguł za pomocą portalu Azure | Dokumentacja firmy Microsoft
-description: Tworzenie i zarządzanie Azure bazy danych dla punktów końcowych usługi sieci wirtualnej PostgreSQL i reguł za pomocą portalu Azure
+title: Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej i reguł za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
+description: Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej i reguł za pomocą witryny Azure portal
 services: postgresql
 author: mbolz
 ms.author: mbolz
@@ -8,38 +8,38 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql-database
 ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 8199bd98b9ae091ff2b27efa8334e8e763879359
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 08/15/2018
+ms.openlocfilehash: af5df507bd7a825ddfaaa7518691cb5fbec34d47
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757369"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060912"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi Azure bazy danych dla punktów końcowych usługi sieci wirtualnej PostgreSQL i zasad sieci wirtualnej przy użyciu portalu Azure
-Wirtualne punktów końcowych usługi Network (VNet) i reguły rozszerzają prywatnej przestrzeni adresowej sieci wirtualnej do bazy danych Azure, PostgreSQL serwera. Omówienie bazy danych Azure dla punktów końcowych usługi PostgreSQL sieci wirtualnej, w tym ograniczenia, zobacz [bazą danych Azure dla punktów końcowych usługi sieci wirtualnej serwera PostgreSQL](concepts-data-access-and-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne w publicznej wersji zapoznawczej w wszystkie obsługiwane regiony dla bazy danych Azure dla PostgreSQL.
+# <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej i reguł sieci wirtualnej przy użyciu witryny Azure portal
+Punkty końcowe usługi sieci wirtualnej i reguł rozszerzyć prywatnej przestrzeni adresowej sieci wirtualnej do usługi Azure Database for postgresql w warstwie serwera. Omówienie usługi Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej, w tym informacje o ograniczeniach, zobacz [— Azure Database for punkty końcowe usługi sieci wirtualnej serwera PostgreSQL](concepts-data-access-and-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne we wszystkich obsługiwanych regionów dla usługi Azure Database for PostgreSQL.
 
 > [!NOTE]
-> Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+> Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
-## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Utwórz regułę sieci wirtualnej i Włącz punktów końcowych usługi w portalu Azure
+## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Utwórz regułę sieci wirtualnej i włączyć punkty końcowe usługi w witrynie Azure portal
 
-1. Na stronie serwer PostgreSQL, w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** otworzyć okienko połączenia zabezpieczeń bazy danych Azure do PostgreSQL. Przejdź do menu **+ Dodawanie istniejącej sieci wirtualnej**. Jeśli nie masz istniejącej sieci wirtualnej możesz kliknąć **+ Utwórz nową sieć wirtualną** go utworzyć. Zobacz [Szybki Start: tworzenie sieci wirtualnej przy użyciu portalu Azure](../virtual-network/quick-create-portal.md)
+1. Na stronie serwer postgresql — w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** aby otworzyć okienko zabezpieczenia połączeń dla usługi Azure Database for PostgreSQL. Przejdź do menu **+ Dodawanie istniejącej sieci wirtualnej**. Jeśli nie masz istniejącej sieci wirtualnej możesz kliknąć **+ Utwórz nową sieć wirtualną** ją utworzyć. Zobacz [Szybki Start: tworzenie sieci wirtualnej przy użyciu witryny Azure portal](../virtual-network/quick-create-portal.md)
 
-   ![Portal Azure — kliknij przycisk Zabezpieczenia połączeń](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   ![Portal Azure — zabezpieczenia połączeń kliknij](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-2. Wprowadź nazwę reguły sieci wirtualnej, wybierz subskrypcję, sieci wirtualnych i nazwy podsieci, a następnie kliknij przycisk **włączyć**. Dzięki temu automatycznie punktów końcowych usługi sieci wirtualnej przy użyciu podsieci **Microsoft.SQL** usługi tagu.
+2. Wprowadź nazwę reguły sieci wirtualnej, wybierz subskrypcję, sieć wirtualna i Nazwa podsieci, a następnie kliknij przycisk **Włącz**. Dzięki temu punktów końcowych usługi sieci wirtualnej w podsieci przy użyciu automatycznie **Microsoft.SQL** tag usługi.
 
    ![Portal Azure — Konfigurowanie sieci wirtualnej](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
    > [!IMPORTANT]
-   > Zdecydowanie zaleca się w niniejszym artykule konfiguracji punktu końcowego usługi i zaleceń dotyczących przed rozpoczęciem konfigurowania punktów końcowych usługi. **Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) podsieć, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi Azure. Punkty końcowe usługi sieci wirtualnej, użyj nazwy typu usługi **Microsoft.Sql**, które odwołuje się do usługi Azure o nazwie bazy danych SQL. Ten numer seryjny usługi ma również zastosowanie do usługi Azure SQL Database, baza danych Azure dla usług PostgreSQL i MySQL. Ważne jest, aby podczas stosowania należy uwzględnić **Microsoft.Sql** usługi tagu dla punktu końcowego sieci wirtualnej, ponieważ konfiguruje ruch punkt końcowy usługi dla wszystkich usług Azure bazy danych, w tym usługi Azure SQL Database, baza danych Azure dla PostgreSQL i Baza danych Azure, serwerów MySQL w podsieci. 
+   > Zdecydowanie zaleca się przeczytaj ten artykuł, konfiguracje punktu końcowego usługi i zagadnienia, przed rozpoczęciem konfigurowania punktów końcowych usługi. **Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. Punkty końcowe usługi sieci wirtualnej, użyj nazwy typu usługi **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL. Ten tag usługi dotyczy także usługi Azure SQL Database, Azure Database for PostgreSQL i MySQL. Ważne jest, aby pamiętać podczas stosowania **Microsoft.Sql** tag usługi punktu końcowego usługi sieci wirtualnej umożliwia skonfigurowanie ruch w ramach punktu końcowego usługi dla wszystkich usług bazy danych Azure, w tym usługi Azure SQL Database, Azure Database for PostgreSQL i Usługa Azure Database for MySQL serwerów w podsieci. 
    > 
 
-3. Po włączeniu kliknij **OK** i wyświetlany jest włączenie punktów końcowych usługi sieci wirtualnej wraz z reguły sieci wirtualnej.
+3. Po włączeniu kliknij **OK** i zobaczysz, że punkty końcowe usługi sieci wirtualnej są włączone wraz z reguły sieci wirtualnej.
 
-   ![Włączone punktów końcowych usługi sieci wirtualnej i utworzyć regułę sieci wirtualnej](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![Włączone punkty końcowe usługi sieci wirtualnej i regułę sieci wirtualnej, utworzyć](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Podobnie można utworzyć skrypty do [włączyć sieci wirtualnej punkty końcowe usługi i Utwórz regułę sieci Wirtualnej Azure bazy danych dla PostgreSQL przy użyciu interfejsu wiersza polecenia Azure](howto-manage-vnet-using-cli.md).
-- Aby uzyskać pomoc w połączeniu z bazą danych PostgreSQL serwera Azure, zobacz [biblioteki połączeń dla bazy danych Azure dla PostgreSQL](./concepts-connection-libraries.md)
+- Podobnie, można utworzyć skrypty do [Włącz sieć wirtualną punkty końcowe usługi i Utwórz regułę sieci Wirtualnej dla usługi Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure](howto-manage-vnet-using-cli.md).
+- Aby uzyskać pomoc podczas nawiązywania połączenia z usługi Azure Database for postgresql w warstwie serwera, zobacz [biblioteki połączeń dla usługi Azure Database for PostgreSQL](./concepts-connection-libraries.md)

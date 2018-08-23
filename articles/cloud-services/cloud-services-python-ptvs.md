@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 10ade991b77b90f31309dbe6a105744dbc02df40
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003646"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919440"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Role Sieć Web i Proces roboczy języka Python z programem Python Tools for Visual Studio
 
@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji, zobacz [Co to jest usługa w chmurze?]
 
 > [!NOTE]
 > *Chcesz utworzyć prostą witrynę sieci Web?*
-> Jeśli scenariusz obejmuje tylko prosty fronton witryny internetowej, rozważ użycie lekkiej funkcji Web Apps w usłudze App Service. Możesz łatwo przeprowadzić uaktualnienie do usługi w chmurze w przypadku rozwoju witryny sieci Web lub zmiany wymagań. W <a href="/develop/python/">Centrum deweloperów języka Python</a> można znaleźć artykuły, które dotyczą funkcji Web Apps w usłudze App Service.
+> Jeśli scenariusz obejmuje tylko prosty fronton witryny internetowej, rozważ użycie lekkiej funkcji Web Apps w usłudze App Service. Możesz łatwo przeprowadzić uaktualnienie do usługi w chmurze w przypadku rozwoju witryny sieci Web lub zmiany wymagań. W [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/) można znaleźć artykuły, które dotyczą funkcji Web Apps w usłudze App Service.
 > <br />
 > 
 > 

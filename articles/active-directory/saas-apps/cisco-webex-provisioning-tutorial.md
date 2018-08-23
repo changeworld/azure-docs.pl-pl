@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Cisco dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie zapewnianie i usuwanie kont użytkowników do Cisco Webex.
+title: 'Samouczek: Konfigurowanie Cisco dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do Cisco Webex.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: fdaf77e3d8a1858372298fb0d67ca05c2717adf6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 76a83ef4f647dcf7d79218cb281f1f976b292870
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321150"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055177"
 ---
-# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Cisco Webex dla użytkownika automatycznego inicjowania obsługi administracyjnej.
+# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Cisco Webex dla automatycznej aprowizacji użytkowników
 
 
-Celem tego samouczka jest aby zademonstrować czynności wykonywanych w Cisco Webex i Azure Active Directory (Azure AD), aby skonfigurować usługi Azure AD automatycznie zapewnianie i usuwanie użytkowników Cisco Webex.
+Celem tego samouczka jest pokazują kroki do wykonania w Cisco Webex i usługi Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD automatycznego aprowizowania lub cofania aprowizacji użytkowników Webex firmy Cisco.
 
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, rozszerzający usługi dostarczania użytkownika programu Azure AD. Uzyskać ważne szczegóły dotyczące tej usługi nie, jak to działa i często zadawane pytania, zobacz [zautomatyzować użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące wymagania wstępne:
 
 *   Dzierżawa usługi Azure AD
 *   Dzierżawy Cisco Webex
-*   Konto użytkownika z uprawnieniami administratora w Cisco Webex
+*   Konto użytkownika Cisco Webex z uprawnieniami administratora
 
 
 > [!NOTE]
-> Zależy od usługi Azure AD, inicjowania obsługi administracyjnej integracji [Cisco Webex Webservice](https://developer.webex.com/getting-started.html), które są dostępne dla zespołów Cisco Webex.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [Cisco Webex Webservice](https://developer.webex.com/getting-started.html), który jest dostępny dla zespołów Webex firmy Cisco.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Dodawanie Cisco Webex z galerii
-Przed skonfigurowaniem Cisco Webex dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure AD, należy dodać Cisco Webex z galerii aplikacji Azure AD do listy zarządzanych aplikacji SaaS.
+Przed skonfigurowaniem Cisco Webex dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać Cisco Webex z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Cisco Webex z galerii aplikacji Azure AD, wykonaj następujące czynności:**
+**Aby dodać Cisco Webex z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    ![Aplikacje przedsiębiorstwa sekcji][2]
+    ![Aplikacje w przedsiębiorstwie sekcji][2]
 
-3. Aby dodać Cisco Webex, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać Cisco Webex, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
@@ -63,7 +63,7 @@ Przed skonfigurowaniem Cisco Webex dla użytkownika automatycznego inicjowania o
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/AppSearch.png)
 
-5. W panelu wyników wybierz **Cisco Webex**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać do listy aplikacji SaaS Cisco Webex.
+5. W panelu wyników wybierz **Cisco Webex**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać Cisco Webex do listy aplikacji SaaS.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/AppSearchResults.png)
 
@@ -71,33 +71,33 @@ Przed skonfigurowaniem Cisco Webex dla użytkownika automatycznego inicjowania o
 
 ## <a name="assigning-users-to-cisco-webex"></a>Przypisywanie użytkowników do Cisco Webex
 
-Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu określenia, którzy użytkownicy powinien otrzymać dostęp do wybranej aplikacji. W kontekście użytkownika automatycznego inicjowania obsługi administracyjnej są synchronizowane tylko użytkowników i grupy, które zostały "przypisane" do aplikacji w usłudze Azure AD.
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które "przypisano" do aplikacji w usłudze Azure AD.
 
-Przed konfigurowania i włączenie użytkownika automatycznego inicjowania obsługi administracyjnej, należy podjąć decyzję dotyczącą użytkowników w usłudze Azure AD, którzy potrzebują dostępu do Cisco Webex. Po decyzję, można przypisać tych użytkowników do Cisco Webex, postępując zgodnie z instrukcjami poniżej:
+Przed konfigurowania i włączenie automatycznej aprowizacji użytkowników, należy zdecydować, użytkowników, którzy w usłudze Azure AD muszą mieć dostęp do Webex firmy Cisco. Po decyzję, można przypisać tych użytkowników do Cisco Webex, wykonując instrukcje podane w tym miejscu:
 
-*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](../manage-apps/assign-user-or-group-access-portal.md)
+*   [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cisco-webex"></a>Ważne porady dotyczące przypisywania użytkowników do Cisco Webex
+### <a name="important-tips-for-assigning-users-to-cisco-webex"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Cisco Webex
 
-*   Zalecane jest jeden jest przypisany użytkownik usługi Azure AD Cisco Webex próba automatycznego przypisywania konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników.
+*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Cisco Webex do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników.
 
-*   Podczas przypisywania Cisco Webex użytkownika, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przypisania. Użytkownicy z **domyślnego dostępu** roli są wykluczone z inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkowników do Cisco Webex, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
-## <a name="configuring-automatic-user-provisioning-to-cisco-webex"></a>Konfigurowanie użytkownika automatycznego inicjowania obsługi administracyjnej Cisco Webex
+## <a name="configuring-automatic-user-provisioning-to-cisco-webex"></a>Konfigurowanie automatycznej aprowizacji użytkowników do Cisco Webex
 
-W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczenie usługi do tworzenia, aktualizacji i wyłączanie użytkowników w oparciu o przypisania użytkownika w usłudze Azure AD Webex Cisco.
-
-
-### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla Cisco Webex w usłudze Azure AD:
+Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć użytkowników w Webex Cisco, w oparciu o przypisania użytkownika w usłudze Azure AD.
 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Cisco Webex w usłudze Azure AD:
+
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
 
 2. Wybierz Cisco Webex z listy aplikacji SaaS.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/Successcenter2.png)
 
-3. Wybierz **inicjowania obsługi administracyjnej** kartę.
+3. Wybierz **aprowizacji** kartę.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/ProvisioningTab.png)
 
@@ -105,22 +105,22 @@ W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczen
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. W obszarze **poświadczeń administratora** sekcji wejściowych **adres URL dzierżawy**, i **klucz tajny tokenu** konta Webex Twojej firmy Cisco.
+5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy**, i **klucz tajny tokenu** konta Webex Twojej firmy Cisco.
 
-    *   W **adres URL dzierżawy** pola, wypełnij adres URL Cisco Webex SCIM interfejsu API dla swojej dzierżawy, która ma postać `https://api.webex.com/v1/scim/[Tenant ID]/`, gdzie `[Tenant ID]` jest alfanumerycznych zgodnie z opisem w kroku 6.
+    *   W **adres URL dzierżawy** pola, wypełnij adresu URL interfejsu API Cisco Webex Standard SCIM dla dzierżawy, który ma postać `https://api.webex.com/v1/scim/[Tenant ID]/`, gdzie `[Tenant ID]` jest ciągiem alfanumerycznym o długości, zgodnie z opisem w kroku 6.
 
     *   W **klucz tajny tokenu** pola, wypełnij klucz tajny tokenu, zgodnie z opisem w kroku 6.
 
-1. **Identyfikator dzierżawcy** i **klucz tajny tokenu** Twojego Webex Cisco można znaleźć konta logując się do [deweloperskiej Cisco Webex](https://developer.webex.com/) przy użyciu konta administratora. Po zalogowaniu -
-    * Przejdź do [strony wprowadzenie](https://developer.webex.com/getting-started.html)
-    * Przewiń w dół do [sekcja Authentication](https://developer.webex.com/getting-started.html#authentication)
+1. **Identyfikator dzierżawy** i **klucz tajny tokenu** dla Twojej firmy Cisco Webex konta można znaleźć, logując się do [witryny dla deweloperów firmy Cisco Webex](https://developer.webex.com/) przy użyciu konta administratora. Po zalogowaniu -
+    * Przejdź do [Getting Started page](https://developer.webex.com/getting-started.html)
+    * Przewiń w dół do [sekcji uwierzytelnianie](https://developer.webex.com/getting-started.html#authentication)
     ![tokenu uwierzytelniania Webex Cisco](./media/cisco-webex-provisioning-tutorial/SecretToken.png)
-    * Alfanumeryczne ciąg w polu z **klucz tajny tokenu**. Skopiuj ten token do Schowka
+    * Ciąg alfanumeryczny w polu jest Twoja **klucz tajny tokenu**. Skopiuj ten token do Schowka
     * Przejdź do [Pobierz moje własne szczegóły strony](https://developer.webex.com/endpoint-people-me-get.html)
         * Upewnij się, że tryb testowy jest ON
-        * Wpisz wyraz "Bearer" spację, a następnie wklej klucz tajny tokenu do pola autoryzacji ![tokenu uwierzytelniania Webex Cisco](./media/cisco-webex-provisioning-tutorial/GetMyDetails.png)
+        * Wpisz słowo "Bearer" spację, a następnie wklej klucz tajny tokenu w polu autoryzacji ![tokenu uwierzytelniania Webex Cisco](./media/cisco-webex-provisioning-tutorial/GetMyDetails.png)
         * Kliknij przycisk Uruchom
-    * Tekst odpowiedzi z prawej strony **identyfikator dzierżawcy** pojawia się jako "orgId":
+    * Tekst odpowiedzi z prawej strony **identyfikator dzierżawy** jest wyświetlany jako "z identyfikatorem organizacji":
 
     ```json
     {
@@ -135,52 +135,56 @@ W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczen
     }
     ```
 
-1. Przy wprowadzaniu pola pokazane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD mogą łączyć się z Cisco Webex. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Cisco Webex ma uprawnienia administratora i spróbuj ponownie.
+1. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z Cisco Webex. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Cisco Webex ma uprawnienia administratora i spróbuj ponownie.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/TestConnection.png)
 
-8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, które powinny odbierać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **wysłać wiadomość e-mail z powiadomieniem, gdy wystąpi błąd**.
+8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/EmailNotification.png)
 
 9. Kliknij pozycję **Zapisz**.
 
-10. W obszarze **mapowania** zaznacz **synchronizacji Azure Active Directory użytkownikom Cisco Webex**.
+10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Cisco Webex**.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/UserMapping.png)
 
-11. Przejrzyj atrybuty użytkowników, które są synchronizowane z usługi Azure AD Webex Cisco w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **pasujące** właściwości są używane do dopasowania kont użytkowników w Cisco Webex dla operacji update. Wybierz **zapisać** przycisk, aby zatwierdzić zmiany.
+11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD Cisco Webex w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Cisco Webex dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/UserMappingAttributes.png)
 
-12. Do konfigurowania filtrów zakresu, zapoznaj się z następujących instrukcji podanych w [Scoping filtru samouczek](../active-directory-saas-scoping-filters.md).
+12. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../active-directory-saas-scoping-filters.md).
 
-13. Aby włączyć usługi Azure AD, świadczenie usługi dla Cisco Webex, zmień **stan inicjowania obsługi administracyjnej** do **na** w **ustawienia** sekcji.
+13. Aby włączyć usługi Azure AD, usługi dla Cisco Webex inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/ProvisioningStatus.png)
 
-14. Zdefiniuj użytkowników i/lub grup, które chcesz aby obsługiwać Cisco Webex, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+14. Zdefiniować użytkowników i/lub grup, które chcesz, aby obsługiwać je na Cisco Webex, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/SyncScope.png)
 
-15. Gdy wszystko będzie gotowe, aby udostępnić, kliknij przycisk **zapisać**.
+15. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
 
     ![Inicjowanie obsługi administracyjnej Webex Cisco](./media/cisco-webex-provisioning-tutorial/Save.png)
 
 
-Ta operacja uruchamia synchronizacji początkowej wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacji początkowej zajmuje więcej czasu wykonywania niż kolejne synchronizacje, występujące co około 40 minut tak długo, jak działa usługi Azure AD, inicjowania obsługi usługi. Można użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej działania raport, który opisuje wszystkie akcje wykonywane przez usługę Azure AD usługi na Cisco Webex inicjowania obsługi administracyjnej.
+Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na Cisco Webex.
 
-Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi dzienników do odczytu, zobacz [raportowania na użytkownika automatyczne Inicjowanie obsługi konta](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Ograniczenia łącznika
+
+* Cisco Webex znajduje się obecnie w fazie wczesnego testowania pola (EFT) firmy Cisco. Aby uzyskać więcej informacji, skontaktuj się z pomocą [zespołem pomocy technicznej firmy Cisco](https://www.webex.co.in/support/support-overview.html). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się, jak należy przejrzeć dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../active-directory-saas-provisioning-reporting.md)
+* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/cisco-webex-provisioning-tutorial/tutorial_general_01.png

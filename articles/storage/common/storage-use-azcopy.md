@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531631"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054370"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Transferowanie danych za pomocą narzędzia AzCopy w Windows
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z systemu Microsoft Azure Blob, File i Table storage przy użyciu prostych poleceń zaprojektowane pod kątem optymalnej wydajności. Dane można kopiować między systemem plików i kontem magazynu lub między kontami magazynu.  
@@ -22,16 +22,16 @@ Istnieją dwie wersje narzędzia AzCopy, który można pobrać. Narzędzie AzCop
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Pobierz i zainstaluj narzędzie AzCopy na Windows
 
-### <a name="latest-preview-version-v800"></a>Najnowszej wersji zapoznawczej (v8.0.0)
-Pobierz [najnowszej wersji wstępnej narzędzia AzCopy na Windows](https://aka.ms/downloadazcopypr). Ta wersja zapoznawcza oferuje znaczne ulepszenia wydajności oraz pakietów platformy .NET Core w instalacji.
+### <a name="latest-version-v81"></a>Najnowsza wersja (w wersji 8.1)
+Pobierz [najnowszą wersję programu AzCopy na Windows](https://aka.ms/downloadazcopy).
 
-#### <a name="azcopy-on-windows-80-preview-release-notes"></a>Narzędzie AzCopy w Windows 8.0 (wersja zapoznawcza) — informacje o wersji
-- Usługa TABLE service nie jest już obsługiwana w najnowszej wersji. Jeśli używasz funkcji eksportowania tabeli, Pobierz stabilnej wersji.
+#### <a name="azcopy-on-windows-81-release-notes"></a>Narzędzie AzCopy w wersji Windows 8.1
+- Usługa TABLE service nie jest już obsługiwana w najnowszej wersji. Jeśli używasz funkcji eksportowania tabeli, pobrać wersję 7.3 narzędzia AzCopy.
 - Utworzonych za pomocą platformy .NET Core 2.1 i wszystkie zależności platformy .NET Core teraz są spakowane w instalacji.
-- Znaczący wzrost wydajności zarówno przekazywanie i pobieranie scenariuszy
+- Dodano obsługę uwierzytelniania OAuth. Użyj ```azcopy login``` zalogowanie się za pomocą usługi Azure Active Directory.
 
-### <a name="latest-stable-version-v710"></a>Najnowsza stabilna wersja (v7.1.0)
-Pobierz [najnowszą wersję narzędzia AzCopy na Windows](https://aka.ms/downloadazcopy).
+### <a name="azcopy-with-table-support-v73"></a>Narzędzia Azcopy z obsługą tabeli (v7.3)
+Pobierz [7.3 narzędzia AzCopy z obsługą tabeli](https://aka.ms/downloadazcopynet).
 
 ### <a name="post-installation-step"></a>Krok po instalacji
 

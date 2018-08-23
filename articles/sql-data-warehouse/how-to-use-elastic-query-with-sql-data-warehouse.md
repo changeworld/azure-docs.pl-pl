@@ -1,6 +1,6 @@
 ---
-title: Zapytanie elastycznej — uzyskiwanie dostępu do danych w magazynie danych SQL Azure z bazy danych SQL Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, najlepsze rozwiązania dotyczące korzystania z bazy danych SQL Azure przy użyciu elastycznej zapytania uzyskują dostęp do danych w usłudze Azure SQL Data Warehouse.
+title: Elastyczne zapytanie — dostęp do danych w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Poznaj najlepsze rozwiązania dotyczące przy użyciu zapytania elastycznego dostępu do danych w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database.
 services: sql-data-warehouse
 author: hirokib
 manager: craigg-msft
@@ -10,69 +10,69 @@ ms.component: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: ceda0399ae98e2a36fd41b954a741e0379c77fe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 344cb1bed56b0b6af7bd3704f8674ae30695f885
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797162"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058814"
 ---
-# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące uzyskują dostęp do danych w usłudze Azure SQL Data Warehouse przy użyciu elastycznej kwerendy w bazie danych SQL Azure
-Dowiedz się, najlepsze rozwiązania dotyczące używania elastycznej zapytania uzyskują dostęp do danych w magazynie danych SQL Azure z bazy danych SQL Azure. 
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące dostępu do danych w usłudze Azure SQL Data Warehouse przy użyciu zapytania elastycznego usługi Azure SQL Database
+Poznaj najlepsze rozwiązania dotyczące przy użyciu zapytania elastycznego dostępu do danych w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database. 
 
-## <a name="what-is-an-elastic-query"></a>Co to jest elastyczny zapytania?
-Elastyczny zapytania umożliwia zapisywanie kwerendy w bazie danych Azure SQL zdalnie wysyłany do usługi Azure SQL data warehouse przy użyciu T-SQL i tabel zewnętrznych. Za pomocą tej funkcji zawiera oszczędności kosztów i więcej architektur wydajności, w zależności od scenariusza.
+## <a name="what-is-an-elastic-query"></a>Co to jest zapytanie elastyczne?
+Zapytanie elastyczne umożliwia napisać zapytanie w bazie danych Azure SQL, zdalnie wysyłany do usługi Azure SQL data warehouse za pomocą języka T-SQL i tabele zewnętrzne. Za pomocą tej funkcji zapewnia oszczędności kosztów i więcej architektur wydajna, w zależności od scenariusza.
 
 Ta funkcja umożliwia dwa podstawowe scenariusze:
 
 1. Izolacji domeny
-2. Wykonywanie zapytania zdalnego
+2. Wykonanie zapytania zdalnego
 
 ### <a name="domain-isolation"></a>Izolacji domeny
 
-Izolacji domeny odwołuje się do scenariusza składnicy danych klasycznego. W niektórych scenariuszach co chcesz wyrazić domeny logicznej danych podrzędne użytkowników, którzy są odizolowane od pozostałej części magazynu danych z różnych powodów takich jak między innymi:
+Izolacja domeny odnosi się do scenariusza składnicy danych klasycznego. W niektórych scenariuszach jeden warto udostępnić domeny logicznej danych podrzędnego użytkowników, którzy są odizolowane od pozostałej części w magazynie danych z różnych powodów takich jak między innymi:
 
-1. Izolację zasobów — bazy danych SQL jest zoptymalizowany do obsługi dużych base równoczesnych użytkowników, obsługujący obciążenia nieco inne niż dużych analitycznych zapytań, które w magazynie danych jest zastrzeżona na potrzeby. Izolacja gwarantuje, że prawo obciążeń są obsługiwane przez odpowiednich narzędzi.
-2. Izolacja zabezpieczeń — do oddzielania podzbiór danych autoryzowanych selektywnie za pośrednictwem niektórych schematów.
-3. Sandboxing - udostępniają zestaw przykładowych danych jako "Plac zabaw dla" Aby zapoznać się z produkcyjnym zapytania itp.
+1. Izolację zasobów — bazy danych SQL jest zoptymalizowany do obsługi dużych base równoczesnych użytkowników, obsługujący obciążenia nieco inne niż dużych zapytań analitycznych, które w magazynie danych jest zarezerwowany dla. Izolacja zapewnia, że właściwe pakiety robocze są obsługiwane przez odpowiednie narzędzia.
+2. Izolacja na potrzeby zabezpieczeń — do oddzielania podzbiór danych autoryzowanych selektywnie za pośrednictwem niektórych schematów.
+3. Tryb piaskownicy — Podaj Przykładowy zestaw danych jako "— informacje i testowanie" do eksplorowania zapytania produkcyjne itp.
 
-Elastyczne zapytań zapewniają możliwość łatwo wybrać podzbiór danych magazynu danych SQL i przenieś go do wystąpienia bazy danych SQL. Ponadto izolacja nie wyklucza możliwości należy również włączyć wykonywanie zapytania zdalnego, co zapewnia bardziej interesujące scenariusze "pamięci podręcznej".
+Elastyczne zapytanie może zapewnić możliwość łatwo wybrać podzbiór danych magazynu danych SQL i przenieś go w wystąpieniu bazy danych SQL. Ponadto ta izolacja nie wyklucza możliwość również włączyć wykonywanie zapytania zdalnego, co zapewnia bardziej interesujące scenariuszy "pamięć podręczną".
 
-### <a name="remote-query-execution"></a>Wykonywanie zapytania zdalnego
+### <a name="remote-query-execution"></a>Wykonanie zapytania zdalnego
 
-Elastyczne zapytania umożliwia wykonanie zapytania zdalnego w wystąpieniu magazynu danych SQL. Jeden wykorzystywać najlepsze bazy danych SQL i magazyn danych SQL oddzielając gorącego i zimnych danych między dwiema bazami danych. Użytkownicy mogą zachować nowych danych w bazie danych SQL, który może obsługiwać raporty i dużej liczby użytkowników biznesowych średnia. Jednak gdy potrzebny jest więcej danych lub obliczeń, użytkownik może odciążania części zapytania do wystąpienia magazynu danych SQL, gdzie na dużą skalę agreguje mogą być przetwarzane znacznie szybciej i bardziej efektywnie.
+Elastyczne zapytanie umożliwia wykonanie zapytania zdalnego w z wystąpieniem usługi SQL data warehouse. Jeden mogą wykorzystywać najlepsze cechy zarówno bazy danych SQL database i SQL data warehouse, oddzielając gorące i zimne dane między dwiema bazami danych. Użytkownikom można pozostawić najświeższe dane w bazie danych SQL, który może służyć raporty i dużą liczbę użytkowników biznesowych średniej. Jednak w przypadku wymagane jest więcej danych lub obliczenie użytkownika można odciążyć część zapytania, do których na dużą skalę agregacji mogą być przetwarzane znacznie szybciej i wydajniej wystąpienie magazynu danych SQL.
 
-## <a name="elastic-query-process"></a>Proces elastycznej zapytania
-Elastyczne zapytania można udostępnić danych znajdujących się w danych serwera SQL magazynu wystąpień bazy danych programu SQL. Umożliwia elastyczne zapytania kwerend z bazy danych SQL odwołujące się do tabel w zdalnym wystąpieniu magazynu danych SQL. 
+## <a name="elastic-query-process"></a>Proces zapytania elastycznego
+Elastyczne zapytanie może służyć do udostępnienie danych znajdującymi się w danych programu SQL, magazynu wystąpień bazy danych SQL. Elastyczne zapytanie umożliwia zapytania z bazy danych SQL odnoszą się do tabel w zdalne wystąpienie magazynu danych SQL. 
 
-Pierwszym krokiem jest do tworzenia definicji źródła danych zewnętrznych, która odwołuje się do wystąpienia magazynu danych SQL, która używa istniejących poświadczeń użytkownika w usłudze SQL data warehouse. Żadne zmiany nie są niezbędne w wystąpieniu zdalnym magazynu danych SQL. 
+Pierwszym krokiem jest, aby utworzyć definicję źródła danych zewnętrznych, która odwołuje się do wystąpienie magazynu danych SQL, który używa istniejące poświadczenia użytkownika w usłudze SQL data warehouse. Żadne zmiany nie są niezbędne w zdalnym wystąpieniu magazynu danych SQL. 
 
 > [!IMPORTANT] 
 > 
-> Musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączany uprawnienie ALTER DATABASE. Aby odwołać się do zdalnych źródeł danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
+> Musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE. Aby odwołać się do zdalnych źródeł danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 
-Następnie można utworzyć definicji tabeli zewnętrznej zdalnego w wystąpieniu bazy danych SQL, wskazujący na tabeli zdalnej w usłudze SQL data warehouse. Zapytanie używa tabelę zewnętrzną, część zapytań odwołujących się do tabeli zewnętrznej są wysyłane do wystąpienia magazynu danych SQL do przetworzenia. Po ukończeniu zapytania zestawu wyników są wysyłane do wywoływania wystąpienia bazy danych SQL. Krótki samouczek konfigurowania elastycznej zapytania między bazą danych SQL i magazyn danych SQL, zobacz [skonfigurować elastycznej zapytania SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
+Następnie należy utworzyć definicję zdalnego tabeli zewnętrznej w wystąpieniu bazy danych SQL, które wskazuje do tabeli zdalnej usługi SQL data warehouse. Zapytanie używa tabeli zewnętrznej, część zapytania, odnoszące się do tabeli zewnętrznej są wysyłane do wystąpienia magazynu danych SQL do przetworzenia. Po ukończeniu zapytania zestaw wyników jest wysyłane z powrotem do wywołującego wystąpienie bazy danych SQL. Aby uzyskać krótki samouczek konfigurowania zapytanie elastyczne między bazy danych SQL database i SQL data warehouse, zobacz [Konfigurowanie zapytania elastycznego z usługą SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
 
-Aby uzyskać więcej informacji na elastyczne zapytania z bazy danych SQL, zobacz [omówienie zapytania elastycznej bazy danych SQL Azure][Azure SQL Database elastic query overview].
+Aby uzyskać więcej informacji na temat zapytania elastycznego z usługą SQL database, zobacz [Przegląd zapytanie elastyczne w usłudze Azure SQL Database][Azure SQL Database elastic query overview].
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Użyj następujące najlepsze rozwiązania, aby efektywnie korzystać z zapytania elastycznej.
+Użyj tych najlepszych rozwiązań skutecznie użycie elastycznego zapytania.
 
 ### <a name="general"></a>Ogólne
 
-- Używając zapytania zdalnego wykonywania, upewnij się, jest tylko wybierając niezbędne kolumn i zastosowaniu prawa filtrów. Nie tylko jest to zwiększenie niezbędnych obliczeń, ale również zwiększa rozmiar zestawu wyników i w związku z tym ilość danych, które mają być przenoszone między dwa wystąpienia.
-- Obsługa danych do analiz w magazynie danych programu SQL i bazy danych SQL w klastrowanego magazynu kolumn dla analytiIcal wydajności.
-- Upewnij się, że są podzielone na partycje tabel źródłowych dla przepływu zapytań i danych.
-- Upewnij się, wystąpień bazy danych programu SQL używane jako pamięci podręcznej są podzielone na partycje umożliwia bardziej szczegółowego aktualizacji i łatwiejsze zarządzanie. 
-- Najlepiej użyć PremiumRS baz danych, ponieważ udostępniają one analitycznych zalet klastrowanego magazynu kolumn indeksowania, w której priorytetowo potraktowano obciążeń intensywnie wykonujących operacje We/Wy w obniżonej cenie z bazy danych — warstwa Premium.
-- Po obciążeń wykorzystywać obciążenia lub daty wprowadzenia identyfikacji kolumn dla upserts w wystąpienia bazy danych SQL w celu zachowania integralności źródła pamięci podręcznej. 
-- Utwórz oddzielne logowania i użytkownika w wystąpieniu magazynu danych SQL dla poświadczenia logowania zdalnego bazy danych SQL, zdefiniowanych w źródle danych zewnętrznych. 
+- Podczas korzystania z zapytania zdalnego wykonania, upewnij się, jest tylko wybranie wymaganych kolumn i stosowanie filtrów prawo. Nie tylko jest to zwiększenie niezbędne zasoby obliczeniowe, ale też zwiększa rozmiar zestawu wyników, i w związku z tym ilość danych, które mają zostać przeniesione między dwoma wystąpieniami.
+- Obsługa danych w celach analitycznych do bazy danych SQL Database i SQL Data Warehouse w klastrowanego magazynu kolumn dla analytiIcal wydajności.
+- Upewnij się, że tabel źródłowych są podzielone na partycje w przypadku przenoszenia zapytań i danych.
+- Upewnij się, używane jako pamięci podręcznej wystąpienia bazy danych SQL są podzielone na partycje umożliwia bardziej szczegółową aktualizacje i łatwiejsze zarządzanie. 
+- Najlepiej używać PremiumRS baz danych, ponieważ zapewniają one analitycznych korzyści wynikające z klastrowanego magazynu kolumn, indeksowanie, ze szczególnym uwzględnieniem obciążeń intensywnie korzystających z operacji We/Wy w obniżonej cenie z bazy danych Premium.
+- Po obciążeń korzystaj z obciążenia lub kolumny identyfikacji Data rozpoczęcia obowiązywania wykonuje operację UPSERT w wystąpieniach bazy danych SQL, aby zachować integralność źródła pamięci podręcznej. 
+- Utwórz osobny identyfikator logowania i użytkownika w wystąpienie magazynu danych SQL o poświadczenia logowania zdalnego bazy danych SQL, zdefiniowane w źródle danych zewnętrznych. 
 
-### <a name="elastic-querying"></a>Elastyczne zapytań
+### <a name="elastic-querying"></a>Zapytania elastyczne
 
-- W wielu przypadkach przydatne może być zarządzanie typu rozciąganej tabeli, gdzie część tabeli znajduje się w bazie danych SQL jako buforowanych danych dotyczących wydajności z resztą danych przechowywanych w usłudze SQL Data Warehouse. Należy dwa obiekty w bazie danych SQL: tabeli zewnętrznej w bazie danych SQL, który odwołuje się do tabeli podstawowej w magazynie danych programu SQL i "pamięci podręcznej" część tabeli w bazie danych SQL. Należy wziąć pod uwagę tworzenia widoku w górnej części pamięci podręcznej tabeli i tabeli zewnętrznej które unie zarówno tabele i stosuje filtry, których dane zmaterializowany w ramach bazy danych SQL i usługi SQL Data Warehouse danych za pośrednictwem tabel zewnętrznych.
+- W wielu przypadkach przydatne może być zarządzanie typem rozciąganej tabeli, gdzie jest częścią tabeli w bazie danych SQL jako dane wydajności z pozostałą częścią danych przechowywanych w usłudze SQL Data Warehouse w pamięci podręcznej. Potrzebujesz dwóch obiektów w bazie danych SQL: tabeli zewnętrznej w bazie danych SQL, który odwołuje się do tabeli podstawowej w SQL Data Warehouse oraz "buforowane" część tabeli w bazie danych SQL. Należy rozważyć utworzenie widoku w górnej części pamięci podręcznej, tabeli i tabeli zewnętrznej, która złoży tabele i ma zastosowanie filtrów, które oddzielenie danych zmaterializowanego danych SQL Database i SQL Data Warehouse dostępna za pośrednictwem tabel zewnętrznych.
 
-  Załóżmy, że chcesz zachować roku najnowszych danych w wystąpieniu bazy danych SQL. **Zewnętrzne Zamówienia** odwołania do tabeli w magazynie danych porządkuje tabel. **Dbo. Zamówienia** reprezentuje najbardziej aktualną wartość lat danych w wystąpieniu bazy danych SQL. Zamiast prosząc użytkowników o podjęcie decyzji o zapytanie jednej tabeli lub innych, należy utworzyć widok w górnej części obu tabel na punkcie partycji w ostatnim roku.
+  Załóżmy, że chcesz zachować ostatniego roku danych w wystąpieniu bazy danych SQL. **Zewnętrznego Zamówienia** odwołania do tabeli w magazynie danych porządkuje tabel. **Dbo. Zamówienia** reprezentuje ostatnich lat pomagają w zrealizowaniu danych w wystąpieniu bazy danych SQL. Zamiast prosząc użytkowników o zdecyduj, czy zapytanie jednej tabeli lub innych, należy utworzyć widok w górnej części obie tabele w punkcie partycji z ostatniego roku.
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -97,59 +97,59 @@ Użyj następujące najlepsze rozwiązania, aby efektywnie korzystać z zapytani
     YEAR([o_orderdate]) < '<Most Recent Year>'
   ```
 
-  Widok utworzony w taki sposób, umożliwia kompilatora zapytania ustalić, czy musi on mieć wystąpienie magazynu danych odpowiedzi na zapytanie użytkowników. 
+  Widok generowane w taki sposób, teraz kompilatora zapytania ustalić, czy serwer musi używać wystąpienie magazynu danych w odpowiedzi na zapytania użytkowników. 
 
-  Jest większe obciążenie przesyłania, kompilowanie, uruchamiania i przenoszenia danych skojarzonych z każdego elastycznej zapytanie wystąpienie magazynu danych. Być świadome, że każdy elastycznej zapytań wlicza się z gniazda współbieżności i używa zasobów.  
+  Brak dodatkowych kosztów związanych z przesyłania, kompilowanie, uruchamianie i przenoszenia danych skojarzonych z każdym elastyczne zapytanie względem wystąpienie magazynu danych. Być świadome, że każde zapytanie elastyczne zmniejsza swoje gniazd współbieżności i używa zasobów.  
 
 
-- Jeśli jeden planuje przechodzenie dalej do zestawu wyników z wystąpienia magazynu danych, należy wziąć pod uwagę materializowania go w tabeli tymczasowej w bazie danych SQL, wydajności i użycia zasobów niepotrzebnych zapobiec.
+- Jeśli jeden plany przejść do szczegółów dalej do zestawu wyników z wystąpienie magazynu danych, należy wziąć pod uwagę materializowanie go w tabeli tymczasowej w bazie danych SQL, wydajności i aby zapobiec użyciu zbędnych zasobów.
 
 ### <a name="moving-data"></a>Przenoszenie danych 
 
-- Jeśli to możliwe należy zachować zarządzanie danymi łatwiejsze w przypadku tabel źródłowych tylko Dołącz tak, aby aktualizacje były łatwego w utrzymaniu między wystąpieniami danych magazynu oraz bazy danych.
-- Przenosi dane na poziomie partycji z opróżnić i poziom i ilość danych, przenieść, aby zapewnić aktualność wystąpienie bazy danych magazynu semantyki wypełnienia do minimalizuje to koszt zapytania na danych. 
+- Jeśli to możliwe należy zachować zarządzanie danymi łatwiejsze w przypadku tabel źródłowych tylko do dołączania tak, aby aktualizacje były łatwe do utrzymania między wystąpieniami dane magazynu i bazy danych.
+- Flush przenoszenie danych na poziomie partycji przy użyciu i poziom i ilości danych, przenieść, aby zapewnić aktualność wystąpienie bazy danych magazynu wypełnienia semantykę, aby zminimalizować koszty zapytania na danych. 
 
-### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Kiedy należy wybrać w porównaniu bazy danych SQL Azure Analysis Services
+### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Kiedy należy wybrać vs usług Azure Analysis Services bazy danych SQL
 
-Użyj usługi Azure Analysis Services, przy:
+Korzystanie z systemu Azure Analysis Services, gdy:
 
-- Planowanie przy użyciu pamięci podręcznej z narzędziem BI prześle dużą liczbę małych zapytań
-- Należy subsecond opóźnienia zapytania
-- Masz doświadczenie w zarządzaniu/tworzenie modeli dla usług Analysis Services 
+- Zamierzasz korzystać z pamięci podręcznej za pomocą narzędzia do analizy Biznesowej, która prześle dużą liczbę małych zapytań
+- Potrzebujesz subsecond kwerendami
+- Masz doświadczenie w zarządzaniu/opracowywanie modeli usług Analysis Services 
 
-Użyj usługi Azure SQL bazy danych, gdy:
+Korzystanie z usługi Azure SQL bazy danych, gdy:
 
-- Aby wysłać zapytanie danych pamięci podręcznej za pomocą programu SQL
-- Zdalne wykonywanie kodu jest wymagane dla niektórych kwerend
-- Mieć większe wymagania w pamięci podręcznej
+- Chcesz wykonywać zapytania danych przy użyciu języka SQL
+- Potrzebujesz zdalne wykonywanie kodu dla niektórych kwerend
+- Mają większe wymagania dotyczące pamięci podręcznej
 
 ## <a name="faq"></a>Często zadawane pytania
 
-Pytanie: czy w puli elastycznej zapytania o elastycznej można używać baz danych?
+P: czy mogę używać baz danych w puli elastycznej przy użyciu zapytania elastycznego?
 
-Odp. Tak. Baz danych w puli elastycznej za pomocą elastycznych kwerendy. 
+Odp. Tak. Bazy danych SQL w ramach puli elastycznej za pomocą elastycznych kwerendy. 
 
-Pytanie: czy istnieje limit liczby baz danych I można użyć dla elastycznej zapytania?
+P: czy istnieje limit liczby baz danych można używać dla zapytania elastyczne?
 
-A: w nie mają żadnych twardych zakończenia liczbę baz danych może służyć do elastycznej zapytania. Jednak każdego zapytania elastycznej (zapytań, które trafień SQL Data Warehouse) będą uwzględniane limity normalne współbieżności.
+Odp.: nie jest brak twardych limit liczby baz danych może służyć do zapytań elastycznych. Jednak każde zapytanie elastyczne (zapytania, które trafień SQL Data Warehouse) będą przekładać limitów współbieżności normalny.
 
-Pytanie: czy istnieją limitów jednostek DTU związanego z zapytaniem elastycznej?
+P: czy istnieją limity liczby jednostek DTU związane z elastycznego zapytania?
 
-A: limitów jednostek DTU nie są narzucone żadnego inaczej z zapytaniem elastycznej. Standardowych zasad jest taka, że serwery logiczne mają limitów jednostek DTU w miejscu, aby zapobiec przypadkowemu przekroczenia wydatków klientów. Jeśli włączasz szereg baz danych dla elastycznej zapytania równolegle z wystąpieniem usługi SQL Data Warehouse można napotkać zakończenie nieoczekiwanie. W takim przypadku przesłać żądanie, aby zwiększyć limit jednostek dtu w warstwie na serwerze w sieci logicznej. Może spowodować zwiększenie limitu przydziału przez [tworzenie biletu pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i wybierając *przydziału* jako typ żądania
+A: limity liczby jednostek DTU nie są nakładane na dowolny inny sposób przy użyciu zapytania elastycznego. Standardowa zasada jest taka, że serwerami logicznymi mają limity liczby jednostek DTU w miejscu, aby zapobiec przypadkowemu przekraczają założeń budżetowych klientów. Jeśli włączasz kilka baz danych dla zapytania elastycznego wraz z wystąpieniem programu SQL Data Warehouse można napotkać zakończenie nieoczekiwanie. W takiej sytuacji należy przesłać żądanie, aby zwiększyć limit liczby jednostek DTU na serwerze logicznym. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i wybierając polecenie *przydziału* jako typ żądania
 
-Pytanie: czy można użyć wiersza poziomu zabezpieczeń/dynamicznych danych maskowania elastycznej zapytania?
+P: czy mogę używać wiersza poziomu zabezpieczeń/dynamiczne dane maskowanie przy użyciu zapytania elastycznego?
 
-A: klientów, którzy chcą korzystać z bardziej zaawansowane funkcje zabezpieczeń w usłudze SQL Database to zrobić przez pierwszy przenoszenie i przechowywanie danych w bazie danych SQL. Obecnie nie można zastosować zabezpieczeń na poziomie wiersza lub DDM na danych pobieranych przez tabel zewnętrznych. 
+Odp.: klientów, którzy chcą korzystać z bardziej zaawansowane funkcje zabezpieczeń w usłudze SQL Database to zrobić pierwszy przenosząc i przechowywanie danych w bazie danych SQL. Nie można obecnie stosować zabezpieczenia na poziomie wiersza lub DDM, na danych pobieranych za pośrednictwem tabel zewnętrznych. 
 
-Pytanie: czy można napisać z mojej wystąpienia bazy danych SQL do wystąpienia magazynu danych?
+P: czy można napisać z Moje wystąpienia bazy danych SQL do wystąpienia usługi data warehouse?
 
-Odpowiedź: obecnie ta funkcja nie jest obsługiwana. Można znaleźć w naszych [strony] [ Feedback page] do tworzenia/głosu dla tej funkcji, jeśli jest to funkcja, które chcesz wyświetlić w przyszłości. 
+Odp.: obecnie ta funkcja nie jest obsługiwana. Odwiedź nasze [strona opinii o] [ Feedback page] do tworzenia/głosu dla tej funkcji, jeśli jest to funkcja ma się pojawić w przyszłości. 
 
-Pytanie: czy można używać typów przestrzennych, takie jak Geometria/geograficzne?
+P: czy można używać typów przestrzennych, takie jak Geometria/lokalizacji geograficznej?
 
-Odpowiedź: można przechowywać typy przestrzenne w usłudze SQL Data Warehouse jako wartości varbinary(max). Kwerendy te kolumny za pomocą zapytania elastycznej, należy przekonwertować je na odpowiednich typów w czasie wykonywania.
+Odp.: można przechowywać typów przestrzennych w usłudze SQL Data Warehouse jako wartości varbinary(max). Kiedy wykonujesz zapytanie o tych kolumn przy użyciu zapytania elastycznego, należy przekonwertować je na odpowiednich typów w czasie wykonywania.
 
-![typy przestrzenne](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
+![typów przestrzennych](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
 <!--Article references-->
 

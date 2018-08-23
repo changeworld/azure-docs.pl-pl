@@ -9,18 +9,18 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 21f63ebcca4b766f8df8c7b2390c4f44ff4dc7b1
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099965"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054176"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
 Zestawienia zmian usługi Azure Cosmos DB to mechanizm, który można pobrać kanału informacyjnego ciągłe i przyrostowych rekordów z kontenera usługi Azure Cosmos DB, jak te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
 
-W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu detalicznego zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji. Będzie analizować zdarzenia, takie jak wyświetlenie elementu, dodanie elementu do koszyka ich lub zakupu elementu użytkownika. Gdy wystąpi jedno z tych zdarzeń, zostanie utworzony nowy rekord, a zmiany źródła danych dzienników, służące do rejestrowania. Kanału informacyjnego zmian następnie wyzwalaczy szereg kroków skutkuje wizualizacji metryk, które Analizuj wydajność firmy i działania. Przykładowe metryki, które można wizualizować obejmują przychodu, unikatowych odwiedzających witrynę, najpopularniejszych elementów i średnia cena elementów, które są wyświetlane w porównaniu z dodana do koszyka i zakupu. Te przykładowe metryki może pomóc firmie handlu elektronicznego, oceniać swoją popularność lokacji, tworzyć jego reklamy i strategii cenowych i podjęcia decyzji dotyczących spisu, jakie o wartości inwestycji w.
+W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu elektronicznego, aby zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji. Będzie analizować zdarzenia, takie jak wyświetlenie elementu, dodanie elementu do koszyka ich lub zakupu elementu użytkownika. Gdy wystąpi jedno z tych zdarzeń, zostanie utworzony nowy rekord, a zmiany źródła danych dzienników, służące do rejestrowania. Kanału informacyjnego zmian następnie wyzwalaczy szereg kroków skutkuje wizualizacji metryk, które Analizuj wydajność firmy i działania. Przykładowe metryki, które można wizualizować obejmują przychodu, unikatowych odwiedzających witrynę, najpopularniejszych elementów i średnia cena elementów, które są wyświetlane w porównaniu z dodana do koszyka i zakupu. Te przykładowe metryki może pomóc firmie handlu elektronicznego, oceniać swoją popularność lokacji, tworzyć jego reklamy i strategii cenowych i podjęcia decyzji dotyczących spisu, jakie o wartości inwestycji w.
 
 Zainteresowani oglądania wideo o rozwiązaniu przed rozpoczęciem pracy, zobacz poniższy film wideo:
 
@@ -315,7 +315,7 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
    * Dla przychodu sensowne będzie celu wykres liniowy z godziną jako osi i sumę cen jako wartość. Okno czasowe do wyświetlenia powinna być największa możliwa do zapewnienia możliwie najwięcej informacji.  
    * Dla unikatowych osób odwiedzających sensowne będzie celu Wizualizacja w postaci karty przy użyciu liczby unikatowych osób odwiedzających jako wartość.
 
-   Jest to wygląd pulpitu nawigacyjnego za pomocą tych wykresów:
+   Jest to, jak wygląda przykładowy pulpit nawigacyjny za pomocą tych wykresów:
 
    ![wizualizacje](./media/changefeed-ecommerce-solution/visualizations.png)
 

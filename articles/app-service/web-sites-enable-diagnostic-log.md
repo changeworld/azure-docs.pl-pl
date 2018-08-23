@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206007"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42057640"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -171,7 +171,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 Aby wyświetlić listę dostępnych ścieżek, użyj parametru - ListPath.
 
 > [!NOTE]
-> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak używać programu Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak używać programu Azure PowerShell](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
@@ -219,7 +219,7 @@ Gdy logujesz się do usługi table storage, dodatkowe właściwości są używan
 | --- | --- |
 | PartitionKey |Data/godzina zdarzenia w formacie yyyyMMddHH |
 | RowKey |Wartość identyfikatora GUID, który unikatowo identyfikuje tę jednostkę |
-| Sygnatura czasowa |Data i godzina wystąpienia zdarzenia |
+| Znacznik czasu |Data i godzina wystąpienia zdarzenia |
 | EventTickCount |Data i godzina wystąpienia zdarzenia, format taktu (większą precyzję) |
 | ApplicationName |Nazwa aplikacji sieci web |
 | Poziom |Poziom zdarzenia (na przykład błąd, ostrzeżenie, informacje) |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bb9e30489aa8870fe1c71c8c9a8bd557a2dcf2b1
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413542"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055088"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 ## <a name="overview"></a>Przegląd
@@ -645,7 +645,7 @@ Poniższy kod wykonuje ustawienia VNN i ustawia go dla Ciebie. Aby zmiana zaczę
 
 Na późniejszym etapie migracji należy zaktualizować odbiornik zawsze włączonych za pomocą aktualizacja adresu IP, który odwołuje się moduł równoważenia obciążenia, obejmuje to usunięcie zasobu adresu IP i dodawanie. Po zaktualizowaniu adresów IP należy upewnić się, nowy adres IP został zaktualizowany w strefie DNS i klientów aktualizowania ich lokalnej pamięci podręcznej DNS.
 
-Jeśli klienci znajdują się w segmencie inną sieć i odwoływać się do innego serwera DNS, należy wziąć pod uwagę, co się stanie, dotyczące transferu strefy DNS podczas migracji, jak ponownie połączyć aplikację czas jest ograniczone przez czas transferu strefy z dowolnego nowego adresu IP adresy dla odbiornika. Jeśli jesteś w obszarze ograniczenia czasu w tym miejscu, należy omówić i przetestować, wymuszając przyrostowy transfer strefy z zespołami Windows, a także umieścić rekordu hosta systemu DNS do niższych czas wygaśnięcia (TTL), więc klienci zaktualizować. Aby uzyskać więcej informacji, zobacz [przyrostowe transferów stref](https://technet.microsoft.com/library/cc958973.aspx) i [Start DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
+Jeśli klienci znajdują się w segmencie inną sieć i odwoływać się do innego serwera DNS, należy wziąć pod uwagę, co się stanie, dotyczące transferu strefy DNS podczas migracji, jak ponownie połączyć aplikację czas jest ograniczone przez czas transferu strefy z dowolnego nowego adresu IP adresy dla odbiornika. Jeśli jesteś w obszarze ograniczenia czasu w tym miejscu, należy omówić i przetestować, wymuszając przyrostowy transfer strefy z zespołami Windows, a także umieścić rekordu hosta systemu DNS do niższych czas wygaśnięcia (TTL), więc klienci zaktualizować. Aby uzyskać więcej informacji, zobacz [przyrostowe transferów stref](https://technet.microsoft.com/library/cc958973.aspx) i [Start DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
 Domyślny czas wygaśnięcia rekordu DNS, który jest skojarzony z odbiornik zawsze na platformie Azure jest 1200 sekund. Możesz zmniejszyć to, jeśli znajdują się w czasie ograniczenia podczas migracji w taki sposób, aby zapewnić klientom zaktualizować ich DNS przy użyciu zaktualizowano adres IP dla odbiornika. Można wyświetlić i zmodyfikować konfigurację przez zrzucanie limit konfiguracji VNN:
 

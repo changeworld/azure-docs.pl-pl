@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442721"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060796"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Dodaj klaster Kubernetes w portalu Marketplace usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
-> Rozwiązanie Kubernetes usługi Azure Container Services (ACS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
+> Rozwiązanie Kubernetes usługi Azure Kubernetes usługi (AKS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
 
 Klaster usługi Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownikom można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 

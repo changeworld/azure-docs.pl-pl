@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505717"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918793"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
@@ -28,9 +28,6 @@ Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu
 - Dowiedz się, jak aplikacja może użyć tego klucza lub hasła.
 
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
-
-> [!NOTE]
-> Ten artykuł nie zawiera instrukcji dotyczących pisania aplikacji platformy Azure. Możesz użyć [przykładowej aplikacji usługi Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) na potrzeby tej procedury.
 
 Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
 
@@ -269,7 +266,7 @@ Aby zmienić autoryzację aplikacji do używania kluczy lub wpisów tajnych:
 ## <a id="HSM"></a>Praca ze sprzętowym modułem zabezpieczeń (HSM, hardware security module)
 W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają granicy modułów HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete).
 
-Aby utworzyć te klucze chronione modułem HSM, należy użyć [usługi Azure Key Vault w warstwie Premium do obsługi kluczy chronionych modułem HSM](https://azure.microsoft.com/pricing/free-trial/). Ponadto warto zauważyć, że funkcja ta nie jest dostępna dla chińskiej wersji platformy Azure.
+Aby utworzyć te klucze chronione modułem HSM, należy użyć [usługi Azure Key Vault w warstwie Premium do obsługi kluczy chronionych modułem HSM](https://azure.microsoft.com/pricing/details/key-vault/). Ponadto warto zauważyć, że funkcja ta nie jest dostępna dla chińskiej wersji platformy Azure.
 
 Po utworzeniu magazynu kluczy dodaj parametr **- SKU**:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001807"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055714"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Sposób integracji usługi Azure API Management z usługą Azure Application Insights
 
@@ -37,7 +37,7 @@ Zanim użyjesz usługi Azure Application Insights, należy najpierw utworzyć wy
 2. Kliknij pozycję **+ Dodaj**.  
     ![Tworzenie usługi App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Wypełnij formularz. Wybierz **ogólne** jako **typ aplikacji**.
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Utwórz połączenie między usługą Azure Application Insights i wystąpienie usługi Azure API Management
 
@@ -46,7 +46,7 @@ Zanim użyjesz usługi Azure Application Insights, należy najpierw utworzyć wy
 3. Kliknij pozycję **+ Dodaj**.  
     ![App Insights rejestratora](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Wybierz wcześniej utworzony **usługi Application Insights** wystąpienia i podaj krótki opis.
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 6. Rejestrator usługi Azure Application Insights jest właśnie utworzony przy użyciu klucza instrumentacji. Będzie teraz widoczny na liście.  
     ![App Insights rejestratora](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
@@ -111,9 +111,15 @@ Nie powiodło się żądanie jest żądaniem, które:
 
 Oparte na testach obciążenia wewnętrznego, włączenie tej funkcji spowodowany redukcji 40 – 50% przepływności liczba żądań przekracza 1000 żądań na sekundę. Usługa Azure Application Insights jest przeznaczony do stosowania analizy statystycznej do oceny wydajności aplikacji. Nie może być to system inspekcji, a nie jest przeznaczone do rejestrowania każdego pojedynczego żądania dla dużej liczby interfejsów API.
 
-Możesz manipulować liczba żądań, które są rejestrowane przez dostosowanie **próbkowania** ustawienie (zobacz powyższe kroki). Wartość 100% oznacza, że wszystkie żądania są rejestrowane, gdy 0% odzwierciedla nie rejestrowania na wszystkich. **Próbkowanie** pozwala zmniejszyć ilość danych telemetrii, efektywnie uniemożliwia zmniejszenie wydajności znaczące, badając nadal korzyści wynikające z rejestracji.
+Możesz manipulować liczba żądań, które są rejestrowane przez dostosowanie **próbkowania** ustawienie (zobacz powyższe kroki). Wartość 100% oznacza, że wszystkie żądania są rejestrowane, gdy 0% odzwierciedla nie rejestrowania na wszystkich. **Próbkowanie** pozwala zmniejszyć ilość danych telemetrii, efektywnie uniemożliwia znacznego obniżenia wydajności, badając nadal korzyści wynikające z rejestracji.
 
 Pomijanie rejestrowanie nagłówki i treść żądania i odpowiedzi będzie mieć pozytywny wpływ na złagodzenia problemy z wydajnością.
+
+## <a name="video"></a>Połączenia wideo
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2pkXv]
+>
+>
 
 ## <a name="next-steps"></a>Kolejne kroki
 

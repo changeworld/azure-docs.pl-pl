@@ -1,5 +1,5 @@
 ---
-title: Jak zarządzać kluczy tajnych podczas pracy z przestrzenią deweloperów platformy Azure | Dokumentacja firmy Microsoft
+title: Jak do zarządzania wpisami tajnymi, podczas pracy z usługą Azure Dev miejsca | Dokumentacja firmy Microsoft
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,25 +9,25 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: article
 ms.technology: azds-kubernetes
-description: Szybkie opracowywanie Kubernetes z kontenerów i mikrousług na platformie Azure
+description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 manager: douge
-ms.openlocfilehash: b77d862f578ddc374dbb58117b4ea58eb973e5fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352e43633ea1464eb7e28fa698d1ae77d5ac52bd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198317"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058185"
 ---
-# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak zarządzać kluczy tajnych podczas pracy z przestrzenią deweloperów platformy Azure
+# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 
-Usługi mogą wymagać niektórych haseł, parametry połączenia i innych informacji poufnych, takich jak do baz danych lub innymi usługami Azure bezpiecznego. Przez ustawienie wartości tych kluczy tajnych w plikach konfiguracji, można udostępnić je w kodzie jako zmienne środowiskowe.  Te musi obsługiwać z ostrożnością, aby uniknąć zagrożenia dla bezpieczeństwa kluczy tajnych.
+Usługi mogą wymagać niektóre hasłach, parametry połączenia i innych wpisów tajnych, takich jak do baz danych lub innych usług platformy Azure bezpieczne. Przez ustawienie wartości tych kluczy tajnych w plikach konfiguracji, można udostępnić je w swoim kodzie jako zmienne środowiskowe.  Te muszą być obsługiwane z rozwagą, aby uniknąć zagrożenia dla bezpieczeństwa kluczy tajnych.
 
-Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowywania kluczy tajnych: w pliku values.dev.yaml i wbudowane bezpośrednio w azds.yaml. Przechowywanie kluczy tajnych w values.yaml nie jest zalecane.
+Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywania wpisów tajnych: w pliku values.dev.yaml i wbudowane bezpośrednio w azds.yaml. Nie zaleca się przechowywanie wpisów tajnych w values.yaml.
  
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: values.dev.yaml
-1. Otwórz kodzie VS nad projektem, którym włączono obsługę spacje deweloperów platformy Azure.
-2. Dodaj plik o nazwie _values.dev.yaml_ w tym samym folderze co istniejące _values.yaml_ i zdefiniuj tajnego klucza i wartości, jak w poniższym przykładzie:
+1. Otwórz program VS Code z projektem, który jest włączony dla usługi Azure Dev miejsca do magazynowania.
+2. Dodaj plik o nazwie _values.dev.yaml_ w tym samym folderze co istniejące _values.yaml_ i zdefiniuj klucz tajny i wartości, jak w poniższym przykładzie:
 
     ```yaml
     secrets:
@@ -37,7 +37,7 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
         key: "secretkeyhere"
     ```
      
-3. Aktualizacja _azds.yaml_ mówić spacje deweloperów Azure do użycia nowego _values.dev.yaml_ pliku. Aby to zrobić, Dodaj tę konfigurację w sekcji configurations.develop.container:
+3. Aktualizacja _azds.yaml_ mówić Azure Dev miejsca do magazynowania do użycia nowego _values.dev.yaml_ pliku. Aby to zrobić, należy dodać tę konfigurację w sekcji configurations.develop.container:
 
     ```yaml
            container:
@@ -45,7 +45,7 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
              - "charts/webfrontend/values.dev.yaml"
     ```
  
-4. Modyfikowanie kodu usługi do odwoływania się do tych kluczy tajnych jako zmienne środowiskowe, jak w poniższym przykładzie:
+4. Zmodyfikuj kod usługi do odwoływania się do tych kluczy tajnych jako zmienne środowiskowe, jak w poniższym przykładzie:
 
     ```
     var redisPort = process.env.REDIS_PORT
@@ -53,23 +53,23 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
     var theKey = process.env.REDIS_KEY
     ```
     
-5. Aktualizacja usługi działające w klastrze z tych zmian. W wierszu polecenia Uruchom polecenie:
+5. Zaktualizuj usługi działające w klastrze za pomocą tych zmian. W wierszu polecenia Uruchom polecenie:
 
     ```
     azds up
     ```
  
-6. (Opcjonalnie) Z wiersza polecenia Sprawdź, czy utworzono tych kluczy tajnych:
+6. (Opcjonalnie) W wierszu polecenia Sprawdź, czy utworzono tych kluczy tajnych:
 
       ```
       kubectl get secret --namespace default -o yaml 
       ```
 
-7. Upewnij się, że możesz dodać _values.dev.yaml_ do _.gitignore_ plik, aby uniknąć zatwierdzania kluczy tajnych w kontroli źródła.
+7. Upewnij się, że dodano _values.dev.yaml_ do _.gitignore_ plik, aby unikać zatwierdzania wpisów tajnych w kontroli źródła.
  
  
 ## <a name="method-2-inline-directly-in-azdsyaml"></a>Metoda 2: Wbudowane bezpośrednio w azds.yaml
-1.  W _azds.yaml_, ustaw kluczy tajnych w obszarze yaml programu sekcji konfiguracji/opracowanie/instalacji. Chociaż możesz wprowadzać klucz tajny wartości bezpośrednio, nie jest zalecane ponieważ _azds.yaml_ jest wyewidencjonowany do kontroli źródła. Zamiast tego dodać symbole zastępcze przy użyciu składni "$PLACEHOLDER".
+1.  W _azds.yaml_, ustaw wpisami tajnymi w ramach yaml sekcji konfiguracji/tworzenie/instalację. Chociaż możesz wprowadzać hasło wartości bezpośrednio, nie zaleca się ponieważ _azds.yaml_ jest ewidencjonowany w kontroli źródła. Zamiast tego dodać symbole zastępcze przy użyciu składni "$PLACEHOLDER".
 
     ```yaml
     configurations:
@@ -84,14 +84,14 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
                 key: "$REDIS_KEY_DEV"
     ```
      
-2.  Utwórz _.env_ pliku w tym samym folderze co _azds.yaml_. Wprowadź hasła przy użyciu standardowych klucza = wartość notacji. Zatwierdź nie _.env_ plików do kontroli źródła. (Aby pominąć z kontroli źródła w systemów kontroli wersji git, dodaj go do _.gitignore_ pliku.) W poniższym przykładzie przedstawiono _.env_ pliku:
+2.  Tworzenie _ENV_ pliku w tym samym folderze co _azds.yaml_. Wprowadź wpisami tajnymi za pomocą standardowych klucz = wartość notacji. Zatwierdź nie _ENV_ plików do kontroli źródła. (Aby pominąć z kontroli źródła w systemach kontroli wersji git, dodaj go do _.gitignore_ pliku.) W poniższym przykładzie przedstawiono _ENV_ pliku:
 
     ```
     REDIS_PORT_DEV=3333
     REDIS_HOST_DEV=myredishost
     REDIS_KEY_DEV=myrediskey
     ```
-2.  Zmień kod źródłowy usługi do odwołania tych kluczy tajnych w kodzie, jak w poniższym przykładzie:
+2.  Zmodyfikuj kod źródłowy usługi, aby odwoływać się do tych kluczy tajnych w kodzie, jak w poniższym przykładzie:
 
     ```
     var redisPort = process.env.REDIS_PORT
@@ -99,13 +99,13 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
     var theKey = process.env.REDIS_KEY
     ```
  
-3.  Aktualizacja usługi działające w klastrze z tych zmian. W wierszu polecenia Uruchom polecenie:
+3.  Zaktualizuj usługi działające w klastrze za pomocą tych zmian. W wierszu polecenia Uruchom polecenie:
 
     ```
     azds up
     ```
 
-4.  (opcjonalnie) Wyświetl klucze tajne z kubectl:
+4.  (opcjonalnie) Wpisy tajne widoku z narzędzia kubectl:
 
     ```
     kubectl get secret --namespace default -o yaml
@@ -113,5 +113,5 @@ Spacje deweloperów platformy Azure udostępnia dwa zalecane opcje do przechowyw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Z tych metod można teraz bezpiecznie połączenie z bazy danych, pamięć podręczna Redis lub usług Azure bezpiecznego dostępu.
+Za pomocą tych metod możesz teraz bezpiecznie łączyć z bazą danych, pamięci podręcznej Redis lub dostęp do bezpiecznych usług platformy Azure.
  

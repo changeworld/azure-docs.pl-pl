@@ -1,45 +1,117 @@
 ---
-title: Dodawanie użytkowników współpracy B2B jako pracownik przetwarzający informacje — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Współpraca B2B umożliwia pracowników przetwarzających informacje dodać użytkowników z organizacji z usługą Azure AD w celu udzielenia dostępu | Dokumentacja firmy Microsoft
+title: Dodaj użytkowników we współpracy B2B jako pracownik przetwarzający informacje — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Współpraca B2B umożliwia pracownikom przetwarzającym informacje i właściciele użytkowników-gości można dodawać do usługi Azure AD, aby uzyskać dostęp do | Dokumentacja firmy Microsoft
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.date: 08/08/2018
+ms.author: mimart
+author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: a5f985e1872a196fcd29845ae0c8d924c81673a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.reviewer: mal
+ms.openlocfilehash: 904f6b571c063dd760cfd2604a72a505112fe57a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260149"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054965"
 ---
-# <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Jak pracownicy przetwarzający informacje dodać użytkowników współpracy B2B do usługi Azure Active Directory?
+# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak użytkownicy w organizacji mogą zapraszać gości do aplikacji
 
-Pracownicy przetwarzający informacje mogą używać [panelu dostępu aplikacji](http://myapps.microsoft.com) do dodawania użytkowników współpracy B2B do grup i aplikacji, które zarządzana.
+Po Gość użytkownik został dodany do katalogu w usłudze Azure AD, właściciel aplikacji może wysłać użytkownik-Gość bezpośredni link do aplikacji, które chcą udostępniać. Administratorzy usługi Azure AD można też skonfigurować Samoobsługowe zarządzanie tak, aby aplikacja właściciele mogą zarządzać ich własnych użytkowników-gości, nawet jeśli użytkownicy-goście nie zostały jeszcze dodane do katalogu. Gdy aplikacja jest skonfigurowana do używania samoobsługowego, właściciel aplikacji używa panelu dostępu zaproszenie użytkownika-gościa do aplikacji lub dodać użytkownika-gościa do grupy, która ma dostęp do aplikacji. Zarządzanie aplikacjami samoobsługi wymaga pewnych początkowej konfiguracji przez administratora. Poniżej przedstawiono podsumowanie kroków instalacji (Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne](#prerequisites) dalej na tej stronie):
 
-Po dodaniu użytkownika gościa do katalogu Pracownik przetwarzający informacje mogą wysłać użytkownika gościa bezpośredniego łącza do aplikacji udostępnionej lub użytkownika gościa można kliknij adres URL realizacji w wiadomości e-mail z zaproszeniem. Aby uzyskać więcej informacji na temat procesu realizacji, zobacz [realizacji zaproszenia współpracy B2B](redemption-experience.md).
+ - Włącz samoobsługowe zarządzanie grupami dla Twojej dzierżawy
+ - Tworzenie grupy w celu przypisywania do aplikacji i ustawić użytkownika jako właściciela
+ - Konfigurowanie aplikacji na potrzeby samoobsługi użytkowników i Przypisz grupę do aplikacji
 
-## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>Dodawanie do aplikacji użytkowników współpracy B2B pracowników przetwarzających informacje
-Przypisz użytkowników współpracy B2B do aplikacji jako pracownik przetwarzający informacje w organizacji partnera, jak pokazano w poniższym klipie wideo:
+## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Zaproś użytkownika-gościa do aplikacji przy użyciu panelu dostępu
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
+Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można użyć panelu dostępu, można zaprosić użytkownika-gościa do aplikacji, które chcą udostępniać. Użytkownik-Gość niekoniecznie nie musi zostać dodane do usługi Azure AD z wyprzedzeniem. 
 
-## <a name="information-workers-adding-b2b-collaboration-users-to-a-group"></a>Dodawanie użytkowników współpracy B2B do grupy pracowników przetwarzających informacje
+1. Otwórz Panel dostępu, przechodząc do `https://myapps.microsoft.com`.
+2. Wskaż aplikacji, wybierz wielokropek (**...** ), a następnie wybierz pozycję **aplikacji Zarządzanie**.
+ 
+   ![Panelach dostępu Zarządzanie aplikacją](media/add-users-iw/access-panel-manage-app.png)
+ 
+3. W górnej części listy użytkowników, wybierz **+**.
+   
+   ![Panel dostępu — Dodawanie użytkownika](media/add-users-iw/access-panel-manage-app-add-user.png)
+   
+4. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie dodać komunikat powitalny.
+   
+   ![Zaproszenie do panelu dostępu](media/add-users-iw/access-panel-invitation.png)
+   
+5. Wybierz **Dodaj** można wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia, konto użytkownika jest automatycznie dodawane do katalogu jako Gość.
 
-Pracownicy przetwarzający informacje podobnie można dodać użytkowników współpracy B2B do przypisanych grup, którym włączono obsługę Samoobsługowe zarządzanie grupami.
+## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Poproś kogoś dołączenia do grupy, które ma dostęp do aplikacji
+Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można zaprosić użytkowników-gości do grup, którymi zarządzają, które mają dostęp do aplikacji, które chcą udostępniać. Użytkownicy-goście nie trzeba już istnieje w katalogu. Właściciel aplikacji wykonaj poniższe kroki, aby zaprosić użytkownika gościa do grupy, dzięki czemu mogą uzyskiwać dostęp do aplikacji.
+
+1. Upewnij się, że jesteś właścicielem grupy samoobsługi, który ma dostęp do aplikacji, którą chcesz udostępnić.
+2. Otwórz Panel dostępu, przechodząc do `https://myapps.microsoft.com`.
+3. Wybierz **grup** aplikacji.
+   
+   ![Dostęp do panelu grup aplikacji](media/add-users-iw/access-panel-groups.png)
+   
+4. W obszarze **grup własnym**, wybierz grupę, która ma dostęp do aplikacji, którą chcesz udostępnić.
+   
+   ![Panel dostępu — grupy należące do mnie](media/add-users-iw/access-panel-groups-i-own.png)
+   
+5. W górnej części listy członków grupy wybierz **+**.
+   
+   ![Panel dostępu — grupy dodać członka](media/add-users-iw/access-panel-groups-add-member.png)
+   
+6. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie dodać komunikat powitalny.
+   
+   ![Zaproszenie grupy panelu dostępu](media/add-users-iw/access-panel-invitation.png)
+   
+7. Wybierz **Dodaj** można automatycznie wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia, konto użytkownika jest automatycznie dodawane do katalogu jako Gość.
+
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Zarządzanie aplikacjami samoobsługi wymaga pewnych początkowej konfiguracji przez administratora globalnego i administratora usługi Azure AD. W ramach tej instalacji możesz skonfigurować aplikację do samoobsługi i przypisania grupy do aplikacji, która może zarządzać właściciela aplikacji. Można również skonfigurować grupy aby mogła zadzwonić do żądania członkostwa, ale wymagają zatwierdzenia jako właściciela grupy. (Dowiedz się więcej o [Samoobsługowe zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+
 > [!NOTE]
-> Nie można dodać użytkowników współpracy B2B Dynamiczna grupa lub grupy, który jest synchronizowany z lokalną usługą Active Directory.
+> Nie można dodać użytkowników-gości, grupę dynamiczną lub grupy, która jest synchronizowana z usługą Active Directory w środowisku lokalnym.
 
+### <a name="enable-self-service-group-management-for-your-tenant"></a>Włącz samoobsługowe zarządzanie grupami dla Twojej dzierżawy
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako Administrator globalny.
+2. W panelu nawigacyjnym wybierz **usługi Azure Active Directory**.
+3. Wybierz **grup**.
+4. W obszarze **ustawienia**, wybierz opcję **ogólne**.
+5. W obszarze **Zarządzanie grupami usługi samoobsługowego**obok pozycji **właściciele mogą zarządzać żądaniami członkostwa grupy w panelu dostępu**, wybierz opcję **tak**.
+6. Wybierz pozycję **Zapisz**.
+
+### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Tworzenie grupy w celu przypisywania do aplikacji i ustawić użytkownika jako właściciela
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako Administrator globalny lub administrator usługi Azure AD.
+2. W panelu nawigacyjnym wybierz **usługi Azure Active Directory**.
+3. Wybierz **grup**.
+4. Wybierz **nową grupę**.
+5. W obszarze **typ grupy**, wybierz opcję **zabezpieczeń**.
+6. Wpisz **Nazwa grupy** i **opis grupy**.
+7. W obszarze **Typ członkostwa**, wybierz opcję **przypisane**.
+8. Wybierz **Utwórz**i Zamknij **grupy** strony.
+9. Na **grupy — wszystkie grupy** strony, otwórz grupę. 
+10. W obszarze **Zarządzaj**, wybierz opcję **właścicieli** > **Dodawanie właścicieli**. Wyszukaj użytkownika, który należy zarządzać dostępem do aplikacji. Wybierz użytkownika, a następnie kliknij przycisk **wybierz**.
+
+### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Konfigurowanie aplikacji na potrzeby samoobsługi użytkowników i Przypisz grupę do aplikacji
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako Administrator globalny lub administrator usługi Azure AD.
+2. W okienku nawigacji wybierz **usługi Azure Active Directory**.
+3. W obszarze **Zarządzaj**, wybierz opcję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+4. Na liście aplikacji należy znaleźć i otworzyć aplikację.
+5. W obszarze **Zarządzaj**, wybierz opcję **logowanie jednokrotne**i skonfigurować wniosek o logowanie jednokrotne. (Aby uzyskać więcej informacji, zobacz [jak zarządzać logowania jednokrotnego dla aplikacji korporacyjnych](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+6. W obszarze **Zarządzaj**, wybierz opcję **samoobsługi**i skonfiguruj dostęp do aplikacji Sklep internetowy. (Aby uzyskać więcej informacji, zobacz [sposób używania dostępu do aplikacji Sklep internetowy](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+    > [!NOTE]
+    > Ustawienia **grupę, do której należy dodać przypisanych użytkowników?** wybierz grupę utworzoną w poprzedniej sekcji.
+7. W obszarze **Zarządzaj**, wybierz opcję **użytkowników i grup**i sprawdź, czy utworzoną grupę samoobsługi pojawia się na liście.
+8. Aby dodać aplikację do panelu dostępu do właściciela grupy, wybierz **Dodaj użytkownika** > **użytkowników i grup**. Wyszukaj właściciela grupy i wybrać użytkownika, kliknij przycisk **wybierz**, a następnie kliknij przycisk **przypisać** dodać użytkownika do aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- [Jak Administratorzy usługi Azure Active Directory dodać użytkowników współpracy B2B?](add-users-administrator.md)
-- [Realizacji zaproszenia współpracy B2B](redemption-experience.md)
-- [Azure licencjonowania współpracy B2B usługi AD](licensing-guidance.md)
+- [Jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B?](add-users-administrator.md)
+- [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
+- [Licencjonowanie współpracy platformy Azure w usłudze AD B2B](licensing-guidance.md)

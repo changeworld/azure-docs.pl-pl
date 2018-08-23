@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990017"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054957"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Jak znaleźć adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
@@ -164,19 +164,11 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 
     | Klucz | Wartość |
     |-----|------------|
-    | spatialKeys | true |
-
-    Gdy [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametru zapytania jest ustawiona, odpowiedź zawiera własności geoprzestrzenne informacje o kluczu dla określonej lokalizacji.
-
-6. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
-
-    | Klucz | Wartość |
-    |-----|------------|
     | returnSpeedLimit | true |
     
     Gdy [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametru zapytania jest ustawiona, zwraca odpowiedź przesłanych limitu szybkości.
 
-7. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
+6. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 
     | Klucz | Wartość |
     |-----|------------|
@@ -184,7 +176,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 
     Gdy [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) ustawiono parametr zapytania, odpowiedzi zwraca macierzy Użyj reversegeocodes na poziomie ulicy w drodze.
 
-8. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
+7. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 
     | Klucz | Wartość |
     |-----|------------|

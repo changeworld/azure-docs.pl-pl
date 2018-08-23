@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413107"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055164"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -94,6 +94,9 @@ Korzystając z aplikacji mobilnych, takie jak aplikacja Microsoft Authenticator 
 | Dostępne funkcje aplikacji mobilnej | Kod | Kod i powiadomienia |
 
 Użytkownicy nie mają możliwość zarejestrowania aplikacji mobilnej podczas rejestrowania dla samoobsługowego resetowania haseł z [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). Użytkownicy mogą rejestrować się w aplikacji mobilnej [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), lub nowy zabezpieczeń informacji o rejestracji w wersji zapoznawczej w [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+
+> [!WARNING]
+> Należy włączyć [zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)](concept-registration-mfa-sspr-converged.md) zanim użytkownicy będą mogli korzystać z nowego środowiska w [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
 
 ### <a name="change-authentication-methods"></a>Zmiana metody uwierzytelniania
 

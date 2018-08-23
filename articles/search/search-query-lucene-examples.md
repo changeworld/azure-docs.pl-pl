@@ -1,25 +1,25 @@
 ---
 title: Przykłady zapytań Lucene dla usługi Azure Search | Dokumentacja firmy Microsoft
 description: Składnia zapytań Lucene dla Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie, promowanie terminów, wyszukiwanie wyrażenia regularnego i wyszukiwania symboli wieloznacznych w usłudze Azure Search.
-author: LiamCa
-manager: pablocas
+author: HeidiSteen
+manager: cgronlun
 tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: liamca
-ms.openlocfilehash: 7da1f5d54a9dd5b6119b81ef801b674263a98bae
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.date: 08/09/2018
+ms.author: heidist
+ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716420"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42061492"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Przykłady zapytań składni Lucene do tworzenia zaawansowanych zapytań w usłudze Azure Search
-Podczas tworzenia zapytań do usługi Azure Search, możesz zastąpić domyślną [prosty analizator zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) za pomocą alternatywnej [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sformułowanie specjalistyczne i zaawansowane zapytania definicje. 
+Podczas tworzenia zapytań do usługi Azure Search, możesz zastąpić domyślną [prosty analizator zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) z udogodniona [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sformułowanie specjalistyczne i zaawansowane zapytania definicje. 
 
-Analizator składni zapytań Lucene obsługuje bardziej złożone zapytania konstrukcji, takich jak zapytania należące do pola, rozmyte i wyszukiwanie symboli wieloznacznych, wyszukiwanie w sąsiedztwie, promowanie terminów i wyszukiwanie wyrażenia regularnego. Dodatkowe możliwości są obciążone z wymaganiami dodatkowego przetwarzania. W tym artykule możesz przejrzeć przykłady pokazujące dostępne operacje zapytań, korzystając z pełnej składni.
+Analizator składni zapytań Lucene obsługuje konstrukcje złożonego zapytania, np. zapytania należące do pola, rozmyte i wyszukiwanie symbol wieloznaczny prefiksu, wyszukiwanie w sąsiedztwie, promowanie terminów i wyszukiwanie wyrażenia regularnego. Dodatkową moc jest dostarczany z wymagania dodatkowe przetwarzanie, dzięki czemu możesz spodziewać się nieco więcej czasu wykonywania. W tym artykule możesz przejrzeć przykłady pokazujące dostępne operacje zapytań, korzystając z pełnej składni.
 
 > [!Note]
 > Wiele konstrukcje specjalne zapytania włączane przy użyciu pełnej składni zapytań Lucene nie są [przeanalizowany tekst](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis), które mogą być Zaskakujące, jeśli oczekujesz, wynikające lub Lematyzacja. Poddawać analizie leksykalnej jest realizowane wyłącznie na warunkach pełne (zapytanie termin lub frazę zapytania). Typy zapytań z warunkami niekompletne (prefiks zapytania zapytanie symboli wieloznacznych, zapytania wyrażenia regularnego, rozmyte zapytania) są dodawane bezpośrednio w drzewie zapytań, z pominięciem na etapie analizy. West jest tylko przekształcenie wykonywane na warunkach niekompletne zapytanie. 
@@ -29,7 +29,7 @@ Analizator składni zapytań Lucene obsługuje bardziej złożone zapytania kons
 
 Poniższe przykłady korzystać z indeksu wyszukiwania Pokazowa składający się z dostępnych zadań na podstawie zestawu danych, dostarczone przez [miasta w Nowym Jorku OpenData](https://opendata.cityofnewyork.us/) inicjatywy. Te dane nie uważa się bieżących lub ukończone. Indeks znajduje się w piaskownicy usługi obsługiwane przez firmę Microsoft, co oznacza, że nie ma potrzeby subskrypcji platformy Azure lub usługi Azure Search, aby wypróbować te zapytania.
 
-Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [testu za pomocą klientów REST](search-fiddler.md).
+Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [Eksploruj za pomocą klientów REST](search-fiddler.md).
 
 ### <a name="set-the-request-header"></a>Ustaw nagłówek żądania
 
@@ -60,12 +60,12 @@ Kompozycja adresu URL zawiera następujące elementy:
 Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane jako pełne dokumenty JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
   ```
 
-Ciąg zapytania ** `search=*` **, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
+Ciąg zapytania **`search=*`**, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
 
-Opcjonalnie można dodać ** `$count=true` ** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (2802 w przypadku Pokazowa).
+Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (około 2800 w przypadku Pokazowa).
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>Jak wywołać pełnej analizy Lucene
 
@@ -79,27 +79,29 @@ Wszystkie przykłady w niniejszym artykule określ **queryType = full** wyszukiw
 
 ## <a name="example-1-field-scoped-query"></a>Przykład 1: Zakres pola zapytania
 
-Pierwsze zapytanie nie jest pokaz pełnej składni Lucene (działa w przypadku składni zarówno proste, jak i pełne), ale firma Microsoft prowadzi w tym przykładzie wprowadzenie pojęcia zapytania linii bazowej, tworzącego uzasadniony sposób czytelny odpowiedź w formacie JSON. Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. 
+W pierwszym przykładzie nie jest specyficzne dla analizatora składni, ale możemy prowadzić z nim wprowadzenie pierwszego zapytanie podstawowe pojęcia: zawierania. W tym przykładzie zakresów, wykonywania zapytań i odpowiedzi na kilka konkretnych pól. Ważne jest wiedza, jak i struktury można odczytać odpowiedź w formacie JSON, po narzędzie Postman lub wyszukiwania Eksploratora. 
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=*
+Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. Składnia jest **searchFields** ograniczyć wykonywanie zapytania do tylko pola business_title i **wybierz** można określić pola, które mają zostać uwzględnione w odpowiedzi.
+
+```http
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
-
-**SearchFields** parametr ogranicza wyszukiwanie do tylko pola tytułu biznesowych. **Wybierz** parametr określa pola, które znajdują się w zestawie wyników.
 
 Odpowiedź dla tego zapytania powinien wyglądać podobnie do poniższej zrzut ekranu.
 
   ![Postman przykładowa odpowiedź](media/search-query-lucene-examples/postman-sample-results.png)
 
-Być może Zauważyłeś, że wynik wyszukiwania jest także zwracany dla każdego dokumentu, nawet jeśli nie określono wyniku wyszukiwania. Jest to spowodowane wynik wyszukiwania jest metadanych z wartością wskazujący rangi kolejność wyników. Jednolite wyniki 1 wystąpić, gdy jest nie rangę, albo ponieważ wyszukiwanie pełnotekstowe nie jest wyszukiwanie lub ponieważ nie kryteria w celu zastosowania. Dla wyszukiwania o wartości null jest kryteriów i wiersze powracające znajdują się w dowolnej kolejności. Zgodnie z kryteriami wyszukiwania przyjmuje więcej definicji, zostaną wyświetlone wyniki ewoluować w istotne wartości wyszukiwania.
+Być może Zauważyłeś, wynik wyszukiwania w odpowiedzi. Jednolite wyniki 1 wystąpić, gdy jest nie rangę, albo ponieważ wyszukiwanie pełnotekstowe nie jest wyszukiwanie lub ponieważ żadne kryteria nie została zastosowana. Dla wartości null wyszukiwania przy użyciu kryteriów wiersze wrócić w dowolnej kolejności. Umieszczonego rzeczywiste kryteria zobaczysz wyniki ewoluować w istotne wartości wyszukiwania.
 
-## <a name="example-2-in-field-filtering"></a>Przykład 2: Filtrowanie w polu
+## <a name="example-2-intra-field-filtering"></a>Przykład 2: Filtrowanie w obrębie pola
 
 Pełna składnia Lucene obsługuje wyrażenia w obrębie pola. To zapytanie wyszukuje tytuły firm z starszy termin w nich, ale nie młodszych:
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:senior+NOT+junior
 ```
+
+  ![Postman przykładowa odpowiedź](media/search-query-lucene-examples/intrafieldfilter.png)
 
 Określając **fieldname:searchterm** konstrukcji, można zdefiniować operacji fielded zapytania, gdzie pole jest pojedynczego wyrazu, a termin wyszukiwania jest również pojedynczego wyrazu lub frazy, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:
 
@@ -119,6 +121,7 @@ To zapytanie wyszukuje zadania za pomocą termin "Skojarz" (celowo błędna):
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:asosiate~
 ```
+  ![Wyszukiwanie rozmyte odpowiedzi](media/search-query-lucene-examples/fuzzysearch.png)
 
 Na [dokumentacji Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), Wyszukiwanie rozmyte opierają się na [odległość Damerau Levenshtein](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
@@ -134,6 +137,7 @@ W tym zapytaniu dla zadań z terminem "analityka starszy" gdzie rozdzielone nie 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~1
 ```
+  ![Zapytanie odległości między elementami](media/search-query-lucene-examples/proximity-before.png)
 
 Wypróbuj ją ponownie usuwanie wyrazów między termin "starszy analityka". Należy zauważyć, że dokumenty 8 są zwracane dla tego zapytania, w przeciwieństwie do 10 poprzednie zapytanie.
 
@@ -144,11 +148,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-5-term-boosting"></a>Przykład 5: Promowanie terminów
 Promowanie terminów odnosi się do dokumentu większe, jeśli zawiera on wzmocnione termin względem dokumentów, które nie zawierają termin klasyfikacji. Zwiększ termin, użyj daszek, "^", symbol ze współczynnikiem boost (liczba) na końcu okresu, w przypadku wyszukiwania. 
 
-W tym "przed" zapytania wyszukiwania zadań z terminem *analityka komputera* i zwróć uwagę, Brak wyników z obu wyrazów *komputera* i *analityka*, jeszcze * komputer* zadań znajdują się na początku wyników.
+W tym "przed" zapytania wyszukiwania zadań z terminem *analityka komputera* i zwróć uwagę, Brak wyników z obu wyrazów *komputera* i *analityka*, jeszcze  *komputer* zadań znajdują się na początku wyników.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst
 ```
+  ![Promowanie przed](media/search-query-lucene-examples/termboostingbefore.png)
 
 W zapytaniu "po", powtórz wyszukiwanie, tym razem zwiększania wyniku wyniki z terminem *analityka* przez okres *komputera* oba te wyrazy nie istnieją. 
 
@@ -156,6 +161,8 @@ W zapytaniu "po", powtórz wyszukiwanie, tym razem zwiększania wyniku wyniki z 
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst%5e2
 ```
 Bardziej ludzki można odczytać wersji powyższym zapytaniu jest `search=business_title:computer analyst^2`. Dla zapytania wymagającego `^2` zakodowanymi w formacie `%5E2`, które jest trudniejsze, aby zobaczyć.
+
+  ![Promowanie po](media/search-query-lucene-examples/termboostingafter.png)
 
 Promowanie terminów różni się od profile oceniania, w tym profile oceniania zwiększania niektóre pola, a nie konkretne terminy. Poniższy przykład pomoże zilustrować różnice.
 
@@ -173,6 +180,9 @@ W tym zapytaniu wyszukiwania zadań z termin starszy lub inny poziom: "search = 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:/(Sen|Jun)ior/
 ```
+
+  ![Wyrażenie regularne zapytania](media/search-query-lucene-examples/regex.png)
+
 > [!Note]
 > Wyrażenie regularne zapytania nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). West jest tylko przekształcenie wykonywane na warunkach niekompletne zapytanie.
 >
@@ -180,12 +190,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>Przykład 7: Wyszukiwanie symboli wieloznacznych
 Możesz użyć składni powszechnie wielu (\*) lub pojedynczego wyszukiwania symboli wieloznacznych znaku (?). Należy pamiętać, że analizator składni zapytań Lucene obsługuje korzystanie z tych symboli za pomocą pojedynczego terminu i nie frazę.
 
-W tym zapytaniu wyszukiwania zadań, które zawierają prefiks programu, który zamieści tytuły firm z warunkami programowania programisty w nim.
+W tym zapytaniu wyszukiwania zadań, które zawierają prefiks programu, który zamieści tytuły firm z warunkami programowania programisty w nim. Nie można użyć * lub? symbol jako pierwszego znaku wyszukiwania.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*
 ```
-Nie można użyć * lub? symbol jako pierwszego znaku wyszukiwania.
+  ![Symbol wieloznaczny zapytania](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
 > Symbol wieloznaczny zapytania nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). West jest tylko przekształcenie wykonywane na warunkach niekompletne zapytanie.

@@ -1,6 +1,6 @@
 ---
 title: Polecenia cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse
-description: Znajdź top poleceń cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse, łącznie ze sposobem wstrzymywanie i wznawianie bazy danych.
+description: Znajdź najważniejsze poleceń cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse, w tym jak wstrzymać i wznowić bazy danych.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,24 +10,24 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 43bf1bcb1ccbb82fc15cddde85e06cac0abfd9c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 82e635f58ab559480b55df6cee8e966c8d32bf01
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599710"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054143"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST dla usługi SQL Data Warehouse
-Wiele zadań administracyjnych usługi SQL Data Warehouse można zarządzać za pomocą poleceń cmdlet programu Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów sposobu użycia poleceń programu PowerShell do automatyzacji typowych zadań w magazynie danych SQL.  Dla niektórych dobre przykłady REST, zobacz artykuł [Zarządzanie skalowanie REST][Manage scalability with REST].
+# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST usługi SQL Data Warehouse
+Wiele zadań administracyjnych SQL Data Warehouse mogą być zarządzane przy użyciu poleceń cmdlet programu Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów sposobu używania poleceń programu PowerShell do automatyzacji typowych zadań w usłudze SQL Data Warehouse.  Aby uzyskać pewne dobre przykłady REST, zobacz artykuł [Zarządzanie skalowalności za pomocą architektury REST][Manage scalability with REST].
 
 > [!NOTE]
-> Aby można było używać programu Azure PowerShell z usługą Magazyn danych SQL, potrzebujesz programu Azure PowerShell w wersji 1.0.3 lub nowszej.  Wersję można sprawdzić, uruchamiając **Get-Module - ListAvailable-Name Azure**.  Najnowszą wersję można zainstalować z [Instalatora platformy sieci Web firmy Microsoft][Microsoft Web Platform Installer].  Aby uzyskać więcej informacji na temat instalowania najnowszej wersji, zobacz [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Jak zainstalować i skonfigurować program Azure PowerShell).
+> Aby można było używać programu Azure PowerShell z usługą SQL Data Warehouse, potrzebujesz programu Azure PowerShell w wersji 1.0.3 lub nowszej.  Wersję można sprawdzić, uruchamiając **Get-Module - ListAvailable-Name Azure**.  Najnowszą wersję można zainstalować z [Instalatora platformy sieci Web firmy Microsoft][Microsoft Web Platform Installer].  Aby uzyskać więcej informacji na temat instalowania najnowszej wersji, zobacz [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Jak zainstalować i skonfigurować program Azure PowerShell).
 > 
 > 
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Wprowadzenie do poleceń cmdlet programu Azure PowerShell
 1. Otwórz program Windows PowerShell.
-2. W wierszu polecenia programu PowerShell, uruchom następujące polecenia, aby zarejestrować się w usłudze Azure Resource Manager i wyboru subskrypcji.
+2. W wierszu polecenia programu PowerShell uruchom następujące polecenia, aby zarejestrować się w usłudze Azure Resource Manager i wybierz swoją subskrypcję.
    
     ```PowerShell
     Connect-AzureRmAccount
@@ -35,13 +35,13 @@ Wiele zadań administracyjnych usługi SQL Data Warehouse można zarządzać za 
     Select-AzureRmSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>Przykład magazynu danych SQL Wstrzymaj
-Wstrzymać bazy danych o nazwie "Database02" znajdującej się na serwerze o nazwie "Serwer01".  Serwer jest w grupie zasobów platformy Azure o nazwie "ResourceGroup1."
+## <a name="pause-sql-data-warehouse-example"></a>Przykład magazynu danych SQL wstrzymania
+Wstrzymywanie bazy danych o nazwie "Database02" znajdującej się na serwerze o nazwie "Serwer01".  Serwer znajduje się w grupie zasobów platformy Azure o nazwie "ResourceGroup1."
 
 ```Powershell
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Zmiany, w tym przykładzie powoduje przekazanie w potoku pobrano obiekt do [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase].  W związku z tym bazy danych zostało wstrzymane. Polecenia końcowego pokazuje wyniki.
+Odmiana, w tym przykładzie powoduje przekazanie w potoku pobrany obiekt do [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase].  W rezultacie baza danych jest wstrzymany. Końcowe polecenie wyświetla wyniki.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -56,7 +56,7 @@ Wznów działanie bazy danych o nazwie "Database02" znajdującej się na serwerz
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Zmiany, w tym przykładzie pobierana bazy danych o nazwie "Database02" z serwerem o nazwie "Serwer01", który jest zawarty w grupie zasobów o nazwie "ResourceGroup1." Go powoduje przekazanie w potoku pobrano obiekt do [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase].
+Odmiana, w tym przykładzie pobiera bazę danych o nazwie "Database02" z serwerem o nazwie "Serwer01", który jest zawarty w grupie zasobów o nazwie "ResourceGroup1." Przekazuje on pobrany obiekt do [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase].
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -64,31 +64,31 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
 
 > [!NOTE]
-> Należy pamiętać, że jeśli serwer jest foo.database.windows.net, użyj "foo" jako ServerName — poleceń cmdlet programu PowerShell.
+> Pamiętaj, że jeśli serwer to foo.database.windows.net, użyj "foo", jako ServerName — polecenia cmdlet programu PowerShell.
 > 
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>Inne obsługiwane polecenia cmdlet programu PowerShell
-Te polecenia cmdlet programu PowerShell są obsługiwane przez Magazyn danych SQL Azure.
+Te polecenia cmdlet programu PowerShell są obsługiwane za pomocą usługi Azure SQL Data Warehouse.
 
 * [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
 * [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
 * [Get-AzureRmSqlDatabaseRestorePoints][Get-AzureRmSqlDatabaseRestorePoints]
-* [Nowe AzureRmSqlDatabase][New-AzureRmSqlDatabase]
+* [Nowy AzureRmSqlDatabase][New-AzureRmSqlDatabase]
 * [Remove-AzureRmSqlDatabase][Remove-AzureRmSqlDatabase]
-* [Przywracanie AzureRmSqlDatabase][Restore-AzureRmSqlDatabase]
+* [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase]
 * [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase]
 * [SELECT-AzureRmSubscription][Select-AzureRmSubscription]
-* [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
-* [Wstrzymaj AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
+* [Polecenia Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
+* [Wstrzymywanie AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej przykładów programu PowerShell zobacz:
 
-* [Utwórz magazyn danych SQL przy użyciu programu PowerShell][Create a SQL Data Warehouse using PowerShell]
+* [Tworzenie magazynu danych SQL przy użyciu programu PowerShell][Create a SQL Data Warehouse using PowerShell]
 * [Przywracanie bazy danych][Database restore]
 
-Inne zadania, których można zautomatyzować przy użyciu programu PowerShell, zobacz [polecenia cmdlet bazy danych SQL Azure][Azure SQL Database Cmdlets]. Należy pamiętać, że nie wszystkie polecenia cmdlet bazy danych SQL Azure są obsługiwane dla usługi Azure SQL Data Warehouse.  Aby uzyskać listę zadań, których można zautomatyzować z POZOSTAŁĄ, zobacz [operacje dla baz danych SQL Azure][Operations for Azure SQL Databases].
+Aby uzyskać inne zadania, które można zautomatyzować za pomocą programu PowerShell, zobacz [polecenia cmdlet usługi Azure SQL Database][Azure SQL Database Cmdlets]. Należy pamiętać, że nie wszystkie polecenia cmdlet usługi Azure SQL Database są obsługiwane w przypadku usługi Azure SQL Data Warehouse.  Aby uzyskać listę zadań, które można zautomatyzować za pomocą architektury REST, zobacz [operacje dla baz danych SQL Azure][Operations for Azure SQL Databases].
 
 <!--Image references-->
 
@@ -99,19 +99,19 @@ Inne zadania, których można zautomatyzować przy użyciu programu PowerShell, 
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
-[Azure SQL Database Cmdlets]: https://msdn.microsoft.com/library/mt574084.aspx
+[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.sql
 [Operations for Azure SQL Databases]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[Get-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt603648.aspx
-[Get-AzureRmSqlDeletedDatabaseBackup]: https://msdn.microsoft.com/library/mt693387.aspx
-[Get-AzureRmSqlDatabaseRestorePoints]: https://msdn.microsoft.com/library/mt603642.aspx
-[New-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619339.aspx
-[Remove-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619368.aspx
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
-[Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
+[Get-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase
+[Get-AzureRmSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDeletedDatabaseBackup
+[Get-AzureRmSqlDatabaseRestorePoints]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDatabaseRestorePoints
+[New-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/New-AzureRmSqlDatabase
+[Remove-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlDatabase
+[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/Restore-AzureRmSqlDatabase
+[Resume-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/Resume-AzureRmSqlDatabase
 <!-- It appears that Select-AzureRmSubscription isn't documented, so this points to Select-AzureSubscription -->
 [Select-AzureRmSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
-[Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
-[Suspend-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619337.aspx
+[Set-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlDatabase
+[Suspend-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/Suspend-AzureRmSqlDatabase
 
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps

@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie wdrożenia Internetu rzeczy | Dokumentacja firmy Microsoft
-description: W tym artykule szczegółowo sposobu zabezpieczania wdrożenia IoT
+title: Zabezpieczanie wdrożenia Internet of Things | Dokumentacja firmy Microsoft
+description: W tym artykule szczegółowo przedstawiono sposób Zabezpieczanie wdrożenia IoT
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,18 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: b90d916514e7b5ce566d4823b44d4b4ef575224d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 00acb08f567dbd50522d0e8a0b7b9a18a6658000
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35938693"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059538"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
-## <a name="iot-solution-accelerator-cipher-suites"></a>Mechanizmy szyfrowania akceleratora rozwiązania IoT
+## <a name="iot-solution-accelerator-cipher-suites"></a>Mechanizmy szyfrowania akcelerator rozwiązań IoT
 
-Akceleratorów rozwiązania IoT obsługuje następujące mechanizmy szyfrowania, w tej kolejności.
+Akceleratory rozwiązań IoT obsługują następujące mechanizmy szyfrowania w podanej kolejności.
 
 | Mechanizmy szyfrowania | Długość |
 | --- | --- |
@@ -37,6 +37,4 @@ Akceleratorów rozwiązania IoT obsługuje następujące mechanizmy szyfrowania,
 
 ## <a name="see-also"></a>Zobacz także
 
-Przeczytaj o zabezpieczeniach Centrum IoT w [kontrolować dostęp do Centrum IoT] [ lnk-devguide-security] w Podręczniku dewelopera Centrum IoT.
-
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security.md
+Przeczytaj na temat zabezpieczeń usługi IoT Hub w [kontrolować dostęp do usługi IoT Hub](../iot-hub/iot-hub-devguide-security.md) w przewodniku dla deweloperów usługi IoT Hub. 

@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 50fb5eeea5e3d6a2f991e92ae9c188822ddb40b0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528736"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060824"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
-W tym artykule opisano aspekty szablonu usługi Azure Resource Manager, które są stosowane do maszyn wirtualnych. W tym artykule nie opisano pełną szablonu do utworzenia maszyny wirtualnej; w tym należy definicji zasobu dla kont magazynu, interfejsy sieciowe publicznych adresów IP i sieci wirtualnych. Aby uzyskać więcej informacji o sposobie tych zasobów można definiować razem, zobacz [Przewodnik po szablonie usługi Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+W tym artykule opisano aspekty szablonu usługi Azure Resource Manager, które są stosowane do maszyn wirtualnych. W tym artykule nie opisano kompletny szablon, podczas tworzenia maszyny wirtualnej; w tym należy definicji zasobu dla konta magazynu, interfejsy sieciowe, publiczne adresy IP i sieci wirtualnych. Aby uzyskać więcej informacji na temat sposobu te zasoby można zdefiniować ze sobą, zobacz [Przewodnik po szablonie usługi Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Istnieje wiele [szablony w galerii](https://azure.microsoft.com/documentation/templates/?term=VM) zawierające zasobu maszyny Wirtualnej. Nie wszystkie elementy, które można uwzględnić w szablonie są opisane poniżej.
+Istnieje wiele [szablonów w galerii](https://azure.microsoft.com/documentation/templates/?term=VM) zawierające zasób maszyny Wirtualnej. Nie wszystkie elementy, które mogły zostać uwzględnione w szablonie są opisane poniżej.
 
-W tym przykładzie pokazano sekcję typowe zasobu szablon umożliwiający tworzenie określonej liczby maszyn wirtualnych:
+W tym przykładzie pokazano sekcję typowe zasobu szablon służący do tworzenia ciągu określonej liczby maszyn wirtualnych:
 
 ```json
 "resources": [
@@ -146,29 +146,29 @@ W tym przykładzie pokazano sekcję typowe zasobu szablon umożliwiający tworze
 ``` 
 
 > [!NOTE] 
->W tym przykładzie opiera się na konto magazynu, który został wcześniej utworzony. Konta magazynu można utworzyć przez wdrożenie jej z szablonu. Przykład również zależy od interfejsu sieciowego i jego zasoby zależne, zdefiniowane w szablonie. Te zasoby nie są wyświetlane w przykładzie.
+>W tym przykładzie opiera się na konto magazynu, który został wcześniej utworzony. Konto magazynu można utworzyć przez wdrożenie jej z szablonu. Przykład korzysta również interfejs sieciowy i jego zasobów zależnych, zdefiniowane w szablonie. Te zasoby nie są wyświetlane w przykładzie.
 >
 >
 
 ## <a name="api-version"></a>Wersja interfejsu API
 
-Podczas wdrażania zasobów przy użyciu szablonu, należy określić wersję interfejsu API do użycia. W przykładzie pokazano zasobu maszyny wirtualnej za pomocą tego elementu apiVersion:
+Podczas wdrażania zasobów przy użyciu szablonu, należy określić wersję interfejsu API do użycia. W przykładzie pokazano zasobu maszyny wirtualnej przy użyciu tego elementu apiVersion:
 
 ```
 "apiVersion": "2016-04-30-preview",
 ```
 
-Wersja interfejsu API, określ w szablonie dotyczy właściwości, które można zdefiniować w szablonie. Ogólnie rzecz biorąc należy zaznaczyć najnowszą wersję interfejsu API, podczas tworzenia szablonów. Istniejących szablonów można zdecydować, czy chcesz nadal używać starszej wersji interfejsu API, lub zaktualizować szablon do najnowszej wersji móc korzystać z nowych funkcji.
+Wersja interfejsu API, określ w szablonie ma wpływ na właściwości, które można zdefiniować w szablonie. Ogólnie rzecz biorąc należy wybrać najbardziej aktualną wersję interfejsu API podczas tworzenia szablonów. Dla istniejących szablonów można zdecydować, czy chcesz nadal używać starszej wersji interfejsu API lub zaktualizować szablon do najnowszej wersji, aby móc korzystać z nowych funkcji.
 
-Użyj tych możliwości pobierania najnowszej wersji interfejsu API:
+Użyj tych możliwości w celu uzyskania najnowszej wersji interfejsu API:
 
-- Interfejs API REST - [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
+- Interfejs API REST — [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0 — [az Pokaż dostawcy](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Azure CLI 2.0 — [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parametry i zmienne
 
-[Parametry](../../resource-group-authoring-templates.md) ułatwiają określenie wartości dla szablonu po jego uruchomieniu. W tej sekcji parametrów jest używana w tym przykładzie:
+[Parametry](../../resource-group-authoring-templates.md) ułatwiają określenie wartości dla szablonu, po uruchomieniu go. W tej sekcji parametrów jest używany w przykładzie:
 
 ```        
 "parameters": {
@@ -178,9 +178,9 @@ Użyj tych możliwości pobierania najnowszej wersji interfejsu API:
 },
 ```
 
-Podczas wdrażania szablonu przykład wprowadzenie wartości dla nazwy i hasła konta administratora na każdej maszyny Wirtualnej i liczbę maszyn wirtualnych, aby utworzyć. Istnieje możliwość określenia wartości parametrów w osobnym pliku, który jest zarządzany przy użyciu szablonu lub podanie wartości po wyświetleniu monitu.
+Gdy wdrożysz przykładowy szablon, można wprowadzić wartości nazwy i hasła konta administratora na każdej maszynie Wirtualnej i liczbę maszyn wirtualnych, aby utworzyć. Masz możliwość określania wartości parametrów w oddzielnym pliku, który jest zarządzany przy użyciu szablonu lub podając wartości po wyświetleniu monitu.
 
-[Zmienne](../../resource-group-authoring-templates.md) ułatwiają konfigurowanie wartości w szablonie często używane w całej go lub które mogą ulec zmianie. W tej sekcji zmiennych jest używana w tym przykładzie:
+[Zmienne](../../resource-group-authoring-templates.md) ułatwiają konfigurowanie wartości w szablonie, które są używane wielokrotnie w całym go lub które mogą ulec zmianie. Ta sekcja zmiennych jest używana w przykładzie:
 
 ```
 "variables": { 
@@ -213,11 +213,11 @@ Podczas wdrażania szablonu przykład wprowadzenie wartości dla nazwy i hasła 
 }, 
 ```
 
-Podczas wdrażania szablonu przykładowe wartości zmiennych są używane nazwy i identyfikatora wcześniej utworzone konto magazynu. Zmienne są również używane w celu zapewnienia ustawień diagnostycznych rozszerzenia. Użyj [najlepszych rozwiązań dotyczących tworzenia szablonów usługi Azure Resource Manager](../../resource-manager-template-best-practices.md) Aby określić sposób strukturę parametrów i zmiennych w szablonie.
+Podczas wdrażania przykładowy szablon wartości zmiennych są używane dla nazwy i identyfikatora poprzednio utworzonego konta magazynu. Zmienne są również używane, aby określić ustawienia dla rozszerzenia diagnostycznego. Użyj [najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager](../../resource-manager-template-best-practices.md) ułatwią Ci zdecydować, jak struktury, parametry i zmienne w szablonie.
 
 ## <a name="resource-loops"></a>Pętle zasobów
 
-Jeśli potrzebujesz więcej niż jednej maszyny wirtualnej dla aplikacji, można użyć elementu kopiowania w szablonie. Ten opcjonalny element w pętli tworzenie liczby maszyn wirtualnych, które określono jako parametr:
+Jeśli potrzebujesz więcej niż jednej maszyny wirtualnej dla aplikacji, można użyć elementu kopii w szablonie. Ten opcjonalny element pętli tworzenia wielu maszyn wirtualnych, które określony jako parametr:
 
 ```
 "copy": {
@@ -226,7 +226,7 @@ Jeśli potrzebujesz więcej niż jednej maszyny wirtualnej dla aplikacji, można
 },
 ```
 
-Zauważ również, w tym przykładzie użytą indeks pętli, określając niektóre wartości dla zasobu. Na przykład jeśli wprowadzono liczby wystąpień trzy nazwy dysków systemu operacyjnego są myOSDisk1, myOSDisk2 i myOSDisk3:
+Zauważ również, w przykładzie, indeks pętli jest używana podczas określania niektóre wartości dla zasobu. Na przykład jeśli wprowadzono liczbę wystąpień jako trzy nazwy dysków systemu operacyjnego są myOSDisk1 myOSDisk2 i myOSDisk3:
 
 ```
 "osDisk": { 
@@ -237,11 +237,11 @@ Zauważ również, w tym przykładzie użytą indeks pętli, określając niekt�
 ```
 
 > [!NOTE] 
->W tym przykładzie użyto zarządzanych dyski dla maszyn wirtualnych.
+>W tym przykładzie korzysta z dysków zarządzanych dla maszyn wirtualnych.
 >
 >
 
-Należy pamiętać, że tworzenie pętli dla jednego zasobu w szablonie może wymagać używania pętli podczas tworzenia lub uzyskiwania dostępu do innych zasobów. Na przykład wiele maszyn wirtualnych nie mogą używać tego samego interfejsu sieciowego, dlatego jeśli szablonu w pętli tworzenia trzech maszyn wirtualnych należy również pętli przez proces tworzenia trzech interfejsów sieciowych. Podczas przypisywania do interfejsu sieciowego z maszyną wirtualną, indeks pętli jest używany do identyfikowania go:
+Należy pamiętać, że tworzenie pętli dla jednego zasobu w szablonie mogą wymagać używania pętli, podczas tworzenia lub uzyskiwania dostępu do innych zasobów. Na przykład wiele maszyn wirtualnych nie można użyć tego samego interfejsu sieciowego, więc jeśli szablon pętli tworzenie trzech maszyn wirtualnych należy również pętli proces tworzenia trzy interfejsy sieciowe. Podczas przypisywania interfejsu sieciowego do maszyny Wirtualnej, indeks pętli jest używany do identyfikowania:
 
 ```
 "networkInterfaces": [ { 
@@ -252,7 +252,7 @@ Należy pamiętać, że tworzenie pętli dla jednego zasobu w szablonie może wy
 
 ## <a name="dependencies"></a>Zależności
 
-Najwięcej zasobów są zależne od innych zasobów potrzebnych do prawidłowego działania. Maszyny wirtualne muszą być skojarzone z siecią wirtualną i zrobić, że wymaga ona interfejs sieciowy. [DependsOn](../../resource-group-define-dependencies.md) element służy do upewnij się, że interfejs sieciowy jest gotowa do użycia, przed utworzeniem maszyn wirtualnych:
+Większość zasobów są zależne od innych zasobów, aby działać poprawnie. Maszyny wirtualne muszą być skojarzone z siecią wirtualną i celu, że wymaga ona interfejsu sieciowego. [DependsOn](../../resource-group-define-dependencies.md) element jest używany, aby upewnić się, że interfejs sieciowy jest gotowa do użycia, przed utworzeniem maszyn wirtualnych:
 
 ```
 "dependsOn": [
@@ -260,9 +260,9 @@ Najwięcej zasobów są zależne od innych zasobów potrzebnych do prawidłowego
 ],
 ```
 
-Menedżer zasobów wdraża równolegle wszystkie zasoby, które nie są zależne od innego zasobu wdrażany. Należy zachować ostrożność podczas ustawiania zależności, ponieważ przypadkowo spowalniają wdrożenia przez określenie niepotrzebnych zależności. Zależności mogą być powiązane za pomocą wielu zasobów. Na przykład interfejsu sieciowego jest zależna od publicznego adresu IP i zasoby sieci wirtualnej.
+Resource Manager wdrożyła równolegle je wszystkie zasoby, które nie są zależne od innego zasobu wdrożenia. Należy zachować ostrożność podczas ustawiania zależności, ponieważ może przypadkowo spowalniać wdrożenia, określając niepotrzebne zależności. Zależności można połączyć w łańcuch za pomocą wielu zasobów. Na przykład interfejs sieciowy jest zależny od publicznego adresu IP i zasoby sieci wirtualnej.
 
-Jak sprawdzić, czy zależność jest wymagane? Sprawdź wartości ustawionej w szablonie. Element punktów definicji zasobu maszyny wirtualnej do innego zasobu, które zostało wdrożone w tym samym szablonie, należy najpierw zależności. Na przykład na komputerze wirtualnym przykład definiuje profilu sieciowego:
+Skąd wiadomo, czy zależność jest wymagana? Przyjrzyj się wartości, które są zdefiniowane w szablonie. Jeśli element w punktach definicji zasobu maszyny wirtualnej do innego zasobu, który jest wdrożony w tym samym szablonie, konieczne będzie zależności. Na przykład maszyny wirtualnej przykład definiuje profilu sieciowego:
 
 ```
 "networkProfile": { 
@@ -273,25 +273,25 @@ Jak sprawdzić, czy zależność jest wymagane? Sprawdź wartości ustawionej w 
 },
 ```
 
-Aby ustawić tę właściwość, musi istnieć interfejsu sieciowego. W związku z tym należy zależności. Należy również ustawić zależność, gdy jeden zasób (podrzędny) zdefiniowano w ramach innego zasobu (nadrzędnego). Na przykład ustawienia diagnostyki i rozszerzenia niestandardowego skryptu są oba zdefiniowane jako zasoby podrzędne maszyny wirtualnej. Nie można utworzyć dopóki maszyna wirtualna istnieje. W związku z tym oba zasoby są oznaczone jako zależne od maszyny wirtualnej.
+Aby ustawić tę właściwość, musi istnieć interfejs sieciowy. Dlatego konieczne jest zależność. Należy również ustawić zależność, gdy jeden zasób (element podrzędny) zdefiniowano w ramach innego zasobu (nadrzędnego). Na przykład ustawienia diagnostyczne i rozszerzenia niestandardowego skryptu są definiowane jako zasoby podrzędne maszyny wirtualnej. Nie można utworzyć do momentu maszyna wirtualna istnieje. W związku z tym oba zasoby są oznaczone jako zależny od maszyny wirtualnej.
 
 ## <a name="profiles"></a>Profile
 
-Niektóre elementy profilu są używane podczas definiowania zasobu maszyny wirtualnej. Niektóre są wymagane, a inne opcjonalne. Na przykład hardwareProfile, osProfile storageProfile i networkProfile elementy są wymagane, ale diagnosticsProfile jest opcjonalna. Te profile zdefiniować ustawienia, takie jak:
+Niektóre elementy profilu są używane podczas definiowania zasobu maszyny wirtualnej. Niektóre są wymagane, a niektóre są opcjonalne. Na przykład — obiekt hardwareProfile osProfile, storageProfile oraz elementy networkProfile elementy są wymagane, ale diagnosticsProfile jest opcjonalne. Te profile definiują ustawienia, takie jak:
    
 - [Rozmiar](sizes.md)
-- [Nazwa](/architecture/best-practices/naming-conventions) i poświadczenia
+- [Nazwa](/azure/architecture/best-practices/naming-conventions) i poświadczeń
 - dysk i [ustawień systemu operacyjnego](cli-ps-findimage.md)
 - [Interfejs sieciowy](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
-- Diagnostyki rozruchu
+- Diagnostyka rozruchu
 
-## <a name="disks-and-images"></a>Dyski i obrazów
+## <a name="disks-and-images"></a>Dyski i obrazy
    
-Na platformie Azure, pliki wirtualnego dysku twardego może reprezentować [dysków lub obrazów](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). W przypadku systemu operacyjnego w pliku vhd jest przeznaczone do można określonej maszyny Wirtualnej, jest określana na jako dysk. Gdy systemu operacyjnego w pliku vhd jest uogólnione w celu można utworzyć wiele maszyn wirtualnych, jego jest określany jako obraz.   
+Na platformie Azure, pliki wirtualnego dysku twardego może reprezentować [dysków lub obrazów](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). System operacyjny w pliku wirtualnego dysku twardego jest przeznaczone do określonej maszyny Wirtualnej, jest określany na dysk. Plik wirtualnego dysku twardego systemu operacyjnego jest uogólniony, aby służyć do tworzenia wielu maszyn wirtualnych, jest określany na jako obraz.   
     
-### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Tworzenie nowych maszyn wirtualnych i nowych dysków z obrazu platformy
+### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Tworzenie nowych maszyn wirtualnych i nowych dysków na podstawie obrazu platformy
 
-Podczas tworzenia maszyny Wirtualnej należy zdecydować, jakiego systemu operacyjnego do użycia. Element elementu imageReference służy do definiowania nowej maszyny Wirtualnej systemu operacyjnego. W przykładzie pokazano definicję dla systemu operacyjnego Windows Server:
+Podczas tworzenia maszyny Wirtualnej, należy zdecydować, jakiego systemu operacyjnego do użycia. Elementu imageReference służy do definiowania systemu operacyjnego nowej maszyny Wirtualnej. W przykładzie pokazano definicję dla systemu operacyjnego Windows Server:
 
 ```
 "imageReference": { 
@@ -302,7 +302,7 @@ Podczas tworzenia maszyny Wirtualnej należy zdecydować, jakiego systemu operac
 },
 ```
 
-Może użyć tej definicji, jeśli chcesz utworzyć systemu operacyjnego Linux:
+Jeśli chcesz utworzyć systemu operacyjnego Linux, możesz użyć tej definicji:
 
 ```
 "imageReference": {
@@ -313,7 +313,7 @@ Może użyć tej definicji, jeśli chcesz utworzyć systemu operacyjnego Linux:
 },
 ```
 
-Ustawienia konfiguracji dla dysku systemu operacyjnego są przypisywane z elementem osDisk. W przykładzie zdefiniowano nowych dysków zarządzanych w trybie buforowania, wartość **ReadWrite** i że dysk jest tworzony z [obrazu platformy](cli-ps-findimage.md):
+Ustawienia konfiguracji dla dysku systemu operacyjnego są przypisywane przy użyciu elementu osDisk. W przykładzie zdefiniowano nowego dysku zarządzanego w trybie buforowania równa **ReadWrite** oraz że dysk jest tworzony z [obrazu platformy](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -323,9 +323,9 @@ Ustawienia konfiguracji dla dysku systemu operacyjnego są przypisywane z elemen
 },
 ```
 
-### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Tworzenie nowych maszyn wirtualnych z istniejących dysków zarządzanych
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Tworzenie nowych maszyn wirtualnych na podstawie istniejących dysków zarządzanych
 
-Jeśli chcesz tworzyć maszyny wirtualne z istniejącej dysków, Usuń elementu imageReference i elementy osProfile i Definiuj następujące ustawienia dysku:
+Jeśli chcesz utworzyć maszyny wirtualne z istniejących dysków, Usuń imageReference i elementy typu osProfile, a Definiuj następujące ustawienia dysku:
 
 ```
 "osDisk": { 
@@ -338,9 +338,9 @@ Jeśli chcesz tworzyć maszyny wirtualne z istniejącej dysków, Usuń elementu 
 },
 ```
 
-### <a name="create-new-virtual-machines-from-a-managed-image"></a>Tworzenie nowych maszyn wirtualnych z zarządzanego obrazu
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>Tworzenie nowych maszyn wirtualnych na podstawie obrazu zarządzanego
 
-Jeśli chcesz utworzyć maszynę wirtualną z do zarządzanego obrazu, zmień element elementu imageReference i Definiuj następujące ustawienia dysku:
+Jeśli chcesz utworzyć maszynę wirtualną z obrazu zarządzanego Zmienianie elementu imageReference i Definiuj następujące ustawienia dysku:
 
 ```
 "storageProfile": { 
@@ -356,9 +356,9 @@ Jeśli chcesz utworzyć maszynę wirtualną z do zarządzanego obrazu, zmień el
 },
 ```
 
-### <a name="attach-data-disks"></a>Dołącz dysków z danymi
+### <a name="attach-data-disks"></a>Dołączanie dysków danych
 
-Można opcjonalnie dodawać dysków z danymi z maszynami wirtualnymi. [Liczba dysków](sizes.md) zależy od rozmiaru dysku systemu operacyjnego, którego używasz. Maksymalna liczba dysków danych, które można dodać do nich o rozmiarze maszyn wirtualnych ustawioną Standard_DS1_v2 wynosi dwa. W tym przykładzie jeden dysk danych zarządzanych jest dodawany do każdej maszyny Wirtualnej:
+Możesz opcjonalnie dodać dyski z danymi do maszyn wirtualnych. [Liczbę dysków](sizes.md) zależy od rozmiaru dysku systemu operacyjnego, którego używasz. Maksymalna liczba dysków z danymi, które można dodać do nich jest rozmiar maszyn wirtualnych, ustaw na maszynie standardowa_ds1_v2 dwa. W tym przykładzie jednego zarządzanego dysku danych jest dodawany do każdej maszyny Wirtualnej:
 
 ```
 "dataDisks": [
@@ -374,7 +374,7 @@ Można opcjonalnie dodawać dysków z danymi z maszynami wirtualnymi. [Liczba dy
 
 ## <a name="extensions"></a>Rozszerzenia
 
-Mimo że [rozszerzenia](extensions-features.md) są osobne zasobu, są ściśle powiązane maszyn wirtualnych. Rozszerzenia mogą być dodawane jako zasób podrzędnych maszyny wirtualnej lub jako osobne zasób. W przykładzie [rozszerzenia diagnostyki](extensions-diagnostics-template.md) dodawany do maszyn wirtualnych:
+Mimo że [rozszerzenia](extensions-features.md) są osobnego zasobu, są ściśle powiązane maszyn wirtualnych. Rozszerzenia można dodać jako zasób podrzędny maszyny wirtualnej lub jako osobny zasób. W przykładzie pokazano [rozszerzenie diagnostyki](extensions-diagnostics-template.md) dodawany do maszyn wirtualnych:
 
 ```
 { 
@@ -407,9 +407,9 @@ Mimo że [rozszerzenia](extensions-features.md) są osobne zasobu, są ściśle 
 },
 ```
 
-Tego rozszerzenia zasobu używa zmiennej storageName i zmienne diagnostycznych, aby zapewnić wartości. Jeśli chcesz zmienić dane, które są zbierane przez to rozszerzenie, możesz dodać więcej liczników wydajności do zmiennej wadperfcounters. Można również wybrać umieszczanie danych diagnostycznych do konta magazynu innego niż przechowywania dysków maszyny Wirtualnej.
+Ten zasób rozszerzenia używa zmiennej storageName i diagnostycznych zmiennych w celu zapewnienia wartości. Jeśli chcesz zmienić dane gromadzone przez to rozszerzenie, należy dodać większej liczby liczników wydajności do zmiennej wadperfcounters. Można także umieścić dane diagnostyczne do konta magazynu innego niż przechowywania dysków maszyny Wirtualnej.
 
-Istnieje wiele rozszerzeń, które można zainstalować na maszynie Wirtualnej, ale najbardziej przydatne jest prawdopodobnie [niestandardowe rozszerzenie skryptu](extensions-customscript.md). W tym przykładzie skrypt programu PowerShell o nazwie start.ps1 działa na każdej maszynie Wirtualnej po pierwszym uruchomieniu:
+Istnieje wiele rozszerzeń, które można zainstalować na maszynie Wirtualnej, ale najbardziej przydatne prawdopodobnie [rozszerzenia niestandardowego skryptu](extensions-customscript.md). W tym przykładzie skrypt programu PowerShell o nazwie start.ps1 działa na każdej maszynie Wirtualnej podczas pierwszego uruchomienia:
 
 ```
 {
@@ -436,26 +436,26 @@ Istnieje wiele rozszerzeń, które można zainstalować na maszynie Wirtualnej, 
 }
 ```
 
-Skrypt start.ps1 można wykonywać wiele zadań konfiguracyjnych. Na przykład dysków z danymi, które są dodawane do maszyn wirtualnych w tym przykładzie nie jest inicjowany; niestandardowego skryptu służy do ich inicjowania. Jeśli masz wiele zadań uruchamiania zrobić, można użyć pliku start.ps1 do wywołania inne skrypty programu PowerShell w magazynie Azure. W przykładzie użyto programu PowerShell, ale można użyć dowolnej metody skryptów, która jest dostępna w systemie operacyjnym, którego używasz.
+Skrypt start.ps1 można wykonywać wiele zadań konfiguracyjnych. Na przykład dysków z danymi, które są dodawane do maszyn wirtualnych w tym przykładzie nie są inicjowane; można użyć niestandardowego skryptu do ich inicjowania. Jeśli masz wiele zadań uruchamiania, aby zrobić, można użyć pliku start.ps1 do wywoływania innych skryptów programu PowerShell w usłudze Azure storage. W przykładzie użyto programu PowerShell, ale można użyć dowolnej metody skryptów, które są dostępne w systemie operacyjnym, którego używasz.
 
 Można wyświetlić stan zainstalowanych rozszerzeń z ustawień rozszerzenia w portalu:
 
 ![Pobierz stan rozszerzenia](./media/template-description/virtual-machines-show-extensions.png)
 
-Można także uzyskać informacji o rozszerzeniu przy użyciu **Get-AzureRmVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia Azure CLI 2.0 lub **uzyskiwanie informacji o rozszerzeniu** INTERFEJS API REST.
+Można również uzyskać informacji o rozszerzeniu za pomocą **Get-AzureRmVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub **uzyskiwanie informacji o rozszerzeniu** INTERFEJS API REST.
 
 ## <a name="deployments"></a>Wdrożenia
 
-Podczas wdrażania szablonu Azure śledzi zasoby wdrożone w grupie, a następnie automatycznie przypisuje nazwę do wdrożonej grupy. Nazwa wdrożenia jest taka sama jak nazwa szablonu.
+Podczas wdrażania szablonu usługi Azure śledzi zasoby wdrożone w grupie, a następnie automatycznie przypisuje nazwę do wdrożonej grupy. Nazwa wdrożenia jest taka sama jak nazwa szablonu.
 
-Jeśli zastanawiasz się, jak stan zasobów we wdrożeniu, można użyć bloku grupy zasobów w portalu Azure:
+Jeśli zastanawiasz się, stan zasobów w ramach wdrożenia, można użyć w bloku grupy zasobów w witrynie Azure portal:
 
 ![Uzyskaj informacje na temat wdrażania](./media/template-description/virtual-machines-deployment-info.png)
     
-Nie jest problem do używania tego samego szablonu, aby utworzyć zasobów lub zaktualizować istniejące zasoby. Korzystając z polecenia do wdrażania szablonów, masz możliwość powiedzieć, które [tryb](../../resource-group-template-deploy.md) chcesz użyć. Tryb może być ustawiona jako **Complete** lub **przyrostowe**. Wartość domyślna to robić aktualizacji przyrostowych. Należy zachować ostrożność przy użyciu **Complete** tryb ponieważ przypadkowo usuniesz zasobami. Po ustawieniu trybu **Complete**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie znajdują się w szablonie.
+Nie jest problemem, aby użyć tego samego szablonu do tworzenia zasobów lub zaktualizować istniejące zasoby. Korzystając z poleceń wdrażania szablonów, masz możliwość powiedzieć, który [tryb](../../resource-group-template-deploy.md) chcesz użyć. Tryb może być ustawiony na **Complete** lub **przyrostowe**. Wartość domyślna to w celu aktualizacji przyrostowych. Należy zachować ostrożność przy użyciu **Complete** tryb ponieważ przypadkowo usuniesz zasobów. Po ustawieniu trybu na **Complete**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie znajdują się w szablonie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Tworzenie własnych przy użyciu szablonu [szablonów Authoring Azure Resource Manager](../../resource-group-authoring-templates.md).
-- Wdrażanie szablonu, który został utworzony przy użyciu [Utwórz maszynę wirtualną z systemem Windows przy użyciu szablonu usługi Resource Manager](ps-template.md).
-- Dowiedz się, jak zarządzać maszynami wirtualnymi, które zostały utworzone, przeglądając [tworzenia i zarządzania maszynami wirtualnymi systemu Windows za pomocą modułu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Utwórz własny szablon przy użyciu [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
+- Wdrażanie szablonu, które zostały utworzone za pomocą [Utwórz maszynę wirtualną Windows przy użyciu szablonu usługi Resource Manager](ps-template.md).
+- Dowiedz się, jak zarządzanie maszynami wirtualnymi, które zostały utworzone, przeglądając [Utwórz Windows maszyn wirtualnych i zarządzanie przy użyciu modułu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

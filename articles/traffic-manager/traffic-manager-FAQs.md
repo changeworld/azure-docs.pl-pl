@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399181"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058094"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -286,7 +286,7 @@ Usługa Azure Resource Manager wymaga wszystkich grup zasobów określić lokali
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak ustalić bieżącą kondycję każdego punktu końcowego?
 
-Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólny profil jest wyświetlany w witrynie Azure portal. Te informacje są również dostępne za pośrednictwem Monitora ruchu [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx), [poleceń cmdlet programu PowerShell](https://msdn.microsoft.com/library/mt125941.aspx), i [interfejsu wiersza polecenia dla wielu platform Azure](../cli-install-nodejs.md).
+Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólny profil jest wyświetlany w witrynie Azure portal. Te informacje są również dostępne za pośrednictwem Monitora ruchu [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx), [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager), i [interfejsu wiersza polecenia dla wielu platform Azure](../cli-install-nodejs.md).
 
 Usługa Azure Monitor umożliwia również śledzenie kondycji punktów końcowych i zobaczyć graficzną reprezentację z nich. Aby uzyskać więcej informacji o korzystaniu z usługi Azure Monitor, zobacz [dokumentacja usługi Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 

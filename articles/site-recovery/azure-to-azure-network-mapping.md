@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916744"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060660"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Mapowanie sieci wirtualnych w różnych regionach platformy Azure
 
@@ -88,16 +88,36 @@ Jeśli do interfejsu sieciowego źródłowej maszyny wirtualnej korzysta z proto
 ### <a name="static-ip-address"></a>Statyczny adres IP
 Jeśli do interfejsu sieciowego źródłowej maszyny wirtualnej używa statycznego adresu IP, do interfejsu sieciowego docelowej maszyny wirtualnej jest również ustawiona na używanie statycznego adresu IP. W poniższych sekcjach opisano, jak statyczny adres IP jest ustawiony.
 
-#### <a name="same-address-space"></a>Tą samą przestrzenią adresów
+### <a name="ip-assignment-behavior-during-failover"></a>Zachowanie przypisywania adresów IP podczas trybu Failover
+#### <a name="1-same-address-space"></a>1. Tą samą przestrzenią adresów
 
 Jeśli podsieć źródłowa i docelowa podsieć ma tą samą przestrzenią adresów, adres IP interfejsu sieciowego źródłowej maszyny wirtualnej jest ustawiony jako docelowy adres IP. Jeśli ten sam adres IP nie jest dostępna, następny dostępny adres IP jest ustawiony jako docelowy adres IP.
 
-#### <a name="different-address-spaces"></a>Różne przestrzenie adresowe
+#### <a name="2-different-address-spaces"></a>2. Różne przestrzenie adresowe
 
 Jeśli podsieć źródłowa i docelowa podsieć ma różne przestrzenie adresowe, następnym dostępnym adresem IP w podsieci docelowej jest ustawiony jako docelowy adres IP.
 
-Aby zmodyfikować docelowy adres IP dla każdego interfejsu sieciowego, przejdź do **obliczenia i sieć** ustawień dla maszyny wirtualnej.
 
+### <a name="ip-assignment-behavior-during-test-failover"></a>Zachowanie przypisywania adresów IP podczas testowania trybu Failover
+#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Jeśli wybrana sieć docelowa jest w sieci wirtualnej w środowisku produkcyjnym
+- Adres IP odzyskiwania (docelowy adres IP) będzie statyczny adres IP, ale jej **nie będzie ten sam adres IP** jako zarezerwowane dla trybu Failover.
+- Przypisany adres IP będzie następnego dostępnego adresu IP od końca zakresu adresów podsieci.
+- Dla np. Jeśli jest skonfigurowany jako statyczny adres IP źródłowej maszyny Wirtualnej: 10.0.0.19 i testowy tryb Failover podjęto próbę przy użyciu skonfigurowanego produkcyjnego środowiska sieciowego: ***odzyskiwania po awarii PROD znajdującymi***, przy użyciu zakresu podsieci co 10.0.0.0/24. </br>
+Maszyna wirtualna trybie failed-over zostaną przypisane przy użyciu - następnego dostępnego adresu IP od końca zakresu adresów podsieci, która jest: 10.0.0.254 </br>
+
+**Uwaga:** terminologii **sieci wirtualnej w środowisku produkcyjnym** jest określana "Sieć docelowa" zamapowanych podczas konfiguracji odzyskiwania po awarii.
+####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Jeśli wybrana sieć docelowa nie jest w sieci wirtualnej w środowisku produkcyjnym, ale ma z tego samego zakresu podsieci w sieci w środowisku produkcyjnym 
+
+- Adres IP odzyskiwania (docelowy adres IP) będzie statyczny adres IP z **ten sam adres IP** (czyli skonfigurować statyczny adres IP) jako zarezerwowane dla trybu Failover. Pod warunkiem, że ten sam adres IP jest dostępna.
+- Jeśli skonfigurowane statyczny adres IP jest już przypisana do niektórych innych maszyn wirtualnych/urządzeń, IP odzyskiwania będzie następnego dostępnego adresu IP od końca zakresu adresów podsieci.
+- Dla np. Jeśli jest skonfigurowany jako statyczny adres IP źródłowej maszyny Wirtualnej: podjęto 10.0.0.19 i testu pracy awaryjnej z sieci testowej: ***odzyskiwania po awarii bez-PROD-znajdującymi***, za pomocą tego samego zakresu podsieci co produkcyjnego środowiska sieciowego - 10.0.0.0/24. </br>
+  Maszyna wirtualna trybie failed-over zostaną przypisane przy użyciu następujących statyczny adres IP </br>
+    - skonfigurować statyczny adres IP: 10.0.0.19, jeśli adres IP jest dostępny.
+    - Następny dostępny adres IP: Użyj 10.0.0.254, jeśli adres IP 10.0.0.19 znajduje się już w.
+
+
+Aby zmodyfikować docelowy adres IP dla każdego interfejsu sieciowego, przejdź do **obliczenia i sieć** ustawień dla maszyny wirtualnej.</br>
+Najlepszym rozwiązaniem jest zawsze zalecane jest wybranie sieci testowej przeprowadzenie testu pracy awaryjnej.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Przegląd [wskazówki dotyczące replikowania maszyn wirtualnych platformy Azure networking](site-recovery-azure-to-azure-networking-guidance.md).

@@ -1,38 +1,38 @@
 ---
-title: Renderowanie pokrycia w społeczności Maps Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o pokrycia renderowania w społeczności Maps Azure
-author: jinzh-azureiot
+title: Renderowanie pokrycia w usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat renderowania pokrycia w usługi Azure Maps
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6e4ebd5bfd7225537046d34dd885d04e8a94878f
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600582"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42058471"
 ---
-# <a name="azure-maps-render-coverage"></a>Azure mapy renderowania pokrycia
+# <a name="azure-maps-render-coverage"></a>Pokrycie renderowaniem usługi Azure Maps
 
-Azure społeczność Maps używa zarówno rastrowe Kafelki i wektor Kafelki można utworzyć mapy. W jego najniższej rozdzielczości cały świecie mieści się na jednej kafelków. Rozdzielczością najwyższy pojedynczy fragment reprezentuje 38 metry kwadratowe. Jak można powiększyć mapę, w związku z tym widać coraz bardziej szczegółowe informacje o kontynentów i, regiony, miasta i poszczególnych streets. Aby uzyskać więcej informacji, zobacz [poziom powiększenia i kafelka siatki](zoom-levels-and-tile-grid.md).
+Usługi Azure Maps używa rastrowych kafelków i wektorowych kafelków w celu utworzenia mapy. W jego najniższej rozdzielczości cały świat pasuje do pojedynczego kafelka. Jego największą rozdzielczością pojedynczego kafelka reprezentuje 38 metrów kwadratowych. Jak można powiększyć mapę, w związku z tym, widać coraz więcej szczegółów na temat kontynentach, regiony, miasta i poszczególnych Streets (ulice). Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich regionach. Poniższe tabele zawierają informacje o poziom szczegółowości renderowanych można oczekiwać, że w każdym regionie.
+Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystkich regionach. Poniższe tabele zawierają informacje o poziom szczegółowości renderowanych można oczekiwać, że w każdym regionie.
 
 ## <a name="legend"></a>Legenda
 
 | Symbol | Znaczenie |
 |--------|---------|
-| ✓ | Region jest reprezentowana szczegółowe dane.   |
-| Ø | Region jest reprezentowana uproszczony danych. |
+| ✓ | Region jest przedstawiana za pomocą szczegółowych danych.   |
+| Ø | Region jest przedstawiana za pomocą danych. |
 
 
 ## <a name="africa"></a>Afryka 
 
 
-| Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
+| Region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
 | Algieria                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -93,7 +93,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 
 ## <a name="americas"></a>Ameryki
 
-| Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
+| Region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua i Barbuda       | ✓ | ✓ |
@@ -109,7 +109,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Kanada                    | ✓ | ✓ |
 | Kajmany            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
-| Wyspy Clipperton         |   | ✓ |
+| Wyspa Clipperton         |   | ✓ |
 | Kolumbia                  | ✓ | ✓ |
 | Kostaryka                |   | ✓ |
 | Kuba                      | ✓ | ✓ |
@@ -137,10 +137,10 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Peru                      | ✓ | ✓ |
 | Portoryko               | ✓ | ✓ |
 | Quebec (Kanada)           |   | ✓ |
-| Saint Barthélemy          | ✓ | ✓ |
+| Saint-Barthélemy          | ✓ | ✓ |
 | Saint Kitts i Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
-| Saint pole (francuski)     | ✓ | ✓ |
+| Saint-Martin (francuski)     | ✓ | ✓ |
 | Saint Pierre i Miquelon |   | ✓ |
 | Saint Vincent i Grenadyny | ✓ | ✓ |
 | Sint Maarten (holenderski)      | ✓ | ✓ |
@@ -152,11 +152,11 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Urugwaj                   | ✓ | ✓ |
 | Wenezuela                 | ✓ | ✓ |
 | Brytyjskie Wyspy Dziewicze   | ✓ | ✓ |
-| Wyspy Dziewicze (St. Zjed. Ameryki)      | ✓ | ✓ |
+| Wyspy Dziewicze Stanów Zjednoczonych      | ✓ | ✓ |
 
 ## <a name="asia"></a>Azja 
 
-| Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
+| Region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
 | Afganistan               |   | Ø |
 | Bahrajn                   | ✓ | ✓ |
@@ -185,7 +185,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Malezja                  | ✓ | ✓ |
 | Malediwy                  |   | Ø |
 | Mongolia                  |   | Ø |
-| Mjanma                   |   | Ø |
+| Myanmar                   |   | Ø |
 | Napal                     |   | Ø |
 | Oman                      | ✓ | ✓ |
 | Pakistan                  |   | Ø |
@@ -208,9 +208,9 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Wietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceanii
+## <a name="oceania"></a>Oceania
 
-| Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
+| Region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
 | Samoa Amerykańskie            |   | ✓ |
 | Australia                 | ✓ | ✓ |
@@ -227,7 +227,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Niue                      |   | Ø |
 | Wyspa Norfolk            |   | Ø |
 | Palau                     |   | Ø |
-| Papua Nowa Gwinea          |   | Ø |
+| Papua-Nowa Gwinea          |   | Ø |
 | Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Wyspy Salomona           |   | Ø|
@@ -240,7 +240,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 
 ## <a name="europe"></a>Europa
 
-| Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
+| Region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
 | Albania                   | ✓ | ✓ |
 | Andora                   | ✓ | ✓ |
@@ -266,7 +266,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Guernsey                  |   | ✓ |
 | Węgry                   | ✓ | ✓ |
 | Islandia                   | ✓ | ✓ |
-| Irlandii (Republika)     | ✓ | ✓ |
+| Irlandia (Republika)     | ✓ | ✓ |
 | Wyspa Man               |   | ✓ |
 | Włochy                     | ✓ | ✓ |
 | Jan Mayen                 |   | ✓ |
@@ -290,7 +290,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Serbia                    | ✓ | ✓ |
 | Słowacja                  | ✓ | ✓ |
 | Słowenia                  | ✓ | ✓ |
-| Kurils Terytoria Południowe           |   | ✓ |
+| Kurils południowy           |   | ✓ |
 | Hiszpania                     | ✓ | ✓ |
 | Svalbard                  |   | ✓ |
 | Szwecja                    | ✓ |   |
@@ -302,6 +302,6 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o renderowania mapy Azure, zobacz [poziom powiększenia i kafelka siatki](zoom-levels-and-tile-grid.md).
+Aby uzyskać więcej informacji na temat renderowania usługi Azure Maps, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Dowiedz się więcej o [pokrycia obszarów map usługi routingu](routing-coverage.md). 
+Dowiedz się więcej o [obszary pokrycia dla map, usługa routingu](routing-coverage.md). 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 5d8fae7412bece631e6961fb92b7d87e308cc857
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599218"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057332"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
 Jako zarządzana usługa Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego podstawowych maszyn wirtualnych, które korzystają z klastrów HDInsight. Począwszy od 1 sierpnia 2016 r. dokonaliśmy zmiany zasad stosowania poprawek systemu operacyjnego gościa w przypadku klastrów HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszą). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownego uruchomienia ze względu na stosowanie poprawek. Nowe zasady będą w dalszym poprawki maszyn wirtualnych (VM) w klastrach systemu Linux w każdy poniedziałek lub czwartek, począwszy od 12: 00 UTC w sposób rozłożone między węzłami w dowolnym danym klastrze. Jednak wszelkie danej maszyny Wirtualnej będzie tylko ponowny rozruch co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto to pierwszy ponowny rozruch dla nowo utworzonego klastra nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki będą obowiązywać po wykonywany jest ponowny rozruch maszyn wirtualnych.
@@ -59,7 +59,7 @@ Jeśli zastosujesz skrypt jako część procesu tworzenia klastra są utrwalane 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby poznać konkretne kroki dotyczące za pomocą akcji skryptu, zobacz następujące sekcje w [HDInsight opartych na Linuz Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md):
+Aby poznać konkretne kroki dotyczące za pomocą akcji skryptu, zobacz następujące sekcje w [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md):
 
 * [Za pomocą akcji skryptu, podczas tworzenia klastra](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
 * [Stosowanie akcji skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

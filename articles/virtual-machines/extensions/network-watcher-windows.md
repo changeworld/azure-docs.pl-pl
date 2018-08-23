@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny wirtualnej Azure Agent obserwatorów sieci dla systemu Windows | Dokumentacja firmy Microsoft
-description: Wdróż agenta monitora sieci na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
+title: Rozszerzenie maszyny wirtualnej platformy Azure Agent usługi Network Watcher dla Windows | Dokumentacja firmy Microsoft
+description: Wdróż Agent usługi Network Watcher na maszynie wirtualnej Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
 author: gurudennis
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 29f346b2a42f8d12e26bd59fbab86d763d3f29f0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2f07107ad63ddd04e67528bf4f409dabf4a4d0c0
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942634"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054796"
 ---
-# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej obserwatorów agenta sieciowe dla systemu Windows
+# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej agenta obserwatora sieciowe dla Windows
 
 ## <a name="overview"></a>Przegląd
 
-[Azure obserwatora sieciowego](../../network-watcher/network-watcher-monitoring-overview.md) to sieci performance monitoring, Diagnostyka i analiza usługa, która umożliwia monitorowanie sieci platformy Azure. Rozszerzenie maszyny wirtualnej Agent monitora sieci jest wymagana do przechwytywania ruchu sieciowego na żądanie i inne zaawansowane funkcje na maszynach wirtualnych Azure.
+[Usługa Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) to sieci wydajności monitorowania i diagnostyki i analizy usługa, która umożliwia monitorowanie sieci platformy Azure. Agent usługi Network Watcher rozszerzenie maszyny wirtualnej jest wymagana do przechwytywania ruchu sieciowego na żądanie i inne zaawansowane funkcje, na maszynach wirtualnych platformy Azure.
 
 
-Ten dokument zawiera szczegóły dotyczące obsługiwanych platform i opcje wdrażania dla rozszerzenia maszyny wirtualnej sieci obserwatorów agenta dla systemu Windows. Instalacja agenta nie zakłócać lub wymaga ponownego uruchomienia, maszyny wirtualnej.
+W tym dokumencie przedstawiono obsługiwane platformy i opcji wdrażania dla rozszerzenia maszyny wirtualnej Agent usługi Network Watcher Windows. Instalacja agenta nie zakłócać lub konieczne jest ponowne uruchomienie maszyny wirtualnej. Rozszerzenie można wdrożyć na maszyny wirtualne, które można wdrożyć. Jeśli maszyna wirtualna jest wdrażana przez usługi platformy Azure, sprawdź w dokumentacji usługi ustalić, czy nie pozwala na instalowanie rozszerzeń w maszynie wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie sieci obserwatorów agenta dla systemu Windows mogą być uruchamiane na systemie Windows Server 2008 R2, 2012 i 2012 R2, 2016 wersje. Nano Server nie jest obsługiwana w tej chwili.
+Agent usługi Network Watcher rozszerzenia dla Windows mogą być uruchamiane względem systemu Windows Server 2008 R2, 2012, 2012 R2 i 2016 zwalnia. Serwer nano Server nie jest obsługiwana w tej chwili.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Niektóre funkcje Agent monitora sieci wymaga, czy docelowa maszyna wirtualna jest połączony z Internetem. Bez możliwości nawiązywania połączeń wychodzących Agent monitora sieci nie będzie przekazywać przechwytywania pakietów do swojego konta magazynu. Aby uzyskać więcej informacji, zobacz [dokumentacji obserwatora sieciowego](../../network-watcher/network-watcher-monitoring-overview.md).
+Niektóre funkcje Agent usługi Network Watcher wymaga, aby docelowej maszyny wirtualnej były połączone z Internetem. Bez możliwość nawiązywania połączeń wychodzących Agent usługi Network Watcher nie będą mogli przekazywać przechwytywania pakietów do swojego konta magazynu. Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia Agent monitora sieci. Rozszerzenie nie wymaga, nie obsługuje ustawienia dostarczone przez użytkownika i zależy od konfiguracji domyślnej.
+Następujący kod JSON zawiera schemat dla rozszerzenia Agent usługi Network Watcher. Rozszerzenie nie wymaga, ani nie obsługuje ustawienia dostarczone przez użytkownika i zależy od konfiguracji domyślnej.
 
 ```json
 {
@@ -75,11 +75,11 @@ Następujące JSON zawiera schemat rozszerzenia Agent monitora sieci. Rozszerzen
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu szablonów usługi Azure Resource Manager. Schematu JSON szczegółowo opisane w poprzedniej sekcji, w szablonie usługi Azure Resource Manager umożliwia uruchomienie rozszerzenia sieci obserwatorów agenta podczas wdrażania szablonu usługi Azure Resource Manager.
+Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji w szablonie usługi Azure Resource Manager umożliwia rozszerzenie Agent usługi Network Watcher są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager.
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-Użyj `Set-AzureRmVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej sieci obserwatora agenta do istniejącej maszyny wirtualnej:
+Użyj `Set-AzureRmVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej Agent usługi Network Watcher do istniejącej maszyny wirtualnej:
 
 ```powershell
 Set-AzureRmVMExtension `
@@ -96,13 +96,13 @@ Set-AzureRmVMExtension `
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożenia rozszerzenia można pobrać z portalu Azure i programu PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu modułu Azure PowerShell:
+Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i programu PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając modułu Azure PowerShell:
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-Dane wyjściowe wykonania rozszerzenia jest rejestrowany pliki znajdujące się w następującym katalogu:
+Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\
@@ -110,4 +110,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, można zapoznać się z dokumentacją Podręcznik użytkownika obserwatora sieci lub skontaktuj się z ekspertami Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, można zapoznać się z dokumentacją Przewodnik po użytkownik obserwatora sieci lub skontaktuj się z pomocą ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 172747032990bb16d19ecf9d53adbd3da2f5887c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592061"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057540"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopiowanie danych do i z usługi Azure Data Lake Gen2 — wersja zapoznawcza przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ W szczególności ten łącznik obsługuje:
 - Kopiowanie plików jako — jest analiza kodu lub generowanie plików za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Jeśli włączysz hierarchicznej przestrzeni nazw, obecnie nie ma żadnych współdziałanie operacji między obiektem Blob i interfejsów API Gen2 ADLS. W przypadku, gdy napotkasz błąd "ErrorCode = FilesystemNotFound" przy użyciu szczegółowego komunikatu jako "nie ma określonego systemu plików.", jest to spowodowane przez określony obiekt sink systemu plików została utworzona za pośrednictwem interfejsu API obiektu Blob, zamiast interfejsu API funkcji Azure Data Lake Store Gen2 w innym miejscu. Aby rozwiązać ten problem, użyj nazwy systemu nieistniejącymi plikami i ADF umożliwia skopiowanie danych poprawnie.
+>Jeśli włączysz hierarchicznej przestrzeni nazw, obecnie nie ma żadnych współdziałanie operacji między obiektem Blob i interfejsów API Gen2 ADLS. W przypadku, gdy napotkasz błąd "ErrorCode = FilesystemNotFound" przy użyciu szczegółowego komunikatu jako "nie ma określonego systemu plików.", jest to spowodowane przez określony obiekt sink systemu plików została utworzona za pośrednictwem interfejsu API obiektu Blob, zamiast interfejsu API funkcji Azure Data Lake Store Gen2 w innym miejscu. Aby rozwiązać ten problem, podaj nowy system plików o nazwie, która nie istnieje jako nazwa kontenera obiektów Blob i ADF automatycznie utworzy tego systemu plików podczas kopiowania danych.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

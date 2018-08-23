@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857450"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055715"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -200,7 +200,7 @@ lub na poziomie aplikacji
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Deweloperzy korzystający z standardowych bibliotek JavaScript, takie jak JQuery, należy użyć zatwierdzone wersje wspólnych bibliotek JavaScript, które nie zawierają luki w zabezpieczeniach znane. Dobrym rozwiązaniem jest użyć najbardziej najnowszą wersję bibliotek, ponieważ zawierają one poprawki zabezpieczeń dla znanych luk w zabezpieczeniach w ich starsze wersje.</p><p>Jeśli nie można użyć najnowszej wersji z powodu ze względu na zgodność poniżej minimalne wersje powinny być używane.</p><p>Dopuszczalne minimalne wersje:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery zweryfikować 1.9</li><li>JQuery Mobile 1.0.1</li><li>Cykl JQuery 2.99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**Zestawu narzędzi AJAX Control Toolkit**<ul><li>Zestawu narzędzi AJAX Control Toolkit 40412</li></ul></li><li>**ASP.NET Web Forms i Ajax**<ul><li>ASP.NET Web Forms i Ajax 4</li><li>Ajax programu ASP.NET 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nigdy nie obciążenia dowolnej biblioteki języka JavaScript z zewnętrznych witryn, takie jak publiczne usługi CDN</p>|
+| **Kroki** | <p>Deweloperzy korzystający z standardowych bibliotek JavaScript, takie jak JQuery, należy użyć zatwierdzone wersje wspólnych bibliotek JavaScript, które nie zawierają luki w zabezpieczeniach znane. Dobrym rozwiązaniem jest użyć najbardziej najnowszą wersję bibliotek, ponieważ zawierają one poprawki zabezpieczeń dla znanych luk w zabezpieczeniach w ich starsze wersje.</p><p>Jeśli nie można użyć najnowszej wersji z powodu ze względu na zgodność poniżej minimalne wersje powinny być używane.</p><p>Dopuszczalne minimalne wersje:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery zweryfikować 1.9</li><li>JQuery Mobile 1.0.1</li><li>jQuery 2.99 cyklu</li><li>jQuery 1.9.0 DataTables</li></ul></li><li>**Zestawu narzędzi AJAX Control Toolkit**<ul><li>Zestawu narzędzi AJAX Control Toolkit 40412</li></ul></li><li>**ASP.NET Web Forms i Ajax**<ul><li>ASP.NET Web Forms i Ajax 4</li><li>Ajax programu ASP.NET 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nigdy nie obciążenia dowolnej biblioteki języka JavaScript z zewnętrznych witryn, takie jak publiczne usługi CDN</p>|
 
 ## <a id="mime-sniff"></a>Wyłącz automatyczne wykrywanie MIME
 
@@ -606,7 +606,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | .NET framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com) |
 | **Kroki** | <p>Nie obrotu ograniczenie użycia zasobów systemowych może spowodować wyczerpanie zasobów, a ostatecznie typu "odmowa usługi".</p><ul><li>**Objaśnienie:** Windows Communication Foundation (WCF) oferuje możliwość ograniczania żądań obsługi. Zezwolenie zbyt wiele żądań klientów można zalać systemu i wyczerpaniu zasobów. Z drugiej strony dzięki czemu tylko niewielką liczbę żądań do usługi uniemożliwi autoryzowanych użytkowników przy użyciu usługi. Każda usługa powinna indywidualnie dostosowana do i skonfigurowany do zezwalania na odpowiednią ilość zasobów.</li><li>**Zalecenia dotyczące** funkcji ograniczania przepustowości usługi i ustawianie limitów Włącz WCF odpowiednie dla twojej aplikacji.</li></ul>|
 
 ### <a name="example"></a>Przykład
@@ -629,7 +629,7 @@ Poniżej przedstawiono przykładową konfigurację po zastosowaniu ograniczania 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | .NET framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com) |
 | **Kroki** | Metadane mogą pomóc osobom atakującym plan forma ataku i Dowiedz się więcej o systemie. Usługi WCF można skonfigurować do udostępnienia metadanych. Metadane zapewnia informacje o opisie usługi szczegółowe i nie powinny być emisji w środowiskach produkcyjnych. `HttpGetEnabled`  /  `HttpsGetEnabled` Właściwości klasy serviceMetadata w pliku Określa, czy usługa udostępni metadanych | 
 
 ### <a name="example"></a>Przykład

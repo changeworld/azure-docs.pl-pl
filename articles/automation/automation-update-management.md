@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115677"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058807"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -184,7 +184,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ![Widok domyślny zarządzania aktualizacjami](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Instalowanie aktualizacji
+## <a name="install-updates"></a>Zainstaluj aktualizacje
 
 Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../log-analytics/log-analytics-computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
 
@@ -213,12 +213,14 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 
 | Właściwość | Opis |
 | --- | --- |
-|Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
-|System operacyjny| Wybierz **Linux** lub **Windows**.|
-|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie lub **maszyny** z listy rozwijanej, a następnie wybierz poszczególne maszyny. |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
-|Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows, można wprowadzić w artykule KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
-|Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cyklicznie** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |
+| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+|System operacyjny| System Linux lub Windows|
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. W przypadku Windows wprowadź KB bez prefiksu "KB". Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
+|Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
+| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
+| Ponowne uruchomienie kontroli| Zaznaczenia prostokącie obsługi jest uruchamiany ponownie.</br>Dostępne są następujące opcje:</br>Ponowne uruchomienie komputera, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze wykonuj ponowny rozruch</br>Nigdy nie ponowny rozruch</br>Tylko ponowny rozruch — nie zostaną zainstalowane aktualizacje|
 
 ## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 

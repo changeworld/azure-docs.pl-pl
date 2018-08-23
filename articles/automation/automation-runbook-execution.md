@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214639"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055503"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -38,7 +38,7 @@ W poniższej tabeli opisano różne stany, które można wykonać zadania.
 
 | Stan | Opis |
 |:--- |:--- |
-| Ukończony |Zadanie zostało ukończone pomyślnie. |
+| Zakończone |Zadanie zostało ukończone pomyślnie. |
 | Niepowodzenie |Aby uzyskać [graficzny i przepływu pracy programu PowerShell elementów runbook](automation-runbook-types.md), element runbook kompilacja nie powiodła się. Aby uzyskać [skrypt programu PowerShell, elementów runbook](automation-runbook-types.md), nie można uruchomić elementu runbook lub zadanie napotkało wyjątek. |
 | Nie powiodło się, oczekiwania na zasoby |Zadanie nie powiodło się, ponieważ osiągnęła ona [udział](#fair-share) ograniczyć trzy razy, a następnie z tego samego punktu kontrolnego lub od początku elementu runbook każdej godzina uruchomienia. |
 | W kolejce |Zadanie oczekuje na zasoby procesu roboczego automatyzacji na udostępnienie tak, aby go uruchomić. |
@@ -88,7 +88,7 @@ Następujące kroki służą do wyświetlania zadań elementu runbook.
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Pobieranie stanu zadania za pomocą programu Windows PowerShell
 
-Możesz użyć [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx) do pobrania zadań utworzonych dla elementu runbook i szczegółów dotyczących określonego zadania. Po uruchomieniu elementu runbook za pomocą środowiska Windows PowerShell przy użyciu [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx), a następnie zwraca zadania wynikowe. Użyj [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx)danych wyjściowych, aby uzyskać zadanie danych wyjściowych.
+Możesz użyć [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) do pobrania zadań utworzonych dla elementu runbook i szczegółów dotyczących określonego zadania. Po uruchomieniu elementu runbook za pomocą środowiska Windows PowerShell przy użyciu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook), a następnie zwraca zadania wynikowe. Użyj [Get AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) można pobrać zadania danych wyjściowych.
 
 Następujące przykładowe polecenia Pobierz ostatnie zadanie przykładowego elementu runbook i wyświetl jego stan, wartości podanych dla parametrów elementu runbook, a dane wyjściowe z zadania.
 
@@ -145,7 +145,7 @@ To jest ochrona usługi z poziomu elementów runbook uruchomiona przez czas nieo
 
 Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pierwszy punkt kontrolny przed zwalniany, następnie jest uruchamiany ponownie od samego początku.
 
-Do uruchomienia długich zadań, zaleca się używać [hybrydowego procesu roboczego Runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział i nie mają ograniczenie na jak długo element runbook może wykonać.
+W przypadku długo działających zadań zaleca się użycie [hybrydowego procesu roboczego elementu runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowe procesy robocze elementu runbook nie są ograniczone przez odpowiednie udostępnianie i nie mają ograniczenia czasu wykonywania elementu runbook.
 
 Jeśli używasz elementu runbook przepływu pracy programu PowerShell w systemie Azure podczas tworzenia elementu runbook, należy upewnić się, czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza 3 godziny. Może być konieczne do dodawania punktów kontrolnych do elementu runbook, aby upewnić się, że nie osiągnięcia tego limitu trzech godzin lub Podziel długich długotrwałych operacji. Na przykład element runbook może wykonywać reindex na dużej bazy danych SQL. Jeśli ta jednej operacji nie została zakończona w wyznaczonym udział, zadanie jest załadowane i uruchomione od początku. W takim przypadku należy podzielić operacji reindex na wiele kroków, takie jak indeksowanie jednej tabeli w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadania, po ostatniej operacji do wykonania.
 

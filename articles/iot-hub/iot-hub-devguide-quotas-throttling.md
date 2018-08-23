@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525556"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054976"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
 ## <a name="quotas-and-throttling"></a>Limity przydziału i ograniczanie wydajności
 Każda subskrypcja platformy Azure może mieć maksymalnie 50 centra IoT i co najwyżej 1 bezpłatny koncentratora.
 
-Każde Centrum IoT hub jest aprowizowany z określoną liczbą jednostek w określonej warstwy. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure IoT Hub][lnk-pricing]. Określ maksymalny dzienny limit przydziału komunikatów, których można wysłać, warstwy i liczby jednostek.
+Każde Centrum IoT hub jest aprowizowany z określoną liczbą jednostek w określonej warstwy. Określ maksymalny dzienny limit przydziału komunikatów, których można wysłać, warstwy i liczby jednostek. Rozmiar komunikatu, używane do obliczania jest dziennego limitu przydziału o rozmiarze 0,5 KB w Centrum w warstwie bezpłatna i 4 KB w przypadku wszystkich innych warstw. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure IoT Hub][lnk-pricing].
 
 Warstwa określa również limity ograniczania, które usługi IoT Hub wymusza na wszystkie operacje.
 

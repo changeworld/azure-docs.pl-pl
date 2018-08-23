@@ -1,6 +1,6 @@
 ---
-title: Słownik interfejsu API, dynamiczne tekst Microsoft Translator | Dokumentacja firmy Microsoft
-description: Jak używać funkcji dynamiczny słownik interfejsu API Microsoft Translator tekstu.
+title: Słownik dynamiczny interfejs API tekstu usługi Microsoft Translator | Dokumentacja firmy Microsoft
+description: Jak używać funkcji dynamiczny słownik interfejs API tekstu usługi Microsoft Translator.
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -9,28 +9,28 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a18348c9786669ac41c4e149577d97cd631d5531
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dbc754093827730b8709d67f314e5b327518ef50
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349717"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41988622"
 ---
-# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>Jak używać funkcji dynamiczny słownik interfejsu API Microsoft Translator tekstu
+# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>Jak używać funkcji dynamiczny słownik interfejs API tekstu usługi Microsoft Translator
 
-Jeśli znasz już tłumaczenia, które chcesz zastosować do wyraz lub frazę, możesz podać go jako kod znaczników w żądaniu. Dynamiczny słownik jest tylko bezpieczne dla rzeczowniki złożone, takich jak nazwy i nazwy produktu. 
+Jeśli znasz już tłumaczeń, które mają zostać zastosowane do wyrazu lub frazy, możesz podać go jako kod znaczników w żądaniu. Dynamiczny słownik jest tylko bezpieczne dla rzeczowniki złożone, np. prawidłowe nazwy i nazwy produktu. 
 
 **Składnia:** 
 
-< tłumaczenia mstrans:dictionary = "tłumaczenia frazy" > wyrażenie < / mstrans:dictionary >
+< tłumaczenia mstrans:dictionary = "tłumaczenia frazę" > frazy < / mstrans:dictionary >
 
 **Przykład: en-de:**
 
-Źródło danych wejściowych: słowo < tłumaczenia mstrans:dictionary =\"wordomatic\"> wyraz lub frazę < / mstrans:dictionary > jest wpisu słownika.
+Źródło danych wejściowych: słowo < tłumaczenia mstrans:dictionary =\"wordomatic\"> wyrazu lub frazy < / mstrans:dictionary > wpis słownika.
 
-Docelowe danych wyjściowych: brzeczki Das "wordomatic" ist NIP Wörterbucheintrag.
+Docelowe danych wyjściowych: brzeczki Das "wordomatic" ISTA NIP Wörterbucheintrag.
 
-Ta funkcja działa tak samo z włączonymi i wyłączonymi trybie HTML. 
+Ta funkcja działa tak samo z lub bez trybu HTML. 
 
-Funkcja powinny być używane rzadko. Jest odpowiedni i znacznie sposób dostosowywania tłumaczenia za pomocą Centrum firmy Microsoft translatora. Koncentrator sprawia, że pełne wykorzystanie kontekstu i statystyczne prawdopodobieństwa. Jeśli masz lub akceptowalny Utwórz dane szkoleniowe, pokazujący pracodawcę lub frazę w kontekście, możesz uzyskać znacznie lepszych wyników. Można znaleźć więcej informacji na temat Centrum w [ http://hub.microsofttranslator.com ](http://hub.microsofttranslator.com).
+Funkcja powinny być używane rzadko. Odpowiednie i znacznie lepiej sposób dostosowywania tłumaczenia jest przy użyciu niestandardowych w usłudze Translator. Niestandardowe w usłudze Translator sprawia, że pełne wykorzystanie kontekstu i prawdopodobieństwa statystycznych. Jeśli masz lub można utworzyć dane szkoleniowe, które z miejsca pracy lub frazę w kontekście otrzymasz znacznie lepsze wyniki. Można znaleźć więcej informacji na temat niestandardowych w usłudze Translator w [ http://aka.ms/CustomTranslator ](http://aka.ms/CustomTranslator).
 

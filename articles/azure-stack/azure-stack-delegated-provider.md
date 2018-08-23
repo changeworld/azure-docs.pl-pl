@@ -6,31 +6,32 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 157f0207-bddc-42e5-8351-197ec23f9d46
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 08/07/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 161a17f2360767dacc4f418a078c695d7cb8daa7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 112586d3ee5f49eab9adb72d41a210e2dd9828d8
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449750"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054141"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegowanie ofert w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Operator usługi Azure Stack często ma być umieszczony innym osobom odpowiedzialnym za tworzenie oferty i rejestracji użytkowników. Na przykład jeśli jesteś dostawcą usługi, możesz zechcieć odsprzedawców, aby zarejestrować się klientów i zarządzanie nimi w Twoim imieniu. Lub, jeśli jesteś częścią centralna grupa IT w przedsiębiorstwie, możesz chcieć oddelegować do logowania użytkownika innymi informatykami.
+Operator usługi Azure Stack często ma być umieszczony innym osobom odpowiedzialnym za podpisywanie użytkowników i tworzenia subskrypcji. Na przykład jeśli jesteś dostawcą usługi, możesz zechcieć odsprzedawców, aby zarejestrować się klientów i zarządzanie nimi w Twoim imieniu. Lub, jeśli jesteś częścią centralna grupa IT w przedsiębiorstwie, możesz chcieć oddelegować do logowania użytkownika innymi informatykami.
 
-Delegowanie sprawia, że łatwiej i zarządzania nimi większej liczby użytkowników, które możesz wykonać samodzielnie. Poniższa ilustracja przedstawia jeden poziom obsługi delegowania, ale usługa Azure Stack obsługuje więcej niż jeden poziom. Delegowani dostawcy (DPs) można oddelegować do innych dostawców, maksymalnie pięć poziomów.
+Delegowanie sprawia, że łatwiej i zarządzania nimi większej liczby użytkowników, które możesz wykonać samodzielnie, jak pokazano na poniższej ilustracji. 
 
 ![Poziomy delegowania](media/azure-stack-delegated-provider/image1.png)
+
+Delegowanie dostawca delegowanego zarządza oferty (delegowaną ofertę) i klientów końcowych uzyskać subskrypcje w ramach tej oferty, bez korzystania z administratorem systemu. 
 
 ## <a name="understand-delegation-roles-and-steps"></a>Omówienie delegowania ról i kroki
 
@@ -38,9 +39,9 @@ Delegowanie sprawia, że łatwiej i zarządzania nimi większej liczby użytkown
 
 Następujące role są częścią delegowania:
 
-* *Operatora infrastruktury Azure Stack* zarządza infrastruktury Azure Stack i tworzy szablon oferty. Operator deleguje innym osobom na zapewnienie oferuje użytkownikom.
+* *Operatora infrastruktury Azure Stack* zarządza infrastruktury Azure Stack i tworzy szablon oferty. Operator deleguje innych użytkowników, aby zapewnić oferty z ich dzierżawy.
 
-* Delegowane operatorom usługi Azure Stack są nazywane *delegowane dostawców*. Mogą one należeć do innych organizacji, takich jak inni użytkownicy usługi Azure Active Directory (Azure AD).
+* Delegowane operatorom usługi Azure Stack to użytkownicy z *właściciela* lub *Współautor* prawa w ramach subskrypcji o nazwie *delegowane dostawców*. Mogą one należeć do innych organizacji, takich jak innych dzierżaw usługi Azure Active Directory (Azure AD).
 
 * *Użytkownicy* Zamów oferty i używać ich na potrzeby zarządzania ich obciążeń tworzenia maszyn wirtualnych, przechowywania danych i tak dalej.
 
@@ -48,9 +49,9 @@ Następujące role są częścią delegowania:
 
 Istnieją dwa podstawowe kroki do konfigurowania delegowania:
 
-1. *Utwórz dostawcę delegowanego* subskrypcja użytkownika do oferty zgodnie z planem, zawierający tylko usługi subskrypcji. Użytkownicy, którzy subskrybować tę ofertę można rozszerzyć oferty i logowania użytkowników w przypadku ofert.
+1. *Utwórz subskrypcję dostawcy delegowane* , subskrybując ten biuletyn użytkownikowi oferty zawierające tylko usługi subskrypcji. Użytkownicy, którzy subskrybować tę ofertę następnie rozszerzyć delegowanych ofert dla innych użytkowników, rejestrując je dla tych ofert.
 
-1. *Delegowanie oferty delegowanej dostawcy*. Ta oferta jest szablon służący do czego może zaoferować delegowanego dostawca. Delegowani dostawcy można teraz wykonać oferty i zaoferować ją innym użytkownikom.
+2. *Delegowanie oferty delegowanej dostawcy*. Ta oferta umożliwia delegowani dostawcy do utworzenia subskrypcji lub rozszerzenie oferty do użytkowników. Delegowani dostawcy można teraz wykonać oferty i zaoferować ją innym użytkownikom.
 
 Na następnym rysunku przedstawiono kroki konfigurowania delegowania.
 
@@ -58,7 +59,7 @@ Na następnym rysunku przedstawiono kroki konfigurowania delegowania.
 
 **Wymagania dotyczące delegowanych dostawców**
 
-Do działania jako dostawca delegowanego, użytkownik musi ustanowić relację z głównym dostawcą podczas tworzenia subskrypcji. Ta subskrypcja identyfikuje delegowani dostawcy jako prawo do obecnych ofert w imieniu głównego dostawcy.
+Do działania jako dostawca delegowanego, użytkownik musi ustanowić relację z głównym dostawcą podczas tworzenia subskrypcji. Ta subskrypcja identyfikuje delegowani dostawcy jako mające uprawnienia do przedstawienia delegowanych ofert w imieniu głównego dostawcy.
 
 Po ustanowieniu tej relacji operatora infrastruktury Azure Stack można delegować oferty delegowanej dostawcy. Delegowani dostawcy może potrwać oferty, zmień jej nazwę (ale nie zmieniać jego substancji) i oferować je swoim klientom.
 
@@ -121,13 +122,13 @@ Zaloguj się do portalu użytkownika jako dostawca delegowanego, a następnie ut
    ![Przypisz nazwę](media/azure-stack-delegated-provider/image6.png)
 
    >[!IMPORTANT]
-   >Należy zrozumieć, w odróżnieniu od operatorów usługi Azure Stack delegowani dostawcy nie konstruowania oferty z planów podstawowych i planów dodatków. Delegowani dostawcy można wybrać tylko oferty, które mają delegowane do nich, nie można wprowadzać zmian tych ofert.
+   >Jest ważne dowiedzieć się, że delegowanych dostawców można wybrać tylko oferty, które mają delegowane do nich. Nie mogą oni wprowadzić zmiany do tych ofert. Operator tylko do usługi Azure Stack można zmienić tych ofert, na przykład, zmieniając ich planów i przydziałów. Delegowani dostawcy nie konstruowania oferty z planów podstawowych i planów dodatków. 
 
-1. Upublicznić oferty, wybierając **Przeglądaj**, a następnie **oferuje**. Wybierz ofertę, a następnie wybierz **zmiany stanu**.
+3. Delegowani dostawcy można upublicznić tych ofert za pośrednictwem ich własnych portalu adresu URL. Aby upublicznić oferty, wybierz pozycję **Przeglądaj**, a następnie **oferuje**. Wybierz ofertę, a następnie wybierz **zmiany stanu**.
 
-1. Delegowani dostawcy udostępnia te oferty za pośrednictwem ich własnych portalu adresu URL. Te oferty są widoczne wyłącznie za pośrednictwem portalu delegowanego. Aby znaleźć i zmienić tego adresu URL:
+4. Publiczne delegowane oferty są teraz widoczne wyłącznie za pośrednictwem portalu delegowanego. Aby znaleźć i zmienić tego adresu URL:
 
-    a.  Wybierz **Przeglądaj** > **więcej usług** > **subskrypcje**. Następnie wybierz delegowaną subskrypcję dostawcy. Na przykład **DPSubscription** > **właściwości**.
+    a.  Wybierz **Przeglądaj** > **więcej usług** > **subskrypcje**. Następnie wybierz subskrypcję dostawcy delegowane. Na przykład **DPSubscription** > **właściwości**.
 
     b.  Skopiuj portalu adres URL do innej lokalizacji, takiego jak Notatnik.
 
@@ -148,14 +149,14 @@ Zaloguj się do portalu użytkownika jako dostawca delegowanego, a następnie ut
 
 Delegowanie oferty proces jest ukończona. Teraz użytkownik może zarejestrować się dla tej oferty, pobieranie subskrypcji.
 
-## <a name="multiple-tier-delegation"></a>Delegowanie n warstwowych
+## <a name="move-subscriptions-between-delegated-providers"></a>Przenoszenie subskrypcji delegowanych dostawców
 
-N warstwowych delegowanie umożliwia delegowani dostawcy można delegować oferty do innych jednostek. Na przykład aby utworzyć bardziej odsprzedawcy kanałów where:
+Jeśli to konieczne, można przenieść subskrypcję między subskrypcjami nowej lub istniejącej delegowani dostawcy, które należą do tej samej dzierżawie katalogu. To za pomocą polecenia cmdlet programu PowerShell [AzsSubscription przenoszenia](https://docs.microsoft.com/powershell/module/azs.subscriptions.admin).
 
-* Dostawcy, który zarządza usługi Azure Stack deleguje ofertę dystrybutora.
-* Delegaty dystrybutora odsprzedawcy.
+To jest przydatne, gdy:
+- Dołączanie nowego członka zespołu, prowadzące w roli dostawcy delegowanego i chcesz przypisać do tego zespołu elementu członkowskiego-subskrypcji użytkownika, które zostały utworzone wcześniej w ramach subskrypcji dostawcy domyślne.
+- Możesz mieć wiele subskrypcji delegowanych dostawców w tej samej dzierżawie katalogu.-(Azure Active Directory) i konieczne przeniesienie subskrypcji użytkownika między nimi. Może to być wtedy, gdy członek zespołu przechodzi między zespołami i ich subskrypcji musi być przydzielona do nowego zespołu.
 
-Aby utworzyć wiele warstw Delegowanie oferty, delegowani dostawcy deleguje oferty do następnego dostawcy. Proces jest taki sam dla delegowanego dostawcy, jak w przypadku operatora infrastruktury Azure Stack. Aby uzyskać więcej informacji, zobacz [operatora infrastruktury Azure Stack tworzy delegowaną ofertę](#cloud-operator-creates-the-delegated-offer).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

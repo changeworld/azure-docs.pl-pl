@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: a27200803ff13ed04a194fcbe45cf5edfe62ea50
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d89463826cb05bf4cafd36cf4a38e60852d93094
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161727"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055697"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informacje o bramach sieci wirtualnej dla usługi ExpressRoute
 Brama sieci wirtualnej jest używany do wysyłania ruchu sieciowego między sieciami wirtualnymi platformy Azure i lokalizacjami lokalnymi. Można użyć wirtualnej Brama sieci może służyć do usługi ExpressRoute ruchu lub ruch sieci VPN. Ten artykuł koncentruje się na bramy sieci wirtualnej usługi ExpressRoute.
@@ -62,7 +62,7 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzys
 
 | **Wdrożenie klasyczne** | **Resource Manager** |
 | --- | --- |
-| [Program PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[Program PowerShell](https://msdn.microsoft.com/library/mt163510.aspx) |
+| [Program PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[Program PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network#networking) |
 | [Interfejs API REST](https://msdn.microsoft.com/library/jj154113.aspx) |[Interfejs API REST](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,39 +1,39 @@
 ---
-title: Pokrycie routingu w społeczności Maps Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o routingu pokrycia w społeczności Maps Azure
-author: jinzh-azureiot
+title: Pokrycie wyznaczaniem tras w usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o pokrycie wyznaczaniem tras w usługi Azure Maps
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa611b1cc406cd16ffdecb244c3010a7e0318519
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 80d98fd8108d0b64f9c25b82d6d79f60fcdd771e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599953"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055710"
 ---
-# <a name="azure-maps-routing-coverage"></a>Azure mapy routingu pokrycia
+# <a name="azure-maps-routing-coverage"></a>Usługi Azure Maps pokrycie routingiem
 
-Ten artykuł zawiera informacje o pokryciu mapy Azure routingu. 
+Ten artykuł zawiera informacje o pokryciu dla usługi Azure Maps routingu. 
 
-Zapoznaj się z pokrycia [ **Geokodowanie**](geocoding-coverage.md).       
-Zapoznaj się z pokrycia [ **ruchu**](traffic-coverage.md).  
-Zapoznaj się z pokrycia [ **renderowania**](render-coverage.md).
+Zapoznaj się z objęcia [ **Geokodowania**](geocoding-coverage.md).       
+Zapoznaj się z objęcia [ **ruchu**](traffic-coverage.md).  
+Zapoznaj się z objęcia [ **renderowania**](render-coverage.md).
 <br>  
 **Legenda**
 
 | Symbol             | Znaczenie                                |
 |--------------------|----------------------------------------|
-| ✓                  | Kraj wyposażone w szczegółowe dane.   |
-| Ø                  | Dostarczone z danymi uproszczony kraju. |
+| ✓                  | Kraj, wyposażone w szczegółowe dane.   |
+| Ø                  | Kraj, wyposażone w danych. |
 | Brak kraju | Nie podano danych kraju.          |
 
 <br>  
 
-Poniższa tabela zawiera informacje pokrycia do mapy Azure routingu.
+Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 <br>  
 
 | Region                         | Routing |
@@ -56,7 +56,7 @@ Poniższa tabela zawiera informacje pokrycia do mapy Azure routingu.
 | Malawi                         |        ✓       |
 | Mali                           |        ✓       |
 | Mauretania                     |        ✓       |
-| Mauritius, Majotta i Réunion |        ✓       |
+| Mauritius, Majotta i Reunion |        ✓       |
 | Maroko                        |        ✓       |
 | Mozambik                     |        ✓       |
 | Namibia                        |        ✓       |
@@ -73,10 +73,10 @@ Poniższa tabela zawiera informacje pokrycia do mapy Azure routingu.
 | Zambia                         |        ✓       |
 | Zimbabwe                       |        ✓       |
 |                                |                |
-| **Americas**                       |                |
+| **Południową**                       |                |
 | Argentyna                      |        ✓       |
 | Brazylia                         |        ✓       |
-| Wyspy Karaibów              |        ✓       |
+| Wyspy Karaiby              |        ✓       |
 | Kanada                         |        ✓       |
 | Chile                          |        ✓       |
 | Kolumbia                       |        ✓       |
@@ -124,7 +124,7 @@ Poniższa tabela zawiera informacje pokrycia do mapy Azure routingu.
 | Grecja                         |        ✓       |
 | Węgry                        |        ✓       |
 | Islandia                        |        ✓       |
-| Irlandii (Republika)          |        ✓       |
+| Irlandia (Republika)          |        ✓       |
 | Włochy                          |        ✓       |
 | Łotwa                         |        ✓       |
 | Liechtenstein                  |        ✓       |

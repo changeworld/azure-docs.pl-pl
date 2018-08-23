@@ -1,11 +1,10 @@
 ---
-title: Azure zalecenia usługi Advisor koszt | Dokumentacja firmy Microsoft
-description: Optymalizowanie koszt wdrożeń platformy Azure przy użyciu klasyfikatora Azure.
+title: Usługa Azure rekomendacji dotyczących kosztu usługi Advisor | Dokumentacja firmy Microsoft
+description: Azure Advisor umożliwiają optymalizację kosztu wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
-author: KumudD
-manager: carmonm
-editor: ''
+author: manbeenkohli
+manager: ''
 ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
@@ -13,44 +12,47 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: kumud
-ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: makohli
+ms.openlocfilehash: 71c380a1caae730b6b01615ce3047c2e22bd6dfb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735871"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058799"
 ---
-# <a name="advisor-cost-recommendations"></a>Zalecenia doradcy w zakresie koszt
+# <a name="advisor-cost-recommendations"></a>Rekomendacji dotyczących kosztu usługi Advisor
 
-Advisor pomaga zoptymalizować i zmniejszyć ogólną Azure wydatków, określając bezczynności i wyczerpaniu zasobów. Zalecenia można uzyskać koszt **koszt** na pulpicie nawigacyjnym usługi Advisor.
+Advisor pomaga zoptymalizować i zmniejszyć ogólną platformy Azure możesz wydać identyfikując bezczynności i niedostatecznie używanych zasobów. Pobierz mogą kosztować z zaleceniami **koszt** karty Pulpit nawigacyjny usługi Advisor.
 
-## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optymalizacja maszyny wirtualnej spędzają na zmianę rozmiaru lub zamykanie niedostatecznie wystąpień 
-Mimo że niektóre scenariusze aplikacji może spowodować niskiego poziomu wykorzystania zgodnie z projektem, można często zaoszczędzić, zarządzając rozmiaru i liczby maszyn wirtualnych. Klasyfikator monitoruje użycie maszyny wirtualnej w ciągu ostatnich 14 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Maszyny wirtualne, których użycie procesora CPU wynosi 5 procent lub mniej i użycie sieci jest 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskiego wykorzystania maszyn wirtualnych.
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optymalizowanie maszyny wirtualnej, który możesz wydać przez zmianą rozmiaru lub zamykanie niedostatecznie używanych wystąpień 
+Mimo że niektóre scenariusze aplikacji może spowodować niewielkie wykorzystanie zgodnie z projektem, często można oszczędzić pieniądze, zarządzając rozmiaru i liczby maszyn wirtualnych. Klasyfikator monitoruje wykorzystanie maszyn wirtualnych przez 14 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Maszyny wirtualne, których użycie procesora CPU wynosi 5 procent lub mniej i użycie sieci to 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskie użycie maszyn wirtualnych.
 
-Klasyfikator pokazuje szacowany koszt kontynuowania działania maszyny wirtualnej, dzięki czemu można zamknąć lub zmiany rozmiaru.
+Klasyfikator pokazuje szacowany koszt kontynuowani e uruchamiania maszyny wirtualnej, tak, aby można było wybrać zamknij go, lub zmienić jego rozmiar.
 
-Jeśli chcesz mieć bardziej agresywną na określenie niedostatecznie maszyn wirtualnych, można dostosować średni reguły wykorzystanie Procesora na podstawie subskrypcji na.
+Jeśli chcesz mieć wyższe na identyfikowanie niedostatecznie używanych maszyn wirtualnych, można dostosować średni reguły wykorzystanie procesora CPU na podstawie każdej subskrypcji.
 
-## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Obniżenie kosztów przez wyeliminowanie nieudostępniany obwody usługi ExpressRoute
-Klasyfikator identyfikuje obwody usługi ExpressRoute, które zostały w widoku stanu dostawcy *nieudostępniane* więcej niż jeden miesiąc i zaleca usunięcie obwodu, jeśli nie planuje udostępnić obwodu łączność Dostawca.
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Obniżenie kosztów przez wyeliminowanie nieudostępniane obwodów usługi ExpressRoute
+Klasyfikator identyfikuje obwodów usługi ExpressRoute, które są w stanie dostawcy *nie zainicjowano obsługi administracyjnej* dla więcej niż jednego miesiąca i zaleca usunięcie obwodu, jeżeli nie planujesz go aprowizować z łącznością Dostawca.
 
-## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>Kup wystąpienia zarezerwowane maszyny wirtualnej, aby zaoszczędzić pieniądze w porównaniu z kosztami płatności zgodnie z rzeczywistym użyciem
-Klasyfikator będzie Przejrzyj użycie maszyny wirtualnej w ciągu ostatnich 30 dni, aby ustalić, jeśli można zapisać pieniędzy po zakupie wystąpień zastrzeżone. Klasyfikator opisano regiony i rozmiary, gdzie potencjalnie masz większości oszczędności i wyświetli szacowany oszczędności zakupów wystąpień zastrzeżone. 
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Obniżenie kosztów przez usunięcie lub ponowne konfigurowanie bezczynne bramy sieci wirtualnej
+Klasyfikator identyfikuje bram sieci wirtualnej, które mają bezczynna przez ponad 90 dni. Ponieważ bram są naliczane godzinowo, należy rozważyć ponowne konfigurowanie lub usuwając je, jeśli nie ma do nich już dłużej korzystać. 
 
-Zarezerwowane wystąpień wstępnie kupić podstawowej kosztów maszyn wirtualnych. Zniżki zostanie automatycznie zastosowana do nowej lub istniejącej maszyny wirtualne, które mają ten sam rozmiar i regionu jako swoich wystąpień zastrzeżone. [Dowiedz się więcej o zastrzeżonych wystąpień maszyn wirtualnych Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Kup wystąpienia zarezerwowane maszyn wirtualnych, aby zaoszczędzić pieniądze w porównaniu z kosztami płatności
+Klasyfikator spowoduje wśród danych użycia maszyny wirtualnej w ciągu ostatnich 30 dni i określić, jeśli można zapisać pieniędzy za zakup rezerwacji platformy Azure. Klasyfikator opisano regionów i rozmiarach, w którym potencjalnie ma większość oszczędności i pokaże Szacowane oszczędności z zakupu rezerwacji. 
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp zalecenia koszt klasyfikatora Azure
+Za pomocą rezerwacji platformy Azure możesz wstępnie zakup podstawowych kosztów dla maszyn wirtualnych. Rabaty zostaną automatycznie zastosowane do nowego lub istniejącego maszyn wirtualnych, które mają ten sam rozmiar i region rezerwacji. [Dowiedz się więcej o zarezerwowanych wystąpieniach maszyn wirtualnych platformy Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących kosztów w usłudze Azure Advisor
 
-2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **koszt** kartę.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+
+2.  Na pulpicie nawigacyjnym usługi Advisor kliknij **koszt** kartę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat zalecenia doradcy w zakresie, zobacz:
+Aby dowiedzieć się więcej na temat zalecenia usługi Advisor, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
 * [Rozpoczęcie pracy](advisor-get-started.md)
-* [Zalecenia doradcy w zakresie wydajności](advisor-cost-recommendations.md)
-* [Zalecenia doradcy w zakresie wysokiej dostępności](advisor-cost-recommendations.md)
-* [Zalecenia doradcy w zakresie zabezpieczeń](advisor-cost-recommendations.md)
+* [Zalecenia dotyczące wydajności usługi Advisor](advisor-cost-recommendations.md)
+* [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-cost-recommendations.md)
+* [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-cost-recommendations.md)

@@ -2,19 +2,19 @@
 title: Przewodnik dewelopera usługi Azure Key Vault
 description: Deweloperzy mogą używać usługi Azure Key Vault do zarządzania kluczami kryptograficznymi w środowisku Microsoft Azure.
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
-ms.author: alleonar
-ms.openlocfilehash: 3a2ab6bbe2470fa12113ca4367316cf7a21190b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: bryanla
+ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626732"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058793"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera usługi Azure Key Vault
 
@@ -23,7 +23,7 @@ Usługa Key Vault umożliwia bezpieczny dostęp do poufnych informacji z poziomu
 - Klucze i wpisy tajne, które są chronione bez konieczności pisania kodu, samodzielnie i łatwo można z nich korzystać z aplikacji.
 - Mogą mieć własne klientów i zarządzanie nimi własne klucze, dzięki czemu możesz skoncentrować się na dostarczaniu podstawowych funkcji oprogramowania. W ten sposób aplikacje nie będą właścicielami ponosić odpowiedzialności ani mieć potencjalnych problemów względem klientów dzierżawy kluczy i wpisów tajnych.
 - Aplikacja może używać kluczy do podpisywania i szyfrowania jeszcze bardziej zarządzania kluczami zewnętrznych z aplikacji, dzięki czemu Twoje rozwiązanie jest odpowiednie, jako aplikacja rozproszona geograficznie.
-- Począwszy od września 2016 r. wersję usługi Key Vault aplikacji mogą teraz używać usługi Key Vault [certyfikaty](https://docs.microsoft.com/rest/api/keyvault/certificate-operations). Aby uzyskać więcej informacji, zobacz [o kluczy, wpisów tajnych i certyfikatów](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Począwszy od września 2016 r. wersję usługi Key Vault aplikacji mogą teraz zarządzać certyfikatami usługi Key Vault. Aby uzyskać więcej informacji, zobacz [o kluczy, wpisów tajnych i certyfikatów](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
 
 Aby uzyskać bardziej ogólne informacje na temat usługi Azure Key Vault, zobacz [co to jest usługa Key Vault](key-vault-whatis.md).
 

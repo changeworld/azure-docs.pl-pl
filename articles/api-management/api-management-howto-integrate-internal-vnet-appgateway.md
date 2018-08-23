@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 53c993b6c7ad868c4781ced374b0c1b227a43e6d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595097"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42061359"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway
 
@@ -45,7 +45,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 
 ##<a name="scenario"> </a> Scenariusz
 
-W tym artykule opisano sposób użycia jednej usługi API Management dla wewnętrznych i zewnętrznych klientów i przypisz ją do działania jako pojedynczy frontonu dla obu lokalnie i w chmurze interfejsów API. Zobaczysz również jak udostępniać tylko podzbioru interfejsów API (w tym przykładzie, które zostaną one wyróżnione w kolorze zielonym) do użytku zewnętrznego za pomocą funkcji PathBasedRouting dostępnych w usłudze Application Gateway.
+W tym artykule opisano sposób użycia jednej usługi API Management dla wewnętrznych i zewnętrznych klientów i przypisz ją do działania jako pojedynczy frontonu dla obu lokalnie i w chmurze interfejsów API. Zobaczysz również jak udostępniać tylko podzbioru interfejsów API (w tym przykładzie, które zostaną one wyróżnione w kolorze zielonym) do użytku zewnętrznego za pomocą funkcji routingu, które są dostępne w usłudze Application Gateway.
 
 W pierwszym przykładzie konfiguracji wszystkie interfejsy API są zarządzane tylko z w ramach sieci wirtualnej. Wewnętrzny konsumentów (wyróżnione w kolorze pomarańczowym) mają dostęp do wszystkich wewnętrznych i zewnętrznych interfejsów API. Ruch nigdy nie trafia do internetowego o wysokiej wydajności są dostarczane za pośrednictwem obwodów Expressroute.
 
@@ -80,7 +80,7 @@ W pierwszym przykładzie konfiguracji wszystkie interfejsy API są zarządzane t
 W tym przewodniku możemy także udostępni **portalu dla deweloperów** do zewnętrznego liczby odbiorców za pośrednictwem bramy aplikacji. Wymaga dodatkowych czynności w celu tworzenia odbiornika portalu dla deweloperów, sondy, ustawienia i zasady. Wszystkie szczegółowe informacje znajdują się w odpowiednich kroków.
 
 > [!WARNING]
-> W ustawieniach opisanych w portalu dla deweloperów, które są dostępne za pośrednictwem bramy Application Gateway mogą wystąpić problemy z uwierzytelnianiem usługi AAD i Facebook.
+> W ustawieniach opisanych w portalu dla deweloperów, które są dostępne za pośrednictwem bramy Application Gateway mogą wystąpić problemy z uwierzytelnianiem usługi AAD i innych firm.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Tworzenie grupy zasobów dla usługi Resource Manager
 

@@ -1,9 +1,9 @@
 ---
-title: Temat kluczy, wpisów tajnych i certyfikatów
+title: Informacje o kluczach, wpisach tajnych i certyfikatach
 description: Omówienie interfejsu REST i KV szczegóły oferty developer
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: BryanLa
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/14/2018
+ms.author: bryanla
+ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359193"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054368"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 Usługa Azure Key Vault umożliwia użytkownikom do przechowywania i korzystania z kluczy kryptograficznych w środowisku Microsoft Azure. Key Vault obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. Ponadto usługi Key Vault umożliwia użytkownikom bezpieczne przechowywanie wpisów tajnych. Klucze tajne są obiektami octet ograniczony rozmiar z nie określonej semantyką. Usługa Key Vault obsługuje także certyfikaty, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
@@ -28,26 +28,26 @@ Aby uzyskać więcej ogólnych informacji na temat usługi Azure Key Vault, zoba
 
 **Ogólne informacje usługi Key Vault**
 
--   [Obsługa standardów](about-keys-secrets-and-certificates.md#BKMK_Standards)
--   [Typy danych](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
--   [Obiekty, identyfikatory i przechowywania wersji](about-keys-secrets-and-certificates.md#BKMK_ObjId)  
+-   [Obsługa standardów](#BKMK_Standards)
+-   [Typy danych](#BKMK_DataTypes)  
+-   [Obiekty, identyfikatory i przechowywania wersji](#BKMK_ObjId)  
 
 **Klucze — informacje**
 
--   [Klucze i typy kluczy](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)  
--   [Algorytmy RSA](about-keys-secrets-and-certificates.md#BKMK_RSAAlgorithms)  
--   [Algorytmy RSA modułu HSM](about-keys-secrets-and-certificates.md#BKMK_RSA-HSMAlgorithms)  
--   [Kryptograficzna ochrona](about-keys-secrets-and-certificates.md#BKMK_Cryptographic)
--   [Kluczowe operacje](about-keys-secrets-and-certificates.md#BKMK_KeyOperations)  
--   [Kluczowych atrybutów](about-keys-secrets-and-certificates.md#BKMK_KeyAttributes)  
--   [Klucz tagów](about-keys-secrets-and-certificates.md#BKMK_Keytags)  
+-   [Klucze i typy kluczy](#BKMK_KeyTypes)  
+-   [Algorytmy RSA](#BKMK_RSAAlgorithms)  
+-   [Algorytmy RSA modułu HSM](#BKMK_RSA-HSMAlgorithms)  
+-   [Kryptograficzna ochrona](#BKMK_Cryptographic)
+-   [Kluczowe operacje](#BKMK_KeyOperations)  
+-   [Kluczowych atrybutów](#BKMK_KeyAttributes)  
+-   [Klucz tagów](#BKMK_Keytags)  
 
 **Dotyczące wpisów tajnych** 
 
--   [Praca z wpisami tajnymi](about-keys-secrets-and-certificates.md#BKMK_WorkingWithSecrets)  
--   [Atrybuty wpisu tajnego](about-keys-secrets-and-certificates.md#BKMK_SecretAttrs)  
--   [Tagi wpisu tajnego](about-keys-secrets-and-certificates.md#BKMK_SecretTags)  
--   [Kontrola dostępu do kluczy tajnych](about-keys-secrets-and-certificates.md#BKMK_SecretAccessControl)  
+-   [Praca z wpisami tajnymi](#BKMK_WorkingWithSecrets)  
+-   [Atrybuty wpisu tajnego](#BKMK_SecretAttrs)  
+-   [Tagi wpisu tajnego](#BKMK_SecretTags)  
+-   [Kontrola dostępu do kluczy tajnych](#BKMK_SecretAccessControl)  
 
 **Dotyczących certyfikatów**
 
@@ -133,7 +133,7 @@ Usługa Azure Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096, a 
 
 ### <a name="BKMK_Cryptographic"></a> Kryptograficzna ochrona
 
-Modułów kryptograficznych, które korzysta z usługi Azure Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Jeśli możesz **tworzenie** lub **zaimportować** klucze jako chroniony przez moduł HSM, mają gwarancję, że do przetworzenia wewnątrz sprzętowych modułów zabezpieczeń zweryfikowane FIPS 140-2 poziom 2 lub nowszej. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chronionego przez oprogramowanie, a następnie są przetwarzane wewnątrz modułów kryptograficznych służących do sprawdzania poprawności zgodnych ze standardami FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+Modułów kryptograficznych, które korzysta z usługi Azure Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Jeśli możesz **tworzenie** lub **zaimportować** klucze jako chroniony przez moduł HSM, mają gwarancję, że do przetworzenia wewnątrz sprzętowych modułów zabezpieczeń zweryfikowane FIPS 140-2 poziom 2 lub nowszej. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chronionego przez oprogramowanie, a następnie są przetwarzane wewnątrz modułów kryptograficznych służących do sprawdzania poprawności zgodnych ze standardami FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](#BKMK_KeyTypes).
 
 ###  <a name="BKMK_ECAlgorithms"></a> Algorytmy WE
  Następujące identyfikatory algorytm są obsługiwane WE i modułu HSM WE kluczy w usłudze Azure Key Vault. 
@@ -174,7 +174,7 @@ Usługa Azure Key Vault obsługuje następujące operacje na obiektach klucza:
 -   **Kopia zapasowa**: eksportuje klucza w postaci chronionych.  
 -   **Przywróć**: importuje wcześniej kopii zapasowej klucza.  
 
-Aby uzyskać więcej informacji, zobacz [klucza operacje](/rest/api/keyvault/key-operations).  
+Aby uzyskać więcej informacji, zobacz [klucza operacje w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault).  
 
 Po utworzeniu klucz w usłudze Azure Key Vault może wykonać następujące operacje kryptograficzne przy użyciu klucza:  
 
@@ -194,22 +194,22 @@ Aby uzyskać więcej informacji na temat JWK obiektów, zobacz [klucza sieci Web
 
 Oprócz materiał klucza można określić następujące atrybuty. Żądania JSON, słowo kluczowe atrybuty i nawiasów klamrowych "{" "}", są wymagane, nawet gdy pojawią się nie określone atrybuty.  
 
-- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Określa, czy klucz jest włączone i niemożliwe do operacji kryptograficznych. *Włączone* atrybut jest używany w połączeniu z *nbf* i *exp*. Podczas operacji odbywa się między *nbf* i *exp*, będzie można dopuścić tylko, jeśli *włączone* jest ustawiona na **true**. Operacje poza *nbf* / *exp* okno automatycznie są niedozwolone, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops).
-- *NBF*: IntDate, opcjonalne, domyślnie teraz wynosi. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
-- *EXP*: IntDate, opcjonalnie, wartość domyślna to "nieskończoność". *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, którego klucz nie może służyć do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
+- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Określa, czy klucz jest włączone i niemożliwe do operacji kryptograficznych. *Włączone* atrybut jest używany w połączeniu z *nbf* i *exp*. Podczas operacji odbywa się między *nbf* i *exp*, będzie można dopuścić tylko, jeśli *włączone* jest ustawiona na **true**. Operacje poza *nbf* / *exp* okno automatycznie są niedozwolone, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#BKMK_key-date-time-ctrld-ops).
+- *NBF*: IntDate, opcjonalne, domyślnie teraz wynosi. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#BKMK_key-date-time-ctrld-ops). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
+- *EXP*: IntDate, opcjonalnie, wartość domyślna to "nieskończoność". *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, którego klucz nie może służyć do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#BKMK_key-date-time-ctrld-ops). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która obejmuje kluczowych atrybutów:  
 
 - *utworzone*: IntDate opcjonalne. *Utworzone* atrybut wskazuje, kiedy utworzono tę wersję klucza. Ta wartość jest pusta dla kluczy utworzonych przed dodaniem tego atrybutu. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 - *Zaktualizowano*: IntDate opcjonalne. *Zaktualizowane* atrybut wskazuje, kiedy ta wersja klucza została zaktualizowana. Ta wartość jest pusta dla kluczy, które zostały ostatnio zaktualizowane przed dodaniem tego atrybutu. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 
-Aby uzyskać więcej informacji na temat IntDate a innymi typami danych, zobacz [typy danych](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
+Aby uzyskać więcej informacji na temat IntDate a innymi typami danych, zobacz [typy danych](#BKMK_DataTypes)  
 
 #### <a name="BKMK_key-date-time-ctrld-ops"></a> Data i godzina kontrolowane operacji
 
 Nie zostały jeszcze nieprawidłowe lub wygasłe klucze, poza tymi *nbf* / *exp* okna, będzie działać w przypadku **odszyfrować**, **Odkodowywanie** i **Sprawdź** operacji (nie zwraca 403, zabronione). Uzasadnienie wykorzystania nie zostały jeszcze prawidłowego stanu jest Zezwalaj na klucz ma zostać przetestowana przed użycia w środowisku produkcyjnym. Racjonalne uzasadnienie przy użyciu stanu wygaśnięcia jest Zezwalaj na operacje odzyskiwania danych, który został utworzony, gdy klucz był nieprawidłowy. Ponadto, możesz wyłączyć dostęp do klucza przy użyciu zasad usługi Key Vault lub aktualizując *włączone* atrybutu klucza do **false**.
 
-Aby uzyskać więcej informacji na temat danych typów, zobacz [typy danych](about-keys-secrets-and-certificates.md#BKMK_DataTypes).
+Aby uzyskać więcej informacji na temat danych typów, zobacz [typy danych](#BKMK_DataTypes).
 
 Więcej informacji na temat innych możliwych atrybutów, zobacz [klucza sieci Web JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
@@ -256,9 +256,9 @@ Usługa Azure Key Vault obsługuje również pola contentType wpisów tajnych. K
 
 Oprócz tajnych danych można określić następujące atrybuty:  
 
-- *EXP*: IntDate, opcjonalnie, wartością domyślną jest **nieskończona**. *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, który można pobrać tajnego danych nie może, z wyjątkiem [sytuacji, w szczególności](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
-- *NBF*: IntDate, opcjonalnie, wartością domyślną jest **teraz**. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym nie można pobrać dane poufne, z wyjątkiem [sytuacji, w szczególności](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Azure Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, na wypadek zegara pochylenia. Jego wartość musi być liczbą zawierającą wartość IntDate.  
-- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Ten atrybut określa, czy można pobrać tajnego danych. Atrybut włączony jest używany w połączeniu z i *exp* podczas operacji odbywa się między i exp, jej zostanie dopuszczona, jeśli włączone jest ustawiona na **true**. Operacje poza *nbf* i *exp* automatycznie są niedozwolone, z wyjątkiem w [sytuacji, w szczególności](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops).  
+- *EXP*: IntDate, opcjonalnie, wartością domyślną jest **nieskończona**. *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia na lub po którym wpisu tajnego powinna nie można pobrać danych, z wyjątkiem [sytuacji, w szczególności](#BKMK_secret-date-time-ctrld-ops). To pole jest **informacyjny** tylko wtedy, gdy informuje użytkowników magazynu kluczy usługi określonego klucza tajnego nie mogą być używane w celach. Jego wartość musi być liczbą zawierającą wartość IntDate.   
+- *NBF*: IntDate, opcjonalnie, wartością domyślną jest **teraz**. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którą dane tajne powinna nie można pobrać, z wyjątkiem [sytuacji, w szczególności](#BKMK_secret-date-time-ctrld-ops). To pole jest **informacyjny** wyłącznie do celów. Jego wartość musi być liczbą zawierającą wartość IntDate. 
+- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Ten atrybut określa, czy można pobrać tajnego danych. Atrybut włączony jest używany w połączeniu z i *exp* podczas operacji odbywa się między i exp, jej zostanie dopuszczona, jeśli włączone jest ustawiona na **true**. Operacje poza *nbf* i *exp* automatycznie są niedozwolone, z wyjątkiem w [sytuacji, w szczególności](#BKMK_secret-date-time-ctrld-ops).  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która zawiera atrybuty wpisu tajnego:  
 
@@ -269,7 +269,7 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowi
 
 Klucz tajny **uzyskać** operacji będzie działać w przypadku nie zostały jeszcze nieprawidłowe lub wygasłe wpisów tajnych oraz ich poza *nbf* / *exp* okna. Klucz tajny podczas wywoływania **uzyskać** nie zostały jeszcze prawidłowy klucz tajny, operacja może służyć do celów testowych. Trwa pobieranie (**uzyskać**ing) wygasły klucz tajny, może służyć do operacji odzyskiwania.
 
-Aby uzyskać więcej informacji na temat danych typów, zobacz [typy danych](about-keys-secrets-and-certificates.md#BKMK_DataTypes).  
+Aby uzyskać więcej informacji na temat danych typów, zobacz [typy danych](#BKMK_DataTypes).  
 
 ###  <a name="BKMK_SecretAccessControl"></a> Kontrola dostępu do kluczy tajnych
 
@@ -283,7 +283,7 @@ Następujące uprawnienia mogą być używane, na podstawie na jednostkę w wpis
 -   *Usuń*: usuwanie klucza tajnego  
 -   *wszystkie*: wszystkie uprawnienia  
 
-Aby uzyskać więcej informacji na temat pracy z wpisy tajne, zobacz [operacje dotyczące wpisów tajnych](/rest/api/keyvault/secret-operations).  
+Aby uzyskać więcej informacji na temat pracy z wpisy tajne, zobacz [operacje dotyczące wpisów tajnych w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault).  
 
 ###  <a name="BKMK_SecretTags"></a> Tagi wpisu tajnego  
 Można określić dodatkowe metadane specyficzne dla aplikacji w postaci tagów. Usługa Azure Key Vault obsługuje maksymalnie 15 tagów, z których każdy może mieć nazwy 256 znaków i wartości 256 znaków.  
@@ -436,18 +436,14 @@ Jeśli zasady dotyczące certyfikatów jest ustawiony na automatyczne odnawianie
 -   *Utwórz*: umożliwia tworzenie z certyfikatem usługi Key Vault.  
 -   *Importowanie*: umożliwia importowanie certyfikatów materiału do certyfikatu klucza magazynu.  
 -   *Aktualizuj*: pozwala zaktualizować certyfikat.  
--   *manageconnects*: umożliwia zarządzanie kontaktów certyfikatu usługi Key Vault  
+-   *managecontacts*: umożliwia zarządzanie kontaktów certyfikatu usługi Key Vault  
 -   *getissuers*: umożliwia get wystawców certyfikatów  
 -   *listissuers*: umożliwia lista wystawców certyfikatu  
 -   *setissuers*: umożliwia tworzenie lub aktualizowanie wystawców certyfikatów usługi Key Vault  
 -   *deleteissuers*: umożliwia usunięcie wystawcy certyfikatu usługi Key Vault  
 -   *wszystkie*: umożliwia przyznanie wszystkich uprawnień  
 
-## <a name="additional-information-for-certificates"></a>Dodatkowe informacje dotyczące certyfikatów
-
-- [Certyfikaty i zasady](/rest/api/keyvault/certificates-and-policies)
-- [Wystawców certyfikatów](/rest/api/keyvault/certificate-issuers)
-- [Kontakty certyfikatu](/rest/api/keyvault/certificate-contacts)
+Aby uzyskać więcej informacji, zobacz [certyfikatu operacje w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault). 
 
 ## <a name="see-also"></a>Zobacz też
 

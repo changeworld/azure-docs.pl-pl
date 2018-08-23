@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 07/12/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 4db70fa93914ba0544d9beb8e523241513a2e5ce
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009301"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42058473"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Limity dysku Data Box platformy Azure (wersja zapoznawcza)
 
@@ -38,7 +38,7 @@ Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania dysku systemu Mi
 
 ## <a name="data-box-disk-performance"></a>Wydajność dysku pole danych
 
-Podczas testowania za pomocą dysków połączonych za pomocą USB 3.0 wydajność dysku była maksymalnie 430 MB/s. Wartości rzeczywistych różnią się w zależności od rozmiaru pliku używane. Mniejsze pliki mogą pojawić się obniżenie wydajności.
+Podczas testowania dysków podłączonych za pomocą portu USB 3.0 ich wydajność doszła do poziomu 430 MB/s. Rzeczywista wartość różni się w zależności od rozmiaru pliku. Przy mniejszych plikach wydajność może być niższa.
 
 ## <a name="azure-storage-limits"></a>Limity usługi Azure storage
 
@@ -64,7 +64,7 @@ Aby uzyskać najnowsze informacje o limitach magazynu platformy Azure i najlepsz
 
 ## <a name="azure-storage-account-size-limits"></a>Limity rozmiaru konta usługi Azure storage
 
-Poniżej przedstawiono limity rozmiaru danych, które są kopiowane do konta magazynu. Upewnij się, że dane, które zostaną przesłane odpowiada tych limitów. Aby uzyskać najbardziej aktualne informacje o tych limitach, przejdź do [obiekty docelowe skalowania magazynu obiektów blob platformy Azure](https://docs.microsoft.com/en-us/azure/storage/cstorage-scalability-targets#azure-blob-storage-scale-targets) i [usługi Azure Files skalowanie elementów docelowych](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Poniżej przedstawiono limity rozmiaru danych, które są kopiowane do konta magazynu. Upewnij się, że dane, które zostaną przesłane odpowiada tych limitów. Aby uzyskać najbardziej aktualne informacje o tych limitach, przejdź do [obiekty docelowe skalowania magazynu obiektów blob platformy Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) i [usługi Azure Files skalowanie elementów docelowych](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Rozmiar danych skopiowane do konta magazynu platformy Azure                      | Limit domyślny          |
 |---------------------------------------------------------------------|------------------------|
@@ -83,7 +83,7 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Usługa Azure blokowych obiektów blob i stronicowych obiektów blob, konwencje nazewnictwa
 
-| Jednostka                                       | Konwencje                                                                                                                                                                                                                                                                                                               |
+| Jednostka                                       | Konwencja                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nazwy kontenerów dla blokowych obiektów blob i stronicowych obiektów blob | Musi być prawidłową nazwą DNS, który składa się z 3 do 63 znaków. <br>  Musi zaczynać się literą lub cyfrą. <br> Może zawierać tylko małe litery, cyfry i znaki łącznika (-). <br> Każdy łącznik (-) musi być natychmiast poprzedzony i następuje litera lub cyfra. <br> Następujące po sobie łączniki są niedozwolone w nazwach. |
-| Nazwy obiektu blob dla blokowych obiektów blob i stronicowych obiektów blob      | Nazwy obiektów blob jest rozróżniana wielkość liter i może zawierać dowolną kombinację znaków. <br> Nazwa obiektu blob musi być od 1 do 1024 znaków. <br> Zastrzeżone znaki adresu URL muszą być poprzedzone odpowiednim znakiem ucieczki. <br>Liczba segmentów ścieżki wchodzących w skład nazwy obiektu blob nie może przekraczać 254. Segment ścieżki jest ciągiem od ogranicznika następujących po sobie znaków (na przykład ukośnika "/") odnoszą się do nazwy katalogu wirtualnego. |
+| Nazwy kontenerów dla blokowych obiektów blob i stronicowych obiektów blob | Musi być prawidłową nazwą DNS, który składa się z 3 do 63 znaków. <br>  Musi zaczynać się literą lub cyfrą. <br> Może zawierać tylko małe litery, cyfry i znaki łącznika (-). <br> Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. <br> Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. |
+| Nazwy blokowych i stronicowych obiektów blob      | W nazwach obiektów blob jest rozróżniana wielkość liter. Mogą zawierać dowolną kombinację znaków. <br> Nazwa obiektu blob musi zawierać od 1 do 1024 znaków. <br> Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. <br>Liczba segmentów ścieżki w nazwie obiektu blob nie może przekraczać 254. Segment ścieżki to ciąg znajdujący się pomiędzy następującymi po sobie znakami ogranicznika (na przykład ukośnikami „/”), co odpowiada nazwie katalogu wirtualnego. |

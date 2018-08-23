@@ -1,6 +1,6 @@
 ---
-title: Działania ForEach w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dla każdego działania definiuje identycznych przepływu sterowania w potoku sieci. Jest on używany dla Iterowanie przez kolekcję i wykonania określonych działań.
+title: Działanie ForEach w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dla każdego działania definiuje powtarzający się przepływ sterowania w potoku. Jest on używany do wykonania iteracji przez kolekcję i wykonać określone działania.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: a029cb815f7765e6fe4e2fdbf81d437d5ac4ebe3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047585"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42057549"
 ---
-# <a name="foreach-activity-in-azure-data-factory"></a>Działania ForEach w fabryce danych Azure
-Działania ForEach definiuje identycznych przepływu sterowania w potoku sieci. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
+# <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w usłudze Azure Data Factory
+Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
 
 ## <a name="syntax"></a>Składnia
-Właściwości opisane w dalszej części tego artykułu. Właściwości elementów jest kolekcją i każdego elementu w kolekcji jest określana za pomocą `@item()` zgodnie z poniższą składnią:  
+Właściwości są opisane w dalszej części tego artykułu. Właściwość items jest kolekcji, a każdy element w kolekcji jest określana za pomocą `@item()` jak pokazano na następującej składni:  
 
 ```json
 {  
@@ -73,21 +73,22 @@ Właściwości opisane w dalszej części tego artykułu. Właściwości element
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa dla każdego działania. | Ciąg | Yes
-type | Należy wybrać opcję **ForEach** | Ciąg | Yes
-isSequential | Określa, czy pętli powinny być wykonywane sekwencyjnie lub równolegle.  Maksymalna liczba iteracji pętli 20 mogą być wykonywane jednocześnie równoległe). Na przykład, jeśli masz działania ForEach przez działanie kopiowania z 10 różnych źródłowy i odbiorczy zestawów danych o iteracja **isSequential** ma wartość False, wszystkie kopie są wykonywane jednocześnie. Domyślna to False. <br/><br/> "IsSequential" jest ustawiona na wartość False, upewnij się, że istnieje prawidłowej konfiguracji, aby uruchomić wiele plików wykonywalnych. W przeciwnym razie wartość tej właściwości należy używać ostrożnie Aby uniknąć ponoszenia konflikty zapisu. Aby uzyskać więcej informacji, zobacz [równoległe wykonywanie](#parallel-execution) sekcji. | Wartość logiczna | Nie. Domyślna to False.
-Items | Wyrażenie, które zwraca tablicę JSON należy powtórzyć za pośrednictwem. | Wyrażenie (która zwraca tablicę JSON) | Yes
+type | Musi być równa **ForEach** | Ciąg | Yes
+isSequential | Określa, czy pętla powinny być wykonywane kolejno lub równolegle.  Maksymalna liczba iteracji pętli 20 mogą być wykonywane jednocześnie równolegle). Na przykład, jeśli masz ForEach działania Iterowanie działania kopiowania przy użyciu 10 różnych danych źródła i ujścia przy użyciu **isSequential** ma wartość False, wszystkie kopie są wykonywane tylko raz. Domyślną jest False. <br/><br/> Jeśli "isSequential" jest ustawiona na "false", upewnij się, że jest poprawną konfigurację do uruchamiania wielu aplikacji wykonywalnych. W przeciwnym razie tej właściwości należy używać ostrożnie w celu uniknięcia konfliktów przy zapisywaniu. Aby uzyskać więcej informacji, zobacz [równoległym](#parallel-execution) sekcji. | Wartość logiczna | Nie. Domyślną jest False.
+batchCount | Liczba partii, która ma być używany do kontrolowania liczby przetwarzania równoległego, (gdy isSequential jest ustawiona na wartość false). | Liczba całkowita (maksymalna 50) | Nie. Domyślna to 20.
+Items | Wyrażenie, które zwraca tablicę JSON, aby być powtarzana. | Wyrażenie (która zwraca tablicę JSON) | Yes
 Działania | Czynności do wykonania. | Lista działań | Yes
 
 ## <a name="parallel-execution"></a>Wykonywanie równoległe
-Jeśli **isSequential** ma wartość false, działanie iteruje równolegle z maksymalnie 20 równoczesnych iteracji. Tego ustawienia należy używać ostrożnie. Jeśli równoczesnych iteracji pisania w tym samym folderze, ale w różnych plikach, ta metoda jest poprawne. Jeśli równoczesnych iteracji pisania jednocześnie do dokładnie tego samego pliku, takie podejście najbardziej prawdopodobne przyczyny błędu. 
+Jeśli **isSequential** jest ustawiona na wartość false, działanie iteruje równolegle z maksymalnie 20 równoczesnych iteracji. Tego ustawienia należy używać ostrożnie. Współbieżne iteracji pisania w tym samym folderze, ale do różnych plików, to podejście jest odpowiednie. Współbieżne iteracji pisania jednocześnie dokładnie tego samego pliku, to podejście najprawdopodobniej spowoduje wystąpienie błędu. 
 
 ## <a name="iteration-expression-language"></a>Język wyrażeń iteracji
-W działaniu ForEach Podaj tablicy należy powtórzyć za pośrednictwem właściwości **elementy**. " Użyj `@item()` do wykonywania iteracji pojedyncze wyliczenie w działaniu ForEach. Na przykład jeśli **elementów** jest tablicą: [1, 2, 3], `@item()` zwraca wartość 1 w pierwszej iteracji 2 w drugim i 3 w trzecim iteracji.
+Działanie ForEach zawiera tablicę, należy powtórzyć za pośrednictwem właściwości **elementy**. " Użyj `@item()` Iterowanie pojedynczego wyliczenia w działaniu ForEach. Na przykład jeśli **elementów** jest tablicą: [1, 2, 3], `@item()` zwraca wartość 1 w pierwszej iteracji 2 w drugim i 3 w trzecim iteracji.
 
-## <a name="iterating-over-a-single-activity"></a>Iterowanie po jednego działania
-**Scenariusz:** kopiowania z tego samego pliku źródłowego w obiekcie Blob Azure do wielu plików docelowych w obiekcie Blob Azure.
+## <a name="iterating-over-a-single-activity"></a>Iterowanie po pojedyncze działanie
+**Scenariusz:** kopiowanie danych z tym samym pliku źródłowym w usłudze Azure Blob do wielu plików docelowych w usłudze Azure Blob.
 
-### <a name="pipeline-definition"></a>Definicja potoku
+### <a name="pipeline-definition"></a>Definicji potoku
 
 ```json
 {
@@ -191,7 +192,7 @@ W działaniu ForEach Podaj tablicy należy powtórzyć za pośrednictwem właśc
 ```
 
 ## <a name="iterate-over-multiple-activities"></a>Iteracja wielu działań
-Można przejść przez wiele działań (na przykład: działania kopiowania i sieci web) w działaniu ForEach. W tym scenariuszu zaleca się, że abstrakcyjnej działania wielu oddzielnych potokiem. Następnie należy użyć [działania ExecutePipeline](control-flow-execute-pipeline-activity.md) w potoku z działania ForEach do wywołania oddzielnego potoku z wielu działań. 
+Istnieje możliwość przejść przez wiele działań (na przykład: działania kopiowania i sieci web) w działaniu ForEach. W tym scenariuszu firma Microsoft zaleca abstrakcji się z się z wielu działań do oddzielnych potoku. Następnie należy użyć [działaniu ExecutePipeline](control-flow-execute-pipeline-activity.md) w potoku za pomocą działania ForEach wywoływanie oddzielne potoku obejmujący wiele działań. 
 
 
 ### <a name="syntax"></a>Składnia
@@ -236,9 +237,9 @@ Można przejść przez wiele działań (na przykład: działania kopiowania i si
 
 ```
 ### <a name="example"></a>Przykład
-**Scenariusz:** Iterate za pośrednictwem InnerPipeline wewnątrz działania elementu ForEach z działaniem wykonywania potoku. Wewnętrzny potoku kopiuje z definicji schematu sparametryzowana.
+**Scenariusz:** Iterate za pośrednictwem InnerPipeline wewnątrz działania ForEach, za pomocą działania Execute Pipeline. Wewnętrzny potok kopiuje przy użyciu definicji schematów sparametryzowanych.
 
-#### <a name="master-pipeline-definition"></a>Definicja potoku głównego
+#### <a name="master-pipeline-definition"></a>Definicję wzorca potoku
 
 ```json
 {
@@ -298,7 +299,7 @@ Można przejść przez wiele działań (na przykład: działania kopiowania i si
 
 ```
 
-#### <a name="inner-pipeline-definition"></a>Definicja wewnętrznych potoku
+#### <a name="inner-pipeline-definition"></a>Definicji potoku wewnętrzny
 
 ```json
 {
@@ -370,7 +371,7 @@ Można przejść przez wiele działań (na przykład: działania kopiowania i si
 
 ```
 
-#### <a name="source-dataset-definition"></a>Definicja zestawu danych źródła
+#### <a name="source-dataset-definition"></a>Definicja zestawu danych źródłowych
 
 ```json
 {
@@ -404,7 +405,7 @@ Można przejść przez wiele działań (na przykład: działania kopiowania i si
 
 ```
 
-#### <a name="sink-dataset-definition"></a>Obiekt sink definicji zestawu danych
+#### <a name="sink-dataset-definition"></a>Definicja zestawu danych ujścia
 
 ```json
 {
@@ -471,13 +472,13 @@ Można przejść przez wiele działań (na przykład: działania kopiowania i si
 }
 
 ```
-## <a name="aggregating-metric-output"></a>Agregowanie danych wyjściowych metryki
-Wyrażenie nie zawiera zbierania danych wyjściowych wszystkie iteracje ForEach `@activity('NameofInnerActivity')`. Na przykład, jeśli działania ForEach, iterowane za pośrednictwem "MyCopyActivity", składnia byłoby: `@activity('MyCopyActivity')`. Dane wyjściowe jest tablicą, z każdym elementem ze szczegółami dotyczącymi określonych iteracji.
+## <a name="aggregating-metric-output"></a>Metryki agregacji w danych wyjściowych
+Wyrażenie do zbierania danych wyjściowych wszystkim iteracjom pętli ForEach jest `@activity('NameofInnerActivity')`. Na przykład, jeśli działanie ForEach powtarzana "MyCopyActivity", składnia będzie: `@activity('MyCopyActivity')`. Dane wyjściowe jest tablicą, z każdym elementem, zapewniając szczegółowe informacje o określonej iteracji.
 
 > [!NOTE]
-> Jeśli chcesz, aby uzyskać informacje o określonych iteracji, będzie Składnia: `@activity('NameofInnerActivity')[0]` najnowsze iteracji. Użyj numer w nawiasach dla dostępu iteracji określonej tablicy. Aby uzyskać dostęp do konkretnej właściwości określonym iteracji, należy użyć: `@activity('NameofInnerActivity')[0].output` lub `@activity('NameofInnerActivity')[0].pipelineName`.
+> Jeśli chcesz, aby uzyskać szczegółowe informacje o określonej iteracji, składnia to: `@activity('NameofInnerActivity')[0]` najnowsze iteracji. Umożliwia liczba w nawiasach dostęp do określonej iteracji tablicy. Aby uzyskać dostęp do konkretnej właściwości określonej iteracji, należy użyć: `@activity('NameofInnerActivity')[0].output` lub `@activity('NameofInnerActivity')[0].pipelineName`.
 
-**Szczegóły danych wyjściowych tablicy wszystkich iteracji:**
+**Szczegóły danych wyjściowych macierz wszystkich iteracji:**
 ```json
 [    
     {      
@@ -572,9 +573,9 @@ Wyrażenie nie zawiera zbierania danych wyjściowych wszystkie iteracje ForEach 
 
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
+Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działania w sieci Web](control-flow-web-activity.md)
+- [Działanie internetowe](control-flow-web-activity.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345715"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055404"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Azure Automation za pomocą elementu webhook
 
@@ -31,7 +31,7 @@ W poniższej tabeli opisano właściwości, które należy skonfigurować dla el
 |:--- |:--- |
 | Name (Nazwa) |Możesz podać dowolną nazwę, wymagany dla elementu webhook, ponieważ to nie jest uwidaczniana, do klienta. Jest ono używane wyłącznie dla Ciebie do identyfikowania elementów runbook w usłudze Azure Automation. <br> Najlepszym rozwiązaniem należy nadać elementu webhook nazwę związane z klienta, który korzysta z niego. |
 | Adres URL |Adres URL elementu webhook jest unikatowy adres, który klient wywołań za pomocą metody POST protokołu HTTP, aby uruchomić element runbook połączone z elementu webhook. Są one generowane automatycznie podczas tworzenia elementu webhook. Nie można określić niestandardowy adres URL. <br> <br> Adres URL zawiera token zabezpieczający, który umożliwia elementu runbook do wywołania przez system innej firmy, bez dalszego uwierzytelniania. Z tego powodu powinny być traktowane jak hasło. Ze względów bezpieczeństwa możesz tylko wyświetlić adres URL w witrynie Azure portal w czasie, zostanie utworzony element webhook. Zanotuj adres URL w bezpiecznej lokalizacji, do użytku w przyszłości. |
-| Data ważności |Podobnie jak certyfikat każdy element webhook ma datę wygaśnięcia, co może już służyć. Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook. |
+| Data wygaśnięcia |Podobnie jak certyfikat każdy element webhook ma datę wygaśnięcia, co może już służyć. Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook. |
 | Enabled (Włączony) |Element webhook jest domyślnie włączona, podczas jego tworzenia. Jeśli ustawisz na wyłączone klienta nie będzie mógł jej używać. Możesz ustawić **włączone** podczas tworzenia elementu webhook lub dowolnym momencie po jej utworzeniu. |
 
 ### <a name="parameters"></a>Parametry
@@ -120,11 +120,11 @@ Przy założeniu, że żądanie zakończy się pomyślnie, odpowiedź elementu w
 {"JobIds":["<JobId>"]}
 ```
 
-Klient nie może określić, po zakończeniu zadania elementu runbook lub jego stanu ukończenia od elementu webhook. Można określić, te informacje przy użyciu identyfikatora zadania przy użyciu innej metody takie jak [programu Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) lub [interfejsu API usługi Azure Automation](/rest/api/automation/job).
+Klient nie może określić, po zakończeniu zadania elementu runbook lub jego stanu ukończenia od elementu webhook. Można określić, te informacje przy użyciu Identyfikatora zadania przy użyciu innej metody takie jak [programu Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) lub [interfejsu API usługi Azure Automation](/rest/api/automation/job).
 
 ## <a name="sample-runbook"></a>Przykładowy element runbook
 
-Następujący przykładowy element runbook przyjmuje akceptuje dane elementu webhook i uruchamia maszyny wirtualne, określona w treści żądania. Aby przetestować ten element runbook na Twoim koncie usługi Automation w ramach **elementów Runbook**, kliknij przycisk **+ Dodaj element runbook**. Jeśli nie wiesz, jak utworzyć element runbook, zobacz [Tworzenie elementu runbook](automation-quickstart-create-runbook.md).
+Następujący przykładowy element runbook przyjmuje dane elementu webhook i uruchamia maszyny wirtualne, określona w treści żądania. Aby przetestować ten element runbook na Twoim koncie usługi Automation w ramach **elementów Runbook**, kliknij przycisk **+ Dodaj element runbook**. Jeśli nie wiesz, jak utworzyć element runbook, zobacz [Tworzenie elementu runbook](automation-quickstart-create-runbook.md).
 
 ```powershell
 param
@@ -205,6 +205,6 @@ Na poniższej ilustracji przedstawiono żądania wysyłane z programu Windows Po
 
 ![Przycisk elementów Webhook](media/automation-webhooks/webhook-request-response.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się, jak usługa Azure Automation umożliwia podejmowanie akcji na alerty platformy Azure, zobacz [umożliwia alertu można wyzwolić elementu runbook usługi Azure Automation](automation-create-alert-triggered-runbook.md).

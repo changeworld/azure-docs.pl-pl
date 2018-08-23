@@ -2,19 +2,19 @@
 title: Aprowizowanie przepływności usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak ustawić aprowizowanej przepływności containsers usługi Azure Cosmos DB, kolekcje, wykresów i tabel.
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600163"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058780"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
@@ -262,20 +262,6 @@ Jedną z metod do oszacowania ilości zarezerwowanej przepływności wymaganej p
 > W przypadku typów elementów, które różnią się znacząco pod względem rozmiaru i liczby właściwości indeksowanych rejestrowania odpowiednich operacji żądania opłat za jednostkę związany z każdą *typu* dla typowego elementu o wielkości.
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>Pobierz opłata za żądanie wyrażana dla konta interfejsów API języka Gremlin 
-
-Oto przykład o tym, jak można uzyskać za pomocą biblioteki Gremlin.Net konta interfejsów API języka Gremlin opłata za żądanie wyrażana. 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-Oprócz powyższej metody umożliwia także nagłówek "x-ms łącznie — żądanie — opłata za" dla obliczeń w jednostkach żądania.
-
 
 ## <a name="throughput-faq"></a>Przepływność — często zadawane pytania
 

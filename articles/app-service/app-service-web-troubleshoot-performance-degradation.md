@@ -1,13 +1,13 @@
 ---
-title: Powolne działanie aplikacji sieci web w usłudze App Service | Dokumentacja firmy Microsoft
-description: Ten artykuł pomaga powolne web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service.
+title: Obniżyć wydajność aplikacji sieci web w usłudze App Service | Dokumentacja firmy Microsoft
+description: Ten artykuł pomaga w rozwiązywaniu problemów z wydajnością aplikacji powolne sieci web w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: ''
 tags: top-support-issue
-keywords: wydajność aplikacji sieci Web, powolne aplikacji app powolne
+keywords: wydajności aplikacji sieci Web, wolno aplikacji app powolne
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
@@ -16,48 +16,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b71aa004095a94bea84623fd2b5dbdfc1f81af0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 34ee673ee1cf870e376ac8c954a9f3fc468abaa2
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29461846"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054149"
 ---
-# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Powolne web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
-W tym artykule pomocy w rozwiązywaniu problemów z wydajnością aplikacji sieci web wolne w [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Powolne sieci web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
+Ten artykuł ułatwia rozwiązywanie problemów z wydajnością aplikacji sieci web powolne w [usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [MSDN Azure i fora przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można również pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz polecenie **Get Support**.
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [MSDN Azure i Stack Overflow forów](https://azure.microsoft.com/support/forums/). Alternatywnie można również pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i kliknij pozycję **Uzyskaj pomoc techniczną**.
 
 ## <a name="symptom"></a>Objaw
-Podczas przeglądania aplikacji sieci web, obciążenia stron powoli i czasami limitu czasu.
+Podczas przeglądania aplikacji sieci web, ładowania stron powoli, a czasem również limit czasu.
 
 ## <a name="cause"></a>Przyczyna
 Ten problem jest często spowodowane przez problemy z poziomu aplikacji, takich jak:
 
-* długi czas trwania żądania sieciowe
-* zapytania kod lub bazy danych aplikacji jest nieefektywne
-* aplikacji przy użyciu pamięci wysokiej/procesora CPU
-* Aplikacja awarii z powodu wyjątku
+* żądania sieci, trwa zbyt długo
+* zapytania kodu lub bazy danych aplikacji jest nieefektywne
+* aplikacji przy użyciu wysokie wykorzystanie pamięci/Procesora
+* aplikacja uległa awarii z powodu wyjątku
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
-Rozwiązywanie problemów, można podzielić na trzy różne zadania, w kolejności sekwencyjnej:
+Rozwiązywanie problemów z można podzielić na trzy różne zadania, w kolejności sekwencyjnej:
 
 1. [Sprawdź i monitorowanie zachowania aplikacji](#observe)
 2. [Zbieranie danych](#collect)
-3. [Ograniczenia problem](#mitigate)
+3. [Rozwiązać problem](#mitigate)
 
-[Aplikacje sieci Web usługi aplikacji](/services/app-service/web/) zapewnia różne opcje w każdym kroku.
+[App Service Web Apps](/services/app-service/web/) daje różne opcje w każdym kroku.
 
 <a name="observe" />
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Sprawdź i monitorowanie zachowania aplikacji
-#### <a name="track-service-health"></a>Śledź usługę kondycji
-Microsoft Azure publicizes każdym razem, gdy istnieje degradacji przerw i wydajności usługi. Kondycja usługi można śledzić na [portalu Azure](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [śledzić kondycja usługi](../monitoring-and-diagnostics/insights-service-health.md).
+#### <a name="track-service-health"></a>Śledzenie kondycji usługi
+Microsoft Azure publicizes każdorazowo, gdy występuje spadek przerw i wydajności usługi. Kondycja usługi można śledzić na [witryny Azure portal](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [śledzenie kondycji usługi](../monitoring-and-diagnostics/insights-service-health.md).
 
 #### <a name="monitor-your-web-app"></a>Monitorowanie aplikacji sieci web
-Ta opcja pozwala dowiedzieć się, jeśli masz problemy aplikacji. W bloku aplikacja sieci web, kliknij przycisk **żądań i błędów** kafelka. **Metryka** bloku pokazuje wszystkie metryki można dodać.
+Ta opcja umożliwia dowiedzieć się, jeśli masz problemy aplikacji. W bloku aplikacji sieci web kliknij **żądania i błędy** kafelka. **Metryki** blok zawiera wszystkie metryki, które można dodać.
 
-Niektóre metryki, które mogą zostać do monitorowania aplikacji sieci web
+Niektóre metryki, które warto monitorować aplikacji sieci web
 
 * Średni zestaw roboczy pamięci
 * Średni czas odpowiedzi
@@ -69,117 +69,117 @@ Niektóre metryki, które mogą zostać do monitorowania aplikacji sieci web
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Monitorowanie aplikacji sieci Web w usłudze aplikacji Azure](web-sites-monitor.md)
+* [Monitoruj aplikacje sieci Web w usłudze Azure App Service](web-sites-monitor.md)
 * [Otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-#### <a name="monitor-web-endpoint-status"></a>Monitoruje stan punktu końcowego sieci web
-Jeśli używasz aplikacji sieci web **standardowe** warstwy cenowej, aplikacje sieci Web umożliwia monitorowanie dwa punkty końcowe z trzech lokalizacji geograficznej.
+#### <a name="monitor-web-endpoint-status"></a>Monitorowanie stanu punktu końcowego sieci web
+Jeśli korzystasz z aplikacji sieci web **standardowa** warstwy cenowej, aplikacje sieci Web umożliwia monitorowanie dwa punkty końcowe z trzech lokalizacjach geograficznych.
 
-Monitorowania punktów końcowych konfiguruje testów sieci web z rozproszona geograficznie lokalizacje testujące czas reakcji i przestoje adresów URL sieci web. Test wykonuje operację GET protokołu HTTP, adres URL sieci web, aby określić czas reakcji i przestoje w każdej lokalizacji. Każdej skonfigurowanej lokalizacji uruchamia test co pięć minut.
+Monitorowanie punktu końcowego konfiguruje testy sieci web z rozproszone geograficznie lokalizacje, które testują czas odpowiedzi i czas pracy z adresami URL sieci web. Test wykonuje operację GET protokołu HTTP na adres URL sieci web, aby określić czas odpowiedzi i czas pracy w każdej lokalizacji. Każdej skonfigurowanej lokalizacji uruchamia test co pięć minut.
 
-Czas działania jest monitorowana przy użyciu kodów odpowiedzi HTTP, a czas odpowiedzi jest mierzony w milisekundach. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest większa niż lub równa 400 lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest traktowany jako dostępne w przypadku powodzenia testów monitorowania w określonych lokalizacjach.
+Czas pracy jest monitorowana przy użyciu kody odpowiedzi HTTP, a czas odpowiedzi jest mierzony w milisekundach. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest mniejszy niż 400 lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest uważana za dostępną, jeśli jego monitorowania testy z określonych lokalizacji.
 
-Aby go skonfigurować, zobacz [monitorowanie aplikacji w usłudze Azure App Service](web-sites-monitor.md).
+Aby ustawić go tak, zobacz [monitorować aplikacje w usłudze Azure App Service](web-sites-monitor.md).
 
-Zobacz też [utrzymywanie Azure Web Sites zapasową oraz monitorowania punktów końcowych — z Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) Film przedstawiający monitorowania punktów końcowych.
+Zobacz też [witryn sieci Web Azure przechowywanie w górę oraz monitorowanie punktu końcowego — za pomocą Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) dla wideo na temat monitorowania punktu końcowego.
 
-#### <a name="application-performance-monitoring-using-extensions"></a>Monitorowanie wydajności aplikacji przy użyciu rozszerzenia
-Można również monitorować wydajność aplikacji za pomocą *lokacji rozszerzenia*.
+#### <a name="application-performance-monitoring-using-extensions"></a>Monitorowanie wydajności aplikacji za pomocą rozszerzeń
+Można również monitorować wydajność aplikacji za pomocą *rozszerzenie witryny*.
 
-Każdej aplikacji sieci web usługi App Service udostępnia punkt końcowy rozszerzonego zarządzania, który pozwala na stosowanie zaawansowany zestaw narzędzi wdrożony jako rozszerzenia lokacji. Rozszerzenia obejmują: 
+Każda aplikacja sieci web usługi App Service zawiera punkt końcowy rozszerzonego zarządzania, który umożliwia korzystanie z zaawansowanego zestawu narzędzi wdrożonych jako rozszerzenia witryny. Rozszerzenia obejmują: 
 
-- Edytory kodu źródłowego, takich jak [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
-- Narzędzia do zarządzania dla połączonych zasobów, takich jak bazy danych MySQL podłączone do aplikacji sieci web.
+- Edytorów kodów źródłowych, takich jak [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Narzędzia do zarządzania dla połączonych zasobów, takich jak bazy danych MySQL jest podłączony do aplikacji sieci web.
 
-[Azure Application Insights](/services/application-insights/) jest rozszerzeniem lokacji, które jest również dostępna do monitorowania wydajności. Aby korzystać z usługi Application Insights, należy odtworzyć kodu za pomocą zestawu SDK. Można także zainstalować rozszerzenia, która zapewnia dostęp do dodatkowych danych. Zestaw SDK umożliwia napisz kod umożliwiający monitorowanie użycia i wydajności aplikacji bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [monitorować wydajność w aplikacji sieci web](../application-insights/app-insights-web-monitor-performance.md).
+[Usługa Azure Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzenie witryny, która jest również dostępna monitorowania wydajności. Aby korzystać z usługi Application Insights, możesz ponownie skompiluj kod, za pomocą zestawu SDK. Można także zainstalować rozszerzenia, które zapewnia dostęp do dodatkowych danych. Zestaw SDK pozwala napisać kod, aby monitorować użycie i wydajność Twojej aplikacji bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [monitorowania wydajności w aplikacjach sieci web](../application-insights/app-insights-web-monitor-performance.md).
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Zbieranie danych
-Środowisko aplikacji sieci Web udostępnia funkcję diagnostyki dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Informacje są podzielone na diagnostyki serwera sieci web i diagnostyki aplikacji.
+Środowisko aplikacji sieci Web zapewnia funkcja diagnostyki dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Informacje jest dzielony na diagnostyki serwera sieci web i diagnostyki aplikacji.
 
-#### <a name="enable-web-server-diagnostics"></a>Włącz diagnostykę serwera sieci web
+#### <a name="enable-web-server-diagnostics"></a>Włączanie diagnostyki serwera sieci web
 Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
-* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje o błędzie kodów stanu HTTP, które wskazania błędu (kod stanu 400 lub nowszej). Może zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu.
-* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śladu używane do przetwarzania żądania oraz godzinę w poszczególnych składników składników usług IIS. Może to być przydatne, jeśli chcesz zwiększyć wydajność aplikacji sieci web lub określić, co powoduje określonego błędu HTTP.
-* **Rejestrowanie serwera w sieci Web** — informacje o transakcjach HTTP przy użyciu rozszerzonym formacie W3C dziennika pliku. Jest to przydatne podczas określania ogólnego metryki aplikacji sieci web, takich jak liczba żądań obsłużonych lub liczbę żądań pochodzą z określonego adresu IP.
+* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje o błędzie dla kodów stanu HTTP, które wskazują błędu (kod stanu 400 lub nowszej). Może zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu.
+* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Może to być przydatne, jeśli chcesz zwiększyć wydajność aplikacji sieci web lub określić, co powoduje określonego błędu HTTP.
+* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą rozszerzonym formacie W3C dziennika plików. Jest to przydatne podczas określania ogólnego metryki aplikacji sieci web, takich jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
-#### <a name="enable-application-diagnostics"></a>Włącz diagnostykę aplikacji
-Dostępnych jest kilka opcji do zbierania danych dotyczących wydajności aplikacji z aplikacji sieci Web, profil aplikacji na żywo w programie Visual Studio lub zmodyfikować kod aplikacji do logowania się dodatkowe informacje i dane śledzenia. Można wybrać opcje oparte na narzędzi ile dostępu do aplikacji i obserwowanych z monitorowania.
+#### <a name="enable-application-diagnostics"></a>Włączanie diagnostyki aplikacji
+Dostępnych jest kilka opcji do zbierania danych dotyczących wydajności aplikacji z aplikacji sieci Web, profil aplikacji na żywo w programie Visual Studio lub modyfikować kodu aplikacji, aby rejestrować dodatkowe informacje i dane śledzenia. Możesz wybrać opcji, w zależności od ilości dostępu do aplikacji i zaobserwowanie z monitorowania narzędzi.
 
-##### <a name="use-application-insights-profiler"></a>Użyj Application Insights profilera
-Można włączyć aplikacji profilera Insights można uruchomić przechwytywanie śladów szczegółowe wydajności. Można uzyskać dostęp do przechwycone dane śledzenia pięć dni temu potrzebne do badania problemów przypada w przeszłości. Tę opcję można tak długo, jak długo mają dostęp do zasobu usługi Application Insights aplikacji sieci web w portalu Azure.
+##### <a name="use-application-insights-profiler"></a>Użyj Application Insights Profiler
+Można włączyć Application Insights Profiler rozpocząć, przechwytywanie śladów wydajności szczegółowe. Możesz uzyskać dostęp do przechwycone ślady pięć dni temu niezbędne, aby badać problemy wystąpiły w przeszłości. Użytkownik wybierz tę opcję, tak długo, jak długo mają dostęp do zasobu usługi Application Insights w aplikacji sieci web w witrynie Azure portal.
 
-Application Insights Profiler zawiera dane statystyczne dotyczące czas odpowiedzi dla każdego wywołania sieci web i śladów, wskazującą, w którym wierszem kodu spowodował powolne odpowiedzi. Czasami aplikację usługi aplikacji działa wolno, ponieważ niektóre kodu nie jest zapisywany w wydajności sposób. Przykładami sekwencyjnych kod, który można uruchomić w rywalizacji blokad równoległych i niepożądane bazy danych. Usunięcie tych wąskich gardeł w kodzie zwiększa wydajność aplikacji, ale są trudne do wykrycia bez konfigurowania dzienników i rozbudowane dane śledzenia. Ślady zebrane przez Profiler Insights aplikacji pomaga w identyfikacji wierszy kodu, który spowalnia aplikacji i rozwiązać ten problem w przypadku aplikacji usługi aplikacji.
+Application Insights Profiler zawiera dane statystyczne dotyczące czas odpowiedzi dla każdego wywołania sieci web i ślady, wskazujący, który wiersz kodu spowodowane powolnych odpowiedziach. Czasami aplikacja usługi App Service jest powolne, ponieważ niektórych kodu nie jest zapisywana w wydajny sposób. Przykłady obejmują sekwencyjnego kodu, który mogą być uruchamiane w rywalizacji o blokadę równoległe niepożądane i nieoczekiwane bazy danych. Usunięcie tych wąskich gardeł w kodzie zwiększa wydajność aplikacji, ale są trudne do wykrycia bez konfigurowania rozbudowane ślady i dzienniki. Ślady zebrane przez program Application Insights Profiler ułatwia identyfikowanie wierszy kodu, który spowalnia aplikacji i stawić czoła temu wyzwaniu dla aplikacji usługi App Service.
 
- Aby uzyskać więcej informacji, zobacz [profilowania aplikacji sieci web platformy Azure na żywo za pomocą usługi Application Insights](../application-insights/app-insights-profiler.md).
+ Aby uzyskać więcej informacji, zobacz [profilowania na żywo usługi Azure web apps za pomocą usługi Application Insights](../application-insights/app-insights-profiler.md).
 
-##### <a name="use-remote-profiling"></a>Użyj profilowanie zdalne
-W usłudze Azure App Service aplikacje sieci Web, aplikacje interfejsu API i zadania Webjob może być zdalnie profilowane. Wybierz tę opcję, jeśli masz dostęp do zasobów aplikacji sieci web i wiesz, jak do odtworzenia problemu lub jeśli znasz dokładnego interwał sytuacji problem z wydajnością.
+##### <a name="use-remote-profiling"></a>Użyj zdalnego profilowania
+W usłudze Azure App Service Web Apps, API Apps i WebJobs można zdalnie profilować. Wybierz tę opcję, jeśli masz dostęp do zasobów aplikacji sieci web i wiesz, jak prowadzące do odtworzenia problemu lub osobom znającym dokładny czas interwału się dzieje problemów z wydajnością.
 
-Profilowanie zdalne jest przydatne, jeśli jest wysokie użycie procesora CPU przez proces i proces działa wolniej niż oczekiwano lub opóźnienia żądania HTTP są większe niż jest to normalne, można zdalnie profilu procesu i uzyskać stosy wywołań próbkowania procesora CPU do analizowania procesu ścieżki działania i kod dostępu.
+Zdalne Profilowanie jest przydatne, jeśli użycie procesora CPU procesu jest duże i proces działa wolniej niż oczekiwano lub opóźnienia żądania HTTP są większe niż zwykle, można zdalnie profilować proces i uzyskać stosy wywołań próbkowania procesora CPU do analizowania procesu działanie i kod ścieżek krytycznych.
 
-Aby uzyskać więcej informacji, zobacz [profilowanie zdalne pomocy technicznej w usłudze Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
+Aby uzyskać więcej informacji, zobacz [obsłudze zdalnego profilowania w usłudze Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
-##### <a name="set-up-diagnostic-traces-manually"></a>Ręcznie skonfigurować dane śledzenia diagnostycznego
-Jeśli masz dostęp do kodu źródłowego aplikacji sieci web diagnostyki aplikacji umożliwia przechwytywanie informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać `System.Diagnostics.Trace` klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Jednak należy zmienić kod i wdrożenie aplikacji. Ta metoda jest zalecane, jeśli aplikacja działa w środowisku testowym.
+##### <a name="set-up-diagnostic-traces-manually"></a>Konfiguruj dane śledzenia diagnostycznego ręcznie
+W przypadku dostępu do kodu źródłowego aplikacji sieci web diagnostyki aplikacji umożliwia przechwytywanie informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać `System.Diagnostics.Trace` klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Jednakże należy zmienić kodu i ponownego wdrażania aplikacji. Ta metoda jest zalecane, jeśli Twoja aplikacja działa w środowisku testowym.
 
-Aby uzyskać szczegółowe instrukcje na temat konfigurowania aplikacji w celu rejestrowania, zobacz [Włączanie rejestrowania diagnostyki dla aplikacji sieci web w usłudze Azure App Service](web-sites-enable-diagnostic-log.md).
+Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania aplikacji na potrzeby rejestrowania, zobacz [Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service](web-sites-enable-diagnostic-log.md).
 
-#### <a name="use-the-azure-app-service-support-portal"></a>Użyj portalu pomocy technicznej usługi Azure App Service
-Aplikacje sieci Web umożliwia rozwiązanie problemów dotyczących aplikacji sieci web, analizując HTTP dzienniki, dzienniki zdarzeń, zrzuty procesu i inne. Można uzyskać dostępu do tych informacji za pomocą portalu pomocy technicznej w **http://&lt;Twojego Nazwa aplikacji >.scm.azurewebsites.net/Support**
+#### <a name="use-the-azure-app-service-support-portal"></a>Korzystanie z portalu pomocy technicznej usługi Azure App Service
+Usługa Web Apps umożliwia rozwiązywania problemów związanych z aplikacją sieci web, analizując HTTP dzienników, dzienniki zdarzeń, zrzuty procesów i więcej. Możesz uzyskać dostęp wszystkie te informacje przy użyciu portalu pomocy technicznej w **http://&lt;Twoja nazwa aplikacji >.scm.azurewebsites.net/Support**
 
-Portalu pomocy technicznej usługi Azure App Service udostępnia trzy oddzielne karty do obsługi trzy kroki typowego scenariusza rozwiązywania problemów:
+Portal pomocy technicznej usługi Azure App Service zapewnia trzech osobnych kartach do obsługi trzy kroki typowego scenariusza rozwiązywania problemów:
 
 1. Sprawdź bieżące zachowanie
-2. Analizowanie zbierania informacji diagnostycznych i uruchamiając analizatorów wbudowane
-3. Ograniczenie
+2. Analizuj, zbieranie informacji diagnostycznych i uruchamiając wbudowanych analizatorów
+3. Eliminacja zagrożeń
 
-Problem jest wykonywane od razu, kliknij przycisk **Analizuj** > **diagnostyki** > **diagnozowanie teraz** utworzenie sesji diagnostycznej, do którego Służy do zbierania dzienników HTTP, dzienniki Podglądu zdarzeń zrzuty pamięci, dzienniki błędów PHP i raportu procesu PHP.
+Jeśli problem się dzieje w tej chwili, kliknij przycisk **analizy** > **diagnostyki** > **Diagnozuj teraz** do utworzenia sesji diagnostycznej, który Służy do zbierania dzienników HTTP, dzienniki Podglądu zdarzeń, zrzuty pamięci, dzienniki błędów języka PHP i raport z procesu PHP.
 
-Gdy dane są zbierane, w portalu pomocy technicznej uruchamia analizę danych i udostępnia raport HTML.
+Po zebraniu danych portalu pomocy technicznej uruchamia analizy danych i udostępnia raport HTML.
 
 W przypadku, gdy chcesz pobrać dane, domyślnie, powinny być przechowywane w folderze D:\home\data\DaaS.
 
-Aby uzyskać więcej informacji w portalu pomocy technicznej usługi Azure App Service, zobacz [nowe aktualizacje do obsługi rozszerzenia lokacji dla witryn sieci Web Azure](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Aby uzyskać więcej informacji na temat portalu pomocy technicznej usługi Azure App Service, zobacz [nowe aktualizacje do obsługi rozszerzenia witryny dla usługi Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
 
 #### <a name="use-the-kudu-debug-console"></a>Użyj konsoli debugowania aparatu Kudu
-Aplikacje sieci Web jest dostarczany z konsoli debugowania, która służy do debugowania, eksploracji, przekazywania plików, a także pobieranie informacji na temat środowiska punktów końcowych JSON. Ta konsola jest nazywany *konsoli Kudu* lub *pulpitu nawigacyjnego SCM* dla aplikacji sieci web.
+Aplikacje sieci Web jest dostarczany za pomocą konsoli debugowania, używanego do debugowania, eksplorowanie, przekazywanie plików, a także JSON punkty końcowe, w celu uzyskania informacji dotyczących środowiska. Ta konsola jest nazywany *konsoli Kudu* lub *pulpitu nawigacyjnego funkcji SCM* dla aplikacji sieci web.
 
-Dostęp do tego pulpitu nawigacyjnego, przechodząc do łącza **https://&lt;Twojego Nazwa aplikacji >.scm.azurewebsites.net/**.
+Dostęp do tego pulpitu nawigacyjnego, przechodząc do łącza **https://&lt;Twoja nazwa aplikacji >.scm.azurewebsites.net/**.
 
-Niektóre czynności, które program Kudu udostępnia są:
+Niektóre rzeczy, które zapewnia aparat Kudu, to:
 
-* ustawienia środowiska aplikacji
+* ustawienia środowiska dla aplikacji
 * strumień dziennika
-* diagnostycznych zrzutu
-* Konsola, w którym można uruchomić poleceń cmdlet programu Powershell i podstawowe polecenia systemu DOS debugowania.
+* diagnostyczne zrzutu
+* Debuguj konsoli, w którym można uruchomić polecenia cmdlet programu Powershell i podstawowe polecenia systemu DOS.
 
-Inny przydatną cechą Kudu jest, że w przypadku, gdy aplikacja jest zgłaszanie wyjątków pierwszej szansy, można użyć Kudu i zrzuty narzędzie SysInternals Procdump utworzyć pamięci. Te zrzuty pamięci są migawki procesu i często ułatwiają rozwiązywanie problemów z bardziej skomplikowanych problemów z aplikacją sieci web.
+Inną przydatną cechą Kudu jest, że w przypadku, gdy aplikacja zgłasza wyjątki pierwszej szansy, można użyć narzędzia Kudu i zrzuty narzędzie SysInternals Procdump, aby utworzyć pamięci. Te zrzuty pamięci są migawki procesu i często może pomóc rozwiązać bardziej skomplikowanych problemów z aplikacją sieci web.
 
-Aby uzyskać więcej informacji o funkcjach dostępnych w Kudu, zobacz [narzędzia Azure witryn sieci Web Team Services, musisz wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Aby uzyskać więcej informacji na temat funkcji dostępnych w Kudu, zobacz [narzędzia usługi Azure Websites Team Services, należy wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Ograniczenia problem
+### <a name="3-mitigate-the-issue"></a>3. Rozwiązać problem
 #### <a name="scale-the-web-app"></a>Skalowanie aplikacji sieci web
-W usłudze Azure App Service Aby zwiększyć wydajność i przepływność, można dostosować skali, w którym są uruchomione aplikacji. Skalowanie w górę aplikacji sieci web obejmuje dwie akcje powiązane: zmiana planu usługi aplikacji na wyższej warstwy cenowej i konfigurowanie niektórych ustawień po przełączeniu do wyższej warstwy cenowej.
+W usłudze Azure App Service Aby zwiększyć wydajność i przepływność, można dostosować skali, w którym aplikacja jest uruchamiana. Skalowanie aplikacji sieci web obejmuje dwie akcje powiązane: zmiana planu usługi App Service na wyższą warstwę cenową i konfigurowanie niektórych ustawień, po przełączeniu do wyższej warstwy cenowej.
 
 Aby uzyskać więcej informacji na temat skalowania, zobacz [skalowanie aplikacji sieci web w usłudze Azure App Service](web-sites-scale.md).
 
-Ponadto można wybrać do uruchamiania aplikacji na więcej niż jedno wystąpienie. Skalowanie w poziomie nie tylko zapewnia więcej możliwości przetwarzania, ale umożliwia także niektóre ilość odporność na uszkodzenia. Jeśli proces przestanie działać w jednym wystąpieniu, inne wystąpienia nadal obsługiwać żądań.
+Ponadto można uruchomić aplikację na więcej niż jedno wystąpienie. Skalowanie w poziomie nie tylko zapewnia więcej możliwości przetwarzania, ale również zapewnia pewien stopień odporności na uszkodzenia. Jeśli proces ulegnie awarii w jednym wystąpieniu, inne wystąpienia w dalszym ciągu obsługiwać żądań.
 
-Można skonfigurować jako ręczne lub automatyczne skalowanie.
+Możesz ustawić skalowanie ręczne lub automatyczne.
 
-#### <a name="use-autoheal"></a>Funkcja AutoHeal użycia
-Funkcja AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranego (na przykład zmiany konfiguracji żądania, limity pamięci lub czas potrzebny na wykonanie żądania). W większości przypadków, odtworzenia procesu jest najszybszym sposobem odzyskanie problem. Chociaż zawsze można ponownie uruchomić aplikacji sieci web z bezpośrednio z poziomu portalu Azure, funkcja AutoHeal zrobi to automatycznie za użytkownika. To wszystko, co należy zrobić, Dodaj niektóre wyzwalacze w głównym pliku web.config dla aplikacji sieci web. Te ustawienia będzie działać w ten sam sposób, nawet jeśli aplikacja nie jest aplikacji .net.
+#### <a name="use-autoheal"></a>Używają funkcji AutoHeal
+Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze uruchomić ponownie aplikację internetową z bezpośrednio z poziomu witryny Azure portal, funkcji AutoHeal zrobi to automatycznie za Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config dla aplikacji sieci web. Te ustawienia będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest aplikacji platformy .net.
 
-Aby uzyskać więcej informacji, zobacz [automatyczne naprawianie Azure Web Sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+Aby uzyskać więcej informacji, zobacz [Samonaprawianie witryn sieci Web Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
-#### <a name="restart-the-web-app"></a>Uruchom ponownie aplikację sieci web
-Ponowne uruchomienie jest często Najprostszym sposobem, aby rozwiązać jednorazowo występujące problemy. Na [portalu Azure](https://portal.azure.com/), w bloku aplikacja sieci web ma opcji, aby zatrzymać lub uruchomić ponownie aplikację.
+#### <a name="restart-the-web-app"></a>Uruchom ponownie aplikację internetową
+Ponowne uruchamianie często jest to najprostszy sposób, aby odzyskać sprawność po jednorazowych problemach. Na [witryny Azure portal](https://portal.azure.com/), w bloku aplikacji sieci web mają opcji, aby zatrzymać lub uruchomić ponownie aplikację.
 
- ![ponowne uruchomienie aplikacji sieci web, aby rozwiązać problemy z wydajnością](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![Uruchom ponownie aplikację internetową, aby rozwiązać problemy z wydajnością](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Można również zarządzać aplikacji sieci web przy użyciu programu Azure Powershell. Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
+Można również zarządzać aplikacją sieci web przy użyciu programu Azure Powershell. Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).

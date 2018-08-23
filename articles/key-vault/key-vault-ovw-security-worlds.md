@@ -1,46 +1,46 @@
 ---
 ms.assetid: ''
-title: Względem zabezpieczeń usługi Azure Key Vault | Dokumentacja firmy Microsoft
+title: Środowiska zabezpieczeń usługi Azure Key Vault | Dokumentacja firmy Microsoft
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
 ms.date: 07/03/2017
-ms.openlocfilehash: aeab36153d3a4e004d12206bab92cea9b30400ad
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 7fd7357a317d5059d6169de2c1536568a254e016
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27928104"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42057315"
 ---
-# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Środowiska usługi Azure Key Vault security World i geograficzne granice
+# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Środowiska zabezpieczeń usługi Azure Key Vault i granicach geograficznych
 
-Usługa Azure Key Vault jest usługą wielodostępnych i korzysta z puli sprzętowych modułów zabezpieczeń (HSM) w każdej lokalizacji platformy Azure. 
+Usługa Azure Key Vault to usługa dla wielu dzierżawców i korzysta z puli sprzętowych modułów zabezpieczeń (HSM) w każdej lokalizacji platformy Azure. 
 
-Wszystkie moduły HSM w lokalizacjach Azure w tym samym regionie geograficznym udostępnianie tej samej granicy kryptograficznych (środowiska zabezpieczeń firmy Thales). Na przykład wschodnie stany USA i zachodnie stany USA udziału tego samego środowiska zabezpieczeń security world, ponieważ należą do lokalizacja geograficzna Stanów Zjednoczonych. Podobnie wszystkich lokalizacji platformy Azure w Japonii współużytkowanie tego samego środowiska zabezpieczeń security world i wszystkich lokalizacji platformy Azure w Australii, Indie i tak dalej. 
+Wszystkie moduły HSM w lokalizacjach platformy Azure, w tym samym regionie geograficznym udostępnianie tej samej granicy kryptograficznych (środowiska zabezpieczeń firmy Thales). Na przykład wschodnie stany USA i zachodnie stany USA udostępnianie tego samego środowiska zabezpieczeń security world, ponieważ należą one do lokalizacji geograficznej w Stanach Zjednoczonych. Podobnie wszystkich lokalizacji platformy Azure w Japonii udostępnianie tego samego środowiska zabezpieczeń security world oraz wszystkich lokalizacji platformy Azure w Australii, Indie i tak dalej. 
 
-## <a name="backup-and-restore-behavior"></a>Zachowanie kopii zapasowej i przywracania
+## <a name="backup-and-restore-behavior"></a>Zachowanie i przywracania kopii zapasowych
 
-Do magazynu kluczy w innej lokalizacji platformy Azure, można przywrócić kopii zapasowej klucza z magazynu kluczy w jednej lokalizacji platformy Azure, dopóki oba te warunki są spełnione:
+Można przywrócić kopii zapasowej klucza z magazynu kluczy w jednej lokalizacji platformy Azure do magazynu kluczy w innej lokalizacji platformy Azure, tak długo, jak oba te warunki są spełnione:
 
-- Azure lokalizacji należeć do tej samej lokalizacji geograficznej
+- Zarówno lokalizacje platformy Azure należą do tej samej lokalizacji geograficznej
 - Zarówno magazynów kluczy należą do tej samej subskrypcji platformy Azure
 
-Na przykład kopii zapasowej, w ramach danej subskrypcji klucza w magazynie kluczy w Indie Zachodnie można przywrócić tylko do innego magazynu kluczy w tej samej subskrypcji i lokalizacji geo. Indie Zachodnie, Indie środkowe lub Indie Południowe
+Na przykład kopię zapasową analizowaniem danej subskrypcji klucz w magazynie kluczy w Indie Zachodnie, można przywrócić tylko do innego magazynu kluczy w tej samej subskrypcji i lokalizacji geograficznej. Indie Zachodnie, Indie środkowe i Indie Południowe
 
-## <a name="regions-and-products"></a>Regiony i produktów
+## <a name="regions-and-products"></a>Regiony i produkty
 
 - [Regiony platformy Azure](https://azure.microsoft.com/regions/)
-- [Produkty firmy Microsoft według regionu](https://azure.microsoft.com/regions/services/)
+- [Produkty firmy Microsoft uporządkowane według regionów](https://azure.microsoft.com/regions/services/)
 
-Regiony są mapowane do środowiska security World, wyświetlane jako głównych pozycji w tabelach:
+Regiony są mapowane do środowiska zabezpieczeń, wyświetlana jako głównych pozycji w tabelach:
 
-W produktach artykule region, na przykład **Americas** karta zawiera wschód US, ŚRODKOWE stany USA, zachodnie stany USA wszystkie mapowania do obszaru Americas. 
+W produktach artykule region, na przykład **Południową** karta zawiera wschodnie stany USA, ŚRODKOWE stany USA, zachodnie stany USA wszystkich mapowań do regionu Południową. 
 
 >[!NOTE]
->Wyjątek jest nam wschodnie DOD i nam DOD centralnej własnych środowiska security World. 
+>Wyjątek jest dod — wschodnie stany USA i dod — ŚRODKOWE stany USA własne środowiska zabezpieczeń. 
 
-Podobnie na **Europy** karcie, Europa Północna, EUROPA i EUROPA ZACHODNIA, są mapowane na regionie Europy. Dotyczy to również na **Azja i Pacyfik** kartę.
+Podobnie na **Europa** kartę, EUROPA Północna i EUROPA ZACHODNIA, są mapowane na region Europa. To samo dotyczy również na **Azja i Pacyfik** kartę.
 
 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 880632a39332f7d9ad24b0f7aa2301660eb2f9b8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528577"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055358"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -332,14 +332,14 @@ Usługa Azure Storage udostępnia następujące metryki pojemności w usłudze A
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| UsedCapacity | Ilość miejsca używanego przez konta magazynu. W przypadku kont magazynu w warstwie standardowa jest sumą pojemność wykorzystana przez obiektów blob, tabel, plików i kolejek. Dla kont usługi premium storage i kont usługi Blob storage jest taka sama jak BlobCapacity. <br/><br/> Jednostka: bajty <br/> Typ agregacji: średni <br/> Przykład: 1024 |
+| UsedCapacity | Ilość miejsca używanego przez konta magazynu. W przypadku kont magazynu w warstwie standardowa jest sumą pojemność wykorzystana przez obiektów blob, tabel, plików i kolejek. Dla kont usługi premium storage i kont usługi Blob storage jest taka sama jak BlobCapacity. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Przykład: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| BlobCapacity | Suma magazynu obiektów Blob na koncie magazynu. <br/><br/> Jednostka: bajty <br/> Typ agregacji: średni <br/> Przykład: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
-| BlobCount    | Liczba obiektów blob przechowywanych na koncie magazynu. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Przykład: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
+| BlobCapacity | Suma magazynu obiektów Blob na koncie magazynu. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Przykład: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
+| BlobCount    | Liczba obiektów blob przechowywanych na koncie magazynu. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Przykład: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
 | ContainerCount    | Liczba kontenerów na koncie magazynu. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Przykład: 1024 |
 
 ### <a name="table-storage"></a>Magazyn tabel

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę z Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przypisywanie konfiguracji do wielu urządzeń przy użyciu konfiguracji automatycznego urządzeń Centrum IoT Azure
+title: Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę z usługą Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Użyj konfiguracji urządzeń automatycznego usługi Azure IoT Hub, aby przypisać konfiguracji do wielu urządzeń
 author: ChrisGMsft
 manager: bruz
 ms.service: iot-hub
@@ -8,36 +8,36 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 2edde122b109779794bb86752d69a5318edb9235
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030771"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055382"
 ---
-# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu portalu Azure
+# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu witryny Azure portal
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Zarządzanie urządzeniami automatyczne w Centrum IoT Azure pozwala zautomatyzować wiele powtarzających się i złożonych zadań związanych z zarządzaniem floty dużych urządzenia za pośrednictwem całości ich cyklów. Z zarządzania urządzeniami automatyczne docelowa zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją, a let Centrum IoT aktualizowania urządzeń, które pochodzą do zakresu.  To jest wykonywane przy użyciu konfiguracji automatycznego urządzenia, która będzie również można podsumować zakończenia i zgodności, scalanie dojścia i konflikty i wdrażanie konfiguracji etapami.
+Zarządzanie urządzeniami automatyczne w usłudze Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań zarządzania flot duże urządzenia względem całej ich cykle życia. Za pomocą funkcji zarządzania urządzenia automatycznego można docelowe zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją i umożliwić usługi IoT Hub aktualizowania urządzenia, które pochodzą one do zakresu.  Jest to wykonywane, przy użyciu konfiguracji urządzenia automatycznego, która będzie również można podsumować zakończenia i zgodności, scalanie dojścia i konfliktów i wdrażanie konfiguracji etapami.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Pracy konfiguracji urządzenia automatycznego aktualizowania zbiór urządzeń twins odpowiednie właściwości i raportowania podsumowanie w oparciu o urządzenia dwie zgłosił właściwości.  Podaj nową klasą a dokumentu JSON o nazwie _konfiguracji_ którego ma trzy części:
+Działanie konfiguracji urządzenia automatycznego aktualizowania zbiór bliźniacze reprezentacje urządzeń za pomocą odpowiednich właściwości i raportowanie podsumowanie w oparciu o bliźniaczej reprezentacji urządzenia zgłoszonych właściwości.  Wprowadza nową klasę i dokument JSON o nazwie *konfiguracji* która ma trzy części:
 
-* **Target warunku** określa zakres twins urządzenia do zaktualizowania. Warunek docelowy jest określony jako zapytania w tagach dwie urządzenia i/lub raportowania właściwości.
+* **Warunek docelowy** definiuje zakres bliźniaczych reprezentacji urządzeń do aktualizacji. Warunek docelowy jest określony jako zapytanie na tagów bliźniaczych reprezentacji urządzeń i/lub zgłoszonych właściwości.
 
-* **Kierować zawartość** definiuje żądanej właściwości mają być dodane lub zaktualizowane w twins urządzenia docelowego. Zawartość zawiera ścieżkę do sekcji żądanej właściwości zostanie zmieniony.
+* **Dopasowywanie zawartości** definiuje żądane właściwości, które mają być dodane lub zaktualizowane w docelowym bliźniaczych reprezentacji urządzeń. Zawartość zawiera ścieżkę do sekcji żądane właściwości, które mają być zmienione.
 
-* **Metryki** zdefiniuj podsumowanie liczby różnych stanami konfiguracji, takich jak **Powodzenie**, **w toku**, i **błąd**. Metryki niestandardowe są określone jako zapytania na urządzeniu dwie zgłoszone właściwości.  Metryki systemu są domyślne metryki pomiaru dwie stan aktualizacji, takie jak liczba twins urządzenia, które są stosowane i liczba twins, które zostały pomyślnie zaktualizowane. 
+* **Metryki** zdefiniować podsumowanie liczby różnych stanów konfiguracji, takie jak **Powodzenie**, **w toku**, i **błąd**. Metryki niestandardowe są określane jako zapytania na urządzeniu zgłoszonych właściwości bliźniaka.  Metryki systemu są domyślnych metryk, które mierzą stan aktualizacji bliźniaczej reprezentacji, takie jak liczba bliźniacze reprezentacje urządzeń, które są stosowane i liczba reprezentacje urządzeń, które zostały pomyślnie zaktualizowane. 
 
-## <a name="implement-device-twins-to-configure-devices"></a>Implementowanie twins urządzenia w celu skonfigurowania urządzeń
+## <a name="implement-device-twins-to-configure-devices"></a>Implementowanie bliźniaczych reprezentacji urządzeń w celu skonfigurowania urządzeń
 
-Automatyczne urządzenie konfiguracje wymagają użycia twins urządzenia do synchronizacji stanu między chmurą i urządzeniami.  Zapoznaj się [opis i użyj twins urządzenie w Centrum IoT] [ lnk-device-twin] wskazówki na temat używania twins urządzenia.
+Urządzenia automatycznego konfiguracje wymagają użycia bliźniacze reprezentacje urządzeń, aby zsynchronizować stan między chmurą i urządzeniami. Zapoznaj się [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](iot-hub-devguide-device-twins.md) wskazówki na temat korzystania z bliźniaczych reprezentacji urządzeń.
 
-## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń przy użyciu tagów
+## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń za pomocą tagów
 
-Przed utworzeniem konfiguracji należy określić urządzeń, które mają zostać zmodyfikowane. Centrum IoT Azure identyfikuje urządzenia przy użyciu tagów w dwie urządzenia. Każde urządzenie może mieć wiele tagów i można je zdefiniować sposób, który ma sens dla rozwiązania. Na przykład możesz zarządzać urządzeniami w różnych lokalizacjach, może dodać następujących tagów do dwie urządzenia:
+Zanim będzie można utworzyć konfiguracji, należy określić urządzeń, które mają zostać zmodyfikowane. Usługa Azure IoT Hub identyfikuje urządzenia przy użyciu tagów w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów i można je zdefiniować sposób, który ma sens dla Twojego rozwiązania. Na przykład można zarządzać urządzeniami w różnych lokalizacjach, może dodać następujące znaczniki do bliźniaczej reprezentacji urządzenia:
 
 ```json
 "tags": {
@@ -48,135 +48,169 @@ Przed utworzeniem konfiguracji należy określić urządzeń, które mają zosta
 },
 ```
 
-## <a name="create-a-configuration"></a>Tworzenie konfiguracji
+## <a name="create-a-configuration"></a>Utwórz konfigurację
 
-1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT**.
-1. Wybierz **Dodaj konfigurację**.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
 
-Brak pięć kroki, aby utworzyć konfigurację. Poniższe sekcje przeprowadzenie każdej z nich. 
+2. Wybierz **konfiguracji urządzenia IoT**.
 
-### <a name="step-1-name-and-label"></a>Krok 1: Nazwa i etykieta
+3. Wybierz **Dodaj konfigurację**.
 
-1. Nadaj unikatową nazwę, która jest maksymalnie 128 małe litery konfiguracji. Unikaj spacje i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
-1. Dodawanie etykiet służące do śledzenia konfiguracji. Etykiety są **nazwa**, **wartość** pary, które opisują konfiguracji. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`.
-1. Wybierz **dalej** aby przejść do kroku 2. 
+Istnieje pięć kroków, aby utworzyć konfigurację. Poniższe sekcje przeprowadzą za pośrednictwem każdej z nich. 
 
-### <a name="step-2-specify-settings"></a>Krok 2: Określ ustawienia
+### <a name="name-and-label"></a>Nazwa i etykieta
 
-W tej sekcji określa kierowanie zawartości w twins urządzenia docelowego. Brak dwóch parametrów wejściowych dla każdej grupy ustawień. Pierwsza to ścieżki dwie urządzenia, która jest ścieżka do sekcji JSON w ramach właściwości dwie potrzeby, które zostaną ustawione.  Drugim jest zawartość JSON, który ma zostać wstawiony w tej sekcji. Na przykład ustawić ścieżkę dwie urządzenia i zawartości do następującego:
+1. Nadaj konfigurację unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
 
-![Ustaw ścieżkę dwie urządzenia i zawartości](./media/iot-hub-auto-device-config/create-configuration-full-browser.png)
+2. Dodaj etykiety służące do śledzenia Twojej konfiguracji. Etykiety są **nazwa**, **wartość** pary, które opisują konfigurację. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`.
 
-Można również ustawić poszczególnych ustawień, określając na całej ścieżce dwie ścieżki urządzenia i wartość w zawartości nie nawiasami. Na przykład ustawić ścieżkę dwie urządzenia `properties.desired.chiller-water.temperature` ustawiono zawartości: `66`
+3. Wybierz **dalej** można przenieść do następnego kroku. 
 
-Jeśli co najmniej dwie konfiguracje skierować je do tej samej ścieżki dwie urządzenia, zostaną zastosowane zawartości z konfiguracji najwyższy priorytet (priorytet jest zdefiniowany w kroku 4).
+### <a name="specify-settings"></a>Określ ustawienia
+
+W tej sekcji określa Adresuj zawartość w docelowym bliźniaczych reprezentacji urządzeń. Istnieją dwa obiekty wejściowe dla każdego zestawu ustawień. Pierwsza to ścieżki bliźniaczej reprezentacji urządzenia, który jest ścieżką do sekcji JSON w odpowiednich właściwości bliźniaka, które zostaną ustawione.  Drugim jest zawartość JSON, który ma zostać wstawiony w tej sekcji. Na przykład Ustaw ścieżki bliźniacza reprezentacja urządzenia i zawartość do następującego:
+
+![Ustaw ścieżkę bliźniacza reprezentacja urządzenia i zawartości](./media/iot-hub-auto-device-config/create-configuration-full-browser.png)
+
+Można również ustawić poszczególnych ustawień, podając ścieżkę do całej ścieżki bliźniacza reprezentacja urządzenia i wartość w zawartości przy użyciu nie nawiasów. Na przykład ustawić ścieżki bliźniaczej reprezentacji urządzenia `properties.desired.chiller-water.temperature` i ustaw zawartość `66`.
+
+Jeśli co najmniej dwóch konfiguracjach skierować je do tej samej ścieżce bliźniaczej reprezentacji urządzenia, zostaną zastosowane zawartości z najwyższy priorytet konfiguracji (priorytet jest zdefiniowany w kroku 4).
 
 Jeśli chcesz usunąć właściwość, należy określić wartość właściwości `null`.
 
-Dodatkowe ustawienia można dodawać przez zaznaczenie **Dodaj ustawienie dwie urządzenia**
+Można dodać dodatkowe ustawienia, wybierając **Dodaj ustawienie bliźniaczej reprezentacji urządzenia**.
 
-### <a name="step-3-specify-metrics-optional"></a>Krok 3: Określ metryki (opcjonalnie)
+### <a name="specify-metrics-optional"></a>Określ metryki (opcjonalnie)
 
-Metryki zawierają podsumowanie liczby różnych stanów, które urządzenie może wysyłać raporty w wyniku stosowania zawartość konfiguracji. Może na przykład utworzyć metrykę dla oczekujące zmiany ustawień, metryki dla błędów i metryki dla zmiany ustawień powiodło się.
+Metryki zawierają podsumowanie liczby różnych stanów, które urządzenie może zgłosić wyniku stosowania zawartość konfiguracji. Może na przykład utworzyć metrykę dla oczekujących zmian ustawień spowoduje zmianę, metryki dla błędów i metryki dla zmiany w ustawieniach pomyślnie.
 
-1. Wprowadź nazwę **Nazwa metryki**
-1. Wprowadź kwerendę dla **kryteria Metryka**.  Zapytanie jest oparty na urządzeniu dwie zgłoszone właściwości.  Metryka przedstawia liczbę wierszy zwróconych przez kwerendę.
+1. Wprowadź nazwę dla **Nazwa metryki**.
 
-Na przykład: `SELECT deviceId FROM devices WHERE properties.reported.chillerWaterSettings.status='pending'`
+2. Wprowadź zapytanie dotyczące **kryteria metryki**.  Zapytanie opiera się na urządzeniu zgłoszonych właściwości bliźniaka.  Metryka reprezentuje liczbę wierszy zwróconych przez zapytanie.
 
-Mogą zawierać klauzuli, że konfiguracja została zastosowana, na przykład: `SELECT deviceId FROM devices WHERE configurations.[[yourconfigname]].status='Applied'` tym nawias kwadratowy.
+Na przykład:
 
+```sql
+SELECT deviceId FROM devices 
+  WHERE properties.reported.chillerWaterSettings.status='pending'
+```
 
-### <a name="step-4-target-devices"></a>Krok 4: Urządzeń docelowych
+Może zawierać klauzuli, że została zastosowana konfiguracja, na przykład: 
 
-Użyj właściwości tagów z twins Twojego urządzenia pod kątem określonych urządzeń, które powinien zostać wyświetlony tej konfiguracji.  Możesz też określić urządzeń przez urządzenie dwie zgłoszone właściwości.
+```sql
+/* Include the double brackets. */
+SELECT deviceId FROM devices 
+  WHERE configurations.[[yourconfigname]].status='Applied'
+```
 
-Ponieważ wiele konfiguracji mogą odnosić się do tego samego urządzenia, należy nadać każdej konfiguracji priorytety. Jeśli kiedykolwiek występuje konflikt, wins w konfiguracji o najwyższym priorytecie. 
+### <a name="target-devices"></a>Urządzenia docelowe
 
-1. Wprowadź dodatnią liczbą całkowitą w konfiguracji **priorytet**. Największa wartość numeryczna jest traktowany jako najwyższy priorytet. Jeśli dwie konfiguracje mają ten sam numer priorytet, który został utworzony w większości ostatnio wins. 
-1. Wprowadź **Target warunku** do określ urządzeń, które będą stosowane w przypadku tej konfiguracji. Warunek jest oparta na tagi dwie urządzenia lub dwie urządzenia zgłoszone właściwości i powinny być zgodne z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. Można określić `*` do wszystkich urządzeń.
-1. Wybierz **dalej** można przenieść do ostatniego kroku.
+Użyj właściwości tagi z bliźniaczych reprezentacji urządzeń pod kątem konkretnych urządzeń, które powinny otrzymać tę konfigurację.  Można również przeznaczać urządzeń według urządzeń zgłoszonych właściwości bliźniaka.
 
-### <a name="step-5-review-configuration"></a>Krok 5: Przejrzyj konfigurację
+Ponieważ wiele konfiguracji mogą odnosić się do tego samego urządzenia, należy nadać kontu konfiguracjami numer priorytetu. Jeśli nigdy nie są zgodne, usługa wins konfiguracji o najwyższym priorytecie. 
+
+1. Wprowadź dodatnią liczbę całkowitą dla konfiguracji **priorytet**. Najwyższą wartość liczbową, jest uznawana za najwyższy priorytet. Jeśli dwie konfiguracje mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins. 
+
+2. Wprowadź **warunek docelowy** do określenia urządzeń, które będą objęte przy użyciu tej konfiguracji. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. Można określić `*` pod kątem wszystkich urządzeń.
+
+3. Wybierz **dalej** można przenieść do ostatniego kroku.
+
+### <a name="review-configuration"></a>Przejrzyj konfigurację
 
 Przejrzyj informacje o konfiguracji, a następnie wybierz **przesyłania**.
 
 ## <a name="monitor-a-configuration"></a>Monitor konfiguracji
 
-Aby wyświetlić szczegóły konfiguracji i monitorowania urządzeń, uruchomienie jej, wykonaj następujące kroki:
+Aby wyświetlić szczegółowe informacje o konfiguracji i monitorowania urządzeń, w których jest on uruchomiony, wykonaj następujące kroki:
 
-1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT**.
-2. Sprawdź, czy listy konfiguracji. Dla każdej konfiguracji można wyświetlić następujące informacje:
-   * **Identyfikator** — Nazwa konfiguracji.
-   * **Docelowa warunku** -Zapytanie używane do definiowania urządzeń docelowych.
-   * **Priorytet** — numer priorytetu skojarzony z konfiguracją.
-   * **Czas utworzenia** -znacznik czasu od utworzenia konfiguracji. Sygnatura czasowa służy do Przerwij ties, gdy dwie konfiguracje mają ten sam priorytet. 
-   * **Metryki systemu** -metryki, które mają być obliczane przez Centrum IoT i nie można dostosowywać przez deweloperów. Celem określa liczbę twins urządzenia, spełniających warunek docelowy. Stosuje określona liczba twins urządzenia, które zostały zmodyfikowane przez tę konfigurację, która może obejmować częściowe zmiany w przypadku, gdy konfiguracja oddzielne, o wyższym priorytecie również wprowadzone zmiany. 
-   * **Metryki niestandardowe** -metryki, które zostały określone przez dewelopera jako zapytań dotyczących dwie urządzenia zgłoszone właściwości.  Maksymalnie pięć metryki niestandardowe można zdefiniować na konfigurację. 
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+
+2. Wybierz **konfiguracji urządzenia IoT**.
+
+3. Sprawdź listę konfiguracji. Dla każdej konfiguracji można wyświetlić następujące informacje:
+
+   * **Identyfikator** -Nazwa konfiguracji.
+
+   * **Warunek docelowy** -zapytania używane do definiowania urządzeń docelowych.
+
+   * **Priorytet** — numer priorytetu, przypisanych do konfiguracji.
+
+   * **Godzina utworzenia** -sygnaturę czasową od utworzenia konfiguracji. Sygnatura czasowa jest używany na przerwanie ties, gdy dwie konfiguracje mają ten sam priorytet. 
+
+   * **Metryki systemu** — metryki, które są obliczane przez usługę IoT Hub i nie można dostosować przez deweloperów. Docelowe Określa liczbę bliźniaczych reprezentacji urządzeń spełniających warunek docelowy. Stosuje się określona liczba bliźniacze reprezentacje urządzeń, które zostały zmodyfikowane przez tę konfigurację, który może zawierać zmiany częściowe, w przypadku, gdy konfiguracja oddzielne, o wyższym priorytecie również wprowadzone zmiany. 
+
+   * **Metryki niestandardowe** — metryki, które zostały określone przez dewelopera jako zapytania dotyczące bliźniaczych reprezentacji urządzeń zgłoszonych właściwości.  Maksymalnie pięć metryki niestandardowe mogą być definiowane dla poszczególnych konfiguracji. 
    
-1. Wybierz konfigurację, którą chcesz monitorować.  
-1. Sprawdź, czy szczegóły konfiguracji. Korzystania z kart, aby wyświetlić szczegółowe informacje o urządzeniach, które otrzymały konfiguracji: 
-   * **Docelowa warunku** — urządzenia, które są zgodne z warunkiem docelowej. 
-   * **Metryki** — lista metryki systemu i metryki niestandardowe.  Można wyświetlić listę urządzeń, które są uwzględniane dla poszczególnych metryki wybranie Metryka w listy rozwijanej, a następnie wybierając **Wyświetl urządzenia**.
-   * **Ustawienia urządzenia dwie** — ustawienia dwie urządzenia, które są ustawiane przez tę konfigurację. 
-   * **Etykiety konfiguracji** -pary klucz wartość używana do opisu konfiguracji.  Etykiety nie mają wpływu na funkcjonalność. 
+4. Wybierz konfigurację, którą chcesz monitorować.  
+
+5. Sprawdź szczegóły konfiguracji. Aby wyświetlić szczegółowe informacje o urządzeniach, które otrzymały konfiguracji, można użyć karty.
+
+   * **Warunek docelowy** — urządzenia, które są zgodne z warunkiem docelowym. 
+
+   * **Metryki** -listę metryk systemu i metryki niestandardowe.  Można wyświetlić listę urządzeń, które są uwzględniane dla poszczególnych metryki, wybierając metryki z listy rozwijanej, a następnie wybierając **wyświetlać urządzenia**.
+
+   * **Ustawienia bliźniaczej reprezentacji urządzenia** — ustawienia bliźniaczej reprezentacji urządzenia, które są ustawione przez tą konfigurację. 
+
+   * **Etykiety konfiguracji** -pary klucz wartość, używane do opisywania konfiguracji.  Etykiety nie mają wpływu na funkcjonalność. 
 
 ## <a name="modify-a-configuration"></a>Modyfikowanie konfiguracji
 
-Podczas modyfikowania konfiguracji zmiany natychmiast replikowane do wszystkich urządzeń docelowych. 
+Podczas modyfikowania konfiguracji, zmiany są natychmiast replikowane do wszystkie objęte nimi urządzenia. 
 
-Po zaktualizowaniu warunek docelowy są wykonywane następujące aktualizacje:
-* Jeśli dwie urządzenie nie spełnia warunek docelowy stare, ale spełnia nowy warunek docelowy i ta konfiguracja jest najwyższy priorytet dwie tego urządzenia, ta konfiguracja jest stosowany do dwie urządzenia. 
-* Jeśli dwie urządzenie nie spełnia warunek docelowy, ustawienia z konfiguracji zostaną usunięte i dwie urządzenia zostaną zmodyfikowane przez konfigurację dalej najwyższy priorytet. 
-* Jeśli dwie urządzenia, w obecnie uruchomiona ta konfiguracja nie jest już spełnia warunek docelowy, a nie spełnia warunek docelowy innych konfiguracji, ustawienia z konfiguracji zostaną usunięte i nie zostaną wprowadzone nie inne zmiany na dwie. 
+Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
+
+* Jeśli w bliźniaczej reprezentacji urządzenia nie spełniają warunek docelowy stare, ale nowy warunek docelowy spełnia i ta konfiguracja ma najwyższy priorytet dla tej bliźniaczej reprezentacji urządzenia, ta konfiguracja jest stosowany do bliźniaczej reprezentacji urządzenia. 
+
+* Jeśli w bliźniaczej reprezentacji urządzenia nie jest już spełnia warunek docelowy, ustawienia z konfiguracji zostaną usunięte i bliźniaczej reprezentacji urządzenia zostaną zmodyfikowane przez dalej konfigurację najwyższy priorytet. 
+
+* Jeśli w bliźniaczej reprezentacji urządzenia obecnie uruchomiona ta konfiguracja nie jest już spełnia warunek docelowy, a nie spełnia warunek docelowy inne konfiguracje, ustawienia z konfiguracji zostanie usunięta i żadne inne zmiany zostaną wprowadzone w bliźniaczej reprezentacji. 
 
 Aby zmodyfikować konfigurację, użyj następujących kroków: 
 
-1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT**. 
-2. Wybierz konfigurację, którą chcesz zmodyfikować. 
-3. Aktualizowanie następujące pola: 
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+
+2. Wybierz **konfiguracji urządzenia IoT**. 
+
+3. Wybierz konfigurację, którą chcesz zmodyfikować. 
+
+4. Aktualizowanie następujące pola: 
+
    * Warunek docelowy 
    * Etykiety 
    * Priorytet 
    * Metryki
+
 4. Wybierz pozycję **Zapisz**.
-5. Postępuj zgodnie z instrukcjami [Monitor konfiguracji] [zakotwiczenia monitorów] Aby obejrzeć zmiany wdrożyć. 
+
+5. Postępuj zgodnie z instrukcjami w [monitorowanie konfiguracji](#monitor-a-configuration) obejrzeć zmiany wprowadzane. 
 
 ## <a name="delete-a-configuration"></a>Usuwanie konfiguracji
 
-Podczas usuwania konfiguracji twins dowolnego urządzenia przełączyć na ich dalej konfiguracji najwyższy priorytet. Jeśli twins urządzenia nie spełniają warunek docelowy z dowolnej innej konfiguracji, nie inne ustawienia są stosowane. 
+Możesz usunąć konfigurację, wszelkie bliźniaczych reprezentacji urządzeń przyjmą ich dalej konfiguracji najwyższy priorytet. Jeśli bliźniaczych reprezentacji urządzeń nie spełniają warunek docelowy innych konfiguracji, żadne inne ustawienia są stosowane. 
 
-1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT**. 
-2. Użyj pola wyboru, aby wybrać konfigurację, którą chcesz usunąć. 
-3. Wybierz pozycję **Usuń**.
-4. Monit zostanie wyświetlony monit o potwierdzenie.
+1. W [witryny Azure portal](https://portal.azure.com) przejdź do Centrum IoT hub. 
+
+2. Wybierz **konfiguracji urządzenia IoT**. 
+
+3. Użyj pola wyboru, aby wybrać konfigurację, która ma zostać usunięty. 
+
+4. Wybierz pozycję **Usuń**.
+
+5. Monit zostanie wyświetlony monit o potwierdzenie.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób konfigurowania i monitorowania urządzeń IoT na dużą skalę. Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:
 
-* [Zarządzanie tożsamościami urządzenia IoT Hub zbiorcze][lnk-bulkIDs]
-* [Metryki Centrum IoT][lnk-metrics]
-* [Operacje monitorowania][lnk-monitor]
+W tym artykule przedstawiono sposób konfigurowania i monitorowania urządzeń IoT na dużą skalę. Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+* [Zarządzanie tożsamościami urządzeń usługi IoT Hub w zbiorcze](iot-hub-bulk-identity-mgmt.md)
+* [Metryki usługi IoT Hub](iot-hub-metrics.md)
+* [Monitorowanie operacji](iot-hub-operations-monitoring.md)
 
-* [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
+Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-Aby zapoznać się z usługi IoT Centrum urządzeń inicjowania obsługi administracyjnej Włącz bezobsługową, w czasie inicjowania obsługi, zobacz: 
+* [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-* [Usługi inicjowania obsługi administracyjnej urządzeniu Centrum IoT Azure][lnk-dps]
+Aby zapoznać się z pomocą IoT Hub Device Provisioning Service do włączenia aprowizacji bezobsługowe, just-in-time, zobacz: 
 
-[lnk-device-twin]: iot-hub-devguide-device-twins.md
-[lnk-bulkIDs]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
-[lnk-portal]: https://portal.azure.com
+* [Usługa Azure IoT Hub Device Provisioning](/azure/iot-dps)

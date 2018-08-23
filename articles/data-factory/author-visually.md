@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: 7f186a819e2142bef6e736c7f7b5d0c733413fd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716335"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059225"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -42,10 +42,10 @@ Jeśli używasz środowiska użytkownika **Kanwa tworzenia** można tworzyć bez
 Tworzeniu wizualizacji przy użyciu integracji VSTS Git obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium Git programu VSTS konta na potrzeby kontroli źródła, współpracy, przechowywanie wersji i tak dalej. Na jednym koncie usługi VSTS Git może mieć wiele repozytoriów, ale repozytorium Git usługi VSTS mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta usługi VSTS lub repozytorium, postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) do tworzenia zasobów.
 
 > [!NOTE]
-> Skrypt i pliki danych można przechowywać w repozytorium GIT usługi VSTS. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie przekazać skrypt lub pliki danych przechowywanych w repozytorium GIT usługi VSTS, do usługi Azure Storage.
+> Skrypt i pliki danych można przechowywać w repozytorium Git usługi VSTS. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie przekazać skrypt lub pliki danych przechowywanych w repozytorium Git usługi VSTS, do usługi Azure Storage.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium Git usługi VSTS przy użyciu usługi Azure Data Factory
-Repozytorium GIT usługi VSTS można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
+Repozytorium Git usługi VSTS można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
 
 #### <a name="method1"></a> Metoda konfiguracji 1 (repozytorium Git programu VSTS): strona zaczynajmy
 
@@ -77,13 +77,17 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 ![Konfigurowanie ustawień repozytorium kodu na potrzeby tworzenia interfejsu użytkownika](media/author-visually/configure-repo-2.png)
 
+## <a name="use-a-different-azure-active-directory-tenant"></a>Użyj innej dzierżawy usługi Azure Active Directory
+
+Repozytorium Git programu VSTS można utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
+
 ## <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
 
 Aby przełączyć się do innego repozytorium Git, Znajdź ikonę w prawym górnym rogu strony Przegląd usługi Data Factory, jak pokazano na poniższym zrzucie ekranu. Jeśli nie widzisz ikonę wyczyścić pamięci podręcznej lokalnej przeglądarki. Wybierz ikonę, aby usunąć skojarzenie z bieżącego repozytorium.
 
 Po usunięciu skojarzenia z bieżącego repozytorium, można skonfigurować ustawienia Git, aby użyć innego repozytorium. Następnie można zaimportować istniejące zasoby fabryki danych do nowego repozytorium.
 
-![Usuń skojarzenie z bieżącego repozytorium Git.](media/author-visually/remove-repo.png)
+![Usuń skojarzenie z bieżącego repozytorium Git](media/author-visually/remove-repo.png)
 
 ## <a name="use-version-control"></a>Korzystanie z kontroli wersji
 Systemy kontroli wersji (znany także jako _kontroli źródła_) umożliwiają deweloperom współpracować nad kodu i śledzenie zmian wprowadzonych do kodu podstawowego. Kontrola źródła jest niezbędnego narzędzia dla deweloperów wielu projektów.
@@ -92,7 +96,7 @@ Każde repozytorium Git usługi VSTS, która jest skojarzona z fabryką danych m
 
 ![Zmień kod, synchronizowanie i publikowania](media/author-visually/sync-publish.png)
 
-Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz kliknąć **Utwórz żądanie ściągnięcia**. Tej akcji wykonywanych VSTS GIT, w którym można podnieść, żądaniach ściągnięcia, przeglądy kodu i scalania zmian w gałęzi współpracy. (`master` jest ustawieniem domyślnym). Tylko możesz opublikować w usłudze Data Factory ze swojej gałęzi współpracy. 
+Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz kliknąć **Utwórz żądanie ściągnięcia**. Tej akcji wykonywanych VSTS Git, w którym można podnieść, żądaniach ściągnięcia, przeglądy kodu i scalania zmian w gałęzi współpracy. (`master` jest ustawieniem domyślnym). Tylko możesz opublikować w usłudze Data Factory ze swojej gałęzi współpracy. 
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
@@ -106,10 +110,21 @@ Po zostały scalone zmiany w gałęzi współpracy (`master` jest ustawieniem do
 
 ## <a name="author-with-github-integration"></a>Tworzenie za pomocą integracji usługi GitHub
 
-Tworzeniu wizualizacji przy użyciu Integracja z usługą GitHub obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium GitHub konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta aGitHub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów. Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi GitHub oraz jak GitHub Enterprise.
+Tworzeniu wizualizacji przy użyciu Integracja z usługą GitHub obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium GitHub konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta usługi GitHub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów. Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi GitHub oraz jak GitHub Enterprise.
 
-> [!NOTE]
-> Skrypt i pliki danych można przechowywać w repozytorium GitHub. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie Przekaż skrypt lub pliki danych przechowywanych w repozytorium GitHub do usługi Azure Storage.
+Aby skonfigurować repozytorium GitHub, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, którego używasz.
+
+Wprowadzenie dziewięć minutę i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
+
+### <a name="limitations"></a>Ograniczenia
+
+- Skrypt i pliki danych można przechowywać w repozytorium GitHub. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie Przekaż skrypt lub pliki danych przechowywanych w repozytorium GitHub do usługi Azure Storage.
+
+- GitHub Enterprise w wersji starszej niż 2.14.0 nie działa w przeglądarce Microsoft Edge.
+
+- Integracja z usługą GitHub przy użyciu współczynnika danych wizualnych narzędzi do tworzenia działa tylko w ogólnie dostępnej wersji usługi fabryka danych.
 
 ### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurowanie publicznego repozytorium GitHub przy użyciu usługi Azure Data Factory
 

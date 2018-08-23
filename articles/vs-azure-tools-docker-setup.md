@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie hosta Docker z VirtualBox | Dokumentacja firmy Microsoft
-description: Instrukcje krok po kroku, aby skonfigurować domyślne wystąpienie Docker przy użyciu rozwiązania Docker maszyny i VirtualBox
+title: Konfigurowanie hosta platformy Docker przy użyciu VirtualBox | Dokumentacja firmy Microsoft
+description: Instrukcje krok po kroku, aby skonfigurować domyślne wystąpienie platformy Docker przy użyciu maszyny platformy Docker i VirtualBox
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 11e238fa901a164df1dfd896e38df828601e650b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c78f27fa948c15202e83df4ed42a805a414a72e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190402"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060827"
 ---
-# <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurowanie hosta Docker z VirtualBox
+# <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurowanie hosta platformy Docker przy użyciu VirtualBox
 ## <a name="overview"></a>Przegląd
-W tym artykule przedstawiono Konfigurowanie domyślnego wystąpienia Docker przy użyciu rozwiązania Docker maszyny i VirtualBox. Jeśli używasz [Docker dla systemu Windows w wersji beta](http://beta.docker.com/), ta konfiguracja nie jest konieczne.
+Ten artykuł przeprowadzi Cię przez Konfigurowanie domyślnego wystąpienia platformy Docker przy użyciu maszyny platformy Docker i VirtualBox. Jeśli używasz [Docker for Windows](https://www.docker.com/products/docker-desktop), ta konfiguracja nie jest konieczne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Następujące narzędzia muszą być zainstalowane.
 
-* [Przybornik docker](https://github.com/docker/toolbox/releases)
+* [Przybornik platformy docker](https://github.com/docker/toolbox/releases)
 
 ## <a name="configuring-the-docker-client-with-windows-powershell"></a>Konfigurowanie klienta platformy Docker przy użyciu programu Windows PowerShell
-Aby skonfigurować klienta Docker, po prostu otwórz program Windows PowerShell i wykonaj następujące czynności:
+Aby skonfigurować klienta platformy Docker, po prostu otwórz program Windows PowerShell i wykonaj następujące czynności:
 
-1. Utwórz wystąpienie domyślne hostów docker.
+1. Tworzenie hosta platformy docker domyślnego wystąpienia.
    
     ```PowerShell
     docker-machine create --driver virtualbox default
     ```
-2. Sprawdź, czy domyślne wystąpienie jest skonfigurowana i uruchomiona. (Powinna zostać wyświetlona wystąpienia o nazwie "default" systemem.
+2. Sprawdź, czy wystąpienie domyślne to skonfigurowany i uruchomiony. (Powinna być widoczna wystąpienia o nazwie "default" systemem.
    
     ```PowerShell
     docker-machine ls 
     ```
    
-    ![dane wyjściowe ls maszyny docker][0]
-3. Ustaw domyślny jako bieżącego hosta i skonfiguruj powłoki.
+    ![dane wyjściowe ls maszyny platformy docker][0]
+3. Ustaw wartość domyślną jako bieżący host, a następnie skonfiguruj powłoki.
    
     ```PowerShell
     docker-machine env default | Invoke-Expression
     ```
-4. Wyświetlanie aktywnych kontenery Docker. Lista powinna być pusta.
+4. Wyświetlanie aktywnych kontenerów platformy Docker. Lista powinna być pusta.
    
     ```PowerShell
     docker ps
     ```
    
-    ![dane wyjściowe ps docker][1]
+    ![dane wyjściowe programu platformy docker ps][1]
 
 > [!NOTE]
-> Każdym uruchomieniu komputerze deweloperskim, będzie konieczne ponowne uruchomienie hosta lokalnego docker.
+> Każdym ponownym uruchomieniu komputera deweloperskiego, będzie konieczne ponowne uruchomienie usługi hosta lokalnego platformy docker.
 > Aby to zrobić, należy wydać następujące polecenie w wierszu polecenia: `docker-machine start default`.
 > 
 > 

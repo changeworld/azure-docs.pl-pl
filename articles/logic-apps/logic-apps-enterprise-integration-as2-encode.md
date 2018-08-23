@@ -1,6 +1,6 @@
 ---
-title: Kodowanie wiadomości AS2 - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Jak używać kodera AS2 w pakiet integracyjny dla przedsiębiorstw dla usługi Azure Logic Apps
+title: Kodowanie komunikatów AS2 — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak używać koder AS2 w pakiet integracyjny dla przedsiębiorstw w usłudze Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,73 +12,81 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fe8a2b00f15fa737c8ed343a47e1cab1c260346b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b3b57b2505c4185f3a81530cbc9eeb464dcfa518
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297934"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42056646"
 ---
-# <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Kodowanie wiadomości AS2 dla usługi Azure Logic Apps z pakiet integracyjny dla przedsiębiorstw
+# <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Kodowanie komunikatów AS2 w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
-Aby ustalić, bezpieczeństwa i niezawodności podczas przesyłania wiadomości, korzystania z łącznika komunikat AS2 kodowania. Ten łącznik umożliwia cyfrowe podpisywanie, szyfrowanie i potwierdzeń za pośrednictwem wiadomości dyspozycji powiadomienia (MDN), które również prowadzi do obsługę Niemożność wyparcia się.
+Ustalenie, bezpieczeństwo i niezawodność podczas przesyłania wiadomości, korzystania z łącznika komunikatu kodowanie AS2. Ten łącznik umożliwia cyfrowe podpisywanie, szyfrowanie i Potwierdzanie za pośrednictwem wiadomości dyspozycji powiadomienia (powiadomienia MDN), który prowadzi do Obsługa Niemożność wyparcia się.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Oto elementy, które są potrzebne:
 
-* Konto platformy Azure; można utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
-* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzone z subskrypcją platformy Azure. Musi mieć konto integracji do używania łącznika AS2 kodowania komunikatu.
-* Co najmniej dwa [partnerów](logic-apps-enterprise-integration-partners.md) które już zostały zdefiniowane w ramach konta integracji
+* Konto platformy Azure; Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
+* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure. Konieczne jest posiadanie konta integracji do korzystania z łącznika komunikatu kodowanie AS2.
+* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) które zostały już zdefiniowane w ramach konta integracji
 * [Umowy AS2](logic-apps-enterprise-integration-as2.md) jest już zdefiniowany w ramach konta integracji
 
-## <a name="encode-as2-messages"></a>Kodowanie wiadomości AS2
+## <a name="encode-as2-messages"></a>Kodowanie komunikatów AS2
 
 1. [Tworzenie aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
 
-2. Łącznik AS2 kodowania wiadomości nie ma wyzwalaczy, dlatego należy dodać wyzwalacza do uruchamiania aplikacji logiki, takich jak wyzwalacz żądania. W Projektancie aplikacji logiki dodać wyzwalacza, a następnie dodać do aplikacji logiki akcję.
+2. Łącznik komunikatu kodowanie AS2 nie ma wyzwalacze, więc należy dodać wyzwalacza uruchamiającego twoją aplikację logiki, takich jak wyzwalacza żądania. W Projektancie aplikacji logiki Dodaj wyzwalacz, a następnie dodaj akcję do aplikacji logiki.
 
-3.  W polu wyszukiwania wprowadź "AS2" filtru. Wybierz **AS2 - AS2 kodowania komunikatu**.
+3.  W polu wyszukiwania wprowadź "AS2" jako filtr. Wybierz **AS2 - komunikat AS2 kodowanie**.
    
     ![Wyszukaj "AS2"](./media/logic-apps-enterprise-integration-as2-encode/as2decodeimage1.png)
 
-4. Jeśli wcześniej nie utworzono wszystkie połączenia z kontem integracji, zostanie wyświetlony monit o utworzyć teraz tego połączenia. Nazwa połączenia, a następnie wybierz konta integracji, na którym chcesz się połączyć. 
+4. Jeśli wcześniej nie utworzono żadnych połączeń z kontem integracji, zostanie wyświetlony monit Utwórz teraz tego połączenia. Nazwij połączenie, a następnie wybierz konto integracji, w którym chcesz się połączyć. 
    
-    ![Tworzenie połączenia konta integracji](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage1.png)  
+    ![Utwórz połączenie z kontem integracji](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage1.png)  
 
-    Właściwości oznaczone gwiazdką są wymagane.
+    Właściwości z gwiazdką są wymagane.
 
     | Właściwość | Szczegóły |
     | --- | --- |
     | Nazwa połączenia * |Wprowadź dowolną nazwę połączenia. |
-    | Konta integracji * |Wprowadź nazwę konta integracji. Upewnij się, że integracja aplikacji logiki i konta znajdują się w tej samej lokalizacji platformy Azure. |
+    | Konto integracji * |Wprowadź nazwę dla swojego konta integracji. Upewnij się, że integracja aplikacji logiki i konta znajdują się w tej samej lokalizacji platformy Azure. |
 
-5.  Gdy wszystko będzie gotowe, szczegóły połączenia powinien wyglądać podobnie do tego przykładu. Aby zakończyć tworzenie połączenia, wybierz **Utwórz**.
+5.  Gdy wszystko będzie gotowe, szczegóły połączenia powinien wyglądać podobnie do tego przykładu. Aby ukończyć tworzenie połączenia, wybierz opcję **Utwórz**.
    
     ![Szczegóły połączenia integracji](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage2.png)
 
-6. Po utworzeniu połączenia, jak pokazano w poniższym przykładzie, podaj szczegóły **AS2 — od**, **AS2 — do identyfikatorów** zgodnie z konfiguracją w umowie, i **treści**, czyli ładunek komunikatu.
+6. Po utworzeniu połączenia, jak pokazano w poniższym przykładzie, należy podać szczegóły dotyczące **AS2 — od**, **AS2 — do identyfikatorów** zgodnie z konfiguracją w umowie, i **treści**, czyli ładunek komunikatu.
    
     ![Podaj wymagane pola](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage3.png)
 
 ## <a name="as2-encoder-details"></a>Szczegóły kodera AS2
 
-Łącznik AS2 kodowania wykonuje te zadania: 
+Łącznik AS2 kodowanie wykonuje następujące zadania: 
 
 * Stosuje nagłówków AS2/HTTP
-* Znaki wychodzących wiadomości (jeśli jest skonfigurowane)
+* Podpisuje komunikaty wychodzące (jeśli jest skonfigurowane)
 * Szyfruje komunikaty wychodzące (jeśli jest skonfigurowane)
 * Kompresuje komunikatu (jeśli jest skonfigurowane)
+* Przekazuje nazwę pliku w nagłówku MIME (jeśli jest skonfigurowane)
 
-## <a name="try-this-sample"></a>Spróbuj w tym przykładzie
 
-Aby wypróbować logiki pełnej funkcjonalności aplikacji oraz przykładowy AS2 scenariusza wdrażania, zobacz [AS2 szablon aplikacji logiki oraz scenariusz](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
+  > [!NOTE]
+  > Jeśli używasz usługi Azure Key Vault dla certyfikatu zarządzania, upewnij się, należy skonfigurować klucze, aby zezwolić na **Szyfruj** operacji.
+  > W przeciwnym razie — kodowanie komunikatów AS2 zakończy się niepowodzeniem.
+  >
+  > ![Odszyfrowuje magazyn kluczy](media/logic-apps-enterprise-integration-as2-encode/keyvault1.png)
+
+## <a name="try-this-sample"></a>Spróbuj tego przykładu
+
+Aby wypróbować wdrażanie scenariusza AS2 przykład i aplikacji logiki w pełni funkcjonalne, zobacz [AS2 szablon aplikacji logiki i scenariusz](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
 ## <a name="view-the-swagger"></a>Wyświetlanie struktury swagger
 Zobacz [swagger szczegóły](/connectors/as2/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej na temat pakiet integracyjny dla przedsiębiorstw") 
+[Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw") 
 

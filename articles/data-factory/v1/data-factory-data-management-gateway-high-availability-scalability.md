@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113344"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055411"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi — wysokiej dostępności i skalowalności (wersja zapoznawcza)
 > [!NOTE]
@@ -55,10 +55,10 @@ Te węzły są **active**. Wszystkie one mogą przetwarzać zadania przepływu d
 
 Zazwyczaj można rozpocząć z jednym węzłem i **skalowanie w poziomie** dodanie kolejnych węzłów jako przytłoczeni istniejących węzłów z obciążeniem przenoszenia danych. Możesz również **skalowanie w górę** możliwość przenoszenia danych, węzła bramy, zwiększając liczbę współbieżnych zadań, które mogą być uruchamiane w węźle. Ta funkcja jest również dostępna za pośrednictwem bramy jednowęzłowej (nawet jeśli nie włączono funkcji skalowalności i dostępności). 
 
-Bramy z wielu węzłów przechowuje poświadczenia magazynu danych zsynchronizowane we wszystkich węzłach. Jeśli występuje problem z łącznością między węzłami, poświadczenia może nie być zsynchronizowany. Podczas ustawiania poświadczeń dla lokalnego magazynu danych, który używa bramy zapisuje poświadczenia na węzeł dyspozytora/procesu roboczego. Węzeł dyspozytora synchronizuje się z innych węzłów procesu roboczego. Ten proces jest nazywany **Poświadczenia synchronizacji**. Po usunięciu, kliknij przycisk funkcje w wersji zapoznawczej w tej samej stronie portalu Azure, a następnie wyłącz funkcję w wersji zapoznawczej. 
+Bramy z wielu węzłów przechowuje poświadczenia magazynu danych zsynchronizowane we wszystkich węzłach. Jeśli występuje problem z łącznością między węzłami, poświadczenia może nie być zsynchronizowany. Podczas ustawiania poświadczeń dla lokalnego magazynu danych, który używa bramy zapisuje poświadczenia na węzeł dyspozytora/procesu roboczego. Węzeł dyspozytora synchronizuje się z innych węzłów procesu roboczego. Ten proces jest nazywany **Poświadczenia synchronizacji**. Kanał komunikacyjny między węzłami może być **zaszyfrowanych** przy użyciu publicznego certyfikatu SSL/TLS. 
 
-## <a name="set-up-a-multi-node-gateway"></a>Masz zresetowaniem bramy do jednego węzła GA (ogólnie) bramy.
-Sprawdź następujące artykuły: 
+## <a name="set-up-a-multi-node-gateway"></a>Konfigurowanie bramy wielowęzłowego
+W tej sekcji założono, że wykonano za pomocą następujących dwóch artykułach lub powszechnie znane pojęcia w następujących artykułach: 
 
 - [Brama zarządzania danymi](data-factory-data-management-gateway.md) — zawiera szczegółowe omówienie bramy.
 - [Przenoszenie danych między lokalizacją lokalną i chmurą magazyny danych](data-factory-move-data-between-onprem-and-cloud.md) — zawiera przewodnik z instrukcjami krok po kroku z jednego węzła przy użyciu bramy.  
@@ -169,7 +169,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć ***. domain.contoso.com** jako nazwę podmiotu certyfikatu.
 - Certyfikaty SAN nie są zalecane, ponieważ tylko ostatni element nazwy alternatywnej podmiotu, który będzie używany, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia. Na przykład mieć certyfikat sieci SAN, w których SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć wyłącznie tego certyfikatu na komputerze, którego nazwa FQDN jest **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
-- Certyfikat przy użyciu CNG klucze nie są obsługiwane. Doesrted DoesDoes nie obsługuje certyfikatów korzystających z kluczami CNG.
+- Certyfikat przy użyciu CNG klucze nie są obsługiwane.
 
 #### <a name="faq-when-would-i-not-enable-this-encryption"></a>Często zadawane pytania: Kiedy mogę nie umożliwia szyfrowania?
 Włączanie szyfrowania można dodać pewnych kosztów do infrastruktury (będącej właścicielem certyfikatu publicznego) dlatego możesz pominąć włączania szyfrowania w poniższych przypadków:

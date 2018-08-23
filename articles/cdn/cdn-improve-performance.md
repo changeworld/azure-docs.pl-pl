@@ -1,10 +1,10 @@
 ---
-title: Zwiększenie wydajności przez kompresowanie plików w usłudze Azure CDN | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zwiększyć szybkość transferu plików i zwiększyć wydajność ładowania strony przez kompresowanie plików w usłudze Azure CDN.
+title: Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zwiększyć szybkość transferu plików i zwiększyć wydajność ładowania strony poprzez kompresowanie plików w usłudze Azure CDN.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,109 +12,113 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 08/15/2018
+ms.author: magattus
+ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260400"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058493"
 ---
-# <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Zwiększenie wydajności przez kompresowanie plików w usłudze Azure CDN
-Kompresji plików to prosta i skuteczna metoda zwiększenia szybkości transferu plików i zwiększyć wydajność ładowanie stron dzięki zmniejszeniu rozmiar tego pliku przed wysłaniem go z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnia bardziej odpowiednie środowisko dla użytkowników.
+# <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN
+Kompresja plików jest prosta i skuteczna metoda zwiększanie szybkości transferu plików i poprawia wydajność ładowania strony, zmniejszając rozmiar tego pliku przed wysłaniem ich z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnić bardziej dynamiczne środowisko dla użytkowników.
 
 Istnieją dwa sposoby, aby włączyć kompresję pliku:
 
-- Włącz kompresję na serwerze pochodzenia. W takim przypadku Azure CDN przekazuje skompresowane pliki i dostarcza je klientom żądającym je.
-- Włącz kompresję bezpośrednio na serwerach POP w sieci CDN (*kompresji w locie*). W takim przypadku CDN kompresuje pliki i służy je dla użytkowników końcowych, nawet jeśli nie zostały skompresowane przez serwer pochodzenia.
+- Włącz kompresję serwera pochodzenia. W tym przypadku usługa Azure CDN przekazywane wraz z pliki skompresowane i przekazuje je klientom żądającym je.
+- Włącz kompresję bezpośrednio na serwerach POP sieci CDN (*kompresji w locie*). W tym przypadku usługa CDN kompresuje pliki i służy je do użytkowników końcowych, nawet jeśli nie zostały skompresowane przez serwer pochodzenia.
 
 > [!IMPORTANT]
-> Zmiany konfiguracji usługi Azure CDN może zająć trochę czasu na rozpropagowanie za pośrednictwem sieci: 
+> Zmiany konfiguracji w usłudze Azure CDN może zająć trochę czasu, do propagowania za pośrednictwem sieci: 
 - W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
 - W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
-- Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
+- W przypadku profilów usługi **Azure CDN Standard from Verizon** oraz usługi **Azure CDN Premium from Verizon** propagacja zwykle trwa do 10 minut. 
 >
-> Jeśli podczas konfigurowania kompresji po raz pierwszy dla punktu końcowego CDN, należy wziąć pod uwagę oczekiwania 1 – 2 godz. przed Rozwiązywanie problemów z do upewnij się, że ustawienia kompresji zostaną rozpropagowane do lokalizacji POP.
+> Jeśli podczas konfigurowania kompresji po raz pierwszy dla punktu końcowego usługi CDN, należy wziąć pod uwagę oczekiwania 1 – 2 godzin przed zajmujesz upewnij się, że ustawienia kompresji wykonaniu propagacji do lokalizacji POP.
 > 
 > 
 
 ## <a name="enabling-compression"></a>Włączanie kompresji
-Warstwy sieci CDN w warstwie standardowa i premium zapewniają te same funkcje kompresji, ale różni się w interfejsie użytkownika. Aby uzyskać więcej informacji na temat różnic między warstwami sieci CDN w warstwie standardowa i premium, zobacz [Omówienie usługi Azure CDN](cdn-overview.md).
+Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność kompresji, ale różni się w interfejsie użytkownika. Aby uzyskać więcej informacji na temat różnic między warstwami sieci CDN w warstwie standardowa i premium, zobacz [Omówienie usługi CDN Azure](cdn-overview.md).
 
-### <a name="standard-cdn-profiles"></a>Profile sieci CDN w warstwie standardowa 
+### <a name="standard-cdn-profiles"></a>Standardowa profilów usługi CDN 
 > [!NOTE]
 > Ta sekcja dotyczy **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, i **Azure CDN Standard from Akamai** profilów.
 > 
 > 
 
-1. Na stronie profilu CDN wybierz punkt końcowy CDN, którą chcesz zarządzać.
+1. Na stronie profilu usługi CDN wybierz punktu końcowego usługi CDN, którą chcesz zarządzać.
    
-    ![Punkty końcowe profilu CDN](./media/cdn-file-compression/cdn-endpoints.png)
+    ![Punkty końcowe profilu usługi CDN](./media/cdn-file-compression/cdn-endpoints.png)
    
-    Zostanie otwarta strona punktu końcowego CDN.
+    Zostanie otwarta strona punktu końcowego usługi CDN.
 2. Wybierz **kompresji**.
 
-    ![Wybór kompresji CDN](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![Wybór kompresja sieci CDN](./media/cdn-file-compression/cdn-compress-select-std.png)
    
     Zostanie otwarta strona kompresji.
 3. Wybierz **na** włączenie kompresji.
    
-    ![Opcje kompresji pliku CDN](./media/cdn-file-compression/cdn-compress-standard.png)
-4. Użyj domyślnych typów MIME lub zmodyfikuj listę przez dodanie lub usunięcie typów MIME.
+    ![Opcje kompresją pliku CDN](./media/cdn-file-compression/cdn-compress-standard.png)
+4. Użyj domyślnych typów MIME, lub zmodyfikować tę listę, dodając lub usuwając typów MIME.
    
    > [!TIP]
-   > Mimo że jest to możliwe, nie zaleca się zastosowanie kompresji w formatach skompresowany. Na przykład ZIP, MP3, MP4 lub JPG.
+   > Mimo że jest to możliwe, nie zaleca się dotyczą kompresji skompresowanych formatów. Na przykład pliku ZIP, MP3, MP4 lub JPG.
+   > 
+   
+   > [!NOTE]
+   > Modyfikowanie domyślną listę typów MIME nie jest obecnie obsługiwane w usłudze Azure CDN w warstwie standardowa firmy Microsoft.
    > 
  
-5. Po wprowadzeniu zmiany, wybierz **zapisać**.
+5. Po wprowadzeniu zmian, wybierz **Zapisz**.
 
-### <a name="premium-cdn-profiles"></a>Profile sieci CDN w warstwie Premium
+### <a name="premium-cdn-profiles"></a>Profile CDN w warstwie Premium
 > [!NOTE]
-> W tej sekcji dotyczą tylko **Azure CDN Premium from Verizon** profilów.
+> Ta sekcja dotyczy wyłącznie **Azure CDN Premium from Verizon** profilów.
 > 
 
-1. Na stronie profilu CDN wybierz **Zarządzaj**.
+1. Na stronie profilu usługi CDN wybierz **Zarządzaj**.
    
-    ![Wybierz Zarządzanie CDN](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Wybierz zarządzania sieci CDN](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Zostanie otwarty w portalu zarządzania usługi CDN.
-2. Umieść kursor nad **HTTP dużych** , a następnie umieść kursor nad **ustawienia pamięci podręcznej** wysuwane okno. Wybierz **kompresji**.
+2. Umieść kursor nad **HTTP dużych** kartę, a następnie umieść kursor nad **ustawienia pamięci podręcznej** okno wysuwane. Wybierz **kompresji**.
 
-    ![Wybór kompresji CDN](./media/cdn-file-compression/cdn-compress-select.png)
+    ![Wybór kompresja sieci CDN](./media/cdn-file-compression/cdn-compress-select.png)
    
     Opcje kompresji są wyświetlane.
    
-    ![Opcje kompresji pliku CDN](./media/cdn-file-compression/cdn-compress-files.png)
-3. Włącz kompresję, wybierając **włączyć kompresji,**. Wprowadź typy MIME chcesz kompresować jako listę rozdzielaną przecinkami (bez spacji) **typów plików** pole.
+    ![Opcje kompresją pliku CDN](./media/cdn-file-compression/cdn-compress-files.png)
+3. Włącz kompresję, wybierając **Kompresja włączona**. Wprowadź typy MIME chcesz kompresować jako listę rozdzielonych przecinkami (bez spacji) **typów plików** pole.
    
    > [!TIP]
-   > Mimo że jest to możliwe, nie zaleca się zastosowanie kompresji w formatach skompresowany. Na przykład ZIP, MP3, MP4 lub JPG.
+   > Mimo że jest to możliwe, nie zaleca się dotyczą kompresji skompresowanych formatów. Na przykład pliku ZIP, MP3, MP4 lub JPG.
    > 
     
-4. Po wprowadzeniu zmiany, wybierz **aktualizacji**.
+4. Po wprowadzeniu zmian, wybierz **aktualizacji**.
 
 ## <a name="compression-rules"></a>Reguły kompresji
 
-### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard from profile firmy Microsoft
+### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Usługa Azure CDN Standard from profile firmy Microsoft
 
-Aby uzyskać **Azure CDN Standard from Microsoft** profile, wszystkie pliki kwalifikują się do kompresji. Niemniej jednak plik musi być typu MIME, który został [skonfigurowane kompresji](#enabling-compression).
+Aby uzyskać **Azure CDN Standard from Microsoft** profile, wszystkie pliki kwalifikują się do kompresji. Jednak plik musi być typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
 
-Te profile obsługuje następujące rodzaje kodowania kompresji:
+Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
 - brotli 
  
 Jeśli żądanie obsługuje więcej niż jeden typ kompresji, te typy kompresji mają pierwszeństwo przed brotli kompresji.
 
-Gdy żądanie zasobu określa kompresję gzip i wyniki żądania w Chybienie pamięci podręcznej, usługi Azure CDN wykonuje kompresję gzip trwałego bezpośrednio na serwer protokołu POP. W efekcie skompresowany plik jest udostępniany z pamięci podręcznej.
+Podczas żądania zasobu określa kompresję gzip i wyniki żądania to Chybienie pamięci podręcznej, usługa Azure CDN wykonuje kompresję gzip zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej.
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN from Verizon profilów
 
-Dla **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, tylko odpowiednie pliki są skompresowane. Aby kwalifikować się do kompresji, plik musi:
-- Jest większe niż 128 bajtów
+Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, tylko odpowiednie pliki są kompresowane. Aby kwalifikować się do kompresji, plik musi:
+- Być większa niż 128 bajtów
 - Być mniejszy niż 1 MB
  
-Te profile obsługuje następujące rodzaje kodowania kompresji:
+Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
 - KORYGOWANIA
 - bzip2
@@ -122,39 +126,39 @@ Te profile obsługuje następujące rodzaje kodowania kompresji:
  
 Jeśli żądanie obsługuje więcej niż jeden typ kompresji, te typy kompresji mają pierwszeństwo przed brotli kompresji.
 
-Gdy żądanie zasobu określa kompresji brotli (nagłówek HTTP jest `Accept-Encoding: br`) i z żądania powoduje Chybienie pamięci podręcznej, usługa Azure CDN wykonuje kompresji brotli trwałego bezpośrednio na serwer protokołu POP. W efekcie skompresowany plik jest udostępniany z pamięci podręcznej.
+Podczas żądania zasobu określa brotli kompresji (nagłówek HTTP jest `Accept-Encoding: br`), a wyniki żądania to Chybienie pamięci podręcznej usługi Azure CDN wykonuje kompresji brotli zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej.
 
-### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard from Akamai profilów
+### <a name="azure-cdn-standard-from-akamai-profiles"></a>Usługa Azure CDN Standard from Akamai profilów
 
-Aby uzyskać **Azure CDN Standard from Akamai** profile, wszystkie pliki kwalifikują się do kompresji. Niemniej jednak plik musi być typu MIME, który został [skonfigurowane kompresji](#enabling-compression).
+Aby uzyskać **Azure CDN Standard from Akamai** profile, wszystkie pliki kwalifikują się do kompresji. Jednak plik musi być typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
 
-Te profile obsługuje gzip kompresji tylko kodowania. Gdy punkt końcowy profilu żąda pliku w formacie gzip, jest zawsze wymagany ze źródła, niezależnie od tego, w żądaniu klienta. 
+Te profile gzip kompresji kodowanie tylko obsługiwane. Gdy punkt końcowy profilu zażąda pliku w formacie gzip, zawsze jest wymagany ze źródła, niezależnie od tego, w żądaniu klienta. 
 
-## <a name="compression-behavior-tables"></a>Kompresja tabel zachowanie
-W poniższych tabelach opisano zachowanie kompresji Azure CDN dla każdego scenariusza:
+## <a name="compression-behavior-tables"></a>Kompresja zachowanie tabel
+W poniższych tabelach opisano zachowanie kompresji sieć CDN systemu Azure dla każdego scenariusza:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Kompresja jest wyłączona lub plik nie kwalifikuje się do kompresji
-| Klient zażądał formatu (za pośrednictwem nagłówka Accept-Encoding) | Format pliku pamięci podręcznej | Odpowiedź sieci CDN do klienta | Uwagi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Klient zażądał formatu (przy użyciu nagłówka Accept-Encoding) | Format pliku pamięci podręcznej | Odpowiedź usługi CDN do klienta | Informacje o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Skompresowane |Skompresowane |Skompresowane | |
-| Skompresowane |Nieskompresowanych |Nieskompresowanych | |
-| Skompresowane |Nie w pamięci podręcznej |Skompresowane lub nieskompresowane |Odpowiedź pochodzenia określa, czy CDN wykonuje kompresji. |
-| Nieskompresowanych |Skompresowane |Nieskompresowanych | |
-| Nieskompresowanych |Nieskompresowanych |Nieskompresowanych | |
-| Nieskompresowanych |Nie w pamięci podręcznej |Nieskompresowanych | |
+| Skompresowane |Nieskompresowane |Nieskompresowane | |
+| Skompresowane |Nie pamięci podręcznej |Skompresowane lub bez kompresji |Odpowiedź źródła Określa, czy usługi CDN wykonuje kompresji. |
+| Nieskompresowane |Skompresowane |Nieskompresowane | |
+| Nieskompresowane |Nieskompresowane |Nieskompresowane | |
+| Nieskompresowane |Nie pamięci podręcznej |Nieskompresowane | |
 
-### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Kompresja jest włączona i pliku nie kwalifikuje się do kompresji
-| Klient zażądał formatu (za pośrednictwem nagłówka Accept-Encoding) | Format pliku pamięci podręcznej | Odpowiedź z sieci CDN do klienta | Uwagi |
+### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Kompresja jest włączona, a plik kwalifikuje się do kompresji
+| Klient zażądał formatu (przy użyciu nagłówka Accept-Encoding) | Format pliku pamięci podręcznej | Odpowiedź usługi CDN do klienta | Uwagi |
 | --- | --- | --- | --- |
-| Skompresowane |Skompresowane |Skompresowane |Transcodes CDN pomiędzy obsługiwanych formatów. |
-| Skompresowane |Nieskompresowanych |Skompresowane |CDN wykonuje kompresji. |
-| Skompresowane |Nie w pamięci podręcznej |Skompresowane |Jeśli punkt początkowy zwraca nieskompresowanego pliku, w sieci CDN wykonuje kompresji. <br/>**Usługi Azure CDN from Verizon** przekazuje nieskompresowanego pliku na pierwsze żądanie i kompresuje i buforuje plik dla kolejnych żądań. <br/>Pliki z `Cache-Control: no-cache` nigdy nie są kompresowane nagłówka. |
-| Nieskompresowanych |Skompresowane |Nieskompresowanych |CDN wykonuje dekompresji. |
-| Nieskompresowanych |Nieskompresowanych |Nieskompresowanych | |
-| Nieskompresowanych |Nie w pamięci podręcznej |Nieskompresowanych | |
+| Skompresowane |Skompresowane |Skompresowane |Sieci CDN transkoduje między obsługiwanych formatów. |
+| Skompresowane |Nieskompresowane |Skompresowane |Sieci CDN wykonuje kompresji. |
+| Skompresowane |Nie pamięci podręcznej |Skompresowane |Jeśli punkt początkowy zwraca nieskompresowanego pliku, usługi CDN nie wykonuje kompresji. <br/>**Usługa Azure CDN from Verizon** przekazuje nieskompresowanego pliku na pierwsze żądanie i kompresuje i buforuje plik dla kolejnych żądań. <br/>Pliki z `Cache-Control: no-cache` nagłówka nigdy nie są kompresowane. |
+| Nieskompresowane |Skompresowane |Nieskompresowane |Sieci CDN wykonuje dekompresji. |
+| Nieskompresowane |Nieskompresowane |Nieskompresowane | |
+| Nieskompresowane |Nie pamięci podręcznej |Nieskompresowane | |
 
-## <a name="media-services-cdn-compression"></a>Kompresja CDN usługi multimediów
-Punkty końcowe włączone do przesyłania strumieniowego multimediów usługi CDN kompresji jest domyślnie włączona dla następujących typów MIME: 
+## <a name="media-services-cdn-compression"></a>Kompresja sieci CDN usługi Media Services
+Dla punktów końcowych włączone służącą do strumieniowego przesyłania multimediów usługi CDN kompresji jest domyślnie włączone dla następujących typów MIME: 
 - application/vnd.ms-sstr+xml 
 - Aplikacja/dash + xml
 - application/vnd.apple.mpegurl

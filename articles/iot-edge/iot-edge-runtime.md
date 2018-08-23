@@ -4,16 +4,16 @@ description: Więcej informacji na temat środowiska uruchomieniowego usługi Az
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/05/2018
+ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 36750a4d907da1d4fa029aca0ecc503db7e82d81
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526096"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060236"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -23,9 +23,9 @@ ms.locfileid: "39526096"
 
 * Instaluje i aktualizuje obciążenia na urządzeniu.
 * Zapewnia zachowanie standardów zabezpieczeń usługi Azure IoT Edge na urządzeniu.
-* Zapewnia, że [moduły usługi IoT Edge][lnk moduły] nieprzerwane działanie.
+* Zapewnia, że [moduły usługi IoT Edge] [ lnk-modules] nieprzerwane działanie.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
-* Usprawnia komunikację między podrzędnymi urządzeniami liścia a urządzeniem usługi IoT Edge.
+* Usprawnia komunikację między podrzędnymi urządzeniami liścia a urządzenia usługi IoT Edge.
 * Usprawnia komunikację między modułami na urządzeniu usługi IoT Edge.
 * Usprawnia komunikację między urządzeniem usługi IoT Edge a chmurą.
 
@@ -33,7 +33,7 @@ ms.locfileid: "39526096"
 
 Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: moduł zarządzania i komunikacji. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. Centrum usługi IoT Edge jest odpowiedzialny za komunikację, podczas gdy zarządza agent usługi IoT Edge, wdrażania i monitorowania modułów. 
 
-Agent usługi Edge i Centrum usługi Edge są moduły, podobnie jak każdy inny moduł, działające na urządzeniu usługi IoT Edge. Aby uzyskać więcej informacji o działaniu modułów, zobacz [lnk moduły]. 
+Agent usługi Edge i Centrum usługi Edge są moduły, podobnie jak każdy inny moduł, działające na urządzeniu usługi IoT Edge. 
 
 ## <a name="iot-edge-hub"></a>Centrum usługi IoT Edge
 
@@ -52,9 +52,6 @@ W celu zmniejszenia obciążenia przepustowości rozwiązania usługi IoT Edge k
 ![Centrum usługi Edge działa jako brama między wiele urządzeń fizycznych i w chmurze][2]
 
 Centrum usługi Edge można określić, czy jest ona dołączona do usługi IoT Hub. W przypadku utraty połączenia Centrum usługi Edge zapisuje komunikaty lub lokalnie w aktualizacji bliźniaczej reprezentacji. Po ustanowieniu połączenia, synchronizuje wszystkie dane. Lokalizacja używana dla tego tymczasowa pamięć podręczna jest określany przez właściwość z bliźniaczej reprezentacji modułu Centrum usługi Edge. Rozmiar pamięci podręcznej nie jest ograniczone i będzie się zwiększać tak długo, jak urządzenie ma pojemność magazynu. 
-
->[!NOTE]
->Dodawanie kontroli nad dodatkowe parametry buforowania zostaną dodane do produktu przed uśpieniem ogólnie dostępne.
 
 ### <a name="module-communication"></a>Moduł komunikacji
 
@@ -86,11 +83,11 @@ Rozwiązanie dla deweloperów jest odpowiedzialny za określenie reguł, które 
 
 Agent usługi IoT Edge jest inny moduł, który tworzy środowisko uruchomieniowe usługi Azure IoT Edge. Jest odpowiedzialny za utworzenie wystąpienia modułów, zapewnienie, że nadal działać i raportowania stanu modułów powrót do Centrum IoT Hub. Podobnie jak każdy inny moduł agent usługi Edge używa jej bliźniaczą reprezentację modułu do przechowywania danych konfiguracji. 
 
-Aby rozpocząć wykonywanie agent usługi Edge, uruchom polecenie start azure-iot-edge — środowisko uruchomieniowe ctl.py. Agent pobiera jego bliźniaczą reprezentację modułu z usługi IoT Hub i sprawdza słownik modułów. Słownik modułów jest kolekcja modułów, które musiały zostać uruchomione. 
+[Demona zabezpieczeń usługi IoT Edge](iot-edge-security-manager.md) uruchamia agenta usługi Edge podczas uruchamiania urządzenia. Agent pobiera jego bliźniaczą reprezentację modułu z usługi IoT Hub i sprawdza manifestu wdrażania. Manifest wdrożenia to plik JSON, która deklaruje moduły, które musiały zostać uruchomione. 
 
-Każdy element w słowniku modułów zawiera szczegółowe informacje na temat modułu i jest używany przez agenta usługi Edge do kontrolowania modułu cyklu życia. Bardziej interesujące właściwości, należą: 
+Każdego elementu w manifeście wdrożenia zawiera szczegółowe informacje na temat modułu i jest używany przez agenta usługi Edge do kontrolowania modułu cyklu życia. Bardziej interesujące właściwości, należą: 
 
-* **Settings.Image** — obraz kontenera, który korzysta z agenta usługi Edge można uruchomić modułu. Agent usługi Edge należy określić przy użyciu poświadczeń dla rejestru kontenerów, jeśli obraz, który jest chroniony hasłem. Aby skonfigurować agenta usługi Edge, zaktualizuj `config.yaml` pliku. W systemie Linux Użyj następującego polecenia: `sudo nano /etc/iotedge/config.yaml`
+* **Settings.Image** — obraz kontenera, który korzysta z agenta usługi Edge można uruchomić modułu. Agent usługi Edge należy określić przy użyciu poświadczeń dla rejestru kontenerów, jeśli obraz, który jest chroniony hasłem. Poświadczenia dla rejestru kontenerów można skonfigurować przy użyciu pliku manifestu wdrożenia lub na samym urządzeniu usługi Edge, aktualizując `config.yaml` pliku w folderze programu usługi IoT Edge.
 * **settings.createOptions** — ciąg, który jest przekazywana bezpośrednio do demona platformy Docker, podczas uruchamiania modułu kontenera. Dodanie opcji platformy Docker w tej właściwości umożliwia zaawansowane opcje, takie jak port przekazywania lub instalowanie woluminów do modułu kontenera.  
 * **Stan** — stan, w którym agent usługi Edge umieszcza modułu. Ta wartość jest zazwyczaj równa *systemem* dowolną większość osób agent usługi Edge, aby natychmiast uruchomić wszystkie moduły na urządzeniu. Jednak można określić stanu początkowego modułu, aby zostać zatrzymane i poczekaj na czas w przyszłości stwierdzić, agent usługi Edge, które można uruchomić modułu. Agent usługi Edge raportuje stan każdego modułu ją do chmury w zgłaszanych właściwości. Różnica między żądaną właściwość i zgłaszanych właściwości jest wskaźnikiem nieprawidłowo funkcjonujące urządzenia. Są obsługiwane stany:
    * Pobieranie
@@ -114,13 +111,13 @@ Agent usługi IoT Edge wysyła odpowiedź środowiska uruchomieniowego do usług
 
 ### <a name="security"></a>Bezpieczeństwo
 
-Agent usługi IoT Edge odgrywa kluczową rolę w zabezpieczeniach urządzenia usługi IoT Edge. Na przykład wykonuje akcje, takie jak weryfikacja do obrazu modułu przed jego uruchomienie. Te funkcje zostaną dodane po ogólnym udostępnieniu. 
+Agent usługi IoT Edge odgrywa kluczową rolę w zabezpieczeniach urządzenia usługi IoT Edge. Na przykład wykonuje akcje, takie jak weryfikacja do obrazu modułu przed jego uruchomienie. 
 
-<!-- For more information about the Azure IoT Edge security framework, see []. -->
+Aby uzyskać więcej informacji na temat struktury zabezpieczeń usługi Azure IoT Edge, przeczytaj temat [Menedżera zabezpieczeń usługi IoT Edge](iot-edge-security-manager.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Omówienie usługi Azure IoT Edge modułów][lnk moduły]
+[Omówienie modułów usługi Azure IoT Edge][lnk-modules]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +126,4 @@ Agent usługi IoT Edge odgrywa kluczową rolę w zabezpieczeniach urządzenia us
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk moduły]: iot-edge-modules.md
+[lnk-modules]: iot-edge-modules.md

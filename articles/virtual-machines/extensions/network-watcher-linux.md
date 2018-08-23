@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny wirtualnej Azure Agent obserwatorów sieci dla systemu Linux | Dokumentacja firmy Microsoft
-description: Wdróż agenta monitora sieci na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
+title: Rozszerzenie maszyny wirtualnej platformy Azure Agent usługi Network Watcher dla systemu Linux | Dokumentacja firmy Microsoft
+description: Wdróż Agent usługi Network Watcher na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
 author: gurudennis
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: db508e2311602a66a2c252ffaa842f8bfb4f670b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 22b18f77b3d997cdba7b60b53f1968b516701cc1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076075"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058502"
 ---
-# <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej obserwatorów agenta sieciowe dla systemu Linux
+# <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej agenta obserwatora sieciowe dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-[Azure obserwatora sieciowego](/azure/network-watcher/) jest sieci performance monitoring, Diagnostyka i analiza usługa, która umożliwia monitorowanie sieci platformy Azure. Rozszerzenie maszyny wirtualnej (VM) Agent monitora sieci jest wymagana do niektórych funkcji obserwatora sieciowego na maszynach wirtualnych Azure, takich jak Przechwytywanie ruchu sieciowego na żądanie i inne zaawansowane funkcje.
+[Usługa Azure Network Watcher](/azure/network-watcher/) to sieci wydajności monitorowania i diagnostyki i analizy usługa, która umożliwia monitorowanie sieci platformy Azure. Rozszerzenie maszyny wirtualnej (VM) Agent usługi Network Watcher jest wymagana dla niektórych funkcji usługi Network Watcher na maszynach wirtualnych platformy Azure, takich jak Przechwytywanie ruchu sieciowego na żądanie i inne zaawansowane funkcje.
 
-Ten artykuł zawiera szczegóły dotyczące obsługiwanych platform i opcje wdrażania dla rozszerzenia maszyny Wirtualnej agenta obserwatorów sieci dla systemu Linux. Instalacja agenta nie zakłócać lub wymaga ponownego uruchomienia, maszyny wirtualnej.
+Ten artykuł szczegółowo opisuje obsługiwanych platformach i opcje wdrażania dla rozszerzenia maszyny Wirtualnej Network Watcher agenta dla systemu Linux. Instalacja agenta nie zakłócać lub konieczne jest ponowne uruchomienie maszyny wirtualnej. Rozszerzenie można wdrożyć na maszyny wirtualne, które można wdrożyć. Jeśli maszyna wirtualna jest wdrażana przez usługi platformy Azure, sprawdź w dokumentacji usługi ustalić, czy nie pozwala na instalowanie rozszerzeń w maszynie wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie Agent monitora sieci można skonfigurować dla następujących dystrybucje systemu Linux:
+Rozszerzenie Agent usługi Network Watcher można skonfigurować poniższe dystrybucje systemu Linux:
 
 | Dystrybucja | Wersja |
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS i 12.04 LTS |
 | Debian | 7 i 8 |
-| RedHat | 6 i 7 |
+| Red Hat | 6 i 7 |
 | Oracle Linux | 6.8 + i 7 |
 | SUSE Linux Enterprise Server | 11 i 12 |
-| OpenSUSE przestępnego | 42.3 + |
+| Przestępnym OpenSUSE | 42.3 + |
 | CentOS | 6.5 + i 7 |
 | CoreOS | 899.17.0+ |
 
@@ -51,11 +51,11 @@ CoreOS nie jest obsługiwane.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Niektóre funkcje Agent monitora sieci wymaga, czy maszyna wirtualna jest połączony z Internetem. Bez możliwości nawiązywania połączeń wychodzących niektóre funkcje sieciowe obserwatorów agenta może nie działać poprawnie lub staną się niedostępne. Aby uzyskać więcej informacji o funkcji obserwatora sieciowego wymaga agenta, zobacz[dokumentacji obserwatora sieciowego](/azure/network-watcher/).
+Niektóre funkcje Agent usługi Network Watcher wymaga, że maszyny Wirtualnej jest połączony z Internetem. Bez możliwość nawiązywania połączeń wychodzących niektóre funkcje Agent usługi Network Watcher może spowodować nieprawidłowe działanie lub staną się niedostępne. Aby uzyskać więcej informacji na temat funkcji usługi Network Watcher, który wymaga agenta, zobacz[dokumentacji usługi Network Watcher](/azure/network-watcher/).
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia Agent monitora sieci. Rozszerzenie nie wymagają lub obsługuje wszystkie ustawienia dostarczone przez użytkownika. Rozszerzenie zależy od konfiguracji domyślnej.
+Następujący kod JSON zawiera schemat dla rozszerzenia Agent usługi Network Watcher. Rozszerzenie nie wymagają i obsługują wszystkie ustawienia dostarczone przez użytkownika. Rozszerzenie zależy od konfiguracji domyślnej.
 
 ```json
 {
@@ -86,20 +86,20 @@ Następujące JSON zawiera schemat rozszerzenia Agent monitora sieci. Rozszerzen
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure z szablonem usługi Azure Resource Manager. Aby wdrożyć rozszerzenie sieci obserwatorów agenta, należy użyć poprzedniej schematu json w szablonie.
+Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager. Aby wdrożyć rozszerzenie Agent usługi Network Watcher, należy użyć poprzedniego schematu json w szablonie.
 
-## <a name="azure-cli-10-deployment"></a>Wdrożenia usługi Azure CLI w wersji 1.0
+## <a name="azure-cli-10-deployment"></a>Wdrożenie usługi Azure CLI 1.0
 
-Poniższy przykład wdraża rozszerzenia sieci obserwatorów agenta z maszyny Wirtualnej na istniejącej maszyny Wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania:
+Poniższy przykład służy do wdrażania rozszerzenia maszyny Wirtualnej Network Watcher agenta do istniejącej maszyny Wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania:
 
 ```azurecli
 azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Wdrożenia usługi Azure CLI 2.0
+## <a name="azure-cli-20-deployment"></a>Wdrożenie usługi Azure CLI 2.0
 
-Poniższy przykład wdraża rozszerzenia sieci obserwatorów agenta z maszyny Wirtualnej na istniejącej maszyny Wirtualnej wdrożone za pomocą Menedżera zasobów:
+Poniższy przykład służy do wdrażania rozszerzenia maszyny Wirtualnej Network Watcher agenta do istniejącej maszyny Wirtualnej wdrożony za pomocą usługi Resource Manager:
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name NetworkWatcherAgentLinux --publisher Microsoft.Azure.NetworkWatcher --version 1.4
@@ -109,21 +109,21 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Można pobrać danych o stanie wdrożenia rozszerzenia przy użyciu portalu Azure lub interfejsu wiersza polecenia Azure.
+Możesz pobrać dane dotyczące stanu wdrożeń rozszerzenia za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
 
-Poniższy przykład przedstawia stan wdrażania rozszerzeń dla maszyny Wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania, przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure:
+Poniższy przykład przedstawia stan wdrażania rozszerzeń maszyny wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0:
 
 ```azurecli
 azure config mode asm
 azure vm extension get myVM1
 ```
-Dane wyjściowe wykonania rozszerzenia jest rejestrowany pliki znajdujące się w następującym katalogu:
+Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:
 
 `
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-Poniższy przykład przedstawia stan wdrożenia rozszerzenia NetworkWatcherAgentLinux dla maszyny Wirtualnej wdrożone za pomocą Menedżera zasobów za pomocą 2.0 interfejsu wiersza polecenia platformy Azure:
+Poniższy kod przedstawia rozszerzenia NetworkWatcherAgentLinux stan wdrożenia dla maszyny Wirtualnej wdrożonej przy użyciu usługi Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0:
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1
@@ -131,4 +131,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, może się odwoływać do [dokumentacji obserwatora sieciowego](/azure/network-watcher/), lub skontaktuj się z ekspertami Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskać pomoc techniczną**. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, zobacz [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz zapoznać się z [dokumentacji usługi Network Watcher](/azure/network-watcher/), lub skontaktuj się z pomocą ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskać pomoc techniczną**. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, zobacz [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

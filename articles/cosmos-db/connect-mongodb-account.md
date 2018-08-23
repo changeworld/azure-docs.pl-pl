@@ -1,76 +1,76 @@
 ---
-title: Parametry połączenia bazy danych MongoDB dla konta bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak łączenie aplikacji z bazy danych MongoDB konta bazy danych rozwiązania Cosmos Azure przy użyciu ciągu połączenia bazy danych MongoDB.
+title: Parametry połączenia bazy danych MongoDB dla konta usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć aplikację bazy danych MongoDB na konto usługi Azure Cosmos DB przy użyciu parametrów połączenia MongoDB.
 keywords: Parametry połączenia bazy danych mongodb
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: 441f6725b96dc7a099304e06db6d46a65e7f9c81
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: sclyon
+ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795962"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054956"
 ---
-# <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB, do bazy danych Azure rozwiązania Cosmos
-Dowiedz się, jak łączenie aplikacji z bazy danych MongoDB konta bazy danych rozwiązania Cosmos Azure przy użyciu ciągu połączenia bazy danych MongoDB. Następnie można użyć bazy danych Azure rozwiązania Cosmos bazy danych jako dane magazynu dla aplikacji bazy danych MongoDB. 
+# <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB w usłudze Azure Cosmos DB
+Dowiedz się, jak połączyć aplikację bazy danych MongoDB na konto usługi Azure Cosmos DB przy użyciu parametrów połączenia MongoDB. Bazę danych usługi Azure Cosmos DB można następnie użyć jako danych magazynu dla aplikacji MongoDB. 
 
-Ten samouczek zawiera można pobrać ciągu połączenia na dwa sposoby:
+Ten samouczek zawiera dwa sposoby, aby pobrać informacje o parametrach połączenia:
 
-- [Szybki start — metoda](#QuickstartConnection), do użycia z programem .NET, Node.js, powłoka bazy danych MongoDB, Java i Python sterowniki
-- [Metoda ciąg połączenia niestandardowe](#GetCustomConnection), do użycia z innych sterowników
+- [Szybki start — metoda](#QuickstartConnection), do użytku z programem .NET, Node.js, powłoki bazy danych MongoDB, Java i Python sterowników
+- [Metoda ciąg połączenia niestandardowego](#GetCustomConnection), do użytku z innych sterowników
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Konto platformy Azure. Jeśli nie masz konta platformy Azure, Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) teraz. 
-- Konto usługi Azure Cosmos DB. Aby uzyskać instrukcje, zobacz [tworzenie aplikacji sieci web interfejsu API bazy danych MongoDB z usług .NET i portalu Azure](create-mongodb-dotnet.md).
+- Konto usługi Azure Cosmos DB. Aby uzyskać instrukcje, zobacz [tworzenie aplikacji internetowej interfejsu API usługi MongoDB przy użyciu platformy .NET i witryny Azure portal](create-mongodb-dotnet.md).
 
-## <a id="QuickstartConnection"></a>Pobierz ciąg połączenia bazy danych MongoDB przy użyciu szybki start
-1. W przeglądarce internetowej, zaloguj się do [portalu Azure](https://portal.azure.com).
-2. W **bazy danych Azure rozwiązania Cosmos** bloku, wybierz interfejsu API dla konta bazy danych MongoDB. 
-3. W lewym okienku blok konta, kliknij przycisk **szybki start**. 
-4. Wybierz platformy (**.NET**, **Node.js**, **powłoki MongoDB**, **Java**, **Python**). Jeśli nie widzisz, Twoje sterownika lub narzędzia na liście, nie martw się — firma Microsoft stale dokumentu więcej wstawki kodu połączenia. Skomentuj poniżej na chcesz zobaczyć. Aby dowiedzieć się, jak sformułować własne połączenia, przeczytaj [uzyskać informacje o parametrach połączenia dla konta](#GetCustomConnection).
-5. Skopiuj i Wklej fragmentu kodu w aplikacji bazy danych MongoDB.
+## <a id="QuickstartConnection"></a>Pobieranie parametrów połączenia bazy danych MongoDB przy użyciu szybkiego startu
+1. W przeglądarce internetowej, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+2. W **usługi Azure Cosmos DB** bloku wybierz interfejs API dla konta bazy danych MongoDB. 
+3. W okienku po lewej stronie bloku konta kliknij **— szybki start**. 
+4. Wybierz platformę (**.NET**, **Node.js**, **powłoka MongoDB**, **Java**, **Python**). Jeśli nie widzisz, sterownik lub narzędzie na liście, nie martw się — stale dokumentujemy kolejne fragmentu kodu połączenia. Skomentuj poniżej na chcesz zobaczyć. Aby dowiedzieć się, jak tworzyć własne połączenia, przeczytaj [uzyskać informacje o parametrach połączenia dla konta](#GetCustomConnection).
+5. Skopiuj i Wklej fragment kodu w aplikacji bazy danych MongoDB.
 
     ![Bloku szybki start](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a> Pobierz ciąg połączenia bazy danych MongoDB do dostosowania
-1. W przeglądarce internetowej, zaloguj się do [portalu Azure](https://portal.azure.com).
-2. W **bazy danych Azure rozwiązania Cosmos** bloku, wybierz interfejsu API dla konta bazy danych MongoDB. 
-3. W lewym okienku blok konta, kliknij przycisk **ciąg połączenia**. 
-4. **Ciąg połączenia** zostanie otwarty blok. Ma wszystkie informacje wymagane do nawiązania konta za pośrednictwem sterownika bazy danych mongodb, w tym ciągu połączenia preconstructed.
+## <a id="GetCustomConnection"></a> Pobieranie parametrów połączenia bazy danych MongoDB do dostosowywania
+1. W przeglądarce internetowej, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+2. W **usługi Azure Cosmos DB** bloku wybierz interfejs API dla konta bazy danych MongoDB. 
+3. W okienku po lewej stronie bloku konta kliknij **parametry połączenia**. 
+4. **Parametry połączenia** zostanie otwarty blok. Ma on wszystkie informacje niezbędne do połączenia do konta za pośrednictwem sterownika dla bazy danych MongoDB, w tym ciągu połączenia preconstructed.
 
-    ![Blok ciągu połączenia](./media/connect-mongodb-account/ConnectionStringBlade.png)
+    ![Blok Parametry połączenia](./media/connect-mongodb-account/ConnectionStringBlade.png)
 
-## <a name="connection-string-requirements"></a>Wymagania dotyczące ciąg połączenia
+## <a name="connection-string-requirements"></a>Wymagania dotyczące parametrów połączenia
 > [!Important]
-> Azure DB rozwiązania Cosmos ma wymogi ograniczeniami zabezpieczeń. Azure konta DB rozwiązania Cosmos wymagają uwierzytelniania i zapewnienia bezpiecznej komunikacji za pośrednictwem *SSL*. 
+> Usługa Azure Cosmos DB ma rygorystyczne zabezpieczenia wymagania i standardy. Konta usługi Azure Cosmos DB wymaga uwierzytelniania i bezpiecznej komunikacji za pośrednictwem *SSL*. 
 >
 >
 
-Azure DB rozwiązania Cosmos obsługuje standardowe bazy danych MongoDB format ciągu połączenia identyfikator URI, za pomocą paru specyficznych wymagań: konta bazy danych Azure rozwiązania Cosmos wymagają uwierzytelniania i zapewnienia bezpiecznej komunikacji za pośrednictwem protokołu SSL. Tak format ciągu połączenia jest:
+Usługa Azure Cosmos DB obsługuje standardowe bazy danych MongoDB format ciągu połączenia identyfikatora URI, przy użyciu kilku określonych wymagań: konta usługi Azure Cosmos DB wymaga uwierzytelniania i bezpiecznej komunikacji SSL. Dlatego jest format parametrów połączenia:
 
     mongodb://username:password@host:port/[database]?ssl=true
 
-Wartości te parametry są dostępne w **ciąg połączenia** bloku przedstawiona wcześniej:
+Wartości tych parametrów są dostępne w **parametry połączenia** bloku przedstawionej wcześniej:
 
-* Nazwa użytkownika (wymagane): Nazwa konta bazy danych Azure rozwiązania Cosmos.
-* Hasło (wymagane): hasło konta bazy danych Azure rozwiązania Cosmos.
-* Host (wymagane): nazwa FQDN konta bazy danych Azure rozwiązania Cosmos.
+* Nazwa użytkownika (wymagana): Nazwa konta usługi Azure Cosmos DB.
+* Hasło (wymagane): hasło konta usługi Azure Cosmos DB.
+* Hosta (wymagane): nazwa FQDN usługi Azure Cosmos DB.
 * Port (wymagane): 10255.
-* Bazy danych (opcjonalnie): połączenie korzysta z bazy danych. Jeśli baza danych jest dostępne, domyślna baza danych jest "test".
+* Bazy danych (opcjonalnie): bazy danych, która korzysta z połączenia. Jeśli żadna baza danych zostanie podany, domyślna baza danych jest "test".
 * Protokół SSL = true (wymagane)
 
-Rozważmy na przykład konto pokazano **ciąg połączenia** bloku. Jest prawidłowe parametry połączenia:
+Rozważmy na przykład konta pokazanego na **parametry połączenia** bloku. Jest prawidłowe parametry połączenia:
 
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [Użyj Studio 3T (MongoChef)](mongodb-mongochef.md) z interfejsu API Azure rozwiązania Cosmos bazy danych dla konta bazy danych MongoDB.
-* Eksploruj interfejsu API Azure rozwiązania Cosmos bazy danych dla bazy danych MongoDB, przeglądając [przykłady](mongodb-samples.md).
+* Dowiedz się, jak [korzystać z programu Studio 3T (z programu MongoChef)](mongodb-mongochef.md) z interfejsem API usługi Azure Cosmos DB dla konta bazy danych MongoDB.
+* Poznaj interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB, wyświetlając [przykłady](mongodb-samples.md).

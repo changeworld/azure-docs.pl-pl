@@ -1,6 +1,6 @@
 ---
-title: Szybki Start Bing obraz wyszukiwania zestawu SDK Java | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować aplikację konsoli Bing obraz wyszukiwania w zestawie SDK.
+title: 'Szybki Start: Żądania i Filtruj obrazy przy użyciu zestawu SDK w języku Java'
+description: W tym przewodniku Szybki Start, żądania i Filtruj obrazy zwrócone przez wyszukiwanie obrazów Bing, za pomocą języka Java.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,21 +10,21 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0c44bb313328081167a419f3b7d5ce17e49d2c99
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 280a4b67d81b0734ea983c1d7fe1389e59651ccd
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349457"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987659"
 ---
-# <a name="bing-image-search-sdk-java-quickstart"></a>Szybki Start Bing obraz wyszukiwania zestawu SDK Java
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-java"></a>Szybki Start: Żądania i filtrować obrazów za pomocą zestawu SDK i środowiska Java
 
-Zestaw SDK wyszukiwania usługi Bing obrazu udostępnia funkcje interfejsu API REST dla zapytań obrazu oraz wyniki analizy. 
+Zestaw SDK wyszukiwania obrazów Bing oferuje funkcje interfejsu API REST dla obrazu kwerend i wyniki analizy. 
 
-[Źródła kodu dla zestawu SDK Java usługi Bing obraz wyszukiwania przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) jest dostępna w Centrum Git. 
+[Kod dla przykładów wyszukiwania obrazów Bing zestawu Java SDK źródłowy](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) jest dostępny w repozytorium. 
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
-Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) w obszarze **wyszukiwania**. Zainstaluj zależności zestawu SDK usługi Bing obrazu Search za pomocą narzędzia Maven, Gradle lub innego systemu zarządzania zależności. Plik Maven POM wymaga deklaracji:
+Pobierz [klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **wyszukiwania**. Instalowanie zależności zestawu SDK wyszukiwania obrazów Bing za pomocą narzędzia Maven, Gradle lub innego systemu zarządzania zależnościami. Pliku POM narzędzia Maven wymaga deklaracji:
 ```
  <dependencies>
     <dependency>
@@ -35,7 +35,7 @@ Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/co
  </dependencies> 
 ```
 ## <a name="image-search-client"></a>Obraz wyszukiwania klienta
-Dodaj importów do implementacji klasy.
+Dodaj Import do implementacji klasy.
 ```
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
 import com.microsoft.azure.cognitiveservices.imagesearch.ImageObject;
@@ -79,7 +79,7 @@ public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Wyszukaj obrazy o "Rockies Kanady." Sprawdź liczbę wyników. Drukowanie wartości dla **firstImageResult**, **pivotSuggestions**, i **queryExpansions** parametrów.
+Wyszukuj obrazy o "Rockies kanadyjski." Sprawdź liczbę wyników. Drukowanie wartości dla **firstImageResult**, **pivotSuggestions**, i **queryExpansions** parametrów.
 ```
 public static void imageSearch(String subscriptionKey)
 {
@@ -164,7 +164,7 @@ public static void imageSearch(String subscriptionKey)
 }
 
 ```
-Wyszukiwanie obrazów o "Gibraltar" i filtr animowane pliki GIF i międzynarodowe współczynnik proporcji. Sprawdź liczbę wyników. Drukowanie wartości dla **insightsToken**, **thumbnailUrl**, i **względnym** parametry dla pierwszego wyniku.
+Wyszukiwanie obrazów o "Gibraltar" i filtr animowane pliki GIF i szeroki współczynnik proporcji. Sprawdź liczbę wyników. Drukowanie wartości dla **insightsToken**, **thumbnailUrl**, i **względnym** parametrów dla pierwszego wyniku.
 ```
 public static void imageSearchWithFilters(String subscriptionKey)
 {
@@ -208,7 +208,7 @@ public static void imageSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Wyszukiwanie trendów obrazów. Sprawdź **kategorii** i **Kafelki** parametrów.
+Wyszukiwanie popularnych obrazów. Sprawdź **kategorie** i **Kafelki** parametrów.
 ```
 public static void imageTrending(String subscriptionKey)
 {
@@ -260,7 +260,7 @@ public static void imageTrending(String subscriptionKey)
 }
 
 ```
-Wyszukaj obrazy z zapytaniem "Degas", a następnie wyszukaj szczegółowe informacje dotyczące pierwszego wyniku obrazu. 
+Wyszukuj obrazy z zapytaniem "Degas", a następnie wyszukaj szczegóły dotyczące wyniku pierwsze obraz. 
 ```
 public static void imageDetail(String subscriptionKey)
 {
@@ -396,7 +396,7 @@ public static void imageDetail(String subscriptionKey)
     }
 }
 ```
-Dodaj metod opisanych w tym artykule do klasy z głównych funkcji wykonywania kodu.
+Dodaj metod opisanych w tym artykule do klasy za pomocą funkcji main do wykonywania kodu.
 ```
 package ImageSDK;
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
@@ -416,4 +416,4 @@ public class ImageSrchSDK {
 ```
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zestaw SDK Java usługi kognitywnych — przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Cognitive przykłady zestawu SDK Java usług](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

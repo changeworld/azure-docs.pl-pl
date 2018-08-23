@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099966"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056979"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>Migracja danych z rozwiązania StorSimple serii 5000 – 7000 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrację danych z serii StorSimple 5000 – 7000 do usługi Azure File Sync
 
 Migracja danych to proces przenoszenia danych z jednej lokalizacji magazynu. Dzięki temu, dzięki czemu dokładną kopię organizacji bieżące dane z jednego urządzenia do innego urządzenia — najlepiej bez zakłócania pracy lub wyłączenie aktywnych aplikacji — a następnie przekierowanie wszystkie wejścia/wyjścia (aktywność We/Wy) do nowego urządzenia. 
 
@@ -67,17 +67,17 @@ Migrowanie danych z rozwiązania StorSimple 5000 – 7000 do AFS jest procesem d
 
 Wykonaj poniższe kroki, aby migrować udziału plików Windows, które są skonfigurowane na woluminy StorSimple do udziału usługi Azure File Sync. 
 1.  Te kroki należy wykonać na tym samym hoście systemu Windows Server, gdzie są zainstalowane woluminy StorSimple, lub użyj innego systemu. 
-    - [Przygotowanie systemu Windows Server za pomocą usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Zainstaluj agenta usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Wdrażanie usługi synchronizacji magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Rejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Tworzenie grupy synchronizacji i punktu końcowego w chmurze] (https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal. Grupy synchronizacji należy podjąć, dla każdego udziału plików Windows, które muszą zostać zmigrowane z hosta.
-    - [Tworzenie punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). Określ ścieżkę jako ścieżki woluminu StorSimple, która zawiera dane udziału plików. Na przykład, jeśli woluminu StorSimple jest dysk `J`, a Twoje dane znajdują się w `J:/<myafsshare>`, następnie dodaj tę ścieżkę jako punkt końcowy serwera. Pozostaw **warstw** jako **wyłączone**.
+    - [Przygotowanie systemu Windows Server za pomocą usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Zainstaluj agenta usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [Wdrażanie usługi synchronizacji magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Rejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Tworzenie grupy synchronizacji i punktu końcowego w chmurze](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Grupy synchronizacji należy podjąć, dla każdego udziału plików Windows, które muszą zostać zmigrowane z hosta.
+    - [Tworzenie punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Określ ścieżkę jako ścieżki woluminu StorSimple, która zawiera dane udziału plików. Na przykład, jeśli woluminu StorSimple jest dysk `J`, a Twoje dane znajdują się w `J:/<myafsshare>`, następnie dodaj tę ścieżkę jako punkt końcowy serwera. Pozostaw **warstw** jako **wyłączone**.
 2.  Poczekaj, aż synchronizacja serwera plików jest pełny. Dla każdego serwera w grupie synchronizacji danego upewnij się, że:
     - Ostatnie są sygnatury czasowe dla ostatniej synchronizacji próba przekazywania i pobierania.
     - Stan jest zielony przekazywania i pobierania.
-    - Działanie synchronizacji przedstawia bardzo mało lub nie plików pozostałych do synchronizacji.
-    - Pliki nie synchronizuje wynosi 0 dla przekazywania i pobierania.
+    - **Działanie synchronizacji** przedstawia bardzo mało lub nie plików pozostałych do synchronizacji.
+    - **Nie synchronizuje pliki** ma wartość 0 dla przekazywania i pobierania.
     Aby uzyskać więcej informacji na temat po zakończeniu synchronizacji serwera, przejdź do [Rozwiązywanie problemów z usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other). Synchronizacja może potrwać kilka godzin, dni, w zależności od rozmiaru danych i przepustowości. Po zakończeniu synchronizacji, wszystkie dane są bezpiecznie w udziale plików platformy Azure. 
 3.  Przejdź do udziałów woluminów StorSimple. Wybierz udział, kliknij prawym przyciskiem myszy i wybierz **właściwości**. Należy pamiętać, uprawnienia udziału w obszarze **zabezpieczeń**. Te uprawnienia będą musieli ręcznie można zastosować do nowego udziału w późniejszym kroku.
 4.  W zależności od tego, czy używasz tego samego hosta systemu Windows Server lub innego kolejne kroki może się różnić.

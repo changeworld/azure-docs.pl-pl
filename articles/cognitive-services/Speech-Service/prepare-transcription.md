@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283342"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41987985"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
 
@@ -154,7 +154,7 @@ Dotyczy następujących normalizacji tekstu przed jego zaimportowaniem.
 *   Punkt dziesiętny powinien być ","i nie"."
 *   Separator godziny między godzinach i minutach powinien być ":"i nie".": 12:00 Uhr
 *   Skróty, takie jak "ca". nie są zastępowane. Zaleca się, że używasz pełnej postaci.
-*   Pięć głównych operatorów matematycznych zostaną usunięte: +, -, \*, /. Firma Microsoft zaleca zamianę literału formularza: plusa/minusa nieprawidłowo, geteilt.
+*   Cztery główne operatory matematyczne są usuwane: +, -, \*, /. Firma Microsoft zaleca zamianę literału formularza: plusa/minusa nieprawidłowo, geteilt.
 *   Operatory porównania (<>, =) — dotyczy gleich, kleiner als, grösser als
 *   Użyj jako ułamki, takie jak 3/4 w postaci programu word (na przykład "viertel drei" zamiast ¾)
 *   Zamień symbol — możliwość ciągłego dostosowywania formularza słowo "Euro"

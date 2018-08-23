@@ -1,6 +1,6 @@
 ---
-title: Link szablonów dla wdrożenia usługi Azure | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania szablonów połączonych w szablonie usługi Azure Resource Manager tworzenie rozwiązań moduły szablonu. Pokazuje, jak można przekazać wartości parametrów, określ plik parametrów i dynamicznie utworzone adresy URL.
+title: Link szablonów do wdrażania na platformie Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób użycia połączonymi szablonami w szablonie usługi Azure Resource Manager w celu utworzenia rozwiązania modułowe szablonu. Pokazuje, jak przekazać wartości parametrów, określ plik parametrów i dynamicznie utworzoną adresów URL.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 08/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cac3c8d3a1877ad7c93efc0954c2f07ecaa0a29
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602819"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42060221"
 ---
-# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączonego i zagnieżdżone szablony, w przypadku wdrażania zasobów platformy Azure
+# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
-Aby wdrożyć rozwiązanie, służy jednego szablonu lub szablonu głównego z wielu szablonów pokrewne. Powiązane szablon może być oddzielny plik, który jest powiązany z szablonu głównego lub szablonu, który jest zagnieżdżony w szablonie głównym.
+Aby wdrożyć swoje rozwiązanie, służy pojedynczy szablon lub szablon głównego przy użyciu wielu powiązanych szablonów. Pokrewne szablonu może być w oddzielnym pliku, który jest połączony z głównego szablonu lub szablon, który zostało zagnieżdżone w elemencie głównym szablonu.
 
-Dla małych i średnich rozwiązania jednego szablonu jest łatwiejsze do zrozumienia i obsługa. Widać wszystkich zasobów i wartości w jednym pliku. Dla zaawansowanych scenariuszy połączonego Szablony umożliwiają podział rozwiązania do elementów docelowych i ponowne użycie szablonów.
+Dla małych i średnich rozwiązania pojedynczy szablon jest łatwiejsze do zrozumienia i utrzymania. Można wyświetlić wszystkich zasobów i wartości w jednym pliku. W przypadku zaawansowanych scenariuszy połączone Szablony umożliwiają podzielenie rozwiązania do elementów docelowych i ponowne użycie szablonów.
 
-Podczas korzystania z połączonego szablonu, tworzenia szablonu głównego, który odbiera wartości parametrów podczas wdrażania. Główny szablon zawiera wszystkie połączone szablony i przekazuje wartości do tych szablonów, zgodnie z potrzebami.
+Korzystając z dołączonego szablonu, utworzysz głównego szablonu, który odbiera wartości parametrów podczas wdrażania. Szablon głównego zawiera połączonymi szablonami i przekazuje wartości do tych szablonów, zgodnie z potrzebami.
 
-## <a name="link-or-nest-a-template"></a>Połącz lub zagnieździć szablonu
+## <a name="link-or-nest-a-template"></a>Połącz lub zagnieżdżanie szablonu
 
-Aby utworzyć link do innego szablonu, Dodaj **wdrożeń** zasobów w szablonie głównym.
+Aby utworzyć link do innego szablonu, należy dodać **wdrożeń** zasobów do głównego szablonu.
 
 ```json
 "resources": [
@@ -47,11 +47,13 @@ Aby utworzyć link do innego szablonu, Dodaj **wdrożeń** zasobów w szablonie 
 ]
 ```
 
-Właściwości, które zapewniają zasobu wdrożenia różnić w zależności od czy łączenie z szablonem zewnętrznych lub zagnieżdżania szablonu wbudowany w szablonie głównym.
+Właściwości, które zapewniają zasobu wdrożenia różnią się zależnie od tego, czy łączenie z szablonem zewnętrznych lub zagnieżdżania szablonem wbudowanego w szablonie głównego.
 
-### <a name="nested-template"></a>Szablon zagnieżdżony
+Dla obu połączone i zagnieżdżone szablony, można użyć tylko [przyrostowe](deployment-modes.md) tryb wdrożenia.
 
-Aby zagnieździć szablonu w szablonie głównym, należy użyć **szablonu** właściwości i określ składni szablonu.
+### <a name="nested-template"></a>Zagnieżdżony szablon
+
+Aby zagnieździć szablonu w ramach głównego szablonu, należy użyć **szablonu** właściwości i określ składni szablonu.
 
 ```json
 "resources": [
@@ -82,15 +84,15 @@ Aby zagnieździć szablonu w szablonie głównym, należy użyć **szablonu** w�
 ```
 
 > [!NOTE]
-> Zagnieżdżone szablony nie można używać parametrów lub zmiennych, które są zdefiniowane w szablonie zagnieżdżonym. Można użyć parametrów i zmiennych z głównym szablonu. W powyższym przykładzie `[variables('storageName')]` pobiera wartość z głównym szablonu szablon zagnieżdżony. To ograniczenie nie ma zastosowania do szablonów zewnętrznych.
+> Zagnieżdżone szablony nie można używać parametry lub zmienne, które są zdefiniowane w obrębie zagnieżdżonych szablonów. Można użyć parametrów i zmiennych z głównego szablonu. W powyższym przykładzie `[variables('storageName')]` pobiera wartość z głównego szablonu, a nie zagnieżdżonych szablonów. To ograniczenie nie ma zastosowania do szablonów zewnętrznych.
 >
-> Nie można użyć `reference` w sekcji danych wyjściowych szablonu zagnieżdżonych funkcji. Aby zwrócić wartości dla wdrożonych zasobów w szablonie zagnieżdżonych, przekonwertować szablon zagnieżdżony połączonego szablonu.
+> Nie można użyć `reference` funkcji w danych wyjściowych części zagnieżdżonych szablonów. Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
 
-Szablon zagnieżdżony wymaga [takie same właściwości](resource-group-authoring-templates.md) jako standardowy szablon.
+Zagnieżdżony szablon wymaga [tymi samymi właściwościami](resource-group-authoring-templates.md) jako standardowego szablonu.
 
-### <a name="external-template-and-external-parameters"></a>Szablon zewnętrznych i parametry zewnętrznych
+### <a name="external-template-and-external-parameters"></a>Szablon zewnętrznej i zewnętrznego parametry
 
-Aby utworzyć łącze do zewnętrznego szablonu i pliku parametrów, należy użyć **templateLink** i **parametersLink**. Podczas łączenia z szablonu, usługi Resource Manager musi mieć możliwość do niego dostęp. Nie można określić plik lokalny lub plik, który jest dostępny tylko w sieci lokalnej. Możesz udostępniać wartość identyfikatora URI, która zawiera jedną **http** lub **https**. Jedną z opcji jest umieszczenie szablonu połączonego na koncie magazynu i użyj identyfikatora URI dla tego elementu.
+Łącza do zewnętrznych szablonu i pliku parametrów, użyj **templateLink** i **parametersLink**. Podczas ustanawiania połączenia szablonu usługi Resource Manager należy uzyskiwać do niego dostęp. Nie można określić w lokalnym pliku lub plików, która jest dostępna tylko w sieci lokalnej. Należy podać tylko wartości identyfikatora URI, który zawiera jedną **http** lub **https**. Jedną z opcji jest umieszczenie szablonu połączone w ramach konta magazynu, i użyj identyfikatora URI dla tego elementu.
 
 ```json
 "resources": [
@@ -113,11 +115,11 @@ Aby utworzyć łącze do zewnętrznego szablonu i pliku parametrów, należy uż
 ]
 ```
 
-Nie trzeba podać `contentVersion` właściwości dla parametrów lub szablonu. Jeśli nie podasz wartość wersja zawartości jest wdrażany bieżącą wersję szablonu. Jeśli Podaj wartość wersji zawartości musi być zgodna wersja w szablonie połączonego; w przeciwnym razie wdrażanie zakończy się niepowodzeniem z powodu błędu.
+Nie trzeba podać `contentVersion` właściwości dla szablonu lub parametrów. Jeśli nie podasz wartość wersja zawartości jest wdrażany bieżącą wersję szablonu. Jeżeli podasz wartość wersji zawartości, musi być zgodna z wersją w połączony szablon; w przeciwnym razie wdrożenie zakończy się niepowodzeniem z powodu błędu.
 
 ### <a name="external-template-and-inline-parameters"></a>Zewnętrzne parametrów szablonu i wbudowane
 
-Lub możesz podać parametr wbudowanego. Aby przekazać wartości z głównym szablonu do połączonego szablonu, należy użyć **parametry**.
+Ewentualnie możesz podać wbudowane parametru. Aby przekazać wartość z głównego szablonu do dołączonego szablonu, należy użyć **parametry**.
 
 ```json
 "resources": [
@@ -139,11 +141,11 @@ Lub możesz podać parametr wbudowanego. Aby przekazać wartości z głównym sz
 ]
 ```
 
-## <a name="using-variables-to-link-templates"></a>Użycie zmiennych połączenia szablonów
+## <a name="using-variables-to-link-templates"></a>Używanie zmiennych połączyć szablonów
 
-W poprzednich przykładach pokazano zakodowanych wartości adresu URL dla łączy szablonu. Takie podejście może działać w przypadku prostego szablonu, ale ta funkcja nie działa w przypadku pracy z dużym zestawem moduły szablonów. Zamiast tego można utworzyć zmienną statyczną, przechowującym bazowy adres URL dla szablonu głównego, a następnie dynamicznie utworzyć adresów URL dla szablonów połączonych z tym podstawowego adresu URL. Zaletą tej metody jest można łatwo przenosić lub rozwidlania szablonu, ponieważ musisz zmienić zmienna statyczna w szablonie głównym. Główny szablon przekazuje prawidłowe identyfikatory URI w szablonie rozłożone.
+W poprzednich przykładach pokazano zakodowanych wartości adresu URL dla łączy szablonu. Takie podejście może działać w przypadku prostego szablonu, ale nie działa dobrze, podczas pracy z szerokiej gamy modułowej szablonów. Zamiast tego można utworzyć zmienną statyczną, przechowujący podstawowy adres URL dla głównego szablonu, a następnie dynamicznie utworzyć adresy URL dla szablonów połączonych z tym podstawowy adres URL. Zaletą tego podejścia jest można łatwo przenosić lub rozwidlenie szablonu, ponieważ trzeba zmienić statycznych zmiennych z głównego szablonu. Szablon głównego przekazuje poprawne identyfikatory URI w całym rozkładany szablonu.
 
-Poniższy przykład przedstawia sposób Użyj podstawowego adresu URL, aby utworzyć dwa adresy URL dla szablonów połączonych (**sharedTemplateUrl** i **vmTemplate**).
+Poniższy przykład pokazuje, jak utworzyć dwa adresy URL dla połączonych szablonów przy użyciu podstawowego adresu URL (**sharedTemplateUrl** i **vmTemplate**).
 
 ```json
 "variables": {
@@ -153,7 +155,7 @@ Poniższy przykład przedstawia sposób Użyj podstawowego adresu URL, aby utwor
 }
 ```
 
-Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. Ta metoda jest przydatna zmiany lokalizacji szablonu lub uniknąć twardego kodowania adresów URL w pliku szablonu. Właściwość templateLink jest zwracany wyłącznie w trakcie łączenia ze zdalnego szablonu przy użyciu adresu URL. Jeśli używasz lokalnych szablonu tej właściwości nie jest dostępna.
+Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. To podejście jest przydatne w przypadku zmiany lokalizacji szablonu, lub gdy chcesz uniknąć ciężko kodowania adresów URL w pliku szablonu. Właściwości templateLink jest zwracany tylko wtedy, w trakcie łączenia ze zdalnym szablonu przy użyciu adresu URL. Jeśli używasz lokalnego szablonu, ta właściwość nie jest dostępna.
 
 ```json
 "variables": {
@@ -161,11 +163,11 @@ Można również użyć [deployment()](resource-group-template-functions-deploym
 }
 ```
 
-## <a name="get-values-from-linked-template"></a>Pobiera wartości z połączonych szablonu
+## <a name="get-values-from-linked-template"></a>Pobierz wartości z połączonych szablonu
 
-Można pobrać wartości danych wyjściowych z połączonego szablonu, pobrać wartość właściwości składnię: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
+Aby uzyskać wartość wyjściową dołączonego szablonu, pobrać wartość właściwości przy użyciu składni, takich jak: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
 
-W poniższych przykładach pokazano sposób odwoływania się do połączonego szablonu i pobrać wartości danych wyjściowych. Szablon połączonego zwraca komunikat proste.
+Poniższe przykłady pokazują, jak odwoływać się do dołączonego szablonu i pobierania wartości danych wyjściowych. Połączony szablon zwróci komunikat proste.
 
 ```json
 {
@@ -183,7 +185,7 @@ W poniższych przykładach pokazano sposób odwoływania się do połączonego s
 }
 ```
 
-Główne szablon wdraża połączonego szablonu i pobiera zwracanej wartości. Zwróć uwagę, odwołuje się do zasobu wdrożenia według nazwy, czy używać nazwy właściwości zwrócony przez szablon połączony.
+Główny szablon wdraża połączony szablon i pobiera zwracanej wartości. Należy zauważyć, że odwołuje się do zasobu wdrożenia według nazwy, przy czym nazwa właściwości zwrócony przez szablon połączone.
 
 ```json
 {
@@ -214,9 +216,9 @@ Główne szablon wdraża połączonego szablonu i pobiera zwracanej wartości. Z
 }
 ```
 
-Podobnie jak inne typy zasobów można ustawić zależności między połączonego szablonu i innych zasobów. W związku z tym inne zasoby potrzebują wartość wyjściowa szablonu połączone, upewnij się, że połączonego szablonu jest wdrożyć przed ich. Lub, gdy szablon połączonego opiera się na inne zasoby, upewnij się, że inne zasoby są wdrażane przed połączonego szablonu.
+Podobnie jak inne typy zasobów można ustawić zależności między połączony szablon i innych zasobów. W związku z tym gdy inne zasoby wymagają wartość wyjściową z dołączonego szablonu, upewnij się, że wdrożono połączony szablon przed ich. Lub, gdy połączony szablon opiera się na inne zasoby, sprawdź, czy innych zasobów wdrożonych przed dołączonego szablonu.
 
-W poniższym przykładzie przedstawiono szablon, który wdraża publicznego adresu IP i zwraca identyfikator zasobu:
+Poniższy przykład przedstawia szablon, który wdraża publiczny adres IP i zwraca identyfikator zasobu:
 
 ```json
 {
@@ -251,7 +253,7 @@ W poniższym przykładzie przedstawiono szablon, który wdraża publicznego adre
 }
 ```
 
-Aby użyć publiczny adres IP z powyższej szablonu podczas wdrażania usługi równoważenia obciążenia, łącza do szablonu, a następnie dodaj zależność zasobu wdrożenia. Publiczny adres IP modułu równoważenia obciążenia ma ustawioną wartość wyjściowa z połączonego szablonu.
+Aby użyć publiczny adres IP z poprzedniego szablonu podczas wdrażania modułu równoważenia obciążenia, łącza do szablonu i dodać zależność od zasobu wdrażania. Publiczny adres IP modułu równoważenia obciążenia jest równa wartości danych wyjściowych z dołączonego szablonu.
 
 ```json
 {
@@ -318,11 +320,11 @@ Aby użyć publiczny adres IP z powyższej szablonu podczas wdrażania usługi r
 
 ## <a name="linked-and-nested-templates-in-deployment-history"></a>Połączone i zagnieżdżone szablony w historii wdrożenia
 
-Menedżer zasobów przetwarza każdego szablonu jako osobne wdrożenia w historii wdrożenia. W związku z tym głównym szablonu z trzech szablonów połączonych lub zagnieżdżony pojawia się w historii wdrożenia jako:
+Usługi Resource Manager przetwarza każdy szablon jako osobne wdrożenia w historii wdrażania. W związku z tym głównego szablonu za pomocą trzech połączonych lub zagnieżdżonych szablonów pojawia się w historii wdrożenia jako:
 
 ![Historia wdrożenia](./media/resource-group-linked-templates/deployment-history.png)
 
-Te wpisy osobne w historii służy do pobierania wartości danych wyjściowych po wdrożeniu. Następujący szablon tworzy publiczny adres IP i wyświetla adres IP:
+Te oddzielne wpisy w historii służy do pobierania wartości danych wyjściowych po wdrożeniu. Następujący szablon tworzy publiczny adres IP, a także generuje adres IP:
 
 ```json
 {
@@ -360,7 +362,7 @@ Te wpisy osobne w historii służy do pobierania wartości danych wyjściowych p
 }
 ```
 
-Poniższe łącza szablonu do poprzedniego szablonu. Tworzy trzy publicznych adresów IP.
+Poniższe linki szablonu, aby Powyższy szablon. Tworzy trzy publicznych adresów IP.
 
 ```json
 {
@@ -393,7 +395,7 @@ Poniższe łącza szablonu do poprzedniego szablonu. Tworzy trzy publicznych adr
 }
 ```
 
-Po wdrożeniu można pobrać wartości danych wyjściowych z następujący skrypt programu PowerShell:
+Po wdrożeniu możesz pobrać wartości danych wyjściowych za pomocą następującego skryptu programu PowerShell:
 
 ```powershell
 $loopCount = 3
@@ -405,7 +407,7 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Lub skryptu wiersza polecenia platformy Azure:
+Lub skrypt interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 for i in 0 1 2;
@@ -417,13 +419,13 @@ do
 done
 ```
 
-## <a name="securing-an-external-template"></a>Zabezpieczanie zewnętrznych szablonu
+## <a name="securing-an-external-template"></a>Zabezpieczanie zewnętrznego szablonu
 
-Mimo że połączonego szablonu musi być dostępny zewnętrznie, nie musi być ogólnie dostępne publicznie. Możesz dodać do szablonu na konto magazynu prywatnego, który jest dostępny tylko dla właściciela konta magazynu. Następnie można utworzyć token sygnatury dostępu Współdzielonego dostępu współdzielonego, aby umożliwić dostęp podczas wdrażania. Identyfikator URI dla połączonych szablonu należy dodać tokenu sygnatury dostępu Współdzielonego. Nawet jeśli token jest przekazywany jako bezpieczny ciąg, identyfikator URI szablonu połączone, wraz z tokenem sygnatury dostępu Współdzielonego są rejestrowane w operacji wdrażania. W celu ograniczenia narażenia, ustawienia okresu ważności tokenu.
+Mimo że dołączonego szablonu musi być dostępny zewnętrznie, nie musi być ogólnie dostępne publicznie. Szablon można dodać do konta magazynu prywatnego, który jest dostępny dla właściciela konta magazynu. Następnie należy utworzyć token sygnatury (SAS) dostępu współdzielonego, aby umożliwić dostęp podczas wdrażania. Token sygnatury dostępu Współdzielonego możesz dodać do identyfikatora URI do dołączonego szablonu. Nawet jeśli token jest przekazywany jako bezpieczny ciąg, identyfikator URI szablonu połączony, w tym token sygnatury dostępu Współdzielonego jest rejestrowany w operacji wdrażania. Aby ograniczyć zagrożenia, należy ustawić wygaśnięcia tokenu.
 
-Można też maksymalnie dostęp za pośrednictwem tokenu sygnatury dostępu Współdzielonego pliku parametrów.
+Plik parametrów również może być ograniczona do dostępu za pomocą tokenu sygnatury dostępu Współdzielonego.
 
-Poniższy przykład przedstawia sposób przekazywania tokenu sygnatury dostępu Współdzielonego w trakcie łączenia ze szablonu:
+Poniższy przykład pokazuje, jak przekazać token sygnatury dostępu Współdzielonego podczas łączenia do szablonu:
 
 ```json
 {
@@ -451,7 +453,7 @@ Poniższy przykład przedstawia sposób przekazywania tokenu sygnatury dostępu 
 }
 ```
 
-W programie PowerShell możesz uzyskać token dla kontenera i wdrażanie szablonów za pomocą następujących poleceń. Zwróć uwagę, że **containerSasToken** parametr jest zdefiniowany w szablonie. Nie jest parametrem w **AzureRmResourceGroupDeployment nowy** polecenia.
+W programie PowerShell możesz uzyskać token dla kontenera i wdrażanie szablonów za pomocą następujących poleceń. Należy zauważyć, że **containerSasToken** parametru jest zdefiniowane w szablonie. Nie jest parametrem w **New-AzureRmResourceGroupDeployment** polecenia.
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -460,7 +462,7 @@ $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Interfejsu wiersza polecenia Azure służy do pobrania tokenu dla kontenera i wdrażanie szablonów z następującym kodem:
+W interfejsie wiersza polecenia platformy Azure uzyskać token dla kontenera i wdrażania szablonów przy użyciu następującego kodu:
 
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -483,18 +485,18 @@ parameter='{"containerSasToken":{"value":"?'$token'"}}'
 az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
-## <a name="example-templates"></a>Przykład szablonów
+## <a name="example-templates"></a>Przykładowe szablony
 
-Poniższe przykłady przedstawiają typowe zastosowania szablonów połączonych.
+W poniższych przykładach pokazano typowych zastosowań połączonymi szablonami.
 
-|Główny szablonu  |Połączone szablonu |Opis  |
+|Szablon głównego  |Połączony szablon |Opis  |
 |---------|---------| ---------|
-|[Witaj, świecie](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Zwraca ciąg z połączonego szablonu. |
-|[Moduł równoważenia obciążenia z publicznym adresem IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Zwraca publiczny adres IP z szablonów połączonych i ustawia tę wartość w usłudze równoważenia obciążenia. |
-|[Wiele adresów IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Tworzy kilka publicznych adresów IP w szablonie połączony.  |
+|[Witaj, świecie](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[połączony szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Zwraca ciąg z dołączonego szablonu. |
+|[Load Balancer z publicznym adresem IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[połączony szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Zwraca publiczny adres IP z dołączonego szablonu i ustawia tę wartość w module równoważenia obciążenia. |
+|[Wiele adresów IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [połączony szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Tworzy kilka publicznych adresów IP dołączonego szablonu.  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat definiowania kolejność wdrażania zasobów, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md).
-* Aby dowiedzieć się, jak zdefiniować jeden zasób, ale utworzenia wielu wystąpień, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md).
-* Aby uzyskać instrukcje na temat ustawiania szablonu na koncie magazynu i generowania tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](resource-group-template-deploy.md) lub [wdrożenie zasobów z szablonami usługi Resource Manager i interfejsu wiersza polecenia Azure](resource-group-template-deploy-cli.md).
+* Aby dowiedzieć się, jak zdefiniować jeden zasób, lecz wiele wystąpień, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
+* Aby uzyskać instrukcje dotyczące konfigurowania szablonu w ramach konta magazynu i generowania tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](resource-group-template-deploy.md) lub [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i Interfejs wiersza polecenia Azure](resource-group-template-deploy-cli.md).

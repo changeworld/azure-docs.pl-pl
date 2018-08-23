@@ -11,20 +11,18 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247214"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058489"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
-W tym artykule dowiesz się o metodach dotyczące migracji programu SQL Server 2005 lub nowszej wersji Azure SQL Database Managed Instance (wersja zapoznawcza). 
+W tym artykule dowiesz się o metodach migracji programu SQL Server 2005 lub nowszych wersji do [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md) (wersja zapoznawcza).
 
-Wystąpienie zarządzane usługi SQL Database to rozszerzenie istniejącej usługi SQL Database, które zapewnia trzecią opcję wdrożenia (poza pojedynczymi bazami danych i pulami elastycznymi).  Ona zaprojektowana w celu umożliwienia bazy danych lift-and-shift do w pełni zarządzaną usługą PaaS, bez zmieniania projektu aplikacji. Wystąpienie zarządzane usługi SQL Database zapewnia wysoką zgodność z lokalnym modelem programowania programu SQL Server oraz gotową do użycia obsługę znacznej większości funkcji programu SQL Server, a także towarzyszących narzędzi i usług.
-
-Na wysokim poziomie proces migracji aplikacji wygląda następująco:
+Na wysokim poziomie proces migracji bazy danych wygląda następująco:
 
 ![Proces migracji](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -41,9 +39,9 @@ Na wysokim poziomie proces migracji aplikacji wygląda następująco:
 
 Najpierw Ustal, czy wystąpienie zarządzane jest zgodny z wymagania bazy danych aplikacji. Wystąpienie zarządzane jest zaprojektowany w celu zapewnienia łatwego lift- and -shift migracji dla większości istniejących aplikacji, które używają programu SQL Server w środowisku lokalnym lub na maszynach wirtualnych. Jednak czasami może być wymagane funkcje lub możliwości, które nie są jeszcze obsługiwane i kosztów wdrożenia obejście tego problemu jest zbyt wysokie. 
 
-Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Większość problemów z blokowaniem, co uniemożliwia migracji do usługi Azure SQL Database zostały usunięte z wystąpieniem zarządzanym. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
+Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [różnice między pojedyncze bazy danych SQL Azure i wystąpienia zarządzanego](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym ponieważ większość blokowania problemy, zapobiegając migracji do Usługa Azure SQL Database zostały usunięte z wystąpieniem zarządzanym. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
 
-Jednakże istnieją przypadki, gdy należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
+W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwane w wystąpieniu zarządzanym usługi SQL Azure, może być konieczne należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
 
 - W razie potrzeby bezpośredniego dostępu do systemu operacyjnego lub systemu plików, na przykład instalowanie innych firm lub niestandardowych agentów na tej samej maszyny wirtualnej z programem SQL Server.
 - W przypadku ścisłej zależności od funkcji, które nadal nie są obsługiwane, takich jak typu FileStream / FileTable, PolyBase i transakcje dla wielu wystąpień.
@@ -52,13 +50,13 @@ Jednakże istnieją przypadki, gdy należy wziąć pod uwagę alternatywnych opc
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Wdrażanie do optymalnego rozmiaru wystąpienia zarządzanego
 
-Wystąpienie zarządzane jest przeznaczony dla lokalnych obciążeń, które planuje przenieść do chmury. Wprowadza nowy model zakupu, który zapewnia większą elastyczność przy wyborze odpowiedniego poziomu zasobów dla obciążeń. W środowisku lokalnym masz prawdopodobnie przyzwyczajeni do ustalania rozmiaru te obciążenia za pomocą rdzeni fizycznych. Nowy model zakupu dla wystąpienia zarządzanego opiera się na rdzeni wirtualnych lub "rdzeni wirtualnych," przy użyciu dodatkowego miejsca do magazynowania i we/wy dostępne oddzielnie. Model rdzenia wirtualnego jest prostszy sposób, aby poznać wymagania dotyczące obliczeń w chmurze, a nie za środowiska lokalnego już dziś. Ten nowy model umożliwia utworzenie odpowiedniego rozmiaru docelowego środowiska w chmurze.
+Wystąpienie zarządzane jest przeznaczony dla lokalnych obciążeń, które planuje przenieść do chmury. Wprowadza [nowy model zakupu](sql-database-service-tiers-vcore.md) , zapewnia większą elastyczność przy wyborze odpowiedniego poziomu zasobów dla obciążeń. W środowisku lokalnym masz prawdopodobnie przyzwyczajeni do ustalania rozmiaru te obciążenia za pomocą rdzeni fizycznych i przepustowość we/wy. Nowy model zakupu dla wystąpienia zarządzanego opiera się na rdzeni wirtualnych lub "rdzeni wirtualnych," przy użyciu dodatkowego miejsca do magazynowania i we/wy dostępne oddzielnie. Model rdzenia wirtualnego jest prostszy sposób, aby poznać wymagania dotyczące obliczeń w chmurze, a nie za środowiska lokalnego już dziś. Ten nowy model umożliwia utworzenie odpowiedniego rozmiaru docelowego środowiska w chmurze.
 
-Możesz wybrać obliczeniowych i zasobów magazynowania we wdrożeniu czasu, a następnie zmienić je później bez przerwy w działaniu aplikacji.
+Można wybrać obliczeniowych i zasobów magazynowania we wdrożeniu czasu, a następnie zmienić je później bez przerwy w działaniu swojej aplikacji za pomocą [witryny Azure portal](sql-database-scale-resources.md):
 
 ![ustalanie rozmiaru wystąpienia zarządzanego](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-Aby dowiedzieć się, jak utworzyć infrastrukturę sieci wirtualnej i wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-create-tutorial-portal.md).
+Aby dowiedzieć się, jak utworzyć infrastrukturę sieci wirtualnej i wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
 > Ważne jest, aby zachować swoje docelowej sieci wirtualnej i podsieci zawsze zgodnie z [wymagania dotyczące zarządzanych sieci Wirtualnej wystąpienia](sql-database-managed-instance-vnet-configuration.md#requirements). Wszelkie niezgodności mogą uniemożliwić tworzenie nowych wystąpień lub używanie tych systemów, które zostały już utworzone.
@@ -77,7 +75,7 @@ Wystąpienie zarządzane to w pełni zarządzana usługa, która umożliwia dele
 Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (obecnie są to tylko migracja obsługiwanych metod):
 
 - Azure Database Migration Service — migracji prawie bez przestojów
-- Natywne przywracania z adresu URL — używa natywne kopie zapasowe z programu SQL Server i wymaga pewien Przestój
+- Natywne `RESTORE DATABASE FROM URL` - używa natywne kopie zapasowe z programu SQL Server i wymaga pewnych przestojów.
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -105,7 +103,7 @@ Poniższa tabela zawiera więcej informacji dotyczących metod, których można 
 |Przywróć z usługi Azure Storage do wystąpienia zarządzanego|[Przywróć z adresu URL przy użyciu POŚWIADCZEŃ sygnatury dostępu Współdzielonego](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - W przypadku migracji bazy danych chronionej przez funkcję [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do wystąpienia zarządzanego usługi Azure SQL przy użyciu natywnej opcji przywracania, odpowiedni certyfikat z lokalnego programu SQL Server lub programu SQL Server IaaS musi zostać migrowany przed przywróceniem bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
+> - W przypadku migracji bazy danych chronionej przez funkcję [Transparent Data Encryption](transparent-data-encryption-azure-sql.md) do wystąpienia zarządzanego usługi Azure SQL przy użyciu natywnej opcji przywracania, odpowiedni certyfikat z lokalnego programu SQL Server lub programu SQL Server IaaS musi zostać migrowany przed przywróceniem bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Przywracanie bazy danych systemu nie jest obsługiwane. Aby przeprowadzić migrację obiektów na poziomie wystąpienia (przechowywane w bazach danych master i msdb), zaleca się ich skryptu i uruchamianie skryptów T-SQL w wystąpieniu docelowym.
 
 Aby uzyskać pełnym samouczku dotyczącym zawierającego, przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego przy użyciu poświadczeń sygnatury dostępu Współdzielonego, zobacz [Przywracanie z kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-restore-from-backup-tutorial.md).
@@ -121,11 +119,10 @@ Ponadto nie trzeba już martwić się o Konfigurowanie wysokiej dostępności ja
 
 Do zwiększenia poziomu zabezpieczeń, należy rozważyć zastosowanie niektórych funkcji, które są dostępne:
 - Uwierzytelnianie usługi Azure Active Directory na poziomie bazy danych
-- Inspekcja i wykrywanie zagrożeń, aby monitorować działania
-- Kontrolowanie dostępu do danych poufnych i uprzywilejowanego ([zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) i [dynamiczne maskowanie danych](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)).
+- Użyj [zaawansowane funkcje zabezpieczeń](sql-database-security-overview.md) takich jak [inspekcji](sql-database-managed-instance-auditing.md), [wykrywania zagrożeń](sql-advanced-threat-protection.md), [zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security), i [dynamiczne Maskowanie danych](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ) do zabezpieczenia Twojego wystąpienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).
-- Aby uzyskać samouczek, który obejmuje Przywracanie z kopii zapasowej, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-create-tutorial-portal.md).
+- Aby uzyskać samouczek, który obejmuje Przywracanie z kopii zapasowej, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 - Samouczek przedstawiający podczas migracji przy użyciu usługi DMS zobacz [migracji lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).  

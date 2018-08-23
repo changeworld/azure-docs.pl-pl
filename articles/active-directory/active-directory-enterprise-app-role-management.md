@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989915"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054570"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurowanie oświadczenia roli wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -67,6 +67,9 @@ Jeśli aplikacja oczekuje ról niestandardowych, które zostaną przekazane do o
     c. Wybierz następujące uprawnienia z listy (jeśli jeszcze nie masz tych) i wybierz pozycję **zmodyfikować uprawnienia**.
 
       ![Lista uprawnień i przycisk "Zmodyfikuj uprawnienia"](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > Rola Administrator aplikacji w chmurze i Administrator aplikacji nie będzie działać w tym scenariuszu, ponieważ firma Microsoft musi mieć uprawnienia administratora globalnego do katalogu odczytu i zapisu.
 
     d. Zaakceptuj zgody. Zalogowano Cię do systemu ponownie.
 
@@ -165,7 +168,7 @@ Jeśli aplikacja oczekuje ról niestandardowych, które zostaną przekazane do o
 
     d. Pozostaw **Namespace** puste pole.
 
-    e. Wybierz **Ok**.
+    e. Wybierz przycisk **OK**.
 
 10. Aby przetestować aplikację w jednokrotne logowanie inicjowane przez dostawcę tożsamości, zaloguj się do [panelu dostępu](https://myapps.microsoft.com) i wybrać kafelka aplikacji. W tokenie SAML powinny być widoczne wszystkie przypisane role dla użytkownika o nazwie oświadczenia, które wyrażono.
 

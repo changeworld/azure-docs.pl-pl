@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f9d962b96df760d1382439abcd80eb21fef62128
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6cf7f35e60502d0e21ffa2b777f1700a57add965
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531164"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055093"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -215,7 +215,6 @@ Gdy już wiesz jak zarządzać kontem magazynu za pomocą programu PowerShell s�
 Interfejs API usługi Azure Cosmos DB Table zapewnia funkcje premium usługi table storage, takie jak gotowa do użycia funkcja dystrybucji globalnej, odczytów z małymi opóźnieniami i zapisy, automatyczne indeksowanie pomocnicze i dedykowanej przepływności. 
 
 * Aby uzyskać więcej informacji, zobacz [interfejsu API tabeli usługi Azure Cosmos DB](../../cosmos-db/table-introduction.md). 
-* Aby dowiedzieć się, jak wykonywać operacje interfejsu API tabeli usługi Azure Cosmos DB przy użyciu programu PowerShell, zobacz [operacji wykonywania usługi Azure Cosmos DB interfejsu API tabel przy użyciu programu PowerShell](../../cosmos-db/table-powershell.md).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Wdrożenia chmury niezależnie od platformy Azure
 

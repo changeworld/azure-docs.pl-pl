@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9dda6d45caf69734eb135779c8bac00fea721efd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 17029f51be9fed8fc36c5f919ece84acbf0461d9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901062"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42061489"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Pule agentów platformy DC/OS usługi kontenera platformy Azure
 Klastry DC/OS w usłudze Azure Container Service zawiera węzły agenta w dwie pule, pulę publicznych i prywatnych puli. Aplikację można wdrożyć do jednej puli wpływu na dostępność między komputerami w usłudze kontenera. Maszyny można połączenie z Internetem (publicznego) lub przechowywane wewnętrzny (prywatny). Ten artykuł zawiera krótkie omówienie, dlatego istnieją pule prywatnych i publicznych.
@@ -24,7 +24,7 @@ Klastry DC/OS w usłudze Azure Container Service zawiera węzły agenta w dwie p
 
 * **Agentów publicznych**: węzły agenta publicznego uruchamiać aplikacje platformy DC/OS i usługi za pomocą publicznie dostępnej sieci. 
 
-Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych DC/OS, zobacz [dokumentacji rozwiązania DC/OS](https://dcos.io/docs/1.7/administration/securing-your-cluster/).
+Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych DC/OS, zobacz [dokumentacji rozwiązania DC/OS](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
 
 ## <a name="deploy-agent-pools"></a>Pule agentów wdrażania
 

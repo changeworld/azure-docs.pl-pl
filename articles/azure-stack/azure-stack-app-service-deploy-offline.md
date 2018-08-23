@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie usługi aplikacji w środowisku w trybie offline w stosie Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe instrukcje dotyczące wdrażania usługi aplikacji w środowisku bez połączenia stosu Azure zabezpieczonej przez usługi AD FS.
+title: Wdrażanie usługi App Service w środowisku offline w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Szczegółowe wskazówki na temat wdrażania usługi App Service w środowisku bez połączenia usługi Azure Stack zabezpieczone przez usługi AD FS.
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -12,192 +12,202 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604288"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060255"
 ---
-# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcy zasobów usługi aplikacji w środowisku bez połączenia stosu Azure zabezpieczonej przez usługi AD FS
+# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service 1.2.
+> Dotyczą aktualizacji 1807 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.3.
 >
 >
 
-Postępując zgodnie z instrukcjami w tym artykule, można zainstalować [dostawcy zasobów usługi aplikacji](azure-stack-app-service-overview.md) do środowiska Azure stosu:
+Postępując zgodnie z instrukcjami w tym artykule, możesz zainstalować [dostawcy zasobów usługi App Service](azure-stack-app-service-overview.md) do środowiska usługi Azure Stack, który jest:
 
 - nie jest połączony z Internetem
 - zabezpieczone przez usługi Active Directory Federation Services (AD FS).
 
-Aby dodać dostawcę zasobów usługi aplikacji do wdrożenia stosu Azure w trybie offline, należy wykonać te zadania najwyższego poziomu:
+Aby dodać dostawcę zasobów usługi App Service do wdrożenia usługi Azure Stack w trybie offline, należy wykonać te zadania najwyższego poziomu:
 
-1. Zakończenie [wstępnie wymagane kroki](azure-stack-app-service-before-you-get-started.md) (takich jak zakupienia certyfikatów, może to zająć kilka dni otrzymasz).
-2. [Pobierać i wyodrębniać pliki instalacyjne i Pomocnika](azure-stack-app-service-before-you-get-started.md) maszynie połączony z Internetem.
-3. Tworzenie pakietu instalacji w trybie offline.
+1. Wykonaj [wstępnie wymagane kroki](azure-stack-app-service-before-you-get-started.md) (takich jak zakupienia certyfikatów, które może potrwać kilka dni, aby otrzymać).
+2. [Pobierz i Wyodrębnij pliki instalacyjne i Pomocnika](azure-stack-app-service-before-you-get-started.md) maszyną połączony z Internetem.
+3. Utwórz pakiet instalacyjny offline.
 4. Uruchom plik Instalatora appservice.exe.
 
-## <a name="create-an-offline-installation-package"></a>Tworzenie pakietu instalacji w trybie offline
+## <a name="create-an-offline-installation-package"></a>Utwórz pakiet instalacyjny offline
 
-Wdrożenie usługi aplikacji w środowisku bez połączenia, należy najpierw utworzyć pakiet instalacji w trybie offline na komputerze, na którym jest połączony z Internetem.
+Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpierw utworzyć pakiet instalacyjny offline na komputerze, na którym jest połączony z Internetem.
 
 1. Uruchom Instalatora AppService.exe na komputerze, na którym jest połączony z Internetem.
 
-2. Kliknij przycisk **zaawansowane** > **pakietu instalacyjnego w trybie offline Utwórz**.
+2. Kliknij przycisk **zaawansowane** > **Utwórz pakiet instalacyjny offline**.
 
-    ![Instalator usługi aplikacji][1]
+    ![Instalator usługi App Service][1]
 
-3. Instalator usługi aplikacji — tworzy pakiet instalacji w trybie offline i wyświetla ścieżkę do niego. Możesz kliknąć **Otwórz folder** aby otworzyć folder w sieci Eksploratora plików.
+3. Instalator usługi App Service tworzy pakiet instalacyjny offline i zawiera ścieżkę do niego. Możesz kliknąć pozycję **Otwórz folder** aby otworzyć folder w Eksploratorze plików.
 
-    ![Instalator usługi aplikacji](media/azure-stack-app-service-deploy-offline/image02.png)
+    ![Instalator usługi App Service](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. Skopiuj Instalatora (AppService.exe) i pakietu instalacyjnego w trybie offline do komputera-hosta Azure stosu.
+4. Skopiuj pliki Instalatora (AppService.exe) i pakiet instalacyjny offline do komputera-hosta usługi Azure Stack.
 
-## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>Zakończenie instalacji w trybie offline usługi aplikacji Azure stosu
+## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>Ukończenie instalacji usługi App Service w usłudze Azure Stack w trybie offline
 
-1. Uruchom appservice.exe jako administrator na komputerze, który można osiągnąć punktu końcowego zarządzania zasobami Azure stosu administratora platformy Azure.
+1. Uruchom appservice.exe jako administrator z komputera, który można osiągnąć punktu końcowego usługi Azure Stack administratora usługi Azure Resource Management.
 
-2. Kliknij przycisk **zaawansowane** > **ukończyć instalację w trybie offline**.
+2. Kliknij przycisk **zaawansowane** > **ukończenie instalacji w trybie offline**.
 
-    ![Instalator usługi aplikacji][2]
+    ![Instalator usługi App Service][2]
 
-3. Przejdź do lokalizacji pakietu instalacyjnego w trybie offline, została wcześniej utworzona, a następnie kliknij przycisk **dalej**.
+3. Przejdź do lokalizacji pakietu instalacyjnego offline, została wcześniej utworzona, a następnie kliknij przycisk **dalej**.
 
-    ![Instalator usługi aplikacji](media/azure-stack-app-service-deploy-offline/image04.png)
+    ![Instalator usługi App Service](media/azure-stack-app-service-deploy-offline/image04.png)
 
-4. Przejrzyj i zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft, a następnie kliknij przycisk **dalej**.
+4. Przejrzyj i zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft, a następnie kliknij **dalej**.
 
 5. Przejrzyj i zaakceptuj postanowienia licencyjne innych firm, a następnie kliknij **dalej**.
 
-6. Upewnij się, że informacje o konfiguracji chmury usługi aplikacji jest prawidłowa. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure stosu Development Kit, można zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowany opcje podczas wdrażania usługi Azure stos lub są wdrażane na zintegrowany system, należy edytować wartości w tym oknie, aby odzwierciedlić, który. Na przykład jeśli używasz mycloud.com sufiks domeny punktu końcowego Azure stosu dzierżawy usługi Azure Resource Manager musi zmienić do zarządzania. <region>. mycloud.com. Po upewnieniu się informacje, kliknij przycisk **dalej**.
+6. Upewnij się, że informacje o konfiguracji w chmurze usługi App Service jest poprawna. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure Stack Development Kit, możesz zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowano opcje po wdrożeniu usługi Azure Stack lub są wdrażane na zintegrowany system, należy edytować wartości w tym oknie, w celu odzwierciedlenia zmiany. Na przykład jeśli używasz mycloud.com sufiksu domeny, punkt końcowy usługi Azure Stack dzierżawy usługi Azure Resource Manager zmienić do zarządzania. <region>. mycloud.com. Po upewnieniu się informacje, kliknij przycisk **dalej**.
 
-    ![Instalator usługi aplikacji][3]
+    ![Instalator usługi App Service][3]
 
 7. Na następnej stronie:
-    1. Kliknij przycisk **Connect** znajdujący się obok **subskrypcji platformy Azure stosu** pole.
-        - Podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **logowania**.
-    2. W **subskrypcji platformy Azure stosu** wybierz opcję **domyślny dostawca subskrypcji**.
+    1. Kliknij przycisk **Connect** znajdujący się obok **usługi Azure Stack subskrypcje** pole.
+        - Podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
+    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
     
     > [!NOTE]
-    > Usługi aplikacji można wdrożyć tylko do **domyślny dostawca subskrypcji** w tej chwili.  W przyszłej aktualizacji usługi aplikacji — zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w 1804 stosu Azure i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
+    > Usługa App Service można wdrażać tylko w **domyślne subskrypcję dostawcy** w tej chwili.  W przyszłej aktualizacji usługi App Service zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w usłudze Azure Stack w wersji 1804 i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
     >
     >
     
-    3. W **lokalizacji stosu Azure** wybierz lokalizację, do której odnosi się do regionu jest wdrażany do. Na przykład wybierz **lokalnego** Jeśli wdrażanie Azure stosu Development Kit.
+    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
     4. Kliknij przycisk **Dalej**.
 
-    ![Instalator usługi aplikacji][4]
+    ![Instalator usługi App Service][4]
 
-8. Masz teraz możliwość wdrożenia do istniejącej sieci wirtualnej, zgodnie z konfiguracją kroków [tutaj](azure-stack-app-service-before-you-get-started.md#virtual-network), lub zezwolić Instalator usługi aplikacji do tworzenia sieci wirtualnej i skojarzonych podsieci.
-    1. Wybierz **Utwórz sieć wirtualną przy użyciu ustawień domyślnych**, zaakceptuj ustawienia domyślne, a następnie kliknij przycisk **dalej**, lub;
+8. Masz teraz możliwość wdrożenia do istniejącej sieci wirtualnej, zgodnie z konfiguracją kroki [tutaj](azure-stack-app-service-before-you-get-started.md#virtual-network), lub zezwolić Instalatora usługi App Service, aby utworzyć sieć wirtualną i skojarzone podsieci.
+    1. Wybierz **Utwórz sieć wirtualną z ustawieniami domyślnymi**, zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**, lub;
     2. Wybierz **użyć istniejącej sieci wirtualnej i podsieci**.
         1. Wybierz **grupy zasobów** zawierający sieci wirtualnej.
-        2. Wybierz poprawny **sieci wirtualnej** nazwę chcesz wdrożyć w;
-        3. Wybierz poprawny **podsieci** wartości dla każdej podsieci roli wymagane;
+        2. Wybierz prawidłowy **sieci wirtualnej** nazwy, które chcesz wdrożyć w;
+        3. Wybierz poprawnego **podsieci** wartości dla każdej z tych podsieci roli wymagane;
         4. Kliknij przycisk **Dalej**
 
-    ![Instalator usługi aplikacji][5]
+    ![Instalator usługi App Service][5]
 
-9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików korzystać w pełni kwalifikowana nazwa domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites
+9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików należy użyć w pełni kwalifikowaną nazwę domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites
 
     > [!NOTE]
-    > Instalator podejmuje próbę Testuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc nawiązać połączenia z udziałem plików i wyświetla ostrzeżenie, pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików i Kontynuuj, jeśli są poprawne.
+    > Instalator podejmuje próbę przetestuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej, Instalator nie może być możliwe nawiązanie połączenia z udziałem plików i wyświetla ostrzeżenie, pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików, a następnie kontynuuj, jeśli są poprawne.
     >
     >
 
-   ![Instalator usługi aplikacji][8]
+   ![Instalator usługi App Service][8]
 
 10. Na następnej stronie:
-    1. W **identyfikator aplikacji tożsamości** wprowadź identyfikator GUID dla aplikacji, używane dla tożsamości (z usługi Azure AD).
-    2. W **pliku certyfikatu tożsamości aplikacji** wprowadź (lub przejdź do) lokalizację pliku certyfikatu.
-    3. W **hasło certyfikatu tożsamości aplikacji** wprowadź hasło dla certyfikatu. To hasło jest wprowadzone należy wziąć pod uwagę, gdy skrypt jest używany do tworzenia certyfikatów.
+    1. W **identyfikator aplikacji tożsamości** wprowadź identyfikator GUID dla aplikacji, używany w przypadku tożsamości (z usługi Azure AD).
+    2. W **plik certyfikatu aplikacji tożsamości** wprowadź (lub przejdź do) lokalizację pliku certyfikatu.
+    3. W **hasło certyfikatu aplikacji tożsamości** wprowadź hasło dla certyfikatu. Jest to hasło, które zostały wprowadzone Zanotuj, gdy skrypt jest używany do tworzenia certyfikatów.
     4. W **plik certyfikatu głównego usługi Azure Resource Manager** wprowadź (lub przejdź do) lokalizację pliku certyfikatu.
     5. Kliknij przycisk **Dalej**.
 
-    ![Instalator usługi aplikacji][10]
+    ![Instalator usługi App Service][10]
 
-11. Dla każdego z trzech pól pliku certyfikatu, kliknij przycisk **Przeglądaj** , a następnie przejdź do pliku odpowiedni certyfikat. Podaj hasło dla każdego certyfikatu. Te certyfikaty są tymi, które zostały utworzone w [tworzenia wymaganych certyfikatów krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Kliknij przycisk **dalej** po wprowadzeniu wszystkich informacji.
+11. Dla każdego z trzech pól pliku certyfikatu, kliknij przycisk **Przeglądaj** , a następnie przejdź do pliku odpowiedni certyfikat. Należy podać hasło dla każdego certyfikatu. Te certyfikaty są tymi, które zostały utworzone w [tworzenia wymaganych certyfikatów kroku](azure-stack-app-service-before-you-get-started.md#get-certificates). Kliknij przycisk **dalej** po wprowadzeniu wszystkich informacji.
 
-    | Box | Przykład nazwy pliku certyfikatu |
+    | Box | Przykładowe nazwy pliku certyfikatu |
     | --- | --- |
-    | **Plik certyfikatu SSL domyślne usługi aplikacji** | \_.appservice.local.AzureStack.external.pfx |
-    | **Plik certyfikatu SSL usługi aplikacji interfejsu API** | api.appservice.local.AzureStack.external.pfx |
-    | **Plik certyfikatu SSL wydawcy usługi aplikacji** | ftp.appservice.local.AzureStack.external.pfx |
+    | **Plik certyfikatu usługi App Service domyślnego protokołu SSL** | \_.appservice.local.AzureStack.external.pfx |
+    | **Plik certyfikatu protokołu SSL interfejsu API usługi App Service** | api.appservice.local.AzureStack.external.pfx |
+    | **Plik certyfikatu protokołu SSL wydawcy usługi App** | ftp.appservice.local.AzureStack.external.pfx |
 
-    Jeśli sufiks domeny różnych są używane podczas tworzenia certyfikatów, nie używaj nazwy pliku certyfikatu *lokalnego. AzureStack.external*. Zamiast tego należy używać Twoich informacji domeny niestandardowej.
+    Jeśli sufiks domeny różnych są używane podczas tworzenia certyfikatów, nie należy używać nazwy pliku certyfikatu *lokalnego. AzureStack.external*. Zamiast tego należy używać Twoich informacji domeny niestandardowej.
 
-    ![Instalator usługi aplikacji][11]
+    ![Instalator usługi App Service][11]
 
-12. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do obsługi baz danych dostawcy zasobów usługi aplikacji, a następnie kliknij przycisk **dalej**. Instalator sprawdza właściwości połączenia SQL. Możesz **musi** wprowadź wewnętrznym adresem ip lub w pełni kwalifikowaną nazwę domeny dla nazwy serwera SQL.
+12. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do hostowania baz danych dostawcy zasobów usługi App Service, a następnie kliknij przycisk **dalej**. Instalator sprawdza właściwości połączenia SQL. Możesz **musi** wprowadź wewnętrzny adres ip lub w pełni kwalifikowaną nazwę domeny dla nazwy serwera SQL.
 
     > [!NOTE]
-    > Instalator podejmuje próbę przetestowanie łączności z serwerem SQl Server przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc połączyć się z serwerem SQL i wyświetla ostrzeżenie z pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące programu SQL Server i Kontynuuj, jeśli są poprawne.
+    > Instalator podejmuje próbę przetestowanie łączności z programem SQl Server przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej, Instalator nie może być możliwe nawiązanie połączenia z programem SQL Server i wyświetla ostrzeżenie z pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące programu SQL Server i Kontynuuj, jeśli są poprawne.
     >
-    >
+    > Usługi Azure App Service na usługi Azure Stack i nowszych wersjach 1.3 Instalator sprawdzi, czy serwer SQL jest zawierania bazy danych, włączone na poziomie serwera SQL.  Jeśli nie jest dostępne, zostanie wyświetlony monit z następującym wyjątkiem:
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > Zapoznaj się [informacje o wersji dla usługi Azure App Service w usłudze Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) Aby uzyskać więcej informacji.
    
-   ![Instalator usługi aplikacji][12]
+   ![Instalator usługi App Service][12]
 
-13. Przejrzyj opcje jednostki SKU i wystąpienia roli. Wartości domyślne są wypełniane przy użyciu minimalną liczbę wystąpień i minimalna jednostki SKU dla każdej roli we wdrożeniu ASDK. Aby ułatwić planowanie rozmieszczenia udostępniane jest podsumowanie wymagań vCPU i pamięci. Po dokonaniu wyboru kliknij przycisk **dalej**.
+13. Przejrzyj opcje jednostki SKU i wystąpienia roli. Wartości domyślne są wypełniane przy użyciu minimalnej liczby wystąpień i minimalne jednostki SKU dla każdej roli we wdrożeniu ASDK. Aby ułatwić planowanie wdrożenia usługi udostępniane jest podsumowanie wymagań dotyczących pamięci i procesorów wirtualnych. Po dokonaniu wyboru, kliknij przycisk **dalej**.
 
      > [!NOTE]
-     > W przypadku wdrożeń produkcyjnych, postępuj zgodnie ze wskazówkami w [zaplanować role serwera usługi Azure App Service w stosie Azure wydajność](azure-stack-app-service-capacity-planning.md).
+     > W przypadku wdrożeń produkcyjnych, postępuj zgodnie ze wskazówkami w [wydajność ról serwera usługi Azure App Service w usłudze Azure Stack](azure-stack-app-service-capacity-planning.md).
      >
      >
 
     | Rola | Minimalna wystąpień | Minimalna jednostki SKU | Uwagi |
     | --- | --- | --- | --- |
-    | Kontroler | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Zarządza i obsługuje kondycji chmury usługi aplikacji. |
-    | Zarządzanie | 1 | Standard_A2 - (2 Vcpu, 3584 MB) | Zarządza punktów końcowych aplikacji usługi Azure Resource Manager i interfejsu API, rozszerzenia portalu (administratora, dzierżawcy, funkcje portalu) i usługi danych. Do obsługi trybu failover, zwiększyć zalecane wystąpień na 2. |
-    | Wydawca | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publikowanie zawartości za pośrednictwem sieci web i FTP wdrożenia. |
-    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kieruje żądania do aplikacji usługi aplikacji. |
-    | Udostępnionego procesu roboczego | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosty aplikacji sieci web lub aplikacji interfejsu API i usługi Azure Functions. Można dodać więcej wystąpień. Uprawnienia operatora można zdefiniować Twojej oferty i wybierz warstwę wszystkie jednostki SKU. Warstw musi mieć co najmniej jeden vCPU. |
+    | Kontroler | 1 | Standard_A2 - (2 procesory vCPU, 3584 MB) | Zarządza i utrzymuje kondycję chmury usługi App Service. |
+    | Zarządzanie | 1 | Standard_A2 - (2 procesorów wirtualnych Vcpu, 3584 MB) | Zarządza punktów końcowych aplikacji usługi Azure Resource Manager i interfejsu API, rozszerzenia portalu (administratora, dzierżawcy, portalu funkcji) i usługi danych. Do obsługi trybu failover, zwiększenie zalecanych wystąpień na 2. |
+    | Wydawca | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publikuje zawartości za pośrednictwem protokołu FTP i web deployment. |
+    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kieruje żądania do aplikacji usługi App Service. |
+    | Udostępnionego procesu roboczego | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosty w sieci web lub aplikacji interfejsu API i aplikacje usługi Azure Functions. Można dodać więcej wystąpień. Operator można zdefiniować oferty i wybierz dowolną warstwę SKU. Warstw musi mieć co najmniej jeden procesor wirtualny vCPU. |
 
-    ![Instalator usługi aplikacji][14]
+    ![Instalator usługi App Service][14]
 
     > [!NOTE]
-    > **Podstawowy Windows Server 2016 nie jest obrazem obsługiwanych platform do użycia z usługi Azure App Service na stosie Azure.  Nie należy używać obrazów oceny wdrożeń produkcyjnych.**
+    > **Windows Server 2016 Core nie jest obrazem obsługiwanych platform do użycia z usługą Azure App Service w usłudze Azure Stack.  Nie należy używać obrazów ocenę dla wdrożeń produkcyjnych.  Usługa Azure App Service w usłudze Azure Stack wymaga, że Microsoft.NET 3.5.1 SP1 została aktywowana w obrazie używane w ramach wdrożenia.   Portal Marketplace zespolone systemu Windows Server 2016, obrazy nie mają włączenia tej funkcji.**
 
-14. W **wybierz obrazu platformy** wybierz obraz maszyny wirtualnej wdrażania systemu Windows Server 2016 z tych, które są dostępne w dostawcy zasobów obliczeniowych w chmurze usługi aplikacji. Kliknij przycisk **Dalej**.
+14. W **wybierz obraz platformy** wybierz obraz maszyny wirtualnej usługi wdrażania systemu Windows Server 2016 od tych, które są dostępne w dostawcy zasobów obliczeniowych w chmurze usługi App Service. Kliknij przycisk **Dalej**.
 
 15. Na następnej stronie:
-     1. Wprowadź hasło i nazwa użytkownika administratora maszyny wirtualnej w roli procesu roboczego.
+     1. Wprowadź nazwę użytkownika administratora maszyn wirtualnych roli procesu roboczego i hasło.
      2. Wprowadź nazwę użytkownika administratora maszyny wirtualnej inne role i hasło.
      3. Kliknij przycisk **Dalej**.
 
-    ![Instalator usługi aplikacji][16]
+    ![Instalator usługi App Service][16]
 
-16. Na stronie Podsumowanie:
-    1. Sprawdź wybrane opcje wprowadzone. Aby wprowadzić zmiany, należy użyć **Wstecz** przycisków, aby przejść do poprzedniej strony.
+16. Na stronie podsumowania:
+    1. Sprawdź wybrane opcje, które zostały wprowadzone. Aby wprowadzić zmiany, należy użyć **Wstecz** przycisków, aby przejść do poprzedniej strony.
     2. Jeśli konfiguracje są poprawne, zaznacz pole wyboru.
     3. Aby uruchomić wdrożenie, kliknij przycisk **dalej**.
 
-    ![Instalator usługi aplikacji][17]
+    ![Instalator usługi App Service][17]
 
 17. Na następnej stronie:
-    1. Śledź postęp instalacji. Usługi aplikacji Azure stosu trwa około 60 minut do wdrożenia na podstawie wybranych domyślne.
-    2. Po pomyślnym zakończeniu Instalatora, kliknij przycisk **zakończenia**.
+    1. Śledź postęp instalacji. Usługi App Service w usłudze Azure Stack trwa około 60 minut wdrożenia oparte na wartości domyślne.
+    2. Po pomyślnym zakończeniu pracy Instalatora kliknij przycisk **zakończenia**.
 
-    ![Instalator usługi aplikacji][18]
+    ![Instalator usługi App Service][18]
 
-## <a name="validate-the-app-service-on-azure-stack-installation"></a>Sprawdź poprawność usługi aplikacji Azure stosu instalacji
+## <a name="validate-the-app-service-on-azure-stack-installation"></a>Weryfikowanie usługi App Service w usłudze Azure Stack instalacji
 
-1. W portalu administracyjnym stosu Azure, przejdź do **Administracja - App Service**.
+1. W portalu administracyjnym usługi Azure Stack, przejdź do **administrowanie — usługa App Service**.
 
-2. W przeglądzie w stanie, sprawdź, który **stan** pokazuje **wszystkie role są gotowe**.
+2. W obszarze Przegląd w polu Stan zaznacz, aby zobaczyć, że **stan** pokazuje **wszystkie role są gotowe**.
 
-    ![Zarządzanie usługami aplikacji](media/azure-stack-app-service-deploy/image12.png)
+    ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
     
 > [!NOTE]
-> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP do conenct do plików użytkownika, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwerze plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 > * Źródło: wszystkie
 > * Zakres portów źródłowych: *
 > * Miejsce docelowe: Adresy IP
-> * Docelowy zakres adresów IP: zakres adresów IP dla sieci plików
+> * Docelowy zakres adresów IP: zakres adresów IP dla magazynowi
 > * Zakres portów docelowych: 445
 > * Protokół: TCP
 > * Akcja: Zezwalaj
@@ -205,47 +215,47 @@ Wdrożenie usługi aplikacji w środowisku bez połączenia, należy najpierw ut
 > * Nazwa: Outbound_Allow_SMB445
 >
 
-## <a name="test-drive-app-service-on-azure-stack"></a>Przetestuj aplikację usługi Azure stosu
+## <a name="test-drive-app-service-on-azure-stack"></a>Testowanie usługi App Service w usłudze Azure Stack
 
-Po wdrażanie i rejestrowanie dostawcy zasobów usługi aplikacji, przetestować go, aby upewnić się, że użytkownicy będą mogli wdrażać sieci web i aplikacji API apps.
+Po wdrażanie i rejestrowanie dostawcy zasobów usługi App Service, go przetestować, aby upewnić się, że użytkownicy mogą wdrażać sieci web i aplikacji API apps.
 
 > [!NOTE]
-> Należy utworzyć ofertę, która ma przestrzeń nazw Microsoft.Web w planie. Następnie należy mieć subskrypcję dzierżawy, która subskrybuje tej oferty. Aby uzyskać więcej informacji, zobacz [Utwórz oferty](azure-stack-create-offer.md) i [Utwórz plan](azure-stack-create-plan.md).
+> Należy utworzyć ofertę, który zawiera przestrzeń nazw Microsoft.Web w ramach planu. Następnie musisz mieć subskrypcję dzierżawy, która ją subskrybuje tej oferty. Aby uzyskać więcej informacji, zobacz [Utwórz ofertę](azure-stack-create-offer.md) i [Utwórz plan](azure-stack-create-plan.md).
 >
-Możesz *musi* mających subskrypcję dzierżawy do tworzenia aplikacji korzystających z usługi aplikacji Azure stosu. Tylko możliwości, które administrator usługi można wykonać w portalu administracyjnym dotyczących administracji dostawcy zasobów usługi App Service. Te funkcje obejmują dodanie pojemności, konfigurowanie źródła wdrożenia i dodawanie warstwy procesu roboczego i jednostki SKU.
+Możesz *musi* mają subskrypcję dzierżawy, aby utworzyć aplikacje, które używają usługi App Service w usłudze Azure Stack. Tylko możliwości, których administrator usługi można wykonać z poziomu portalu administracyjnego są związane z administracyjnej dostawcy zasobów usługi App Service. Te funkcje obejmują dodanie pojemności, konfigurowanie źródeł wdrożenia i dodanie warstwy procesu roboczego i jednostki SKU.
 >
-Począwszy od trzeciego technical preview można utworzyć sieci web, interfejsu API i Azure funkcje aplikacji, należy użyć portalu dzierżawcy i ma subskrypcję dzierżawy.
+Począwszy od trzeciego technical preview do utworzenia sieci web, interfejsów API i Azure Functions aplikacje, należy użyć portalu dzierżawcy i masz subskrypcję dzierżawy.
 
-1. W portalu Azure stosu dzierżawy kliknij **nowy** > **sieci Web i mobilność** > **aplikacji sieci Web**.
+1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **New** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
 2. Na **aplikacji sieci Web** bloku, wpisz nazwę w **aplikacji sieci Web** pole.
 
-3. W obszarze **grupy zasobów**, kliknij przycisk **nowy**. Wpisz nazwę w **grupy zasobów** pole.
+3. W obszarze **grupy zasobów**, kliknij przycisk **New**. Wpisz nazwę w **grupy zasobów** pole.
 
 4. Kliknij pozycję **Plan/lokalizacja usługi App Service** > **Utwórz nowy**.
 
-5. Na **planu usługi aplikacji** bloku, wpisz nazwę w **planu usługi aplikacji** pole.
+5. Na **planu usługi App Service** bloku, wpisz nazwę w **planu usługi App Service** pole.
 
-6. Kliknij przycisk **warstwa cenowa** > **Shared wolne** lub **Shared Shared** > **wybierz**  >   **OK** > **utworzyć**.
+6. Kliknij przycisk **warstwa cenowa** > **udostępnione bezpłatnie** lub **Shared współdzielona** > **wybierz**  >   **OK** > **tworzenie**.
 
-7. W obszarze minuty kafelków dla nowej aplikacji sieci web pojawi się na pulpicie nawigacyjnym. Kliknij Kafelek.
+7. W obszarze minuty dla nowej aplikacji sieci web pojawi się Kafelek na pulpicie nawigacyjnym. Kliknij Kafelek.
 
-8. Na **aplikacji sieci Web** bloku, kliknij przycisk **Przeglądaj** można wyświetlić domyślną witrynę sieci Web dla tej aplikacji.
+8. Na **aplikacji sieci Web** bloku kliknij **Przeglądaj** do wyświetlania domyślnej witryny sieci Web dla tej aplikacji.
 
-## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Wdrażanie witryny WordPress, DNN lub Django (opcjonalnie)
+## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Wdrażanie platformy WordPress, DNN lub Django witryny sieci Web (opcjonalnie)
 
-1. W portalu Azure stosu dzierżawy kliknij **+**, przejdź do portalu Azure Marketplace, wdrożyć witrynę sieci Web Django i poczekaj na pomyślne zakończenie. Platforma sieci web Django korzysta z bazy danych w oparciu o system plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
+1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **+**, przejdź do portalu Azure Marketplace, wdrażanie witryny sieci Web Django i poczekaj na pomyślne zakończenie. Platforma sieci web Django korzysta z bazy danych opartych na systemie plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
 
-2. Jeśli wdrożono również dostawcy zasobów MySQL, można wdrażać witryny sieci Web WordPress z poziomu portalu Marketplace. Gdy zostanie wyświetlony monit o parametry bazy danych, wprowadź nazwę użytkownika jako *User1@Server1*, z nazwą użytkownika i nazwę serwera.
+2. Jeśli wdrożono również dostawcy zasobów bazy danych MySQL, można wdrażać witryny sieci Web WordPress w witrynie Marketplace. Po wyświetleniu monitu dla bazy danych, parametrów, wprowadź nazwę użytkownika jako *User1@Server1*, nazwą użytkownika i nazwę serwera.
 
-3. Jeśli wdrożono również dostawcy zasobów programu SQL Server, można wdrożyć DNN witryny sieci Web z witryny Marketplace. Gdy zostanie wyświetlony monit o parametry bazy danych, wybierz bazę danych na komputerze z uruchomionym programem SQL Server, połączoną z dostawcą zasobów.
+3. Jeśli wdrożono również dostawcę zasobów programu SQL Server, można wdrożyć DNN witryny sieci Web z witryny Marketplace. Po wyświetleniu monitu dla parametrów bazy danych, wybierz bazę danych na komputerze z uruchomionym programem SQL Server, która jest połączona z dostawcą zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Możesz również wypróbować innych [platforma jako usługa (PaaS) usługi](azure-stack-tools-paas-services.md).
+Możesz również wypróbować inne [platformy jako usługi (PaaS)](azure-stack-tools-paas-services.md).
 
 - [Dostawcy zasobów programu SQL Server](azure-stack-sql-resource-provider-deploy.md)
-- [Dostawca zasobów MySQL](azure-stack-mysql-resource-provider-deploy.md)
+- [Dostawcy zasobów bazy danych MySQL](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
 [Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531

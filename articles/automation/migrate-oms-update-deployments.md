@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9469a5827765a9b82469ac1eedc66666231d82d6
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117448"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42057559"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure
 
@@ -61,10 +61,12 @@ W przypadku maszyny do zaktualizowania wybrać zapisanego wyszukiwania, które s
 | --- | --- |
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
-|Maszyny do zaktualizowania |W przypadku maszyny do zaktualizowania wybrać zapisanego wyszukiwania, które są używane przez istniejące wdrożenie pakietu OMS. |
+|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
 |Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows, można wprowadzić w artykule KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cyklicznie** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |
+| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
+| Ponowne uruchomienie kontroli| Zaznaczenia prostokącie obsługi jest uruchamiany ponownie.</br>Dostępne są następujące opcje:</br>Ponowne uruchomienie komputera, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze wykonuj ponowny rozruch</br>Nigdy nie ponowny rozruch</br>Tylko ponowny rozruch — nie zostaną zainstalowane aktualizacje|
 
 Kliknij przycisk **zaplanowane wdrożenia aktualizacji** Aby wyświetlić stan wdrożenia aktualizacji nowo utworzony.
 

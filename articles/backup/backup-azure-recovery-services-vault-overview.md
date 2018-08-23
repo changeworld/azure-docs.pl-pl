@@ -1,72 +1,78 @@
 ---
 title: Omówienie magazynów usługi Recovery Services
-description: Zawiera omówienie i porównanie Magazyny usług odzyskiwania i magazyny kopii zapasowych platformy Azure.
+description: Przegląd i porównanie magazynów usługi Recovery Services i magazyny kopii zapasowych Azure.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/15/2017
+ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: b6195feb25a7206d7c453e31f0ac312e070b3113
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606175"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055712"
 ---
-# <a name="recovery-services-vaults-overview"></a>Omówienie Magazyny usług odzyskiwania
+# <a name="recovery-services-vaults-overview"></a>Omówienie magazynów usług odzyskiwania
 
-W tym artykule opisano funkcje magazynu usług odzyskiwania. Magazyn usług odzyskiwania jest jednostką magazynu na platformie Azure, która przechowuje dane. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych. Magazyny usług odzyskiwania służy do przechowywania danych kopii zapasowej dla różnych usług Azure, takich jak maszyny wirtualne IaaS (Linux lub Windows) oraz baz danych Azure SQL. System obsługi magazynów usług odzyskiwania Centrum programu DPM, Windows Server, serwer kopii zapasowej Azure i więcej. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem. 
+W tym artykule opisano funkcje magazynu usług Recovery Services. Magazyn usługi Recovery Services jest jednostką magazynu na platformie Azure, która przechowuje dane. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych. Magazyny usługi Recovery Services służy do przechowywania danych kopii zapasowych dla różnych usług platformy Azure, takie jak maszyny wirtualne IaaS (Linux lub Windows) i bazy danych Azure SQL. System pomocy technicznej Magazyny usług odzyskiwania Centrum programu DPM, Windows Server, usługi Azure Backup Server i więcej. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem. 
 
-W ramach subskrypcji platformy Azure możesz utworzyć maksymalnie 500 Magazyny usług odzyskiwania na subskrypcję dla regionu.
+W ramach subskrypcji platformy Azure możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na subskrypcję na region.
 
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Magazyny usług odzyskiwania porównaniem i magazynami kopii zapasowych
+## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Magazyny usług odzyskiwania porównywanie i magazynami kopii zapasowych
 
-Jeśli nadal masz magazyny kopii zapasowych, są one automatycznie zaktualizowane do magazynów usług odzyskiwania. Przez 2017 listopada wszystkie magazyny kopii zapasowych zostały uaktualnione do magazynów usług odzyskiwania. 
+Jeśli nadal masz magazynów kopii zapasowych, są one automatycznie uaktualnione do magazynów usługi Recovery Services. Wszystkie magazyny kopii zapasowych przez listopada 2017 r., zostały uaktualnione do magazynów usługi Recovery Services. 
 
-Magazyny usług odzyskiwania są oparte na modelu usługi Azure Resource Manager platformy Azure, magazyny kopii zapasowych są oparte na modelu Azure Service Manager. Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania dane kopii zapasowej pozostanie niezmieniona podczas i po zakończeniu procesu uaktualniania. Magazyny usług odzyskiwania zapewniają funkcje nie są dostępne dla magazyny kopii zapasowych, takich jak:
+Magazyny usługi Recovery Services są oparte na modelu usługi Azure Resource Manager platformy Azure, magazyny usługi Backup zostały oparte na modelu usługi Azure Service Manager. Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services dane kopii zapasowej pozostaje bez zmian, podczas i po zakończeniu procesu uaktualniania. Magazyny usługi Recovery Services zapewniają funkcje nie są dostępne dla magazynów kopii zapasowych, takie jak:
 
-- **Ulepszonych funkcji ułatwia zabezpieczanie danych kopii zapasowej**: magazynów z usług odzyskiwania, kopia zapasowa Azure udostępnia funkcje zabezpieczeń w celu ochrony kopii zapasowych w chmurze. Funkcje zabezpieczeń upewnij się secure kopii zapasowych i bezpieczne odzyskiwanie danych, nawet jeśli serwerów produkcyjnych i tworzenia kopii zapasowej są uszkodzone. [Dowiedz się więcej](backup-azure-security-feature.md)
+- **Rozszerzone możliwości, aby ułatwić zabezpieczanie danych kopii zapasowej**: magazynów za pomocą usług Recovery Services, usługi Azure Backup udostępnia funkcje zabezpieczeń, aby chronić kopie zapasowe w chmurze. Funkcje zabezpieczeń można zabezpieczyć kopie zapasowe i bezpieczne odzyskiwanie danych, upewnij się nawet wtedy, gdy serwery produkcyjne i kopii zapasowej są uszkodzone. [Dowiedz się więcej](backup-azure-security-feature.md)
 
-- **Centralne monitorowanie sieci hybrydowe środowiska IT**: magazynów z usług odzyskiwania, można monitorować nie tylko z [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także z [zasoby lokalne](backup-azure-manage-windows-server.md#manage-backup-items) z centralnej portalu. [Dowiedz się więcej](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **Centralne monitorowanie hybrydowe środowiska IT**: magazynów za pomocą usług Recovery Services, można monitorować nie tylko Twojej [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także usługi [zasobach lokalnych](backup-azure-manage-windows-server.md#manage-backup-items) centralnej portalu. [Dowiedz się więcej](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej zarządzania kontroli dostępu na platformie Azure. [Platforma Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a kopia zapasowa Azure ma trzy [wbudowane role, aby zarządzać punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usług odzyskiwania są zgodne z RBAC, który ogranicza możliwość użycia kopii zapasowej i przywracania dostępu do zdefiniowanego zestawu ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
+- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej kontroli dostępu do zarządzania na platformie Azure. [System Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a usługa Azure Backup ma trzy [role wbudowane, umożliwiające zarządzanie punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usługi Recovery Services są zgodne z RBAC, który ogranicza możliwość użycia kopia zapasowa i przywrócenia dostępu do określonych ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
 
-- **Chroń wszystkie konfiguracje maszyn wirtualnych Azure**: Magazyny usług odzyskiwania chronić maszyny wirtualne oparte na Menedżera zasobów, w tym dyski Premium, dysków zarządzanych i szyfrowane maszyn wirtualnych. Uaktualnianie magazynu kopii zapasowych do magazynu usług odzyskiwania daje możliwość uaktualnienia programu Service Manager na podstawie maszyn wirtualnych do maszyn wirtualnych w Menedżerze zasobów. Podczas uaktualniania magazynu, można zachować punktów odzyskiwania maszyny Wirtualnej opartej na programu Service Manager i skonfiguruj ochronę uaktualnionego maszyn wirtualnych (włączone Resource Manager). [Dowiedz się więcej](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Chroń wszystkie konfiguracje maszyn wirtualnych platformy Azure**: magazynów usługi Recovery Services ochrona maszyn wirtualnych opartych na usłudze Resource Manager, m.in. dyski Premium Managed Disks i szyfrowanych maszyn wirtualnych. Uaktualnianie magazynu usługi Backup do magazynu usługi Recovery Services daje możliwość uaktualnienia maszyny wirtualne z opartych na programie Service Manager do maszyn wirtualnych opartych na programie Resource Manager. Podczas uaktualniania magazynu, można zachować punkty odzyskiwania maszyny Wirtualnej opartej na programie Service Manager i skonfigurować ochronę uaktualnionych maszyn wirtualnych (korzystających z Menedżera zasobów). [Dowiedz się więcej](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Natychmiastowego przywracania dla maszyn wirtualnych IaaS**: Magazyny usług odzyskiwania przy użyciu, można przywrócić pliki i foldery z maszyn wirtualnych IaaS bez przywracania całą maszynę Wirtualną, która umożliwia szybsze przywracania. Natychmiastowego przywracania dla maszyn wirtualnych IaaS jest dostępna dla systemów Windows i maszyn wirtualnych systemu Linux. [Dowiedz się więcej](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Natychmiastowe przywracanie dla maszyn wirtualnych IaaS**: Magazyny usługi Recovery Services za pomocą, można przywrócić pliki i foldery z maszyny Wirtualnej IaaS bez przywracania całej maszyny Wirtualnej, która umożliwia skraca czas ich przywracania. Natychmiastowe przywracanie dla maszyn wirtualnych IaaS jest dostępna dla maszyn wirtualnych systemu Linux i Windows. [Dowiedz się więcej](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
-## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Twoje Magazyny usług odzyskiwania w portalu zarządzania
-Tworzenie i zarządzanie Magazyny usług odzyskiwania w portalu Azure jest łatwe, ponieważ usługa kopii zapasowej jest zintegrowana z menu ustawień platformy Azure. Integracja ta oznacza, że można tworzyć ani nimi zarządzać Magazyn usług odzyskiwania *w kontekście usługi docelowej*. Na przykład, aby wyświetlić punkty odzyskiwania dla maszyny Wirtualnej, zaznacz go i kliknij przycisk **kopii zapasowej** w menu Ustawienia. Zostanie wyświetlone kopii zapasowej informacje specyficzne dla tej maszyny Wirtualnej. W poniższym przykładzie **ContosoVM** jest nazwa maszyny wirtualnej. **ContosoVM demovault** to nazwa magazynu usług odzyskiwania. Nie trzeba pamiętać nazwy magazynu usług odzyskiwania, która przechowuje punkty odzyskiwania, dostęp do tych informacji z maszyny wirtualnej.  
+## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Magazyny usługi Recovery Services w portalu zarządzania
+Tworzenie i Zarządzanie magazynami usługi Recovery Services w witrynie Azure portal jest proste, ponieważ usługa Backup integruje się z innymi usługami platformy Azure. Ta integracja oznacza, że można tworzyć ani nimi zarządzać w magazynie usługi Recovery Services *w kontekście usługi docelowej*. Na przykład, aby wyświetlić punkty odzyskiwania dla maszyny Wirtualnej, wybierz maszynę Wirtualną i kliknij przycisk **kopii zapasowej** w menu operacji. 
 
-![Szczegóły magazynu usług odzyskiwania maszyny Wirtualnej](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context.png)
+![Szczegóły magazynu usług odzyskiwania maszyny Wirtualnej](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
-Wiele serwerów są chronione przy użyciu tego samego magazynu usług odzyskiwania, może być bardziej logiczne, aby przyjrzeć się magazyn usług odzyskiwania. Wyszukaj wszystkie magazyny usług odzyskiwania w ramach subskrypcji i wybierz z listy.
+Jeśli maszyna wirtualna nie ma skonfigurowano kopię zapasową, a następnie zostanie wyświetlony monit, aby skonfigurować tworzenie kopii zapasowej. Jeśli kopia zapasowa została skonfigurowana, zobaczysz kopii zapasowej informacji o maszynie Wirtualnej, w tym listę dostępnych punktów przywracania.  
 
-Poniższe sekcje zawierają łącza do artykułów, które wyjaśniono, jak używać magazynu usług odzyskiwania w przypadku każdego typu działania.
+![Szczegóły magazynu usług odzyskiwania maszyny Wirtualnej](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
+
+W poprzednim przykładzie **ContosoVM** jest nazwa maszyny wirtualnej. **ContosoVM-demovault** jest nazwą magazynu usługi Recovery Services. Nie trzeba pamiętać nazwy magazynu usługi Recovery Services, która przechowuje punkty odzyskiwania, dostęp do tych informacji z maszyny wirtualnej.  
+
+Jeśli jeden magazyn usługi Recovery Services chroni wielu serwerów, może być bardziej logiczne, aby przyjrzeć się w magazynie usługi Recovery Services. Wyszukaj wszystkie magazyny usługi Recovery Services w ramach subskrypcji i wybierz ją z listy.
+
+Poniższe sekcje zawierają linki do artykułów, które wyjaśniają jak używać magazynu usługi Recovery Services w każdym typie działania.
 
 ### <a name="back-up-data"></a>Tworzenie kopii zapasowej danych
 - [Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure](backup-azure-vms-first-look-arm.md)
-- [Tworzenie kopii zapasowej systemu Windows Server lub stacji roboczej systemu Windows](backup-try-azure-backup-in-10-mins.md)
-- [Tworzenie kopii zapasowej obciążeń programu DPM na platformie Azure](backup-azure-dpm-introduction.md)
-- [Przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-azure-microsoft-azure-backup.md)
+- [Tworzenie kopii zapasowych systemu Windows Server lub stacji roboczej Windows](backup-try-azure-backup-in-10-mins.md)
+- [Tworzenie kopii zapasowych obciążeń programu DPM na platformie Azure](backup-azure-dpm-introduction.md)
+- [Przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu usługi Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>Zarządzanie punktami odzyskiwania
-- [Zarządzanie kopiami zapasowymi maszyny Wirtualnej Azure](backup-azure-manage-vms.md)
+- [Zarządzanie kopiami zapasowymi maszyny Wirtualnej platformy Azure](backup-azure-manage-vms.md)
 - [Zarządzanie plikami i folderami](backup-azure-manage-windows-server.md)
 
-### <a name="restore-data-from-the-vault"></a>Przywróć dane z magazynu
-- [Odzyskanie poszczególnych plików maszyny Wirtualnej platformy Azure](backup-azure-restore-files-from-vm.md)
+### <a name="restore-data-from-the-vault"></a>Przywracanie danych z magazynu
+- [Odzyskanie poszczególnych plików na Maszynie wirtualnej platformy Azure](backup-azure-restore-files-from-vm.md)
 - [Przywracanie maszyny Wirtualnej platformy Azure](backup-azure-arm-restore-vms.md)
 
-### <a name="secure-the-vault"></a>Bezpiecznego magazynu
-- [Zabezpieczanie danych kopii zapasowej w chmurze w Magazyny usług odzyskiwania](backup-azure-security-feature.md)
+### <a name="secure-the-vault"></a>Zabezpieczenia magazynu
+- [Zabezpieczanie danych kopii zapasowej w chmurze w magazynach usługi Recovery Services](backup-azure-security-feature.md)
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Skorzystaj z poniższych artykułów, aby:</br>
-[Tworzenie kopii zapasowej maszyn wirtualnych IaaS](backup-azure-arm-vms-prepare.md)</br>
-[Utwórz kopię zapasową serwera kopia zapasowa Azure](backup-azure-microsoft-azure-backup.md)</br>
+Skorzystaj z następujących artykułów, aby:</br>
+[Tworzenie kopii zapasowych maszyn wirtualnych IaaS](backup-azure-arm-vms-prepare.md)</br>
+[Tworzenie kopii zapasowych usługi Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
 [Tworzenie kopii zapasowej systemu Windows Server](backup-configure-vault.md)

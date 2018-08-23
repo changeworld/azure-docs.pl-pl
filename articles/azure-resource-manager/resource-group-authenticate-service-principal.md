@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: aec79655dde48a18891776f40c51aa5a5c859ef8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df1cf093a154b4f7adf59fae93f90fbc70459788
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577268"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056651"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -186,7 +186,7 @@ Jeśli musisz pobrać identyfikator aplikacji, użyj polecenia:
 
 ## <a name="change-credentials"></a>Zmienianie poświadczeń
 
-Aby zmienić poświadczenia aplikacji usługi AD z powodu naruszenia zabezpieczeń lub wygaśnięcia poświadczeń, należy użyć poleceń cmdlet [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) i [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
+Aby zmienić poświadczenia aplikacji usługi AD z powodu naruszenia zabezpieczeń lub wygaśnięcia poświadczeń, należy użyć poleceń cmdlet [Remove-AzureRmADAppCredential](/powershell/module/azurerm.resources/remove-azurermadappcredential) i [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
 
 Aby usunąć wszystkie poświadczenia aplikacji, należy użyć polecenia:
 

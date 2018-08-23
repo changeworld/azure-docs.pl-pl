@@ -1,9 +1,9 @@
 ---
 title: Metody tworzenia certyfikatów
-description: Metody tworzenia certyfikatu w magazynie kluczy.
+description: Sposoby, aby utworzyć certyfikat w usłudze Key Vault.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
@@ -13,57 +13,57 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 7b71c6a8daa97300ecf3b37ec6ab47207fece98e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: bryanla
+ms.openlocfilehash: a2314eaac26688881dcf60f264f039081439db6a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058314"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056942"
 ---
 # <a name="certificate-creation-methods"></a>Metody tworzenia certyfikatów
 
- Certyfikat klucza magazynu (KV) można utworzyć lub zaimportować do magazynu kluczy. Po utworzeniu certyfikatu KV klucza prywatnego jest wewnątrz magazynu kluczy i nigdy nie są widoczne dla właściciela certyfikatu. Poniżej przedstawiono sposoby tworzenia certyfikatu w magazynie kluczy:  
+ Certyfikat klucza magazynu (KV) można utworzyć lub zaimportować do magazynu kluczy. Po utworzeniu certyfikatu KV klucz prywatny jest tworzony w magazynie kluczy i nie są udostępniane do właściciela certyfikatu. Poniżej przedstawiono sposoby tworzenia certyfikatu w usłudze Key Vault:  
 
--   **Utwórz certyfikat z podpisem własnym:** spowoduje to utworzenie pary kluczy publiczno prywatnych i skojarzyć go z certyfikatu. Certyfikat zostanie podpisana przez własnego klucza.  
+-   **Utwórz certyfikat z podpisem własnym:** spowoduje to utworzenie pary kluczy publiczny prywatny i skojarzyć go z certyfikatu. Certyfikat zostanie podpisany przez własnego klucza.  
 
--    **Utwórz nowy certyfikat ręcznie:** spowoduje to utworzenie pary kluczy publiczno prywatnych i wygenerować żądania podpisania certyfikatu X.509. Żądania podpisywania może być podpisana przez urząd certyfikacji lub urzędu rejestrowania. Sparuj podpisem x509 certyfikatu można łączone przy użyciu klucza oczekujące przeprowadzenie KV certyfikat w magazynie kluczy. Ta metoda wymaga większej liczby kroków, jego umożliwiają większe bezpieczeństwo, ponieważ klucz prywatny jest tworzony w i ograniczona do magazynu kluczy. Wyjaśnienie jest zawarte na poniższym diagramie.  
+-    **Ręczne tworzenie nowego certyfikatu:** spowoduje to utworzenie pary kluczy publiczny prywatny i wygenerować żądanie podpisania certyfikatu X.509. Żądanie podpisania może być podpisany przez urząd rejestrowania lub urzędu certyfikacji. Sparuj x509 podpisanego certyfikatu będzie mogło zostać scalone z kluczem oczekujące do ukończenia KV certyfikatu w usłudze Key Vault. Mimo że ta metoda wymaga większej liczby kroków, jego zapewniają większe bezpieczeństwo, ponieważ klucz prywatny jest tworzone w i ograniczone do usługi Key Vault. Jest to wyjaśnione na poniższym diagramie.  
 
 ![Utwórz certyfikat z urzędu certyfikacji](media/certificate-authority-1.png)  
 
-Poniższe opisy odpowiadają zielony własną literą kroki na powyższym diagramie.
+Poniższe opisy odpowiadają zielony kroki własną literą na powyższym diagramie.
 
 1. Na powyższym diagramie aplikacja tworzy certyfikat, który wewnętrznie zaczyna się od utworzenia klucza w magazynie kluczy.
-2. Key Vault zwraca do aplikacji żądanie (Podpisania certyfikatu)
-3. Aplikacja przekazuje obsługi do wybranego urzędu certyfikacji.
-4. Odpowiada wybranego urzędu certyfikacji X509 certyfikatu.
-5. Aplikacja kończy tworzenie nowego certyfikatu z połączenia z X509 certyfikatu z urzędu certyfikacji.
+2. Usługa Key Vault zwraca do aplikacji żądania podpisania certyfikatu (CSR)
+3. Aplikacja przekazuje plik CSR do wybranego urzędu certyfikacji.
+4. Wybranego urzędu certyfikacji odpowiada za pomocą X509 certyfikatu.
+5. Nowe tworzenia certyfikatów przy użyciu połączenia X509 zakończeniu aplikacji certyfikatu z urzędu certyfikacji.
 
--   **Utwórz certyfikat z dostawcą znane wystawcy:** tej metody wymaga wykonania jednorazowe zadania tworzenia obiektu wystawcy. Po utworzeniu obiektu wystawcy należy klucz magazynu, można odwoływać się w zasadach certyfikatów KV jego nazwy. Żądanie utworzenia certyfikatu KV utworzy pary kluczy w magazynie i komunikować się z usługą dostawcy wystawcy, korzystając z informacji w obiekcie przywoływanego wystawcy uzyskanie x509 certyfikatu. X509 certyfikat są pobierane z usługi wystawców i jest scalany z pary kluczy do ukończenia KV certyfikatów tworzenia.  
+-   **Utwórz certyfikat z dostawcą znanych wystawcy:** ta metoda wymaga wykonania jednorazowe zadania tworzenia obiektu wystawcy. Po utworzeniu obiektu wystawcy w przypadku magazynu kluczy, nazwy mogą być przywoływane w zasadach certyfikatów KV. Żądanie, aby utworzyć certyfikat KV spowoduje tworzenie pary kluczy w magazynie i komunikować się z usługą dostawcy wystawcy, korzystając z informacji w obiekcie wystawcy odwołania można pobrać x509 certyfikatu. X509 certyfikat jest pobierany z usługi wystawcy i jest scalany z pary kluczy, aby ukończyć KV tworzenia certyfikatów.  
 
-![Utwórz certyfikat z urzędu certyfikacji współpracę usługi Key Vault](media/certificate-authority-2.png)  
+![Utwórz certyfikat z urzędu certyfikacji usługi Key Vault partnerstwo](media/certificate-authority-2.png)  
 
-Poniższe opisy odpowiadają zielony własną literą kroki na powyższym diagramie.
+Poniższe opisy odpowiadają zielony kroki własną literą na powyższym diagramie.
 
 1. Na powyższym diagramie aplikacja tworzy certyfikat, który wewnętrznie zaczyna się od utworzenia klucza w magazynie kluczy.
-2. Wysyła magazyn kluczy i żądania certyfikatu SSL do urzędu certyfikacji.
-3. Aplikacji sonduje, w ramach procesu pętli i oczekiwania w usłudze magazyn kluczy do wypełnienia certyfikatu. Utworzenie certyfikatu została ukończona, gdy usługi Key Vault otrzyma odpowiedź urzędu certyfikacji z x509 certyfikatu.
-4. Urząd certyfikacji odpowiada na żądania certyfikatu w programie usługi Key Vault SSL z X509 certyfikatu SSL.
-5. Kończy tworzenie z nowego certyfikatu z połączeniem X509 certyfikatu urzędu certyfikacji.
+2. Wysyła do usługi Key Vault i żądanie certyfikatu SSL z urzędem certyfikacji.
+3. Aplikacji ankiety w procesie pętli i oczekiwania dla usługi Key Vault do wypełnienia certyfikatu. Tworzenie certyfikatu została ukończona w przypadku, gdy usługi Key Vault odbiera odpowiedź urzędu certyfikacji za pomocą x509 certyfikatu.
+4. Urząd certyfikacji odpowiada na żądania certyfikatu w programie usługi Key Vault protokołu SSL za pomocą X509 certyfikatu SSL.
+5. Twoje Tworzenie nowego certyfikatu kończy się z połączeniem X509 certyfikatu urzędu certyfikacji.
 
 ## <a name="asynchronous-process"></a>Proces asynchroniczny
-Utworzenie certyfikatu KV jest proces asynchroniczny. Ta operacja spowoduje Utwórz żądanie certyfikatu KV i zwraca kod stanu http 202 (zaakceptowane). Stan żądania mogą być śledzone przez sondowanie Oczekujący obiekt utworzony przez tę operację. Pełny identyfikator URI obiektu oczekujące jest zwrócony w nagłówku lokalizacji.  
+Tworzenie certyfikatu KV jest proces asynchroniczny. Ta operacja spowoduje tworzenia żądania certyfikatu KV i zwrócić kod stanu http 202 (zaakceptowano). Stan żądania mogą być śledzone przez sondowanie oczekujące obiekt utworzony przez tę operację. Pełny identyfikator URI obiektu oczekujące jest zwracany w nagłówku LOCATION.  
 
-Po ukończeniu żądanie, aby utworzyć certyfikat KV stan Oczekujący obiekt zostanie zmieniony na "ukończone" od "w toku", i zostanie utworzona nowa wersja KV certyfikatu. Będzie to bieżącej wersji.  
+Po zakończeniu żądania można utworzyć certyfikatu KV, stan obiektu oczekujące zmieni się na "ukończone" od "w toku", a następnie zostanie utworzona nowa wersja certyfikatu KV. Stanie się bieżącą wersję.  
 
-## <a name="first-creation"></a>Tworzenie pierwszego
- Po utworzeniu certyfikatu KV po raz pierwszy adresowanego klucza i klucz tajny tworzona jest również o takiej samej nazwie jak certyfikatu. Jeśli nazwa jest już w użyciu, operacja zakończy się niepowodzeniem z kodem stanu http 409 (konflikt).
-Klucz adresowanego i klucz tajny odczytać atrybuty certyfikatu KV ich atrybutów. Klucz adresowanego i klucz tajny utworzone w ten sposób zostały oznaczone jako zarządzanych kluczy i kluczy tajnych, którego okres istnienia jest zarządzany przez magazyn kluczy. Zarządzanych kluczy i kluczy tajnych są tylko do odczytu. Uwaga: Jeśli KV certyfikat wygaśnie lub jest wyłączona, odpowiedniego klucza i klucz tajny będzie przestać działać.  
+## <a name="first-creation"></a>Tworzenie pierwszej
+ Po utworzeniu certyfikatu KV po raz pierwszy adresowalnych kluczem i wpisem tajnym również jest tworzony o takiej samej nazwie, jak w przypadku certyfikatu. Jeśli nazwa jest już w użyciu, operacja zakończy się niepowodzeniem z kodem stanu http 409 (konflikt).
+Mogą być adresowane kluczem i wpisem tajnym uzyskiwanie atrybuty certyfikatu KV ich atrybutów. Mogą być adresowane klucza i wpisu tajnego, utworzone w ten sposób są oznaczane jako zarządzanych kluczy i wpisów tajnych, którego okres istnienia jest zarządzany przez usługę Key Vault. Zarządzanych kluczy i wpisów tajnych są przeznaczone tylko do odczytu. Uwaga: Jeśli KV certyfikat wygaśnie lub jest wyłączona, odpowiedniego klucza i wpisu tajnego staną się przestanie działać.  
 
- Jeśli jest to pierwszy operację, aby utworzyć certyfikat KV zasad jest wymagane.  Zasady należy dostarczyć także z kolejnych tworzenia operacji, aby zastąpić zasób zasad. Jeśli nie podano zasady, zasobu zasad w usłudze jest używany do tworzenia następnej wersji KV certyfikatu. Należy pamiętać, że gdy żądanie do tworzenia następnej wersji jest w trakcie wykonywania bieżącego certyfikatu KV i odpowiadające im klucze mogą być adresowane i klucz tajny, pozostają bez zmian.  
+ Jeśli jest to pierwszy operację, aby utworzyć certyfikat KV, zasady są wymagane.  Zasady można również otrzymywać kolejne operacje, aby zastąpić zasób zasad tworzenia. Jeśli zasada nie zostanie podany, zasób zasad w usłudze jest używany do tworzenia następnej wersji KV certyfikatu. Należy zauważyć, że gdy żądanie do tworzenia następnej wersji jest w trakcie wykonywania bieżącego certyfikatu KV i odpowiedniego klucza adresowalnych i klucz tajny, pozostają bez zmian.  
 
-## <a name="self-issued-certificate"></a>Samodzielnie wystawiony certyfikat
- Aby utworzyć certyfikat wystawiony samodzielnie, Ustaw jako nazwa wystawcy "Auto" w zasadach certyfikatów, jak pokazano w poniższym fragmencie zasady dotyczące certyfikatów.  
+## <a name="self-issued-certificate"></a>Certyfikat wystawiony samodzielnie
+ Aby utworzyć własny wystawionego certyfikatu, ustaw nazwę wystawcy jako "Self" w zasadach certyfikatów, jak pokazano w poniższy fragment kodu z zasady dotyczące certyfikatów.  
 
 ```  
 "issuer": {  
@@ -72,7 +72,7 @@ Klucz adresowanego i klucz tajny odczytać atrybuty certyfikatu KV ich atrybutó
 
 ```  
 
- Jeśli nazwa wystawcy nie jest określony, nazwa wystawcy jest wartość "Nieznane". Gdy wystawcy nie jest "Nieznana", właściciela certyfikatu będzie musiał ręcznie pobrać x509 certyfikatu od wystawcy wybranego przez siebie, a następnie scalania x509 publicznego certyfikatu z magazynu kluczy certyfikatu oczekujących obiekt, aby zakończyć tworzenie certyfikatu.
+ Jeśli nie określono nazwy wystawcy, następnie nazwa wystawcy jest równa "Nieznane". Gdy wystawcy jest "Nieznana", właściciela certyfikatu będzie musiał ręcznie Pobierz x509 certyfikat od wystawcy wybranego przez siebie, a następnie scalania x509 publicznego certyfikatu z certyfikatem usługi key vault oczekujące obiekt, aby zakończyć tworzenie certyfikatu.
 
 ```  
 "issuer": {  
@@ -81,20 +81,20 @@ Klucz adresowanego i klucz tajny odczytać atrybuty certyfikatu KV ich atrybutó
 
 ```  
 
-## <a name="partnered-ca-providers"></a>Dostawców współpracę urzędu certyfikacji
-Tworzenie certyfikatu może być wykonane ręcznie lub używając "własnym" wystawcy. Magazyn kluczy także współpracuje z niektórych dostawcy wystawcy uproszczenie procesu tworzenia certyfikatów. Następujące typy certyfikatów może zostać określona dla magazynu kluczy z tych dostawców wystawcy partnera.  
+## <a name="partnered-ca-providers"></a>Dostawców utworzyły urzędu certyfikacji
+Tworzenie certyfikatu może być ukończone ręcznie lub przy użyciu "Self" wystawcy. Usługi Key Vault współpracuje również z niektórych dostawców wystawcy, ułatwiając tworzenie certyfikatów. Następujące typy certyfikatów może zostać określona dla usługi key vault przy użyciu tych dostawców wystawcy partnera.  
 
 |Dostawca|Typ certyfikatu|  
 |--------------|----------------------|  
-|DigiCert|Magazyn kluczy oferuje OV lub Weryfikacją certyfikatów SSL z DigiCert|
-|GlobalCert|Magazyn kluczy oferuje OV lub Weryfikacją certyfikatów SSL z GlobalSign|
+|DigiCert|Usługa Key Vault oferuje OV lub Weryfikacją certyfikatów SSL z firmy DigiCert|
+|GlobalCert|Usługa Key Vault oferuje OV lub Weryfikacją certyfikatów SSL z GlobalSign|
 
- Aby uzyskać więcej informacji, w tym dostępność tych dostawców wystawcy, zobacz [wystawców certyfikatów](/rest/api/keyvault/certificate-issuers.md).
+ Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
 
-Zauważ, że gdy jest zamówienie dostawcy wystawcy, mogą uznawać go lub zastąpienie x509 rozszerzenia certyfikatu i okres ważności certyfikatu na podstawie typu certyfikatu.  
+Należy pamiętać, że gdy zamówienie jest umieszczany za pomocą dostawcy wystawcy, jego może uwzględnić lub zastąpienie x509 rozszerzenia certyfikatu i okres ważności certyfikatu na podstawie typu certyfikatu.  
 
- Autoryzacji: Wymaga uprawnienia do tworzenia/certyfikatów.
+ Autoryzacja: Wymaga uprawnienia/tworzenia certyfikatów.
 
  ## <a name="see-also"></a>Zobacz też
- - [Temat kluczy, kluczy tajnych i certyfikatów](about-keys-secrets-and-certificates.md)
- - [Monitorowanie i zarządzanie nimi Tworzenie certyfikatu](create-certificate-scenarios.md)
+ - [Temat kluczy, wpisów tajnych i certyfikatów](about-keys-secrets-and-certificates.md)
+ - [Monitorowanie tworzenia certyfikatów i zarządzanie nim](create-certificate-scenarios.md)

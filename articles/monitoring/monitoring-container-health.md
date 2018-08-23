@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521935"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054179"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
 W tym artykule opisano sposób konfigurowania i używania usługi Azure Monitor kondycji kontenera w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i hostowanej na platformie Azure Kubernetes Service (AKS). Monitorowanie klastra Kubernetes i kontenerów usługi ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego na dużą skalę z wieloma aplikacjami.
 
-Kondycji kontenera zapewnia możliwość przez zbieranie pamięci i procesora metryki kontrolery, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki monitorowania wydajności. Po włączeniu kondycji kontenera, te metryki są automatycznie zbierane dla Ciebie za pośrednictwem konteneryzowanych wersję agenta Operations Management Suite (OMS) dla systemu Linux i przechowywane w swojej [usługi Log Analytics](../log-analytics/log-analytics-overview.md) obszaru roboczego. Dołączone wstępnie zdefiniowanych widoków wyświetlić przechowywanych obciążeń kontenerów i co wpływa na kondycji przedstawiający klaster Kubernetes wydajność tak aby można było przeprowadzić:  
+Kondycji kontenera zapewnia możliwość przez zbieranie pamięci i procesora metryki kontrolery, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki monitorowania wydajności. Po włączeniu kondycji kontenera, te metryki są automatycznie zbierane dla Ciebie za pośrednictwem konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux i przechowywane w swojej [usługi Log Analytics](../log-analytics/log-analytics-overview.md) obszaru roboczego. Dołączone wstępnie zdefiniowanych widoków wyświetlić przechowywanych obciążeń kontenerów i co wpływa na kondycji przedstawiający klaster Kubernetes wydajność tak aby można było przeprowadzić:  
 
 * Określ kontenery, które są uruchomione na węźle i ich średnie wykorzystanie procesora i pamięci. Ta wiedza może pomóc w identyfikacji wąskich gardeł zasobów.
 * Określ, gdzie kontenera znajduje się w kontrolerze lub zasobnik. Ta wiedza może ułatwić wyświetlanie kontrolera lub zasobnika na ogólną wydajność. 
@@ -38,13 +38,15 @@ Jeśli interesuje Cię monitorowania i zarządzania platformy Docker i Windows h
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 - Nowy lub istniejący klaster usługi AKS.
-- A kontenerowych nimi agenta pakietu OMS dla systemu Linux w wersji microsoft / oms:ciprod04202018 lub nowszej. Numer wersji jest reprezentowany przez datę w następującym formacie: *mmddyyyy*. Agent jest instalowany automatycznie podczas dołączania kondycji kontenera. 
+- Konteneryzowane agenta usługi Log Analytics dla wersji systemu Linux firmy microsoft / oms:ciprod04202018 lub nowszej. Numer wersji jest reprezentowany przez datę w następującym formacie: *mmddyyyy*. Agent jest instalowany automatycznie podczas dołączania kondycji kontenera. 
 - Obszar roboczy usługi Log Analytics. Włącz monitorowanie dla nowego klastra AKS lub pozwolić proces dołączania, Utwórz domyślny obszar roboczy w domyślnej grupie zasobów subskrypcji klastra AKS możesz go utworzyć. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 - Usługa Log Analytics roli Współautor, Włącz monitorowanie kontenera. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
 ## <a name="components"></a>Składniki 
 
-Możliwość monitorowania wydajności opiera się na konteneryzowanych agenta pakietu OMS dla systemu Linux, który służy do zbierania danych zdarzeń i wydajności ze wszystkich węzłów w klastrze. Agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics, po włączeniu monitorowanie kontenerów. 
+Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usługi Log Analytics dla systemu Linux, który służy do zbierania danych zdarzeń i wydajności ze wszystkich węzłów w klastrze. Agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics, po włączeniu monitorowanie kontenerów. 
 
 >[!NOTE] 
 >Jeśli masz już wdrożone w klastrze AKS, Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure lub podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta. 
@@ -59,7 +61,7 @@ Podczas wdrażania możesz włączyć monitorowanie nowy klaster AKS w witrynie 
 Aby włączyć monitorowanie nowy klaster AKS utworzone przy użyciu wiersza polecenia platformy Azure, przejdź do kroku w artykule przewodnika Szybki Start w sekcji [klastra AKS tworzenie](../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wiersza polecenia platformy Azure w wersji 2.0.43 musi być uruchomiona lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
 Po włączeniu monitorowania i wszystkie zadania konfiguracji zostaną ukończone pomyślnie, można monitorować wydajność klastra w jeden z dwóch sposobów:
@@ -303,7 +305,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>Agent w wersji wcześniejszej niż 06072018
 
-Aby sprawdzić, czy wersja agenta pakietu OMS wydanych przed *06072018* jest wdrażany prawidłowo, uruchom następujące polecenie:  
+Aby sprawdzić, czy wersja agenta usługi Log Analytics wydanych przed *06072018* jest wdrażany prawidłowo, uruchom następujące polecenie:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -501,7 +503,7 @@ Często jest to przydatne do tworzenia zapytań, które zaczynać się przykład
 | ContainerInventory<br> &#124;Projekt komputera, nazwa, obraz, ImageTag, ContainerState, wartością CreatedTime, StartedTime, FinishedTime<br> &#124;Renderowanie tabeli | Wyświetlić listę wszystkich informacji o cyklu życia kontenera| 
 | KubeEvents_CL<br> &#124;gdzie not(isempty(Namespace_s))<br> &#124;Sortuj według malejącej TimeGenerated<br> &#124;Renderowanie tabeli | Zdarzenia Kubernetes|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by obrazu, ImageTag, działa | Spis obrazów | 
-| **Advanced Analytics wybierz wykresów liniowych**:<br> Wydajności<br> &#124;Gdzie ObjectName == "Container" i CounterName == "% czasu procesora"<br> &#124;Podsumowanie AvgCPUPercent avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
+| **Advanced Analytics wybierz wykresów liniowych**:<br> Perf<br> &#124;Gdzie ObjectName == "Container" i CounterName == "% czasu procesora"<br> &#124;Podsumowanie AvgCPUPercent avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
 | **Advanced Analytics wybierz wykresów liniowych**:<br> Perf &#124; gdzie ObjectName == "Container" i CounterName == "MB użycia pamięci"<br> &#124;Podsumowanie AvgUsedMemory avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Pamięci kontenera |
 
 ## <a name="how-to-stop-monitoring-with-container-health"></a>Jak zatrzymać monitorowanie za pomocą programu health kontenera

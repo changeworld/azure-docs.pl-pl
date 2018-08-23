@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie Azure Data Lake Analytics przy użyciu języka Python
-description: W tym artykule opisano, jak zarządzać kont usługi Data Lake Analytics, źródła danych, użytkowników i zadań za pomocą języka Python.
+title: Zarządzanie przy użyciu języka Python usługi Azure Data Lake Analytics
+description: W tym artykule opisano sposób zarządzania kont, źródła danych, użytkowników i zadania usługi Data Lake Analytics przy użyciu języka Python.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -10,41 +10,41 @@ editor: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 2f3912069b54b3ad761493f02336d8d58866f53a
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c6f97f7bad6eada962623e7efc5d7ed010dc9ebe
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261464"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060691"
 ---
-# <a name="manage-azure-data-lake-analytics-using-python"></a>Zarządzanie Azure Data Lake Analytics przy użyciu języka Python
+# <a name="manage-azure-data-lake-analytics-using-python"></a>Zarządzanie przy użyciu języka Python usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-W tym artykule opisano sposób zarządzania kont usługi Azure Data Lake Analytics, źródeł danych użytkowników i zadań za pomocą języka Python.
+W tym artykule opisano sposób zarządzania kontami usługi Azure Data Lake Analytics, źródła danych, użytkowników i zadań przy użyciu języka Python.
 
 ## <a name="supported-python-versions"></a>Obsługiwane wersje języka Python
 
-* Użyj 64-bitowej wersji języka Python.
-* Można użyć standardowego dystrybucję oprogramowania Python znaleźć pod adresem  **[pobiera Python.org](https://www.python.org/downloads/)**. 
-* Wielu deweloperów znaleźć łatwe w użyciu  **[dystrybucję oprogramowania Python Anaconda](https://www.continuum.io/downloads)**.  
-* Ten artykuł dotyczy przy użyciu języka Python w wersji 3,6 z standardowe dystrybucję oprogramowania Python
+* Należy użyć 64-bitowej wersji środowiska Python.
+* Można użyć standardowego adrese dystrybucji Python  **[Python.org pliki do pobrania](https://www.python.org/downloads/)**. 
+* Wielu programistów uznaje wygodny w użyciu  **[dystrybucji Anaconda Python](https://www.anaconda.com/download/)**.  
+* W tym artykule został napisany, przy użyciu języka Python w wersji 3.6 z standardowa dystrybucji języka Python
 
 ## <a name="install-azure-python-sdk"></a>Instalowanie zestawu Azure Python SDK
 
-Instalowanie następujących modułów:
+Zainstaluj następujące moduły:
 
-* **Zasobów azure-mgmt** moduł zawiera inne moduły Azure Active Directory itp.
-* **Azure datalake magazynu** moduł zawiera operacje systemu plików usługi Azure Data Lake Store. 
-* **Azure-mgmt-datalake magazynu** moduł zawiera operacji zarządzania kontem usługi Azure Data Lake Store.
-* **Azure-mgmt-datalake-analytics** moduł zawiera operacje usługi Azure Data Lake Analytics. 
+* **Azure-mgmt-resource** moduł obejmuje inne moduły platformy Azure dla usługi Active Directory itp.
+* **Azure-datalake-store** modułu obejmuje operacje systemu plików usługi Azure Data Lake Store. 
+* **Azure-mgmt-datalake-store** modułu obejmuje operacje zarządzania kontem usługi Azure Data Lake Store.
+* **Azure-mgmt-datalake-analytics** moduł obejmuje operacje usługi Azure Data Lake Analytics. 
 
-Najpierw upewnij się, masz najnowszą `pip` , uruchamiając następujące polecenie:
+Najpierw upewnij się, że najnowsze `pip` , uruchamiając następujące polecenie:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Ten dokument został zapisany przy użyciu `pip version 9.0.1`.
+Tego dokumentu została opracowana za pomocą `pip version 9.0.1`.
 
 Należy użyć następującego `pip` polecenia, aby zainstalować moduły w wierszu polecenia:
 
@@ -55,7 +55,7 @@ pip install azure-mgmt-datalake-store
 pip install azure-mgmt-datalake-analytics
 ```
 
-## <a name="create-a-new-python-script"></a>Utwórz nowy skrypt w języku Python
+## <a name="create-a-new-python-script"></a>Utwórz nowy skrypt języka Python
 
 Wklej następujący kod do skryptu:
 
@@ -92,11 +92,11 @@ from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManage
 import logging, getpass, pprint, uuid, time
 ```
 
-Uruchom ten skrypt, aby zweryfikować, że można zaimportować moduły.
+Uruchom ten skrypt, aby zweryfikować, że mogą zostać zaimportowane moduły.
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="interactive-user-authentication-with-a-pop-up"></a>Interakcyjnego uwierzytelniania użytkownika z okno podręczne
+### <a name="interactive-user-authentication-with-a-pop-up"></a>Interakcyjnego uwierzytelniania użytkownika przy użyciu wyskakującego okienka
 
 Ta metoda nie jest obsługiwana.
 
@@ -108,17 +108,17 @@ password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
 
-### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Uwierzytelnianie nieinteraktywne SPI i klucz tajny
+### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Uwierzytelnianie nieinteraktywne przy użyciu SPI i klucz tajny
 
 ```python
 credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
 ```
 
-### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Uwierzytelnianie nieinteraktywne za pomocą interfejsu API i certyfikatu
+### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Nieinteraktywnych uwierzytelnianie przy użyciu interfejsu API i certyfikatu
 
 Ta metoda nie jest obsługiwana.
 
-## <a name="common-script-variables"></a>Typowe zmienne skryptu
+## <a name="common-script-variables"></a>Wspólne zmienne skryptu
 
 Te zmienne są używane w przykładach.
 
@@ -130,7 +130,7 @@ adls = '<Azure Data Lake Store Account Name>'
 adla = '<Azure Data Lake Analytics Account Name>'
 ```
 
-## <a name="create-the-clients"></a>Utwórz klientów
+## <a name="create-the-clients"></a>Tworzenie klientów
 
 ```python
 resourceClient = ResourceManagementClient(credentials, subid)
@@ -157,7 +157,7 @@ adlsAcctResult = adlsAcctClient.account.create(
     )
 ).wait()
 ```
-Następnie utwórz konto ADLA, która używa tego magazynu.
+Następnie utwórz konto ADLA, który używa tego magazynu.
 
 ```python
 adlaAcctResult = adlaAcctClient.account.create(
@@ -171,7 +171,7 @@ adlaAcctResult = adlaAcctClient.account.create(
 ).wait()
 ```
 
-## <a name="submit-a-job"></a>Prześlij zadanie
+## <a name="submit-a-job"></a>Przesyłanie zadania
 
 ```python
 script = """
@@ -211,8 +211,8 @@ while(jobResult.state != JobState.ended):
 print ('Job finished with result: ' + jobResult.result.value)
 ```
 
-## <a name="list-pipelines-and-recurrences"></a>Potoki listy i powtórzeń
-W zależności od tego, czy Twoje zadania mają potoku lub ponownego metadanych dołączony, można wyświetlić listę potoki i powtórzeń.
+## <a name="list-pipelines-and-recurrences"></a>Listy potoków i cykli
+Zależności, czy zadania mają metadanych potoku lub cykliczny, dołączony, możesz wyświetlić listę potoków i cykli.
 
 ```python
 pipelines = adlaJobClient.pipeline.list(adla)
@@ -226,11 +226,11 @@ for r in recurrences:
 
 ## <a name="manage-compute-policies"></a>Zarządzanie zasadami obliczeń
 
-Obiekt DataLakeAnalyticsAccountManagementClient zapewnia metody do zarządzania zasadami obliczeniowe dla konta usługi Data Lake Analytics.
+Obiekt DataLakeAnalyticsAccountManagementClient zapewnia metody do zarządzania zasadami obliczeń dla konta usługi Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Podać zasady obliczeń
 
-Poniższy kod pobiera listę zasad obliczeniowe dla konta usługi Data Lake Analytics.
+Poniższy kod pobiera listę zasad obliczeń dla konta usługi Data Lake Analytics.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
@@ -240,7 +240,7 @@ for p in policies:
 
 ### <a name="create-a-new-compute-policy"></a>Utwórz nowe zasady obliczeń
 
-Poniższy kod tworzy nową zasadę obliczeniowe dla konta usługi Data Lake Analytics, ustawienie maksymalnej AUs, dostępne do określonego użytkownika do 50, a także priorytet zadania minimalna 250.
+Poniższy kod tworzy nową zasadę obliczeń dla konta usługi Data Lake Analytics, ustawienie maksymalna liczba jednostek alokacji, dostępne dla określonego użytkownika na 50 i priorytet minimalny zadania do 250.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"

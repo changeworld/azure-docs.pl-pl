@@ -3,20 +3,20 @@ title: Poziomy spójności w usłudze Azure Cosmos DB | Dokumentacja firmy Micro
 description: Usługa Azure Cosmos DB ma pięć poziomów spójności, aby ułatwić równoważenie ostatecznej spójnością, dostępnością i opóźnieniem wad i zalet.
 keywords: eventual consistency, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.author: sngun
+ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8d95790dc09f6d26c6ae749ed0cd386053c5cb35
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857188"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058180"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności dostosowania danych w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB została zaprojektowana od podstaw się o globalnej dystrybucji, należy pamiętać, dla każdego modelu danych. Jest przeznaczony do oferty gwarancje przewidywalne małe opóźnienia i wiele dobrze zdefiniowanych swobodna modeli spójności. Obecnie usługa Azure Cosmos DB oferuje pięć poziomów spójności: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Powiązana nieaktualność, sesja, spójny prefiks i ostateczna są określane jako "modele rozluźnionej spójności", ponieważ zapewniają one mniej spójności od jego siły, czyli większość wysoce spójny model, dostępne. 
@@ -132,7 +132,7 @@ Jeśli chcesz zrobić więcej informacje o poziomy spójności i wady, zaleca si
 * [Wyjaśnienie pojęcia spójności danych replikowanych baseballu (wideo) przez Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
 * [Wyjaśnienie pojęcia spójności danych replikowanych baseballu (dokument oficjalny) przez Doug Terry](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 * [Sesja gwarancje słabo spójności replikowanych danych](http://dl.acm.org/citation.cfm?id=383631)
-* [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 * [Ostateczna spójne — poprawiony](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 * [Obciążenia, wydajność i dostępność systemów kworum dziennika SIAM obliczeniowych](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)

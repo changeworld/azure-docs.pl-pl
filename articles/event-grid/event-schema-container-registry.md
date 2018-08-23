@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 08/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ed918a7402abcbe79e302421f3b2ac725857464
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188785"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054365"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Schemat zdarzeń Azure Event Grid dla rejestru kontenerów
 
@@ -114,11 +114,9 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | id | ciąg | Identyfikator zdarzenia. |
 | sygnatura czasowa | ciąg | Czas, w którym wystąpiło zdarzenie. |
-| action | ciąg | Akcja, która obejmuje podanego zdarzenia. |
+| akcja | ciąg | Akcja, która obejmuje podanego zdarzenia. |
 | cel | obiekt | Obiekt docelowy zdarzenia. |
 | wyślij żądanie | obiekt | Żądanie, który wygenerował zdarzenie. |
-| aktora | obiekt | Agent, który zainicjował zdarzenie. W większości sytuacji ta wartość może być w kontekście autoryzacji żądania. |
-| source | obiekt | Węzeł rejestru, który wygenerował zdarzenie. Mówiąc inaczej, gdy aktora inicjuje zdarzenia, źródło generuje go. |
 
 Obiekt docelowy ma następujące właściwości:
 
@@ -129,7 +127,6 @@ Obiekt docelowy ma następujące właściwości:
 | Podsumowanie | ciąg | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
 | Długość | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
 | Repozytorium | ciąg | Nazwa repozytorium. |
-| url | ciąg | Bezpośredni adres URL zawartości. |
 | tag | ciąg | Nazwa tagu. |
 
 Obiekt żądania ma następujące właściwości:
@@ -141,19 +138,6 @@ Obiekt żądania ma następujące właściwości:
 | host | ciąg | Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta http na żądań przychodzących. |
 | method | ciąg | Metoda żądania, który wygenerował zdarzenie. |
 | USERAGENT | ciąg | Nagłówek agenta użytkownika żądania. |
-
-Obiekt aktora ma następujące właściwości:
-
-| Właściwość | Typ | Opis |
-| -------- | ---- | ----------- |
-| name | ciąg | Temat lub nazwę użytkownika skojarzoną z kontekstem żądania, który wygenerował zdarzenie. |
-
-Obiekt źródłowy ma następujące właściwości:
-
-| Właściwość | Typ | Opis |
-| -------- | ---- | ----------- |
-| addr | ciąg | Adres IP lub nazwa hosta i port węzła rejestru, który wygenerował zdarzenie. Ogólnie rzecz biorąc ta wartość zostanie rozpoznana przez system operacyjny. Hostname() wraz z portem uruchomione. |
-| Identyfikator wystąpienia | ciąg | Uruchomione wystąpienie aplikacji. Zmiany lub Anuluj po każdym ponownym uruchomieniu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

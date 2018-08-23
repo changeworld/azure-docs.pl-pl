@@ -1,6 +1,6 @@
 ---
-title: Wywołanie i odpowiedź — Java — Szybki Start dla usługi kognitywnych Azure, interfejsu API Bing obraz wyszukiwania | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing obrazu w kognitywnych usług Microsoft Azure.
+title: 'Szybki Start: Zapytania wyszukiwania wysyłania korzystanie z interfejsu API REST dla interfejsu API wyszukiwania obrazów Bing i języka Java'
+description: W tym przewodniku Szybki Start możesz wysyłać zapytania wyszukiwania interfejsu API wyszukiwania Bing w celu uzyskania listy odpowiednie obrazy za pomocą języka Java.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,33 +9,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 658025e997f27a3974b473e5c556780733d68045
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d779bae099bde5b015ee8316906ace77c0ad3bb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348992"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987503"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-java"></a>Wywołania i odpowiedzi: pierwszego zapytania wyszukiwania usługi Bing obrazu w języku Java
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-java"></a>Szybki Start: Wysyłania zapytania przy użyciu interfejsu API REST i Java
 
-Interfejsu API wyszukiwania usługi Bing obraz zawiera środowisko podobne do Bing.com/Images, umożliwiając Wysyłanie zapytania wyszukiwania użytkownika do usługi Bing i wrócić listę odpowiednich obrazów.
+Interfejs API wyszukiwania obrazów Bing udostępnia środowisko podobne do Bing.com/Images, umożliwiając Wysyłanie zapytania wyszukiwania użytkowników do usługi Bing i uzyskanie listy odpowiednie obrazy.
 
-Ten artykuł zawiera prostej aplikacji konsolowej wykonuje zapytania interfejsu API Bing obraz wyszukiwania, który wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Ta aplikacja jest napisany w języku Java, interfejsu API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+Ten artykuł zawiera prostą aplikację konsolową, która wykonuje kwerendę interfejsu API wyszukiwania obrazów Bing i wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Podczas tej aplikacji został napisany w języku Java, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz element ulubiony, ale wystarczy edytora tekstu, może używać IDE języka Java.
+Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz Ulubione, ale wystarczy edytora tekstów, można użyć Java IDE.
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
-1. Pobierz i zainstaluj [gson biblioteki](https://github.com/google/gson). Mogą również uzyskać za pośrednictwem Maven.
-2. Utwórz nowy projekt języka Java w ulubionych IDE lub edytora.
+1. Pobierz i zainstaluj [biblioteki gson](https://github.com/google/gson). Może również uzyskać za pomocą narzędzia Maven.
+2. Utwórz nowy projekt języka Java w Twoim ulubionym środowiskiem IDE lub edytora.
 3. Dodaj kod podany w pliku o nazwie `BingImageSearch.java`.
-4. Zastąp `subscriptionKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+4. Zastąp `subscriptionKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 5. Uruchom program.
 
 ```java
@@ -154,7 +154,7 @@ class SearchResults{
 
 ## <a name="json-response"></a>Odpowiedź w formacie JSON
 
-Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyświetlany tylko jeden wynik i inne części odpowiedzi zostały obcięte. 
+Następuje przykładowej odpowiedzi. Aby ograniczyć długość za pomocą pliku JSON, tylko jeden wynik jest wyświetlany, a inne części odpowiedzi zostały obcięte. 
 
 ```json
 {
@@ -243,11 +243,11 @@ Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyśw
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek aplikacji jednej strony wyszukiwania usługi Bing obrazu](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Omówienie wyszukiwania usługi Bing obrazu](../overview.md)  
+[Przegląd wyszukiwania obrazów Bing](../overview.md)  
 [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Pobierz klucz bezpłatnej wersji próbnej dostępu](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Dokumentacja interfejsu API Bing obraz wyszukiwania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

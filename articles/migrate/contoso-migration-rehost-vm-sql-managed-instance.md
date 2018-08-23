@@ -1,20 +1,8 @@
+---Tytuł danych: ponowne hostowanie aplikacji w środowisku lokalnym firmy Contoso, migrując maszyny wirtualne platformy Azure i wystąpienia zarządzanego Azure SQL Database | Microsoft Docs description: Dowiedz się, jak Contoso rehostowaniu aplikację w środowisku lokalnym, na maszynach wirtualnych platformy Azure, a za pomocą wystąpienia zarządzanego Azure SQL Database.
+usługi: Autor usługa site recovery: rayne wiselman Menedżera: carmonm ms.service: ms.topic usługa site recovery: koncepcyjny ms.date: 08/13/2018 ms.author: raynew
+
 ---
-title: Ponowne hostowanie aplikacji w środowisku lokalnym firmy Contoso, migrując maszyny wirtualne platformy Azure i wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Contoso rehostowaniu aplikację w środowisku lokalnym, na maszynach wirtualnych platformy Azure, a za pomocą wystąpienia zarządzanego Azure SQL Database.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 07/12/2018
-ms.author: raynew
-ms.openlocfilehash: 3e3f8dffbaa7109423aacdbfbaa658bada8bb84a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215343"
----
+
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
 W tym artykule Contoso przeprowadza migrację swoich aplikacji SmartHotel maszyny Wirtualnej frontonu na Maszynie wirtualnej platformy Azure przy użyciu usługi Azure Site Recovery. Contoso wykonuje także migrację bazy danych aplikacji do wystąpienia zarządzanego Azure SQL Database.
@@ -94,7 +82,7 @@ W tym scenariuszu:
 
 Usługa | Opis | Koszty
 --- | --- | ---
-[Usługa zarządzania bazy danych](https://docs.microsoft.com/azure/dms/dms-overview) | Usługa zarządzania bazy danych umożliwia bezproblemową migrację z wielu źródłowych baz danych do platformy danych Azure przy minimalnych przestojach. | Dowiedz się więcej o [obsługiwane regiony](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) i [cennika bazy danych usługi zarządzania](https://azure.microsoft.com/pricing/details/database-migration/).
+[Usługa migracji bazy danych](https://docs.microsoft.com/azure/dms/dms-overview) | Usługa migracji bazy danych umożliwia bezproblemową migrację z wielu źródłowych baz danych do platformy danych Azure przy minimalnych przestojach. | Dowiedz się więcej o [obsługiwane regiony](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) i [cennik usługi Database Migration Service](https://azure.microsoft.com/pricing/details/database-migration/).
 [Wystąpienie zarządzane usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Wystąpienie zarządzane to usługa zarządzana baza danych, która reprezentuje w pełni zarządzane wystąpienia programu SQL Server w chmurze platformy Azure. Używa tego samego kodu jako najnowszą wersję aparatu bazy danych programu SQL Server i zawierają najnowsze funkcje, ulepszeń wydajności i poprawek zabezpieczeń. | Za pomocą wystąpienia zarządzanego SQL Database działających na platformie Azure spowoduje naliczenie opłaty na podstawie pojemności. Dowiedz się więcej o [wystąpieniu zarządzanym kalkulacji cen](https://azure.microsoft.com/pricing/details/sql-database/managed/). 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Usługa Site Recovery organizuje i zarządza migracji i odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure i lokalnych maszyn wirtualnych i serwerów fizycznych.  | Podczas replikacji do platformy Azure są naliczane opłaty za magazyn Azure.  Maszyny wirtualne platformy Azure są tworzone i opłaty za operacje po przejściu do trybu failover. Dowiedz się więcej o [Site Recovery, opłaty i ceny](https://azure.microsoft.com/pricing/details/site-recovery/).
 
@@ -117,7 +105,7 @@ Wymagania | Szczegóły
 **Zarejestruj się w wersji zapoznawczej wystąpienia zarządzanego** | Użytkownik musi zostać zarejestrowany w wystąpieniu zarządzanym bazy danych SQL ograniczonej publicznej wersji zapoznawczej. Musisz mieć subskrypcję platformy Azure do [Zarejestruj](https://portal.azure.com#create/Microsoft.SQLManagedInstance). Rejestracja może potrwać kilka dni, aby ukończyć, dlatego upewnij się się zarejestrować, przed rozpoczęciem wdrażania tego scenariusza.
 **Subskrypcja platformy Azure** | Powinna już utworzono subskrypcję podczas wykonywania oceny w pierwszym artykułu w tej serii. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Jeśli bezpłatne konto właśnie zostało utworzone, jesteś administratorem subskrypcji i możesz wykonywać wszystkie akcje.<br/><br/> Jeśli używasz istniejącej subskrypcji i nie jesteś administratorem subskrypcji, należy skontaktować się z administratorem w celu uprawnień właściciela lub współautora.<br/><br/> Jeśli potrzebujesz bardziej szczegółowych uprawnień, zobacz [zarządzanie dostępem Site Recovery za pomocą kontroli dostępu opartej na rolach](../site-recovery/site-recovery-role-based-linked-access-control.md). 
 **Usługa Site Recovery (lokalnego)** | Wystąpienie serwera vCenter w środowisku lokalnym powinna działać w wersji 5.5, 6.0 lub 6.5<br/><br/> Host ESXi w wersji 5.5, 6.0 lub 6.5<br/><br/> Co najmniej jeden maszyn wirtualnych programu VMware działające na hoście ESXi.<br/><br/> Maszyny wirtualne muszą spełniać [wymagania dotyczące usługi Azure](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).<br/><br/> Obsługiwane [sieci](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) i [magazynu](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) konfiguracji.
-**Usługa zarządzania bazy danych** | Usługa zarządzania bazy danych należy [zgodne lokalnego urządzenia sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Należy skonfigurować lokalne urządzenie sieci VPN. Musi mieć publiczny adres IPv4 dołączonej do Internetu. Adres nie może znajdować się za urządzeniem translatora adresów Sieciowych.<br/><br/> Upewnij się, że masz dostęp do lokalnej bazy danych programu SQL Server.<br/><br/> Zapora Windows powinien móc dostęp do aparatu bazy danych źródłowych. Dowiedz się, jak [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> W przypadku zapory przed komputerze bazy danych, Dodaj reguły, aby zezwolić na dostęp do bazy danych i plików za pośrednictwem portu 445 SMB.<br/><br/> Poświadczenia, które są używane, aby nawiązać połączenie z wystąpieniem programu SQL Server i obiektu docelowego wystąpienia zarządzanego muszą być członkami roli serwera sysadmin.<br/><br/> Potrzebujesz sieci udostępnianie w sieci lokalnej bazy danych usługi zarządzania bazy danych można użyć do utworzenia kopii zapasowej źródłowej bazy danych.<br/><br/> Upewnij się, że konto usługi, uruchamiające źródłowe wystąpienie programu SQL Server ma uprawnienia do zapisu w udziale sieciowym.<br/><br/> Zanotuj Windows użytkownika i hasło, które ma uprawnienia pełnej kontroli w udziale sieciowym. Usługa bazy danych zarządzania personifikuje te poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage.<br/><br/> Proces instalacji programu SQL Server Express protokół TCP/IP ustawia **wyłączone** domyślnie. Upewnij się, że jest włączone.
+**Usługa migracji bazy danych** | Usługa migracji bazy danych należy [zgodne lokalnego urządzenia sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Należy skonfigurować lokalne urządzenie sieci VPN. Musi mieć publiczny adres IPv4 dołączonej do Internetu. Adres nie może znajdować się za urządzeniem translatora adresów Sieciowych.<br/><br/> Upewnij się, że masz dostęp do lokalnej bazy danych programu SQL Server.<br/><br/> Zapora Windows powinien móc dostęp do aparatu bazy danych źródłowych. Dowiedz się, jak [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> W przypadku zapory przed komputerze bazy danych, Dodaj reguły, aby zezwolić na dostęp do bazy danych i plików za pośrednictwem portu 445 SMB.<br/><br/> Poświadczenia, które są używane, aby nawiązać połączenie z wystąpieniem programu SQL Server i obiektu docelowego wystąpienia zarządzanego muszą być członkami roli serwera sysadmin.<br/><br/> Potrzebujesz sieci udostępnianie w sieci lokalnej bazy danych usługi migracji bazy danych umożliwia tworzenie kopii zapasowej źródłowej bazy danych.<br/><br/> Upewnij się, że konto usługi, uruchamiające źródłowe wystąpienie programu SQL Server ma uprawnienia do zapisu w udziale sieciowym.<br/><br/> Zanotuj Windows użytkownika i hasło, które ma uprawnienia pełnej kontroli w udziale sieciowym. Usługa migracji bazy danych personifikuje te poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage.<br/><br/> Proces instalacji programu SQL Server Express protokół TCP/IP ustawia **wyłączone** domyślnie. Upewnij się, że jest włączone.
 
 ## <a name="scenario-steps"></a>Kroki w scenariuszu
 
@@ -125,11 +113,11 @@ Poniżej przedstawiono, jak firma Contoso zamierza skonfigurowania wdrożenia:
 
 > [!div class="checklist"]
 > * **Krok 1: Konfigurowanie wystąpienia zarządzanego SQL Database**: firma Contoso potrzebuje wstępnie utworzone wystąpienie zarządzane do którego zostanie przeprowadzona migracja bazy danych programu SQL Server w środowisku lokalnym.
-> * **Krok 2: Przygotowanie usługi zarządzania bazy danych**: Contoso należy zarejestrować dostawcę migracji bazy danych, Utwórz wystąpienie, a następnie utwórz projekt bazy danych zarządzania usługi. Contoso również należy zdefiniować sygnatury dostępu współdzielonego (SAS) identyfikator (URI) dla usługi zarządzania bazy danych. Identyfikator URI sygnatury dostępu Współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu firmy Contoso, więc Contoso można przyznać dostęp jest ograniczony do magazynu obiektów. Contoso konfiguruje identyfikatora URI połączenia SAS, dzięki czemu usługa zarządzania bazy danych można uzyskać dostępu do kontenera konta magazynu, do którego usługa przekazuje te pliki kopii zapasowej programu SQL Server.
+> * **Krok 2: Przygotowanie Database Migration Service**: Contoso należy zarejestrować dostawcę migracji bazy danych, Utwórz wystąpienie, a następnie utwórz projekt usługi Database Migration Service. Contoso również należy zdefiniować sygnatury dostępu współdzielonego (SAS) identyfikator (URI) dla usługi migracji bazy danych. Identyfikator URI sygnatury dostępu Współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu firmy Contoso, więc Contoso można przyznać dostęp jest ograniczony do magazynu obiektów. Contoso konfiguruje identyfikatora URI połączenia SAS, dzięki czemu usługa migracji bazy danych mogą uzyskiwać dostęp do kontenera konta magazynu, do którego usługa przekazuje te pliki kopii zapasowej programu SQL Server.
 > * **Krok 3: Przygotowywanie platformy Azure dla usługi Site Recovery**: Contoso musi utworzyć konto magazynu do przechowywania replikowanych danych dla usługi Site Recovery. On również utworzyć magazyn usługi Azure Recovery Services.
 > * **Krok 4: Przygotowanie lokalnego wdrożenia oprogramowania VMware do odzyskiwania lokacji**: Contoso będzie przygotowania kont dla maszyny Wirtualnej odnajdywanie i zainstalować agenta nawiązać połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover.
 > * **Krok 5: Replikowanie maszyn wirtualnych**: Aby skonfigurować replikację, Contoso konfigurowania środowisk źródłowych i docelowych odzyskiwania lokacji, konfiguruje zasady replikacji i rozpoczyna się replikowanie maszyn wirtualnych do usługi Azure Storage.
-> * **Krok 6: Migrację bazy danych przy użyciu usługi zarządzania bazy danych**: Contoso przeprowadzanie migracji baz danych.
+> * **Krok 6: Migrację bazy danych przy użyciu usługi migracji bazy danych**: Contoso przeprowadzanie migracji baz danych.
 > * **Krok 7: Migracji maszyn wirtualnych przy użyciu usługi Site Recovery**: Contoso uruchamia test trybu failover, aby sprawdzić, czy wszystko działa. Następnie Contoso uruchamia tryb failover pełnej migracji maszyn wirtualnych na platformie Azure.
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>Krok 1: Przygotowanie wystąpienie zarządzane bazy danych SQL
@@ -229,36 +217,36 @@ Teraz firma Contoso może aprowizować wystąpienie zarządzane bazy danych SQL:
 
 Dowiedz się, jak [aprowizowania wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal).
 
-## <a name="step-2-prepare-the-database-management-service"></a>Krok 2: Przygotowanie usługi zarządzania bazy danych
+## <a name="step-2-prepare-the-database-migration-service"></a>Krok 2: Przygotowanie usługi migracji bazy danych
 
-Aby przygotować usługę zarządzania bazy danych, Contoso musi wykonać kilka czynności:
+Aby przygotować usługę migracji bazy danych, Contoso musi wykonać kilka czynności:
 
-- Zarejestruj dostawcę usługi zarządzania bazy danych na platformie Azure.
-- Zapewnia usługi zarządzania bazy danych z dostępem do usługi Azure Storage przekazywania plików kopii zapasowej, które są używane do migracji bazy danych. Aby zapewnić dostęp do usługi Azure Storage, Contoso tworzy kontener usługi Azure Blob storage. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego dla kontenera magazynu obiektów Blob. 
-- Utwórz projekt bazy danych usługi zarządzania.
+- Zarejestruj dostawcę usługi Database Migration Service na platformie Azure.
+- Udostępnij Database Migration Service dostęp do usługi Azure Storage służącego do przekazywania plików kopii zapasowej, które są używane do migracji bazy danych. Aby zapewnić dostęp do usługi Azure Storage, Contoso tworzy kontener usługi Azure Blob storage. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego dla kontenera magazynu obiektów Blob. 
+- Utwórz projekt usługi Database Migration Service.
 
 Następnie Contoso wykonuje następujące czynności:
 
 1. Contoso rejestruje dostawcy migracji bazy danych w ramach swojej subskrypcji.
-    ![Składnik Usługa zarządzania bazy danych — Zarejestruj się](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
+    ![Usługa migracji bazy danych — Zarejestruj się](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso tworzy kontener magazynu obiektów Blob. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego, aby usługa zarządzania bazy danych do niego dostęp.
+2. Contoso tworzy kontener magazynu obiektów Blob. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego, aby usługa migracji bazy danych do niego dostęp.
 
-    ![Usługę zarządzania bazy danych — Generowanie identyfikatora URI sygnatury dostępu Współdzielonego](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
+    ![Usługę migracji bazy danych — Generowanie identyfikatora URI sygnatury dostępu Współdzielonego](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso tworzy wystąpienie bazy danych usługi zarządzania. 
+3. Contoso tworzy wystąpienie usługi Database Migration Service. 
 
-    ![Usługę zarządzania bazy danych — tworzenie wystąpienia](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
+    ![Usługę migracji bazy danych — tworzenie wystąpienia](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Contoso umieszcza wystąpienia bazy danych usługi zarządzania w **EUS2-PROD-DC** podsieci **sieć wirtualna-PROD-DC — EUS2** sieci wirtualnej.
-    - Contoso umieszcza usługi zarządzania bazy danych istnieje, ponieważ usługa musi znajdować się w sieci wirtualnej, które mogą uzyskiwać dostęp do maszyny Wirtualnej serwera SQL w środowisku lokalnym za pośrednictwem bramy sieci VPN.
-    - **VNET-PROD-EUS2** jest połączona z **VNET-HUB-EUS2** i będzie mógł korzystać z bram zdalnych. **Użyj bram zdalnych** opcja gwarantuje, że usługa bazy danych zarządzania może komunikować się zgodnie z potrzebami.
+4. Contoso umieszcza wystąpienia usługi Database Migration Service w **EUS2-PROD-DC** podsieci **sieć wirtualna-PROD-DC — EUS2** sieci wirtualnej.
+    - Contoso umieszcza usługa migracji bazy danych, ponieważ usługa musi znajdować się w sieci wirtualnej, które mogą uzyskiwać dostęp do maszyny Wirtualnej serwera SQL w środowisku lokalnym za pośrednictwem bramy sieci VPN.
+    - **VNET-PROD-EUS2** jest połączona z **VNET-HUB-EUS2** i będzie mógł korzystać z bram zdalnych. **Użyj bram zdalnych** opcja gwarantuje, że usługa migracji bazy danych może komunikować się zgodnie z potrzebami.
 
-        ![Usługę zarządzania bazy danych — Konfigurowanie sieci](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
+        ![Usługę migracji bazy danych — Konfigurowanie sieci](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
 
 *Potrzebujesz dodatkowej pomocy?*
 
-- Dowiedz się, jak [Konfigurowanie bazy danych usługi zarządzania](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
+- Dowiedz się, jak [Konfigurowanie Database Migration Service](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
 - Dowiedz się, jak [tworzenie i używanie sygnatury dostępu Współdzielonego](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 
@@ -451,15 +439,15 @@ Teraz firma Contoso może rozpocząć replikowanie WebVM.
 
 Może odczytywać kompletnym instruktażem następujące kroki w [włączyć replikację](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
-## <a name="step-6-migrate-the-database-by-using-the-database-management-service"></a>Krok 6: Migrację bazy danych przy użyciu usługi zarządzania bazy danych
+## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>Krok 6: Migrację bazy danych przy użyciu usługi migracji bazy danych
 
-Firma Contoso potrzebuje do tworzenia projektu usługi zarządzania bazy danych, a następnie Migruj bazy danych.
+Firma Contoso potrzebuje utworzyć projekt usługi Database Migration Service, a następnie przeprowadzić migrację bazy danych.
 
-### <a name="create-a-database-management-service-project"></a>Utwórz projekt bazy danych usługi zarządzania
+### <a name="create-a-database-migration-service-project"></a>Utwórz projekt usługi Database Migration Service
 
-1. Contoso utworzy projekt usługi zarządzania bazy danych. Wybiera contoso **programu SQL Server** typ serwera źródłowego. Wybiera contoso **wystąpienia zarządzanego Azure SQL Database** jako element docelowy.
+1. Contoso tworzy projekt usługi Database Migration Service. Wybiera contoso **programu SQL Server** typ serwera źródłowego. Wybiera contoso **wystąpienia zarządzanego Azure SQL Database** jako element docelowy.
 
-     ![Składnik Usługa zarządzania bazy danych — nowy projekt migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
+     ![Usługa migracji bazy danych — nowy projekt migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
 2. Zostanie otwarty Kreator migracji.
 
@@ -467,34 +455,34 @@ Firma Contoso potrzebuje do tworzenia projektu usługi zarządzania bazy danych,
 
 1. W Kreatorze migracji Contoso określa źródłowej maszyny Wirtualnej, na którym znajduje się baza danych w środowisku lokalnym. Firmy Contoso przechodzi poświadczenia, które mają dostęp do bazy danych.
 
-    ![Składnik Usługa zarządzania bazy danych — Szczegóły źródła](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
+    ![Usługa migracji bazy danych — Szczegóły źródła](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
 2. Contoso wybiera bazę danych do migracji (**SmartHotel.Registration**):
 
-    ![Składnik Usługa zarządzania bazy danych — wybierz źródłowe bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
+    ![Usługa migracji bazy danych — wybierz źródłowe bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
 3. Dla elementu docelowego firmy Contoso przechodzi nazwę wystąpienia zarządzanego na platformie Azure. Contoso wprowadza poświadczenia dostępu do wystąpienia zarządzanego.
 
-    ![Składnik Usługa zarządzania bazy danych — szczegóły elementu docelowego](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
+    ![Usługa migracji bazy danych — szczegóły elementu docelowego](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
 4. W **nowe działanie** > **Uruchamianie migracji**, Contoso określa ustawienia, aby uruchomić migrację:
     - Poświadczenia źródłowym i docelowym.
     - Baza danych, aby przeprowadzić migrację.
-    - Sieć udostępnianie tej firmy Contoso, utworzone w lokalnej maszyny Wirtualnej. Usługa zarządzania bazy danych trwa tworzenie kopii zapasowych źródła do tego udziału. 
+    - Sieć udostępnianie tej firmy Contoso, utworzone w lokalnej maszyny Wirtualnej. Usługa migracji bazy danych trwa tworzenie kopii zapasowych źródła do tego udziału. 
         - Konto usługi, który działa źródłowe wystąpienie programu SQL Server musi mieć uprawnienia do zapisu w tym udziale.
         - Należy użyć nazwy FQDN ścieżkę do udziału.
-    - Identyfikator URI sygnatury dostępu Współdzielonego, który zapewnia dostęp do kontenera konta magazynu, do którego usługa przekazuje pliki kopii zapasowej do migracji bazy danych usługi zarządzania.
+    - Identyfikator URI sygnatury dostępu Współdzielonego, który udostępnia usługę migracji bazy danych dzięki dostępowi do kontenera konta magazynu, do którego usługa przekazuje pliki kopii zapasowej do migracji.
 
-        ![Usługę zarządzania bazy danych — Konfigurowanie ustawień migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
+        ![Usługę migracji bazy danych — Konfigurowanie ustawień migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Contoso zapisuje migracji, a następnie uruchomi go.
 6. W **Przegląd**, Contoso monitoruje stan migracji.
 
-    ![Składnik Usługa zarządzania bazy danych — Monitor](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
+    ![Usługi Database Migration Service — monitorowanie](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
 7. Po zakończeniu migracji Contoso sprawdza, czy docelowymi bazami danych istnieją w wystąpieniu zarządzanym.
 
-    ![Bazy danych Usługa zarządzania — weryfikowanie migracji bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
+    ![Usługę migracji bazy danych — weryfikowanie migracji bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
 ## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>Krok 7: Migrowanie maszyny Wirtualnej przy użyciu usługi Site Recovery
 
@@ -592,7 +580,7 @@ Contoso tworzy kopie zapasowe danych na WEBVM przy użyciu usługi Azure Backup.
 
 ## <a name="conclusion"></a>Podsumowanie
 
-W tym artykule Contoso rehostowaniu aplikacji SmartHotel na platformie Azure przy użyciu funkcji migracji aplikacji frontonu maszyn wirtualnych na platformie Azure przy użyciu usługi Site Recovery. Contoso lokalnej bazy danych jest migrowana do wystąpienia usługi Azure SQL Database zarządzane przy użyciu usługi zarządzania bazą danych Azure.
+W tym artykule Contoso rehostowaniu aplikacji SmartHotel na platformie Azure przy użyciu funkcji migracji aplikacji frontonu maszyn wirtualnych na platformie Azure przy użyciu usługi Site Recovery. Contoso migruje lokalnej bazy danych do wystąpienia usługi Azure SQL Database zarządzane przy użyciu usługi Azure Database Migration Service.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

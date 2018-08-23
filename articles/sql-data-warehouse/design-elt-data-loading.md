@@ -1,6 +1,6 @@
 ---
-title: Zamiast ETL, projektowanie ELT do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Zamiast ETL zaprojektować wyodrębniania, obciążenia i przekształcenie (ELT) proces ładowania danych lub magazyn danych SQL Azure.
+title: Zamiast ETL, projektowanie procesu ELT dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zamiast ETL projektowania procesu wyodrębniania, ładowania i przekształcania (ELT) do ładowania danych lub usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg-msft
@@ -10,98 +10,98 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799451"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42057551"
 ---
-# <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse
+# <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, ładowania i transformacji (ELT) dla usługi Azure SQL Data Warehouse
 
-Zamiast wyodrębniania, przekształcania i ładowania (ETL) należy zaprojektować wyodrębniania, obciążenia i przekształcenie (ELT) proces ładowania danych do usługi Azure SQL Data Warehouse. W tym artykule przedstawiono sposoby projektowania ELT procesu, który przenosi dane do magazynu danych Azure.
+Zamiast wyodrębniania, przekształcania i ładowania (ETL) projektowania procesu wyodrębniania, ładowania i przekształcania (ELT) dotyczące ładowania danych do usługi Azure SQL Data Warehouse. W tym artykule przedstawiono sposoby Projektowanie procesu ELT, którego dane są przenoszone do magazynu danych platformy Azure.
 
 ## <a name="what-is-elt"></a>Co to jest ELT?
 
-Wyodrębnienie, obciążenia, i przekształcenie (ELT) jest procesem, za pomocą którego dane są przenoszone z systemu źródłowego do docelowego magazynu danych. Ten proces odbywa się regularnie, na przykład co godzinę lub codziennie, aby pobrać nowo wygenerować danych do magazynu danych. Idealny można pobrać danych ze źródła do magazynu danych jest opracowanie procesu ELT z użyciem aparatu PolyBase, aby załadować dane do usługi SQL Data Warehouse.
+Wyodrębnij obciążenia, i Przekształć (ELT) to proces, za pomocą którego dane są przenoszone z systemu źródłowego do docelowego magazynu danych. Ten proces odbywa się regularnie, na przykład co godzinę lub codziennie, można pobrać nowo wygenerowane dane do magazynu danych. Idealny sposób, aby pobrać dane ze źródła do magazynu danych jest opracowanie procesu ELT, który używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse.
 
-ELT ładuje najpierw, a następnie przekształca danych, podczas gdy wyodrębniania, przekształcania i ładowania (ETL) przekształca danych przed załadowaniem go. Wykonywanie ELT zamiast ETL jest zapisywany koszt udostępniania zasobów do przekształcania danych, przed jego załadowaniem. Podczas korzystania z usługi SQL Data Warehouse, ELT wykorzystuje system MPP do wykonywania transformacji.
+ELT ładuje się najpierw, a następnie przekształca dane, natomiast wyodrębniania, przekształcania i ładowania (ETL) przekształca dane przed załadowaniem. Wykonywanie ELT zamiast ETL zapisuje kosztów związanych z udostępnianiem zasobów do przekształcania danych przed ich załadowaniem. Korzystając z SQL Data Warehouse, ELT wykorzystuje system MPP do wykonywania transformacji.
 
-Choć wiele zmian wykonywania ELT do usługi SQL Data Warehouse, poniżej przedstawiono podstawowe kroki:  
+Chociaż istnieje wiele zmian do implementowania procesu ELT dla usługi SQL Data Warehouse, poniżej przedstawiono podstawowe kroki:  
 
-1. Wyodrębnij źródło danych do plików tekstowych.
-2. Grunt dane do magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store.
-3. Przygotowanie danych do załadowania.
-2. Ładowanie danych do tabel przemieszczania przy użyciu programu PolyBase usługi SQL Data Warehouse.
-3. Przekształć dane.
-4. Wstawianie danych do tabel w środowisku produkcyjnym.
+1. Wyodrębnianie danych źródłowych do plików tekstowych.
+2. Grunt dane do usługi Azure Blob storage lub Azure Data Lake Store.
+3. Przygotuj dane dotyczące ładowania.
+2. Ładowanie danych do usługi SQL Data Warehouse tabel przemieszczania przy użyciu programu PolyBase.
+3. Przekształcanie danych.
+4. Wstawianie danych do tabel produkcyjnych.
 
 
-Samouczek ładowania, zobacz [Użyj programu PolyBase, aby załadować dane z magazynu obiektów blob platformy Azure do usługi Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+Samouczek ładowania, zobacz [przy użyciu technologii PolyBase, aby załadować dane z usługi Azure blob storage do usługi Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 
-Aby uzyskać więcej informacji, zobacz [ładowania blogu wzorce](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
+Aby uzyskać więcej informacji, zobacz [ładowanie wzorców blogu](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
-## <a name="options-for-loading-with-polybase"></a>Opcje ładowania przy użyciu programu PolyBase
+## <a name="options-for-loading-with-polybase"></a>Opcje ładowania przy użyciu technologii PolyBase
 
-Program PolyBase jest technologia, która uzyskuje dostęp do danych poza bazy danych za pomocą języka T-SQL. Jest to najlepszy sposób, aby załadować dane do usługi SQL Data Warehouse. Przy użyciu programu PolyBase dane ładuje równolegle ze źródła danych bezpośrednio do węzłów obliczeniowych. 
+Program PolyBase to technologia, która uzyskuje dostęp do danych poza bazą danych za pomocą języka T-SQL. Jest najlepszym sposobem, aby załadować dane do usługi SQL Data Warehouse. Dzięki technologii PolyBase załadowaniu danych równolegle ze źródła danych bezpośrednio do węzłów obliczeniowych. 
 
-Aby załadować dane przy użyciu programu PolyBase, można użyć dowolnej z tych opcji ładowania.
+Aby załadować dane przy użyciu technologii PolyBase, można użyć dowolnej z tych opcji ładowania.
 
-- [Program PolyBase z T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa poprawnie, gdy dane pochodzą z magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store. Umożliwia sterowanie za pośrednictwem procesu ładowania, ale wymaga również do definiowania obiektów danych zewnętrznych. Inne metody Definiuj Mapowanie tabel źródłowych do tabel docelowych tych obiektów w tle.  Do organizowania obciążeń T-SQL, można użyć usługi fabryka danych Azure, SSIS lub usługę Azure functions. 
-- [Program PolyBase z SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) działa poprawnie, gdy źródło danych jest w programie SQL Server, SQL Server lokalnie lub w chmurze. SSIS definiuje źródłowej do docelowej tabeli mapowania, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
-- [Program PolyBase z fabryki danych Azure (ADF)](sql-data-warehouse-load-with-data-factory.md) jest inne narzędzie do aranżacji.  Definiuje potoku i harmonogramy zadań. 
-- [Program PolyBase z Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) przeniesienia danych z tabeli SQL Data Warehouse Databricks dataframe i/lub zapisuje dane z Databricks dataframe do tabeli SQL Data Warehouse.
+- [Program PolyBase przy użyciu języka T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa dobrze, gdy dane są już w usłudze Azure Blob storage lub Azure Data Lake Store. Zapewnia największą kontrolę nad procesem ładowania, ale wymaga również Definiowanie danych zewnętrznych obiektów. Inne metody definiowania tych obiektów w tle jako mapowanie tabel źródłowych do tabel docelowych.  Do organizowania obciążeń języka T-SQL, używając usługi Azure Data Factory, SSIS lub usługi Azure functions. 
+- [Program PolyBase przy użyciu funkcji SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) działa dobrze, gdy źródło danych jest w programie SQL Server, SQL Server w środowisku lokalnym lub w chmurze. SSIS określa źródła do docelowego mapowania tabel, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
+- [Program PolyBase z usługi Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) to kolejne narzędzie aranżacji.  Definiuje potoku i harmonogram zadań. 
+- [Program PolyBase z usługi Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) przesyła dane z tabeli SQL Data Warehouse do Databricks dataframe i/lub zapisuje dane z usługi Databricks ramkę danych do tabeli SQL Data Warehouse.
 
-### <a name="polybase-external-file-formats"></a>Program PolyBase formatów plików zewnętrznych
+### <a name="polybase-external-file-formats"></a>Formaty plików zewnętrznych technologii PolyBase
 
-Program PolyBase ładuje dane z UTF-8 i UTF-16 zakodowane rozdzielane pliki tekstowe. Oprócz plików tekstu rozdzielanego ładuje z formatów plików usługi Hadoop RC plików ORC i Parquet. Program PolyBase mogą ładować dane z Gzip i szałowe skompresowane pliki. Program PolyBase nie obsługuje obecnie rozszerzone ASCII, format stałej szerokości i zagnieżdżone formatów, takich jak WinZip, JSON i XML.
+Program PolyBase ładowania danych z UTF-8 i UTF-16 zakodowane rozdzielanych plików tekstowych. Oprócz rozdzielanych plików tekstowych ładuje z formatów plików usługi Hadoop RC pliku ORC i Parquet. Program PolyBase mogą ładować dane z Snappy plików skompresowanych i Gzip. Program PolyBase aktualnie nie obsługuje rozszerzonych ASCII, format stałej szerokości i zagnieżdżone formatów, takich jak WinZip, JSON i XML.
 
 ### <a name="non-polybase-loading-options"></a>Opcje ładowania non-PolyBase
-Jeśli dane nie jest zgodny z PolyBase, możesz użyć [bcp](/sql/tools/bcp-utility) lub [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje bezpośrednio do usługi SQL Data Warehouse bez pośrednictwa magazynu obiektów Blob platformy Azure i jest przeznaczona tylko w przypadku małych obciążeń. Uwaga: wydajność obciążenia tych opcji jest znacznie mniejsza niż PolyBase. 
+Jeśli dane nie jest zgodny z programem PolyBase, możesz użyć [bcp](/sql/tools/bcp-utility) lub [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). narzędzia BCP ładuje bezpośrednio do usługi SQL Data Warehouse bez pośrednictwa usługi Azure Blob storage i jest przeznaczona tylko dla małych obciążeń. Pamiętaj, że wydajność ładowania tych opcji jest znacznie wolniejsze niż programu PolyBase. 
 
 
 ## <a name="extract-source-data"></a>Wyodrębnianie danych źródłowych
 
-Pobieranie danych z systemu źródłowego zależy od źródła.  Celem jest przenoszenia danych do rozdzielane pliki tekstowe. Jeśli używasz programu SQL Server, możesz użyć [narzędzia wiersza polecenia bcp](/sql/tools/bcp-utility) do eksportowania danych.  
+Pobieranie danych z systemu źródłowego, zależy od źródła.  Celem jest przeniesienie danych do rozdzielanych plików tekstowych. Jeśli używasz programu SQL Server, możesz użyć [narzędzia wiersza polecenia bcp](/sql/tools/bcp-utility) do eksportowania danych.  
 
-## <a name="land-data-to-azure-storage"></a>Ziemi danych do magazynu Azure
+## <a name="land-data-to-azure-storage"></a>Ładowanie danych do usługi Azure storage
 
-Aby trafić dane w magazynie Azure, należy przenieść go do [magazynu obiektów Blob Azure](../storage/blobs/storage-blobs-introduction.md) lub [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). W dowolnej lokalizacji dane powinny być przechowywane w plikach tekstowych. Program Polybase można załadować z dowolnej lokalizacji.
+Aby znaleźć danych w usłudze Azure storage, można przenieść go do [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md) lub [usługi Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). W jednej z tych lokalizacji dane powinny być przechowywane w plikach tekstowych. Program Polybase może ładować z jednej z tych lokalizacji.
 
-Są to narzędzia i usługi, który służy do przenoszenia danych do magazynu Azure.
+Są to narzędzia i usługi, które służy do przenoszenia danych do usługi Azure Storage.
 
-- [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md) usługa zwiększa przepustowość sieci, wydajność oraz przewidywalności. ExpressRoute to usługa, która przekierowuje dane za pomocą dedykowanego połączenia prywatnego na platformie Azure. Połączenia ExpressRoute kierować danych za pośrednictwem publicznej sieci internet. Połączenia oferują więcej niezawodności, szybkości szybsze niższe opóźnienia i lepsze zabezpieczenia niż typowe połączenia za pośrednictwem publicznej sieci internet.
-- [Narzędzie AZCopy](../storage/common/storage-moving-data.md) przenosi dane do magazynu Azure za pośrednictwem publicznej sieci internet. To działanie, jeśli Twoje dane są mniej niż 10 TB. Aby wykonać obciążeń na bieżąco z narzędzia AZCopy, przetestować szybkość sieci, aby sprawdzić, czy jest dopuszczalne. 
-- [Fabryka danych Azure (ADF)](../data-factory/introduction.md) ma bramę, którą można zainstalować na serwerze lokalnym. Następnie można utworzyć potoku do przenoszenia danych z serwera lokalnego do usługi Azure Storage. Aby używać fabryka danych z magazynu danych SQL, zobacz [ładowanie danych do usługi SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+- [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md) usługa zwiększa przepustowość sieci, wydajności i stabilności. ExpressRoute to usługa, która kieruje dane za pomocą dedykowanego połączenia prywatnego na platformie Azure. Połączenia ExpressRoute nie kierują danych za pośrednictwem publicznej sieci internet. Połączenia oferują więcej niezawodność, większe szybkości, krótsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia za pośrednictwem publicznej sieci internet.
+- [Narzędzie AZCopy](../storage/common/storage-moving-data.md) przenosi dane do usługi Azure Storage za pośrednictwem publicznej sieci internet. Ta funkcja działa, gdy Twoje dane są mniej niż 10 TB. Aby wykonać obciążenia w regularnych odstępach czasu za pomocą narzędzia AZCopy, przetestować szybkość sieci, aby sprawdzić, czy jest dopuszczalne. 
+- [Usługa Azure Data Factory (ADF)](../data-factory/introduction.md) ma bramę, którą można zainstalować na serwerze lokalnym. Następnie można utworzyć potoku w celu przeniesienia danych z serwera lokalnego do usługi Azure Storage. Aby użyć usługi Data Factory, usługa SQL Data Warehouse, zobacz [ładowanie danych do usługi SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 
-Może być konieczne przygotowanie i czyszczenie danych na koncie magazynu przed załadowaniem go do usługi SQL Data Warehouse. Przygotowanie danych można wykonać zablokowaniu danych w źródle, eksportować dane w plikach tekstowych lub po danych w usłudze Azure Storage.  Najłatwiej można pracować z danymi w początkowej procesu, jak to możliwe.  
+Może być konieczne przygotowanie i czyszczenia danych na koncie usługi storage przed załadowaniem do usługi SQL Data Warehouse. Przygotowywania danych można wykonać, gdy dane są w źródle, jak wyeksportować dane do plików tekstowych lub po umieszczeniu danych w usłudze Azure Storage.  Najłatwiej można pracować z danymi tak wcześnie w procesie, jak to możliwe.  
 
-### <a name="define-external-tables"></a>Zdefiniuj tabel zewnętrznych
-Przed załadowaniem danych, musisz zdefiniować tabele zewnętrzne w magazynie danych. Program PolyBase używa tabel zewnętrznych do definiowania i uzyskać dostęp do danych w usłudze Azure Storage. Zewnętrzna tabela jest podobny do zwykłą tabelę. Główna różnica polega na punktami tabeli zewnętrznej dane przechowywane poza hurtowni danych. 
+### <a name="define-external-tables"></a>Definiowanie tabel zewnętrznych
+Przed załadowaniem danych, należy zdefiniować tabele zewnętrzne w magazynie danych. Program PolyBase używa tabel zewnętrznych do definiowania i uzyskać dostęp do danych w usłudze Azure Storage. Tabela zewnętrzna jest podobnie jak zwykłą tabelę. Główna różnica polega na tabeli zewnętrznej punktami danych przechowywanych poza w magazynie danych. 
 
-Definiowanie tabel zewnętrznych obejmuje określenie źródła danych, w formacie plików tekstowych i definicji tabeli. To są tematy składni T-SQL, które będą potrzebne:
+Definiowanie tabel zewnętrznych obejmuje określenie źródła danych, w formacie plików tekstowych i definicji tabeli. Poniżej przedstawiono tematów składni języka T-SQL, które będą potrzebne:
 - [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](/sql/t-sql/statements/create-external-data-source-transact-sql)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
-- [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql)
+- [TWORZENIE ZEWNĘTRZNEJ TABELI](/sql/t-sql/statements/create-external-table-transact-sql)
 
-Na przykład tworzenie obiektów zewnętrznych, zobacz [tworzenia tabel zewnętrznych](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) krok samouczka ładowania.
+Aby uzyskać przykład tworzenia obiektów zewnętrznych, zobacz [Tworzenie tabel zewnętrznych](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) krok samouczka ładowania.
 
 ### <a name="format-text-files"></a>Pliki w formacie tekstowym
 
-Po zdefiniowaniu obiektów zewnętrznych, konieczne jest dopasowanie wiersze pliki tekstowe z tabeli zewnętrznej i Definicja formatu pliku. Dane w każdym wierszu pliku tekstowego, muszą być wyrównane z definicji tabeli.
+Po zdefiniowaniu zewnętrznych obiektów, konieczne jest dopasowanie wierszy plików tekstowych z tabeli zewnętrznej i definicję formatu pliku. W definicji tabeli muszą być dopasowane dane w poszczególnych wierszach pliku tekstowego.
 
-Aby sformatować pliki tekstowe:
+Aby sformatować tekst pliki:
 
-- Dane pochodzące ze źródłem danych nierelacyjnych, należy przekształcić w wierszy i kolumn. Czy dane ze źródła danych relacyjnych i nierelacyjnych danych musi zostać przekształcone wyrównać definicje kolumn dla tabeli, w którym planujesz do ładowania danych. 
-- Formatowanie danych w pliku tekstowym, aby były wyrównane z typami danych i kolumn w tabeli docelowej usługi SQL Data Warehouse. Niespójność między typami danych w plikach tekstowych zewnętrznych i tabeli magazynu danych powoduje, że wierszy, które mają zostać odrzucone podczas ładowania.
-- Oddzielne pola w pliku tekstowym z terminator.  Należy użyć znaku lub sekwencji znaków, które nie zostało odnalezione w źródle danych. Użyj terminator określono [utworzyć EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
+- Twoje dane pochodzą ze źródła danych nierelacyjnych, należy przekształcić go w wiersze i kolumny. Dane ze źródła relacyjnych lub nierelacyjnych, czy dane musi zostać przekształcone wyrównać definicje kolumn dla tabeli, w którym planujesz załadować dane. 
+- Formatowanie danych w pliku tekstowym w celu zapewnienia zgodności z kolumn i typy danych w tabeli docelowej SQL Data Warehouse. Niespójność między typami danych w plikach tekstowych zewnętrznych i tabeli magazynu danych powoduje, że wierszy, które mają zostać odrzucone podczas ładowania.
+- Oddzielne pola w pliku tekstowym z terminatorem.  Pamiętaj użyć znaku lub sekwencji znaków, która nie znajduje się w źródle danych. Użyj terminator określony za pomocą [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 ## <a name="load-to-a-staging-table"></a>Ładowanie do tabeli przejściowej
-Aby pobrać dane do magazynu danych, jej sprawdza się dobrze w pierwszym załadowaniu danych do tabeli tymczasowej. Za pomocą tabeli przemieszczania, może obsługiwać błędy bez zakłócania tabele produkcji, a nie jest uruchomiona wycofywania operacji względem tabeli produkcji. Tabeli przemieszczania daje również uruchomić przekształcenia przed Wstawianie danych do tabel w środowisku produkcyjnym za pomocą usługi SQL Data Warehouse.
+Aby uzyskać dane do magazynu danych, działa również na pierwszym załadowaniu danych do tabeli przejściowej. Za pomocą tabeli przejściowej, można obsługiwać błędy bez zakłócania tabel produkcyjnych i należy zapobiegać uruchamianiu jej wielu operacji wycofywania na tabeli produkcyjnej. Tabeli przejściowej daje również możliwość używać usługa SQL Data Warehouse do uruchamiania przekształcenia przed Wstawianie danych do tabel produkcyjnych.
 
-Aby załadować T-SQL, uruchom [Tworzenie tabeli jako wybierz (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) instrukcji T-SQL. To polecenie wstawia wyniki instrukcję select do nowej tabeli. Po wybraniu instrukcji z tabeli zewnętrznej, importuje dane zewnętrzne. 
+Aby załadować dane przy użyciu języka T-SQL, należy uruchomić [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) instrukcję języka T-SQL. To polecenie umieszcza wynik instrukcję select do nowej tabeli. Po wybraniu instrukcji z tabeli zewnętrznej, importuje dane zewnętrzne. 
 
 W poniższym przykładzie zewnętrznego Data jest tabeli zewnętrznej. Wszystkie wiersze są importowane do nowej tabeli o nazwie dbo. Data.
 
@@ -116,18 +116,18 @@ AS SELECT * FROM [ext].[Date]
 ```
 
 ## <a name="transform-the-data"></a>Przekształcanie danych
-Gdy dane znajdują się w tabeli przemieszczania, wykonaj transformacje, których wymaga obciążenie. Następnie przenieść dane do tabeli produkcji.
+Gdy dane znajdują się w tabeli przemieszczania, należy wykonać przekształceń, które wymaga obciążenie. Następnie przenieś dane do tabeli produkcyjnej.
 
 ## <a name="insert-data-into-production-table"></a>Wstawianie danych do tabeli produkcyjnej
 
-INSERT INTO... Instrukcja SELECT przenosi dane z tabeli tymczasowej do tabeli trwałych. 
+INSERT INTO... Instrukcja SELECT przenosi dane z tabeli tymczasowej do tabeli stałe. 
 
-Podczas projektowania proces ETL, spróbuj uruchomiony proces na niewielką ilość próbki. Spróbuj wyodrębniania 1000 wierszy z tabeli do pliku, przenieś go do platformy Azure, a następnie spróbuj załadowanie go do tabeli tymczasowej. 
+Podczas projektowania procesu ETL, spróbuj uruchomiony jest proces, na przykład mały test. Spróbuj wyodrębniania 1000 wierszy z tabeli do pliku, przenieś go do platformy Azure, a następnie spróbuj, załadowanie go do tabeli przejściowej. 
 
-## <a name="partner-loading-solutions"></a>Rozwiązań partnerskich ładowania
-Wiele naszych partnerów ma ładowania rozwiązania. Aby dowiedzieć się więcej, zobacz listę naszych [rozwiązania partnerów](sql-data-warehouse-partner-business-intelligence.md). 
+## <a name="partner-loading-solutions"></a>Partner podczas ładowania rozwiązań
+Ma wielu partnerów, ładowania rozwiązań. Aby dowiedzieć się więcej, zobacz listę w naszym [rozwiązania partnerów](sql-data-warehouse-partner-business-intelligence.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ładowania wskazówki, zobacz [wskazówki dotyczące ładowania danych](guidance-for-loading-data.md).
+Aby uzyskać wskazówki dotyczące ładowania, zobacz [wskazówki dotyczące ładowania danych](guidance-for-loading-data.md).
 
 

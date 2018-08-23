@@ -1,6 +1,6 @@
 ---
-title: Wywołanie i odpowiedź — Szybki Start PHP dotyczące usług kognitywnych Azure, interfejsu API Bing obraz wyszukiwania | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing obrazu w kognitywnych usług Microsoft Azure.
+title: 'Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST dla interfejsu API wyszukiwania obrazów Bing za pomocą języka PHP'
+description: W tym przewodniku Szybki Start możesz wysyłać zapytania wyszukiwania interfejsu API wyszukiwania Bing w celu uzyskania listy odpowiednie obrazy za pomocą języka PHP.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,33 +9,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: b3b7e082eeca5fbccb8729ab8abdf7ec933b4197
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d91021c4bd5e0f78e518811f3794055b397c1a39
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348964"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987603"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-php"></a>Wywołania i odpowiedzi: pierwszego zapytania wyszukiwania usługi Bing obrazu w języku PHP
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-php"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST i PHP
 
-Interfejsu API wyszukiwania usługi Bing obraz zawiera środowisko podobne do Bing.com/Images, umożliwiając Wysyłanie zapytania wyszukiwania użytkownika do usługi Bing i wrócić listę odpowiednich obrazów.
+Interfejs API wyszukiwania obrazów Bing udostępnia środowisko podobne do Bing.com/Images, umożliwiając Wysyłanie zapytania wyszukiwania użytkowników do usługi Bing i uzyskanie listy odpowiednie obrazy.
 
-Ten artykuł zawiera prostej aplikacji konsolowej wykonuje zapytania interfejsu API Bing obraz wyszukiwania, który wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Ta aplikacja jest napisany w języku PHP, interfejs API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+Ten artykuł zawiera prostą aplikację konsolową, która wykonuje kwerendę interfejsu API wyszukiwania obrazów Bing i wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Gdy ta aplikacja jest napisany w języku PHP, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy [PHP 5.6.x](http://php.net/downloads.php) do uruchomienia tego kodu.
+Potrzebujesz [PHP 5.6.x](http://php.net/downloads.php) do uruchamiania tego kodu.
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
-1. Upewnij się, że bezpiecznej obsługi protokołu HTTP jest włączone w Twojej `php.ini` zgodnie z opisem w komentarz do kodu. W systemie Windows, ten plik jest `C:\windows`.
-2. Utwórz nowy projekt PHP w ulubionych IDE lub edytora.
-3. Dodaj podany kod.
-4. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Upewnij się, bezpiecznej obsługi protokołu HTTP jest włączone w swojej `php.ini` zgodnie z opisem w komentarz do kodu. W Windows, ten plik znajduje się w `C:\windows`.
+2. Utwórz nowy projekt języka PHP w Twoim ulubionym środowiskiem IDE lub edytora.
+3. Dodaj kod podany.
+4. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 5. Uruchom program.
 
 ```php
@@ -109,7 +109,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="json-response"></a>Odpowiedź w formacie JSON
 
-Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyświetlany tylko jeden wynik i inne części odpowiedzi zostały obcięte. 
+Następuje przykładowej odpowiedzi. Aby ograniczyć długość za pomocą pliku JSON, tylko jeden wynik jest wyświetlany, a inne części odpowiedzi zostały obcięte. 
 
 ```json
 {
@@ -198,11 +198,11 @@ Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyśw
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek aplikacji jednej strony wyszukiwania usługi Bing obrazu](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Omówienie wyszukiwania usługi Bing obrazu](../overview.md)  
+[Przegląd wyszukiwania obrazów Bing](../overview.md)  
 [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Pobierz klucz bezpłatnej wersji próbnej dostępu](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Dokumentacja interfejsu API Bing obraz wyszukiwania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

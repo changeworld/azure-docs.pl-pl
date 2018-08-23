@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b55bc7f6aab522a6313498b6fdccc88870796224
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213031"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059534"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Pobierz i Wyodrębnij usługi Azure Stack Development Kit (ASDK)
 Po upewnieniu się, że komputer hosta zestaw deweloperski spełnia wymagania podstawowe dotyczące instalowania ASDK, następnym krokiem jest Pobierz i Wyodrębnij pakiet wdrożeniowy ASDK, aby uzyskać Cloudbuilder.vhdx.
@@ -43,7 +43,7 @@ Po upewnieniu się, że komputer hosta zestaw deweloperski spełnia wymagania po
 2. Przejrzyj i zaakceptuj umowę licencyjną wyświetlanych z **umowy licencyjnej** strony kreatora samorozpakowujący się plik typu, a następnie kliknij przycisk **dalej**.
 3. Zapoznaj się z informacjami instrukcji ochrony prywatności, które są wyświetlane na **ważna Uwaga** strony kreatora samorozpakowujący się plik typu, a następnie kliknij przycisk **dalej**.
 4. Wybierz lokalizację plików instalacyjnych usługi Azure Stack, aby wyodrębnić na **wybierz lokalizację docelową** strony kreatora samorozpakowujący się plik typu, a następnie kliknij przycisk **dalej**. Domyślna lokalizacja to *bieżący folder*\Azure Stack Development Kit. 
-5. Przejrzyj podsumowanie w lokalizacji docelowej **gotowy do wyodrębniania** strony kreatora samorozpakowujący się plik typu, a następnie kliknij przycisk **wyodrębnić** można wyodrębnić CloudBuilder.vhdx (około 25 GB) i Pliki ThirdPartyLicenses.rtf. Ten proces trwa trochę czasu.
+5. Przejrzyj podsumowanie w lokalizacji docelowej **gotowy do wyodrębniania** strony kreatora samorozpakowujący się plik typu, a następnie kliknij przycisk **wyodrębnić** można wyodrębnić CloudBuilder.vhdx (około 28 GB) i Pliki ThirdPartyLicenses.rtf. Ten proces trwa trochę czasu.
 6. Skopiuj lub Przenieś plik CloudBuilder.vhdx w folderze głównym dysku C:\ (C:\CloudBuilder.vhdx) na komputerze-hoście ASDK.
 
 > [!NOTE]

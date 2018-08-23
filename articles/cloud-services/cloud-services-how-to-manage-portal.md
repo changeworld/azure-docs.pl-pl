@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3e4520df5c1ca8477abf5a9c4b4e7e124bb38282
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005761"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42060210"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Zarządzanie usługami w chmurze w witrynie Azure portal
 W **usług w chmurze** obszarze witryny Azure portal, możesz:
@@ -83,7 +83,7 @@ Istnieją dwa kluczowe wymagania wstępne dotyczące wymiany pomyślne wdrożeni
 
 - Na potrzeby statyczny adres IP z miejscem produkcyjnym, możesz zarezerwować jedną dla miejsca przejściowego także. W przeciwnym razie wymiany kończy się niepowodzeniem.
 
-- Wszystkie wystąpienia elementu role musi być uruchomiona, zanim będzie można wykonywać wymiany. Można sprawdzić stan swoich wystąpień **Przegląd** bloku witryny Azure portal. Alternatywnie, można użyć [Get AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) polecenia w programie Windows PowerShell.
+- Wszystkie wystąpienia elementu role musi być uruchomiona, zanim będzie można wykonywać wymiany. Można sprawdzić stan swoich wystąpień **Przegląd** bloku witryny Azure portal. Alternatywnie, można użyć [Get AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) polecenia w programie Windows PowerShell.
 
 Należy pamiętać, że aktualizacje systemu operacyjnego gościa i usługa również korygujący operacji może spowodować zamiany wdrożenie nie powiedzie się. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z wdrażaniem usługi chmury](cloud-services-troubleshoot-deployment-problems.md).
 

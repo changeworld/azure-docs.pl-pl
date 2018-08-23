@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 1883c449def44f6c54c6f20317de39ada405643f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1737960a4142f5c0d949ce8c2524c34fe9cd79e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39388974"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987967"
 ---
 # <a name="migrate-from-the-video-indexer-api-v1-to-v2"></a>Migrowanie z interfejsu API indeksatora wideo w wersji 1 do wersji 2
 
@@ -120,7 +120,7 @@ https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns/[VIDEO_ID
 2. Uzyskiwanie szczegółowych informacji:
 
   ```
-  https://api.videoindexer.ai/trial/[LOCATION]/[YOUR_ACCOUNT_ID]/Videos/[VIDEO_ID]/Index?accessToken=eyJ0eXA...
+  https://api.videoindexer.ai/[LOCATION]/Accounts[YOUR_ACCOUNT_ID]/Videos/[VIDEO_ID]/Index?accessToken=eyJ0eXA...
   ```
 
 #### <a name="getting-video-processing-state-in-v1"></a>Pobieranie stanu przetwarzania plików wideo w wersji 1:

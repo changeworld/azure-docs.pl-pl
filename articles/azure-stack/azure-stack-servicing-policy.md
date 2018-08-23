@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 08/07/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: b1e162b9ae151ee947559d40f02909aea4010e5b
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242924"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054275"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 
@@ -38,6 +38,7 @@ Istnieją dwa typy pakietów aktualizacji w ramach zintegrowanych systemów:
 Firma Microsoft planuje wersji pakietów aktualizacji oprogramowania w erze miesięcznych. Jednak istnieje możliwość mają wiele lub nie aktualizacji przeprowadzanych w danym miesiącu. Dostawcy sprzętu OEM ich aktualizacje na zgodnie z potrzebami. 
 
 Znajdź dokumentację na temat planowania i zarządzania aktualizacjami i jak określić bieżącej wersji w [Zarządzaj aktualizuje Przegląd](azure-stack-updates.md). Informacje o konkretnej aktualizacji w tym jak ją pobrać, zobacz informacje o wersji dla tej aktualizacji: 
+- [Aktualizacja usługi Azure Stack 1807](azure-stack-update-1807.md)
 - [Aktualizacja usługi Azure Stack 1805](azure-stack-update-1805.md)
 - [Aktualizacja usługi Azure Stack w wersji 1804](azure-stack-update-1804.md)
 

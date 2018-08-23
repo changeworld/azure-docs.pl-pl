@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c6d33de70fd5b7c03b7af6b85e8ebc567dd2f925
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502512"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41988456"
 ---
 # <a name="anomaly-detection-c-application"></a>Anomalii wykrywania aplikacji języku C#
 
@@ -77,7 +77,8 @@ Przegląd, jak interfejs API Restful zostanie wykorzystany w przykładowej aplik
             // ----------------------------------------------------------------------
 
 ```
-**Request(...)**  Poniższego kodu, fragment kodu przedstawia sposób użycia HttlClient przesyłanie Twojej subskrypcji klucza i danych punktów do punktu końcowego interfejsu API wykrywania anomalii.
+### <a name="request"></a>**Żądanie**
+Poniższy fragment kodu przedstawia sposób użycia klasy HttpClient przesłać Twojej subskrypcji klucza i danych punktów do punktu końcowego interfejsu API wykrywania anomalii.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

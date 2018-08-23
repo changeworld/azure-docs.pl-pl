@@ -2,19 +2,19 @@
 title: Porady dotyczące korzystania z usługi Hadoop w HDInsight opartych na systemie Linux — Azure
 description: Implementacja porady dotyczące korzystania z klastrów opartych na systemie Linux HDInsight (Hadoop) w znajomym środowisku systemu Linux działające w chmurze platformy Azure.
 services: hdinsight
-author: jasonwhowell
-editor: jasonwhowell
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 5a896edd87b2e7741ade2f9d475049086fb86833
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598521"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056852"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -98,18 +98,21 @@ Przykładowe dane i pliki JAR znajduje się na rozproszony System plików Hadoop
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>System plików HDFS, usługa Azure Storage i Data Lake Store
 
-W większości dystrybucji platformy Hadoop system plików HDFS jest wspierana przez lokalny magazyn na komputerach w klastrze. Przy użyciu lokalnego magazynu może być kosztowne rozwiązanie oparte na chmurze której opłaty są naliczane co godzinę lub minutowym za zasoby obliczeniowe.
+W większości dystrybucji platformy Hadoop dane są przechowywane w systemie plików HDFS, która jest wspierana przez lokalny magazyn na komputerach w klastrze. Przy użyciu lokalnego magazynu może być kosztowne rozwiązanie oparte na chmurze której opłaty są naliczane co godzinę lub minutowym za zasoby obliczeniowe.
 
-HDInsight używa albo obiekty BLOB w usłudze Azure Storage lub Azure Data Lake Store jako magazynu domyślnego. Usługi te oferują następujące korzyści:
+Korzystając z HDInsight, pliki danych są przechowywane w sposób skalowalności i odporności w chmurze przy użyciu usługi Azure Blob Storage i opcjonalnie usługi Azure Data Lake Store. Usługi te oferują następujące korzyści:
 
 * Tania długoterminowego
 * Ułatwienia dostępu z usług zewnętrznych, takich jak witryny sieci Web, narzędzia do pobierania/przekazywania pliku, różnych zestawów SDK języka i przeglądarki sieci web
+* Pojemność dużych plików i dużych skalowalności magazynu
 
-Konta usługi Azure Storage może zawierać maksymalnie 4.75 TB, chociaż poszczególne obiekty BLOB (lub plików z punktu widzenia HDInsight) tylko można przejść do 195 GB. Azure Data Lake Store można dynamicznie powiększać można przechowywać biliony plików wraz z pojedynczymi plikami przekraczający petabajt. Aby uzyskać więcej informacji, zobacz [obiektów blob opis](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+Aby uzyskać więcej informacji, zobacz [obiektów blob opis](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
 Korzystając z usługi Azure Storage lub Data Lake Store, nie trzeba wykonywać żadnych specjalnych czynności z HDInsight dostępu do danych. Na przykład następujące polecenie wyświetla listę plików w `/example/data` folderu niezależnie od tego, czy są przechowywane w usłudze Azure Storage lub Data Lake Store:
 
     hdfs dfs -ls /example/data
+
+W HDInsight zasoby magazynu danych (Azure Blob Storage i Azure Data Lake Store) są całkowicie niezależni od zasobów obliczeniowych. W związku z tym można utworzyć klastry HDInsight w celu obliczeń, zgodnie z potrzebami i później usunąć klaster, po zakończeniu pracy, w międzyczasie przechowywanie plików danych bezpiecznie utrwalone w magazynie w chmurze tak długo, jak należy.
 
 ### <a name="uri-and-scheme"></a>Identyfikator URI i schematu
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216526"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056954"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook w usłudze Azure Automation
 
@@ -24,7 +24,7 @@ Jest najlepszym rozwiązaniem w usłudze Azure Automation do zapisu wielokrotneg
 
 Aby śródwierszowo wywołać element runbook z innego elementu runbook, użyj nazwy elementu runbook i podaj wartości jego parametrów, dokładnie tak, należy użyć działania lub polecenia cmdlet.  Wszystkie elementy runbook na tym samym koncie usługi Automation są dostępne dla wszystkich innych ma być używany w ten sposób. Nadrzędny element runbook będzie czekać podrzędnego elementu runbook do wykonania przed przejściem do następnego wiersza, a wszelkie dane wyjściowe zostaną zwrócone bezpośrednio do obiektu nadrzędnego.
 
-Gdy użytkownik śródwierszowo wywołać element runbook, jest ono wykonywane w tym samym zadaniu co nadrzędny element runbook. Nie będzie żadnego wskazania w historii zadania podrzędnego elementu runbook, który został uruchomiony. Wszelkie wyjątki i strumienie wyjściowe z podrzędnego elementu runbook zostaną skojarzone z elementem nadrzędnym. To zmniejszyć liczbę zadań oraz łatwiej je śledzić i rozwiązywać problemy, ponieważ wszelkie wyjątki zgłaszane przez podrzędny element runbook i dowolny z jego strumieni wyjściowych są skojarzone z zadaniem nadrzędnym.
+Gdy użytkownik śródwierszowo wywołać element runbook, jest ono wykonywane w tym samym zadaniu co nadrzędny element runbook. Nie będzie żadnego wskazania w historii zadania podrzędnego elementu runbook, który został uruchomiony. Wszelkie wyjątki i strumienie wyjściowe z podrzędnego elementu runbook zostaną skojarzone z elementem nadrzędnym. To zmniejszyć liczbę zadań oraz łatwiej je śledzić i rozwiązywać, ponieważ wszelkie wyjątki zgłaszane przez podrzędny element runbook i dowolny z jego strumień danych wyjściowych jest skojarzona z zadaniem nadrzędnym.
 
 Po opublikowaniu elementu runbook należy opublikować już wszelkimi podrzędnymi elementami runbook, który ją wywołuje. Jest to spowodowane usługi Azure Automation tworzy skojarzenie z wszelkimi podrzędnymi elementami runbook, gdy element runbook został skompilowany. Jeśli nie, nadrzędny element runbook będzie wydawać się opublikowany prawidłowo, ale wygeneruje wyjątek, gdy jest ona uruchamiana. W takim przypadku można ponownie opublikować nadrzędny element runbook, aby prawidłowo utworzyć odwołanie do podrzędnych elementów runbook. Nie trzeba ponownie opublikować nadrzędny element runbook, jeśli dowolny podrzędne elementy runbook są zmieniane, ponieważ skojarzenie będzie zostały już utworzone.
 
@@ -42,7 +42,7 @@ Podczas publikowania sprawy kolejności:
 
 * Kolejność publikowania elementów runbook ma znaczenie tylko dla elementów runbook przepływu pracy programu PowerShell i graficzny przepływ pracy programu PowerShell.
 
-Jeśli chcesz wywołać graficzny lub przepływu pracy programu PowerShell podrzędnego elementu runbook przy użyciu wykonywania śródwierszowego, wystarczy użyć nazwę elementu runbook.  Podczas wywoływania podrzędnego elementu runbook programu PowerShell musi poprzedzony takiej samej nazwy *.\\*  do określenia, że skrypt znajduje się w katalogu lokalnym. 
+Jeśli chcesz wywołać graficzny lub przepływu pracy programu PowerShell podrzędnego elementu runbook przy użyciu wykonywania śródwierszowego, wystarczy użyć nazwę elementu runbook.  Podczas wywoływania podrzędnego elementu runbook programu PowerShell, należy uruchomić takiej samej nazwy *.\\*  do określenia, że skrypt znajduje się w katalogu lokalnym.
 
 ### <a name="example"></a>Przykład
 
@@ -72,28 +72,39 @@ Jeśli nie chcesz, nadrzędny element runbook do zablokowania w okresie oczekiwa
 
 Parametry dla podrzędnego elementu runbook, pracę za pośrednictwem polecenia cmdlet są przekazywane jako tablica skrótów, zgodnie z opisem w [parametry elementu Runbook](automation-starting-a-runbook.md#runbook-parameters). Mogą być używane tylko proste typy danych. Jeśli element runbook ma parametr o złożonym typie danych, następnie go musi być wywoływany śródwierszowo.
 
+Praca z wieloma subskrypcjami kontekstu subskrypcji może spowodować utratę podczas wywoływania podrzędnych elementów runbook. Aby upewnić się, że kontekstu subskrypcji jest przekazywany do podrzędnych elementów runbook, należy dodać `DefaultProfile` parametru do polecenia cmdlet i przekazać kontekst do niego.
+
 ### <a name="example"></a>Przykład
 
-W poniższym przykładzie uruchamianie podrzędnego elementu runbook z parametrami, a następnie czeka na jego zakończenie, za pomocą Start-AzureRmAutomationRunbook — oczekiwania parametru. Po ukończeniu jego dane wyjściowe są pobierane z podrzędnego elementu runbook. Aby użyć `Start-AzureRmAutomationRunbook` musi uwierzytelniać do subskrypcji platformy Azure.
+W poniższym przykładzie uruchamianie podrzędnego elementu runbook z parametrami, a następnie czeka na jego zakończenie, za pomocą Start-AzureRmAutomationRunbook — oczekiwania parametru. Po ukończeniu jego dane wyjściowe są pobierane z podrzędnego elementu runbook. Aby użyć `Start-AzureRmAutomationRunbook`, wymagane jest uwierzytelnienie do subskrypcji platformy Azure.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
-$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-$null = Add-AzureRmAccount `
-  -ServicePrincipal `
-  -TenantId $conn.TenantId `
-  -ApplicationId $conn.ApplicationId `
-  -CertificateThumbprint $conn.CertificateThumbprint
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-$joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
 ```
 
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>Porównanie metod wywoływania podrzędnego elementu runbook
+
 Poniższa tabela zawiera podsumowanie różnic między obiema metodami wywoływania elementu runbook z innego elementu runbook.
 
-|  | wbudowane | Polecenie cmdlet |
+|  | W tekście | Polecenie cmdlet |
 |:--- |:--- |:--- |
 | Zadanie |Podrzędne elementy runbook uruchomione w tym samym zadaniu co element nadrzędny. |Tworzone jest osobne zadanie podrzędnego elementu runbook. |
 | Wykonanie |Nadrzędny element runbook czeka, aż podrzędnego elementu runbook, które należy wykonać przed kontynuowaniem. |Nadrzędny element runbook kontynuuje działanie natychmiast, po uruchomieniu podrzędnego elementu runbook *lub* nadrzędny element runbook czeka na zakończenie zadania podrzędnego. |

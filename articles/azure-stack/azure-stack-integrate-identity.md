@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/07/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412869"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055094"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -151,7 +151,7 @@ Do wykonania tej procedury należy użyć komputera, który może komunikować s
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Konfigurowanie integracji usług AD FS, zapewniając pliku metadanych Federacji
 
-Ta metoda jest spełniony jeden z następujących warunków:
+Począwszy od wersji 1807, należy użyć tej metody, jeśli jest spełniony jeden z następujących warunków:
 
 - Łańcuch certyfikatu różni się dla usług AD FS w porównaniu do wszystkich innych punktów końcowych w usłudze Azure Stack.
 - Brak braku łączności z siecią do istniejącego serwera usług AD FS z wystąpienia usług AD FS usługi Azure Stack.
@@ -163,6 +163,8 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 |---------|---------|---------|
 |CustomAdfsName|Nazwa dostawcy oświadczeń. Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
 |CustomADFSFederationMetadataFileContent|Metadane zawartości|$using: federationMetadataFileContent|
+
+
 
 ### <a name="create-federation-metadata-file"></a>Tworzenie pliku metadanych Federacji
 

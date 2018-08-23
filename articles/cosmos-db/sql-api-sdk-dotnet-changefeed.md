@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: e8a8edd22fe66df12e9e7327a25e82aa5f07bd1b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 443cb2786c12bddd87535a7267d66c0332473b1b
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627631"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42060217"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "39627631"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* Dodano ChangeFeedEventHost.HostName właściwość publiczna dla compativility z v1.
 
 ### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
 * Naprawiono wyścigu, która występuje podczas dzielenia partycji. Sytuacja wyścigu może prowadzić do Uzyskiwanie dzierżawy i natychmiast utraty go podczas dzielenia partycji i powoduje rywalizacji o zasoby. Wyścig warunek naprawienia w tej wersji.

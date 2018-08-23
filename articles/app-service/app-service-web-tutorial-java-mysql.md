@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424392"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41917959"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java i MySQL na platformie Azure
 
@@ -243,7 +243,7 @@ Gdy plan jest gotowy, interfejs wiersza polecenia platformy Azure zawiera dane w
 
 ### <a name="create-an-azure-web-app"></a>Tworzenie aplikacji internetowej platformy Azure
 
-W usłudze Cloud Shell za pomocą polecenia [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) interfejsu wiersza polecenia utwórz definicję aplikacji internetowej w planie usługi App Service `myAppServicePlan`. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
+W usłudze Cloud Shell za pomocą polecenia [`az webapp create`](/cli/azure/webapp#az-webapp-create) interfejsu wiersza polecenia utwórz definicję aplikacji internetowej w planie usługi App Service `myAppServicePlan`. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 Przed uruchomieniem przykładowej aplikacji skonfiguruj ustawienia aplikacji internetowej tak, aby korzystała z bazy danych Azure MySQL utworzonej na platformie Azure. Te właściwości są uwidaczniane w aplikacji internetowej jako zmienne środowiskowe i zastępują wartości ustawione w pliku application.properties wewnątrz pakietu aplikacji internetowej. 
 
-W usłudze Cloud Shell skonfiguruj ustawienia aplikacji przy użyciu polecenia [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) w interfejsie wiersza polecenia:
+W usłudze Cloud Shell skonfiguruj ustawienia aplikacji przy użyciu polecenia [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) w interfejsie wiersza polecenia:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Pobieranie poświadczeń wdrożenia FTP 
 Wdrożenie aplikacji na platformie Azure można przeprowadzić na wiele różnych sposobów, w tym z użyciem protokołu FTP, lokalnego narzędzia Git i usługi GitHub oraz usług Visual Studio Team Services i BitBucket. Na przykład protokołu FTP można użyć do wdrożenia utworzonego wcześniej pliku WAR na maszynie lokalnej w usłudze Azure App Service.
 
-Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) w usłudze Cloud Shell: 
+Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) w usłudze Cloud Shell: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

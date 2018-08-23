@@ -1,6 +1,6 @@
 ---
-title: Import Eksport tożsamości urządzenia Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Jak używać usługi Azure IoT zestawu SDK w celu wykonania operacji zbiorczej przed rejestru tożsamości w celu importowania i eksportowania tożsamości urządzenia. Operacje importowania umożliwiają tworzenie, aktualizowanie i usuwanie tożsamości urządzenia w partii.
+title: Importowanie/eksportowanie tożsamości urządzeń w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Jak używać zestawu SDK usługi Azure IoT, aby wykonywały operacje zbiorcze na rejestrze tożsamości w celu importowania i eksportowania tożsamości urządzeń. Operacje importowania umożliwiają tworzenie, aktualizowanie i usuwanie tożsamości urządzeń w trybie zbiorczym.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,59 +8,65 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634026"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054767"
 ---
-# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Zarządzanie tożsamościami urządzenia IoT Hub zbiorcze
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Zarządzanie tożsamościami urządzeń usługi IoT Hub w zbiorcze
 
-Każdy Centrum IoT ma rejestru tożsamości używanej do tworzenia zasobów na urządzenie w usłudze. W rejestrze tożsamości umożliwia kontrolowanie dostępu do urządzeń połączonych z punktów końcowych. W tym artykule opisano, jak importować i eksportować tożsamości urządzenia w trybie zbiorczym do i z rejestru tożsamości.
+Każde Centrum IoT hub zawiera rejestr tożsamości używanej do tworzenia zasobów na poziomie urządzenia w usłudze. Rejestr tożsamości umożliwia także kontrolować dostęp do punktów końcowych przeznaczonych dla urządzenia. W tym artykule opisano, jak importować i eksportować tożsamości urządzeń w trybie zbiorczym do i z rejestru tożsamości.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Importowanie i eksportowanie działania mają miejsce w kontekście *zadania* umożliwiające wykonanie operacji usługi zbiorczego z Centrum IoT.
+Importowanie i eksportowanie działania mają miejsce w kontekście *zadania* , pozwalają na wykonywanie operacji usługi zbiorcze względem usługi IoT hub.
 
-**RegistryManager** klasa zawiera **ExportDevicesAsync** i **ImportDevicesAsync** metody, które używają **zadania** framework. Te metody umożliwiają eksportowanie, importowania i synchronizacji całości rejestru tożsamości Centrum IoT.
+**RegistryManager** klasa zawiera **ExportDevicesAsync** i **ImportDevicesAsync** metody, które używają **zadania** framework. Te metody umożliwiają eksportowanie, importowania i synchronizacji w całości w rejestrze tożsamości Centrum IoT.
 
-W tym temacie omówiono przy użyciu **RegistryManager** klasy i **zadania** systemu, aby wykonać zbiorczego importu i eksportu urządzeń do i z rejestru tożsamości Centrum IoT. Usługa udostępniania urządzeń Centrum IoT Azure umożliwia również włączyć bezobsługową, just-in-time alokacji dla co najmniej jeden centra IoT bez udziału człowieka. Aby dowiedzieć się więcej, zobacz [inicjowania obsługi usługi dokumentacji][lnk-dps].
+W tym temacie omówiono przy użyciu **RegistryManager** klasy i **zadania** systemu, aby wykonywać zbiorcze przywozu i wywozu urządzeń do i z rejestru tożsamości usługi IoT hub. Azure IoT Hub Device Provisioning Service umożliwia również włączyć bezobsługowe, just-in-time aprowizacji IoT Hub, nie wymagając interwencji człowieka. Aby dowiedzieć się więcej, zobacz [inicjowania obsługi dokumentacji usługi](/azure/iot-dps).
 
 
 ## <a name="what-are-jobs"></a>Co to są zadania?
 
-Użyj operacji rejestru tożsamości **zadania** systemu podczas operacji:
+Użyj operacje rejestru tożsamości **zadania** systemu podczas operacji:
 
-* Jest potencjalnie długi czas wykonywania jest porównywany standardowych operacji środowiska wykonawczego.
-* Zwraca dużej ilości danych do użytkownika.
+* Ma potencjalnie długiego czasu wykonywania w porównaniu do standardowych operacji w czasie wykonywania.
 
-Zamiast jednego wywołania interfejsu API Oczekiwanie lub blokowania na wynik operacji, tworzy asynchronicznie operację **zadania** dla tego Centrum IoT. Operacja następnie natychmiast zwraca **JobProperties** obiektu.
+* Zwraca dużą ilość danych użytkownika.
 
-Poniższy fragment kodu C# pokazano, jak utworzyć zadanie eksportu:
+Zamiast jednego wywołania interfejsu API oczekiwania lub blokowania na wynik operacji, tworzy asynchronicznie operację **zadania** dla tego Centrum IoT hub. Operacja, a następnie natychmiast zwraca **JobProperties** obiektu.
+
+Poniższy fragment kodu języka C# pokazano, jak utworzyć zadanie eksportu:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = await 
+  registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
-> Aby użyć **RegistryManager** klasy w kodzie C#, Dodaj **Microsoft.Azure.Devices** pakiet NuGet do projektu. **RegistryManager** klasa znajduje się w **Microsoft.Azure.Devices** przestrzeni nazw.
+> Aby użyć **RegistryManager** klasy w kodzie C#, należy dodać **Microsoft.Azure.Devices** pakiet NuGet do projektu. **RegistryManager** klasa się zebrała **Microsoft.Azure.Devices** przestrzeni nazw.
 
-Można użyć **RegistryManager** klasy do sprawdzania stanu **zadania** przy użyciu zwróconego **JobProperties** metadanych. Aby utworzyć wystąpienie **RegistryManager** klasy, należy użyć **CreateFromConnectionString** metody:
+Możesz użyć **RegistryManager** klasy, aby zbadać stan **zadania** przy użyciu zwracanego **JobProperties** metadanych. Aby utworzyć wystąpienie **RegistryManager** klasy, należy użyć **CreateFromConnectionString** metody.
 
 ```csharp
-RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+RegistryManager registryManager =
+  RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
 ```
 
-Aby określić parametry połączenia Centrum IoT w portalu Azure:
+Aby znaleźć parametry połączenia dla Centrum IoT, w witrynie Azure portal:
 
 - Przejdź do centrum IoT Hub.
-- Wybierz **zasady dostępu współużytkowanego**.
-- Wybierz zasady, biorąc pod uwagę uprawnienia, które są potrzebne.
-- Skopiuj parametry połączenia z panelu po prawej stronie ekranu.
 
-Poniższy fragment kodu C# pokazano, jak wykonać sondowanie co pięć sekund, aby zobaczyć, czy zadanie zostało zakończone, wykonywania:
+- Wybierz **zasady dostępu współdzielonego**.
+
+- Wybierz zasady, biorąc pod uwagę potrzebnych uprawnień.
+
+- Skopiuj parametry połączenia w panelu po prawej stronie ekranu.
+
+Poniższy fragment kodu języka C# pokazuje, jak i sondowanie co pięć sekund, aby zobaczyć, jeśli zadanie zostało zakończone, wykonywania:
 
 ```csharp
 // Wait until job is finished
@@ -79,27 +85,29 @@ while(true)
 }
 ```
 
-## <a name="export-devices"></a>Eksportuj urządzeń
+## <a name="export-devices"></a>Eksportowanie urządzeń
 
-Użyj **ExportDevicesAsync** metodę, aby wyeksportować całości rejestru tożsamości Centrum IoT w celu [usługi Azure Storage](../storage/index.yml) przy użyciu kontenera obiektów blob [sygnatura dostępu współdzielonego](../storage/common/storage-security-guide.md#data-plane-security).
+Użyj **ExportDevicesAsync** metodę, aby wyeksportować całości w rejestrze tożsamości Centrum IoT na [usługi Azure Storage](../storage/index.yml) kontenera obiektów blob przy użyciu [sygnatura dostępu współdzielonego](../storage/common/storage-security-guide.md#data-plane-security).
 
-Ta metoda umożliwia tworzenie niezawodnej kopii zapasowych danych użytkownika urządzenia w kontenerze obiektów blob, którą kontrolujesz.
+Ta metoda umożliwia tworzenie niezawodnych kopii zapasowych danych urządzenia w kontenerze obiektów blob, które możesz kontrolować.
 
-**ExportDevicesAsync** wymaga, aby dwa parametry:
+**ExportDevicesAsync** metoda wymaga dwóch parametrów:
 
-* A *ciąg* zawiera identyfikator URI kontenera obiektów blob. Ten identyfikator URI musi zawierać token sygnatury dostępu Współdzielonego, która udziela dostępu do zapisu do kontenera. To zadanie tworzy blokowych obiektów blob w tym kontenerze do przechowywania danych urządzenia eksportu serializacji. Token sygnatury dostępu Współdzielonego musi zawierać następujące uprawnienia:
+* A *ciąg* zawierający identyfikator URI kontenera obiektów blob. Ten identyfikator URI musi zawierać token sygnatury dostępu Współdzielonego, który przyznaje uprawnienia do zapisu w kontenerze. To zadanie tworzy blokowych obiektów blob, w tym kontenerze, do przechowywania danych urządzeń Zserializowany eksportu. Token sygnatury dostępu Współdzielonego, należy uwzględnić następujące uprawnienia:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
-* A *logiczna* wskazujące, jeśli chcesz wykluczyć klucze uwierzytelniania danych eksportu. Jeśli **false**, klucze uwierzytelniania znajdują się w danych wyjściowych eksportu. W przeciwnym razie klucze są eksportowane jako **null**.
+* A *logiczna* oznacza to, jeśli chcesz wykluczyć klucze uwierzytelniania z Twoich danych eksportu. Jeśli **false**, klucze uwierzytelniania znajdują się w danych wyjściowych eksportu. W przeciwnym razie klucze są eksportowane jako **null**.
 
-Poniższy fragment kodu C# pokazano, jak zainicjować zadanie eksportu, która zawiera klucze uwierzytelniania urządzenia w danych eksportu, a następnie sondować zakończenia:
+Poniższy fragment kodu języka C# pokazano, jak zainicjować zadanie eksportu, która zawiera klucze uwierzytelniania urządzeń w danych eksportu, a następnie sondowania pod kątem ukończenia:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = 
+  await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
 while(true)
@@ -117,9 +125,9 @@ while(true)
 }
 ```
 
-Zadania są przechowywane jego dane wyjściowe w kontenerze obiektów blob podana jako blokowych obiektów blob o nazwie **devices.txt**. Danych wyjściowych składa się z danych urządzenia Zserializowany do postaci JSON, jedno urządzenie w jednym wierszu.
+Zadania są przechowywane dane wyjściowe w kontenerze obiektów blob podana jako blokowych obiektów blob o nazwie **devices.txt**. Dane wyjściowe składa się z danych urządzenia Zserializowany do ciągu JSON, jedno urządzenie w każdym wierszu.
 
-W poniższym przykładzie danych wyjściowych:
+Poniższy przykład przedstawia dane wyjściowe:
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -129,7 +137,7 @@ W poniższym przykładzie danych wyjściowych:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Jeśli urządzenie ma dwie danych, danych dwie również zostaną wyeksportowane wraz z danych urządzenia. W poniższym przykładzie przedstawiono ten format. Wszystkie dane w wierszu "twinETag", aż do zakończenia są dwie danych.
+Jeśli urządzenie ma bliźniaczą reprezentację danych, następnie danych bliźniaczej reprezentacji eksportowane są również wraz z danymi urządzenia. Ten format można znaleźć w poniższym przykładzie. Wszystkie dane z wiersza "twinETag" do momentu zakończenia bliźniaczej reprezentacji danych.
 
 ```json
 {
@@ -176,7 +184,7 @@ Jeśli urządzenie ma dwie danych, danych dwie również zostaną wyeksportowane
 }
 ```
 
-Aby uzyskać dostęp do tych danych w kodzie, łatwo może wykonywać deserializację tego danych przy użyciu **ExportImportDevice** klasy. Poniższy fragment kodu C# pokazano, jak można odczytać informacji o urządzeniu, który został wcześniej wyeksportowany do blokowego obiektu blob:
+Jeśli potrzebujesz dostępu do tych danych w kodzie, łatwo może wykonywać deserializację tego przy użyciu danych **ExportImportDevice** klasy. Poniższy fragment kodu języka C# pokazano, jak odczytywać informacje o urządzeniu, który został wcześniej wyeksportowany do blokowego obiektu blob:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -192,75 +200,78 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 }
 ```
 
-## <a name="import-devices"></a>Importuj urządzeń
+## <a name="import-devices"></a>Importuj urządzenia
 
-**ImportDevicesAsync** metody w **RegistryManager** klasa umożliwia wykonywanie operacji importowania i synchronizacji zbiorczego w rejestrze tożsamości Centrum IoT. Podobnie jak **ExportDevicesAsync** metody **ImportDevicesAsync** używa metody **zadania** framework.
+**ImportDevicesAsync** method in Class metoda **RegistryManager** klasa służy do wykonywania zbiorczych operacji importowania i synchronizacji w rejestrze tożsamości Centrum IoT. Podobnie jak **ExportDevicesAsync** metody **ImportDevicesAsync** metoda używa **zadania** framework.
 
-Zajmie się przy użyciu **ImportDevicesAsync** metody ponieważ oprócz inicjowania obsługi administracyjnej nowych urządzeń w rejestrze tożsamości, można również aktualizować i usuwać istniejące urządzenia.
+Powinien zachować ostrożność przy użyciu **ImportDevicesAsync** metody ponieważ poza aprowizowaniem nowe urządzenia w rejestrze tożsamości, można również aktualizować i usuwać istniejące urządzenia.
 
 > [!WARNING]
-> Nie można cofnąć operacji importowania. Zawsze utworzyć kopię zapasową istniejących danych przy użyciu **ExportDevicesAsync** metody do innego kontenera obiektów blob, przed wprowadzeniem zbiorcze zmiany w rejestrze Twojej tożsamości.
+> Operacja importowania nie można cofnąć. Zawsze tworzyć kopie zapasowe z istniejącymi danymi za pomocą **ExportDevicesAsync** metody do innego kontenera obiektów blob, zanim wprowadzisz zbiorcze zmiany do rejestru tożsamości.
 
 **ImportDevicesAsync** metoda przyjmuje dwa parametry:
 
-* A *ciąg* zawiera identyfikator URI [usługi Azure Storage](../storage/index.yml) kontenera obiektów blob do użycia jako *wejściowych* zadania. Ten identyfikator URI musi zawierać token sygnatury dostępu Współdzielonego, która udziela dostępu do odczytu do kontenera. Ten kontener musi zawierać obiektu blob o nazwie **devices.txt** zawierający dane serializowane urządzenia do zaimportowania do rejestru tożsamości. Importuj dane musi zawierać informacje o urządzeniu, w tym samym formacie JSON **ExportImportDevice** używane podczas tworzenia **devices.txt** obiektu blob. Token sygnatury dostępu Współdzielonego musi zawierać następujące uprawnienia:
+* A *ciąg* zawierający identyfikator URI zestawu [usługi Azure Storage](../storage/index.yml) kontenera obiektów blob do użycia jako *wejściowych* do zadania. Ten identyfikator URI musi zawierać token sygnatury dostępu Współdzielonego, który przyznaje dostęp do odczytu do kontenera. Ten kontener może zawierać obiektu blob o nazwie **devices.txt** zawierający dane serializowane urządzenia do zaimportowania do Twojego rejestru tożsamości. Importuj dane mogą zawierać informacje o urządzeniu w taki sam JSON format **ExportImportDevice** zadanie używa podczas tworzenia **devices.txt** obiektu blob. Token sygnatury dostępu Współdzielonego, należy uwzględnić następujące uprawnienia:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
-* A *ciąg* zawiera identyfikator URI [usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontenera obiektów blob do użycia jako *dane wyjściowe* z zadania. To zadanie tworzy blokowych obiektów blob w tym kontenerze przechowywać informacje o błędzie z ukończone importu **zadania**. Token sygnatury dostępu Współdzielonego musi zawierać następujące uprawnienia:
+
+* A *ciąg* zawierający identyfikator URI zestawu [usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontenera obiektów blob do użycia jako *dane wyjściowe* z zadania. To zadanie tworzy blokowych obiektów blob w tym kontenerze, aby przechowywać informacje o błędzie z zakończono import **zadania**. Token sygnatury dostępu Współdzielonego, należy uwzględnić następujące uprawnienia:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> Dwa parametry może wskazywać tego samego kontenera obiektów blob. Oddzielne parametrów po prostu włącz większą kontrolę nad dane jako dane wyjściowe kontenera wymaga dodatkowych uprawnień.
+> Dwa parametry może wskazywać tego samego kontenera obiektów blob. Oddzielne parametry po prostu włącz większą kontrolę nad danymi jako kontenera danych wyjściowych wymaga dodatkowych uprawnień.
 
-Poniższy fragment kodu C# pokazano, jak zainicjować zadania importu:
+Poniższy fragment kodu języka C# pokazano, jak zainicjować zadania importu:
 
 ```csharp
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob = 
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Tej metody można również importować dane dla dwie urządzenia. Format danych wejściowych jest taki sam, jak pokazano w formacie **ExportDevicesAsync** sekcji. W ten sposób można ponownie zaimportować wyeksportowane dane. **$Metadata** jest opcjonalna.
+Tę metodę można również zaimportować dane do bliźniaczej reprezentacji urządzenia. Format danych wejściowych jest taka sama jak w formacie pokazanym na **ExportDevicesAsync** sekcji. W ten sposób można ponownie zaimportować wyeksportowane dane. **$Metadata** jest opcjonalne.
 
 ## <a name="import-behavior"></a>Zachowanie importu
 
-Można użyć **ImportDevicesAsync** metodę, aby wykonać następujące operacje zbiorcze w rejestrze tożsamości:
+Możesz użyć **ImportDevicesAsync** metodę, aby wykonywać następujące operacje zbiorcze w rejestrze tożsamości:
 
-* Rejestracji zbiorczej nowych urządzeń
-* Zbiorczego usuwania istniejących urządzeń
-* Zbiorcze zmiany stanu (Włączanie lub wyłączanie urządzenia)
-* Zbiorcze przypisania nowych kluczy uwierzytelniania urządzenia
-* Zbiorcze automatyczne ponowne generowanie kluczy uwierzytelniania urządzenia
-* Aktualizację zbiorczą dwie danych
+* Rejestracja zbiorcza nowych urządzeń
+* Zbiorcze usuwanie istniejących urządzeń
+* Zbiorcze zmiany stanu (Włączanie lub wyłączanie urządzeń)
+* Przypisywanie zbiorcze nowe klucze uwierzytelniania urządzeń
+* Zbiorcze automatycznie — ponowne generowanie kluczy uwierzytelniania urządzenia
+* Aktualizacja zbiorcza bliźniaczej reprezentacji danych
 
-Może wykonywać dowolne kombinacje poprzednich operacji w jednym **ImportDevicesAsync** wywołania. Na przykład można zarejestrować nowych urządzeń i usuwania lub aktualizacji istniejących urządzeń w tym samym czasie. Gdy jest używany wraz z **ExportDevicesAsync** metody, można całkowicie migracji wszystkich urządzeń z jednego centrum IoT, do drugiego.
+Może wykonywać dowolne kombinacje poprzedniej operacji w obrębie pojedynczego **ImportDevicesAsync** wywołania. Na przykład można zarejestrować nowych urządzeń i usuń lub zaktualizuj istniejących urządzeń w tym samym czasie. Gdy jest używana wraz z **ExportDevicesAsync** metody, można całkowicie migracji wszystkich urządzeń z jednego centrum IoT, do innej.
 
-Jeśli plik importu zawiera dwie metadanych, te metadane zastępuje istniejące metadane dwie. Jeśli plik importu nie zawiera metadanych dwie następnie tylko `lastUpdateTime` metadanych jest aktualizowany przy użyciu bieżącego czasu.
+Jeśli plik importu zawiera bliźniaczą reprezentację metadanych, te metadane zastępuje istniejące metadane bliźniaczej reprezentacji. Jeśli plik importu nie zawiera metadanych bliźniaczej reprezentacji następnie tylko `lastUpdateTime` metadanych jest aktualizowany przy użyciu bieżącego czasu.
 
-Użyj opcjonalnego **parametrem importMode** właściwości w danych serializacji importu dla każdego urządzenia, aby kontrolować importu procesu na urządzenie. **Parametrem importMode** właściwości ma następujące opcje:
+Użyj opcjonalnego **parametrem importMode** właściwości w danych serializacji importu dla każdego urządzenia do kontrolowania importu procesu na urządzenia. **Parametrem importMode** właściwość ma następujące opcje:
 
 | parametrem importMode | Opis |
 | --- | --- |
-| **createOrUpdate** |Jeśli urządzenie nie istnieje z określonym **identyfikator**, nowo jest zarejestrowany. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione podanych danych wejściowych bez odniesieniu do **ETag** wartość. <br> Użytkownika można opcjonalnie określić dwie danych wraz z danymi urządzenia. Dwie etag, jeśli jest określony, są przetwarzane niezależnie od urządzenia etag. Jeśli występuje niezgodność z istniejących dwie etag, błąd są zapisywane w pliku dziennika. |
-| **create** |Jeśli urządzenie nie istnieje z określonym **identyfikator**, nowo jest zarejestrowany. <br/>Jeśli urządzenie już istnieje, jest on zapisywany w pliku dziennika. <br> Użytkownika można opcjonalnie określić dwie danych wraz z danymi urządzenia. Dwie etag, jeśli jest określony, są przetwarzane niezależnie od urządzenia etag. Jeśli występuje niezgodność z istniejących dwie etag, błąd są zapisywane w pliku dziennika. |
-| **Aktualizacja** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione podanych danych wejściowych bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, jest on zapisywany w pliku dziennika. |
-| **updateIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione podanych danych wejściowych tylko wtedy, gdy istnieje **ETag** zgodne. <br/>Jeśli urządzenie nie istnieje, jest on zapisywany w pliku dziennika. <br/>W przypadku **ETag** niezgodność, błąd są zapisywane w pliku dziennika. |
-| **createOrUpdateIfMatchETag** |Jeśli urządzenie nie istnieje z określonym **identyfikator**, nowo jest zarejestrowany. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione podanych danych wejściowych tylko wtedy, gdy istnieje **ETag** zgodne. <br/>W przypadku **ETag** niezgodność, błąd są zapisywane w pliku dziennika. <br> Użytkownika można opcjonalnie określić dwie danych wraz z danymi urządzenia. Dwie etag, jeśli jest określony, są przetwarzane niezależnie od urządzenia etag. Jeśli występuje niezgodność z istniejących dwie etag, błąd są zapisywane w pliku dziennika. |
-| **usuwanie** |Jeśli urządzenie już istnieje z określonym **identyfikator**, jest usuwany bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, jest on zapisywany w pliku dziennika. |
-| **deleteIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, jest usuwany, tylko wtedy, gdy istnieje **ETag** zgodne. Jeśli urządzenie nie istnieje, jest on zapisywany w pliku dziennika. <br/>Wystąpił błąd w przypadku element etag jest zapisany w pliku dziennika. |
+| **createOrUpdate** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione podane dane wejściowe bez odniesieniu do **ETag** wartość. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
+| **create** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, do pliku dziennika zapisywany jest błąd. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
+| **Aktualizacja** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione podane dane wejściowe bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
+| **updateIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione dane wejściowe podane tylko wtedy, gdy **ETag** zgodny. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. <br/>W przypadku **ETag** niezgodność zapisywany jest błąd w pliku dziennika. |
+| **createOrUpdateIfMatchETag** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione dane wejściowe podane tylko wtedy, gdy **ETag** zgodny. <br/>W przypadku **ETag** niezgodność zapisywany jest błąd w pliku dziennika. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
+| **usuwanie** |Jeśli urządzenie już istnieje z określonym **identyfikator**, jest usuwany bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
+| **deleteIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, zostanie usunięta tylko wtedy, gdy **ETag** zgodny. Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. <br/>W przypadku niezgodności tagu ETag do pliku dziennika zapisywany jest błąd. |
 
 > [!NOTE]
-> Jeśli dane serializacji nie jawnie definiować **parametrem importMode** flagi dla urządzeń, domyślne **createOrUpdate** podczas operacji importowania.
+> Jeśli dane serializacji nie definiuje jawnie **parametrem importMode** flagi dla urządzenia, jego wartość domyślna to **createOrUpdate** podczas operacji importowania.
 
-## <a name="import-devices-example--bulk-device-provisioning"></a>Importuj przykładowe urządzeń — zbiorcze, inicjowanie obsługi administracyjnej urządzeń
+## <a name="import-devices-example--bulk-device-provisioning"></a>Importuj przykład urządzeń — zbiorcze Inicjowanie obsługi administracyjnej urządzeń
 
-Poniższy przykład kodu C# ilustruje sposób generowania wiele tożsamości urządzenia który:
+Poniższy przykład kodu C# ilustruje sposób generowania wielu tożsamości urządzeń który:
 
-* Zawierają klucze uwierzytelniania.
-* Zapisuje informacje o tego urządzenia do blokowego obiektu blob.
+* Obejmują klucze uwierzytelniania.
+* Informacje o tym urządzeniu należy zapisać do blokowego obiektu blob.
 * Importuj urządzenia w rejestrze tożsamości.
 
 ```csharp
@@ -308,7 +319,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
 // Call import using the blob to add new devices
 // Log information related to the job is written to the same container
 // This normally takes 1 minute per 100 devices
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob =
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
 while(true)
@@ -326,9 +338,9 @@ while(true)
 }
 ```
 
-## <a name="import-devices-example--bulk-deletion"></a>Przykład urządzeń importu — zbiorczego usuwania
+## <a name="import-devices-example--bulk-deletion"></a>Importuj przykład urządzeń — zbiorczego usuwania
 
-Poniższy przykład kodu pokazuje sposób usuwania urządzenia można dodać za pomocą powyższego przykładu kodu:
+Poniższy przykład kodu pokazuje, jak usuwać urządzenia dodany, korzystając z poprzedniego przykładu kodu:
 
 ```csharp
 // Step 1: Update each device's ImportMode to be Delete
@@ -376,9 +388,9 @@ while(true)
 }
 ```
 
-## <a name="get-the-container-sas-uri"></a>Pobierz kontenera identyfikatora URI połączenia SAS
+## <a name="get-the-container-sas-uri"></a>Pobierz identyfikator URI sygnatury dostępu Współdzielonego kontenera
 
-Poniższy przykład kodu pokazuje sposób generowania [identyfikatora URI połączenia SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) o odczytu, zapisu i usuwania uprawnień do kontenera obiektów blob:
+Poniższy przykładowy kod przedstawia sposób generowania [identyfikatora URI połączenia SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) odczytu, zapisu i usuwania uprawnień dla kontenera obiektów blob:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -405,24 +417,16 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób wykonania operacji zbiorczej przed w rejestrze tożsamości w Centrum IoT. Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:
+W tym artykule przedstawiono sposób wykonywania operacji zbiorczej dotyczących w rejestrze tożsamości w Centrum IoT hub. Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
-* [Metryki Centrum IoT][lnk-metrics]
-* [Operacje monitorowania][lnk-monitor]
+* [Metryki usługi IoT Hub](iot-hub-metrics.md)
+* [Monitorowanie operacji](iot-hub-operations-monitoring.md)
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
+* [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Aby zapoznać się z usługi IoT Centrum urządzeń inicjowania obsługi administracyjnej Włącz bezobsługową, w czasie inicjowania obsługi, zobacz: 
+Aby zapoznać się z pomocą IoT Hub Device Provisioning Service do włączenia aprowizacji bezobsługowe, just-in-time, zobacz: 
 
-* [Usługi inicjowania obsługi administracyjnej urządzeniu Centrum IoT Azure][lnk-dps]
-
-
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+* [Usługa Azure IoT Hub Device Provisioning](/azure/iot-dps)

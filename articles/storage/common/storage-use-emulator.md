@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4f4c5870bb1bdd804aa4b2da8c46c0698b897798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526185"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055792"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -204,6 +204,12 @@ Następujące różnice dotyczą Table storage w emulatorze:
 Nie ma żadnych różnic specyficzne dla usługi Queue storage w emulatorze.
 
 ## <a name="storage-emulator-release-notes"></a>Informacje o wersji emulatora magazynu
+
+### <a name="version-57"></a>W wersji 5.7
+Naprawiono usterkę, która mogłoby spowodować awarię, jeśli włączono rejestrowanie.
+
+### <a name="version-56"></a>Wersja 5.6
+* Emulator magazynu obsługuje teraz wersji 2018-03-28 usług magazynu w punktach końcowych usługi obiektów Blob, kolejek i tabel.
 
 ### <a name="version-55"></a>W wersji 5.5
 * Emulator magazynu obsługuje teraz usług magazynu w wersji 2017-11-09 punkty końcowe usługi obiektów Blob, kolejek i tabel.

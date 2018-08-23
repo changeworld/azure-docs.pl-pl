@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 74fb9e784122dadd1ad2f6f29a497398eacf7464
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9e49e7cdb9157fea2ae29d015bd84d391c73e71b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412886"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055192"
 ---
 # <a name="services-that-support-managed-service-identity"></a>Usługi obsługujące tożsamości usługi zarządzanej 
 
@@ -46,4 +46,4 @@ Następujące usługi obsługuje uwierzytelnianie w usłudze Azure AD i zostały
 | Azure SQL | https://database.windows.net/ | Dostępne | Października 2017 r. | |
 | Azure Event Hubs | https://eventhubs.azure.net | Dostępne | Grudnia 2017 r. | |
 | Azure Service Bus | https://servicebus.azure.net | Dostępne | Grudnia 2017 r. | |
-| Azure Storage | https://storage.azure.com/ | Wersja zapoznawcza | Maj 2018 r. | |
+| Azure Storage | https://azure.microsoft.com/services/storage/ | Wersja zapoznawcza | Maj 2018 r. | |

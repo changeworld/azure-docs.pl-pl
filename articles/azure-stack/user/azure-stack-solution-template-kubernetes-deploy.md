@@ -11,29 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 1fb7716ff1b5ce661dff55c3a8dac90a062fad53
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f6a2b3f242e5989d0c72083eef4faad9c4798cfe
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630786"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055495"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Wdrażanie klastra Kubernetes w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Rozwiązanie Kubernetes usługi Azure Container Services (ACS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule.
-<!-- Should "Azure Container Services" be replaced globally with Azure Kubernetes Services? It seems the Azure container page is now redirectin to Azure Kubernetes https://azure.microsoft.com/en-us/services/container-service -->
+> Rozwiązanie Kubernetes usługi Azure Kubernetes usługi (AKS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule.
 
 Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes i kontenery
 
-Można zainstalować usługi Kubernetes przy użyciu szablonów usługi Azure Resource Manager, generowane przez aparat usługi kontenerów Azure (ACS) w usłudze Azure Stack. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzowania wdrażania, skalowania i zarządzania nimi aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) jest zawarty w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej obraz kontenera zawiera tylko zasoby potrzebne do uruchomienia aplikacji, takich jak kod, środowisko uruchomieniowe do wykonania kodu, określonych bibliotek i ustawień.
+Można zainstalować usługi Kubernetes przy użyciu szablonów usługi Azure Resource Manager, generowane przez aparat usługi Kubernetes usługi Azure (AKS) w usłudze Azure Stack. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzowania wdrażania, skalowania i zarządzania nimi aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) jest zawarty w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej obraz kontenera zawiera tylko zasoby potrzebne do uruchomienia aplikacji, takich jak kod, środowisko uruchomieniowe do wykonania kodu, określonych bibliotek i ustawień.
 
 Rozwiązanie Kubernetes można użyć:
 
@@ -73,7 +72,7 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
     c. Kliknij pozycję **Utwórz**.
 
-1. Zanotuj **identyfikator aplikacji**. Identyfikator będą potrzebne podczas tworzenia klastra. Identyfikator jest określany jako **identyfikator klienta jednostki usługi**.
+1. Zanotuj wartość **Identyfikatora aplikacji**. Identyfikator będą potrzebne podczas tworzenia klastra. Identyfikator jest określany jako **identyfikator klienta jednostki usługi**.
 
 1. Wybierz **ustawienia** > **klucze**.
 

@@ -1,20 +1,20 @@
 ---
 title: Narzędzia platformy Azure HDInsight — Użyj programu Visual Studio Code dla programu Hive, LLAP lub pySpark
 description: Dowiedz się, jak używać narzędzi HDInsight systemu Azure dla programu Visual Studio Code do tworzenia i przesyłania zapytań i skryptów.
-Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
-services: HDInsight
+keywords: Program VS Code, narzędzia Azure HDInsight, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, interakcyjnych zapytań
+services: hdinsight
 author: jejiang
-editor: jasonwhowell jgao
-ms.service: HDInsight
+ms.author: jejiang
+editor: jasonwhowell
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.author: jejiang
-ms.openlocfilehash: 7bf74155cba65d2b5abdc80103a46047aec1b5b7
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 255f1ecb3c55ef94b6f4f3393257b3054ff1b725
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592404"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054344"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 

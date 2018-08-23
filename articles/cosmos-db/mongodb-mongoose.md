@@ -2,26 +2,26 @@
 title: Korzystanie z platformy Mongoose przy użyciu usługi Azure Cosmos DB | Microsoft Docs
 description: Dowiedz się, jako połączyć aplikację Mongoose napisaną w języku Node.js z usługą Azure Cosmos DB
 services: cosmos-db
-author: romitgirdhar
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: rogirdh
-ms.openlocfilehash: 3c2a1299bec954a1b00b3315113c0967171b0001
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: aa178a24f0c36a1c5fb56b342141b066c150c7c3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543954"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057535"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: korzystanie z platformy Mongoose przy użyciu usługi Azure Cosmos DB
 
 W tym samouczku przedstawiono sposób użycia [platformy Mongoose](http://mongoosejs.com/) do zapisywania danych w usłudze Azure Cosmos DB. W tym przewodniku do obsługi usługi Azure Cosmos DB jest używany interfejs API MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

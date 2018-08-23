@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37889589"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054560"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą Azure Load Balancer
 
@@ -87,7 +87,7 @@ Jeśli pula zaplecza maszyny Wirtualnej znajduje się w dobrej kondycji i odpowi
 * Których maszyna wirtualna nie nasłuchuje na porcie danych w puli zaplecza modułu równoważenia obciążenia 
 * Sieciowa grupa zabezpieczeń blokuje port w puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych  
 * Uzyskiwanie dostępu do modułu równoważenia obciążenia z tej samej maszyny Wirtualnej i karty Sieciowej 
-* Uzyskiwanie dostępu do Internetu VIP modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych 
+* Uzyskiwanie dostępu do frontonu internetowego modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Przyczyny 1: Puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych nie jest nasłuchuje na porcie danych 
 Jeśli maszyny Wirtualnej nie odpowiada na ruch danych, może to być spowodowane port docelowy nie jest otwarty na uczestnicząca maszyna wirtualna lub maszyna wirtualna nie nasłuchuje na tym porcie. 
@@ -119,10 +119,11 @@ Jeśli aplikacja hostowana w wewnętrznej bazie danych maszyny Wirtualnej z modu
 * Konfigurowanie puli zaplecza osobne maszyny wirtualne na aplikację. 
 * Konfigurowanie aplikacji na maszynach wirtualnych z dwóch kart Sieciowych, więc każda aplikacja używała swój własny interfejs sieciowy i adres IP. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>Przyczyna 4: Uzyskiwanie dostępu do adresu VIP wewnętrznego modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Przyczyna 4: Uzyskiwanie dostępu do wewnętrznych frontonu modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych
 
-Jeśli adresu VIP wewnętrznego modułu równoważenia obciążenia jest konfigurowana wewnątrz sieci wirtualnej, a jedną z maszyn wirtualnych zaplecza uczestnika próby dostępu do adresu VIP wewnętrznego modułu równoważenia obciążenia, które powoduje błąd. Jest to nieobsługiwany scenariusz.
-**Rozpoznawanie** oceny usługa Application Gateway lub inne serwery proxy (na przykład serwer nginx lub haproxy) do obsługi tego rodzaju scenariusza. Aby uzyskać więcej informacji na temat usługi Application Gateway, zobacz [Przegląd bramy Application Gateway](../application-gateway/application-gateway-introduction.md)
+Jeśli wewnętrznego modułu równoważenia obciążenia jest konfigurowana wewnątrz sieci wirtualnej, a jedną z maszyn wirtualnych zaplecza uczestnika próbuje uzyskać dostęp wewnętrznych frontonu modułu równoważenia obciążenia, błędów może wystąpić, gdy przepływ jest mapowany na źródłowej maszynie Wirtualnej. Ten scenariusz nie jest obsługiwany. Przegląd [ograniczenia](load-balancer-overview.md#limitations) szczegółowe omówienie.
+
+**Rozpoznawanie** istnieje kilka sposobów, aby odblokować ten scenariusz, w tym o korzystaniu z serwera proxy. Ocena bramy aplikacji lub inne 3 firm serwery proxy (na przykład serwer nginx lub haproxy). Aby uzyskać więcej informacji na temat usługi Application Gateway, zobacz [Przegląd bramy Application Gateway](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>Dodatkowe sieci
 Jeśli zdecydujesz otworzyć zgłoszenie do pomocy technicznej, Zbierz następujące informacje dotyczące rozpoznawanie szybciej. Wybierz pojedynczego zaplecza maszyny Wirtualnej w celu wykonania następujących testów:

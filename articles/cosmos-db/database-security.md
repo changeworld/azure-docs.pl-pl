@@ -3,19 +3,19 @@ title: Bazy danych zabezpieczeń — Azure Cosmos DB | Dokumentacja firmy Micros
 description: Dowiedz się, jak usługi Azure Cosmos DB udostępnia zabezpieczenia ochrony i danych bazy danych dla swoich danych.
 keywords: Baza danych nosql, zabezpieczeń, ochrony informacji, bezpieczeństwo danych, szyfrowanie bazy danych, ochrona bazy danych, zasady zabezpieczeń, testowanie zabezpieczeń
 services: cosmos-db
-author: SnehaGunda
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 641a665e0f41a612455d5649b19948146b504199
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: rafats
+ms.openlocfilehash: d74aa6b7ef762b7971fd67654e7fc1a23a8d83cc
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599952"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055158"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpieczenia bazy danych usługi Azure Cosmos DB
 

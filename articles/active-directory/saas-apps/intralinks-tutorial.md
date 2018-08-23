@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c74631515301498aedcb035fae32b0a451e308
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cae95cfd01f8d6fbd6ddb4a11e9af290042ffa
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424781"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Samouczek: Integracja usługi Azure Active Directory z Intralinks
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Intralinks, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Intralinks logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Intralinks w usłudze Azure AD, należy dodać In
 
 **Aby dodać Intralinks z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -115,7 +115,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:  `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Intralinks](https://www.intralinks.com/contact-1) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Intralinks](https://www.intralinks.com/contact) aby zyskać tę wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -125,7 +125,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/intralinks-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **Intralinks** stronie, musisz wysłać pobrany **XML metadanych** [zespołu pomocy technicznej Intralinks](https://www.intralinks.com/contact-1). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Intralinks** stronie, musisz wysłać pobrany **XML metadanych** [zespołu pomocy technicznej Intralinks](https://www.intralinks.com/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -163,7 +163,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-an-intralinks-test-user"></a>Tworzenie użytkownika testowego Intralinks
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Intralinks. Skontaktuj się z [zespołu pomocy technicznej Intralinks](https://www.intralinks.com/contact-1) Aby dodać użytkowników na platformie Intralinks.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Intralinks. Skontaktuj się z [zespołu pomocy technicznej Intralinks](https://www.intralinks.com/contact) Aby dodać użytkowników na platformie Intralinks.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -204,7 +204,7 @@ Po tym, można wykonać poniższe procedurą, aby dodać inną aplikację Intral
 >[!NOTE]
 >Ta funkcja jest dostępna tylko dla klientów jednostki SKU Premium usługi Azure AD i nie jest dostępna dla klientów w warstwie bezpłatna lub podstawowa jednostka SKU.
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -237,7 +237,7 @@ Po tym, można wykonać poniższe procedurą, aby dodać inną aplikację Intral
  
     ![Konfigurowanie logowania jednokrotnego](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-1. Pobierz SP zainicjowane rejestracji Jednokrotnej adres URL [zespołu Intralinks](https://www.intralinks.com/contact-1) stosowania Intralinks i wprowadź go w **Konfiguruj adres URL logowania** jak pokazano poniżej. 
+1. Pobierz SP zainicjowane rejestracji Jednokrotnej adres URL [zespołu Intralinks](https://www.intralinks.com/contact) stosowania Intralinks i wprowadź go w **Konfiguruj adres URL logowania** jak pokazano poniżej. 
     
      ![Konfigurowanie logowania jednokrotnego](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     

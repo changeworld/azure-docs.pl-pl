@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/09/2017
+ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611375"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42061500"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -58,7 +58,7 @@ Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usł
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Poleceń z chmury do urządzenia
+#### <a name="cloud-to-device-commands"></a>Polecenia chmura-urządzenie
 
 Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędów występujących podczas wysyłania komunikatów z chmury do urządzeń (na przykład nieautoryzowanego nadawcę), odbieranie komunikatów z chmury do urządzeń (np. Przekroczono licznik dostaw) i odbieranie opinii komunikatów z chmury do urządzenia (takie jak opinii wygasła). Ta kategoria nie może przechwytywać błędy z urządzenia, obsługujący nieprawidłowo komunikatu chmura urządzenie, jeśli komunikatu chmura urządzenie zostało pomyślnie dostarczone.
 
@@ -155,7 +155,7 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 
 #### <a name="cloud-to-device-twin-operations"></a>Operacje bliźniaczej reprezentacji chmury do urządzenia
 
-Kategoria operacje chmury do urządzeń, bliźniacza reprezentacja śledzi zdarzenia zainicjowanych przez usługę na bliźniaczych reprezentacji urządzeń. Te operacje mogą obejmować get bliźniaczej reprezentacji, aktualizowania zgłoszonych właściwości i subskrybowanie żądanych właściwości
+Kategoria operacje chmury do urządzeń, bliźniacza reprezentacja śledzi zdarzenia zainicjowanych przez usługę na bliźniaczych reprezentacji urządzeń. Te operacje można obejmują bliźniaczej reprezentacji get, zaktualizować lub tagów, Zastąp i aktualizacji lub zastąpić żądane właściwości. 
 
 ```json
 {
@@ -172,7 +172,7 @@ Kategoria operacje chmury do urządzeń, bliźniacza reprezentacja śledzi zdarz
 
 #### <a name="device-to-cloud-twin-operations"></a>Operacje bliźniaczej reprezentacji urządzenia do chmury
 
-Kategoria operacje bliźniaczej reprezentacji urządzenia do chmury śledzi zdarzenia zainicjowane przez urządzenie na bliźniaczych reprezentacji urządzeń. Te operacje można obejmują bliźniaczej reprezentacji get, zaktualizować lub tagów, Zastąp i aktualizacji lub zastąpić żądane właściwości. 
+Kategoria operacje bliźniaczej reprezentacji urządzenia do chmury śledzi zdarzenia zainicjowane przez urządzenie na bliźniaczych reprezentacji urządzeń. Te operacje można obejmują bliźniaczej reprezentacji get, aktualizowania zgłoszonych właściwości i subskrybować żądane właściwości.
 
 ```json
 {
@@ -223,7 +223,7 @@ Kategoria operacje zadań zgłasza żądania dotyczące zadań zaktualizować bl
 
 #### <a name="direct-methods"></a>Metody bezpośrednie
 
-Kategoria metod bezpośrednich śledzi interakcje odpowiedzi żądania wysyłane do poszczególnych urządzeń. Te żądania są inicjowane w chmurze. 
+Kategoria metod bezpośrednich śledzi interakcje odpowiedź na żądanie wysłane do poszczególnych urządzeń. Te żądania są inicjowane w chmurze. 
 
 ```json
 {

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216346"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056966"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Samouczek: DevOps w witrynie Azure portal
 Platforma Azure zawiera wiele elastycznych przepływów pracy metodyki DevOps. W tym samouczku dowiesz się, jak korzystać z możliwości w witrynie Azure portal, programowanie, testowanie, wdrażanie, rozwiązywanie problemów, monitorowanie i zarządzanie uruchomionych aplikacji. W tym samouczku omówiono następujące kwestie:
@@ -125,7 +125,7 @@ Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdr
 12. Wróć do bloku narzędzi i kliknij pozycję Test wydajnościowy w obszarze Tworzenie.
     
     ![image28][image28]
-13. Musisz skonfigurować konto usług Team Services. Więcej informacji można znaleźć w artykule [Create a Team Services Account](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services) (Tworzenie konta usług Team Services).
+13. Musisz skonfigurować konto usług Team Services. Więcej informacji można znaleźć tutaj: [Tworzenie konta usługi Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Kliknij pozycję Nowy, aby utworzyć test wydajnościowy.
     
     ![image29][image29]

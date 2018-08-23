@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 33d7c7f7f2e127647b43a62541fbc29c8417743c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595998"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42060215"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząśnij, wstrząsnąć dla Tweet — pobieranie wiadomości z usługi Twitter za pomocą usługi Azure Functions
 
@@ -163,7 +163,7 @@ Do celów testowych, ten przykładowy projekt używa wstępnie skonfigurowane to
 
 1. Przejdź do [portalu deweloperów w usłudze Twitter](https://dev.twitter.com/) zarejestrować nową aplikację usługi Twitter.
 
-2. [Pobierz klucz klienta i wpisów tajnych konsumenta](https://support.yapsody.com/hc/en-us/articles/203068116-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) aplikacji.
+2. [Pobierz klucz klienta i wpisów tajnych konsumenta](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) aplikacji.
 
 3. Użyj [niektóre narzędzia](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) do generowania tokenu elementu nośnego usługi Twitter z te dwa klucze.
 

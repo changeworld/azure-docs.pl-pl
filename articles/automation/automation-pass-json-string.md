@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: Program PowerShell, elementów runbook, json, usługa azure automation
-ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1bdeef02621924bbb7af1e676d2b275229761081
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435767"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054760"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 
@@ -23,7 +23,7 @@ Może być przydatne do przechowywania danych, które mają być przekazane do e
 Na przykład może utworzyć pliku JSON, który zawiera wszystkie parametry, które mają być przekazane do elementu runbook.
 Aby to zrobić, musisz przekonwertować na ciąg za pomocą pliku JSON, a następnie przekonwertowania ciągu na obiekt programu PowerShell przed przekazaniem jej zawartość do elementu runbook.
 
-W tym przykładzie utworzymy skrypt programu PowerShell, który wywołuje [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) można uruchomić elementu runbook programu PowerShell, przekazanie zawartości za pomocą pliku JSON do elementu runbook.
+W tym przykładzie utworzymy skrypt programu PowerShell, który wywołuje [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) można uruchomić elementu runbook programu PowerShell, przekazanie zawartości za pomocą pliku JSON do elementu runbook.
 Element runbook programu PowerShell uruchamia Maszynę wirtualną platformy Azure, wprowadzenie parametrów dla maszyny Wirtualnej z formatu JSON, która została przekazana.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

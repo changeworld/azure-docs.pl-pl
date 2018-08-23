@@ -1,9 +1,9 @@
 ---
-title: Wspólne parametry i nagłówki
-description: Parametry i nagłówków wspólne dla wszystkich operacji, które może wykonywać związane z zasobów magazynu kluczy.
+title: Typowe parametry i nagłówki
+description: Parametry i nagłówki wspólne dla wszystkich operacji, które może wykonywać związane z zasobami usługi Key Vault.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: ead1ac550c9b7c489edefd35d5672a9955e78255
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: a319dc670b5b1dab163b2d3aa623fc4fb9ce1c3a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012130"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056946"
 ---
-# <a name="common-parameters-and-headers"></a>Wspólne parametry i nagłówki
+# <a name="common-parameters-and-headers"></a>Typowe parametry i nagłówki
 
-Następujące informacje są wspólne dla wszystkich operacji, które może wykonać związane z zasobami usługi Key Vault:
+Wspólne dla wszystkich operacji, które może wykonywać związane z zasobami usługi Key Vault są następujące informacje:
 
 - Zastąp `{api-version}` z wersją interfejsu api w identyfikatorze URI.
-- Zastąp `{subscription-id}` z identyfikatorem subskrypcji w identyfikatorze URI
+- Zastąp `{subscription-id}` identyfikatorem subskrypcji, w identyfikatorze URI
 - Zastąp `{resource-group-name}` z grupą zasobów. Aby uzyskać więcej informacji zobacz Używanie grup zasobów do zarządzania zasobami platformy Azure.
 - Zastąp `{vault-name}` nazwą magazynu kluczy w identyfikatorze URI.
-- Ustawić nagłówek typu zawartości application/json.
-- Ustaw nagłówek autoryzacji żetonu Web JSON, który można uzyskać z usługi Azure Active Directory (AAD). Aby uzyskać więcej informacji, zobacz [uwierzytelniania usługi Azure Resource Manager](authentication-requests-and-responses.md) żądań.
+- Ustaw nagłówek Content-Type application/json.
+- Ustaw nagłówek autoryzacji JSON Web Token uzyskany z usługi Azure Active Directory (AAD). Aby uzyskać więcej informacji, zobacz [uwierzytelniania usługi Azure Resource Manager](authentication-requests-and-responses.md) żądań.
 
-## <a name="common-error-response"></a>Typowe odpowiedzi na błąd
-Kody stanu HTTP będzie używać usługa programu do wskazania powodzenia lub niepowodzenia. Ponadto błędy zawierają odpowiedzi w następującym formacie:
+## <a name="common-error-response"></a>Odpowiedzi na typowe błąd
+Kody stanu HTTP będzie używane przez usługę do wskazania powodzenia lub niepowodzenia. Ponadto błędy zawierają odpowiedzi w następującym formacie:
 
    {  
-     "błąd": {  
-     'code': "Element BadRequest",  
-     "komunikat": "sku magazynu kluczy jest nieprawidłowy."  
+     "error": {  
+     "code": "Element BadRequest",  
+     "message": "jednostka sku magazynu kluczy jest nieprawidłowy."  
      }  
    }  
 
 |Nazwa elementu | Typ | Opis |
 |---|---|---|
 | Kod | ciąg | Typ błędu, który wystąpił.|
-| message | ciąg | Opis co spowodowało błąd. |
+| message | ciąg | Opis co było przyczyną błędu. |
 
 
 

@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f3c008ad58ed7e274ffe0e9f670b4303d057182
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003991"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057302"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -194,6 +194,11 @@ Nie masz tej techniki należy używać z maszynami wirtualnymi za pomocą szablo
 Oczywiście po zaktualizowaniu pakietów na maszynie Wirtualnej, który znajduje się w środowisku produkcyjnym należy podjąć tej maszyny Wirtualnej z rotacji, gdy aktualizacja jest zainstalowana. Jak ta wartość znacznie się zmienia. Na przykład na maszynach wirtualnych za modułem równoważenia obciążenia platformy Azure, możesz dodać, niestandardowe sondy. Podczas aktualizowania maszyny Wirtualnej, należy mieć końcowego sondy zwracają 400. Dopasujemy niezbędne spowodować, że ta zmiana może znajdować się wewnątrz konfiguracji, tak jak w dopasujemy, aby przełączyć się do zwracania 200, po zakończeniu aktualizacji.
 
 Trwa źródłowego w tym przykładzie użycie [tego projektu programu Visual Studio](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) w witrynie GitHub.
+
+## <a name="related-articles"></a>Powiązane artykuły
+* [Omówienie DSC usługi Azure Automation](automation-dsc-overview.md)
+* [Polecenia cmdlet usługi Azure Automation DSC](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Dołączanie maszyn w celu zarządzania przez usługi Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

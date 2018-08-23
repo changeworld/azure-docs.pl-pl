@@ -1,5 +1,5 @@
 ---
-title: Przywróć magazyn danych Azure SQL (PowerShell) | Dokumentacja firmy Microsoft
+title: Przywracanie usługi Azure SQL Data Warehouse (PowerShell) | Dokumentacja firmy Microsoft
 description: Zadania programu PowerShell dla usługi Azure SQL Data Warehouse przywracania.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,40 +10,40 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 332b80d5c6dbe0b46a6fb793d3c0c04574744b19
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dbf86bfc82706586dfb438b167d13b32b6a4b968
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600040"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054959"
 ---
-# <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Przywróć magazyn danych Azure SQL (PowerShell)
+# <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Przywracanie usługi Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
-> * [Omówienie][Overview]
+> * [Przegląd][Overview]
 > * [Portal][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
 > 
 > 
 
-W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu programu PowerShell.
+W tym artykule dowiesz się, jak przywrócić usługi Azure SQL Data Warehouse przy użyciu programu PowerShell.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-**Sprawdź, czy pojemność jednostek dtu w warstwie.** Każdy magazyn danych SQL jest obsługiwana przez serwer SQL (np. myserver.database.windows.net), który ma domyślnego przydziału jednostek dtu w warstwie.  Zanim będzie można przywrócić magazyn danych SQL, upewnij się, że program SQL server ma wystarczającą ilość pozostałych limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak można obliczyć jednostek dtu w warstwie potrzebne również z prośbami więcej jednostek dtu w warstwie, zobacz [żądanie zmiany limitu przydziału jednostek dtu w warstwie][Request a DTU quota change].
+**Sprawdź wydajność jednostek DTU.** Każda usługa SQL Data Warehouse jest obsługiwana przez serwer SQL (np. myserver.database.windows.net), która ma domyślny limit przydziału jednostek DTU.  Przed przywróceniem usłudze SQL Data Warehouse, upewnij się, że program SQL server ma wystarczającą ilość pozostały limit przydziału jednostek DTU dla przywracana baza danych. Aby dowiedzieć się, jak obliczyć potrzebnych jednostek DTU lub zażądać więcej jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].
 
 ### <a name="install-powershell"></a>Instalowanie programu PowerShell
-Aby można było używać programu Azure PowerShell z usługą Magazyn danych SQL, należy zainstalować program Azure PowerShell w wersji 1.0 lub nowszej.  Wersję można sprawdzić, uruchamiając **Get-Module - ListAvailable-Name AzureRM**.  Najnowszą wersję można zainstalować z [Instalatora platformy sieci Web firmy Microsoft][Microsoft Web Platform Installer].  Aby uzyskać więcej informacji na temat instalowania najnowszej wersji, zobacz [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Jak zainstalować i skonfigurować program Azure PowerShell).
+Aby można było używać programu Azure PowerShell z usługą SQL Data Warehouse, należy zainstalować program Azure PowerShell w wersji 1.0 lub nowszej.  Wersję można sprawdzić, uruchamiając **Get-Module - ListAvailable-Name AzureRM**.  Najnowszą wersję można zainstalować z [Instalatora platformy sieci Web firmy Microsoft][Microsoft Web Platform Installer].  Aby uzyskać więcej informacji na temat instalowania najnowszej wersji, zobacz [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Jak zainstalować i skonfigurować program Azure PowerShell).
 
-## <a name="restore-an-active-or-paused-database"></a>Przywróć bazę danych aktywnej lub wstrzymana
-Przywracanie bazy danych przed użyciem migawki [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet programu PowerShell.
+## <a name="restore-an-active-or-paused-database"></a>Przywracanie bazy danych programu active lub wstrzymana
+Aby przywrócić bazę danych przed użyciem migawki [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet programu PowerShell.
 
 1. Otwórz program Windows PowerShell.
-2. Lista wszystkich subskrypcji skojarzonych z Twoim kontem i połącz się z kontem platformy Azure.
-3. Wybierz subskrypcję, który zawiera bazę danych do przywrócenia.
-4. Lista punktów przywracania dla bazy danych.
-5. Wybierz punkt przywracania żądaną przy użyciu RestorePointCreationDate.
-6. Przywróć bazę danych do punktu przywracania żądany.
-7. Sprawdź, czy przywrócona baza danych jest w trybie online.
+2. Nawiąż połączenie z kontem platformy Azure i wyświetlanie listy wszystkich subskrypcji skojarzonych z Twoim kontem.
+3. Wybierz subskrypcję, która zawiera bazę danych do przywrócenia.
+4. Lista punktów przywracania bazy danych.
+5. Wybierz punkt przywracania żądanego przy użyciu RestorePointCreationDate.
+6. Przywróć bazę danych do punktu przywracania żądaną.
+7. Sprawdź, czy przywróconej bazy danych jest w trybie online.
 
 ```Powershell
 
@@ -78,19 +78,19 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po ukończeniu przywracania można skonfigurować odzyskanej bazy danych, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
+> Po zakończeniu przywracania odzyskanej bazy danych można skonfigurować, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
-Aby przywrócić usunięte bazy danych, należy użyć [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet.
+Aby przywrócić usuniętą bazę danych, należy użyć [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet.
 
 1. Otwórz program Windows PowerShell.
-2. Lista wszystkich subskrypcji skojarzonych z Twoim kontem i połącz się z kontem platformy Azure.
-3. Wybierz subskrypcję, która zawiera usuniętej bazy danych do przywrócenia.
-4. Pobierz określone usuniętej bazy danych.
+2. Nawiąż połączenie z kontem platformy Azure i wyświetlanie listy wszystkich subskrypcji skojarzonych z Twoim kontem.
+3. Wybierz subskrypcję, która zawiera przywracania usuniętej bazy danych.
+4. Uzyskaj określone usuniętej bazy danych.
 5. Przywracanie usuniętej bazy danych.
-6. Sprawdź, czy przywrócona baza danych jest w trybie online.
+6. Sprawdź, czy przywróconej bazy danych jest w trybie online.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -114,7 +114,7 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po ukończeniu przywracania można skonfigurować odzyskanej bazy danych, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
+> Po zakończeniu przywracania odzyskanej bazy danych można skonfigurować, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
 > 
 > 
 
@@ -122,16 +122,16 @@ $RestoredDatabase.status
 Aby odzyskać bazę danych, należy użyć [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet.
 
 > [!NOTE]
-> Można wykonać przywracania geograficznie do zoptymalizowana dla warstwę wydajności obliczeniowej! Aby to zrobić, należy określić zoptymalizowana dla obliczeniowe ServiceObjectiveName jako parametr opcjonalny. 
+> Przywracanie geograficzne, aby zoptymalizowany pod kątem można wykonać dla warstwy wydajności obliczeniowej! Aby to zrobić, należy określić zoptymalizowany dla obliczeń ServiceObjectiveName jako parametr opcjonalny. 
 >
 > 
 
 1. Otwórz program Windows PowerShell.
-2. Lista wszystkich subskrypcji skojarzonych z Twoim kontem i połącz się z kontem platformy Azure.
-3. Wybierz subskrypcję, który zawiera bazę danych do przywrócenia.
+2. Nawiąż połączenie z kontem platformy Azure i wyświetlanie listy wszystkich subskrypcji skojarzonych z Twoim kontem.
+3. Wybierz subskrypcję, która zawiera bazę danych do przywrócenia.
 4. Pobierz bazę danych, którą chcesz odzyskać.
-5. Utwórz żądanie odzyskiwania bazy danych.
-6. Sprawdź stan bazy danych przywrócone z magazynu geograficznie.
+5. Utwórz żądanie odzyskiwania dla bazy danych.
+6. Sprawdź stan bazy danych, przywrócić geograficznie.
 
 ```Powershell
 Connect-AzureRmAccount
@@ -153,10 +153,10 @@ $GeoRestoredDatabase.status
 > 
 > 
 
-Odzyskanej bazy danych będzie mieć włączono funkcji TDE, jeśli baza danych jest włączona w funkcji TDE.
+Odzyskanej bazy danych będzie włączona funkcja TDE źródłowa baza danych jest włączona funkcja TDE.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o funkcjach ciągłości biznesowej wersji bazy danych SQL Azure, przeczytaj [omówienie ciągłości działalności biznesowej usługi Azure SQL Database][Azure SQL Database business continuity overview].
+Aby dowiedzieć się o funkcje zachowywania ciągłości biznesowej, baz danych Azure SQL Database, należy przeczytać [omówienie ciągłości działania usługi Azure SQL Database][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 
@@ -172,7 +172,7 @@ Aby dowiedzieć się więcej o funkcjach ciągłości biznesowej wersji bazy dan
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/

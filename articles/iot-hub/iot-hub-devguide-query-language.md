@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444188"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055527"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
@@ -309,7 +309,7 @@ Obecnie zapytanie na **devices.jobs** nie obsługują:
 
 Za pomocą [trasy urządzenia do chmury][lnk-devguide-messaging-routes], można skonfigurować usługę IoT Hub do wysyłania komunikatów urządzenie chmura do różnych punktów końcowych. Wysyła opiera się na wyrażeniach obliczone dla poszczególnych wiadomości.
 
-Trasa [warunek] [ lnk-query-expressions] używa tego samego języka zapytań usługi IoT Hub jako warunki zapytań bliźniaczych reprezentacji i zadań. Warunki trasy są oceniane w nagłówkach wiadomości oraz treść. Usługi routingu wyrażeniu zapytania może obejmować tylko nagłówki wiadomości, treść wiadomości i / lub. Usługi IoT Hub zakłada określonego schematu dla nagłówki i treść wiadomości w celu kierowanie komunikatów w postaci. W poniższych sekcjach opisano, co jest wymagane dla usługi IoT Hub prawidłowo trasy.
+Trasa [warunek] [ lnk-query-expressions] używa składni języka zapytań usługi IoT Hub, zgodnie z warunkami zapytań bliźniaczych reprezentacji i zadań, ale tylko podzbiór funkcji są dostępne. Warunki trasy są oceniane w nagłówkach wiadomości oraz treść. Routing wyrażeniu zapytania może obejmować tylko nagłówki wiadomości, tylko treści wiadomości, lub oba komunikatu nagłówki i treść komunikatu. Usługi IoT Hub zakłada określonego schematu dla nagłówki i treść wiadomości w celu kierowanie komunikatów w postaci, a w poniższych sekcjach opisano, co jest wymagane dla usługi IoT Hub prawidłowo trasy.
 
 ### <a name="routing-on-message-headers"></a>Routing w nagłówkach wiadomości
 

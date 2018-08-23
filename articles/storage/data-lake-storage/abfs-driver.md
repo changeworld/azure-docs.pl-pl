@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 8be6df5f4098b8a97e41c73edc5664799fd3edbe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: dedf398064dd0a49e5691e952ea7c9b6d16e34fd
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520823"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060798"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): dedykowanych sterownika usługi Azure Storage dla platformy Hadoop
 
@@ -45,7 +45,11 @@ Wewnętrznie sterownik ABFS tłumaczy zasoby określona w identyfikatorze URI do
 
 ### <a name="authentication"></a>Authentication
 
-Sterownik ABFS obecnie obsługuje uwierzytelniania klucza wspólnego, tak aby aplikacji platformy Hadoop bezpieczny dostęp do zasobów znajdujących się w Data Lake Storage Gen2. Klucz jest zaszyfrowany i przechowywane w konfiguracji usługi Hadoop.
+Sterownik ABFS obsługuje dwie formy uwierzytelniania, dzięki czemu aplikacji platformy Hadoop bezpieczny dostęp do zasobów znajdujących się w ramach konta Data Lake Storage Gen2 stanie. Pełne informacje na temat schematów uwierzytelniania dostępne znajdują się w [Przewodnik po zabezpieczeniach usługi Azure Storage](../common/storage-security-guide.md). Oto one:
+
+- **Klucz współużytkowany:** to pozwala użytkownikom dostęp do wszystkich zasobów w ramach konta. Klucz jest zaszyfrowany i przechowywane w konfiguracji usługi Hadoop.
+
+- **Usługa Azure Active Directory elementu nośnego OAuth Token:** tokenów elementu nośnego usługi Azure AD są uzyskane i odświeżane przez sterownik przy użyciu tożsamości użytkownika albo skonfigurowanej nazwy głównej usługi. Przy użyciu tego modelu uwierzytelniania, wszelki dostęp jest autoryzowany dla każdego wywołania przy użyciu tożsamości skojarzone z tokenem dostarczony i oceniać je względem przypisanych POSIX kontroli dostępu listy (ACL).
 
 ### <a name="configuration"></a>Konfigurowanie
 

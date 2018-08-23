@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342980"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42056658"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalowanie rozszerzenia funkcji trwałych i przykłady (usługi Azure Functions)
 
@@ -146,14 +146,14 @@ Visual Studio Code zapewnia środowisko programowania lokalnego obejmujące wszy
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli wolisz, można użyć witryny Azure portal do tworzenia aplikacji funkcje trwałe.
+Jeśli wolisz, możesz użyć [witryny Azure portal](https://portal.azure.com) opracowywania funkcje trwałe.
 
    > [!NOTE]
    > Trwałe funkcje w języku JavaScript nie są jeszcze dostępne w portalu.
 
 ### <a name="create-an-orchestrator-function"></a>Tworzenie funkcji programu orchestrator
 
-1. Tworzenie nowej aplikacji funkcji w [functions.azure.com](https://functions.azure.com/signin).
+1. Utwórz nową aplikację funkcji w portalu, jak pokazano w [funkcje z artykułem Szybki Start](functions-create-first-azure-function.md#create-a-function-app).
 
 2. Konfigurowanie aplikacji funkcji w celu [korzystać z wersji 2.0 środowisko uruchomieniowe](set-runtime-version.md).
 

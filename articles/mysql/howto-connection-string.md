@@ -1,25 +1,25 @@
 ---
-title: Łączenie aplikacji bazy danych platformy Azure dla programu MySQL
-description: Ten dokument zawiera listę ciągów połączenia aktualnie obsługiwane dla aplikacji, aby połączyć się z bazą danych Azure dla programu MySQL, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby.
+title: Łączenie aplikacji do usługi Azure Database for MySQL
+description: Ten dokument zawiera listę aktualnie obsługiwanych parametrów połączenia dla aplikacji, aby połączyć się z usługą Azure Database for MySQL, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby.
 services: mysql
-author: mswutao
-ms.author: wuta
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 083c6850151340ba8cb307a237f489e5923761a5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265687"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054274"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Jak połączyć aplikacje do bazy danych Azure dla programu MySQL
-Ten temat zawiera listę typów ciąg połączenia, które są obsługiwane przez bazę danych Azure dla programu MySQL, wraz z szablonów i przykłady. W ciągu połączenia może mieć różne parametry i ustawienia.
+# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Jak połączyć aplikacje do usługi Azure Database for MySQL
+Ten temat zawiera listę typów ciągów połączeń, które są obsługiwane przez usługę Azure Database for MySQL, wraz z szablony i przykłady. W ciągu połączenia, może mieć różne parametry i ustawienia.
 
-- Aby uzyskać certyfikat, zobacz [Konfigurowanie SSL](./howto-configure-ssl.md).
+- Aby uzyskać certyfikat, zobacz [jak skonfigurować protokół SSL](./howto-configure-ssl.md).
 - {your_host} = <servername>.mysql.database.azure.com
 - {your_user}@{servername} poprawnie = format identyfikatora użytkownika do uwierzytelniania.  Jeśli używasz tylko identyfikator userID, uwierzytelnianie nie powiedzie się.
 
@@ -28,7 +28,7 @@ Ten temat zawiera listę typów ciąg połączenia, które są obsługiwane prze
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-W tym przykładzie nazwa serwera jest `mydemoserver`, nazwa bazy danych jest `wpdb`, nazwa użytkownika jest `WPAdmin`, a hasło to `mypassword!2`. W związku z tym powinien być ciąg połączenia:
+W tym przykładzie nazwa serwera jest `mydemoserver`, nazwa bazy danych jest `wpdb`, nazwa użytkownika jest `WPAdmin`, a hasło to `mypassword!2`. W rezultacie parametry połączenia powinny być:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -64,10 +64,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Pobierz szczegóły parametrów połączenia z portalu Azure
-W [portalu Azure](https://portal.azure.com), przejdź do bazy danych Azure, aby serwer MySQL, a następnie kliknij przycisk **parametry połączenia** można pobrać listy ciągu dla swojego wystąpienia: ![okienko ciągów połączenia platformy Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Pobierz szczegóły parametrów połączenia w witrynie Azure portal
+W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Database for MySQL server, a następnie kliknij **parametry połączenia** można pobrać listy parametrów dla swojego wystąpienia: ![okienka parametry połączenia na platformie Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i inne bazy danych parametry połączenia. Zmodyfikuj te przykłady własne parametry, takie jak nazwa bazy danych, hasło i tak dalej. Następnie można ten ciąg połączenia z serwerem z kodu i aplikacji.
+Ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i innej bazy danych parametry połączenia. Zmodyfikuj te przykłady, aby użyć własnych parametrów, takich jak nazwa bazy danych, hasło i tak dalej. Ten ciąg można następnie użyć nawiązać połączenie z serwerem z kodu oraz aplikacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat biblioteki połączeń, zobacz [pojęcia — bibliotek połączeń](./concepts-connection-libraries.md).

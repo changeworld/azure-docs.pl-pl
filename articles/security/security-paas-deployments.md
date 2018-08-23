@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie wdrożenia PaaS | Dokumentacja firmy Microsoft
-description: " Zrozumieć zalety zabezpieczeń PaaS i inne modele usług w chmurze i Dowiedz się, najważniejsze wskazówki dotyczące zabezpieczania wdrożenia Azure PaaS. "
+title: Zabezpieczanie wdrożeń typu PaaS | Dokumentacja firmy Microsoft
+description: " Omówienie zabezpieczeń zalety rozwiązania PaaS i inne modele usług w chmurze i Dowiedz się, zalecane rozwiązania dotyczące zabezpieczania wdrożenia modelu PaaS platformy Azure. "
 services: security
 documentationcenter: na
 author: techlake
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: da5d59aaaea8e6186609eb5f3419fba5e67d4279
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794739"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055181"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
 Ten artykuł zawiera informacje ułatwiające:
 
-- Zrozumienie zabezpieczeń zalety obsługi aplikacji w chmurze
-- Ocena korzyści zabezpieczeń platformy jako usługa (PaaS) w porównaniu z innymi modelami usługi chmury
-- Zmień fokus zabezpieczeń z sieci skoncentrowane na podejście obwodowej skoncentrowane na tożsamość zabezpieczeń
-- Implementowanie ogólne PaaS zabezpieczeń poniżej rekomendowane najlepsze rozwiązania
+- Poznaj zalety zabezpieczeń, obsługi aplikacji w chmurze
+- Ocena korzyści związane z bezpieczeństwem, platforma jako usługa (PaaS) w porównaniu z innymi modelami usługi chmury
+- Zmienić nastawienie zabezpieczeń sieci skoncentrowane na podejście obwodowej skoncentrowane na tożsamość zabezpieczeń
+- Ogólne PaaS najlepszych praktyk zalecenia dotyczące implementowania zabezpieczeń
 
-## <a name="cloud-security-advantages"></a>Zalety zabezpieczeń w chmurze
-Jest większe bezpieczeństwo w chmurze. W środowisku lokalnym, organizacje mogą stosować unmet obowiązki i ograniczone zasoby dostępne inwestycji w zabezpieczeń, który tworzy środowisko, w którym osoby atakujące mogą się wykorzystać luki w wszystkie warstwy.
+## <a name="cloud-security-advantages"></a>Korzyści związane z bezpieczeństwem chmury
+Istnieją korzyści związane z bezpieczeństwem do bycia w chmurze. W środowisku lokalnym, prawdopodobnie organizacjach niewypełnienia obowiązków i ograniczone zasoby dostępne dla wartości inwestycji w zabezpieczeń, która tworzy środowisko, gdzie osoby atakujące mogą wykorzystać luki w zabezpieczeniach we wszystkich warstwach.
 
-![Zalety zabezpieczeń ery chmury][1]
+![Korzyści związane z bezpieczeństwem ery chmury][1]
 
-Organizacje mogą zwiększyć ich wykrywanie zagrożeń i czasy odpowiedzi przy użyciu funkcji zabezpieczeń opartych na chmurze dostawcy i analizy chmury.  Ustalając obowiązki do dostawcy chmury, organizacje mogą korzystać więcej pokrycia zabezpieczeń, co umożliwia ich ponowne przydzielenie zasobów zabezpieczeń i budżetu priorytety innych firm.
+Organizacje mogą zwiększyć ich wykrywanie zagrożeń i najlepsze czasy odpowiedzi przy użyciu funkcji zabezpieczeń opartych na chmurze dostawcy i rozwiązań inteligentnych w chmurze.  Przesuwając obowiązki do dostawcy chmury, organizacje mogą uzyskać więcej zakresu zabezpieczeń, co umożliwia ich ponowne przydzielenie zasoby dotyczące zabezpieczeń i budżetu do innych priorytetów biznesowych.
 
 ## <a name="division-of-responsibility"></a>Podział odpowiedzialności
-Należy zrozumieć podział obowiązków między Tobą a firmą Microsoft. W infrastrukturze lokalnej, właścicielem cały stos, ale przy przenoszeniu do chmury pewne obowiązki transferu do firmy Microsoft. Następujące macierzy odpowiedzialność przedstawiono obszary stosu we wdrożeniu SaaS, PaaS i IaaS, który jest odpowiedzialny za i firmy Microsoft jest odpowiedzialny za.
+Należy zrozumieć podział odpowiedzialności pomiędzy użytkownikiem a firmą Microsoft. W środowisku lokalnym, jesteś właścicielem całego stosu, ale po przeniesieniu do chmury pewne obowiązki przesyłanie do firmy Microsoft. Następujące macierzy odpowiedzialność przedstawiono obszary stosu w danym wdrożeniu rozwiązania SaaS, PaaS i IaaS, które ponosisz odpowiedzialność za i firmy Microsoft jest odpowiedzialna.
 
-![Odpowiedzialność stref][2]
+![Odpowiedzialność za stref][2]
 
-Dla wszystkich typów wdrożeń chmury posiadanych danych i tożsamości. Ponosisz odpowiedzialność za ochronę bezpieczeństwa danych i tożsamości, zasobów lokalnych i chmurze składniki można sterować (która zależy od typu usługi).
+Dla wszystkich typów wdrożeń chmury jesteś właścicielem swoich danych i tożsamości. Odpowiedzialność za ochronę bezpieczeństwa danych i tożsamości, zasoby lokalne i chmurowe składniki Ty określasz, (która zależy od typu usługi).
 
-Obowiązki, które są zawsze zachowywane przez administratora, niezależnie od tego typu wdrożenia, są następujące:
+Obowiązki, które są zawsze zachowywane przez użytkownika, niezależnie od tego typu wdrożenia, są następujące:
 
 - Dane
 - Punkty końcowe
 - Konto
 - Zarządzanie dostępem
 
-## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Zalety zabezpieczeń PaaS modelu usługi w chmurze
-Za pomocą tej samej macierzy odpowiedzialność, Przyjrzyjmy się zalet zabezpieczeń wdrożenie Azure PaaS lub lokalnie.
+## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Korzyści związane z bezpieczeństwem rozwiązania paas, model usług w chmurze
+Korzystając z tej samej macierzy odpowiedzialność, Przyjrzyjmy się korzyści związane z bezpieczeństwem, wdrożenia usługi PaaS platformy Azure, czy w środowisku lokalnym.
 
-![Zalety zabezpieczeń PaaS][3]
+![Korzyści związane z bezpieczeństwem rozwiązania paas][3]
 
-Zaczynając od dołu stosu infrastruktury fizycznej Microsoft zmniejsza typowe zagrożenia i jego obowiązki. Ponieważ w chmurze firmy Microsoft jest stale monitorowane przez firmę Microsoft, jest trudna na ataki. Go nie ma sensu atakujący może wykonywać firmy Microsoft w chmurze jako miejsce docelowe. Jeśli nie ma dużą oszczędność pieniędzy i zasobów, osoba atakująca prawdopodobnie przenieść na inny element docelowy.  
+Uruchamianie w dolnej części stosu infrastruktury fizycznej, Microsoft zmniejsza typowych zagrożeń i obowiązków. Ponieważ firmy Microsoft w chmurze jest stale monitorowane przez firmę Microsoft, jest trudny do ataków. Nie ma sensu osobie atakującej do prowadzenia firmy Microsoft w chmurze jako element docelowy. Chyba, że osoba atakująca ma dużo pieniędzy i zasobów, osoba atakująca jest prawdopodobne przejść do innego obiektu docelowego.  
 
-W trakcie stosu należy nie ma żadnej różnicy między wdrożenie PaaS i lokalnych. Na warstwie aplikacji i warstwa zarządzania konta i dostępu masz podobne czynników ryzyka. W następnej sekcji kroki opisane w tym artykule firma Microsoft przeprowadzi Cię do najlepszych rozwiązań dotyczących wyeliminowanie lub zmniejszenia ryzyka.
+W środku stosu nie ma żadnej różnicy między to wdrożenie PaaS i lokalne. Warstwa aplikacji oraz warstwa zarządzania kontem i dostępu będziesz mieć podobne ryzyka. W następnej sekcji kroki opisane w tym artykule firma Microsoft przeprowadzi Cię do najlepsze rozwiązania dotyczące eliminując lub zmniejszenia ryzyka.
 
-W górnej części stosu, zarządzanie danymi i usługi rights management możesz wykonać na jednym ryzyko, że można zminimalizować przez zarządzanie kluczami. (Zarządzanie kluczami jest objęte najlepszych rozwiązań.) Podczas zarządzania kluczami jest dodatkowe odpowiedzialność, masz obszarów, wdrożenie PaaS, który nie jest już konieczne zarządzanie, mogą przeprowadzić migrację zasobów do zarządzania kluczami.
+W górnej części stosu, nadzór nad danymi i rights management, należy wykonać na jednym ryzyko, że może być ograniczona przez zarządzanie kluczami. (Zarządzanie kluczami omówiono najlepsze rozwiązania.) Podczas zarządzania kluczami odpowiada dodatkowych, masz obszarów to wdrożenie PaaS, która nie jest już konieczne zarządzanie nimi, dzięki czemu mogą przeprowadzić migrację zasobów do zarządzania kluczami.
 
-Platformy Azure również umożliwia silną ochronę przed atakami DDoS za pomocą różnych technologii sieciowych. Wszystkie typy opartych na sieci metody ochrony przed atakami DDoS jednak limity ich na podstawie na jedno łącze i na centrum danych. Aby uniknąć wpływu ataków DDoS, można wykorzystać Azure core chmury możliwości włączania można szybko i automatycznie skalować w poziomie, aby chronić przed atakami DDoS. Znajdują się bardziej szczegółowo na jak to zrobić w artykułach zalecane praktyki.
+Platforma Azure również zapewnia silną ochronę przed atakami DDoS przy użyciu różnych technologiach opartych na sieci. Wszystkie typy sieciowymi programami wykorzystującymi metody ochrony przed atakami DDoS jednak ich ograniczeń na zasadach na jedno łącze i na centrum danych. Aby uniknąć wpływu ataków DDoS, możesz korzystać z zalet platformy Azure core chmury możliwości dzięki któremu można szybko i automatyczne skalowanie w poziomie obrony przed atakami DDoS. Szczegółowo omówimy bardziej szczegółowo w jaki sposób można to zrobić w artykułach zalecane praktyki.
 
-## <a name="modernizing-the-defenders-mindset"></a>Modernizacji mindset defender
-Z PaaS wdrożenia są shift w Twojej ogólnego podejścia do zabezpieczeń. Następuje przejście od konieczności kontrolowania wszystko samodzielnie udostępniania odpowiedzialności z firmą Microsoft.
+## <a name="modernizing-the-defenders-mindset"></a>Modernizowanie sposób myślenia programu defender
+Dzięki temu wdrożenia Przyjdź na zmianę w danej metody ogólnej zabezpieczeń. Następuje przejście od konieczności kontrolowania wszystko samodzielnie na potrzeby współużytkowania odpowiedzialność firmy Microsoft.
 
-Inną istotną różnicą między PaaS i wdrożeń tradycyjnych, lokalnie jest nowy widok co definiuje obwodowej głównej zabezpieczeń. W przeszłości granicznej zabezpieczeń lokalnych podstawowy został sieci i większości projektów zabezpieczeń lokalnych używają sieci jako jego pivot głównej zabezpieczeń. W przypadku wdrożeń typu PaaS są lepiej obsłużone przez uwzględnieniu tożsamości jako obwodowej głównej zabezpieczeń.
+Inny istotną różnicą między PaaS i tradycyjnych lokalnych wdrożeń jest nowy widok definiuje głównych zabezpieczeń obwodowych. W przeszłości zabezpieczeń obwodowych podstawowego środowiska lokalnego zostało sieci i większości projektów zabezpieczeń lokalnych sieć jest używana jako jego pivot głównych zabezpieczeń. Dla wdrożeń typu PaaS są lepiej byłoby, biorąc pod uwagę tożsamości jako głównych zabezpieczeń obwodowych.
 
-## <a name="identity-as-the-primary-security-perimeter"></a>Tożsamość jako obwodowej głównej zabezpieczeń
-Jeden z pięć istotnych cech chmury obliczeniowej jest szerokiego dostępu do sieci, co sprawia, że skoncentrowane sieci myśląc mniej istotne. Celem znacznie chmury obliczeniowej jest umożliwienie użytkownikom dostęp do zasobów, niezależnie od lokalizacji. Dla większości użytkowników ich lokalizacji ma być gdzieś w Internecie.
+## <a name="identity-as-the-primary-security-perimeter"></a>Tożsamość jako głównych zabezpieczeń obwodowych
+Jeden z pięć istotnych cech chmury obliczeniowej jest szeroki dostęp do sieci, co sprawia, że na interfejsach sieciowych myśl mniej istotne. Celem większości chmury obliczeniowej jest umożliwienie użytkownikom dostęp do zasobów, niezależnie od lokalizacji. Dla większości użytkowników ich lokalizacji będzie zawarty w Internecie.
 
-Na poniższej ilustracji przedstawiono, jak granicznej zabezpieczeń powstał z sieci obwodowej do obwodu tożsamości. Zabezpieczenia staje się mniej o jednocześnie obrona dostępu do sieci i więcej informacji o jednocześnie obrona dostępu do danych, a także zarządzanie zabezpieczeniami aplikacji i użytkowników. Najważniejsza różnica jest chcesz wypychana bliżej zabezpieczeń na najważniejszym w firmie.
+Na poniższej ilustracji przedstawiono, jak zabezpieczeń obwodowych powstał z obwód sieci obwodowej tożsamości. Zabezpieczenia staje się mniej o obronie sieci i więcej o obronie dane, a także zarządzanie zabezpieczeniami aplikacji i użytkowników. Główną różnicą jest chcesz wypychana bliżej zabezpieczeń, co ważne jest, aby Twoja firma.
 
-![Tożsamość jako nowe granicznej zabezpieczeń][4]
+![Tożsamość jako nową strefą zabezpieczeń][4]
 
-Początkowo usług Azure PaaS (na przykład ról sieć web i Azure SQL) podać niewielkiego lub żadnego z tradycyjną siecią obwodową zabezpieczenia. Został rozumie, że celem elementu było łączyć się z Internetem (role sieci web) i uwierzytelniania zapewnia nowy obwodowej (na przykład obiekt BLOB lub Azure SQL).
+Początkowo usług PaaS platformy Azure (na przykład ról sieć web i Azure SQL) podany niewielkiego lub żadnego tradycyjnej sieci obwodowej zabezpieczenia. Został rozumie, że celem elementu było łączyć się z Internetem (rola sieci web) i uwierzytelniania oferuje nową strefą (na przykład obiekt BLOB lub Azure SQL).
 
-Nowoczesne rozwiązania przyjęto założenie, atakujący dokonuje naruszony sieci obwodowej. W związku z tym obrony nowoczesnych rozwiązań zostały przeniesione do tożsamości. Organizacje należy ustanowić granicznej zabezpieczeń opartych na tożsamości z silnego uwierzytelniania i autoryzacji higieny (najlepsze rozwiązania).
+Rozwiązania w zakresie zabezpieczeń nowoczesnych przyjęto założenie, że osoba planująca atak złamała obwód sieci. W związku z tym defense nowoczesnych rozwiązań zostało przeniesione do tożsamości. Organizacje należy ustanowić oparta na tożsamości zabezpieczeń obwodowych przy użyciu silnego uwierzytelniania i autoryzacji higieny (najlepsze rozwiązania).
 
 ## <a name="recommendations-for-managing-the-identity-perimeter"></a>Zalecenia dotyczące zarządzania obwodowej tożsamości
 
-Zasady i wzorce dla sieci obwodowej były dostępne dla dekad. Natomiast w branży ma stosunkowo mniej środowisko z przy użyciu tożsamości jako obwodowej głównej zabezpieczeń. Z tym powiedział możemy współdzielenia za mało doświadczenie w celu zapewnienia ogólne zalecenia zostały sprawdzone w polu, które mają zastosowanie do niemal wszystkich usług PaaS.
+Zasady i wzorców dla sieci obwodowej były dostępne od dziesięcioleci. Natomiast w branży zawiera stosunkowo mniej środowisko przy użyciu tożsamości jako głównych zabezpieczeń obwodowych. Dzięki temu powiedział zakumulowaliśmy wystarczająco dużo doświadczenie w celu zapewnienia ogólne zalecenia są sprawdzone w polu, które dotyczą praktycznie wszystkie usługi PaaS.
 
-Poniżej przedstawiono podsumowanie ogólnych najlepszych rozwiązań stosowanych do zarządzania w sieci obwodowej tożsamości.
+Poniżej przedstawiono podsumowanie ogólne najlepszym rozwiązaniem rozwiązania do zarządzania w sieci obwodowej tożsamości.
 
-- **Nie utrać Twoje klucze lub poświadczenia** zabezpieczania kluczy i poświadczeń jest niezbędne do zabezpieczania wdrożeń typu PaaS. Utraty kluczy i poświadczeń jest to powszechny problem. Jeden dobrym rozwiązaniem jest użycie scentralizowanego rozwiązania, w których kluczy i kluczy tajnych są przechowywane w sprzętowych modułach zabezpieczeń (HSM). Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
-- **Nie umieszczaj poświadczeń i innych informacji poufnych do kodu źródłowego lub GitHub** jedynym elementem gorsze od utraty Twoje klucze i poświadczeń o nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą wykorzystać bot technologie, aby znaleźć kluczy i kluczy tajnych przechowywane w repozytoriach kodów, takich jak usługi GitHub. Nie należy umieszczać kluczy i kluczy tajnych w tych publicznych repozytoriach kodów źródłowych.
-- **Ochrona interfejsów zarządzania maszyny Wirtualnej na hybrydowego usługi PaaS i IaaS** IaaS i PaaS usługi są uruchomione na maszynach wirtualnych (VM). W zależności od typu usługi, są dostępne kilka interfejsów zarządzania tym Włącz te maszyny wirtualne można zdalnie zarządzać bezpośrednio. Zdalne zarządzanie protokołów, takich jak [protokołu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokołu RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), i [zdalnego programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączona bezpośredni dostęp zdalny do maszyn wirtualnych z Internetu. Jeśli to możliwe, należy użyć alternatywnych metod takich jak przy użyciu wirtualnej sieci prywatnej w sieci wirtualnej platformy Azure. Jeśli alternatywnych metod nie są dostępne, a następnie upewnij się, że używasz złożone hasła, a jeśli jest dostępna, uwierzytelnianie dwuskładnikowe (takich jak [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
-- **Użyj silnego uwierzytelniania i autoryzacji platformy**
+- **Nie strać swoje klucze lub poświadczenia** zabezpieczania kluczy i poświadczeń są one niezbędne przy zabezpieczanie wdrożeń typu PaaS. Utraty kluczy i poświadczeń jest to powszechny problem. Jeden dobrym rozwiązaniem jest użycie scentralizowanego rozwiązania, w których klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń (HSM). Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
+- **Nie umieszczaj poświadczeń i innych wpisów tajnych do kodu źródłowego lub GitHub** jedyną czynnością co gorsza, nie tracąc kluczy i poświadczeń jest nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą korzystać z zalet bot technologie, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj klucza i wpisów tajnych w tych publicznych repozytoriach kodów źródłowych.
+- **Ochrona interfejsów zarządzania sieci maszyny Wirtualnej na usługach PaaS i IaaS hybrydowego** usługi IaaS i PaaS są uruchomione na maszynach wirtualnych (VM). W zależności od używanego typu usługi są dostępne kilka interfejsów zarządzania tym Włącz umożliwia zdalne zarządzanie te maszyny wirtualne bezpośrednio. Zdalne zarządzanie protokoły, takie jak [protokołu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokołu RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), i [zdalnego programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączone bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu. Jeśli to możliwe, należy użyć metody alternatywne, na przykład przy użyciu wirtualnej sieci prywatnej w sieci wirtualnej platformy Azure. Jeśli alternatywnych metod nie są dostępne, a następnie upewnij się, że używasz złożone hasło, a jeśli są dostępne, uwierzytelniania dwuskładnikowego (takie jak [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
+- **Korzystać z silnego uwierzytelniania i autoryzacji platform**
 
-  - Użyj tożsamości federacyjnych w usłudze Azure AD zamiast magazynów użytkownika niestandardowego. Korzystając z tożsamości federacyjnej, możesz korzystać z platformy opartego i przekazać Zarządzanie tożsamościami autoryzowanych partnerów. Podejście tożsamości federacyjnych jest szczególnie ważne w scenariuszach, gdy pracownicy są zakończone i informacje muszą być uwzględniane w wielu systemów tożsamości oraz autoryzacji.
-  - Użyj platformy dostarczona mechanizmy uwierzytelniania i autoryzacji, zamiast kodu niestandardowego. Przyczyną jest to, że opracowywanie uwierzytelniania niestandardowego kodu może być błąd podatnych na błędy. Większość deweloperów nie są ekspertów zabezpieczeń i prawdopodobnie nie należy pamiętać o precyzyjnie oraz najnowsze osiągnięcia w uwierzytelniania i autoryzacji. Komercyjnych kodu (na przykład od firmy Microsoft) jest często często przeglądu zabezpieczeń.
-  - Uwierzytelnianie wieloskładnikowe. Uwierzytelnianie wieloskładnikowe jest obecnie standardowym do uwierzytelniania i autoryzacji, ponieważ pozwala ona na uniknięcie słabych zabezpieczeń związane z nazwy użytkownika i hasła typy uwierzytelniania. Dostęp do interfejsów zarządzania platformy Azure (portal/zdalne programu PowerShell) oraz klientów usługi powinny być zaprojektowane i skonfigurowane do używania [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
-  - Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i protokołu Kerberos. Te protokoły zostały często dokładnie przeglądane i prawdopodobnie są zaimplementowane jako część bibliotek platformy do uwierzytelniania i autoryzacji.
+  - W usłudze Azure AD zamiast niestandardowych magazynów użytkownika, należy używać tożsamości federacyjnej. Korzystając z tożsamości federacyjnej, możesz korzystać z podejścia opartego na platformie i delegować Zarządzanie tożsamościami autoryzowanych do partnerów. Podejście tożsamości federacyjnej jest szczególnie ważne w sytuacjach, gdy pracownicy są kończone, a informacje muszą być uwzględniane w wielu systemów tożsamości i autoryzacji.
+  - Użyj platformę mechanizmy uwierzytelniania i autoryzacji, zamiast kodu niestandardowego. Przyczyną jest to, że opracowanie kodu, uwierzytelnianie niestandardowe może prowadzić do występowania błędów. Większość deweloperów nie są ekspertami w dziedzinie zabezpieczeń i prawdopodobnie nie trzeba pamiętać precyzyjnie i Poznaj najnowsze osiągnięcia w sekcji uwierzytelnianie i autoryzację. Komercyjne kodu (na przykład z firmy Microsoft) jest często często przeglądowi zabezpieczeń.
+  - Używanie uwierzytelniania wieloskładnikowego. Uwierzytelnianie wieloskładnikowe jest bieżące normy, do uwierzytelniania i autoryzacji, ponieważ eliminuje luki bezpieczeństwa związane z typów uwierzytelniania nazwy użytkownika i hasła. Dostęp do interfejsów zarządzania platformy Azure (portal/zdalnego programu PowerShell) i usług przeznaczonych dla klientów powinny być zaprojektowane i skonfigurowany do używania [usługi Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
+  - Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i protokołu Kerberos. Protokoły te zostały często elementu równorzędnego przeglądu i prawdopodobnie są implementowane jako część platformy bibliotek uwierzytelniania i autoryzacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule firma Microsoft skupia się na zalet zabezpieczeń wdrożenie Azure PaaS. Następnie Dowiedz się, najważniejsze wskazówki dotyczące zabezpieczania PaaS w sieci web i rozwiązań mobilnych. Zaczniemy usłudze Azure App Service, baza danych SQL Azure i usługi Azure SQL Data Warehouse. Jako artykułów na zaleceń dla innych usług platformy Azure są dostępne, linki będzie świadczona na poniższej liście:
+W tym artykule skupiliśmy się na korzyści związane z bezpieczeństwem wdrożenia modelu PaaS platformy Azure. Dowiedz się, zalecane praktyki zabezpieczanie aplikacji PaaS w sieci web i rozwiązań mobilnych. Rozpoczniemy od usługi Azure App Service, Azure SQL Database i Azure SQL Data Warehouse. W miarę udostępniania artykuły dotyczące zalecanych rozwiązań dotyczących innych usług platformy Azure będzie świadczona łącza na poniższej liście:
 
 - [Azure App Service](security-paas-applications-using-app-services.md)
-- [Baza danych Azure SQL i magazyn danych Azure SQL](security-paas-applications-using-sql.md)
-- Azure Storage
-- Pamięć podręczna Azure REDIS
+- [Azure SQL Database i Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
+- [Azure Storage](security-paas-applications-using-storage.md)
+- Usługi Azure REDIS Cache
 - Azure Service Bus
 - Zapory aplikacji sieci Web
 

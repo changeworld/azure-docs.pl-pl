@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619410"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054576"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia dotyczące usługi Azure Cloud Shell
 
@@ -31,6 +31,11 @@ Następujące rozwiązania znanych problemów w usłudze Azure Cloud Shell:
 
 - **Szczegóły**: usługi Cloud Shell korzysta z otwartych websocket, przekazać dane wejściowe i wyjściowe do przeglądarki. FireFox ma wstępnie zdefiniowanych zasad, które można zamknąć websocket przedwcześnie powoduje wczesne przekroczeń limitu czasu w usłudze Cloud Shell.
 - **Rozpoznawanie**: Otwórz przeglądarkę FireFox i przejdź do "o: config" w polu adres URL. Wyszukaj "network.websocket.timeout.ping.request" i zmień wartość z zakresu od 0 do 10.
+
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Wyłączanie usługi Cloud Shell w sieci zablokowane w środowisku
+
+- **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do usługi Cloud Shell dla swoich użytkowników. Usługa cloud Shell korzysta z uprawnieniami do `ux.console.azure.com` domeny, która może nastąpić odmowa, zatrzymanie dostęp do usługi Cloud Shell punkty wejścia, m.in. portal.azure.com shell.azure.com, Visual Studio rozszerzenie Azure Account Code i witryny docs.microsoft.com.
+- **Rozpoznawanie**: ograniczanie dostępu do `ux.console.azure.com` za pośrednictwem ustawień sieci do danego środowiska. Ikona usługi Cloud Shell będą nadal istnieć w witrynie portal.azure.com, ale nie zostanie pomyślnie połączyć się z usługą.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Okno dialogowe magazynu — błąd: 403 RequestDisallowedByPolicy
 

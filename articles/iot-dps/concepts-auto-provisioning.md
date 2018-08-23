@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9a45f8269e0ca2bc4188016af0ace06831c762b6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521282"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059138"
 ---
 # <a name="auto-provisioning-concepts"></a>Pojęcia automatycznej aprowizacji
 
@@ -62,7 +62,7 @@ Poniższy diagram zawiera Podsumowanie ról i sekwencji operacji podczas aprowiz
 [![Sekwencja automatycznej aprowizacji dla urządzenia](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> Opcjonalnie, producent można również wykonać operacji "Rejestrowanie tożsamości urządzenia", przy użyciu interfejsów API usługi aprowizacji urządzeń (zamiast przy użyciu operatora). Szczegółowe omówienie tej sekwencjonowania i nie tylko zobacz [Zero touch rejestracji urządzeń w usłudze wideo usługi Azure IoT](https://myignite.microsoft.com/sessions/55087) (rozpoczyna się od znacznika 41:00)
+> Opcjonalnie, producent można również wykonać operacji "Rejestrowanie tożsamości urządzenia", przy użyciu interfejsów API usługi aprowizacji urządzeń (zamiast przy użyciu operatora). Szczegółowe omówienie tej sekwencjonowania i nie tylko zobacz [Zero touch rejestracji urządzeń w usłudze wideo usługi Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) (rozpoczyna się od znacznika 41:00)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626815"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059542"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -185,7 +185,7 @@ Przybliżony czas wykonania: 15 minut
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp |  |
 | Kliknij Kafelek dla aplikacji, która właśnie została utworzona. | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -220,7 +220,7 @@ Przybliżony czas wykonania: 30 minut
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Przypisywanie aplikacji do grupy określone w wymaganiach wstępnych podczas przypisywania ich poświadczeń | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się jako inny użytkownik niż dostęp do aplikacji jako **takie same udostępnionego konta.**  |  |
 | Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](reports-monitoring/reference-reports-data-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |

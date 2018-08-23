@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f3f827958c0c5d71846d8f0d4184ef88b7f0a932
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527407"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057657"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Zarządzanie magazynem w niezależnych chmury platformy Azure przy użyciu programu PowerShell
 
@@ -35,7 +35,7 @@ Przykłady wymagają programu Azure PowerShell module wersję 4.4.0 lub nowszej.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Uruchom [Get AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) polecenia cmdlet, aby wyświetlić dostępne środowiska platformy Azure:
+Uruchom [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) polecenia cmdlet, aby wyświetlić dostępne środowiska platformy Azure:
    
 ```powershell
 Get-AzureRmEnvironment

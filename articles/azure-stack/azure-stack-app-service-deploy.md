@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 22593fc470325fbfb74cfb432207abeea7d96ac2
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342790"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057645"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "37342790"
 Użyj się ze wskazówkami w tym artykule, aby wdrożyć usługi App Service w usłudze Azure Stack.
 
 >[!IMPORTANT]  
->Zastosowanie aktualizacji 1804 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.2.
+>Zastosowanie aktualizacji 1807 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.3.
 
 Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci web i. Aby zezwolić użytkownikom na tworzenie tych aplikacji, należy:
 
@@ -131,6 +131,18 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     > [!NOTE]
     > Instalator spróbuje ją przetestować łączność z serwerem SQL Server przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, może być plik ten test łączności. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje programu SQL Server jest poprawna, nadal wdrożenia.
+    >
+    > Usługi Azure App Service na usługi Azure Stack i nowszych wersjach 1.3 Instalator sprawdzi, czy serwer SQL jest zawierania bazy danych, włączone na poziomie serwera SQL.  Jeśli nie jest dostępne, zostanie wyświetlony monit z następującym wyjątkiem:
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > Zapoznaj się [informacje o wersji dla usługi Azure App Service w usłudze Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) Aby uzyskać więcej informacji.
 
     ![Instalator usługi App Service][11]
 
