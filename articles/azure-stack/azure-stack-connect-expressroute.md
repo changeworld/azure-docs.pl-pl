@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449972"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139621"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -180,7 +180,7 @@ Po utworzeniu bramy sieci wirtualnej można uzyskać publicznego adresu IP bramy
 
 1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **wszystkie zasoby**.
 1. W obszarze **wszystkie zasoby**, wybierz bramę sieci wirtualnej, która jest **GW1** w przykładzie.
-1. W obszarze **bramy sieci wirtualnej**, wybierz opcję **Przegląd**. z listy zasobów. Alternatywnie, można wybrać **właściwości**.
+1. W obszarze **bramy sieci wirtualnej**, wybierz opcję **Przegląd** z listy zasobów. Alternatywnie, można wybrać **właściwości**.
 1. Adres IP, który ma zostać należy pamiętać, znajduje się w obszarze **publiczny adres IP**. Dla przykładowej konfiguracji ten adres jest 192.68.102.1.
 
 #### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
@@ -360,7 +360,7 @@ Powtórz te czynności dla dowolnej dzierżawy dodatkowe sieci wirtualne, któr�
 
 ## <a name="configure-the-router"></a>Konfigurowanie routera
 
-Można użyć następujących *Konfiguracja routera ExpressRoute* diagramie przedstawiono wskazówki dotyczące konfigurowania routera usługi ExpressRoute. Ten diagram przedstawia dwóch dzierżawców (1 dzierżawy i dzierżawy 2) z ich odpowiednimi obwodów Expressroute. Każda dzierżawa jest połączona własne VRF (wirtualny routingu i przekazywania) w sieci LAN i WAN stronie routera usługi ExpressRoute. Ta konfiguracja gwarantuje izolację end-to-end w dwóch dzierżawców. Zwróć uwagę na adresy IP używane w interfejsach routera, postępując zgodnie ze wskazówkami w przykładzie konfiguracji.
+Można użyć następujących *Konfiguracja routera ExpressRoute* diagramie przedstawiono wskazówki dotyczące konfigurowania routera usługi ExpressRoute. Ten diagram przedstawia dwóch dzierżawców (1 dzierżawy i dzierżawy 2) z ich odpowiednimi obwodów usługi ExpressRoute. Każda dzierżawa jest połączona własne VRF (wirtualny routingu i przekazywania) w sieci LAN i WAN stronie routera usługi ExpressRoute. Ta konfiguracja gwarantuje izolację end-to-end w dwóch dzierżawców. Zwróć uwagę na adresy IP używane w interfejsach routera, postępując zgodnie ze wskazówkami w przykładzie konfiguracji.
 
 *Rysunek 4. Konfiguracja routera usługi ExpressRoute*
 
@@ -368,7 +368,7 @@ Można użyć następujących *Konfiguracja routera ExpressRoute* diagramie prze
 
 Możesz użyć dowolnego routera, który obsługuje protokół IKEv2 sieci VPN i BGP, aby zakończyć połączenie sieci VPN typu lokacja-lokacja z usługi Azure Stack. Tym samym router jest używany do połączenia z platformą Azure przy użyciu obwodu usługi ExpressRoute.
 
-W poniższym przykładzie konfiguracji Cisco usługi Azure Site Recovery 1000 obsługuje infrastrukturę sieci, objętego *Konfiguracja routera ExpressRoute* diagramu.
+W poniższym przykładzie konfiguracji routera usługi agregacji serii Cisco ASR 1000 obsługuje infrastrukturę sieci, objętego *Konfiguracja routera ExpressRoute* diagramu.
 
 **Przykład konfiguracji usługi ASR 1000 Cisco**
 
@@ -457,7 +457,7 @@ description S2S VPN Tunnel for Tenant 2
  tunnel protection ipsec profile V4-PROFILE
 !
 interface GigabitEthernet0/0/1
- description PRIMARY Express Route Link to AZURE over Equinix
+ description PRIMARY ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !
@@ -476,7 +476,7 @@ description Primary WAN interface of Tenant 2
  ip address 192.168.1.17 255.255.255.252
 !
 interface GigabitEthernet0/0/2
- description BACKUP Express Route Link to AZURE over Equinix
+ description BACKUP ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !

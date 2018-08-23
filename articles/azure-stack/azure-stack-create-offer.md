@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345893"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139427"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Tworzenie oferty w usłudze Azure Stack
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345893"
    > [!TIP]  
    > Zmiany tej oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
 
-   Aby zmienić stan oferty:
-
-   - **W wersji 1803 i nowszych**:  
-     W obszarze Przegląd dla oferty wybierz **stan ułatwień dostępu**. Wybierz stan, w której chcesz użyć (na przykład *publicznych*), a następnie wybierz **Zapisz**.
+   W obszarze Przegląd dla oferty wybierz **stan ułatwień dostępu**. Wybierz stan, w której chcesz użyć (na przykład **publicznych**), a następnie wybierz **Zapisz**.
  
-     ![Wybierz stan ułatwień dostępu](media/azure-stack-create-offer/change-state.png)
+     ![Wybierz stan](media/azure-stack-create-offer/change-stage-1807.png)
 
-     Alternatywnie, po uzyskaniu dostępu ofertę możesz przejść do **ustawienia oferty**. Wybierz **stan ułatwień dostępu** zmiany stanu.
+     Jako alternatywę, wybierz **zmiany stanu** , a następnie wybierz stan.
 
-   - **Przed wersją 1803**:  
-     Wybierz **wszystkie zasoby**, Wyszukaj nowe oferty, a następnie wybierz nową ofertę. Wybierz **zmiany stanu**, a następnie wybierz pozycję **publicznych**.
+    ![Wybierz stan ułatwień dostępu](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > Umożliwia także środowiska PowerShell do utworzenia domyślnego oferty, przydziały i planów. Aby uzyskać więcej informacji, zobacz [modułu programu PowerShell usługi Azure Stack 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
+   > Umożliwia także środowiska PowerShell do utworzenia domyślnego oferty, przydziały i planów. Aby uzyskać więcej informacji, zobacz [modułu programu PowerShell usługi Azure Stack 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

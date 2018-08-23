@@ -1,9 +1,9 @@
 ---
-title: Zrozumienie podstawowych różnic między Azure i stosu Azure, korzystając z usług i tworzenie aplikacji | Dokumentacja firmy Microsoft
-description: Co należy wiedzieć, aby używać usług lub tworzenie aplikacji dla platformy Azure stosu.
+title: Zrozumienie podstawowych różnic między platformą Azure i usługi Azure Stack, podczas korzystania z usług i tworzenie aplikacji | Dokumentacja firmy Microsoft
+description: Co należy wiedzieć, aby używać usług lub tworzenie aplikacji dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
@@ -12,84 +12,84 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2018
-ms.author: mabrigg
-ms.openlocfilehash: eab208175f7eb3b761ec7266483a7cd5268198e8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: a8d211992f52c9719cad76f16133e23eba24d422
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512932"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139460"
 ---
-# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Kluczowe zagadnienia dotyczące: za pomocą usług lub tworzenia aplikacji dla platformy Azure stosu
+# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Zagadnienia dotyczące klucza: przy użyciu usług lub tworzenia aplikacji dla usługi Azure Stack
 
-Przed użyciem usługi lub tworzyć aplikacje dla stosu Azure, trzeba poznać różnice między stosu Azure i usługi Azure. W tym artykule identyfikuje Najważniejsze kwestie, podczas używania stosu Azure jako środowiska deweloperskiego chmury hybrydowej.
+Przed użyciem usługi lub Twórz aplikacje dla usługi Azure Stack, musisz poznać różnice w usłudze Azure Stack i platformą Azure. W tym artykule identyfikuje Najważniejsze kwestie, korzystając z usługi Azure Stack jako środowiska programowania w chmurze hybrydowej.
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure Stack to platforma chmury hybrydowej, która umożliwia korzystanie z usług platformy Azure z centrum danych Twojej firmy lub dostawcy usługi. Można utworzyć aplikację na stosie Azure i wdrożyć ją do stosu Azure, Azure lub chmury hybrydowe platformy Azure.
+Usługa Azure Stack to platforma chmury hybrydowej, która umożliwia korzystanie z usług platformy Azure z centrum danych Twojej firmy lub dostawcy usługi. Można utworzyć aplikację w usłudze Azure Stack i wdrożyć ją do usługi Azure Stack, Azure lub w chmurze hybrydowej platformy Azure.
 
-Operatorem stosu Azure poinformuje użytkownika usługi, które są dostępne do użycia i jak uzyskać pomoc techniczną. Oferują one te usługi za pośrednictwem ich niestandardowych planów i oferty.
+Operator usługi Azure Stack zostanie wyświetlone powiadomienie, które usługi są dostępne do użycia i jak uzyskać pomoc techniczną. Oferują one tych usług za pośrednictwem ich dostosowane plany i oferty.
 
-Azure zawartości technicznej przyjęto założenie, że aplikacje są opracowywanych dla usługi Azure zamiast stosu Azure. Podczas tworzenia i wdrażania aplikacji na stosie Azure, należy poznać niektóre podstawowe różnice:
+Azure zawartości technicznej przyjęto założenie, że aplikacje są opracowywane usługi platformy Azure, a nie usługi Azure Stack. Podczas tworzenia i wdrażania aplikacji do usługi Azure Stack, należy poznać niektóre podstawowe różnice:
 
-* Stos Azure oferuje podzbiór usługi i funkcje, które są dostępne w systemie Azure.
-* Twój dostawca firmy lub usługi można wybrać usługi, które chcą oferować. Dostępne opcje mogą obejmować dostosowane usług lub aplikacji. Mogą one oferować własnych dostosowanych dokumentacji.
-* Należy użyć odpowiedniego punkty końcowe platformy Azure dotyczące stosu (na przykład adresy URL portalu adres i punktu końcowego usługi Azure Resource Manager).
-* Należy użyć wersji programu PowerShell i interfejs API, które są obsługiwane przez stos Azure. Korzystanie z obsługiwanych wersji zapewnia, czy aplikacje będą działać w stosie Azure i usługi Azure.
+* Usługa Azure Stack oferuje podzestaw usług i funkcji, które są dostępne na platformie Azure.
+* Twój dostawca firmą lub usługą, można wybrać usługi, które mają do zaoferowania. Dostępne opcje mogą obejmować niestandardowych usług lub aplikacji. Mogą one oferować we własnej dokumentacji dostosowane.
+* Należy użyć odpowiedniego Azure Stack punkty końcowe (na przykład adresy URL portalu adres i punktu końcowego usługi Azure Resource Manager).
+* Należy użyć wersji programu PowerShell i interfejsu API, które są obsługiwane przez usługę Azure Stack. Korzystanie z obsługiwanymi wersjami zapewnia, że Twoje aplikacje będą działać zarówno w usłudze Azure Stack i Azure.
 
 ## <a name="cheat-sheet-high-level-differences"></a>Ściągawka: Ogólne różnice
 
-W poniższej tabeli opisano ogólne różnice między stosu Azure i usługi Azure. Zachowaj te różnice pamiętać podczas opracowywania stosu Azure lub korzystania z usług Azure stosu.
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+W poniższej tabeli opisano ogólne różnice między usługi Azure Stack i platformą Azure. Zachowaj te różnice, należy pamiętać, podczas tworzenia usługi Azure Stack lub użyć usługi Azure Stack.
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 | Obszar | Azure (globalna) | Azure Stack |
 | -------- | ------------- | ----------|
 | Kto działa? | Microsoft | Twój dostawca organizacji lub usługi.|
-| Który zamierzasz zgłosić obsługi? | Microsoft | Dla zintegrowany system skontaktuj się z operatorem stosu Azure (w dostawcy organizacji lub usługi) dla pomocy technicznej.<br><br>Azure stosu Development Kit pomocy technicznej, odwiedź stronę [fora Microsoft](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Ponieważ zestaw deweloperski środowiska do oceny, nie jest oficjalną obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).
-| Dostępne usługi | Lista [produkty Azure](https://azure.microsoft.com/services/?b=17.04b). Dostępne usługi zależą od regionu systemu Azure. | Stos Azure obsługuje usług platformy Azure. Rzeczywiste usługi różni się zależnie od dostawcy organizacji lub usługa wybierze na ofertę.
-| Usługa Azure Resource Manager punktu końcowego * | https://management.azure.com | Dla systemu Azure stosu zintegrowane użycia punktu końcowego zapewnianej przez operatora sieci Azure stosu.<br><br>Dla zestawu SDK należy użyć: https://management.local.azurestack.external
-| Portal adresu URL * | [https://portal.azure.com](https://portal.azure.com) | System Azure stosu zintegrowane przejdź do adresu URL, zapewnianej przez operatora sieci Azure stosu.<br><br>Dla zestawu SDK należy użyć: https://portal.local.azurestack.external
-| Region | Możesz wybrać regionu, którego chcesz wdrożyć. | System Azure stosu zintegrowane Użyj regionu, która jest dostępna w systemie.<br><br>Dla zestawu SDK, zawsze będą region **lokalnego**.
-| Grupy zasobów | Grupa zasobów może obejmować regionów. | Dla zintegrowanych systemów i zestaw deweloperski istnieje tylko jeden region.
-|Obsługiwanych przestrzeniach nazw, typów zasobów i wersje interfejsu API | Najnowsze (i jego wcześniejsze wersje, które nie są jeszcze przestarzałe). | Stos Azure obsługuje określonych wersji. Zobacz sekcję "Wymagania dotyczące wersji" tego artykułu.
+| Z kim należy się skontaktować pomocy technicznej? | Microsoft | Zintegrowany system skontaktuj się z operatora infrastruktury Azure Stack (u Twojego dostawcy organizacji lub usługi) dla pomocy technicznej.<br><br>Azure Stack Development Kit pomocy technicznej, odwiedź stronę [fora firmy Microsoft](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Ponieważ zestaw development kit jest środowisko wersji ewaluacyjnej, nie jest oficjalnym obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).
+| Dostępne usługi | Przejrzyj listę rzeczy, [produktów platformy Azure](https://azure.microsoft.com/services/?b=17.04b). Dostępne usługi różnić między regionami platformy Azure. | Usługa Azure Stack obsługuje podzbiór usług platformy Azure. Rzeczywiste usługi będzie zależeć od dostawcy organizacji lub usługa wybierze do zaoferowania.
+| Usługa Azure Resource Manager endpoint * | https://management.azure.com | W przypadku to system zintegrowany z usługi Azure Stack Użyj punktu końcowego, który dostarczony operator usługi Azure Stack.<br><br>Dla zestawu SDK należy użyć: https://management.local.azurestack.external
+| Portal adresu URL * | [https://portal.azure.com](https://portal.azure.com) | Aby to system zintegrowany z usługi Azure Stack przejdź do adresu URL, który dostarczony operator usługi Azure Stack.<br><br>Dla zestawu SDK należy użyć: https://portal.local.azurestack.external
+| Region | Możesz wybrać region, które mają zostać wdrożone na. | To system zintegrowany z usługi Azure Stack można używać w regionie, który jest dostępny w systemie.<br><br>Dla zestawu SDK, region będzie zawsze **lokalnego**.
+| Grupy zasobów | Grupa zasobów może obejmować regiony. | Zintegrowane systemy i zestaw development kit jest tylko jeden region.
+|Obsługiwane przestrzenie nazw, typy zasobów i wersje interfejsu API | Najnowsze (i jego wcześniejsze wersje, które nie są jeszcze przestarzałe). | Usługa Azure Stack obsługuje określonych wersji. Zobacz sekcję "Wymagania dotyczące wersji" w tym artykule.
 | | |
 
-* Jeśli jesteś operator stosu Azure, zobacz [za pomocą portalu administratora](../azure-stack-manage-portals.md) i [podstawy administracji](../azure-stack-manage-basics.md) Aby uzyskać więcej informacji.
+* Jeśli masz operatorów usługi Azure Stack, zobacz [korzystanie z portalu administratora](../azure-stack-manage-portals.md) i [podstawy administracji](../azure-stack-manage-basics.md) Aby uzyskać więcej informacji.
 
-## <a name="helpful-tools-and-best-practices"></a>Przydatne narzędzia i najlepsze rozwiązania
+## <a name="helpful-tools-and-best-practices"></a>Przydatnych narzędzi i najlepsze rozwiązania
  
- Firma Microsoft zapewnia kilka narzędzi i wskazówek, która ułatwia tworzenie stosu Azure.
+ Firma Microsoft zapewnia kilka narzędzi i wskazówek, które ułatwia tworzenie oprogramowania dla usługi Azure Stack.
 
 | Zalecenie | Dokumentacja | 
 | -------- | ------------- | 
-| Zainstaluj poprawne narzędzia na stacji roboczej developer. | - [Instalowanie programu PowerShell](azure-stack-powershell-install.md)<br>- [Pobierz narzędzia](azure-stack-powershell-download.md)<br>- [Konfigurowanie programu PowerShell](azure-stack-powershell-configure-user.md)<br>- [Zainstaluj program Visual Studio](azure-stack-install-visual-studio.md) 
-| Przejrzyj informacje dotyczące następujących elementów:<br>-Zagadnienia dotyczące szablonów azure Resource Manager<br>-Porady szablonów Szybki Start<br>— Umożliwia modułu zasad pomagają w używaniu platformy Azure na stosie Azure | [Opracowywanie zawartości dla usługi Azure Stack](azure-stack-developer.md) | 
-| Przejrzyj i stosuj najlepsze rozwiązania dla szablonów. | [Szablony szybkiego startu usługi Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
+| Zainstaluj odpowiednie narzędzia na stacji roboczej dewelopera. | - [Instalowanie programu PowerShell](azure-stack-powershell-install.md)<br>- [Pobierz narzędzia](azure-stack-powershell-download.md)<br>- [Konfigurowanie programu PowerShell](azure-stack-powershell-configure-user.md)<br>- [Zainstaluj program Visual Studio](azure-stack-install-visual-studio.md) 
+| Przejrzyj informacje dotyczące następujących elementów:<br>— Zagadnienia dotyczące szablonów usługi Resource Manager platforma azure<br>-Jak znaleźć szablony szybkiego startu<br>-Użyj modułu zasad ułatwiają korzystanie z platformy Azure w celu projektowania dla usługi Azure Stack | [Opracowywanie zawartości dla usługi Azure Stack](azure-stack-developer.md) | 
+| Przejrzyj i stosuj najlepsze rozwiązania dotyczące szablonów. | [Szablony szybkiego startu usługi Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
 | | |
 
 ## <a name="version-requirements"></a>Wymagania dotyczące wersji
 
-Stos Azure obsługuje określonych wersji programu Azure PowerShell i interfejsów API usługi Azure. Obsługiwane wersje umożliwia upewnij się, że aplikację można wdrożyć zarówno stos Azure i na platformie Azure.
+Usługa Azure Stack obsługuje wersje programu Azure PowerShell i interfejsów API usług platformy Azure. Użyj obsługiwanych wersji, aby upewnić się, że aplikację można wdrożyć zarówno usługi Azure Stack i Azure.
 
-Aby upewnić się, że używasz poprawnej wersji programu Azure PowerShell, użyj [profile w wersji interfejsu API](azure-stack-version-profiles.md). Aby sprawdzić najnowsze profil wersji interfejsu API, który można użyć, Dowiedz się kompilacji stosu Azure używasz. Te informacje można uzyskać od administratora stosu Azure.
+Aby upewnić się, że używasz poprawnej wersji programu Azure PowerShell, należy użyć [profilami wersji interfejsu API](azure-stack-version-profiles.md). Aby określić najnowszą profilu wersji interfejsu API, którego można używać, Dowiedz się, kompilacja jest używany w usłudze Azure Stack. Te informacje można uzyskać od administratora usługi Azure Stack.
 
 >[!NOTE]
- Jeśli używasz Development Kit stosu Azure i mają dostęp administracyjny, zobacz sekcję "Sprawdzić bieżącą wersję" [zarządzanie aktualizacjami](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) ustalenie kompilacji stosu Azure.
+ Jeśli używasz usługi Azure Stack Development Kit i mieć dostęp administracyjny, zobacz sekcję "Ustalić bieżącą wersję" [zarządzanie aktualizacjami](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) ustalenie kompilacji usługi Azure Stack.
 
-Dla innych interfejsów API uruchom następujące polecenie programu PowerShell, aby dane wyjściowe obszary nazw, typów zasobów i wersji interfejsu API, które są obsługiwane w ramach subskrypcji Azure stosu. Warto zauważyć, że może nadal być różnice na poziomie właściwości. (To polecenie mogło działać, musisz mieć już [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-user.md) środowiska PowerShell dla środowiska Azure stosu. Użytkownik musi mieć również subskrypcji z ofertą Azure stosu.)
+Dla innych interfejsów API, uruchom następujące polecenie programu PowerShell służący do wypełniania wyjściowego przestrzenie nazw, typy zasobów i wersje interfejsu API, które są obsługiwane w ramach subskrypcji usługi Azure Stack. Uwaga może nadal być różnice na poziomie właściwości. (To polecenie mogło działać, musisz mieć już [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-user.md) programu PowerShell dla środowiska Azure Stack. Należy również masz subskrypcję oferty usługi Azure Stack.)
 
  ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-Przykład danych wyjściowych (obcięty): ![przykładowe dane wyjściowe polecenia Get-AzureRmResourceProvider](media/azure-stack-considerations/image1.png)
+Przykładowe dane wyjściowe (obcięty): ![przykładowe dane wyjściowe polecenia Get-AzureRmResourceProvider](media/azure-stack-considerations/image1.png)
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać bardziej szczegółowe informacje na temat różnic na poziomie usługi zobacz:
+Aby uzyskać bardziej szczegółowe informacje o różnice na poziomie usługi zobacz:
 
-* [Zagadnienia dotyczące maszyn wirtualnych Azure stosu](azure-stack-vm-considerations.md)
-* [Zagadnienia dotyczące magazynu w stosie Azure](azure-stack-acs-differences.md)
-* [Zagadnienia dotyczące sieci Azure stosu](azure-stack-network-differences.md)
+* [Uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](azure-stack-vm-considerations.md)
+* [Zagadnienia dotyczące magazynu w usłudze Azure Stack](azure-stack-acs-differences.md)
+* [Zagadnienia dotyczące sieci usługi Azure Stack](azure-stack-network-differences.md)

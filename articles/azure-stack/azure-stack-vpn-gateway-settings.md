@@ -1,6 +1,6 @@
 ---
-title: Ustawienia bramy sieci VPN dla stosu Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat ustawień dla bram sieci VPN, używanych w usłudze Azure stosu.
+title: Ustawienia bramy sieci VPN dla usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ustawieniach bramy sieci VPN, którego używasz z usługą Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,31 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2018
+ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: 94cabb73406619b95147595127e97a27aed762f9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849753"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139363"
 ---
-# <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN Azure stosu
+# <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN dla usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Brama sieci VPN jest typu bramy sieci wirtualnej, która wysyła szyfrowanego ruchu sieciowego między sieci wirtualnej Azure stosu i zdalnego bramy sieci VPN. Zdalne bramy sieci VPN może być na platformie Azure, urządzenie w centrum danych lub urządzeń w innej lokacji.  Jeśli istnieje połączenie sieciowe między dwoma punktami końcowymi, można ustanowić bezpiecznego połączenia między dwiema sieciami VPN lokacja-lokacja (S2S).
+Tworzenie bramy sieci VPN jest typem bramy sieci wirtualnej, który wysyła zaszyfrowany ruch sieciowy między siecią wirtualną w usłudze Azure Stack i zdalnego bramy sieci VPN. Zdalne bramy sieci VPN może być na platformie Azure, urządzenie w centrum danych lub urządzeń w innej lokacji.  Jeśli istnieje połączenie sieciowe między dwoma punktami końcowymi, można ustanowić bezpiecznego połączenia sieci VPN typu lokacja-lokacja (S2S) między dwiema sieciami.
 
-Połączenie bramy sieci VPN zależy od konfiguracji wielu zasobów, z których każdy zawiera konfigurowalnych ustawień. Informacje zawarte w tym artykule omówiono w nim, zasoby i ustawienia, które odnoszą się do bramy sieci VPN do sieci wirtualnej utworzonej w modelu wdrażania usługi Resource Manager. Możesz znaleźć opisy i diagramy topologii dla każdego rozwiązania połączenia w [o bramy sieci VPN Azure stosu](azure-stack-vpn-gateway-about-vpn-gateways.md).
+Połączenie bramy sieci VPN zależy od konfiguracji wielu zasobów, z których każdy zawiera konfigurowalnych ustawień. Sekcje w tym artykule omówiono, zasoby i ustawienia, które odnoszą się do bramy sieci VPN dla sieci wirtualnej utworzonej w modelu wdrażania usługi Resource Manager. Możesz znaleźć opisy i diagramy topologii dla każdego rozwiązania połączenia w [VPN Gateway — informacje dla usługi Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
-## <a name="vpn-gateway-settings"></a>Ustawienia bramy sieci VPN
+## <a name="vpn-gateway-settings"></a>Ustawień usługi VPN gateway
 
 ### <a name="gateway-types"></a>Typy bram
-Każdej sieci wirtualnej Azure stosu obsługuje bramy jednej sieci wirtualnej, która musi być typu **Vpn**.  Ta obsługa różni się od Azure, która obsługuje dodatkowe typy.  
 
-Podczas tworzenia bramy sieci wirtualnej, należy się upewnić, że typ bramy jest poprawny dla danej konfiguracji. Brama sieci VPN wymaga `-GatewayType Vpn`.
+Każda sieć wirtualna usługi Azure Stack obsługuje bramy jednej sieci wirtualnej, która musi być typu **Vpn**.  Obsługa ta różni się od platformy Azure, który obsługuje dodatkowe typy.  
 
-Przykład:
+Podczas tworzenia bramy sieci wirtualnej, upewnij się, że typ bramy jest prawidłowy dla danej konfiguracji. Brama sieci VPN wymaga `-GatewayType Vpn`, na przykład:
+
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn
@@ -44,39 +44,46 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ```
 
 ### <a name="gateway-skus"></a>Jednostki SKU bramy
+
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostki SKU, które spełniają wymagania, na podstawie typów obciążeń, przepustowości, funkcji i umowy SLA.
 
-Stos Azure oferuje następujące jednostki SKU bramy sieci VPN:
+Usługa Azure Stack oferuje bramy sieci VPN jednostkach SKU wymienionych w poniższej tabeli.
 
-|   | Przepływność bramy sieci VPN |Max tuneli protokołu IPsec bramy sieci VPN |
+|   | Przepływność bramy sieci VPN |Maksymalna tuneli IPsec bramy sieci VPN |
 |-------|-------|-------|
-|**Podstawowy SKU**  | 100 Mb/s  | 10    |
-|**Standardowy SKU**           | 100 Mb/s  | 10    |
-|**SKU wysokiej wydajności** | 200 Mb/s    | 5 |
+|**Podstawowa jednostka SKU**  | 100 Mb/s  | 10    |
+|**Standardowa jednostka SKU**           | 100 Mb/s  | 10    |
+|**Jednostka SKU wysokiej wydajności** | 200 Mb/s    | 5 |
 
 ### <a name="resizing-gateway-skus"></a>Zmiana rozmiaru jednostki SKU bramy
-Stos Azure nie obsługuje zmiany rozmiaru jednostek magazynowych między obsługiwanych starszej wersji jednostki SKU.
 
-Podobnie stos Azure nie obsługuje rozmiaru z obsługiwanych starszych jednostki SKU (podstawowa, standardowa i wysokowydajnej) do nowszej wersji produktu, obsługiwane przez platformę Azure (VpnGw1 VpnGw2 i VpnGw3).
+Usługa Azure Stack nie obsługuje rozmiaru jednostek SKU między obsługiwanych starszych jednostek SKU.
+
+Podobnie usługi Azure Stack nie obsługuje rozmiaru z obsługiwanych starszych jednostek SKU (Basic, Standard i HighPerformance) do nowszej jednostki SKU obsługiwane przez platformę Azure (VpnGw1, VpnGw2 i VpnGw3.)
 
 ### <a name="configure-the-gateway-sku"></a>Konfigurowanie bramy jednostki SKU
-#### <a name="azure-stack-portal"></a>Portal Azure stosu
-Jeśli używasz portalu Azure stosu Utwórz bramę sieci wirtualnej Menedżera zasobów za pomocą listy rozwijanej można wybrać jednostka SKU bramy. Dostępne są opcje odpowiadają typu bramy i wybranego typu sieci VPN.
+
+#### <a name="azure-stack-portal"></a>Portal usługi Azure Stack
+
+Jeśli używasz portalu usługi Azure Stack do tworzenia bramy sieci wirtualnej usługi Resource Manager za pomocą listy rozwijanej można wybrać jednostkę SKU bramy. Opcje, które pojawi się informacja o odpowiadają typu bramy i wybranego typu sieci VPN.
 
 #### <a name="powershell"></a>PowerShell
-W poniższym przykładzie programu PowerShell określa GatewaySku — jako VpnGw1.
+
+W poniższym przykładzie programu PowerShell **- GatewaySku** jako VpnGw1.
 
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku VpnGw1
 -GatewayType Vpn -VpnType RouteBased
 ```
+
 ### <a name="connection-types"></a>Typy połączeń
-W modelu wdrażania Menedżera zasobów każdej konfiguracji wymaga typu połączenia bramy określonej sieci wirtualnej. Dostępne wartości programu PowerShell Menedżera zasobów - ConnectionType są następujące:
 
-- IPsec
+W modelu wdrażania usługi Resource Manager każda konfiguracja wymaga typu połączenia bramy określonej sieci wirtualnej. Dostępne środowiska PowerShell usługi Resource Manager wartości **- ConnectionType** są:
 
-W poniższym przykładzie programu PowerShell tworzone jest połączenie S2S wymagającego typ połączenia protokołu IPsec.  
+* IPsec
+
+W poniższym przykładzie programu PowerShell tworzone jest połączenie S2S wymagającego typu połączenia IPsec.
 
 ```PowerShell
 New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
@@ -85,65 +92,83 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 ```
 
 ### <a name="vpn-types"></a>Typy sieci VPN
-Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, należy określić typ sieci VPN. Możesz wybrać typ sieci VPN zależy od topologii połączenia, który chcesz utworzyć.  Typ sieci VPN można również są zależne od sprzętu, którego używasz. Konfiguracje S2S wymagają urządzenia sieci VPN. Niektóre urządzenia sieci VPN obsługują tylko określonego typu sieci VPN.
+
+Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, należy określić typ sieci VPN. Typ sieci VPN, który wybierzesz, zależy od topologii połączenia, który chcesz utworzyć.  Typ sieci VPN może także zależeć od sprzętu, którego używasz. Konfiguracje S2S wymagają urządzenia sieci VPN. Niektóre urządzenia sieci VPN obsługują tylko określonego typu sieci VPN.
 
 > [!IMPORTANT]  
-> W tej chwili stosu Azure obsługuje tylko typ sieci VPN oparte na trasy. Jeśli urządzenie obsługuje tylko sieci VPN oparte na zasadach, połączenia z tych urządzeń z usługi Azure stosu nie są obsługiwane.  Ponadto stosu Azure nie obsługuje użycia selektorów ruchu na podstawie zasad dla bramy na podstawie trasy w tej chwili konfiguracje niestandardowe zasady IPSec i IKE nie są jeszcze obsługiwane.
+> Obecnie usługa Azure Stack obsługuje tylko typ trasy sieci VPN opartym na. Jeśli urządzenie obsługuje tylko sieci VPN oparte na zasadach, połączenia dla tych urządzeń z usługi Azure Stack nie są obsługiwane.  
+>
+> Ponadto usługi Azure Stack nie obsługuje korzystania z selektorów ruchu na podstawie zasad dla bram na podstawie tras w tej chwili, ponieważ konfiguracje niestandardowe zasady protokołu IPSec/IKE nie są obsługiwane.
 
-- **PolicyBased**: *(obsługiwane przez platformę Azure, ale nie przez stos Azure)* sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną a stos sieci wirtualnej platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN.
+* **Oparte na zasadach**: sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej usługi Azure Stack. Zasady lub selektor ruchu są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN.
 
-- **RouteBased**: RouteBased VPN używają "tras" IP przekazywania lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady (lub selektor ruchu) dla sieci VPN z siecią typu RouteBased są skonfigurowane jako dowolny z każdym (lub symbole wieloznaczne) przez domyślne i nie można zmienić. Wartość dla typu RouteBased sieci VPN jest RouteBased.
+  >[!NOTE]
+  >Oparte na zasadach jest obsługiwane na platformie Azure, ale nie w usłudze Azure Stack.
 
-W poniższym przykładzie programu PowerShell określa VpnType — jako RouteBased. Podczas tworzenia bramy musisz upewnić się, że typ -VpnType jest prawidłowy dla danej konfiguracji.
+* **RouteBased**: sieci VPN typu RouteBased użycie tras, które są konfigurowane w IP przesyłania dalej lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady lub selektor ruchu dla sieci VPN typu RouteBased są skonfigurowane jako dowolna dowolna (lub użyj symbole wieloznaczne). Domyślnie nie można zmienić. Wartość dla typu sieci VPN typu RouteBased jest RouteBased.
+
+W poniższym przykładzie programu PowerShell **- VpnType** jako RouteBased. Podczas tworzenia bramy, upewnij się, że **- VpnType** jest prawidłowy dla danej konfiguracji.
 
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig
 -GatewayType Vpn -VpnType RouteBased
 ```
-### <a name="gateway-requirements"></a>Wymagania dotyczące bramy
-W poniższej tabeli wymieniono wymagania dla bram sieci VPN.
 
-| |PolicyBased Basic bramy sieci VPN | RouteBased Basic bramy sieci VPN | RouteBased Standard bramy sieci VPN | Brama sieci VPN RouteBased wysokiej wydajności|
+### <a name="gateway-requirements"></a>Wymagania dotyczące bramy
+
+Poniższa tabela zawiera listę wymagań dotyczących bram sieci VPN.
+
+| |Brama sieci VPN typu PolicyBased Basic | Brama sieci VPN typu RouteBased Basic | Brama sieci VPN typu RouteBased Standard | Bramy sieci VPN usługi RouteBased o wysokiej wydajności|
 |--|--|--|--|--|
-| **Połączenie lokacja-lokacja (połączeń S2S)** | Nieobsługiwane | Konfiguracja sieci VPN z siecią typu RouteBased | Konfiguracja sieci VPN z siecią typu RouteBased | Konfiguracja sieci VPN z siecią typu RouteBased |
+| **Łączność lokacja-lokacja (S2S połączenia)** | Nieobsługiwane | Konfiguracja sieci VPN typu RouteBased | Konfiguracja sieci VPN typu RouteBased | Konfiguracja sieci VPN typu RouteBased |
 | **Metoda uwierzytelniania**  | Nieobsługiwane | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  |   
 | **Maksymalna liczba połączeń S2S**  | Nieobsługiwane | 10 | 10| 5|
 |**Aktywna Obsługa routingu (BGP)** | Nieobsługiwane | Nieobsługiwane | Obsługiwane | Obsługiwane |
 
 ### <a name="gateway-subnet"></a>Podsieć bramy
-Przed utworzeniem bramy sieci VPN, należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP, których bramy sieci wirtualnej maszyn wirtualnych i usług. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane do podsieci bramy i skonfigurowane wymagane ustawienia bramy sieci VPN. Nie należy wdrażać cokolwiek innego (na przykład dodatkowe maszyny wirtualne) do podsieci bramy. Podsieć bramy musi być o nazwie "GatewaySubnet" działała poprawnie. Nazw podsieci bramy "GatewaySubnet" umożliwia stosu Azure do identyfikowania podsieci w celu wdrożenia bramy sieci wirtualnej maszyn wirtualnych i usług.
 
-Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adresów IP. Adresy IP w podsieci bramy są przydzielone do usługi bramy i maszyny wirtualne bramy. Niektóre konfiguracje wymagają większej liczby adresów IP niż inne. Przyjrzyj się instrukcje dotyczące konfiguracji, który chcesz utworzyć i sprawdź, czy podsieci bramy, w której chcesz utworzyć spełnia te wymagania. Można ponadto upewnij się, że podsieć bramy zawiera za mało adresów IP w celu uwzględnienia możliwych przyszłych dodatkowe konfiguracje. Podczas tworzenia podsieci bramy jak /29, zaleca się utworzenie podsieć bramy /28 i większych (/ 28, /27, /26 itp.). W ten sposób dodania funkcji w przyszłości, nie trzeba zerwanie bramy, a następnie usuń i Utwórz ponownie podsieć bramy, aby umożliwić więcej adresów IP.
+Przed utworzeniem bramy sieci VPN, należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP, które używają bramy sieci wirtualnej maszyny wirtualne i usługi. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i skonfigurować wymagane ustawienia bramy sieci VPN. **Nie** należy wdrażać żadnych elementów else (na przykład dodatkowych maszyn wirtualnych) w podsieci bramy.
 
-W poniższym przykładzie programu PowerShell Menedżera zasobów zawiera podsieć bramy o nazwie GatewaySubnet. Można zauważyć, że w notacji CIDR określa /27, co umożliwia obsługę za mało adresów IP w przypadku większości konfiguracji, które obecnie istnieją.
+>[!IMPORTANT]
+>Aby podsieć bramy działała prawidłowo, musi nosić nazwę **GatewaySubnet**. Usługa Azure Stack używa tej nazwy do identyfikacji podsieci, do wdrożenia bramy sieci wirtualnej maszyn wirtualnych i usług.
+
+Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adresów IP. Adresy IP w podsieci bramy są przydzielane do usług bramy i maszyny wirtualne bramy. Niektóre konfiguracje wymagają większej liczby adresów IP niż inne. Przyjrzyj się instrukcje dotyczące konfiguracji, który chcesz utworzyć i sprawdź, czy podsieci bramy, w której chcesz utworzyć spełnia te wymagania.
+
+Ponadto należy pamiętać, że podsieć bramy zawiera wystarczającą liczbę adresów IP do obsługi dodatkowych przyszłych konfiguracji. Chociaż można utworzyć podsieci bramy tak małej jak/29, zaleca się tworzenie podsieci bramy/28 i większych (/ 28, / 27, / 26 itp.) W ten sposób w przypadku dodania funkcji w przyszłości, nie masz trwające bramy, a następnie usunięcie i ponowne utworzenie podsieci bramy, aby umożliwić większej liczby adresów IP.
+
+W poniższym przykładzie programu PowerShell usługi Resource Manager zawiera podsieć bramy o nazwie GatewaySubnet. Widać, że notacja CIDR Określa rozmiar/27, który daje wystarczającą liczbę adresów IP w przypadku większości konfiguracji, które obecnie istnieją.
 
 ```PowerShell
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 > [!IMPORTANT]
-> Podczas pracy z podsieciami bramy należy unikać kojarzenia sieciowej grupy zabezpieczeń (NSG, Network Security Group) z podsiecią bramy. Skojarzenie sieciowej grupy zabezpieczeń z tą podsiecią spowoduje, że brama sieci VPN przestanie działać zgodnie z oczekiwaniami. Aby uzyskać więcej informacji na temat grup zabezpieczeń sieci, zobacz [co to jest grupa zabezpieczeń sieci?](/azure/virtual-network/virtual-networks-nsg).
+> Podczas pracy z podsieciami bramy należy unikać kojarzenia sieciowej grupy zabezpieczeń (NSG, Network Security Group) z podsiecią bramy. Skojarzenie sieciowej grupy zabezpieczeń z tą podsiecią spowoduje, że brama sieci VPN przestanie działać zgodnie z oczekiwaniami. Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [co to jest sieciowa grupa zabezpieczeń?](/azure/virtual-network/virtual-networks-nsg).
 
 ### <a name="local-network-gateways"></a>Bramy sieci lokalnej
-Podczas tworzenia konfiguracji bramy sieci VPN platformy Azure, Brama sieci lokalnej często reprezentuje Twojej lokalizacji lokalnej. W stosie Azure reprezentuje wszystkie zdalnego urządzenia sieci VPN, który znajduje się poza stosu Azure.  Może to być urządzenia sieci VPN w centrum danych, zdalnego centrum danych lub bramy sieci VPN w systemie Azure.
 
-Nadaj nazwę, publiczny adres IP urządzenia sieci VPN w bramie sieci lokalnej i określić prefiksy adresów, które znajdują się w lokalizacji lokalnej. Azure analizuje prefiksy adresów docelowy dla ruchu sieciowego, sprawdza konfigurację, którą określono dla bramy sieci lokalnej i odpowiednio kieruje pakiety.
+Podczas tworzenia konfiguracji bramy sieci VPN na platformie Azure, Brama sieci lokalnej reprezentuje często Twojej lokalizacji lokalnej. W usłudze Azure Stack reprezentuje zdalne urządzenie sieci VPN znajduje się poza usługi Azure Stack. Może to być urządzenia sieci VPN w taki sposób, w centrum danych (lub zdalne centrum danych) lub bramy sieci VPN na platformie Azure.
 
-W poniższym przykładzie programu PowerShell tworzy nową bramę sieci lokalnej:
+Nazwij bramy sieci lokalnej, publiczny adres IP urządzenia sieci VPN i określić prefiksy adresów, które znajdują się w lokalizacji lokalnej. Azure porównaniem z prefiksy adresów docelowych dla ruchu sieciowego, konsultacje dotyczące konfiguracji, określony dla bramy sieci lokalnej i w związku z tym kieruje pakiety.
+
+Następny przykład programu PowerShell tworzy nową bramę sieci lokalnej:
 
 ```PowerShell
 New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
-Czasami trzeba zmodyfikować ustawienia bramy sieci lokalnej. Na przykład podczas dodawania lub modyfikowania zakres adresów, lub jeśli zmieni adres IP urządzenia sieci VPN. Zobacz [zmodyfikować ustawienia bramy sieci lokalnej za pomocą programu PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
 
-## <a name="ipsecike-parameters"></a>Parametry IPsec i IKE
-Po skonfigurowaniu połączenia sieci VPN w stosie Azure należy skonfigurować połączenie obu końców.  W przypadku konfigurowania połączenia VPN między stosu Azure i urządzenie, takie jak przełącznik lub router, który działa jako brama sieci VPN, czy urządzenie może zapytać o dodatkowe ustawienia.
+Czasami zachodzi potrzeba modyfikowanie ustawień bramy sieci lokalnej. Na przykład podczas dodawania lub modyfikowania zakres adresów, lub jeśli zmieni się adres IP urządzenia sieci VPN. Zobacz [modyfikowanie ustawień lokalnej bramy sieci przy użyciu programu PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
 
-W przeciwieństwie do usługi Azure, który obsługuje wielu ofert jako inicjator i obiekt odpowiadający, stos Azure obsługuje tylko jedną ofertę.
+## <a name="ipsecike-parameters"></a>Parametry protokołu IPsec/IKE
 
-###  <a name="ike-phase-1-main-mode-parameters"></a>Parametry protokołu IKE — faza 1 (tryb główny)
+Po skonfigurowaniu połączenia sieci VPN w usłudze Azure Stack musisz skonfigurować połączenie obu końców.  Jeśli konfigurujesz połączenie sieci VPN między usługi Azure Stack i urządzenia sprzętowego, takie jak przełącznik lub router, który działa jako brama sieci VPN, urządzenie może zapytać o dodatkowe ustawienia.
+
+W przeciwieństwie do platformy Azure, który obsługuje wiele ofert zarówno jako inicjator i obiekt odpowiadający w trybie, usługa Azure Stack obsługuje tylko jedną ofertę.
+
+### <a name="ike-phase-1-main-mode-parameters"></a>Parametry protokołu IKE — faza 1 (tryb główny)
+
 | Właściwość              | Wartość|
 |-|-|
 | Wersja IKE           | IKEv2 |
@@ -153,15 +178,21 @@ W przeciwieństwie do usługi Azure, który obsługuje wielu ofert jako inicjato
 |Okres istnienia skojarzeń zabezpieczeń (czas)     | 28 800 sekund|
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Parametry protokołu IKE — faza 2 (tryb szybki)
+
 | Właściwość| Wartość|
 |-|-|
 |Wersja IKE |IKEv2 |
-|Szyfrowania i tworzenia skrótów algorytmy (szyfrowanie)     | GCMAES256|
-|Szyfrowania i tworzenia skrótów algorytmy (uwierzytelnianie) | GCMAES256|
-|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27,000 sekund<sup>zobacz Uwaga 1</sup> |
+|Oferty szyfrowania i wyznaczania wartości skrótu algorytmy (szyfrowanie)     | GCMAES256|
+|Oferty szyfrowania i (uwierzytelnianie) algorytmy wyznaczania wartości skrótu | GCMAES256|
+|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27 000 sekund<sup>patrz Uwaga 1</sup> |
 |Okres istnienia skojarzeń zabezpieczeń (bajty) | 33,553,408<sup>patrz Uwaga 2</sup>     |
-|Doskonałe utajnienie przekazywania (PFS) |PFS2048 |
+|Doskonałe utajnienie przekazywania (PFS) |Brak<sup>patrz adnotacja 3</sup> |
 |Wykrywanie nieaktywnych elementów równorzędnych | Obsługiwane|  
 
-*Uwaga 1:* poprzedzające wersję 1803 stosu Azure została użyta wartość 14,400 przez czas ich istnienia SA (Time). 
-*Uwaga 2:* poprzedzające wersję 1803 stosu Azure została użyta wartość 819,200 przez czas ich istnienia SA (w bajtach).
+* *Uwaga 1:* przed wersji 1803 usługi Azure Stack używa wartości ona 14 400 okres istnienia skojarzeń zabezpieczeń (czas).
+* *Uwaga 2:* przed wersji 1803 usługi Azure Stack używa wartości 819,200 okres istnienia skojarzeń zabezpieczeń (w bajtach).
+* *Należy pamiętać, 3:* wcześniejszymi niż wersja 1807 usługi Azure Stack używa wartości PFS2048 dla Perfect Forward Secrecy przekazywania (PFS).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Nawiązywanie połączenia przy użyciu usługi ExpressRoute](azure-stack-connect-expressroute.md)

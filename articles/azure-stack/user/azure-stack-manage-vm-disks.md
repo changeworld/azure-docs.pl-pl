@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie dyskami maszyny Wirtualnej w stosie Azure | Dokumentacja firmy Microsoft
-description: Udostępnić dyski dla maszyn wirtualnych Azure stosu.
+title: Zarządzaj dyskami maszyny Wirtualnej w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Aprowizuj dyski dla maszyn wirtualnych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/11/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807435"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139477"
 ---
-# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Obsługę magazynowania dysku maszyny wirtualnej Azure stosu
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Aprowizuj Magazyn dyskowy maszyny wirtualnej w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-W tym artykule opisano, jak zainicjować magazynu danych na dysku maszyny wirtualnej przy użyciu portalu Azure stosu lub przy użyciu programu PowerShell.
+W tym artykule opisano sposób aprowizacji magazynu dyskowego maszyny wirtualnej za pomocą portalu usługi Azure Stack lub przy użyciu programu PowerShell.
 
 ## <a name="overview"></a>Przegląd
 
-Stos Azure obsługuje korzystanie z [niezarządzanych dysków](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na maszynach wirtualnych, jako system operacyjny (systemu operacyjnego) oraz dysk z danymi.
+Usługa Azure Stack obsługuje korzystanie z [niezarządzane dyski](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na maszynach wirtualnych, zarówno jako systemu operacyjnego (OS) i dysk z danymi.
 
-Aby używać dysków niezarządzane, należy utworzyć [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski, które możesz utworzyć są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
+Aby korzystać z dysków niezarządzanych, musisz utworzyć [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski które tworzysz są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
 
 ### <a name="best-practice-guidelines"></a>Najlepsze rozwiązania przyjęte
 
-Do zwiększenia wydajności i zmniejszenia ogólnych kosztów, zalecamy, umieść każdy dysk maszyny Wirtualnej w oddzielnych kontenera. Kontener powinno zawierać dysku systemu operacyjnego lub dysku danych, ale nie oba jednocześnie. (Jednak nie ma nic aby uniemożliwić umieszczenie oba rodzaje dysku w tym samym kontenerze.)
+Aby zwiększyć wydajność i zmniejszyć ogólne koszty, zalecane jest umieszczenie każdego dysku maszyny Wirtualnej w kontenerze oddzielnym. Kontener mają być przechowywane z dysku systemu operacyjnego lub dysk danych, ale nie obu jednocześnie. (Jednak nie ma nic do uniemożliwić umieszczenie obu rodzajów dysku w tym samym kontenerze.)
 
-Po dodaniu co najmniej jeden dysk danych do maszyny Wirtualnej, użyj dodatkowe kontenery jako lokalizację do przechowywania tych dysków. Dysk systemu operacyjnego dla dodatkowych maszyn wirtualnych należy również w ich własnych kontenerów.
+Jeśli dodasz co najmniej jeden dysk danych do maszyny Wirtualnej, są używane dodatkowe kontenery jako miejsce do przechowywania tych dysków. Dysk systemu operacyjnego dla dodatkowych maszyn wirtualnych należy również w ich własnych kontenerów.
 
-Kiedy tworzysz wiele maszyn wirtualnych, można ponownie użyć tego samego konta magazynu dla każdej nowej maszyny wirtualnej. Kontenery tworzone powinna być unikatowa.
+Podczas tworzenia wielu maszyn wirtualnych, można ponownie użyć tego samego konta magazynu dla każdej nowej maszyny wirtualnej. Kontenery, tworzonych powinny być unikatowe.
 
 ### <a name="adding-new-disks"></a>Dodawanie nowych dysków
 
@@ -48,90 +48,90 @@ W poniższej tabeli przedstawiono sposób dodawania dysków, korzystając z port
 
 | Metoda | Opcje
 |-|-|
-|[Portal użytkowników](#use-the-portal-to-add-additional-disks-to-a-vm)|-Dodaj nowe dyski danych do istniejącej maszyny Wirtualnej. Nowe dyski są tworzone przez stos Azure. </br> </br>-Dodaj istniejący plik dysku (VHD) do wcześniej zainicjowana VM. Aby to zrobić, należy przygotować VHD i następnie przekazać go do stosu usługi Azure. |
-|[Program PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | — Utwórz nową maszynę Wirtualną z dyskiem systemu operacyjnego, a jednocześnie należy dodać co najmniej jeden dysk danych do tej maszyny Wirtualnej. |
+|[Portal użytkowników](#use-the-portal-to-add-additional-disks-to-a-vm)|— Dodawanie nowych dysków danych do istniejącej maszyny Wirtualnej. Nowe dyski są tworzone przez usługę Azure Stack. </br> </br>-Dodaj istniejący plik dysku (VHD) do wcześniej aprowizowane maszyny Wirtualnej. Aby to zrobić, należy przygotować VHD i następnie przekazać plik do usługi Azure Stack. |
+|[Program PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | — Tworzenie nowej maszyny Wirtualnej z dyskiem systemu operacyjnego, a w tym samym czasie należy dodać co najmniej jeden dysk danych do tej maszyny Wirtualnej. |
 
-## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Dodawanie dysków do maszyny Wirtualnej za pomocą portalu
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Korzystanie z portalu, aby dodać dyski do maszyny Wirtualnej
 
 Domyślnie podczas tworzenia maszyny Wirtualnej dla większości elementów portalu marketplace, za pomocą portalu tworzone tylko na dysku systemu operacyjnego.
 
-Po utworzeniu maszyny Wirtualnej, można użyć portalu, aby:
-* Utwórz nowy dysk danych, a następnie dołącz je do maszyny Wirtualnej.
-* Przekazywanie istniejącego dysku danych i dołącz je do maszyny Wirtualnej.
+Po utworzeniu maszyny Wirtualnej, można użyć portalu:
+* Utwórz nowy dysk danych i dołączyć go do maszyny Wirtualnej.
+* Przekaż istniejący dysk danych i dołączyć go do maszyny Wirtualnej.
 
-Każdy dysk niezarządzane, dodane należy umieścić w oddzielnych kontenera.
+Każdy dysk niezarządzany, jakie dodasz, należy umieścić w oddzielny kontener.
 
 >[!NOTE]
->Dyski tworzone i zarządzane przez usługę Azure są nazywane [dyskach zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+>Dyski tworzone i zarządzane przez platformę Azure są nazywane [usługi managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
-### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Utwórz i Dołącz nowy dysk danych za pomocą portalu
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Aby utworzyć i dołączyć nowy dysk danych, użyj portalu
 
 1.  W portalu, wybierz **maszyn wirtualnych**.    
-    ![Przykład: Pulpit nawigacyjny z maszyny Wirtualnej](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+    ![Przykład: Nawigacyjnym maszyn wirtualnych](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  Wybierz maszynę wirtualną, które wcześniej zostały zainicjowane.   
+2.  Wybierz maszynę wirtualną, który wcześniej został aprowizowany.   
     ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Dla maszyny wirtualnej, wybierz **dysków** > **Dołącz nowy**.       
-    ![Przykład: Dołączyć nowego dysku do maszyny wirtualnej](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3.  Dla maszyny wirtualnej wybierz **dysków** > **Dołącz nowy**.       
+    ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  W **Dołączanie nowego dysku** okienku wybierz **lokalizacji**. Domyślna lokalizacja jest ustawiana do tego samego kontenera, w którym jest przechowywana na dysku systemu operacyjnego.      
+4.  W **Dołącz nowy dysk** okienku wybierz **lokalizacji**. Domyślnie lokalizacja jest ustawiana na ten sam kontener, który zawiera dysk systemu operacyjnego.      
     ![Przykład: Ustaw lokalizację dysku](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  Wybierz **konta magazynu** do użycia. Następnie wybierz pozycję **kontenera** gdzie chcesz umieścić dysk z danymi. Z **kontenery** stronę, można utworzyć nowy kontener Jeśli chcesz. Następnie można zmienić lokalizacji dla nowego dysku do jego własnej kontenera. Korzystając z kontenera osobne dla każdego dysku, możesz dystrybuować umieszczania dysku danych, które może poprawić wydajność. Wybierz **wybierz** zapisać je.     
-    ![Przykład: Select kontenera](media/azure-stack-manage-vm-disks/select-container.png)
+5.  Wybierz **konta magazynu** do użycia. Następnie wybierz pozycję **kontenera** gdzie chcesz umieścić dysk z danymi. Z **kontenery** strony, można utworzyć nowy kontener Jeśli chcesz. Lokalizacja nowego dysku można później zmienić na własnym kontenerze. Używając oddzielnego kontenera dla każdego dysku, możesz dystrybuować położenie dysku danych, który może zwiększyć wydajność. Wybierz **wybierz** zapisać je.     
+    ![Przykład: Wybierz kontener](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  W **Dołączanie nowego dysku** pozycję Aktualizuj **nazwa**, **typu**, **rozmiar**, i **buforowanie hosta** ustawienia dysku. Następnie wybierz **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.  
-    ![Przykład: Całego dysku załącznika](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
+6.  W **Dołącz nowy dysk** strony, zaktualizuj **nazwa**, **typu**, **rozmiar**, i **hosta, buforowanie** ustawienia dysku. Następnie wybierz pozycję **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.  
+    ![Przykład: Dołączanie dysków kompletny](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
-7.  Po stosu Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
+7.  Po usługi Azure Stack utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
     ![Przykład: Wyświetlanie dysku](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 
-### <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołączanie istniejącego dysku danych do maszyny Wirtualnej
+### <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołącz istniejący dysk danych do maszyny Wirtualnej
 
-1.  [Przygotuj plik VHD](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) do użycia jako dysk z danymi dla maszyny Wirtualnej. Przekazywanie tego pliku VHD na konto magazynu używanej w maszynie Wirtualnej, która ma zostać dołączony plik VHD.
+1.  [Przygotuj plik VHD](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) do użycia jako dysk z danymi dla maszyny Wirtualnej. Przekaż ten plik VHD do konta magazynu, który jest używany z maszyny Wirtualnej, która ma zostać dołączony plik VHD do.
 
-  Planowane jest stosowanie różnych kontenerów do przechowywania pliku VHD niż kontener, który zawiera dysk systemu operacyjnego.   
-  ![Przykład: Ładowanie pliku wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/upload-vhd.png)
+  Zaplanuj użycie innego kontenera do przechowywania pliku VHD niż kontener, który zawiera dysk systemu operacyjnego.   
+  ![Przykład: Przekazywanie pliku VHD](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  Po przekazaniu pliku VHD, można przystąpić do Dołącz wirtualny dysk twardy do maszyny Wirtualnej. W menu po lewej stronie wybierz **maszyn wirtualnych**.  
+2.  Po przekazaniu pliku VHD można przystąpić do Dołącz wirtualny dysk twardy do maszyny Wirtualnej. W menu po lewej stronie wybierz **maszyn wirtualnych**.  
  ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  Wybierz maszynę wirtualną z listy.    
   ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  Na stronie dla maszyny wirtualnej, wybierz **dysków** > **Attach istniejących**.   
+4.  Na stronie dla maszyny wirtualnej wybierz **dysków** > **Dołącz istniejące**.   
   ![Przykład: Dołączanie istniejącego dysku](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  W **dołączyć istniejącego dysku** wybierz pozycję **pliku VHD**. **Kont magazynu** zostanie otwarta strona.    
-  ![Przykład: Select pliku wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/select-vhd.png)
+5.  W **dołączyć istniejącego dysku** wybierz opcję **pliku wirtualnego dysku twardego**. **Kont magazynu** zostanie otwarta strona.    
+  ![Przykład: Wybierz plik wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/select-vhd.png)
 
-6.  W obszarze **kont magazynu**, wybierz konto do użycia, a następnie wybierz kontener, który zawiera wcześniej przekazany plik VHD. Wybierz plik VHD, a następnie wybierz pozycję **wybierz** zapisać je.    
-  ![Przykład: Select kontenera](media/azure-stack-manage-vm-disks/select-container2.png)
+6.  W obszarze **kont magazynu**, wybierz konto do użycia, a następnie wybierz kontener, który zawiera plik VHD został wcześniej przekazany. Wybierz plik VHD, a następnie wybierz **wybierz** zapisać je.    
+  ![Przykład: Wybierz kontener](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  W obszarze **dołączyć istniejącego dysku**, wybrany plik jest wyświetlana w obszarze **pliku VHD**. Aktualizacja **buforowanie hosta** ustawienie dysku, a następnie wybierz **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.    
+7.  W obszarze **dołączyć istniejącego dysku**, wybrany plik znajduje się w obszarze **pliku wirtualnego dysku twardego**. Aktualizacja **hosta, buforowanie** ustawienia dysku, a następnie wybierz **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.    
   ![Przykład: Dołącz plik wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
-8.  Po stosu Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
-  ![Przykład: Zakończenie dysku dołączyć](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
+8.  Po usługi Azure Stack utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
+  ![Przykład: Wykonaj dysku dołączania](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
 
-## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>Aby dodać wiele dysków niezarządzanych do maszyny Wirtualnej za pomocą programu PowerShell
-Można użyć programu PowerShell do obsługi administracyjnej maszyn wirtualnych i Dodaj nowy dysk danych lub dołączyć w ramach istniejącego wcześniej **VHD** pliku jako dysk z danymi.
+## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>Aby dodać wiele dysków niezarządzanych do maszyny Wirtualnej przy użyciu programu PowerShell
+Można użyć programu PowerShell, aprowizowanie maszyny Wirtualnej i Dodaj nowy dysk danych, lub Dołącz istniejące wstępnie **VHD** pliku jako dysk z danymi.
 
-**AzureRmVMDataDisk Dodaj** polecenia cmdlet dodaje dysku danych do maszyny wirtualnej. Można dodać dysku danych, podczas tworzenia maszyny wirtualnej lub dysku danych można dodać do istniejącej maszyny wirtualnej. Określ **VhdUri** parametru do dystrybucji dysków do różnych kontenerów.
+**Add-azurermvmdatadisk i** polecenie cmdlet dodaje dysk danych do maszyny wirtualnej. Podczas tworzenia maszyny wirtualnej lub dysk danych można dodać istniejącej maszyny wirtualnej, można dodać dysku z danymi. Określ **VhdUri** parametru, aby dystrybuować dysków do różnych kontenerów.
 
-### <a name="add-data-disks-to-a-new-virtual-machine"></a>Dodaj dyski danych do nowej maszyny wirtualnej
-Poniższe przykłady tworzenie maszyny Wirtualnej z dyskami trzy danych za pomocą poleceń programu PowerShell, każdy umieszczone w różnych kontenerów.
+### <a name="add-data-disks-to-a-new-virtual-machine"></a>Dodawanie dysków danych do nowej maszyny wirtualnej
+W poniższych przykładach używane polecenia programu PowerShell, aby utworzyć Maszynę wirtualną za pomocą trzech dysków z danymi, każdej umieszczany w innego kontenera.
 
-Pierwsze polecenie tworzy obiekt maszyny wirtualnej, a następnie przechowuje je w *$VirtualMachine* zmiennej. Polecenie przypisuje nazwę i rozmiar maszyny wirtualnej.
+Pierwsze polecenie tworzy obiekt maszyny wirtualnej, a następnie przechowanie go w *$VirtualMachine* zmiennej. Polecenie przypisuje nazwę i rozmiar maszyny wirtualnej.
   ```
   $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine" `
                                       -VMSize "Standard_A2"
   ```
 
-Ścieżki danych trzech dysków, aby przypisać trzech kolejnych poleceń *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03* zmiennych. Zdefiniuj nazwę innej ścieżki w adresie URL do dystrybucji dysków do różnych kontenerów.     
+Następne trzy polecenia przypisują ścieżki trzech dysków z danymi do *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03* zmiennych. Zdefiniuj nazwę inną ścieżkę w adresie URL, aby dystrybuować dysków do różnych kontenerów.     
   ```
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
@@ -144,7 +144,7 @@ Pierwsze polecenie tworzy obiekt maszyny wirtualnej, a następnie przechowuje je
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
-Końcowe trzy polecenia Dodaj dyski danych do maszyny wirtualnej przechowywanego w *$VirtualMachine*. Każde polecenie Określa nazwę, lokalizacji i dodatkowe właściwości dysku. Identyfikator URI każdego dysku są przechowywane w *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03*.
+Ostatnie trzy polecenia Dodaj dyski z danymi na maszynę wirtualną przechowywaną w *$VirtualMachine*. Każde polecenie Określa nazwę, lokalizację i dodatkowe właściwości dysku. Identyfikator URI każdego dysku jest przechowywany w *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03*.
   ```
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
                   -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
@@ -163,7 +163,7 @@ Końcowe trzy polecenia Dodaj dyski danych do maszyny wirtualnej przechowywanego
                   -VhdUri $DataDiskVhdUri03 -CreateOption Empty
   ```
 
-Użyj następujących poleceń programu PowerShell, aby dodać Konfiguracja systemu operacyjnego dysku i sieci do maszyny Wirtualnej, a następnie uruchom nową maszynę Wirtualną.
+Użyj następujących poleceń programu PowerShell, aby dodać konfigurację dysku i sieci systemu operacyjnego do maszyny Wirtualnej, a następnie uruchom nową maszynę Wirtualną.
   ```
   #set variables
   $rgName = "myResourceGroup"
@@ -212,14 +212,14 @@ Użyj następujących poleceń programu PowerShell, aby dodać Konfiguracja syst
 
 
 
-### <a name="add-data-disks-to-an-existing-virtual-machine"></a>Dodaj dyski danych do istniejącej maszyny wirtualnej
-Poniższe przykłady Dodaj trzy dyski danych do istniejącej maszyny Wirtualnej za pomocą poleceń programu PowerShell.
-Pierwsze polecenie pobiera maszyny wirtualnej o nazwie maszyny wirtualnej przy użyciu **Get-AzureRmVM** polecenia cmdlet. Polecenie przechowuje maszynę wirtualną w *$VirtualMachine* zmiennej.
+### <a name="add-data-disks-to-an-existing-virtual-machine"></a>Dodawanie dysków danych do istniejącej maszyny wirtualnej
+W poniższych przykładach używane polecenia programu PowerShell, aby dodać dla trzech dysków danych do istniejącej maszyny Wirtualnej.
+Pierwsze polecenie pobiera maszyny wirtualnej o nazwie VirtualMachine przy użyciu **Get-AzureRmVM** polecenia cmdlet. Polecenie przechowuje maszynę wirtualną w *$VirtualMachine* zmiennej.
   ```
   $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
                                   -Name "VirtualMachine"
   ```
-Trzech kolejnych poleceń przypisać ścieżek dysków z danymi trzy zmienne $DataDiskVhdUri01, $DataDiskVhdUri02 i $DataDiskVhdUri03.  Nazwy innej ścieżki w vhduri wskazują różnych kontenerów do umieszczania dysku.
+Następne trzy polecenia przypisują ścieżki trzech dysków z danymi do zmiennych $DataDiskVhdUri01 $DataDiskVhdUri02 i $DataDiskVhdUri03.  Nazwy innej ścieżki w vhduri wskazywać różnych kontenerów do umieszczania dysku.
   ```
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
@@ -231,7 +231,7 @@ Trzech kolejnych poleceń przypisać ścieżek dysków z danymi trzy zmienne $Da
   ```
 
 
-  Trzech kolejnych polecenia Dodaj dyski danych do maszyny wirtualnej przechowywanego w *$VirtualMachine* zmiennej. Każde polecenie Określa nazwę, lokalizacji i dodatkowe właściwości dysku. Identyfikator URI każdego dysku są przechowywane w *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03*.
+  Następne trzy polecenia Dodaj dyski z danymi na maszynę wirtualną przechowywaną w *$VirtualMachine* zmiennej. Każde polecenie Określa nazwę, lokalizację i dodatkowe właściwości dysku. Identyfikator URI każdego dysku jest przechowywany w *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, i *$DataDiskVhdUri03*.
   ```
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
                         -VhdUri $DataDiskVhdUri01 -LUN 0 `
@@ -249,7 +249,7 @@ Trzech kolejnych poleceń przypisać ścieżek dysków z danymi trzy zmienne $Da
   ```
 
 
-  Polecenia końcowego aktualizuje stan maszyny wirtualnej przechowywanego w *$VirtualMachine* w -*ResourceGroupName*.
+  Końcowe polecenie aktualizuje stan maszynę wirtualną przechowywaną w *$VirtualMachine* w -*ResourceGroupName*.
   ```
   Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
   ```
@@ -262,4 +262,4 @@ To do so, use the scripts from the following location in GitHub. These scripts c
 -->
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, zobacz [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-considerations).
+Aby dowiedzieć się więcej o maszynach wirtualnych usługi Azure Stack, zobacz [uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-considerations).

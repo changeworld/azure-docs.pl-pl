@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontami magazynu Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak znaleźć, zarządzania, odzyskiwania i odzyskania konta magazynu Azure stosu
+title: Zarządzanie kontami magazynu usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak znaleźć, zarządzanie, odzyskiwania i odzyskać kont magazynu usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,101 +15,101 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076934"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139437"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu Azure stosu
-Dowiedz się, jak zarządzać kontami magazynu Azure stosu, odzyskiwanie, a odzyskać pojemność magazynu, w zależności od potrzeb biznesowych.
+# <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
+Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
 
 ## <a name="find"></a>Znajdź konto magazynu
-Lista kont magazynu w regionie można wyświetlić w stosie Azure przez:
+Lista kont magazynu w regionie mogą być wyświetlane w usłudze Azure Stack przez:
 
-1. W przeglądarce sieci Web, przejdź do https://adminportal.local.azurestack.external.
-2. Zaloguj się do portalu administracyjnego stosu Azure jako chmury operatora (przy użyciu poświadczeń, których podana podczas wdrażania)
-3. Na pulpicie nawigacyjnym domyślny — Znajdź **zarządzania Region** listę i wybierz region chcesz się dowiedzieć, na przykład **(lokalnego**).
+1. W przeglądarce internetowej przejdź do https://adminportal.local.azurestack.external.
+2. Zaloguj się do portalu administracyjnego usługi Azure Stack jako operator chmury (przy użyciu poświadczeń, których podana podczas wdrażania)
+3. Domyślny pulpit nawigacyjny — znaleźć **zarządzanie regionami** listy i wybierz region, którą chcesz zbadać, na przykład **(lokalnego**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. Wybierz **magazynu** z **dostawców zasobów** listy.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Teraz, w okienku administrator dostawcy zasobów magazynu — przewiń w dół do **kont magazynu** i wybierz go.
+5. Teraz, w okienku administrator dostawcy zasobów magazynu — przewiń w dół do **kont magazynu** kartę i wybierz ją.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
-   Wynikowa strona jest lista kont magazynu w tym regionie.
+   Strona wynikowy jest lista kont magazynu, w tym regionie.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
-Domyślnie 10 pierwszych konta są wyświetlane. Możesz pobrać więcej klikając **załadować więcej** łącze umieszczone u dołu listy.
+Domyślnie są wyświetlane pierwsze 10 kont. Istnieje możliwość pobrania więcej, klikając **Załaduj więcej** link w dolnej części listy.
 
 LUB
 
-Jeśli interesuje Cię na koncie magazynu określonym — możesz **filtrowania i pobrać odpowiednie konta** tylko.
+Jeśli interesują Cię określone konto magazynu — możesz to zrobić **filtrowania i pobrać odpowiednie konta** tylko.
 
 
-**Aby filtrować kont:**
+**Aby odfiltrować konta:**
 
 1. Wybierz **filtru** u góry okienka.
-2. W okienku filtru go służy do określenia **nazwa konta**, ** identyfikator subskrypcji lub **stan** można dostosować listę kont magazynu, który będzie wyświetlany. Użyj ich, zależnie od potrzeb.
-3. Wybierz **aktualizacji**. W związku z tym odświeżenia listy.
+2. Na okienka filtru umożliwia określanie **nazwa konta**, ** identyfikator subskrypcji lub **stan** można dostosować listę kont magazynu, które mają być wyświetlane. Ich używać zgodnie z potrzebami.
+3. Wybierz **aktualizacji**. Listy należy odświeżyć odpowiednio.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. Aby zresetować filtr: Wybierz **filtru**, wyczyszczenie zaznaczenia i aktualizacji.
+4. Aby zresetować filtr: Wybierz **filtru**, wyczyść wybrane elementy i aktualizacji.
 
-Pole tekstowe wyszukiwania (w górnej części okienka listy kont magazynu) umożliwia wyróżnianie tekstu zaznaczonego w listy kont. Umożliwia to, gdy pełna nazwa lub identyfikator nie jest łatwo dostępny.
+Pole tekstowe wyszukiwania (w górnej części okienka listy kont magazynu) umożliwia wyróżnianie zaznaczonego tekstu na liście kont. Umożliwia to, gdy pełna nazwa lub identyfikator nie jest łatwo dostępny.
 
-Dowolny tekst tutaj służy do znajdowania konta, które planuje się.
+Dowolny tekst w tym miejscu służy do znajdowania kont, który Cię interesuje.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
-## <a name="look-at-account-details"></a>Sprawdź szczegóły konta
-Po przejściu do kont, które jest wyświetlane, można wybrać określonego konta, aby wyświetlić niektóre szczegóły. Nowe okienko Otwiera szczegóły konta, takich jak: typ konta, czas utworzenia, lokalizacji itp.
+## <a name="look-at-account-details"></a>Przyjrzyj się szczegóły konta
+Po zlokalizowaniu kont, które Cię interesują wyświetlania można wybrać określone konto, aby wyświetlić niektóre szczegóły. Nowe okienko otwiera z szczegóły konta, takie jak: typ konta, czas utworzenia, lokalizacji itp.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
 ## <a name="recover-a-deleted-account"></a>Odzyskiwanie usuniętego konta
-Można w sytuacji, gdy trzeba przywrócić usuniętego konta.
+Może być w sytuacji, gdy trzeba odzyskać usuniętego konta.
 
-W stosie Azure jest prosty sposób, w tym:
+W usłudze Azure Stack istnieje najprościej można to zrobić:
 
-1. Przejdź do listy kont magazynu. Zobacz [znaleźć konta magazynu](#find) w tym temacie, aby uzyskać więcej informacji.
-2. Znajdź tego konkretnego konta na liście. Konieczne może być filtru.
-3. Sprawdź *stanu* konta. Powinny przekazać komunikat **usunięte**.
-4. Wybierz konto, które umożliwia otwarcie okienka szczegółów konta.
-5. U góry w tym okienku, zlokalizuj **odzyskać** i wybrać je.
+1. Przejdź do listy kont magazynu. Zobacz [Znajdź konto magazynu](#find) w tym temacie, aby uzyskać więcej informacji.
+2. Znajdź tego konkretnego konta na liście. Może być konieczne do filtrowania.
+3. Sprawdź *stanu* konta. Powinna być widoczna nazwa **usunięte**.
+4. Wybierz konto, co spowoduje otwarcie okienka szczegółów konta.
+5. Na górze w tym okienku Znajdź **odzyskać** przycisku i wybierz ją.
 6. Wybierz **tak** o potwierdzenie.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. Odzyskiwanie jest teraz w *... przetworzyć oczekiwania* dla wskazanie, że nie powiodło się.
-   Można również wybrać ikonę "dzwonka" w górnej części portalu, aby wyświetlić postęp oznaczenia.
+7. Odzyskiwanie jest teraz w *proces... Czekaj* dla wskazanie, czy zakończyła się pomyślnie.
+   Można również wybrać ikonę "dzwonka" w górnej części portalu, aby wyświetlić postęp oznaczeń.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
-   Po pomyślnie jest synchronizowane konta odzyskane, mogą ponownie używane.
+   Po pomyślnym zsynchronizowaniu odzyskane konta mogą ponownie używane.
 
-### <a name="some-gotchas"></a>Niektóre pytań
+### <a name="some-gotchas"></a>Niektóre pytania dotyczące usługi
 * Twoje konto usunięte pokazuje stan jako **poza przechowywania**.
   
-  Poza sposób przechowywania czy usuniętego konta przekroczył okres przechowywania i może nie być możliwe do odzyskania.
-* Usunięto konta nie są wyświetlane na liście kont.
+  Poza przechowywania oznacza, że że usuniętego konta przekroczył okres przechowywania i nie może być możliwe do odzyskania.
+* Twoje konto usunięte nie są wyświetlane na liście kont.
   
-  Twoje konto nie mogą być wyświetlane na liście kont podczas usuniętego konta została już bezużytecznych. W takim przypadku nie można odzyskać. Zobacz [odzyskiwania pojemności](#reclaim) w tym temacie.
+  Konta nie mogą być wyświetlane na liście kont, gdy usuniętego konta została już bezużyteczne. W tym przypadku nie można odzyskać. Zobacz [odzyskać pojemności](#reclaim) w tym temacie.
 
 ## <a name="set-the-retention-period"></a>Ustaw okres przechowywania
-Ustawienie okresu przechowywania umożliwia operatorowi chmury określić okres czasu w dni (od 0 do 9999 dni), w których wszystkie usuniętego konta potencjalnie mogą zostać odzyskane. Domyślny okres przechowywania wynosi 0 dni. Ustawienie wartości "0" oznacza, że wszystkie konta usuniętego natychmiast Brak przechowywania i oznaczone do okresowego wyrzucanie elementów bezużytecznych.
+Ustawienie okresu zachowywania umożliwia operatorowi chmury określić okres czasu w dniach (od 0 do 9999 dni), podczas których potencjalnie można odzyskać wszystkie usunięte konto. Domyślny okres przechowywania jest ustawiona na wartość 0 dni. Ustawienie wartości na "0" oznacza, że wszystkie usunięte konto jest natychmiast poza przechowywania i oznaczone do okresowego wyrzucania elementów bezużytecznych.
 
 **Aby zmienić okres przechowywania:**
 
-1. W przeglądarce sieci Web, przejdź do https://adminportal.local.azurestack.external.
-2. Zaloguj się do portalu administracyjnego stosu Azure jako chmury operatora (przy użyciu poświadczeń, których podana podczas wdrażania)
-3. Na pulpicie nawigacyjnym domyślny — Znajdź **zarządzania Region** listę i wybierz region, aby eksplorować — na przykład **(lokalnego**).
+1. W przeglądarce internetowej przejdź do https://adminportal.local.azurestack.external.
+2. Zaloguj się do portalu administracyjnego usługi Azure Stack jako operator chmury (przy użyciu poświadczeń, których podana podczas wdrażania)
+3. Domyślny pulpit nawigacyjny — znaleźć **zarządzanie regionami** listy i wybierz region, którą chcesz zbadać — na przykład **(lokalnego**).
 4. Wybierz **magazynu** z **dostawców zasobów** listy.
 5. Wybierz **ustawienia** u góry, aby otworzyć okienko ustawienia.
-6. Wybierz **konfiguracji** następnie Edytuj wartość okresu przechowywania.
+6. Wybierz **konfiguracji** następnie zmodyfikuj wartość okresu przechowywania.
 
    Ustaw liczbę dni, a następnie zapisz go.
    
@@ -117,43 +117,43 @@ Ustawienie okresu przechowywania umożliwia operatorowi chmury określić okres 
 
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>Odzyskiwania pojemności
-Jednym z efektami ubocznymi mające okres przechowywania jest usuniętego konta nadal zużywają pojemności do momentu zakończenia poza okresem przechowywania. Jako operatorowi chmury może być konieczne sposób, aby odzyskać miejsce usuniętego konta, mimo że nie upłynął jeszcze okresu przechowywania.
+## <a name="reclaim"></a>Odzyskaj pojemności
+Jednym z efekty uboczne mające okres przechowywania jest, że usunięte konto w dalszym ciągu korzystać pojemności, dopóki nie pochodzi z okresu przechowywania. Operator chmury może być konieczne sposobem odzyskania miejsca usuniętego konta, nawet jeśli nie upłynął jeszcze okres przechowywania.
 
-Można odzyskać pojemności za pomocą portalu lub programu PowerShell.
+Można odzyskać pojemność przy użyciu portalu lub programu PowerShell.
 
-**Aby odzyskać pojemności przy użyciu portalu:**
-1. Przejdź do okienka kont magazynu. Zobacz [znaleźć konta magazynu](#find).
+**Aby odzyskać pojemność przy użyciu portalu:**
+1. Przejdź do okienka kont magazynu. Zobacz [Znajdź konto magazynu](#find).
 2. Wybierz **odzyskać miejsce** u góry okienka.
-3. Przeczytaj komunikat, a następnie wybierz **OK**.
+3. Przeczytaj komunikat, a następnie wybierz pozycję **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
-4. Poczekaj na powodzenie powiadomień można znaleźć w portalu ikonę dzwonka.
+4. Poczekaj, aż powiadomienie o powodzeniu Zobacz ikonę dzwonka w portalu.
 
     ![](media/azure-stack-manage-storage-accounts/image12.png)
-5. Odśwież stronę, konta magazynu. Usunięte konta nie są wyświetlane na liście, ponieważ zostały usunięte.
+5. Odśwież stronę kont magazynu. Usuniętego konta nie są wyświetlane na liście, ponieważ zostały usunięte.
 
-Można również jawnie przesłonić okres przechowywania przy użyciu programu PowerShell i natychmiast odzyskiwania pojemności.
+Można także jawnie przesłonić okres przechowywania przy użyciu programu PowerShell, a następnie natychmiast odzyskać pojemności.
 
-**Aby odzyskać pojemności przy użyciu programu PowerShell:**   
+**Aby odzyskać pojemność przy użyciu programu PowerShell:**   
 
-1. Upewnij się, że masz programu Azure PowerShell zainstalowana i skonfigurowana. Jeśli nie, użyj poniższych instrukcji: 
-   * Aby zainstalować najnowszą wersję programu Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   Aby uzyskać więcej informacji na temat poleceń cmdlet usługi Azure Resource Manager, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
+1. Upewnij się, że programu Azure PowerShell zainstalowany i skonfigurowany. W przeciwnym razie użyj poniższych instrukcji: 
+   * Aby zainstalować najnowszą wersję programu Azure PowerShell i skojarzyć je z subskrypcją platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Aby uzyskać więcej informacji o poleceniach cmdlet usługi Azure Resource Manager, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. Uruchom następujące polecenia cmdlet:
 
 > [!NOTE]
-> Po uruchomieniu tych poleceń cmdlet należy trwale usunąć konta i jego zawartość. Nie jest możliwe do odzyskania. Użyj tego ostrożność.
+> Po uruchomieniu tych poleceń cmdlet, możesz trwale usunąć to konto i jego zawartość. Nie jest możliwe do odzyskania. To należy używać ostrożnie.
 
 ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-Aby uzyskać więcej informacji, zobacz [dokumentacji programu PowerShell usługi Azure stosu.](https://msdn.microsoft.com/library/mt637964.aspx)
+Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Stack PowerShell.](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)
  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Informacje dotyczące zarządzania uprawnieniami sekcji [kontroli dostępu Manage Role-Based](azure-stack-manage-permissions.md).
- - Uzyskać informacji o pojemności Zarządzaj stosu Azure, zobacz [Zarządzanie pojemność magazynu dla usługi Azure stosu](azure-stack-manage-storage-shares.md).
+ - Instrukcje dotyczące zarządzania uprawnieniami zobacz [kontroli dostępu Manage Role-Based](azure-stack-manage-permissions.md).
+ - Aby uzyskać informacji na temat pojemności magazynu zarządzania dla usługi Azure Stack, zobacz [Zarządzanie pojemnością magazynu dla usługi Azure Stack](azure-stack-manage-storage-shares.md).

@@ -3,20 +3,20 @@ title: Azure Stack — Szybki Start — tworzenie maszyny Wirtualnej za pomocą 
 description: 'Azure Stack: Szybki Start — tworzenie maszyny Wirtualnej systemu Linux przy użyciu portalu'
 services: azure-stack
 cloud: azure-stack
-author: brenduns
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 04/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: c364a9ba5a9606967fa86262417ccd1ac3aeffc3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: c692bc461c116b4c0497c2378ae4e21e1b841c8f
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866274"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139625"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej z systemem Linux server za pomocą portalu usługi Azure Stack
 
@@ -66,7 +66,7 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 1. Kliknij przycisk **Utwórz zasób** w lewym górnym rogu portalu usługi Azure Stack.
 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Ubuntu Server 16.04 LTS**.
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
 4. Wpisz informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH**. Wklej klucz publiczny SSH, zapisać, a następnie kliknij przycisk **OK**.
 
