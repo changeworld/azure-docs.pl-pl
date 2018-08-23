@@ -1,129 +1,149 @@
 ---
-title: Skalowanie funkcji platformy Azure i hosting | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wybrać planowania użycia funkcji Azure i plan usługi aplikacji.
+title: Usługa Azure Functions, skalowanie i hosting | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dokonać wyboru między planu usługi Azure Functions zużycie i plan usługi App Service.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
-keywords: Azure funkcje, funkcje, użycie planu, plan usługi aplikacji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, architektura niekorzystającą
+keywords: Azure functions, funkcje, planu zużycie, plan usługi app service, przetwarzanie zdarzeń, elementów webhook, obliczanie dynamiczne, architektury bezserwerowej
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/05/2018
+ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 341756c91693bf9e53538aa8e284c79d289da293
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807537"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42059555"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Skala funkcji platformy Azure i hostingu
+# <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
-Można uruchomić usługi Azure Functions w dwóch różnych trybach: plan zużycia i plan usługi aplikacji Azure. Plan zużycie automatycznie przydzieli moc obliczeniową, gdy kod działa, skaluje się wymagane do obsługi obciążenia, a następnie skalowany w dół, gdy kodu nie jest uruchomiona. Nie trzeba płacić za maszyny wirtualne w stanie bezczynności i nie trzeba wydajność rezerwowa z wyprzedzeniem. Ten artykuł skupia się na plan zużycie [niekorzystającą](https://azure.microsoft.com/overview/serverless-computing/) modelu aplikacji. Aby uzyskać szczegółowe informacje dotyczące sposobu działania plan usługi aplikacji, zobacz [szczegółowe omówienie planów usługi aplikacji Azure](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Usługa Azure Functions jest uruchamiany w dwóch różnych trybach: plan zużycie i plan usługi Azure App Service. Plan zużycie automatycznie przydziela moc obliczeniową, gdy kod jest uruchomiony. Twoja aplikacja jest skalowana w poziomie, gdy trzeba obsłużyć obciążenie i skalowane w dół, gdy kod nie jest uruchomiony. Nie trzeba płacić za bezczynnych maszyn wirtualnych lub zarezerwować pojemności z wyprzedzeniem. Ten artykuł koncentruje się na plan zużycie [bezserwerowe](https://azure.microsoft.com/overview/serverless-computing/) modelu aplikacji. Aby uzyskać szczegółowe informacje dotyczące sposobu działania dedykowanego planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
->[!NOTE]  
-> [Linux hosting](functions-create-first-azure-function-azure-cli-linux.md) jest obecnie dostępny tylko na plan usługi aplikacji.
+> [!NOTE]  
+> [Hosting systemu Linux](functions-create-first-azure-function-azure-cli-linux.md) jest obecnie dostępna tylko w planie usługi App Service.
 
-Jeśli nie znasz usługi Azure Functions, zobacz [Azure Functions — omówienie](functions-overview.md).
+Jeśli nie znasz usługi Azure Functions, zobacz [omówienia usługi Azure Functions](functions-overview.md).
 
-Podczas tworzenia aplikacji funkcji, należy skonfigurować plan hostingu dla funkcji, które zawiera aplikację. W trybie wystąpienia *hosta usługi Azure Functions* wykonuje funkcje. Typ kontrolki plan:
+Podczas tworzenia aplikacji funkcji, możesz wybrać plan hostingu dla funkcji w aplikacji. W dowolnym planie wystąpienie *hosta usługi Azure Functions* wykonuje funkcje. Typ kontrolki plan:
 
-* Jak wystąpień hosta jest skalowana w poziomie.
+* Jak wystąpień hosta są skalowane do wewnątrz.
 * Zasoby, które są dostępne dla każdego hosta.
 
-Obecnie musisz wybrać typ plan hostingu podczas tworzenia aplikacji funkcji. Nie można zmienić go później. 
+> [!IMPORTANT]
+> Musisz wybrać typ planu hostingu podczas tworzenia aplikacji funkcji. Nie można zmienić go później.
 
-W planie usługi aplikacji można skalować między warstwami przydzielić różnych ilości zasobów. W planie użycia usługi Azure Functions obsługuje automatycznie alokacji zasobów.
+W planie usługi App Service można skalować między warstwami można przydzielić różnych ilości zasobów. W planie zużycie usługi Azure Functions automatycznie obsługuje wszystkie alokacji zasobów. 
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
-Podczas korzystania z planu zużycia, wystąpienia usługi Azure Functions hosta są dynamicznie dodawane i usuwane zależności od liczby zdarzeń przychodzących. Ten plan skaluje automatycznie, a użytkownik naliczane są opłaty za zasoby obliczeniowe tylko wtedy, gdy są uruchomione funkcji. W planie zużycia wykonanie funkcji upłynie limit czasu po upływie czasu można skonfigurować. 
+Podczas korzystania z planu zużycie wystąpień hosta usługi Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bez użycia serwera skaluje się automatycznie, a opłaty są naliczane za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchomione. W ramach planu zużycie wykonywania funkcji upłynie limit czasu po upływie czasu określonego można konfigurować.
 
 > [!NOTE]
-> Domyślny limit czasu dla funkcji w planie zużycie wynosi 5 minut. Można zwiększyć wartość dla aplikacji funkcja maksymalnie 10 minut, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
+> Domyślna wartość limitu czasu dla funkcji w ramach planu zużycie wynosi 5 minut. Wartość może zostać zwiększone dla aplikacji funkcji, maksymalnie do 10 minut, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
 
-Karta jest oparta na liczbę wykonaniami, czas wykonywania i używanej pamięci. Karta jest zagregowane we wszystkich funkcji w aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Środowisko Azure Functions stronie dotyczącej cen].
+Rozliczanie jest na podstawie liczby wykonań, czas wykonywania i używanej pamięci. Opłaty są agregowane w obrębie wszystkich funkcji w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Usługa Azure Functions, cennik].
 
-Plan zużycie jest domyślny plan hostingu i oferuje następujące korzyści:
-- Płać tylko wtedy, gdy uruchomione są funkcji.
-- Skalowanie w poziomie automatycznie, nawet w okresie wysoki obciążenia.
+Plan zużycie jest domyślny plan hostingu i zapewnia następujące korzyści:
+
+* Płać tylko, gdy funkcje są uruchomione.
+* Skalować automatycznie, nawet w okresach wysokiego obciążenia.
 
 ## <a name="app-service-plan"></a>Plan usługi App Service
 
-W planie usługi aplikacji — warstwa aplikacji funkcji Uruchom na dedykowanych maszynach wirtualnych na Basic, Standard, Premium i izolowane jednostki SKU, podobnie jak aplikacje sieci Web, aplikacje interfejsu API i aplikacje mobilne. Dedykowanych maszyn wirtualnych są przydzielone do aplikacji usługi aplikacji, co oznacza, że na hoście funkcji zawsze działa. Plany usługi App Service obsługuje Linux.
+W przypadku dedykowanego planu usługi App Service — funkcja działają na dedykowanych maszyn wirtualnych na podstawowa, standardowa, Premium i jednostek SKU izolowanej, która jest taka sama, jak inne aplikacje usługi App Service. Dedykowanych maszyn wirtualnych są przydzielane do aplikacji funkcji, która oznacza, że host funkcji może być [zawsze uruchomiona](#always-on). Plany usługi App Service obsługuje systemu Linux.
 
-Należy wziąć pod uwagę plan usługi aplikacji w następujących przypadkach:
-- Masz istniejący, niedostatecznie maszyn wirtualnych, które zostały już uruchomione inne wystąpienia usługi aplikacji.
-- Spodziewasz się funkcji aplikacji do uruchamiania stale lub prawie w sposób ciągły. W takim przypadku planu usługi App Service może być bardziej ekonomiczne rozwiązanie.
-- Potrzebujesz więcej opcji procesora CPU lub pamięci niż jest podana w planie zużycia.
-- Musisz uruchomić dłużej niż maksymalny czas wykonywania dozwolone na użycie planu (10 minut).
-- Wymagane funkcje, które są dostępne tylko na plan usługi aplikacji, takie jak obsługa środowiska usługi aplikacji, łączność w sieci Wirtualnej lub sieć VPN i większych rozmiarów maszyn wirtualnych. 
-- Aby uruchomić aplikację funkcji w systemie Linux, lub chcesz wyrazić niestandardowego obrazu, na którym należy uruchamiać swoje funkcje.
+Należy wziąć pod uwagę plan usługi App Service w następujących przypadkach:
 
-Maszyna wirtualna oddziela kosztów od liczby wykonaniami, czas wykonywania i używanej pamięci. W związku z tym nie będzie płacisz więcej niż koszt wystąpienia maszyny Wirtualnej, które zostało przydzielone. Aby uzyskać szczegółowe informacje dotyczące sposobu działania plan usługi aplikacji, zobacz [szczegółowe omówienie planów usługi aplikacji Azure](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+* Masz istniejące niedostatecznie używanych maszyn wirtualnych, które zostały już uruchomione inne wystąpienia usługi App Service.
+* Twoje aplikacje funkcji Uruchom stale albo w praktycznie w sposób ciągły. W tym przypadku Plan usługi App Service może być bardziej ekonomiczne.
+* Potrzebujesz więcej opcji procesora CPU lub pamięci niż jest podana w planu zużycie.
+* Twój kod musi zostać uruchomiony dłużej niż maksymalny czas wykonywania dozwolone w planie zużycie, który jest maksymalnie 10 minut.
+* Wymagane funkcje, które są dostępne tylko na plan usługi App Service, takie jak obsługa środowiska App Service Environment, łączność w sieci Wirtualnej/sieci VPN i większych rozmiarów maszyn wirtualnych.
+* Aby uruchomić aplikację funkcji w systemie Linux lub chcesz udostępnić obraz niestandardowy, na którym chcesz uruchamiać swoje funkcje.
 
-Plan usługi aplikacji można ręcznie skalować w poziomie przez dodanie więcej wystąpień maszyny Wirtualnej, lub można włączyć automatycznego skalowania. Aby uzyskać więcej informacji, zobacz [skalowanie liczby wystąpień ręcznie lub automatycznie](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Można także skalowanie w górę, wybierając inny plan usługi aplikacji. Aby uzyskać więcej informacji, zobacz [skalowanie w górę aplikacji na platformie Azure](../app-service/web-sites-scale.md). 
+Maszynę wirtualną oddziela kosztów od liczby wykonań, czas wykonywania i używanej pamięci. W rezultacie nie płacisz za więcej niż koszt wystąpienia maszyny Wirtualnej, który przydzielasz. Aby uzyskać szczegółowe informacje dotyczące sposobu działania planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-Jeśli planujesz uruchamianie funkcji JavaScript na plan usługi aplikacji, należy wybrać plan, który ma mniej Vcpu. Aby uzyskać więcej informacji, zobacz [wybierz planów usługi App Service jednordzeniowy](functions-reference-node.md#considerations-for-javascript-functions).  
+Plan usługi App Service można ręcznie skalować w poziomie, dodając kolejne wystąpienia maszyn wirtualnych lub włączyć Skalowanie automatyczne. Aby uzyskać więcej informacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Możesz również skalować w górę, wybierając inny plan usługi App Service. Aby uzyskać więcej informacji, zobacz [skalowanie aplikacji na platformie Azure](../app-service/web-sites-scale.md). 
+
+Podczas uruchamiania funkcji JavaScript na plan usługi App Service, należy wybrać plan, który ma mniejszą liczbę procesorów wirtualnych. Aby uzyskać więcej informacji, zobacz [wybierz plany usługi App Service jednordzeniowy](functions-reference-node.md#considerations-for-javascript-functions).  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
-### Zawsze włączone
+### <a name="always-on"></a>Zawsze włączona
 
-Jeśli zostanie uruchomione na plan usługi aplikacji, należy włączyć **zawsze na** tak, aby aplikacja funkcja działa poprawnie. W planie usługi aplikacji — środowisko uruchomieniowe functions przejdzie bezczynności, po upływie kilku minut braku aktywności, tak tylko wyzwalaczy HTTP "wzbudzania" funkcji. Efekt jest podobny do sposobu zadania Webjob musi mieć zawsze włączone. 
+Jeśli zostanie uruchomione na plan usługi App Service, należy włączyć **zawsze na** ustawienie, aby aplikacja funkcji zostanie uruchomiona poprawnie. Plan usługi App Service środowisko uruchomieniowe usługi functions zacznie bezczynności, po kilku minutach braku aktywności, dzięki czemu tylko wyzwalaczy HTTP "wzbudzania" funkcji. Zawsze na jest dostępna tylko na plan usługi App Service. W ramach planu zużycie platformy aktywuje automatycznie aplikacji funkcji.
 
-Zawsze włączone jest dostępna tylko na plan usługi aplikacji. Na plan zużycie platformy aktywuje automatycznie funkcji aplikacji.
+## <a name="what-is-my-hosting-plan"></a>Co to jest Mój plan hostingu
+
+Aby określić plan hostingu używane przez aplikację funkcji, zobacz **planu usługi App Service / warstwa cenowa** w **Przegląd** karty dla aplikacji funkcji w [witryny Azure portal](https://portal.azure.com). Dla planów usługi App Service wskazane jest także warstwy cenowej. 
+
+![Wyświetl plan skalowania w portalu](./media/functions-scale/function-app-overview-portal.png)
+
+Interfejs wiersza polecenia platformy Azure umożliwia również określić plan, w następujący sposób:
+
+```azurecli-interactive
+appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+```  
+
+Gdy dane wyjściowe tego polecenia jest `dynamic`, aplikacja funkcji znajduje się w planie zużycie. Wszystkie pozostałe wartości wskazują warstw planu usługi App Service.
+
+Nawet w przypadku zawsze na włączone, limit czasu wykonywania poszczególnych funkcji jest kontrolowana przez `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 
-Plan zużycia lub plan usługi aplikacji aplikacji funkcji wymaga ogólne konto magazynu Azure obsługuje magazynu obiektów Blob platformy Azure, kolejki, pliki i tabeli. Wewnętrznie usługi Azure Functions używa usługi Azure Storage dla operacji, takich jak zarządzanie wyzwalaczy i rejestrowanie wykonania funkcji. Niektóre konta magazynu nie obsługują kolejek i tabel, takich jak konta magazynu tylko do obiektów blob (w tym magazyn w warstwie premium) i kont magazynu ogólnego przeznaczenia za pomocą replikacji magazyn strefowo nadmiarowy. Te konta są filtrowane z **konta magazynu** bloku podczas tworzenia aplikacji funkcji.
+Na plan zużycie i plan usługi App Service aplikacja funkcji wymaga konto usługi Azure Storage ogólnego, który obsługuje usługi Azure Blob, kolejki, pliki i Table storage. Jest to spowodowane funkcje opiera się na usłudze Azure Storage dla operacji, takich jak Zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują kont usługi storage tylko do obiektów blob (w tym usługi premium storage) i kont magazynu ogólnego przeznaczenia z replikacją magazynu strefowo nadmiarowego, są filtrowane w poziomie z istniejących **konta magazynu** wybrane opcje, po utworzeniu aplikacji funkcji.
 
-<!-- JH: Does using a PRemium Storage account improve perf? -->
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-plan-works"></a>Jak działa planu zużycie
+## <a name="how-the-consumption-plan-works"></a>Jak działa w planie zużycie
 
-Kontroler skali w planie zużycie jest automatycznie skalowany zasobów Procesora i pamięci przez dodanie dodatkowych wystąpień funkcje hosta, na podstawie liczby zdarzeń, które funkcje są uruchamiane na. Każde wystąpienie hosta funkcji jest ograniczona do 1,5 GB pamięci.  Wystąpienie hosta to funkcja aplikacji, co oznacza wszystkie funkcje w funkcji aplikacji współużytkowanie zasobów w ramach wystąpienia i skali, w tym samym czasie. Funkcja aplikacji, które współdzielić ten sam plan zużycia są skalowane niezależnie.  
+W przypadku planu zużycie kontrolera skalowania automatycznie skaluje zasobów Procesora i pamięci przez dodanie dodatkowych wystąpień hosta funkcji, w oparciu o liczbę zdarzeń, które funkcje są wyzwalane na. Każde wystąpienie hosta funkcji jest ograniczona do 1,5 GB pamięci.  Wystąpienie hosta jest aplikacja funkcji, co oznacza wszystkich funkcji w ramach funkcji zasób udziału dla aplikacji w ramach wystąpienia i skalowania, w tym samym czasie. Aplikacje funkcji, które współużytkują ten sam plan zużycie są skalowane niezależnie.  
 
-Użycie zużycie plan hostingu, funkcja kodu pliki są przechowywane w udziałach plików Azure na koncie magazynu głównego funkcji. Podczas usuwania konta magazynu głównego aplikacji funkcji plików kodu funkcji zostaną usunięte i nie może zostać odzyskany.
+Korzystając z planu hostingu zużycie, funkcja pliki kodu są przechowywane na udziałów plików platformy Azure na koncie magazynu głównych funkcji. Po usunięciu głównego konta magazynu aplikacji funkcji w plikach kodu funkcji zostaną usunięte i nie można odzyskać.
 
 > [!NOTE]
-> Podczas korzystania z wyzwalacza obiektu blob w planie zużycia, może istnieć maksymalnie 10-minutowych opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Po uruchomieniu aplikacji funkcja obiekty BLOB są przetwarzane natychmiast. Aby uniknąć tego opóźnienia zimnego, za pomocą plan usługi aplikacji na zawsze włączone, lub użyj wyzwalacza zdarzenia siatki. Aby uzyskać więcej informacji, zobacz [obiektu blob wyzwalacza powiązanie artykule](functions-bindings-storage-blob.md#trigger).
+> Podczas korzystania z wyzwalacz obiektu blob w ramach planu zużycie, może istnieć maksymalnie 10 minut opóźnienia w przetwarzaniu nowe obiekty BLOB. To opóźnienie występuje, gdy aplikacja funkcji przeszedł bezczynności. Po uruchomieniu aplikacji funkcji, obiekty BLOB są przetwarzane od razu. Aby uniknąć tego opóźnienia zimnego startu, użyj planu usługi App Service przy użyciu **Always On** włączona lub użyj wyzwalacza usługi Event Grid. Aby uzyskać więcej informacji, zobacz [artykuł odwołanie do obiektu blob wyzwalacza powiązania](functions-bindings-storage-blob.md#trigger).
 
-### <a name="runtime-scaling"></a>Skalowanie środowiska wykonawczego
+### <a name="runtime-scaling"></a>Skalowanie środowiska uruchomieniowego
 
-Środowisko Azure Functions używa składnik o nazwie *kontrolera skali* do monitorowania częstość zdarzeń i określanie, czy do skalowania w poziomie oraz skalowanie w. Kontroler skali korzysta z algorytmów heurystycznych dla każdego typu wyzwalacza. Na przykład gdy używasz wyzwalacz magazynu kolejek Azure skaluje na podstawie długość kolejki i wiek najstarsze komunikatu w kolejce.
+Usługa Azure Functions używa składnik o nazwie *kontrolera skalowania* monitorować współczynnik zdarzeń i ustalenia, czy należy skalować w poziomie lub w. Kontroler skalowania korzysta z algorytmów heurystycznych dla każdego typu wyzwalacza. Na przykład podczas korzystania z wyzwalacza usługi Azure Queue storage, zostanie przeprowadzone skalowanie na podstawie długości kolejki i wiek najstarsze komunikatu w kolejce.
 
-Jednostka skalowania jest aplikacja funkcji. Kiedy funkcja aplikacji jest skalowana w poziomie, dodatkowe zasoby są przydzielane do uruchomienia wielu wystąpień hosta usługi Azure Functions. Z drugiej strony jak żądanie zostanie zmniejszona obliczeń, kontrolera skali usuwa wystąpienia hosta funkcji. Liczba wystąpień jest ostatecznie skalowany w dół od zera uruchomionej żadnych funkcji w funkcji aplikacji.
+Jednostka skalowania jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowana w poziomie, dodatkowe zasoby są przydzielane do uruchamiania wielu wystąpień hosta usługi Azure Functions. Z drugiej strony jak moc obliczeniowa, czy żądanie jest krótszy, kontroler skalowania usuwa wystąpień hosta funkcji. Liczba wystąpień jest ostatecznie skalować w dół od zera. gdy żadne funkcje nie są uruchomione w ramach aplikacji funkcji.
 
-![Kontroler skali monitorowanie zdarzeń i tworzenie wystąpień](./media/functions-scale/central-listener.png)
+![Kontroler skalowania zdarzenia dotyczące monitorowania i tworzenia wystąpień](./media/functions-scale/central-listener.png)
 
 ### <a name="understanding-scaling-behaviors"></a>Opis zachowania skalowania
 
-Skalowanie może się różnić w przypadku wielu czynników, a inaczej w zależności od wyzwalacza i językiem wybranym skali. Istnieją jednak kilka aspektów skalowania, która istnieje obecnie w systemie:
-* Aplikacji jednej funkcji tylko będzie skalowana do maksymalnie 200 wystąpieniami. Pojedyncze wystąpienie może przetwarzać więcej niż jednego komunikatu lub żądania w czasie, więc nie ma ustawiony limit liczby współbieżnych wykonaniami.
-* Co najwyżej raz na 10 sekund tylko zostaną przydzielone nowe wystąpienia.
+Skalowanie może się różnić od szeregu czynników, a inaczej w zależności od języka wybranego i wyzwalaczy skalowania. Istnieją jednak kilka aspektów skalowanie, które istnieją już dziś w systemie:
 
-Wyzwalacze różnych mogą także mieć różne ograniczonym zakresie, a także udokumentowane poniżej:
+* Aplikacja funkcji pojedynczej tylko jest skalowany w górę do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jednego komunikatu lub żądania naraz, więc nie ma ustawiony limit na liczbę współbieżnych wykonań.
+* Nowe wystąpienia tylko zostaną przydzielone co najwyżej raz na 10 sekund.
+
+Różnymi wyzwalaczami mogą także mieć różne, w ograniczonym zakresie, a także udokumentowanego poniżej:
 
 * [Centrum zdarzeń](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce dla skalowalnych aplikacji
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce skalowalne aplikacje
 
-Istnieje wiele aspektów aplikacji funkcji, które mają wpływ na skuteczność go są skalowane, łącznie z konfiguracji hosta, środowiska uruchomieniowego rozmiaru i wydajności zasobów.  Widok [skalowalności w dalszej części artykułu zagadnienia dotyczące wydajności](functions-best-practices.md#scalability-best-practices) Aby uzyskać więcej informacji.
+Istnieje wiele aspektów aplikacji funkcji, które mają wpływ na sposób również zostanie przeprowadzone skalowanie, łącznie z konfiguracją hosta, obciążenie środowiska uruchomieniowego i wydajności zasobów.  Aby uzyskać więcej informacji, zobacz [skalowalności w dalszej części artykułu zagadnienia dotyczące wydajności](functions-best-practices.md#scalability-best-practices). Należy także pamiętać o zachowanie połączenia miarę skalowania aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [sposób zarządzania połączeniami w usłudze Azure Functions](manage-connections.md).
 
 ### <a name="billing-model"></a>Model rozliczania
 
-Rozliczeń dla planu zużycie opisano szczegółowo w [Środowisko Azure Functions stronie dotyczącej cen]. Użycie jest agregowana na poziomie aplikacji funkcji i liczby tylko wykonywany jest kod w funkcji czasu. Jednostki do rozliczeń są następujące: 
-* **Zużycie zasobów w ciągu sekund na gigabajtów (GB-s)**. Obliczony jako połączenie rozmiar pamięci i czasu wykonywania dla wszystkich funkcji w funkcji aplikacji. 
-* **Wykonaniami**. Zliczane każdym razem, gdy funkcja jest wykonywana w odpowiedzi na zdarzenia wyzwalacza.
+Okres rozliczeniowy za plan zużycie został szczegółowo opisany na [Usługa Azure Functions, cennik]. Sposób użycia są agregowane na poziomie aplikacji funkcji i zlicza czas, który jest wykonywany kod funkcji. Jednostki do rozliczeń są następujące:
 
-[Środowisko Azure Functions stronie dotyczącej cen]: https://azure.microsoft.com/pricing/details/functions
+* **Użycie zasobów w gigabajtosekundach (GB-s)**. Obliczona jako rozmiar pamięci i czas wykonywania dla wszystkich funkcji w ramach aplikacji funkcji. 
+* **Liczba wykonań**. Zliczane każdorazowo, gdy funkcja jest wykonywana w odpowiedzi na wyzwalacz zdarzenia.
+
+[Usługa Azure Functions, cennik]: https://azure.microsoft.com/pricing/details/functions

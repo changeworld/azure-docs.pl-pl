@@ -1,114 +1,120 @@
 ---
-title: Monitorowanie użycia i szacowanych kosztów w monitorze Azure
-description: Omówienie procesu przy użyciu strona szacowanych kosztów i monitorowanie Azure użycia
+title: Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
+description: Omówienie procesu stosowania optymalizacji użycia usługi Azure Monitor i szacowane koszty strony
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/31/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: edfcc244105403ae33251777c560d4cc21dfe5cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264286"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054598"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
-W Centrum Monitor w portalu Azure **użycia i szacowane koszty** użycie podstawowej platformy monitorowania funkcji, takich jak wyjaśniono strony [alertów, metryki, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [Analiza dzienników Azure ](https://azure.microsoft.com/pricing/details/log-analytics/), i [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na planów cenowych dostępne przed 2018 kwietnia obejmuje to także zakupione w ramach szczegółowych danych użycia usługi Analiza dzienników i oferować Analytics.
+> [!NOTE]
+> W tym artykule opisano sposób wyświetlania użycie i szacunkowe koszty między wiele funkcji monitorowania platformy Azure dla różnych modeli cen.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
+> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](../log-analytics/log-analytics-manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
+> - [Analizowanie użycia danych w usłudze Log Analytics](../log-analytics/log-analytics-usage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
+> - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../application-insights/app-insights-pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
 
-Na tej stronie użytkownicy mogą wyświetlać ich użycia zasobów w ciągu ostatnich 31 dni, zagregowane dla subskrypcji. Przechodzenie do szczegółów dodatków Pokaż trendów użycia przez 31 dni. Dużą ilość danych musi grupuje dla ta szacowana, więc prosimy o cierpliwość jako ładowania strony.
+W Centrum monitora w witrynie Azure Portal **użycie i szacunkowe koszty** stronie wyjaśniamy użycia podstawowej platformy monitorowania funkcji, takich jak [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na plany cenowe dostępne przed kwietnia 2018 r. obejmuje to także użycie usługi Log Analytics, które zostały zakupione w ramach wgląd w dane i Analytics oferuje.
 
-W tym przykładzie przedstawiono sposób monitorowania użycia i oszacowanie kosztów wynikowy:
+Na tej stronie użytkownicy mogą wyświetlać ich użycia zasobów w ciągu ostatnich 31 dni, zagregowane na subskrypcję. Dodatki testowania odzyskiwania po awarii pokazuje trendy użycia przez 31-dniowego okresu. Dużą ilość danych, trzeba łączą się na te dane szacunkowe, dlatego prosimy o cierpliwość, ponieważ ładowania strony.
 
-![Użycie i zrzut ekranu portalu szacowanych kosztów](./media/monitoring-usage-and-estimated-costs/001.png)
+Ten przykład przedstawia sposób monitorowania użycia i oszacowanie kosztów wynikowy:
 
-Wybierz łącze w kolumnie miesięczne użycie otworzyć wykres przedstawia trendy użycia przez ostatnich 31 dni:
+![Użycie i szacowane koszty portalu zrzut ekranu](./media/monitoring-usage-and-estimated-costs/001.png)
+
+Wybierz link w kolumnie miesięczne użycie, aby Otwórz wykres, który pokazuje trendy użycia w ciągu ostatnich 31 dni:
 
 ![Uwzględnione na węzeł paska wykresu zrzut ekranu](./media/monitoring-usage-and-estimated-costs/002.png)
 
-W tym miejscu jest inny podobny sposób użycia i podsumowanie kosztów. Ten przykład przedstawia subskrypcji w nowej 2018 kwietnia na podstawie zużycia cenową modelu. Zwróć uwagę na brak rozliczeniowych żadnych oparte na węzłach. Wprowadzanie danych i przechowywania dla analizy dzienników i usługi Application Insights, teraz są zgłaszane na nowy licznik wspólnej.
+Oto inny podobny sposób użycia i kosztów — podsumowanie. Ten przykład przedstawia subskrypcji w nowym kwietnia 2018 r. na podstawie użycia modelu cen. Należy zwrócić uwagę braku dowolnego rozliczania opartego na węźle. Pozyskiwanie danych i przechowywania dla usługi Log Analytics i usługi Application Insights teraz są zgłaszane na nowego licznika wspólnej.
 
-![Użycie i zrzut ekranu portalu szacowane koszty — cennik 2018 kwietnia](./media/monitoring-usage-and-estimated-costs/003.png)
+![Użycie i szacowane koszty portalu zrzut ekranu — ceny z kwietnia 2018 r.](./media/monitoring-usage-and-estimated-costs/003.png)
 
-## <a name="new-pricing-model"></a>Nowego modelu cenowego
+## <a name="new-pricing-model"></a>Nowy model cen
 
-W 2018 kwietnia [monitorowania nowego modelu cenowego został wydany](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  To funkcje przyjaznych dla chmury, na podstawie zużycia cennik. Płacisz tylko za używane, bez zobowiązań oparte na węzłach. Szczegóły nowego modelu cenowego są dostępne dla [alertów, metryki, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [analizy dzienników](https://azure.microsoft.com/pricing/details/log-analytics/) i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+W kwietniu 2018 r. [monitorowania nowego modelu cen został wydany](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Funkcje, cennik przyjazny dla chmury, na podstawie użycia. Płacisz tylko za rzeczywiste użycie bez zobowiązań oparte na węzłach. Szczegóły nowego modelu cen są dostępne dla [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-Do dołączenia do klientów do analizy dzienników lub usługi Application Insights po 2 kwietnia 2018 nowego modelu cenowego jest jedyną opcją. Klienci, którzy już korzystania z tych usług przenoszenia do nowego modelu cenowego jest opcjonalna.
+Dla klientów dołączanie do usługi Log Analytics lub usługi Application Insights po 2 kwietnia 2018 r. nowy model cen jest jedyną opcją. W przypadku klientów, którzy używają już tych usług przejście do nowego modelu cen jest opcjonalne.
 
-## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Ocena wpływu nowego modelu cenowego
-Nowego modelu cenowego będzie mieć inny wpływ na każdego klienta na podstawie ich monitorowania wzorców użycia. Klienci, którzy korzystali z analizy dzienników lub usługi Application Insights przed 2 kwietnia 2018 **użycia i szacowany koszt** strony w monitorze Azure szacuje zmiany kosztów, jeśli zostały przeniesione do nowego modelu cenowego. Zapewnia sposób, aby przenieść subskrypcję do nowego modelu. Dla większości klientów nowego modelu cenowego będzie korzystne. W przypadku klientów z wzorców użycia szczególnie wysokiej danych lub w regionach wyższy koszt to nie być wielkość liter.
+## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Ocena wpływu nowego modelu cen
+Nowy model cen będzie mieć inny wpływ na poszczególnych klientów, na podstawie ich monitorowania wzorców użycia. Dla klientów, którzy zostały przy użyciu usługi Log Analytics lub usługi Application Insights przed 2 kwietnia 2018 r. **użycia i szacowanych kosztów** strony w usłudze Azure Monitor szacuje jakichkolwiek zmian w koszty, jeśli zostały przeniesione do nowego modelu cen. Zapewnia sposób, aby przenieść subskrypcję do nowego modelu. W przypadku większości klientów nowego modelu cen będzie korzystne. W przypadku klientów z wzorców użycia szczególnie dużej ilości danych lub w regionach wyższe koszty może to być nie tak.
 
-Aby wyświetlić oszacowanie kosztów dla subskrypcji wybrane na **użycia i szacowane koszty** wybierz niebieski banerze w górnej części strony. Najlepiej jest zrobić to jedną subskrypcję w czasie, ponieważ jest to poziom nowego modelu cenowego może zostać zaakceptowany.
+Aby wyświetlić oszacowanie kosztów dla subskrypcji, które wybrano na **użycie i szacunkowe koszty** wybierz niebieski Baner w górnej części strony. Najlepiej zrobić to jedną subskrypcję, w czasie, ponieważ jest to poziom nowego modelu cen może zostać przyjęta.
 
-![Monitorowanie użycia i szacowanych kosztów nowego zrzutu ekranu cenową modelu](./media/monitoring-usage-and-estimated-costs/004.png)
+![Monitoruj użycie i szacowane koszty w nowych cen zrzut ekranu z modelu](./media/monitoring-usage-and-estimated-costs/004.png)
 
-Nowa strona zawiera podobne wersji wcześniejszych strony z zielonym transparent:
+Nowa strona zawiera podobne wersję strony zielony transparent z wcześniejszych:
 
-![Monitorowanie użycia i szacowane koszty w bieżącym cenową zrzut ekranu modelu](./media/monitoring-usage-and-estimated-costs/005.png)
+![Monitoruj użycie i szacowane koszty w bieżącym cen zrzut ekranu z modelu](./media/monitoring-usage-and-estimated-costs/005.png)
 
-Strona zawiera również inny zestaw liczników, które odpowiadają nowego modelu cenowego. Ta lista jest przykładem:
+Na stronie znajdują się również inny zbiór liczników, które odnoszą się do nowego modelu cen. Ta lista jest przykładem:
 
-- Szczegółowe dane i Analytics\Overage na węzeł
-- Szczegółowe dane i Analytics\Included na węzeł
-- Nadwyżkowe danych Insights\Basic aplikacji
+- Usługa Insight and Analytics\Overage na węzeł
+- Usługa Insight and Analytics\Included na węzeł
+- Dane nadwyżkowe Insights\Basic aplikacji
 - Dane Insights\Included aplikacji
 
-Nowego modelu cenowego nie ma alokacji danych dołączone opartych na węźle. W związku z tym liczniki wprowadzanie te dane są łączone w nowy licznik wprowadzanie wspólnych danych o nazwie **udostępnionych wprowadzanie Services\Data**. 
+Nowy model cen nie ma alokacje oparte na węzłach uwzględnione dane. W związku z tym, te liczniki pozyskiwania danych są łączone w nowego licznika przyjmowanie wspólnych danych o nazwie **udostępnione pozyskiwania Services\Data**. 
 
-Istnieje inna zmiana danych pozyskanych do analizy dzienników lub usługi Application Insights w regionach z wyższe koszty. Dane dotyczące tych regionów wysokich kosztów pojawi się nowych metod rozliczeń regionalne. Na przykład **wprowadzanie danych (nam zachodnie centralnej)**.
+Istnieje inna zmiana na dane pozyskane do usługi Log Analytics lub usługi Application Insights w regionach z wyższych kosztów. Dane dotyczące tych regionów kosztu wysokiej będą wyświetlane przy użyciu nowego mierniki regionalne. Na przykład **pozyskiwanie danych (zachodnio-środkowe stany USA)**.
 
 > [!NOTE]
-> Na subskrypcję szacowane koszty nie uwzględnić poziomu kont na węzeł uprawnienia subskrypcji Operations Management Suite (OMS). Zapoznaj się z przedstawicielem konta bardziej szczegółowym omówieniem nowego modelu cenowego w takim przypadku.
+> Na subskrypcję szacowane koszty nie wziąć pod uwagę na poziomie konta na węźle uprawnień subskrypcji usługi Operations Management Suite (OMS). Zapoznaj się z przedstawicielem klienta dla bardziej szczegółowym omówieniem nowego modelu cen w tym przypadku.
 
-## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Cennik nowego modelu i uprawnienia do subskrypcji usługi Operations Management Suite
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nowy cennik modelu i uprawnienia subskrypcji pakietu Operations Management Suite
 
-Klienci, którzy kupili E1 programu Microsoft Operations Management Suite i E2 kwalifikują się do każdego węzła danych wprowadzanie uprawnień dla [analizy dzienników](https://www.microsoft.com/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Aby otrzymywać te uprawnienia dla obszarów roboczych usługi Analiza dzienników lub zasobów usługi Application Insights w ramach danej subskrypcji: 
+Klienci, którzy zakupili pakiet Microsoft Operations Management Suite E1 i E2 kwalifikują się do każdego węzła uprawnień do wprowadzania danych dla [usługi Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Aby otrzymać te uprawnienia dla obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights w ramach danej subskrypcji: 
 
-- W modelu pre kwietnia 2018 musi pozostać modelu cenowego subskrypcji.
-- Obszary robocze analizy dziennika należy za pomocą "Na węzła (OMS)" warstwy cenowej.
-- Zasoby Insights aplikacji należy używać cenową planu "przedsiębiorstwa".
+- Model cen subskrypcji musi pozostać w modelu sprzed kwietnia 2018 r.
+- Obszary robocze usługi log Analytics, należy używać "za węzeł (OMS)" warstwy cenowej.
+- Zasoby usługi Application Insights, należy użyć "Enterprise" plan cenowy.
 
-W zależności od liczby węzłów pakietu nabytym przez organizację przeniesienie niektórych subskrypcji do nowego modelu cenowego może być korzystne, ale wymaga dokładne brany pod uwagę. Ogólnie rzecz biorąc zaleca się po prostu pozostać w modelu 2018 kwietnia wstępnie zgodnie z powyższym opisem.
-
-> [!WARNING]
-> Jeśli dana organizacja nabyła pakiet Microsoft Operations Management Suite E1 i E2, jest zazwyczaj najlepiej trzymać subskrypcji w modelu cenowego 2018 kwietnia poprzedzającego utworzenie kopii zapasowej. 
->
-
-## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Zmiany w przypadku przenoszenia do nowego modelu cenowego
-
-Nowego modelu cenowego upraszcza analizy dzienników i usługi Application Insights cennik opcje tylko na jednej warstwy (lub plan). Przenoszenie subskrypcji do nowej cenowa będzie modelu:
-
-- Zmień warstwę cenową dla każdego analizy dzienników na nową warstwę-GB (nazywane "pergb2018" w usłudze Azure Resource Manager)
-- Wszystkie zasoby usługi Application Insights w planie przedsiębiorstwa jest zmieniany na podstawowy plan.
-
-Szacowanie kosztów pokazuje wpływu tych zmian.
+W zależności od liczby węzłów pakietu nabytym przez organizację przeniesienie niektórych subskrypcji do nowego modelu cen może być korzystne, ale wymaga to szczególną uwagę. Ogólnie rzecz biorąc zalecane jest po prostu, aby pozostać w modelu sprzed kwietnia 2018 r. zgodnie z powyższym opisem.
 
 > [!WARNING]
-> Ważna uwaga do wdrożenia za pomocą usługi Azure Resource Manager lub programu PowerShell w tym miejscu [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) model cenowy zostały przeniesione do nowej subskrypcji. Jeśli określisz warstwy/planu cenowego innych niż "pergb2018" analizy dzienników lub "Basic" dla usługi Application Insights, a nie kończą się niepowodzeniem wdrożenia z powodu określania nieprawidłowy cen warstwy/plan go powiedzie się **, ale będzie używać tylko prawidłowe plan/warstwy cenowej** (nie dotyczy organizacji dziennika analizy bezpłatnej warstwy, gdzie zostanie wygenerowany komunikat nieprawidłowy warstwy cenowej).
+> Jeśli Twoja organizacja zakupiła pakiet Microsoft Operations Management Suite E1 i E2, zazwyczaj najlepiej jest zapewnienie subskrypcji w modelu cenowym sprzed kwietnia 2018 r. 
 >
 
-## <a name="moving-to-the-new-pricing-model"></a>Przenoszenie do nowego modelu cenowego
+## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Zmiany w przypadku przenoszenia do nowego modelu cen
 
-Jeśli zdecydujesz się wdrożyć nowego modelu cenowego dla subskrypcji, wybierz **cennik wybór modelu** opcji w górnej części **użycia i szacowane koszty** strony:
+Nowy model cen upraszcza usługi Log Analytics i opcje do tylko jednej warstwy (lub planu) ceny usługi Application Insights. Przeniesienie subskrypcji do nowego będzie modelu cen:
 
-![Monitorowanie użycia i szacowanych kosztów nowego zrzutu ekranu cenową modelu](./media/monitoring-usage-and-estimated-costs/006.png)
+- Zmień warstwę cenową dla każdej usługi Log Analytics na nową warstwę na GB (o nazwie "pergb2018" w usłudze Azure Resource Manager)
+- Wszystkie zasoby usługi Application Insights w planie Enterprise jest zmieniany na Basic plan.
 
-**Cennik wybór modelu** zostanie otwarta strona. Go zawiera listę poszczególnych subskrypcje, które są wyświetlane na stronie przed:
+Szacowanie kosztów pokazuje wpływ tych zmian.
 
-![Zrzut ekranu wyboru model cen](./media/monitoring-usage-and-estimated-costs/007.png)
+> [!WARNING]
+> Ważna uwaga, jeśli używasz usługi Azure Resource Manager lub programu PowerShell do wdrożenia w tym miejscu [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) w ramach subskrypcji zostały przeniesione do nowego modelu cen. Jeśli określisz warstwy/planu cenowego innych niż "pergb2018" dla usługi Log Analytics lub "Podstawowa" dla usługi Application Insights, zamiast niepowodzenie wdrożenia ze względu na określanie nieprawidłowy warstwy/plan cenowy ona powiedzie się **, ale będzie używać jedyne prawidłowe Warstwa/plan cenowy** (nie dotyczy organizacji Log Analytics bezpłatna którym generowany jest komunikat nieprawidłowy warstwy cenowej).
+>
 
-Aby przenieść subskrypcję do nowego modelu cenowego, po prostu zaznacz pole wyboru, a następnie wybierz **zapisać**. Można cofnąć do starszych modelu cenowego w taki sam sposób. Należy pamiętać, że właściciel subskrypcji lub aby zmienić model cen są wymagane uprawnienia współautora.
+## <a name="moving-to-the-new-pricing-model"></a>Przejście do nowego modelu cen
 
-## <a name="automate-moving-to-the-new-pricing-model"></a>Automatyzowanie przenoszenia do nowego modelu cenowego
+Jeśli zdecydujesz, który wdrożył nowy model cen subskrypcji, wybierz **wybór modelu cen** opcji w górnej części **użycie i szacunkowe koszty** strony:
 
-Skrypty poniżej wymagają modułu programu Azure PowerShell. Aby sprawdzić, czy masz najnowszej wersji, zobacz [modułu instalacji programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+![Monitoruj użycie i szacowane koszty w nowych cen zrzut ekranu z modelu](./media/monitoring-usage-and-estimated-costs/006.png)
 
-Po utworzeniu najnowszą wersję programu Azure PowerShell, najpierw należy uruchomić ``Connect-AzureRmAccount``.
+**Wybór modelu cen** zostanie otwarta strona. Pokazuje listę wszystkich subskrypcji, dla których są wyświetlane na stronie wcześniejszych:
+
+![Zrzut ekranu wyboru modelu cen](./media/monitoring-usage-and-estimated-costs/007.png)
+
+Aby przenieść subskrypcję do nowego modelu cen, po prostu zaznacz pole, a następnie wybierz pozycję **Zapisz**. Można cofnąć do starszego modelu cen w taki sam sposób. Należy pamiętać, że właściciel subskrypcji lub do zmiany modelu cen. wymagane są uprawnienia współautora.
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>Automatyzowanie przenoszenia do nowego modelu cen
+
+Poniższe skrypty wymagają modułu programu Azure PowerShell. Aby sprawdzić, czy masz najnowszą wersję, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+
+Gdy masz najnowszą wersję programu Azure PowerShell, czy należy najpierw uruchomić ``Connect-AzureRmAccount``.
 
 ``` PowerShell
 # To check if your subscription is eligible to adjust pricing models.
@@ -120,7 +126,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-W wyniku wartość True w obszarze isGrandFatherableSubscription wskazuje, czy można przenieść tej subskrypcji modelu cenowego między modelami cenowymi. Brak wartości w obszarze optedInDate oznacza, że ta subskrypcja ma obecnie ustawioną starego modelu cenowego.
+W wyniku wartość True w obszarze isGrandFatherableSubscription wskazuje, że model cenowy dla tej subskrypcji mogą być przenoszone między modelami cenowymi. Brak wartości w obszarze optedInDate oznacza, że ta subskrypcja jest aktualnie ustawiona na poprzedni model cen.
 
 ```
 isGrandFatherableSubscription optedInDate
@@ -128,7 +134,7 @@ isGrandFatherableSubscription optedInDate
                          True            
 ```
 
-Aby przeprowadzić migrację tej subskrypcji do nowego modelu cenowego Uruchom:
+Aby przeprowadzić migrację tej subskrypcji do nowego modelu cen, uruchom:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -139,7 +145,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Aby potwierdzić, że zmiana ponowne pomyślne przeprowadzenie:
+Aby sprawdzić, czy zmiana została pomyślnie ponownie:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -150,7 +156,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Jeśli migracja się powiodła, wyników powinna wyglądać tak jak:
+Jeśli migracja się powiodła, wynik Twojego powinna teraz wyglądać podobnie jak:
 
 ```
 isGrandFatherableSubscription optedInDate                      
@@ -158,9 +164,9 @@ isGrandFatherableSubscription optedInDate
                          True 2018-05-31T13:52:43.3592081+00:00
 ```
 
-OptInDate zawiera teraz o podczas tej subskrypcji nie zgłoszono do nowego modelu cenowego.
+OptInDate zawiera teraz podczas tej subskrypcji wybranych do nowego modelu cen sygnaturę czasową.
 
-Jeśli potrzebujesz powrócić do starego modelu cenowego, należy uruchomić polecenie:
+Jeśli potrzebujesz powrócić do starego modelu cen, możesz uruchomić następujące polecenie:
 
 ```PowerShell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -171,9 +177,9 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Jeśli następnie uruchom ponownie poprzednie skrypt, który ma ``-Action listmigrationdate``, powinien zostać wyświetlony optedInDate pusta wartość wskazującą subskrypcji została zwrócona do starszych model cenowy.
+Jeśli następnie ponownie uruchom poprzedni skrypt, który ma ``-Action listmigrationdate``, powinien zostać wyświetlony pusty optedInDate wartość wskazującą Twoja subskrypcja została zwrócona do starszego modelu cen.
 
-Jeśli masz wiele subskrypcji, które chcesz migrować, które są obsługiwane w tej samej dzierżawy można utworzyć własne variant przy użyciu fragmentów następujące skrypty:
+Jeśli masz wiele subskrypcji, które chcesz zmigrować, które są obsługiwane w ramach tej samej dzierżawy można utworzyć własne wariant przy użyciu fragmentów następujące skrypty:
 
 ```PowerShell
 #Query tenant and create an array comprised of all of your tenants subscription ids
@@ -182,7 +188,7 @@ $Tenant =Get-AzureRMSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
 ```
 
-Aby sprawdzić, czy wszystkie subskrypcje w dzierżawie kwalifikują się do nowego modelu cenowego, możesz uruchomić:
+Aby sprawdzić, czy wszystkie subskrypcje w ramach dzierżawy są kwalifikuje się do nowego modelu cen, można uruchomić:
 
 ```PowerShell
 Foreach ($id in $Subscriptions)
@@ -196,7 +202,7 @@ Invoke-AzureRmResourceAction `
 }
 ```
 
-Skrypt może być precyzyjnych dalsze przez utworzenie skryptu, który generuje trzech tablic. Jedna tablica będzie składać się z wszystkich identyfikator subskrypcji w mające ```isGrandFatherableSubscription``` ustawiona na wartość True i optedInDate nie ma obecnie wartość. Drugi tablicę wszystkie subskrypcje obecnie na nowego modelu cenowego. I tablicą trzeci wypełniane tylko przy użyciu identyfikatorów subskrypcji w dzierżawie, które nie są uprawnione do nowego modelu cenowego:
+Skrypt może być dostosowany dalsze poprzez utworzenie skryptu, który generuje trzech tablic. Jedna tablica będzie obejmować wszystkich subskrypcji identyfikatory mających ```isGrandFatherableSubscription``` ustawiona na wartość True, a optedInDate nie ma obecnie wartość. Druga tablica żadnych subskrypcji, obecnie w nowym modelu cen. I trzeci tablicy, wypełniony ich identyfikatorów subskrypcji w Twojej dzierżawie, które nie są uprawnione do nowego modelu cen:
 
 ```PowerShell
 [System.Collections.ArrayList]$Eligible= @{}
@@ -230,9 +236,9 @@ $Result= Invoke-AzureRmResourceAction `
 ```
 
 > [!NOTE]
-> W zależności od liczby subskrypcje powyższy skrypt może potrwać pewien czas do uruchomienia. Z powodu użycia metody .add() okno programu PowerShell zostanie echo zwiększającą wartości jako elementy są dodawane do każdej macierzy.
+> W zależności od liczby subskrypcji powyższy skrypt może potrwać pewien czas do uruchomienia. Z powodu użycia metody .add() okno programu PowerShell będzie echo wartości zwiększającej się wartości, jak elementy są dodawane do każdej macierzy.
 
-Teraz, gdy masz subskrypcji podzielone na trzy tablice należy dokładnie przejrzeć wyniki. Warto wykonanie kopii zapasowej zawartości tablic, dzięki czemu można łatwo przywrócić zmiany to konieczne w przyszłości. Jeśli zdecydujesz, chcesz konwertować wszystkich kwalifikujących się subskrypcje, które są aktualnie na starym modelu cenowego do nowego model cenowy tego zadania może być teraz realizowane z:
+Teraz, gdy masz subskrypcji, który został podzielony na trzy tablice należy dokładnie przejrzeć wyniki. Możesz chcieć wykonanie kopii zapasowej zawartości tablic, tak że można łatwo przywrócić zmiany to konieczne w przyszłości. Jeśli zdecydujesz, chcesz przekonwertować wszystkie uprawnione subskrypcje, które są aktualnie na poprzedni model cen do nowego modelu cen to zadanie teraz mogą być realizowane za pomocą:
 
 ```PowerShell
 Foreach ($id in $Eligible)

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f6b0ea7479910f7026974e37f8c05099453c0b26
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972448"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061065"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -618,7 +618,7 @@ Brak niektórych programu SQL Server w modelu IaaS określone informacje, które
 
 * **Umowę SLA maszyn wirtualnych**: ma umowy SLA dla maszyn wirtualnych działających na platformie Azure, który można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/>  
 * **Obsługa wersji programu SQL**: dla klientów SAP, firma Microsoft wspiera program SQL Server 2008 R2 lub nowszy na maszynie wirtualnej platformy Microsoft. Wcześniejsze wersje nie są obsługiwane. Przejrzyj ogólnej [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Należy pamiętać, że ogólnie rzecz biorąc programu SQL Server 2008 jest obsługiwana przez firmę Microsoft również. Jednak z powodu znaczącej funkcjonalności dla rozwiązania SAP, który został wprowadzony przy użyciu programu SQL Server 2008 R2, SQL Server 2008 R2 jest minimalna wersja dla rozwiązania SAP. Należy pamiętać o tym, czy program SQL Server 2012 i 2014 stało się rozszerzony zapewniając lepszą integrację w scenariuszu IaaS (np. wykonywanie kopii zapasowych bezpośrednio w odniesieniu do usługi Azure Storage). W związku z tym będziemy ograniczać przydziału obowiązków w tym dokumencie programu SQL Server 2012 i 2014 z jego poziom ostatniej poprawki dla platformy Azure.
-* **Obsługa funkcji SQL**: funkcje najbardziej programu SQL Server są obsługiwane na Microsoft Azure Virtual Machines z pewnymi wyjątkami. **SQL Server Failover Clustering korzystają z udostępnionych dysków nie jest obsługiwana.**.  Rozproszone technologii, takich jak dublowania bazy danych, zawsze włączonych grup dostępności, replikacji, aby wysyłanie dziennika i brokera usług, które są obsługiwane w jednym regionie platformy Azure. SQL Server AlwaysOn również jest obsługiwana między różnymi regionami platformy Azure zgodnie z opisem w tym miejscu: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Przegląd [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Przykład na temat sposobu wdrażania konfiguracji funkcji AlwaysOn znajduje się w [to] [ virtual-machines-workload-template-sql-alwayson] artykułu. Ponadto zapoznaj się z najlepszych rozwiązań, które są udokumentowane [tutaj][virtual-machines-sql-server-infrastructure-services] 
+* **Obsługa funkcji SQL**: funkcje najbardziej programu SQL Server są obsługiwane na Microsoft Azure Virtual Machines z pewnymi wyjątkami. **SQL Server Failover Clustering korzystają z udostępnionych dysków nie jest obsługiwana**.  Rozproszone technologii, takich jak dublowania bazy danych, zawsze włączonych grup dostępności, replikacji, aby wysyłanie dziennika i brokera usług, które są obsługiwane w jednym regionie platformy Azure. SQL Server AlwaysOn również jest obsługiwana między różnymi regionami platformy Azure zgodnie z opisem w tym miejscu: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Przegląd [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Przykład na temat sposobu wdrażania konfiguracji funkcji AlwaysOn znajduje się w [to] [ virtual-machines-workload-template-sql-alwayson] artykułu. Ponadto zapoznaj się z najlepszych rozwiązań, które są udokumentowane [tutaj][virtual-machines-sql-server-infrastructure-services] 
 * **Wydajność programu SQL**: mamy pewność, że Microsoft Azure udostępnione maszyny wirtualne wykonywać bardzo dobrze porównaniu innych ofert wirtualizacji chmury publicznej, ale poszczególne wyniki mogą się różnić. Zapoznaj się z [to] [ virtual-machines-sql-server-performance-best-practices] artykułu.
 * **Przy użyciu obrazów z portalu Azure Marketplace**: najszybszy sposób, aby wdrożyć nową maszynę Wirtualną Azure firmy Microsoft jest użycie obrazu z witryny Azure Marketplace. Brak obrazów w portalu Azure Marketplace, które zawierają programu SQL Server. Nie można od razu używać obrazów programu SQL Server już zainstalowanym dla aplikacji SAP NetWeaver. Przyczyną jest to domyślne sortowanie programu SQL Server jest zainstalowane w ramach tych obrazów i nie sortowania wymaganych przez systemy oprogramowania SAP NetWeaver. Aby można było używać tych obrazów, zobacz, jakie kroki opisane w rozdziale [przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace][dbms-guide-5.6]. 
 * Zapoznaj się z [— szczegóły cennika](https://azure.microsoft.com/pricing/) Aby uzyskać więcej informacji. [Przewodnik licencjonowania programu SQL Server 2012](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) i [wskazówki dotyczące licencjonowania programu SQL Server 2014](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) są również ważnych zasobów.
@@ -1161,7 +1161,7 @@ Instalacji i działania SRS działa również funkcjonalnie na maszynie wirtualn
 Środowisko ASE HADR za pośrednictwem programu SAP replikacji serwera nie jest obsługiwany w tym momencie. Może być przetestowany przy użyciu i wydane dla platformy Microsoft Azure w przyszłości.
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>Charakterystyka do bazy danych Oracle na Windows
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. 
 
 Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tej części dokumentu.
 
@@ -1199,7 +1199,7 @@ Do utworzenia kopii zapasowej / przywracania funkcjonalności, SAP BR * narzędz
 Wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu bazy danych programu Oracle także.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Charakterystyka do bazy danych Oracle w systemie Oracle Linux
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. 
 
 Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tej części dokumentu.
 

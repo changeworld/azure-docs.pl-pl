@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503455"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059223"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
 
@@ -189,7 +189,7 @@ Domyślnie usługa App Service nie wprowadza żadnych zmian przy użyciu pliku c
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](/develop/php/).
+Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https://azure.microsoft.com/develop/php/).
 
 > [!NOTE]
 > Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://azure.microsoft.com/try/app-service/) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.

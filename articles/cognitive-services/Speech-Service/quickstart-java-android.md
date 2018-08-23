@@ -9,19 +9,19 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325129"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987585"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu SDK rozpoznawania mowy
 
 [!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu Cognitive Services SDK mowy transkrypcja mowy na tekst.
-Aplikacja zależy od Microsoft Cognitive Services mowy pakiet zestawu SDK narzędzia Maven, wersji wersję 0.5.0 i Android Studio 3.1.
+Aplikacja zależy od Microsoft Cognitive Services mowy pakiet zestawu SDK narzędzia Maven, wersji 0.6.0 i Android Studio 3.1.
 
 > [!NOTE]
 > Dla zestawu Speech Devices SDK a urządzeniem Roobo, odwiedź [zestawu Speech Devices SDK](speech-devices-sdk.md) strony.
@@ -63,7 +63,7 @@ Po uruchomieniu przez jakiś czas, nowo utworzonego projektu programu Android St
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `0.5.0`.
+Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `0.6.0`.
 
 Zestaw SDK rozpoznawania mowy dla systemu Android jest spakowany jako [AAR (biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), która obejmuje niezbędnych bibliotek, a także wymagane uprawnienia dla systemu Android dotyczące korzystania z niego.
 Znajduje się w repozytorium narzędzia Maven w https://csspeechstorage.blob.core.windows.net/maven/.
@@ -81,7 +81,7 @@ W wyświetlonym oknie Utwórz następujące zmiany (kliknij **OK** tylko wtedy, 
 
   ![](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. W wyświetlonym oknie wprowadź nazwę i wersję nasz zestaw SDK rozpoznawania mowy dla systemów Android, `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`, następnie kliknij przycisk **OK**.
+1. W wyświetlonym oknie wprowadź nazwę i wersję nasz zestaw SDK rozpoznawania mowy dla systemów Android, `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0`, następnie kliknij przycisk **OK**.
    Zestaw SDK rozpoznawania mowy powinna być dodana do listy zależności teraz, jak pokazano poniżej:
 
   ![](media/sdk/qs-java-android-08-dependency-added.png)

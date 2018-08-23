@@ -1,6 +1,6 @@
 ---
 title: Jak przeprowadzić X.509 certyfikatów w usłudze Azure IoT Hub Device Provisioning Service | Dokumentacja firmy Microsoft
-description: Jak wdrożyć certyfikaty X.509 z Twoim urządzeniem inicjowania obsługi administracyjnej wystąpienia usługi
+description: Jak wdrożyć certyfikaty X.509 z wystąpieniem usługi Device Provisioning
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9c73ce159ae7cf5778210e0fb587135f37c73f57
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40025157"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059264"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak wdrożyć certyfikaty urządzeń X.509
 
@@ -46,7 +46,7 @@ W przypadku zarządzania certyfikatami urządzeń, musisz utworzyć potok na akt
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Przerzucenie certyfikatu w usłudze IoT hub
 
-Certyfikat urządzenia można dodać ręcznie do usługi IoT hub. Certyfikat można też zautomatyzować przy użyciu wystąpienia usługi Device Provisioning. W tym artykule przyjęto założenie, inicjowania obsługi administracyjnej wystąpienia usługi jest używane do obsługi automatycznego aprowizowania.
+Certyfikat urządzenia można dodać ręcznie do usługi IoT hub. Certyfikat można też zautomatyzować przy użyciu wystąpienia usługi Device Provisioning. W tym artykule przyjęto założenie, że wystąpienie usługi Device Provisioning jest używany do obsługi automatycznego aprowizowania.
 
 Gdy urządzenie jest początkowo dostarczanymi za pośrednictwem automatycznej aprowizacji go uruchomi telefoniczny i kontaktuje się z usługą aprowizacji. Usługa aprowizowania reaguje sprawdzanie tożsamości przed utworzeniem tożsamości urządzenia w Centrum IoT hub przy użyciu certyfikatu liścia urządzenia jako poświadczenie. Usługa aprowizowania informuje następnie urządzenia, które IoT hub jest przypisany do, a urządzenie następnie używa swojego certyfikatu liścia do uwierzytelnienia i nawiązania połączenia w Centrum IoT Hub. 
 
@@ -104,7 +104,7 @@ Aby zaktualizować rejestrację grupową w reakcji na naruszenie zabezpieczeń, 
 
 #### <a name="update-compromised-root-ca-certificates"></a>Aktualizuj certyfikaty, których bezpieczeństwo zostało naruszone głównego urzędu certyfikacji
 
-1. Kliknij przycisk **certyfikaty** karty dla inicjowania obsługi administracyjnej wystąpienia usługi.
+1. Kliknij przycisk **certyfikaty** kartę danego wystąpienia usługi Device Provisioning.
 
 2. Kliknij certyfikat których bezpieczeństwo zostało naruszone, na liście, a następnie kliknij przycisk **Usuń** przycisku. Potwierdź usunięcie, wprowadzając nazwę certyfikatu, a następnie kliknij przycisk **OK**. Powtórz ten proces dla wszystkich certyfikatów ze złamanymi zabezpieczeniami.
 
@@ -112,7 +112,7 @@ Aby zaktualizować rejestrację grupową w reakcji na naruszenie zabezpieczeń, 
 
 3. Wykonaj czynności opisane w temacie [Konfiguruj weryfikacji certyfikatów urzędu certyfikacji](how-to-verify-certificates.md) umożliwiające dodanie i zweryfikowanie nowe certyfikaty głównego urzędu certyfikacji.
 
-4. Kliknij przycisk **Zarządzanie rejestracjami** karty dla inicjowania obsługi administracyjnej wystąpienia usługi, a następnie kliknij przycisk **grup rejestracji** listy. Kliknij nazwę grupy rejestracji na liście.
+4. Kliknij przycisk **Zarządzanie rejestracjami** danego wystąpienia usługi Device Provisioning, a następnie kliknij przycisk **grup rejestracji** listy. Kliknij nazwę grupy rejestracji na liście.
 
 5. Kliknij przycisk **certyfikatu urzędu certyfikacji**i wybierz nowy certyfikat głównego urzędu certyfikacji. Następnie kliknij przycisk **Save** (Zapisz). 
 
@@ -149,13 +149,13 @@ Później podczas pomocniczej certyfikatu również będzie bliski wygaśnięcia
 
 1. Wykonaj czynności opisane w temacie [Konfiguruj weryfikacji certyfikatów urzędu certyfikacji](how-to-verify-certificates.md) umożliwiające dodanie i zweryfikowanie nowe certyfikaty głównego urzędu certyfikacji.
 
-2. Kliknij przycisk **Zarządzanie rejestracjami** karty dla inicjowania obsługi administracyjnej wystąpienia usługi, a następnie kliknij przycisk **grup rejestracji** listy. Kliknij nazwę grupy rejestracji na liście.
+2. Kliknij przycisk **Zarządzanie rejestracjami** danego wystąpienia usługi Device Provisioning, a następnie kliknij przycisk **grup rejestracji** listy. Kliknij nazwę grupy rejestracji na liście.
 
 3. Kliknij przycisk **certyfikatu urzędu certyfikacji**i wybierz nowy certyfikat głównego urzędu certyfikacji w ramach **certyfikatu pomocniczego** konfiguracji. Następnie kliknij przycisk **Save** (Zapisz). 
 
     ![Wybierz nowy certyfikat głównego urzędu certyfikacji](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Później po wygaśnięciu certyfikatu podstawowego, kliknij przycisk **certyfikaty** karty dla inicjowania obsługi administracyjnej wystąpienia usługi. Kliknij wygasłego certyfikatu na liście, a następnie kliknij przycisk **Usuń** przycisku. Potwierdź usunięcie, wprowadzając nazwę certyfikatu, a następnie kliknij przycisk **OK**.
+4. Później po wygaśnięciu certyfikatu podstawowego, kliknij przycisk **certyfikaty** kartę danego wystąpienia usługi Device Provisioning. Kliknij wygasłego certyfikatu na liście, a następnie kliknij przycisk **Usuń** przycisku. Potwierdź usunięcie, wprowadzając nazwę certyfikatu, a następnie kliknij przycisk **OK**.
 
     ![Usuwanie certyfikatu głównego urzędu certyfikacji](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -177,7 +177,7 @@ Później podczas pomocniczej certyfikatu również będzie bliski wygaśnięcia
 
 ## <a name="reprovision-the-device"></a>Ponowne udostępnianie urządzenia
 
-Gdy certyfikat jest wycofywany na urządzeniu i usługą Device Provisioning, urządzenie można ponownie udostępnić samego, kontaktując się z usługą Device Provisioning. 
+Gdy certyfikat jest wycofywany na urządzeniu i usługą Device Provisioning, urządzenie można ponownie udostępnić samego, kontaktując się z usługi Device Provisioning service. 
 
 Jeden łatwy sposób programowania urządzeń ponownie udostępnić to program urządzenie, aby skontaktować się z usługą aprowizacji, przechodzić przez przepływ inicjowania obsługi administracyjnej, gdy urządzenie otrzyma błąd "Brak autoryzacji" z próby połączenia z usługą IoT hub.
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: glenga
-ms.openlocfilehash: e82981471306c9a9d09751da15256e85b770eb1a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 4425c0594f4a3520f780b723d2ffbd41fc4b62c7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125043"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056529"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kodowanie i testowanie usługi Azure Functions lokalnie
 
@@ -30,7 +30,7 @@ Sposób tworzenia funkcji na komputerze lokalnym jest zależna od usługi [języ
 
 |Środowisko                              |Języki         |Opis|
 |-----------------------------------------|------------|---|
-| [Wiersz polecenia lub terminalu](functions-run-local.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md), [skrypt języka C# (csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [języka Java](functions-reference-java.md) | [Podstawowe narzędzia usługi Azure Functions] udostępnia podstawowe środowisko wykonawcze i szablony do tworzenia funkcji, który umożliwia tworzenie aplikacji lokalnych. W wersji 2.x obsługuje programowanie w systemie Linux, MacOS i Windows. Wszystkie środowiska zależy od podstawowych narzędzi dla lokalne środowisko uruchomieniowe usługi Functions. |
+| [Wiersz polecenia lub terminalu](functions-run-local.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md), [skrypt języka C# (csx)](functions-reference-csharp.md), [języka JavaScript](functions-reference-node.md) | [Podstawowe narzędzia usługi Azure Functions] udostępnia podstawowe środowisko wykonawcze i szablony do tworzenia funkcji, który umożliwia tworzenie aplikacji lokalnych. W wersji 2.x obsługuje programowanie w systemie Linux, MacOS i Windows. Wszystkie środowiska zależy od podstawowych narzędzi dla lokalne środowisko uruchomieniowe usługi Functions. |
 |[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [Skrypt języka C# (csx)](functions-reference-csharp.md), [języka JavaScript](functions-reference-node.md) | [Rozszerzenie usługi Azure Functions dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dodaje funkcji obsługi do programu VS Code. Wymaga podstawowych narzędzi. Obsługuje programowanie w systemie Linux, MacOS i Windows, w przypadku korzystania z wersji 2.x podstawowych narzędzi. Aby dowiedzieć się więcej, zobacz [Wdróż na platformie Azure przy użyciu usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
 | [Visual Studio 2017](functions-develop-vs.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md) | Narzędzia usługi Azure Functions są objęte **programowanie na platformie Azure** obciążenie [programu Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) i nowszych wersjach. Umożliwia kompilowanie funkcji w bibliotece klas i opublikować plik .dll na platformie Azure. Zawiera podstawowe narzędzia na potrzeby testowania lokalnego. Aby dowiedzieć się więcej, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md). |
 | [Maven](functions-create-first-java-maven.md) | [Java](functions-reference-java.md) | Integruje się z podstawowe narzędzia umożliwiające tworzenie aplikacji funkcji języka Java. W wersji 2.x obsługuje programowanie w systemie Linux, MacOS i Windows. Aby dowiedzieć się więcej, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](functions-create-first-java-maven.md).|

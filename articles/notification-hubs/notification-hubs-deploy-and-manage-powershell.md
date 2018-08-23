@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c2297f072786bdc1e80255dee278d640b0c0d26d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629518"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059265"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Wdrażanie usługi Notification Hubs i zarządzanie nią przy użyciu programu PowerShell
 ## <a name="overview"></a>Przegląd
-W tym artykule przedstawiono sposób tworzenia i zarządzania usługi Azure Notification Hubs przy użyciu programu PowerShell. Następujące typowe zadania automatyzacji są wyświetlane w tym temacie.
+W tym artykule przedstawiono sposób tworzenia i zarządzania usługi Azure Notification Hubs przy użyciu programu PowerShell. Następujące typowe zadania automatyzacji są wyświetlane w tym artykule.
 
 * Tworzenie Centrum powiadomień
 * Ustaw poświadczenia
@@ -34,7 +34,7 @@ Zarządzanie centra powiadomień nie jest obsługiwane bezpośrednio przez polec
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Azure to platforma z subskrypcji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji, zobacz [opcje zakupu], [oferty dla subskrybentów], lub [bezpłatnej wersji próbnej].
+* Subskrypcja platformy Azure. Azure to platforma z subskrypcji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji, zobacz [opcje zakupu], [oferty dla subskrybentów], lub [Bezpłatna wersja próbna].
 * Komputer z programem Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell].
 * Ogólna wiedza o skryptów programu PowerShell, pakietów NuGet i .NET Framework.
 
@@ -73,7 +73,7 @@ catch [System.Exception]
 ## <a name="create-the-namespacemanager-class"></a>Utwórz temat klasy NamespaceManager
 Aby udostępnić usługę Notification Hubs, Utwórz wystąpienie obiektu [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) klasy z zestawu SDK. 
 
-Możesz użyć [Get AzureSBAuthorizationRule] polecenia cmdlet dołączone do programu Azure PowerShell można pobrać reguły autoryzacji, która służy do zapewnienia parametry połączenia. Odwołanie do `NamespaceManager` wystąpienie jest przechowywane w `$NamespaceManager` zmiennej. `$NamespaceManager` Służy do obsługi administracyjnej Centrum powiadomień.
+Możesz użyć [Get-AzureSBAuthorizationRule] polecenia cmdlet dołączone do programu Azure PowerShell można pobrać reguły autoryzacji, która służy do zapewnienia parametry połączenia. Odwołanie do `NamespaceManager` wystąpienie jest przechowywane w `$NamespaceManager` zmiennej. `$NamespaceManager` Służy do obsługi administracyjnej Centrum powiadomień.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -89,15 +89,15 @@ Aby zainicjować obsługę nowego centrum powiadomień, należy użyć [interfej
 
 Ta część skrypt służy do konfigurowania cztery zmienne lokalne. 
 
-1. `$Namespace` : Ustaw tę nazwę obszaru nazw, gdzie chcesz utworzyć Centrum powiadomień.
-2. `$Path` : Ustaw tę ścieżkę do nazwy nowego centrum powiadomień.  Na przykład "MyHub".    
-3. `$WnsPackageSid` : Ustaw tę pozycję na identyfikator SID pakietu dla aplikacji Windows z [Centrum deweloperów Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Ustaw tę wartość na klucz tajny dla aplikacji Windows za pomocą [Centrum deweloperów Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace`: Ustaw tę nazwę obszaru nazw, gdzie chcesz utworzyć Centrum powiadomień.
+2. `$Path`: Ustaw tę ścieżkę do nazwy nowego centrum powiadomień.  Na przykład "MyHub".    
+3. `$WnsPackageSid`: Ustaw tę pozycję na identyfikator SID pakietu dla aplikacji Windows z [Centrum deweloperów Windows](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Ustaw tę wartość na klucz tajny dla aplikacji Windows za pomocą [Centrum deweloperów Windows](https://developer.microsoft.com/en-us/windows).
 
 Te zmienne są używane do nawiązywania połączeń do przestrzeni nazw i utworzyć nowe Centrum powiadomień konfigurowane do obsługi powiadomień usługi powiadomień Windows (WNS) przy użyciu poświadczeń usługi WNS dla aplikacji Windows. Aby uzyskać informacje dotyczące uzyskiwania pakietu identyfikator SID i wpisu tajnego klucza, zobacz temat [wprowadzenie do usługi Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) samouczka. 
 
 * Fragment kodu skryptu używa `NamespaceManager` obiektu, aby sprawdzić, w przypadku Centrum powiadomień jest identyfikowany przez `$Path` istnieje.
-* Jeśli nie istnieje, skrypt tworzy `NotificationHubDescription` za pomocą usługi WNS poświadczeń i przekazać go do `NamespaceManager` klasy `CreateNotificationHub` metody.
+* Jeśli nie istnieje, skrypt tworzy `NotificationHubDescription` za pomocą usługi WNS poświadczeń i przekazuje go do `NamespaceManager` klasy `CreateNotificationHub` metody.
 
 ``` powershell
 

@@ -3,9 +3,8 @@ title: Porównanie usług Azure App Service, Virtual Machines, Service Fabric i 
 description: Dowiedz się, jak wybrać spośród usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services na potrzeby hostowania aplikacji internetowych.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
-author: ggailey777
-manager: erikre
-editor: jimbe
+author: cephalin
+manager: jeconnoc
 ms.assetid: 7d346a23-532a-42a9-98a8-23b7286d32a8
 ms.service: app-service-web
 ms.workload: web
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 07/07/2016
-ms.author: glenga
+ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224959"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022855"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
-## <a name="overview"></a>Omówienie
+
 Platforma Azure oferuje kilka sposobów hostowania witryn internetowych. Są to usługi [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] i [Cloud Services][Cloud Services]. Ten artykuł ułatwia poznanie dostępnych opcji i dokonanie dobrego wyboru dla aplikacji internetowej.
 
 Usługa Azure App Service to najlepszy wybór w przypadku większości aplikacji internetowych. Wdrażanie i zarządzanie są zintegrowane z platformą, witryny można szybko skalować na potrzeby obsługi dużych obciążeń generowanych przez ruch sieciowy, a wbudowane równoważenie obciążenia i usługa Traffic Manager zapewniają wysoką dostępność. Możesz w ławy sposób przenieść istniejące witryny do usługi Azure App Service za pomocą [narzędzia do migracji online][migrate-tool], użyć aplikacji open source z galerii aplikacji internetowych lub utworzyć nową witrynę za pomocą wybranej struktury i wybranych narzędzi. Zadania [WebJob][ WebJobs] upraszczają dodawanie przetwarzania zadań w tle do aplikacji internetowej usługi App Service.

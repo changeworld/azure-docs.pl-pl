@@ -1,6 +1,6 @@
 ---
-title: Jak używać usługi Notification Hubs z języka Python
-description: Dowiedz się, jak używać usługi Azure Notification Hubs z zaplecza Python.
+title: Jak używać usługi Notification Hubs za pomocą języka Python
+description: Dowiedz się, jak używać usługi Azure Notification Hubs z zaplecza środowiska Python.
 services: notification-hubs
 documentationcenter: ''
 author: dimazaid
@@ -14,64 +14,64 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777022"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056668"
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Jak używać usługi Notification Hubs w języku Python
+# <a name="how-to-use-notification-hubs-from-python"></a>Jak używać usługi Notification Hubs za pomocą języka Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Dostęp do wszystkich funkcji centra powiadomień z zaplecza Java/PHP/Python/Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w temacie MSDN [interfejsów API REST centra powiadomień](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostęp do wszystkich funkcji usługi Notification Hubs z zaplecza Java/PHP/Python/Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w artykule z witryny MSDN [interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> To jest przykładowy implementacji wykonywania wysyła powiadomienia w języku Python i nie jest oficjalnie obsługiwana SDK Python Centrum powiadomień.
+> To jest przykładowy implementację referencyjną, implementowania wysyła powiadomienia w języku Python i nie jest oficjalnie obsługiwanych zestawu SDK języka Python Centrum powiadomień.
 > 
-> Ten przykład jest zapisywany przy użyciu języka Python 3.4.
+> W tym przykładzie są zapisywane przy użyciu języka Python 3.4.
 > 
 > 
 
-W tym artykule przedstawiono sposób do:
+W tym artykule przedstawiono, jak do:
 
 * Tworzenie klienta REST dla funkcji usługi Notification Hubs w języku Python.
 * Wysyłanie powiadomień za pomocą interfejsu Python do interfejsów API REST Centrum powiadomień. 
-* Pobierz zrzutu REST protokołu HTTP żądania/odpowiedzi w celu debugowania edukacyjnych. 
+* Pobierz zrzut REST protokołu HTTP żądania/odpowiedzi w celu debugowania edukacyjnych. 
 
-Możesz wykonać [samouczku Get](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) dla platformy przenośne wyboru wdrażanie części zaplecza w języku Python.
+Możesz wykonać [samouczek z wprowadzeniem](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) na wybraną platformę przenośnych, wdrażanie część zaplecza w języku Python.
 
 > [!NOTE]
-> Zakres próbki jest ograniczona tylko do wysyłania powiadomień i nie wykonuje żadnych zarządzania rejestracji.
+> Zakres próbki jest ograniczona tylko do wysyłania powiadomień, a nie wszystkie Zarządzanie rejestracją.
 > 
 > 
 
 ## <a name="client-interface"></a>Interfejs klienta
-Interfejs klienta głównego zapewniają te same metody, które są dostępne w [.NET SDK centra powiadomień](http://msdn.microsoft.com/library/jj933431.aspx). Ten interfejs umożliwia tłumaczenie bezpośrednio samouczki i przykłady, które są obecnie dostępne w tej witrynie, a zamieszczone przez społeczność w Internecie.
+Interfejs klienta głównego może zapewnić te same metody, które są dostępne w [zestawu SDK .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx). Ten interfejs umożliwia tłumaczenie bezpośrednio, samouczków i przykładów, które są obecnie dostępne w tej witrynie i udostępnione przez społeczność w Internecie.
 
-Możesz znaleźć kod dostępne w [próbki otoki Python REST].
+Dostępne w kod możesz znaleźć [Przykład otoka interfejsu REST języka Python].
 
 Na przykład można utworzyć klienta:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-Aby wysłać powiadomienie wyskakujące systemu Windows:
+Aby wysłać powiadomienie wyskakujące Windows:
 
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Wdrażanie
-Jeśli tak, nie jest jeszcze nie, wykonaj [samouczku Get] w górę do ostatniej sekcji, w którym należy implementować zaplecza.
+Jeśli jeszcze nie zrobiono, wykonaj [samouczek z wprowadzeniem] w górę do ostatniej sekcji, w którym trzeba zaimplementować zaplecza.
 
-Wszystkie szczegóły, aby zaimplementować pełne otoki REST można znaleźć w [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementacji Python głównych kroków wymaganych dostęp punkty końcowe REST centra powiadomień do wysyłania powiadomień
+Poznaj wszystkie szczegóły implementacji pełnego otoki REST znajduje się na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementacji języka Python główne kroki wymagane do dostępu punkty końcowe REST centrów powiadomień i wysyłania powiadomień
 
 1. Analizowanie parametrów połączenia
 2. Wygeneruj token autoryzacji
 3. Wyślij powiadomienia za pomocą interfejsu API REST protokołu HTTP
 
 ### <a name="parse-the-connection-string"></a>Analizowanie parametrów połączenia
-W tym miejscu jest główna klasa implementacji klienta, którego konstruktor analizuje parametry połączenia:
+W tym miejscu jest główna klasa implementacji klienta, której Konstruktor analizuje ciąg połączenia:
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -95,9 +95,9 @@ W tym miejscu jest główna klasa implementacji klienta, którego konstruktor an
                     self.SasKeyValue = part[16:]
 
 
-### <a name="create-security-token"></a>Utwórz token zabezpieczeń
-Szczegóły dotyczące tworzenia tokenu zabezpieczeń są dostępne [tutaj](http://msdn.microsoft.com/library/dn495627.aspx).
-Dodaj następujące metody **NotificationHub** do utworzenia tokenu na podstawie identyfikatora URI bieżącego żądania i poświadczenia wyodrębniony z ciągu połączenia.
+### <a name="create-security-token"></a>Tworzenie tokenu zabezpieczeń
+Dostępne są szczegółowe informacje o tworzeniu tokenu zabezpieczeń [tutaj](http://msdn.microsoft.com/library/dn495627.aspx).
+Dodaj następujące metody **Centrum NotificationHub** klasy do utworzenia tokenu na podstawie identyfikatora URI bieżącego żądania i poświadczenia wyodrębnione z parametrów połączenia.
 
     @staticmethod
     def get_expiry():
@@ -127,7 +127,7 @@ Dodaj następujące metody **NotificationHub** do utworzenia tokenu na podstawie
         return sas_token
 
 ### <a name="send-a-notification-using-http-rest-api"></a>Wyślij powiadomienia za pomocą interfejsu API REST protokołu HTTP
-Użyj pierwszego, umożliwiają definiowanie Klasa reprezentująca powiadomienie.
+Użyj pierwszego, pozwalają zdefiniować Klasa reprezentująca powiadomienie.
 
     class Notification:
         def __init__(self, notification_format=None, payload=None, debug=0):
@@ -146,11 +146,11 @@ Użyj pierwszego, umożliwiają definiowanie Klasa reprezentująca powiadomienie
             # in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
             self.headers = None
 
-Ta klasa jest kontenerem dla treści natywnych powiadomień lub zbiór właściwości szablonu powiadomienia, zestaw nagłówków, zawiera formacie (native platformy lub szablonu) i właściwości specyficzne dla platformy (na przykład właściwość wygaśnięcia firmy Apple i nagłówki WNS).
+Ta klasa jest kontenerem dla treści natywnych powiadomień lub zbiór właściwości szablonu powiadomienia, zestaw nagłówków, zawierającą formatu (platformy natywnej lub szablonu) i właściwości specyficzne dla platformy (np. właściwości wygasania firmy Apple i usługą WNS nagłówków).
 
-Zapoznaj się [dokumentacja interfejsów API REST centra powiadomień](http://msdn.microsoft.com/library/dn495827.aspx) i formaty na platformach powiadomienia określonych dla wszystkich dostępnych opcji.
+Zapoznaj się [dokumentacji interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) na platformach powiadomień określone formaty i dla wszystkich dostępnych opcji.
 
-Teraz z tą klasą wysyłania powiadomień metod zapisu wewnątrz **NotificationHub** klasy.
+Teraz za pomocą tej klasy, Wyślij powiadomienie metod zapisu wewnątrz **Centrum NotificationHub** klasy.
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -258,25 +258,25 @@ Teraz z tą klasą wysyłania powiadomień metod zapisu wewnątrz **Notification
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-Te metody Wyślij żądanie HTTP POST do punktu końcowego /messages Centrum powiadomień, z poprawną treści i nagłówków, aby wysłać powiadomienie.
+Te metody Wyślij żądanie HTTP POST do punktu końcowego /messages Twoje Centrum powiadomień z poprawną treści i nagłówki, aby wysłać powiadomienie.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Aby włączyć szczegółowe rejestrowanie przy użyciu właściwości debugowania
-Włączanie właściwości debugowania podczas inicjowania Centrum powiadomień zapisuje szczegółowe rejestrowanie informacji o informacje dotyczące żądania HTTP i zrzutu odpowiedzi, a także szczegółowe komunikatu powiadomienia wysyłania wyników. [TestSend centra powiadomień właściwość](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) zwraca szczegółowe informacje na temat wyniku wysyłania powiadomienia. Można go użyć — inicjowanie, używając następującego kodu:
+Włączenie właściwości debugowania podczas inicjowania Centrum powiadomień zapisuje się szczegółowe rejestrowanie informacji o żądaniu HTTP, a następnie zrzutu odpowiedzi, a także szczegółowe komunikat z powiadomieniem Wyślij wynik. [Właściwość Notification Hubs TestSend](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) zwraca szczegółowe informacje na temat wyniku wysyłania powiadomienia. Można go używać — inicjowanie, używając następującego kodu:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-Wyślij Centrum powiadomień żądanie adresu URL HTTP pobiera w związku z tym dołączane querystring "test". 
+Żądanie Wyślij Centrum powiadomień adres HTTP URL pobiera dołączony querystring "test" w wyniku. 
 
 ## <a name="complete-tutorial"></a>Ukończ samouczek
-Teraz możesz ukończyć Samouczek wprowadzający przez wysyłanie powiadomień z zaplecza Python.
+Można teraz ukończyć Samouczek wprowadzający, przez wysyłanie powiadomień z zaplecza środowiska Python.
 
-Inicjowanie klienta usługi Notification Hubs (zastąpić nazwę Centrum i parametry połączenia, zgodnie z instrukcją w [samouczku Get]):
+Inicjowanie klienta usługi Notification Hubs (zastąpić nazwę Centrum i parametry połączenia, zgodnie z instrukcją w [samouczek z wprowadzeniem]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Następnie dodaj kod wysyłania, w zależności od platform przenośnych docelowych. W tym przykładzie dodano również wyższego poziomu metody w celu umożliwienia wysyłania powiadomień z platformą, na przykład send_windows_notification dla systemu windows; send_apple_notification (dla apple) itd. 
+Następnie dodaj Wyślij kod w zależności od docelowej platformy mobilnej. Ten przykład dodaje również wyższego poziomu metody w celu umożliwienia wysyłania powiadomienia, w zależności od platformy, na przykład send_windows_notification dla systemu windows; send_apple_notification (dla firmy apple) itd. 
 
-### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Sklep Windows i Windows Phone 8.1 (z systemem innym niż platformy Silverlight)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store i Windows Phone 8.1 (bez użycia platformy Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
@@ -319,45 +319,45 @@ Następnie dodaj kod wysyłania, w zależności od platform przenośnych docelow
     }
     hub.send_baidu_notification(baidu_payload)
 
-Uruchamianie kodu języka Python powinny być powiadomienie znajdujących się na urządzeniu docelowym.
+Uruchamianie kodu w języku Python powinien wywoływać powiadomienia, pojawiają się na urządzeniu docelowym.
 
 ## <a name="examples"></a>Przykłady:
 ### <a name="enabling-debug-property"></a>Włączenie właściwości debugowania
-Po włączeniu flagi debugowania podczas inicjowania NotificationHub, zobaczysz szczegółowe żądania HTTP i zrzutu odpowiedzi, a także NotificationOutcome podobnie do następującej gdzie można zrozumieć, jakie nagłówki HTTP są przekazywane w żądaniu i jakie odpowiedź HTTP Odebrano z Centrum powiadomień: ![][1]
+Po włączeniu flagi debugowania podczas inicjowania Centrum NotificationHub zobaczysz szczegółowe żądania HTTP i odpowiedzi zrzutu, a także NotificationOutcome podobnie do poniższego gdzie może zrozumieć nagłówki HTTP, które są przekazywane w żądaniu i jakie odpowiedź HTTP odebranych z Centrum powiadomień: ![][1]
 
-Zobacz, na przykład szczegółowe wyniki Centrum powiadomień. 
+Zobacz, na przykład szczegółowych wyników Centrum powiadomień. 
 
-* gdy komunikat jest wysyłany pomyślnie Push Notification Service. 
+* Po pomyślnym wysłaniu komunikatu do usługi powiadomień wypychanych. 
   
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* Jeśli nie było żadnych elementów docelowych znaleziono dla wszystkich powiadomień wypychanych, następnie prawdopodobnie będą wyświetlać następujące dane wyjściowe odpowiedzi (która wskazuje, czy nie było żadnej rejestracji znaleziono prawdopodobnie dostarczyć powiadomienia, ponieważ rejestracje miała niektóre niezgodne Znaczniki)
+* Jeśli nie było żadnych elementów docelowych, znaleziono dla powiadomień wypychanych, następnie prawdopodobnie ma być widoczne następujące wyniki jako odpowiedzi (co wskazuje na istnienie rejestracji, nie znaleziono prawdopodobnie dostarczyć powiadomienie, ponieważ rejestracje miał niektóre niezgodny Znaczniki)
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Emisji wyskakujące powiadomienie do systemu Windows
-Zwróć uwagę, nagłówki, które get wysyłane podczas przesyłania emisji wyskakujących powiadomień na klientach z systemem Windows. 
+### <a name="broadcast-toast-notification-to-windows"></a>Emisja powiadomienia wyskakujące Windows
+Zwróć uwagę, nagłówki, które Pobierz wysyłane podczas emisji wyskakujące powiadomienie jest wysyłany do klienta Windows. 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Wyślij powiadomienie, określając tag (lub wyrażenie etykiety)
-Zwróć uwagę, nagłówek HTTP znaczników, który pobiera dodane do żądania HTTP (w poniższym przykładzie parametr powiadomienie jest wysyłane tylko do rejestracji z ładunku "Sport")
+Zwróć uwagę, nagłówek HTTP tagi, które pobiera dodane do żądania HTTP (w poniższym przykładzie powiadomienia wysyłane tylko do rejestracji z ładunkiem "Sport")
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
-### <a name="send-notification-specifying-multiple-tags"></a>Wyślij powiadomienie określania wielu tagów
-Zwróć uwagę, jak nagłówka HTTP tagi zostanie zmieniona, gdy wiele tagów są wysyłane. 
+### <a name="send-notification-specifying-multiple-tags"></a>Wyślij powiadomienie Określanie wielu tagów
+Zwróć uwagę, jak zmienia się nagłówek HTTP tagów podczas wysyłania wielu tagów. 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
-### <a name="templated-notification"></a>Szablonu powiadomień
-Zwróć uwagę, że zmiany nagłówka formatu HTTP i treści ładunku jest wysyłany jako część treści żądania HTTP:
+### <a name="templated-notification"></a>Powiadomienia oparte na szablonach
+Zwróć uwagę, że zmiany formatu HTTP nagłówek i treść ładunek jest wysyłany jako część treści żądania HTTP:
 
 **Po stronie klienta — zarejestrowanych szablonu**
 
@@ -372,17 +372,17 @@ Zwróć uwagę, że zmiany nagłówka formatu HTTP i treści ładunku jest wysy�
 ![][5]
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule pokazano, jak utworzyć klienta REST języka Python dla usługi Notification Hubs. W tym miejscu można wykonywać następujące czynności:
+W tym artykule pokazano, jak można utworzyć klienta REST języka Python dla usługi Notification Hubs. W tym miejscu możesz wykonywać następujące czynności:
 
-* Pobierz pełny [próbki otoki Python REST], który zawiera wszystkie kodu w tym artykule.
-* Kontynuować szkoleniowe dotyczące usługi Notification Hubs znakowanie funkcja [samouczek fundamentalne wiadomości]
-* Kontynuować zapoznawanie funkcji szablonów centra powiadomień w [samouczek lokalizowanie wiadomości]
+* Pobierz pełną [Przykład otoka interfejsu REST języka Python], który zawiera cały kod w tym artykule.
+* Uzyskać więcej informacji o funkcji w tagowania w usłudze Notification Hubs [Przerwanie samouczek wiadomości]
+* Uzyskać więcej informacji o funkcji szablonów centra powiadomień w [Lokalizowanie samouczek wiadomości]
 
 <!-- URLs -->
-[próbki otoki Python REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[samouczku Get]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[samouczek fundamentalne wiadomości]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[samouczek lokalizowanie wiadomości]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Przykład otoka interfejsu REST języka Python]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Samouczek z wprowadzeniem]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Przerwanie samouczek wiadomości]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Lokalizowanie samouczek wiadomości]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

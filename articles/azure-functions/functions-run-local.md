@@ -4,7 +4,7 @@ description: Dowiedz się, jak kodowanie i testowanie usługi Azure functions z 
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618618"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057122"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -131,13 +131,13 @@ W oknie terminalu lub wierszu polecenia Uruchom następujące polecenie, aby utw
 func init MyFunctionProj
 ```
 
+Jeśli podasz nazwę projektu, nowy folder o tej nazwie jest utworzony i zainicjowany. W przeciwnym razie jest inicjowany bieżącego folderu.  
 W wersji 2.x, po uruchomieniu polecenia musisz wybrać środowisko uruchomieniowe dla Twojego projektu. Jeśli zamierzasz utworzyć funkcje języka JavaScript, wybierz opcję **węzła**:
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 Górę/dół klawiszy strzałek, aby wybrać język, naciśnij klawisz Enter. Dane wyjściowe wyglądają jak w poniższym przykładzie dla projektu w języku JavaScript:
@@ -298,19 +298,24 @@ Aby uruchomić projektu usługi Functions, uruchom hosta funkcji. Host włącza 
 ```bash
 func host start
 ```
+`host` Polecenia jest wymagana tylko w wersji 1.x.
 
 `func host start` obsługuje następujące opcje:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
-| **`--debug <type>`** | Uruchamia hosta z portu debugowania Otwórz tak, aby można dołączyć do **func.exe** procesu z [programu Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) lub [programu Visual Studio 2017](functions-dotnet-class-library.md). *\<Typu\>* są opcje `VSCode` i `VS`.  |
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS, bez spacji. |
-| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. |
-| **`--debugLevel -d`** | Poziom śledzenia konsoli (wyłączony, pełne, info, warning lub error). Domyślne: Info.|
+| **`--debug <type>`** | Uruchamia hosta z portu debugowania Otwórz tak, aby można dołączyć do **func.exe** procesu z [programu Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) lub [programu Visual Studio 2017](functions-dotnet-class-library.md). *\<Typu\>* są opcje `VSCode` i `VS`.  |
+| **`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
 | **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Wartość domyślna: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
-| **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używany podczas uruchamiania narzędzia Core przy użyciu programu Visual Studio lub programu VS Code.|
+| **`--build`** | Kompiluj bieżący projekt przed uruchomieniem. W wersji 2.x i C# tylko dla projektów. |
+| **`--cert`** | Ścieżka do pliku PFX, który zawiera klucz prywatny. Używana tylko z `--useHttps`. W wersji 2.x tylko. | 
+| **`--password`** | Hasło lub plik, który zawiera hasło do pliku .pfx. Używana tylko z `--cert`. W wersji 2.x tylko. |
+| **`--language-worker`** | Argumenty do konfigurowania procesu roboczego języka. W wersji 2.x tylko. |
+| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
+
+Dla języka C# projekt biblioteki klas (.csproj), należy wprowadzić `--build` opcję, aby wygenerować biblioteki .dll.
 
 Podczas uruchamiania hosta funkcje, dane wyjściowe funkcji wyzwalanych przez adres URL protokołu HTTP:
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581644"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056158"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Zakresy, uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 Aplikacje, które integrują się z usługą Azure Active Directory (Azure AD) wykonaj modelu autoryzacji, która zapewnia użytkownikom kontrolę nad jak aplikacja może uzyskiwać dostęp do swoich danych. Zaktualizowano v2.0 stosowania modelu autoryzacji i zmiany, jak aplikacja może mieć interakcji z usługą Azure AD. W tym artykule opisano podstawowe pojęcia tego modelu autoryzacji, w tym zakresy, uprawnienia i zgody.
@@ -73,6 +73,19 @@ Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory
 Jeśli aplikacja nie żąda `offline_access` zakresu, nie będzie ona otrzymywać tokenów odświeżania. Oznacza to, że po wprowadzeniu kodu autoryzacji w [przepływ kodu autoryzacji OAuth 2.0](active-directory-v2-protocols.md), otrzymasz tylko tokenu dostępu z `/token` punktu końcowego. Token dostępu jest ważny przez krótki czas. Token dostępu jest zazwyczaj wygasa w ciągu jednej godziny. AT, że punkt, Twoja aplikacja powinna przekieruje użytkownika z powrotem do `/authorize` punktu końcowego, aby uzyskać nowy kod autoryzacji. Podczas tego przekierowania, w zależności od typu aplikacji użytkownik może być konieczne ponowne wprowadzenie poświadczeń lub ponownie zgodę na uprawnienia.
 
 Aby uzyskać więcej informacji o tym, jak pobrać i używać tokenów odświeżania, zobacz [referencyjne protokołu v2.0](active-directory-v2-protocols.md).
+
+## <a name="accessing-v10-resources"></a>Uzyskiwanie dostępu do zasobów w wersji 1.0
+aplikacje w wersji 2.0 może żądać tokenów i zgody dla aplikacji w wersji 1.0 (np. interfejsu API usługi Power BI `https://analysis.windows.net/powerbi/api` interfejsu API programu Sharepoint lub `https://{tenant}.sharepoint.com`).  Aby to zrobić, możesz odwoływać się do ciągu identyfikatora URI i zakresu aplikacji w `scope` parametru.  Na przykład `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` będzie żądania usługi Power BI `View all Datasets` uprawnienia dla aplikacji. 
+
+Aby zażądać wiele uprawnień, należy dołączyć całego identyfikatora URI ze spacją lub `+`, np. `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`.  Żąda zarówno `View all Datasets` i `View all Reports` uprawnienia.  Należy pamiętać, że podobnie jak w przypadku wszystkich zakresów w usłudze Azure AD i uprawnienia aplikacji można wprowadzać tylko żądania do jednego zasobu naraz — więc żądania `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`, który żąda zarówno usługi Power BI `View all Datasets` uprawnień i Skype dla firm `Initiate conversations` uprawnienia zostanie odrzucone z powodu żądania uprawnień na dwóch różnych zasobów.  
+
+### <a name="v10-resources-and-tenancy"></a>zasoby w wersji 1.0 i dzierżawy
+Protokoły usługi Azure AD w wersji 1.0 i 2.0 używają `{tenant}` parametru osadzone w identyfikatorze URI (`https://login.microsoftonline.com/{tenant}/oauth2/`).  Dostęp do zasobów organizacji w wersji 1.0 za pomocą punktu końcowego v2.0 `common` i `consumers` dzierżawcy nie można użyć, ponieważ te zasoby są dostępne jedynie w usłudze organizacji (Azure AD) konta.  Dlatego podczas uzyskiwania dostępu do tych zasobów, a tylko identyfikator GUID dzierżawy lub `organizations` mogą być używane jako `{tenant}` parametru.  
+
+Jeśli aplikacja podejmie próbę dostępu do zasobów organizacji w wersji 1.0 przy użyciu niepoprawne dzierżawy, będzie zwracany błąd podobny do przedstawionego poniżej. 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>Żądanie zgody użytkownika
 W [OpenID Connect i OAuth 2.0](active-directory-v2-protocols.md) autoryzacji żądania, może zażądać uprawnień potrzebuje za pomocą, aplikację `scope` parametr zapytania. Na przykład gdy użytkownik loguje się do aplikacji, aplikacja wysyła żądanie, takie jak w poniższym przykładzie (z podziały wierszy dodane w celu uzyskania czytelności):
