@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 85a2f0c13d483df40b6de2a158cf5fa43c45b5eb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531350"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818490"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ usługi Azure Files jest w pełni zarządzana, wdrażania jej w scenariuszach produkcyjnych jest znacznie prostsze niż we wdrażaniu oraz zarządzaniu nim serwera plików lub urządzeń NAS. W tym artykule opisano tematów, aby wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
@@ -81,7 +81,7 @@ Usługa Azure Files obsługuje trzy opcje nadmiarowości danych: Magazyn lokalni
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych
-Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB, z uwzględnieniem migawek udziałów. Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych. Należy pamiętać, że konto usługi Azure Storage można przechowywać wiele udziałów w sumie 500 TiB przechowywane we wszystkich udziałów.
+Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB. Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych. Należy pamiętać, że konto usługi Azure Storage można przechowywać wiele udziałów w sumie 500 TiB przechowywane we wszystkich udziałów.
 
 Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia do jednego serwera plików Windows za pomocą usługi Azure File Sync. Dzięki temu można zapewnić, że udziały plików starsze, bardzo duże, że może mieć w środowisku lokalnym, może być wprowadzana do usługi Azure File Sync. Zobacz [Planowanie wdrażania usługi Azure pliku synchronizacji](storage-files-planning.md) Aby uzyskać więcej informacji.
 

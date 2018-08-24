@@ -3,7 +3,7 @@ title: Dokumentacja ustawień aplikacji dla usługi Azure Functions
 description: Dokumentacja ustawień aplikacji usługi Azure Functions lub zmienne środowiskowe.
 services: functions
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -12,18 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 08/22/2018
 ms.author: glenga
-ms.openlocfilehash: b5f4ce786371608b276e41f6881dcb1e0a91e303
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 46c1cb0a0cb3104e3705e4a7d4ef0dd894a7c2d7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345059"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819050"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
 Ustawienia aplikacji w aplikacji funkcji zawiera opcje konfiguracji globalne, które mają wpływ na wszystkie funkcje dla tej aplikacji funkcji. Po uruchomieniu lokalnie, te ustawienia dotyczą w zmiennych środowiskowych. W tym artykule wymieniono ustawienia aplikacji, które są dostępne w aplikacji funkcji.
+
+[! Dołącz [ustawień aplikacji funkcji] (.. /.. /includes/Functions-App-Settings.MD]
 
 Istnieją inne opcje konfiguracji globalnej w [host.json](functions-host-json.md) pliku i [local.settings.json](functions-run-local.md#local-settings-file) pliku.
 
@@ -127,7 +129,7 @@ W przypadku planów zużycie tylko. Parametry połączenia dla konta magazynu, w
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [nazwa]; AccountKey = [klucz]|
 
-## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
+## <a name="websitecontentshare"></a>WITRYNY SIECI WEB\_CONTENTSHARE
 
 W przypadku planów zużycie tylko. Ścieżka pliku kodu aplikacji funkcji i konfiguracji. Używane z WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Domyślna to unikatowy ciąg, który rozpoczyna się od nazwy aplikacji funkcji. Zobacz [tworzenie aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -153,6 +155,19 @@ Wartością domyślną jest "6.5.0".
 |Klucz|Wartość przykładowa|
 |---|------------|
 |WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|6.5.0|
+
+## <a name="websiterunfromzip"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_ZIP
+
+Umożliwia aplikacji funkcji do uruchamiania z pliku zainstalowanego pakietu.
+
+> [!NOTE]
+> To ustawienie dotyczy funkcja w wersji zapoznawczej.
+
+|Klucz|Wartość przykładowa|
+|---|------------|
+|WITRYNY SIECI WEB\_URUCHOM\_FROM\_ZIP|1|
+
+Prawidłowe wartości to URL, który jest rozpoznawany jako lokalizacja pliku wdrożenia pakietu lub `1`. Po ustawieniu `1`, pakiet musi znajdować się w `d:\home\data\SitePackages` folderu. Korzystając z pliku zip wdrożenia to ustawienie, pakiet jest automatycznie przekazywana do tej lokalizacji.  Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

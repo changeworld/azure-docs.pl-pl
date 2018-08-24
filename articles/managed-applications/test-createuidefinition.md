@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c313538e297c5781b48fcfe9d0d5390f94c97f5
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: c88bdce64e88f8639da2c4ebb01f4594fccff8a0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043844"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747092"
 ---
 # <a name="test-azure-portal-interface-for-your-managed-application"></a>Testowanie interfejsu portalu platformy Azure dla aplikacji zarządzanej
 Po [tworzenia pliku createUiDefinition.json](create-uidefinition-overview.md) dla aplikacji zarządzanych platformy Azure, musisz przetestowanie środowiska użytkownika. Aby uprościć testowanie, należy użyć skryptu, który ładuje plik w portalu. Nie potrzebujesz rzeczywiście wdrożyć Twoją zarządzaną aplikacją.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* A **createUiDefinition.json** pliku. Jeśli nie masz tego pliku, skopiuj [przykładowy plik](https://github.com/Azure/azure-quickstart-templates/blob/master/test/template-validation-tests/sample-template/createUIDefinition.json) i zapisać go lokalnie.
+* A **createUiDefinition.json** pliku. Jeśli nie masz tego pliku, skopiuj [przykładowy plik](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json) i zapisać go lokalnie.
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -36,16 +36,16 @@ Aby przetestować interfejs użytkownika w portalu, skopiuj jeden z poniższych 
 
 ## <a name="run-script"></a>Uruchom skrypt
 
-Aby wyświetlić plik interfejsu w portalu, uruchom pobranego skryptu. Skrypt tworzy konto magazynu w ramach subskrypcji platformy Azure, a następnie przekazuje plik createUiDefinition.json do konta magazynu. Następnie otwiera portalu i ładuje plik z konta magazynu.
+Aby wyświetlić plik interfejsu w portalu, uruchom pobranego skryptu. Skrypt tworzy konto magazynu w ramach subskrypcji platformy Azure, a następnie przekazuje plik createUiDefinition.json do konta magazynu. Konto magazynu jest tworzone podczas pierwszego uruchomienia skryptu, lub jeśli konto magazynu zostało usunięte. Jeśli konto magazynu już istnieje w subskrypcji platformy Azure, skrypt ponownie go używa. Skrypt spowoduje otwarcie portalu i ładuje plik z konta magazynu.
 
-Podaj lokalizację dla konta magazynu, a następnie określ folder, który zawiera plik createUiDefinition.json. Musisz podać czas lokalizacji pierwszego konta magazynu, można uruchomić skryptu lub jeśli konto magazynu zostało usunięte.
+Podaj lokalizację dla konta magazynu, a następnie określ folder, który zawiera plik createUiDefinition.json.
 
 W przypadku programu PowerShell użyj polecenia:
 
 ```powershell
 .\SideLoad-CreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
-  -ArtifactsStagingDirectory <path-to-folder-with-createuidefinition>
+  -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
@@ -53,7 +53,21 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 ```azurecli
 ./sideload-createuidef.sh \
   -l southcentralus \
-  -a <path-to-folder-with-createuidefinition>
+  -a .\100-Marketplace-Sample
+```
+
+Jeśli plik createUiDefinition.json znajduje się w tym samym folderze co skrypt, a masz już utworzone konto magazynu, nie trzeba podać te parametry.
+
+W przypadku programu PowerShell użyj polecenia:
+
+```powershell
+.\SideLoad-CreateUIDefinition.ps1
+```
+
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
+
+```azurecli
+./sideload-createuidef.sh
 ```
 
 ## <a name="test-your-interface"></a>Testowanie interfejsu użytkownika
@@ -73,6 +87,18 @@ Jeśli Twoja definicja interfejsu zawiera błąd, zostanie wyświetlony opis w k
 Podaj wartości dla pól. Po zakończeniu przekonasz się wartości, które są przekazywane do szablonu.
 
 ![Pokaż wartości](./media/test-createuidefinition/show-json.png)
+
+Te wartości można użyć jako plik parametrów do testowania wdrożenia szablonu.
+
+## <a name="troubleshooting-the-interface"></a>Rozwiązywanie problemów z interfejsu
+
+Niektóre typowe błędy, które można napotkać, to:
+
+* W portalu nie załadować interfejsu. Zamiast tego zawiera ikonę chmury z listy zakończenia. Zazwyczaj zobaczysz tę ikonę, gdy występuje błąd składni w pliku. Otwórz plik w programie VS Code (lub innego edytora JSON, zawierającą sprawdzanie poprawności schematu) i Znajdź błędy składniowe.
+
+* Portal zawiesza się na ekranie Podsumowanie. Zazwyczaj ten przeszkód występuje, gdy znajduje się błąd w sekcji danych wyjściowych. Na przykład użytkownik może mieć odwołuje się do formant, który nie istnieje.
+
+* Parametr w danych wyjściowych jest pusty. Parametr może odwoływać się do właściwości, która nie istnieje. Na przykład odwołanie do formantu jest prawidłowy, ale odwołania do właściwości jest nieprawidłowa.
 
 ## <a name="test-your-solution-files"></a>Testowanie pliki rozwiązania
 

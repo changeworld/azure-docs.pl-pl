@@ -1,4 +1,17 @@
-1. W Twojej **aplikacji** projekt, otwórz plik `AndroidManifest.xml`. Dodaj następujący kod po `application` tagu początkowego:
+---
+author: conceptdev
+ms.author: crdun
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.openlocfilehash: 654bc3745768fccea41d7c3991142bf7183b54be
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811547"
+---
+1. W swojej **aplikacji** projektu, otwórz plik `AndroidManifest.xml`. Dodaj następujący kod po `application` tagu początkowego:
 
     ```xml
     <service android:name=".ToDoMessagingService">
@@ -15,13 +28,13 @@
 
 2. Otwórz plik `ToDoActivity.java`i wprowadź następujące zmiany:
 
-    - Dodaj instrukcję import:
+    - Dodaj instrukcję importu:
 
         ```java
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - Zmień definicję `MobileServiceClient` z **prywatnej** do **statycznego prywatnego**, więc teraz wygląda następująco:
+    - Zmienić definicję `MobileServiceClient` z **prywatnej** do **prywatna statyczna**, więc teraz wygląda następująco:
 
         ```java
         private static MobileServiceClient mClient;
@@ -43,13 +56,13 @@
         }
         ```
 
-    - Aktualizacja **onCreate** metody `ToDoActivity` klasy. Upewnij się, że Dodaj ten kod po `MobileServiceClient` zostanie uruchomiony.
+    - Aktualizacja **onCreate** metody `ToDoActivity` klasy. Upewnij się dodać ten kod po `MobileServiceClient` konkretyzacji.
 
         ```java
         registerPush();
         ```
 
-3. Dodaj nową klasę do obsługi powiadomień. Otwórz w Eksploratorze projektu **aplikacji** > **java** > **nazw swój projekt** węzłów, a następnie kliknij prawym przyciskiem myszy węzeł nazwę pakietu. Kliknij przycisk **nowy**, a następnie kliknij przycisk **Klasa Java**. W polu Nazwa wpisz `ToDoMessagingService`, a następnie kliknij przycisk OK. Następnie zastąp deklaracji klasy z:
+3. Dodaj nową klasę do obsługi powiadomień. Otwórz w Eksploratorze projektu **aplikacji** > **java** > **your nazw projektu** węzłów, a następnie kliknij prawym przyciskiem myszy węzeł nazwy pakietu. Kliknij przycisk **New**, a następnie kliknij przycisk **klasy Java**. W polu Nazwa wpisz `ToDoMessagingService`, a następnie kliknij przycisk OK. Następnie zastąp deklaracji klasy za pomocą:
 
     ```java
     import android.app.Notification;
@@ -88,7 +101,7 @@
     }
     ```
 
-4. Dodaj kolejną klasę do obsługi aktualizacji tokenu. Utwórz `ToDoInstanceIdService` java klasy i Zastąp deklaracji klasy z:
+4. Dodaj klasę do obsługi aktualizacji tokenu. Utwórz `ToDoInstanceIdService` java klasy i Zastąp deklaracji klasy za pomocą:
 
     ```java
     import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -102,4 +115,4 @@
     }
     ```
 
-Aplikacja jest teraz zaktualizowana do obsługi powiadomień wypychanych.
+Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.

@@ -1,0 +1,97 @@
+---
+title: Usługa Key Vault umożliwia przechowywanie i dostęp do kluczy usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Przechowywanie i dostęp do usługi Azure Cosmos DB parametry połączenia, kluczy, identyfikator URI firmy za pomocą usługi Azure Key Vault.
+services: cosmos-db
+author: rafats
+manager: kfile
+ms.service: cosmos-db
+ms.devlang: dotnet
+ms.topic: conceptual
+ms.date: 08/21/2018
+ms.author: rafats
+ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42748063"
+---
+# <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Przechowywanie i dostęp do kluczy usługi Azure Cosmos DB za pomocą usługi Key Vault
+
+W przypadku używania usługi Azure Cosmos DB dla aplikacji, możesz uzyskać dostęp do bazy danych, kolekcje, dokumenty, korzystając z identyfikator URI punktu końcowego i klucz w pliku konfiguracji aplikacji.  Jednak nie jest bezpieczne przełączyć klucze i adres URL bezpośrednio w kodzie aplikacji, ponieważ są one dostępne w formacie zwykłego tekstu dla wszystkich użytkowników. Chcesz upewnić się, że identyfikator URI i klucze są dostępne, ale za pomocą mechanizmu bezpiecznego. Jest to, gdzie usługi Azure Key Vault ułatwia bezpieczne przechowywanie i zarządzanie wpisami tajnymi aplikacji.
+
+Poniższe kroki są wymagane do przechowywania i klucze dostępu usługi Azure Cosmos DB do odczytu z usługi Key Vault:
+
+* Tworzenie magazynu kluczy  
+* Dodawanie kluczy dostępu do usługi Azure Cosmos DB do usługi Key Vault  
+* Tworzenie aplikacji sieci web platformy Azure  
+* Rejestrowanie aplikacji i przyznaj uprawnienia do odczytu usługi Key Vault  
+
+
+## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
+
+1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/).  
+2. Wybierz **Utwórz zasób > Zabezpieczenia > usługi Key Vault**.  
+3. W sekcji **Tworzenie magazynu kluczy** podaj następujące informacje:  
+   * **Nazwa:** Podaj unikatową nazwę usługi Key Vault.  
+   * **Subskrypcja:** Wybierz subskrypcję, która będzie używana.  
+   * W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.  
+   * W menu rozwijanym lokalizacji wybierz lokalizację.  
+   * Pozostałych opcji Pozostaw ich wartości domyślne.  
+4. Po podaniu powyższych informacje wybierz przycisk **Utwórz**.  
+
+## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Dodawanie kluczy dostępu do usługi Azure Cosmos DB do usługi Key Vault.
+1. Przejdź do utworzonego w poprzednim kroku, otwórz usługę Key Vault **wpisów tajnych** kartę.  
+2. Wybierz **+ Wygeneruj/zaimportuj**, 
+
+   * Wybierz **ręczne** dla **opcje przekazywania**.
+   * Podaj **nazwa** dla klucz tajny
+   * Podaj parametry połączenia konta usługi Cosmos DB do **wartość** pola. A następnie wybierz **Utwórz**.
+
+   ![Utwórz klucz tajny](./media/access-secrets-from-keyvault/create-a-secret.png)
+
+4. Po utworzeniu wpisu tajnego, otwórz go i skopiuj ** identyfikator wpisu tajnego, który znajduje się w następującym formacie. Użyjesz tego identyfikatora w następnej sekcji. 
+
+   `https://<Key_Vault_Name>.vault.azure.net/secrets/<Secret _Name>/<ID>`
+
+## <a name="create-an-azure-web-application"></a>Tworzenie aplikacji sieci web platformy Azure
+
+1. Tworzenie aplikacji sieci web platformy Azure można również pobrać aplikację z [repozytorium GitHub](https://github.com/rsarosh/CosmosDB-KeyVault). Jest prostą aplikację MVC.  
+
+2. Rozpakuj pobraną aplikację, a następnie otwórz **HomeController.cs** pliku. Zaktualizuj identyfikator wpisu tajnego w następującym wierszu:
+
+   `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
+
+3. **Zapisz** pliku **kompilacji** rozwiązania.  
+4. Następnie Wdróż aplikację na platformie Azure. Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **publikowania**. Utwórz nowy profil usługi aplikacji (o nazwie aplikacji WebAppKeyVault1) i wybierz **Publikuj**.   
+
+5. Po wdrożeniu aplikacji. W witrynie Azure portal, przejdź do aplikacji sieci web, która została wdrożona, a następnie Włącz **tożsamości usługi zarządzanej** tej aplikacji.  
+
+   ![Tożsamość usługi zarządzanej](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+
+Jeśli uruchomisz aplikację teraz, zobaczysz następujący błąd, ponieważ nie mają żadnych uprawnień do tej aplikacji w usłudze Key Vault.
+
+![Aplikacja wdrożona bez dostępu](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+
+## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Rejestrowanie aplikacji i przyznaj uprawnienia do odczytu usługi Key Vault
+
+W tej sekcji możesz zarejestrować aplikację w usłudze Azure Active Directory i nadanie uprawnień dla aplikacji na odczytywanie usługi Key Vault. 
+
+1. Przejdź do witryny Azure portal, otwórz **usługi Key Vault** został utworzony w poprzedniej sekcji.  
+
+2. Otwórz **zasady dostępu**, wybierz opcję **+ Dodaj nowy** możesz znaleźć aplikacji sieci web został wdrożony, wybierz uprawnienia i wybierz **OK**.  
+
+   ![Dodawanie zasad dostępu](./media/access-secrets-from-keyvault/add-access-policy.png)
+
+Teraz po uruchomieniu aplikacji, możesz przeczytać wpisu tajnego usługi Key Vault.
+
+![Aplikacja wdrożona za pomocą klucza tajnego](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+ 
+Podobnie można dodać użytkownika do uzyskania dostępu do klucza magazynu. Należy dodać użytkownika do usługi Key Vault, klikając polecenie "Zasady dostępu", a następnie nadaj wszystkich uprawnień, które są potrzebne do uruchomienia aplikacji w programie Visual studio. Ta aplikacja jest uruchomiona z pulpitu, zajmuje się Twoją tożsamość.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Konfigurowanie zapory dla usługi Azure Cosmos DB, zobacz [zapory pomocy technicznej](firewall-support.md) artykułu.
+* Aby skonfigurować punkt końcowy usługi sieci wirtualnej, zobacz [zabezpieczyć dostęp przy użyciu punktu końcowego usługi sieci wirtualnej](vnet-service-endpoint.md) artykułu.
+
+

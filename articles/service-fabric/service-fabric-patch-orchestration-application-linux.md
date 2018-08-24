@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971270"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746721"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Linux w klastrze usługi Service Fabric
 
@@ -121,7 +121,7 @@ Dla systemu Ubuntu [nienadzorowanego uaktualnienia](https://help.ubuntu.com/comm
 
 Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA_v2.0.2.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
@@ -271,7 +271,7 @@ Usługi Koordynator generowany jest raport o kondycji poziom ostrzeżenia, gdy u
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-PYTANIA I ODPOWIEDZI. **Dlaczego widzisz Mój klaster w stanie błędu, gdy uruchomiona jest aplikacja orchestration poprawki?**
+PYTANIE: **Dlaczego widzisz Mój klaster w stanie błędu, gdy uruchomiona jest aplikacja orchestration poprawki?**
 
 A. Podczas procesu instalacji aplikacji patch orchestration powoduje wyłączenie lub ponowne uruchomienie węzłów. Ta operacja może spowodować tymczasowo kondycji klastra zostanie wyłączona.
 
@@ -285,15 +285,15 @@ W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo z uwzgl
 
 Jeśli problem będzie się powtarzać, zapoznaj się z sekcją rozwiązywanie problemów.
 
-PYTANIA I ODPOWIEDZI. **Aplikacja orchestration poprawki jest w stanie ostrzeżenia**
+PYTANIE: **Aplikacja orchestration poprawki jest w stanie ostrzeżenia**
 
 A. Sprawdź, czy raport o kondycji opublikowane w związku z aplikacją główną przyczynę. Zazwyczaj ostrzeżenie zawiera szczegółowe informacje o problemie. Jeśli problem będzie się przejściowy, aplikacja powinna automatyczne odzyskiwanie z tego stanu.
 
-PYTANIA I ODPOWIEDZI. **Co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę wykonać aktualizację pilne systemu operacyjnego?**
+PYTANIE: **Co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę wykonać aktualizację pilne systemu operacyjnego?**
 
 A. Aplikacji patch orchestration nie instaluje aktualizacji, podczas gdy klaster jest w złej kondycji. Aby odblokować poprawki aplikacji przepływu pracy, Przełącz klaster do stanu dobrej kondycji.
 
-PYTANIA I ODPOWIEDZI. **Dlaczego poprawek w klastrach podąża tak długo do uruchomienia?**
+PYTANIE: **Dlaczego poprawek w klastrach podąża tak długo do uruchomienia?**
 
 A. Czas potrzebny przez aplikację patch orchestration przede wszystkim jest zależna od następujących czynników:
 
@@ -303,26 +303,26 @@ A. Czas potrzebny przez aplikację patch orchestration przede wszystkim jest zal
 - Średni czas potrzebny do pobrania i zainstalowania aktualizacji, które nie powinna przekraczać kilka godzin.
 - Wydajność maszyny Wirtualnej i sieci przepustowość.
 
-PYTANIA I ODPOWIEDZI. **Jak ma patch orchestration aplikacja decyduje o aktualizacji, które są aktualizacje zabezpieczeń.**
+PYTANIE: **Jak ma patch orchestration aplikacja decyduje o aktualizacji, które są aktualizacje zabezpieczeń.**
 
 A. Patch orchestration aplikacja używa logikę specyficzną dla dystrybucji, do określenia, które aktualizacje wśród dostępne aktualizacje są aktualizacje zabezpieczeń. Na przykład: W aplikacji wyszukuje aktualizacje z archiwami $RELEASE ubuntu — zabezpieczenia, $RELEASE — aktualizacje ($RELEASE = xenial lub linux standardowego podstawowej wersji). 
 
  
-PYTANIA I ODPOWIEDZI. **Jak można zablokować do określonej wersji pakietu?**
+PYTANIE: **Jak można zablokować do określonej wersji pakietu?**
 
 A. Za pomocą ustawień ApprovedPatches zablokować pakietów do określonej wersji. 
 
 
-PYTANIA I ODPOWIEDZI. **Co stanie się aktualizacje automatyczne jest włączona w systemie Ubuntu?**
+PYTANIE: **Co stanie się aktualizacje automatyczne jest włączona w systemie Ubuntu?**
 
 A. Zaraz po zainstalowaniu aplikacji orkiestracji poprawek w klastrze, zostałoby wyłączone nienadzorowanego uaktualnienia w węźle klastra. Wszystkie przepływy pracy okresową aktualizacją będzie uzależniona patch orchestration aplikacji.
 Zapewnienie spójności środowiska w klastrze, firma Microsoft zaleca instalowanie aktualizacji za pośrednictwem patch orchestration tylko aplikacji. 
  
-PYTANIA I ODPOWIEDZI. **Uaktualnienie POST patch orchestration aplikacji wykonaj czyszczenie nieużywanych pakietów?**
+PYTANIE: **Uaktualnienie POST patch orchestration aplikacji wykonaj czyszczenie nieużywanych pakietów?**
 
 A. Tak, jako część poinstalacyjną miało miejsce oczyszczania. 
 
-PYTANIA I ODPOWIEDZI. **Może służyć do poprawiania Mój klaster dev (klastra z jednym węzłem) Orkiestracji poprawek aplikacji?**
+PYTANIE: **Może służyć do poprawiania Mój klaster dev (klastra z jednym węzłem) Orkiestracji poprawek aplikacji?**
 
 A. Nie, Patch orchestration aplikacji nie może służyć do klastra z jednym węzłem poprawki. To ograniczenie jest zgodne z projektem, jako [usługi usługi systemowe Service fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) lub wszystkie aplikacje klienta będzie może wystąpić Przestój, a więc wszystkie zadania naprawy dla stosowania poprawek nigdy nie będzie zatwierdzenia przez Menedżera naprawy.
 
@@ -370,5 +370,8 @@ Aplikacja orchestration poprawki gromadzi dane telemetryczne umożliwiający śl
 ### <a name="version-200"></a>Wersja 2.0.0
 - Po publicznym udostępnieniu
 
-### <a name="version-201-latest"></a>Wersja 2.0.1 (Najnowsza wersja)
+### <a name="version-201"></a>Wersja 2.0.1
 - Ponownie kompilowana w aplikacji przy użyciu najnowszy zestaw SDK usługi Service Fabric
+
+### <a name="version-202-latest"></a>Wersja pkt 2.0.2 (Najnowsza wersja)
+- Rozwiązano problem z ostrzeżeniem kondycji wprowadzenie pozostawione podczas ponownego uruchamiania.

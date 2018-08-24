@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: 610771e659a80e330fbb1c9d6fd97c15ff832386
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3ff4c23c0538adcc3a064503431cb18016db04cd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056129"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747048"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -52,24 +52,24 @@ Po wyzwoleniu funkcję wyzwalacza usługi Event Hubs komunikat, który ją wywo�
 
 ## <a name="trigger---scaling"></a>Wyzwalanie — skalowanie
 
-Każde wystąpienie funkcji Event Hub-Triggered jest objęta tylko 1 wystąpienie klasy EventProcessorHost Udostępniający. Usługa Event Hubs zapewnia, że tylko 1 EPH można uzyskać dzierżawy dla danej partycji.
+Każde wystąpienie funkcji wyzwalanej przez Centrum zdarzeń jest obsługiwane tylko przez jeden [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia. Usługa Event Hubs zapewnia, że tylko jeden [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia można uzyskać dzierżawy dla danej partycji.
 
-Na przykład załóżmy, że firma Microsoft zaczynają się od następujących ustawień i założenia dla Centrum zdarzeń:
+Na przykład należy wziąć pod uwagę Centrum zdarzeń w następujący sposób:
 
-1. 10 partycje.
-1. 1000 zdarzeń na równomiernym wszystkich partycji = > 100 wiadomości w poszczególnych partycjach.
+* 10 partycje.
+* 1000 zdarzeń rozkładane równomiernie pomiędzy wszystkie partycje, przy użyciu 100 wiadomości w poszczególnych partycjach.
 
-Po włączeniu funkcji jest tylko 1 wystąpienie funkcji. Nazwiemy to wystąpienie funkcji Function_0. Function_0 będzie miał 1 EPH, zarządzającą uzyskanie dzierżawy na wszystkich partycjach 10. Zostanie uruchomiony, odczytywać zdarzenia partycje 0 – 9. Od tej pory nastąpi jedną z następujących czynności:
+Po włączeniu funkcji jest tylko jedno wystąpienie funkcji. Nadajmy to wystąpienie funkcji `Function_0`. `Function_0` ma jeden [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienie, które ma dzierżawę na wszystkie partycje dziesięciu. To wystąpienie odczytuje zdarzenia z partycji 0 – 9. Od tej pory jedną z następujących sytuacji:
 
-* **Wymagane jest wystąpienie funkcji tylko na 1** -Function_0 jest w stanie przetworzyć wszystkie 1000 przed aktywowany logiki skalowania usługi Azure Functions. Dzięki temu wszystkie komunikaty 1000 są przetwarzane przez Function_0.
+* **Nowe wystąpienia funkcji nie są potrzebne**: `Function_0` jest w stanie przetworzyć wszystkie zdarzenia 1000 przed funkcje skalowanie logika aktywowany. W takim przypadku wszystkie 1000 komunikaty są przetwarzane przez `Function_0`.
 
-* **Dodaj 1 więcej wystąpienie funkcji** -logiki skalowania usługi Azure Functions Określa, że Function_0 ma komunikatów jest większa niż może przetworzyć, dlatego tworzone jest nowe wystąpienie Function_1,. Usługa Event Hubs wykrywa, że nowe wystąpienie EPH próbuje odczytać wiadomości. Usługi Event Hubs rozpocznie równoważenie partycji w wystąpieniach EPH obciążenia, np. 0-4 partycjami są przypisane do Function_0 i partycje 5-9 są przypisane do Function_1. 
+* **Następuje dodanie wystąpienia dodatkową funkcję**: Functions skalowanie logika ustali, że `Function_0` ma komunikatów jest większa niż może przetworzyć. W tym przypadku nowe wystąpienie aplikacji funkcji (`Function_1`) jest tworzony wraz z nową [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia. Usługa Event Hubs wykrywa, że nowe wystąpienie hosta próbuje odczytać wiadomości. Zdarzenie Hubs równoważy obciążenie partycji między jego wystąpienia hosta. Na przykład partycje 0-4 może być przypisana do `Function_0` i dzieli na partycje 5-9, aby `Function_1`. 
 
-* **Dodaj N działa więcej wystąpień** -logiki skalowania usługi Azure Functions ustali, że zarówno Function_0, jak i Function_1 komunikatów jest większa niż ich może przetwarzać. Zostanie przeprowadzone skalowanie ponownie dla N Function_2..., gdzie N jest większa niż partycji Centrum zdarzeń. Usługa Event Hubs zostanie załadowany równoważyć partycje między Function_0... 9 wystąpień.
+* **N większej liczby wystąpień funkcji są dodawane**: Functions skalowanie logika ustali, że oba `Function_0` i `Function_1` mają komunikatów jest większa niż ich może przetwarzać. Nowe wystąpienia aplikacji funkcji `Function_2`... `Functions_N` są tworzone, gdy `N` jest większa niż liczba partycji Centrum zdarzeń. W naszym przykładzie Usługa Event Hubs ponownie równoważy obciążenie partycji, w tym przypadku z wystąpień `Function_0`... `Functions_9`. 
 
-Unikatowe dla usługi Azure Functions bieżącego skalowanie logika jest fakt, że N jest większa niż liczba partycji. Odbywa się, aby upewnić się, że zawsze są wystąpieniami EPH łatwo dostępne szybko uzyskać blokadę na partycje, gdy tylko staną się dostępne z innymi wystąpieniami. Użytkownicy są naliczane tylko za zasoby używane podczas wykonywania wystąpień funkcji i nie są rozliczane nadmiernej aprowizacji.
+Należy pamiętać, że w przypadku funkcji można skalować do `N` wystąpień, czyli liczbę większą niż liczba partycji Centrum zdarzeń. W ten sposób upewnić się, że istnieją zawsze [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia można uzyskać blokad na partycje, gdy tylko staną się dostępne z innymi wystąpieniami. Opłaty są naliczane tylko za zasoby używane podczas wystąpienia funkcja wykonuje; nie są naliczane nadmiernej aprowizacji.
 
-Jeśli wszystkich wykonań funkcji powiodła się bez błędów, punkty kontrolne zostaną dodane do skojarzonego konta magazynu. Po pomyślnym zakończeniu kontrolnych, wszystkie komunikaty 1000 nigdy nie należy ponownie pobrać.
+Po zakończeniu wykonywania wszystkich funkcji (z lub bez błędów) punkty kontrolne zostaną dodane do skojarzonego konta magazynu. Po pomyślnym zakończeniu kontrolnych, wszystkie komunikaty 1000 nigdy nie są pobierane ponownie.
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 

@@ -1,171 +1,199 @@
 ---
-title: Nawiązać Dynamics 365 - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie i zarządzanie nimi rekordy z interfejsów API REST (online) Dynamics 365 i Azure Logic Apps
+title: Nawiązać połączenie z Dynamics 365 — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie i zarządzanie nimi przy użyciu interfejsów API REST (online) Dynamics 365 i Azure Logic Apps
 author: Mattp123
-manager: jeconnoc
 ms.author: matp
-ms.date: 02/10/2017
-ms.topic: article
 ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.reviewer: estfan, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 6ac45d45ed1df0e89eb27657a064a8c95ad4be79
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b1ff93f1e03e047ad5ac00259c1aa53afda0c76d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294847"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818944"
 ---
-# <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Nawiązywanie połączenia z przepływów pracy aplikacji logiki do Dynamics 365
+# <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami Dynamics 365 z usługą Azure Logic Apps
 
-Dzięki aplikacjom logiki można łączenie z 365 Dynamics (online) i tworzenie przepływów firm przydatne tworzenie rekordów, aktualizowania elementów lub powrócić do listy rekordów. Za pomocą łącznika programu Dynamics 365 można:
+Korzystając z usługi Azure Logic Apps i łącznika usługi Dynamics 365 możesz utworzyć zautomatyzowanym zadaniom i przepływów pracy opartych na rekordy w Dynamics 365. Przepływy pracy można utworzyć rekordów, aktualizacja elementów, zwracane rekordy i inne w ramach konta Dynamics 365. Możesz dołączyć akcje w aplikacjach logiki, które uzyskać odpowiedzi od Dynamics 365 i udostępnić dane wyjściowe do innych działań. Na przykład gdy element zostanie zaktualizowany w Dynamics 365, możesz wysłać wiadomość e-mail przy użyciu usługi Office 365.
 
-* Tworzenie sieci przepływu biznesowe na podstawie danych otrzymywanych z 365 Dynamics (online).
-* Użyj działań, które odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład po zaktualizowaniu elementu w 365 Dynamics (online), możesz wysłać wiadomość e-mail przy użyciu usługi Office 365.
-
-W tym temacie przedstawiono sposób tworzenia aplikacji logiki, która tworzy zadanie w Dynamics 365 zawsze, gdy nowy realizacji jest tworzony w Dynamics 365.
+Ten artykuł pokazuje, jak tworzyć aplikację logiki, która tworzy zadanie w Dynamics 365, gdy nowy rekord potencjalny klient zostanie utworzony w Dynamics 365.
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Konto platformy Azure.
-* Dynamics 365 konta (online).
 
-## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>Utwórz zadania, podczas tworzenia nowego potencjalnego klienta w Dynamics 365
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-1.  [Logowanie do platformy Azure](https://portal.azure.com).
+* A [konta Dynamics 365](https://dynamics.microsoft.com)
 
-2.  W polu wyszukiwania Azure wpisz `Logic apps`, i naciśnij klawisz ENTER.
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-      ![Znajdź Logic Apps](./media/connectors-create-api-crmonline/find-logic-apps.png)
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Dynamics 365. Aby uruchomić aplikację logiki z wyzwalaczem Dynamics 365, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-3.  W obszarze **Logic apps**, kliknij przycisk **Dodaj**.
+## <a name="add-dynamics-365-trigger"></a>Dodawanie wyzwalacza Dynamics 365
 
-      ![Dodaj LogicApp](./media/connectors-create-api-crmonline/add-logic-app.png)
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-4.  Aby utworzyć aplikację logiki, wykonaj **nazwa**, **subskrypcji**, **grupy zasobów**, i **lokalizacji** pola, a następnie kliknij przycisk **Utwórz**.
+Najpierw dodaj wyzwalacz Dynamics 365, która jest uruchamiana, gdy nowy rekord potencjalny klient, który pojawia się w Dynamics 365.
 
-5.  Wybierz nową aplikację logiki. Po otrzymaniu **Zakończono pomyślnie wdrażanie** powiadomień, kliknij przycisk **Odśwież**.
+1. W [witryny Azure portal](https://portal.azure.com), Otwórz swoje pustej aplikacji logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-6.  W obszarze **narzędzi programistycznych**, kliknij przycisk **projektanta aplikacji logiki**. Na liście szablonów, kliknij przycisk **pustą aplikację logiki**.
+1. W polu wyszukiwania wprowadź "Dynamics 365" jako filtr. Na przykład w obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **gdy rekord zostanie utworzony.**
 
-7.  W polu wyszukiwania wpisz `Dynamics 365`. Wybierz z listy wyzwalaczy Dynamics 365 **365 Dynamics — po utworzeniu rekordu**.
+   ![Wybierz wyzwalacz](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
-8.  Jeśli zostanie wyświetlony monit, aby zalogować się do usługi Dynamics 365, należy to zrobić teraz.
+1. Jeśli zostanie wyświetlony monit, aby zarejestrować się w usłudze Dynamics 365, zarejestruj się teraz.
 
-9.  W szczegółach wyzwalacza wprowadź następujące informacje:
+1. Podaj te szczegóły wyzwalacza:
 
-  * **Nazwa organizacji**. Wybierz wystąpienie Dynamics 365 interesujące aplikacji logiki do nasłuchiwania.
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa organizacji** | Yes | Nazwa wystąpienia Dynamics 365 Twojej organizacji do monitorowania, na przykład "Contoso" |
+   | **Nazwa jednostki** | Yes | Nazwa jednostkę którą chcesz monitorować, na przykład "prowadzi" | 
+   | **Częstotliwość** | Yes | Jednostka czasu do użycia z interwałami podczas sprawdzania dostępności aktualizacji związanych z wyzwalacza |
+   | **Interwał** | Yes | Liczba sekund, minuty, godziny, dni, tygodni lub miesięcy, które upłynąć przed następnym wyboru |
+   ||| 
 
-  * **Nazwa jednostki**. Wybierz jednostki, która ma być nasłuchiwania. To zdarzenie działa jako wyzwalacz, aby uruchomić aplikację logiki. 
-  W tym przewodniku **prowadzi** jest zaznaczone.
+   ![Szczegóły wyzwalacza](./media/connectors-create-api-crmonline/trigger-details.png)
 
-  * **Jak często chcesz sprawdzić dla elementów?** Te wartości ustawić częstotliwość sprawdzania aktualizacji związanych z wyzwalaczem aplikacji logiki. Ustawieniem domyślnym jest sprawdzanie aktualizacji co trzy minuty.
+## <a name="add-dynamics-365-action"></a>Dodawanie akcji Dynamics 365
 
-    * **Częstotliwość**. Wybierz sekundy, minuty, godziny lub dni.
+Teraz Dodaj akcję Dynamics 365, która tworzy rekord zadania dla nowego rekordu potencjalnego klienta.
 
-    * **Interwał**. Wprowadź liczbę sekund, minuty, godziny lub dni, które mają być przekazywane przed następnym wyboru.
+1. W obszarze wyzwalacza, wybierz opcję **nowy krok**.
 
-      ![Szczegóły wyzwalaczem aplikacji logiki](./media/connectors-create-api-crmonline/trigger-details.png)
+1. W polu wyszukiwania wprowadź "Dynamics 365" jako filtr. Z listy akcji wybierz następującą akcję: **Utwórz nowy rekord**
 
-10. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
+   ![Wybierz akcję](./media/connectors-create-api-crmonline/select-action.png)
 
-11. W polu wyszukiwania wpisz `Dynamics 365`. Wybierz z listy akcji **Dynamics 365 — Utwórz nowy rekord**.
+1. Podaj te szczegóły działań:
 
-12. Wprowadź następujące informacje:
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa organizacji** | Yes | W tym przykładzie wystąpienia Dynamics 365, w którym chcesz utworzyć rekord, który nie musi to być to samo wystąpienie w wyzwalacza, ale jest "Contoso" |
+   | **Nazwa jednostki** | Yes | Jednostki, której chcesz utworzyć rekord, na przykład "Zadania" | 
+   | | |
 
-    * **Nazwa organizacji**. Wybierz wystąpienie Dynamics 365 miejscu przepływu, aby utworzyć rekord. 
-    Należy zauważyć, że nie musi być tym samym wystąpieniem, gdy zdarzenie zostanie wyzwolone z tego wystąpienia.
+   ![Szczegóły akcji](./media/connectors-create-api-crmonline/action-details.png)
 
-    * **Nazwa jednostki**. Wybierz obiekt, który chcesz utworzyć rekord, gdy zdarzenie zostanie wyzwolone. 
-    W tym przewodniku **zadania** jest zaznaczone.
+1. Gdy **podmiotu** pojawi się okno w akcji, kliknij wewnątrz **podmiotu** polu, aby wyświetlić listę zawartości dynamicznej. Na tej liście wybierz wartości pól, które mają zostać objęte rekord zadania skojarzonego z rekordem nowego potencjalnego klienta:
 
-13. Kliknij **podmiotu** pojawi się okno. Z dynamicznej zawartości na wyświetlonej liście można wybrać jedną z tych pól:
+   | Pole | Opis | 
+   |-------|-------------| 
+   | **Nazwisko** | Nazwisko z potencjalnego klienta jako głównej osoby kontaktowej w rekordzie |
+   | **Temat** | Opisowa nazwa potencjalnego klienta w rekordzie | 
+   | | | 
 
-    * **Nazwisko**. Zaznaczenie tego pola Wstawia nazwisko potencjalnego klienta do pole tematu dla zadania, gdy zostaje utworzony rekord zadania.
-    * **Temat**. Zaznaczenie tego pola Wstawia pole temat potencjalnego klienta do pole tematu dla zadania, gdy zostaje utworzony rekord zadania. 
-    Kliknij przycisk **tematu** dodać go do **podmiotu** pole.
+   ![Szczegóły rekordu zadania](./media/connectors-create-api-crmonline/create-record-details.png)
 
-      ![Logiki aplikacji Utwórz nowe szczegóły rekordu](./media/connectors-create-api-crmonline/create-record-details.png)
+1. Na pasku narzędzi Projektanta wybierz **Zapisz** aplikacji logiki. 
 
-14. Na pasku narzędzi Projektanta aplikacji logiki, kliknij przycisk **zapisać**.
+1. Aby ręcznie uruchomić aplikację logiki, na pasku narzędzi projektanta, wybierz **Uruchom**.
 
-    ![Narzędzi Projektanta aplikacji logiki Zapisz](./media/connectors-create-api-crmonline/designer-toolbar-save.png)
+   ![Uruchamianie aplikacji logiki](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
-15. Aby uruchomić aplikację logiki, kliknij przycisk **Uruchom**.
+1. Teraz Utwórz nowego potencjalnego klienta w Dynamics 365, dzięki czemu możesz wyzwolić przepływ pracy aplikacji logiki.
 
-    ![Narzędzi Projektanta aplikacji logiki Zapisz](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+## <a name="add-filter-or-query"></a>Dodaj filtr lub zapytania
 
-16. Teraz Utwórz rekord realizacji w 365 Dynamics działu sprzedaży i zobacz Twojej przepływu w akcji!
+Aby określić sposób filtrowania danych w ramach akcji Dynamics 365, wybierz **Pokaż opcje zaawansowane** w tym działaniu. Następnie można dodać filtru lub ustalania kolejności przez zapytanie.
+Na przykład można użyć zapytania filtru uzyskać tylko aktywne konta i kolejność tych rekordów według nazwy konta. W tym celu wykonaj następujące kroki:
 
-## <a name="set-advanced-options-for-a-logic-app-step"></a>Ustaw opcje zaawansowane kroku aplikacji logiki
+1. W obszarze **zapytanie filtru**, wpisz to zapytanie filtru OData: `statuscode eq 1`
 
-Aby określić sposób filtrowania danych w kroku aplikacji logiki, kliknij przycisk **Pokaż zaawansowane opcje** w tym kroku, następnie dodać filtr lub kolejności przez zapytanie.
+2. W obszarze **Order By**, gdy zostanie wyświetlona lista zawartości dynamicznej, wybierz **nazwa konta**. 
 
-Na przykład można użyć zapytania filtra można uzyskać tylko aktywne konta i kolejność według nazwy konta. Aby wykonać to zadanie, wprowadź zapytanie filtru OData `statuscode eq 1`i wybierz **nazwa konta** na liście zawartości dynamicznej. Więcej informacji: [MSDN: $filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1) i [$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2).
+   ![Określ filtru i ustalania kolejności](./media/connectors-create-api-crmonline/advanced-options.png)
 
-![Zaawansowane opcje aplikacji logiki](./media/connectors-create-api-crmonline/advanced-options.png)
+Aby uzyskać więcej informacji zobacz te opcje zapytań systemu Dynamics 365 Customer Engagement Web API: 
 
-### <a name="best-practices-when-using-advanced-options"></a>Najlepsze rozwiązania przy użyciu opcji zaawansowanych
+* [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
+* [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
 
-Po dodaniu wartości do pola musi odpowiadać typowi pola, wpisz wartość lub wybierz wartość z listy zawartości dynamicznej.
+### <a name="best-practices-for-advanced-options"></a>Najlepsze rozwiązania dotyczące opcji zaawansowanych
 
-Typ pola  |Jak stosować  |Gdzie można znaleźć  |Name (Nazwa)  |Typ danych  
----------|---------|---------|---------|---------
-Pola tekstowe|Pola tekstowe wymagają pojedynczy wiersz tekstu lub zawartość dynamiczną, która jest polem typu tekst. Przykładami pola kategorii i podkategorii.|Ustawienia > dostosowania > dostosowywania systemu > jednostki > zadań > pól |category |Pojedynczy wiersz tekstu        
-Pola Liczba całkowita | Niektóre pola wymagają liczbą całkowitą lub zawartość dynamiczną, która jest typu Integer. Przykładami procent wykonania i czasu trwania. |Ustawienia > dostosowania > dostosowywania systemu > jednostki > zadań > pól |ProcentWykonania |Liczby całkowitej         
-Pola dat | Niektóre pola wymagają datę wprowadzenia w formacie mm/dd/rrrr lub zawartość dynamiczną, która jest pola typu daty. Przykładami utworzenia, datę rozpoczęcia, Rozpoczęcie rzeczywiste ostatnio na czas przechowywania, rzeczywiste zakończenie i terminu. | Ustawienia > dostosowania > dostosowywania systemu > jednostki > zadań > pól |pól createdon |Data i godzina
-Typ pola, które wymagają zarówno Identyfikatora rekordu i wyszukiwania |Niektóre pola, które odwołują się do innego rekordu jednostki wymagają zarówno identyfikator rekordu, jak i typ wyszukiwania. |Ustawienia > dostosowania > dostosowywania systemu > jednostki > konto > pól  | AccountID  | Klucz podstawowy
+Po określeniu wartości dla pola w akcję lub wyzwalacz typu danych wartość musi odpowiadać typowi pola, czy ręcznie wprowadź wartość lub wybierz wartość z listy zawartości dynamicznej.
 
-### <a name="more-examples-of-fields-that-require-both-a-record-id-and-lookup-type"></a>Wpisz więcej przykładów dotyczących pola, które wymagają identyfikator rekordu i wyszukiwania
-Rozszerzanie w poprzedniej tabeli, Oto przykłady więcej pól, które nie działają z wartościami wybrany z listy zawartości dynamicznej. Zamiast tego te pola wymagają zarówno identyfikator i wyszukiwania typ rekordu wprowadzany do pól w rozwiązaniu PowerApps.  
-* Właściciel i typ właściciela. Pole właściciela musi zawierać prawidłowy identyfikator rekordu użytkownika lub zespołu Typ właściciela musi być albo **systemusers** lub **zespołów**.
-* Klienta i typ klienta. Pole klienta musi być prawidłowym kontem lub skontaktuj się z identyfikator rekordu. Typ właściciela musi być albo **kont** lub **kontaktów**.
-* Dotyczące oraz dotyczące typu. Pole dotyczy musi być prawidłowy rekord identyfikator, takie jak konto lub skontaktuj się z identyfikator rekordu. Typ dotyczące musi być typ wyszukiwania dla rekordu, takich jak **kont** lub **kontaktów**.
+W tej tabeli opisano niektóre typy pól oraz typy danych wymaganych do ich wartości.
 
-W poniższym przykładzie akcji zadania tworzenia dodaje rekord konta, która odpowiada identyfikatorowi rekordu dodanie go do pola dotyczące zadania.
+| Typ pola | Wymagany typ danych | Opis | 
+|------------|--------------------|-------------|
+| Pola tekstowe | Pojedynczy wiersz tekstu | Pola te wymagają jednego wiersza tekstu lub zawartości dynamicznej, która ma typ tekstu. <p><p>*Przykład pola*: **opis** i **kategorii** | 
+| Pola liczb całkowitych | Liczba całkowita | Niektóre pola wymagają liczby całkowitej lub zawartości dynamicznej, która ma typ liczby całkowitej. <p><p>*Przykład pola*: **procent wykonania** i **czas trwania** | 
+| Pola daty | Data i godzina | Niektóre pola wymagają daty z formatem mm/dd/rrrr lub zawartości dynamicznej, która ma typ date. <p><p>*Przykład pola*: **utworzono**, **Data rozpoczęcia**, **Rozpoczęcie rzeczywiste**, **Rzeczywiste zakończenie**, i **Data ukończenia** | 
+| Typ pola wymagające Identyfikatora rekordu i wyszukiwania | Klucz podstawowy | Niektóre pola odwołujące się do innego rekordu jednostki wymagają zarówno Identyfikatora rekordu i typu wyszukiwania. | 
+||||
 
-![Konto przepływu recordId i typ](./media/connectors-create-api-crmonline/recordid-type-account.png)
+Rozszerzając te typy pól, poniżej przedstawiono przykładowe pola w Dynamics 365 wyzwalacze i akcje, które wymagają Identyfikatora rekordu i typu wyszukiwania. Wymaganie to oznacza, że wartości, które należy wybrać z listy dynamicznej nie będzie działać. 
 
-W tym przykładzie przypisuje zadania do określonego użytkownika na podstawie identyfikatora użytkownika rekordu.
+| Pole | Opis | 
+|-------|-------------|
+| **Właściciel** | Musi to być identyfikator prawidłowego użytkownika lub zespołu identyfikator rekordu. | 
+| **Typ właściciela** | Musi być albo **użytkownicy systemowi** lub **zespoły**. | 
+| **Dotyczy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. | 
+| **Typ obiektu dotyczy** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. | 
+| **Odbiorcy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. | 
+| **Typ klienta** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. | 
+|||
 
-![Konto przepływu recordId i typ](./media/connectors-create-api-crmonline/recordid-type-user.png)
+W tym przykładzie akcji o nazwie **Utwórz nowy rekord** tworzy nowy rekord zadania: 
 
-Aby znaleźć identyfikator rekordu, zobacz następującą sekcję: *Znajdź identyfikator rekordu*
+![Tworzenie rekordu zadania przy użyciu identyfikatorów rekordów i wyszukiwania typów](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-## <a name="find-the-record-id"></a>Znajdź identyfikator rekordu
+Ta akcja przypisuje rekord zadania określony identyfikator użytkownika lub identyfikator rekordu zespołu, w oparciu o identyfikator rekordu w **właściciela** pola lub wyszukiwania wpisz **typ właściciela** pola:
 
-1. Otwórz rekord, takich jak konta.
+![Wpisz identyfikator rekordu właściciela i wyszukiwania](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-2. Kliknij na pasku narzędzi Akcje **Pop limit** ![rekordu podręczne](./media/connectors-create-api-crmonline/popout-record.png).
-Można również na pasku narzędzi Akcje, aby skopiować pełny adres URL do domyślnego programu poczty e-mail, kliknij przycisk **łącze E-mail**.
+Ta akcja spowoduje dodanie rekord konta który jest skojarzony z rekordem Identyfikator dodany w **dotyczące** pola lub wyszukiwania wpisz **typ obiektu dotyczy** pola: 
 
-   Identyfikator rekordu jest wyświetlany Between d 7b i %7% kodowania znaków adresu URL.
+![Wpisz dotyczące Identyfikatora rekordu i wyszukiwania](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
-   ![Konto przepływu recordId i typ](./media/connectors-create-api-crmonline/recordid.png)
+## <a name="find-record-id"></a>Znajdowanie Identyfikatora rekordu
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Aby rozwiązać krok zakończony niepowodzeniem w aplikacji logiki, Wyświetl szczegóły stanu zdarzenia.
+Aby znaleźć identyfikator rekordu, wykonaj następujące kroki: 
 
-1. W obszarze **Logic Apps**, wybierz aplikację logiki, a następnie kliknij przycisk **omówienie**. 
+1. Dynamics 365 otwórz rekord, np. rekord konta.
 
-   Obszar Podsumowanie zawiera stan wykonywania dla aplikacji logiki, jest wyświetlany. 
+2. Na pasku narzędzi Akcje wybierz jedną z następujących czynności:
 
-   ![Stan uruchomienia aplikacji logiki](./media/connectors-create-api-crmonline/tshoot1.png)
+   * Wybierz **w okienku wyskakującym**. ![otwórz rekord](./media/connectors-create-api-crmonline/popout-record.png) 
+   * Wybierz **Wyślij LINK pocztą e-mail** tak, możesz skopiować pełny adres URL do domyślnego programu poczty e-mail.
 
-2. Aby wyświetlić więcej informacji na temat dowolnego uruchamia nie powiodło się, kliknij zdarzenie nie powiodło się. Aby rozszerzyć krok zakończony niepowodzeniem, kliknij ten krok.
+   Rekord, identyfikator, który będzie widoczny w adresie URL między `%7b` i `%7d` kodowanie znaków:
 
-   ![Rozwiń węzeł krok zakończony niepowodzeniem](./media/connectors-create-api-crmonline/tshoot2.png)
+   ![Znajdowanie Identyfikatora rekordu](./media/connectors-create-api-crmonline/find-record-ID.png)
 
-   Szczegółowe informacje krok wyświetlane i mogą pomóc rozwiązać przyczynę niepowodzenia.
+## <a name="troubleshoot-failed-runs"></a>Rozwiązywanie problemów z uruchomieniami nie powiodło się
 
-   ![Nie można uzyskać szczegółowe informacje krok](./media/connectors-create-api-crmonline/tshoot3.png)
+Aby znaleźć i przejrzyj kroki zakończone niepowodzeniem w aplikacji logiki, możesz wyświetlić historię uruchomień aplikacji logiki, stanu, danych wejściowych, danych wyjściowych i tak dalej.
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacji logiki, zobacz [diagnozowanie błędów aplikacji logiki](../logic-apps/logic-apps-diagnosing-failures.md).
+1. W witrynie Azure portal w menu głównym aplikację logiki, wybierz **Przegląd**. W **Historia przebiegów** sekcję, która zawiera wszystkie stany przebiegu aplikacji logiki, wybierz przebieg nie powiodło się, aby uzyskać więcej informacji.
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+   ![Stan uruchomienia aplikacji logiki](./media/connectors-create-api-crmonline/run-history.png)
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/crm/). 
+1. Rozwiń krok zakończony niepowodzeniem, aby można było wyświetlić więcej szczegółów. 
+
+   ![Rozwiń krok zakończony niepowodzeniem](./media/connectors-create-api-crmonline/expand-failed-step.png)
+
+1. Szczegółowe informacje na ten krok, takie jak wejść i wyjść, które mogą pomóc ustalić przyczynę za błąd.
+
+   ![Krok zakończony niepowodzeniem — dane wejściowe i wyjściowe](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
+
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacjami logiki, zobacz [diagnozowanie błędów aplikacji logiki](../logic-apps/logic-apps-diagnosing-failures.md).
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/crm/). 
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Eksploruj dostępnych łączników w aplikacjach logiki w naszym [listy interfejsów API](apis-list.md).
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 863cda349ca951bee1c43f09eefd364645de9dbd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443394"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746805"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -182,6 +182,8 @@ tworzone w sposób niejawny fabryki danych, utworzonych za pomocą szablonu usł
 5. Zestaw ADF .net SDK, które obsługują tę funkcję, jest w wersji > = 1.1.0
 
 6. Azure PowerShell, które obsługują tę funkcję jest w wersji > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7 pakietu)
+
+7. Aby udzielić uprawnień, użytkownik będzie wymagać roli "Właściciel" lub dziedziczone "Owner" w fabryce danych, w której istnieje środowisko IR udostępnione. 
 
   > [!NOTE]
   > Ta funkcja jest dostępna tylko w usłudze Azure Data Factory w wersji 2 

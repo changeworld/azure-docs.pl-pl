@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42056766"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818514"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Kontrola dostępu do usługi Azure IoT Hub Device Provisioning Service
 
@@ -34,7 +34,7 @@ Możesz nadawać [uprawnienia](#device-provisioning-service-permissions) w nast�
 
 * **Udostępnione zasady autoryzacji dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#device-provisioning-service-permissions). Można zdefiniować zasady w [witryny Azure portal][lnk-management-portal], lub programowo przy użyciu [interfejsów API REST usługi urządzenia aprowizacji][lnk-resource-provider-apis]. Nowo utworzonej usługi aprowizacji ma następujące domyślne zasady:
 
-   **provisioningserviceowner**: zasada o wszystkie uprawnienia.
+* **provisioningserviceowner**: zasada o wszystkie uprawnienia.
 
 > [!NOTE]
 > Zobacz [uprawnienia](#device-provisioning-service-permissions) Aby uzyskać szczegółowe informacje.

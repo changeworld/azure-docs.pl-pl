@@ -1,136 +1,136 @@
 ---
-title: Wprowadzanie uaktualnień aplikacji — baza danych SQL Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać replikacja geograficzna bazy danych SQL Azure w celu obsługi online uaktualnień aplikacji w chmurze.
+title: Stopniowe uaktualnienia aplikacji — Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą replikacji geograficznej usługi Azure SQL Database obsługuje uaktualnień aplikacji w chmurze w trybie online.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/23/2018
 ms.author: sashan
-ms.openlocfilehash: a73284d679b4be1fbae6d5e1688915c98cbf2392
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37960995c89c2b30d90ac45dcd8cc44d80088398
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649503"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818620"
 ---
-# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie stopniowe aplikacji w chmurze przy użyciu aktywna replikacja geograficzna bazy danych SQL
+# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie przeprowadzania uaktualnienia równoległych aplikacji w chmurze przy użyciu aktywnej replikacji geograficznej bazy danych SQL
 > [!NOTE]
-> [Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) jest teraz dostępna dla wszystkich baz danych w warstwach wszystkie.
+> [Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) jest teraz dostępna dla wszystkich baz danych we wszystkich warstwach.
 > 
 
-Dowiedz się, jak używać [— replikacja geograficzna](sql-database-geo-replication-overview.md) w bazie danych SQL umożliwia stopniowe aplikacji chmury. Ponieważ uaktualnienie jest dużo operacji, należy go części projektowania i planowania ciągłości biznesowej. W tym artykule możemy Spójrz na dwóch różnych metod organizowanie proces uaktualniania i omówimy korzyści i kompromisy każdej z nich. Do celów w tym artykule używamy prostą aplikację, która składa się z witryną sieci web podłączony do pojedynczej bazy danych jako jego warstwy danych. Naszym celem jest uaktualnienie wersji 1 aplikacji w wersji 2 bez jakiegokolwiek znaczącego wpływu na środowisko pracy użytkownika końcowego. 
+Dowiedz się, jak używać [geografickou replikaci](sql-database-geo-replication-overview.md) w bazie danych SQL w celu umożliwienia przeprowadzania uaktualnienia aplikacji w chmurze. Ponieważ uaktualnienie jest operacją uciążliwe, należy go część projektowania i planowania ciągłości biznesowej. W tym artykule możemy przyjrzeć się dwa różne sposoby organizowania procesu uaktualniania i omówić zalet i wad poszczególnych opcji. Do celów w tym artykule użyjemy prostej aplikacji, która składa się z witryną sieci web podłączony do pojedynczej bazy danych jako swoją warstwę danych. Naszym celem jest, aby uaktualnić wersję 1 aplikacji do wersji 2, bez żadnych znaczny wpływ na środowisko pracy użytkownika końcowego. 
 
 Podczas obliczania opcji uaktualnienia należy uwzględnić następujące czynniki:
 
-* Wpływ na dostępność aplikacji podczas uaktualniania. Jak długo funkcja aplikacji może być ograniczony lub nieprawidłowego działania.
-* Możliwość wycofać w przypadku niepowodzenia uaktualnienia.
-* Luki w zabezpieczeniach aplikacji po wystąpieniu błędu krytycznego niepowiązanych podczas uaktualniania.
-* Dolar całkowity koszt.  Obejmuje to dodatkowa Redundancja i przyrostowe kosztów składników tymczasowy używany przez proces uaktualniania. 
+* Wpływ na dostępność aplikacji, podczas uaktualniania. Jak długo funkcja aplikacji może być ograniczony lub obniżoną wydajność.
+* Możliwość przywracać stanu sprzed na wypadek niepowodzenia uaktualnienia.
+* Luki w zabezpieczeniach aplikacji, w przypadku niepowiązanych poważnej awarii podczas uaktualniania.
+* Dolar łączny koszt.  Obejmuje to dodatkowa Redundancja i dodatkowe koszty tymczasowe składniki używane przez proces uaktualniania. 
 
-## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Uaktualnianie aplikacji, które opierają się na kopie zapasowe bazy danych dla odzyskiwania po awarii
-Jeśli aplikacji opiera się na automatyczne bazy danych kopii zapasowych i używa geograficzne do odzyskiwania po awarii, zazwyczaj jest wdrażany jeden region platformy Azure. W takim przypadku proces uaktualnienia obejmuje utworzenie kopii zapasowej wdrożenia wszystkich składników aplikacji objętego uaktualnienia. Aby zminimalizować zakłócenia użytkownika końcowego Menedżera ruchu Azure (WATM) będzie korzystać z profilem trybu failover.  Na poniższym diagramie przedstawiono środowisku operacyjnym przed procesu uaktualniania. Punkt końcowy <i>contoso 1.azurewebsites.net</i> reprezentuje gnieździe produkcyjnym aplikacji, która musi zostać uaktualniony. Aby włączyć możliwość wycofać uaktualnienie, ma potrzeby tworzenia miejsca etap z pełni zsynchronizowanej kopii aplikacji. Poniższe kroki są wymagane w celu przygotowania aplikacji do uaktualnienia:
+## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Uaktualnianie aplikacji, które polegają na kopie zapasowe bazy danych na potrzeby odzyskiwania po awarii
+Jeśli aplikacja opiera się na automatycznych kopiach zapasowych i używa funkcja przywracania geograficznego odzyskiwania po awarii, zwykle jest wdrażany w pojedynczym regionie platformy Azure. W tym przypadku proces uaktualnienia obejmuje utworzenie kopii zapasowej wdrożenia wszystkich składników aplikacji zajmujące się uaktualnienia. Aby zminimalizować zakłócenia przez użytkownika końcowego będzie korzystać z usługi Azure Traffic Manager (ATM), za pomocą profilu trybu failover.  Na poniższym diagramie przedstawiono środowisko operacyjne przed procesu uaktualniania. Punkt końcowy <i>contoso 1.azurewebsites.net</i> reprezentuje miejscem produkcyjnym, aplikacji, która musi zostać uaktualniony. Aby włączyć możliwość wycofać uaktualnienie, ma potrzeby tworzenia miejsca etapu z w pełni zsynchronizowane kopię tej aplikacji. Poniższe kroki są wymagane w celu przygotowania aplikacji do uaktualnienia:
 
-1. Utwórz miejsce etapu dla uaktualnienia. Aby tworzenia pomocniczej bazy danych (1), a następnie wdrożona identyczne witryny sieci web, w tym samym regionie Azure. Monitorowanie lokacji dodatkowej, aby zobaczyć, jeśli proces rozmieszczania kończy się.
-2. Utwórz profil trybu failover w WATM z <i>contoso 1.azurewebsites.net</i> jako punkt końcowy w trybie online i <i>contoso 2.azurewebsites.net</i> w trybie offline. 
+1. Utwórz miejsce etapu dla uaktualnienie. Aby czy utworzyć pomocniczą bazę danych (1) i wdrażanie identycznych witryny sieci web, w tym samym regionie platformy Azure. Monitoruj pomocniczego, aby zobaczyć, jeśli proces rozmieszczania kończy się.
+2. Utwórz profil pracy awaryjnej w ATM z <i>contoso 1.azurewebsites.net</i> jako punkt końcowy w trybie online i <i>contoso 2.azurewebsites.net</i> w trybie offline. 
 
 > [!NOTE]
-> Należy pamiętać, procedura przygotowująca nie będą miały wpływ aplikacji w miejscu produkcyjnym oraz mogą działać w trybie pełnego dostępu.
+> Należy pamiętać, procedura przygotowująca nie ma wpływu na aplikacji w gnieździe produkcyjnym i może działać w trybie pełnego dostępu.
 >  
 
-![Konfiguracja replikacji Przejdź bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
+![Konfiguracja z rzeczywistym użyciem — Replikacja bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
-Po wykonaniu czynności przygotowujące aplikacja jest gotowa do rzeczywistego uaktualnienia. Na poniższym diagramie przedstawiono etapy procesu uaktualniania. 
+Po wykonaniu kroków przygotowywania aplikacji jest gotowy do rzeczywistego uaktualnienia. Na poniższym diagramie przedstawiono kroki do wykonania w procesie uaktualniania. 
 
-1. Ustaw podstawowej bazy danych w tryb tylko do odczytu (3) do miejsca produkcji. Gwarantuje to, że produkcji wystąpienie aplikacji (wersja 1) pozostanie tylko do odczytu podczas uaktualniania, co uniemożliwia rozbieżności danych między V1 i V2 wystąpień bazy danych.  
-2. Odłącz pomocniczej bazy danych przy użyciu trybu planowane zakończenie (4). Utworzy on pełni zsynchronizowanej niezależnych kopii podstawowej bazy danych. Ta baza danych zostanie uaktualniona.
-3. Włącz podstawowej bazy danych w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia w miejscu etap [5].     
+1. Ustaw podstawowej bazy danych w gnieździe produkcyjnym do trybu tylko do odczytu (3). Gwarantuje to, że wystąpienie produkcyjnych aplikacji (wersja 1) pozostanie tylko do odczytu podczas uaktualniania, aby zapobiec wystąpieniu rozbieżności danych między wystąpieniami bazy danych w wersji 1 i 2.  
+2. Odłącz pomocniczej bazy danych przy użyciu trybu planowane zakończenie (4). Zostanie utworzony w pełni zsynchronizowane kopię niezależnie od podstawowej bazy danych. Ta baza danych zostanie uaktualniony.
+3. Włącz podstawowej bazy danych w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia w miejscu etapu (5).     
 
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
-Jeśli uaktualnienie zakończone pomyślnie możesz teraz przystąpić do przełącznika użytkowników końcowych do przemieszczanego kopii aplikacji. Teraz będzie gotowa do miejsca produkcji aplikacji.  Ten proces obejmuje kilka kroków więcej, jak pokazano na poniższym diagramie.
+Jeśli uaktualnianie zakończone pomyślnie możesz teraz przystąpić do przełączania użytkowników końcowych do kopiowania przejściowego aplikacji. Staną się teraz z miejscem produkcyjnym aplikacji.  Ten proces obejmuje kilka kroków pokazanych na poniższym diagramie.
 
-1. W profilu WATM, aby zmienić online punktu końcowego <i>contoso 2.azurewebsites.net</i>, który wskazuje wersji V2 witryny sieci web (6). Staje się teraz gniazda produkcyjnego z aplikacją V2 i ruchu przez użytkownika końcowego jest kierowany do niego.  
-2. Jeśli nie są już potrzebne składniki aplikacji V1, możesz bezpiecznie usunąć je (7).   
+1. Przełącz online punktu końcowego z profilu ATM <i>contoso 2.azurewebsites.net</i>, który wskazuje na witrynie sieci web (6) w wersji V2. Staje się teraz z miejscem produkcyjnym przy użyciu aplikacji w wersji 2 i do niego jest przekierowywany ruch użytkowników końcowych.  
+2. Jeśli nie potrzebujesz już składniki aplikacji w wersji 1, dzięki czemu możesz bezpiecznie usunąć je (7).   
 
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
-Jeśli proces uaktualniania zakończy się niepowodzeniem, na przykład z powodu błędu skryptu uaktualniania miejsca etapie należy traktować jako naruszenia zabezpieczeń. Aby wycofać aplikację do stanu sprzed uaktualnienia po prostu przywrócić aplikacji w miejscu produkcyjnym pełny dostęp. Czynności procedury są wyświetlane na diagramie dalej.    
+Jeśli proces uaktualniania zakończy się niepowodzeniem, na przykład ze względu na błąd w skrypcie uaktualniania miejsca etapie należy uwzględnić naruszenia zabezpieczeń. Aby wycofać aplikacji do stanu sprzed uaktualnienia po prostu przywrócić aplikacji w gnieździe produkcyjnym pełny dostęp. Etapy są wyświetlane na diagramie dalej.    
 
-1. Ustawić kopii bazy danych w trybie odczytu i zapisu (8). Spowoduje to przywrócenie pełne V1 funkcjonalnie w gnieździe produkcyjnym.
-2. Wykonaj analiza głównych przyczyn i usunąć składniki ze złamanymi zabezpieczeniami w gnieździe etap (9). 
+1. Ustaw kopii bazy danych w trybie odczytu i zapisu (8). Spowoduje to przywrócenie pełne V1 funkcjonalnie w gnieździe produkcyjnym.
+2. Analiza głównych przyczyn i usunąć składniki, których bezpieczeństwo zostało naruszone w gnieździe etapu (9). 
 
-W tym momencie aplikacja jest w pełni funkcjonalny i można powtórzyć kroki uaktualniania.
-
-> [!NOTE]
-> Wycofywanie nie wymaga zmian w profilu WATM on już wskazuje <i>contoso 1.azurewebsites.net</i> jako aktywny punkt końcowy.
-> 
-> 
-
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
-
-Klucz **korzyści** tej opcji jest uaktualnienie aplikacji w pojedynczym regionie przy użyciu zestawu prostych krokach. Koszt dolara uaktualnienia jest stosunkowo niska. Głównym **zależnościami** jest, że jeśli wystąpi błąd krytyczny podczas uaktualniania odzyskiwania do stanu sprzed uaktualnienia będzie obejmować ponownego wdrażania aplikacji w innym regionie i przywracanie bazy danych z kopii zapasowej za pomocą przywracaniem geograficznym. Ten proces spowoduje znaczne przestoju.   
-
-## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Uaktualnianie aplikacji, które zależą od bazy danych — replikacja geograficzna odzyskiwania po awarii
-Jeśli aplikacja korzysta z georeplikacji ciągłość prowadzenia działalności biznesowej, jest wdrażana na co najmniej dwóch różnych regionach z aktywnym wdrożeniu w regionie podstawowym i rezerwy wdrożenia w regionie kopii zapasowej. Oprócz czynników, o których wspomniano wcześniej proces uaktualniania należy zagwarantować, że:
-
-* Aplikacja pozostaje chroniona przed poważnej awarii przez cały czas w trakcie procesu uaktualniania
-* Uaktualnienia równoległe ze składnikami programu active geograficznie nadmiarowego składniki aplikacji
-
-Na osiągnięcie tych celów będzie korzystać przy użyciu profilu trybu failover z jedna aktualizacja aktywna i trzy punkty końcowe kopii zapasowej Azure ruchu Manager (WATM).  Na poniższym diagramie przedstawiono środowisku operacyjnym przed procesu uaktualniania. Witryny sieci web <i>contoso 1.azurewebsites.net</i> i <i>contoso dr.azurewebsites.net</i> reprezentują gnieździe produkcyjnym aplikacji z nadmiarowością pełnej geograficznych. Aby włączyć możliwość wycofać uaktualnienie, ma potrzeby tworzenia miejsca etap z pełni zsynchronizowanej kopii aplikacji. Ponieważ należy się upewnić, aplikacja szybko można odzyskać w przypadku, gdy wystąpi błąd krytyczny podczas procesu uaktualniania, gniazdo etapie należy geograficznie nadmiarowego również. Poniższe kroki są wymagane w celu przygotowania aplikacji do uaktualnienia:
-
-1. Utwórz miejsce etapu dla uaktualnienia. Aby tworzenia pomocniczej bazy danych (1), a następnie wdrożona identyczne kopię witryny sieci web, w tym samym regionie Azure. Monitorowanie lokacji dodatkowej, aby zobaczyć, jeśli proces rozmieszczania kończy się.
-2. Utwórz geograficznie nadmiarowego pomocniczej bazy danych w miejscu etap poprzez replikację geograficzną dodatkowej bazy danych do obszaru tworzenia kopii zapasowej (jest to nazywane "łańcuchowej — replikacja geograficzna"). Monitorowanie kopii zapasowej dodatkowej czy Proces rozmieszczania jest wypełniony (3).
-3. Utwórz kopię rezerwy witryny sieci web w regionie kopii zapasowej i połączyć ją pomocniczej geograficznie nadmiarowego (4).  
-4. Dodaj dodatkowe punkty końcowe <i>contoso 2.azurewebsites.net</i> i <i>contoso 3.azurewebsites.net</i> do profilu trybu failover w WATM jako punktów końcowych w trybie offline (5). 
+Na tym etapie aplikacja jest w pełni funkcjonalne i można powtórzyć kroki uaktualnienia.
 
 > [!NOTE]
-> Należy pamiętać, procedura przygotowująca nie będą miały wpływ aplikacji w miejscu produkcyjnym oraz mogą działać w trybie pełnego dostępu.
+> Wycofywanie nie wymaga zmian w profilu ATM, jak już wskazuje <i>contoso 1.azurewebsites.net</i> jako aktywny punkt końcowy.
 > 
 > 
 
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
-Po wykonaniu czynności przygotowujące miejsce etap jest gotowy do uaktualnienia. Na poniższym diagramie przedstawiono kroki uaktualniania.
+Klucz **korzyści** tej opcji jest możliwość uaktualnienia aplikacji w jednym regionie przy użyciu zestawu prostych krokach. Koszt Dolar uaktualnienia jest stosunkowo niska. Głównym **kosztem** jest, że w przypadku poważnej awarii podczas uaktualniania Przywracanie do stanu sprzed uaktualnienia będzie obejmować ponownego wdrażania aplikacji w innym regionie i przywracanie bazy danych z kopii zapasowej przy użyciu Funkcja przywracania geograficznego. Ten proces spowoduje znaczących przestojów.   
 
-1. Ustaw podstawowej bazy danych w gnieździe produkcyjnym do trybu tylko do odczytu (6). Gwarantuje to, że produkcji wystąpienie aplikacji (wersja 1) pozostanie tylko do odczytu podczas uaktualniania, co uniemożliwia rozbieżności danych między V1 i V2 wystąpień bazy danych.  
-2. Odłącz dodatkowej bazy danych w tym samym regionie, w trybie planowane zakończenie (7). Utworzy on pełni zsynchronizowanej niezależnych kopii podstawowej bazy danych, którego podstawowy automatycznie stanie się po zakończeniu. Ta baza danych zostanie uaktualniona.
-3. Włącz podstawowej bazy danych w miejscu etap w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia (8).    
+## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Uaktualnianie aplikacji, które zależą od bazy danych replikacji geograficznej dla odzyskiwania po awarii
+Jeśli aplikacja korzysta z replikacji geograficznej dla ciągłości działania, wdrożono co najmniej dwóch różnych regionach, aktywne wdrożenie w regionie podstawowym i wstrzymania wdrożenia w regionie kopii zapasowej. Oprócz czynników, o których wspomniano wcześniej proces uaktualniania należy zagwarantować, że:
 
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+* Aplikacja pozostaje chroniona przed katastrofalnych awarii przez cały czas podczas procesu uaktualniania
+* Geograficznie nadmiarowy składniki aplikacji są uaktualniane równolegle ze składnikami active
 
-Jeśli uaktualnienie zostało ukończone pomyślnie możesz teraz przystąpić do przełącznika użytkowników końcowych do wersji V2 aplikacji. Na poniższym diagramie przedstawiono etapy.
+Aby osiągnąć te cele będzie korzystać przy użyciu profilu trybu failover z jednym aktywnym i trzech kopii zapasowych punktów końcowych Azure Traffic Manager (ATM).  Na poniższym diagramie przedstawiono środowisko operacyjne przed procesu uaktualniania. Witryny sieci web <i>contoso 1.azurewebsites.net</i> i <i>contoso dr.azurewebsites.net</i> reprezentują miejscem produkcyjnym w aplikacji przy użyciu pełnej geograficznej nadmiarowości. Aby włączyć możliwość wycofać uaktualnienie, ma potrzeby tworzenia miejsca etapu z w pełni zsynchronizowane kopię tej aplikacji. Ponieważ musisz upewnić się, że aplikację można szybko odzyskać, w przypadku wystąpienia poważnej awarii w procesie uaktualnienia miejsca etapu musi być magazynu geograficznie nadmiarowego w także. Poniższe kroki są wymagane w celu przygotowania aplikacji do uaktualnienia:
 
-1. Przełączyć się aktywny punkt końcowy w profilu WATM <i>contoso 2.azurewebsites.net</i>, które teraz wskazuje wersji V2 witryny sieci web (9). Staje się teraz gnieździe produkcyjnym z aplikacją V2 i ruchu przez użytkownika końcowego jest kierowany do niego. 
-2. Jeśli nie są już potrzebne aplikacji V1, możesz bezpiecznie usunąć go (10 i 11).  
-
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
-
-Jeśli proces uaktualniania zakończy się niepowodzeniem, na przykład z powodu błędu skryptu uaktualniania miejsca etapie należy traktować jako naruszenia zabezpieczeń. Aby wycofać aplikację do stanu sprzed uaktualnienia można po prostu przywrócić w gnieździe produkcyjnym z pełnym dostępem przy użyciu aplikacji. Czynności procedury są wyświetlane na diagramie dalej.    
-
-1. Ustaw kopii podstawowej bazy danych w trybie odczytu i zapisu (12) miejsca produkcji. Spowoduje to przywrócenie pełne V1 funkcjonalnie w gnieździe produkcyjnym.
-2. Wykonaj analiza głównych przyczyn i usunąć składniki ze złamanymi zabezpieczeniami w gnieździe etap (13 i 14). 
-
-W tym momencie aplikacja jest w pełni funkcjonalny i można powtórzyć kroki uaktualniania.
+1. Utwórz miejsce etapu dla uaktualnienie. Aby czy utworzyć pomocniczą bazę danych (1), a następnie wdrożona identyczną kopię witryny sieci web, w tym samym regionie platformy Azure. Monitoruj pomocniczego, aby zobaczyć, jeśli proces rozmieszczania kończy się.
+2. Tworzenie nadmiarowej geograficznie pomocniczej bazy danych w gnieździe etapu dzięki replikacji geograficznej pomocniczej bazy danych w regionie kopii zapasowej (jest to nazywane "połączonymi w łańcuch replikacji geograficznej"). Monitorowanie kopii zapasowych dodatkowej można sprawdzić, czy Proces rozmieszczania jest ukończone (3).
+3. Utwórz kopię rezerwy dynamicznej witryny sieci web w regionie kopii zapasowej i połączyć go z pomocniczego magazynu geograficznie nadmiarowego (4).  
+4. Dodaj dodatkowe punkty końcowe <i>contoso 2.azurewebsites.net</i> i <i>contoso 3.azurewebsites.net</i> do profilu pracy awaryjnej w ATM jako offline punktów końcowych (5). 
 
 > [!NOTE]
-> Wycofywanie nie wymaga zmian w profilu WATM on już wskazuje <i>contoso 1.azurewebsites.net</i> jako aktywny punkt końcowy.
+> Należy pamiętać, procedura przygotowująca nie ma wpływu na aplikacji w gnieździe produkcyjnym i może działać w trybie pełnego dostępu.
 > 
 > 
 
-![Konfiguracja — replikacja geograficzna bazy danych SQL. Odzyskiwanie awaryjne chmury.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
-Klucz **korzyści** tej opcji jest można uaktualnić zarówno aplikacji, jak i jego geograficznie nadmiarowego kopiowania równolegle w bez naruszania ciągłość prowadzenia działalności biznesowej podczas uaktualniania. Głównym **zależnościami** wymaga nadmiarowości dwa razy każdego składnika aplikacji i w związku z tym generuje wyższy koszt dolara ($). Obejmuje ona również bardziej skomplikowanych przepływów pracy. 
+Po wykonaniu czynności przygotowujące miejsce etap jest gotowy do uaktualnienia. Na poniższym diagramie przedstawiono kroki uaktualnienia.
+
+1. Ustaw podstawowej bazy danych w gnieździe produkcyjnym do trybu tylko do odczytu (6). Gwarantuje to, że wystąpienie produkcyjnych aplikacji (wersja 1) pozostanie tylko do odczytu podczas uaktualniania, aby zapobiec wystąpieniu rozbieżności danych między wystąpieniami bazy danych w wersji 1 i 2.  
+2. Odłącz pomocniczej bazy danych w tym samym regionie przy użyciu trybu planowane zakończenie (7). Niezależnie od w pełni zsynchronizowane kopię podstawowej bazy danych, które będą automatycznie stają się one głównej po zakończeniu zostanie utworzony. Ta baza danych zostanie uaktualniony.
+3. Włącz podstawowej bazy danych w gnieździe etapu w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia (8).    
+
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+
+Jeśli uaktualnianie zostało ukończone pomyślnie teraz można przystąpić do przełączania użytkowników końcowych do aplikacji w wersji V2. Na poniższym diagramie przedstawiono kroki do wykonania.
+
+1. Przełącz aktywny punkt końcowy z profilu ATM <i>contoso 2.azurewebsites.net</i>, które jest teraz wskazuje na witrynie sieci web (9) w wersji V2. Staje się teraz miejscem produkcyjnym, przy użyciu aplikacji w wersji 2 i użytkowników końcowych ruch będzie kierowany do niego. 
+2. Jeśli nie potrzebujesz już aplikacji w wersji 1, dzięki czemu możesz bezpiecznie usunąć to (10 i 11).  
+
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
+
+Jeśli proces uaktualniania zakończy się niepowodzeniem, na przykład ze względu na błąd w skrypcie uaktualniania miejsca etapie należy uwzględnić naruszenia zabezpieczeń. Aby wycofać aplikacji do stanu sprzed uaktualnienia po prostu wracasz do korzystania z aplikacji w gnieździe produkcyjnym z pełnym dostępem. Etapy są wyświetlane na diagramie dalej.    
+
+1. Ustaw kopia podstawowej bazy danych w miejscu produkcyjnym w trybie odczytu i zapisu (12). Spowoduje to przywrócenie pełne V1 funkcjonalnie w gnieździe produkcyjnym.
+2. Analiza głównych przyczyn i usunąć składniki, których bezpieczeństwo zostało naruszone w gnieździe etapu (13 i 14). 
+
+Na tym etapie aplikacja jest w pełni funkcjonalne i można powtórzyć kroki uaktualnienia.
+
+> [!NOTE]
+> Wycofywanie nie wymaga zmian w profilu ATM, jak już wskazuje <i>contoso 1.azurewebsites.net</i> jako aktywny punkt końcowy.
+> 
+> 
+
+![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+
+Klucz **korzyści** tej opcji jest możliwość uaktualnienia aplikacji i jej geograficznie nadmiarowych kopii równolegle w bez uszczerbku dla ciągłości działania usługi podczas uaktualniania. Głównym **kosztem** wymaga podwójna nadmiarowość każdego składnika aplikacji i w związku z tym spowoduje naliczenie wyższych kosztów dolara. Obejmuje to również bardziej skomplikowanych przepływów pracy. 
 
 ## <a name="summary"></a>Podsumowanie
-Te dwie metody uaktualniania opisaną w artykule różnią się złożoność i dolara kosztów, ale ich obu skupić się na skrócenie czasu, gdy użytkownik końcowy jest ograniczona do operacji tylko do odczytu. Ta godzina bezpośrednio jest zdefiniowana przez czas trwania uaktualniania skryptów. Nie są zależne od rozmiaru bazy danych, wybranej warstwy usług, konfiguracji witryny sieci web i innych czynników, które nie można łatwo zarządzać. Jest to spowodowane wszystkie kroki przygotowania jest całkowicie niezależna od kroki uaktualniania i mogą być przeprowadzane bez wpływu na aplikacji produkcyjnej. Wydajność skryptów uaktualniania jest kluczowym czynnikiem, który określa środowisko użytkownika końcowego podczas uaktualniania. Dlatego najlepiej mogła ją udoskonalać jest koncentrujące się wysiłków na tworzenie jak najbardziej efektywne skrypt uaktualnienia skryptu.  
+Te dwie metody uaktualniania opisany w artykule różnią się w złożoność i Dolar kosztów, ale ich obu skupić się na skrócenie czasu, gdy użytkownik końcowy jest ograniczona do operacji tylko do odczytu. Ten czas bezpośrednio jest zdefiniowana przez czas trwania uaktualniania skryptów. Nie są zależne od rozmiaru bazy danych, warstwy usług, który został wybrany, konfiguracja witryny sieci web i inne czynniki, które nie mogą łatwo zarządzać. Jest to spowodowane wszystkich kroków przygotowania są całkowicie niezależni od kroki uaktualnienia i może odbywać się bez wywierania wpływu na aplikację w środowisku produkcyjnym. Wydajność skrypt uaktualnienia skryptu jest kluczowym czynnikiem, który określa środowisko użytkownika końcowego podczas uaktualniania. Najlepszym sposobem ją ulepszyć, możesz więc, koncentrując się prace nad jak najbardziej efektywne skrypt uaktualnienia skryptu.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Omówienie ciągłości działalności biznesowej i scenariuszy, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md).
-* Aby dowiedzieć się więcej na temat usługi Azure SQL bazy danych automatycznego tworzenia kopii zapasowych, zobacz [bazy danych SQL automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md).
-* Aby dowiedzieć się więcej o używaniu kopie zapasowe automatycznego odzyskiwania, zobacz [przywrócić bazę danych z automatycznych kopii zapasowych](sql-database-recovery-using-backups.md).
-* Informacje na temat opcji odzyskiwania szybsze, zobacz [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md).
+* Omówienie ciągłości działania i scenariuszach można znaleźć [omówienie ciągłości działania](sql-database-business-continuity.md).
+* Aby dowiedzieć się więcej na temat usługi Azure SQL Database automatyczne kopie zapasowe, zobacz [bazy danych SQL, automatyczne kopie zapasowe](sql-database-automated-backups.md).
+* Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych do odzyskania, zobacz [przywrócić bazę danych z automatycznych kopii zapasowych](sql-database-recovery-using-backups.md).
+* Aby dowiedzieć się o szybsze opcje odzyskiwania, zobacz [aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md).
 
 

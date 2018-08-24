@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41988771"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744754"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -46,7 +46,7 @@ W tym artykule pokazano, jak utworzyć konto usługi Video Indexer, który jest 
 
 * Zarejestruj dostawcę zasobów EventGrid przy użyciu witryny Azure portal.
 
-    W witrynie Azure portal przejdź do **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft.EventGrid**. Jeśli nie jest w stanie "Zarejestrowane", kliknij przycisk **zarejestrować**. Może potrwać kilka minut, aby zarejestrować. 
+    W [witryny Azure portal](https://portal.azure.com/), przejdź do **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft.EventGrid**. Jeśli nie jest w stanie "Zarejestrowane", kliknij przycisk **zarejestrować**. Może potrwać kilka minut, aby zarejestrować. 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ Obowiązują następujące zastrzeżenia pokrewne usługi Azure Media Services:
 
     Może być konieczne dostosowanie typu i nośniki **jednostek zarezerwowanych**, zgodnie z planowanych obciążenia. Należy pamiętać, że obciążenia jest duże i nie masz wystarczającej liczby jednostek lub szybkość, filmy wideo, przetwarzanie może spowodować błędy przekroczenia limitu czasu.
 
-* Jeśli łączysz się do nowego konta usługi Media Services indeksatora wideo automatycznie rozpoczyna **punkt końcowy przesyłania strumieniowego** w nim:
+* Jeśli łączysz się do nowego konta usługi Media Services indeksatora wideo automatycznie rozpoczyna się domyślnie **punkt końcowy przesyłania strumieniowego** w nim:
 
     ![Punkt końcowy przesyłania strumieniowego usługi Media Services](./media/create-account/ams-streaming-endpoint.png)
 
-* Jeśli łączysz się do istniejącego konta usługi Media Services Video Indexer nie zmienia konfiguracji punktów końcowych przesyłania strumieniowego. Jeśli jest uruchomiony nie **punkt końcowy przesyłania strumieniowego**, nie będzie można oglądać filmy wideo za pomocą tego konta usługi Media Services lub Video Indexer.
+* Jeśli łączysz się do istniejącego konta usługi Media Services Video Indexer nie zmienia domyślna konfiguracja punktu końcowego przesyłania strumieniowego. Jeśli jest uruchomiony nie **punkt końcowy przesyłania strumieniowego**, nie będzie można oglądać filmy wideo za pomocą tego konta usługi Media Services lub Video Indexer.
 
-## <a name="use-video-indexer-apis-v2"></a>Indeksator wideo Użyj interfejsów API w wersji 2
+## <a name="next-steps"></a>Kolejne kroki
 
 Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [użycia interfejsów API](video-indexer-use-apis.md).
 
 Należy używać tego samego użytkownika usługi Azure AD, używane podczas nawiązywania połączenia z platformą Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
-
-[Sprawdź szczegóły w danych wyjściowych JSON](video-indexer-output-json-v2.md).
 

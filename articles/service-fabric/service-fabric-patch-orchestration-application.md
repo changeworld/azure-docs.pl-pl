@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056081"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746901"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -139,7 +139,7 @@ Aktualizacje automatyczne Windows może prowadzić do utraty dostępności, poni
 
 Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=869566).
 
-Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://go.microsoft.com/fwlink/?linkid=869567). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA_v1.2.2.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
@@ -398,3 +398,5 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 ### <a name="version-122-latest"></a>Wersja 1.2.2 (Najnowsza wersja)
 
 - Różne poprawki.
+- Pliki binarne są teraz podpisane.
+- link pobierania sfpkg wskazuje teraz do określonej wersji.

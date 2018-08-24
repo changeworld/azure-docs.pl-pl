@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358722"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818218"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
@@ -146,7 +146,7 @@ Wprowadzono kilka funkcji, które są obsługiwane w Windows, ale nie w systemie
 ### <a name="standalone-clusters"></a>Klastry autonomiczne
 Usługa Service Fabric udostępnia pakiet instalacyjny, w celu utworzenia autonomicznego usługi Service Fabric clusters lokalnie lub na wszystkich dostawców chmury. Klastry autonomiczne umożliwianie użytkownikom do obsługi klastra, wszędzie tam, gdzie chcesz. Jeśli Twoje dane są zgodności lub ograniczenia prawne lub chcesz zachować dane lokalne, może obsługiwać własnego klastra i aplikacji. Aplikacje usługi Service Fabric można uruchomić w wielu środowiskach hostingu bez wprowadzania zmian, więc swojej wiedzy na temat tworzenia aplikacji są przenoszone z jednego środowiska hostingu do innego. 
 
-[Tworzenie pierwszego autonomicznego klastra usługi Service Fabric](service-fabric-get-started-standalone-cluster.md)
+[Tworzenie pierwszego autonomicznego klastra usługi Service Fabric](service-fabric-cluster-creation-for-windows-server.md)
 
 Klastry autonomiczne systemu Linux nie są jeszcze obsługiwane.
 

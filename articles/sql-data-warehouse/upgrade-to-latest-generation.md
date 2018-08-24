@@ -1,30 +1,30 @@
 ---
-title: Uaktualnij do najnowszej generacji Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Magazyn danych SQL Azure należy uaktualnić do najnowszej generacji Azure architektura sprzętu i magazynowania.
+title: Uaktualnianie do najnowszej generacji usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 58d65ef05ed872bb357070de9866253baea5dc70
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777811"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746966"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
-Magazyn danych SQL Azure należy uaktualnić do najnowszej generacji Azure architektura sprzętu i magazynowania.
+Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
 
-## <a name="why-upgrade"></a>Dlaczego uaktualnienie?
-Można teraz bezproblemowo uaktualnić do Gen2 magazynu danych SQL w portalu Azure. Jeśli masz magazyn danych Gen1 uaktualniania jest zalecane. Uaktualniając, można użyć najnowszej generacji Azure sprzętu i magazynu architektura rozszerzona. Można korzystać z większą wydajność, skalowalności i nieograniczony magazyn kolumnowym. 
+## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
+Użytkownik może teraz można bezproblemowo przeprowadzić uaktualnienie do warstwy SQL dane magazynu obliczenia zoptymalizowane pod kątem Gen2 w witrynie Azure portal. Uaktualnianie jest zalecane w przypadku magazynu obliczenia zoptymalizowane pod kątem Gen1 warstwy danych. Przeprowadzając uaktualnienie, można użyć najnowszej generacji sprzętowych platformy Azure i rozszerzone architektury magazynu. Możesz korzystać z zalet zwiększyć wydajność, skalowalności i nieograniczony magazyn kolumnowy. 
 
 ## <a name="applies-to"></a>Dotyczy
-To uaktualnienie dotyczy Gen1 hurtowni danych.
+To uaktualnienie dotyczy magazyny danych warstwy obliczeń Gen1 zoptymalizowane pod kątem.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -32,52 +32,45 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 > [!NOTE]
-> Jeśli istniejącego magazynu danych Gen1 nie znajduje się w regionie, w którym Gen2 jest dostępna, możesz [geograficznie — po ukończeniu przywracania Gen2](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) za pomocą programu PowerShell do obsługiwanym regionie.
+> Jeśli istniejący magazyn danych warstwy obliczeń Gen1 zoptymalizowane pod kątem nie jest dostępne w regionie, w których jest dostępna w warstwie obliczenia zoptymalizowane pod kątem Gen2, możesz to zrobić [geoprzywracanie](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) za pomocą programu PowerShell obsługiwany region.
 > 
 >
 
-1. Jeśli w magazynie danych Gen1 do uaktualnienia jest wstrzymana, [hurtowni danych wznowić](pause-and-resume-compute-portal.md).
-2. Należy przygotować kilka minut przestoju. 
+1. Jeśli w magazynie danych warstwy obliczeń Gen1 zoptymalizowane pod kątem uaktualnienia jest wstrzymana, [hurtowni danych wznowić](pause-and-resume-compute-portal.md).
+2. Należy przygotować za kilka minut przestoju. 
 
 
 
 ## <a name="start-the-upgrade"></a>Uruchom operację uaktualniania
 
-1. Przejdź do Twojej Gen1 danych magazynu w portalu Azure i wybierz polecenie **uaktualnienia do Gen2**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Przejdź do usługi obliczenia zoptymalizowane pod kątem Gen1 danych warstwy magazynu w witrynie Azure portal i wybierz polecenie **uaktualnienie do Gen2**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
 
-2. Domyślnie **wybierz poziom wydajności sugerowane** dla magazynu danych na podstawie aktualny poziom wydajności na Gen1 przy użyciu mapowania poniżej:
+2. Domyślnie **wybierz poziom wydajności sugerowane** dla magazynu danych na podstawie Twój bieżący poziom wydajności w warstwie obliczenia zoptymalizowane pod kątem Gen1 przy użyciu mapowania poniżej:
     
-| Gen1 | Gen2 |
-| :----------------------: | :-------------------: |
-|      DW100 – DW1000      |        DW1000c        |
-|          DW1200          |        DW1500c        |
-|          DW1500          |        DW1500c        |
-|          DW2000          |        DW2000c        |
-|          DW3000          |        DW3000c        |
-|          DW6000          |        DW6000c        |
+   | Zoptymalizowane pod kątem Gen1 warstwa wystąpień obliczeniowych | Zoptymalizowane pod kątem Gen2 warstwa wystąpień obliczeniowych |
+   | :----------------------: | :-------------------: |
+   |      DW100 – DW1000      |        DW1000c        |
+   |          DW1200          |        DW1500c        |
+   |          DW1500          |        DW1500c        |
+   |          DW2000          |        DW2000c        |
+   |          DW3000          |        DW3000c        |
+   |          DW6000          |        DW6000c        |
 
-
-3. Upewnij się, że obciążenie została ukończona uruchomiona i stanie spoczynku przed uaktualnieniem. Wystąpi przestój kilka minut przed powrotem do trybu online jako Gen2 Hurtownia danych magazynu danych. **Kliknij przycisk Uaktualnij,**. Cena warstwę wydajności Gen2 jest obecnie połowie — wyłączone okresie używania wersji zapoznawczej:
+3. Upewnij się, że obciążenie zostało zakończone przed uaktualnieniem uruchomiona i w stanie spoczynku. Wystąpi przestój przez kilka minut, zanim magazyn danych jest online jako magazyn danych warstwy obliczenia zoptymalizowane pod kątem Gen2. **Kliknij przycisk Uaktualnij**. Cena warstwy wydajności warstwy obliczeń Gen2 zoptymalizowane pod kątem jest obecnie pół off w okresie zapoznawczym:
     
-    ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
+   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
-4. **Monitorowanie uaktualnienia** sprawdzając stan w portalu Azure:
+4. **Monitorowanie uaktualnienia** , sprawdzając jego stan w witrynie Azure portal:
 
    ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
    
-   Pierwszym krokiem procesu uaktualniania przechodzi przez operację skalowania ("Uaktualnianie — w trybie Offline") gdzie wszystkie sesje zostaną skasowane i połączenia zostaną usunięte. 
+   Pierwszym krokiem procesu uaktualniania przechodzi przez operację skalowania ("Uaktualnianie — tryb Offline") gdzie wszystkie sesje zostaną skasowane i zostanie porzucony połączeń. 
    
-   Drugi etap procesu uaktualniania jest migracji danych ("Uaktualnianie - Online"). Migracja danych jest strumieniem online proces w tle, co wolno przenosi kolumnowy danych z architektury starego magazynu, do korzystania z lokalnej pamięci podręcznej SSD Architektura magazynu. W tym czasie będzie online wykonywania kwerend i ładowania magazynu danych. Wszystkie dane będą dostępne dla zapytań niezależnie od tego, czy został już zmigrowany, czy nie. Migracja danych odbywa się z szybkością różne w zależności od tego, że rozmiar danych, poziom wydajności i liczby segmentów magazynu kolumn. 
+   Drugi etap procesu uaktualniania jest migracja danych ("Uaktualnianie — Tryb Online"). Migracja danych jest strumieniem online proces w tle, który powoli przesuwa ze starego Architektura magazynu danych kolumnowych do nowej architektury magazynu korzystanie z lokalnej pamięci podręcznej dysków SSD. W tym czasie magazyn danych będzie w trybie online wykonywania zapytań i ładowania. Wszystkie dane będą dostępne dla zapytań, niezależnie od tego, czy ma została zmigrowana, czy nie. Migracja danych odbywa się stawki różne w zależności od tego, czy rozmiar danych, poziom wydajności i liczbę segmentów magazynu kolumn. 
 
-5. **Znajdź magazynu danych Gen2** za pomocą bloku przeglądania bazy danych SQL. 
+5. **Opcjonalne zalecenie:** przyspiesza proces w tle migracji danych, możesz od razu wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn podstawowy może być wykonywania zapytań na większy cel poziomu usługi i klasa zasobów. Ta operacja jest **offline** w porównaniu do proces tła strumieniem, który może zająć godzin w zależności od liczby i rozmiarów tabel; jednak migracja danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać nowej architektury magazynu rozszerzonego po zakończeniu za pomocą grupy wierszy wysokiej jakości. 
 
-> [!NOTE]
-> Obecnie jest problem gdzie danych Gen2 magazynów nie będą wyświetlane w usłudze SQL data warehouse Przeglądaj bloku. Użyj bloku przeglądania bazy danych SQL można znaleźć nowo uaktualniony Gen2 magazynu danych. Aktywnie pracujemy nad tej poprawki.
-> 
-
-6. **Opcjonalne zalecenie:** aby przyspieszyć proces migracji danych w tle, zaleca się natychmiast wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn w większych SLO i zasobów Klasa. Ta operacja jest w trybie offline w porównaniu do strumieniem proces w tle; jednak migracji danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać nowej architektury magazynu rozszerzonego raz wraz z rowgroups wysokiej jakości. 
-
-To następujące zapytanie generuje wymagane polecenia Alter Index Rebuild aby przyspieszyć proces migracji danych:
+Następujące zapytanie generuje wymagane polecenia Alter Index Rebuild w celu przyspieszenia procesu migracji danych:
 
 ```sql
 SELECT 'ALTER INDEX [' + idx.NAME + '] ON [' 
@@ -125,5 +118,5 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Magazyn danych uaktualnionego jest w trybie online. Aby móc korzystać z rozszerzonego architektury, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md).
+Magazyn danych uaktualnionego jest w trybie online. Aby móc korzystać z rozszerzonych architektury, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md).
  

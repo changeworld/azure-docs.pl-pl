@@ -14,94 +14,109 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: 0bea00d411205541684e807182abd3236c09bd9d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2658dcb0d206086aad1443e2dc720b6f1f55906f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595710"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818162"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Forms
+
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Przegląd
+
 W tym samouczku, jak dodawać powiadomienia wypychane do wszystkich projektów, które powstały w wyniku [Xamarin.Forms — szybki start](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienia wypychane są wysyłane do wszystkich klientów dla wielu platform, za każdym razem, gdy rekord zostanie wstawiona.
 
 Jeśli nie używasz projektu serwera pobranego — szybki start, konieczne będzie pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Dla systemów iOS, konieczne będzie [członkostwa w programie dla deweloperów firmy Apple](https://developer.apple.com/programs/ios/) oraz urządzenie fizyczne z systemem iOS. [Symulatora systemu iOS nie obsługuje powiadomienia wypychane](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
 ## <a name="configure-hub"></a>Konfigurowanie Centrum powiadomień
+
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizuj projekt serwera do wysyłania powiadomień wypychanych
+
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="configure-and-run-the-android-project-optional"></a>Konfigurowanie i uruchamianie projektu dla systemu Android (opcjonalnie)
+
 Wypełnij tę sekcję, aby włączyć powiadomienia wypychane dla projektu Xamarin.Forms (droid) dla systemu Android.
 
 ### <a name="enable-firebase-cloud-messaging-fcm"></a>Włączanie usługi Firebase Cloud Messaging (FCM)
+
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
 ### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Skonfiguruj zaplecze funkcji Mobile Apps do wysyłania żądań push przy użyciu usługi FCM
+
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>Dodawanie powiadomień wypychanych do projektu dla systemu Android
+
 Za pomocą zaplecza skonfigurowane przy użyciu usługi FCM można dodać składniki i kody klienta można zarejestrować za pomocą usługi FCM. Możesz także zarejestrować odbieranie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs za pomocą zaplecze funkcji Mobile Apps i otrzymywać powiadomienia.
 
 1. W **Droid** projektu, kliknij prawym przyciskiem myszy **odwołania > Zarządzaj pakietami NuGet...** .
 1. W oknie Menedżera pakietów NuGet, wyszukaj **Xamarin.Firebase.Messaging** pakietu i dodaj go do projektu.
-1. W properies projektu dla **Droid** projektu, ustaw ją skompilować przy użyciu systemu Android w wersji 7.0 lub nowszej.
+1. We właściwościach projektu **Droid** projektu, ustaw ją skompilować przy użyciu systemu Android w wersji 7.0 lub nowszej.
 1. Dodaj **google-services.json** pliku, został pobrany z konsoli Firebase do katalogu głównego **Droid** projektu i ustaw jego akcję kompilacji na **GoogleServicesJson**. Aby uzyskać więcej informacji, zobacz [Dodaj plik JSON usługi Google](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Rejestrowanie w usłudze Firebase Cloud Messaging
 
 1. Otwórz plik **AndroidManifest.xml** i wstaw następujące elementy `<receiver>` do elementu `<application>`:
 
-        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
-        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
-          <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-            <category android:name="${applicationId}" />
-          </intent-filter>
-        </receiver>
+    ```xml
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="${applicationId}" />
+        </intent-filter>
+    </receiver>
+    ```
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>Wdrażanie usługi Identyfikatora wystąpienia usługi Firebase
 
 1. Dodaj nową klasę do **Droid** projektu o nazwie `FirebaseRegistrationService`i upewnij się, że następujące `using` instrukcje są obecne w górnej części pliku:
 
-        using System.Threading.Tasks;
-        using Android.App;
-        using Android.Util;
-        using Firebase.Iid;
-        using Microsoft.WindowsAzure.MobileServices;
+    ```csharp
+    using System.Threading.Tasks;
+    using Android.App;
+    using Android.Util;
+    using Firebase.Iid;
+    using Microsoft.WindowsAzure.MobileServices;
+    ```
 
 1. Zastąp pustą `FirebaseRegistrationService` klasy z następującym kodem:
 
-        [Service]
-        [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
-        public class FirebaseRegistrationService : FirebaseInstanceIdService
+    ```csharp
+    [Service]
+    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+    public class FirebaseRegistrationService : FirebaseInstanceIdService
+    {
+        const string TAG = "FirebaseRegistrationService";
+
+        public override void OnTokenRefresh()
         {
-            const string TAG = "FirebaseRegistrationService";
-
-            public override void OnTokenRefresh()
-            {
-                var refreshedToken = FirebaseInstanceId.Instance.Token;
-                Log.Debug(TAG, "Refreshed token: " + refreshedToken);
-                SendRegistrationTokenToAzureNotificationHub(refreshedToken);
-            }
-
-            void SendRegistrationTokenToAzureNotificationHub(string token)
-            {
-                // Update notification hub registration
-                Task.Run(async () =>
-                {
-                    await AzureNotificationHubService.RegisterAsync(TodoItemManager.DefaultManager.CurrentClient.GetPush(), token);
-                });
-            }
+            var refreshedToken = FirebaseInstanceId.Instance.Token;
+            Log.Debug(TAG, "Refreshed token: " + refreshedToken);
+            SendRegistrationTokenToAzureNotificationHub(refreshedToken);
         }
+
+        void SendRegistrationTokenToAzureNotificationHub(string token)
+        {
+            // Update notification hub registration
+            Task.Run(async () =>
+            {
+                await AzureNotificationHubService.RegisterAsync(TodoItemManager.DefaultManager.CurrentClient.GetPush(), token);
+            });
+        }
+    }
+    ```
 
     `FirebaseRegistrationService` Klasa jest odpowiedzialny za Generowanie tokenów zabezpieczających, które Zezwól aplikacji na dostęp do usługi FCM. `OnTokenRefresh` Metoda jest wywoływana, gdy aplikacja odbiera token rejestracji z usługi FCM. Metoda pobiera token z `FirebaseInstanceId.Instance.Token` właściwość, która asynchronicznie jest aktualizowany za pomocą usługi FCM. `OnTokenRefresh` Wywoływana jest metoda rzadko, ponieważ token są aktualizowane tylko po zainstalowaniu lub odinstalowaniu, gdy użytkownik usuwa dane aplikacji, gdy aplikacja Usuwa identyfikator wystąpienia aplikacji lub gdy zabezpieczeń tokenu naruszenie bezpieczeństwa. Ponadto usługi Identyfikatora wystąpienia usługi FCM zażąda, że aplikacja odświeża jej token okresowo zazwyczaj co 6 miesięcy.
 
@@ -111,38 +126,42 @@ Za pomocą zaplecza skonfigurowane przy użyciu usługi FCM można dodać skład
 
 1. Dodaj nową klasę do **Droid** projektu o nazwie `AzureNotificationHubService`i upewnij się, że następujące `using` instrukcje są obecne w górnej części pliku:
 
-        using System;
-        using System.Threading.Tasks;
-        using Android.Util;
-        using Microsoft.WindowsAzure.MobileServices;
-        using Newtonsoft.Json.Linq;
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Android.Util;
+    using Microsoft.WindowsAzure.MobileServices;
+    using Newtonsoft.Json.Linq;
+    ```
 
 1. Zastąp pustą `AzureNotificationHubService` klasy z następującym kodem:
 
-        public class AzureNotificationHubService
+    ```csharp
+    public class AzureNotificationHubService
+    {
+        const string TAG = "AzureNotificationHubService";
+
+        public static async Task RegisterAsync(Push push, string token)
         {
-            const string TAG = "AzureNotificationHubService";
-
-            public static async Task RegisterAsync(Push push, string token)
+            try
             {
-                try
+                const string templateBody = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                JObject templates = new JObject();
+                templates["genericMessage"] = new JObject
                 {
-                    const string templateBody = "{\"data\":{\"message\":\"$(messageParam)\"}}";
-                    JObject templates = new JObject();
-                    templates["genericMessage"] = new JObject
-                    {
-                        {"body", templateBody}
-                    };
+                    {"body", templateBody}
+                };
 
-                    await push.RegisterAsync(token, templates);
-                    Log.Info("Push Installation Id: ", push.InstallationId.ToString());
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(TAG, "Could not register with Notification Hub: " + ex.Message);
-                }
+                await push.RegisterAsync(token, templates);
+                Log.Info("Push Installation Id: ", push.InstallationId.ToString());
+            }
+            catch (Exception ex)
+            {
+                Log.Error(TAG, "Could not register with Notification Hub: " + ex.Message);
             }
         }
+    }
+    ```
 
     `RegisterAsync` Metoda tworzy szablon wiadomości z powiadomieniem proste jak JSON i rejestry, aby otrzymywać powiadomienia o szablonach z Centrum powiadomień przy użyciu tokenu rejestracji usługi Firebase. Daje to gwarancję, że wszelkie powiadomienia wysyłane z Centrum powiadomień platformy Azure będą ukierunkowane na urządzenie, reprezentowane przez tokenu rejestracji.
 
@@ -150,58 +169,63 @@ Za pomocą zaplecza skonfigurowane przy użyciu usługi FCM można dodać skład
 
 1. Dodaj nową klasę do **Droid** projektu o nazwie `FirebaseNotificationService`i upewnij się, że następujące `using` instrukcje są obecne w górnej części pliku:
 
-        using Android.App;
-        using Android.Content;
-        using Android.Media;
-        using Android.Support.V7.App;
-        using Android.Util;
-        using Firebase.Messaging;
+    ```csharp
+    using Android.App;
+    using Android.Content;
+    using Android.Media;
+    using Android.Support.V7.App;
+    using Android.Util;
+    using Firebase.Messaging;
+    ```
 
 1. Zastąp pustą `FirebaseNotificationService` klasy z następującym kodem:
 
-        [Service]
-        [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
-        public class FirebaseNotificationService : FirebaseMessagingService
+    ```csharp
+    [Service]
+    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+    public class FirebaseNotificationService : FirebaseMessagingService
+    {
+        const string TAG = "FirebaseNotificationService";
+
+        public override void OnMessageReceived(RemoteMessage message)
         {
-            const string TAG = "FirebaseNotificationService";
+            Log.Debug(TAG, "From: " + message.From);
 
-            public override void OnMessageReceived(RemoteMessage message)
-            {
-                Log.Debug(TAG, "From: " + message.From);
+            // Pull message body out of the template
+            var messageBody = message.Data["message"];
+            if (string.IsNullOrWhiteSpace(messageBody))
+                return;
 
-                // Pull message body out of the template
-                var messageBody = message.Data["message"];
-                if (string.IsNullOrWhiteSpace(messageBody))
-                    return;
-
-                Log.Debug(TAG, "Notification message body: " + messageBody);
-                SendNotification(messageBody);
-            }
-
-            void SendNotification(string messageBody)
-            {
-                var intent = new Intent(this, typeof(MainActivity));
-                intent.AddFlags(ActivityFlags.ClearTop);
-                var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-
-                var notificationBuilder = new NotificationCompat.Builder(this)
-                    .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
-                    .SetContentTitle("New Todo Item")
-                    .SetContentText(messageBody)
-                    .SetContentIntent(pendingIntent)
-                    .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
-                    .SetAutoCancel(true);
-
-                var notificationManager = NotificationManager.FromContext(this);
-                notificationManager.Notify(0, notificationBuilder.Build());
-            }
+            Log.Debug(TAG, "Notification message body: " + messageBody);
+            SendNotification(messageBody);
         }
+
+        void SendNotification(string messageBody)
+        {
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.AddFlags(ActivityFlags.ClearTop);
+            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+
+            var notificationBuilder = new NotificationCompat.Builder(this)
+                .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
+                .SetContentTitle("New Todo Item")
+                .SetContentText(messageBody)
+                .SetContentIntent(pendingIntent)
+                .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
+                .SetAutoCancel(true);
+
+            var notificationManager = NotificationManager.FromContext(this);
+            notificationManager.Notify(0, notificationBuilder.Build());
+        }
+    }
+    ```
 
     `OnMessageReceived` Metody, która jest wywoływana, gdy aplikacja odbiera powiadomienia z usługi FCM, wyodrębnianie treści komunikatu i wywołuje `SendNotification` metody. Ta metoda Konwertuje zawartość komunikatu do lokalnego powiadomienia, który jest uruchamiany, gdy aplikacja jest uruchomiona z powiadomieniem znajdujących się w obszarze powiadomień.
 
 Teraz jesteś gotowy testowych powiadomień push w aplikacji uruchomionej na urządzeniu z systemem Android lub emulator.
 
 ### <a name="test-push-notifications-in-your-android-app"></a>Testowych powiadomień push w aplikacji systemu Android
+
 Pierwsze dwa kroki są wymagane tylko wtedy, gdy testujesz w emulatorze.
 
 1. Upewnij się, że wdrożenie lub debugowania na urządzeniu lub w emulatorze, który jest skonfigurowany przy użyciu usługi Google Play. Można to sprawdzić przez sprawdzanie **Odtwórz** aplikacje są instalowane na urządzeniu lub w emulatorze.
@@ -212,11 +236,13 @@ Pierwsze dwa kroki są wymagane tylko wtedy, gdy testujesz w emulatorze.
 6. Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurowanie i uruchamianie projektu systemu iOS (opcjonalnie)
+
 Ta sekcja dotyczy uruchamiania projektu Xamarin iOS dla urządzeń z systemem iOS. Jeśli nie pracujesz z urządzeniami z systemem iOS, możesz pominąć tę sekcję.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 #### <a name="configure-the-notification-hub-for-apns"></a>Konfigurowanie Centrum powiadomień dla usługi APNS
+
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 Następnie skonfiguruj ustawienia projektu dla systemu iOS w programie Xamarin Studio lub Visual Studio.
@@ -224,132 +250,159 @@ Następnie skonfiguruj ustawienia projektu dla systemu iOS w programie Xamarin S
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 #### <a name="add-push-notifications-to-your-ios-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu iOS
+
 1. W **iOS** projektu, otwórz AppDelegate.cs i dodaj następującą instrukcję na górze pliku kodu.
 
-        using Newtonsoft.Json.Linq;
+    ```csharp
+    using Newtonsoft.Json.Linq;
+    ```
+
 2. W **elemencie AppDelegate** klasy, Dodaj zastąpienie **RegisteredForRemoteNotifications** zdarzenie, aby zarejestrować odbieranie powiadomień:
 
-        public override void RegisteredForRemoteNotifications(UIApplication application,
-            NSData deviceToken)
-        {
-            const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
+    ```csharp
+    public override void RegisteredForRemoteNotifications(UIApplication application,
+        NSData deviceToken)
+    {
+        const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
-            JObject templates = new JObject();
-            templates["genericMessage"] = new JObject
-                {
-                  {"body", templateBodyAPNS}
-                };
+        JObject templates = new JObject();
+        templates["genericMessage"] = new JObject
+            {
+                {"body", templateBodyAPNS}
+            };
 
-            // Register for push with your mobile app
-            Push push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
-            push.RegisterAsync(deviceToken, templates);
-        }
+        // Register for push with your mobile app
+        Push push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
+        push.RegisterAsync(deviceToken, templates);
+    }
+    ```
+
 3. W **elemencie AppDelegate**, również dodać następujące zastąpienie **DidReceiveRemoteNotification** programu obsługi zdarzeń:
 
-        public override void DidReceiveRemoteNotification(UIApplication application,
-            NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+    ```csharp
+    public override void DidReceiveRemoteNotification(UIApplication application,
+        NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+    {
+        NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+
+        string alert = string.Empty;
+        if (aps.ContainsKey(new NSString("alert")))
+            alert = (aps[new NSString("alert")] as NSString).ToString();
+
+        //show alert
+        if (!string.IsNullOrEmpty(alert))
         {
-            NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
-
-            string alert = string.Empty;
-            if (aps.ContainsKey(new NSString("alert")))
-                alert = (aps[new NSString("alert")] as NSString).ToString();
-
-            //show alert
-            if (!string.IsNullOrEmpty(alert))
-            {
-                UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                avAlert.Show();
-            }
+            UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
+            avAlert.Show();
         }
+    }
+    ```
 
     Ta metoda obsługuje przychodzące powiadomienia, gdy aplikacja jest uruchomiona.
+
 4. W **elemencie AppDelegate** klasy, Dodaj następujący kod do **FinishedLaunching** metody:
 
-        // Register for push notifications.
-        var settings = UIUserNotificationSettings.GetSettingsForTypes(
-            UIUserNotificationType.Alert
-            | UIUserNotificationType.Badge
-            | UIUserNotificationType.Sound,
-            new NSSet());
+    ```csharp
+    // Register for push notifications.
+    var settings = UIUserNotificationSettings.GetSettingsForTypes(
+        UIUserNotificationType.Alert
+        | UIUserNotificationType.Badge
+        | UIUserNotificationType.Sound,
+        new NSSet());
 
-        UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-        UIApplication.SharedApplication.RegisterForRemoteNotifications();
+    UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+    UIApplication.SharedApplication.RegisterForRemoteNotifications();
+    ```
 
     Umożliwia to obsługę zdalne powiadomienia i rejestracja wypychanych żądań.
 
 Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>Testowych powiadomień push w aplikacji systemu iOS
+
 1. Kliknij prawym przyciskiem myszy projekt iOS, a następnie kliknij przycisk **Ustaw jako projekt startowy**.
 2. Naciśnij klawisz **Uruchom** przycisk lub **F5** w programie Visual Studio, aby skompilować projekt i uruchomić aplikację w urządzeniu z systemem iOS. Następnie kliknij przycisk **OK** do akceptowania powiadomień wypychanych.
 
    > [!NOTE]
    > Należy jawnie zaakceptować powiadomień wypychanych z poziomu aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
-   >
-   >
+
 3. W aplikacji wpisz zadania, a następnie kliknij znak plus (**+**) ikona.
 4. Sprawdź, czy Odebrano powiadomienie, a następnie kliknij **OK** aby odrzucić powiadomienie.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurowanie i uruchamianie projektów Windows (opcjonalnie)
+
 Ta sekcja dotyczy uruchamiania aplikacji platformy Xamarin.Forms i WinPhone81 projektów dla urządzeń Windows. Te kroki obsługują także projekty platformy uniwersalnej Windows (UWP). Jeśli nie pracujesz z urządzeniami z systemem Windows, możesz pominąć tę sekcję.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Rejestrowanie aplikacji Windows dla usługi powiadomień wypychanych usługi powiadomień Windows (WNS)
+
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 #### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie Centrum powiadomień w przypadku usługi WNS
+
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>Dodawanie powiadomień wypychanych do aplikacji Windows
+
 1. W programie Visual Studio, otwórz **App.xaml.cs** w Windows projektu i dodaj następujące instrukcje.
 
-        using Newtonsoft.Json.Linq;
-        using Microsoft.WindowsAzure.MobileServices;
-        using System.Threading.Tasks;
-        using Windows.Networking.PushNotifications;
-        using <your_TodoItemManager_portable_class_namespace>;
+    ```csharp
+    using Newtonsoft.Json.Linq;
+    using Microsoft.WindowsAzure.MobileServices;
+    using System.Threading.Tasks;
+    using Windows.Networking.PushNotifications;
+    using <your_TodoItemManager_portable_class_namespace>;
+    ```
 
     Zastąp `<your_TodoItemManager_portable_class_namespace>` się w przestrzeni nazw projektu przenośnych, które zawiera `TodoItemManager` klasy.
+
 2. W pliku App.xaml.cs Dodaj następującą **InitNotificationsAsync** metody:
 
-        private async Task InitNotificationsAsync()
+    ```csharp
+    private async Task InitNotificationsAsync()
+    {
+        var channel = await PushNotificationChannelManager
+            .CreatePushNotificationChannelForApplicationAsync();
+
+        const string templateBodyWNS =
+            "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
+
+        JObject headers = new JObject();
+        headers["X-WNS-Type"] = "wns/toast";
+
+        JObject templates = new JObject();
+        templates["genericMessage"] = new JObject
         {
-            var channel = await PushNotificationChannelManager
-                .CreatePushNotificationChannelForApplicationAsync();
+            {"body", templateBodyWNS},
+            {"headers", headers} // Needed for WNS.
+        };
 
-            const string templateBodyWNS =
-                "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
-
-            JObject headers = new JObject();
-            headers["X-WNS-Type"] = "wns/toast";
-
-            JObject templates = new JObject();
-            templates["genericMessage"] = new JObject
-            {
-                {"body", templateBodyWNS},
-                {"headers", headers} // Needed for WNS.
-            };
-
-            await TodoItemManager.DefaultManager.CurrentClient.GetPush()
-                .RegisterAsync(channel.Uri, templates);
-        }
+        await TodoItemManager.DefaultManager.CurrentClient.GetPush()
+            .RegisterAsync(channel.Uri, templates);
+    }
+    ```
 
     Ta metoda pobiera kanał powiadomień wypychanych i rejestruje szablon, aby otrzymywać powiadomienia o szablonach Centrum powiadomień. Powiadomienia szablonu, który obsługuje *messageParam* zostaną dostarczone do tego klienta.
+
 3. W pliku App.xaml.cs aktualizacji **OnLaunched** definicję metody obsługi zdarzeń, dodając `async` modyfikator. Następnie dodaj następujący wiersz kodu na końcu metody:
 
-        await InitNotificationsAsync();
+    ```csharp
+    await InitNotificationsAsync();
+    ```
 
     Daje to gwarancję, że rejestracji powiadomień wypychanych jest utworzony lub odświeżane za każdym razem, gdy aplikacja jest uruchamiana. Należy to zrobić, aby zagwarantować kanału wypychania usługi WNS jest zawsze aktywny.  
+
 4. W Eksploratorze rozwiązań dla programu Visual Studio, otwórz **Package.appxmanifest** pliku, a następnie ustaw **wyskakujące możliwością** do **tak** w obszarze **powiadomienia**.
 5. Tworzenie aplikacji i upewnij się, że użytkownik nie ma błędów. Aplikację kliencką teraz należy zarejestrować odbieranie powiadomień szablonu z zaplecze funkcji Mobile Apps. W tej sekcji należy powtórzyć dla każdego projektu Windows w rozwiązaniu.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testowych powiadomień push w aplikacji Windows
+
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt Windows, a następnie kliknij przycisk **Ustaw jako projekt startowy**.
 2. Kliknij przycisk **Uruchom**, aby skompilować projekt i uruchomić aplikację.
 3. W aplikacji wpisz nazwę nowego czynność do wykonania, a następnie kliknij znak plus (**+**) ikonę, aby ją dodać.
 4. Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Możesz dowiedzieć się więcej na temat powiadomień wypychanych:
 
 * [Wysyłanie powiadomień wypychanych z usługi Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)

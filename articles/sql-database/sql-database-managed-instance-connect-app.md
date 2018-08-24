@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258732"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818406"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
@@ -75,9 +75,23 @@ W tym scenariuszu przedstawiono na poniższym diagramie:
 
 Wystąpienie zarządzane jest możliwy tylko za pośrednictwem prywatnego adresu IP tak aby można było uzyskać do niego dostęp z Twojego pola dla deweloperów, najpierw musisz utworzyć połączenie między usługami box usługi dla deweloperów i sieci wirtualnej wystąpienia zarządzanego.  
  
-Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu artykułów dotyczących uwierzytelniania natywnych certyfikatu platformy Azure ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) w szczegółach jak może być wykonana.  
+Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu artykułów dotyczących uwierzytelniania natywnych certyfikatu platformy Azure ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) w szczegółach jak może być wykonana. 
+
+## <a name="required-versions-of-drivers-and-tools"></a>Wymagane wersje sterowników i narzędzi
+
+Jeśli chcesz nawiązać połączenie z wystąpieniem zarządzanym, zaleca się następujące minimalne wersje narzędzia i sterowniki:
+
+| Narzędzie/sterownika | Wersja |
+| --- | --- |
+|.NET Framework | 4.6.1 (lub platformy .NET Core) | 
+|Sterownik ODBC    | v17 |
+|Sterownik języka PHP | 5.2.0 |
+|Sterownik JDBC    | 6.4.0 |
+|Sterownik node.js | 2.1.1 |
+|Sterownik OLEDB   | 18.0.2.0 |
+|SSMS   | 17.8.1 lub [wyższy](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacje o wystąpieniu zarządzanym, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md).
-- Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-create-tutorial-portal.md).
+- Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).

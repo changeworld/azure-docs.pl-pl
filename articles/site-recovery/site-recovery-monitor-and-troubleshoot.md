@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 89270a0bd1914a2486c8cc634563bdded743adaa
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578589"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746477"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
 
@@ -153,13 +153,14 @@ Na pulpicie nawigacyjnym dodatku można monitorować maszyn, na stronie maszyn w
 3.  Kliknij przycisk **kolumn** pokazanie dodatkowych kolumn, na przykład wyświetlić cel punktu odzyskiwania, przeznaczony dla problemów z konfiguracją oraz błędy replikacji.
 4. Kliknij przycisk **filtr** do wyświetlania informacji na podstawie określonych parametrów, takich jak kondycja replikacji lub zasady replikacji w określonej.
 5. Kliknij prawym przyciskiem myszy maszynę, aby zainicjować operacji, takich jak testowanie trybu failover dla niego lub aby wyświetlić szczegółowe informacje o błędzie skojarzony z nim.
-6. Kliknij maszynę, aby przejść do bardziej szczegółowe informacje dla niego. Znajdują się szczegółowe informacje:- **informacje o replikacji**: bieżący stan i kondycję komputera.
-        - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
-        - **Punkty odzyskiwania**: najnowsze dostępne punkty odzyskiwania dla maszyny.
-        - **Gotowość do pracy awaryjnej**: wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
-        - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na maszyn i możliwych przyczyn/akcji.
-        - **Zdarzenia**: chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
-        - **Widok infrastruktury**: Wyświetla stan infrastruktury na potrzeby tego scenariusza, podczas replikowania maszyn na platformę Azure.
+6. Kliknij maszynę, aby przejść do bardziej szczegółowe informacje dla niego. Szczegółowe informacje obejmują:
+      - **Informacje o replikacji**: bieżący stan i kondycję komputera.
+      - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
+      - **Punkty odzyskiwania**: najnowsze dostępne punkty odzyskiwania dla maszyny.
+      - **Gotowość do pracy awaryjnej**: wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
+      - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na maszyn i możliwych przyczyn/akcji.
+      - **Zdarzenia**: chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
+      - **Widok infrastruktury**: Wyświetla stan infrastruktury na potrzeby tego scenariusza, podczas replikowania maszyn na platformę Azure.
 
     ![Usługa Site Recovery zreplikowany element szczegóły/Przegląd](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

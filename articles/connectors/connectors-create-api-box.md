@@ -1,6 +1,6 @@
 ---
-title: Łączenie z polem — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Tworzenie i zarządzanie plikami z interfejsów API REST pole i usługi Azure Logic Apps
+title: Łączenie z polem — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie i zarządzanie plikami za pomocą interfejsów API REST usługi Box i Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,26 +11,46 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: a8756e168a8d75cbe705ce2408b6d363f7435b5c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b5c8c18c6d02710646560f29d4bc7b5784f730a2
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295078"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746881"
 ---
-# <a name="get-started-with-the-box-connector"></a>Rozpoczynanie pracy z łącznikiem pole
-Łączenie z pola i tworzenie plików, Usuń pliki i inne. Pole można:
+# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Tworzenie i zarządzanie plikami w usłudze Box z usługą Azure Logic Apps
 
-* Tworzenie sieci przepływu biznesowe na podstawie danych otrzymywanych z pola. 
-* Gdy plik jest tworzony lub aktualizowany za pomocą wyzwalaczy.
-* Użyj akcji, które kopiowania pliku, usuń plik i inne. Te akcje uzyskać odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład gdy plik zostanie zmieniona na pole, można wykonać tego pliku i poczty e-mail za pomocą usługi Office 365.
+W tym artykule przedstawiono sposób tworzenia i zarządzania plikami w polu z wewnątrz aplikacji logiki z łącznikiem usługi Box. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływów pracy związanych z zarządzaniem plików, a inne czynności, na przykład:
 
-Rozpoczynanie pracy przez teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Tworzenie przepływu biznesowych na podstawie danych, który jest pobierany z usługi Box. 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+* Wyzwalanie automatycznych zadań i przepływ pracy, gdy plik jest tworzony lub aktualizowany.
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/box/).
+* Wykonywanie operacji, które służy do kopiowania pliku, powoduje usunięcie pliku i nie tylko. 
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+  Jeśli te akcje uzyskać odpowiedź, ich udostępnić dane wyjściowe dla innych akcji. 
+  Na przykład gdy plik zostanie zmieniona w usłudze Box, możesz wysłać ten plik w wiadomości e-mail przy użyciu usługi Office 365.
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* A [polu konta](https://www.box.com/home)
+
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta w polu. Aby uruchomić aplikację logiki z wyzwalaczem pole, należy [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+
+* Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/box/). 
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

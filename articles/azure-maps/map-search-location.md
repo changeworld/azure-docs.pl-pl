@@ -1,6 +1,6 @@
 ---
-title: Pokaż wyniki wyszukiwania przy użyciu map Azure | Dokumentacja firmy Microsoft
-description: Jak wykonać żądania wyszukiwania przy użyciu map Azure, a następnie Wyświetl wyniki na mapie Javascrip
+title: Wyświetlanie wyników wyszukiwania za pomocą usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Jak wykonać żądanie wyszukiwania za pomocą usługi Azure Maps, a następnie wyświetlić wyniki na mapie Javascrip
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -9,39 +9,39 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b77737b16b23ed00c8f12f84e6a8558a665a7d15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0ab271eab45a6f4b05d01713e2e2ddd22a22ea3
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599885"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746607"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
-W tym artykule przedstawiono sposób tworzenia żądania wyszukiwania i wyświetlić wyniki wyszukiwania na mapie. 
+W tym artykule pokazano, jak utworzyć żądanie wyszukiwania i wyświetlić wyniki wyszukiwania na mapie. 
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-<iframe height='500' scrolling='no' title='Pokaż wyniki wyszukiwania na mapie' src='//codepen.io/azuremaps/embed/KQbaeM/?height=519&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Pokaż wyniki na mapie</a> mapach Azure (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Pokaż wyniki wyszukiwania na mapie' src='//codepen.io/azuremaps/embed/KQbaeM/?height=519&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Pokaż wyniki na mapie</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Widać [Tworzenie mapy](./map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-W drugim bloku kodu tworzy i dodaje warstwy wyszukiwania PIN na mapie. Widać [dodać numer pin na mapie](./map-add-pin.md) instrukcje.
+Drugi blok kodu tworzy i dodaje warstwę wyszukiwania Przypina na mapie. Możesz zobaczyć [Dodawanie numeru pin na mapie](./map-add-pin.md) instrukcje.
 
-Trzeci bloku kodu wysyła [XMLHttpRequest](https://xhr.spec.whatwg.org/) do [interfejsu API wyszukiwania rozmytego Azure map](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
+Trzeci bloku kodu wysyła [XMLHttpRequest](https://xhr.spec.whatwg.org/) do [interfejsu API wyszukiwania rozmytego usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
-Ostatni blok kodu analizuje przychodzące odpowiedzi. Dla pomyślnej odpowiedzi zbiera informacje współrzędne geograficzne dla każdej lokalizacji zwracane. Dodaje wszystkie punkty lokalizacji do mapy jako kodów PIN, a dopasowuje granice mapy do renderowania numerów PIN.
+Ostatni blok kodu analizuje przychodzącą odpowiedź. Pomyślnej odpowiedzi zbiera informacje o długości i szerokości geograficznej dla każdej zwróconej lokalizacji. Ona dodanie wszystkich punktów lokalizacji do mapy jako pinezki i dostosowuje granice mapy do renderowania wszystkie kody PIN.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
 
-* [Azure mapuje Wyszukiwanie rozmyte interfejsu API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
-* [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+* [Wyszukiwanie rozmyte interfejsu API usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)
     
 Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
-* [Uzyskaj informacje z współrzędnych](./map-get-information-from-coordinate.md)
-* [Pokaż instrukcjami z zakresu od A do B](./map-route.md)
+* [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)
+* [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)

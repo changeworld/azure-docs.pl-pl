@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397851"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818296"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w usłudze Azure Functions
 
@@ -39,7 +39,7 @@ Każda aplikacja funkcji zawiera pojedynczy adres IP dla ruchu przychodzącego. 
 3. Wybierz **funkcje platformy**.
 4. Wybierz **właściwości**, i adres IP dla ruchu przychodzącego, który pojawia się w obszarze **wirtualny adres IP**.
 
-## <a name="function-app-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji — funkcja
+## <a name="find-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji — funkcja
 
 Każda aplikacja funkcji ma zestaw dostępnych adresów IP ruchu wychodzącego. Wszystkie połączenia wychodzące z funkcji, np. w przypadku wewnętrznej bazy danych korzysta z jednego z dostępnych adresów IP ruchu wychodzącego jako punkt początkowy adres IP. Nie wiesz, wcześniej adres IP, które danego połączenia użyje. Z tego powodu usługa zaplecza należy otworzyć zapory do wszystkich aplikacji funkcji wychodzące adresy IP.
 

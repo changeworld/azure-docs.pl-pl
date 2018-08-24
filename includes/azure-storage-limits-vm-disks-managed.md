@@ -4,7 +4,7 @@
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
 | Rozmiar dysku           | 32 GB            | 64 GB            | 128 GB           | 256 GB | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500              | 500              | 500              | 500 | 500              | 500              | 500             | 500              | 
-| Przepływność na dysk | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 50 MB/s|
+| Przepływność na dysk | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s|
 
 **Zarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych dysków**
 

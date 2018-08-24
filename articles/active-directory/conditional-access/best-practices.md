@@ -2,7 +2,7 @@
 title: Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat czynności, które należy znać i co jest to należy unikać podczas konfigurowania zasad dostępu warunkowego.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d21a6dc7a460e07fe7530b58bef887241a694b25
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628090"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818061"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania w zakresie dostępu warunkowego w usłudze Azure Active Directory
 
@@ -85,7 +85,7 @@ Obie zasady są wymuszane przez usługę Azure Active Directory, a użytkownik u
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co się stanie, jeśli mam wiele zasad dla tego samego użytkownika skonfigurowane?  
 
-Podczas każdego logowania usługi Azure Active Directory ocenia wszystkie zasady i gwarantuje, że spełnione są wszystkie wymagania, przed udzielony dostęp do użytkownika.
+Podczas każdego logowania usługi Azure Active Directory ocenia wszystkie zasady i gwarantuje, że spełnione są wszystkie wymagania, przed udzielony dostęp do użytkownika. Blokuj dostęp trumps wszystkich innych ustawień konfiguracji. 
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Dostęp warunkowy działa z programem Exchange ActiveSync?

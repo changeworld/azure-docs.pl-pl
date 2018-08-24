@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 15db2d9b872c76d70fd531af07fb55c701e86494
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 24fa3882a65bf6605444a139ad5d4ee42800a8ef
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331479"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744933"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>Rozpoznawanie mowy, korzystając z interfejsu API REST
 
@@ -22,9 +22,8 @@ ms.locfileid: "39331479"
 
 Interfejs API REST może służyć do rozpoznawania krótkich wypowiedzi za pomocą żądania HTTP POST.
 
-Interfejs API REST jest najprostszym sposobem na rozpoznawanie mowy, jeśli nie używasz języka obsługiwanych przez zestaw SDK.
-Wprowadzone żądanie HTTP POST do punktu końcowego usługi przekazywania całego wypowiedź w treści żądania.
-Otrzymasz odpowiedź rozpoznany tekst.
+Interfejs API REST jest najprostszym sposobem na rozpoznawanie mowy, jeśli nie używasz języka obsługiwanych przez [SDK](speech-sdk.md).
+Aby włączyć metodę POST protokołu HTTP żądania do punktu końcowego usługi, przekazać cały wypowiedź w treści żądania; i otrzymasz odpowiedź rozpoznany tekst.
 
 > [!NOTE]
 > Wypowiedzi są ograniczone do 15 sekund lub mniej, korzystając z interfejsu API REST.

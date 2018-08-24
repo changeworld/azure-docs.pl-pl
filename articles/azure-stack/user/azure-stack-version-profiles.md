@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055803"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745803"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -67,7 +67,7 @@ Raczej niż badania, każdy dostawca zasobów i określonych wersji obsługiwany
 
 Profile interfejsu API Pracuj z narzędziami, które używają usługi Azure Resource Manager, takich jak program PowerShell, interfejsu wiersza polecenia platformy Azure, kodu podanego w zestaw SDK oraz programu Microsoft Visual Studio. Narzędzia i zestawy SDK Profile umożliwiają odczytu wersję moduły i biblioteki do uwzględnienia podczas tworzenia aplikacji.
 
-Na przykład użyj programu PowerShell do utworzenia magazynu konta przy użyciu **Microsoft.Storage** dostawcy zasobów, który obsługuje parametru api-version 2016-03-30, jak i maszyny Wirtualnej za pomocą dostawcy zasobów Microsoft.Compute przy użyciu interfejsu api w wersji 2015-12-01 , należy wyszukać obsługujący modułu programu PowerShell 2016-03-30 dla magazynu i modułu, którego obsługuje 2015-02-01, zasobów obliczeniowych i zainstaluj je. Zamiast tego można użyć profilu. Użyj polecenia cmdlet ** Zainstaluj profil * profilename *** programu PowerShell i ładuje właściwej wersji modułów.
+Na przykład, jeśli używasz programu PowerShell do utworzenia konta magazynu przy użyciu **Microsoft.Storage** dostawcy zasobów, który obsługuje parametru api-version 2016-03-30, jak i maszyny Wirtualnej za pomocą dostawcy zasobów Microsoft.Compute z wersją interfejsu api 2015-12-01, należy wyszukać obsługujący modułu programu PowerShell 2016-03-30 do przechowywania i moduł, który obsługuje 2015-02-01 do obliczeń i zainstaluj je. Zamiast tego można użyć profilu. Użyj polecenia cmdlet ** Zainstaluj profil * profilename *** programu PowerShell i ładuje właściwej wersji modułów.
 
 Podobnie korzystając z zestawu SDK języka Python do tworzenia aplikacji opartych na języku Python, można określić profil. Zestaw SDK ładuje odpowiednie moduły dla dostawców zasobów, które zostały określone w skrypcie.
 

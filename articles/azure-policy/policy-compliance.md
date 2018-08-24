@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b310daec67f41ba589ce279e4a2dad427adb734
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058254"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818896"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych zgodności
 
@@ -23,7 +23,7 @@ Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest l
 Istnieje kilka sposobów na dostęp do informacji o zgodności, generowane przez zasady i przypisań inicjatywy:
 
 - Za pomocą [witryny Azure Portal](#portal)
-- Za pomocą [wiersza polecenia](#command_line) skryptów
+- Za pomocą [wiersza polecenia](#command-line) skryptów
 
 Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy się po zaktualizowaniu informacje o zgodności oraz częstotliwości i zdarzenia, które mogą powodować cykl oceny.
 

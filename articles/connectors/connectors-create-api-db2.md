@@ -1,282 +1,368 @@
 ---
-title: Połącz z bazą danych DB2 — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Zarządzanie zasobami za pomocą interfejsów API REST bazy danych DB2 i usługi Azure Logic Apps
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: Łączenie z programem IBM DB2 — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM DB2 i Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, estfan
+ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+ms.reviewer: plarsen, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295095"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818879"
 ---
-# <a name="get-started-with-the-db2-connector"></a>Rozpoczynanie pracy z łącznik DB2
-Łącznik usługi Microsoft dla bazy danych DB2 nawiązywanie zasobów przechowywanych w bazie danych programu IBM DB2 Logic Apps. Ten łącznik obejmuje klienta Microsoft do komunikowania się ze zdalnymi komputerami serwera bazy danych DB2 w sieci TCP/IP. Obejmuje chmury baz danych, takich jak dashDB IBM Bluemix lub IBM DB2 dla systemu Windows Azure wirtualizacji i lokalnych baz danych za pomocą bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2 platform i wersji (w tym temacie).
+# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Zarządzanie zasobami programu IBM DB2 za pomocą usługi Azure Logic Apps
 
-Łącznik DB2 obsługuje następujące operacje bazy danych:
+Korzystając z usługi Azure Logic Apps i łącznika programu IBM DB2 można utworzyć automatycznych zadań i przepływów pracy na podstawie zasobów przechowywanych w bazie danych programu DB2. Przepływów pracy można łączyć się z zasobami w bazie danych, Odczyt i listy tabel bazy danych, dodawanie wierszy, zmień wiersze, usunąć wiersze i nie tylko. Możesz dołączyć akcje w aplikacjach logiki, które uzyskiwanie odpowiedzi z bazy danych i udostępnić dane wyjściowe do innych działań. 
 
-* Listy tabel bazy danych
-* Odczyt przy użyciu wybierz jeden wiersz.
-* Wszystkie wiersze, używając wybierz do odczytu
-* Dodaj jeden wiersz za pomocą polecenia Wstaw
-* Instrukcja ALTER jeden wiersz za pomocą aktualizacji
-* Usuń jeden wiersz używanie opcji usuwania
+W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różnych operacji bazy danych. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-W tym temacie przedstawiono sposób korzystania z łącznika w aplikacji logiki, aby operacje bazy danych procesu.
+## <a name="supported-platforms-and-versions"></a>Obsługiwane platformy i wersje
 
-Aby dowiedzieć się więcej na temat aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Łącznik DB2 obejmuje klienta firmy Microsoft, który komunikuje się z serwerami zdalnymi z bazy danych DB2 w sieci TCP/IP. Ten łącznik służy do uzyskiwania dostępu do baz danych w chmurze takich jak dashDB IBM Bluemix lub IBM DB2 for Windows z systemem Azure wirtualizacji. Można również przejść lokalnych baz danych z bazy danych DB2 po [zainstalować i skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-connection.md). 
 
-## <a name="available-actions"></a>Dostępne akcje
-Łącznik DB2 obsługuje następujące akcje logikę w aplikacji:
+Łącznik IBM DB2 obsługuje te IBM DB2 platformach i wersjach, oraz IBM DB2 zgodnych produktów, takich jak dashDB IBM Bluemix, które obsługują rozproszonej architektury bazy danych relacyjnych (DRDA) SQL Access Manager (SQLAM) w wersji 10 i 11:
 
-* GetTables
-* GetRow
-* Funkcja GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
+| Platforma | Wersja | 
+|----------|---------|
+| IBM DB2 w przypadku z/OS | 11.1, 10.1 |
+| IBM DB2 for mam | 7.3, 7.2, 7.1 |
+| IBM DB2 for LUW | 11, 10.5 |
+|||
 
-## <a name="list-tables"></a>Wyświetl tabele
-Tworzenie aplikacji logiki do żadnej operacji składa się z wielu czynności wykonywanych za pośrednictwem portalu Microsoft Azure.
+## <a name="supported-database-operations"></a>Operacje obsługiwane bazy danych
 
-W aplikacji logiki akcja zostanie dodana do listy tabel w bazie danych DB2. Akcja powoduje, że łącznik do przetwarzania zestawienie schematu bazy danych DB2, takich jak `CALL SYSIBM.SQLTABLES`.
+Łącznik IBM DB2 obsługuje te operacje bazy danych, które mapowania na odpowiednich akcji w łączniku programu:
 
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `Db2getTables`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+| Operacja bazy danych | Akcja łącznika | 
+|--------------------|------------------|
+| Lista tabel bazy danych | Pobierz tabele | 
+| Odczyt przy użyciu wybierz jeden wiersz. | Pobierz wiersz | 
+| Odczyt wszystkich wierszy przy użyciu SELECT | Pobierz wiersze | 
+| Dodaj jeden wiersz, za pomocą INSERT | Wstaw wiersz | 
+| Edytuj jeden wiersz, za pomocą aktualizacji | Aktualizuj wiersz | 
+| Usuń jeden wiersz, przy użyciu DELETE | Usuń wiersz | 
+|||
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie ustaw **interwał** na typ **7**.  
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz `db2` w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — tabele Get (wersja zapoznawcza)**.
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+
+* IBM DB2 bazy danych albo oparte na chmurze lub środowisku lokalnym
+
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikacja logiki gdzie mają dostęp do bazy danych DB2. Ten łącznik udostępnia tylko akcje, aby uruchomić aplikację logiki, wybierz oddzielne wyzwalacz, na przykład, **cyklu** wyzwalacza.
+Przykłady w tym artykule korzystają **cyklu** wyzwalacza.
+
+<a name="add-db2-action"></a>
+
+## <a name="add-db2-action---get-tables"></a>Dodawanie akcji bazy danych DB2 — Pobierz tabele
+
+1. W [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie już otwarty.
+
+1. W obszarze wyzwalacza wybierz **nowy krok**.
+
+1. W polu wyszukiwania wprowadź "db2" jako filtr. Na przykład w obszarze listy akcji wybierz następującą akcję: **Pobierz tabele (wersja zapoznawcza)**
    
-   ![](./media/connectors-create-api-db2/Db2connectorActions.png)  
-6. W **bazy danych DB2 — tabele Get** okienko konfiguracji, wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem bramy danych lokalnych**. Należy zauważyć, że zmianie ustawienia z chmury do środowiska lokalnego.
+   ![Wybierz akcję](./media/connectors-create-api-db2/select-db2-action.png)
+
+   Teraz monit o podanie szczegółów połączenia bazy danych DB2. 
+
+1. Wykonaj kroki tworzenia połączenia dla [baz danych w chmurze](#cloud-connection) lub [lokalnych baz danych](#on-premises-connection).
+
+<a name="cloud-connection"></a>
+
+## <a name="connect-to-cloud-db2"></a>Łączenie chmurą bazy danych DB2
+
+Aby skonfigurować połączenie, podaj następujące szczegóły połączenia po wyświetleniu monitu wybierz pozycję **Utwórz**, a następnie zapisz aplikację logiki:
+
+| Właściwość | Wymagane | Opis | 
+|----------|----------|-------------| 
+| **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Nie | Ma zastosowanie tylko w przypadku połączeń lokalnych. | 
+| **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" |
+| **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
+| **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. | 
+| **Hasło** | Yes | Hasło dla bazy danych | 
+|||| 
+
+Na przykład:
+
+![Szczegóły połączenia dla baz danych w chmurze](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
+
+<a name="on-premises-connection"></a>
+
+## <a name="connect-to-on-premises-db2"></a>Nawiązać połączenie z lokalnej bazy danych DB2
+
+Przed utworzeniem połączenia, musi już mieć zainstalowanej usługi bramy danych lokalnych. W przeciwnym razie nie zakończeniu konfigurowania połączenia. Jeśli masz instalację bramy, kontynuuj podanie tych szczegółów połączenia, a następnie wybierz **Utwórz**.
+
+| Właściwość | Wymagane | Opis | 
+|----------|----------|-------------| 
+| **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Yes | Ma zastosowanie, gdy chcesz, aby połączenie lokalne i pokazuje właściwości połączenia lokalnego. | 
+| **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" | 
+| **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. | 
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. | 
+| **Uwierzytelnianie** | Yes | Typ uwierzytelniania dla połączenia, na przykład "Basic" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). | 
+| **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. | 
+| **Hasło** | Yes | Hasło dla bazy danych | 
+| **Brama** | Yes | Nazwa zainstalowane lokalne bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera wszystkie bramy danych zainstalowanych w ramach usługi Azure subskrypcji i grupie zasobów. | 
+|||| 
+
+Na przykład:
+
+![Szczegóły połączenia dla lokalnych baz danych](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
+
+### <a name="view-output-tables"></a>Wyświetl tabele danych wyjściowych
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+   ![Widok historii uruchamiania](./media/connectors-create-api-db2/run-history.png)
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Pobierz tabele** akcji.
+
+   ![Rozwiń akcję](./media/connectors-create-api-db2/expand-action-step.png)
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe zawierają listę tabel. 
    
-   * Wpisz wartość **serwera**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `ibmserver01:50000`.
-   * Wpisz wartość **bazy danych**. Na przykład wpisz `nwind`.
-   * Wybierz wartość dla **uwierzytelniania**. Na przykład wybierz **podstawowe**.
-   * Wpisz wartość **Username**. Na przykład wpisz `db2admin`.
-   * Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
-   * Wybierz wartość dla **bramy**. Na przykład wybierz **datagateway01**.
-7. Wybierz **Utwórz**, a następnie wybierz **zapisać**. 
+   ![Wyświetl tabele danych wyjściowych](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
+
+## <a name="get-row"></a>Pobierz wiersz
+
+Aby pobrać do jednego rekordu w tabeli bazy danych DB2, należy użyć **Pobierz wiersz** akcji w aplikacji logiki. Ta akcja uruchamia DB2 `SELECT WHERE` instrukcji, na przykład `SELECT FROM AREA WHERE AREAID = '99999'`.
+
+1. Jeśli nie znasz Akcje bazy danych DB2 w aplikacji logiki, przejrzyj kroki w [Akcja Dodaj bazy danych DB2 — tabele Get](#add-db2-action) sekcji, ale Dodaj **Pobierz wiersz** akcji zamiast tego, a następnie wróć tutaj, aby kontynuować. 
+
+   Po dodaniu **Pobierz wiersz** akcji, Oto jak pojawia się Twoja Przykładowa aplikacja logiki:
+
+   ![Pobierz wiersz akcji](./media/connectors-create-api-db2/db2-get-row-action.png)
+
+1. Określ wartości dla wszystkich wymaganych właściwości (*). Po wybraniu tabeli, akcji zawiera odpowiednie właściwości, które są specyficzne dla rekordów w tej tabeli.
+
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa tabeli** | Yes | Tabeli, która ma rekord ma, takie jak "Obszar" w tym przykładzie | 
+   | **Identyfikator obszaru** | Yes | Identyfikator rekordu ma, takie jak "99999", w tym przykładzie | 
+   |||| 
+
+   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+
+1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
+
+### <a name="view-output-row"></a>Wyświetl dane wyjściowe wiersza
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Pobierz wiersz** akcji.
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe obejmują usługi określony wiersz. 
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
-8. W **Db2getTables** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-9. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_tables**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe, które powinna zawierać listę tabel.
+   ![Wyświetl dane wyjściowe wiersza](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
+
+## <a name="get-rows"></a>Pobierz wiersze
+
+Aby pobrać wszystkie rekordy w tabeli bazy danych DB2, należy użyć **Pobierz wiersze** akcji w aplikacji logiki. Ta akcja uruchamia DB2 `SELECT` instrukcji, na przykład `SELECT * FROM AREA`.
+
+1. Jeśli nie znasz Akcje bazy danych DB2 w aplikacji logiki, przejrzyj kroki w [Akcja Dodaj bazy danych DB2 — tabele Get](#add-db2-action) sekcji, ale Dodaj **Pobierz wiersze** akcji zamiast tego, a następnie wróć tutaj, aby kontynuować. 
+
+   Po dodaniu **Pobierz wiersze** akcji, Oto jak pojawia się Twoja Przykładowa aplikacja logiki:
+
+   ![Pobierz wiersze akcji](./media/connectors-create-api-db2/db2-get-rows-action.png)
+
+1. Otwórz **nazwy tabeli** listy, a następnie wybierz tabelę, czyli "Obszar" w tym przykładzie: 
+
+   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+
+1. Aby określić filtr lub zapytanie, aby uzyskać wyniki, wybierz **Pokaż opcje zaawansowane**.
+
+1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
+
+### <a name="view-output-rows"></a>Wyświetl dane wyjściowe wierszach
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Pobierz wiersze** akcji.
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe obejmują wszystkie rekordy w określonej tabeli.
    
-   ![](./media/connectors-create-api-db2/Db2connectorGetTablesLogicAppRunOutputs.png)
+   ![Wyświetl dane wyjściowe wierszach](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="create-the-connections"></a>Tworzenie połączeń
-Ten łącznik obsługuje połączenia z lokalnym baz danych i w chmurze przy użyciu następujących właściwości połączenia. 
+## <a name="insert-row"></a>Wstaw wiersz
 
-| Właściwość | Opis |
-| --- | --- |
-| serwer |Wymagany. Przyjmuje wartość ciągu, która reprezentuje adres TCP/IP lub alias w formacie IPv4 lub IPv6, a następnie (rozdzielany średnikami) przez numer portu TCP/IP. |
-| baza danych |Wymagany. Przyjmuje wartość ciągu, która reprezentuje DRDA relacyjne nazwę bazy danych (RDBNAM). Bazy danych DB2 dla z/OS akceptuje ciąg 16-bajtowych (baza danych jest znany jako IBM DB2 dla lokalizacji z/OS). Bazy danych DB2 dla i5/OS akceptuje ciąg 18-bajtowych (baza danych jest nazywany IBM DB2 dla i relacyjnej bazy danych). Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
-| uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, Basic lub systemu Windows (kerberos). |
-| nazwa użytkownika |Wymagany. Akceptuje wartości ciągu. Bazy danych DB2 dla z/OS akceptuje ciąg 8-bajtowych. Bazy danych DB2 dla i akceptuje ciąg 10-bajtowych. Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. Bazy danych DB2 dla systemu Windows akceptuje ciąg 30-bajtowych. |
-| hasło |Wymagany. Akceptuje wartości ciągu. |
-| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
+Aby dodać pojedynczego rekordu do tabeli bazy danych DB2, użyj **Wstaw wiersz** akcji w aplikacji logiki. Ta akcja uruchamia DB2 `INSERT` instrukcji, na przykład `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
-## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej
-Ten łącznik można uzyskać dostępu do bazy danych DB2 lokalnie przy użyciu bramy lokalnej. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
+1. Jeśli nie znasz Akcje bazy danych DB2 w aplikacji logiki, przejrzyj kroki w [Akcja Dodaj bazy danych DB2 — tabele Get](#add-db2-action) sekcji, ale Dodaj **Wstaw wiersz** akcji zamiast tego, a następnie wróć tutaj, aby kontynuować. 
 
-1. W **bram** okienko konfiguracji, wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem bramy**. Należy zauważyć, że zmianie ustawienia z chmury do środowiska lokalnego.
-2. Wpisz wartość **serwera**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `ibmserver01:50000`.
-3. Wpisz wartość **bazy danych**. Na przykład wpisz `nwind`.
-4. Wybierz wartość dla **uwierzytelniania**. Na przykład wybierz **podstawowe**.
-5. Wpisz wartość **Username**. Na przykład wpisz `db2admin`.
-6. Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
-7. Wybierz wartość dla **bramy**. Na przykład wybierz **datagateway01**.
-8. Wybierz **Utwórz** aby kontynuować. 
+   Po dodaniu **Wstaw wiersz** akcji, Oto jak pojawia się Twoja Przykładowa aplikacja logiki:
+
+   ![Wstaw wiersz akcji](./media/connectors-create-api-db2/db2-insert-row-action.png)
+
+1. Określ wartości dla wszystkich wymaganych właściwości (*). Po wybraniu tabeli, akcji zawiera odpowiednie właściwości, które są specyficzne dla rekordów w tej tabeli. 
+
+   Na przykład poniżej przedstawiono właściwości:
+
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa tabeli** | Yes | Tabela gdzie dodać rekord, takie jak "Obszar" | 
+   | **Identyfikator obszaru** | Yes | Identyfikator dla obszaru, aby dodać, takie jak "99999" | 
+   | **Opis elementu obszaru** | Yes | Opis dla obszaru dodać, takie jak "Obszaru 99999" | 
+   | **Identyfikator regionu** | Yes | Identyfikator w regionie, aby dodać, takie jak "102" | 
+   |||| 
+
+   Na przykład:
+
+   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+
+1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
+
+### <a name="view-insert-row-outputs"></a>Wyświetl Wstaw wiersz danych wyjściowych
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Wstaw wiersz** akcji.
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe zawierają rekord, który zostanie dodany do określonej tabeli.
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
+   ![Wyświetlanie danych wyjściowych z wstawionego wiersza](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="create-the-cloud-connection"></a>Utwórz połączenie z chmury
-Ten łącznik można uzyskać dostępu do bazy danych DB2 chmury. 
+## <a name="update-row"></a>Aktualizuj wiersz
 
-1. W **bram** okienko konfiguracji, pozostaw **wyboru** wyłączone (które nie były kliknięte) **Połącz za pośrednictwem bramy**. 
-2. Wpisz wartość **nazwa połączenia**. Na przykład wpisz `hisdemo2`.
-3. Wpisz wartość **nazwę serwera bazy danych DB2**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `hisdemo2.cloudapp.net:50000`.
-4. Wpisz wartość **Nazwa bazy danych DB2**. Na przykład wpisz `nwind`.
-5. Wpisz wartość **Username**. Na przykład wpisz `db2admin`.
-6. Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
-7. Wybierz **Utwórz** aby kontynuować. 
+Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj **Aktualizuj wiersz** akcji w aplikacji logiki. Ta akcja uruchamia DB2 `UPDATE` instrukcji, na przykład `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
+
+1. Jeśli nie znasz Akcje bazy danych DB2 w aplikacji logiki, przejrzyj kroki w [Akcja Dodaj bazy danych DB2 — tabele Get](#add-db2-action) sekcji, ale Dodaj **Aktualizuj wiersz** akcji zamiast tego, a następnie wróć tutaj, aby kontynuować. 
+
+   Po dodaniu **Aktualizuj wiersz** akcji, Oto jak pojawia się Twoja Przykładowa aplikacja logiki:
+
+   ![Zaktualizuj wiersz akcji](./media/connectors-create-api-db2/db2-update-row-action.png)
+
+1. Określ wartości dla wszystkich wymaganych właściwości (*). Po wybraniu tabeli, akcji zawiera odpowiednie właściwości, które są specyficzne dla rekordów w tej tabeli. 
+
+   Na przykład poniżej przedstawiono właściwości:
+
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa tabeli** | Yes | Tabela zaktualizować rekord, takie jak "Obszar" | 
+   | **Identyfikator wiersza** | Yes | Identyfikator rekordu do zaktualizowania, takie jak "99999" | 
+   | **Identyfikator obszaru** | Yes | Nowy identyfikator obszaru, takie jak "99999" | 
+   | **Opis elementu obszaru** | Yes | Nowy opis obszaru, na przykład "Zaktualizowano 99999" | 
+   | **Identyfikator regionu** | Yes | Nowy identyfikator regionu, takich jak "102" | 
+   |||| 
+
+   Na przykład:
+
+   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+
+1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
+
+### <a name="view-update-row-outputs"></a>Wyświetla widok Aktualizuj wiersz
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Aktualizuj wiersz** akcji.
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe zawierają rekord, który zostanie zaktualizowany w określonej tabeli.
    
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
+   ![Wyświetlanie danych wyjściowych z zaktualizowany wiersz](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="fetch-all-rows-using-select"></a>Pobierz wszystkie wiersze, używając wybierz
-Można określić akcję aplikacji logiki, aby pobrać wszystkie wiersze w tabeli bazy danych DB2. To powoduje, że łącznik do przetwarzania zestawienie wybierz bazy danych DB2, takich jak `SELECT * FROM AREA`.
+## <a name="delete-row"></a>Usuń wiersz
 
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `Db2getRows`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj **Usuń wiersz** akcji w aplikacji logiki. Ta akcja uruchamia DB2 `DELETE` instrukcji, na przykład `DELETE FROM AREA WHERE AREAID = '99999'`.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz `db2` w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — Get wierszy (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**.
-7. W **połączeń** okienko konfiguracji, wybierz opcję **Utwórz nowy**. 
+1. Jeśli nie znasz Akcje bazy danych DB2 w aplikacji logiki, przejrzyj kroki w [Akcja Dodaj bazy danych DB2 — tabele Get](#add-db2-action) sekcji, ale Dodaj **Usuń wiersz** akcji zamiast tego, a następnie wróć tutaj, aby kontynuować. 
+
+   Po dodaniu **Usuń wiersz** akcji, Oto jak pojawia się Twoja Przykładowa aplikacja logiki:
+
+   ![Usuń akcję wiersza](./media/connectors-create-api-db2/db2-delete-row-action.png)
+
+1. Określ wartości dla wszystkich wymaganych właściwości (*). Po wybraniu tabeli, akcji zawiera odpowiednie właściwości, które są specyficzne dla rekordów w tej tabeli. 
+
+   Na przykład poniżej przedstawiono właściwości:
+
+   | Właściwość | Wymagane | Opis | 
+   |----------|----------|-------------| 
+   | **Nazwa tabeli** | Yes | Tabela miejsca usunąć rekord, takie jak "Obszar" | 
+   | **Identyfikator wiersza** | Yes | Identyfikator rekordu do usunięcia, takie jak "99999" | 
+   |||| 
+
+   Na przykład:
+
+   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+
+1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
+
+### <a name="view-delete-row-outputs"></a>Wyświetl Usuń wiersz danych wyjściowych
+
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**. Po zakończeniu aplikacja logiki możesz wyświetlić dane wyjściowe przebiegu.
+
+1. W menu aplikacji logiki, wybierz **Przegląd**. 
+
+1. W obszarze **Podsumowanie**w **Historia przebiegów** wybierz ostatniego przebiegu, który jest pierwszy element na liście. 
+
+1. W obszarze **przebiegu aplikacji logiki**, można teraz sprawdzić stan danych wejściowych, a dane wyjściowe dla każdego kroku w aplikacji logiki. Rozwiń **Usuń wiersz** akcji.
+
+1. Aby wyświetlić dane wejściowe, wybierz **Pokaż nieprzetworzone dane wejściowe**. 
+
+1. Aby wyświetlić dane wyjściowe, wybierz **Pokaż nieprzetworzone dane wyjściowe**. 
+
+   Dane wyjściowe zawierają już rekord, który został usunięty z określonej tabeli.
    
-    ![](./media/connectors-create-api-db2/Db2connectorNewConnection.png)
-8. W **bram** okienko konfiguracji, pozostaw **wyboru** wyłączone (które nie były kliknięte) **Połącz za pośrednictwem bramy**.
-   
-   * Wpisz wartość **nazwa połączenia**. Na przykład wpisz `HISDEMO2`.
-   * Wpisz wartość **nazwę serwera bazy danych DB2**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `HISDEMO2.cloudapp.net:50000`.
-   * Wpisz wartość **Nazwa bazy danych DB2**. Na przykład wpisz `NWIND`.
-   * Wpisz wartość **Username**. Na przykład wpisz `db2admin`.
-   * Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
-9. Wybierz **Utwórz** aby kontynuować.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
-10. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-11. Opcjonalnie wybierz **Pokaż zaawansowane opcje** umożliwia określenie opcji zapytania.
-12. Wybierz pozycję **Zapisz**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
-13. W **Db2getRows** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-14. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe, który powinien zawierać listę wierszy.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
+   ![Wyświetlanie danych wyjściowych bez usunięty wiersz](./media/connectors-create-api-db2/db2-connector-delete-row-outputs.png)
 
-## <a name="add-one-row-using-insert"></a>Dodaj jeden wiersz za pomocą polecenia Wstaw
-Można określić akcję aplikacji logiki, aby dodać jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji INSERT bazy danych DB2, takich jak `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+## <a name="connector-reference"></a>Dokumentacja łączników
 
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `Db2insertRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/db2/). 
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **bazy danych db2** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — Wstaw wiersz (wersja zapoznawcza)**.
-6. W **bazy danych DB2 — Wstaw wiersz (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** okienko konfiguracji, wybierz połączenie. Na przykład wybierz **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**, typ `Area 99999`i wpisz `102` dla **REGIONID**. 
-10. Wybierz pozycję **Zapisz**.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
-11. W **Db2insertRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą nowego wiersza.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-## <a name="fetch-one-row-using-select"></a>Pobieranie przy użyciu wybierz jeden wiersz.
-Można określić akcję aplikacji logiki można pobrać jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji wybierz bazy danych DB2 gdzie, takich jak `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa** (np. "**Db2getRow**"), **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
-
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy. 
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **bazy danych db2** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — Get wierszy (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** okienko konfiguracje, wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**. 
-10. Opcjonalnie wybierz **Pokaż zaawansowane opcje** umożliwia określenie opcji zapytania.
-11. Wybierz pozycję **Zapisz**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
-12. W **Db2getRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-13. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą wiersza.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>Zmień jeden wiersz za pomocą aktualizacji
-Można określić akcję aplikacji logiki, aby zmienić jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji aktualizacji bazy danych DB2, takich jak `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `Db2updateRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
-
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **bazy danych db2** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — aktualizacja wiersza (wersja zapoznawcza)**.
-6. W **bazy danych DB2 — aktualizacja wiersza (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** konfiguracje okienku zaznacz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**, typ `Updated 99999`i wpisz `102` dla **REGIONID**. 
-10. Wybierz pozycję **Zapisz**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
-11. W **Db2updateRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą nowego wiersza.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Usuń jeden wiersz używanie opcji usuwania
-Można określić akcję aplikacji logiki, aby usunąć jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania zestawienie usunąć bazy danych DB2, takich jak `DELETE FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `Db2deleteRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
-
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy. 
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
-4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wybierz **bazy danych db2** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **bazy danych DB2 — Usuń wiersz (wersja zapoznawcza)**.
-6. W **bazy danych DB2 — Usuń wiersz (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** okienko konfiguracje, wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**. 
-10. Wybierz pozycję **Zapisz**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowValues.png)
-11. W **Db2deleteRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą usuniętych wierszy.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
-
-## <a name="supported-db2-platforms-and-versions"></a>Obsługiwane platformy bazy danych DB2 i wersje
-Ten łącznik obsługuje następujące platformy IBM DB2 i wersji, jak również produkty zgodne IBM DB2 (np. IBM Bluemix dashDB), które obsługują SQL Menedżera dostępu (SQLAM) rozproszonych relacyjnej bazy danych architektury DRDA () w wersji 10 lub 11:
-
-* IBM DB2 dla 11.1 z/OS
-* IBM DB2 dla z/OS 10.1
-* IBM DB2 dla i 7.3
-* IBM DB2 dla i 7.2
-* IBM DB2 dla i 7.1
-* IBM DB2 LUW 11
-* IBM DB2 dla LUW 10.5
-
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
-
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/db2/). 
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Eksploruj dostępnych łączników w aplikacjach logiki w naszym [listy interfejsów API](apis-list.md).
 
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

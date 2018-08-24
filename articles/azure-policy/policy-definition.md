@@ -4,16 +4,16 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ac561be75306cab6b73b457a7d450bd640aac067
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524111"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818701"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -107,7 +107,7 @@ W ramach właściwości metadanych, możesz użyć **strongType** zapewnienie wi
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-W regule zasad możesz odwoływać się do parametrów za pomocą następującej składni:
+W regule zasad możesz odwoływać się do parametrów za pomocą następujących `parameters` Składnia funkcji wartość wdrożenia:
 
 ```json
 {
@@ -245,6 +245,53 @@ Za pomocą **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie
 Aby uzyskać przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](scripts/audit-ext-not-exist.md).
 
 Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oceny, właściwości i przykłady, zobacz [zrozumienie zasad efekty](policy-effects.md).
+
+### <a name="policy-functions"></a>Funkcje zasad
+
+Podzbiór [funkcje szablonu usługi Resource Manager](../azure-resource-manager/resource-group-template-functions.md) są dostępne do użycia w ramach reguły zasad. Są obecnie obsługiwane funkcje:
+
+- [parameters](../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
+- [concat](../azure-resource-manager/resource-group-template-functions-array.md#concat)
+- [resourceGroup](../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
+- [Subskrypcja](../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+
+Ponadto `field` funkcja jest dostępna z regułami zasad. Ta funkcja jest głównie do użytku z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, która jest szacowana. Przykładem tego są widoczne na [przykład DeployIfNotExists](policy-effects.md#deployifnotexists-example).
+
+#### <a name="policy-function-examples"></a>Przykłady operacji dotyczących zasad — funkcja
+
+Używa w tym przykładzie reguły zasad `resourceGroup` funkcję zasobów w celu uzyskania **nazwa** właściwość w połączeniu z `concat` tablicy i obiektu funkcji do tworzenia `like` warunek, który wymusza Nazwa zasobu, aby rozpocząć nazwą grupy zasobów.
+
+```json
+{
+    "if": {
+        "not": {
+            "field": "name",
+            "like": "[concat(resourceGroup().name,'*')]"
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+W tym przykładzie reguły zasad użyto `resourceGroup` funkcję zasobów w celu uzyskania **tagi** wartości właściwości tablicy **CostCenter** tagów w grupie zasobów, a następnie dołącza je do **CostCenter**  tagiem na nowy zasób.
+
+```json
+{
+    "if": {
+        "field": "tags.CostCenter",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "tags.CostCenter",
+            "value": "[resourceGroup().tags.CostCenter]"
+        }]
+    }
+}
+```
 
 ## <a name="aliases"></a>Aliasy
 
