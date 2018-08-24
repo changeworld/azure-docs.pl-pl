@@ -6,14 +6,14 @@ author: meladie
 ms.assetid: 708aa129-b226-4e02-85c6-1f86e54564e4
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: a8d2eca785ad166aa4cff26bce876e41770a3427
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246139"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818277"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla Australii CHRONIONA
 
@@ -36,7 +36,7 @@ Aby umożliwić użytkownikom uwierzytelnianie przy użyciu poświadczeń lokaln
 
 Rozwiązanie używa konta usługi Azure Storage, w których klienci mogą skonfigurować na potrzeby zachowania poufności danych magazynowanych szyfrowanie usługi Storage. Azure przechowuje trzy kopie danych w wybranym regionie klienta pod kątem odporności. Regiony platformy Azure są wdrażane w parach regionów odporne na błędy i geograficzne magazyn nadmiarowy gwarantuje, czy dane będą replikowane w drugim regionie przy użyciu także trzy kopie. Zapobiega to zdarzenie niekorzystny lokalizacji danych podstawowych klienta, co spowoduje utratę danych.
 
-Aby zwiększyć bezpieczeństwo wszystkich zasobów platformy Azure, w tym rozwiązaniu są zarządzane jako grupy zasobów za pomocą usługi Azure Resource Manager. Kontroli dostępu opartej na rolach w usłudze Azure Active Directory jest używane do kontrolowania dostępu do zasobów i wdrażać w usłudze Azure Key Vault. Kondycja systemu jest monitorowany za pośrednictwem usługi Azure Security Center i Azure Monitor. Klienci, skonfigurować zarówno usług monitorowania do przechwytywania dzienników i wyświetlania kondycji systemu w jednym, łatwo można nawigować pulpitu nawigacyjnego. Usługa Azure Application Gateway jest skonfigurowany jako zapory w trybie zapobiegania i nie zezwalają na ruch, który nie jest zabezpieczeń TLSv1.2 lub nowszej. Środowiska usługi aplikacji Azure w wersji 2 do izolowania warstwa sieci web w środowisku niż dzierżawcy multi korzysta z rozwiązania.
+Aby zwiększyć bezpieczeństwo wszystkich zasobów platformy Azure, w tym rozwiązaniu są zarządzane jako grupy zasobów za pomocą usługi Azure Resource Manager. Kontroli dostępu opartej na rolach w usłudze Azure Active Directory jest używane do kontrolowania dostępu do zasobów i wdrażać w usłudze Azure Key Vault. Kondycja systemu jest monitorowany za pośrednictwem usługi Azure Security Center i Azure Monitor. Klienci, skonfigurować zarówno usług monitorowania do przechwytywania dzienników i wyświetlania kondycji systemu w jednym, łatwo można nawigować pulpitu nawigacyjnego. Usługa Azure Application Gateway jest skonfigurowany jako zapory w trybie zapobiegania i nie zezwalają na ruch, który nie jest protokół TLS 1.2 lub nowszej. Środowiska usługi aplikacji Azure w wersji 2 do izolowania warstwa sieci web w środowisku niż dzierżawcy multi korzysta z rozwiązania.
 
 ![Aplikacja sieci Web PaaS dla architektury referencyjnej chronione AU](images/au-protected-paaswa-architecture.png?raw=true "aplikacji sieci Web PaaS dla chronionych Australia referencyjny Diagram architektury")
 
@@ -95,7 +95,7 @@ Korzystanie z środowisk usługi App Service dla tej architektury zezwalanie na 
 - Hostowanie w zabezpieczonej sieci wirtualnej platformy Azure i reguł zabezpieczeń sieciowych
 - Środowiska usługi App Service jest skonfigurowany przy użyciu certyfikatu modułu równoważenia obciążenia z podpisem własnym wewnętrznego dla komunikacji HTTPS. Najlepszym rozwiązaniem firma Microsoft zaleca korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
 - [Trybu wewnętrznego równoważenia obciążenia](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (tryb 3)
-- Wyłącz [protokołu TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- Wyłącz [protokołu TLS 1.0 i 1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Zmiana [szyfrowania TLS](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Kontrolka [ruchu N/M porty wejściowe](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
 - [Zapora aplikacji sieci Web — ograniczanie danych](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -128,11 +128,9 @@ Azure szyfruje cała komunikacja do i z platformy Azure w centrach danych, domy�
 
 W przypadku chronionych danych w drodze od klienta do sieci architektura używa platformy Azure Internet lub usługi ExpressRoute za pośrednictwem bramy sieci VPN skonfigurowane przy użyciu protokołu IPSEC.
 
-Ponadto wszystkie transakcje na platformie Azure za pośrednictwem portalu zarządzania systemu Azure występować za pośrednictwem protokołu HTTPS, wykorzystując protokół TLS 1.2.
-Dane magazynowane
+Ponadto wszystkie transakcje na platformie Azure za pośrednictwem portalu zarządzania systemu Azure występować za pośrednictwem protokołu HTTPS z protokołu TLS 1.2.
 
 ### <a name="data-at-rest"></a>Dane magazynowane
-
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
 **Usługa Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i ochrony danych na rzecz organizacji bezpieczeństwa i definicją australijskiej ISM dla instytucji rządowych wymagań dotyczących zgodności.
