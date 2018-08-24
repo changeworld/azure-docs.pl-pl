@@ -1,369 +1,380 @@
+items:
 - name: Dokumentacja usługi Application Insights
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest usługa Application Insights?
-      href: app-insights-overview.md
-    - name: Omówienie monitorowania wydajności
-      href: app-insights-detect-triage-diagnose.md
+  - name: Co to jest usługa Application Insights?
+    href: app-insights-overview.md
+  - name: Omówienie monitorowania wydajności
+    href: app-insights-detect-triage-diagnose.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
-    - name: .NET
-      href: quick-monitor-portal.md
-    - name: .NET Core
-      href: app-insights-dotnetcore-quick-start.md
-    - name: Node.js
-      href: app-insights-nodejs-quick-start.md
-    - name: Java
-      href: app-insights-java-quick-start.md
-    - name: Komórkowy
-      href: app-insights-mobile-center-quickstart.md
+  - name: .NET
+    href: quick-monitor-portal.md
+  - name: .NET Core
+    href: app-insights-dotnetcore-quick-start.md
+  - name: Node.js
+    href: app-insights-nodejs-quick-start.md
+  - name: Java
+    href: app-insights-java-quick-start.md
+  - name: Komórkowy
+    href: app-insights-mobile-center-quickstart.md
+  expanded: true
 - name: Samouczki
   items:
-    - name: Znajdowanie wyjątków w czasie wykonywania
-      href: app-insights-tutorial-runtime-exceptions.md
-    - name: Znajdowanie problemów z wydajnością
-      href: app-insights-tutorial-performance.md
-    - name: Alerty dotyczące kondycji aplikacji
-      href: app-insights-tutorial-alert.md
-    - name: Zrozumienie zachowań użytkowników
-      href: app-insights-tutorial-users.md
-    - name: Tworzenie niestandardowych pulpitów nawigacyjnych
-      href: app-insights-tutorial-dashboards.md
+  - name: Znajdowanie wyjątków w czasie wykonywania
+    href: app-insights-tutorial-runtime-exceptions.md
+  - name: Znajdowanie problemów z wydajnością
+    href: app-insights-tutorial-performance.md
+  - name: Alerty dotyczące kondycji aplikacji
+    href: app-insights-tutorial-alert.md
+  - name: Zrozumienie zachowań użytkowników
+    href: app-insights-tutorial-users.md
+  - name: Tworzenie niestandardowych pulpitów nawigacyjnych
+    href: app-insights-tutorial-dashboards.md
 - name: Pojęcia
   items:
-    - name: Monitorowanie platformy Azure
-      items:
-        - name: Aplikacje internetowe platformy Azure
-          href: app-insights-azure-web-apps.md
-        - name: usług Azure Cloud Services
-          href: app-insights-cloudservices.md
-    - name: Monitorowanie aplikacji ASP.NET
-      items:
-        - name: Aplikacje internetowe
-          href: app-insights-asp-net.md
-        - name: Aplikacje internetowe już aktywne
-          href: app-insights-monitor-performance-live-website-now.md
-        - name: Usługi systemu Windows
-          href: app-insights-windows-services.md
-        - name: Pulpit systemu Windows
-          href: app-insights-windows-desktop.md
-        - name: ASP.NET Core
-          href: app-insights-asp-net-core.md
-        - name: Konsola
-          href: application-insights-console.md
-        - name: Pulpit nawigacyjny aplikacji
-          href: app-insights-overview-dashboard.md
-    - name: Monitorowanie aplikacji Java
-      items:
-        - name: Aplikacje internetowe
-          href: app-insights-java-get-started.md
-        - name: Aplikacje internetowe — środowisko uruchomieniowe
-          href: app-insights-java-live.md
-        - name: Aplikacje platformy Docker
-          href: app-insights-docker.md
-    - name: Monitorowanie aplikacji Node.js
-      items:
-        - name: Node.js
-          href: app-insights-nodejs.md
-    - name: Monitorowanie stron sieci Web
-      items:
-        - name: JavaScript
-          href: app-insights-javascript.md
-    - name: Monitorowanie usługi Azure Functions
-      href: ../azure-functions/functions-monitoring.md?toc=%2fazure%2fapplication-insights%2ftoc.json
-    - name: Monitorowanie innych platform
-      items:
-        - name: Witryny programu SharePoint
-          href: app-insights-sharepoint.md
-        - name: Więcej platform
-          href: app-insights-platforms.md
+  - name: Monitorowanie platformy Azure
+    items:
+    - name: Aplikacje internetowe platformy Azure
+      href: app-insights-azure-web-apps.md
+    - name: usług Azure Cloud Services
+      href: app-insights-cloudservices.md
+  - name: Monitorowanie aplikacji ASP.NET
+    items:
+    - name: Aplikacje internetowe
+      href: app-insights-asp-net.md
+    - name: Aplikacje internetowe już aktywne
+      href: app-insights-monitor-performance-live-website-now.md
+    - name: Usługi systemu Windows
+      href: app-insights-windows-services.md
+    - name: Pulpit systemu Windows
+      href: app-insights-windows-desktop.md
+    - name: ASP.NET Core
+      href: app-insights-asp-net-core.md
+    - name: Konsola
+      href: application-insights-console.md
+    - name: Pulpit nawigacyjny aplikacji
+      href: app-insights-overview-dashboard.md
+  - name: Monitorowanie aplikacji Java
+    items:
+    - name: Aplikacje internetowe
+      href: app-insights-java-get-started.md
+    - name: Aplikacje internetowe — środowisko uruchomieniowe
+      href: app-insights-java-live.md
+    - name: Aplikacje platformy Docker
+      href: app-insights-docker.md
+  - name: Monitorowanie aplikacji Node.js
+    items:
+    - name: Node.js
+      href: app-insights-nodejs.md
+  - name: Monitorowanie stron sieci Web
+    items:
+    - name: JavaScript
+      href: app-insights-javascript.md
+  - name: Monitorowanie usługi Azure Functions
+    href: ../azure-functions/functions-monitoring.md?toc=%2fazure%2fapplication-insights%2ftoc.json
+  - name: Monitorowanie innych platform
+    items:
+    - name: Witryny programu SharePoint
+      href: app-insights-sharepoint.md
+    - name: Więcej platform
+      href: app-insights-platforms.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Planowanie i projektowanie
+  - name: Planowanie i projektowanie
+    items:
+    - name: Szczegółowa diagnostyka dla usług i aplikacji internetowych
+      href: app-insights-devops.md
+    - name: Monitorowanie wydajności w aplikacjach internetowych
+      href: app-insights-web-monitor-performance.md
+    - name: Oddzielanie programowania, testowania i produkcji
+      href: app-insights-separate-resources.md
+    - name: Monitorowanie aplikacji z wieloma składnikami
+      href: app-insights-monitor-multi-role-apps.md
+    - name: Jak mogę (...) w usłudze Application Insights?
+      href: app-insights-how-do-i.md
+  - name: Konfigurowanie
+    items:
+    - name: Azure
       items:
-        - name: Szczegółowa diagnostyka dla usług i aplikacji internetowych
-          href: app-insights-devops.md
-        - name: Monitorowanie wydajności w aplikacjach internetowych
-          href: app-insights-web-monitor-performance.md
-        - name: 'Oddzielanie programowania, testowania i produkcji'
-          href: app-insights-separate-resources.md
-        - name: Monitorowanie aplikacji z wieloma składnikami
-          href: app-insights-monitor-multi-role-apps.md
-        - name: Jak mogę (...) w usłudze Application Insights?
-          href: app-insights-how-do-i.md
-    - name: Konfigurowanie
+      - name: Dodawanie ciągłego monitorowania
+        href: app-insights-vsts-continuous-monitoring.md
+      - name: Profiler
+        href: app-insights-profiler.md
+      - name: Włączanie profilera
+        href: enable-profiler-compute.md
+      - name: Diagnostyka
+        href: app-insights-azure-diagnostics.md
+      - name: Podglądy
+        href: app-insights-previews.md
+    - name: ASP.NET
       items:
-        - name: Azure
-          items:
-            - name: Dodawanie ciągłego monitorowania
-              href: app-insights-vsts-continuous-monitoring.md
-            - name: Profiler
-              href: app-insights-profiler.md
-            - name: Włączanie profilera
-              href: enable-profiler-compute.md
-            - name: Diagnostyka
-              href: app-insights-azure-diagnostics.md
-            - name: Podglądy
-              href: app-insights-previews.md
-        - name: ASP.NET
-          items:
-            - name: Zbieranie dodatkowych danych telemetrycznych
-              href: app-insights-asp-net-more.md
-            - name: Wyjątki
-              href: app-insights-asp-net-exceptions.md
-            - name: Ślady dzienników
-              href: app-insights-asp-net-trace-logs.md
-            - name: Liczniki wydajności
-              href: app-insights-performance-counters.md
-            - name: Zależności
-              href: app-insights-asp-net-dependencies.md
-            - name: Adnotacje dotyczące wersji
-              href: app-insights-annotations.md
-            - name: Plik ApplicationInsights.config
-              href: app-insights-configuration-with-applicationinsights-config.md
-            - name: Debuger migawek
-              href: app-insights-snapshot-debugger.md
-        - name: ASP.NET Core
-          items:
-            - name: Profiler dla usług aplikacji w systemie Linux
-              href: app-insights-profiler-aspnetcore-linux.md
-        - name: J2EE
-          items:
-            - name: Ślady dzienników
-              href: app-insights-java-trace-logs.md
-            - name: Metryki systemu UNIX
-              href: app-insights-java-collectd.md
-            - name: Zależności
-              href: app-insights-java-agent.md
-            - name: Filtrowanie danych telemetrycznych
-              href: app-insights-java-filter-telemetry.md
-        - name: Alerty
-          items:
-            - name: Dostępność
-              href: app-insights-monitor-web-app-availability.md
-            - name: Alerty metryki
-              href: app-insights-alerts.md
-        - name: Wykrywanie inteligentne
-          href: app-insights-proactive-diagnostics.md
-          items:
-            - name: Anomalie błędów
-              href: app-insights-proactive-failure-diagnostics.md
-            - name: Anomalie wydajności
-              href: app-insights-proactive-performance-diagnostics.md
-            - name: Degradacja śladów
-              href: app-insights-proactive-trace-severity.md
-            - name: Wzrost liczby wyjątków
-              href: app-insights-proactive-exception-volume.md
-            - name: Przeciek pamięci
-              href: app-insights-proactive-potential-memory-leak.md
-            - name: Wykorzystanie zasobów
-              href: app-insights-proactive-low-utilization-cloud-resources.md
-            - name: Wykrywanie zabezpieczeń
-              href: app-insights-proactive-application-security-detection-pack.md
-            - name: usług Azure Cloud Services
-              href: app-insights-proactive-cloud-services.md
-            - name: Zarządzaj regułami wykrywania inteligentnego
-              href: app-insights-proactive-arm-config.md
-        - name: Tworzenie zasobu
-          href: app-insights-create-new-resource.md
+      - name: Zbieranie dodatkowych danych telemetrycznych
+        href: app-insights-asp-net-more.md
+      - name: Wyjątki
+        href: app-insights-asp-net-exceptions.md
+      - name: Ślady dzienników
+        href: app-insights-asp-net-trace-logs.md
+      - name: Liczniki wydajności
+        href: app-insights-performance-counters.md
+      - name: Zależności
+        href: app-insights-asp-net-dependencies.md
+      - name: Adnotacje dotyczące wersji
+        href: app-insights-annotations.md
+      - name: Plik ApplicationInsights.config
+        href: app-insights-configuration-with-applicationinsights-config.md
+      - name: Debuger migawek
+        href: app-insights-snapshot-debugger.md
+    - name: ASP.NET Core
+      items:
+      - name: Profiler dla usług aplikacji w systemie Linux
+        href: app-insights-profiler-aspnetcore-linux.md
+    - name: Java
+      items:
+      - name: Ślady dzienników
+        href: app-insights-java-trace-logs.md
+      - name: Metryki systemu UNIX
+        href: app-insights-java-collectd.md
+      - name: Zależności
+        href: app-insights-java-agent.md
+      - name: Filtrowanie danych telemetrycznych
+        href: app-insights-java-filter-telemetry.md
+    - name: Alerty
+      items:
+      - name: Dostępność
+        href: app-insights-monitor-web-app-availability.md
+      - name: Alerty metryki
+        href: app-insights-alerts.md
+    - name: Wykrywanie inteligentne
+      href: app-insights-proactive-diagnostics.md
+      items:
+      - name: Anomalie błędów
+        href: app-insights-proactive-failure-diagnostics.md
+      - name: Anomalie wydajności
+        href: app-insights-proactive-performance-diagnostics.md
+      - name: Degradacja śladów
+        href: app-insights-proactive-trace-severity.md
+      - name: Wzrost liczby wyjątków
+        href: app-insights-proactive-exception-volume.md
+      - name: Przeciek pamięci
+        href: app-insights-proactive-potential-memory-leak.md
+      - name: Wykorzystanie zasobów
+        href: app-insights-proactive-low-utilization-cloud-resources.md
+      - name: Wykrywanie zabezpieczeń
+        href: app-insights-proactive-application-security-detection-pack.md
+      - name: usług Azure Cloud Services
+        href: app-insights-proactive-cloud-services.md
+      - name: Zarządzaj regułami wykrywania inteligentnego
+        href: app-insights-proactive-arm-config.md
+    - name: Tworzenie zasobu
+      href: app-insights-create-new-resource.md
+  - name: Analiza
+    items:
+    - name: Portal usługi Application Insights
+      items:
+      - name: Pulpity nawigacyjne
+        href: app-insights-dashboards.md
+      - name: Wyszukiwanie
+        href: app-insights-diagnostic-search.md
+      - name: Metryki
+        href: app-insights-metrics-explorer.md
+      - name: Transmisja strumieniowa na żywo
+        href: app-insights-live-stream.md
+      - name: Mapa aplikacji
+        href: app-insights-app-map.md
+      - name: Diagnostyka transakcji
+        href: app-insights-transaction-diagnostics.md
+      - name: Dane platformy HockeyApp
+        href: app-insights-hockeyapp-bridge-app.md
+    - name: Visual Studio
+      items:
+      - name: Informacje na temat technologii F5
+        href: app-insights-visual-studio.md
+      - name: Trends
+        href: app-insights-visual-studio-trends.md
+      - name: CodeLens
+        href: app-insights-visual-studio-codelens.md
+    - name: Sposób użycia
+      items:
+      - name: Omówienie
+        href: app-insights-usage-overview.md
+      - name: Wysyłanie kontekstu użytkownika
+        href: app-insights-usage-send-user-context.md
+      - name: Użytkownicy, sesje, zdarzenia
+        href: app-insights-usage-segmentation.md
+      - name: Lejki
+        href: usage-funnels.md
+      - name: Kohorty
+        href: app-insights-usage-cohorts.md
+      - name: Wpływ
+        href: app-insights-usage-impact.md
+      - name: Przechowywanie
+        href: app-insights-usage-retention.md
+      - name: Przepływy użytkowników
+        href: app-insights-usage-flows.md
+      - name: Skoroszyty
+        href: app-insights-usage-workbooks.md
     - name: Analiza
       items:
-        - name: Portal usługi Application Insights
-          items:
-            - name: Pulpity nawigacyjne
-              href: app-insights-dashboards.md
-            - name: Wyszukiwanie
-              href: app-insights-diagnostic-search.md
-            - name: Metryki
-              href: app-insights-metrics-explorer.md
-            - name: Transmisja strumieniowa na żywo
-              href: app-insights-live-stream.md
-            - name: Mapa aplikacji
-              href: app-insights-app-map.md
-            - name: Diagnostyka transakcji
-              href: app-insights-transaction-diagnostics.md
-            - name: Dane platformy HockeyApp
-              href: app-insights-hockeyapp-bridge-app.md
-        - name: Visual Studio
-          items:
-            - name: Informacje na temat technologii F5
-              href: app-insights-visual-studio.md
-            - name: Trends
-              href: app-insights-visual-studio-trends.md
-            - name: CodeLens
-              href: app-insights-visual-studio-codelens.md
-        - name: Sposób użycia
-          items:
-            - name: Omówienie
-              href: app-insights-usage-overview.md
-            - name: Wysyłanie kontekstu użytkownika
-              href: app-insights-usage-send-user-context.md
-            - name: 'Użytkownicy, sesje, zdarzenia'
-              href: app-insights-usage-segmentation.md
-            - name: Lejki
-              href: usage-funnels.md
-            - name: Kohorty
-              href: app-insights-usage-cohorts.md
-            - name: Wpływ
-              href: app-insights-usage-impact.md
-            - name: Przechowywanie
-              href: app-insights-usage-retention.md
-            - name: Przepływy użytkowników
-              href: app-insights-usage-flows.md
-            - name: Skoroszyty
-              href: app-insights-usage-workbooks.md
-        - name: Analiza
-          items:
-            - name: Omówienie
-              href: app-insights-analytics.md
-            - name: Importowanie dzienników niestandardowych
-              href: app-insights-analytics-import.md
-    - name: Automatyzacja
+      - name: Omówienie
+        href: app-insights-analytics.md
+      - name: Importowanie dzienników niestandardowych
+        href: app-insights-analytics-import.md
+  - name: Automatyzacja
+    items:
+    - name: Konfiguracja programu Azure PowerShell
+      href: app-insights-powershell.md
+    - name: Tworzenie zasobów
+      href: app-insights-powershell-script-create-resource.md
+    - name: Ustawianie alertów
+      href: app-insights-powershell-alerts.md
+    - name: Uzyskiwanie diagnostyki platformy Azure
+      href: app-insights-powershell-azure-diagnostics.md
+    - name: Automatyzacja za pomocą usługi Microsoft Flow
+      href: app-insights-automate-with-flow.md
+    - name: Automatyzacja za pomocą aplikacji logiki platformy Azure
+      href: automate-with-logic-apps.md
+    - name: Niestandardowe raporty przesyłane pocztą e-mail
+      href: automate-custom-reports.md
+  - name: Programowanie
+    items:
+    - name: Interfejs API dla niestandardowych zdarzeń i metryk
+      href: app-insights-api-custom-events-metrics.md
+    - name: Śledzenie operacji niestandardowych w zestawie SDK .NET
+      href: application-insights-custom-operations-tracking.md
+    - name: Filtrowanie i wstępne przetwarzanie danych telemetrycznych
+      href: app-insights-api-filtering-sampling.md
+    - name: Próbkowanie
+      href: app-insights-sampling.md
+  - name: Zarządzanie
+    items:
+    - name: Zarządzanie cenami i ilością danych
+      href: app-insights-pricing.md
       items:
-        - name: Konfiguracja programu Azure PowerShell
-          href: app-insights-powershell.md
-        - name: Tworzenie zasobów
-          href: app-insights-powershell-script-create-resource.md
-        - name: Ustawianie alertów
-          href: app-insights-powershell-alerts.md
-        - name: Uzyskiwanie diagnostyki platformy Azure
-          href: app-insights-powershell-azure-diagnostics.md
-        - name: Automatyzacja za pomocą usługi Microsoft Flow
-          href: app-insights-automate-with-flow.md
-        - name: Automatyzacja za pomocą aplikacji logiki platformy Azure
-          href: automate-with-logic-apps.md
-        - name: Niestandardowe raporty przesyłane pocztą e-mail
-          href: automate-custom-reports.md
-    - name: Programowanie
+      - name: Szczegóły planu Enterprise
+        href: app-insights-pricing-enterprise-details.md
+    - name: Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
+      href: app-insights-scom.md
+  - name: Eksportowanie
+    items:
+    - name: Eksport ciągły
+      href: app-insights-export-telemetry.md
       items:
-        - name: Interfejs API dla niestandardowych zdarzeń i metryk
-          href: app-insights-api-custom-events-metrics.md
-        - name: Śledzenie operacji niestandardowych w zestawie SDK .NET
-          href: application-insights-custom-operations-tracking.md
-        - name: Filtrowanie i wstępne przetwarzanie danych telemetrycznych
-          href: app-insights-api-filtering-sampling.md
-        - name: Próbkowanie
-          href: app-insights-sampling.md
-    - name: Zarządzanie
-      items:
-        - name: Zarządzanie cenami i ilością danych
-          href: app-insights-pricing.md
-          items:
-            - name: Szczegóły planu Enterprise
-              href: app-insights-pricing-enterprise-details.md
-        - name: Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
-          href: app-insights-scom.md
-    - name: Eksportowanie
-      items:
-        - name: Eksport ciągły
-          href: app-insights-export-telemetry.md
-          items:
-            - name: Przykłady kodu
-              items:
-                - name: Eksportowanie do bazy danych SQL przy użyciu usługi Stream Analytics
-                  href: app-insights-code-sample-export-sql-stream-analytics.md
-                - name: Eksportowanie do usługi Stream Analytics
-                  href: app-insights-export-stream-analytics.md
-        - name: Eksportowanie modelu danych
-          href: app-insights-export-data-model.md
-        - name: Eksport do usługi Power BI
-          href: app-insights-export-power-bi.md
-    - name: Bezpieczeństwo
-      items:
-        - name: Obsługa danych osobowych
-          href: app-insights-customer-data.md
-        - name: 'Zbieranie, przechowywanie i magazynowanie danych'
-          href: app-insights-data-retention-privacy.md
-        - name: 'Zasoby, role i kontrola dostępu'
-          href: app-insights-resources-roles-access-control.md
-        - name: Adresy IP
-          href: app-insights-ip-addresses.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Brak danych dla platformy .NET
-          href: app-insights-asp-net-troubleshoot-no-data.md
-        - name: Debuger migawek
-          href: app-insights-troubleshoot-snapshot-debugger.md
-        - name: Analiza
-          href: app-insights-analytics-troubleshooting.md
-        - name: Java
-          href: app-insights-java-troubleshoot.md
-        - name: Analiza użycia
-          href: app-insights-usage-troubleshoot.md
+      - name: Przykłady kodu
+        items:
+        - name: Eksportowanie do bazy danych SQL przy użyciu usługi Stream Analytics
+          href: app-insights-code-sample-export-sql-stream-analytics.md
+        - name: Eksportowanie do usługi Stream Analytics
+          href: app-insights-export-stream-analytics.md
+    - name: Eksportowanie modelu danych
+      href: app-insights-export-data-model.md
+    - name: Eksport do usługi Power BI
+      href: app-insights-export-power-bi.md
+  - name: Bezpieczeństwo
+    items:
+    - name: Obsługa danych osobowych
+      href: app-insights-customer-data.md
+    - name: Zbieranie, przechowywanie i magazynowanie danych
+      href: app-insights-data-retention-privacy.md
+    - name: Zasoby, role i kontrola dostępu
+      href: app-insights-resources-roles-access-control.md
+    - name: Adresy IP
+      href: app-insights-ip-addresses.md
+  - name: Rozwiązywanie problemów
+    items:
+    - name: Brak danych dla platformy .NET
+      href: app-insights-asp-net-troubleshoot-no-data.md
+    - name: Debuger migawek
+      href: app-insights-troubleshoot-snapshot-debugger.md
+    - name: Analiza
+      href: app-insights-analytics-troubleshooting.md
+    - name: Java
+      href: app-insights-java-troubleshoot.md
+    - name: Analiza użycia
+      href: app-insights-usage-troubleshoot.md
 - name: Przykłady
   items:
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0'
+  - name: Przykłady kodu
+    href: https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0
 - name: Dokumentacja
   items:
-    - name: Język zapytań usługi Analytics
-      href: 'https://docs.loganalytics.io/'
-    - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/?view=azurermps-5.7.0#monitor'
-    - name: .NET
-      href: 'https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights'
-    - name: Java
-      href: /java/api/com.microsoft.applicationinsights
-    - name: JavaScript
-      href: 'https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md'
-    - name: Interfejs API dostępu do danych
-      href: 'https://dev.applicationinsights.io/'
-    - name: Interfejs API REST
-      href: 'https://docs.microsoft.com/rest/api/application-insights/'
-    - name: Model danych
-      href: application-insights-data-model.md
-      items:
-        - name: Żądanie
-          href: application-insights-data-model-request-telemetry.md
-        - name: Zależność
-          href: application-insights-data-model-dependency-telemetry.md
-        - name: Wyjątek
-          href: application-insights-data-model-exception-telemetry.md
-        - name: Ślad
-          href: application-insights-data-model-trace-telemetry.md
-        - name: Wydarzenie
-          href: application-insights-data-model-event-telemetry.md
-        - name: Metryka
-          href: application-insights-data-model-metric-telemetry.md
-        - name: Kontekst
-          href: application-insights-data-model-context.md
-    - name: Korelacja telemetrii
-      href: application-insights-correlation.md
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=application-insights'
+  - name: Język zapytań usługi Analytics
+    href: https://docs.loganalytics.io/
+  - name: Automatyczne zbieranie zależności
+    href: auto-collect-dependencies.md
+  - name: Azure PowerShell
+    href: https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/?view=azurermps-5.7.0#monitor
+  - name: .NET
+    href: https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights
+  - name: Java
+    href: /java/api/com.microsoft.applicationinsights
+  - name: JavaScript
+    href: https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md
+  - name: Interfejs API dostępu do danych
+    href: https://dev.applicationinsights.io/
+  - name: Interfejs API REST
+    href: https://docs.microsoft.com/rest/api/application-insights/
+  - name: Model danych
+    href: application-insights-data-model.md
+    items:
+    - name: Żądanie
+      href: application-insights-data-model-request-telemetry.md
+    - name: Zależność
+      href: application-insights-data-model-dependency-telemetry.md
+    - name: Wyjątek
+      href: application-insights-data-model-exception-telemetry.md
+    - name: Ślad
+      href: application-insights-data-model-trace-telemetry.md
+    - name: Wydarzenie
+      href: application-insights-data-model-event-telemetry.md
+    - name: Metryka
+      href: application-insights-data-model-metric-telemetry.md
+    - name: Kontekst
+      href: application-insights-data-model-context.md
+  - name: Korelacja telemetrii
+    href: application-insights-correlation.md
+  - name: Korelowanie niestandardowych źródeł danych
+    href: app-insights-custom-data-correlation.md
+  - name: Przykłady kodu
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=application-insights
 - name: Zasoby
   items:
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Języki i platformy
-      href: app-insights-platforms.md
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/application-insights/'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Wiadomości
-      items:
-        - name: Blog
-          href: 'https://azure.microsoft.com/blog/tag/application-insights/'
-        - name: Aktualizacje usług
-          href: 'https://azure.microsoft.com/updates/?product=application-insights'
-        - name: Informacje o wersji zestawu SDK
-          href: app-insights-release-notes.md
-        - name: Informacje o wersji narzędzi Developer Analytics Tools
-          href: app-insights-release-notes-vsix.md
-    - name: Często zadawane pytania
-      href: app-insights-troubleshoot-faq.md
-    - name: Pomoc
-      items:
-        - name: Forum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights'
-        - name: Stack Overflow
-          href: 'http://stackoverflow.com/questions/tagged/az-application-insights'
-        - name: User Voice
-          href: 'https://visualstudio.uservoice.com/forums/357324-application-insights'
-        - name: Pomoc techniczna
-          href: 'https://azure.microsoft.com/support/'
-    - name: Filmy wideo
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=application-insights'
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Języki i platformy
+    href: app-insights-platforms.md
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/application-insights/
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Wiadomości
+    items:
+    - name: Blog
+      href: https://azure.microsoft.com/blog/tag/application-insights/
+    - name: Aktualizacje usług
+      href: https://azure.microsoft.com/updates/?product=application-insights
+    - name: Informacje o wersji zestawu SDK
+      href: app-insights-release-notes.md
+    - name: Informacje o wersji narzędzi Developer Analytics Tools
+      href: app-insights-release-notes-vsix.md
+  - name: Często zadawane pytania
+    href: app-insights-troubleshoot-faq.md
+  - name: Pomoc
+    items:
+    - name: Forum MSDN
+      href: https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights
+    - name: Stack Overflow
+      href: http://stackoverflow.com/questions/tagged/az-application-insights
+    - name: User Voice
+      href: https://visualstudio.uservoice.com/forums/357324-application-insights
+    - name: Pomoc techniczna
+      href: https://azure.microsoft.com/support/
+  - name: Filmy wideo
+    href: https://azure.microsoft.com/documentation/videos/index/?services=application-insights
+ms.openlocfilehash: f2a3a2b91fde63ebbc40643bb1d7df08f72a0cbf
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41926951"

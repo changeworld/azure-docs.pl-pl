@@ -1,277 +1,286 @@
+items:
 - name: Dokumentacja funkcji
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje o funkcjach
-      href: functions-overview.md
-    - name: Rozwiązania bezserwerowe — porównanie
-      href: functions-compare-logic-apps-ms-flow-webjobs.md
+  - name: Informacje o funkcjach
+    href: functions-overview.md
+  - name: Rozwiązania bezserwerowe — porównanie
+    href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
-    - name: Tworzenie funkcji — portal
-      href: functions-create-first-azure-function.md
-    - name: Tworzenie funkcji — program Visual Studio
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Tworzenie funkcji — Java/Maven
-      href: functions-create-first-java-maven.md
-    - name: Tworzenie funkcji — interfejs wiersza polecenia platformy Azure
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: Tworzenie funkcji — Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: Wyzwalacze
-      items:
-        - name: Blob Storage
-          href: functions-create-storage-blob-triggered-function.md
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: Czasomierz
-          href: functions-create-scheduled-function.md
-        - name: Ogólny element webhook
-          href: functions-create-generic-webhook-triggered-function.md
-        - name: Element webhook GitHub
-          href: functions-create-github-webhook-triggered-function.md
-        - name: Queue Storage
-          href: functions-create-storage-queue-triggered-function.md
-    - name: Integracja
-      items:
-        - name: Magazyn
-          href: functions-integrate-storage-queue-output-binding.md
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
+  - name: Tworzenie funkcji — portal
+    href: functions-create-first-azure-function.md
+  - name: Tworzenie funkcji — program Visual Studio
+    href: functions-create-your-first-function-visual-studio.md
+  - name: Tworzenie funkcji — Java/Maven
+    href: functions-create-first-java-maven.md
+  - name: Tworzenie funkcji — interfejs wiersza polecenia platformy Azure
+    href: functions-create-first-azure-function-azure-cli.md
+  - name: Tworzenie funkcji — Linux
+    href: functions-create-first-azure-function-azure-cli-linux.md
+  - name: Wyzwalacze
+    items:
+    - name: Blob Storage
+      href: functions-create-storage-blob-triggered-function.md
+    - name: Azure Cosmos DB
+      href: functions-create-cosmos-db-triggered-function.md
+    - name: Czasomierz
+      href: functions-create-scheduled-function.md
+    - name: Ogólny element webhook
+      href: functions-create-generic-webhook-triggered-function.md
+    - name: Element webhook GitHub
+      href: functions-create-github-webhook-triggered-function.md
+    - name: Queue Storage
+      href: functions-create-storage-queue-triggered-function.md
+  - name: Integracja
+    items:
+    - name: Magazyn
+      href: functions-integrate-storage-queue-output-binding.md
+    - name: Azure Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
+  expanded: true
 - name: Samouczki
   items:
-    - name: Funkcje z aplikacjami logiki
-      href: functions-twitter-email.md
-    - name: Tworzenie bezserwerowego interfejsu API
-      href: functions-create-serverless-api.md
-    - name: Tworzenie definicji interfejsu OpenAPI
-      href: functions-openapi-definition.md
-    - name: Zmienianie rozmiaru obrazu za pomocą usługi Event Grid
-      href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Tworzenie bezserwerowej aplikacji internetowej
-      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
-    - name: Usługa Functions w systemie Linux
-      items:
-        - name: Obraz niestandardowy
-          href: functions-create-function-linux-custom-image.md
-        - name: Urządzenie usługi IoT Edge
-          href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: Funkcje z aplikacjami logiki
+    href: functions-twitter-email.md
+  - name: Tworzenie bezserwerowego interfejsu API
+    href: functions-create-serverless-api.md
+  - name: Tworzenie definicji interfejsu OpenAPI
+    href: functions-openapi-definition.md
+  - name: Zmienianie rozmiaru obrazu za pomocą usługi Event Grid
+    href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: Tworzenie bezserwerowej aplikacji internetowej
+    href: https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database
+  - name: Usługa Functions w systemie Linux
+    items:
+    - name: Obraz niestandardowy
+      href: functions-create-function-linux-custom-image.md
+    - name: Urządzenie usługi IoT Edge
+      href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: Przykłady
   items:
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions'
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: functions-cli-samples.md
+  - name: Przykłady kodu
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: functions-cli-samples.md
+  - name: Azure Functions — przepisy
+    href: https://docs.microsoft.com/sandbox/functions-recipes/
 - name: Pojęcia
   items:
-    - name: Porównanie wersji 1.x i 2.x
-      href: functions-versions.md
-    - name: Skalowanie i hosting
-      href: functions-scale.md
-    - name: Wyzwalacze i powiązania
-      href: functions-triggers-bindings.md
-    - name: Języki
-      items:
-        - name: Obsługiwane języki
-          href: supported-languages.md
-        - name: 'C# (biblioteka klas)'
-          href: functions-dotnet-class-library.md
-        - name: 'Skrypt języka C# (csx)'
-          href: functions-reference-csharp.md
-        - name: 'F#'
-          href: functions-reference-fsharp.md
-        - name: JavaScript
-          href: functions-reference-node.md
-        - name: Java
-          href: functions-reference-java.md
+  - name: Porównanie wersji 1.x i 2.x
+    href: functions-versions.md
+  - name: Skalowanie i hosting
+    href: functions-scale.md
+  - name: Wyzwalacze i powiązania
+    href: functions-triggers-bindings.md
+  - name: Języki
+    items:
+    - name: Obsługiwane języki
+      href: supported-languages.md
+    - name: C# (biblioteka klas)
+      href: functions-dotnet-class-library.md
+    - name: Skrypt języka C# (csx)
+      href: functions-reference-csharp.md
+    - name: F#
+      href: functions-reference-fsharp.md
+    - name: JavaScript
+      href: functions-reference-node.md
+    - name: Java
+      href: functions-reference-java.md
+  - name: Diagnostyka
+    href: ../app-service/app-service-diagnostics.md
+  - name: Zagadnienia dotyczące wydajności
+    href: functions-best-practices.md
+  - name: Serwery proxy usługi Functions
+    href: functions-proxies.md
+  - name: Adresy IP
+    href: ip-addresses.md
+  - name: Funkcje lokalne
+    href: functions-runtime-overview.md
+  - name: Trwałe funkcje
+    items:
+    - name: Omówienie
+      href: durable-functions-overview.md
+    - name: Typy i cechy funkcji
+      href: durable-functions-types-features-overview.md
+    - name: Powiązania
+      href: durable-functions-bindings.md
+    - name: Punkt kontrolny i powtarzanie
+      href: durable-functions-checkpointing-and-replay.md
+    - name: Stan niestandardowej aranżacji
+      href: durable-functions-custom-orchestration-status.md
+    - name: Zarządzanie wystąpieniami
+      href: durable-functions-instance-management.md
+    - name: Interfejs API protokołu HTTP
+      href: durable-functions-http-api.md
+    - name: Obsługa błędów
+      href: durable-functions-error-handling.md
     - name: Diagnostyka
-      href: ../app-service/app-service-diagnostics.md
-    - name: Zagadnienia dotyczące wydajności
-      href: functions-best-practices.md
-    - name: Serwery proxy usługi Functions
-      href: functions-proxies.md
-    - name: Adresy IP
-      href: ip-addresses.md
-    - name: Funkcje lokalne
-      href: functions-runtime-overview.md
-    - name: Trwałe funkcje
-      items:
-        - name: Omówienie
-          href: durable-functions-overview.md
-        - name: Typy i cechy funkcji
-          href: durable-functions-types-features-overview.md
-        - name: Powiązania
-          href: durable-functions-bindings.md
-        - name: Punkt kontrolny i powtarzanie
-          href: durable-functions-checkpointing-and-replay.md
-        - name: Stan niestandardowej aranżacji
-          href: durable-functions-custom-orchestration-status.md
-        - name: Zarządzanie wystąpieniami
-          href: durable-functions-instance-management.md
-        - name: Interfejs API protokołu HTTP
-          href: durable-functions-http-api.md
-        - name: Obsługa błędów
-          href: durable-functions-error-handling.md
-        - name: Diagnostyka
-          href: durable-functions-diagnostics.md
-        - name: Czasomierze
-          href: durable-functions-timers.md
-        - name: Zdarzenia zewnętrzne
-          href: durable-functions-external-events.md
-        - name: Orkiestracje nieustanne
-          href: durable-functions-eternal-orchestrations.md
-        - name: Orkiestracje pojedyncze
-          href: durable-functions-singletons.md
-        - name: Orkiestracje podrzędne
-          href: durable-functions-sub-orchestrations.md
-        - name: Koncentratory zadań
-          href: durable-functions-task-hubs.md
-        - name: Obsługa wersji
-          href: durable-functions-versioning.md
-        - name: Wydajność i skalowanie
-          href: durable-functions-perf-and-scale.md
-        - name: Odzyskiwanie po awarii i dystrybucja geograficzna
-          href: durable-functions-disaster-recovery-geo-distribution.md
+      href: durable-functions-diagnostics.md
+    - name: Czasomierze
+      href: durable-functions-timers.md
+    - name: Zdarzenia zewnętrzne
+      href: durable-functions-external-events.md
+    - name: Orkiestracje nieustanne
+      href: durable-functions-eternal-orchestrations.md
+    - name: Orkiestracje pojedyncze
+      href: durable-functions-singletons.md
+    - name: Orkiestracje podrzędne
+      href: durable-functions-sub-orchestrations.md
+    - name: Koncentratory zadań
+      href: durable-functions-task-hubs.md
+    - name: Obsługa wersji
+      href: durable-functions-versioning.md
+    - name: Wydajność i skalowanie
+      href: durable-functions-perf-and-scale.md
+    - name: Odzyskiwanie po awarii i dystrybucja geograficzna
+      href: durable-functions-disaster-recovery-geo-distribution.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Programowanie
-      items:
-        - name: Przewodnik dla deweloperów
-          href: functions-reference.md
-        - name: Testowanie funkcji
-          href: functions-test-a-function.md
-        - name: Programowanie i debugowanie lokalnie
-          href: functions-develop-local.md
-        - name: Opracowywanie zawartości w programie Visual Studio
-          href: functions-develop-vs.md
-        - name: Opracowywanie podstawowych narzędzi
-          href: functions-run-local.md
-        - name: Opracowywanie rozwiązania IntelliJ IDEA
-          href: functions-create-maven-intellij.md
-        - name: Programowanie w środowisku Eclipse
-          href: functions-create-maven-eclipse.md
-        - name: Zarządzanie połączeniami
-          href: manage-connections.md
-        - name: Obsługa błędów
-          href: functions-bindings-error-pages.md
-    - name: Wdrażanie
-      items:
-        - name: Ciągłe wdrażanie
-          href: functions-continuous-deployment.md
-        - name: Wdrażanie powiadomień push pakietów zip
-          href: deployment-zip-push.md
-        - name: Automatyzowanie wdrażania zasobów
-          href: functions-infrastructure-as-code.md
-        - name: Funkcje lokalne
-          href: functions-runtime-install.md
-    - name: Konfigurowanie
-      items:
-        - name: Zarządzanie aplikacją funkcji
-          href: functions-how-to-use-azure-function-app-settings.md
-        - name: Ustawianie wersji środowiska uruchomieniowego
-          href: set-runtime-version.md
-        - name: Wyłączanie funkcji
-          href: disable-function.md
-    - name: Monitorowanie
-      href: functions-monitoring.md
-    - name: Integracja
-      items:
-        - name: Łączenie z usługą SQL Database
-          href: functions-scenario-database-table-cleanup.md
-        - name: Tworzenie definicji interfejsu Open API 2.0
-          href: functions-api-definition-getting-started.md
-        - name: Eksportowanie do usług PowerApps i Microsoft Flow
-          href: app-service-export-api-to-powerapps-and-flow.md
-        - name: Wywoływanie funkcji z usługi PowerApps
-          href: functions-powerapps-scenario.md
-        - name: Wywoływanie funkcji z usługi Microsoft Flow
-          href: functions-flow-scenario.md
-        - name: Używanie tożsamości usługi zarządzanej
-          href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Trwałe funkcje
-      items:
-        - name: Instalowanie
-          href: durable-functions-install.md
-        - name: Łączenie w łańcuchy
-          href: durable-functions-sequence.md
-        - name: Model fan-out/fan-in
-          href: durable-functions-cloud-backup.md
-        - name: Monitory
-          href: durable-functions-monitor.md
-        - name: Interakcja z użytkownikami
-          href: durable-functions-phone-verification.md
-        - name: Testy jednostkowe
-          href: durable-functions-unit-testing.md
-        - name: Publikowanie zdarzeń
-          href: durable-functions-event-publishing.md
-        - name: Korzystanie z zestawu WebJobs SDK
-          href: durable-functions-webjobs-sdk.md
+  - name: Programowanie
+    items:
+    - name: Przewodnik dla deweloperów
+      href: functions-reference.md
+    - name: Testowanie funkcji
+      href: functions-test-a-function.md
+    - name: Programowanie i debugowanie lokalnie
+      href: functions-develop-local.md
+    - name: Opracowywanie zawartości w programie Visual Studio
+      href: functions-develop-vs.md
+    - name: Opracowywanie podstawowych narzędzi
+      href: functions-run-local.md
+    - name: Opracowywanie rozwiązania IntelliJ IDEA
+      href: functions-create-maven-intellij.md
+    - name: Programowanie w środowisku Eclipse
+      href: functions-create-maven-eclipse.md
+    - name: Zarządzanie połączeniami
+      href: manage-connections.md
+    - name: Obsługa błędów
+      href: functions-bindings-error-pages.md
+  - name: Wdrażanie
+    items:
+    - name: Ciągłe wdrażanie
+      href: functions-continuous-deployment.md
+    - name: Wdrażanie powiadomień push pakietów zip
+      href: deployment-zip-push.md
+    - name: Automatyzowanie wdrażania zasobów
+      href: functions-infrastructure-as-code.md
+    - name: Funkcje lokalne
+      href: functions-runtime-install.md
+  - name: Konfigurowanie
+    items:
+    - name: Zarządzanie aplikacją funkcji
+      href: functions-how-to-use-azure-function-app-settings.md
+    - name: Ustawianie wersji środowiska uruchomieniowego
+      href: set-runtime-version.md
+    - name: Wyłączanie funkcji
+      href: disable-function.md
+  - name: Monitorowanie
+    href: functions-monitoring.md
+  - name: Integracja
+    items:
+    - name: Łączenie z usługą SQL Database
+      href: functions-scenario-database-table-cleanup.md
+    - name: Tworzenie definicji interfejsu Open API 2.0
+      href: functions-api-definition-getting-started.md
+    - name: Eksportowanie do usług PowerApps i Microsoft Flow
+      href: app-service-export-api-to-powerapps-and-flow.md
+    - name: Wywoływanie funkcji z usługi PowerApps
+      href: functions-powerapps-scenario.md
+    - name: Wywoływanie funkcji z usługi Microsoft Flow
+      href: functions-flow-scenario.md
+    - name: Używanie tożsamości usługi zarządzanej
+      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: Trwałe funkcje
+    items:
+    - name: Instalowanie
+      href: durable-functions-install.md
+    - name: Łączenie w łańcuchy
+      href: durable-functions-sequence.md
+    - name: Model fan-out/fan-in
+      href: durable-functions-cloud-backup.md
+    - name: Monitory
+      href: durable-functions-monitor.md
+    - name: Interakcja z użytkownikami
+      href: durable-functions-phone-verification.md
+    - name: Testy jednostkowe
+      href: durable-functions-unit-testing.md
+    - name: Publikowanie zdarzeń
+      href: durable-functions-event-publishing.md
+    - name: Korzystanie z zestawu WebJobs SDK
+      href: durable-functions-webjobs-sdk.md
 - name: Dokumentacja
   items:
-    - name: Powiązania
+  - name: Powiązania
+    items:
+    - name: Blob Storage
+      href: functions-bindings-storage-blob.md
+    - name: Azure Cosmos DB
       items:
-        - name: Blob Storage
-          href: functions-bindings-storage-blob.md
-        - name: Azure Cosmos DB
-          items:
-            - name: Functions w wersji 1.x
-              href: functions-bindings-cosmosdb.md
-            - name: Functions w wersji 2.x
-              href: functions-bindings-cosmosdb-v2.md
-        - name: Event Grid
-          href: functions-bindings-event-grid.md
-        - name: Event Hubs
-          href: functions-bindings-event-hubs.md
-        - name: Plik zewnętrzny
-          href: functions-bindings-external-file.md
-        - name: Tabela zewnętrzna
-          href: functions-bindings-external-table.md
-        - name: HTTP i elementy webhook
-          href: functions-bindings-http-webhook.md
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
-        - name: Mobile Apps
-          href: functions-bindings-mobile-apps.md
-        - name: Notification Hubs
-          href: functions-bindings-notification-hubs.md
-        - name: Queue Storage
-          href: functions-bindings-storage-queue.md
-        - name: SendGrid
-          href: functions-bindings-sendgrid.md
-        - name: Service Bus
-          href: functions-bindings-service-bus.md
-        - name: Magazyn tabel
-          href: functions-bindings-storage-table.md
-        - name: Czasomierz
-          href: functions-bindings-timer.md
-        - name: Twilio
-          href: functions-bindings-twilio.md
-    - name: Dokumentacja pliku host.json
-      href: functions-host-json.md
-    - name: Dokumentacja ustawień aplikacji
-      href: functions-app-settings.md
-    - name: Dokumentacja interfejsu OpenAPI
-      href: functions-api-definition.md
+      - name: Functions w wersji 1.x
+        href: functions-bindings-cosmosdb.md
+      - name: Functions w wersji 2.x
+        href: functions-bindings-cosmosdb-v2.md
+    - name: Event Grid
+      href: functions-bindings-event-grid.md
+    - name: Event Hubs
+      href: functions-bindings-event-hubs.md
+    - name: Plik zewnętrzny
+      href: functions-bindings-external-file.md
+    - name: Tabela zewnętrzna
+      href: functions-bindings-external-table.md
+    - name: HTTP i elementy webhook
+      href: functions-bindings-http-webhook.md
+    - name: Microsoft Graph
+      href: functions-bindings-microsoft-graph.md
+    - name: Mobile Apps
+      href: functions-bindings-mobile-apps.md
+    - name: Notification Hubs
+      href: functions-bindings-notification-hubs.md
+    - name: Queue Storage
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: Service Bus
+      href: functions-bindings-service-bus.md
+    - name: Magazyn tabel
+      href: functions-bindings-storage-table.md
+    - name: Czasomierz
+      href: functions-bindings-timer.md
+    - name: Twilio
+      href: functions-bindings-twilio.md
+  - name: Dokumentacja pliku host.json
+    href: functions-host-json.md
+  - name: Dokumentacja ustawień aplikacji
+    href: functions-app-settings.md
+  - name: Dokumentacja interfejsu OpenAPI
+    href: functions-api-definition.md
 - name: Zasoby
   items:
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Filmy wideo
-      href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: Forum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-functions'
-    - name: Twitter
-      href: 'https://twitter.com/azurefunctions'
-    - name: Repozytorium GitHub usługi Azure Functions
-      href: 'https://github.com/Azure/Azure-Functions/'
-    - name: Aktualizacje usług
-      href: 'https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform='
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Dostępność regionalna
+    href: https://azure.microsoft.com/regions/services/
+  - name: Filmy wideo
+    href: https://www.youtube.com/c/AzureFunctions
+  - name: Forum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/azurefunctions
+  - name: Repozytorium GitHub usługi Azure Functions
+    href: https://github.com/Azure/Azure-Functions/
+  - name: Aktualizacje usług
+    href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
+ms.openlocfilehash: 3eb52c481185c50d935991b5163d130925bd6eeb
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41926998"

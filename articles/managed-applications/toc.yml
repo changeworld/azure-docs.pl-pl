@@ -1,98 +1,107 @@
+items:
 - name: Dokumentacja usługi Azure Managed Applications
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje o aplikacjach zarządzanych
-      href: overview.md
+  - name: Informacje o aplikacjach zarządzanych
+    href: overview.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
-    - name: Tworzenie aplikacji zarządzanej
-      href: managed-apps-quickstart-cli.md
+  - name: Tworzenie aplikacji zarządzanej
+    href: managed-apps-quickstart-cli.md
+  expanded: true
 - name: Samouczki
   items:
-    - name: Tworzenie plików aplikacji zarządzanej
-      href: publish-service-catalog-app.md
-    - name: Tworzenie aplikacji w witrynie Marketplace
-      href: publish-marketplace-app.md
+  - name: Tworzenie plików aplikacji zarządzanej
+    href: publish-service-catalog-app.md
+  - name: Tworzenie aplikacji w witrynie Marketplace
+    href: publish-marketplace-app.md
 - name: Przykłady
   items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
-    - name: Rozwiązania aplikacji zarządzanych
-      href: sample-projects.md
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
+  - name: Rozwiązania aplikacji zarządzanych
+    href: sample-projects.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Definiowanie interfejsu użytkownika
-      href: create-uidefinition-overview.md
-    - name: Aktualizowanie zarządzanych zasobów
-      href: update-managed-resources.md
-    - name: Publikowanie za pomocą portalu
-      href: publish-portal.md
-    - name: Używanie wpisu tajnego z usługi Key Vault
-      href: key-vault-access.md
+  - name: Tworzenie interfejsu portalu
+    href: create-uidefinition-overview.md
+  - name: Testowanie interfejsu portalu
+    href: test-createuidefinition.md
+  - name: Aktualizowanie zarządzanych zasobów
+    href: update-managed-resources.md
+  - name: Publikowanie za pomocą portalu
+    href: publish-portal.md
+  - name: Używanie wpisu tajnego z usługi Key Vault
+    href: key-vault-access.md
 - name: Dokumentacja
   items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: /cli/azure/managedapp
-    - name: PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: REST
-      href: /rest/api/resources/
-    - name: Funkcje interfejsu użytkownika
-      href: create-uidefinition-functions.md
-    - name: Elementy interfejsu użytkownika
-      href: create-uidefinition-elements.md
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: /cli/azure/managedapp
+  - name: PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: REST
+    href: /rest/api/resources/
+  - name: Funkcje interfejsu użytkownika
+    href: create-uidefinition-functions.md
+  - name: Elementy interfejsu użytkownika
+    href: create-uidefinition-elements.md
+    items:
+    - name: Wspólne
       items:
-        - name: Wspólne
-          items:
-            - name: DropDown
-              href: microsoft-common-dropdown.md
-            - name: FileUpload
-              href: microsoft-common-fileupload.md
-            - name: InfoBox
-              href: microsoft-common-infobox.md
-            - name: OptionsGroup
-              href: microsoft-common-optionsgroup.md
-            - name: PasswordBox
-              href: microsoft-common-passwordbox.md
-            - name: Sekcja
-              href: microsoft-common-section.md
-            - name: TextBlock
-              href: microsoft-common-textblock.md
-            - name: TextBox
-              href: microsoft-common-textbox.md
-        - name: Wystąpienia obliczeniowe
-          items:
-            - name: CredentialsCombo
-              href: microsoft-compute-credentialscombo.md
-            - name: SizeSelector
-              href: microsoft-compute-sizeselector.md
-            - name: UserNameTextBox
-              href: microsoft-compute-usernametextbox.md
-        - name: Sieć
-          items:
-            - name: AvailabilityZoneDropDown
-              href: microsoft-network-availabilityzonedropdown.md
-            - name: PublicIPAddressCombo
-              href: microsoft-network-publicipaddresscombo.md
-            - name: VirtualNetworkCombo
-              href: microsoft-network-virtualnetworkcombo.md
-        - name: Magazyn
-          items:
-            - name: MultiStorageAccountCombo
-              href: microsoft-storage-multistorageaccountcombo.md
-            - name: StorageAccountSelector
-              href: microsoft-storage-storageaccountselector.md
+      - name: DropDown
+        href: microsoft-common-dropdown.md
+      - name: FileUpload
+        href: microsoft-common-fileupload.md
+      - name: InfoBox
+        href: microsoft-common-infobox.md
+      - name: OptionsGroup
+        href: microsoft-common-optionsgroup.md
+      - name: PasswordBox
+        href: microsoft-common-passwordbox.md
+      - name: Sekcja
+        href: microsoft-common-section.md
+      - name: TextBlock
+        href: microsoft-common-textblock.md
+      - name: TextBox
+        href: microsoft-common-textbox.md
+    - name: Wystąpienia obliczeniowe
+      items:
+      - name: CredentialsCombo
+        href: microsoft-compute-credentialscombo.md
+      - name: SizeSelector
+        href: microsoft-compute-sizeselector.md
+      - name: UserNameTextBox
+        href: microsoft-compute-usernametextbox.md
+    - name: Sieć
+      items:
+      - name: AvailabilityZoneDropDown
+        href: microsoft-network-availabilityzonedropdown.md
+      - name: PublicIPAddressCombo
+        href: microsoft-network-publicipaddresscombo.md
+      - name: VirtualNetworkCombo
+        href: microsoft-network-virtualnetworkcombo.md
+    - name: Magazyn
+      items:
+      - name: MultiStorageAccountCombo
+        href: microsoft-storage-multistorageaccountcombo.md
+      - name: StorageAccountSelector
+        href: microsoft-storage-storageaccountselector.md
 - name: Zasoby
   items:
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/managed-applications/
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-managedapps
+ms.openlocfilehash: c468b30361163d39b94af999c9767cbc491a06ac
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41928402"

@@ -74,9 +74,9 @@
 #### [Przechowywanie wersji klienta i serwera](app-service-mobile-client-and-server-versioning.md)
 
 ### Środowisko usługi App Service
-#### [Tworzenie aplikacji sieci Web w środowisku usługi App Service](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Korzystanie z wewnętrznego modułu równoważenia obciążenia](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Tworzenie aplikacji internetowej w środowisku usługi App Service](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Tworzenie środowiska ASE przy użyciu szablonu](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Wdrażanie
 ### [Wdrażanie synchronizacji w chmurze](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -131,7 +131,7 @@
 #### [Używanie certyfikatu SSL uzyskanego w innym miejscu](../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### Zabezpieczanie środowiska usługi App Service
-#### [Konfigurowanie zapory aplikacji sieci Web](../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Konfigurowanie zapory aplikacji internetowej](../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Implementowanie warstwowej architektury zabezpieczeń](../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Bezpieczne nawiązywanie połączenia z zasobami zaplecza](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

@@ -34,6 +34,7 @@
 ### [Konfigurowanie aliasu nazwy serwera](analysis-services-server-alias.md)
 ### [Konfigurowanie zwiększania skali w poziomie](analysis-services-scale-out.md)
 ### [Instalowanie i konfigurowanie bramy danych lokalnych](analysis-services-gateway-install.md)
+### [Używanie bramy dla źródeł danych w usłudze Azure Virtual Network](analysis-services-vnet-gateway.md)
 ### [Zarządzanie serwerem](analysis-services-manage.md)
 ### [Monitorowanie metryk serwera](analysis-services-monitor.md)
 ### [Setup diagnostic logging (Konfigurowanie rejestrowania diagnostycznego)](analysis-services-logging.md)

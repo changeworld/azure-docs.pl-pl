@@ -9,7 +9,8 @@
 ## [Migrowanie programu SQL Server do zarządzanego wystąpienia usługi SQL DB](tutorial-sql-server-to-managed-instance.md)
 
 # Przewodniki z instrukcjami
-## [Używanie programu PowerShell do migrowania programu SQL Server](howto-sql-server-to-azure-sql-powershell.md)
+## [Używanie programu PowerShell do migrowania programu SQL Server do usługi Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
+## [Używanie programu PowerShell do migrowania programu SQL Server do usługi Azure SQL DB MI](howto-sql-server-to-azure-sql-mi-powershell.md)
 
 # Zasoby
 ## [Opinie użytkowników w witrynie User Voice](https://feedback.azure.com/forums/906100-azure-database-migration-service)

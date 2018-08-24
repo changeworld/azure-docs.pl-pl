@@ -49,7 +49,7 @@
 
 ## Informacje o wersji
 ### [Aktualizacja Update 1.1 — bieżąca](storsimple-virtual-array-update-11-release-notes.md)
-### [Aktualizacja Update 1](storsimple-virtual-array-update-1-release-notes.md)
+### [Aktualizacja 1](storsimple-virtual-array-update-1-release-notes.md)
 ### [Update 0.6](storsimple-virtual-array-update-06-release-notes.md)
 ### Archiwum
 #### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
@@ -180,7 +180,9 @@
 
 ### Migrate (Migracja)
 #### [Subskrypcje i konta magazynu](storsimple-8000-migrate-classic-azure-portal.md)
-#### [Z urządzeń serii 5000/7000](storsimple-8000-migrate-from-5000-7000.md)
+#### [Z urządzeń serii 5000/7000](storsimple-8000-migration-options.md)
+##### [Do urządzeń z serii StorSimple 8000](storsimple-8000-migrate-from-5000-7000.md)
+##### [Do usługi Azure File Sync](storsimple-5000-7000-afs-migration.md)
 #### [Z innych urządzeń magazynujących](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Aktualizacja

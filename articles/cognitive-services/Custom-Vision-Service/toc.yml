@@ -1,71 +1,80 @@
+items:
 - name: Dokumentacja usługi Custom Vision Service
 - name: Omówienie
   items:
-    - name: Czym jest usługa Custom Vision Service?
-      href: home.md
+  - name: Czym jest usługa Custom Vision Service?
+    href: home.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Rozpoczynanie korzystania z usługi Custom Vision Service
+  - name: Rozpoczynanie korzystania z usługi Custom Vision Service
+    items:
+    - name: Tworzenie klasyfikatora
+      href: getting-started-build-a-classifier.md
+    - name: Testowanie modelu
+      href: test-your-model.md
+    - name: Poprawianie klasyfikatora
+      href: getting-started-improving-your-classifier.md
+    - name: Używanie interfejsu API prognozowania
+      href: use-prediction-api.md
+    - name: Eksportowanie modelu na platformę mobilną
+      href: export-your-model.md
+    - name: Używanie modelu ONNX w usłudze uczenia maszynowego systemu Windows
+      href: custom-vision-onnx-windows-ml.md
+    - name: Uruchamianie modelu TensorFlow w języku Python
+      href: export-model-python.md
+    - name: Uczenie modelu przy użyciu interfejsu API REST
+      href: rest-api-tutorial.md
+  - name: Tworzenie aplikacji
+    items:
+    - name: Klasyfikacja obrazów
       items:
-        - name: Tworzenie klasyfikatora
-          href: getting-started-build-a-classifier.md
-        - name: Testowanie modelu
-          href: test-your-model.md
-        - name: Poprawianie klasyfikatora
-          href: getting-started-improving-your-classifier.md
-        - name: Używanie interfejsu API prognozowania
-          href: use-prediction-api.md
-        - name: Eksportowanie modelu na platformę mobilną
-          href: export-your-model.md
-        - name: Używanie modelu ONNX w usłudze uczenia maszynowego systemu Windows
-          href: custom-vision-onnx-windows-ml.md
-        - name: Uruchamianie modelu TensorFlow w języku Python
-          href: export-model-python.md
-    - name: Tworzenie aplikacji
+      - name: Samouczek w języku C#
+        href: csharp-tutorial.md
+      - name: Samouczek w języku Python
+        href: python-tutorial.md
+    - name: Wykrywanie obiektów
       items:
-        - name: Klasyfikacja obrazów
-          items:
-            - name: 'Samouczek w języku C#'
-              href: csharp-tutorial.md
-            - name: Samouczek w języku Python
-              href: python-tutorial.md
-        - name: Wykrywanie obiektów
-          items:
-            - name: 'Samouczek w języku C#'
-              href: csharp-tutorial-od.md
-            - name: Samouczek w języku Python
-              href: python-tutorial-od.md
+      - name: Samouczek w języku C#
+        href: csharp-tutorial-od.md
+      - name: Samouczek w języku Python
+        href: python-tutorial-od.md
 - name: Dokumentacja
   items:
-    - name: Interfejs API szkolenia usługi Custom Vision
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: Interfejs API prognozowania usługi Custom Vision
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Słownik
-      href: glossary-of-terms.md
-    - name: Zestawy SDK
-      items:
-        - name: Windows
-          href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
-        - name: Przejdź
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
+  - name: Interfejs API szkolenia usługi Custom Vision
+    href: https://go.microsoft.com/fwlink/?linkid=865446
+  - name: Interfejs API prognozowania usługi Custom Vision
+    href: https://go.microsoft.com/fwlink/?linkid=865445
+  - name: Słownik
+    href: glossary-of-terms.md
+  - name: Zestawy SDK
+    items:
+    - name: Windows
+      href: http://github.com/Microsoft/Cognitive-CustomVision-Windows
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+    - name: Przejdź
+      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: Zasoby
   items:
-    - name: Przykłady
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/'
-    - name: Eksportowanie i usuwanie danych konta
-      href: ./export-delete-data.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Limity przydziału i ograniczenia
-      href: limits-and-quotas.md
+  - name: Przykłady
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/
+  - name: Eksportowanie i usuwanie danych konta
+    href: ./export-delete-data.md
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: Dostępność regionalna
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Limity przydziału i ograniczenia
+    href: limits-and-quotas.md
+ms.openlocfilehash: 1ab6bbc1e6f5d600d38d65628798f27f33db17a7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42440245"

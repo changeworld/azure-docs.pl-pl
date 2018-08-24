@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfa1c2358926970f33827706480a53f42bed8339
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b797090b98d7ab552c3c342eeea341fd86c331c3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411662"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41929674"
 documentType: LandingData
 title: Dokumentacja usługi Key Vault
 metadata:
@@ -22,8 +22,19 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Dowiedz się, jak za pomocą usługi Key Vault chronić klucze kryptograficzne i klucze tajne używane przez aplikacje i usługi w chmurze oraz zarządzać tymi kluczami. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób tworzenia i obsługi kluczy, które umożliwiają uzyskiwanie dostępu do zasobów i rozwiązań oraz ich szyfrowanie.
+  description: Dowiedz się, jak za pomocą usługi Key Vault chronić klucze kryptograficzne i klucze tajne używane przez aplikacje i usługi w chmurze oraz zarządzać tymi kluczami. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób tworzenia i obsługi kluczy oraz wpisów tajnych, które umożliwiają uzyskiwanie dostępu do zasobów i rozwiązań oraz ich szyfrowanie.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/key-vault/key-vault-whatis
+      html: <p>Poznaj podstawowe pojęcia związane z usługą Azure Key Vault.</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_article.svg
+      title: Pojęcia
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
@@ -62,11 +73,6 @@ sections:
       image:
         src: media/index/get-started.svg
         href: /azure/key-vault/key-vault-use-from-web-application
-    - title: Konfigurowanie kompleksowej wymiany i inspekcji kluczy w usłudze Azure Key Vault
-      href: /azure/key-vault/key-vault-key-rotation-log-monitoring
-      image:
-        src: media/index/tutorial.svg
-        href: /azure/key-vault/key-vault-key-rotation-log-monitoring
 - title: Dokumentacja
   items:
   - type: list

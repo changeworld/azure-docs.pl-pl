@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d6c91dd84a0ae0bfa5ffccff2f8961f95ad4dda8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4b7fd390b309500c6d3937fd07dac53d968b4b71
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399250"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41927650"
 documentType: LandingData
 title: Rozwiązanie Ansible w dokumentacji platformy Azure
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: devops
   ms.topic: landing-page
-  ms.date: 07/16/2018
+  ms.date: 08/15/2018
   ms.author: tarcher
 abstract:
   description: Użyj rozwiązania<a href="http://www.ansible.com">Ansible</a>, aby zautomatyzować aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji.
@@ -25,18 +25,22 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: Skonfiguruj rozwiązanie Ansible i utwórz za jego pomocą maszynę wirtualną z systemem Linux na platformie Azure.
+    text: Zainstaluj rozwiązanie Ansible i używaj go do tworzenia maszyn wirtualnych z systemem Linux i zarządzanie nimi na platformie Azure.
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/media/index/azure_dev-9.svg
-      text: Konfigurowanie rozwiązania Ansible
+      text: Instalowanie rozwiązania Ansible
       href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
     - image:
         src: /azure/media/index/VirtualMachine.svg
       text: Tworzenie maszyny wirtualnej z systemem Linux
       href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+    - image:
+        src: /azure/media/index/VirtualMachine.svg
+      text: Zarządzanie maszyną wirtualną z systemem Linux
+      href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
@@ -45,7 +49,7 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Utwórz maszynę wirtualną z systemem Linux, łącznie z siecią wirtualną, publiczny adres IP i wirtualną kartę sieciową.</a>
-    - html: <a href="./ansible-run-playbook-in-cloudshell">Połącz się z maszyną wirtualną platformy Azure i uruchom element playbook rozwiązania Ansible w usłudze Cloud Shell.</a>
+    - html: <a href="./ansible-run-playbook-in-cloudshell">Uruchom rozwiązanie Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell.</a>
     - html: <a href="./ansible-manage-azure-dynamic-inventories">Utwórz dynamiczny spis zasobów platformy Azure i zarządzaj nim.</a>
     - html: <a href="./ansible-create-configure-vmss">Twórz zestawy skalowania maszyn wirtualnych i zarządzaj nimi na platformie Azure.</a>
     - html: <a href="./ansible-deploy-app-vmss">Wdrażaj aplikacje w zestawach skalowania maszyn wirtualnych na platformie Azure.</a>

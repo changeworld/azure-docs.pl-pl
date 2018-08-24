@@ -10,12 +10,12 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 00232a24310b13658fbfa04d2d410e7039c42bfe
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358404"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41926956"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Pomoc dla użytkowników dotycząca uwierzytelniania, aplikacji i zarządzania urządzeniami
 
@@ -87,7 +87,6 @@ Przygotowaliśmy tę zawartość, aby ułatwić konfigurowanie i używanie infor
                         <h3>Pomoc dotycząca aplikacji Microsoft Authenticator</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Wprowadzenie</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Często zadawane pytania na temat logowania się za pomocą telefonu</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">Wykonywanie kopii zapasowych i odzyskiwanie poświadczeń konta</a>
                         </p>
                     </div>
@@ -117,8 +116,8 @@ Przygotowaliśmy tę zawartość, aby ułatwić konfigurowanie i używanie infor
                     <div class="cardText">
                         <h3>Pomoc dotycząca zarządzania urządzeniami</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Dołączanie własnych urządzeń</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Rejestrowanie urządzeń z systemem Windows 10</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Dołączanie urządzenia służbowego</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Rejestrowanie urządzenia osobistego do pracy</a>
                         </p>
                     </div>
                 </div>
