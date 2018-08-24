@@ -15,9 +15,10 @@ ms.date: 11/19/2016
 ms.author: mbullwin
 ms.openlocfilehash: d06b44246b694c0d2a83503ecd1ae0cedfadd9ec
 ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31587592"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Skrypt programu PowerShell do tworzenia zasobu usługi Application Insights
 
