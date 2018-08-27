@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391760"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887937"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 Ten artykuł stanowi dodatek do [usługi Azure Disk Encryption dla maszyn wirtualnych IaaS](azure-security-disk-encryption-overview.md). Upewnij się, że odczytu usługa Azure Disk Encryption dla maszyn wirtualnych IaaS artykułów najpierw po to, aby zrozumieć kontekst. W tym artykule opisano sposób przygotowania zaszyfrowane wstępnie wirtualnych dysków twardych i innych zadań.
 
 ## <a name="connect-to-your-subscription"></a>Nawiązywanie połączenia z subskrypcją
-Przed kontynuowaniem przejrzyj [wymagania wstępne](azure-security-disk-encryption-prerequisites.md) artykułu. Po upewnieniu się, że zostały spełnione wszystkie wymagania wstępne, połącz się z subskrypcją, uruchamiając następujące polecenia cmdlet:
+Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-encryption-prerequisites.md) artykułu. Po spełnieniu wszystkich wymagań wstępnych, połącz się z subskrypcją, uruchamiając następujące polecenia cmdlet:
 
 ### <a name="bkmk_ConnectPSH"></a> Połącz z subskrypcją za pomocą programu PowerShell
 
@@ -63,13 +63,13 @@ Przed kontynuowaniem przejrzyj [wymagania wstępne](azure-security-disk-encrypti
 
 ### <a name="bkmk_ConnectCLI"></a> Nawiązać połączenie z subskrypcji przy użyciu wiersza polecenia platformy Azure
 
-1. Zaloguj się do platformy Azure z [az login](/cli/azure/authenticate-azure-cli#interactive-log-in). 
+1. Logowanie do platformy Azure za pomocą [az login](/cli/azure/authenticate-azure-cli#interactive-log-in). 
      
      ```azurecli
      az login
      ```
 
-2. Jeśli chcesz wybrać dzierżawy, aby zalogować się w obszarze, należy użyć:
+2. Jeśli chcesz wybrać dzierżawę, zaloguj się w obszarze, należy użyć:
     
      ```azurecli
      az login --tenant <tenant>
@@ -106,33 +106,77 @@ Przed kontynuowaniem przejrzyj [wymagania wstępne](azure-security-disk-encrypti
      Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
+### <a name="bkmk_prereq-script"></a> Za pomocą skryptu programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption
+Jeśli już znasz wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać przykład użycia ten skrypt programu PowerShell, zobacz [szyfrowania VM Quickstart](quick-encrypt-vm-powershell.md). Komentarze można usunąć z części skryptu, zaczynając od wiersza 211, do szyfrowania wszystkich dysków dla istniejących maszyn wirtualnych w istniejącej grupie zasobów. 
+
+W poniższej tabeli przedstawiono, w której parametry mogą być używane w skrypcie programu PowerShell: 
+
+
+|Parametr|Opis|Jest wymagany|
+|------|------|------|
+|$resourceGroupName| Nazwa grupy zasobów, do której należy magazynu kluczy.  Będzie można utworzyć nową grupę zasobów o tej nazwie, jeśli nie istnieje.| True|
+|$keyVaultName|Nazwa magazynu kluczy, w których szyfrowania mają być umieszczone klucze. Jeśli nie istnieje, zostanie utworzony nowy magazyn o tej nazwie.| True|
+|$location|Lokalizacja magazynu kluczy. Upewnij się, że magazyn kluczy i maszyny wirtualne, które były szyfrowane znajdują się w tej samej lokalizacji. Pobieranie listy lokalizacji za pomocą `Get-AzureRMLocation`.|True|
+|$subscriptionId|Identyfikator subskrypcji platformy Azure do użycia.  Można uzyskać Identyfikatora subskrypcji w usłudze `Get-AzureRMSubscription`.|True|
+|$aadAppName|Nazwa aplikacji usługi Azure AD, która będzie służyć do zapisu kluczy tajnych do magazynu kluczy. Jeśli taka aplikacja nie istnieje, zostanie utworzona nowa aplikacja o podanej nazwie. Jeśli ta aplikacja już istnieje, należy przekazać parametr aadClientSecret do skryptu.|False|
+|$aadClientSecret|Klucz tajny klienta aplikacji usługi Azure AD, który został utworzony wcześniej.|False|
+|$keyEncryptionKeyName|Nazwa opcjonalny klucz szyfrowania klucza w magazynie KeyVault. Jeśli nie istnieje, zostanie utworzony nowy klucz o tej nazwie.|False|
+
+
 ## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
-- [Tworzenie magazynu kluczy](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+<!--   - [Create a key vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) -->
+
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Szyfrowania lub odszyfrowywania maszyn wirtualnych bez aplikacji usługi Azure AD
+
+
+- [Włącz szyfrowanie dysku dla istniejących lub działających maszyn wirtualnych Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
+- [Wyłącz szyfrowanie dysków dla istniejących lub działających maszyn wirtualnych Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
+- [Włącz szyfrowanie dysku dla istniejących lub uruchamianie systemu Linux Maszynie wirtualnej IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+ -  [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.  
+
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Szyfrowania lub odszyfrowywania maszyn wirtualnych za pomocą aplikacji usługi Azure AD (poprzedniej wersji) 
  
-- [Włączanie szyfrowania dysków na nowej maszynie Wirtualnej Windows IaaS z witryny Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
-    - Ten szablon umożliwia utworzenie nowego zaszyfrowanych Windows maszynę Wirtualną, która używa obrazu z galerii systemu Windows Server 2012.
-
-- [Wdrażanie systemu RHEL 7.2 z pełne szyfrowanie dysków](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - Ten szablon tworzy pełni zaszyfrowane RHEL 7.2 Maszynę wirtualną na platformie Azure przy użyciu dysku systemu operacyjnego 30 GB zaszyfrowany i zainstalowany w lokalizacji /mnt/raidencrypted macierzy RAID-0 200 GB. Zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu dystrybucje systemu Linux obsługiwane w serwerze. 
-
-- [Włączanie szyfrowania dysków na zaszyfrowane wstępnie wirtualnego dysku twardego dla Windows lub Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
-
 - [Włącz szyfrowanie dysku dla istniejących lub działających maszyn wirtualnych Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
 
-- [Włącz szyfrowanie dysku dla istniejących lub uruchamianie systemu Linux Maszynie wirtualnej IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm)    
+- [Włącz szyfrowanie dysku dla istniejących lub uruchamianie systemu Linux Maszynie wirtualnej IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 - [Wyłącz szyfrowanie dysków na temat uruchamiania Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
 
--  [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://aka.ms/decrypt-linuxvm) 
+-  [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
     - Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux. 
 
-- [Tworzenie nowego zaszyfrowanego dysku zarządzanego na podstawie zaszyfrowane wstępnie wirtualnego dysku twardego/magazynu obiektów blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Tworzy nowego dysku zarządzanego zaszyfrowanych, pod warunkiem zaszyfrowane wstępnie wirtualnego dysku twardego i jest odpowiednie ustawienia szyfrowania
+- [Włączanie szyfrowania dysków na nowej maszynie Wirtualnej Windows IaaS z witryny Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
+    - Ten szablon umożliwia utworzenie nowego zaszyfrowanych Windows maszynę Wirtualną, która używa obrazu z galerii systemu Windows Server 2012.
 
 - [Tworzenie nowej zaszyfrowanych Windows IaaS zarządzanych dysków maszyny Wirtualnej na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - Ten szablon umożliwia utworzenie nowej maszyny Wirtualnej Windows zaszyfrowanych za pomocą dysków zarządzanych przy użyciu obrazu z galerii systemu Windows Server 2012.
+
+- [Wdrożenie systemu RHEL 7.2 z pełne szyfrowanie dysków za pomocą dysków zarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+    - Ten szablon tworzy w pełni zaszyfrowane RHEL 7.2 maszyny Wirtualnej z systemem na platformie Azure przy użyciu dysków zarządzanych. Obejmuje ona zaszyfrowanego dysku systemu operacyjnego 30 GB oraz zaszyfrowanych tablicy 200 GB (RAID-0) zainstalowany w lokalizacji /mnt/raidencrypted. Zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu dystrybucje systemu Linux obsługiwane w serwerze. 
+
+- [Wdrożenie systemu RHEL 7.2 z pełne szyfrowanie dysków z dyskami niezarządzanymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
+    - Ten szablon tworzy w pełni zaszyfrowane RHEL 7.2 maszyny Wirtualnej z systemem na platformie Azure z zaszyfrowanego dysku systemu operacyjnego 30 GB i zaszyfrowane tablicy 200 GB (RAID-0) zainstalowany w lokalizacji /mnt/raidencrypted. Zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu dystrybucje systemu Linux obsługiwane w serwerze. 
+
+- [Włączanie szyfrowania dysków na zaszyfrowane wstępnie wirtualnego dysku twardego dla Windows lub Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
+
+- [Tworzenie nowego zaszyfrowanego dysku zarządzanego na podstawie zaszyfrowane wstępnie wirtualnego dysku twardego/magazynu obiektów blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Tworzy nowego dysku zarządzanego zaszyfrowanych zaszyfrowane wstępnie wirtualnego dysku twardego i jej odpowiednie ustawienia szyfrowania
+
+- [Włączanie szyfrowania dysków na uruchomionej maszynie Wirtualnej Windows za pomocą odcisku palca certyfikatu klienta usługi Azure AD](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
+- [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Linux maszyn wirtualnych z serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [Wyłączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [Wyłączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> Przygotowywanie wirtualnego dysku twardego Windows zaszyfrowane wstępnie
 W kolejnych sekcjach są niezbędne do przygotowania zaszyfrowane wstępnie wirtualnego dysku twardego Windows do wdrożenia jako zaszyfrowanego dysku VHD w modelu IaaS platformy Azure. Skorzystaj z informacji do przygotowania i rozruchu świeże Windows maszyny Wirtualnej (VHD) w usłudze Azure Site Recovery lub na platformie Azure. Aby uzyskać więcej informacji na temat przygotowywania i przekazywanie wirtualnego dysku twardego, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowych maszyn wirtualnych na platformie Azure](../virtual-machines/windows/upload-generalized-managed.md).
@@ -247,7 +291,7 @@ Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
- Zaleca się, czy użytkownik nie zalogować się do maszyny Wirtualnej podczas szyfrowania systemu operacyjnego jest w toku. Skopiuj dzienniki tylko wtedy, gdy te dwie metody nie powiodło się.
+ Firma Microsoft zaleca się czy nie logowania do maszyny Wirtualnej w trakcie szyfrowania systemu operacyjnego. Skopiuj dzienniki tylko wtedy, gdy te dwie metody nie powiodło się.
 
 ## <a name="bkmk_preLinux"></a> Przygotowywanie wirtualnego dysku twardego systemu Linux zaszyfrowane wstępnie
 Przygotowanie do zaszyfrowane wstępnie wirtualne dyski twarde mogą się różnić w zależności od dystrybucji. Przykłady na temat przygotowywania [Ubuntu 16](#bkmk_Ubuntu), [openSUSE 13.2](#bkmk_openSUSE), i [CentOS 7](#bkmk_CentOS) są dostępne. 
@@ -275,7 +319,7 @@ Konfigurowanie szyfrowania podczas instalacji dystrybucji, wykonując następuj�
 
  ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu [w instrukcjach](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nie należy uruchamiać w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
+6. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu [w instrukcjach](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
 Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące czynności:
 
@@ -345,7 +389,7 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
 
 ### <a name="bkmk_openSUSE"></a>  openSUSE 13.2
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
-1. Podczas dzielenia dysków na partycje wybrać **szyfrowanie woluminu grupy**, a następnie wprowadź hasło. Jest to hasło, który zostanie przekazany do magazynu kluczy.
+1. Podczas dzielenia dysków na partycje wybrać **szyfrowanie woluminu grupy**, a następnie wprowadź hasło. To hasło, które należy przekazać do magazynu kluczy.
 
  ![openSUSE 13.2 Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -353,7 +397,7 @@ Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następuj
 
  ![openSUSE 13.2 Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nie należy uruchamiać w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
+3. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
 Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj następujące czynności:
 1. Edytuj /etc/dracut.conf i Dodaj następujący wiersz:
@@ -429,7 +473,7 @@ Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następuj
 
  ![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu instrukcji "CentOS 7.0 +" w [przygotowywanie maszyny wirtualnej z systemem CentOS dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nie należy uruchamiać w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
+5. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu instrukcji "CentOS 7.0 +" w [przygotowywanie maszyny wirtualnej z systemem CentOS dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
 6. Możesz teraz anulować aprowizację maszyny Wirtualnej i przekazywanie wirtualnego dysku twardego na platformie Azure.
 
@@ -465,7 +509,7 @@ na
 ```
     if [ 1 ]; then
 ```
-4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i Dołącz podany kod po "# Otwórz LUKS urządzenie":
+4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i Dołącz następujący po "# Otwórz LUKS urządzenie":
     ```
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -496,7 +540,7 @@ Po włączeniu funkcji BitLocker szyfrowania lub szyfrowania DM-Crypt lokalny wi
     Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Przekaż klucz tajny dla wstępnie zaszyfrowanej maszyny Wirtualnej do magazynu kluczy
-Klucz tajny szyfrowania dysku, który został uzyskany wcześniej należy przekazać w formie wpisu tajnego w magazynie kluczy. Magazyn kluczy wymaga szyfrowania dysku i włączonymi uprawnieniami dla klienta usługi Azure AD.
+W przypadku szyfrowania przy użyciu aplikacji usługi Azure AD (poprzedniej wersji), należy przekazać klucz tajny szyfrowania dysku, który został uzyskany wcześniej w formie wpisu tajnego w magazynie kluczy. Magazyn kluczy wymaga szyfrowania dysku i włączonymi uprawnieniami dla klienta usługi Azure AD.
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"
@@ -624,7 +668,7 @@ Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku zapoznać [dołącze
 ##  <a name="bkmk_SecretURL"></a> Określ adres URL wpisu tajnego po dołączeniu dysku systemu operacyjnego
 
 ###  <a name="bkmk_URLnoKEK"></a>Bez użycia klucza KEK
-Podczas dołączania dysku systemu operacyjnego, musisz przekazać `$secretUrl`. Adres URL został wygenerowany w sekcji "nie jest szyfrowana za pomocą klucza KEK tajny szyfrowania dysku".
+Gdy dołączasz dysku systemu operacyjnego, musisz przekazać `$secretUrl`. Adres URL został wygenerowany w sekcji "nie jest szyfrowana za pomocą klucza KEK tajny szyfrowania dysku".
 ```powershell
     Set-AzureRmVMOSDisk `
             -VM $VirtualMachine `

@@ -1,66 +1,97 @@
 ---
-title: Informacje o sposobie korzystania z łącznika SFTP w aplikacjach logiki | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji logiki z usługi aplikacji Azure. Połączyć z interfejsem API SFTP do wysyłania i odbierania plików. Można wykonywać różne operacje, takie jak tworzenie, aktualizowanie, Pobierz i usuwania plików.
+title: Połączenie z kontem SFTP z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań i przepływów pracy, umożliwiające monitorowanie, tworzenie, zarządzanie, wysyłania i odbierania plików na serwerze SFTP przy użyciu usługi Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/20/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 28ea02082903f71f619a52672ba41ce65557b0c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296006"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887591"
 ---
-# <a name="get-started-with-the-sftp-connector"></a>Rozpoczynanie pracy z łącznikiem SFTP
-Użyj konektora SFTP dostępu do konta SFTP do wysyłania i odbierania plików. Można wykonywać różne operacje, takie jak tworzenie, aktualizowanie, Pobierz i usuwania plików.  
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu usługi Azure Logic Apps
 
-Aby użyć [każdy łącznik](apis-list.md), należy najpierw utworzyć aplikację logiki. Możesz rozpocząć pracę przez [teraz tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Korzystając z usługi Azure Logic Apps i łącznika SFTP, można utworzyć zautomatyzowanym zadaniom i przepływy pracy monitorowania, tworzenie, wysyłanie i odbieranie plików za pośrednictwem Twojego konta na [SFTP](https://www.ssh.com/ssh/sftp/) serwerem oraz inne czynności, na przykład:
 
-## <a name="connect-to-sftp"></a>Nawiązać połączenia z użyciem protokołu SFTP
-Zanim aplikację logiki można uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenia* do usługi. A [połączenia](connectors-overview.md) udostępnia łączność między aplikacji logiki i innej usługi.  
+* Monitor, gdy pliki są dodane lub zmienione.
+* Pobieranie, tworzenie, kopiowanie, aktualizacji listy i Usuń pliki.
+* Pobierz zawartość pliku i metadanych.
+* Wyodrębnij archiwum do folderów.
 
-### <a name="create-a-connection-to-sftp"></a>Utwórz połączenie z użyciem protokołu SFTP
-> [!INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
-> 
-> 
+Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z serwera SFTP oraz udostępnić dane wyjściowe do innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze SFTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-an-sftp-trigger"></a>Użyj wyzwalacz SFTP
-Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy zdefiniowanych w aplikacji logiki. [Dowiedz się więcej o wyzwalaczy](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym przykładzie **SFTP - podczas dodawania lub modyfikowania pliku** wyzwalacza jest używane do inicjowania przepływu pracy aplikacji logiki, gdy plik zostanie dodany do lub zmodyfikowane na serwerze SFTP. Możesz również dodać warunek, który sprawdza zawartość pliku nowe lub zmodyfikowane i podejmuje decyzję, aby wyodrębnić plik, jeśli jego zawartość wskazują, że należy wyodrębnić przed rozpoczęciem korzystania z zawartości. Na koniec Dodaj akcję w celu wyodrębnienia zawartości pliku i umieścić w folderze na serwerze SFTP wyodrębniona zawartość. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-W przykładzie przedsiębiorstwa może użyć tego wyzwalacza do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówień klienta.  Następnie można użyć akcji łącznika SFTP, takich jak **pobrać zawartość pliku**, aby pobrać zawartość kolejność dla dalszego przetwarzania i przechowywania w bazie danych zamówienia.
+* SFTP hosta adres i konta poświadczeń serwera
 
-> [!INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
-> 
-> 
+   Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do tego konta SFTP.
 
-## <a name="add-a-condition"></a>Dodaj warunek
-> [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
-> 
-> 
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="use-an-sftp-action"></a>Za pomocą akcji SFTP
-Akcja jest przeprowadzane przez przepływ pracy zdefiniowanych w aplikacji logiki operacji. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta SFTP. Można uruchomić z wyzwalaczem SFTP [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji SFTP, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
 
-> [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
-> 
-> 
+## <a name="connect-to-sftp"></a>Nawiązać połączenie SFTP
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/sftpconnector/).
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+1. Wybierz ścieżkę: 
+
+   * Puste logic apps w polu wyszukiwania wprowadź "salesforce" jako filtr. 
+   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+
+     — lub —
+
+   * W przypadku istniejących aplikacji logiki: 
+   
+     * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
+
+       — lub —
+
+     * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
+     Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+     
+        W polu wyszukiwania wprowadź "sftp" jako filtr. 
+        W obszarze listy akcji wybierz akcję, którą chcesz.
+
+1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
+
+1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+## <a name="examples"></a>Przykłady
+
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz protokołu SFTP: po dodaniu lub zmodyfikowaniu pliku
+
+Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzwalacz, gdy plik zostanie dodane lub zmienione na serwerze SFTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i decyduje o tym, czy można pobrać tej zawartości na podstawie tego, czy tę zawartość spełnia określony warunek. Na koniec możesz dodać akcję, która pobiera zawartość pliku i umieścić tę zawartość w folderze na serwerze SFTP. 
+
+**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+
+### <a name="sftp-action-get-content"></a>Akcja SFTP: pobieranie zawartości
+
+Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać wyzwalacza z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek jest spełniony, można uruchomić akcję, która pobiera zawartość. 
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/sftpconnector/).
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

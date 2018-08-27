@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: genli
-ms.openlocfilehash: 97210c0d9dba9c4130b1da9ad17a257ff1d81b42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b0e24e498acd823242b3613abb62df978466d56d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450041"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918316"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie Administratorzy subskrypcji platformy Azure
 
-Zarządzanie dostępem do zasobów platformy Azure, musi mieć rolę administratora odpowiednie. W tym artykule opisano, jak dodać lub zmienić roli administratora dla użytkownika na poziomie subskrypcji.
+Zarządzanie dostępem do zasobów platformy Azure wymaga odpowiedniej roli administratora. W tym artykule opisano, jak dodać lub zmienić roli administratora dla użytkownika na poziomie subskrypcji.
+
+> [!div class="nextstepaction"]
+> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>Jaką rolę administratora należy używać?
 
@@ -34,16 +37,16 @@ Platforma Azure oferuje kilka różnych ról. Aby zarządzać dostępem do zasob
 
 ## <a name="add-an-rbac-owner-for-a-subscription-in-azure-portal"></a>Dodaj właściciela RBAC do subskrypcji w witrynie Azure portal 
 
-Aby dodać kogoś jako administratora dla subskrypcji platformy Azure, przypisz je [właściciela](../role-based-access-control/built-in-roles.md#owner) roli (rola RBAC) w zakresie subskrypcji. Rola właściciela zarządzać zasobami w ramach subskrypcji, możesz przypisać i nie ma uprawnień dostępu do innych subskrypcji.
+Aby dodać kogoś jako administratora subskrypcji platformy Azure, przypisz do niego rolę [Właściciel](../role-based-access-control/built-in-roles.md#owner) (rolę RBAC) w zakresie subskrypcji. Rola Właściciel umożliwia zarządzanie zasobami w ramach przypisanej subskrypcji bez praw dostępu do innych subskrypcji.
 
 1. Odwiedź stronę [ **subskrypcje** w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Wybierz subskrypcję, która ma zostać zapewniony dostęp.
+2. Wybierz subskrypcję, dla której ma zostać nadany dostęp.
 3. Wybierz pozycję **Dodaj**.
-   (Jeśli brakuje przycisk Dodaj, nie masz uprawnień, aby dodać uprawnienia.)
-4. Wybierz **kontrola dostępu (IAM)** na liście.
-5. W **roli** wybierz opcję **właściciela**. 
-6. W **Przypisz dostęp do** wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**. 
-7. W **wybierz** wpisz adres e-mail użytkownika, które chcesz dodać jako właściciela. Wybierz użytkownika, a następnie wybierz **Zapisz**.
+   (Jeśli brakuje przycisku Dodaj, to nie masz uprawnienia do nadawania uprawnień).
+4. Wybierz pozycję **Kontrola dostępu (IAM)** na liście.
+5. W polu **Rola** wybierz opcję **Właściciel**. 
+6. W polu **Przypisz dostęp do** wybierz pozycję **Użytkownik, grupa lub aplikacja usługi Azure AD**. 
+7. W polu **Wybierz** wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela. Wybierz użytkownika, a następnie wybierz polecenie **Zapisz**.
 
     ![Zrzut ekranu przedstawiający rolę właściciela, zaznaczone](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -51,7 +54,7 @@ Daje to pełny dostęp użytkownika do wszystkich zasobów łącznie z prawej st
 
 ## <a name="add-or-change-co-administrator"></a>Dodawanie lub zmienianie administratora współpracującego
 
-Tylko [właściciela](../role-based-access-control/built-in-roles.md#owner) może zostać dodana jako współadministratora. Inni użytkownicy z ról, takich jak [Współautor](../role-based-access-control/built-in-roles.md#contributor) i [czytnika](../role-based-access-control/built-in-roles.md#reader) nie można dodać jako współadministratorów.
+Jako współadministratora można dodać tylko użytkownika z rolą [Właściciel](../role-based-access-control/built-in-roles.md#owner). Innych użytkowników, z rolami takimi jak [Współautor](../role-based-access-control/built-in-roles.md#contributor) i [Czytelnik](../role-based-access-control/built-in-roles.md#reader), nie można dodać jako współadministratorów.
 
 > [!TIP]
 > Wystarczy dodać właściciela jako współadministratora, jeśli użytkownik chce zarządzać wdrożeń klasycznych na platformie Azure. Firma Microsoft zaleca, korzystając z modelu RBAC do innych celów.

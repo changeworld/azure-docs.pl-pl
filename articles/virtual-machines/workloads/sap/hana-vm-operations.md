@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98c7bd5daf3b84499e8e31c0a7a2da612834b83e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e2ff826f21adf12d48b21acefe4b704866e02c04
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521986"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917962"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfiguracje infrastruktury SAP HANA i operacji na platformie Azure
 Ten dokument zawiera wskazówki dotyczące konfigurowania infrastruktury platformy Azure i obsługi systemów SAP HANA, które zostały wdrożone na natywnych maszynach wirtualnych platformy Azure (maszyny wirtualne). Dokument zawiera również informacje o konfiguracji dla oprogramowania SAP HANA skalowalnego w poziomie dla jednostki SKU maszyny Wirtualnej M128s. Ten dokument nie jest przeznaczona do zastąpienia dokumentacji SAP standardowa obejmuje następującą zawartością:
@@ -215,7 +215,7 @@ Po zainstalowaniu maszyn wirtualnych do uruchamiania oprogramowania SAP HANA, po
 
 Jednak w przypadku wdrożeń, które są trwałe, musisz utworzyć architektury sieci wirtualne centrum danych na platformie Azure. Ta architektura zaleca się rozdzielenie bramy sieci wirtualnej platformy Azure, który nawiązuje połączenie z środowiska lokalnego do oddzielnych sieci wirtualnej platformy Azure. Ta oddzielną sieć wirtualną powinien obsługiwać cały ruch, powodują, że do środowiska lokalnego lub z Internetem. Takie podejście umożliwia wdrażanie oprogramowania do inspekcji i ruchu rejestrowania, który wprowadzi wirtualnego centrum danych na platformie Azure w tej sieci wirtualnej serwera centralnego oddzielne. Dlatego należy jednej sieci wirtualnej obsługującego całe oprogramowanie i konfiguracje związanego z in - ruch wychodzący i aby wdrożenie systemu Azure.
 
-Artykuły [wirtualnego centrum danych Azure: perspektywa sieci](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter) i [Azure Virtual Datacenter i Enterprise Control Plane](https://docs.microsoft.com/azure/architecture/vdc/) podać więcej informacji na temat podejścia do wirtualnego centrum danych i powiązane Usługa Azure projektowania sieci wirtualnej.
+Artykuły [wirtualnego centrum danych Azure: perspektywa sieci](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) i [Azure Virtual Datacenter i Enterprise Control Plane](https://docs.microsoft.com/azure/architecture/vdc/) podać więcej informacji na temat podejścia do wirtualnego centrum danych i powiązane Usługa Azure projektowania sieci wirtualnej.
 
 
 >[!NOTE]

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdf5685ad8072175bdabf8938ef293bed6f5cc13
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076309"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918805"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -263,7 +263,7 @@ Przedstawiono sposób konfigurowania zestawów dostępności platformy Azure w t
 
 
 ## <a name="azure-network-considerations"></a>Zagadnienia dotyczące sieci platformy Azure 
-W przypadku dużych wdrożeń SAP, zalecane jest, że używasz planu z [wirtualnego centrum danych Azure](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter) dla sieci wirtualnej przydziałów konfiguracji oraz uprawnień i ról do różnych części organizacji.
+W przypadku dużych wdrożeń SAP, zalecane jest, że używasz planu z [wirtualnego centrum danych Azure](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) dla sieci wirtualnej przydziałów konfiguracji oraz uprawnień i ról do różnych części organizacji.
 
 Istnieje kilka najlepszych rozwiązań, które spowodowało poza setki wdrożeń klienta:
 
@@ -325,10 +325,10 @@ Aby uzyskać szczegółowe informacje dotyczące wdrażania składników, które
 ## <a name="next-steps"></a>Następne kroki
 Dokumentację w szczególności DBMS można znaleźć w tych artykułach:
 
-- [Wdrożenie programu SQL Server Azure Virtual Machines DBMS w przypadku obciążeń SAP](dbms_guide_sqlserver.md)
-- [Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_oracle.md)
-- [Wdrażania systemu DBMS na IBM DB2 Azure maszyn wirtualnych w przypadku obciążeń SAP](dbms_guide_ibm.md)
-- [Wdrażanie maszyn wirtualnych platformy Azure środowiska ASE systemu SAP DBMS w przypadku obciążeń SAP](dbms_guide_sapase.md)
+- [Wdrażanie systemu DBMS usługi Azure Virtual Machines programu SQL Server dla obciążenia SAP](dbms_guide_sqlserver.md)
+- [Wdrażanie systemu DBMS usługi Azure Virtual Machines oprogramowania Oracle dla obciążenia SAP](dbms_guide_oracle.md)
+- [Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM DB2 dla obciążenia SAP](dbms_guide_ibm.md)
+- [Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP](dbms_guide_sapase.md)
 - [SAP maxDB, na żywo pamięci podręcznej i serwer zawartości wdrożenia na platformie Azure](dbms_guide_maxdb.md)
 - [Przewodnik obsługi oprogramowania SAP HANA na platformie Azure](hana-vm-operations.md)
 - [SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure](sap-hana-availability-overview.md)

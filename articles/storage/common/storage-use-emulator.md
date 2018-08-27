@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055792"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888087"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -26,9 +26,8 @@ Emulator magazynu jest obecnie działa tylko na Windows. Dla osób, biorąc pod 
 
 > [!NOTE]
 > Dane utworzone w jednej wersji emulatora magazynu nie musi być dostępny w przypadku korzystania z innej wersji. Jeśli potrzebujesz w celu utrwalenia Twoich danych w perspektywie długoterminowej, zalecane jest przechowywanie danych na koncie usługi Azure storage, a nie w emulatorze magazynu.
-> <p/>
+> 
 > Emulator magazynu zależy od określonej wersji bibliotek OData. Zastępowanie biblioteki DLL OData, używane przez emulator magazynu z innymi wersjami nie jest obsługiwane i może spowodować nieoczekiwane zachowanie. Jednak dowolnej wersji OData obsługiwane przez usługę storage służy do wysyłania żądań do emulatora.
->
 
 ## <a name="how-the-storage-emulator-works"></a>Jak działa z emulatora magazynu
 Emulator magazynu używa lokalnego wystąpienia programu Microsoft SQL Server i lokalnego systemu plików do emulowania usług Azure storage. Domyślnie emulator magazynu używa bazy danych w programie Microsoft SQL Server 2012 Express LocalDB. Można wybrać skonfigurować emulator magazynu, aby dostęp do lokalnego wystąpienia programu SQL Server zamiast wystąpienia LocalDB. Aby uzyskać więcej informacji, zobacz [rozpoczęcia i zainicjować emulatora magazynu](#start-and-initialize-the-storage-emulator) sekcję w dalszej części tego artykułu.
@@ -187,6 +186,7 @@ Ponieważ emulator magazynu jest emulowane środowiska uruchomiona w lokalnym wy
 Następujące różnice dotyczą magazynu obiektów Blob w emulatorze:
 
 * Emulator tylko obsługuje obiektu blob magazynu o rozmiarach do 2 GB.
+* Maksymalna długość nazwy obiektu blob w emulatorze magazynu to 256 znaków, a maksymalna długość nazwy obiektu blob w usłudze Azure Storage to 1024 znaki.
 * Przyrostowa kopia umożliwia migawki z zastąpione obiektów blob do skopiowania, która zwraca błąd w usłudze.
 * Pobieranie zakresów stron różnicowego nie działa między migawkami skopiowana za pomocą przyrostowej kopii obiektu Blob.
 * Operacji Put obiektu Blob może się powieść względem obiektu blob, który znajduje się w emulatorze magazynu z aktywną dzierżawę, nawet jeśli w żądaniu nie określono Identyfikatora dzierżawy.

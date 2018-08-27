@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056069"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918221"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -35,9 +35,10 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Należy używać modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
-* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone 
+* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
 * Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostęp do konsoli szeregowej dla systemu Linux](#access-serial-console-for-linux)
+
 
 
 ## <a name="open-the-serial-console"></a>Otwieranie konsoli szeregowej
@@ -65,7 +66,7 @@ Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej 
 Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell (przedstawionych poleceń powłoki bash) można wyłączyć, włączyć i wyświetlić stan wyłączonymi konsoli szeregowej dla subskrypcji. 
 
 * Aby wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +74,7 @@ Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * Aby wyłączyć konsoli szeregowej subskrypcji:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +82,7 @@ Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * Aby włączyć konsoli szeregowej subskrypcji:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -139,7 +140,7 @@ Oracle Linux        | Obrazy oprogramowania Oracle Linux dostępnych na platform
 Niestandardowych obrazów systemu Linux     | Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, należy włączyć dostęp do konsoli w /etc/inittab systemem terminalu ttyS0. Oto przykład, aby dodać to w pliku inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Aby uzyskać więcej informacji na temat prawidłowo tworzenia obrazów niestandardowych, zobacz [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd).
 
 ## <a name="errors"></a>Błędy
-Większość błędów jest przejściowy z natury i ponawianie próby połączenia konsoli szeregowej często tych adresów. Poniższa tabela zawiera listę błędów i środki zaradcze 
+Większość błędów jest przejściowy z natury i ponawianie próby połączenia konsoli szeregowej często tych adresów. W poniższej tabeli przedstawiono listę błędy i środki zaradcze
 
 Błąd                            |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
@@ -154,7 +155,7 @@ Jak My nadal w fazie (wersja zapoznawcza), aby uzyskać dostęp do konsoli szere
 Problem                           |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
 Nie ma opcji za pomocą konsoli szeregowej wystąpienia zestawu skalowania maszyn wirtualnych |  W okresie obowiązywania wersji zapoznawczej dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych nie jest obsługiwana.
-Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | [Wprowadź osiągnięcia, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)
+Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Może to nastąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji programu GRUB, powodujący systemu Linux nie można prawidłowo nawiązać portu szeregowego.
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 
 

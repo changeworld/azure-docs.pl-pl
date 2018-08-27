@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: Program PowerShell, elementów runbook, json, usługa azure automation
-ms.openlocfilehash: 1bdeef02621924bbb7af1e676d2b275229761081
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5e1ab8d6bd2de24251851cfc60d270a2fef4090d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054760"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918822"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 
@@ -29,7 +29,7 @@ Element runbook programu PowerShell uruchamia Maszynę wirtualną platformy Azur
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub <a href="/pricing/free-account/" target="_blank">[utworzyć bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze, możesz to zrobić [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub [Załóż bezpłatne konto](https://azure.microsoft.com/free/).
 * [Konto usługi Automation](automation-sec-configure-azure-runas-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure.  To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
 * Maszyna wirtualna platformy Azure. Będziemy uruchamiać i zatrzymywać tę maszynę, dlatego należy użyć maszyny innej niż produkcyjna.
 * Program Azure Powershell zainstalowane na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) uzyskać informacji na temat sposobu uzyskania programu Azure PowerShell.

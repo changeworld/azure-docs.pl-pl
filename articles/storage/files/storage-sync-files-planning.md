@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1f75317882e803a40df065377ef75f8b6b753898
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617196"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918383"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -67,18 +67,25 @@ Obsługa warstw w chmurze jest opcjonalną funkcją usługi Azure File Sync w kt
 > [!Important]  
 > Chmura obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows.
 
-## <a name="azure-file-sync-interoperability"></a>Współdziałanie usługi Azure File Sync 
-W tej sekcji omówiono współdziałanie usługi Azure File Sync z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Wymagania systemowe w usłudze Azure File Sync i współdziałanie 
+Tej sekcji omówiono wymagania systemowe agenta usługi Azure File Sync i współdziałanie z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
 
-### <a name="supported-versions-of-windows-server"></a>Obsługiwane wersje systemu Windows Server
-Obecnie są obsługiwane wersje systemu Windows Server przez usługę Azure File Sync:
+### <a name="system-requirements"></a>Wymagania systemu
+- Serwer z systemem Windows Server 2012 R2 lub Windows Server 2016 
 
-| Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
-|---------|----------------|------------------------------|
-| Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
-| Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
+    | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
+    |---------|----------------|------------------------------|
+    | Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
+    | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
 
-Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu. Wcześniejszych wersjach systemu Windows mogą być dodawane w oparciu o opinie użytkowników.
+    Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu. Wcześniejszych wersjach systemu Windows mogą być dodawane w oparciu o opinie użytkowników.
+
+- Serwer z co najmniej 2GB pamięci
+
+    > [!Important]  
+    > Jeśli serwer jest uruchomiony na maszynie wirtualnej z obsługą pamięci dynamicznej, maszyny Wirtualnej należy skonfigurować minimalną 2048MB pamięci.
+    
+- Podłączonych lokalnie woluminie sformatowanym w systemie plików NTFS
 
 > [!Important]  
 > Zaleca się pozostawienie wszystkich serwerów, które używają usługi Azure File Sync na bieżąco z najnowszymi aktualizacjami z witryny Windows Update. 

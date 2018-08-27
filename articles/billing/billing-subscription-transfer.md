@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e4bedd747c5a0010058efee595402448f6a30b
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506227"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917127"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -31,6 +31,9 @@ Przeniesienie subskrypcji do innego użytkownika w Centrum konta, aby zmienić a
 > [!IMPORTANT]
 > 
 > Jeśli przeniesiesz subskrypcję do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
+
+> [!div class="nextstepaction"]
+> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Przekazywanie własności subskrypcji platformy Azure
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 14bf68355550d756bd3f4da1a367133d83ddbf07
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 110bdcacf7433c1e0ab0cb31e1a04734137f9596
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055213"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885243"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
 
@@ -84,13 +84,17 @@ W powyższym podręczniku administratora SysRq:
 
 ### <a name="distribution-specific-documentation"></a>Dystrybucja dokumentacji ###
 Dokumentację specyficzne dla dystrybucji na SysRq i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze polecenie "Awarii" SysRq na ten temat można znaleźć w poniższych linków:
+
 #### <a name="ubuntu"></a>Ubuntu ####
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+
 #### <a name="red-hat"></a>Red Hat ####
 - [Co to jest funkcji SysRq i jak go używać?](https://access.redhat.com/articles/231663)
 - [Jak używać funkcji SysRq do zbierania informacji z serwera systemu RHEL](https://access.redhat.com/solutions/2023)
+
 #### <a name="suse"></a>SUSE ####
 - [Konfigurowanie funkcji przechwytywania zrzutu core jądra](https://www.suse.com/support/kb/doc/?id=3374462)
+
 #### <a name="coreos"></a>CoreOS ####
 - [Zbieranie dzienników awarii](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
@@ -109,16 +113,17 @@ W systemach Linux, które obsługują sysctl konfigurowania jądra parametry mo�
 
 Aby uzyskać więcej informacji na temat konfiguracje jądra systemu Linux, w tym `unknown_nmi_panic`, `panic_on_io_nmi`, i `panic_on_unrecovered_nmi`, zobacz: [dokumentacji/proc/sys/jądra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentację specyficzne dla dystrybucji na NMI i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze NMI na ten temat można znaleźć w poniższych linków:
  
- ### <a name="ubuntu"></a>Ubuntu 
+### <a name="ubuntu"></a>Ubuntu 
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
- ### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat 
  - [Co to jest NMI i co może służyć?](https://access.redhat.com/solutions/4127)
  - [Jak można skonfigurować system awarię wypchnięcie przełącznika NMI?](https://access.redhat.com/solutions/125103)
  - [Awaria zrzutu Podręcznik administratora](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
 - [Konfigurowanie funkcji przechwytywania zrzutu core jądra](https://www.suse.com/support/kb/doc/?id=3374462)
+
 ### <a name="coreos"></a>CoreOS 
 - [Zbieranie dzienników awarii](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433174"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919010"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
 
@@ -37,10 +37,11 @@ Dowiedz się więcej o wiele [korzyści z używania szablonów usługi Resource 
 > [!NOTE]
 > Gdy używasz szablonu usługi Resource Manager jako podstawy do tworzenia laboratorium więcej maszyn wirtualnych, istnieją pewne różnice, o których należy pamiętać, czy tworzysz Multi-maszyn wirtualnych lub maszyn wirtualnych na jednym. [Użyj szablonu usługi Azure Resource Manager maszynę wirtualną](devtest-lab-use-resource-manager-template.md) wyjaśnia różnice te bardziej szczegółowo.
 >
->
 
-## <a name="configure-azure-resource-manager-template-repositories"></a>Konfigurowanie repozytoriów szablonu usługi Azure Resource Manager
+## <a name="devtest-labs-public-environments"></a>Środowiskach publicznych DevTest Labs
+Usługa Azure DevTest Labs ma [publicznego repozytorium szablonów usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) używanego do tworzenia środowisk bez konieczności nawiązywania połączenia z zewnętrznym źródłem GitHub samodzielnie. To repozytorium zawiera często używane szablony, takich jak Azure Web Apps, klaster usługi Service Fabric i Programowanie w środowisku farmy programu SharePoint. Ta funkcja jest podobne do publicznego repozytorium artefaktów, które jest uwzględniany w przypadku każdego tworzenia laboratorium. Repozytorium środowiska umożliwia szybkie rozpoczynanie pracy z szablonami wstępnie przygotowane środowiska minimalne parametrów wejściowych do przedstawienia bezproblemowe środowisko dla zasobów PaaS w labs. Aby uzyskać więcej informacji, zobacz [Konfigurowanie i używanie środowiskach publicznych w usłudze DevTest Labs](devtest-lab-configure-use-public-environments.md).
 
+## <a name="configure-your-own-template-repositories"></a>Konfigurowanie repozytoriów szablonu
 Jako jedna z najlepszych rozwiązań przy użyciu infrastruktury jako kodu i konfiguracji jako kodu szablonów środowiska powinny być zarządzane w kontroli źródła. Usługa Azure DevTest Labs następuje tej praktyką i ładuje wszystkie szablony usługi Azure Resource Manager bezpośrednio z repozytoriami GitHub i VSTS Git. W rezultacie szablonów usługi Resource Manager może służyć cyklu całego procesu zarządzania wersjami ze środowiska testowego do środowiska produkcyjnego.
 
 Zapoznaj się z szablonów utworzonych przez zespół usługi DevTest Labs w [publicznego repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). W tym publicznym repozytorium można wyświetlić szablony udostępnione przez innych użytkowników można używać bezpośrednio lub dostosować je do swoich potrzeb. Po utworzeniu szablonu, należy go przechowywać w repozytorium, aby udostępnić go innym osobom. Można też skonfigurować własne repozytorium Git przy użyciu szablonów, które mogą służyć do konfigurowania środowisk w chmurze. 
@@ -56,12 +57,9 @@ Istnieje kilka reguł, które trzeba wykonać, aby zorganizować szablonów usł
 - Można zdefiniować metadane, aby określić nazwę wyświetlaną szablonu i opis. Te metadane musi znajdować się w pliku o nazwie `metadata.json`. Następujący przykład pliku metadanych przedstawia sposób określić nazwę wyświetlaną i opis: 
 
     ```json
-    {
- 
-        "itemDisplayName": "<your template name>",
- 
-        "description": "<description of the template>"
- 
+    { 
+        "itemDisplayName": "<your template name>", 
+        "description": "<description of the template>" 
     }
     ```
 

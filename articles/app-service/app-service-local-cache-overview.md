@@ -16,17 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597734"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918020"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie lokalnej pamięci podręcznej App Service na platformie Azure
 
 > [!NOTE]
-> Lokalna pamięć podręczna nie jest obsługiwana w konteneryzowanych aplikacji usługi App Service, takie jak na [usługi App Service w systemie Linux](containers/app-service-linux-intro.md).
+> Lokalna pamięć podręczna nie jest obsługiwane w aplikacji funkcji lub konteneryzowanych aplikacji usługi App Service, takie jak na [usługi App Service w systemie Linux](containers/app-service-linux-intro.md).
+
 
 Zawartość aplikacji sieci web platformy Azure są przechowywane w usłudze Azure Storage i jest udostępniane w górę w sposób trwały jako udział zawartości. Ten projekt jest przeznaczony do pracy w różnych aplikacjach i ma następujące atrybuty:  
 

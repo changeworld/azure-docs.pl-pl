@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f825a2a343d9b5ad8f9802042b7aca2ba1544dfb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42432293"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917406"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>Usługa App Service w usłudze Azure Stack update 3 — informacje o wersji
 
@@ -178,6 +178,21 @@ Walidacja
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
+
+### <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
+
+- Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.  Jest to również nazywane w usłudze Azure App Service w dokumentacji wdrażania usługi Azure Stack.
+
+Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+ * Źródło: wszystkie
+ * Zakres portów źródłowych: *
+ * Miejsce docelowe: Adresy IP
+ * Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+ * Zakres portów docelowych: 445
+ * Protokół: TCP
+ * Akcja: Zezwalaj
+ * Priorytet: 700
+ * Nazwa: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure App Service w usłudze Azure Stack
 

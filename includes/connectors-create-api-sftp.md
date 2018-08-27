@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Wymagania wstępne
 * [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) konta  
 
-Przed użyciem protokołu SFTP konta w aplikacji logiki, należy zezwolić aplikacji logiki do łączenia się z kontem SFTP. Na szczęście można w tym z aplikacji logiki w portalu Azure.  
+Przed skorzystaniem z kontem SFTP w aplikacji logiki, należy autoryzować aplikację logiki, aby nawiązać połączenie z kontem SFTP. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem protokołu SFTP:  
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby nawiązać połączenie z kontem SFTP:  
 
-1. Aby utworzyć połączenie z użyciem protokołu SFTP, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *SFTP* w polu wyszukiwania. Wybierz **SFTP - podczas dodawania lub modyfikowania pliku** wyzwalacz:  
+1. Aby utworzyć połączenie SFTP, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *SFTP* w polu wyszukiwania. Wybierz **SFTP — po dodaniu lub zmodyfikowaniu pliku** wyzwalacza:  
    ![Obraz połączenia w trybie online SFTP 1](./media/connectors-create-api-sftp/sftp-1.png)  
-2. Jeśli nie utworzono wszystkie połączenia z użyciem protokołu SFTP przed będzie zostanie wyświetlony monit o podanie poświadczeń SFTP. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta protokołu SFTP:  
+2. Nie utworzono żadnych połączeń na używanie protokołu SFTP przed będzie pobrać monit podaj swoje poświadczenia SFTP. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych z kontem SFTP:  
    ![Obraz połączenia w trybie online SFTP 2](./media/connectors-create-api-sftp/sftp-2.png)  
-3. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:   
+3. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:   
    ![Obraz połączenia w trybie online SFTP 3](./media/connectors-create-api-sftp/sftp-3.png) 
 

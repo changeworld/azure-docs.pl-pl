@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ffa61ebfaa58425cd2bf70d9bf78a2e71b672369
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445681"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918487"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Architektura referencyjna: integracja w przedsiębiorstwie z kolejkami i zdarzenia
 
@@ -28,6 +28,7 @@ Następujące architektura referencyjna pokazuje zestaw sprawdzonych rozwiązań
 ![Diagram architektury — integracja w przedsiębiorstwie z kolejkami i zdarzenia](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
 *Istnieje wiele możliwych aplikacji w technologii integracji. Mogą należeć do zakresu z poziomu aplikacji point-to-point proste do pełnej wersji enterprise aplikacji usługi Azure Service Bus. Seria architektury opisano części komponentów wielokrotnego użytku, które mogą być stosowane do tworzenia aplikacji ogólnego integracji. Architekci należy wziąć pod uwagę składniki, które potrzebują do wykonania dla swoich aplikacji i infrastruktury.*
+<!-- Should previous line be in Italic or asterisks must be escaped? -->
 
 ## <a name="architecture"></a>Architektura
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 7ac4dd41c8a1adb422539e0832715d59ec385694
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 552fce2ffd8b6bd786010da82e702ee98c3f8647
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745563"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888560"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Skonfiguruj indywidualne tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu witryny Azure portal
 
@@ -53,9 +53,9 @@ Aby włączyć system przypisane tożsamości na maszynie Wirtualnej, która pie
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
 
-2. Przejdź do odpowiednią maszynę wirtualną, a następnie wybierz stronę "Configuration".
+2. Przejdź do odpowiednią maszynę wirtualną i wybierz **tożsamości**.
 
-3. Włączanie tożsamości przypisanej w systemie na maszynie Wirtualnej, wybierając pozycję "Yes" w obszarze "Tożsamość usługi zarządzane", a następnie kliknij przycisk **Zapisz**. Ta operacja może potrwać 60 sekund lub więcej, aby wykonać:
+3. W obszarze **przypisanej w systemie**, **stan**, wybierz opcję **na** a następnie kliknij przycisk **Zapisz**:
 
    ![Zrzut ekranu strony konfiguracji](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -65,9 +65,9 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości przypisanej w sys
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. 
 
-2. Przejdź do odpowiednią maszynę wirtualną, a następnie wybierz stronę "Configuration".
+2. Przejdź do odpowiednią maszynę wirtualną i wybierz **tożsamości**.
 
-3. Wyłącz system przypisane tożsamości na maszynie Wirtualnej, wybierając pozycję "No", w obszarze "Tożsamość usługi zarządzane", a następnie kliknij przycisk Zapisz. Ta operacja może potrwać 60 sekund lub więcej, aby wykonać:
+3. W obszarze **przypisanej w systemie**, **stan**, wybierz opcję **poza** a następnie kliknij przycisk **Zapisz**:
 
    ![Zrzut ekranu strony konfiguracji](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 

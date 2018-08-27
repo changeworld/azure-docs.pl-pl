@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 08/23/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: bac728f286c90550107b27da76a070623577ed82
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114348"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918904"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Konfigurowanie wirtualnej sieci WAN automatyzacji — partnerzy wirtualne sieci WAN (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ Rozwiązania w zakresie połączeń zdefiniowanych przez oprogramowanie zazwycza
 
 ##  <a name="access"></a>Kontrola dostępu
 
-Klienci musi mieć możliwość skonfigurować kontroli dostępu właściwe dla wirtualnej sieci WAN w interfejsu użytkownika urządzenia. Jest to zalecane, korzystania z jednostki usługi platformy Azure. Dostęp do usługi oparte na jednostce zapewnia uwierzytelniania odpowiedniego kontrolera urządzenia do przekazania informacji o gałęzi.
+Klienci musi mieć możliwość skonfigurować kontroli dostępu właściwe dla wirtualnej sieci WAN w interfejsu użytkownika urządzenia. Jest to zalecane, korzystania z jednostki usługi platformy Azure. Dostęp do usługi oparte na jednostce zapewnia uwierzytelniania odpowiedniego kontrolera urządzenia do przekazania informacji o gałęzi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
 
 ##  <a name="site"></a>Przekazywanie informacji o gałęzi
 
@@ -44,10 +44,10 @@ W tym kroku klient, który nie korzysta z dostawcy będzie ręcznie pobrać konf
 
 ### <a name="understanding-the-device-configuration-file"></a>Opis pliku konfiguracji urządzenia
 
-Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania urządzenia sieci VPN w środowisku lokalnym. Po wyświetleniu tego pliku, należy zauważyć następujące informacje:
+Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas przeglądania tego pliku należy zwrócić uwagę na następujące informacje:
 
-* **vpnSiteConfiguration -** w tej sekcji oznacza szczegółowych informacji o urządzeniu skonfigurować jako lokację nawiązywania połączenia wirtualnej sieci WAN. Zawiera nazwę i publiczny adres ip urządzenia gałęzi.
-* **vpnSiteConnections -** ta sekcja zawiera informacje o następujących czynności:
+* **vpnSiteConfiguration —** ta sekcja zawiera szczegółowe informacje o urządzeniu skonfigurowanym jako lokacja połączona z wirtualną sieci WAN. Zawiera nazwę i publiczny adres IP urządzenia w oddziale.
+* **vpnSiteConnections —** ta sekcja zawiera informacje dotyczące następujących kwestii:
 
     * **Przestrzeń adresowa** z wirtualnego koncentratory sieci wirtualnej.<br>Przykład:
  
@@ -59,13 +59,13 @@ Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **Adresy IP** dla bramy vpngateway koncentrator wirtualny. Ponieważ nie ma bramy vpngateway każdego połączenia składających się z 2 tuneli w konfiguracji aktywne aktywne, zostaną wyświetlone adresy IP wymienione w tym pliku. W tym przykładzie widać "Instance0" i "Instance1" dla każdej lokacji.<br>Przykład:
+    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie z bramą vpngateway obejmuje dwa tunele w konfiguracji aktywne-aktywne, w pliku wymienione będą oba adresy IP. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Szczegóły konfiguracji połączenia dla bramy Vpngateway** takich jak Protokół BGP, wstępnego kluczy itp. PSK jest klucz wstępny, który jest generowany automatycznie dla Ciebie. Zawsze możesz edytować połączenie na stronie Przegląd dla niestandardowego klucza Wstępnego.
+    * **Szczegóły konfiguracji połączenia bramy vpngateway**, takie jak protokół BGP, klucz wstępny i tym podobne. PSK to klucz wstępny, który jest generowany automatycznie. Zawsze możesz edytować połączenie na stronie Przegląd, aby użyć niestandardowego klucza wstępnego.
   
 ### <a name="example-device-configuration-file"></a>Przykładowy plik konfiguracji urządzenia
 
@@ -250,9 +250,9 @@ Urządzenie SDWAN/VPN w środowisku lokalnym lub SD-WAN konfiguracji muszą być
 * Algorytm integralności IPsec
 * Grupa PFS
 
-## <a name="feedback"></a>Opinii dotyczących wersji zapoznawczej
+## <a name="feedback"></a>Opinie dotyczące wersji zapoznawczej
 
-Będziemy wdzięczni za Twoją opinię. Wyślij wiadomość e-mail na adres <azurevirtualwan@microsoft.com> Zgłoś wszelkie problemy lub opinię (dodatnia lub ujemna) dla wirtualnej sieci WAN. Obejmują nazwę swojej firmy w "[]" w wierszu tematu. Jeśli zgłaszasz problem, również obejmować identyfikator subskrypcji.
+Będziemy wdzięczni za przesłanie opinii. Wyślij wiadomość e-mail na adres <azurevirtualwan@microsoft.com>, jeśli chcesz zgłosić problem lub wyrazić swoją opinię (pozytywną lub negatywną) dotyczącą usługi Virtual WAN. W wierszu tematu wpisz nazwę firmy w nawiasie kwadratowym („[ ]”). Jeśli zgłaszasz problem, dołącz również swój identyfikator subskrypcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

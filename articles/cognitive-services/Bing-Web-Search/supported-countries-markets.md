@@ -1,5 +1,5 @@
 ---
-title: Obsługiwane kraje/regiony i języki, dla sieci Web interfejs API wyszukiwania Bing na platformie Azure | Dokumentacja firmy Microsoft
+title: Kraje, regiony i języki obsługiwane przez API wyszukiwania w Internecie Bing
 description: Dowiedz się, które kraje/regiony i języki są obsługiwane przez API wyszukiwania w Internecie Bing.
 services: cognitive-services
 author: v-jerkin
@@ -7,24 +7,24 @@ manager: jhubbard
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001722"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888475"
 ---
-# <a name="bing-web-search-countriesregions-and-languages"></a>Wyszukiwania w Internecie Bing kraje/regiony i języki
+# <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>Kraje, regiony i języki obsługiwane przez API wyszukiwania w Internecie Bing
 
-API wyszukiwania w Internecie Bing obsługuje więcej niż trzech tuzina kraje/regiony, wiele z więcej niż jednym języku. Określanie kraj/region z zapytaniem służy przede wszystkim, aby zawęzić wyniki wyszukiwania, w oparciu o zainteresowania tego kraju/regionu. Ponadto wyniki mogą zawierać łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonego kraju/regionu lub języka.
+API wyszukiwania w Internecie Bing obsługuje ponad tuzina trzech krajów lub regionów, z których wiele z więcej niż jednym języku. Określanie kraj lub region z zapytaniem pomaga zawęzić wyniki wyszukiwania oparte na tym zainteresowania krajów lub regionów. Wyniki mogą być dostępne łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonego kraju/regionu lub języka.
 
-Można określić kraj/region, w którym używana jest `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależą od kraju/regionu są one podane dla każdego kraju/regionu w tabeli rynkach.
+Można określić kraj lub region przy użyciu `cc` parametr zapytania. Kraj lub region jest określony, należy określić co najmniej jeden kod języka z [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Użyj [tabeli rynków](#Markets) listę języków obsługiwanych w poszczególnych segmentach rynku.
 
-Alternatywnie, można określić przy użyciu rynku `mkt` parametr zapytania i kod z **rynków** tabeli. Określanie na rynek, jednocześnie Określa kraj/region i język preferowany. `setLang` Parametr zapytania może być ustawiona na kod języka w tym przypadku; zazwyczaj jest to ten sam język określony przez `mkt` , chyba że użytkownik chce zobaczyć Bing w innym języku.
+Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **rynków** tabeli. Określanie na rynek, jednocześnie Określa kraj lub region i język preferowany. Można jawnie ustawić język za pomocą `setLang` parametr zapytania.
 
-## <a name="countries"></a>Kraje
+## <a name="countriesregions"></a>Kraje/regiony
 
 |Kraj/region|Kod|
 |-------|----|
@@ -64,7 +64,6 @@ Alternatywnie, można określić przy użyciu rynku `mkt` parametr zapytania i k
 |Turcja|TR|
 |Wielka Brytania|GB|
 |Stany Zjednoczone|USA|
-
 
 ## <a name="markets"></a>Rynki
 

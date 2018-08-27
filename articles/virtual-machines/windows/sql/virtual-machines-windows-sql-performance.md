@@ -1,6 +1,6 @@
 ---
-title: Wydajność — najlepsze rozwiązania dla programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
-description: Przedstawia najlepsze rozwiązania dotyczące optymalizacji wydajności programu SQL Server na maszynach wirtualnych Azure firmy Microsoft.
+title: Wytyczne dotyczące wydajności dla programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
+description: Zawiera wskazówki dotyczące optymalizacji wydajności programu SQL Server na maszynach wirtualnych Azure firmy Microsoft.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/19/2018
+ms.date: 08/24/2018
 ms.author: jroth
-ms.openlocfilehash: a7a24bde6cc34befee7de3bcbf13b96c8b641af2
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3a61c20b922b60e3135d9f9e53928462887a602e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888912"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886189"
 ---
-# <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines
+# <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
 ## <a name="overview"></a>Przegląd
 

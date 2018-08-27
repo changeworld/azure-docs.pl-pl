@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055916"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918746"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -29,7 +29,7 @@ Za pomocą usługi Azure Load Balancer można skalować aplikacje i zapewniać w
 
 Moduł równoważenia obciążenia dystrybuuje nowych przepływów ruchu przychodzącego, przychodzące do frontonu modułu równoważenia obciążenia do wystąpień puli zaplecza, zgodnie z zasadami i sondy kondycji. 
 
-Ponadto publiczny moduł równoważenia obciążenia zapewniają połączeń wychodzących dla maszyn wirtualnych (VM) w Twojej sieci wirtualnej według ich prywatnych adresów IP do publicznych adresów IP tłumaczenia.
+Ponadto publicznej usługi Load Balancer zapewniają połączeń wychodzących dla maszyn wirtualnych (VM) wewnątrz sieci wirtualnej według ich prywatnych adresów IP do publicznych adresów IP tłumaczenia.
 
 Równoważenie obciążenia Azure jest dostępna w dwóch jednostkach SKU: podstawowa i standardowa. Istnieją różnice w skali, funkcje i ceny. Wszystkich scenariuszy, które można zrobić za pomocą podstawowego modułu równoważenia obciążenia mogą być tworzone przy użyciu standardowego modułu równoważenia obciążenia, mimo że podejścia mogą się nieznacznie różnić. Dowiesz się o usłudze Load Balancer, ważne jest zapoznanie się z podstaw i różnice właściwe dla jednostki SKU.
 
@@ -37,8 +37,8 @@ Równoważenie obciążenia Azure jest dostępna w dwóch jednostkach SKU: podst
 
 Możesz użyć usługi Azure Load Balancer do:
 
-* Równoważenie obciążenia ruchu internetowego przychodzącego do maszyn wirtualnych. Ta konfiguracja jest określana jako [publiczny moduł równoważenia obciążenia](#publicloadbalancer).
-* Równoważenie obciążenia ruchem maszyn wirtualnych w sieci wirtualnej. Możesz również połączyć frontonu modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym. Oba scenariusze korzysta z konfiguracji, który jest znany jako [wewnętrznego modułu równoważenia obciążenia](#internalloadbalancer).
+* Równoważenie obciążenia ruchu internetowego przychodzącego do maszyn wirtualnych. Ta konfiguracja jest określana jako [publicznej usługi Load Balancer](#publicloadbalancer).
+* Równoważenie obciążenia ruchem maszyn wirtualnych w sieci wirtualnej. Możesz również połączyć fronton modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym. Oba scenariusze korzysta z konfiguracji, który jest znany jako [wewnętrznego modułu równoważenia obciążenia](#internalloadbalancer).
 * Port ruch wychodzący do konkretnego portu na określonych maszyn wirtualnych przy użyciu reguły translatora (NAT) adresów sieciowych dla ruchu przychodzącego.
 * Podaj [łączności wychodzącej](load-balancer-outbound-connections.md) dla maszyn wirtualnych w Twojej sieci wirtualnej przy użyciu publicznego modułu równoważenia obciążenia.
 
@@ -46,11 +46,11 @@ Możesz użyć usługi Azure Load Balancer do:
 >[!NOTE]
 > Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli chcesz zakończyć protokół zabezpieczeń TLS (Transport Layer Security) („odciążanie protokołu SSL”) lub przetwarzanie poszczególnych żądań dotyczących protokołu HTTP/HTTPS na poziomie warstwy aplikacji, zapoznaj się z tematem dotyczącym usługi [Application Gateway](../application-gateway/application-gateway-introduction.md). Jeśli szukasz globalnego DNS równoważenia obciążenia, przejrzyj [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md). Scenariusze kompleksowe mogą w razie potrzeby korzystać z zalet łączenia tych rozwiązań.
 
-## <a name="what-are-load-balancer-resources"></a>Co to są zasobów modułu równoważenia obciążenia?
+## <a name="what-are-load-balancer-resources"></a>Co to są zasoby modułu równoważenia obciążenia?
 
 Zasób modułu równoważenia obciążenia może istnieć jako publiczny moduł równoważenia obciążenia lub wewnętrznego modułu równoważenia obciążenia. Funkcje zasobów modułu równoważenia obciążenia są wyrażane jako fronton, reguły, sondy kondycji i definicji puli zaplecza. Możesz umieścić maszyn wirtualnych w puli zaplecza, określając puli wewnętrznej bazy danych z maszyny Wirtualnej.
 
-Zasobów modułu równoważenia obciążenia są obiekty, w których można wyrazić jak Azure powinien program swoją infrastrukturę wielodostępnych do osiągnięcia tego scenariusza, który chcesz utworzyć. Nie ma bezpośredniej relacji pomiędzy zasobów modułu równoważenia obciążenia i rzeczywistej infrastruktury. Tworzenie modułu równoważenia obciążenia nie tworzy wystąpienia i pojemność są zawsze dostępne. 
+Zasobów modułu równoważenia obciążenia są obiekty, w których można wyrazić jak Azure powinien program swoją infrastrukturę wielodostępnych do osiągnięcia tego scenariusza, który chcesz utworzyć. Nie ma bezpośredniej relacji między zasobami usługi równoważenia obciążenia i rzeczywistej infrastruktury. Tworzenie modułu równoważenia obciążenia nie tworzy wystąpienia i pojemność są zawsze dostępne. 
 
 ## <a name="fundamental-load-balancer-features"></a>Podstawowe funkcje równoważenia obciążenia
 
@@ -127,15 +127,15 @@ Aby uzyskać więcej informacji, zobacz [limitów usług dla usługi Load Balanc
 
 ### <a name = "publicloadbalancer"></a>Publiczny moduł równoważenia obciążenia
 
-Publiczny moduł równoważenia obciążenia mapuje publiczny adres IP i port numer przychodzącego ruchu sieciowego do prywatnego adresu IP adres i numer portu maszyny wirtualnej i odwrotnie dla ruchu odpowiedzi z maszyny Wirtualnej. Stosując reguły równoważenia obciążenia, można rozpowszechniać określonych rodzajów ruchu sieciowego między wiele maszyn wirtualnych ani usług. Na przykład można rozłożyć obciążenie ruchu związanego z żądaniami sieci web na wielu serwerach sieci web.
+Publicznego modułu równoważenia obciążenia mapuje publiczny adres IP i port numer przychodzącego ruchu sieciowego do prywatnego adresu IP adres i numer portu maszyny wirtualnej i odwrotnie dla ruchu odpowiedzi z maszyny Wirtualnej. Stosując reguły równoważenia obciążenia, można rozpowszechniać określonych rodzajów ruchu sieciowego między wiele maszyn wirtualnych ani usług. Na przykład można rozłożyć obciążenie ruchu związanego z żądaniami sieci web na wielu serwerach sieci web.
 
 Na poniższej ilustracji przedstawiono punkt końcowy z równoważeniem obciążenia dla ruchu w sieci web, który jest udostępniany między trzy maszyny wirtualne dla publicznej komunikacji równorzędnej i TCP port 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
 
-![Przykład modułu równoważenia obciążenia publiczny](./media/load-balancer-overview/IC727496.png)
+![Przykład usługi równoważenia obciążenia publiczny](./media/load-balancer-overview/IC727496.png)
 
 *Rysunek: Obciążenia równoważenia ruchu w sieci web przy użyciu publicznego modułu równoważenia obciążenia*
 
-Gdy klienci internetowi wysyłać żądania strony sieci Web do publicznego adresu IP aplikacji sieci web na porcie 80 protokołu TCP, usługi Azure Load Balancer dystrybuuje żądania trzech maszyn wirtualnych w zestawie z równoważeniem obciążenia. Aby uzyskać więcej informacji na temat algorytmów równoważenia obciążenia, zobacz [funkcje modułu równoważenia obciążenia](load-balancer-overview.md##fundamental-load-balancer-features) dalszej części tego artykułu.
+Gdy klienci internetowi wysyłać żądania strony sieci Web do publicznego adresu IP aplikacji sieci web na porcie 80 protokołu TCP, usługi Azure Load Balancer dystrybuuje żądania trzech maszyn wirtualnych w zestawie z równoważeniem obciążenia. Aby uzyskać więcej informacji na temat algorytmów równoważenia obciążenia, zobacz [funkcji równoważenia obciążenia](load-balancer-overview.md##fundamental-load-balancer-features) dalszej części tego artykułu.
 
 Domyślnie usługa Azure Load Balancer dystrybuuje ruch sieciowy, równo między wieloma wystąpieniami maszyn wirtualnych. Można również skonfigurować koligację sesji. Aby uzyskać więcej informacji, zobacz [trybu dystrybucji modułu równoważenia obciążenia](load-balancer-distribution-mode.md).
 
@@ -150,9 +150,9 @@ Wewnętrzny moduł równoważenia obciążenia umożliwia następujące rodzaje 
 * **Dla aplikacji wielowarstwowych**: równoważenia obciążenia dla aplikacji wielowarstwowych dostępnego z Internetu, gdy warstw zaplecza nie są połączone z Internetem. Równoważenie obciążenia ruchu wymagane w przypadku warstw zaplecza z Internetu — warstwa (patrz następny rysunek).
 * **W przypadku aplikacji line-of-business**: równoważenia obciążenia dla aplikacji line-of-business, które są hostowane na platformie Azure bez dodatkowego obciążenia równoważenia sprzętu lub oprogramowania. Ten scenariusz obejmuje serwery lokalne, które znajdują się w zestawie komputerów, których ruch jest ze zrównoważonym obciążeniem.
 
-![Przykład modułu równoważenia obciążenia wewnętrznego](./media/load-balancer-overview/IC744147.png)
+![Przykład wewnętrzne usługi równoważenia obciążenia](./media/load-balancer-overview/IC744147.png)
 
-*Rysunek: Obciążenia równoważenia aplikacje obejmujące wiele warstw przy użyciu zarówno usługi równoważenia obciążenia publicznych i wewnętrznych*
+*Rysunek: Równoważenia obciążenia aplikacji wielowarstwowych za pomocą zarówno public i internal Load Balancer*
 
 ## <a name="pricing"></a>Cennik
 Standardowego użycia Load Balancer, która jest rozliczana według liczby skonfigurowanych reguł równoważenia obciążenia i ilość przetworzonych danych przychodzących i wychodzących. Aby uzyskać Balancer w warstwie standardowa ceny informacji, przejdź do [cennik modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/) strony.

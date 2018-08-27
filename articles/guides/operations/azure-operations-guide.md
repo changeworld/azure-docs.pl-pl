@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8c799ad90057c53d648ba1e103c251a0e6d6cf88
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056533"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918723"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -467,44 +467,29 @@ Jeśli potrzebujesz użytkownicy mogli mieć kontrolowany dostęp do zasobów ma
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-
-Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można zdefiniować niestandardowy adres IP, ustawienia DNS, filtrowania zabezpieczeń w podsieci i równoważenie obciążenia. Za pomocą bramy sieci VPN lub obwodu usługi ExpressRoute, możesz połączyć sieci wirtualne platformy Azure do sieci lokalnej.
-
-### <a name="use-cases"></a>Przypadki zastosowań
-
-Istnieją różnych przypadków użycia dla sieci platformy Azure.
+Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można zdefiniować niestandardowy adres IP, ustawienia DNS, filtrowania zabezpieczeń w podsieci i równoważenie obciążenia. Platforma Azure obsługuje różne przypadki: sieci tylko w chmurze lub hybrydowe sieci wirtualnych. 
 
 **Sieci wirtualne oparte tylko na chmurze**
 
 Siecią wirtualną platformy Azure, domyślnie jest dostępna tylko do zasobów przechowywanych na platformie Azure. Zasoby podłączone do tej samej sieci wirtualnej mogą komunikować się ze sobą. Można skojarzyć interfejsy sieciowe maszyny wirtualnej i obciążenia równoważenia przy użyciu publicznego adresu IP, aby udostępnić maszynę wirtualną za pośrednictwem Internetu. Za pomocą sieciowej grupy zabezpieczeń, można ułatwić ochronę dostępu do zasoby udostępnione publicznie.
 
-**Sieci wirtualnych między środowiskami lokalnymi**
+![Sieć wirtualna platformy Azure dla aplikacji sieci Web w warstwie 2](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+
+**Wirtualne sieci hybrydowych**
 
 Przy użyciu usługi ExpressRoute lub połączenie VPN lokacja lokacja, można połączyć sieć lokalną z siecią wirtualną platformy Azure. W tej konfiguracji sieci wirtualnej platformy Azure jest zasadniczo oparte na chmurze rozszerzenie sieci lokalnej.
+![Hybrydowa sieć wirtualną przy użyciu sieci VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Ponieważ usługa Azure virtual network jest podłączony do sieci lokalnej, między środowiskami lokalnymi sieci wirtualne muszą używać unikatowy części przestrzeni adresowej, używanymi przez organizację. W ten sam sposób, który różnych lokalizacjach w firmie są przypisane do określonej podsieci IP Azure staje się inną lokalizację przy rozszerzaniu sieci.
-
-### <a name="deploying-a-virtual-network"></a>Wdrażanie sieci wirtualnej
-
 Istnieje kilka opcji wdrożenia sieci wirtualnej.
+- [Portal](../..//virtual-network/quick-create-portal.md)
+- [Program PowerShell](../../virtual-network/quick-create-powershell.md)
+- [Interfejs wiersza polecenia (CLI)](../../virtual-network/quick-create-cli.md)
+- Szablony usługi Azure Resource Manager
 
-**Portal**
+>**Kiedy należy używać**: w dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, pracy z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych. 
 
-Wdrażanie sieci wirtualnej platformy Azure przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Można wdrożyć nową sieć wirtualną do nowej lub istniejącej grupy zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu, możesz wybrać istniejącą sieć wirtualną lub utworzyć nową. Aby uzyskać więcej informacji, zobacz [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
-
-Poza wdrożeniem siecią wirtualną platformy Azure w witrynie Azure portal, można wdrożyć szablonu usługi Azure Resource Manager z poziomu portalu. To wdroży i skonfiguruje wszystkie zasoby, zgodnie z definicją w szablonie, w tym wszystkie zasoby sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
-
-**Program PowerShell**
-
-Wdrażanie sieci wirtualnej platformy Azure przy użyciu programu PowerShell umożliwia pełną automatyzację konta magazynu. Aby uzyskać więcej informacji, zobacz [Utwórz sieć wirtualną przy użyciu programu PowerShell](../../virtual-network/quick-create-powershell.md).
-
-Oprócz wdrażania zasobów platformy Azure indywidualnie, moduł Azure PowerShell można użyć do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
-
-**Interfejs wiersza polecenia (CLI)**
-
-Podobnie jak w przypadku moduł programu PowerShell, interfejsu wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i mogą być używane w systemach Windows, OS X lub Linux. Można użyć wiersza polecenia platformy Azure **tworzenie sieci wirtualnej sieci** polecenie, aby utworzyć sieć wirtualną. Aby uzyskać więcej informacji, zobacz [Utwórz sieć wirtualną przy użyciu wiersza polecenia platformy Azure](../../virtual-network/quick-create-cli.md).
-
-Podobnie można użyć wiersza polecenia platformy Azure do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+>**Rozpoczynanie pracy**: Wdrażanie sieci wirtualnej platformy Azure przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Można wdrożyć nową sieć wirtualną do nowej lub istniejącej grupy zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu, możesz wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Dostęp i większe bezpieczeństwo dla sieci wirtualnych
 

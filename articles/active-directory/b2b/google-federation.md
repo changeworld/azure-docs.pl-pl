@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 38ccd45bb1acc614d4d79451dba53ab6f49c8ba6
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d36a4071dbbfb52e22a4e0ecc850da68ebeae6e5
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820218"
+ms.locfileid: "42888121"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 
@@ -108,4 +108,4 @@ Możesz usunąć konfigurację Federacji Google. Jeśli tak zrobisz, Google uży
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > Aby uzyskać więcej informacji na temat polecenia Remove-AzureADMSIdentityProvider odczytu w tej dokumentacji. 
+   > Aby uzyskać więcej informacji, zobacz [AzureADMSIdentityProvider Usuń](https://docs.microsoft.com/en-us/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 

@@ -1,39 +1,67 @@
 ---
-title: Łącznik RSS w programie Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji logiki z usługi aplikacji Azure. Łącznik RSS umożliwia użytkownikom publikowanie i pobieranie elementów strumieniowego źródła danych. Umożliwia również użytkownikom wyzwalanie operacji po opublikowaniu nowego elementu do źródła danych.
+title: Nawiązywanie połączenia źródła danych RSS z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań i przepływów pracy, które monitorują i zarządzać kanałów informacyjnych RSS przy użyciu usługi Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.suite: integration
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 268fa6d260f1107659208ea07ce3e43c27eca2d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295731"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885802"
 ---
-# <a name="get-started-with-the-rss-connector"></a>Rozpoczynanie pracy z łącznik RSS
-Funkcja RSS jest formacie zespolonego popularnych sieci web używany do publikowania zawartości często aktualizowanych — takich jak wpisy blogu i nagłówki wiadomości.  Wiele wydawcom Podaj źródło danych RSS, aby użytkownicy mogli go subskrybować.  Łącznik RSS umożliwia pobrać źródła informacji i wyzwalacz przepływu, gdy nowe elementy są publikowane w źródła danych RSS.
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Zarządzanie źródłami danych RSS przy użyciu usługi Azure Logic Apps
 
-Rozpoczynanie pracy przez teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Za pomocą usługi Azure Logic Apps i łącznik RSS można utworzyć automatycznych zadań i przepływów pracy na potrzeby RSS dowolnego źródła danych, na przykład:
 
-## <a name="create-a-connection-to-rss"></a>Utwórz połączenie danych RSS
-> [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
-> 
+* Monitorował opublikowaniu elementów kanału informacyjnego RSS.
+* Wyświetl listę wszystkich elementów kanału informacyjnego RSS.
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+Funkcja RSS (Rich Site podsumowanie) jest określana skrótem naprawdę proste syndykacji to popularny format do syndykacji w sieci web i służy do publikowania często aktualizowanej zawartości, takie jak wpisy w blogu i nagłówków wiadomości. Wielu wydawców zawartości zapewniają, że źródła danych RSS, dzięki czemu użytkownicy mogą subskrybować tę zawartość. 
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/rss/).
+Możesz użyć wyzwalacz kanału informacyjnego RSS, pobiera odpowiedzi z kanału informacyjnego RSS, która udostępnia dane wyjściowe do innych działań. Akcja RSS w aplikacjach logiki służy do wykonywania zadań z kanałem informacyjnym RSS. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+
+* Adres URL dla źródła danych RSS
+
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikacja logiki, w której chcesz uzyskać dostęp RSS do źródła danych. Chcesz rozpocząć od wyzwalacz RSS [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji RSS, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+
+## <a name="connect-to-an-rss-feed"></a>Nawiązać połączenie z kanału informacyjnego RSS
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+
+1. Wybierz ścieżkę: 
+
+   * W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "ciąg rss" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+
+     — lub —
+
+   * Dla istniejących aplikacji logiki w ramach kroku, w której chcesz dodać akcję, wybierz **nowy krok**. W polu wyszukiwania jako filtr wprowadź „rss”. W obszarze listy akcji wybierz akcję, którą chcesz.
+
+1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/rss/).
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

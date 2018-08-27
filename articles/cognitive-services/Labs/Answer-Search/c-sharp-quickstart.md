@@ -1,6 +1,6 @@
 ---
-title: C# szybkiego startu dla usług kognitywnych firmy Microsoft, wyszukiwanie odpowiedzi projektu | Dokumentacja firmy Microsoft
-description: Przykładowy kod, aby rozpocząć, używając przycisku Wyszukaj odpowiedzi projektu kognitywnych usług Microsoft Azure.
+title: Przewodnik Szybki Start języka C# dla usług Microsoft Cognitive Services, Project odpowiedzi wyszukiwania | Dokumentacja firmy Microsoft
+description: Przykładowy kod, aby rozpocząć pracę, używając przycisku Wyszukaj odpowiedzi projektu, usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: mikedodaro
 ms.service: cognitive-services
@@ -8,33 +8,33 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b05b7745bdb5020a4a0912635e040256415b2626
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348580"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888327"
 ---
-# <a name="project-answer-search-query-in-c"></a>Zapytania wyszukiwania odpowiedzi projektu w języku C#
+# <a name="project-answer-search-query-in-c"></a>Zapytanie wyszukiwania odpowiedzi projektów w języku C#
 
-W poniższym przykładzie C#, tworzy i wysyła zapytanie, aby uzyskać informacje dotyczące trzeci prawa calculus.
+Poniższy przykład C# tworzy i wysyła zapytanie, aby uzyskać informacje dotyczące trzeciego wymiaru sprawiedliwości calculus.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) tego kodu dla systemu Windows. (Bezpłatna wersja Community będzie działać.)
+Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Uzyskiwanie klucza dostępu dla bezpłatnej wersji próbnej [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
 ## <a name="code-scenario"></a>Scenariusz kodu
 
-Poniższy kod C# tworzy i wysyła zapytanie. 
+Poniższy kod C# tworzy i wysyła to zapytanie. 
 
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne w celu określenia punktu końcowego i adresu URL zapytania, aby wyświetlić podgląd.  
+Jest zaimplementowana w poniższych krokach:
+1. Deklarowanie zmiennych, aby określić punktu końcowego i URL zapytania, aby wyświetlić podgląd.  
 2. Utwórz żądanie.
-3. Dodaj *Ocp-Apim-subskrypcji — klucz* nagłówka. 
-4. Wykonywane asynchronicznie żądanie sieci Web. 
-5. Przeczytaj odpowiedzi.
+3. Dodaj *Ocp-Apim-Subscription-Key* nagłówka. 
+4. Żądania sieci Web ma być uruchamiane asynchronicznie. 
+5. Uzyskać odpowiedzi.
 6. Drukowanie nagłówków i wyniki JSON do konsoli.
 
 **Kod źródłowy**
@@ -53,7 +53,7 @@ namespace Answers_csharp
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "YOUR-SUBSCRIPTION-KEY";
 
-        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search "; 
+        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search"; 
 
         const string searchTerm = "third law of calculus"; 
 
@@ -188,9 +188,9 @@ namespace Answers_csharp
 Aby uruchomić aplikację:
 
 1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio.
-2. Zastąp `Program.cs` podany kod.
-3. Zastąp `YOUR-ACCESS-KEY` wartość kluczem dostępu prawidłową dla Twojej subskrypcji.
+2. Zastąp `Program.cs` przy użyciu podanego kodu.
+3. Zastąp `YOUR-ACCESS-KEY` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Szybki Start Java](java-quickstart.md)
+[Przewodnik Szybki Start języka Java](java-quickstart.md)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 36537aacce0180f9b37fb8b49f301fb1f5954d1c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004382"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918433"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowych usługi Azure Active Directory join dla domeny zarządzanej
 
@@ -54,7 +54,8 @@ W tym samouczku przyjęto założenie, że znasz:
   
 
 Aby skonfigurować scenariusz, w tym artykule, musisz mieć [najnowszą wersję programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 lub nowszej) do zainstalowania. 
- 
+
+Sprawdź, czy program Azure AD Connect została zsynchronizowana obiektów komputerów, urządzeń, które mają być hybrydowe do usługi Azure AD do usługi Azure AD. Jeśli obiekty komputerów należą do określonej jednostki organizacyjne (OU), te jednostki organizacyjne, które muszą być skonfigurowane do synchronizacji w usłudze Azure AD, a następnie nawiązać połączenie także.
 
 Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia za pomocą kreatora, aby skonfigurować dołączenie do hybrydowej usługi Azure AD. Kreator umożliwia znacznie upraszcza proces konfigurowania. Powiązane Kreator konfiguruje punktów połączenia usługi (SCP) dla rejestracji urządzeń.
 
@@ -165,7 +166,7 @@ Ponadto należy włączyć **zezwala na aktualizacje na pasku stanu za pomocą s
 
 ## <a name="verify-the-registration"></a>Weryfikuj rejestrację
 
-Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć ** [Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** polecenia cmdlet w ** [modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć **[Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** polecenia cmdlet w  **[modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Korzystając z **Get MSolDevice** polecenia cmdlet, aby sprawdzić szczegóły usługi:
 

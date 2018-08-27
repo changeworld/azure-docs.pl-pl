@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b84de7475c54d2bc35dcc10b0bbfb0c1839c5631
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 261f8dfe41ece0cd56a4a71972e3142ef8440afb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522139"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918113"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -25,7 +25,7 @@ Zdecydowanie zaleca się przeczytanie [Planowanie wdrożenia usługi Azure Files
     - [Dostępność w poszczególnych regionach](storage-sync-files-planning.md#region-availability) dla usługi Azure File Sync.
     - [Tworzenie konta magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) Opis krok po kroku jak utworzyć konto magazynu.
     - [Utwórz udział plików](storage-how-to-create-file-share.md) krok po kroku opis sposobu tworzenia udziału plików.
-* Co najmniej jedno wystąpienie obsługiwany system Windows Server lub klastra systemu Windows Server, można zsynchronizować z usługi Azure File Sync. Aby uzyskać więcej informacji o obsługiwanych wersjach systemu Windows Server, zobacz [współdziałanie z systemem Windows Server](storage-sync-files-planning.md#azure-file-sync-interoperability).
+* Co najmniej jedno wystąpienie obsługiwany system Windows Server lub klastra systemu Windows Server, można zsynchronizować z usługi Azure File Sync. Aby uzyskać więcej informacji o obsługiwanych wersjach systemu Windows Server, zobacz [współdziałanie z systemem Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
 * Upewnij się, że w programie PowerShell 5.1 jest zainstalowany w systemie Windows Server. Jeśli używasz systemu Windows Server 2012 R2, upewnij się, czy korzystasz z co najmniej 5.1 program PowerShell. \*. Możesz bezpiecznie kontrolę tę można pominąć w systemie Windows Server 2016 jako 5.1 program PowerShell jest domyślna wersja out-of-box. W systemie Windows Server 2012 R2 można sprawdzić, czy korzystasz z programu PowerShell 5.1. \* , analizując wartość **PSVersion** właściwość **$PSVersionTable** obiektu:
 
     ```PowerShell

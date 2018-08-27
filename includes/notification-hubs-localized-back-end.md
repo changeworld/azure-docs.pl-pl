@@ -8,25 +8,26 @@ ms.topic: include
 ms.date: 04/02/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 752feca30fdca663aaf8bd88e6686781b9065682
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 527567ee3f3a939c7358fb6a62271cbe38e16974
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836685"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915504"
 ---
-W przypadku wysyłania powiadomień szablonu wystarczy stanowią zbiór właściwości. W tym scenariuszu zestaw właściwości zawiera zlokalizowanej wersji bieżącej wiadomości.
+Po wysłaniu powiadomienia o szablonach, wystarczy podać zestaw właściwości. W tym scenariuszu zestaw właściwości zawiera zlokalizowaną wersję bieżącego wiadomości.
 
-    {
-        "News_English": "World News in English!",
-        "News_French": "World News in French!",
-        "News_Mandarin": "World News in Mandarin!"
-    }
-
-
+```json
+{
+    "News_English": "World News in English!",
+    "News_French": "World News in French!",
+    "News_Mandarin": "World News in Mandarin!"
+}
+```
 
 ### <a name="send-notifications-using-a-c-console-app"></a>Wysyłanie powiadomień za pomocą aplikacji konsolowej C#
-W tej sekcji przedstawiono sposób wysyłania powiadomień za pomocą aplikacji konsoli. Kod wysyła powiadomienia do urządzeń zarówno Sklepu Windows i iOS. Modyfikowanie `SendTemplateNotificationAsync` metody w aplikacji konsoli wcześniej utworzony z następującym kodem:
+
+W tej sekcji pokazano, jak wysyłać powiadomienia przy użyciu aplikacji konsolowej. Kod emituje powiadomienia do urządzeń z systemem iOS i Windows Store. Zmodyfikuj metodę `SendTemplateNotificationAsync` w poprzednio utworzonej aplikacji konsoli, korzystając z następującego kodu:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -63,10 +64,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-Metoda SendTemplateNotificationAsync zapewnia zlokalizowanych część wiadomości, aby **wszystkie** urządzenia, niezależnie od platformy. Centrum powiadomień kompilacji, a następnie dostarcza poprawne ładunku natywnego na wszystkich urządzeniach, które subskrybuje z konkretnym elementem tag.
+Metoda SendTemplateNotificationAsync dostarcza zlokalizowane część wiadomości **wszystkich** urządzeń, niezależnie od platformy. Twoje Centrum powiadomień kompilacji i zapewnia prawidłowe ładunku natywnych na wszystkich urządzeniach subskrypcję określonego tagu.
 
-### <a name="sending-notification-with-mobile-services"></a>Wysyłanie powiadomień z usług Mobile Services
-W harmonogramie Twojej usługi Mobile Services użyj następującego skryptu:
+### <a name="sending-notification-with-mobile-services"></a>Wysyłanie powiadomień za pomocą usług Mobile Services
+
+Dzięki usłudze scheduler usługi Mobile Services użyj następującego skryptu:
 
 ```csharp
 var azure = require('azure');
@@ -82,4 +84,3 @@ notificationHubService.send('World', notification, function(error) {
     }
 });
 ```
-

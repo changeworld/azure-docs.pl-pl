@@ -1,6 +1,6 @@
 ---
-title: Menedżer zasobów klastra usługi sieć szkieletowa — grup aplikacji | Dokumentacja firmy Microsoft
-description: Omówienie funkcji grupy aplikacji w usługi sieć szkieletowa klastra Menedżer zasobów
+title: Menedżer zasobów klastra usługi Service Fabric - grup aplikacji | Dokumentacja firmy Microsoft
+description: Omówienie funkcji grupy aplikacji w usługi Service Fabric Menedżer zasobów klastra
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2c641703547c391618d75fabfa181dff0b98f74f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212997"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918774"
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
-Menedżer zasobów klastra usługi sieć szkieletowa zwykle zarządza zasobami klastra przez rozłożenie obciążenia (reprezentowane przez [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza pojemność węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajność pracy wygodne w przypadku wielu obciążeń, ale wzorców, które w znacznym stopniu wykorzystywane różnych wystąpień aplikacji sieci szkieletowej usług czasami przenieść dodatkowe wymagania. Na przykład można:
+Menedżer zasobów klastra usługi Service Fabric zarządza zwykle zasobów klastra przez rozłożenie obciążenia (reprezentowane za pomocą [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza się pojemności węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajności działają doskonale nadaje się do wielu obciążeń, ale wzorce, które intensywnie korzystają z różnych wystąpieniach aplikacji Service Fabric Service czasami Przenieś dodatkowe wymagania. Na przykład możesz chcieć:
 
-- Niektóre wydajność w węzłach klastra dla usług w ramach wystąpienia niektórych aplikacji o nazwie rezerwowa
-- Ogranicz całkowitą liczbę węzłów, które działają na usługi w wystąpieniu o nazwie aplikacji (zamiast rozkładanie je za pośrednictwem całego klastra)
-- Definiowanie pojemności w wystąpieniu o nazwie aplikacji, aby ograniczyć liczbę usług lub zużycie zasobów całkowita liczba usług w nim
+- Niektóre wydajność na węzłach w klastrze usługi w ramach niektórych wystąpień aplikacji o nazwie rezerwowa
+- Ogranicz całkowitą liczbę węzłów, korzystających z usług w ramach wystąpienie nazwane aplikacji (zamiast rozkładanie je przez cały klaster)
+- Definiowanie pojemności na wystąpienie nazwane aplikacji, aby ograniczyć liczbę tych usług lub użycie łączna liczba zasobów usług wewnątrz niego
 
-Aby spełnić te wymagania, Menedżer zasobów klastra sieci szkieletowej usług obsługuje funkcję grupy aplikacji.
+Aby spełnić te wymagania, Menedżer zasobów klastra usługi Service Fabric obsługuje funkcję o nazwie grupy aplikacji.
 
-## <a name="limiting-the-maximum-number-of-nodes"></a>Ogranicza maksymalną liczbę węzłów
-Najprostsza przypadek użycia pojemności aplikacji jest w przypadku wystąpienia aplikacji musi być ograniczone do niektórych maksymalną liczbę węzłów. Zakłada skonsolidowanie obsługi wszystkich usług w ramach danego wystąpienia aplikacji na zestaw liczby maszyn. Konsolidacja jest przydatne, gdy użytkownik próbuje odgadnąć lub cap użycia zasobów fizycznych przez usługi w ramach tego wystąpienia nazwanego aplikacji. 
+## <a name="limiting-the-maximum-number-of-nodes"></a>Ograniczenie maksymalnej liczby węzłów
+Najprostszym przypadku użycia pojemności aplikacji jest, gdy wystąpienie aplikacji musi być ograniczone do niektórych maksymalną liczbę węzłów. To konsoliduje wszystkie usługi w ramach tego wystąpienia aplikacji na liczbę maszyn w zestawie. Konsolidacja jest przydatne, gdy próbujesz przewidywać, a limit wykorzystania zasobów fizycznych przez usługi w ramach tego wystąpienia aplikacji o nazwie. 
 
-Na poniższej ilustracji przedstawiono wystąpienie aplikacji z włączonymi i wyłączonymi maksymalną liczbę węzłów zdefiniowane:
+Na poniższej ilustracji przedstawiono wystąpienie aplikacji z lub bez maksymalną liczbę węzłów zdefiniowane:
 
 <center>
-![Maksymalna liczba węzłów Definiowanie wystąpienia aplikacji][Image1]
+![Wystąpienie aplikacji, definiując maksymalnej liczby węzłów][Image1]
 </center>
 
-W przykładzie po lewej stronie aplikacja nie ma maksymalną liczbę węzłów zdefiniowana, a ma trzy usługi. Menedżer zasobów klastra ma rozszerzane wszystkie repliki na sześciu węzłów dostępne do osiągnięcia równowagę w klastrze (domyślnie). W tym przykładzie prawo widzimy tej samej aplikacji maksymalnie trzy węzły.
+W tym przykładzie po lewej stronie aplikacja nie ma maksymalną liczbę węzłów zdefiniowane, a ma trzy usługi. Menedżer zasobów klastra ma rozszerzane wszystkie repliki na sześciu dostępnych węzłów, aby osiągnąć najlepszą równowagę w klastrze (zachowanie domyślne). W tym przykładzie prawo widzimy tej samej aplikacji, które są ograniczone do trzech węzłów.
 
-Parametr, który kontroluje to zachowanie jest nazywany wartość MaximumNodes. Ten parametr można ustawić podczas tworzenia aplikacji lub aktualizacji dla wystąpienia aplikacji, która została już uruchomiona.
+Parametr, który kontroluje to zachowanie jest nazywany MaximumNodes. Ten parametr można ustawić podczas tworzenia aplikacji lub aktualizacji dla wystąpienia aplikacji, która została już uruchomiona.
 
 PowerShell
 
@@ -66,18 +66,18 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 ```
 
-W ramach zestawu węzłów klastra Menedżera zasobów nie gwarantuje obiekty, które usługa uzyskać umieszczone razem lub pobrać używane węzły, które.
+W zestawie węzłów Menedżer zasobów klastra nie gwarantuje obiekty, które usługa pobieranie umieszczone razem lub węzły, które Pobierz używane.
 
-## <a name="application-metrics-load-and-capacity"></a>Metryki aplikacji, obciążenia i pojemności
-Grupy aplikacji pozwalają również do definiowania metryk powiązanych z wystąpienia danej aplikacji o nazwie oraz wydajności danego wystąpienia aplikacji dla tych metryk. Metryki aplikacji pozwalają na śledzenie, zastrzec i ograniczyć zużycie zasobów usług wewnątrz tego wystąpienia aplikacji.
+## <a name="application-metrics-load-and-capacity"></a>Metryki aplikacji, obciążenia i wydajności
+Grupy aplikacji również umożliwiają definiowanie metryk związane z wystąpienia danej aplikacji o nazwie i pojemności tego wystąpienia aplikacji dla tych metryk. Metryki aplikacji pozwalają na śledzenie, zarezerwować i ograniczyć zużycie zasobów usług wewnątrz tego wystąpienia aplikacji.
 
-Dla każdej aplikacji metryki istnieją dwie wartości, które można ustawić:
+Dla każdego metryki aplikacji istnieją dwie wartości, które można ustawić:
 
-- **Całkowita liczba aplikacji, zdolność** — to ustawienie reprezentuje całkowita pojemność aplikacji dla określonej metryki. Menedżer zasobów klastra nie zezwala na tworzenie nowych usług, w ramach tego wystąpienia aplikacji, które mogłyby spowodować całkowite obciążenie przekracza tę wartość. Na przykład załóżmy, że wystąpienie aplikacji ma pojemności 10 już obciążenia pięć. Tworzenie usługi z obciążeniem całkowita domyślne 10 będzie niedozwolone.
-- **Maksymalna pojemność węzła** — to ustawienie określa maksymalną całkowite obciążenie dla aplikacji w jednym węźle. Jeśli obciążenie odbywa się za pośrednictwem tej pojemności, Menedżer zasobów klastra przenosi replik do innych węzłów tak, że zmniejsza obciążenie.
+- **Całkowita pojemność aplikacji** — to ustawienie reprezentuje całkowitą pojemność aplikacji dla określonej metryki. Menedżer zasobów klastra nie zezwala na tworzenie wszelkie nowe usługi, w ramach tego wystąpienia aplikacji, które spowodują całkowite obciążenie przekracza tę wartość. Na przykład załóżmy, że wystąpienie aplikacji ma pojemność 10 i był już obciążenia do 5. Tworzenie usługi z obciążeniem domyślne całkowita 10 będzie niedozwolone.
+- **Maksymalna pojemność węzła** — to ustawienie umożliwia określenie maksymalnego obciążenia całkowitą dla aplikacji w jednym węźle. Jeśli obciążenia przechodzi przez tę pojemność, Menedżer zasobów klastra przenosi repliki do innych węzłów, aby zmniejszy się obciążenie.
 
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -Metrics @("MetricName:Metric1,MaximumNodeCapacity:100,MaximumApplicationCapacity:1000")
@@ -99,33 +99,33 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-## <a name="reserving-capacity"></a>Rezerwacji pojemności
-Inne typowe zastosowanie dla grup aplikacji jest upewnij się, że zasoby w klastrze są zastrzeżone dla wystąpienia danej aplikacji. Po utworzeniu wystąpienia aplikacji zawsze jest zarezerwowany obszar.
+## <a name="reserving-capacity"></a>Rezerwowanie pojemności
+Innym typowym zastosowaniem dla grup aplikacji jest zapewnienie, że zasobów w klastrze są zarezerwowane dla wystąpienia danej aplikacji. Zawsze jest zarezerwowany obszar, gdy tworzone jest wystąpienie aplikacji.
 
-Rezerwacji miejsca w klastrze dla aplikacji się natychmiast stanie nawet wtedy, gdy:
-- wystąpienie aplikacji zostało utworzone, ale nie ma jeszcze żadnych usług w niej
-- Liczba usług w ramach zmian wystąpienia aplikacji zawsze 
-- usługi istnieje, ale nie korzysta z zasobów 
+Rezerwowania miejsca, w klastrze, dla aplikacji się natychmiast stanie nawet wtedy, gdy:
+- wystąpienie aplikacji zostanie utworzony, ale nie ma jeszcze żadnych usług w nim
+- każdym razem, gdy zmieni się liczba usług w ramach wystąpienia aplikacji 
+- usługi istnieją, ale nie są korzystający z zasobów 
 
-Rezerwacji zasobów dla wystąpienia aplikacji wymaga określenia dwóch dodatkowych parametrów: *MinimumNodes* i *NodeReservationCapacity*
+Rezerwacji zasobów, wystąpienie aplikacji wymaga określenia dwa dodatkowe parametry: *MinimumNodes* i *NodeReservationCapacity*
 
-- **Wartość MinimumNodes** — definiuje minimalna liczba węzłów, które wystąpienie aplikacji powinny być uruchamiane.  
-- **NodeReservationCapacity** — jest to ustawienie na metryki dla aplikacji. Wartość jest kwota tej metryki zarezerwowany dla aplikacji na dowolnym węźle gdzie uruchomienia usług w tej aplikacji.
+- **MinimumNodes** — określa minimalną liczbę węzłów, które wystąpienia aplikacji powinny być uruchamiane.  
+- **NodeReservationCapacity** — to ustawienie jest na metrykę dla aplikacji. Wartość jest ilość w przypadku tej metryki zarezerwowane dla aplikacji na dowolnym węźle gdzie uruchamianą w usługi w tej aplikacji.
 
-Łączenie **MinimumNodes** i **NodeReservationCapacity** gwarancje rezerwacji minimalna obciążenia dla aplikacji w klastrze. Jeśli ma mniej pozostałych pojemności w klastrze niż całkowita rezerwacji wymagane, tworzenie aplikacji nie powiedzie się. 
+Łącząc **MinimumNodes** i **NodeReservationCapacity** gwarancje rezerwacji minimalne obciążenie dla aplikacji w klastrze. Ma mniej pozostałej pojemności w klastrze niż łączna liczba rezerwacji wymagane, tworzenie aplikacji nie powiedzie się. 
 
-Oto przykład rezerwacji pojemności:
+Spójrzmy na przykład pojemność rezerwacji:
 
 <center>
-![Definiowanie pojemności zastrzeżone wystąpień aplikacji][Image2]
+![Wystąpienia aplikacji, definiując rezerwowanie pojemności][Image2]
 </center>
 
-W przykładzie po lewej stronie aplikacje nie mają żadnych zdefiniowano zdolności produkcyjnych aplikacji. Menedżer zasobów klastra równoważy wszystko zgodnie z normalnym reguły.
+W przykładzie po lewej stronie aplikacje nie mają zdefiniowanych wydajność aplikacji. Menedżer zasobów klastra równoważy wszystko, czego zgodnie z normalnym zestawów reguł.
 
-W przykładzie po prawej stronie Załóżmy, że Application1 został utworzony z następującymi ustawieniami:
+W tym przykładzie po prawej stronie Załóżmy, że Application1 została utworzona z następującymi ustawieniami:
 
-- Ustaw wartość MinimumNodes do dwóch
-- Metryka zdefiniowana z aplikacji
+- MinimumNodes równa dwa
+- Metryka zdefiniowana za pomocą aplikacji
   - NodeReservationCapacity 20
 
 PowerShell
@@ -152,15 +152,15 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-Sieć szkieletowa usług rezerw pojemności na dwóch węzłów w Application1 i nie można używać usług z Aplikacja2 użycie wydajność, nawet jeśli istnieją takie obciążenia jest są używane przez usługi wewnątrz Application1 w czasie. Pojemność ten zastrzeżony aplikacji jest uznawany za liczby przed pozostałe zasoby, w tym węźle, a w ramach klastra i używane.  Rezerwacja jest odejmowany od pozostałe zasoby klastra, jednak użycie zastrzeżonego jest odejmowany od pojemności określonego węzła tylko wtedy, gdy co najmniej jedną usługę obiekt znajduje się na nim. Tego zastrzeżenia nowsze umożliwia elastyczność i lepsze wykorzystanie zasobów, ponieważ zasoby są tylko zarezerwowane na węzłach w razie potrzeby.
+Usługa Service Fabric rezerwy pojemności na dwóch węzłach dla Application1, a nie Zezwalaj usługom z Aplikacja2 korzystanie z tej pojemności, nawet gdy pojawią się, że bez obciążenia zużywanych przez usługi w Application1 w czasie. Tej pojemności zastrzeżonych aplikacji jest uznawany za używane i zmniejsza Pozostała pojemność, w tym węźle, a w klastrze.  Rezerwacja jest odejmowany od pozostałej pojemności klastra natychmiast, jednak użycie zastrzeżonego jest odejmowany od pojemności określonego węzła, tylko wtedy, gdy co najmniej jedną usługę obiekt jest umieszczany na nim. Tę rezerwację nowszej umożliwia elastyczność i lepsze wykorzystanie zasobów, ponieważ zasoby są tylko zarezerwowane na węzłach w razie.
 
 ## <a name="obtaining-the-application-load-information"></a>Uzyskiwanie informacji o obciążenia aplikacji
-Dla każdej aplikacji, która ma pojemność aplikacji zdefiniowane dla co najmniej jedną metrykę, który można uzyskać informacje na temat agregacji obciążenia zgłoszone przez repliki z jego usług.
+Dla każdej aplikacji, który ma zdolność aplikacji zdefiniowane dla co najmniej jedną metrykę, którą można uzyskać informacje na temat zagregowanego obciążenia zgłosił repliki z jego usług.
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ``` posh
-Get-ServiceFabricApplicationLoad –ApplicationName fabric:/MyApplication1
+Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1
 ```
 
 C#
@@ -176,44 +176,44 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 }
 ```
 
-Zapytanie ApplicationLoad zwraca podstawowe informacje o wydajności aplikacji, który został określony dla aplikacji. Informacje te obejmują informacje o węzłach minimalna i maksymalna liczba węzłów i liczba, która aplikacja jest obecnie zajęte. Zawiera także informacje o każdym Metryka obciążenia aplikacji, w tym:
+Zapytanie ApplicationLoad zwraca podstawowych informacji o wydajności aplikacji, który został określony dla aplikacji. Informacje te obejmują informacje węzłów minimalna i maksymalna liczba węzłów, a numer który obecnie zajmuje aplikacji. Zawiera także informacje o poszczególnych metryki obciążenia aplikacji, w tym:
 
 * Nazwa metryki: Nazwa metryki.
-* Reservationcapacity: Pojemności klastra zarezerwowane dla tej aplikacji w klastrze.
-* Obciążenia aplikacji: Całkowita liczba obciążenia replik podrzędnych tej aplikacji.
-* Pojemność aplikacji: Maksymalna dopuszczalna wartość obciążenia aplikacji.
+* Pojemność rezerwacji: Pojemność klastra FF zarezerwowanego w klastrze dla tej aplikacji.
+* Obciążenie aplikacji: Łączna liczba obciążenia repliki podrzędnego tej aplikacji.
+* Wydajność aplikacji: Maksymalna dopuszczalna wartość obciążenia aplikacji.
 
-## <a name="removing-application-capacity"></a>Usuwanie aplikacji, zdolność
-Po ustawieniu parametrów aplikacji, zdolność dla aplikacji, można je usunąć za pomocą poleceń cmdlet interfejsów API aplikacji aktualizacji lub programu PowerShell. Na przykład:
+## <a name="removing-application-capacity"></a>Usuwanie pojemności aplikacji
+Po ustawieniu parametrów wydajności aplikacji dla aplikacji, można je usunąć za pomocą polecenia cmdlet Update interfejsy API z aplikacji lub programu PowerShell. Na przykład:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-To polecenie usuwa wszystkie parametry zarządzania wydajności aplikacji z wystąpienia aplikacji. W tym MinimumNodes, wartość MaximumNodes i metryki aplikacji, jeśli istnieje. Polecenie powoduje natychmiastowe. Po wykonaniu tego polecenia, Menedżer zasobów klastra używa domyślnego zachowania związanych z zarządzaniem aplikacjami. Parametry pojemność aplikacji można określić ponownie za pomocą `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+To polecenie usuwa wszystkie parametry zarządzania wydajności aplikacji z wystąpienia aplikacji. W tym MinimumNodes, MaximumNodes i metryki aplikacji, jeśli istnieje. Polecenie powoduje natychmiastowe. Po wykonaniu tego polecenia, Menedżer zasobów klastra używa domyślnego zachowania do zarządzania aplikacjami. Parametry wydajność aplikacji można określić ponownie za pomocą `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
 
-### <a name="restrictions-on-application-capacity"></a>Ograniczenia dotyczące wydajności aplikacji
-Istnieje kilka ograniczeń w parametrach wydajność aplikacji, które muszą zostać zachowane. Jeśli występują błędy sprawdzania poprawności żadne zmiany nie została wykonana.
+### <a name="restrictions-on-application-capacity"></a>Ograniczenia dotyczące pojemności aplikacji
+Istnieje kilka ograniczeń dotyczących parametrów wydajności aplikacji, które muszą zostać zachowane. Jeśli występują błędy sprawdzania poprawności żadne zmiany nie będzie mieć miejsce.
 
-- Wszystkie parametry liczba całkowita musi być liczby nieujemnej.
-- Wartość MinimumNodes nigdy nie może być większa niż wartość MaximumNodes.
-- Jeśli zdefiniowano wydajności dla metryki obciążenia, są one musi wykonać następujące czynności:
-  - Węzeł rezerwacji pojemność nie może być większa niż maksymalna pojemność węzła. Nie można na przykład ograniczyć wydajności dla metryki "Procesora" w węźle, aby dwie jednostki i zarezerwuj trzy jednostki w każdym węźle.
-  - Jeśli określono wartość MaximumNodes, następnie produktu MaximumNodes i maksymalna pojemność węzła nie może być większa niż całkowita pojemność aplikacji. Na przykład załóżmy, że maksymalna pojemność węzła Metryka obciążenia, "CPU" jest ustawiony do ośmiu. Również Załóżmy, że maksymalna liczba węzłów jest ustawiony na 10. W takim przypadku całkowita pojemność aplikacji musi być większa niż 80 dla ta metryka obciążenia.
+- Wszystkie parametry całkowitą muszą być liczbami nieujemnej wartości.
+- MinimumNodes nigdy nie musi być większa niż MaximumNodes.
+- Jeśli zdefiniowano pojemności dla metryki obciążenia, są one muszą wykonać następujące czynności:
+  - Pojemność rezerwacji węzła nie może być większa niż maksymalna pojemność węzła. Nie można na przykład ograniczenia wydajności dla metryki "CPU" w węźle, aby dwie jednostki i zarezerwuj trzech jednostek w każdym węźle.
+  - Jeśli MaximumNodes jest określony, następnie produktu MaximumNodes oraz maksymalną pojemność węzła nie może być większa niż całkowita wydajność aplikacji. Na przykład załóżmy, że maksymalna pojemność węzła dla metryki obciążenia, "CPU" jest ustawiony na 8. Ponadto Załóżmy, że maksymalna liczba węzłów jest ustawiony na 10. W tym przypadku łączna pojemność aplikacji musi być większa niż 80 dla tej metryki obciążenia.
 
-Ograniczenia są wymuszane zarówno podczas tworzenia aplikacji i aktualizacji.
+Ograniczenia są wymuszane, zarówno podczas tworzenia aplikacji i aktualizacji.
 
-## <a name="how-not-to-use-application-capacity"></a>Jak nie należy używać aplikacji, zdolność
-- Nie należy korzystać z funkcji grupy aplikacji do aplikacji, aby ograniczyć _określonych_ podzbioru węzłów. Innymi słowy, można określić, że aplikacja działa na maksymalnie pięć węzłów, ale nie których określonych pięć węzłów w klastrze. Ograniczający aplikacji do określonych węzłów można osiągnąć za pomocą ograniczenia umieszczania usług.
-- Nie należy próbować upewnij się, że dwie usługi z tej samej aplikacji są umieszczane na tych samych węzłów za pomocą wydajność aplikacji. Zamiast tego użyj [koligacji](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) lub [ograniczenia umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+## <a name="how-not-to-use-application-capacity"></a>Jak nie używać pojemności aplikacji
+- Nie należy korzystać z funkcji grupy aplikacji, aby ograniczyć aplikację do _określonych_ podzbioru węzłów. Innymi słowy, można określić, że aplikacja działa na co najwyżej pięcioma węzłami, ale nie które określonych pięciu węzłów w klastrze. Ograniczając aplikacji do określonych węzłów można osiągnąć za pomocą ograniczeń rozmieszczania dla usług.
+- Nie należy próbować Użyj wydajności aplikacji, aby upewnić się, że dwie usługi z tej samej aplikacji, są umieszczane w węzłach tego samego. Zamiast tego użyć [koligacji](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) lub [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
-- Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
-- Rozpocznij od początku i [wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów](service-fabric-cluster-resource-manager-introduction.md)
-- Aby uzyskać więcej informacji na temat działania metryki ogólnie rzecz biorąc, przeczytaj na [metryki obciążenia sieci szkieletowej usług](service-fabric-cluster-resource-manager-metrics.md)
-- Menedżer zasobów klastra ma wiele opcji opisujące klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md)
+- Aby uzyskać więcej informacji na temat konfigurowania usług [Dowiedz się więcej na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)
+- Aby dowiedzieć się o zarządza Menedżer zasobów klastra i równoważy obciążenie w klastrze, zapoznaj się z artykułem na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
+- Zacznij od początku i [zapoznaj się z wprowadzeniem do usługi Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md)
+- Aby uzyskać więcej informacji na temat sposobu działania metryki zazwyczaj Czytaj [metryk obciążenia sieci szkieletowej usług](service-fabric-cluster-resource-manager-metrics.md)
+- Menedżer zasobów klastra ma wiele opcji do opisywania klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się z tego artykułu na [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

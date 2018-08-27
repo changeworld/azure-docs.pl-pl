@@ -1,6 +1,6 @@
 ---
-title: Sprawdź poprawność certyfikatów infrastruktury kluczy publicznych stosu Azure stosu Azure zintegrowanych systemów wdrożenia | Dokumentacja firmy Microsoft
-description: Opisuje sposób sprawdzania poprawności certyfikatów PKI stosu Azure stosu Azure zintegrowanych systemów. Obejmuje za pomocą narzędzia sprawdzania certyfikatów stosu Azure.
+title: Sprawdzanie poprawności certyfikatów infrastruktury kluczy publicznych usługi Azure Stack dla usługi Azure Stack zintegrowane systemy wdrażania | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób sprawdzania poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack w systemach zintegrowanych w usłudze Azure Stack. Dotyczy korzystania z narzędzia Azure Stack certyfikat kontroler.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,62 +15,62 @@ ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605614"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917087"
 ---
-# <a name="validate-azure-stack-pki-certificates"></a>Sprawdź poprawność certyfikatów PKI stosu Azure
+# <a name="validate-azure-stack-pki-certificates"></a>Sprawdzanie poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 
-Narzędzie sprawdzania gotowości stosu Azure opisano w tym artykule jest dostępny [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Aby sprawdzić, czy można użyć narzędzia [wygenerowanych certyfikatów PKI](azure-stack-get-pki-certs.md) nadają się do przed wdrożeniem. Certyfikaty należy sprawdzić, czy pozostawić wystarczająco dużo czasu na test i ponowne wystawienie certyfikatów, jeśli to konieczne.
+Dostępne jest narzędzie narzędzie do sprawdzania gotowości usługi Azure Stack, opisane w tym artykule [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Można użyć narzędzia, aby sprawdzić, czy [generowanych certyfikaty infrastruktury kluczy publicznych](azure-stack-get-pki-certs.md) są odpowiednie na potrzeby przed wdrożeniem. Certyfikaty należy sprawdzić, czy, pozostawiając wystarczająco dużo czasu na test i ponownego wystawienia certyfikatów, jeśli to konieczne.
 
 Narzędzie sprawdzania gotowości wykonuje następujące operacje sprawdzania poprawności certyfikatu:
 
 - **Przeczytaj PFX**  
-    Sprawdza, czy prawidłowy plik PFX, prawidłowe hasło i wyświetli ostrzeżenie, jeśli informacje o publicznym nie jest chroniony przez hasło. 
+    Sprawdza, czy prawidłowy plik PFX, prawidłowe hasło i wyświetli ostrzeżenie, jeśli informacje o publicznym nie jest chroniony hasłem. 
 - **Algorytm podpisu**  
-    Sprawdza, czy algorytm podpisu nie jest SHA1.
+    Sprawdza, czy podpis algorytm nie jest algorytm SHA1.
 - **Klucz prywatny**  
-    Sprawdza, czy klucz prywatny jest obecny i został wyeksportowany z atrybutem komputera lokalnego. 
+    Sprawdza, czy klucz prywatny jest obecny i są eksportowane z atrybutem komputera lokalnego. 
 - **Łańcuch certyfikatów**  
-    Sprawdza łańcuch certyfikatów jest prawidłowa, w tym sprawdzenia certyfikaty z podpisem własnym.
+    Sprawdza łańcuch certyfikatów jest nienaruszony, włącznie z Sprawdzaj certyfikaty z podpisem własnym.
 - **Nazwy DNS**  
-    Sprawdza, czy odpowiednie nazwy DNS dla każdego punktu końcowego zawiera sieci SAN lub w przypadku obsługi symboli wieloznacznych jest obecny.
+    Sprawdza, czy sieć SAN zawiera odpowiednie nazwy DNS dla każdego punktu końcowego lub w przypadku obsługi symboli wieloznacznych jest obecny.
 - **Użycie klucza**  
-    Sprawdza, czy użycie klucza zawiera podpis cyfrowy i szyfrowanie klucza i zawiera ulepszonego użycia klucza uwierzytelniania serwera i uwierzytelnianie klienta.
+    Sprawdza, czy użycie klucza zawiera podpis cyfrowy i szyfrowanie klucza, i rozszerzone użycie klucza zawiera uwierzytelnianie serwera i uwierzytelnianie klienta.
 - **Rozmiar klucza**  
-    Sprawdza, czy rozmiar klucza to 2048 lub większy.
+    Sprawdza, czy rozmiar klucza 2048 lub większą.
 - **Kolejnością łańcucha**  
-    Sprawdza, czy kolejność innych certyfikatów weryfikacji, że kolejność jest poprawna.
-- **Innych certyfikatów**  
-    Upewnij się, że żadne inne certyfikaty nie zostały opakowane w formacie PFX inne niż liścia odpowiedniego certyfikatu i jego łańcucha.
+    Sprawdza, czy kolejność certyfikatów, weryfikowanie, czy kolejność jest poprawna.
+- **Inne certyfikaty**  
+    Upewnij się, że nie inne certyfikaty zostały spakowane do PFX innego niż certyfikat liścia odpowiednie i jego łańcuch.
 - **Brak profilu**  
-    Sprawdza, czy nowy użytkownik mogą ładować dane PFX bez załadowane, profil użytkownika mimicking zachowania kont gMSA podczas obsługi certyfikatu.
+    Sprawdza, czy nowy użytkownik można załadować danych PFX bez profilu użytkownika załadowane, naśladując zachowania kont gMSA podczas obsługi certyfikatu.
 
 > [!IMPORTANT]  
-> Plik PFX jest certyfikat PKI i hasła powinny być traktowane jako poufne informacje.
+> Certyfikat PKI jest plik PFX i hasła powinny być traktowane jako poufne informacje.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-System powinna spełniać następujące wymagania wstępne, przed sprawdzaniem poprawności certyfikatów PKI dla wdrożenia usługi Azure stosu:
+System powinien spełniać następujące wymagania wstępne, przed sprawdzaniem poprawności certyfikaty PKI dla wdrożenia usługi Azure Stack:
 
-- Narzędzie sprawdzania gotowości stosu platformy Microsoft Azure
-- Certyfikaty SSL wyeksportowane po [instrukcje dotyczące przygotowań](azure-stack-prepare-pki-certs.md)
+- Narzędzie do sprawdzania gotowości platformy Microsoft Azure Stack
+- Certyfikaty SSL wyeksportowane następujące [instrukcje przygotowań](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 lub Windows Server 2016
 
-## <a name="perform-core-services-certificate-validation"></a>Sprawdzania poprawności certyfikatu core services
+## <a name="perform-core-services-certificate-validation"></a>Sprawdzania poprawności certyfikatu usług podstawowych
 
-W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia i obrotu tajne, wykonaj następujące kroki:
+Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack dla wdrożenia i wymiany klucza tajnego:
 
-1. Zainstaluj **AzsReadinessChecker** z programu PowerShell wiersza (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+1. Zainstaluj **AzsReadinessChecker** w wierszu polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
-2. Utwórz strukturę katalogów certyfikatu. W poniższym przykładzie, można zmienić `<c:\certificates>` nową ścieżkę katalogu wybranych przez użytkownika.
+2. Tworzenie struktury katalogów certyfikatu. W poniższym przykładzie można zmienić `<c:\certificates>` nową ścieżkę katalogu wybranych przez użytkownika.
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
@@ -85,12 +85,12 @@ W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia 
     > [!Note]  
     > Wykres i usług AD FS są wymagane, jeśli używasz usług AD FS w systemie tożsamości.
     
-     - Umieść Twoje certyfikaty w katalogach odpowiednie utworzony w poprzednim kroku. Na przykład:  
+     - Umieść swoje certyfikaty w katalogach odpowiedni, utworzony w poprzednim kroku. Na przykład:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
         - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
         - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
-3. W oknie programu PowerShell, zmień wartości **RegionName** i **FQDN** odpowiednie do środowiska Azure stosu i uruchom następujące polecenie:
+3. W oknie programu PowerShell, należy zmienić wartości **RegionName** i **FQDN** odpowiednie do środowiska usługi Azure Stack i uruchom następujące polecenie:
 
     ````PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -99,7 +99,7 @@ W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia 
 
     ````
 
-4. Sprawdź dane wyjściowe i wszystkie certyfikaty przejść wszystkie testy. Na przykład:
+4. Sprawdź dane wyjściowe i wszystkich certyfikatów pomyślnie przejść wszystkie testy. Na przykład:
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -140,9 +140,9 @@ W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia 
 
 **Objaw**: testy są pomijane.
 
-**Przyczyna**: AzsReadinessChecker pomija niektórych testów, jeśli zależność nie zostały spełnione:
+**Przyczyna**: AzsReadinessChecker pomija pewne testy, jeśli zależność nie jest spełniony:
 
- - Inne certyfikaty są pomijane, jeśli łańcuch certyfikatów nie powiodło się.
+ - Inne certyfikaty są pomijane, jeśli łańcuch certyfikatów nie powiedzie się.
 
     ````PowerShell  
     Testing: ACSBlob\singlewildcard.pfx
@@ -167,19 +167,19 @@ W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia 
     AzsReadinessChecker Completed
     ````
 
-**Rozdzielczość**: Wykonaj wskazówki dotyczące narzędzia w sekcji szczegółów w obszarze każdego zestawu testów dla każdego certyfikatu.
+**Rozpoznawanie**: postępuj zgodnie z tego narzędzia ze wskazówkami zawartymi w sekcji szczegółów w ramach każdego zestawu testów dla każdego certyfikatu.
 
-## <a name="perform-platform-as-a-service-certificate-validation"></a>Przeprowadź platformy Weryfikacja certyfikatów usług
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Platformy, należy wykonać jako Walidacja certyfikatów usług
 
-Te kroki umożliwiają przygotowanie i sprawdzania poprawności certyfikatów PKI stosu Azure dla platformy jako usługa (PaaS) certyfikatów, jeśli planuje się wdrożeń SQL/MySQL lub usługi aplikacji.
+Powyższe kroki należy wykonać do przygotowania i zweryfikuj certyfikaty infrastruktury kluczy publicznych do usługi Azure Stack dla platformy jako usługi (PaaS) certyfikaty, jeśli planowane jest ich wprowadzenie wdrożenia SQL/MySQL lub App Services.
 
-1.  Zainstaluj **AzsReadinessChecker** z programu PowerShell wiersza (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+1.  Zainstaluj **AzsReadinessChecker** w wierszu polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
     ````PowerShell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ````
 
-2.  Utworzyć obiektu hashtable zagnieżdżonych zawierający ścieżek i hasło, aby każdy z certyfikatów PaaS wymagające weryfikacji. W oknie programu PowerShell, uruchom:
+2.  Tworzenie zagnieżdżonych hashtable, zawierające ścieżki i hasło, aby każdy z certyfikatów PaaS wymagające weryfikacji. W oknie programu PowerShell, uruchom:
 
     ```PowerShell
         $PaaSCertificates = @{
@@ -191,12 +191,12 @@ Te kroki umożliwiają przygotowanie i sprawdzania poprawności certyfikatów PK
         }
     ```
 
-3.  Zmiana wartości **RegionName** i **FQDN** do danego środowiska Azure stos, aby rozpocząć sprawdzanie poprawności. Następnie uruchom polecenie:
+3.  Zmienianie wartości **RegionName** i **FQDN** pod kątem danego środowiska usługi Azure Stack, aby rozpocząć sprawdzanie poprawności. Następnie uruchom polecenie:
 
     ```PowerShell
     Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
-4.  Sprawdź, czy dane wyjściowe i że wszystkie certyfikaty przejść wszystkie testy.
+4.  Sprawdź, czy dane wyjściowe i że wszystkie certyfikaty pomyślnie przejść wszystkie testy.
 
     ```PowerShell
     AzsReadinessChecker v1.1805.425.2 started
@@ -243,14 +243,14 @@ Te kroki umożliwiają przygotowanie i sprawdzania poprawności certyfikatów PK
         Key Size: OK
     ```
 
-## <a name="using-validated-certificates"></a>Przy użyciu zatwierdzonych certyfikatów
+## <a name="using-validated-certificates"></a>Przy użyciu zweryfikowanych certyfikatów
 
-Po sprawdzeniu poprawności certyfikatów przez AzsReadinessChecker można przystąpić do ich używać w danym wdrożeniu stosu Azure lub obrotu tajny stosu Azure. 
+Po sprawdzeniu poprawności certyfikatów przez AzsReadinessChecker można przystąpić do ich używać w ramach wdrożenia usługi Azure Stack lub obrotu wpisu tajnego z usługi Azure Stack. 
 
- - W przypadku wdrożenia bezpiecznego transferu certyfikaty do specjalistą wdrożenia, aby można je skopiować na host wdrażania, jak określono w [dokumentacji wymagań dotyczących infrastruktury kluczy publicznych Azure stosu](azure-stack-pki-certs.md).
- - Dla obrotu tajne, można użyć certyfikatów zaktualizować stare certyfikaty dla punktów końcowych infrastruktury publicznych środowiska Azure stosu, postępując [dokumentacji Azure stosu klucz tajny obrotu](azure-stack-rotate-secrets.md).
- - W przypadku usług PaaS umożliwia certyfikaty Zainstaluj SQL, MySQL i dostawców zasobów usługi aplikacji Azure stosu, wykonując [Przegląd oferty usług w dokumentacji usługi Azure stosu](azure-stack-offer-services-overview.md).
+ - W przypadku wdrożenia bezpiecznego transferu certyfikatów do specjalistą wdrożenia, aby mógł on skopiować je na hoście wdrażania, jak to określono w [dokumentacji wymagań usługi Azure Stack infrastruktury kluczy publicznych](azure-stack-pki-certs.md).
+ - Dla obrotu wpisu tajnego, można użyć certyfikatów do zaktualizowania stare certyfikaty dla punktów końcowych infrastruktury publicznego środowiska Azure Stack, postępując zgodnie z [dokumentacji usługi Azure Stack klucz tajny obrotu](azure-stack-rotate-secrets.md).
+ - Dla usług PaaS, można użyć certyfikatów do zainstalowania SQL, MySQL i dostawcy zasobów usługi aplikacji w usłudze Azure Stack, postępując zgodnie z [Przegląd oferty usług w dokumentacji usługi Azure Stack](azure-stack-offer-services-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Integracja tożsamości centrum danych](azure-stack-integrate-identity.md)
+[Integracja tożsamości w centrum danych](azure-stack-integrate-identity.md)

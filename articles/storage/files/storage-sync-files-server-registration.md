@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 468bd70682b1b36e906d32cd7bde58c78bdbb376
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522003"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918880"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -26,7 +26,7 @@ Zarejestrowanie serwera za pomocą usługi Azure File Sync ustanawia relację za
 ### <a name="prerequisites"></a>Wymagania wstępne
 Aby zarejestrować serwer przy użyciu usługi synchronizacji magazynu, należy najpierw przygotować serwera przy użyciu niezbędnych wymagań wstępnych:
 
-* Serwer musi działać obsługiwana wersja systemu Windows Server. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje systemu Windows Server](storage-sync-files-planning.md#supported-versions-of-windows-server).
+* Serwer musi działać obsługiwana wersja systemu Windows Server. Aby uzyskać więcej informacji, zobacz [współdziałania i wymagania dotyczące systemu Azure File Sync](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
 * Upewnij się, że wdrożono usługę synchronizacji magazynu. Aby uzyskać więcej informacji na temat wdrażania usługi synchronizacji magazynu, zobacz [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md).
 * Upewnij się, że serwer jest połączony z Internetem i czy Azure jest dostępna.
 * Wyłącz Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer dla administratorów za pomocą interfejsu użytkownika Menedżera serwera.

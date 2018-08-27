@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 8e7af24133b7e034bb7bc1898609cebbb860b738
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414610"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919082"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -43,8 +43,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|3072|4096|4096|
-|Maksymalny rozmiar dziennika|307|307|461|922|1229|1229|
-|Bazy danych TempDB (GB)|32|64|128|256|384|384|
+|Maksymalny rozmiar dziennika (GB)|307|307|461|922|1229|1229|
+|Rozmiar bazy danych TempDB (GB)|32|64|128|256|384|384|
 |Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|7000|7000|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -65,8 +65,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
-|Maksymalny rozmiar dziennika|307|307|461|614|1229|1229|1229|1229|
-|Bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
+|Maksymalny rozmiar dziennika (GB)|307|307|461|614|1229|1229|1229|1229|
+|Rozmiar bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
 |Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -88,8 +88,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|4|8|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
-|Maksymalny rozmiar dziennika|307|307|307|307|307|307|
-|Bazy danych TempDB (GB)|32|64|128|256|384|384|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
+|Rozmiar bazy danych TempDB (GB)|32|64|128|256|384|384|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|80000|120000|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|3200|4800|
@@ -111,8 +111,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
-|Maksymalny rozmiar dziennika|307|307|307|307|614|1229|1229|1229|
-|Bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|614|1229|1229|1229|
+|Rozmiar bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|

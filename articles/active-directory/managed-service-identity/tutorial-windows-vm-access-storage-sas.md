@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 983cecdcdb95dca398f728dbdbe5feac69075d6a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248374"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887067"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: Umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego Windows VM tożsamości usługi zarządzanej
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku dowiesz się, jak włączyć tożsamości usługi zarządzanej dla maszyny wirtualnej Windows, a następnie Uzyskiwanie poświadczeń sygnatury dostępu współdzielonego (SAS) magazynu przy użyciu tożsamości usługi zarządzanej. W szczególności [poświadczeń SAS usługi](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+Ten samouczek pokazuje, jak używać systemu tożsamości dla maszyny wirtualnej (VM) Windows przypisanej do uzyskania poświadczeń sygnatury dostępu współdzielonego (SAS) magazynu. W szczególności [poświadczeń SAS usługi](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 Sygnatury dostępu Współdzielonego usługi umożliwia przyznawanie ograniczonego dostępu do obiektów na koncie magazynu przez ograniczony czas i określonej usługi (w naszym przypadku na usługę blob service), bez narażania klucz dostępu konta. Możesz użyć poświadczeń SAS w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku pokażemy, przekazywanie i pobieranie obiektu blob przy użyciu programu PowerShell magazynu platformy Azure. Poznasz następujące czynności:
 
-
 > [!div class="checklist"]
-> * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows 
+> * Tworzenie konta magazynu
 > * Udzielanie maszynie wirtualnej dostępu do sygnatury SAS konta magazynu w usłudze Resource Manager 
 > * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do pobrania sygnatury SAS z usługi Resource Manager 
 
@@ -41,33 +40,12 @@ Sygnatury dostępu Współdzielonego usługi umożliwia przyznawanie ograniczone
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+- [Zaloguj się do witryny Azure portal](https://portal.azure.com)
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+- [Utwórz maszynę wirtualną Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
+- [Włącz system przypisane tożsamości na maszynie wirtualnej.](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
-W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows. Można również włączyć tożsamości usługi zarządzanej istniejącej maszyny wirtualnej.
-
-1.  Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
-2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3.  Wprowadź informacje o maszynie wirtualnej. **Nazwa użytkownika** i **Hasło** utworzone w tym miejscu są poświadczeniami używanymi do logowania do maszyny wirtualnej.
-4.  Wybierz odpowiednią **Subskrypcję** dla maszyny wirtualnej z listy rozwijanej.
-5.  Aby wybrać nową **grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz opcję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
-6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
-
-    ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie Wirtualnej
-
-Tożsamości usługi zarządzanej maszyny wirtualnej umożliwia uzyskiwanie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie tożsamości usługi zarządzanej w sposób niewidoczny wykonuje dwie czynności: rejestrów przy użyciu usługi Azure Active Directory, aby utworzyć jego tożsamość zarządzaną i konfiguruje tożsamości na maszynie Wirtualnej.
-
-1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną utworzoną w poprzednim kroku.
-2. W obszarze maszyny Wirtualnej "Ustawienia" w lewym panelu kliknij **konfiguracji**.
-3. Aby zarejestrować i włączyć tożsamości usługi zarządzanej, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz pozycję nie.
-4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.
-
-    ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
@@ -93,9 +71,9 @@ Później przekażemy i pobierzemy plik do nowego konta magazynu. Ponieważ plik
 
     ![Tworzenie kontenera magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny Wirtualnej do używania magazynu SAS 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny wirtualnej w celu korzystania z sygnatury dostępu współdzielonego magazynu 
 
-Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Można jednak używać tożsamości usługi zarządzanej do pobierania magazynu sygnatur dostępu Współdzielonego usługi Resource Manager, wówczas dostępu do magazynu przy użyciu sygnatury dostępu Współdzielonego.  W tym kroku możesz udzielić dostępu tożsamości usługi zarządzanej maszyny Wirtualnej sygnatury dostępu Współdzielonego do konta magazynu.   
+Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Można jednak używać tożsamości usługi zarządzanej do pobierania magazynu sygnatur dostępu Współdzielonego usługi Resource Manager, wówczas dostępu do magazynu przy użyciu sygnatury dostępu Współdzielonego.  W tym kroku udzielasz tożsamości usługi zarządzanej maszyny wirtualnej dostępu do sygnatury SAS konta magazynu.   
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.   
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
@@ -116,7 +94,7 @@ W tej części będzie wymagane użycie poleceń cmdlet programu PowerShell w us
 1. W witrynie Azure Portal przejdź do pozycji **Maszyny wirtualne**, przejdź do maszyny wirtualnej z systemem Windows, a następnie na stronie **Przegląd** kliknij opcję **Połącz** u góry.
 2. Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows. 
 3. Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program PowerShell w sesji zdalnej. 
-4. Przy użyciu programu Powershell Invoke-WebRequest, wysłać żądanie do lokalny punkt końcowy tożsamości usługi zarządzanej do uzyskania tokenu dostępu usługi Azure Resource Manager.
+4. Używając polecenia Invoke-WebRequest programu PowerShell, wyślij żądanie do lokalnego punktu końcowego tożsamości usługi zarządzanej, aby uzyskać token dostępu na potrzeby usługi Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

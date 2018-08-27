@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>Wymagania wstępne
 * A [Salesforce](https://salesforce.com) konta  
 
-Aby korzystać z konta usług Salesforce, w aplikacji logiki, musisz autoryzować aplikacji logiki do łączenia się z kontem usługi Salesforce. Na szczęście można w tym z aplikacji logiki w portalu Azure.  
+Zanim użyjesz konta usługi Salesforce w aplikacji logiki, należy autoryzować aplikację logiki, aby nawiązać połączenie z kontem usługi Salesforce. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem Salesforce:  
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby nawiązać połączenie z kontem aplikacji Salesforce:  
 
-1. Aby utworzyć połączenie usługi Salesforce, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *Salesforce* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
+1. Aby utworzyć połączenie z usługą Salesforce, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *Salesforce* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
    ![Obraz połączenia usługi SalesForce 1](./media/connectors-create-api-salesforce/salesforce-1.png)  
-2. Jeśli nie utworzono wszystkie połączenia z Salesforce przed będzie zostanie wyświetlony monit o podanie poświadczeń usługi Salesforce. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do konta usług Salesforce danych:  
+2. Nie utworzono żadnych połączeń do usługi Salesforce, zanim będzie pobrać monit podaj swoje poświadczenia usługi Salesforce. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych konta usługi Salesforce:  
    ![Obraz połączenia usługi SalesForce 2](./media/connectors-create-api-salesforce/salesforce-2.png)  
-3. Dostarcza usług Salesforce, nazwę użytkownika i hasło, aby zezwolić aplikacji logiki:  
+3. Zapewniają, Salesforce, nazwę użytkownika i hasło, aby autoryzować aplikację logiki:  
    ![Obraz połączenia usługi SalesForce 3](./media/connectors-create-api-salesforce/salesforce-3.png)  
-4. Zezwalaj firmie Microsoft w celu nawiązania połączenia usługi Salesforce:  
-   ![Obraz połączenia usługi SalesForce 4](./media/connectors-create-api-salesforce/salesforce-4.png)  
-5. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
-   ![Obraz połączenia usługi SalesForce 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
+4. Pozwalają połączyć się z usług Salesforce:  
+   ![Obraz łączenia usługi SalesForce z 4](./media/connectors-create-api-salesforce/salesforce-4.png)  
+5. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
+   ![Obraz łączenia usługi SalesForce z 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
 

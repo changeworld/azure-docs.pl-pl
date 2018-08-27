@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Wymagania wstępne
-* A [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) konta 
+* A [usługi ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) konta 
 
-Zanim użyjesz swojego konta ProjectOnline w aplikacji logiki, należy zezwolić aplikacji logiki do łączenia się z kontem ProjectOnline. Na szczęście można w tym z aplikacji logiki w portalu Azure. 
+Zanim użyjesz swojego konta usługi ProjectOnline w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem usługi ProjectOnline. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal. 
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem ProjectOnline:
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem usługi ProjectOnline:
 
-1. Aby utworzyć połączenie ProjectOnline, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *ProjectOnline* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
-   ![ProjectOnline krok 1](./media/connectors-create-api-projectonline/projectonline-1.png)
-2. Jeśli nie utworzono żadnych połączeń ProjectOnline przed będzie zostanie wyświetlony monit o podanie poświadczeń ProjectOnline. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta ProjectOnline:  
-   ![ProjectOnline krok 2](./media/connectors-create-api-projectonline/projectonline-2.png)
-3. Podaj ProjectOnline nazwę użytkownika i hasło, aby zezwolić aplikacji logiki:  
-   ![ProjectOnline krok 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
-4. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
-   ![ProjectOnline krok 4](./media/connectors-create-api-projectonline/projectonline-4.png)   
+1. Aby utworzyć połączenie usługi ProjectOnline, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *usługi ProjectOnline* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
+   ![Usługi ProjectOnline w kroku 1](./media/connectors-create-api-projectonline/projectonline-1.png)
+2. Nie utworzono żadnych połączeń usługi ProjectOnline przed będzie pobrać monit podaj swoje poświadczenia usługi ProjectOnline. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych na koncie usługi ProjectOnline:  
+   ![Usługi ProjectOnline krok 2](./media/connectors-create-api-projectonline/projectonline-2.png)
+3. Podaj nazwę użytkownika usługi ProjectOnline i hasło, aby autoryzować aplikację logiki:  
+   ![Usługi ProjectOnline krok 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
+4. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
+   ![Usługi ProjectOnline kroku 4](./media/connectors-create-api-projectonline/projectonline-4.png)   
 

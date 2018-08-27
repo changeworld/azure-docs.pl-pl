@@ -12,19 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/21/2018
+ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: cad3723f3109fa2fa7e6a1a7ab61d5c7eaca2674
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8e1c194ea2ebc0e06918c8389c9ee6f72afb3e86
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623277"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887792"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Skalowanie klastra usługi Service Fabric w poziomie przez dodanie zestawu skalowania maszyn wirtualnych
 W tym artykule opisano sposób skalowanie klastra usługi Azure Service Fabric przez dodanie nowego zestawu do istniejącego klastra skalowania maszyny wirtualnej. Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure jest [konfigurowany jako zestaw skalowania oddzielnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być zarządzany oddzielnie. Po utworzeniu klastra usługi Service Fabric można skalować do typu węzła klastra w pionie (Zmiana zasobów węzłów), Uaktualnij system operacyjny węzła typu maszyn wirtualnych lub dodać nowego zestawu do istniejącego klastra skalowania maszyny wirtualnej.  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
 
 > [!WARNING]
+> Nie uruchamiaj można zmienić podstawowego elementu nodetype jednostki SKU maszyny Wirtualnej, jeśli kondycja klastra jest w złej kondycji. Jeśli kondycja klastra jest w złej kondycji, będzie tylko zdestabilizować sprawy, klastra, Jeśli spróbujesz zmienić jednostki SKU maszyny Wirtualnej.
+>
 > Firma Microsoft zaleca, aby nie zmieniać jednostki SKU maszyny Wirtualnej typu węzeł/zestaw skalowania, chyba że jest uruchomiona na [srebrny trwałości lub nowszej](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Zmiana rozmiaru jednostki SKU maszyny Wirtualnej jest operacją destrukcyjne danych w miejscu infrastruktury. Bez niektóre możliwość opóźnienia lub monitora, ta zmiana jest możliwe, że operacja może spowodować utratę danych w przypadku usług stanowych lub powodować inne nieprzewidziane problemy operacyjne, nawet w przypadku obciążeń bezstanowych. Oznacza to, typu węzła podstawowego, w którym jest uruchomiony system usługi stanowej usługi Service fabric, lub dowolny typ węzła, który jest uruchomiony na pracę aplikacji stanowych ładuje.
 >
 

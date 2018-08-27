@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 0e81a48c1215e8590f90c42aee0861e6fda3db8e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 88500be4bae83049e8a7060719f4f85e7622c645
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391851"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886995"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS 
 Platforma Microsoft Azure jest zobowiązana do zapewnienia Twojej prywatności danych, niezależność danych, a umożliwiając kontroli platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzać kluczami szyfrowania, a kontrola i inspekcja dostępu do danych. Formant ten zapewnia klientom platformy Azure swobodę wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule przedstawiono rozwiązanie technologiczne "Dysku szyfrowanie dla Windows i Linux IaaS maszyn wirtualnych platformy Azure", aby chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
@@ -34,6 +34,10 @@ Usługa Azure disk encryption for Windows i maszyn wirtualnych IaaS z systemem L
 * Maszyny wirtualne IaaS są chronione za pomocą standardowych w branży technologii zaspakajanie organizacyjnych bezpieczeństwa i zgodności z wymaganiami.
 * Przeprowadzać ich inspekcje rozruchu maszyn wirtualnych IaaS, w obszarze klucze kontrolowane przez klienta i zasady, a ich użycie w magazynie kluczy.
 
+
+Jeśli używasz usługi Azure Security Center, jego powiadomi Cię, jeśli masz maszyny wirtualne, które nie są szyfrowane. Te alerty będą widoczne jako alerty o wysokiej ważności. Zaleca się zaszyfrowanie tych maszyn wirtualnych.
+![Alert szyfrowania dysków Azure Security Center](media/azure-security-disk-encryption/security-center-disk-encryption-fig1.png)
+
 > [!NOTE]
 > Zastosowanie niektórych zaleceń zamieszczonych może zwiększyć danych, sieci lub użycia zasobów obliczeniowych, wynikiem dodatkowych kosztów licencji lub subskrypcji.
 
@@ -44,20 +48,24 @@ Rozwiązanie Azure Disk Encryption obsługuje następujących scenariuszy:
 * Włącza szyfrowanie na nowe Windows IaaS maszyny wirtualne utworzone na podstawie zaszyfrowane wstępnie wirtualnego dysku twardego i kluczy szyfrowania 
 * Włącz szyfrowanie dla nowych maszyn wirtualnych IaaS utworzone na podstawie obsługiwanych obrazów w galerii platformy Azure
 * Włącz szyfrowanie dla istniejących maszyn wirtualnych IaaS działających na platformie Azure
+* Włącz szyfrowanie dla zestawów skalowania maszyn wirtualnych Windows
+* Włącz szyfrowanie dla dysków z danymi dla zestawów skalowania maszyn wirtualnych systemu Linux
 * Wyłącz szyfrowanie dla systemu Windows IaaS VMs
 * Wyłącz szyfrowanie dla dysków z danymi dla maszyn wirtualnych IaaS z systemem Linux
+* Wyłącz szyfrowanie dla zestawów skalowania maszyn wirtualnych Windows
+* Wyłącz szyfrowanie dla dysków z danymi dla zestawów skalowania maszyn wirtualnych systemu Linux
 * Włącz szyfrowanie maszyn wirtualnych dysku zarządzanego
 * Aktualizowanie ustawień szyfrowania zaszyfrowanych istniejących w warstwie premium i innych niż premium magazyn maszyny Wirtualnej
 * Kopia zapasowa i przywracanie zaszyfrowanych maszyn wirtualnych
 
-Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w systemie Microsoft Azure:
+Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, jeśli są włączone w systemie Microsoft Azure:
 
 * Integracja z usługą Azure Key Vault
 * Maszyny wirtualne w warstwie standardowa: [A, D, DS, G, GS, F i tak dalej serię maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
     * [Maszyny wirtualne systemu Linux](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) w tych warstwach, musi spełniać wymagania dotyczące minimalnej ilości pamięci, 7 GB
-* Włącz szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux i maszyn wirtualnych dysku zarządzanego przy użyciu obsługiwanych obrazów w galerii platformy Azure
-* Wyłącz szyfrowanie dla dysków systemu operacyjnego i danych dla maszyn wirtualnych IaaS Windows i maszyn wirtualnych dysku zarządzanego
-* Wyłącz szyfrowanie dla dysków z danymi dla maszyn wirtualnych IaaS z systemem Linux i maszyn wirtualnych dysku zarządzanego
+* Włączanie szyfrowania na Windows i maszyn wirtualnych IaaS z systemem Linux, dysku zarządzanego i skalowania maszyn wirtualnych w zestawie z obsługiwanych obrazów w galerii systemu Azure
+* Wyłącz szyfrowanie dla dysków systemu operacyjnego i danych Windows IaaS VMs, skalowania maszyn wirtualnych w zestawie i maszyn wirtualnych dysku zarządzanego
+* Wyłącz szyfrowanie na dyskach danych, dla systemu Linux IaaS maszyn wirtualnych skalowania maszyn wirtualnych w zestawie i maszyn wirtualnych dysku zarządzanego
 * Włącz szyfrowanie dla maszyn wirtualnych IaaS z systemem operacyjnym Windows klienta
 * Włącz szyfrowanie dla woluminów przy użyciu ścieżki instalacji
 * Włącz szyfrowanie dla maszyn wirtualnych systemu Linux skonfigurowany przy użyciu dysku przy użyciu mdadm rozkładanie (RAID)
@@ -74,7 +82,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii:
 * Wyłączenie szyfrowania na dysku systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux
 * Wyłączenie szyfrowania na dysku danych, jeśli dysk systemu operacyjnego został zaszyfrowany dla maszyn wirtualnych Iaas z systemem Linux
 * Maszyny wirtualne IaaS, które są tworzone za pomocą klasycznego metodę tworzenia maszyny Wirtualnej
-* Włącz szyfrowanie dla systemu Linux maszyn wirtualnych IaaS obrazów niestandardowych klienta nie jest obsługiwana.
+* Włączanie szyfrowania na obrazach niestandardowych klienta maszyn wirtualnych IaaS z systemem Linux
 * Integracja z usługą zarządzania kluczami w środowisku lokalnym
 * Usługa pliki systemu Azure (udostępnionego systemu plików), Network File System (NFS), dynamiczne woluminy i maszyn wirtualnych Windows, które są skonfigurowane przy użyciu systemów programowej macierzy RAID
 
@@ -84,7 +92,7 @@ Po włączeniu i wdrożeniu usługi Azure Disk Encryption maszyn wirtualnych Iaa
 * Szyfrowanie woluminu systemu operacyjnego, aby chronić wolumin rozruchowy w stanie spoczynku w usłudze storage
 * Szyfrowanie woluminów danych, aby chronić woluminy danych w spoczynku w usłudze storage
 * Wyłączenie szyfrowania dla dysków systemu operacyjnego i danych dla maszyn wirtualnych IaaS Windows
-* Wyłączenie szyfrowania danych dyski dla maszyn wirtualnych IaaS z systemem Linux (tylko wtedy, gdy nie jest zaszyfrowane dla dysku systemu operacyjnego)
+* Wyłączenie szyfrowania dla dysków z danymi dla maszyn wirtualnych IaaS z systemem Linux (tylko wtedy, gdy nie jest zaszyfrowany dysk systemu operacyjnego)
 * Ochrona kluczy szyfrowania i wpisy tajne w ramach subskrypcji usługi key vault
 * Raportowanie stanu szyfrowania zaszyfrowanych maszyn wirtualnych IaaS
 * Usuwanie ustawień konfiguracji szyfrowania dysku od maszyny wirtualnej IaaS
@@ -103,8 +111,40 @@ Rozwiązanie Azure Disk Encryption jest obsługiwana na maszynach wirtualnych Ia
 > [!NOTE]
 > Nie ma dodatkowych opłat do szyfrowania dysków maszyn wirtualnych za pomocą usługi Azure Disk Encryption. Standardowa [cenach usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) ma zastosowanie do magazynu kluczy, używany do przechowywania kluczy szyfrowania. 
 
+
 ## <a name="encryption-workflow"></a>Szyfrowanie przepływu pracy
-Aby włączyć szyfrowanie dysków dla Windows i maszyn wirtualnych systemu Linux, wykonaj następujące czynności:
+
+ Aby włączyć szyfrowanie dysków dla Windows i maszyn wirtualnych systemu Linux, wykonaj następujące czynności:
+
+1. Wybierz scenariusz szyfrowania spośród powyższych scenariuszy szyfrowania.
+2. Zgódź się na włączenie szyfrowania przy użyciu szablonu Menedżera zasobów szyfrowania dysków Azure, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia na dysku, a następnie określ konfiguracji szyfrowania.
+
+   * W scenariuszu wirtualnego dysku twardego szyfrowane klienta należy przekazać zaszyfrowanego dysku VHD do konta magazynu i materiału klucza szyfrowania do magazynu kluczy. Następnie podaj konfiguracji szyfrowania, aby włączyć szyfrowanie na utworzonej nowej maszynie Wirtualnej IaaS.
+   * W przypadku nowych maszyn wirtualnych, które są tworzone w portalu Marketplace i istniejących maszyn wirtualnych, które zostały już uruchomione na platformie Azure Podaj konfiguracji szyfrowania, aby włączyć szyfrowanie na maszynie Wirtualnej IaaS.
+
+3. Udzielanie dostępu do platformy Azure, aby odczytać materiału klucza szyfrowania (klucze szyfrowania funkcją BitLocker dla systemów Windows) i hasło dla systemu Linux z własnego magazynu kluczy, aby włączyć szyfrowanie na maszynie Wirtualnej IaaS.
+
+4. Platforma Azure aktualizuje modelu usługi maszyny Wirtualnej przy użyciu szyfrowania, a konfiguracja usługi key vault i konfiguruje zaszyfrowanej maszyny Wirtualnej.
+
+ ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
+
+## <a name="decryption-workflow"></a>Odszyfrowywanie przepływu pracy
+Aby wyłączyć szyfrowanie dysków dla maszyn wirtualnych IaaS, wykonaj następujące kroki ogólne:
+
+1. Wybierz umożliwia wyłączenie szyfrowania (odszyfrowywania) na uruchomionej maszynie Wirtualnej IaaS na platformie Azure i określ żądaną konfigurację odszyfrowywania. Można wyłączyć przy użyciu szablonu Menedżera zasobów szyfrowania dysków Azure, poleceń cmdlet programu PowerShell lub wiersza polecenia platformy Azure.
+
+ Ten krok powoduje wyłączenie szyfrowania systemu operacyjnego lub ilości danych lub obu tych programów na uruchomionej maszynie Wirtualnej IaaS Windows. Jednakże jak wspomniano w poprzedniej sekcji, wyłączenie szyfrowania dysku systemu operacyjnego dla systemu Linux nie jest obsługiwane. Krok odszyfrowywania jest dozwolona tylko w przypadku dysków z danymi na maszynach wirtualnych z systemem Linux, tak długo, jak dysk systemu operacyjnego nie jest zaszyfrowany.
+2. Azure aktualizuje model usług maszyn wirtualnych i maszyn wirtualnych IaaS jest oznaczony odszyfrowany. Zawartość maszyny Wirtualnej nie są szyfrowane, gdy.
+
+> [!NOTE]
+> Operacja disable szyfrowania nie powoduje usunięcia magazynu kluczy i materiału klucza szyfrowania (klucze szyfrowania funkcją BitLocker dla systemów Windows) lub hasło dla systemu Linux.
+ > Wyłączenie szyfrowania dysku systemu operacyjnego dla systemu Linux nie jest obsługiwane. Krok odszyfrowywania jest dozwolona tylko w przypadku dysków z danymi na maszynach wirtualnych z systemem Linux.
+Wyłączenie szyfrowania dysku danych dla systemu Linux nie jest obsługiwana, jeśli dysk systemu operacyjnego został zaszyfrowany.
+
+
+## <a name="encryption-workflow-previous-release"></a>Szyfrowanie przepływu pracy (poprzedniej wersji)
+
+Nowa wersja usługa Azure disk encryption eliminuje wymaganie zapewniające parametrem aplikacji usługi Azure AD, aby włączyć szyfrowanie dysku maszyny Wirtualnej. Za pomocą nowej wersji są już wymagane Podaj poświadczenia usługi Azure AD podczas wykonywania kroku Włączanie szyfrowania. Wszystkie nowe maszyny wirtualne muszą być szyfrowane bez parametrów aplikacji usługi Azure AD przy użyciu nowej wersji. Maszyny wirtualne, które już zostały zaszyfrowane za pomocą aplikacji usługi Azure AD, parametry są nadal obsługiwane i powinno być kontynuowane przy użyciu składni usługi AAD. Aby włączyć szyfrowanie dysków dla Windows i maszyn wirtualnych systemu Linux (poprzedniej wersji), wykonaj następujące czynności:
 
 1. Wybierz scenariusz szyfrowania spośród powyższych scenariuszy szyfrowania.
 2. Zgódź się na włączenie szyfrowania przy użyciu szablonu Menedżera zasobów szyfrowania dysków Azure, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia na dysku, a następnie określ konfiguracji szyfrowania.
@@ -118,20 +158,6 @@ Aby włączyć szyfrowanie dysków dla Windows i maszyn wirtualnych systemu Linu
 
 5. Azure aktualizuje modelu usługi maszyny Wirtualnej przy użyciu szyfrowania i Konfiguracja usługi key vault i konfiguruje zaszyfrowanej maszyny Wirtualnej.
 
- ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
-
-## <a name="decryption-workflow"></a>Odszyfrowywanie przepływu pracy
-Aby wyłączyć szyfrowanie dysków dla maszyn wirtualnych IaaS, wykonaj następujące kroki ogólne:
-
-1. Wybierz umożliwia wyłączenie szyfrowania (odszyfrowywania) na uruchomionej maszynie Wirtualnej IaaS na platformie Azure i określ żądaną konfigurację odszyfrowywania. Można wyłączyć przy użyciu szablonu Menedżera zasobów szyfrowania dysków Azure, poleceń cmdlet programu PowerShell lub wiersza polecenia platformy Azure.
-
- Ten krok powoduje wyłączenie szyfrowania systemu operacyjnego lub ilości danych lub obu tych programów na uruchomionej maszynie Wirtualnej IaaS Windows. Jednakże jak wspomniano w poprzedniej sekcji, wyłączenie szyfrowania dysku systemu operacyjnego dla systemu Linux nie jest obsługiwana. Krok odszyfrowywanie jest dozwolony tylko dla dysków z danymi na maszynach wirtualnych z systemem Linux, tak długo, jak dysk systemu operacyjnego nie jest zaszyfrowany.
-2. Azure aktualizuje model usług maszyn wirtualnych i maszyn wirtualnych IaaS jest oznaczony odszyfrowany. Zawartość maszyny Wirtualnej nie są szyfrowane, gdy.
-
-> [!NOTE]
-> Operacja disable szyfrowania nie powoduje usunięcia magazynu kluczy i materiału klucza szyfrowania (klucze szyfrowania funkcją BitLocker dla systemów Windows) lub hasło dla systemu Linux.
- > Wyłączenie szyfrowania dysku systemu operacyjnego dla systemu Linux nie jest obsługiwane. Krok odszyfrowywania jest dozwolona tylko w przypadku dysków z danymi na maszynach wirtualnych z systemem Linux.
-Wyłączenie szyfrowania dysku danych dla systemu Linux nie jest obsługiwana, jeśli dysk systemu operacyjnego został zaszyfrowany.
 
 ## <a name="terminology"></a>Terminologia
 Aby poznać niektóre typowe terminy używane przez tę technologię, skorzystaj z poniższej tabeli terminologii:

@@ -1,6 +1,6 @@
 ---
-title: Generowanie certyfikatów infrastruktury kluczy publicznych stosu Azure stosu Azure zintegrowanych systemów wdrożenia | Dokumentacja firmy Microsoft
-description: Zawiera opis procesu wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów.
+title: Generowanie certyfikatów infrastruktury kluczy publicznych usługi Azure Stack dla usługi Azure Stack zintegrowane systemy wdrażania | Dokumentacja firmy Microsoft
+description: W tym artykule opisano proces wdrażania certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack w systemach zintegrowanych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,30 +16,30 @@ ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083230"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916355"
 ---
-# <a name="azure-stack-certificates-signing-request-generation"></a>Azure stosu certyfikaty podpisywania generowania żądania
+# <a name="azure-stack-certificates-signing-request-generation"></a>Usługa Azure Stack certyfikaty podpisywania generowania żądania
 
-Narzędzie sprawdzania gotowości stosu Azure opisano w tym artykule jest dostępny [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie tworzy odpowiedni w przypadku wdrożenia usługi Azure stosu żądania podpisania certyfikatu (CSR). Certyfikaty powinny żądanie, generowane i zweryfikowana za pomocą wystarczająco dużo czasu na test przed przystąpieniem do wdrożenia.
+Dostępne jest narzędzie narzędzie do sprawdzania gotowości usługi Azure Stack, opisane w tym artykule [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie tworzy odpowiedni dla wdrożenia usługi Azure Stack żądania podpisania certyfikatu (CSR). Certyfikaty powinny zażądano, wygenerowany i sprawdzona wystarczająco dużo czasu, aby przetestować przed wdrożeniem.
 
-Narzędzie sprawdzania gotowości stosu Azure (AzsReadinessChecker) wykonuje następujące żądania certyfikatu:
+Narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker) wykonuje następujące żądania certyfikatu:
 
- - **Standardowy certyfikat żądań**  
-    Żądania zgodnie z [wygenerować certyfikaty PKI dla wdrożenia stosu Azure](azure-stack-get-pki-certs.md).
+ - **Standardowy certyfikat żądania**  
+    Limit czasu żądania według [generowanie certyfikatów PKI dla wdrażania usługi Azure Stack](azure-stack-get-pki-certs.md).
  - **Platforma jako usługa**  
-    Opcjonalnie żądania platforma jako usługa (PaaS) nazwy z certyfikatami określonymi w [wymagania certyfikatów infrastruktury kluczy publicznych stosu Azure - opcjonalne certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
+    Opcjonalnie żądania platforma jako usługa (PaaS) nazwy certyfikatów, jak to określono w [wymagania certyfikatów infrastruktury kluczy publicznych usługi Azure Stack — opcjonalnie certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-System powinna spełniać następujące wymagania wstępne, przed wygenerowaniem CSR(s) dla certyfikatów PKI dla wdrożenia usługi Azure stosu:
+System powinien spełniać następujące wymagania wstępne, przed wygenerowaniem CSR(s) certyfikatów PKI dla wdrożenia usługi Azure Stack:
 
- - Narzędzie sprawdzania gotowości stosu platformy Microsoft Azure
+ - Narzędzie do sprawdzania gotowości platformy Microsoft Azure Stack
  - Atrybuty certyfikatu:
     - Nazwa regionu
     - Zewnętrzne w pełni kwalifikowana nazwa domeny (FQDN)
@@ -47,32 +47,32 @@ System powinna spełniać następujące wymagania wstępne, przed wygenerowaniem
  - Windows 10 lub Windows Server 2016
  
   > [!NOTE]
-  > Po wyświetleniu certyfikaty kopię z urzędu certyfikacji kroki opisane w [przygotowanie Azure stosu certyfikatówpki](azure-stack-prepare-pki-certs.md) musi być wykonana na tym samym systemie!
+  > Po otrzymaniu certyfikatów kopii ze swoim urzędem certyfikacji w krokach w [przygotowywanie usługi Azure Stack certyfikatówpki](azure-stack-prepare-pki-certs.md) będą musieli wykonać na tym samym systemie!
 
 ## <a name="generate-certificate-signing-requests"></a>Generowanie żądania podpisania certyfikatu
 
-Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykonaj następujące kroki: 
+Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack: 
 
-1.  Zainstaluj AzsReadinessChecker w wierszu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+1.  Zainstaluj AzsReadinessChecker z wiersz polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ````
 
-2.  Deklarowanie **podmiotu** jako słownik uporządkowanej. Na przykład: 
+2.  Zadeklaruj **podmiotu** jako słownik uporządkowany. Na przykład: 
 
     ````PowerShell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
     ````
     > [!note]  
-    > Jeśli zostanie podana nazwa pospolita (CN) to zostanie zastąpiony nazwą DNS pierwszego żądania certyfikatu.
+    > Jeśli zostanie podana nazwa pospolita (CN) to zostanie ono zastąpione przez nazwy DNS pierwszego żądania certyfikatu.
 
-3.  Deklarowanie katalog wyjściowy, który już istnieje. Na przykład:
+3.  Zadeklaruj katalog wyjściowy, który już istnieje. Na przykład:
 
     ````PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
-4.  Deklarowanie zidentyfikować systemu
+4.  Zadeklaruj zidentyfikować system
 
     Usługa Azure Active Directory
 
@@ -86,7 +86,7 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     $IdentitySystem = "ADFS"
     ````
 
-5. Deklarowanie **nazwa regionu** i **nazwy FQDN zewnętrznej** przeznaczonych do wdrożenia usługi Azure stosu.
+5. Zadeklaruj **nazwa regionu** i **FQDN zewnętrznej** przeznaczone do wdrożenia usługi Azure Stack.
 
     ```PowerShell
     $regionName = 'east'
@@ -94,23 +94,23 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` stanowi podstawę, w którym zewnętrznych nazw DNS w stosie Azure są tworzone w tym przykładzie, portalu będzie `portal.east.azurestack.contoso.com`.  
+    > `<regionName>.<externalFQDN>` stanowi podstawę, na którym są tworzone zewnętrznych nazw DNS w usłudze Azure Stack, w tym przykładzie, byłoby portalu `portal.east.azurestack.contoso.com`.  
 
-6. Aby wygenerować certyfikat podpisywania żądań dla każdej nazwy DNS:
+6. Aby wygenerować certyfikat podpisywania żądania dla każdej nazwy DNS:
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    Aby uwzględnić PaaS usługi określają przełącznika ```-IncludePaaS```
+    Aby uwzględnić usługi PaaS Określ przełącznik ```-IncludePaaS```
 
-7. Można również w środowiskach: tworzenie i testowanie. Do wygenerowania żądania certyfikatu jednego z wielu nazwy alternatywnej podmiotu dodać **- RequestType SingleCSR** parametr i wartość (**nie** zalecana dla środowisk produkcyjnych):
+7. Alternatywnie dla środowisk projektowych/testowych. Do generowania żądania certyfikatu jednego z wielu nazwy alternatywnej podmiotu Dodaj **- RequestType SingleCSR** parametru i wartości (**nie** zalecana dla środowisk produkcyjnych):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    Aby uwzględnić PaaS usługi określają przełącznika ```-IncludePaaS```
+    Aby uwzględnić usługi PaaS Określ przełącznik ```-IncludePaaS```
     
 8. Przejrzyj dane wyjściowe:
 
@@ -130,8 +130,8 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     AzsReadinessChecker Completed
     ````
 
-9.  Przedstawia **. Liczba ŻĄDAŃ** pliku wygenerowane do urzędu certyfikacji (wewnętrzny lub publiczny).  Katalog wyjściowy **Start AzsReadinessChecker** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Zawiera ona także podrzędnych katalog zawierający pliki INF używane podczas generowania żądania certyfikatu, jako odwołanie. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełnia [wymagań dotyczących infrastruktury kluczy publicznych stosu Azure](azure-stack-pki-certs.md).
+9.  Prześlij **. Liczba ŻĄDAŃ** pliku wygenerowanego do swojego urzędu certyfikacji (wewnętrznego lub publicznego).  Katalog wyjściowy **Start AzsReadinessChecker** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Zawiera ona także podrzędnych katalogu zawierającego pliki INF używane podczas generowania żądania certyfikatu, jako odwołanie. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełniają [wymagania dotyczące usługi Azure Stack PKI](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przygotuj certyfikaty PKI stosu Azure](azure-stack-prepare-pki-certs.md)
+[Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](azure-stack-prepare-pki-certs.md)

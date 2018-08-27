@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 98b8883a5ab0096102ab7daf90b5b2791a6f7e41
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b93ad4d6d4637b3060d92fb5e17747294c7e6211
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389579"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885996"
 ---
 # <a name="azure-disk-encryption-faq"></a>Usługa Azure Disk Encryption — często zadawane pytania
 
@@ -66,13 +66,13 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 | CentOS | 6.5 | Dysk z danymi |
 | openSUSE | 13.2 | Dysk z danymi |
 | SLES | 12 SP1 | Dysk z danymi |
-| SLES | Priorytet: 12-z dodatkiem SP1 | Dysk z danymi |
+| SLES | Priorytet: 12 dodatku SP1 | Dysk z danymi |
 | SLES | HPC 12 | Dysk z danymi |
-| SLES | Priorytet: 11 — z dodatkiem SP4 | Dysk z danymi |
+| SLES | Priorytet: z dodatkiem SP4 11 | Dysk z danymi |
 | SLES | 11 SP4 | Dysk z danymi |
 
 
-*__ADE obsługę systemu RHEL dysk z danymi. Bieżąca implementacja parametru ADE działa dla dysku systemu operacyjnego, ale nie jest aktualnie wspólnie obsługiwane. Firma Microsoft i Red Hat nad wspólnie obsługiwanego rozwiązania. W międzyczasie możesz odwoływać się do [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) artykułu.__
+*__ADE obsługę systemu RHEL dysk z danymi. Bieżąca implementacja parametru ADE działa dla dysku systemu operacyjnego, ale obecnie wspólnie nie jest obsługiwane. Firma Microsoft i Red Hat nad wspólnie obsługiwanego rozwiązania. W międzyczasie możesz odwoływać się do [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) artykułu.__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak rozpocząć, za pomocą usługi Azure Disk Encryption?
 
@@ -80,7 +80,7 @@ Aby rozpocząć pracę, przeczytaj [Omówienie usługi Azure Disk Encryption](az
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Czy można zaszyfrować woluminów rozruchowych i danych przy użyciu usługi Azure Disk Encryption?
 
-Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwane.
+Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwany.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok-capability"></a>Usługa Azure Disk Encryption zezwala pozwala na używanie własnego klucza (BYOK) możliwości?
 
@@ -96,11 +96,17 @@ Usługa zarządzania kluczami w środowisku lokalnym lub modułu HSM nie można 
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>Jakie są wymagania wstępne dotyczące konfigurowania usługi Azure Disk Encryption?
 
-Istnieją wymagania wstępne dotyczące usługi Azure Disk Encryption. Zobacz [wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) artykuł, aby utworzyć aplikację usługi Azure Active Directory, Utwórz nowy magazyn kluczy, lub skonfigurować istniejącego magazynu kluczy, aby uzyskać dostęp do szyfrowania dysku włączyć szyfrowanie i ochrony kluczy tajnych i klucze. Aby uzyskać więcej informacji na temat scenariuszy, Obsługa kluczy szyfrowania, zobacz [Omówienie usługi Azure Disk Encryption](azure-security-disk-encryption-overview.md).
+Istnieją wymagania wstępne dotyczące usługi Azure Disk Encryption. Zobacz [wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) artykuł, aby utworzyć nowy magazyn kluczy, lub skonfiguruj istniejącego magazynu kluczy, aby uzyskać dostęp do szyfrowania dysku włączyć szyfrowanie i ochrona kluczy tajnych i kluczy. Aby uzyskać więcej informacji na temat scenariuszy, Obsługa kluczy szyfrowania, zobacz [Omówienie usługi Azure Disk Encryption](azure-security-disk-encryption-overview.md).
 
-## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>Gdzie można uzyskać więcej informacji na temat konfigurowania usługi Azure Disk Encryption przy użyciu programu PowerShell?
+## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>Jakie są wymagania wstępne dotyczące konfigurowania usługi Azure Disk Encryption przy użyciu aplikacji usługi Azure AD (poprzedniej wersji)?
 
-Istnieją pewne wspaniałe artykuły na sposób wykonywania podstawowych zadań usługi Azure Disk Encryption, a także bardziej zaawansowanych scenariuszy. Aby uzyskać podstawowe zadania, zobacz [Eksplorowanie usługi Azure Disk Encryption przy użyciu programu Azure PowerShell — część 1](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/). Aby uzyskać bardziej zaawansowanych scenariuszy, zobacz [Eksplorowanie usługi Azure Disk Encryption przy użyciu programu Azure PowerShell — część 2](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/).
+Istnieją wymagania wstępne dotyczące usługi Azure Disk Encryption. Zobacz [wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) artykuł, aby utworzyć aplikację usługi Azure Active Directory, Utwórz nowy magazyn kluczy, lub skonfigurować istniejącego magazynu kluczy, aby uzyskać dostęp do szyfrowania dysku włączyć szyfrowanie i ochrony kluczy tajnych i klucze. Aby uzyskać więcej informacji na temat scenariuszy, Obsługa kluczy szyfrowania, zobacz [Omówienie usługi Azure Disk Encryption](azure-security-disk-encryption-overview.md).
+
+## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>Usługa Azure Disk Encryption korzysta aplikacja usługi Azure AD (poprzedniej wersji), w dalszym ciągu obsługiwany?
+Tak. Szyfrowanie dysków za pomocą aplikacji usługi Azure AD jest nadal obsługiwane. Jednak podczas szyfrowania nowych maszyn wirtualnych zaleca się, że używasz nowej metody, a nie za pomocą aplikacji usługi Azure AD. 
+
+## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>Czy można migrować maszyny wirtualne, które zostały zaszyfrowane za pomocą aplikacji usługi Azure AD, do szyfrowania bez aplikacji usługi Azure AD?
+Obecnie nie ma ścieżki migracji bezpośrednie dla maszyn, które zostały zaszyfrowane za pomocą aplikacji usługi Azure AD, do szyfrowania bez aplikacji usługi Azure AD. Ponadto istnieje również nie jest bezpośrednią ścieżkę z szyfrowania bez aplikacji usługi Azure AD do szyfrowania za pomocą aplikacji usługi AD. 
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Jakiej wersji programu Azure PowerShell obsługuje usługi Azure Disk Encryption?
 
@@ -121,7 +127,7 @@ Tak, możesz przeprowadzić aktualizację lub stosowanie poprawek do maszyny Wir
 
 Aby uzyskać najlepsze wyniki w systemie Linux, zaleca się poniższy przepływ pracy:
 * Zacznij od obrazu niezmodyfikowanego galerii podstawowe odpowiadający żądaną dystrybucja systemu operacyjnego i wersji
-* Utwórz kopię zapasową zainstalowanych dyskach, które będą szyfrowane.  Pozwala to na odzyskiwanie w przypadku awarii, na przykład jeśli maszyna wirtualna jest ponownie uruchomiony przed ukończeniem szyfrowania.
+* Utwórz kopię zapasową zainstalowanych dyskach, które będą szyfrowane.  Dzięki temu odzyskiwania w przypadku awarii, na przykład jeśli maszyna wirtualna jest ponownie uruchomiony przed ukończeniem szyfrowania.
 * Szyfrowanie (może potrwać kilka godzin, a nawet przez kilka dni w zależności od właściwości maszyny wirtualnej i rozmiar wszelkich dołączonych dysków danych)
 * Dostosowywanie i dodanie oprogramowania do obrazu zgodnie z potrzebami.
 
@@ -140,6 +146,6 @@ Możesz zadać pytania lub Wyraź swoją opinię [forum usługi Azure Disk Encry
 ## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie przedstawiono więcej informacji na temat najczęściej zadawane pytania związane z usługi Azure Disk Encryption. Aby uzyskać więcej informacji na temat tej usługi i jego możliwości zobacz następujące artykuły:
 
+- [Omówienie szyfrowania dysków Azure](azure-security-disk-encryption-overview.md)
 - [Zastosuj szyfrowanie dysków w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Szyfrowanie maszyny wirtualnej z platformy Azure](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [Funkcja szyfrowania nieaktywnych danych platformy Azure](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)

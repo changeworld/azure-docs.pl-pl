@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8886c08e88c1dd46d2b325b9ba8e9e0b8ae104f9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006725"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886314"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
 
@@ -51,7 +51,7 @@ Użyj witryny Azure portal, aby dodać lub usunąć użytkownika z rozwiązania 
 
 1. Sprawdź [użytkownika znajduje się w katalogu](../active-directory/fundamentals/add-users-azure-active-directory.md) używasz. Wybrano katalog używany po zarejestrowaniu w usłudze [akceleratorów rozwiązań IoT Azure Microsoft](https://www.azureiotsolutions.com/Accelerators) lokacji. Nazwa katalogu jest widoczny w prawym górnym rogu [strony](https://www.azureiotsolutions.com/Accelerators).
 
-1. Znajdź **aplikacja dla przedsiębiorstw** dla danego rozwiązania w witrynie Azure portal. Nazwa aplikacji jest nazwa rozwiązania do zdalnego monitorowania. Na poniższym zrzucie ekranu są nazwy wyświetlane rozwiązań i aplikacji **contoso rm4**.
+1. Znajdź **aplikacja dla przedsiębiorstw** dla danego rozwiązania w witrynie Azure portal. Jeden raz, przefiltruj listę, ustawiając **typ aplikacji** do **wszystkie aplikacje**. Wyszukaj nazwę swojej aplikacji w aplikacji. Nazwa aplikacji jest nazwa rozwiązania do zdalnego monitorowania. Na poniższym zrzucie ekranu są nazwy wyświetlane rozwiązań i aplikacji **contoso rm4**.
 
     ![Aplikacja dla przedsiębiorstw](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 

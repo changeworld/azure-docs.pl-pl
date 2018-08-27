@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224806"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886408"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -55,6 +55,7 @@ Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia
 * Kopie zapasowe mogą być 10 GB zawartości aplikacji i bazy danych. Jeśli rozmiar kopii zapasowej przekracza ten limit, wystąpi błąd.
 * Kopie zapasowe protokołu SSL, włączone — Azure Database dla MySQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.
 * Kopie zapasowe SSL włączone — Azure Database dla PostgreSQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.
+* Bazy danych MySQL w aplikacji są automatycznie do kopii zapasowej bez żadnej konfiguracji. Możesz wprowadzić ręcznie ustawienia bazy danych MySQL w aplikacji, takich jak dodawanie parametrów połączenia, tworzenie kopii zapasowych może nie działać poprawnie.
 * Za pomocą zapory włączone konto magazynu, jako miejsca docelowego dla kopii zapasowych nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.
 
 
@@ -85,7 +86,9 @@ Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia
     ![Wybierz konto magazynu](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Aby baza danych są wyświetlane na tej liście, jego parametry połączenia muszą istnieć w **parametry połączenia** części **ustawienia aplikacji** strony aplikacji.
+   > Aby baza danych są wyświetlane na tej liście, jego parametry połączenia muszą istnieć w **parametry połączenia** części **ustawienia aplikacji** strony aplikacji. 
+   >
+   > Bazy danych MySQL w aplikacji są automatycznie do kopii zapasowej bez żadnej konfiguracji. Możesz wprowadzić ręcznie ustawienia bazy danych MySQL w aplikacji, takich jak dodawanie parametrów połączenia, tworzenie kopii zapasowych może nie działać poprawnie.
    > 
    > 
 6. W **konfiguracji kopii zapasowej** kliknij **Zapisz**.    

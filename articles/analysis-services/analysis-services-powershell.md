@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Zarządzanie Azure Analysis Services przy użyciu programu PowerShell.
+description: Usługa Azure Analysis Services management przy użyciu programu PowerShell.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,23 +8,23 @@ ms.topic: reference
 ms.date: 06/25/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5c347a024af385e04bfdf3631ddcbaec89df4f40
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 6c648a9cb6b8d8dbfb60f1a5a6ebc386c57460b0
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937368"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887250"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
-W tym artykule opisano poleceń cmdlet programu PowerShell używane w celu wykonania zadania zarządzania bazy danych i serwera usług Azure Analysis Services. 
+W tym artykule opisano poleceń cmdlet programu PowerShell, używane do wykonywania serwer usług Azure Analysis Services i zadań zarządzania bazą danych. 
 
-Zadania zarządzania serwerem, takie jak tworzenie lub usuwanie serwera, wstrzymywania lub wznawiania operacji serwera lub zmiana poziomu usług (warstwy) za pomocą polecenia cmdlet usługi Azure Resource Manager (zasobów) i poleceń cmdlet usług Analysis Services (serwer). Innych zadań związanych z zarządzaniem baz danych, takich jak dodawanie lub usuwanie członków roli przetwarzania lub podziału na partycje za pomocą poleceń cmdlet zawartych w tym samym module SqlServer jako SQL Server Analysis Services.
+Zadania zarządzania serwerem, takie jak tworzenie lub usuwanie serwera, zawieszanie lub wznawianie operacji serwerowych lub zmiana poziomu usług (warstwa) za pomocą poleceń cmdlet usługi Azure Resource Manager (zasób) i poleceń cmdlet usług Analysis Services (serwer). Inne zadania do zarządzania bazami danych, takie jak dodawanie lub usuwanie członków ról, przetwarzanie lub podziału na partycje za pomocą poleceń cmdlet zawartych w tym samym modułem programu SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Uprawnienia
-Większość zadań programu PowerShell wymaga uprawnień administratora na serwerze usług Analysis Services, którym zarządzasz. Zaplanowane zadania programu PowerShell są operacje instalacji nienadzorowanej. Zasady konta lub usługa uruchomiona planista musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
+Większość zadań programu PowerShell wymaga, że masz uprawnienia administratora na serwerze usług Analysis Services, którymi zarządzasz. Zaplanowane zadania w programie PowerShell to operacje instalacji nienadzorowanej. Zasada usługą lub kontem obsługujących Harmonogram musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
 
-Dla operacji serwera za pomocą poleceń cmdlet AzureRm, konta lub konta, na którym działa harmonogramu musi również należeć do roli właściciela zasobu w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
+W przypadku operacji serwera przy użyciu poleceń cmdlet usługi AzureRm swojego konta lub konta uruchamiania usługi scheduler należy także być członkiem roli właściciela dla zasobów w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-management-operations"></a>Operacje zarządzania zasobów 
 Moduł — [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices)
@@ -33,13 +33,13 @@ Moduł — [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages
 |------------|-----------------| 
 |[Get-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver)|Pobiera Szczegóły wystąpienia serwera.|  
 |[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Tworzy wystąpienie serwera.|   
-|[Nowe AzureRmAnalysisServicesFirewallConfig](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallconfig)|Tworzy nowa konfiguracja zapory usług Analysis Services.|   
+|[Nowe AzureRmAnalysisServicesFirewallConfig](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallconfig)|Tworzy nowy konfiguracji zapory usług Analysis Services.|   
 |[Nowe AzureRmAnalysisServicesFirewallRule](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallrule)|Tworzy nową regułę zapory usług Analysis Services.|   
 |[Remove-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/remove-azurermanalysisservicesserver)|Usuwa wystąpienie serwera.|  
-|[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|Wznawia wystąpienia serwera.|  
-|[Suspend-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Wstrzymuje wystąpienia serwera.| 
-|[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|Modyfikuje wystąpienia serwera.|   
-|[Test-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Testy istnienia wystąpienia serwera.| 
+|[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|Wznawia wystąpienie serwera.|  
+|[Suspend-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Wstrzymuje wystąpienie serwera.| 
+|[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|Modyfikuje wystąpienie serwera.|   
+|[Test-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Sprawdza obecność wystąpienia serwera.| 
 
 ## <a name="server-management-operations"></a>Operacje zarządzania serwerem
 
@@ -47,34 +47,34 @@ Moduł — [Azure.AnalysisServices](https://www.powershellgallery.com/packages/A
 
 |Polecenie cmdlet|Opis| 
 |------------|-----------------| 
-|[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|Dodaje uwierzytelnionego konto do użycia dla żądań polecenia cmdlet serwera usług Azure Analysis Services.| 
-|[AzureAnalysisServicesInstance eksportu]()|Eksportuje dziennika z wystąpienia serwera usług Analysis Services, w obecnie zalogowanego w środowisku określone w poleceniu Add-AzureAnalysisServicesAccount|  
-|[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Uruchamia ponownie wystąpienie serwera usług Analysis Services w środowisku aktualnie zalogowany. określony w poleceniu Add-AzureAnalysisServicesAccount.|  
-|[AzureAnalysisServicesInstance synchronizacji](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Synchronizuje określonej bazy danych w podanym wystąpieniu serwera usług Analysis Services do wszystkich wystąpień zapytania skalowania w aktualnie zalogowanego w środowisku określone w poleceniu Add-AzureAnalysisServicesAccount|  
+|[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|Dodaje uwierzytelnione konto do użycia dla żądań polecenia cmdlet serwera usług Azure Analysis Services.| 
+|[AzureAnalysisServicesInstance eksportu](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Eksportuje dziennika z wystąpienia serwera usług Analysis Services w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzureAnalysisServicesAccount|  
+|[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Powoduje ponowne uruchomienie wystąpienia serwera usług Analysis Services w środowisku aktualnie zalogowany. określony w poleceniu Add-AzureAnalysisServicesAccount.|  
+|[AzureAnalysisServicesInstance synchronizacji](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Synchronizuje określonej bazy danych w podanym wystąpieniu serwera usług Analysis Services do wszystkich wystąpień skalowania zapytań w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzureAnalysisServicesAccount|  
 
 ## <a name="database-operations"></a>Operacje bazy danych
 
-Azure operacje bazy danych usług Analysis Services używać tego samego [modułu SqlServer](https://www.powershellgallery.com/packages/SqlServer) jako SQL Server Analysis Services. Jednak nie wszystkie polecenia cmdlet są obsługiwane dla usług Azure Analysis Services. Aby dowiedzieć się więcej, zobacz [programu SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell).
+Operacje bazy danych w usłudze Azure Analysis Services używać tego samego [SqlServer module](https://www.powershellgallery.com/packages/SqlServer) jak SQL Server Analysis Services. Jednak nie wszystkie polecenia cmdlet są obsługiwane w przypadku usług Azure Analysis Services. Aby dowiedzieć się więcej, zobacz [program SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell).
 
-Moduł SqlServer udostępnia polecenia cmdlet do bazy danych specyficznych dla zadań zarządzania, a także cmdlet Invoke-ASCmd ogólnego przeznaczenia akceptuje zapytań tabelarycznych modelu skryptów języka (TMSL) lub skryptu. Następujące polecenia cmdlet w SqlServer module są obsługiwane dla usług Azure Analysis Services.
+W module SqlServer udostępnia polecenia cmdlet do bazy danych specyficznych dla zadań zarządzania, a także ogólnego przeznaczenia polecenia cmdlet Invoke-ASCmd, które akceptuje zapytanie skryptów języka TMSL (Tabular Model) lub skrypt. Następujące polecenia cmdlet w SqlServer module są obsługiwane w przypadku usług Azure Analysis Services.
 
   
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
 |[Dodaj RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Dodaj członka do roli bazy danych.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Wykonywanie kopii zapasowej bazy danych usług Analysis Services.|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuwanie członka z roli bazy danych.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Wykonanie skryptu TMSL.|
+|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Tworzenie kopii zapasowej bazy danych usług Analysis Services.|  
+|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuń członka z roli bazy danych.|   
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Wykonywanie skryptów TMSL.|
 |[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Przetwarzanie bazy danych.|  
 |[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Przetwarzanie partycji.| 
 |[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Przetwarza tabelę.|  
 |[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Scalania partycji.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Przywróć bazę danych usług Analysis Services.| 
+|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Przywracanie bazy danych usług Analysis Services.| 
   
 
 ## <a name="related-information"></a>Informacje pokrewne
 
 * [Pobierz moduł PowerShell programu SQL Server](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Pobierz narzędzia SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-* [Moduł SqlServer w galerii programu PowerShell](https://www.powershellgallery.com/packages/SqlServer)    
-* [Tabelaryczne modelu programowania dla 1200 poziom zgodności lub nowszym](https://msdn.microsoft.com/library/mt712541.aspx)
+* [Pobieranie programu SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Module SqlServer w galerii programu PowerShell](https://www.powershellgallery.com/packages/SqlServer)    
+* [Tabelaryczny Model programowania dla zgodności poziomu 1200 i wyższym](https://msdn.microsoft.com/library/mt712541.aspx)

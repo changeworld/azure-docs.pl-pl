@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 66354db65d5e615780ec49683fbc72f1156ac5e1
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 91c917687edbdfb49fc7a390187a860d9474623a
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056153"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918928"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -36,7 +36,7 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tu
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Należy używać modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
-* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone 
+* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
 
 ## <a name="open-the-serial-console"></a>Otwieranie konsoli szeregowej
@@ -48,65 +48,6 @@ Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko 
   4. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję Konsola szeregowa (wersja zapoznawcza). Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
-
-## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
-Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
-
-### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
-Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](https://aka.ms/disableserialconsoleapi). Może używać "Try It" Funkcje dostępne na stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swoje `subscriptionId`, "default" w `default` pola, a następnie kliknij przycisk Uruchom. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne i zostaną dostarczone w późniejszym terminie. [Spróbuj wywołania interfejsu API REST w tym miejscu](https://aka.ms/disableserialconsoleapi).
-
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell (przedstawionych poleceń powłoki bash) można wyłączyć, włączyć i wyświetlić stan wyłączonymi konsoli szeregowej dla subskrypcji. 
-
-* Aby wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji:
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* Aby wyłączyć konsoli szeregowej subskrypcji:
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* Aby włączyć konsoli szeregowej subskrypcji:
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-
-### <a name="vm-level-disable"></a>Wyłącz poziomie maszyny Wirtualnej
-Konsola szeregowa można wyłączyć dla określonych maszyn wirtualnych przez wyłączenie ustawienia diagnostyki rozruchu dla tej maszyny Wirtualnej. Po prostu wyłączyć diagnostykę rozruchu w witrynie Azure portal i konsoli szeregowej zostanie wyłączony dla maszyny Wirtualnej.
-
-## <a name="serial-console-security"></a>Zabezpieczenia konsoli szeregowej 
-
-### <a name="access-security"></a>Zabezpieczenia dostępu 
-Dostęp do konsoli szeregowej jest ograniczony do użytkowników, którzy mają [współautorzy maszyny Wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) lub powyżej dostęp do maszyny wirtualnej. Jeśli dzierżawa usługi AAD wymaga uwierzytelniania wieloskładnikowego, a następnie dostęp do konsoli szeregowej muszą także MFA się jego dostęp za pośrednictwem [witryny Azure portal](https://portal.azure.com).
-
-### <a name="channel-security"></a>Zabezpieczenia kanału
-Wszystkie dane, które są wysyłane w obie strony są szyfrowane w sieci.
-
-### <a name="audit-logs"></a>Dzienniki inspekcji
-Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) dzienniki maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.  
-
->[!CAUTION] 
-Po zalogowaniu się żadne hasła dostępu do konsoli, czy polecenia uruchamiane w ramach konsoli programu zawiera dane wyjściowe haseł, kluczy tajnych, nazwy użytkowników lub inne formy z osobiście identyfikowalne dane osobowe, te zostaną zapisane Diagnostyka rozruchu maszyny wirtualnej dzienniki, oraz wszystkie inne teksty widoczne, jako część wdrożenia konsoli szeregowej przewijania kopii funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mają do nich dostępu, jednak zalecamy następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe. 
-
-### <a name="concurrent-usage"></a>Współbieżne użycie
-Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, zostaną rozłączone pierwszego użytkownika, a drugi użytkownik nawiązał połączenie w sposób, podobnie pierwszy użytkownik, stały i pozostawienie niezmienionej konsoli fizycznej i nowy Użytkownik, znajdują się w dół.
-
->[!CAUTION] 
-Oznacza to, że użytkownik, który pobiera odłączony nie będą rejestrowane! Możliwość wymuszenia wylogowania po rozłączenia (za pośrednictwem SIGHUP lub podobny mechanizm) nadal działa w planach. Windows jest automatyczne limitu czasu włączone w SAC, jednak dla systemu Linux można skonfigurować ustawienia limitu czasu w terminalu. 
-
 
 ## <a name="access-serial-console-for-windows"></a>Dostęp do konsoli szeregowej dla Windows 
 Nowsze obrazy systemu Windows Server na platformie Azure będzie mieć [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwana w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7). Umożliwia konsoli szeregowej dla maszyn wirtualnych Windows utworzone przy użyciu Feb2018 lub niższe obrazów użyj następujące czynności: 
@@ -144,6 +85,64 @@ Jeśli musisz włączyć moduł ładujący rozruchu Windows monituje o do wyświ
 > [!NOTE] 
 > W tej obsługi punktu dla funkcji kluczy nie jest włączone, jeśli potrzebujesz zaawansowanych opcji rozruchu w systemie bcdedit/set {current} onetimeadvancedoptions, zobacz [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) Aby uzyskać więcej informacji
 
+## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
+Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
+
+### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
+Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](https://aka.ms/disableserialconsoleapi). Może używać "Try It" Funkcje dostępne na stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swoje `subscriptionId`, "default" w `default` pola, a następnie kliknij przycisk Uruchom. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne i zostaną dostarczone w późniejszym terminie. [Spróbuj wywołania interfejsu API REST w tym miejscu](https://aka.ms/disableserialconsoleapi).
+
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
+
+Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell (przedstawionych poleceń powłoki bash) można wyłączyć, włączyć i wyświetlić stan wyłączonymi konsoli szeregowej dla subskrypcji. 
+
+* Aby wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji:
+    ```azurecli-interactive
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
+    ```
+* Aby wyłączyć konsoli szeregowej subskrypcji:
+    ```azurecli-interactive 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
+    ```
+* Aby włączyć konsoli szeregowej subskrypcji:
+    ```azurecli-interactive
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
+    ```
+
+### <a name="vm-level-disable"></a>Wyłącz poziomie maszyny Wirtualnej
+Konsola szeregowa można wyłączyć dla określonych maszyn wirtualnych przez wyłączenie ustawienia diagnostyki rozruchu dla tej maszyny Wirtualnej. Po prostu wyłączyć diagnostykę rozruchu w witrynie Azure portal i konsoli szeregowej zostanie wyłączony dla maszyny Wirtualnej.
+
+## <a name="serial-console-security"></a>Zabezpieczenia konsoli szeregowej 
+
+### <a name="access-security"></a>Zabezpieczenia dostępu 
+Dostęp do konsoli szeregowej jest ograniczony do użytkowników, którzy mają [współautorzy maszyny Wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) lub powyżej dostęp do maszyny wirtualnej. Jeśli dzierżawa usługi AAD wymaga uwierzytelniania wieloskładnikowego, a następnie dostęp do konsoli szeregowej muszą także MFA się jego dostęp za pośrednictwem [witryny Azure portal](https://portal.azure.com).
+
+### <a name="channel-security"></a>Zabezpieczenia kanału
+Wszystkie dane, które są wysyłane w obie strony są szyfrowane w sieci.
+
+### <a name="audit-logs"></a>Dzienniki inspekcji
+Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) dzienniki maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.  
+
+>[!CAUTION] 
+Po zalogowaniu się żadne hasła dostępu do konsoli, czy polecenia uruchamiane w ramach konsoli programu zawiera dane wyjściowe haseł, kluczy tajnych, nazwy użytkowników lub inne formy z osobiście identyfikowalne dane osobowe, te zostaną zapisane Diagnostyka rozruchu maszyny wirtualnej dzienniki, oraz wszystkie inne teksty widoczne, jako część wdrożenia konsoli szeregowej przewijania kopii funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mają do nich dostępu, jednak zalecamy następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe. 
+
+### <a name="concurrent-usage"></a>Współbieżne użycie
+Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, zostaną rozłączone pierwszego użytkownika, a drugi użytkownik nawiązał połączenie w sposób, podobnie pierwszy użytkownik, stały i pozostawienie niezmienionej konsoli fizycznej i nowy Użytkownik, znajdują się w dół.
+
+>[!CAUTION] 
+Oznacza to, że użytkownik, który pobiera odłączony nie będą rejestrowane! Możliwość wymuszenia wylogowania po rozłączenia (za pośrednictwem SIGHUP lub podobny mechanizm) nadal działa w planach. Windows jest automatyczne limitu czasu włączone w SAC, jednak dla systemu Linux można skonfigurować ustawienia limitu czasu w terminalu. 
+
 ## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Przy użyciu konsoli szeregowej dla NMI wywołuje na maszynach wirtualnych Windows
 Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które są zawieszone.
 
@@ -155,7 +154,7 @@ Aby uzyskać informacje na temat konfigurowania Windows do utworzenia zrzutu awa
 
 
 ## <a name="errors"></a>Błędy
-Większość błędów są przejściowe w rodzaju i ponawianie próby adres połączenia tych. Poniższa tabela zawiera listę błędów i środki zaradcze 
+Większość błędów są przejściowe w rodzaju i ponawianie próby adres połączenia tych. W poniższej tabeli przedstawiono listę błędy i środki zaradcze
 
 Błąd                            |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
@@ -172,8 +171,8 @@ Jak My nadal w fazie (wersja zapoznawcza), aby uzyskać dostęp do konsoli szere
 Problem                             |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
 Nie ma opcji za pomocą konsoli szeregowej wystąpienia zestawu skalowania maszyn wirtualnych | W okresie obowiązywania wersji zapoznawczej dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych nie jest obsługiwana.
-Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | [Wprowadź osiągnięcia, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)
-Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| [Windows sygnałów kondycji](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)
+Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To może się zdarzyć, jeśli używasz niestandardowej maszyny Wirtualnej wzmocnione urządzenia lub CHODNIKÓW konfiguracji tego Windows causers niepowodzenie prawidłowo połączenia do portu szeregowego.
+Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Spowoduje to wyświetlenie Jeśli specjalnej konsoli administracyjnej nie został włączony dla obrazu systemu Windows. Zobacz [dostęp szeregowy konsoli dla Windows](#access-serial-console-for-windows) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Więcej informacji znajduje się w temacie [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu RDP można zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go podczas podłączyć jako dysku danych przy użyciu `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienić ponownie dysk.
 Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby pierwotną wersją zawartości powtarzające się znaki | Obejście polega na usunięcie modułu PSReadLine. `Remove-Module PSReadLine` spowoduje usunięcie modułu PSReadLine z bieżącej sesji.
 Niektóre dane wejściowe z klawiatury generuje dziwne SAC danych wyjściowych (np. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) sekwencje ucieczki nie są obsługiwane przez wiersz SAC.

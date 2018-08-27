@@ -1,6 +1,6 @@
 ---
-title: Użycie zasobów dostawcy interfejsu API | Dokumentacja firmy Microsoft
-description: Odwołania do interfejsu API, użycie zasobów, który pobiera informacje o użyciu stosu Azure
+title: Interfejs API użycia zasobów dostawcy | Dokumentacja firmy Microsoft
+description: Dokumentacja dotycząca użycia zasobów interfejsu API, który pobiera informacje o użyciu usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,45 +11,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 08/24/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052702"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918191"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
-Termin *dostawcy* stosuje się do administratora usługi i wszystkich dostawców delegowanego. Azure operatorów stosu i dostawców delegowanego służy użycia dostawcy interfejsu API do wyświetlania użycia bezpośredniego dzierżawcom. Na przykład pokazany na rysunku P0 można wywołać dostawcy interfejsu API, aby uzyskać użycia informacji o jego P1 i P2 przez bezpośredniego użycia i P1 można wywołać użycie informacji na temat P3 i P4.
+Termin *dostawcy* stosuje się do administratora usługi i żadnych delegowanych dostawców. Operatorzy usługi Azure Stack i delegowanych dostawców służy interfejs API użycia dostawcy do wyświetlania użycia bezpośrednich dzierżawcom. Na przykład jak pokazano na diagramie, P0 można wywołać interfejsu API, aby uzyskać informacje dotyczące firmy P1 zastosowania dostawcy i jego P2 bezpośredniego użycia i P1 może wywołać dotyczące użycia jednostek P3 i P4.
 
 ![Model koncepcyjny hierarchii dostawcy](media/azure-stack-provider-resource-api/image1.png)
 
-## <a name="api-call-reference"></a>Odwołanie do wywołania interfejsu API
+## <a name="api-call-reference"></a>Dokumentacja wywołania interfejsu API
 ### <a name="request"></a>Żądanie
-Żądanie pobiera szczegóły zużycia dla żądanego subskrypcje i żądanej przedziale czasu. Nie ma żadnych treści żądania.
+Żądanie pobiera szczegóły użycia dla żądanego subskrypcje i żądany przedział czasu. Nie treści żądania nie istnieje.
 
-Ten interfejs API użycia jest dostawcy interfejsu API, aby obiekt wywołujący musi mieć przypisaną rolę właściciela, współautora lub czytelnika subskrypcji dostawcy.
+Ten interfejs API użycia jest dostawcy interfejsu API, aby obiekt wywołujący musi mieć przypisaną rolę właściciela, współautora lub czytelnika, w ramach subskrypcji dostawcy.
 
 | **— Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & api-version = 2015-06-01-preview & continuationToken = {wartości tokenu} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & parametru api-version = 2015-06-01-preview & continuationToken = {wartości tokenu} |
 
 ### <a name="arguments"></a>Argumenty
 | **Argument** | **Opis** |
 | --- | --- |
-| *armendpoint* |Menedżer zasobów punktu końcowego platformy Azure środowiska Azure stosu. Konwencja stosu Azure jest, że nazwa punktu końcowego usługi Azure Resource Manager jest w formacie `https://adminmanagement.{domain-name}`. Na przykład dla zestawu SDK, jeśli nazwa domeny jest *local.azurestack.external*, to jest punkt końcowy Menedżera zasobów `https://adminmanagement.local.azurestack.external`. |
-| *subId* |Identyfikator subskrypcji użytkownika, który wykonuje wywołanie. |
-| *reportedStartTime* |Uruchomienie zapytania. Wartość *DateTime* powinny być uniwersalny czas koordynowany (UTC) i na początku godziny, na przykład 13:00. Codzienne agregacji ta wartość północy czasu UTC. Format jest *wpisywany* ISO 8601. Na przykład *2015-06-16T18% 3a53% 3a11% 2b00% 3a00Z*, gdzie dwukropkiem została zmieniona na *% 3a* i plus została zmieniona na *% 2b* tak, aby przyjazną identyfikatora URI. |
-| *reportedEndTime* |Godzina zakończenia zapytania. Ograniczenia, które dotyczą *reportedStartTime* mają też zastosowanie do tego argumentu. Wartość *reportedEndTime* nie może być w przyszłości lub bieżącą datę. Jeśli tak jest, wynik jest ustawiony na "przetwarzania nie ukończenia." |
-| *aggregationGranularity* |Opcjonalny parametr, który ma dwa odrębne wartości potencjalnych: dni i godzin. Jako wartości sugerują, jeden zwraca w dzienne dane, a drugi to rozpoznawanie co godzinę. Opcja codzienne jest ustawieniem domyślnym. |
-| *subscriberId* |Identyfikator subskrypcji. Aby uzyskać odfiltrowane dane, wymagany jest identyfikator subskrypcji bezpośredniego dzierżawcy dostawcy. Jeśli określono parametr ID nie subskrypcji, wywołanie zwraca dane użycia dla wszystkich dostawcy bezpośredniego dzierżawców. |
-| *wersja interfejsu API* |Wersja protokołu, który służy do zgłoszenia tego żądania. Ta wartość jest równa *2015-06-01-preview*. |
-| *continuationToken* |Token jest pobierana z ostatnim wywołaniem dostawcy użycia interfejsu API. Token ten jest potrzebna, gdy odpowiedź jest większa niż 1000 wierszy i działa jako zakładka postęp. Jeśli token nie jest obecny, dane są pobierane z początku dnia lub przekazano godzinę, w oparciu o stopień szczegółowości. |
+| *armendpoint* |Usługa Azure Resource Manager punktu końcowego środowiskiem usługi Azure Stack. Konwencja usługi Azure Stack to, że nazwa punktu końcowego usługi Azure Resource Manager jest w formacie `https://adminmanagement.{domain-name}`. Na przykład deweloperski, jeśli nazwa domeny jest *local.azurestack.external*, punkt końcowy usługi Resource Manager jest `https://adminmanagement.local.azurestack.external`. |
+| *subId* |Identyfikator subskrypcji użytkownika, który wywołuje tę funkcję. |
+| *reportedStartTime* |Uruchomienie zapytania. Wartość *daty/godziny* powinny być uniwersalnego czasu koordynowanego (UTC) i na początku godziny, na przykład, 13:00. Codzienne agregacji należy ustawić tę wartość na północy czasu UTC. Format jest *poprzedzone znakiem zmiany znaczenia* ISO 8601. Na przykład *2015-06-16T18% 3a53% 3a11% 2b00% 3a00Z*, gdzie dwukropek jest zmieniany na *% 3a* i plus jest zmieniany na *% 2b* tak, aby identyfikator URI przyjazna. |
+| *reportedEndTime* |Godzina zakończenia kwerendy. Ograniczenia, które są stosowane do *reportedStartTime* mają zastosowanie również do tego argumentu. Wartość *reportedEndTime* nie może przypadać w przyszłości lub daty bieżącej. Jeśli tak jest, wynikiem jest równa "przetwarzanie nie ukończone." |
+| *aggregationGranularity* |Opcjonalnym parametrem, który ma dwie osobne wartości potencjalnych: dni i godzin. Jako wartości wskazują, jeden zwraca dane w codziennych stopień szczegółowości, a drugi to rozpoznawanie co godzinę. Opcja codzienne jest ustawieniem domyślnym. |
+| *subscriberId* |Identyfikator subskrypcji. Aby uzyskać odfiltrowane dane, wymagany jest identyfikator subskrypcji, bezpośrednie dzierżawy dostawcy. Jeśli parametr Identyfikatora subskrypcji, nie jest określony, to wywołanie zwraca dane użycia dla wszystkich dostawca bezpośredniego dzierżaw. |
+| *wersja interfejsu API* |Wersja protokołu, który jest używany do wykonania tego żądania. Ta wartość jest równa *2015-06-01-preview*. |
+| *continuationToken* |Token jest pobierany z ostatniego wywołania, interfejs API użycia dostawcy. Token ten jest wymagane, gdy odpowiedź jest większa niż 1000 wierszy i działa jako zakładki uzyskać informacje o postępie. Jeśli token nie jest obecny, dane są pobierane z początku dnia lub godziny, w oparciu o stopień szczegółowości przekazana. |
 
 ### <a name="response"></a>Odpowiedź
-Pobierz /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00% 3a00% 3a00% 2b00% 3a00 & aggregationGranularity = codziennie & subscriberId = sub1.1 & api-version = 1.0
+Pobierz /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00% 3a00% 3a00% 2b00% 3a00 & aggregationGranularity = dzień c & subscriberId = sub1.1 & parametru api-version = 1,0
 
 ```json
 {
@@ -81,28 +81,46 @@ meterID1",
 | **Argument** | **Opis** |
 | --- | --- |
 | *id* |Unikatowy identyfikator użycia agregacji. |
-| *Nazwa* |Nazwa wartości zagregowanej użycia. |
+| *Nazwa* |Nazwa użycia agregacji. |
 | *type* |Definicja zasobu. |
-| *Identyfikator subskrypcji* |Identyfikator subskrypcji użytkownika stosu Azure. |
-| *usageStartTime* |Czas UTC uruchomienie zasobnika użycia, do którego należy ta wartość zagregowana użycia.|
-| *usageEndTime* |Godzina zakończenia UTC zasobnika użycia, do którego należy ta wartość zagregowana użycia. |
-| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w formacie nowych):<br> *resourceUri*: identyfikator zasobu, który obejmuje grup zasobów i nazwę wystąpienia w pełni kwalifikowana. <br> *Lokalizacja*: regionu, w którym uruchomiono tę usługę. <br> *tagi*: tagi zasobów, które są określone przez użytkownika. <br> *części informacje dodatkowe aby*: więcej szczegółowych informacji o zasobu, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego. |
-| *ilość* |Ilość zużycia zasobów, które wystąpiły w tym przedziale czasu. |
+| *Identyfikator subskrypcji* |Identyfikator subskrypcji użytkownika usługi Azure Stack. |
+| *usageStartTime* |Godzina przedział użycia, do której należy ta wartość zagregowana użycia rozpoczęcia UTC.|
+| *usageEndTime* |Godzina zakończenia UTC zasobnika użycia, do której należy ta wartość zagregowana użycia. |
+| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w nowym formacie):<br> *Identyfikator URI zasobu*: w pełni kwalifikowany identyfikator zasobu, który zawiera grupy zasobów i nazwę wystąpienia. <br> *Lokalizacja*: Region, w którym ta usługa została uruchomiona. <br> *tagi*: tagi zasobów, które są określone przez użytkownika. <br> *additionalInfo*: więcej szczegółowych informacji o zasobie, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego. |
+| *Ilość* |Ilość użycia zasobów, które wystąpiły w tym horyzoncie czasowym. |
 | *meterId* |Unikatowy identyfikator zasobu, który został wykorzystany (nazywane również *ResourceID*). |
 
 
 ## <a name="retrieve-usage-information"></a>Pobieranie informacji o użyciu
 
-Do generowania danych użycia, powinien mieć zasobów, które są uruchomione i aktywnie za pomocą systemu, na przykład, aktywnej maszyny wirtualnej lub konto magazynu zawierające niektórych danych itp. Jeśli nie masz pewności czy dysponuje danymi umieszczonymi w Azure Marketplace stosu, wdrożyć maszynę wirtualną (VM) i sprawdzić, maszyna wirtualna monitorowania bloku, aby upewnić się, że działa. Aby wyświetlić dane użycia, użyj następujących poleceń cmdlet programu PowerShell:
+### <a name="powershell"></a>PowerShell
 
-1. [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)
-2. [Skonfiguruj użytkownika stosu Azure](user/azure-stack-powershell-configure-user.md) lub [stosu Azure operator](azure-stack-powershell-configure-admin.md) środowiska PowerShell 
-3. Aby pobrać dane użycia, należy użyć [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) polecenia cmdlet programu PowerShell:
+Aby wygenerować dane użycia, powinny mieć zasoby, które są uruchomione i aktywnie przy użyciu systemu, na przykład, aktywnej maszyny wirtualnej lub konto magazynu zawierające dane itp. Jeśli nie masz pewności czy dysponuje danymi umieszczonymi w usłudze Azure Stack w portalu Marketplace, Wdróż maszynę wirtualną (VM) i sprawdź maszyna wirtualna monitorowania bloku, aby upewnić się, jest uruchomiony. Aby wyświetlić dane użycia, użyj następujących poleceń cmdlet programu PowerShell:
+
+1. [Zainstaluj program PowerShell dla usługi Azure Stack.](azure-stack-powershell-install.md)
+2. [Konfigurowanie użytkownika usługi Azure Stack](user/azure-stack-powershell-configure-user.md) lub [operatora infrastruktury Azure Stack](azure-stack-powershell-configure-admin.md) środowiska PowerShell 
+3. Aby pobrać dane użycia, użyj [Get UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) polecenia cmdlet programu PowerShell:
 ```powershell
 Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
 ```
+### <a name="rest-api"></a>Interfejs API REST
+
+Można zbierać informacje użycia dla subskrypcji usunięto, wywołując usługę Microsoft.Commerce.Admin. 
+
+**Aby zwrócić wszystkie użycia dzierżawy dla usunięte dla aktywnych użytkowników:**
+
+| **— Metoda** | **Identyfikator URI żądania** |
+| --- | --- |
+| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version= 2015-06-01-preview |
+
+**Aby zwrócić użycia usuniętych lub aktywnej dzierżawy:**
+
+| **— Metoda** | **Identyfikator URI żądania** |
+| --- | --- |
+| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={ Identyfikator subskrybenta} & parametru api-version = 2015-06-01-preview |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dokumentacja interfejsu API użycia zasobów przez dzierżawcę](azure-stack-tenant-resource-usage-api.md)
 
-[Często zadawane pytania dotyczące wykorzystania](azure-stack-usage-related-faq.md)
+[— Często zadawane pytania dotyczące wykorzystania](azure-stack-usage-related-faq.md)

@@ -3,9 +3,9 @@ title: Rozwiązanie SQL Analytics na platformie Azure w usłudze Log Analytics |
 description: Rozwiązanie SQL Analytics na platformie Azure ułatwia zarządzanie bazami danych Azure SQL
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: danimir
 manager: carmonm
-editor: ''
+ms.reviewer: carlrab
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: magoedte
+ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216329"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886564"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitor Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -39,12 +39,12 @@ Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i 
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Usługa Azure SQL Analytics to monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure i pul elastycznych w chmurze. Jak połączyć się z usługą Log Analytics nie używa agentów, rozwiązanie nie obsługuje łączność z Windows, Linux lub zasobów programu SCOM, zobacz w poniższej tabeli zgodności.
+Usługa Azure SQL Analytics to monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure i pul elastycznych w chmurze. Ponieważ agenci nie korzysta się z usługą Log Analytics, rozwiązanie nie obsługuje łączność z Windows, Linux lub zasobów programu SCOM, zobacz w poniższej tabeli zgodności.
 
 | Połączone źródło | Pomoc techniczna | Opis |
 | --- | --- | --- |
 | **[Diagnostyka Azure](log-analytics-azure-storage.md)** | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa log Analytics nie odczytuje dane z konta magazynu. |
+| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
 | [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
 | [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
 | [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Nie | Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest używana przez to rozwiązanie. |
@@ -106,10 +106,10 @@ Każda Perspektywa zawiera podsumowania dotyczące subskrypcji, serwera, pula el
 | Insights | Udostępnia hierarchiczny Przechodzenie do szczegółów w szczegółowe informacje. Dowiedz się więcej o usłudze intelligent insights. |
 | Błędy | Udostępnia hierarchiczny Przechodzenie do szczegółów do błędów SQL, które wystąpiły w bazach danych. |
 | Limity czasu | Udostępnia hierarchiczny Przechodzenie do szczegółów do przekroczenia limitu czasu SQL, które wystąpiły w bazach danych. |
-| Blokowanie | Udostępnia hierarchiczny Przechodzenie do szczegółów na blokowanie SQL, które wystąpiły w bazach danych. |
+| Bloki | Udostępnia hierarchiczny Przechodzenie do szczegółów na blokowanie SQL, które wystąpiły w bazach danych. |
 | Oczekiwania bazy danych | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania SQL na poziomie bazy danych. Zawiera podsumowania całkowity czas oczekiwania oraz czas oczekiwania na typ oczekiwania. |
 | Czas trwania zapytania | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyk wykonywania zapytań, np. czas trwania zapytania, użycie procesora CPU, we/wy danych użycia, obciążenie We/Wy dziennika. |
-| Czas oczekiwania przez zapytanie | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania zapytań według kategorii oczekiwania. |
+| Oczekiwania zapytań | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania zapytań według kategorii oczekiwania. |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights raportu
 
@@ -119,7 +119,7 @@ Usługa Azure SQL Database [Intelligent Insights](../sql-database/sql-database-i
 
 ### <a name="elastic-pool-and-database-reports"></a>Raporty elastycznej puli i bazy danych
 
-Elastyczne pule i bazy danych ma swoje własne szczegółowymi raportami, które są pokazywane wszystkie dane, które są zbierane dla zasobu w określonym czasie.
+Elastyczne pule i bazy danych ma swoje własne konkretne raporty pokazujące wszystkie dane, które są zbierane dla zasobu w określonym czasie.
 
 ![Usługa Azure SQL Database analizy](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
@@ -135,27 +135,77 @@ Czas trwania zapytania i zapytania w tym czasie czeka perspektyw można skorelow
 
 Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [wyszukiwanie w dzienniku](log-analytics-log-searches.md) zapytań, które można używać z alertu dziennika:
 
-
-
-*Wysoki poziom jednostek DTU na bazę danych Azure SQL*
+*Wysokie użycie procesora CPU w usłudze Azure SQL Database*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/DATABASES/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
-*Wysoki poziom jednostek DTU w puli elastycznej bazy danych Azure SQL*
+> [!NOTE]
+> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - Zastąp cpu_percent wartość MetricName dtu_consumption_percent zamiast tego uzyskać wysoki wyników jednostek DTU.
+
+*Wysokie użycie procesora CPU na pule elastyczne usługi Azure SQL Database*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/ELASTICPOOLS/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+> [!NOTE]
+> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - Zastąp cpu_percent wartość MetricName dtu_consumption_percent zamiast tego uzyskać wysoki wyników jednostek DTU.
 
+*Usługa Azure storage bazy danych SQL w średnia powyżej 95% w ostatniej 1 godziny*
+
+```
+let time_range = 1h;
+let storage_threshold = 95;
+AzureMetrics
+| where ResourceId contains "/DATABASES/"
+| where MetricName == "storage_percent"
+| summarize max_storage = max(Average) by ResourceId, bin(TimeGenerated, time_range)
+| where max_storage > storage_threshold
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - To zapytanie wymaga regułę alertu do konfigurowane tak, aby wyzwolić alert, gdy istnieje wyniki (liczba wyników > 0) z kwerendy oznaczający, że z warunkiem istnieje w niektórych bazach danych. Dane wyjściowe znajduje się lista zasobów bazy danych, które znajdują się powyżej storage_threshold w ramach time_range zdefiniowane.
+> - Dane wyjściowe znajduje się lista zasobów bazy danych, które znajdują się powyżej storage_threshold w ramach time_range zdefiniowane.
+
+*Alert po wystąpieniu Intelligent insights*
+
+```
+let alert_run_interval = 1h;
+let insights_string = "hitting its CPU limits";
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| where TimeGenerated > ago(alert_run_interval)
+| where rootCauseAnalysis_s contains insights_string
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Wymaganie wstępne konfigurowania ten alert jest ten dziennik diagnostyczny monitorowane bazy danych strumienia SQLInsights do rozwiązania.
+> - To zapytanie wymaga regułę alertu można skonfigurować do uruchamiania z taką samą częstotliwością, alert_run_interval, aby uniknąć duplikowania. Reguły należy skonfigurować tak, aby wyzwolić alert, gdy istnieje wyniki (liczba wyników > 0) z kwerendy.
+> - Dostosuj alert_run_interval, aby określić zakres czasu, aby sprawdzić, czy warunek pojawił się na baz danych skonfigurowanych do strumieniowe przesyłanie dzienników SQLInsights do rozwiązania.
+> - Dostosuj insights_string do przechwytywania danych wyjściowych tekst analizy przyczyny głównej szczegółowych informacji. Jest to ten sam tekst wyświetlany w Interfejsie użytkownika rozwiązania, które można użyć istniejącej usługi insights. Alternatywnie można użyć poniższe zapytanie tekst wszystkie szczegółowe informacje wygenerowane w ramach Twojej subskrypcji. Zdobycia różne ciągi konfigurowania alertów dotyczących szczegółowe informacje, należy użyć danych wyjściowych zapytania.
+
+```
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| distinct rootCauseAnalysis_s
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

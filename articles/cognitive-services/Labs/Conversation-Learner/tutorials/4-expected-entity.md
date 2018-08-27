@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9e013e237a996d722d958920a1310e3aaea36c52
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170912"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888208"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak użyć właściwości "Oczekiwano jednostki" w akcji
 
@@ -59,14 +59,14 @@ Konkretnie Jeśli pole "Oczekiwano jednostki" akcję ustawiono $entity, a nastę
 
 ### <a name="create-two-actions"></a>Utwórz dwie akcje
 
-1. Kliknij pozycję operacje, a następnie nowa akcja
+1. Kliknij pozycję operacje, a następnie nową akcję.
 2. W odpowiedzi wpisz "Jak się Nazywasz?".
 3. Wprowadź $name w jednostki z oczekiwaniami. Kliknij pozycję Zapisz.
     - Ta wartość oznacza, że jeśli to pytanie jest zadawane i odpowiedź użytkownika nie ma żadnych jednostek wykrył, bot należy założyć, że całej odpowiedzi użytkownika jest tej jednostki.
 2. Kliknij pozycję operacje, a następnie nową akcję do utworzenia drugiej akcji.
 3. W odpowiedzi wpisz "Hello $name".
-    - Jednostka jest automatycznie dodawany jako disqualifying jednostki. 
-4. Klikanie pozycji Zapisz.
+    - Jednostka jest automatycznie dodawany jako element wymagany. 
+4. Kliknij pozycję Zapisz.
 
 Masz teraz dwie akcje.
 

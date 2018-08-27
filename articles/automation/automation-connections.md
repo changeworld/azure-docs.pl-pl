@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5c865ff5c83626f13bb4fb9df7c1533371733540
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054277"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919106"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
@@ -84,7 +84,7 @@ Można użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas twor
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Połączenie runbook lub konfiguracji DSC
 
-Możesz pobrać połączenie runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** polecenia cmdlet.  Nie można użyć [Get AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/Get-AzureRmAutomationConnection?redirectedfrom=msdn) działania.  To działanie pobiera wartości różnych pól w połączeniu i zwraca je jako [tabeli mieszania](http://go.microsoft.com/fwlink/?LinkID=324844) której następnie można za pomocą odpowiednich poleceń w elemencie runbook lub konfiguracji DSC.
+Możesz pobrać połączenie runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** polecenia cmdlet.  Nie można użyć [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) działania.  To działanie pobiera wartości różnych pól w połączeniu i zwraca je jako [tabeli mieszania](http://go.microsoft.com/fwlink/?LinkID=324844) której następnie można za pomocą odpowiednich poleceń w elemencie runbook lub konfiguracji DSC.
 
 ### <a name="textual-runbook-sample"></a>Przykład tekstowy element runbook
 
