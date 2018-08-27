@@ -1,7 +1,7 @@
 # Omówienie
 ## [Sieci platformy Azure — informacje](networking-overview.md)
 ## Architektura
-### [Wirtualne centra danych](networking-virtual-datacenter.md)
+### [Wirtualne centra danych](/azure/architecture/vdc/networking-virtual-datacenter)
 ### [Routing asymetryczny z wieloma ścieżkami sieciowymi](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Projekty bezpiecznych sieci](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Topologia piasty i szprych](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
