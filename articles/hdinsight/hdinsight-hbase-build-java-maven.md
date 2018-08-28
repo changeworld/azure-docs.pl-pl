@@ -3,18 +3,18 @@ title: Tworzenie aplikacji bazy danych HBase w języku Java na podstawie Windows
 description: Informacje o sposobie tworzenia aplikacji opartych na języku Java bazy danych Apache HBase, a następnie wdrożyć ją do klastra z systemem Windows Azure HDInsight przy użyciu narzędzia Apache Maven.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20056590d5841f9d17081b9456a491ba128e4f90
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592877"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092631"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Tworzenie aplikacji Java korzystających z bazy danych HBase z systemem Windows HDInsight (Hadoop) przy użyciu narzędzia Maven
 Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java przy użyciu narzędzia Apache Maven. Następnie za pomocą aplikacji usługi Azure HDInsight (Hadoop).

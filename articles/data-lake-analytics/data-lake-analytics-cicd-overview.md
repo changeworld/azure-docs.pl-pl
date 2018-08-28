@@ -1,25 +1,21 @@
 ---
-title: Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft
+title: Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics
 description: Dowiedz się, jak skonfigurować ciągłą integrację i ciągłe wdrażanie dla usługi Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: c114f190ae05f5ea4788c3785a713a6365938ded
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630708"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045878"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics  
 
@@ -440,16 +436,16 @@ Wykonaj poniższe kroki, aby skonfigurować zadania wdrożenia bazy danych w Vis
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Użyj **klucz tajny** uwierzytelniania wdrażanie bazy danych U-SQL z kontem usługi Azure Data Lake Analytics:
+    * Użyj **secrete** uwierzytelniania wdrażanie bazy danych U-SQL z kontem usługi Azure Data Lake Analytics:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
     * Użyj **certFile** uwierzytelniania wdrażanie bazy danych U-SQL z kontem usługi Azure Data Lake Analytics:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret> -CertFile <certFile>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Opisy parametrów PackageDeploymentTool.exe
@@ -480,9 +476,9 @@ Wykonaj poniższe kroki, aby skonfigurować zadania wdrożenia bazy danych w Vis
 |AzureSDKPath|Ścieżki wyszukiwania zestawów zależnych w zestawie SDK platformy Azure.|Wartość null|true|
 |Interaktywne|Czy należy użyć trybu interakcyjnego uwierzytelniania.|false|false|
 |ClientId|Identyfikator aplikacji usługi Azure AD jest wymagana dla nieinterakcyjnych authentication.|Wartość null|Wymagane dla nieinterakcyjnych authentication.|
-|Wpis tajny|Klucz tajny lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecretFile.|
-|SecretFile|Plik jest zapisywany wpis tajny lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użycie klucza tajnego.|
-|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to do korzystania z uwierzytelniania klucza tajnego klienta.|Wartość null|false|
+|Secrete|Secrete lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecreteFile.|
+|SecreteFile|Plik jest zapisywany secrete lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj Secrete.|
+|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to korzystanie z klienta secrete uwierzytelniania.|Wartość null|false|
 | JobPrefix | Prefiks do wdrożenia bazy danych zadania U-SQL DDL. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>Kolejne kroki

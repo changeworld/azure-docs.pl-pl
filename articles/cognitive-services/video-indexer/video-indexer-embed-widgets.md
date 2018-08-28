@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/25/2018
 ms.author: juliako
-ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41987469"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049359"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -95,7 +95,7 @@ W tej sekcji pokazano, jak osiągnąć interakcji między dwa widgety Video Inde
 
 Teraz po kliknięciu formantu wgląd w swojej aplikacji odtwarzacza przechodzi do momentu, istotne.
 
-Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://api-portal.videoindexer.ai/demo-all-widgets).
+Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://codepen.io/videoindexer/pen/NzJeOb).
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Osadzanie widżetów Cognitive szczegółowych informacji i usługi Azure Media Player umożliwia odtwarzanie zawartości
 
@@ -153,7 +153,7 @@ W tej sekcji pokazano, jak osiągnąć interakcji między **Cognitive Insights**
 
 Można teraz nawiązać połączenia z usługi Azure Media Player.
 
-Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://api-portal.videoindexer.ai/demo-your-amp).
+Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://codepen.io/videoindexer/pen/rYONrO).
 
 ### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>Osadzanie widżetów Cognitive informacji szczegółowych indeksatora wideo i używać własnych player (może to być dowolny odtwarzacz)
 
@@ -201,7 +201,7 @@ Jeśli używasz własnych odtwarzacza, trzeba zadbać o manipulowanie odtwarzacz
         </script>
 
 
-Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://api-portal.videoindexer.ai/demo-your-player).
+Aby uzyskać więcej informacji, zobacz [tej wersji demonstracyjnej](https://codepen.io/videoindexer/pen/YEyPLd).
 
 ## <a name="adding-subtitles"></a>Dodawanie napisów
 

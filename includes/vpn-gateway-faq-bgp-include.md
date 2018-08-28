@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "36338326"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Czy protokół BGP jest obsługiwany na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?

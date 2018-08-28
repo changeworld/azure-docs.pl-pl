@@ -3,18 +3,18 @@ title: Korzystanie z języka Pig z usługi Hadoop w przy użyciu pulpitu zdalneg
 description: Dowiedz się, jak za pomocą polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze usługi Hadoop z systemem Windows na platformie HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5aec07a5ebbbb56abcbaebbddc5579cf4d076b4d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 224722c61a653eae55bc1351e91e6288bc793fb6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590670"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049867"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig za pośrednictwem połączenia pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]

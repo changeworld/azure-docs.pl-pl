@@ -1,25 +1,19 @@
 ---
-title: "Wprowadzenie do usługi Azure Data Catalog | Microsoft Docs"
-description: "W tym artykule omówiono usługę Microsoft Azure Data Catalog i jej funkcje oraz problemy, które ona rozwiązuje. Usługa Data Catalog umożliwia każdemu użytkownikowi rejestrowanie, odnajdywanie, zrozumienie i używanie źródeł danych."
+title: Wprowadzenie do usługi Azure Data Catalog
+description: W tym artykule omówiono usługę Microsoft Azure Data Catalog i jej funkcje oraz problemy, które ona rozwiązuje. Usługa Data Catalog umożliwia każdemu użytkownikowi rejestrowanie, odnajdywanie, zrozumienie i używanie źródeł danych.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: cc733907-17ec-4153-9f0c-5b3754b2db19
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: edf6e1d8b86d9773b54353bb70f000bcdf40e5ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: ba9cce1c63145bea25e657cb690287e1cbf5a4e4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053704"
 ---
 # <a name="what-is-azure-data-catalog"></a>Co to jest usługa Azure Data Catalog?
 Usługa Azure Data Catalog to w pełni zarządzana usługa w chmurze, której użytkownicy mogą odnajdować potrzebne im źródła danych i zrozumieć użycie znalezionych przez nich źródeł danych. Jednocześnie usługa Data Catalog pomaga organizacjom w osiąganiu większych zysków z ich istniejących inwestycji. 
@@ -71,7 +65,7 @@ Aby dowiedzieć się więcej o możliwościach wykazu danych, zobacz:
 * [Jak skonfigurować słownik biznesowy](data-catalog-how-to-business-glossary.md)
 * [Często zadawane pytania](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby rozpocząć korzystanie z usługi Data Catalog, przejdź do:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md)

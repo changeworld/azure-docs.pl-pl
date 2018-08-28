@@ -5,17 +5,17 @@ keywords: hadoop tools,hive query,visual studio,visual studio hadoop
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: d4f444133e8fe6f5ba1a8c12ce08d5c66e8fc18e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: HT
+ms.openlocfilehash: 0c90dfe0aa76bd4f27bbc6f9a5e7e30c76595ea1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920926"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050151"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Łączenie z usługą Azure HDInsight i uruchamianie zapytań programu Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -267,7 +267,7 @@ Możesz użyć narzędzi Data Lake Tools for Visual Studio, aby utworzyć i prze
 * Problem, w którym wyniki uruchamiane z wartościami null nie są wyświetlane jako rozwiązane. W przypadku zablokowania na tym problemie należy skontaktować się z zespołem pomocy technicznej.
 * Skrypt HQL utworzony przez program Visual Studio jest zakodowany w zależności od ustawienia lokalnego regionu użytkownika. Skrypt nie jest wykonywany poprawnie, jeśli został przesłany do klastra jako plik binarny.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Ten artykuł zawierał informacje dotyczące sposobu używania pakietu Data Lake Tools for Visual Studio w celu nawiązywania połączenia z klastrami usługi HDInsight z programu Visual Studio. Przedstawiono też sposób uruchamiania zapytania Hive. Więcej informacji można znaleźć w tych artykułach:
 
 * [Use Hadoop Hive in HDInsight](hdinsight-use-hive.md) (Używanie usługi Hadoop Hive w usłudze HDInsight)

@@ -3,18 +3,18 @@ title: Analizowanie danych dotyczących opóźnień lotów przy użyciu usługi 
 description: Dowiedz się, jak utworzyć klaster usługi HDInsight, uruchom zadanie programu Hive, uruchom zadanie Sqoop i usunąć klaster za pomocą jednego skryptu środowiska Windows PowerShell.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592258"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091902"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight
 Gałąź umożliwia uruchomionych zadań MapReduce usługi Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywania zapytań, i analizowania dużych ilości danych.

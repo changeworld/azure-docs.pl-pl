@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 863cda349ca951bee1c43f09eefd364645de9dbd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746805"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044734"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -156,6 +156,8 @@ W własne środowisko IR do udostępnienia,
 
    ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
 
+   ![](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+
 2. Uwaga **identyfikator zasobu** samodzielnie hostowanego środowiska IR do udostępnienia.
 
    ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
@@ -167,6 +169,20 @@ W usłudze Data Factory, w którym zostały przyznane uprawnienia,
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
 
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="monitoring"></a>Monitorowanie 
+
+- **Udostępnione środowisko IR**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+
+  ![](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+
+- **Połączone środowisko IR**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
 
 #### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Znane ograniczenia dotyczące udostępniania samodzielnie hostowanego środowiska IR
 

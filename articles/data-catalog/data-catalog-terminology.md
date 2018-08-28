@@ -1,75 +1,69 @@
 ---
-title: "Terminologia usługi Azure Data Catalog | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera wprowadzenie do pojęć i terminów używanych w dokumentacji usługi Azure Data Catalog."
+title: Terminologia usługi Azure Data Catalog
+description: Ten artykuł zawiera wprowadzenie do pojęć i terminów używanych w dokumentacji usługi Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 6fec74d9-4a3c-4b4b-88ba-cad5ad143331
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b88abd01c2dbc302bfc0e783d1715710c6f8397c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 70772ae07c4a8a6e87b4fa6f119acf2d51a5c23e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053527"
 ---
 # <a name="azure-data-catalog-terminology"></a>Terminologia usługi Azure Data Catalog
 ## <a name="catalog"></a>Wykaz
-Azure Data Catalog to repozytorium metadanych opartych na chmurze danych może być zarejestrowany zasoby oraz źródeł danych. Katalog służy jako lokalizację magazynu centralnego metadane strukturalne wyodrębnione ze źródeł danych oraz metadanych opisowych dodana przez użytkownika.
+Usługa Azure Data Catalog to repozytorium metadanych opartych na chmurze, w danych, które można zarejestrować źródła i dane zasobów. Katalog służy jako lokalizację magazynu centralnego metadane strukturalne wyodrębnione ze źródła danych i metadanych opisowych, dodane przez użytkowników.
 
 ## <a name="data-source"></a>Źródło danych
-Źródło danych jest system lub kontenera, który zarządza zasobów danych. Przykłady obejmują baz danych programu SQL Server, Oracle — bazy danych, bazy danych SQL Server Analysis Services, (wielowymiarowym lub tabelarycznym) i serwerów SQL Server Reporting Services.
+Źródło danych jest system lub kontener, który zarządza zasobami danych. Przykłady obejmują baz danych programu SQL Server, baz danych Oracle, baz danych SQL Server Analysis Services, (tabelarycznymi lub wielowymiarowymi) i serwerów SQL Server Reporting Services.
 
-## <a name="data-asset"></a>Zasobów danych
-Zasoby danych są obiektów zawartych w źródeł danych, które mogą być rejestrowane w katalogu. Przykłady obejmują tabel programu SQL Server i widoków, Oracle tabel i widoków, SQL Server Analysis Services miar, wymiarów i wskaźników KPI i raportów usług SQL Server Reporting Services.
+## <a name="data-asset"></a>Zasób danych
+Zasoby danych są obiektów zawartych w źródeł danych, które mogą być zarejestrowane w wykazie. Przykłady obejmują tabel programu SQL Server i widoków, Oracle tabele i widoki, SQL Server Analysis Services miary, wymiary i kluczowe wskaźniki wydajności i raporty usług SQL Server Reporting Services.
 
 ## <a name="data-asset-location"></a>Lokalizacja zasobów danych
-Katalog przechowywana lokalizacja źródła danych lub zasobów danych, która może służyć do połączenia ze źródłem za pomocą aplikacji klienckiej. Format i szczegółowe informacje o lokalizacji różnić w zależności od typu źródła danych. Na przykład tabeli programu SQL Server można zidentyfikować za pomocą czterech części nazwy — nazwa serwera, nazwa bazy danych, nazwę schematu, nazwa obiektu —, podczas gdy raport usług raportowania serwera SQL może zostać zidentyfikowane na podstawie jego adresu URL.
+Katalog przechowywana lokalizacja źródła danych lub zasobów danych, która może służyć do połączenia ze źródłem za pomocą aplikacji klienckiej. Format i szczegółowe informacje o lokalizacji różnią się zależnie od typu źródła danych. Na przykład tabeli programu SQL Server można zidentyfikować przez nazwę czteroczęściową — nazwa serwera, nazwa bazy danych, nazwę schematu, nazwa obiektu — a raportem usługi raportowania serwera SQL można zidentyfikować przez jej adresu URL.
 
 ## <a name="structural-metadata"></a>Metadane strukturalne
-Metadane strukturalne jest metadanych wyodrębnione ze źródła danych, które opisano strukturę zasobów danych. W tym lokalizacji zasobów, jego nazwa obiektu i typu oraz dodatkowe właściwości określonego typu. Na przykład metadane strukturalne tabele i widoki zawiera nazwy i typy danych dla kolumny obiektu.
+Metadane strukturalne jest metadanych wyodrębnionych ze źródła danych, które opisuje strukturę zasobu danych. W tym lokalizacji zasobów, jego nazwa obiektu i typu oraz dodatkowe właściwości specyficzne dla danego typu. Na przykład metadane strukturalne dla tabel i widoków zawiera nazwy i typy danych dla kolumny obiektu.
 
 ## <a name="descriptive-metadata"></a>Metadane opisowe
-Metadane opisowe są metadane opisujące przeznaczenie lub celem zasobów danych. Zwykle opisowymi metadanymi jest dodawany przez użytkowników katalogu za pomocą portalu wykazu danych Azure, ale jego również można wyodrębnić ze źródła danych podczas rejestracji. Na przykład narzędzie rejestracji usługi Azure Data Catalog wyodrębnić opisy z właściwości Opis usług SQL Server Analysis Services i SQL Server Reporting Services i z [ms_description właściwość rozszerzona](https://technet.microsoft.com/library/ms190243.aspx) w bazach danych programu SQL Server, jeśli te właściwości są wypełnione wartościami.
+Metadane opisowe są metadane opisujące przeznaczenie lub celem zasobu danych. Zazwyczaj opisowymi metadanymi jest dodawany przez użytkowników wykazu za pomocą portalu usługi Azure Data Catalog, ale ona również można wyodrębnić ze źródła danych podczas rejestracji. Na przykład narzędzie do rejestracji usługi Azure Data Catalog będzie prowadzenie opisy właściwości Opis w SQL Server Analysis Services i SQL Server Reporting Services i z [ms_description rozszerzona właściwość](https://technet.microsoft.com/library/ms190243.aspx) w języku SQL Baz danych serwera, jeśli te właściwości są wypełnione wartościami.
 
 ## <a name="request-access"></a>Żądaj dostępu
-Metadane opisowe zasobu danych mogą zawierać informacje dotyczące żądania dostępu do zasobów danych ani źródła danych. Te informacje są prezentowane z lokalizacji zasobów danych i może zawierać co najmniej jeden z następujących opcji:
+Metadane opisowe do zasobu danych może zawierać informacje dotyczące żądania dostępu do zasobu danych i źródła danych. Te informacje są prezentowane z lokalizacją zasobów danych i może zawierać co najmniej jeden z następujących opcji:
 
-* Adres e-mail użytkownika lub zespół odpowiedzialny za udzielanie dostępu do źródła danych.
-* Adres URL udokumentowane proces, który użytkownicy są zobowiązani do uzyskania dostępu do źródła danych.
-* Adres URL tożsamościami i dostępem narzędzie do zarządzania (takich jak Microsoft Identity Manager) używany do uzyskania dostępu do źródła danych.
-* Wpis niezależnej w tym artykule opisano, jak użytkownicy będą mogli uzyskać dostępu do źródła danych.
+* Adres e-mail użytkownika lub zespołu odpowiedzialnego za udzielanie dostępu do źródła danych.
+* Adres URL udokumentowanego procesu, który użytkownicy muszą wykonać w celu uzyskania dostępu do źródła danych.
+* Adres URL tożsamość i dostęp do narzędzia do zarządzania (takich jak Microsoft Identity Manager), który może służyć do uzyskiwania dostępu do źródła danych.
+* Wpis dowolny tekst, który opisuje, w jaki sposób użytkownicy będą mogli uzyskać dostępu do źródła danych.
 
 ## <a name="preview"></a>Wersja zapoznawcza
-Podgląd w usłudze Azure Data Catalog jest to migawka maksymalnie 20 rekordów, które mogą być wyodrębnione ze źródła danych podczas rejestracji i przechowywane w katalogu z metadanymi zasobów danych. Podgląd może pomóc użytkowników, którzy odnajdywania zasobów danych lepiej zrozumieć jego funkcji i celów. Innymi słowy wyświetlać dane przykładowe przydatne może być więcej niż zobaczenia tylko nazwy kolumn i typy danych.
-Podglądy są obsługiwane tylko dla tabel i widoków, a musi być w sposób jawny wybrany przez użytkownika podczas rejestracji.
+(Wersja zapoznawcza) w usłudze Azure Data Catalog jest migawką z maksymalnie 20 rekordów, które mogą być wyodrębnione ze źródła danych podczas rejestracji i przechowywane w katalogu z metadanymi zasobów danych. Może pomóc w wersji zapoznawczej użytkownicy, którzy odnajdywanie zasobów danych, lepiej zrozumieć jego funkcji i celów. Innymi słowy wyświetlanie przykładowych danych może być bardziej wartościowa niż tylko nazwy kolumn i typy danych.
+Wersje zapoznawcze są obsługiwane tylko dla tabel i widoków i należy jawnie wybrać przez użytkownika podczas rejestracji.
 
 ## <a name="data-profile"></a>Profil danych
-Profil danych w usłudze Azure Data Catalog jest migawką tabeli i na poziomie kolumny metadanych dotyczących zasobów zarejestrowanych danych, która może być wyodrębnione ze źródła danych podczas rejestracji i przechowywane w katalogu z metadanymi zasobów danych. Może pomóc w profilu danych użytkowników, którzy odnajdywania zasobów danych lepiej zrozumieć jego funkcji i celów. Podobne do wersji zapoznawczych, profile danych musi być jawnie wybrane przez użytkownika podczas rejestracji.
+Profil danych w usłudze Azure Data Catalog jest migawką z tabeli i na poziomie kolumny metadanych dotyczących zasobów danych zarejestrowanych, które mogą być wyodrębnione ze źródła danych podczas rejestracji i przechowywane w katalogu z metadanymi zasobów danych. Profil danych może pomóc użytkownikom, którzy odnajdywanie zasobów danych lepiej zrozumieć jego funkcji i celów. Podobnie jak w wersjach zapoznawczych, profile danych musi być jawnie wybierane przez użytkownika podczas rejestracji.
 
 > [!NOTE]
-> Wyodrębnianie profilu danych może być kosztowna operacja dla dużych tabel i widoków i może znacznie zwiększyć czas wymagany do rejestrowania źródła danych.
+> Trwa wyodrębnianie profil danych może być kosztowna operacja dla dużych tabel i widoków i może znacznie zwiększyć czas wymagany do rejestrowania źródła danych.
 >
 >
 
 ## <a name="user-perspective"></a>Perspektywy użytkownika.
-W wykazie danych Azure dowolny użytkownik zapewnia metadane opisowe dla zasobu zarejestrowanych danych. Każdy użytkownik ma różne perspektywą danych i jego użycia. Na przykład administrator odpowiedzialny za serwer może Podaj szczegóły umowy dotyczącej poziomu usług (SLA) lub kopia zapasowa systemu windows; steward danych może zapewnić linki do dokumentacji w firmie przetwarza obsługuje danych; i analityka może podać opis warunków, które są najbardziej odpowiednie do innych analityków i może być najbardziej przydatna dla tych użytkowników, którzy potrzebują do odnalezienia i zrozumienia danych.
+W usłudze Azure Data Catalog każdy użytkownik, można zapewnić opisowymi metadanymi zarejestrowanego zasobu danych. Każdy użytkownik ma różne perspektywą danych i jego użycia. Na przykład administrator odpowiedzialny za serwerem może dostarczyć szczegóły umowy dotyczącej poziomu usług (SLA) lub kopii zapasowej systemu windows; Zarządca danych może zapewnić linki do dokumentacji firmy przetwarza obsługuje danych; a analityk może dostarczyć opis w zasadach, które są najbardziej odpowiednie do innych analityków i który może być najbardziej przydatna dla tych użytkowników, którzy potrzebują, aby odnaleźć i zrozumieć dane.
 
-Każdy z perspektywy te są z założenia cenne, a w wykazie danych Azure każdy użytkownik może udostępnić informacje, które są przydatne do nich, podczas wszyscy użytkownicy mogą używać tych informacji zrozumieć dane, a jej celem.
+Każda z tych perspektyw są założenia cenne i za pomocą usługi Azure Data Catalog każdy użytkownik może zapewnić informacje, które są zrozumiałe dla nich, podczas gdy wszyscy użytkownicy mogą używać tych informacji, aby zrozumieć dane i jej przeznaczenie.
 
 ## <a name="expert"></a>Ekspert
-Ekspert jest użytkownik, który został zidentyfikowany jako mający świadomych perspektywy "ekspertów" dla zasobu danych. Każdy użytkownik, można dodać siebie lub inny użytkownik jako ekspert dla zasobu. Są wyświetlane jako eksperta nie daje żadnych dodatkowych uprawnień w wykazie danych Azure; Umożliwia użytkownikom łatwe lokalizowanie tych perspektywy, które są najbardziej mogą być użyteczne podczas przeglądania metadane opisowe zasobów.
+Ekspert jest użytkownik, który został zidentyfikowany jako posiadające świadome perspektywy "ekspertów" dla zasobu danych. Każdy użytkownik, można dodać samodzielnie lub innemu użytkownikowi, jako ekspertów dla zasobu. Są wyświetlane jako ekspertem nie obejmują żadnych dodatkowych uprawnień w usłudze Azure Data Catalog; Umożliwia użytkownikom łatwy dostęp do tych perspektyw, które z największym prawdopodobieństwem mogą być przydatne podczas przeglądania opisowymi metadanymi elementu zawartości.
 
 ## <a name="owner"></a>Właściciel
-Właściciel jest użytkownik, który ma dodatkowe uprawnienia do zarządzania zasobu danych w wykazie danych Azure. Użytkownicy mogą przejąć prawo własności zarejestrowanych zasobów danych i właścicieli można dodać innym użytkownikom jako współwłaściciele. Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami danych](data-catalog-how-to-manage.md)  
+Właścicielem jest użytkownik, który ma dodatkowe uprawnienia do zarządzania zasobu danych w usłudze Azure Data Catalog. Użytkownicy mogą przejąć prawo własności zasobów danych zarejestrowanych i właścicieli można dodać innym użytkownikom jako współwłaścicieli. Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami danych](data-catalog-how-to-manage.md)  
 
 > [!NOTE]
 > Prawo własności i zarządzania są dostępne tylko w Standard Edition usługi Azure Data Catalog.
@@ -77,8 +71,8 @@ Właściciel jest użytkownik, który ma dodatkowe uprawnienia do zarządzania z
 >
 
 ## <a name="registration"></a>Rejestracja
-Czynność wyodrębniania danych zasobów metadanych źródła danych oraz skopiować go do usługi Azure Data Catalog jest rejestracja. Następnie można adnotacji i odnalezionych zasobów danych, które zostały zarejestrowane.
+Czynność wyodrębniania metadanych zasobu danych ze źródła danych i skopiować go do usługi Azure Data Catalog jest rejestracja. Można następnie adnotacji zasobów danych, które zostały zarejestrowane i odnalezione.
 
 ## <a name="see-also"></a>Zobacz także
 * [Co to jest usługa Azure Data Catalog?](data-catalog-what-is-data-catalog.md) — Ten artykuł zawiera omówienie usługi Azure Data Catalog, wartość, która zapewnia i scenariusze, które obsługuje.
-* [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) — w tym artykule przedstawiono samouczek end-to-end, pokazujący, jak używać usługi Azure Data Catalog odnajdywanie źródła danych.  
+* [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) — ten artykuł zawiera samouczek end-to-end, w którym pokazano, jak używać usługi Azure Data Catalog dla Odnajdowanie źródeł danych.  

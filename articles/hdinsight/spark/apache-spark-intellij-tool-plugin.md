@@ -3,18 +3,18 @@ title: 'Zestaw narzędzi platformy Azure dla środowiska IntelliJ: tworzenie apl
 description: Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra usługi HDInsight Spark.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: c3442a95bed4f589ca8f939767bb0d0581095927
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618429"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042595"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight
 

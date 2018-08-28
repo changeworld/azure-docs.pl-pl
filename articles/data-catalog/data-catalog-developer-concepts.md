@@ -1,171 +1,165 @@
 ---
-title: "Koncepcje dla deweloperów wykazu danych | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do podstawowych pojęć w modelu koncepcyjnym wykaz danych Azure, jako dostępnego za pośrednictwem interfejsu API REST katalogu."
+title: Pojęcia dla deweloperów w usłudze Azure Data Catalog
+description: Wprowadzenie do kluczowych koncepcji usługi Azure Data Catalog modelu koncepcyjnego jako narażonych za pośrednictwem interfejsu API REST katalogu.
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053746"
 ---
-# <a name="azure-data-catalog-developer-concepts"></a>Koncepcje dla deweloperów usługi Azure Data Catalog
-Microsoft **Azure Data Catalog** to usługa w chmurze pełni zarządzana, która zapewnia możliwości odnajdywanie źródła danych oraz crowdsourcing metadanych źródła danych. Deweloperzy mogą używać usługi za pomocą ich interfejsów API REST. Zapoznanie się z pojęciami dotyczącymi usługi jest ważne dla deweloperów pomyślnie integracji z **Azure Data Catalog**.
+# <a name="azure-data-catalog-developer-concepts"></a>Pojęcia dla deweloperów w usłudze Azure Data Catalog
+Microsoft **usługi Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która zapewnia możliwości Odnajdowanie źródeł danych oraz crowdsourcing metadanych źródła danych. Deweloperzy mogą używać usługi za pośrednictwem jej interfejsów API REST. Zrozumienie z pojęciami dotyczącymi usługi jest ważne dla deweloperów pomyślnie zintegrować z usługą **usługi Azure Data Catalog**.
 
 ## <a name="key-concepts"></a>Kluczowe pojęcia
-**Azure Data Catalog** modelu koncepcyjnego opiera się na cztery podstawowe pojęcia: **katalogu**, **użytkowników**, **zasoby**, i **adnotacje**.
+**Usługi Azure Data Catalog** modelu koncepcyjnego opiera się na czterech kluczowych pojęć: **katalogu**, **użytkowników**, **zasoby**, i  **Adnotacje**.
 
 ![Pojęcia][1]
 
-*Rysunek 1 - Azure Data Catalog uproszczony model koncepcyjny*
+*Rysunek 1. Usługa Azure Data Catalog uproszczony model koncepcyjny*
 
 ### <a name="catalog"></a>Wykaz
-A **katalogu** jest kontenerem najwyższego poziomu dla wszystkich metadanych, które są przechowywane w organizacji. Istnieje **katalogu** dozwolone na konto platformy Azure. Katalogi są powiązane z subskrypcją platformy Azure, ale tylko jeden **katalogu** mogą być tworzone dla danego konta Azure, nawet jeśli konta może mieć wiele subskrypcji.
+A **katalogu** jest kontenerem najwyższego poziomu dla wszystkich metadanych, które są przechowywane w organizacji. Istnieje **katalogu** dozwolonych dla jednego konta platformy Azure. Katalogi są powiązane z subskrypcją platformy Azure, ale tylko jeden **katalogu** mogą być tworzone dla danego konta platformy Azure, nawet jeśli konto może mieć wiele subskrypcji.
 
-Katalog zawiera **użytkowników** i **zasoby**.
+Zawiera wykaz **użytkowników** i **zasoby**.
 
 ### <a name="users"></a>Użytkownicy
-Użytkownicy są podmiotów zabezpieczeń, które mają uprawnienia do wykonywania akcji (wyszukiwanie w katalogu, dodać, edytować lub usunąć elementy, itp.) w katalogu.
+Użytkownicy są podmiotów zabezpieczeń, które mają uprawnienia do wykonywania akcji (wyszukać w katalogu, dodawanie, edytowanie lub usuwanie elementów, itp.) w katalogu.
 
-Istnieje kilka różnych ról, które użytkownik może mieć. Uzyskać na rolach zobacz sekcję ról i autoryzacji.
+Istnieje kilka różnych ról, które użytkownik może mieć. Informacje w ramach ról można znaleźć w sekcji role i autoryzacji.
 
 Można dodać poszczególnych użytkowników i grup zabezpieczeń.
 
-Azure Data Catalog używa usługi Azure Active Directory do zarządzania tożsamościami i dostępem. Każdy użytkownik wykazu musi należeć do usługi Active Directory dla konta.
+Usługa Azure Data Catalog używa usługi Azure Active Directory do zarządzania tożsamościami i dostępem. Każdy użytkownik wykazu musi należeć do usługi Active Directory dla konta.
 
 ### <a name="assets"></a>Elementy zawartości
-A **katalogu** zawiera zasobów danych. **Zasoby** jednostki zarządzane przez wykaz stopnia szczegółowości.
+A **katalogu** zawiera zasoby danych. **Zasoby** jednostki zarządzany przez wykaz poziom szczegółowości.
 
-Poziom szczegółowości zasób zależy od źródła danych. Dla serwera SQL lub bazą danych Oracle zasób może być tabelą ani widokiem. Dla usług SQL Server Analysis Services zasób może być miary, wymiaru lub kluczowego wskaźnika wydajności (KPI). SQL Server Reporting Services zasób jest raportem.
+Poziom szczegółowości element zawartości jest zależna od źródła danych. Dla programu SQL Server lub Oracle Database element zawartości może być tabelą ani widokiem. Dla programu SQL Server Analysis Services element zawartości może być miary, wymiary lub kluczowy wskaźnik wydajności (KPI). Dla programu SQL Server Reporting Services element zawartości jest raport.
 
-**Zasobów** jest operacją dodawane lub usuwane z wykazu. Jest to jednostka wynik odzyskać z **wyszukiwania**.
+**Zasobów** rzecz, dodawanie lub usuwanie z katalogu. Jest to jednostka wynik wrócić z **wyszukiwania**.
 
-**Zasobów** składa się z nazwy, lokalizacji oraz typ i adnotacje opisywać go.
+**Zasobów** składa się z nazwy, lokalizacji oraz typ i adnotacje opisujące dalsze go.
 
 ### <a name="annotations"></a>Adnotacje
-Adnotacje są elementy, które reprezentują metadanych dotyczących zasobów.
+Adnotacje są elementów reprezentujących metadane dotyczące zasobów.
 
-Przykłady adnotacje opisu, znaczników, schemat, dokumentacji itp. Pełną listę typów zasobów i typów adnotacji znajdują się w sekcji modelu obiektu trwałego.
+Przykłady adnotacje opis tagów, schemat, dokumentacji, itp. Pełną listę typów zasobów i typów adnotacji znajdują się w sekcji zasobów obiektu modelu.
 
-## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>Adnotacje Crowdsourcing i perspektywy użytkownika (liczebność opinii)
-Kluczowym aspektem Azure Data Catalog jest sposób obsługuje crowdsourcing metadanych w systemie. W przeciwieństwie do podejścia wiki — gdzie istnieje tylko jeden opinii i ostatniego wins składnik zapisywania — model Azure Data Catalog pozwala wielu opinii na żywo jednocześnie w systemie.
+## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>Crowdsourcing adnotacje i perspektywy użytkownika (liczebność opinii)
+Kluczowym aspektem usługi Azure Data Catalog jest jak obsługuje crowdsourcing metadanych w systemie. W przeciwieństwie do metody typu wiki — gdzie występuje tylko jeden opinii i ostatni składnik zapisywania usługi wins — model usługi Azure Data Catalog umożliwia wielu opinii na żywo obok siebie w systemie.
 
-Takie podejście odzwierciedla rzeczywistych danych przedsiębiorstwa gdzie różni użytkownicy mogą mieć różnych perspektyw w danym zasobów:
+To podejście odzwierciedla rzeczywistych danych przedsiębiorstwa gdzie różni użytkownicy mogą mieć różnych perspektyw dla danego zasobu:
 
-* Administrator bazy danych przewidują informacje dotyczące umów dotyczących poziomu usług lub okna przetwarzania dostępne operacje zbiorcze ETL
-* Steward danych mogą zawierać informacje dotyczące procesów biznesowych, których dotyczy zasobu lub klasyfikacjami firmy została zastosowana do niego
-* Analityk finansowego może dostarczyć informacji o sposobie korzystania z danych podczas okres zakończenia zadania raportowania
+* Administrator bazy danych mogą dostarczyć informacji o umów dotyczących poziomu usług lub w oknie dostępne przetwarzania potrzeby zbiorczych operacji ETL
+* Zarządca danych może dostarczyć informacji na temat procesów biznesowych, których dotyczy elementu zawartości lub klasyfikacjami firmy została zastosowana do niego
+* Analityk finansowego może dostarczyć informacji o sposobie korzystania z danych podczas koniec okresu zadań raportowania
 
-Aby zapewnić obsługę tego przykładu, każdego użytkownika — Administrator bazy danych, steward danych i analityków — można dodać opis do pojedynczej tabeli, która jest zarejestrowana w katalogu. Wszystkie opisy są obsługiwane w systemie, a w portalu wykazu danych Azure są wyświetlane wszystkie opisy.
+Aby zapewnić obsługę tego przykładu, każdy użytkownik — administrator bazy danych, zarządca danych i analityka — można dodać opis do pojedynczej tabeli, która została zarejestrowana w wykazie. Wszystkie opisy są obsługiwane w systemie, a w portalu usługi Azure Data Catalog są wyświetlane wszystkie opisy.
 
-Ten wzorzec jest stosowany do większości pozycji w modelu obiektów, typy obiektów w ładunku JSON są często tablice dla właściwości, gdzie może spodziewać się jako pojedyncza.
+Ten wzorzec jest stosowany do większości elementów w modelu obiektów, więc typów obiektów w ładunku JSON są często tablic właściwości, których można by oczekiwać pojedynczego.
 
-Na przykład w obszarze trwałego główny jest Tablica obiektów opis. Właściwości tablicy jest o nazwie "opis". Obiekt opis ma jedną właściwość — opis. Wzorzec jest, że każdy użytkownik, który opis typów pobiera obiekt opis utworzone dla wartości podane przez użytkownika.
+Na przykład w ramach zasobu główny jest Tablica obiektów opis. Właściwości tablicy nosi nazwę "opis". Obiekt opisu ma jedną właściwość — opis. Wzorzec jest, że każdy użytkownik, który opis typów pobiera obiekt opisu utworzone dla wartości, podane przez użytkownika.
 
 Środowiska użytkownika można następnie wybrać sposób wyświetlania połączenie. Istnieją trzy różne wzorce do wyświetlenia.
 
-* Najprostsza wzorzec jest "Pokaż wszystko". W tym wzorcu wszystkie obiekty są wyświetlane w widoku listy. Portal Azure Data Catalog UX używa tego wzorca opis.
-* Inny wzorzec jest "Merge". W tym wzorcu wszystkie wartości z różnych użytkowników są scalane, ze zduplikowaną usunięte. Przykładem tego wzorca w portalu Azure Data Catalog UX są właściwości tagów i ekspertów.
-* Trzeci wzorzec jest "ostatni składnik zapisywania usługi wins". W tym wzorcu tylko najnowsze wartość wpisaną w polu jest wyświetlana. friendlyName jest to przykład tego wzorca.
+* Najprostszy wzorzec składa się "Pokaż wszystko". W tym wzorcu wszystkie obiekty są wyświetlane w widoku listy. Portal usługi Azure Data Catalog UX używa tego wzorca, opis.
+* Wzorzec innego to "Merge". W tym wzorcu wszystkie wartości z różnych użytkowników są scalane, za pomocą zduplikowane usunięte. Przykładem tego wzorca, w portalu usługi Azure Data Catalog UX są właściwości tagi i ekspertów.
+* Trzeci wzorzec jest "ostatni składnik zapisywania usługi wins". W tym wzorcu jest wyświetlany tylko najnowszą wartość wpisana. friendlyName znajduje się przykład tego wzorca.
 
 ## <a name="asset-object-model"></a>Model obiektów zasobu
-Wprowadzonego w sekcji kluczowe założenia **Azure Data Catalog** model obiektu zawiera elementy, które mogą być zasoby lub adnotacji. Elementy mają właściwości, które mogą być opcjonalne lub wymagane. Niektóre właściwości są stosowane do wszystkich elementów. Niektóre właściwości są stosowane do wszystkich zasobów. Niektóre właściwości dotyczą tylko typy określonych zasobów.
+Wprowadzonego w sekcji najważniejsze pojęcia dotyczące **usługi Azure Data Catalog** model obiektu zawiera elementy, które mogą być zasoby lub adnotacji. Elementy mają właściwości, które mogą być opcjonalne lub wymagane. Niektóre właściwości mają zastosowanie do wszystkich elementów. Niektóre właściwości mają zastosowanie do wszystkich zasobów. Niektóre właściwości mają zastosowanie tylko do typów określonych zasobów.
 
 ### <a name="system-properties"></a>Właściwości systemu
-<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>sygnatura czasowa</td><td>Data/godzina</td><td>Czas ostatniej modyfikacji elementu. To pole jest generowany przez serwer po wstawieniu elementu i każdej aktualizacji elementu. Wartość tej właściwości jest ignorowany w danych wejściowych dla operacji publikowania.</td></tr><tr><td>id</td><td>Identyfikator URI</td><td>Bezwzględny adres url elementu (tylko do odczytu). Jest unikatowy adresowanego identyfikator URI dla elementu.  Wartość tej właściwości jest ignorowany w danych wejściowych dla operacji publikowania.</td></tr><tr><td>type</td><td>Ciąg</td><td>Typ zasobu (tylko do odczytu).</td></tr><tr><td>Element etag</td><td>Ciąg</td><td>Ciąg odpowiadający wersji elementu, który może być używane do kontroli optymistycznej współbieżności podczas wykonywania operacji, które aktualizują elementów w katalogu. "*" może służyć do dopasowania do dowolnej wartości.</td></tr></table>
+<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>sygnatura czasowa</td><td>DateTime</td><td>Czas ostatniej modyfikacji elementu. To pole jest generowany przez serwer, gdy element jest wstawiany i za każdym razem, gdy element jest aktualizowana. Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>id</td><td>Identyfikator URI</td><td>Bezwzględny adres url elementu (tylko do odczytu). Jest unikatowym identyfikatorem URI mogą być adresowane dla elementu.  Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>type</td><td>Ciąg</td><td>Typ zasobu (tylko do odczytu).</td></tr><tr><td>Element etag</td><td>Ciąg</td><td>Ciąg odpowiadający wersji elementu, który może służyć do mechanizmu kontroli optymistycznej współbieżności, podczas wykonywania operacji, które aktualizują elementów w wykazie. "*" umożliwia dopasowanie dowolnej wartości.</td></tr></table>
 
 ### <a name="common-properties"></a>Wspólne właściwości
-Te właściwości mają zastosowanie do wszystkich typów zasobów głównego i wszystkie typy adnotacji.
+Te właściwości mają zastosowanie do wszystkich typów zasobów katalogu głównego i wszystkich typów adnotacji.
 
 <table>
 <tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Wartość logiczna</td><td>Wskazuje, czy pochodzi z systemu źródłowego (na przykład baza danych Sql Server, bazy danych Oracle) lub utworzone przez użytkownika elementu danych.</td></tr>
+<tr><td>fromSourceSystem</td><td>Wartość logiczna</td><td>Wskazuje, czy dane elementu jest pochodną systemie źródła (takich jak bazy danych Sql Server, Oracle Database), czy utworzone przez użytkownika.</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>Wspólne właściwości katalogu głównego
 <p>
-Te właściwości stosowane do wszystkich typów zasobów katalogu głównego.
+Te właściwości mają zastosowanie do wszystkich typów zasobów katalogu głównego.
 
-<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>name</td><td>Ciąg</td><td>Nazwa utworzona na podstawie informacji o lokalizacji źródła danych</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Jednoznacznie zawiera opis źródła danych i jest jednym z identyfikatorami za dany zasób. (Patrz sekcja tożsamości dwóch).  Struktura dsl zależy od typu protokół i źródła.</td></tr><tr><td>źródło danych</td><td>DataSourceInfo</td><td>Więcej szczegółów na typie zasobów.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>W tym artykule opisano użytkownika, który ostatnio zarejestrowany ten zasób.  Zawiera zarówno Unikatowy identyfikator dla użytkownika (upn) i nazwę wyświetlaną (nazwisko i imię).</td></tr><tr><td>containerId</td><td>Ciąg</td><td>Identyfikator zasobu kontenera dla źródła danych. Ta właściwość nie jest obsługiwana dla typu kontenera.</td></tr></table>
+<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>name</td><td>Ciąg</td><td>Nazwa tworzona na podstawie informacji o lokalizacji źródła danych</td></tr><tr><td>Język DSL</td><td>DataSourceLocation</td><td>Jednoznacznie opisuje źródła danych i jest jednym z identyfikatorów dla zasobu. (Patrz sekcja podwójną tożsamości).  Struktura język dsl jest zależna od typu protokołu i źródła.</td></tr><tr><td>Źródło danych</td><td>DataSourceInfo</td><td>Więcej szczegółów w typie zasób.</td></tr><tr><td>wartość elementu lastRegisteredBy</td><td>SecurityPrincipal</td><td>W tym artykule opisano użytkownika, który ostatnio zarejestrowany tego zasobu.  Zawiera zarówno Unikatowy identyfikator dla użytkownika (upn) i nazwę wyświetlaną (nazwisko i imię).</td></tr><tr><td>containerId</td><td>Ciąg</td><td>Identyfikator zasobu kontenera dla źródła danych. Ta właściwość nie jest obsługiwana dla typu kontenera.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Wspólne właściwości niepojedynczej adnotacji
-Te właściwości mają zastosowanie do wszystkich typów niepojedynczej adnotacji (adnotacje, które może być wiele według zasobu).
+Te właściwości mają zastosowanie do wszystkich typów niepojedynczej adnotacji (adnotacji, które może mieć wiele według zasobu).
 
 <table>
 <tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
 <tr><td>key</td><td>Ciąg</td><td>Użytkownik określony klucz, który unikatowo identyfikuje adnotacji w bieżącej kolekcji. Długość klucza nie może przekraczać 256 znaków.</td></tr>
 </table>
 
-### <a name="root-asset-types"></a>Typy zasobów głównego
-Typy zasobów głównego są te typy, które reprezentują różnych typów zasobów danych, które mogą być rejestrowane w katalogu. Dla każdego typu głównego istnieje widok, w którym opisano zasobów i adnotacje uwzględnione w widoku. Należy użyć nazwy widoku w odpowiadającym segmencie adresu url {view_name} podczas publikowania zasobów przy użyciu interfejsu API REST.
+### <a name="root-asset-types"></a>Typy zasobów katalogu głównego
+Typy zasobów katalogu głównego to tych typów, które reprezentują różne typy zasobów danych, które mogą być zarejestrowane w wykazie. Dla każdego typu głównego istnieje widok, w którym opisano zasobów i adnotacje uwzględnione w widoku. Nazwa widoku powinna być używana w odpowiadającym segmencie adresu url {view_name}, podczas publikowania zasobów przy użyciu interfejsu API REST.
 
-<table><tr><td><b>Typ zasobu (nazwa widoku)</b></td><td><b>Dodatkowe właściwości</b></td><td><b>Typ danych</b></td><td><b>Dozwolone adnotacji</b></td><td><b>Komentarze</b></td></tr><tr><td>W tabeli ("tabele")</td><td></td><td></td><td>Opis<p>friendlyName<p>Tag<p>Schemat<p>ColumnDescription<p>ColumnTag<p> Ekspert<p>Wersja zapoznawcza<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentacja<p></td><td>Tabela reprezentuje danych tabelarycznych.  Na przykład: tabeli SQL, Widok SQL, tabeli tabelaryczne usług analizy, wielowymiarowych usług Analysis Services wymiaru, Oracle tabeli itp.   </td></tr><tr><td>Miary ("działania")</td><td></td><td></td><td>Opis<p>friendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia miar usług Analysis Services.</td></tr><tr><td></td><td>miara</td><td>Kolumna</td><td></td><td>Metadane opisujące miary</td></tr><tr><td></td><td>isCalculated </td><td>Wartość logiczna</td><td></td><td>Określa, czy miara jest obliczana lub nie.</td></tr><tr><td></td><td>measureGroup</td><td>Ciąg</td><td></td><td>Fizycznych kontenerów miary</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Opis<p>friendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Ciąg</td><td></td><td>Fizycznych kontenerów miary</td></tr><tr><td></td><td>goalExpression</td><td>Ciąg</td><td></td><td>Liczbowego wyrażenia MDX lub obliczeń, która zwraca docelowa wartość wskaźnika KPI.</td></tr><tr><td></td><td>valueExpression</td><td>Ciąg</td><td></td><td>Liczbowego wyrażenia MDX zwracające wartość rzeczywistą kluczowego wskaźnika wydajności.</td></tr><tr><td></td><td>statusExpression</td><td>Ciąg</td><td></td><td>Wyrażenie MDX, która reprezentuje stan kluczowego wskaźnika wydajności w określonym punkcie w czasie.</td></tr><tr><td></td><td>trendExpression</td><td>Ciąg</td><td></td><td>Wyrażenie MDX, która daje w wyniku wartość wskaźnika KPI w czasie. Trend może mieć żadnych oparte na czasie kryterium, które są przydatne w kontekście firmy.</td>
-<tr><td>Raport ("raporty")</td><td></td><td></td><td>Opis<p>friendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia raportu usług SQL Server Reporting Services </td></tr><tr><td></td><td>assetCreatedDate</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Ciąg</td><td></td><td></td></tr><tr><td>Kontener ("kontenery")</td><td></td><td></td><td>Opis<p>friendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia kontener inne zasoby, takie jak bazy danych SQL, kontener obiektów blob Azure lub modelu usług Analysis Services.</td></tr></table>
+<table><tr><td><b>Typ zasobu (nazwy widoku)</b></td><td><b>Dodatkowe właściwości</b></td><td><b>Typ danych</b></td><td><b>Dozwolone adnotacji</b></td><td><b>Komentarze</b></td></tr><tr><td>Tabela ("tabele")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Schemat<p>ColumnDescription<p>ColumnTag<p> Ekspert<p>Wersja zapoznawcza<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentacja<p></td><td>Tabela reprezentuje wszystkie dane tabelaryczne.  Na przykład: tabela SQL, Widok SQL, tabela tabelarycznych usług Analysis Services, wielowymiarowych usług Analysis Services wymiaru, tabela bazy danych Oracle, itp.   </td></tr><tr><td>Miary ("środki")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia miara usług Analysis Services.</td></tr><tr><td></td><td>miara</td><td>Kolumna</td><td></td><td>Metadane opisujące miary</td></tr><tr><td></td><td>isCalculated </td><td>Wartość logiczna</td><td></td><td>Określa, jeśli miara jest obliczana, czy nie.</td></tr><tr><td></td><td>measureGroup</td><td>Ciąg</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Ciąg</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><tr><td></td><td>goalExpression</td><td>Ciąg</td><td></td><td>Liczbowego wyrażenia MDX lub obliczeń, które zwraca docelowa wartość wskaźnika KPI.</td></tr><tr><td></td><td>valueExpression</td><td>Ciąg</td><td></td><td>Wyrażenie liczbowe MDX, które zwraca wartością rzeczywistą kluczowego wskaźnika wydajności.</td></tr><tr><td></td><td>statusExpression</td><td>Ciąg</td><td></td><td>Wyrażenie MDX, który reprezentuje stan kluczowego wskaźnika wydajności w określonym punkcie w czasie.</td></tr><tr><td></td><td>trendExpression</td><td>Ciąg</td><td></td><td>Wyrażenie MDX, które oblicza wartość wskaźnika KPI wraz z upływem czasu. Trend może być dowolnym opartych na czasie kryterium jest przydatne w kontekście firmy.</td>
+<tr><td>Raport ("raporty")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia raport usług SQL Server Reporting Services </td></tr><tr><td></td><td>assetCreatedDate</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Ciąg</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Ciąg</td><td></td><td></td></tr><tr><td>Kontener ("kontenery")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia kontener inne zasoby, takie jak bazy danych SQL, kontener obiektów blob platformy Azure lub modelu usług Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Typy adnotacji
-Adnotacja typy reprezentują rodzaje metadanych, które mogą być przypisane do innych typów w katalogu.
+Adnotacja typów stanowią typy metadanych, które mogą być przypisane do innych typów w wykazie.
 
 <table>
 <tr><td><b>Typ adnotacji (nazwa widoku zagnieżdżone)</b></td><td><b>Dodatkowe właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
 
-<tr><td>Opis elementu ("opis")</td><td></td><td></td><td>Ta właściwość zawiera opis elementu zawartości. Każdy użytkownik systemu można dodać własne opis.  Tylko ten użytkownik może edytować opis obiektu.  (Właścicieli Administratorzy i zasobów można usunąć obiektu opisu, ale nie można go edytować). System przechowuje opisy użytkowników oddzielnie.  W związku z tym jest tablicą opisów na poszczególnych zasobów (po jednej dla każdego użytkownika, który przyczynił się swoją wiedzą o zasobów, oprócz prawdopodobnie taki, który zawiera informacje pochodzące ze źródła danych).</td></tr>
-<tr><td></td><td>description</td><td>ciąg</td><td>Krótki opis elementu zawartości (2 – 3 wiersze)</td></tr>
+<tr><td>Opis "(opisy)</td><td></td><td></td><td>Ta właściwość zawiera opis elementu zawartości. Każdy użytkownik systemu można dodać własne opis.  Tylko ten użytkownik może edytować obiekt opisu.  (Administratorzy i zawartości właściciele można usunąć obiektu opisu, ale nie można go edytować). System przechowuje opisy użytkowników osobno.  Ten sposób jest tablicą opisy dla każdego zasobu (po jednym dla każdego użytkownika, który współtworzonej ich wiedzę na temat zasobów, oprócz prawdopodobnie jeden, który zawiera informacje pochodzące ze źródła danych).</td></tr>
+<tr><td></td><td>description</td><td>ciąg</td><td>Krótki opis elementu zawartości (linie 2 – 3)</td></tr>
 
-<tr><td>Znaczników "(tagów)</td><td></td><td></td><td>Ta właściwość określa tag zasobu. Każdy użytkownik systemu można dodać wiele tagów dla zasobu.  Tylko użytkownik, który utworzył obiekty Tag je edytować.  (Właścicieli Administratorzy i zasobów można usunąć Tag obiekt, ale nie można go edytować). System przechowuje tagi użytkowników oddzielnie.  W związku z tym jest Tablica obiektów tagu na poszczególnych zasobów.</td></tr>
-<tr><td></td><td>tag</td><td>ciąg</td><td>Tag opisujące element zawartości.</td></tr>
+<tr><td>Tag ("tags")</td><td></td><td></td><td>Ta właściwość określa tag zasobu. Każdy użytkownik systemu można dodać kilka tagów dla zasobu.  Tylko użytkownik, który utworzył obiekty tagu, można je edytować.  (Administratorzy i zawartości właściciele można usunąć obiektu tagu, ale nie można go edytować). System obsługuje tagi użytkowników osobno.  Ten sposób jest Tablica obiektów tagu dla każdego zasobu.</td></tr>
+<tr><td></td><td>tag</td><td>ciąg</td><td>Tag, zawierająca opis elementu zawartości.</td></tr>
 
-<tr><td>FriendlyName ("friendlyName")</td><td></td><td></td><td>Ta właściwość zawiera przyjazną nazwę dla zasobu. FriendlyName jest adnotacji pojedyncze — tylko jeden FriendlyName mogą być dodawane do elementu zawartości.  Tylko użytkownik, który utworzył obiekt FriendlyName, można go edytować. (Właścicieli Administratorzy i zasobów można usunąć obiektu FriendlyName, ale nie można go edytować). System przechowuje oddzielnie przyjaznych nazw użytkowników.</td></tr>
-<tr><td></td><td>friendlyName</td><td>ciąg</td><td>Przyjazna nazwa zasobu.</td></tr>
+<tr><td>FriendlyName ("friendlyName")</td><td></td><td></td><td>Ta właściwość zawiera przyjazną nazwę dla zasobu. FriendlyName jest adnotacja singleton — tylko jeden FriendlyName mogą być dodawane do elementu zawartości.  Tylko użytkownik, który utworzył obiekt FriendlyName, można go edytować. (Administratorzy i zawartości właściciele można usunąć obiektu FriendlyName, ale nie można go edytować). System przechowuje przyjaznych nazw użytkowników osobno.</td></tr>
+<tr><td></td><td>FriendlyName</td><td>ciąg</td><td>Przyjazna nazwa elementu zawartości.</td></tr>
 
-<tr><td>Schemat ("schema")</td><td></td><td></td><td>Schemat opisuje struktury danych.  On Wyświetla nazwy atrybut (kolumna, atrybut, pole itp.), typy również innych metadanych.  Te informacje jest pochodzące ze źródła danych.  Schemat jest adnotacji pojedyncze — można dodać tylko jeden schemat dla zasobu.</td></tr>
-<tr><td></td><td>kolumny</td><td>[Kolumna]</td><td>Tablica obiektów kolumny. Opisano w nich kolumny informacje pochodzące ze źródła danych.</td></tr>
+<tr><td>Schemat ("schemat")</td><td></td><td></td><td>Schemat opisujący strukturę danych.  Go Wyświetla listę nazw atrybutu (kolumny, atrybut, pole, itp.), typów, jak również inne metadane.  Informacja ta jest tworzony ze źródła danych.  Schemat jest adnotacja singleton — można dodać tylko jeden schemat dla zasobu.</td></tr>
+<tr><td></td><td>Kolumny</td><td>[Kolumna]</td><td>Tablica obiektów kolumny. Opisano w nich kolumny za pomocą informacji pochodzących ze źródła danych.</td></tr>
 
-<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Ta właściwość zawiera opis kolumny.  Każdy użytkownik systemu można dodać opisami wielu kolumn (co najwyżej jeden na kolumny). Tylko użytkownik, który utworzył obiekty ColumnDescription je edytować.  (Właścicieli Administratorzy i zasobów można usunąć obiektu ColumnDescription, ale nie można go edytować). System przechowuje te użytkowników opisy kolumn oddzielnie.  W związku z tym jest Tablica obiektów ColumnDescription na poszczególnych zasobów (jeden na kolumnę dla każdego użytkownika, który przyczynił się swoją wiedzą o kolumn, oprócz prawdopodobnie taki, który zawiera informacje pochodzące ze źródła danych).  ColumnDescription słabo jest powiązana ze schematem, można uzyskać zsynchronizowane. ColumnDescription opisuje kolumny, która już nie istnieje w schemacie.  Jest składnik zapisywania do synchronizowania opis i schematu.  Źródło danych może również zawierać informacje opis kolumn i są dodatkowe obiekty ColumnDescription, które zostałyby utworzone podczas uruchamiania narzędzia.</td></tr>
+<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Ta właściwość zawiera opis kolumny.  Każdy użytkownik systemu można dodać opisami dla wielu kolumn (co najwyżej jeden na kolumny). Tylko użytkownik, który utworzył obiekty ColumnDescription je edytować.  (Administratorzy i zawartości właściciele można usunąć obiektu ColumnDescription, ale nie można go edytować). System przechowuje opisy kolumn tych użytkowników oddzielnie.  Ten sposób jest Tablica obiektów ColumnDescription dla każdego zasobu (po jednej na kolumnę dla każdego użytkownika, który przyczynił się swoją wiedzą o kolumny oprócz prawdopodobnie jeden, który zawiera informacje pochodzące ze źródła danych).  ColumnDescription jest luźno powiązane ze schematem, dzięki czemu można uzyskać zsynchronizowane. ColumnDescription formułować kolumny, która już nie istnieje w schemacie.  Jest moduł zapisujący Synchronizuj opis i schematu.  Źródła danych mogą mieć również informacje dotyczące opisu kolumny i są dodatkowe obiekty ColumnDescription, które zostałyby utworzone podczas uruchamiania narzędzia.</td></tr>
 <tr><td></td><td>columnName</td><td>Ciąg</td><td>Nazwa kolumny, której dotyczy ten opis.</td></tr>
-<tr><td></td><td>description</td><td>Ciąg</td><td>Krótki opis (2 – 3 wiersze) kolumny.</td></tr>
+<tr><td></td><td>description</td><td>Ciąg</td><td>Krótki opis (linie 2 – 3) kolumny.</td></tr>
 
-<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Ta właściwość zawiera tag dla kolumny. Każdy użytkownik systemu można dodać wiele tagów dla podanej kolumny i dodać tagi do wielu kolumn. Tylko użytkownik, który utworzył obiekty ColumnTag je edytować. (Właścicieli Administratorzy i zasobów można usunąć obiektu ColumnTag, ale nie można go edytować). System przechowuje oddzielnie tagi kolumny tych użytkowników.  W związku z tym jest Tablica obiektów ColumnTag na poszczególnych zasobów.  ColumnTag słabo jest powiązana ze schematem, można uzyskać zsynchronizowane. ColumnTag opisuje kolumny, która już nie istnieje w schemacie.  Jest moduł zapisujący synchronizowania kolumny znacznika i schematu.</td></tr>
-<tr><td></td><td>columnName</td><td>Ciąg</td><td>Nazwa kolumny, której dotyczy ten tag.</td></tr>
-<tr><td></td><td>tag</td><td>Ciąg</td><td>Tag zawierający opis kolumny.</td></tr>
+<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Ta właściwość zawiera tag dla kolumny. Każdy użytkownik systemu można dodać wiele tagów dla danej kolumny i dodać znaczniki dla wielu kolumn. Tylko użytkownik, który utworzył obiekty ColumnTag je edytować. (Administratorzy i zawartości właściciele można usunąć obiektu ColumnTag, ale nie można go edytować). System obsługuje tagi kolumny tych użytkowników oddzielnie.  Ten sposób jest Tablica obiektów ColumnTag dla każdego zasobu.  ColumnTag jest luźno powiązane ze schematem, dzięki czemu można uzyskać zsynchronizowane. ColumnTag formułować kolumny, która już nie istnieje w schemacie.  Jest moduł zapisujący Synchronizuj tag kolumny i schematu.</td></tr>
+<tr><td></td><td>columnName</td><td>Ciąg</td><td>Nazwa kolumny, której dotyczy ten znacznik.</td></tr>
+<tr><td></td><td>tag</td><td>Ciąg</td><td>Tag, zawierający opis kolumny.</td></tr>
 
-<tr><td>Ekspert ("ekspertów")</td><td></td><td></td><td>Ta właściwość zawiera użytkownika, który jest uznawany za eksperta w zestawie danych. Ekspertów opinions(descriptions) bąbelków do góry UX podczas wyświetlania opisów. Każdy użytkownik może określić własne ekspertów. Tylko ten użytkownik może edytować obiekt ekspertów. (Właścicieli Administratorzy i zasobów można usunąć obiekty ekspertów, ale nie można go edytować).</td></tr>
+<tr><td>Ekspert ("ekspertów")</td><td></td><td></td><td>Ta właściwość zawiera użytkownika, który jest uważany za eksperta w zestawie danych. Bąbelkowy opinions(descriptions) przez ekspertów na początku środowiska użytkownika, wyświetlając opisy. Każdy użytkownik może określić własne ekspertów. Tylko ten użytkownik może edytować obiekt ekspertów. (Administratorzy i zawartości właściciele mogą usuwać obiekty ekspertów, ale nie można go edytować).</td></tr>
 <tr><td></td><td>ekspert</td><td>SecurityPrincipal</td><td></td></tr>
 
-<tr><td>Wersja zapoznawcza ("podglądy")</td><td></td><td></td><td>Wersja zapoznawcza zawiera migawkę górne 20 wiersze danych dla elementu zawartości. Podgląd tylko sensu dla niektórych typów zasobów (warto dla tabeli, ale nie do środka).</td></tr>
-<tr><td></td><td>wersja zapoznawcza</td><td>obiekt]</td><td>Tablica obiektów, które reprezentują kolumny.  Każdy obiekt ma właściwość mapowanie do kolumny zawierającej wartość dla tej kolumny wiersza.</td></tr>
+<tr><td>("Wersje zapoznawcze") w wersji zapoznawczej</td><td></td><td></td><td>(Wersja zapoznawcza) zawiera migawkę pierwszych 20 wierszy danych dla elementu zawartości. (Wersja zapoznawcza) tylko ma sensu w przypadku niektórych typów zasobów (sens dla tabeli, ale nie dla miary).</td></tr>
+<tr><td></td><td>wersja zapoznawcza</td><td>obiekt]</td><td>Tablica obiektów, które reprezentują kolumny.  Każdy obiekt ma właściwość mapowanie do kolumny z wartością dla tej kolumny dla wiersza.</td></tr>
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>ciąg</td><td>Typ mime zawartości.</td></tr>
-<tr><td></td><td>Zawartość</td><td>ciąg</td><td>Instrukcje dotyczące sposobu uzyskiwania dostępu do tego zasobu danych. Zawartość może być adres URL, adres e-mail lub zbiór instrukcji.</td></tr>
+<tr><td></td><td>content</td><td>ciąg</td><td>Instrukcje dotyczące sposobu uzyskania dostępu do tego zasobu danych. Zawartość może być adresem URL, adres e-mail lub zbiór instrukcji.</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>numberOfRows</td></td><td>int</td><td>Liczba wierszy w zestawie danych</td></tr>
-<tr><td></td><td>rozmiar</td><td>długa</td><td>Rozmiar w bajtach zestawu danych.  </td></tr>
+<tr><td></td><td>numberOfRows</td></td><td>Int</td><td>Liczba wierszy w zestawie danych</td></tr>
+<tr><td></td><td>rozmiar</td><td>dł.</td><td>Rozmiar w bajtach zestawu danych.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>ciąg</td><td>Czas ostatniej modyfikacji schematu</td></tr>
-<tr><td></td><td>dataModifiedTime</td><td>ciąg</td><td>Czas ostatniej modyfikacji zestawu danych (danych zostało dodane, zmodyfikowane lub usuń)</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>ciąg</td><td>Czas ostatniego zestawu danych został zmodyfikowany (danych zostało dodane, zmodyfikowane, lub usuń)</td></tr>
 
 <tr><td>ColumnsDataProfile ("columnsDataProfiles")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>kolumny</td></td><td>ColumnDataProfile[]</td><td>Tablica kolumn danych profilów.</td></tr>
+<tr><td></td><td>Kolumny</td></td><td>[] ColumnDataProfile</td><td>Tablica profilów danych kolumny.</td></tr>
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName</td><td>Ciąg</td><td>Nazwa ta klasyfikacja odnosi się do kolumny.</td></tr>
-<tr><td></td><td>Klasyfikacja</td><td>Ciąg</td><td>Klasyfikacja danych w tej kolumnie.</td></tr>
+<tr><td></td><td>klasyfikacja</td><td>Ciąg</td><td>Klasyfikacja danych w tej kolumnie.</td></tr>
 
-<tr><td>Dokumentacja "(dokumentacja)</td><td></td><td></td><td>Dany zasobów może mieć tylko jeden dokumentacji skojarzonych z nim.</td></tr>
+<tr><td>Dokumentacja ("dokumentacja")</td><td></td><td></td><td>Dany zasób może mieć tylko jeden dokumentacji skojarzonych z nim.</td></tr>
 <tr><td></td><td>mimeType</td><td>ciąg</td><td>Typ mime zawartości.</td></tr>
-<tr><td></td><td>Zawartość</td><td>ciąg</td><td>Zawartość dokumentacji.</td></tr>
+<tr><td></td><td>content</td><td>ciąg</td><td>Zawartość dokumentacji.</td></tr>
 
 </table>
 
@@ -175,121 +169,121 @@ Popularne typy może służyć jako typy właściwości, ale nie są elementami.
 <table>
 <tr><td><b>Wspólny typ</b></td><td><b>Właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>ciąg</td><td>Opisuje typ źródła danych.  Na przykład: SQL Server, baza danych Oracle, itp.  </td></tr>
-<tr><td></td><td>Typ obiektu</td><td>ciąg</td><td>Opisuje typ obiektu źródła danych. Na przykład: tabela, wyświetlanie dla programu SQL Server.</td></tr>
+<tr><td></td><td>sourceType</td><td>ciąg</td><td>Opisuje typ źródła danych.  Na przykład: SQL Server, Oracle Database itp.  </td></tr>
+<tr><td></td><td>Typ obiektu</td><td>ciąg</td><td>Opisuje typ obiektu źródła danych. Na przykład: Table, wyświetlić dla programu SQL Server.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protokół</td><td>ciąg</td><td>Wymagany. Opisuje protokół używany do komunikowania się ze źródłem danych. Na przykład: "tds" dla programu SQl Server "oracle" Oracle itp. Zapoznaj się [Specyfikacja odwołanie - DSL struktura źródła danych](data-catalog-dsr.md) listę aktualnie obsługiwanych protokołów.</td></tr>
-<tr><td></td><td>Adres</td><td>Słownik<string, object></td><td>Wymagany. Adres jest zestawem danych specyficznych dla protokołu, który służy do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane do konkretnego protokołu zakresu, czyli jest bez znaczenia bez wiedzy o protokół.</td></tr>
-<tr><td></td><td>uwierzytelnianie</td><td>ciąg</td><td>Opcjonalny. Schemat uwierzytelniania używany do komunikowania się ze źródłem danych. Na przykład: windows oauth, itp.</td></tr>
+<tr><td></td><td>protokół</td><td>ciąg</td><td>Wymagany. W tym artykule opisano protokół używany do komunikowania się ze źródłem danych. Na przykład: "tds" dla programu SQl Server "oracle" Oracle itp. Zapoznaj się [Specyfikacja odwołania - DSL struktury źródła danych](data-catalog-dsr.md) listę aktualnie obsługiwanych protokołów.</td></tr>
+<tr><td></td><td>Adres</td><td>Słownik<string, object></td><td>Wymagany. Adres jest zestaw danych, które są specyficzne dla protokołu, który jest używany do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane adres zakresu określonego protokołu, czyli jest bez znaczenia, nie wiedząc o tym protokołu.</td></tr>
+<tr><td></td><td>uwierzytelnianie</td><td>ciąg</td><td>Opcjonalny. Schemat uwierzytelniania używany do komunikowania się ze źródłem danych. Na przykład: windows, oauth, itp.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Słownik<string, object></td><td>Opcjonalny. Dodatkowe informacje na temat nawiązywania połączenia ze źródłem danych.</td></tr>
 
-<tr><td>SecurityPrincipal</td><td></td><td></td><td>Wewnętrznej bazy danych nie wykonuje żadnych weryfikacji właściwości podana przed AAD podczas publikowania.</td></tr>
-<tr><td></td><td>nazwy UPN</td><td>ciąg</td><td>Unikatowy adres e-mail użytkownika. Należy podać identyfikator obiektu nie został dostarczony lub w kontekście dla właściwości "lastRegisteredBy", w przeciwnym razie opcjonalny.</td></tr>
-<tr><td></td><td>Identyfikator obiektu</td><td>Identyfikator GUID</td><td>Tożsamość usługi AAD grupy użytkowników lub zabezpieczeń. Opcjonalny. Musi być określona, jeśli nazwy upn nie zostanie podany, w przeciwnym razie opcjonalne.</td></tr>
-<tr><td></td><td>Imię</td><td>ciąg</td><td>Imię użytkownika (na potrzeby wyświetlania). Opcjonalny. Jest to prawidłowy tylko w kontekście dla właściwości "lastRegisteredBy". Nie można określić podczas dostarczania podmiotu zabezpieczeń "role", "uprawnienia" i "ekspertów".</td></tr>
-<tr><td></td><td>lastName</td><td>ciąg</td><td>Nazwisko użytkownika (na potrzeby wyświetlania). Opcjonalny. Jest to prawidłowy tylko w kontekście dla właściwości "lastRegisteredBy". Nie można określić podczas dostarczania podmiotu zabezpieczeń "role", "uprawnienia" i "ekspertów".</td></tr>
+<tr><td>SecurityPrincipal</td><td></td><td></td><td>Wewnętrznej bazy danych nie wykonuje żadnych weryfikacji podanej właściwości względem usługi AAD podczas publikowania.</td></tr>
+<tr><td></td><td>nazwy UPN</td><td>ciąg</td><td>Unikatowy adres e-mail użytkownika. Musi być określona, jeśli nie zostanie podany identyfikator obiektu lub w kontekście właściwość "wartość elementu lastRegisteredBy", w przeciwnym razie opcjonalny.</td></tr>
+<tr><td></td><td>Identyfikator obiektu</td><td>Identyfikator GUID</td><td>Tożsamości usługi AAD grupy użytkowników lub zabezpieczeń. Opcjonalny. Musi być określona, jeśli nazwy upn nie zostanie podany, w przeciwnym razie opcjonalne.</td></tr>
+<tr><td></td><td>Imię</td><td>ciąg</td><td>Imię użytkownika (w celach wyświetlania). Opcjonalny. Jest to prawidłowe tylko w kontekście właściwość "wartość elementu lastRegisteredBy". Nie można określić podczas dostarczania podmiotu zabezpieczeń "role", "uprawnienia" i "ekspertów".</td></tr>
+<tr><td></td><td>Nazwisko</td><td>ciąg</td><td>Nazwisko użytkownika (w celach wyświetlania). Opcjonalny. Jest to prawidłowe tylko w kontekście właściwość "wartość elementu lastRegisteredBy". Nie można określić podczas dostarczania podmiotu zabezpieczeń "role", "uprawnienia" i "ekspertów".</td></tr>
 
 <tr><td>Kolumna</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>ciąg</td><td>Nazwa kolumny lub atrybutu.</td></tr>
-<tr><td></td><td>type</td><td>ciąg</td><td>Typ danych kolumny lub atrybutu. Dopuszczalne typy są zależne od danych źródłowa środka trwałego.  Obsługiwane jest tylko podzestaw typów.</td></tr>
-<tr><td></td><td>maxLength</td><td>int</td><td>Maksymalna dozwolona długość kolumny lub atrybutu. Pochodzące ze źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
-<tr><td></td><td>dokładność</td><td>bajt</td><td>Dokładność kolumny lub atrybutu. Pochodzące ze źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
-<tr><td></td><td>isNullable</td><td>Wartość logiczna</td><td>Określa, czy kolumna może mieć wartości null lub nie. Pochodzące ze źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
-<tr><td></td><td>wyrażenie</td><td>ciąg</td><td>Jeśli wartość jest kolumną obliczaną, to pole zawiera wyrażenie, które określa wartość. Pochodzące ze źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
+<tr><td></td><td>type</td><td>ciąg</td><td>Typ danych kolumny lub atrybutu. Dopuszczalne typy są zależne od danych sourceType elementu zawartości.  Tylko podzbiór typów jest obsługiwany.</td></tr>
+<tr><td></td><td>Element maxLength</td><td>Int</td><td>Maksymalna dozwolona długość kolumny lub atrybutu. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
+<tr><td></td><td>dokładność</td><td>bajt</td><td>Dokładność kolumny lub atrybutu. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
+<tr><td></td><td>isNullable</td><td>Wartość logiczna</td><td>Czy kolumna może mieć wartości null lub nie. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
+<tr><td></td><td>Wyrażenie</td><td>ciąg</td><td>Jeśli wartość jest kolumną obliczaną, to pole zawiera wyrażenie, które określa wartości. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>ciąg</td><td>Nazwa kolumny</td></tr>
 <tr><td></td><td>type </td><td>ciąg</td><td>Typ kolumny</td></tr>
 <tr><td></td><td>min. </td><td>ciąg</td><td>Minimalna wartość w zestawie danych</td></tr>
 <tr><td></td><td>maks. </td><td>ciąg</td><td>Maksymalna wartość w zestawie danych</td></tr>
-<tr><td></td><td>średnio </td><td>liczba podwójnej precyzji</td><td>Średnia wartość w zestawie danych</td></tr>
-<tr><td></td><td>StDev </td><td>liczba podwójnej precyzji</td><td>Odchylenie standardowe dla zestawu danych</td></tr>
-<tr><td></td><td>nullCount </td><td>int</td><td>Liczba wartości null w zestawie danych</td></tr>
-<tr><td></td><td>distinctCount  </td><td>int</td><td>Liczba unikatowych wartości w zestawie danych</td></tr>
+<tr><td></td><td>średnio </td><td>double</td><td>Średnia wartość w zestawie danych</td></tr>
+<tr><td></td><td>StDev </td><td>double</td><td>Odchylenie standardowe dla zestawu danych</td></tr>
+<tr><td></td><td>nullCount </td><td>Int</td><td>Liczba wartości null w zestawie danych</td></tr>
+<tr><td></td><td>distinctCount  </td><td>Int</td><td>Liczba odrębnych wartości w zestawie danych</td></tr>
 
 
 </table>
 
-## <a name="asset-identity"></a>Tożsamości zasobów
-Azure Data Catalog używa właściwości "Protokół" i tożsamości ze zbioru właściwości "address" właściwości "dsl" DataSourceLocation do generowania tożsamości zasobu, która jest wykorzystywana do adresowania zasobów w katalogu.
-Na przykład protokołu "tds" ma właściwości identity "serwer", "baza danych" i "schema", "object". Kombinacja protokołu i właściwości tożsamości są używane do generowania tożsamość zasobów tabeli serwera SQL.
-Azure Data Catalog zawiera kilka wbudowanych danych źródła protokołów, które są wymienione w [Specyfikacja odwołanie - DSL struktura źródła danych](data-catalog-dsr.md).
-Zestaw obsługiwanych protokołów, które mogą zostać rozszerzone programowo (zajrzyj do dokumentacji interfejsu API REST wykazu danych). Administratorzy katalogu mogą rejestrować protokołów źródła danych niestandardowych. W poniższej tabeli opisano właściwości wymaganych do zarejestrowania protokołu niestandardowego.
+## <a name="asset-identity"></a>Tożsamość zasobu
+Usługa Azure Data Catalog używa właściwości "protocol" i tożsamości ze zbioru właściwości "address" właściwości "dsl" elementu DataSourceLocation do wygenerowania tożsamości zasobu, który jest wykorzystywana do adresowania zasobów w wykazie.
+Na przykład protokołu "tds" ma właściwości tożsamości "server", "baza danych", "schema" i "object". Kombinacje protokołu i właściwości tożsamości są używane do generowania tożsamości zasobu tabel serwera SQL.
+Usługa Azure Data Catalog zawiera kilka wbudowanych źródła protokołów, które są wymienione w części [Specyfikacja odwołania - DSL struktury źródła danych](data-catalog-dsr.md).
+Zestaw obsługiwanych protokołów, które mogą zostać rozszerzone programowo (Zobacz odwołania API REST usługi Data Catalog). Administratorzy katalogu mogą zarejestrować niestandardowych protokołów źródeł danych. W poniższej tabeli opisano właściwości wymaganych do zarejestrowania protokołu niestandardowego.
 
 ### <a name="custom-data-source-protocol-specification"></a>Specyfikacja protokołu źródła danych niestandardowych
 <table>
 <tr><td><b>Typ</b></td><td><b>Właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>przestrzeń nazw</td><td>ciąg</td><td>Przestrzeń nazw protokołu. Namespace musi mieć od 1 do 255 znaków długości, zawierać jedną lub więcej niepustym części oddzielone kropką (.). Każda część musi mieć długość od 1 do 255 znaków, zaczynać się literą i zawierać tylko litery i cyfry.</td></tr>
-<tr><td></td><td>name</td><td>ciąg</td><td>Nazwa protokołu. Nazwa musi mieć długość od 1 do 255 znaków, zaczynać się literą i zawierać tylko litery, cyfry i znak kreski (-).</td></tr>
-<tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Lista właściwości tożsamości, musi zawierać co najmniej jeden, ale nie więcej niż 20 właściwości. Na przykład: "server", "baza danych", "schema", "obiektu" są właściwościami tożsamości protokołu "tds".</td></tr>
-<tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Lista zestawów tożsamości. Definiuje ustawia właściwości tożsamości, które reprezentują tożsamość prawidłowy zasobów. Musi zawierać co najmniej jeden, ale nie więcej niż 20 zestawów. Na przykład: {"server", "bazy danych", "schema" i "object"} jest tożsamość zestawu dla protokołu "tds", który określa tożsamość zasobów tabeli programu Sql Server.</td></tr>
+<tr><td></td><td>przestrzeń nazw</td><td>ciąg</td><td>Przestrzeń nazw protokołu. Namespace musi mieć długość od 1 do 255 znaków długości, zawierać co najmniej jeden części niepuste, oddzielone znakiem kropki (.). Każda część musi mieć długość od 1 do 255 znaków, rozpoczynać się literą i zawierać tylko litery i cyfry.</td></tr>
+<tr><td></td><td>name</td><td>ciąg</td><td>Nazwa protokołu. Nazwa musi mieć długość od 1 do 255 znaków, rozpoczynać się literą i zawierać tylko litery, cyfry i znak kreski (-).</td></tr>
+<tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Lista właściwości tożsamości, musi zawierać co najmniej jeden, ale nie więcej niż 20 właściwości. Na przykład: "server", "baza danych", "schema", "object" są właściwości tożsamości protokołu "tds".</td></tr>
+<tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Lista zestawów tożsamości. Określa zestawy właściwości tożsamości, które reprezentują tożsamość prawidłowy element zawartości. Musi zawierać co najmniej jeden, ale nie więcej niż 20 zestawów. Na przykład: {"server", "baza danych", "schema" i "obiekt"} jest tożsamością dla protokołu "tds", który określa tożsamość zasobu tabela programu Sql Server.</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>ciąg</td><td>Nazwa właściwości. Nazwa musi mieć od 1 do 100 znaków, rozpoczyna się od litery i może zawierać tylko litery i cyfry.</td></tr>
-<tr><td></td><td>type</td><td>ciąg</td><td>Typ właściwości. Obsługiwane wartości: "bool", wartość logiczna ","bajtów","guid","int","integer","long","string","url"</td></tr>
-<tr><td></td><td>ignoreCase</td><td>bool</td><td>Wskazuje, czy należy ją ignorować case, używając wartość właściwości. Można określić tylko dla właściwości typu "string". Wartość domyślna to false.</td></tr>
-<tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>Wskazuje, czy należy ją ignorować przypadku dla każdego segmentu ścieżki adresu url. Można określić tylko dla właściwości typu "url". Wartość domyślna to [false].</td></tr>
+<tr><td></td><td>name</td><td>ciąg</td><td>Nazwa właściwości. Nazwa musi mieć długość od 1 do 100 znaków, rozpoczynać się literą i mogą zawierać tylko litery i cyfry.</td></tr>
+<tr><td></td><td>type</td><td>ciąg</td><td>Typ właściwości. Obsługiwane wartości: "bool" boolean ","bajtów","guid","int","integer","długi","string","url"</td></tr>
+<tr><td></td><td>IgnoreCase</td><td>wartość logiczna</td><td>Wskazuje, czy przypadek mają być ignorowane w przypadku korzystania z wartości właściwości. Można określić tylko dla właściwości typu "string". Wartość domyślna to false.</td></tr>
+<tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>Wskazuje, czy przypadek mają być ignorowane w przypadku każdego segmentu ścieżki adresu url. Można określić tylko dla właściwości typu "url". Wartość domyślna to [false].</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>ciąg</td><td>Nazwa tożsamości zestawu.</td></tr>
-<tr><td></td><td>properties</td><td>ciąg]</td><td>Lista właściwości tożsamości zawarte w tej tożsamości ustawiona. Nie może zawierać duplikatów. Każda właściwość odwołuje się zestaw tożsamość musi być zdefiniowany na liście "identityProperties" protokołu.</td></tr>
+<tr><td></td><td>properties</td><td>ciąg]</td><td>Lista właściwości tożsamości zawarte w tej tożsamości zestawu. Nie może zawierać duplikatów. Każda właściwość odwołuje się zestaw tożsamości musi być zdefiniowany na liście "identityProperties" protokołu.</td></tr>
 
 </table>
 
 ## <a name="roles-and-authorization"></a>Role i autoryzacji
-Microsoft Azure Data Catalog oferuje możliwości autoryzacji dla operacji CRUD na zasoby i adnotacje.
+Microsoft Azure Data Catalog udostępnia funkcje autoryzacji dostępu do operacji CRUD na zasoby i adnotacji.
 
 ## <a name="key-concepts"></a>Kluczowe pojęcia
-Azure Data Catalog używa dwóch mechanizmów autoryzacji:
+Usługa Azure Data Catalog korzysta z dwóch mechanizmów autoryzacji:
 
-* Autoryzacji opartej na rolach
-* Autoryzacji na podstawie uprawnień
+* Autoryzacja oparta na rolach
+* Autoryzacja na podstawie uprawnień
 
 ### <a name="roles"></a>Role
-Dostępne są trzy role: **administratora**, **właściciela**, i **współautora**.  Każda rola ma jego zakres i praw, które przedstawiono w poniższej tabeli.
+Istnieją trzy role: **administratora**, **właściciela**, i **Współautor**.  Każda rola ma swój zakres i praw, które są podsumowane w poniższej tabeli.
 
-<table><tr><td><b>Rola</b></td><td><b>Zakres</b></td><td><b>Prawa</b></td></tr><tr><td>Administrator</td><td>Katalog (wszystkie zasoby/adnotacje w katalogu)</td><td>ViewRoles Usuń odczytu
+<table><tr><td><b>Rola</b></td><td><b>Zakres</b></td><td><b>Prawa</b></td></tr><tr><td>Administrator</td><td>Katalog (wszystkie zasoby/adnotacje w katalogu)</td><td>ViewRoles Delete odczytu
 
-ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Właściciel</td><td>Poszczególnych zasobów (element główny)</td><td>ViewRoles Usuń odczytu
+ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Właściciel</td><td>Każdy zasób (element główny)</td><td>ViewRoles Delete odczytu
 
-ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Współautor</td><td>Każdy poszczególnych zasobów i adnotacji</td><td>Odczytu aktualizacji Delete ViewRoles Uwaga: wszystkie prawa są odwołane po odebraniu odczytu w elemencie z Współautor</td></tr></table>
+ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Współautor</td><td>Każdy poszczególnych zasobów i adnotacji</td><td>Odczyt aktualizacji usuń ViewRoles Uwaga: wszystkie prawa zostaną odwołane po odebraniu odczytu bezpośrednio na element z Współautor</td></tr></table>
 
 > [!NOTE]
-> **Odczyt**, **aktualizacji**, **usunąć**, **ViewRoles** prawa są stosowane do dowolnego elementu (zasobów lub adnotacji) podczas **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility**, **ViewPermissions** dotyczą tylko zasobów katalogu głównego.
+> **Odczyt**, **aktualizacji**, **Usuń**, **ViewRoles** prawa są stosowane do dowolnego elementu (zasobów lub adnotacji) podczas **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility**, **ViewPermissions** dotyczą tylko zasobów katalogu głównego.
 > 
-> **Usuń** prawo dotyczy element i wszystkie elementy podrzędne lub pojedynczy element podrzędne. Na przykład usunięcie elementu zawartości spowoduje również usunięcie adnotacji dla tego zasobu.
+> **Usuń** prawo dotyczy elementów i podelementów lub pojedynczego elementu podrzędne. Na przykład usunięcie zasobu spowoduje również usunięcie wszelkich adnotacji dla tego zasobu.
 > 
 > 
 
 ### <a name="permissions"></a>Uprawnienia
-Uprawnienie jest jako listy wpisów kontroli dostępu. Każdego wpisu kontroli dostępu przypisuje zestaw praw do podmiotu zabezpieczeń. Uprawnienia można określić tylko dla elementu zawartości (to znaczy elementu głównego) i stosuje się do elementu zawartości i wszystkie elementy podrzędne.
+Uprawnienie jest jako lista wpisów kontroli dostępu. Każdy wpis kontroli dostępu przypisuje zestawu praw do podmiotu zabezpieczeń. Uprawnienia można określić tylko dla elementu zawartości (czyli element główny) i zastosować do elementu zawartości i wszelkich podrzędnych.
 
-Podczas **Azure Data Catalog** tylko podgląd **odczytu** prawo jest obsługiwana na liście uprawnień do scenariusza ograniczyć widoczność zasobów.
+Podczas **usługi Azure Data Catalog** tylko podgląd **odczytu** po prawej stronie jest obsługiwana na liście uprawnień do scenariusza ograniczyć widoczność elementu zawartości.
 
-Domyślnie każdy użytkownik uwierzytelniony ma **odczytu** prawym przyciskiem myszy każdego elementu w katalogu, chyba że widoczność jest ograniczona do zestawu podmiotów zabezpieczeń, w obszarze uprawnienia.
+Domyślnie każdy uwierzytelniony użytkownik ma **odczytu** prawym przyciskiem myszy dla każdego elementu w katalogu, chyba że widoczność jest ograniczona do zestawu jednostek w uprawnieniach.
 
 ## <a name="rest-api"></a>Interfejs API REST
-**Umieść** i **POST** żądań widoku elementu można użyć do kontrolowania role i uprawnienia: oprócz ładunku elementu, można określić dwie właściwości systemu **ról** i **uprawnienia**.
+**Umieść** i **WPIS** elementu widoku żądań może służyć do kontrolowania role i uprawnienia: oprócz ładunku element można określić dwie właściwości systemu **role** i  **uprawnienia**.
 
 > [!NOTE]
 > **uprawnienia** dotyczy to tylko element główny.
 > 
 > **Właściciel** roli dotyczy to tylko element główny.
 > 
-> Domyślnie, gdy element jest tworzony w katalogu jego **współautora** ma ustawioną wartość aktualnie uwierzytelnionego użytkownika. Jeśli element ma być aktualizowalnych osoby, **współautora** powinien być ustawiony na &lt;wszyscy&gt; specjalne podmiot zabezpieczeń w **ról** właściwości, gdy element zostanie opublikowane (zobacz poniższy przykład). **Współautor** nie można zmienić i nie zmienia czasie życia elementu (nawet **administratora** lub **właściciela** nie ma uprawnień do zmiany **współautora**). Jedyna wartość obsługiwana w przypadku jawnego ustawienia **współautora** jest &lt;wszyscy&gt;: **współautora** może być tylko użytkownik, który utworzył element lub &lt;wszyscy&gt;.
+> Domyślnie, gdy element zostanie utworzony w katalogu jego **Współautor** jest ustawiana obecnie uwierzytelnionego użytkownika. Jeśli element ma być nadaje się do aktualizacji dla każdej osoby, **Współautor** powinna być równa &lt;wszyscy&gt; specjalne podmiot zabezpieczeń w **role** opublikowanych właściwości, gdy element jest pierwszy (zobacz na poniższym przykładzie). **Współautor** nie można zmienić, i pozostaje taka sama podczas okresu istnienia elementu (nawet **administratora** lub **właściciela** nie ma prawo do zmiany **Współautor**). To jedyna wartość obsługiwana w przypadku jawnego ustawienia **Współautor** jest &lt;wszyscy&gt;: **Współautor** może być tylko użytkownika, który utworzył element lub &lt;wszystkich użytkowników &gt;.
 > 
 > 
 
 ### <a name="examples"></a>Przykłady
-**Ustaw współautora &lt;wszyscy&gt; podczas publikowania elementu.**
+**Ustaw Współautor &lt;wszyscy&gt; podczas publikowania elementu.**
 Podmiot zabezpieczeń specjalne &lt;wszyscy&gt; ma objectId "00000000-0000-0000-0000-000000000201".
-  **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
+  **WPIS** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
 > [!NOTE]
-> Niektórych implementacjach klienta HTTP może automatycznie ponownie wykonaj żądania w odpowiedzi 302 z serwera, ale zazwyczaj paska nagłówki autoryzacji w żądaniu. Nagłówek uwierzytelnienia jest wymagane na wysyłanie żądań do usługi Azure Data Catalog, należy się upewnić się, że nagłówek uwierzytelnienia nadal jest udostępniane po ponownym wystawieniu żądanie przekierowania lokalizacji określonej przez wykaz danych Azure. Następujący przykładowy kod przedstawia za pomocą obiektu .NET HttpWebRequest.
+> Niektóre implementacje klienta HTTP może automatycznie ponownie wykonaj żądania w odpowiedzi 302 z serwera, ale zazwyczaj paska nagłówki autoryzacji w żądaniu. Nagłówek autoryzacji jest wymagane, aby wysyłać żądania do usługi Azure Data Catalog, musisz zapewnić, że nagłówek autoryzacji jest nadal podawana podczas ponownego wystawienia żądanie przekierowania lokalizacji określonej przez usługę Azure Data Catalog. Następujący przykładowy kod pokazuje go za pomocą obiektu .NET HttpWebRequest.
 > 
 > 
 
@@ -308,7 +302,7 @@ Podmiot zabezpieczeń specjalne &lt;wszyscy&gt; ma objectId "00000000-0000-0000-
         ]
     }
 
-  **Przypisz właścicieli i ograniczenia ich widoczności dla istniejącego elementu głównego**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **Przypisz właścicieli i ograniczyć widoczność istniejącego elementu głównego**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [
@@ -353,7 +347,7 @@ Podmiot zabezpieczeń specjalne &lt;wszyscy&gt; ma objectId "00000000-0000-0000-
     }
 
 > [!NOTE]
-> W PUT nie jest to wymagane do określenia elementu ładunku w treści: PUT może posłużyć do zaktualizowania właśnie ról lub uprawnień.
+> W PUT nie jest to wymagane do określenia ładunków elementu w treści: PUT może służyć do aktualizacji, po prostu ról lub uprawnień.
 > 
 > 
 

@@ -1,89 +1,83 @@
 ---
-title: "Rejestracja źródeł danych w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono sposób rejestrowania źródeł danych w wykazie danych Azure, w tym pól metadanych wyodrębnione podczas rejestracji."
+title: Rejestracja źródeł danych w usłudze Azure Data Catalog
+description: W tym artykule opisano sposób rejestrowania źródła danych w usłudze Azure Data Catalog, w tym pola metadanych wyodrębnionych podczas rejestracji.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 48b13eef0960afb4aab68923fb97b5b9c14a3d9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4688b58b40df110a33f9310226db9a6412f43054
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053553"
 ---
-# <a name="register-data-sources-in-azure-data-catalog"></a>Rejestracja źródeł danych w wykazie danych Azure
+# <a name="register-data-sources-in-azure-data-catalog"></a>Rejestracja źródeł danych w usłudze Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie
-Wykaz danych Azure to usługa w chmurze pełni zarządzana, która służy jako system rejestracji i odnajdywania źródeł danych przedsiębiorstwa. Innymi słowy Data Catalog pomaga użytkownikom odnajdywania, zrozumienia i używania źródeł danych, a także pomaga organizacjom osiąganie większych zysków z ich istniejących danych. Pierwszym krokiem do wprowadzania wykrywalny przez wykaz danych źródła danych jest do zarejestrowania tego źródła danych.
+Azure Data Catalog to w pełni zarządzana usługa w chmurze służąca jako system rejestracji i odnajdywania firmowych źródeł danych. Innymi słowy Data Catalog ułatwia odnajdywanie, zrozumienie i używanie źródeł danych, co zapewnia organizacjom osiąganie większych zysków z ich istniejących danych. Pierwszym krokiem do wprowadzania odnaleźć za pomocą wykazu danych źródła danych jest można zarejestrować tego źródła danych.
 
 ## <a name="register-data-sources"></a>Rejestrowanie źródeł danych (Rejestrowanie źródeł danych)
-Rejestracja to proces trwa wyodrębnianie metadanych ze źródła danych i kopiowanie danych do usługi Data Catalog. Dane pozostają w miejscu, w którym aktualnie się znajdują, i podlegają kontroli administratorów i zasadom obowiązującym w danym systemie.
+Rejestracja to proces wyodrębniania metadanych ze źródła danych oraz kopiowania tych danych do usługi Data Catalog. Dane pozostają w miejscu, w którym aktualnie się znajdują, i podlegają kontroli administratorów i zasadom obowiązującym w danym systemie.
 
 Aby zarejestrować źródła danych, wykonaj następujące czynności:
-1. W portalu Azure Data Catalog uruchomić narzędzia rejestracji źródła danych wykazu danych. 
-2. Zaloguj się przy użyciu konta służbowego z tych samych poświadczeń usługi Azure Active Directory, których używasz do logowania do portalu.
+1. W portalu usługi Azure Data Catalog uruchomić narzędzia rejestracji źródła danych wykazu danych. 
+2. Zaloguj się przy użyciu konta służbowego przy użyciu tych samych poświadczeń usługi Azure Active Directory, których używasz do logowania do portalu.
 3. Wybierz źródło danych, które chcesz zarejestrować.
 
-Aby uzyskać bardziej szczegółowe informacje krok po kroku, zobacz [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) samouczka.
+Aby uzyskać więcej szczegółowych informacji krok po kroku, zobacz [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) samouczka.
 
-Po źródła danych został zarejestrowany, katalogu śledzi lokalizacji i indeksuje jego metadanych. Użytkownicy mogą wyszukiwanie, przeglądanie i odnajdywanie źródła danych i następnie się z nim połączyć za pomocą aplikacji lub ich wybranych narzędzi za pomocą jego lokalizacji.
+Po zarejestrowaniu źródła danych wykazu śledzi lokalizacji i indeksuje jego metadanych. Użytkownicy mogą wyszukiwanie, przeglądanie i odnajdywać źródła danych i następnie nawiązać z nim za pomocą aplikacji lub narzędzia wybranych przez nich za pomocą jego lokalizacji.
 
 ## <a name="supported-data-sources"></a>Obsługiwane źródła danych
 Aby uzyskać listę aktualnie obsługiwanych źródeł danych, zobacz [DSR wykazu danych](data-catalog-dsr.md).
 
 ## <a name="structural-metadata"></a>Metadane strukturalne
-Podczas rejestrowania źródła danych, narzędzie do rejestracji wyodrębnia informacje dotyczące struktury obiektów, którą wybierzesz. Te informacje jest określone jako metadane strukturalne.
+Po zarejestrowaniu źródła danych, narzędzie do rejestracji wyodrębnia informacje o strukturze wybranych obiektów. Te informacje nazywa się strukturalną metadanych.
 
-Dla wszystkich obiektów to metadane strukturalne zawiera lokalizacji obiektu, dzięki czemu użytkownicy, którzy odnajdywanie danych umożliwia łączenie do obiektu w narzędziach klienckich wybranych przez nich informacji. Inne metadane strukturalne zawiera nazwę obiektu i typu i wpisz nazwę atrybutu/kolumny i danych.
+Dla wszystkich obiektów te metadane strukturalne obejmuje lokalizacji obiektu, tak aby użytkownicy, którzy wykrywają dane można połączyć się z obiektem w narzędziach klienckich wybranych przez nich za pomocą tych informacji. Inne metadane strukturalne obejmują nazwę obiektu i typu, a następnie wpisz nazwy atrybutu/kolumny i danych.
 
 ## <a name="descriptive-metadata"></a>Metadane opisowe
-Oprócz podstawowych metadane strukturalne wyodrębniona ze źródła danych narzędzia rejestracji źródła danych wyodrębnia metadane opisowe. SQL Server Analysis Services i SQL Server Reporting Services metadanych jest pobierana z właściwości opisu udostępniane przez te usługi. Dla programu SQL Server, wartości przy użyciu ms\_opis właściwości rozszerzonej jest wyodrębniana. W przypadku bazy danych Oracle narzędzia rejestracji źródła danych wyodrębnia kolumnie komentarze z wszystkie\_kartę\_widoku komentarze.
+Oprócz metadane strukturalne podstawowe, które zostały wyodrębnione ze źródła danych narzędzia rejestracji źródła danych wyodrębnia metadane opisowe. SQL Server Analysis Services i SQL Server Reporting Services metadanych jest pobierana z właściwości opisu udostępniane przez te usługi. Dla programu SQL Server, wartości za pomocą ms\_jest wyodrębniany rozszerzona właściwość opis. Narzędzia rejestracji źródła danych dla bazy danych Oracle, wyodrębnia kolumny COMMENTS ze wszystkimi\_kartę\_wyświetlanie KOMENTARZY.
 
-Oprócz metadanych opisowych, który został wyodrębniony z źródła danych użytkownicy mogą wprowadzać metadane opisowe przy użyciu narzędzia rejestracji źródła danych. Użytkownicy mogą dodawać tagi i mogą identyfikować ekspertów dla obiektów, jest zarejestrowany. Te metadane opisowe jest kopiowany do usługi Data Catalog wraz z metadane strukturalne.
+Oprócz metadanych opisowych, które zostały wyodrębnione ze źródła danych użytkownicy mogą wprowadzać metadanych opisowych, za pomocą narzędzia rejestracji źródła danych. Użytkownicy mogą dodawać tagi i identyfikują one ekspertów dla obiektów, jest zarejestrowany. Te metadane opisowe są kopiowane do usługi Data Catalog wraz z metadane strukturalne.
 
-## <a name="include-previews"></a>Obejmują podglądy
-Domyślnie tylko metadane jest wyodrębnione ze źródła danych i skopiowane do usługi Data Catalog, ale opis, którego źródłem danych jest często łatwiejsza po wyświetleniu przykładowych danych, które zawiera.
+## <a name="include-previews"></a>Obejmują wersje zapoznawcze
+Domyślnie tylko metadanych jest wyodrębnione ze źródła danych i kopiowane do usługi Data Catalog, ale zrozumienie, które źródła danych jest często łatwiejsze gdy można wyświetlić przykładowe dane, które zawiera.
 
-Za pomocą narzędzia rejestracji źródła danych usługi Data Catalog, mogą obejmować Podgląd migawki danych w każdej tabeli i widoku, który jest zarejestrowany. Jeśli wybierzesz opcję dołączenia podglądy podczas rejestracji, narzędzie do rejestracji zawiera maksymalnie 20 rekordy z każdym tabel i widoków. Ta migawka zostaną skopiowane do katalogu wraz z metadanych strukturalnych i opisowy.
+Za pomocą narzędzia rejestracji źródła danych wykazu danych, możesz dołączyć podgląd migawki danych w każdej tabeli i widoku, który jest zarejestrowany. Jeśli zdecydujesz się obejmują wersje zapoznawcze podczas rejestracji, narzędzie do rejestracji zawiera maksymalnie 20 rekordów z każdej tabeli, widoku. Ta migawka zostaną skopiowane do katalogu wraz z metadanymi strukturalnych i opisowe.
 
 > [!NOTE]
-> Szerokie tabele z dużą liczbą kolumn może mieć mniej niż 20 rekordy w ich podglądu.
+> Szerokich tabel z dużą liczbą kolumn może być mniej niż 20 rekordy w ich w wersji zapoznawczej.
 >
 >
 
 ## <a name="include-data-profiles"></a>Dołącz profile danych
-Zgodnie z tym podglądy zapewniają cenne kontekst dla użytkowników, którzy wyszukiwania źródeł danych w katalogu danych, w tym profilu danych ułatwia zrozumienie źródeł odnalezionych danych.
+Zgodnie z tym Podgląd zapewniają kontekstowe przydatne dla użytkowników, którzy wyszukiwania źródeł danych w usłudze Data Catalog, w tym profilu danych może ułatwić zrozumienie źródła odnalezionych danych.
 
-Za pomocą narzędzia rejestracji źródła danych usługi Data Catalog, mogą obejmować dane profilu dla każdej tabeli i widoku, który jest zarejestrowany. Jeśli chcesz dołączyć profil danych podczas rejestracji, narzędzie do rejestracji zawiera zagregowanych danych statystycznych dotyczących danych w poszczególnych tabel i widoków, w tym:
+Za pomocą narzędzia rejestracji źródła danych wykazu danych, można dołączyć profil danych dla każdej tabeli i widoku, który jest zarejestrowany. Jeśli chcesz dołączyć profil danych podczas rejestracji, narzędzie do rejestracji zawiera zagregowanych danych statystycznych dotyczących danych w każdej tabeli i widok, w tym:
 
 * Liczba wierszy i rozmiar danych w obiekcie.
 * Data ostatniej aktualizacji danych i schematu obiektu.
-* Liczba rekordów wartości null i różne wartości w kolumnach.
-* Minimum, maksimum średnią i odchylenie standardowe wartości kolumny.
+* Liczba rekordów o wartości null i różne wartości w kolumnach.
+* Minimalna, maksymalna, średnia i odchylenie standardowe wartości dla kolumn.
 
-Te statystyki są kopiowane do katalogu wraz z metadanych strukturalnych i opisowy.
+Te statystyki są kopiowane do katalogu, wraz z metadanymi strukturalnych i opisowe.
 
 > [!NOTE]
-> Tekst i Data kolumny nie dołączaj statystyki średniej lub odchylenie standardowe w swoim profilu danych.
+> Tekst i Data kolumny nie dołączaj statystyki średnia lub odchylenie standardowe w swoim profilu danych.
 >
 >
 
-## <a name="update-registrations"></a>Aktualizacja rejestracji
-Rejestrowanie źródła danych dzięki wykrywalny w wykazie danych podczas korzystania z metadanych i opcjonalnie Podgląd wyodrębnione podczas rejestracji. Jeśli źródło danych musi zostać zaktualizowany w katalogu (na przykład jeśli schematu obiektu został zmieniony, tabele pierwotnie wykluczone mają zostać uwzględnione lub do zaktualizowania danych, który znajduje się w wersji zapoznawczych), można ponownie uruchomić narzędzia rejestracji źródła danych.
+## <a name="update-registrations"></a>Aktualizowanie rejestracji
+Rejestrowanie źródła danych sprawia, że wykrywalne w usłudze Data Catalog podczas korzystania z metadanych i opcjonalnie wyodrębnione podczas rejestracji w wersji zapoznawczej. Jeśli źródło danych musi zostać zaktualizowana w katalogu (na przykład, jeśli schemat obiektu został zmieniony, początkowo wyłączone tabele mają zostać uwzględnione lub zaktualizować danych, który znajduje się w wersji zapoznawczych), można ponownie uruchomić narzędzia rejestracji źródła danych.
 
-Ponowne rejestrowanie źródła danych już zarejestrowany wykonuje operację "upsert" merge: istniejące obiekty są aktualizowane i nowych obiektów. Wszystkie metadane udostępniane użytkownikom za pomocą portalu wykazu danych zostaną zachowane.
+Ponowne zarejestrowanie źródła danych już zarejestrowany wykonuje operację "upsert" scalania: istniejących obiektów są aktualizowane, a nowe obiekty są tworzone. Wszystkie metadane, dostarczone przez użytkowników za pośrednictwem portalu usługi Data Catalog zostaną zachowane.
 
 ## <a name="summary"></a>Podsumowanie
-Ponieważ metadanych strukturalnych i opisowy jest kopiowane ze źródłem danych z usługą wykazu, rejestrowania źródła danych w katalogu danych ułatwia dane do odnalezienia i zrozumienia. Po zarejestrowaniu źródła danych, można dodawać adnotacje, zarządzanie i go odnaleźć za pomocą portalu wykazu danych.
+Ponieważ metadane strukturalne i opisowe kopiowane ze źródła danych do usługi katalogu, rejestrowanie źródła danych w usłudze Data Catalog ułatwia odnajdywanie i zrozumienie. Po zarejestrowaniu źródła danych można dodawać adnotacje, zarządzanie i odnajdywanie przy użyciu portalu usługi Data Catalog.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat rejestrowania źródeł danych, zobacz [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) samouczka.

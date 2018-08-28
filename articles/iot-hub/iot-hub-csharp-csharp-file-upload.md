@@ -2,19 +2,18 @@
 title: Przekazywanie plików z urządzeń do usługi Azure IoT Hub przy użyciu platformy .NET | Dokumentacja firmy Microsoft
 description: Sposób przekazywania plików z urządzenia do chmury przy użyciu zestawu SDK urządzeń Azure IoT dla platformy .NET. Przekazane pliki są przechowywane w kontenerze obiektów blob usługi Azure storage.
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 677f0e0f17191feb560ac5e9bb72a058e385084d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: ef84985d7ca0473bdfd387b2fcfb3be344338eb7
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185834"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092123"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub przy użyciu platformy .NET
 
@@ -23,9 +22,10 @@ ms.locfileid: "39185834"
 Ten samouczek opiera się na kodzie w [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-csharp-csharp-c2d.md) samouczka, aby pokazują, jak korzystać z funkcji przekazywania plików usługi IoT Hub. Przedstawia on sposób do:
 
 - Bezpiecznie przekazać urządzenia z systemem Azure identyfikator URI obiektu blob przekazywania pliku.
+
 - Powiadomienia przekazywania pliku usługi IoT Hub umożliwia wyzwalanie przetwarzania pliku w aplikacji zaplecza.
 
-[Rozpoczynanie pracy z usługą IoT Hub](quickstart-send-telemetry-dotnet.md) i [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-csharp-csharp-c2d.md) samouczkach przedstawiono podstawowe funkcje obsługi komunikatów usługi IoT Hub urządzenia do chmury i z chmury do urządzeń. [Komunikatów z urządzenia chmury procesu](tutorial-routing.md) samouczku opisano sposób niezawodnego przechowywania komunikatów z urządzenia do chmury w usłudze Azure blob storage. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
+[Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md) i [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-csharp-csharp-c2d.md) artykuły pokazują podstawowe funkcje obsługi komunikatów usługi IoT Hub urządzenia do chmury i z chmury do urządzeń. [Skonfigurować Routing komunikatów usługi IoT Hub](tutorial-routing.md) samouczku opisano sposób niezawodnego przechowywania komunikatów z urządzenia do chmury w usłudze Azure blob storage. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
 
 * Duże pliki, które zawierają obrazy
 * Filmy wideo
@@ -37,15 +37,16 @@ Te pliki to typowo wsadowego przetwarzania w chmurze przy użyciu narzędzi taki
 Na końcu tego samouczka, możesz uruchomić dwie aplikacje konsolowe .NET:
 
 * **SimulatedDevice**, zmodyfikowanej wersji aplikacji utworzonej w [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-csharp-csharp-c2d.md) samouczka. Ta aplikacja przekazuje plik do magazynu przy użyciu identyfikatora URI sygnatury dostępu Współdzielonego, dostarczone przez Centrum IoT hub.
+
 * **ReadFileUploadNotification**, która odbiera powiadomienia o przekazywania plików z usługi IoT hub.
 
 > [!NOTE]
-> Usługa IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, Java i Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT] instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
+> Usługa IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, Java i Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT](http://azure.microsoft.com/develop/iot) instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Program Visual Studio 2015 lub Visual Studio 2017
-* Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
+* Visual Studio 2017
+* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -57,7 +58,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzone w [wysyłanie komuni
 
 1. Kliknij prawym przyciskiem myszy na obrazie, a następnie kliknij przycisk **właściwości**. Upewnij się, że **Kopiuj do katalogu wyjściowego** ustawiono **zawsze Kopiuj**.
 
-    ![][1]
+    ![Pokazano, gdzie można zaktualizować właściwości obrazu do skopiowania do katalogu wyjściowego](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
 1. W **Program.cs** plików, Dodaj następujące instrukcje w górnej części pliku:
 
@@ -93,7 +94,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzone w [wysyłanie komuni
     ```
 
 > [!NOTE]
-> Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [Obsługa błędu przejściowego].
+> Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680901.aspx).
 
 ## <a name="receive-a-file-upload-notification"></a>Otrzymywać powiadomienie o przekazywaniu pliku
 
@@ -101,28 +102,28 @@ W tej sekcji służy do pisania aplikacji konsolowej .NET, która odbiera komuni
 
 1. W bieżącym rozwiązaniu programu Visual Studio Utwórz projekt Visual C# Windows za pomocą **aplikację Konsolową** szablonu projektu. Nadaj projektowi nazwę **ReadFileUploadNotification**.
 
-    ![Nowy projekt w programie Visual Studio][2]
+    ![Nowy projekt w programie Visual Studio](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **ReadFileUploadNotification** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** .
+2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **ReadFileUploadNotification** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** .
 
-1. W **Menedżera pakietów NuGet** okna, wyszukaj **Microsoft.Azure.Devices**, kliknij przycisk **zainstalować**i zaakceptuj warunki użytkowania.
+3. W **Menedżera pakietów NuGet** okna, wyszukaj **Microsoft.Azure.Devices**, kliknij przycisk **zainstalować**i zaakceptuj warunki użytkowania.
 
-    Ta akcja spowoduje pobranie, instaluje i dodanie odwołania do [Pakiet NuGet zestawu SDK usługi w usłudze Azure IoT] w **ReadFileUploadNotification** projektu.
+    Ta akcja spowoduje pobranie, instaluje i dodanie odwołania do [pakietu NuGet zestawu SDK usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) w **ReadFileUploadNotification** projektu.
 
-1. W **Program.cs** plików, Dodaj następujące instrukcje w górnej części pliku:
+4. W **Program.cs** plików, Dodaj następujące instrukcje w górnej części pliku:
 
     ```csharp
     using Microsoft.Azure.Devices;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia Centrum IoT z [Rozpoczynanie pracy z usługą IoT Hub]:
+5. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia Centrum IoT z [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md):
 
     ```csharp
     static ServiceClient serviceClient;
     static string connectionString = "{iot hub connection string}";
     ```
 
-1. Dodaj następującą metodę do klasy **Program**:
+6. Dodaj następującą metodę do klasy **Program**:
 
     ```csharp
     private async static void ReceiveFileUploadNotificationAsync()
@@ -136,17 +137,18 @@ W tej sekcji służy do pisania aplikacji konsolowej .NET, która odbiera komuni
             if (fileUploadNotification == null) continue;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Received file upload noticiation: {0}", string.Join(", ", fileUploadNotification.BlobName));
+            Console.WriteLine("Received file upload notification: {0}", 
+              string.Join(", ", fileUploadNotification.BlobName));
             Console.ResetColor();
 
             await notificationReceiver.CompleteAsync(fileUploadNotification);
         }
-    }
+    }   
     ```
 
     Należy zauważyć, że ten wzorzec odbioru jest taka sama, jak używaną do odbierania komunikatów z chmury do urządzeń z aplikacji urządzenia.
 
-1. Na koniec dodaj następujące wiersze do metody **Główne**:
+7. Na koniec dodaj następujące wiersze do metody **Główne**:
 
     ```csharp
     Console.WriteLine("Receive file upload notifications\n");
@@ -162,40 +164,19 @@ Teraz wszystko jest gotowe do uruchomienia aplikacji.
 
 1. W programie Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz **Ustaw projekty startowe**. Wybierz **wiele projektów startowych**, a następnie wybierz **Start** akcji dla **ReadFileUploadNotification** i **SimulatedDevice**.
 
-1. Naciśnij klawisz **F5**. Należy uruchomić obie aplikacje. Powinien zostać wyświetlony przekazywanie ukończone w jednej aplikacji konsoli i przekazywania komunikatu powiadomienia odbierane przez inną aplikację konsoli. Możesz użyć [Azure Portal] lub Eksploratorze serwera Visual Studio pod kątem obecności przekazany plik na swoim koncie usługi Azure Storage.
+2. Naciśnij klawisz **F5**. Należy uruchomić obie aplikacje. Powinien zostać wyświetlony przekazywanie ukończone w jednej aplikacji konsoli i przekazywania komunikatu powiadomienia odbierane przez inną aplikację konsoli. Możesz użyć [witryny Azure portal](https://portal.azure.com/) lub Eksploratorze serwera Visual Studio pod kątem obecności przekazany plik na swoim koncie usługi Azure Storage.
 
-    ![][50]
+    ![Zrzut ekranu przedstawiający ekran danych wyjściowych](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
-* [Programistyczne tworzenie Centrum IoT hub][lnk-create-hub]
-* [Wprowadzenie do zestawu SDK języka C][lnk-c-sdk]
-* [Zestawy SDK Azure IoT][lnk-sdks]
+* [Programistyczne tworzenie Centrum IoT hub](iot-hub-rm-template-powershell.md)
+* [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
+* [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)
 
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-<!-- Images. -->
-
-[50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
-[1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
-[2]: ./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png
-
-<!-- Links -->
-
-[Azure Portal]: https://portal.azure.com/
-
-[Centrum deweloperów Azure IoT]: http://azure.microsoft.com/develop/iot
-
-[Obsługa błędu przejściowego]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Pakiet NuGet zestawu SDK usługi w usłudze Azure IoT]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

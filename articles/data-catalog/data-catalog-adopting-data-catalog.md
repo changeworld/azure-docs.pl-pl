@@ -1,25 +1,19 @@
 ---
-title: Wdrażanie usługi Azure Data Catalog — podejście i proces | Microsoft Docs
+title: Wdrażanie usługi Azure Data Catalog — podejście i proces
 description: W tym artykule przedstawiono podejście i proces dla organizacji rozważających wdrożenie usługi Azure Data Catalog, w tym definiowanie wizji, identyfikowanie najważniejszych przypadków użycia biznesowego i wybór projektu pilotażowego.
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: daeb8abdf52466ad5231e9d08e4eb6d853d1f4a8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053655"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Wdrażanie usługi Azure Data Catalog — podejście i proces
 Ten artykuł ułatwia rozpoczęcie wdrażania usługi **Azure Data Catalog** w organizacji. Aby pomyślnie wdrożyć usługę **Azure Data Catalog**, należy skoncentrować się na trzech kluczowych elementach — zdefiniowaniu wizji, zidentyfikowaniu najważniejszych przypadków użycia biznesowego w ramach organizacji i wyborze projektu pilotażowego.

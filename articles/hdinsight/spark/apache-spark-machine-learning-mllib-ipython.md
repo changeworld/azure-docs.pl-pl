@@ -4,18 +4,18 @@ description: Dowiedz się, jak utworzyć aplikację learning maszyny, która ana
 keywords: Platforma Spark uczenia maszynowego, spark machine learning przykład
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 068d5ee7200f9597da11c0a2850ef4941f4ea900
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 78f9240e6b01bafc68b71d20044c7ec7458cc972
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619536"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047300"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Tworzenie aplikacji uczenia maszynowego i analizować zestaw danych przy użyciu MLlib platformy Spark
 
@@ -374,7 +374,7 @@ Teraz można utworzyć wizualizację końcowego ułatwiające przyczyny o wyniki
 
     Powinny zostać wyświetlone następujące dane wyjściowe:
 
-    ![Platforma Spark usługi machine learning dane wyjściowe aplikacji — wykres kołowy procenty inspekcji żywności nie powiodło się. ] (./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Platformy Spark usługi machine learning wynik w danych wyjściowych")
+    ![Platforma Spark usługi machine learning dane wyjściowe aplikacji — wykres kołowy procenty inspekcji żywności nie powiodło się. ](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Platformy Spark usługi machine learning wynik w danych wyjściowych")
 
     Na tym wykresie "pozytywny" odnosi się do kontroli żywności nie powiodło się, gdy wynik ujemny oznacza sukces inspekcji.
 

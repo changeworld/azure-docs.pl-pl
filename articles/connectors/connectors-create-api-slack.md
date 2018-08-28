@@ -1,67 +1,82 @@
 ---
-title: Korzystanie z łącznika zapas czasu w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Nawiązać zapas czasu w aplikacjach logiki
+title: Nawiązywanie połączenia Slack z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań i przepływów pracy, które monitorował pliki i zarządzać kanałów, grup i komunikaty na koncie usługi Slack za pomocą usługi Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 88b134a90ac385ad957d76f420fe85dc2dbbf751
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7af2db528866d687064e854e00e43e81d2601b2b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296227"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042329"
 ---
-# <a name="get-started-with-the-slack-connector"></a>Rozpoczynanie pracy z Slack łącznika
-Slack jest narzędziem do komunikacji zespołowej, które łączy całą komunikację zespołową w jednym miejscu. Umożliwia natychmiastowe wyszukiwanie i dostęp do komunikacji z dowolnego miejsca. 
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Slack przy użyciu usługi Azure Logic Apps
 
-Rozpoczynanie pracy przez tworzenie aplikacji logiki teraz; zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Korzystając z usługi Azure Logic Apps i łącznika usługi Slack można utworzyć automatycznych zadań i przepływów pracy, które monitorują Slack plików i zarządzać kanałach Slack, wiadomości, grup i tak dalej, na przykład:
 
-## <a name="create-a-connection-to-slack"></a>Utwórz połączenie zapas czasu
-Do korzystania z łącznika Slack, należy najpierw utworzyć **połączenia** następnie podaj szczegóły tych właściwości: 
+* Monitor, gdy zostaną utworzone nowe pliki.
+* Utwórz listę i Dołącz do kanałów 
+* Opublikuj wiadomości.
+* Tworzenie grup i nie przeszkadzać zestawu.
 
-| Właściwość | Wymagane | Opis |
-| --- | --- | --- |
-| Token |Yes |Podaj poświadczenia usługi Slack |
+Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z konta usługi Slack i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonują zadania przy użyciu konta Slack. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji Slack. Na przykład gdy nowy plik zostanie utworzony, możesz wysłać wiadomość e-mail za pośrednictwem łącznika Office 365 Outlook. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Zaloguj się do zapas czasu, wykonując następujące kroki i zakończyć konfigurację Slack **połączenia** w aplikacji logiki:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Wybierz **cyklu**
-2. Wybierz **częstotliwość** , a następnie wprowadź **interwał**
-3. Wybierz **Dodaj akcję**  
-   ![Skonfiguruj zapas czasu][1]  
-4. W polu wyszukiwania wprowadź zapas czasu i poczekaj, aż wyszukiwania zwrócić wszystkie wpisy z zapas czasu w nazwie
-5. Wybierz **Slack - Post wiadomości**
-6. Wybierz **Zaloguj się do zapas czasu**:  
-   ![Skonfiguruj zapas czasu][2]
-7. Podaj poświadczenia Slack logować się do autoryzowania aplikacji    
-   ![Skonfiguruj zapas czasu][3]  
-8. Użytkownik zostanie przekierowany do stronę logowania Twojej organizacji. **Autoryzowanie** zapas czasu wchodzić w interakcje z aplikacji logiki:      
-   ![Skonfiguruj zapas czasu][5] 
-9. Po zakończeniu autoryzacji są przekierowywane do aplikacji logiki do ukończenia jej przez skonfigurowanie **Slack — pobranie wszystkich wiadomości** sekcji. Dodawanie innych wyzwalacze i akcje, które są potrzebne.  
-   ![Skonfiguruj zapas czasu][6]
-10. Zapisz swoją pracę, wybierając **zapisać** menu (w kierunku do góry).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+* Twoje [Slack](https://slack.com/) konta i poświadczenia użytkownika
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/slack/).
+  Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do konta programu Slack.
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-[1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
-[3]: ./media/connectors-create-api-slack/connectionconfig3.png
-[4]: ./media/connectors-create-api-slack/connectionconfig4.png
-[5]: ./media/connectors-create-api-slack/connectionconfig5.png
-[6]: ./media/connectors-create-api-slack/connectionconfig6.png
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta Slack. Można uruchomić z wyzwalaczem Slack [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć Slack akcji, uruchom aplikację logiki z wyzwalaczem, takich jak Slack wyzwalacza lub innym, takich jak **cyklu** wyzwalacza.
+
+## <a name="connect-to-slack"></a>Nawiązać połączenie z Slack
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+
+1. W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "slack" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+
+   — lub —
+
+   Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
+   W polu wyszukiwania wprowadź "slack" jako filtr. 
+   W obszarze listy akcji wybierz akcję, którą chcesz.
+
+   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
+   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+
+1. Jeśli zostanie wyświetlony monit, aby zarejestrować się w usłudze Slack, zaloguj się do obszaru roboczego usługi Slack. 
+
+   ![Zaloguj się w usłudze Slack obszaru roboczego](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+
+1. Autoryzowanie dostępu dla aplikacji logiki.
+
+   ![Autoryzowanie dostępu do Slack](./media/connectors-create-api-slack/slack-authorize-access.png)
+
+1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji. Aby kontynuować tworzenie przepływu pracy aplikacji logiki, Dodaj więcej akcji.
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/slack/).
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

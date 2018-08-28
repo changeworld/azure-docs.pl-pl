@@ -3,18 +3,18 @@ title: Klient bazy danych HBase w języku Java — Azure HDInsight
 description: Informacje o sposobie tworzenia aplikacji opartych na języku Java bazy danych Apache HBase, a następnie wdrożyć ją do bazy danych HBase w usłudze Azure HDInsight przy użyciu narzędzia Apache Maven.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jasonh
-ms.openlocfilehash: 4700a25cdeb9bf9800d01f09691b0f16df3f6637
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d198db98c07c01a56be118e74ce2bf4b29b8c757
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597756"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048436"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji bazy danych Apache HBase w języku Java
 

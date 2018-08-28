@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642686"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920077"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -223,6 +223,9 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze platformy Azure bez
 Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page-deployed]
+
+## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Konfigurowanie ciągłej integracji i ciągłego wdrażania (CI/CD) przy użyciu klastra usługi Service Fabric
+Aby dowiedzieć się, jak skonfigurować wdrożenie aplikacji ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric za pomocą usługi VSTS, zobacz [Samouczek: Wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Proces opisany w tym samouczku jest taki sam dla tego projektu (FabrikamFiber) — wystarczy po prostu pominąć pobieranie przykładu Voting i zastąpić nazwę repozytorium Voting nazwą FabrikamFiber.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po zakończeniu pracy usuń wszystkie utworzone zasoby.  Najprostszym sposobem jest usunięcie grup zasobów, które zawierają klaster usługi Service Fabric, usługę Azure SQL DB i usługę Azure Container Registry.

@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 19a153a5cdc9d5f878494984313baebd12dbcbb5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631167"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040324"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
 
@@ -30,6 +30,9 @@ Podkategoria miernika i produktu pola danych użycia nie rozróżnia rozmiarów 
 
 Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości rozmiarów maszyn wirtualnych z pewnymi wyjątkami:
 
+- Klasyczne maszyny wirtualne i Cloud services nie uzyskać rabat związany z rezerwacją.
+- Pominięte rdzeni maszyn wirtualnych nie uzyskać rabaty rezerwacji.
+- Następujące serię maszyn wirtualnych nie uzyskasz rabaty rezerwacji: A-series serii Av2 i serii G.
 - Maszyny wirtualne w wersji zapoznawczej: serię maszyn wirtualnych ani rozmiaru, który jest w wersji zapoznawczej nie są dostępne do zakupu rezerwacji.
 - Chmury: rezerwacji nie są dostępne do zakupu w regionach platformy Azure instytucji rządowych USA, Niemcy i Chiny.
 - Za mały limit przydziału: rezerwacji, które są ograniczone do pojedynczej subskrypcji musi mieć dostępnego w ramach subskrypcji dla nowych wystąpień Zarezerwowanych limitu przydziału procesorów wirtualnych. Na przykład jeśli docelowa subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, następnie możesz dokonać zakupu rezerwacji 11 wystąpień maszyna wirtualna Standard_D1. Sprawdzenie limitu przydziału dla rezerwacji obejmuje maszyny wirtualne wdrożone w ramach subskrypcji. Na przykład jeśli subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, ma dwa wystąpienia maszyna wirtualna standard_D1 wdrożeniu można kupować Rezerwacja 10 wystąpień maszyna wirtualna standard_D1 w ramach tej subskrypcji. 

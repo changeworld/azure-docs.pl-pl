@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42357514"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048461"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Rozpoczynanie pracy z bibliotekami klienckimi usługa rozpoznawania mowy Bing
 
@@ -33,7 +33,7 @@ Obecnie dostępne są następujące biblioteki klienta mowy Bing:
 - [Biblioteka języka Objective-C dla systemu iOS](Get-Started-ObjectiveC-iOS.md)
 
 > [!NOTE] 
-W maju 2018 r. wydaliśmy się również nowe [usługa rozpoznawania mowy](/speech-service/overview.md) w publicznej wersji zapoznawczej. Firma Microsoft zachęca do [za darmo wypróbować](/speech-service/get-started.md). 
+W maju 2018 r. wydaliśmy się również nowe [usługa rozpoznawania mowy](../../speech-service/index.yml) w publicznej wersji zapoznawczej. Firma Microsoft zachęca do [za darmo wypróbować](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

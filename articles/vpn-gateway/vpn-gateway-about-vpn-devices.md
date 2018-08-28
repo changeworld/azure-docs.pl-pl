@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: ba557fdae01df4a631c2acff49cc3350fb08ff59
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9a97927bb3309fd3ea833cbc7ff0e1eb8a5141f0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726241"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042539"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -73,7 +73,7 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | ShareTech | UTM następnej generacji (seria NU) | 9.0.1.3 | Niezgodne | [Przewodnik po konfiguracji](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Seria TZ, seria NSA<br>Seria SuperMassive<br>Seria E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Niezgodne |[Przewodnik po konfiguracji](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [Przewodnik po konfiguracji](https://community.sophos.com/kb/127546) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokół BGP za pośrednictwem IKEv2 i IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012374708&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=2EF5KFljZwtAGQDSm8%2FF2f6DqI2bkmA2qKG4u0rPgbQ%3D&reserved=0)<br><br>[VTI za pośrednictwem IKEv2 i IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012305347&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=ycgiDJCOQYTPN7sAEBSigphzC6mBaADz%2FgdCOm7TsXA%3D&reserved=0)
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokół BGP za pośrednictwem IKEv2 i IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI za pośrednictwem IKEv2 i IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Wszyscy |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
@@ -82,11 +82,11 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 >
 > (\*\*) Routery z serii ISR 7200 obsługują tylko sieci VPN oparte na zasadach.
 
-## <a name="configscripts"></a>Pobierz skrypty do konfiguracji urządzenia sieci VPN z platformy Azure
+## <a name="configscripts"></a>Pobieranie skryptów konfiguracji urządzenia sieci VPN na platformie Azure
 
-Dla niektórych urządzeń, możesz pobrać skryptów konfiguracyjnych bezpośrednio z platformy Azure. Aby uzyskać więcej informacje i instrukcje pobierania, zobacz [VPN Pobierz skrypty do konfiguracji urządzeń](vpn-gateway-download-vpndevicescript.md).
+W przypadku niektórych urządzeń, możesz pobrać skrypty konfiguracji bezpośrednio na platformie Azure. Aby uzyskać więcej informacji i instrukcje pobierania, zobacz [skryptów konfiguracji urządzenia VPN Pobierz](vpn-gateway-download-vpndevicescript.md).
 
-### <a name="devices-with-available-configuration-scripts"></a>Urządzeniami za pomocą skryptów konfiguracyjnych dostępnych
+### <a name="devices-with-available-configuration-scripts"></a>Urządzeń za pomocą skryptów konfiguracyjnych dostępnych
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 

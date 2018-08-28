@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/26/2018
 ms.author: juliako
-ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 49b834325ce819f20978e06d85ee308955510ac1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070877"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051113"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -36,7 +36,6 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 | LiveEvents na konto usługi Media Services |5|
 | Konta usługi Media Services w ramach jednej subskrypcji | 25 (stały) |
 | LiveOutputs w stanie działania na element LiveEvent |3|
-| LiveOutputs w stanie zatrzymania na element LiveEvent |50|
 | Konta magazynu | 100<sup>(4)</sup> (stałe) |
 | Punkty końcowe przesyłania strumieniowego w stanie działania na konto usługi Media Services|2|
 | StreamingPolicies | 100 <sup>(3)</sup> |

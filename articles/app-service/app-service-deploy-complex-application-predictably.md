@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42061495"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050750"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
 W tym samouczku pokazano, jak aprowizować i wdrażanie aplikacji składających się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedyncza jednostka i w przewidywalny sposób za pomocą szablonów grup zasobów JSON i Wykonywanie skryptów programu PowerShell. 
@@ -40,7 +40,7 @@ W tym samouczku wdrożysz aplikację, która obejmuje:
 W tym samouczku użyjesz następujących narzędzi. Ponieważ nie jest kompleksowe omówienie narzędzia, zamierzam używany scenariusz end-to-end, a także tylko krótkie wprowadzenie do każdego z nich, oraz gdzie znajdziesz więcej informacji na jego temat. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Szablony usługi Azure Resource Manager (JSON)
-Za każdym razem, gdy tworzysz aplikację sieci web w usłudze Azure App Service, na przykład usługi Azure Resource Manager używa szablonu JSON tworzyć całą grupę zasobów przy użyciu zasobów składnika. Złożonych szablonów z [portalu Azure Marketplace](/marketplace) takich jak [skalowane witryny WordPress](/marketplace/partners/wordpress/scalablewordpress/) aplikacja może zawierać bazy danych MySQL, konta magazynu, plan usługi App Service, aplikacja sieci web, reguły alertów, ustawienia aplikacji Ustawienia automatycznego skalowania i więcej, a wszystkie te szablony są dostępne za pośrednictwem programu PowerShell. Aby uzyskać informacje o tym, jak pobrać i używać tych szablonów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
+Za każdym razem, gdy tworzysz aplikację sieci web w usłudze Azure App Service, na przykład usługi Azure Resource Manager używa szablonu JSON tworzyć całą grupę zasobów przy użyciu zasobów składnika. Złożonych szablonów z [portalu Azure Marketplace](/azure/marketplace) może zawierać bazy danych, kont magazynu, plan usługi App Service, aplikacji sieci web, reguły alertów, ustawienia aplikacji, ustawień automatycznego skalowania i więcej, a te szablony są dostępne dla użytkownika za pomocą programu PowerShell. Aby uzyskać informacje o tym, jak pobrać i używać tych szablonów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 Aby uzyskać więcej informacji na temat szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md)
 

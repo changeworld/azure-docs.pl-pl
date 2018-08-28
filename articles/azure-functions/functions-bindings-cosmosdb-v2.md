@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 1237d6a35d279a1036bb8139dd0b0ceaa34edb7b
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fc00400590582d21590aadc9741cf0eaf048240
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746846"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047218"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x (wersja zapoznawcza)
 
@@ -36,6 +36,10 @@ W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](..\cosmos-
 > To powiązanie pierwotnie nosiła nazwę bazy danych DocumentDB. W funkcji w wersji 2.x, wyzwalacz, powiązania i pakietu są wszystkie o nazwie usługi Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>Obsługiwane interfejsy API
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
@@ -254,10 +258,7 @@ Wyzwalacz nie wskazuje, czy zaktualizowane lub wstawić dokumentu, po prostu zap
 
 ## <a name="input"></a>Dane wejściowe
 
-Powiązania danych wejściowych usługi Azure Cosmos DB pobiera jeden lub więcej dokumentów usługi Azure Cosmos DB i przekazuje je do parametr wejściowy funkcji. Można określić parametry identyfikator lub kwerendę dokumentu oparte na wyzwalacz, który wywołuje funkcję. 
-
->[!NOTE]
-> Nie używasz usługi Azure Cosmos DB w danych wejściowych lub powiązania danych wyjściowych, jeśli używasz interfejsu API usługi MongoDB na konto usługi Cosmos DB. Możliwe jest uszkodzenie danych.
+Powiązania danych wejściowych usługi Azure Cosmos DB używa interfejsu API SQL do pobrania jednego lub więcej dokumentów usługi Azure Cosmos DB i przekazuje je do parametr wejściowy funkcji. Można określić parametry identyfikator lub kwerendę dokumentu oparte na wyzwalacz, który wywołuje funkcję. 
 
 ## <a name="input---examples"></a>Dane wejściowe — przykłady
 
@@ -1253,10 +1254,7 @@ W funkcji języka JavaScript nie zostało zaktualizowane automatycznie po wyjśc
 
 ## <a name="output"></a>Dane wyjściowe
 
-Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB. 
-
->[!NOTE]
-> Nie używasz usługi Azure Cosmos DB w danych wejściowych lub powiązania danych wyjściowych, jeśli używasz interfejsu API usługi MongoDB na konto usługi Cosmos DB. Możliwe jest uszkodzenie danych.
+Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB przy użyciu interfejsu API SQL. 
 
 ## <a name="output---examples"></a>Dane wyjściowe — przykłady
 

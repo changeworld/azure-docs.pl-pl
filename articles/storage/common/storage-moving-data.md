@@ -2,18 +2,18 @@
 title: Przenoszenie dużych ilości danych do/z magazynu w chmurze na platformie Azure | Dokumentacja firmy Microsoft
 description: Omówienie różnych metod przenoszenie danych do i z usługi Azure Storage.
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525539"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049614"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Przenoszenie danych do i z usługi Azure Storage
 Jeśli chcesz przenieść lokalne dane do usługi Azure Storage (lub odwrotnie), istnieją na różne sposoby, aby to zrobić. Podejście, które najlepiej odpowiadający Ci będzie zależeć od danego scenariusza. Ten artykuł będzie zawiera krótkie omówienie różnych scenariuszy i odpowiednie oferty dla każdej z nich.
@@ -21,7 +21,7 @@ Jeśli chcesz przenieść lokalne dane do usługi Azure Storage (lub odwrotnie),
 ## <a name="building-applications"></a>Tworzenie aplikacji
 Jeśli tworzysz aplikację, programowanie pod kątem interfejsu API REST lub jednej z naszych wiele bibliotek klienckich jest doskonałym sposobem na przenoszenie danych do i z usługi Azure Storage.
 
-Usługa Azure Storage udostępnia rozbudowane biblioteki klienckie dla platformy .NET, iOS, Java, Android, Windows platformy Uniwersalnej, Xamarin, języka C++, Node.JS, PHP, Ruby i Python. Biblioteki klienta oferują zaawansowane możliwości, takie jak logika ponowień, rejestrowanie i przekazywanie równoległe. Możliwe jest również programowanie bezpośrednio przy użyciu interfejsu API REST, który może być wywoływany przez dowolny język programowania mający możliwość wysyłania żądań HTTP lub HTTPS.
+Usługa Azure Storage udostępnia rozbudowane biblioteki klienckie dla wielu popularnych języków, w tym .NET, Java, Android, Go, Xamarin, C++, Node.JS, PHP, Ruby, Python i z systemem iOS. Biblioteki klienta oferują zaawansowane możliwości, takie jak logika ponowień, rejestrowanie i przekazywanie równoległe. Możliwe jest również programowanie bezpośrednio przy użyciu interfejsu API REST, który może być wywoływany przez dowolny język programowania mający możliwość wysyłania żądań HTTP lub HTTPS.
 
 Zobacz [Rozpoczynanie pracy z usługą Azure Blob Storage](../blobs/storage-dotnet-how-to-use-blobs.md) Aby dowiedzieć się więcej.
 

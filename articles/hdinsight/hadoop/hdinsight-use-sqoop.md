@@ -1,7 +1,7 @@
 ---
 title: Wykonywanie zadań Apache Sqoop z usługą Azure HDInsight (Hadoop)
 description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej do uruchamiania narzędzia Sqoop importu i eksportu między klastrem usługi Hadoop a bazą danych Azure SQL database.
-editor: jasonwhowell
+ms.reviewer: jasonh
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 8444da715ea4557cf76f3cad569f3d07136df1e8
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7834c6365753e290c7d9e232f716e4b1d39f3db5
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594947"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042578"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Z usługą Hadoop w HDInsight przy użyciu narzędzia Sqoop
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

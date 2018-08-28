@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887591"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042042"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu usługi Azure Logic Apps
 
@@ -48,24 +48,16 @@ Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jes
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-1. Wybierz ścieżkę: 
+1. Puste logic apps w polu wyszukiwania wprowadź "sftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-   * Puste logic apps w polu wyszukiwania wprowadź "salesforce" jako filtr. 
-   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   — lub —
 
-     — lub —
+   Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
+   W polu wyszukiwania wprowadź "sftp" jako filtr. 
+   W obszarze listy akcji wybierz akcję, którą chcesz.
 
-   * W przypadku istniejących aplikacji logiki: 
-   
-     * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
-
-       — lub —
-
-     * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
-     
-        W polu wyszukiwania wprowadź "sftp" jako filtr. 
-        W obszarze listy akcji wybierz akcję, którą chcesz.
+   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
+   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
 

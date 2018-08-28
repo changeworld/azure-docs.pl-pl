@@ -2,19 +2,19 @@
 title: Informacje o wersji dla usługi Azure HDInsight
 description: Najnowsze informacje o wersji dla usługi Azure HDInsight. Pobierz porad programistycznych i szczegóły dla usługi Hadoop, Spark, R Server, Hive i więcej.
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jasonh
-ms.openlocfilehash: c6c320786611e9e2646000fb2272ced8fa90d194
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 5078ee68e559959390d439ed1ef9f8e199d2f083
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596039"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090154"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
 

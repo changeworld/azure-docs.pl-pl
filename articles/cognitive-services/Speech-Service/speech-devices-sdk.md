@@ -9,20 +9,22 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 97a5d00d43ac6a9d4b28ba23ca69d9b67e1bdf6f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285497"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049803"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Zestaw Speech Devices SDK (wersja zapoznawcza) — informacje
 
-Samodzielnie usługa Microsoft Speech współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK to biblioteka wstępnie dostosowane sparowana z konkretnego sprzętu z obsługą mikrofonu. Zestaw SDK można łatwo zintegrować swoje urządzenie z usługą Microsoft Speech oparte na chmurze i utworzyć środowisko użytkownika wyjątkowych dla swoich klientów.
+[Usługa Microsoft Speech](overview.md) współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką wstępnie dostosowane sparowane z celem wbudowane mikrofonów development Kit. Daje możliwość szybkiego testowania nowych scenariuszy głosu, zestawu Speech Devices SDK można łatwo zintegrować usługę rozpoznawania mowy firmy Microsoft oparte na chmurze do urządzenia i utworzyć środowisko użytkownika wyjątkowych dla swoich klientów. 
 
-Zestaw SDK umożliwia tworzenie otoczenia urządzeniach przy użyciu dostosowanych aktywujące — więc wskaźnika, który inicjuje interakcji z użytkownikiem jest unikatowy dla Twojej marki. Aby zapewnić bardziej precyzyjne rozpoznawania mowy za pośrednictwem pomijanie szumu, echa, głos daleko pola i kształtowaniem wiązki używa wielokanałowe audio.
+Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md)i wysyła audio przetworzonych przez nasz algorytm zaawansowane przetwarzanie audio z tablicy mikrofonu urządzenia, do przy użyciu zestawu SDK mowy [Microsoft Speech Service](overview.md).  Używa ona audio wielokanałowe aby zapewnić bardziej precyzyjne daleko pole [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz reverberation cofnięcia.
 
-Zestaw SDK ułatwia różnych scenariuszy obsługą głosu, takich jak dysk do szeregowania systemów, asystenci w samochodzie lub domową i głośników inteligentne. Zareagować na użytkowników z tekstu, mowy posiadającej w domyślnych lub niestandardowych voice, zapewniają wyniki wyszukiwania, przełożyć na inne języki i nie tylko. 
+Zestawu Speech Devices SDK umożliwia również tworzenie otoczenia urządzeń za pomocą własnych [dostosowane słowo aktywujące](speech-devices-sdk-create-kws.md)— więc wskaźnika, który inicjuje interakcji z użytkownikiem jest unikatowy dla Twojej marki. 
+
+Zestaw SDK ułatwia różnych scenariuszy obsługą głosu, takich jak dysk do szeregowania systemów, asystenci w magazynie lub domową i głośników inteligentne. Zareagować na użytkowników z tekstu, mowy posiadającej w domyślnej lub [niestandardowych voice](how-to-customize-voice-font.md), podaj wyniki wyszukiwania [tłumaczenie](speech-translation.md) na inne języki itd. Chętnie oglądanie, jakie zapewnia!
 
 
 

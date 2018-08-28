@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: dcf1a853f00f047a6d8beb8599a5b74c7f8f084d
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969514"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044913"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie przy użyciu witryny Azure portal usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -38,7 +37,7 @@ W tym artykule opisano sposób zarządzania kont, źródła danych, użytkownik�
    3. **Grupa zasobów**: Grupa zasobów platformy Azure, w której chcesz utworzyć konto. 
    4. **Lokalizacja**: centrum danych platformy Azure dla konta usługi Data Lake Analytics. 
    5. **Data Lake Store**: domyślny magazyn ma być używany dla konta usługi Data Lake Analytics. Konto usługi Azure Data Lake Store i konto usługi Data Lake Analytics musi być w tej samej lokalizacji.
-4. Kliknij przycisk **Utwórz**. 
+4. Kliknij pozycję **Utwórz**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Usuwanie konta usługi Data Lake Analytics
 

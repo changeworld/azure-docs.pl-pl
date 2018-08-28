@@ -1,91 +1,90 @@
 ---
-title: Eksportowanie bazy danych U-SQL przy użyciu usługi Azure Data Lake Tools dla programu Visual Studio
-description: Dowiedz się, jak za pomocą narzędzia Azure Data Lake Tools dla programu Visual Studio można wyeksportować bazę danych U-SQL oraz automatycznie zaimportuj go do lokalnego konta.
+title: Eksportowanie bazy danych U-SQL przy użyciu narzędzi Azure Data Lake Tools for Visual Studio
+description: Dowiedz się, jak wyeksportować bazę danych U-SQL i automatycznie zaimportować go do konta lokalnego za pomocą usługi Azure Data Lake Tools for Visual Studio.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623414"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047258"
 ---
-# <a name="export-a-u-sql-database"></a>Eksportuj U-SQL bazy danych
+# <a name="export-a-u-sql-database"></a>Eksportowanie bazy danych U-SQL
 
-W tym artykule, Dowiedz się, jak używać [Azure Data Lake Tools dla programu Visual Studio](http://aka.ms/adltoolsvs) eksportowania U-SQL bazy danych jako pojedynczego skryptu U-SQL i pobranych zasobów. Wyeksportowanej bazy danych można zaimportować do konta lokalnego, w tym samym procesie.
+Ten artykuł zawiera informacje o sposobie użycia [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) eksportowania bazy danych U-SQL jako pojedynczy skrypt U-SQL i pobrane zasoby. Możesz zaimportować wyeksportowanej bazy danych do konta lokalnego, w tym samym procesie.
 
-Klienci obsługi zwykle wiele środowisk umożliwiające tworzenie, badanie i produkcji. Tych środowisk znajdują się w obu konto lokalne, na komputerze lokalnym deweloperów i konta usługi Azure Data Lake Analytics na platformie Azure. 
+Klienci zwykle Obsługa wielu środowisk na potrzeby programowania, testowania i produkcji. Te środowiska znajdują się w obu kontem lokalnym, na komputerze lokalnym dla deweloperów, a na koncie usługi Azure Data Lake Analytics na platformie Azure. 
 
-Podczas tworzenia i dostrajania zapytań U-SQL w środowiskach programistycznych i testowych, deweloperzy często konieczne ponowne utworzenie pracy w produkcyjnej bazie danych. Kreator eksportu bazy danych pomaga przyspieszyć ten proces. Za pomocą kreatora, deweloperzy mogą sklonować istniejącego środowiska bazy danych i przykładowe dane do innych kont usługi Data Lake Analytics.
+Podczas tworzenia i dostosować zapytania U-SQL w środowiskach deweloperskich i testowych, deweloperzy często muszą ponownie utworzyć swoją pracą w produkcyjnej bazie danych. Kreator eksportowania bazy danych pomaga przyspieszyć ten proces. Za pomocą kreatora, deweloperzy można sklonować istniejące środowisko bazy danych i przykładowe dane do innych kont usługi Data Lake Analytics.
 
 ## <a name="export-steps"></a>Kroki eksportowania
 
 ### <a name="step-1-export-the-database-in-server-explorer"></a>Krok 1: Eksportowanie bazy danych w Eksploratorze serwera
 
-Wszystkie konta usługi Data Lake Analytics, które mają uprawnienia do są wyświetlane w Eksploratorze serwera. Aby wyeksportować bazy danych:
+Wszystkie konta usługi Data Lake Analytics, do których masz uprawnienia są wyświetlane w Eksploratorze serwera. Aby wyeksportować bazy danych:
 
-1. W Eksploratorze serwera rozwiń konto, które zawiera bazę danych, która ma zostać wykonane eksportowanie.
+1. W Eksploratorze serwera rozwiń konto które zawiera bazę danych, który chcesz wyeksportować.
 2. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz **wyeksportować**. 
    
     ![Eksplorator serwera - Export a bazy danych](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Jeśli **wyeksportować** nie jest dostępna opcja menu, musisz [aktualizacji narzędzie do wersji najnowszą wersję apletu](http://aka.ms/adltoolsvs).
+     Jeśli **wyeksportować** nie jest dostępna opcja menu, musisz [narzędzie aktualizacji do wersji z najnowszą wersję apletu](http://aka.ms/adltoolsvs).
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurowanie obiektów, które mają zostać wyeksportowane
 
-Jeśli potrzebujesz tylko niewielką częścią dużej bazy danych, można skonfigurować podzbiór obiektów, które mają zostać wyeksportowane w Kreatorze eksportu. 
+Jeśli potrzebujesz tylko niewielką część dużych baz danych, można skonfigurować podzbiór obiektów, które mają zostać wyeksportowane w Kreatorze eksportu. 
 
-Akcja eksportu jest wykonywana, uruchamiając zadanie U-SQL. W związku z tym eksportowanie z konta platformy Azure generuje pewien koszt związany.
+Akcja eksportu jest wykonywana przez uruchomienie zadania U-SQL. W związku z tym eksportowanie z konta platformy Azure generuje pewien koszt.
 
-![Kreator eksportu bazy danych — wybierz eksportu obiektów](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
+![Kreator eksportowania bazy danych — wybierz opcję Eksportuj obiekty](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Sprawdź listę obiektów i inne konfiguracje
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Sprawdź listy obiektów i innych konfiguracji
 
-W tym kroku, można sprawdzić wybranych obiektów w **listy obiektów eksportu** pole. Jeśli wystąpią jakieś błędy, wybierz **Wstecz** przejść wstecz i poprawnie Skonfiguruj obiekty, które ma zostać wykonane eksportowanie.
+W tym kroku możesz sprawdzić wybranych obiektów w **lista obiektów eksportu** pole. Jeśli występują błędy, wybierz **Wstecz** przejść wstecz i poprawnie Skonfiguruj obiekty, które chcesz wyeksportować.
 
 Można także skonfigurować inne ustawienia dla elementu docelowego eksportu. W poniższej tabeli przedstawiono opisy konfiguracji:
 
 |Konfigurowanie|Opis|
 |-------------|-----------|
-|Nazwa docelowego|Ta nazwa wskazuje, gdzie chcesz zapisać wyeksportowany bazy danych zasobów. Przykłady są zestawy, dodatkowe pliki i przykładowych danych. W folderze głównym Twojego danych lokalnych jest tworzony folder o tej nazwie.|
-|Katalog projektu|Ta ścieżka definiuje, gdzie chcesz zapisać wyeksportowany skryptu U-SQL. Wszystkie definicje obiektów bazy danych są zapisywane w tej lokalizacji.|
+|Nazwa miejsca docelowego|Ta nazwa wskazuje, gdzie chcesz zapisać zasoby wyeksportowanej bazy danych. Przykładami są zestawy, dodatkowe pliki i przykładowych danych. Folder o tej nazwie jest tworzony w folderze głównym danych lokalnych.|
+|Katalog projektu|Ta ścieżka Określa, gdzie chcesz zapisać wyeksportowany skrypt U-SQL. Wszystkich definicji obiektu bazy danych są zapisywane w tej lokalizacji.|
 |Tylko schemat|Jeśli wybierzesz tę opcję, tylko definicje bazy danych i zasobów (takich jak zestawy i dodatkowe pliki) są eksportowane.|
-|Schemat i dane|Wybranie tej opcji, definicje bazy danych, zasobów i dane są eksportowane. Top N wierszy tabel są eksportowane.|
-|Automatycznie zaimportuj do lokalnej bazy danych|Jeśli wybierzesz tę opcję, wyeksportowanej bazy danych jest automatycznie importowane z lokalną bazą danych podczas eksportowania jest zakończony.|
+|Schemat i dane|Jeśli wybierzesz tę opcję, definicje bazy danych, zasoby i dane zostaną wyeksportowane. Pierwsze wiersze N tabel są eksportowane.|
+|Automatycznie zaimportuj do lokalnej bazy danych|Jeśli wybierzesz tę opcję, wyeksportowanej bazy danych jest automatycznie importowane do swojej lokalnej bazy danych podczas eksportowania jest zakończony.|
 
-![Kreator eksportu bazy danych — eksportu listy obiektów i inne konfiguracje](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
+![Kreator eksportowania bazy danych — Eksportuj listę obiektów i innych konfiguracji](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
 ### <a name="step-4-check-the-export-results"></a>Krok 4: Sprawdzenie wyników eksportu
 
-Po zakończeniu operacji eksportowania, wyeksportowanych wyników można wyświetlić w oknie dziennika w kreatorze. Poniższy przykład przedstawia sposób znaleźć wyeksportowane zasoby U-SQL skrypt i bazę danych w tym zestawów, dodatkowe pliki i przykładowe dane:
+Po zakończeniu operacji eksportowania, można wyświetlić wyeksportowane wyniki w oknie dziennika w kreatorze. Poniższy przykład pokazuje, jak znaleźć wyeksportowanego U-SQL skrypt i zasobami baz danych, m.in. zestawy, dodatkowe pliki i przykładowe dane:
 
-![Kreator eksportu bazy danych — wyników eksportu](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
+![Kreator eksportowania bazy danych — wyników eksportu](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
 
 ## <a name="import-the-exported-database-to-a-local-account"></a>Importowanie wyeksportowanej bazy danych do konta lokalnego
 
-Najbardziej wygodny sposób importowania wyeksportowanego bazy danych jest wybranie **zaimportować do lokalnej bazy danych automatycznie** pole wyboru podczas procesu eksportowanie w kroku 3. Jeśli nie zaznaczysz to pole, najpierw należy znaleźć wyeksportowanego skryptu U-SQL w dzienniku eksportu. Następnie uruchom skrypt U-SQL lokalnie, aby zaimportować bazę danych do konta lokalnego.
+Najwygodniejszym sposobem zaimportować wyeksportowanej bazy danych jest wybranie **zaimportuj do lokalnej bazy danych automatycznie** pole wyboru podczas procesu eksportowania w kroku 3. Jeśli nie zaznaczysz to pole, najpierw należy znaleźć wyeksportowanego skryptu U-SQL w Eksportuj Dziennik. Następnie uruchom skrypt U-SQL lokalnie, aby zaimportować bazę danych do konta lokalnego.
 
 ## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Importuj wyeksportowanej bazy danych do konta usługi Data Lake Analytics
 
 Aby zaimportować bazę danych do innego konta usługi Data Lake Analytics:
 
-1. Prześlij wyeksportowane zasoby, w tym zestawów, dodatkowe pliki i przykładowe dane, do konta usługi Data Lake Analytics, który chcesz zaimportować do domyślnego konta usługi Azure Data Lake Store. Można znaleźć folderu zasobów wyeksportowanego w folderze głównym danych lokalnych. Przekazywanie całego folderu głównego domyślnego konta usługi Data Lake Store.
-2. Po zakończeniu przekazywania przesłać wyeksportowanego skryptu U-SQL do konta usługi Data Lake Analytics, które chcesz zaimportować do bazy danych.
+1. Prześlij wyeksportowane zasoby, m.in. zestawy, dodatkowe pliki i przykładowe dane do domyślnego konta usługi Azure Data Lake Store, którą chcesz zaimportować do konta usługi Data Lake Analytics. Można znaleźć folderu zasobów wyeksportowany w folderze głównym danych lokalnych. Przekazać cały folder, do katalogu głównego domyślnego konta Data Lake Store.
+2. Po zakończeniu przekazywania Prześlij wyeksportowane skrypt U-SQL do konta usługi Data Lake Analytics, które chcesz zaimportować bazę danych do.
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 
-Obecnie w przypadku wybrania **schemat i dane** opcja w kroku 3, narzędzie uruchamia zadania skryptu U-SQL, aby wyeksportować dane przechowywane w tabelach. W związku z tym procesu eksportowania danych może być wolne, i może pociągnąć za sobą kosztów. 
+Obecnie Jeśli wybierzesz **schemat i dane** opcja w kroku 3, to narzędzie uruchamia zadania U-SQL, aby wyeksportować dane przechowywane w tabelach. W związku z tym danych, eksportowania proces może być wolne, i mogą zostać naliczone koszty. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się więcej o języku U-SQL bazy danych](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
+* [Dowiedz się więcej o języku U-SQL w bazach danych](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
 * [Testowanie i debugowanie zadań U-SQL przy użyciu uruchamiania lokalnego i zestawu SDK U-SQL usługi Azure Data Lake](data-lake-analytics-data-lake-tools-local-run.md)
 
 

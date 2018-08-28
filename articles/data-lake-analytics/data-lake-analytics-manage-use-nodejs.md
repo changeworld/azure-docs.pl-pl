@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 7af56c7770de7eef0fcf33b2c29f02d3b9fe7170
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 0603a60ea73d47dd6107ee80afc5c776ff8c83bc
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624315"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047115"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -130,7 +129,7 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Zestaw Microsoft Azure SDK dla środowiska Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Zestaw Microsoft Azure SDK dla środowiska Node.js — Data Lake Store Management](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
 

@@ -1,82 +1,76 @@
 ---
-title: Nowości w kolekcjach obszaru roboczego programu Power BI
-description: Uzyskaj najnowsze informacje dotyczące nowości w kolekcjach obszaru roboczego programu Power BI
+title: Co nowego w kolekcjach obszarów roboczych usługi Power BI
+description: Uzyskaj najnowsze informacje o nowościach w kolekcji obszarów roboczych usługi Power BI
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 647b571fc05dca12ab9d4db45236962e4794ef4b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0fe3116934ac4ab9b1e3fd3b5efcd6627df0ed3d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408255"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046933"
 ---
-# <a name="whats-new-in-power-bi-workspace-collections"></a>Nowości w kolekcjach obszaru roboczego programu Power BI
+# <a name="whats-new-in-power-bi-workspace-collections"></a>Co nowego w kolekcjach obszarów roboczych usługi Power BI
 
-Aktualizacje **Power BI obszaru roboczego kolekcje** są wydawane w sposób regularny. Jednak nie wszystkie wydanie obejmuje nowe funkcje dla użytkownika; Niektóre wersje są koncentruje się na możliwości usługi zaplecza. Możemy wyróżnić tutaj nowe możliwości dla użytkownika.
+Aktualizacje **kolekcji obszarów roboczych usługi Power BI** są wydawane w regularnych odstępach czasu. Jednak nie każda wersja zawiera nowe funkcje widocznych dla użytkownika; Niektóre wersje koncentrują się na możliwości usługi zaplecza. Możemy wyróżnić nowe możliwości użytkownika w tym miejscu.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-## <a name="march-2017"></a>2017 marca
+## <a name="march-2017"></a>Marca 2017 r.
 
-**Funkcji samoobsługi**
+**Usługi możliwości samoobsługi**
 
-* [Tworzenie nowego raportu](create-report-from-dataset.md)
+* [Utwórz nowy raport](create-report-from-dataset.md)
 * [Zapisz jako raport](save-reports.md)
-* Osadzanie raportu w trybie nowe Tworzenie/Edytowanie/odczytu 
+* Osadzanie raportu w nowym trybie Odczyt/edytowania/tworzenia 
 * [Raport Przełącz między trybem edycji/Odczyt](toggle-mode.md)
 
-**Usługa łączności danych z interfejsów API REST**
+**Połączenia z danymi za pomocą interfejsów API REST**
 
 * [Tworzenie zestawu danych](https://msdn.microsoft.com/library/azure/mt778875.aspx)
 * Wypychanie danych 
 
 **Interfejsy API Management**
 
-* Raport w klonowania i zestawu danych
-* Powiązać raportu do innego zestawu danych
+* Klonuj raport i zestaw danych
+* Powiąż raport z innego zestawu danych
 
 **Przykłady**
 
-* Zaktualizowano [próbki osadzić raport JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo)
+* Zaktualizowano [przykład osadzania przy użyciu języka JavaScript raport](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
-## <a name="december-2016"></a>Grudnia 2016
+## <a name="december-2016"></a>Grudnia 2016 r.
 
-* [Nowe JavaScript osadzić próbki](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+* [Przykład osadzania przy użyciu nowego języka JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-## <a name="october-2016"></a>Października 2016
+## <a name="october-2016"></a>Października 2016 r.
 
-* [Zaawansowane analizy w usłudze Power BI roboczym kolekcje i R](https://powerbi.microsoft.com/blog/r-in-pbie/)
+* [Zaawansowane funkcje analityczne przy użyciu kolekcji usługi Power BI w obszarze roboczym i R](https://powerbi.microsoft.com/blog/r-in-pbie/)
 
 ## <a name="august-31-2016"></a>31 sierpnia 2016 r.
-Zawartość tego wydania:
+Zawarte w tej wersji:
 
-* Wszystkich nowych SDK JavaScript, który obsługuje [zaawansowane filtrowanie i strona nawigacji](interact-with-reports.md).
-* Power BI obszaru roboczego kolekcje są teraz obsługiwane w centrum danych Kanada centralnej. Sprawdź [stan datacenter](https://azure.microsoft.com/status/).
+* Wszystkie nowe zestaw SDK języka JavaScript, która obsługuje [zaawansowane filtrowanie i nawigowania po stronach](interact-with-reports.md).
+* Kolekcje obszarów roboczych usługi Power BI są teraz obsługiwane w Kanada Środkowa centrum danych. Sprawdź [centrum danych stanie](https://azure.microsoft.com/status/).
 
 ## <a name="july-11-2016"></a>11 lipca 2016 r.
-Zawartość tego wydania:
+Zawarte w tej wersji:
 
-* **Dobra wiadomość!** Usługa Power BI obszaru roboczego kolekcji nie jest już w wersji zapoznawczej — jego GA teraz (ogólnie dostępna).  
-* Wszystkie interfejsy API REST został przeniesiony z **/beta** do **/v1.0**.
-* .NET i zestawy SDK JavaScript została zaktualizowana dla **1.0**.
-* Power BI interfejsu API teraz mogą być uwierzytelniane za pomocą kluczy interfejsu API. Tokenów aplikacji są potrzebne tylko do osadzania. W ramach tego świadczenia i deweloperów tokeny są przestarzałe w interfejsów API w wersji 1.0, ale nadal będzie działać w wersji beta do 30 grudnia 2016 r. Aby dowiedzieć się więcej, zobacz [uwierzytelniania i autoryzacji z kolekcjami obszaru roboczego programu Power BI](app-token-flow.md).
-* Wiersz poziomu zabezpieczeń na obsługę tokenów aplikacji i raporty osadzonych. Aby dowiedzieć się więcej, zobacz [wiersz zabezpieczeń na poziomie z kolekcjami obszaru roboczego programu Power BI](row-level-security.md).
-* Przykładowa aplikacja dla wszystkich aktualizacji **1.0** wywołań interfejsu API.
-* Power BI obszaru roboczego kolekcje obsługę zestawu SDK platformy Azure, programu PowerShell i interfejsu wiersza polecenia.
-* Użytkownicy mogą eksportować dane wizualizacji do **CSV**.
-* Power BI obszaru roboczego kolekcje są teraz obsługiwane w wszystkie tego samego języków/ustawień regionalnych jako Microsoft Azure. Aby dowiedzieć się więcej, zobacz [Azure - języków](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
+* **Świetnie!** Usługa kolekcje obszarów roboczych usługi Power BI nie jest już w wersji zapoznawczej — jego teraz wersji ogólnie dostępnej (dostępne ogólnie).  
+* Wszystkie interfejsy API REST zostały przeniesione z **/beta** do **/v1.0**.
+* .NET i języka JavaScript SDK został zaktualizowany dla **v1.0**.
+* Usługa Power BI interfejsu API mogą być uwierzytelniane teraz bezpośrednio przy użyciu kluczy interfejsu API. Tokenów aplikacji są wymagane tylko w przypadku osadzania. W ramach tego tokenów aprowizacji i deweloperów zostały zaniechane w interfejsów API w wersji 1.0, ale będą one nadal działać w wersji beta do 30 grudnia 2016 r. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI](app-token-flow.md).
+* Wiersza (RLS) zabezpieczenia na poziomie obsługę tokenów aplikacji i osadzone raporty. Aby dowiedzieć się więcej, zobacz [zabezpieczeń z kolekcji obszarów roboczych usługi Power BI na poziomie wiersza](row-level-security.md).
+* Zaktualizowana Przykładowa aplikacja dla wszystkich **v1.0** wywołań interfejsu API.
+* Kolekcje obszarów roboczych usługi Power BI obsługuje zestaw SDK usługi Azure, programu PowerShell i interfejsu wiersza polecenia.
+* Użytkownicy mogą eksportować dane wizualizacji **CSV**.
+* Kolekcje obszarów roboczych usługi Power BI są teraz obsługiwane w przypadku wszystkich tych samych języków/ustawień regionalnych jako Microsoft Azure. Aby dowiedzieć się więcej, zobacz [platformy Azure — języki](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
 

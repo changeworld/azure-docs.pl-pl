@@ -3,19 +3,19 @@ title: Korzystanie z usługi Beeline przy użyciu technologii Apache Hive — us
 description: Dowiedz się, jak używać klienta z usługi Beeline do uruchamiania zapytań Hive z usługą Hadoop w HDInsight. Z usługi beeline to narzędzie do pracy przy użyciu serwera HiveServer2 za pośrednictwem JDBC.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 keywords: z usługi beeline hive, hive z usługi beeline
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 057c57316a291952b959f1e61b4286e87c074088
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 872b0e8ae3469cf3807268e07ca87cec9b00a70b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592370"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051653"
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta z usługi Beeline
 

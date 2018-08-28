@@ -1,75 +1,69 @@
 ---
-title: "Zarządzać zasobami danych w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft"
-description: "Artykuł prezentuje sposób kontrolowania widoczności i własności zasobów danych zarejestrowane w usłudze Azure Data Catalog."
+title: Zarządzanie zasobami danych w usłudze Azure Data Catalog
+description: Artykuł pokazuje, jak kontrolować widoczność i praw własności zasobów danych zarejestrowanych w usłudze Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 5a4b2b5734bf8bfbbc45a65b02362d1fa37b1a87
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e102b1f436b4f6d39f57445b02638ffd11f27786
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053495"
 ---
-# <a name="manage-data-assets-in-azure-data-catalog"></a>Zarządzać zasobami danych w wykazie danych Azure
+# <a name="manage-data-assets-in-azure-data-catalog"></a>Zarządzanie zasobami danych w usłudze Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie
-Azure Data Catalog jest przeznaczona dla źródła danych odnajdywania, dzięki czemu można łatwo odnaleźć i zrozumieć użycie źródeł danych, które należy wykonywać analizy i podejmować decyzje. Te możliwości odnajdywania należy największy wpływ, gdy inni użytkownicy mogą odnaleźć i zrozumieć szerokiej gamy dostępnych źródeł danych. Z tych elementów, pamiętając domyślne zachowanie usługi Data Catalog jest dla wszystkich źródeł danych zarejestrowanych były widoczne i wykrywalny przez wszystkich użytkowników w katalogu.
+Usługa Azure Data Catalog jest przeznaczona dla źródła danych odnajdywania, tak że można łatwo odnaleźć i zrozumieć użycie źródeł danych potrzebnych do wykonywania analiz i podejmowania decyzji. Te możliwości odnajdywania należy największy wpływ, gdy inni użytkownicy mogą odnaleźć i zrozumieć najszerszej gamy dostępnych źródeł danych. Z tych elementów należy pamiętać, domyślne zachowanie usługi Data Catalog jest dla wszystkich źródeł danych zarejestrowanych jako widoczny i wykrywane przez wszystkich użytkowników wykazu.
 
-Wykaz danych nie uzyskania dostępu do samych danych. Dostęp do danych jest kontrolowany przez właściciela źródła danych. Data Catalog można odnaleźć źródła danych i wyświetlać metadane dotyczące źródeł, które są zarejestrowane w wykazie.
+Data Catalog nie zapewnia dostęp do danych. Dostęp do danych jest kontrolowany przez właściciela źródła danych. Usługa Data Catalog możesz Odnajdywanie źródeł danych i wyświetlić metadane dotyczące źródeł, które są zarejestrowane w wykazie.
 
-Mogą wystąpić sytuacje, jednak gdzie źródeł danych tylko powinny być widoczne, dla określonych użytkowników lub do członków określonych grup. W takich sytuacjach użytkownicy mogą przejąć na własność zasobów danych zarejestrowanych w wykazie i następnie ustawić widoczność zasobów, w których są właścicielami.
+Może to być sytuacje, jednak gdy źródeł danych tylko powinny być widoczne na konkretnym użytkownikom lub członkom określonych grup. W takich przypadkach użytkownicy mogą przejąć prawo własności zasobów danych zarejestrowanych w wykazie i następnie kontrolować widoczność zasobów, które są właścicielami.
 
 > [!NOTE]
-> Funkcje opisane w tym artykule jest dostępna tylko w Standard Edition usługi Azure Data Catalog. Bezpłatna wersja nie udostępnia możliwości posiadania i ograniczenie widoczność zasobów danych.
+> Funkcje opisane w tym artykule jest dostępny tylko w Standard Edition usługi Azure Data Catalog. Bezpłatna wersja nie zapewnia możliwości posiadania i ograniczenie widoczność zasobów danych.
 >
 >
 
-## <a name="manage-ownership-of-data-assets"></a>Zarządzanie własności zasobów danych
-Domyślnie nieposiadanej są zasobów danych, które są zarejestrowane w wykazie danych. Każdy użytkownik z uprawnieniami, aby uzyskać dostęp do katalogu mogą odnaleźć i Adnotuj tych zasobów. Użytkownicy mogą przejąć na własność zasobów danych go i następnie ograniczyć widoczność zasobów, w których są właścicielami.
+## <a name="manage-ownership-of-data-assets"></a>Zarządzanie własność zasoby danych
+Zasoby danych, które są zarejestrowane w usłudze Data Catalog są domyślnie go. Każdy użytkownik z uprawnieniami dostępu do wykazu może odnajdywać i dodawanie adnotacji do tych zasobów. Użytkownicy mogą przejąć na własność zasoby danych go i następnie ograniczyć widoczność zasobów, które są właścicielami.
 
-Gdy zasobu danych w katalogu danych jest właścicielem, tylko użytkownicy uwierzytelnieni właściciele mogą odnaleźć zasobu i wyświetlić jej metadane, a tylko właściciele można usunąć elementu zawartości z katalogu.
+Po zasobu danych w usłudze Data Catalog jest właścicielem, tylko użytkownicy, którzy są autoryzowane przez właścicieli można odnaleźć zasobu i wyświetlić jego metadane i tylko dla właścicieli można usunąć elementu zawartości z katalogu.
 
 > [!NOTE]
-> Własność w wykazie danych dotyczy tylko metadane są przechowywane w katalogu. Własność nie przyznaje wszystkie uprawnienia w źródle danych.
+> Prawa własności w usłudze Data Catalog ma wpływ jedynie metadane są przechowywane w katalogu. Własność nie przyznaje wszystkie uprawnienia w bazowym źródle danych.
 >
 >
 
 ### <a name="take-ownership"></a>Przejmij na własność
-Użytkownicy mogą przejąć prawo własności zasobów danych, wybierając **Przejmij na własność** opcji w portalu wykazu danych. Aby przejąć na własność zasobów danych nieposiadanej są wymagane żadne specjalne uprawnienia. Każdy użytkownik może przejąć na własność zasobów danych go.
+Użytkownicy mogą przejąć prawo własności zasobów danych, wybierając **Przejmij na własność** opcji w portalu usługi Data Catalog. Żadne specjalne ustawienia nie są wymagane do przejęcie na własność zasobu nieposiadanej danych. Każdy użytkownik może zająć własności zasobów nieposiadanej danych.
 
-### <a name="add-owners-and-co-owners"></a>Dodaj właścicieli i współwłaścicieli
-Jeśli ma już właściciela zasobów danych, innych użytkowników nie wystarczy przejąć na własność. Muszą zostać dodane jako współwłaściciele przez istniejące właściciela. Wszelkie właściciela można dodać dodatkowych użytkowników lub grup zabezpieczeń jako współwłaściciele.
+### <a name="add-owners-and-co-owners"></a>Dodawanie właścicieli i współwłaścicieli
+Jeśli należy już do zasobu danych, inni użytkownicy nie mogą po prostu przejęcie na własność. Muszą zostać dodane jako współwłaścicieli przez istniejące właściciela. Wszelkie właściciel subskrypcji może dodać dodatkowych użytkowników lub grup zabezpieczeń jako współwłaścicieli.
 
 > [!NOTE]
-> Jest najlepszym rozwiązaniem ma co najmniej dwóch osób jako właściciele żadnych zasobów należących do danych.
+> Jest najlepszym rozwiązaniem, aby mieć co najmniej dwóch fizycznych jako właścicieli dla dowolnego zasobu danych należące do firmy.
 >
 >
 
 ### <a name="remove-owners"></a>Usuń właścicieli
-Podobnie jak wszelkie właściciel zasobu może dodawać współwłaścicieli, wszelkie właściciel zasobu można usunąć wszelkie współwłaściciel.
+Tak, jak dowolnego właściciel zasobu może dodawać współwłaścicieli, wszelkie właściciel zasobu można usunąć wszelkie współwłaściciela.
 
-Właściciel zasobu, która usuwa go lub siebie jako właściciela nie może dłużej zarządzać elementu zawartości. Jeśli właściciel zasobu usuwa go lub siebie jako właściciela, nie ma żadnych wspólnej właścicieli zasobu przekształcenia go do stanu.
+Właściciel zasobu, który usuwa siebie jako właściciela nie może dłużej zarządzać elementu zawartości. Jeśli właściciel zasobu usuwa siebie jako właściciela wiąże się z nie innych współwłaścicieli, element zawartości zostanie przywrócony go do stanu.
 
-## <a name="control-visibility"></a>Widoczność formantu
-Właściciele danych zasobów można kontrolować widoczność zasobów danych, w których są właścicielami. Aby ograniczyć widoczność jako domyślny, w której wszyscy użytkownicy wykazu danych może odnalezienia i wyświetlenia zasobów danych, właściciel zasobu może zmienić ustawienie widoczności z **wszyscy** do **właściciele i następujący użytkownicy** we właściwościach elementu zawartości. Następnie można dodać właścicieli, konkretnych użytkowników i grup zabezpieczeń.
+## <a name="control-visibility"></a>Kontrola widoczności
+Właściciele zasobów danych można kontrolować widoczność zasobów danych, które są właścicielami. Aby ograniczyć widoczność, jako wartość domyślna, w którym wszyscy użytkownicy wykazu danych można odnalezienia i wyświetlenia zasobów danych, właściciel zasobu można przełączać się ustawienie widoczności na podstawie **wszyscy** do **właściciele i Ci użytkownicy** w właściwości dla elementu zawartości. Następnie można dodać właścicieli, konkretnych użytkowników i grup zabezpieczeń.
 
 > [!NOTE]
-> Jeśli to możliwe, uprawnienia własności i widoczności zasobu powinny być przypisane do grup zabezpieczeń, a nie do poszczególnych użytkowników.
+> Jeśli to możliwe, uprawnień własności i widoczność zasobów powinny być przypisane do grup zabezpieczeń, a nie do poszczególnych użytkowników.
 >
 >
 
-## <a name="catalog-administrators"></a>Administratorzy katalogu
-Administratorzy katalogu danych są niejawnie współwłaściciele wszystkich zasobów w katalogu. Właściciele zawartości nie można usunąć widoczność administratorów, a administratorzy mogą zarządzać własności i widoczności dla wszystkich zasobów danych w katalogu.
+## <a name="catalog-administrators"></a>Administratorzy wykazu
+Administratorzy wykazu danych są niejawną kolekcją współwłaścicieli wszystkich zasobów w wykazie. Właściciele zasobów mogą nie można usunąć widoczność z Administratorzy i Administratorzy mogą zarządzać prawo własności i widoczność dla wszystkich zasobów danych w wykazie.
 
 ## <a name="summary"></a>Podsumowanie
-Model crowdsourcingu w postaci usługi Data Catalog do odnajdywania zasobów metadane i dane zezwala wszystkim użytkownikom katalogu przyczyniają się do odnajdywania. Standard Edition Data Catalog jest przeznaczona dla własności i zarządzania, aby ograniczyć widoczność oraz korzystanie z zasobów określonych danych.
+Model crowdsourcingu w postaci wykazu danych do metadanych i danych odnajdywania zasobów umożliwia wszystkim użytkownikom katalogu na potrzeby współtworzenia i odnajdywania. Standard Edition usługi Data Catalog jest przeznaczona dla prawo własności i zarządzania w Aby ograniczyć widoczność oraz korzystanie z danych specyficznych dla zasobów.

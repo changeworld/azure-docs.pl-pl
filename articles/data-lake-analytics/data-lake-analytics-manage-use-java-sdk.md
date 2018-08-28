@@ -1,38 +1,37 @@
 ---
-title: Zarządzanie Azure Data Lake Analytics przy użyciu zestawu SDK Java usługi Azure
-description: W tym artykule opisano sposób użycia zestawu Java SDK usługi Azure można zapisać aplikacjom zarządzanym zadania usługi Data Lake Analytics, źródła danych i użytkowników.
+title: Zarządzanie przy użyciu zestawu Azure Java SDK usługi Azure Data Lake Analytics
+description: W tym artykule opisano sposób używania zestawu Azure Java SDK do pisania aplikacji zarządzających zadań usługi Data Lake Analytics, źródła danych i użytkowników.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624237"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047090"
 ---
-# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Zarządzanie Azure Data Lake Analytics przy użyciu aplikacji Java
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Zarządzanie przy użyciu aplikacji Java usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-W tym artykule opisano sposób zarządzania kont usługi Azure Data Lake Analytics, źródła danych, użytkowników i zadań za pomocą aplikacji napisanych z użyciem zestawu Java SDK usługi Azure. 
+W tym artykule opisano sposób zarządzania kont usługi Azure Data Lake Analytics, źródła danych, użytkowników i zadań za pomocą aplikacji napisanych przy użyciu zestawu SDK Java usługi Azure. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Java Development Kit (JDK) 8** (przy użyciu języka Java w wersji 1.8).
-* **IntelliJ** lub innego odpowiednie środowisko programistyczne Java. Instrukcje w tym dokumencie jest używane środowisko IntelliJ.
-* Tworzenie aplikacji usługi Azure Active Directory (AAD) i pobieranie jej **identyfikatora klienta**, **identyfikatora dzierżawy** i **klucza**. Aby uzyskać więcej informacji o aplikacjach usługi AAD i instrukcje na temat uzyskiwania identyfikatora klienta, zobacz [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Tworzenie aplikacji i głównej nazwy usługi Active Directory przy użyciu portalu). Identyfikator URI odpowiedzi i klucz jest dostępna z portalu po utworzeniu aplikacji i generowanie klucza.
+* **IntelliJ** lub innego odpowiednie środowisko programistyczne Java. Instrukcje w tym dokumencie używane środowisko IntelliJ.
+* Tworzenie aplikacji usługi Azure Active Directory (AAD) i pobieranie jej **identyfikatora klienta**, **identyfikatora dzierżawy** i **klucza**. Aby uzyskać więcej informacji o aplikacjach usługi AAD i instrukcje na temat uzyskiwania identyfikatora klienta, zobacz [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Tworzenie aplikacji i głównej nazwy usługi Active Directory przy użyciu portalu). Identyfikator URI odpowiedzi i klucz jest dostępna z portalu po utworzeniu aplikacji i generowania kluczy.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory
 
-Kod następujący fragment kodu zawiera kod **nieinterakcyjnym** uwierzytelniania, gdzie aplikacja udostępnia własne poświadczenia.
+Kod poniższy fragment kodu zawiera kod **nieinterakcyjnych** uwierzytelniania, gdzie aplikacja udostępnia własne poświadczenia.
 
 ## <a name="create-a-java-application"></a>Tworzenie aplikacji Java
-1. Otwórz środowisko IntelliJ i Utwórz projekt języka Java przy użyciu **wiersza polecenia aplikacji** szablonu.
+1. Otwórz środowisko IntelliJ i Utwórz projekt Java za pomocą **aplikacji wiersza polecenia** szablonu.
 2. Kliknij prawym przyciskiem myszy projekt po lewej stronie ekranu, a następnie kliknij pozycję **Add Framework Support** (Dodaj obsługę struktury). Wybierz pozycję **Maven** i kliknij przycisk **OK**.
 3. Otwórz nowo utworzony plik **„pom.xml”** i dodaj poniższy fragment tekstu między tagami **\</version >** i **\</project >**:
 
@@ -87,9 +86,9 @@ Kod następujący fragment kodu zawiera kod **nieinterakcyjnym** uwierzytelniani
 </dependencies>
 ```
 
-Przejdź do **Plik > Ustawienia > kompilacji > wykonanie > wdrożenia**. Wybierz **narzędzi do kompilacji > Maven > importowania**. Następnie sprawdź **Import Maven projektów automatycznie**.
+Przejdź do **Plik > Ustawienia > kompilacji > wykonanie > wdrożenia**. Wybierz **narzędzia do kompilacji > Maven > importowania**. Następnie sprawdź **Import Maven projektów automatycznie**.
 
-Otwórz `Main.java` i Zastąp istniejący blok kodu poniższy fragment kodu:
+Otwórz `Main.java` i Zastąp istniejący blok kodu poniższym fragmentem kodu:
 
 ```
 package com.company;
@@ -211,9 +210,9 @@ Zastąp symbole zastępcze dla:
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a>Funkcje pomocy
+## <a name="helper-functions"></a>Funkcje pomocnicze
 
-### <a name="setup-clients"></a>Konfiguracja klientów
+### <a name="setup-clients"></a>Konfigurowanie klientów
 
 ```
 public static void SetupClients(ServiceClientCredentials creds)
@@ -229,7 +228,7 @@ public static void SetupClients(ServiceClientCredentials creds)
 ```
 
 
-### <a name="wait-for-input"></a>Oczekiwanie na dane wejściowe
+### <a name="wait-for-input"></a>Czeka na dane wejściowe
 
 ```
 public static void WaitForNewline(String reason, String nextAction)

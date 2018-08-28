@@ -1,30 +1,24 @@
 ---
-title: "Jak wyświetlać dane dotyczące zasobów w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób wyświetlania danych powiązane zasoby trwałego wybranych danych w wykazie danych Azure."
+title: Jak wyświetlać dane dotyczące zasobów w usłudze Azure Data Catalog
+description: W tym artykule wyjaśniono, jak wyświetlać dane dotyczące zasobów wybranego zasobu danych w usłudze Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
-ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
-ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 37d12209d28b73f0d7fc6d940ded344fbeae968d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.service: data-catalog
+ms.topic: conceptual
+ms.date: 01/18/2018
+ms.openlocfilehash: d680cc69d27681883014a414255ad0ea4d022cd4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053452"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Jak wyświetlać dane dotyczące zasobów w usłudze Azure Data Catalog?
-Wykaz danych Azure służy do wyświetlania zasobów danych związanych z wybranych danych zasobów i widoku relacji między nimi. 
+Usługa Azure Data Catalog służy do wyświetlania zasobów danych związanych z wybranych danych zasobów i w widoku relacji między nimi. 
 
 ## <a name="supported-data-sources"></a>Obsługiwane źródła danych 
-Podczas rejestrowania zasobów danych z następujących źródeł danych usługi Azure Data Catalog automatycznie rejestruje metadane dotyczące relacji sprzężenia między wybranych zasobów danych. 
+Po zarejestrowaniu zasoby danych z następujących źródeł danych, usługi Azure Data Catalog powoduje automatyczne zarejestrowanie metadane dotyczące relacji sprzężenia między wybranych zasobów danych. 
 
 - Oprogramowanie SQL Server
 - Azure SQL Database
@@ -32,26 +26,26 @@ Podczas rejestrowania zasobów danych z następujących źródeł danych usługi
 - Oracle
 
 > [!NOTE]
-> Dla usługi Data Catalog do zaimportowania relacji między zasobami dwóch danych należy zarejestrować oba zasoby, w tym samym czasie. Jeśli jeden z nich ma dodany oddzielnie, dodaj go ponownie i innych zasobów danych zaimportowanie relacji między nimi.
+> Usługi Data Catalog do zaimportowania relacji między zasobami dwóch danych należy zarejestrować zarówno zasoby w tym samym czasie. Jeśli jeden z nich ma dodany osobno, dodaj go ponownie i innych zasobów danych można zaimportować relacji między nimi.
 
-## <a name="view-related-data-assets"></a>Wyświetlanie powiązanych danych zasobów
-Aby wyświetlić zasoby danych, które są powiązane z wybrany zestaw danych, użyj **relacje** karcie, jak pokazano na poniższej ilustracji: 
+## <a name="view-related-data-assets"></a>Wyświetl zasoby powiązane z nimi dane
+Aby wyświetlić zasoby danych, które są powiązane z wybranego zestawu danych, użyj **relacje** karty, jak pokazano na poniższej ilustracji: 
 
-![Azure Data Catalog — wyświetlanie powiązanych zasobów danych](media\data-catalog-how-to-view-related-data-assets\relationships-tab.png)
+![Usługa Azure Data Catalog — Wyświetl powiązane zasoby danych](media\data-catalog-how-to-view-related-data-assets\relationships-tab.png)
 
-W tym przykładzie są dwie relacje dla wybranego **ProductSubcategory** zasobu danych: 
+W tym przykładzie istnieją dwie relacje dla wybranego **ProductSubcategory** zasobu danych: 
 
-- Kolumna ProductSubcategoryID tabeli produktu ma relacji klucza obcego z kolumną ProductSubcategoryID ProductSubcategory wybranej tabeli. 
-- Kolumna tabeli ProductSubCategory ProductCategoryID ma relacji klucza obcego z kolumną ProductCategoryID wybranej tabeli ProductCategory.
+- Kolumna ProductSubcategoryID tabeli produktu ma relacji klucza obcego z kolumną ProductSubcategoryID wybranej tabeli ProductSubcategory. 
+- Kolumna ProductCategoryID tabeli ProductSubCategory ma relacji klucza obcego z kolumną ProductCategoryID wybranej tabeli ProductCategory.
 
 > [!NOTE]
 > Zwróć uwagę, kierunek strzałki w widoku drzewa relacji.  
 
-Aby zobaczyć więcej szczegółów, takich jak w pełni kwalifikowana nazwa kolumny, przesuń wskaźnik myszy nad i zobacz menu podręcznego podobnie do poniższej ilustracji: 
+Aby zobaczyć więcej szczegółów, takich jak w pełni kwalifikowana nazwa kolumny, przenieś wskaźnik myszy, a zobaczysz okno podręczne podobny do poniższej ilustracji: 
 
-![Azure Data Catalog — podręczny relacji](media\data-catalog-how-to-view-related-data-assets\relationship-popup.png)
+![Usługa Azure Data Catalog — okno podręczne relacji](media\data-catalog-how-to-view-related-data-assets\relationship-popup.png)
 
-Aby uwzględnić relacje między zasoby, które zostały już zarejestrowane, Zarejestruj ponownie tych zasobów.
+Aby uwzględnić relacje między zasobami, które zostały już zarejestrowane, Zarejestruj ponownie aplikację tych zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Jak zarządzać zasobami danych](data-catalog-how-to-manage.md)

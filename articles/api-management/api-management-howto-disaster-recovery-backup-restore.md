@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056390"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046383"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -179,7 +179,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 Gdzie:
 
 * `subscriptionId` — Identyfikator subskrypcji zawierającej odbywa się przywracanie kopii zapasowej do usługi API Management
-* `resourceGroupName` -ciąg w formie "Api - Domyślnie — {usługi region}" gdzie `service-region` identyfikuje region platformy Azure, w którym odbywa się przywracanie kopii zapasowej do usługi API Management jest hostowana, na przykład `North-Central-US`
+* `resourceGroupName` — Nazwa grupy zasobów zawierające odbywa się przywracanie kopii zapasowej do usługi Azure API Management
 * `serviceName` — Nazwa usługi API Management, usługa przywracany do określonych w momencie jego tworzenia
 * `api-version` -Zamień `2018-06-01-preview`
 

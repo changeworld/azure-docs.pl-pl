@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628175"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049128"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -48,26 +48,26 @@ Przed rozpoczęciem należy [Utwórz koncentrator przestrzeni nazw i zdarzeń us
 
 Można również znaleźć [Azure Event Hubs — często zadawane pytania](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dzierżawy platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń?
+## <a name="azure-tenant-monitoring-data"></a>Monitorowanie danych dzierżawy platformy Azure
 
 Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
 
-### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Stream danych usługi Azure Active Directory w Centrum zdarzeń
+### <a name="azure-active-directory-data"></a>Dane usługi Active Directory systemu Azure
 
 Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
 
-## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować subskrypcję platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń
+## <a name="azure-subscription-monitoring-data"></a>Dane monitorowania subskrypcji platformy Azure
 
 Dane monitorowania subskrypcji platformy Azure jest dostępna w [dziennika aktywności platformy Azure](./monitoring-overview-activity-logs.md). Zawiera tworzenia, aktualizowanie i usuwanie operacji z usługi Resource Manager, zmiany w [usługę Azure service health](../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../service-health/resource-health-overview.md) stanu przejścia i kilku innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./monitoring-activity-log-schema.md).
 
-### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Dane dziennika aktywności platformy Azure Stream do Centrum zdarzeń
+### <a name="activity-log-data"></a>Dane dzienników aktywności
 
 Aby przesyłanie danych z dziennika aktywności platformy Azure do przestrzeni nazw usługi Event Hubs, należy skonfigurować profil dziennika w ramach subskrypcji. [Postępuj zgodnie z tego przewodnika](./monitoring-stream-activity-logs-event-hubs.md) do konfiguracji profilu dziennika w ramach Twojej subskrypcji. W tym po każdej subskrypcji, którą chcesz monitorować.
 
 > [!TIP]
 > Profil dziennika obecnie tylko służy do wybierania przestrzeni nazw usługi Event Hubs, w którym Centrum zdarzeń jest tworzone przy użyciu nazwy "insights-operational-logs." Go nie jest jeszcze można określić własną nazwę Centrum zdarzeń w profilu dziennika.
 
-## <a name="how-do-i-set-up-azure-resource-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dane monitorowania zasobów platformy Azure do przesyłane strumieniowo do Centrum zdarzeń?
+## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Dzienniki usługi Azure resource metryki i Diagnostyka
 
 Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
 1. [Dzienniki diagnostyczne zasobu](./monitoring-overview-of-diagnostic-logs.md)
@@ -78,25 +78,25 @@ Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnost
 > [!TIP]
 > Można użyć usługi Azure Policy, aby upewnić się, że każdy zasób w określonym zakresie zawsze skonfigurowano ustawienie diagnostyczne [przy użyciu efektu DeployIfNotExists w regule zasad](../azure-policy/policy-definition.md#policy-rule). Już dziś DeployIfNotExists jest obsługiwana tylko na wbudowane zasady.
 
-## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dane monitorowania systemu operacyjnego gościa na przesyłane strumieniowo do Centrum zdarzeń?
+## <a name="guest-os-data"></a>Dane systemu operacyjnego gościa
 
 Musisz zainstalować agenta, aby wysyłać dane monitorowania systemu operacyjnego gościa do Centrum zdarzeń. Dla Windows lub Linux należy określić dane, które mają być wysyłane do Centrum zdarzeń, a także Centrum zdarzeń, do którego dane mają być wysyłane w pliku konfiguracji i przekazać plik konfiguracji do agenta uruchomionego na maszynie Wirtualnej.
 
-### <a name="stream-linux-data-to-an-event-hub"></a>Stream danych z systemem Linux w Centrum zdarzeń
+### <a name="linux-data"></a>Dane systemu Linux
 
 [Agenta diagnostyki Azure Linux](../virtual-machines/extensions/diagnostics-linux.md) może służyć do wysyłania danych z maszyny z systemem Linux w Centrum zdarzeń monitorowania. To zrobić, dodając Centrum zdarzeń jako obiekt sink w swojej LAD ustawienia chronionego pliku konfiguracji JSON. [Ten artykuł, aby dowiedzieć się więcej na temat dodawania obiekt sink zdarzenia Centrum agentowi diagnostyki Azure Linux](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nie można skonfigurować przesyłanie strumieniowe danych monitorowania systemów operacyjnych gościa do Centrum zdarzeń w portalu. Zamiast tego należy ręcznie edytować plik konfiguracji.
 
-### <a name="stream-windows-data-to-an-event-hub"></a>Stream data Windows do Centrum zdarzeń
+### <a name="windows-data"></a>Windows danych
 
 [Diagnostycznych platformy Azure Windows agent](./azure-diagnostics.md) może służyć do wysyłania danych z maszyny Windows do Centrum zdarzeń monitorowania. To zrobić, dodając Centrum zdarzeń jako obiekt sink w sekcji privateConfig WAD pliku konfiguracji. [Ten artykuł, aby dowiedzieć się więcej na temat dodawania obiekt sink zdarzenia Centrum agentowi diagnostyki Azure Windows](./azure-diagnostics-streaming-event-hubs.md).
 
 > [!NOTE]
 > Nie można skonfigurować przesyłanie strumieniowe danych monitorowania systemów operacyjnych gościa do Centrum zdarzeń w portalu. Zamiast tego należy ręcznie edytować plik konfiguracji.
 
-## <a name="how-do-i-set-up-application-monitoring-data-to-be-streamed-to-event-hub"></a>Jak skonfigurować aplikację dane monitorowania przesyłane strumieniowo do Centrum zdarzeń?
+## <a name="application-monitoring-data"></a>Dane monitorowania aplikacji
 
 Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy użyciu zestawu SDK, dzięki czemu nie występuje ogólnego przeznaczenia rozwiązania do monitorowania danych do Centrum zdarzeń w systemie Azure routing aplikacji. Jednak [usługi Azure Application Insights](../application-insights/app-insights-overview.md) co usługa, która może służyć do zbierania danych z poziomu aplikacji platformy Azure. Jeśli używasz usługi Application Insights obejmuje strumieniowe przesyłanie danych monitorowania do Centrum zdarzeń, wykonując następujące czynności:
 

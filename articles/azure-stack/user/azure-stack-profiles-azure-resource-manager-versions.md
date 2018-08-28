@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056208"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050653"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack
 
@@ -197,26 +197,26 @@ Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrast
 | Delegowani dostawcy | 2015-01-01 |
 | Delegowani dostawcy/oferty | 2015-01-01 |
 | DelegatedProviders/oferty/estimatePrice | 2015-01-01 |
-| Wdrożenia | 2016-0209-01 |
-| Wdrożenia/operations | 2016-0209-01 |
+| Wdrożenia | 2016-09-01 |
+| Wdrożenia/operations | 2016-09-01 |
 | Metadane rozszerzenia | 2015-01-01 |
 | Linki | 2016-09-01 |
 | Lokalizacje | 2015-01-01 |
 | Oferta | 2015-01-01 |
 | Operacje | 2015-01-01 |
-| Dostawcy | 2015-012017-08-01 |
+| Dostawcy | 2017-08-01 |
 | Grupy zasobów | 2016-09-01 |
 | Zasoby | 2016-09-01 |
 | Subskrypcje | 2016-09-01 |
 | Subskrypcje/lokalizacja | 2016-09-01 |
 | Wyniki operacji/subskrypcji | 2016-09-01 |
-| Subskrypcje/dostawców | 2015-012017-08-01 |
+| Subskrypcje/dostawców | 2017-08-01 |
 | Subskrypcjach/grupach zasobów | 2016-09-01 |
 | Zasobów/resourceGroups/subskrypcji | 2016-09-01 |
 | Zasobów/subskrypcji | 2016-09-01 |
-| Subskrypcje/tagNames | 2016-0609-01 |
-| Subskrypcje/tagNames/tagValues | 2016-0609-01 |
-| Dzierżaw | 2015-012017-08-01 |
+| Subskrypcje/tagNames | 2016-09-01 |
+| Subskrypcje/tagNames/tagValues | 2016-09-01 |
+| Dzierżaw | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 

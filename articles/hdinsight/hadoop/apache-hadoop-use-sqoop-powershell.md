@@ -1,7 +1,7 @@
 ---
 title: Uruchamianie zadań Sqoop przy użyciu programu PowerShell i usługi Azure HDInsight
 description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej do uruchamiania narzędzia Sqoop importu i eksportu między klastrem Hadoop a bazą danych Azure SQL database.
-editor: jasonwhowell
+ms.reviewer: jasonh
 services: hdinsight
 author: jasonwhowell
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 114b818b15d071e4aca2e64363aa3c5895820ece
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 71edb2fb9c3b02ac62670bbfd54adef096cb36e6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593455"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041206"
 ---
 # <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Uruchamianie zadań Sqoop przy użyciu programu Azure PowerShell dla usługi Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 813fb79bbdc09d0fb3baa9a66cfaeae74343b3f9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061064"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093639"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -75,6 +75,8 @@ Dostępne są następujące role administratora:
 * **[Administrator usługi Information Protection](#information-protection-administrator)**: użytkownicy z tą rolą mają wszystkie uprawnienia w usłudze Azure Information Protection. Ta rola umożliwia konfigurowanie etykiet w zasadach usługi Azure Information Protection, Zarządzanie szablonami ochrony i aktywacja ochrony. Ta rola nie przyznaje wszystkie uprawnienia w Centrum usługi Identity Protection, Privileged Identity Management, kondycji usługi Monitor Office 365, lub Office 365 Centrum zabezpieczeń i zgodności.
 
 * **[Administrator usługi Intune](#intune-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Ponadto ta rola oferuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenie grup i zarządzanie nimi. Więcej informacji o [kontrola administracji opartej na rolach (RBAC) w usłudze Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+
+* **[Administrator licencji](#license-administrator)**: użytkownicy w tej roli mogą dodawania, usuwania i aktualizacji przypisań licencji dla użytkowników i grup (z wykorzystaniem Licencjonowanie na podstawie grupy) i zarządzanie lokalizacji użytkowania — na użytkownikach. Rola nie powoduje przyznania możliwość zakupu lub Zarządzaj subskrypcjami Tworzenie lub zarządzać grupami, lub Utwórz lub Zarządzanie użytkownikami poza lokalizacji użytkowania.
 
 * **[Komunikat czytnika Centrum](#message-center-reader)**: użytkownicy w tej roli można monitorować powiadomienia i aktualizacje porad dotyczących kondycji w [Centrum wiadomości usługi Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) dla swojej organizacji w skonfigurowanych usług, takich jak Exchange i usługi Intune i Microsoft Teams. Czytelnicy Centrum wiadomości otrzymasz tygodniowy skróty e-mail wpisów i aktualizacji i mogą udostępniać wpisy Centrum wiadomości w usłudze Office 365. W usłudze Azure AD użytkownicy przypisani do tej roli tylko mają dostęp tylko do odczytu w usługach Azure AD, takich jak użytkownicy i grupy. 
 
@@ -610,6 +612,17 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 | microsoft.aad.directory/User/Update/Manager | Aktualizacja właściwości Users.Manager w usłudze Azure Active Directory. |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 | microsoft.intune/AllEntities/AllActions | Zarządzaj wszystkimi aspektami usługi Intune. |
+
+### <a name="license-administrator"></a>Administrator licencji
+Można przypisać licencji do użytkowników.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.directory/users/assignLicense        | &nbsp; |
+| microsoft.aad.directory/users/usageLocation/update | &nbsp; |
+| microsoft.azure.accessService/allEntities/allTasks | &nbsp; |
+| microsoft.azure.serviceHealth/allEntities/allTasks | &nbsp; |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | &nbsp; |
 
 ### <a name="lync-service-administrator"></a>Administrator usługi Lync
 Może zarządzać wszystkimi aspektami produktu Skype dla firm.

@@ -3,18 +3,18 @@ title: Access Hadoop YARN application loguje HDInsight opartych na systemie Linu
 description: Dowiedz się, jak dostęp do dzienników aplikacji usługi YARN w klastrze opartych na systemie Linux HDInsight (Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci web.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591807"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092264"
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do aplikacji usługi YARN loguje HDInsight opartych na systemie Linux
 

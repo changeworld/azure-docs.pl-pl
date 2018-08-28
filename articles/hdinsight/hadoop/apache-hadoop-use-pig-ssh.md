@@ -3,18 +3,18 @@ title: Korzystanie z języka Pig z usługi Hadoop przy użyciu protokołu SSH w 
 description: Dowiedz się, jak się połączyć z klastra Hadoop opartego na systemie Linux przy użyciu protokołu SSH, a następnie użyj polecenia Pig do uruchomienia instrukcji Pig Latin interaktywnie lub w trybie wsadowym.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: c521f5781c1fb8bae1e036649ee31744d0742796
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4d380c44511ad330542402499829c19de62bd39a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590300"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051530"
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Uruchamianie zadania Pig w klastrze opartych na systemie Linux przy użyciu polecenia Pig (SSH)
 

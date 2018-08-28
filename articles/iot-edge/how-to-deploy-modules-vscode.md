@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d5b43f81cbb3bbebb231a8a9738f6138b62ef7f6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325772"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046033"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code
 
@@ -130,7 +130,7 @@ Możesz wdrożyć moduły do Twojego urządzenia, stosując manifestu wdrażania
 
 2. Kliknij prawym przyciskiem myszy na urządzeniu, które chcesz skonfigurować za pomocą pliku manifestu wdrożenia. 
 
-3. Wybierz **tworzenie wdrożenia dla urządzenia usługi IoT Edge**. 
+3. Wybierz **tworzenie wdrożenia dla jednego urządzenia**. 
 
 4. Przejdź do pliku manifestu wdrożenia JSON, którego chcesz użyć, a następnie kliknij przycisk **wybierz manifestu wdrażania krawędzi**. 
 

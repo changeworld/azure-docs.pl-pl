@@ -1,26 +1,25 @@
 ---
 title: Zarządzanie przy użyciu zestawu Azure .NET SDK usługi Azure Data Lake Analytics
-description: W tym artykule opisano sposób użycia Azure .net SDK do zapisania aplikacjom zarządzanym zadania usługi Data Lake Analytics, źródła danych i użytkowników.
+description: W tym artykule opisano sposób użycia platformy Azure .net SDK do pisania aplikacji zarządzających zadań usługi Data Lake Analytics, źródła danych i użytkowników.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: dc5482ab83eca34d24cf15b76e0a0076456ae069
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 96b449e372417298ee3517d6a45c245d440a01c2
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109304"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047395"
 ---
-# <a name="manage-azure-data-lake-analytics-a-net-app"></a>Zarządzanie usługą Azure Data Lake Analytics aplikacji .NET
+# <a name="manage-azure-data-lake-analytics-a-net-app"></a>Zarządzanie usługi Azure Data Lake Analytics w aplikacji platformy .NET
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-W tym artykule opisano sposób zarządzania usługą Azure Data Lake Analytics kont, źródeł danych użytkowników i zadań za pomocą aplikacji napisane przy użyciu zestawu .NET SDK usługi Azure. 
+W tym artykule opisano zarządzanie kontami, źródłami danych, użytkowników i zadań za pomocą aplikacji napisanych przy użyciu zestawu Azure .NET SDK usługi Azure Data Lake Analytics. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +37,7 @@ W tym artykule opisano sposób zarządzania usługą Azure Data Lake Analytics k
 |[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-Preview|
 |[Microsoft.Azure.Graph.RBAC](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|3.4.0-Preview|
 
-Te pakiety przy użyciu wiersza polecenia NuGet można zainstalować za pomocą następujących poleceń:
+Możesz zainstalować te pakiety za pomocą wiersza polecenia NuGet za pomocą następujących poleceń:
 
 ```
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
@@ -48,7 +47,7 @@ Install-Package -Id Microsoft.Azure.Management.ResourceManager  -Version 1.6.0-p
 Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 ```
 
-## <a name="common-variables"></a>Zmienne typowych
+## <a name="common-variables"></a>Wspólne zmienne
 
 ``` csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
@@ -59,7 +58,7 @@ string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (t
 
 ## <a name="authentication"></a>Authentication
 
-Istnieje wiele opcji logowania do usługi Azure Data Lake Analytics. Poniższy fragment kodu przedstawia przykład uwierzytelniania przy użyciu uwierzytelniania użytkownika interaktywnego z okno podręczne.
+Istnieje wiele opcji do logowania się do usługi Azure Data Lake Analytics. Poniższy fragment kodu przedstawia przykład uwierzytelniania za pomocą interakcyjnego uwierzytelniania użytkownika przy użyciu wyskakującego okienka.
 
 ``` csharp
 using System;
@@ -97,10 +96,10 @@ public static Program
 }
 ```
 
-Kod źródłowy **GetCreds_User_Popup** i kod innych opcje uwierzytelniania są objęte [opcje uwierzytelniania Data Lake Analytics .NET](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options)
+Kod źródłowy **GetCreds_User_Popup** i kod inne opcje uwierzytelniania są objęte [opcje uwierzytelniania Data Lake Analytics .NET](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options)
 
 
-## <a name="create-the-client-management-objects"></a>Tworzenie klienta zarządzania obiektów
+## <a name="create-the-client-management-objects"></a>Tworzenie klienta obiektów zarządzania
 
 ``` csharp
 var resourceManagementClient = new ResourceManagementClient(armCreds) { SubscriptionId = subid };
@@ -125,7 +124,7 @@ graphClient.TenantID = domain;
 
 ### <a name="create-an-azure-resource-group"></a>Tworzenie grupy zasobów platformy Azure
 
-Jeśli jeszcze nie utworzono jedną, muszą mieć grupy zasobów platformy Azure, aby utworzyć składniki usługi Data Lake Analytics. Wymagane poświadczenia uwierzytelniania, identyfikator subskrypcji i lokalizacji. Poniższy kod przedstawia sposób tworzenia grupy zasobów:
+Jeśli nie utworzono jeszcze jeden, musi mieć grupę zasobów platformy Azure do tworzenia składników usługi Data Lake Analytics. Potrzebujesz poświadczeń uwierzytelniania, identyfikator subskrypcji i lokalizacji. Poniższy kod przedstawia sposób tworzenia grupy zasobów:
 
 ``` csharp
 var resourceGroup = new ResourceGroup { Location = location };
@@ -135,7 +134,7 @@ Aby uzyskać więcej informacji, zobacz [grup zasobów platformy Azure i usługi
 
 ### <a name="create-a-data-lake-store-account"></a>Tworzenie konta usługi Data Lake Store
 
-Kiedykolwiek ADLA konto wymaga koncie ADLS. Jeśli nie masz jeszcze jeden będzie używany, można utworzyć jedną z następującym kodem:
+Nigdy nie konta ADLA konieczne jest posiadanie konta usługi ADLS. Jeśli nie masz jeszcze ma być używany, można utworzyć jeden z następującym kodem:
 
 ``` csharp
 var new_adls_params = new DataLakeStoreAccount(location: _location);
@@ -144,7 +143,7 @@ adlsAccountClient.Account.Create(rg, adls, new_adls_params);
 
 ### <a name="create-a-data-lake-analytics-account"></a>Tworzenie konta Data Lake Analytics
 
-Poniższy kod tworzy konto ADLS
+Poniższy kod tworzy konto usługi Azure Data Lake Store
 
 ``` csharp
 var new_adla_params = new DataLakeAnalyticsAccount()
@@ -156,7 +155,7 @@ var new_adla_params = new DataLakeAnalyticsAccount()
 adlaClient.Account.Create(rg, adla, new_adla_params);
 ```
 
-### <a name="list-data-lake-store-accounts"></a>Konta usługi Data Lake Store listy
+### <a name="list-data-lake-store-accounts"></a>Konta listy Data Lake Store
 
 ``` csharp
 var adlsAccounts = adlsAccountClient.Account.List().ToList();
@@ -183,7 +182,7 @@ for (var adla in AdlaAccounts)
 bool exists = adlaClient.Account.Exists(rg, adla));
 ```
 
-### <a name="get-information-about-an-account"></a>Uzyskiwanie informacji o koncie
+### <a name="get-information-about-an-account"></a>Uzyskaj informacje o koncie
 
 ``` csharp
 bool exists = adlaClient.Account.Exists(rg, adla));
@@ -193,7 +192,7 @@ if (exists)
 }
 ```
 
-### <a name="delete-an-account"></a>Usuń konto
+### <a name="delete-an-account"></a>Usuwanie konta
 
 ``` csharp
 if (adlaClient.Account.Exists(rg, adla))
@@ -202,9 +201,9 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-### <a name="get-the-default-data-lake-store-account"></a>Uzyskiwanie domyślnego konta usługi Data Lake Store
+### <a name="get-the-default-data-lake-store-account"></a>Pobierz domyślnego konta Data Lake Store
 
-Każde konto usługi Data Lake Analytics wymaga domyślnego konta usługi Data Lake Store. Ten kod umożliwia określenie domyślnego konta magazynu dla konta usługi Analytics.
+Każde konto usługi Data Lake Analytics wymaga domyślnego konta Data Lake Store. Użyj tego kodu, aby określić domyślne konto Store dla konta usługi Analytics.
 
 ``` csharp
 if (adlaClient.Account.Exists(rg, adla))
@@ -214,16 +213,16 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-## <a name="manage-data-sources"></a>Zarządzaj źródłami danych
+## <a name="manage-data-sources"></a>Zarządzanie źródłami danych
 
-Data Lake Analytics obsługuje obecnie następujących źródeł danych:
+Usługa Data Lake Analytics obsługuje obecnie następujące źródła danych:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Konto magazynu Azure](../storage/common/storage-introduction.md)
+* [Konto usługi Azure Storage](../storage/common/storage-introduction.md)
 
-### <a name="link-to-an-azure-storage-account"></a>Łącze do konta usługi Azure Storage
+### <a name="link-to-an-azure-storage-account"></a>Połączyć konto usługi Azure Storage
 
-Można utworzyć łącza do konta usługi Azure Storage.
+Można tworzyć łącza do kont usługi Azure Storage.
 
 ``` csharp
 string storage_key = "xxxxxxxxxxxxxxxxxxxx";
@@ -261,22 +260,22 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>Przekazywanie i pobieranie plików i folderów
-Obiektu zarządzania klient systemu plików usługi Data Lake Store służy do przekazywania i pobierania poszczególnych plików lub folderów z platformy Azure na komputerze lokalnym przy użyciu następujących metod:
+Obiekt zarządzania klient systemu plików Data Lake Store służy do przekazywania i pobierania pojedyncze pliki lub foldery z platformy Azure na komputerze lokalnym przy użyciu następujących metod:
 
 - UploadFolder
 - UploadFile
 - DownloadFolder
 - DownloadFile
 
-Pierwszy parametr dla tych metod jest nazwa konta magazynu danych Lake, następuje parametrów ścieżka źródłowa i ścieżka docelowa.
+Pierwszy parametr tych metod jest nazwa Store konta usługi Data Lake, następuje parametrów dla ścieżki źródłowej i ścieżki docelowej.
 
-Poniższy przykład przedstawia sposób pobierania folderu w usłudze Data Lake Store.
+Poniższy przykład pokazuje, jak można pobrać folderu w Data Lake Store.
 
 ``` csharp
 adlsFileSystemClient.FileSystem.DownloadFolder(adls, sourcePath, destinationPath);
 ```
 
-### <a name="create-a-file-in-a-data-lake-store-account"></a>Utwórz plik w ramach konta usługi Data Lake Store
+### <a name="create-a-file-in-a-data-lake-store-account"></a>Utwórz plik w ramach konta Data Lake Store
 
 ``` csharp
 using (var memstream = new MemoryStream())
@@ -293,8 +292,8 @@ using (var memstream = new MemoryStream())
 }
 ```
 
-### <a name="verify-azure-storage-account-paths"></a>Sprawdź ścieżek konta magazynu Azure
-Poniższy kod sprawdza konto magazynu Azure (storageAccntName) istnieje w ramach konta usługi Data Lake Analytics (analyticsAccountName), a kontener (containerName) istnieje na koncie magazynu Azure.
+### <a name="verify-azure-storage-account-paths"></a>Sprawdź ścieżki konta usługi Azure Storage
+Poniższy kod sprawdza, czy konto usługi Azure Storage (storageAccntName) istnieje na koncie usługi Data Lake Analytics (analyticsAccountName), a kontener (containerName) istnieje na koncie usługi Azure Storage.
 
 ``` csharp
 string storage_account = "mystorageaccount";
@@ -303,11 +302,11 @@ bool accountExists = adlaClient.Account.StorageAccountExists(rg, adla, storage_a
 bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, storage_account, storage_container));
 ```
 
-## <a name="manage-catalog-and-jobs"></a>Zarządzanie katalogu i zadań
-Obiekt DataLakeAnalyticsCatalogManagementClient zapewnia metody do zarządzania bazą danych SQL podane dla każdego konta usługi Azure Data Lake Analytics. DataLakeAnalyticsJobManagementClient zawiera metody służące do przesyłania zadania i zarządzać nimi uruchomić w bazie danych ze skryptów U-SQL.
+## <a name="manage-catalog-and-jobs"></a>Zarządzanie wykazu i zadania
+Obiekt DataLakeAnalyticsCatalogManagementClient zapewnia metody do zarządzania z bazą danych SQL podana dla każdego konta usługi Azure Data Lake Analytics. DataLakeAnalyticsJobManagementClient zawiera metody służące do przesyłania zadań i zarządzanie nimi uruchomić w bazie danych za pomocą skryptów U-SQL.
 
-### <a name="list-databases-and-schemas"></a>Lista baz danych i schematy
-Między kilka kwestii, które można wyświetlić listę najczęściej są baz danych i ich schematu. Poniższy kod uzyskuje kolekcji baz danych, a następnie wylicza schematu dla każdej bazy danych.
+### <a name="list-databases-and-schemas"></a>Wyświetl bazy danych i schematy
+Kilka rzeczy, które można wyświetlić listę najbardziej typowych należą baz danych i ich schematu. Poniższy kod uzyskuje kolekcji baz danych, a następnie wylicza schematu dla każdej bazy danych.
 
 ``` csharp
 var databases = adlaCatalogClient.Catalog.ListDatabases(adla);
@@ -324,7 +323,7 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>Lista kolumn tabeli
-Poniższy kod przedstawia sposób dostępu do bazy danych z klientem do zarządzania katalogu Data Lake Analytics, aby wyświetlić listę kolumn w określonej tabeli.
+Poniższy kod przedstawia sposób dostępu do bazy danych za pomocą klienta zarządzania katalogu Data Lake Analytics, aby wyświetlić listę kolumn w określonej tabeli.
 
 ``` csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
@@ -337,7 +336,7 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="submit-a-u-sql-job"></a>Przesyłanie zadania U-SQL
-Poniższy kod przedstawia sposób użycia klienta Data Lake Analytics zadania zarządzania można przesłać zadania.
+Poniższy kod przedstawia sposób użycia klienta Data Lake Analytics zadania zarządzania, aby przesłać zadanie.
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
 Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
@@ -356,7 +355,7 @@ Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>Lista zadań zakończonych niepowodzeniem
-Poniższy kod zawiera informacje dotyczące zadań, których nie powiodła się.
+Poniższy kod wyświetla informacje o zadaniach, które nie powiodło się.
 
 ``` csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
@@ -367,8 +366,8 @@ foreach (var j in jobs)
 }
 ```
 
-### <a name="list-pipelines"></a>Potoki listy
-Poniższy kod wyświetla informacje o każdym potoku zadań przesłane do konta.
+### <a name="list-pipelines"></a>Wygenerować listy potoków
+Poniższy kod zawiera listę informacji na temat każdego potoku zadania przesłane do konta.
 
 ``` csharp
 var pipelines = adlaJobClient.Pipeline.List(adla);
@@ -378,8 +377,8 @@ foreach (var p in pipelines)
 }
 ```
 
-### <a name="list-recurrences"></a>Cykle listy
-Poniższy kod wyświetla informacje o każdym cyklu zadania przekazane do konta.
+### <a name="list-recurrences"></a>Lista cykli
+Poniższy kod wyświetla informacje o każdym cyklu zadania przesłane do konta.
 
 ``` csharp
 var recurrences = adlaJobClient.Recurrence.List(adla);
@@ -391,7 +390,7 @@ foreach (var r in recurrences)
 
 ## <a name="common-graph-scenarios"></a>Typowe scenariusze wykresu
 
-### <a name="look-up-user-in-the-aad-directory"></a>Wyszukiwanie użytkownika w katalogu usługi AAD
+### <a name="look-up-user-in-the-aad-directory"></a>Wyszukaj użytkownika w katalogu usługi AAD
 
 ``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
@@ -405,10 +404,10 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>Zarządzanie zasadami obliczeń
-Obiekt DataLakeAnalyticsAccountManagementClient zapewnia metody do zarządzania zasadami obliczeniowe dla konta usługi Data Lake Analytics.
+Obiekt DataLakeAnalyticsAccountManagementClient zapewnia metody do zarządzania zasadami obliczeń dla konta usługi Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Podać zasady obliczeń
-Poniższy kod pobiera listę zasad obliczeniowe dla konta usługi Data Lake Analytics.
+Poniższy kod pobiera listę zasad obliczeń dla konta usługi Data Lake Analytics.
 
 ``` csharp
 var policies = adlaAccountClient.ComputePolicies.ListByAccount(rg, adla);
@@ -419,7 +418,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>Utwórz nowe zasady obliczeń
-Poniższy kod tworzy nową zasadę obliczeniowe dla konta usługi Data Lake Analytics, ustawienie maksymalnej AUs, dostępne do określonego użytkownika do 50, a także priorytet zadania minimalna 250.
+Poniższy kod tworzy nową zasadę obliczeń dla konta usługi Data Lake Analytics, ustawienie maksymalna liczba jednostek alokacji, dostępne dla określonego użytkownika na 50 i priorytet minimalny zadania do 250.
 
 ``` csharp
 var userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde";

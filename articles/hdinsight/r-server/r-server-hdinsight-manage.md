@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: b927c1d3bef3382680552a0b25e49bd7c10b6baa
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9d95f6edcb6f4e24e4a19fd6537ed1a5be9564ee
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620250"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046829"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 

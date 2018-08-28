@@ -1,6 +1,6 @@
 ---
-title: System operacyjny i środowiska uruchomieniowego poprawki w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak usługi Azure App Service aktualizacje systemu operacyjnego i środowisk uruchomieniowych i jak wprowadzasz aktualizacji anonsów.
+title: Systemu operacyjnego i środowiska uruchomieniowego poprawki w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak usługa Azure App Service, aktualizacji systemu operacyjnego i środowisk uruchomieniowych i jak można uzyskać zaktualizować anonsów.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,58 +13,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9855becd7c047788ed310dff4317a5df87cc9b61
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030057"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047632"
 ---
-# <a name="os-and-runtime-patching-in-azure-app-service"></a>System operacyjny i środowiska uruchomieniowego poprawki w usłudze Azure App Service
+# <a name="os-and-runtime-patching-in-azure-app-service"></a>Systemu operacyjnego i środowiska uruchomieniowego poprawki w usłudze Azure App Service
 
-W tym artykule przedstawiono sposób pobrać niektóre informacje o wersji dotyczące systemu operacyjnego lub oprogramowania w [usługi aplikacji](app-service-web-overview.md). 
+W tym artykule dowiesz się, jak uzyskać pewne informacje o wersji dotyczące systemu operacyjnego lub oprogramowania w [usługi App Service](app-service-web-overview.md). 
 
-Usługi aplikacji jest platformy jako — usługa, co oznacza, że system operacyjny i stosu aplikacji są zarządzane dla Ciebie przez platformę Azure; można zarządzać tylko jego danych i aplikacji. Większa kontrola nad systemu operacyjnego i aplikacji stos jest dostępny w [maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/). Z tym pamiętać jest jednak przydatnych jako użytkownik usługi aplikacji, aby dowiedzieć się więcej informacji, takich jak:
+Usługa App Service jest Platform-as-a-Service, co oznacza, że systemu operacyjnego i aplikacji, stosu są zarządzane automatycznie przez platformę Azure; można zarządzać tylko jego danych i aplikacji. Większa kontrola nad systemu operacyjnego i aplikacji stos jest dostępny w [maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/). Mając to na uwadze mimo wszystko pomocne jest dla Ciebie jako użytkownik usługi App Service, aby dowiedzieć się więcej informacji, takich jak:
 
 -   Jak i kiedy są stosowane aktualizacje systemu operacyjnego?
--   Jak usługi aplikacji jest poprawiono przed lukami znaczących (np. 0 dni)
--   Które wersje systemu operacyjnego i środowiska uruchomieniowego uruchamiania aplikacji?
+-   Jak usługi App Service jest poprawkami lukami znaczące (na przykład zero day)
+-   Które wersje systemu operacyjnego i środowiska uruchomieniowego są uruchomione aplikacje?
 
-Ze względów bezpieczeństwa nie są publikowane niektórych szczegółowych informacji o zabezpieczeniach. Jednak artykuł ma na celu rozwiązanie problemów przez przezroczystość DSI oznacza optymalne wykorzystanie procesu i jak mogą pozostać aktualne na powiadomienia związane z zabezpieczeniami lub aktualizacji środowiska uruchomieniowego.
+Ze względów bezpieczeństwa nie są publikowane niektórych specyficznych opcji informacje o zabezpieczeniach. Jednak artykuł ma na celu złagodzenia wątpliwości, przejrzystości DSI oznacza optymalne wykorzystanie procesu i jak użytkownik może na bieżąco z ogłoszenia związane z zabezpieczeniami lub aktualizacje środowiska uruchomieniowego.
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Jak i kiedy są stosowane aktualizacje systemu operacyjnego?
 
-Azure zarządza poprawek systemu operacyjnego na dwa poziomy, serwerów fizycznych i maszyn wirtualnych gościa (maszyny wirtualne), systemem zasobów usługi aplikacji. Zarówno są aktualizowane co miesiąc, który jest wyrównywany do miesięcznych [wtorek poprawek](https://technet.microsoft.com/security/bulletins.aspx) harmonogramu. Te aktualizacje są stosowane automatycznie, w sposób zapewniający usług umowy SLA platformy Azure o wysokiej dostępności. 
+Platforma Azure zarządza stosowania poprawek systemu operacyjnego na dwóch poziomach, serwerów fizycznych i maszyn wirtualnych gościa (VM), które zasoby są uruchamiane w usłudze App Service. Oba są aktualizowane co miesiąc, która wyrównuje na wartość miesięczną [wtorek poprawek](https://technet.microsoft.com/security/bulletins.aspx) harmonogramu. Te aktualizacje są stosowane automatycznie, w sposób zapewniający wysoką dostępność usług umowy SLA platformy Azure. 
 
-Aby uzyskać szczegółowe informacje dotyczące sposobu stosowania aktualizacji, zobacz [Demystifying magic za aktualizacje systemu operacyjnego z usługi aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/).
+Aby uzyskać szczegółowe informacje dotyczące sposobu stosowania aktualizacji, zobacz [Demystifying magic za aktualizacje systemu operacyjnego usługi aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/).
 
-## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak Azure postępowania z znaczących luk w zabezpieczeniach?
+## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak Azure postępowania z znaczne lukami w zabezpieczeniach?
 
-Gdy poważny usterkami bezpośredniego stosowania poprawek, takich jak [luk w zabezpieczeniach dzień zero](https://wikipedia.org/wiki/Zero-day_(computing)), aktualizacje o wysokim priorytecie są obsługiwane w przypadku przez.
+Gdy poważnych usterek wymagają natychmiastowego wdrażania poprawek, takich jak [zero day luk w zabezpieczeniach](https://wikipedia.org/wiki/Zero-day_(computing)), aktualizacje o wysokim priorytecie są obsługiwane w przypadku przez.
 
-Bądź na bieżąco dzięki anonsów krytycznych na platformie Azure po przejściu na stronę [Azure Security Blog](https://azure.microsoft.com/blog/topics/security/). 
+Aktualne informacje o krytycznych ogłoszenia na platformie Azure, odwiedzając [Blog dotyczący zabezpieczeń platformy Azure](https://azure.microsoft.com/blog/topics/security/). 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Gdy środowisk uruchomieniowych obsługiwanego języka aktualizacji, dodane lub przestarzałe?
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Kiedy są środowisk uruchomieniowych obsługiwanych języków zaktualizowany, dodane lub przestarzałe?
 
-Nowe wersje stabilna środowisk uruchomieniowych obsługiwanego języka (główne, niewielkie lub poprawka) okresowo zostają dodane do wystąpień usługi aplikacji. Niektóre aktualizacje zastąpić istniejącą instalację, podczas gdy inne są zainstalowane równolegle z istniejącymi wersjami. Zastąp instalacji oznacza, że aplikacja automatycznie działać na zaktualizowane środowiska wykonawczego. Instalacja side-by-side oznacza, że należy ręcznie przeprowadzić migrację aplikacji w taki sposób, aby móc korzystać z nowej wersji środowiska wykonawczego. Aby uzyskać więcej informacji zobacz jedną z podsekcjach.
+Nowe wersje stabilne środowisk uruchomieniowych obsługiwanych języków (głównych, drobne lub poprawek) okresowo zostają dodane do wystąpień usługi App Service. Niektóre aktualizacje zastępują istniejącą instalację, podczas gdy inne są instalowane obok istniejących wersji. Instalacji Zastąp oznacza, że aplikacja działa automatycznie w systemie zaktualizowanego środowiska uruchomieniowego. Instalacja side-by-side oznacza, że należy ręcznie przeprowadzić migrację aplikacji w taki sposób, aby móc korzystać z nowej wersji środowiska uruchomieniowego. Aby uzyskać więcej informacji zobacz jeden z podsekcje.
 
-Środowisko uruchomieniowe aktualizacji i deprecations są ogłaszane w tym miejscu:
+Aktualizacje środowiska uruchomieniowego i deprecations obsłudze zostaną opublikowane w tym miejscu:
 
 - https://azure.microsoft.com/updates/?product=app-service 
 - https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
-> Tutaj informacje dotyczą środowiska wykonawczego języka, które są wbudowane w aplikacji usługi app Service. Niestandardowe środowiska uruchomieniowego przekazanymi do usługi aplikacji, na przykład pozostaje niezmieniony chyba, że należy ręcznie uaktualnić.
+> W tym miejscu informacje mają zastosowanie do środowiska uruchomieniowe języków, które są wbudowane w aplikacji usługi App Service. Niestandardowego środowiska uruchomieniowego, które zostaną przesłane do usługi App Service, na przykład pozostaje bez zmian, chyba że ręcznie uaktualnić.
 >
 >
 
-### <a name="new-patch-updates"></a>Nowe aktualizacje poprawki
+### <a name="new-patch-updates"></a>Nowe aktualizacje poprawek
 
-Poprawek i aktualizacji do .NET, PHP, Java SDK lub wersji Tomcat/Jetty są automatycznie stosowane przez zastąpienie istniejącej instalacji przy użyciu nowej wersji. Zainstalowanych aktualizacji poprawki programu node.js równolegle z istniejącymi wersjami (podobnie jak wersje główne i pomocnicze w następnej sekcji). Python nowe wersje poprawki można zainstalować ręcznie za pomocą [lokacji rozszerzenia](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)), obok wbudowanych instalacji języka Python.
+Poprawki aktualizacji platformy .NET, PHP, zestawu SDK Java usługi lub wersja Tomcat/Jetty są stosowane automatycznie przez zastąpienie istniejącej instalacji nowej wersji. Node.js poprawek i aktualizacji są instalowane obok istniejących wersji (podobne do wersji głównych i pomocniczych w następnej sekcji). Python nowej poprawki wersji można zainstalować ręcznie za pomocą [rozszerzeń witryny](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)), obok siebie przy użyciu wbudowanych instalacji języka Python.
 
 ### <a name="new-major-and-minor-versions"></a>Nowe wersje główne i pomocnicze
 
-Po dodaniu nowej wersji mniejszym lub zainstalowano równolegle z istniejącymi wersjami. Aplikację można ręcznie uaktualnić do nowej wersji. Jeśli wersja środowiska uruchomieniowego jest skonfigurowany w pliku konfiguracji (takich jak `web.config` i `package.json`), musisz uaktualnić z tej samej metody. Jeśli używasz usługi aplikacji — ustawienie skonfigurować wersji środowiska uruchomieniowego, możesz je zmienić w [portalu Azure](https://portal.azure.com) lub uruchamiając [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w [powłoki chmury](../cloud-shell/overview.md), jako przedstawione w poniższych przykładach:
+Po dodaniu nowej wersji mniejszym lub większym stopniu, jest on instalowany obok istniejących wersji. Można ręcznie uaktualnić aplikację do nowej wersji. Jeśli wersja środowiska uruchomieniowego jest skonfigurowany w pliku konfiguracji (takich jak `web.config` i `package.json`), musisz uaktualnić przy użyciu tej samej metody. Jeśli używasz usługi App Service ustawienie konfigurowania wersji środowiska uruchomieniowego, można zmienić w [witryny Azure portal](https://portal.azure.com) lub uruchamiając [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) polecenia w pliku [Cloud Shell](../cloud-shell/overview.md), jako pokazano w poniższych przykładach:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -76,29 +76,29 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 
 ### <a name="deprecated-versions"></a>Przestarzałe wersji  
 
-Gdy starsza wersja jest przestarzały, Data usunięcia ogłoszenia tak, aby odpowiednio zaplanować uaktualnienie wersji środowiska wykonawczego. 
+Gdy starsza wersja jest przestarzały, Data usunięcia jest ogłaszany tak, aby odpowiednio zaplanować uaktualnienie wersji środowiska uruchomieniowego. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak zbadać stan aktualizacji systemu operacyjnego i środowiska uruchomieniowego na mój wystąpień  
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak zbadać stan aktualizacji systemu operacyjnego i środowiska uruchomieniowego na Moje wystąpienia  
 
-Podczas kluczowych informacji systemu operacyjnego jest zablokowana z programu access (zobacz [funkcji systemu operacyjnego w usłudze Azure App Service](web-sites-available-operating-system-functionality.md)), [Kudu konsoli](https://github.com/projectkudu/kudu/wiki/Kudu-console) pozwala na zapytania dotyczące systemu operacyjnego wystąpienia usługi aplikacji Wersja i wersji środowiska wykonawczego. 
+Gdy krytyczne informacje systemu operacyjnego jest zablokowane w z programu access (zobacz [funkcjonalność systemu operacyjnego w usłudze Azure App Service](web-sites-available-operating-system-functionality.md)), [konsoli Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) oferuje możliwość zapytań wystąpienia usługi App Service dotyczące systemu operacyjnego Wersja i wersje środowiska uruchomieniowego. 
 
-W poniższej tabeli przedstawiono sposób wersje systemu Windows i środowisko uruchomieniowe języka uruchamiania aplikacji:
+W poniższej tabeli przedstawiono sposób wersji systemu Windows i środowiska uruchomieniowego języka, które są uruchomione aplikacje:
 
-| Informacje | Gdzie można znaleźć go | 
+| Informacje | Gdzie można go znaleźć | 
 |-|-|
 | Wersja systemu Windows | Zobacz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (w obszarze informacje o systemie) |
 | Wersja platformy .NET | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | Wersja platformy .NET core | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `dotnet --version` |
 | Wersja języka PHP | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `php --version` |
-| Domyślną wersję środowiska Node.js | W [powłoki chmury](../cloud-shell/overview.md), uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Domyślna wersja aparatu Node.js | W [Cloud Shell](../cloud-shell/overview.md), uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |  
 
 > [!NOTE]  
-> Dostęp do lokalizacji w rejestrze `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie informacji na temat [poprawek "KB"]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) są przechowywane, jest zablokowana.
+> Dostęp do lokalizacji w rejestrze `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie informacji na temat [poprawek "KB"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) są przechowywane, jest zablokowana.
 >
 >
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-[Centrum zaufania: zabezpieczeń](https://www.microsoft.com/en-us/trustcenter/security)  
+[Centrum zaufania: zabezpieczenia](https://www.microsoft.com/en-us/trustcenter/security)  
 [64-bitowy platformy ASP.NET Core w usłudze Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

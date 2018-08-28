@@ -1,25 +1,19 @@
 ---
-title: "Wprowadzenie do usługi Data Catalog | Microsoft Docs"
-description: "Ten kompleksowy samouczek zawiera scenariusze dotyczące usługi Azure Data Catalog i opis jej możliwości."
-documentationcenter: 
+title: Rozpoczynanie pracy z usługą Azure Data Catalog
+description: Ten kompleksowy samouczek zawiera scenariusze dotyczące usługi Azure Data Catalog i opis jej możliwości.
 services: data-catalog
 author: steelanddata
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053816"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Rozpoczynanie pracy z usługą Azure Data Catalog
 Azure Data Catalog to w pełni zarządzana usługa w chmurze służąca jako system rejestracji i odnajdywania zasobów danych przedsiębiorstwa. Szczegółowe omówienie tej usługi można znaleźć w artykule [Co to jest usługa Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -40,14 +34,14 @@ Ten samouczek ułatwia rozpoczęcie pracy z usługą Azure Data Catalog i obejmu
 ### <a name="azure-subscription"></a>Subskrypcja platformy Azure
 Aby skonfigurować usługę Azure Data Catalog, musisz być właścicielem lub współwłaścicielem subskrypcji platformy Azure.
 
-Subskrypcje platformy Azure umożliwiają konfigurowanie dostępu do zasobów usług w chmurze, takich jak usługa Azure Data Catalog. Subskrypcje te ułatwiają również zarządzanie raportowaniem i rozliczaniem użycia zasobów oraz regulowaniem płatności za to użycie. Poszczególne subskrypcje mogą mieć różne ustawienia rozliczeń i płatności, co pozwala na korzystanie z wielu subskrypcji i planów dostosowanych do potrzeb konkretnych działów, projektów, biur regionalnych itp. Z każdą usługą w chmurze jest powiązana subskrypcja. Musisz mieć subskrypcję, aby móc rozpocząć konfigurowanie usługi Azure Data Catalog. Aby dowiedzieć się więcej, zobacz artykuł [Manage accounts, subscriptions, and administrative roles](../active-directory/active-directory-how-subscriptions-associated-directory.md) (Zarządzanie kontami, subskrypcjami i rolami administracyjnymi).
+Subskrypcje platformy Azure umożliwiają konfigurowanie dostępu do zasobów usług w chmurze, takich jak usługa Azure Data Catalog. Subskrypcje te ułatwiają również zarządzanie raportowaniem i rozliczaniem użycia zasobów oraz regulowaniem płatności za to użycie. Poszczególne subskrypcje mogą mieć różne ustawienia rozliczeń i płatności, co pozwala na korzystanie z wielu subskrypcji i planów dostosowanych do potrzeb konkretnych działów, projektów, biur regionalnych itp. Z każdą usługą w chmurze jest powiązana subskrypcja. Musisz mieć subskrypcję, aby móc rozpocząć konfigurowanie usługi Azure Data Catalog. Aby dowiedzieć się więcej, zobacz artykuł [Manage accounts, subscriptions, and administrative roles](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) (Zarządzanie kontami, subskrypcjami i rolami administracyjnymi).
 
 Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 Aby skonfigurować usługę Azure Data Catalog, musisz zalogować się za pomocą konta użytkownika usługi Azure Active Directory (Azure AD). Użytkownik ten musi być właścicielem lub współwłaścicielem subskrypcji platformy Azure.  
 
-Usługa Azure AD umożliwia firmom łatwe zarządzanie tożsamościami i dostępem, zarówno w chmurze, jak i lokalnie. Za pomocą jednego konta służbowego użytkownicy mogą logować się do dowolnej aplikacji sieci Web, działającej w chmurze lub lokalnie. Uwierzytelnianie logowania w usłudze Azure Data Catalog odbywa się za pośrednictwem usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory](../active-directory/active-directory-whatis.md).
+Usługa Azure AD umożliwia firmom łatwe zarządzanie tożsamościami i dostępem, zarówno w chmurze, jak i lokalnie. Za pomocą jednego konta służbowego użytkownicy mogą logować się do dowolnej aplikacji internetowej, działającej w chmurze lub lokalnie. Uwierzytelnianie logowania w usłudze Azure Data Catalog odbywa się za pośrednictwem usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="azure-active-directory-policy-configuration"></a>Konfiguracja zasad usługi Azure Active Directory
 W niektórych sytuacjach po zalogowaniu się w portalu usługi Azure Data Catalog przy próbie logowania się za pomocą narzędzia do rejestracji źródła danych występuje komunikat o błędzie, który uniemożliwia logowanie. Może się to zdarzyć zarówno podczas nawiązywania połączenia w sieci firmowej, jak i spoza niej.

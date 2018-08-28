@@ -1,31 +1,25 @@
 ---
-title: Połączenie ze źródłem danych w kolekcjach obszaru roboczego programu Power BI | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć się ze źródłem danych w kolekcjach obszaru roboczego programu Power BI.
+title: Łączenie ze źródłem danych w kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć się ze źródłem danych w obrębie kolekcji obszarów roboczych usługi Power BI.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 5a154c4899db974645bb7ade028d8bd8f267aad7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c626601d9eae7732779020b153c624f80605b56a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409860"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051879"
 ---
 # <a name="connect-to-a-data-source"></a>Łączenie ze źródłem danych
 
-Z **Power BI obszaru roboczego kolekcje**, raporty można osadzić w aplikacji. Po osadzeniu raportu usługi Power BI w swojej aplikacji raport łączy się z danych przez **importowania** kopii danych lub przez **połączenie bezpośrednio** do źródła danych przy użyciu **DirectQuery**.
+Za pomocą **kolekcji obszarów roboczych usługi Power BI**, możesz osadzić raportach do własnej aplikacji. Po osadzeniu raportu usługi Power BI w swojej aplikacji raport łączy się z danymi źródłowymi, **importowania** kopię danych lub przez **nawiązanie bezpośredniego połączenia** do źródła danych przy użyciu **zapytania bezpośredniego** .
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
@@ -34,48 +28,48 @@ Poniżej przedstawiono różnice między **importem** a **trybem DirectQuery**.
 
 | Import | Tryb DirectQuery |
 | --- | --- |
-| Tabele, kolumny, *i dane* są importowane lub kopiowane do zestawu danych raportu. Aby wyświetlić zmiany, które wystąpiły w danych źródłowych, należy odświeżyć lub zaimportować pełny bieżący zestaw danych ponownie. |Tylko *tabel i kolumn* są importowane lub kopiowane do zestawu danych raportu. Zawsze wyświetlić najbardziej aktualne dane. |
+| Tabele, kolumny, *i danych* są importowane lub kopiowane do zestawu danych raportu. Aby zobaczyć zmiany, które nastąpiły w danych bazowych, należy odświeżyć lub zaimportować pełny bieżący zestaw danych ponownie. |Tylko *tabele i kolumny* są importowane lub kopiowane do zestawu danych raportu. Zawsze możesz wyświetlić najbardziej aktualne dane. |
 
-Z kolekcjami obszaru roboczego programu Power BI możesz za pomocą zapytania bezpośredniego źródeł danych w chmurze, ale nie lokalnych źródeł danych w tej chwili.
+Za pomocą kolekcji obszarów roboczych usługi Power BI możesz za pomocą zapytania bezpośredniego źródłami danych w chmurze, ale nie lokalnych źródeł danych w tej chwili.
 
 > [!NOTE]
-> Brama danych lokalnego nie jest obsługiwana w tej chwili z kolekcjami obszaru roboczego programu Power BI. Oznacza to, że nie można użyć zapytania bezpośredniego z lokalnych źródeł danych.
+> Lokalna brama danych nie jest obsługiwana w tej chwili z kolekcji obszarów roboczych usługi Power BI. Oznacza to, że zapytania bezpośredniego nie można używać z lokalnymi źródłami danych.
 
 ## <a name="supported-data-sources"></a>Obsługiwane źródła danych
 
-**Zapytania bezpośredniego**
+**Zapytanie bezpośrednie**
 * Baza danych SQL Azure
 * Azure SQL Data Warehouse
 
 **Importowanie**
 
-Możesz zaimportować przy użyciu wszystkich dostępnych źródeł danych w ramach Power BI Desktop. Będzie **nie** można odświeżyć danych w kolekcjach obszaru roboczego programu Power BI. Należy przekazać zmiany do pliku PBIX do kolekcji obszaru roboczego programu Power BI. Jest to spowodowane dostępnej bramy. 
+Można zaimportować za pomocą wszystkich źródeł danych dostępnych w programie Power BI Desktop. Wykonasz **nie** można było odświeżyć dane w kolekcji obszarów roboczych usługi Power BI. Musisz przekazać zmiany do pliku PBIX do kolekcji obszarów roboczych usługi Power BI. Jest to spowodowane dostępnej bramy. 
 
-## <a name="benefits-of-using-directquery"></a>Zalety używania zapytania bezpośredniego
+## <a name="benefits-of-using-directquery"></a>Korzyści z używania zapytania bezpośredniego
 
-Istnieją dwie podstawowe zalety, korzystając z **DirectQuery**:
+Istnieją dwie podstawowe korzyści w przypadku korzystania z **zapytania bezpośredniego**:
 
-* **Zapytania bezpośredniego** umożliwiają tworzenie wizualizacji w dużych zestawów danych, gdzie w przeciwnym razie byłoby będzie niemożliwe, aby najpierw należy zaimportować wszystkie dane.
-* Bazowy zmian danych może wymagać odświeżenia danych, a w przypadku niektórych raportów potrzeba, aby wyświetlić bieżące dane mogą wymagać dużych transferów danych, co ponownie zaimportować danych będzie niemożliwe. Z kolei **DirectQuery** raporty zawsze używać bieżących danych.
+* **Zapytanie bezpośrednie** pozwala tworzyć wizualizacje dużych zestawach danych, których nie można byłoby od razu zaimportować wszystkich danych.
+* Zmiany danych bazowych wymagają odświeżenia danych, a w przypadku niektórych raportów konieczność wyświetlenie aktualnych danych może wymagać dużych transferów danych, sprawiając, że dane są ponownie zaimportować niecelowe. Z drugiej strony **zapytania bezpośredniego** raporty zawsze korzystają z aktualnych danych.
 
-## <a name="limitations-of-directquery"></a>Ograniczenia DirectQuery
+## <a name="limitations-of-directquery"></a>Ograniczenia dotyczące zapytania bezpośredniego
 
-Istnieje kilka ograniczeń dotyczących używania **DirectQuery**:
+Istnieją pewne ograniczenia dotyczące używania **zapytania bezpośredniego**:
 
 * Wszystkie tabele muszą pochodzić z jednej bazy danych.
-* Jeśli zapytanie jest zbyt skomplikowane, wystąpi błąd. Aby rozwiązać ten błąd musi Refaktoryzuj zapytanie, jest mniej złożona. Jeśli zapytanie musi być skomplikowane, należy zaimportować dane zamiast **DirectQuery**.
+* Jeśli zapytanie jest zbyt skomplikowane, wystąpi błąd. Aby naprawić ten błąd, musisz wykonać refaktoryzację zapytania, jest mniej złożona. Jeśli zapytanie musi być złożone, musisz zaimportować dane zamiast korzystać z **zapytania bezpośredniego**.
 * Filtrowanie relacji jest ograniczone do jednego kierunku, a nie w obu kierunkach.
 * Nie można zmienić typu danych kolumny.
-* Domyślnie ograniczenia są umieszczane na dozwolone w miarach wyrażenia języka DAX. Zobacz [zapytania bezpośredniego i środków](#measures).
+* Domyślnie ograniczenia są umieszczane w wyrażeniach języka DAX dozwolone w miarach. Zobacz [zapytania bezpośredniego i środków](#measures).
 
 <a name="measures"/>
 
-## <a name="directquery-and-measures"></a>Zapytania bezpośredniego i miary
-Upewnij się, że akceptowalną wydajność kwerend wysyłanych do źródła danych, są ograniczenia nałożone na miary. Korzystając z **Power BI Desktop**zaawansowanego użytkownicy mogą wybrać obejść to ograniczenie, wybierając **Plik > Opcje i Ustawienia > Opcje**. W **opcje** okno dialogowe, wybierz **DirectQuery**i wybierz opcję **Zezwalaj na nieograniczoną środki w trybie zapytania bezpośredniego**. Gdy ta opcja jest wybrana, można dowolne wyrażenie języka DAX, który jest prawidłowy dla miary. Użytkownicy muszą być świadome; jednak, czy niektóre wyrażeń, które również wykonać po zaimportowaniu danych może spowodować w granicach wolnej kwerend do wewnętrznej bazy danych w czasie źródła **zapytania bezpośredniego** tryb. 
+## <a name="directquery-and-measures"></a>Zapytanie bezpośrednie i miary
+Aby upewnić się, że zapytania wysłane do bazowego źródła danych mają akceptowalną wydajność, ograniczenia są nakładane na wskaźnikach. Korzystając z **Power BI Desktop**, zaawansowany użytkownicy mogą zdecydować się na obejście tego ograniczenia, wybierając **Plik > Opcje i Ustawienia > Opcje**. W **opcje** okno dialogowe, wybierz **zapytania bezpośredniego**i wybierz opcję **Zezwalaj na nieograniczone miary w trybie zapytania bezpośredniego**. Po wybraniu tej opcji można dowolnego wyrażenia języka DAX prawidłowego dla miary. Użytkownicy muszą być świadome; jednak, że niektóre wydajnych po zaimportowaniu danych może spowodować wolne zapytań dotyczących wewnętrznej bazy danych źródłowych w **zapytania bezpośredniego** trybu. 
 
 ## <a name="see-also"></a>Zobacz też
 
-* [Wprowadzenie do programu Microsoft Power BI obszaru roboczego kolekcje](get-started.md)
+* [Rozpoczynanie pracy z kolekcji obszarów roboczych pakietu Microsoft Power BI](get-started.md)
 * [Program Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
 Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](http://community.powerbi.com/)

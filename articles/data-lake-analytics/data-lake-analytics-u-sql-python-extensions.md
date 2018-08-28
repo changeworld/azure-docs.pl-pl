@@ -1,40 +1,39 @@
 ---
-title: Rozszerzanie skryptów U-SQL z języka Python w usłudze Azure Data Lake Analytics
-description: Dowiedz się, jak uruchomić kod języka Python w skryptów U-SQL przy użyciu usługi Azure Data Lake Analytics
+title: Rozszerzanie skryptów U-SQL przy użyciu języka Python w usłudze Azure Data Lake Analytics
+description: Dowiedz się, jak uruchamiać kod Python w skryptów U-SQL przy użyciu usługi Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 3e895a6ea9bccc0d210f43748edb3eea80ddc6ad
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b2179f9d81a2dad877c8ae58471f7440eb9edbe7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625084"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050995"
 ---
-# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozszerzanie skryptów U-SQL kodu języka Python z usługą Azure Data Lake Analytics
+# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozszerzanie skryptów U-SQL przy użyciu kodu w języku Python w usłudze Azure Data Lake Analytics
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że na koncie usługi Azure Data Lake Analytics są zainstalowane rozszerzenia języka Python.
+Przed rozpoczęciem upewnij się, że rozszerzenia języka Python są zainstalowane na Twoim koncie usługi Azure Data Lake Analytics.
 
-* Przejdź do użytkownika konta usługi Data Lake Analytics w portalu Azure
+* Przejdź do konta usługi Data Lake Analytics w witrynie Azure portal
 * W menu po lewej stronie w obszarze **wprowadzenie** kliknij **przykładowe skrypty**
-* Kliknij przycisk **zainstalować rozszerzenia języka U-SQL** następnie **OK**
+* Kliknij przycisk **zainstalować rozszerzenia U-SQL** następnie **OK**
 
 ## <a name="overview"></a>Przegląd 
 
-Rozszerzenia języka Python dla U-SQL umożliwiają deweloperom wykonać równoległemu wykonywanie kodu języka Python. Poniższy przykład przedstawia podstawowe kroki:
+Rozszerzenia języka Python dla języka U-SQL umożliwiają deweloperom wykonywania równoległego wykonywania kodu w języku Python. Poniższy przykład ilustruje podstawowe kroki:
 
-* Użyj `REFERENCE ASSEMBLY` instrukcji, aby włączyć rozszerzenia języka Python dla skryptu U-SQL
-* Przy użyciu `REDUCE` operacji do partycjonowania danych wejściowych dla klucza
-* Rozszerzenia języka Python dla U-SQL to wbudowane reduktor (`Extension.Python.Reducer`) uruchomione na każdy wierzchołek przypisane do reduktor kodu języka Python
-* Skrypt U-SQL zawiera osadzony kod języka Python, który ma funkcji o nazwie `usqlml_main` akceptuje pandas DataFrame jako dane wejściowe i zwraca pandas DataFrame jako dane wyjściowe.
+* Użyj `REFERENCE ASSEMBLY` instrukcję, aby włączyć rozszerzenia języka Python dla skryptów U-SQL
+* Za pomocą `REDUCE` operacji w celu podzielenia danych wejściowych dla klucza
+* Rozszerzenia języka Python dla języka U-SQL zawierają wbudowane reduktor (`Extension.Python.Reducer`), które jest uruchamiane kodu w języku Python na każdy wierzchołek przypisane do reduktor
+* Skrypt U-SQL zawiera osadzony kod języka Python, który ma funkcję o nazwie `usqlml_main` , akceptuje pandas DataFrame jako dane wejściowe i zwraca pandas DataFrame jako dane wyjściowe.
 
 --
 
@@ -73,36 +72,36 @@ Rozszerzenia języka Python dla U-SQL umożliwiają deweloperom wykonać równol
 
 ### <a name="datatypes"></a>Typy danych
 
-* Ciąg, jak i numeryczne kolumny z U-SQL są konwertowane na — między Pandas i języka U-SQL
-* U-SQL wartości null są konwertowane do i z Pandas `NA` wartości
+* Kolumny ciągów i liczbowe z języka U-SQL są konwertowane odpowiednio — od Pandas do języka U-SQL
+* U-SQL na wartości null są konwertowane do i z biblioteki Pandas `NA` wartości
 
 ### <a name="schemas"></a>Schematy
 
-* Wektory indeksu w Pandas nie są obsługiwane w języku U-SQL. Wszystkie ramki danych wejściowych w funkcji języka Python zawsze ma 64-bitowych indeksu numerycznych od 0 do liczby wierszy pomniejszonej o 1. 
-* Zestaw danych skryptu U-SQL nie mogą mieć zduplikowanych nazw kolumn
-* U-SQL nazwy kolumn zestawów danych, które nie są ciągami. 
+* Indeks wektorów w Pandas nie są obsługiwane w języku U-SQL. Wszystkie ramki danych wejściowych w funkcji języka Python zawsze mają indeksu numerycznego 64-bitowych, od 0 do liczby wierszy, minus 1. 
+* Zestawy danych U-SQL nie może mieć zduplikowanych nazw kolumn
+* Nazwy kolumn zestawów danych U-SQL, nie będących ciągami. 
 
-### <a name="python-versions"></a>Wersji języka Python
-Obsługiwane jest tylko Python 3.5.1 (skompilowany dla systemu Windows). 
+### <a name="python-versions"></a>Wersje języka Python
+Python 3.5.1 (skompilowane dla Windows) jest obsługiwana. 
 
 ### <a name="standard-python-modules"></a>Standardowe moduły języka Python
 Uwzględniane są wszystkie standardowe moduły języka Python.
 
 ### <a name="additional-python-modules"></a>Dodatkowe moduły języka Python
-Oprócz standardowych bibliotek języka Python uwzględniono kilka bibliotek często używane python:
+Oprócz standardowych bibliotek języka Python uwzględniono kilka bibliotek języka python powszechnie używane:
 
     pandas
     numpy
     numexpr
 
 ### <a name="exception-messages"></a>Komunikaty o wyjątkach
-Obecnie Wystąpił wyjątek w kodzie języka Python jest wyświetlany jako błąd rodzajowy wierzchołka. Komunikaty o błędach zadań U-SQL w przyszłości, wyświetli komunikat o wyjątku języka Python.
+Obecnie wyjątek w kodzie języka Python jest wyświetlany jako błąd rodzajowy wierzchołka. W przyszłości komunikaty o błędach zadania U-SQL wyświetli komunikat o wyjątku języka Python.
 
 ### <a name="input-and-output-size-limitations"></a>Dane wejściowe i ograniczenia rozmiaru danych wyjściowych
-Każdy wierzchołek ma ograniczoną ilość pamięci przypisanej do niego. Obecnie ten limit jest 6 GB dla funkcji Aktualizacje automatyczne. Ponieważ DataFrames wejściowych i wyjściowych musi istnieć w pamięci w kodzie języka Python, wówczas łączny rozmiar danych wejściowych i wyjściowych nie może przekroczyć 6 GB.
+Każdy wierzchołek ma ograniczoną ilość pamięci przypisanej do niego. Obecnie ten limit jest 6 GB do korzystania z jednostki analizy. Ponieważ elementy Dataframe wejściowy i wyjściowy muszą istnieć w pamięci w kodzie języka Python, wówczas łączny rozmiar danych wejściowych i wyjściowych nie może przekroczyć 6 GB.
 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools dla Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Zadania usługi Azure Data Lake Analytics przy użyciu funkcji okna języka U-SQL](data-lake-analytics-use-window-functions.md)
-* [Użyj usługi Azure Data Lake Tools dla programu Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [Korzystanie z funkcji okien języka U-SQL dla zadań usługi Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
+* [Użyj usługi Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

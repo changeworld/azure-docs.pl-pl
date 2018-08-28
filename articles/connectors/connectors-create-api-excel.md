@@ -10,22 +10,22 @@ ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 94960b95e6de30159ec34b3f97bb5119cac42c35
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ceef6c5f32372bb69f6ce789e755bc540cb12ba1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818103"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051953"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Zarządzanie danymi programu Excel Online z usługą Azure Logic Apps
 
-Za pomocą usługi Azure Logic Apps i łącznika programu Excel Online możesz utworzyć automatycznych zadań i przepływów pracy na podstawie danych w usłudze Excel Online dla firm lub OneDrive. Przepływy pracy można wykonywać te akcje i inne osoby ze swoimi danymi, na przykład:
+Za pomocą usługi Azure Logic Apps i łącznika programu Excel Online możesz utworzyć automatycznych zadań i przepływów pracy na podstawie danych w usłudze Excel Online dla firm lub OneDrive. Ten łącznik udostępnia akcje, które ułatwiają pracę z danymi i Zarządzaj arkuszy kalkulacyjnych, na przykład: 
 
 * Tworzenie nowych arkuszy i tabel.
 * Pobierz i Zarządzaj arkuszy, tabele i wiersze.
 * Dodaj pojedynczego wierszy i kolumn kluczy.
 
-Możesz dołączyć akcje w aplikacjach logiki, korzystających z danych wyjściowych z akcji programu Excel Online. Ten łącznik udostępnia tylko akcje, aby uruchomić aplikację logiki, użyj oddzielnych wyzwalacza, takich jak **cyklu** wyzwalacza. Na przykład jeśli tworzysz arkuszy co tydzień, możesz wysłać pocztą e-mail informacje dotyczące tych nowych arkuszy, za pomocą łącznika usługi Office 365 Outlook.
+Dane wyjściowe z tych akcji można następnie użyć za pomocą akcji dla innych usług. Na przykład jeśli używasz akcję, która tworzy arkuszy co tydzień, można użyć innej akcji, która wysyła wiadomość e-mail z potwierdzeniem za pomocą łącznika usługi Office 365 Outlook.
 
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 

@@ -1,55 +1,49 @@
 ---
-title: Zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI. Wymaga odpowiednich uprawnień, aby działało poprawnie.
+title: Zapisywanie raportów w kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapisywanie raportów w ramach kolekcji obszarów roboczych usługi Power BI. Wymaga to odpowiednie uprawnienia, aby móc pracować pomyślnie.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411220"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047960"
 ---
-# <a name="save-reports-in-power-bi-workspace-collections"></a>Zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI
+# <a name="save-reports-in-power-bi-workspace-collections"></a>Zapisywanie raportów w kolekcji obszarów roboczych usługi Power BI
 
-Dowiedz się, jak zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI. Zapisywanie raportów wymaga odpowiednich uprawnień, aby działało poprawnie.
+Dowiedz się, jak zapisywanie raportów w ramach kolekcji obszarów roboczych usługi Power BI. Zapisywanie raportów wymaga odpowiednich uprawnień, aby działała poprawnie.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-W kolekcjach obszaru roboczego programu Power BI możesz edytować istniejących raportów i zapisz je. Można również utworzyć nowy raport i zapisać jako nowy raport, aby go utworzyć.
+W ramach kolekcji obszarów roboczych usługi Power BI możesz edytować istniejące raporty i zapisywać je. Można również utworzyć nowy raport i zapisać jako nowy raport, aby go utworzyć.
 
-Aby zapisać raport, należy najpierw utworzyć token dla określonego raportu z prawej zakresów:
+Aby zapisać raport, najpierw musisz utworzyć token dla określonego raportu z zakresami prawa:
 
 * Aby włączyć Zapisz Report.ReadWrite zakres jest wymagany
 * Aby włączyć Zapisz jako, Report.Read i Workspace.Report.Copy zakresy są wymagane
 * Aby włączyć Zapisz, a następnie Zapisz jako, Report.ReadWrite i Workspace.Report.Copy są wymagane
 
-Odpowiednio w celu umożliwienia uprawnienie do zapisywania/Zapisz jako przyciski w menu Plik, należy zapewnić odpowiednie uprawnienie w konfiguracji osadzania osadzenia raportu:
+Odpowiednio w celu umożliwienia po prawej stronie save/Zapisywanie jako przyciski w menu Plik, konieczne będzie podanie odpowiednich uprawnień w konfiguracji osadzania po osadzeniu raportu:
 
 * modele. Permissions.ReadWrite
 * modele. Permissions.Copy
 * modele. Permissions.All
 
 > [!NOTE]
-> Token dostępu musi również odpowiedniego zakresów. Aby uzyskać więcej informacji, zobacz [zakresy](app-token-flow.md#scopes).
+> Token dostępu wymaga także odpowiednich zakresach. Aby uzyskać więcej informacji, zobacz [zakresy](app-token-flow.md#scopes).
 
 ## <a name="embed-report-in-edit-mode"></a>Osadzanie raportu w trybie edycji
 
-Załóżmy, że aby osadzić raport w trybie edycji wewnątrz aplikacji, więc wystarczy przekazać właściwości prawa w konfiguracji osadzania i wywołać powerbi.embed(). Należy podać uprawnienia i viewMode, aby wyświetlić zapisywania i Zapisz jako przyciski w trybie edycji. Aby uzyskać więcej informacji, zobacz [osadzić szczegóły konfiguracji](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Załóżmy, że chcesz osadzić raport w trybie edycji w aplikacji, więc po prostu przekazać odpowiednie właściwości w konfiguracji osadzania, i wywoływać powerbi.embed(). Podaj uprawnienia i viewMode, aby można było zobaczyć zapisywania i Zapisz jako przyciski w trybie edycji. Aby uzyskać więcej informacji, zobacz [osadzić szczegóły konfiguracji](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Na przykład w języku JavaScript:
 
@@ -85,9 +79,9 @@ Na przykład w języku JavaScript:
 
 Teraz raport zostanie osadzony w aplikacji w trybie edycji.
 
-## <a name="save-report"></a>Zapisywanie raportu
+## <a name="save-report"></a>Zapisz raport
 
-Po osadzanie raportu w trybie edycji z prawego token i uprawnień, można zapisać raport, w menu Plik lub z poziomu języka javascript:
+Po osadzanie raportu w trybie edycji, za pomocą prawidłowy token i uprawnienia, można zapisać raport, w menu Plik lub z poziomu języka javascript:
 
 ```
  // Get a reference to the embedded report.
@@ -112,9 +106,9 @@ Po osadzanie raportu w trybie edycji z prawego token i uprawnień, można zapisa
 ```
 
 > [!IMPORTANT]
-> Tylko po *Zapisz jako* jest utworzony nowy raport. Po zapisywanie obszar roboczy jest nadal wyświetlany starego raportu w trybie edycji, a nie nowy raport. Osadzić nowy raport, który został utworzony. Osadzanie nowy raport wymaga nowy token dostępu tworzonych na raport.
+> Tylko po *Zapisz jako* jest utworzony nowy raport. Po zapisywanie obszar roboczy jest nadal wyświetlana stare raportów w trybie edycji, a nie nowy raport. Osadzić nowy raport, który został utworzony. Osadzanie nowy raport wymaga nowy token dostępu, utworzonemu na raport.
 
-Następnie należy załadować nowy raport po *Zapisz jako*. Trwa ładowanie nowego raportu jest podobny do osadzania żadnych raportów.
+Następnie należy załadować nowy raport po *Zapisz jako*. Trwa ładowanie nowego raportu jest podobny do osadzania każdego raportu.
 
 ```
 <div id="reportContainer"></div>

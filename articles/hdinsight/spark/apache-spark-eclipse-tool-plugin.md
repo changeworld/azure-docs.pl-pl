@@ -3,18 +3,18 @@ title: 'Zestaw narzędzi platformy Azure dla środowiska Eclipse: Scala tworzeni
 description: Narzędzia HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra usługi HDInsight Spark bezpośrednio w środowisku IDE programu Eclipse.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: jasonh
-ms.openlocfilehash: 6ddfb7c23e05ea9528a462901fd87faade7371a7
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 836bdccbf3f8887a47da38b47b414722c878be04
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622273"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046016"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight Azure Toolkit for Eclipse
 

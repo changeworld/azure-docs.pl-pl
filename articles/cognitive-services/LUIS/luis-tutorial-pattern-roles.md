@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524148"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090530"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Samouczek: Ulepszaniu aplikacji przy użyciu ról wzorca
 
@@ -52,7 +52,7 @@ W tym samouczku aplikacja zarządzania zasobami ludzkimi wykrywa wypowiedzi info
 |[Hierarchiczne (nie role)](luis-quickstart-intent-and-hier-entity.md)|mV Jill Jones z **a-2349** do **b-1298**|a-2349 b-1298|
 |Ten samouczek (przy użyciu ról)|Przenieś Billy Patterson z **Yuma** do **Denver**.|Yuma, Denver|
 
-Nie można użyć hierarchicznej jednostki we wzorcu, ponieważ tylko hierarchiczne nadrzędnych są używane w elementy nadrzędne. Aby można było powrócić nazwane lokalizacje źródła i przeznaczenia, muse Użyj wzorca.
+Nie można użyć hierarchicznej jednostki we wzorcu, ponieważ tylko hierarchiczne nadrzędnych są używane we wzorcach. Aby można było powrócić nazwane lokalizacje źródła i przeznaczenia, muse Użyj wzorca.
 
 ### <a name="simple-entity-for-new-employee-name"></a>Proste jednostki dla nowej nazwy pracownika
 Nazwa nowego pracownika, Billy Patterson nie jest częścią obiektami listy **pracowników** jeszcze. Nowa nazwa pracowników jest wyodrębniany najpierw wysłać nazwę do systemu zewnętrznego do tworzenia poświadczeń firmowych. Po utworzeniu poświadczeń firmowych poświadczeń pracowników są dodawane do listy jednostki **pracowników**.

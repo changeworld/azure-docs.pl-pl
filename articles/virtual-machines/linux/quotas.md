@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 56ee63e15c429c5a6212be36d420ae59afa48546
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e9a9e3f902439f0fc3f1fa4aa758d4fcd55f5bd
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629093"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048948"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
@@ -63,7 +63,7 @@ Premium Storage Managed Disks                  5    10000
 ```
 
 ## <a name="reserved-vm-instances"></a>Wystąpienia zarezerwowane maszyn wirtualnych
-Zarezerwowane wystąpienia maszyn wirtualnych, które są ograniczone do jednej subskrypcji, zostaną dodane nowe aspekt do limity przydziału procesorów wirtualnych. Wartości te opisują liczbę wystąpień podane rozmiar, który musi być możliwy do wdrożenia w ramach subskrypcji. Działają jako symbol zastępczy w systemie limitu przydziału, aby upewnić się, że ten limit przydziału jest zarezerwowana do upewnij się, że można wdrożyć w ramach subskrypcji platformy Azure rezerwacji. Na przykład jeśli w określonej subskrypcji 10 rezerwacje maszyna wirtualna Standard_D1 limitu użycia dla rezerwacji maszyna wirtualna Standard_D1 wyniosłaby 10. Spowoduje to platformy Azure w celu zapewnienia, że zawsze są dostępne w całkowitej regionalnego przydziału procesorów wirtualnych do użycia dla wystąpień maszyna wirtualna Standard_D1 co najmniej 10 procesorów wirtualnych Vcpu i dostępne do limitu przydziału procesorów wirtualnych rodzina Standard D ma być używany dla wystąpień maszyna wirtualna Standard_D1 są co najmniej 10 procesorów wirtualnych.
+Zarezerwowane wystąpienia maszyn wirtualnych, które są ograniczone do pojedynczej subskrypcji bez elastyczność rozmiaru maszyny Wirtualnej, zostaną dodane nowe aspekt do limity przydziału procesorów wirtualnych. Wartości te opisują liczbę wystąpień podane rozmiar, który musi być możliwy do wdrożenia w ramach subskrypcji. Działają jako symbol zastępczy w systemie limitu przydziału, aby upewnić się, że ten limit przydziału jest zarezerwowana do upewnij się, że można wdrożyć w ramach subskrypcji platformy Azure rezerwacji. Na przykład jeśli w określonej subskrypcji 10 rezerwacje maszyna wirtualna Standard_D1 limitu użycia dla rezerwacji maszyna wirtualna Standard_D1 wyniosłaby 10. Spowoduje to platformy Azure w celu zapewnienia, że zawsze są dostępne w całkowitej regionalnego przydziału procesorów wirtualnych do użycia dla wystąpień maszyna wirtualna Standard_D1 co najmniej 10 procesorów wirtualnych Vcpu i dostępne do limitu przydziału procesorów wirtualnych rodzina Standard D ma być używany dla wystąpień maszyna wirtualna Standard_D1 są co najmniej 10 procesorów wirtualnych.
 
 Jeśli zwiększenia limitu przydziału jest wymagana do albo zakupu wystąpień Zarezerwowanych na pojedynczej subskrypcji, możesz to zrobić [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach Twojej subskrypcji.
 

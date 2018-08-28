@@ -15,12 +15,12 @@ ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617162"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048372"
 ---
 # <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -43,7 +43,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Rola Operator usługi API Management](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Rola czytnik usługi API Management](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Współautor składników usługi Application Insights](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie do korzystania z rozszerzenia Snapshot Debugger usługi Application Insights |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie, aby wyświetlić i pobrać migawki debugowania zebranych za pomocą Application Insights Snapshot Debugger. Należy pamiętać, że ta rola jest uwzględniony w ani [właściciela](#owner) ani [Współautor](#contributor) ról. |
 | [Operator zadań usługi Automation](#automation-job-operator) | Twórz zadania i zarządzaj nimi za pomocą elementów runbook usługi Automation. |
 | [Operator usługi Automation](#automation-operator) | Operatorzy automatyzacji mogą uruchamiać, zatrzymywać, wstrzymywać i wznawiać zadania |
 | [Operator elementów Runbook usługi Automation](#automation-runbook-operator) | Odczytuj właściwości elementu runbook, aby móc tworzyć zadania tego elementu. |

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057102"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091828"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -155,7 +155,7 @@ Na przykład:
 - Jeśli utworzysz wystąpienie zarządzane w warstwie Przeznaczenie ogólne z ośmioma rdzeniami wirtualnymi, a następnie od razu zmodernizujesz je do 16 rdzeni wirtualnych, opłata za pierwszą godzinę zostanie naliczona na podstawie stawki za 16 rdzeni wirtualnych.
 
 > [!NOTE]
-> Przez ograniczony okres do 30 czerwca 2018 r. opłaty za magazyn w kopii zapasowej i operacji We/Wy są bezpłatne.
+> Przez ograniczony czas tworzenia kopii zapasowej opłaty za magazyn i we/wy są bezpłatne.
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Jak odbywa się korzystanie z aktywnej replikacji geograficznej w puli elastycznej wyświetlane są na rachunku?
 W przeciwieństwie do pojedynczych baz danych przy użyciu [aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) dzięki elastycznym bazom danych nie ma bezpośredni wpływ rozliczeń.  Opłaty są naliczane tylko dla zasobów aprowizowanych dla poszczególnych pul (puli podstawowego i pomocniczego puli)

@@ -4,17 +4,17 @@ description: Dowiedz się, jak wykonywać zapytania dla danych z usług Azure St
 services: hdinsight,storage
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: bccaf00537dd1455e1364ceb2b5ca152b12f218c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: HT
+ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598235"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091439"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
@@ -60,7 +60,7 @@ Poniżej przedstawiono kilka zagadnień dotyczących korzystania z konta usługi
 * **Publiczne kontenery lub publiczne obiekty blob na kontach magazynu, które NIE są podłączone do klastra:** masz uprawnienia tylko do odczytu obiektów blob w kontenerach.
   
   > [!NOTE]
-  > Kontenery publiczne pozwalają na pobranie listy wszystkich obiektów blob, które są dostępne w danym kontenerze, oraz pobranie metadanych kontenera. Publiczne obiekty blob umożliwiają dostęp do obiektów blob jedynie osobom znającym dokładny adres URL. Aby uzyskać więcej informacji, zobacz artykuł <a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">Restrict access to containers and blobs</a> (Ograniczanie dostępu do kontenerów i obiektów blob).
+  > Kontenery publiczne pozwalają na pobranie listy wszystkich obiektów blob, które są dostępne w danym kontenerze, oraz pobranie metadanych kontenera. Publiczne obiekty blob umożliwiają dostęp do obiektów blob jedynie osobom znającym dokładny adres URL. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources">zarządzanie dostępem do kontenerów i obiektów blob</a>.
   > 
   > 
 * **Prywatne kontenery na kontach magazynu, które NIE są podłączone do klastra:** nie masz dostępu do obiektów blob w kontenerach, chyba że zdefiniujesz konto magazynu podczas przesyłania zadań WebHCat. Wyjaśnienie jest zawarte w dalszej części tego artykułu.
@@ -292,7 +292,7 @@ Podczas tworzenia klastra usługi HDInsight należy wskazać konto usługi Azure
 > [!WARNING]
 > Korzystanie z dodatkowego konta magazynu w innej lokalizacji niż klaster usługi HDInsight nie jest obsługiwane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób korzystania z magazynu Azure zgodnego z systemem plików HDFS w połączeniu z usługą HDInsight. Podane tu informacje umożliwiają tworzenie skalowalnych, długoterminowych rozwiązań do pozyskiwania danych archiwalnych i używanie usługi HDInsight w celu efektywnego wykorzystywania informacji przechowywanych w postaci danych ze strukturą i bez niej.
 
 Aby uzyskać więcej informacji, zobacz:

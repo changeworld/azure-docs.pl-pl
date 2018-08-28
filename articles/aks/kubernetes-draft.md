@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: a64ada61b2edd0a5c5d2314125b7e2a23444a398
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: faffd919e1c57f2dff21c42c2294a06eb82a2c0a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060245"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092614"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Projekt za pomocą usługi Azure Kubernetes Service (AKS)
 
-Projekt to narzędzie open source, które pomaga pakietów kontenerów i wdrażanie aplikacji w klastrze Kubernetes, pozostawiając użytkownika na skoncentrowanie się na cyklu dev — "wewnętrzną pętlę" najwięcej rozwoju. Działa narzędzie draft, jak kod jest obecnie sporządzana, ale przed zatwierdzeniem do systemu kontroli wersji. Za pomocą narzędzia Draft można szybko wdrożyć ponownie aplikację w usłudze Kubernetes wraz ze zmianami kodu. Aby uzyskać więcej informacji na temat projektu, zobacz [wersję roboczą dokumentacji w serwisie Github][draft-documentation].
+Projekt to narzędzie open source, które pomaga pakietów kontenerów i wdrażanie aplikacji w klastrze Kubernetes, pozostawiając użytkownika na skoncentrowanie się na cyklu dev - "wewnętrzną pętlę" najwięcej rozwoju. Działa narzędzie draft, jak kod jest obecnie sporządzana, ale przed zatwierdzeniem do systemu kontroli wersji. Za pomocą narzędzia Draft można szybko wdrożyć ponownie aplikację w usłudze Kubernetes wraz ze zmianami kodu. Aby uzyskać więcej informacji na temat projektu, zobacz [wersję roboczą dokumentacji w serwisie Github][draft-documentation].
 
 W tym artykule pokazano, jak używać narzędzia Draft z klastrem Kubernetes w usłudze AKS.
 

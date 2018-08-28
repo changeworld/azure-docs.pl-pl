@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81b510c2dc5d65af5e8a7f2b6b78f45f3bdced68
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 27fa69043797860c0a4acb1a128b45fe9e2b01c1
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344355"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090698"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -309,7 +309,7 @@ Wymagania dotyczące integracji tożsamości i logowanie jednokrotne przy użyci
 
 Dokumentacja wokół oprogramowania SAP HANA skalowalnego w poziomie na M128s maszyny Wirtualnej platformy Azure masz dodane do:
 
-- [Konfiguracje infrastruktury SAP HANA i operacji na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [Konfiguracje infrastruktury SAP HANA i operacje na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [SAP HANA dostępności w obrębie jednego regionu platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 
 

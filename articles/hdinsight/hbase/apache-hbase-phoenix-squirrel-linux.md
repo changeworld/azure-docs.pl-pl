@@ -3,18 +3,18 @@ title: Użyj Apache Phoenix i SQLLine z bazą danych HBase w usłudze Azure HDIn
 description: Dowiedz się, jak używać rozwiązania Apache Phoenix w HDInsight. Ponadto Dowiedz się, jak zainstalować i skonfigurować SQLLine na komputerze, aby nawiązać połączenie z klastra usługi HBase na platformie HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jasonh
-ms.openlocfilehash: 349f1680cf754a44e2e4217ebde9d0d60479ebcf
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 92e6dcf7bf467bac31798df994e7efa8da40f035
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597467"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045662"
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Apache Phoenix za pomocą klastrów HBase opartych na systemie Linux na platformie HDInsight
 Dowiedz się, jak używać [Apache Phoenix](http://phoenix.apache.org/) w usłudze Azure HDInsight i sposobu użycia SQLLine. Aby uzyskać więcej informacji na temat Phoenix zobacz [Phoenix w ciągu 15 minut lub szybciej](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Aby gramatykę Phoenix, zobacz [gramatyki Phoenix](http://phoenix.apache.org/language/index.html).

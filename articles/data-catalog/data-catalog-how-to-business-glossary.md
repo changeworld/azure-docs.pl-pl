@@ -1,85 +1,79 @@
 ---
-title: "Skonfigurować słownik biznesowy dla postanowieniom znakowanie w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft"
-description: "Artykule wyróżnianie słownik biznesowy w wykazie danych Azure do definiowania i za pomocą wspólnego słownika biznesowych do tagu zarejestrowanych zasobów danych."
+title: Konfigurowanie słownika biznesowego dla zarządzanych tagowania w usłudze Azure Data Catalog
+description: Artykule wyróżnianie słownik biznesowy w usłudze Azure Data Catalog do definiowania i używania wspólnego słownictwa biznesowego tagu zarejestrowanych zasobów danych.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: a80b7fd0c21851a6670431e9b8647ca5cf5f51ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4586133a6d3b7514d6b47e2e0c93b0e79988f09
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053411"
 ---
-# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Skonfigurować słownik biznesowy dla postanowieniom znakowanie
+# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Konfigurowanie słownika biznesowego dla podlegają znakowanie
 ## <a name="introduction"></a>Wprowadzenie
-Wykaz danych Azure umożliwia odnajdywanie źródła danych, więc można łatwo odnaleźć i zrozumieć użycie źródeł danych, które należy wykonywać analizy i podejmować decyzje. Te możliwości utworzyć największy wpływ można odnaleźć i zrozumieć szerokiej gamy dostępnych źródeł danych.
+Usługa Azure Data Catalog umożliwia odnajdywanie źródła danych, dzięki czemu można łatwo odnajdywać i zrozumieć użycie źródeł danych, które należy wykonywać analizy i podejmować decyzje. Te możliwości należy największy wpływ podczas mogą odnaleźć i zrozumieć najszerszej gamy dostępnych źródeł danych.
 
-Znakowanie jest jedną funkcję wykazu danych, które ułatwia lepsze zrozumienie zasobów danych. Za pomocą znakowania, słowa kluczowe można skojarzyć z zasobów lub kolumnę, która z kolei ułatwia odnajdywanie zasobów za pomocą wyszukiwania i przeglądania. Znakowanie pomaga również więcej łatwo zrozumieć kontekstu i celem elementu zawartości.
+Znakowanie jest jedną funkcję wykazu danych, które ułatwia lepsze zrozumienie zasobów danych. Korzystając z tagowania, można skojarzyć słowa kluczowe z zasobu lub kolumny, która z kolei ułatwia odnajdywanie zasobów przy użyciu wyszukiwania i przeglądania. Znakowanie pomaga też więcej łatwo zrozumieć kontekst i celem elementu zawartości.
 
-Jednak znakowanie czasami może spowodować problemy z własnych. Przykłady problemów, które mogą stać się znakowanie to:
+Jednak znakowanie czasami może spowodować problemy z własnych. Niektóre przykłady problemów, które może prowadzić do znakowania są:
 
-* Używanie skrótów w niektórych zasobów i rozszerzonej tekstu w innym. Ta niezgodność przeszkadza odnajdywanie zasobów, nawet jeśli celem użycia jej było tagu zasoby z tym samym tagiem.
-* Potencjalne zmiany znaczenia, w zależności od kontekstu. Na przykład tag o nazwie *przychodu* na klienta zestawu danych może to oznaczać przychodu przez klienta, ale sam znacznik na kwartał sprzedaży zestawu danych może oznaczać co kwartał przychodu firmy.  
+* Używanie skrótów na pewne elementy zawartości i rozwiniętego tekstu na innych użytkowników. Ta niezgodność hamuje odnajdywania zasobów, nawet jeśli celem było oznaczyć zasoby za pomocą tego samego tagu.
+* Potencjalne zmiany znaczenia, w zależności od kontekstu. Na przykład tag o nazwie *przychód* klienta zestawu danych może oznaczać przychód według klienta, ale tego samego tagu w zestawie danych sprzedaży kwartalnej może oznaczać kwartalnej przychodu firmy.  
 
-Aby pomóc w pokonywaniu te i inne podobne wyzwania, Data Catalog zawiera słownik biznesowy.
+Do rozwiązywania tych i innych podobnych wyzwań, Data Catalog zawiera słownik biznesowy.
 
-Za pomocą usługi Data Catalog słownik biznesowy, organizacja może dokumentu warunki biznesowe klucza i ich definicje, aby utworzyć wspólnego słownika biznesowych. Ta ładu umożliwia spójności danych użycia w całej organizacji. Po zdefiniowaniu termin w słownik biznesowy, można go przypisać do zasobu danych w katalogu. Takie podejście, *postanowieniom znakowanie*, to te same podejście jako znakowanie.
+Za pomocą słownika biznesowego Data Catalog, organizacja może dokumentu najważniejszych terminów biznesowych i ich definicji w celu utworzenia wspólnego słownictwa biznesowego. Ta nadzoru umożliwia spójności danych użycia w całej organizacji. Po zdefiniowaniu termin słownika biznesowego, może ona przypisana do zasobu danych w wykazie. To podejście *podlegają znakowanie*, to samo podejście jako znakowanie.
 
-## <a name="glossary-availability-and-privileges"></a>Słownik dostępności i uprawnień
-Słownik biznesowy jest dostępna tylko w Standard Edition usługi Azure Data Catalog. Bezpłatna wersja wykazu danych nie zawiera słownik i nie ma możliwości dla której działalność znakowanie.
+## <a name="glossary-availability-and-privileges"></a>Słownik dostępności i uprawnienia
+Słownik biznesowy jest dostępna tylko w Standard Edition usługi Azure Data Catalog. Wersja bezpłatna usługi Data Catalog zawiera słownik i nie zapewnia możliwości do znakowania zarządzanych.
 
-Można uzyskać dostęp za pośrednictwem słownik biznesowy **słownik** opcję w menu nawigacji portalu wykazu danych.  
+Możesz uzyskać dostęp słownik biznesowy za pośrednictwem **słownik** opcji w menu nawigacji w portalu usługi Data Catalog.  
 
-![Uzyskiwanie dostępu do słownik biznesowy](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Uzyskiwanie dostępu do słownika biznesowego](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
-Administratorzy katalogu danych i członkowie roli Administratorzy słownik można tworzenie, edytowanie i usuwanie terminów w słownik biznesowy. Wszyscy użytkownicy wykazu danych mogą wyświetlać definicje terminów i zasobów tagu z terminów.
+Administratorzy wykazu danych, jak i członkowie roli Administratorzy słownik można utworzyć, edytowanie i usuwanie terminy słownika w słownik biznesowy. Definicje terminów i tagów zasobów za pomocą terminy słownika, można wyświetlić wszystkich użytkowników wykazu danych.
 
-![Dodawanie nowych słownik](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Dodawanie nowy termin słownika](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
-## <a name="creating-glossary-terms"></a>Tworzenie terminów
-Administratorzy katalogu danych i słownik można tworzyć terminów przez kliknięcie **nowy termin** przycisku. Każdy słownik zawiera następujące pola:
+## <a name="creating-glossary-terms"></a>Tworzenie terminy słownika
+Administratorzy wykazu danych i administratorów glosariusza, można utworzyć terminy słownika klikając **nowy termin** przycisku. Każdy termin słownika zawiera następujące pola:
 
-* Biznesowe definicję terminu
-* Opis, który przechwytuje przeznaczenia lub reguł biznesowych dla zasobów lub kolumny
-* Lista uczestników, którzy najczęściej o termin
+* Definicję biznesową terminu
+* Opis, który przechwytuje zamierzonego użytkowania lub reguły biznesowe dla zasobu lub kolumny
+* Lista osób, które można dowiedzieć się najbardziej termin
 * Termin nadrzędny, który definiuje hierarchii, w którym jest zorganizowana termin
 
-## <a name="glossary-term-hierarchies"></a>Słownik terminów hierarchii
-Za pomocą usługi Data Catalog słownik biznesowy, organizacji można opisać jego słownictwa firm jako hierarchię warunków, a następnie można utworzyć klasyfikację warunki lepiej reprezentuje jego taksonomii biznesowej.
+## <a name="glossary-term-hierarchies"></a>Hierarchie termin słownika
+Za pomocą słownika biznesowego wykazu danych, organizacja może opisywać jego słownictwa biznesowego jako hierarchię terminów i może utworzyć klasyfikację warunki, która lepiej odpowiada jego taksonomii biznesowej.
 
-Okres musi być unikatowa na danym poziomie hierarchii. Zduplikowane nazwy są niedozwolone. Nie ma żadnego limitu liczby poziomów w hierarchii, ale hierarchii jest często bardziej zrozumiały gdy istnieją trzy poziomy lub mniej.
+Okres musi być unikatowa na danym poziomie hierarchii. Zduplikowane nazwy są niedozwolone. Nie ma żadnego limitu liczby poziomów w hierarchii, ale hierarchii jest często bardziej zrozumiały, gdy istnieją trzy poziomy lub mniej.
 
-Korzystanie z hierarchii w słownik biznesowy jest opcjonalne. Pozostawiając puste pole termin nadrzędnego słownik terminów tworzy listę płaski (z systemem innym niż — hierarchiczna) terminów w słowniku.  
+Korzystanie z hierarchii w programie słownik biznesowy jest opcjonalne. Pozostawienie nadrzędnego terminu pole puste słownik terminów tworzy listę niezhierarchizowaną (niehierarchiczną) warunków w słowniku.  
 
-## <a name="tagging-assets-with-glossary-terms"></a>Znakowanie zasobów z terminów
-Po zdefiniowaniu terminów w katalogu, środowisko znakowania zasobów jest zoptymalizowany do wyszukiwania słownika, jak użytkownik wpisze tag. Portalu wykazu danych zostanie wyświetlona lista zgodnych terminów do wyboru. Jeśli użytkownik wybierze słownik z listy, warunku jest dodawana do zasobu jako tag (nazywany także tag słownik). Użytkownik może również wybrać do utworzenia nowego tagu, wpisując termin, który nie znajduje się w słowniku (nazywany także tag użytkownika).
+## <a name="tagging-assets-with-glossary-terms"></a>Tagowanie zasobów za pomocą terminy słownika
+Po zdefiniowaniu terminy słownika w wykazie środowisko tagowania zasobów jest zoptymalizowany do wyszukiwania słownictwo, jak użytkownik wpisze tag. Portalu usługi Data Catalog Wyświetla listę pasujące terminy słownika do wyboru. Jeśli użytkownik wybierze termin słownika z listy, termin zostanie dodany do elementu zawartości jako tag (nazywane również tagi słownika). Użytkownik może również wybrać do utworzenia nowego znacznika, wpisując termin, który nie znajduje się w słowniku (nazywane również tag użytkownika).
 
-![Oznakowanych zasobów danych z jednego użytkownika tagu i dwa tagi słownik](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
+![Zasób danych oznakowane za pomocą tagu jednego użytkownika i dwa tagi słownika](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
-> Tagi użytkownika są jedynym typem tagu obsługiwane w bezpłatnej wersji wykazu danych.
+> Tagi użytkownika są jedynym typem tagów obsługiwane w wersji bezpłatnej usługi Data Catalog.
 >
 >
 
 ### <a name="hover-behavior-on-tags"></a>Umieść kursor w tagi zachowanie
-W portalu wykazu danych zachowania wizualnie distinct i znajdują się różne hover są dwa rodzaje znaczników. Po ustawieniu kursora tag użytkownika widać tekst znacznika i użytkownika lub użytkowników, którzy dodano tagu. Po ustawieniu kursora tag słownik umożliwia wyświetlenie definicji słownik terminów i łącza do otwarcia słownik biznesowy, aby wyświetlić pełną definicję terminu.
+W portalu usługi Data Catalog dwa typy tagów są zachowania wizualnie odrębne i znajdują się różne po wskazaniu wskaźnikiem. Po najechaniu kursorem na tag użytkownika, możesz sprawdzić, tekst tag i użytkownika lub użytkowników, którzy zostały dodane w tagu. Po umieszczeniu tagi słownika umożliwia wyświetlenie definicji termin słownika i link umożliwiający otworzenie słownik biznesowy, aby wyświetlić pełna definicja terminu.
 
-### <a name="search-filters-for-tags"></a>Filtry wyszukiwania tagów
-Słownik tagów i tagi użytkownika są można wyszukiwać i zastosować je jako filtrów w polu wyszukiwania.
+### <a name="search-filters-for-tags"></a>Filtry wyszukiwania dla tagów
+Tagi słownika i tagi użytkownika są można wyszukiwać i mogą być stosowane jako filtry w wyszukiwaniu.
 
 ## <a name="summary"></a>Podsumowanie
-Za pomocą słownik biznesowy Azure Data Catalog i znakowanie której działalność, który umożliwia, można zidentyfikować, zarządzanie i odnaleźć zasoby danych w sposób ciągły. Słownik biznesowy podwyższyć poziom uczenie się ich słownictwa firm przez członków organizacji. Słownik obsługuje również Przechwytywanie łatwy do rozpoznania metadanych, co ułatwia wykrywanie zasobów i zrozumienia.
+Za pomocą słownika biznesowego w usłudze Azure Data Catalog i znakowanie zarządzanych, które umożliwia, można zidentyfikować, zarządzanie i odnajdywanie zasobów danych w sposób ciągły. Słownik biznesowy podwyższyć poziom uczenie się ich słownictwa biznesowego członkom organizacji. Słownik obsługuje również przechwytywania istotne metadane, co upraszcza odnajdywanie zasobów i zrozumienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dokumentacja interfejsu API REST na operacje biznesowe słownik](https://msdn.microsoft.com/library/mt708855.aspx)
+* [Dokumentacja interfejsu API REST na operacje biznesowe w słowniku](https://msdn.microsoft.com/library/mt708855.aspx)

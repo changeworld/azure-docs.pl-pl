@@ -1,66 +1,60 @@
 ---
 title: Rozpoczynanie pracy przy użyciu przykładu
-description: W tym artykule firma Microsoft będzie przedstawiono przykładowe uruchomiono get Power BI obszaru roboczego kolekcji.
+description: W tym artykule wprowadzimy należy do przykładu wprowadzenie get kolekcji obszarów roboczych usługi Power BI.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414885"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044441"
 ---
-# <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem Power BI obszaru roboczego kolekcje
+# <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
-Z **Microsoft Power BI obszaru roboczego kolekcje**, można zintegrować raportów usługi Power BI bezpośrednio z sieci web lub aplikacji dla urządzeń przenośnych. W tym artykule na wprowadzeniu **Power BI obszaru roboczego kolekcje** próbki uruchomiono get.
+Za pomocą **kolekcji obszarów roboczych pakietu Microsoft Power BI**, można zintegrować raporty usługi Power BI bezpośrednio z aplikacjami internetowymi lub mobilnymi. W tym artykule będziemy wprowadzenia do **kolekcji obszarów roboczych usługi Power BI** przykładowe wprowadzenie get.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Przed rozszerzana wszelkie dodatkowe, którym chcesz zapisać następujące zasoby: pomagają składników podczas integrowania raportów usługi Power BI za do przykładowej aplikacji i własnych aplikacji.
+Zanim przejdziemy dalej, na którym chcesz zapisać następujące zasoby: one pomóc Ci przy integrowanie raportów usługi Power BI przykładową aplikację i własne aplikacje za.
 
-* [Przykładową aplikację sieci web dla obszaru roboczego](http://go.microsoft.com/fwlink/?LinkId=761493)
-* [Power BI obszaru roboczego kolekcje API odwołania](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (dostępnych za pośrednictwem pakietu NuGet)
-* [Przykładowe osadzić raport JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo)
+* [Przykładowa aplikacja internetowa obszaru roboczego](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Dokumentacja usługi Power BI obszar roboczy kolekcji z interfejsu API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
+* [Usługa Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (dostępne za pośrednictwem NuGet)
+* [Przykład osadzania przy użyciu języka JavaScript raport](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
-> Zanim można skonfigurować i działanie Pobierz kolekcje obszaru roboczego Power BI rozpoczęte próbki, należy utworzyć co najmniej jeden **kolekcji obszarów roboczych** w Twojej subskrypcji platformy Azure. Aby dowiedzieć się, jak utworzyć **kolekcji obszarów roboczych** w portalu Azure, zobacz [wprowadzenie do korzystania z programu Power BI obszaru roboczego kolekcje](get-started.md).
+> Zanim będzie można skonfigurować i uruchom kolekcje obszarów roboczych usługi Power BI uzyskać pracę próbki, należy utworzyć co najmniej jeden **kolekcji obszarów roboczych** w subskrypcji platformy Azure. Aby dowiedzieć się, jak utworzyć **kolekcji obszarów roboczych** w witrynie Azure portal, zobacz [wprowadzenie do kolekcji obszarów roboczych usługi Power BI](get-started.md).
 
 ## <a name="configure-the-sample-app"></a>Konfigurowanie przykładowej aplikacji
 
-Przejdźmy przez proces konfigurowania środowiska deweloperskiego Visual Studio dostęp do składników wymaganych do uruchomienia aplikacji przykładowej.
+Przejdźmy teraz przez proces konfigurowania środowiska deweloperskiego Visual Studio, dostęp do składników potrzebnych do uruchomienia aplikacji przykładowej.
 
-1. Pobierz i Rozpakuj [Power BI obszaru roboczego kolekcje — integracji raportu w aplikacji sieci web](http://go.microsoft.com/fwlink/?LinkId=761493) w witrynie GitHub.
-2. Otwórz **PowerBI embedded.sln** w programie Visual Studio. Może być konieczne wykonanie **pakiet aktualizacji** w konsoli Menedżera pakietów NuGet, aby można było zaktualizować pakietów używanych w tym rozwiązaniu.
+1. Pobierz i Rozpakuj [kolekcji obszarów roboczych usługi Power BI — integrowanie raportu w aplikacji sieci web](http://go.microsoft.com/fwlink/?LinkId=761493) próbki w witrynie GitHub.
+2. Otwórz **embedded.sln usługi Power BI** w programie Visual Studio. Może być konieczne wykonanie **pakiet aktualizacji** polecenia w konsoli Menedżera pakietów NuGet, aby można było zaktualizować pakiety wykorzystanych w tym rozwiązaniu.
 3. Skompiluj rozwiązanie.
-4. Uruchom **ProvisionSample** aplikacji konsoli. W przykładowej aplikacji konsoli aprowizować obszaru roboczego i importowanie pliku PBIX.
-5. Do udostępnienia nowej **obszaru roboczego**, wybierz opcję 1, **zarządzania kolekcji**, a następnie wybierz opcję 6, **udostępnić nowy obszar roboczy**
+4. Uruchom **ProvisionSample** aplikację konsoli. Przykładowa aplikacja konsoli możesz aprowizować obszaru roboczego i importowanie pliku PBIX.
+5. Aby zainicjować obsługę nowej **obszaru roboczego**, wybierz opcję 1, **zarządzanie kolekcją**, a następnie wybierz opcję 6, **Aprowizacja nowego obszaru roboczego**
 6. Aby zaimportować nowy **raportu**, wybierz opcję 2, **raport zarządzania**, a następnie wybierz opcję 3, **pliku pulpitu zaimportować plik PBIX do obszaru roboczego**.
 
-7. Wprowadź użytkownika **kolekcji obszarów roboczych** nazwa, i **klucz dostępu**. Aby pobrać te **portalu Azure**. Aby dowiedzieć się więcej na temat sposobu uzyskania Twojej **klucz dostępu**, zobacz [kluczy dostępu interfejsu API widoku Power BI](get-started.md#view-power-bi-api-access-keys) w wprowadzenie do programu Microsoft Power BI Embedded.
+7. Wprowadź swoje **kolekcji obszarów roboczych** nazwy i **klucz dostępu**. Możesz je pobrać w **witryny Azure portal**. Aby dowiedzieć się więcej na temat sposobu uzyskania usługi **klucz dostępu**, zobacz [kluczy dostępu interfejsu API dla usługi Power BI, widok](get-started.md#view-power-bi-api-access-keys) w rozpocząć korzystanie z usługi Microsoft Power BI Embedded.
 
-    ![Klawisze dostępu w portalu Azure](media/get-started-sample/azure-portal.png)
-8. Skopiuj i Zapisz nowo utworzony **identyfikator obszaru roboczego** do użycia w dalszej części tego artykułu. Po **identyfikator obszaru roboczego** jest utworzony, można go znaleźć **portalu Azure**.
+    ![Klucze dostępu w witrynie Azure portal](media/get-started-sample/azure-portal.png)
+8. Skopiuj i Zapisz nowo utworzony **identyfikator obszaru roboczego** w dalszej części tego artykułu. Po **identyfikator obszaru roboczego** jest utworzone, możesz go znaleźć **witryny Azure portal**.
 
-    ![Identyfikator obszaru roboczego w portalu Azure](media/get-started-sample/workspace-id.png)
-9. Importowanie pliku PBIX do Twojej **obszaru roboczego**, wybierz opcję **6. Importowanie pliku PBIX pulpitu do istniejący obszar roboczy**. Jeśli nie masz PBIX pliku przydatną, możesz pobrać [Retail Analysis próbki PBIX](http://go.microsoft.com/fwlink/?LinkID=780547).
-10. Jeśli zostanie wyświetlony monit, wprowadź przyjazną nazwę dla Twojego **zestawu danych**.
+    ![Identyfikator obszaru roboczego w witrynie Azure portal](media/get-started-sample/workspace-id.png)
+9. Aby zaimportować plik PBIX do usługi **obszaru roboczego**, wybierz opcję **6. Importowanie pliku PBIX pulpitu do istniejącego obszaru roboczego**. Jeśli nie masz PBIX z pliku pod ręką, możesz pobrać [przykładem analizy sprzedaży PBIX](http://go.microsoft.com/fwlink/?LinkID=780547).
+10. Jeśli zostanie wyświetlony monit, wprowadź przyjazną nazwę dla Twojej **zestawu danych**.
 
-Powinna zostać wyświetlona odpowiedź, takich jak:
+Powinny pojawić się odpowiedź podobna:
 
 ```
 Checking import state... Publishing
@@ -68,16 +62,16 @@ Checking import state... Succeeded
 ```
 
 > [!NOTE]
-> Jeśli plik PBIX zawiera wszystkie połączenia zapytania bezpośredniego, należy uruchomić opcję 7, aby zaktualizować ciągi połączenia.
+> Jeśli plik PBIX zawiera wszystkie połączenia zapytania bezpośredniego, należy uruchomić opcję 7, aby zaktualizować parametry połączenia.
 
-W tym momencie masz raport programu Power BI PBIX zaimportowane do programu **obszaru roboczego**. Teraz zobaczmy, jak uruchomić **Power BI obszaru roboczego kolekcje** Pobierz wprowadzenie przykładową aplikację sieci web.
+W tym momencie masz raport usługi Power BI PBIX zaimportowane do Twojej **obszaru roboczego**. Teraz Przyjrzyjmy się sposobu uruchamiania **kolekcji obszarów roboczych usługi Power BI** uzyskać uruchomiono przykładową aplikację sieci web.
 
 ## <a name="run-the-sample-web-app"></a>Uruchamianie przykładowej aplikacji internetowej
 
-Przykładowej aplikacji sieci web, to przykładowa aplikacja renderujący raporty zaimportowane do programu **obszaru roboczego**. Poniżej przedstawiono sposób konfigurowania przykładowej aplikacji sieci web.
+Przykład aplikacji sieci web jest przykładowej aplikacji, która renderuje raporty zaimportowane do Twojej **obszaru roboczego**. Poniżej przedstawiono sposób konfigurowania przykładowej aplikacji sieci web.
 
-1. W **osadzonych PowerBI** rozwiązania Visual Studio, kliknij prawym przyciskiem myszy **EmbedSample** aplikacji sieci web, a następnie wybierz pozycję **Ustaw jako projekt startowy**.
-2. W **web.config**w **EmbedSample** aplikacji sieci web, Edytuj **appSettings**: **AccessKey**, **WorkspaceCollection** nazwa, i **WorkspaceId**.
+1. W **osadzonych w usłudze Power BI** rozwiązania Visual Studio kliknij prawym przyciskiem myszy **EmbedSample** aplikacji sieci web, a następnie wybierz **Ustaw jako projekt startowy**.
+2. W **web.config**w **EmbedSample** aplikacji sieci web, Edytuj **appSettings**: **AccessKey**,  **WorkspaceCollection** nazwy i **WorkspaceId**.
 
     ```
     <appSettings>
@@ -89,35 +83,35 @@ Przykładowej aplikacji sieci web, to przykładowa aplikacja renderujący raport
     ```
 3. Uruchom **EmbedSample** aplikacji sieci web.
 
-Po uruchomieniu **EmbedSample** aplikacji sieci web powinna zawierać lewym panelu nawigacyjnym **raporty** menu. Aby wyświetlić raport, należy zaimportować, rozwiń węzeł **raporty**i kliknij przycisk raport. Po zaimportowaniu [Retail Analysis próbki PBIX](http://go.microsoft.com/fwlink/?LinkID=780547), przykładową aplikację sieci web będzie wyglądać następująco:
+Po uruchomieniu **EmbedSample** aplikacji sieci web powinien zawierać w lewym panelu nawigacyjnym **raporty** menu. Aby wyświetlić raport zaimportowany, rozwiń węzeł **raporty**i kliknij raport. Jeśli został zaimportowany [przykładem analizy sprzedaży PBIX](http://go.microsoft.com/fwlink/?LinkID=780547), przykładową aplikację sieci web będzie wyglądać następująco:
 
 ![Przykładowe nawigacji po lewej stronie w przykładowej aplikacji](media/get-started-sample/sample-left-nav.png)
 
-Po kliknięciu raportu, **EmbedSample** aplikacji sieci web powinien wyglądać to:
+Po kliknięciu raportu, **EmbedSample** aplikacji sieci web powinien wyglądać mniej więcej to:
 
-![Przykładowy raport wyświetlania w aplikacji](media/get-started-sample/sample-web-app.png)
+![Przykładowy raport, wyświetlanie w aplikacji](media/get-started-sample/sample-web-app.png)
 
-## <a name="explore-the-sample-code"></a>Eksploruj przykładowy kod
+## <a name="explore-the-sample-code"></a>Omówimy przykładowy kod
 
-**Microsoft Power BI obszaru roboczego kolekcje** próbka jest przykładowej aplikacji sieci web, który pokazuje, jak zintegrować **usługi Power BI** raportów w aplikacji. Wzorzec projektowy Model-widok-kontroler (MVC) używa do zaprezentowania najlepszych rozwiązań. W tej sekcji przedstawiono przykładowy kod, który można sprawdzić w części **osadzonych usługi Power BI** rozwiązania aplikacji w sieci web. Wzorzec Model-widok-kontroler (MVC) oddziela modelowania domeny, prezentacji i akcji, w oparciu o dane wejściowe użytkownika do trzech osobnych klas: Model, widok i kontroli. Aby dowiedzieć się więcej na temat MVC, zobacz [Dowiedz się więcej o ASP.NET](http://www.asp.net/mvc).
+**Kolekcji obszarów roboczych pakietu Microsoft Power BI** próbka jest przykładowa aplikacja sieci web, pokazujący, jak zintegrować **usługi Power BI** raporty w swojej aplikacji. Wzorzec projektowy Model-View-Controller (MVC) używa do zademonstrowania najlepszych rozwiązań. W tej sekcji przedstawiono przykładowy kod, który umożliwia zapoznanie się w części **osadzonych w usłudze Power BI** rozwiązania aplikacji w sieci web. Wzorzec Model-View-Controller (MVC) oddziela modelowanie domeny, prezentacji i akcji, w oparciu o dane wejściowe użytkownika w trzech osobnych klas: Model, widok i kontroli. Aby dowiedzieć się więcej na temat MVC, zobacz [Dowiedz się więcej o programie ASP.NET](http://www.asp.net/mvc).
 
-**Microsoft Power BI obszaru roboczego kolekcje** przykładowy kod jest oddzielona w następujący sposób. Każda sekcja zawiera nazwę pliku w rozwiązaniu embedded.sln usługi Power BI, dzięki czemu można łatwo znaleźć kod w próbce.
+**Kolekcji obszarów roboczych pakietu Microsoft Power BI** przykładowy kod jest oddzielona w następujący sposób. Każda sekcja zawiera nazwę pliku w rozwiązaniu embedded.sln usługi Power BI, aby mógł łatwo znaleźć kod w przykładzie.
 
 > [!NOTE]
-> W tej sekcji znajduje się podsumowanie przykładowy kod, który pokazuje, jak kod został zapisany. Aby wyświetlić kompletnego przykładu, załaduj rozwiązania embedded.sln usługi Power BI w programie Visual Studio.
+> W tej sekcji przedstawiono podsumowanie elementów, przykładowy kod, który pokazuje, jak kod został zapisany. Aby wyświetlić pełny przykład, załaduj rozwiązanie embedded.sln usługi Power BI w programie Visual Studio.
 
-### <a name="model"></a>Model
+### <a name="model"></a>Modelowanie
 
-Próbki **ReportsViewModel** i **ReportViewModel**.
+Przykład obejmuje **ReportsViewModel** i **ReportViewModel**.
 
-**ReportsViewModel.cs**: reprezentuje raportami programu Power BI.
+**ReportsViewModel.cs**: reprezentuje raporty usługi Power BI.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**: reprezentuje raportu Power BI.
+**ReportViewModel.cs**: reprezentuje raportu usługi Power BI.
 
     public classReportViewModel
     {
@@ -128,24 +122,24 @@ Próbki **ReportsViewModel** i **ReportViewModel**.
 
 ### <a name="connection-string"></a>Parametry połączenia
 
-Parametry połączenia muszą mieć następujący format:
+Parametry połączenia muszą być w następującym formacie:
 
 ```
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Przy użyciu wspólnej serwera i bazy danych atrybutów kończyć się niepowodzeniem. Na przykład: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Za pomocą wspólnego serwera i bazy danych atrybutów kończyć się niepowodzeniem. Na przykład: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>Widok
 
-**Widoku** zarządza wyświetlanie usługi Power BI **raporty** i usługi Power BI **raport**.
+**Widoku** zarządza wyświetlania usługi Power BI **raporty** i usługi Power BI **raportu**.
 
 **Reports.cshtml**: iteracja **Model.Reports** utworzyć **ActionLink**. **ActionLink** składa się w następujący sposób:
 
 | Część | Opis |
 | --- | --- |
 | Stanowisko |Nazwa raportu. |
-| Ciąg zapytania |Łącze do raportu identyfikatora. |
+| Ciąg zapytania |Link do raportu identyfikatora. |
 
     <div id="reports-nav" class="panel-collapse collapse">
         <div class="panel-body">
@@ -161,7 +155,7 @@ Przy użyciu wspólnej serwera i bazy danych atrybutów kończyć się niepowodz
         </div>
     </div>
 
-Report.cshtml: Ustaw **Model.AccessToken**, a wyrażenie Lambda **PowerBIReportFor**.
+Report.cshtml: Ustaw **Model.AccessToken**i wyrażenie Lambda **PowerBIReportFor**.
 
     @model ReportViewModel
 
@@ -174,7 +168,7 @@ Report.cshtml: Ustaw **Model.AccessToken**, a wyrażenie Lambda **PowerBIReportF
 
 ### <a name="controller"></a>Kontroler
 
-**DashboardController.cs**: tworzy przekazywanie PowerBIClient **tokenu aplikacji**. JSON tokenów sieci Web (JWT) są generowane na podstawie **klucza podpisywania** uzyskanie **poświadczenia**. **Poświadczenia** są używane do tworzenia wystąpienia **PowerBIClient**. Po utworzeniu wystąpienia **PowerBIClient**, można wywołać GetReports() i GetReportsAsync().
+**DashboardController.cs**: tworzy przekazywanie PowerBIClient **tokenu aplikacji**. JSON Web Token (token JWT) jest generowany na podstawie **klucza podpisywania** można pobrać **poświadczenia**. **Poświadczenia** są używane do tworzenia instancji **PowerBIClient**. Po utworzeniu wystąpienia **PowerBIClient**, można wywołać GetReports() i GetReportsAsync().
 
 CreatePowerBIClient()
 
@@ -207,7 +201,7 @@ ActionResult Reports()
     }
 
 
-Zadanie<ActionResult> raportu (ciąg reportId)
+Zadanie<ActionResult> raportu (reportId ciągu)
 
     public async Task<ActionResult> Report(string reportId)
     {
@@ -227,9 +221,9 @@ Zadanie<ActionResult> raportu (ciąg reportId)
         }
     }
 
-### <a name="integrate-a-report-into-your-app"></a>Integracji raportu w swojej aplikacji
+### <a name="integrate-a-report-into-your-app"></a>Integrowanie raportu w aplikacji
 
-Po utworzeniu **raport**, możesz użyć **IFrame** do osadzenia usługi Power BI **raport**. Oto fragment kodu z powerbi.js w **Microsoft Power BI obszaru roboczego kolekcje** próbki.
+Po utworzeniu **raportu**, możesz użyć **IFrame** do osadzania usługi Power BI **raportu**. Poniżej przedstawiono fragment kodu z powerbi.js w **kolekcji obszarów roboczych pakietu Microsoft Power BI** próbki.
 
 ```
 init: function() {
@@ -242,9 +236,9 @@ init: function() {
 }
 ```
 
-## <a name="filter-reports-embedded-in-your-application"></a>Raporty filtru osadzonego w aplikacji
+## <a name="filter-reports-embedded-in-your-application"></a>Filtrować raporty osadzone w aplikacji
 
-Osadzony raport można filtrować przy użyciu składni adresu URL. Aby to zrobić, należy dodać **$filter** parametr ciągu zapytania o **eq** operator do adresu url źródła iFrame z odpowiednim filtrem. Oto składnia zapytania filtru:
+Osadzony raport można filtrować przy użyciu składni adresu URL. Aby to zrobić, należy dodać **$filter** parametr ciągu przy użyciu zapytania **eq** operatora do adresu url elementu iFrame src przy użyciu określonego filtru. Oto składnia zapytania filtru:
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -257,7 +251,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 
 ## <a name="see-also"></a>Zobacz także
 
-[Typowe scenariusze kolekcji obszarów roboczych programu Microsoft Power BI](scenarios.md)  
+[Typowe scenariusze kolekcji obszarów roboczych pakietu Microsoft Power BI](scenarios.md)  
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  
 [Embed a report](embed-report.md) (Osadzanie raportu)  
 [Tworzenie nowego raportu przy użyciu zestawu danych](create-report-from-dataset.md)  

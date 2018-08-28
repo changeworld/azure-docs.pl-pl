@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058522"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087314"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -131,6 +131,7 @@ Jeśli środowisko zawiera zarządzane domeny, dołączenie do hybrydowej usług
 Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia za pomocą kreatora, aby skonfigurować dołączenie do hybrydowej usługi Azure AD. Kreator umożliwia znacznie upraszcza proces konfigurowania. Aby uzyskać więcej informacji, zobacz:
 
 - [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych](hybrid-azuread-join-federated-domains.md)
+
 
 - [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych](hybrid-azuread-join-managed-domains.md)
 

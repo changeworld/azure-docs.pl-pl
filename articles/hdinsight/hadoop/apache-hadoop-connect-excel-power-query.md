@@ -4,17 +4,17 @@ description: Dowiedz się, jak korzystać z zalet składników analizy biznesowe
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 9677cbef67c6fd99ae00fad1de0692449b84387b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 45014592cd648ee1a7b75fa59babf8571c151269
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591652"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042305"
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Łączenie programu Excel z usługą Hadoop przy użyciu dodatku Power Query
 Kluczowa funkcja klasy rozwiązania danych big data firmy Microsoft jest integracja składniki programu Microsoft business intelligence (BI) z klastrami Hadoop w usłudze Azure HDInsight. Podstawowy przykład jest możliwość łączenia programu Excel z kontem usługi Azure Storage, która zawiera dane skojarzone z klastrem usługi Hadoop przy użyciu programu Microsoft Power Query dla dodatku programu Excel. W tym artykule przedstawiono sposób konfigurowania i używania dodatku Power Query przesyłać zapytania dotyczące danych skojarzonych z klastrem usługi Hadoop, zarządzane przy użyciu HDInsight.

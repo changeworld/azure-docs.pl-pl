@@ -4,18 +4,18 @@ description: Dowiedz się, jak za pomocą platformy Apache Spark platforma Spark
 keywords: kafka przykład dozorcy platformy kafka, spark, przesyłanie strumieniowe kafka i spark streaming przykład platformy kafka
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 607ad43f5cae3915b964caf816bd5fb5e3302ddf
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d06e9d26051fbfafc4d717ec180e8760157aefd9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592979"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094170"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Platforma Apache Spark streaming (DStream) przykład z platformą Kafka w HDInsight
 

@@ -2,26 +2,20 @@
 title: Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
 description: Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 4bf92638e15767ea254b33e5804977f0d6ab5476
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 54eefc9c488718dae25e35ef0c5f0f5c50dea16c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054581"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041745"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI
 

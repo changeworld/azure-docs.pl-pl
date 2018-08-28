@@ -3,18 +3,18 @@ title: Przetwarzanie zdarzeń z usługi Event Hubs przy użyciu systemu Storm �
 description: Dowiedz się, jak przetwarzać dane z usługi Azure Event Hubs w topologii Storm języka C# utworzone w programie Visual Studio, za pomocą narzędzi HDInsight dla programu Visual Studio.
 services: hdinsight,notification hubs
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24bcc33570a5e62769223c5827556bab1967ae5a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7c37abe709559fc0628b94ba50634673c08af375
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620386"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051571"
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu systemu Storm w HDInsight (C#)
 

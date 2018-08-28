@@ -1,40 +1,39 @@
 ---
 title: Zabezpieczanie usługi Azure Data Lake Analytics dla wielu użytkowników
-description: Informacje o sposobie konfigurowania wielu użytkownikom na uruchamianie zadań w usłudze Azure Data Lake Analytics.
+description: Dowiedz się, jak skonfigurować wielu użytkownikom na uruchamianie zadań w usłudze Azure Data Lake Analytics.
 ms.service: data-lake-analytics
 services: data-lake-analytics
 author: matt1883
 ms.author: mahi
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 1d92e6d0e619584dedcbc9a66450c25dd1ac8b75
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c6b86e25602f36896855d2593952609904396879
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701423"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051588"
 ---
-# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Konfigurowanie dostępu użytkowników do informacji zadania, aby informacje o zadaniu w usłudze Azure Data Lake Analytics 
+# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Konfigurowanie dostępu użytkowników, aby informacje o zadaniu, aby informacje o zadaniu w usłudze Azure Data Lake Analytics 
 
-W usłudze Azure Data Lake Analytics można użyć wielu kont użytkowników lub nazwy główne usług do uruchomienia zadań. 
+W usłudze Azure Data Lake Analytics można użyć wielu kont użytkowników lub jednostki usługi do uruchamiania zadań. 
 
-Aby tych samym użytkowników wyświetlić informacje szczegółowe zadania użytkownicy muszą mieć możliwość odczytu zawartości folderów zadania. Foldery zadania znajdują się w `/system/` katalogu. 
+Aby dla tych tych samych użytkowników wyświetlić informacje szczegółowe zadania użytkownicy muszą mieć możliwość odczytu zawartości folderów zadania. Foldery zadania znajdują się w `/system/` katalogu. 
 
-Jeśli nie skonfigurowano odpowiednie uprawnienia, użytkownik może zostać wyświetlony błąd: `Graph data not available - You don't have permissions to access the graph data.` 
+Jeśli nie skonfigurowano wymaganych uprawnień, użytkownik może zostać wyświetlony błąd: `Graph data not available - You don't have permissions to access the graph data.` 
 
-## <a name="configure-user-access-to-job-information"></a>Konfigurowanie dostępu użytkownika do informacji o zadania
+## <a name="configure-user-access-to-job-information"></a>Konfigurowanie dostępu użytkowników, aby informacje o zadaniu
 
-Można użyć **Kreatora dodawania użytkownika** skonfigurować listy kontroli dostępu w folderach. Aby uzyskać więcej informacji, zobacz [dodać nowego użytkownika](data-lake-analytics-manage-use-portal.md#add-a-new-user).
+Możesz użyć **Kreatora dodawania użytkownika** do skonfigurowania listy ACL na foldery. Aby uzyskać więcej informacji, zobacz [dodać nowego użytkownika](data-lake-analytics-manage-use-portal.md#add-a-new-user).
 
-Jeśli potrzebujesz więcej kontrolę lub konieczność skryptu, następnie zabezpieczenia folderów w następujący sposób:
+Jeśli potrzebujesz większej ilości szczegółową kontrolę ani konieczności skryptu uprawnień, następnie zabezpieczyć foldery w następujący sposób:
 
-1. Udziel **wykonanie** uprawnień (za pośrednictwem dostępu ACL) w folderze głównym:
+1. Udziel **wykonania** uprawnień (za pośrednictwem dostępu do listy ACL) w folderze głównym:
    - /
    
-2. Udziel **wykonania** i **odczytu** uprawnienia (za pomocą dostępu ACL i domyślnej listy ACL) w folderach, które zawierają foldery zadania. Na przykład dla określonego zadania uruchomionego na 25 maja 2018 tych folderów muszą być dostępne:
-   - odzyskiwanie
+2. Udziel **wykonania** i **odczytu** uprawnień folderów, które zawierają foldery zadania (za pośrednictwem listy ACL dostępu i domyślnej listy ACL). Na przykład dotyczących określonego zadania uruchomione na 25 maja 2018 r. tych folderów muszą być dostępne:
+   - / System
    - / system/jobservice
    - /System/jobservice/Jobs
    - /System/jobservice/Jobs/Usql
@@ -46,4 +45,4 @@ Jeśli potrzebujesz więcej kontrolę lub konieczność skryptu, następnie zabe
    - System/jobservice/zadania/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dodaj nowego użytkownika](data-lake-analytics-manage-use-portal.md#add-a-new-user)
+[Dodawanie nowego użytkownika](data-lake-analytics-manage-use-portal.md#add-a-new-user)

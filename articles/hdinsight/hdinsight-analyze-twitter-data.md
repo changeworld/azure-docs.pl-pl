@@ -3,18 +3,18 @@ title: Analizowanie danych serwisu Twitter przy użyciu usługi Hadoop w HDInsig
 description: Dowiedz się, jak wykorzystać technologię Hive do analizowania danych z usługi Twitter na platformie Hadoop w HDInsight w celu określenia częstotliwości użycia konkretnego wyrazu.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0a737ac8b641d310fa8e4ed22769a1a63e8a64d1
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060926"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093302"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych sił kierowania do przyjęcia danych big data. Publicznych interfejsów API dostarczonych przez witryn, takich jak Twitter, są przydatne źródło danych do analizowania i zrozumienia popularnych trendów.

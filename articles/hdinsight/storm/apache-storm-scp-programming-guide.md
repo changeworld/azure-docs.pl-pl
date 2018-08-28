@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 8ac0703fa0ec5f9a9e3f994ccaac61c3748bb8f0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: daf9efb2f9044ed1395b0f2aa3663c2471406e2f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059532"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045468"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](http://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](http://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 

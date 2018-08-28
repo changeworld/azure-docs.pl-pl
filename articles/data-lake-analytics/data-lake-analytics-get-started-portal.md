@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: fa6a0febfc268fe96063e962a208d73662f9815a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 0830f4a6cffb8c1b2dacc8452e52477bb3a3ec91
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623914"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039372"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,7 +38,7 @@ Teraz nastąpi równoczesne utworzenie kont Data Lake Analytics oraz Data Lake S
    * **Lokalizacja**. Wybierz centrum danych platformy Azure na potrzeby konta usługi Data Lake Analytics.
    * **Data Lake Store**: postępuj zgodnie z instrukcjami, aby utworzyć nowe konto usługi Data Lake Store lub wybierz istniejące konto. 
 4. Opcjonalnie wybierz warstwę cenową dla konta usługi Data Lake Analytics.
-5. Kliknij przycisk **Utwórz**. 
+5. Kliknij pozycję **Utwórz**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Pierwszy skrypt U-SQL
@@ -67,7 +66,7 @@ OUTPUT @a
 4. Monitoruj **Stan** zadania i zaczekaj, aż zmieni się na **Powodzenie**.
 5. Wybierz kartę **Dane**, a następnie kartę **Dane wyjściowe**. Wybierz plik wyjściowy o nazwie `data.csv` i przejrzyj dane wyjściowe.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * Aby rozpocząć tworzenie aplikacji w języku U-SQL, zobacz artykuł [Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools dla Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 * Aby dowiedzieć się więcej o języku U-SQL, zobacz [Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).

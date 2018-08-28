@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 0715f1723f7bb43b0d11e55e8af01202fc8a92be
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d408456373c8124e1a385879852d6198caf0813c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344464"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050194"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB powiązania usługi Azure Functions 1.x
 
@@ -36,6 +36,10 @@ W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](..\cosmos-
 >To powiązanie pierwotnie nosiła nazwę bazy danych DocumentDB. Funkcje wersji 1.x, tylko wyzwalacz został zmieniona Cosmos DB; powiązania danych wejściowych, powiązania danych wyjściowych i pakietu NuGet należy zachować nazwę bazy danych DocumentDB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>Obsługiwane interfejsy API
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -189,19 +193,19 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Nazwa** || Nazwa zmiennej, używany w kodzie funkcji, który reprezentuje listę dokumentów za pomocą zmian. | 
 |**connectionStringSetting**|**ConnectionStringSetting** | Nazwa ustawienia aplikacji zawierającego parametry połączenia używane do łączenia z konta usługi Azure Cosmos DB są monitorowane. |
 |**databaseName**|**DatabaseName**  | Nazwa bazy danych Azure Cosmos DB za pomocą kolekcji są monitorowane. |
-|**CollectionName** |**CollectionName** | Nazwa kolekcji są monitorowane. |
+|**collectionName** |**collectionName** | Nazwa kolekcji są monitorowane. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Opcjonalnie) Nazwa ustawienia aplikacji zawierającego parametry połączenia z usługą, która zawiera kolekcję dzierżaw. Gdy nie są ustawione, `connectionStringSetting` wartość jest używana. Ten parametr jest automatycznie ustawiana podczas tworzenia powiązania w portalu. Parametry połączenia dla kolekcji dzierżaw musi mieć uprawnienia do zapisu.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Opcjonalnie) Nazwa bazy danych, który zawiera kolekcję używaną do przechowywania dzierżaw. Jeśli nie ustawiona, wartość `databaseName` ustawienie jest używane. Ten parametr jest automatycznie ustawiana podczas tworzenia powiązania w portalu. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Opcjonalnie) Nazwa kolekcji, używany do przechowywania dzierżaw. Kiedy nie ustawiona, wartość `leases` jest używany. |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Opcjonalnie) Po ustawieniu `true`, kolekcję dzierżaw zostało automatycznie utworzone po już nie istnieje. Wartość domyślna to `false`. |
-|**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądania do przypisania, po utworzeniu kolekcji dzierżaw. To ustawienie jest tylko wtedy, gdy używane `createLeaseCollectionIfNotExists` ustawiono `true`. Ten parametr jest automatycznie ustawiana, jeśli wiązanie jest tworzony przy użyciu portalu.
-|**LeaseCollectionPrefix**| **LeaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiks do dzierżawy utworzone w kolekcję dzierżaw dla tej funkcji, co skutecznie dwie oddzielne funkcje platformy Azure na udostępnianie tej samej kolekcji dzierżawy przy użyciu różnych prefiksów.
-|**FeedPollDelay**| **FeedPollDelay**| (Opcjonalnie) Gdy zestaw, definiuje, w milisekundach, opóźnienie między sondowaniem partycji dla nowych zmian w źródle danych, gdy wszystkie bieżące zmiany są opróżniane. Wartością domyślną jest 5000 (5 sekund).
-|**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
-|**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
-|**LeaseRenewInterval**| **LeaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
-|**CheckpointFrequency**| **CheckpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po pomyślnym wywołania funkcji.
-|**MaxItemsPerInvocation**| **MaxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
+|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądania do przypisania, po utworzeniu kolekcji dzierżaw. To ustawienie jest tylko wtedy, gdy używane `createLeaseCollectionIfNotExists` ustawiono `true`. Ten parametr jest automatycznie ustawiana, jeśli wiązanie jest tworzony przy użyciu portalu.
+|**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiks do dzierżawy utworzone w kolekcję dzierżaw dla tej funkcji, co skutecznie dwie oddzielne funkcje platformy Azure na udostępnianie tej samej kolekcji dzierżawy przy użyciu różnych prefiksów.
+|**feedPollDelay**| **feedPollDelay**| (Opcjonalnie) Gdy zestaw, definiuje, w milisekundach, opóźnienie między sondowaniem partycji dla nowych zmian w źródle danych, gdy wszystkie bieżące zmiany są opróżniane. Wartością domyślną jest 5000 (5 sekund).
+|**leaseAcquireInterval**| **leaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
+|**leaseExpirationInterval**| **leaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
+|**leaseRenewInterval**| **leaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
+|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po pomyślnym wywołania funkcji.
+|**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -216,10 +220,7 @@ Wyzwalacz nie wskazuje, czy zaktualizowane lub wstawić dokumentu, po prostu zap
 
 ## <a name="input"></a>Dane wejściowe
 
-Powiązania danych wejściowych usługi Azure Cosmos DB pobiera jeden lub więcej dokumentów usługi Azure Cosmos DB i przekazuje je do parametr wejściowy funkcji. Można określić parametry identyfikator lub kwerendę dokumentu oparte na wyzwalacz, który wywołuje funkcję. 
-
->[!NOTE]
-> Nie używasz usługi Azure Cosmos DB w danych wejściowych lub powiązania danych wyjściowych, jeśli używasz interfejsu API usługi MongoDB na konto usługi Cosmos DB. Możliwe jest uszkodzenie danych.
+Powiązania danych wejściowych usługi Azure Cosmos DB używa interfejsu API SQL do pobrania jednego lub więcej dokumentów usługi Azure Cosmos DB i przekazuje je do parametr wejściowy funkcji. Można określić parametry identyfikator lub kwerendę dokumentu oparte na wyzwalacz, który wywołuje funkcję.
 
 ## <a name="input---examples"></a>Dane wejściowe — przykłady
 
@@ -1169,11 +1170,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction**     || Musi być równa `in`.         |
 |**Nazwa**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
 |**databaseName** |**DatabaseName** |Baza danych zawiera dokument.        |
-|**CollectionName** |**CollectionName** | Nazwa kolekcji, która zawiera dokument. |
+|**collectionName** |**collectionName** | Nazwa kolekcji, która zawiera dokument. |
 |**id**    | **Identyfikator** | Identyfikator dokumentu do pobrania. Ta właściwość obsługuje [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns). Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję. |
 |**sqlQuery**  |**SqlQuery**  | Zapytania SQL usługi Azure Cosmos DB używane do pobierania wiele dokumentów. Właściwość obsługuje powiązań środowiska uruchomieniowego, jak w poniższym przykładzie: `SELECT * FROM c where c.departmentId = {departmentId}`. Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję.|
 |**połączenia**     |**ConnectionStringSetting**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
-|**Właściwości PartitionKey**|**Właściwości PartitionKey**|Określa wartość klucza partycji do wyszukiwania. Może zawierać parametrów wiązania.|
+|**właściwości partitionKey**|**właściwości partitionKey**|Określa wartość klucza partycji do wyszukiwania. Może zawierać parametrów wiązania.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1185,10 +1186,7 @@ W funkcji języka JavaScript nie zostało zaktualizowane automatycznie po wyjśc
 
 ## <a name="output"></a>Dane wyjściowe
 
-Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB. 
-
->[!NOTE]
-> Nie używasz usługi Azure Cosmos DB w danych wejściowych lub powiązania danych wyjściowych, jeśli używasz interfejsu API usługi MongoDB na konto usługi Cosmos DB. Możliwe jest uszkodzenie danych.
+Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB przy użyciu interfejsu API SQL. 
 
 ## <a name="output---examples"></a>Dane wyjściowe — przykłady
 
@@ -1590,10 +1588,10 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction**     || Musi być równa `out`.         |
 |**Nazwa**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
 |**databaseName** | **DatabaseName**|Baza danych, zawierający kolekcję, w którym zostanie utworzona dokumentu.     |
-|**CollectionName** |**CollectionName**  | Nazwa kolekcji jest tworzona dokumentu. |
-|**CreateIfNotExists**  |**CreateIfNotExists**    | Wartość logiczna, aby wskazać, czy kolekcja jest tworzona, gdy nie istnieje. Wartość domyślna to *false* ponieważ nowych kolekcji są tworzone z zarezerwowaną przepływnością, co ma koszt skutki. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/documentdb/).  |
-|**Właściwości PartitionKey**|**Właściwości PartitionKey** |Gdy `CreateIfNotExists` ma wartość true, określa ścieżkę klucza partycji dla utworzonej kolekcji.|
-|**CollectionThroughput**|**CollectionThroughput**| Gdy `CreateIfNotExists` ma wartość true, określa [przepływności](../cosmos-db/set-throughput.md) utworzonej kolekcji.|
+|**collectionName** |**collectionName**  | Nazwa kolekcji jest tworzona dokumentu. |
+|**createIfNotExists**  |**createIfNotExists**    | Wartość logiczna, aby wskazać, czy kolekcja jest tworzona, gdy nie istnieje. Wartość domyślna to *false* ponieważ nowych kolekcji są tworzone z zarezerwowaną przepływnością, co ma koszt skutki. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/documentdb/).  |
+|**właściwości partitionKey**|**właściwości partitionKey** |Gdy `CreateIfNotExists` ma wartość true, określa ścieżkę klucza partycji dla utworzonej kolekcji.|
+|**collectionThroughput**|**collectionThroughput**| Gdy `CreateIfNotExists` ma wartość true, określa [przepływności](../cosmos-db/set-throughput.md) utworzonej kolekcji.|
 |**połączenia**    |**ConnectionStringSetting** |Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -1,45 +1,44 @@
 ---
-title: Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu portalu Azure
-description: W tym artykule opisano sposób rozwiązywania problemów z usługą Azure Data Lake Analytics zadania za pomocą portalu Azure.
+title: Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu witryny Azure portal
+description: W tym artykule opisano, jak rozwiązywanie problemów z zadań usługi Azure Data Lake Analytics przy użyciu witryny Azure portal.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 8c61b8736dfb13f0c2c2520f22979ac51646e05f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1e18addc43e53cb45e92966607ad5d1db2b42c3c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623659"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046723"
 ---
-# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu portalu Azure
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu witryny Azure Portal
 
 **Aby wyświetlić wszystkie zadania**
 
-1. W portalu Azure kliknij **Microsoft Azure** w lewym górnym rogu.
-2. Kliknij kafelek z nazwą konta usługi Data Lake Analytics.  Zadanie podsumowania jest wyświetlany na **zadania zarządzania** kafelka.
+1. W witrynie Azure portal, kliknij przycisk **Microsoft Azure** w lewym górnym rogu.
+2. Kliknij kafelek z nazwą konta usługi Data Lake Analytics.  W obszarze podsumowania zadania są wyświetlane na **zadań zarządzania** kafelka.
 
-    ![Zarządzanie zadaniami usługi Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
+    ![Zarządzanie zadaniami w usłudze Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    Zadania zarządzania zapewnia podstawowe informacje o stanie zadania. Należy zauważyć, że zadania nie powiodło się.
-3. Kliknij przycisk **zadania zarządzania** Kafelek, aby wyświetlić zadania. Zadania są podzielone na **systemem**, **w kolejce**, i **zakończone**. Zostanie wyświetlona zadania nie powiodło się **zakończone** sekcji. Jest ona pierwsza z nich na liście. Jeśli masz wiele zadań, można kliknąć **filtru** ułatwiające można znaleźć zadania.
+    Zadania zarządzania zapewnia szybkie i łatwe stanu zadania. Należy zauważyć, że to zadanie zakończone niepowodzeniem.
+3. Kliknij przycisk **zadań zarządzania** Kafelek, aby wyświetlić zadania. Zadania są podzielone na **systemem**, **kolejce**, i **Zakończono**. Zostanie wyświetlona zadania zakończone niepowodzeniem w **Zakończono** sekcji. Jest on pierwszy z nich na liście. Jeśli masz wiele zadań, możesz kliknąć pozycję **filtru** ułatwiające zlokalizować zadania.
 
     ![Usługa Azure Data Lake Analytics filtrowania zadań](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 4. Kliknij zadanie zakończone niepowodzeniem z listy, aby otworzyć szczegóły zadania:
 
-    ![Azure Data Lake Analytics zadania nie powiodło się](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
+    ![Usługa Azure Data Lake Analytics nie powiodło się zadanie](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
-    Powiadomienie **ponownie prześlij** przycisku. Po rozwiązaniu problemu należy ponownie przesłać zadania.
-5. Kliknij część wyróżnione na poprzednim zrzucie ekranu, aby otworzyć szczegóły błędu.  Zostanie wyświetlona wyglądać mniej więcej tak:
+    Zwróć uwagę **ponownie przesłać** przycisku. Po rozwiązaniu problemu możesz ponownie przesłać zadanie.
+5. Kliknij wyróżniony część z poprzedniego zrzutu ekranu, można otworzyć szczegóły błędu.  Zostanie wyświetlona mniej więcej tak:
 
-    ![Azure Data Lake Analytics szczegóły zadania nie powiodło się](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
+    ![Usługa Azure Data Lake Analytics nie powiodło się szczegóły zadania](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    Określa, że nie znaleziono folderu źródłowego.
+    Określa, że nie można odnaleźć folderu źródłowego.
 6. Kliknij przycisk **zduplikowane skryptu**.
 7. Aktualizacja **FROM** ścieżkę do:
 
@@ -47,6 +46,6 @@ ms.locfileid: "34623659"
 8. Kliknij przycisk **Prześlij zadanie**.
 
 ## <a name="see-also"></a>Zobacz także
-* [Omówienie programu Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Wprowadzenie do usługi Azure Data Lake Analytics przy użyciu programu Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+* [Usługa Azure Data Lake Analytics — Przegląd](data-lake-analytics-overview.md)
+* [Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu programu Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Zarządzanie usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal](data-lake-analytics-manage-use-portal.md)
