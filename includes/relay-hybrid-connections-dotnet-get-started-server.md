@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: service-bus-relay
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 08/16/2018
+ms.author: clemensv
+ms.custom: include file
+ms.openlocfilehash: fbc5bbff62a13d9b4301271031105ecd7d17fa86
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40182543"
+---
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
 W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)**.
@@ -5,8 +22,10 @@ W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framewo
 ### <a name="add-the-relay-nuget-package"></a>Dodawanie pakietu NuGet usługi Relay
 
 1. Kliknij prawym przyciskiem myszy nowo utworzony projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
-2. Wybierz pozycję **Przeglądaj**, a następnie wyszukaj pozycję **Microsoft.Azure.Relay**. W wynikach wyszukiwania wybierz pozycję **Microsoft Azure Relay**. 
-3. Wybierz pozycję **Zainstaluj**, aby ukończyć instalację. Zamknij okno dialogowe.
+2. Wybierz opcję **Uwzględnij wersję wstępną**. 
+3. Wybierz pozycję **Przeglądaj**, a następnie wyszukaj pozycję **Microsoft.Azure.Relay**. W wynikach wyszukiwania wybierz pozycję **Microsoft Azure Relay**.
+4. Wybierz wersję **2.0.0-preview1-20180523**. 
+5. Wybierz pozycję **Zainstaluj**, aby ukończyć instalację. Zamknij okno dialogowe.
 
 ### <a name="write-code-to-receive-messages"></a>Pisanie kodu w celu odbierania komunikatów
 
@@ -17,6 +36,7 @@ W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framewo
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net;
     using Microsoft.Azure.Relay;
     ```
 2. Dodaj stałe do klasy `Program` na potrzeby szczegółów połączenia hybrydowego. Zastąp symbole zastępcze w nawiasach wartościami uzyskanymi podczas tworzenia połączenia hybrydowego. Pamiętaj, aby użyć w pełni kwalifikowanej nazwy przestrzeni nazw.

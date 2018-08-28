@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869585"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920347"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -342,8 +342,8 @@ Za pomocą _poleceń_ można umożliwić operatorowi uruchamianie poleceń bezpo
     | Nazwa wyświetlana         | Polecenie echo    |
     | Nazwa pola           | echo            |
     | Domyślny limit czasu      | 30              |
-    | Nazwa wyświetlana         | Tekst wyświetlany    |
-    | Typ wyświetlany         | tekst            |  
+    | Typ wyświetlany         | tekst            |
+    | Opis          | Polecenie urządzenia  |  
 
 Możesz dodać dodatkowe dane wejściowe do polecenia, klikając pozycję **+** dla danych wejściowych.
 

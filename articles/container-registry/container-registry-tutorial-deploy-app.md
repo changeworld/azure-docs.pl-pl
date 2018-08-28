@@ -6,15 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2018
+ms.date: 08/20/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582305"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41924828"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Samouczek: Wdrażanie aplikacji internetowej z usługi Azure Container Registry
 
@@ -42,11 +42,13 @@ W tym kroku utworzysz wystąpienie usługi Web App for Containers w regionie *Za
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i przejdź do rejestru utworzonego w poprzednim samouczku.
 
-Wybierz pozycję **Repozytoria** > **acr-helloworld**, a następnie kliknij prawym przyciskiem myszy tag **v1** w obszarze **Tagi** i wybierz pozycję **Wdróż do aplikacji internetowej**.
+Wybierz pozycję **Repozytoria** > **acr-helloworld**, a następnie kliknij prawym przyciskiem myszy tag **v1** w obszarze **Tagi** i wybierz pozycję **Wdróż do aplikacji internetowej**:
 
 ![Wdrażanie w usłudze App Service w witrynie Azure Portal][deploy-app-portal-01]
 
-W wyświetlonej usłudze **Web App for Containers** określ następujące wartości dla każdego ustawienia:
+Jeśli polecenie „Wdróż do aplikacji internetowej” jest wyłączone, może to oznaczać, że nie włączono konta administratora rejestru zgodnie ze wskazówkami zawartymi w sekcji [Tworzenie rejestru kontenerów](container-registry-tutorial-prepare-registry.md#create-a-container-registry) w pierwszym samouczku. Można je włączyć w obszarze **Ustawienia** > **Klucze dostępu** w witrynie Azure Portal.
+
+W oknie usługi **Web App for Containers** wyświetlonym po wybraniu polecenia „Wdróż do aplikacji internetowej” podaj następujące wartości dla każdego ustawienia:
 
 | Ustawienie | Wartość |
 |---|---|

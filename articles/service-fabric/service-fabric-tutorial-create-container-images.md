@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114044"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616287"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
@@ -68,6 +68,8 @@ Z poziomu katalogu **azure-vote** uruchom następujące polecenie, aby utworzyć
 ```bash
 docker build -t azure-vote-front .
 ```
+> [!Note]
+> W razie odmowy przyznania uprawnień postępuj zgodnie z [następującą](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) dokumentacją dotyczącą pracy z programem Docker bez uprawnień „sudo”.
 
 Wykonanie tego polecenia może zająć trochę czasu, ponieważ wszystkie wymagane zależności muszą zostać pobrane z usługi Docker Hub. Po zakończeniu użyj polecenia [docker images](https://docs.docker.com/engine/reference/commandline/images/) w celu wyświetlenia utworzonych obrazów.
 

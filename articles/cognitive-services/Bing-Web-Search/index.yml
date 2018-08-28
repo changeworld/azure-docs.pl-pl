@@ -1,0 +1,79 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ff1a5c52def0c6955ff90b92c0d4b2de44ea4a51
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42889530"
+documentType: LandingData
+title: Dokumentacja funkcji wyszukiwania w Internecie Bing
+metadata:
+  document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
+  title: Dokumentacja funkcji wyszukiwania w Internecie Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
+  description: Dowiedz się, jak uzyskać wyniki z Internetu dotyczące zapytań użytkowników za pomocą interfejsu API wyszukiwania w Internecie Bing. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.
+  services: cognitive-services
+  author: v-jerkin
+  manager: cgronlun
+  ms.service: bing-web-search
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/10/2017
+  ms.author: v-jerkin
+abstract:
+  description: Interfejs API wyszukiwania w Internecie Bing udostępnia środowisko podobne do usługi Bing i zwraca wyniki wyszukiwania, które usługa Bing określi jako istotne dla zapytania użytkownika. Wyniki obejmują strony internetowe i mogą również obejmować obrazy, klipy wideo i nie tylko.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Zacznij korzystać z interfejsu API wyszukiwania w Internecie Bing przez utworzenie zapytania i wyświetlenie odpowiedzi JSON:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/logo_csharp.svg
+      href: quickstarts/csharp
+      text: C&#35;
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg
+      href: quickstarts/go
+      text: Przejdź
+    - image:
+        src: media/index/logo_java.svg
+      href: quickstarts/java
+      text: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      href: quickstarts/nodejs
+      text: Node.js
+    - image:
+        src: media/index/logo_php.svg
+      href: quickstarts/php
+      text: PHP
+    - image:
+        src: media/index/logo_python.svg
+      href: quickstarts/python
+      text: Python
+    - image:
+        src: media/index/logo_ruby.svg
+      href: quickstarts/ruby
+      text: Ruby
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API wyszukiwania w Internecie Bing:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="tutorial-bing-web-search-single-page-app">Jednostronicowa aplikacja internetowa</a> &#124; <a href="tutorial-bing-web-search-single-page-app-source">Kod źródłowy</a>
+    - html: <a href="computer-vision-web-search-tutorial.md">Aplikacja mobilna wyszukiwania wizualnego</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Interfejsy API
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Interfejs API wyszukiwania w Internecie Bing w wersji 7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Interfejs API wyszukiwania w Internecie Bing w wersji 5</a></p>
+    - title: Zestawy SDK
+      html: <p><a href="sdk.md">Zestaw SDK wyszukiwania Bing</a></p>

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109396"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920311"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
@@ -50,7 +50,7 @@ Przed rozpoczęciem tego samouczka:
 * [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 * Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Utwórz [konto usługi Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+* Utwórz [konto usługi Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 
@@ -94,7 +94,13 @@ Definicja wydania usługi Team Services opisuje przepływ pracy, który wdraża 
 
 Otwórz przeglądarkę internetową i przejdź do nowego projektu zespołowego na stronie: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Wybierz kartę **Kompilowanie i wydawanie**, potem pozycję **Kompilacje**, a następnie pozycję **+ Nowa definicja**.  W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Service Fabric** i kliknij przycisk **Zastosuj**.
+Wybierz kartę **Kompilacja i wydawanie**, wybierz pozycję **Kompilacje**, a następnie pozycję **Nowy potok**.
+
+![Nowy potok][new-pipeline]
+
+Wybierz pozycję **VSTS Git** jako źródło, projekt zespołowy **Voting**, repozytorium **Voting** i domyślną gałąź **master** lub ręcznie i zaplanowane kompilacje.  Następnie kliknij pozycję **Kontynuuj**.
+
+W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Service Fabric**, a następnie kliknij przycisk **Zastosuj**.
 
 ![Wybieranie szablonu kompilacji][select-build-template]
 
@@ -102,7 +108,9 @@ W obszarze **Zadania** wprowadź wyrażenie „Hostowany program VS2017” jako 
 
 ![Wybieranie zadań][save-and-queue]
 
-W obszarze **Wyzwalacze** włącz ciągłą integrację, ustawiając **Stan wyzwalacza**.  Wybierz pozycję **Zapisz i dodaj do kolejki**, aby ręcznie uruchomić kompilację.
+W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję **Włącz ciągłą integrację**. W obszarze **Filtry gałęzi** kliknij pozycję **+ Dodaj**, a wartość domyślna pozycji **Specyfikacja gałęzi** zostanie ustawiona na **master**. Wybierz pozycję **Zapisz i dodaj do kolejki**, aby ręcznie uruchomić kompilację.
+
+W oknie dialogowym **Zapisywanie potoku i kolejki kompilacji** kliknij pozycję **Zapisz i umieść w kolejce**.
 
 ![Wybieranie wyzwalaczy][save-and-queue2]
 
@@ -110,7 +118,7 @@ Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjon
 
 ### <a name="create-a-release-definition"></a>Tworzenie definicji wydania
 
-Wybierz kartę **Kompilowanie i wydawanie**, potem pozycję **Wydania**, a następnie pozycję **+ Nowa definicja**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
+Wybierz kartę **Kompilacja i wydawanie**, wybierz pozycję **Wydania**, a następnie wybierz pozycję **+ Nowy potok**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
 
 ![Wybieranie szablonu wydania][select-release-template]
 
@@ -134,7 +142,9 @@ Włącz wyzwalacz ciągłego wdrażania, aby umożliwić automatyczne tworzenie 
 
 ![Włączanie wyzwalacza][enable-trigger]
 
-Wybierz pozycję **+Wydanie** -> **Tworzenie wydania** -> **Utwórz**, aby ręcznie utworzyć wydanie.  Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
+Wybierz pozycję **+ Wydanie** -> **Tworzenie wydania** -> **Utwórz**, aby ręcznie utworzyć wydanie. Postęp wydawania możesz monitorować na karcie **Wydania**.
+
+Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Zatwierdzanie i wypychanie zmian, wyzwalanie wydania
 
@@ -188,6 +198,7 @@ Przejdź do następnego samouczka:
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

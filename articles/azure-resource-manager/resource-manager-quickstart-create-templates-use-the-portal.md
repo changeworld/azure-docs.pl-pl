@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5bb5ed45363216bb1bcd39f85157a3eed68c2f9
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: fcae6d656f6e309b0fdcd60db743d3bebf3cd5a9
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126866"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617042"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure portal
 
@@ -78,7 +78,9 @@ W tej sekcji utworzysz konto magazynu przy użyciu witryny Azure Portal. Przed w
 
 ## <a name="edit-and-deploy-the-template"></a>Edytowanie i wdrażanie szablonu
 
-W tej sekcji zostaną wykonane następujące czynności: otwarcie zapisanego szablonu z biblioteki szablonów, edycja szablonu w witrynie Azure Portal i wdrożenie poprawionego szablonu. Aby edytować bardziej złożony szablon, rozważ użycie programu Visual Studio Code, który zapewnia bardziej zaawansowane funkcje edycji.
+W tej sekcji zostaną wykonane następujące czynności: otwarcie zapisanego szablonu z biblioteki szablonów, edycja szablonu w witrynie Azure Portal i wdrożenie poprawionego szablonu. Aby edytować bardziej złożony szablon, rozważ użycie programu [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), który zapewnia bardziej zaawansowane funkcje edycji.
+
+Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie zakończy się niepowodzeniem, jeśli zostanie wprowadzona już istniejąca nazwa konta magazynu. Aby uniknąć tego problemu, można użyć wywołania funkcji szablonu uniquestring() w celu wygenerowania unikatowej nazwy konta magazynu.
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** z menu po lewej stronie, wprowadź wartość **szablon** w polu filtru, a następnie wybierz pozycję **Szablon (wersja zapoznawcza)**.
 
@@ -177,6 +179,14 @@ W tej sekcji zostaną wykonane następujące czynności: otwarcie zapisanego sza
 
 10. Wybierz pozycję **Kup**.
 11. Wybierz ikonę dzwonka (powiadomienia) w górnej części ekranu, aby wyświetlić stan wdrożenia.
+
+    ![Powiadomienie dotyczące wdrażania szablonów usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
+
+12. W okienku powiadomień wybierz pozycję **Przejdź do grupy zasobów**. Zobaczysz ekran podobny do poniższego:
+
+    ![Grupa zasobów w ramach wdrażania szablonów usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
+
+    Możesz zobaczyć, że stan wdrożenia został oznaczony jako zakończony pomyślnie, natomiast w grupie zasobów jest tylko jedno konto magazynu. Nazwa konta magazynu jest unikatowym ciągiem wygenerowanym przez szablon. Aby dowiedzieć się więcej o korzystaniu z kont magazynu platformy Azure, zobacz przewodnik [Szybki start — przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

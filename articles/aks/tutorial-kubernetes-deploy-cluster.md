@@ -1,30 +1,30 @@
 ---
-title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — wdrażanie klastra
-description: Samouczek dotyczący usługi AKS — wdrażanie klastra
+title: Samouczek dotyczący usługi Kubernetes na platformie Azure — wdrażanie klastra
+description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) utworzysz klaster usługi AKS i nawiążesz połączenie z węzłem głównym usługi Kubernetes za pomocą narzędzia kubectl.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c8698f16138e9baeb9c9c1142a5d0c8937a69d1b
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 80b011f9df389098095f58c02008da891b2aa8a7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341403"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41917733"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Samouczek: wdrażanie klastra usługi Azure Kubernetes Service (AKS)
 
-Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplikacji. Za pomocą usługi AKS można szybko aprowizować klaster Kubernetes gotowy do użycia w środowisku produkcyjnym. W tym samouczku (część trzecia z siedmiu) w usłudze AKS jest wdrażany klaster Kubernetes. Wykonano następujące czynności:
+Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplikacji. Za pomocą usługi AKS można szybko aprowizować klaster Kubernetes gotowy do użycia w środowisku produkcyjnym. W tym samouczku (część trzecia z siedmiu) w usłudze AKS jest wdrażany klaster Kubernetes. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie jednostki usługi na potrzeby interakcji z zasobami
 > * Wdrażanie klastra AKS rozwiązania Kubernetes
-> * Instalacja interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
-> * Konfiguracja narzędzia kubectl
+> * Instalowanie interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
+> * Konfigurowanie narzędzia kubectl w celu nawiązania połączenia z klastrem AKS
 
 W kolejnych samouczkach aplikacja Azure Vote jest wdrażana w klastrze, skalowana i aktualizowana.
 
@@ -32,11 +32,13 @@ W kolejnych samouczkach aplikacja Azure Vote jest wdrażana w klastrze, skalowan
 
 W poprzednich samouczkach utworzono obraz kontenera i przekazano go do wystąpienia usługi Azure Container Registry. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
+Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.44 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 Jednostka usługi Azure Active Directory zezwala klastrowi usługi AKS na interakcje z innymi zasobami platformy Azure. Tę jednostkę usługi może automatycznie utworzyć interfejs wiersza polecenia platformy Azure lub portal. Inna możliwość to jej wstępne utworzenie i przypisanie dodatkowych uprawnień. Ten samouczek obejmuje utworzenie jednostki usługi, udzielenie dostępu do wystąpienia usługi Azure Container Registry (ACR) utworzonego w poprzednim samouczku, a następnie utworzenie klastra usługi AKS.
 
-Tworzenie jednostki usługi za pomocą polecenia [az ad sp create-for-rbac][]. Parametr `--skip-assignment` umożliwia ograniczenie przypisywania dodatkowych uprawnień.
+Utwórz jednostkę usługi za pomocą polecenia [az ad sp create-for-rbac][]. Parametr `--skip-assignment` umożliwia ograniczenie przypisywania dodatkowych uprawnień.
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -63,73 +65,71 @@ Aby uzyskać dostęp do obrazów przechowywanych w usłudze ACR, należy udzieli
 Najpierw pobierz identyfikator zasobu usługi ACR za pomocą polecenia [az acr show][]. Zaktualizuj wartość `<acrName>` za pomocą nazwy rejestru używanego przez wystąpienie usługi ACR i grupę zasobów, w której znajduje się wystąpienie usługi ACR.
 
 ```azurecli
-az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv
+az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
 Aby udzielić poprawnego dostępu do klastra usługi AKS na potrzeby używania obrazów przechowywanych w usłudze ACR, utwórz przypisanie roli za pomocą polecenia [az role assignment create][]. Zastąp ciągi `<appId`> i `<acrId>` wartościami określonymi w dwóch poprzednich krokach.
 
 ```azurecli
-az role assignment create --assignee <appId> --role Reader --scope <acrId>
+az role assignment create --assignee <appId> --scope <acrId> --role Reader
 ```
 
-## <a name="create-kubernetes-cluster"></a>Tworzenie klastra Kubernetes
+## <a name="create-a-kubernetes-cluster"></a>Tworzenie klastra Kubernetes
 
-Teraz utwórz klaster usługi AKS za pomocą polecenia [az aks create][]. Poniższy przykład obejmuje tworzenie klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*. Ta grupa zasobów została utworzona w ramach [poprzedniego samouczka][aks-tutorial-prepare-acr]. Podaj własne wartości `<appId>` i `<password>` odpowiednio dla poprzedniego kroku, w którym utworzono jednostkę usługi.
+Klastry usługi AKS mogą używać kontroli dostępu opartej na rolach (RBAC) rozwiązania Kubernetes. Te kontrolki umożliwiają zdefiniowanie dostępu do zasobów na podstawie ról przypisanych użytkownikom. Uprawnienia mogą być łączone, jeśli użytkownikowi przypisano wiele ról, a zakres uprawnień można ograniczyć do jednej przestrzeni nazw lub do całego klastra. Kontrola dostępu oparta na rolach (RBAC) rozwiązania Kubernetes jest obecnie dostępna w wersji zapoznawczej dla klastrów usługi AKS. Domyślnie interfejs wiersza polecenia platformy Azure automatycznie włącza kontrolę dostępu opartą na rolach podczas tworzenia klastra usługi AKS.
+
+Utwórz klaster usługi AKS za pomocą polecenia [az aks create][]. W poniższym przykładzie tworzony jest klaster o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*. Ta grupa zasobów została utworzona w ramach [poprzedniego samouczka][aks-tutorial-prepare-acr]. Podaj własne wartości `<appId>` i `<password>` z poprzedniego kroku, w którym utworzono jednostkę usługi.
 
 ```azurecli
 az aks create \
-    --name myAKSCluster \
     --resource-group myResourceGroup \
+    --name myAKSCluster \
     --node-count 1 \
-    --generate-ssh-keys \
     --service-principal <appId> \
-    --client-secret <password>
+    --client-secret <password> \
+    --generate-ssh-keys
 ```
 
 Po kilku minutach wdrażanie zostanie zakończone i zwróci informacje o wdrożeniu usługi AKS w formacie JSON.
 
-## <a name="install-the-kubectl-cli"></a>Instalowanie interfejsu wiersza polecenia kubectl
+## <a name="install-the-kubernetes-cli"></a>Instalowanie interfejsu wiersza polecenia rozwiązania Kubernetes
 
-Aby nawiązać połączenie z klastrem Kubernetes z komputera klienckiego, należy użyć narzędzia [kubectl][kubectl], czyli klienta wiersza polecenia usługi Kubernetes.
+Aby nawiązać połączenie z klastrem Kubernetes z komputera lokalnego, należy użyć narzędzia [kubectl][kubectl], czyli klienta wiersza polecenia usługi Kubernetes.
 
-Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie kubectl jest już zainstalowane. Istnieje także możliwość zainstalowania go lokalnie za pomocą polecenia [az aks install-cli][]:
+Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Możesz także zainstalować je lokalnie za pomocą polecenia [az aks install-cli][]:
 
 ```azurecli
 az aks install-cli
 ```
 
-## <a name="connect-with-kubectl"></a>Nawiązywanie połączenia przy użyciu narzędzia kubectl
+## <a name="connect-to-cluster-using-kubectl"></a>Nawiązywanie połączenia z klastrem przy użyciu narzędzia kubectl
 
-Za pomocą polecenia [az aks get-credentials][] skonfiguruj narzędzie kubectl w celu nawiązania połączenia z klastrem Kubernetes. Poniższy przykład umożliwia pobranie poświadczeń dla nazwy klastra usługi AKS *myAKSCluster* w grupie zasobów *myResourceGroup*:
-
-```azurecli
-az aks get-credentials --name myAKSCluster --resource-group myResourceGroup
-```
-
-Aby sprawdzić połączenie z klastrem, uruchom polecenie [kubectl get nodes][kubectl-get].
+Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][]. Poniższy przykład umożliwia pobranie poświadczeń dla nazwy klastra usługi AKS *myAKSCluster* w grupie zasobów *myResourceGroup*:
 
 ```azurecli
-kubectl get nodes
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Dane wyjściowe:
+Aby sprawdzić połączenie z klastrem, uruchom polecenie [kubectl get nodes][kubectl-get]:
 
 ```
+$ kubectl get nodes
+
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-66427764-0   Ready     agent     9m        v1.9.6
+aks-nodepool1-66427764-0   Ready     agent     9m        v1.9.9
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku w usłudze AKS został wdrożony klaster Kubernetes. Wykonano następujące czynności:
+W tym samouczku wdrożono klaster Kubernetes w usłudze AKS i skonfigurowano narzędzie `kubectl` w celu nawiązania z nim połączenia. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie jednostki usługi na potrzeby interakcji z zasobami
-> * Wdrożony klaster AKS rozwiązania Kubernetes
-> * Instalacja interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
-> * Konfigurowanie narzędzia kubectl
+> * Wdrażanie klastra AKS rozwiązania Kubernetes
+> * Instalowanie interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
+> * Konfigurowanie narzędzia kubectl w celu nawiązania połączenia z klastrem AKS
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchomić aplikację w klastrze.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak wdrożyć aplikację w klastrze.
 
 > [!div class="nextstepaction"]
 > [Wdrażanie aplikacji w rozwiązaniu Kubernetes][aks-tutorial-deploy-app]
@@ -148,3 +148,4 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchomić aplikacj
 [az aks create]: /cli/azure/aks#az-aks-create
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[azure-cli-install]: /cli/azure/install-azure-cli

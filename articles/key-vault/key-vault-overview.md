@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a55c99764cf9d77ab3ee269e3f5b0c2a13ec1ac7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115324"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42023590"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -29,13 +29,12 @@ Korzystasz z haseł, parametrów połączenia i innych rodzajów informacji, kt�
 
 Usługa Key Vault umożliwia utworzenie wielu zabezpieczonych kontenerów nazywanych magazynami. Te magazyny są wspierane przez sprzętowe moduły zabezpieczeń. Magazyny zmniejszają prawdopodobieństwo przypadkowej utraty danych zabezpieczeń, stanowiąc centrum przechowywania wpisów tajnych aplikacji. Magazyny usługi Key Vault umożliwiają także kontrolowanie i rejestrowanie dostępu do wszelkich elementów, które są w nich przechowywane. Usługa Azure Key Vault obsługuje żądania i odnawianie certyfikatów protokołu TLS (Transport Layer Security), udostępniając funkcje wymagane przez niezawodne rozwiązania do zarządzania cyklem życia certyfikatu.
 
- Usługę Azure Key Vault zaprojektowano pod kątem obsługi kluczy i wpisów tajnych aplikacji. Usługa Key Vault nie jest przeznaczona do przechowywania haseł użytkowników.
-
+ Usługę Azure Key Vault zaprojektowano pod kątem obsługi wpisów tajnych. Oznacza to, że usługa Key Vault może służyć do przechowywania haseł, poświadczeń bazy danych, kluczy interfejsu API i certyfikatów, które mogą być chronione za pomocą oprogramowania lub sprzętowego modułu HSM.
 ## <a name="why-use-azure-key-vault"></a>Jakie są zalety korzystania z usługi Azure Key Vault?
 
 ### <a name="centralize-application-secrets"></a>Scentralizowana obsługa wpisów tajnych aplikacji
 
-Centralny magazyn wpisów tajnych aplikacji w usłudze Azure Key Vault umożliwia kontrolowanie ich dystrybucji. Znacznie ogranicza to prawdopodobieństwo przypadkowego ujawnienia wpisów tajnych. Korzystając z usługi Key Vault, deweloperzy aplikacji nie muszą już przechowywać informacji zabezpieczeń w aplikacji. Konieczność umieszczania ich w kodzie zostaje wyeliminowana. Na przykład aplikacja może potrzebować połączenia z bazą danych. Zamiast przechowywać parametry połączenia w kodzie aplikacji, możesz zapisać je bezpiecznie w usłudze Key Vault.
+Centralny magazyn wpisów tajnych aplikacji w usłudze Azure Key Vault umożliwia kontrolowanie ich dystrybucji. Usługa Key Vault znacznie ogranicza prawdopodobieństwo przypadkowego ujawnienia wpisów tajnych. Korzystając z usługi Key Vault, deweloperzy aplikacji nie muszą już przechowywać informacji zabezpieczeń w aplikacji. Konieczność umieszczania ich w kodzie zostaje wyeliminowana. Na przykład aplikacja może potrzebować połączenia z bazą danych. Zamiast przechowywać parametry połączenia w kodzie aplikacji, możesz zapisać je bezpiecznie w usłudze Key Vault.
 
 Aplikacje mogą uzyskiwać dostęp do potrzebnych informacji w bezpieczny sposób za pomocą identyfikatorów URI, które pozwalają na pobranie określonych wersji wpisu tajnego po umieszczeniu klucza lub wpisu tajnego aplikacji w usłudze Azure Key Vault. Jest to możliwe bez konieczności pisania niestandardowego kodu w celu ochrony poufnych informacji.
 
@@ -65,9 +64,9 @@ Kontrolujesz dzienniki i możesz je zabezpieczyć przez ograniczenie dostępu, a
 
 W przypadku przechowywania cennych danych należy wykonać kilka czynności. Informacje zabezpieczające muszą być bezpieczne, podlegać procesom cyklu życia i być łatwo dostępne. Usługa Azure Key Vault w znacznym stopniu to ułatwia, na następujące sposoby:
 
-- Brak konieczności posiadania wiedzy z zakresu modułów HSM w firmie.
+- Brak konieczności posiadania wiedzy z zakresu sprzętowych modułów zabezpieczeń w firmie.
 - Skalowanie w górę w krótkim czasie w celu spełnienia nagłego zapotrzebowania organizacji.
-- Replikowanie zawartości usługi Key Vault w regionie do regionu pomocniczego. Zapewnia to wysoką dostępność i eliminuje konieczność wykonywania jakichkolwiek czynności przez administratora w celu wyzwolenia trybu failover.
+- Replikowanie zawartości usługi Key Vault w regionie do regionu pomocniczego. Usługa Key Vault zapewnia wysoką dostępność i eliminuje konieczność wykonywania jakichkolwiek czynności przez administratora w celu wyzwolenia trybu failover.
 - Udostępnianie standardowych opcji administrowania platformą Azure za pośrednictwem portalu, interfejsu wiersza polecenia platformy Azure i programu PowerShell.
 - Zautomatyzowanie pewnych zadań związanych z certyfikatami kupowanymi od publicznych urzędów certyfikacji, na przykład ich rejestracji i odnawiania.
 

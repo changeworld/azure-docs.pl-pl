@@ -4,17 +4,17 @@ description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę prz
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/11/2018
+ms.date: 08/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902908"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42024004"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal
 
@@ -34,7 +34,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które bę
 
    ```json
    {
-     "time": "2018-01-26T21:18:52.0000000",
+     "time": "2018-08-19T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
@@ -146,6 +146,16 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
 3. W tym przykładzie zapytanie odczytuje dane z obiektu blob i kopiuje je do nowego pliku w obiekcie blob. Wybierz pozycję **Zapisz**.  
 
    ![Konfigurowanie zadania przekształcenia](./media/stream-analytics-quick-create-portal/configure-job-transformation.png)
+
+## <a name="configure-late-arrival-policy"></a>Konfigurowanie zasad spóźnionego przybycia
+
+1. Przejdź do utworzonego wcześniej zadania usługi Stream Analytics.
+
+2. W obszarze **Konfigurowanie** wybierz pozycję **Określanie kolejności zdarzeń**.
+
+3. W obszarze **Zdarzenia przychodzące z opóźnieniem** ustaw wartość 20 dni, a następnie wybierz pozycję **Zapisz**.
+
+   ![Konfigurowanie zasad spóźnionego przybycia](./media/stream-analytics-quick-create-portal/configure-late-policy.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Uruchamianie zadania usługi Stream Analytics i sprawdzanie danych wyjściowych
 

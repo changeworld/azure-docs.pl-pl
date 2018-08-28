@@ -1,6 +1,6 @@
 ---
-title: Szybki start dla platformy Azure — przetwarzanie strumieni zdarzeń przy użyciu witryny Azure Portal | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak przetwarzać strumienie zdarzeń przy użyciu witryny Azure Portal.
+title: Przewodnik Szybki start platformy Azure — tworzenie centrum zdarzeń przy użyciu witryny Azure Portal | Microsoft Docs
+description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć centrum zdarzeń platformy Azure przy użyciu witryny Azure Portal oraz wysyłać i odbierać zdarzenia za pomocą zestawu .NET Standard SDK.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2c2c02d7f06fdca2f92dd9e2324b10b2a712b81f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004314"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023843"
 ---
-# <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Szybki start: przetwarzanie strumieni zdarzeń przy użyciu witryny Azure Portal i platformy .NET
+# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Szybki start: tworzenie centrum zdarzeń przy użyciu witryny Azure Portal
 
 Azure Event Hubs to wysoce skalowalna platforma do strumieniowego przesyłania danych i usługa pozyskiwania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Ten przewodnik Szybki start przedstawia tworzenie centrum zdarzeń za pomocą witryny [Azure Portal](https://portal.azure.com) oraz wysyłanie i odbieranie danych z centrum zdarzeń za pomocą zestawu .NET Standard SDK.
 

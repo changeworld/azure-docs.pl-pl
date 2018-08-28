@@ -5,8 +5,18 @@ items:
   items:
   - name: Informacje o usłudze Azure SQL Data Warehouse
     href: sql-data-warehouse-overview-what-is.md
+  - name: Architektura usługi SQL Data Warehouse
+    href: massively-parallel-processing-mpp-architecture.md
+  - name: Jednostki magazynu danych
+    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
   - name: Ściągawka
     href: cheat-sheet.md
+  - name: Najlepsze praktyki
+    href: sql-data-warehouse-best-practices.md
+  - name: Limity pojemności
+    href: sql-data-warehouse-service-capacity-limits.md
+  - name: Często zadawane pytania
+    href: sql-data-warehouse-overview-faq.md
 - name: Informacje o wersji
   items:
   - name: Sierpień 2018 r.
@@ -33,7 +43,7 @@ items:
       href: pause-and-resume-compute-portal.md
     - name: PowerShell
       href: pause-and-resume-compute-powershell.md
-  - name: Powiększanie i zmniejszanie
+  - name: Skalowanie
     items:
     - name: Portal
       href: quickstart-scale-compute-portal.md
@@ -78,18 +88,6 @@ items:
     items:
     - name: Omówienie
       href: sql-data-warehouse-overview-develop.md
-    - name: Składniki magazynu danych
-      href: sql-data-warehouse-overview-workload.md
-    - name: Najlepsze praktyki
-      href: sql-data-warehouse-best-practices.md
-    - name: Architektura MPP
-      href: massively-parallel-processing-mpp-architecture.md
-    - name: Jednostki magazynu danych
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-    - name: Limity pojemności
-      href: sql-data-warehouse-service-capacity-limits.md
-    - name: Często zadawane pytania
-      href: sql-data-warehouse-overview-faq.md
     - name: Tabele
       items:
       - name: Omówienie
@@ -112,14 +110,6 @@ items:
         href: sql-data-warehouse-tables-statistics.md
       - name: Tymczasowe
         href: sql-data-warehouse-tables-temporary.md
-    - name: Zapytania
-      items:
-      - name: Dynamiczny język SQL
-        href: sql-data-warehouse-develop-dynamic-sql.md
-      - name: Grupuj według opcji
-        href: sql-data-warehouse-develop-group-by-options.md
-      - name: Etykiety
-        href: sql-data-warehouse-develop-label.md
     - name: Elementy języka T-SQL
       items:
       - name: Pętle
@@ -136,6 +126,14 @@ items:
         href: sql-data-warehouse-develop-variable-assignment.md
       - name: Widoki
         href: sql-data-warehouse-develop-views.md
+  - name: Wykonywanie zapytania
+    items:
+    - name: Dynamiczny język SQL
+      href: sql-data-warehouse-develop-dynamic-sql.md
+    - name: Grupuj według opcji
+      href: sql-data-warehouse-develop-group-by-options.md
+    - name: Etykiety
+      href: sql-data-warehouse-develop-label.md
   - name: Zarządzanie obciążeniem
     items:
     - name: Zarządzanie klasami zasobów i obciążeniem
@@ -278,9 +276,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Zarządzanie danymi
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: e9148d92614cf0c383ab1e915cce3e16bb9ff7c0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745218"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915129"

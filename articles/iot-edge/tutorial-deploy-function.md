@@ -4,17 +4,17 @@ description: W tym samouczku funkcja platformy Azure jest wdrażana jako moduł 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/10/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413746"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41920886"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Samouczek: wdrażanie funkcji Azure Functions jako modułów usługi IoT Edge (wersja zapoznawcza)
 
@@ -25,6 +25,10 @@ Możesz użyć usługi Azure Functions, aby wdrożyć kod implementujący Twoją
 > * Tworzenie obrazu platformy Docker i publikowanie go w rejestrze kontenerów przy użyciu programu VS Code i platformy Docker.
 > * Wdrażanie modułu z rejestru kontenerów na urządzeniu usługi IoT Edge.
 > * Wyświetlanie filtrowanych danych.
+
+<center>
+![Diagram architektury samouczka](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+</center>
 
 >[!NOTE]
 >Moduły funkcji platformy Azure w usłudze Azure IoT Edge są dostępne w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
@@ -52,6 +56,7 @@ Zasoby do programowania:
 * [Program Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
+
 W tym samouczku rozszerzenie usługi Azure IoT Edge dla programu VS Code zostanie użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.  
 
 Na potrzeby tego samouczka możesz użyć dowolnego rejestru zgodnego z platformą Docker. Dwie popularne usługi rejestru Docker dostępne w chmurze to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). W tym samouczku używana jest usługa Azure Container Registry. 
@@ -60,21 +65,34 @@ Na potrzeby tego samouczka możesz użyć dowolnego rejestru zgodnego z platform
 
     ![Tworzenie rejestru kontenerów](./media/tutorial-deploy-function/create-container-registry.png)
 
-2. Wprowadź nazwę rejestru i wybierz subskrypcję.
-3. Dla grupy zasobów zaleca się użycie nazwy tej samej grupy zasobów, która zawiera centrum IoT Hub. Dzięki umieszczeniu wszystkich zasobów w tej samej grupie można nimi zarządzać razem. Na przykład usunięcie grupy zasobów używanej do testowania spowoduje usunięcie wszystkich zasobów testowych w grupie. 
-4. Ustaw jednostkę SKU na wartość **Podstawowa** i ustaw przełącznik **Administrator** na pozycję **Włącz**. 
+2. Podaj następujące wartości, aby utworzyć rejestr kontenerów:
+
+   | Pole | Wartość | 
+   | ----- | ----- |
+   | Nazwa rejestru | Podaj unikatową nazwę. |
+   | Subskrypcja | Wybierz subskrypcję z listy rozwijanej. |
+   | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
+   | Lokalizacja | Wybierz bliską lokalizację. |
+   | Administrator | Ustaw na wartość **Włącz**. |
+   | SKU | Wybierz pozycję **Podstawowa**. | 
+
 5. Wybierz pozycję **Utwórz**.
+
 6. Po utworzeniu kontenera rejestru przejdź do niego i wybierz pozycję **Klucze dostępu**. 
+
 7. Skopiuj wartości w polach **Serwer logowania**, **Nazwa użytkownika** i **Hasło**. Te wartości zostaną wykorzystane później w samouczku. 
 
 ## <a name="create-a-function-project"></a>Tworzenie projektu funkcji
-W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Edge przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge.
 
-1. Otwórz program Visual Studio Code.
-2. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Integrated Terminal (Zintegrowany terminal)**. 
+Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code, które zostało zainstalowane w ramach wymagań wstępnych, udostępnia możliwości zarządzania oraz pewne szablony kodu. W tej sekcji użyjesz programu Visual Studio Code do utworzenia rozwiązania usługi IoT Edge, które zawiera funkcję platformy Azure. 
+
+1. Otwórz program Visual Studio Code na maszynie deweloperskiej.
+
 2. Otwórz paletę poleceń programu VS Code, wybierając kolejno opcje **Widok** > **Paleta poleceń**.
-3. W palecie poleceń wprowadź, a następnie uruchom polecenie **Azure: zaloguj się**. Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
-3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
+
+3. W palecie poleceń wprowadź, a następnie uruchom polecenie **Azure: zaloguj się**. Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure.
+
+4. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. Postępuj zgodnie z monitami wyświetlanymi na palecie poleceń, aby utworzyć rozwiązanie.
 
    1. Wybierz folder, w którym chcesz utworzyć rozwiązanie. 
    2. Podaj nazwę rozwiązania lub zaakceptuj nazwę domyślną **EdgeSolution**.
@@ -82,9 +100,11 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    4. Nadaj modułowi nazwę **CSharpFunction**. 
    5. Określ rejestr kontenerów platformy Azure utworzony w poprzedniej sekcji jako repozytorium obrazów dla pierwszego modułu. Zastąp ciąg **localhost:5000** skopiowaną wartością serwera logowania. Ostateczny ciąg będzie wyglądał następująco: \<nazwa rejestru\>.azurecr.io/csharpfunction.
 
+   ![Udostępnianie repozytorium obrazów platformy Docker](./media/tutorial-deploy-function/repository.png)
+
 4. W oknie programu VS Code jest ładowany obszar roboczy rozwiązania usługi IoT Edge: folder \.vscode, plik szablonu manifestu wdrożenia i plik \.env. W eksploratorze programu VS Code otwórz plik **modules** > **CSharpFunction** > **EdgeHubTrigger-Csharp** > **run.csx**.
 
-5. Zastąp zawartość pliku następującym kodem:
+5. Zastąp zawartość pliku **run.csx** następującym kodem:
 
    ```csharp
    #r "Microsoft.Azure.Devices.Client"
@@ -148,25 +168,31 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 W poprzedniej sekcji utworzono rozwiązanie usługi IoT Edge i dodano kod do modułu **CSharpFunction**, aby filtrować komunikaty, w których zgłoszona temperatura maszyny jest niższa od akceptowalnego poziomu. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
-1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu programu Visual Studio Code. Następnie możesz wypchnąć obraz modułu do rejestru kontenerów platformy Azure: 
+W tej sekcji dwa razy podasz poświadczenia dla rejestru kontenerów. Za pierwszym razem ma to na celu zalogowanie się lokalnie z maszyny deweloperskiej, aby program Visual Studio Code mógł wypchnąć obrazy do rejestru. Za drugim razem ma to miejsce w pliku **.env** rozwiązania usługi IoT Edge, co zapewnia urządzeniu usługi IoT Edge uprawnienia do ściągania obrazów z rejestru. 
+
+1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Integrated Terminal (Zintegrowany terminal)**. 
+
+1. Zaloguj się do rejestru kontenerów, wprowadzając następujące polecenie w zintegrowanym terminalu. Następnie możesz wypchnąć obraz modułu do rejestru kontenerów platformy Azure: 
      
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    Użyj nazwy użytkownika i serwera logowania skopiowanych wcześniej z rejestru kontenerów platformy Azure. Zostanie wyświetlony monit o podanie hasła. Wklej hasło w monicie i naciśnij klawisz **Enter**.
+    Użyj nazwy użytkownika i serwera logowania skopiowanych wcześniej z rejestru kontenerów platformy Azure. Po wyświetleniu monitu o hasło wklej hasło dla rejestru kontenerów, a następnie naciśnij klawisz **Enter**.
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
     Login Succeeded
     ```
 
-2. W eksploratorze programu VS Code otwórz plik deployment.template.json w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik informuje środowisko uruchomieniowe usługi IoT Edge, które moduły mają zostać wdrożone na urządzeniu. Aby dowiedzieć się więcej na temat manifestów wdrożenia, zobacz [Jak używać modułów usługi IoT Edge, konfigurować je i używać ich ponownie](module-composition.md).
+2. W eksploratorze programu VS Code otwórz plik **deployment.template.json** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik informuje środowisko uruchomieniowe usługi IoT Edge, które moduły mają zostać wdrożone na urządzeniu. Zwróć uwagę, że Twój moduł funkcji **CSharpFunction** znajduje się na liście wraz z modułem **tempSensor** udostępniającym dane testowe. Aby dowiedzieć się więcej na temat manifestów wdrożenia, zobacz [Jak używać modułów usługi IoT Edge, konfigurować je i używać ich ponownie](module-composition.md).
 
-3. Znajdź sekcję **registryCredentials** w manifeście wdrożenia. Zaktualizuj elementy **username**, **password** i **address** (nazwa użytkownika, hasło i adres) przy użyciu poświadczeń z rejestru kontenerów. Ta sekcja przyznaje środowisku uruchomieniowemu usługi IoT Edge na urządzeniu uprawnienie do ściągania obrazów kontenerów, które są przechowywane w prywatnym rejestrze. Rzeczywiste pary nazw użytkownika i haseł są przechowywane w pliku env, który jest ignorowany przez usługę git.
+   ![Wyświetlanie modułu w manifeście wdrożenia](./media/tutorial-deploy-function/deployment-template.png)
+
+3. Otwórz plik **.env** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik ignorowany przez repozytorium git przechowuje poświadczenia rejestru, dzięki czemu nie ma potrzeby umieszczenia ich w szablonie manifestu wdrożenia. Podaj **nazwę użytkownika** i **hasło** dla rejestru kontenerów. 
 
 5. Zapisz ten plik.
 
-6. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik deployment.template.json i wybierz polecenie **Skompiluj rozwiązanie usługi IoT Edge**. 
+6. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik deployment.template.json i wybierz polecenie **Skompiluj i wypchnij rozwiązanie usługi IoT Edge**. 
 
 Po wybraniu polecenia kompilowania rozwiązania w programie Visual Studio Code program najpierw pobiera informacje z szablonu wdrożenia i generuje plik deployment.json w nowym folderze **config**. Następnie uruchamia dwa polecenia w zintegrowanym terminalu: `docker build` i `docker push`. Te dwa polecenia kompilują kod, konteneryzują funkcje i wypychają je do rejestru kontenerów określonego podczas inicjowania rozwiązania. 
 
@@ -212,46 +238,13 @@ Aby zatrzymać monitorowanie komunikatów, uruchom polecenie **Azure IoT Hub: St
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować utworzone zasoby oraz konfiguracje i użyć ich ponownie. Możesz także nadal używać tego samego urządzenia usługi IoT Edge jako urządzenia testowego. 
 
-Usuń środowisko uruchomieniowe usługi IoT Edge oparte na platformie danego urządzenia IoT (Linux lub Windows).
+W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Azure utworzone podczas pracy z tym artykułem, aby uniknąć naliczania opłat. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Usuń środowisko uruchomieniowe usługi IoT Edge.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Usuń kontenery utworzone na urządzeniu. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-#### <a name="linux"></a>Linux
-
-Usuń środowisko uruchomieniowe usługi IoT Edge.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Usuń kontenery utworzone na urządzeniu. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-Usuń środowisko uruchomieniowe kontenera.
-
-```bash
-sudo apt-get remove --purge moby
-```
-
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 ## <a name="next-steps"></a>Następne kroki

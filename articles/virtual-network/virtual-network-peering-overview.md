@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257875"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917613"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -77,6 +77,11 @@ Problemy dotyczące łączności z maszyną wirtualną w równorzędnej sieci wi
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
+Sieci wirtualne globalnie połączone za pomocą sieci równorzędnych mają następujące ograniczenia:
+- Sieci wirtualne mogą istnieć w dowolnym regionie chmury publicznej platformy Azure, ale nie w krajowych chmurach platformy Azure.
+- Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu wewnętrznego modułu równoważenia obciążenia platformy Azure w sieci wirtualnej globalnie połączonej za pomocą sieci równorzędnych. Moduł obciążenia równoważenia i zasoby, które się z nim komunikują, muszą być w tym samym regionie.
+- Nie można używać zdalnych bram ani zezwalać na tranzyt bramy. Aby używać zdalnych bram lub zezwalać na tranzyt bramy, równorzędne sieci wirtualne muszą być w tym samym regionie.
+
 Aby dowiedzieć się więcej na temat wymagań i ograniczeń, zobacz [Wymagania i ograniczenia dotyczące komunikacji równorzędnej między sieciami wirtualnymi](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej na temat limitów liczby komunikacji równorzędnych, które można utworzyć dla sieci wirtualnej, zobacz [Ograniczenia sieci platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 
 ## <a name="permissions"></a>Uprawnienia
@@ -102,3 +107,4 @@ Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwi
 
 * Dowiedz się jak, utworzyć [topologię sieciową typu gwiazda](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Zapoznaj się ze wszystkimi [ustawieniami wirtualnych sieci równorzędnych oraz sposobami ich zmiany](virtual-network-manage-peering.md).
+* Aby uzyskać odpowiedzi na najczęściej zadawane pytania dotyczące wirtualnych sieci równorzędnych oraz sieci wirtualnych globalnie połączonych za pomocą sieci równorzędnych, zobacz [VNet Peering FAQ (Wirtualne sieci równorzędne — często zadawane pytania)](virtual-networks-faq.md#vnet-peering).

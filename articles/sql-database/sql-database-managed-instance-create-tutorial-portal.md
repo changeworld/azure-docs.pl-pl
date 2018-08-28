@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850614"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918391"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal
 
@@ -33,15 +33,17 @@ Ten samouczek przedstawia sposób tworzenia wystąpienia zarządzanego usługi A
 > * Nawiązywanie połączenia z maszyną wirtualną
 > * Instalacja narzędzia SSMS oraz nawiązywanie połączenia z wystąpieniem zarządzanym
 
+> [!Note]
+> W tym samouczku opisano sposób konfigurowania sieci, podsieci, wystąpienia i maszyny wirtualnej przy użyciu witryny Azure Portal, co może być dłuższym procesem. Jeśli potrzebujesz krótszego samouczka Szybki start, w którym sieć i maszyna wirtualna używane do uzyskiwania dostępu do wystąpienia są tworzone za pomocą jednego kliknięcia przycisku „Wdróż na platformie Azure”, możesz skorzystać z [samouczka ułatwiającego rozpoczęcie pracy](sql-database-managed-instance-get-started.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 > [!IMPORTANT]
 > Listę regionów, w których jest obecnie dostępne wystąpienie zarządzane, można znaleźć w temacie [Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Migrowanie baz danych do w pełni zarządzanej usługi za pomocą wystąpienia zarządzanego usługi Azure SQL Database)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
+Zaloguj się w [Portalu Azure](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
 
 ## <a name="whitelist-your-subscription"></a>Wpisanie subskrypcji na listę dozwolonych
 
@@ -49,7 +51,7 @@ Wystąpienie zarządzane jest wydawane wstępnie jako warunkowa publiczna wersja
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 2. Zlokalizuj **Wystąpienie zarządzane**, a następnie wybierz pozycję **Wystąpienie zarządzane usługi Azure SQL Database (wersja zapoznawcza)**.
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
    ![tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
@@ -81,7 +83,7 @@ W poniższych krokach przedstawiono sposób tworzenia nowej sieci wirtualnej us�
    |**Przestrzeń adresowa**|Dowolny prawidłowy zakres adresów, np. 10.14.0.0/24|Nazwa adresu sieci wirtualnej w notacji CIDR.|
    |**Subskrypcja**|Twoja subskrypcja|Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions).|
    |**Grupa zasobów**|Dowolna prawidłowa grupa zasobów (nowa lub istniejąca)|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Lokalizacja**|Dowolna prawidłowa lokalizacja| Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
+   |**Lokalizacja**|Dowolna prawidłowa lokalizacja| Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
    |**Nazwa podsieci**|Dowolna prawidłowa nazwa podsieci, np. mi_subnet|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Zakres adresów podsieci**|Dowolny prawidłowy adres podsieci, np. 10.14.0.0/28. Użyj przestrzeni adresów podsieci mniejszej niż przestrzeń adresów, aby zapewnić miejsce na tworzenie innych podsieci w ramach tej samej sieci wirtualnej, np. podsieci na potrzeby testowania hostingu / aplikacji klienckich lub podsieci bram na potrzeby nawiązywania połączenia z rozwiązań lokalnych lub innych sieci wirtualnych.|Zakres adresów podsieci w notacji CIDR. Musi zawierać się w przestrzeni adresów sieci wirtualnej|
    |**Punkty końcowe usługi**|Disabled (Wyłączony)|Włączanie co najmniej jednego punktu końcowego usługi dla tej podsieci|
@@ -89,7 +91,7 @@ W poniższych krokach przedstawiono sposób tworzenia nowej sieci wirtualnej us�
 
    ![formularz tworzenia sieci wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-new-route-table-and-a-route"></a>Tworzenie nowej tabeli tras i trasy
 
@@ -107,13 +109,13 @@ Poniższe kroki przedstawiają sposób utworzenia trasy internetowej następnego
    |**Nazwa**|Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Subskrypcja**|Twoja subskrypcja|Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions).|
    |**Grupa zasobów**|Wybieranie grupy zasobów, która została utworzona w poprzedniej procedurze|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Lokalizacja**|Wybieranie lokalizacji, która została określona w poprzedniej procedurze| Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
+   |**Lokalizacja**|Wybieranie lokalizacji, która została określona w poprzedniej procedurze| Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
    |**Wyłączanie propagowania tras BCP**|Enabled (Włączony)||
    ||||
 
    ![formularz tworzenia tabeli tras](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 5. Po utworzeniu tabeli tras otwórz nowo utworzoną tabelę tras.
 
    ![tabela tras](./media/sql-database-managed-instance-tutorial/route-table.png)
@@ -158,7 +160,7 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 2. Zlokalizuj **Wystąpienie zarządzane**, a następnie wybierz pozycję **Wystąpienie zarządzane usługi Azure SQL Database (wersja zapoznawcza)**.
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
    ![tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
@@ -174,7 +176,7 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
    |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.| 
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Grupa zasobów**|Grupa zasobów, która została utworzona wcześniej||
-   |**Lokalizacja**|Lokalizacja, która została wybrana wcześniej|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
+   |**Lokalizacja**|Lokalizacja, która została wybrana wcześniej|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
    |**Sieć wirtualna**|Sieć wirtualna, która została utworzona wcześniej|
 
    ![formularz tworzenia wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
@@ -302,7 +304,7 @@ Poniższe kroki pokazują, jak pobrać i zainstalować narzędzie SSMS, a nastę
 8. Po wyświetleniu monitu kliknij przycisk **Zainstaluj**, aby rozpocząć.
 9. Po zakończeniu instalacji kliknij przycisk **Zamknij**.
 10. Otwórz program SSMS.
-11. W oknie dialogowym **Połącz z serwerem** wprowadź **nazwę hosta* wystąpienia zarządzanego w polu **Nazwa serwera**, wybierz opcję **Uwierzytelnianie programu SQL Server**, podaj login i hasło, a następnie kliknij opcję **Połącz**.
+11. W oknie dialogowym **Połącz z serwerem** wprowadź **nazwę hosta** wystąpienia zarządzanego w polu **Nazwa serwera**, wybierz opcję **Uwierzytelnianie programu SQL Server**, podaj login i hasło, a następnie kliknij pozycję **Połącz**.
 
     ![nawiązywanie połączenia w programie ssms](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

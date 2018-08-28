@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002208"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42022622"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
-Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych.
+Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Wykonywanie zapytań odbywa się na podstawie indeksu zdefiniowanego przez użytkownika.
+
++ Twórz korpus wyszukiwania zawierający tylko Twoje dane o różnych typach zawartości, pochodzące z wielu platform. 
++ Korzystaj z indeksowania opartego na sztucznej inteligencji, aby wyodrębnić tekst i elementy z plików obrazów lub wydzielić jednostki i frazy kluczowe z tekstu nieprzetworzonego.
++ Twórz intuicyjne środowiska wyszukiwania z nawigacją tworzenia aspektów, filtrami, synonimami, automatycznym uzupełnianiem i analizą tekstu dla automatycznie poprawionych terminów wyszukiwanych funkcji „Czy chodziło Ci o”.
++ Dodaj wyszukiwanie geograficzne do funkcji „Znajdź w pobliżu”, analizatory języka do wyszukiwania pełnotekstowego w językach innych niż angielski oraz logikę oceniania do pozycji wyszukiwania.
 
 Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/api/searchservice/) lub [zestawu SDK platformy .NET](search-howto-dotnet-sdk.md), które pozwalają zamaskować złożoność związaną z używaniem pobierania informacji. Oprócz interfejsów API witryna Azure Portal udostępnia funkcje administrowania i zarządzania zawartością oraz narzędzia służące do tworzenia prototypów i wykonywania zapytań względem indeksów. Ponieważ usługa ta działa w chmurze, zarządzaniem infrastrukturą i dostępnością zajmuje się firma Microsoft.
 
@@ -51,7 +56,7 @@ Zanim zaczniesz przekazywać zawartość do przeszukiwania, musisz zdefiniować 
 
 Schemat możesz utworzyć w witrynie Azure Portal lub programowo przy użyciu [zestawu SDK platformy .NET](search-howto-dotnet-sdk.md) lub [interfejsu API REST](/rest/api/searchservice/).
 
-### <a name="step-3-index-data"></a>Krok 3. Indeksowanie danych
+### <a name="step-3-load-data"></a>Krok 3. Ładowanie danych
 Po zdefiniowaniu indeksu możesz zacząć przekazywać zawartość. Możesz użyć modelu wypychania lub modelu ściągania.
 
 W modelu ściągania dane są pobierane z zewnętrznych źródeł danych. Jest on obsługiwany przez *indeksatory*, które usprawniają i automatyzują aspekty pozyskiwania danych, takie jak łączenie się z danymi oraz ich odczytywanie i serializowanie. [Indeksatory](/rest/api/searchservice/Indexer-operations) są dostępne dla usług Azure Cosmos DB, Azure SQL Database, Azure Blob Storage oraz programu SQL Server hostowanego na maszynie wirtualnej platformy Azure. Indeksator możesz skonfigurować na potrzeby zaplanowanego odświeżania danych lub odświeżania danych na żądanie.
@@ -61,7 +66,7 @@ Model wypychania jest oparty na zestawie SDK lub interfejsach API REST i umożli
 ### <a name="step-4-search"></a>Krok 4. Wyszukiwanie
 Po wypełnieniu indeksu możesz [wysyłać zapytania wyszukiwania](/rest/api/searchservice/Search-Documents) do punktu końcowego usługi za pomocą prostych żądań HTTP, korzystających z interfejsu API REST lub zestawu SDK dla platformy .NET.
 
-## <a name="how-azure-search-compares"></a>Porównanie usługi Azure Search
+## <a name="how-it-compares"></a>Porównanie z innymi rozwiązaniami
 
 Klienci często pytają, jak usługa Azure Search wypada na tle innych rozwiązań wyszukiwania. Poniższa tabela zawiera podsumowanie podstawowych różnic.
 
@@ -104,13 +109,16 @@ Możesz też [aktywować korzyści subskrybenta MSDN](https://azure.microsoft.co
 
 ## <a name="how-to-get-started"></a>Jak zacząć
 
-1. Utwórz usługę w [warstwie Bezpłatna](search-create-service-portal.md).
+1. Utwórz [bezpłatną usługę](search-create-service-portal.md). Wszystkie samouczki i przewodniki Szybki Start można ukończyć, korzystając z bezpłatnej usługi.
 
-2. Wykonaj kroki co najmniej jednego z następujących samouczków. 
+2. Wykonaj kroki opisane w [samouczku dotyczącym korzystania z wbudowanych narzędzi do indeksowania i tworzenia zapytań](search-get-started-portal.md). Pozwoli ci to zapoznać się z ważnymi pojęciami oraz informacjami udostępnianymi w portalu.
 
-  + [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md) — przedstawia podstawowe kroki w kodzie zarządzanym.  
-  + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST.  
-  + [Tworzenie pierwszego indeksu w portalu](search-get-started-portal.md) — przedstawia użycie wbudowanych funkcji indeksowania i tworzenia prototypów.   
+3. Rozpocznij pracę z kodem, korzystając z platformy .NET lub interfejsu API REST:
+
+  + [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md) — przedstawia podstawowy przepływ pracy w kodzie zarządzanym.  
+  + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST. Podczas pracy z tym przewodnikiem Szybki Start interfejsy API REST można również wywoływać przy użyciu narzędzia Postman lub Fiddler — zobacz [Odkrywanie interfejsów API REST usługi Azure Search](search-fiddler.md).
+
+## <a name="watch-this-video"></a>Obejrzyj ten film wideo
 
 Wyszukiwarki to podstawowe instrumenty do pobierania informacji w internecie, aplikacjach mobilnych i firmowych magazynach danych. Usługa Azure Search udostępnia narzędzia umożliwiające utworzenie środowiska wyszukiwania o podobnej funkcjonalności co w dużych, komercyjnych witrynach internetowych.
 
@@ -122,5 +130,3 @@ W tym 9-minutowym filmie wideo menedżer programu Liam Cavanagh przedstawia korz
 + 3–4 minuta — omówienie aprowizowania usługi. 
 + 4–6 minuta — omówienie kreatora importowania danych używanego do utworzenia indeksu na podstawie wbudowanego zestawu danych dotyczących nieruchomości.
 + 6–9 minuta — omówienie eksploratora wyszukiwania i różnych zapytań.
-
-

@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 933cc0f18214cf40741f6f65006231e0cd5a17e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 7a4716be201b1923b54f09fa68f5769521b29168
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347329"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023970"
 ---
 # <a name="manage-my-devices-overview"></a>Omówienie zarządzania swoimi urządzeniami
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-Upewnij się, że uzyskujesz dostęp do zasobów organizacji z urządzeń, które spełniają standardy organizacji dotyczące bezpieczeństwa i zgodności.
+Upewnij się, że masz dostęp do wszystkich potencjalnie zastrzeżonych zasobów organizacji zarówno z urządzeń należących do firmy, jak i osobistych.
 
 |Artykuł |Opis |
 |------|------------|
-|[Dołączanie własnych urządzeń](device-management-azuread-joined-devices-setup.md)|Opisuje sposób dołączania urządzeń należących do firmy do sieci organizacji.|
-|[Rejestrowanie urządzeń z systemem Windows 10](device-management-azuread-registered-devices-windows10-setup.md)|Opisuje sposób rejestrowania urządzenia z systemem Windows 10 w sieci organizacji.| 
+|[Dołączanie urządzenia służbowego](user-help-join-device-on-network.md)|Dowiedz się, w jaki sposób dołączać urządzenia należące do firmy do sieci organizacji.|
+|[Rejestrowanie urządzenia osobistego](user-help-register-device-on-network.md)|Dowiedz się, jak zarejestrować urządzenie osobiste w sieci organizacji.|

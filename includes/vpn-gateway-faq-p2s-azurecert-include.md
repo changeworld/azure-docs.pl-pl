@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30197133"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -21,23 +21,23 @@ ms.locfileid: "30197133"
 
 Tak. Wcześniej można było używać tylko certyfikatów głównych z podpisem własnym. Nadal można przesłać 20 certyfikatów głównych.
 
-### <a name="what-tools-can-i-use-to-create-certificates"></a>Jakie narzędzia można użyć w celu utworzenia certyfikatów?
+### <a name="what-tools-can-i-use-to-create-certificates"></a>Jakie narzędzia umożliwiają tworzenie certyfikatów?
 
-Można użyć rozwiązania infrastruktura PKI przedsiębiorstwa (wewnętrznej infrastruktury PKI), programu Azure PowerShell, MakeCert i biblioteki OpenSSL.
+Możesz użyć rozwiązania infrastruktury kluczy publicznych przedsiębiorstwa (wewnętrznej infrastruktury kluczy publicznych), programu Azure PowerShell, narzędzia MakeCert lub protokołu OpenSSL.
 
-### <a name="certsettings"></a>Czy istnieją instrukcje dotyczące parametry i ustawienia certyfikatu?
+### <a name="certsettings"></a>Czy są dostępne instrukcje dotyczące ustawień i parametrów certyfikatów?
 
-* **Wewnętrzny rozwiązania infrastruktury kluczy publicznych/Enterprise PKI:** czynności, aby [generowania certyfikatów](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Wewnętrzne rozwiązanie infrastruktury kluczy publicznych/rozwiązanie infrastruktury kluczy publicznych w przedsiębiorstwie:** zobacz procedurę [generowania certyfikatów](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 
-* **Program Azure PowerShell:** zobacz [programu Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) artykułu dla czynności.
+* **Azure PowerShell:** procedurę można znaleźć w artykule dotyczącym programu [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md).
 
-* **MakeCert:** zobacz [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) artykułu dla czynności.
+* **MakeCert:** procedurę można znaleźć w artykule dotyczącym narzędzia [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md).
 
-* **Biblioteki OpenSSL:** 
+* **OpenSSL:** 
 
-    * Podczas eksportowania certyfikatów, należy przekonwertować certyfikatu głównego w formacie Base64.
+    * W przypadku eksportowania certyfikatów należy przekonwertować certyfikat główny na format Base64.
 
-    * Dla certyfikatu klienta:
+    * Certyfikat klienta:
 
-      * Podczas tworzenia klucza prywatnego, określ długość jako 4096.
-      * Podczas tworzenia certyfikatu dla *-rozszerzenia* parametru, określ *usr_cert*.
+      * W przypadku tworzenia klucza prywatnego należy określić długość równą 4096.
+      * W przypadku tworzenia certyfikatu dla parametru *-extensions* należy określić wartość *usr_cert*.

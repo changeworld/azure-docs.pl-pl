@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735797"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920622"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,16 +52,20 @@ Ten samouczek wymaga zainstalowania narzędzi Data Lake Tools for Visual Studio.
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Łączenie z kontem usługi Azure Data Lake Analytics
 
 1. Otwórz program Visual Studio.
-2. Otwórz Eksplorator serwera, wybierając pozycje **Widok** > **Eksplorator serwera**.
-3. Kliknij prawym przyciskiem myszy pozycję **Azure**. Następnie wybierz pozycję **Połącz z subskrypcją platformy Microsoft Azure** i postępuj zgodnie z instrukcjami.
-4. W Eksploratorze serwera wybierz pozycje **Azure** > **Data Lake Analytics**. Zobaczysz listę swoich kont usługi Data Lake Analytics.
 
+2. Otwórz Eksplorator serwera, wybierając pozycje **Widok** > **Eksplorator serwera**.
+
+3. Kliknij prawym przyciskiem myszy pozycję **Azure**. Następnie wybierz pozycję **Połącz z subskrypcją platformy Microsoft Azure** i postępuj zgodnie z instrukcjami.
+
+4. W Eksploratorze serwera wybierz pozycje **Azure** > **Data Lake Analytics**. Zobaczysz listę swoich kont usługi Data Lake Analytics.
 
 ## <a name="write-your-first-u-sql-script"></a>Pisanie pierwszego skryptu U-SQL
 
 Poniższy tekst to prosty skrypt U-SQL. Definiuje on mały zestaw danych i zapisuje go w domyślnym magazynie Data Lake Store jako plik o nazwie `/data.csv`.
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>Przesyłanie zadania usługi Data Lake Analytics
+## <a name="submit-a-data-lake-analytics-job"></a>Przesyłanie zadania usługi Data Lake Analytics
 
 1. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**.
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![Przesyłanie projektu U-SQL programu Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. W lewym górnym rogu okna **Script.usql** wybierz pozycję **Prześlij**.
-6. Sprawdź **konto usługi Analytics**, a następnie wybierz pozycję **Prześlij**. Po zakończeniu przesyłania jego wyniki są dostępne w oknie wyników narzędzi Data Lake Tools for Visual Studio.
 
-    ![Przesyłanie projektu U-SQL programu Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. Aby wyświetlić najbardziej aktualny stan zadania i odświeżyć ekran, kliknij pozycję **Odśwież**. W przypadku pomyślnego wykonania zadania widoczne będą karty **Graf zadania**, **Operacje dotyczące metadanych**, **Historia stanu** i **Diagnostyka**:
+6. Po przesłaniu zadania zostanie otwarta karta **Widok zadania**, na której widoczny będzie postęp zadania. Aby wyświetlić najbardziej aktualny stan zadania i odświeżyć ekran, kliknij pozycję **Odśwież**.
 
     ![Wykres wydajności zadania skryptu U-SQL programu Visual Studio w usłudze Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * Karta **Podsumowanie zadania** zawiera podsumowanie zadania.   
-   * Karta **Szczegóły zadania** zawiera bardziej szczegółowe informacje o zadaniu, w tym o skrypcie, zasobach i wierzchołkach.
    * Karta **Graf zadania** wizualizuje postęp zadania.
    * Karta **Operacje dotyczące metadanych** pokazuje wszystkie akcje, które zostały wykonane na wykazie języka U-SQL.
    * Karta **Dane** przedstawia wszystkie dane wejściowe i wyjściowe.
+   * Karta **Historia stanu** zawiera szczegóły osi czasu i stanu.
+   * Karta **Analiza jednostek AU** zawiera liczbę użytych jednostek analizy w zadaniu oraz informacje dotyczące symulacji innych strategii alokacji jednostek analizy.
    * Karta **Diagnostyka** udostępnia zaawansowaną analizę wykonywania zadania i optymalizacji wydajności.
 
-### <a name="to-check-job-state"></a>Aby sprawdzić stan zadania
+## <a name="check-job-status"></a>Sprawdzanie stanu zadania
 
-1. W Eksploratorze serwera wybierz pozycje **Azure** > **Data Lake Analytics**. 
+1. W Eksploratorze serwera wybierz pozycje **Azure** > **Data Lake Analytics**.
+
 2. Rozwiń nazwę konta usługi Data Lake Analytics.
+
 3. Kliknij dwukrotnie pozycję **Zadania**.
+
 4. Wybierz wcześniej przesłane zadanie.
 
-### <a name="to-see-the-output-of-a-job"></a>Aby wyświetlić dane wyjściowe zadania
+## <a name="see-the-job-output"></a>Wyświetlanie danych wyjściowych zadania
 
 1. W Eksploratorze serwera przejdź do przesłanego zadania.
+
 2. Kliknij kartę **Dane**.
+
 3. Na karcie **Dane wyjściowe zadania** wybierz plik `"/data.csv"`.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576971"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920601"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
@@ -87,7 +87,7 @@ Przypisując odpowiednie role RBAC, można udzielić użytkownikom, grupom i apl
 ## <a name="data-plane-access-control"></a>Kontrola dostępu do płaszczyzny danych
 Płaszczyzna danych magazynu kluczy składa się z operacji, które wpływają na obiekty w magazynie kluczy, takie jak klucze, wpisy tajne i certyfikaty.  Obejmuje to operacje dotyczące kluczy, takie jak tworzenie, importowanie, aktualizowanie, wyświetlanie, wykonywanie kopii zapasowych i przywracanie kluczy, operacje kryptograficzne, takie jak podpisywanie, weryfikowanie, szyfrowanie, odszyfrowywanie, kodowanie i odkodowywanie, oraz ustawianie tagów i innych atrybutów kluczy. W przypadku wpisów tajnych obejmuje operacje pobierania, ustawiania, wyświetlania i usuwania.
 
-Dostęp do płaszczyzny danych jest udzielany przez ustawienie zasad dostępu magazynu kluczy. Użytkownik, grupa lub aplikacja muszą mieć uprawnienia współautora (RBAC) do płaszczyzny zarządzania dla magazynu kluczy, aby móc ustawić zasady dostępu dla tego magazynu kluczy. Użytkownikowi, grupie lub aplikacji można udzielić dostępu do wykonywania określonych operacji dotyczących kluczy lub wpisów tajnych w magazynie kluczy. Magazyn kluczy obsługuje maksymalnie 16 wpisów zasad dostępu dla magazynu kluczy. Utwórz grupę zabezpieczeń usługi Azure Active Directory i dodaj użytkowników do tej grupy, aby udzielić dostępu do płaszczyzny danych dla magazynu kluczy wielu użytkownikom.
+Dostęp do płaszczyzny danych jest udzielany przez ustawienie zasad dostępu magazynu kluczy. Użytkownik, grupa lub aplikacja muszą mieć uprawnienia współautora (RBAC) do płaszczyzny zarządzania dla magazynu kluczy, aby móc ustawić zasady dostępu dla tego magazynu kluczy. Użytkownikowi, grupie lub aplikacji można udzielić dostępu do wykonywania określonych operacji dotyczących kluczy lub wpisów tajnych w magazynie kluczy. Magazyn kluczy obsługuje maksymalnie 1024 wpisów zasad dostępu dla magazynu kluczy. Utwórz grupę zabezpieczeń usługi Azure Active Directory i dodaj użytkowników do tej grupy, aby udzielić dostępu do płaszczyzny danych dla magazynu kluczy wielu użytkownikom.
 
 ### <a name="key-vault-access-policies"></a>Zasady dostępu magazynu kluczy
 Zasady dostępu magazynu kluczy przyznają oddzielnie uprawnienia do kluczy, wpisów tajnych i certyfikatów. Na przykład można udzielić użytkownikowi dostępu tylko do kluczy, ale żadnych uprawnień do wpisów tajnych. Uprawnienia dostępu do kluczy, wpisów tajnych lub certyfikatów są jednak przyznawane na poziomie magazynu. Innymi słowy, zasady dostępu magazynu kluczy nie obsługują uprawnień na poziomie obiektu. W celu ustawienia zasad dostępu dla magazynu kluczy można użyć witryny [Azure Portal](https://portal.azure.com/), [narzędzi interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu PowerShell](/powershell/azureps-cmdlets-docs) lub [interfejsów API REST usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/mt620024.aspx).

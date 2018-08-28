@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445540"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919219"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
 Usługa Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków. Pozwala ono analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele na skalę chmury.
@@ -247,7 +247,7 @@ Teraz można przystąpić do tworzenia usługi internetowej czasu rzeczywistego.
    >[!IMPORTANT]
    >Nazwa usługi, która jest również nową nazwą obrazu platformy Docker, musi zawierać tylko małe litery. W przeciwnym razie wystąpi błąd. 
 
-1. Po uruchomieniu polecenia model i plik oceniania są ładowane do konta magazynu utworzonego w ramach konfiguracji środowiska. Proces wdrażania tworzy obraz platformy Docker zawierający model, schemat oraz plik oceniania, a następnie wypycha go do rejestru rekordów Azure Container Registry: **\<nazwa_rekordu_ACR\>.azureacr.io/\<nazwa_obrazu\>:\<wersja\>**. 
+1. Po uruchomieniu polecenia model i plik oceniania są ładowane do konta magazynu utworzonego w ramach konfiguracji środowiska. W procesie wdrażania tworzony jest obraz platformy Docker zawierający model, schemat oraz plik oceniania, który jest następnie wypychany do usługi Azure Container Registry: **\<nazwa_ACR\>.azurecr.io/\<nazwa_obrazu\>:\<wersja\>**. 
 
    Polecenie ściąga obraz na komputer lokalny i uruchamia kontener Docker oparty na tym obrazie. Jeśli środowisko jest konfigurowane w trybie klastra, kontener platformy Docker zostaje wdrożony do klastra Azure Cloud Services Kubernetes.
 
@@ -313,7 +313,7 @@ W celu przetestowania uruchomionej usługi internetowej **irisapp** użyj rekord
 1. Aby przetestować usługę, uruchom zwrócone polecenie uruchamiania usługi:
     
    ```azurecli
-   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d '{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}'
    ```
 
    Wynikiem jest **„Iris-setosa”** i jest to przewidywana klasa. (Twoje wyniki mogą się różnić). 

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520670"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41921052"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi Azure IoT Hub Device Provisioning (.NET)
 
@@ -73,7 +73,7 @@ Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
 1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia usługi Device Provisioning zanotowanymi w poprzedniej sekcji.
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =
@@ -222,7 +222,7 @@ Po pomyślnym zarejestrowaniu urządzenia powinno ono być widoczne w portalu w 
 
 Na tym etapie następujące konfiguracje są gotowe do rejestracji urządzenia:
 
-1. Zarejestrowano urządzenie (lub grupę urządzeń) w usłudze Device Provisioning. 
+1. Urządzenie (lub grupa urządzeń) zostało zarejestrowane w usłudze Device Provisioning i 
 2. Urządzenie jest gotowe, ma skonfigurowane zabezpieczenia i można do niego uzyskać dostęp za pośrednictwem aplikacji przy użyciu zestawu SDK klienta usługi Device Provisioning.
 
 Uruchom urządzenie, aby umożliwić aplikacji klienckiej rozpoczęcie rejestracji w usłudze Device Provisioning.  

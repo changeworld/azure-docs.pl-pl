@@ -7,15 +7,15 @@ manager: shivamg
 keywords: kopia zapasowa serwerów z systemem windows; kopia zapasowa windows server; kopia zapasowa i odzyskiwanie po awarii
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609022"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616193"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
@@ -29,9 +29,9 @@ Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows prze
 > * Tworzenie kopii zapasowej ad hoc
 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -41,11 +41,11 @@ Aby umożliwić tworzenie kopii zapasowych serwerów z systemem Windows należy 
 
    ![Otwieranie magazynu usługi Recovery Services](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  W menu **Magazyny usługi Recovery Services** kliknij pozycję **Dodaj**.
+2. W menu **Magazyny usługi Recovery Services** kliknij pozycję **Dodaj**.
 
    ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  W menu **Magazyn usługi Recovery Services**:
+3. W menu **Magazyn usługi Recovery Services**:
 
     - Wpisz *myRecoveryServicesVault* w polu **Nazwa**.
     - Identyfikator bieżącej subskrypcji znajduje się w polu **Subskrypcja**.
@@ -59,27 +59,28 @@ Po utworzeniu magazynu pojawi się on na liście magazynów usługi Recovery Ser
 
 Agent usługi Microsoft Azure Recovery Services (MARS) tworzy skojarzenie między serwerem z systemem Windows a magazynem usługi Recovery Services. Poniższa procedura przedstawia sposób pobierania agenta na serwer.
 
-1.  Wybierz magazyn **myRecoveryServicesVault** z listy magazynów usługi Recovery Services, aby otworzyć jego pulpit nawigacyjny.
+1. Wybierz magazyn **myRecoveryServicesVault** z listy magazynów usługi Recovery Services, aby otworzyć jego pulpit nawigacyjny.
 
    ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  W menu pulpitu nawigacyjnego magazynu kliknij pozycję **Kopia zapasowa**.
+2. W menu pulpitu nawigacyjnego magazynu kliknij pozycję **Kopia zapasowa**.
 
-3.  W menu **Cel kopii zapasowej**:
+3. W menu **Cel kopii zapasowej**:
 
-    - Na liście **Gdzie jest uruchomione Twoje obciążenie?** wybierz pozycję **Lokalnie**. 
-    - Na liście **Co ma zawierać kopia zapasowa?** zaznacz pozycje **Pliki i foldery** oraz **Stan systemu**. 
+   * Na liście **Gdzie jest uruchomione Twoje obciążenie?** zaznacz pozycję **Lokalnie**. 
+   * Na liście **Co ma zawierać kopia zapasowa?** zaznacz pozycje **Pliki i foldery** oraz **Stan systemu**.
 
-    ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  Kliknij pozycję **Przygotuj infrastrukturę**, aby otworzyć menu **Przygotowywanie infrastruktury**.
-5.  W menu **Przygotowanie infrastruktury** kliknij pozycję **Pobierz agenta systemu Windows Server lub Windows Client**, aby pobrać plik *MARSAgentInstaller.exe*. 
+   ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. Kliknij pozycję **Przygotuj infrastrukturę**, aby otworzyć menu **Przygotowywanie infrastruktury**.
+
+5. W menu **Przygotowanie infrastruktury** kliknij pozycję **Pobierz agenta systemu Windows Server lub Windows Client**, aby pobrać plik *MARSAgentInstaller.exe*. 
 
     ![Przygotowywanie infrastruktury](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     Instalator otworzy oddzielne okno przeglądarki i pobierze plik **MARSAgentInstaller.exe**.
  
-6.  Przed uruchomieniem pobranego pliku kliknij przycisk **Pobierz** w bloku Przygotowywanie infrastruktury, aby pobrać i zapisać plik **poświadczeń magazynu**. Ten plik jest wymagany do połączenia agenta usługi MARS z magazynem usługi Recovery Services.
+6. Przed uruchomieniem pobranego pliku kliknij przycisk **Pobierz** w menu Przygotowywanie infrastruktury i zapisz plik **poświadczeń magazynu**. Poświadczenia magazynu są wymagane do połączenia agenta usługi MARS z magazynem usługi Recovery Services.
 
     ![Przygotowywanie infrastruktury](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -115,13 +116,17 @@ Agent usługi Microsoft Azure Recovery Services umożliwia zaplanowanie tworzeni
 
 5. Kliknij przycisk **Dalej**.
 
-6. Na stronie **Określ harmonogram kopii zapasowej (Stan systemu)** określ czas w ciągu dnia lub tygodnia, gdy powinna być tworzona kopia zapasowa stanu systemu, a następnie kliknij przycisk **Dalej**. 
+6. Na stronie **Określ harmonogram tworzenia kopii zapasowych (Stan systemu)** określ czas w ciągu dnia lub tygodnia, gdy powinna być tworzona kopia zapasowa stanu systemu, a następnie kliknij przycisk **Dalej**.
 
-7.  Na stronie **Wybierz zasady przechowywania (Stan systemu)** wybierz zasady przechowywania kopii zapasowej stanu systemu, a następnie kliknij przycisk **Dalej**.
+7. Na stronie **Wybierz zasady przechowywania (Stan systemu)** wybierz zasady przechowywania kopii zapasowej stanu systemu, a następnie kliknij przycisk **Dalej**.
+
 8. W ten sam sposób wybierz harmonogram i zasady przechowywania kopii zapasowej wybranych plików i folderów. 
-8.  Na stronie **Wybierz typ początkowej kopii zapasowej** pozostaw wybraną opcję **Automatycznie przez sieć**, a następnie kliknij przycisk **Dalej**.
-9.  Przejrzyj informacje na stronie **Potwierdzenie**, a następnie kliknij przycisk **Zakończ**.
-10. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
+
+9. Na stronie **Wybierz typ początkowej kopii zapasowej** wybierz pozycję **Automatycznie przez sieć**, a następnie kliknij przycisk **Dalej**.
+
+10. Przejrzyj informacje na stronie **Potwierdzenie**, a następnie kliknij przycisk **Zakończ**.
+
+11. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Tworzenie kopii zapasowej ad hoc
 

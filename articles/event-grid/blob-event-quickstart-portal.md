@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 141e8f2a01c057f613b7668e64a0ec9503fcfb39
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068747"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022701"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Tworzenie i kierowanie zdarzeń usługi Blob Storage za pomocą witryny Azure Portal i usługi Event Grid
 
@@ -27,8 +27,6 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Blob Storage](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../storage/common/storage-account-options.md#general-purpose-v2-accounts). Konta **ogólnego przeznaczenia w wersji 2 (GPv2)** to konta magazynu, które obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage. 
-
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 
 1. Aby utworzyć magazyn Blob Storage, wybierz pozycję **Utwórz zasób**. 
@@ -39,7 +37,7 @@ Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Bl
 
    ![Wybieranie magazynu](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Podaj wartości magazynu Blob Storage, w tym unikatową nazwę konta. Jako typ konta wybierz pozycję **Blob Storage**. Jako lokalizację wybierz jedną z [lokalizacji](overview.md) obsługujących usługę Event Grid. Po zakończeniu podawania wartości wybierz pozycję **Utwórz**.
+1. W przypadku zdarzeń potrzebne jest [konto usługi Blob Storage](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../storage/common/storage-account-options.md#general-purpose-v2-accounts). W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage. Podaj wartości dla konta Blob lub konta magazynu ogólnego przeznaczenia w wersji 2. Podaj unikatową nazwę konta. Po zakończeniu podawania wartości wybierz pozycję **Utwórz**.
 
    ![Kroki początkowe](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

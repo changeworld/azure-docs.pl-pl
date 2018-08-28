@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641326"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917616"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -36,7 +36,12 @@ W przestrzeni nazw można używać jednego lub większej liczby wystąpień trze
 * *Tematy*, które zapewniają komunikację jednokierunkową przy użyciu *subskrypcji*. Jeden temat może mieć wiele subskrypcji. Podobnie jak kolejka temat działa jako broker, ale każda subskrypcja może opcjonalnie korzystać z filtru w celu odbierania tylko komunikatów spełniających określone kryteria.
 * *Przekaźniki*, które zapewniają komunikację dwukierunkową. W przeciwieństwie do kolejek i tematów przekaźnik nie przechowuje transmitowanych komunikatów (nie jest brokerem). Zamiast tego po prostu przekazuje je do aplikacji docelowej.
 
-Podczas tworzenia kolejki, tematu lub przekaźnika tworzonemu elementowi nadawana jest nazwa. W połączeniu z przestrzenią nazw ta nazwa tworzy unikatowy identyfikator obiektu. Aplikacje mogą udostępnić tę nazwę usłudze Service Bus, a następnie używać kolejki, tematu lub przekaźnika do komunikowania się ze sobą. 
+Podczas tworzenia kolejki, tematu lub przekaźnika tworzonemu elementowi nadawana jest nazwa. W połączeniu z przestrzenią nazw ta nazwa tworzy unikatowy identyfikator obiektu. Aplikacje mogą udostępnić tę nazwę usłudze Service Bus, a następnie używać kolejki, tematu lub przekaźnika do komunikowania się ze sobą.
+
+ >**Przykład:**   
+     *https://&lt;nazwa przestrzeni nazw usługi Service Bus&gt;.servicebus.windows.net/&lt;nazwa kolejki&gt;*  
+     *https://&lt;nazwa przestrzeni nazw usługi Service Bus&gt;.servicebus.windows.net/&lt;nazwa tematu&gt;*  
+     *https://&lt;nazwa przestrzeni nazw usługi Service Bus&gt;.servicebus.windows.net/&lt;nazwa przekaźnika&gt;*  
 
 Aby użyć dowolnego z tych obiektów w scenariuszu dotyczącym przekaźnika, aplikacje systemu Windows mogą korzystać z technologii Windows Communication Foundation (WCF). Ta usługa jest określana jako [przekaźnik WCF](../service-bus-relay/relay-what-is-it.md). W przypadku kolejek i tematów aplikacje systemu Windows mogą używać interfejsów API obsługi komunikatów zdefiniowanych przez usługę Service Bus. Aby ułatwić korzystanie z tych obiektów aplikacjom innych niż aplikacje systemu Windows, firma Microsoft udostępnia zestawy SDK dla języka Java, Node.js i innych języków. Dostęp do kolejek i tematów można także uzyskać za pomocą [interfejsów API REST](/rest/api/servicebus/) i protokołu HTTP lub HTTPS. 
 

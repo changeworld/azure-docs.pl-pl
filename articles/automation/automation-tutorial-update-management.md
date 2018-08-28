@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 92258ce7ea39a06f2af85efd9174b1b200710566
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216970"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920111"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Zarządzanie aktualizacjami systemu Windows przy użyciu usługi Azure Automation
 
@@ -126,9 +126,6 @@ Aby dostosować temat wiadomości e-mail alertu, w oknie **Tworzenie reguły** w
 
 Następnie zaplanuj wdrożenie zgodnie z harmonogramem wydawania i oknem obsługi, aby zainstalować aktualizacje. Możesz wybrać typy aktualizacji, które mają zostać uwzględnione we wdrożeniu. Możesz na przykład uwzględnić aktualizacje krytyczne lub aktualizacje zabezpieczeń i wykluczyć pakiety zbiorcze aktualizacji.
 
-> [!WARNING]
-> Gdy aktualizacje wymagają ponownego uruchomienia, maszyna wirtualna zostanie automatycznie ponownie uruchomiona.
-
 Aby zaplanować nowe wdrożenie aktualizacji dla maszyny wirtualnej, przejdź do rozwiązania **Update Management**, a następnie wybierz pozycję **Zaplanuj wdrażanie aktualizacji**.
 
 W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
@@ -136,6 +133,8 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 * **Nazwa**: wprowadź unikatową nazwę wdrożenia aktualizacji.
 
 * **System operacyjny**: wybierz docelowy system operacyjny do wdrażania aktualizacji.
+
+* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny jest wyświetlana w kolumnie **GOTOWOŚĆ AGENTA AKTUALIZACJI**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Computer groups in Log Analytics (Grupy komputerów w usłudze Log Analytics)](../log-analytics/log-analytics-computer-groups.md)
 
 * **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. W tym samouczku pozostaw wszystkie typy wybranymi.
 
@@ -154,9 +153,17 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
 * **Okno konserwacji (w minutach)**: pozostaw wartość domyślną. Możesz ustawić przedział czasu, w którym ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
+* **Opcje ponownego uruchomiania**: to ustawienie określa sposób obsługi ponownego uruchamiania. Dostępne opcje:
+  * Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)
+  * Zawsze uruchamiaj ponownie
+  * Nigdy nie uruchamiaj ponownie
+  * Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane
+
+Po zakończeniu konfigurowania harmonogramu wybierz pozycję **Utwórz**.
+
 ![Okienko ustawień harmonogramu aktualizacji](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-Po zakończeniu konfigurowania harmonogramu wybierz pozycję **Utwórz**. Nastąpi powrót do pulpitu nawigacyjnego stanu. Wybierz pozycję **Wdrożenia zaplanowanych aktualizacji**, aby pokazać utworzony harmonogram wdrażania.
+Nastąpi powrót do pulpitu nawigacyjnego stanu. Wybierz pozycję **Wdrożenia zaplanowanych aktualizacji**, aby pokazać utworzony harmonogram wdrażania.
 
 ## <a name="view-results-of-an-update-deployment"></a>Wyświetlanie wyników wdrażania aktualizacji
 

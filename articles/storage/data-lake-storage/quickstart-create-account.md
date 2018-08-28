@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523584"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42023957"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
 
@@ -114,15 +114,6 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** (**...** ) po prawej stronie listy.
 3. Wybierz pozycję **Usuń grupę zasobów** i potwierdź.
 
-
-## <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
-
-Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem programu PowerShell, musisz uaktualnić moduł do wersji zapoznawczej.
-
-Aby to zrobić, otwórz program PowerShell z podwyższonym poziomem uprawnień i wprowadź następujące polecenie: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
-
-Następnie ponownie uruchom powłokę.
-
 ## <a name="create-an-account-using-powershell"></a>Tworzenie konta przy użyciu programu PowerShell
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Login-AzureRmAccount`, a następnie postępuj zgodnie z instrukcjami wyświetlanymi na ekranie w celu uwierzytelnienia.
@@ -130,6 +121,14 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Login-AzureRmA
 ```powershell
 Login-AzureRmAccount
 ```
+
+### <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
+
+Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem programu PowerShell, musisz uaktualnić moduł do wersji zapoznawczej.
+
+Aby to zrobić, otwórz program PowerShell z podwyższonym poziomem uprawnień i wprowadź następujące polecenie: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+Następnie ponownie uruchom powłokę.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -170,13 +169,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="upgrade-your-cli-module"></a>Uaktualnianie modułu interfejsu wiersza polecenia
-
-Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem interfejsu wiersza polecenia, musisz dodać rozszerzenie do powłoki.
-
-Aby to zrobić: przy użyciu usługi Cloud Shell lub powłoki lokalnej, wprowadź następujące polecenie: `az extension add --name storage-preview`
-
-## <a name="create-an-account-using-azure-cli"></a>Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure 
+## <a name="create-an-account-using-azure-cli"></a>Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Aby uruchomić usługę Azure Cloud Shell, zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
@@ -186,9 +179,15 @@ Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom
 az login
 ```
 
+### <a name="upgrade-your-cli-module"></a>Uaktualnianie modułu interfejsu wiersza polecenia
+
+Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem interfejsu wiersza polecenia, musisz dodać rozszerzenie do powłoki.
+
+Aby to zrobić: wprowadź następujące polecenie przy użyciu usługi Cloud Shell lub powłoki lokalnej: `az extension add --name storage-preview`
+
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Aby utworzyć nową grupę zasobów za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [az group create](/cli/azure/group#az_group_create). 
+Aby utworzyć nową grupę zasobów za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [az group create](/cli/azure/group#az_group_create).
 
 ```azurecli-interactive
 az group create \

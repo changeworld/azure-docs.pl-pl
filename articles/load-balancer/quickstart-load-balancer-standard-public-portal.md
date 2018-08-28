@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/18
+ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 07700ecb8a31e6ee724f27e247f377eb869e6c39
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305144"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42702410"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
@@ -30,24 +30,29 @@ Równoważenie obciążenia zapewnia większą dostępność i możliwości skal
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal na stronie [http://portal.azure.com](http://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
 
 ## <a name="create-a-public-load-balancer"></a>Tworzenie publicznego modułu równoważenia obciążenia
 
 W tej sekcji utworzysz publiczny moduł równoważenia obciążenia, który pomaga równoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. 
 
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości dla modułu równoważenia obciążenia:
-    - *myLoadBalancer* — jako nazwę modułu równoważenia obciążenia.
-    - **Public** — jako typ modułu równoważenia obciążenia.
-     - *myPublicIP* — jako **nowy** publiczny adres IP, który utworzono.
-    - *myResourceGroupSLB* — jako nazwę **nowej** grupy zasobów, którą wybrano do utworzenia.
-    - **westeurope** — jako lokalizację.
-3. Kliknij pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
-   
-    ![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-standard-public-portal/1a-load-balancer.png)
+2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Typ          | Public                                        |
+    | SKU           | Standardowa (Standard)                          |
+    | Publiczny adres IP | Wybierz polecenie **Utwórz nowy** i w polu tekstowym wpisz wartość *myPublicIP*. Dla publicznego adresu IP domyślnie zaznaczono standardową jednostkę SKU. W obszarze **Strefa dostępności** wybierz pozycję **Strefowo nadmiarowy**. |
+    | Subskrypcja               | Wybierz subskrypcję.    |
+    |Grupa zasobów | Wybierz polecenie **Utwórz nową**, a następnie wpisz wartość *myResourceGroupSLB*.    |
+    | Lokalizacja           | Wybierz pozycję **Europa Zachodnia**.                          |
+    
+
+![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-standard-public-portal/create-load-balancer.png)
 
 
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
@@ -67,22 +72,22 @@ W tej sekcji utworzysz sieć wirtualną, następnie dwie maszyny wirtualne dla p
 
 1. W lewej górnej części ekranu kliknij pozycję **Nowy** > **Obliczenia** > **Windows Server 2016 Datacenter** i wprowadź następujące wartości dla maszyny wirtualnej:
     - *myVM1* — jako nazwę maszyny wirtualnej.        
-    - *azureuser* — jako nazwę użytkownika administratora.    
     - *myResourceGroupSLB* — w obszarze **Grupa zasobów** wybierz opcję **Użyj istniejącej**, a następnie wybierz wartość *myResourceGroupSLB*.
 2. Kliknij przycisk **OK**.
 3. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 4. Wprowadź następujące wartości ustawień maszyny wirtualnej:
-    - *myAvailabilitySet* — jako nazwę nowego zestawu dostępności, który tworzysz.
-    -  *myVNet* — jako sieć wirtualną.
-    - *myBackendSubnet* — jako podsieć.
-    - *myNetworkSecurityGroup* — jako nazwę nowej grupy zabezpieczeń sieci (zapora), którą musisz utworzyć.
+    1. Upewnij się, że wybrano sieć wirtualną *myVNet* i podsieć *myBackendSubnet*.
+    2. W obszarze **Publiczny adres IP** w okienku **Utwórz publiczny adres IP** wybierz pozycję **Standardowa**, a następnie wybierz pozycję **OK**.
+    3. W obszarze **Sieciowa grupa zabezpieczeń** wybierz pozycję **Zaawansowane**, a następnie wykonaj następujące czynności:
+        1. Wybierz pozycję *Sieciowa grupa zabezpieczeń (zapora) i na stronie **Wybieranie grupy zabezpieczeń sieci** wybierz pozycję **Utwórz nową**. 
+        2. Na stronie **Tworzenie sieciowej grupy zabezpieczeń** w polu **Nazwa** wprowadź wartość *myNetworkSecurityGroup*, a następnie wybierz pozycję **OK**.
 5. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
 6. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
-7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: zestawem dostępności *myAvailibilityset*, siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i sieciową grupą zabezpieczeń **myNetworkSecurityGroup*. 
+7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: zestawem dostępności *myAvailibilityset*, siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i sieciową grupą zabezpieczeń *myNetworkSecurityGroup*. 
 
-### <a name="create-nsg-rules"></a>Tworzenie reguł sieciowej grupy zabezpieczeń
+### <a name="create-nsg-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń
 
-W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące przy użyciu protokołów HTTP i RDP.
+W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące przy użyciu protokołu HTTP.
 
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myNetworkSecurityGroup** znajdującą się w grupie zasobów **myResourceGroupSLB**.
 2. W obszarze **Ustawienia** kliknij pozycję **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie kliknij przycisk **Dodaj**.
@@ -97,17 +102,6 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
     - *Zezwalaj na HTTP* —jako opis
 4. Kliknij przycisk **OK**.
  
- ![Tworzenie sieci wirtualnej](./media/load-balancer-standard-public-portal/8-load-balancer-nsg-rules.png)
-5. Powtórz kroki od 2 do 4, używając następujących wartości, aby utworzyć inną regułę o nazwie *myRDPRule* zezwalającą na przychodzące połączenia RDP przy użyciu portu 3389:
-    - *Tag usługi* — w polu **Źródło**.
-    - *Internet* — w polu **Tag usługi źródłowej**
-    - *3389* — w polu **Docelowe zakresy portów**
-    - *TCP* — w polu **Protokół**
-    - *Zezwalaj* — w polu **Akcja**
-    - *200* — w polu **Priorytet**
-    - *myRDPRule* — w polu nazwy
-    - *Zezwalaj na RDP* — w polu opisu
-
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myVM1** znajdującą się w grupie zasobów *myResourceGroupLB*.
@@ -124,7 +118,7 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
 
 ## <a name="create-load-balancer-resources"></a>Tworzenie zasobów modułu równoważenia obciążenia
 
-W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia i reguły translatora adresów sieciowych.
+W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia.
 
 
 ### <a name="create-a-backend-address-pool"></a>Tworzenie puli adresów zaplecza
@@ -134,13 +128,10 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myLoadBalancer**.
 2. W obszarze **Ustawienia** kliknij pozycję **Pule zaplecza**, a następnie kliknij pozycję **Dodaj**.
 3. Na stronie **Dodawanie puli zaplecza** wykonaj następujące czynności:
-    - W polu nazwy wpisz *myBackEndPool jako nazwę puli zaplecza.
-    - W polu **Skojarzone z** kliknij w menu rozwijanym pozycję **Zestaw dostępności**
-    - W polu **Zestaw dostępności** kliknij pozycję **myAvailabilitySet**.
-    - Kliknij pozycję **Dodaj docelową konfigurację adresu IP sieci**, aby dodać każdą utworzoną maszynę wirtualną (*myVM1* & *myVM2*) do puli zaplecza.
+   - W polu nazwy wpisz *myBackendPool* jako nazwę puli zaplecza.
+   - W obszarze **Sieć wirtualna** wybierz pozycję *myVNet*.
+   - W obszarze **Maszyna wirtualna** dodaj wartości *myVM1* i *my VM2* wraz z odpowiadającymi im adresami IP, a następnie wybierz polecenie **Dodaj**.
     - Kliknij przycisk **OK**.
-
-    ![Dodawanie do puli adresów zaplecza ](./media/load-balancer-standard-public-portal/3-load-balancer-backend-02.png)
 
 3. Upewnij się, że ustawienie puli zaplecza modułu równoważenia obciążenia wyświetla obie maszyny wirtualne — **VM1** i **VM2**.
 

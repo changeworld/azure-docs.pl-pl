@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f4bae9ba41f61223a8e18e88e30b8fbf89eff1a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527596"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022414"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Konfigurowanie usługi IoT Hub Device Provisioning (wersja zapoznawcza) w witrynie Azure Portal
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     * **Lokalizacja**: wybierz lokalizację znajdującą się najbliżej Twoich urządzeń.
     * **Przypnij do pulpitu nawigacyjnego:** wybierz tę opcję, aby przypiąć to wystąpienie do pulpitu nawigacyjnego, co ułatwi jego znalezienie.
 
-    ![Wprowadzanie podstawowych informacji o wystąpieniu usługi DPS w bloku portalu](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+    ![Wprowadzanie podstawowych informacji o wystąpieniu usługi Device Provisioning Service w bloku portalu](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
 4. Po pomyślnym wdrożeniu usługi automatycznie zostanie otwarty blok podsumowania tej usługi.
 
@@ -61,7 +61,7 @@ W tej sekcji dodasz konfigurację wystąpienia usługi Device Provisioning Servi
     * **Centrum IoT Hub:** wybierz centrum IoT Hub, które chcesz połączyć z nowym wystąpieniem usługi Device Provisioning Service.
     * **Zasady dostępu:** wybierz **iothubowner** jako poświadczenia do nawiązania połączenia z centrum IoT Hub.  
 
-    ![Powiązywanie nazwy centrum z wystąpieniem usługi DPS w bloku portalu](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+    ![Tworzenie powiązania nazwy centrum z wystąpieniem usługi Device Provisioning Service w bloku portalu](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
 3. Teraz wybrane centrum powinno być widoczne w bloku **Powiązane centra IoT**. Aby wyświetlić blok **Połączone centra IoT Hub**, może być konieczne kliknięcie przycisku **Odśwież**.
 

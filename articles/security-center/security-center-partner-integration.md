@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: b0e674eb161af41a848f0456a033d615293a9947
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 117fc5cb6583c4e3eed0c9506bda470400941f61
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622793"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919962"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -38,7 +38,11 @@ Obecnie zintegrowane rozwiązania zabezpieczeń obejmują:
 - Zapora nowej generacji ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) i [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - Ocena luk w zabezpieczeniach ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) i [Rapid7](https://www.rapid7.com/products/insightvm/))
 
-Obsługa integracji ochrony punktów końcowych może się różnić w zależności od rozwiązania. W poniższej tabeli zamieszczono więcej informacji na temat obsługi poszczególnych rozwiązań:
+> [!NOTE]
+> Usługa Security Center nie może zainstalować programu Microsoft Monitoring Agent na wirtualnych urządzeniach partnera, ponieważ większość dostawców zabezpieczeń zabrania korzystania z zewnętrznych agentów na swoich urządzeniach.
+>
+>
+
 
 | Ochrona punktów końcowych               | Platformy                             | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
@@ -68,9 +72,9 @@ Rozwiązania zabezpieczeń platformy Azure, które zostały wdrożone z usługi 
 
 2. W **menu platformy Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
 
-  ![Security Center — Przegląd](./media/security-center-partner-integration/overview.png)
+3. W menu usługi Security Center wybierz pozycję **Rozwiązania zabezpieczeń**.
 
-3. W obszarze **Przegląd** wybierz pozycję **Rozwiązania w zakresie bezpieczeństwa**.
+  ![Security Center — Przegląd](./media/security-center-partner-integration/overview.png)
 
 W obszarze **Rozwiązania w zakresie bezpieczeństwa** możesz wyświetlić informacje o kondycji zintegrowanych rozwiązań zabezpieczeń platformy Azure i wykonać podstawowe zadania zarządzania. Możesz też połączyć inne typy źródeł danych zabezpieczeń, takie jak alerty usługi Azure Active Directory Identity Protection, i dzienniki zapory w formacie CEF.
 

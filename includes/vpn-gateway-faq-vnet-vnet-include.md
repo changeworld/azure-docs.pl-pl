@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30921312"
 ---
 Często zadawane pytania dotyczące połączenia między sieciami wirtualnymi mają zastosowanie w przypadku połączeń usługi VPN Gateway. Jeśli potrzebujesz wirtualnych sieci równorzędnych, zobacz [Wirtualne sieci równorzędne](../articles/virtual-network/virtual-network-peering-overview.md)
@@ -25,9 +25,9 @@ Ruch sieciowy w ramach połączenia między sieciami wirtualnymi w tym samym reg
 
 Nie. Ruch sieciowy w ramach połączenia między sieciami wirtualnymi przechodzi przez sieć szkieletową platformy Microsoft Azure, a nie przez Internet.
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Czy może nawiązać połączenie sieci wirtualnej do sieci wirtualnej, w dzierżawcy usługi AAD?
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Czy można nawiązać połączenie między sieciami wirtualnymi w różnych dzierżawach usługi AAD?
 
-Tak, aby wirtualnymi połączeń przy użyciu bramy sieci VPN platformy Azure działa między dzierżawami usługi AAD.
+Tak. Połączenia między sieciami wirtualnymi nawiązywane za pomocą bram Azure VPN Gateway działają w dzierżawach usługi AAD.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Czy ruch sieciowy w ramach połączenia między sieciami wirtualnymi jest bezpieczny?
 

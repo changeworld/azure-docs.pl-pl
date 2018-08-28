@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6d7b926a414c95d4e05834bafc91a2aa9c047fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433514"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41917623"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -108,7 +108,7 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
     ![Strona Wprowadzenie](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
-Połączone usługi są tworzone w celu połączenia magazynów danych i obliczeń z fabryką danych. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa w czasie wykonywania do nawiązywania z nią połączenia. 
+Połączone usługi są tworzone w celu połączenia magazynów danych i obliczeń z fabryką danych. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z magazynem danych w środowisku uruchomieniowym. 
 
 W tym samouczku połączysz magazyny danych Azure SQL Database, Azure SQL Data Warehouse i Azure Blob Storage ze swoją fabryką danych. Usługa Azure SQL Database to magazyn danych będący źródłem. Magazynem danych będących ujściem/docelowym jest usługa Azure SQL Data Warehouse. Usługa Azure Blob Storage służy do przygotowywania danych przed ich załadowaniem do usługi SQL Data Warehouse przy użyciu programu PolyBase. 
 
@@ -265,7 +265,7 @@ Potok **GetTableListAndTriggerCopyData** przyjmuje listę tabel jako parametr. D
     1. Kliknij pole wprowadzania WARTOŚĆ parametru DWTableName -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej, wprowadź wyrażenie `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skrypt -> wybierz przycisk **Zakończ**.
     1. Rozwiń węzeł **Ustawienia programu Polybase** i wybierz pozycję **Zezwól na program Polybase**. 
     1. Usuń zaznaczenie opcji **Użyj wartości domyślnej typu**. 
-    1. Kliknij pole wprowadzania **Skrypt czyszczenia** -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź poniższe wyrażenie jako skrypt -> wybierz przycisk **Zakończ**. 
+    1. Kliknij pole wprowadzania **Skrypt wstępnego kopiowania** -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź poniższe wyrażenie jako skrypt -> wybierz przycisk **Zakończ**. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]

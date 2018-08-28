@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302943"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616519"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Przesyłanie strumieniowe danych Big Data do magazynu danych
 
-Usługa Azure [Event Grid](overview.md) jest inteligentną usługą routingu zdarzeń, która umożliwia reagowanie na powiadomienia z aplikacji i usług. W [przykładzie dotyczącym funkcji Event Hubs Capture i usługi Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) pokazano, jak bezproblemowo przeprowadzić migrację danych z centrum zdarzeń do usługi SQL Data Warehouse przy użyciu funkcji Azure Event Hubs Capture i usługi Azure Event Grid.
+Usługa Azure [Event Grid](overview.md) jest inteligentną usługą routingu zdarzeń, która umożliwia reagowanie na powiadomienia z aplikacji i usług. Może na przykład spowodować, że funkcja platformy Azure będzie przetwarzać dane centrum zdarzeń, które zostały przechwycone przez usługę Azure Blob Storage lub usługę Data Lake Store, a także przeprowadzać migrację danych do innych repozytoriów danych. W [przykładzie dotyczącym funkcji Event Hubs Capture i usługi Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) pokazano, jak bezproblemowo przeprowadzić migrację danych centrum zdarzeń z usługi Blob Storage do usługi SQL Data Warehouse przy użyciu funkcji Event Hubs Capture i usługi Event Grid.
 
 ![Omówienie aplikacji](media/event-grid-event-hubs-integration/overview.png)
 
@@ -75,7 +75,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="deploy-the-infrastructure"></a>Wdrażanie infrastruktury
 
-Aby uprościć ten artykuł, wdrożysz wymaganą infrastrukturę za pomocą szablonu usługi Resource Manager. Aby zobaczyć wdrażane zasoby, wyświetl [szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Użyj jednego z [obsługiwanych zasobów](overview.md) dla odpowiedniej lokalizacji grupy zasobów.
+Aby uprościć ten artykuł, wdrożysz wymaganą infrastrukturę za pomocą szablonu usługi Resource Manager. Aby zobaczyć wdrażane zasoby, wyświetl [szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json).
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 

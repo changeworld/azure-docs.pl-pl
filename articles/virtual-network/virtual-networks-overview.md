@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781184"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022686"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
 
@@ -37,7 +37,10 @@ W każdej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvi
 
 ## <a name="communicate-with-the-internet"></a>Komunikacja z Internetem
 
-Wszystkie zasoby w sieci wirtualnej mogą domyślnie komunikować się z Internetem w ruchu wychodzącym. Użytkownik może komunikować się z zasobem w ruchu przychodzącym poprzez przypisanie publicznego adresu IP do zasobu. Aby dowiedzieć się więcej, zobacz [Publiczne adresy IP](virtual-network-public-ip-address.md).
+Wszystkie zasoby w sieci wirtualnej mogą domyślnie komunikować się z Internetem w ruchu wychodzącym. Z zasobem w ruchu przychodzącym możesz komunikować się przez przypisanie publicznego adresu IP lub publicznego modułu równoważenia obciążenia. Publicznego adresu IP lub publicznego modułu równoważenia obciążenia możesz używać również do zarządzania połączeniami w ruchu wychodzącym.  Aby dowiedzieć się więcej na temat połączeń wychodzących na platformie Azure, zobacz [Połączenia wychodzące](../load-balancer/load-balancer-outbound-connections.md), [Publiczne adresy IP](virtual-network-public-ip-address.md) i [Moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md).
+
+>[!NOTE]
+>W przypadku korzystania tylko z wewnętrznej [usługi Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md) łączność wychodząca nie jest dostępna, dopóki nie zdefiniujesz współdziałania [połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md) z publicznym adresem IP na poziomie wystąpienia lub publicznym modułem równoważenia obciążenia.
 
 ## <a name="communicate-between-azure-resources"></a>Komunikacja pomiędzy zasobami platformy Azure
 

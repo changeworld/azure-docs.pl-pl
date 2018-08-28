@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start platformy Azure — konfigurowanie aplikacji internetowej platformy Azure w celu skonfigurowania i pobrania wpisu tajnego z usługi Key Vault | Microsoft Docs
-description: W tym przewodniku Szybki start przedstawiono sposób konfigurowania aplikacji platformy ASP.Net Core w celu skonfigurowania i pobrania wpisu tajnego z usługi Key Vault
+title: 'Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej Node | Microsoft Docs'
+description: 'Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej Node'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480206"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023967"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu aplikacji internetowej .NET
 
@@ -28,7 +28,10 @@ W tym przewodniku Szybki start wykonasz kroki niezbędne do skonfigurowania apli
 > * [Włączanie tożsamości usługi zarządzanej](../active-directory/managed-service-identity/overview.md).
 > * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z usługi Key Vault.
 
-Zanim przejdziesz do następnych kroków, przeczytaj [podstawowe pojęcia](key-vault-whatis.md#basic-concepts), szczególnie informacje dotyczące [tożsamości usługi zarządzanej](../active-directory/managed-service-identity/overview.md)
+Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami](key-vault-whatis.md#basic-concepts).
+
+>[!NOTE]
+Aby przekonać się, dlaczego poniższy samouczek jest najlepszym rozwiązaniem, najpierw należy zapoznać się z kilkoma pojęciami. Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault, tj. podać wpis tajny. Zgodnie z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa pierwszy wpis tajny musi być okresowo obracany. Jednak aplikacje [tożsamości usługi zarządzanej](../active-directory/managed-service-identity/overview.md) uruchamiane na platformie Azure otrzymują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać **początkowy problem dotyczący wpisu tajnego**, gdzie użytkownicy aplikacji mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -165,6 +168,8 @@ Następnie uruchom to polecenie, używając nazwy magazynu Key Vault i wartości
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**Teraz po uruchomieniu aplikacji powinna pojawić się pobrana wartość wpisu tajnego**
 
 ## <a name="next-steps"></a>Następne kroki
 
