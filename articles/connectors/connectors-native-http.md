@@ -1,220 +1,91 @@
 ---
-title: Komunikować się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji logiki, które mogą się komunikować z dowolnego punktu końcowego za pośrednictwem protokołu HTTP
+title: Łączenie do dowolnego punktu końcowego HTTP w usłudze Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań i przepływów pracy, które komunikują się z dowolnego punktu końcowego HTTP przy użyciu usługi Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/15/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: e1561e3be95847efccf487c96bd9c9a8104f161b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296428"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106452"
 ---
-# <a name="get-started-with-the-http-action"></a>Rozpoczynanie pracy z akcji HTTP
+# <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Wywoływanie punktów końcowych HTTP lub HTTPS w usłudze Azure Logic Apps
 
-Za pomocą akcji HTTP można rozszerzyć przepływy pracy dla Twojej organizacji i komunikują się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP.
+Korzystając z usługi Azure Logic Apps i łącznik protokołu HTTP (Hypertext Transfer) możesz zautomatyzować przepływy pracy, które komunikują się z dowolnego punktu końcowego HTTP lub HTTPS, tworząc aplikacje logiki. Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web. W tym punkcie końcowym, takich jak witryny sieci Web zostanie wyłączona, w przypadku wystąpienia zdarzenia zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone działania. 
 
-Możesz:
+Można wyzwalacza HTTP jako pierwszy krok w swojej przepływ pracy sprawdzania lub *sondowania* punktu końcowego zgodnie z ustalonym harmonogramem. W przypadku każdego wyboru wyzwalacz wysyła wywołania lub *żądania* do punktu końcowego. Odpowiedzi punktu końcowego określa, czy wykonywania przepływu pracy aplikacji logiki. Wyzwalacz jest przekazywane wraz z dowolnej zawartości z odpowiedzi na działania w aplikacji logiki. 
 
-* Tworzenie przepływów pracy aplikacji, które aktywować (wyzwalacz) witryny sieci Web, którą zarządzasz systemowi logiki.
-* Komunikują się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP, aby rozszerzyć przepływy pracy do innych usług.
+Akcja HTTP można użyć innych krokiem w przepływie pracy wywoływania punktu końcowego, jeśli chcesz. Odpowiedzi punktu końcowego określa sposób uruchamiania pozostałych akcji Twój przepływ pracy.
 
-Aby rozpocząć, korzystając z akcji HTTP w aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-the-http-trigger"></a>Użyj wyzwalacza HTTP
-Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o wyzwalaczy](connectors-overview.md).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Oto przykład sekwencji sposobu konfigurowania wyzwalacza HTTP w Projektancie aplikacji logiki.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-1. Dodaj wyzwalacza HTTP w aplikacji logiki.
-2. Wprowadź parametry dla punktu końcowego HTTP, który chcesz przeprowadzać sondowanie.
-3. Zmodyfikuj interwał cyklu na częstotliwości powinna sondowania.
+* Adres URL dla docelowego punktu końcowego, który chcesz wybrać 
 
-   Aplikację logiki teraz generowane z zawartość, która jest zwracana podczas każdego wyboru.
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-   ![Wyzwalacz HTTP](./media/connectors-native-http/using-trigger.png)
+* Aplikacja logiki, z którym ma zostać wywołana docelowy punkt końcowy, można uruchomić z wyzwalaczem HTTP [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji HTTP, należy uruchomić aplikację logiki z wyzwalaczem.
 
-### <a name="how-the-http-trigger-works"></a>Jak działa wyzwalacza HTTP
+## <a name="add-http-trigger"></a>Dodawanie wyzwalacza HTTP
 
-Wyzwalacza HTTP wysyła wywołanie punkt końcowy HTTP w stałych odstępach czasu. Domyślnie kodu odpowiedzi HTTP, który jest niższa niż 300 powoduje, że aplikacji logiki do uruchomienia. Aby określić, czy należy uruchomić aplikację logiki, można edytować aplikację logiki w widoku kodu i dodać warunek oceniający po wywołaniu metody HTTP. Oto przykład wyzwalacza HTTP, które są generowane, gdy zwrócony kod stanu jest większa niż lub równa `400`.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoje pustej aplikacji logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-```javascript
-"Http":
-{
-    "conditions": [
-        {
-            "expression": "@greaterOrEquals(triggerOutputs()['statusCode'], 400)"
-        }
-    ],
-    "inputs": {
-        "method": "GET",
-        "uri": "https://blogs.msdn.microsoft.com/logicapps/",
-        "headers": {
-            "accept-language": "en"
-        }
-    },
-    "recurrence": {
-        "frequency": "Second",
-        "interval": 15
-    },
-    "type": "Http"
-}
-```
+1. W polu wyszukiwania wprowadź "http" jako filtr. W obszarze listy wyzwalaczy wybierz **HTTP** wyzwalacza. 
 
-Szczegółowe informacje o parametrach wyzwalacza HTTP są dostępne na [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+   ![Wybieranie wyzwalacza HTTP](./media/connectors-native-http/select-http-trigger.png)
 
-## <a name="use-the-http-action"></a>Akcja HTTP
+1. Podaj [parametry i wartości wyzwalacza HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) mają zostać uwzględnione w wywołaniu docelowy punkt końcowy. Skonfiguruj cykl dla jak często ma wyzwalacz, aby sprawdzanie punktu końcowego docelowego.
 
-Akcja jest operacja odbywa się przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. 
-[Dowiedz się więcej o akcjach](connectors-overview.md).
+   ![Wprowadź parametry wyzwalacza HTTP](./media/connectors-native-http/http-trigger-parameters.png)
 
-1. Wybierz **nowy krok** > **Dodaj akcję**.
-3. W polu wyszukiwania akcji wpisz **http** Aby wyświetlić listę akcji HTTP.
-   
-    ![Wybierz akcję HTTP](./media/connectors-native-http/using-action-1.png)
+   Aby uzyskać więcej informacji na temat wyzwalacza HTTP, parametry i wartości, zobacz [odwołania do typów wyzwalaczy i akcji](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger).
 
-4. Dodaj wszelkie wymagane parametry połączenia HTTP.
-   
-    ![Zakończenie akcji HTTP](./media/connectors-native-http/using-action-2.png)
+1. Kontynuuj tworzenie przepływu pracy aplikacji logiki, za pomocą akcji, które są uruchamiane po aktywowaniu wyzwalacza.
 
-5. Kliknij na pasku narzędzi projektanta, **zapisać**. Aplikację logiki zostaną zapisane i opublikowane (aktywowanego) w tym samym czasie.
+## <a name="add-http-action"></a>Dodawanie akcji HTTP
 
-## <a name="http-trigger"></a>Wyzwalacz HTTP
-Poniżej przedstawiono szczegóły wyzwalacz, który obsługuje ten łącznik. Łącznik HTTP ma jeden wyzwalacz.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-| Wyzwalacz | Opis |
-| --- | --- |
-| HTTP |Wykonuje wywołanie HTTP i zwraca zawartości odpowiedzi. |
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-## <a name="http-action"></a>Akcja HTTP
-Poniżej przedstawiono szczegóły akcję, która obsługuje ten łącznik. Łącznik HTTP ma jedną akcję możliwe.
+1. W ostatnim kroku, której chcesz dodać akcji HTTP, wybierz **nowy krok**. 
 
-| Akcja | Opis |
-| --- | --- |
-| HTTP |Wykonuje wywołanie HTTP i zwraca zawartości odpowiedzi. |
+   W tym przykładzie aplikacja logiki zaczyna się od wyzwalacza HTTP w pierwszym kroku.
 
-## <a name="http-details"></a>Szczegóły HTTP
-Poniższe tabele zawierają opis wymaganych i opcjonalnych pól wejściowych dla akcji i odpowiednie szczegóły danych wyjściowych, które są skojarzone z przy użyciu akcji.
+1. W polu wyszukiwania wprowadź "http" jako filtr. W obszarze listy akcji wybierz **HTTP** akcji.
 
-#### <a name="http-request"></a>Żądanie HTTP
-Poniżej przedstawiono pól wejściowych dla akcji, dzięki czemu wychodzące żądania HTTP.
-A * oznacza, że jest polem wymaganym.
+   ![Wybieranie akcji HTTP](./media/connectors-native-http/select-http-action.png)
 
-| Nazwa wyświetlana | Nazwa właściwości | Opis |
-| --- | --- | --- |
-| Metoda * |method |Zlecenie HTTP do użycia |
-| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI dla żądania HTTP |
-| Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP w celu uwzględnienia |
-| Treść |treść |Treść żądania HTTP |
-| Authentication |uwierzytelnianie |Szczegółowe informacje w [uwierzytelniania](#authentication) sekcji |
+   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
+   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
 
-<br>
+1. Podaj [parametry i wartości akcji HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) mają zostać uwzględnione w wywołaniu docelowy punkt końcowy. 
 
-#### <a name="output-details"></a>Szczegóły danych wyjściowych
-Poniżej przedstawiono szczegóły danych wyjściowych dla odpowiedzi HTTP.
+   ![Wprowadź parametry akcji HTTP](./media/connectors-native-http/http-action-parameters.png)
 
-| Nazwa właściwości | Typ danych | Opis |
-| --- | --- | --- |
-| Nagłówki |obiekt |Nagłówki odpowiedzi |
-| Treść |obiekt |Obiekt odpowiedzi |
-| Kod stanu |int |Kod stanu HTTP |
+1. Gdy wszystko będzie gotowe, upewnij się, że zapisywanie aplikacji logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
 
 ## <a name="authentication"></a>Authentication
-Z funkcji Logic Apps umożliwia przy użyciu różnych typów uwierzytelniania względem punktów końcowych HTTP. Korzystając z uwierzytelniania za pomocą **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, i **[HTTP elementu Webhook](connectors-native-webhook.md)** łączników. Konfigurowane są następujące typy uwierzytelniania:
 
-* [Uwierzytelnianie podstawowe](#basic-authentication)
-* [Uwierzytelnianie certyfikatu klienta](#client-certificate-authentication)
-* [Azure uwierzytelniania OAuth usługi Active Directory (Azure AD)](#azure-active-directory-oauth-authentication)
+Aby ustawić uwierzytelniania, wybierz **Pokaż opcje zaawansowane** wewnątrz akcję lub wyzwalacz. Aby uzyskać więcej informacji na temat typów uwierzytelniania HTTP wyzwalaczy i akcji, zobacz [odwołania do typów wyzwalaczy i akcji](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-#### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Następujący obiekt uwierzytelniania jest wymagany dla uwierzytelniania podstawowego.
-A * oznacza, że jest polem wymaganym.
-
-| Nazwa właściwości | Typ danych | Opis |
-| --- | --- | --- |
-| Typ * |type |Typ uwierzytelniania (musi być `Basic` dla uwierzytelniania podstawowego) |
-| Username* |nazwa użytkownika |Nazwa użytkownika do uwierzytelniania |
-| Hasło * |hasło |Hasło do uwierzytelniania |
-
-> [!TIP]
-> Jeśli chcesz użyć hasła, które nie można pobrać z definicji, użyj `securestring` parametru i `@parameters()`  
->  [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
-
-Na przykład:
-
-```javascript
-{
-    "type": "Basic",
-    "username": "user",
-    "password": "test"
-}
-```
-
-#### <a name="client-certificate-authentication"></a>Uwierzytelnianie certyfikatów klientów
-
-Następujący obiekt uwierzytelniania jest potrzebne uwierzytelnianie certyfikatu klienta. A * oznacza, że jest polem wymaganym.
-
-| Nazwa właściwości | Typ danych | Opis |
-| --- | --- | --- |
-| Typ * |type |Typ uwierzytelniania (musi być `ClientCertificate` dla certyfikatów klienta SSL) |
-| PFX* |PFX |Zawartość pliku wymiany informacji osobistych (PFX) algorytmem Base64 |
-| Hasło * |hasło |Hasło dostępu do pliku PFX |
-
-> [!TIP]
-> Aby użyć parametru, który nie będzie można odczytać w definicji po zapisaniu aplikację logiki, można użyć `securestring` parametru i `@parameters()`  
->  [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
-
-Na przykład:
-
-```javascript
-{
-    "type": "ClientCertificate",
-    "pfx": "aGVsbG8g...d29ybGQ=",
-    "password": "@parameters('myPassword')"
-}
-```
-
-#### <a name="azure-ad-oauth-authentication"></a>Azure uwierzytelniania AD OAuth
-Następujący obiekt uwierzytelniania jest wymagane do uwierzytelniania usługi Azure AD OAuth. A * oznacza, że jest polem wymaganym.
-
-| Nazwa właściwości | Typ danych | Opis |
-| --- | --- | --- |
-| Typ * |type |Typ uwierzytelniania (musi być `ActiveDirectoryOAuth` dla usługi Azure AD OAuth) |
-| Dzierżawy * |dzierżawa |Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| Grupy odbiorców * |grupy odbiorców |Zasób, którego użycia żądasz podczas autoryzacji. Na przykład: `https://management.core.windows.net/` |
-| Klient identyfikator * |clientId |Identyfikator klienta aplikacji usługi Azure AD |
-| Klucz tajny * |wpis tajny |Klucz tajny klienta, który żąda tokenu |
-
-> [!TIP]
-> Można użyć `securestring` parametru i `@parameters()` [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow) do używania parametru, który nie będzie można odczytać w definicji po zapisaniu.
-> 
-> 
-
-Na przykład:
-
-```javascript
-{
-    "type": "ActiveDirectoryOAuth",
-    "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "audience": "https://management.core.windows.net/",
-    "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-    "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-}
-```
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, wypróbuj platformy i [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Dostępne łączniki w aplikacjach logiki można eksplorować analizując naszych [listy interfejsów API](apis-list.md).
 
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

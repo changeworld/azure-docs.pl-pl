@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 4cf62e609505487961dbfbab3f46c37d54e8f50b
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
-ms.translationtype: HT
+ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259058"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109443"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.locfileid: "39259058"
 
 Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure Data Factory oraz z konstruowaniem za ich pomocą pełnych przepływów pracy dla scenariuszy przenoszenia i przetwarzania danych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Na przykład potok może zawierać zestaw działań, które pozyskują i oczyszczają dane dziennika, a następnie uruchamiają zadanie usługi Spark na klastrze HDInsight w celu przeanalizowania danych dziennika. Zaletą korzystania z potoku jest możliwość zarządzania działaniami jako zestawem, a nie indywidualnie. Na przykład zamiast zarządzać poszczególnymi działaniami można wdrożyć i zaplanować potok.
 
 Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie użyj działania usługi Hive, które uruchamia skrypt Hive w klastrze usługi Apache HDInsight w celu przetworzenia/przekształcenia danych z magazynu obiektów blob, aby utworzyć dane wyjściowe. Na koniec użyj drugiego działania kopiowania w celu skopiowania danych wyjściowych do usługi Microsoft Azure SQL Data Warehouse, na podstawie której tworzone są rozwiązania raportowania analizy biznesowej (BI).
@@ -95,7 +95,7 @@ Poniżej przedstawiono sposób definiowania potoku w formacie JSON:
 }
 ```
 
-Tag | Opis | Typ | Wymagany
+Tag | Opis | Typ | Wymagane
 --- | ----------- | ---- | --------
 name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\”</li></ul> | Ciąg | Yes
 description | Wprowadź tekst opisujący przeznaczenie potoku. | Ciąg | Nie
@@ -128,7 +128,7 @@ Działania wykonywania obejmują [działania przenoszenia danych](#data-movement
 
 Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 
-Tag | Opis | Wymagany
+Tag | Opis | Wymagane
 --- | ----------- | ---------
 name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Yes</li></ul>
 description | Tekst opisujący przeznaczenie działania | Yes
@@ -168,7 +168,7 @@ Zasady wpływają na zachowanie działania w czasie wykonania, określając opcj
     }
 }
 ```
-Nazwa JSON | Opis | Dozwolone wartości | Wymagany
+Nazwa JSON | Opis | Dozwolone wartości | Wymagane
 --------- | ----------- | -------------- | --------
 timeout | Określa limit czasu pracy działania. | Zakres czasu | Nie. Domyślny limit czasu wynosi 7 dni.
 retry | Maksymalna liczba ponownych prób | Liczba całkowita | Nie. Wartość domyślna to 0
@@ -192,7 +192,7 @@ Działania sterowania mają następującą strukturę najwyższego poziomu:
 }
 ```
 
-Tag | Opis | Wymagany
+Tag | Opis | Wymagane
 --- | ----------- | --------
 name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie.<br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Yes</li><ul>
 description | Tekst opisujący przeznaczenie działania | Yes
@@ -389,7 +389,7 @@ Na przykład załóżmy, że masz wyzwalacz harmonogramu „Trigger A”, który
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Następujące samouczki zawierają instrukcje krok po kroku tworzenia potoków z działaniami:
 
 - [Tworzenie potoku z działaniem kopiowania](quickstart-create-data-factory-powershell.md)

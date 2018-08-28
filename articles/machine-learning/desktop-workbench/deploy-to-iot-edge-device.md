@@ -1,55 +1,65 @@
 ---
-title: Wdrażanie usługi Azure Machine Learning model na urządzenia Azure IoT | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano, jak modeli uczenia maszynowego Azure mogą być wdrażane urządzenia Azure IoT krawędzi.
+title: Wdrażanie modelu usługi Azure Machine Learning do urządzenia z usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano, jak modele usługi Azure Machine Learning można wdrożyć na urządzeniach z usługą Azure IoT Edge.
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 2/1/2018
-ms.openlocfilehash: 1dffdee032c5b079aa5b81284cebe8f6471efebd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 08/24/2018
+ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833642"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112997"
 ---
-# <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Wdrażanie usługi Azure Machine Learning model na urządzenia IoT Azure
+# <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Wdrażanie modelu usługi Azure Machine Learning do urządzenia z usługi Azure IoT Edge
 
-Wszystkie modele uczenia maszynowego Azure konteneryzowanych jako usługi sieci web opartych na Docker można również uruchomić na urządzenia Azure IoT krawędzi. Dodatkowe skrypty oraz instrukcje można znaleźć w [Toolkit AI Azure IoT Edge](http://aka.ms/AI-toolkit).
+Modele usługi Azure Machine Learning można kontenerowych nimi, jako usług sieci web opartych na platformy Docker. Usługa Azure IoT Edge umożliwia wdrażanie kontenerów zdalnie na urządzeniach. Korzystać z tych usług ze sobą na uruchamianie modeli na urządzeniach brzegowych, aby uzyskać krótszy czas reakcji i mniej transferu danych. 
 
-## <a name="operationalize-the-model"></a>Operacjonalizuj modelu
-Operacjonalizować model zgodnie z instrukcjami w [wdrażanie usługi sieci Web zarządzania modelu Azure Machine Learning](model-management-service-deploy.md) do utworzenia obrazu Docker z modelu.
+Dodatkowe skrypty oraz instrukcje można znaleźć w [zestaw narzędzi SI dla usługi Azure IoT Edge](http://aka.ms/AI-toolkit).
 
-## <a name="deploy-to-azure-iot-edge"></a>Wdrażanie na krawędzi IoT Azure
-Azure IoT krawędzi przenosi analizy chmury i niestandardowe reguły biznesowe na urządzeniach. Wszystkie modele uczenia maszynowego można uruchamiać na urządzenia brzegowe IoT. Dokumentacja urządzenia IoT i utworzyć wdrożenie, znajduje się w temacie [aka.ms/azure-iot — krawędzi doc](https://aka.ms/azure-iot-edge-doc).
+## <a name="operationalize-the-model"></a>Operacjonalizowanie modelu
 
-Poniżej przedstawiono dodatkowe rzeczy do uwzględnienia.
+Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby wdrożyć model uczenia maszynowego na urządzeniu usługi IoT Edge, musisz utworzyć obraz platformy Docker.
 
-### <a name="add-registry-credentials-to-the-edge-runtime-on-your-edge-device"></a>Dodawanie poświadczeń rejestru do środowiska wykonawczego Edge na urządzeniu krawędzi
-Na komputerze, na którym uruchomiane krawędzi IoT należy dodać poświadczenia rejestru, aby środowiska uruchomieniowego mogą mieć dostęp do ściągnięcia kontenera.
+Operacjonalizowanie modelu, postępując zgodnie z instrukcjami wyświetlanymi w [wdrożenia usługi internetowej Azure Machine Learning modelu zarządzania](model-management-service-deploy.md) do tworzenia obrazu platformy Docker zawierający model.
 
-W systemie Windows uruchom następujące polecenie:
-```cmd/sh
-iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
-```
-W systemie Linux uruchom następujące polecenie:
-```cmd/sh
-sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
-```
+## <a name="deploy-to-azure-iot-edge"></a>Wdrażanie usługi Azure IoT Edge
 
-### <a name="find-the-machine-learning-container-image-location"></a>Znajdź lokalizację obrazu kontenera uczenia maszynowego
-Należy lokalizacji obrazu kontenera uczenia maszynowego. Aby znaleźć lokalizację kontenera obrazu:
+Po utworzeniu obrazu modelu, można wdrożyć dowolne urządzenie z usługi Azure IoT Edge. Wszystkie modele usługi Machine Learning można uruchomić na urządzeniach IoT Edge. 
+
+### <a name="set-up-an-iot-edge-device"></a>Konfigurowanie urządzenia usługi IoT Edge
+
+Dokumentacja usługi Azure IoT Edge umożliwia przygotowanie urządzenie. 
+
+1. [Rejestrowanie urządzenia z usługą Azure IoT Hub](../../iot-edge/how-to-register-device-portal.md). Dane wyjściowe tego procesów są parametry połączenia, które umożliwiają skonfigurowanie urządzenia fizycznego. 
+2. Zainstaluj środowisko uruchomieniowe usługi IoT Edge na urządzenie fizyczne i skonfigurować go przy użyciu parametrów połączenia. Środowisko uruchomieniowe można zainstalować na [Windows](../../iot-edge/how-to-install-iot-edge-windows-with-windows.md) lub [Linux](../../iot-edge/how-to-install-iot-edge-linux.md) urządzeń.  
+
+
+### <a name="find-the-machine-learning-container-image-location"></a>Znajdź lokalizację obrazu kontenera usługi Machine Learning
+Należy lokalizacji obraz kontenera usługi Machine Learning. Aby znaleźć lokalizację obrazu kontenera:
 
 1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com/).
-2. W **rejestru kontenera Azure**, wybierz rejestru chcesz sprawdzić.
-3. W rejestrze, kliknij przycisk **repozytoria** umożliwia wyświetlenie listy wszystkich repozytoria i obrazów.
+2. W **usługi Azure Container Registry**, wybierz rejestru chcesz sprawdzić.
+3. W rejestrze, kliknij przycisk **repozytoriów** umożliwia wyświetlenie listy wszystkich repozytoriów i obrazów.
 
+Podczas przeglądania usługi container registry w witrynie Azure portal, Pobierz poświadczenia rejestru kontenerów. Te poświadczenia należy nadać urządzenia usługi IoT Edge, aby je ściągnąć obraz z poziomu rejestru prywatnego. 
 
+1. W rejestrze kontenerów, kliknij przycisk **klucze dostępu**. 
+2. **Włącz** administratora, jeśli jeszcze tego nie zrobiono. 
+3. Zapisz wartości **serwer logowania**, **Username**, i **hasło**. 
+
+### <a name="deploy-the-container-image-to-your-device"></a>Wdrażanie obrazu kontenera do Twojego urządzenia
+
+Korzystając z obrazu kontenera i poświadczenia rejestru kontenerów możesz przystąpić do wdrażania modelu na urządzeniu usługi IoT Edge uczenia maszynowego. 
+
+Postępuj zgodnie z instrukcjami w [modułów wdrożenia usługi IoT Edge w witrynie Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) można uruchomić modelu na urządzeniu usługi IoT Edge. 
 
 
 

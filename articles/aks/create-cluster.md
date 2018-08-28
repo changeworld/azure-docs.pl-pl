@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440477"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110308"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Utwórz klaster Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Poniższe opcje są dostępne za pomocą `az aks create` polecenia. Zobacz [odwo
 | `--enable-rbac` `-r` | Włączanie kontroli dostępu opartej na rolach platformy Kubernetes. | nie |
 | `--generate-ssh-keys` | Generuj publicznych i prywatnych kluczy pliki SSH, jeśli brak. | nie |
 | `--kubernetes-version` `-k` | Wersja rozwiązania Kubernetes na potrzeby tworzenia klastra, takie jak "1.7.9" lub "pytanie 1.9.6". | nie |
-| `--locaton` `-l` | Lokalizacja grupy zasobów utworzony automatycznie | nie |
+| `--location` `-l` | Lokalizacja grupy zasobów utworzony automatycznie | nie |
 | `--max-pods` `-m` | Maksymalna liczba zasobników można wdrożyć do węzła. | nie |
 | `--network-plugin` | Wtyczki sieci Kubernetes do użycia. | nie |
 | `--no-ssh-key` `-x` | Nie używać ani tworzenia lokalnego klucza SSH. | nie |

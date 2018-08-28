@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.topic: reference
+ms.date: 06/22/2018
+ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390708"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093622"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -158,6 +157,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 |---------|------|-------------| 
 | nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
+| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
 
 *Przykład*
@@ -330,6 +330,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 |---------|------|-------------| 
 | nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
+| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
 
 *Wymagania dla żądań przychodzących*
@@ -337,7 +338,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 Do pracy ze swoją aplikację logiki, punkt końcowy musi są zgodne ze wzorcem określonego wyzwalacza lub umowy i rozpoznaje tych właściwości:  
   
 | Odpowiedź | Wymagane | Opis | 
-|----------|----------|-------------|  
+|----------|----------|-------------| 
 | Kod stanu | Yes | "200 OK" Kod stanu: uruchamia przebieg. Każdy inny kod stanu nie zaczyna się przebiegu. | 
 | Nagłówek retry-after | Nie | Liczba sekund, aż aplikacja logiki sonduje punkt końcowy ponownie | 
 | Nagłówek lokalizacji | Nie | Adres URL do wywołania na kolejnego interwału sondowania. Jeśli nie zostanie określony, oryginalnym adresie URL jest używany. | 
@@ -424,6 +425,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 |---------|------|-------------| 
 | nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
+| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
 
 *Przykład*
@@ -2552,6 +2554,159 @@ Dla przebiegu aplikacji logiki pojedynczego, liczba akcji, które są wykonywane
    "runAfter": {}
 }
 ```
+
+<a name="connector-authentication"></a>
+
+## <a name="authenticate-triggers-or-actions"></a>Uwierzytelnianie, wyzwalacze i akcje
+
+Punktów końcowych HTTP obsługuje różne rodzaje uwierzytelniania. Możesz skonfigurować uwierzytelnianie dla tych HTTP wyzwalacze i akcje:
+
+* [HTTP](../connectors/connectors-native-http.md)
+* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+* [Element webhook protokołu HTTP](../connectors/connectors-native-webhook.md)
+
+Poniżej przedstawiono typy uwierzytelniania, które można skonfigurować:
+
+* [Uwierzytelnianie podstawowe](#basic-authentication)
+* [Uwierzytelnianie certyfikatu klienta](#client-certificate-authentication)
+* [Uwierzytelnianie OAuth usługi Active Directory (Azure AD) systemu Azure](#azure-active-directory-oauth-authentication)
+
+<a name="basic-authentication"></a>
+
+### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
+
+Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
+
+| Właściwość | Wymagane | Wartość | Opis | 
+|----------|----------|-------|-------------| 
+| **type** | Yes | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
+| **Nazwa użytkownika** | Yes | "@parameters(userNameParam)" | Parametr, który przekazuje nazwę użytkownika do uwierzytelniania na potrzeby uzyskiwania dostępu do punktu końcowego usługi docelowej |
+| **Hasło** | Yes | "@parameters(passwordParam)" | Parametr, który przekazuje hasło do uwierzytelniania na potrzeby uzyskiwania dostępu do punktu końcowego usługi docelowej |
+||||| 
+
+Na przykład, w tym miejscu jest format `authentication` obiektu w definicji wyzwalacza lub akcji. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [ochronę poufnych informacji](#secure-info). 
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-authentication"></a>Uwierzytelnianie certyfikatu klienta
+
+Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
+
+| Właściwość | Wymagane | Wartość | Opis | 
+|----------|----------|-------|-------------| 
+| **type** | Yes | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL) | 
+| **plik PFX** | Yes | <*Base64 — zakodowane — — plik pfx*> | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
+| **Hasło** | Yes | "@parameters(passwordParam)" | Parametr za pomocą hasła do uzyskiwania dostępu do pliku PFX |
+||||| 
+
+Na przykład, w tym miejscu jest format `authentication` obiektu w definicji wyzwalacza lub akcji. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [ochronę poufnych informacji](#secure-info). 
+
+```javascript
+"authentication": {
+   "password": "@parameters('passwordParam')",
+   "pfx": "aGVsbG8g...d29ybGQ=",
+   "type": "ClientCertificate"
+}
+```
+
+<a name="azure-active-directory-oauth-authentication"></a>
+
+### <a name="azure-active-directory-ad-oauth-authentication"></a>Uwierzytelnianie OAuth usługi Active Directory (AD) systemu Azure
+
+Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
+
+| Właściwość | Wymagane | Wartość | Opis | 
+|----------|----------|-------|-------------| 
+| **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth | 
+| **Urząd** | Nie | <*Adres URL dla urzędu token wystawcy*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |  
+| **dzierżawy** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD | 
+| **Grupy odbiorców** | Yes | <*zasób autoryzacji*> | Zasób, który ma autoryzację do użycia, na przykład `https://management.core.windows.net/` | 
+| **ClientId** | Yes | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji | 
+| **credentialType** | Yes | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. | 
+| **Hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Parametr za pomocą hasła do uzyskiwania dostępu do pliku PFX | 
+| **plik PFX** | Tak — tylko typ poświadczeń "Certificate" | <*Base64 — zakodowane — — plik pfx*> | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
+| **Klucz tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | <*klucz tajny dla uwierzytelniania*> | Zakodowane w formacie base64 klucza tajnego, który klient korzysta z żądania autoryzacji |
+||||| 
+
+Na przykład, w tym miejscu jest format `authentication` obiektu, kiedy definicji wyzwalacza lub akcji używa typ poświadczeń "Wpis tajny": Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [ochronę poufnych informacji](#secure-info). 
+
+```javascript
+"authentication": {
+   "audience": "https://management.core.windows.net/",
+   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+   "type": "ActiveDirectoryOAuth"
+}
+```
+
+<a name="secure-info"></a>
+
+## <a name="secure-sensitive-information"></a>Zabezpieczanie poufnych informacji
+
+Aby chronić informacje poufne, używanego do uwierzytelniania, takie jak nazwy użytkowników i hasła, własnych akcji i wyzwalaczy w definicji, można użyć parametrów i `@parameters()` wyrażenia, aby te informacje nie są widoczne po zapisaniu logikę aplikacja. 
+
+Na przykład załóżmy, że używasz uwierzytelniania "Podstawowe" w definicji wyzwalacza lub akcji. Oto przykład `authentication` obiektu, który określa nazwę użytkownika i hasło:
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+W `parameters` sekcję definicji aplikacji logiki, definiuje parametry używane w definicji wyzwalacza lub akcji:
+
+```javascript
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "HTTP": {
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+},
+```
+
+Jeśli tworzysz lub przy użyciu szablonu wdrożenia usługi Azure Resource Manager, musisz też zawierać zewnętrznym `parameters` sekcji definicji szablonu. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [bezpieczny dostęp do aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

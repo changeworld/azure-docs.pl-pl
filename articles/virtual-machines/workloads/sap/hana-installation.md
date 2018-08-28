@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj SAP HANA na SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft
-description: Jak zainstalować SAP HANA na SAP HANA na platformie Azure (wystąpienia duże).
+title: Instalowanie platformy SAP HANA na platformie SAP HANA na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
+description: Jak zainstalować oprogramowanie SAP HANA na platformie SAP HANA na platformie Azure (duże wystąpienie).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -11,46 +11,49 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1d335e135551b7b6faed8ee566acb14b46fd6c81
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110732"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107515"
 ---
-# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować SAP HANA (duże wystąpień) w systemie Azure
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
-Poniżej przedstawiono niektóre ważne definicje należy wiedzieć przed przeczytaniem tego przewodnika. W [omówienie SAP HANA (duże wystąpień) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wprowadzono dwóch różnych klas jednostek HANA dużych wystąpienie:
+Poniżej przedstawiono kilkoma ważnymi definicjami, należy wiedzieć przed przeczytaniem tego przewodnika. W [platformy SAP HANA (duże wystąpienia) — omówienie i architektura na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wprowadziliśmy dwóch różnych klas jednostek dużych wystąpień HANA:
 
-- S72, S72m S144, S144m, S192, S192m i S192xm, który nazywamy "Typ klasy I" z jednostki SKU.
-- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m, który nazywamy "klasy typu II' SKU.
+- S72, S72m, S144, S144m, platformie S192, platformie S192m i S192xm, który nazywamy "Type I klasy" jednostek SKU.
+- S384 S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m, który nazywamy "class typu II" jednostki SKU.
 
-Specyfikator klasy będzie można całej dokumentacji wystąpienia dużych HANA ostatecznie odwoływać się do różnych funkcji i wymagań oparte na jednostki SKU HANA dużych wystąpienia.
+Specyfikator klasy będzie służyć w całej dokumentacji dużych wystąpień HANA się ostatecznie różne możliwości i wymagania, w oparciu o jednostki SKU HANA duże wystąpienia.
 
-Inne definicje, często używanych są:
-- **Sygnatura wystąpienia dużych:** stos infrastruktury sprzętu SAP HANA TDI certyfikowane i do uruchomienia wystąpień SAP HANA w obrębie platformy Azure w wersji dedykowanej.
-- **SAP HANA na platformie Azure (duże wystąpienia):** oficjalną nazwą języka dla oferty na platformie Azure uruchomić HANA wystąpień w SAP HANA TDI certyfikowanego sprzętu, które zostało wdrożone w dużych wystąpienia sygnatury w różnych regionach platformy Azure. Powiązane termin **wystąpienia dużych HANA** jest skrót SAP HANA na platformie Azure (wystąpienia duże) i jest powszechnie używany ten przewodnik wdrożenia technicznego.
+Inne definicje, które firma Microsoft często używane są:
+- **Duże wystąpienia sygnatury:** stos infrastruktury sprzętu, który jest SAP HANA TDI certyfikat i do uruchamiania wystąpień oprogramowania SAP HANA w obrębie platformy Azure w wersji dedykowanej.
+- **Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia):** wystąpień oficjalną nazwą języka dla oferty na platformie Azure do uruchamiania oprogramowania HANA w SAP HANA TDI certyfikowane sprzętu, które zostało wdrożone w dużych wystąpień sygnatury w różnych regionach platformy Azure. Powiązane termin **dużych wystąpień HANA** jest mała w przypadku oprogramowania SAP HANA na platformie Azure (duże wystąpienia) i jest powszechnie używany ten przewodnik wdrożenia technicznego.
 
 
-Instalacja SAP HANA odpowiada i działania można uruchomić po przekazaniem nowe SAP HANA na serwerze Azure (wystąpienia duże). I po ustanowieniu otrzymano łączność między VNet(s) Twojego Azure i HANA dużych wystąpienia jednostki. 
+Instalacja oprogramowania SAP HANA jest odpowiedzialny za i uruchomieniem działania po przekazywanie nowego oprogramowania SAP HANA na platformie Azure (duże wystąpienia) serwera. I po jego nawiązaniu stało się łączność między swoje sieciach wirtualnych platformy Azure i jednostek dużych wystąpień HANA. 
 
 > [!Note]
-> Dla poszczególnych zasad SAP instalacji SAP HANA odbywa się przez osobę certyfikowane do przeprowadzenia instalacji SAP HANA. Osoby, która minęła egzaminu certyfikowane skojarzyć technologii SAP, egzaminu certyfikacji SAP HANA instalacji, lub integratora systemów SAP (SI).
+> Zgodnie z zasadami SAP instalacji oprogramowania SAP HANA, muszą być wykonywane przez osoby z certyfikatami poświadczającymi zgodność ze przeprowadzać instalacje oprogramowania SAP HANA. Osoba, został przekazany certyfikat skojarzyć technologii SAP egzaminu, egzaminu certyfikacyjnego instalacja programu SAP HANA, lub przez integratora systemów SAP (SI).
 
-Sprawdź ponownie, szczególnie w przypadku planowania instalacji HANA 2.0 [2235581 # SAP Obsługa Uwaga - SAP HANA: systemy operacyjne obsługiwane](https://launchpad.support.sap.com/#/notes/2235581/E) aby mieć pewność, że system operacyjny jest obsługiwany z o wersji należy decyzję o zainstalowaniu SAP HANA. Należy pamiętać, że obsługiwany system operacyjny HANA 2.0 jest bardziej ograniczony system operacyjny obsługiwany HANA 1.0. 
+Sprawdź ponownie, szczególnie w przypadku, gdy planujesz zainstalować oprogramowania HANA w wersji 2.0 [2235581 # Uwaga SAP pomocy technicznej — SAP HANA: obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E) aby upewnić się, że system operacyjny jest obsługiwany z SAP HANA wersji decyzję o zainstalowaniu. Należy pamiętać, że obsługiwany system operacyjny na potrzeby oprogramowania HANA w wersji 2.0 jest bardziej ograniczony system operacyjny obsługiwany HANA 1.0. 
 
-## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Pierwsze kroki po otrzymaniu jednostek wystąpienia dużych HANA
+> [!IMPORTANT] 
+> Dla typu II jednostek tylko w systemie SLES 12 z dodatkiem SP2 systemu operacyjnego wersja jest obsługiwana w tym momencie. 
 
-**Pierwszy krok** po otrzymaniu wystąpienia dużych HANA i ustalonych dostępu i łączności do wystąpień, jest rejestracja systemu operacyjnego wystąpienia u swojego dostawcy systemu operacyjnego. Ten krok obejmuje rejestrowanie system operacyjny SUSE Linux w wystąpieniu SMT SUSE, potrzebne do zostały wdrożone na maszynie wirtualnej na platformie Azure. Jednostka HANA dużych wystąpienia mogą łączyć się tego wystąpienia SMT (patrz niżej w tej dokumentacji). Lub system operacyjny Red Hat muszą być zarejestrowane przy użyciu Red Hat subskrypcji Menedżera wymagane do nawiązania połączenia. Zobacz także uwagi w tym [dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ten krok jest także niezbędne można było zastosować poprawki systemu operacyjnego. Zadanie, które jest odpowiedzialny za klienta. SUSE, można znaleźć w dokumentacji, aby zainstalować i skonfigurować SMT [tutaj](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Pierwsze kroki po otrzymaniu jednostki HANA duże wystąpienie:
 
-**W drugim kroku** ma Sprawdź nowe poprawki i poprawki określonych wersji systemu operacyjnego/version. Sprawdź, czy poziom poprawki wystąpienia dużych HANA na najnowszy stan. W oparciu o czas na poprawki/poszczególnych wersji systemu operacyjnego i zmiany do obrazu, który można wdrożyć program Microsoft, mogą wystąpić przypadki, w którym najnowsze poprawki nie może być włączony. Dlatego jest obowiązkowa procedurze po podjęciu przez jednostkę wystąpienia dużych HANA można sprawdzić, czy poprawki dotyczące zabezpieczeń, funkcji, dostępności i wydajności zostały wydane w tym samym czasie przez określonego dostawcy systemu Linux i należy zastosować.
+**Pierwszy krok** po otrzymaniu dużych wystąpień HANA i dostępu ustanowionym i łączności do wystąpień, zarejestrować się wystąpienie systemu operacyjnego z dostawcą systemu operacyjnego. Ten krok obejmuje rejestrowanie system operacyjny SUSE Linux w wystąpieniu SMT SUSE, musisz mieć wdrożony na maszynie wirtualnej na platformie Azure. Jednostka dużych wystąpień HANA mogą łączyć się tego wystąpienia SMT (zobacz w dalszej części tej dokumentacji). Lub system operacyjny Red Hat muszą być zarejestrowane przy użyciu Red Hat subskrypcji Menedżera musisz nawiązać połączenie. Zobacz również uwagi w tym [dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ten krok jest również niezbędne można było stosowanie poprawek systemu operacyjnego. Zadanie, które jest odpowiedzialny za klienta. SUSE, można znaleźć w dokumentacji, aby zainstalować i skonfigurować SMT [tutaj](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
-**Trzeci krok** jest wyewidencjonować istotne uwagi SAP, instalowania i konfigurowania SAP HANA na określonej wersji systemu operacyjnego/wersji. Z powodu zmiany zalecenia lub zmiany notatki SAP lub konfiguracje, które są zależne od instalacji poszczególnych scenariuszy Microsoft nie zawsze będzie mogą mieć jednostki wystąpienia dużych HANA doskonale skonfigurowane. Dlatego jest niezbędne do klientów, można odczytać uwagi SAP powiązane z SAP HANA na Twoje dokładnej wersji systemu Linux. Również Sprawdź konfiguracje systemu operacyjnego/wersji niezbędne i stosować ustawienia konfiguracji w przypadku, gdy nie jest jeszcze wykonane.
+**Drugi krok** jest sprawdzenie, czy nowe poprawki i poprawki wersji/wersji określonego systemu operacyjnego. Sprawdź, czy poprawka poziomu dużych wystąpień HANA na najnowszy stan. Oparte na czas wersji poprawki systemu operacyjnego oraz zmian w obrazie, który można wdrożyć program Microsoft, mogą wystąpić przypadki, w którym najnowsze poprawki nie może być włączony. Dlatego jest krok obowiązkowy po podjęciu przez jednostkę dużych wystąpień HANA, sprawdź, czy poprawki istotnych dla zabezpieczeń, funkcji, dostępności i wydajności zostały wydane w międzyczasie przez określonego dostawcę systemu Linux i mają zostać zastosowane.
 
-W określonych, sprawdź następujące parametry, a ostatecznie dostosowana do:
+**Trzeci krok** jest zapoznaj się z odpowiednimi SAP Notes dotyczące instalowania i konfigurowania platformy SAP HANA w określonej wersji systemu operacyjnego/wersji. Ze względu na zmianę zaleceń lub zmiany do uwagi SAP lub konfiguracje, które są zależne od instalacji poszczególnych scenariuszy firmy Microsoft nie zawsze będzie mieć skonfigurowane doskonale jednostka dużych wystąpień HANA. Dlatego jest obowiązkowe dla Ciebie jako klient korzystający z odczytywać SAP Notes związane z platformą SAP HANA na dokładną wersją systemu Linux. Również Sprawdź konfiguracje systemu operacyjnego/wersji niezbędne i zastosować ustawienia konfiguracji w przypadku, gdy nie jest jeszcze zrobione.
+
+W określonych, sprawdź następujące parametry i ostatecznie dostosowana do:
 
 - net.core.rmem_max = 16777216
 - net.core.wmem_max = 16777216
@@ -60,190 +63,193 @@ W określonych, sprawdź następujące parametry, a ostatecznie dostosowana do:
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
 - net.ipv4.tcp_wmem = 65536 16777216 16777216
 
-Począwszy od SLES12 z dodatkiem SP1 i RHEL 7.2, te należy ustawić parametry w pliku konfiguracji w katalogu /etc/sysctl.d. Na przykład można utworzyć plik konfiguracji o nazwie 91-NetApp-HANA.conf. W starszych wersjach SLES i RHEL te parametry muszą być in/etc/sysctl.conf zestawu.
+Począwszy od SLES12 z dodatkiem SP1 i systemu RHEL 7.2, te należy ustawić parametry w pliku konfiguracji w katalogu /etc/sysctl.d. Na przykład można utworzyć pliku konfiguracji, za pomocą nazwy 91-NetApp-HANA.conf. Dla starszych wersji w systemie SLES i RHEL te parametry muszą być in/etc/sysctl.conf zestawu.
 
-Dla wszystkich RHEL zwalnia, a począwszy od SLES12, 
+Wszystkie systemu RHEL zwalnia, a począwszy od SLES12, 
 - sunrpc.tcp_slot_table_entries = 128
 
-Parametr musi być ustawiony in/etc/modprobe.d/sunrpc-local.conf. Jeśli plik nie istnieje, należy go najpierw utworzyć, dodając następujący wpis: 
+Parametr musi być ustawiony in/etc/modprobe.d/sunrpc-local.conf. Jeśli plik nie istnieje, najpierw należy utworzyć, dodając następujący wpis: 
 - Opcje sunrpc tcp_max_slot_table_entries = 128
 
-**Czwarty krok** jest sprawdzenie czas systemowy HANA dużych wystąpienia jednostki. Wystąpienia zostały wdrożone za pomocą strefę czasową, reprezentujące region platformy Azure, sygnatura wystąpienia dużych HANA znajduje się w lokalizacji. Jesteś swobodę zmiany czasu systemowego lub strefy czasowej wystąpień użytkownika. Dzięki temu i kolejność więcej wystąpień w dzierżawie, można go przygotować konieczne dostosowanie strefy czasowej nowo dostarczonego wystąpień. Operacje Microsoft mieć nie wgląd w strefie czasowej systemu się skonfigurowanie z wystąpieniami po przekazania. Dlatego nowo wdrożonym wystąpień nie może być ustawiona w tej samej strefie czasowej, który zostanie zmieniony na. W związku z tym jest Twoje odpowiedzialność jako klientowi Sprawdź i w razie potrzeby dostosować strefy czasowej wystąpienia przekazywany. 
+**Czwarty krok** jest sprawdzenie czas systemowy urządzenia dużych wystąpień HANA. Wystąpienia są wdrażane przy użyciu strefy czasowej systemu, reprezentujące region platformy Azure, której sygnatura wystąpienia dużych HANA znajduje się w lokalizacji. Mogą zmienić czas systemowy lub strefy czasowej wystąpień, których jesteś właścicielem. Wykonanie tej czynności co zamawianie większej liczby wystąpień w dzierżawie, można przygotować, trzeba dostosować strefy czasowej nowo poprawne działanie jest gwarantowane wystąpień. Operacje firmy Microsoft mają nie szczegółowych informacji o strefie czasowej systemu że skonfigurowane z wystąpieniami po przekazania. Dlatego nowo wdrożonych wystąpień nie może być ustawione w tej samej strefie czasowej, który został zmieniony na. W rezultacie jest odpowiedzialny za jako klient korzystający z Sprawdź i w razie potrzeby dostosować strefę czasową wystąpienia przekazywany. 
 
-**Piąty krok** jest sprawdzenie etc/hosts. Jak uzyskać przekazywany bloków, mają one różne adresy IP przypisane do różnych celów (zobacz następną sekcję). Sprawdź plik etc/hosts. W przypadkach, gdy jednostki są dodawane do istniejącej dzierżawy nie powinien mieć itp/hosty systemów nowo wdrożonym obsługiwane poprawnie z adresami IP wcześniej dostarczonego systemów. Dlatego jest w przypadku klientów, aby sprawdzić poprawne ustawienia, czy nowo wdrożone wystąpienie mogą współpracować i rozpoznawania nazw wcześniej wdrożonej jednostki w dzierżawie. 
+**Krok piąty** jest sprawdzenie etc/hosts. Jak uzyskać przekazywany bloki, mają różne adresy IP przypisane do różnych celów (patrz następny rozdział). Sprawdź plik etc/hosts. W przypadkach, gdy jednostki są dodawane do istniejącej dzierżawy nie będziesz już mieć etc/hosty systemów nowo wdrożonym obsługiwane poprawnie z adresami IP wcześniej poprawne działanie jest gwarantowane systemów. Dlatego jest w przypadku jako klient, aby sprawdzić prawidłowe ustawienia tak, że nowo wdrożonego wystąpienia można wchodzić w interakcje i rozpoznawania nazw jednostek wcześniej wdrożonej w swojej dzierżawie. 
 
 ## <a name="networking"></a>Networking
-Przyjęto założenie, że zostały wykonane zalecenia dotyczące projektowania sieciom wirtualnym platformy Azure oraz nawiązywanie połączeń z tych sieci wirtualnych wystąpień dużych HANA zgodnie z opisem w tych dokumentach:
+Przyjęto założenie, że zostały wykonane zalecenia dotyczące projektowania sieci wirtualnych platformy Azure i łączenia tych sieci wirtualnych do dużych wystąpień HANA, zgodnie z opisem w tych dokumentach:
 
-- [Architektura na platformie Azure i SAP HANA (duże wystąpienia) — omówienie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [Infrastruktura SAP HANA (duże wystąpień) i łączność na platformie Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Omówienie platformy SAP HANA (duże wystąpienie) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Infrastrukturę SAP HANA (duże wystąpienia) i łączności na platformie Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Istnieją pewne szczegóły warto wspomnieć o dotyczących sieci w jednej jednostki. Każda jednostka HANA dużych wystąpienia jest dostarczany z dwóch lub trzech adresów IP przypisanych do dwóch lub trzech portów kart jednostki. Trzy adresy IP są używane w HANA skalowalnego w poziomie konfiguracji oraz scenariusz HANA replikacji systemu. Jeden z adresów IP przypisanych do karty Sieciowej jednostki jest poza puli adresów IP serwera, który został opisany w [omówienie SAP HANA (duże wystąpienia) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+Istnieją pewne szczegóły warto wspomnieć o dotyczących sieci w pojedynczej jednostki. Każda jednostka dużych wystąpień HANA jest dostarczany z dwóch lub trzech adresów IP, które są przypisane do dwóch lub trzech portów karty Sieciowej jednostki. Trzy adresy IP są używane w konfiguracji skalowania HANA i scenariusz replikacji systemu HANA. Jeden z adresów IP przypisanych do karty Sieciowej jednostki jest puli adres IP serwera, który został opisany w [platformy SAP HANA (duże wystąpienie) omówienie i architektura na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
-Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) Aby poznać szczegóły ethernet dla architektury.
+Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) na naukę szczegółów ethernet dla architektury.
 
 ## <a name="storage"></a>Magazyn
 
-Układ magazynu dla SAP HANA na platformie Azure (wystąpienia duże) jest konfigurowana przy SAP HANA na zarządzania usługą Azure za pośrednictwem SAP zalecane zasady, zgodnie z opisem w [SAP HANA przestrzeni dyskowej jest potrzebne](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument. Rozmiary nierównej różnych woluminów z SKU różnych wystąpień dużych HANA otrzymano udokumentowane w [omówienie SAP HANA (duże wystąpienia) i architektury na platformie Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest skonfigurowana przez platformę SAP HANA na zarządzanie usługami platformy Azure za pośrednictwem SAP zalecane linie prowadnic, zgodnie z opisem w [SAP HANA — wymagania dotyczące magazynu](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument. Nierównej rozmiary różnych woluminach za pomocą różnych HANA dużych wystąpień jednostki SKU masz udokumentowane w artykule [platformy SAP HANA (duże wystąpienie) omówienie i architektura na platformie Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Konwencje nazewnictwa woluminów magazynu są wymienione w poniższej tabeli:
+Konwencje nazewnictwa woluminy magazynu są wymienione w poniższej tabeli:
 
 | Użycie magazynu | Nazwa instalacji | Nazwa woluminu | 
 | --- | --- | ---|
-| HANA danych | /hana/data/SID/mnt0000<m> | Magazyn IP: / hana_data_SID_mnt00001_tenant_vol |
-| HANA dziennika | /hana/log/SID/mnt0000<m> | Magazyn IP: / hana_log_SID_mnt00001_tenant_vol |
+| Dane oprogramowania HANA | /hana/data/SID/mnt0000<m> | Magazyn IP: / hana_data_SID_mnt00001_tenant_vol |
+| Dziennik HANA | /hana/log/SID/mnt0000<m> | Magazyn IP: / hana_log_SID_mnt00001_tenant_vol |
 | Kopia zapasowa dziennika HANA | /Hana/log/Backups | Magazyn IP: / hana_log_backups_SID_mnt00001_tenant_vol |
-| HANA udostępnionych | /Hana/Shared/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/udostępnionych |
+| HANA udostępnione | /Hana/Shared/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/udostępnione |
 | usr/sap | /usr/SAP/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
-Gdzie SID = wystąpienie HANA identyfikator systemu 
+Gdzie SID = wystąpienie oprogramowania HANA identyfikator systemu 
 
-I dzierżawcy = wewnętrzny wyliczenie operacje podczas wdrażania dzierżawcy.
+I dzierżawca = wewnętrznego wyliczenie operacje podczas wdrażania dzierżawcy.
 
-Jak widać, HANA udostępnionych usr/sap są udostępnianie i tym samym woluminie. Nomenklatura punkty instalacji obejmują identyfikator systemu wystąpień HANA, a także numer instalacji. W przypadku dużych wdrożeń jest tylko jeden instalacji, takich jak mnt00001. We wdrożeniu skalowalnego w poziomie można zobaczyć tyle instalacji, należy mieć węzłów procesu roboczego i wzorzec. Dla środowiska skalowalnego w poziomie, danych, dzienników woluminach kopii zapasowej dziennika są udostępnione i dołączona do każdego węzła w konfiguracji skalowania w poziomie. W przypadku konfiguracji uruchamianie wielu wystąpień SAP inny zestaw woluminów jest utworzony i dołączyć do HAN dużych wystąpienia jednostki. Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczegółowe układu magazynu dla danego scenariusza.
+Jak widać, HANA, udostępniony i usr/sap współużytkują tego samego woluminu. Nomenklatura punkty instalacji obejmują identyfikator systemu wystąpień HANA, a także liczbę instalacji. W przypadku wdrożeń skalowanie w górę jest tylko jeden instalacji, takich jak mnt00001. Natomiast podczas wdrażania skalowalnego w poziomie widział tyle instaluje jako masz węzłów procesu roboczego i wzorzec. Dla środowiska skalowalnego w poziomie, danych, dzienników woluminach kopii zapasowej dziennika są udostępniane i dołączony do każdego węzła w konfiguracji skalowania w poziomie. W przypadku konfiguracji z uruchamianie wielu wystąpień SAP inny zbiór woluminów jest utworzone i dołączone do jednostki HANOWI dużego wystąpienia. Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczegóły układu magazynu dla danego scenariusza.
 
-Podczas odczytu papieru i Szukaj jednostki wystąpienia dużych HANA można zrealizować jednostki pochodzić HANA/danych z woluminu dysku zamiast atrakcyjne i że mamy woluminu HANA / / kopii zapasowej dziennika. Dlaczego możemy o rozmiarze HANA/danych tak duża dzieje się tak że migawki pamięci masowej, które oferujemy Ci jako klient korzysta z tego samego woluminu dysku. Oznacza to, więcej pamięci masowej migawki, należy wykonać, więcej miejsca jest używane przez migawek w woluminach przydzielonych magazynu. Wolumin HANA / / kopii zapasowej dziennika nie jest uważany za woluminu mają zostać umieszczone w kopii zapasowych bazy danych. Jest on o rozmiarze do użycia jako wolumin kopii zapasowej dla kopii zapasowej dziennika transakcji HANA. W przyszłych wersji magazynu migawek self usług, firma Microsoft będzie obowiązywać tego określonego woluminu, aby częstsze migawki. I z tym częstsze replikacji do lokacji odzyskiwania po awarii jeśli jest to wymagane do opcji w funkcji odzyskiwania po awarii infrastruktury HANA dużych wystąpienia. Zobacz szczegóły w [SAP HANA (duże wystąpień) wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
+Przeczytaj dokument dotyczący funkcji i sprawdź jednostki dużych wystąpień HANA, należy weź pod uwagę jednostki pochodzą HANA/danych z woluminu dysku zamiast atrakcyjnych i że mamy woluminu HANA/log/kopia zapasowa. Powód, dlaczego firma Microsoft o rozmiarze HANA/dane tak dużych to, że migawek magazynu, oferowanych przez firmę Microsoft dla Ciebie jako klient korzystający z używają tego samego woluminu dysku. Oznacza to, więcej pamięci masowej migawki, należy wykonać, więcej miejsca jest wykorzystywana przez migawek w woluminach przydzielonych magazynu. Wolumin HANA/log/kopia zapasowa nie jest uważany za woluminu, aby umieścić kopie zapasowe bazy danych w. Jest on wielkości ma być używany jako wolumin kopii zapasowej dla kopie zapasowe dziennika transakcji platformy HANA. W przyszłych wersjach magazynu migawek własnych usług, firma Microsoft będzie dotyczyć tego określonego woluminu, aby częściej migawki. I z tym częstsze replikacji do lokacji odzyskiwania po awarii w razie potrzeby do opcji w funkcje odzyskiwania po awarii, które są udostępniane przez infrastrukturę dużych wystąpień HANA. Szczegółowe informacje w [platformy SAP HANA (duże wystąpienia) wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
-Oprócz magazynu pod warunkiem możesz kupić dodatkowej pojemności w przyrostach 1 TB. To dodatkowe Magazyn można dodać jako nowe woluminy do wystąpień dużych HANA.
+Oprócz przechowywania, pod warunkiem możesz zakupić dodatkową pojemność wielokrotność 1 TB. Ten dodatkowy magazyn można dodać jako nowe woluminy do dużych wystąpień HANA.
 
-Podczas dołączania z SAP HANA na zarządzanie usługami Azure, klient określa identyfikator użytkownika (UID) i identyfikator grupy (GID) dla grupy użytkowników i sapsys sidadm (przykład: 1000,500) jest, że podczas instalacji systemu SAP HANA, te same wartości są używane. Jak chcesz wdrożyć wiele wystąpień HANA jednostki, należy pobrać wiele zestawów woluminów (jeden zestaw dla każdego wystąpienia). W związku z tym w czasie wdrażania należy zdefiniować:
+Podczas dołączania przy użyciu oprogramowania SAP HANA na zarządzanie usługami platformy Azure, klient określa identyfikator użytkownika (UID) i identyfikator grupy (GID) dla grupy użytkowników i sapsys sidadm (np: 1000,500) jest, że podczas instalacji systemu SAP HANA, te same wartości są używane. Zgodnie z którą chcesz wdrożyć wiele wystąpień HANA w jednostce, uzyskasz wiele zestawów woluminów (jeden zestaw dla każdego wystąpienia). W rezultacie w czasie wdrażania należy zdefiniować:
 
-- Identyfikator SID dotyczące różnych wystąpień HANA (sidadm pochodzi od niego).
-- Rozmiary pamięci dotyczące różnych wystąpień HANA. Ponieważ rozmiar pamięci na wystąpień Określa rozmiar woluminów w każdym zestawie poszczególnych woluminów.
+- Identyfikator SID różnych wystąpieniach HANA (sidadm pochodzi z niej).
+- Rozmiary różnych wystąpieniach oprogramowania HANA w pamięci. Ponieważ rozmiar pamięci, opłaty za każde wystąpienie definiuje rozmiar woluminów w każdym zestawie pojedynczy wolumin.
 
-Na podstawie zaleceń dostawcy magazynu dla wszystkich zainstalowanych woluminów są skonfigurowane następujące opcje instalacji (z wykluczeniem rozruchu LUN):
+Na podstawie zaleceń dostawcy magazynu skonfigurowanych następujących opcji instalacji dla wszystkich woluminów zainstalowanych (z wyłączeniem rozruchu jednostki LUN):
 
-- NFS rw ver = 4, twardych, timeo = 600, rsize = 1048576, wsize = 1048576, grupa, noatime, zablokować 0 0
+- rw systemu plików NFS vers = 4, sprzęt, timeo = 600, rsize = 1048576, wsize = 1048576, grupa, noatime, zablokować 0 0
 
-Te instalacji punktów skonfigurowano/etc/fstab, jak pokazano na poniższej grafice:
+Te instalacji punkty są skonfigurowane w/etc/fstab, takich jak pokazano w poniższej grafice:
 
-![fstab zainstalowane woluminy w jednostce HANA dużych wystąpienia](./media/hana-installation/image1_fstab.PNG)
+![fstab zainstalowane woluminy w jednostce dużych wystąpień HANA](./media/hana-installation/image1_fstab.PNG)
 
-Dane wyjściowe polecenia df -h w jednostce wystąpienia dużych HANA S72m wyglądałyby tak jak:
+Dane wyjściowe polecenia df -h w jednostce dużych wystąpień HANA S72m będzie wyglądać:
 
-![fstab zainstalowane woluminy w jednostce HANA dużych wystąpienia](./media/hana-installation/image2_df_output.PNG)
+![fstab zainstalowane woluminy w jednostce dużych wystąpień HANA](./media/hana-installation/image2_df_output.PNG)
 
 
-Serwery NTP zsynchronizowanie kontrolera magazynu i węzły w dużych wystąpienia sygnatury. Z synchronizacji SAP HANA w jednostkach Azure (wystąpienia duże) i maszyny wirtualne Azure względem serwera NTP, które nie powinno być nie długiego czasu sytuacji odejście od infrastruktury i jednostki obliczeń platformy Azure lub duże wystąpienia sygnatury.
+Kontroler magazynu i węzły w sygnatury dużych wystąpień są synchronizowane serwerów NTP. Ci synchronizacji SAP HANA na platformie Azure (duże wystąpienia) jednostek i maszyn wirtualnych platformy Azure względem serwera NTP należy nie występuje kilka znaczną ilość czasu między infrastrukturą i jednostki obliczeniowe w platformie Azure lub duże wystąpienia sygnatury.
 
-Aby zoptymalizować SAP HANA do magazynu używane poniżej, należy również ustawić następujące parametry konfiguracji SAP HANA:
+Aby zoptymalizować platformy SAP HANA w magazynie używane poniżej, można również ustawić następujące parametry konfiguracji SAP HANA:
 
 - max_parallel_io_requests 128
 - async_read_submit na
 - async_write_submit_active na
-- wszystkie async_write_submit_blocks
+- async_write_submit_blocks wszystkie
  
-Dla programu SAP HANA 1.0 do wersji SPS12, te parametry można ustawić podczas instalacji bazy danych SAP HANA zgodnie z opisem w [SAP Uwaga #2267798 - konfiguracji bazy danych SAP HANA](https://launchpad.support.sap.com/#/notes/2267798)
+W przypadku wersji SAP HANA 1.0 maksymalnie SPS12, te parametry można ustawić podczas instalacji bazy danych SAP HANA, zgodnie z opisem w [2267798 # Uwaga SAP — Konfiguracja bazy danych SAP HANA](https://launchpad.support.sap.com/#/notes/2267798)
 
-Także można skonfigurować parametrów po zakończeniu instalacji bazy danych SAP HANA przy użyciu hdbparam framework. 
+Ponadto można skonfigurować parametrów po instalacji baza danych SAP HANA przy użyciu struktury hdbparam. 
 
-SAP HANA 2.0 z hdbparam framework jest przestarzała. W związku z tym należy ustawić parametry za pomocą polecenia SQL. Aby uzyskać więcej informacji, zobacz [2399079 # Uwaga SAP: eliminacji hdbparam 2 HANA](https://launchpad.support.sap.com/#/notes/2399079).
+SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu polecenia SQL. Aby uzyskać więcej informacji, zobacz [2399079 # Uwaga SAP: eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
-Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) Aby dowiedzieć się układu magazynu dla architektury.
+Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) się układ pamięci masowej dla architektury.
 
 ## <a name="operating-system"></a>System operacyjny
 
-Obszar wymiany dostarczonego obrazu systemu operacyjnego jest równa 2 GB zgodnie z [1999997 # SAP Obsługa Uwaga — często zadawane pytania: SAP HANA pamięci](https://launchpad.support.sap.com/#/notes/1999997/E). Wszystkie różne ustawienia żądaną musi być ustawiona przez użytkownika jako klient.
+> [!IMPORTANT] 
+> Dla typu II jednostek tylko w systemie SLES 12 z dodatkiem SP2 systemu operacyjnego wersja jest obsługiwana w tym momencie. 
 
-[SUSE Linux Enterprise Server 12 SP1 dla programu SAP aplikacji](https://www.suse.com/products/sles-for-sap/hana) jest dystrybucja systemu Linux zainstalowane dla SAP HANA na platformie Azure (wystąpienia duże). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla programu SAP &quot;fabrycznej&quot; (w tym systemie SAP SLES skutecznie wstępnie ustawionymi parametrów).
+Obszar wymiany poprawne działanie jest gwarantowane obrazu systemu operacyjnego jest równa 2 GB na podstawie położenia [1999997 # Uwaga SAP pomocy technicznej — często zadawane pytania: oprogramowanie SAP HANA pamięci](https://launchpad.support.sap.com/#/notes/1999997/E). Wszelkie różne ustawienia żądaną musi być ustawiona przez użytkownika jako klient.
 
-Zobacz [zasobów biblioteki/oficjalne dokumenty](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) w witrynie sieci Web SUSE i [SAP w systemie SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) w sieci społeczności SAP (SCN) dla kilku przydatne zasoby związane z wdrażaniem SAP HANA na SLES (w tym ustawienia Wysoki Dostępność, specyficzne dla operacji SAP wzmocnienie zabezpieczeń i inne).
+[SUSE Linux Enterprise Server 12 z dodatkiem SP1 dla aplikacji SAP](https://www.suse.com/products/sles-for-sap/hana) to dystrybucja systemu Linux zainstalowane dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla SAP &quot;gotowych&quot; (w tym wstępnie ustawionych parametrów efektywne uruchamianie oprogramowania SAP w systemie SLES).
 
-Dodatkowe i przydatne SAP SUSE związane z łącza:
+Zobacz [zasobów biblioteki/oficjalne dokumenty](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) w witrynie sieci Web SUSE i [SAP w systemie SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na sieć społeczności SAP (SCN) dla kilka przydatnych zasobów związanych z wdrożeniem oprogramowania SAP HANA w systemie SLES (w tym konfiguracji o wysokiej Dostępność, wzmocnienie zabezpieczeń określonych operacji SAP i inne).
 
-- [SAP HANA w systemie SUSE Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Najlepsze praktyki dla SAP: umieścić w kolejce replikacji — SAP NetWeaver w systemie SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113).
-- [ClamSAP — ochrony przed wirusami SLES dla SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (w tym SLES 12 SAP aplikacji).
+Dodatkowe i przydatne SAP związane z systemem SUSE łącza:
 
-SAP Obsługa uwagi do implementowania SAP HANA na SLES 12:
+- [Oprogramowanie SAP HANA w systemie SUSE Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
+- [Najlepsze rozwiązanie dla programu SAP: umieścić w kolejce replikacji — oprogramowanie SAP NetWeaver w systemie SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113).
+- [ClamSAP — ochrona przed wirusami SLES dla rozwiązania SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (w tym systemu SLES 12 dla aplikacji SAP).
 
-- [Uwaga Obsługa SAP #1944799 — SAP HANA wskazówki dotyczące instalacji systemu operacyjnego SLES](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
-- [Uwaga Obsługa SAP #2205917 — SAP HANA DB zalecane ustawienia systemu operacyjnego dla SLES 12 aplikacje SAP](https://launchpad.support.sap.com/#/notes/2205917/E).
-- [Uwaga Obsługa SAP #1984787 — SUSE Linux Enterprise Server 12: Informacje o instalacji](https://launchpad.support.sap.com/#/notes/1984787).
-- [Uwaga Obsługa SAP #171356 — oprogramowania SAP w systemie Linux: ogólne informacje](https://launchpad.support.sap.com/#/notes/1984787).
-- [Uwaga Obsługa SAP #1391070 — rozwiązania Linux UUID](https://launchpad.support.sap.com/#/notes/1391070).
+SAP pomocy technicznej uwagi do wdrażania oprogramowania SAP HANA w systemie SLES 12:
 
-[Red Hat Enterprise Linux dla programu SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) jest inną ofertę do uruchamiania w wystąpieniach dużych HANA SAP HANA. Dostępne są wersje RHEL 6.7 i 7.2. Sprawdź Uwaga w przeciwnym macierzysty maszynach wirtualnych platformy Azure którym obsługiwane są tylko RHEL 7.2 i nowsze wersje, wystąpień dużych HANA również obsługuje RHEL 6.7. Jednak zaleca się używania wersji 7.x RHEL.
+- [Uwaga pomocy technicznej SAP #1944799 — SAP HANA wskazówki dotyczące instalacji systemu operacyjnego w systemie SLES](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
+- [Uwaga pomocy technicznej SAP 2205917 # — bazy danych SAP HANA zalecane ustawienia systemu operacyjnego dla systemu SLES 12 dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/2205917/E).
+- [Obsługi uwagę #1984787 — SUSE Linux Enterprise Server 12: Uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787).
+- [Uwaga pomocy technicznej SAP #171356 — oprogramowanie SAP w systemie Linux: informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787).
+- [Uwaga pomocy technicznej SAP 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070).
 
-Dodatkowe i przydatne SAP Red Hat łączy pokrewnych:
-- [SAP HANA na Red Hat Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) jest inną ofertę do uruchamiania oprogramowania SAP HANA w dużych wystąpieniach HANA. Dostępne są wersje systemu RHEL 6.7 i 7.2. Proszę Uwaga, w przeciwnym do natywnych maszynach wirtualnych platformy Azure których obsługiwane są tylko systemu RHEL 7.2 i nowsze wersje, dużych wystąpień HANA obsługują RHEL 6.7 także. Jednak zalecamy użycie wersji 7.x systemu RHEL.
 
-SAP Obsługa uwagi do implementowania SAP HANA na Red Hat:
+Dodatkowe i przydatne SAP w systemie Red Hat łącza pokrewne:
+- [Oprogramowanie SAP HANA w systemie Red Hat Linux witryny](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
 
-- [Uwaga Obsługa SAP 2009879 # - SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E).
-- [Uwaga Obsługa SAP 2292690 # - SAP HANA DB: Ustawienia zalecane systemu operacyjnego dla systemów RHEL 7](https://launchpad.support.sap.com/#/notes/2292690).
-- [Uwaga Obsługa SAP 2247020 # - SAP HANA DB: OS zalecane ustawienia dla RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020).
-- [Uwaga Obsługa SAP #1391070 — rozwiązania Linux UUID](https://launchpad.support.sap.com/#/notes/1391070).
-- [Uwaga Obsługa SAP #2228351 - Linux: SAP HANA bazy danych SPS 11 poprawki 110 (lub nowszej) na RHEL 6 lub SLES 11](https://launchpad.support.sap.com/#/notes/2228351).
-- [Uwaga Obsługa SAP #2397039 — często zadawane pytania: SAP na RHEL](https://launchpad.support.sap.com/#/notes/2397039).
-- [Uwaga Obsługa SAP 1496410 # - Red Hat Enterprise Linux 6.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/1496410).
-- [Uwaga Obsługa SAP 2002167 # - Red Hat Enterprise Linux 7.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/2002167).
+SAP pomocy technicznej uwagi do wdrażania oprogramowania SAP HANA w systemie Red Hat:
 
-## <a name="time-synchronization"></a>Czas synchronizacji
+- [Uwaga pomocy technicznej SAP #2009879 — SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E).
+- [Obsługa uwagę #2292690 — bazy danych SAP HANA: Zalecane ustawienia systemu operacyjnego dla RHEL 7](https://launchpad.support.sap.com/#/notes/2292690).
+- [Obsługa uwagę #2247020 — bazy danych SAP HANA: Zalecane ustawienia systemu operacyjnego dla RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020).
+- [Uwaga pomocy technicznej SAP 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070).
+- [Uwaga pomocy technicznej SAP 2228351 # — Linux: Oprogramowanie SAP HANA Database SPS 11 poprawki 110 (lub nowszego) na zobowiązaniu 6-RHEL lub SLES 11](https://launchpad.support.sap.com/#/notes/2228351).
+- [Obsługa uwagę #2397039 — często zadawane pytania: SAP w systemie RHEL](https://launchpad.support.sap.com/#/notes/2397039).
+- [Uwaga pomocy technicznej SAP 1496410 # - Red Hat Enterprise Linux 6.x: Instalowanie i uaktualnianie](https://launchpad.support.sap.com/#/notes/1496410).
+- [Uwaga pomocy technicznej SAP 2002167 # - Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie](https://launchpad.support.sap.com/#/notes/2002167).
 
-Aplikacje SAP oparty na architekturze SAP NetWeaver są wrażliwe na różnice czasu różne składniki wchodzące w skład systemu SAP. Krótki ABAP SAP zrzuty z tytułu błąd ZDATE\_DUŻY\_czasu\_Różnicowy są prawdopodobnie znany, jak te zrzuty krótkich wyglądała czas systemowy na różnych serwerach lub maszyn wirtualnych przemieszcza się zbyt daleko od siebie.
+## <a name="time-synchronization"></a>Synchronizacja czasu
 
-Dla SAP HANA na platformie Azure (wystąpienia duże), czas synchronizacji w Azure&#39;t dotyczą jednostki obliczeń w dużych wystąpienia sygnatury. Synchronizacja nie ma zastosowania do aplikacje SAP w macierzysty maszynach wirtualnych platformy Azure, jak Azure zapewnia system&#39;czasu s jest odpowiednio zsynchronizowane. W związku z tym oddzielny czasu można skonfigurować serwera używanego przez SAP serwerów aplikacji działających na maszynach wirtualnych platformy Azure i SAP HANA bazy danych uruchomionych w wystąpieniach dużych HANA wystąpień. Infrastruktury magazynu w dużych wystąpienia sygnatury jest zsynchronizowany z Serwery NTP czasu.
+Aplikacje SAP oparte na architekturze oprogramowania SAP NetWeaver są wrażliwe na różnice czasu dla różnych składników wchodzących w skład systemu SAP. SAP ABAP krótki zrzuty z tytułu błąd ZDATE\_duże\_czasu\_DIFF są prawdopodobnie znany, jak te krótkie zrzuty są wyświetlane, gdy czas systemowy różnych serwerach lub maszynach wirtualnych przemieszcza się zbyt daleko od siebie.
 
-## <a name="setting-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT SUSE Linux
-SAP HANA dużych wystąpień nie ma bezpośredniego połączenia z Internetem. Dlatego nie jest dość proste zarejestrować takiej jednostki u dostawcy systemu operacyjnego oraz do pobierania i stosowania poprawek. W przypadku SUSE Linux jedno rozwiązanie można skonfigurować serwer SMT w maszynie Wirtualnej platformy Azure. Maszyny Wirtualnej Azure powinna być obsługiwana przez sieć wirtualną platformy Azure, którego jest podłączony do wystąpienia dużych HANA. Z takiego serwera SMT jednostka wystąpienia dużych HANA można zarejestrować i pobrania poprawek. 
+Dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia), czas synchronizacji w usłudze Azure&#39;t dotyczyć jednostek obliczeniowych w sygnatury dużego wystąpienia. Wykonanie synchronizacji nie ma zastosowania do uruchamiania aplikacji SAP na natywnych maszynach wirtualnych Azure, jak platforma Azure zapewnia system&#39;s czasu są poprawnie synchronizowane. W wyniku inny termin można skonfigurować serwera używany przez firmę SAP serwery aplikacji działające na maszynach wirtualnych platformy Azure i platforma SAP HANA bazy danych wystąpień uruchomionych w dużych wystąpieniach HANA. Infrastruktury magazynu w sygnatury duże wystąpienie jest zsynchronizowany z serwerów NTP czasu.
 
-SUSE zawiera większego przewodnika po po ich [subskrypcji narzędzia do zarządzania z dodatkiem SP2 SLES 12](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
+## <a name="setting-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT w systemie SUSE Linux
+Duże wystąpienia SAP HANA nie ma bezpośredniego połączenia z Internetem. Dlatego nie jest dość proste zarejestrować takiej jednostki u dostawcy systemu operacyjnego, a także pobieranie i stosowanie poprawek. W przypadku SUSE Linux jedno rozwiązanie może być do konfigurowania serwera SMT w Maszynie wirtualnej platformy Azure. Maszyna wirtualna platformy Azure musi znajdować się w sieci wirtualnej platformy Azure, który jest podłączony do dużych wystąpień HANA. Za pomocą takiego serwera SMT jednostki dużych wystąpień HANA może zarejestrować, a następnie pobrania poprawek. 
 
-Jako warunek wstępny dla instalacji serwera SMT spełniającego zadania dla wystąpienia dużych HANA musisz:
+SUSE zawiera większych Przewodnik po ich [subskrypcji narzędzia do zarządzania w systemie SLES 12 z dodatkiem SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
 
-- Sieć wirtualną platformy Azure podłączonej do obwodu HANA dużych ER wystąpienia.
-- Konto SUSE, który jest skojarzony z organizacji. Podczas gdy organizacja musi dysponować niektórych ważnej subskrypcji SUSE.
+Jako warunek wstępny do instalacji serwera SMT spełniającego zadania dla dużych wystąpień HANA będzie potrzebne są:
 
-### <a name="installation-of-smt-server-on-azure-vm"></a>Instalacja serwera SMT na maszynie Wirtualnej Azure
+- Siecią wirtualną platformy Azure podłączonej do obwodu dużych ER wystąpienie oprogramowania HANA.
+- Konto SUSE, który jest skojarzony z organizacji. Natomiast organizacji musi mieć pewne ważnej subskrypcji SUSE.
 
-W tym kroku należy zainstalować serwer SMT w maszynie Wirtualnej platformy Azure. Pierwsza miara jest logować się do [SUSE Centrum klientów](https://scc.suse.com/)
+### <a name="installation-of-smt-server-on-azure-vm"></a>Instalacja serwera SMT na maszynie Wirtualnej platformy Azure
 
-Jako użytkownik jest zalogowany, przejdź do organizacji--> poświadczeń organizacji. Poświadczenia, które są niezbędne do skonfigurowania serwera SMT powinien znajdować się w tej sekcji.
+W tym kroku należy zainstalować serwer SMT w Maszynie wirtualnej platformy Azure. Pierwsza miara jest zalogować się do [Centrum klienta SUSE](https://scc.suse.com/)
 
-Trzeci krok polega na zainstalowaniu Maszynę wirtualną systemu Linux SUSE w sieci wirtualnej platformy Azure. Aby wdrożyć maszynę Wirtualną, należy podjąć obraz z dodatkiem SP2 SLES 12 galerii Azure. W procesie wdrażania nie definiuje nazwy DNS i nie należy używać statycznych adresów IP, jak pokazano w tym zrzucie ekranu.
+Ponieważ użytkownik jest zalogowany, przejdź do organizacji--> poświadczeń organizacji. Poświadczenia, które są niezbędne do skonfigurowania serwera SMT powinien znajdować się w tej sekcji.
 
-![wdrożenia maszyny wirtualnej dla serwera SMT](./media/hana-installation/image3_vm_deployment.png)
+Trzecim krokiem jest instalacji maszyny Wirtualnej z systemem SUSE Linux w sieci wirtualnej platformy Azure. Aby wdrożyć maszynę Wirtualną, należy podjąć w systemie SLES 12 z dodatkiem SP2 obrazu z galerii platformy Azure. W procesie wdrożenia nie należy zdefiniować nazwę DNS i nie używać statycznych adresów IP, jak pokazano na tym zrzucie ekranu.
 
-Wdrożonej maszyny Wirtualnej został mniejsze maszyny Wirtualnej i uzyskano wewnętrznego adresu IP w sieci wirtualnej platformy Azure z 10.34.1.4. Nazwa maszyny wirtualnej była smtserver. Po zakończeniu instalacji zaznaczono łączność HANA dużych jednostek wystąpienia. Zależy sposób organizowania rozpoznawania nazw może być konieczne Konfigurowanie rozpoznawania HANA wystąpienia dużych jednostek w itp/hosty maszyny wirtualnej Azure. Dodaj dodatkowy dysk do maszyny Wirtualnej, który ma być używany do przechowywania poprawki. Samego dysku rozruchowego może być za mały. W przypadku wykazać dysk został zainstalowany /srv/www/htdocs, jak pokazano na poniższym zrzucie ekranu. Dysk 100 GB powinny wystarczyć.
+![Wdrażanie maszyny wirtualnej dla serwera SMT](./media/hana-installation/image3_vm_deployment.png)
 
-![wdrożenia maszyny wirtualnej dla serwera SMT](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+Wdrożonej maszyny Wirtualnej było mniejsze maszyny Wirtualnej i masz wewnętrzny adres IP w sieci wirtualnej platformy Azure z 10.34.1.4. Nazwa maszyny wirtualnej była smtserver. Po zakończeniu instalacji łączność z platformy HANA dużych jednostek wystąpienia została sprawdzona. Zależy od sposobu organizowania rozpoznawania nazw użytkownik może być konieczne skonfigurowanie rozpoznawania jednostek dużych wystąpień HANA w etc/hosty, maszyny wirtualnej platformy Azure. Dodaj dodatkowy dysk do maszyny Wirtualnej, która ma być używana do przechowywania poprawki. Dysk rozruchowy, sama może być za mały. W przypadku pokazano dysk zainstalowany stało się do /srv/www/htdocs, jak pokazano na poniższym zrzucie ekranu. Dysk o pojemności 100 GB, powinien wystarczyć.
 
-Zaloguj się do jednostek HANA dużych wystąpienia, obsługa/etc/hosts i sprawdź, czy można uzyskać dostęp do maszyny Wirtualnej platformy Azure, który ma zostać uruchomiony serwer SMT za pośrednictwem sieci.
+![Wdrażanie maszyny wirtualnej dla serwera SMT](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
-Po ten test zakończy się pomyślnie, należy zalogować się do maszyny Wirtualnej platformy Azure, które powinno być ono uruchomione SMT serwera. Jeśli używasz programu putty logować się do maszyny Wirtualnej, należy wykonać ta sekwencja poleceń w oknie bash:
+Zaloguj się do jednostek dużych wystąpień HANA, obsługa/etc/hosts i sprawdź, czy można uzyskać dostęp do maszyny Wirtualnej platformy Azure, która ma zostać uruchomiony serwer SMT za pośrednictwem sieci.
+
+Po ten test zakończy się pomyślnie, należy zalogować się do maszyny Wirtualnej platformy Azure, które należy uruchomić serwer SMT. Jeśli używasz programu putty, zaloguj się do maszyny Wirtualnej, trzeba wykonać ta sekwencja poleceń w oknie programu bash:
 
 ```
 cd ~
 echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 ```
 
-Po wykonaniu tych poleceń, uruchom ponownie Twoje bash, aby aktywować ustawienia. Następnie uruchom YAST.
+Po wykonaniu tych poleceń, uruchom ponownie usługi powłokę bash w celu aktywowania ustawienia. Następnie uruchom YAST.
 
-W YAST przejdź do obsługi oprogramowania i wyszukaj smt. Wybierz smt, który automatycznie zmienia na yast2 smt, jak pokazano poniżej
+W YAST przejdź do obsługi oprogramowania i wyszukaj smt. Wybierz smt, który automatycznie przełącza się yast2 smt, jak pokazano poniżej
 
 ![SMT w yast](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Zaakceptuj wybór do instalacji na smtserver. Po zainstalowaniu, przejdź do konfiguracji serwera SMT, a następnie wprowadź poświadczenia organizacji z Centrum klienta SUSE został wcześniej pobrany. Jako adres URL serwera SMT także wprowadzić nazwy hosta z maszyny Wirtualnej platformy Azure. W tej prezentacji było https://smtserver wyświetlane w następnym grafiki.
+Zaakceptuj wybór instalacji na smtserver. Po zakończeniu instalacji przejdź do sekcji Konfiguracja serwera SMT oraz wprowadzanie poświadczeń w organizacji z Centrum klienta SUSE pobranym wcześniej. Jako adres URL serwera SMT wprowadzenia nazwy hosta usługi maszyny Wirtualnej platformy Azure. W tej prezentacji było https://smtserver wyświetlaną w następnym grafiki.
 
 ![Konfiguracja serwera SMT](./media/hana-installation/image6_configuration_of_smtserver1.png)
 
-Jako następnego kroku należy sprawdzić, czy połączenie z Centrum klientów SUSE działa. Jak widać w poniższej grafice, w przypadku pokaz rozwiązało problemu.
+W następnym kroku należy sprawdzić, czy połączenie z Centrum klientów SUSE działa. Jak widać w poniższej grafice w przypadku demonstracji, czy działało.
 
-![Test nawiązać połączenia z Centrum klientów SUSE](./media/hana-installation/image7_test_connect.png)
+![Test nawiązać połączenie z Centrum klienta SUSE](./media/hana-installation/image7_test_connect.png)
 
-Raz SMT zostanie uruchomiony Instalator, musisz podać hasło bazy danych. Ponieważ chodzi o nowej instalacji, należy określić hasło, jak pokazano w następnym grafiki.
+Po rozpoczęciu instalacji SMT należy podać hasło bazy danych. Ponieważ jest nowa instalacja, musisz zdefiniować to hasło, jak pokazano w następnym grafiki.
 
-![Określić hasło dla bazy danych](./media/hana-installation/image8_define_db_passwd.PNG)
+![Zdefiniuj hasło dla bazy danych](./media/hana-installation/image8_define_db_passwd.PNG)
 
-Dalej interakcji, których masz jest tworzona pobiera certyfikat. Przejdź w oknie dialogowym, jak pokazano w następnym i powinno być kontynuowane w kroku.
+Dalej interakcji, które należy jest, gdy certyfikat zostanie utworzona. Przejdź w oknie dialogowym, jak pokazano dalej i ten krok należy kontynuować.
 
-![Utworzenie certyfikatu serwera SMT](./media/hana-installation/image9_certificate_creation.PNG)
+![Utwórz certyfikat z serwera SMT](./media/hana-installation/image9_certificate_creation.PNG)
 
-Może istnieć kilka minut spędzony w kroku "Uruchom sprawdzanie synchronizacji" po zakończeniu konfiguracji. Po instalacji i konfiguracji serwera SMT, należy odnaleźć repozytorium katalogu, w obszarze instalacji punktu /srv/www/htdocs/plus niektórych podkatalogów w repozytorium. 
+Może istnieć kilka minut, spędzony w kroku "Uruchom sprawdzanie synchronizacji" na końcu konfiguracji. Po instalacji i konfiguracji serwera SMT, należy odnaleźć repozytorium katalogu w ramach instalacji punktu /srv/www/htdocs/oraz niektóre podkatalogi w repozytorium. 
 
-Uruchom ponownie serwer SMT i jej powiązane usługi przy użyciu następujących poleceń.
+Uruchom ponownie serwer SMT i powiązanych usług przy użyciu następujących poleceń.
 
 ```
 rcsmt restart
@@ -251,156 +257,156 @@ systemctl restart smt.service
 systemctl restart apache2
 ```
 
-### <a name="download-of-packages-onto-smt-server"></a>Pobierz pakietów na serwerze SMT
+### <a name="download-of-packages-onto-smt-server"></a>Pobierz pakiety na serwerze SMT
 
-Po uruchomieniu wszystkich usług wybierz odpowiednie pakiety zarządzania SMT przy użyciu Yast. Wybór pakietów zależy od obrazu systemu operacyjnego HANA dużych wystąpienia serwera nie SLES wersji lub wersji uruchamiania serwera SMT maszyny wirtualnej. Poniżej przedstawiono przykład ekranu wyboru.
+Po uruchomieniu wszystkich usług wybierz odpowiednie pakiety zarządzania SMT przy użyciu Yast. Wybór pakietów zależy od obrazu systemu operacyjnego serwera dużych wystąpień HANA nie wydania systemu SLES lub wersję maszyny Wirtualnej z systemem SMT server. Poniżej przedstawiono przykład ekranu wyboru.
 
 ![Wybierz pakiety](./media/hana-installation/image10_select_packages.PNG)
 
-Po zakończeniu wybór pakietów, musisz uruchomić początkowe kopiowanie Wybierz pakiety do skonfigurowanego serwera SMT. Ta kopia zostanie wywołany w powłoce przy użyciu polecenia smt — dublowanie w sposób przedstawiony poniżej
+Po zakończeniu wybór pakietu należy uruchomić początkowe kopiowanie Wybierz pakiety do serwera SMT, z którym można skonfigurować. Ta kopia zostanie wywołany w powłoce, za pomocą polecenia smt — dublowanie pokazany poniżej
 
 
-![Pobierz pakiety SMT serwer](./media/hana-installation/image11_download_packages.PNG)
+![Pobierz pakiety, serwer SMT](./media/hana-installation/image11_download_packages.PNG)
 
-Jak widać powyżej, pakiety należy pobrać kopiowane do katalogi utworzone na podstawie instalacji punktu /srv/www/htdocs. Ten proces może trochę potrwać. Zależne od liczby pakietów, należy wybrać, może potrwać godzinę lub więcej.
-Jak zakończenie tego procesu, musisz przenieść SMT instalacji klienta. 
+Jak widać powyżej pakietów należy skopiowania do katalogi utworzone w ramach instalacji punktu /srv/www/htdocs. Ten proces może wymagać trochę czasu. Zależy od liczby pakietów, możesz wybrać, może potrwać do godziny lub dłużej.
+Po zakończeniu tego procesu, musisz przenieść SMT instalację klienta. 
 
-### <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>Konfigurowanie klienta SMT HANA wystąpienia dużych jednostek
+### <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>Konfigurowanie klienta SMT w jednostkach dużych wystąpień HANA
 
-W takim przypadku klientów są HANA dużych wystąpienia jednostki. Konfigurowanie serwera SMT kopiowane clientSetup4SMT.sh skryptu do maszyny Wirtualnej platformy Azure. Kopia skryptu przez HANA dużych wystąpienia jednostki można chcesz połączyć się z serwerem SMT. Uruchom skrypt przy użyciu opcji -h i nadaj mu jako parametr nazwy serwera SMT. W tym smtserver przykład.
+Klientów w tym przypadku są duże wystąpienie oprogramowania HANA. Konfiguracja serwera SMT kopiowane clientSetup4SMT.sh skrypt do maszyny Wirtualnej platformy Azure. Kopia skrypt przez jednostkę dużych wystąpień HANA chcesz połączyć się z serwerem SMT. Uruchom skrypt z opcją -h i nadaj jako parametr nazwy serwera SMT. W tym przykładzie smtserver.
 
 ![Konfigurowanie klienta SMT](./media/hana-installation/image12_configure_client.PNG)
 
-Może to być scenariusz, w których obciążenia certyfikatu z serwera przez klienta zakończyło się pomyślnie, ale rejestracja nie powiodła się, jak pokazano poniżej.
+Może to być scenariusz, w którym obciążenia certyfikatu z serwera przez klienta zakończyło się pomyślnie, ale rejestracja nie powiodła się, jak pokazano poniżej.
 
-![Rejestracja klienta nie powiedzie się.](./media/hana-installation/image13_registration_failed.PNG)
+![Rejestracja klienta zakończy się niepowodzeniem](./media/hana-installation/image13_registration_failed.PNG)
 
-Jeśli rejestracja nie powiodła się, przeczytaj [SUSE obsługuje dokumentu](https://www.suse.com/de-de/support/kb/doc/?id=7006024) , a następnie wykonaj kroki opisane istnieje.
+Jeśli rejestracja nie powiodła się, przeczytaj ten [SUSE obsługiwała dokumentów](https://www.suse.com/de-de/support/kb/doc/?id=7006024) i wykonaj kroki opisane w.
 
 > [!IMPORTANT] 
-> Jako nazwę serwera należy podać nazwę maszyny Wirtualnej w ramach tej sprawy smtserver, bez w pełni kwalifikowaną nazwę domeny. Po prostu działa Nazwa maszyny Wirtualnej. 
+> Jako nazwę serwera należy podać nazwę maszyny Wirtualnej, w tym smtserver wielkości liter, bez w pełni kwalifikowaną nazwę domeny. Po prostu działa nazwę maszyny Wirtualnej. 
 
-Po zostały wykonane następujące kroki, należy wydać następujące polecenie w jednostce HANA dużych wystąpienia
+Po wykonaniu tych kroków, należy wydać następujące polecenie w jednostce dużych wystąpień HANA
 
 ```
 SUSEConnect –cleanup
 ```
 
 > [!Note] 
-> Nasze testy zawsze było konieczne Poczekaj kilka minut po wykonaniu tego kroku. ClientSetup4SMT.sh natychmiastowego wykonania po naprawcze opisaną w artykule SUSE zakończył się z wiadomości, że certyfikat nie jest prawidłowym jeszcze. Oczekiwanie na 5 – 10 minut zazwyczaj i wykonywania clientSetup4SMT.sh zostało zakończone w konfiguracji klienta powiodło się.
+> W naszym testy mieliśmy zawsze Poczekaj kilka minut po wykonaniu tego kroku. ClientSetup4SMT.sh natychmiastowe wykonanie, po naprawcze opisaną w artykule SUSE zakończyła się z wiadomości, że certyfikat nie jest prawidłowym jeszcze. Oczekiwanie na 5 – 10 minut zwykle i wykonywanie clientSetup4SMT.sh została zakończona w konfiguracji klienta się pomyślnie.
 
-Wystąpił problem, który niezbędnych do określenia oparte na kroki artykułu SUSE, należy ponownie clientSetup4SMT.sh w jednostce HANA dużych wystąpienia. Teraz go powinna zakończyć się pomyślnie, jak pokazano poniżej.
+Rozwiąże problem, który jest potrzebny do naprawienia oparte na krokach artykułu SUSE należy ponownie uruchomić clientSetup4SMT.sh w jednostce dużych wystąpień HANA. Teraz powinno to zająć pomyślnie, jak pokazano poniżej.
 
-![Rejestracja klienta powiodło się.](./media/hana-installation/image14_finish_client_config.PNG)
+![Rejestracja klienta powiodła się](./media/hana-installation/image14_finish_client_config.PNG)
 
-Ten krok należy skonfigurować klienta SMT jednostki wystąpienia dużych HANA nawiązywania połączenia z serwerem SMT, instalowania w maszynie Wirtualnej platformy Azure. Teraz można wykonać "zypper się" lub "zypper w" instalowanie poprawek systemu operacyjnego do wystąpień dużych HANA lub zainstalować dodatkowe pakiety. Przyjmuje się, że tylko ci poprawki, które pobrane przed na serwerze SMT.
+Ten krok należy skonfigurować klienta SMT jednostki dużych wystąpień HANA, aby połączyć względem serwera SMT, który został zainstalowany w maszynie Wirtualnej platformy Azure. Teraz można wykonać "zypper się" lub "zypper w" instalowania poprawek systemu operacyjnego do dużych wystąpień HANA lub zainstalować dodatkowe pakiety. Przyjmuje się, że tylko ci poprawek, które pobrany przed na serwerze SMT.
 
 
-## <a name="example-of-an-sap-hana-installation-on-hana-large-instances"></a>Przykład instalacji SAP HANA na HANA dużych wystąpień
-W tej części przedstawiono sposób instalowania SAP HANA HANA dużych wystąpienia jednostki. Stan początkowy będziemy mieć następującą postać:
+## <a name="example-of-an-sap-hana-installation-on-hana-large-instances"></a>Przykład instalacji oprogramowania SAP HANA w dużych wystąpieniach HANA
+W tej sekcji pokazano, jak instalowanie platformy SAP HANA w jednostce dużych wystąpień HANA. Stan początkowy, firma Microsoft ma następującą postać:
 
-- Microsoft podane wszystkie dane do wdrożenia można instancji dużych SAP HANA.
-- Wystąpienie dużych SAP HANA otrzymanej od firmy Microsoft.
-- Możesz utworzyć sieć wirtualną platformy Azure, która jest połączona z siecią lokalną.
-- Obwód ExpressRotue jest połączony HANA dużych wystąpień do tej samej sieci wirtualnej platformy Azure.
-- Zainstalowano maszyny Wirtualnej platformy Azure są używane jako okno przeskoku HANA dużych wystąpień.
-- Wprowadzone można łączenie z pola skok do jednostki wystąpienia dużych HANA i na odwrót.
-- Sprawdzić, czy zainstalowano wszystkie niezbędne pakiety i poprawki.
-- Przeczytaj uwagi SAP i dokumenty dotyczące instalacji HANA na system operacyjny używany i nie jest upewnienie się, że wersja HANA wybór jest obsługiwana na system operacyjny wersji.
+- Microsoft jest udostępniane wszystkie dane, aby wdrożyć duże wystąpienie SAP HANA.
+- Duże wystąpienie SAP HANA jest otrzymanych od firmy Microsoft.
+- Utworzono sieć wirtualną platformy Azure, która jest połączona z siecią lokalną.
+- Masz połączenie obwodu ExpressRotue dla dużych wystąpień HANA do tej samej sieci wirtualnej platformy Azure.
+- Możesz zainstalować Maszynie wirtualnej platformy Azure są używane jako przesiadkowym dużych wystąpień HANA.
+- Możesz upewnienie się, że można połączyć z przesiadkowym jednostkowy dużych wystąpień HANA i na odwrót.
+- Sprawdzane, czy zainstalować wszystkie niezbędne pakiety i poprawki.
+- Przeczytaj uwagi SAP i dokumentacje dotyczącą dotyczące instalacji platformy HANA w systemie operacyjnym, używania i upewnienie się, że wersja platformy HANA wybór jest obsługiwany w systemie operacyjnym wydania.
 
-Co to jest wyświetlany w sekwencjach dalej jest pobierania pakietów instalacyjnych HANA okno przeskoku uruchomionych maszyn wirtualnych, w tym przypadku na systemu operacyjnego, kopiowania pakietów HANA dużych wystąpienie jednostki oraz sekwencję Instalatora.
+Przedstawiono na następnym sekwencji jest pobieranie pakiety instalacyjne oprogramowania HANA w celu przesiadkowym maszyny Wirtualnej, w tym przypadku systemem operacyjnym Windows, kopiowania pakietów do jednostki dużych wystąpień HANA i sekwencji instalacji.
 
-### <a name="download-of-the-sap-hana-installation-bits"></a>Pobieranie usługi bits instalacji SAP HANA
-Ponieważ jednostki HANA dużych wystąpienie nie ma bezpośredniego połączenia z Internetem, nie można bezpośrednio pobraniu pakiety instalacyjne z SAP do maszyny Wirtualnej HANA dużych wystąpienia. Aby wyeliminować Brak bezpośrednie połączenie internetowe, należy okno przeskoku. Okno przeskoku maszyny Wirtualnej, należy pobrać pakiety.
+### <a name="download-of-the-sap-hana-installation-bits"></a>Pobieranie usługi bits instalacji oprogramowania SAP HANA
+Ponieważ jednostki dużych wystąpień HANA nie mają bezpośredniego połączenia z Internetem, możesz nie można bezpośrednio pobrać pakiety instalacyjne programu SAP do maszyny Wirtualnej platformy HANA duże wystąpienia. Aby przezwyciężyć Brak bezpośrednie połączenie z Internetem, należy przesiadkowym. Możesz pobrać pakiety w celu przesiadkowym maszyny Wirtualnej.
 
-Aby pobrać pakiety instalacyjne HANA, należy użytkownik S SAP lub innego użytkownika, dzięki czemu można uzyskać dostępu do witryny Marketplace SAP. Po zalogowaniu, przejdź do tej sekwencji ekrany:
+Aby pobrać pakiety instalacyjne oprogramowania HANA, konieczne będzie SAP S-użytkownik lub inny użytkownik, który umożliwia dostęp do portalu Marketplace SAP. Po zalogowaniu się w przechodzą ta sekwencja ekrany:
 
-Przejdź do [Marketplace usługi SAP](https://support.sap.com/en/index.html) > kliknij polecenie Pobierz oprogramowanie > instalacje i uaktualnienia > przez indeks alfabetyczny > w obszarze H — SAP HANA wersji platformy > SAP HANA platformy wersji 2.0 > instalacji > Pobierz następujące pliki
+Przejdź do [SAP Service Marketplace](https://support.sap.com/en/index.html) > kliknij przycisk pobierania oprogramowania > instalacje i uaktualnienia > przez indeks alfabetyczny > w obszarze H — SAP HANA Edition platformy > oprogramowania SAP HANA platformy Edition w wersji 2.0 > instalacji > Pobierz następujące pliki
 
 ![Pobierz HANA instalacji](./media/hana-installation/image16_download_hana.PNG)
 
-W przypadku pokaz pobraliśmy pakietów instalacyjnych SAP HANA 2.0. W oknie skok Azure VM rozwinięciu samowyodrębniający archiwa do katalogu w sposób przedstawiony poniżej.
+W przypadku demonstracji pobraliśmy pakietów instalacyjnych SAP HANA w wersji 2.0. Na serwerze Azure przesiadkowym maszyny Wirtualnej należy rozwinąć samowyodrębniający archiwa do katalogu jak pokazano poniżej.
 
 ![Wyodrębnij HANA instalacji](./media/hana-installation/image17_extract_hana.PNG)
 
-Jako archiwum są wyodrębniane, skopiuj Katalog utworzony przez w przypadku powyżej 51052030, wyodrębniania dużych HANA jednostki wystąpienia w wolumin /hana/shared do katalogu, który został utworzony.
+Archiwum są wyodrębniane, Kopiuj Katalog utworzony przez wyodrębniania, w tym przypadku powyżej 51052030, HANA, duże wystąpienia jednostki do woluminu /hana/shared do katalogu, który został utworzony.
 
 > [!Important]
-> Nie należy kopiować pakiety instalacyjne do katalogu głównego lub rozruchu jednostki LUN, od miejsca jest ograniczona, a musi zostać użyte przez inne procesy, jak również.
+> Nie należy kopiować pakiety instalacyjne do katalogu głównego lub rozruchu jednostki LUN, ponieważ miejsce jest ograniczone i musi zostać użyte przez inne procesy, jak również.
 
 
-### <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Zainstaluj SAP HANA w jednostce HANA dużych wystąpienia
-Aby można było zainstalować SAP HANA, musisz zalogować się jako użytkownik główny. Tylko główny ma wystarczające uprawnienia do instalowania SAP HANA.
-W pierwszej kolejności należy wykonać, jest uprawnienia są kopiowane do/hana/udostępnionego katalogu. Należy określić takich jak uprawnienia
+### <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Instalowanie platformy SAP HANA w jednostce dużych wystąpień HANA
+Aby zainstalować oprogramowanie SAP HANA, należy zalogować się jako użytkownik główny. Tylko główny ma wystarczających uprawnień, aby zainstalować oprogramowanie SAP HANA.
+Pierwszą rzeczą, jaką należy wykonać, jest ustawić uprawnienia dla katalogu w którym zostały skopiowane przez/hana/udostępnione. Uprawnienia muszą ustawić np.
 
 ```
 chmod –R 744 <Installation bits folder>
 ```
 
-Jeśli chcesz zainstalować SAP HANA przy użyciu graficznego instalacji pakietu gtk2 trzeba zainstalować w wystąpieniach dużych HANA. Sprawdź, czy jest zainstalowany przy użyciu polecenia
+Jeśli chcesz zainstalować oprogramowanie SAP HANA przy użyciu konfiguracji graficznej pakietu gtk2 należy zainstalować w dużych wystąpieniach HANA. Sprawdź, czy jest ona zainstalowana za pomocą polecenia
 
 ```
 rpm –qa | grep gtk2
 ```
 
-W dalszych krokach możemy są prezentacja konfiguracji SAP HANA z graficznego interfejsu użytkownika. Jako następnego kroku przejdź do katalogu instalacji, a następnie przejdź do katalogu sub HDB_LCM_LINUX_X86_64. Uruchamianie
+W dalszych krokach będziemy są ukazujące instalacji oprogramowania SAP HANA przy użyciu graficznego interfejsu użytkownika. Przejdź do katalogu instalacji i przejdź do podkatalogu HDB_LCM_LINUX_X86_64 następnego kroku. Uruchamianie
 
 ```
 ./hdblcmgui 
 ```
-z tego katalogu. Teraz pobierania zapoznasz się sekwencję ekrany gdzie należy podać dane dotyczące instalacji. W przypadku wykazać firma Microsoft jest instalowany serwer bazy danych SAP HANA i składniki klienta programu SAP HANA. W związku z tym naszej zaznaczenie jest "Bazy danych SAP HANA", jak pokazano poniżej
+z tego katalogu. Teraz wprowadzenie zapoznasz się sekwencji ekranów, gdzie należy podać dane dotyczące instalacji. W przypadku wykazać firma Microsoft jest instalowany serwer bazy danych SAP HANA i składniki klienta SAP HANA. W związku z tym nasze zaznaczenie jest "Baza danych SAP HANA", jak pokazano poniżej
 
-![Wybierz HANA w instalacji](./media/hana-installation/image18_hana_selection.PNG)
+![Wybierz platformy HANA w instalacji](./media/hana-installation/image18_hana_selection.PNG)
 
-Na następnym ekranie użytkownik wybierze opcję "Zainstaluj nowego systemu"
+Na następnym ekranie możesz wybrać opcję "Zainstalować nowy System"
 
-![Wybierz opcję HANA nowa instalacja](./media/hana-installation/image19_select_new.PNG)
+![Wybierz platformy HANA nowa instalacja](./media/hana-installation/image19_select_new.PNG)
 
-Po wykonaniu tego kroku musisz wybrać między kilka dodatkowych składników, które mogą być instalowane dodatkowo na serwerze bazy danych SAP HANA.
+Po wykonaniu tego kroku należy wybrać między kilka dodatkowych składników, które mogą być instalowane dodatkowo na serwerze bazy danych SAP HANA.
 
-![Wybierz dodatkowe składniki HANA](./media/hana-installation/image20_select_components.PNG)
+![Wybierz dodatkowe składniki platformy HANA](./media/hana-installation/image20_select_components.PNG)
 
-Na potrzeby tej dokumentacji Wybraliśmy SAP HANA klienta i programu SAP HANA Studio. Możemy również zainstalować wystąpienie skalowanie w pionie. Dlatego na następnym ekranie, musisz wybrać "Jednego hosta System" 
+Na potrzeby niniejszej dokumentacji Wybraliśmy klienckie HANA SAP i SAP HANA Studio. Instalowany jest także wystąpienie skalowanie w górę. Dlatego na następnym ekranie, musisz wybrać "System jednego hosta" 
 
-![Wybierz opcję instalacji skalowanie w pionie](./media/hana-installation/image21_single_host.PNG)
+![Wybierz opcję instalacji skalowanie w górę](./media/hana-installation/image21_single_host.PNG)
 
-Na następnym ekranie należy podać niektóre dane
+Na następnym ekranie należy podać dane
 
-![Podaj SAP HANA SID](./media/hana-installation/image22_provide_sid.PNG)
+![Podaj identyfikator SID programu SAP HANA](./media/hana-installation/image22_provide_sid.PNG)
 
 > [!Important]
-> Jako HANA systemu (SID), należy podać ten sam identyfikator SID, jak podane firmy Microsoft, gdy uporządkowane wdrożenia HANA dużych wystąpienia. Wybieranie innym identyfikatorem SID sprawia, że instalacja się nie powieść z powodu problemów z uprawnieniami dostępu na różnych woluminach
+> Jako identyfikator systemu HANA (SID), należy podać ten sam identyfikator SID jako podane firmy Microsoft, gdy uporządkowane wdrażanie dużych wystąpień HANA. Wybierając inny identyfikator SID sprawia, że instalacja się nie powieść z powodu problemów z uprawnieniami dostępu na różnych woluminach
 
-Instalacja katalogu Użyj/hana/udostępniony katalog. W następnym kroku należy podać lokalizacje plików danych HANA i plików dziennika HANA
+Jako instalację katalogu, możesz użyć/hana/udostępnionego katalogu. W następnym kroku należy podać lokalizacje plików danych HANA i pliki dziennika HANA
 
 
 ![Podaj lokalizację dziennika HANA](./media/hana-installation/image23_provide_log.PNG)
 
 > [!Note]
-> Należy zdefiniować jako dane i pliki w woluminach, które już dołączone punkty instalacji, które zawierają identyfikator SID w zaznaczenie ekranu przed tym ekranie dziennika. Jeśli identyfikator SID niezgodność, który został wpisany w, na ekranie przed, przejdź wstecz i dopasować identyfikatora SID na wartość, które znajdują się w punktach instalacji.
+> Należy zdefiniować jako dane i woluminy, które już dołączone punkty instalacji, które zawierają SID w zaznaczenie ekranu przed tym ekranie wybrano plików dziennika. Jeśli identyfikator SID niezgodność, który został wpisany, na ekranie przed wróć i dopasuj identyfikator SID wartość, na punkty instalacji.
 
-W następnym kroku Sprawdź nazwę hosta i ostatecznie Popraw go. 
+W następnym kroku Sprawdź nazwę hosta, a ostatecznie Popraw go. 
 
-![Przejrzyj nazwy hosta](./media/hana-installation/image24_review_host_name.PNG)
+![Nazwa hosta przeglądu](./media/hana-installation/image24_review_host_name.PNG)
 
-W następnym kroku należy również pobierać dane, które należy nadać do firmy Microsoft uporządkowane wdrożenia HANA dużych wystąpienia. 
+W następnym kroku, należy również pobierać dane, które należy nadać do firmy Microsoft uporządkowane wdrażanie dużych wystąpień HANA. 
 
-![Podaj użytkownika systemu identyfikatorów UID i GID](./media/hana-installation/image25_provide_guid.PNG)
+![Podaj użytkownika systemowego identyfikatorów UID i GID](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> Konieczne jest zapewnienie tego samego Identyfikatora użytkownika systemu i Identyfikatora grupy użytkowników jako podane Microsoft jako kolejność wdrażania jednostki. Jeśli nie można nadać bardzo takich samych identyfikatorów, instalacja SAP HANA w jednostce HANA dużych wystąpienie nie powiedzie się.
+> Należy podać ten sam identyfikator użytkownika systemu i Identyfikatora grupy użytkowników jako podane firmy Microsoft, jak kolejność wdrażania jednostki. Nie można nadać bardzo takich samych identyfikatorów, instalacja oprogramowania SAP HANA w jednostce dużych wystąpień HANA kończy się niepowodzeniem.
 
-W dwóch następnych ekranach, które firma Microsoft nie są wyświetlane w tej dokumentacji, musisz podać hasło dla użytkownika SYSTEM bazy danych SAP HANA i hasło użytkownika sapadm, który służy do agenta hosta SAP, które są instalowane jako część datab SAP HANA wystąpienie ASE.
+W dwóch następnych ekrany, które firma Microsoft nie są wyświetlane w tej dokumentacji, należy podać hasło dla użytkownika SYSTEM bazy danych SAP HANA i hasło dla użytkownika sapadm, używany dla agenta hosta SAP, który pobiera instalowany jako część datab platformy SAP HANA wystąpienie środowiska ASE.
 
-Po zdefiniowaniu hasła, ekran potwierdzenia jest wyświetlane. Sprawdź wszystkie dane na liście i kontynuować instalację. Zostanie wyświetlona ekran postępu dokumentów postęp instalacji, jak poniżej
+Po zdefiniowaniu hasła, ekran potwierdzenia są wyświetlane. Sprawdź wszystkie dane na liście i kontynuować instalację. Osiągniesz ekran pokazujący postęp, która dokumentuje postęp instalacji, jak ta, poniżej
 
-![Sprawdź postęp instalacji](./media/hana-installation/image27_show_progress.PNG)
+![Sprawdzanie postępu instalacji](./media/hana-installation/image27_show_progress.PNG)
 
-Jak zakończeniu instalacji należy obraz podobny do następującego
+Po zakończeniu instalacji, należy dodać obraz podobny do następującego
 
-![Instalacja została zakończona](./media/hana-installation/image28_install_finished.PNG)
+![Instalacja została zakończona.](./media/hana-installation/image28_install_finished.PNG)
 
-W tym momencie z wystąpieniem SAP HANA powinna być maksymalnie i działa prawidłowo i gotowe do użycia. Można się z nią połączyć z SAP HANA Studio. Upewnij się, sprawdź, czy są dostępne najnowsze poprawki SAP HANA, a następnie zastosować te poprawki również.
+W tym momencie wystąpienie SAP HANA, powinny być nawet i działa i gotowy do użycia. Powinien móc połączyć je z SAP HANA Studio. Upewnij się również wyszukać najnowszych poprawek oprogramowanie SAP HANA, a następnie zastosować te poprawki.
 
 
 

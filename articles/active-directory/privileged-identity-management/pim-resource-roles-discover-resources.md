@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f4b6fafe40fe00492bac7bd6c28268321d4516db
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622106"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104359"
 ---
 # <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Odnajdywanie i zarządzanie zasobami platformy Azure przy użyciu Privileged Identity Management
 
@@ -27,7 +27,7 @@ Dowiedz się, jak odnajdywanie i zarządzanie zasobami platformy Azure, korzysta
 Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć i wybrać zasoby, które mają być chronione przez usługę PIM. Nie ma żadnego limitu liczby zasobów, którymi można zarządzać za pomocą usługi PIM. Firma Microsoft zaleca jednak począwszy od najbardziej krytycznych zasobów (produkcja).
 
 > [!NOTE]
-> Można jedynie wyszukiwanie i wybieranie subskrypcji zasobów do zarządzania za pomocą usługi PIM. Podczas zarządzania subskrypcją w usłudze PIM, można również zarządzać zasoby podrzędne w ramach subskrypcji.
+> Można jedynie Wyszukaj i wybierz zasoby do grupy lub subskrypcji zarządzania można zarządzać za pomocą usługi PIM. Jeśli zarządzasz grupę zarządzania lub subskrypcji w usłudze PIM, możesz zarządzać jego zasoby podrzędne.
 
 ## <a name="discover-resources"></a>Odnajdź zasoby
 

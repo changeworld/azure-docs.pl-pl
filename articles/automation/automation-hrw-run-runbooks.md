@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 118f9d7865728177f323078c036aee1884a61431
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390300"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43103772"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -47,9 +47,9 @@ Domyślnie, elementy runbook działają w kontekście konta systemu lokalnego dl
 
 Możesz użyć [poświadczeń](automation-credentials.md) i [certyfikatu](automation-certificates.md) zasobów w elemencie runbook za pomocą poleceń cmdlet, które pozwalają określić poświadczenia, więc istnieje możliwość uwierzytelnienia się różnymi zasobami. Poniższy przykład pokazuje części elementu runbook, który powoduje ponowne uruchomienie komputera. Jej pobiera poświadczenia z zasób poświadczeń i nazwę komputera z zasobem zmiennej, a następnie używa tych wartości w poleceniu cmdlet Restart-Computer.
 
-```azurepowershell-interactive
-$Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
-$Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
+```powershell
+$Cred = Get-AutomationPSCredential -Name "MyCredential"
+$Computer = Get-AutomationVariable -Name "ComputerName"
 
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```

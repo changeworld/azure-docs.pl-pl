@@ -3,18 +3,18 @@ title: Instalowanie opublikowanej aplikacji — Dataiku DDS — Azure HDInsight
 description: Zainstalować i używać aplikacji platformy Hadoop innych firm Dataiku DDS.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8d01b94ce4af6e3f5bcdc05ce84ef6deb1d3cae6
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 64a6f393498ca90675712747afc8f9befc4b932f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598775"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105173"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Instalowanie opublikowanej aplikacji — Dataiku DDS
 

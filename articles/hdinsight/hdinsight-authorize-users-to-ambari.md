@@ -3,18 +3,18 @@ title: Autoryzowanie użytkowników na potrzeby widoków Ambari — Azure HDInsi
 description: Jak zarządzać uprawnieniami użytkowników i grup dla przyłączonych do domeny klastrów HDInsight Ambari.
 services: hdinsight
 author: maxluk
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: a0f8cf062ed08f0dfa57107baf29724a8e58d0af
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7734848035eeab3c38a57b9999f8cda77f6a4e24
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592129"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107160"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari
 

@@ -3,18 +3,18 @@ title: Przegląd usług Machine learning — Azure HDInsight
 description: W tym artykule opisano opcje w HDInsight uczenia maszynowego.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jasonh
-ms.openlocfilehash: 79c50935d36070b9f6b7cd6dd0af2d09c4a30f68
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 10d4056ea9d78bd56710b7b5d67297b90232cf0b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590385"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107735"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenia maszynowego w HDInsight
 

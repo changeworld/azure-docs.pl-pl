@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-hub
+ms.service: iot-hub
+author: dominicbetts
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096439"
+---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Dostosowywanie i rozszerzanie akcje z zakresu zarządzania urządzeniami
 
 Rozwiązania IoT można rozwinąć zdefiniowanym zestawem wzorców zarządzania urządzeniami lub włączyć wzorców niestandardowych za pomocą bliźniaczej reprezentacji urządzenia i podstawowych metoda chmury do urządzenia. Inne akcje z zakresu zarządzania urządzeniami przykładami resetowania do ustawień fabrycznych, aktualizacja oprogramowania układowego, aktualizacji oprogramowania, zarządzania energią, Zarządzanie sieciami i łączności i szyfrowania danych.
@@ -12,12 +29,8 @@ W tym samouczku użyto metody bezpośredniej wyzwolić ponowne uruchomienie komp
 
 Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, zobacz:
 
-[Samouczek: Jak zaktualizować oprogramowanie układowe][lnk-fwupdate]
+[Samouczek: Jak zaktualizować oprogramowanie układowe](../articles/iot-hub/tutorial-firmware-update.md)
 
-Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji] [ lnk-tutorial-jobs] samouczka.
+Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) samouczka.
 
-Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi IoT Edge][lnk-iot-edge].
-
-[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
-[lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md
+Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi IoT Edge](../articles/iot-edge/tutorial-simulate-device-linux.md).

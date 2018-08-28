@@ -3,18 +3,18 @@ title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu interfejsu API sys
 description: Użyj interfejsy API systemu Apache Ambari do tworzenia, zarządzania i monitorowania klastrów platformy Hadoop. Intuicyjne narzędzia operatora i interfejsów API ukrywają złożoność architektury Hadoop.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f55ee02ada5bb53d4634d119311fb9230ff15105
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23da477fc24eaea4a6f987f13ad055022d2ba032
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592826"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108641"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu interfejsów API systemu Ambari
 Dowiedz się, jak monitorowanie klastrów HDInsight za pomocą interfejsów API systemu Ambari.

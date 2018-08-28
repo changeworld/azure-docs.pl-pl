@@ -3,18 +3,18 @@ title: Tworzenie klastrów Hadoop przy użyciu interfejsu API REST usługi Azure
 description: Dowiedz się, jak tworzyć klastry HDInsight po przesłaniu szablonów usługi Azure Resource Manager do interfejsu API REST platformy Azure.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jasonh
-ms.openlocfilehash: 06aa88dec705288edfbe6fecdd92ca31807ed015
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 79ab8ad9d827b3d2dda8138260b9857f241afc45
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593421"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094071"
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów Hadoop przy użyciu interfejsu API REST platformy Azure
 

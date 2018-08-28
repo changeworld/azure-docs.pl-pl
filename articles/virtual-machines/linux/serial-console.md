@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1fcac972e7404c2e0549b9bb9f2e03861977bfad
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918221"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094775"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -35,13 +35,16 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Należy używać modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
-* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-* Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
+* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone — zobacz poniższy zrzut ekranu.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* Musi mieć konto platformy Azure przy użyciu konsoli szeregowej [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
+* Maszyny wirtualnej, dla której jesteś konsoli szeregowej uzyskiwanie dostępu musi również mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcjonalność maszyny Wirtualnej rozszerzenia dostępu — Zobacz poniższy zrzut ekranu.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 * Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostęp do konsoli szeregowej dla systemu Linux](#access-serial-console-for-linux)
 
 
 
-## <a name="open-the-serial-console"></a>Otwieranie konsoli szeregowej
+## <a name="get-started-with-serial-console"></a>Wprowadzenie do konsoli szeregowej
 Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko [witryny Azure portal](https://portal.azure.com). Poniżej przedstawiono kroki umożliwiające dostęp do konsoli szeregowej dla maszyn wirtualnych za pomocą portalu 
 
   1. Otwórz witrynę Azure portal

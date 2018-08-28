@@ -3,18 +3,18 @@ title: Monitorowanie i zarządzanie nimi w usłudze Azure HDInsight przy użyciu
 description: Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami HDInsight opartych na systemie Linux. W tym dokumencie dowiesz się, jak za pomocą interfejsu użytkownika sieci Web Ambari, które zostały dołączone do klastrów HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: jasonh
-ms.openlocfilehash: e0efab2caa4f214d407cf8c4f09bfa5f4f619e8d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 3f2c9a246a7252241ffb65a4fa8545ba84e81df8
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591841"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096471"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci Web systemu Ambari
 

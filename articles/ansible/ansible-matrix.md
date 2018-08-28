@@ -4,16 +4,16 @@ description: Macierz modułu i wersji rozwiązania Ansible na platformie Azure
 ms.service: ansible
 keywords: rozwiązanie ansible, ról, macierz, wersji, azure, metodyki devops
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 07/02/2018
 ms.topic: article
-ms.openlocfilehash: c9be94d1ea77b3609f146a373574e10b7f4d4355
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8bbb2563991b45fe7a20ce243751c1c1a1f75b99
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859922"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094911"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Macierz modułu i wersji rozwiązania Ansible
 
