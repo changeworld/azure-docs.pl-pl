@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9f761fed46f0730a64a984111da1bae1229cc93d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987585"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127075"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu SDK rozpoznawania mowy
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu Cognitive Services SDK mowy transkrypcja mowy na tekst.
 Aplikacja zależy od Microsoft Cognitive Services mowy pakiet zestawu SDK narzędzia Maven, wersji 0.6.0 i Android Studio 3.1.
@@ -61,7 +61,7 @@ Po uruchomieniu przez jakiś czas, nowo utworzonego projektu programu Android St
 
 ## <a name="configure-your-project-for-the-speech-sdk"></a>Konfigurowanie projektu dla zestawu SDK usługi mowy
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `0.6.0`.
 
@@ -154,7 +154,7 @@ Tekst i wersją graficznego interfejsu użytkownika powinien teraz wyglądać po
 
 Przewodnika Szybki Start dla systemu Android kończy się w tym zrzucie ekranu. Można pobrać pełny projekt przykładowy kod z repozytorium przykładów.
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Poszukaj tego przykładu w `quickstart/java-android` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki
