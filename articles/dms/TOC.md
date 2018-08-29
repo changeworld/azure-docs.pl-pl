@@ -7,8 +7,8 @@
 # Samouczki
 ## [Migrowanie programu SQL Server do usługi Azure SQL DB w trybie offline](tutorial-sql-server-to-azure-sql.md)
 ## [Migrowanie programu SQL Server do usługi Azure SQL DB w trybie online](tutorial-sql-server-azure-sql-online.md)
-## [Migrowanie programu SQL Server do zarządzanego wystąpienia usługi SQL DB](tutorial-sql-server-to-managed-instance.md)
-## [Migrowanie bazy danych MySQL do usługi Azure DB dla MySQL](tutorial-mysql-azure-mysql-online.md)
+## [Migrowanie programu SQL Server do zarządzanego wystąpienia usługi SQL DB w trybie offline](tutorial-sql-server-to-managed-instance.md)
+## [Migrowanie bazy danych MySQL do usługi Azure DB dla MySQL w trybie online](tutorial-mysql-azure-mysql-online.md)
 
 # Przewodniki z instrukcjami
 ## [Używanie programu PowerShell do migrowania programu SQL Server do usługi Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
