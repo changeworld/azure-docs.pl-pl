@@ -1,138 +1,134 @@
 ---
-title: Śledzenie wiadomości B2B z Azure Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Śledzenie komunikacji B2B dla aplikacji logiki i konta integracji z usługi Analiza dzienników Azure
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Śledzenie komunikatów B2B w usłudze Azure Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Ścieżki komunikacji B2B dla konta integracji i Azure Logic Apps z usługą Azure Log Analytics
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293208"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125772"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Śledzenie komunikacji B2B z usługi Analiza dzienników Azure
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Śledzenie B2B komunikacji z usługą Azure Log Analytics
 
-Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy komunikaty te są przetwarzane prawidłowo, można śledzić AS2, X12, a EDIFACT wiadomości z [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości śledzenia opartych na sieci web do śledzenia komunikatów:
+Po skonfigurowaniu komunikacji B2B między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem Twojego konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy te komunikaty są przetwarzane prawidłowo, można śledzić AS2, X12, i EDIFACT komunikatów za pomocą [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości opartych na sieci web śledzenia do śledzenia komunikatów:
 
-* Liczba komunikatów i stanu
+* Liczba komunikatów i stan
 * Stan potwierdzenia
-* Korelowanie wiadomości z potwierdzenia
-* Szczegółowe informacje o błędzie opisy błędów
+* Korelowanie komunikatów za pomocą potwierdzenia
+* Szczegółowy komunikat o błędzie opisy błędów
 * Możliwości wyszukiwania
 
 ## <a name="requirements"></a>Wymagania
 
-* Aplikację logiki, który został skonfigurowany z rejestrowania diagnostyki. Dowiedz się [sposób tworzenia aplikacji logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla danej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Konta integracji, które skonfigurowano przy użyciu rejestrowania i monitorowania. Dowiedz się [sposobu tworzenia konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [jak skonfigurować monitorowanie i rejestrowanie dla tego konta](../logic-apps/logic-apps-monitor-b2b-message.md).
+* Konto integracji skonfigurowanej z funkcjami monitorowania i rejestrowania. Dowiedz się, [jak utworzyć konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [jak skonfigurować monitorowanie i rejestrowanie dla tego konta](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Jeśli nie jest jeszcze, [publikowania danych diagnostycznych do analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Jeśli jeszcze nie, [publikowania danych diagnostycznych do usługi Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Po zostały spełnione wymagania poprzedniej, powinien mieć obszar roboczy w analizy dzienników. Do komunikacji B2B w analizy dzienników śledzenia, należy używać tego samego obszaru roboczego. 
+> Po poprzednie wymagania zostały spełnione, należy mieć obszar roboczy w usłudze Log Analytics. Należy używać tego samego obszaru roboczego do śledzenia komunikacji B2B w usłudze Log Analytics. 
 >  
-> Dowiedz się, jeśli nie masz obszaru roboczego analizy dzienników [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
+> Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Dodaj rozwiązanie B2B aplikacji logiki do analizy dzienników
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Dodawanie rozwiązania B2B aplikacji logiki do usługi Log Analytics
 
-Aby analizy dzienników, śledzenie wiadomości B2B aplikacji logiki, należy dodać **B2B aplikacje logiki** rozwiązania do portalu OMS. Dowiedz się więcej o [Dodawanie rozwiązań do analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
+Aby śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics, należy dodać **B2B aplikacji logiki** rozwiązania do portalu pakietu OMS. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. W [portalu Azure](https://portal.azure.com), wybierz **wszystkie usługi**. Wyszukaj "analizy dzienników", a następnie wybierz pozycję **analizy dzienników** w sposób pokazany poniżej:
+1. W [witryny Azure portal](https://portal.azure.com), wybierz **wszystkich usług**. Wyszukaj "log analytics", a następnie wybierz **usługi Log Analytics** jak pokazano poniżej:
 
-   ![Znajdź analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![Znajdowanie usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników. 
+2. W obszarze **usługi Log Analytics**, Znajdź i wybierz swój obszar roboczy usługi Log Analytics. 
 
-   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Wybierz swój obszar roboczy usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. W obszarze **zarządzania**, wybierz **omówienie**.
+3. W obszarze **zarządzania**, wybierz **Przegląd**.
 
-   ![Wybierz portal analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Wybierz portal usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Po otwarciu strony głównej wybierz **Dodaj** zainstalować rozwiązanie B2B aplikacji logiki.    
-   ![Wybierz galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+4. Po otwarciu strony głównej wybierz **Dodaj** do zainstalowania rozwiązania B2B aplikacji logiki.    
+   ![Wybierz z galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-5. W obszarze **rozwiązań do zarządzania**, znajdowanie i tworzenie **B2B aplikacje logiki** rozwiązania.     
-   ![Wybierz B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+5. W obszarze **rozwiązań do zarządzania**, znajdowanie i tworzenie **B2B aplikacji logiki** rozwiązania.     
+   ![Wybierz B2B aplikacji logiki](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
-   Na stronie głównej Kafelek **wiadomości B2B aplikacje logiki** pojawi się teraz. 
-   Ten Kafelek aktualizuje liczba komunikatów podczas przetwarzania wiadomości B2B.
+   Na stronie głównej, a na kafelku **komunikatów B2B usługi Logic Apps** będzie teraz widoczna. 
+   Ten Kafelek aktualizuje liczba komunikatów podczas przetwarzania komunikatów B2B.
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Śledzenie stanu komunikat i szczegóły analizy dzienników
+## <a name="track-message-status-and-details-in-log-analytics"></a>Śledzenie stanu i szczegółów wiadomości w usłudze Log Analytics
 
-1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegółowe informacje dla tych wiadomości. Na stronie Przegląd wybierz **wiadomości B2B aplikacje logiki** kafelka.
+1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegóły dotyczące tych komunikatów. Na stronie Przegląd wybierz **komunikatów B2B usługi Logic Apps** kafelka.
 
-   ![Liczba komunikatów zaktualizowane](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
+   ![Liczba zaktualizowanych komunikatów](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > Domyślnie **wiadomości B2B aplikacje logiki** kafelka zawiera dane oparte na jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz kontrola zakresu w górnej części strony:
+   > Domyślnie **komunikatów B2B usługi Logic Apps** kafelkowi danych, w oparciu o jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz formant zakresu w górnej części strony:
    > 
    > ![Zmień zakres danych](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
-2. Po komunikat stanu pulpitu nawigacyjnego zostanie wyświetlony, można wyświetlić więcej szczegółów dla typu określonego komunikatu, która zawiera dane oparte na jeden dzień. Wybierz Kafelek **AS2**, **X12**, lub **EDIFACT**.
+2. Po wiadomości stan zostanie wyświetlony pulpit nawigacyjny, można wyświetlić więcej szczegółów dla typu szczegółowy komunikat o błędzie, który wyświetla dane w oparciu o jeden dzień. Wybierz Kafelek **AS2**, **X12**, lub **EDIFACT**.
 
-   ![Wyświetlanie komunikatów stanu](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
+   ![Wyświetlanie komunikatu stanu](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
    Zostanie wyświetlona lista komunikatów dla wybranej kafelka. 
-   Aby dowiedzieć się więcej na temat właściwości dla każdego typu komunikatu, zobacz poniższe opisy właściwości wiadomości:
+   Aby dowiedzieć się więcej na temat właściwości dla każdego typu komunikatu, zobacz opisy te właściwości wiadomości:
 
    * [Właściwości komunikatu AS2](#as2-message-properties)
    * [Właściwości wiadomości X12](#x12-message-properties)
    * [Właściwości komunikatu EDIFACT](#EDIFACT-message-properties)
 
-   Na przykład Oto jak może wyglądać AS2 listy komunikatów:
+   Na przykład Oto jak może wyglądać lista komunikatu AS2:
 
    ![Wyświetlanie komunikatów AS2](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-3. Aby wyświetlić lub wyeksportować wejścia i wyjścia dla określonych wiadomości, wybierz tych wiadomości, a następnie wybierz **Pobierz**. Po wyświetleniu monitu, Zapisz plik zip na komputerze lokalnym, a następnie Wyodrębnij tego pliku. 
+3. Aby wyświetlić lub wyeksportować dane wejściowe i wyjściowe dla określone komunikaty, zaznacz je, a następnie wybierz **Pobierz**. Po wyświetleniu monitu, Zapisz plik zip na komputer lokalny, a następnie Wyodrębnij ten plik. 
 
    Wyodrębniony folder zawiera folder dla każdego wybranego komunikatu. 
-   Jeśli konfigurujesz potwierdzeń folderu wiadomości zawiera również pliki ze szczegółami potwierdzenia. 
-   Każdy komunikat znajduje się w nim co najmniej tych plików: 
+   Jeśli skonfigurowano potwierdzeń folderu wiadomości zawiera również pliki ze szczegółami potwierdzenia. 
+   Każdy folder komunikatu ma co najmniej następujące pliki: 
    
-   * Czytelny dla człowieka pliki z wprowadzony ładunek i szczegóły ładunek danych wyjściowych
+   * Czytelny dla człowieka plików za pomocą ładunek danych wejściowych i szczegóły ładunek danych wyjściowych
    * Pliki zakodowane z wejściami i wyjściami
 
-   Dla każdego typu komunikatu można znaleźć folderu i formatów nazwy pliku:
+   Dla każdego typu komunikatu można znaleźć folderu i formaty nazwy pliku:
 
-   * [Formaty nazwę folderowi i plikowi AS2](#as2-folder-file-names)
-   * [X12 folder i nazwę pliku formatów](#x12-folder-file-names)
-   * [EDIFACT formatów nazwy plików i folderów](#edifact-folder-file-names)
+   * [Formaty nazw plików i folderów AS2](#as2-folder-file-names)
+   * [X12 folderowi i plikowi nazwę formatów](#x12-folder-file-names)
+   * [Formaty nazw plików i folderów EDIFACT](#edifact-folder-file-names)
 
-   ![Pobieranie plików komunikatów](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
+   ![Pobierz pliki wiadomości](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
 
-4. Aby wyświetlić wszystkie akcje, które mają taki sam identyfikator uruchomienia, na **wyszukiwania dziennika** wybierz wiadomości z listy wiadomości.
+4. Aby wyświetlić wszystkie akcje, które mają taki sam identyfikator przebiegu, na **wyszukiwanie w dzienniku** wybierz wiadomość z listy wiadomości.
 
-   Czynności te według kolumny lub wyszukaj określone wyniki można sortować.
+   Możesz sortować te akcje według kolumny lub wyszukiwanie określonych wyników.
 
-   ![Identyfikator uruchomienia akcji o takim samym](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
+   ![Akcje z takimi samymi Identyfikator przebiegu](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
-   * Aby wyszukać wyników z kwerendy wbudowane, wybierz **ulubione**.
+   * Aby wyniki za pomocą wbudowanych zapytań wyszukiwania, wybierz opcję **ulubione**.
 
-   * Dowiedz się [jak tworzyć zapytania, dodając filtry](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   Lub Dowiedz się więcej o [jak znaleźć dane z dziennika wyszukiwania w analizy dzienników](../log-analytics/log-analytics-log-searches.md).
+   * Dowiedz się, [jak tworzyć zapytania, dodając filtry](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
+   Lub Dowiedz się więcej o [sposób znaleźć dane za pomocą funkcji wyszukiwań w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-   * Aby zmienić zapytanie w polu wyszukiwania, zaktualizuj zapytanie z kolumnami i wartości, które ma być używany jako filtry.
+   * Aby Zmień zapytanie w polu wyszukiwania, należy zaktualizować zapytania przy użyciu kolumny i wartości, które chcesz użyć jako filtry.
 
 <a name="message-list-property-descriptions"></a>
 
-## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Opisy właściwości i formatów nazwy dla AS2, X 12 i EDIFACT wiadomości
+## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Opisy właściwości i formatów nazwy dla pola AS2, X 12 i komunikatów EDIFACT
 
-Dla każdego typu komunikatu poniżej przedstawiono opisy właściwości i formatów nazwy plików pobranych wiadomości.
+Dla każdego typu komunikatu poniżej przedstawiono opisy właściwości i formaty nazw plików pobranych komunikatów.
 
 <a name="as2-message-properties"></a>
 
@@ -142,60 +138,60 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu AS2.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa określone w **ustawienia odbierania**, lub partnera hosta określona w **ustawienia wysyłania** umowy AS2 |
-| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub partnera gościa określone **ustawienia wysyłania** umowy AS2 |
-| Aplikacja logiki | Aplikację logiki, w którym zdefiniowano działania AS2 |
-| Stan | Stan wiadomości AS2 <br>Powodzenie = odebranych lub wysłanych prawidłowego elementu message AS2. MDN nie jest skonfigurowane. <br>Powodzenie = odebranych lub wysłanych prawidłowego elementu message AS2. Ustawianie i odebranych MDN lub MDN są wysyłane. <br>Nie powiodło się = Odebrano nieprawidłowy komunikat AS2. MDN nie jest skonfigurowane. <br>Oczekujące = odebranych lub wysłanych prawidłowego elementu message AS2. MDN jest skonfigurowany, a oczekiwano MDN. |
-| ACK. | Stan wiadomości MDN <br>Zaakceptowane = odebranych lub wysłanych MDN dodatnią. <br>Oczekujące = oczekiwanie na odbierać lub wysyłać MDN. <br>Odrzucone = odebranych lub wysłanych MDN ujemna. <br>Nie wymaga = MDN nie jest skonfigurowany w umowie. |
-| Kierunek | Kierunek wiadomości AS2 |
-| Identyfikator korelacji | Identyfikator odpowiadająca wyzwalacze i akcje w aplikacji logiki |
+| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy AS2 |
+| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** umowy AS2 |
+| Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje AS2 |
+| Stan | Stan komunikatu AS2 <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Ustawianie i odbierane powiadomienia MDN, lub są wysyłane powiadomienia MDN. <br>Nie powiodło się = Odebrano nieprawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat AS2. Skonfigurowano powiadomienia MDN, a oczekiwano powiadomienia MDN. |
+| Potwierdzenia | Stan komunikatu MDN <br>Zaakceptowane = odebranych lub wysłanych dodatnią powiadomienia MDN. <br>Oczekujące = oczekiwanie na odbierania lub wysyłania komunikatu MDN. <br>Odrzucone = odebrane lub wysyłane ujemna powiadomienia MDN. <br>Niewymagane = powiadomienia MDN nie jest skonfigurowany w umowie. |
+| Kierunek | Kierunek komunikatu AS2 |
+| Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
 | Identyfikator komunikatu | Identyfikator komunikatu AS2 z nagłówków komunikatu AS2 |
-| Sygnatura czasowa | Czas przetworzenia komunikatu akcji AS2 |
+| Znacznik czasu | Czas, kiedy akcja AS2 przetworzony komunikat |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
 
-### <a name="as2-name-formats-for-downloaded-message-files"></a>Nazwa AS2 formatów plików pobranych komunikatów
+### <a name="as2-name-formats-for-downloaded-message-files"></a>AS2 formaty nazw plików pobranych komunikatów
 
-Poniżej przedstawiono formatów nazwy dla każdego folderu wiadomości AS2 pobrane i plików.
+Poniżej przedstawiono formaty nazw dla każdej pobranej folderu komunikatu AS2 i plików.
 
-| Folder lub plik | Format nazwy |
+| Plik lub folder | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [nadawcy] \_[odbiornika]\_AS2\_[identyfikator korelacji]\_[identyfikator komunikatu]\_[sygnatury czasowej] |
-| Dane wejściowe, dane wyjściowe i jeśli skonfigurować potwierdzenia plików | **Wprowadzony ładunek**: [nadawcy]\_[odbiornika]\_AS2\_[identyfikator korelacji]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiornika]\_AS2\_[identyfikator korelacji]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiornika]\_AS2\_[identyfikator korelacji]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiornika]\_AS2\_[identyfikator korelacji]\_outputs.txt |
+| Folder wiadomości | [nadawcy] \_[odbiorcy]\_AS2\_[identyfikator korelacji]\_[identyfikator komunikatu]\_[sygnatura czasowa] |
+| Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Wprowadzony ładunek**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
 
-### <a name="x12-message-property-descriptions"></a>Opisy właściwości komunikatu X12
+### <a name="x12-message-property-descriptions"></a>X12 komunikatu opisy właściwości
 
 Poniżej przedstawiono opisy właściwości dla każdego X12 wiadomości.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa określone w **ustawienia odbierania**, lub partnera hosta określona w **ustawienia wysyłania** dla X12 umowy |
-| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub partnera gościa określone **ustawienia wysyłania** dla X12 umowy |
-| Aplikacja logiki | Aplikację logiki gdzie X12 akcje są skonfigurowane. |
-| Stan | X12 komunikatu stanu <br>Powodzenie = odebranych lub wysłanych prawidłową X12 wiadomości. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłową X12 wiadomości. Ustawianie i otrzymano potwierdzenia funkcjonalności lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych X12 nieprawidłowy komunikat. <br>Oczekujące = odebranych lub wysłanych prawidłową X12 wiadomości. Potwierdzenia funkcjonalności jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
-| ACK. | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych dodatnią funkcjonalności potwierdzenia. <br>Odrzucone = odebranych lub wysłanych ujemna funkcjonalności potwierdzenia. <br>Oczekujące = oczekiwano potwierdzenia funkcjonalności, ale nie została odebrana. <br>Oczekujące = generowane potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Nie wymaga = funkcjonalne potwierdzenia nie jest skonfigurowany. |
-| Kierunek | Kierunek wiadomości X12 |
-| Identyfikator korelacji | Identyfikator odpowiadająca wyzwalacze i akcje w aplikacji logiki |
-| Typ msg | Typ komunikatu 12 EDI X |
-| ICN | Numer kontroli Interchange X12 wiadomości |
-| TSCN | Numer transakcji do sterowania ustaw dla X12 wiadomości |
-| Sygnatura czasowa | Podczas gdy X12 komunikat przetworzyć akcji |
+| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** dla X12 umowy |
+| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** dla X12 umowy |
+| Aplikacja logiki | Aplikacja logiki gdzie X12 akcje zostały skonfigurowane. |
+| Stan | X12 komunikatu stanu <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych X12 nieprawidłowy komunikat. <br>Oczekujące = odebranych lub wysłanych X12 prawidłowy komunikat. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
+| Potwierdzenia | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych pozytywne potwierdzenie funkcjonalności <br>Odrzucone = odebranych lub wysłanych ujemna potwierdzenie funkcjonalności <br>Oczekujące =, oczekiwano potwierdzenia funkcjonalności, ale nie otrzymano. <br>Oczekujące = wygenerowana potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Niewymagane = funkcjonalnej potwierdzenia nie zostało skonfigurowane. |
+| Kierunek | X12 komunikatu kierunku |
+| Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
+| Typ komunikatu | Typ komunikatu 12 EDI, X |
+| ICN | Numer kontrolny wymiany dla X12 wiadomości |
+| TSCN | Ustaw numer kontrolny transakcji dla X12 wiadomości |
+| Znacznik czasu | Podczas gdy X12 akcji przetwarzania wiadomości |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
 
 ### <a name="x12-name-formats-for-downloaded-message-files"></a>X12 nazwy formatów plików pobranych komunikatów
 
-Poniżej przedstawiono formatów nazwy każdego pobierane X12 folderów i plików komunikatów.
+Poniżej przedstawiono formaty nazwy dla każdego pobrane X12 folderów i plików komunikatów.
 
-| Folder lub plik | Format nazwy |
+| Plik lub folder | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [nadawcy] \_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_[numer globalnych kontroli]\_[-zestaw kontroli — numer transakcji]\_[sygnatury czasowej] |
-| Dane wejściowe, dane wyjściowe i jeśli skonfigurować potwierdzenia plików | **Wprowadzony ładunek**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_outputs.txt |
+| Folder wiadomości | [nadawcy] \_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_[numer globalnej kontroli]\_[transakcji — — numer kontrolny zestawu-]\_[sygnatura czasowa] |
+| Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Wprowadzony ładunek**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -206,34 +202,34 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu EDIFACT.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa określone w **ustawienia odbierania**, lub partnera hosta określona w **ustawienia wysyłania** umowy EDIFACT |
-| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub partnera gościa określone **ustawienia wysyłania** umowy EDIFACT |
-| Aplikacja logiki | Aplikację logiki, w którym zdefiniowano działania EDIFACT |
-| Stan | Stan EDIFACT wiadomości <br>Powodzenie = odebranych lub wysłanych prawidłowego elementu message EDIFACT. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowego elementu message EDIFACT. Ustawianie i otrzymano potwierdzenia funkcjonalności lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych nieprawidłowy komunikat EDIFACT <br>Oczekujące = odebranych lub wysłanych prawidłowego elementu message EDIFACT. Potwierdzenia funkcjonalności jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
-| ACK. | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych dodatnią funkcjonalności potwierdzenia. <br>Odrzucone = odebranych lub wysłanych ujemna funkcjonalności potwierdzenia. <br>Oczekujące = oczekiwano potwierdzenia funkcjonalności, ale nie została odebrana. <br>Oczekujące = generowane potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Nie wymaga = potwierdzenia funkcjonalności nie jest skonfigurowany. |
-| Kierunek | Kierunek wiadomości EDIFACT |
-| Identyfikator korelacji | Identyfikator odpowiadająca wyzwalacze i akcje w aplikacji logiki |
-| Typ msg | Typ komunikatu EDIFACT |
-| ICN | Numer formantu wymiany wiadomości EDIFACT |
-| TSCN | Numer transakcji do sterowania ustaw dla komunikatu EDIFACT |
-| Sygnatura czasowa | Czas przetworzenia komunikatu akcji EDIFACT |
+| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy EDIFACT |
+| Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** umowy EDIFACT |
+| Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje EDIFACT |
+| Stan | Stan komunikatu EDIFACT <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych nieprawidłowy komunikat EDIFACT <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
+| Potwierdzenia | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych pozytywne potwierdzenie funkcjonalności <br>Odrzucone = odebranych lub wysłanych ujemna potwierdzenie funkcjonalności <br>Oczekujące =, oczekiwano potwierdzenia funkcjonalności, ale nie otrzymano. <br>Oczekujące = wygenerowana potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Niewymagane = funkcjonalności potwierdzenia nie zostało skonfigurowane. |
+| Kierunek | Kierunek komunikatu EDIFACT |
+| Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
+| Typ komunikatu | Typ komunikatu EDIFACT |
+| ICN | Numer kontrolny wymiany komunikatu EDIFACT |
+| TSCN | Ustaw numer kontrolny transakcji dla komunikatu EDIFACT |
+| Znacznik czasu | Czas, kiedy akcja EDIFACT przetworzony komunikat |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
 
-### <a name="edifact-name-formats-for-downloaded-message-files"></a>Nazwa EDIFACT formatów plików pobranych komunikatów
+### <a name="edifact-name-formats-for-downloaded-message-files"></a>Formaty nazw EDIFACT plików pobranych komunikatów
 
-Poniżej przedstawiono formatów nazwy dla każdego folderu wiadomości EDIFACT pobrane i plików.
+Poniżej przedstawiono formaty nazw dla każdej pobranej folderu komunikatu EDIFACT i plików.
 
-| Folder lub plik | Format nazwy |
+| Plik lub folder | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [nadawcy] \_[odbiornika]\_EDIFACT\_[ruch numer wymiany formantu]\_[numer globalnych kontroli]\_[-zestaw kontroli — numer transakcji]\_[sygnatury czasowej] |
-| Dane wejściowe, dane wyjściowe i jeśli skonfigurować potwierdzenia plików | **Wprowadzony ładunek**: [nadawcy]\_[odbiornika]\_EDIFACT\_[ruch numer wymiany formantu]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiornika]\_EDIFACT\_[ruch numer wymiany formantu]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiornika]\_EDIFACT\_[ruch numer wymiany formantu]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiornika]\_EDIFACT\_[ruch numer wymiany formantu]\_outputs.txt |
+| Folder wiadomości | [nadawcy] \_[odbiorcy]\_EDIFACT\_[numer wymiany kontrolny]\_[numer globalnej kontroli]\_[transakcji — — numer kontrolny zestawu-]\_[sygnatura czasowa] |
+| Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Wprowadzony ładunek**: [nadawcy]\_[odbiorcy]\_EDIFACT\_[numer wymiany kontrolny]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_EDIFACT\_[numer wymiany kontrolny]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_EDIFACT\_[numer wymiany kontrolny]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_EDIFACT\_[numer wymiany kontrolny]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Kwerenda dotycząca wiadomości B2B analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Wykonywanie zapytań dotyczących komunikatów B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schematy śledzenia X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
-* [Śledzenie niestandardowych schematów](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
+* [Schematy śledzenia niestandardowe](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

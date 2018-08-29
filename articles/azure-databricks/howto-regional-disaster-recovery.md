@@ -8,24 +8,30 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 46cb9eaee1d56a96801065ae0a349aa0b1be85e0
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 671e18346651a40d7f286e984117ce0c9ae62364
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115236"
+ms.locfileid: "43125973"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalnego odzyskiwania po awarii w przypadku klastrów usługi Azure Databricks
 
 W tym artykule opisano architekturę odzyskiwania po awarii przydatny w przypadku klastrów usługi Azure Databricks i kroki do wykonania tego projektu.
 
-## <a name="control-plan-architecture"></a>Kontrolka — architektura planu
+## <a name="azure-databricks-overview"></a>Omówienie usługi Azure Databricks
 
-Na wysokim poziomie, gdy utworzysz obszar roboczy usługi Azure Databricks w witrynie Azure portal [urządzenia zarządzanego](../managed-applications/overview.md) jest wdrażany jako zasób platformy Azure w ramach subskrypcji, w wybranego regionu świadczenia usługi Azure (na przykład zachodnie stany USA). To urządzenie zostało wdrożone w [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) z [sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md) i konto usługi Azure Storage, dostępne w Twojej subskrypcji. Sieć wirtualna zapewnia obwodu zabezpieczeń na poziomie do obszaru roboczego usługi Databricks i jest chroniony za pomocą sieciowej grupy zabezpieczeń. W obszarze roboczym możesz utworzyć klastry usługi Databricks, zapewniając procesu roboczego i sterownika typu maszyny Wirtualnej i wersji środowiska uruchomieniowego usługi Databricks. Trwałe dane są dostępne w ramach konta magazynu, który może być usługi Azure Blob Storage lub Azure Data Lake Store. Po utworzeniu klastra można uruchamiać zadania za pośrednictwem punktów końcowych ODBC/JDBC notesów, interfejsy API REST, dołączając do określonego klastra.
+Azure Databricks to szybka i łatwa współpracy platformy Apache Spark usługi analizy. Dla potoku danych big data, data (raw lub ze strukturą) jest pozyskane do platformy Azure za pośrednictwem usługi Azure Data Factory w partiach lub przesyłane strumieniowo w czasie rzeczywistym przy użyciu platformy Kafka, Centrum zdarzeń lub usługi IoT Hub. Ta gruntów danych w usłudze data lake potrzeby długoterminowego utrwalone magazynu w usłudze Azure Blob Storage lub usługi Azure Data Lake Storage. W ramach przepływu pracy analizy, należy użyć usługi Azure Databricks można odczytać danych z wielu źródeł danych, takich jak [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [usługi Azure Data Lake Storage](../data-lake-store/index.md), [usługi Azure Cosmos DB](../cosmos-db/index.yml) , lub [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) i przekształcać je w przełomowe insights przy użyciu platformy Spark.
+
+![Potok usługi Databricks](media/howto-regional-disaster-recovery/databricks-pipeline.png)
+
+## <a name="azure-databricks-architecture"></a>Architektura usługi Azure Databricks
+
+Na wysokim poziomie, gdy utworzysz obszar roboczy usługi Azure Databricks w witrynie Azure portal [urządzenia zarządzanego](../managed-applications/overview.md) jest wdrażany jako zasób platformy Azure w ramach subskrypcji, w wybranym regionie platformy Azure (na przykład zachodnie stany USA). To urządzenie zostało wdrożone w [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) z [sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md) i konto usługi Azure Storage, dostępne w Twojej subskrypcji. Sieć wirtualna zapewnia obwodu zabezpieczeń na poziomie do obszaru roboczego usługi Databricks i jest chroniony za pomocą sieciowej grupy zabezpieczeń. W obszarze roboczym można utworzyć klastry usługi Databricks, podając procesu roboczego i sterownika typu maszyny Wirtualnej i wersji środowiska uruchomieniowego usługi Databricks. Trwałe dane są dostępne w ramach konta magazynu, który może być usługi Azure Blob Storage lub Azure Data Lake Store. Po utworzeniu klastra można uruchamiać zadania za pośrednictwem punktów końcowych ODBC/JDBC notesów, interfejsy API REST, dołączając do określonego klastra.
 
 Na płaszczyźnie kontroli usługi Databricks zarządza i monitoruje środowisko obszaru roboczego usługi Databricks. Żadnych operacji zarządzania, które takie jak utworzyć klaster zostanie zainicjowane z na płaszczyźnie kontroli. Wszystkie metadane, takie jak zaplanowanych zadań, znajduje się w bazie danych Azure przy użyciu replikacji geograficznej dla odporności na uszkodzenia.
 
-![Architektura płaszczyzna kontroli usługi Databricks](media/howto-regional-disaster-recovery/databricks-control-plane.png)
+![Architektura usługi Databricks](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
 Jedną z zalet tej architektury jest to, czy użytkownicy mogą łączyć z usługi Azure Databricks z dowolnymi zasobami magazynu na jego koncie. Zaletą jest zarówno obliczeniowe (Azure Databricks) i magazynu mogą być skalowane niezależnie od siebie nawzajem.
 
@@ -243,7 +249,7 @@ Aby utworzyć własny topologii odzyskiwania regionalnej awarii, wykonaj te wyma
 
 7. **Migruj biblioteki**
 
-   Obecnie to prosty sposób Migruj biblioteki z jednego obszaru roboczego do innego. Zainstaluj ponownie tych bibliotek do nowego obszaru roboczego. Dlatego w tym kroku przede wszystkim jest wykonywana ręcznie. Jest to możliwe zautomatyzować przy użyciu kombinacji [DBFS interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#dbfs-cli-examples) można przekazać niestandardowe biblioteki do obszaru roboczego i [bibliotek interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#libraries-cli).
+   Obecnie to prosty sposób Migruj biblioteki z jednego obszaru roboczego do innego. Zamiast tego należy ręcznie ponownie tych bibliotek do nowego obszaru roboczego. Można zautomatyzować przy użyciu kombinacji [DBFS interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#dbfs-cli-examples) można przekazać niestandardowe biblioteki do obszaru roboczego i [bibliotek interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#libraries-cli).
 
 8. **Migrowanie magazynu obiektów blob platformy Azure i instaluje usługi Azure Data Lake Store**
 
@@ -251,7 +257,7 @@ Aby utworzyć własny topologii odzyskiwania regionalnej awarii, wykonaj te wyma
 
 9. **Migrowanie klastra init skryptów**
 
-   Wszystkie skrypty inicjowania klastra można poddać migracji ze starego do nowego obszaru roboczego przy użyciu [DBFS interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Najpierw skopiuj wymagane skrypty z "dbfs: / dat abricks/init /..." do pulpitu lokalnym lub maszynie wirtualnej. Następnie skopiuj te skrypty do nowego obszaru roboczego w tej samej ścieżce.
+   Wszystkie skrypty inicjowania klastra można poddać migracji ze starego do nowego obszaru roboczego przy użyciu [DBFS interfejsu wiersza polecenia](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Najpierw skopiuj wymagane skrypty z `dbfs:/dat abricks/init/..` Twojego pulpitu lokalnego lub na maszynie wirtualnej. Następnie skopiuj te skrypty do nowego obszaru roboczego w tej samej ścieżce.
 
    ```bash
    // Primary to local

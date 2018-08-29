@@ -1,28 +1,23 @@
 ---
 title: Tworzenie sieci web, interfejsów API i interfejsów API REST dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie sieci web, interfejsów API i interfejsów API REST do wywołania swoje interfejsy API, usług lub systemy z przepływów pracy aplikacji logiki dla integracji systemu
-keywords: interfejsy API sieci Web, interfejsów API REST, przepływy pracy, integracji systemu
+description: Tworzenie sieci web, interfejsów API i interfejsów API REST, aby wywołać swoje interfejsy API, usług lub systemy integracji systemu w usłudze Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.date: 5/26/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.date: 05/26/2017
+ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172021"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122250"
 ---
-# <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Tworzenie niestandardowych interfejsów API, który można wywoływać z przepływów pracy aplikacji logiki
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API można wywołać z usługi Azure Logic Apps
 
 Mimo że usługi Azure Logic Apps oferuje [ponad 100 wbudowanych łączników](../connectors/apis-list.md) czy można używać w przepływach pracy aplikacji logiki, należy wywołać interfejsy API, systemów i usług, które nie są dostępne jako łączniki. Można tworzyć własnych interfejsów API, które zapewniają akcje i wyzwalacze do wykorzystania w aplikacjach logiki. W tym miejscu są też inne przyczyny, dlaczego warto tworzyć własnych interfejsów API, które można wywołać z przepływów pracy aplikacji logiki:
 

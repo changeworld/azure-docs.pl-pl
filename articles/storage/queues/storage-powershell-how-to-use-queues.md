@@ -2,19 +2,18 @@
 title: Wykonywanie operacji na platformie Azure Queue storage przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Jak wykonywać operacje na Azure Queue storage przy użyciu programu PowerShell
 services: storage
-author: robinsh
+author: roygara
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.topic: how-to
 ms.date: 09/14/2017
-ms.author: robinsh
+ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 0b78f822bec2bd545331ed52f3339a07b5dfb466
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2f347ef0bd53a8d148a56d8431e004e9e88894d8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521051"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128575"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 

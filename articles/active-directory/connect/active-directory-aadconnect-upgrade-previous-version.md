@@ -15,12 +15,12 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: b730f80faa031b1866d3c11d8a2c885ec67f965e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264515"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144324"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
 W tym temacie opisano różne metody, których można użyć, aby zaktualizować swoją instalację usługi Azure Active Directory (Azure AD) Connect do najnowszej wersji. Firma Microsoft zaleca zachowywanie samodzielnie bieżącego z wersjami programu Azure AD Connect. Użyto również w krokach w [migracja typu Swing](#swing-migration) sekcji po wprowadzeniu znaczące zmiany konfiguracji.
@@ -67,7 +67,7 @@ Te kroki są również działać można przenieść z usługi Azure AD Sync lub 
 
 ### <a name="use-a-swing-migration-to-upgrade"></a>Użyj migracja typu swing, aby uaktualnić
 1. Jeśli używasz usługi Azure AD Connect na obu serwerach i planujesz tylko wprowadzić zmiany, upewnij się, że konfiguracja aktywnego serwera i serwer przejściowy zarówno korzystają z tej samej wersji. Ułatwia do porównania różnic później. Jeśli wykonujesz uaktualnienie z narzędzia Azure AD Sync, te serwery mają różne wersje. Jeśli uaktualniasz ze starszych wersji programu Azure AD Connect, to dobry pomysł, aby uruchomić przy użyciu dwóch serwerów, które korzystają z tej samej wersji, ale nie jest to wymagane.
-2. Jeśli zostały wprowadzone w konfiguracji niestandardowej przejściowego serwer nie ma go, wykonaj opisane w sekcji [przenieść Konfiguracja niestandardowa z aktywnego serwera na serwer przejściowy](#move-custom-configuration-from-active-to-staging-server).
+2. Jeśli zostały wprowadzone w konfiguracji niestandardowej przejściowego serwer nie ma go, wykonaj opisane w sekcji [przenieść Konfiguracja niestandardowa z aktywnego serwera na serwer przejściowy](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
 3. Jeśli wykonujesz uaktualnienie z wcześniejszej wersji programu Azure AD Connect, należy uaktualnić serwer przejściowy do najnowszej wersji. Jeśli przenosisz z usługi Azure AD Sync, zainstaluj program Azure AD Connect na serwerze przejściowym.
 4. Pozwól, aparat synchronizacji, uruchom pełne importowanie i pełną synchronizację na serwerze przejściowym.
 5. Sprawdź, czy nowa konfiguracja nie powodują zmiany nieoczekiwany wykonując kroki opisane w obszarze "Zweryfikuj" w [Zweryfikuj konfigurację serwera](active-directory-aadconnectsync-operations.md#verify-the-configuration-of-a-server). Jeśli coś, co nie jest, zgodnie z oczekiwaniami, popraw go, uruchomić operację importu i synchronizacji i sprawdzić dane, dopóki nie wygląda na to dobre rozwiązanie, wykonując następujące kroki.

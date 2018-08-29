@@ -4,15 +4,15 @@ description: Zawiera omówienie urządzenia modułu zbierającego i sposobu ich 
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308463"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122891"
 ---
 # <a name="collector-appliance"></a>Urządzenie modułu zbierającego
 
@@ -58,6 +58,30 @@ Urządzenie modułu zbierającego musi być połączona z Internetem w celu wysy
 
 > [!NOTE]
 > Serwery proxy oparty na protokole HTTPS nie są obsługiwane przez moduł zbierający.
+
+#### <a name="internet-connectivity-with-intercepting-proxy"></a>Łączność z Internetem przy użyciu serwera proxy przechwytuje
+
+Jeśli serwer proxy, którego używasz do łączenia się z Internetem jest przechwytujący serwer proxy, należy zaimportować certyfikat serwera proxy do sieci maszyny Wirtualnej modułu zbierającego. Poniżej przedstawiono instrukcje dotyczące sposobu można zaimportować certyfikatu do maszyny Wirtualnej modułu zbierającego.
+
+1. W maszynie Wirtualnej modułu zbierającego, przejdź do **Start Menu** i znaleźć i otworzyć **zarządzania certyfikatami komputera**.
+2. W narzędziu certyfikatów, w lewym okienku w obszarze **certyfikaty — komputer lokalny**, Znajdź **zaufanych wydawców**. W obszarze **zaufanych wydawców**, kliknij przycisk **certyfikaty** Aby wyświetlić listę certyfikatów, w okienku po prawej stronie.
+
+    ![Narzędzia certyfikatów](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+3. Skopiuj certyfikat serwera proxy na maszynie Wirtualnej modułu zbierającego. Może być konieczne skontaktowanie się z zespołu administratorem sieci w organizacji w celu uzyskania tego certyfikatu.
+4. Kliknij dwukrotnie certyfikat, aby go otworzyć. Kliknij przycisk **Zainstaluj certyfikat**. Spowoduje to przejście do Kreatora importu certyfikatów.
+5. W Kreatorze importu certyfikatów dla lokalizacji Store, wybierz **komputera lokalnego**. **Kliknij przycisk Dalej,**.
+
+    ![Lokalizacja magazynu certyfikatów](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+6. Wybierz opcję, aby **Umieść wszystkie certyfikaty w następującym magazynie**. Kliknij przycisk **Przeglądaj** i wybierz **zaufanych wydawców** certyfikaty, które pojawiają się na liście. Kliknij przycisk **Dalej**.
+
+    ![Magazyn certyfikatów](./media/concepts-intercepting-proxy/certificate-store.png)
+    
+7. Kliknij przycisk **Zakończ**. Spowoduje to zaimportowanie certyfikatu. 
+8. Opcjonalnie możesz sprawdzić, czy certyfikat został zaimportowany przez otwarcie narzędzia certyfikatów, tak jak w kroku 1 i 2 powyżej.
+9. W aplikacji usługi Azure Migrate collector Sprawdź, czy sprawdzanie wymagań wstępnych połączenia internetowego zakończy się pomyślnie.
+
 
 #### <a name="whitelisting-urls-for-internet-connection"></a>Adresy URL umieszczania na białej liście połączenie z Internetem
 

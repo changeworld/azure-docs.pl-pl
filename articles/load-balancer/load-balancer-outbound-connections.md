@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058506"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122580"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -122,13 +122,23 @@ Korzystając z [Balancer w warstwie standardowa ze strefami dostępności wystę
 
 Gdy zasób publicznego modułu równoważenia obciążenia jest skojarzony z wystąpieniami maszyn wirtualnych, jest przepisany każde źródło połączeń wychodzących. Źródło jest przepisany z prywatnej przestrzeni adresowej IP sieci wirtualnej do frontonu publiczny adres IP modułu równoważenia obciążenia. W publicznej przestrzeni adresowej IP tuple 5 (źródłowy adres IP, port źródłowy, protokół transportowy IP, docelowy adres IP, port docelowy) przepływu musi być unikatowa.  Zamaskowany SNAT portu może służyć za pomocą protokołów TCP lub UDP IP.
 
-Efemeryczne porty (SNAT) są używane do osiągnięcia tego celu po ponownego zapisywania adresów prywatnych źródłowy adres IP, ponieważ wiele przepływów pochodzi z jednego publicznego adresu IP. 
+Efemeryczne porty (SNAT) są używane do osiągnięcia tego celu po ponownego zapisywania adresów prywatnych źródłowy adres IP, ponieważ wiele przepływów pochodzi z jednego publicznego adresu IP. Algorytm SNAT zamaskowany portu inaczej przydziela SNAT porty protokołu UDP i TCP.
 
-Jednym SNAT port jest używany na przepływ jeden docelowy adres IP, portu i protokołu. Każdy przepływ zajmują jednoportowe SNAT wiele przepływów do docelowego adresu IP, portu i protokołu. Dzięki temu przepływy są unikatowe, gdy pochodziły z tego samego publicznego adresu IP i przejdź do tego samego adresu IP, portu i protokołu. 
+#### <a name="tcp"></a>Porty TCP usługi SNAT
+
+Jednym SNAT port jest używany na przepływ, aby jeden docelowy adres IP, portu. W wielu przepływy TCP do tego samego adresu IP, portu i protokołu każdego przepływu TCP wykorzystuje pojedynczy port SNAT. Dzięki temu przepływy są unikatowe, gdy pochodziły z tego samego publicznego adresu IP i przejdź do tego samego adresu IP, portu i protokołu. 
 
 Wiele przepływów, do innego adresu IP, portu i protokołu, udostępniać pojedynczy port SNAT. Docelowy adres IP, port i protokół unikatowość przepływy bez konieczności stosowania dodatkowych źródła portów w celu odróżnienia przepływów przestrzeń publicznych adresów IP.
 
+#### <a name="udp"></a> Porty SNAT UDP
+
+Porty UDP SNAT są zarządzane przez innego algorytmu niż porty TCP SNAT.  Moduł równoważenia obciążenia używa algorytmu znane jako "ograniczony do portu stożek translatora adresów Sieciowych" protokołu UDP.  Jednym SNAT port jest używany dla każdego przepływu, niezależnie od tego, docelowy adres IP, portu.
+
+#### <a name="exhaustion"></a>Wyczerpanie
+
 Wyczerpania zasobów portu SNAT, przepływy wychodzące zakończyć się niepowodzeniem aż do istniejących przepływów zwolnienia SNAT portów. Moduł równoważenia obciążenia odzyskuje porty SNAT, gdy przepływ zostanie zamknięty i używa [limitu czasu bezczynności 4-minutowej](#idletimeout) dla odzyskiwanie porty SNAT wychodzących z przepływów bezczynności.
+
+Porty UDP SNAT wyczerpać zazwyczaj znacznie szybciej niż porty TCP SNAT z powodu różnic w algorytmie używanym. Możesz projektowania i skalowania należy przetestować mając na uwadze to różnicę.
 
 Wzorce i ułatwiają eliminowanie warunki, które często prowadzą do wyczerpanie portów SNAT, można przejrzeć [Zarządzanie SNAT](#snatexhaust) sekcji.
 
@@ -136,7 +146,7 @@ Wzorce i ułatwiają eliminowanie warunki, które często prowadzą do wyczerpan
 
 Używa platformy Azure, algorytm, aby określić liczbę użyć funkcji SNAT względem wstępnie przydzielonych portów dostępnych na podstawie rozmiaru puli zaplecza przy użyciu portu zamaskowany SNAT ([osobisty token dostępu](#pat)). SNAT porty są dostępne dla określonego publicznego źródłowego adresu IP portów tymczasowych.
 
-Taką samą liczbę portów SNAT są odpowiednio wstępnie przydzielonych dla protokołów UDP i TCP i użycie niezależnie na protokół transportowy IP. 
+Taką samą liczbę portów SNAT są odpowiednio wstępnie przydzielonych dla protokołów UDP i TCP i użycie niezależnie na protokół transportowy IP.  Jednak użycie portu SNAT różni się w zależności od tego, czy przepływ jest UDP lub TCP.
 
 >[!IMPORTANT]
 >Standardowa jednostka SKU użyć funkcji SNAT względem programowania jest na protokół transportowy IP i pochodzące z reguły równoważenia obciążenia.  Jeśli istnieje reguła równoważenia obciążenia protokołu TCP, tylko SNAT jest dostępna tylko dla protokołu TCP. Jeśli masz tylko TCP reguły równoważenia obciążenia i potrzebujesz SNAT wychodzących protokołu UDP, należy utworzyć UDP regułę równoważenia obciążenia z tego samego serwera sieci Web do tej samej puli zaplecza.  To spowoduje wyzwolenie SNAT programowania protokołu UDP.  Sonda reguły lub kondycji pracy nie jest wymagana.  Podstawowa jednostka SKU SNAT zawsze programów SNAT dla obu protokołu transportowego IP niezależnie od protokołu transportowego, określone w reguły równoważenia obciążenia.

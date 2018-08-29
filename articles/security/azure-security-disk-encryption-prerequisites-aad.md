@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2018
+ms.date: 08/28/2018
 ms.author: mstewart
-ms.openlocfilehash: adfacdfda5f2d2f9bc595813800d08080596ca4b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 62ae0bcfb30e39b3b2cfcf94b3877cce9cadf9d1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889772"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128007"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -266,7 +266,7 @@ Aplikacja usługi Azure AD wymaga praw dostępu do kluczy lub wpisów tajnych w 
      ```
 
 ### <a name="bkmk_KVAPCLI"></a> Ustawianie zasad dostępu magazynu kluczy dla aplikacji usługi Azure AD przy użyciu wiersza polecenia platformy Azure
-Użyj [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) ustawić zasady dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2.0](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret).
+Użyj [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) ustawić zasady dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2.0](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Zapewniają utworzonej jednostki usługi, za pośrednictwem dostępu wiersza polecenia platformy Azure, aby uzyskać klucze tajne i zawijania klucze za pomocą następującego polecenia:

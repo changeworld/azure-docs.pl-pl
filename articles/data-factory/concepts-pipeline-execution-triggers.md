@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 4ac0f27480bbddf28b83af05e4b7b89ca6766871
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8dfc2448861ca9b376246ac42f7563e44422d6de
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093782"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122437"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -324,7 +324,7 @@ Aby uzyskać więcej informacji o wyzwalaczach okna wirowania i przykładach, zo
 
 ## <a name="event-based-trigger"></a>Wyzwalacz oparty na zdarzeniach
 
-Wyzwalacze oparte na zdarzeniach uruchamiają potoki w odpowiedzi na zdarzenia, takie jak otrzymanie pliku lub usunięcie pliku z usługi Azure Blob Storage.
+Wyzwalacz usługi oparte na zdarzeniach uruchamia potoki w odpowiedzi na zdarzenia, takiego jak otrzymanie pliku lub usunięcie pliku, w usłudze Azure Blob Storage.
 
 Aby uzyskać więcej informacji dotyczących wyzwalaczy opartych na zdarzeniach, zobacz [Create a trigger that runs a pipeline in response to an event](how-to-create-event-trigger.md) (Tworzenie wyzwalacza uruchamiającego potok w odpowiedzi na zdarzenie).
 

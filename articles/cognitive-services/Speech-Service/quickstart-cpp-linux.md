@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b8bc24123fe75e876f607b07e37423ae68d92ee4
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 92bd5980ac2e6befbe352df6ddf8644f04d37d34
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988148"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126869"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć aplikację konsolową w języku C++ w systemie Linux (Ubuntu 16.04) Cognitive Services SDK rozpoznawania mowy do transkrypcja mowy na tekst.
 
@@ -35,7 +35,7 @@ W tym artykule dowiesz się, jak utworzyć aplikację konsolową w języku C++ w
 
 ## <a name="get-the-speech-sdk"></a>Pobierz zestaw SDK funkcji rozpoznawania mowy
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `0.6.0`.
 
@@ -71,7 +71,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    Uwagi dotyczące innych firm — oraz plików licencji powinny być widoczne, a także `include` katalogu dla nagłówków i `lib` katalogu bibliotek.
 
-   [!include[Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
+   [!INCLUDE [Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
 ## <a name="add-the-sample-code"></a>Dodaj kod przykładowy
 
@@ -129,7 +129,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    We recognized: What's the weather
    ```
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Poszukaj tego przykładu w `quickstart/cpp-linux` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki

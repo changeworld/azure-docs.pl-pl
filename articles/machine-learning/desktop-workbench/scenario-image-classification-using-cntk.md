@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
 ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "35622217"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning Workbench
@@ -78,7 +78,7 @@ Aby utworzyć nowy projekt, używając w tym przykładzie jako szablonu:
 2.  Na **projektów** kliknij **+** zalogować się i wybrać **nowy projekt**.
 3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu.
 4.  W **Wyszukaj szablony projektów** polu wyszukiwania wpisz "Image klasyfikacji" i wybierz szablon.
-5.  Kliknij przycisk **Utwórz**.
+5.  Kliknij pozycję **Utwórz**.
 
 Te kroki wykonywane tworzy strukturę projektu, pokazano poniżej. Katalog projektu jest ograniczona do być krótsza niż 25 MB, ponieważ usługi Azure Machine Learning Workbench tworzy kopię tego folderu po każdym uruchomieniu (w celu włączenia historii uruchamiania). Dzięki temu wszystkie obrazów i plików tymczasowych są zapisywane do i z katalogu *~/Desktop/imgClassificationUsingCntk_data* (nazywane *DATA_DIR* w tym dokumencie).
 

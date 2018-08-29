@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b2b5abf3b3b170e60df3aa2d6ec5ce471db74f80
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 6d161a49b35bbdfedcb27dd91f9f09dcf7ba4133
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059583"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122030"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Aplikacje konsoli usługi Application Insights dla platformy .NET
 [Usługa Application Insights](app-insights-overview.md) umożliwia monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia.
@@ -44,7 +44,7 @@ telemetryClient.TrackTrace("Hello World!");
 Możesz zainicjować i skonfigurować usługę Application Insights z kodu lub przy użyciu `ApplicationInsights.config` pliku. Upewnij się, że Inicjalizacja się dzieje w możliwie jak najszybciej. 
 
 > [!NOTE]
-> Instrukcje odwołujące się do **plik ApplicationInsights.config** dotyczą tylko aplikacji, które są przeznaczone dla .NET Standard, a nie dotyczą aplikacji .NET Core. 
+> Instrukcje odwołujące się do **plik ApplicationInsights.config** dotyczą tylko aplikacji, które są zgodne z .NET Framework i nie dotyczą aplikacji .NET Core.
 
 ### <a name="using-config-file"></a>Przy użyciu pliku konfiguracji
 

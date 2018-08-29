@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/25/2018
+ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503710"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144042"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. W przypadku autonomicznych klastrów możesz dostosować ustawienia aktualizowania pliku ClusterConfig.json, a następnie wykonać uaktualnienie konfiguracji w klastrze. 
@@ -187,9 +187,10 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="dnsservice"></a>Usługa DNS
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
+|EnablePartitionedQuery|wartość logiczna, domyślna to FALSE|Statyczny|Flaga ustawiana, aby włączyć obsługę zapytań DNS dotyczących usług podzielonym na partycje. Ta funkcja jest domyślnie wyłączona. Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md)|
 |InstanceCount|int, domyślna to -1|Statyczny|Wartość domyślna to -1, co oznacza, że usługa DNS działa w każdym węźle. OneBox musi to być równa 1, ponieważ usługa DNS używa dobrze znany port 53, dzięki czemu jej nie może mieć wiele wystąpień na tym samym komputerze.|
 |IsEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Włącza/wyłącza usługa DNS. Usługa DNS jest domyślnie wyłączona, a ta konfiguracja musi być ustawiona, aby go włączyć. |
-|PartitionPrefix|ciąg, domyślna to "-"|Statyczny|Określa wartość ciągu prefiks partycji w zapytań DNS dotyczących usług podzielonym na partycje. Wartość: <ul><li>Powinny być zgodne ze standardem RFC, ponieważ będzie on część zapytania DNS.</li><li>Nie może zawierać pojedynczego znaku kropki ".", zgodnie z dot zakłócenie działania sufiks DNS.</li><li>Nie może być większa niż 5 znaków.</li><li>Nie może być ciągiem pustym.</li><li>Jeśli ustawienie PartitionPrefix zostanie zastąpiona, a następnie PartitionSuffix musi zostać zastąpiona i na odwrót.</li></ul>Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md).|
+|PartitionPrefix|ciąg, domyślna to "--"|Statyczny|Określa wartość ciągu prefiks partycji w zapytań DNS dotyczących usług podzielonym na partycje. Wartość: <ul><li>Powinny być zgodne ze standardem RFC, ponieważ będzie on część zapytania DNS.</li><li>Nie może zawierać pojedynczego znaku kropki ".", zgodnie z dot zakłócenie działania sufiks DNS.</li><li>Nie może być większa niż 5 znaków.</li><li>Nie może być ciągiem pustym.</li><li>Jeśli ustawienie PartitionPrefix zostanie zastąpiona, a następnie PartitionSuffix musi zostać zastąpiona i na odwrót.</li></ul>Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md).|
 |PartitionSuffix|ciąg, domyślna to ""|Statyczny|Określa wartość partycji sufiks ciągu zapytania DNS dla usług podzielonym na partycje. Wartość: <ul><li>Powinny być zgodne ze standardem RFC, ponieważ będzie on część zapytania DNS.</li><li>Nie może zawierać pojedynczego znaku kropki ".", zgodnie z dot zakłócenie działania sufiks DNS.</li><li>Nie może być większa niż 5 znaków.</li><li>Jeśli ustawienie PartitionPrefix zostanie zastąpiona, a następnie PartitionSuffix musi zostać zastąpiona i na odwrót.</li></ul>Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md). |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -350,6 +351,9 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |ApplicationHostCloseTimeout| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ przedział czasu w sekundach. Po zakończenia sieci szkieletowej wykryciu własnym aktywacji procesów; FabricRuntime zamyka wszystkie repliki w procesie hosta (hosta aplikacji) użytkownika. Jest to limit czasu dla operacji zamknięcia. |
 |ApplicationUpgradeTimeout| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(360)|Dynamiczny| Określ przedział czasu w sekundach. Limit czasu dla uaktualnienie aplikacji. Jeśli limit czasu jest mniejsza niż deployer "ActivationTimeout" zakończy się niepowodzeniem. |
 |ContainerServiceArguments|ciąg, domyślna to "-H 2375 -H npipe: / /"|Statyczny|Sieć szkieletowa usług (CPP) zarządza demona platformy docker (z wyjątkiem komputerów klienckich systemu windows, takich jak Windows 10). Ta konfiguracja umożliwia użytkownikowi określić niestandardowe argumenty, które powinny być przekazywane do demona platformy docker, podczas jego uruchamiania. Jeśli określono niestandardowe argumenty, Usługa Service Fabric nie przekaże żadnego innego argumentu do aparatu platformy Docker z wyjątkiem "--pidfile" argument. Dlatego użytkownicy nie należy określać "--pidfile" argument jako część ich argumentów klienta. Ponadto niestandardowe argumenty należy upewnić się, że platforma docker demona nasłuchuje na domyślnym potoku nazw w systemie Windows (lub w gnieździe domeny systemu Unix w systemie Linux) dla usługi Service Fabric móc komunikować się z nim.|
+|ContainerServiceLogFileMaxSizeInKb|int, domyślny jest 32768|Statyczny|Maksymalny rozmiar pliku dziennika wygenerowany przez kontenery platformy docker.  Tylko Windows.|
+|ContainerServiceLogFileNamePrefix|ciąg, domyślną jest "sfcontainerlogs"|Statyczny|Prefiks nazwy pliku dla plików dziennika generowanych przez kontenery platformy docker.  Tylko Windows.|
+|ContainerServiceLogFileRetentionCount|Int, domyślna wynosi 10|Statyczny|Liczba plików dziennika generowanych przez kontenery platformy docker, zanim pliki dziennika zostaną zastąpione.  Tylko Windows.|
 |CreateFabricRuntimeTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ przedział czasu w sekundach. Wartość limitu czasu w celu synchronizacji FabricCreateRuntime wywołania |
 |DefaultContainerRepositoryAccountName|ciąg, domyślna to ""|Statyczny|Domyślne poświadczenia używane zamiast poświadczeń określonych w ApplicationManifest.xml |
 |DefaultContainerRepositoryPassword|ciąg, domyślna to ""|Statyczny|Domyślne hasło poświadczenia używane zamiast poświadczeń określonych w ApplicationManifest.xml|
@@ -357,6 +361,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |DeploymentMaxRetryInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny| Określ przedział czasu w sekundach. Maksymalny interwał ponawiania dla wdrożenia. W przypadku każdego niepowodzenia ciągłe interwał ponawiania jest obliczany jako (DeploymentMaxRetryInterval; Min Liczba niepowodzeń ciągłe * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(10)|Dynamiczny|Określ przedział czasu w sekundach. Interwał wycofywania niepowodzenia wdrożenia. W przypadku niepowodzenia ciągłego wdrażania, co system ponowi próbę wdrożenia dla maksymalnie MaxDeploymentFailureCount. Interwał ponawiania jest wynikiem błędu ciągłego wdrażania i interwał wycofywania wdrożenia. |
 |EnableActivateNoWindow| wartość logiczna, domyślna to FALSE|Dynamiczny| Aktywowanego procesu jest tworzony w tle bez żadnych konsoli. |
+|EnableContainerServiceDebugMode|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Włączanie/wyłączanie rejestrowania dla kontenerów docker.  Tylko Windows.|
 |EnableDockerHealthCheckIntegration|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Umożliwia integrację zdarzeń funkcji HEALTHCHECK platformy docker za pomocą usługi Service Fabric raport o kondycji systemu |
 |EnableProcessDebugging|wartość logiczna, domyślna to FALSE|Dynamiczny| Umożliwia uruchomienie na hoście aplikacji w debugerze |
 |EndpointProviderEnabled| wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia zarządzanie zasobami punktu końcowego przez sieć szkieletową. Wymaga określenia początek i koniec zakresu portów aplikacji w FabricNode. |

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 774fd4ca6bbae0d02f5733269f091d325f4c776d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 9466f4178047a4927684a1fcfd80f661ea4aa7a5
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054342"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127706"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
-## <a name="introduction"></a>Wprowadzenie
+
 Dodano bezpieczeństwa korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Ten scenariusz jest często nazywany *Użyj własnego klucza*, byok. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Usługa Azure Key Vault używa rodziny nShield firmy Thales sprzętowych modułów zabezpieczeń do ochrony kluczy.
 
 Skorzystaj z informacji w tym temacie, aby ułatwić planowanie, generowanie i następnie przenoszenie własnych kluczy chronionych modułem HSM za pomocą usługi Azure Key Vault.
@@ -31,10 +31,7 @@ Ta funkcja nie jest dostępna dla Chińskiej wersji platformy Azure.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-whatis.md)  
->
 > Aby uzyskać Samouczek wprowadzający, która obejmuje tworzenie magazynu kluczy dla kluczy chronionych modułem HSM, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md).
->
->
 
 Więcej informacji na temat Generowanie i przenoszenie klucza chronionego przez moduł HSM za pośrednictwem Internetu:
 
@@ -46,14 +43,17 @@ Więcej informacji na temat Generowanie i przenoszenie klucza chronionego przez 
 * Firma Microsoft używa oddzielnych kluczy Kek oraz oddzielne środowiska Security World w każdym regionie geograficznym. Ten rozdział zapewnia, że klucz może służyć tylko w centrach danych w regionie, w którym został zaszyfrowany. Na przykład klucz Europejskiego klienta nie może służyć w centrach danych w Ameryce Północnej ani Azji.
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Więcej informacji na temat sprzętowych modułów zabezpieczeń firmy Thales i usług firmy Microsoft
+
 Firmy Thales e-Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych rozwiązania firmy Thales są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
 
 Firma Microsoft podjęła współpracę z firmą Thales, które zwiększają pogłębić sprzętowych modułów zabezpieczeń. Opracowane udoskonalenia pozwalają uzyskać typowych zalet usług hostowanych bez potrzeby rezygnacji z kontroli nad kluczami. W szczególności ulepszenia te umożliwiają firmie Microsoft Zarządzanie sprzętowe moduły zabezpieczeń, tak aby nie trzeba. Jako usługa w chmurze usługi Azure Key Vault jest skalowany w górę w krótkim terminie w celu spełnienia nagłego zwiększenia zapotrzebowania organizacji. W tym samym czasie, klucz jest chroniony wewnątrz sprzętowych modułów zabezpieczeń firmy Microsoft: użytkownik zachowuje kontrolę nad cyklem życia klucza, ponieważ Wygeneruj klucz i przeniesienie go do sprzętowych modułów zabezpieczeń firmy Microsoft.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementowanie Użyj własnego klucza (BYOK) dla usługi Azure Key Vault
+
 Użyj następujące informacje i procedury, jeśli będzie wygenerować własny klucz chroniony przez moduł HSM i przenieść go do usługi Azure Key Vault — dostarczania scenariusza klucza (BYOK).
 
 ## <a name="prerequisites-for-byok"></a>Wymagania wstępne dotyczące funkcji BYOK
+
 Znajdują się w następujących tabeli, aby uzyskać listę wymagań wstępnych dotyczących Użyj własnego klucza (BYOK) dla usługi Azure Key Vault.
 
 | Wymaganie | Więcej informacji |
@@ -61,9 +61,10 @@ Znajdują się w następujących tabeli, aby uzyskać listę wymagań wstępnych
 | Subskrypcja platformy Azure |Do utworzenia usługi Azure Key Vault, musisz mieć subskrypcję platformy Azure: [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) |
 | Warstwy usługi Azure Key Vault — wersja Premium do obsługi kluczy chronionych przez moduł HSM |Aby uzyskać więcej informacji na temat warstw usługi i możliwości usługi Azure Key Vault, zobacz [cenami usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) witryny sieci Web. |
 | Modułu HSM firmy Thales, karty inteligentne i oprogramowanie |Musi mieć dostęp do sprzętowego modułu zabezpieczeń firmy Thales i podstawowe wiedzę na temat działania sprzętowych modułów zabezpieczeń firmy Thales. Zobacz [sprzętowego modułu zabezpieczeń firmy Thales](https://www.thales-esecurity.com/msrms/buy) lista zgodnych modeli lub kupić modułu HSM, jeśli nie masz. |
-| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 oraz oprogramowaniem Thales nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](/powershell/azure/overview) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>Należy pamiętać, że w instrukcji, tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej do pobrania zestawu narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>Należy pamiętać, że w instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
+| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 oraz oprogramowaniem Thales nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>Należy pamiętać, że w instrukcji, tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej do pobrania zestawu narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>Należy pamiętać, że w instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i przeniesienia klucza usługi Azure Key Vault
+
 Użyjesz następujące pięć kroków, aby wygenerować i przenieść swój klucz do modułu HSM usługi Azure Key Vault:
 
 * [Krok 1: Przygotowanie stacji roboczej podłączonej do Internetu](#step-1-prepare-your-internet-connected-workstation)
@@ -73,29 +74,33 @@ Użyjesz następujące pięć kroków, aby wygenerować i przenieść swój kluc
 * [Krok 5: Przesłanie klucza do usługi Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>Krok 1: Przygotowanie stacji roboczej podłączonej do Internetu
+
 To pierwszy krok wykonaj następujące procedury na stacji roboczej podłączonej do Internetu.
 
 ### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalowanie programu Azure PowerShell
+
 Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Wymaga minimalnej wersji 0.8.13.
 
 Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1.2. Pobieranie swój identyfikator subskrypcji platformy Azure
+
 Uruchom sesję programu Azure PowerShell, a następnie zaloguj się do konta platformy Azure przy użyciu następującego polecenia:
 
 ```Powershell
-   Add-AzureAccount
+   Add-AzureRMAccount
 ```
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Następnie należy użyć [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) polecenia:
 
 ```powershell
-   Get-AzureSubscription
+   Get-AzureRMSubscription
 ```
 Z danych wyjściowych zlokalizuj identyfikator subskrypcji, które będą używane dla usługi Azure Key Vault. Ten identyfikator subskrypcji będzie potrzebny później.
 
 Nie zamykaj okna programu Azure PowerShell.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1.3. pobranie zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault
+
 Przejdź do witryny Microsoft Download Center i [pobrania zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault](http://www.microsoft.com/download/details.aspx?id=45345) dla regionu geograficznego lub wystąpienie platformy Azure. Aby zidentyfikować nazwę pakietu do pobrania i jego odpowiedniego skrótu pakietu algorytmu SHA-256, należy użyć następujących informacji:
 
 - - -
@@ -215,9 +220,11 @@ Zestaw narzędzi zawiera następujące czynności:
 Skopiuj pakiet na dysku USB lub innego przenośnego urządzenia pamięci masowej.
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>Krok 2: Przygotowanie rozłączonej stacji roboczej
+
 Ten drugi krok wykonaj następujące procedury na stacji roboczej, który nie jest podłączony do sieci (Internetu lub sieci wewnętrznej).
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1: Przygotowanie odłączonej stacji roboczej za pomocą modułu HSM firmy Thales
+
 Zainstaluj oprogramowanie wspomagające nCipher (firmy Thales) na komputerze Windows, a następnie dołącz HSM firmy Thales do tego komputera.
 
 Upewnij się, że narzędzia firmy Thales znajdują się w ścieżce (**%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
@@ -229,6 +236,7 @@ Upewnij się, że narzędzia firmy Thales znajdują się w ścieżce (**%nfast_h
 Aby uzyskać więcej informacji zobacz w podręczniku użytkownika dołączonym do modułu HSM firmy Thales.
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2: Instalowanie zestawu narzędzi rozwiązania BYOK na odłączonej stacji roboczej
+
 Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urządzenia pamięci masowej, a następnie wykonaj następujące czynności:
 
 1. Wyodrębnij pliki z pobranego pakietu do dowolnego folderu.
@@ -236,13 +244,16 @@ Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urząd
 3. Postępuj zgodnie z instrukcjami instalacji składników środowiska wykonawczego Visual C++ dla Visual Studio 2013.
 
 ## <a name="step-3-generate-your-key"></a>Krok 3: Generowanie klucza
+
 To trzeci krok wykonaj następujące procedury na rozłączonej stacji roboczej. Aby ukończyć ten krok modułu HSM musi być w trybie inicjowania. 
 
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1: Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
+
 Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
 
 ### <a name="step-32-create-a-security-world"></a>Krok 3.2. utworzenie środowiska zabezpieczeń security world
+
 Uruchom wiersz polecenia, a następnie uruchom program nowym świecie firmy Thales.
 
    ```cmd
@@ -256,10 +267,11 @@ Następnie wykonaj poniższe czynności:
 * Utwórz kopię zapasową pliku środowiska zabezpieczeń. Zabezpieczanie ochrony pliku środowiska zabezpieczeń, karty administratora oraz ich kody PIN i upewnij się, że nikt nie ma dostępu do więcej niż jedną kartę.
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3.3: Zmień tryb przez moduł HSM, aby ' O'
+
 Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
 
-
 ### <a name="step-34-validate-the-downloaded-package"></a>Krok 3.4. Weryfikacja pobranego pakietu
+
 Ten krok jest opcjonalny, ale też zalecany, dzięki czemu można sprawdzić poprawność następujących:
 
 * Klucz wymiany klucza, który znajduje się w zestawie narzędzi został wygenerowany w oryginalnym module HSM firmy Thales.
@@ -268,8 +280,6 @@ Ten krok jest opcjonalny, ale też zalecany, dzięki czemu można sprawdzić pop
 
 > [!NOTE]
 > Aby zweryfikować pobrany pakiet, moduł HSM musi być podłączony i włączony i musi mieć środowiska zabezpieczeń security world go (na przykład tego, który właśnie został utworzony).
->
->
 
 Aby zweryfikować pobrany pakiet:
 
@@ -329,6 +339,7 @@ Ten skrypt sprawdza łańcuch osoby podpisującej aż klucza głównego firmy Th
 Teraz możesz przystąpić do tworzenia nowego klucza.
 
 ### <a name="step-35-create-a-new-key"></a>Krok 3.5: Utwórz nowy klucz
+
 Generowanie klucza za pomocą firmy Thales **do generowania kluczy** program.
 
 Uruchom następujące polecenie, aby wygenerować klucz:
@@ -348,11 +359,12 @@ Utwórz kopię zapasową tego pliku Stokenizowanego klucza w bezpiecznym miejscu
 > [!IMPORTANT]
 > Po późniejszym przesłaniu klucza do usługi Azure Key Vault, Microsoft nie może wyeksportować tego klucza do Ciebie, staje się ona bardzo ważne, bezpieczne przechowywanie kopii zapasowej Twojego klucza oraz środowiska zabezpieczeń. Aby uzyskać wskazówki i najlepsze rozwiązania dotyczące tworzenia kopii zapasowej klucza, skontaktuj się z pomocą firmy Thales.
 >
->
+
 
 Teraz można przystąpić do przenoszenia klucza do usługi Azure Key Vault.
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>Krok 4. Przygotowanie klucza do przesłania
+
 Ten krok czwarty wykonaj następujące procedury na rozłączonej stacji roboczej.
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Krok 4.1: Tworzenie kopii klucza z ograniczonymi uprawnieniami
@@ -419,6 +431,7 @@ Może być bada, listy ACL za pomocą następującego polecenia, używając narz
   Po uruchomieniu tych poleceń Zastąp contosokey tę samą wartość, określona w **krok 3.5: Utwórz nowy klucz** z [wygenerowanie własnego klucza](#step-3-generate-your-key) kroku.
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Krok 4.2: Zaszyfrowanie klucza przy użyciu klucza wymiany klucza firmy Microsoft
+
 Uruchom jedno z następujących poleceń w zależności od regionu geograficznego lub wystąpienie platformy Azure:
 
 * Dla Ameryki Północnej:
@@ -473,9 +486,11 @@ Po uruchomieniu tego polecenia, użyj tych instrukcji:
 Po zakończeniu tego procesu pomyślnie, wyświetla **wynik: powodzenie** i nowy plik w bieżącym folderze, który ma następującą nazwę: KeyTransferPackage -*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4.3 kopiowanie pakietu przekazywania klucza na stacji roboczej podłączonej do Internetu
+
 Aby skopiować plik wyjściowy z poprzedniego kroku (KeyTransferPackage-ContosoFirstHSMkey.byok) do stacji roboczej podłączonej do Internetu, należy użyć dysku USB lub innego przenośnego urządzenia pamięci masowej.
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5: Przesłanie klucza do usługi Azure Key Vault
+
 W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
 
    ```powershell
@@ -485,4 +500,5 @@ W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [Add-A
 Jeśli przekazywanie zakończy się pomyślnie, zobaczysz wyświetlone właściwości klucza, który właśnie został dodany.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Można teraz używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz **Jeśli chcesz używać sprzętowego modułu zabezpieczeń (HSM)** sekcji [wprowadzenie do usługi Azure Key Vault](key-vault-get-started.md) samouczka.

@@ -1,53 +1,49 @@
 ---
-title: Walidacja danych XML — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Sprawdzanie poprawności XML o schematach w scenariuszach Azure Logic Apps i B2B za pomocą pakiet integracyjny dla przedsiębiorstw
+title: Walidacja danych XML dla integracji dla przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Walidacja danych XML przy użyciu schematów dla rozwiązań B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 901f0e576d28ab163fe2c46dff0594a338fbaf73
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e25f4e633b8cf9030bb0ce395f093f630db59f38
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299603"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121117"
 ---
-# <a name="validate-xml-for-enterprise-integration"></a>Walidacja danych XML dla integracji przedsiębiorstwa
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Walidacja danych XML dla integracji przedsiębiorstwa B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
-Często w scenariusze B2B partnerzy umowy należy się upewnić, które wymieniają komunikaty są prawidłowe, przed rozpoczęciem przetwarzania danych. Dokumenty schematem wstępnie zdefiniowanych można sprawdzić za pomocą Użyj łącznika sprawdzanie poprawności kodu XML w pakiet integracyjny dla przedsiębiorstw.
+Często w scenariuszy B2B partnerów w umowie musi upewnij się, że wymieniają komunikaty są prawidłowe, przed rozpoczęciem przetwarzania danych. Aby walidować dokumenty względem wstępnie zdefiniowanego schematu, należy przy użyciu łącznika sprawdzanie poprawności kodu XML w pakiet integracyjny dla przedsiębiorstw.
 
-## <a name="validate-a-document-with-the-xml-validation-connector"></a>Sprawdź poprawność dokumentu z łącznikiem sprawdzanie poprawności kodu XML
+## <a name="validate-a-document-with-the-xml-validation-connector"></a>Sprawdź poprawność dokumentu za pomocą łącznika sprawdzanie poprawności kodu XML
 
-1. Tworzenie aplikacji logiki, i [połączyć aplikację z konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md "Dowiedz się połączyć konto integracji aplikacji logiki") mający schematu, którego chcesz użyć dla sprawdzanie poprawności danych XML.
+1. Tworzenie aplikacji logiki i [połączyć aplikację z konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md "Dowiedz się, jak połączyć konto integracji aplikacji logiki") zawierającego schemat, którego chcesz użyć do weryfikacji danych XML.
 
-2. Dodaj **żądania - zostanie odebrane żądanie HTTP podczas** do aplikacji logiki wyzwalacza.
+2. Dodaj **żądania — zostanie odebrane żądanie HTTP podczas** wyzwalacz aplikacji logiki.
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
 
 3. Aby dodać **sprawdzanie poprawności kodu XML** akcji, wybierz **Dodaj akcję**.
 
-4. Aby filtrować wszystkie akcje do tego, który ma, wprowadź *xml* w polu wyszukiwania. Wybierz **sprawdzanie poprawności kodu XML**.
+4. Aby odfiltrować wszystkie akcje do tego, który ma, wprowadź *xml* w polu wyszukiwania. Wybierz **sprawdzanie poprawności kodu XML**.
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
 
-5. Aby określić, który chcesz zweryfikować zawartość XML, wybierz **zawartości**.
+5. Aby określić zawartość XML, który chcesz zweryfikować, zaznacz **zawartości**.
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
 
-6. Zaznacz tag treści jako zawartości, który chcesz zweryfikować.
+6. Wybierz tag treści jako zawartość, którą chcesz zweryfikować.
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-3.png)
 
-7. Aby określić schematu, którego chcesz użyć do zweryfikowania poprzedniej *zawartości* danych wejściowych, wybierz **nazwy SCHEMATU**.
+7. Określić schemat, którego chcesz użyć do zweryfikowania poprzedniego *zawartości* danych wejściowych, wybierz polecenie **nazwa SCHEMATU**.
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-4.png)
 
@@ -55,10 +51,10 @@ Często w scenariusze B2B partnerzy umowy należy się upewnić, które wymienia
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-5.png)
 
-Wykonuje się teraz w skonfigurowaniu łącznika z weryfikacji. W przypadku aplikacji rzeczywistych można przechowywać dane zweryfikowanych w aplikacji — biznesowych (LOB) takie jak SalesForce. Aby wysłać zweryfikowanych dane wyjściowe do usług Salesforce, Dodaj akcję.
+Teraz są wykonywane tylko z konfiguracją łącznika sprawdzania poprawności. W przypadku aplikacji rzeczywistych można przechowywać zweryfikowanych danych w aplikacji (LOB) line-of-business, takich jak SalesForce. Aby wysłać zweryfikowanych danych wyjściowych do usługi Salesforce, Dodaj akcję.
 
-Aby przetestować operację sprawdzania poprawności, należy wysłać żądanie do punktu końcowego HTTP.
+Aby przetestować akcję sprawdzania poprawności, należy wysłać żądanie do punktu końcowego HTTP.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej na temat pakiet integracyjny dla przedsiębiorstw")   
+[Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")   
 

@@ -1,154 +1,150 @@
 ---
-title: Łącznik elementu Webhook dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Jak używać Akcje elementu webhook i wyzwalaczy do wykonania akcji, takich jak tablicy filtrów z aplikacji logiki
+title: Tworzenie przepływów pracy opartych na zdarzenia lub akcje — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie przepływów pracy opartych na zdarzenia lub akcje przy użyciu elementów webhook i usługi Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+tags: connectors
 ms.date: 07/21/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296564"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126591"
 ---
-# <a name="get-started-with-the-webhook-connector"></a>Rozpoczynanie pracy z łącznika elementu webhook
+# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Tworzenie przepływów pracy opartych na zdarzenia lub akcje przy użyciu elementów webhook i usługi Azure Logic Apps
 
-O działaniu elementu webhook i wyzwalacza można uruchomić, wstrzymywać i wznawiać przepływy do wykonywania następujących zadań:
+Za pomocą wyzwalacz i Akcja elementu webhook można uruchomić, wstrzymywać i wznawiać przepływy do wykonywania następujących zadań:
 
-* Wyzwalanie z [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) po odebraniu elementu
+* Wyzwalającej wydanie na podstawie [usługi Azure Event Hub](https://github.com/logicappsio/EventHubAPI) po odebraniu elementu
 * Oczekiwanie na zatwierdzenie przed kontynuowaniem przepływu pracy
 
-Dowiedz się więcej o [Tworzenie niestandardowych interfejsów API, który obsługuje elementu webhook](../logic-apps/logic-apps-create-api-app.md).
+Dowiedz się więcej o [sposobu tworzenia niestandardowych interfejsów API, który obsługuje element webhook](../logic-apps/logic-apps-create-api-app.md).
 
 ## <a name="use-the-webhook-trigger"></a>Użyj wyzwalacza elementu webhook
 
-A [ *wyzwalacza* ](connectors-overview.md) jest zdarzeniem, która uruchamia przepływ pracy aplikacji logiki. Wyzwalacz elementu webhook jest oparty na zdarzeniach i nie zależą od sondowania dla nowych elementów. Podobnie jak [wyzwalacza żądania](connectors-native-reqres.md), natychmiast po podejmowanych przez zdarzenie generowane aplikacji logiki. Rejestruje wyzwalacza elementu webhook *wywołania zwrotnego adresu URL* usługi i używa tego adresu URL, aby uruchomić aplikację logiki jako wymagane.
+A [ *wyzwalacza* ](connectors-overview.md) jest zdarzeniem uruchamiającym przepływ pracy aplikacji logiki. Wyzwalacza elementu webhook jest oparty na zdarzeniach i nie jest zależny od sondowania dla nowych elementów. Podobnie jak [wyzwalacza żądania](connectors-native-reqres.md), generowane aplikację logiki, natychmiastowe, która występuje zdarzenie. Rejestruje wyzwalacza elementu webhook *adresów URL wywołania zwrotnego* usługi i używa tego adresu URL, aby uruchomić aplikację logiki jako wymagane.
 
-Oto przykład pokazujący sposób konfigurowania wyzwalacza HTTP w Projektancie aplikacji logiki. W krokach założono została już wdrożona, lub uzyskują dostęp do interfejsu API, który następuje [webhook subskrybowanie i anulowanie subskrypcji wzorca w aplikacjach logiki](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). Subskrybuj wywołanie zapisane przy użyciu nowego elementu webhook aplikacji logiki lub przełączono z wyłączonego na włączony. Wywołanie anulowania subskrypcji są wysyłane w przypadku usunięte i zapisać lub przełączono z elementu webhook aplikacji logiki wyzwalacza włączony na wyłączony.
+Oto przykład pokazujący sposób konfigurowania wyzwalacza HTTP w Projektancie aplikacji logiki. W krokach założono, że został już wdrożony lub uzyskują dostęp do interfejsu API, który następuje po [elementu webhook subskrybowanie i anulowanie subskrypcji wzorca w usłudze logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). Wykonano wywołanie Subskrybuj, zawsze wtedy, gdy aplikacja logiki jest zapisywany przy użyciu nowego elementu webhook lub z wyłączonego na włączony. Wykonano wywołanie anulowania subskrypcji, gdy usuwane i zapisać lub przełączono z wyzwalacza elementu webhook aplikacji logiki włączony na wyłączony.
 
 **Aby dodać wyzwalacza elementu webhook**
 
-1. Dodaj **HTTP elementu Webhook** wyzwalacza jako pierwszy krok w aplikacji logiki.
-2. Wypełnij parametrów dla elementu webhook subskrybowanie i anulowanie subskrypcji wywołania.
+1. Dodaj **element Webhook protokołu HTTP** wyzwalacza jako pierwszy krok w aplikacji logiki.
+2. Podaj parametry dla elementu webhook subskrybowanie i anulowanie subskrypcji wywołania.
 
-   Ten krok jest zgodny ze wzorcem samej jako [akcji HTTP](connectors-native-http.md) format.
+   Ten krok jest zgodna z tym samym wzorcem jako [Akcja HTTP](connectors-native-http.md) formatu.
 
-     ![Wyzwalacz protokołu HTTP](./media/connectors-native-webhook/using-trigger.png)
+     ![Wyzwalacz HTTP](./media/connectors-native-webhook/using-trigger.png)
 
 3. Dodaj co najmniej jedną akcję.
-4. Kliknij przycisk **zapisać** do publikowania aplikacji logiki. Ten krok wymaga punktu końcowego Subskrybuj z adresem URL wywołania zwrotnego wymagane do wyzwalania tej aplikacji logiki.
-5. Zawsze, gdy usługa wykonuje `HTTP POST` adres URL wywołania zwrotnego, aplikację logiki generowane i zawiera wszystkie dane przekazywane do żądania.
+4. Kliknij przycisk **Zapisz** do publikowania aplikacji logiki. Ten krok wywołuje punkt końcowy subskrypcji za pomocą adresu URL wywołania zwrotnego, wymagane do wyzwalania tej aplikacji logiki.
+5. Zawsze, gdy usługa wykonuje `HTTP POST` do adresu URL wywołania zwrotnego, aplikacja logiki jest uruchamiany i zawiera wszystkie dane przekazywane do żądania.
 
-## <a name="use-the-webhook-action"></a>Za pomocą akcji elementu webhook
+## <a name="use-the-webhook-action"></a>Używanie akcji elementu webhook
 
-[ *Akcji* ](connectors-overview.md) operacji odbywa się przez przepływ pracy zdefiniowanych w aplikacji logiki. Rejestruje działania elementu webhook *wywołania zwrotnego adresu URL* z usługą i czeka, aż adres URL jest wywoływana przed wznowieniem. ["Wyślij E-mail zatwierdzenia"](connectors-create-api-office365-outlook.md) przykładem łącznik, który wykonuje tego wzorca. Ten wzorzec można rozszerzyć do dowolnej usługi za pomocą akcji elementu webhook. 
+[ *Akcji* ](connectors-overview.md) operacji odbywa się przez przepływ pracy zdefiniowane w aplikacji logiki. Rejestruje działania elementu webhook *adresów URL wywołania zwrotnego* z usługą i czeka, aż adres URL jest wywoływana przed wznowieniem. ["Wyślij wiadomość E-mail dotyczącą zatwierdzenia"](connectors-create-api-office365-outlook.md) jest przykładem łącznika, który następuje po ten wzorzec. Ten wzorzec można rozszerzyć na dowolną usługę za pomocą akcji elementu webhook. 
 
-Oto przykład pokazujący sposób skonfigurować akcję elementu webhook w Projektancie aplikacji logiki. Tych krokach przyjęto założenie, zostały już wdrożone, lub uzyskują dostęp do interfejsu API, który następuje [webhook subskrybowanie i anulowanie subskrypcji wzorzec używany w aplikacjach logiki](../logic-apps/logic-apps-create-api-app.md#webhook-actions). Wywołanie Subskrybuj dotyczące aplikacji logiki wykonuje akcję elementu webhook. Wywołanie anulowania subskrypcji są wysyłane w przypadku Uruchom zostało anulowane podczas oczekiwania na odpowiedź lub przed logiki aplikacji upłynie limit czasu.
+Oto przykład pokazujący sposób konfigurowania akcją elementu webhook w Projektancie aplikacji logiki. Te czynności zakładają, że został już wdrożony lub uzyskują dostęp do interfejsu API, który następuje po [elementu webhook subskrybowanie i anulowanie subskrypcji wzorzec używany w usłudze logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions). Wykonano wywołanie subskrypcji, gdy aplikacja logiki wykonuje akcji elementu webhook. Wykonano wywołanie anulowania subskrypcji, gdy uruchomienie zostało anulowane podczas oczekiwania na odpowiedź lub przed logiki aplikacji upłynie limit czasu.
 
 **Aby dodać akcję elementu webhook**
 
 1. Wybierz **nowy krok** > **Dodaj akcję**.
 
-2. W polu wyszukiwania wpisz "elementu webhook", aby znaleźć **HTTP elementu Webhook** akcji.
+2. W polu wyszukiwania wpisz "element webhook", aby znaleźć **element Webhook protokołu HTTP** akcji.
 
-    ![Wybierz akcję zapytania](./media/connectors-native-webhook/using-action-1.png)
+    ![Wybieranie akcji zapytania](./media/connectors-native-webhook/using-action-1.png)
 
-3. Wypełnij parametrów dla elementu webhook subskrybowanie i anulowanie subskrypcji wywołania
+3. Podaj parametry dla elementu webhook subskrybowanie i anulowanie subskrypcji wywołania
 
-   Ten krok jest zgodny ze wzorcem samej jako [akcji HTTP](connectors-native-http.md) format.
+   Ten krok jest zgodna z tym samym wzorcem jako [Akcja HTTP](connectors-native-http.md) formatu.
 
      ![Akcja pełnej kwerendy](./media/connectors-native-webhook/using-action-2.png)
    
-   W czasie wykonywania aplikacji logiki wywołuje punkt końcowy Subskrybuj po osiągnięciu tego kroku.
+   W czasie wykonywania aplikacja logiki wywołuje punkt końcowy subskrypcji po osiągnięciu tego kroku.
 
-4. Kliknij przycisk **zapisać** do publikowania aplikacji logiki.
+4. Kliknij przycisk **Zapisz** do publikowania aplikacji logiki.
 
 ## <a name="technical-details"></a>Szczegóły techniczne
 
 Poniżej przedstawiono więcej informacji o wyzwalacze i akcje obsługuje tego elementu webhook.
 
-## <a name="webhook-triggers"></a>Wyzwalacze elementu Webhook
+## <a name="webhook-triggers"></a>Wyzwalaczy elementu Webhook
 
 | Akcja | Opis |
 | --- | --- |
-| HTTP Webhook |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby uruchomić aplikację logiki, zgodnie z potrzebami. |
+| HTTP Webhook |Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adresu URL wyzwolenie aplikacji logiki zgodnie z potrzebami. |
 
 ### <a name="trigger-details"></a>Szczegóły wyzwalacza
 
 #### <a name="http-webhook"></a>HTTP Webhook
 
-Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby uruchomić aplikację logiki, zgodnie z potrzebami.
+Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adresu URL wyzwolenie aplikacji logiki zgodnie z potrzebami.
 * Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Subskrypcja — metoda * |method |Metoda HTTP do użycia podczas subskrybowania żądania |
-| Subskrypcja URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania Subskrybuj |
-| Anulowanie subskrypcji metody * |method |Metoda HTTP do użycia podczas żądania anulowania |
-| Anulowanie subskrypcji URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
-| Subskrypcja treści |treść |Żądania HTTP do subskrybowania |
-| Subskrypcja nagłówki |nagłówki |Nagłówki żądania HTTP do subskrybowania |
-| Subskrypcja uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia podczas subskrybowania. [Zobacz łącznika HTTP](connectors-native-http.md#authentication) Aby uzyskać więcej informacji |
-| Anulowanie subskrypcji treści |treść |Żądania HTTP do anulowania subskrypcji |
+| Subskrybuj metoda * |method |Metoda HTTP do użycia podczas żądania subskrypcji |
+| Subskrybuj URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
+| Anulowanie subskrypcji — metoda * |method |Metoda HTTP do użycia podczas żądania anulowania |
+| Anulowanie subskrypcji identyfikatora URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
+| Subskrybuj treści |treść |Treść żądania HTTP dla subskrypcji |
+| Subskrybuj nagłówki |nagłówki |Nagłówki żądania HTTP dla subskrypcji |
+| Subskrybuj uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia dla subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
+| Anulowanie subskrypcji treści |treść |Treść żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji nagłówki |nagłówki |Nagłówki żądania HTTP do anulowania subskrypcji |
-| Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia na potrzeby anulowania subskrypcji. [Zobacz łącznika HTTP](connectors-native-http.md#authentication) Aby uzyskać więcej informacji |
+| Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP na potrzeby anulowania subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
 
 **Szczegóły danych wyjściowych**
 
-Żądania elementu Webhook
+Żądanie elementu Webhook
 
 | Nazwa właściwości | Typ danych | Opis |
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki żądania elementu Webhook |
 | Treść |obiekt |Obiekt żądania elementu Webhook |
-| Kod stanu |int |Kod stanu żądania elementu Webhook |
+| Kod stanu |Int |Kod stanu żądania elementu Webhook |
 
 ## <a name="webhook-actions"></a>Akcje elementu Webhook
 
 | Akcja | Opis |
 | --- | --- |
-| HTTP Webhook |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami. |
+| HTTP Webhook |Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami. |
 
 ### <a name="action-details"></a>Szczegóły akcji
 
 #### <a name="http-webhook"></a>HTTP Webhook
 
-Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami.
+Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami.
 * Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Subskrypcja — metoda * |method |Metoda HTTP do użycia podczas subskrybowania żądania |
-| Subskrypcja URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania Subskrybuj |
-| Anulowanie subskrypcji metody * |method |Metoda HTTP do użycia podczas żądania anulowania |
-| Anulowanie subskrypcji URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
-| Subskrypcja treści |treść |Żądania HTTP do subskrybowania |
-| Subskrypcja nagłówki |nagłówki |Nagłówki żądania HTTP do subskrybowania |
-| Subskrypcja uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia podczas subskrybowania. [Zobacz łącznika HTTP](connectors-native-http.md#authentication) Aby uzyskać więcej informacji |
-| Anulowanie subskrypcji treści |treść |Żądania HTTP do anulowania subskrypcji |
+| Subskrybuj metoda * |method |Metoda HTTP do użycia podczas żądania subskrypcji |
+| Subskrybuj URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
+| Anulowanie subskrypcji — metoda * |method |Metoda HTTP do użycia podczas żądania anulowania |
+| Anulowanie subskrypcji identyfikatora URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
+| Subskrybuj treści |treść |Treść żądania HTTP dla subskrypcji |
+| Subskrybuj nagłówki |nagłówki |Nagłówki żądania HTTP dla subskrypcji |
+| Subskrybuj uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia dla subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
+| Anulowanie subskrypcji treści |treść |Treść żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji nagłówki |nagłówki |Nagłówki żądania HTTP do anulowania subskrypcji |
-| Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia na potrzeby anulowania subskrypcji. [Zobacz łącznika HTTP](connectors-native-http.md#authentication) Aby uzyskać więcej informacji |
+| Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP na potrzeby anulowania subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
 
 **Szczegóły danych wyjściowych**
 
-Żądania elementu Webhook
+Żądanie elementu Webhook
 
 | Nazwa właściwości | Typ danych | Opis |
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki żądania elementu Webhook |
 | Treść |obiekt |Obiekt żądania elementu Webhook |
-| Kod stanu |int |Kod stanu żądania elementu Webhook |
+| Kod stanu |Int |Kod stanu żądania elementu Webhook |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

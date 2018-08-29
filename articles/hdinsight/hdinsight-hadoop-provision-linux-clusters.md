@@ -4,18 +4,18 @@ description: Konfigurowanie usługi Hadoop, Kafka, Spark, HBase, usługi ML lub 
 keywords: Konfiguracja klastra usługi hadoop, klastra kafka instalacji, konfiguracji klastrów platformy spark, co to jest klaster na platformie hadoop
 services: hdinsight
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: f325e49695cab44d5c3d9fe94cd207755d136f7b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 08/27/2018
+ms.openlocfilehash: 0df38e1bd9c4db1cf988beab31b1c3189da4f0c2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107133"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127911"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i więcej
 
@@ -99,7 +99,7 @@ Przy użyciu klastrów HDInsight można skonfigurować dwa konta użytkownika po
 * Użytkownika HTTP: domyślna nazwa użytkownika jest *administratora*. Używa konfiguracji podstawowej w witrynie Azure portal. Czasami jest to "Klaster użytkownika".
 * Użytkownika SSH (klastry systemu Linux): używane do łączenia z klastrem za pośrednictwem protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Pakiet Enterprise security umożliwia integrację HDInsight przy użyciu usługi Active Directory oraz struktury Apache Ranger. Wielu użytkowników mogą być tworzone przy użyciu pakietu zabezpieczeń wpisywanie.
+Pakiet Enterprise security umożliwia integrację HDInsight przy użyciu usługi Active Directory oraz struktury Apache Ranger. Wielu użytkowników mogą być tworzone przy użyciu pakiet Enterprise security.
 
 ## <a name="location"></a>Lokalizacji (regionów) dla klastrów i magazynu
 
@@ -140,10 +140,23 @@ Aby zwiększyć wydajność, korzystając z technologii Oozie, należy użyć ni
 > [!IMPORTANT]
 > Nie można ponownie użyć niestandardowy Magazyn metadanych programu Oozie. Aby użyć niestandardowy Magazyn metadanych programu Oozie, musisz podać pustej bazy danych SQL Azure, podczas tworzenia klastra HDInsight.
 
+
+## <a name="custom-cluster-setup"></a>Konfiguracja klastra niestandardowe
+Kompilacje instalatora niestandardowego klastra na szybkie tworzenie ustawień i dodaje następujące opcje:
+- [Aplikacji HDInsight](#install-hdinsight-applications-on-clusters)
+- [Rozmiar klastra](#configure-cluster-size)
+- [Akcje skryptu](#advanced-settings-script-actions)
+- [Sieć wirtualna](#advanced-settings-extend-clusters-with-a-virtual-network)
+
+## <a name="install-hdinsight-applications-on-clusters"></a>Instalowanie aplikacji HDInsight w klastrach
+
+Aplikacja usługi HDInsight to aplikacja, którą użytkownicy mogą zainstalować w klastrze usługi HDInsight opartym na systemie Linux. Możesz użyć aplikacji, dostarczone przez firmę Microsoft, innych firm lub który tworzyć samodzielnie. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji platformy Hadoop innych firm w usłudze Azure HDInsight](hdinsight-apps-install-applications.md).
+
+Większość aplikacji HDInsight są instalowane na pustego węzła krawędzi.  Pustego węzła krawędzi jest maszyny wirtualnej z systemem Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak węzła głównego. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md).
+
 ## <a name="configure-cluster-size"></a>Skonfiguruj rozmiar klastra
 
 Tak długo, jak istnieje klastra stosowana jest stawka za użycie węzła dla. Naliczanie opłat rozpoczyna się, gdy klaster zostanie utworzona i zatrzymuje, gdy klaster jest usuwany. Klastrów nie można cofać przydziału ani wstrzymania.
-
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Liczba węzłów dla każdego typu klastra
 Każdy typ klastra ma swój własny liczbę węzłów, terminologii dla węzłów i domyślny rozmiar maszyny Wirtualnej. W poniższej tabeli liczba węzłów dla każdego typu węzła jest w nawiasach.
@@ -191,20 +204,6 @@ Aby dowiedzieć się, jaka wartość należy używać do określenia rozmiaru ma
 >
 
 Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](../virtual-machines/windows/sizes.md). Aby uzyskać informacje o cenach poszczególnych rozmiarów, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).   
-
-## <a name="custom-cluster-setup"></a>Konfiguracja klastra niestandardowe
-Kompilacje instalatora niestandardowego klastra na szybkie tworzenie ustawień i dodaje następujące opcje:
-- [Aplikacji HDInsight](#hdinsight-applications)
-- [Rozmiar klastra](#cluster-size)
-- Ustawienia zaawansowane
-  - [Akcje skryptu](#customize-clusters-using-script-action)
-  - [Sieć wirtualna](#use-virtual-network)
-
-## <a name="install-hdinsight-applications-on-clusters"></a>Instalowanie aplikacji HDInsight w klastrach
-
-Aplikacja usługi HDInsight to aplikacja, którą użytkownicy mogą zainstalować w klastrze usługi HDInsight opartym na systemie Linux. Możesz użyć aplikacji, dostarczone przez firmę Microsoft, innych firm lub który tworzyć samodzielnie. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji platformy Hadoop innych firm w usłudze Azure HDInsight](hdinsight-apps-install-applications.md).
-
-Większość aplikacji HDInsight są instalowane na pustego węzła krawędzi.  Pustego węzła krawędzi jest maszyny wirtualnej z systemem Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak węzła głównego. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md).
 
 ## <a name="advanced-settings-script-actions"></a>Ustawienia zaawansowane: akcji skryptu
 

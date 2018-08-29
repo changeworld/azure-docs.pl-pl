@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 6dcd9ac725b76463259b60df6312e5cafebd9e88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044960"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126641"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -222,7 +222,7 @@ Istnieje kilka usług, które mogą służyć do uruchamiania zapytań programu 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Usługa Azure Data Factory umożliwia HDInsight jako część potoku usługi fabryka danych. Aby uzyskać więcej informacji na temat korzystania z programu Hive w potoku, zobacz [przekształcania danych za pomocą działania programu Hive w usłudze Azure Data Factory](/data-factory/transform-data-using-hadoop-hive.md) dokumentu.
+Usługa Azure Data Factory umożliwia HDInsight jako część potoku usługi fabryka danych. Aby uzyskać więcej informacji na temat korzystania z programu Hive w potoku, zobacz [przekształcania danych za pomocą działania programu Hive w usłudze Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) dokumentu.
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Zadania programu hive i SQL Server Integration Services
 

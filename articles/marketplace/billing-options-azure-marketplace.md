@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158985"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125517"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Opcje rozliczeń w witrynie Azure Marketplace
 
@@ -70,7 +70,7 @@ Ważną zaletą używania Transact publikowania opcji w portalu Marketplace jest
 W tym scenariuszu firma Microsoft rozlicza i zbiera w Twoim imieniu. Rozliczenia Microsoft eliminuje konieczność utworzenia relacji zamówienia z klientem. Wspólne rozliczenia może zapewnić oszczędność czasu i zasobów. On również mogą pomóc skupić się na docelowa sprzedaży, a nie na zbieranie na rachunku. 
 
 ## <a name="enterprise-agreement"></a>Umowa Enterprise  
-Jeśli jesteś klientem Microsoft Enterprise Agreement, można użyć umowy Enterprise Agreement do zapłacenia za produkty firmy Microsoft. Opłata może być produktów, w tym w przypadku użycia platformy Azure. Płatność przy użyciu umowy Enterprise Agreement jest przeznaczona dla organizacji, które mają licencje na oprogramowanie i usługi w chmurze dla co najmniej trzy lata. Można rozłożyć płatności zamiast jednego. płatności z góry. Jeśli korzystasz z płatnością za rzeczywiste użycie opcji publikowania, naliczania opłat za koszty licencjonowania oprogramowania następuje co kwartał nadwyżkowe cyklu rozliczeniowym umowy Enterprise Agreement.  
+Jeśli jesteś klientem Microsoft Enterprise Agreement, można użyć umowy Enterprise Agreement do zapłacenia za produkty firmy Microsoft. Opłata może być produktów, w tym w przypadku użycia platformy Azure. Płatność przy użyciu umowy Enterprise Agreement jest przeznaczona dla organizacji, które mają licencje na oprogramowanie i usługi w chmurze dla co najmniej trzy lata. Można rozłożyć płatności zamiast wywołania jednej płatności z góry. Jeśli korzystasz z płatnością za rzeczywiste użycie opcji publikowania, naliczania opłat za koszty licencjonowania oprogramowania następuje co kwartał nadwyżkowe cyklu rozliczeniowym umowy Enterprise Agreement.  
 
 ### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
 Jeśli jesteś klientem z umową Enterprise Agreement może dodać do Umowy Azure. Azure należy dodać do Umowy, podejmując zobowiązanie pieniężne na platformie Azure. Zobowiązania pieniężnego jest wykorzystywane przez cały rok. Zobowiązanie obejmuje dowolną kombinację użycie usług systemu Azure.

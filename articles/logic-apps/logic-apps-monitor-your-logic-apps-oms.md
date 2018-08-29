@@ -1,148 +1,143 @@
 ---
-title: Monitor i get wgląd w aplikację logiki jest wykonywane przy użyciu Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Monitorowanie sieci jest uruchamiany aplikacji logiki z analizy dzienników, aby uzyskać szczegółowe informacje i szczegóły debugowania bardziej zaawansowane funkcje do rozwiązywania problemów i Diagnostyka
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
+title: Monitorowanie aplikacji logiki jest uruchamiany z usługą Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Uzyskiwanie szczegółowych informacji i debugowanie dane dotyczące uruchomienia aplikacji logiki z usługą Log Analytics do diagnostyki i rozwiązywania problemów
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1aa55728b222c2838026cf5b06175736c5c84194
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294578"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123294"
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorowanie i uzyskiwanie szczegółowych informacji o uruchomieniu aplikacji logiki z analizy dzienników
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitoruj i uzyskuj wgląd w uruchomienia aplikacji logiki z usługą Log Analytics
 
-Do monitorowania i bardziej rozbudowane informacje debugowania można włączyć analizy dzienników w tym samym czasie, podczas tworzenia aplikacji logiki. Analiza dzienników zapewnia diagnostyki rejestrowania i monitorowania aplikacji logiki uruchamia się za pośrednictwem portalu Azure. Po dodaniu rozwiązania do zarządzania aplikacji logiki, otrzymasz zagregowany stan logiki aplikacji działa i konkretne szczegółowe informacje, takie jak stan, czas wykonywania, stan ponownego wysyłania i identyfikatorów korelacji.
+Do monitorowania oraz dokładniejsze informacje debugowania można włączyć usługi Log Analytics, w tym samym czasie, podczas tworzenia aplikacji logiki. Usługa log Analytics oferuje uruchomienia diagnostyki rejestrowanie i monitorowanie aplikacji logiki w witrynie Azure portal. Po dodaniu rozwiązania do zarządzania aplikacji logiki, otrzymasz zagregowany stan uruchomienia aplikacji logiki i szczegółowe informacje, takie jak stan, czas wykonywania, ponowne przesłanie stanu i identyfikatorów korelacji.
 
-W tym artykule pokazano, jak włączyć funkcję analizy dzienników, dzięki czemu można wyświetlać zdarzenia środowiska uruchomieniowego i uruchom danych aplikacji logiki.
+W tym artykule pokazano, jak włączyć usługi Log Analytics, dzięki czemu można wyświetlać zdarzenia środowiska uruchomieniowego i uruchom danych dla aplikacji logiki.
 
  > [!TIP]
- > Aby monitorować istniejących aplikacji logiki, wykonaj następujące kroki, aby [włączyć rejestrowania diagnostycznego i wysyłać dane środowiska uruchomieniowego aplikacji logiki do analizy dzienników](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+ > Aby monitorować istniejące aplikacje logiki, wykonaj następujące kroki, aby [włączyć rejestrowanie diagnostyczne i wysyłać dane środowiska uruchomieniowego aplikacji logiki do usługi Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 ## <a name="requirements"></a>Wymagania
 
-Przed rozpoczęciem, musisz mieć obszaru roboczego analizy dzienników. Dowiedz się [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md). 
+Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usługi Log Analytics. Dowiedz się, [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). 
 
-## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Włącz rejestrowanie danych diagnostycznych podczas tworzenia aplikacji logiki
+## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Włączanie rejestrowania diagnostycznego, podczas tworzenia aplikacji logiki
 
-1. W [portalu Azure](https://portal.azure.com), tworzenie aplikacji logiki. Wybierz **Utwórz zasób** > **integracji przedsiębiorstwa** > **aplikacji logiki**.
+1. W [witryny Azure portal](https://portal.azure.com), tworzenie aplikacji logiki. Wybierz **Utwórz zasób** > **integracji dla przedsiębiorstw** > **aplikacji logiki**.
 
    ![Tworzenie aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/find-logic-apps-azure.png)
 
-2. W **tworzenie aplikacji logiki** wykonaj te zadania, jak pokazano:
+2. W **tworzenie aplikacji logiki** strony, wykonywać te zadania, jak pokazano:
 
-   1. Podaj nazwę aplikacji logiki, a następnie wybierz subskrypcję platformy Azure. 
+   1. Podaj nazwę aplikacji logiki, a następnie wybierz swoją subskrypcję platformy Azure. 
    2. Utwórz lub wybierz grupę zasobów platformy Azure.
-   3. Ustaw **dziennika analizy** do **na**. 
-   Wybierz obszar roboczy analizy dzienników, które chcesz wysyłać dane dotyczące aplikacji logiki uruchamia. 
-   4. Gdy wszystko jest gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
+   3. Ustaw **Log Analytics** do **na**. 
+   Wybierz obszar roboczy usługi Log Analytics, które chcesz wysyłać dane dla aplikacji logiki jest uruchamiany. 
+   4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
 
       ![Tworzenie aplikacji logiki](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      Po zakończeniu tego kroku, platforma Azure tworzy aplikację logiki, który jest obecnie skojarzony z obszaru roboczego analizy dzienników. 
-      Ponadto ten krok również automatycznie instaluje rozwiązanie do zarządzania aplikacji logiki w obszarze roboczym.
+      Po zakończeniu tego kroku, platforma Azure tworzy aplikację logiki, która jest teraz skojarzone z obszarem roboczym usługi Log Analytics. 
+      Ponadto ten krok również automatycznie zainstaluje rozwiązanie Logic Apps Management w obszarze roboczym.
 
-3. Aby wyświetlić aplikację logiki uruchomieniu [wykonaj te czynności](#view-logic-app-runs-oms).
+3. Aby wyświetlić aplikację logiki jest uruchamiany, [wykonaj następujące kroki](#view-logic-app-runs-oms).
 
-## <a name="install-the-logic-apps-management-solution"></a>Instalowanie rozwiązania do zarządzania aplikacji logiki
+## <a name="install-the-logic-apps-management-solution"></a>Zainstalować rozwiązanie do zarządzania aplikacjami logiki
 
-Jeśli już włączone analizy dzienników, podczas tworzenia aplikacji logiki, Pomiń ten krok. Masz już zainstalowany rozwiązania do zarządzania aplikacji logiki.
+Jeśli pominiesz ten krok jest już włączona usługa Log Analytics, gdy utworzono aplikację logiki. Masz już zainstalowano rozwiązania do zarządzania aplikacji logiki.
 
-1. W [portalu Azure](https://portal.azure.com), wybierz **więcej usług**. Wyszukaj "analizy dzienników" jako filtr, a następnie wybierz pozycję **analizy dzienników** pokazany:
+1. W [witryny Azure portal](https://portal.azure.com), wybierz **więcej usług**. Wyszukaj "log analytics" jako filtr, a następnie wybierz **usługi Log Analytics** jak pokazano:
 
-   ![Wybierz pozycję "Analizy dzienników"](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
+   ![Wybierz pozycję "Usługi Log Analytics"](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników. 
+2. W obszarze **usługi Log Analytics**, Znajdź i wybierz swój obszar roboczy usługi Log Analytics. 
 
-   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![Wybierz swój obszar roboczy usługi Log Analytics](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. W obszarze **zarządzania**, wybierz **omówienie**.
+3. W obszarze **zarządzania**, wybierz **Przegląd**.
 
-   ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
+   ![Wybierz pozycję "Portal pakietu OMS"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
 4. Na stronie Przegląd wybierz **Dodaj** otworzyć Kafelek rozwiązania do zarządzania. 
 
-   ![Wybierz pozycję "Zarządzanie aplikacje logiki"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![Wybierz pozycję "Logic Apps Management"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. Przewiń listę **rozwiązań do zarządzania**, wybierz **zarządzania aplikacje logiki** rozwiązania i wybierz polecenie **Utwórz** do zainstalowania go na stronie przeglądu.
+5. Przewijaj listę **rozwiązań do zarządzania**, wybierz **Logic Apps Management** rozwiązania i wybierz polecenie **Utwórz** do zainstalowania go na stronie przeglądu.
 
-   ![Wybierz opcję "Dodaj", "Zarządzania aplikacjami logiki"](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+   ![Wybieranie pozycji "Dodaj" "Logic Apps Management"](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>Widok, który uruchamia aplikację logiki w obszarze roboczym analizy dzienników
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>Wyświetl uruchomienia aplikacji logiki w obszarze roboczym usługi Log Analytics
 
-1. Aby wyświetlić liczbę i stan sekwencji aplikacji logiki, przejdź do strony Przegląd obszaru roboczego analizy dzienników. Przejrzyj szczegóły na **zarządzania aplikacje logiki** kafelka.
+1. Aby wyświetlić liczbę i stan uruchomienia aplikacji logiki, przejdź do strony Przegląd dla obszaru roboczego usługi Log Analytics. Przejrzyj szczegóły na **Logic Apps Management** kafelka.
 
-   ![Wyświetlanie stanu i liczba Uruchom aplikację logiki kafelka przeglądu](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+   ![Kafelek przeglądu przedstawiający stan i liczba przebiegu aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
 
-2. Aby wyświetlić podsumowanie z bardziej szczegółowymi informacjami na temat sekwencji aplikacji logiki, wybierz **zarządzania aplikacje logiki** kafelka.
+2. Aby wyświetlić podsumowanie z dodatkowymi szczegółami dotyczącymi uruchomienia aplikacji logiki, wybierz **Logic Apps Management** kafelka.
 
-   W tym miejscu że aplikacja działa logiki są pogrupowane według nazwy lub stan wykonania. Można również wyświetlić szczegółowe informacje o niepowodzeniach w akcji lub wyzwalaczy dla przebiegów aplikacji logiki.
+   W tym miejscu uruchomienia aplikacji logiki są grupowane według nazwy lub stanu wykonywania. Można również wyświetlić szczegółowe informacje o błędach w akcji ani wyzwalaczy do uruchomienia aplikacji logiki.
 
-   ![Uruchamia aplikację logiki podsumowanie stanu](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-runs-summary.png)
+   ![Podsumowanie stanu dla aplikacji logiki uruchamia](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-runs-summary.png)
    
-3. Aby wyświetlić wszystkie elementy dla konkretnej logiki aplikacji lub stanu, wybierz wiersz dla aplikacji logiki lub stanu.
+3. Aby wyświetlić wszystkie uruchomienia dla stanu lub logikę specyficzną dla aplikacji, wybierz wiersz dla aplikacji logiki lub stanu.
 
-   Oto przykład pokazujący wszystkie elementy aplikacji logika charakterystyczna dla:
+   Oto przykład, który pokazuje wszystkie przebiegi logikę specyficzną dla aplikacji:
 
-   ![Widok jest uruchamiana dla aplikacji logiki lub stanu](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![Wyświetl uruchomienia aplikacji logiki lub stan](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   Dostępne są dwie opcje zaawansowane na tej stronie:
-   * **Śledzone właściwości:** ta kolumna zawiera śledzonych właściwości, które są pogrupowane według akcje dotyczące aplikacji logiki. Aby wyświetlić właściwości śledzonych, wybierz **widoku**. Można przeszukiwać właściwości śledzonych przy użyciu filtru kolumny.
+   Istnieją dwie opcje zaawansowane na tej stronie:
+   * **Śledzone właściwości:** ta kolumna zawiera śledzone właściwości, które są pogrupowane według akcji aplikacji logiki. Aby wyświetlić właściwości śledzone, wybierz **widoku**. Śledzone właściwości można wyszukiwać za pomocą filtr kolumn.
    
-     ![Wyświetl właściwości śledzonych aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+     ![Wyświetl śledzonych właściwości dla aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     Wszystkie nowo dodanych właściwości śledzonych może potrwać 10 – 15 minut, zanim pojawią się po raz pierwszy. Dowiedz się [sposobu dodawania właściwości śledzonych do aplikacji logiki](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
+     Wszystkie nowo dodane śledzone właściwości może potrwać 10 – 15 minut, zanim pojawią się po raz pierwszy. Dowiedz się, [sposób dodawania śledzonych do aplikacji logiki](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Prześlij ponownie:** można ponownie prześlij co najmniej jeden przebieg aplikacji logiki, których nie powiodła się, zakończyło się pomyślnie, lub nadal są uruchomione. Zaznacz pola wyboru dla przebiegów, które chcesz przesłać ponownie, a następnie wybierz pozycję **ponownie prześlij**. 
+   * **Prześlij ponownie:** można ponownie przesłać co najmniej jeden uruchomienia aplikacji logiki, które się nie powiodły, zakończyło się pomyślnie, lub nadal są uruchomione. Zaznacz pola wyboru dla przebiegów, które chcesz ponownie przesłać, a następnie wybierz **ponownie przesłać**. 
 
-     ![Prześlij ponownie uruchamia aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
+     ![Prześlij ponownie uruchomienia aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
-4. Aby filtrować wyniki, można wykonać filtrowania zarówno po stronie klienta i po stronie serwera.
+4. Aby filtrować wyniki, można wykonać filtrowania zarówno po stronie klienta, jak i po stronie serwera.
 
-   * Filtr po stronie klienta: dla każdej kolumny wybierz filtry, które mają. 
+   * Filtr po stronie klienta: dla każdej kolumny, należy wybrać filtry, które chcesz. 
    Oto kilka przykładów:
 
-     ![Przykładowe filtry kolumn](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
+     ![Przykład filtrami kolumn.](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * Filtr po stronie serwera: okna, określony czas lub Ogranicz liczbę uruchomień, które są wyświetlane, należy użyć kontrola zakresu, w górnej części strony. 
-   Domyślnie są wyświetlane tylko 1000 rekordów jednocześnie. 
+   * Filtr po stronie serwera: wybranie określonego okna czasowego lub ograniczyć liczbę tych, które są wyświetlane, korzystanie z kontroli zakresu w górnej części strony. 
+   Domyślnie tylko 1000 rekordów są wyświetlane w danym momencie. 
    
-     ![Zmień przedział czasu](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
+     ![Zmiany w danym przedziale czasu](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
-5. Aby wyświetlić wszystkie akcje i ich szczegóły dla określonego przebiegu, wybierz wiersz dla uruchamiania aplikacji logiki.
+5. Aby wyświetlić wszystkie akcje i ich szczegóły dotyczące określonego uruchomienia, wybierz wiersz dla przebiegu aplikacji logiki.
 
-   Oto przykład pokazujący wszystkie akcje dla aplikacji logiki określonej Uruchom:
+   Oto przykład, który pokazuje wszystkie akcje dla przebiegu aplikacji logiki określonych:
 
-   ![Wyświetlanie akcji dla uruchamiania aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
+   ![Wyświetlanie akcji dla przebiegu aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
    
-6. Na każdej stronie wyników, aby wyświetlić kwerendy w trakcie wyników lub aby wyświetlić wszystkie wyniki, wybierz **Zobacz wszystkie**, który otwiera stronę wyszukiwania dziennika.
+6. Na każdej stronie wyników, aby wyświetlić zapytanie w odniesieniu do wyników lub aby zobaczyć wszystkie wyniki, wybierz opcję **Zobacz wszystkie**, który spowoduje otwarcie strony wyszukiwanie w dzienniku.
    
-   ![Zobacz wszystkie na stronach wyników](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![Zobacz wszystko na stronach wyników](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
    
-   Na stronie dziennik wyszukiwania
+   Na stronie przeszukiwania dzienników
    * Aby wyświetlić wyniki zapytania w tabeli, wybierz **tabeli**.
-   * Aby zmienić kwerendy, można edytować ciągu zapytania w pasku wyszukiwania. 
-   Aby lepiej wykorzystać możliwości wybierz **zaawansowane analizy**.
+   * Aby zmienić kwerendę, można edytować ciągu zapytania w pasku wyszukiwania. 
+   Aby uzyskać lepsze efekty, wybierz **Advanced Analytics**.
 
-     ![Wyświetlanie akcji i szczegóły dotyczące uruchamiania aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
+     ![Wyświetlanie akcji oraz szczegóły przebiegu aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     W tym miejscu na stronie usługi Analiza dzienników Azure można aktualizować zapytania i wyświetlić wyniki z tabeli. 
-     To zapytanie używa [język zapytań Kusto](https://docs.loganalytics.io/docs/Language-Reference), który można edytować, jeśli chcesz wyświetlić różne wyniki. 
+     W tym miejscu na stronie usługi Azure Log Analytics można aktualizować zapytania i wyświetlić wyniki z tabeli. 
+     To zapytanie używa [język zapytania Kusto](https://docs.loganalytics.io/docs/Language-Reference), który można edytować, jeśli chcesz wyświetlić różne wyniki. 
 
-     ![Analiza dzienników Azure - widok zapytania](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![Usługa Azure Log Analytics — widok zapytania](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

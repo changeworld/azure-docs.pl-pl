@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane platformy w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera listę systemów Windows i Linux operatings obsługiwane w Centrum zabezpieczeń Azure.
+title: Platformy są obsługiwane w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera listę systemów Windows i Linux operatings obsługiwane w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2018
+ms.date: 07/26/2018
 ms.author: terrylan
-ms.openlocfilehash: 1bb0b61fe8a74edd35bb096fd295aedc67f6efb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b82b152ae4f44e475b5c3e9bda9d604f405503e0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335894"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123735"
 ---
-# <a name="supported-platforms-in-azure-security-center"></a>Obsługiwane platformy w Centrum zabezpieczeń Azure
-Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualnych (VM), utworzone za pomocą zarówno classic i modeli wdrażania usługi Resource Manager i komputery.
+# <a name="supported-platforms-in-azure-security-center"></a>Obsługiwane platformy w usłudze Azure Security Center
+Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualnych (VM) utworzone za pomocą zarówno klasyczny i modelem wdrażania usługi Resource Manager i komputery.
 
 > [!NOTE]
-> Dowiedz się więcej o [klasycznego i modeli wdrażania usługi Resource Manager](../azure-classic-rm.md) dla zasobów platformy Azure.
+> Dowiedz się więcej o [klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager](../azure-classic-rm.md) dla zasobów platformy Azure.
 >
 >
 
-## <a name="supported-platforms-for-windows-computers-and-vms"></a>Obsługiwane platformy dla komputerów z systemem Windows i maszyny wirtualne
+## <a name="supported-platforms-for-windows-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów Windows
 Obsługiwane systemy operacyjne Windows:
 
 * Windows Server 2008
@@ -39,29 +39,29 @@ Obsługiwane systemy operacyjne Windows:
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla komputerów z systemem Linux i maszyny wirtualne
+## <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów z systemem Linux
 Obsługiwane systemy operacyjne Linux:
 
 * Wersje Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS
-* Debian w wersji 6, 7, 8, 9
+* Wersje debian 6, 7, 8, 9
 * CentOS w wersji 5, 6, 7
 * Red Hat Enterprise Linux (RHEL) w wersji 5, 6, 7
 * SUSE Linux Enterprise Server (SLES) w wersji 11, 12
 * Oracle Linux w wersji 5, 6, 7
-* Linux Amazon 2012.09 za pośrednictwem 2017
-* Biblioteki Openssl 1.1.0 jest obsługiwana tylko na platformach x86_64 (64-bitowe)
+* Linux Amazon 2012.09 2017
+* Openssl 1.1.0 jest obsługiwana tylko na platformach x86_64 (64-bitowy)
 
 > [!NOTE]
-> Analizy behawioralnej maszyny wirtualnej nie są jeszcze dostępne dla systemów operacyjnych Linux.
+> Analiza zachowania maszyny wirtualnej nie są jeszcze dostępne w systemach operacyjnych Linux.
 >
 >
 
 ## <a name="vms-and-cloud-services"></a>Maszyny wirtualne i usługi w chmurze
-Maszyn wirtualnych uruchomionych w usłudze chmury są również obsługiwane. Tylko chmury usługi sieci web i proces roboczy role uruchomione w środowisku produkcyjnym, które są monitorowane gniazda. Aby dowiedzieć się więcej na temat usługi w chmurze, zobacz [Omówienie usługi w chmurze](../cloud-services/cloud-services-choose-me.md).
+Obsługiwane są również maszyny wirtualne działające w usłudze w chmurze. Jedyna chmura usług ról sieć web i procesów roboczych działających w środowisku produkcyjnym, które mają być monitorowane przez miejsc. Aby dowiedzieć się więcej na temat usługi w chmurze, zobacz [Omówienie usług w chmurze](../cloud-services/cloud-services-choose-me.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przewodnik planowania Centrum zabezpieczeń Azure i obsługi](security-center-planning-and-operations-guide.md) — informacje o sposobie planowania i projektowania przyjęcie Centrum zabezpieczeń Azure
-- [Alerty zabezpieczeń według typu w Centrum zabezpieczeń Azure](security-center-alerts-type.md#virtual-machine-behavioral-analysis) — Dowiedz się więcej na temat analizy behawioralnej maszyny wirtualnej i awarii zrzutu pamięci analizy w Centrum zabezpieczeń
+- [Przewodnik planowania usługi Azure Security Center i](security-center-planning-and-operations-guide.md) — informacje o sposobie planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center
+- [Alerty zabezpieczeń według typu w usłudze Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) — Dowiedz się więcej o analiza zachowania maszyny wirtualnej i awarii zrzutu pamięci analizy w usłudze Security Center
 - [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
 - [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności

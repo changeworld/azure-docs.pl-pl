@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0a6d3775238512cacc21fb3e47f395e37c3fd29b
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41988138"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128541"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Przewodnik Szybki start dotyczący mowy usługi Microsoft Translator interfejsu API w języku C# 
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ Ten artykuł pokazuje, jak używać interfejsu API mowy usługi Microsoft Transl
 
 Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
 
-Konieczne będzie plik wav o nazwie "speak.wav", w tym samym folderze co plik wykonywalny, który kompilujesz z poniższym kodem. Ten plik w formacie .wav należy w module PCM standardowe, 16-bitowych, 16kHz, format mono. Można uzyskać taki plik WAV z [zamiany tekstu na mowę interfejsu API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+Konieczne będzie plik wav o nazwie "speak.wav", w tym samym folderze co plik wykonywalny, który kompilujesz z poniższym kodem. Ten plik w formacie .wav należy w module PCM standardowe, 16-bitowych, 16kHz, format mono.
 
 Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejs API mowy usługi Microsoft Translator**. Konieczne będzie klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

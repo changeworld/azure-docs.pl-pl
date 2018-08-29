@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443586"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125001"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
@@ -35,7 +35,7 @@ Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|
 |Wystąpienia obliczeniowe|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|
 |Memory (Pamięć)|4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń | 4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń |
-|Magazyn|[Usługa Premium storage zdalnego](../virtual-machines/windows/premium-storage.md),<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 8 TB |Lokalny magazyn SSD<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 4 TB |
+|Magazyn|[Usługa Premium storage zdalnego](../virtual-machines/windows/premium-storage.md),<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 8 TB |Lokalny magazyn SSD<br/>Pojedyncza baza danych: 5 GB – 1 TB<br/>Wystąpienie zarządzane: 32 GB – 4 TB |
 |Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienia zarządzanego: Zależy [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na każdy rdzeń za pomocą 200000 maksymalna liczba IOPS|
 |Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|
 |Tworzenie kopii zapasowych|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|
@@ -53,8 +53,8 @@ Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) o
 
 Rozważ następujące źródła:
 - Przydzielenia pamięci, która jest używana przez pliki danych (MDF) i plików (LDF) dziennika.
-- Każdy poziom wydajności pojedynczego wystąpienia bazy danych obsługuje maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
-- Po skonfigurowaniu wymagany rozmiar pojedyncze bazy danych (rozmiar MDF), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
+- Każdy poziom wydajności pojedynczej bazy danych obsługuje maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
+- Po skonfigurowaniu rozmiar wymagany pojedynczej bazy danych (rozmiar MDF), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
 - Określony rozmiar magazynu w wystąpieniu zarządzanym usługi musi być wielokrotność 32 GB.
 - Można wybrać dowolnego rozmiaru bazy danych pojedyncze między 10 GB i maksymalnej obsługiwanej
  - Dla magazynu w warstwie standardowa należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB

@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ee83443c76851506fffbfcaaa12e72790d077cb0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576342"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128506"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku C# w ramach platformy .NET Core w Windows przy użyciu zestawu SDK rozpoznawania mowy
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć aplikację konsolową C# dla platformy .NET Core w Windows transkrypcja mowy na tekst za pomocą Cognitive Services SDK rozpoznawania mowy.
 Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zestawu SDK pakietu NuGet](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017.
@@ -79,7 +79,7 @@ Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zest
 
     ![Dane wyjściowe konsoli po pomyślnym rozpoznawania](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "dane wyjściowe konsoli po pomyślnym rozpoznawania")
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Poszukaj tego przykładu w `quickstart/csharp-dotnetcore-windows` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki

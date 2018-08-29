@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990901"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127964"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
@@ -27,31 +27,37 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.2.0 l
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux.
 
-## <a name="version-130"></a>Wersja 1.3.0
-07/09/2018 r.
+## <a name="version-141"></a>Wersja 1.4.1
+08/28/2018 r.
 
 ### <a name="download-azure-storage-explorer-130"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.3.0
 - [Usługa Azure Storage Explorer 1.3.0 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Eksplorator usługi Azure Storage 1.3.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Eksplorator usługi Azure Storage 1.3.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
+### <a name="hotfixes"></a>Poprawki
+* Przy pierwszym uruchomieniu programu Storage Explorer nie mógł wygenerować klucz używany do szyfrowania poufnych danych. Może to spowodować problemy, korzystając z paska szybki dostęp i dołączanie zasobów. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* Jeśli Twoje konto nie wymagało uwierzytelniania Wieloskładnikowego dla swojej dzierżawy głównej, ale dla niektórych innych dzierżaw, Eksploratora usługi Storage nie będzie można subskrypcji listy. Teraz po zarejestrowaniu się przy użyciu tego konta, Eksploratora usługi Storage wyświetli monit o ponownie wprowadzić swoje poświadczenia i wykonać uwierzytelnianie wieloskładnikowe. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Eksplorator usługi Storage nie może dołączyć zasoby z platformy Azure (Niemcy) i Azure instytucji rządowych USA. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* Jeśli zalogowano się do dwóch kont, które miały ten sam adres e-mail Eksploratora usługi Storage czasami zakończy się niepowodzeniem do wyświetlenia Twoich zasobów w widoku drzewa. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* Na wolniejszych Windows maszynach na ekranie powitalnym zajęłoby czasami znaczną ilość czasu. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* Czy pojawi się okno dialogowe Połącz, nawet wtedy, gdy było dołączone konta lub usługi. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+
 ### <a name="new"></a>Nowa
-* Uzyskiwanie dostępu do kontenerów $web używane przez statycznej witryny sieci Web jest teraz obsługiwane. Dzięki temu można łatwo przekazywać i zarządzania plikami i folderami używane przez witryny sieci Web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* Na pasku aplikacji w systemie macOS została zreorganizowana. Zmiany obejmują menu Plik, niektóre zmiany klucza skrótu i kilka nowych poleceń w menu aplikacji. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Punkt końcowy urzędu do logowania się na platformie Azure instytucji rządowych USA została zmieniona na https://login.microsoftonline.us/
-* Ułatwienia dostępu: Włączeniu czytnika ekranu, nawigacji za pomocą klawiatury teraz współpracuje z tabel, służący do wyświetlania elementów po prawej stronie. Za pomocą klawiszy strzałek do nawigacji wierszy i kolumn, Enter, aby wywołać akcje domyślne klawisz menu kontekst, otwórz menu kontekstowe dla elementu i Shift lub kontrolować wybór wielokrotny. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Załączniki zewnętrznego zasobu, takie jak w przypadku połączenia SAS i emulatorów, została znacznie ulepszona. Teraz możesz wykonywać następujące czynności:
+   * Dostosuj nazwę wyświetlaną zasób, który jest podłączany. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Dołącz do wielu emulatorów lokalnego przy użyciu różnych portów. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Dodaj zasoby dołączone do paska szybki dostęp. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Eksplorator usługi Storage obsługuje teraz usuwanie nietrwałe. Możesz:
+   * Skonfiguruj zasady usuwanie nietrwałe, klikając prawym przyciskiem myszy w węźle kontenery obiektów Blob konta magazynu.
+   * Widok nietrwale usunięte obiekty BLOB w Edytorze obiektów Blob, wybierając pozycję "Active i usunięte obiekty BLOB" w menu rozwijanym obok paska nawigacji.
+   * Usuniętych nietrwale usunięte obiekty BLOB.
 
 ### <a name="fixes"></a>Poprawki
-*  Na niektórych komputerach procesy podrzędne zostały zajmuje dużo czasu do uruchomienia. Jeśli ta sytuacja może mieć miejsce, pojawią się błędem "proces podrzędny nie można uruchomić w odpowiednim czasie". Teraz został zwiększony czas przydzielony na wykonanie procesu podrzędnego, można uruchomić z 20 do 90 sekund. Jeśli są nadal objęte tym problemem, Skomentuj na połączonych problem w usłudze GitHub. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* Przy użyciu sygnatury dostępu Współdzielonego, który nie ma uprawnienia do odczytu, nie było możliwe przekazywanie dużych obiektów blob. Logiki w celu przekazania została zmodyfikowana, aby pracować w tym scenariuszu. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* Ustawienie poziom dostępu publicznego do kontenera spowoduje usunięcie wszystkich zasad dostępu i na odwrót. Teraz zasady i dostępu publicznego dostępu zostaną zachowane, ustawiając jedną z dwóch. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* "AccessTierChangeTime" został obcięty w oknie dialogowym właściwości. Ten problem został rozwiązany. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* "Microsoft Azure Storage Explorer —" prefiks brakowało okna dialogowego Tworzenie nowego katalogu. Ten problem został rozwiązany. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Ułatwienia dostępu: Okno dialogowe Dodawanie jednostki trudno było je przejść, korzystając z VoiceOver. Wprowadzono ulepszenia. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Ułatwienia dostępu: Kolor tła przycisk Zwiń/Rozwiń okienko akcji i właściwości była niespójna przy użyciu podobnych kontrolek interfejsu użytkownika w kompozycji wysoki kontrast — kolor czarny. Kolor został zmieniony. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Ułatwienia dostępu: Motyw wysoki kontrast — kolor czarny fokus, ustawianie stylów dla przycisku "X" w oknie dialogowym właściwości nie były widoczne. Ten problem został rozwiązany. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Ułatwienia dostępu: Karty akce a Vlastnosti brakuje kilku wartości aria, które zakończyły się środowisko czytnika ekranu niepoprawne. Brak wartości aria został dodany. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Ułatwienia dostępu: Węzłów zwinięty drzewa po lewej stronie zostały nie zostało dostarczone rozwinięte aria musi mieć wartość false. Ten problem został rozwiązany. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Akcja "Konfiguruj ustawienia specyfikacji CORS" nie jest już dostępna dla kont usługi Premium Storage ponieważ kont usługi Premium Storage nie obsługują mechanizmu CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Teraz jest właściwością sygnatura dostępu współdzielonego dla usługi z dołączoną sygnatury dostępu Współdzielonego. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akcja "Ustaw domyślna Warstwa dostępu" jest teraz dostępne dla obiektów Blob i magazynu GPV2 konta, które zostały przypięte do paska szybki dostęp. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Czasami Eksploratora usługi Storage zakończy się niepowodzeniem pokazać klasycznych kont magazynu. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Znane problemy
 * Przy użyciu emulatorów, takich jak Emulator usługi Azure Storage lub Azurite, należy je nasłuchiwać połączeń na ich domyślne porty. W przeciwnym razie Eksploratora usługi Storage nie będzie można połączyć się z nimi.
@@ -88,6 +94,7 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.2.0 l
 
 ## <a name="previous-releases"></a>Poprzednie wersje
 
+* [Wersja 1.3.0](#version-130)
 * [Wersji 1.2.0 lub nowszej](#version-120)
 * [Wersji 1.1.0](#version-110)
 * [Wersja 1.0.0](#version-100)
@@ -113,6 +120,63 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.2.0 l
 * [Wersja 0.7.20160129.1](#version-07201601291)
 * [Wersja 0.7.20160105.0](#version-07201601050)
 * [Wersja 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-130"></a>Wersja 1.3.0
+07/09/2018 r.
+
+### <a name="new"></a>Nowa
+* Uzyskiwanie dostępu do kontenerów $web używane przez statycznej witryny sieci Web jest teraz obsługiwane. Dzięki temu można łatwo przekazywać i zarządzania plikami i folderami używane przez witryny sieci Web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* Na pasku aplikacji w systemie macOS została zreorganizowana. Zmiany obejmują menu Plik, niektóre zmiany klucza skrótu i kilka nowych poleceń w menu aplikacji. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* Punkt końcowy urzędu do logowania się na platformie Azure instytucji rządowych USA została zmieniona na https://login.microsoftonline.us/
+* Ułatwienia dostępu: Włączeniu czytnika ekranu, nawigacji za pomocą klawiatury teraz współpracuje z tabel, służący do wyświetlania elementów po prawej stronie. Za pomocą klawiszy strzałek do nawigacji wierszy i kolumn, Enter, aby wywołać akcje domyślne klawisz menu kontekst, otwórz menu kontekstowe dla elementu i Shift lub kontrolować wybór wielokrotny. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>Poprawki
+*  Na niektórych komputerach procesy podrzędne zostały zajmuje dużo czasu do uruchomienia. Jeśli ta sytuacja może mieć miejsce, pojawią się błędem "proces podrzędny nie można uruchomić w odpowiednim czasie". Teraz został zwiększony czas przydzielony na wykonanie procesu podrzędnego, można uruchomić z 20 do 90 sekund. Jeśli są nadal objęte tym problemem, Skomentuj na połączonych problem w usłudze GitHub. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* Przy użyciu sygnatury dostępu Współdzielonego, który nie ma uprawnienia do odczytu, nie było możliwe przekazywanie dużych obiektów blob. Logiki w celu przekazania została zmodyfikowana, aby pracować w tym scenariuszu. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* Ustawienie poziom dostępu publicznego do kontenera spowoduje usunięcie wszystkich zasad dostępu i na odwrót. Teraz zasady i dostępu publicznego dostępu zostaną zachowane, ustawiając jedną z dwóch. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* "AccessTierChangeTime" został obcięty w oknie dialogowym właściwości. Ten problem został rozwiązany. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* "Microsoft Azure Storage Explorer —" prefiks brakowało okna dialogowego Tworzenie nowego katalogu. Ten problem został rozwiązany. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* Ułatwienia dostępu: Okno dialogowe Dodawanie jednostki trudno było je przejść, korzystając z VoiceOver. Wprowadzono ulepszenia. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Ułatwienia dostępu: Kolor tła przycisk Zwiń/Rozwiń okienko akcji i właściwości była niespójna przy użyciu podobnych kontrolek interfejsu użytkownika w kompozycji wysoki kontrast — kolor czarny. Kolor został zmieniony. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Ułatwienia dostępu: Motyw wysoki kontrast — kolor czarny fokus, ustawianie stylów dla przycisku "X" w oknie dialogowym właściwości nie były widoczne. Ten problem został rozwiązany. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Ułatwienia dostępu: Karty akce a Vlastnosti brakuje kilku wartości aria, które zakończyły się środowisko czytnika ekranu niepoprawne. Brak wartości aria został dodany. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Ułatwienia dostępu: Węzłów zwinięty drzewa po lewej stronie zostały nie zostało dostarczone rozwinięte aria musi mieć wartość false. Ten problem został rozwiązany. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>Znane problemy
+* Odłączania od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Zobacz [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Aby uzyskać więcej informacji.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, należy dodać komentarz dotyczący [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Usługa Azure Stack nie obsługuje następujące funkcje i próby ich wykorzystania podczas pracy z usługą Azure Stack może spowodować nieoczekiwane błędy:
+   * Udziały plików
+   * Poziomy dostępu
+   * Usuwanie nietrwałe
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-120"></a>Wersji 1.2.0 lub nowszej
 06/12/2018 r.

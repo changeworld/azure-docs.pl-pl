@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: raynew
-ms.openlocfilehash: 99733fd80ab722f38a27bd99e5dd61bc32f7ab36
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: dc2e116e9e6bb60da4ba9fecb308ad0f9d7c127b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105057"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126798"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym do maszyn wirtualnych platformy Azure
 
@@ -71,7 +71,7 @@ Po przypięciu dół celami i wymaganiami, Contoso projektuje i przejrzyj rozwi�
 - Środowisko VMware jest zarządzane przez program vCenter Server 6.5 (**vcenter.contoso.com**) uruchomionego na maszynie Wirtualnej.
 - Firma Contoso ma lokalne centrum danych (**contoso-datacenter**), za pomocą lokalnego kontrolera domeny (**contosodc1**)
 
-## <a name="proposed-architecture"></a>Proponowana architektury
+### <a name="proposed-architecture"></a>Proponowana architektury
 
 - Ponieważ aplikacja jest obciążenie produkcyjne, maszyn wirtualnych na platformie Azure będą znajdować się w grupie zasobów w środowisku produkcyjnym **ContosoRG**.
 - Maszyny wirtualne zostaną zmigrowane do regionu podstawowego (wschodnie stany USA 2) i umieszczane w sieci produkcyjnej (sieć wirtualna-PROD-EUS2):
@@ -87,7 +87,7 @@ Contoso ocenia proponowane projektu poprzez umieszczenie razem listę zalet i wa
 
 **Zagadnienia** | **Szczegóły**
 --- | ---
-**Specjaliści** | VMs aplikacji zostaną przeniesione na platformę Azure bez wprowadzania zmian w dokonywania migracji proste.<br/><br/> Ponieważ firma Contoso używa lift-and-shift na obu maszynach wirtualnych usługi app, żadne specjalne narzędzia migracji lub konfiguracji są wymagane dla bazy danych aplikacji.<br/><br/> Contoso zachowa pełną kontrolę nad aplikację maszyn wirtualnych na platformie Azure. <br/><br/> Usługa SQL Database ma wbudowaną odporność na uszkodzenia, nie trzeba skonfigurować Contoso. Zapewnia to, że warstwa danych nie jest już pojedynczym punktem trybu failover.</br>/br > app maszyny wirtualne są uruchomione systemu Ubuntu 16.04-TLS, który jest zalecane dla dystrybucji systemu Linux. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+**Specjaliści** | VMs aplikacji zostaną przeniesione na platformę Azure bez wprowadzania zmian w dokonywania migracji proste.<br/><br/> Ponieważ firma Contoso używa lift-and-shift na obu maszynach wirtualnych usługi app, żadne specjalne narzędzia migracji lub konfiguracji są wymagane dla bazy danych aplikacji.<br/><br/> Contoso zachowa pełną kontrolę nad aplikację maszyn wirtualnych na platformie Azure. </br>/br > app maszyny wirtualne są uruchomione systemu Ubuntu 16.04-TLS, który jest zalecane dla dystrybucji systemu Linux. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 **Wady** | Warstwy sieć web i danych aplikacji pozostanie pojedynczy punkt przejścia w tryb failover. <br/><br/> Firma Contoso będzie musiał kontynuować wspieranie aplikacji jako maszyny wirtualne platformy Azure, a nie przechodzenia do zarządzanych usług, takich jak usługa Azure App Service i Azure Database for MySQL.<br/><br/> Firma Contoso ma pamiętać, że przez prostotę rzeczy za pomocą migracji maszyny Wirtualnej lift-and-shift, mogą one nie pełne czerpanie korzyści funkcji oferowanych przez [— Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) (wbudowaną wysoką dostępność, przewidywalna wydajność proste Skalowanie automatyczne tworzenie kopii zapasowych i wbudowane zabezpieczenia).
 
 ### <a name="migration-process"></a>Proces migracji

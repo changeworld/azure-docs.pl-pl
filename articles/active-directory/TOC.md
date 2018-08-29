@@ -128,31 +128,6 @@
 #### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](user-help/active-directory-passwords-reset-register.md)
 
 
-## Zarządzanie urządzeniami
-### [Omówienie](devices/overview.md)
-
-### Przewodniki Szybki start
-#### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
-#### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
-
-### Samouczki
-#### [Konfigurowanie przyłączania do hybrydowej usługi Azure AD dla domen zarządzanych](devices/hybrid-azuread-join-managed-domains.md)
-#### [Konfigurowanie przyłączania do hybrydowej usługi Azure AD dla domen federacyjnych](devices/hybrid-azuread-join-federated-domains.md)
-#### [Ręczne konfigurowanie przyłączania do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-manual-steps.md)
-#### [Konfigurowanie przyłączania do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](devices/azuread-joined-devices-frx.md)
-
-### Podręczniki z instrukcjami
-#### [Planowanie przyłączenia do usługi Azure AD](devices/azureadjoin-plan.md)
-#### [Planowanie implementacji przyłączania do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-plan.md)
-#### [Kontrolowanie przyłączania Twoich urządzeń do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-control.md)
-#### [Przypisywanie administratorów lokalnych do urządzeń przyłączonych do usługi Azure AD](devices/assign-local-admin.md)
-#### [Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
-
-### Pojęcia
-#### [Manage devices using the Azure portal (Zarządzanie urządzeniami przy użyciu witryny Azure Portal)](devices/device-management-azure-portal.md)
-#### [Często zadawane pytania](devices/faq.md)
-
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)
 ### [Rozpoczęcie pracy](manage-apps/plan-an-application-integration.md)

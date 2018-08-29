@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117595"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128053"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET 
 
@@ -49,7 +49,7 @@ Jeśli scenariusz różni się od przedstawionych powyżej, może być konieczne
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Co to jest standardowe konwencje plików usługi Batch?
 
-[Standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) zawiera schemat nazewnictwa miejsce docelowe, kontenerów i obiektów blob ścieżek, do których Twoje pliki wyjściowe są zapisywane. Pliki utrwalone w magazynie platformy Azure ze standardem Konwencji plików są automatycznie dostępne pod kątem wyświetlania w portalu Azure. Portal zna konwencji nazewnictwa i dlatego można wyświetlić pliki, które stosować się do niego.
+[Standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) zawiera schemat nazewnictwa miejsce docelowe, kontenerów i obiektów blob ścieżek, do których Twoje pliki wyjściowe są zapisywane. Pliki utrwalone w magazynie platformy Azure ze standardem Konwencji plików są automatycznie dostępne pod kątem wyświetlania w portalu Azure. Portal zna konwencji nazewnictwa i dlatego można wyświetlić pliki, które stosować się do niego.
 
 Biblioteki Konwencji plików dla platformy .NET automatycznie nazwy magazynu, kontenerów i plików wyjściowych zadania zgodnie z konwencjami plików standardowych. Biblioteki Konwencji plików udostępnia również metody służące do wykonywania zapytań plików wyjściowych w usłudze Azure Storage przy użyciu Identyfikatora zadania, identyfikator zadania: czy przeznaczenia.   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Wyświetl dane wyjściowe pliki w witrynie Azure portal
 
-Witryny Azure portal Wyświetla pliki danych wyjściowych zadań i dzienników, które są zachowywane do połączonej usługi Azure Storage account using [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Można zaimplementować te konwencje samodzielnie w języku wybranym, lub można użyć biblioteki Konwencji plików w aplikacjach .NET.
+Witryny Azure portal Wyświetla pliki danych wyjściowych zadań i dzienników, które są zachowywane do połączonej usługi Azure Storage account using [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Można zaimplementować te konwencje samodzielnie w języku wybranym, lub można użyć biblioteki Konwencji plików w aplikacjach .NET.
 
 Aby włączyć wyświetlanie plików danych wyjściowych w portalu, muszą spełniać następujące wymagania:
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 32e76d1593f8bda0ebf745e76373908970aeb181
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618686"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124173"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -386,8 +386,6 @@ Na stronie **Omówienie** Twojego obszaru roboczego usługi Log Analytics w witr
 | Agenci przechwytujący ruch sieciowy | Pokazuje liczbę agentów, którzy przechwytują ruch sieciowy, i listę 10 najważniejszych komputerów przechwytujących ruch. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknij komputer na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę przechwyconych bajtów. |
 | Lokalne podsieci | Pokazuje liczbę lokalnych podsieci, które zostały odnalezione przez agentów.  Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>, które wyświetli listę wszystkich podsieci wraz z liczbą bajtów przesłanych w ramach każdej z nich. Kliknij podsieć na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów przesłanych w tej podsieci. |
 | Protokoły poziomu aplikacji | Pokazuje liczbę używanych protokołów poziomu aplikacji wykrytych przez agentów. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknij protokół, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów wysłanych przy użyciu tego protokołu. |
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Pulpit nawigacyjny rozwiązania Dane o komunikacji sieciowej](./media/log-analytics-wire-data/wire-data-dash.png)
 

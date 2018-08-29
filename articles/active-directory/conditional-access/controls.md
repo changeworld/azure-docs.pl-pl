@@ -2,7 +2,7 @@
 title: Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
 description: Dowiedz się, jak kontrolę dostępu w pracach dostępu warunkowego usługi Azure Active Directory.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ba770415d7371463f1370d982f179c2a6f41ee65
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629562"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128725"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -119,9 +119,12 @@ Obejmują obecnie oferującymi usługę zgodnych dostawców:
 
 - [Rozwiązanie Duo umożliwia zabezpieczeń](https://duo.com/docs/azure-ca)
 
+- [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
+
 - RSA
 
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
+
 
 Aby uzyskać więcej informacji na temat tych usług skontaktuj się bezpośrednio z dostawców.
 
@@ -175,4 +178,4 @@ Aby dowiedzieć się więcej o tym, jak będą musieli ograniczony dostęp z pro
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
+- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 

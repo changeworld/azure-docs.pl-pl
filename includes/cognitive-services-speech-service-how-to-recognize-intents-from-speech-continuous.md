@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 3c8d986061a76c0217ea3dfcd1095cdbde74113c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 81c0ee318a804dc8acbdfaf274394c30f470571f
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330937"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143889"
 ---
-## <a name="intent-recognition-from-a-file-using-events"></a>Funkcja rozpoznawania celu z plikiem za pomocą zdarzeń
+## <a name="intent-recognition-from-a-file-with-events"></a>Funkcja rozpoznawania celu z pliku ze zdarzeniami
 
-Fragment kodu pokazuje, jak rozpoznawać intencję w języku domyślnym (`en-US`) w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak wyniki pośrednie. Dane wejściowe jest pobierana z pliku audio, obsługiwany format WAV jednego kanału (mono) / PCM o częstotliwości próbkowania 16 kHz.
+Poniższy kod pokazuje, jak rozpoznawać intencję w języku domyślnym (en US) w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak wyniki pośrednie. Dane wejściowe są pobierane z pliku audio. Obsługiwany format to jednego kanału (mono) WAV/PCM o częstotliwości próbkowania 16 kHz.
 
-[!include[Sample Audio](cognitive-services-speech-service-sample-audio.md)]
+[!INCLUDE [Sample audio](cognitive-services-speech-service-sample-audio.md)]
 

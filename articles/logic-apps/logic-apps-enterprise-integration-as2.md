@@ -1,66 +1,62 @@
 ---
-title: AS2 wiadomości B2B integracji przedsiębiorstwa - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Wymiana komunikatów AS2 B2B enterprise integracji z usługą Azure Logic Apps
+title: Komunikaty AS2 integracji przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wymienianie komunikatów AS2 integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298243"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124666"
 ---
-# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Wymiana komunikatów AS2 enterprise integracji z usługą logic apps
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymienianie komunikatów AS2 integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
-Przed przystąpieniem do wymiany wiadomości AS2 dla usługi Azure Logic Apps, należy utworzyć umowy AS2 i przechowywać na koncie integracji tej Umowy. Poniżej przedstawiono procedurę tworzenia umowy AS2.
+Przed mogą wymieniać komunikaty AS2 dla usługi Azure Logic Apps, należy utworzyć umowy AS2 i przechowywać tej umowy na koncie integracji. Poniżej przedstawiono procedurę tworzenia umowy AS2.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Oto elementy, które są potrzebne:
 
-* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md) który został już zdefiniowany i skojarzone z subskrypcją platformy Azure
-* Co najmniej dwa [partnerów](logic-apps-enterprise-integration-partners.md) który są już zdefiniowane w ramach konta integracji i skonfigurowane z kwalifikatorem AS2 w obszarze **tożsamości firm**
+* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure
+* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) , są już zdefiniowane na koncie integracji i skonfigurowany z kwalifikatorem AS2 w ramach **tożsamości biznesowych**
 
 > [!NOTE]
-> Podczas tworzenia umowy zawartości w pliku umowy musi odpowiadać typowi umowy.    
+> Podczas tworzenia umowy zawartość w pliku Umowa musi być zgodna z typem umowy.    
 
-Po [Tworzenie konta usługi integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md) i [dodać partnerów](logic-apps-enterprise-integration-partners.md), można utworzyć umowy AS2, wykonaj następujące czynności.
+Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md) i [partnerów dodane](logic-apps-enterprise-integration-partners.md), umowy AS2 można utworzyć, wykonując następujące kroki.
 
-## <a name="create-an-as2-agreement"></a>Tworzenie umów AS2
+## <a name="create-an-as2-agreement"></a>Tworzenie umowy AS2
 
 1.  Zaloguj się w witrynie [Azure Portal](http://portal.azure.com "Azure Portal").  
 
-2. W menu głównym Azure wybierz **wszystkie usługi**. W polu wyszukiwania wpisz "integrację", a następnie wybierz **konta integracji**.
+2. W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.
 
-   ![Znajdź konta integracji](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   ![Znajdź swoje konto integracji](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
    > [!TIP]
-   > Jeśli nie widzisz **wszystkich usług**, trzeba będzie najpierw rozwinąć menu. W górnej części menu zwinięte, wybierz **Pokaż tekst etykiety**.
+   > Jeśli nie widzisz **wszystkich usług**, trzeba najpierw rozwiń menu. W górnej części menu zwinięty wybierz **Pokaż etykiety tekstowe**.
 
-3. W obszarze **konta integracji**, wybierz konto integracji, w której chcesz utworzyć umowy.
+3. W obszarze **kont integracji**, wybierz konto integracji, w którym chcesz utworzyć umowy.
 
-   ![Wybierz konto integracji gdzie utworzyć umowy](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![Wybierz miejsce utworzenia umowę konta integracji](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
-4. Wybierz **umowy** kafelka. Jeśli nie masz kafelka umowy, najpierw Dodaj kafelka.
+4. Wybierz **umów** kafelka. Jeśli nie masz umowy kafelka, dodać Kafelek.
 
-    ![Wybierz Kafelek "Umów"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+    ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. W obszarze **umowy**, wybierz **Dodaj**.
+5. W obszarze **umów**, wybierz **Dodaj**.
 
-    ![Wybierz opcję "Dodaj"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
+    ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
-6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. Aby uzyskać **typ umowy**, wybierz pozycję **AS2**. Wybierz **partnera hosta**, **tożsamości hosta**, **partnera gościa**, i **tożsamości gościa** dla umowy.
+6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. Aby uzyskać **typ umowy**, wybierz opcję **AS2**. Wybierz **Partner hosta**, **tożsamości hosta**, **Partner gościa**, i **tożsamość gościa** dla umowy.
 
     ![Podaj szczegóły umowy](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
@@ -68,114 +64,114 @@ Po [Tworzenie konta usługi integracji](../logic-apps/logic-apps-enterprise-inte
     | --- | --- |
     | Name (Nazwa) |Nazwa umowy |
     | Typ umowy | Powinien być AS2 |
-    | Partner hosta |Umowa musi mieć partnera zarówno hosta, jak i gościa. Partner hosta reprezentuje organizację, która konfiguruje umowy. |
+    | Partner hosta |Umowa musi mieć partnera hosta i gościa. Partner hosta reprezentuje organizację, która umożliwia skonfigurowanie umowy. |
     | Tożsamość hosta |Identyfikator partnera hosta |
-    | Partner gościa |Umowa musi mieć partnera zarówno hosta, jak i gościa. Partner gościa reprezentuje organizację, która jest działalność z partnerem hosta. |
+    | Partner gościa |Umowa musi mieć partnera hosta i gościa. Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta. |
     | Tożsamość gościa |Identyfikator partnera gościa |
-    | Ustawienia odbierania |Te właściwości stosowane do wszystkich komunikatów odebranych przez umowy. |
-    | Ustawienia wysyłania |Te właściwości stosowane do wszystkich wiadomości wysłanych przez umowy. |
+    | Ustawienia odbierania |Te właściwości mają zastosowanie do wszystkich komunikatów odebranych przez umowę. |
+    | Ustawienia wysyłania |Te właściwości mają zastosowanie do wszystkich komunikatów wysłanych przez umowę. |
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Skonfiguruj sposób dojść do Porozumienia odebrane wiadomości
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurowanie, jak dojścia Twojej umowy odebranych komunikatów
 
-Teraz, gdy ustawiono właściwości umowy, można skonfigurować sposób identyfikuje niniejszej Umowy oraz obsługi przychodzących komunikatów odebranych od swojego partnera, za pośrednictwem niniejszej Umowy.
+Teraz, gdy ustawiono właściwości umowy, można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty przychodzące otrzymany od partnera za pośrednictwem niniejszej Umowy.
 
-1.  W obszarze **Dodaj**, wybierz pozycję **ustawienia odbierania**.
-Skonfigurować te właściwości, na podstawie Twojej umowy z partnerem, który wymienia wiadomości z Tobą. Opis właściwości Zobacz tabelę w tej sekcji.
+1.  W obszarze **Dodaj**, wybierz opcję **ustawienia odbierania**.
+Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości Zobacz tabelę w tej sekcji.
 
     ![Skonfiguruj "Otrzymywać ustawienia"](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
-2. Opcjonalnie można zastąpić właściwości wiadomości przychodzących, wybierając **zastąpienie właściwości komunikatu**.
+2. Opcjonalnie można zastąpić właściwości wiadomości przychodzących, wybierając **Przesłoń właściwości komunikatu**.
 
-3. Aby wymagać komunikaty przychodzące były podpisane, wybierz **wiadomości powinny być podpisane**. Z **certyfikatu** listy, wybierz istniejący [certyfikatu publicznego partnera gościa](../logic-apps/logic-apps-enterprise-integration-certificates.md) sprawdzania poprawności podpisu dla wiadomości. Lub Utwórz certyfikat, jeśli nie masz.
+3. Aby wymagać komunikaty przychodzące były podpisane, wybierz **komunikat powinien być podpisany**. Z **certyfikatu** listy, wybierz istniejącą [certyfikatu publicznego partnera gościa](../logic-apps/logic-apps-enterprise-integration-certificates.md) weryfikowania podpisu dla wiadomości. Lub Utwórz certyfikat, jeśli nie masz.
 
-4.  Aby wymagać komunikaty przychodzące były szyfrowane, wybierz **można zaszyfrować wiadomości**. Z **certyfikatu** listy, wybierz istniejący [certyfikatu prywatnego partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md) do odszyfrowywania wiadomości przychodzących. Lub Utwórz certyfikat, jeśli nie masz.
+4.  Aby wymagać komunikaty przychodzące były szyfrowane, wybierz **komunikat powinien być zaszyfrowany**. Z **certyfikatu** listy, wybierz istniejącą [certyfikatu prywatnego partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md) do odszyfrowywania wiadomości przychodzących. Lub Utwórz certyfikat, jeśli nie masz.
 
-5. Aby wymagać wiadomości ma być skompresowany, wybierz **wiadomości powinna być kompresowane**.
+5. Wymaganie wiadomości, które ma być skompresowany, wybierz **komunikat powinien być skompresowany**.
 
-6. Aby wysłać powiadomienie dyspozycji komunikatu synchronicznego (MDN) po odebraniu wiadomości, zaznacz **wysyłania MDN**.
+6. Aby wysłać powiadomienie dyspozycji synchronicznego komunikatu (MDN) po odebraniu wiadomości, zaznacz **Wyślij powiadomienie MDN**.
 
-7. Aby wysłać podpisem MDNs po odebraniu wiadomości, zaznacz **wysyłania podpisany MDN**.
+7. Aby wysłać podpisem komunikatów Mdn po odebraniu wiadomości, zaznacz **Wyślij podpisane powiadomienie MDN**.
 
-8. Aby wysłać asynchroniczne MDNs po odebraniu wiadomości, zaznacz **Wysyłanie asynchroniczne MDN**.
+8. Aby wysłać asynchronicznych komunikatów Mdn po odebraniu wiadomości, zaznacz **wysyłanie asynchronicznych powiadomień MDN**.
 
-9. Po zakończeniu upewnij się zapisać ustawienia, wybierając **OK**.
+9. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
 
-Umowie jest teraz gotowy do obsługi wiadomości przychodzących, które odpowiadają wybrane ustawienia.
+Teraz umowy jest gotowy do obsługi wiadomości przychodzących, które są zgodne z wybrane ustawienia.
 
 | Właściwość | Opis |
 | --- | --- |
 | Przesłoń właściwości komunikatu |Wskazuje, można zastąpić właściwości w odebranej wiadomości. |
-| Komunikat powinien być podpisany |Wymaga komunikaty były podpisane cyfrowo. Konfigurowanie certyfikatu publicznego partnera gościa do sprawdzenia podpisu.  |
-| Komunikat powinien być zaszyfrowany |Wymaga szyfrowanie wiadomości. Wiadomości zaszyfrowanych przez inne niż są odrzucane. Skonfiguruj certyfikat prywatny partnera hosta do odszyfrowywania wiadomości.  |
+| Komunikat powinien być podpisany |Wymaga wiadomości, które ma zostać podpisany cyfrowo. Skonfigurować certyfikat publiczny partnera gościa do weryfikacji podpisu.  |
+| Komunikat powinien być zaszyfrowany |Wymaga szyfrowanie wiadomości. Szyfrowane inne niż wiadomości są odrzucane. Konfigurowanie certyfikatu prywatnego partnera hosta do odszyfrowywania wiadomości.  |
 | Komunikat powinien być skompresowany |Wymaga wiadomości do skompresowania. Skompresowane inne niż wiadomości są odrzucane. |
-| Tekst powiadomienia MDN |Domyślne dyspozycji powiadomienia (MDN) do wysłania do nadawcy wiadomości. |
-| Wyślij powiadomienie MDN |Wymaga MDNs do wysłania. |
-| Wyślij podpisane powiadomienie MDN |Wymaga MDNs były podpisane. |
+| Tekst powiadomienia MDN |Domyślne dyspozycji powiadomienia (powiadomienia MDN) do wysłania do nadawcy wiadomości. |
+| Wyślij powiadomienie MDN |Wymaga komunikatów Mdn do wysłania. |
+| Wyślij podpisane powiadomienie MDN |Wymaga komunikatów Mdn były podpisane. |
 | Algorytm MIC |Wybierz algorytm podpisywania wiadomości. |
-| Wyślij asynchroniczne powiadomienie MDN | Wymaga komunikatów do wysłania asynchronicznie. |
-| Adres URL | Podaj adres URL, który ma zostać wysłana MDNs. |
+| Wyślij asynchroniczne powiadomienie MDN | Wymaga komunikaty wysyłane asynchronicznie. |
+| Adres URL | Podaj adres URL, gdzie wysyłać komunikatów Mdn. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Skonfiguruj sposób umowie wysyłania wiadomości
 
-Można skonfigurować sposób identyfikuje niniejszej Umowy oraz obsługi komunikatów wychodzących, które wysyłają do partnerów za pośrednictwem niniejszej Umowy.
+Można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty wychodzące wysyłane do partnerów za pośrednictwem niniejszej Umowy.
 
-1.  W obszarze **Dodaj**, wybierz pozycję **ustawienia wysyłania**.
-Skonfigurować te właściwości, na podstawie Twojej umowy z partnerem, który wymienia wiadomości z Tobą. Opis właściwości Zobacz tabelę w tej sekcji.
+1.  W obszarze **Dodaj**, wybierz opcję **ustawienia wysyłania**.
+Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości Zobacz tabelę w tej sekcji.
 
     ![Ustaw właściwości "Wyślij ustawienia"](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
-2. Aby podpisanych wiadomości wysyłane do partnerów, wybierz **włączyć podpisywanie komunikatów**. Do podpisywania wiadomości, w **algorytm Micznych** listy, wybierz *certyfikatu prywatnego hosta partnera algorytmu Micznych*. I w **certyfikatu** listy, wybierz istniejący [certyfikatu prywatnego partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+2. Aby wysyłać komunikaty podpisem partnera, wybierz **Włącz podpisywanie komunikatów**. Do podpisywania komunikatów w **algorytm MIC** listy wybierz *certyfikatu prywatnego partnera hosta algorytm MIC*. A następnie w **certyfikatu** listy, wybierz istniejącą [certyfikatu prywatnego partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md).
 
-3. Do wysyłania zaszyfrowanych wiadomości do partnera, wybierz **włączyć szyfrowanie wiadomości**. Do szyfrowania wiadomości, w **algorytm szyfrowania** listy, wybierz *gościa partnera certyfikatu publicznego algorytmu*.
-I w **certyfikatu** listy, wybierz istniejący [certyfikatu publicznego partnera gościa](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+3. Do wysyłania zaszyfrowanych wiadomości do partnera, wybierz **Włącz szyfrowanie komunikatów**. Do szyfrowania wiadomości, w **algorytm szyfrowania** listy wybierz *algorytm certyfikatu publicznego partnera gościa*.
+A następnie w **certyfikatu** listy, wybierz istniejącą [certyfikatu publicznego partnera gościa](../logic-apps/logic-apps-enterprise-integration-certificates.md).
 
-4. Aby skompresować wiadomości, wybierz **Włącz kompresję komunikat**.
+4. Aby skompresować komunikatu, wybierz **Włącz kompresję komunikatów**.
 
-5. Aby ujawniać nagłówka content-type protokołu HTTP w jednym wierszu, wybierz **nagłówków HTTP ujawniać**.
+5. Do rozwijania nagłówka content-type protokołu HTTP w jednym wierszu, wybierz **nagłówków HTTP rozwijania**.
 
-6. Aby otrzymać synchroniczne MDNs wysłanych wiadomości, zaznacz **MDN żądania**.
+6. Aby otrzymać synchroniczne komunikatów Mdn dla wysyłanych wiadomości, zaznacz **żądania powiadomienia MDN**.
 
-7. Aby otrzymać podpisane MDNs wysłanych wiadomości, zaznacz **MDN podpisane żądanie**.
+7. Aby otrzymywać podpisane komunikatów Mdn dla wysyłanych wiadomości, zaznacz **Żądaj podpisanego powiadomienia MDN**.
 
-8. Aby otrzymać asynchroniczne MDNs wysłanych wiadomości, zaznacz **żądania asynchroniczne MDN**. Jeśli wybierzesz tę opcję, wprowadź adres URL umożliwiający wysyłanie MDNs.
+8. Aby otrzymać asynchronicznych komunikatów Mdn dla wysyłanych wiadomości, zaznacz **Żądaj asynchronicznego powiadomienia MDN**. Jeśli wybierzesz tę opcję, wprowadź adres URL, gdzie wysyłać komunikatów Mdn.
 
-9. Aby wymagać bez odrzucania odbioru, wybierz **włączyć NRR**.  
+9. Wymaganie uznawania potwierdzenia, wybierz **włączenia NRR**.  
 
-10. Aby określić algorytm formatu do użycia w Micznych lub logowanie nagłówków wychodzących wiadomości AS2 lub MDN, zaznacz **format algorytmu SHA2**.  
+10. Aby określić format algorytmu do użycia w Mikrofon lub logowanie nagłówków wychodzących komunikatu AS2 lub powiadomienia MDN, zaznacz **format algorytmu SHA2**.  
 
-11. Po zakończeniu upewnij się zapisać ustawienia, wybierając **OK**.
+11. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
 
-Umowie jest teraz gotowy do obsługi komunikatów wychodzących, które odpowiadają wybrane ustawienia.
+Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne z wybrane ustawienia.
 
 | Właściwość | Opis |
 | --- | --- |
-| Włącz podpisywanie komunikatów |Wymaga wszystkich wiadomości wysłanych z umowy były podpisane. |
-| Algorytm MIC |Algorytm używany do podpisywania wiadomości. Konfiguruje certyfikatu prywatnego partnera hosta Mikrofon algorytm podpisywania wiadomości. |
+| Włącz podpisywanie komunikatów |Wymaga wszystkie komunikaty, które są wysyłane z umowy do podpisania. |
+| Algorytm MIC |Algorytm podpisywania wiadomości. Umożliwia skonfigurowanie certyfikatu prywatnego algorytm MIC partnera hosta do podpisywania wiadomości. |
 | Certyfikat |Wybierz certyfikat do użycia podczas podpisywania wiadomości. Umożliwia skonfigurowanie certyfikatu prywatnego partnera hosta do podpisywania wiadomości. |
-| Włącz szyfrowanie komunikatów |Wymaga szyfrowania wszystkich wiadomości wysłanych z niniejszej Umowy. Określa algorytm gościa partnera publicznego certyfikatu do szyfrowania wiadomości. |
-| Algorytm szyfrowania |Algorytm szyfrowania do użycia na potrzeby szyfrowania wiadomości. Konfiguruje gościa partnera publiczny certyfikatu do szyfrowania wiadomości. |
-| Certyfikat |Certyfikat używany do szyfrowania wiadomości. Konfiguruje gościa partnera prywatny certyfikatu do szyfrowania wiadomości. |
-| Włącz kompresję komunikatów |Wymaga kompresji wszystkich wiadomości wysłanych z niniejszej Umowy. |
-| Rozwiń nagłówki HTTP |Umieszcza nagłówka content-type protokołu HTTP na jeden wiersz. |
-| Żądaj powiadomienia MDN |Wymaga MDN dla wszystkich wiadomości wysłanych z niniejszej Umowy. |
-| Żądaj podpisanego powiadomienia MDN |Wymaga wszystkich MDNs, które są wysyłane do podpisania tej Umowy. |
-| Żądaj asynchronicznego powiadomienia MDN |Wymaga asynchroniczne MDNs do wysłania do tej Umowy. |
-| Adres URL |Podaj adres URL, który ma zostać wysłana MDNs. |
-| Włącz opcję NRR |Wymaga bez odrzucania odbioru (NRR), atrybut komunikacji, który udostępnia dowód odebrania danych jako problemu. |
-| Format algorytmu SHA2 |Wybierz format algorytmu do użycia w Micznych lub logowanie nagłówków wychodzących wiadomości AS2 lub MDN |
+| Włącz szyfrowanie komunikatów |Wymaga szyfrowania wszystkich wiadomości, które są wysyłane z niniejszej Umowy. Określa algorytm certyfikatu publicznego partnera gościa do szyfrowania wiadomości. |
+| Algorytm szyfrowania |Algorytm szyfrowania do użycia podczas szyfrowania komunikatu. Umożliwia skonfigurowanie certyfikatu publicznego partnera gościa do szyfrowania wiadomości. |
+| Certyfikat |Certyfikat używany do szyfrowania wiadomości. Umożliwia skonfigurowanie certyfikatu prywatnego partnera gościa do szyfrowania wiadomości. |
+| Włącz kompresję komunikatów |Wymaga kompresji wszystkie komunikaty, które są wysyłane z niniejszej Umowy. |
+| Rozwiń nagłówki HTTP |Umieszcza nagłówek content-type protokołu HTTP na jeden wiersz. |
+| Żądaj powiadomienia MDN |Wymaga MDN dla wszystkich wiadomości, które są wysyłane z niniejszej Umowy. |
+| Żądaj podpisanego powiadomienia MDN |Wymaga wszystkich komunikatów Mdn, które są wysyłane do niniejszej Umowy do podpisania. |
+| Żądaj asynchronicznego powiadomienia MDN |Wymaga asynchronicznych komunikatów Mdn do wysłania do niniejszej Umowy. |
+| Adres URL |Podaj adres URL, gdzie wysyłać komunikatów Mdn. |
+| Włącz opcję NRR |Wymaga uznawania otrzymania (NRR), atrybut komunikacji, który zawiera dowód odebrania danych jako rozwiązane. |
+| Format algorytmu SHA2 |Wybierz format algorytmu do użycia w Mikrofon lub logowanie nagłówków wychodzących komunikatu AS2 lub powiadomienia MDN |
 
-## <a name="find-your-created-agreement"></a>Znajdź utworzone umowy
+## <a name="find-your-created-agreement"></a>Znajdź utworzony umowy
 
-1. Po zakończeniu ustawienie na wszystkie właściwości umowy, **Dodaj** wybierz pozycję **OK** aby zakończyć tworzenie umowy i wrócić do konta integracji.
+1. Po zakończeniu na ustawienie swoje właściwości umowy **Dodaj** wybierz **OK** w stanie zakończyć tworzenia umowy, a następnie wróć do konta integracji.
 
-    Nowo dodany umowy teraz pojawia się w sieci **umowy** listy.
+    Nowo dodane umowy teraz pojawia się w Twojej **umów** listy.
 
-2. Można również wyświetlić umów w przeglądzie konta integracji. W menu konta integracji, wybierz **omówienie**, a następnie wybierz pozycję **umowy** kafelka. 
+2. Można również wyświetlić Twojej umowy w przeglądzie konta integracji. W menu konta integracji, wybierz **Przegląd**, a następnie wybierz **umów** kafelka. 
 
-   ![Wybierz Kafelek "Umów", aby wyświetlić wszystkie umowy](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![Wybierz Kafelek "Umowy" Aby wyświetlić wszystkie umowy](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>Wyświetlanie struktury swagger
 Zobacz [swagger szczegóły](/connectors/as2/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej na temat pakiet integracyjny dla przedsiębiorstw")  
+* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")  

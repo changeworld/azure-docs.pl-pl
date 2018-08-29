@@ -3,19 +3,18 @@ title: Batch przetwarzania komunikatów, grupę lub kolekcji — Azure Logic App
 description: Wysyłania i odbierania wiadomości jako partie w usłudze Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
+ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.reviewer: estfan, LADocs
-ms.suite: integration
-ms.openlocfilehash: 5190e5d4191cb4d07b000920dd1be1b53e679350
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059717"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128749"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i wsadowe przetwarzanie komunikatów w usłudze Azure Logic Apps
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054997"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125248"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -623,7 +623,7 @@ Wiesz, jak Visual Studio można łatwo wyświetlić dzienniki utworzone przez ap
 ### <a name="azure-web-app-troubleshooting"></a>Rozwiązywanie problemów z aplikacji sieci web platformy Azure
 Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacjami sieci web w usłudze Azure App Service zobacz następujące zasoby:
 
-* [Jak monitorować aplikacje sieci web](/manage/services/web-sites/how-to-monitor-websites/)
+* [Jak monitorować aplikacje sieci web](web-sites-monitor.md)
 * [Badanie przecieków pamięci w usłudze Azure Web Apps za pomocą programu Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Wpis w blogu ALM firmy Microsoft o funkcjach programu Visual Studio do analizowania problemów pamięci zarządzanej.
 * [Narzędzia online aplikacji sieci web platformy Azure należy wiedzieć o](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Wpis na blogu autorstwa Amitowi firmy Apple.
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [Rejestrowanie z wiersza polecenia platformy Azure (oraz możliwość wypróbowania!) danych przesyłania strumieniowego śledzenia diagnostyki](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Jak skorzystać z jakich tego samouczka za pomocą wiersza polecenia pokazuje, jak to zrobić w programie Visual Studio. [Możliwość wypróbowania](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) to narzędzie do debugowania aplikacji ASP.NET.
-* [Przy użyciu aplikacji sieci Web, rejestrowanie i Diagnostyka — z David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) i [przesyłanie strumieniowe dzienników z aplikacji sieci Web — David Ebbo](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [Przy użyciu aplikacji sieci Web, rejestrowanie i Diagnostyka — z David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) i [przesyłanie strumieniowe dzienników z aplikacji sieci Web — David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Filmy wideo przez Scotta Hanselmana i David Ebbo.
 
 Dla rejestrowania błędów zamiast pisania własnego kodu śledzenia ma używać struktury rejestrowania typu open source, takich jak [ELMAH](http://nuget.org/packages/elmah/). Aby uzyskać więcej informacji, zobacz [wpisy na blogu Scott Hanselman o ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).

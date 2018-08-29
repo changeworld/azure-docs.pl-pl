@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390198"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128524"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -151,7 +151,7 @@ Jeśli używasz dziennik analizy prognozowania, nie należy przechwytywać wypow
 
 Nie. Model danych aplikacji usługi LUIS nie jest używany przez usługi LUIS, aby ulepszyć usługi LUIS jako platforma lub używane przez firmę Microsoft w jakikolwiek sposób. Każda aplikacja dane są oddzielne i należy tylko do użytkowników i współpracowników. 
 
-Dowiedz się więcej o [rozwiązania prywatność użytkownika](luis-reference-gdpr.md), [dodatkowe zabezpieczenia, zgodność](luis-concept-security.md#security-compliance), i [magazyn danych](luis-concept-data-storage.md).
+Dowiedz się więcej o [rozwiązania prywatność użytkownika](luis-user-privacy.md), [dodatkowe zabezpieczenia, zgodność](luis-concept-security.md#security-compliance), i [magazyn danych](luis-concept-data-storage.md).
 
 ## <a name="language-and-translation-support"></a>Obsługa języka i tłumaczenia 
 

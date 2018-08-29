@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b578abfa6fc0a10edc5daab40f8a0eea5e6653d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c0fdcdbf838a0bc283db05f36b900641016211b7
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115066"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121918"
 ---
 # <a name="persist-job-and-task-output"></a>Utrwalanie danych wyjściowych zadań i zadań podrzędnych
 
@@ -34,7 +34,7 @@ W tym artykule opisano różne opcje utrwalanie danych wyjściowych zadań podrz
 
 ## <a name="about-the-batch-file-conventions-standard"></a>O standardowej konwencji plików usługi Batch
 
-Batch definiuje opcjonalny zestaw konwencje nazewnictwa plików wyjściowych zadania w usłudze Azure Storage. [Standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) zawiera opis tych konwencji. Standardowe konwencje plików określa nazwy kontenera i obiektów blob ścieżkę docelową w usłudze Azure Storage dla pliku wyjściowego danego na podstawie nazw zadanie i zadania.
+Batch definiuje opcjonalny zestaw konwencje nazewnictwa plików wyjściowych zadania w usłudze Azure Storage. [Standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) zawiera opis tych konwencji. Standardowe konwencje plików określa nazwy kontenera i obiektów blob ścieżkę docelową w usłudze Azure Storage dla pliku wyjściowego danego na podstawie nazw zadanie i zadania.
 
 To Ty możesz czy zdecydujesz się używać standardowy plik konwencje nazewnictwa plików danych wyjściowych danych. Można także nazwy kontenera docelowego i obiektów blob, ale chcesz. Jeśli należy używać standardowy plik konwencje nazewnictwa plików wyjściowych, a następnie swoje pliki wyjściowe są dostępne pod kątem wyświetlania w [witryny Azure portal][portal].
 
@@ -71,13 +71,13 @@ W poniższych sekcjach opisano każde podejście bardziej szczegółowo.
 
 W wersji 2017-05-01, usługa Batch dodaje obsługę określanie plików wyjściowych w usłudze Azure Storage dla danych zadań po użytkownik [Dodaj zadanie do zadania](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) lub [Dodaj to zbiór zadań podrzędnych do zadania](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
-Interfejs API usługi Batch obsługuje utrwalanie danych zadania do konta usługi Azure Storage z pul utworzonych za pomocą konfiguracji maszyny wirtualnej. Przy użyciu interfejsu API usługi Batch można utrwalić dane zadania bez modyfikowania aplikację, która działa zadanie. Opcjonalnie można stosować [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) nazewnictwa plików, które pozostają do usługi Azure Storage. 
+Interfejs API usługi Batch obsługuje utrwalanie danych zadania do konta usługi Azure Storage z pul utworzonych za pomocą konfiguracji maszyny wirtualnej. Przy użyciu interfejsu API usługi Batch można utrwalić dane zadania bez modyfikowania aplikację, która działa zadanie. Opcjonalnie można stosować [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) nazewnictwa plików, które pozostają do usługi Azure Storage. 
 
 Użyj interfejsu API usługi Batch, aby utrwalić zadanie danych wyjściowych po:
 
 - Chcesz zachować dane z zadania podrzędne usługi Batch i zadanie Menedżer zadania, w przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej.
 - Chcesz utrwalić dane w kontenerze usługi Azure Storage przy użyciu dowolnej nazwie.
-- Aby utrwalić dane w kontenerze usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Aby utrwalić dane w kontenerze usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
 > Interfejs API usługi Batch nie obsługuje utrwalanie danych od zadania uruchomione w przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie danych wyjściowych z pul uruchamianie konfiguracji usługi w chmurze, zobacz [utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET utrwalić ](batch-task-output-file-conventions.md)
@@ -88,7 +88,7 @@ Aby uzyskać więcej informacji na temat utrwalanie danych wyjściowych podzada�
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>Korzystanie z biblioteki Konwencji plików usługi Batch dla platformy .NET
 
-Tworzenie rozwiązań usługi Batch w języku C# i .NET deweloperzy mogą używać [biblioteki Konwencji plików dla platformy .NET] [ nuget_package] do utrwalenia danych zadania usługi Azure Storage account, zgodnie z do [pliku wsadowego Standardowe konwencje](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Biblioteki Konwencji plików obsługuje przenoszenie plików wyjściowych do usługi Azure Storage i nazewnictwa miejsce docelowe, kontenerów i obiektów blob w sposób, dobrze znane.
+Tworzenie rozwiązań usługi Batch w języku C# i .NET deweloperzy mogą używać [biblioteki Konwencji plików dla platformy .NET] [ nuget_package] do utrwalenia danych zadania usługi Azure Storage account, zgodnie z do [pliku wsadowego Standardowe konwencje](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Biblioteki Konwencji plików obsługuje przenoszenie plików wyjściowych do usługi Azure Storage i nazewnictwa miejsce docelowe, kontenerów i obiektów blob w sposób, dobrze znane.
 
 Biblioteki Konwencji plików obsługuje tworzenie zapytań pliki wyjściowe według Identyfikatora lub celu, co ułatwia ich znalezienia, bez konieczności całego pliku identyfikatorów URI. 
 
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji na temat utrwalanie danych wyjściowych zadania 
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Zaimplementuj standardowe konwencje plików usługi Batch
 
-Jeśli używasz języka innego niż .NET można zaimplementować [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) we własnej aplikacji. 
+Jeśli używasz języka innego niż .NET można zaimplementować [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) we własnej aplikacji. 
 
 Można zaimplementować zasady nazewnictwa konwencje plików samodzielnie zostanie sprawdzone schemat nazewnictwa, lub jeśli chcesz wyświetlić dane wyjściowe zadania w witrynie Azure portal.
 

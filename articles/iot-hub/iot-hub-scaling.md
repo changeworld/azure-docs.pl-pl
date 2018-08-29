@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003536"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143652"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -43,7 +43,7 @@ Po utworzeniu Centrum IoT hub można uaktualnić z warstwy podstawowa do warstwy
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Yes | Yes |
 | [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
 | [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md) i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
 Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa. 
 

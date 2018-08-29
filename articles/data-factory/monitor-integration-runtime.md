@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 9bcc73d262f4bc455c923fe0eb7c04c7cf090830
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8ca7ce2586513373c58552bb1f56b94715f15076
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505365"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128453"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska integration runtime w usłudze Azure Data Factory  
 **Środowisko Integration runtime** jest infrastruktura obliczeniowa używana przez usługę Azure Data Factory, aby zapewnić różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowiska integration Runtime oferowane przez usługę Data Factory:
@@ -85,7 +85,7 @@ Niektóre ustawienia właściwości będą bardziej zrozumiałe, gdy istnieją c
 
 Wartość domyślna równoczesnych zadań, których limit jest ustawiony na podstawie rozmiaru maszyny. Czynniki używane do obliczania tej wartości zależy od tego, ilość pamięci RAM i liczba rdzeni procesora CPU maszyny. Dlatego więcej rdzeni i więcej pamięci, tym wyższa domyślny limit współbieżnych zadań.
 
-Możesz skalować w poziomie przez odpowiednie zwiększenie liczby węzłów. Wraz ze zwiększeniem liczby węzłów limit współbieżnych zadań to suma wartości limit współbieżnych zadania wszystkich dostępnych węzłów.  Na przykład jeśli jeden węzeł można uruchomić maksymalnie 12 równoczesnych zadań, następnie dodając trzy węzły bardziej przypominające umożliwia uruchamianie maksymalnie 48 równoczesnych zadań (czyli 4 x 12). Firma Microsoft zaleca, zwiększ limit współbieżnych zadań, tylko wtedy, gdy zostanie wyświetlony w każdym węźle niskie użycie zasobów z wartościami domyślnymi.
+Możesz skalować w poziomie przez odpowiednie zwiększenie liczby węzłów. Wraz ze zwiększeniem liczby węzłów limit współbieżnych zadań jest sumą wartości limit współbieżnych zadania wszystkich dostępnych węzłów.  Na przykład jeśli jeden węzeł można uruchomić maksymalnie 12 równoczesnych zadań, następnie dodając trzy węzły bardziej przypominające umożliwia uruchamianie maksymalnie 48 równoczesnych zadań (czyli 4 x 12). Firma Microsoft zaleca, zwiększ limit współbieżnych zadań, tylko wtedy, gdy zostanie wyświetlony w każdym węźle niskie użycie zasobów z wartościami domyślnymi.
 
 Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edytuj > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [azurermdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) polecenia.
   

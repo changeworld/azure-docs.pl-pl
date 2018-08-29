@@ -7,18 +7,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6952e26898e4ff27dd7c2f6780dcb9b8b224460b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8f365d123a234f367a1415232a714d2c18663b63
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092549"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124074"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie odzyskiwania po awarii dla aplikacji wykorzystujących pule elastyczne bazy danych SQL
-W ciągu lat nauczyliśmy się, że usługi w chmurze są niezawodne, a zdarzenia krytycznego się tak zdarzyć. SQL Database oferuje kilka możliwości do zapewnienia ciągłość prowadzenia działalności biznesowej w aplikacji, gdy wystąpią następujące zdarzenia. [Pule elastyczne](sql-database-elastic-pool.md) i pojedynczych baz danych obsługują tego samego rodzaju funkcje odzyskiwania po awarii. W tym artykule opisano kilka strategii odzyskiwania po awarii dla pul elastycznych wykorzystać te funkcje zachowywania ciągłości biznesowej bazy danych SQL.
+W ciągu lat nauczyliśmy się, że usługi w chmurze są niezawodne, a zdarzenia krytycznego się tak zdarzyć. SQL Database oferuje kilka możliwości do zapewnienia ciągłość prowadzenia działalności biznesowej w aplikacji, gdy wystąpią następujące zdarzenia. [Pule elastyczne](sql-database-elastic-pool.md) i pojedynczych baz danych obsługują tego samego rodzaju możliwości odzyskiwania po awarii. W tym artykule opisano kilka strategii odzyskiwania po awarii dla pul elastycznych wykorzystać te funkcje zachowywania ciągłości biznesowej bazy danych SQL.
 
 W tym artykule wykorzystano następujące canonical wzorca aplikacji SaaS niezależnego dostawcy oprogramowania:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 8d786a337710ed53d58c5fde8e40d5347cd6cfc8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108382"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128681"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -36,9 +36,13 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tu
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Należy używać modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
-* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone 
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
 * Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
 * Maszyny wirtualnej, dla której jesteś konsoli szeregowej uzyskiwanie dostępu musi również mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcjonalność maszyny Wirtualnej rozszerzenia dostępu — Zobacz poniższy zrzut ekranu.
+
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>Wprowadzenie do konsoli szeregowej

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617356"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144233"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -74,13 +74,14 @@ Aby zapoznać się z przykładami usługi Event hubs jako program obsługi, zoba
 
 ## <a name="iot-hub"></a>Usługa IoT Hub
 
-Subskrybowanie do usługi IoT Hub utworzył zdarzeń, aby odpowiedzieć na urządzeniu i usunąć zdarzenia.
+Subskrybowanie zdarzeń usługi IoT Hub, aby odpowiedzieć na urządzeniu utworzone, zdarzenia usuniętego, połączonych i niepołączonych.
 
 |Stanowisko  |Opis  |
 |---------|---------|
-| [Samouczek: wysyłanie powiadomień e-mail dotyczących zdarzeń usługi Azure IoT Hub przy użyciu aplikacji logiki](publish-iot-hub-events-to-logic-apps.md) | Aplikacja logiki wysyła wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenie zostanie dodane do Twojego Centrum IoT. |
-| [Omówienie: reagowanie na zdarzenia IoT Hub przy użyciu usługi Event Grid do wyzwalania akcji](../iot-hub/iot-hub-event-grid.md) | Omówienie integracji centra Iot Hub z usługą Event Grid. |
+| [Wysyłanie powiadomień e-mail dotyczących zdarzeń usługi Azure IoT Hub przy użyciu aplikacji logiki](publish-iot-hub-events-to-logic-apps.md) | Aplikacja logiki wysyła wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenie zostanie dodane do Twojego Centrum IoT. |
+| [Reagowanie na zdarzenia IoT Hub przy użyciu usługi Event Grid do wyzwalania akcji](../iot-hub/iot-hub-event-grid.md) | Omówienie integracji usługi IoT Hub z usługą Event Grid. |
 | [Schemat zdarzeń](event-schema-iot-hub.md) | Pola wyświetlane w usłudze IoT Hub zdarzenia. |
+| [Kolejność połączonych urządzeń i Urządzenie odłączone zdarzenia](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Pokazuje, jak kolejność zdarzeń stanu połączenia urządzenia. |
 
 ## <a name="media-services"></a>Media Services
 

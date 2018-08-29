@@ -1,6 +1,6 @@
 ---
-title: Optymalizacja środowiskiem programu System Center Operations Manager na platformie Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Sprawdź System Center Operations Manager kondycji rozwiązania można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
+title: Optymalizowanie środowiska programu System Center Operations Manager z usługą Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązania System Center Operations Manager Health Check można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,96 +15,96 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdf56a85c43513f573c02e3b28cd93f28217814b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7ce8afa04751cd38e64b9ed920a6f863781e3ad1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128966"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126285"
 ---
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizuj środowisko z rozwiązań System Center Operations Manager sprawdzanie kondycji (wersja zapoznawcza)
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
-![System Center Operations Manager kondycji Sprawdź symbol](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
+![System Center Operations Manager Health Check symboli](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
-Sprawdź System Center Operations Manager kondycji rozwiązania można użyć do oceny ryzyka i kondycji grupy zarządzania programu System Center Operations Manager w regularnych odstępach czasu. Ten artykuł pomaga zainstalować, skonfigurować i użycie rozwiązania, dzięki czemu można wykonać działania naprawcze potencjalnych problemów.
+Rozwiązania System Center Operations Manager Health Check można użyć do oceny ryzyka i kondycji grupy zarządzania programu System Center Operations Manager w regularnych odstępach czasu. Ten artykuł pomoże Ci instalowanie, konfigurowanie i korzystanie z odpowiedniego rozwiązania, tak, aby można podjąć akcje naprawcze o potencjalnych problemach.
 
-To rozwiązanie zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone. Zalecenia są podzielone na cztery obszarach zainteresowań, które pomagają w szybkim świadomość ryzyka i podejmowanie działań naprawczych.
+To rozwiązanie zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwerowej wdrożone. Zalecenia są podzielone na cztery obszary koncentracji uwagi, które pomagają w szybkim zrozumieć ryzyko i podejmij działania naprawcze.
 
-Zalecenia są oparte na wiedzy i doświadczenia przez pracownicy firmy Microsoft z tysięcy wizyt klienta. Każde zalecenie znajdują się wskazówki dotyczące przyczyny problemu może być uwzględniana i implementowania sugerowane zmiany.
+Zalecenia są oparte na wiedzy i doświadczenia zdobyte przez inżynierów firmy Microsoft z tysięcy wizyt klienta. Każdy zalecenie zawiera wskazówki na temat przyczyny problemu może być ważne i jak implementować sugerowane zmiany.
 
-Można wybrać obszarach zainteresowań, które są najbardziej ważne dla organizacji i śledzić postęp w kierunku uruchomionym środowiskiem ryzyka bezpłatne i działa prawidłowo.
+Możesz wybrać obszary koncentracji uwagi, które są najważniejsze dla Twojej organizacji i śledzenie postępów uruchamiania środowiska ryzyka bezpłatne i w dobrej kondycji.
 
-Po dodaniu rozwiązania i ocenę jest wykonywane, podsumowanie informacji o obszarach zainteresowań jest wyświetlany na **Sprawdź System Center Operations Manager kondycji** pulpitu nawigacyjnego dla infrastruktury. W poniższych sekcjach opisano sposób użyć informacji na temat **Sprawdź System Center Operations Manager kondycji** pulpitu nawigacyjnego, gdzie można przeglądać i wykonaj zalecane akcje dotyczące środowiska programu Operations Manager.
+Po dodaniu rozwiązania i oceny jest wykonywane Podsumowanie informacje o obszarach zainteresowań jest wyświetlany na **System Center Operations Manager Health Check** pulpitu nawigacyjnego w danej infrastrukturze. W poniższych sekcjach opisano sposób użycia informacji o **System Center Operations Manager Health Check** pulpitu nawigacyjnego, w którym można wyświetlać i następnie podjąć zalecane akcje dla środowiska programu Operations Manager.
 
 ![Kafelek rozwiązania programu System Center Operations Manager](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![Pulpit nawigacyjny System Center Operations Manager kondycji Sprawdź](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
+![System Center Operations Manager Health Check w pulpicie nawigacyjnym](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 
-Rozwiązanie działa z programu Microsoft System Operations Manager 2012 Service Pack (SP) 1 i 2012 R2.
+To rozwiązanie działa przy użyciu programu Microsoft System Operations Manager 2012 Service Pack (SP) 1 i 2012 R2.
 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
- - Zanim użyjesz rozwiązania sprawdzania kondycji w analizy dzienników, musi mieć zainstalowane oprogramowanie. Instalowanie rozwiązania z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+ - Zanim użyjesz sprawdzanie kondycji rozwiązania w usłudze Log Analytics, musi mieć zainstalowane oprogramowanie. Instalowanie rozwiązania z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
- - Po dodaniu rozwiązania do obszaru roboczego **Sprawdź System Center Operations Manager kondycji** kafelka na pulpicie nawigacyjnym zostanie wyświetlony komunikat wymagana dodatkowa konfiguracja. Kliknij Kafelek i wykonaj kroki konfiguracji wymienione na stronie
+ - Po dodaniu rozwiązania do obszaru roboczego **System Center Operations Manager Health Check** kafelka na pulpicie nawigacyjnym wyświetli komunikat wymagana dodatkowa konfiguracja. Kliknij Kafelek, a następnie wykonaj kroki konfiguracji opisane na stronie
 
- ![Kafelka pulpitu nawigacyjnego programu System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
+ ![Kafelek pulpitu nawigacyjnego programu System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
-> Konfiguracji programu System Center Operations Manager można zrobić za pomocą skryptu, wykonując następujące kroki wymienione na stronie Konfiguracja rozwiązania w analizy dzienników.
+> Konfiguracji programu System Center Operations Manager można zrobić za pomocą skryptu, wykonując kroki opisane na stronie konfiguracji rozwiązania w usłudze Log Analytics.
 
- Aby skonfigurować oceny za pomocą konsoli operacje programu Operations Manager, należy wykonać poniższe czynności w następującej kolejności:
-1. [Ustaw konto Uruchom jako dla Sprawdź System Center Operations Manager kondycji](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [Skonfiguruj regułę Sprawdź System Center Operations Manager kondycji](#configure-the-assessment-rule)
+ Aby skonfigurować ocenę za pomocą konsoli operacje programu Operations Manager, wykonaj poniższe kroki w następującej kolejności:
+1. [Ustaw konto Uruchom jako dla System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
+2. [Skonfiguruj regułę System Center Operations Manager Health Check](#configure-the-assessment-rule)
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Szczegóły danych oceny System Center Operations Manager w kolekcji
 
-Ocena programu System Center Operations Manager zbiera dane z następujących źródeł:
+Ocena programu System Center Operations Manager gromadzi dane z następujących źródeł:
 
 * Rejestr
 * Instrumentacja zarządzania Windows (WMI)
 * Dziennik zdarzeń
-* Plik danych
-* Bezpośrednio z programu Operations Manager za pomocą zapytań SQL i programu PowerShell, z serwerem zarządzania, które zostały określone.  
+* Dane pliku
+* Bezpośrednio z programu Operations Manager przy użyciu programu PowerShell i zapytań SQL, z serwera zarządzania, który określono.  
 
-Dane są zbierane na serwerze zarządzania i przekazywane do analizy dzienników co siedem dni.  
+Dane są zbierane na serwerze zarządzania i przekazywane do usługi Log Analytics, co siedem dni.  
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Uruchom jako konta programu Operations Manager dla analizy dzienników
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Uruchom jako konta programu Operations Manager dla usługi Log Analytics
 
-Kompilacje analizy dziennika od pakietów administracyjnych dla obciążeń w celu zapewnienia wartość — Dodawanie usług. Poszczególnych obciążeń wymaga specyficznego dla obciążenia uprawnień do uruchamiania pakietów administracyjnych w innym kontekście zabezpieczeń, takich jak konta użytkownika domeny. Skonfiguruj konto Operations Manager uruchom jako z poświadczeń dla konta uprzywilejowanego. Aby uzyskać dodatkowe informacje, zobacz [sposobu tworzenia konta Uruchom jako](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) w dokumentacji programu Operations Manager.
+Log Analytics kompilacji od pakietów administracyjnych dla obciążeń w celu zapewnienia wartości — Dodawanie usług. Każde obciążenie wymaga uprawnień specyficznego dla obciążenia do uruchamiania pakietów administracyjnych w innym kontekście bezpieczeństwa, takie jak konto użytkownika domeny. Skonfiguruj konto Operations Manager uruchom jako przy użyciu poświadczeń konta uprzywilejowanego. Aby uzyskać więcej informacji, zobacz [sposób tworzenia konta Uruchom jako](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) w dokumentacji programu Operations Manager.
 
-Skorzystaj z poniższych informacji, aby ustawić konto Operations Manager uruchom jako dla Sprawdź System Center Operations Manager kondycji.
+Skorzystaj z poniższych informacji, aby ustawić konto Operations Manager uruchom jako dla System Center Operations Manager Health Check.
 
-### <a name="set-the-run-as-account"></a>Ustawianie konta Uruchom jako
+### <a name="set-the-run-as-account"></a>Ustaw konto Uruchom jako
 
-Konto Uruchom jako musi spełniać następujące wymagania przed kontynuowaniem:
+Konto Uruchom jako muszą spełniać następujące wymagania przed kontynuowaniem:
 
-* Konto użytkownika domeny należącego do lokalnej grupy administratorów na wszystkich serwerach obsługujących dowolnej roli programu Operations Manager — serwer zarządzania, serwera SQL Server z operacyjną, Magazyn danych i bazy danych ACS, raportowanie, sieci Web konsoli, a serwer bramy.
-* Rola administratora menedżera operacji dla grupy zarządzania są oceniane
-* Jeśli konto nie ma prawa administratora systemu SQL, wykonujących [skryptu](#sql-script-to-grant-granular-permissions-to-the-run-as-account) udzielenia szczegółowe uprawnienia do konta na każde wystąpienie programu SQL Server obsługującego jednego lub wszystkich baz danych programu Operations Manager.
+* Konto użytkownika domeny, który jest członkiem lokalnej grupy Administratorzy na wszystkich serwerach, które obsługuje wszystkie role programu Operations Manager — serwer zarządzania, serwera SQL Server hostującego operacyjną, magazynu danych i baza danych usług ACS, raportowanie, internetowej konsoli i serwera bramy.
+* Rola Administrator menedżera operacji dla grupy zarządzania oceniane
+* Jeśli konto nie ma prawa administratora systemu SQL, a następnie wykonaj [skryptu](#sql-script-to-grant-granular-permissions-to-the-run-as-account) celu przyznania szczegółowych uprawnień do konta w każdym wystąpieniu programu SQL Server hostującym jednego lub wszystkich baz danych programu Operations Manager.
 
-1. W konsoli programu Operations Manager, wybierz **administracji** przycisk nawigacji.
+1. W konsoli programu Operations Manager wybierz **administracji** przycisk nawigacji.
 2. W obszarze **Konfiguracja Uruchom jako**, kliknij przycisk **kont**.
 3. W **Utwórz konto Uruchom jako** kreatora na **wprowadzenie** kliknij **dalej**.
-4. Na **właściwości ogólne** wybierz pozycję **Windows** w **typ konta Uruchom jako:** listy.
-5. Wpisz nazwę wyświetlaną w **nazwy wyświetlanej** tekst pola i opcjonalnie wpisać opis w **opis** , a następnie kliknij przycisk **dalej**.
-6. Na **zabezpieczenia dystrybucji** wybierz pozycję **bezpieczniejsze**.
-7. Kliknij przycisk **Utwórz**.  
+4. Na **ogólne właściwości** wybierz opcję **Windows** w **typ konta Uruchom jako:** listy.
+5. Wpisz nazwę wyświetlaną w **nazwy wyświetlanej** tekstu pole, a następnie opcjonalnie wpisać opis w **opis** , a następnie kliknij przycisk **dalej**.
+6. Na **zabezpieczenia dystrybucji** wybierz opcję **bezpieczniejsze**.
+7. Kliknij pozycję **Utwórz**.  
 
-Teraz, gdy utworzone konto Uruchom jako jest potrzebuje do docelowych serwerów zarządzania w grupie zarządzania i skojarzone z wstępnie zdefiniowanego profilu Uruchom jako, tak przepływ pracy zostanie uruchomiony przy użyciu poświadczeń.  
+Teraz, gdy konto Uruchom jako jest tworzone, musi na docelowych serwerach zarządzania w grupie zarządzania i skojarzonych z wstępnie zdefiniowanych profilu Uruchom jako, więc przepływy pracy zostanie uruchomiona przy użyciu poświadczeń.  
 
-1. W obszarze **Konfiguracja Uruchom jako**, **kont**, w okienku wyników kliknij dwukrotnie utworzonego wcześniej konta.
-2. Na **dystrybucji** , kliknij pozycję **Dodaj** dla **komputery wybrane** i dodać na dystrybucję konta na serwerze zarządzania.  Kliknij przycisk **OK** dwa razy, aby zapisać zmiany.
+1. W obszarze **Konfiguracja Uruchom jako**, **kont**, w okienku wyników kliknij dwukrotnie konto, została utworzona wcześniej.
+2. Na **dystrybucji** kliknij pozycję **Dodaj** dla **wybrane komputery** pole, a następnie dodać serwer zarządzania do konta w celu dystrybucji.  Kliknij przycisk **OK** dwa razy, aby zapisać zmiany.
 3. W obszarze **Konfiguracja Uruchom jako**, kliknij przycisk **profile**.
-4. Wyszukaj *SCOM oceny profilu*.
-5. Nazwa profilu powinna być: *programu Microsoft System Center Advisor SCOM oceny profilu Uruchom jako*.
-6. Kliknij prawym przyciskiem myszy i zaktualizować jej właściwości i dodać ostatnio utworzone konto Uruchom jako, utworzony wcześniej.
+4. Wyszukaj *profilu Ocena oprogramowania SCOM*.
+5. Powinna być nazwa profilu: *programu Microsoft System Center Advisor SCOM oceny profilu Uruchom jako*.
+6. Kliknij prawym przyciskiem myszy i zaktualizuj jego właściwości i dodać ostatnio utworzone konto Uruchom jako utworzone wcześniej.
 
-### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skrypt SQL, aby udzielić szczegółowe uprawnienia do konta Uruchom jako
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skrypt SQL w celu przyznania szczegółowych uprawnień do konta Uruchom jako
 
-Uruchom następujący skrypt SQL można udzielić wymaganych uprawnień do konta Uruchom jako w wystąpieniu programu SQL Server używany przez hosting operacyjnej programu Operations Manager, Magazyn danych i bazy danych ACS.
+Uruchom następujący skrypt SQL udzielenia wymaganych uprawnień do konta Uruchom jako w wystąpieniu programu SQL Server używany przez menedżera operacji, które hostuje operacyjną, magazynu danych i baza danych usług ACS.
 
 ```
 -- Replace <UserName> with the actual user name being used as Run As Account.
@@ -152,158 +152,156 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ```
 
-### <a name="configure-the-health-check-rule"></a>Skonfiguruj reguły sprawdzania kondycji
+### <a name="configure-the-health-check-rule"></a>Skonfiguruj regułę sprawdzania kondycji
 
-Pakiet administracyjny rozwiązania System Center Operations Manager kondycji sprawdzania zawiera reguły o nazwie *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły*. Ta reguła jest odpowiada za uruchamianie sprawdzania kondycji. Aby włączyć reguły i skonfigurować częstotliwość, użyj poniższej procedury.
+Pakiet administracyjny rozwiązania System Center Operations Manager Health Check zawiera reguły o nazwie *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły*. Ta reguła jest odpowiedzialny za działanie sprawdzania kondycji. Aby włączyć regułę i skonfiguruj częstotliwość, użyj poniższej procedury.
 
 Domyślnie program Microsoft System Center Advisor SCOM oceny Uruchom oceny reguła jest wyłączona. Aby uruchomić sprawdzenie kondycji, należy włączyć reguły na serwerze zarządzania. Wykonaj następujące kroki.
 
-#### <a name="enable-the-rule-for-a-specific-management-server"></a>Włącz regułę dla serwera zarządzania określonymi
+#### <a name="enable-the-rule-for-a-specific-management-server"></a>Włącz regułę dla określonego serwera zarządzania
 
-1. W **tworzenie** obszaru roboczego w konsoli operacje programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** okienka.
-2. W wynikach wyszukiwania wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
-3. Kliknij prawym przyciskiem myszy reguły, a następnie kliknij przycisk **zastępuje** > **dla konkretnego obiektu klasy: serwer zarządzania**.
-4.  Na liście serwerów dostępnych zarządzania wybierz serwer zarządzania, w którym reguła ma zostać uruchomiona.  Powinno to być tego samego serwera zarządzania, przez skonfigurowane wcześniej do skojarzenia z konta Uruchom jako.
-5.  Zmień wartość zastąpienia **True** dla **włączone** wartość parametru.<br><br> ![zastąpienie parametru](./media/log-analytics-scom-assessment/rule.png)
+1. W **tworzenie** obszar roboczy w konsoli operacje programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** okienka.
+2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
+3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **zastępuje** > **dla konkretnego obiektu klasy: serwer zarządzania**.
+4.  Na liście serwerów dostępnych zarządzania wybierz serwer zarządzania, w którym reguła ma zostać uruchomiona.  Powinna to być ten sam serwer zarządzania, przypisując mu skonfigurowane wcześniej skojarzyć konto Uruchom jako z.
+5.  Upewnij się, że możesz zmienić wartość zastąpienia na **True** dla **włączone** wartość parametru.<br><br> ![Zastąp parametr](./media/log-analytics-scom-assessment/rule.png)
 
-    Gdy nadal w tym oknie skonfiguruj częstotliwość uruchamiania, wykonując następną procedurę.
+    Nadal w tym oknie, należy skonfigurować częstotliwość uruchamiania, wykonując następną procedurę.
 
-#### <a name="configure-the-run-frequency"></a>Skonfiguruj częstotliwość uruchamiania
+#### <a name="configure-the-run-frequency"></a>Skonfiguruj częstotliwość wykonywania
 
-Ocena jest domyślnie konfigurowana do uruchamiania co 10 080 minut (lub siedem dni). Można zastąpić wartość minimalną wartość 1440 minut (lub jeden dzień). Wartość reprezentuje przerwę minimalny czas między oszacowanie działa. Aby zastąpić interwał, skorzystaj z poniższych czynności.
+Ocena jest domyślnie skonfigurowana do uruchamiania co 10 080 minut (lub siedmiu dni). Możesz zastąpić wartość minimalna wartość 1440 minut (lub jeden dzień). Wartość reprezentuje przerwy minimalny czas między oceny kolejnych przebiegów. Aby zastąpić interwału, użyj kroków poniżej.
 
-1. W **tworzenie** obszaru roboczego w konsoli programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** sekcja.
-2. W wynikach wyszukiwania wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
-3. Kliknij prawym przyciskiem myszy reguły, a następnie kliknij przycisk **Zastąp zasadę** > **dla wszystkich obiektów klasy: serwer zarządzania**.
-4. Zmień **interwał** wartość parametru na wartość dla żądanego interwału. W poniższym przykładzie wartość jest równa 1440 minut (jeden dzień).<br><br> ![Parametr interwał](./media/log-analytics-scom-assessment/interval.png)<br>  
+1. W **tworzenie** obszar roboczy w konsoli programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** sekcja.
+2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
+3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Zastąp zasadę** > **dla wszystkich obiektów klasy: serwer zarządzania**.
+4. Zmiana **interwał** wartość parametru na wartość żądany przedział. W poniższym przykładzie wartość jest równa 1440 minut (jeden dzień).<br><br> ![Parametr interwału](./media/log-analytics-scom-assessment/interval.png)<br>  
 
-    Jeśli wartość jest mniejsza niż 1440 minut, gdy zasada jest wykonywana w interwale jeden dzień. W tym przykładzie reguła ignoruje wartość interwału i jest uruchamiany z częstotliwością jeden dzień.
+    Jeśli wartość jest ustawiona na mniej niż 1440 minut, gdy zasada jest wykonywana w odstępach czasu w ciągu jednego dnia. W tym przykładzie reguła ignoruje wartość interwału i jest uruchamiany z częstotliwością jeden dzień.
 
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Opis sposobu mają pierwszeństwo zalecenia
+## <a name="understanding-how-recommendations-are-prioritized"></a>Zrozumienie, jak zalecenia są uszeregowane według priorytetów
 
 Każdy zalecenie wprowadzone otrzymuje wartość wagi, która identyfikuje względnego zalecenia. 10 najważniejszych zalecenia są wyświetlane.
 
 ### <a name="how-weights-are-calculated"></a>Jak są obliczane wagi
 
-Wagi są wartości zagregowanych oparte na trzech kluczowych czynników:
+Wagi są wartości zagregowane, oparte na trzech kluczowych czynników:
 
-- *Prawdopodobieństwo* czy problemu może powodować problemy. Większe prawdopodobieństwo równa większych ogólny wynik dla zalecenia.
-- *Wpływ* problemu w Twojej organizacji, jeśli spowodować problem. Większy wpływ równa większych ogólny wynik dla zalecenia.
-- *Nakładu* wymagane do wykonania zalecenia. Wyższy nakładu równa mniejszych ogólny wynik dla zalecenia.
+- *Prawdopodobieństwo* czy problemu może powodować problemy. Większe prawdopodobieństwo równa większe, ogólny wynik zalecenia.
+- *Wpływ* problemu w Twojej organizacji, jeśli to spowodować problem. Większy wpływ równa większe, ogólny wynik zalecenia.
+- *Nakład pracy* wymagane do wykonania zalecenia. Wyższe nakład pracy jest równa mniejszych, ogólny wynik zalecenia.
 
-Wagi dla każde zalecenie jest wyrażona jako procent całkowitej wynik dostępne dla każdego obszaru fokus. Na przykład jeśli zalecenia w obszarze fokus dostępność i ciągłość prowadzenia działalności biznesowej ma wynik % 5, wdrażanie tego zalecenia zwiększa z ogólną % wynik przez 5 dostępność i ciągłość prowadzenia działalności biznesowej.
+Wagi dla każde zalecenie jest wyrażona jako procent łączny wynik dostępne dla każdego obszaru. Na przykład jeśli zalecenie w obszarze fokus dostępność i ciągłość prowadzenia działalności biznesowej ma wynik % 5, zaimplementowaniu tej rekomendacji zwiększa ogólną dostępność i ciągłość prowadzenia działalności biznesowej % ocena, 5.
 
 ### <a name="focus-areas"></a>Obszarach zainteresowań
 
-**Dostępność i ciągłość prowadzenia działalności biznesowej** — w tym obszarze fokus zawiera zalecenia dotyczące odporności infrastruktury i ochronę biznesowej, dostępności usług.
+**Dostępność i ciągłość prowadzenia działalności biznesowej** — ten obszar koncentracji uwagi przedstawiono zalecenia dotyczące dostępności usług, odporności infrastruktury i ochrony działalności.
 
-**Wydajność i skalowalność** — w tym obszarze fokus zawiera zalecenia ułatwiające organizacji infrastruktury IT zwiększania, upewnij się, że spełnia bieżące wymagania dotyczące wydajności środowiska informatycznego i jest w stanie reagować na zmieniające się infrastruktury wymagania związane z.
+**Wydajność i skalowalność** — ten obszar koncentracji uwagi zawiera zalecenia, aby pomóc Twojej organizacji infrastruktury IT, rozwoju, upewnij się, że środowisko IT spełnia bieżące wymagania dotyczące wydajności i może reagować na zmieniające się infrastruktury wymagania związane z.
 
-**Uaktualnienie, migrację i wdrażanie** — w tym obszarze fokus zawiera zalecenia ułatwiające uaktualniania, migracji i wdrożenia programu SQL Server w istniejącej infrastrukturze.
+**Uaktualnianie, migracja i wdrażanie** — ten obszar koncentracji uwagi zawiera zalecenia ułatwiające uaktualnienie i migrację oraz wdrożenie programu SQL Server w istniejącej infrastrukturze.
 
-**Operacje i monitorowanie** — w tym obszarze fokus zawiera zalecenia ułatwiające usprawnić operacji IT, wdrożenia program prewencyjnej konserwacji i zmaksymalizować wydajność.
+**Operacje i monitorowanie** — ten obszar koncentracji uwagi zawiera zalecenia, aby usprawnić operacji IT, implementować konserwacji zapobiegawczej i zwiększyć wydajność.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Należy dążyć wynik 100% w każdym obszarze fokus?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Należy dążyć do oceniania 100% w każdym obszarze koncentracji uwagi?
 
-Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczeń zdobytych Microsoft inżynierowie między tysięcy wizyt klienta. Jednak nie infrastruktury serwerowe są takie same i szczegółowe zalecenia mogą być bardziej lub mniej istotne dla Ciebie. Na przykład niektóre zalecenia dotyczące zabezpieczeń może być mniej ważne, jeśli maszyny wirtualne nie są widoczne w Internecie. Kilka zaleceń dostępności może być mniej istotne dla usług, które umożliwiają zbieranie danych ad hoc — niski priorytet i raportowania. Problemy, które są ważne dla dorosłych firm może być mniej ważne do rozruchu. Można zidentyfikować obszary fokus, które mają zebranych i przyjrzyj się jak zmienić wyniki wraz z upływem czasu.
+Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczenia zebrane przez inżynierów firmy Microsoft w tysiącach wizyt klienta. Nie dwóch serwerów infrastruktury, są takie same i zalecenia może być bardziej lub mniej istotne dla Ciebie. Na przykład niektóre zalecenia dotyczące zabezpieczeń może być mniej istotne, jeśli maszyny wirtualne nie są połączone z Internetem. Niektóre zalecenia dotyczące dostępności może być mniej istotne dla usługi, które zapewniają zbierania danych ad hoc — niski priorytet i raportowania. Problemy, które są ważne do dojrzałego może być mniej ważne uruchomieniowy. Można zidentyfikować obszary koncentracji uwagi, które mają priorytetów i przyjrzyj się jak wyniki zmieniają się wraz z upływem czasu.
 
-Każdy zalecenie obejmuje wskazówek dotyczących Dlaczego ważne jest. Skorzystać z poniższych wskazówek do oceny, czy wdrażanie zalecenie jest odpowiednie dla Ciebie, biorąc pod uwagę rodzaj usług informatycznych i potrzeb biznesowych w organizacji.
+Każdy zalecenie obejmuje wskazówki na temat ważnych. Skorzystać z poniższych wskazówek, aby ocenić, czy implementacja zalecenie jest odpowiednia dla Ciebie, biorąc pod uwagę rodzaj usług IT i potrzeby biznesowe Twojej organizacji.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Sprawdzanie kondycji Użyj zaleceń obszaru fokus
+## <a name="use-health-check-focus-area-recommendations"></a>Sprawdzanie kondycji Użyj zaleceń obszar koncentracji uwagi
 
-Zanim użyjesz funkcję sprawdzania kondycji w analizy dzienników, musi mieć zainstalowane oprogramowanie. Aby uzyskać więcej informacji na temat instalowania rozwiązań, zobacz [zainstalować rozwiązania do zarządzania](log-analytics-add-solutions.md). Po jego zainstalowaniu, można wyświetlić podsumowanie zaleceń za pomocą kafelka Sprawdź System Center Operations Manager kondycji na **omówienie** strony obszaru roboczego w portalu Azure.
+Korzystać z rozwiązania sprawdzania kondycji, w usłudze Log Analytics, musisz mieć zainstalowane oprogramowanie. Aby dowiedzieć się więcej o instalowaniu rozwiązania, zobacz [zainstalować rozwiązanie do zarządzania](log-analytics-add-solutions.md). Po jego zainstalowaniu, można wyświetlić podsumowanie zalecenia za pomocą kafelka System Center Operations Manager Health Check na **Przegląd** strony dla obszaru roboczego w witrynie Azure portal.
 
-Wyświetl oceny zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
+Wyświetlanie ocen zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dla obszaru fokus i podjąć działania naprawcze
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszar koncentracji uwagi i podejmij działania naprawcze
 1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
-3. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie kliknij przycisk **podsumowanie obszaru roboczego** elementu menu.  
-4. Na **omówienie** kliknij przycisk **Sprawdź System Center Operations Manager kondycji** kafelka.
-5. Na **Sprawdź System Center Operations Manager kondycji** strony, sprawdź informacje w jednym z bloków obszaru fokus, a następnie kliknij przycisk jedna, aby wyświetlić zalecenia dla tego obszaru fokus.
-6. Na wszystkich stronach obszaru fokus można wyświetlić priorytetową zalecenia dla danego środowiska. Kliknij zalecenie, w obszarze **dotyczy obiektów** Aby wyświetlić szczegóły dotyczące Dlaczego tworzone są zalecenia.<br><br> ![obszar fokus](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. Należy wykonać działania naprawcze sugerowane w **sugerowanych akcji**. Jeśli element został rozwiązany, ocen nowsze zarejestruje które zalecane akcje zostały pobrane i zwiększa wynik zgodności. Poprawione elementy są wyświetlane jako **przekazany obiektów**.
+3. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie kliknij przycisk **podsumowanie obszaru roboczego** elementu menu.  
+4. Na **Przegląd** kliknij **System Center Operations Manager Health Check** kafelka.
+5. Na **System Center Operations Manager Health Check** strony, przejrzyj dane podsumowania w jednym z bloków obszaru fokus, a następnie kliknij jedną, aby wyświetlić zalecenia dla tego obszaru.
+6. Na wszystkich stronach obszar koncentracji uwagi można wyświetlać zaleceń z priorytetami wprowadzone dla danego środowiska. Kliknij przycisk rekomendacji w obszarze **wpływ na obiekty** Aby wyświetlić szczegóły dotyczące Dlaczego tworzone są zalecenia.<br><br> ![obszar koncentracji](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. Można wykonać akcje naprawcze sugerowane w **sugerowane akcje**. Jeśli element został rozwiązany, oceny nowszych zarejestruje które zalecane akcje zostały wykonane i zwiększy ocenę zgodności. Poprawiony elementy są wyświetlane jako **obiektów przekazywane**.
 
-## <a name="ignore-recommendations"></a>Ignoruj zalecenia
+## <a name="ignore-recommendations"></a>Zignoruj zalecenia
 
-Jeśli masz zaleceń, które chcesz zignorować, można utworzyć pliku tekstowego, który używa analizy dzienników zapobiegające zaleceń znajdujących się w wynikach oceny.
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który używa usługi Log Analytics, aby zapobiegać zaleceń znajdujących się w wynikach oceny.
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>Aby zidentyfikować zaleceń, które chcesz zignorować
-1. W portalu Azure na stronie obszaru roboczego analizy dzienników dla Twojego wybranego obszaru roboczego kliknij **wyszukiwania dziennika** elementu menu.
-2. Użyj następującego zapytania do listy zaleceń, które nie powiodły, na komputerach w danym środowisku.
+1. W witrynie Azure portal na stronie obszaru roboczego usługi Log Analytics dla wybranego obszaru roboczego kliknij **wyszukiwanie w dzienniku** elementu menu.
+2. Użyj następującego zapytania do zaleceń listy, które nie powiodły, na komputerach w danym środowisku.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Jeśli obszaru roboczego został uaktualniony do [języka zapytań nowe analizy dzienników](log-analytics-log-search-upgrade.md), a następnie zmienić powyższym zapytaniu następujące.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search-upgrade.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Poniżej przedstawiono zrzut ekranu przedstawiający zapytania wyszukiwania dziennika:<br><br> ![przeszukiwanie dzienników](./media/log-analytics-scom-assessment/scom-log-search.png)<br>
+    Poniżej przedstawiono zrzut ekranu przedstawiający zapytaniu przeszukiwania dzienników:<br><br> ![przeszukiwanie dzienników](./media/log-analytics-scom-assessment/scom-log-search.png)<br>
 
 3. Wybierz zaleceń, które chcesz zignorować. Użyjesz wartości RecommendationId w następnej procedurze.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Tworzenie i używanie IgnoreRecommendations.txt pliku tekstowego
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Tworzenie i używanie pliku tekstowego IgnoreRecommendations.txt
 
 1. Utwórz plik o nazwie IgnoreRecommendations.txt.
-2. Wklej lub wpisz każdego RecommendationId dla każde zalecenie, które mają analizy dzienników można zignorować w osobnym wierszu, a następnie zapisz i zamknij plik.
-3. Umieść plik w następującym folderze na każdym komputerze, w którym ma analizy dzienników zignorowanie zalecenia.
+2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają Log Analytics, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
+3. Umieść plik w następującym folderze na każdym komputerze, w której chcesz zignorować zalecenia w usłudze Log Analytics.
 4. Na serwerze zarządzania programu Operations Manager — *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft.
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Aby zweryfikować, że zalecenia są ignorowane
 
-1. Po na następną zaplanowaną ocenę działa, domyślnie co siedem dni, określonego zalecenia są oznaczane ignorowany i nie będą wyświetlane na pulpicie nawigacyjnym kondycji wyboru.
-2. Następujące zapytania wyszukiwania dziennika służy do tworzenia listy wszystkich zignorowane zalecenia.
+1. Po następnego zaplanowanego uruchomienia oceny domyślnie co siedem dni, określonego zalecenia są oznaczone jako ignorowane i nie będą wyświetlane na pulpicie nawigacyjnym sprawdzania kondycji.
+2. Aby wyświetlić listę wszystkich zaleceń dotyczących zignorowane, można użyć następujących zapytań przeszukiwania dzienników.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
     >[!NOTE]
-    > Jeśli obszaru roboczego został uaktualniony do [języka zapytań nowe analizy dzienników](log-analytics-log-search-upgrade.md), a następnie zmienić powyższym zapytaniu następujące.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search-upgrade.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Jeśli później zdecydujesz chcesz zobaczyć zignorowane zalecenia dotyczące, Usuń wszystkie pliki IgnoreRecommendations.txt lub RecommendationIDs można usunąć z nich.
+3. Jeśli użytkownik zdecyduje później chcesz wyświetlone zalecenia zignorowane, Usuń wszystkie pliki IgnoreRecommendations.txt lub RecommendationIDs można usunąć z nich.
 
-## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager kondycji Sprawdź rozwiązania — często zadawane pytania
+## <a name="system-center-operations-manager-health-check-solution-faq"></a>Rozwiązania System Center Operations Manager Health Check — często zadawane pytania
 
-*Sprawdzanie kondycji rozwiązań po dodaniu do mojego obszaru roboczego analizy dzienników. Nie widzę zalecenia. Dlaczego nie?* Po dodaniu rozwiązania, użyj następującego widoku kroki zaleceń na pulpicie nawigacyjnym analizy dzienników.  
+*Sprawdzanie kondycji rozwiązania I dodane do mojego obszaru roboczego usługi Log Analytics. Nie widzę zaleceń. Dlaczego nie?* Po dodaniu rozwiązania, użyj następującego widoku kroki zaleceń na pulpicie nawigacyjnym usługi Log Analytics.  
 
-- [Ustaw konto Uruchom jako dla Sprawdź System Center Operations Manager kondycji](#operations-manager-run-as-accounts-for-log-analytics)  
-- [Skonfiguruj regułę Sprawdź System Center Operations Manager kondycji](#configure-the-health-check-rule)
+- [Ustaw konto Uruchom jako dla System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
+- [Skonfiguruj regułę System Center Operations Manager Health Check](#configure-the-health-check-rule)
 
 
-*Czy istnieje sposób konfigurowania, jak często kontrola nie zostanie uruchomiona?* Tak. Zobacz [skonfiguruj częstotliwość uruchamiania](#configure-the-run-frequency).
+*Czy istnieje sposób, aby skonfigurować częstotliwość uruchamiania wyboru?* Tak. Zobacz [skonfigurować częstotliwość uruchamiania](#configure-the-run-frequency).
 
-*Jeśli inny serwer zostanie odnaleziony po rozwiązaniu System Center Operations Manager oceny zostały dodane, będzie on sprawdzany?* Tak, po odnajdywaniu, który jest następnie zaznaczone domyślnie co siedem dni.
+*Jeśli inny serwer został odnaleziony, po rozwiązania do oceny programu System Center Operations Manager zostały dodane, zostanie on sprawdzony?* Tak, po odnajdywaniu, który jest sprawdzany od tego momentu domyślnie co siedem dni.
 
 *Co to jest nazwa procesu, który wykonuje zbierania danych?* AdvisorAssessment.exe
 
-*Gdy jest uruchamiany proces AdvisorAssessment.exe?* AdvisorAssessment.exe uruchamiana procesu usługi kondycji serwera zarządzania, w których włączono reguła sprawdzania kondycji. Za pomocą tego procesu, odnajdywania całego środowiska odbywa się za pośrednictwem zdalne zbieranie danych.
+*Gdzie uruchomiony proces AdvisorAssessment.exe?* AdvisorAssessment.exe uruchamiana procesu usługi kondycji serwera zarządzania, w której włączono regułę sprawdzania kondycji. Za pomocą tego procesu, odnajdywanie całego środowiska odbywa się za pośrednictwem zdalne zbieranie danych.
 
-*Jak długo trwa zbierania danych?* Zbieranie danych na serwerze trwa około jednej godziny. Może trwać dłużej w środowiskach mających wiele wystąpień programu Operations Manager lub baz danych.
+*Jak długo trwa do zbierania danych?* Zbieranie danych na serwerze, trwa około jednej godziny. Może trwać dłużej w środowiskach, które mają wiele wystąpień programu Operations Manager lub baz danych.
 
-*Co zrobić, jeśli do mniej niż 1440 minut ustawić interwał oceny?* Ocena jest wstępnie skonfigurowana do uruchamiania na maksymalnie raz dziennie. Jeśli zastąpić wartość interwału do mniej niż 1440 minut, następnie oceny używa 1440 minut jako wartość interwału.
+*Co zrobić, jeśli ustawić interwał oceny do mniej niż 1440 minut?* Ocena jest wstępnie skonfigurowana do uruchamiania w więcej niż raz dziennie. Jeśli zastąpisz wartość interwału do wartości mniejszej niż 1440 minut oceny używa 1440 minut jako wartość interwału.
 
-*Jak sprawdzić, czy istnieją błędy?* Jeśli nie widzisz wyników uruchomienia sprawdzania kondycji, następnie jest prawdopodobne, że niektóre do sprawdzania wymagań wstępnych nie powiodło się. Można wykonać zapytania: `Operation Solution=SCOMAssessment` i `SCOMAssessmentRecommendation FocusArea=Prerequisites` w dzienniku Wyszukaj, aby zobaczyć wymagań wstępnych nie powiodło się.
+*Jak sprawdzić, czy istnieją błędy?* Jeśli uruchomiono sprawdzania kondycji i nie zostaną wyświetlone wyniki, wówczas jest prawdopodobne, że niektóre wymagania wstępne dotyczące wyboru nie powiodło się. Można wykonać zapytania: `Operation Solution=SCOMAssessment` i `SCOMAssessmentRecommendation FocusArea=Prerequisites` podczas wyszukiwania dziennika, aby zobaczyć wymagań wstępnych nie powiodło się.
 
-*Brak `Failed to connect to the SQL Instance (….).` komunikat błędy wymagań wstępnych. Co to jest problem?* AdvisorAssessment.exe, proces, która gromadzi dane, jest uruchamiana procesu usługi kondycji na serwerze zarządzania. W ramach sprawdzania kondycji proces próbuje połączyć się z serwerem SQL, gdzie występuje bazy danych programu Operations Manager. Ten błąd może wystąpić, jeśli reguły zapory blokowanie połączenia z wystąpieniem programu SQL Server.
+*Brak `Failed to connect to the SQL Instance (….).` komunikat błędy wymagań wstępnych. Na czym polega problem?* AdvisorAssessment.exe, proces, który służy do zbierania danych, działa w ramach procesu usługi kondycji na serwerze zarządzania. W ramach kontroli kondycji proces próbuje nawiązać połączenie z serwerem SQL, w którym znajduje się baza danych programu Operations Manager. Ten błąd może wystąpić, jeśli reguły zapory na blokowanie połączenie z wystąpieniem programu SQL Server.
 
-*Jakiego typu dane są zbierane?* Zbierane są następujące typy danych: danych programu Operations Manager — dane usługi WMI — rejestru danych — dane w dzienniku zdarzeń — za pośrednictwem plików, zapytania SQL i programu Windows PowerShell moduł zbierający informacje o.
+*Jakiego typu dane są zbierane?* Zbierane są następujące typy danych: - WMI - rejestru danych — danych w dzienniku zdarzeń — Operations Manager danych za pomocą programu Windows PowerShell, zapytania SQL oraz plik moduł zbierający informacje o.
 
-*Dlaczego trzeba skonfigurować konto Uruchom jako?* Z programem Operations Manager są uruchamiane różne zapytania SQL. Aby je uruchomić należy użyć konto Uruchom jako z niezbędne uprawnienia. Ponadto aby kwerenda WMI wymagane są poświadczenia administratora lokalnego.
+*Dlaczego trzeba skonfigurować konto Uruchom jako?* Za pomocą programu Operations Manager działają różne zapytania SQL. W kolejności ich do uruchomienia należy użyć konta Uruchom jako przy użyciu wystarczających uprawnień. Ponadto poświadczenia administratora lokalnego są wymagane do wykonywania zapytań usługi WMI.
 
-*Dlaczego są wyświetlane tylko zalecenia 10 pierwszych?* Zamiast daje wyczerpująca, utrudnione listę zadań, zaleca się skupić się na najpierw adresowania priorytetową zalecenia. Po adresu im dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić listę szczegółowych, można wyświetlić wszystkie zalecenia za pomocą wyszukiwania dziennika.
+*Dlaczego są wyświetlane tylko 10 najlepszych zaleceń?* Zamiast daje wyczerpująca, przytłaczająca listę zadań, zaleca się skupić się na temat zaleceń z priorytetami najpierw. Po ich wykonaniu, dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić szczegółową listę, możesz wyświetlić wszystkie zalecenia za pomocą wyszukiwania w dziennikach.
 
-*Czy istnieje sposób, aby zignorować zalecenie?* Tak, zobacz [zignorowanie zalecenia](#Ignore-recommendations).
+*Czy istnieje sposób, aby zignorować zalecenie?* Tak, zobacz [Zignoruj zalecenia](#Ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wyszukaj dzienniki](log-analytics-log-searches.md) informacje na temat analizowania szczegółowych danych sprawdź System Center Operations Manager kondycji i zaleceń.
+- [Przeszukiwanie dzienników](log-analytics-log-searches.md) Aby dowiedzieć się, jak analizować szczegółowe dane usługi System Center Operations Manager Health Check i zalecenia.

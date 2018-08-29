@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283073"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122107"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -23,7 +23,7 @@ Interfejsy API REST, ujednolicone usługi mowy są podobne do interfejsów API d
 
 W funkcji rozpoznawania mowy do interfejsu API tłumaczenia tekstu tylko punktów końcowych używanych różnią się od poprzedniej Speech service interfejs API rozpoznawania mowy. W poniższej tabeli przedstawiono nowe punkty końcowe. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 Zamiana mowy na interfejs API tłumaczenia tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API rozpoznawania mowy.
 
@@ -54,7 +54,7 @@ pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy 
 
 Dostępne są następujące punkty końcowe REST dla ujednolicone usługi tekstu na mowę interfejsu API. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 Zachowanie tych różnic, pamiętając, jak możesz odwołać się do [dokumentację interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) poprzedniego interfejsu API rozpoznawania mowy.
 
@@ -62,7 +62,7 @@ Zachowanie tych różnic, pamiętając, jak możesz odwołać się do [dokumenta
 
 Wysyła żądanie do interfejsu API REST usługi mowy wymaga tokenu dostępu. Uzyskania tokenu, podając swój klucz subskrypcji z usługą mowy regionalnych `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token — w tym, jeśli chcesz, tuż przed wywołaniem każdego żądania interfejsu API REST mowy. Aby zminimalizować ruch sieciowy i czas oczekiwania, jednak zalecamy używanie tego samego tokenu na dziewięć minut.
 

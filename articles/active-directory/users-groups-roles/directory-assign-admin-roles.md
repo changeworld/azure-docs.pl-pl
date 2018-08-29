@@ -14,12 +14,12 @@ ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 813fb79bbdc09d0fb3baa9a66cfaeae74343b3f9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9b56f540af2b8d35258a4db79502c9edf83cdb45
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093639"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128470"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -613,16 +613,22 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 | microsoft.aad.supporttickets/AllEntities/AllActions | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 | microsoft.intune/AllEntities/AllActions | Zarządzaj wszystkimi aspektami usługi Intune. |
 
-### <a name="license-administrator"></a>Administrator licencji
-Można przypisać licencji do użytkowników.
 
+### <a name="license-administrator"></a>Administrator licencji
+Można zarządzać licencje produktów dla użytkowników i grup.
+ 
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+ 
 | **Akcje** | **Opis** |
 | --- | --- |
-| microsoft.aad.directory/users/assignLicense        | &nbsp; |
-| microsoft.aad.directory/users/usageLocation/update | &nbsp; |
-| microsoft.azure.accessService/allEntities/allTasks | &nbsp; |
-| microsoft.azure.serviceHealth/allEntities/allTasks | &nbsp; |
-| Microsoft.office365.serviceHealth/allEntities/allTasks | &nbsp; |
+| microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/usageLocation/update | Zaktualizuj właściwość users.usageLocation w usłudze Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 
 ### <a name="lync-service-administrator"></a>Administrator usługi Lync
 Może zarządzać wszystkimi aspektami produktu Skype dla firm.

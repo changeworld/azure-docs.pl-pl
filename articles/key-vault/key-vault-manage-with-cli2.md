@@ -12,46 +12,54 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 47a78b71f51e4fe975341b8e9425f47fd8c4d31c
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d2b38a27644eed088f4a204cf989f44346e1654
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503540"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126915"
 ---
 # <a name="manage-key-vault-using-cli-20"></a>Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault
 
 W tym artykule opisano, jak rozpocząć pracę z usługą Azure Key Vault, przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Informacje są widoczne na:
+
+- Wymagania wstępne
 - Jak utworzyć kontener ze wzmocnionymi zabezpieczeniami (magazyn) na platformie Azure
-- Jak przechowywać i zarządzać nimi kluczy kryptograficznych i wpisów tajnych na platformie Azure. 
-- Aby utworzyć magazyn, przy użyciu wiersza polecenia platformy Azure.
-- Tworzenie klucza lub hasła, które następnie za pomocą aplikacji platformy Azure. 
-- Jak aplikacja może użyć utworzony klucz lub hasło.
+- Dodawanie klucza, hasło lub certyfikat do magazynu kluczy
+- Rejestrowanie aplikacji w usłudze Azure Active Directory
+- Autoryzowanie aplikacji na używanie klucza lub klucza tajnego
+- Ustawienia magazynu kluczy, zaawansowane zasady dostępu
+- Praca z sprzętowych modułów zabezpieczeń (HSM)
+- Usuwanie magazynu kluczy oraz skojarzonych kluczy i wpisów tajnych
+- Polecenia różne interfejsu wiersza polecenia platformy Azure dla wielu Platform
+
 
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
-
 
 > [!NOTE]
 > Ten artykuł nie zawiera instrukcji dotyczących pisania aplikacji platformy Azure, że jeden z kroków zawiera, który pokazuje, jak Autoryzuj aplikację do używania klucza lub klucza tajnego w magazynie kluczy.
 >
 
 Omówienie usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-whatis.md)
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aby użyć polecenia wiersza polecenia platformy Azure, w tym artykule, musi mieć następujące elementy:
 
 * Subskrypcja platformy Microsoft Azure. Jeśli go nie masz, możesz [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial).
 * Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](/cli/azure/install-azure-cli).
 * Aplikacja, która zostanie skonfigurowana do używania klucza lub hasła utworzonego w tym artykule. Przykładowa aplikacja jest dostępna w [Centrum pobierania Microsoft](http://www.microsoft.com/download/details.aspx?id=45343). Aby uzyskać instrukcje zobacz dołączony plik Readme.
 
-## <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Uzyskiwanie pomocy przy użyciu interfejsu wiersza polecenia platformy Azure dla wielu Platform
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Uzyskiwanie pomocy przy użyciu interfejsu wiersza polecenia platformy Azure dla wielu Platform
+
 W tym artykule założono, że jesteś zaznajomiony z interfejsu wiersza polecenia (powłoki Bash, Terminal, wiersza polecenia).
 
 --H lub help parametru należy używać, aby wyświetlić Pomoc dla określonego polecenia. Alternatywnie Azure help [polecenie], że format [opcje] może również służyć za. W razie wątpliwości dotyczące parametrów wymaganych za pomocą polecenia, zobacz Pomoc. Na przykład poniższe polecenia, wszystkie zwracają te same informacje:
 
-```azurecli-interactive
+```azurecli
 az account set --help
 az account set -h
 ```
@@ -61,9 +69,13 @@ Można również przeczytać następujące artykuły, aby zapoznać się z usłu
 * [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 * [Wprowadzenie do interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/get-started-with-azure-cli)
 
-## <a name="connect-to-your-subscriptions"></a>Nawiązywanie połączenia z subskrypcjami
+## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Jak utworzyć kontener ze wzmocnionymi zabezpieczeniami (magazyn) na platformie Azure
 
-Aby zalogować się interaktywnie, użyj następującego polecenia:
+Magazyny zabezpieczonych kontenerów, wspierane przez sprzętowe moduły zabezpieczeń. Magazyny zmniejszają prawdopodobieństwo przypadkowej utraty danych zabezpieczeń, stanowiąc centrum przechowywania wpisów tajnych aplikacji. Magazyny usługi Key Vault umożliwiają także kontrolowanie i rejestrowanie dostępu do wszelkich elementów, które są w nich przechowywane. Usługa Azure Key Vault obsługuje żądania i odnawianie certyfikatów protokołu TLS (Transport Layer Security), udostępniając funkcje wymagane przez niezawodne rozwiązania do zarządzania cyklem życia certyfikatu. W następnych krokach utworzysz magazyn.
+
+### <a name="connect-to-your-subscriptions"></a>Nawiązywanie połączenia z subskrypcjami
+
+Logujesz się interaktywnie, użyj następującego polecenia:
 
 ```azurecli
 az login
@@ -88,7 +100,8 @@ az account set --subscription <subscription name or ID>
 
 Aby uzyskać więcej informacji na temat konfigurowania interfejsu wiersza polecenia dla wielu Platform, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli).
 
-## <a name="create-a-new-resource-group"></a>Utworzenie nowej grupy zasobów
+### <a name="create-a-new-resource-group"></a>Utworzenie nowej grupy zasobów
+
 Korzystając z usługi Azure Resource Manager, wszystkie powiązane zasoby są tworzone wewnątrz grupy zasobów. Można utworzyć magazyn kluczy w istniejącej grupie zasobów. Jeśli chcesz użyć nowej grupy zasobów, możesz utworzyć nowy.
 
 ```azurecli
@@ -101,15 +114,15 @@ Pierwszy parametr jest nazwa grupy zasobów, a drugi parametr jest lokalizacji. 
 az account list-locations
 ``` 
 
-## <a name="register-the-key-vault-resource-provider"></a>Zarejestruj dostawcę zasobów usługi Key Vault
+### <a name="register-the-key-vault-resource-provider"></a>Zarejestruj dostawcę zasobów usługi Key Vault
+
  Może zostać wyświetlony błąd "subskrypcja nie jest zarejestrowana do korzystania z przestrzeni nazw"Microsoft.KeyVault"" podczas próby utworzenia nowego magazynu kluczy. Jeśli pojawi się ten komunikat, upewnij się, że dostawca zasobów tej usługi Key Vault jest zarejestrowany w ramach subskrypcji. Jest to jednorazowa operacja dla każdej subskrypcji.
 
 ```azurecli
 az provider register -n Microsoft.KeyVault
 ```
 
-
-## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
+### <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
 Użyj `az keyvault create` polecenie, aby utworzyć magazyn kluczy. Ten skrypt ma trzy obowiązkowe parametry: Nazwa grupy zasobów, nazwę magazynu kluczy i lokalizacji geograficznej.
 
@@ -126,7 +139,7 @@ Dane wyjściowe tego polecenia pokazują właściwości magazynu kluczy, który 
 
 Twoje konto platformy Azure ma teraz uprawnienia do wykonywania dowolnych operacji na tym magazynie kluczy. Począwszy od jeszcze nikt inny nie ma autoryzacji.
 
-## <a name="add-a-key-secret-or-certificate-to-the-key-vault"></a>Dodaj klucz, hasło lub certyfikat do magazynu kluczy
+## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Dodawanie klucza, hasło lub certyfikat do magazynu kluczy
 
 Jeśli chcesz, aby usługa Azure Key Vault utworzyła klucz chroniony przez oprogramowanie, użyj `az key create` polecenia.
 
@@ -176,7 +189,8 @@ az keyvault secret list --vault-name 'ContosoKeyVault'
 az keyvault certificate list --vault-name 'ContosoKeyVault'
 ```
 
-## <a name="register-an-application-with-azure-active-directory"></a>Rejestrowanie aplikacji w usłudze Azure Active Directory
+## <a name="registering-an-application-with-azure-active-directory"></a>Rejestrowanie aplikacji w usłudze Azure Active Directory
+
 Ten krok będzie zazwyczaj wykonywany przez programistę na innym komputerze. Nie jest specyficzne dla usługi Azure Key Vault, ale został tu zawarty, aby funkcja rozpoznawania poprawnie. Aby ukończyć rejestrację aplikacji, Twoje konto, Magazyn i aplikacja muszą być w tym samym katalogu platformy Azure.
 
 Aplikacje używające magazynu kluczy muszą zostać uwierzytelnione przy użyciu tokenu z usługi Azure Active Directory.  Właściciel aplikacji musi być zarejestrowany w usłudze Azure Active Directory najpierw. Na koniec rejestracji właściciel aplikacji otrzymuje następujące wartości:
@@ -195,7 +209,7 @@ az ad sp create-for-rbac -n "MyApp" --password 'Pa$$w0rd' --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 
-## <a name="authorize-the-application-to-use-the-key-or-secret"></a>Zezwalanie aplikacji na używanie klucza lub klucza tajnego
+## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Autoryzowanie aplikacji na używanie klucza lub klucza tajnego
 
 Aby przyznać aplikacji dostęp do klucza lub klucza tajnego w magazynie, użyj `az keyvault set-policy` polecenia.
 
@@ -211,7 +225,8 @@ Aby zezwolić tej samej aplikacji na odczytywanie wpisów tajnych w magazynie, w
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu 
+## <a name="bkmk_KVperCLI"></a> Ustawienia magazynu kluczy, zaawansowane zasady dostępu
+
 Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) można włączyć zaawansowane zasady dla usługi key vault. 
 
  Włączanie usługi Key Vault dla wdrożenia: umożliwia maszyn wirtualnych, aby pobrać certyfikaty zapisane jako wpisy tajne z magazynu.
@@ -230,7 +245,7 @@ Włączanie usługi Key Vault dla wdrożenia szablonu: umożliwia Menedżer zaso
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```
 
-## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>Użycie sprzętowego modułu zabezpieczeń (HSM, hardware security module)
+## <a name="working-with-hardware-security-modules-hsms"></a>Praca z sprzętowych modułów zabezpieczeń (HSM)
 
 Dodano bezpieczeństwa można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete-the-key-vault-and-associated-keys-and-secrets).
 
@@ -262,7 +277,7 @@ az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSM
 
 Aby uzyskać szczegółowe instrukcje dotyczące sposobu generowania pakietu BYOK, zobacz [sposobu użycia kluczy HSM-Protected przy użyciu usługi Azure Key Vault](key-vault-hsm-protected-keys.md).
 
-## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych
+## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Usuwanie magazynu kluczy oraz skojarzonych kluczy i wpisów tajnych
 
 Jeśli nie potrzebujesz już magazyn kluczy i jego klucze i wpisy tajne, można usunąć usługi key vault za pomocą `az keyvault delete` polecenia:
 
@@ -276,7 +291,7 @@ Możesz także usunąć całą grupę zasobów platformy Azure zawierającą mag
 az group delete --name 'ContosoResourceGroup'
 ```
 
-## <a name="other-azure-cross-platform-command-line-interface-commands"></a>Inne polecenia interfejsu wiersza polecenia platformy Azure dla wielu Platform
+## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Polecenia różne interfejsu wiersza polecenia platformy Azure dla wielu Platform
 
 Innych poleceń, które mogą być przydatne do zarządzania usługi Azure Key Vault.
 
@@ -314,6 +329,6 @@ az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
 
 - Aby uzyskać pełną dokumentację interfejsu wiersza polecenia platformy Azure dla poleceń usługi key vault, zobacz [dokumentacja interfejsu wiersza polecenia klucz magazynu](/cli/azure/keyvault).
 
-- Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).
+- Odwołania dotyczące programowania, zobacz [przewodnik dewelopera usługi Azure Key Vault](key-vault-developers-guide.md)
 
 - Aby uzyskać informacje na temat usługi Azure Key Vault i sprzętowych modułów zabezpieczeń, zobacz [sposobu użycia kluczy HSM-Protected przy użyciu usługi Azure Key Vault](key-vault-hsm-protected-keys.md).

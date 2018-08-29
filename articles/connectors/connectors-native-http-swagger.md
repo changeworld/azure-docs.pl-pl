@@ -1,62 +1,58 @@
 ---
-title: Wywołaj punkty końcowe REST z HTTP + Swagger connector dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Nawiązywanie połączenia z aplikacji logiki za pośrednictwem programu Swagger z HTTP + programu Swagger do punkty końcowe REST łącznika
+title: Wywoływanie punkty końcowe REST z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań i przepływów pracy, które komunikują się z punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/18/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296523"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123176"
 ---
-# <a name="get-started-with-the-http--swagger-action"></a>Wprowadzenie do protokołu HTTP + Swagger akcji
+# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Wywołaj punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
 
-Można utworzyć biletu łącznika do dowolnego punktu końcowego REST za pośrednictwem [dokumentu Swagger](https://swagger.io) korzystając HTTP + Swagger działań w przepływie pracy aplikacji logiki. Można również rozszerzyć zasięg aplikacji logiki, aby wywołać dowolnego punktu końcowego REST o najwyższej jakości środowisko projektanta aplikacji logiki.
+Możesz utworzyć najwyższej jakości łącznik do dowolnego punktu końcowego REST za pośrednictwem [dokument struktury Swagger](https://swagger.io) zastosowania protokołu HTTP + Swagger akcji w przepływie pracy aplikacji logiki. Można także rozszerzyć aplikacje logiki można wywołać z dowolnego punktu końcowego REST pierwszorzędne środowisko projektanta aplikacji logiki.
 
-Aby dowiedzieć się, jak tworzyć aplikacje logiki z łączników, zobacz [Utwórz nową aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby dowiedzieć się, jak tworzyć aplikacje logiki za pomocą łączników, zobacz [Utwórz nową aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Użyj protokołu HTTP + Swagger jako wyzwalacz lub akcji
+## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Użyj protokołu HTTP + Swagger jako wyzwalacz lub akcję
 
-HTTP + Swagger wyzwolenia i akcji w taki sam, jak działają [akcji HTTP](connectors-native-http.md) choć zapewnia lepsze środowisko pracy w Projektancie aplikacji logiki w przypadku wystawianego interfejsu API struktury i dane wyjściowe z [Swagger metadanych](https://swagger.io). Można również użyć HTTP + łącznika programu Swagger jako wyzwalacz. Do zaimplementowania wyzwalacz sondowania, należy wykonać wzorzec sondowania, który jest opisany w [Tworzenie niestandardowych interfejsów API do wywoływania z aplikacji logiki innych interfejsów API, usług i systemy](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+HTTP + Swagger wyzwalacza i akcji, które działają w taki sam jak [Akcja HTTP](connectors-native-http.md) jednak zapewnić lepsze doświadczenia w Projektancie aplikacji logiki, zapewniając strukturę interfejsu API i dane wyjściowe z [metadanych Swagger](https://swagger.io). Możesz również użyć protokołu HTTP + Swagger łącznika jako wyzwalacz. Jeśli chcesz zaimplementować wyzwalacza sondowania, postępuj zgodnie z wzorzec sondowania, który jest opisany w [Tworzenie niestandardowych interfejsów API można wywoływać z aplikacji logiki innych interfejsów API, usługami i systemami](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-Dowiedz się więcej o [logiki aplikacji wyzwalacze i akcje](connectors-overview.md).
+Dowiedz się więcej o [wyzwalacze aplikacji logiki i akcje](connectors-overview.md).
 
-Oto przykład tego, jak to użycie HTTP + operacji programu Swagger jako akcja w przepływie pracy w aplikacji logiki.
+Poniżej przedstawiono przykładowy sposób do używają protokołu HTTP + Swagger operacji, ponieważ akcji w przepływie pracy w aplikacji logiki.
 
 1. Wybierz **nowy krok** przycisku.
 2. Wybierz **Dodaj akcję**.
-3. W polu wyszukiwania akcji wpisz **swagger** do listy HTTP + akcji struktury Swagger.
+3. Wpisz w polu wyszukiwania akcji **swagger** do listy HTTP + Swagger akcji.
    
-    ![Wybierz opcję HTTP + Swagger akcji](./media/connectors-native-http-swagger/using-action-1.png)
+    ![Wybieranie protokołu HTTP + Swagger akcji](./media/connectors-native-http-swagger/using-action-1.png)
 4. Wpisz adres URL dokumentu Swagger:
    
-   * Aby pracować przy użyciu projektanta aplikacji logiki, adres URL musi być punkt końcowy HTTPS i włączono CORS.
-   * Jeśli dokumentu Swagger nie spełnia tego wymagania, możesz użyć [magazynu Azure z włączonym mechanizmem CORS](#hosting-swagger-from-storage) do przechowywania dokumentu.
-5. Kliknij przycisk **dalej** do odczytu i renderowania z dokumentu programu Swagger.
-6. Dodaj w żadnych parametrów, które są wymagane dla połączenia HTTP.
+   * Aby pracować z projektanta aplikacji logiki, adres URL musi być punkt końcowy HTTPS i włączono mechanizm CORS.
+   * Jeśli dokument struktury Swagger nie spełnia tego wymagania, możesz użyć [usługi Azure Storage z włączonym mechanizmem CORS](#hosting-swagger-from-storage) do przechowywania dokumentu.
+5. Kliknij przycisk **dalej** do odczytywania i renderowania z dokument struktury Swagger.
+6. Dodaj wszystkie parametry, które są wymagane do wywołania HTTP.
    
     ![Zakończenie akcji HTTP](./media/connectors-native-http-swagger/using-action-2.png)
-7. Kliknij, aby zapisać i publikowanie aplikacji logiki **zapisać** na pasku narzędzi projektanta.
+7. Kliknij, aby zapisać i opublikować swoją aplikację logiki **Zapisz** na pasku narzędzi projektanta.
 
 ### <a name="host-swagger-from-azure-storage"></a>Swagger hosta z usługi Azure Storage
-Możesz chcieć odwołuje się do dokumentu Swagger, który nie jest obsługiwany lub który nie spełnia wymagań dotyczących cross-origin projektanta zabezpieczeń i. Aby rozwiązać ten problem, można przechowywać dokumentu Swagger w usłudze Azure Storage i włączyć mechanizm CORS do odwołania dokumentu.  
+Można odwoływać się do dokumentu Swagger, nie jest obsługiwana, lub który nie spełnia wymagań, zabezpieczenia i wymagania cross-origin projektanta. Aby rozwiązać ten problem, można zapisać dokumentu Swagger w usłudze Azure Storage i włączyć mechanizm CORS można odwoływać się do dokumentu.  
 
-Poniżej przedstawiono procedurę tworzenia, konfigurowania i przechowywanie dokumentów struktury Swagger w usłudze Azure Storage:
+Poniżej przedstawiono kroki do tworzenia, konfigurowania i przechowywanie dokumentów programu Swagger w usłudze Azure Storage:
 
-1. [Utwórz konto magazynu platformy Azure z magazynu obiektów Blob Azure](../storage/common/storage-create-storage-account.md). Aby wykonać ten krok, ustaw uprawnienia **dostępu publicznego**.
+1. [Tworzenie konta usługi Azure storage za pomocą usługi Azure Blob storage](../storage/common/storage-create-storage-account.md). Aby wykonać ten krok, ustaw uprawnienia **dostęp publiczny**.
 
 2. Włączanie mechanizmu CORS w obiekcie blob. 
 
@@ -64,45 +60,45 @@ Poniżej przedstawiono procedurę tworzenia, konfigurowania i przechowywanie dok
 
 3. Przekaż plik struktury Swagger do obiektu blob. 
 
-   Można wykonać ten krok z [portalu Azure](https://portal.azure.com) lub z narzędzia, takiego jak [Eksploratora usługi Storage Azure](http://storageexplorer.com/).
+   Można wykonać ten krok z [witryny Azure portal](https://portal.azure.com) lub z narzędzia, takiego jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
 
-4. Odwołanie łącza HTTPS do dokumentu w magazynie obiektów Blob Azure. 
+4. Odwołanie łącza HTTPS do dokumentu w usłudze Azure Blob storage. 
 
-   Łącze używany format to:
+   Link używa tego formatu:
 
    `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`
 
 ## <a name="technical-details"></a>Szczegóły techniczne
-Poniżej przedstawiono szczegóły wyzwalacze i akcje który to HTTP + Swagger łącznik obsługuje.
+Poniżej przedstawiono szczegóły wyzwalaczy i akcji, to protokołu HTTP + Swagger łącznik obsługuje.
 
-## <a name="http--swagger-triggers"></a>HTTP + wyzwalaczy programu Swagger
-Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej na temat wyzwalaczy.](connectors-overview.md) HTTP + Swagger łącznik ma jeden wyzwalacz.
+## <a name="http--swagger-triggers"></a>HTTP + Swagger wyzwalaczy
+Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o wyzwalaczach.](connectors-overview.md) HTTP + Swagger łącznika ma jeden wyzwalacz.
 
 | Wyzwalacz | Opis |
 | --- | --- |
-| HTTP + Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
+| HTTP + Swagger |Wywołanie HTTP i zwróć treść odpowiedzi |
 
-## <a name="http--swagger-actions"></a>HTTP + akcje programu Swagger
-Akcja jest operacja odbywa się przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej na temat akcji.](connectors-overview.md) HTTP + Swagger łącznik ma jedną akcję możliwe.
+## <a name="http--swagger-actions"></a>HTTP + Swagger akcji
+Akcja jest operacja, która jest przeprowadzane przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o akcjach.](connectors-overview.md) HTTP + Swagger łącznika ma jedną możliwą akcją.
 
 | Akcja | Opis |
 | --- | --- |
-| HTTP + Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
+| HTTP + Swagger |Wywołanie HTTP i zwróć treść odpowiedzi |
 
 ### <a name="action-details"></a>Szczegóły akcji
-HTTP + Swagger łącznika jest dostarczany z jedną akcję możliwe. Poniżej znajdują się informacje o poszczególnych działań, ich wymaganych i opcjonalnych pól wejściowych i odpowiednie szczegóły danych wyjściowych skojarzonych z ich użycia.
+HTTP + Swagger łącznika, który jest dostarczany za pomocą jednej akcji to możliwe. Poniżej znajdują się informacje o każdej akcji, ich wymaganych i opcjonalnych pól wejściowych i odpowiednimi szczegółami danych wyjściowych, które są skojarzone z ich użycia.
 
 #### <a name="http--swagger"></a>HTTP + Swagger
-Przesyłania żądania wychodzącego HTTP pomocy metadanych struktury Swagger.
-Znak gwiazdki (*) oznacza wymaganego pola.
+Podejmuj wychodzące żądania HTTP, dzięki pomocy metadanych struktury Swagger.
+Znak gwiazdki (*) oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Metoda * |method |Zlecenie HTTP do użycia. |
-| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI dla żądania HTTP. |
-| Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP w celu uwzględnienia. |
+| Metoda * |method |Czasownik HTTP do użycia. |
+| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI żądania HTTP. |
+| Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP do uwzględnienia. |
 | Treść |treść |Treść żądania HTTP. |
-| Authentication |uwierzytelnianie |Uwierzytelniania dla żądania. Aby uzyskać więcej informacji, zobacz [łącznika HTTP](connectors-native-http.md#authentication). |
+| Authentication |uwierzytelnianie |Uwierzytelniania dla żądania. Aby uzyskać więcej informacji, zobacz [łącznik protokołu HTTP](connectors-native-http.md#authentication). |
 
 **Szczegóły danych wyjściowych**
 
@@ -112,10 +108,10 @@ Odpowiedź HTTP
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki odpowiedzi |
 | Treść |obiekt |Obiekt odpowiedzi |
-| Kod stanu |int |Kod stanu HTTP |
+| Kod stanu |Int |Kod stanu HTTP |
 
 ### <a name="http-responses"></a>Odpowiedzi HTTP
-Podczas wykonywania wywołań do różnych działań, może pobrać niektórych odpowiedzi. Poniżej znajduje się tabela przedstawiono odpowiedzi odpowiedniego wraz z opisami.
+Podczas wykonywania wywołań do różnych działań, możesz otrzymać określone odpowiedzi. Poniżej znajduje się tabela, która przedstawia odpowiedniej odpowiedzi wraz z opisami.
 
 | Name (Nazwa) | Opis |
 | --- | --- |

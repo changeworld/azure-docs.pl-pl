@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 768f3e67b937b8dfc5681f530489759baffce57d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 97e94d3bc3a235e62fa63cb98ad7366d29220218
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330938"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143908"
 ---
-## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Funkcja rozpoznawania celu przy użyciu mikrofonu w określonym języku.
+## <a name="intent-recognition-for-a-specified-language"></a>Rozpoznawanie intencji dla określonego języka
 
-Poniższy fragment kodu pokazuje, jak rozpoznać intencje z mikrofonu wejścia w określonym języku, w tym przypadku w języku niemieckim (`de-de`).
+Poniższy kod pokazuje, jak rozpoznawać intencję z mikrofonu wejścia w określonym języku. W tym przykładzie językiem jest niemiecki (de-de).
 

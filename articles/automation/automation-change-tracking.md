@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/27/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238883"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128130"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -94,8 +94,18 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 |Enabled (Włączony)     | Określa, czy ustawienia została zastosowana.        |
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\mojplik.txt”       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku na przykład: "c:\temp\\\*.txt"<br>Można również używać zmiennych środowiskowych takich jak "%winDir%\System32\\\*. *"       |
+|Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>Ustawienia symboli wieloznacznych, rekursji i środowiska
+
+Rekursja można określić symbole wieloznaczne ułatwiają śledzenie katalogów i zmiennych środowiskowych, które umożliwiają śledzenie plików w środowiskach z wieloma lub dynamicznych dysków nazwy. Oto lista typowych informacji, które należy wiedzieć podczas konfigurowania rekursji:
+
+* Symbole wieloznaczne są wymagane do śledzenia wielu plików
+* Jeśli przy użyciu symboli wieloznacznych, ich można używać tylko w ostatnim segmencie ścieżki. (np. C:\folder\\**pliku** lub /etc/*.conf)
+* Jeśli zmienna środowiskowa zawiera nieprawidłową ścieżkę, weryfikacja zakończy się powodzeniem, ale tej ścieżki nie powiedzie się po uruchomieniu spisu.
+* Takie jak uniknąć ogólne ścieżki `c:\*.*` podczas ustawiania ścieżki, ponieważ spowodowałoby to zbyt wiele folderów-są przenoszone.
 
 ## <a name="configure-file-content-tracking"></a>Konfigurowanie śledzenia zawartość pliku
 
@@ -122,13 +132,8 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie kluczy rejestru na ko
 
 Rozwiązanie Change Tracking nie obsługuje obecnie następujące elementy:
 
-* Śledzenie plików z folderów (katalogów) dla Windows
-* Rekursji dla Windows pliku śledzenia
-* Śledzenie plików symbole wieloznaczne dla Windows
 * Rekursji dla rejestru Windows śledzenia
-* Zmienne ścieżek
 * Systemy plików sieciowych
-* Zawartość pliku
 
 Pozostałe ograniczenia:
 
@@ -232,7 +237,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla zmiany rekord
 
 |Zapytanie  |Opis  |
 |---------|---------|
-|Danych konfiguracji<br>&#124;gdzie ConfigDataType == "WindowsServices" i SvcStartupType == "Auto"<br>&#124;gdzie SvcState == "Zatrzymana"<br>&#124;Podsumowanie arg_max(TimeGenerated, *) według typu SoftwareName, komputer         | Pokazuje ostatnich rekordów spisu dla usług Windows, które zostały ustawione na Auto, ale zostały zgłoszone jako zatrzymania<br>Wyniki są ograniczone do ostatnich rekord dla tego typu SoftwareName i Computer      |
+|ConfigurationData<br>&#124;gdzie ConfigDataType == "WindowsServices" i SvcStartupType == "Auto"<br>&#124;gdzie SvcState == "Zatrzymana"<br>&#124;Podsumowanie arg_max(TimeGenerated, *) według typu SoftwareName, komputer         | Pokazuje ostatnich rekordów spisu dla usług Windows, które zostały ustawione na Auto, ale zostały zgłoszone jako zatrzymania<br>Wyniki są ograniczone do ostatnich rekord dla tego typu SoftwareName i Computer      |
 |Zmianakonfiguracji<br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Usunięte"<br>&#124;kolejność według malejącej TimeGenerated|Pokazuje rekordy zmian oprogramowania usunięto|
 
 ## <a name="next-steps"></a>Kolejne kroki

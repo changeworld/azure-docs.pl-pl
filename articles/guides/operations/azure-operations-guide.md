@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 3ae912eb88972246577954cb2ff103ba607f18bf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110501"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124454"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -181,7 +181,7 @@ Jest ona oparta na zestaw interfejsów API REST, która obsługuje interfejs uż
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Administratorzy mogą uzyskiwać dostęp do programu Azure PowerShell i wiersza polecenia platformy Azure za pośrednictwem przeglądarki dostępne środowisko o nazwie usługi Azure Cloud Shell. Ten interfejs interakcyjne zapewnia elastyczne narzędzia dla systemów Linux i Windows administratorzy mogą używać ich interfejsu wiersza polecenia, wyboru, Bash lub programu PowerShell. Usługa Azure Cloud Shell może być dostęp za pośrednictwem portalu, jako interfejs autonomicznej w sieci web w [shell.azure.com](https://shell.azure.com), lub z wielu innych punktów dostępu. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+Administratorzy mogą uzyskiwać dostęp do programu Azure PowerShell i wiersza polecenia platformy Azure za pośrednictwem przeglądarki dostępne środowisko o nazwie usługi Azure Cloud Shell. Ten interfejs interakcyjne zapewnia elastyczne narzędzia dla systemów Linux i Windows administratorzy mogą używać ich interfejsu wiersza polecenia, wyboru, Bash lub programu PowerShell. Usługa Azure Cloud Shell może być dostęp za pośrednictwem portalu, jako interfejs autonomicznej w sieci web w [shell.azure.com](https://shell.azure.com), lub z wielu innych punktów dostępu. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
@@ -191,17 +191,17 @@ Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z 
 
 Przed rozpoczęciem pracy z usługami platformy Azure, potrzebna jest subskrypcja. Dostępnych jest kilka typów subskrypcji.
 
-#### <a name="free-accounts-the-link-to-sign-up-for-a-free-account-is-on-the-azure-websitehttpsazuremicrosoftcom-this-gives-you-a-credit-over-the-course-of-30-days-to-try-any-combination-of-resources-in-azure-if-you-exceed-your-credit-amount-your-account-is-suspended-at-the-end-of-the-trial-your-services-are-decommissioned-and-will-no-longer-work-you-can-upgrade-to-a-pay-as-you-go-subscription-at-any-time"></a>Bezpłatne konta: link, aby zarejestrować się dla bezpłatnego konta znajduje się na [witryny sieci Web Azure](https://azure.microsoft.com/). Dzięki temu środki w ciągu 30 dni, aby wypróbować dowolną kombinację zasobów platformy Azure. Twoje konto jest zawieszone w przypadku przekroczenia kwoty kredytu. Po zakończeniu okresu próbnego usługi jest zamknięta i nie będą już działać. Można uaktualnić do subskrypcji zgodnie z rzeczywistym użyciem w dowolnym momencie.
+**Bezpłatne konta**: link, aby zarejestrować się dla bezpłatnego konta znajduje się na [witryny sieci Web Azure](https://azure.microsoft.com/). Dzięki temu środki w ciągu 30 dni, aby wypróbować dowolną kombinację zasobów platformy Azure. Twoje konto jest zawieszone w przypadku przekroczenia kwoty kredytu. Po zakończeniu okresu próbnego usługi jest zamknięta i nie będą już działać. Można uaktualnić do subskrypcji zgodnie z rzeczywistym użyciem w dowolnym momencie.
 
-#### <a name="msdn-subscriptions-if-you-have-an-msdn-subscription-you-get-a-specific-amount-in-azure-credit-each-month-for-example-if-you-have-a-microsoft-visual-studio-enterprise-with-msdn-subscription-you-get-150-per-month-in-azure-credit"></a>Subskrypcje MSDN: Jeśli masz subskrypcję MSDN, możesz uzyskać określoną ilością w platformy Azure w wysokości co miesiąc. Na przykład w przypadku programu Microsoft Visual Studio Enterprise z subskrypcją MSDN otrzymujesz \$150 miesięcznych środków platformy Azure.
+**Subskrypcje MSDN**: Jeśli masz subskrypcję MSDN, możesz uzyskać określoną ilością w platformy Azure w wysokości co miesiąc. Na przykład w przypadku programu Microsoft Visual Studio Enterprise z subskrypcją MSDN otrzymujesz \$150 miesięcznych środków platformy Azure.
 
 W przypadku przekroczenia kwoty kredytu usługi są wyłączone do momentu rozpoczęcia następnego miesiąca. Możesz wyłączyć limit wydatków i dodać kartę kredytową, który ma być używany dla dodatkowych kosztów. Niektóre z tych kosztów są objęte rabatem dla kont w witrynie MSDN. Na przykład możesz wina systemu Linux dla maszyn wirtualnych z systemem Windows Server i nie ma dodatkowych opłat do serwerów firmy Microsoft, takich jak Microsoft SQL Server. To sprawia, że konta MSDN idealne rozwiązanie w przypadku opracowywania i testowania scenariuszy.
 
-#### <a name="bizspark-accounts-the-microsoft-bizspark-program-provides-many-benefits-to-startups-one-of-those-benefits-is-access-to-all-the-microsoft-software-for-development-and-test-environments-for-up-to-five-msdn-accounts-you-get-150-in-azure-credit-for-each-of-those-five-msdn-accounts-and-you-pay-reduced-rates-for-several-of-the-azure-services-such-as-virtual-machines"></a>Konta programu BizSpark: w programie BizSpark firmy Microsoft oferuje wiele korzyści dla startupów. Jedną z tych korzyści jest dostęp do oprogramowania firmy Microsoft dla środowiska deweloperskie i testowe do pięciu kont MSDN. Możesz uzyskać 150 USD środki platformy Azure w każdym z tych pięciu kont MSDN i płacić według obniżonych stawek za kilka usług platformy Azure, takie jak maszyny wirtualne.
+**Konta programu BizSpark**: w programie BizSpark firmy Microsoft oferuje wiele korzyści dla startupów. Jedną z tych korzyści jest dostęp do oprogramowania firmy Microsoft dla środowiska deweloperskie i testowe do pięciu kont MSDN. Możesz uzyskać 150 USD środki platformy Azure w każdym z tych pięciu kont MSDN i płacić według obniżonych stawek za kilka usług platformy Azure, takie jak maszyny wirtualne.
 
-#### <a name="pay-as-you-go-with-this-subscription-you-pay-for-what-you-use-by-attaching-a-credit-card-or-debit-card-to-the-account-if-you-are-an-organization-you-can-also-be-approved-for-invoicing"></a>Płatność za rzeczywiste użycie: Z tą subskrypcją płacisz za to, czego używasz, dołączając na koncie karty kredytowej lub debetowej. Jeśli organizacja może również zostać zatwierdzony dla fakturowania.
+**Płatność za rzeczywiste użycie**: Z tą subskrypcją płacisz za to, czego używasz, dołączając na koncie karty kredytowej lub debetowej. Jeśli organizacja może również zostać zatwierdzony dla fakturowania.
 
-#### <a name="enterprise-agreements-with-an-enterprise-agreement-you-commit-to-using-a-certain-number-of-services-in-azure-over-the-next-year-and-you-pay-that-amount-ahead-of-time-the-commitment-that-you-make-is-consumed-throughout-the-year-if-you-exceed-the-commitment-amount-you-can-pay-the-overage-in-arrears-depending-on-the-amount-of-the-commitment-you-get-a-discount-on-the-services-in-azure"></a>Umowy Enterprise Agreement: Z umową enterprise agreement zdecydujesz się przy użyciu wielu usług platformy Azure w przyszłym roku, i płacisz takimi problemami znacznie mniej wcześniej. Zobowiązanie, wprowadzone jest wykorzystywane przez cały rok. W przypadku przekroczenia kwoty zobowiązania mogą płacić za nadwyżkowe użycie w poprzednim. W zależności od kwoty zobowiązania Uzyskaj rabat na usługi platformy Azure.
+**Umowy Enterprise Agreement**: Z umową enterprise agreement zdecydujesz się przy użyciu wielu usług platformy Azure w przyszłym roku, i płacisz takimi problemami znacznie mniej wcześniej. Zobowiązanie, wprowadzone jest wykorzystywane przez cały rok. W przypadku przekroczenia kwoty zobowiązania mogą płacić za nadwyżkowe użycie w poprzednim. W zależności od kwoty zobowiązania Uzyskaj rabat na usługi platformy Azure.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Przyznawaj dostęp administracyjny do subskrypcji platformy Azure
 
@@ -465,7 +465,7 @@ Jeśli potrzebujesz użytkownicy mogli mieć kontrolowany dostęp do zasobów ma
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można zdefiniować niestandardowy adres IP, ustawienia DNS, filtrowania zabezpieczeń w podsieci i równoważenie obciążenia. Platforma Azure obsługuje różne przypadki: sieci tylko w chmurze lub hybrydowe sieci wirtualnych. 
+Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można zdefiniować niestandardowy adres IP, ustawienia DNS, filtrowania zabezpieczeń w podsieci i równoważenie obciążenia. Platforma Azure obsługuje różne przypadki: sieci tylko w chmurze lub hybrydowe sieci wirtualnych.
 
 ### <a name="cloud-only-virtual-networks"></a>Sieci wirtualne oparte tylko na chmurze
 
@@ -489,7 +489,7 @@ Istnieje kilka opcji wdrożenia sieci wirtualnej.
 
 - Szablony usługi Azure Resource Manager
 
->**Kiedy należy używać**: w dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, pracy z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych. 
+>**Kiedy należy używać**: w dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, pracy z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych.
 
 >**Rozpoczynanie pracy**: Wdrażanie sieci wirtualnej platformy Azure przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Można wdrożyć nową sieć wirtualną do nowej lub istniejącej grupy zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu, możesz wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
 

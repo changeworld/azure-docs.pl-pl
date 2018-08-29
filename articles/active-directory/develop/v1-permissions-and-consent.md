@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 08/27/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: db50a43e23d982722a4f3a7b663086863d915dd2
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581463"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128783"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Uprawnienia w usłudze Azure Active Directory
 
@@ -38,10 +38,10 @@ Czynne uprawnienia to uprawnienia, które aplikacja będzie posiadać podczas wy
 
 * W przypadku uprawnień delegowanych czynne uprawnienia aplikacji będą najmniejszą wspólną częścią delegowanych uprawnień przyznanych aplikacji (poprzez wyrażenie zgody) oraz uprawnień aktualnie zalogowanego użytkownika. Aplikacja nigdy nie może mieć większych uprawnień niż zalogowany użytkownik. Uprawnienia zalogowanego użytkownika mogą być określone w organizacji na podstawie zasad lub członkostwa w co najmniej jednej roli administratora. Aby uzyskać więcej informacji o rolach administratorów, zobacz [Przypisywanie ról administratorów w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
     Załóżmy na przykład, że aplikacja ma przyznane uprawnienie delegowane `User.ReadWrite.All` w programie Microsoft Graph. Uprawnienie to przyznaje aplikacji nominalne uprawnienia do odczytu i aktualizowania profilu każdego użytkownika w organizacji. Jeśli zalogowany użytkownik jest administratorem globalnym, aplikacja będzie mogła zaktualizować profil każdego użytkownika w organizacji. Jednak jeśli zalogowany użytkownik nie ma roli administratora, aplikacja będzie mogła aktualizować tylko profil zalogowanego użytkownika. Użytkownik nie będzie mógł zaktualizować profili innych użytkowników w organizacji, ponieważ użytkownik mający uprawnienia do działania w imieniu innych osób nie ma odpowiednich uprawnień.
-* W przypadku uprawnień aplikacji efektywne uprawnienia aplikacji są na poziomie przywilejów wynikających z uprawnień. Na przykład aplikacja, która ma uprawnienie aplikacji `User.ReadWrite.All`, może aktualizować profile każdego użytkownika w organizacji. 
+* W przypadku uprawnień aplikacji efektywne uprawnienia aplikacji są na poziomie przywilejów wynikających z uprawnień. Na przykład aplikacja, która ma uprawnienie aplikacji `User.ReadWrite.All`, może aktualizować profile każdego użytkownika w organizacji.
 
 ## <a name="permission-attributes"></a>Atrybuty uprawnień
-Uprawnienia w usłudze Azure AD mają wiele właściwości, które pomagają użytkownikom, administratorom i deweloperom aplikacji w podejmowaniu świadomych decyzji dotyczących przydzielania uprawnień. 
+Uprawnienia w usłudze Azure AD mają wiele właściwości, które pomagają użytkownikom, administratorom i deweloperom aplikacji w podejmowaniu świadomych decyzji dotyczących przydzielania uprawnień.
 
 > [!NOTE]
 > W witrynie Azure Portal i programie PowerShell można wyświetlić uprawnienia udostępniane przez aplikację usługi Azure AD lub Service Principal. Uruchom ten skrypt, aby wyświetlić uprawnienia udostępniane przez program Microsoft Graph.
@@ -55,18 +55,19 @@ Uprawnienia w usłudze Azure AD mają wiele właściwości, które pomagają uż
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| Nazwa właściwości | Opis | Przykład | 
+| Nazwa właściwości | Opis | Przykład |
 | --- | --- | --- |
-| `ID` | Wartość identyfikatora GUID, która unikatowo identyfikuje to uprawnienie. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| `IsEnabled` | Wskazuje, czy to uprawnienie jest dostępne do użycia. | true | 
-| `Type` | Wskazuje, czy to uprawnienie wymaga zgody użytkownika, czy też zgody administratora. | Użytkownik | 
-| `AdminConsentDescription` | Opis widziany przez administratorów podczas procesu wyrażania przez nich zgody | Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynkach pocztowych użytkowników. | 
-| `AdminConsentDisplayName` | Przyjazna nazwa widziana przez administratorów podczas procesu wyrażania przez nich zgody. | Odczytuj pocztę użytkownika | 
-| `UserConsentDescription` | Opis widziany przez użytkowników podczas procesu wyrażania przez nich zgody. |  Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynce pocztowej użytkownika. | 
-| `UserConsentDisplayName` | Przyjazna nazwa widziana przez użytkowników podczas procesu wyrażania przez nich zgody. | Odczytywanie wiadomości | 
-| `Value` | Ciąg, który służy do identyfikowania uprawnienia podczas przepływów autoryzacji OAuth 2.0. Ciąg `Value` można również być połączyć z ciągiem identyfikatora URI aplikacji w celu utworzenia nazwy FQDN uprawnień. | `Mail.Read` | 
+| `ID` | Wartość identyfikatora GUID, która unikatowo identyfikuje to uprawnienie. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
+| `IsEnabled` | Wskazuje, czy to uprawnienie jest dostępne do użycia. | true |
+| `Type` | Wskazuje, czy to uprawnienie wymaga zgody użytkownika, czy też zgody administratora. | Użytkownik |
+| `AdminConsentDescription` | Opis widziany przez administratorów podczas procesu wyrażania przez nich zgody | Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynkach pocztowych użytkowników. |
+| `AdminConsentDisplayName` | Przyjazna nazwa widziana przez administratorów podczas procesu wyrażania przez nich zgody. | Odczytuj pocztę użytkownika |
+| `UserConsentDescription` | Opis widziany przez użytkowników podczas procesu wyrażania przez nich zgody. |  Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynce pocztowej użytkownika. |
+| `UserConsentDisplayName` | Przyjazna nazwa widziana przez użytkowników podczas procesu wyrażania przez nich zgody. | Odczytywanie wiadomości |
+| `Value` | Ciąg, który służy do identyfikowania uprawnienia podczas przepływów autoryzacji OAuth 2.0. Ciąg `Value` można również być połączyć z ciągiem identyfikatora URI aplikacji w celu utworzenia nazwy FQDN uprawnień. | `Mail.Read` |
 
 ## <a name="types-of-consent"></a>Typy zgody
+
 Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacje w usłudze Azure AD muszą uzyskać zgodę. Istnieje wiele rodzajów zgody, które powinny być znane aplikacji, aby jej praca zakończyła się pomyślnie. Podczas definiowania uprawnień należy także znać sposoby używane przez użytkowników podczas uzyskiwania dostępu do Twojej aplikacji lub interfejsu API.
 
 * **Statyczna zgoda użytkownika** — zachodzi automatycznie podczas [przepływu autoryzacji OAuth 2.0](v1-protocols-oauth-code.md#request-an-authorization-code) po podaniu zasobu, z którym chce współdziałać Twoja aplikacja. W scenariuszu statycznej zgody użytkownika aplikacja musi już znać wszystkie uprawnienia, które są niezbędne do skonfigurowania aplikacji w witrynie Azure Portal. Jeśli użytkownik (lub administrator, zależnie od potrzeb) nie udzielił zgody dla tej aplikacji, wtedy usługa Azure AD będzie monitować użytkownika o zgodę. 
@@ -74,8 +75,8 @@ Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacj
     Dowiedz się więcej o rejestrowaniu aplikacji usługi Azure AD, która żąda dostępu do statycznego zestawu interfejsów API.
 * **Dynamiczna zgoda użytkownika** — jest to funkcja dostępna w modelu aplikacji usługi Azure AD w wersji 2. W tym scenariuszu aplikacja żąda zbioru uprawnień, których potrzebuje w [przepływie autoryzacji OAuth 2.0 dla aplikacji v2](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Jeśli użytkownik nie wyraził jeszcze zgody, w tym momencie zostanie wyświetlony monit o jej wyrażenie. [Dowiedz się więcej na temat dynamicznej zgody](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
 
-    > [!NOTE]
-    > Dynamiczne udzielanie zgody może być wygodne, ale stanowi duże wyzwanie w przypadku uprawnień wymagających zgody administratora, ponieważ w momencie wyrażania zgody administrator nie dysponuje informacjami dotyczącymi uprawnień. Jeśli zachodzi konieczność posiadania uprawnień administratora, używana aplikacja musi zarejestrować je w witrynie Azure Portal.
+    > [!IMPORTANT]
+    > Dynamiczne udzielanie zgody może być wygodne, ale stanowi duże wyzwanie w przypadku uprawnień wymagających zgody administratora, ponieważ w momencie wyrażania zgody administrator nie dysponuje informacjami dotyczącymi uprawnień. Wymagane uprawnienia administratora uprzywilejowany lub aplikacja używa dynamicznego zgody, należy zarejestrować wszystkie uprawnienia w witrynie Azure portal (nie tylko podzbiór uprawnienia, które wymagają zgody administratora). Dzięki temu Administratorzy dzierżawy zgody w imieniu wszystkich użytkowników.
   
 * **Zgoda administratora** — jest wymagana, gdy aplikacja potrzebuje dostępu do niektórych uprawnień wysokiego poziomu. Zgoda administratora zapewnia, że administratorzy mają dodatkową kontrolę nad autoryzowaniem dostępu aplikacji lub użytkowników do danych organizacji wymagających szczególnych uprawnień. [Dowiedz się więcej na temat sposobu udzielania zgody administratora](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
@@ -84,7 +85,7 @@ Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacj
 ### <a name="client-best-practices"></a>Najlepsze rozwiązania klientów
 
 - Żądaj tylko tych uprawnień, których potrzebuje Twoja aplikacja. Aplikacje ze zbyt dużą liczbą uprawnień niosą ze sobą ryzyko ujawnienia danych użytkowników w przypadku naruszenia bezpieczeństwa aplikacji.
-- Wybierz między uprawnieniami delegowanymi i uprawnieniami aplikacji, biorąc pod uwagę scenariusz obsługiwany przez aplikację. 
+- Wybierz między uprawnieniami delegowanymi i uprawnieniami aplikacji, biorąc pod uwagę scenariusz obsługiwany przez aplikację.
     - Zawsze używaj uprawnień delegowanych, jeśli wywołanie jest wykonywane w imieniu użytkownika.
     - Uprawnień aplikacji używaj tylko wtedy, jeśli aplikacja jest nieinterakcyjna i nie wykonuje wywołań w imieniu żadnego określonego użytkownika. Uprawnienia aplikacji są wysoce uprzywilejowane i należy ich używać tylko w razie absolutnej konieczności.
 - W przypadku używania aplikacji opartej na punkcie końcowym w wersji 2.0 zawsze konfiguruj uprawnienia statyczne (określone w rejestracji aplikacji) tak, aby były nadzbiorem uprawnień dynamicznych, żądanych w czasie wykonywania (są to uprawnienia określone w kodzie i wysyłane jako parametry zapytania w żądaniu autoryzacji), aby scenariusze, takie jak zgoda administratora, działały poprawnie.
@@ -95,16 +96,11 @@ Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacj
 - Zasoby powinny w sposób jawny osobno definiować uprawnienia `Read` i `ReadWrite`.
 - Zasoby powinny oznaczyć wszystkie uprawnienia umożliwiające dostęp do danych przekraczający granice użytkownika jako uprawnienia `Admin`.
 - Nazwy zasobów powinny być zgodne ze wzorcem `Subject.Permission[.Modifier]`, gdzie:
-    - `Subject` odnosi się do typu dostępnych danych,
-    - `Permission` odnosi się do działania, które użytkownik może wykonać na tych danych, a 
-    - `Modifier` jest używane opcjonalnie do opisania specjalizacji innego uprawnienia. 
+    - `Subject` odpowiada za pomocą typu danych, który jest dostępny
+    - `Permission` odnosi się do akcji, którą użytkownik może potrwać od danych
+    - `Modifier` Opcjonalnie służy do opisywania uprawnienia innym specjalizacje
     
-    Na przykład: 
+    Na przykład:
     * Mail.Read — umożliwia użytkownikom odczytywanie wiadomości e-mail.
     * Mail.ReadWrite — umożliwia użytkownikom odczytywanie i pisanie wiadomości e-mail.
     * Mail.ReadWrite.All — umożliwia administratorowi lub użytkownikom dostęp do wszystkich wiadomości w organizacji.
-
-
-
-
-

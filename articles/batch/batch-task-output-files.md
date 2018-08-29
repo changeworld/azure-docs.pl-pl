@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
-ms.openlocfilehash: 69990ab7852999dca2b586fd28ef74c44cc283fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117434"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126316"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań do usługi Azure Storage za pomocą interfejsu API usługi Batch
 
@@ -34,7 +34,7 @@ Usługa Azure Batch udostępnia więcej niż jeden sposób, aby zachować dane w
 - Chcesz napisać kod, aby utrwalić dane wyjściowe zadania z poziomu aplikacji klienta, bez modyfikowania aplikacji, w którym działa zadanie.
 - Chcesz zachować dane wyjściowe z zadania usługi Batch i zadanie Menedżer zadania, w przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej.
 - Chcesz zachować dane wyjściowe do kontenera usługi Azure Storage przy użyciu dowolnej nazwie.
-- Aby zachować dane wyjściowe do kontenera usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Aby zachować dane wyjściowe do kontenera usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 Jeśli scenariusz różni się od przedstawionych powyżej, może być konieczne należy wziąć pod uwagę innego podejścia. Na przykład interfejs API usługi Batch obecnie nie obsługuje przesyłania strumieniowego danych wyjściowych do usługi Azure Storage, podczas gdy zadanie jest uruchomione. Do strumienia wyjściowego, należy wziąć pod uwagę za pomocą biblioteki Konwencji plików usługi Batch, dostępna dla platformy .NET. W przypadku języków należy zaimplementować własnego rozwiązania. Aby uzyskać więcej informacji na temat innych opcji utrwalanie danych wyjściowych zadania, zobacz [utrwalanie danych wyjściowych zadań i zadań w usłudze Azure Storage](batch-task-output.md). 
 
@@ -164,7 +164,7 @@ Na każdym przekazywanie pliku wsadowego zapisuje dwa pliki dzienników do węz�
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Interfejs API usługi Batch za pomocą standardowej konwencji plików usługi Batch
 
-Gdy będzie się powtarzać dane wyjściowe zadania przy użyciu interfejsu API usługi Batch, można nadać nazwę kontenera docelowego i obiektów blob w dowolny sposób. Możesz również nazwij je zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Standardowe konwencje plików określa nazwy kontenera docelowego i obiektów blob w usłudze Azure Storage dla pliku wyjściowego danego na podstawie nazw zadanie i zadania. Jeśli należy używać standardowy plik konwencje nazewnictwa plików wyjściowych, a następnie swoje pliki wyjściowe są dostępne pod kątem wyświetlania w [witryny Azure portal](https://portal.azure.com).
+Gdy będzie się powtarzać dane wyjściowe zadania przy użyciu interfejsu API usługi Batch, można nadać nazwę kontenera docelowego i obiektów blob w dowolny sposób. Możesz również nazwij je zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standardowe konwencje plików określa nazwy kontenera docelowego i obiektów blob w usłudze Azure Storage dla pliku wyjściowego danego na podstawie nazw zadanie i zadania. Jeśli należy używać standardowy plik konwencje nazewnictwa plików wyjściowych, a następnie swoje pliki wyjściowe są dostępne pod kątem wyświetlania w [witryny Azure portal](https://portal.azure.com).
 
 Jeśli tworzysz w języku C#, można użyć metod wbudowanych [biblioteki Konwencji plików usługi Batch dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Ta biblioteka tworzy poprawnie nazwanych kontenerów i ścieżki obiektu blob. Na przykład można wywołać interfejs API, aby pobrać poprawną nazwę kontenera, na podstawie nazwy zadania:
 

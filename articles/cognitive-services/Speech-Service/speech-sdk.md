@@ -9,20 +9,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6b5796bf4d049579dbdede2251f2ca67cc9c4bfd
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41994394"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122086"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Temat mowy usług Cognitive Services SDK
 
 Cognitive Services mowy Software Development Kit (SDK) udostępnia aplikacje natywne funkcje usługi rozpoznawania mowy, ułatwia tworzenie oprogramowania. Obecnie, zestaw SDK zapewnia dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
 
-[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
+[!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-sdk"></a>Pobierz zestaw SDK
 
@@ -91,7 +91,7 @@ Korzystanie z pakietu z projektu w programie Android Studio, wprowadź następuj
 
 Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-devices-sdk.md).
 
-[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

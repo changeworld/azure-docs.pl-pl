@@ -1,13 +1,13 @@
 ---
-title: Rozwiązać Zła brama 502, 503 obsługi błędów niedostępności | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z 502 Niewłaściwa brama i 503 błędów niedostępności usługi w aplikacji sieci web hostowanych w usłudze Azure App Service.
+title: Napraw 502 — Zła brama, 503 Usługa niedostępna błędy | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z 502 — Zła brama i 503 występowanie błędów niedostępności usługi w aplikacji sieci web hostowaną w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: ''
 tags: top-support-issue
-keywords: Zła brama 502, 503 usługi niedostępne, błąd 503, błąd 502
+keywords: 502 — Zła brama, 503 Usługa niedostępna, błąd 503, błąd 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -16,118 +16,118 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 397a6aaf7dc27adfa0fc0e722b8a2be5cc1d75f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836518"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125806"
 ---
-# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Rozwiązywanie błędów HTTP "502 Niewłaściwa brama" i "503 Usługa niedostępna" w aplikacjach sieci web platformy Azure
-"brama zły 502" i "503 Usługa niedostępna" są typowe błędy w aplikacji sieci web hostowanych w [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomoże w rozwiązaniu tych błędów.
+# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Rozwiązywanie problemów z błędami HTTP "502 — Zła brama" i "503 Usługa niedostępna" w aplikacjach sieci web platformy Azure
+"502 — Zła brama" i "503 Usługa niedostępna" są typowe błędy w aplikacji sieci web hostowanych w [usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomaga rozwiązać te błędy.
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [MSDN Azure i fora przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można również pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz polecenie **Get Support**.
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [MSDN Azure i Stack Overflow forów](https://azure.microsoft.com/support/forums/). Alternatywnie można również pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i kliknij pozycję **Uzyskaj pomoc techniczną**.
 
 ## <a name="symptom"></a>Objaw
-Po przejściu do aplikacji sieci web zwraca HTTP HTTP lub błąd "502 Niewłaściwa brama" błąd "503 Usługa niedostępna".
+Podczas przechodzenia do aplikacji sieci web, funkcja zwraca HTTP "502 — Zła brama" błąd lub HTTP Błąd "503 Usługa niedostępna".
 
 ## <a name="cause"></a>Przyczyna
 Ten problem jest często spowodowane przez problemy z poziomu aplikacji, takich jak:
 
-* żądania zbyt długo
-* aplikacji przy użyciu pamięci wysokiej/procesora CPU
-* Aplikacja awarii z powodu wyjątku.
+* żądania zajmuje dużo czasu
+* aplikacji przy użyciu wysokie wykorzystanie pamięci/Procesora
+* aplikacja uległa awarii z powodu wyjątku.
 
-## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Kroki rozwiązywania problemów do rozwiązania "502 Niewłaściwa brama" i "503 Usługa niedostępna" błędów
-Rozwiązywanie problemów, można podzielić na trzy różne zadania, w kolejności sekwencyjnej:
+## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Kroki rozwiązywania problemów, aby rozwiązać "502 — Zła brama" i "503 Usługa niedostępna" błędy
+Rozwiązywanie problemów z można podzielić na trzy różne zadania, w kolejności sekwencyjnej:
 
 1. [Sprawdź i monitorowanie zachowania aplikacji](#observe)
 2. [Zbieranie danych](#collect)
-3. [Ograniczenia problem](#mitigate)
+3. [Rozwiązać problem](#mitigate)
 
-[Aplikacje sieci Web usługi aplikacji](/services/app-service/web/) zapewnia różne opcje w każdym kroku.
+[App Service Web Apps](app-service-web-overview.md) daje różne opcje w każdym kroku.
 
 <a name="observe" />
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Sprawdź i monitorowanie zachowania aplikacji
-#### <a name="track-service-health"></a>Śledź usługę kondycji
-Microsoft Azure publicizes każdym razem, gdy istnieje degradacji przerw i wydajności usługi. Kondycja usługi można śledzić na [Azure Portal](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [śledzić kondycja usługi](../monitoring-and-diagnostics/insights-service-health.md).
+#### <a name="track-service-health"></a>Śledzenie kondycji usługi
+Microsoft Azure publicizes każdorazowo, gdy występuje spadek przerw i wydajności usługi. Kondycja usługi można śledzić na [witryny Azure Portal](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [śledzenie kondycji usługi](../monitoring-and-diagnostics/insights-service-health.md).
 
 #### <a name="monitor-your-web-app"></a>Monitorowanie aplikacji sieci web
-Ta opcja pozwala dowiedzieć się, jeśli masz problemy aplikacji. W bloku aplikacja sieci web, kliknij przycisk **żądań i błędów** kafelka. **Metryka** bloku wyświetli wszystkie metryki można dodać.
+Ta opcja umożliwia dowiedzieć się, jeśli masz problemy aplikacji. W bloku aplikacji sieci web kliknij **żądania i błędy** kafelka. **Metryki** bloku wyświetli wszystkie metryki, które można dodać.
 
-Niektóre metryki, które mogą zostać do monitorowania aplikacji sieci web
+Niektóre metryki, które warto monitorować aplikacji sieci web
 
-* Pamięć średni zestaw roboczy
+* Średni zestaw roboczy pamięci
 * Średni czas odpowiedzi
 * Czas procesora CPU
 * Zestaw roboczy pamięci
 * Żądania
 
-![monitorowanie aplikacji sieci web do rozwiązania błędów HTTP 502 Niewłaściwa brama i 503 Usługa jest niedostępna](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
+![monitorowanie aplikacji sieci web do rozwiązania błędami HTTP 502 — Zła brama i 503 Usługa niedostępna](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Monitorowanie aplikacji sieci Web w usłudze aplikacji Azure](web-sites-monitor.md)
+* [Monitoruj aplikacje sieci Web w usłudze Azure App Service](web-sites-monitor.md)
 * [Otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Zbieranie danych
-#### <a name="use-the-azure-app-service-support-portal"></a>Użyj portalu pomocy technicznej usługi aplikacji Azure
-Aplikacje sieci Web umożliwia rozwiązanie problemów dotyczących aplikacji sieci web, analizując HTTP dzienniki, dzienniki zdarzeń, zrzuty procesu i inne. Można uzyskać dostępu do tych informacji za pomocą portalu pomocy technicznej w **http://&lt;Twojego Nazwa aplikacji >.scm.azurewebsites.net/Support**
+#### <a name="use-the-azure-app-service-support-portal"></a>Korzystanie z portalu pomocy technicznej usługi Azure App Service
+Usługa Web Apps umożliwia rozwiązywania problemów związanych z aplikacją sieci web, analizując HTTP dzienników, dzienniki zdarzeń, zrzuty procesów i więcej. Możesz uzyskać dostęp wszystkie te informacje przy użyciu portalu pomocy technicznej w **http://&lt;Twoja nazwa aplikacji >.scm.azurewebsites.net/Support**
 
-Portal Azure App Service obsługuje zawiera trzy oddzielne karty do obsługi trzy kroki typowego scenariusza rozwiązywania problemów:
+Portal Azure App Service obsługuje zawiera trzech osobnych kartach do obsługi trzy kroki typowego scenariusza rozwiązywania problemów:
 
 1. Sprawdź bieżące zachowanie
-2. Analizowanie zbierania informacji diagnostycznych i uruchamiając analizatorów wbudowane
-3. Ograniczenia
+2. Analizuj, zbieranie informacji diagnostycznych i uruchamiając wbudowanych analizatorów
+3. Eliminacja zagrożeń
 
-Problem jest wykonywane od razu, kliknij przycisk **Analizuj** > **diagnostyki** > **diagnozowanie teraz** utworzenie sesji diagnostycznej, do którego będzie zbierać dzienniki HTTP, dzienniki Podglądu zdarzeń, pamięci zrzuty, dzienniki błędów PHP i PHP przetwarzania raportu.
+Jeśli problem się dzieje w tej chwili, kliknij przycisk **analizy** > **diagnostyki** > **Diagnozuj teraz** do utworzenia sesji diagnostycznej, który będzie zbierać dzienniki HTTP, dzienniki Podglądu zdarzeń, pamięci, że zrzuty, dzienniki błędów języka PHP i PHP przetwarzania raportu.
 
-Gdy dane są zbierane, zostanie również przeprowadzanie analizy danych i dostarczyć raport HTML.
+Po zebraniu danych spowoduje także analizę danych i udostępnić raport HTML.
 
 W przypadku, gdy chcesz pobrać dane, domyślnie, powinny być przechowywane w folderze D:\home\data\DaaS.
 
-Aby uzyskać więcej informacji w portalu pomocy technicznej usługi aplikacji Azure, zobacz [nowe aktualizacje do rozszerzenia witrynę pomocy technicznej dla witryn sieci Web Azure](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Aby uzyskać więcej informacji na temat portalu pomocy technicznej usługi aplikacji platformy Azure, zobacz [nowe aktualizacje do rozszerzenia witryny pomocy technicznej dla usługi Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
 
 #### <a name="use-the-kudu-debug-console"></a>Użyj konsoli debugowania aparatu Kudu
-Aplikacje sieci Web jest dostarczany z konsoli debugowania, która służy do debugowania, eksploracji, przekazywania plików, a także pobieranie informacji na temat środowiska punktów końcowych JSON. Ta metoda jest wywoływana *konsoli Kudu* lub *pulpitu nawigacyjnego SCM* dla aplikacji sieci web.
+Aplikacje sieci Web jest dostarczany za pomocą konsoli debugowania, używanego do debugowania, eksplorowanie, przekazywanie plików, a także JSON punkty końcowe, w celu uzyskania informacji dotyczących środowiska. Jest to nazywane *konsoli Kudu* lub *pulpitu nawigacyjnego funkcji SCM* dla aplikacji sieci web.
 
-Dostęp do tego pulpitu nawigacyjnego, przechodząc do łącza **https://&lt;Twojego Nazwa aplikacji >.scm.azurewebsites.net/**.
+Dostęp do tego pulpitu nawigacyjnego, przechodząc do łącza **https://&lt;Twoja nazwa aplikacji >.scm.azurewebsites.net/**.
 
-Niektóre czynności, które program Kudu udostępnia są:
+Niektóre rzeczy, które zapewnia aparat Kudu, to:
 
-* ustawienia środowiska aplikacji
+* ustawienia środowiska dla aplikacji
 * strumień dziennika
-* diagnostycznych zrzutu
-* Konsola, w którym można uruchomić poleceń cmdlet programu Powershell i podstawowe polecenia systemu DOS debugowania.
+* diagnostyczne zrzutu
+* Debuguj konsoli, w którym można uruchomić polecenia cmdlet programu Powershell i podstawowe polecenia systemu DOS.
 
-Inny przydatną cechą Kudu jest, że w przypadku, gdy aplikacja jest zgłaszanie wyjątków pierwszej szansy, można użyć Kudu i zrzuty narzędzie SysInternals Procdump utworzyć pamięci. Te zrzuty pamięci są migawki procesu i często ułatwiają rozwiązywanie problemów z bardziej skomplikowanych problemów z aplikacją sieci web.
+Inną przydatną cechą Kudu jest, że w przypadku, gdy aplikacja zgłasza wyjątki pierwszej szansy, można użyć narzędzia Kudu i zrzuty narzędzie SysInternals Procdump, aby utworzyć pamięci. Te zrzuty pamięci są migawki procesu i często może pomóc rozwiązać bardziej skomplikowanych problemów z aplikacją sieci web.
 
-Aby uzyskać więcej informacji o funkcjach dostępnych w Kudu, zobacz [narzędzia online witryny sieci Web Azure należy wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Aby uzyskać więcej informacji na temat funkcji dostępnych w Kudu, zobacz [narzędzia online usługi Azure Websites, należy wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Ograniczenia problem
+### <a name="3-mitigate-the-issue"></a>3. Rozwiązać problem
 #### <a name="scale-the-web-app"></a>Skalowanie aplikacji sieci web
-W usłudze Azure App Service Aby zwiększyć wydajność i przepływność, można dostosować skali, w którym są uruchomione aplikacji. Skalowanie w górę aplikacji sieci web obejmuje dwie akcje powiązane: zmiana planu usługi aplikacji na wyższej warstwy cenowej i konfigurowanie niektórych ustawień po przełączeniu do wyższej warstwy cenowej.
+W usłudze Azure App Service Aby zwiększyć wydajność i przepływność, można dostosować skali, w którym aplikacja jest uruchamiana. Skalowanie aplikacji sieci web obejmuje dwie akcje powiązane: zmiana planu usługi App Service na wyższą warstwę cenową i konfigurowanie niektórych ustawień, po przełączeniu do wyższej warstwy cenowej.
 
 Aby uzyskać więcej informacji na temat skalowania, zobacz [skalowanie aplikacji sieci web w usłudze Azure App Service](web-sites-scale.md).
 
-Ponadto można wybrać do uruchamiania aplikacji na więcej niż jedno wystąpienie. To nie tylko zapewnia więcej możliwości przetwarzania, ale umożliwia także niektóre ilość odporność na uszkodzenia. Jeśli proces przestanie działać w jednym wystąpieniu, jak inne wystąpienie będzie nadal obsługiwać żądania.
+Ponadto można uruchomić aplikację na więcej niż jedno wystąpienie. To nie tylko zapewnia więcej możliwości przetwarzania, ale również zapewnia pewien stopień odporności na uszkodzenia. Jeśli proces ulegnie awarii w jednym wystąpieniu, inne wystąpienie będzie w dalszym ciągu obsługiwać żądania.
 
-Można skonfigurować jako ręczne lub automatyczne skalowanie.
+Możesz ustawić skalowanie ręczne lub automatyczne.
 
-#### <a name="use-autoheal"></a>Funkcja AutoHeal użycia
-Funkcja AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranego (na przykład zmiany konfiguracji żądania, limity pamięci lub czas potrzebny na wykonanie żądania). W większości przypadków, odtworzenia procesu jest najszybszym sposobem odzyskanie problem. Chociaż zawsze można ponownie uruchomić aplikacji sieci web z bezpośrednio z poziomu portalu Azure, funkcja AutoHeal będzie robi to automatycznie. To wszystko, co należy zrobić, Dodaj niektóre wyzwalacze w głównym pliku web.config dla aplikacji sieci web. Należy pamiętać, że te ustawienia będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest jedną .net.
+#### <a name="use-autoheal"></a>Używają funkcji AutoHeal
+Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze uruchomić ponownie aplikację internetową z bezpośrednio z poziomu witryny Azure Portal, funkcji AutoHeal będzie zrobiła to automatycznie dla Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config dla aplikacji sieci web. Należy pamiętać, że tych ustawień będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest jeden .net.
 
-Aby uzyskać więcej informacji, zobacz [automatyczne naprawianie Azure Web Sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+Aby uzyskać więcej informacji, zobacz [Samonaprawianie witryn sieci Web Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
-#### <a name="restart-the-web-app"></a>Uruchom ponownie aplikację sieci web
-Często jest najprostszym sposobem, aby rozwiązać jednorazowo występujące problemy. Na [Azure Portal](https://portal.azure.com/), w bloku aplikacja sieci web ma opcji, aby zatrzymać lub uruchomić ponownie aplikację.
+#### <a name="restart-the-web-app"></a>Uruchom ponownie aplikację internetową
+Często jest najprostszym sposobem, aby odzyskać sprawność po jednorazowych problemach. Na [witryny Azure Portal](https://portal.azure.com/), w bloku aplikacji sieci web mają opcji, aby zatrzymać lub uruchomić ponownie aplikację.
 
- ![Uruchom ponownie aplikację, aby naprawić błędy HTTP 502 Niewłaściwa brama i 503 Usługa jest niedostępna](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
+ ![Uruchom ponownie aplikację, aby rozwiązać błędy HTTP 502 — Zła brama i 503 Usługa niedostępna](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Można również zarządzać aplikacji sieci web przy użyciu programu Azure Powershell. Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
+Można również zarządzać aplikacją sieci web przy użyciu programu Azure Powershell. Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
 

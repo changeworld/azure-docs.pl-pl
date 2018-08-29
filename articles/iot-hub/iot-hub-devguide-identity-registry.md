@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 2039b7760704de35c688dda41e3b75425e5ec0e8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: fdbe88492d6260d19955b39ac8eaf6cfb9dba130
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186275"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144550"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -88,7 +88,6 @@ Dane urządzenia, która przechowuje dane rozwiązanie IoT, zależy od konkretny
 Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **element connectionState**. Używaj tylko **element connectionState** pola podczas opracowywania i debugowania. Pole nie powinno zapytania rozwiązania IoT w czasie wykonywania. Na przykład nie kwerendy **element connectionState** pola, aby sprawdzić, czy urządzenie jest połączony, zanim wyślesz wiadomość SMS lub wiadomości chmury do urządzenia.
 
 Jeśli rozwiązanie IoT musi znać, jeśli urządzenie jest podłączone, należy zaimplementować *wzorzec pulsu*.
-
 We wzorcu pulsu urządzenie wysyła komunikaty z urządzenia do chmury co najmniej jeden raz każdego ustaloną ilość czasu (np. co najmniej raz na godzinę). W związku z tym nawet jeśli urządzenie nie ma żadnych danych do wysłania, nadal wysyła pustego komunikatu urządzenia do chmury (zazwyczaj z właściwością, która identyfikuje go jako pulsu). Po stronie usługi rozwiązania przechowuje mapę z ostatni Puls dla każdego urządzenia. Rozwiązania nie pojawi się komunikat pulsu w oczekiwanym czasie z urządzenia, założono, że występuje problem z urządzeniem.
 
 Bardziej złożone wdrożenia mogą obejmować informacje z [monitorowanie operacji] [ lnk-devguide-opmon] do identyfikowania urządzeń, które są próby połączenia lub komunikację, ale kończy się niepowodzeniem. Podczas implementowania wzorca pulsu, upewnij się sprawdzić [IoT Hub przydziały i ograniczenia][lnk-quotas].

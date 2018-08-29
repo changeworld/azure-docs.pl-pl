@@ -4,14 +4,14 @@ description: Opisuje sposób oceny dużej liczby maszyn lokalnych przy użyciu u
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 553e0d6569a3a35802703ef58e1460878dcd930b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054797"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127518"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -22,7 +22,7 @@ Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opis
 - **VMware**: maszyn wirtualnych, które mają być poddane migracji, musi być zarządzane przez program vCenter Server w wersji 5.5, 6.0 lub 6.5. Ponadto należy jeden host ESXi z wersją 5.0 lub nowszej, aby wdrożyć maszyny Wirtualnej modułu zbierającego.
 - **Konto vCenter**: musisz mieć konto tylko do odczytu do dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: W programie vCenter Server, są wymagane uprawnienia do tworzenia maszyny Wirtualnej, importując plik w formacie OVA.
-- **Ustawienia statystyk**: ustawieniach statystyk programu vCenter Server powinien być ustawiony na poziom 3, przed rozpoczęciem wdrażania. Jeśli poziom jest niższy niż 3, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru w tym przypadku będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
+- **Ustawienia statystyk**: ustawieniach statystyk programu vCenter Server powinien być ustawiony na poziom 3, przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
 
 
 ### <a name="set-up-permissions"></a>Ustawianie uprawnień

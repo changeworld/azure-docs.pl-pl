@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
 ms.openlocfilehash: 6aff17908d220557720776a2d7884adc28b5deee
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "37917173"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Proces instalacji usługi mobilności z System Center Configuration Manager
@@ -164,17 +164,17 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-7. Usługa mobilności pobiera zainstalowana w kolekcji urządzeń serwera systemu Linux, zgodnie z harmonogramem, które zostały skonfigurowane.
+7. Na **wybierz typ programu, który chcesz utworzyć** wybierz opcję **Program standardowy**i kliknij przycisk **dalej**.
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. Odinstaluj usługę mobilności Można utworzyć pakiety programu Configuration Manager, odinstaluj usługę mobilności.
+8. Na **Podaj informacje dotyczące tego programu standardowego** strony, podaj następujące dane wejściowe, a następnie kliknij przycisk **dalej**. (Pozostałych danych wejściowych można użyć wartości domyślnych).
 
   | **Nazwa parametru** | **Wartość** |
   |--|--|
-  | Name (Nazwa) | Aby to zrobić, użyj następującego skryptu: |
+  | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Windows) |
   | Wiersz polecenia | install.bat |
-  | Teraz można przystąpić do Włącz ochronę dla maszyn wirtualnych. | Określa, czy użytkownik jest zalogowany |
+  | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
@@ -389,17 +389,17 @@ cd /tmp
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
-7. Usługa mobilności pobiera zainstalowana w kolekcji urządzeń serwera systemu Linux, zgodnie z harmonogramem, które zostały skonfigurowane.
+7. Na **wybierz typ programu, który chcesz utworzyć** wybierz opcję **Program standardowy**i kliknij przycisk **dalej**.
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. Odinstaluj usługę mobilności Można utworzyć pakiety programu Configuration Manager, odinstaluj usługę mobilności.
+8. Na **Podaj informacje dotyczące tego programu standardowego** strony, podaj następujące dane wejściowe, a następnie kliknij przycisk **dalej**. (Pozostałych danych wejściowych można użyć wartości domyślnych).
 
     | **Nazwa parametru** | **Wartość** |
   |--|--|
   | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Linux) |
   | Wiersz polecenia | ./install_linux.sh |
-  | Teraz można przystąpić do Włącz ochronę dla maszyn wirtualnych. | Określa, czy użytkownik jest zalogowany |
+  | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
 
   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 

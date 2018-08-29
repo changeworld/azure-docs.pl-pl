@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42446068"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125856"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
 
@@ -19,7 +19,7 @@ ms.locfileid: "42446068"
 
 Platforma Azure działa w wielu lokalizacji geograficznych na całym świecie. Lokalizacja geograficzna platformy Azure jest zdefiniowany obszar świata, który zawiera co najmniej jednego regionu platformy Azure. Region platformy Azure jest obszar w lokalizacji geograficznej, zawierający co najmniej jedno centrum danych.
 
-Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej. Różnych par regionów, które będzie serializować Azure platformy aktualizacji (planowana konserwacja), tak że tylko jeden region sparowany zostanie zaktualizowany w danym momencie. Ponadto go zdarzeń mających wpływ na wiele regionów, co najmniej jeden region z każdej pary, które będą wysyłane do odzyskiwania po awarii.
+Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej. Różnych par regionów, które będzie serializować Azure platformy aktualizacji (planowana konserwacja), tak że tylko jeden region sparowany zostanie zaktualizowany w danym momencie. Ponadto w przypadku awarii wpływających na wiele regionów co najmniej jeden region z każdej pary ma priorytet do odzyskania.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 

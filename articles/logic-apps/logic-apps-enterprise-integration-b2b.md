@@ -1,41 +1,37 @@
 ---
-title: Tworzenie rozwiązań B2B - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Odbieranie danych w aplikacjach logiki za pomocą funkcji B2B w pakiet integracyjny dla przedsiębiorstw
+title: Tworzenie integracji przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Odbieranie danych B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: a27a413ba9a0d974cf90fe842d5fc325ab308a56
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298121"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127768"
 ---
-# <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>Odbieranie danych w aplikacjach logiki z funkcjami B2B w pakiet integracyjny dla przedsiębiorstw
+# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Odbieranie danych B2B przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 
-Po utworzeniu konta integracji z partnerami i umowy, można przystąpić do tworzenia przepływu pracy (B2B) firma do firma aplikację logiki z [pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md).
+Po utworzeniu konta integracji, który ma partnerów oraz umowy, można przystąpić do tworzenia firmami (B2B) przepływu pracy aplikacji logiki przy użyciu [pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć AS2 i X12 akcje, muszą mieć konta integracji przedsiębiorstwa. Dowiedz się [sposobu tworzenia konta integracji przedsiębiorstwa](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+Aby użyć AS2 i X12 akcji, konieczne jest posiadanie konta integracji przedsiębiorstwa. Dowiedz się, [jak utworzyć konto integracji przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-## <a name="create-a-logic-app-with-b2b-connectors"></a>Tworzenie aplikacji logiki z łączniki B2B
+## <a name="create-a-logic-app-with-b2b-connectors"></a>Utwórz aplikację logiki z łączniki B2B
 
-Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, który używa AS2 i X12 akcje na odbieranie danych z partnerem handlowym:
+Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, która używa AS2 i X12 akcje na odbieranie danych z partnerem handlowym:
 
-1. Tworzenie aplikacji logiki, następnie [połączyć aplikację z kontem integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+1. Następnie utwórz aplikację logiki, [połączyć aplikację z kontem integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-2. Dodaj **żądania - zostanie odebrane żądanie HTTP podczas** do aplikacji logiki wyzwalacza.
+2. Dodaj **żądania — zostanie odebrane żądanie HTTP podczas** wyzwalacz aplikacji logiki.
 
     ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
 
@@ -43,47 +39,47 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, który używa 
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
 
-4. Aby filtrować wszystkie akcje do tego, który ma, wprowadź słowo **as2** w polu wyszukiwania.
+4. Aby odfiltrować wszystkie akcje, które chcesz, wprowadź słowo **as2** w polu wyszukiwania.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
 
-5. Wybierz **AS2 - AS2 zdekodować komunikatu** akcji.
+5. Wybierz **AS2 - komunikat dekodowania AS2** akcji.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Dodaj **treści** , który ma być używany jako dane wejściowe. W tym przykładzie wybierz treści żądania HTTP, które wyzwala aplikacji logiki. Lub wprowadź wyrażenie danych wejściowych nagłówków **nagłówki** pola:
+6. Dodaj **treści** , którą chcesz używać jako danych wejściowych. W tym przykładzie wybierz treści żądania HTTP, która powoduje uruchomienie aplikacji logiki. Lub wprowadź wyrażenie, które danych wejściowych nagłówków **nagłówki** pola:
 
-    @triggerOutputs() [nagłówki]
+    @triggerOutputs() ["headers"]
 
-7. Dodaj wymagane **nagłówki** dla AS2, który można znaleźć w nagłówkach żądania HTTP. W tym przykładzie wybierz nagłówki żądania HTTP, wyzwalających aplikacji logiki.
+7. Dodaj wymagane **nagłówki** dla pola AS2, który można znaleźć w nagłówkach żądań HTTP. W tym przykładzie wybierz nagłówki żądania HTTP, które mogą powodować aplikacji logiki.
 
-8. Teraz Dodaj dekodowania X12 Akcja komunikatu. Wybierz **Dodaj akcję**.
+8. Teraz Dodaj akcję komunikat dekodowania X12. Wybierz **Dodaj akcję**.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
 
-9. Aby filtrować wszystkie akcje do tego, który ma, wprowadź słowo **x12** w polu wyszukiwania.
+9. Aby odfiltrować wszystkie akcje, które chcesz, wprowadź słowo **x12** w polu wyszukiwania.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
 
-10. Wybierz **X12-dekodowania X12 komunikat** akcji.
+10. Wybierz **X12 — dekodowanie X12 komunikat** akcji.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Teraz należy określić w danych wejściowych tej akcji. Tych danych wejściowych jest dane wyjściowe z poprzedniej akcji AS2.
+11. Teraz należy określić dane wejściowe tej akcji. Te dane wejściowe znajdują się dane wyjściowe z poprzednich akcji AS2.
 
-    Zawartość komunikatu rzeczywiste w obiekcie JSON i jest kodowanie base64, dlatego należy określić wyrażenie jako dane wejściowe. 
-    Wprowadź poniższe wyrażenie w **X12 PŁASKIM pliku wiadomości do dekodowania** pola wejściowego:
+    Zawartość komunikatu rzeczywiste znajduje się w obiekcie JSON i jest zakodowany w formacie, base64, dlatego należy określić wyrażenie jako dane wejściowe. 
+    Wprowadź następujące wyrażenie w **X12 PROSTEGO pliku wiadomości do dekodowania** pole wejściowe:
     
-    @base64ToString(body('Decode_AS2_message')? ["AS2Message"]? ["Content"])
+    @base64ToString(body('Decode_AS2_message')? ["AS2Message']? ["Content"])
 
-    Teraz dodać kroki w celu zdekodowania X12 dane odebrane z partnerem handlowym i dane wyjściowe elementów w obiekcie JSON. 
-    Powiadomiono partnera otrzymanie danych, możesz wysłać ponownie odpowiedzi zawierające powiadomienia dyspozycji wiadomości (MDN) AS2, w akcji odpowiedzi HTTP.
+    Teraz dodaj kroki w celu zdekodowania X12 danych odebranych z partnerem handlowym i danych wyjściowych elementów w obiekcie JSON. 
+    Aby powiadomić partnera Odebrano dane, możesz wysłać ponownie odpowiedź zawierającą komunikat dyspozycji powiadomień (komunikatu MDN AS2) w celu wykonania akcji odpowiedzi HTTP.
 
 12. Aby dodać **odpowiedzi** akcji, wybierz **Dodaj akcję**.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
-13. Aby filtrować wszystkie akcje do tego, który ma, wprowadź słowo **odpowiedzi** w polu wyszukiwania.
+13. Aby odfiltrować wszystkie akcje, które chcesz, wprowadź słowo **odpowiedzi** w polu wyszukiwania.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
 
@@ -91,9 +87,9 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, który używa 
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
 
-15. Dostęp MDN z danych wyjściowych do **komunikat dekodowania X12** akcji, ustaw odpowiedzi **treści** wartością tego wyrażenia:
+15. Dostęp do powiadomienia MDN z danych wyjściowych **komunikat dekodowania X12** akcji set response ustawić **treści** pole to wyrażenie:
 
-    @base64ToString(body('Decode_AS2_message')? ["OutgoingMdn"]? ["Content"])
+    @base64ToString(body('Decode_AS2_message')? ["OutgoingMdn']? ["Content"])
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
 
@@ -101,14 +97,14 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, który używa 
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
 
-Teraz po zakończeniu konfigurowania aplikacji logiki B2B. W przypadku aplikacji rzeczywistych można przechowywać X12 dekodowane dane w magazynie — biznesowych (LOB) aplikacji lub danych. Aby połączyć aplikacje LOB i użycia tych interfejsów API w aplikacji logiki, można dodać dodatkowe akcje lub zapisać niestandardowych interfejsów API.
+Teraz po zakończeniu konfigurowania aplikacji logiki B2B. W rzeczywistej aplikacji, możesz chcieć przechowywać X12 dekodowane dane w magazynie line-of-business (LOB) aplikacji lub danych. Aby połączyć aplikacje BIZNESOWE i użyj tych interfejsów API w aplikacji logiki, możesz dodać kolejne akcje lub pisania niestandardowych interfejsów API.
 
 ## <a name="features-and-use-cases"></a>Funkcje i przypadki użycia
 
-* AS2 i X12 dekodowania i kodowania akcje let wymiany danych między partnerami handlowymi przy użyciu standardowych protokołach branżowych w aplikacjach logiki.
+* AS2 X12 dekodowanie i kodowanie akcje Pozwól, wymianę danych między partnerami handlowymi przy użyciu standardowych w branży protokołów w usłudze logic apps.
 * Wymiana danych z partnerami handlowymi, umożliwia AS2 i X12 z lub bez siebie nawzajem.
-* Akcje B2B pomóc łatwe tworzenie partnerów i umów w ramach konta integracji i używać ich w aplikacji logiki.
-* Podczas rozszerzania aplikacji logiki z innymi działaniami umożliwia wysyłanie oraz odbieranie danych między innych aplikacji i usług, takich jak SalesForce.
+* Akcji B2B pomogą Ci łatwo utworzyć partnerów oraz umowy na koncie integracji i korzystać z nich w aplikacji logiki.
+* Podczas rozszerzania aplikacji logiki z innymi akcjami można wysyłać i odbierać dane między innymi aplikacjami i usługami, takimi jak SalesForce.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-[Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)
+[Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)

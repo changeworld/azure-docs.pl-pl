@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 92e4efcd4482d224d9fcb868775dab8a072b8c42
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 7d987fdf86a7cf196ae943723c3ba8307d28ad28
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330942"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143930"
 ---
-## <a name="translation-using-the-microphone"></a>Tłumaczenie przy użyciu mikrofonu
+## <a name="translation-from-the-microphone"></a>Tłumaczenie z mikrofonu
 
-Poniższy fragment kodu przedstawia sposób tłumaczenie mowy dane wejściowe z angielskiego na niemiecki i również pobierać dane wyjściowe głosu przetłumaczonego tekstu.
-Używa mikrofonu.
+Poniższy fragment kodu pokazuje, jak przekształcać dane wejściowe mowy z angielskiego na niemiecki i pobiera dane wyjściowe głosowe zawierające przetłumaczony tekst. Kod używa mikrofonu.
 

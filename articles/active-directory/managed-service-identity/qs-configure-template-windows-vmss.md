@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 68304b3e5eea50aba28f46344abcbd7ad060c5c8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 69b88b5aabbadadea3b04f96d9a21f266c85a52f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055198"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125388"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej w skali maszyny wirtualnej przy użyciu szablonu
 

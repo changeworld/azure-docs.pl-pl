@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 6d5b0036bb44f301ea0b11e5d984fcd5b4bfac71
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1839f3efee53caa070690fed569a61c1d2b3c965
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599833"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127729"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -97,14 +97,14 @@ Domyślna aplikacja uruchomiona na Mxchip sprawdza najnowszą wersję oprogramow
 
 ### <a name="upgrade-to-the-latest-firmware"></a>Uaktualnienie do najnowszego oprogramowania układowego
 
-> [!NOTE] 
+> [!NOTE]
 > Od wersji 1.1 Mxchip umożliwia bezpieczne ST w programu inicjującego. Należy uaktualnić oprogramowanie układowe, jeśli używasz wersji wcześniejszej niż w wersji 1.1.
 
 Jeśli konieczne jest uaktualnienie oprogramowania układowego na ekranie będzie wyświetlany wersji bieżącej i najnowsze oprogramowanie układowe. Aby przeprowadzić uaktualnienie, wykonaj [uaktualnienie oprogramowania układowego](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) przewodnik.
 
 ![Wyświetlanie wersji oprogramowania układowego bieżące i planowane najnowsze](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/firmware.jpg)
 
-> [!NOTE] 
+> [!NOTE]
 > Jest to jednorazowa nakładu pracy. Po Rozpocznij programowanie na Mxchip i przekazać aplikację, najnowsze oprogramowanie układowe będą pochodzić z aplikacją.
 
 ### <a name="test-various-sensors"></a>Testowanie różne czujniki
@@ -115,207 +115,127 @@ Naciśnij przycisk B, aby przetestować czujników. Kontynuuj, naciskając klawi
 
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
-Teraz nadszedł czas na konfigurowanie środowiska deweloperskiego: narzędzia i pakiety do tworzenia niesamowitych aplikacji IoT. Według systemu operacyjnego, możesz wybrać Windows lub wersję systemu macOS.
+### <a name="install-azure-iot-workbench"></a>Zainstaluj środowisko robocze usługi Azure IoT
 
-### <a name="windows"></a>Windows
+Firma Microsoft zaleca [usługi Azure IoT Workbench](https://aka.ms/iot-workbench) rozszerzenie dla programu Visual Studio Code umożliwiające tworzenie aplikacji na Mxchip.
 
-Zachęcamy do użycia pakietu instalacyjnego, aby przygotować środowisko programistyczne. Jeśli wystąpią problemy, możesz wykonać [ręczne instrukcjami dotyczącymi instalacji mxchip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/) do wykonywania pracy.
+Środowisko robocze usługi Azure IoT udostępnia zintegrowane środowisko do opracowywania rozwiązań IoT. Pomaga ona zarówno na urządzeniu i w chmurze tworzenie rozwiązań za pomocą usługi Azure IoT i innych usług. Możesz obejrzeć ten film Channel9, aby się z omówieniem jej działania.
 
-#### <a name="download-the-latest-package"></a>Pobierz najnowszy pakiet
+Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mxchip:
 
-Pobrany plik zip zawiera wszystkie niezbędne narzędzia i pakiety Mxchip rozwoju.
+1. Pobierz i zainstaluj [środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software). Udostępnia niezbędne łańcucha narzędzi do kompilowania i przekazywanie kodu Arduino.
+    * **Windows**: Korzystanie z Instalatora Windows w wersji.
+    * **System macOS**: przeciągnij i upuść wyodrębnione **Arduino.app** do `/Applications` folderu.
+    * **Ubuntu**: takie jak Rozpakuj go do folderu `$HOME/Downloads/arduino-1.8.5`
 
-> [!div class="button"]
-[Pobieranie](https://aka.ms/devkit/prod/installpackage/latest)
+1. Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/), Edytor kodu źródłowego dla wielu platform, za pomocą zaawansowanych deweloperów narzędzi, takich jak uzupełniania kodu IntelliSense i debugowania.
 
-Plik zip zawiera następujące narzędzia i pakiety. Jeśli masz już pewne składniki zainstalowane, skrypt wykrywania i je pominąć.
+1. Poszukaj **usługi Azure IoT Workbench** rynku rozszerzenia i zainstalować ją.
+    ![Zainstaluj aplikację Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) wraz z aplikacji IoT Workbench, inne rozszerzenia zależne zostaną zainstalowane.
 
-* Środowisko node.js i usługi Yarn: program obsługi dla skryptu Instalatora i automatycznych zadań.
+1. Otwórz **Plik > Preferencje > Ustawienia** i dodaj następujące wiersze do skonfigurowania Arduino.
+    * **Windows**:
+    ```json
+    "arduino.path": "C:\\Program Files (x86)\\Arduino",
+    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+    ```
+    * **System macOS**:
+    ```json
+    "arduino.path": "/Applications",
+    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+    ```
+    * **Ubuntu**:
+    ```json
+    "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
+    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+    ```
 
-* [Platformy Azure CLI 2.0 MSI](https://docs.microsoft.com//cli/azure/install-azure-cli#windows): Międzyplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure. Plik MSI zawiera zależne Python i narzędzia pip.
+1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **Arduino: Menedżer tablicy**. Wyszukaj **az3166 usługi** i zainstaluj najnowszą wersję.
+    ![Zainstaluj zestaw SDK Mxchip](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-sdk.png)
 
-* [Visual Studio Code](https://code.visualstudio.com/) (VS Code): lekkiemu edytorowi kodu Mxchip rozwoju.
+### <a name="install-st-link-drivers"></a>Zainstaluj sterowniki łącze ST
 
-* [Rozszerzenie programu Visual Studio Code dla Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino): rozszerzenie, które umożliwia programowanie Arduino w programie Visual Studio Code.
+[ST-łącze/V2](http://www.st.com/en/development-tools/st-link-v2.html) jest interfejsem USB, który mxchip IoT DevKit używa do komunikacji z komputera deweloperskiego. Wykonaj kroki specyficzne dla systemu operacyjnego, aby zezwolić na dostęp do komputera, na urządzeniu.
 
-* [Środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software): narzędzia, która korzysta z rozszerzenia dla Arduino.
+* **Windows**: Pobierz i zainstaluj sterownik USB z [STMicroelectronics witryny sieci Web](http://www.st.com/en/development-tools/stsw-link009.html).
+* **System macOS**: sterownik nie jest wymagany dla systemu macOS.
+* **Ubuntu**: Uruchom następujące polecenie w terminalu i wylogowania i zaloguj się na zmianę grupy zaczęły obowiązywać:
+    ```bash
+    # Copy the default rules. This grants permission to the group 'plugdev'
+    sudo cp ~/.arduino15/packages/AZ3166/tools/openocd/0.10.0/linux/contrib/60-openocd.rules /etc/udev/rules.d/
+    sudo udevadm control --reload-rules
 
-* Pakiet Mxchip tablicy: Narzędzie do łańcuchów, biblioteki i projektów dla Mxchip.
+    # Add yourself to the group 'plugdev'
+    # Logout and log back in for the group to take effect
+    sudo usermod -a -G plugdev $(whoami)
+    ```
 
-* Narzędzie ST łącze: Podstawowe narzędzia i sterowniki.
+Teraz wszystko jest ustawione przy użyciu przygotowywanie i konfigurowanie środowiska projektowego. Daj nam stworzyć próbkę "Hello World" dla IoT: wysyłanie danych telemetrycznych temperatury do usługi Azure IoT Hub.
 
-#### <a name="run-the-installation-script"></a>Uruchom skrypt instalacji
+## <a name="build-your-first-project"></a>Tworzenie pierwszego projektu
 
-W Eksploratorze plików Windows znajdź plik zip i Wyodrębnij jego zawartość. Znajdź `install.cmd`, kliknij go prawym przyciskiem myszy i wybierz **Uruchom jako administrator**.
+1. Upewnij się, jest Twoja mxchip IoT DevKit **niepołączony** do komputera. Najpierw uruchom program VS Code, a następnie podłącz Mxchip do komputera.
 
-![Eksplorator plików](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/run-admin.png)
+1. Na pasku stanu w prawym dolnym Sprawdź **az3166 usługi zestawu DEWELOPERSKIEGO** jest przedstawiana w postaci wybranej tablicy i port szeregowy przy użyciu **STMicroelectronics** jest używany.
+    ![Wybierz tablicy i COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-board.png)
 
-Podczas instalacji zostanie wyświetlony postęp każdego narzędzia lub pakietu.
+1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: przykłady**. Następnie wybierz pozycję **mxchip IoT DevKit** jako tablica.
 
-![Postęp instalacji](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install.png)
+1. Na stronie Przykłady aplikacji Workbench IoT, Znajdź **wprowadzenie** i kliknij przycisk **Otwórz przykładowy**. Następnie wybiera ścieżki domyślnej, aby pobrać przykładowy kod.
+    ![Otwórz przykładowy](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
-> [!NOTE] 
-> W zależności od środowiska czasami wystąpi błąd podczas instalowania środowisku IDE Arduino. W takim przypadku można spróbować [oddzielnie zainstalować środowisku IDE Arduino](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/#windows) i ponownie uruchom install.cmd. W przeciwnym razie wykonaj [ręczne instrukcjami dotyczącymi instalacji mxchip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/#windows) zainstalować wszystkie niezbędne narzędzia i pakiety.
+1. W nowym oknie otwartym projekcie, kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: chmura**, a następnie wybierz **świadczenia usługi Azure**. Postępuj zgodnie z przewodnika krok po kroku do zakończenia inicjowania obsługi usługi Azure IoT Hub i utworzenie urządzenia.
+    ![Aprowizowanie chmury](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
 
-#### <a name="install-drivers"></a>Instalowanie sterowników
+1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenie**, a następnie wybierz **konfiguracji ustawień urządzenia > Wybierz parametry połączenia urządzenia Centrum IoT**.
 
-Program VS Code Arduino rozszerzenia opiera się na środowisku IDE Arduino. Jeśli instalujesz środowisku IDE Arduino po raz pierwszy monit o zainstalowanie odpowiednich sterowników.
+1. Na Mxchip, przytrzymaj wciśnięty **przycisk A**, wypychania i wersji **resetowania** przycisk, a następnie zwolnij **przycisk A**. Twoje Mxchip przechodzi w tryb konfiguracji i zapisuje parametry połączenia.
+    ![Parametry połączenia](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-![Rozpoczynanie pracy — sterowników](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/driver.png)
+1. Kliknij przycisk `F1` wpisz ponownie, a następnie wybierz **IoT Workbench: urządzenie**, a następnie wybierz **przekazać urządzenia**.
+    ![Przekazywanie Arduino](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
-Instalacja trwa około 10 minut w zależności od szybkości Internetu. Po zakończeniu instalacji, zobaczysz skróty programu Visual Studio Code i środowisku IDE Arduino na pulpicie.
+Mxchip rozruchu i uruchamiania kodu.
 
-> [!NOTE] 
-> Od czasu do czasu po uruchomieniu programu VS Code, zostanie wyświetlony monit z powodu błędu, nie można znaleźć w środowisku IDE Arduino lub pakietu powiązane tablicy. Aby rozwiązać problem, zamknij program VS Code i uruchom ponownie w środowisku IDE Arduino. VS kod powinien odszukaj ścieżki środowisku IDE Arduino poprawnie.
-
-### <a name="macos"></a>macOS
-
-Firma Microsoft zachęca do przy użyciu środowiska instalacji jednym kliknięciem przygotowywanie środowiska deweloperskiego. Jeśli wystąpią problemy, możesz wykonać [ręczne instrukcjami dotyczącymi instalacji mxchip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/) do wykonywania pracy.
-
-#### <a name="install-homebrew"></a>Zainstaluj Homebrew
-
-> [!NOTE] 
-> Jeśli zainstalowano Homebrew, możesz pominąć ten krok.
-
-Postępuj zgodnie z [instrukcje dotyczące instalacji Homebrew](https://docs.brew.sh/Installation.html) go zainstalować.
-
-#### <a name="download-the-latest-package"></a>Pobierz najnowszy pakiet
-
-Pobrany plik zip zawiera wszystkie niezbędne narzędzia i pakiety Mxchip rozwoju.
-
-> [!div class="button"]
-[Pobieranie](https://aka.ms/devkit/prod/installpackage/mac/latest)
-
-Plik zip zawiera następujące narzędzia i pakiety. Jeśli masz już pewne składniki zainstalowane, skrypt wykrywania i je pominąć.
-
-* Środowisko node.js i usługi Yarn: program obsługi dla skryptu Instalatora i automatycznych zadań.
-
-* [Interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): Międzyplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.
-
-* [Visual Studio Code](https://code.visualstudio.com/) (VS Code): lekkiemu edytorowi kodu Mxchip rozwoju.
-
-* [Rozszerzenie programu Visual Studio Code dla Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino): rozszerzenie, które umożliwia programowanie Arduino w programie Visual Studio Code.
-
-* [Środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software): narzędzia, która korzysta z rozszerzenia dla Arduino.
-
-* Pakiet Mxchip tablicy: Narzędzie do łańcuchów, biblioteki i projektów dla Mxchip.
-
-* Narzędzie ST łącze: Podstawowe narzędzia i sterowniki.
-
-#### <a name="run-the-installation-script"></a>Uruchom skrypt instalacji
-
-W programie Finder zlokalizuj plik zip i Wyodrębnij jego zawartość:
-
-![wyszukiwania z systemem macOS](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/mac-finder.png)
-
-Uruchom aplikację Terminal, Znajdź folder, Wyodrębnij plik zip i uruchom następujące kroki:
-
-```bash
-./install.sh
-```
-
-![instalacji systemu macOS](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/mac-install-sh.png)
-
-> [!NOTE] 
-> Jeśli spełniasz błąd uprawnień Homebrew, uruchom `brew doctor` Aby rozwiązać ten problem. Sprawdź ["homebrew error" sekcji często zadawanych pytań Mxchip IoT](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#homebrew-permission-error-on-macos) Aby uzyskać więcej informacji.
-
-Masz teraz wszystkie niezbędne narzędzia i zainstalowane pakiety dla systemu macOS.
-
-## <a name="open-the-project-folder"></a>Otwórz folder projektu
-
-Uruchom po otwarciu folderu projektu. 
-
-### <a name="start-vs-code"></a>Uruchom program VS Code
-
-Upewnij się, że Twoje Mxchip nie jest połączony. Uruchom program VS Code, a następnie połącz Mxchip do komputera. Program VS Code automatycznie wyszukuje Mxchip i zostanie otwarty na stronie wprowadzenie.
-
-![Strona wprowadzenia](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/vscode_start.png)
-
-> [!NOTE] 
-> Od czasu do czasu po uruchomieniu programu VS Code, zostanie wyświetlony monit z powodu błędu, nie można znaleźć w środowisku IDE Arduino lub pakietu powiązane tablicy. Zamknij program VS Code i ponownie w środowisku IDE Arduino. VS kod powinien odszukaj ścieżki środowisku IDE Arduino poprawnie.
-
-### <a name="open-the-arduino-examples-folder"></a>Otwórz folder przykłady Arduino
-
-Na **przykłady Arduino** kartę, przejdź do **przykłady zestawu DEWELOPERSKIEGO az3166 usługi** > **AzureIoT**i wybierz **GetStarted**.
-
-![Karta przykłady Arduino](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/vscode_start.png)
-
-Jeśli występuje Zamknij okienko zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
-
-## <a name="provision-azure-services"></a>Aprowizacja usług platformy Azure
-
-W oknie rozwiązania należy uruchomić zadanie przy użyciu `Ctrl+P` (z systemem macOS: `Cmd+P`), wprowadzając `task cloud-provision`.
-
-W terminalu programu VS Code interaktywne wiersza polecenia przeprowadzi Cię przez Inicjowanie obsługi administracyjnej wymaganych usług platformy Azure.
-
-![Interaktywne wiersza polecenia](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/cloud-provision.png)
-
-## <a name="build-and-upload-the-arduino-sketch"></a>Tworzenie i przekazywanie szkic Arduino
-
-Następnie skompilować i przekazać szkic Arduino.
-
-### <a name="windows"></a>Windows
-
-1. Użyj `Ctrl+P` do uruchomienia `task device-upload`.
-
-2. Naciśnij w terminalu wyświetli monit o wprowadzenie tryb konfiguracji. Aby to zrobić, przytrzymaj naciśnięty przycisk A, a następnie wypychania, a następnie zwolnij przycisk resetowania. Na ekranie zostanie wyświetlony identyfikator Mxchip i "Konfiguracja".
-
-   To jest, aby ustawić parametry połączenia, które pobiera z `task cloud-provision` kroku.
-
-   Program VS Code uruchamia, weryfikowanie i przekazywanie szkic Arduino.
-
-   ![Weryfikacja i przekazywania szkic Arduino](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/device-upload.png)
-
-   Mxchip rozruchu i uruchamiania kodu.
-
-   > [!NOTE] 
-   > Czasami występuje błąd "Błąd: az3166 usługi: Nieznany pakiet". Jest to spowodowane tablicy indeksu pakietów nie zostanie odświeżona. Zaznacz tę [kroki — często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) rozwiązać problem.
-
-### <a name="macos"></a>macOS
-
-1. Umieść Mxchip tryb konfiguracji: naciśnij i przytrzymaj A przycisk, a następnie wypychania i zwolnij przycisk resetowania. Na ekranie są wyświetlane "Konfiguracja".
-
-2. Użyj `Cmd+P` do uruchomienia `task device-upload`.
-
-   To jest, aby ustawić parametry połączenia, które pobiera z `task cloud-provision` kroku.
-
-   Program VS Code uruchamia, weryfikowanie i przekazywanie szkic Arduino:
-
-   ![przekazywanie urządzeń](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/device-upload.png)
-
-   Mxchip rozruchu i uruchamiania kodu.
-
-   > [!NOTE] 
-   > Czasami występuje błąd "Błąd: az3166 usługi: Nieznany pakiet". Jest to spowodowane tablicy indeksu pakietów nie zostanie odświeżona. Zobacz, jakie kroki [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) rozwiązać problem.
-
+> [!NOTE]
+> Jeśli istnieje, błędy lub przerw w działaniu, zawsze można odzyskać, uruchamiając polecenie ponownie.
 
 ## <a name="test-the-project"></a>Projekt testowy
 
-W programie VS Code wykonaj następujące kroki, aby otworzyć i skonfigurować Serial Monitor:
+### <a name="view-the-telemetry-sent-to-azure-iot-hub"></a>Wyświetl dane telemetryczne wysyłane do usługi Azure IoT Hub
 
-1. Kliknij przycisk `COM[X]` word na pasku stanu, aby ustawić prawy port COM `STMicroelectronics`.
+Kliknij ikonę wtyczki zasilania, na pasku stanu, aby otworzyć Monitor szeregowego: ![Serial monitora](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/serial-monitor.png)
 
-   ![COM port](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/com-port.png)
+Przykładowa aplikacja jest uruchomiona pomyślnie, gdy pojawi się następujące wyniki:
 
-2. Kliknij ikonę wtyczki zasilania na pasku stanu, aby otworzyć Monitor szeregowe.
+* Serial Monitor wyświetla komunikat wysłany do usługi IoT Hub.
+* Migające jest dioda LED na zestawu deweloperskiego IoT Mxchip.
 
-   ![monitor seryjnych](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution//connect-iothub/serial-monitor.png)
+![Dane wyjściowe Serial monitora](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
 
-3. Na pasku stanu kliknij numer, który reprezentuje szybkość transmisji i ustaw go na `115200`.
+### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Widok danych telemetrycznych odebranych przez usługę Azure IoT Hub
 
-   ![szybkość transmisji](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/baud-rate.png)
+Możesz użyć [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) do monitorowania komunikatów wysyłanych z urządzenia do chmury (D2C) w usłudze IoT Hub.
 
-4. Przykładowa aplikacja jest uruchomiona pomyślnie, gdy pojawi się następujące wyniki:
+1. W programie Visual Studio Code, poszukaj **Azure IoT Toolkit** rynku rozszerzenia i zainstalować ją.
 
-   * Serial Monitor wyświetla te same informacje jako zawartość na poniższym zrzucie ekranu.
-   
-   * Migające jest LED RGB w zestawu deweloperskiego IoT Mxchip.
+1. Zaloguj się [witryny Azure portal](https://portal.azure.com/), Znajdź Centrum IoT utworzonego.
+    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
-   ![Końcowe dane wyjściowe w programie VS Code](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/result-serial-output.png)
+1. W **zasady dostępu współdzielonego** okienku kliknij **zasad iothubowner**i zanotuj parametry połączenia Centrum IoT Hub.
+    ![Parametry połączenia w usłudze Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
+
+1. W programie Visual Studio Code rozwiń **AZURE IOT HUB DEVICES** w lewym dolnym rogu, kliknij polecenie **Ustaw parametry połączenia Centrum IoT**.
+    ![Ustawianie parametrów połączenia usługi Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-toolkit-conn-string.png)
+
+1. Kliknij przycisk **IoT: Rozpocznij monitorowania komunikatu D2C** w menu kontekstowym.
+
+1. W **dane wyjściowe** okienku widać komunikaty D2C przychodzące do usługi IoT Hub.
+    ![Komunikatu D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-toolkit-console.png)
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
-Jeśli napotkasz problemy, możesz sprawdzić rozwiązania w [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/). Możesz również dostarczyć nam opinię, pozostawiając komentarz na tej stronie.
+Jeśli napotkasz problemy, możesz sprawdzić rozwiązania w [— często zadawane pytania dla Mxchip IoT](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub się z nami od [dotyczącym oprogramowania Gitter](https://gitter.im/Microsoft/azure-iot-developer-kit). Możesz również dostarczyć nam opinię, pozostawiając komentarz na tej stronie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

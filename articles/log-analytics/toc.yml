@@ -60,6 +60,10 @@ items:
     items:
     - name: Korzystanie z witryny Azure Portal
       href: log-analytics-quick-create-workspace.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: log-analytics-quick-create-workspace-cli.md
+    - name: Korzystanie z programu Azure PowerShell
+      href: log-analytics-quick-create-workspace-posh.md
   - name: Zbieranie danych
     items:
     - name: Połączone źródła
@@ -114,8 +118,6 @@ items:
     items:
     - name: Dokumentacja języka
       items:
-      - name: Przechodzenie ze starszego języka
-        href: log-analytics-log-search-transition.md
       - name: Dokumentacja języka
         href: https://docs.loganalytics.io
       - name: Rozpoczęcie pracy
@@ -338,9 +340,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=log-analytics
   - name: Analiza systemu Windows
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
-ms.openlocfilehash: 7f3e05c3eda4cdbfd7e0edcf61a7f1f6934be8e6
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 31d31932f941d7bf9c7b1b44a6f9ad7635c725bc
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42110165"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122998"

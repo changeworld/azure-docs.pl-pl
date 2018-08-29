@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055016"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143577"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schemat zdarzeń Azure Event Grid dla Centrum IoT Hub
 
@@ -31,8 +31,33 @@ Usługa Azure IoT Hub emituje następujące typy zdarzeń:
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Opublikowane po zarejestrowaniu urządzenia do usługi IoT hub. |
 | Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięty z usługi IoT hub. | 
+| Microsoft.Devices.DeviceConnected | Gdy urządzenie jest podłączone do usługi IoT hub opublikowany. |
+| Microsoft.Devices.DeviceDisconnected | Gdy urządzenie jest odłączony od usługi IoT hub opublikowany. | 
 
 ## <a name="example-event"></a>Przykład zdarzenia
+
+Schemat zdarzeń DeviceConnected i DeviceDisconnected mieć tę samą strukturę. To zdarzenie próbki przedstawia schematu zdarzenia wywoływane, gdy urządzenie jest podłączone do usługi IoT hub:
+
+```json
+[{
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceConnected", 
+  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "data": {
+    "deviceConnectionStateEventInfo": {
+      "sequenceNumber":
+        "000000000000000001D4132452F67CE200000002000000000000000000000001"
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice",
+    "moduleId" : "DeviceModuleID"
+  }, 
+  "dataVersion": "1", 
+  "metadataVersion": "1" 
+}]
+```
 
 Schemat zdarzeń DeviceCreated i DeviceDeleted mieć tę samą strukturę. To zdarzenie próbki przedstawia schematu zdarzenia wywoływane, gdy urządzenie jest zarejestrowane w Centrum IoT:
 
@@ -47,6 +72,7 @@ Schemat zdarzeń DeviceCreated i DeviceDeleted mieć tę samą strukturę. To zd
     "twin": {
       "deviceId": "LogicAppTestDevice",
       "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
       "status": "enabled",
       "statusUpdateTime": "0001-01-01T00:00:00",
       "connectionState": "Disconnected",
@@ -74,11 +100,9 @@ Schemat zdarzeń DeviceCreated i DeviceDeleted mieć tę samą strukturę. To zd
       }
     },
     "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice",
-    "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-    "opType": "DeviceCreated"
+    "deviceId": "LogicAppTestDevice"
   },
-  "dataVersion": "",
+  "dataVersion": "1",
   "metadataVersion": "1"
 }]
 ```
@@ -98,17 +122,29 @@ Wszystkie zdarzenia zawierają te same dane najwyższego poziomu:
 | dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
-Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Dla zdarzeń usługi IoT Hub obiekt danych zawiera następujące właściwości:
+Dla wszystkich zdarzeń usługi IoT Hub obiekt danych zawiera następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | hubName | ciąg | Nazwa usługi IoT Hub, gdy urządzenie utworzony lub został usunięty. |
 | deviceId | ciąg | Unikatowy identyfikator urządzenia. Ten ciąg uwzględniający wielkość liter może mieć długości maksymalnie 128 znaków i obsługuje znaki ASCII 7-bitowe znaki alfanumeryczne oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| operationTimestamp | ciąg | Sygnatura czasowa ISO8601 operacji. |
-| opType | ciąg | Typ zdarzenia, określony dla tej operacji przez usługę IoT Hub: albo `DeviceCreated` lub `DeviceDeleted`.
+
+Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyskać **urządzenie połączone** i **Urządzenie odłączone** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| moduleId | ciąg | Unikatowy identyfikator modułu. To pole jest dane wyjściowe tylko na urządzeniach z modułu. Ten ciąg uwzględniający wielkość liter może mieć długości maksymalnie 128 znaków i obsługuje znaki ASCII 7-bitowe znaki alfanumeryczne oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceConnectionStateEventInfo | obiekt | Informacje zdarzeń o stanie połączenia urządzenia
+| sequenceNumber | ciąg | Liczba, która pomaga wskazać kolejność podłączone urządzenie lub urządzenia odłączony zdarzenia. Najnowsze zdarzenia będzie mieć numer sekwencji jest wyższa niż poprzednie zdarzenie. Ten numer może ulec zmianie przez więcej niż 1, ale jest dokładnie rosnącej. Zobacz [sposób użycia numer sekwencyjny](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+
+Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
 | twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli represenation chmury metadanych urządzenia w aplikacji. | 
 | Identyfikator urządzenia | ciąg | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
-| Element etag | ciąg | Fragment informacje opisujące zawartość bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. | 
+| Element etag | ciąg | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
+| deviceEtag| ciąg | Moduł weryfikacji dla zapewnienia spójności aktualizacji do rejestru urządzeń. Każdy deviceEtag może być unikatowy dla rejestru urządzeń. |
 | status | ciąg | Bliźniacza reprezentacja urządzenia jest włączone czy wyłączone. | 
 | statusUpdateTime | ciąg | Zaktualizuj ISO8601 sygnatura czasowa ostatniego stanu bliźniaczej reprezentacji urządzenia. |
 | Element connectionState | ciąg | Czy urządzenie jest połączone lub odłączone. | 

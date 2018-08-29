@@ -1,27 +1,23 @@
 ---
-title: Integracja dla przedsiębiorstw dla modelu B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie przepływów pracy dla B2B i obsługują scenariusze integracji przedsiębiorstwa dla usługi logic apps z pakietem integracyjnym dla przedsiębiorstw
+title: Omówienie integracji przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie zautomatyzowanych przepływów pracy B2B na potrzeby rozwiązania integracji dla przedsiębiorstw przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054995"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124296"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Omówienie: Scenariuszy B2B i komunikacji z pakietem integracyjnym dla przedsiębiorstw
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Omówienie: Scenariuszy integracji przedsiębiorstwa B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
 Dla przepływów pracy business-to-business (B2B) i bezproblemową komunikację z usługą Azure Logic Apps aby umożliwić scenariuszy integracji przedsiębiorstwa, rozwiązanie firmy Microsoft oparte na chmurze pakiet integracyjny dla przedsiębiorstw. Organizacje mogą wymieniać komunikaty elektronicznie, nawet jeśli używają różnych protokołów i formatów. Ten pakiet przekształca różnych formatach w formacie, który może być interpretowane i przetwarzane przez systemy w organizacji. Organizacje mogą wymieniać komunikaty za pośrednictwem standardowych protokołów, w tym [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), i [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Można również Zabezpieczanie komunikatów za pomocą szyfrowania i podpisów cyfrowych.
 

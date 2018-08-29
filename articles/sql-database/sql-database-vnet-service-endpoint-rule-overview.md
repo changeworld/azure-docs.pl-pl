@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127596"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143814"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -181,11 +181,10 @@ Usługa Azure Storage została zaimplementowana w tej samej funkcji, która pozw
 Jeśli zdecydujesz się używać tej funkcji przy użyciu konta magazynu, który jest używany przez program SQL Server Azure, możesz napotkać problemy. Obok listy i będzie dyskusję na temat funkcji SQLDB platformy Azure, które ma to wpływ.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-Program PolyBase jest najczęściej używany do ładowania danych w usłudze Azure SQLDW z konta magazynu. Jeśli konto magazynu, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Ma ograniczenia dla tej i może kontaktować się z *dmalik@microsoft.com* Aby uzyskać więcej informacji.
+Program PolyBase jest najczęściej używany do ładowania danych w usłudze Azure SQLDW z konta magazynu. Jeśli konto magazynu, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Ma ograniczenia dla tej i pomocy technicznej firmy Microsoft może skontaktować się, aby uzyskać więcej informacji.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Obiekt Blob platformy Azure SQLDB inspekcji
 Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu używa funkcji punktów końcowych usługi DARZENIE spowoduje przerwanie łączności z SQLDB platformy Azure na koncie magazynu.
-
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci Wirtualnej do serwera bez włączania na sieć Wirtualną punktów końcowych usługi
 

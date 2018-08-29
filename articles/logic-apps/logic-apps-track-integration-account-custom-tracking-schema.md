@@ -1,90 +1,87 @@
 ---
-title: Śledzenie niestandardowych schematów B2B monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Utwórz schematy śledzenia niestandardowych do monitorowania wiadomości B2B transakcji na koncie Azure integracji.
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Niestandardowe śledzenie schematów na potrzeby obsługi wiadomości B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Utwórz schematy śledzenia niestandardowych, które monitorowanie komunikatów B2B w kont integracji dla usługi Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431235370c52be4c6e1ad6cd1af6a412e9eac230
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299838"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124847"
 ---
-# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>Włącz śledzenie w celu monitorowania ukończenia przepływu pracy, end-to-end
-Są wbudowane, śledzenie, możesz włączyć dla różnych części przepływu pracy business-to-business, takie jak śledzenie AS2 lub X12 wiadomości. Podczas tworzenia przepływów pracy zawiera aplikację logiki, BizTalk Server, SQL Server lub inną warstwę, można włączyć śledzenie niestandardowej, która zapisuje zdarzenia od początku do końca przepływu pracy, a następnie. 
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Utwórz schematy śledzenia niestandardowych, które monitorują end-to-end przepływów w usłudze Azure Logic Apps
 
-Ten temat zawiera kod niestandardowy, który można użyć w warstwach poza aplikację logiki. 
+Ma wbudowanych, śledzenie, możesz włączyć dla różnych części przepływu pracy business-to-business, takich jak śledzenia AS2 lub X12 wiadomości. Podczas tworzenia przepływów pracy zawiera aplikację logiki, programu BizTalk Server, SQL Server lub inną warstwę, a następnie można włączyć śledzenia niestandardowego, który będzie rejestrował zdarzenia od początku do końca przepływu pracy. 
+
+Ten artykuł zawiera kod niestandardowy, który można użyć w warstwach poza aplikację logiki. 
 
 ## <a name="custom-tracking-schema"></a>Niestandardowy schemat śledzenia
-````java
 
-        {
-            "sourceType": "",
-            "source": {
-
-            "workflow": {
-                "systemId": ""
-            },
-            "runInstance": {
-                "runId": ""
-            },
-            "operation": {
-                "operationName": "",
-                "repeatItemScopeName": "",
-                "repeatItemIndex": "",
-                "trackingId": "",
-                "correlationId": "",
-                "clientRequestId": ""
-                }
-            },
-            "events": [
-            {
-                "eventLevel": "",
-                "eventTime": "",
-                "recordType": "",
-                "record": {                
-                }
-            }
-         ]
+```json
+{
+   "sourceType": "",
+   "source": {
+      "workflow": {
+         "systemId": ""
+      },
+      "runInstance": {
+         "runId": ""
+      },
+      "operation": {
+         "operationName": "",
+         "repeatItemScopeName": "",
+         "repeatItemIndex": "",
+         "trackingId": "",
+         "correlationId": "",
+         "clientRequestId": ""
       }
-
-````
+   },
+   "events": [
+      {
+         "eventLevel": "",
+         "eventTime": "",
+         "recordType": "",
+         "record": {                
+         }
+      }
+   ]
+}
+```
 
 | Właściwość | Typ | Opis |
 | --- | --- | --- |
-| Źródłowa |   | Typ działania źródłowego. Dozwolone wartości to **Microsoft.Logic/workflows** i **niestandardowych**. (Wymagane) |
-| Element źródłowy |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. (Wymagane) |
-| systemId | Ciąg | Identyfikator logiki aplikacji systemu. (Wymagane) |
-| runId | Ciąg | Uruchom identyfikatora aplikacji logiki (Wymagane) |
-| operationName | Ciąg | Nazwa operacji (na przykład, akcji lub wyzwalacz). (Wymagane) |
-| repeatItemScopeName | Ciąg | Powtórz nazwy elementu, jeśli akcja jest wewnątrz `foreach` / `until` pętli. (Wymagane) |
-| repeatItemIndex | Liczba całkowita | Czy akcja jest wewnątrz `foreach` / `until` pętli. Wskazuje indeks elementu powtarzanego. (Wymagane) |
-| trackingId | Ciąg | Identyfikator, aby skorelować komunikaty śledzenia. (Opcjonalnie) |
-| correlationId | Ciąg | Identyfikator korelacji służące do skorelowania wiadomości. (Opcjonalnie) |
-| clientRequestId | Ciąg | Klienta można umieścić w nim służące do skorelowania wiadomości. (Opcjonalnie) |
-| eventLevel |   | Poziom zdarzenia. (Wymagane) |
-| eventTime |   | Godzina zdarzenia w formacie UTC RRRR-MM-DDTHH:MM:SS.00000Z. (Wymagane) |
-| recordType |   | Typ rekordu śledzenia. Dozwolone wartości to **niestandardowych**. (Wymagane) |
-| rekord |   | Typ niestandardowy rekord. Dozwolony format to JToken. (Wymagane) |
+| sourceType |   | Typ uruchamiania źródła. Dozwolone wartości to **Microsoft.Logic/workflows** i **niestandardowe**. (Obowiązkowe) |
+| Element źródłowy |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. (Obowiązkowe) |
+| systemId | Ciąg | Identyfikator logiki aplikacji systemu. (Obowiązkowe) |
+| runId | Ciąg | Identyfikator przebiegu aplikacji logiki (Obowiązkowe) |
+| operationName | Ciąg | Nazwa operacji (na przykład akcję lub wyzwalacz). (Obowiązkowe) |
+| repeatItemScopeName | Ciąg | Powtórz nazwa elementu, jeśli akcja znajduje się wewnątrz `foreach` / `until` pętli. (Obowiązkowe) |
+| repeatItemIndex | Liczba całkowita | Czy akcja jest wewnątrz `foreach` / `until` pętli. Wskazuje indeks elementu powtarzanego. (Obowiązkowe) |
+| trackingId | Ciąg | Identyfikator śledzenia: korelowanie komunikatów. (Opcjonalnie) |
+| correlationId | Ciąg | Identyfikator korelacji, aby skorelować komunikaty. (Opcjonalnie) |
+| clientRequestId | Ciąg | Klienta można wypełnić go do skorelowania wiadomości. (Opcjonalnie) |
+| eventLevel |   | Poziom zdarzenia. (Obowiązkowe) |
+| eventTime |   | Czas w UTC w formacie RRRR-MM-DDTHH:MM:SS.00000Z wydarzenia. (Obowiązkowe) |
+| RecordType |   | Typ rekordu śledzenia. Dozwolona wartość to **niestandardowe**. (Obowiązkowe) |
+| rekord |   | Typ rekordu niestandardowego. Dozwolony format to JToken. (Obowiązkowe) |
+||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schematy śledzenia protokołu B2B
-Aby uzyskać informacji na temat protokołu B2B śledzenia schematów zobacz:
+
+Aby uzyskać informacji na temat protokołu B2B schematy śledzenia zobacz:
+
 * [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
 * [Schematy śledzenia X12](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [monitorowanie wiadomości B2B](logic-apps-monitor-b2b-message.md).   
-* Dowiedz się więcej o [śledzenie wiadomości B2B w analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Dowiedz się więcej o [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md).
+
+* Dowiedz się więcej o [monitorowanie komunikatów B2B](logic-apps-monitor-b2b-message.md)
+* Dowiedz się więcej o [śledzenie komunikatów B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

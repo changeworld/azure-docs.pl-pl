@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f42d3fb709807d77fb0f390b6da76efc4a60dced
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090574"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128599"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiaj skrypty programu PowerShell na maszynie wirtualnej Windows za pomocą polecenia Uruchom
 
@@ -63,7 +63,6 @@ Ta tabela zawiera listę dostępnych poleceń dla maszyn wirtualnych Windows. **
 |**EnableAdminAccount**|Sprawdza, czy jeśli konta administratora lokalnego jest wyłączona, a jeśli tak włączy ją.|
 |**Polecenie IPConfig**| Przedstawia szczegółowe informacje dla adresu IP adres bramy domyślne i maski podsieci dla każdej karty sieciowej, powiązany z protokołem TCP/IP.|
 |**RDPSettings**|Umożliwia sprawdzenie ustawień rejestru i ustawienia zasad domeny. Sugeruje akcje zasad, jeśli komputer jest częścią domeny lub modyfikuje ustawienia do wartości domyślnych.|
-|**ResetAccountPassword**| Resetuje hasło do konta administratora wbudowane.|
 |**ResetRDPCert**|Usuwa certyfikat SSL powiązany odbiornik protokołu RDP i przywraca zabezpieczeń listerner protokołu RDP do ustawień domyślnych. Użyj tego skryptu, jeśli napotkasz jakiekolwiek problemy z certyfikatem.|
 |**SetRDPPort**|Ustawia domyślną lub użytkownika określony numer portu dla połączeń usług pulpitu zdalnego. Włącza reguły zapory dla dostępu przychodzącego do portu.|
 
