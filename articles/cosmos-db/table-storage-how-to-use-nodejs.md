@@ -1,6 +1,6 @@
 ---
-title: Jak korzystać z usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB przy użyciu platformy Node.js | Microsoft Docs
-description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
+title: Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu platformy Node.js | Microsoft Docs
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19e152b8cb8f18a616af647b31a4f35998f47858
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798223"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048179"
 ---
-# <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB przy platformy Node.js
+# <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu platformy Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
@@ -36,7 +36,7 @@ W tym artykule przedstawiono sposób wykonywania typowych scenariuszy przy użyc
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
-## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Konfigurowanie aplikacji do uzyskiwania dostępu do usługi Azure Storage lub interfejsu Table API Azure usługi Azure Cosmos DB
+## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Konfigurowanie aplikacji w celu uzyskiwania dostępu do usługi Azure Storage lub interfejsu API tabel usługi Azure Cosmos DB
 Aby użyć usługi Azure Storage lub Azure Cosmos DB, należy skorzystać z zestawu Azure Storage SDK dla platformy Node.js, który zawiera zestaw wygodnych bibliotek służących do komunikacji z usługami Storage REST.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalowanie menedżera NPM (Node Package Manager)
@@ -69,15 +69,15 @@ Moduł platformy Azure odczytuje zmienne środowiskowe AZURE_STORAGE_ACCOUNT i A
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-comsos-db-connection"></a>Dodawanie połączenia z usługą Azure Cosmos DB
-Aby dodać połączenie z usługą Azure Cosmos DB, utwórz obiekt **TableService** i określ nazwę konta, klucz podstawowy i punkt końcowy. Możesz skopiować te wartości z obszaru **Ustawienia** > **Parametry połączenia** w witrynie Azure Portal dla konta usługi Cosmos DB. Na przykład:
+## <a name="add-an-azure-cosmos-db-connection"></a>Dodawanie połączenia z usługą Azure Cosmos DB
+Aby dodać połączenie z usługą Azure Cosmos DB, utwórz obiekt **TableService** i określ nazwę konta, klucz podstawowy oraz punkt końcowy. Możesz skopiować te wartości z obszaru **Ustawienia** > **Parametry połączenia** w witrynie Azure Portal dla konta usługi Cosmos DB. Na przykład:
 
 ```nodejs
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```  
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
-Poniższy kod tworzy obiekt **TableService** obiektu i używa go do utworzenia nowej tabeli. 
+Poniższy kod tworzy obiekt **TableService** i używa go do utworzenia nowej tabeli. 
 
 ```nodejs
 var tableSvc = azure.createTableService();
@@ -199,7 +199,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > [!NOTE]
 > Domyślnie podczas aktualizowania jednostki nie odbywa się sprawdzenie, czy aktualizowane dane zostały wcześniej zmodyfikowane przez inny proces. Aby obsługiwać równoczesne aktualizacje:
 >
-> 1. Pobierz element ETag aktualizowanego obiektu. Ten tag jest zwracany jako część elementu `response` dla dowolnej operacji powiązanej z jednostką i można go pobrać za pośrednictwem elementu `response['.metadata'].etag`.
+> 1. Pobierz tag ETag aktualizowanego obiektu. Ten tag jest zwracany jako część elementu `response` dla dowolnej operacji powiązanej z jednostką i można go pobrać za pośrednictwem elementu `response['.metadata'].etag`.
 > 2. Podczas wykonywania operacji aktualizowania jednostki dodaj informacje tagu ETag wcześniej pobrane do nowej jednostki. Na przykład:
 >
 >       entity2['.metadata'].etag = currentEtag;
@@ -324,7 +324,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ```
 
 > [!NOTE]
-> Należy rozważyć użycie elementów ETag podczas usuwania elementów, aby upewnić się, że element nie został zmodyfikowany przez inny proces. Informacje na temat używania elementów ETag można znaleźć w sekcji [Aktualizowanie jednostki](#update-an-entity).
+> Rozważ użycie tagów ETag podczas usuwania elementów, aby upewnić się, że element nie został zmodyfikowany przez inny proces. Aby uzyskać informacje na temat używania tagów Etag, zobacz [Aktualizowanie jednostki](#update-an-entity).
 >
 >
 
@@ -372,7 +372,7 @@ Sygnatury dostępu współdzielonego (SAS) to bezpieczny sposób zapewnienia szc
 
 Aplikacja zaufana, taka jak usługa oparta na chmurze, generuje sygnaturę dostępu współdzielonego przy użyciu elementu **generateSharedAccessSignature** obiektu **TableService** i udostępnia ją niezaufanej lub częściowo zaufanej aplikacji, takiej jak aplikacja mobilna. Sygnatura dostępu współdzielonego jest generowana przy użyciu zasad opisujących daty rozpoczęcia i zakończenia okresu, w którym ta sygnatura obowiązuje, a także poziom dostępu przyznany właścicielowi sygnatury dostępu współdzielonego.
 
-W poniższym przykładzie są generowane nowe zasady dostępu współdzielonego, które umożliwią właścicielowi sygnatury dostępu współdzielonego wykonanie zapytania („r”) dotyczącego tabeli. Ich ważność wygaśnie 100 minut od utworzenia.
+W poniższym przykładzie są generowane nowe zasady dostępu współdzielonego, które umożliwią właścicielowi sygnatury dostępu współdzielonego wykonanie zapytania („r”) dotyczącego tabeli. Ich ważność wygaśnie po upływie 100 minut od utworzenia.
 
 ```nodejs
 var startDate = new Date();
@@ -459,4 +459,4 @@ Więcej informacji zawierają poniższe zasoby.
 * Repozytorium zestawu [Azure Storage SDK dla platformy Node.js](https://github.com/Azure/azure-storage-node) w witrynie GitHub.
 * [Platforma Azure dla deweloperów środowiska Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
 * [Tworzenie aplikacji internetowej Node.js na platformie Azure](../app-service/app-service-web-get-started-nodejs.md)
-* [Kompilowanie i wdrażanie aplikacji Node.js w usłudze w chmurze platformy Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (za pomocą programu Windows PowerShell)
+* [Tworzenie i wdrażanie aplikacji Node.js do usługi w chmurze Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (za pomocą programu Windows PowerShell)

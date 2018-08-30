@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d1d77e585ae8d608a8f9a4e3de0943315d897af
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920914"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094346"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,67 +32,7 @@ Ten samouczek Szybki start opisuje sposób używania zestawu SDK .NET w celu utw
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-### <a name="azure-subscription"></a>Subskrypcja platformy Azure
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
-
-### <a name="azure-roles"></a>Role platformy Azure
-Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure. W witrynie Azure Portal kliknij swoją **nazwę użytkownika** w prawym górnym rogu i wybierz pozycję **Uprawnienia**, aby wyświetlić uprawnienia, które masz w subskrypcji. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. Aby uzyskać przykładowe instrukcje dotyczące dodawania użytkownika do roli, zobacz artykuł [Dodawanie ról](../billing/billing-add-change-azure-subscription-administrator.md).
-
-### <a name="azure-storage-account"></a>Konto usługi Azure Storage
-W tym samouczku Szybki start używasz konta usługi Azure Storage ogólnego przeznaczenia (w szczególności usługi Blob Storage) jako **źródłowego** i **docelowego** magazynu danych. Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md), aby uzyskać informacje o jego tworzeniu. 
-
-#### <a name="get-storage-account-name-and-account-key"></a>Pobieranie nazwy konta i klucza konta magazynu
-W tym samouczku Szybki start używasz nazwy i klucza konta magazynu platformy Azure. Poniższa procedura obejmuje kroki pobierania nazwy i konta klucza magazynu. 
-
-1. Otwórz przeglądarkę internetową i przejdź do witryny [Azure Portal](https://portal.azure.com). Zaloguj się za pomocą nazwy użytkownika i hasła platformy Azure. 
-2. Kliknij pozycję **Więcej usług >** w menu po lewej stronie, odfiltruj przy użyciu słowa kluczowego **Storage** i wybierz pozycję **Konta usługi Storage**.
-
-    ![Wyszukiwanie konta magazynu](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
-3. Na liście kont magazynu odfiltruj konto magazynu (w razie potrzeby), a następnie wybierz **swoje konto magazynu**. 
-4. Na stronie **Konto magazynu** wybierz pozycję **Klucze dostępu**.
-
-    ![Pobieranie nazwy i klucza konta magazynu](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
-5. Skopiuj wartości pól **Nazwa konta magazynu** i **klucz1** do schowka. Wklej je do Notatnika lub innego edytora i zapisz plik.  
-
-#### <a name="create-input-folder-and-files"></a>Tworzenie plików i folderu wejściowego
-W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Azure Blob Storage. Następnie utwórz folder o nazwie **input** w kontenerze i przekaż przykładowy plik do folderu input. 
-
-1. Na stronie **Konto magazynu** przełącz się do widoku **Przegląd**, a następnie kliknij pozycję **Obiekty blob**. 
-
-    ![Wybieranie opcji Obiekty blob](media/quickstart-create-data-factory-dot-net/select-blobs.png)
-2. Na stronie **Usługa Blob** kliknij pozycję **+ Kontener** na pasku narzędzi. 
-
-    ![Przycisk dodawania kontenera](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
-3. W oknie dialogowym **Nowy kontener** wprowadź jako nazwę **adftutorial**, a następnie kliknij przycisk **OK**. 
-
-    ![Wprowadzanie nazwy kontenera](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
-4. Kliknij pozycję **adftutorial** na liście kontenerów. 
-
-    ![Wybieranie kontenera](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
-1. Na stronie **Kontener** kliknij pozycję **Przekaż** na pasku narzędzi.  
-
-    ![Przycisk Przekaż](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
-6. Na stronie **Przekaż obiekt blob** kliknij pozycję **Zaawansowane**.
-
-    ![Klikanie linku Zaawansowane](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
-7. Uruchom program **Notatnik** i utwórz plik o nazwie **emp.txt** z następującą zawartością: zapisz go w folderze **c:\ADFv2QuickStartPSH**: (utwórz folder **ADFv2QuickStartPSH**, jeśli jeszcze nie istnieje).
-    
-    ```
-    John, Doe
-    Jane, Doe
-    ```    
-8. W witrynie Azure Portal na stronie **Przekazywanie obiektu blob** wyszukaj i wybierz plik **emp.txt** dla pola **Pliki**. 
-9. Wprowadź wartość **input** jako wartość pola **Przekaż do folderu**. 
-
-    ![Ustawienia przekazywania obiektu blob](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
-10. Upewnij się, że wybrano folder **input** i plik **emp.txt**, a następnie kliknij przycisk **Przekaż**.
-11. Na liście powinien pojawić się plik **emp.txt** i stan przekazywania. 
-12. Zamknij stronę **Przekazywanie obiektu blob**, klikając przycisk **X** w rogu strony. 
-
-    ![Zamykanie strony przekazywania obiektu blob](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
-1. Zachowaj otwartą stronę **kontenera**. Będzie ona używana do weryfikowania danych wyjściowych na końcu tego samouczka Szybki start.
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 W przewodniku w tym artykule jest używany program Visual Studio 2017. Możesz też użyć programu Visual Studio 2013 lub 2015.
@@ -100,7 +40,7 @@ W przewodniku w tym artykule jest używany program Visual Studio 2017. Możesz t
 ### <a name="azure-net-sdk"></a>Zestaw Azure .NET SDK
 Pobierz i zainstaluj zestaw [Azure .NET SDK](http://azure.microsoft.com/downloads/) na maszynie.
 
-### <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory
+## <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory
 Postępując zgodnie z instrukcjami w sekcjach w [tym artykule](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) wykonaj następujące zadania: 
 
 1. **Utworzenie aplikacji usługi Azure Active Directory**. Utwórz aplikację w usłudze Azure Active Directory reprezentującą aplikację platformy .NET tworzoną w tym samouczku. W przypadku adresu URL logowania możesz podać fikcyjny adres URL, jak pokazano w artykule (`https://contoso.org/exampleapp`).

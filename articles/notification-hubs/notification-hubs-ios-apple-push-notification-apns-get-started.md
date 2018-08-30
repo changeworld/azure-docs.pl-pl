@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8fb5db0f788bde6ff3fb943bb170a48994e46ef3
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681523"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918538"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs
+
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs. Przy użyciu usługi [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) utworzysz pustą aplikację dla systemu iOS służącą do odbierania powiadomień push. 
@@ -75,16 +76,17 @@ W tej sekcji utworzysz centrum powiadomień i skonfigurujesz uwierzytelnianie w 
 Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz parametry połączenia służące do rejestrowania aplikacji oraz wysyłania powiadomień push.
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>Łączenie aplikacji dla systemu iOS z usługą Notification Hubs
+
 1. W środowisku Xcode utwórz nowy projekt dla systemu iOS i wybierz szablon **Single View Application** (Aplikacja z jednym widokiem).
-   
+
     ![Xcode — aplikacja z jednym widokiem][8]
-    
+
 2. Podczas określania opcji dla nowego projektu upewnij się, że użyto tych samych wartości **Product Name** (Nazwa produktu) i **Organization Identifier** (Identyfikator organizacji), które zostały użyte podczas ustawiania identyfikatora pakietu w portalu dla deweloperów firmy Apple.
-   
+
     ![Xcode — opcje projektu][11]
-    
+
 3. W obszarze Project Navigator (Nawigator projektów) kliknij nazwę swojego projektu, kliknij kartę **General** (Ogólne) i wyszukaj pozycję **Signing** (Podpisywanie). Upewnij się, że wybrano odpowiedni zespół dla konta dewelopera firmy Apple. Środowisko Xcode powinno automatycznie ściągnąć utworzony wcześniej profil aprowizowania na podstawie identyfikatora pakietu.
-   
+
     Jeśli nowy profil aprowizowania utworzony w programie Xcode nie jest widoczny, odśwież profile dla Twojej tożsamości podpisywania. Kliknij pozycję **Xcode** na pasku menu, kliknij pozycję **Preferences** (Preferencje), kliknij kartę **Account** (Konto), kliknij przycisk **View Details** (Pokaż szczegóły), kliknij tożsamość podpisywania, a następnie kliknij przycisk odświeżania w prawym dolnym rogu.
 
     ![Xcode — profil aprowizowania][9]
@@ -92,99 +94,102 @@ Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz para
 4. Wybierz kartę **Capabilities** (Możliwości) i upewnij się, że powiadomienia push są włączone.
 
     ![Xcode — możliwości push][12]
-   
+
 5. Pobierz [Struktura Windows Azure Messaging] i rozpakuj plik. W programie Xcode kliknij prawym przyciskiem myszy projekt i kliknij opcję **Add Files to** (Dodaj pliki do), aby dodać folder **WindowsAzureMessaging.framework** do projektu Xcode. Wybierz pozycję **Options** (Opcje), upewnij się, że pozycja **Copy items if needed** (Skopiuj elementy w razie potrzeby) jest zaznaczona, a następnie kliknij pozycję **Add** (Dodaj).
 
     ![Rozpakowywanie zestawu SDK platformy Azure][10]
 
 6. Dodaj nowy plik nagłówkowy do projektu o nazwie **HubInfo.h**. Ten plik zawiera stałe używane przez centrum powiadomień. Dodaj następujące definicje i zastąp symbole zastępcze literału ciągu przy użyciu *nazwy centrum* i zanotowanej wcześniej wartości *DefaultListenSharedAccessSignature*.
 
-    ```obj-c
-        #ifndef HubInfo_h
-        #define HubInfo_h
-   
-            #define HUBNAME @"<Enter the name of your hub>"
-            #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
-   
-        #endif /* HubInfo_h */
+    ```objc
+    #ifndef HubInfo_h
+    #define HubInfo_h
+
+        #define HUBNAME @"<Enter the name of your hub>"
+        #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
+
+    #endif /* HubInfo_h */
     ```
-    
+
 7. Otwórz plik **AppDelegate.h** i dodaj następujące dyrektywy importu:
 
-    ```obj-c
-        #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
-        #import <UserNotifications/UserNotifications.h> 
-        #import "HubInfo.h"
+    ```objc
+    #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
+    #import <UserNotifications/UserNotifications.h> 
+    #import "HubInfo.h"
     ```
 8. W **pliku AppDelegate.m** dodaj następujący kod w metodzie **didFinishLaunchingWithOptions** zależnie od wersji systemu iOS. Ten kod rejestruje dojście do urządzenia w usłudze APNs:
 
-    ```obj-c
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-            UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
-   
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    ```objc
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
+        UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
-   
+
 9. W tym samym pliku dodaj następujące metody:
 
-    ```obj-c
-         - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-           SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
-                                        notificationHubPath:HUBNAME];
-   
-            [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-               if (error != nil) {
-                   NSLog(@"Error registering for notifications: %@", error);
-                }
-                else {
-                   [self MessageBox:@"Registration Status" message:@"Registered"];
-              }
-          }];
-         }
-   
-        -(void)MessageBox:(NSString *) title message:(NSString *)messageText
-        {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
-                cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+    ```objc
+        - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+                                    notificationHubPath:HUBNAME];
+
+        [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
+            if (error != nil) {
+                NSLog(@"Error registering for notifications: %@", error);
+            }
+            else {
+                [self MessageBox:@"Registration Status" message:@"Registered"];
+            }
+        }];
         }
+
+    -(void)MessageBox:(NSString *) title message:(NSString *)messageText
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     ```
 
     Ten kod łączy się z centrum powiadomień przy użyciu informacji o połączeniu określonych w pliku HubInfo.h. Następnie przekazuje token urządzenia do centrum powiadomień, aby umożliwić wysyłanie powiadomień.
 
 10. W tym samym pliku dodaj następującą metodę służącą do wyświetlania elementu **UIAlert** w przypadku otrzymania powiadomienia, gdy aplikacja jest aktywna:
 
-    ```obj-c
-            - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-               NSLog(@"%@", userInfo);
-               [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
-           }
+    ```objc
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+        NSLog(@"%@", userInfo);
+        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+    }
     ```
 
 11. Skompiluj i uruchom aplikację na urządzeniu, aby upewnić się, że nie występują żadne błędy.
 
 ## <a name="send-test-push-notifications"></a>Wysyłanie testowych powiadomień wypychanych
+
 Odbieranie powiadomień w aplikacji możesz przetestować za pomocą opcji *Wysyłanie testowe* w witrynie [Azure Portal]. Powoduje to wysłanie testowego powiadomienia push na urządzenie.
 
 ![Witryna Azure Portal — wysyłanie testowe][30]
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-
 ## <a name="verify-that-your-app-receives-push-notifications"></a>Sprawdzanie, czy aplikacja odbiera powiadomienia push
+
 Aby przetestować powiadomienia wypychane w systemie iOS, należy wdrożyć aplikację na fizycznym urządzeniu z systemem iOS. Nie można wysłać powiadomień wypychanych firmy Apple przy użyciu symulatora systemu iOS.
 
 1. Uruchom aplikację i upewnij się, że rejestracja zakończyła się powodzeniem, a następnie naciśnij przycisk **OK**.
-   
+
     ![Test rejestracji powiadomień wypychanych aplikacji dla systemu iOS][33]
-2. Następnie wyślij z witryny [Azure Portal] testowe powiadomienie push, jak opisano powyżej. 
+
+2. Następnie wyślij z witryny [Azure Portal] testowe powiadomienie push, jak opisano powyżej.
 
 3. Powiadomienie wypychane zostanie wysłane do wszystkich urządzeń zarejestrowanych do odbierania powiadomień od określonego centrum powiadomień.
-   
+
     ![Test odbierania powiadomienia wypychanego z aplikacji dla systemu iOS][35]
 
 ## <a name="next-steps"></a>Następne kroki
+
 W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zarejestrowanych urządzeń z systemem iOS. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń z systemem iOS, przejdź do następującego samouczka: 
 
 > [!div class="nextstepaction"]

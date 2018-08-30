@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/31/2018
+ms.date: 08/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 80cbe09eca2e5aacd46325e9add35f3ec8aae407
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801453"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143278"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Tożsamość hybrydowa: porównanie narzędzi do integracji katalogów
 Narzędzia do integracji katalogów były rozbudowywane i rozwijane przez wiele lat.  Ten dokument zapewnia skonsolidowany widok tych narzędzi i ułatwia porównanie funkcji, które są w nich dostępne.
@@ -45,14 +45,20 @@ PZ = publiczna wersja zapoznawcza
 | Połączenie z pojedynczym lokalnym lasem usługi AD |● |● |● |● |● |
 | Połączenie z wieloma lokalnymi lasami usługi AD |● |● | |● |● |
 | Połączenie z wieloma lokalnymi organizacjami Exchange |● | | | | |
-| Połączenie z pojedynczym lokalnym katalogiem LDAP | | | |● |● |
-| Połączenie z wieloma lokalnymi katalogami LDAP |  | | |● |● |
-| Połączenie z lokalnymi katalogami usługi AD i lokalnymi katalogami LDAP | | | |● |● |
+| Połączenie z pojedynczym lokalnym katalogiem LDAP |●* | | |● |● | 
+| Połączenie z wieloma lokalnymi katalogami LDAP |●*  | | |● |● | 
+| Połączenie z lokalnymi katalogami usługi AD i lokalnymi katalogami LDAP |●* | | |● |● | 
 | Połączenie z systemami niestandardowymi (np. SQL, Oracle, MySQL itp.) |PW | | |● |● |
 | Synchronizowanie atrybutów zdefiniowanych przez klienta (rozszerzenia katalogów) |● | | | | |
 | Połączenie z lokalnymi systemami kadr (np. SAP, Oracle eBusiness, PeopleSoft) |PW | | |● |● |
 | Obsługuje reguły synchronizacji programu FIM i łączniki do aprowizowania dla systemów lokalnych | | | |● |● |
 
+ 
+& #42; Obecnie są obsługiwane dwie związane z tym opcje.  Oto one: 
+
+   1. Można użyć ogólnego łącznika LDAP i włączyć go poza usługą Azure AD Connect.  Jest to skomplikowane i wymaga partnera na potrzeby wdrażania oraz utrzymywania umowy pomocy technicznej Premium.  Ta opcja umożliwia obsługę zarówno pojedynczych, jak i wielu katalogów LDAP. 
+
+   2. Można opracować własne rozwiązanie do przenoszenia obiektów z usługi LDAP do usługi Active Directory.  Następnie można zsynchronizować obiekty z programem Azure AD Connect.  Jako rozwiązania do przenoszenia obiektów można użyć programu MIM lub FIM. 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Synchronizacja chmury z danymi lokalnymi
 | Cecha | Azure Active Directory Connect | Usługi synchronizacji usługi Azure Active Directory — JUŻ NIEOBSŁUGIWANE  | Narzędzie do synchronizacji z usługą Azure Active Directory (DirSync) — JUŻ NIEOBSŁUGIWANE  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |

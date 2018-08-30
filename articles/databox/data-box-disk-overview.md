@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 22211f52f6b9a16f785cacb9364ebe5b74617453
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126630"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127368"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co to jest usługa Azure Data Box Disk? (Wersja zapoznawcza)
 
@@ -106,11 +106,13 @@ W okresie obowiązywania wersji zapoznawczej usługa Data Box Disk może przesy�
 
 |Region platformy Azure  |Region platformy Azure  |
 |---------|---------|
-|Środkowo-zachodnie stany USA     |Środkowo-północne stany USA         |        
-|Zachodnie stany USA 2     | Wschodnie stany USA          |     
-|Zachodnie stany USA     | Wschodnie stany USA 2           |      
-|Środkowo-południowe stany USA   | Europa Zachodnia       |         
-|Środkowe stany USA     | Europa Północna |
+|Środkowo-zachodnie stany USA     |Wschodnie stany USA        |        
+|Zachodnie stany USA 2     |Wschodnie stany USA 2          |     
+|Zachodnie stany USA     | Europa Zachodnia        |      
+|Środkowo-południowe stany USA   |Europa Północna     |         
+|Środkowe stany USA     |Kanada Wschodnia|
+|Środkowo-północne stany USA  |Kanada Środkowa    |
+
 
 
 

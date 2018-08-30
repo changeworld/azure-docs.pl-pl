@@ -8,12 +8,12 @@ ms.author: jasonh
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.openlocfilehash: 07bf3f5013d288934fec6146f52ddc43a2779d98
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7ae53700a2957d8cb6056c19bc96db83b7417020
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043151"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185955"
 ---
 # <a name="azure-data-lake-analytics-documentation"></a>Dokumentacja usługi Azure Data Lake Analytics
 
@@ -108,7 +108,7 @@ Dowiedz się, jak przy użyciu usługi Azure Data Lake Analytics uruchamiać zad
                 <div class="card">
                     <div class="cardText">
                         <h3>Wiersz polecenia</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">Program PowerShell</a></p>
+                        <p><a href="/powershell/module/azurerm.datalakeanalytics">Program PowerShell</a></p>
                         <p><a href="/cli/azure/dla">Interfejs wiersza polecenia 2.0</a></p>
                     </div>
                 </div>

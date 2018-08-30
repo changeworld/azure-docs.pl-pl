@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: 5959eeea7e5a16170414c7ef8036093ce122681d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 60dc0e88998580732b50cb202fb5d00a7cfcae21
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045674"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106685"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -27,7 +27,7 @@ W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Fa
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 
@@ -264,7 +264,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 

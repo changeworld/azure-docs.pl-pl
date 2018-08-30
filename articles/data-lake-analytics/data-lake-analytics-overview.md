@@ -4,18 +4,17 @@ description: Usługa Data Lake Analytics pozwala kierować firmą w oparciu o sz
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: f5425abc484d30f07ce29d6b7b6ec36dad79b651
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a0e4878987d55b57587fe949d3bdaa8921599a14
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623625"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053363"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co to jest usługa Azure Data Lake Analytics?
 
@@ -39,7 +38,7 @@ Usługa Data Lake Analytics wykorzystuje istniejące inwestycje w technologie in
 
 ### <a name="affordable-and-cost-effective"></a>Przystępna cena i niedroga obsługa
 
-Usługa Data Lake Analytics to ekonomiczne rozwiązanie służące do uruchamiania obciążeń związanych z danymi big data. Opłaty są naliczane za poszczególne zadania wykonywane podczas przetwarzania danych. Sprzęt, licencje ani umowy dotyczące pomocy technicznej w zakresie usługi nie są wymagane. System jest automatycznie skalowany w pionie i w poziomie w momencie rozpoczęcia i zakończenia zadania, więc nigdy nie płaci się więcej, niż trzeba. [Dowiedz się więcej na temat kontrolowania kosztów i oszczędzania pieniędzy](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c).
+Usługa Data Lake Analytics to ekonomiczne rozwiązanie służące do uruchamiania obciążeń związanych z danymi big data. Opłaty są naliczane za poszczególne zadania wykonywane podczas przetwarzania danych. Sprzęt, licencje ani umowy dotyczące pomocy technicznej w zakresie usługi nie są wymagane. System jest automatycznie skalowany w pionie i w poziomie w momencie rozpoczęcia i zakończenia zadania, więc nigdy nie płaci się więcej, niż trzeba. [Dowiedz się więcej na temat kontrolowania kosztów i oszczędzania pieniędzy](https://aka.ms/adlasavemoney).
     
 ### <a name="works-with-all-your-azure-data"></a>Współdziałanie z wszystkimi danymi na platformie Azure
   
