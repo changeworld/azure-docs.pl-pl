@@ -10,16 +10,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/13/2018
-ms.openlocfilehash: 9f4ff8684576d90f1958a307d6ab876f0e2515fb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.date: 08/24/2018
+ms.openlocfilehash: 0cb4a5169036fc0a24a5fc5c86d232bb587a6684
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099466"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886297"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
-Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/). W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.
+Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -215,7 +215,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
     ![Podsumowanie migracji](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
 
 ## <a name="run-the-migration"></a>Uruchamianie migracji
-1.  Wybierz polecenie **Uruchom migrację**.
+- Wybierz polecenie **Uruchom migrację**.
 
     Zostanie wyświetlone okno działania migracji, a **Stan** działania będzie określony jako **Oczekujący**.
 

@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: a60ba863dbbd308219f4229319fb98c72180114d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: ff9929d8f2da66b8aa24160c321c9158c832dbc0
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250657"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815189"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W poszczególnych sekcjach tego artykułu opisano kolejne sekcje podręcznika rozwiązania Ansible, umożliwiające tworzenie i konfigurowanie różnych aspektów maszyny wirtualnej z systemem Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
@@ -22,19 +22,7 @@ Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdraża
 
 - **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Skonfiguruj usługę Azure Cloud Shell** lub **zainstaluj i skonfiguruj rozwiązanie Ansible na maszynie wirtualnej z systemem Linux**
-
-  **Konfigurowanie usługi Azure Cloud Shell**
-
-  1. **Skonfiguruj usługę Azure Cloud Shell** — jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zapoznaj się z artykułem [Szybki start: powłoka Bash w usłudze Azure Cloud Shell](/azure/cloud-shell/quickstart), w którym pokazano, jak uruchomić i skonfigurować usługę Cloud Shell. 
-
-  **— LUB —**
-
-  **Instalowanie i konfigurowanie rozwiązania Ansible na maszynie wirtualnej z systemem Linux**
-
-  1. **Zainstaluj rozwiązanie Ansible** — zainstaluj rozwiązanie Ansible na [obsługiwanej platformie Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Skonfiguruj rozwiązanie Ansible** - [Tworzenie poświadczeń platformy Azure i konfigurowanie rozwiązania Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 Rozwiązanie Ansible wymaga grupy zasobów, w której wdrażane są Twoje zasoby. W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona jest grupa zasobów o nazwie `myResourceGroup` w lokalizacji `eastus`:

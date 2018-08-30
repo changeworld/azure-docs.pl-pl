@@ -3,24 +3,18 @@ title: Przykładowy skrypt programu Azure PowerShell — konfigurowanie sieci VP
 description: Konfigurowanie sieci VPN typu lokacja-lokacja.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: anzaman
-ms.openlocfilehash: 62381c08892017512dcf2bd5d9c7f8690bedfb6c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: alzam
+ms.openlocfilehash: dd93a73e4259871634ab50019e277468bc7fb70f
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313413"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886894"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>Tworzenie usługi VPN Gateway i dodawanie połączenia lokacja-lokacja za pomocą programu PowerShell
 

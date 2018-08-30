@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144197"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745294"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 Azure Maps to zbiór usług geoprzestrzennych opartych na aktualnych danych mapowych, zapewniający dokładny kontekst geograficzny do użycia w aplikacjach internetowych i mobilnych. Zawiera interfejsy API REST służące do przedstawiania map, wyszukiwania punktów i tras, obrazowania warunków na drodze, stref czasowych i adresów IP na potrzeby usług lokalizacji. Możesz użyć tych interfejsów API ze znanymi narzędziami, aby szybko tworzyć i skalować rozwiązania, które będą integrować informacje o lokalizacji w rozwiązaniach platformy Azure. Oprócz interfejsów API REST usługa udostępnia również internetową kontrolkę JavaScript. Dzięki niej programowanie jest łatwe i elastyczne, a rezultaty można przenosić na różne platformy. 
@@ -98,7 +98,7 @@ Aby uzyskać informacje dotyczące interfejsów API REST dla usługi IP to Locat
 
 Usługę Azure Maps zaprojektowano pod kątem mobilności i obsługi aplikacji na wielu platformach. Korzysta ona z modelu programowania niezależnego od języka i obsługuje format danych wyjściowych JSON za pośrednictwem interfejsów [API REST](https://docs.microsoft.com/rest/api/maps/). 
 
-Ponadto usługa Azure Maps oferuje wygodną [kontrolkę mapy JavaScript](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest) z prostym modelem programowania, która umożliwia szybkie i łatwe tworzenie aplikacji internetowych i mobilnych. 
+Ponadto usługa Azure Maps oferuje wygodną [kontrolkę mapy JavaScript](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest) z prostym modelem programowania, która umożliwia szybkie i łatwe tworzenie aplikacji internetowych i mobilnych. 
 
 
 ## <a name="usage"></a>Sposób użycia

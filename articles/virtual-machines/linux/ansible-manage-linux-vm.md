@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: 66106346b298fae22cce47081916a6c8eec8fd40
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: 79b10a30eea9e19f7ec21f9f9b7ebb95b4c34bf2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250673"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42813389"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Zarządzanie maszyną wirtualną z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie maszynami wirtualnymi na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu. W tym artykule przedstawiono sposób użycia podręcznika rozwiązania Ansible do uruchomienia i zatrzymania maszyny wirtualnej z systemem Linux. 
@@ -22,21 +22,7 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 
 - **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Skonfiguruj usługę Azure Cloud Shell** lub **zainstaluj i skonfiguruj rozwiązanie Ansible na maszynie wirtualnej z systemem Linux**
-
-  **Konfigurowanie usługi Azure Cloud Shell**
-
-  1. **Skonfiguruj usługę Azure Cloud Shell** — jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zapoznaj się z artykułem [Szybki start: powłoka Bash w usłudze Azure Cloud Shell](/azure/cloud-shell/quickstart), w którym pokazano, jak uruchomić i skonfigurować usługę Cloud Shell. 
-
-  1. **Maszyna wirtualna z systemem Linux** — jeśli nie masz dostępu do maszyny wirtualnej z systemem Linux możesz [utworzyć maszynę wirtualną za pomocą rozwiązania Ansible](ansible-create-vm.md).
-
-  **— LUB —**
-
-  **Instalowanie i konfigurowanie rozwiązania Ansible na maszynie wirtualnej z systemem Linux**
-
-  1. **Zainstaluj rozwiązanie Ansible** — zainstaluj rozwiązanie Ansible na [obsługiwanej platformie Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Skonfiguruj rozwiązanie Ansible** - [Tworzenie poświadczeń platformy Azure i konfigurowanie rozwiązania Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Używanie rozwiązania Ansible do cofnięcia przydziału (zatrzymania) maszyny wirtualnej na platformie Azure
 W tej sekcji pokazano, w jaki sposób użyć rozwiązania Ansible do cofnięcia przydziału (zatrzymania) maszyny wirtualnej na platformie Azure.

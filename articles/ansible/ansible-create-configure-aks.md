@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/21/2018
-ms.openlocfilehash: de692b29902145e44a055680d662c16ed90c56c2
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.date: 08/23/2018
+ms.openlocfilehash: f7dbc124781992ada9c3538cf415b836d8764064
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617179"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810824"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Tworzenie i konfigurowanie klastrów usługi Azure Kubernetes Service na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible służy do zarządzania usługą Azure Kubernetes Service (AKS). W tym artykule pokazano, jak za pomocą rozwiązania Ansible tworzyć i konfigurować klastry usługi Azure Kubernetes Service.
@@ -22,19 +22,7 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 - **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - **Jednostka usługi platformy Azure** — podczas [tworzenia jednostki usługi](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) zwróć uwagę na następujące wartości: **appId**, **displayName**, **password** i **tenant**.
 
-- **Skonfiguruj usługę Azure Cloud Shell** lub **zainstaluj i skonfiguruj rozwiązanie Ansible na maszynie wirtualnej z systemem Linux**
-
-  **Konfigurowanie usługi Azure Cloud Shell**
-
-  1. **Skonfiguruj usługę Azure Cloud Shell** — jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zapoznaj się z artykułem [Szybki start: powłoka Bash w usłudze Azure Cloud Shell](/azure/cloud-shell/quickstart), w którym pokazano, jak uruchomić i skonfigurować usługę Cloud Shell. 
-
-  **— LUB —**
-
-  **Instalowanie i konfigurowanie rozwiązania Ansible na maszynie wirtualnej z systemem Linux**
-
-  1. **Zainstaluj rozwiązanie Ansible** — zainstaluj rozwiązanie Ansible na [obsługiwanej platformie Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Skonfiguruj rozwiązanie Ansible** - [Tworzenie poświadczeń platformy Azure i konfigurowanie rozwiązania Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
 > Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. 
