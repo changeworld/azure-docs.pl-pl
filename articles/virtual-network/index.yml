@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: edf14b451872addf3c2abb368170fc54383ceb94
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186618"
 documentType: LandingData
 title: Dokumentacja usługi Virtual Network
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2018
   ms.author: jdial
-  ms.openlocfilehash: 7d6e02f7031c8414d28fba8e1baab8b35eb14968
-  ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/21/2018
-  ms.locfileid: "36309675"
 abstract:
   description: Dowiedz się, jak korzystać z usługi Azure Virtual Network. Z przewodników Szybki start, samouczków, przykładów i innych materiałów dowiesz się, jak wdrożyć sieć wirtualną, sterować filtrowaniem i routingiem ruchu oraz łączyć sieć wirtualną z innymi sieciami wirtualnymi.
 sections:
@@ -59,17 +59,17 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Implementowanie sieci platformy Microsoft Azure
-      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Administrator platformy Azure
+      href: https://go.microsoft.com/fwlink/?linkid=2012827
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
-    - title: Planowanie i projektowanie rozwiązań sieciowych platformy Microsoft Azure
-      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+        href: https://go.microsoft.com/fwlink/?linkid=2012827
+    - title: Architekt rozwiązań platformy Azure
+      href: https://go.microsoft.com/fwlink/?linkid=2012824
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
-    - title: Administrowanie platformą Microsoft Azure dla administratorów usługi AWS
+        href: https://go.microsoft.com/fwlink/?linkid=2012824
+    - title: Administrowanie platformą Azure dla administratorów usługi AWS
       href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg

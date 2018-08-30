@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 381ae1fe28abe097defcad53555e27c1f7347f08
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186685"
 documentType: LandingData
 title: Dokumentacja dotycząca maszyn wirtualnych z systemem Windows
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: f5cfe6dca9488a6b718a9495248d9078cfa8ed2d
-  ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/14/2018
-  ms.locfileid: "34166503"
 abstract:
   description: Maszyny wirtualne z systemem Windows na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Windows Server. Dowiedz się, jak tworzyć, konfigurować i skalować maszyny wirtualne z systemem Windows oraz zarządzać nimi, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:
@@ -88,21 +88,11 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Zarządzanie infrastrukturą
-      href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
+    - title: Administrator platformy Azure
+      href: https://go.microsoft.com/fwlink/?linkid=2012827
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: Rozpoczynanie pracy z maszynami wirtualnymi
-      href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: Rozpoczynanie pracy z monitorowaniem rozwiązania IaaS
-      href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
+        href: https://go.microsoft.com/fwlink/?linkid=2012827
 - title: Przykłady
   items:
   - type: paragraph

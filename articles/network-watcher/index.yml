@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 7cbbc8d1d5142c4ddb400bb0698c703b82f5a82d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185591"
 documentType: LandingData
 title: Dokumentacja usługi Network Watcher
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/24/2018
   ms.author: jdial
-  ms.openlocfilehash: 44e4e55b44d4a0f6998597217716f8b957b48fdc
-  ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37016323"
 abstract:
   description: Dowiedz się, jak korzystać z usługi Azure Network Watcher. Przewodniki Szybki start, samouczki i inne zasoby przedstawiają sposób uzyskiwania szczegółowych informacji na temat usługi Azure Virtual Network przy użyciu narzędzi, takich jak przechwytywanie pakietów i dzienniki przepływów sieciowych grup zabezpieczeń, w celu diagnozowania problemów z przekierowywaniem i filtrowaniem ruchu oraz monitorowania połączeń.
 sections:
@@ -59,17 +59,17 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Implementowanie sieci platformy Microsoft Azure
-      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Administrator platformy Azure
+      href: https://go.microsoft.com/fwlink/?linkid=2012827
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
-    - title: Planowanie i projektowanie rozwiązań sieciowych platformy Microsoft Azure
-      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+        href: https://go.microsoft.com/fwlink/?linkid=2012827
+    - title: Architekt rozwiązań platformy Azure
+      href: https://go.microsoft.com/fwlink/?linkid=2012824
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
-    - title: Administrowanie platformą Microsoft Azure dla administratorów usługi AWS
+        href: https://go.microsoft.com/fwlink/?linkid=2012824
+    - title: Administrowanie platformą Azure dla administratorów usługi AWS
       href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg

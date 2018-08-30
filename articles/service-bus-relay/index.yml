@@ -1,0 +1,76 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b741e9fd30119aaeb5248ae3fae906a70cb163e4
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144790"
+documentType: LandingData
+title: Dokumentacja usługi Azure Service Bus Relay
+metadata:
+  title: Dokumentacja usługi Azure Service Bus Relay
+  meta.description: Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.
+  services: service-bus-relay
+  author: sethmanheim
+  manager: timlt
+  ms.service: service-bus-relay
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/21/2018
+  ms.author: sethm
+abstract:
+  description: Usługa Azure Relay ułatwia tworzenie aplikacji hybrydowych między środowiskiem lokalnym i środowiskiem chmury w korporacyjnym środowisku sieciowym oraz w chmurze publicznej bez konieczności otwierania połączenia przez zaporę i bez wprowadzania niepożądanych zmian do infrastruktury sieci korporacyjnej.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak wysyłać i odbierać komunikaty przy użyciu usługi Azure Relay:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/media/index/logo_net.svg
+      text: Elementy WebSocket platformy .NET
+      href: /azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started
+    - image:
+        src: /azure/media/index/logo_net.svg
+      text: Protokół HTTP platformy .NET
+      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started
+    - image:
+        src: /azure/media/index/logo_nodejs.svg
+      text: Elementy WebSocket środowiska Node.js
+      href: /azure/service-bus-relay/relay-hybrid-connections-node-get-started
+    - image:
+        src: /azure/media/index/logo_nodejs.svg
+      text: Protokół HTTP środowiska Node.js
+      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak tworzyć, wysyłać i odbierać komunikaty oraz zarządzać nimi za pomocą usługi Azure Relay
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">Uwidacznianie lokalnej usługi WCF dla aplikacji internetowej w chmurze</a>
+    - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">Uwidacznianie lokalnej usługi WCF dla klienta WCF spoza sieci</a>
+    - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">Uwidacznianie lokalnej usługi WCF dla aplikacji spoza sieci</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples">Przykłady usługi Azure Relay</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Języki
+      html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/servicebus/">Dokumentacja interfejsu API REST</a></p>
