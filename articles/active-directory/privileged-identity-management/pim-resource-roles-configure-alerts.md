@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie alertami zabezpieczeń dla zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano alerty zabezpieczeń w usłudze PIM.
+title: Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bd13421b0c1574475516da942abe4e8c71ed52
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620420"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188836"
 ---
-# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Zarządzanie alertami zabezpieczeń dla zasobów platformy Azure przy użyciu Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM
 Privileged Identity Management (PIM) dla zasobów platformy Azure generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na stronie alertów. 
 
 ![Strona alertów](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
@@ -50,3 +50,8 @@ Na stronie alertów, przejdź do **ustawienia**.
 
 Dostosowywanie ustawień na różne alerty chcesz pracować w swoim środowisku i cele zabezpieczeń.
 ![Dostosowywanie ustawień](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Wymagaj uwierzytelniania wieloskładnikowego dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-require-mfa.md)
+- [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-alerts.md)

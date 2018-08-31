@@ -1,6 +1,6 @@
 ---
-title: Inspekcja role zasobów dla zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak uzyskać wgląd w całą aktywność roli dla danego zasobu.
+title: Wyświetl historię inspekcji dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić historię inspekcji dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8f328a609d696886ed452589d3cdfb5f45aec62a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c0536423e9640f78149b612ec66b0a07cdcf24bb
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621287"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189315"
 ---
-# <a name="audit-resource-roles-for-azure-resources-by-using-privileged-identity-management"></a>Role zasobów inspekcji dla zasobów platformy Azure przy użyciu Privileged Identity Management 
+# <a name="view-audit-history-for-azure-resource-roles-in-pim"></a>Wyświetl historię inspekcji dla ról zasobów platformy Azure w usłudze PIM
 
 Inspekcja zasobu zapewnia wgląd w całą aktywność roli dla zasobu. Można filtrować informacje przy użyciu wstępnie zdefiniowanych datę lub zakres niestandardowy.
 ![Informacje o filtrze](media/azure-pim-resource-rbac/rbac-resource-audit.png)
@@ -31,7 +31,7 @@ Inspekcja zasobu również zapewnia szybki dostęp do szczegółowych działań 
 
 ![Więcej szczegółów działania](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-# <a name="my-audit"></a>Moja inspekcja
+## <a name="my-audit"></a>Moja inspekcja
 
 Moja inspekcja zapewnia wgląd w działania roli osobistych użytkownika. Można filtrować informacje przy użyciu wstępnie zdefiniowanych datę lub zakres niestandardowy.
 ![Działania roli osobistej](media/azure-pim-resource-rbac/my-audit-time.png)
@@ -46,3 +46,6 @@ Wybieranie aktywacji określoną rolę pokazuje szczegóły uaktywnienia roli i 
 
 ![Wybierz aktywacji roli](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-use-audit-log.md)

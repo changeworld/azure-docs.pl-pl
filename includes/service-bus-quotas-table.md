@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/04/2018
-ms.author: sethm
+ms.date: 08/29/2018
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0ff1e31e52c7db5c41f92cb9e4cb1a17f28dea6f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 481ae07ae9f8877ff93b2fee948849076c054906
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38756193"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184626"
 ---
 W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne dla komunikatów usługi Service Bus. Aby uzyskać informacje o cenach i inne limity przydziału dla usługi Service Bus, zobacz [cennik usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) Przegląd.
 
@@ -24,7 +24,7 @@ W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne 
 | Rozmiar kolejki/tematu |Jednostka |Zdefiniowane podczas tworzenia kolejki lub tematu. <br/><br/> Kolejne komunikaty przychodzące są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |1, 2, 3, 4 GB lub 5 GB.<br /><br />W jednostce SKU Premium, jak również Standard z [partycjonowanie](/azure/service-bus-messaging/service-bus-partitioning) włączone, rozmiar maksymalny kolejki lub tematu jest 80 GB. |
 | Liczba równoczesnych połączeń w przestrzeni nazw |Przestrzeń nazw |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Operacje REST są wliczane równoczesne połączenia TCP. |NetMessaging: 1000<br /><br />PROTOKÓŁ AMQP: 5000 |
 | Liczba równoczesnych odbierania żądań w jednostce kolejki/tematu/subskrypcji |Jednostka |Otrzymywać kolejne żądania są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Ten limit przydziału dotyczy łączna liczba równoczesnych operacji odbioru we wszystkich subskrypcjach na temat. |5000 |
-| Liczba tematów/kolejek na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania w celu utworzenia nowego tematu lub kolejki w przestrzeni nazw są odrzucane. W rezultacie, jeśli skonfigurowana za pośrednictwem [witryny Azure portal][Azure portal], generowany jest komunikat o błędzie. Jeśli jest wywoływana z interfejsem API zarządzania, wyjątek jest odbierany przez kod wywołujący. |10 000<br /><br />Całkowita liczba tematów i kolejek w przestrzeni nazw musi być mniejsza lub równa 10 000. |
+| Liczba tematów/kolejek na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania w celu utworzenia nowego tematu lub kolejki w przestrzeni nazw są odrzucane. W rezultacie, jeśli skonfigurowana za pośrednictwem [witryny Azure portal][Azure portal], generowany jest komunikat o błędzie. Jeśli jest wywoływana z interfejsem API zarządzania, wyjątek jest odbierany przez kod wywołujący. |10 000 (warstwa podstawowa/standardowa). Całkowita liczba tematów i kolejek w przestrzeni nazw musi być mniejsza lub równa 10 000. <br/><br/>Dla warstwy premium, 1000 na unit(MU) obsługi komunikatów. Maksymalny limit wynosi 4000. |
 | Liczba [podzielona na partycje kolejek/tematów](/azure/service-bus-messaging/service-bus-partitioning) na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania do tworzenia nowego podzielonym na partycje tematu lub kolejki w przestrzeni nazw są odrzucane. W rezultacie, jeśli skonfigurowana za pośrednictwem [witryny Azure portal][Azure portal], generowany jest komunikat o błędzie. Jeśli wywoływane z interfejsu API, zarządzania **QuotaExceededException** wyjątek jest odbierany przez kod wywołujący. |Warstw podstawowa i standardowa — 100<br/><br/>Partycjonowane jednostki nie są obsługiwane w [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) warstwy.<br/><br />Każdy podzieleniu kolejki lub tematu, liczy się do limitu przydziału 10 000 jednostek na obszar nazw. |
 | Maksymalny rozmiar dowolnego komunikatów ścieżka jednostki: kolejki lub tematu |Jednostka |- |260 znaków |
 | Maksymalny rozmiar dowolnego komunikatów nazwa jednostki: reguły w przestrzeni nazw, subskrypcji lub subskrypcji |Jednostka |- |50 znaków |
@@ -33,7 +33,7 @@ W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne 
 | Rozmiar właściwości wiadomości dla jednostki kolejki/tematu/subskrypcji |Jednostka |A **SerializationException** generowany jest wyjątek. |Maksymalny rozmiar właściwości dla każdej właściwości jest 32 K. całkowity rozmiar wszystkich właściwości nie może być dłuższa niż 64 K. Ten limit dotyczy całego nagłówek [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage), która zawiera obie właściwości użytkownika, a także właściwości systemu (takich jak [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [etykiety](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label), [ Identyfikator komunikatu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)i tak dalej). |
 | Liczba subskrypcji na temat |Jednostka |Kolejne żądania, aby utworzyć dodatkowe subskrypcje tematu są odrzucane. W rezultacie Jeśli skonfigurowana za pośrednictwem portalu, jest wyświetlany komunikat o błędzie. Jeśli jest wywoływana z interfejsu API zarządzania wyjątek jest odbierany przez kod wywołujący. |2,000 |
 | Liczba filtrów SQL na temat |Jednostka |Kolejne żądania do tworzenia dodatkowych filtrów tematu są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |2,000 |
-| Liczba filtry korelacji przypadających na temat |Jednostka |Kolejne żądania do tworzenia dodatkowych filtrów tematu są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |100,000 |
+| Liczba filtry korelacji przypadających na temat |Jednostka |Kolejne żądania do tworzenia dodatkowych filtrów tematu są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |100 000 |
 | Rozmiar SQL filtry/akcji |Przestrzeń nazw |Kolejne żądania do tworzenia dodatkowych filtrów są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna długość ciągu warunek filtru: 1024 (1 KB).<br /><br />Maksymalna długość ciągu działanie reguły: 1024 (1 KB).<br /><br />Maksymalna liczba wyrażeń na działanie reguły: 32. |
 | Liczba [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) reguł na przestrzeń nazw, kolejki lub tematu |Jednostki, przestrzeń nazw |Każde kolejne wywołanie tworzenia dodatkowych reguł są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna liczba reguł: 12. <br /><br /> Reguły, które są skonfigurowane w przestrzeni nazw usługi Service Bus dotyczą wszystkie kolejki i tematy w tej przestrzeni nazw. |
 | Liczba komunikatów na transakcję | Transakcji | Dodatkowe wiadomości przychodzące są odrzucane i podając wyjątek "nie można wysyłać więcej niż 100 komunikatów w ramach jednej transakcji" jest odbierany przez kod wywołujący. | 100 <br /><br /> Dla obu **Send()** i **SendAsync()** operacji. |

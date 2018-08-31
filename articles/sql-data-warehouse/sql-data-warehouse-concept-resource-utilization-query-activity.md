@@ -3,19 +3,19 @@ title: Usługa Azure SQL Data Warehouse możliwości zarządzania i monitorowani
 description: Dowiedz się, jakie funkcje są dostępne do zarządzania i monitorowania usługi Azure SQL Data Warehouse. Użyj witryny Azure portal i dynamicznych widoków zarządzania (DMV), aby zrozumieć działanie zapytania i wykorzystania zasobów magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff304fa478942254cca372282a30a1a3f00f354
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c783045d242725ee19dfe7e0baee13625d986312
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112973"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246498"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie aktywności wykorzystanie i kwerendy zasobów w usłudze Azure SQL Data Warehouse
 Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania usługi data warehouse zapewnia konfigurowalne utrzymania okresów, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innych usług, takich jak usługi Operations Management Suite (OMS) do monitorowania platformy Azure / Log Analytics i Azure Monitor, aby zapewnić kompleksowe monitorowanie środowisko nie tylko magazyn danych, ale także całą platformę Azure Platforma analiz dla zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 

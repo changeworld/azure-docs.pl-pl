@@ -1,8 +1,20 @@
----Tytuł danych: ponowne hostowanie aplikacji w środowisku lokalnym firmy Contoso, migrując maszyny wirtualne platformy Azure i wystąpienia zarządzanego Azure SQL Database | Microsoft Docs description: Dowiedz się, jak Contoso rehostowaniu aplikację w środowisku lokalnym, na maszynach wirtualnych platformy Azure, a za pomocą wystąpienia zarządzanego Azure SQL Database.
-usługi: Autor usługa site recovery: rayne wiselman Menedżera: carmonm ms.service: ms.topic usługa site recovery: koncepcyjny ms.date: 08/13/2018 ms.author: raynew
-
 ---
-
+title: Ponowne hostowanie aplikacji w środowisku lokalnym firmy Contoso, migrując maszyny wirtualne platformy Azure i wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Contoso rehostowaniu aplikację w środowisku lokalnym, na maszynach wirtualnych platformy Azure, a za pomocą wystąpienia zarządzanego Azure SQL Database.
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: conceptual
+ms.date: 08/29/2018
+ms.author: raynew
+ms.openlocfilehash: f2d951a5d1b0add59e6b233fd6bc146ec54034b4
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189469"
+---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
 W tym artykule Contoso przeprowadza migrację swoich aplikacji SmartHotel maszyny Wirtualnej frontonu na Maszynie wirtualnej platformy Azure przy użyciu usługi Azure Site Recovery. Contoso wykonuje także migrację bazy danych aplikacji do wystąpienia zarządzanego Azure SQL Database.
@@ -13,38 +25,28 @@ W tym artykule Contoso przeprowadza migrację swoich aplikacji SmartHotel maszyn
 Ten artykuł stanowi jeden w serii artykułów, które dokumentują sposób fikcyjnej firmy Contoso migruje swoje zasoby lokalne do chmury Microsoft Azure. Seria zawiera ogólne informacje i szereg scenariuszy, które ilustrują sposób konfigurowania infrastruktury migracji i uruchamiania różnych rodzajów migracji. Scenariusze zwiększanie się stopnia skomplikowania. Artykuły zostaną dodane do serii wraz z upływem czasu.
 
 
-Artykuł | Szczegóły | Stan
+**Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie strategii migracji firmy Contoso, serię artykułów i przykładowe aplikacje, które są używane w tej serii. | Dostępne
+[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
 [Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | Contoso przygotowuje swoją infrastrukturę lokalną i jej infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów migracji w serii. | Dostępne
-[Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure](contoso-migration-assessment.md) | Contoso uruchamia oceny jego SmartHotel aplikacja dwuwarstwowa lokalnych działających z oprogramowaniem VMware. Contoso ocenia maszyn wirtualnych aplikacji przy użyciu [usługi Azure Migrate](migrate-overview.md) usługi. Contoso ocenia aplikacji bazy danych programu SQL Server przy użyciu [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
-Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji SmartHotel w środowisku lokalnym. Contoso aplikacja jest migrowana maszyna wirtualna frontonu za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso przeprowadzanie migracji aplikacji baz danych do wystąpienia usługi Azure SQL Database Managed przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | W tym artykule
-[Artykuł 5: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Contoso app jego SmartHotel maszyn wirtualnych jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
+[Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure](contoso-migration-assessment.md)  | Contoso uruchamia oceny aplikacji SmartHotel jej w środowisku lokalnym, działające w programie VMware. Contoso ocenia aplikacji maszyn wirtualnych przy użyciu usługi Azure Migrate bazy danych oraz aplikacji programu SQL Server przy użyciu Data Migration Assistant. | Dostępne
+Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji SmartHotel w środowisku lokalnym. Firma Contoso jest migrowana aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso bazy danych aplikacji jest migrowana do wystąpienia zarządzanego Azure SQL Database przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | W tym artykule  
+[Artykuł 5: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Contoso migruje swojej aplikacji SmartHotel maszyn wirtualnych do maszyn wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
 [Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w grupie dostępności AlwaysOn programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje SmartHotel aplikacji. Firma Contoso używa Usługa Site Recovery do migrowania aplikacji maszyn wirtualnych. Usługa migracji bazy danych używa migrować bazę danych aplikacji do klastra programu SQL Server, który jest chroniony przez grupy dostępności AlwaysOn. | Dostępne
-[Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso kończy lift-and-shift migrację swoich aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
-[Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i usługa Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso swoją aplikację osTicket systemu Linux jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Site Recovery. Jej zmigrowaniu bazy danych aplikacji do usługi Azure Database for MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-[Artykuł 9: Refaktoryzacja aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso przeprowadza migrację swoich aplikacji SmartHotel do aplikacji sieci web platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure. | Dostępne
-[Artykuł 10: Refaktoryzacja aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso przeprowadza migrację swoich aplikacji osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu lokacjach. Aplikacja sieci web jest zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | Dostępne
-[Artykuł 11: Refaktoryzacja Team Foundation Server w programie Visual Studio Team Services](contoso-migration-tfs-vsts.md) | Contoso migruje jej wdrożenia serwera Team Foundation Server w środowisku lokalnym przy użyciu funkcji migracji do programu Visual Studio Team Services na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure, a następnie rearchitects aplikacji. Contoso rearchitects warstwy sieci web aplikacji jako kontener, Windows i rearchitects bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service, Azure Functions, Azure Cognitive Services i usługi Azure Cosmos DB. | Dostępne
+[Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso zakończeniu migracji lift-and-shift aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure, za pomocą usługi Azure Site Recovery | Dostępne
+[Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i serwer Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso aplikacji osTicket systemu Linux jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery i bazy danych aplikacji jest migrowana do wystąpienia serwera usługi Azure MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
+[Artykuł 9: Refaktoryzacja aplikację w usłudze Azure Web Apps i Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso SmartHotel app jest migrowana do aplikacji sieci Web platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych | Dostępne
+[Artykuł 10: Refaktoryzacja aplikacji systemu Linux w usłudze Azure Web Apps i usługi Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje swoją aplikację osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu regionach platformy Azure przy użyciu usługi Azure Traffic Manager, zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | Dostępne 
+[Artykuł 11: Refaktoryzacja TFS w usłudze VSTS](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Visual Studio Team Services na platformie Azure. | Dostępne
+[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazę danych za pomocą usługi Azure SQL Database. | Dostępne
+[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
+
+
+
 
 Możesz pobrać przykładową aplikację SmartHotel, która jest używana w tym artykule [GitHub](https://github.com/Microsoft/SmartHotel360).
 
-## <a name="on-premises-architecture"></a>Architektura środowiska lokalnego
 
-
-Ten diagram przedstawia bieżącej infrastruktury lokalnej firmy Contoso:
-
-![Bieżący architektura firmy Contoso](./media/contoso-migration-rehost-vm-sql-managed-instance/contoso-architecture.png)  
-
-- Firma Contoso ma jednego głównego centrum danych. Centrum danych znajduje się w mieście z nowego Jorku w wschodnich Stanach Zjednoczonych.
-- Firma Contoso ma trzy dodatkowe gałęzie lokalne na terenie Stanów Zjednoczonych.
-- Główne centrum danych jest połączony z Internetem za pomocą fiber połączenia Metro Ethernet (500 MB/s).
-- Każdej gałęzi jest połączony z Internetem lokalnie przy użyciu klasy biznesowej połączeń przy użyciu tuneli IPsec sieci VPN, wróć do głównego centrum danych. Ustawienia umożliwia całej sieci firmy Contoso do podłączenia trwale i optymalizuje łączności z Internetem.
-- Główne centrum danych jest w pełni zwirtualizowany z oprogramowaniem VMware. Firma Contoso ma dwa hosty wirtualizacji ESXi 6.5, które są zarządzane przez program vCenter Server 6.5.
-- Firma Contoso używa usługi Active Directory do zarządzania tożsamościami. Firma Contoso używa serwerów DNS w sieci wewnętrznej.
-- Kontrolery domeny w centrum danych, uruchom na maszynach wirtualnych VMware. Kontrolery domeny w lokalnej gałęzi, uruchom na serwerach fizycznych.
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
 
@@ -64,19 +66,67 @@ Zespół chmury Contoso zidentyfikowała cele tej migracji. Firma używa celów 
 - Zadania administracyjne bazy danych należy zminimalizować, po przeprowadzeniu migracji aplikacji.
 - Contoso nie chcesz używać usługi Azure SQL Database dla tej aplikacji. Szuka alternatyw.
 
-## <a name="proposed-architecture"></a>Proponowana architektury
 
-W tym scenariuszu:
+## <a name="solution-design"></a>Projekt rozwiązania
 
-- Firma Contoso chce migrację swoich aplikacji turystycznej dwuwarstwowej w środowisku lokalnym.
-- Aplikacja jest warstwowa między dwiema maszynami wirtualnymi (**WEBVM** i **SQLVM**) i znajduje się na hoście VMware ESXi wersji 6.5 (**contosohost1.contoso.com**). 
+Po przypięciu dół swoje cele i wymagania, Contoso projektuje i przeglądy rozwiązanie wdrażania rozwiązania i identyfikuje proces migracji, w tym usług platformy Azure, który będzie używany do migracji.
+
+### <a name="current-architecture"></a>Bieżącej architektury 
+
+- Firma Contoso ma jednego głównego centrum danych (**contoso-datacenter**). Centrum danych znajduje się w mieście z nowego Jorku w wschodnich Stanach Zjednoczonych.
+- Firma Contoso ma trzy dodatkowe gałęzie lokalne na terenie Stanów Zjednoczonych.
+- Główne centrum danych jest połączony z Internetem za pomocą fiber połączenia Metro Ethernet (500 MB/s).
+- Każdej gałęzi jest połączony z Internetem lokalnie przy użyciu klasy biznesowej połączeń przy użyciu tuneli IPsec sieci VPN, wróć do głównego centrum danych. Ustawienia umożliwia całej sieci firmy Contoso do podłączenia trwale i optymalizuje łączności z Internetem.
+- Główne centrum danych jest w pełni zwirtualizowany z oprogramowaniem VMware. Firma Contoso ma dwa hosty wirtualizacji ESXi 6.5, które są zarządzane przez program vCenter Server 6.5.
+- Firma Contoso używa usługi Active Directory do zarządzania tożsamościami. Firma Contoso używa serwerów DNS w sieci wewnętrznej.
+- Firma Contoso ma lokalnego kontrolera domeny (**contosodc1**).
+- Kontrolerach domeny jest uruchomiony na maszynach wirtualnych VMware. Kontrolery domeny w lokalnej gałęzi, uruchom na serwerach fizycznych.
+- Aplikacja SmartHotel jest warstwowa między dwiema maszynami wirtualnymi (**WEBVM** i **SQLVM**), znajdują się na hoście VMware ESXi wersji 6.5 (**contosohost1.contoso.com**). 
 - Środowisko VMware jest zarządzane przez program vCenter Server 6.5 (**vcenter.contoso.com**) uruchomiona na maszynie Wirtualnej.
-- Contoso przeprowadza migrację bazy danych aplikacji (**SmartHotelDB**) do wystąpienia zarządzanego bazy danych SQL Azure.
-- Contoso umożliwia migrowanie lokalnych maszyn wirtualnych VMware na Maszynie wirtualnej platformy Azure.
-- Firma Contoso ma lokalne centrum danych (**contoso-datacenter**) i kontroler domeny w środowisku lokalnym (**contosodc1**).
+
+![Bieżący architektura firmy Contoso](./media/contoso-migration-rehost-vm-sql-managed-instance/contoso-architecture.png)  
+
+### <a name="proposed-architecture"></a>Proponowana architektury
+
+W tym scenariuszu firma Contoso chce migrację swoich aplikacji turystycznej dwuwarstwowej w środowisku lokalnym w następujący sposób:
+
+- Migracja bazy danych aplikacji (**SmartHotelDB**) do wystąpienia zarządzanego bazy danych SQL Azure.
+- Migrowanie frontonu **WebVM** na Maszynie wirtualnej platformy Azure.
 - Lokalne maszyny wirtualne w centrum danych firmy Contoso zostanie zamknięty, po zakończeniu migracji.
 
 ![Architektura scenariusza](media/contoso-migration-rehost-vm-sql-managed-instance/architecture.png) 
+
+### <a name="database-considerations"></a>Zagadnienia dotyczące bazy danych
+
+Częścią procesu projektowania rozwiązania firmy Contoso zostały porównanie funkcji usługi Azure SQL Database i wystąpienie zarządzane usługi SQL Server. Następujące zagadnienia dotyczące pomogła ich do określania, do korzystania z wystąpienia zarządzanego.
+
+- Zarządzane wystąpienia ma na celu dostarczać prawie 100% zgodności z najnowszą wersją programu SQL Server w środowisku lokalnym. Firma Microsoft zaleca wystąpienia zarządzanego, klienci korzystający z programu SQL Server w środowisku lokalnym lub na maszynie Wirtualnej IaaS, kto chce migrować swoje aplikacje do w pełni zarządzana usługa, za pomocą zmian projektowych minimalny.
+- Firma Contoso jest planowania migracji dużej liczby aplikacji ze środowiska lokalnego do IaaS. Wiele z nich są dostarczane niezależnego dostawcy oprogramowania. Contoso zdaje sobie sprawę, że za pomocą wystąpienia zarządzanego usługi pomagają w zapewnieniu zgodności bazy danych dla tych aplikacji, a nie przy użyciu bazy danych SQL, które mogą nie być obsługiwane.
+- Firma Contoso może po prostu przeprowadzić migrację lift-and-shift do wystąpienia zarządzanego przy użyciu w pełni zautomatyzowane Data Migration Service (DMS). W tej usłudze w miejscu Contoso można użyć go ponownie dla migracji bazy danych w przyszłości.
+- Wystąpienie zarządzane usługi SQL obsługuje programu SQL Server Agent, który jest ważnym zagadnieniem w przypadku aplikacji SmartHotel. Firma Contoso potrzebuje tego zgodności, w przeciwnym razie będzie konieczne zmodyfikowanie planów konserwacji, wymagane przez aplikację.
+- Z pakietem Software Assurance Contoso mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na wystąpienie zarządzane SQL Database za pomocą korzyści użycia hybrydowego platformy Azure dla programu SQL Server. Dzięki temu firmy Contoso zapisać do 30% na wystąpieniu zarządzanym.
+- Wystąpienia zarządzanego w pełni znajduje się w sieci wirtualnej, dzięki czemu zapewnia wysoki poziom izolacji i zabezpieczeń danych firmy Contoso. Contoso można uzyskać z zalet chmury publicznej, przy jednoczesnym zachowaniu środowisko izolowane w publicznym Internecie.
+- Zarządzane wystąpienie obsługuje wiele funkcji zabezpieczeń, w tym maskowania danych zawsze zaszyfrowane, dynamiczne zabezpieczenia na poziomie wiersza i wykrywania zagrożeń.
+
+
+### <a name="solution-review"></a>Przegląd rozwiązania
+
+Contoso ocenia proponowane projektu poprzez umieszczenie razem listę zalet i wad.
+
+**Zagadnienia** | **Szczegóły**
+--- | ---
+**Specjaliści** |  WEBVM zostaną przeniesione na platformę Azure bez konieczności wprowadzania zmian, tworzenie prostego migracji.<br/><br/> Wystąpienie zarządzane usługi SQL obsługuje wymagania techniczne i cele firmy Contoso.<br/><br/> Wystąpienie zarządzane zapewnia 100% zgodności z ich bieżącego wdrożenia podczas przenoszenia ich od programu SQL Server 2008 R2.<br/><br/>  Mogą one używać swoich inwestycji w pakiet Software Assurance i za pomocą korzyści użycia hybrydowego platformy Azure forSQL Server i Windows Server.<br/><br/> Można ponownie użyć Database Migration Service na potrzeby dodatkowych migracji w przyszłości.<br/><br/> Wystąpienie zarządzane usługi SQL ma wbudowane odporności na uszkodzenia, która nie ma konieczności konfiguruje firmy Contoso. Zapewnia to, że warstwa danych nie jest już pojedynczym punktem trybu failover.
+**Wady** | WEBVM jest uruchomiony system Windows Server 2008 R2.  Mimo że ten system operacyjny jest obsługiwany przez platformę Azure, nie jest już obsługiwana platforma. [Dowiedz się więcej](https://support.microsoft.com/en-us/help/956893).<br/><br/> Warstwa sieci web pozostanie pojedynczy punkt przejścia w tryb failover przy użyciu tylko WEBVM dostarczanie usług.<br/><br/> Contoso należy kontynuować obsługi warstwy aplikacji sieci web, jako Maszynę wirtualną, zamiast przenosić do zarządzanej usługi, takie jak usługa Azure App Service.<br/><br/> Dla warstwy danych wystąpienia zarządzanego może nie być najlepszym rozwiązaniem Contoso dostosowania systemu operacyjnego lub serwera bazy danych, lub jeśli chcesz uruchamiać aplikacje innych firm, wraz z programu SQL Server. Uruchamianie programu SQL Server na maszynie Wirtualnej IaaS może dostarczyć Ta elastyczność. 
+
+### <a name="migration-process"></a>Proces migracji
+
+Contoso zmigruje warstwy sieci web i danych w jego SmartHotel aplikacji na platformie Azure, wykonując następujące kroki:
+
+1. Firma Contoso ma już swoją infrastrukturę platformy Azure w miejscu, więc po prostu musi dodać kilka określonych składników platformy Azure, w tym scenariuszu.
+2. Warstwa danych zostaną poddane migracji za pomocą programu Data Migration Service. Łączy się maszynę Wirtualną w środowisku lokalnym SQL Server z usługi migracji danych przez połączenie VPN lokacja lokacja między centrum danych firmy Contoso i platformą Azure. Następnie Data Migration Service przeprowadza migrację bazy danych.
+3. Warstwa sieci web zostanie zmigrowana przy użyciu migracji lift-and-shift przy użyciu usługi Site Recovery. Proces wymaga ich przygotowywanie w lokalnym środowisku VMware, konfigurowanie włączenie replikacji i migracja maszyn wirtualnych przez awaryjną na platformie Azure.
+
+     ![Architekturę migracji](media/contoso-migration-rehost-vm-sql-managed-instance/migration-architecture.png) 
 
 ### <a name="azure-services"></a>Usługi platformy Azure
 
@@ -86,15 +136,7 @@ Usługa | Opis | Koszty
 [Wystąpienie zarządzane usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Wystąpienie zarządzane to usługa zarządzana baza danych, która reprezentuje w pełni zarządzane wystąpienia programu SQL Server w chmurze platformy Azure. Używa tego samego kodu jako najnowszą wersję aparatu bazy danych programu SQL Server i zawierają najnowsze funkcje, ulepszeń wydajności i poprawek zabezpieczeń. | Za pomocą wystąpienia zarządzanego SQL Database działających na platformie Azure spowoduje naliczenie opłaty na podstawie pojemności. Dowiedz się więcej o [wystąpieniu zarządzanym kalkulacji cen](https://azure.microsoft.com/pricing/details/sql-database/managed/). 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Usługa Site Recovery organizuje i zarządza migracji i odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure i lokalnych maszyn wirtualnych i serwerów fizycznych.  | Podczas replikacji do platformy Azure są naliczane opłaty za magazyn Azure.  Maszyny wirtualne platformy Azure są tworzone i opłaty za operacje po przejściu do trybu failover. Dowiedz się więcej o [Site Recovery, opłaty i ceny](https://azure.microsoft.com/pricing/details/site-recovery/).
 
- ## <a name="migration-process"></a>Proces migracji
-
-Contoso zmigruje warstwy sieci web i danych w jego SmartHotel aplikacji na platformie Azure, wykonując następujące kroki:
-
-1. Firma Contoso ma już swoją infrastrukturę platformy Azure w miejscu, więc po prostu musi dodać kilka określonych składników platformy Azure, w tym scenariuszu.
-2. Warstwa danych zostaną poddane migracji za pomocą programu Data Migration Service. Łączy się maszynę Wirtualną w środowisku lokalnym SQL Server z usługi migracji danych przez połączenie VPN lokacja lokacja między centrum danych firmy Contoso i platformą Azure. Następnie Data Migration Service przeprowadza migrację bazy danych.
-3. Warstwa sieci web zostanie zmigrowana przy użyciu migracji lift-and-shift przy użyciu usługi Site Recovery. Proces wymaga ich przygotowywanie w lokalnym środowisku VMware, konfigurowanie włączenie replikacji i migracja maszyn wirtualnych przez awaryjną na platformie Azure.
-
-     ![Architekturę migracji](media/contoso-migration-rehost-vm-sql-managed-instance/migration-architecture.png) 
+ 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -135,24 +177,24 @@ Aby skonfigurować bazę danych wystąpienia zarządzanego Azure SQL, firma Cont
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego
 
-Contoso konfiguruje sieci wirtualnej w następujący sposób: 
+Administratorzy firmy Contoso Skonfiguruj sieć wirtualną w następujący sposób: 
 
-1. Contoso tworzy nową sieć wirtualną (**EU2-VNET-SQLMI**) w regionie wschodnie stany USA 2 podstawowym. Dodaje sieci wirtualnej, aby **ContosoNetworkingRG** grupy zasobów.
-2. Contoso przypisuje 10.235.0.0/24 przestrzeni adresowej. Contoso gwarantuje, że zakres nie pokrywa się z innymi sieciami, w swojej organizacji.
-2. Contoso dodaje dwie podsieci do sieci:
+1. Tworzą nową sieć wirtualną (**EU2-VNET-SQLMI**) w regionie wschodnie stany USA 2 podstawowym. Dodaje sieci wirtualnej, aby **ContosoNetworkingRG** grupy zasobów.
+2. Przestrzeń adresowa 10.235.0.0/24 on przypisać. Pozwalają zagwarantować, że zakres nie pokrywa się z innymi sieciami, w swojej organizacji.
+3. Dwie podsieci ich dodać do sieci:
     - **SQLMI-DS-EUS2** (10.235.0.0.25)
     - **SQLMI-SAW-EUS2** (10.235.0.128/29). Ta podsieć jest używana do dołączenia w katalogu do wystąpienia zarządzanego.
 
     ![Zarządzane wystąpienia — tworzenie sieci wirtualnej](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
-6. Po wdrożeniu sieci wirtualnej i podsieci Contoso prowadzi komunikację równorzędną sieci w następujący sposób:
+4. Po wdrożeniu sieci wirtualnej i podsieci są komunikację równorzędną sieci w następujący sposób:
 
     - Elementy równorzędne **EUS2-VNET-SQLMI** z **VNET-HUB-EUS2** (centralnej sieci wirtualnej dla wschodnie stany USA 2).
     - Elementów równorzędnych **EUS2-VNET-SQLMI** z **VNET-PROD-EUS2** (produkcyjnego).
 
     ![Komunikacja równorzędna w sieci](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
 
-7. Contoso ustawia niestandardowych ustawień DNS. DNS wskazuje najpierw kontrolery domeny systemu Azure firmy Contoso. System DNS Azure jest dodatkowej. Kontrolery domeny Contoso Azure znajdują się w następujący sposób:
+5. Ustawiają niestandardowych ustawień DNS. DNS wskazuje najpierw kontrolery domeny systemu Azure firmy Contoso. System DNS Azure jest dodatkowej. Kontrolery domeny Contoso Azure znajdują się w następujący sposób:
 
     - Na terenie **EUS2-PROD-DC** podsieci w sieci produkcyjnej wschodnie stany USA 2 (**VNET-PROD-EUS2**)
     - **CONTOSODC3** adres: 10.245.42.4
@@ -179,17 +221,17 @@ Contoso uwzględnia następujące czynniki:
 - Podsieć może być skojarzona z tabelą tras tylko jeden.
 - Nie istnieją żadne dodatkowe opłaty, do tworzenia tabel tras w systemie Microsoft Azure.
 
- Aby skonfigurować routing:
+ Aby skonfigurować routing Contoso administratorów, wykonaj następujące czynności:
 
-1. Contoso tworzy tabelę trasy zdefiniowanej przez użytkownika. Contoso tworzy tabelę tras w **ContosoNetworkingRG** grupy zasobów.
+1. Tworzą tabeli trasy zdefiniowanej przez użytkownika (trasy) w **ContosoNetworkingRG** grupy zasobów.
 
     ![Tabela tras](media/contoso-migration-rehost-vm-sql-managed-instance/mi-route-table.png)
 
-2. Zgodnie z wymaganiami wystąpienia zarządzanego, pod tabelą tras (**MIRouteTable**) jest wdrażana, Contoso dodaje trasę, która ma prefiks adresu 0.0.0.0/0. **Typu następnego przeskoku** ustawiono opcję **Internet**.
+2. Zgodnie z wymaganiami wystąpienia zarządzanego, pod tabelą tras (**MIRouteTable**) jest wdrażana, Dodaj trasę, która ma prefiks adresu 0.0.0.0/0. **Typu następnego przeskoku** ustawiono opcję **Internet**.
 
     ![Prefiks tabeli tras](media/contoso-migration-rehost-vm-sql-managed-instance/mi-route-table-prefix.png)
     
-3. Contoso kojarzy tabelę tras z **SQLMI-DB-EUS2** podsieci (w **EUS2-VNET-SQLMI** sieci). 
+3. skojarzenia tabeli trasy z **SQLMI-DB-EUS2** podsieci (w **EUS2-VNET-SQLMI** sieci). 
 
     ![Podsieci tabeli tras](media/contoso-migration-rehost-vm-sql-managed-instance/mi-route-table-subnet.png)
     
@@ -199,10 +241,10 @@ Dowiedz się, jak [Konfigurowanie tras dla zarządzanego wystąpienia](https://d
 
 ### <a name="create-a-managed-instance"></a>Tworzenie wystąpienia zarządzanego
 
-Teraz firma Contoso może aprowizować wystąpienie zarządzane bazy danych SQL:
+Teraz firmy Contoso, Administratorzy mogą aprowizować wystąpienie zarządzane bazy danych SQL:
 
-1. Ponieważ wystąpienia zarządzanego służy aplikacja biznesowa, Contoso wdraża wystąpienia zarządzanego w regionie wschodnie stany USA 2 z głównej firmy. Contoso dodaje wystąpienie zarządzane, aby **ContosoRG** grupy zasobów.
-2. Contoso wybiera cen warstwy, rozmiar obliczeń i magazynu dla tego wystąpienia. Dowiedz się więcej o [wystąpieniu zarządzanym kalkulacji cen](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+1. Ponieważ wystąpienia zarządzanego służy aplikacja biznesowa, wdrażanych w regionie wschodnie stany USA 2 z głównej firmy wystąpienia zarządzanego. Dodają do wystąpienia zarządzanego **ContosoRG** grupy zasobów.
+2. Wybierają cen warstwy, rozmiar obliczeń i magazynu dla tego wystąpienia. Dowiedz się więcej o [wystąpieniu zarządzanym kalkulacji cen](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
     ![Wystąpienie zarządzane](media/contoso-migration-rehost-vm-sql-managed-instance/mi-create.png)
 
@@ -219,27 +261,27 @@ Dowiedz się, jak [aprowizowania wystąpienia zarządzanego](https://docs.micros
 
 ## <a name="step-2-prepare-the-database-migration-service"></a>Krok 2: Przygotowanie usługi migracji bazy danych
 
-Aby przygotować usługę migracji bazy danych, Contoso musi wykonać kilka czynności:
+Aby przygotować usługę migracji bazy danych, Administratorzy Contoso należy wykonać kilka czynności:
 
 - Zarejestruj dostawcę usługi Database Migration Service na platformie Azure.
-- Udostępnij Database Migration Service dostęp do usługi Azure Storage służącego do przekazywania plików kopii zapasowej, które są używane do migracji bazy danych. Aby zapewnić dostęp do usługi Azure Storage, Contoso tworzy kontener usługi Azure Blob storage. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego dla kontenera magazynu obiektów Blob. 
+- Udostępnij Database Migration Service dostęp do usługi Azure Storage służącego do przekazywania plików kopii zapasowej, które są używane do migracji bazy danych. Aby zapewnić dostęp do usługi Azure Storage, tworzą kontenera usługi Azure Blob storage. Generują identyfikator URI sygnatury dostępu Współdzielonego dla kontenera magazynu obiektów Blob. 
 - Utwórz projekt usługi Database Migration Service.
 
-Następnie Contoso wykonuje następujące czynności:
+Następnie należy wykonać następujące czynności:
 
-1. Contoso rejestruje dostawcy migracji bazy danych w ramach swojej subskrypcji.
+1. One Zarejestruj dostawcę migracji bazy danych w ramach swojej subskrypcji.
     ![Usługa migracji bazy danych — Zarejestruj się](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso tworzy kontener magazynu obiektów Blob. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego, aby usługa migracji bazy danych do niego dostęp.
+2. Tworzą kontenera magazynu obiektów Blob. Contoso generuje identyfikator URI sygnatury dostępu Współdzielonego, aby usługa migracji bazy danych do niego dostęp.
 
     ![Usługę migracji bazy danych — Generowanie identyfikatora URI sygnatury dostępu Współdzielonego](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso tworzy wystąpienie usługi Database Migration Service. 
+3. Tworzą wystąpienie usługi Database Migration Service. 
 
     ![Usługę migracji bazy danych — tworzenie wystąpienia](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Contoso umieszcza wystąpienia usługi Database Migration Service w **EUS2-PROD-DC** podsieci **sieć wirtualna-PROD-DC — EUS2** sieci wirtualnej.
-    - Contoso umieszcza usługa migracji bazy danych, ponieważ usługa musi znajdować się w sieci wirtualnej, które mogą uzyskiwać dostęp do maszyny Wirtualnej serwera SQL w środowisku lokalnym za pośrednictwem bramy sieci VPN.
+4. Umieść one wystąpienie usługi Database Migration Service w **EUS2-PROD-DC** podsieci **sieć wirtualna-PROD-DC — EUS2** sieci wirtualnej.
+    - Usługa migracji bazy danych jest umieszczany w tym miejscu, ponieważ usługa musi znajdować się w sieci wirtualnej, które mogą uzyskiwać dostęp do maszyny Wirtualnej serwera SQL w środowisku lokalnym za pośrednictwem bramy sieci VPN.
     - **VNET-PROD-EUS2** jest połączona z **VNET-HUB-EUS2** i będzie mógł korzystać z bram zdalnych. **Użyj bram zdalnych** opcja gwarantuje, że usługa migracji bazy danych może komunikować się zgodnie z potrzebami.
 
         ![Usługę migracji bazy danych — Konfigurowanie sieci](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
@@ -258,14 +300,14 @@ Kilka elementów platformy Azure są wymagane dla firmy Contoso skonfigurować S
 - Konto magazynu do przechowywania replikowanych danych. 
 - Magazyn usługi Recovery Services na platformie Azure.
 
-Contoso konfiguruje Site Recovery w następujący sposób:
+Administratorzy firmy Contoso skonfiguruj Site Recovery w następujący sposób:
 
 1. Ponieważ maszyna wirtualna ma fronton sieci web do aplikacji SmartHotel, firmy Contoso przechodzi w trybie Failover na maszynie Wirtualnej i jej istniejącej sieci produkcyjnych (**VNET-PROD-EUS2**) i podsiecią (**PROD-FE-EUS2**). Sieci i podsieci znajdują się w regionie wschodnie stany USA 2 podstawowym. Contoso konfigurowania sieci podczas jego [wdrożona infrastruktura platformy Azure](contoso-migration-infrastructure.md).
-2. Contoso tworzy konto magazynu (**contosovmsacc20180528**). Firma Contoso używa konta ogólnego przeznaczenia. Contoso wybiera magazynu w warstwie standardowa i replikacją magazyn lokalnie nadmiarowy.
+2. One tworzenie konta magazynu (**contosovmsacc20180528**). Firma Contoso używa konta ogólnego przeznaczenia. Contoso wybiera magazynu w warstwie standardowa i replikacją magazyn lokalnie nadmiarowy.
 
     ![Site Recovery — Tworzenie konta magazynu](media/contoso-migration-rehost-vm-sql-managed-instance/asr-storage.png)
 
-3. Za pomocą konta magazynu i sieci w miejscu Contoso utworzenie magazynu (**ContosoMigrationVault**). Contoso miejsca magazynu w **ContosoFailoverRG** grupę zasobów, w regionie wschodnie stany USA 2 podstawowym.
+3. Za pomocą konta magazynu i sieci w miejscu tworzą magazyn (**ContosoMigrationVault**). Contoso miejsca magazynu w **ContosoFailoverRG** grupę zasobów, w regionie wschodnie stany USA 2 podstawowym.
 
     ![Recovery Services — utwórz magazyn](media/contoso-migration-rehost-vm-sql-managed-instance/asr-vault.png)
 
@@ -276,7 +318,7 @@ Dowiedz się, jak [Konfigurowanie platformy Azure dla usługi Site Recovery](htt
 
 ## <a name="step-4-prepare-on-premises-vmware-for-site-recovery"></a>Krok 4: Przygotowanie lokalnego wdrożenia oprogramowania VMware do odzyskiwania lokacji
 
-Aby przygotować VMware dla usługi Site Recovery, Contoso, należy wykonać te zadania:
+Do przygotowania odzyskiwania lokacji programu VMware, Administratorzy Contoso wykonać te zadania:
 
 - Przygotowywanie konta na vCenter Server wystąpienia lub hosta vSphere ESXi. Konto automatyzuje proces odnajdowania maszyn wirtualnych.
 - Przygotowywanie konta, które umożliwia automatyczną instalację usługi mobilności na maszynach wirtualnych VMware, który firma Contoso chce replikacji.
@@ -290,7 +332,7 @@ Usługa Site Recovery musi mieć dostęp do serwerów VMware w następujących c
 - Automatyczne odnajdywanie maszyn wirtualnych. Wymagany jest co najmniej konto tylko do odczytu.
 - Organizowanie replikacji, trybu failover i powrotu po awarii. Firma Contoso potrzebuje konta, które można uruchamiać operacje, takie jak tworzenie i usuwanie dysków i włączanie na maszynach wirtualnych.
 
-Contoso konfiguruje konto, wykonując następujące zadania:
+Administratorzy firmy Contoso, skonfigurować konto, wykonując następujące zadania:
 
 1. Tworzy rolę na poziomie vCenter.
 2. Przypisuje wymaganych uprawnień do tej roli.
@@ -305,7 +347,7 @@ Usługa Mobility musi być zainstalowana na maszynie Wirtualnej, który firma Co
 
 - Site Recovery może zrobić wypychania automatycznego instalowania tego składnika, gdy Contoso umożliwia replikację dla maszyny Wirtualnej.
 - Instalacja wypychania automatycznego Contoso należy przygotować konta, które używa Usługa Site Recovery, aby dostęp do maszyny Wirtualnej.
-- Contoso określa to konto, gdy konfiguruje replikacji w konsoli platformy Azure.
+- To konto określono podczas replikacji jest skonfigurowany w konsoli platformy Azure.
 - Firmy Contoso musi mieć domeny lub lokalnego konta z uprawnieniami do instalowania na maszynie Wirtualnej.
 
 *Potrzebujesz dodatkowej pomocy*
@@ -314,90 +356,90 @@ Dowiedz się, jak [Tworzenie konta na potrzeby instalacji wypychanej usługi mob
 
 ### <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
-Po przejściu w tryb failover na platformie Azure Contoso chce można było połączyć się z replikowanymi maszynami wirtualnymi na platformie Azure. Połączyć się z replikowanymi maszynami wirtualnymi na platformie Azure, Contoso muszą wykonać kilka zadań na lokalną maszynę Wirtualną, przed rozpoczęciem migracji: 
+Po przejściu w tryb failover na platformie Azure Contoso chce można było połączyć się z replikowanymi maszynami wirtualnymi na platformie Azure. Połączyć się z replikowanymi maszynami wirtualnymi na platformie Azure, Contoso Administratorzy muszą wykonać kilka zadań na lokalną maszynę Wirtualną, przed rozpoczęciem migracji: 
 
-1. Aby uzyskać dostęp za pośrednictwem Internetu Contoso umożliwia protokołu RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover. Contoso gwarantuje, że reguły TCP i UDP zostały dodane do **publicznych** profilu i że protokołu RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** dla wszystkich profilów .
-2. Aby uzyskać dostęp za pośrednictwem połączenia VPN lokacja lokacja firmy Contoso Contoso umożliwia protokołu RDP na maszynie lokalnej. Contoso umożliwia protokołu RDP w systemie **zapory Windows** > **dozwolone aplikacje i funkcje** dla **domena i prywatne** sieci.
-3. Contoso ustawia zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
+1. Aby uzyskać dostęp za pośrednictwem Internetu umożliwiają one protokołu RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover. Pozwalają zagwarantować, że reguły TCP i UDP zostały dodane do **publicznych** profilu i że protokołu RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** we wszystkich profilach.
+2. Aby uzyskać dostęp za pośrednictwem połączenia VPN lokacja lokacja firmy Contoso ich Włącz protokół RDP na maszynie lokalnej. Umożliwiają one protokołu RDP w systemie **zapory Windows** > **dozwolone aplikacje i funkcje** dla **domena i prywatne** sieci.
+3. Ustawiają zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
 
-Firma Contoso potrzebuje po uruchomieniu trybu failover, sprawdź następujące elementy:
+Administratorzy firmy Contoso konieczne sprawdzenie następujących kwestii, po przejściu w tryb failover:
 
-- Powinno być nie oczekujących aktualizacji Windows na maszynie Wirtualnej po wyzwoleniu przejścia w tryb failover. W przypadku oczekujących aktualizacji Windows Contoso nie Zaloguj się do maszyny wirtualnej do momentu ukończenia aktualizacji.
-- Po przejściu w tryb failover należy sprawdzić Contoso **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli Contoso nie można wyświetlić diagnostyki rozruchu, należy to sprawdzić czy maszyna wirtualna jest uruchomiona, a następnie przejrzyj [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Powinno być nie oczekujących aktualizacji Windows na maszynie Wirtualnej po wyzwoleniu przejścia w tryb failover. W przypadku oczekujących aktualizacji Windows Contoso nie logowania do maszyny wirtualnej do momentu ukończenia aktualizacji.
+- Po przejściu w tryb failover należy sprawdzić Administratorzy **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie będą mogli zobaczyć diagnostykę rozruchu, należy sprawdzić czy maszyna wirtualna jest uruchomiona, a następnie przejrzyj [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
-## <a name="step-5-replicate-the-on-premises-vms-to-azure-by-using-site-recovery"></a>Krok 5: Replikowanie lokalnych maszyn wirtualnych na platformę Azure przy użyciu usługi Site Recovery
+## <a name="step-5-replicate-the-on-premises-vms-to-azure"></a>Krok 5: Replikowanie lokalnych maszyn wirtualnych na platformę Azure
 
-Przed uruchomieniem migracji na platformę Azure, firma Contoso potrzebuje do konfigurowania replikacji i włączanie replikacji dla maszyny Wirtualnej jej w środowisku lokalnym.
+Przed uruchomieniem migracji na platformę Azure, Contoso, Administratorzy muszą skonfigurować i włączyć replikację dla maszyn wirtualnych w środowisku lokalnym.
 
 ### <a name="set-a-replication-goal"></a>Ustaw cel replikacji
 
-1. W magazynie w obszarze nazwy magazynu (**ContosoVMVault**), Contoso ustawia cel replikacji (**wprowadzenie** > **Site Recovery**  >   **Przygotowanie infrastruktury**).
-2. Contoso Określa, czy jego maszyn w środowisku lokalnym, są one maszyny wirtualne VMware, a firma Contoso chce zreplikowana na platformę Azure.
+1. W magazynie w obszarze nazwy magazynu (**ContosoVMVault**), ustawiają cel replikacji (**wprowadzenie** > **Site Recovery**  >   **Przygotowanie infrastruktury**).
+2. Określają, czy maszyny są znajdujących się lokalnie, że są one maszyny wirtualne VMware, replikowanych do platformy Azure.
 
     ![Przygotowanie infrastruktury — cel ochrony](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-goal.png)
 
 ### <a name="confirm-deployment-planning"></a>Potwierdzanie planowania wdrożenia
 
-Aby kontynuować, firma Contoso potrzebuje upewnić się, że ukończono Planowanie wdrożenia. Aby upewnić się, wybiera Contoso **tak, ma to zostało zrobione**. W tym wdrożeniu firmy Contoso jest migracja tylko jednej maszyny Wirtualnej, więc nie potrzebuje planowania wdrożenia.
+Aby kontynuować, Administratorzy firmy Contoso, upewnij się, że ich ukończono Planowanie wdrożenia. Wybierają **tak, ma to zostało zrobione**. W tym wdrożeniu firmy Contoso jest migracja tylko jednej maszyny Wirtualnej, planowania wdrożenia nie jest wymagane.
 
 ### <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Teraz firmy Contoso musi skonfigurować swoje środowisko źródłowe. Aby skonfigurować swoje środowisko źródłowe, Contoso pobiera szablonu OVF. Firma Contoso używa tego szablonu można wdrożyć serwer konfiguracji i powiązanych z nim składników w trybie wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Składniki na serwerze obejmują:
+Teraz Administratorzy Contoso skonfigurować środowisko źródłowe. Aby skonfigurować swoje środowisko źródłowe, mogą pobrać szablon OVF i umożliwiają wdrażanie serwera konfiguracji i powiązanych z nim składników w trybie wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Składniki na serwerze obejmują:
 
 - Serwer konfiguracji, który służy do koordynowania komunikacji między infrastrukturą lokalną i platformą Azure. Serwer konfiguracji zarządza replikacji danych.
 - Serwer przetwarzania, który działa jako brama replikacji. Serwer przetwarzania:
     - Odbiera dane replikacji.
     - Optymalizuje Data replikacji przy użyciu pamięci podręcznej, kompresji i szyfrowania.
     - Wysyła do usługi Azure Storage datę replikacji.
-- Serwer przetwarzania instaluje także usługę Mobility na maszynach wirtualnych, które firma Contoso chce replikacji. Serwer przetwarzania przeprowadza automatyczne odnajdywanie lokalnych maszyn wirtualnych programu VMware.
+- Serwer przetwarzania instaluje także usługę Mobility na maszynach wirtualnych, które będą replikowane. Serwer przetwarzania przeprowadza automatyczne odnajdywanie lokalnych maszyn wirtualnych programu VMware.
 - Po utworzeniu i uruchomieniu maszyny Wirtualnej serwer konfiguracji Contoso rejestruje serwer w magazynie.
 
-Aby skonfigurować środowisko źródłowe:
+Aby skonfigurować źródła administratorów Contoso środowiska, wykonaj następujące czynności:
 
-1. Contoso — pliki do pobrania szablonu pakietu OVF w witrynie Azure portal (**Przygotuj infrastrukturę** > **źródła** > **serwera konfiguracji**).
+1. Szablon OVF będą oni mogli pobrać z witryny Azure portal (**Przygotuj infrastrukturę** > **źródła** > **serwera konfiguracji**).
     
     ![Dodawanie serwera konfiguracji](./media/contoso-migration-rehost-vm-sql-managed-instance/add-cs.png)
 
-2. Contoso importuje szablonu do programu VMware, aby utworzyć i wdrożyć maszynę Wirtualną.
+2. One zaimportuj szablon do programu VMware, aby utworzyć i wdrożyć maszynę Wirtualną.
 
     ![Wdróż szablon OVF](./media/contoso-migration-rehost-vm-sql-managed-instance/vcenter-wizard.png)
 
-3.  Gdy firmy Contoso przechodzi na maszynie Wirtualnej po raz pierwszy, maszyna wirtualna uruchamia się w środowisko instalacji systemu Windows Server 2016. Contoso akceptuje Umowę licencyjną i wprowadza hasło administratora.
-4. Po zakończeniu instalacji firmy Contoso loguje się do maszyny Wirtualnej jako administrator. Przy pierwszym firmy Contoso loguje się do maszyny Wirtualnej, narzędzie konfiguracji usługi Azure Site Recovery uruchamia się automatycznie.
-5. W narzędziu konfiguracji odzyskiwania lokacji Contoso wprowadza imię i nazwisko służące do zarejestrowania serwera konfiguracji w magazynie.
-6. Narzędzie sprawdza, czy połączenie maszyny Wirtualnej na platformie Azure. Po nawiązaniu połączenia Contoso wybiera **Zaloguj** zalogować się do subskrypcji platformy Azure. Poświadczenia muszą mieć dostęp do magazynu, w którym jest zarejestrowana na serwerze konfiguracji. 
+3.  Po włączeniu maszyny Wirtualnej po raz pierwszy, rozpoczyna się proces instalacji systemu Windows Server 2016. One Zaakceptuj Umowę licencyjną i wprowadza hasło administratora.
+4. Po zakończeniu instalacji, ich Zaloguj się do maszyny Wirtualnej jako administrator. Podczas pierwszego czasu logowania narzędzie konfiguracji usługi Azure Site Recovery uruchamia się automatycznie.
+5. W narzędziu konfiguracji odzyskiwania lokacji wejdzie nazwę, aby użyć, aby zarejestrować serwer konfiguracji w magazynie.
+6. Narzędzie sprawdza, czy połączenie maszyny Wirtualnej na platformie Azure. Po nawiązaniu połączenia wybierają **Zaloguj** zalogować się do subskrypcji platformy Azure. Poświadczenia muszą mieć dostęp do magazynu, w którym jest zarejestrowana na serwerze konfiguracji. 
 
     ![Rejestrowanie serwera konfiguracji](./media/contoso-migration-rehost-vm-sql-managed-instance/config-server-register2.png)
 
-7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie. Firmy Contoso loguje się do komputera ponownie. Kreator zarządzania serwerem konfiguracji jest uruchamiany automatycznie.
-8. W Kreatorze Contoso wybiera kartę Sieciową do odbierania ruchu związanego z replikacją. Nie można zmienić to ustawienie, po skonfigurowaniu go.
-9. Contoso wybiera subskrypcji, grupy zasobów i magazyn usługi Recovery Services, w którym można zarejestrować serwer konfiguracji.
+7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie. Logowania do komputera ponownie. Kreator zarządzania serwerem konfiguracji jest uruchamiany automatycznie.
+8. W Kreatorze one wybierz kartę Sieciową, aby odbierać ruch związany z replikacją. Nie można zmienić to ustawienie, po skonfigurowaniu go.
+9. Wybierają subskrypcji, grupy zasobów i magazyn usługi Recovery Services, w którym można zarejestrować serwer konfiguracji.
 
     ![Wybierz magazyn usługi Recovery Services](./media/contoso-migration-rehost-vm-sql-managed-instance/cswiz1.png)
 
-10. Contoso pobiera i instaluje serwer MySQL i interfejs PowerCLI programu VMWare. Następnie Contoso sprawdza poprawność ustawień serwera.
-11. Po zakończeniu walidacji firmy Contoso przechodzi nazwy FQDN lub adres IP hosta vSphere lub wystąpienia serwera vCenter. Contoso pozostawia domyślny port i wprowadza nazwę wyświetlaną dla wystąpienia programu vCenter Server na platformie Azure.
-12. Firmy Contoso, należy określić konto, którego wcześniej utworzona, aby Usługa Site Recovery może automatycznie odnajdować maszyny wirtualne VMware, które są dostępne dla replikacji. 
-13. Firmy Contoso przechodzi poświadczeń, dzięki czemu usługa mobilności jest automatycznie instalowany po włączeniu replikacji. W przypadku maszyn Windows konto musi mieć uprawnienia administratora lokalnego na maszynach wirtualnych. 
+10. Ich pobierania i instaluje serwer MySQL i interfejs PowerCLI programu VMWare. Następnie one sprawdza poprawność ustawień serwera.
+11. Po zakończeniu walidacji wejdzie nazwy FQDN lub adres IP hosta vSphere lub wystąpienia serwera vCenter. Pozostaw domyślny port i wprowadź nazwę wyświetlaną dla wystąpienia programu vCenter Server na platformie Azure.
+12. Określają konta utworzonego wcześniej, dzięki czemu usługa Site Recovery może automatycznie odnajdować maszyny wirtualne VMware, które są dostępne dla replikacji. 
+13. Użytkownik podał poświadczeń, dzięki czemu usługa mobilności jest automatycznie instalowany po włączeniu replikacji. W przypadku maszyn Windows konto musi mieć uprawnienia administratora lokalnego na maszynach wirtualnych. 
 
     ![Konfigurowanie serwera vCenter](./media/contoso-migration-rehost-vm-sql-managed-instance/cswiz2.png)
 
-7. Po zakończeniu rejestracji w witrynie Azure portal firmy Contoso sprawdza ponownie serwer konfiguracji i serwer VMware są wyświetlane na **źródła** strony w magazynie. Odnajdywanie może potrwać 15 minut lub dłużej. 
-8. Usługa Site Recovery nawiąże połączenie z serwerami VMware przy użyciu określonych ustawień. Usługa Site Recovery umożliwia odnalezienie maszyn wirtualnych.
+7. Po zakończeniu rejestracji w portalu Azure weryfikują ponownie serwer konfiguracji i serwer VMware są wyświetlane na **źródła** strony w magazynie. Odnajdywanie może potrwać 15 minut lub dłużej. 
+8. Usługa Site Recovery nawiąże połączenie z serwerami VMware przy użyciu podanych ustawień i odnajdzie maszyny wirtualne.
 
 ### <a name="set-up-the-target"></a>Konfigurowanie obiektu docelowego
 
-Teraz firma Contoso potrzebuje do konfigurowania środowiska docelowego replikacji:
+Teraz Administratorzy Contoso Konfigurowanie środowiska docelowego replikacji:
 
-1. W **przygotowanie infrastruktury** > **docelowej**, Contoso wybiera ustawienia wartości docelowej.
+1. W **przygotowanie infrastruktury** > **docelowej**, ich selecs ustawienia wartości docelowej.
 2. Usługa Site Recovery sprawdza, czy istnieje konto magazynu i sieci w określonej lokalizacji docelowej.
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-Źródłowy i docelowy są skonfigurowane, jeśli Contoso tworzy zasady replikacji, a spowoduje skojarzenie zasad z serwerem konfiguracji:
+Gdy źródłowy i docelowy są skonfigurowane, Administratorzy Contoso utworzyć zasady replikacji i spowoduje skojarzenie zasad z serwerem konfiguracji:
 
-1. W **przygotowanie infrastruktury** > **ustawień replikacji** > **zasad replikacji** >  **Utwórz i Skojarz**, tworzy Contoso **ContosoMigrationPolicy** zasad.
-2. Firma Contoso używa ustawień domyślnych:
+1. W **przygotowanie infrastruktury** > **ustawień replikacji** > **zasad replikacji** >  **Utwórz i Skojarz**, tworzą **ContosoMigrationPolicy** zasad.
+2. Używają domyślnych ustawień:
     - **Próg celu punktu odzyskiwania**: domyślnej wartości 60 minut. Ta wartość określa częstość tworzenia punktów odzyskiwania. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
     - **Czas przechowywania punktu odzyskiwania**: domyślnej wartości 24 godzin. Ta wartość określa, jak długo trwa okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie.
     - **Częstotliwość migawek spójności aplikacji**: domyślnej równej 1 godz. Ta wartość określa częstotliwość, z jaką są tworzone migawki spójne z aplikacjami.
@@ -415,23 +457,23 @@ Teraz firma Contoso potrzebuje do konfigurowania środowiska docelowego replikac
 
 ### <a name="enable-replication"></a>Włączanie replikacji
 
-Teraz firma Contoso może rozpocząć replikowanie WebVM.
+Teraz Administratorzy Contoso rozpocząć replikowanie WebVM.
 
-1. W **Replikowanie aplikacji** > **źródła** > **replikować**, Contoso wybiera ustawienia źródła.
-2. Contoso wskazuje, że jej chce włączyć maszyn wirtualnych, wybierze wystąpienie programu vCenter Server i ustawia na serwerze konfiguracji.
+1. W **Replikowanie aplikacji** > **źródła** > **replikować**, wybierają ustawienia źródła.
+2. Wskazują, że chce Włączanie maszyn wirtualnych, wybierz wystąpienie programu vCenter Server i serwer konfiguracji.
 
     ![Włączanie replikacji — źródło](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication1.png)
  
-3. Contoso określa ustawienia docelowego, łącznie z grupy zasobów i sieci, w którym maszyna wirtualna platformy Azure zostaną umieszczone po włączeniu trybu failover. Contoso Określa konto magazynu, w którym przechowywane będą replikowane dane.
+3. Określają ustawienia docelowego, łącznie z grupy zasobów i sieci, w którym maszyna wirtualna platformy Azure zostaną umieszczone po włączeniu trybu failover. Określają konto magazynu, w którym przechowywane będą replikowane dane.
 
     ![Włączanie replikacji — docelowy](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication2.png)
 
-4. Wybiera contoso **WebVM** replikacji. Usługa Site Recovery instaluje usługę mobilności na każdej maszynie Wirtualnej, po włączeniu replikacji. 
+4. Wybierają **WebVM** replikacji. Usługa Site Recovery instaluje usługę mobilności na każdej maszynie Wirtualnej, po włączeniu replikacji. 
 
     ![Włączanie replikacji — wybierz maszynę Wirtualną](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication3.png)
 
-5. Contoso — sprawdza, czy wybrano właściwe zasady replikacji. Następnie, umożliwia replikację **WEBVM**. Contoso śledzi postęp replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
-6. W **Essentials** w witrynie Azure portal firmy Contoso można wyświetlić jego strukturę dla maszyn wirtualnych, które są replikowanych do platformy Azure:
+5. Sprawdź, czy właściwe zasady replikacji jest zaznaczone, a następnie Włącz replikację dla **WEBVM**. One tracs postępu replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
+6. W **Essentials** w witrynie Azure portal można wyświetlić stan maszyn wirtualnych, które jest replikowana do platformy Azure:
 
     ![Widok infrastruktury](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
 
@@ -439,13 +481,13 @@ Teraz firma Contoso może rozpocząć replikowanie WebVM.
 
 Może odczytywać kompletnym instruktażem następujące kroki w [włączyć replikację](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
-## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>Krok 6: Migrację bazy danych przy użyciu usługi migracji bazy danych
+## <a name="step-6-migrate-the-database"></a>Krok 6: Migrację bazy danych 
 
-Firma Contoso potrzebuje utworzyć projekt usługi Database Migration Service, a następnie przeprowadzić migrację bazy danych.
+Administratorzy firmy Contoso musisz utworzyć projekt usługi Database Migration Service, a następnie przeprowadzić migrację bazy danych.
 
 ### <a name="create-a-database-migration-service-project"></a>Utwórz projekt usługi Database Migration Service
 
-1. Contoso tworzy projekt usługi Database Migration Service. Wybiera contoso **programu SQL Server** typ serwera źródłowego. Wybiera contoso **wystąpienia zarządzanego Azure SQL Database** jako element docelowy.
+1. Mogą utworzyć projekt usługi Database Migration Service. Wybierają **programu SQL Server** typ serwera źródłowego i **wystąpienia zarządzanego Azure SQL Database** jako element docelowy.
 
      ![Usługa migracji bazy danych — nowy projekt migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
@@ -453,85 +495,85 @@ Firma Contoso potrzebuje utworzyć projekt usługi Database Migration Service, a
 
 ### <a name="migrate-the-database"></a>Migrowanie bazy danych 
 
-1. W Kreatorze migracji Contoso określa źródłowej maszyny Wirtualnej, na którym znajduje się baza danych w środowisku lokalnym. Firmy Contoso przechodzi poświadczenia, które mają dostęp do bazy danych.
+1. W Kreatorze migracji określają źródłowej maszyny Wirtualnej, na którym znajduje się baza danych w środowisku lokalnym. Użytkownik podał poświadczenia, które mają dostęp do bazy danych.
 
     ![Usługa migracji bazy danych — Szczegóły źródła](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
-2. Contoso wybiera bazę danych do migracji (**SmartHotel.Registration**):
+2. wybierają bazę danych do migracji (**SmartHotel.Registration**):
 
     ![Usługa migracji bazy danych — wybierz źródłowe bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
-3. Dla elementu docelowego firmy Contoso przechodzi nazwę wystąpienia zarządzanego na platformie Azure. Contoso wprowadza poświadczenia dostępu do wystąpienia zarządzanego.
+3. Dla elementu docelowego użytkownik podał nazwę wystąpienia zarządzanego na platformie Azure i poświadczenia dostępu.
 
     ![Usługa migracji bazy danych — szczegóły elementu docelowego](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
-4. W **nowe działanie** > **Uruchamianie migracji**, Contoso określa ustawienia, aby uruchomić migrację:
+4. W **nowe działanie** > **Uruchamianie migracji**, określają ustawienia, aby uruchomić migrację:
     - Poświadczenia źródłowym i docelowym.
     - Baza danych, aby przeprowadzić migrację.
-    - Sieć udostępnianie tej firmy Contoso, utworzone w lokalnej maszyny Wirtualnej. Usługa migracji bazy danych trwa tworzenie kopii zapasowych źródła do tego udziału. 
+    - Udział sieciowy utworzony na lokalną maszynę Wirtualną. Usługa migracji bazy danych trwa tworzenie kopii zapasowych źródła do tego udziału. 
         - Konto usługi, który działa źródłowe wystąpienie programu SQL Server musi mieć uprawnienia do zapisu w tym udziale.
         - Należy użyć nazwy FQDN ścieżkę do udziału.
     - Identyfikator URI sygnatury dostępu Współdzielonego, który udostępnia usługę migracji bazy danych dzięki dostępowi do kontenera konta magazynu, do którego usługa przekazuje pliki kopii zapasowej do migracji.
 
         ![Usługę migracji bazy danych — Konfigurowanie ustawień migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
-5. Contoso zapisuje migracji, a następnie uruchomi go.
-6. W **Przegląd**, Contoso monitoruje stan migracji.
+5. Zapisz ustawienia migracji i następnie uruchom migracji.
+6. W **Przegląd**, ich monitos stan migracji.
 
     ![Usługi Database Migration Service — monitorowanie](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
-7. Po zakończeniu migracji Contoso sprawdza, czy docelowymi bazami danych istnieją w wystąpieniu zarządzanym.
+7. Po zakończeniu migracji mogą sprawdzić, czy docelowymi bazami danych istnieją w wystąpieniu zarządzanym.
 
     ![Usługę migracji bazy danych — weryfikowanie migracji bazy danych](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
-## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>Krok 7: Migrowanie maszyny Wirtualnej przy użyciu usługi Site Recovery
+## <a name="step-7-migrate-the-vm"></a>Krok 7: Migrowanie maszyny Wirtualnej
 
-Contoso uruchamia szybkie testowanie trybu failover, a następnie przeprowadza migrację maszyny Wirtualnej.
+Administratorzy firmy Contoso, uruchomić szybkie testowanie trybu failover, a następnie przeprowadzić migrację maszyny Wirtualnej.
 
 ### <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 
-Przed migracją WEBVM, testowy tryb failover pomaga zapewnić, że wszystko działa zgodnie z oczekiwaniami. Contoso wykona następujące czynności:
+Przed migracją WEBVM, testowy tryb failover pomaga zapewnić, że wszystko działa zgodnie z oczekiwaniami. Administratorzy, wykonaj następujące czynności:
 
-1. Contoso uruchamia test trybu failover do najnowszego dostępnego punktu w czasie (**najnowszy przetworzony**).
-2. Wybiera contoso **Zamknij maszynę przed rozpoczęciem pracy awaryjnej**. Po zaznaczeniu tej opcji usługa Site Recovery próbuje zamknąć źródłową maszynę Wirtualną przed wyzwala przełączenie w tryb failover. Trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. 
+1. Uruchamiają test trybu failover do najnowszego dostępnego punktu w czasie (**najnowszy przetworzony**).
+2. Wybierają **Zamknij maszynę przed rozpoczęciem pracy awaryjnej**. Po zaznaczeniu tej opcji usługa Site Recovery próbuje zamknąć źródłową maszynę Wirtualną przed wyzwala przełączenie w tryb failover. Trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. 
 3. Testy trybu failover: 
     1. Sprawdzanie wymagań wstępnych, przebiegów, aby upewnić się, że zostały spełnione wszystkie warunki, które są wymagane do migracji.
     2. Tryb failover przetwarza dane, aby umożliwić utworzenie maszyny wirtualnej platformy Azure. Jeśli po wybraniu najnowszego punktu odzyskiwania, punkt odzyskiwania jest tworzony z danych.
     3.  Maszyna wirtualna platformy Azure jest tworzona przy użyciu danych przetworzonych w poprzednim kroku.
-3. Po zakończeniu pracy w trybie failover w witrynie Azure portal pojawi się repliki maszyn wirtualnych platformy Azure. Contoso — sprawdza, czy wszystko działa prawidłowo: maszyna wirtualna ma prawidłowy rozmiar, jest ona połączona z odpowiedniej sieci i jest uruchomiona. 
-4. Po zweryfikowaniu testowy tryb failover, Contoso czyści przełączenie w tryb failover. Następnie rejestruje i zapisuje wszelkie obserwacje. 
+3. Po zakończeniu pracy w trybie failover w witrynie Azure portal pojawi się repliki maszyn wirtualnych platformy Azure. Sprawdź, czy wszystko działa prawidłowo: maszyna wirtualna ma prawidłowy rozmiar, jest ona połączona z odpowiedniej sieci i jest uruchomiona. 
+4. Po zweryfikowaniu testowy tryb failover, wyczyść przełączenie w tryb failover i zapisz wszelkie obserwacje. 
 
 ### <a name="migrate-the-vm"></a>Migrowanie maszyny Wirtualnej
 
-1. Po sprawdzeniu, czy test trybu failover zadziałała zgodnie z oczekiwaniami, Contoso tworzy plan odzyskiwania do migracji. Contoso dodaje WEBVM zgodnie z planem:
+1. Po sprawdzeniu, czy test trybu failover zadziałała zgodnie z oczekiwaniami, Administratorzy Contoso utworzyć plan odzyskiwania do migracji i Dodaj WEBVM zgodnie z planem:
 
      ![Tworzenie planu odzyskiwania — wybierz elementy](./media/contoso-migration-rehost-vm-sql-managed-instance/recovery-plan.png)
 
-2. Contoso uruchamia przejścia w tryb failover dla planu. Contoso wybiera najnowszego punktu odzyskiwania. Contoso Określa, czy usługa Site Recovery należy dążyć do zamykania maszyny Wirtualnej w środowisku lokalnym, zanim wyzwala przełączenie w tryb failover.
+2. Działają one przejścia w tryb failover dla planu, wybierając najnowszego punktu odzyskiwania. Określają, czy usługa Site Recovery należy dążyć do zamykania maszyny Wirtualnej w środowisku lokalnym, zanim wyzwala przełączenie w tryb failover.
 
     ![Tryb failover](./media/contoso-migration-rehost-vm-sql-managed-instance/failover1.png)
 
-3. Po włączeniu trybu failover Contoso sprawdza, czy maszyny Wirtualnej platformy Azure jest wyświetlana w oczekiwany sposób w witrynie Azure portal.
+3. Po włączeniu trybu failover ich Sprawdź, czy maszyna wirtualna platformy Azure znajduje się w oczekiwany sposób w witrynie Azure portal.
 
    ![Szczegóły planu odzyskiwania](./media/contoso-migration-rehost-vm-sql-managed-instance/failover2.png)
 
-4. Po zweryfikowaniu maszyny Wirtualnej na platformie Azure, firma Contoso kończy migracji, aby zakończyć proces migracji, zatrzymanie replikacji maszyny Wirtualnej i zatrzymać rozliczanie Site Recovery dla maszyny Wirtualnej.
+4. Po zweryfikowaniu, że ich zakończeniu migracji, aby zakończyć proces migracji, zatrzymanie replikacji maszyny Wirtualnej, a następnie Zatrzymaj Site Recovery rozliczeń dla maszyny Wirtualnej.
 
     ![Tryb failover — Kończenie migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/failover3.png)
 
 ### <a name="update-the-connection-string"></a>Zaktualizuj parametry połączenia
 
-Ostatni krok w procesie migracji Contoso aktualizuje parametry połączenia aplikacji, aby wskazywał zmigrowana baza danych, która jest uruchomiona na wystąpieniu zarządzanym firmy Contoso.
+Ostatni krok w procesie migracji Administratorzy Contoso zaktualizować parametry połączenia aplikacji, aby wskazywał zmigrowana baza danych, która jest uruchomiona na wystąpieniu zarządzanym firmy Contoso.
 
-1. W witrynie Azure portal firmy Contoso umożliwia znalezienie ciągu połączenia, wybierając **ustawienia** > **parametry połączenia**.
+1. W witrynie Azure portal Znajdź są parametry połączenia, wybierając **ustawienia** > **parametry połączenia**.
 
     ![Parametry połączeń](./media/contoso-migration-rehost-vm-sql-managed-instance/failover4.png)  
 
-2. Contoso ciąg zostaje zaktualizowana o nazwę użytkownika i hasło wystąpienia zarządzanego usługi SQL Database.
-3. Po skonfigurowaniu ciąg Contoso zastępuje bieżących parametrów połączenia w pliku web.config w swojej aplikacji.
-4. Po aktualizacji pliku i zapisanie go, Contoso powoduje ponowne uruchomienie usług IIS na WEBVM. Ponowne uruchomienie usług IIS, uruchamia Contoso `IISRESET /RESTART` w oknie wiersza polecenia.
+2. Ciąg one aktualizowane przy użyciu nazwy użytkownika i hasło wystąpienia zarządzanego usługi SQL Database.
+3. Po skonfigurowaniu ciąg zastępują one bieżących parametrów połączenia w pliku web.config w swojej aplikacji.
+4. Po aktualizowania pliku i zapisanie go, ich ponowne uruchomienie usług IIS na WEBVM, uruchamiając `IISRESET /RESTART` w oknie wiersza polecenia.
 5. Po ponownym uruchomieniu usług IIS, aplikacja używa bazy danych, która jest uruchomiona na wystąpieniu zarządzanym usługi SQL Database.
-6. W tym momencie Contoso można zamknąć środowiska lokalnego na maszynie SQLVM. Migracja została zakończona.
+6. W tym momencie one można zamknąć środowiska lokalnego na maszynie SQLVM. Migracja została zakończona.
 
 *Potrzebujesz dodatkowej pomocy?*
 
@@ -560,17 +602,22 @@ Z migrowanych zasobów na platformie Azure firma Contoso potrzebuje do w pełni 
 
 Zespół ds. zabezpieczeń Contoso przeglądy maszyn wirtualnych platformy Azure i wystąpienie zarządzane usługi SQL Database, aby sprawdzić, czy wystąpiły problemy z zabezpieczeniami z jego implementacją:
 
-- Zespół ds. zabezpieczeń przegląda sieciowych grup zabezpieczeń, które są używane do kontrolowania dostępu do maszyny Wirtualnej. Zabezpieczenia sieciowe grupy pomagają upewnić się, że tylko ruchu, który jest dozwolony w aplikacji można przekazać.
+- Zespół przegląda sieciowych grup zabezpieczeń, które są używane do kontrolowania dostępu do maszyny Wirtualnej. Zabezpieczenia sieciowe grupy pomagają upewnić się, że tylko ruchu, który jest dozwolony w aplikacji można przekazać.
 - Zespół ds. zabezpieczeń firmy Contoso również polega na uwzględnieniu Zabezpieczanie danych na dysku za pomocą usługi Azure Disk Encryption i usługi Azure Key Vault.
-- Zespół ds. zabezpieczeń umożliwia wykrywanie zagrożeń na wystąpieniu zarządzanym. Wykrywanie zagrożeń wysyła alert do firmy Contoso zabezpieczeń zespołu/usługi technicznej systemu, aby otworzyć bilet, jeśli zostanie wykryte zagrożenie. Dowiedz się więcej o [wykrywanie dla zarządzanego wystąpienia zagrożeń](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-threat-detection).
+- Zespół umożliwia wykrywanie zagrożeń na wystąpieniu zarządzanym. Wykrywanie zagrożeń wysyła alert do firmy Contoso zabezpieczeń zespołu/usługi technicznej systemu, aby otworzyć bilet, jeśli zostanie wykryte zagrożenie. Dowiedz się więcej o [wykrywanie dla zarządzanego wystąpienia zagrożeń](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-threat-detection).
 
      ![Zarządzane zabezpieczenia wystąpienia — wykrywanie zagrożeń](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
 Aby dowiedzieć się więcej na temat praktyk w zakresie zabezpieczeń dla maszyn wirtualnych, zobacz [najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control).
 
-### <a name="backups"></a>Tworzenie kopii zapasowych
+### <a name="bcdr"></a>BCDR
 
-Contoso tworzy kopie zapasowe danych na WEBVM przy użyciu usługi Azure Backup. Dowiedz się więcej o [kopia zapasowa Azure](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii (BCDR) Contoso wykonuje następujące akcje:
+
+- Zabezpieczanie danych: Contoso tworzy kopię zapasową danych na maszynach wirtualnych za pomocą usługi Azure Backup. [Dowiedz się więcej] https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Zachowaj aplikacji działanie: Contoso replikowane maszyny wirtualne na platformie Azure aplikacji przy użyciu Site Recovery w regionie pomocniczym. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- Contoso dowiaduje się więcej na temat zarządzania wystąpienia zarządzanego usługi SQL, w tym [kopie zapasowe bazy danych](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
+
 
 ### <a name="licensing-and-cost-optimization"></a>Optymalizacja licencjonowania i kosztów
 

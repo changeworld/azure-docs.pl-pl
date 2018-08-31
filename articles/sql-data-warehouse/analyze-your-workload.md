@@ -1,33 +1,33 @@
 ---
-title: Analiza obciążenia - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Techniki analizowanie priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
+title: Analizowanie obciążenia — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Techniki do analizowania priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795361"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248097"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analiza obciążenia w usłudze Azure SQL Data Warehouse
-Techniki analizowanie priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w usłudze Azure SQL Data Warehouse
+Techniki do analizowania priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
 
 ## <a name="workload-groups"></a>Grupy obciążenia 
-Usługa SQL Data Warehouse implementuje klasy zasobów za pomocą grupy obciążenia. Składa się łącznie osiem grup obciążenia, które kontrolują zachowanie klasy zasobu w różnych rozmiarach DWU. Dla dowolnego DWU SQL Data Warehouse używa tylko czterech grup osiem obciążenia. Takie podejście ma sens, ponieważ każda grupa obciążenia jest przypisany do czterech grup zasobów: smallrc, mediumrc, largerc, lub xlargerc. Opis grupy obciążenia znaczenie jest, że niektóre z tych grup obciążenia są ustawione na wyższy *znaczenie*. Znaczenie jest używany dla Procesora planowania. Uruchom o wysokiej ważności zapytania uzyskać trzy razy więcej cykli Procesora niż kwerend o średnim znaczeniu. W związku z tym mapowania miejsca współbieżności również określić priorytet procesora CPU. Jeśli zapytanie wykorzystuje co najmniej 16 miejsc, jest on uruchamiany jako wysokiej ważności.
+Usługa SQL Data Warehouse implementuje klasy zasobów przy użyciu grupy obciążenia. Ma w sumie osiem grupach obciążenia, które kontrolują zachowanie klasy zasobów w różnych rozmiarach jednostek DWU. Dla dowolnej jednostki DWU usługa SQL Data Warehouse używa tylko cztery grupy osiem obciążenia. To podejście sens, ponieważ każda grupa obciążenia jest przypisany do jednej z czterech klas zasobów: smallrc mediumrc, largerc, lub xlargerc. Informacje o grupach obciążenia znaczenie jest, że niektóre z tych grup obciążenia są ustawione na wyższym *znaczenie*. Znaczenie jest używany dla procesora CPU planowania. Uruchom o wysokiej ważności zapytania uzyskać trzy razy więcej cykli Procesora niż zapytania dotyczące uruchamiania o średniej ważności. W związku z tym mapowania miejsca współbieżności również określić priorytet procesora CPU. Jeśli zapytanie zużywa lub 16 miejsc, jest on uruchamiany jako mające wysoką ważność.
 
-W poniższej tabeli przedstawiono znaczenie mapowania dla każdej grupy obciążenia.
+W poniższej tabeli przedstawiono mapowania znaczenie dla każdej grupy obciążenia.
 
-### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Mapowania grupy obciążenia do gniazda współbieżności i ważność
+### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Mapowania grupy obciążenia do gniazd współbieżności i ważność
 
-| Grupy obciążenia | Mapowanie miejsca współbieżności | MB / dystrybucji (elastyczność) | MB / dystrybucji (obliczeniowe) | Mapowanie znaczenie |
+| Grupy obciążenia | Mapowanie miejsca współbieżności | MB / dystrybucji (elastyczność) | MB / dystrybucji (składnik obliczeniowy) | Mapowanie znaczenie |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
 | SloDWGroupC00   | 1                        |    100                         | 250                         | Medium             |
 | SloDWGroupC01   | 2                        |    200                         | 500                         | Medium             |
@@ -39,11 +39,10 @@ W poniższej tabeli przedstawiono znaczenie mapowania dla każdej grupy obciąż
 | SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Wysoka               |
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Wysoka               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-**Alokacja i użycie gniazd współbieżności** wykres pokazuje DW500 używa 1, 4, 8 i współbieżność 16 miejsc smallrc, mediumrc largerc i xlargerc, odpowiednio. Aby znaleźć znaczenie dla każdej klasy zasobu, można wyszukiwać tych wartości na wykresie.
+<!-- where are the allocation and consumption of concurrency slots charts? --> **Alokacji i użycia gniazd współbieżności** wykres pokazuje DW500 używa 1, 4, 8 lub 16 współbieżności miejsc smallrc, mediumrc, largerc i xlargerc, odpowiednio. Aby znaleźć znaczenie dla każdej klasy zasobów, można wyszukiwać te wartości na wykresie.
 
-### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Mapowanie DW500 klasy zasobu znaczenia
-| Klasa zasobów | Grupy obciążenia | Używać miejsc współbieżności | MB / dystrybucji | Ważność |
+### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Mapowanie DW500 klasy zasobów na potrzeby znaczenie
+| Klasa zasobów | Grupa obciążenia | Gniazd współbieżności używane | MB / dystrybucji | Ważność |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
 | smallrc        | SloDWGroupC00  | 1                      | 100               | Medium     |
 | mediumrc       | SloDWGroupC02  | 4                      | 400               | Medium     |
@@ -58,8 +57,8 @@ W poniższej tabeli przedstawiono znaczenie mapowania dla każdej grupy obciąż
 | staticrc70     | SloDWGroupC03  | 16                     | 1,600             | Wysoka       |
 | staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Wysoka       |
 
-## <a name="view-workload-groups"></a>Widok grupy obciążenia
-Następujące zapytanie Wyświetla szczegóły alokacji zasobów pamięci z punktu widzenia zarządcy zasobów. Jest to przydatne do analizowania active i historyczne użycia grup obciążenia podczas rozwiązywania problemów.
+## <a name="view-workload-groups"></a>Wyświetlanie grup obciążenia
+Następujące zapytanie Wyświetla szczegóły dotyczące alokacji zasobów pamięci, z punktu widzenia zarządcy zasobów. Jest to przydatne do analizowania aktywnych i historyczne użycie grupy obciążenia, podczas rozwiązywania problemów.
 
 ```sql
 WITH rg
@@ -107,8 +106,8 @@ ORDER BY
 ;
 ```
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Zapytania w kolejce wykrywania i innych widoków DMV
-Można użyć `sys.dm_pdw_exec_requests` DMV do identyfikacji zapytania, które czekają w kolejce współbieżności. Oczekiwanie na gnieździe współbieżności zapytania będą miały stan **zawieszone**.
+## <a name="queued-query-detection-and-other-dmvs"></a>Wykrywanie umieszczonych w kolejce zapytań i innych widoków DMV
+Możesz użyć `sys.dm_pdw_exec_requests` DMV, aby identyfikować zapytania, które oczekują w kolejce współbieżności. Zapytań oczekujących dla miejsca współbieżności ma stan inny niż **zawieszone**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -121,7 +120,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role związane z zarządzaniem obciążenia mogą być wyświetlane z `sys.database_principals`.
+Role związane z zarządzaniem obciążenia mogą być wyświetlane ze `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -143,14 +142,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Magazyn danych SQL zawiera następujące typy oczekiwania:
+Usługa SQL Data Warehouse ma czekać typów:
 
-* **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza framework miejsca współbieżności. Zapytania DMV i systemu, takich jak funkcje `SELECT @@VERSION` przedstawiono przykłady lokalnego zapytań.
-* **UserConcurrencyResourceType**: zapytania, które znajdują się w ramach miejsca współbieżności. Zapytania dotyczące tabel użytkownika końcowego przedstawiają przykłady używających tego typu zasobu.
-* **DmsConcurrencyResourceType**: czeka, wynikające z operacji przenoszenia danych.
-* **BackupConcurrencyResourceType**: ten oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu jest 1. Jeśli zażądano wiele kopii zapasowych, w tym samym czasie, innych kolejki.
+* **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza szablonem miejsca współbieżności. Zapytania DMV i systemu przez funkcje, takie jak `SELECT @@VERSION` są przykłady kwerend lokalnych.
+* **UserConcurrencyResourceType**: zapytania, które znajdują się w strukturze gniazdo współbieżności. Zapytania dotyczące tabel przez użytkownika końcowego reprezentują przykłady używających tego typu zasobu.
+* **DmsConcurrencyResourceType**: czeka, wynikające z operacje przenoszenia danych.
+* **BackupConcurrencyResourceType**: ten oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu to 1. Jeśli zażądano wielu kopii zapasowych, w tym samym czasie inne kolejki.
 
-`sys.dm_pdw_waits` DMV może służyć do wyświetlania zasobów, które oczekuje żądanie.
+`sys.dm_pdw_waits` DMV może służyć do wyświetlania zasobów, które czeka na żądanie.
 
 ```sql
 SELECT  w.[wait_id]
@@ -187,7 +186,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV pokazuje tylko czeka zasobów, które są używane przez określonego zapytania. Czas oczekiwania zasobu tylko mierzy czas oczekiwania na zasoby wymagane do zrealizowania, a nie czas oczekiwania sygnał, który określa czas potrzebny dla podstawowych serwerów SQL, można zaplanować zapytania na Procesor.
+`sys.dm_pdw_resource_waits` DMV pokazuje tylko czeka zasobów, które są używane przez określonego zapytania. Czas oczekiwania zasobów tylko mierzy czasu oczekiwania na zasoby dostarczane w przeciwieństwie do sygnału czas oczekiwania, czyli czasu potrzebnego dla podstawowych serwerów SQL do zaplanowania zapytania na procesorze CPU.
 
 ```sql
 SELECT  [session_id]
@@ -205,7 +204,7 @@ FROM    sys.dm_pdw_resource_waits
 WHERE    [session_id] <> SESSION_ID()
 ;
 ```
-Można również użyć `sys.dm_pdw_resource_waits` DMV obliczyć przyznano ilu miejsc współbieżności.
+Można również użyć `sys.dm_pdw_resource_waits` DMV obliczania liczby gniazd współbieżności zostały przyznane.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots 
@@ -216,7 +215,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` DMV może służyć do analizy trendów historycznych oczekiwania.
+`sys.dm_pdw_wait_stats` DMV może służyć do analizy trendów historycznych czeka.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -231,6 +230,6 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o zarządzaniu bazy danych użytkowników i zabezpieczeń, zobacz [Zabezpieczanie bazy danych w usłudze SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji na temat sposobu większe grupy zasobów może zwiększyć jakość indeksu klastrowanego magazynu kolumn, zobacz [ponowne tworzenie indeksów do poprawy jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Aby uzyskać więcej informacji o zarządzaniu bazy danych użytkowników i zabezpieczeń, zobacz [Zabezpieczanie bazy danych w usłudze SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji na temat sposobu większych klas zasobów może zwiększyć jakość indeksu klastrowanego magazynu kolumn, zobacz [ponowne tworzenie indeksów w celu zwiększenia jakości segmentów](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 

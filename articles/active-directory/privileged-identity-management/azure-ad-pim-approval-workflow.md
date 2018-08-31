@@ -1,6 +1,6 @@
 ---
-title: Platformy Azure Privileged Identity Management przepływów pracy | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat przepływów pracy zatwierdzania w Privileged Identity Management (PIM)
+title: Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak akceptują lub odrzucają żądania dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,123 +15,18 @@ ms.component: pim
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 14d0cdc0bde1081f1a020c7039596a5b6880070f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: MT
+ms.openlocfilehash: 7bf1e437e97fdb4d929af23bd7b2a9abb49268df
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619752"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189162"
 ---
-# <a name="approvals"></a>Zatwierdzenia
+# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM
 
-## <a name="overview"></a>Przegląd
+Privileged Identity Management można skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybierz jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających.
 
-Zatwierdzanie Privileged Identity Management konfigurowania ról, aby wymagały zatwierdzenia aktywacji i wybrać jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Zachowaj informacje na temat sposobu konfigurowania ról, a następnie wybierz pozycję osób zatwierdzających.
-
-
-## <a name="new-terminology"></a>Nową terminologią
-
-*Uprawniony użytkownik roli* — kwalifikowania się do roli użytkownika jest użytkownikiem w Twojej organizacji, który jest przypisany do roli usługi Azure AD jako uprawnionych (rola wymaga składnika Aktywacja).
-
-*Delegowane osoba zatwierdzająca* — delegowanego osoba zatwierdzająca jest jednym lub wielu osób lub grup w usłudze Azure AD odpowiedzialny za zatwierdzanie żądań uaktywniać swoje role.
-
-## <a name="scenarios"></a>Scenariusze
-
-Prywatna wersja zapoznawcza obsługuje następujące scenariusze:
-
-**Jako uprzywilejowanych ról administratora pararozaniliny możesz wykonywać następujące czynności:**
-
--   [Włącz zatwierdzenia dla określonych ról](#enable-approval-for-specific-roles)
-
--   [Określ osobę zatwierdzającą użytkowników i/lub grup do żądań zatwierdzenia](#specify-approver-users-and/or-groups-to-approve-requests)
-
--   [Wyświetl historię żądania i zatwierdzenia dla ról uprzywilejowanych wszystko](#view-request-and-approval-history-for-all-privileged-roles)
-
-**Jako wyznaczonej osoby zatwierdzającej możesz wykonywać następujące czynności:**
-
--   [Wyświetlanie oczekujących zatwierdzeń (żądań)](#view-pending-approvals-requests)
-
--   [Zatwierdzanie lub odrzucanie żądań o podniesienie uprawnień roli, (pojedynczy i/lub zbiorcze)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
-
--   [Podaj uzasadnienie dla mojego lub odrzuceniu](#provide-justification-for-my-approval/rejection) 
-
-**Jako uprawniony użytkownik roli możesz wykonywać następujące czynności:**
-
--   [żądanie aktywacji roli, która wymaga zatwierdzenia](#request-activation-of-a-role-that-requires-approval)
-
--   [Wyświetl stan żądanie aktywacji](#view-the-status-of-your-request-to-activate)
-
--   [Ukończenia zadania w usłudze Azure AD, jeśli Aktywacja została zatwierdzona.](#complete-your-task-in-azure-ad-if-activation-was-approved)
-
-### <a name="navigation"></a>Nawigacja
-
-Zaktualizowaliśmy nawigacji do obsługi zatwierdzenia
-
-![](media/azure-ad-pim-approval-workflow/image001.png)
-
-Wartość domyślna strona docelowa zapewnia wygodny dostęp do informacji na temat usługi PIM oraz Nowa dokumentacja zatwierdzenia.
-
-![](media/azure-ad-pim-approval-workflow/image002.png)
-
-Dodaliśmy również nową sekcję dla wszystkich użytkowników usługi PIM, "Moja Historia inspekcji". Znajdziesz tutaj wszystkie informacje istotne dla Twojej tożsamości. Obejmuje to wszystkie oczekujące i ukończonych żądań, podejmuje wprowadzone dotyczące żądań, które można rozwiązać, a wszystkie ostatnie aktywacje ról w jednym dogodnym miejscu.
-
-![](media/azure-ad-pim-approval-workflow/image003.png)
-
-### <a name="enable-approval-for-specific-roles"></a>Włącz zatwierdzenia dla określonych ról
-
-Aby włączyć zatwierdzenia dla określonej roli, należy najpierw wybrać ról w katalogu, w lewym obszarze nawigacji.
-
-![](media/azure-ad-pim-approval-workflow/image004.png)
-
-Znajdź i wybierz ustawienia w obszarze nawigacji po lewej stronie role katalogu
-
-![](media/azure-ad-pim-approval-workflow/image006.png)
-
-Wybierz role uprzywilejowane:
-
-![](media/azure-ad-pim-approval-workflow/image009.png)
-
-Wybierz pozycję "Włącz" w sekcji zatwierdzenia wymagają:
-
-![](media/azure-ad-pim-approval-workflow/image011.png)
-
-Po włączeniu bloku będzie rozszerzyć, aby wyświetlić następujące informacje:
-
-![](media/azure-ad-pim-approval-workflow/image013.png)
-
->[!NOTE]
-Jeśli nie określisz żadnych osób zatwierdzających, PRA(s) stają się osobami zatwierdzającymi domyślne. PRA(s) będzie potrzebować zatwierdzić wszystkie żądania aktywacji dla tej roli.
-
-### <a name="specify-approver-users-andor-groups-to-approve-requests"></a>Określ osobę zatwierdzającą użytkowników i/lub grup do żądań zatwierdzenia
-
-Aby delegować zatwierdzenia, kliknij opcję "Wybierz osoby zatwierdzające":
-
-![](media/azure-ad-pim-approval-workflow/image015.png)
-
-Podczas ładowania bloku wybierz osoby zatwierdzające mogą wyszukać konkretnego użytkownika lub grupy, korzystając z paska wyszukiwania u góry lub wybierając z listy wstępnie wypełnione, a następnie kliknij pozycję "Wybierz", po zakończeniu:
-
-![](media/azure-ad-pim-approval-workflow/image017.png)
-
-Uwaga: Można wybrać wielu użytkowników lub grup w danym momencie.
-
-Wybór pojawi się na liście wybrane osoby zatwierdzające, jak pokazano poniżej:
-
-![](media/azure-ad-pim-approval-workflow/image019.png)
-
-Aby usunąć osobę zatwierdzającą, po prostu kliknij przycisk Usuń obok nazwy użytkownika.
-
-Aby dodać dodatkowe osób zatwierdzających, powtórz te czynności.
-
-## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>Wyświetl historię żądania i zatwierdzenia dla ról uprzywilejowanych wszystko
-
-Aby wyświetlić historię żądania i zatwierdzania wszystkich uprzywilejowanych ról, wybierz pozycję Historia inspekcji na pulpicie nawigacyjnym:
-
-![](media/azure-ad-pim-approval-workflow/image021.png)
-
->[!NOTE]
-Sortowanie danych według akcji i poszukaj "Aktywacja Approved"
-
-### <a name="view-pending-approvals-requests"></a>Wyświetlanie oczekujących zatwierdzeń (żądań)
+## <a name="view-pending-approvals-requests"></a>Wyświetlanie oczekujących zatwierdzeń (żądań)
 
 Jako delegowany osoby zatwierdzającej będzie otrzymywał powiadomienia e-mail, kiedy żądanie oczekuje na zatwierdzenie. Aby wyświetlić te żądania w portalu usługi PIM, z poziomu pulpitu nawigacyjnego (w nowy sposób nawigacji) wybierz kartę "Oczekujące żądania zatwierdzenia" na pasku nawigacyjnym po lewej stronie.
 
@@ -141,13 +36,13 @@ W tym miejscu zobaczysz listę żądań oczekujących na zatwierdzenie:
 
 ![](media/azure-ad-pim-approval-workflow/image024.png)
 
-### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>Zatwierdzanie lub odrzucanie żądań o podniesienie uprawnień roli, (pojedynczy i/lub zbiorcze)
+## <a name="approve-or-deny-requests-for-role-elevation-single-andor-bulk"></a>Zatwierdź lub Odrzuć żądań o podniesienie uprawnień roli, (pojedynczy i/lub zbiorcze)
 
 Zaznacz żądania, które chcesz zatwierdzić lub odrzucić, a następnie kliknij przycisk na pasku akcji, który odpowiada podjęcie decyzji:
 
 ![](media/azure-ad-pim-approval-workflow/image025.png)
 
-### <a name="provide-justification-for-my-approvalrejection"></a>Podaj uzasadnienie dla mojego lub odrzuceniu
+## <a name="provide-justification-for-my-approvaldenial"></a>Podaj uzasadnienie dla mojej zatwierdzania/odmowa.
 
 Spowoduje to otwarcie nowego bloku Zatwierdź lub Odrzuć wiele żądań jednocześnie. Wprowadź uzasadnienie decyzji, a następnie kliknij pozycję Zatwierdź (lub Odrzuć) u dołu lub bloku:
 
@@ -157,38 +52,7 @@ Po zakończeniu procesu żądania w symbolu stanu będzie odzwierciedlać decyzj
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
-### <a name="request-activation-of-a-role-that-requires-approval"></a>żądanie aktywacji roli, która wymaga zatwierdzenia
-
-Mogą zostać rozpoczęte żądanie aktywacji roli, która wymaga zatwierdzenia od starego nawigacji PIM lub nową nawigację jako proces aktywacji roli pozostają bez zmian. Po prostu wybierz rolę z listy ról, aby aktywować:
-
-![](media/azure-ad-pim-approval-workflow/image033.png)
-
-Jeśli roli uprzywilejowanej wymaga uwierzytelniania wieloskładnikowego, zostanie wyświetlony monit, aby najpierw wykonać to zadanie:
-
-![](media/azure-ad-pim-approval-workflow/image035.png)
-
-Po zakończeniu, kliknij pozycję Aktywuj i uzasadnić (jeśli jest to wymagane):
-
-![](media/azure-ad-pim-approval-workflow/image037.png)
-
-Osoby zgłaszającej żądanie zostanie wyświetlone powiadomienie, że żądanie oczekuje na zatwierdzenie:
-
-![](media/azure-ad-pim-approval-workflow/image039.png)
-
-### <a name="view-the-status-of-your-request-to-activate"></a>Wyświetl stan żądanie aktywacji
-
-Wyświetlanie stanu oczekującego żądania aktywacji musi być dostępny z nową nawigację. Na pasku nawigacyjnym po lewej stronie wybierz kartę "Moje żądania":
-
-![](media/azure-ad-pim-approval-workflow/image041.png)
-
-Stan żądania wartością domyślną jest "Pending", ale można przełączać w celu wyświetlenia wszystkich lub odrzucone żądania.
-
-### <a name="complete-your-task-in-azure-ad-if-activation-was-approved"></a>Ukończenia zadania w usłudze Azure AD, jeśli Aktywacja została zatwierdzona.
-
-Gdy żądanie zostanie zatwierdzone, rola jest aktywna i może kontynuować pracę, aby wymaga tej roli.
-
-![](media/azure-ad-pim-approval-workflow/image043.png)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Twoja opinia jest dla nas bardzo cenne. Możesz udostępnić komentarze i opinie nam tutaj!
+- [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
+- [Powiadomienia e-mail w usłudze PIM](pim-email-notifications.md)

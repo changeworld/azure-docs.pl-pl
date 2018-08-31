@@ -1,6 +1,6 @@
 ---
-title: Jak rozpocząć Przegląd dostępu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Przegląd dostępu do uprzywilejowanych tożsamości za pomocą aplikacji Azure Privileged Identity Management.
+title: Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć Przegląd dostępu dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 0c6c1d48d0a78781528b08b3c1d1e9438bf865ee
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a431a0a0000cc8b0838bbe05c703cc548c8977c5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617357"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189406"
 ---
-# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Sposób uruchamiania przeglądu dostępu w usłudze Azure AD Privileged Identity Management
+# <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM
 Przypisania ról stają się "starych", gdy użytkownicy mają uprzywilejowany dostęp, które nie potrzebują już. W celu zmniejszenia ryzyka związanego z te przypisania roli starych ról uprzywilejowanych administratorów lub Administratorzy globalni należy regularnie tworzyć przeglądów dostępu, aby zadać Administratorzy, aby zapoznać się z ról, które użytkownicy nadali. W tym dokumencie opisano kroki do uruchamiania przeglądu dostępu w usłudze Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Rozpoczynanie przeglądu dostępu
@@ -77,5 +77,8 @@ Postęp można śledzić po recenzentów zakończeniu ich recenzje na pulpicie n
 Do momentu okres przeglądu za pośrednictwem można Przypomnij przeprowadzenie ich przeglądu lub Zakończ przegląd wcześnie w sekcji przeglądów dostępu.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="pim-table-of-contents"></a>Usługa PIM spis treści
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-complete-review.md)
+- [Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
+- [Rozpoczynanie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-start-access-review.md)

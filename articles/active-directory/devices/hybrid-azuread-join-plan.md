@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087314"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190276"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -126,7 +126,7 @@ Jeśli środowisko zawiera zarządzane domeny, dołączenie do hybrydowej usług
 
 - Przekazać za pośrednictwem uwierzytelniania (PTA) za pomocą bezproblemowego logowania jednokrotnego (SSO) 
 
-- Hasło ma synchronizacji (wersji) za pomocą bezproblemowego logowania jednokrotnego (SSO) 
+- Synchronizacja skrótów haseł (wersji) za pomocą bezproblemowego logowania jednokrotnego (SSO) 
 
 Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia za pomocą kreatora, aby skonfigurować dołączenie do hybrydowej usługi Azure AD. Kreator umożliwia znacznie upraszcza proces konfigurowania. Aby uzyskać więcej informacji, zobacz:
 

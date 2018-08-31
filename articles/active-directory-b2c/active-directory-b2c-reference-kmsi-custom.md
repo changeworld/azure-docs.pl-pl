@@ -1,202 +1,184 @@
 ---
 title: Informuj mnie zalogowany w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat pokazująca, jak skonfigurować "nie wylogowuj mnie".
+description: Dowiedz się, jak ustawić się zachować mnie podpisane w (KMSI) w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/05/2016
+ms.date: 08/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6bad6e1f2b204f76b075652a9d3f27367a8de49f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441321"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248063"
 ---
-# <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Usługa Azure Active Directory B2C: Włącz "Chcę zalogowany (KMSI)"  
+# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włączanie opcji nie wylogowuj mnie (KMSI) w usłudze Azure Active Directory B2C
+
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure AD B2C umożliwia teraz aplikacji sieci web i aplikacji natywnych, aby włączyć funkcję "Chcę zalogowany (KMSI)". Ta funkcja daje dostęp do zwracania użytkowników do aplikacji bez monitowania użytkownika o ponowne wprowadzenie nazwy użytkownika i hasła. Ten dostęp jest odwoływane, gdy użytkownik loguje. 
+Można włączyć funkcji zachować mnie podpisane w (KMSI) dla aplikacji sieci web i aplikacji natywnych w usłudze Azure Active Directory (Azure AD) B2C. Ta funkcja daje dostęp do zwracania użytkowników do aplikacji bez monitowania użytkownika o ponowne wprowadzenie nazwy użytkownika i hasła. Ten dostęp jest odwoływane, gdy użytkownik wylogowuje się. 
 
-Firma Microsoft zaleca się zaznaczenie tej opcji na komputery publiczne użytkowników. 
+Użytkownicy nie należy włączać tej opcji na komputery publiczne. 
 
-![img](images/kmsi.PNG)
-
+![Włączanie opcji Nie wylogowuj mnie](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dzierżawę usługi Azure AD B2C, skonfigurowane i umożliwiają lokalnego konta konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+Dzierżawy usługi Azure AD B2C, który jest skonfigurowany do zezwalania konta lokalnego, zarejestruj się i zaloguj się. Jeśli nie masz dzierżawę, można utworzyć jeden wykonując kroki w [samouczek: tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md).
 
-## <a name="how-to-enable-kmsi"></a>Jak włączyć KMSI
+## <a name="add-a-content-definition-element"></a>Dodaj element definicji zawartości 
 
-Wprowadź następujące zmiany w zasadach zaufania framework rozszerzenia.
+W obszarze **BuildingBlocks** elementu z pliku rozszerzenia, Dodaj **ContentDefinitions** elementu. 
 
-## <a name="adding-a-content-definition-element"></a>Dodawanie elementu definicji zawartości 
+1. W obszarze **ContentDefinitions** elementu Dodawanie **ContentDefinition** elementu z identyfikatorem `api.signuporsigninwithkmsi`.
+2. W obszarze **ContentDefinition** elementu Dodawanie **parametr LoadUri**, **RecoveryUri**, i **identyfikator URI** elementów. `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` Wartość **identyfikator URI** element jest zrozumiały identyfikatora urządzenia i wyświetlenie KMSI pole wyboru na stronach logowania. Nie można zmienić tę wartość. 
 
-`BuildingBlocks` Węzła pliku rozszerzenie musi zawierać `ContentDefinitions` elementu. 
+    ```XML
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsigninwithkmsi">
+          <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>                       
+    ```
 
-1. W `ContentDefinitions` sekcji, zdefiniuj nowy `ContentDefinition` o identyfikatorze `api.signuporsigninwithkmsi`.
-2. Nowy `ContentDefinition` musi zawierać `LoadUri`, `RecoveryUri` i `DataUri` w następujący sposób.
-3. Identyfikator URI`urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` jest zrozumiały identyfikatora urządzenia i wyświetlenie KMSI pole wyboru na stronach logowania. Upewnij się, że nie możesz zmienić tę wartość. 
+## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>Dodawanie dostawcy oświadczeń w logowania dla konta lokalnego  
 
-```XML
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.signuporsigninwithkmsi">
-        <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
-        <Metadata>
-          <Item Key="DisplayName">Signin and Signup</Item>
-        </Metadata>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>                       
-```
+Można zdefiniować logowania konta lokalnego jako dostawcę oświadczeń za pomocą **ClaimsProvider** elementu w pliku rozszerzenie zasad:
 
+1. Otwórz *TrustFrameworkExtensions.xml* plików z katalogu roboczego. 
+2. Znajdź **ClaimsProviders** elementu. Jeśli nie istnieje, należy dodać go pod elementem głównym. [Pakiet startowy](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) obejmuje konta lokalnego dostawcy oświadczeń w logowania. 
+3. Dodaj **ClaimsProvider** element z **DisplayName** i **profilu technicznego** jak pokazano w poniższym przykładzie:
 
+    ```XML
+    <ClaimsProviders>
+      <ClaimsProvider>
+        <DisplayName>Local Account SignIn</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="login-NonInteractive">
+            <Metadata>
+              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
+              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
+            </Metadata>
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
+              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
+            </InputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    </ClaimsProviders>
+    ```
 
-## <a name="add-a--local-account-sign-in-claims-provider"></a>Dodaj dostawcę oświadczeń logowania konta lokalnego 
+### <a name="add-the-application-identifiers-to-your-custom-policy"></a>Dodawanie identyfikatorów aplikacji do zdefiniowania zasad niestandardowych
 
-Logowanie za pomocą konta lokalnego można zdefiniować jako dostawcy oświadczeń, aby `<ClaimsProvider>` węzeł w pliku rozszerzenie zasad:
+Dodawanie identyfikatorów aplikacji do *TrustFrameworkExtensions.xml* pliku.
 
-1. Otwórz plik rozszerzenia (TrustFrameworkExtensions.xml) z katalogu roboczego. 
-2. Znajdź `<ClaimsProviders>` sekcji. Jeśli nie istnieje, należy go dodać w węźle głównym.
-3. Pakiet startowy z [wprowadzenie](active-directory-b2c-get-started-custom.md) jest dostarczany z dostawcy oświadczeń "Lokalne logowanie za pomocą konta". 
-4. Jeśli nie, Dodaj nowy `<ClaimsProvider>` węzła w następujący sposób:
+1. W *TrustFrameworkExtensions.xml* plików, Znajdź **profilu technicznego** elementu z identyfikatorem programu `login-NonInteractive` i **profilu technicznego** elementu z Identyfikator typu `login-NonInteractive-PasswordChange` i Zamień wszystkie wartości `IdentityExperienceFrameworkAppId` z identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
 
-```XML
-<ClaimsProviders>
-    <ClaimsProvider>
-      <DisplayName>Local Account SignIn</DisplayName>
-      <TechnicalProfiles>
-         <TechnicalProfile Id="login-NonInteractive">
-           <Metadata>
-            <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-            <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-           </Metadata>
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-           </InputClaims>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
- </ClaimsProviders>
-```
+    ```
+    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
+    ```
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Dodawanie identyfikatorów aplikacji do zdefiniowania zasad niestandardowych
+2. Zamień wszystkie wartości `ProxyIdentityExperienceFrameworkAppId` z identyfikatorem aplikacji platformy środowiska tożsamości serwera Proxy aplikacji, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+3. Zapisz plik rozszerzenia.
 
-Dodaj identyfikatory aplikacji do pliku rozszerzenia (`TrustFrameworkExtensions.xml`):
+## <a name="create-a-kmsi-enabled-user-journey"></a>Utwórz podróż włączonego użytkownika KMSI
 
-1. W pliku rozszerzeń (TrustFrameworkExtensions.xml) można znaleźć elementu `<TechnicalProfile Id="login-NonInteractive">` i `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+Dodaj dostawcę oświadczeń logowania dla lokalnego konta do swoją podróż po użytkownik. 
 
-2. Zastąp wszystkie wystąpienia zmiennej `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md). Oto przykład:
+1. Otwórz plik podstawowy zasad. Na przykład *TrustFrameworkBase.xml*.
+2. Znajdź **podróży użytkowników** elementu i skopiować całą zawartość **UserJourney** element, który używa identyfikatora elementu `SignUpOrSignIn`.
+3. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions.xml* i Znajdź **podróży użytkowników** elementu. Jeśli element nie istnieje, dodać.
+4. Wklej całą **UserJourney** element, który został skopiowany jako element podrzędny elementu **podróży użytkowników** elementu.
+5. Zmień wartość na identyfikator nowego podróży użytkownika. Na przykład `SignUpOrSignInWithKmsi`.
+6. Na koniec w pierwszym kroku aranżacji, zmień wartość **ContentDefinitionReferenceId** do `api.signuporsigninwithkmsi`. Ustawienie tej wartości umożliwia pola wyboru w podróży użytkownika. 
+7. Zapisz i przekazać rozszerzenie pliku i upewnij się, że wszystkie sprawdzenia powiodło się.
 
-   ```
-   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-   ```
+    ```XML
+    <UserJourneys>
+      <UserJourney Id="SignUpOrSignInWithKmsi">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <Preconditions>
+              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+                <Value>objectId</Value>
+                <Action>SkipThisOrchestrationStep</Action>
+              </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <!-- This step reads any user attributes that we may not have received when in the token. -->
+          <OrchestrationStep Order="3" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        </OrchestrationSteps>
+        <ClientDefinition ReferenceId="DefaultWeb" />
+      </UserJourney>
+    </UserJourneys>
+    ```
 
-3. Zastąp wszystkie wystąpienia zmiennej `ProxyIdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości serwera Proxy, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+## <a name="create-a-relying-party-file"></a>Utwórz plik strony jednostki uzależnionej
 
-4. Zapisz plik rozszerzenia.
+Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która inicjuje podróży użytkownika, który został utworzony.
 
-## <a name="create-a-kmsi-in-enabled-user-journey"></a>Utwórz KMSI w podróży użytkownika włączone
+1. Utwórz kopię *SignUpOrSignIn.xml* plików w katalogu roboczym, a następnie zmień jego nazwę. Na przykład *SignUpOrSignInWithKmsi.xml*.
+2. Otwórz nowy plik i zaktualizuj **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Jest to nazwa zasad. Na przykład `SignUpOrSignInWithKmsi`.
+3. Zmiana **ReferenceId** atrybutu dla **DefaultUserJourney** element, aby dopasować identyfikator nowego podróży użytkownika, który został utworzony. Na przykład `SignUpOrSignInWithKmsi`.
 
-Teraz należy dodać logowanie za pomocą konta lokalnego dostawcy oświadczeń do swoją podróż po użytkownik. 
+    KMSI jest konfigurowana przy użyciu **UserJourneyBehaviors** elementu. **KeepAliveInDays** atrybut kontroluje, jak długo użytkownik pozostaje zalogowany. W poniższym przykładzie, sesja KMSI automatycznie wygasa po upływie `7` dni, niezależnie od tego, jak często użytkownik wykonuje dyskretne uwierzytelnianie. Ustawienie **KeepAliveInDays** wartość `0` powoduje wyłączenie funkcji KMSI. Domyślnie ta wartość jest `0`. Jeśli wartość **wartość SessionExpiryType** jest `Rolling`, rozszerzoną sesji KMSI `7` dni za każdym razem, gdy użytkownik wykona dyskretne uwierzytelnianie.  Jeśli `Rolling` jest zaznaczone, należy zachować liczba dni do minimum. 
 
-1. Otwórz plik podstawowy zasady (na przykład TrustFrameworkBase.xml).
-2. Znajdź `<UserJourneys>` elementu i skopiować całą `<UserJourney>` węzeł, który zawiera `Id="SignUpOrSignIn"`.
-3. Otwórz plik rozszerzenia (na przykład TrustFrameworkExtensions.xml) i Znajdź `<UserJourneys>` elementu. Jeśli element nie istnieje, dodać.
-4. Wklej całą `<UserJourney>` węzeł, który został skopiowany jako element podrzędny elementu `<UserJourneys>` elementu.
-5. Zmień nazwę identyfikator nowego podróży użytkownika (na przykład zmień nazwę `SignUpOrSignInWithKmsi`).
-6. Na koniec w `OrchestrationStep 1` zmienić `ContentDefinitionReferenceId` do `api.signuporsigninwithkmsi` , zdefiniowanego w poprzednich krokach. Umożliwia to pole wyboru w podróży użytkownika. 
-7. Po zakończeniu modyfikowania pliku rozszerzenia. Zapisz, a następnie przekaż ten plik. Upewnij się, że wszystkie sprawdzenia powiodło się.
+    Wartość **SessionExpiryInSeconds** reprezentuje czas wygaśnięcia sesji logowania jednokrotnego. Jest to używane wewnętrznie przez usługę Azure AD B2C do sprawdzenia, czy sesja dla KMSI wygasł lub nie. Wartość **KeepAliveInDays** określa wartość Expires/Max-Age plik cookie logowania jednokrotnego w przeglądarce sieci web. W odróżnieniu od **SessionExpiryInSeconds**, **KeepAliveInDays** służy do przeglądarki uniemożliwiają wyczyszczenie plików cookie, jest ono zamknięte. Użytkownik może dyskretnie zalogować się tylko wtedy, gdy istnieje plik cookie sesji logowania jednokrotnego, które są kontrolowane przez **KeepAliveInDays**i jest ważny, którymi steruje **SessionExpiryInSeconds**. Zalecane jest, aby ustawić wartość **SessionExpiryInSeconds** jako równoważne czas **KeepAliveInDays** w ciągu kilku sekund, jak pokazano w poniższym przykładzie.
 
-```XML
-<UserJourneys>
-    <UserJourney Id="SignUpOrSignInWithKmsi">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
-              <Value>objectId</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- This step reads any user attributes that we may not have received when in the token. -->
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-      <ClientDefinition ReferenceId="DefaultWeb" />
-    </UserJourney>
-  </UserJourneys>
-```
+    ```XML
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
+      <UserJourneyBehaviors>
+        <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
+        <SessionExpiryType>Absolute</SessionExpiryType>
+        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+      </UserJourneyBehaviors>
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
 
-## <a name="create-a-relying-party-rp-file"></a>Utwórz plik jednostki uzależnionej strona (RP)
-
-Następnie zaktualizuj plik innych firm (RP) jednostki uzależnionej, który inicjuje podróży użytkownika, który został utworzony:
-
-1. Utwórz kopię SignUpOrSignIn.xml w katalogu roboczym. Następnie zmień jego nazwę (na przykład SignUpOrSignInWithKmsi.xml).
-
-2. Otwórz nowy plik i zaktualizuj `PolicyId` atrybutu dla `<TrustFrameworkPolicy>` przy użyciu unikatowej wartości. To jest nazwa zasady (na przykład SignUpOrSignInWithKmsi).
-
-3. Modyfikowanie `ReferenceId` atrybutu w `<DefaultUserJourney>` do dopasowania `Id` nowe podróży użytkownika, który został utworzony (na przykład SignUpOrSignInWithKmsi).
-
-4. KMSI jest skonfigurowana w `UserJourneyBehaviors`. 
-
-5. **`KeepAliveInDays`** Określa, jak długo użytkownik pozostaje zalogowany. W poniższym przykładzie sesji KMSI automatycznie wygaśnie po 14 dniach od niezależnie od tego, jak często użytkownik wykonuje dyskretne uwierzytelnianie.
-
-   Ustawienie `KeepAliveInDays` wartości 0 powoduje wyłączenie funkcji KMSI. Domyślnie ta wartość wynosi 0
-
-6. Jeśli **`SessionExpiryType`** jest *stopniowe*, a następnie sesji KMSI zostanie rozszerzony przez 14 dni, za każdym razem, gdy użytkownik wykona dyskretne uwierzytelnianie.  Jeśli *stopniowe* jest zaznaczone, zaleca się zachować liczba dni do minimum. 
-
-       <RelyingParty>
-       <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
-       <UserJourneyBehaviors>
-         <SingleSignOn Scope="Tenant" KeepAliveInDays="14" />
-         <SessionExpiryType>Absolute</SessionExpiryType>
-         <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
-       </UserJourneyBehaviors>
-       <TechnicalProfile Id="PolicyProfile">
-         <DisplayName>PolicyProfile</DisplayName>
-         <Protocol Name="OpenIdConnect" />
-         <OutputClaims>
-           <OutputClaim ClaimTypeReferenceId="displayName" />
-           <OutputClaim ClaimTypeReferenceId="givenName" />
-           <OutputClaim ClaimTypeReferenceId="surname" />
-           <OutputClaim ClaimTypeReferenceId="email" />
-           <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-         </OutputClaims>
-         <SubjectNamingInfo ClaimType="sub" />
-       </TechnicalProfile>
-       </RelyingParty>
-
-7. Zapisz zmiany, a następnie przekazać plik.
-
-8. Aby przetestować zasad niestandardowych, który został przekazany, w witrynie Azure portal, przejdź do bloku zasady, a następnie kliknij **Uruchom teraz**.
-
-
-## <a name="link-to-sample-policy"></a>Link do zasad próbki
+4. Zapisz zmiany, a następnie przekaż plik.
+5. Aby przetestować zasad niestandardowych, który został przekazany, w witrynie Azure portal, przejdź do strony zasad, a następnie wybierz **Uruchom teraz**.
 
 Można znaleźć zasad przykładowe [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f2674aeb83fbb7679d9d0c2574a93484a352e9d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 180f1a39b92dd699fa114cb98a5842b0ab0dc89a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40162130"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190542"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane
 
@@ -42,7 +42,7 @@ Używamy klasycznego logiki typ ETL do projektowania nasz potok. Architektura b�
 
 W tym artykule nie opisano sposób tworzenia danych lub [przekazać go do konta usługi Azure Blob Storage](../storage/blobs/storage-upload-process-images.md). Przeciwnie firma Microsoft przejmą przepływ tak szybko, jak nowy plik zostanie przekazany do obiektu blob. W tym miejscu:
 
-1. Proces wykryje, że nowe dane zostały przekazane.  Przedstawiony przykład używa używa [aplikacji logiki platformy Azure](../logic-apps/logic-apps-overview.md), która ma dostępne wyzwalacza do wykrywania nowych danych przekazywanych do obiektu blob.
+1. Proces wykryje, że nowe dane zostały przekazane.  Przedstawiony przykład używa [aplikacji logiki platformy Azure](../logic-apps/logic-apps-overview.md), która ma dostępne wyzwalacza do wykrywania nowych danych przekazywanych do obiektu blob.
 
 2. Procesor odczytuje te nowe dane i konwertuje ją na format JSON, w formacie wymaganym przez usługę Log Analytics.  W tym przykładzie używamy [funkcji platformy Azure](../azure-functions/functions-overview.md) jako uproszczone, wydajne sposób wykonywania naszego kodu przetwarzania. Funkcja rozpocznie się kompilowanie przez samą aplikację logiki, używany do wykrywania w nowe dane.
 

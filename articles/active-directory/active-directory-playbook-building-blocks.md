@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059542"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189042"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -480,7 +480,7 @@ Przybliżony czas wykonania: 15 minut
 | Zaloguj się do https://portal.azure.com jako administrator globalny (GA), a następnie ładowania początkowego bloku usługi PIM. Administrator globalny, który wykonuje krok ten jest obsługiwany jako administrator zabezpieczeń.  Nadajmy tej GA1 aktora | [Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
 | Zidentyfikuj administratora globalnego i przenieść je z stałe na kwalifikujących. Powinna to być jako osobne administrator komentarzowi użytemu w kroku 1 w celu uściślenia. Nadajmy tej GA2 aktora | [Usługa Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Teraz, zaloguj się jako GA2 do https://portal.azure.com i spróbuj zmienić "Ustawienia użytkownika". Należy zauważyć, że niektóre opcje są wygaszone. | |
-| W nowej karcie i w tej samej sesji w kroku 3, przejdź teraz do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: Dodawanie aplikacji Privileged Identity Management](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| W nowej karcie i w tej samej sesji w kroku 3, przejdź teraz do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Rozpoczynanie korzystania z usługi PIM](privileged-identity-management/pim-getting-started.md) |
 | Żądanie aktywacji do roli administratora globalnego | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: aktywować rolę](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Należy pamiętać, że GA2 nigdy nie zarejestrowali się do uwierzytelniania Wieloskładnikowego, rejestracji dla usługi Azure MFA będzie to konieczne |  |
 | Wróć do oryginalnego karty w kroku 3, a następnie kliknij przycisk Odśwież w przeglądarce. Należy zauważyć, że możesz teraz dostęp do ustawień "użytkownika" | |

@@ -1,45 +1,93 @@
 ---
-title: Tworzenie niestandardowych analytics aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
-description: Jako operatora jak utworzyć niestandardowe analytics aplikacji Azure IoT centralnej.
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 04/16/2018
+title: Tworzenie niestandardowych analizy dotyczące aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
+description: Operator jak utworzyć niestandardowe analizy dotyczące aplikacji usługi Azure IoT Central.
+author: lmasieri
+ms.author: lmasieri
+ms.date: 08/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5facdf3f02b71e154a23d8f26c7bcc40b5c71e35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629307"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247100"
 ---
-# <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać analytics do analizowania danych urządzenia
+# <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać usługi analytics do analizowania danych urządzenia
 
-Centrum IoT Azure Microsoft oferuje możliwości rozbudowanej analizy rozsądnie dużych ilości danych z urządzeń. Służy do wyświetlania i analizowania danych dla analityka [zestaw urządzenia](howto-use-device-sets.md) w aplikacji. Zestaw urządzenia jest zdefiniowane przez użytkownika grupy urządzeń. Można zawęzić analizy niewielki zbiór urządzeń lub pojedynczego urządzenia.
+Microsoft Azure IoT Central zapewnia bogate możliwości analizy możliwości mają sens dużych ilości danych z urządzeń. Aby rozpocząć pracę, odwiedź stronę **Analytics** w menu nawigacji po lewej stronie. 
 
-Operator wybrać **Analytics** w menu nawigacji po lewej stronie Wybierz zbiór urządzeń, a następnie wybierz wartości, tak aby wyświetlić na wykresie. Poniżej przedstawiono kilka narzędzi, używanych do dalszego wycinka danych:
+  ![IoT Central nawigację do analizy](media\howto-create-analytics\analytics-navigation.png)
 
-* **Pomiary:** wybierz wartości, tak aby wyświetlić przykład temperatury i wilgotności.
-* **Agregacja:** wybierz funkcję agregacji do pomiarów. Na przykład **Minimum** lub **średni**.
-* **Podziel przez:** przechodzenie przez podział danych przez właściwości urządzenia lub nazwę urządzenia. Na przykład podział według lokalizacji urządzenia:
+## <a name="querying-your-data"></a>Wykonywanie zapytań do danych
 
-     ![Strona główna analiza](media\howto-create-analytics\analytics-main.png)
+Musisz wybrać **zestaw urządzeń**, Dodaj **filtru** (opcjonalnie) i wybierz **okres** na rozpoczęcie pracy. Po wykonaniu tych czynności kliknij *Pokaż wyniki* można uruchomić wizualizowania danych.
 
-* **Przedział czasu:** można wybrać jeden z przedziałów czasu wstępnie zdefiniowanego zakresu czasu lub utworzyć zakres czasu niestandardowe: ![zakres czasu analizy](media\howto-create-analytics\analytics-time-range.png)
 
-## <a name="change-the-visualizations"></a>Zmień wizualizacji
+* **Zestawy urządzeń:** A [zestaw urządzeń](howto-use-device-sets.md) jest zdefiniowane przez użytkownika grupy urządzeń. Na przykład wszystkie lodówki w Oakland lub wszystkich wer. 2.0 turbiny wiatru.
 
-Można zmienić wykresy zgodnie z wymaganiami wizualizacji, wybierając jedną z trzech trybów:
+<!---
+to-do: confirm if 10 is the max number of filters
+to-do: do we need to explain how fiters work?
+--->
 
-* **Skumulowany:** jest skumulowany wykres dla każdego pomiaru i wykresów mieć własne osi y. Skumulowany wykresy są przydatne, gdy mają wiele pomiarów wybrane i ma być widoków pomiarów.
-* **Nieskumulowanych:** wykresu dla każdego miary są kreślone na jednej osi y, ale wartości na osi y zostaną zmienione na podstawie wyróżnione miary. Wykresy nieskumulowanych są przydatne do nakładki wielu miar zobaczyć wzorce w tych środków dla tego samego zakresu czasu.
-* **Udostępniony osi y:** wszystkie wykresy udostępnianie tej samej osi y, a nie powoduje zmiany wartości osi. Udostępniony wykresy osi y są przydatne, gdy chcesz przejrzeć jednej miary podczas tworzenia wycinków danych z podziału przez.
+* **Filtry:** możesz opcjonalnie dodać filtry do wyszukiwania w taki sposób, aby stworzyć na podstawie posiadanych danych. W czasie, można dodać filtry do 10. Na przykład w ramach wszystkich lodówki w Oakland, znaleźć go te, które miały temperatura powyżej 60 stopni. 
+* **Okres:** domyślnie firma Microsoft będzie pobierać dane z ostatnich 10 minut. Możesz zmienić tę wartość do jednego z zakresów wstępnie zdefiniowanego czasu, lub wybrać niestandardowy okres. 
+
+ ![Zapytanie analizy](media\howto-create-analytics\analytics-query.png)
+
+## <a name="visualizing-your-data"></a>Wizualizowanie danych
+
+Po zostało zniekształcone danych będzie możliwe jej uruchomienie go wizualizacji. Użytkownik może Pokaż/Ukryj pomiarów, zmiana sposobu, w których dane są agregowane i dalsze podzielenie danych za pomocą właściwości innego urządzenia.  
+
+* **Podziel wg:** dzielenie danych według właściwości urządzenia pozwala na dalsze Przechodzenie do szczegółów w swoje dane. Na przykład możesz podzielić wyniki według Identyfikatora urządzenia lub lokalizacji.
+<!---
+to-do: confirm if 10 is the max number of measurements
+--->
+* **Pomiary:** można wybrać maksymalnie 10 elementów różnych danych telemetrycznych zgłaszane przez urządzenia w danym momencie pokazywania/ukrywania. Pomiary są elementy, takie jak temperatury i wilgotności. 
+* **Agregacja:** domyślnie możemy agregować dane według jego średniej, ale można zmienić sposobu agregacji danych się czymś innym, odpowiednio do potrzeb. 
+
+   ![Analiza wizualizacji](media\howto-create-analytics\analytics-visualize.png) <br/><br/>
+   ![Wizualizacja Analytics podział według](media\howto-create-analytics\analytics-splitby.png)
+
+## <a name="interacting-with-your-data"></a>Interakcje z danymi
+
+Masz różne sposoby, w których można zmienić dalsze wyniki zapytania do własnych potrzeb wizualizacji. Można zamiennie z widoku wykresu i widoku siatki, powiększać/pomniejszać, odświeżanie zestawu danych i zmienić sposób wyświetlania wierszy.
+
+* **Pokaż siatkę:** wyniki będą dostępne w formacie tabeli do umożliwiające przeglądanie określonej wartości dla każdego punktu danych. Ten widok jest również zgodna z standardów ułatwień dostępu. 
+* **Pokaż wykres:** Twoje wyniki będą wyświetlane w formacie wiersza, aby łatwo chętnych górę/dół trendów i anomalii. 
+
+ ![Wyświetlanie widoku siatki do celów analizy](media\howto-create-analytics\analytics-showgrid.png)
+
+Powiększenie umożliwia możesz skoncentrować się na podstawie posiadanych danych. Jeśli okaże się okres chcesz skupić się na w ramach zestawu wyników przy użyciu swoje położenie kursora obszar, który chcesz powiększyć i użyj dostępne kontrolki, aby wykonać jedną z następujących czynności:
+* **Powiększ:** po wybraniu okres powiększenia w zostanie włączone i umożliwiają powiększyć do swoich danych.
+* **Pomniejsz:** tej kontrolki pozwala zmniejszyć jeden poziom usługi ostatni powiększenia. Na przykład przy powiększeniu już danych trzy razy, pomniejszania zajmie kopii jeden krok w danym momencie.
+* **Resetuj Powiększenie:** po zostało wykonane różne poziomy powiększania, można użyć resetowania powiększenia, aby powrócić do oryginalnego zestawu wyników. 
+
+ ![Wykonaj powiększanie na podstawie danych](media\howto-create-analytics\analytics-zoom.png)
+
+
+Możesz zmienić styl linii do własnych potrzeb. Dostępne cztery opcje do wyboru:
+* **Wiersz:** prostego wiersz między poszczególnymi punktami danych zostanie utworzona. 
+* **Gładki:** krzywej między każdym punkcie zostanie utworzona
+* **Krok:** linię między każdy punkt wykresu utworzy wykres kroku
+* **Punktowy:** wszystkie punkty zostaną nakreślone na wykresie bez linii, łącząc je. 
+
+ ![Innym wierszu typów dostępnych w usłudze Analytics](media\howto-create-analytics\analytics-linetypes.png)
+
+Ponadto można rozmieścić dane w osi y, wybierając jedną z trzech trybów:
+
+* **Skumulowany:** wykresu dla każdego pomiaru jest skumulowany i wykresów mają własne osi y. Skumulowane wykresy są przydatne, gdy masz wiele miar zaznaczone i mają widoków pomiarów.
+* **Nieskumulowanym:** wykres Każda miara jest wykreślony względem jedną oś y, lecz wartości dla osi y zostaną zmienione na podstawie wyróżnione miary. Wykresy nieskumulowanych są przydatne do nakładki wiele miar i chcesz zobaczyć wzorców w tych środków dla tego samego zakresu czasu.
+* **Udostępnione osi y:** wszystkich wykresów udostępnianie tej samej osi y i nie zmieniaj wartości dla osi. Udostępnione wykresy osi y są przydatne, gdy chcesz Przyjrzyj się pojedynczej mierze podczas tworzenia wycinków danych przy użyciu podziału przez.
+
+ ![Porządkowanie danych na osi y w trybach inny typ wizualizacji](media\howto-create-analytics\analytics-yaxis.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób tworzenia niestandardowych analytics Azure IoT centralnej aplikacji, w tym miejscu sugerowane następnym krokiem jest:
+Teraz, gdy wiesz jak utworzyć niestandardowe analizy dotyczące aplikacji usługi Azure IoT Central tutaj sugerowane następnym krokiem jest:
 
 > [!div class="nextstepaction"]
-> [Przygotowanie i połącz aplikację Node.js](howto-connect-nodejs.md)
+> [Przygotuj i łączenie aplikacji Node.js](howto-connect-nodejs.md)

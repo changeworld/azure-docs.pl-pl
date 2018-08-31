@@ -1,5 +1,5 @@
 ---
-title: 'IoT Mxchip z chmurą: łączenie DevKit az3166 usługi IoT do akceleratora rozwiązań IoT monitorowania zdalnego | Dokumentacja firmy Microsoft'
+title: IoT Mxchip z chmurą — nawiązać połączenie z IoT DevKit az3166 usługi akcelerator rozwiązań IoT monitorowania zdalnego | Dokumentacja firmy Microsoft
 description: W tym samouczku Dowiedz się, jak wysyłać stan czujników na DevKit az3166 usługi IoT do zdalnego monitorowania IoT akcelerator rozwiązań do monitorowania i wizualizacji.
 author: isabelcabezasm
 manager: ''
@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: 88ce34125009665d346cf034f5d02ba7e21f48fc
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 92ce85a3cc94702468a13348d3a41667498c68f5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056223"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187395"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT DevKit az3166 usługi do akceleratora rozwiązań IoT zdalnego monitorowania
 

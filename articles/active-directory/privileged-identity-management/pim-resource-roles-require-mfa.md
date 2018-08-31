@@ -1,6 +1,6 @@
 ---
-title: Wymusić uwierzytelnianie wieloskładnikowe systemu Azure w ramach zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano sposób włączania uwierzytelniania wieloskładnikowego dla zasobów usługi PIM.
+title: Wymagaj uwierzytelniania wieloskładnikowego dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wymagać uwierzytelniania wieloskładnikowego (MFA) dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 42c93a107c7ed58d6f7412b61627dccaf9076bb7
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 171d79856cf67dae9573dd1076c2ae4617cf86d1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617874"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190572"
 ---
-# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Wymusić uwierzytelnianie wieloskładnikowe systemu Azure w ramach zasobów platformy Azure przy użyciu Privileged Identity Management
+# <a name="require-multi-factor-authentication-for-azure-resource-roles-in-pim"></a>Wymagaj uwierzytelniania wieloskładnikowego dla ról zasobów platformy Azure w usłudze PIM
 
 Privileged Identity Management (PIM) dla ról zasobów platformy Azure umożliwia administratorom zasobów oraz administratorów tożsamości w celu ochrony krytycznych infrastruktury platformy Azure przy użyciu czasowo związanych przynależności i dostęp just in time. Ponadto PIM udostępnia opcjonalne wymuszania uwierzytelnianie wieloskładnikowe Azure dla dwóch różnych scenariuszy.
 
@@ -59,9 +59,7 @@ Z tego samego ekranu szczegóły ustawienia roli, pole wyboru, aby **Wymagaj uwi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wymagaj zatwierdzenia do aktywowania](pim-resource-roles-approval-workflow.md)
-
-[Korzystanie z dziennika inspekcji](pim-resource-roles-use-the-audit-log.md)
-
+- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
+- [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-alerts.md)
 
 

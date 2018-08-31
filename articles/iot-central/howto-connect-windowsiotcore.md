@@ -2,18 +2,18 @@
 title: Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central | Dokumentacja firmy Microsoft
 description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central.
 author: miriambrus
-ms.author: mriamb
+ms.author: miriamb
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205752"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189008"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -44,7 +44,7 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows I
 
 ### <a name="prepare-the-windows-iot-core-device"></a>Przygotuj urządzenie Windows IoT Core
 
-Aby skonfigurować urządzenie Windows IoT Core wykonaj przewodnik krok po kroku, w [Konfigurowanie urządzenia Windows IoT Core] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+Aby skonfigurować urządzenie Windows IoT Core wykonaj przewodnik krok po kroku, w [Konfigurowanie urządzenia Windows IoT Core] (https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
 
 ### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 

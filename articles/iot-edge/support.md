@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: MT
+ms.openlocfilehash: 696a752f199e2f7018713cb87c3b098556c5b4f5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055912"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247620"
 ---
 # <a name="azure-iot-edge-support"></a>Obsługa usługi Azure IoT Edge
 Istnieje wiele sposobów, aby wyszukać pomocy technicznej dla produktu usługi Azure IoT Edge.
@@ -53,12 +53,14 @@ Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i moż
 
 | System operacyjny | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Ubuntu 18.04 | Yes | Nie |
-| Ubuntu 16.04 | Yes | Nie |
+| Ubuntu 18.04 | Yes | Yes |
+| Ubuntu 16.04 | Yes | Yes |
+| CentOS w wersji 7.5 | Yes | Yes |
+| RHEL W WERSJI 7.5 | Yes | Yes |
 | Rzeka wiatru 8 | Yes | Nie |
 | Yocto | Yes | Nie |
-| Debian | Yes | Nie |
-| Mac | Yes | Nie |
+| Debian 8 | Yes | Yes |
+| Debian 9 | Yes | Yes |
 
 ## <a name="container-engines"></a>Aparaty kontenera
 Usługa Azure IoT Edge wymaga aparatu kontenera, można uruchomić moduły, niezależnie od systemu operacyjnego, na którym jest uruchomiony. Firma Microsoft udostępnia z kontenera aparatu moby aparatu, aby spełnić to wymaganie. Jest ona oparta na Moby projekt open source. Docker CE i Docker EE są innymi aparatami popularnych kontenera. One również są oparte na projekt źródłowy zostanie otwarta Moby i są zgodne z usługą Azure IoT Edge. Firma Microsoft oferuje optymalną obsługą systemów przy użyciu tych silników kontenera. Microsoft nie ma jednak możliwości na potrzeby wysłania poprawki dotyczące problemów w nich. Z tego powodu firma Microsoft zaleca używanie aparatu moby w systemach produkcyjnych.

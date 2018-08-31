@@ -1,6 +1,6 @@
 ---
-title: Kwalifikujące się przypisania i widoczność zasobów platformy Azure w Privileged Identity Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak przypisać członków jako kwalifikuje się role zasobów, korzystając z usługi PIM.
+title: Kwalifikujące się przypisania i widoczność zasobów w usłudze PIM — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak przypisać członków jako kwalifikuje się role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,18 +15,18 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621552"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189218"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Kwalifikujące się przypisania i widoczność zasobów Privileged Identity Management
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>Kwalifikujące się przypisania i widoczność zasobów w usłudze PIM
 
 Privileged Identity Management (PIM) dla ról zasobów platformy Azure zapewnia zwiększone zabezpieczenia dla organizacji, które mają zasoby platformy Azure o znaczeniu krytycznym. Zasób Administratorzy mogą używać usługi PIM, aby przypisać członków jako kwalifikuje się role zasobów. Dowiedz się więcej na temat przypisania różnych typów i Stany przypisania dla ról zasobów platformy Azure w poniższych sekcjach. 
 
-## <a name="assignment-types"></a>Typy przypisania
+## <a name="assignment-types"></a>Typy przypisań
 
 Usługa PIM dla zasobów platformy Azure udostępnia dwa typy distinct przypisania:
 
@@ -70,4 +70,4 @@ Po wyświetleniu członkostwa, który znajduje się w **aktywnych ról**, możes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przypisywanie ról w Privileged Identity Manager](pim-resource-roles-assign-roles.md)
+- [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)

@@ -1,6 +1,6 @@
 ---
-title: Użyj ról niestandardowych do ustawienia Privileged Identity Management obiektu docelowego dla zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania ról niestandardowych dla zasobów platformy Azure za pomocą usługi PIM.
+title: Używanie ról niestandardowych dla zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać ról niestandardowych dla zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622691"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189877"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Używanie ról niestandardowych do ustawienia Privileged Identity Management obiektu docelowego
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Używanie ról niestandardowych dla zasobów platformy Azure w usłudze PIM
 
 Może być konieczne rygorystyczne Privileged Identity Management (PIM) dotyczą niektórych członków roli, zapewniając większą niezależność dla innych użytkowników. Rozważmy scenariusz, w którym organizacja zatrudnia kilka kojarzy umowy, aby pomóc w rozwoju aplikacji, która jest uruchamiana w subskrypcji platformy Azure.
 
@@ -49,4 +49,5 @@ Na koniec [Przypisz role](pim-resource-roles-assign-roles.md) różne grupy elem
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[I właścicielom subskrypcji przeglądu dostępu](pim-resource-roles-perform-access-review.md)
+- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
+- [Role niestandardowe na platformie Azure](../../role-based-access-control/custom-roles.md)

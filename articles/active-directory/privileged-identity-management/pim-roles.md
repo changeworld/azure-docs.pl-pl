@@ -1,6 +1,6 @@
 ---
-title: Role w usłudze Azure AD Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jakie role są używane dla uprzywilejowanych tożsamości z rozszerzeniem Azure Privileged Identity Management.
+title: Role katalogu usługi AD systemu Azure można zarządzać w usłudze PIM | Dokumentacja firmy Microsoft
+description: W tym artykule opisano role katalogu usługi Azure AD, którymi można zarządzać w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: f8045d70ab4926cdc0e28a9a2290685c4f11205a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618567"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188990"
 ---
-# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Role w katalogu, którymi można zarządzać za pomocą usługi Azure AD PIM
+# <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Usługa Azure ról katalogu usługi AD, którymi można zarządzać w usłudze PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Można przypisać użytkowników w organizacji, aby różne role administracyjne w usłudze Azure AD. Te przypisania roli kontrolować, które zadania, takie jak dodawanie lub usuwanie użytkowników lub zmiana ustawień usługi Użytkownicy są możliwe do wykonania w usłudze Azure AD, Office 365 i innych Microsoft Online Services i połączonych aplikacji.  
@@ -86,5 +86,7 @@ Dostęp do Microsoft Online Services może wymagać użytkownika również posia
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
+- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
 

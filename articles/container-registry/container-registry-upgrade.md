@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432392"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189025"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Uaktualnianie rejestru klasycznego kontenera
 
-Usługa Azure Container Registry (ACR) jest dostępna w kilku warstwach usługi, [znane jako jednostki SKU](container-registry-skus.md). Wstępną wersję ACR oferowane pojedynczej jednostki SKU i Model Klasyczny, który nie posiada kilka funkcji zarezerwowanymi podstawowa, standardowa i Premium jednostki SKU (łącznie znane jako *zarządzane* rejestrów). Ten artykuł szczegółowo opisuje sposób migrowania niezarządzanych rejestru klasycznego do jednego z zarządzanymi jednostkami SKU, można korzystać z zalet ich zestaw rozszerzonych funkcji.
+Usługa Azure Container Registry (ACR) jest dostępna w kilku warstwach usługi, [znane jako jednostki SKU](container-registry-skus.md). Wstępną wersję ACR oferowane pojedynczej jednostki SKU i Model Klasyczny, który nie posiada kilka funkcji zarezerwowanymi podstawowa, standardowa i Premium jednostki SKU (łącznie znane jako *zarządzane* rejestrów).
+
+Klasyczne jednostki SKU jest wycofywany, a będzie niedostępna po marca 2019 r. Ten artykuł szczegółowo opisuje sposób migrowania niezarządzanych rejestru klasycznego do jednego z zarządzanymi jednostkami SKU, można korzystać z zalet ich zestaw rozszerzonych funkcji.
 
 ## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
 
-Ze względu na ograniczone możliwości rejestrów Classic niezarządzanych firma Microsoft zaleca wszystkich rejestrów Classic być został uaktualniony do podstawowa, standardowa lub Premium rejestrów zarządzanych. Te wyższego poziomu jednostki SKU głębiej zintegrować rejestru możliwości platformy Azure.
+Rejestru klasycznego jest jednostka SKU **przestarzałe**i będzie niedostępny z **marca 2019**. Wszystkie istniejące rejestrów Classic powinna być uaktualnienia przed marca 2019 r.
+
+Z powodu planowanej obsługi i ograniczone możliwości rejestrów Classic niezarządzanych wszystkich rejestrów klasyczny być został uaktualniony do podstawowa, standardowa lub Premium rejestrów zarządzanych. Te wyższego poziomu jednostki SKU głębiej zintegrować rejestru możliwości platformy Azure.
 
 Rejestry zarządzane oferują:
 
@@ -30,7 +34,7 @@ Rejestry zarządzane oferują:
 * [Geo-replication](container-registry-geo-replication.md) (Replikacja geograficzna)
 * [Elementy Webhook](container-registry-webhook.md)
 
-Przede wszystkim rejestrze klasycznym zależy od konta magazynu, że platforma Azure będzie automatycznie udostępnia w subskrypcji platformy Azure, po utworzeniu rejestru. Z drugiej strony, podstawowa, standardowa i Premium jednostki SKU z zalet platformy Azure [zaawansowane funkcje magazynu](container-registry-storage.md) przez przejrzystą obsługę magazynu obrazów dla Ciebie. Oddzielne konto magazynu nie jest tworzony w ramach własnej subskrypcji.
+W rejestrze klasycznym zależy od konta magazynu, które platforma Azure udostępnia automatycznie w ramach subskrypcji platformy Azure podczas tworzenia rejestru. Z drugiej strony, podstawowa, standardowa i Premium jednostki SKU z zalet platformy Azure [zaawansowane funkcje magazynu](container-registry-storage.md) przez przejrzystą obsługę magazynu obrazów dla Ciebie. Oddzielne konto magazynu nie jest tworzony w ramach własnej subskrypcji.
 
 Rejestru zarządzanego magazynu zapewnia następujące korzyści:
 

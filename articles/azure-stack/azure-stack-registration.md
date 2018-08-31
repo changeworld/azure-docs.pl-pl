@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/24/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: e2411a91174fd0b52227b4cfe8783c8c74c4039e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42061499"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247827"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -84,13 +84,12 @@ Wdrożenia usługi Azure Stack może być *połączone* lub *odłączony*.
 
  - **Połączone**  
  Połączony oznacza, że wdrożono usługi Azure Stack, dzięki czemu może nawiązać połączenie z Internetem i na platformie Azure. Należy mieć Azure Active Directory (Azure AD) lub Active Directory Federation Services (AD FS) dla magazynu tożsamości. Z wdrożeniem połączone, mogą wybierać dwa modele rozliczeniowe: płatność za użycie lub oparty na pojemności.
-    - [Zarejestruj połączonej usługi Azure Stack przy użyciu platformy Azure za pomocą **płatność za użycie** model rozliczeń](#register-a-connected-azure-stack-with-azure-using-the-pay-as-you-use-billing-model)
-    - [Zarejestruj połączonej usługi Azure Stack przy użyciu platformy Azure za pomocą **pojemności** model rozliczeń](#register-a-connected-azure-stack-with-azure-using-the-capacity-billing-model)
+    - [Zarejestruj połączonej usługi Azure Stack przy użyciu platformy Azure za pomocą **płatność za użycie** model rozliczeń](#register-connected-with-pay-as-you-go-billing)
+    - [Zarejestruj połączonej usługi Azure Stack przy użyciu platformy Azure za pomocą **pojemności** model rozliczeń](#register-connected-with-capacity-billing)
 
  - **Odłączony**  
  O odłączony z poziomu opcji wdrażania na platformie Azure, wdrażanie i używanie usługi Azure Stack bez połączenia z Internetem. Jednak z wdrożeniem odłączonego, są ograniczone do magazynu tożsamości usługi AD FS i model rozliczeń oparty na pojemności.
-    - [Zarejestruj bez połączenia przy użyciu usługi Azure Stack **pojemności** model rozliczeń ](#register-a-disconnected-Azure-Stack-using-the-capacity-billing-model
-)
+    - [Zarejestruj bez połączenia przy użyciu usługi Azure Stack **pojemności** model rozliczeń ](#register-disconnected-with-capacity-billing)
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Zarejestruj się związanych z rozliczeniami zgodnie z rzeczywistym użyciem
 
@@ -218,7 +217,7 @@ W przypadku rejestracji usługi Azure Stack w środowisku bez połączenia (bez 
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    Aby uzyskać więcej informacji na temat polecenia cmdlet Get-AzsRegistrationToken, zobacz [dokumentacja rejestracji](#registration-reference).
 
@@ -358,7 +357,7 @@ Teraz mogła całkowicie wyrejestrować w scenariuszu rozłączonych i należy p
 
 ### <a name="disable-or-enable-usage-reporting"></a>Wyłącz lub Włącz raportowanie użycia
 
-W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń pojemności Wyłącz funkcję raportowania z użycia **EnableUsageReporting** za pomocą parametru **AzsRegistration zestaw** lub  **Get-AzsRegistrationToken** polecenia cmdlet. Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia.
+W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń pojemności Wyłącz funkcję raportowania z użycia **UsageReportingEnabled** za pomocą parametru **AzsRegistration zestaw** lub  **Get-AzsRegistrationToken** polecenia cmdlet. Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia.
 
 #### <a name="with-a-connected-azure-stack"></a>Za pomocą połączonej usługi Azure Stack
 
@@ -378,7 +377,7 @@ W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń poje
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 

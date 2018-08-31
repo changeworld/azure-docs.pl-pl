@@ -1,6 +1,6 @@
 ---
-title: Przeprowadź przeglądów dostępu w ramach zasobów platformy Azure, używając Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak rozpocząć Przegląd dostępu w Privileged Identity Management dla zasobów platformy Azure
+title: Rozpoczynanie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć Przegląd dostępu dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f88c4a2f7e6eb569c9c0de33ab86e8b484a923e3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622885"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189178"
 ---
-# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Przeprowadź przeglądów dostępu w ramach zasobów platformy Azure, używając Privileged Identity Management
+# <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>Rozpoczynanie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM
 Przypisania ról stają się "starych", gdy użytkownicy mają uprzywilejowany dostęp, które nie potrzebują już. Aby zmniejszyć ryzyko, że jest skojarzona z te przypisania roli starych, Administratorzy ról uprzywilejowanych regularnie należy przejrzeć role. W tym dokumencie opisano kroki do uruchamiania przeglądu dostępu w Privileged Identity Management (PIM) dla zasobów platformy Azure.
 
 Na stronie głównej aplikacji PIM przejdź do:
@@ -71,3 +71,8 @@ Na pulpicie nawigacyjnym zasobów PIM Azure postęp można śledzić, jak recenz
 
 Do momentu okres przeglądu za pośrednictwem można Przypomnij przeprowadzenie ich przeglądu lub Zakończ przegląd wcześnie w sekcji przeglądów dostępu.
 
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Kończenie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-complete-access-review.md)
+- [Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)
+- [Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)

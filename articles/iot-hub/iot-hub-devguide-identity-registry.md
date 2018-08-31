@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: fdbe88492d6260d19955b39ac8eaf6cfb9dba130
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144550"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247649"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -85,9 +85,9 @@ Dane urządzenia, która przechowuje dane rozwiązanie IoT, zależy od konkretny
 
 ## <a name="device-heartbeat"></a>Urządzenie pulsu
 
-Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **element connectionState**. Używaj tylko **element connectionState** pola podczas opracowywania i debugowania. Pole nie powinno zapytania rozwiązania IoT w czasie wykonywania. Na przykład nie kwerendy **element connectionState** pola, aby sprawdzić, czy urządzenie jest połączony, zanim wyślesz wiadomość SMS lub wiadomości chmury do urządzenia.
+Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **element connectionState**. Używaj tylko **element connectionState** pola podczas opracowywania i debugowania. Pole nie powinno zapytania rozwiązania IoT w czasie wykonywania. Na przykład nie kwerendy **element connectionState** pola, aby sprawdzić, czy urządzenie jest połączony, zanim wyślesz wiadomość SMS lub wiadomości chmury do urządzenia. Firma Microsoft zaleca subskrybowanie [ **urządzenia odłączony** zdarzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) na usługi Event Grid, aby otrzymywać alerty i monitorowanie stanu połączenia urządzenia. Użyj tego [samouczek](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) dowiesz się, jak zintegrować zdarzenia z usługi IoT Hub w rozwiązaniu IoT.
 
-Jeśli rozwiązanie IoT musi znać, jeśli urządzenie jest podłączone, należy zaimplementować *wzorzec pulsu*.
+Jeśli rozwiązanie IoT musi znać, jeśli urządzenie jest połączone, można zaimplementować *wzorzec pulsu*.
 We wzorcu pulsu urządzenie wysyła komunikaty z urządzenia do chmury co najmniej jeden raz każdego ustaloną ilość czasu (np. co najmniej raz na godzinę). W związku z tym nawet jeśli urządzenie nie ma żadnych danych do wysłania, nadal wysyła pustego komunikatu urządzenia do chmury (zazwyczaj z właściwością, która identyfikuje go jako pulsu). Po stronie usługi rozwiązania przechowuje mapę z ostatni Puls dla każdego urządzenia. Rozwiązania nie pojawi się komunikat pulsu w oczekiwanym czasie z urządzenia, założono, że występuje problem z urządzeniem.
 
 Bardziej złożone wdrożenia mogą obejmować informacje z [monitorowanie operacji] [ lnk-devguide-opmon] do identyfikowania urządzeń, które są próby połączenia lub komunikację, ale kończy się niepowodzeniem. Podczas implementowania wzorca pulsu, upewnij się sprawdzić [IoT Hub przydziały i ograniczenia][lnk-quotas].

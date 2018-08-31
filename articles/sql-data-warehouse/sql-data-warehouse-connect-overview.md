@@ -1,27 +1,27 @@
 ---
 title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse | Microsoft Docs
-description: Łączność z usługą Magazyn danych SQL Azure.
+description: Nawiązać połączenie z usługą Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: b2aff8379667191017830bf441ee101e773d2dfc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0b2d8cec03c54ebd5bd780a2524da61d718a9673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31596174"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247862"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
-Łączność z usługą Magazyn danych SQL Azure.
+Nawiązać połączenie z usługą Azure SQL Data Warehouse.
 
 ## <a name="find-your-server-name"></a>Znajdowanie nazwy serwera
-Nazwa serwera w poniższym przykładzie jest samplesvr.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
+W poniższym przykładzie nazwa serwera to samplesvr.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
 
 1. Przejdź do witryny [Azure Portal][Azure portal].
 2. Kliknij pozycję **Magazyny danych SQL**.
@@ -31,7 +31,7 @@ Nazwa serwera w poniższym przykładzie jest samplesvr.database.windows.net. Aby
     ![Pełna nazwa serwera][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Obsługiwane sterowniki i parametry połączenia
-Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Aby uzyskać najnowszą wersję i dokumentacji, kliknij jeden z poprzednim sterowniki. Aby automatycznie wygenerować ciąg połączenia dla sterownika, którego używasz z portalu Azure, polecenie **Pokaż parametry połączenia bazy danych** z poprzedniego przykładu. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
+Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Aby uzyskać najnowszą wersję i dokumentację, kliknij jeden z poprzednim sterowniki. Aby automatycznie wygenerować parametry połączenia sterownika, którego używasz w witrynie Azure portal, kliknij **Pokaż parametry połączenia bazy danych** z poprzedniego przykładu. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
 
 > [!NOTE]
 > Rozważ ustawienie limitu czasu połączenia na wartość 300 sekund, aby połączenie nie zostało zakończone mimo krótkich okresów niedostępności.

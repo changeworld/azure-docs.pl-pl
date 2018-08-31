@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ce7c41730bec4e014225fb8c744d029493f5ec2c
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056504"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246790"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -26,7 +26,7 @@ SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy A
 
 ## <a name="what-is-a-sql-database-backup"></a>Co to jest kopię zapasową bazy danych SQL?
 
-SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
+SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Kopie zapasowe są przechowywane w obiektach blob magazynu RA-GRS, które są replikowane do [sparowanym centrum danych](../best-practices-availability-paired-regions.md) do ochrony przed awariami centrum danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
 
 
 Możesz użyć tych kopii zapasowych:

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/28/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058807"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247940"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -35,6 +35,8 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 
 ![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
 
+Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Do zarządzania maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+
 Po komputer przeprowadzi skanowanie pod kątem zgodności aktualizacji, agent przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 12 godzin.
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut po uruchomieniu programu MMA, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
@@ -48,7 +50,7 @@ Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skon
 
 Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania. 
 
-Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../log-analytics/log-analytics-computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i wyznaczyć okres, w którym można instalować aktualizacje. 
+Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../log-analytics/log-analytics-computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i wyznaczyć okres, w którym można instalować aktualizacje.
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie, aby przeprowadzić instalację wymaganych aktualizacji.
 
@@ -217,10 +219,10 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 |System operacyjny| System Linux lub Windows|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. W przypadku Windows wprowadź KB bez prefiksu "KB". Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
+|Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows wprowadź KB bez prefiksu "KB". Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
-| Ponowne uruchomienie kontroli| Zaznaczenia prostokącie obsługi jest uruchamiany ponownie.</br>Dostępne są następujące opcje:</br>Ponowne uruchomienie komputera, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze wykonuj ponowny rozruch</br>Nigdy nie ponowny rozruch</br>Tylko ponowny rozruch — nie zostaną zainstalowane aktualizacje|
+| Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
 
 ## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 
@@ -510,7 +512,7 @@ Bo zarządzania aktualizacjami wzbogacania aktualizacji w chmurze, niektóre akt
 
 Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest niezgodne, ponieważ ma ona dodatkowe informacje o odpowiednich aktualizacji.
 
-Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa na CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być konieczne ponownie uruchom wdrożenie aktualizacji, aby sprawdzić w dzienniku aktualizacji.
+Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa na CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być wymagane ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić, sprawdź w dzienniku aktualizacji.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

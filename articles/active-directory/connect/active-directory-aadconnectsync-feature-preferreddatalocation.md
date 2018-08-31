@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizacja programu Azure Active Directory Connect: Skonfiguruj preferowany danych lokalizację dla możliwości wielu geograficznie w usłudze Office 365 | Dokumentacja firmy Microsoft'
-description: Opisuje sposób put zasobami użytkowników usługi Office 365 zbliża się użytkownika z synchronizacji usługi Azure Active Directory Connect.
+title: 'Synchronizacja programu Azure Active Directory Connect: Konfigurowanie Preferowana lokalizacja danych dla wielu regionów geograficznych możliwości w usłudze Office 365 | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano, jak umieścić swoje zasoby użytkowników usługi Office 365 blisko użytkowników za pomocą synchronizacji programu Azure Active Directory Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,253 +12,254 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5eae173e02c92bd43faaa9533ce29489d40f1389
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6272cc8b2f34211aa6e5b85dbb508ade74cee637
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592929"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247574"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizacja programu Azure Active Directory Connect: Skonfiguruj preferowany danych lokalizację dla zasobów usługi Office 365
-W tym temacie ma na celu przeprowadzi użytkownika przez proces konfigurowania atrybut lokalizacji preferowanych danych synchronizacji usługi Azure Active Directory (Azure AD) Połącz. Gdy ktoś korzysta z możliwości wielu geograficznie w usłudze Office 365, możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna danych użytkowników usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizacja programu Azure Active Directory Connect: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
+Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
 
-## <a name="enable-synchronization-of-preferred-data-location"></a>Włącz synchronizację danych preferowanych lokalizacji
-Domyślnie zasobów usługi Office 365 dla użytkowników znajdują się w tej samej lokalizacji geograficznej jako dzierżawy usługi Azure AD. Na przykład jeśli dzierżawy znajduje się w Ameryce Północnej, następnie skrzynek pocztowych programu Exchange użytkowników znajdują się również w Ameryce Północnej. W przypadku międzynarodowej organizacji to może nie być optymalne.
+## <a name="enable-synchronization-of-preferred-data-location"></a>Włącz synchronizację Preferowana lokalizacja danych
+Domyślnie zasobów usług Office 365 dla użytkowników, znajdują się w tej samej lokalizacji geograficznej co dzierżawy usługi Azure AD. Na przykład jeśli Twoja dzierżawa znajduje się w Ameryce Północnej, następnie skrzynek pocztowych programu Exchange użytkownika znajdują się również w Ameryce Północnej. Dla międzynarodowych organizacji to może nie być optymalne.
 
-Ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznie użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynek pocztowych i OneDrive, w tej samej lokalizacji geograficznej jako użytkownik i jeszcze jeden dzierżawy dla całej organizacji.
+Przez ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznej użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynki pocztowej i OneDrive, w tym samym obszarze geograficznym, jako użytkownik i nadal masz jedną dzierżawę dla całej organizacji.
 
 > [!IMPORTANT]
-> Multi-geograficzna jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
+> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 
-Lista wszystkich obszarach geograficznych dla usługi Office 365 można znaleźć w [danych znajdujących się w przypadku?](https://aka.ms/datamaps).
+Lista wszystkich obszarach geograficznych dla usługi Office 365 można znaleźć w [gdzie są Twoje dane znajdujące się?](https://aka.ms/datamaps).
 
-Obszarach geograficznych w usłudze Office 365 dostępne dla wielu geograficznie są:
+Obszarach geograficznych w usłudze Office 365 dostępne dla wielu regionów geograficznych, są następujące:
 
 | Obszar geograficzny | wartość preferredDataLocation |
 | --- | --- |
 | Azja i Pacyfik | APC |
-| Australia | AUS |
+| Australia | JEDNOSTKI ALOKACJI |
 | Kanada | MOŻNA |
 | Unia Europejska | EUR |
+| Francja | FRA |
 | Indie | ZNAJDŹ |
 | Japonia | JPN |
 | Korea | KOR |
 | Wielka Brytania | GBR |
 | Stany Zjednoczone | NAZWA |
 
-* Jeśli obszar nie znajduje się w tej tabeli (na przykład Ameryka Południowa), następnie go nie może służyć do wielu Geo.
-* Indie geograficzna jest dostępna tylko w przypadku klientów z rozliczeń adres i licencji zakupionych w tym z magazynu geograficznie.
-* Nie wszystkie usługi Office 365 obciążeń obsługują ustawienia geo użytkownika.
+* Jeśli georegionu nie znajduje się w tej tabeli (na przykład, Ameryka Południowa), następnie go nie można używać dla wielu regionów geograficznych.
+* Geograficzna Indii jest dostępna tylko dla klientów z rozliczeń adres i licencji, które zakupiono w tym obszarze geograficznym.
+* Nie wszystkie obciążenia usługi Office 365 obsługują ustawienia geograficznej użytkownika.
 
-### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect obsługę synchronizacji
+### <a name="azure-ad-connect-support-for-synchronization"></a>Usługa Azure AD Connect — pomoc techniczna dla synchronizacji
 
-Azure AD Connect obsługuje synchronizacji **preferredDataLocation** atrybutu dla **użytkownika** obiektów w wersji 1.1.524.0 i nowszych. W szczególności:
+Azure AD Connect obsługuje synchronizację **preferredDataLocation** atrybutu dla **użytkownika** obiektów w 1.1.524.0 wersji i nowszych. W szczególności:
 
-* Schemat typu obiektu **użytkownika** w programie Azure AD Connector jest rozszerzona, aby uwzględnić **preferredDataLocation** atrybutu. Ten atrybut jest typu ciąg pojedynczej wartości.
+* Schemat typu obiektu **użytkownika** w łączniku usługi Azure AD jest rozszerzona, aby uwzględnić **preferredDataLocation** atrybutu. Ten atrybut jest typu ciąg pojedynczej wartości.
 * Schemat typu obiektu **osoby** w magazynie metaverse jest rozszerzona, aby uwzględnić **preferredDataLocation** atrybutu. Ten atrybut jest typu ciąg pojedynczej wartości.
 
-Domyślnie **preferredDataLocation** nie jest włączone dla synchronizacji. Ta funkcja jest przeznaczony dla większych organizacji. Również należy określić atrybut do przechowywania geo usługi Office 365 dla użytkowników, ponieważ nie istnieje żadne **preferredDataLocation** w lokalnej usłudze Active Directory. Ma to być inne dla każdej organizacji.
+Domyślnie **preferredDataLocation** nie jest włączona dla synchronizacji. Ta funkcja jest przeznaczony dla większych organizacji. Należy także zidentyfikować atrybutu do przechowywania geograficznego usługi Office 365 dla użytkowników, ponieważ nie istnieje żadne **preferredDataLocation** atrybutu w usłudze Active Directory w środowisku lokalnym. Będzie to być różne dla każdej organizacji.
 
 > [!IMPORTANT]
-> Azure AD pozwala działowi **preferredDataLocation** atrybutu **obiektów użytkowników w chmurze** bezpośrednio skonfigurować przy użyciu programu Azure AD PowerShell. Usługi Azure AD nie umożliwia już **preferredDataLocation** atrybutu **synchronizowane obiekty użytkownika** bezpośrednio skonfigurować przy użyciu programu Azure AD PowerShell. Aby skonfigurować ten atrybut na **synchronizowane obiekty użytkownika**, należy użyć usługi Azure AD Connect.
+> Usługa Azure AD umożliwia **preferredDataLocation** atrybutu na **obiektów użytkowników w chmurze** bezpośrednio skonfigurować przy użyciu programu Azure AD PowerShell. Usługa Azure AD nie zezwala już **preferredDataLocation** atrybutu na **synchronizowane obiekty użytkownika** bezpośrednio skonfigurować przy użyciu programu Azure AD PowerShell. Aby skonfigurować ten atrybut na **synchronizowane obiekty użytkownika**, należy użyć usługi Azure AD Connect.
 
 Przed włączeniem synchronizacji:
 
-* Zdecyduj, które lokalnymi atrybut usługi Active Directory mają być używane jako atrybut źródłowy. Należy go typu **jednowartościowych ciąg**. W krokach, które wykonaj jedną z **extensionAttributes** jest używany.
-* Jeśli wcześniej skonfigurowano **preferredDataLocation** atrybut na istniejący **synchronizowane obiekty użytkownika** w usłudze Azure AD przy użyciu programu PowerShell usługi Azure AD, należy najpierw Poprawka usterki wartości atrybutu do systemu odpowiadającego **użytkownika** obiekty w lokalnej usłudze Active Directory.
+* Zdecyduj, atrybut usługi Active Directory w środowisku lokalnym, który ma być używany jako atrybut źródłowy. Powinna być typu, **pojedynczej wartości ciągu**. W krokach, które należy wykonać, jeden z **extensionAttributes** jest używany.
+* Jeśli wcześniej skonfigurowano **preferredDataLocation** atrybutu o istniejących **synchronizowane obiekty użytkownika** w usłudze Azure AD przy użyciu programu PowerShell usługi Azure AD, należy najpierw Poprawka usterki systemu wartości atrybutu odpowiadające **użytkownika** obiektów w usłudze Active Directory w środowisku lokalnym.
 
     > [!IMPORTANT]
-    > Jeśli jednak nie Poprawka usterki systemu te wartości Azure AD Connect usuwa istniejące wartości atrybutu w usłudze Azure AD podczas synchronizacji dla **preferredDataLocation** atrybutu jest włączona.
+    > Jeśli poprawka usterki nie systemu wykonaj te wartości, program Azure AD Connect spowoduje usunięcie istniejącej wartości atrybutów w usłudze Azure AD podczas synchronizacji dla **preferredDataLocation** atrybutu jest włączona.
 
-* Teraz skonfigurować atrybut źródłowy na co najmniej kilka obiektów Active Directory użytkownika lokalnego. Możesz użyć tego weryfikacji później.
+* Skonfiguruj teraz atrybutu źródłowego na co najmniej kilka obiektów użytkowników usługi Active Directory w środowisku lokalnym. Służy to do weryfikacji później.
 
 W poniższych sekcjach przedstawiono kroki, aby włączyć synchronizację **preferredDataLocation** atrybutu.
 
 > [!NOTE]
-> Kroki opisane w ramach wdrożenia usługi Azure AD z topologii z jednym lasem i bez reguł niestandardowych. Jeśli masz topologią wielu lasów, reguły synchronizacji niestandardowych skonfigurowane lub tymczasowej serwera, należy odpowiednio dostosować procedury.
+> Kroki opisane w ramach wdrożenia usługi Azure AD z topologią obejmujących jeden las i bez synchronizacji niestandardowych reguł. Jeśli masz topologią wielu lasów, reguły synchronizacji niestandardowych skonfigurowany lub masz serwer przejściowy, należy odpowiednio dostosować czynności.
 
-## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Wyłącz harmonogramu synchronizacji i sprawdź, że nie ma synchronizacji w toku
-Aby uniknąć niezamierzonych zmian eksportowane do usługi Azure AD, upewnij się, że synchronizacja nie ma miejsce, gdy trwa aktualizowanie reguł synchronizacji. Aby wyłączyć harmonogram synchronizacji wbudowany:
+## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Wyłącz harmonogram synchronizacji i sprawdzić, czy jest brak synchronizacji w toku
+Aby uniknąć niezamierzonych zmian eksportowanych do usługi Azure AD, upewnij się, że synchronizacja nie ma miejsce, gdy trwa aktualizowanie reguł synchronizacji. Aby wyłączyć harmonogram synchronizacji wbudowane:
 
 1. Uruchom sesję programu PowerShell na serwerze programu Azure AD Connect.
-2. Wyłącz zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. Uruchom **Menedżera usługi synchronizacji** , przechodząc do **START** > **usługi synchronizacji**.
-4. Wybierz **operacji** , a następnie upewnij się, Brak operacji ze stanem *w toku*.
+2. Wyłącz zaplanowanej synchronizacji, uruchamiając to polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+3. Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do **START** > **usługi synchronizacji**.
+4. Wybierz **operacji** kartę i upewnij się, brak żadna operacja ze stanem *w toku*.
 
 ![Zrzut ekranu Menedżera usługi synchronizacji](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Dodaj atrybut źródłowy schematu lokalnego łącznika usługi Active Directory
-Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnej przestrzeni łącznika usługi Active Directory. Jeśli wybrano opcję Użyj atrybutu, który nie jest domyślnie synchronizowane, następnie należy go zaimportować. Aby dodać atrybut źródłowy do listy importowanych atrybuty:
+## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Dodaj atrybut źródłowy ze schematem łącznika usługi Active Directory w środowisku lokalnym
+Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnej przestrzeni łącznika usługi Active Directory. Jeśli wybrano opcję Użyj atrybutu, który nie jest zsynchronizowana domyślnie, należy go zaimportować. Aby dodać atrybut źródłowy do listy atrybutów zaimportowane:
 
-1. Wybierz **łączniki** kartę Menedżera usługi synchronizacji.
-2. Kliknij prawym przyciskiem myszy łącznika lokalnej usługi Active Directory, a następnie wybierz **właściwości**.
-3. W wyświetlonym oknie dialogowym, przejdź do **wybierz atrybuty** kartę.
-4. Upewnij się, że zaznaczono atrybut źródłowy wybranego do użycia na liście atrybutów. Jeśli atrybut nie jest widoczny, wybierz **Pokaż wszystko** pole wyboru.
+1. Wybierz **łączników** kartę w Menedżerze usługi synchronizacji.
+2. Kliknij prawym przyciskiem myszy łącznika lokalnej usługi Active Directory, a następnie wybierz pozycję **właściwości**.
+3. W podręcznym oknie dialogowym, przejdź do **wybierz atrybuty** kartę.
+4. Upewnij się, że zaznaczone jest pole atrybutu źródłowego wybranego do użycia na liście atrybutów. Jeśli atrybut nie jest widoczne, wybierz **Pokaż wszystko** pole wyboru.
 5. Aby zapisać, zaznacz **OK**.
 
-![Zrzut ekranu Synchronization Service Manager i właściwości — okno dialogowe](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Zrzut ekranu Synchronization Service Manager i właściwości, okno dialogowe](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3: Dodawanie **preferredDataLocation** schematu łącznika usługi Azure AD
-Domyślnie **preferredDataLocation** atrybut nie został zaimportowany do przestrzeni łącznika usługi Azure AD. Aby dodać go do listy importowanych atrybutów:
+## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3. Dodawanie **preferredDataLocation** ze schematem łącznik usługi Azure AD
+Domyślnie **preferredDataLocation** atrybut nie został zaimportowany do obszaru łącznika usługi Azure AD. Aby dodać go do listy atrybutów zaimportowane:
 
-1. Wybierz **łączniki** kartę Menedżera usługi synchronizacji.
-2. Kliknij prawym przyciskiem myszy łącznik usługi Azure AD, a następnie wybierz **właściwości**.
-3. W wyświetlonym oknie dialogowym, przejdź do **wybierz atrybuty** kartę.
+1. Wybierz **łączników** kartę w Menedżerze usługi synchronizacji.
+2. Kliknij prawym przyciskiem myszy łącznik usługi Azure AD, a następnie wybierz pozycję **właściwości**.
+3. W podręcznym oknie dialogowym, przejdź do **wybierz atrybuty** kartę.
 4. Wybierz **preferredDataLocation** atrybutu na liście.
 5. Aby zapisać, zaznacz **OK**.
 
-![Zrzut ekranu Synchronization Service Manager i właściwości — okno dialogowe](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step3.png)
+![Zrzut ekranu Synchronization Service Manager i właściwości, okno dialogowe](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-## <a name="step-4-create-an-inbound-synchronization-rule"></a>Krok 4: Utwórz regułę synchronizacji ruchu przychodzącego
-Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą przepływać z atrybutu źródłowego w lokalnej usłudze Active Directory do środowiska metaverse.
+## <a name="step-4-create-an-inbound-synchronization-rule"></a>Krok 4: Tworzenie reguły synchronizacji ruchu przychodzącego
+Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą przepływać z atrybutu źródłowego w usłudze Active Directory środowiska lokalnego do obiektu metaverse.
 
-1. Uruchom **Edytor reguł synchronizacji** , przechodząc do **START** > **Edytor reguł synchronizacji**.
+1. Rozpocznij **Synchronization Rules Editor** , przechodząc do **START** > **Synchronization Rules Editor**.
 2. Ustaw filtr wyszukiwania **kierunek** jako **przychodzący**.
-3. Aby utworzyć nową regułę ruchu przychodzącego, wybierz **Dodaj nową regułę**.
-4. W obszarze **opis** karcie, podaj następującej konfiguracji:
+3. Aby utworzyć nową regułę dla ruchu przychodzącego, wybierz **Dodaj nową regułę**.
+4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
     | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Na przykład "w z usługi Active Directory — preferredDataLocation użytkownika" |
-    | Opis | *Podaj opis, niestandardowe* |  |
-    | System połączony | *Wybierz łącznik lokalnej usługi Active Directory* |  |
-    | Połączony System typu obiektu | **Użytkownika** |  |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "w z usługi AD — preferredDataLocation użytkownika" |
+    | Opis | *Podaj opis niestandardowego* |  |
+    | Połączonego systemu | *Wybierz łącznik usługi Active Directory w środowisku lokalnym* |  |
+    | Połączony System typu obiektu | **Użytkownik** |  |
     | Typ obiektu Metaverse | **Osoby** |  |
     | Typ łącza | **Dołącz** |  |
-    | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Odbiera wartość, która jest używana przez inną regułę synchronizacji. |
+    | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
-5. Zachowaj **filtru Scoping** puste, aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie zakresu filtru zgodnie z wdrożenia usługi Azure AD Connect.
-6. Przejdź do **tab przekształcenia**i implementuje następującą regułę przekształcania:
+5. Zachowaj **filtru Scoping** puste, aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu, zgodnie z wdrożenia usługi Azure AD Connect.
+6. Przejdź do **kartę przekształcania**i zaimplementować następującą regułę przekształcania:
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    |Bezpośrednie | PreferredDataLocation | Wybierz atrybut źródłowy | Unchecked | Aktualizacja |
+    |Bezpośrednie | preferredDataLocation | Wybierz atrybut źródłowy | Niezaznaczone | Aktualizacja |
 
-7. Aby utworzyć regułę ruchu przychodzącego, wybierz **Dodaj**.
+7. Aby utworzyć regułę dla ruchu przychodzącego, wybierz **Dodaj**.
 
-![Zrzut ekranu utworzyć regułę synchronizacji ruchu przychodzącego](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step4.png)
+![Zrzut ekranu opcji Utwórz regułę synchronizacji ruchu przychodzącego](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Tworzenie reguła synchronizacji ruchu wychodzącego
+## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Tworzenie reguły synchronizacji ruchu wychodzącego
 Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą przepływać z metaverse do **preferredDataLocation** atrybutu w usłudze Azure AD:
 
-1. Przejdź do **Edytor reguł synchronizacji**.
-2. Ustaw filtr wyszukiwania **kierunek** jako **wychodzące**.
+1. Przejdź do **synchronizacji reguł edytora**.
+2. Ustaw filtr wyszukiwania **kierunek** jako **ruchu wychodzącego**.
 3. Wybierz **Dodaj nową regułę**.
-4. W obszarze **opis** karcie, podaj następującej konfiguracji:
+4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
     | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Na przykład, "Out do usługi Azure AD — preferredDataLocation użytkownika" |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "poziomie w celu preferredDataLocation użytkownika z usługi Azure AD" |
     | Opis | *Podaj opis* ||
-    | System połączony | *Wybierz łącznik usługi Azure AD* ||
-    | Połączony System typu obiektu | **Użytkownika** ||
+    | Połączonego systemu | *Wybierz łącznik usługi Azure AD* ||
+    | Połączony System typu obiektu | **Użytkownik** ||
     | Typ obiektu Metaverse | **Osoby** ||
     | Typ łącza | **Dołącz** ||
-    | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Odbiera wartość, która jest używana przez inną regułę synchronizacji. |
+    | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
-5. Przejdź do **filtru Scoping** karta i Dodaj pojedynczej grupy ustalania zakresu filtru z klauzulami dwóch:
+5. Przejdź do **filtru Scoping** karta i Dodaj pojedynczą grupę filtrów określania zakresu przy użyciu dwóch klauzul:
 
     | Atrybut | Operator | Wartość |
     | --- | --- | --- |
-    | sourceObjectType | RÓWNOŚCI | Użytkownik |
+    | sourceObjectType | RÓWNA SIĘ | Użytkownik |
     | cloudMastered | NOTEQUAL | True |
 
-    Filtr zakresu określa obiekty usługi Azure AD, że ta reguła synchronizacji ruchu wychodzącego. W tym przykładzie używamy tego samego zakresu filtru z "Out do AD — tożsamości użytkownika" reguła synchronizacji OOB (out-of-box). Uniemożliwia reguły synchronizacji są stosowane do **użytkownika** obiektów, które nie są synchronizowane z lokalnej usługi Active Directory. Może być konieczne dostosowanie zakresu filtru zgodnie z wdrożenia usługi Azure AD Connect.
+    Określa filtr określania zakresu, który obiekty usługi Azure AD, że ta reguła synchronizacji ruchu wychodzącego. W tym przykładzie używamy tego samego filtru określania zakresu od "Poza usługą AD — tożsamość użytkownika" reguła synchronizacji OOB (out-of-box). Uniemożliwia reguła synchronizacji jest stosowany do **użytkownika** obiektów, które nie są zsynchronizowane z usługą Active Directory w środowisku lokalnym. Może być konieczne dostosowanie filtru określania zakresu, zgodnie z wdrożenia usługi Azure AD Connect.
 
-6. Przejdź do **przekształcania** karcie i implementuje następującą regułę przekształcania:
+6. Przejdź do **przekształcania** kartę i wdrożenie następującą regułę przekształcania:
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | PreferredDataLocation | PreferredDataLocation | Unchecked | Aktualizacja |
+    | Bezpośrednie | preferredDataLocation | preferredDataLocation | Niezaznaczone | Aktualizacja |
 
-7. Zamknij **Dodaj** Tworzenie reguły ruchu wychodzącego.
+7. Zamknij **Dodaj** do utworzenia reguły ruchu wychodzącego.
 
-![Zrzut ekranu utworzyć regułę synchronizacji ruchu wychodzącego](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step5.png)
+![Zrzut ekranu opcji Utwórz regułę synchronizacji ruchu wychodzącego](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
 ## <a name="step-6-run-full-synchronization-cycle"></a>Krok 6: Uruchomienie pełnej synchronizacji cyklu
-Ogólnie rzecz biorąc cykl Pełna synchronizacja jest wymagana. To dlatego zostały dodane nowe atrybuty usługi Active Directory i Azure AD Connector schematu i wprowadzić reguły synchronizacji niestandardowych. Sprawdź zmiany przed wykonaniem operacji eksportowania ich do usługi Azure AD. Aby zweryfikować zmiany, ręcznie uruchamiając kroki, które tworzą cyklu pełnej synchronizacji, można użyć następujące kroki.
+Ogólnie rzecz biorąc cyklu Pełna synchronizacja jest wymagana. Jest to spowodowane dodaje nowe atrybuty usługi Active Directory i schemat łącznika usługi Azure AD, a wprowadzone reguły synchronizacji niestandardowych. Zweryfikować zmiany przed rozpoczęciem eksportowania ich do usługi Azure AD. Następujące kroki można użyć, aby sprawdzić zmiany, ręcznie uruchamiając czynności, które tworzą cyklu pełną synchronizację.
 
 1. Uruchom **pełny import** na łącznika lokalnej usługi Active Directory:
 
-   1. Przejdź do **operacji** kartę Menedżera usługi synchronizacji.
-   2. Kliknij prawym przyciskiem myszy **lokalnego łącznika usługi Active Directory**i wybierz **Uruchom**.
+   1. Przejdź do **operacji** kartę w Menedżerze usługi synchronizacji.
+   2. Kliknij prawym przyciskiem myszy **środowiska lokalnego łącznika usługi Active Directory**i wybierz **Uruchom**.
    3. W oknie dialogowym wybierz **pełny Import**i wybierz **OK**.
-   4. Poczekaj na ukończenie tej operacji.
+   4. Poczekaj na zakończenie operacji.
 
     > [!NOTE]
-    > Pełny import można pominąć na łącznika lokalnej usługi Active Directory, jeśli atrybut źródłowy jest już na liście atrybutów zaimportowany. Innymi słowy użytkownik nie miał na wprowadzenie zmian w kroku 2, w tym artykule.
+    > Jeśli atrybut źródłowy znajduje się już na liście atrybutów zaimportowane, możesz pominąć pełny import na łącznika lokalnej usługi Active Directory. Oznacza to nie trzeba wprowadzać zmian w kroku 2, w tym artykule.
 
-2. Uruchom **pełny import** łącznika usługi Azure AD:
+2. Uruchom **pełny import** w programie Azure AD Connector:
 
-   1. Kliknij prawym przyciskiem myszy **łącznika usługi Azure AD**i wybierz **Uruchom**.
+   1. Kliknij prawym przyciskiem myszy **łącznik usługi Azure AD**i wybierz **Uruchom**.
    2. W oknie dialogowym wybierz **pełny Import**i wybierz **OK**.
-   3. Poczekaj na ukończenie tej operacji.
+   3. Poczekaj na zakończenie operacji.
 
-3. Sprawdź zmian reguły synchronizacji na istniejącym **użytkownika** obiektu.
+3. Zweryfikuj zmiany reguł synchronizacji na istniejącym **użytkownika** obiektu.
 
-   Atrybut źródłowy z usługi Active Directory lokalne, i **preferredDataLocation** z usługi Azure AD, zostały zaimportowane do każdej przestrzeni odpowiednich łącznika. Przed wykonaniem kroku Pełna synchronizacja, czy podgląd na istniejącym **użytkownika** obiektu w lokalnej przestrzeni łącznika usługi Active Directory. Obiekt, przez Ciebie powinien mieć atrybut źródłowy wypełnione. Pomyślne podglądu z **preferredDataLocation** w magazynie metaverse jest dobry wskaźnik skonfigurowano synchronizacji zasady poprawnie. Aby uzyskać informacje na temat podglądu, zobacz [zweryfikować zmianę](active-directory-aadconnectsync-change-the-configuration.md#verify-the-change).
+   Atrybut źródłowy z usługi Active Directory w środowisku lokalnym, a **preferredDataLocation** z usługi Azure AD zostały zaimportowane do każdego obszaru odpowiednich łącznika. Przed przejściem do etapu pełną synchronizację, wykonaj (wersja zapoznawcza) na istniejącym **użytkownika** obiektu w przestrzeni łącznika usługi Active Directory w środowisku lokalnym. Obiekt wybrany przez Ciebie powinny mieć atrybut źródłowy wypełnione. Pomyślne podglądu z **preferredDataLocation** wypełnione w magazynie metaverse jest dobry wskaźnik skonfigurowano synchronizację reguł poprawnie. Aby dowiedzieć się, jak to zrobić w wersji zapoznawczej, zobacz [sprawdzić zmiany](active-directory-aadconnectsync-change-the-configuration.md#verify-the-change).
 
-4. Uruchom **pełnej synchronizacji** łącznika lokalnej usługi Active Directory:
+4. Uruchom **pełnej synchronizacji** na lokalny łącznik usługi Active Directory:
 
-   1. Kliknij prawym przyciskiem myszy **lokalnego łącznika usługi Active Directory**i wybierz **Uruchom**.
+   1. Kliknij prawym przyciskiem myszy **środowiska lokalnego łącznika usługi Active Directory**i wybierz **Uruchom**.
    2. W oknie dialogowym wybierz **pełną synchronizację**i wybierz **OK**.
-   3. Poczekaj na ukończenie tej operacji.
+   3. Poczekaj na zakończenie operacji.
 
 5. Sprawdź **oczekujące operacje eksportu** do usługi Azure AD:
 
-   1. Kliknij prawym przyciskiem myszy **łącznika usługi Azure AD**i wybierz **przestrzeni łącznika wyszukiwania**.
-   2. W **przestrzeni łącznika wyszukiwania** okno dialogowe:
+   1. Kliknij prawym przyciskiem myszy **łącznik usługi Azure AD**i wybierz **wyszukiwania obszaru łącznika**.
+   2. W **wyszukiwania obszaru łącznika** okno dialogowe:
 
-        a. Ustaw **zakres** do **oczekujących eksportu**.<br>
-        b. Zaznacz wszystkie trzy pola wyboru, w tym **dodawania, modyfikowania i usuwania**.<br>
-        c. Aby wyświetlić listę obiektów ze zmianami do wyeksportowania, wybierz **wyszukiwania**. Aby sprawdzić zmiany dla danego obiektu, kliknij dwukrotnie obiekt.<br>
-        d. Upewnij się, że zmiany zostaną wprowadzone.
+        a. Ustaw **zakres** do **operacja eksportowania oczekująca**.<br>
+        b. Zaznacz wszystkie trzy pola wyboru, w tym **Dodawanie, modyfikowanie i usuwanie**.<br>
+        c. Zaznacz, aby wyświetlić listę obiektów, ze zmianami, które mają zostać wyeksportowane **wyszukiwania**. Aby sprawdzić zmiany dla danego obiektu, kliknij dwukrotnie obiekt.<br>
+        d. Upewnij się, czy zmiany są oczekiwane.
 
-6. Uruchom **wyeksportować** na **Azure AD Connector**
+6. Uruchom **wyeksportować** na **łącznik usługi Azure AD**
 
-   1. Kliknij prawym przyciskiem myszy **łącznika usługi Azure AD**i wybierz **Uruchom**.
-   2. W **uruchomić łącznik** okno dialogowe, wybierz opcję **wyeksportować**i wybierz **OK**.
-   3. Poczekaj na ukończenie tej operacji.
+   1. Kliknij prawym przyciskiem myszy **łącznik usługi Azure AD**i wybierz **Uruchom**.
+   2. W **uruchomienia łącznika** okno dialogowe, wybierz opcję **wyeksportować**i wybierz **OK**.
+   3. Poczekaj na zakończenie operacji.
 
 > [!NOTE]
-> Można zauważyć, że kroki nie obejmują krok pełną synchronizację łącznika usługi Azure AD lub wykonać krok eksportowania na łącznika usługi Active Directory. Kroki nie są wymagane, ponieważ wartości atrybutów są przesyłane z lokalnej usługi Active Directory do usługi Azure AD tylko.
+> Może się okazać, że kroki nie obejmują kroku Pełna synchronizacja w łączniku usługi Azure AD lub krok eksportu, dla łącznika usługi Active Directory. Kroki nie są wymagane, ponieważ wartości atrybutów przepływają do usługi Azure AD tylko z usługi Active Directory w środowisku lokalnym.
 
 ## <a name="step-7-re-enable-sync-scheduler"></a>Krok 7: Ponownie włączyć harmonogram synchronizacji
-Ponowne włączenie harmonogramu synchronizacji wbudowany:
+Ponownie włączyć harmonogram synchronizacji wbudowane:
 
 1. Uruchom sesję programu PowerShell.
 2. Ponownie włączyć zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Krok 8: Sprawdzenie, czy wynik
-Teraz nadszedł czas, aby sprawdzić konfigurację i włącz ją dla użytkowników.
+## <a name="step-8-verify-the-result"></a>Krok 8: Sprawdź wynik
+Teraz nadszedł czas na sprawdzenie konfiguracji i włącz ją dla użytkowników.
 
-1. Dodaj geo do wybranego atrybutu na koncie użytkownika. Lista dostępnych obszarach geograficznych znajdują się w [tej tabeli](#enable-synchronization-of-preferreddatalocation).  
-![Zrzut ekranu przedstawiający atrybutu AD dodane do użytkownika](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
-2. Poczekaj, aż ten atrybut do synchronizacji usługi Azure AD.
-3. Za pomocą programu Exchange Online PowerShell, sprawdź, czy obszar skrzynki pocztowej został ustawiony prawidłowo.  
+1. Dodaj geo do wybranego atrybutu na koncie użytkownika. Lista dostępnych obszarach geograficznych można znaleźć w [tej tabeli](#enable-synchronization-of-preferreddatalocation).  
+![Zrzut ekranu przedstawiający atrybutu usługi AD, które dodano do użytkownika](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
+2. Poczekaj, aż atrybutów, które mają być synchronizowane z usługą Azure AD.
+3. Za pomocą programu Exchange Online PowerShell, sprawdź, czy region skrzynki pocztowej został poprawnie ustawiony.  
 ![Zrzut ekranu przedstawiający programu Exchange Online PowerShell](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-Zakładając, że aby można było korzystać z tej funkcji został oznaczony dzierżawy, skrzynki pocztowej jest przenoszona do poprawne geo. Można to sprawdzić za spojrzenie na nazwę serwera, w którym znajduje się skrzynki pocztowej.
-4. Aby sprawdzić, czy to ustawienie zostało skuteczne za pośrednictwem wielu skrzynek pocztowych, użyj skryptu w [galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ten skrypt ma również listę prefiksów serwera wszystkie usługi Office 365 centrów danych, a które geograficznie znajduje się on w. Może służyć jako odwołanie w poprzednim kroku można zweryfikować lokalizacji skrzynki pocztowej.
+Przy założeniu, że aby móc korzystać z tej funkcji został oznaczony dzierżawy, Skrzynka pocztowa jest przenoszony do poprawne lokalizacji geograficznej. Można to sprawdzić przez spojrzenie na nazwę serwera, w którym znajduje się skrzynki pocztowej.
+4. Aby zweryfikować, że to ustawienie zostało skuteczne za pośrednictwem wielu skrzynek pocztowych, należy użyć skryptu w [galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ten skrypt zawiera także listę prefiksów serwera centrów usługi Office 365, a które geograficznie znajduje się on w. Może służyć jako odwołanie w poprzednim kroku do Sprawdź lokalizację skrzynki pocztowej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat Multi-geograficzną, w usłudze Office 365:
+Dowiedz się więcej o wielu regionów geograficznych w usłudze Office 365:
 
-* [Geograficznie wielu sesji w Ignite](https://aka.ms/MultiGeoIgnite)
-* [Multi geograficzną, w usłudze OneDrive](https://aka.ms/OneDriveMultiGeo)
-* [Multi geograficzną, w programie SharePoint Online](https://aka.ms/SharePointMultiGeo)
+* [Sesje wielu regionów geograficznych na konferencji Ignite](https://aka.ms/MultiGeoIgnite)
+* [Wielu regionów geograficznych w usłudze OneDrive](https://aka.ms/OneDriveMultiGeo)
+* [Wielu regionów geograficznych w programie SharePoint Online](https://aka.ms/SharePointMultiGeo)
 
 Dowiedz się więcej na temat modelu konfiguracji w aparacie synchronizacji:
 
-* Dowiedz się więcej o model konfiguracji w [Aprowizacją deklaratywną opis](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
-* Dowiedz się więcej o języku wyrażenia w [opis deklaratywne inicjowania obsługi administracyjnej wyrażenia](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+* Dowiedz się więcej o modelu konfiguracji w [Aprowizacja Deklaratywna opis](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
+* Dowiedz się więcej o języku wyrażeń w [interpretacji wyrażenia inicjowania obsługi administracyjnej deklaratywne](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 
-Omówienie tematy:
+Tematy poglądowe:
 
 * [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](active-directory-aadconnectsync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)

@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management dla zasobów platformy Azure — Włączanie zarządzania subskrypcjami | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak globalnego administratorzy mogli zarządzać subskrypcjami w dzierżawie.
+title: Włączanie zarządzania subskrypcjami w dzierżawie — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć Włączanie zarządzania subskrypcjami w Twojej dzierżawie, korzystając z usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d7a9c0090d3bfaaf1161b6255c4c0b659c77d692
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620284"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189999"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Włączanie zarządzania subskrypcjami w Twojej dzierżawie
 
@@ -79,14 +79,5 @@ Teraz, gdy kwalifikującymi się przypisaniami ważne subskrypcje w Twojej organ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Odnajdywanie zasobów](pim-resource-roles-discover-resources.md)
-
-[Konfigurowanie ustawień roli](pim-resource-roles-configure-role-settings.md)
-
-
-
-
-
-
-
-
+- [Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md)
+- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)

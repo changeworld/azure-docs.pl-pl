@@ -1,6 +1,6 @@
 ---
-title: Jak wykonać przegląd dostępu | Dokumentacja firmy Microsoft
-description: Po rozpoczęciu przeglądu dostępu w usłudze Azure AD Privileged Identity Management Dowiedz się, jak i oznacz go jako ukończony i wyświetlić wyniki
+title: Kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3b4135368c2222a08b155c851b384244774ce246
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622534"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188590"
 ---
-# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak wykonać przegląd dostępu w usłudze Azure AD Privileged Identity Management
+# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM
 Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure AD Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
 
 Po zakończeniu okresu przeglądu dostępu lub wszystkich użytkowników została zakończona w ich własnym Przejrzyj, wykonaj kroki opisane w tym artykule, aby zarządzać przeglądu i wyświetlić wyniki.
@@ -53,4 +53,6 @@ Jeśli nie jesteś zainteresowany przeglądu w bardziej, należy go usunąć. **
 > Nie zostanie wyświetlone ostrzeżenie, zanim nastąpi usunięcie, więc upewnij się, że chcesz usunąć tego przeglądu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)
+- [Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)

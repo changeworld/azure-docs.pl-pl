@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: 23cf9430f82be860cb9acbfac42163f9243b2d0f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054771"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188777"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrona programu SQL Server za pomocą odzyskiwania po awarii programu SQL Server i usługi Azure Site Recovery
 
@@ -83,7 +83,6 @@ Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologia
 
 * Lokalne wdrożenie programu SQL Server, z obsługiwaną wersją programu SQL Server. Zazwyczaj należy również usługi Active Directory dla programu SQL server.
 * Wymagania dotyczące tego scenariusza, którą chcesz wdrożyć. Dowiedz się więcej na temat pomocy technicznej dotyczące [replikacji do platformy Azure](site-recovery-support-matrix-to-azure.md) i [lokalnych](site-recovery-support-matrix.md), i [wymagania wstępne dotyczące wdrażania](site-recovery-prereq.md).
-* Aby skonfigurować odzyskiwanie na platformie Azure, uruchom [oceny gotowości maszyn wirtualnych platformy Azure](http://www.microsoft.com/download/details.aspx?id=40898) narzędzia na maszynach wirtualnych programu SQL Server, aby upewnić się, że są one zgodne z platformą Azure i Usługa Site Recovery.
 
 ## <a name="set-up-active-directory"></a>Konfigurowanie usługi Active Directory
 

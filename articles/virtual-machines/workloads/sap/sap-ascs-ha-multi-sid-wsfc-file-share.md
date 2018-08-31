@@ -1,6 +1,6 @@
 ---
-title: SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure | Dokumentacja firmy Microsoft
-description: Udostępnianie identyfikatora SID wielu wysokiej dostępności dla SAP ASCS/SCS wystąpień z systemem Windows Server Failover Clustering i plików na platformie Azure
+title: SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure | Dokumentacja firmy Microsoft
+description: Wysoka dostępność — wiele identyfikatorów SID SAP ASCS/SCS wystąpień z usługą Windows Server Failover Clustering i plik udostępnianie na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657217"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189637"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -194,86 +194,87 @@ ms.locfileid: "34657217"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-We wrześniu 2016 roku firma Microsoft wydała gdzie wielu wirtualnych adresów IP można zarządzać za pomocą funkcji [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. Ta funkcja jest już istnieje w Azure zewnętrznej usługi równoważenia obciążenia.
+We wrześniu 2016 roku firma Microsoft opublikowała program funkcji, w której wiele wirtualnych adresów IP można zarządzać za pomocą [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. Ta funkcja już istnieje w module równoważenia obciążenia zewnętrznych platformy Azure.
 
-W przypadku wdrożenia SAP, można użyć wewnętrznego modułu równoważenia obciążenia do utworzenia konfiguracji klastra systemu Windows dla wystąpień usługi centralnej SAP (ASCS/SCS).
+W przypadku wdrożenia SAP można użyć wewnętrznego modułu równoważenia obciążenia, aby utworzyć konfigurację klastrowania Windows dla wystąpień usług SAP Central Services (ASCS/SCS).
 
-W tym artykule przedstawiono sposób przenoszenia z jednej instalacji ASCS/SCS do konfiguracji wielu SID SAP przez zainstalowanie dodatkowych ASCS SAP/SCS klaster klastrowanych wystąpień do istniejącego systemu Windows Server Failover Clustering (WSFC) o **udziału plików** . Po zakończeniu tego procesu skonfigurowano SAP identyfikatora SID multi klastra.
+Ten artykuł koncentruje się na jak przenieść z jednej instalacji ASCS/SCS konfiguracji SAP — wiele identyfikatorów SID przez zainstalowanie dodatkowych SAP ASCS/usług SCS klastrowanych wystąpień do istniejącego systemu Windows Server Failover Clustering (WSFC) jest klaster o **udziału plików** . Po zakończeniu tego procesu skonfigurowano klaster SAP — wiele identyfikatorów SID.
 
 > [!NOTE]
 >
 > Ta funkcja jest dostępna tylko w modelu wdrażania usługi Azure Resource Manager.
 >
->Istnieje limit liczby prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
+>Ma limitu liczby prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
->Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest taki sam, jak maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
+>Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest równy maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatne IP frontonu dla usługi równoważenia obciążenia" w [limity sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Został już skonfigurowany klaster usługi WSFC do użycia dla jednego wystąpienia SAP ASCS/SCS za pomocą **udziału plików**, jak pokazano na tym diagramie.
+Został już skonfigurowany klaster usługi WSFC do użycia przy użyciu jednego wystąpienia SAP ASCS/SCS **udziału plików**, jak pokazano na poniższym diagramie.
 
-![Rysunek 1. SAP ASCS/SCS wystąpienia i serwera SOFS wdrożone w dwóch klastrów][sap-ha-guide-figure-8007]
+![Rysunek 1: Wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS][sap-ha-guide-figure-8007]
 
-_**Rysunek 1.** SAP ASCS/SCS wystąpienia i serwera SOFS wdrożone w dwóch klastrów_
+_**Rysunek 1:** wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS_
 
 > [!IMPORTANT]
 > Instalator musi spełniać następujące warunki:
-> * Wystąpienia SAP ASCS/SCS muszą współużytkować tego samego klastra usługi WSFC.
-> * Każdy system zarządzania bazami danych (DBMS) identyfikatora SID musi mieć własny dedykowany klaster usługi WSFC.
-> * Serwery aplikacji SAP, które należą do jednego systemu SAP identyfikatora SID musi mieć własne dedykowanych maszyn wirtualnych.
+> * Wystąpienia SAP ASCS/SCS muszą współużytkować ten sam klaster usługi WSFC.
+> * Różne udziały plików SAP globalnego hostów należących do różnych SID SAP muszą współużytkować tego samego klastra serwerów SOFS.
+> * Każdy system zarządzania bazami danych (DBMS) identyfikator SID musi mieć swój własny dedykowany klaster usługi WSFC.
+> * Serwery aplikacji SAP, które należą do jednego systemu SAP identyfikatora SID muszą mieć własne dedykowanych maszyn wirtualnych.
 
-## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura identyfikatora SID multi SAP ASCS/SCS z udziału plików
+## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura — wiele identyfikatorów SID SAP ASCS/SCS z udziałem plików
 
-Celem jest zainstalować wiele SAP zaawansowane biznesowych aplikacji programowania (ASCS) lub Java SAP (SCS) w klastrze wystąpień w tym samym klastrze usługi WSFC, jak pokazano poniżej: 
+Celem jest zapewnienie instalowania wielu SAP Advanced Business Application programowania (ASCS) lub Java SAP (SCS) klastrowanych wystąpień w tym samym klastrze usługi WSFC, jak pokazano poniżej: 
 
-![Rysunek 2: SAP identyfikatora SID wielu konfiguracji w dwóch klastrów][sap-ha-guide-figure-8008]
+![Rysunek 2: Oprogramowanie SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach][sap-ha-guide-figure-8008]
 
-_**Rysunek 2.** konfiguracji wielu SID SAP w dwóch klastrów_
+_**Rysunek 2:** SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach_
 
-Instalacja dodatkowego **SAP \<SID2 >** system jest taki sam jak instalacja jednej <SID> systemu. Dwa dodatkowe przygotowanie kroki są wymagane, ASCS/SCS klastra, a także klastra SOFS udziału plików.
+Instalacja dodatkowego **SAP \<SID2 >** systemu jest taka sama jak instalacja jednej <SID> systemu. Dwa dodatkowe przygotowania kroki są wymagane, klastrowania ASCS/SCS, a także klastra serwerów SOFS udziału plików.
 
-## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Przygotowanie infrastruktury scenariusz identyfikatora SID multi SAP
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Przygotowywanie infrastruktury SAP — wiele identyfikatorów SID scenariusz
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Przygotowanie infrastruktury na kontrolerze domeny
 
-Tworzenie grupy domeny  **\<domeny > \SAP_\<SID2 > _GlobalAdmin**, na przykład z \<SID2 > = PR2. Nazwa grupy domeny jest \<domeny > \SAP_PR2_GlobalAdmin.
+Tworzenie grupy domeny  **\<domeny > \SAP_\<SID2 > _GlobalAdmin**, na przykład za pomocą \<SID2 > = PR2. Nazwa grupy domeny jest \<domeny > \SAP_PR2_GlobalAdmin.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Przygotowanie infrastruktury w klastrze ASCS/SCS
 
-Należy przygotować infrastruktury w istniejącym klastrze ASCS/SCS dla drugiego SAP \<SID >:
+Należy przygotować infrastruktury w istniejącym klastrze ASCS/SCS dla programu SAP drugi \<SID >:
 
-* Utwórz nazwę hosta wirtualnego wystąpienia klastra programu SAP ASCS/SCS na serwerze DNS.
-* Dodaj adres IP do istniejących Azure wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell.
+* Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS na serwerze DNS.
+* Dodaj adres IP do istniejącego modułu równoważenia obciążenia wewnętrznego platformy Azure przy użyciu programu PowerShell.
 
-Te kroki opisano w [przygotowanie infrastruktury scenariusz identyfikatora SID multi SAP][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
+Te kroki opisano w [przygotowanie infrastruktury SAP — wiele identyfikatorów SID scenariusz][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
 
 
-### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Przygotowanie infrastruktury w klastrze SOFS przy użyciu istniejącego hosta globalne SAP
+### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Przygotowywanie infrastruktury na klaster serwerów SOFS przy użyciu istniejącego hosta globalnego SAP
 
-Ponowne użycie istniejących \<SAPGlobalHost > i wolumin1 pierwszy SAP <SID1> systemu.
+Ponowne używanie istniejących \<SAPGlobalHost > i Volume1 pierwszy SAP <SID1> systemu.
 
-![Rysunek 3: SOFS Multi-identyfikator SID jest taka sama jak nazwa hosta globalne SAP][sap-ha-guide-figure-8014]
+![Rysunek 3: SOFS — wiele identyfikatorów SID jest taka sama jak nazwa hosta globalnego SAP][sap-ha-guide-figure-8014]
 
-_**Rysunek 3.** SOFS Multi-identyfikator SID jest taka sama jak nazwa hosta globalne SAP_
+_**Rysunek 3:** SOFS — wiele identyfikatorów SID jest taka sama jak nazwa hosta globalnego SAP_
 
 > [!IMPORTANT]
->Dla drugiego **SAP \<SID2 >** systemu, tym samym wolumin1 i tym samym  **\<SAPGlobalHost >** są używane nazwy sieciowej.
->Ponieważ zostało już ustawione **SAPMNT** jako nazwę udziału dla różnych systemów SAP, aby ponownie użyć  **\<SAPGlobalHost >** Nazwa sieciowa musi używać tego samego **wolumin1**.
+>Dla drugiego **SAP \<SID2 >** systemu, ten sam Volume1 i tym samym  **\<SAPGlobalHost >** używane są nazwa sieciowa.
+>Ponieważ został już skonfigurowany **SAPMNT** jako nazwa udziału dla różnych systemów SAP, aby ponownie użyć  **\<SAPGlobalHost >** nazwy sieci, należy używać tego samego **Volume1**.
 >
->Ścieżka <SID2> globalne hosta jest C:\ClusterStorage\\**wolumin1**\usr\sap\<SID2 > \SYS\.
+>Ścieżki plików <SID2> globalnego host to C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
-Aby uzyskać \<SID2 > system, należy przygotować hosta globalne SAP. \SYS\.. folder klastra SOFS.
+Aby uzyskać \<SID2 > system, należy przygotować hosta globalnego SAP... \SYS\.. folder klastra serwerów SOFS.
 
-Przygotowanie hosta globalne SAP dla \<SID2 > wystąpienie, uruchom następujący skrypt programu PowerShell:
+Aby przygotować hosta globalnego SAP dla \<SID2 > wystąpienie, należy wykonać poniższy skrypt programu PowerShell:
 
 
 ```PowerShell
@@ -322,15 +323,15 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Przygotowanie infrastruktury w klastrze SOFS przy użyciu innego hosta globalne SAP
+### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Przygotowywanie infrastruktury w klastrze SOFS przy użyciu innego hosta globalnego SAP
 
-Można skonfigurować drugi serwer SOFS (na przykład drugi serwer SOFS klastra rolę z  **\<SAPGlobalHost2 >** i inny **wolumin2** dla drugiego  **\< SID2 >**).
+Można skonfigurować drugi serwer SOFS (na przykład drugi serwer SOFS klastra rolę z  **\<SAPGlobalHost2 >** i innym **wolumin2** dla drugiego  **\< SID2 >**).
 
-![Rysunek 4: SOFS Multi-identyfikator SID jest taka sama jak SAP globalne nazwy hosta 2][sap-ha-guide-figure-8015]
+![Rysunek 4: SOFS — wiele identyfikatorów SID jest taka sama jak SAP globalne nazwy hosta 2][sap-ha-guide-figure-8015]
 
-_**Rysunek 4:** SOFS Multi-identyfikator SID jest taka sama jak nazwa hosta SAP GLOBALNEGO 2_
+_**Rysunek 4:** SOFS — wiele identyfikatorów SID jest taka sama jak nazwa hosta SAP GLOBALNEGO 2_
 
-Aby utworzyć drugą rolę SOFS z \<SAPGlobalHost2 >, to skrypt programu PowerShell:
+Aby utworzyć drugą rolę serwera SOFS z \<SAPGlobalHost2 >, uruchom ten skrypt programu PowerShell:
 
 ```PowerShell
 # Create SOFS with SAP Global Host Name 2
@@ -338,19 +339,19 @@ $SAPGlobalHostName = "sapglobal2"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-Utwórz drugą **wolumin2**. Wykonaj ten skrypt programu PowerShell:
+Utwórz drugi **wolumin2**. Uruchom ten skrypt programu PowerShell:
 
 ```PowerShell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![Rysunek 5: SOFS Multi-identyfikator SID jest taka sama jak SAP globalne nazwy hosta 2][sap-ha-guide-figure-8016]
+![Rysunek 5: SOFS — wiele identyfikatorów SID jest taka sama jak SAP globalne nazwy hosta 2][sap-ha-guide-figure-8016]
 
-_**Rysunek 5.** drugie wolumin2 w Menedżerze klastra trybu Failover_
+_**Rysunek 5:** drugie wolumin2 w Menedżerze klastra trybu Failover_
 
-Utwórz folder SAP globalne dla drugiego \<SID2 > i ustawić zabezpieczeń pliku.
+Utwórz folder SAP globalnego dla drugiego \<SID2 > oraz ustawić zabezpieczeń pliku.
 
-Wykonaj ten skrypt programu PowerShell:
+Uruchom ten skrypt programu PowerShell:
 
 ```PowerShell
 # Create a folder for <SID2> on a second Volume2 and set file security
@@ -391,69 +392,69 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-Aby utworzyć udział plików SAPMNT na wolumin2 z  *\<SAPGlobalHost2 >* nazwy hosta na drugi SAP \<SID2 >, uruchom **Dodaj udział plików** kreatora w klastrze trybu Failover Menedżer.
+Aby utworzyć udział plików SAPMNT na wolumin2 z  *\<SAPGlobalHost2 >* nazwę hosta dla drugiego SAP \<SID2 >, uruchom **Dodaj udział pliku** kreatora w klastrze trybu Failover Menedżer.
 
-Kliknij prawym przyciskiem myszy **saoglobal2** SOFS Grupa klastrów, a następnie wybierz **Dodaj udział plików**.
+Kliknij prawym przyciskiem myszy **saoglobal2** SOFS klastra grupy, a następnie wybierz **Dodaj udział plików**.
 
 ![Rysunek 6: Uruchom Kreator "Dodaj udział plików"][sap-ha-guide-figure-8017]
 
-_**Rysunek 6.** Start Kreator "Dodaj udział plików"_
+_**Rysunek 6:** Kreator "Dodaj udział plików" Start_
 
 <br>
-![Rysunek 7. "Wybierz udział SMB — szybkie"][sap-ha-guide-figure-8018]
+![Rysunek 7: "Wybierz udział SMB — szybkie"][sap-ha-guide-figure-8018]
 
-_**Rysunek 7.** wybierz "Udział SMB — szybkie"_
-
-<br>
-![Rysunek 8: Wybierz "sapglobalhost2" i określ ścieżkę na wolumin2][sap-ha-guide-figure-8019]
-
-_**Rysunek 8.** wybierz "sapglobalhost2", a następnie określ ścieżkę na wolumin2_
+_**Rysunek 7:** wybierz pozycję "Udział SMB — szybkie"_
 
 <br>
-![Rysunek 9: Ustaw nazwy udziału pliku "sapmnt"][sap-ha-guide-figure-8020]
+![Rysunek 8: Wybierz pozycję "sapglobalhost2" i określ ścieżkę na wolumin2][sap-ha-guide-figure-8019]
 
-_**Rysunek 9:** nazwy udziału pliku zestawu "sapmnt"_
-
-<br>
-![Rysunek 10: Wyłącz wszystkie ustawienia][sap-ha-guide-figure-8021]
-
-_**Rysunek 10:** Wyłącz wszystkie ustawienia_
+_**Rysunek 8:** wybierz "sapglobalhost2" i określ ścieżkę na wolumin2_
 
 <br>
-Przypisz *Pełna kontrola* uprawnienia do plików i sapmnt udziału:
+![Rysunek 9: Ustaw nazwy udziału plików "sapmnt"][sap-ha-guide-figure-8020]
+
+_**Rysunek 9:** nazwa udziału plików zestawu do "sapmnt"_
+
+<br>
+![Na rysunku nr 10: Wyłącz wszystkie ustawienia][sap-ha-guide-figure-8021]
+
+_**Na rysunku nr 10:** wyłącza wszystkie ustawienia_
+
+<br>
+Przypisz *Pełna kontrola* udostępnić uprawnienia do plików i sapmnt:
 * **SAP_\<SID > _GlobalAdmin** grupę użytkowników domeny
-* Obiekt komputera z węzłów klastra ASCS/SCS **ascs 1$** i **$ ascs-2**
+* Obiekt komputera z węzłów klastra ASCS/SCS **ascs 1$** i **ascs 2$**
 
-![Rysunek 11: Przypisz uprawnienia Pełna kontrola konta użytkownika grup i komputerów][sap-ha-guide-figure-8022]
+![Rysunek 11: Przypisz uprawnienia pełnej kontroli kontom komputerów i grup użytkowników][sap-ha-guide-figure-8022]
 
-_**Rysunek 11:** przypisać "Pełna kontrola" do grupy i komputer kont użytkowników_
-
-<br>
-![Rysunek 12: Wybierz opcję "Utwórz"][sap-ha-guide-figure-8023]
-
-_**Rysunek 12:** wybierz opcję "Utwórz"_
+_**Rysunek 11:** przypisać "Pełna kontrola" kontom komputerów i grup użytkowników_
 
 <br>
-![Rysunek 13: Drugi sapmnt związany sapglobal2 hosta i utworzeniu wolumin2][sap-ha-guide-figure-8024]
+![Rysunek 12: Wybierz pozycję "Utwórz"][sap-ha-guide-figure-8023]
 
-_**Rysunek 13:** drugi sapmnt powiązany sapglobal2 hostem i zostanie utworzony wolumin2_
+_**Rysunek 12:** wybierz pozycję "Utwórz"_
 
 <br>
-## <a name="install-sap-netweaver-multi-sid"></a>Instalowanie programu SAP NetWeaver multi-SID
+![Rysunek 13: Drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2][sap-ha-guide-figure-8024]
 
-### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Zainstaluj SAP \<SID2 > ASCS/SCS i Wywołujących wystąpień
+_**Rysunek 13:** drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2_
 
-Wykonaj te same kroki instalacji i konfiguracji zgodnie z wcześniejszym opisem dla jednego SAP \<SID >.
+<br>
+## <a name="install-sap-netweaver-multi-sid"></a>Zainstaluj oprogramowanie SAP NetWeaver — wiele identyfikatorów SID
+
+### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Zainstaluj oprogramowanie SAP \<SID2 > wystąpienia ASCS/SCS i Wywołujących
+
+Wykonaj te same kroki instalacji i konfiguracji, zgodnie z wcześniejszym opisem dla jednego rozwiązania SAP \<SID >.
 
 ### <a name="install-dbms-and-sap-application-servers"></a>Zainstaluj system DBMS i SAP serwerów aplikacji
-Zainstaluj system DBMS i serwerów aplikacji SAP zgodnie z wcześniejszym opisem.
+Zainstaluj system DBMS i serwery aplikacji SAP, zgodnie z wcześniejszym opisem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków][sap-official-ha-file-share-document]: oficjalny SAP wytyczne dotyczące udziału plików o wysokiej dostępności
+* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków][sap-official-ha-file-share-document]: wytyczne oficjalne SAP dla udziału plików o wysokiej dostępności
 
-* [Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
+* [Bezpośrednie miejsca do funkcji miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
 
 * [Serwer plików skalowalny w poziomie dla danych aplikacji — omówienie][sofs-overview]
 
-* [Nowości w pamięci masowej w systemie Windows Server 2016][new-in-win-2016-storage]
+* [What's new in magazynu w systemie Windows Server 2016][new-in-win-2016-storage]

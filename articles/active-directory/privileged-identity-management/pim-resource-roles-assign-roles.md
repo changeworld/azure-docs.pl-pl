@@ -1,6 +1,6 @@
 ---
-title: Przypisz role zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak przypisać role w usłudze PIM.
+title: Przypisz role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisać role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,27 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622980"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188924"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Przypisz role zasobów platformy Azure przy użyciu Privileged Identity Management
+# <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
-## <a name="assign-roles"></a>Przypisz role
+Usługa Azure AD PIM można zarządzać ról wbudowanych zasobów platformy Azure, a także niestandardowe role, w tym (między innymi):
+
+- Właściciel
+- Administrator dostępu użytkowników
+- Współautor
+- Administrator zabezpieczeń
+- Menedżer zabezpieczeń i nie tylko
+
+>[!NOTE]
+Użytkownicy lub członkowie grupy przypisane do roli właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy mogą przypisać role, konfigurowanie ustawień roli i przegląd dostępu za pomocą usługi PIM dla zasobów platformy Azure. Wyświetl listę [wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
+
+## <a name="assign-roles"></a>Przypisywanie ról
 
 Aby przypisać użytkownika lub grupę do roli, podczas wyświetlania **role** okienku, wybierz rolę, a następnie wybierz **Dodaj użytkownika**. 
 
@@ -76,3 +87,8 @@ W przypadku roli do czasu aktywacji transparent powiadomienia jest wyświetlany 
 Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz **zmiany ustawień** na pasku akcji. Zmień typ przypisania na **tylko w czasie** lub **bezpośredniego**.
 
 ![Okienko "Szczegóły użytkownika" za pomocą przycisku "Zmień ustawienia"](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
+- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)

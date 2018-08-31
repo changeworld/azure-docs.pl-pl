@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528447"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247786"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w
 Funkcja zarządzania cyklem życia jest bezpłatne w wersji zapoznawczej. Klienci są obciążani koszt normalnej [wyświetlanie listy obiektów blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) i [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) wywołań interfejsu API. Zobacz [ceny blokowych obiektów Blob](https://azure.microsoft.com/pricing/details/storage/blobs/) Aby dowiedzieć się więcej o cenach.
 
 ## <a name="register-for-preview"></a>Rejestrowanie na potrzeby wersji zapoznawczej 
-Aby zarejestrować się w publicznej wersji zapoznawczej, należy przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Po zatwierdzeniu żądania (w ciągu kilku dni), wszelkie istniejące i nowe konta GPv2 lub Blob Storage konto w regionie zachodnie stany USA 2 i zachodnio-środkowe stany USA ma włączoną funkcję. W trakcie okresu zapoznawczego jest obsługiwana tylko blokowych obiektów blob. Podobnie jak w przypadku większości wersji zapoznawczych, ta funkcja nie należy używać w przypadku obciążeń produkcyjnych aż do napotkania GA.
+Aby zarejestrować się w publicznej wersji zapoznawczej, należy przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Po zatwierdzeniu żądania (w ciągu kilku dni), wszelkie istniejące i nowe konta GPv2 lub Blob Storage konta w regionie zachodnie stany USA 2, zachodnio-środkowe stany USA i Europa Zachodnia mają włączoną funkcję. W trakcie okresu zapoznawczego jest obsługiwana tylko blokowych obiektów blob. Podobnie jak w przypadku większości wersji zapoznawczych, ta funkcja nie należy używać w przypadku obciążeń produkcyjnych aż do napotkania GA.
 
 Aby przesłać żądanie, uruchom następujące polecenia programu PowerShell lub interfejsu wiersza polecenia.
 

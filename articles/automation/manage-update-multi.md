@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/20/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059610"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248145"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -154,10 +154,10 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
    |Opcja|Opis|
    |---|---|
-   |Ponowne uruchomienie komputera, jeśli jest to wymagane| **(Ustawienie domyślne)**  w razie potrzeby ponowny rozruch jest intitated, jeśli zezwala na okno obsługi.|
-   |Zawsze wykonuj ponowny rozruch|Ponowne uruchomienie jest inicjowane niezależnie od tego, czy jest wymagane. |
-   |Nigdy nie ponowny rozruch|Niezależnie od tego czy ponowne uruchomienie jest wymagane, ponownego uruchamiania są surpressed.|
-   |Tylko ponowny rozruch — nie zostaną zainstalowane aktualizacje|Ta opcja instalacji aktualizacji ignoruje i tylko inicjuje ponowne uruchomienie komputera.|
+   |Ponowne uruchomienie komputera, jeśli jest to wymagane| **(Ustawienie domyślne)**  w razie potrzeby, ponowne uruchomienie jest inicjowane, jeśli zezwala na okno obsługi.|
+   |Zawsze uruchamiaj ponownie|Ponowne uruchomienie jest inicjowane niezależnie od tego, czy jest wymagane. |
+   |Nigdy nie uruchamiaj ponownie|Niezależnie od tego, jeśli ponowne uruchomienie jest wymagane, ponownego uruchamiania są pomijane.|
+   |Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|Ta opcja instalacji aktualizacji ignoruje i tylko inicjuje ponowne uruchomienie komputera.|
 
 Po zakończeniu konfigurowania harmonogramu wybierz **Utwórz** przycisk, aby powrócić do pulpitu nawigacyjnego stanu. **Zaplanowane** tabeli przedstawiono harmonogram wdrożenia utworzony.
 

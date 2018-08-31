@@ -1,55 +1,55 @@
 ---
-title: Optymalizacja transakcji dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak w celu zoptymalizowania wydajności kodu transakcyjnego w usłudze Azure SQL Data Warehouse przy jednoczesnym zmniejszeniu ryzyka dla długich cofnięcia.
+title: Optymalizowanie transakcji dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zoptymalizować wydajność transakcyjnych kodu w usłudze Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko dla długich wycofywanie zmian.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/19/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 59467c0cd93141cef56e1c9d2f36b0870a589712
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eb9c66c23440d2fd55c62de02b6c0070245c6d67
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795538"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247923"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optymalizacja transakcji w magazynie danych SQL Azure
-Dowiedz się, jak w celu zoptymalizowania wydajności kodu transakcyjnego w usłudze Azure SQL Data Warehouse przy jednoczesnym zmniejszeniu ryzyka dla długich cofnięcia.
+# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optymalizowanie transakcji w usłudze Azure SQL Data Warehouse
+Dowiedz się, jak zoptymalizować wydajność transakcyjnych kodu w usłudze Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko dla długich wycofywanie zmian.
 
 ## <a name="transactions-and-logging"></a>Rejestrowanie i transakcji
-Transakcje są ważne składnika aparacie relacyjnej bazy danych. Usługa SQL Data Warehouse używa transakcji podczas modyfikacji danych. Te transakcje można jawnych ani niejawnych. Instrukcje pojedynczego INSERT, UPDATE i DELETE są wszystkie przykłady w transakcji niejawnej. Jawnych transakcji Użyj BEGIN TRAN, TRAN zatwierdzania lub WYCOFYWANIA transakcji. Jawne transakcje są zwykle używane, jeśli wiele instrukcji modyfikacji muszą być powiązane razem w jednym Atomowej jednostki. 
+Transakcje są ważnym elementem aparacie relacyjnej bazy danych. Usługa SQL Data Warehouse używa transakcji podczas modyfikacji danych. Te transakcje może być jawne lub niejawne. Instrukcje pojedynczego INSERT, UPDATE i DELETE należą do nich niejawne transakcji. Jawnego transakcji Użyj BEGIN TRAN, TRAN zatwierdzania lub WYCOFYWANIA transakcji. Jawne transakcje są zwykle używane, gdy wiele instrukcji modyfikacji muszą być powiązane ze sobą w jednym pojedynczej Atomowej jednostki. 
 
-Usługa Azure SQL Data Warehouse zatwierdza zmiany w bazie danych przy użyciu dzienników transakcji. Rozkład każdy ma własny dziennik transakcji. Zapisy dziennika transakcji są automatyczne. Nie jest wymagana żadna konfiguracja. Jednak podczas tego procesu gwarantuje zapisu on wprowadzić obciążenia w systemie. Pisanie kodu transakcyjnie wydajne, można zminimalizować wpływ ten. Transakcyjnie efektywne zasadniczo mieszczą się na dwie kategorie.
+Usługa Azure SQL Data Warehouse zatwierdzenia zmian w bazie danych przy użyciu dzienników transakcji. Każda dystrybucja ma swój własny dziennika transakcji. Zapisuje dziennik transakcji są automatyczne. Nie jest wymagana żadna konfiguracja. Jednak podczas tego procesu gwarantuje zapisu go wprowadzić obciążenie w systemie. Można zminimalizować wpływ, przez napisanie kodu transakcyjnie wydajne. Kod transakcyjnie wydajne szeroko znajduje się na dwie kategorie.
 
-* Minimalne rejestrowanie użycia konstrukcji, jeśli to możliwe
-* Przetwarzania danych przy użyciu zakres partie, aby uniknąć pojedynczej długotrwałej transakcji
-* Przyjmuje partycji przełączania wzorca dla dużych modyfikacje w danej partycji
+* Rejestrowanie minimalne użycie konstrukcji zawsze, gdy jest to możliwe
+* Przetwarzanie danych przy użyciu partie o określonym zakresie, aby uniknąć pojedynczej długotrwałej transakcji
+* Przyjęcie partycji przełączania wzorca dla dużych zmian w danej partycji
 
 ## <a name="minimal-vs-full-logging"></a>Minimalny a pełne rejestrowanie
-W przeciwieństwie do pełni zarejestrowanych operacji, które korzystania z dziennika transakcji do śledzenia każdej zmiany wiersza, minimalny zestaw zarejestrowanych operacji zachować informacje o zakresie alokacji i tylko zmiany metadanych. W związku z tym minimalne rejestrowanie obejmuje rejestrowania wyłącznie informacje wymagane można wycofać transakcji po awarii lub dla jawnego żądania (TRAN WYCOFYWANIA). Jak znacznie mniej informacje są śledzone w dzienniku transakcji, minimalny zestaw zarejestrowanych operacji działa lepiej niż podobnie rozmiarze pełni zarejestrowanych operacji. Ponadto ponieważ zapisy mniejszą liczbę przejść dziennika transakcji, generowany jest znacznie mniejszą ilość danych dziennika, i dlatego jest efektywne więcej operacji We/Wy.
+W przeciwieństwie do w pełni zarejestrowane operacje, które umożliwia śledzenie każda zmiana wiersza, należy użyć dziennika transakcji, co najmniej rejestrowanych operacji zachować informacje o zakresie alokacji i tylko zmiany metadanych. W związku z tym minimalnym rejestrowaniem polega na rejestrowanie wyłącznie informacje wymagane można wycofać transakcji po awarii lub dla jawnego żądania (TRAN WYCOFYWANIA). Ponieważ znacznie mniej informacja jest śledzona w dzienniku transakcji, minimalny zestaw zarejestrowanych operacji działa lepiej niż o podobnym rozmiarze pełni zarejestrowanych operacji. Ponadto ponieważ mniejszą liczbę zapisów przechodzi dziennika transakcji, znacznie mniejszą ilość danych dziennika jest generowany i dlatego więcej operacji We/Wy wydajne.
 
-Limity bezpieczeństwa transakcji dotyczą tylko pełni zarejestrowanych operacji.
+Limity bezpieczeństwa transakcji mają zastosowanie tylko do w pełni rejestrowanych operacji.
 
 > [!NOTE]
-> Minimalny zestaw zarejestrowanych operacji mogą uczestniczyć w jawnych transakcji. Jak są śledzone wszystkie zmiany w strukturach alokacji, jest to możliwe wycofać migrację zarejestrowanych operacji. 
+> Co najmniej rejestrowanych operacji mogą uczestniczyć w transakcji jawnej. Ponieważ wszystkie zmiany w alokacji struktur są śledzone, istnieje możliwość wycofać minimalny zestaw rejestrowanych operacji. 
 > 
 > 
 
-## <a name="minimally-logged-operations"></a>Minimalny zestaw zarejestrowanych operacji
-Stanie są rejestrowane są następujące operacje:
+## <a name="minimally-logged-operations"></a>Co najmniej rejestrowanych operacji
+Następujące operacje są w stanie są rejestrowane:
 
 * UTWÓRZ TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
-* INSERT... WYBIERZ
+* WSTAW... WYBIERZ POZYCJĘ
 * TWORZENIE INDEKSU
 * ALTER INDEX REBUILD
-* INDEKS
-* OBCIĄĆ TABELI
-* TABELĘ
-* ALTER TABLE SWITCH PARTITION
+* USUŃ INDEKS
+* OBCINANIE TABELI
+* USUNIĘCIE TABELI
+* INSTRUKCJA ALTER TABLE SWITCH PARTITION
 
 <!--
 - MERGE
@@ -58,33 +58,33 @@ Stanie są rejestrowane są następujące operacje:
 -->
 
 > [!NOTE]
-> Operacje przenoszenia danych wewnętrznych (na przykład emisji i LOSOWA) nie dotyczy limitu bezpieczeństwa transakcji.
+> Operacje przenoszenia danych wewnętrznych (np. emisji i SHUFFLE) nie dotyczy limitu bezpieczeństwa transakcji.
 > 
 > 
 
-## <a name="minimal-logging-with-bulk-load"></a>Minimalne rejestrowanie z ładowanie zbiorcze
-CTAS i INSERT... Wybierz są obie operacje ładowania zbiorczego. Jednak zarówno wpływało definicji tabeli docelowej i zależą od scenariusza obciążenia. W poniższej tabeli opisano, gdy operacje zbiorcze są całkowicie lub co najmniej rejestrowane:  
+## <a name="minimal-logging-with-bulk-load"></a>Rejestrowanie przy użyciu ładowania zbiorczego minimalne
+CTAS i INSERT... Wybierz są operacjami ładowania zbiorczego. Jednak zarówno wpływało definicję tabeli docelowej i zależą od scenariusza obciążenia. W poniższej tabeli opisano, gdy operacje zbiorcze są całkowicie lub co najmniej rejestrowane:  
 
 | Podstawowy indeks | Scenariusz obciążenia | Tryb rejestrowania |
 | --- | --- | --- |
 | Sterta |Dowolne |**Minimalny** |
 | Indeks klastrowany |Tabela docelowa pusty |**Minimalny** |
-| Indeks klastrowany |Załadować wierszy nie pokrywają się z istniejących stron w lokalizacji docelowej |**Minimalny** |
-| Indeks klastrowany |Nakładanie się załadować wierszy z istniejących stron w lokalizacji docelowej |Pełne |
-| Klastrowany indeks magazynu kolumn |Rozmiar partii > = 102400 na partycji wyrównane dystrybucji |**Minimalny** |
-| Klastrowany indeks magazynu kolumn |Rozmiar < 102400 na partycji wyrównane dystrybucji partii |Pełne |
+| Indeks klastrowany |Załadowano wierszy nie pokrywają się przy użyciu istniejących stron w lokalizacji docelowej |**Minimalny** |
+| Indeks klastrowany |Załadowano wierszy pokrywać się z istniejących stron w lokalizacji docelowej |Pełne |
+| Klastrowany indeks magazynu kolumn |Wielkość partii > = 102400 na dystrybucję partycji wyrównane |**Minimalny** |
+| Klastrowany indeks magazynu kolumn |Rozmiar < 102400 na dystrybucję partycji wyrównane do partii |Pełne |
 
-Warto zauważyć, że żadnych zapisów w celu aktualizacji dodatkowej lub nieklastrowanych indeksów będzie zawsze pełni zarejestrowanych operacji.
+Warto zauważyć, że wszelkie operacje zapisu, aby zaktualizować dodatkowej lub nieklastrowanych indeksów będzie zawsze w pełni rejestrowanych operacji.
 
 > [!IMPORTANT]
-> Magazyn danych SQL ma 60 dystrybucji. W związku z tym zakładając, że wszystkie wiersze są równomiernie i kierowanych do jednej partycji, z partii musi zawierać 6,144,000 wierszy lub większy minimalny było rejestrowane podczas zapisywania do klastrowanego indeksu magazynu kolumn. Jeśli tabela jest podzielona na partycje i wiersze wstawiane span granice partycji, będzie konieczne 6,144,000 wierszy na granicy partycji przy założeniu nawet danych dystrybucji. Każdej partycji w każdej dystrybucji niezależnie może przekroczyć próg 102 400 wiersza wstawiania minimalny zalogowania się do dystrybucji.
+> Usługa SQL Data Warehouse ma 60 dystrybucji. W związku z tym, zakładając, że wszystkie wiersze są dystrybuowane równomiernie i kierowanych do jednej partycji, partii musi zawierać 6,144,000 wierszy lub większej w celu zarejestrowania minimalny zestaw podczas zapisywania do klastrowanego indeksu magazynu kolumn. Jeśli tabela jest podzielona na partycje, a wiersze, jest wstawiany span granice partycji, będzie konieczne 6,144,000 wiersze na granicy partycji, zakładając, że nawet dystrybucję danych. Każdej partycji w każdej dystrybucji niezależnie może przekroczyć próg 102 400 wierszy insert minimalny zestaw zalogowania się do dystrybucji.
 > 
 > 
 
-Ładowanie danych do niepustej tabeli z indeksem klastrowanym często może zawierać mieszaninę pełni zarejestrowane i zarejestrowane minimalny zestaw wierszy. Indeks klastrowany jest drzewo zrównoważony (b drzewa) stron. Jeśli strona zapisywana już zawiera wiersze z innej transakcji, następnie zapisuje te będą pełni rejestrowane. Jednak jeśli strona jest pusta następnie zapisu na tej stronie będą minimalny rejestrowane.
+Trwa ładowanie danych do niepustej tabeli z indeksem klastrowanym często może zawierać mieszaninę pełni rejestrowane i rejestrowane minimalny zestaw wierszy. Indeks klastrowany jest drzewo o zrównoważonym obciążeniu (b drzewa) stron. Jeśli na stronie zapisywana już zawiera wiersze z innej transakcji, następnie zapisuje te zostanie w pełni zarejestrowane. Jednak jeśli strona jest pusta następnie zapisu na tej stronie będą co najmniej rejestrowane.
 
 ## <a name="optimizing-deletes"></a>Optymalizacja usuwa
-Instrukcja DELETE jest całkowicie zarejestrowanych operacji.  Jeśli musisz usunąć dużej ilości danych w tabeli lub partycję, często dobrym rozwiązaniem `SELECT` dane chcesz zachować, które mogą być uruchamiane jako minimalny zestaw zarejestrowanych operacji.  Aby wybrać dane, Utwórz nową tabelę z [CTAS](sql-data-warehouse-develop-ctas.md).  Po utworzeniu, użyj [zmienić](/sql/t-sql/statements/rename-transact-sql) wymienić starego tabeli z nowo utworzonej tabeli.
+Usuwanie jest w pełni zarejestrowanych operacji.  Jeśli musisz usunąć duże ilości danych w tabeli lub partycję, często warto więcej `SELECT` dane chcesz zachować, które mogą być uruchamiane jako minimalny zestaw zarejestrowanych operacji.  Aby wybrać dane, należy utworzyć nową tabelę z [CTAS](sql-data-warehouse-develop-ctas.md).  Po utworzeniu użyj [Zmień nazwę](/sql/t-sql/statements/rename-transact-sql) wymienić stare tabeli z nowo utworzoną tabelę.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -115,11 +115,11 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optymalizacja aktualizacji
-Aktualizacja jest w pełni zarejestrowanych operacji.  Jeśli musisz zaktualizować dużą liczbę wierszy w tabeli lub partycję, często może być znacznie bardziej wydajne używać minimalny zestaw zarejestrowanych operacji, takich jak [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) Aby to zrobić.
+Aktualizacja jest w pełni zarejestrowanych operacji.  Jeśli musisz zaktualizować dużą liczbę wierszy w tabeli lub partycję, często może być znacznie bardziej efektywne używać minimalny zestaw zarejestrowanych operacji, takich jak [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) Aby to zrobić.
 
-W przykładzie poniżej tabeli pełnej aktualizacji przekonwertowany na CTAS, dzięki czemu możliwe jest minimalnym rejestrowania.
+W przykładzie poniżej pełną tabelę został przekonwertowany aktualizacji do instrukcji CTAS tak, aby możliwe jest minimalnym rejestrowaniem.
 
-W takim przypadku retrospektywnie dodajemy kwota rabatu sprzedaży w tabeli:
+W tym przypadku wsteczną dodajemy kwota rabat w wysokości do sprzedaży w tabeli:
 
 ```sql
 --Step 01. Create a new table containing the "Update". 
@@ -176,22 +176,22 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Ponowne tworzenie dużych tabel mogą korzystać z funkcji zarządzania obciążenie SQL Data Warehouse. Aby uzyskać więcej informacji, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md).
+> Ponowne tworzenie dużych tabel mogą korzystać z funkcji zarządzania usługi SQL Data Warehouse obciążenia. Aby uzyskać więcej informacji, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md).
 > 
 > 
 
-## <a name="optimizing-with-partition-switching"></a>Optymalizacja przełączania partycji
-Jeśli muszą ponosić na dużą skalę modyfikacji wewnątrz [tabeli partycji](sql-data-warehouse-tables-partition.md), następnie partycję przełączania wzorca ma sens. Jeśli modyfikacji danych jest znacząca i obejmuje wiele partycji, następnie Iterowanie po partycje osiąga ten sam rezultat.
+## <a name="optimizing-with-partition-switching"></a>Optymalizacja z użyciem przełączanie partycji
+Jeśli w obliczu modyfikacji na dużą skalę w [tabeli partycji](sql-data-warehouse-tables-partition.md), partycji, przełączanie wzorzec ma sens, a następnie. Jeśli modyfikacji danych jest znaczące i obejmuje wiele partycji, następnie Iterowanie partycje osiąga ten sam wynik.
 
-Czynności do wykonania przełącznik partycji są następujące:
+Czynności do wykonania przełączenia partycji, są następujące:
 
 1. Utwórz pustą z partycji
-2. Przeprowadź aktualizację CTAS
-3. Przełącz się istniejące dane do tabeli poza
-4. Przełączanie w nowych danych
+2. Wykonaj tę aktualizację jako instrukcji CTAS
+3. Przełącz się istniejących danych do tabeli poza
+4. Przełącz w nowych danych
 5. Czyszczenie danych
 
-Jednak aby ułatwić identyfikację partycje do przełącznika, należy utworzyć procedurę pomocnika.  
+Jednak aby ułatwić identyfikację partycji, aby przełączyć się, należy utworzyć procedurę pomocnika.  
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -237,9 +237,9 @@ OPTION (LABEL = 'dbo.partition_data_get : CTAS : #ptn_data')
 GO
 ```
 
-Ta procedura maksymalizuje ponowne użycie kodu i przechowuje przełączania przykład mniejszych partycji.
+Ta procedura zmaksymalizować ponowne wykorzystanie kodu i utrzymuje przełączania przykład bardziej zwarty partycji.
 
-Poniższy kod przedstawia kroki wspomniano powyżej, aby osiągnąć pełną partycji przełączania procedury.
+Poniższy kod demonstruje kroków wymienionych wcześniej, aby osiągnąć pełną partycji przełączanie procedury.
 
 ```sql
 --Create a partitioned aligned empty table to switch out the data 
@@ -342,10 +342,10 @@ DROP TABLE dbo.FactInternetSales_in
 DROP TABLE #ptn_data
 ```
 
-## <a name="minimize-logging-with-small-batches"></a>Minimalizowanie rejestrowanie z małych partii
-Dla operacji modyfikacji dużej ilości danych na jego może być uzasadniona do dzielenia operacji na fragmenty lub partie, aby ustawić zakres jednostka pracy.
+## <a name="minimize-logging-with-small-batches"></a>Minimalizuj rejestrowanie za pomocą małych partiach
+Dla operacji modyfikujących dużych ilości danych rozsądne może okazać się podziału operacji na fragmenty lub partie zakresu jednostka pracy.
 
-Następujący kod jest przykładem pracy. Rozmiar partii ustawiono trivial numer aby wyróżnić techniki. W rzeczywistości rozmiar partii jest znacznie większe. 
+Poniższy kod jest praktyczny przykład. Rozmiar partii ustawiono numerowi trivial wyróżnić techniki. W rzeczywistości rozmiar partii będzie znacznie większe. 
 
 ```sql
 SET NO_COUNT ON;
@@ -404,18 +404,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Wstrzymywanie i skalowanie wskazówki
-Usługa Azure SQL Data Warehouse pozwala [wstrzymać, wznowić i skalowanie](sql-data-warehouse-manage-compute-overview.md) magazynu danych na żądanie. Po wstrzymaniu lub skalować magazyn danych SQL, ważne jest, aby zrozumieć wszystkich transakcji locie kończą natychmiast; co spowoduje cofnięcie transakcji otwartych. Jeśli obciążenie wystawił długo uruchomione i nieukończone modyfikacji danych przed operację wstrzymywania lub skalę, następnie tej pracy należy można cofnąć. Cofnięcie tej może mieć wpływ na czas wymagany do wstrzymania lub skalowania bazy danych magazynu danych SQL Azure. 
+Usługa Azure SQL Data Warehouse umożliwia [wstrzymać, wznowić i skalowanie](sql-data-warehouse-manage-compute-overview.md) magazynu danych na żądanie. W przypadku wstrzymania lub skalowania usługi SQL Data Warehouse, ważne jest, aby zrozumieć, od razu; zakończenia wszystkie aktywne transakcje powoduje cofnięcie transakcji otwartych. Jeśli obciążenie wystawił długo działa i jest niekompletna modyfikacji danych przed operacji wstrzymywania lub skalowania, następnie tej pracy należy można cofnąć. Cofanie tej zmiany mogą mieć wpływ na czas, jaki zajmuje wstrzymywania lub skalowania bazy danych Azure SQL Data Warehouse. 
 
 > [!IMPORTANT]
-> Zarówno `UPDATE` i `DELETE` są całkowicie zarejestrowanych operacji i dlatego te Cofnij/ponów operacji może potrwać znacznie dłużej, niż równoważne rejestrowane operacji. 
+> Zarówno `UPDATE` i `DELETE` są w pełni rejestrowanych operacji, a więc te Cofnij/ponów operacji może potrwać znacznie dłuższe niż odpowiednik rejestrowane w operacji. 
 > 
 > 
 
-Najlepszym scenariuszu jest umożliwienie w transakcji modyfikacji dane transmitowane ukończone przed wstrzymaniem lub skalowania SQL Data Warehouse. Jednak ten scenariusz może nie zawsze być praktyczne. Aby ograniczyć ryzyko długi wycofywania, należy wziąć pod uwagę jedną z następujących opcji:
+Jest najlepszym scenariuszu umożliwiające w locie modyfikacji transakcje ukończone przed wstrzymywaniem i skalowaniem SQL Data Warehouse. Jednak ten scenariusz może nie zawsze jest praktyczne. Aby zminimalizować ryzyko długiego czasu wycofywania, należy wziąć pod uwagę jedną z następujących opcji:
 
-* Napisz ponownie długotrwałe operacje przy użyciu [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
-* Podziel operacji na fragmenty; korzysta z podzbioru wierszy
+* Ponowne zapisywanie adresów długotrwałe operacje przy użyciu [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+* Podział operacji na fragmenty; wykonywanie operacji na podzestaw wierszy
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz [transakcje w usłudze SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) Aby dowiedzieć się więcej o poziomie izolacji i limity transakcyjnych.  Omówienie innych najlepszych rozwiązań, zobacz [najlepsze rozwiązania magazynu danych SQL](sql-data-warehouse-best-practices.md).
+Zobacz [transakcje w usłudze SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) dowiedzieć się więcej o poziomy izolacji i limity transakcyjnych.  Aby uzyskać ogólne najlepsze rozwiązania, zobacz [najlepsze rozwiązania dotyczące SQL Data Warehouse](sql-data-warehouse-best-practices.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie OpenShift platformy kontenera na platformie Azure | Dokumentacja firmy Microsoft
-description: Wdróż OpenShift platformy kontenera na platformie Azure.
+title: Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure | Dokumentacja firmy Microsoft
+description: Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: f1ba6a3d3b9e576d513b55beac4e9365102433e9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a275df4567053149688694315ff24ac1ad7f711f
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29125745"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186918"
 ---
-# <a name="deploy-openshift-container-platform-in-azure"></a>Wdrażanie OpenShift platformy kontenera na platformie Azure
+# <a name="deploy-openshift-container-platform-in-azure"></a>Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure
 
-Jedną z kilku metod umożliwia wdrażanie OpenShift platformy kontenera platformy Azure:
+Do wdrożenia rozwiązania OpenShift Container Platform na platformie Azure, można użyć jednej z kilku metod:
 
-- Można ręcznie wdrożyć składniki niezbędne infrastruktury platformy Azure, a następnie postępuj zgodnie z OpenShift kontenera platformy [dokumentacji](https://docs.openshift.com/container-platform/3.6/welcome/index.html).
-- Można również użyć istniejącego [szablonu usługi Resource Manager](https://github.com/Microsoft/openshift-container-platform/) co upraszcza wdrażanie klastra OpenShift kontenera platformy.
-- Inną opcją jest użycie [oferty w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+- Można ręcznie wdrożyć składniki niezbędne infrastruktury platformy Azure, a następnie wykonaj OpenShift Container Platform [dokumentacji](https://docs.openshift.com/container-platform/3.10/welcome/index.html).
+- Można także użyć istniejącego [szablonu usługi Resource Manager](https://github.com/Microsoft/openshift-container-platform/) upraszczające proces wdrożenia klastra OpenShift Container Platform.
+- Innym rozwiązaniem jest użycie [oferty w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Wszystkie opcje wymagana jest subskrypcja Red Hat. Podczas wdrażania wystąpienia Red Hat Enterprise Linux jest zarejestrowany do subskrypcji Red Hat i powiązany identyfikator puli, zawierający uprawnień OpenShift kontenera platformy.
-Upewnij się, że masz prawidłową Red Hat subskrypcji Menedżera (RHSM) nazwę użytkownika, hasło i identyfikator puli. Po zarejestrowaniu się w https://access.redhat.com można sprawdzić te informacje.
+Wszystkie opcje wymagana jest subskrypcja firmy Red Hat. Podczas wdrażania wystąpienie Red Hat Enterprise Linux jest zarejestrowany do subskrypcji Red Hat i dołączony do identyfikator puli, który zawiera uprawnień dla rozwiązania OpenShift Container Platform.
+Upewnij się, że masz prawidłową nazwę użytkownika w systemie Red Hat subskrypcji Menedżera (RHSM), hasło i identyfikator puli. Możesz sprawdzić te informacje, logując się do https://access.redhat.com.
 
-## <a name="deploy-by-using-the-openshift-container-platform-resource-manager-template"></a>Wdrażanie przy użyciu szablonu usługi Resource Manager OpenShift kontenera platformy
+## <a name="deploy-by-using-the-openshift-container-platform-resource-manager-template"></a>Wdrażanie przy użyciu szablonu usługi Resource Manager platformy OpenShift Container Platform
 
-Aby wdrożyć przy użyciu szablonu usługi Resource Manager, należy użyć pliku parametrów umożliwiają określanie wartości parametrów wejściowych. Aby dostosować żadnego z elementów wdrożenia, które nie są objęte przy użyciu parametrów wejściowych, rozwidlania repozytorium GitHub i zmień odpowiednie elementy.
+Aby wdrożyć przy użyciu szablonu usługi Resource Manager, należy użyć pliku parametrów umożliwiają określanie wartości parametrów wejściowych. Dostosuj którekolwiek z elementów wdrożenia, które nie są objęte przy użyciu parametrów wejściowych, Utwórz rozwidlenie repozytorium GitHub i zmienić odpowiednie elementy.
 
-Niektóre typowe opcje dostosowania obejmują, ale nie są ograniczone do:
+Niektóre typowe opcje dostosowywania obejmują, ale nie są ograniczone do:
 
-- Sieć wirtualna CIDR (zmiennej w azuredeploy.json)
-- Rozmiar maszyny Wirtualnej bastionu (zmiennej w azuredeploy.json)
+- Sieć wirtualna CIDR (zmienna w azuredeploy.json)
+- Rozmiar maszyny Wirtualnej bastionu (zmienna w azuredeploy.json)
 - Konwencje nazewnictwa (zmienne w azuredeploy.json)
-- Szczegóły klastra OpenShift zmodyfikowany za pomocą pliku hosts (deployOpenShift.sh)
+- Szczegóły klastra OpenShift, zmodyfikować za pomocą pliku hosts (deployOpenShift.sh)
 
 ### <a name="configure-the-parameters-file"></a>Konfigurowanie pliku parametrów
 
-Użyj `appId` wartości z nazwy głównej usługi utworzony wcześniej dla `aadClientId` parametru. 
+Użyj `appId` wartości z nazwy głównej usługi została wcześniej utworzona dla `aadClientId` parametru. 
 
-Poniższy przykład tworzy plik parametrów o nazwie azuredeploy.parameters.json z wszystkich wymaganych danych wejściowych.
+Poniższy przykład tworzy plik parametrów o nazwie azuredeploy.parameters.json przy użyciu wszystkich wymaganych danych wejściowych.
 
 ```json
 {
@@ -134,14 +134,14 @@ Poniższy przykład tworzy plik parametrów o nazwie azuredeploy.parameters.json
 }
 ```
 
-Zastąp w nawiasach z informacjami o określonych elementów.
+Zastąp elementy w nawiasach przy użyciu konkretnych informacji.
 
 ### <a name="deploy-by-using-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
 
 > [!NOTE] 
-> Polecenie wymaga interfejsu wiersza polecenia Azure 2.0.8 lub nowszym. Możesz sprawdzić wersję interfejsu wiersza polecenia z `az --version` polecenia. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [zainstalować Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Poniższe polecenie wymaga interfejsu wiersza polecenia Azure 2.0.8 lub nowszej. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenia. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-Poniższy przykład wdraża klaster OpenShift i wszystkie powiązane zasoby w grupie zasobów o nazwie myResourceGroup, o nazwie myOpenShiftCluster wdrożenia. Szablon odwołuje się bezpośrednio z repozytorium GitHub i lokalne parametry, których jest używany plik o nazwie pliku azuredeploy.parameters.json.
+Poniższy przykład służy do wdrażania klastra OpenShift i wszystkie powiązane zasoby w grupie zasobów o nazwie myResourceGroup, o nazwie wdrożenia myOpenShiftCluster. Szablon odwołuje się bezpośrednio z repozytorium GitHub i parametrów lokalnych, który jest używany plik o nazwie pliku azuredeploy.parameters.json.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -149,7 +149,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Wdrożenie ma co najmniej 30 minut, w zależności od całkowitej liczby węzłów wdrożone. Adres URL konsoli OpenShift i nazwa DNS odbitek wzorca OpenShift na terminalu po zakończeniu wdrożenia.
+Przeprowadzenie wdrożenia zajmie przynajmniej 30 minut, w zależności od całkowitej liczby wdrożonych węzłów. Adres URL konsoli usługi OpenShift i nazwa DNS drukuje wzorca OpenShift na terminalu, po zakończeniu wdrożenia.
 
 ```json
 {
@@ -158,21 +158,21 @@ Wdrożenie ma co najmniej 30 minut, w zależności od całkowitej liczby węzł�
 }
 ```
 
-## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>Wdrażanie przy użyciu oferty OpenShift kontenera platformy Azure Marketplace
+## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>Wdrażanie przy użyciu oferty OpenShift Container Platform Azure Marketplace
 
-Najprostszym sposobem, aby wdrożyć OpenShift kontenera platformy na platformie Azure jest użycie [oferty w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+Najprostszym sposobem wdrażania OpenShift Container Platform na platformie Azure jest użycie [oferty w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Jest to najprostsza opcja, ale również ma ono ograniczone możliwości dostosowywania. Oferta obejmuje trzy opcje konfiguracji:
+Jest to najprostsza opcja, ale również ma ona ograniczone możliwości dostosowywania. Oferta obejmuje trzy opcje konfiguracji:
 
-- **Mała**: wdraża z jednego węzła głównego, infrastruktury jeden węzeł, dwa węzły aplikacji i bastionu jednego węzła klastra z systemem innym niż wysokiej dostępności (HA). Wszystkie węzły są standardowe rozmiary DS2v2 maszyny Wirtualnej. Ten klaster wymaga 10 całkowita liczba rdzeni i doskonale testowania na niewielką skalę.
-- **Średnia liczba godzin**: wdraża klastra HA z trzech węzłów głównych, dwóch węzłów infrastruktury cztery węzły aplikacji i bastionu jednego węzła. Wszystkie węzły z wyjątkiem węzła bastionu są standardowe rozmiarów maszyn wirtualnych DS3v2. Węzeł bastionu jest DS2v2 standardowa. Ten klaster wymaga 38 rdzeni.
-- **Duże**: wdraża klastra HA z trzech węzłów głównych, dwóch węzłów infrastruktury sześciu węzłów aplikacji i bastionu jednego węzła. Węzły master i infrastruktury są standardowe rozmiary DS3v2 maszyny Wirtualnej. Węzły aplikacji są standardowe rozmiarów maszyn wirtualnych DS4v2, a węzeł bastionu jest standardowe DS2v2. Ten klaster wymaga 70 rdzeni.
+- **Małe**: wdraża klaster bez wysokiej dostępności (HA) przy użyciu jednego węzła głównego, węzła jedna infrastruktura, z uwzględnieniem dwóch węzłów aplikacji i bastionu jeden węzeł. Wszystkie węzły są standardowych rozmiarów maszyn wirtualnych DS2v2. Ten klaster wymaga 10 łączna liczba rdzeni i doskonale nadaje się do testowania na niewielką skalę.
+- **Średnia**: wdraża klaster o wysokiej dostępności przy użyciu trzech węzłów głównych, z uwzględnieniem dwóch węzłów infrastruktury, cztery węzły aplikacji i bastionu jeden węzeł. Wszystkie węzły oprócz węzła bastionu są standardowych rozmiarów maszyn wirtualnych DS3v2. Ten węzeł bastionu jest standardowa DS2v2. Ten klaster wymaga 38 rdzeni.
+- **Duże**: wdraża klaster o wysokiej dostępności przy użyciu trzech węzłów głównych, z uwzględnieniem dwóch węzłów infrastruktury, sześciu węzłów aplikacji i bastionu jeden węzeł. Węzły główne i infrastruktury są standardowych rozmiarów maszyn wirtualnych DS3v2. Węzły aplikacji są standardowych rozmiarów maszyn wirtualnych DS4v2, a węzeł bastionu jest standardowa DS2v2. Ten klaster wymaga 70 rdzeni.
 
-Konfiguracja Azure Cloud Solution Provider jest opcjonalny w przypadku klastrów średnich i dużych rozmiarów. Rozmiar klastra małych nie daje opcja konfigurowania Azure Cloud Solution Provider.
+Konfiguracja dostawcy rozwiązań w chmurze platformy Azure jest opcjonalny w przypadku klastrów w średnich i dużych rozmiarów. Rozmiar klastra małych nie daje opcję konfigurowania dostawcy rozwiązań w chmurze platformy Azure.
 
-## <a name="connect-to-the-openshift-cluster"></a>Połącz się z klastrem OpenShift
+## <a name="connect-to-the-openshift-cluster"></a>Nawiąż połączenie z klastrem platformy OpenShift
 
-Po zakończeniu wdrożenia nawiązać konsoli OpenShift w przeglądarce, za pomocą `OpenShift Console Uri`. Można również łączyć się z główną OpenShift, za pomocą następującego polecenia:
+Po zakończeniu wdrożenia, połączyć się z konsoli platformy OpenShift za pomocą przeglądarki przy użyciu `OpenShift Console Uri`. Można też połączyć do poziomu głównego OpenShift, za pomocą następującego polecenia:
 
 ```bash
 $ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
@@ -180,7 +180,7 @@ $ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Użyj [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenia, aby usunąć grupę zasobów, OpenShift klastra, a wszystkie powiązane zasoby, gdy nie są już potrzebne.
+Użyj [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenia, aby usunąć grupę zasobów, klaster OpenShift i wszystkie pokrewne zasoby, gdy nie są już potrzebne.
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -188,6 +188,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zadania po wdrożeniu](./openshift-post-deployment.md)
-- [Rozwiązywanie problemów z wdrażaniem OpenShift na platformie Azure](./openshift-troubleshooting.md)
-- [Rozpoczynanie pracy z platformą kontenera OpenShift](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
+- [Po wdrożeniu zadania](./openshift-post-deployment.md)
+- [Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure](./openshift-troubleshooting.md)
+- [Wprowadzenie do platformy OpenShift Container Platform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)

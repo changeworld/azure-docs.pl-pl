@@ -1,6 +1,6 @@
 ---
-title: Wiadomości e-mail z powiadomieniami w usłudze Azure AD PIM | Dokumentacja firmy Microsoft
-description: W tym artykule opisano powiadomienia e-mail w usłudze Azure AD Privileged Identity Management (PIM)
+title: Wiadomości e-mail z powiadomieniami w usłudze PIM — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano powiadomienia e-mail w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621586"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190180"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>Powiadomienia e-mail w usłudze Azure AD PIM
+# <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
 Gdy zdarzenia klawiszy zachodzą w usłudze Azure AD Privileged Identity Management (PIM), powiadomienia e-mail są wysyłane do odpowiedniego administratora lub użytkownika. Na przykład PIM wysyła wiadomości e-mail do następujących zdarzeń:
 
@@ -74,5 +74,5 @@ Wcześniej po użytkownik został przypisany ról uprzywilejowanych, wiadomości
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Jak zarządzać ustawień aktywacji roli w usłudze Azure AD PIM](pim-how-to-change-default-settings.md)
-- [Zatwierdzenia w usłudze Azure AD PIM](azure-ad-pim-approval-workflow.md)
+- [Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)

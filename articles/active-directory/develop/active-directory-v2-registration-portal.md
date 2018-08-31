@@ -1,5 +1,5 @@
 ---
-title: Tematy pomocy portalu rejestracji aplikacji | Dokumentacja firmy Microsoft
+title: Tematy pomocy z portalu rejestracji aplikacji | Dokumentacja firmy Microsoft
 description: Opis różnych funkcji w portalu rejestracji aplikacji firmy Microsoft.
 services: active-directory
 documentationcenter: ''
@@ -13,41 +13,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 9d38f6e6d6b9fa47b1cd1497820f7ff887954ad5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156191"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190119"
 ---
-# <a name="app-registration-reference"></a>Informacje dotyczące rejestracji aplikacji
-Ten dokument zawiera kontekstu i opisy różnych funkcji w portalu rejestracji aplikacji Microsoft [ https://apps.dev.microsoft.com ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+# <a name="app-registration-reference"></a>Dokumentacja rejestracji aplikacji
+Ten dokument zawiera kontekstu i opisy różnych funkcji dostępnych w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
-## <a name="my-applications"></a>Moje aplikacje
-Ta lista zawiera wszystkie aplikacje zarejestrowany do użytkowania z punktem końcowym v2.0 usługi Azure AD. Te aplikacje mają możliwość do logowania użytkowników z osobistego konta Microsoft i kont pracy/służbowych z usługi Azure Active Directory. Aby dowiedzieć się więcej na temat punktu końcowego v2.0 usługi Azure AD, zobacz [omówienie v2.0](active-directory-appmodel-v2-overview.md). Te aplikacje można również zintegrować z punktu końcowego uwierzytelniania konta Microsoft, `https://login.live.com`.
+## <a name="my-applications-or-converged-applications"></a>Moje aplikacje lub zbieżne aplikacje
+Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia z punktem końcowym v2.0 usługi Azure AD. Te aplikacje mają możliwość logowanie użytkowników mających konta służbowe z usługi Azure Active Directory i osobistych kont Microsoft. Aby dowiedzieć się więcej na temat punktu końcowego v2.0 usługi Azure AD, zobacz [Przegląd v2.0](active-directory-appmodel-v2-overview.md). Aplikacje te można również zintegrować z punktu końcowego uwierzytelniania konta Microsoft, `https://login.live.com`.
 
-## <a name="live-sdk-applications"></a>Na żywo aplikacji zestawu SDK
-Ta lista zawiera wszystkie aplikacje zarejestrowany do użytkowania wyłącznie z kontem Microsoft. Nie są włączone do użytku w usłudze Azure Active Directory. Jest to, gdzie znaleźć wszystkie aplikacje, które zostały wcześniej zarejestrowane portalu dla deweloperów MSA w `https://account.live.com/developers/applications`. Wszystkie funkcje, które należy wcześniej wykonać `https://account.live.com/developers/applications` można teraz wykonać w tym nowego portalu `https://apps.dev.microsoft.com`. Jeśli masz dodatkowe pytania dotyczące aplikacji konta Microsoft, skontaktuj się z nami.
+## <a name="azure-ad-only-applications"></a>Tylko aplikacje usługi Azure AD
+Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia z punktem końcowym usługi Azure AD w wersji 1.0. Te aplikacje mają tylko możliwość logowanie użytkowników mających konta służbowe z usługi Azure Active Directory. Ta lista zawiera aplikacje, które zostały zarejestrowane przy użyciu **rejestracje aplikacji** środowiska w [witryny Azure Portal](https://portal.azure.com).
+
+## <a name="live-sdk-applications"></a>Zestaw Live SDK aplikacje
+Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia wyłącznie przy użyciu konta Microsoft. Nie są włączone do użycia z usługą Azure Active Directory. Jest to, gdzie znaleźć wszystkie aplikacje, które zostały wcześniej zarejestrowane za pomocą portalu dla deweloperów MSA w `https://account.live.com/developers/applications`. Wszystkie funkcje, które były wykonywane w `https://account.live.com/developers/applications` można teraz wykonać w nowym portalu, `https://apps.dev.microsoft.com`.
 
 ## <a name="application-secrets"></a>Wpisy tajne aplikacji
-Hasła aplikacji są poświadczenia, które umożliwią niezawodnych aplikacji do wykonywania [uwierzytelnianie klienta](http://tools.ietf.org/html/rfc6749#section-2.3) z usługą Azure AD. OAuth i OpenID Connect, klucz tajny aplikacji jest często określana jako `client_secret`. W protokole v2.0, każda aplikacja, która odbiera token zabezpieczający w lokalizacji adresowanego sieci web (przy użyciu `https` schemat) należy użyć klucz tajny aplikacji do identyfikacji do usługi Azure AD po realizacji tego tokenu zabezpieczającego. Ponadto natywnego klienta, który odbiera tokenów na urządzeniu będzie zabronione użycie klucz tajny aplikacji w celu uwierzytelniania klienta. To odradza magazynu kluczy tajnych w środowiskach niezabezpieczonych.
+Wpisy tajne aplikacji są poświadczenia, które umożliwią niezawodnych aplikacji do wykonywania [uwierzytelnianie klienta](http://tools.ietf.org/html/rfc6749#section-2.3) z usługą Azure AD. W OAuth i OpenID Connect, wpis tajny aplikacji jest często nazywany `client_secret`. Za pomocą protokołu w wersji 2.0, każda aplikacja, która odbiera token zabezpieczający lokalizacji adresy sieci web (przy użyciu `https` schemat) należy użyć wpis tajny aplikacji do zidentyfikowania się do usługi Azure AD podczas realizacji tego tokenu zabezpieczającego. Ponadto natywnego klienta, który odbiera tokenów na urządzeniu z systemem będzie zabronione z klucz tajny aplikacji w celu przeprowadzenia uwierzytelniania klienta. Przechowywanie kluczy tajnych w środowiskach niezabezpieczone to zniechęcać.
 
-Każda aplikacja może zawierać dwa klucze tajne prawidłową aplikację w danym momencie. Dzięki utrzymywaniu dwa klucze tajne, masz możliwość wykonywania okresowe Przerzucanie klucza w środowisku całej aplikacji. Po migracji całości aplikacji do nowego klucza tajnego, możesz usunąć stary klucz tajny i zainicjowania obsługi kolejnego.
+Każda aplikacja może zawierać dwóch wpisów tajnych aplikacji prawidłowy w danym momencie. Dzięki przechowywaniu dwóch wpisów tajnych, masz możliwość wykonywania okresowe przerzucania klucza w środowisku całej aplikacji. Gdy zakończysz migrację całej aplikacji, aby nowe hasło, możesz usunąć stary klucz tajny i aprowizować nowe.
 
-W tej chwili tylko dwa typy aplikacji kluczy tajnych są dozwolone w portalu rejestracji aplikacji. Wybieranie **wygenerować nowe hasło** generuje i przechowuje wspólny klucz tajny w magazynie odpowiednich danych, którego można użyć w aplikacji. Wybieranie **wygenerować nową parę klucz** tworzy nowe pary kluczy publicznych i prywatnych, które mogą być pobierane i używany do uwierzytelniania klienta do usługi Azure AD. Wybieranie **przekazać klucza publicznego** umożliwia użycie własnego pary kluczy publiczny/prywatny.
-Należy przekazać certyfikat zawierający klucz publiczny.
+W tej chwili w portalu rejestracji aplikacji dozwolone są tylko dwa typy wpisów tajnych aplikacji. Wybieranie **wygenerować nowe hasło** generuje i wspólny klucz tajny są przechowywane w magazynie odpowiednich danych, który można użyć w aplikacji. Wybieranie **Generuj nową parę klucz** tworzy nową parę kluczy publiczny/prywatny, który można pobrać i używany do uwierzytelniania klientów do usługi Azure AD. Wybieranie **Przekaż klucz publiczny** pozwala na używanie własnych pary kluczy publiczny/prywatny.
+Musisz przekazać certyfikat, który zawiera klucz publiczny.
 
 ## <a name="profile"></a>Profil
-Profil części portalu rejestracji aplikacji można dostosować stronę logowania w aplikacji. W tej chwili można zmienić logowania strony aplikacji logo, warunków adres URL usługi i adres URL prywatności. Logo musi być przezroczystym obrazem o wymiarach 48 x 48 lub 50 x 50 pikseli w formacie pliku GIF, PNG lub JPEG o maksymalnym rozmiarze 15 KB. Spróbuj zmiana wartości i wyświetlanie wynikowego strony logowania!
+Sekcji profilu w portalu rejestracji aplikacji może służyć do dostosowania strony logowania w aplikacji. W tej chwili można zmieniać logowania strony aplikacji logo, warunków użytkowania adres URL usługi i adres URL zasad zachowania poufności informacji. Logo musi być przezroczystym obrazem o wymiarach 48 x 48 lub 50 x 50 pikseli w formacie pliku GIF, PNG lub JPEG o maksymalnym rozmiarze 15 KB. Spróbuj zmianę wartości i wyświetlanie wynikowych strony logowania!
 
-## <a name="live-sdk-support"></a>Obsługa w zestawie SDK na żywo
-Po włączeniu "Live SDK Obsługa" kluczy tajnych żadnych aplikacji, należy utworzyć będą udostępniane w obu programu Azure AD i magazyny danych Account firmy Microsoft. Pozwala to aplikacjom łączyć bezpośrednio z usługą Microsoft Account (login.live.com). Jeśli chcesz skompilować aplikację przy użyciu Account Microsoft bezpośrednio (a nie przy użyciu punktu końcowego v2.0 usługi Azure AD), należy upewnić się, czy włączona jest obsługa Live SDK.
+## <a name="live-sdk-support"></a>Zestaw Live SDK pomocy technicznej
+Po włączeniu "Zestaw SDK pomocy technicznej na żywo" do usługi Azure AD będą udostępniane żadnych wpisów tajnych aplikacji, możesz utworzyć i magazynów danych Account firmy Microsoft. Dzięki temu aplikację, aby łączyć bezpośrednio z usługi Microsoft Account (login.live.com). Jeśli chcesz tworzyć aplikacje przy użyciu Account Microsoft bezpośrednio (zamiast przy użyciu punktu końcowego v2.0 usługi Azure AD), należy upewnić się, czy włączona jest obsługa zestawu SDK na żywo.
 
-Wyłączenie obsługi zestaw Live SDK gwarantuje, że klucz tajny aplikacji tylko są zapisywane na dane usługi Azure AD przechowywania. Dane usługi Azure AD magazynu zawiera przepisy dotyczące korporacyjnej Zezwalaj, aby spełnić pewne standardy, takie jak FISMA zgodności. Jeśli zostanie włączona obsługa zestaw Live SDK, aplikacja może nie zapewnienia zgodności z niektóre z tymi standardami.
+Wyłączanie obsługi zestawu Live SDK zapewnia, że klucz tajny aplikacji wyłącznie zostanie zapisane dane usługi Azure AD przechowywania. Dane usługi Azure AD magazynu zawiera wykonawczych przeznaczonych dla przedsiębiorstw, umożliwiających spełnić pewne kryteria, takich jak zgodność ustawy FISMA. Jeśli zostanie włączona obsługa zestawu Live SDK, aplikacja może nie osiągnąć z niektórych z tych standardów.
 
-Jeśli planujesz wyłącznie stale używać punktu końcowego v2.0 usługi Azure AD, można wyłączyć bezpiecznie zestaw Live SDK pomocy technicznej.
+Jeśli planowane jest tylko użycie punktu końcowego v2.0 usługi Azure AD, można bezpiecznie wyłączyć Obsługa zestawu Live SDK.
 

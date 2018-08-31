@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować alerty zabezpieczeń | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla rozszerzenia Azure Privileged Identity Management.
+title: Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622157"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190395"
 ---
-# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak skonfigurować alerty zabezpieczeń w usłudze Azure AD Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 Azure Privileged Identity Management (PIM) generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
 
@@ -65,4 +65,6 @@ Ten alert wyzwalacze, jeśli użytkownik przejdzie określoną ilość czasu, be
 * **Liczba dni**: Określ liczbę dni z zakresu od 0 do 100, które użytkownik może go bez uaktywniania roli.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Wymagaj uwierzytelniania wieloskładnikowego dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-require-mfa.md)

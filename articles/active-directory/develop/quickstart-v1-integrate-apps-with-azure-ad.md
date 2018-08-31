@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: luleon
-ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.reviewer: celested
+ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592207"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188244"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrowanie aplikacji z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -95,12 +95,12 @@ Poniższe kroki pokazują, jak zgody środowisko działa dla deweloperów aplika
 
 5. Po użytkownik udziela zgody, Kod autoryzacji jest zwracana do aplikacji jest zrealizowany uzyskiwanie tokenu dostępu i token odświeżania. Aby uzyskać więcej informacji na temat tego przepływu, zobacz [sieci web aplikacji sieci Web interfejsu API sekcji scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md#web-application-to-web-api).
 
-6. Jako administrator mogą również wyrazić zgodę na delegowane uprawnienia aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Z **ustawienia** stronie aplikacji, kliknij przycisk **wymagane uprawnienia** i kliknij pozycję **Udziel uprawnień** przycisku. 
+6. Jako administrator mogą również wyrazić zgodę na delegowane uprawnienia aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Z **ustawienia** stronie aplikacji, kliknij przycisk **wymagane uprawnienia** i kliknij pozycję **udzielić uprawnień** przycisku. 
 
   ![Przyznawanie uprawnień dla zgody administratora jawne](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
     
   > [!NOTE]
-  > Udzielanie jawnej zgody, za pomocą **Udziel uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym razie aplikacja ulegnie awarii, gdy żąda tokenu dostępu. 
+  > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym razie aplikacja ulegnie awarii, gdy żąda tokenu dostępu. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurowanie aplikacji klienckiej dostęp do interfejsów API sieci web
 Aby dla sieci web/poufnych aplikacji klienckiej móc uczestniczyć w przepływie przyznawania autoryzacji, który wymaga uwierzytelniania (i uzyskania tokenu dostępu) jego ustanowienia bezpiecznych poświadczeń. Domyślną metodą uwierzytelniania obsługiwane przez witryny Azure portal jest identyfikator klienta i klucz tajny. W tej sekcji opisano czynności konfiguracyjne wymagane jest podanie klucza tajnego przy użyciu poświadczeń klienta.
@@ -112,7 +112,7 @@ Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jes
 - Delegowane uprawnienia: Twoja aplikacja kliencka potrzebuje dostępu do sieci web interfejsu API zalogowanego użytkownika, ale z dostęp ograniczony przez wybrane uprawnienie. Tego rodzaju uprawnień mogą być udzielane przez użytkownika, chyba że uprawnień wymaga zgody administratora. 
 
   > [!NOTE]
-  > Dodawanie uprawnienia delegowane do aplikacji nie powoduje automatycznego przyznania wyrażania zgody dla użytkowników w dzierżawie. Użytkownicy muszą nadal ręcznie wyrazić zgodę dodano uprawnienia delegowanej w czasie wykonywania, chyba że administrator kliknie **Udziel uprawnień** przycisk **wymagane uprawnienia** sekcji Strona aplikacji w witrynie Azure portal. 
+  > Dodawanie uprawnienia delegowane do aplikacji nie powoduje automatycznego przyznania wyrażania zgody dla użytkowników w dzierżawie. Użytkownicy muszą wyrazić zgodę nadal ręcznie dodano uprawnienia delegowanej w czasie wykonywania, chyba że administrator nada zgody w imieniu wszystkich użytkowników.
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Aby dodać poświadczenia aplikacji lub uprawnienia dostępu do interfejsów API sieci web
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -121,13 +121,15 @@ Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jes
 
    ![Aktualizowanie rejestracji aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
-4. Nastąpi przekierowanie do strony głównej rejestracji aplikacji, która otwiera **ustawienia** strony aplikacji. Aby dodać klucz tajny dla aplikacji sieci web poświadczeń:
+4. Nastąpi przekierowanie do strony głównej rejestracji aplikacji, która otwiera **ustawienia** strony aplikacji. Aby dodać poświadczenia dla aplikacji sieci web:
   - Kliknij przycisk **klucze** sekcji na **ustawienia** strony. 
-  - Dodaj opis klucza.
-  - Wybierz jednego lub dwóch lat czasu trwania.
-  - Kliknij pozycję **Zapisz**. Kolumna najdalej z prawej strony będzie zawierać wartości klucza, po zapisaniu zmian w konfiguracji. **Pamiętaj skopiować klucz** do użycia w kodzie aplikacji klienta, ponieważ nie jest dostępny po opuścisz tę stronę.
-
-  ![Aktualizowanie rejestracji aplikacji — klucze](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-keys.png)
+  - Aby dodać certyfikat:
+    - Wybierz **Przekaż klucz publiczny**.
+    - Wybierz plik, który chcesz przekazać. Musi być jednym z następujących typów plików: cer, PEM lub CRT.
+  - Dodanie hasła:
+    - Dodaj opis klucza.
+    - Wybierz czas trwania.
+    - Kliknij pozycję **Zapisz**. Kolumna najdalej z prawej strony będzie zawierać wartości klucza, po zapisaniu zmian w konfiguracji. **Pamiętaj skopiować klucz** do użycia w kodzie aplikacji klienta, ponieważ nie jest dostępny po opuścisz tę stronę.
 
 5. Aby dodać uprawnienia dostępu do zasobu interfejsy API z klienta
   - Kliknij przycisk **wymagane uprawnienia** sekcji na **ustawienia** strony. 
@@ -141,11 +143,6 @@ Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jes
   ![Aktualizowanie rejestracji aplikacji — perms uprawnień](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Po zakończeniu kliknij przycisk **wybierz** znajdujący się na **Włącz dostęp za pomocą** strony, a następnie **gotowe** znajdujący się na **dostępu Dodaj interfejs API** strony. Nastąpi powrót do **wymagane uprawnienia** strony, w którym nowy zasób zostanie dodany do listy interfejsów API.
-
-  > [!NOTE]
-  > Klikając **gotowe** przycisku automatycznie ustawia uprawnienia dla aplikacji w katalogu, w oparciu o uprawnienia do innych aplikacji, które można skonfigurować. Można wyświetlić te uprawnienia aplikacji, analizując aplikacji **ustawienia** strony.
-  > 
-  > 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurowanie aplikacji zasobów, aby udostępnić interfejsów API sieci web
 

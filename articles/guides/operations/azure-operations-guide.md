@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124454"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190429"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -173,7 +173,7 @@ Program Azure PowerShell to zestaw modułów, które dostarczają poleceń cmdle
 
 #### <a name="azure-command-line-interface"></a>interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure jest narzędziem, które służy do tworzenia, zarządzania i usunąć zasoby platformy Azure z poziomu wiersza polecenia. Interfejs wiersza polecenia platformy Azure jest dostępna dla systemów Linux, Mac OS X i Windows. Aby uzyskać więcej informacji i szczegóły techniczne, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli.md).
+Interfejs wiersza polecenia platformy Azure jest narzędziem, które służy do tworzenia, zarządzania i usunąć zasoby platformy Azure z poziomu wiersza polecenia. Interfejs wiersza polecenia platformy Azure jest dostępna dla systemów Linux, Mac OS X i Windows. Aby uzyskać więcej informacji i szczegóły techniczne, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>Interfejsy API REST
 
@@ -499,5 +499,5 @@ Możesz pomóc bezpiecznych sieci wirtualnych platformy Azure przy użyciu sieci
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Utwórz Windows maszyny Wirtualnej](/virtual-machines/windows/quick-create-portal.md)
+- [Utwórz Windows maszyny Wirtualnej](../../virtual-machines/windows/quick-create-portal.md)
 - [Tworzenie maszyny wirtualnej z systemem Linux](../../virtual-machines/linux/quick-create-portal.md)

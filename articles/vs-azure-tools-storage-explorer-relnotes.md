@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127964"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190525"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
-Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.2.0 lub nowszej wersji, a także informacje o wersji dla wcześniejszych wersji.
+Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.1 wersji, a także informacje o wersji dla wcześniejszych wersji.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux.
 
 ## <a name="version-141"></a>Wersja 1.4.1
 08/28/2018 r.
 
-### <a name="download-azure-storage-explorer-130"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.3.0
-- [Usługa Azure Storage Explorer 1.3.0 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Eksplorator usługi Azure Storage 1.3.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Eksplorator usługi Azure Storage 1.3.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-141"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.4.1
+- [Usługa Azure Storage Explorer 1.4.1 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.4.1 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.4.1 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Poprawki
 * Przy pierwszym uruchomieniu programu Storage Explorer nie mógł wygenerować klucz używany do szyfrowania poufnych danych. Może to spowodować problemy, korzystając z paska szybki dostęp i dołączanie zasobów. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)

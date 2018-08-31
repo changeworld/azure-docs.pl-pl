@@ -1,6 +1,6 @@
 ---
-title: Wykonywanie przeglądu dostępu w Privileged Identity Management dla zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano, jak przeprowadzić przegląd dostępu w usłudze PIM dla zasobów platformy Azure, zgodnie z rolą zasobów.
+title: Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić przegląd dostępu role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617228"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189722"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Wykonywanie przeglądu dostępu w usłudze PIM, zgodnie z rolą zasobów
+# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM
 Privileged Identity Management (PIM) dla zasobów platformy Azure upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
 
 Jeśli masz przypisaną rolę administracyjną, administratorem ról uprzywilejowanych Twoja organizacja może poprosić o regularnie upewnij się, nadal potrzebujesz tej roli dla zadania. Możesz otrzymać wiadomość e-mail zawierającą łącze lub możesz przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby wykonać własnym przeglądu przypisane role.
@@ -50,3 +50,7 @@ Wykonaj następujące kroki, aby znaleźć i zakończyć Przegląd dostępu:
 4. Wybierz opcję **zatwierdzić** lub **Odmów**. W **zapewnia Przyczyna pole**, może być konieczne w celu uwzględnienia przyczynę swojej decyzji.
 
    ![Strona szczegółów zrzut ekranu Przegląd](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
