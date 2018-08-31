@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057386"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287667"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -71,7 +71,7 @@ Wystąpienie zarządzane jest dostępna w dwóch warstwach usługi:
 - **Ogólnego przeznaczenia**: przeznaczone dla aplikacji za pomocą wydajności typowe wymagania dotyczące opóźnień we/wy.
 - **Krytyczne dla działania firmy**: przeznaczone dla aplikacji za pomocą niskie wymagania dotyczące opóźnień We/Wy i minimalny wpływ podstawowych operacji konserwacji na obciążenie pracą.
 
-Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na niezależne wybierz rozmiar magazynu i moc obliczeniową. 
+Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na niezależne wybierz rozmiar magazynu i moc obliczeniową. Aby uzyskać więcej informacji na temat architektury wysokiej dostępności usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
 > Zmiana warstwie usługi, z ogólnego przeznaczenia na krytyczne dla działania firmy lub odwrotnie nie jest obsługiwana w publicznej wersji zapoznawczej. Użytkownik chce migrować swoje bazy danych do wystąpienia w warstwie innej usługi, można tworzyć nowe wystąpienie, Przywróć bazy danych przy użyciu punktu w czasie przywracania z oryginalnego wystąpienia i następnie upuść oryginalne wystąpienie, jeśli nie jest już potrzebna. 
@@ -97,7 +97,7 @@ Poniższa lista zawiera opis kluczowych charakterystyk warstwy usług ogólnego 
 | Liczba plików danych (wiersze) na bazę danych | Wiele | 
 | Liczba plików dziennika (dziennik) na bazę danych | 1 | 
 | Zarządzane automatycznych kopii zapasowych | Yes |
-| WYSOKA DOSTĘPNOŚĆ | Na podstawie magazynu zdalnego i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| WYSOKA DOSTĘPNOŚĆ | Dane przechowywane w usłudze Azure Storage i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
 | Automatyczne stosowanie poprawek | Yes |
 | Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
@@ -131,7 +131,7 @@ Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania 
 | Liczba plików danych (wiersze) na bazę danych | Wiele | 
 | Liczba plików dziennika (dziennik) na bazę danych | 1 | 
 | Zarządzane automatycznych kopii zapasowych | Yes |
-| WYSOKA DOSTĘPNOŚĆ | Na podstawie [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| WYSOKA DOSTĘPNOŚĆ | Dane przechowywane na lokalnych dyskach SSD i użyj [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
 | Automatyczne stosowanie poprawek | Yes |
 | Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
