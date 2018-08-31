@@ -1,6 +1,6 @@
 ---
-title: Kreator zabezpieczeń usługi Azure AD Privileged Identity Management
-description: Użyj rozszerzenia usługi Azure Active Directory Privileged Identity Management po raz pierwszy zostanie wyświetlone za pomocą Kreatora zabezpieczeń. W tym artykule opisano kroki dotyczące korzystania z kreatora.
+title: Kreator zabezpieczeń w usłudze PIM — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano Kreator zabezpieczeń, która pojawia się po raz pierwszy używasz usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617010"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189083"
 ---
-# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management 
+# <a name="security-wizard-in-pim"></a>Kreator zabezpieczeń w usłudze PIM
 Jeśli jesteś pierwszą osobą do uruchamiania usługi Azure Privileged Identity Management (PIM) dla Twojej organizacji, zobaczysz za pomocą kreatora. Kreator pomoże Ci zrozumieć zagrożenia dla bezpieczeństwa uprzywilejowanych tożsamości oraz jak używać aplikacji PIM, aby ograniczyć te zagrożenia. Nie musisz wprowadzać żadnych zmian istniejących przypisań ról w kreatorze, aby zrobić to później.
 
 ## <a name="what-to-expect"></a>Czego oczekiwać
@@ -40,5 +40,7 @@ Po dokonaniu zmiany kreatora będą już widoczne. Następnym razem użytkownik 
 * Jeśli chcesz zapewnić większą liczbę użytkowników dostęp umożliwiający zarządzanie usługą PIM, Dowiedz się więcej o [udzielanie dostępu do zarządzania w usłudze PIM](pim-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
+- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Udzielanie dostępu do innych administratorów do zarządzania usługi PIM](pim-how-to-give-access-to-pim.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 9ad36d37fef4c1ee05e31098b145b0264b6440ca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 38b59c28096b23a22b216158d9e945a2881a4f41
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126444"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189262"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 
@@ -64,7 +64,7 @@ Omówienie sposobu automatycznego dostrajania działa i typowe scenariusze użyc
 
 Dostępne są następujące opcje dostrajania automatycznego dostępnych w usłudze Azure SQL Database:
  1. **CREATE INDEX** — identyfikuje indeksy, które może poprawić wydajność przetwarzania obciążenia, tworzy indeksy i automatycznie sprawdza, czy wydajność kwerend uległa poprawie.
- 2. **Instrukcja DROP INDEX** — identyfikuje nadmiarowe i zduplikowane indeksy, codziennie i indeksy, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że ta opcja nie jest zgodny z aplikacjami przy użyciu wskazówek przełączanie i indeksu partycji.
+ 2. **Instrukcja DROP INDEX** — identyfikuje indeksy nadmiarowy i zduplikowane raz dziennie, z wyjątkiem indeksy unikatowe i indeksy, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że ta opcja nie jest zgodny z aplikacjami przy użyciu wskazówek przełączanie i indeksu partycji.
  3. **WYMUŚ OSTATNI dobry PLAN** — identyfikuje zapytań SQL za pomocą planu wykonania, jest mniejsza niż poprzednie dobrego planu, która wysyła kwerendę za pomocą ostatni znany dobry plan zamiast pogorszonej planu.
 
 Automatyczne dostrajanie identyfikuje **CREATE INDEX**, **DROP INDEX**, i **WYMUŚ OSTATNI dobry PLAN** zaleceń, które można zoptymalizować wydajność bazy danych i przedstawia je w [Witryny azure portal](sql-database-advisor-portal.md)i udostępnia je za pośrednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).

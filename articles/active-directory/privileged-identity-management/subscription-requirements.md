@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management subskrypcji — Azure | Dokumentacja firmy Microsoft
-description: Wyjaśnia, subskrypcję i wymaganiach dotyczących licencjonowania dla i zarządzanie nimi za pomocą usługi Azure AD Privileged Identity Management w ramach dzierżawy
+title: Wymagania dotyczące subskrypcji za pomocą usługi PIM — platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, subskrypcji i licencjonowania wymagania dotyczące korzystania z usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617073"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190614"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania dotyczące subskrypcji usługi Azure Active Directory Privileged Identity Management
+# <a name="subscription-requirements-to-use-pim"></a>Wymagania dotyczące subskrypcji, aby używać aplikacji PIM
 
 Usługa Azure AD Privileged Identity Management jest dostępna w ramach usługi Azure AD w wersji Premium P2. Aby uzyskać więcej informacji na temat innych funkcji P2 i porównać ją w warstwie Premium P1, zobacz [usługi Azure Active Directory w wersjach](../active-directory-editions.md).
 
@@ -61,5 +61,5 @@ Po wygaśnięciu subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](pim-getting-started.md)
-- [Role w usłudze Azure AD Privileged Identity Management](pim-roles.md)
+- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
+- [Usługa Azure ról katalogu usługi AD, którymi można zarządzać w usłudze PIM](pim-roles.md)

@@ -1,6 +1,6 @@
 ---
-title: Jak przeprowadzić przegląd dostępu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić przegląd przy użyciu aplikacji Azure Privileged Identity Management.
+title: Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić przegląd dostępu usługi ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c1cdecb0ce47e72550f430d2b87b3e6cc4eb176
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b4cffbd1ce240e4792fba84581dafb1933c71a62
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623038"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188555"
 ---
-# <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak przeprowadzić przegląd dostępu w usłudze Azure AD Privileged Identity Management
+# <a name="perform-an-access-review-of-my-azure-ad-directory-roles-in-pim"></a>Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM
 Usługa Azure Active Directory (AD) Privileged Identity Management upraszcza sposób przedsiębiorstw Zarządzanie uprzywilejowanego dostępu do zasobów w usłudze Azure AD i innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune.  
 
 Jeśli masz przypisaną rolę administracyjną, administratorem ról uprzywilejowanych Twoja organizacja może poprosić o regularnie upewnij się, nadal potrzebujesz tej roli dla zadania. Możesz otrzymać wiadomość e-mail zawierającą łącze lub możesz przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby wykonać własnym przeglądu przypisane role.
@@ -47,4 +47,5 @@ Wykonaj następujące kroki, aby znaleźć i zakończyć Przegląd dostępu:
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)
