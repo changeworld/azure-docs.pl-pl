@@ -1,116 +1,109 @@
 ---
-title: Przepływy pracy dotyczące konfigurowania obwodu usługi ExpressRoute | Dokumentacja firmy Microsoft
-description: Ta strona przeprowadzi Cię przez przepływy pracy dotyczące konfigurowania obwodu ExpressRoute i komunikacji równorzędnych
-documentationcenter: na
+title: Przepływy pracy do skonfigurowania obwodu usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
+description: Ta strona przeprowadzi Cię przez przepływy pracy do skonfigurowania obwodu usługi ExpressRoute i połączeń komunikacji równorzędnej
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23850777"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301042"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodu
-Ta strona przeprowadzi Cię przez usługę routing przepływy pracy configuration na wysokim poziomie i inicjowania obsługi administracyjnej.
+Ta strona przeprowadzi Cię przez usługę aprowizacji i routing konfiguracji przepływów pracy na wysokim poziomie.
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
-Poniższa ilustracja i odpowiadające jej kroki Pokaż zadania, które należy wykonać, aby przypisać obwodu usługi ExpressRoute udostępniane na trasie. 
+Poniższa ilustracja i odpowiadające jej kroki pokazują zadania, które należy wykonać, aby mogła mieć obwodu usługi ExpressRoute zainicjowanego end-to-end. 
 
-1. Za pomocą programu PowerShell skonfigurować obwód usługi ExpressRoute. Postępuj zgodnie z instrukcjami [obwody tworzenia usługi ExpressRoute](expressroute-howto-circuit-classic.md) artykułu, aby uzyskać więcej informacji.
-2. Kolejność łączność z dostawcy usług. Ten proces może być różna. Aby uzyskać więcej informacji o sposobie kolejność łączności, skontaktuj się z dostawcą połączenia.
-3. Upewnij się, że obwód zainicjowano pomyślnie sprawdzając stan za pomocą programu PowerShell inicjowania obwód usługi expressroute. 
-4. Konfigurowanie domen routingu. Jeśli dostawca połączenia zarządza warstwy 3, firma chce skonfigurować routing dla obwodu. Jeśli dostawca połączenia udostępnia tylko usługi warstwy 2, należy skonfigurować routing według wskazówek opisanych w [wymagania dotyczące routingu](expressroute-routing.md) i [konfiguracji routingu](expressroute-howto-routing-classic.md) stron.
+1. Konfigurowanie obwodu usługi ExpressRoute przy użyciu programu PowerShell. Postępuj zgodnie z instrukcjami w [obwodów usługi ExpressRoute z tworzenia](expressroute-howto-circuit-classic.md) artykuł, aby uzyskać więcej informacji.
+2. Łączność kolejność od dostawcy usług. Ten proces różni się. Skontaktuj się z dostawcą połączenia, aby uzyskać więcej informacji na temat kolejności łączności.
+3. Upewnij się, że obwód zainicjowano pomyślnie, sprawdzając stan za pomocą programu PowerShell inicjowania obsługi obwodu usługi ExpressRoute. 
+4. Konfigurowanie domen routingu. Jeśli dostawca połączenia zarządza warstwy 3, firma chce skonfigurować routing dla obwodu. Jeśli dostawca połączenia oferuje tylko usługi warstwy 2, należy skonfigurować routing na wytycznych określonych w [wymagania dotyczące routingu](expressroute-routing.md) i [konfiguracji routingu](expressroute-howto-routing-classic.md) stron.
    
-   * Włącz Azure prywatnej komunikacji równorzędnej — należy włączyć komunikacji równorzędnej można nawiązać połączenia z maszynami wirtualnymi / wdrożone w ramach sieci wirtualnej usługi w chmurze.
-   * Włącz Azure publicznej komunikacji równorzędnej — należy włączyć publicznej komunikacji równorzędnej platformy Azure, jeśli chcesz połączyć się z usługami platformy Azure hostowanej na publiczne adresy IP. Jest to wymagane, aby uzyskać dostęp do zasobów platformy Azure, jeśli chcesz włączyć routing domyślny dla platformy Azure prywatnej komunikacji równorzędnej.
-   * Włączanie komunikacji równorzędnej firmy Microsoft — należy włączyć to z dostępem do usługi Office 365 i Dynamics 365. 
+   * Włączanie prywatnej komunikacji równorzędnej Azure — Włącz tę komunikację równorzędną można nawiązać połączenie z maszynami wirtualnymi / wdrożonego w ramach sieci wirtualnych usługi w chmurze.
+
+   * Włączenie komunikacji równorzędnej firmy Microsoft — Włącz to dostęp do usługi Office 365 i Dynamics 365. Ponadto wszystkie usługi PaaS platformy Azure są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft.
      
      > [!IMPORTANT]
-     > Należy upewnić się, że używasz oddzielnego serwera proxy / krawędzi połączenia z firmą Microsoft w niż można użyć w Internecie. Zarówno ExpressRoute, jak i z Internetu przy użyciu tej samej granicy powoduje asymetrycznego routingu i powodować awarie łączność w sieci.
+     > Upewnij się, że używasz serwera proxy oddzielne / urządzeniami brzegowymi w celu łączenia z firmą Microsoft w niż ta, można użyć do korzystania z Internetu. Przy użyciu tej samej granicy dla usługi ExpressRoute oraz sieci Internet będzie powodować routingu asymetrycznego i powodować awarie łączności dla sieci.
      > 
      > 
      
      ![](./media/expressroute-workflows/routing-workflow.png)
-5. Łączenie sieci wirtualne obwody usługi ExpressRoute — sieci wirtualne można połączyć z obwodem usługi ExpressRoute. Postępuj zgodnie z instrukcjami [połączyć sieci wirtualnych](expressroute-howto-linkvnet-arm.md) do obwodu. Te sieci wirtualnych może być w tej samej subskrypcji platformy Azure jako obwodu ExpressRoute lub może być w innej subskrypcji.
+5. Łączenie sieci wirtualnych obwodów usługi ExpressRoute — można połączyć sieci wirtualnych na obwód usługi ExpressRoute. Postępuj zgodnie z instrukcjami [połączyć sieci wirtualne](expressroute-howto-linkvnet-arm.md) do obwodu. Te sieci wirtualne mogą być w tej samej subskrypcji platformy Azure jako obwód usługi ExpressRoute lub mogą znajdować się w innej subskrypcji.
 
-## <a name="expressroute-circuit-provisioning-states"></a>Inicjowanie obsługi administracyjnej stanów obwodu usługi expressroute
+## <a name="expressroute-circuit-provisioning-states"></a>Obwód usługi ExpressRoute w Stanach aprowizacji
 Każdy obwód usługi ExpressRoute ma dwa stany:
 
 * Stan inicjowania obsługi administracyjnej dostawcy usługi
 * Stan
 
-Stan reprezentuje stan inicjowania obsługi administracyjnej firmy Microsoft. Ta właściwość jest ustawiony na włączone po utworzeniu obwodu usługi Expressroute
+Stan reprezentuje stan inicjowania obsługi administracyjnej firmy Microsoft. Ta właściwość jest ustawiony na włączone, po utworzeniu obwodu usługi Expressroute
 
-Stan inicjowania obsługi administracyjnej dostawcy łączności reprezentuje stan po stronie dostawcy łączności. Może to być *NotProvisioned*, *inicjowania obsługi administracyjnej*, lub *obsługiwane administracyjnie*. Obwód usługi expressroute musi być w stanie obsługiwane administracyjnie dla Ciebie można było go używać.
+Stan inicjowania obsługi administracyjnej dostawcy łączności reprezentuje stan po stronie dostawcy połączenia. Może to być *NotProvisioned*, *aprowizacji*, lub *Aprowizowana*. Obwód usługi ExpressRoute musi być w stanie Aprowizowana, aby można było go używać.
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>Możliwe stany obwodu usługi ExpressRoute
-Ta sekcja zawiera się możliwe stany obwodu usługi ExpressRoute.
+W tej sekcji przedstawiono się możliwe stany dla obwodu usługi ExpressRoute.
 
 **W czasie tworzenia**
 
-Zobaczysz obwodu usługi expressroute w następującym stanie zaraz po uruchomieniu polecenia cmdlet programu PowerShell, aby utworzyć obwodu usługi expressroute.
+Obwód usługi ExpressRoute w następującym stanie zostaną wyświetlone, zaraz po uruchomieniu polecenia cmdlet programu PowerShell, aby utworzyć obwód usługi ExpressRoute.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-**Gdy dostawca połączenia Trwa inicjowanie obsługi administracyjnej obwodu**
+**Gdy trwa inicjowanie obsługi administracyjnej obwodu dostawcy łączności**
 
-Zobaczysz obwodu usługi expressroute w następującym stanie natychmiast po klucz usługi są przekazywane do dostawcy łączności i uruchomienia procesu inicjowania obsługi administracyjnej.
+Obwód usługi ExpressRoute w następującym stanie zostanie wyświetlony natychmiast przekazać klucz usługi do dostawcy łączności i uruchomienia procesu aprowizacji.
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-**Po zakończeniu procesu udostępniania dostawcy łączności**
+**Po zakończeniu procesu aprowizacji dostawcy łączności**
 
-Zostanie wyświetlone obwodu usługi expressroute w następującym stanie, jak dostawca połączenia zostało ukończone proces inicjowania obsługi administracyjnej.
+Obwód usługi ExpressRoute w następującym stanie zostaną wyświetlone tak szybko, jak dostawca połączenia zostało zakończone, proces inicjowania obsługi.
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
-Zainicjowano obsługę administracyjną i włączone jest tylko stan obwodu może być w dla Ciebie można było go używać. Jeśli używasz dostawcy warstwy 2, można skonfigurować routing dla obwodu tylko wtedy, gdy znajduje się w tym stanie.
+Elastycznie i włączone jest tylko stan obwodu mogą znajdować się w dla Ciebie można było go używać. Jeśli używasz dostawcy warstwy 2, można skonfigurować routing dla obwodu tylko wtedy, gdy znajduje się w tym stanie.
 
-**Gdy dostawca połączenia jest anulowania obsługi obwodu**
+**Jeśli dostawca połączenia anuluje obwodu**
 
-Jeśli żądanego dostawcy usług w anulowanie zastrzeżenia obwodu ExpressRoute, zostanie wyświetlony obwodu ustawioną następującym stanie po zakończeniu procesu anulowania obsługi dostawcy usług.
+Jeśli zażądano dostawcy usług, aby anulować aprowizację obwodu usługi ExpressRoute, zobaczysz obwodu, ustaw następujący stan po zakończeniu dostawca usług ma proces anulowania aprowizacji.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-Można ją włączyć ponownie, jeśli potrzebne lub uruchamiania poleceń cmdlet programu PowerShell, można usunąć obwodu.  
+Można ponownie włączyć, jeśli potrzebne lub uruchamiania poleceń cmdlet programu PowerShell, można usunąć obwodu.  
 
 > [!IMPORTANT]
-> Po uruchomieniu polecenia cmdlet programu PowerShell, aby usunąć obwód podczas inicjowania obsługi administracyjnej ServiceProviderProvisioningState lub obsługiwane administracyjnie operacja zakończy się niepowodzeniem. We współpracy z dostawcą połączenia, aby najpierw anulowanie zastrzeżenia obwodu ExpressRoute, a następnie usuń obwodu. Firma Microsoft będzie naliczać opłaty obwód, dopóki nie zostanie uruchomione polecenie cmdlet programu PowerShell, można usunąć obwodu.
+> Po uruchomieniu polecenia cmdlet programu PowerShell, aby usunąć obwód podczas inicjowania obsługi administracyjnej ServiceProviderProvisioningState lub Aprowizowana, operacja zakończy się niepowodzeniem. Skontaktuj się z dostawcą połączenia, aby najpierw anulować aprowizację obwodu usługi ExpressRoute, a następnie usuń obwód. Firma Microsoft będzie obciążana płatnościami za obwodu, dopóki nie zostanie uruchomione polecenie cmdlet programu PowerShell, można usunąć obwodu.
 > 
 > 
 
 ## <a name="routing-session-configuration-state"></a>Stan konfiguracji sesji routingu
-BGP stan inicjowania obsługi pozwala sprawdzić, czy włączono sesję protokołu BGP na krawędzi firmy Microsoft. Stan musi być włączona dla Ciebie można było użyć komunikację równorzędną.
+Stan inicjowania obsługi protokołu BGP informuje o tym, gdy sesja protokołu BGP został włączony w przeglądarce Microsoft edge. Stan musi być włączona dla Ciebie można było używać komunikacji równorzędnej.
 
-Należy sprawdzić stan sesji protokołu BGP, szczególnie w przypadku komunikacji równorzędnej firmy Microsoft. Oprócz BGP stan inicjowania obsługi, istnieje inny stan, o nazwie *stanu publiczne prefiksy anonsowane*. Stan anonsowany prefiksów publicznych musi być w *skonfigurowane* stanu, zarówno na można się sesji protokołu BGP i routingu do pracy na trasie. 
+Należy sprawdzić stan sesji protokołu BGP, szczególnie w przypadku komunikacji równorzędnej firmy Microsoft. Oprócz protokołu BGP, stan inicjowania obsługi, jest inny stan, o nazwie *stanu publiczne prefiksy anonsowane*. Stan anonsowane prefiksy publiczne musi znajdować się w *skonfigurowane* stanu, zarówno dla sesji protokołu BGP rozpocząć i routing do pracy end-to-end. 
 
-Jeśli ustawiono stan anonsowany prefiks publicznego *weryfikacji potrzebne* stanu sesji BGP nie jest włączone, ponieważ anonsowane prefiksy nie odpowiada numerowi AS w żadnym z rejestrów routingu. 
+Jeśli ustawiono stan anonsowanego prefiksu publicznych *konieczna weryfikacja* stanu sesji protokołu BGP nie jest włączone, ponieważ prefiksy anonsowane niezgodny numer AS w żadnym z rejestrów routingu. 
 
 > [!IMPORTANT]
-> Jeśli stan anonsowane prefiksy publiczny jest *weryfikowanie ręczne* stanu, należy otworzyć bilet pomocy technicznej z [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) i udowodnić, że posiadanych adresów IP anonsowane wraz z programem skojarzone z nimi numery systemu autonomicznego.
+> Jeśli stan anonsowane prefiksy publiczne *ręcznej weryfikacji* stanu, należy otworzyć bilet pomocy technicznej za pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) i przedstawić dowody, że jesteś właścicielem, adresy IP anonsowane wraz z programem skojarzone z nimi numery systemu autonomicznego.
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Skonfiguruj połączenie usługi ExpressRoute.
   
   * [Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)](expressroute-howto-circuit-arm.md)

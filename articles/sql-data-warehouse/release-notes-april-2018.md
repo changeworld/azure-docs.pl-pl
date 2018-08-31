@@ -3,19 +3,19 @@ title: Usługa Azure SQL Data Warehouse — informacje o wersji z kwietnia 2018 
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: twounder
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: aabda90deb9634ef456f1006bccb69375f63fc97
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: f1a3b99d40435bf2b7e33f81a43372f304fbb856
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39323997"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287007"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Kwiecień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w kwietniu 2018.
@@ -62,7 +62,7 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 * [Historie sukcesu klientów]
 * [Blogi]
 * [Żądania funkcji]
-* [Wideo]
+* [Filmy wideo]
 * [Blogi zespołu doradczego klientów]
 * [Forum Stack Overflow]
 * [Twitter]
@@ -74,6 +74,6 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md

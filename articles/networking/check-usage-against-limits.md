@@ -1,6 +1,6 @@
 ---
-title: Sprawdź użycie zasobów Azure limitów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i Sprawdź użycie zasobów platformy Azure przed limity subskrypcji platformy Azure.
+title: Sprawdź użycie zasobów platformy Azure względem limity | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak sprawdzić wykorzystanie zasobów platformy Azure względem limity subskrypcji platformy Azure.
 services: networking
 documentationcenter: na
 author: jimdial
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0c51f48576c665fbe67f2f18198d6422fe872895
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 30b0c1bdd23858b5cc6224deb2698b5f180359eb
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811750"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288234"
 ---
-# <a name="check-resource-usage-against-limits"></a>Sprawdź użycie zasobów ograniczeń
+# <a name="check-resource-usage-against-limits"></a>Sprawdź użycie zasobów limitów
 
-W tym artykule opisano sposób orientację w liczbie każdy typ zasobu sieciowego wdrożonej w Twojej subskrypcji i co Twoje [limity subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) są. Możliwość wyświetlania użycia zasobów limitów jest przydatne do śledzenia bieżącego użycia i planowanie do użytku w przyszłości. Można użyć [Azure Portal](#azure-portal), [PowerShell](#powershell), lub [interfejsu wiersza polecenia Azure](#azure-cli) celu śledzenie użycia.
+W tym artykule dowiesz się, jak wyświetlić liczbę każdego typu zasobu sieciowego wdrożoną w Twojej subskrypcji i co Twoje [limity subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) są. Możliwość wyświetlenia wykorzystania zasobów względem limity jest przydatne do śledzenia bieżącego użycia i planowanie do użytku w przyszłości. Możesz użyć [witryny Azure Portal](#azure-portal), [PowerShell](#powershell), lub [wiersza polecenia platformy Azure](#azure-cli) śledzenie użycia.
 
 ## <a name="azure-portal"></a>Azure Portal
 
 1. Zaloguj się do platformy Azure [portal](https://portal.azure.com).
-2. W górnego, lewego rogu portalu Azure, wybierz **wszystkie usługi**.
-3. Wprowadź *subskrypcje* w **filtru** pole. Gdy **subskrypcje** pojawia się w wynikach wyszukiwania, wybierz go.
-4. Wybierz nazwę subskrypcji, który chcesz wyświetlić informacje o sposobie użycia.
-5. W obszarze **ustawienia**, wybierz pozycję **użycia i przydział**.
+2. Górnego, lewego rogu witryny Azure portal, wybierz **wszystkich usług**.
+3. Wprowadź *subskrypcje* w **filtru** pole. Gdy **subskrypcje** pojawi się w wynikach wyszukiwania, wybierz ją.
+4. Wybierz nazwę subskrypcji, którą chcesz wyświetlić informacje o sposobie użycia.
+5. W obszarze **ustawienia**, wybierz opcję **użycia i przydziałów**.
 6. Możesz wybrać następujące opcje:
-    - **Typy zasobów**: Wybierz wszystkich typów zasobów lub wybierz określonych typów zasobów, które chcesz wyświetlić.
-    - **Dostawców**: Wybierz wszystkich dostawców zasobów lub wybierz **obliczeniowe**, **sieci**, lub **magazynu**.
-    - **Lokalizacje**: Wybierz wszystkich lokalizacji platformy Azure, lub wybierz określone lokalizacje.
-    - Można wybrać, aby wyświetlić wszystkie zasoby lub tylko do zasobów, której wdrażana jest co najmniej jeden.
+    - **Typy zasobów**: Możesz wybrać wszystkie typy zasobów, lub zaznacz konkretne typy zasobów, którą chcesz wyświetlić.
+    - **Dostawców**: Możesz wybrać wszystkich dostawców zasobów lub wybierz **obliczenia**, **sieci**, lub **magazynu**.
+    - **Lokalizacje**: Możesz wybrać wszystkich lokalizacji platformy Azure lub wybrać określone lokalizacje.
+    - Możesz wybrać, aby wyświetlić wszystkie zasoby lub zasoby, których jest wdrażany co najmniej jeden.
 
-    Przykład pokazany na poniższej ilustracji przedstawiono wszystkie zasoby sieci z co najmniej jeden zasób wdrożone w wschodnie stany USA:
+    Przykład pokazany na poniższej ilustracji przedstawiono wszystkich zasobów sieciowych z co najmniej jeden zasób wdrażane w regionie wschodnie stany USA:
 
         ![View usage data](./media/check-usage-against-limits/view-usage.png)
 
-    Kolumny można sortować, wybierając nagłówek kolumny. Limity wyświetlane są limity dla Twojej subskrypcji. Jeśli potrzebujesz do zwiększenia domyślnego limitu, wybierz **żądanie zwiększenia**, ukończenia i przesłać żądanie pomocy technicznej. Wszystkie zasoby mają maksymalny limit na liście Azure [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Jeśli Twój bieżący limit jest już maksymalną liczbę, nie można zwiększyć limit.
+    Kolumny można sortować, wybierając nagłówek kolumny. Limity, wyświetlane są limity dla Twojej subskrypcji. Jeśli potrzebujesz do zwiększenia domyślnego limitu, wybierz pozycję **żądanie zwiększenia**, następnie wypełnij i prześlij żądanie pomocy technicznej. Wszystkie zasoby mają maksymalny limit na platformie Azure na liście [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Jeśli bieżący limit jest już maksymalną liczbę, nie można zwiększyć limit.
 
 ## <a name="powershell"></a>PowerShell
 
-Możesz uruchamiać polecenia, które należy wykonać w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Powłoka chmury Azure jest bezpłatne powłoki interakcyjne. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* modułu programu PowerShell, wersji 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, należy uruchomić `Login-AzureRmAccount` logować się do platformy Azure.
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure.
 
-Wyświetl użycie limitów z [Get-AzureRmNetworkUsage](/powershell/module/azurerm.network/powershell/module/azurerm.network/get-azurermnetworkusage). Poniższy przykład pobiera użycia zasobów, w której wdrażana jest co najmniej jeden zasób w lokalizacji wschodnie stany USA:
+Wyświetl użycie ograniczeń za pomocą [Get-AzureRmNetworkUsage](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Poniższy przykład pobiera użycia zasobów, w którym co najmniej jeden zasób jest wdrażany w lokalizacji wschodnie stany USA:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkUsage `
@@ -58,7 +58,7 @@ Get-AzureRmNetworkUsage `
   | Format-Table ResourceType, CurrentValue, Limit
 ```
 
-Zostanie wyświetlony komunikat sformatowany taka sama jak w poniższym przykładzie danych wyjściowych:
+Otrzymasz dane wyjściowe sformatowane taka sama jak następujące przykładowe dane wyjściowe:
 
 ```powershell
 ResourceType            CurrentValue Limit
@@ -72,9 +72,9 @@ Network Watchers                   1     1
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. W tym artykule wymaga wiersza polecenia platformy Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` logować się do platformy Azure.
+Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli korzystasz z wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` zalogować się do platformy Azure.
 
-Wyświetl użycie limitów z [sieci az listy użycia](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). Poniższy przykład pobiera zużycie zasobów w lokalizacji wschodnie stany USA:
+Wyświetl użycie ograniczeń za pomocą [sieci polecenia az list-usages](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). Poniższy przykład pobiera użycia zasobów w lokalizacji wschodnie stany USA:
 
 ```azurecli-interactive
 az network list-usages \
@@ -82,7 +82,7 @@ az network list-usages \
   --out table
 ```
 
-Zostanie wyświetlony komunikat sformatowany taka sama jak w poniższym przykładzie danych wyjściowych:
+Otrzymasz dane wyjściowe sformatowane taka sama jak następujące przykładowe dane wyjściowe:
 
 ```azurecli
 Name                    CurrentValue Limit

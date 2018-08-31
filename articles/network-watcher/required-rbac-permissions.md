@@ -1,6 +1,6 @@
 ---
-title: Uprawnienia wymagane do używania funkcji obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, które uprawnienia kontroli dostępu opartej na rolach na platformie Azure są wymagane do pracy z funkcjami obserwatora sieciowego.
+title: Uprawnienia wymagane do korzystać z możliwości usługi Azure Network Watcher | Dokumentacja firmy Microsoft
+description: Dowiedz się, które uprawnienia kontroli dostępu opartej na rolach na platformie Azure są wymagane do pracy z funkcjami usługi Network Watcher.
 services: network-watcher
 documentationcenter: ''
 author: jimdial
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jdial
-ms.openlocfilehash: 09f3a1e1d9c6796cb55ae8f0ab18bf8e1b3fa198
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 7d0f0367a4126e7cecd34b39e6e5065e7d4fd90a
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077878"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287111"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach, wymagane, aby skorzystać z możliwości obserwatora sieciowego
+# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach, trzeba używać możliwościach usługi Network Watcher
 
-Kontroli dostępu opartej na rolach na platformie Azure (RBAC) można przypisać tylko określone akcje do członków organizacji, które są wymagane do ukończenia obowiązków przypisane. Aby korzystać z możliwości obserwatora sieciowego, konta, zaloguj się do platformy Azure, musi być przypisany do [właściciela](/role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [współautora](/role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor), lub [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) wbudowane role lub przypisane do [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany akcji wymienionych dla każdej funkcji obserwatora sieciowego w kolejnych sekcjach. Aby dowiedzieć się więcej o możliwościach obserwatora sieciowego, zobacz [co to jest obserwatora sieciowego?](network-watcher-monitoring-overview.md).
+Kontrola dostępu oparta na rolach na platformie Azure (RBAC) umożliwia przypisanie konkretne akcje do członków organizacji, którzy potrzebują do wykonania ich obowiązków przypisane. Aby korzystać z możliwości usługi Network Watcher, konta, zaloguj się do platformy Azure, muszą być przypisane do [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [Współautor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor), lub [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) wbudowanych ról, lub przypisane do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany akcji wymienionych dla każdej funkcji usługi Network Watcher w kolejnych sekcjach. Aby dowiedzieć się więcej o możliwościach usługi Network Watcher, zobacz [co to jest Usługa Network Watcher?](network-watcher-monitoring-overview.md).
 
 ## <a name="network-watcher"></a>Network Watcher
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/read                              | Pobierz obserwatora sieciowego                                          |
-| Microsoft.Network/networkWatchers/write                             | Utwórz lub zaktualizuj obserwatora sieciowego                             |
+| Microsoft.Network/networkWatchers/read                              | Uzyskać usługi network watcher                                          |
+| Microsoft.Network/networkWatchers/write                             | Utwórz lub zaktualizuj usługi network watcher                             |
 | Microsoft.Network/networkWatchers/delete                            | Usunąć obserwatora sieciowego                                       |
 
-## <a name="nsg-flow-logs"></a>Dzienniki przepływu NSG
+## <a name="nsg-flow-logs"></a>Dzienniki przepływu sieciowych grup zabezpieczeń
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfiguruj przepływ dziennika                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Kwerenda o stan dziennika przepływu                                    |
 
-## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączenia
+## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniami
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Wyniki zapytania połączenia Rozwiązywanie problemów z testu                |
-| Microsoft.Network/networkWatchers/troubleshoot/action               | Uruchom połączenie Rozwiązywanie problemów z testu                             |
+| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Wyniki zapytania połączenia Rozwiązywanie problemów z testów                |
+| Microsoft.Network/networkWatchers/troubleshoot/action               | Uruchom połączenie Rozwiązywanie problemów z testów                             |
 
-## <a name="connection-monitor"></a>Monitor połączenia
+## <a name="connection-monitor"></a>Monitor połączeń
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Uruchom monitor połączenia                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Zatrzymaj monitor połączenia                                      |
-| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Zapytanie monitor połączenia                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/read           | Pobierz monitor połączenia                                       |
-| Microsoft.Network/networkWatchers/connectionMonitors/write          | Utwórz monitor połączenia                                    |
-| Microsoft.Network/networkWatchers/connectionMonitors/delete         | Usuń monitor połączenia                                    |
+| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Uruchom monitor połączeń                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Zatrzymywanie monitora połączeń                                      |
+| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Zapytania monitora połączeń                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/read           | Uzyskiwanie monitora połączeń                                       |
+| Microsoft.Network/networkWatchers/connectionMonitors/write          | Tworzenie monitora połączeń                                    |
+| Microsoft.Network/networkWatchers/connectionMonitors/delete         | Usuwanie monitora połączeń                                    |
 
 ## <a name="packet-capture"></a>Przechwytywanie pakietów
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Zapytać o stan przechwytywania pakietów                           |
-| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Zatrzymaj przechwytywania pakietów                                          |
-| Microsoft.Network/networkWatchers/packetCaptures/read               | Pobierz przechwytywania pakietów                                           |
+| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Kwerenda o stan przechwytywania pakietów                           |
+| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Zatrzymać przechwytywania pakietu                                          |
+| Microsoft.Network/networkWatchers/packetCaptures/read               | Rozpoczynanie przechwytywania pakietu                                           |
 | Microsoft.Network/networkWatchers/packetCaptures/write              | Utwórz przechwytywania pakietów                                        |
-| Microsoft.Network/networkWatchers/packetCaptures/delete             | Usuń przechwytywania pakietów                                        |
+| Microsoft.Network/networkWatchers/packetCaptures/delete             | Usuwanie przechwycenia pakietu                                        |
 
-## <a name="ip-flow-verify"></a>Sprawdź przepływ IP
+## <a name="ip-flow-verify"></a>Weryfikowanie przepływu adresów IP
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/ipFlowVerify/action               | Sprawdź przepływ IP                                              |
+| Microsoft.Network/networkWatchers/ipFlowVerify/action               | Zweryfikuj przepływ IP                                              |
 
 ## <a name="next-hop"></a>Następny przeskok
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/nextHop/action                    | Pobierz następnego przeskoku z maszyny Wirtualnej                                     |
+| Microsoft.Network/networkWatchers/nextHop/action                    | Pobieranie następnego przeskoku z maszyny Wirtualnej                                     |
 
 ## <a name="network-security-group-view"></a>Widok sieciowych grup zabezpieczeń
 
@@ -90,17 +90,17 @@ Kontroli dostępu opartej na rolach na platformie Azure (RBAC) można przypisać
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/topology/action                   | Pobierz topologii                                                   |
+| Microsoft.Network/networkWatchers/topology/action                   | Pobieranie topologii                                                   |
 
-## <a name="reachability-report"></a>Uzyskiwanie raportów
+## <a name="reachability-report"></a>Dostępność raportów
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Raport uzyskiwanie Azure                               |
+| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Pobierz raport osiągalności platformy Azure                               |
 
 ## <a name="additional-actions"></a>Dodatkowe akcje
 
-Możliwości obserwatora sieciowego wymaga również następujące akcje:
+Możliwości obserwatora sieci również wymagają następujących czynności:
 
 - Microsoft.Storage/Read
 - Microsoft.Authorization/Read

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344702"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286813"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
@@ -34,9 +34,9 @@ W tym temacie przedstawiono różne sposoby, aby przetestować funkcje, w tym pr
 + Funkcji wyzwalanej przez czasomierz
 + Testowanie aplikacji lub framework
 
-Wszystkie te metody testowania, użyj funkcji wyzwalacza HTTP, który akceptuje dane wejściowe przez parametr ciągu zapytania lub treści żądania. Tę funkcję, należy utworzyć w pierwszej sekcji.
+Wszystkie te metody testowania, użyj funkcji wyzwalacza HTTP, który akceptuje dane wejściowe przez parametr ciągu zapytania lub treści żądania. Możesz utworzyć tej funkcji w witrynie Azure portal w pierwszej sekcji.
 
-## <a name="create-a-function-for-testing"></a>Tworzenie funkcji do testowania
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Tworzenie prostej funkcji do testowania przy użyciu witryny Azure portal
 Dla większości po ukończeniu tego samouczka używamy nieco zmodyfikowaną wersję szablonu funkcji HttpTrigger JavaScript, która jest dostępna podczas tworzenia funkcji. Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu funkcji, zapoznaj się z tym [samouczek](functions-create-first-azure-function.md). Wybierz **HttpTrigger - JavaScript** szablonu podczas tworzenia funkcji testowej w [Azure Portal].
 
 Domyślny szablon funkcji jest zasadniczo funkcji "hello world", która ponownie funkcją nazwy na podstawie żądania treści lub zapytania parametr typu ciąg, `name=<your name>`.  Zaktualizujemy kod można również podać nazwę i adres jako zawartość JSON w treści żądania. Następnie funkcja zwraca te z powrotem do klienta, jeśli jest dostępna.   

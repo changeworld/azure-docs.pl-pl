@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902966"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287329"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
 
@@ -31,12 +31,6 @@ ms.locfileid: "37902966"
 
 > [!NOTE]
 > Obsługa kanału informacyjnego zmian jest udostępniana dla wszystkich modeli danych i kontenerów w usłudze Azure Cosmos DB. Jednak Kanał informacyjny zmian jest do odczytu za pomocą klienta programu SQL i wykonuje serializację elementów do formatu JSON. Ze względu na JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumentów w formacie BSON i JSON sformatowane zestawienia zmian.
-
-W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu pokazuje, jak działa kanału informacyjnego na zmian usługi Azure Cosmos DB.
-
-> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
->
->
 
 ## <a name="how-does-change-feed-work"></a>Jak kanału informacyjnego zmian pracy?
 

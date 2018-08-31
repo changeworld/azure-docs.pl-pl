@@ -3,19 +3,19 @@ title: Przywracanie usługi Azure SQL Data Warehouse | Dokumentacja firmy Micros
 description: Jak przewodnik dotyczący Przywracanie usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 583346f2297f590d8e9484c0a3c19c947de7f740
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
+ms.openlocfilehash: cf96e153c07211fe176839e713935adcf6b9dbe1
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191118"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306966"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Przywracanie usługi Azure SQL Data Warehouse 
 W tym artykule dowiesz się, jak wykonać następujące czynności:

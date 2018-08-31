@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617294"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302132"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -57,7 +57,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   * [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
   * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. Usługa musi mieć możliwość przenoszenia zasobów. Ten artykuł zawiera listę usług, które umożliwiają przenoszenie zasobów i usług, które nie umożliwiają przenoszenie zasobów.
+2. Usługa musi mieć możliwość przenoszenia zasobów. Zobacz sekcje poniżej, w tym artykule [usługi umożliwiają przenoszenie zasobów](#services-that-can-be-moved) oraz tych, które [usługi nie umożliwiają przenoszenie zasobów](#services-that-cannot-be-moved).
 3. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten problem może wystąpić podczas przenoszenia zasobu do nowej subskrypcji, która nigdy nie była używana z tym typem zasobu.
 
   W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:

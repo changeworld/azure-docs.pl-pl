@@ -1,6 +1,6 @@
 ---
 title: Przyznanie uprawnień do wielu aplikacjom dostęp do usługi Azure key vault | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można udzielić uprawnienia do wielu aplikacjom dostęp do magazynu kluczy
+description: Dowiedz się, jak przyznać uprawnienia do wielu aplikacjom dostęp do magazynu kluczy
 services: key-vault
 documentationcenter: ''
 author: amitbapat
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 14e6e8bb723eb236f8fb315454b8697a3bd947ef
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30174983"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286431"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udziel uprawnień do wielu aplikacjom dostęp do magazynu kluczy
+# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udziel uprawnień do wielu aplikacji do dostępu do magazynu kluczy
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>Pytanie: czy masz kilka aplikacji (ponad 16), które trzeba uzyskać dostępu do magazynu kluczy. Ponieważ usługa Key Vault zezwala jedynie na 16 wpisów kontroli dostępu, w jaki sposób mogę sobie z tym poradzić?
+## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>Pytanie: Mam kilka aplikacji, które chcą korzystać z magazynu kluczy, jak I przyznać te aplikacje (maksymalnie 1024) prawa dostępu do usługi Key Vault?
 
-Zasady kontroli dostępu do magazynu kluczy obsługuje tylko wpisy 16. Można jednak utworzyć grupy zabezpieczeń usługi Azure Active Directory. Dodaj do tej grupy zabezpieczeń wszystkich podmiotów zabezpieczeń skojarzona usługa, a następnie przyznać dostęp do tej grupy zabezpieczeń do magazynu kluczy.
+Zasady kontroli dostępu do usługi Key Vault obsługuje maksymalnie 1024 wpisów. Można jednak utworzyć grupę zabezpieczeń usługi Azure Active Directory. Dodaj wszystkie jednostki usługi skojarzonego do tej grupy zabezpieczeń, a następnie przyznać dostęp do tej grupy zabezpieczeń w usłudze Key Vault.
 
 Poniżej przedstawiono wymagania wstępne:
-* [Zainstaluj moduł programu PowerShell usługi Azure Active Directory w wersji 2](https://www.powershellgallery.com/packages/AzureAD).
+* [Instalowanie modułu programu PowerShell usługi Azure Active Directory w wersji 2](https://www.powershellgallery.com/packages/AzureAD).
 * [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
-* Aby uruchomić następujące polecenia, musisz mieć uprawnienia Utwórz/Edytuj grup w dzierżawie usługi Azure Active Directory. Jeśli nie masz uprawnień, może być konieczne skontaktuj się z administratorem usługi Azure Active Directory.
+* Aby uruchomić następujące polecenia, niezbędne są uprawnienia do tworzenia/edycji grup w dzierżawie usługi Azure Active Directory. Jeśli nie masz uprawnień, może być konieczne skontaktuj się z administratorem usługi Azure Active Directory.
 
 Teraz uruchom następujące polecenia w programie PowerShell.
 
@@ -53,8 +53,8 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 # Of course you can adjust the permissions as required 
 ```
 
-Jeśli musisz przyznać inny zestaw uprawnień do grupy aplikacji, należy utworzyć osobnej grupy zabezpieczeń usługi Azure Active Directory dla takich aplikacji.
+Jeśli musisz przyznać inny zestaw uprawnień do grupy aplikacji, należy utworzyć osobne grupy zabezpieczeń usługi Azure Active Directory na potrzeby takich aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o sposobie [bezpiecznego magazynu kluczy](key-vault-secure-your-key-vault.md).
+Dowiedz się więcej na temat [zabezpieczanie własnego magazynu kluczy](key-vault-secure-your-key-vault.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: d248a97235ead134f29e468aaafcd04211590e02
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 859b4adb1b74d294d08f23c8ca570f53d56f539f
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247494"
+ms.locfileid: "43307348"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption 
  W tym artykule, wymagań wstępnych szyfrowania dysków Azure, opisano elementy, które muszą być spełnione, zanim użyjesz usługi Azure Disk Encryption. Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) pomagające w zarządzaniu kluczami szyfrowania. Możesz użyć [programu Azure PowerShell](/powershell/azure/overview), [wiersza polecenia platformy Azure](/cli/azure/), lub [witryny Azure portal](https://portal.azure.com) do konfigurowania usługi Azure Disk Encryption.
@@ -47,7 +47,7 @@ Usługa Azure Disk Encryption jest obsługiwana w następujących systemach oper
     - Proces szyfrowania dysków Azure zostanie przesunięty informacji dotyczących instalacji poza/etc/fstab i w jej własnym pliku konfiguracji w ramach procesu szyfrowania. Zostać zignorowany, aby zobaczyć, że kończy zapis brakuje/etc/fstab po szyfrowaniem dysków danych.
     -  Po ponownym uruchomieniu potrwa czas procesu szyfrowania dysków Azure na instalowanie nowo zaszyfrowanych dysków. Nie będzie natychmiast dostępny po ponownym uruchomieniu. Proces wymaga czasu do uruchomienia, odblokowywania i następnie zainstalować zaszyfrowanych dysków przed jest dostępna na potrzeby dostępu do innych procesów. Ten proces może potrwać ponad minutę po ponownym uruchomieniu, w zależności od charakterystyki systemu.
 
-Przykład polecenia, które mogą służyć do zamontowania dysków z danymi oraz tworzenie niezbędne/etc/fstab wpisów można znaleźć w [linii 197-205 tego pliku skryptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205). 
+Przykład polecenia, które mogą służyć do zamontowania dysków z danymi oraz tworzenie niezbędne/etc/fstab wpisów można znaleźć w [linii 244-248 tego pliku skryptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
 
 
 ## <a name="bkmk_GPO"></a> Sieci i zasad grupy

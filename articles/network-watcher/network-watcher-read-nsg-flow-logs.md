@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 63407382762a814ded4529caa109d76e987c9505
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057088"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286448"
 ---
 # <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
 Dowiedz się, jak odczytać wpisy dzienników przepływu sieciowych grup zabezpieczeń przy użyciu programu PowerShell.
 
-Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie magazynu w [blokowe obiekty BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Blokowe obiekty BLOB składają się z mniejszych bloków. Każdy dziennik jest oddzielnym blokowych obiektów blob, który jest generowany co godzinę. Nowe dzienniki są generowane co godzinę, dzienniki są aktualizowane przy użyciu nowych wpisów, co kilka minut przy użyciu najnowszych danych. W tym artykule dowiesz się, jak odczytać części dzienników przepływów.
+Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie magazynu w [blokowe obiekty BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Blokowe obiekty BLOB składają się z mniejszych bloków. Każdy dziennik jest oddzielnym blokowych obiektów blob, który jest generowany co godzinę. Nowe dzienniki są generowane co godzinę, dzienniki są aktualizowane przy użyciu nowych wpisów, co kilka minut przy użyciu najnowszych danych. W tym artykule dowiesz się, jak odczytać części dzienników przepływów.
 
 ## <a name="scenario"></a>Scenariusz
 

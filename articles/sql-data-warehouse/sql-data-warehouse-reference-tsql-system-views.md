@@ -1,25 +1,26 @@
 ---
-title: Widoki systemowe - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Łączy się z dokumentacją dotyczącą widoków systemowych obsługiwane przez Magazyn danych SQL Azure.
+title: Widoki systemowe — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zawiera łącza do dokumentacji dla widoków systemowych, obsługiwanych w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
-ms.author: kevin
+ms.date: 06/13/2018
+ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: a0e75bc9b7cfa6827794f8d4256bddc3807f17d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d76e21e37266a1b17f90fe7ce41438b9361c6e31
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312458"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Widoki systemowe obsługiwane przez Magazyn danych SQL Azure
-Łączy się z dokumentacją dotyczącą instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure.
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Widoki systemowe, obsługiwany w usłudze Azure SQL Data Warehouse
+Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
 
-## <a name="sql-data-warehouse-catalog-views"></a>Widoków wykazu SQL Data Warehouse
+## <a name="sql-data-warehouse-catalog-views"></a>Usługa SQL Data Warehouse widoków wykazu
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/28/2018
 * [sys.pdw_table_distribution_properties](http://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](http://msdn.microsoft.com/library/mt203876.aspx)
 
-## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Usługa SQL Data Warehouse dynamicznych widoków zarządzania (widoków DMV)
+## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Usługa SQL Data Warehouse dynamicznych widoków zarządzania (DMV)
 * [sys.dm_pdw_dms_cores](http://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](http://msdn.microsoft.com/library/mt203878.aspx)
@@ -57,14 +58,14 @@ ms.lasthandoff: 04/28/2018
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server widoków DMV mające zastosowanie do magazynu danych SQL
-Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale musi zostać wykonana przez nawiązanie połączenia **wzorca** bazy danych.
+## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server widoków DMV mające zastosowanie do usługi SQL Data Warehouse
+Następujące dynamiczne widoki zarządzania mają zastosowanie do usługi SQL Data Warehouse, ale musi zostać wykonana przez nawiązanie połączenia **wzorca** bazy danych.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
-## <a name="sql-server-catalog-views"></a>Widoków wykazu programu SQL Server
+## <a name="sql-server-catalog-views"></a>Widoki wykazu programu SQL Server
 * [sys.all_columns](http://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](http://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](http://msdn.microsoft.com/library/ms190340.aspx)
@@ -130,17 +131,17 @@ Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale
 * [sys.types](http://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server widoków DMV dostępne w usłudze SQL Data Warehouse
-Usługa SQL Data Warehouse udostępnia wiele widoków dynamicznego zarządzania programu SQL Server (widoków DMV). Tych widoków, po otrzymaniu kwerendy w usłudze SQL Data Warehouse, są raportowania stanu systemem dystrybucje baz danych serwera SQL.
+## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server dynamicznych widoków zarządzania dostępne w usłudze SQL Data Warehouse
+Usługa SQL Data Warehouse udostępnia wiele programu SQL Server dynamicznych widoków zarządzania (DMV). Te widoki, po otrzymaniu kwerendy w usłudze SQL Data Warehouse zgłasza stan uruchomionych na dystrybucje baz danych SQL.
 
-Magazyn danych SQL i Analytics Platform System równoległego magazynu danych (PDW) za pomocą tego samego widoków systemu. Każdy DMV ma kolumnę o nazwie pdw_node_id, który jest identyfikatorem węźle obliczeń. 
+Usługa SQL Data Warehouse i Analytics Platform System równoległego magazynu danych (PDW) używają tego samego widoki systemowe. Każdy widok DMV ma kolumnę o nazwie pdw_node_id, który jest identyfikatorem węzła obliczeniowego. 
 
 > [!NOTE]
 > Aby korzystać z tych widoków, Wstaw "pdw_nodes_" w nazwie, jak pokazano w poniższej tabeli:
 > 
 > 
 
-| Nazwa DMV w usłudze SQL Data Warehouse | Artykuł programu SQL Server Transact-SQL|
+| Widok DMV nazwy w usłudze SQL Data Warehouse | Artykuł programu SQL Server Transact-SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -166,7 +167,7 @@ Magazyn danych SQL i Analytics Platform System równoległego magazynu danych (P
 | sys.dm_pdw_nodes_os_child_instances |[sys.dm_os_child_instances](http://msdn.microsoft.com/library/ms165698.aspx) |
 | sys.dm_pdw_nodes_os_cluster_nodes |[sys.dm_os_cluster_nodes](http://msdn.microsoft.com/library/ms187341.aspx) |
 | sys.dm_pdw_nodes_os_dispatcher_pools |[sys.dm_os_dispatcher_pools](http://msdn.microsoft.com/library/bb630336.aspx) |
-| sys.dm_pdw_nodes_os_dispatchers |Dokumentacja języka Transact-SQL jest niedostępna. |
+| sys.dm_pdw_nodes_os_dispatchers |Dokumentacja języka Transact-SQL nie jest dostępna. |
 | sys.dm_pdw_nodes_os_hosts |[sys.dm_os_hosts](http://msdn.microsoft.com/library/ms187800.aspx) |
 | sys.dm_pdw_nodes_os_latch_stats |[sys.dm_os_latch_stats](http://msdn.microsoft.com/library/ms175066.aspx) |
 | sys.dm_pdw_nodes_os_memory_brokers |[sys.dm_os_memory_brokers](http://msdn.microsoft.com/library/bb522548.aspx) |
@@ -175,7 +176,7 @@ Magazyn danych SQL i Analytics Platform System równoległego magazynu danych (P
 | sys.dm_pdw_nodes_os_memory_cache_entries |[sys.dm_os_memory_cache_entries](http://msdn.microsoft.com/library/ms189488.aspx) |
 | sys.dm_pdw_nodes_os_memory_cache_hash_tables |[sys.dm_os_memory_cache_hash_tables](http://msdn.microsoft.com/library/ms182388.aspx) |
 | sys.dm_pdw_nodes_os_memory_clerks |[sys.dm_os_memory_clerks](http://msdn.microsoft.com/library/ms175019.aspx) |
-| sys.dm_pdw_nodes_os_memory_node_access_stats |Dokumentacja języka Transact-SQL jest niedostępna. |
+| sys.dm_pdw_nodes_os_memory_node_access_stats |Dokumentacja języka Transact-SQL nie jest dostępna. |
 | sys.dm_pdw_nodes_os_memory_nodes |[sys.dm_os_memory_nodes](http://msdn.microsoft.com/library/bb510622.aspx) |
 | sys.dm_pdw_nodes_os_memory_objects |[sys.dm_os_memory_objects](https://msdn.microsoft.com/library/ms179875.aspx) |
 | sys.dm_pdw_nodes_os_memory_pools |[sys.dm_os_memory_pools](http://msdn.microsoft.com/library/ms175022.aspx) |
@@ -183,7 +184,7 @@ Magazyn danych SQL i Analytics Platform System równoległego magazynu danych (P
 | sys.dm_pdw_nodes_os_performance_counters |[sys.dm_os_performance_counters](http://msdn.microsoft.com/library/ms187743.aspx) |
 | sys.dm_pdw_nodes_os_process_memory |[sys.dm_os_process_memory](http://msdn.microsoft.com/library/bb510747.aspx) |
 | sys.dm_pdw_nodes_os_schedulers |[sys.dm_os_schedulers](http://msdn.microsoft.com/library/ms177526.aspx) |
-| sys.dm_pdw_nodes_os_spinlock_stats |Dokumentacja języka Transact-SQL jest niedostępna. |
+| sys.dm_pdw_nodes_os_spinlock_stats |Dokumentacja języka Transact-SQL nie jest dostępna. |
 | sys.dm_pdw_nodes_os_sys_info |[sys.dm_os_sys_info](http://msdn.microsoft.com/library/ms175048.aspx) |
 | sys.dm_pdw_nodes_os_sys_memory |[sys.dm_os_memory_nodes](http://msdn.microsoft.com/library/bb510622.aspx) |
 | sys.dm_pdw_nodes_os_tasks |[sys.dm_os_tasks](http://msdn.microsoft.com/library/ms174963.aspx) |
@@ -204,8 +205,8 @@ Magazyn danych SQL i Analytics Platform System równoległego magazynu danych (P
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](http://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](http://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016 PolyBase widoków DMV dostępne w usłudze SQL Data Warehouse
-Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale musi zostać wykonana przez nawiązanie połączenia **wzorca** bazy danych.
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016 PolyBase dynamicznych widoków zarządzania dostępne w usłudze SQL Data Warehouse
+Następujące dynamiczne widoki zarządzania mają zastosowanie do usługi SQL Data Warehouse, ale musi zostać wykonana przez nawiązanie połączenia **wzorca** bazy danych.
 
 * [sys.dm_exec_compute_node_errors](http://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](http://msdn.microsoft.com/library/mt146382.aspx)
@@ -230,4 +231,4 @@ Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacje, zobacz [instrukcje T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), i [elementy języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).
+Aby uzyskać więcej informacje, zobacz [instrukcje języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), i [elementy języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).

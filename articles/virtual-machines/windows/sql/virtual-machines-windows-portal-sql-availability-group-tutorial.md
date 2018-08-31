@@ -14,14 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e2204dbe645aeff2587c2c3d55b5da89ac227d8
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531583"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288217"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -348,7 +348,7 @@ Na maszynach wirtualnych platformy Azure grupy dostępności programu SQL Server
 
    ![W Menedżerze klastra trybu Failover grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  Kliknij przycisk **Utwórz**.
+1.  Kliknij pozycję **Utwórz**.
 3. Skonfiguruj następujące parametry dla modułu równoważenia obciążenia.
 
    | Ustawienie | Pole |
@@ -427,9 +427,9 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
 
 ### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>Dodaj adres IP frontonu dla usługi WSFC
 
-Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia. 
+Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia.
 
-1. W portalu należy dodać nową konfigurację adresu IP frontonu dla usługi WSFC. Użyj adresu IP skonfigurowany dla usługi WSFC w zasoby podstawowe klastra. Ustaw adres IP jako statyczny. 
+1. W portalu należy dodać nową konfigurację adresu IP frontonu dla usługi WSFC. Użyj adresu IP skonfigurowany dla usługi WSFC w zasoby podstawowe klastra. Ustaw adres IP jako statyczny.
 
 1. Kliknij moduł równoważenia obciążenia, kliknij przycisk **sondy kondycji**i kliknij przycisk **+ Dodaj**.
 
@@ -450,7 +450,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
 1. Ustawianie reguł były w następujący sposób równoważenia obciążenia.
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Tekst | WSFCPointListener |
+   | **Nazwa** | Tekst | WSFCEndPointListener |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu, który został utworzony podczas konfigurowania adresu IP usługi WSFC. |
    | **Protokół** | Wybierz protokół TCP |TCP |
    | **Port** | Na użytek port odbiornika grupy dostępności | 58888 |
@@ -498,38 +498,20 @@ Aby przetestować połączenie:
 
 1. Użyj **sqlcmd** narzędzie, aby przetestować połączenie. Na przykład, poniższy skrypt ustanawia **sqlcmd** połączenie z repliką podstawową, za pośrednictwem odbiornika z uwierzytelnianiem Windows:
 
-    ```
-    sqlcmd -S <listenerName> -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName> -E
+  ```
 
-    Jeśli odbiornik używa portu innego niż domyślny portu (1433), określ numer portu w parametrach połączenia. Na przykład następujące polecenie sqlcmd łączy odbiornika na porcie 1435:
+  Jeśli odbiornik używa portu innego niż domyślny portu (1433), określ numer portu w parametrach połączenia. Na przykład następujące polecenie sqlcmd łączy odbiornika na porcie 1435:
 
-    ```
-    sqlcmd -S <listenerName>,1435 -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName>,1435 -E
+  ```
 
 SQLCMD automatycznie nawiązania połączenia z dowolnego wystąpienia programu SQL Server obsługuje replikę podstawową.
 
 > [!TIP]
 > Upewnij się, że port, który określisz jest otwarty na zaporze oba serwery SQL. Oba serwery wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub Edytuj regułę zapory](http://technet.microsoft.com/library/cc753558.aspx).
->
->
-
-
-
-<!--**Notes**: *Notes provide just-in-time info: A Note is “by the way” info, an Important is info users need to complete a task, Tip is for shortcuts. Don’t overdo*.-->
-
-
-<!--**Procedures**: *This is the second “step." They often include substeps. Again, use a short title that tells users what they’ll do*. *("Configure a new web project.")*-->
-
-<!--**UI**: *Note the format for documenting the UI: bold for UI elements and arrow keys for sequence. (Ex. Click **File > New > Project**.)*-->
-
-<!--**Screenshot**: *Screenshots really help users. But don’t include too many since they’re difficult to maintain. Highlight areas you are referring to in red.*-->
-
-<!--**No. of steps**: *Make sure the number of steps within a procedure is 10 or fewer. Seven steps is ideal. Break up long procedure logically.*-->
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
 ## <a name="next-steps"></a>Kolejne kroki
 

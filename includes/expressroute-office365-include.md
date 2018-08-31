@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 08/29/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 880e9c8f7326c6b4c471e820266c144bbd9a000f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d047ce5a09e9b011085689903b86b03c20c44ab5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197554"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303036"
 ---
-Oferty oprogramowania jako usługi, takie jak usługa Office 365 i usługa Dynamics 365, zostały utworzone, aby umożliwiać bezpieczny i niezawodny dostęp za pośrednictwem sieci Internet. W związku z tym zaleca się ExpressRoute dla tych aplikacji tylko w określonych scenariuszach. Aby uzyskać informacje o dostęp do usługi Office 365 za pomocą usługi ExpressRoute, odwiedź [Azure ExpressRoute dla usługi Office 365](http://aka.ms/ExpressRouteOffice365).
+Usługa Office 365 powstała z myślą o bezpiecznym i niezawodnym dostępie przez Internet. W związku z tym dla pewnych scenariuszy zalecamy korzystanie z usługi ExpressRoute. Aby uzyskać informacje na temat otwierania usługi Office 365 przy użyciu usługi ExpressRoute, odwiedź stronę [Azure ExpressRoute for Office 365 (Usługa Azure ExpressRoute dla usługi Office 365)](http://aka.ms/ExpressRouteOffice365).

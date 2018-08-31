@@ -1,42 +1,42 @@
 ---
-title: Ładowanie danych sprzedaży detalicznej Contoso Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Polecenia T-SQL i PolyBase można załadować tabel z danych sprzedaży detalicznej Contoso do usługi Azure SQL Data Warehouse.
+title: Ładowanie danych sieci sprzedaży firmy Contoso do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Polecenia przy użyciu technologii PolyBase i T-SQL można załadować tabel z danych sieci sprzedaży firmy Contoso w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 0b066699475b753bb1104a78a4a1c60564535700
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cf484d5d7a48117bac659dcfad356238f1e9f8a2
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190900"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307441"
 ---
-# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Ładowanie danych sprzedaży detalicznej Contoso Azure SQL Data Warehouse
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Ładowanie danych sieci sprzedaży firmy Contoso do usługi Azure SQL Data Warehouse
 
-Polecenia T-SQL i PolyBase można załadować tabel z danych sprzedaży detalicznej Contoso do usługi Azure SQL Data Warehouse. Załadować pełny zestaw danych, należy uruchomić przykład [załadować pełne hurtowni danych sprzedaży detalicznej Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z repozytorium przykłady serwera SQL firmy Microsoft.
+Polecenia przy użyciu technologii PolyBase i T-SQL można załadować tabel z danych sieci sprzedaży firmy Contoso w usłudze Azure SQL Data Warehouse. Aby załadować całego zestawu danych, uruchom przykład [ładowanie pełną magazynu danych sieci sprzedaży firmy Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z repozytorium przykładów serwera SQL firmy Microsoft.
 
-W tym samouczku obejmują:
+W tym samouczku wykonasz następujące czynności:
 
-1. Konfigurowanie programu PolyBase, aby załadować z magazynu obiektów blob platformy Azure
-2. Ładowanie danych publicznej do bazy danych
-3. Optymalizacje należy wykonać po zakończeniu obciążenia.
+1. Konfigurowanie programu PolyBase do ładowania z magazynu obiektów blob platformy Azure
+2. Załaduj publiczny dane do bazy danych
+3. Po zakończeniu ładowania, należy wykonać optymalizacji.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby uruchomić tego samouczka, należy konta platformy Azure, która ma już bazę danych SQL Data Warehouse. Jeśli nie masz jeszcze to, zobacz [Tworzenie usługi SQL Data Warehouse][Create a SQL Data Warehouse].
+Aby uruchomić ten samouczek, konieczne jest konto platformy Azure, która już zawiera bazę danych SQL Data Warehouse. Jeśli nie masz jeszcze tego, zobacz [utworzyć SQL Data Warehouse][Create a SQL Data Warehouse].
 
 ## <a name="1-configure-the-data-source"></a>1. Konfigurowanie źródła danych
-Aparat PolyBase używa obiektów zewnętrznych T-SQL w celu zdefiniowania lokalizacji i atrybuty danych zewnętrznych. Definicje obiektu zewnętrznego są przechowywane w usłudze SQL Data Warehouse. Dane są przechowywane zewnętrznie.
+Program PolyBase używa języka T-SQL, obiektów zewnętrznych do określania lokalizacji i atrybutów danych zewnętrznych. Definicje zewnętrzne obiektu są przechowywane w usłudze SQL Data Warehouse. Dane są przechowywane zewnętrznie.
 
-### <a name="11-create-a-credential"></a>1.1. Utwórz poświadczenia
-**Pomiń ten krok** ładowania danych publicznych firmy Contoso. Bezpieczny dostęp do danych publicznych nie jest konieczne, ponieważ jest już dostępne dla wszystkich użytkowników.
+### <a name="11-create-a-credential"></a>1.1. Tworzenie poświadczeń
+**Pomiń ten krok** ładowania publiczne dane firmy Contoso. Nie potrzebują bezpiecznego dostępu do danych publicznego, ponieważ jest już dostępne dla wszystkich osób.
 
-**Nie, Pomiń ten krok** korzystając z tego samouczka jako szablon dla ładowania danych użytkownika. Dostęp do danych za pomocą poświadczeń, użyj następującego skryptu do tworzenia poświadczeń o zakresie bazy danych, a następnie użyć, określając lokalizację źródła danych.
+**Pomiń ten krok, nie** korzystając z tego samouczka jako szablon do ładowania danych użytkownika. Dostęp do danych za pomocą poświadczeń, użyj następującego skryptu, aby utworzyć poświadczenie o zakresie bazy danych, a następnie użyć go podczas definiowania lokalizacji źródła danych.
 
 ```sql
 -- A: Create a master key.
@@ -74,7 +74,7 @@ WITH (
 Przejdź do kroku 2.
 
 ### <a name="12-create-the-external-data-source"></a>1.2. Tworzenie zewnętrznego źródła danych
-Użyj tej [Tworzenie zewnętrznego źródła danych] [ CREATE EXTERNAL DATA SOURCE] polecenia do przechowywania lokalizacji danych i typu danych. 
+Użyj tego [CREATE EXTERNAL DATA SOURCE] [ CREATE EXTERNAL DATA SOURCE] polecenia do przechowywania lokalizacji danych i typu danych. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -86,12 +86,12 @@ WITH
 ```
 
 > [!IMPORTANT]
-> Jeśli użytkownik chce udostępnić z obiektów blob platformy azure kontenery magazynu, należy pamiętać, że właściciel danych zostanie naliczona danych opłaty za wyjście po danych pozostawia centrum danych. 
+> Jeśli chcesz upublicznić usługi obiektów blob platformy azure kontenery magazynu należy pamiętać, że właściciel danych opłata wyniesie danych opłaty za ruch wychodzący gdy opuszczają one centrum danych. 
 > 
 > 
 
 ## <a name="2-configure-data-format"></a>2. Skonfiguruj format danych
-Dane są przechowywane w plikach tekstowych w magazynie obiektów blob platformy Azure, a poszczególne pola są rozdzielone ogranicznika. Uruchom to [utworzyć EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] polecenie, aby określić format danych w plikach tekstowych. Dane firmy Contoso jest nieskompresowanych i rozdzielane potoku.
+Dane są przechowywane w plikach tekstowych w usłudze Azure blob storage, a każde pole jest oddzielony ogranicznikiem. Uruchom to [CREATE EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] polecenie, aby określić format danych w plikach tekstowych. Dane firmy Contoso jest bez kompresji i rozdzielany potoku.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -108,8 +108,8 @@ WITH
 ## <a name="3-create-the-external-tables"></a>3. Tworzenie tabel zewnętrznych
 Teraz, gdy został określony format źródła i plików danych, możesz przystąpić do tworzenia tabel zewnętrznych. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Tworzenie schematu dla danych.
-Aby utworzyć miejsce do przechowywania danych firmy Contoso w bazie danych, należy utworzyć schemat.
+### <a name="31-create-a-schema-for-the-data"></a>3.1. Utwórz schemat dla danych.
+Aby utworzyć miejsce do przechowywania danych firmy Contoso w bazie danych, Utwórz schemat.
 
 ```sql
 CREATE SCHEMA [asb]
@@ -117,9 +117,9 @@ GO
 ```
 
 ### <a name="32-create-the-external-tables"></a>3.2. Utwórz tabele zewnętrzne.
-Uruchom ten skrypt, aby utworzyć DimProduct i FactOnlineSales tabel zewnętrznych. Wszystkie robimy tutaj jest zdefiniowanie nazwy kolumn i typy danych i powiązanie lokalizacji i format plików magazynu obiektów blob platformy Azure. Definicja jest przechowywany w magazynie danych SQL, a dane są nadal obiektu Blob magazynu Azure.
+Uruchom ten skrypt, aby utworzyć tabele zewnętrzne DimProduct a FactOnlineSales. Wszystko, co robimy, w tym miejscu jest definiowanie nazw kolumn i typy danych i powiązanie ich z lokalizacji i formatu plików magazynu obiektów blob platformy Azure. Definicja jest przechowywany w usłudze SQL Data Warehouse, a dane są nadal w usłudze Azure Blob Storage.
 
-**Lokalizacji** parametr to folder, w folderze głównym w obiekcie Blob magazynu Azure. Są w innym folderze.
+**Lokalizacji** parametru to folder w folderze głównym w usłudze Azure Blob Storage. Każda tabela jest w innym folderze.
 
 ```sql
 
@@ -205,22 +205,22 @@ WITH
 ```
 
 ## <a name="4-load-the-data"></a>4. Ładowanie danych
-Ma innego sposobu dostępu do danych zewnętrznych.  Można zapytania na danych bezpośrednio z tabeli zewnętrznej, załadować dane do nowych tabel bazy danych lub Dodaj dane zewnętrzne do istniejących tabel bazy danych.  
+Ma różne sposoby uzyskania dostępu do danych zewnętrznych.  Możesz wykonywanie zapytań o dane bezpośrednio z tabeli zewnętrznej, Załaduj dane do nowych tabel bazy danych lub Dodaj dane zewnętrzne do istniejącymi tabelami bazy danych.  
 
 ### <a name="41-create-a-new-schema"></a>4.1. Tworzenie nowego schematu
-CTAS tworzy nową tabelę, która zawiera dane.  Najpierw należy utworzyć schemat dla danych firmy contoso.
+Instrukcja CTAS tworzy nową tabelę, która zawiera dane.  Najpierw Utwórz schemat dla danych firmy contoso.
 
 ```sql
 CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. Ładowanie danych do nowych tabel
-Ładowanie danych z magazynu obiektów blob platformy Azure i zapisać ją w tabeli wewnątrz bazy danych, użyj [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] instrukcji. Ładowanie z CTAS wykorzystuje jednoznacznie tabel zewnętrznych, które właśnie utworzony. Aby załadować dane do nowych tabel, zastosuj jedną [CTAS] [ CTAS] instrukcji na tabelę. 
+### <a name="42-load-the-data-into-new-tables"></a>4.2. Załaduj dane do nowych tabel
+Aby załadować dane z usługi Azure blob storage i zapisać ją w tabeli w bazie danych, należy użyć [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] instrukcji. Ładowanie za pomocą instrukcji CTAS wykorzystuje silnie typizowaną tabel zewnętrznych, które właśnie utworzony. Aby załadować dane do nowych tabel, należy użyć jednej [CTAS] [ CTAS] instrukcji na tabelę. 
  
-CTAS tworzy nową tabelę i wypełnia wyników w instrukcji select. CTAS definiuje nowa tabela na tej samej kolumny i typy danych wyników w instrukcji select. Po wybraniu wszystkich kolumn z tabeli zewnętrznej nowa tabela będzie repliki kolumn i typy danych w tabeli zewnętrznej.
+CTAS tworzy nową tabelę i wypełnia wyniki instrukcji select. CTAS definiuje nowej tabeli, aby mieć te same kolumny i typy danych jak wyniki instrukcji select. Po wybraniu wszystkich kolumn z tabeli zewnętrznej, nowa tabela będzie repliki kolumn i typy danych w tabeli zewnętrznej.
 
-W tym przykładzie tworzymy zarówno wymiaru, jak i tabela faktów jako skrótów rozproszonej tabel. 
+W tym przykładzie tworzymy wymiaru i tabeli faktów, ponieważ rozproszone tabele skrótów. 
 
 ```sql
 SELECT GETDATE();
@@ -230,8 +230,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 śledzić postęp obciążenia
-Można śledzić postęp obciążenia przy użyciu dynamicznych widoków zarządzania (widoków DMV). 
+### <a name="43-track-the-load-progress"></a>4.3 śledzić postęp ładowania
+Możesz śledzić postęp obciążenia przy użyciu dynamicznych widoków zarządzania (DMV). 
 
 ```sql
 -- To see all requests
@@ -266,10 +266,10 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. Optymalizacja magazynu kolumn kompresji
-Domyślnie usługa SQL Data Warehouse przechowuje tabeli jako klastrowany indeks magazynu kolumn. Po zakończeniu obciążenia niektóre wiersze danych może nie można skompresować do magazynu kolumn.  Brak z różnych powodów, dlaczego jest to możliwe. Aby dowiedzieć się więcej, zobacz [Zarządzaj indeksami magazynu kolumn][manage columnstore indexes].
+## <a name="5-optimize-columnstore-compression"></a>5. Optymalizowanie kompresja magazynu kolumn
+Domyślnie usługa SQL Data Warehouse przechowuje tabelę jako klastrowany indeks magazynu kolumn. Po zakończeniu ładowania niektórych wierszy danych może nie można skompresować do magazynu kolumn.  Brak z różnych powodów dlaczego jest to możliwe. Aby dowiedzieć się więcej, zobacz [Zarządzaj indeksami magazynu kolumn][manage columnstore indexes].
 
-Aby zoptymalizować wydajność zapytań i ich kompresji magazynu kolumn po załadowaniu, Odbuduj tabelę, aby wymusić indeksu magazynu kolumn do skompresowania wszystkie wiersze. 
+Aby zoptymalizować wydajność zapytań i kompresja magazynu kolumn po załadowaniu, Odbuduj tabelę, aby wymusić indeksu magazynu kolumn, aby skompresować wszystkie wiersze. 
 
 ```sql
 SELECT GETDATE();
@@ -281,12 +281,12 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 Aby uzyskać więcej informacji na temat zachowania indeksy magazynu kolumn, zobacz [Zarządzaj indeksami magazynu kolumn] [ manage columnstore indexes] artykułu.
 
-## <a name="6-optimize-statistics"></a>6. Optymalizacja statystyki
-Najlepiej utworzyć statystyki dla pojedynczej kolumny natychmiast po załadowaniu. Dostępne są niektóre opcje wyboru statystyk. Na przykład jeśli tworzenie statystyk pojedynczej kolumny w każdej kolumnie go może zająć dużo czasu odbudować wszystkie statystyki. Jeśli wiesz, że niektóre kolumny nie będą znajdować się w predykatach kwerendy, można pominąć tworzenie statystyk na podstawie tych kolumn.
+## <a name="6-optimize-statistics"></a>6. Optymalizowanie statystyki
+Najlepiej utworzyć statystyki jednokolumnową od razu po załadowaniu. Istnieją pewne opcje dla statystyk. Na przykład jeśli tworzysz jednokolumnową statystyk dla każdej z kolumn może potrwać długo przebudować wszystkie statystyki. Jeśli wiesz, że niektóre kolumny nie będą znajdować się w predykatach zapytania, możesz pominąć tworzenie statystyk na podstawie tych kolumn.
 
-Jeśli zdecydujesz się tworzenie statystyk pojedynczej kolumny w każdej kolumnie każdej tabeli, można użyć procedury składowanej przykładowy kod `prc_sqldw_create_stats` w [statystyki] [ statistics] artykułu.
+Jeśli zdecydujesz się utworzyć statystyki pojedynczej kolumny dla każdej z kolumn każdej tabeli, możesz użyć przykładowego kodu procedury składowanej `prc_sqldw_create_stats` w [statystyki] [ statistics] artykułu.
 
-Poniższy przykład jest dobry punkt wyjścia do tworzenia statystyk. Tworzy statystyki pojedynczej kolumny w każdej kolumnie w tabeli wymiarów i w każdej kolumnie łącząca w tabelach faktów. Można dodać jednego lub wielu kolumn statystyki do kolumn tabeli faktów później.
+Poniższy przykład jest dobry punkt wyjścia do tworzenia statystyk. Tworzy jednokolumnową statystyk dotyczących poszczególnych kolumn w tabeli wymiarów i dotyczących poszczególnych przyłączany kolumn w tabelach faktów. Można dodać jednego lub wielu kolumnach statystyki do innych kolumn w tabeli faktów później.
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -330,10 +330,10 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_PromotionKey] ON [cso].[FactOnlineSa
 CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]([StoreKey]);
 ```
 
-## <a name="achievement-unlocked"></a>Osiągnięcia odblokowane!
-Publiczne dane zostały pomyślnie załadowane do magazynu danych SQL Azure. Dobra robota!
+## <a name="achievement-unlocked"></a>Osiągnięcie odblokować!
+Pomyślnie załadowano publiczne dane do usługi Azure SQL Data Warehouse. Dobra robota!
 
-Można teraz rozpocząć tworzenie zapytań o tabele przy użyciu zapytania podobne do poniższych:
+Możesz teraz rozpocząć tworzenie zapytań o tabele za pomocą zapytań, jak pokazano poniżej:
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -344,7 +344,7 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Do ładowania pełne danych magazynu danych sprzedaży detalicznej firmy Contoso, użyć skryptu w więcej porad programistycznych, zobacz [omówienie programowania w usłudze SQL Data Warehouse][SQL Data Warehouse development overview].
+Aby załadować pełnych danych magazynu danych sieci sprzedaży firmy Contoso, użyj skryptu w więcej porad programistycznych, zobacz [omówienie programowania w usłudze SQL Data Warehouse][SQL Data Warehouse development overview].
 
 <!--Image references-->
 

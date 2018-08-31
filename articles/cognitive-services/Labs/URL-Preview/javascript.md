@@ -1,6 +1,6 @@
 ---
-title: JavaScript — Szybki Start dla podglądu URL projektu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Przykład skryptu, aby szybko rozpocząć korzystanie z interfejsem API Bing adres URL w wersji zapoznawczej w kognitywnych usług Microsoft Azure.
+title: JavaScript Przewodnik Szybki start dotyczący Podgląd adresu URL projektu — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt, aby szybko rozpocząć pracę przy użyciu interfejsu API usługi Bing adresu URL (wersja zapoznawcza) w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: mikedodaro
 ms.service: cognitive-services
@@ -8,29 +8,29 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9041a88a292fb2dabead69195ebc3074e2ecf486
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348633"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301356"
 ---
-# <a name="url-preview-in-javascript"></a>Adres URL w wersji zapoznawczej w języku JavaScript 
+# <a name="url-preview-in-javascript"></a>Podgląd adresu URL w języku JavaScript 
 
-Następującej aplikacji jednostronicowej Tworzenie podglądu adres URL witryny SwiftKey za pomocą kodu JavaScript: https://swiftkey.com/en. 
+Korzysta z następującej aplikacji jednostronicowej JavaScript do tworzenia adresu URL w wersji zapoznawczej witryny SwiftKey: https://swiftkey.com/en. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Uzyskiwanie klucza dostępu dla bezpłatnej wersji próbnej [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-url-preview)
 
 ## <a name="code-scenario"></a>Scenariusz kodu
-W poniższym przykładzie javascript zawiera pole tekstowe obiektu wejścia, gdy użytkownik musi wprowadzić adres URL, aby wyświetlić podgląd.  Po kliknięciu przez użytkownika **Podgląd** przycisk tras metody onclick `getPreview` gdzie kodu generuje żądania sieci Web w taki sposób, aby **UrlPreview** punktu końcowego.
+Poniższy przykład kodu javascript zawiera pole tekstowe obiektu wejściowego, gdy użytkownik wprowadzi adres URL, aby wyświetlić podgląd.  Kiedy użytkownik kliknie **(wersja zapoznawcza)** przycisk trasy metoda onclick `getPreview` gdzie kod generuje żądanie sieci Web w taki sposób, aby **UrlPreview** punktu końcowego.
 
-Kod tworzy *XMLHttpRequest*, dodaje *Ocp-Apim-subskrypcji — klucz* nagłówka i klucz i wysyła żądanie.  Dodaje Zdarzenie asynchroniczne program obsługi przetwarzał odpowiedzi.
+Ten kod tworzy *XMLHttpRequest*, dodaje *Ocp-Apim-Subscription-Key* nagłówka i klucz i wysyła żądanie.  Dodaje procedurę obsługi zdarzeń asynchronicznych do przetwarzania odpowiedzi.
 
-Jeśli odpowiedź zwróci pomyślnie, program obsługi przypisuje tekst JSON odpowiedzi `demo` akapitu na stronie. Inne elementy odpowiedzi są ustawione na następuje do wyświetlenia.
+Jeśli odpowiedź zwróci się pomyślnie, program obsługi przypisuje tekst kodu JSON odpowiedzi `demo` akapitu na stronie. Inne elementy odpowiedzi są ustawione na następuje do wyświetlenia.
 
-**Nieprzetworzona odpowiedź w formacie JSON**
+**Nieprzetworzoną odpowiedź JSON**
 
 ````
 {
@@ -46,17 +46,17 @@ Jeśli odpowiedź zwróci pomyślnie, program obsługi przypisuje tekst JSON odp
 
 ````
 
-**Uruchomiona wersja demonstracyjna**
+**Uruchamianie demonstracyjnego**
 
-![Przykład JavaScript adres Url w wersji zapoznawczej](./media/java-script-demo.png)
+![Przykład JavaScript adresu Url w wersji zapoznawczej](./media/java-script-demo.png)
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 
 Aby uruchomić aplikację:
 
-1. Zastąp `YOUR-SUBSCRIPTION-KEY` wartość kluczem dostępu prawidłową dla Twojej subskrypcji.
+1. Zastąp `YOUR-SUBSCRIPTION-KEY` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 2. Zapisz plik z rozszerzeniem .html HTML i skryptu.
-3. Uruchom strony sieci Web w przeglądarce.
+3. Uruchom stronę sieci Web w przeglądarce.
 4. Użyj istniejącego adresu URL lub inną nazwę w polu tekstowym.
 5. Kliknij przycisk **Podgląd** przycisku.
 
@@ -127,7 +127,7 @@ Aby uruchomić aplikację:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](csharp.md)
-- [Szybki Start Java](java-quickstart.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+- [Przewodnik Szybki Start języka C#](csharp.md)
+- [Przewodnik Szybki Start języka Java](java-quickstart.md)
+- [Przewodnik Szybki Start węzła](node-quickstart.md)
+- [Przewodnik Szybki Start języka Python](python-quickstart.md)

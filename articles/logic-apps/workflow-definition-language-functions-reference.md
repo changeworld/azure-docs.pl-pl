@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 78e991fcac87d59ed7b84180192899ddbdf330f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105643"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307117"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -80,7 +80,7 @@ Aby pracować z ciągów, można użyć tych funkcji ciąg, a także niektóre [
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg kończy się podanym podciągiem. | 
 | [Identyfikator GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generuj Unikatowy identyfikator globalny (GUID) jako ciąg. | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwraca pozycję początkową podciąg. | 
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwróć pozycji końcowej dla podciąg. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwraca pozycję początkową ostatnie wystąpienie podciągu. | 
 | [Zastąp](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zamień podciąg określony ciąg i zwraca ciąg zaktualizowane. | 
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę, która ma wszystkich znaków z ciągu i oddziela każdego znaku znakiem określonego ogranicznika. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg zaczyna się od określonego podciąg. | 
@@ -2123,7 +2123,7 @@ indexOf('<text>', '<searchText>')
 
 | Wartość zwracana | Typ | Opis | 
 | ------------ | ---- | ----------- | 
-| <*wartość indeksu*>| Liczba całkowita | Począwszy od pozycji lub indeks wartość określony podciąg. <p>Jeśli ciąg nie zostanie znaleziony, zwraca liczbę od -1. </br>Jeśli ten ciąg jest pusty, zwraca numer 0. | 
+| <*wartość indeksu*>| Liczba całkowita | Począwszy od pozycji lub indeks wartość określony podciąg. <p>Jeśli ciąg nie zostanie znaleziony, zwraca liczbę od -1. | 
 |||| 
 
 *Przykład* 
@@ -2387,7 +2387,7 @@ I zwraca następujące wyniki:
 
 ### <a name="lastindexof"></a>lastIndexOf —
 
-Zwróć końcową wartość w pozycji lub indeks podciąg. Ta funkcja nie jest rozróżniana wielkość liter, a indeksy rozpoczynać się od cyfry 0.
+Zwraca pozycję początkową lub wartość indeksu ostatnie wystąpienie podciągu. Ta funkcja nie jest rozróżniana wielkość liter, a indeksy rozpoczynać się od cyfry 0.
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2401,18 +2401,18 @@ lastIndexOf('<text>', '<searchText>')
 
 | Wartość zwracana | Typ | Opis | 
 | ------------ | ---- | ----------- | 
-| <*wartość końcowa indeksu*> | Liczba całkowita | Końcowy indeks lub pozycji wartość określony podciąg. <p>Jeśli ciąg nie zostanie znaleziony, zwraca liczbę od -1. </br>Jeśli ten ciąg jest pusty, zwraca numer 0. | 
+| <*wartość końcowa indeksu*> | Liczba całkowita | Na pozycji lub indeks wartość początkową dla ostatniego wystąpienia określony podciąg. <p>Jeśli ciąg nie zostanie znaleziony, zwraca liczbę od -1. | 
 |||| 
 
 *Przykład* 
 
-W tym przykładzie wyszukuje końcową wartość indeksu dla podciągu "world" w ciągu "hello world":
+W tym przykładzie wyszukuje wartość początkową indeks ostatniego wystąpienia podciągu "world" w ciągu "hello world":
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-I zwraca wynik: `10`
+I zwraca wynik: `6`
 
 <a name="length"></a>
 

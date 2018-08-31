@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055974"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287448"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure Cosmos DB: procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika
 
 Dowiedz się, jak usługi Azure Cosmos DB wykonywania języku zintegrowanym, transakcyjne języka JavaScript umożliwia programistom pisanie **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)**  natywnie w [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) języka JavaScript. Integracja z językiem JavaScript umożliwia pisanie logiki programu, które mogą być dostarczane i wykonywane bezpośrednio w ramach partycji magazynu bazy danych. 
 
-Firma Microsoft zaleca rozpoczęcie od obejrzenia poniższego klipu wideo, gdzie Andrew Liu zawiera wprowadzenie do modelu programowania bazy danych po stronie serwera usługi Azure Cosmos DB. 
-
-> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
->
-> 
-
-Następnie wróć do tego artykułu, którym poznasz odpowiedzi na następujące pytania:  
+W tym artykule dowiesz się, odpowiedzi na następujące pytania:  
 
 * Jak pisać procedury składowanej, wyzwalacza lub funkcji definiowanych przez użytkownika przy użyciu języka JavaScript
 * Jak Cosmos DB gwarantuje ACID?

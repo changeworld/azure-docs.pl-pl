@@ -3,14 +3,14 @@ title: Architektura replikacji platformy Azure w usłudze Azure Site Recovery VM
 description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania lokalnych maszyn wirtualnych z programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 48adf61dc0f1796b820e1e14ca509d4618c6256b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920571"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288145"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>Architektura Azure replikacji VMware –
 
@@ -32,22 +32,7 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane na pot
 
 ![Składniki](./media/vmware-azure-architecture/arch-enhanced.png)
 
-## <a name="configuration-steps"></a>Kroki konfiguracji
 
-Czynności tworzenia oprogramowania VMware do migracji lub odzyskiwania po awarii platformy Azure są następujące:
-
-1. **Konfigurowanie składników platformy Azure**. Potrzebujesz konta platformy Azure przy użyciu odpowiednich uprawnień, konto magazynu platformy Azure, siecią wirtualną platformy Azure i magazyn usługi Recovery Services. [Dowiedz się więcej](tutorial-prepare-azure.md).
-2. **Konfigurowanie lokalnych**. Obejmują one skonfigurowanie konta na serwerze VMware tak, aby Usługa Site Recovery może automatycznie odnajdować maszyny wirtualne do replikacji, konfigurując konto, który może służyć do instalowania składnika usługi Mobility na maszynach wirtualnych, którą chcesz replikować i weryfikowanie aby serwery VMware i maszyny wirtualne spełniają wymagania wstępne. Możesz również opcjonalnie można przygotować połączyć się z tych maszyn wirtualnych platformy Azure po włączeniu trybu failover. Usługa Site Recovery replikuje dane maszyny Wirtualnej do konta usługi Azure storage i tworzy maszyny wirtualne platformy Azure przy użyciu danych, po uruchomieniu trybu failover na platformie Azure. [Dowiedz się więcej](vmware-azure-tutorial-prepare-on-premises.md).
-3. **Konfigurowanie replikacji**. Możesz wybrać miejsce ma zostać zreplikowana na. Możesz skonfigurować środowiska źródłowego replikacji poprzez skonfigurowanie pojedynczego lokalnego wdrożenia oprogramowania VMware maszyny Wirtualnej (serwer konfiguracji), w którym są uruchamiane, wszystkie lokalne składniki usługi Site Recovery, które należy. Po zakończeniu instalacji należy zarejestrować komputera serwera konfiguracji w magazynie usługi Recovery Services. Następnie wybierz ustawienia docelowej. [Dowiedz się więcej](vmware-azure-tutorial.md).
-4. **Tworzenie zasad replikacji**. Należy utworzyć zasady replikacji, określający, jak replikacja powinno mieć miejsce. 
-    - **Próg celu punktu odzyskiwania**: Monitorowanie to ustawienie stanów, jeśli replikacja nie występuje w określonym czasie, alert (i opcjonalnie wiadomość e-mail) jest wystawiony. Na przykład jeśli próg celu punktu odzyskiwania jest ustawiona na 30 minut, a problem uniemożliwia replikację z występuje w ciągu 30 minut, zdarzenie jest generowane. To ustawienie nie ma wpływu na replikację. Replikacja jest ciągły i punkty odzyskiwania są tworzone co kilka minut
-    - **Przechowywanie**: punkt odzyskiwania przechowywania Określa, ile punktów odzyskiwania powinny być umieszczone na platformie Azure. Można określić wartość z zakresu od 0 do 24 godzin dla usługi premium storage lub w górę do 72 godzin do magazynu w warstwie standardowa. Możesz przełączać awaryjnie do najnowszego punktu odzyskiwania lub punkt przechowywanych Jeśli ustawisz wartość większą od zera. Po okno przechowywania punkty odzyskiwania zostaną usunięte.
-    - **Migawki spójne na poziomie awarii**: Domyślnie usługa Site Recovery tworzy migawki spójne na poziomie awarii i tworzy punkty odzyskiwania z nich co kilka minut. Punkt odzyskiwania spójny na wszystkich składników powiązane ze sobą dane w przypadku zapisu rzędu spójny awarii, znajdowały się w chwili tworzenia punktu odzyskiwania. Aby dowiedzieć się więcej, Wyobraź sobie stan danych na dysku twardym komputera po awarii zasilania lub podobne zdarzenie. Punktu odzyskiwania spójnego na poziomie awarii jest zwykle wystarczające, jeśli aplikacja jest przeznaczona do sprawności po awarii bez żadnych niespójności w danych.
-    - **Migawki spójne z aplikacji**: Jeśli ta wartość nie jest zero, usługi mobilności uruchomioną na maszynie Wirtualnej spróbuje go wygenerować migawki spójne z systemu plików i punktów odzyskiwania. Pierwszy migawki po zakończeniu replikacji początkowej. Następnie migawki są pobierane z częstotliwością, które określisz. Punkt odzyskiwania jest spójne z aplikacjami oprócz kolejności zapisu wykonać wszystkie operacje spójne, uruchomionej aplikacji i opróżnienia buforów, ich na dysku (przełączanie w stan spoczynku aplikacji). Punkty odzyskiwania spójne na poziomie aplikacji są zalecane w przypadku aplikacji bazy danych, takich jak SQL, Oracle i Exchange. Jeśli migawki spójne na poziomie awarii jest wystarczająca, tę wartość można ustawić na wartość 0.  
-    - **Spójność wielu maszyn wirtualnych**: można opcjonalnie utworzyć grupę replikacji. Następnie po włączeniu replikacji, możesz zbierać maszyn wirtualnych w tej grupie. Maszyn wirtualnych w replikacji grupy replikacji ze sobą, a udostępnione punkty odzyskiwania spójne na poziomie awarii i spójny na poziomie aplikacji, gdy przełączone w tryb failover. Tego opcji należy używać ostrożnie, ponieważ może mieć wpływ na wydajność obciążenia jako migawki potrzebne do zebrania na wielu komputerach. Jeśli maszyny wirtualne działają te same obciążenia i muszą być zgodne, a maszyny wirtualne mają podobne churns. Możesz dodać maksymalnie 8 maszyn wirtualnych do grupy. 
-5. **Włączanie replikacji maszyny Wirtualnej**. Na koniec należy włączyć replikację dla lokalnych maszyn wirtualnych VMware. Jeśli konto, aby zainstalować usługę mobilności i określić, czy usługa Site Recovery należy wykonać instalację wypychaną usługi Mobility zostanie zainstalowana na każdej maszynie Wirtualnej, dla którego należy włączyć replikację. [Dowiedz się więcej](vmware-azure-tutorial.md#enable-replication). Jeśli utworzono grupy replikacji w celu zachowania spójności wielu maszyn wirtualnych, maszyny wirtualne zostaną dodane do tej grupy.
-6. **Testowanie trybu failover**. Po skonfigurowaniu jest wszystko można wykonać test trybu failover do sprawdzenia, czy maszyny wirtualne Failover na platformę Azure zgodnie z oczekiwaniami. [Dowiedz się więcej](tutorial-dr-drill-azure.md).
-7. **Tryb failover**. Tylko w przypadku migrowania maszyn wirtualnych na platformie Azure — możesz uruchomić pełną trybu failover, aby to zrobić. Jeśli podczas konfigurowania odzyskiwania po awarii, możesz uruchomić pełną przejścia w tryb failover na potrzeby. Podczas odzyskiwania pełnego systemu po włączeniu trybu failover na platformie Azure, mogą nie do lokacji lokalnej jako lub jest ona dostępna. [Dowiedz się więcej](vmware-azure-tutorial-failover-failback.md).
 
 ## <a name="replication-process"></a>Proces replikacji
 

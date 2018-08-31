@@ -1,80 +1,80 @@
 ---
-title: Rozwiązywanie problemów z usługą Magazyn danych Azure SQL | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z usługą Magazyn danych Azure SQL.
+title: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 27445eb754a5e985485db101c9d0fe1ba8aa2451
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525251"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307251"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługą Magazyn danych Azure SQL
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 Ten temat zawiera listę często zadawane pytania dotyczące rozwiązywania problemów.
 
 ## <a name="connecting"></a>Łączenie
 | Problem | Rozwiązanie |
 |:--- |:--- |
-| Logowanie użytkownika "NT\LOGOWANIE" nie powiodło się. (Program Microsoft SQL Server, błąd: 18456) |Ten błąd występuje, gdy użytkownik AAD próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, albo określić magazyn danych SQL, aby połączyć się w chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Omówienie zabezpieczeń] [ Security overview] artykułu, aby uzyskać więcej informacji. |
-| Serwer główny "MyUserName" nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń. Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Logowanie użytkownika "MyUserName" nie powiodło się. (Program Microsoft SQL Server, błąd: 916) |Ten błąd występuje, gdy użytkownik AAD próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, albo określić magazyn danych SQL, aby połączyć się w chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Omówienie zabezpieczeń] [ Security overview] artykułu, aby uzyskać więcej informacji. |
-| Błąd CTAIP |Ten błąd może wystąpić po utworzeniu nazwy logowania bazy danych master serwera SQL, ale nie znajduje się w bazie danych magazynu danych SQL.  Jeśli ten błąd wystąpi, Przyjrzyjmy się [Omówienie zabezpieczeń] [ Security overview] artykułu.  W tym artykule opisano, jak utworzyć identyfikator logowania i użytkownika na wzorcu, a następnie utworzyć użytkownika w bazie danych usługi SQL Data Warehouse. |
-| Blokowane przez zaporę |Bazy danych SQL Azure są chronione przez zapory poziomu serwera i bazy danych do zapewnienia tylko znane adresy IP, które mają dostęp do bazy danych. Zapory są zabezpieczone przez domyślną, co oznacza, że musisz jawnie włączyć oraz adres IP lub zakres adresów, zanim będzie można połączyć.  Aby skonfigurować zaporę tak, aby uzyskać dostęp, postępuj zgodnie z instrukcjami [konfigurowania serwera zapory dostępu do sieci IP klienta] [ Configure server firewall access for your client IP] w [inicjowania obsługi administracyjnej instrukcje] [Provisioning instructions]. |
-| Nie można połączyć z narzędziem lub sterownika |Usługa SQL Data Warehouse zaleca użycie [SSMS][SSMS], [narzędzi SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd] [ sqlcmd] zgromadzonych danych. Więcej szczegółów na sterowniki i nawiązywania połączenia z usługi SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługą Magazyn danych SQL Azure] [ Connect to Azure SQL Data Warehouse] artykułów. |
+| Nie można zalogować użytkownika "NT\LOGOWANIE". (Program Microsoft SQL Server, błąd: 18456) |Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
+| Serwer nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń podmiotu zabezpieczeń "Moja_nazwa_użytkownika". Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Nie można zalogować użytkownika "Moja_nazwa_użytkownika". (Program Microsoft SQL Server, błąd: 916) |Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
+| Błąd CTAIP |Ten błąd może wystąpić po utworzeniu nazwy logowania na główna baza danych SQL, ale nie w bazie danych SQL Data Warehouse.  Jeśli wystąpi ten błąd, Przyjrzyj się [Przegląd zabezpieczeń] [ Security overview] artykułu.  W tym artykule wyjaśniono, jak utworzyć identyfikator logowania i użytkownika na wzorzec, a następnie utworzyć użytkownika w bazie danych SQL Data Warehouse. |
+| Blokowane przez zaporę |Baz danych SQL Azure są chronione przez zapory poziomu serwera i bazy danych zapewniające tylko znane adresy IP, które mają dostęp do bazy danych. Zapory są zabezpieczone przez domyślne, co oznacza, że musisz jawnie włączyć i adres IP lub zakres adresów, zanim będzie można połączyć.  Aby skonfigurować zaporę w taki sposób, aby uzyskać dostęp, wykonaj kroki opisane w [skonfigurować dostęp do zapory serwera na Twój adres IP klienta] [ Configure server firewall access for your client IP] w [aprowizacji instrukcje] [Provisioning instructions]. |
+| Nie można nawiązać połączenia przy użyciu narzędzia lub sterownika |Usługa SQL Data Warehouse zaleca używanie [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd] [ sqlcmd] wykonywać zapytania o swoje dane. Aby uzyskać szczegółowe informacje na temat sterowników i łączenie z usługą SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługi Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] artykułów. |
 
 ## <a name="tools"></a>Narzędzia
 | Problem | Rozwiązanie |
 |:--- |:--- |
-| Eksplorator obiektów programu Visual Studio nie ma użytkowników usługi AAD |Jest to znany problem.  Jako obejście, wyświetlania informacji o użytkownikach w [sys.database_principals][sys.database_principals].  Zobacz [uwierzytelniania usługi Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Aby dowiedzieć się więcej o korzystaniu z usługi Azure Active Directory z usługą Magazyn danych SQL. |
-|Podręcznik obsługi skryptów, za pomocą Kreatora skryptów lub łączących się za pomocą narzędzia SSMS jest powolne, zawieszone lub tworzenie błędów| Upewnij się, że użytkownicy zostały utworzone w bazie danych master. W oknie dialogowym Opcje obsługi skryptów również upewnij się, że wersji aparatu jest ustawiony jako "Microsoft Azure SQL Data magazynu Edition" i "Baza danych SQL Microsoft Azure" jest typ aparatu.|
+| Brak użytkowników usługi AAD w Eksploratorze obiektów programu Visual Studio |Jest to znany problem.  Jako obejście, Wyświetl użytkowników w [sys.database_principals][sys.database_principals].  Zobacz [uwierzytelniania usługi Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Aby dowiedzieć się więcej o korzystaniu z usługi Azure Active Directory z usługą SQL Data Warehouse. |
+|Podręcznik obsługi skryptów, za pomocą Kreatora skryptów lub łączących się za pomocą programu SSMS jest powolne, zawiesiła się lub tworzenie błędów| Upewnij się, że użytkownicy zostały utworzone w bazie danych master. W oknie dialogowym Opcje obsługi skryptów również upewnij się, że wersja silnika jest ustawiana jako "Microsoft Azure SQL Data Warehouse w wersji" i typ aparatu to "Microsoft Azure SQL Database".|
 
 ## <a name="performance"></a>Wydajność
 | Problem | Rozwiązanie |
 |:--- |:--- |
-| Rozwiązywanie problemów z wydajnością zapytania |Jeśli chcesz rozwiązać określonego zapytania, Rozpocznij od [dowiedzieć, jak monitorować zapytań][Learning how to monitor your queries]. |
-| Zapytanie niską wydajność i planów często wynika ma statystyk |Najczęstszą przyczyną niskiej wydajności jest brak statystyk dotyczących tabel.  Zobacz [utrzymania statystyk tabeli] [ Statistics] szczegółowe informacje o sposobie tworzenia statystyk i dlaczego są krytyczne znaczenie dla wydajności. |
-| Współbieżność niski / zapytań w kolejce |Opis [zarządzania obciążenia] [ Workload management] jest ważne, aby zrozumieć, jak Równoważenie alokacji pamięci z współbieżności. |
-| Jak zaimplementować najlepsze rozwiązania |Najlepiej rozpocząć informacje o sposobach poprawiać wydajność zapytań [najlepsze rozwiązania w zakresie usługi SQL Data Warehouse] [ SQL Data Warehouse best practices] artykułu. |
-| Jak poprawić wydajność w przypadku skalowania |Czasami rozwiązanie do poprawy wydajności, to po prostu Dodaj więcej mocy do zapytań przez obliczeniowej [skalowania SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Wydajność zapytań niską wyniku indeksu słabą jakość |Sytuacje kwerend może to spowolnić z powodu [jakości indeksu magazynu kolumn niską][Poor columnstore index quality].  Ten artykuł, aby uzyskać więcej informacji i sposobu [Odbuduj indeksy, aby poprawić jakość segmentu][Rebuild indexes to improve segment quality]. |
+| Rozwiązywanie problemów z wydajnością zapytań |Jeśli próbujesz rozwiązywać określone zapytanie, skorzystaj z [jak monitorować zapytań][Learning how to monitor your queries]. |
+| Zapytanie niską wydajność i plany często są wynikiem ma statystyk |Najczęstszą przyczyną niskiej wydajności jest brak statystyki tabel.  Zobacz [utrzymywanie statystyki tabeli] [ Statistics] szczegółowe informacje dotyczące sposobu tworzenia statystyk i dlaczego są one mają kluczowe znaczenie dla wydajności. |
+| Niski współbieżności / zapytań w kolejce |Opis [Zarządzanie obciążeniami] [ Workload management] jest ważne, aby zrozumieć, jak zrównoważyć alokacji pamięci za pomocą współbieżności. |
+| Jak wdrożyć najlepsze rozwiązania |Najlepszym miejscem do rozpoczęcia informacje dotyczące sposobów, aby poprawić wydajność zapytań jest [najlepsze rozwiązania SQL Data Warehouse] [ SQL Data Warehouse best practices] artykułu. |
+| Jak poprawić wydajność, ze skalowaniem |Czasami rozwiązania do zwiększania wydajności jest po prostu Dodaj coraz większej mocy obliczeniowej możliwości zapytań przez [skalowania usługi SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Zapytania niską wydajność indeksu niskiej jakości |Sytuacje zapytania może spowolnić z powodu [jakości indeksu magazynu kolumn niską][Poor columnstore index quality].  Ten artykuł, aby uzyskać więcej informacji i sposobie [Odbuduj indeksy, aby poprawić jakość segmentu][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Zarządzanie systemem
 | Problem | Rozwiązanie |
 |:--- |:--- |
-| Msg 40847: Nie można wykonać operacji, ponieważ serwer przekroczyłby dozwolony przydział jednostki transakcji bazy danych z 45000. |Obniż [DWU] [ DWU] podjęto próbę utworzenia bazy danych lub [zażądać zwiększenia limitu przydziału][request a quota increase]. |
-| Badanie wykorzystania miejsca |Zobacz [tabeli rozmiary] [ Table sizes] zrozumienie wykorzystanie miejsca systemu. |
-| Pomóc w zarządzaniu tabel |Zobacz [omówienie tabeli] [ Overview] artykułu, aby uzyskać pomoc dotyczącą zarządzania tabel.  Ten artykuł zawiera także linki do bardziej szczegółowych tematów, takich jak [typów danych tabeli][Data types], [Dystrybucja tabeli][Distribute], [Indeksowania tabeli][Index], [partycjonowania tabeli][Partition], [utrzymania statystyk tabeli] [ Statistics] i [tabel tymczasowych][Temporary]. |
-|Pasek postępu danych przezroczystego szyfrowania (funkcji TDE) nie jest aktualizowana w portalu Azure|Można wyświetlić stan funkcji TDE za pośrednictwem [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
+| Msg 40847: Nie można wykonać operacji, ponieważ serwer przekroczyłby dozwolony przydział jednostki transakcji bazy danych wynoszący 45000. |Obniż [DWU] [ DWU] próby utworzenia bazy danych lub [zażądać zwiększenia limitu przydziału][request a quota increase]. |
+| Badanie wykorzystania miejsca |Zobacz [tabeli rozmiary] [ Table sizes] do zrozumienia wykorzystania miejsca systemu. |
+| Pomoc w zarządzaniu tabel |Zobacz [Omówienie tabel] [ Overview] artykuł, aby uzyskać pomoc w zarządzaniu tabel.  Ten artykuł zawiera także łącza do bardziej szczegółowych tematów, takich jak [typy danych w tabelach][Data types], [Dystrybucja tabeli][Distribute], [Indeksowania tabeli][Index], [partycjonowania tabeli][Partition], [utrzymywanie statystyki tabeli] [ Statistics] i [tabele tymczasowe][Temporary]. |
+|Pasek postępu usługi technologii transparent data encryption (TDE) nie aktualizuje się w witrynie Azure Portal|Można wyświetlić stan TDE za pośrednictwem [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
 
 ## <a name="polybase"></a>Program Polybase
 | Problem | Rozwiązanie |
 |:--- |:--- |
-| Obciążenia zakończy się niepowodzeniem z powodu dużych wierszy |Obsługa dużych wiersza nie jest obecnie dostępna dla programu Polybase.  Oznacza to, że jeśli tabela zawiera VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX), tabel zewnętrznych nie można załadować danych.  Podczas ładowania dużych wierszy jest obecnie obsługiwane tylko za pośrednictwem usługi fabryka danych Azure (za pomocą narzędzia BCP), usługi Azure Stream Analytics, SSIS, BCP lub klasy .NET SQLBulkCopy. Obsługa PolyBase dla dużych wierszy zostanie dodana w przyszłej wersji. |
-| obciążenia BCP tabeli z typem danych MAX kończy się niepowodzeniem |Jest to znany problem, który wymaga VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX) można umieścić na koniec tabeli w niektórych scenariuszach.  Spróbuj przenieść maksymalna liczba kolumn na koniec tabeli. |
+| Obciążenia kończy się niepowodzeniem z powodu dużych wierszy |Obsługa duży wiersz nie jest obecnie dostępny dla programu Polybase.  Oznacza to, że jeśli tabela zawiera, VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX), tabele zewnętrzne nie można załadować danych.  Trwa ładowanie dużych wierszy jest obecnie obsługiwane tylko za pośrednictwem usługi Azure Data Factory (przy użyciu narzędzia BCP), Azure Stream Analytics, SSIS, BCP lub klasa .NET SQLBulkCopy. Program PolyBase obsługę dużych wierszy zostanie dodana w przyszłej wersji. |
+| kończy się niepowodzeniem obciążenia BCP tabeli z typem danych maksymalna |Istnieje znany problem, który wymaga, że umieszczone na końcu tabeli w niektórych scenariuszach VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX).  Spróbuj przenieść maksymalna liczba kolumn na koniec tabeli. |
 
 ## <a name="differences-from-sql-database"></a>Różnice z bazy danych SQL
 | Problem | Rozwiązanie |
 |:--- |:--- |
 | Nieobsługiwane funkcje bazy danych SQL |Zobacz [nieobsługiwane funkcje tabeli][Unsupported table features]. |
-| Nieobsługiwane typy danych bazy danych SQL |Zobacz [nieobsługiwane typy danych][Unsupported data types]. |
-| Usuń i ograniczenia aktualizacji |Zobacz [obejścia aktualizacji][UPDATE workarounds], [obejścia DELETE] [ DELETE workarounds] i [przy użyciu CTAS w celu obejścia nieobsługiwany aktualizacji i Usuń składni][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
-| Instrukcji MERGE nie jest obsługiwane. |Zobacz [obejścia scalania][MERGE workarounds]. |
-| Procedura składowana ograniczenia |Zobacz [przechowywane procedury ograniczenia] [ Stored procedure limitations] do zrozumienia niektórych ograniczeń procedur składowanych. |
-| Funkcje UDF nie obsługują instrukcji "SELECT" |Jest to aktualne ograniczenie naszych funkcji UDF.  Zobacz [CREATE FUNCTION] [ CREATE FUNCTION] obsługujemy składni. |
+| Nieobsługiwane typy danych SQL Database |Zobacz [nieobsługiwane typy danych][Unsupported data types]. |
+| Usuń i ograniczenia dotyczące aktualizacji |Zobacz [obejścia aktualizacji][UPDATE workarounds], [obejścia DELETE] [ DELETE workarounds] i [za pomocą instrukcji CTAS w celu obejścia nieobsługiwany aktualizacji i Usuń składni][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
+| Instrukcja MERGE nie jest obsługiwana. |Zobacz [obejścia scalania][MERGE workarounds]. |
+| Ograniczenia dotyczące procedury składowanej |Zobacz [przechowywane procedury ograniczenia] [ Stored procedure limitations] Aby poznać niektóre ograniczenia procedur składowanych. |
+| Funkcje zdefiniowane przez użytkownika nie obsługują instrukcji "SELECT" |To aktualne ograniczenie nasze funkcje zdefiniowane przez użytkownika.  Zobacz [CREATE FUNCTION] [ CREATE FUNCTION] składnię, firma Microsoft obsługuje. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać pomoc w znalezieniu rozwiązania problemu Oto inne zasoby, które można wypróbować.
+Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono niektóre zasoby, które można wypróbować.
 
 * [Blogi]
 * [Żądania funkcji]
-* [Wideo]
+* [Filmy wideo]
 * [Blogi zespołu CAT]
 * [Tworzenie biletu pomocy technicznej]
 * [Forum MSDN]
@@ -130,4 +130,4 @@ Aby uzyskać pomoc w znalezieniu rozwiązania problemu Oto inne zasoby, które m
 [Forum MSDN]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

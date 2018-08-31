@@ -10,49 +10,81 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
+ms.openlocfilehash: 9d5fce5a80ac1f281fdbe6afe7f9a97816807ccc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189559"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287091"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Udzielanie dostępu do innych administratorów do zarządzania usługi PIM
-Administrator globalny, który umożliwia automatyczne usługi Azure AD Privileged Identity Management (PIM) dla organizacji, skorzystaj z przypisań ról i dostępu do usługi PIM. Nikt inny nie pobiera zapisu domyślnie, jednak tym innych administratorów globalnych. Inne Administratorzy globalni, Administratorzy zabezpieczeń i czytelnicy zabezpieczeń mają dostęp tylko do odczytu do usługi Azure AD PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać inne osoby **administratorem ról uprzywilejowanych** roli.
+
+Administrator globalny, który umożliwia automatyczne usługi Azure AD Privileged Identity Management (PIM) dla organizacji, skorzystaj z przypisań ról i dostępu do usługi PIM. Nikt inny nie pobiera zapisu domyślnie, jednak tym innych administratorów globalnych. Inne Administratorzy globalni, Administratorzy zabezpieczeń i czytelnicy zabezpieczeń mają dostęp tylko do odczytu do usługi PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać inne osoby **Administrator ról uprzywilejowanych** roli.
 
 > [!NOTE]
-> Zarządzanie usługą Azure AD PIM wymaga usługi Azure MFA. Ponieważ kont Microsoft nie można zarejestrować usługi Azure MFA, użytkownik zaloguje się za pomocą konta Microsoft nie może uzyskać dostępu usługi Azure AD PIM.
-> 
-> 
+> Zarządzanie usługą PIM wymaga usługi Azure MFA. Ponieważ kont Microsoft nie można zarejestrować usługi Azure MFA, użytkownik zaloguje się za pomocą konta Microsoft nie może uzyskać dostępu usługi PIM.
 
-Upewnij się, zawsze co najmniej dwóch użytkowników rolę administrator ról uprzywilejowanych w przypadku, gdy jeden użytkownik jest zablokowany lub jego konto zostało usunięte.
+Upewnij się, są zawsze co najmniej dwóch użytkowników należących do roli Administrator ról uprzywilejowanych w przypadku, gdy jeden użytkownik jest zablokowany lub jego konto zostało usunięte.
 
-## <a name="give-another-user-access-to-manage-pim"></a>Udostępnij innego użytkownika do zarządzania usługi PIM
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz **usługi Azure AD Privileged Identity Management** aplikacji na pulpicie nawigacyjnym.
-2. Wybierz **Zarządzanie rolami uprzywilejowanymi** > **administratorem ról uprzywilejowanych** > **Dodaj**.
-   
-    ![Dodaj administratorów ról uprzywilejowanych — zrzut ekranu](./media/pim-how-to-give-access-to-pim/PIM_add_PRA.png)
-3. W bloku Dodawanie zarządzanych użytkowników krok 1 została już wykonana. Wybierz krok 2, **wybranym użytkownikom** i Wyszukaj użytkownika, które chcesz dodać.
-   
-    ![Wybierz użytkowników — zrzut ekranu](./media/pim-how-to-give-access-to-pim/PIM_select_users.png)
-4. Wybierz użytkownika z poziomu wyników wyszukiwania, a następnie kliknij przycisk **gotowe**.
-5. Kliknij przycisk **OK** Aby zapisać wybrane opcje. Użytkownik, który wybrano pojawi się na liście Administratorzy ról uprzywilejowanych.
-   
-   * Zawsze, gdy nowa rola zostanie przydzielone innej, ich są automatycznie konfigurowane jako uprawnionych aktywacji roli. Jeśli chcesz były one stałe w roli, kliknij użytkownika na liście. Wybierz **Ustaw jako trwałą** w menu informacji użytkownika.
-6. Wyślij łącze do użytkownika [wprowadzenie do usługi Azure AD Privileged Identity Management](pim-getting-started.md).
+## <a name="grant-access-to-manage-pim"></a>Przyznaj dostęp umożliwiający zarządzanie usługą PIM
 
-## <a name="remove-another-users-access-rights-for-managing-pim"></a>Usuń prawa dostępu przez innego użytkownika do zarządzania usługi PIM
-Zanim usuniesz ktoś z administratorem ról uprzywilejowanych, zawsze upewnij się, nadal będą dwóch użytkowników przypisanych do niego.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. Na pulpicie nawigacyjnym usługi PIM kliknij rolę **administratorem ról uprzywilejowanych**.  Zostanie wyświetlona lista użytkowników, obecnie w tej roli.
-2. Kliknij użytkownika na liście użytkowników.
-3. Kliknij pozycję **Usuń**.  Otrzymasz komunikat z potwierdzeniem.
-4. Kliknij przycisk **tak** można usunąć użytkownika z roli.
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+
+1. Kliknij przycisk **role**.
+
+    ![Role katalogu usługi AD PIM Azure — role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+
+1. Kliknij przycisk **Administrator ról uprzywilejowanych** roli, aby otworzyć stronę elementów członkowskich.
+
+    ![Administrator ról uprzywilejowanych — członkowie](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
+
+1. Kliknij przycisk **Dodawanie elementu członkowskiego** aby otworzyć okienko Dodawanie zarządzanych członków.
+
+1. Kliknij przycisk **Wybieranie elementów członkowskich** aby otworzyć okienko wybierz elementy członkowskie.
+
+    ![Administrator ról uprzywilejowanych — wybierz elementy członkowskie](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
+
+1. Wybierz składnik, a następnie kliknij przycisk **wybierz**.
+
+1. Kliknij przycisk **OK** się kwalifikuje się do elementu członkowskiego **Administrator ról uprzywilejowanych** roli.
+
+    W przypadku przypisania roli do osoby w usłudze PIM, są one automatycznie konfigurowane jako **kwalifikujących się** aktywowania roli.
+
+1. Utrwalenie elementu członkowskiego, kliknij użytkownika na liście elementów członkowskich Administrator ról uprzywilejowanych.
+
+1. Kliknij przycisk **więcej** i następnie **były trwałe** utrwalenie przypisania.
+
+    ![Administrator ról uprzywilejowanych - były trwałe](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+
+1. Wyślij łącze do użytkownika [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
+
+## <a name="remove-access-to-manage-pim"></a>Usuń dostęp umożliwiający zarządzanie usługą PIM
+
+Zanim usuniesz ktoś z roli Administrator ról uprzywilejowanych, zawsze upewnij się, nadal będzie co najmniej dwóch użytkowników przypisanych do niego.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
+
+1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+
+1. Kliknij przycisk **role**.
+
+1. Kliknij przycisk **Administrator ról uprzywilejowanych** roli, aby otworzyć stronę elementów członkowskich.
+
+1. Dodaj znacznik wyboru obok użytkownika, o których chcesz usunąć, a następnie kliknij przycisk **usuwanie elementu członkowskiego**.
+
+    ![Administrator ról uprzywilejowanych — usuwanie elementu członkowskiego](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+
+1. W komunikacie zostanie wyświetlony pytaniem, jeśli chcesz usunąć członka z roli, kliknij przycisk **tak**.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Włączanie zarządzania subskrypcjami w Twojej dzierżawie](pim-resource-roles-enable-subscription-management.md)
+- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)

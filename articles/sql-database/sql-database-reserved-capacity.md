@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634573"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306473"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
@@ -65,10 +65,11 @@ Rabat związany z rezerwacją pamięci rdzeń wirtualny jest automatycznie stoso
 
 Aby dowiedzieć się, jak zarządzać bazą danych SQL zastrzeżone rezerwacji pojemności, zobacz [wydajności rezerwowej Zarządzanie usługą SQL Database](../billing/billing-manage-reserved-vm-instance.md).
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)
-- [Zarządzanie zastrzeżeniami platformy Azure](../billing/billing-manage-reserved-vm-instance.md)
+- [Co to jest Azure rezerwacje?](../billing/billing-save-compute-costs-reservations.md)
+- [Zarządzanie usługą Azure Reservations](../billing/billing-manage-reserved-vm-instance.md)
+- [Świadomość, że rezerwacje platformy Azure z rabatami](../billing/billing-understand-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../billing/billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Rezerwacje platformy Azure w programie partnera Centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

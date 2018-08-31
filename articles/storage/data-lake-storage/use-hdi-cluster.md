@@ -1,22 +1,18 @@
 ---
 title: Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
 description: Dowiedz się, jak wykonywać zapytania na danych z usługi Azure Data Lake Gen2 — wersja zapoznawcza i przechowywać wyniki analiz.
-keywords: systemu plików hdfs, ustrukturyzowanych danych, dane bez określonej struktury, usługi data lake store, dane wejściowe z usługi Hadoop, Hadoop, dane wyjściowe, Magazyn hadoop, systemu plików hdfs w danych wejściowych, danych wyjściowych z systemu plików hdfs, magazyn systemu plików hdfs, wasb platformy azure
-services: hdinsight,storage
-tags: azure-portal
 author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4a9f79b292e58331dcd2f7cb656e24b244aa89ba
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ee169f008cc5d6b95d2ddadc68e63673372e2dc5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528512"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301837"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
 

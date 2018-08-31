@@ -1,6 +1,6 @@
 ---
-title: Obraz magazynu w rejestrze kontenera platformy Azure
-description: Szczegółowe informacje o tym jak obrazy usługi Docker kontenera są przechowywane w rejestrze kontenera platformy Azure, łącznie z zabezpieczeń, nadmiarowości i wydajności.
+title: Magazyn obrazów w usłudze Azure Container Registry
+description: Szczegółowe informacje dotyczące sposobu obrazów kontenerów platformy Docker są przechowywane w usłudze Azure Container Registry, w tym zabezpieczeń, nadmiarowości i wydajności.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,32 +8,32 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65ff60be992440c69e50a084b467a8efbb19574e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165099"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307153"
 ---
-# <a name="container-image-storage-in-azure-container-registry"></a>Kontener magazynu obrazu w rejestrze kontenera platformy Azure
+# <a name="container-image-storage-in-azure-container-registry"></a>Przechowywanie obrazów kontenerów w usłudze Azure Container Registry
 
-Każdy [podstawowa, standardowa i Premium](container-registry-skus.md) kontenera platformy Azure rejestru korzyści z magazynu Azure zaawansowane funkcje, takie jak szyfrowania na rest dla obrazu bezpieczeństwo danych i nadmiarowość geograficzna ochrony danych obrazu. W poniższych sekcjach opisano funkcje i limity przechowywania obrazów w rejestrze kontenera platformy Azure (ACR).
+Każdy [Basic, Standard i Premium](container-registry-skus.md) korzyści związane z rejestru kontenerów platformy Azure z systemem funkcje zaawansowane usługi Azure storage, takie jak szyfrowanie w spoczynku, obraz danych zabezpieczeń i geograficznej nadmiarowości ochronę danych obrazu. W następujących sekcjach opisano funkcje i limity magazyn obrazów w usłudze Azure Container Registry (ACR).
 
-## <a name="encryption-at-rest"></a>Szyfrowanie na rest
+## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
-Wszystkie obrazy kontenera w rejestrze są szyfrowane, gdy. Azure automatycznie szyfruje obraz przed przekazaniem jej i odszyfrowuje je na bieżąco, gdy użytkownik lub aplikacje i usługi ściągnięcia obrazu.
+Wszystkie obrazy kontenerów w rejestrze są szyfrowane, gdy. Azure automatycznie szyfruje obraz przed przekazaniem jej i odszyfrowuje je na bieżąco, gdy użytkownik lub aplikacji i usług Ściągnij obraz.
 
 ## <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
 
-Azure wykorzystuje schemat magazynu geograficznie nadmiarowego w celu ochrony przed utratą obrazów kontenera. Rejestru kontenera Azure automatycznie replikuje obrazów kontenera do wielu centrów danych odległymi geograficznie, uniemożliwia ich utraty awarii regionalnych magazynu.
+Platforma Azure używa schematu dla magazynu geograficznie nadmiarowego w celu ochrony przed utratą obrazów kontenerów. Usługa Azure Container Registry automatycznie replikuje obrazów kontenerów w wielu centrach danych odległym geograficznie, co uniemożliwia ich utraty awarii magazynu regionalnego.
 
 ## <a name="geo-replication"></a>Replikacja geograficzna
 
-W scenariuszach wymagających jeszcze więcej zapewnienie wysokiej dostępności, rozważ użycie [— replikacja geograficzna](container-registry-geo-replication.md) funkcji rejestrów Premium. Replikacja geograficzna pomaga zabezpieczyć się przed utraty dostępu do rejestru w przypadku *całkowita* regionalnej awarii, nie tylko błąd magazynu. Replikacja geograficzna zapewnia inne korzyści, zbyt, takich jak obraz Zamknij sieci magazynu dla szybciej wypychanie i w przypadku rozproszonej scenariusze projektowania lub wdrożenia.
+W scenariuszach wymagających jeszcze bardziej zapewnienie wysokiej dostępności, należy rozważyć użycie [geografickou replikaci](container-registry-geo-replication.md) funkcji rejestrach w warstwie Premium. Replikacja geograficzna chroni przed utratą dostępu do rejestru w przypadku powstania *całkowita* regionalnej awarii, nie tylko wystąpił błąd magazynu. Replikacja geograficzna zapewnia inne korzyści, obrazem pobliskiej sieci magazynu na potrzeby szybciej wypchnięć i ściąga w rozproszonych scenariuszach tworzenia i wdrażania.
 
 ## <a name="image-limits"></a>Limity obrazu
 
-W poniższej tabeli opisano limity obrazu i magazynu kontenera, w przypadku rejestrów kontenera platformy Azure.
+W poniższej tabeli opisano limity obrazu i magazynu kontenera w miejscu, aby rejestry kontenerów platformy Azure.
 
 | Zasób | Limit |
 | -------- | :---- |
@@ -43,15 +43,15 @@ W poniższej tabeli opisano limity obrazu i magazynu kontenera, w przypadku reje
 | Tagi | Bez ograniczeń|
 | Magazyn | 5 TB |
 
-Bardzo dużej liczby repozytoria i tagi może wpłynąć na wydajność rejestru. Okresowo usuwanie nieużywanych repozytoriów, znaczników i obrazów przy użyciu [interfejsu wiersza polecenia Azure](/cli/azure/acr), ACR [interfejsu API REST](/rest/api/containerregistry/), lub [portalu Azure] [ portal] jako część procedury obsługi z rejestru. Usunięte rejestru zasobów, takich jak obrazy, znaczników i repozytoriów *nie* odzyskane po usunięciu.
+Bardzo dużej liczby repozytoriów i tagów może wpłynąć na wydajność rejestru. Okresowo usuwać nieużywane repozytoriów, tagi i obrazy w ramach procedury obsługi Twojego rejestru. Usunięto rejestru zasobów, takich jak repozytoriów, obrazów i tagów *nie* zostać odzyskane po usunięciu. Aby uzyskać więcej informacji na temat usuwania zasobów rejestru zobacz [usuwanie obrazów kontenerów w usłudze Azure Container Registry](container-registry-delete.md).
 
-## <a name="storage-cost"></a>Koszt magazynowania
+## <a name="storage-cost"></a>Koszt usługi Storage
 
-Aby uzyskać szczegółowe informacje o cenach, zobacz [cennik rejestru kontenera Azure][pricing].
+Aby uzyskać szczegółowe informacje o cenach, zobacz [cennika usługi Azure Container Registry][pricing].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o różnych Azure kontenera rejestru jednostki SKU (Basic, Standard i Premium), zobacz [jednostki SKU rejestru kontenera Azure](container-registry-skus.md).
+Aby uzyskać więcej informacji na temat różnych Azure kontenera rejestru jednostek SKU (Basic, Standard i Premium), zobacz [jednostki SKU rejestru kontenerów platformy Azure](container-registry-skus.md).
 
 <!-- IMAGES -->
 

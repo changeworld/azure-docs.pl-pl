@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056394"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287762"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Wykonywanie zapytań dotyczących danych usługi Azure Cosmos DB za pomocą zapytań SQL
 
@@ -27,17 +27,7 @@ Microsoft Azure Cosmos DB obsługuje tworzenie zapytań dla dokumentów przy uż
 
 * Usługa Azure Cosmos DB przy użyciu języka JavaScript w modelu programowania jako podstawa język zapytań. Interfejs API SQL zostaje umieszczone w systemie typów języka JavaScript, Obliczanie wyrażenia i wywołania funkcji. To umożliwiłoby przewiduje naturalnych modelu programowania projekcje relacyjnych, hierarchicznych nawigacji między dokumentów JSON, samodzielnie sprzężeń, zapytań przestrzennych i wywołania funkcji zdefiniowanych przez użytkownika (UDF), napisanych w całości w języku JavaScript, m.in. 
 
-W tym artykule przedstawiono kilka przykładów zapytań SQL za pomocą prostych dokumentów JSON. Aby uzyskać informacje dotyczące składni języka SQL usługi Azure Cosmos DB, zobacz [dokumentacja składni SQL](sql-api-sql-query-reference.md) artykułu. Można również rozpocząć od obejrzenia następujące filmy wideo, które pokazują usługi Azure Cosmos DB w możliwościami wysyłania zapytań i pokazuje online [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo).
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-Bardziej zaawansowane techniki zapytań zostały przedstawione w poniższym klipie wideo:
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+W tym artykule przedstawiono kilka przykładów zapytań SQL za pomocą prostych dokumentów JSON. Aby uzyskać informacje dotyczące składni języka SQL usługi Azure Cosmos DB, zobacz [dokumentacja składni SQL](sql-api-sql-query-reference.md) artykułu. 
 
 ## <a id="GettingStarted"></a>Wprowadzenie do poleceń SQL
 Utworzymy dwie proste dokumentów JSON i zapytania względem tych danych. Należy wziąć pod uwagę dwa dokumenty JSON dotyczące rodziny, wstawić tych dokumentów JSON do kolekcji i następnie utworzyć zapytanie względem danych. Tu mamy JSON prostych dokumentów dla rodziny Andersen i Wakefield, nadrzędne, podrzędne (i ich zwierzęta), adres i informacje o rejestracji. Dokument ma ciągi, liczby, wartości logicznych, tablic i zagnieżdżonych właściwości. 

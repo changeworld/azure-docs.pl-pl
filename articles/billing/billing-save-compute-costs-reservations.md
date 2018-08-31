@@ -1,6 +1,6 @@
 ---
-title: Co to są rezerwacje platformy Azure? | Microsoft Docs
-description: Więcej informacji na temat rezerwacji platformy Azure i ceny, aby zapisać na maszynach wirtualnych, baz danych SQL i innych kosztów zasobów.
+title: Co to jest Azure Reservations? | Microsoft Docs
+description: Więcej informacji na temat rezerwacji platformy Azure i ceny, aby zaoszczędzić na maszynach wirtualnych, baz danych SQL i innych kosztów zasobów.
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 93c11852a11e0bb57a0b92090368298fc14b8c2a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626308"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303566"
 ---
-# <a name="what-are-azure-reservations"></a>Co to są rezerwacje platformy Azure?
+# <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
-Moc obliczeniową pomaga rezerwacje platformy Azure możesz zaoszczędzić na wstępnie płacenia za rok lub trzy lata maszyny wirtualnej lub bazy danych SQL. Wstępnie płacenia pozwala uzyskać rabat na zasoby, których używasz. Azure rezerwacji może znacznie zmniejszyć Twojej maszyny wirtualnej lub koszty operacji obliczeniowych bazy danych SQL — do 72% przy cenach zgodnie z rzeczywistym użyciem w — jeden rok lub trzy lata podejmowania z góry zobowiązań. rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego maszyn wirtualnych ani baz danych SQL.
+Azure pomaga rezerwacje Oszczędzaj pieniądze, płacąc wstępnie za rok lub trzy lata maszyny wirtualnej, SQL Database obliczenia pojemności lub innych zasobów platformy Azure. Wstępnie płacenia pozwala uzyskać rabat na zasoby, których używasz. Rezerwacje mogą znacznie zmniejszyć maszyny wirtualnej, obliczeń bazy danych SQL i innych kosztów zasobów do 72% na ceny zgodnie z rzeczywistym użyciem. Rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego zasobów.
 
 Możesz kupić rezerwację [witryny Azure portal](https://aka.ms/reservations). Aby uzyskać więcej informacji, zobacz następujące tematy:
 
@@ -42,13 +42,13 @@ Dla maszyn wirtualnych Windows i usługi SQL Database, mogą obejmują koszty li
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kto może skorzystać kupić rezerwację?
 
-Klienci platformy Azure z tego typu subskrypcji można kupić rezerwację:
+Klienci platformy Azure z tego typu subskrypcji kupić rezerwację:
 
 - Subskrypcja Enterprise Agreement (MS-AZR-0017P).
-- Subskrypcja [Płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) (MS-AZR-003P). Musi mieć rolę "Owner" w subskrypcji, aby kupić rezerwację. Aby kupować rezerwacje WE rejestracji enterprise, administratora przedsiębiorstwa, musisz włączyć rezerwacji zakupów w witrynie EA portal. Domyślnie to ustawienie jest włączone.
-- Partnerzy programu cloud Solution Provider (CSP), można użyć witryny Azure portal lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure. 
+- Subskrypcja [Płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) (MS-AZR-003P). Musi mieć rolę "Owner" w subskrypcji, aby kupić rezerwację.
+- Partnerzy programu cloud Solution Provider (CSP), można użyć witryny Azure portal lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure.
 
-Rabat związany z rezerwacją platformy Azure ma zastosowanie tylko do maszyn wirtualnych lub baz danych SQL skojarzone z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych.
+Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych.
 
 ## <a name="how-is-a-reservation-billed"></a>Jak jest rozliczana rezerwacji
 
@@ -56,24 +56,27 @@ Rezerwacja jest obciążany opłatą za metodę płatności, powiązane z subskr
 
 ## <a name="how-is-the-reservation-discount-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
 
-Rabat związany z rezerwacją dotyczy użycia zasobów, który odpowiada atrybuty, które możesz wybrać w przypadku dokonywania zakupu rezerwacji. Atrybuty obejmują zakres gdzie zgodnych maszyn wirtualnych, baz danych SQL lub inne zasoby. Na przykład chcąc rabat związany z rezerwacją do czterech maszyn wirtualnych standardowa D2 w regionie zachodnie stany USA, wybierz subskrypcję, w którym działają maszyny wirtualne. Jeśli maszyny wirtualne są uruchomione w różnych subskrypcjach w ramach rejestracji/konta, wybierz zakres jako udostępniony. Zakres udostępniony umożliwia rabatu związanego z rezerwacją do zastosowania w subskrypcjach. Po zakupie rezerwacji, można zmienić zakres. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacji na platformie Azure](billing-manage-reserved-vm-instance.md).
+Rabat związany z rezerwacją dotyczy użycia zasobów, który odpowiada atrybuty, które możesz wybrać w przypadku dokonywania zakupu rezerwacji. Atrybuty obejmują zakres gdzie zgodnych maszyn wirtualnych, baz danych SQL lub inne zasoby. Na przykład chcąc rabat związany z rezerwacją do czterech maszyn wirtualnych standardowa D2 w regionie zachodnie stany USA, wybierz subskrypcję, w którym działają maszyny wirtualne. Jeśli maszyny wirtualne są uruchomione w różnych subskrypcjach w ramach rejestracji/konta, wybierz zakres jako udostępniony. Zakres udostępniony umożliwia rabatu związanego z rezerwacją do zastosowania w subskrypcjach. Po zakupie rezerwacji, można zmienić zakres. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
 
-Rabat związany z rezerwacją ma zastosowanie tylko do maszyn wirtualnych lub baz danych SQL skojarzone z enterprise lub subskrypcję z płatnością za rzeczywiste użycie typów. Maszyny wirtualne lub baz danych SQL, które działają w subskrypcji przy użyciu innych typów ofert nie otrzymują rabat związany z rezerwacją. Dla rejestracji enterprise dla subskrypcji Enterprise — tworzenie i testowanie nie są uprawnieni do skorzystania z korzyści z rezerwacji.
+Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych. Zasoby, które działają w subskrypcji przy użyciu innych typów ofert nie otrzymują rabat związany z rezerwacją. Dla rejestracji enterprise dla subskrypcji Enterprise — tworzenie i testowanie nie są uprawnieni do skorzystania z korzyści z rezerwacji.
 
-Aby lepiej zrozumieć wpływ rezerwacji z maszyny wirtualnej lub rozliczeń bazy danych SQL, zobacz [zrozumieć, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md).
+Aby lepiej zrozumieć, jak rezerwacje wpływa na rozliczeniami, zobacz następujące tematy:
+
+-  [Świadomość, że Azure Reserved VM Instances rabatów](billing-understand-vm-reservation-charges.md)
+- [Zrozumienie rabat związany z rezerwacją platformy Azure](billing-understand-vm-reservation-charges.md)
+- Opis rabat związany z rezerwacją platformy Azure i użycia z systemem SUSE
 
 ## <a name="what-happens-when-the-reservation-term-expires"></a>Co się stanie po wygaśnięciu okresu rezerwacji?
 
-Po zakończeniu okresu rezerwacji rozliczeń rabat wygasa i maszyny wirtualnej, bazy danych SQL lub inne zasoby są naliczane płatności — jako — możesz Przejdź opłaty. Azure rezerwacji nie automatycznego odnawiania. Aby kontynuować wprowadzenie rozliczeń rabat, musisz kupić nowe zastrzeżenie dla rezerwacji kwalifikujących się usług.
+Po zakończeniu okresu rezerwacji rozliczeń rabat wygasa, a maszyny wirtualne, bazy danych SQL lub innego zasobu jest rozliczana w cenie płatności — jako — możesz Przejdź. Azure rezerwacji nie automatycznego odnawiania. Aby kontynuować wprowadzenie rozliczeń rabat, musisz kupić nowe zastrzeżenie dla kwalifikujących się usług i oprogramowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Rozpoczęcie zapisywania na maszynach wirtualnych, kupując [wystąpienia zarezerwowanego maszyny Wirtualnej](../virtual-machines/windows/prepay-reserved-vm-instances.md) lub [wydajności rezerwowej bazy danych SQL](../sql-database/sql-database-reserved-capacity.md).
 
-Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Zarządzanie zastrzeżeniami platformy Azure](billing-manage-reserved-vm-instance.md)
-- [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
+- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)

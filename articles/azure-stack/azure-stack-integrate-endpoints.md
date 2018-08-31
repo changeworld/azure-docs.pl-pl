@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: c5d0bc6a0e7e885f61ba28be0575697b03fece09
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 4aaba753a8d61d60cb053a4aa164b5be0a3c50fa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917146"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307612"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 Usługa Azure Stack konfiguruje wirtualnych adresów IP (VIP) dla ich ról infrastruktury. Te adresy VIP są przydzielone z puli publicznych adresów IP. Każdy adres VIP jest zabezpieczony za pomocą listy kontroli dostępu (ACL) w warstwie sieci definiowanej przez oprogramowanie. Listy ACL są również używane w przełącznikach fizycznych (Filtruj i kontrolera zarządzania płytą GŁÓWNĄ) dodatkowo zabezpieczyć rozwiązanie. Wpis DNS jest tworzony dla każdego punktu końcowego w strefie DNS zewnętrznego, który określono w czasie wdrażania.
@@ -27,7 +27,7 @@ Poniższy diagram architektury przedstawia warstwy innej sieci i listami kontrol
 
 ## <a name="ports-and-protocols-inbound"></a>Porty i protokoły (ruch przychodzący)
 
-Zbiór infrastruktury adresy VIP są wymagane do publikowania punktów końcowych usługi Azure Stack sieciami zewnętrznymi. *Punktu końcowego (VIP)* tabeli przedstawiono każdy punkt końcowy, wymaganego portu i protokołu. Zapoznaj się z dokumentacją wdrożeniową dostawcy zasobów specyficznych dla punktów końcowych, które wymagają dostawców dodatkowych zasobów, takich jak dostawcy zasobów bazy danych SQL.
+Zbiór infrastruktury adresów VIP jest wymagany dla publikacji usługi Azure Stack punktów końcowych sieci zewnętrznych. *Punktu końcowego (VIP)* tabeli przedstawiono każdy punkt końcowy, wymaganego portu i protokołu. Zapoznaj się z dokumentacją wdrożeniową dostawcy zasobów specyficznych dla punktów końcowych, które wymagają dostawców dodatkowych zasobów, takich jak dostawcy zasobów bazy danych SQL.
 
 Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są wymagane dla publikowania usługi Azure Stack.
 
@@ -71,12 +71,13 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 |Akt & poprawki|https://&#42;.azureedge.net|HTTPS|443|
 |Rejestracja|https://management.azure.com|HTTPS|443|
 |Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
-|Usługa Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|     |UDP|123|
 |DNS|     |TCP<br>UDP|53|
 |     |     |     |     |
 
-
+> [!Note]  
+> Wychodzące adresy URL są równoważone za pomocą usługi Azure traffic manager, aby zapewnić najlepszą łączność możliwe na podstawie lokalizacji geograficznej. Adresy URL równoważenia obciążenia, zaktualizować i zmienić punktów końcowych zaplecza bez wywierania wpływu na klientów firmy Microsoft. Firma Microsoft udostępnia listę adresów IP dla ze zrównoważonym obciążeniem: adresy URL. Należy używać urządzenia, które obsługuje filtrowanie według adresu URL, a nie adresu IP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

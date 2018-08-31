@@ -3,19 +3,19 @@ title: 'Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse | Micro
 description: W samouczku opisano ładowanie magazynu danych WideWorldImportersDW z publicznego obiektu blob platformy Azure do usługi Azure SQL Data Warehouse za pomocą witryny Azure Portal i programu SQL Server Management Studio.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 0b28bb07006ed58a82af80afe42fe472d4878971
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195366"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286937"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
 
@@ -73,7 +73,7 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). | 
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](media/load-data-wideworldimportersdw/create-database-server.png)
 
@@ -1107,7 +1107,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 5. Aby usunąć grupę zasobów, kliknij pozycję **SampleRG**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia użytkownika wyznaczonego do ładowania danych. Utworzono tabele zewnętrzne w celu zdefiniowania struktury danych przechowywanych w usłudze Azure Storage Blob, a następnie użyto instrukcji CREATE TABLE AS SELECT technologii PolyBase w celu załadowania danych do magazynu danych. 
 
 Zostały wykonane następujące zadania:

@@ -1,41 +1,41 @@
 ---
 title: Usługa Azure SQL Data Warehouse — architektura MPP | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak magazyn danych SQL Azure łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności.
+description: Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e8fef156f4b78c9f7241c9eb9623e061f5a31fe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 34b908ef79b0a2479c420675272f7d3f3bf0ff15
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799281"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286796"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległemu przetwarzaniu architektura (MPP)
-Dowiedz się, jak magazyn danych SQL Azure łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
+# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległego (MPP) architekturę przetwarzania
+Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
 
 ## <a name="mpp-architecture-components"></a>Składniki architektury MPP
-Usługi SQL Data Warehouse używa skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest poboru mocy obliczeniowej, znany jako jednostki magazynu danych. Usługa SQL Data Warehouse oddziela obliczeniowe z magazynu, co pozwoli na skalowanie obliczeń niezależnie od danych w systemie.
+Usługa SQL Data Warehouse korzysta z skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest klasą abstrakcyjną mocy obliczeniowej, który jest znany jako jednostki magazynu danych. Usługa SQL Data Warehouse oddziela obliczeń z usługi storage umożliwia skalowanie zasobów obliczeniowych niezależnie od danych w Twoim systemie.
 
 ![Architektura usługi SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Usługa SQL Data Warehouse korzysta z architektury oparte na węzłach. Aplikacje połączenia i wydać polecenia T-SQL węzeł kontrolny, który jest pojedynczy punkt wejścia dla magazynu danych. Węzeł kontrolny uruchamia aparat MPP, który optymalizuje zapytania w celu równoległego przetwarzania, a następnie przekazuje operacje z węzłami obliczeniowymi w pracy równolegle. Węzły obliczeniowe przechowywane są wszystkie dane użytkownika w usłudze Azure Storage i uruchamiania zapytań równoległych. Usługi przenoszenia danych (DMS) to usługa wewnętrzny poziom systemu, która przenosi dane między węzły w razie potrzeby uruchom zapytania równolegle i zwracać prawidłowych wyników. 
+Usługa SQL Data Warehouse korzysta z architektury oparte na węzłach. Aplikacje łączenia i wysyłania poleceń języka T-SQL do węzeł kontrolny jest pojedynczym punktem wejścia dla magazynu danych. Węzeł kontrolny działa aparat MPP, który optymalizuje zapytania do przetwarzania równoległego, a następnie przekazuje operacje do węzłów obliczeniowych, które wykonują swoje zadania równolegle. Węzły obliczeniowe przechowują wszystkie dane użytkownika w usłudze Azure Storage i uruchamiania zapytań równoległych. Data Movement Service (DMS) to usługa wewnętrzny poziom systemu, która przenosi dane w węzłach, co jest niezbędne do uruchamiania zapytań równolegle i zwracać prawidłowych wyników. 
 
 Dzięki oddzieleniu magazynu od zasobów obliczeniowych usługa SQL Data Warehouse może wykonywać następujące zadania:
 
-* Rozmiar obliczeniowe niezależnie zasilania niezależnie od potrzeb magazynu.
+* Niezależnie od siebie rozmiar obliczeniowa niezależnie od potrzeb dotyczących magazynu.
 * Zwiększać i zmniejszać moc obliczeniową bez przenoszenia danych.
-* Wstrzymaj obliczania pojemności pozostawiając bez zmian, danych, więc płacisz tylko za magazynu.
+* Wstrzymywać moc jest obliczeniową ingerowania w dane, dzięki czemu płacisz tylko za magazyn.
 * Wznawiać moc obliczeniową w godzinach działania.
 
 ### <a name="azure-storage"></a>Azure Storage
-Usługa SQL Data Warehouse używa magazynu Azure do zapewniania bezpieczeństwa danych użytkownika.  Ponieważ dane są przechowywane i zarządzane przez usługę Magazyn Azure, Magazyn danych SQL oddzielnie opłaty za wykorzystania magazynu. Dane są podzielonej na **dystrybucje** w celu zoptymalizowania wydajności systemu. Można wybrać wzorzec dzielenia na fragmenty, które do użycia przy dystrybucji danych podczas definiowania tabeli. Magazyn danych SQL obsługuje tych wzorców dzielenia na fragmenty:
+Usługa SQL Data Warehouse używa usługi Azure storage, aby zapewnić bezpieczeństwo danych użytkowników.  Ponieważ dane są przechowywane i zarządzane przez usługę Azure storage, SQL Data Warehouse opłaty oddzielnie za zużycie miejsca w magazynie. Dane są podzielone na fragmenty w **dystrybucje** zoptymalizować wydajność systemu. Możesz wybrać wzorzec fragmentowania, których można użyć, aby dystrybuować dane podczas definiowania tabeli. Usługa SQL Data Warehouse obsługuje tych wzorców dzielenia na fragmenty:
 
 * Skrót
 * Działanie okrężne
@@ -43,50 +43,50 @@ Usługa SQL Data Warehouse używa magazynu Azure do zapewniania bezpieczeństwa 
 
 ### <a name="control-node"></a>Węzeł kontrolny
 
-Węzeł kontrolny jest inteligencji magazynu danych. Jest to fronton współdziałający ze wszystkimi aplikacjami i połączeniami. Aparat MPP jest uruchamiany na węzeł kontrolny zoptymalizować oraz koordynować zapytania równoległe. Po przesłaniu zapytania T-SQL do SQL Data Warehouse węzeł kontrolny przekształca je w zapytania uruchamiane przed każdym dystrybucji równolegle.
+Węzeł kontrolny jest mózg w magazynie danych. Jest to fronton współdziałający ze wszystkimi aplikacjami i połączeniami. Aparat MPP działa na węzeł kontrolny, aby optymalizować i koordynowania zapytania równolegle. Po przesłaniu zapytania T-SQL w usłudze SQL Data Warehouse węzeł kontrolny przekształca je w zapytania, które uruchamiane względem każdej dystrybucji równolegle.
 
 ### <a name="compute-nodes"></a>Węzły obliczeniowe
 
-Węzły obliczeniowe Podaj moc obliczeniową. Dystrybucje mapowania węzłami obliczeniowymi w celu przetwarzania. Jak płacisz za większą ilością zasobów obliczeniowych, SQL Data Warehouse ponownie mapuje dystrybucji do dostępnych węzłów obliczeniowych. Liczba obliczeniowe węzłów może się wahać od 1 do 60 i zależy od poziomu usług dla magazynu danych.
+Węzły obliczeniowe zapewniają moc obliczeniową. Mapa dystrybucji do węzłów obliczeniowych do przetworzenia. Zgodnie z którym płacisz za więcej zasobów obliczeniowych, usługa SQL Data Warehouse ponownie mapuje dystrybucji do dostępnych węzłów obliczeniowych. Liczba obliczeniowe węzłów z zakresu od 1 do 60 i zależy od poziomu usługi dla magazynu danych.
 
-Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń widoczny szukając w kolumnie node_id widoków systemowych, których nazwy zaczynają się od sys.pdw_nodes. Aby uzyskać listę tych widoków systemowych, zobacz [widoków systemowych MPP](sql-data-warehouse-reference-tsql-statements.md).
+Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń możesz zobaczyć, wyszukując w kolumnie $node_id widoki systemowe, których nazwy zaczynają się od sys.pdw_nodes. Aby uzyskać listę tych widoków systemowych, zobacz [widoki systemowe MPP](sql-data-warehouse-reference-tsql-statements.md).
 
-### <a name="data-movement-service"></a>Usługa przenoszenia danych
-Usługi przenoszenia danych (DMS) to technologia transportu danych, która koordynuje przenoszenia danych między węzły obliczeń. Kilka zapytań wymaga przenoszenia danych w celu zapewnienia zapytania równoległe zwracać prawidłowych wyników. Podczas przenoszenia danych jest wymagane, DMS gwarantuje, że pobiera odpowiednie dane do odpowiedniej lokalizacji. 
+### <a name="data-movement-service"></a>Usługi przenoszenia danych
+Data Movement Service (DMS) to technologia transport danych, która służy do koordynowania przenoszenia danych między węzłami obliczeniowymi. Niektóre zapytania wymaga przenoszenia danych, aby upewnić się, zwracają dokładne wartości zapytania równolegle. Podczas przenoszenia danych jest wymagana, usługa DMS gwarantuje, że odpowiednie dane są pobierane do odpowiedniej lokalizacji. 
 
 ## <a name="distributions"></a>Dystrybucje
 
-Dystrybucji to podstawowa jednostka magazynu i przetwarzanie równoległe zapytania uruchamiane w danych rozproszonych. Po uruchomieniu kwerendy SQL Data Warehouse pracy jest podzielona na 60 mniejsze zapytania, które są uruchamiane równolegle. Każdy z 60 mniejsze zapytania jest uruchamiany na jednym z dystrybucji danych. Każdy węzeł obliczeniowy zarządza co najmniej jednego z 60 dystrybucji. Magazyn danych z zasoby obliczeniowe maksymalną ma jeden dystrybucji na węźle obliczeń. Magazyn danych z zasoby obliczeniowe minimalna ma wszystkie dystrybucje w węźle obliczeń jeden.  
+Dystrybucja to podstawowa jednostka magazynu i przetwarzanie równoległe zapytania uruchamiane w danych rozproszonych. Po uruchomieniu zapytania SQL Data Warehouse pracy jest podzielony na 60 mniejsze zapytania, które są uruchamiane równolegle. Każdy z 60 mniejszych zapytaniach jest uruchamiane na jednym z dystrybucji danych. Każdy węzeł obliczeniowy zarządza co najmniej 60 dystrybucji. Magazyn danych z zasobów obliczeniowych maksymalna ma dystrybucjami na węźle obliczeniowym. Magazyn danych z zasobów obliczeniowych minimalne ma wszystkie dystrybucje w węźle obliczeniowym jeden.  
 
-## <a name="hash-distributed-tables"></a>Tabele rozproszonych wyznaczania wartości skrótu
-Rozproszone tablicy skrótów zapewnia najwyższą wydajność zapytań do sprzęgania i agregacji na dużych tabel. 
+## <a name="hash-distributed-tables"></a>Tabele rozproszone wyznaczania wartości skrótu
+Rozproszona Tabela skrótów zapewnia najwyższą wydajność zapytań do sprzęgania i agregacji w dużych tabel. 
 
-Współdzielenie danych do tabeli rozpowszechniane skrót SQL Data Warehouse używa funkcji skrótu sposób niejednoznaczny przypisać każdego wiersza do jednego. W definicji tabeli jednej z kolumn jest wyznaczona jako kolumna dystrybucji. Funkcja skrótu używa wartości w kolumnie dystrybucji można przypisać każdego wiersza do dystrybucji.
+Współdzielenie danych do tabeli dystrybucji skrótów SQL Data Warehouse używa funkcji skrótu do przypisze w ten sposób każdy wiersz do dystrybucjami. W definicji tabeli jedna z kolumn jest wyznaczony jako kolumna dystrybucji. Funkcja skrótu używa wartości w kolumnie dystrybucji można przypisać każdego wiersza do dystrybucji.
 
-Na poniższym diagramie przedstawiono, jak Pełna (z systemem innym niż rozproszonych tabeli) pobiera przechowywane jako tabelę rozpowszechniane skrót. 
+Na poniższym diagramie przedstawiono, jak pełne (tabelę nierozpowszechniony) zostaje zapisany jako tabelę rozproszonych wyznaczania wartości skrótu. 
 
-![Tabela rozproszone](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "tabeli rozproszonych")  
+![Tabela rozproszonych](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "tabeli rozproszonych")  
 
-* Każdy wiersz należy do jednego.  
-* Algorytm wyznaczania wartości skrótu deterministyczne przypisuje każdego wiersza do jednego.  
-* Liczba wierszy tabeli w dystrybucji zależy, jak to przedstawiono różne rozmiary tabel.
+* Każdy wiersz należy do jednego dystrybucji.  
+* Algorytm skrótu deterministyczne przypisuje każdego wiersza dystrybucjami.  
+* Liczba wierszy tabeli dystrybucji różni się, jak to przedstawiono w różnych rozmiarach tabel.
 
-Brak zagadnienia dotyczące wydajności wybór kolumny do dystrybucji, na przykład odrębności, Pochylenie danych oraz typy zapytań, które są uruchamiane w systemie.
+Istnieją pewne zagadnienia dotyczące wydajności, wybór kolumny dystrybucji, takich jak odrębności niesymetryczność danych i typów kwerend, które są uruchamiane w systemie.
 
-## <a name="round-robin-distributed-tables"></a>Tabele rozproszonej okrężnego
-Tabela okrężnego jest najprostsza tabeli, aby utworzyć i zapewnia dobrą wydajność, gdy jest używany jako tabela przemieszczania pod kątem obciążeń.
+## <a name="round-robin-distributed-tables"></a>Działanie okrężne rozproszone tabele
+Tabela działanie okrężne jest najprostszym tabeli, aby utworzyć i zapewnia wysoką wydajność, gdy jest używana jako tabelę tymczasową obciążeń roboczych.
 
-Tabeli rozproszonej okrężnego równomiernie rozdziela danych w tabeli, ale bez żadnych dalsza optymalizacja. Dystrybucji najpierw jest wybierany losowo, a następnie buforów wierszy są przypisane do dystrybucji sekwencyjnie. Jest szybkie ładowanie danych do tabeli okrężnego, ale wydajność zapytań można lepiej z tabelami skrótów rozproszonych. Sprzężenia w tabelach okrężnego wymagają losowego grupowania danych i to zajmuje dodatkowy czas.
+Działanie okrężne dystrybuowanej tabeli rozprowadza dane równomiernie między tabeli, ale bez żadnych dalsza optymalizacja. Dystrybucji najpierw jest wybierany losowo, a następnie buforów wiersze są przypisane do dystrybucji sekwencyjnie. Jest to szybkie ładowanie danych do tabeli działania okrężnego, ale wydajność zapytań można lepiej korzystać z tabel skrótów rozproszonych. Sprzężenia w tabele wykorzystujące działanie okrężne wymagają losowego grupowania danych, a ta zajmuje dodatkowy czas.
 
 
 ## <a name="replicated-tables"></a>Zreplikowane tabele
-Zreplikowanej tabeli zapewnia największą wydajność kwerend w przypadku małych tabel.
+Replikowanej tabeli zapewnia największą wydajność zapytań dla małych tabel.
 
-Tabela, która jest replikowana buforuje pełną kopię tabeli w każdym węźle obliczeń. W rezultacie replikowanie tabeli eliminuje to potrzebę na przesyłanie danych między węzłami obliczeniowymi przed join lub agregacji. Najlepiej realizować zreplikowanych tabel z tabelami mała. Wymagane jest dodatkowe miejsce do magazynowania i czy istnieją dodatkowe koszty ogólne ponoszone podczas zapisywania danych, które dużych tabel niepraktyczne.  
+Tabela, która jest replikowana buforuje pełną kopię tabeli w każdym węźle obliczeniowym. W związku z tym replikowanie tabeli eliminuje potrzebę na przesyłanie danych między węzłami obliczeniowymi przed przystąpieniem do dołączania lub agregacji. Zreplikowane tabele najlepiej są wykorzystywane przy użyciu małe tabele. Magazyn dodatkowy jest wymagana, i istnieją dodatkowe koszty ogólne, które są naliczane podczas zapisywania danych, które dużych tabel niepraktyczne.  
 
-Na poniższym diagramie przedstawiono zreplikowanej tabeli. Dla usługi SQL Data Warehouse zreplikowanej tabeli są buforowane na pierwszym dystrybucji w każdym węźle obliczeń.  
+Na poniższym diagramie przedstawiono replikowanej tabeli. Usługi SQL Data Warehouse replikowanej tabeli są buforowane na pierwszym dystrybucji na każdym węźle obliczeniowym.  
 
-![Tabela zreplikowane](media/sql-data-warehouse-distributed-data/replicated-table.png "zreplikowane tabeli") 
+![Tabela zreplikowany](media/sql-data-warehouse-distributed-data/replicated-table.png "zreplikowany tabeli") 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, możesz dowiedzieć się, jak szybko [utworzyć bazę danych w usłudze SQL Data Warehouse][create a SQL Data Warehouse] i [ładowanie danych przykładowych][load sample data]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  

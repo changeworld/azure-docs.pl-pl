@@ -3,19 +3,19 @@ title: Limity pamięci i współbieżności — Azure SQL Data Warehouse | Dokum
 description: Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 07/10/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 802dbcdf797147d4f4dcf7835aea9c952127113e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e901d147d757a046d50927d6f2651b0a74657b1f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652272"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288193"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 

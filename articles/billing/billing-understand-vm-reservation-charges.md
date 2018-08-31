@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: bce4e05cbc4ecc8a44f2929eecbeee4093d39652
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628362"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301650"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do maszyn wirtualnych
 
@@ -55,12 +55,12 @@ Po uruchomieniu wystąpień maszyn wirtualnych Windows Rezerwacja ma zostać zas
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
-- [Zarządzanie zastrzeżeniami platformy Azure](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)

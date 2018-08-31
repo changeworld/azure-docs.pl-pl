@@ -3,25 +3,27 @@ title: Uaktualnianie do najnowszej generacji usługi Azure SQL Data Warehouse | 
 description: Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746966"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306984"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
 
 ## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
 Użytkownik może teraz można bezproblemowo przeprowadzić uaktualnienie do warstwy SQL dane magazynu obliczenia zoptymalizowane pod kątem Gen2 w witrynie Azure portal. Uaktualnianie jest zalecane w przypadku magazynu obliczenia zoptymalizowane pod kątem Gen1 warstwy danych. Przeprowadzając uaktualnienie, można użyć najnowszej generacji sprzętowych platformy Azure i rozszerzone architektury magazynu. Możesz korzystać z zalet zwiększyć wydajność, skalowalności i nieograniczony magazyn kolumnowy. 
+
+> [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>Dotyczy
 To uaktualnienie dotyczy magazyny danych warstwy obliczeń Gen1 zoptymalizowane pod kątem.

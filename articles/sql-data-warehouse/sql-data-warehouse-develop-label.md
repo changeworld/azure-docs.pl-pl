@@ -1,28 +1,28 @@
 ---
-title: Za pomocą etykiety do dokumentu zapytania w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące korzystania z etykiet do dokumentu zapytania w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+title: Używanie etykiet do Instrumentacji zapytań w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Porady dotyczące używania etykiety do dokumentu zapytań w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 22737faa146d83f1f31489125dee4146c7d11ac1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 959fddfd24041a245f80b048eca4bef3cd612905
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524248"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301150"
 ---
-# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Za pomocą etykiety do dokumentu zapytania w usłudze Azure SQL Data Warehouse
-Porady dotyczące korzystania z etykiet do dokumentu zapytania w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Używanie etykiet do Instrumentacji zapytań w usłudze Azure SQL Data Warehouse
+Porady dotyczące używania etykiety do dokumentu zapytań w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
 
 
 ## <a name="what-are-labels"></a>Co to są etykiety?
-Magazyn danych SQL obsługuje pojęcie o nazwie etykiety zapytania. Przed przejściem do dowolnej głębokości, Przyjrzyjmy się przykładem:
+Usługa SQL Data Warehouse obsługuje pojęcie etykiety zapytanie. Przed przejściem na dowolnym poziomie, Spójrzmy na przykład:
 
 ```sql
 SELECT *
@@ -31,11 +31,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Ostatni wiersz znaczniki ciąg "Moje zapytania etykieta" w zapytaniu. Ten tag jest szczególnie przydatne, ponieważ etykieta to zapytanie może przy użyciu widoków DMV. Wykonanie zapytania dotyczącego etykiety udostępnia mechanizm lokalizowania problem zapytania i pomaga w identyfikacji postępu za pośrednictwem ELT Uruchom.
+Ostatni wiersz tagi ciąg "Moje zapytania etykieta" zapytania. Ten tag jest szczególnie przydatne, ponieważ etykieta to zapytanie może za pomocą dynamicznych widoków zarządzania. Wykonywanie zapytań dotyczących etykiety udostępnia mechanizm do lokalizowania problematycznych zapytań i ułatwia identyfikowanie postęp ELT Uruchom.
 
-Dobrym konwencji nazewnictwa naprawdę pomaga. Na przykład etykieta począwszy od projektu, procedury, instrukcji lub komentarz pomaga do jednoznacznej identyfikacji zapytania między cały kod w kontroli źródła.
+Dobre konwencji nazewnictwa tak naprawdę pomaga. Na przykład etykieta począwszy od projektu, procedury, instrukcja lub komentarz pomaga do unikatowego identyfikowania zapytania wśród całego kodu w kontroli źródła.
 
-Następujące zapytanie używa widoku dynamicznego zarządzania, aby przeprowadzić wyszukiwanie według etykiety.
+Następujące zapytanie używa dynamicznych widoków zarządzania, aby przeprowadzić wyszukiwanie według etykiety.
 
 ```sql
 SELECT  *
@@ -45,11 +45,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Istotne jest umieścić nawiasy kwadratowe lub cudzysłowów wokół etykiety word podczas wykonywania zapytania. Etykieta jest słowem zastrzeżonym i powoduje błąd, gdy nie są rozdzielone. 
+> Istotne jest umieszczenie nawiasy kwadratowe lub podwójny cudzysłów wokół etykiety programu word, podczas wykonywania zapytania. Etykieta jest słowem zastrzeżonym i powoduje błąd, gdy nie jest rozdzielany. 
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
 
 

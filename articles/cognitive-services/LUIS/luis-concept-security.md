@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397247"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301697"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -60,7 +60,7 @@ Konfigurowanie aplikacji jako **publicznych** na **ustawienia** strony aplikacji
 Użytkownik, który nie jest właścicielem lub współpracownika, dostęp tylko do aplikacji publicznej Jeśli podany identyfikator aplikacji. Usługa LUIS nie ma publicznej _rynku_ lub w inny sposób wyszukiwania dla aplikacji w sieci publicznej.  
 
 ## <a name="microsoft-user-accounts"></a>Konta użytkowników firmy Microsoft
-Autorzy i współpracowników dodać klucze do usługi LUIS na stronie publikowania. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi właściciela aplikacji lub Współautor aplikacji. 
+Autorzy i współpracowników dodać klucze do usługi LUIS na stronie publikowania. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi być właścicielem aplikacji lub Współautor aplikacji. 
 
 Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 

@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6be00937a6645fbdd266ac0b1aa1ce95ecc6c3d9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040324"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301866"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
 
@@ -34,7 +34,7 @@ Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości roz
 - Pominięte rdzeni maszyn wirtualnych nie uzyskać rabaty rezerwacji.
 - Następujące serię maszyn wirtualnych nie uzyskasz rabaty rezerwacji: A-series serii Av2 i serii G.
 - Maszyny wirtualne w wersji zapoznawczej: serię maszyn wirtualnych ani rozmiaru, który jest w wersji zapoznawczej nie są dostępne do zakupu rezerwacji.
-- Chmury: rezerwacji nie są dostępne do zakupu w regionach platformy Azure instytucji rządowych USA, Niemcy i Chiny.
+- Chmury: Rezerwacji nie są dostępne do zakupu w regionach platformy Azure instytucji rządowych USA, Niemcy i Chiny.
 - Za mały limit przydziału: rezerwacji, które są ograniczone do pojedynczej subskrypcji musi mieć dostępnego w ramach subskrypcji dla nowych wystąpień Zarezerwowanych limitu przydziału procesorów wirtualnych. Na przykład jeśli docelowa subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, następnie możesz dokonać zakupu rezerwacji 11 wystąpień maszyna wirtualna Standard_D1. Sprawdzenie limitu przydziału dla rezerwacji obejmuje maszyny wirtualne wdrożone w ramach subskrypcji. Na przykład jeśli subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, ma dwa wystąpienia maszyna wirtualna standard_D1 wdrożeniu można kupować Rezerwacja 10 wystąpień maszyna wirtualna standard_D1 w ramach tej subskrypcji. 
 - Ograniczenia dotyczące pojemności: W rzadkich przypadkach limitów zakupu nowej rezerwacji dla podzbioru rozmiarów maszyn wirtualnych z powodu niskiej wydajności w regionie platformy Azure.
 
@@ -68,11 +68,11 @@ Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości roz
 
 Rabat związany z rezerwacją jest automatycznie stosowany do liczba uruchomionych maszyn wirtualnych, które są zgodne z zakresem rezerwacji i atrybutów. Można zaktualizować zakresu rezerwacji za pośrednictwem [witryny Azure portal](https://portal.azure.com), PowerShell, interfejsu wiersza polecenia lub przy użyciu interfejsu API.
 
-Aby dowiedzieć się, jak zarządzać rezerwacji, zobacz [rezerwacje Azure zarządzać](../articles/billing/billing-manage-reserved-vm-instance.md).
+Aby dowiedzieć się, jak zarządzać rezerwacji, zobacz [Zarządzanie zastrzeżeniami Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](../articles/billing/billing-save-compute-costs-reservations.md)
 - [Zarządzanie zastrzeżeniami na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md)

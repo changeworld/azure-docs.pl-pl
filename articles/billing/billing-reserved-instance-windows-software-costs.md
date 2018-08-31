@@ -1,5 +1,5 @@
 ---
-title: Koszty oprogramowania Windows Azure rezerwacji | Dokumentacja firmy Microsoft
+title: Koszty oprogramowania Windows rezerwacje platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, które liczniki oprogramowania Windows nie są uwzględnione w kosztów rezerwacji wystąpienia maszyny Wirtualnej platformy Azure.
 services: billing
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ec4869ed5c4d823a8144ba430ebb29c65c2abc13
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630115"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302070"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Koszty oprogramowania Windows nie jest dołączony do platformy Azure rezerwacji
+# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Koszty oprogramowania Windows nie jest dołączony do usługi Azure Reserved VM Instances
 
 Jeśli nie masz korzyści z używania hybrydowej platformy Azure w swoich wystąpień zarezerwowanych maszyn wirtualnych jest naliczana za liczniki oprogramowanie Windows, które są wymienione w poniższej sekcji.
 
@@ -53,11 +53,11 @@ Jeśli nie masz korzyści z używania hybrydowej platformy Azure w swoich wystą
 Koszt każdego z tych liczników można uzyskać za pośrednictwem interfejsu API RateCard platformy Azure. Aby uzyskać informacje dotyczące sposobu uzyskania stawki dla mierników platformy azure, zobacz [uzyskiwanie informacji o cenach i metadanych dla zasobów używanych w subskrypcji platformy Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie zastrzeżeniami na platformie Azure](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)

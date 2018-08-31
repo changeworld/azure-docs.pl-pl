@@ -1,87 +1,87 @@
 ---
 title: Przywracanie usługi Azure SQL Data Warehouse (Azure portal) | Dokumentacja firmy Microsoft
-description: Azure portalu zadania przywracania magazyn danych SQL Azure.
+description: Azure portal zadania przywracania usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6268f500d44bf7ceaaccbcc8e2c2134b42032197
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8752bc1977bac75928651a62576272ffc673ee7e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526876"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306304"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Przywracanie usługi Azure SQL Data Warehouse (portal)
 > [!div class="op_single_selector"]
-> * [Omówienie][Overview]
+> * [Przegląd][Overview]
 > * [Portal][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
 >
 >
-W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu portalu Azure.
+W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu witryny Azure portal.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-**Sprawdź, czy pojemność jednostek dtu w warstwie.** Każde wystąpienie usługi SQL Data Warehouse jest hostowana przez serwer SQL (na przykład myserver.database.windows.net), który ma domyślnego przydziału (bazy danych DTU) jednostki przepływności danych. Zanim będzie można przywrócić SQL Data Warehouse, sprawdź, czy program SQL server ma wystarczająco pozostałych limit przydziału jednostek DTU w przypadku przywracania bazy danych. Aby dowiedzieć się jak obliczyć limit przydziału jednostek DTU lub zażądać więcej jednostek Dtu, zobacz [żądanie zmiany limitu przydziału jednostek dtu w warstwie][Request a DTU quota change].
+**Sprawdź wydajność jednostek DTU.** Każde wystąpienie usługi SQL Data Warehouse jest obsługiwana przez serwer SQL (na przykład myserver.database.windows.net), która ma domyślny przydział jednostek (DTU) przepływność danych. Przed przywróceniem SQL Data Warehouse, sprawdź, czy program SQL server ma wystarczająco pozostały limit przydziału jednostek DTU w przypadku przywracania bazy danych. Aby dowiedzieć się, jak obliczyć limit przydziału jednostek DTU lub zażądać więcej jednostek Dtu, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].
 
-## <a name="restore-an-active-or-paused-database"></a>Przywróć bazę danych aktywnej lub wstrzymana
-Przywracanie bazy danych:
+## <a name="restore-an-active-or-paused-database"></a>Przywracanie bazy danych programu active lub wstrzymana
+Aby przywrócić bazę danych:
 
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
-2. W okienku po lewej stronie wybierz **Przeglądaj**, a następnie wybierz **serwerów SQL**.
+2. W okienku po lewej stronie wybierz **Przeglądaj**, a następnie wybierz pozycję **serwerów SQL**.
 
-    ![Wybierz opcję Przeglądaj > serwery SQL](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. Znajdź serwer, a następnie wybierz go.
+    ![Wybierz pozycję Przeglądaj > serwery SQL](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
+3. Znajdź serwer, a następnie wybierz ją.
 
-    ![Wybierz serwer](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
-4. Znajdź wystąpienie programu SQL Data Warehouse, który chcesz przywrócić z, a następnie wybierz go.
+    ![Wybierz swój serwer](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
+4. Znajdź wystąpienie usługi SQL Data Warehouse, który chcesz przywrócić z, a następnie wybierz ją.
 
-    ![Wybierz wystąpienie programu SQL magazynu danych do przywrócenia](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
-5. W górnej części bloku hurtowni danych, wybierz **przywrócić**.
+    ![Wybierz wystąpienie usługi SQL Data Warehouse do przywrócenia](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
+5. W górnej części bloku magazynu danych wybierz **przywrócić**.
 
-    ![Wybierz przywracania](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
-6. Określ nowy **Nazwa bazy danych**.
-7. Wybierz najnowszą **punkt przywracania**.
+    ![Wybierz opcję przywracania](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
+6. Określ nową **Nazwa bazy danych**.
+7. Wybierz najnowszy **punkt przywracania**.
 
-   Upewnij się, że została wybrana do ostatniego punktu przywracania. Ponieważ punkty przywracania są wyświetlane w uniwersalnego czasu koordynowanego (UTC), opcją domyślną może nie być do ostatniego punktu przywracania.
+   Upewnij się, że wybrano najnowszy punkt przywracania. Ponieważ punkty przywracania są wyświetlane w uniwersalnego czasu koordynowanego (UTC), to opcja domyślna może nie być najnowszy punkt przywracania.
 
       ![Wybierz punkt przywracania](./media/sql-data-warehouse-restore-database-portal/01-restore-blade-from-active.png)
 8. Kliknij przycisk **OK**.
-9. Rozpocznie się proces przywracania bazy danych, a następnie można użyć **powiadomienia** do monitorowania procesu.
+9. Rozpocznie się proces przywracania bazy danych i umożliwia **powiadomienia** do monitorowania procesu.
 
 > [!NOTE]
-> Po zakończeniu przywracania, można skonfigurować odzyskanej bazy danych, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
+> Po zakończeniu przywracania odzyskanej bazy danych można skonfigurować, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
 >
 >
 
 ## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
-Aby przywrócić usunięte bazy danych:
+Aby przywrócić usuniętą bazę danych:
 
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
-2. W okienku po lewej stronie wybierz **Przeglądaj**, a następnie wybierz **serwerów SQL**.
+2. W okienku po lewej stronie wybierz **Przeglądaj**, a następnie wybierz pozycję **serwerów SQL**.
 
-    ![Wybierz opcję Przeglądaj > serwery SQL](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. Znajdź serwer, a następnie wybierz go.
+    ![Wybierz pozycję Przeglądaj > serwery SQL](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
+3. Znajdź serwer, a następnie wybierz ją.
 
-    ![Wybierz serwer](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
+    ![Wybierz swój serwer](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
 4. Przewiń w dół do **operacji** sekcji w bloku serwera.
-5. Wybierz **usunięte bazy danych** kafelka.
+5. Wybierz **usuniętych baz danych** kafelka.
 
-    ![Wybierz Kafelek usunięte bazy danych](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dws.png)
+    ![Wybierz Kafelek usuniętych baz danych](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dws.png)
 6. Wybierz usuniętej bazy danych, który chcesz przywrócić.
 
     ![Wybierz bazę danych do przywrócenia](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dw.png)
-7. Określ nowy **Nazwa bazy danych**.
+7. Określ nową **Nazwa bazy danych**.
 
     ![Dodaj nazwę bazy danych](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
 8. Kliknij przycisk **OK**.
-9. Rozpocznie się proces przywracania bazy danych, a następnie można użyć **powiadomienia** do monitorowania procesu.
+9. Rozpocznie się proces przywracania bazy danych i umożliwia **powiadomienia** do monitorowania procesu.
 
 > [!NOTE]
 > Aby skonfigurować bazę danych, po zakończeniu przywracania, zobacz [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
@@ -89,7 +89,7 @@ Aby przywrócić usunięte bazy danych:
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o funkcjach ciągłości biznesowej wersji bazy danych SQL Azure, przeczytaj [omówienie ciągłości działalności biznesowej usługi Azure SQL Database][Azure SQL Database business continuity overview].
+Aby dowiedzieć się o funkcje zachowywania ciągłości biznesowej, baz danych Azure SQL Database, przeczytaj [omówienie ciągłości działania usługi Azure SQL Database][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 

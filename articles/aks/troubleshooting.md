@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190223"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287543"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 Podczas tworzenia lub Menedżer usłudze AKS klastrów, czasami mogą wystąpić problemy. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
@@ -24,16 +24,16 @@ Podczas tworzenia lub Menedżer usłudze AKS klastrów, czasami mogą wystąpić
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Otrzymuję błąd przekroczenia limitu przydziału podczas tworzenia lub uaktualniania. Co mam zrobić? 
 
-Konieczne będzie żądanie rdzeni [tutaj](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)
+Konieczne będzie żądanie rdzeni [tutaj](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>Co to jest maksymalny zasobników na ustawienie node dla usługi AKS?
 
 Maksymalna zasobników w każdym węźle są domyślnie 30 w przypadku wdrożenia klastra usługi AKS w witrynie Azure portal.
 Maksymalna zasobników w każdym węźle są domyślnie 110 Jeśli musisz wdrożyć klaster usługi AKS w interfejsie wiersza polecenia platformy Azure. (Upewnij się, że używasz najnowszej wersji interfejsu wiersza polecenia platformy Azure). To ustawienie domyślne można zmienić za pomocą maksymalna — węzły-na-flagi zasobnik w usłudze az aks create polecenie.
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd "insufficientSubnetSize" podczas wdrażania klastra usługi AKS z zaawansowany siecią. Co mam zrobić?
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd "insufficientSubnetSize" podczas wdrażania klastra usługi AKS z zaawansowany siecią. Co mam zrobić?
 
-W opcji Niestandardowa sieć wirtualna wybrana dla sieci podczas AKS tworzy wtyczki Azure CNI jest używany dla usługi IPAM. Liczba węzłów w klastrze AKS może być dowolnym miejscu od 1 do 100. Na podstawie 2) powyżej podsieci rozmiar powinien być większy niż iloczyn liczby węzłów i maksymalna zasobnika na rozmiar podsieci węzła > Liczba węzłów w klastrze * maksymalna liczba zasobników na węzeł
+W opcji Niestandardowa sieć wirtualna wybrana dla sieci podczas AKS tworzy wtyczki Azure CNI jest używany dla usługi IPAM. Liczba węzłów w klastrze AKS może być dowolnym miejscu od 1 do 100. Na podstawie 2) powyżej podsieci rozmiar powinien być większy niż iloczyn liczby węzłów i maksymalna zasobnika na rozmiar podsieci węzła > Liczba węzłów w klastrze * maksymalna liczba zasobników w każdym węźle.
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Moje zasobnika została zablokowana w trybie "CrashLoopBackOff". Co mam zrobić?
 

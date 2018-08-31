@@ -72,16 +72,18 @@ items:
       items:
       - name: Typowe pytania na temat replikacji VMware–Azure
         href: vmware-azure-common-questions.md
-      - name: Matryca obsługi replikacji serwera fizycznego/VMware do platformy Azure
+      - name: Tabela obsługi
         href: vmware-physical-azure-support-matrix.md
       - name: Architektura VMware–Azure
         href: vmware-azure-architecture.md
       - name: Architektura maszyna fizyczna–Azure
         href: physical-azure-architecture.md
-      - name: Obsługa wielodostępności na potrzeby replikacji z programu VMware do platformy Azure
-        href: vmware-azure-multi-tenant-overview.md
-      - name: Opcje lokalizacji dla powrotu po awarii
+      - name: Informacje o odzyskiwaniu po awarii
+        href: vmware-azure-about-disaster-recovery.md
+      - name: Informacje o opcjach lokalizacji dla powrotu po awarii
         href: concepts-types-of-failback.md
+      - name: Informacje o obsłudze wielu dzierżaw dla oprogramowania VMware
+        href: vmware-azure-multi-tenant-overview.md
     - name: Replikacja do lokacji dodatkowej
       items:
       - name: Matryca obsługi replikacji serwera fizycznego/VMware do lokacji dodatkowej
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126074"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285110"

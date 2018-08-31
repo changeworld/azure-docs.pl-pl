@@ -7,14 +7,14 @@ manager: carmonm
 keywords: kopie zapasowe maszyn wirtualnych, kopie zapasowe maszyn wirtualnych
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390759"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286656"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestii zasobu, aby ułatwić planowanie infrastruktury kopii zapasowej maszyny Wirtualnej. Definiuje również kluczowe aspekty w usłudze Kopia zapasowa; te aspekty mogą być szczególnie ważne w określaniu architektury, planowania pojemności i planowania. Jeśli masz [przygotować środowisko](backup-azure-arm-vms-prepare.md), planowania jest kolejnym krokiem przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji na temat maszyn wirtualnych platformy Azure, zobacz [dokumentacja dotycząca maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -50,17 +50,18 @@ Usługa Azure Backup ma pełne kopie zapasowe usługi VSS na maszynach wirtualny
 ```
 
 #### <a name="linux-vms"></a>Maszyny wirtualne z systemem Linux
-Usługa Azure Backup udostępnia strukturę, skryptów. Zapewnienie spójności aplikacji podczas wykonywania kopii zapasowej maszyn wirtualnych systemu Linux, Utwórz niestandardowe skrypty przed i skryptu używanego po utworzeniu przepływu pracy tworzenia kopii zapasowych i środowiska. Usługa Azure Backup wywołuje skryptu poprzedzającego przed wykonaniem migawki maszyny Wirtualnej i wywołuje skrypt używany po utworzeniu, po ukończeniu zadania migawki maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [aplikacji spójne kopie zapasowe maszyn wirtualnych przy użyciu skryptów uruchamianych skryptu używanego po utworzeniu](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
+Usługa Azure Backup zapewnia platformę skryptów do kontrolowania przepływu pracy tworzenia kopii zapasowych i środowiska. W celu zapewnienia spójnych z aplikacją kopii zapasowych maszyny Wirtualnej systemu Linux, należy użyć skryptów framework do tworzenia niestandardowych skryptów przed i skryptu używanego po utworzeniu. Wywoływanie skryptu poprzedzającego przed wykonaniem migawki maszyny Wirtualnej, a następnie wywołaj skrypt używany po utworzeniu, po ukończeniu zadania migawki maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz artykuł [kopie zapasowe maszyn wirtualnych z systemem Linux spójne aplikacji](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
 > [!NOTE]
 > Usługa Azure Backup tylko wywołuje napisanymi odbiorców wstępnej i skryptu używanego po utworzeniu. Jeśli skryptu poprzedzającego i skryptu używanego po utworzeniu wykonane pomyślnie, kopia zapasowa Azure oznacza punkt odzyskiwania jako aplikacja spójne. Jednak klient jest ponoszą ostateczną odpowiedzialność za spójności aplikacji, gdy za pomocą skryptów niestandardowych.
 >
 
-
-W następującej tabeli opisano typy spójności i warunki, które one odbywały się w ramach maszyny Wirtualnej platformy Azure kopia zapasowa i przywracanie procedur.
+W poniższej tabeli opisano typy spójności i warunki, kiedy się pojawią.
 
 | Spójność | Na podstawie usługi VSS | Wyjaśnienie, jak i szczegółów |
 | --- | --- | --- |
-| Spójność aplikacji |Tak dla Windows|Spójność aplikacji jest idealnym rozwiązaniem w przypadku obciążeń zapewnia, że:<ol><li> Maszyna wirtualna *jest uruchamiany*. <li>Brak *nie uszkodzenia*. <li>Brak *bez utraty danych*.<li> Dane są spójne do aplikacji, która korzysta z danych, poprzez włączenie aplikacji w czasie wykonywania kopii zapasowych — za pomocą skryptu usługi VSS lub pre/post.</ol> <li>*Maszyny wirtualne Windows*-obciążenia najbardziej firmy Microsoft mają składniki zapisywania usługi VSS, które wykonują akcje specyficznego dla obciążenia związane z wyjaśnienie pojęcia spójności danych. Na przykład Microsoft SQL Server ma składnik zapisywania usługi VSS, które gwarantuje, że prawidłowo wykonane operacje zapisu w pliku dziennika transakcji, jak i bazy danych. Dla kopii zapasowych maszyn wirtualnych Windows Azure Tworzenie punktu odzyskiwania spójnego z aplikacją rozszerzenie kopii zapasowej należy wywołać przepływ pracy usługi VSS i on zostać ukończona przed wykonaniem migawki maszyny Wirtualnej. Migawki maszyny Wirtualnej platformy Azure muszą być dokładne również należy wykonać składniki zapisywania usługi VSS wszystkich aplikacji na maszynie Wirtualnej platformy Azure. (Dowiedz się, [podstawy usługi VSS](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) i detalach szczegóły [jak to działa](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)). </li> <li> *Maszyny wirtualne systemu Linux*— klienci mogą wykonywać [niestandardowego skryptu poprzedzającego i skryptu używanego po utworzeniu w celu zapewnienia spójności aplikacji](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). </li> |
+| Spójność aplikacji |Tak dla Windows|Spójność aplikacji jest idealnym rozwiązaniem w przypadku obciążeń zapewnia, że:<ol><li> Maszyna wirtualna *jest uruchamiany*. <li>Brak *nie uszkodzenia*. <li>Brak *bez utraty danych*.<li> Dane są spójne do aplikacji, która korzysta z danych, poprzez włączenie aplikacji w czasie wykonywania kopii zapasowych — za pomocą skryptu usługi VSS lub pre/post.</ol> <li>*Maszyny wirtualne Windows*-obciążenia najbardziej firmy Microsoft mają składniki zapisywania usługi VSS, które są wykonywane działania specyficznego dla obciążenia związane z wyjaśnienie pojęcia spójności danych. Na przykład składnik zapisywania usługi VSS programu SQL Server zapewnia zapisuje plik dziennika transakcji, jak i bazy danych, są wykonywane prawidłowo. Dla kopii zapasowych maszyn wirtualnych Windows IaaS Tworzenie punktu odzyskiwania spójnego z aplikacją rozszerzenie kopii zapasowej należy wywołania przepływu pracy usługi VSS i oznacz go jako ukończony przed wykonaniem migawki maszyny Wirtualnej. Migawki maszyny Wirtualnej platformy Azure muszą być dokładne również należy wykonać składniki zapisywania usługi VSS wszystkich aplikacji na maszynie Wirtualnej platformy Azure. (Dowiedz się, [podstawy usługi VSS](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) i detalach szczegóły [jak to działa](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)). </li> <li> *Maszyny wirtualne systemu Linux*— klienci mogą wykonywać [niestandardowego skryptu poprzedzającego i skryptu używanego po utworzeniu w celu zapewnienia spójności aplikacji](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). </li> |
 | Spójności systemu plików |Tak — dla komputerów z systemem Windows |Istnieją dwa scenariusze, w których punkt odzyskiwania może być *pliku spójne na poziomie systemu*:<ul><li>Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure, bez konieczności wstępnej-script/odniesienie-script lub jeśli wstępnie przygotowany-script/odniesienie-script nie powiodło się. <li>Błąd VSS podczas tworzenia kopii zapasowej dla maszyn wirtualnych Windows na platformie Azure.</li></ul> W obu przypadkach upewnij się, że jest najlepsze, którą można wykonać: <ol><li> Maszyna wirtualna *jest uruchamiany*. <li>Brak *nie uszkodzenia*.<li>Brak *bez utraty danych*.</ol> Aplikacje muszą implementować ich własny mechanizm "poprawki" przywróconych danych. |
 | Spójność awarii |Nie |Ta sytuacja jest równoznaczne z maszyny wirtualnej, u których występują "awarii" (za pośrednictwem i miękkich reset). Spójność awarii zazwyczaj ma miejsce, gdy maszyna wirtualna platformy Azure zostanie zamknięta w czasie wykonywania kopii zapasowej. Punktu odzyskiwania spójnego na poziomie awarii zawiera nie gwarancje w zakresie spójności danych na nośniku — z punktu widzenia systemu operacyjnego lub aplikacji. Tylko dane, które już istnieje na dysku w czasie wykonywania kopii zapasowej jest przechwytywane i kopii zapasowej. <br/> <br/> Gdy istnieją zazwyczaj żadnej gwarancji, uruchomieniem systemu operacyjnego, następuje sprawdzenie dysku procedury, takich jak narzędzia chkdsk, aby naprawić błędy uszkodzenia. Wszelkie dane w pamięci i operacji zapisu, które nie zostały przeniesione do dysku zostaną utracone. Aplikacja zazwyczaj następuje z własny mechanizm weryfikacji w przypadku wycofywania danych musi odbywać się. <br><br>Na przykład jeśli dziennik transakcji zawiera wpisy, które nie znajduje się w bazie danych, oprogramowanie bazy danych przedstawia ponownie, dopóki dane są spójne. Gdy data rozkłada się na wiele dysków wirtualnych (takich jak woluminy łączone), punktu odzyskiwania spójnego na poziomie awarii zapewnia żadnej gwarancji pod kątem poprawności danych. |
 
@@ -104,19 +105,22 @@ Operacja przywracania obejmuje dwa główne zadania: kopiowanie danych z magazyn
 * Czas — kopiowania danych dane są kopiowane z magazynu do konta magazynu klienta. Przywróć czas zależy od operacji We/Wy i przepływność usługi Azure Backup pobiera na koncie magazynu wybranego klienta. W celu skrócenia czasu kopiowania podczas procesu przywracania, wybierz konto magazynu nie załadowano z innymi aplikacji zapisu i odczytu.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Sugerujemy następujące rozwiązania w zakresie podczas konfigurowania kopii zapasowych dla maszyn wirtualnych z dyskami niezarządzanymi:
 
-> [!Note]
-> Następujące rozwiązania w zakresie, zalecamy zmianę lub zarządzać kontami magazynu, które mają zastosowanie tylko dla maszyn wirtualnych z dyskami niezarządzanymi. Jeśli używasz dysków zarządzanych, platforma Azure zajmie się wszystkie działania związane z zarządzaniem dotyczących magazynu.
-> 
+Sugerujemy następujące rozwiązania w zakresie podczas konfigurowania kopii zapasowych dla wszystkich maszyn wirtualnych:
 
-* Nie należy planować więcej niż 10 klasyczne maszyny wirtualne w tej samej usłudze w chmurze do tworzenia kopii zapasowych, w tym samym czasie. Jeśli chcesz tworzyć kopie zapasowe wielu maszyn wirtualnych z jednej usługi w chmurze, należy przesunąć godziny rozpoczęcia tworzenia kopii zapasowych o godzinę.
-* Nie należy planować ponad 100 maszyn wirtualnych, aby utworzyć kopię zapasową w tym samym czasie w jednym magazynie. 
+* Nie Planowanie tworzenia kopii zapasowych dla więcej niż 10 klasycznych maszyn wirtualnych w tej samej usłudze w chmurze, w tym samym czasie. Jeśli chcesz utworzyć kopię zapasową wielu maszyn wirtualnych w tej samej usłudze w chmurze, należy przesunąć godziny rozpoczęcia tworzenia kopii zapasowych o godzinę.
+* Nie Planowanie tworzenia kopii zapasowych dla ponad 100 maszyn wirtualnych z jednego magazynu, w tym samym czasie.
 * Planowanie kopii zapasowych maszyn wirtualnych poza godzinami poza szczytem. Dzięki temu usługa Backup korzysta z operacji We/Wy do przesyłania danych z konta magazynu klienta do magazynu.
-* Upewnij się, że zasady są stosowane na maszynach wirtualnych rozkładają się na różnych kont magazynu. Zalecamy nie więcej niż 20 łączna liczba dysków z jednego konta magazynu jest chronione przez ten sam harmonogram tworzenia kopii zapasowej. Jeśli masz większe niż 20 dyskami na koncie magazynu, rozkłada się na tych maszynach wirtualnych wiele zasad, aby uzyskać wymagane operacje We/Wy podczas fazy transferu procesu tworzenia kopii zapasowej.
-* Nie należy przywracać maszynę Wirtualną z systemem w magazynie Premium storage do tego samego konta magazynu. Jeśli proces operacji przywracania pokrywa się z operacji tworzenia kopii zapasowej, zmniejsza dostępne operacje We/Wy do utworzenia kopii zapasowej.
-* Dla kopii zapasowej maszyny Wirtualnej usługi Premium na stos kopii zapasowej maszyny Wirtualnej w wersji 1 zaleca się przydzielanie tylko 50% całkowitego konta miejsca do magazynowania, dzięki czemu usługa Azure Backup można skopiować migawki do magazynu konta i transfer danych z tej lokalizacji skopiowany na koncie magazynu w magazynie.
 * Upewnij się, że włączone do tworzenia kopii zapasowych maszyn wirtualnych systemu Linux, język Python w wersji 2.7 lub nowszego.
+
+### <a name="best-practices-for-vms-with-unmanaged-disks"></a>Najlepsze rozwiązania dotyczące maszyn wirtualnych z dyskami niezarządzanymi
+
+Poniższe zalecenia dotyczą tylko maszyn wirtualnych przy użyciu dysków niezarządzanych. Jeśli Twoje maszyny wirtualne korzystają z dysków zarządzanych, usługa Backup obsługuje wszystkie działania związane z zarządzaniem magazynu.
+
+* Upewnij się, że dotyczą zasady tworzenia kopii zapasowych maszyn wirtualnych, rozkładają się na wielu kontach magazynu. Nie więcej niż 20 łączna liczba dysków z jednego konta magazynu powinna być chroniona przez ten sam harmonogram tworzenia kopii zapasowej. Jeśli masz większe niż 20 dyskami na koncie magazynu, rozkłada się na tych maszynach wirtualnych wiele zasad, aby uzyskać wymagane operacje We/Wy podczas fazy transferu procesu tworzenia kopii zapasowej.
+* Nie należy przywracać maszynę Wirtualną z systemem w magazynie Premium storage do tego samego konta magazynu. Jeśli proces operacji przywracania pokrywa się z operacji tworzenia kopii zapasowej, zmniejsza dostępne operacje We/Wy do utworzenia kopii zapasowej.
+* Dla kopii zapasowej maszyny Wirtualnej usługi Premium na stos kopii zapasowej maszyny Wirtualnej w wersji 1 należy przydzielić tylko 50% całkowitego konta miejsca do magazynowania, dzięki czemu usługa Backup może kopiowania migawki do konta magazynu i transferu danych z konta magazynu do magazynu.
+
 
 ## <a name="data-encryption"></a>Szyfrowanie danych
 Usługa Azure Backup nie szyfruje danych jako część procesu tworzenia kopii zapasowej. Jednak szyfrowanie danych na maszynie wirtualnej i bezproblemowe tworzenie kopii zapasowej chronionych danych (Dowiedz się więcej o [kopii zapasowej zaszyfrowanych danych](backup-azure-vms-encryption.md)).

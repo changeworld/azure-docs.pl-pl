@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 696a752f199e2f7018713cb87c3b098556c5b4f5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 2163179d3353626e12495381fc64792db56ec78e
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247620"
+ms.locfileid: "43286366"
 ---
 # <a name="azure-iot-edge-support"></a>Obsługa usługi Azure IoT Edge
 Istnieje wiele sposobów, aby wyszukać pomocy technicznej dla produktu usługi Azure IoT Edge.
@@ -35,16 +35,16 @@ Warstwa 1 systemów można traktować jako oficjalnie obsługiwany. Oznacza to, 
 Ogólnie dostępna
 | System operacyjny | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Serwer Ubuntu 18.04 | Yes | Nie |
-| Ubuntu Server 16.04 | Yes | Nie |
 | Raspbian stretch | Nie | Yes|
+| Ubuntu Server 16.04 | Yes | Nie |
+| Serwer Ubuntu 18.04 | Yes | Nie |
 
 Publiczna wersja zapoznawcza
 | System operacyjny | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Serwer systemu Windows 10 1803 | Yes | Nie |
-| Windows 10 IoT Enterprise (aktualizacja z kwietnia 2018 r.) | Yes | Nie |
 | Windows 10 IoT Core (aktualizacja z kwietnia 2018 r.) | Yes | Nie |
+| Windows 10 IoT Enterprise (aktualizacja z kwietnia 2018 r.) | Yes | Nie |
+| Serwer systemu Windows 10 1803 | Yes | Nie |
 
 ### <a name="tier-2"></a>Warstwa 2
 Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i może służyć stosunkowo łatwe. Oznacza to, że:
@@ -53,14 +53,14 @@ Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i moż
 
 | System operacyjny | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Ubuntu 18.04 | Yes | Yes |
-| Ubuntu 16.04 | Yes | Yes |
 | CentOS w wersji 7.5 | Yes | Yes |
-| RHEL W WERSJI 7.5 | Yes | Yes |
-| Rzeka wiatru 8 | Yes | Nie |
-| Yocto | Yes | Nie |
 | Debian 8 | Yes | Yes |
 | Debian 9 | Yes | Yes |
+| RHEL W WERSJI 7.5 | Yes | Yes |
+| Ubuntu 18.04 | Yes | Yes |
+| Ubuntu 16.04 | Yes | Yes |
+| Rzeka wiatru 8 | Yes | Nie |
+| Yocto | Yes | Nie |
 
 ## <a name="container-engines"></a>Aparaty kontenera
 Usługa Azure IoT Edge wymaga aparatu kontenera, można uruchomić moduły, niezależnie od systemu operacyjnego, na którym jest uruchomiony. Firma Microsoft udostępnia z kontenera aparatu moby aparatu, aby spełnić to wymaganie. Jest ona oparta na Moby projekt open source. Docker CE i Docker EE są innymi aparatami popularnych kontenera. One również są oparte na projekt źródłowy zostanie otwarta Moby i są zgodne z usługą Azure IoT Edge. Firma Microsoft oferuje optymalną obsługą systemów przy użyciu tych silników kontenera. Microsoft nie ma jednak możliwości na potrzeby wysłania poprawki dotyczące problemów w nich. Z tego powodu firma Microsoft zaleca używanie aparatu moby w systemach produkcyjnych.

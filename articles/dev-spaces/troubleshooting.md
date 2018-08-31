@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f45d8059cd4af5dbab64fef798b61e439a5f2fc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42061509"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286878"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -106,6 +106,16 @@ Można napotkać ten błąd, jeśli azds.exe nie jest zainstalowane lub prawidł
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Ostrzeżenie "pliku Dockerfile nie można wygenerować z powodu nieobsługiwany język"
+Usługa Azure Dev do magazynowania zapewnia macierzystą obsługę języka C# i Node.js. Po uruchomieniu *azds prep* w katalogu, zawierającego kod napisany w jednym z tych języków, Azure Dev miejsca do magazynowania automatycznie utworzy odpowiedni plik Dockerfile za Ciebie.
+
+Można nadal używać usługi Azure Dev miejsca do magazynowania przy użyciu kodu napisanego w innych językach, ale musisz utworzyć plik Dockerfile, samodzielnie przed uruchomieniem polecenia *azds się* po raz pierwszy.
+
+### <a name="try"></a>Wypróbuj:
+Jeśli aplikacji został napisany w języku, że usługi Azure Dev miejsca do magazynowania nie obsługuje natywnie, należy podać odpowiednie Dockerfile, aby utworzyć obraz kontenera uruchomienia kodu. Środowisko docker zawiera [listę najlepsze rozwiązania dotyczące zapisywania plików Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , a także [odwołanie do pliku Dockerfile](https://docs.docker.com/engine/reference/builder/) to zrobić, może pomóc.
+
+Po utworzeniu odpowiedni plik Dockerfile w miejscu, możesz kontynuować uruchamianie *azds się* do uruchamiania aplikacji w usłudze Azure Dev spacjach.
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Błąd "nadrzędne błąd połączenia lub odłącz/reset przed nagłówki"
 Podczas próby uzyskania dostępu do usługi, zostanie wyświetlony ten błąd. Na przykład, gdy nastąpi przejście do adresu URL usługi, w przeglądarce. 

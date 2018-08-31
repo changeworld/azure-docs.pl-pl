@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714757"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287714"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Przyspiesz analizy danych big data przy użyciu platformy Apache Spark do łącznika usługi Azure Cosmos DB
  
 Platforma Apache Spark do łącznika usługi Azure Cosmos DB umożliwia usłudze Azure Cosmos DB jako dane wejściowe lub wyjściowe zadań platformy Apache Spark. Łączenie [Spark](http://spark.apache.org/) do [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) przyspiesza rozwiązania zmieniających problemów do nauki o danych. Azure Cosmos DB umożliwia szybkie zostaną zachowane, a wykonywanie zapytań o dane. Łącznik efektywnie używa natywnych indeksów zarządzanych usługi Azure Cosmos DB. Indeksy Włącz kolumn z możliwością aktualizowania podczas wykonywania predykatu wypychania szczegółów filtrowania względem szybko zmieniających się globalnie rozproszonych danych i analizy. Tego rodzaju danych może wynosić od Internetu rzeczy (IoT) w scenariuszach analizy i analizy danych.
-
-Dowiedz się więcej na temat łącznika, w tym filmie pokazano:
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>Składniki łącznika
 

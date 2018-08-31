@@ -1,67 +1,67 @@
 ---
-title: 'Samouczek: Elastycznej zapytania z usługi Azure SQL Data Warehouse | Dokumenty Microsoft'
-description: Ten samouczek używa funkcji elastycznej zapytania do zapytania magazyn danych SQL Azure z bazy danych SQL Azure.
+title: 'Samouczek: Elastyczne zapytanie za pomocą usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
+description: Ten samouczek używa funkcji elastycznego zapytania do wykonywania zapytań w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database.
 services: sql-data-warehouse
 author: hirokib
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: a31f035b5ec086a046028956c4a9c0de0d6a313d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526196"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307096"
 ---
-# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Samouczek: Użyj elastycznej kwerendy uzyskują dostęp do danych w magazynie danych SQL Azure z bazy danych SQL Azure
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Samouczek: Użyj zapytania elastycznego dostępu do danych w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database
 
-Ten samouczek używa funkcji elastycznej zapytania do zapytania magazyn danych SQL Azure z bazy danych SQL Azure. 
+Ten samouczek używa funkcji elastycznego zapytania do wykonywania zapytań w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database. 
 
 ## <a name="prerequisites-for-the-tutorial"></a>Wymagania wstępne dotyczące samouczka
 
-Przed rozpoczęciem tego samouczka wymagane są następujące wymagania wstępne:
+Przed rozpoczęciem tego samouczka, musisz mieć następujące wymagania wstępne:
 
 1. Zainstalowany program SQL Server Management Studio (SSMS).
-2. Utworzyć Azure SQL server z magazynem danych i bazy danych w ramach tego serwera.
-3. Konfiguracja reguł zapory na potrzeby uzyskiwania dostępu do serwera SQL Azure.
+2. Utworzony serwer Azure SQL z bazy danych i magazynu danych w ramach tego serwera.
+3. Konfigurowanie reguł zapory do uzyskiwania dostępu do serwera SQL Azure.
 
-## <a name="set-up-connection-between-sql-data-warehouse-and-sql-database-instances"></a>Skonfiguruj połączenie między wystąpieniami usługi SQL Data Warehouse i bazy danych SQL 
+## <a name="set-up-connection-between-sql-data-warehouse-and-sql-database-instances"></a>Konfigurowanie połączenia między wystąpieniami programu SQL Data Warehouse i bazy danych SQL 
 
-1. Przy użyciu narzędzia SSMS lub innego zapytania klienta, Otwórz nowe zapytanie bazy danych **wzorca** na serwerze w sieci logicznej.
+1. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące bazy danych **wzorca** na serwerze logicznym.
 
-2. Utwórz nazwę logowania i użytkownika, który reprezentuje bazy danych SQL do połączenia magazynu danych.
+2. Utwórz identyfikator logowania i użytkownika, który reprezentuje bazy danych SQL do połączenia magazynu danych.
 
    ```sql
    CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
    ```
 
-3. Przy użyciu narzędzia SSMS lub innego zapytania klienta, Otwórz nowe zapytanie dla **wystąpienie magazynu danych SQL** na serwerze w sieci logicznej.
+3. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące **wystąpienie magazynu danych SQL** na serwerze logicznym.
 
-4. Utwórz użytkownika w wystąpieniu magazynu danych z nazwą logowania, który został utworzony w kroku 2
+4. Utwórz użytkownika na wystąpienie magazynu danych z identyfikatorem logowania, utworzony w kroku 2
 
    ```sql
    CREATE USER SalesDBUser FOR LOGIN SalesDBLogin;
    ```
 
-5. Przyznaj uprawnienia do użytkownika z kroku 4, który chcesz bazy danych SQL chcesz wykonać. W tym przykładzie uprawnienie jest tylko udzielenia wybierz pozycję określonego schematu, pokazujący, jak firma Microsoft może ograniczać kwerend z bazy danych SQL do określonej domeny. 
+5. Przyznaj uprawnienia dla użytkownika z kroku 4, który chcesz chce wykonać bazy danych SQL. W tym przykładzie jest tylko jest udzielane uprawnienie wybierz pozycję określonego schematu, pokazujący, jak firma Microsoft może ograniczyć kwerend z bazy danych SQL do określonej domeny. 
 
    ```sql
    GRANT SELECT ON SCHEMA :: [dbo] TO SalesDBUser;
    ```
 
-6. Przy użyciu narzędzia SSMS lub innego zapytania klienta, Otwórz nowe zapytanie dla **wystąpienia bazy danych SQL** na serwerze w sieci logicznej.
+6. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące **wystąpienie usługi SQL database** na serwerze logicznym.
 
-7. Utwórz klucz główny, jeśli użytkownik nie ma jeszcze jednej. 
+7. Utwórz klucz główny, jeśli nie masz już jeden. 
 
    ```sql
    CREATE MASTER KEY; 
    ```
 
-8. Utwórz poświadczenia bazy danych przy użyciu poświadczeń, który został utworzony w kroku 2.
+8. Tworzenie poświadczeń o zakresie bazy danych przy użyciu poświadczeń utworzonego w kroku 2.
 
    ```sql
    CREATE DATABASE SCOPED CREDENTIAL SalesDBElasticCredential
@@ -69,7 +69,7 @@ Przed rozpoczęciem tego samouczka wymagane są następujące wymagania wstępne
    SECRET = 'aReallyStrongPassword@#!';
    ```
 
-9. Tworzenie zewnętrznego źródła danych wskazujące wystąpienie magazynu danych.
+9. Utwórz źródło danych zewnętrznych, który wskazuje na wystąpienie magazynu danych.
 
    ```sql
    CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
@@ -80,16 +80,16 @@ Przed rozpoczęciem tego samouczka wymagane są następujące wymagania wstępne
    ) ;
    ```
 
-10. Teraz można tworzyć tabel zewnętrznych, które odwołują się do tego źródła danych zewnętrznych. Zapytania przy użyciu tych tabel są wysyłane do wystąpienie magazynu danych do przetwarzania i wysyłane z powrotem do tego wystąpienia bazy danych.
+10. Teraz możesz utworzyć tabele zewnętrzne, odwołujące się do tego zewnętrznego źródła danych. Korzystając z tych tabel są wysyłane do wystąpienie magazynu danych, które mają zostać przetworzone i wysyłane z powrotem do wystąpienia bazy danych.
 
 
-## <a name="elastic-query-from-sql-database-to-sql-data-warehouse"></a>Elastyczne zapytania z bazy danych SQL do magazynu danych SQL
+## <a name="elastic-query-from-sql-database-to-sql-data-warehouse"></a>Zapytania elastycznego z usługi SQL database do usługi SQL data warehouse
 
-W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu danych z wielu wartości. Następnie zostanie przedstawiony sposób skonfigurować tabelę zewnętrzną do badania wystąpienie magazynu danych z tego wystąpienia bazy danych.
+W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu danych przy użyciu kilku wartości. Następnie pokażemy sposób konfigurowania tabeli zewnętrznej, aby wysłać zapytanie wystąpienie magazynu danych z wystąpienia bazy danych.
 
-1. Przy użyciu narzędzia SSMS lub innego zapytania klienta, Otwórz nowe zapytanie dla **SQL Data Warehouse** na serwerze w sieci logicznej.
+1. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące **SQL Data Warehouse** na serwerze logicznym.
 
-2. Przedstawia następujące zapytanie w celu utworzenia **OrdersInformation** tabeli w wystąpieniu magazynu danych.
+2. Prześlij następujące zapytanie, aby utworzyć **OrdersInformation** tabeli w wystąpieniu z magazynem danych.
 
    ```sql
    CREATE TABLE [dbo].[OrderInformation]
@@ -104,9 +104,9 @@ W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu dan
    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
    ```
 
-3. Przy użyciu narzędzia SSMS lub innego zapytania klienta, Otwórz nowe zapytanie dla **bazy danych SQL** na serwerze w sieci logicznej.
+3. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące **bazy danych SQL** na serwerze logicznym.
 
-4. Przedstawia następujące zapytanie w celu utworzenia definicji tabeli zewnętrznej, który wskazuje **OrdersInformation** tabeli w wystąpieniu magazynu danych.
+4. Prześlij następujące zapytanie w celu utworzenia definicji tabeli zewnętrznej, który wskazuje na **OrdersInformation** tabeli w wystąpieniu magazynu danych.
 
    ```sql
    CREATE EXTERNAL TABLE [dbo].[OrderInformation]
@@ -122,12 +122,12 @@ W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu dan
    )
    ```
 
-5. Sprawdź, czy masz teraz definicji tabeli zewnętrznej Twojej **wystąpienia bazy danych SQL**.
+5. Sprawdź, czy masz teraz definicji tabeli zewnętrznej w swojej **wystąpienie usługi SQL database**.
 
-   ![Definicja tabeli zewnętrznej elastycznej zapytania](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![Zapytanie elastyczne w definicji tabeli zewnętrznej](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
-6. Przedstawia następujące zapytanie, który sprawdza wystąpienie magazynu danych. Powinien zostać wyświetlony pięciu wartości, które zostały wstawione w kroku 2. 
+6. Prześlij następujące zapytanie, które wysyła zapytanie wystąpienie magazynu danych. Powinny pojawić się pięciu wartości, które zostały wstawione w kroku 2. 
 
 ```sql
 SELECT * FROM [dbo].[OrderInformation];
@@ -135,9 +135,9 @@ SELECT * FROM [dbo].[OrderInformation];
 
 > [!NOTE]
 >
-> Zwróć uwagę, że mimo kilku wartości, to zapytanie zajmuje wiele czasu do zwrócenia. Jeśli elastycznej zapytania z magazynu danych, co należy rozważyć kosztów przetwarzania zapytań i przesuwanie przez sieć. Priorytet jest moc obliczeniową, a nie czas oczekiwania, korzystać z zapytania elastycznej zdalne wykonywanie kodu.
+> Należy zauważyć, że mimo kilku wartości, wykonanie tego zapytania zajmuje znaczną ilość czasu do zwrócenia. Jeśli zapytania elastycznego z magazynu danych, brać pod uwagę kosztów ogólnych zapytania przetwarzania i przenoszenia przewodowo. Moc obliczeniową, a nie opóźnienie ma priorytet korzystaj z elastycznego zapytania zdalnego wykonania.
 
-Gratulacje, po skonfigurowaniu podstawy bardzo elastyczne zapytania. 
+Gratulacje, po skonfigurowaniu podstawy elastycznego zapytania. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać zalecenia, zobacz [najważniejsze wskazówki dotyczące korzystania z usługi Azure SQL Data Warehouse przy użyciu elastycznej zapytania](how-to-use-elastic-query-with-sql-data-warehouse.md).
+Aby uzyskać zalecenia, zobacz [najlepsze rozwiązania dotyczące usługi Azure SQL Data Warehouse przy użyciu zapytania elastycznego](how-to-use-elastic-query-with-sql-data-warehouse.md).

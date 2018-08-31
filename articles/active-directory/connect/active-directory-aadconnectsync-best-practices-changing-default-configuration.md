@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: Zmiana domyślnej konfiguracji | Dokumentacja firmy Microsoft'
-description: Zawiera najlepsze rozwiązania do zmiany domyślnej konfiguracji synchronizacji usługi Azure AD Connect.
+title: 'Synchronizacja programu Azure AD Connect: zmieniania konfiguracji domyślnej | Dokumentacja firmy Microsoft'
+description: Przedstawia najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej, program Azure AD Connect Sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,57 +12,60 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c2fc3bcba4b685fba36683f89c0b6ad877dbb1d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0668eb33fe33b062c941ec4f2bff47c5ed77fb51
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595142"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287888"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
-Celem tego tematu jest opisano obsługiwane i nieobsługiwane zmiany do synchronizacji Azure AD Connect.
+Ten temat ma na celu opisania obsługiwanych i nieobsługiwanych zmian do synchronizacji Azure AD Connect.
 
-Utworzono przy użyciu usługi Azure AD Connect konfigurację działa "jest" dla większości środowisk, które synchronizują lokalnymi usługi Active Directory z usługą Azure AD. Jednak w niektórych przypadkach należy zastosować pewnych zmian do konfiguracji przez potrzebne lub wymagań.
+Konfiguracja utworzone przez program Azure AD Connect będzie działać "" dla większości środowisk, które synchronizują w lokalnej usłudze Active Directory z usługą Azure AD. Jednak w niektórych przypadkach należy zastosować niektóre zmiany konfiguracji do zaspokojenia potrzeb określonego lub wymagań.
 
-## <a name="changes-to-the-service-account"></a>Zmiany konta usługi
-Synchronizacja programu Azure AD Connect jest uruchomiony na koncie usługi tworzone przez Kreatora instalacji. To konto usługi przechowuje klucze szyfrowania do bazy danych używane przez synchronizacji. Jest tworzony z 127 znaków długie hasło, a hasło nie wygasa.
+## <a name="changes-to-the-service-account"></a>Zmiany na koncie usługi
+Synchronizacja programu Azure AD Connect jest uruchomiony w ramach konta usługi, tworzone przez Kreatora instalacji. To konto usługi przechowuje klucze szyfrowania do bazy danych używane przez synchronizacji. Jest tworzony z 127 znaków długie hasło, a hasło jest ustawiona na nie wygaśnie.
 
-* Jest **nieobsługiwany** zmienić lub zresetować hasło do konta usługi. W ten sposób niszczy kluczy szyfrowania i nie będzie mógł uzyskać dostępu do bazy danych i nie jest możliwe jej uruchomienie.
+* Jest **nieobsługiwany** zmienić lub zresetować hasło do konta usługi. Sposób niszczy klucze szyfrowania i nie jest w stanie dostępu do bazy danych i nie jest możliwe jej uruchomienie.
 
 ## <a name="changes-to-the-scheduler"></a>Zmiany do harmonogramu
-Począwszy od wersji z kompilacji 1.1 (luty 2016) można skonfigurować [harmonogramu](active-directory-aadconnectsync-feature-scheduler.md) mają cykl synchronizacji inną niż domyślna 30 minut.
+Począwszy od wersji z kompilacji 1.1 (luty 2016) można skonfigurować [harmonogramu](active-directory-aadconnectsync-feature-scheduler.md) mieć cykl synchronizacji inną niż domyślna, 30 minut.
 
-## <a name="changes-to-synchronization-rules"></a>Zmiany reguły synchronizacji
-Kreator instalacji umożliwia konfigurację, w której ma działać w przypadku najbardziej typowych scenariuszy. W przypadku, gdy trzeba wprowadzić zmiany w konfiguracji, należy wykonać te reguły, aby nadal ma obsługiwanej konfiguracji.
-
-* Możesz [zmienić przepływów atrybutów](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Jeśli przepływy atrybutów bezpośredniego domyślne nie są odpowiednie dla Twojej organizacji.
-* Jeśli chcesz [nie przepływu atrybutu](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) i usuń wszelkie istniejący atrybut wartości w usłudze Azure AD, a następnie należy utworzyć regułę dla tego scenariusza.
-* [Wyłącz niechciane regułę synchronizacji](#disable-an-unwanted-sync-rule) zamiast usuwania. Usunięto regułę zostaje odtworzone podczas uaktualniania.
-* Aby [zmienić regułę out-of-box](#change-an-out-of-box-rule), należy utworzyć kopię oryginalnej reguły i wyłączyć regułę out-of-box. Edytor reguł synchronizacji monity i pomaga.
-* Eksportowanie reguł niestandardowych za pomocą edytora reguły synchronizacji. Edytor dostarcza skrypt programu PowerShell, w którym można łatwo utworzyć je ponownie w przypadku odzyskiwania po awarii.
+## <a name="changes-to-synchronization-rules"></a>Zmiany reguł synchronizacji
+Kreator instalacji umożliwia konfigurację, która powinna działać w przypadku najbardziej typowych scenariuszy. W przypadku, gdy trzeba wprowadzić zmiany w konfiguracji, należy wykonać te zasady, aby nadal ma obsługiwanej konfiguracji.
 
 > [!WARNING]
-> Reguły synchronizacji out-of-box mają odcisk palca. Jeśli wprowadzisz zmiany tych reguł odcisk palca nie jest zgodne. Mogą wystąpić problemy w przyszłości podczas próby zastosowania nową wersję programu Azure AD Connect. Tylko zmiany sposobu opisano w tym artykule.
+> W przypadku wprowadzenia zmian do domyślnych reguł synchronizacji następnie zmiany te zostaną zastąpione przy kolejnym uruchomieniu program Azure AD Connect jest aktualizowany, wynikiem wyniki nieoczekiwany i prawdopodobnie niechciane synchronizacji.
+
+* Możesz [zmienić przepływy atrybutów](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Jeśli przepływy atrybutów bezpośrednie domyślne nie są odpowiednie dla Twojej organizacji.
+* Jeśli chcesz [nie przepływu atrybutu](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) i Usuń wszystkie istniejące atrybutu wartości w usłudze Azure AD, a następnie należy utworzyć regułę dla tego scenariusza.
+* [Wyłącz regułę synchronizacji niechciane](#disable-an-unwanted-sync-rule) zamiast usuwania go. Usunięto regułę są odtwarzane podczas uaktualniania.
+* Aby [zmienić regułę out-of-box](#change-an-out-of-box-rule), należy utworzyć kopię oryginalnej reguły i wyłączyć zasadę out-of-box. Edytor reguł synchronizacji monitu i pomoże Ci.
+* Eksportowanie reguł niestandardowych za pomocą narzędzia Synchronization Rules Editor. Edytor umożliwia za pomocą skryptu programu PowerShell, w którym można łatwo je ponownie utworzyć w scenariuszu odzyskiwania po awarii.
+
+> [!WARNING]
+> Reguły synchronizacji out-of-box mają odcisku palca. Jeśli wprowadzisz zmiany w tych reguł odcisk palca nie jest zgodny. Mogą wystąpić problemy w przyszłości, gdy użytkownik próbuje zastosować nowej wersji programu Azure AD Connect. Tylko zmiany sposobu, w których jest on opisany w tym artykule.
 
 ### <a name="disable-an-unwanted-sync-rule"></a>Wyłącz niechciane reguły synchronizacji
-Nie należy usuwać regułę synchronizacji out-of-box. Zostanie utworzona ponownie podczas uaktualniania dalej.
+Nie usuwaj regułę synchronizacji out-of-box. Jego są odtwarzane podczas uaktualniania dalej.
 
-W niektórych przypadkach konfiguracji, który nie działa dla topologii ma wygenerowane przez Kreatora instalacji. Na przykład jeśli masz topologią lasu zasobów dla konta, ale rozszerzył schematu w lesie konta ze schematem programu Exchange, reguł dla programu Exchange są tworzone dla lasu kont i lasu zasobów. W takim przypadku należy wyłączyć zasadę synchronizacji dla programu Exchange.
+W niektórych przypadkach Kreator instalacji tworzył konfigurację, która nie działa dla topologii. Na przykład jeśli masz topologią lasu zasobów dla konta, ale mają rozszerzenia schematu w lesie konta przy użyciu schematu programu Exchange, reguł dla programu Exchange są tworzone dla lasu konta i lasu zasobów. W takim przypadku należy wyłączyć zasadę synchronizacji dla programu Exchange.
 
-![Reguła synchronizacji wyłączone](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
+![Reguły synchronizacji wyłączone](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-Na powyższym rysunku Kreator instalacji znalazł starego schematu Exchange 2003 w lesie konta. To rozszerzenie schematu został dodany przed wprowadzeniem w firmie Fabrikam środowisku lasu zasobów. Aby zapewnić, że żadne atrybuty od starego wdrożenia programu Exchange są synchronizowane, reguła synchronizacji powinno zostać wyłączone, jak pokazano.
+Na powyższym rysunku Kreator instalacji wykryła stare schematu programu Exchange 2003 w lesie konta. To rozszerzenie schematu został dodany przed wprowadzeniem lasu zasobów w środowisku firmy Fabrikam. Aby upewnić się, że żadne atrybuty od starego wdrożenia programu Exchange są synchronizowane, reguły synchronizacji powinna być wyłączona, jak pokazano.
 
 ### <a name="change-an-out-of-box-rule"></a>Zmień reguły out-of-box
-Tylko wtedy, należy zmienić regułę out-of-box jest, gdy trzeba będzie zmienić reguły sprzężenia. Jeśli musisz zmienić przepływu atrybutów, należy utworzyć regułę synchronizacji z wyższy priorytet niż zasady out-of-box. Tylko reguły musisz praktycznie klonowania jest reguła **w z usługi Active Directory — użytkownik przyłączyć**. Można zastąpić wszystkie reguły z regułą wyższy priorytet.
+Jedyną sytuacją, należy zmienić regułę out-of-box jest, gdy zajdzie potrzeba zmiany reguł dołączania. Jeśli musisz zmienić przepływ atrybutu, należy utworzyć regułę synchronizacji o wyższym priorytecie niż reguły out-of-box. Tylko reguły, musisz sklonować praktycznie jest reguła **w z usługi AD — użytkownik przyłączyć**. Można zastąpić wszystkie reguły z regułę o wyższym priorytecie.
 
-Jeśli chcesz wprowadzić zmiany w regule out-of-box należy utworzyć kopię reguły out-of-box i wyłączyć oryginalnej reguły. Następnie wprowadź zmiany do sklonowany reguły. Edytor reguł synchronizacji korzystającą z tych kroków. Po otwarciu regułę out-of-box prezentowany to okno dialogowe:  
+Jeśli musisz wprowadzić zmiany w regule out-of-box należy utworzyć kopię reguły out-of-box i Wyłącz istniejącą regułę. Następnie wprowadź zmiany do sklonowanego reguły. Edytor reguł synchronizacji korzystającą z tych kroków. Po otwarciu regułę out-of-box, są prezentowane za pomocą tego okna dialogowego:  
 ![Ostrzeżenie poza reguły pola](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Wybierz **tak** można utworzyć kopii reguły. Reguła sklonowany następnie jest otwarty.  
+Wybierz **tak** do utworzenia kopii reguły. Następnie zostanie otwarty sklonowany reguły.  
 ![Sklonowany reguły](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
 
 W tej regule sklonowany wprowadź niezbędne zmiany w zakresie sprzężenia i przekształcenia.

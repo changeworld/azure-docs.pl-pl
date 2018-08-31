@@ -1,25 +1,25 @@
 ---
-title: 'Samouczek: Taxicab Nowy Jork obciążenia danych Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
-description: Samouczku Azure portal i SQL Server Management Studio, aby załadować dane Taxicab Nowy Jork z publicznej usługi Azure blob Azure SQL Data Warehouse.
+title: 'Samouczek: Dane dotyczące taksówek w Nowym Jorku obciążenia do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
+description: Samouczek korzysta z platformy Azure portal i programu SQL Server Management Studio, aby załadować dane taksówek w Nowym Jorku z publicznej platformy Azure obiektu blob do usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: acc7d0a031821b8b6e9c110c92597b0307e216fb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 06d889686c673adc3941ac7303ab52a6fff408a8
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193237"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288128"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Taxicab Nowy Jork obciążenia danych Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Dane dotyczące taksówek w Nowym Jorku obciążenia do usługi Azure SQL Data Warehouse
 
-Ten samouczek używa ładowanie danych Nowy Jork Taxicab z publiczną przy użyciu programu PolyBase Azure blob Azure SQL Data Warehouse. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności: 
+Ten samouczek używa programu PolyBase, aby załadować dane dotyczące taksówek w Nowym Jorku z publicznej usługi Azure blob do usługi Azure SQL Data Warehouse. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności: 
 
 > [!div class="checklist"]
 > * Tworzenie magazynu danych w witrynie Azure Portal
@@ -72,15 +72,15 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). | 
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
 5. Kliknij pozycję **Wybierz**.
 
-6. Kliknij przycisk **poziom wydajności** do określenia, czy magazyn danych jest Gen1 lub Gen2 i liczba danych magazynu jednostki. 
+6. Kliknij przycisk **poziom wydajności** do określenia, czy magazyn danych jest Gen1 lub Gen2, a liczba danych jednostek magazynu. 
 
-7. W tym samouczku, wybierz **Gen1** usługi SQL Data Warehouse. Suwak, domyślnie jest ustawiony na **DW1000c**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz **Gen1** usługi SQL Data Warehouse. Suwak, domyślnie jest ustawiony na **DW1000c**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożli
 > Usługa SQL Data Warehouse komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 >
 
-1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona Przegląd bazy danych, wyświetlając nazwę FQDN serwera (takich jak **mynewserver 20180430.database.windows.net**) i udostępnia opcje dla dalszej konfiguracji. 
+1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (takich jak **mynewserver-20180430.database.windows.net**) i opcje dalszej konfiguracji. 
 
 2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych przewodnikach Szybki start. Następnie kliknij nazwę serwera, aby otworzyć ustawienia serwera.
 
@@ -133,8 +133,8 @@ Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyci
 Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witrynie Azure Portal. Nazwa ta będzie używana później przy nawiązywaniu połączenia z serwerem.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-2. Wybierz **magazynów danych programu SQL** z menu po lewej stronie i kliknij bazę danych na **hurtowni danych programu SQL** strony. 
-3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa jest mynewserver 20180430.database.windows.net. 
+2. Wybierz **magazyny danych SQL** z menu po lewej stronie i kliknij bazę danych na **magazyny danych SQL** strony. 
+3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to mynewserver-20180430.database.windows.net. 
 
     ![informacje o połączeniu](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -149,7 +149,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | Ustawienie      | Sugerowana wartość | Opis | 
     | ------------ | --------------- | ----------- | 
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
-    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna być podobny do następującego: **mynewserver 20180430.database.windows.net**. |
+    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna mieć taką formę: **mynewserver-20180430.database.windows.net**. |
     | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
     | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
@@ -164,7 +164,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-user-for-loading-data"></a>Tworzenie użytkownika do ładowania danych
 
-Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są zdefiniowane zgodnie z których generacji dla usługi SQL Data Warehouse zostały udostępnione, [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md), i [klasy zasobów](resource-classes-for-workload-management.md). 
+Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są zdefiniowane zgodnie z których generowania SQL Data Warehouse aprowizowaniu, [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md), i [klasy zasobów](resource-classes-for-workload-management.md). 
 
 Najlepszym rozwiązaniem jest utworzenie identyfikatora logowania i użytkownika, które są przeznaczone do ładowania danych. Następnie należy dodać użytkownika ładującego do [klasy zasobów](resource-classes-for-workload-management.md), która umożliwia odpowiednią maksymalną alokację pamięci.
 
@@ -215,7 +215,7 @@ Pierwszym krokiem do załadowania danych jest zalogowanie się jako użytkownik 
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Tworzenie tabel zewnętrznych dla przykładowych danych
 
-Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. W tym samouczku przedstawiono sposób użycia tabel zewnętrznych do ładowania danych pliku cab taksówki nowego Jorku z obiektu blob magazynu Azure. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
+Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. W tym samouczku dowiesz się, jak załadować dane taksówek w Nowym Jorku z usługi Azure storage blob za pomocą tabel zewnętrznych. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
 
 Uruchom następujące skrypty SQL, podając informacje o danych do załadowania. Informacje te obejmują obecną lokalizację danych, format zawartości danych i definicję tabel dla danych. 
 
@@ -589,7 +589,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 3. Aby usunąć magazyn danych i nie płacić za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
 
-4. Aby usunąć serwer SQL został utworzony, kliknij przycisk **mynewserver 20180430.database.windows.net** poprzedniej ilustracji, a następnie kliknij polecenie **usunąć**.  Należy zachować ostrożność, ponieważ usunięcie serwera spowoduje usunięcie wszystkich baz danych przypisanych do tego serwera.
+4. Aby usunąć utworzony serwer SQL, kliknij **mynewserver-20180430.database.windows.net** w poprzednim obrazie, a następnie kliknij przycisk **Usuń**.  Należy zachować ostrożność, ponieważ usunięcie serwera spowoduje usunięcie wszystkich baz danych przypisanych do tego serwera.
 
 5. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 

@@ -1,84 +1,84 @@
 ---
-title: Dane poufne — narzędzie Microsoft Threat modelowania - Azure | Dokumentacja firmy Microsoft
-description: środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń
+title: Dane poufne — narzędzie do modelowania zagrożeń firmy Microsoft — Azure | Dokumentacja firmy Microsoft
+description: środki zaradcze dotyczące zagrożeń, widoczne w narzędziu do modelowania zagrożeń
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031808"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301465"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Dane poufne | Środki zaradcze 
-| Produktów i usług | Artykuł |
+| Produkt/usługę | Artykuł |
 | --------------- | ------- |
-| **Granic zaufania maszyny** | <ul><li>[Upewnij się, że pliki binarne są zaciemniona, jeśli zawierają one informacje poufne](#binaries-info)</li><li>[Należy rozważyć przy użyciu systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika](#efs-user)</li><li>[Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany.](#filesystem)</li></ul> | 
-| **Aplikacja sieci Web** | <ul><li>[Upewnij się, poufnej zawartości nie jest buforowana w przeglądarce](#cache-browser)</li><li>[Szyfrowanie sekcji pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne](#encrypt-data)</li><li>[Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe](#autocomplete-input)</li><li>[Upewnij się, że poufne dane wyświetlane na ekranie użytkownika są wyświetlane jako znaki](#data-mask)</li></ul> | 
-| **Baza danych** | <ul><li>[Implementowanie dynamiczne maskowanie Aby ograniczyć użytkowników narażenia z systemem innym niż uprzywilejowany danych poufnych danych](#dynamic-users)</li><li>[Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu](#salted-hash)</li><li>[ Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane](#db-encrypted)</li><li>[Upewnij się, że włączone jest szyfrowanie tej bazy danych na poziomie (funkcji TDE)](#tde-enabled)</li><li>[Upewnij się, że kopie zapasowe bazy danych są szyfrowane.](#backup)</li></ul> | 
-| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że poufne dane związane z interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce](#api-browser)</li></ul> | 
-| Dokumentów w usłudze Azure DB | <ul><li>[Szyfrowania poufnych danych przechowywanych w usłudze Azure DB rozwiązania Cosmos](#encrypt-docdb)</li></ul> | 
-| **Maszyna wirtualna platformy Azure IaaS granicy zaufania** | <ul><li>[Użyj szyfrowania dysków Azure do szyfrowania dysków używanych przez maszyny wirtualne](#disk-vm)</li></ul> | 
-| **Granic zaufania sieci szkieletowej usług** | <ul><li>[Szyfrowanie kluczy tajnych w aplikacji sieci szkieletowej usług](#fabric-apps)</li></ul> | 
-| **Dynamics CRM** | <ul><li>[Wykonaj modelowania zabezpieczeń i użyć zespołów jednostki biznesowe w przypadku, gdy wymagane](#modeling-teams)</li><li>[Minimalizowanie dostęp do udziału funkcji na jednostkach krytyczne](#entities)</li><li>[Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i dobrej rozwiązania](#good-practices)</li><li>[Programowanie regułę standardy, proscribing konfiguracji ze szczegółowymi informacjami w Zarządzanie wyjątkami dołączania](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Użyj szyfrowanie usługi Magazyn Azure (SSE) dla danych magazynowanych (wersja zapoznawcza)](#sse-preview)</li><li>[Użyj szyfrowania po stronie klienta do przechowywania poufnych danych w usłudze Azure Storage](#client-storage)</li></ul> | 
-| **Klientów urządzeń przenośnych** | <ul><li>[Szyfrowanie liter lub dane osobowe dane zapisywane w lokalnej pamięci masowej telefonów](#pii-phones)</li><li>[Zasłaniają wygenerowanych plików binarnych przed rozpoczęciem dystrybuowania użytkownikom końcowym](#binaries-end)</li></ul> | 
-| **WCF** | <ul><li>[ Ustaw właściwość clientCredentialType certyfikatu lub systemu Windows](#cert)</li><li>[Nie jest włączony tryb zabezpieczeń programu WCF](#security)</li></ul> | 
+| **Maszyny granicy zaufania** | <ul><li>[Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one informacje poufne](#binaries-info)</li><li>[Należy wziąć pod uwagę, że za pomocą systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika](#efs-user)</li><li>[Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany](#filesystem)</li></ul> | 
+| **Aplikacja sieci Web** | <ul><li>[Upewnij się, że poufnej zawartości nie jest buforowana w przeglądarce](#cache-browser)</li><li>[Szyfruj sekcje pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne](#encrypt-data)</li><li>[Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe](#autocomplete-input)</li><li>[Upewnij się, że poufne dane wyświetlane na ekranie użytkownika są wyświetlane jako znaki](#data-mask)</li></ul> | 
+| **Baza danych** | <ul><li>[Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych](#dynamic-users)</li><li>[Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu](#salted-hash)</li><li>[ Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane](#db-encrypted)</li><li>[Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)](#tde-enabled)</li><li>[Upewnij się, że są szyfrowane kopie zapasowe bazy danych](#backup)</li></ul> | 
+| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że dane poufne, które są istotne dla interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce](#api-browser)</li></ul> | 
+| Azure Document DB | <ul><li>[Szyfruj poufne dane przechowywane w usłudze Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
+| **Granicy zaufania maszyn wirtualnych IaaS platformy Azure** | <ul><li>[Usługa Azure Disk Encryption umożliwia szyfrowanie dysków używanych przez maszyny wirtualne](#disk-vm)</li></ul> | 
+| **Granicy zaufania usługi Service Fabric** | <ul><li>[Szyfrowanie kluczy tajnych w aplikacji usługi Service Fabric](#fabric-apps)</li></ul> | 
+| **Dynamics CRM** | <ul><li>[Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane](#modeling-teams)</li><li>[Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne](#entities)</li><li>[Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń](#good-practices)</li><li>[Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami](#exception-mgmt)</li></ul> | 
+| **Azure Storage** | <ul><li>[Użyj usługi Azure Storage Service Encryption (SSE) dla danych magazynowanych (wersja zapoznawcza)](#sse-preview)</li><li>[Użyj szyfrowania po stronie klienta do przechowywania poufnych danych w usłudze Azure Storage](#client-storage)</li></ul> | 
+| **Klientów urządzeń przenośnych** | <ul><li>[Szyfruj poufne lub dane osobowe dane zapisane w magazynie lokalnym telefonów](#pii-phones)</li><li>[Zaciemniania wygenerowanych plików binarnych, przed rozpoczęciem dystrybuowania dla użytkowników końcowych](#binaries-end)</li></ul> | 
+| **WCF** | <ul><li>[ Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows](#cert)</li><li>[Nie jest włączony tryb zabezpieczeń programu WCF](#security)</li></ul> | 
 
-## <a id="binaries-info"></a>Upewnij się, że pliki binarne są zaciemniona, jeśli zawierają one informacje poufne
+## <a id="binaries-info"></a>Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one informacje poufne
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, że pliki binarne są zaciemniona, jeśli zawierają one informacje poufne, takich jak tajemnice handlowe logiki biznesowej poufnych, które powinny nie wycofane. To, aby zatrzymać odtwarzanie zestawów. Narzędzi, takich jak `CryptoObfuscator` mogą być używane w tym celu. |
+| **Kroki** | Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one poufne informacje, takie jak tajemnice handlowe, logiki biznesowej poufnych, które należy wycofać nie. To, aby zatrzymać odtwarzanie zestawów. Narzędzia takie jak `CryptoObfuscator` mogą być używane do tego celu. |
 
-## <a id="efs-user"></a>Należy rozważyć przy użyciu systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika
+## <a id="efs-user"></a>Należy wziąć pod uwagę, że za pomocą systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Należy rozważyć przy użyciu systemu szyfrowania plików (EFS) jest używany do chronić poufne dane specyficzne dla użytkownika z atakujący mający fizyczny dostęp do komputera. |
+| **Kroki** | Należy wziąć pod uwagę, że za pomocą systemu szyfrowania plików (EFS) jest używany do chronić poufne dane specyficzne dla użytkownika z przeciwników mających fizyczny dostęp do komputera. |
 
-## <a id="filesystem"></a>Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany.
+## <a id="filesystem"></a>Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany (np. przy użyciu DPAPI), jeśli nie można wymusić systemu szyfrowania plików |
+| **Kroki** | Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany (np. przy użyciu interfejsu DPAPI), jeśli nie można wymusić systemu szyfrowania plików |
 
-## <a id="cache-browser"></a>Upewnij się, poufnej zawartości nie jest buforowana w przeglądarce
+## <a id="cache-browser"></a>Upewnij się, że poufnej zawartości nie jest buforowana w przeglądarce
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Generic, Web Forms, MVC5, MVC6 |
+| **Odpowiednich technologii** | Generic, Web Forms, MVC5, MVC6 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Przeglądarki może przechowywać informacje na potrzeby buforowania i historii. Te buforowane pliki są przechowywane w folderze, takie jak folder tymczasowych plików internetowych, w przypadku programu Internet Explorer. Te strony są ponownie, określonym w przeglądarce pojawi się je z pamięci podręcznej. Jeśli informacje poufne jest wyświetlany użytkownikowi (na przykład ich adres karty kredytowej, numer ubezpieczenia społecznego albo nazwa użytkownika), następnie te informacje może być przechowywane w pamięci podręcznej przeglądarki i w związku z tym pobieranie za pośrednictwem badanie pamięci podręcznej przeglądarki Wystarczy nacisnąć przycisk "Wstecz", w przeglądarce. Wartość nagłówka cache-control odpowiedzi nagłówka do "nie-store" dla wszystkich stron. |
+| **Kroki** | Przeglądarki może przechowywać informacje na potrzeby buforowania i historię. Te buforowane pliki są przechowywane w folderze, takich jak folderu tymczasowych plików internetowych, w przypadku programu Internet Explorer. Strony te są ponownie, określonym w przeglądarce pojawi się je z pamięci podręcznej. Jeśli poufnych informacji jest wyświetlany użytkownikowi (na przykład ich adres karty kredytowej, numer ubezpieczenia społecznego i nazwa użytkownika), następnie tych informacji może być przechowywane w pamięci podręcznej przeglądarki i w związku z tym pobieranie poprzez badanie pamięci podręcznej przeglądarki lub za pomocą Wystarczy nacisnąć przycisk "Wstecz", w przeglądarce. Ustaw wartość nagłówka cache-control w odpowiedzi do "no-store" dla wszystkich stron. |
 
 ### <a name="example"></a>Przykład
 ```XML
@@ -96,7 +96,7 @@ ms.locfileid: "37031808"
 ```
 
 ### <a name="example"></a>Przykład
-Mogą to być wykonywane przez filtr. Może służyć następujący przykład: 
+Może to być implementowane za pomocą filtru. Poniższy przykład może zostać użyty: 
 ```csharp
 public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -122,16 +122,16 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
         }
 ``` 
 
-## <a id="encrypt-data"></a>Szyfrowanie sekcji pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne
+## <a id="encrypt-data"></a>Szyfruj sekcje pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Porady: Szyfrowanie sekcji konfiguracyjnych w DPAPI za pomocą programu ASP.NET 2.0](https://msdn.microsoft.com/library/ff647398.aspx), [określenie dostawcę konfiguracji chronione](https://msdn.microsoft.com/library/68ze1hb2.aspx), [przy użyciu usługi Azure Key Vault ochronę kluczy tajnych w aplikacji](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **Kroki** | Pliki konfiguracji, takich jak plik Web.config, appsettings.json są często używane do przechowywania informacji poufnych, w tym nazwy użytkownika, hasła, parametry połączenia bazy danych i kluczy szyfrowania. Jeśli nie będzie chronić te informacje, aplikacja jest narażony na ataki lub złośliwym użytkownikom uzyskania poufne informacje, takie jak nazwy kont i hasła, nazwy bazy danych i nazwy serwera. Oparty na typie wdrożenia (azure/lokalnego), szyfrowanie sekcji poufnych plików konfiguracji przy użyciu DPAPI lub usługi, takie jak usługi Azure Key Vault. |
+| **Odwołania**              | [Instrukcje: Szyfrowanie sekcji konfiguracyjnych w ASP.NET 2.0 przy użyciu interfejsu DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [Określanie dostawcę konfiguracji chronionych](https://msdn.microsoft.com/library/68ze1hb2.aspx), [przy użyciu usługi Azure Key Vault do ochrony wpisu tajnego aplikacji](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Kroki** | Pliki konfiguracji, takie jak pliku Web.config, appsettings.json są często używane do przechowywania informacji poufnych, w tym nazwy użytkownika, hasła, parametry połączenia bazy danych i kluczy szyfrowania. Jeśli te informacje nie jest chroniony, aplikacja jest narażony na ataki lub złośliwym użytkownikom uzyskania poufne informacje, takie jak nazwy użytkownika konta i hasła, nazwy baz danych i serwerów nazw. Oparte na dany typ wdrożenia (azure/lokalnych), szyfrowanie poufnych części plików konfiguracji przy użyciu interfejsu DPAPI lub usług, takich jak usługi Azure Key Vault. |
 
 ## <a id="autocomplete-input"></a>Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe
 
@@ -139,10 +139,10 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN: atrybut autocomplete](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [przy użyciu funkcji AutoComplete w formacie HTML](http://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach ich oczyszczania HTML](http://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete., ponownie?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
-| **Kroki** | Atrybut autocomplete Określa, czy formularz powinien mieć autouzupełniania lub wyłącz. Po włączeniu funkcji autocomplete przeglądarka automatycznie wypełnić wartości na podstawie wartości, które użytkownik wprowadził przed. Na przykład po wprowadzeniu nowej nazwy i hasła w postaci i przesłaniu formularza, przeglądarka zapyta, czy hasło ma zostać zapisany. Następnie podczas wyświetlania formularza, nazwę i hasło są wypełniane automatycznie lub zostały zakończone, ponieważ nazwa jest wprowadzona. Osoba atakująca z dostępem do lokalnego może uzyskać hasła nieszyfrowanego z pamięci podręcznej przeglądarki. Funkcji autocomplete jest domyślnie włączona, a musi jawnie wyłączone. |
+| **Odwołania**              | [MSDN: autouzupełniania atrybut](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [za pomocą automatycznego uzupełniania w języku HTML](http://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach Sanityzacji HTML](http://technet.microsoft.com/security/bulletin/MS10-071), [Autouzupełnianie., ponownie?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Kroki** | Atrybut autouzupełniania Określa, czy formularz powinien mają autouzupełniania, lub wyłączyć. Gdy autouzupełniania jest włączona, przeglądarki automatycznego ukończenia wartości na podstawie wartości, które użytkownik wprowadził przed. Na przykład po wprowadzeniu nowej nazwy i hasła w postaci i przesłaniu formularza, przeglądarka zapyta, czy można zapisywać hasła. Następnie podczas wyświetlania formularza, nazwę i hasło są wypełniane automatycznie lub odbywa się zgodnie z jej nazwa jest wpisana. Osoba atakująca z lokalnym dostępem można uzyskać zwykłego tekstu w pamięci podręcznej przeglądarki. Autouzupełnianie jest domyślnie włączona i musi jawnie wyłączone. |
 
 ### <a name="example"></a>Przykład
 ```csharp
@@ -158,21 +158,21 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Dane poufne, takie jak hasła, numery kart kredytowych, itp. SSN powinien maskowane, gdy wyświetlane na ekranie. Ma to zapobiec próbom nieautoryzowanego dostępu do danych (np. hasła ramię przeglądanie, pomocy technicznej wyświetlanie SSN liczby użytkowników). Upewnij się, że te elementy danych nie są widoczne w postaci zwykłego tekstu i odpowiednio są ukryte. Musi to być wykonane szczególną uwagę podczas akceptowania ich jako danych wejściowych (np. wprowadzania type = "password") oraz wyświetlanie wstecz na ekranie (np. wyświetlania tylko ostatnich 4 cyfr numeru karty kredytowej). |
+| **Kroki** | Dane poufne, takie jak hasła, numerów kart kredytowych SSN itp. należy maskowane, gdy na ekranie. To uniemożliwia nieautoryzowanym próbom uzyskanie dostępu do danych (np. hasła ramię przeglądanie, personel pomocy technicznej, wyświetlając numer PESEL liczby użytkowników). Upewnij się, że te elementy danych nie są widoczne w postaci zwykłego tekstu i odpowiednio są maskowane. Należy uwzględnić podczas akceptowania je jako dane wejściowe (np. typu danych wejściowych = "password") oraz wyświetlanie na ekranie (np. wyświetlania tylko 4 ostatnie cyfry numeru karty kredytowej). |
 
-## <a id="dynamic-users"></a>Implementowanie dynamiczne maskowanie Aby ograniczyć użytkowników narażenia z systemem innym niż uprzywilejowany danych poufnych danych
+## <a id="dynamic-users"></a>Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Sql Azure, OnPrem |
-| **Atrybuty**              | MsSQL2016 wersji — w wersji 12, wersja programu SQL — SQL |
-| **Odwołania**              | [Maskowanie danych dynamicznych](https://msdn.microsoft.com/library/mt130841) |
-| **Kroki** | Dynamiczne maskowanie danych służy do ograniczania ujawnianie danych wrażliwych, zapobiegając użytkowników, którzy nie powinni mieć dostęp do danych z wyświetlania jej. Dynamiczne maskowanie danych nie ma na celu aby uniemożliwić użytkownikom bazy danych połączenie bezpośrednio z bazy danych i uruchamiania wyczerpujący zapytań, które udostępniają fragmentów danych poufnych. Maskowanie danych dynamicznych jest uzupełnienie innych funkcji zabezpieczeń programu SQL Server (inspekcji, szyfrowania, zabezpieczeń na poziomie wiersza...) i zdecydowanie zaleca się stosowania tej funkcji w połączeniu z nimi dodatkowo aby lepiej chronić poufne dane w Baza danych. Należy pamiętać, że ta funkcja jest obsługiwana tylko przez program SQL Server w programie 2016 i bazy danych SQL Azure. |
+| **Odpowiednich technologii** | Sql Azure, OnPrem |
+| **Atrybuty**              | MsSQL2016 wersja — wersja V12, wersja SQL — SQL |
+| **Odwołania**              | [Dynamiczne maskowanie danych](https://msdn.microsoft.com/library/mt130841) |
+| **Kroki** | Dynamiczne maskowanie danych ma na celu ograniczania ujawniania poufnych danych, co uniemożliwia użytkownikom, którzy nie powinni mieć dostęp do danych z wyświetlania go. Dynamiczne maskowanie danych nie ma na celu aby uniemożliwić użytkownikom bazy danych bezpośrednio z bazą danych i uruchamiania pełnego zapytań, które udostępniają elementy danych poufnych. Dynamiczne maskowanie danych jest uzupełnieniem inne funkcje zabezpieczeń programu SQL Server (inspekcja, szyfrowanie, zabezpieczenia na poziomie wiersza...) i zdecydowanie zaleca się korzystać z tej funkcji w połączeniu z ich także w celu zapewnienia lepszej ochrony danych poufnych w Baza danych. Należy pamiętać, że ta funkcja jest obsługiwana tylko przez program SQL Server, począwszy od 2016 i Azure SQL Database. |
 
 ## <a id="salted-hash"></a>Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu
 
@@ -180,10 +180,10 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Hashing hasła przy użyciu interfejsów API architektury .NET kryptograficznego](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
-| **Kroki** | Hasła nie powinny być przechowywane w magazynie użytkownika niestandardowego w bazach danych. Hasła powinny być przechowywane wartości zaburzającej zamiast tego. Upewnij się, soli dla użytkownika jest zawsze unikatowa i zastosować b-crypt, s-crypt lub PBKDF2 przed zapisaniem hasła, wraz z liczbą minimalna pracy współczynnik iteracji pętli 150 000, aby wyeliminować możliwość wymuszania atak.| 
+| **Odwołania**              | [Hashing hasła przy użyciu interfejsów API kryptografii platformy .NET](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Kroki** | Hasła nie powinien być przechowywany w użytkownika niestandardowego magazynu w bazach danych. Skróty haseł powinny być przechowywane przy użyciu wartości zaburzającej zamiast tego. Upewnij się, ziarna dla użytkownika jest zawsze unikatowa i zastosować b-crypt, s-crypt lub PBKDF2 przed zapisaniem hasło, wraz z liczbą pracy minimalny współczynnik iteracji 150 000 pętli, aby wyeliminować możliwości ataków siłowych.| 
 
 ## <a id="db-encrypted"></a>Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane
 
@@ -191,46 +191,46 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Wersja programu SQL — wszystkie |
-| **Odwołania**              | [Szyfrowania poufnych danych w programie SQL server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [porady: szyfrowanie kolumny danych w programie SQL Server](https://msdn.microsoft.com/library/ms179331), [Szyfruj certyfikatu](https://msdn.microsoft.com/library/ms188061) |
-| **Kroki** | Dane poufne, takie jak numer karty kredytowej musi być szyfrowane w bazie danych. Dane mogą być szyfrowane za pomocą szyfrowania na poziomie kolumny lub funkcję aplikacji przy użyciu funkcji szyfrowania. |
+| **Odpowiednich technologii** | Ogólny |
+| **Atrybuty**              | Wersja SQL — wszystkie |
+| **Odwołania**              | [Szyfrowanie poufnych danych w programie SQL server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [porady: szyfrowanie kolumny danych w programie SQL Server](https://msdn.microsoft.com/library/ms179331), [Szyfruj przez certyfikat](https://msdn.microsoft.com/library/ms188061) |
+| **Kroki** | Dane poufne, takie jak numer karty kredytowej musi być szyfrowane w bazie danych. Dane mogą być szyfrowane za pomocą szyfrowania na poziomie kolumny lub funkcję aplikacji za pomocą funkcji szyfrowania. |
 
-## <a id="tde-enabled"></a>Upewnij się, że włączone jest szyfrowanie tej bazy danych na poziomie (funkcji TDE)
+## <a id="tde-enabled"></a>Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Opis programu SQL Server przezroczystego szyfrowania danych (funkcji TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
-| **Kroki** | Przezroczystego szyfrowania danych (funkcji TDE) funkcji w programie SQL server ułatwia szyfrowania poufnych danych w bazie danych i ochronę kluczy, które są używane do szyfrowania danych przy użyciu certyfikatu. Zapobiega to osobom niemającym kluczy przy użyciu danych. Funkcji TDE chroni dane "magazynowane", co oznacza plików danych i dziennika. Zapewnia możliwość wykonania wielu ustawowych, wykonawczych i wskazówkami w różnych branżach. |
+| **Odwołania**              | [Omówienie programu SQL Server Transparent Data Encryption (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **Kroki** | Przezroczysty funkcji szyfrowania danych (TDE) w programie SQL server pomaga w szyfrowania poufnych danych w bazie danych i chronić klucze, które są używane do szyfrowania danych przy użyciu certyfikatu. Zapobiega to każda osoba, bez kluczy przy użyciu danych. Funkcja TDE chroni dane "w stanie spoczynku" oznacza plików danych i dziennika. Daje możliwość wykonania wielu prawem, regulacjami i wskazówkami w różnych branżach. |
 
-## <a id="backup"></a>Upewnij się, że kopie zapasowe bazy danych są szyfrowane.
+## <a id="backup"></a>Upewnij się, że są szyfrowane kopie zapasowe bazy danych
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Lokalnego programu SQL Azure |
-| **Atrybuty**              | MsSQL2014 wersji — w wersji 12, wersja programu SQL — SQL |
+| **Odpowiednich technologii** | Azure SQL, lokalnego |
+| **Atrybuty**              | MsSQL2014 wersja — wersja V12, wersja SQL — SQL |
 | **Odwołania**              | [Szyfrowanie kopii zapasowej bazy danych SQL](https://msdn.microsoft.com/library/dn449489) |
 | **Kroki** | Program SQL Server ma możliwość szyfrowania danych podczas tworzenia kopii zapasowej. Określając algorytm szyfrowania i modułu szyfrującego (certyfikatu lub klucza asymetrycznego) podczas tworzenia kopii zapasowej, można utworzyć zaszyfrowanego pliku kopii zapasowej. |
 
-## <a id="api-browser"></a>Upewnij się, że poufne dane związane z interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce
+## <a id="api-browser"></a>Upewnij się, że dane poufne, które są istotne dla interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | MVC 5, MVC 6 |
-| **Atrybuty**              | Dostawca tożsamości dostawca — usługi AD FS, tożsamość — usługi Azure AD |
+| **Odpowiednich technologii** | MVC 5, MVC 6 |
+| **Atrybuty**              | Dostawca tożsamości dostawcę — usługi AD FS, tożsamości — usłudze Azure AD |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>W niektórych implementacjach poufnych artefaktów odpowiednie do uwierzytelniania składnika Web API są przechowywane w magazynie lokalnym w przeglądarce. Np. artefakty uwierzytelniania usługi Azure AD, takich jak adal.idtoken, adal.nonce.idtoken, adal.access.token.key, adal.token.keys, adal.state.login, adal.session.state, adal.expiration.key itp.</p><p>Wszystkie te artefakty są dostępne nawet po zakończeniu Wyloguj lub zamknięcie okna przeglądarki. Jeśli atakujący dokonuje uzyskuje dostęp do tych artefaktów, może on korzystać z nich dostępu do chronionych zasobów (API). Upewnij się, że wszystkich poufnych artefaktów związanych z interfejsu API sieci Web nie są przechowywane w magazynie w przeglądarce. W przypadkach, gdy niezbędne jest magazynu po stronie klienta (np. jednej strony aplikacji JEDNOSTRONICOWEJ zwiększają przepływów niejawne OpenIdConnect/OAuth potrzeba przechowywania tokenów dostępu lokalnie), użyj opcji magazynu z braku trwałości. np. preferowane SessionStorage LocalStorage.</p>| 
+| **Kroki** | <p>W niektórych implementacjach poufnych artefaktów odpowiednie do internetowego interfejsu API uwierzytelniania są przechowywane w magazynie lokalnym w przeglądarce. Np. artefakty uwierzytelniania usługi Azure AD, takie jak adal.idtoken adal.nonce.idtoken, adal.access.token.key, adal.token.keys, adal.state.login, adal.session.state, adal.expiration.key itp.</p><p>Wszystkie te artefakty są dostępne nawet po zakończeniu Wyloguj lub nastąpi zamknięcie okna przeglądarki. Jeśli osoba atakująca uzyskuje dostęp do tych artefaktów, osoba ta może korzystać z nich uzyskać dostęp do chronionych zasobów (API). Upewnij się, że wszystkich poufnych artefaktów związanych z interfejsu API sieci Web nie są przechowywane w magazynie w przeglądarce. W przypadku gdy magazyn klienta jest nieuniknione (np. jednej strony aplikacji (SPA) korzystających z przepływów niejawne OpenIdConnect/OAuth wymaga przechowywania tokenów dostępu lokalnie), użyj opcji magazynu przy użyciu nie mają stanu trwałego. np. wolą SessionStorage LocalStorage.</p>| 
 
 ### <a name="example"></a>Przykład
-Poniżej JavaScript fragment jest z biblioteki uwierzytelniania niestandardowego, której są przechowywane artefakty uwierzytelniania w magazynie lokalnym. Należy unikać takich implementacji. 
+Poniżej JavaScript fragment jest z biblioteki uwierzytelniania niestandardowego, który artefaktów uwierzytelniania są przechowywane w magazynie lokalnym. Należy unikać takich implementacji. 
 ```javascript
 ns.AuthHelper.Authenticate = function () {
 window.config = {
@@ -242,93 +242,93 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 };
 ```
 
-## <a id="encrypt-docdb"></a>Szyfrowania poufnych danych przechowywanych w bazie danych rozwiązania Cosmos
+## <a id="encrypt-docdb"></a>Szyfruj poufne dane przechowywane w usłudze Cosmos DB
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Dokumentów w usłudze Azure DB | 
+| **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Szyfrowania poufnych danych na poziomie aplikacji przed przekazaniem dokumentu bazy danych lub przechowywać żadnych poufnych danych w innych rozwiązań pamięci masowej, takich jak usługi Azure Storage lub Azure SQL| 
+| **Kroki** | Szyfruj poufne dane na poziomie aplikacji przed zapisaniem w dokumencie bazy danych lub przechowywania poufnych danych w innych rozwiązaniach magazynu, takich jak usługa Azure Storage lub Azure SQL| 
 
-## <a id="disk-vm"></a>Użyj szyfrowania dysków Azure do szyfrowania dysków używanych przez maszyny wirtualne
+## <a id="disk-vm"></a>Usługa Azure Disk Encryption umożliwia szyfrowanie dysków używanych przez maszyny wirtualne
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Maszyna wirtualna platformy Azure IaaS granicy zaufania | 
+| **Składnik**               | Granicy zaufania maszyn wirtualnych IaaS platformy Azure | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Przy użyciu szyfrowania dysków Azure do szyfrowania dysków używanych przez maszyny wirtualne](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **Kroki** | <p>Szyfrowanie dysków Azure to nowa funkcja, która jest obecnie w przeglądzie. Ta funkcja umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszyny wirtualne IaaS. W systemie Windows dyski są szyfrowane za pomocą technologii szyfrowania BitLocker standardowych. Dla systemu Linux dyski są szyfrowane za pomocą technologii DM-Crypt. To jest zintegrowany z usługą Azure Key Vault, co pozwala na kontrolowanie i zarządzać kluczami szyfrowania dysku. Rozwiązania szyfrowania dysków Azure obsługuje następujące scenariusze szyfrowania trzy klienta:</p><ul><li>Włącz szyfrowanie dla nowych maszyn wirtualnych IaaS utworzone na podstawie szyfrowane przez klienta plików VHD i kluczy szyfrowania klienta, które są przechowywane w usłudze Azure Key Vault.</li><li>Włącz szyfrowanie dla nowych maszyn wirtualnych IaaS utworzone w witrynie Azure Marketplace.</li><li>Włącz szyfrowanie dla istniejących maszyn wirtualnych IaaS już uruchomione na platformie Azure.</li></ul>| 
+| **Odwołania**              | [Do szyfrowania dysków używanych przez maszyny wirtualne przy użyciu usługi Azure Disk Encryption](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **Kroki** | <p>Usługa Azure Disk Encryption jest nową funkcję, która jest obecnie dostępna w wersji zapoznawczej. Ta funkcja umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS. Dla Windows dyski są szyfrowane przy użyciu technologii szyfrowania funkcją BitLocker będące standardami branżowymi. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Ta lokalizacja jest zintegrowana z usługą Azure Key Vault umożliwia kontrolowanie i zarządzać kluczami szyfrowania dysków. Rozwiązanie Azure Disk Encryption obsługuje następujące scenariusze szyfrowania trzech klientów:</p><ul><li>Włącz szyfrowanie dla nowych maszyn wirtualnych IaaS utworzone na podstawie szyfrowane klienta plików VHD i klucze szyfrowania dostarczone do klienta, które są przechowywane w usłudze Azure Key Vault.</li><li>Włącz szyfrowanie dla nowych maszyn wirtualnych IaaS utworzone w portalu Azure Marketplace.</li><li>Włącz szyfrowanie dla istniejących maszyn wirtualnych IaaS już działające na platformie Azure.</li></ul>| 
 
-## <a id="fabric-apps"></a>Szyfrowanie kluczy tajnych w aplikacji sieci szkieletowej usług
+## <a id="fabric-apps"></a>Szyfrowanie kluczy tajnych w aplikacji usługi Service Fabric
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania sieci szkieletowej usług | 
+| **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Środowisko — Azure |
-| **Odwołania**              | [Zarządzanie kluczy tajnych w aplikacji sieci szkieletowej usług](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
-| **Kroki** | Klucze tajne można poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu. Magazyn kluczy Azure umożliwia zarządzanie kluczy i kluczy tajnych w aplikacji sieci szkieletowej usług. |
+| **Odpowiednich technologii** | Ogólny |
+| **Atrybuty**              | Środowisko — platformy Azure |
+| **Odwołania**              | [Zarządzanie wpisami tajnymi w aplikacji usługi Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **Kroki** | Wpisy tajne można poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu. Użyj usługi Azure Key Vault do zarządzania kluczami i wpisami tajnymi w aplikacje usługi Service fabric. |
 
-## <a id="modeling-teams"></a>Wykonaj modelowania zabezpieczeń i użyć zespołów jednostki biznesowe w przypadku, gdy wymagane
+## <a id="modeling-teams"></a>Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Wykonaj modelowania zabezpieczeń i użyć zespołów jednostki biznesowe w przypadku, gdy wymagane |
+| **Kroki** | Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane |
 
-## <a id="entities"></a>Minimalizowanie dostęp do udziału funkcji na jednostkach krytyczne
+## <a id="entities"></a>Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Minimalizowanie dostęp do udziału funkcji na jednostkach krytyczne |
+| **Kroki** | Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne |
 
-## <a id="good-practices"></a>Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i dobrej rozwiązania
+## <a id="good-practices"></a>Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i dobrej rozwiązania |
+| **Kroki** | Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń |
 
-## <a id="exception-mgmt"></a>Programowanie regułę standardy, proscribing konfiguracji ze szczegółowymi informacjami w Zarządzanie wyjątkami dołączania
+## <a id="exception-mgmt"></a>Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Obejmują reguły standardów programowanie proscribing konfiguracji ze szczegółowymi informacjami w Zarządzanie wyjątkami poza programowanie. Testowanie jako część przeglądy kodu lub okresowy.|
+| **Kroki** | Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami poza rozwoju. To sprawdzić w ramach przeglądów kodu lub okresowej kontroli.|
 
-## <a id="sse-preview"></a>Użyj szyfrowanie usługi Magazyn Azure (SSE) dla danych magazynowanych (wersja zapoznawcza)
+## <a id="sse-preview"></a>Użyj usługi Azure Storage Service Encryption (SSE) dla danych magazynowanych (wersja zapoznawcza)
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | StorageType — obiekt Blob |
-| **Odwołania**              | [Szyfrowanie usługi Magazyn Azure dla danych magazynowanych (wersja zapoznawcza)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
-| **Kroki** | <p>Azure magazynu usługi szyfrowania (SSE) dla danych magazynowanych pomaga chronić i ochrony danych w celu spełnienia organizacji bezpieczeństwa i zgodności zobowiązań. Przy użyciu tej funkcji usługa Azure Storage automatycznie szyfruje dane przed trwałym wprowadzeniem ich do magazynu i odszyfrowuje je przed pobraniem. Szyfrowania, odszyfrowywania i zarządzania kluczami jest całkowicie niewidoczne dla użytkowników. SSE dotyczy tylko blokowe obiekty BLOB, stronicowe obiekty BLOB i uzupełnialnych obiektów blob. Typy danych, w tym tabel, kolejek i plików, nie będą szyfrowane.</p><p>Szyfrowanie i odszyfrowywanie przepływu pracy:</p><ul><li>Klient włącza szyfrowanie na konto magazynu</li><li>Gdy klient zapisuje nowych danych (umieszczanie obiektu Blob, umieść bloku, umieść stronę itp.) do magazynu obiektów Blob; każdego zapisu jest szyfrowana przy użyciu szyfrowania AES 256-bitowego jednego najwyższy dostępny szyfrów bloku</li><li>Gdy klient musi mieć dostęp do danych (Pobierz obiekt Blob itp.), dane są automatycznie odszyfrowane przed powrotem do użytkownika</li><li>Jeśli szyfrowanie jest wyłączone, nowe zapisy nie są szyfrowane i zaszyfrowane dane pozostaną zaszyfrowane, dopóki nie ulegną przez użytkownika. Gdy włączone jest szyfrowanie, będą szyfrowane zapisuje dane w magazynie obiektów Blob. Nie zmienia stanu danych użytkownika przełączania się między włączenie/wyłączenie szyfrowania dla konta magazynu</li><li>Wszystkie klucze szyfrowania są przechowywane, szyfrowane i zarządzany przez firmę Microsoft</li></ul><p>Należy pamiętać, że w tym momencie, klucze szyfrowania są zarządzane przez firmę Microsoft. Firma Microsoft generuje klucze pierwotnie i zarządzanie bezpieczny magazyn kluczy, a także regularne obrotu zgodnie z definicją w wewnętrznych zasad firmy Microsoft. W przyszłości, klienci otrzymają zdolność do zarządzania własnych > klucze szyfrowania i podaj ścieżkę migracji z kluczy zarządzany przez firmę Microsoft do kluczy zarządzany przez klienta.</p>| 
+| **Odwołania**              | [Szyfrowanie usługi Azure Storage dla danych magazynowanych (wersja zapoznawcza)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **Kroki** | <p>Azure szyfrowanie usługi Storage (SSE) dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Przy użyciu tej funkcji usługa Azure Storage automatycznie szyfruje dane przed trwałym wprowadzeniem ich do magazynu i odszyfrowuje je przed pobraniem. Szyfrowanie, odszyfrowywanie i zarządzanie kluczami jest całkowicie niewidoczne dla użytkowników. Usługa SSE dotyczy tylko blokowe obiekty BLOB, stronicowe obiekty BLOB, obiektów blob i uzupełnialnych obiektów blob. Inne rodzaje danych, w tym tabel, kolejek i plików, nie będą szyfrowane.</p><p>Szyfrowanie i odszyfrowywanie przepływu pracy:</p><ul><li>Klient włącza szyfrowanie na koncie magazynu</li><li>Gdy klient zapisuje nowe dane (umieszczanie obiektu Blob, umieszczania bloku, umieść strony itp.) do magazynu obiektów Blob; każdego zapisu jest szyfrowana przy użyciu 256-bitowego szyfrowania AES, jednego z najsilniejszych szyfrów blokowych</li><li>Gdy klient musi uzyskać dostęp do danych (Pobieranie obiektów Blob, itp.), dane są automatycznie odszyfrowany przed zwróceniem do użytkownika</li><li>Jeśli szyfrowanie jest wyłączone, nowe zapisy nie są szyfrowane, a istniejące zaszyfrowane dane pozostają zaszyfrowane do momentu przepisany przez użytkownika. Gdy jest włączone szyfrowanie, będą szyfrowane zapisów do magazynu obiektów Blob. Stan danych nie zmienia się z użytkownikiem przełączania się między Włączanie/wyłączanie szyfrowania dla konta magazynu</li><li>Wszystkie klucze szyfrowania są przechowywane, szyfrowane, a zarządzany przez firmę Microsoft</li></ul><p>Należy pamiętać, że w tej chwili klucze używane do szyfrowania są zarządzane przez firmę Microsoft. Firma Microsoft generuje klucze pierwotnie i zarządzać bezpieczny magazyn kluczy, a także regularne obrotu, zgodnie z definicją wewnętrznych zasad firmy Microsoft. W przyszłości, klienci otrzymają możliwość zarządzania własnych > klucze szyfrowania i podaj ścieżkę migracji z kluczy zarządzanych przez firmę Microsoft do kluczy zarządzanych przez klienta.</p>| 
 
 ## <a id="client-storage"></a>Użyj szyfrowania po stronie klienta do przechowywania poufnych danych w usłudze Azure Storage
 
@@ -336,24 +336,24 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Szyfrowanie po stronie klienta i usługi Azure Key Vault dla magazynu Microsoft Azure](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [samouczek: szyfrowanie i odszyfrowywanie obiektów blob w magazynie platformy Microsoft Azure przy użyciu usługi Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [bezpieczne przechowywanie danych w obiekcie Blob Azure Magazyn z rozszerzeniami Azure szyfrowania](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
-| **Kroki** | <p>Biblioteka klienta magazynu Azure dla pakietu Nuget programu .NET obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage i odszyfrowywania danych podczas pobierania do klienta. Biblioteka obsługuje również integrację z magazynem kluczy Azure do zarządzania kluczami konta magazynu. Poniżej przedstawiono krótki opis działania szyfrowania po stronie klienta:</p><ul><li>Klient usługi Azure Storage SDK generuje klucz szyfrowania zawartości (CEK), jest jeden jednorazowej użycia klucza symetrycznego</li><li>Dane klienta są zaszyfrowane za pomocą tego CEK</li><li>CEK jest następnie opakowane (zaszyfrowane) przy użyciu klucza szyfrowania klucza (KEK). KEK jest identyfikowany przez identyfikator klucza i można parę klucza asymetrycznego lub klucza symetrycznego i można być zarządzany lokalnie lub przechowywane w usłudze Azure Key Vault. Klienta magazynu nigdy nie ma dostępu do klucza KEK. Wywołuje po prostu algorytm klucza zawijania zapewnianej przez usługi Key Vault. Klientów można wybrać opcję użycia niestandardowych dostawców dla zawijania/odkodowywania chcący klucza</li><li>Zaszyfrowane dane są następnie przekazywane do usługi Magazyn Azure. Sprawdź łącza w sekcji odwołań dla szczegóły implementacji niskiego poziomu.</li></ul>|
+| **Odwołania**              | [Szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [samouczek: szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [bezpieczne przechowywanie danych w usłudze Azure Blob Magazyn z rozszerzenia Azure szyfrowania](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Kroki** | <p>Biblioteki klienta usługi Azure Storage dla pakietu Nuget programu .NET obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta. Biblioteka obsługuje również integrację z magazynem kluczy Azure do zarządzania kluczami konta magazynu. Poniżej przedstawiono krótki opis sposobu działania szyfrowania po stronie klienta:</p><ul><li>Zestaw SDK klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), czyli jeden jednorazowej Użyj klucza symetrycznego</li><li>Dane klienta są szyfrowane przy użyciu tego CEK</li><li>CEK jest następnie opakowywany (zaszyfrowane) przy użyciu klucza szyfrowania klucza (KEK). Klucza KEK jest identyfikowana przez identyfikator klucza i można asymetryczną parę kluczy lub klucz symetryczny i mogą być zarządzane lokalnie lub przechowywane w usłudze Azure Key Vault. Klienta usługi Storage, sama nigdy nie ma dostępu do klucza KEK. Po prostu wywołuje algorytmu zawijanie kluczy, który znajduje się za pomocą usługi Key Vault. Klienci mogą wybrać opcję użycia niestandardowych dostawców klucza zawijania/rozpakowanie chcący</li><li>Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage. Sprawdź linków w sekcji odwołań dla szczegółów implementacji niskiego poziomu.</li></ul>|
 
-## <a id="pii-phones"></a>Szyfrowanie liter lub dane osobowe dane zapisywane w lokalnej pamięci masowej telefonów
+## <a id="pii-phones"></a>Szyfruj poufne lub dane osobowe dane zapisane w magazynie lokalnym telefonów
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Klientów urządzeń przenośnych | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Generic, Xamarin  |
+| **Odpowiednich technologii** | Generic, Xamarin  |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Zarządzanie ustawieniami i funkcjami na urządzeniach przy użyciu zasad usługi Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [Valet łańcucha kluczy](https://components.xamarin.com/view/square.valet) |
-| **Kroki** | <p>Jeśli aplikacja zapisuje informacje poufne, na przykład PII użytkownika (poczty e-mail, numer telefonu, imię, nazwisko, preferencje itp.) — w systemie plików na telefon komórkowy, następnie go powinny być szyfrowane przed ich zapisaniem w lokalnym systemie plików. Jeśli aplikacja jest aplikacja przedsiębiorstwa, skorzystaj z możliwości publikowania aplikacji za pomocą usługi Windows Intune.</p>|
+| **Odwołania**              | [Zarządzanie ustawieniami i funkcjami na urządzeniach zasady w usłudze Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [pęku kluczy Portiera](https://components.xamarin.com/view/square.valet) |
+| **Kroki** | <p>Jeśli aplikacja zapisuje informacje poufne, takie jak dane osobowe użytkownika, (wiadomości e-mail, numer telefonu, imienia, nazwiska, preferencje itp.) — w systemie plików na telefon komórkowy, następnie go mają być szyfrowane przed zapisaniem w lokalnym systemie plików. Jeśli aplikacja znajduje się aplikacja dla przedsiębiorstw, zapoznaj się możliwość publikowania aplikacji za pomocą usługi Windows Intune.</p>|
 
 ### <a name="example"></a>Przykład
-Usługa Intune można skonfigurować następujące zasady zabezpieczeń w celu ochrony danych poufnych: 
+Usługa Intune można skonfigurować następujące zasady zabezpieczeń w celu ochrony poufnych danych: 
 ```csharp
 Require encryption on mobile device    
 Require encryption on storage cards
@@ -361,7 +361,7 @@ Allow screen capture
 ```
 
 ### <a name="example"></a>Przykład
-Jeśli aplikacja nie jest aplikacja przedsiębiorstwa, następnie za pomocą magazynu kluczy platformy, pod warunkiem, może być wykonana pęki kluczy w celu przechowywania kluczy szyfrowania, przy użyciu których operacji kryptograficznych w systemie plików. Poniższy fragment kodu przedstawia sposób dostępu do klucza z łańcucha kluczy za pomocą platformy xamarin: 
+Jeśli aplikacja nie jest aplikacja dla przedsiębiorstw, następnie za pomocą platformy podany magazyn kluczy, łańcuchy kluczy w celu przechowywania kluczy szyfrowania, za pomocą której operacja kryptograficzna procedury może wykonać w systemie plików. Poniższy fragment kodu pokazuje, jak uzyskać dostęp do klucza z łańcucha kluczy za pomocą platformy xamarin: 
 ```csharp
         protected static string EncryptionKey
         {
@@ -391,27 +391,27 @@ Jeśli aplikacja nie jest aplikacja przedsiębiorstwa, następnie za pomocą mag
         }
 ```
 
-## <a id="binaries-end"></a>Zasłaniają wygenerowanych plików binarnych przed rozpoczęciem dystrybuowania użytkownikom końcowym
+## <a id="binaries-end"></a>Zaciemniania wygenerowanych plików binarnych, przed rozpoczęciem dystrybuowania dla użytkowników końcowych
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Klientów urządzeń przenośnych | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Zaciemnienie kryptograficznych dla platformy .net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
-| **Kroki** | Zatrzymać odtwarzanie zestawów powinny być zaciemniona wygenerowanych plików binarnych (zestawy w apk). Narzędzi, takich jak `CryptoObfuscator` mogą być używane w tym celu. |
+| **Odwołania**              | [Zasłanianie kryptograficznych dla platformy .net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Kroki** | Wygenerowane pliki binarne (zestawów w pliku apk) powinny być zaciemniona Aby zatrzymać odtwarzanie zestawów. Narzędzia takie jak `CryptoObfuscator` mogą być używane do tego celu. |
 
-## <a id="cert"></a>Ustaw właściwość clientCredentialType certyfikatu lub systemu Windows
+## <a id="cert"></a>Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | .NET framework 3 |
+| **Odpowiednich technologii** | .NET framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Uzyskania zawartości](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
-| **Kroki** | Przy użyciu UsernameToken za pomocą hasła w postaci zwykłego tekstu przez kanał niezaszyfrowany przedstawia hasło, aby osoby atakujące, które można wyśledzić wiadomości SOAP. Dostawcy usług, używanego UsernameToken może zaakceptować wysyłania haseł w postaci zwykłego tekstu. Wysyłanie hasła w postaci zwykłego tekstu przez kanał niezaszyfrowany mogą uwidaczniać poświadczenia, aby osoby atakujące, które można wyśledzić komunikatu protokołu SOAP. | 
+| **Odwołania**              | [Wzmacnia](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
+| **Kroki** | Za pomocą UsernameToken za pomocą hasła w postaci zwykłego tekstu przez kanał niezaszyfrowany udostępnia hasło, aby osoby atakujące, które można wyśledzić komunikaty protokołu SOAP. Dostawcy usług, używanego przez UsernameToken przyjąć hasła wysyłane w postaci zwykłego tekstu. Wysyłanie hasła w postaci jawnej przez kanał niezaszyfrowany można ujawnić poświadczenia aby osoby atakujące, które można wyśledzić komunikatu protokołu SOAP. | 
 
 ### <a name="example"></a>Przykład
 UsernameToken korzysta z następujących konfiguracji dostawcy usługi WCF: 
@@ -419,7 +419,7 @@ UsernameToken korzysta z następujących konfiguracji dostawcy usługi WCF:
 <security mode="Message"> 
 <message clientCredentialType="UserName" />
 ``` 
-Ustaw właściwość clientCredentialType certyfikatu lub systemu Windows. 
+Ustaw właściwości ClientCredentialType o wartości do certyfikatu lub Windows. 
 
 ## <a id="security"></a>Nie jest włączony tryb zabezpieczeń programu WCF
 
@@ -427,13 +427,13 @@ Ustaw właściwość clientCredentialType certyfikatu lub systemu Windows.
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny, .NET Framework 3 |
-| **Atrybuty**              | Zabezpieczenia trybu — transportu, trybu zabezpieczeń — komunikat |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [Magazine kodu podstawowe informacje na temat zabezpieczeń programu WCF](http://www.codemag.com/article/0611051) |
-| **Kroki** | Brak zabezpieczeń transportu lub komunikat został zdefiniowany. Aplikacje, które przesyłania komunikatów zabezpieczeń nie może zagwarantować integralności i poufności komunikatów lub komunikatów bez transportu. Powiązania WCF zabezpieczeń ma wartość None, zabezpieczenia transportowe i wiadomości są wyłączone. |
+| **Odpowiednich technologii** | Ogólne, .NET Framework 3 |
+| **Atrybuty**              | Zabezpieczenia trybu — transportu, tryb zabezpieczeń — komunikat |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwo](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [podstawy zabezpieczeń WCF kodu Magazyn](http://www.codemag.com/article/0611051) |
+| **Kroki** | Bez zabezpieczeń transportu lub komunikat został zdefiniowany. Aplikacje, które przesyłają komunikaty bez transportu lub zabezpieczeń nie może zagwarantować integralności i poufność komunikatów przesyłanych wiadomości. Powiązanie zabezpieczeń WCF jest ustawiona na wartość None, zabezpieczeń transportu i wiadomości są wyłączone. |
 
 ### <a name="example"></a>Przykład
-Następująca konfiguracja ustawia tryb zabezpieczeń None. 
+Następująca konfiguracja ustawia tryb zabezpieczeń na wartość None. 
 ```
 <system.serviceModel> 
   <bindings> 
@@ -446,13 +446,13 @@ Następująca konfiguracja ustawia tryb zabezpieczeń None.
 ```
 
 ### <a name="example"></a>Przykład
-Tryb zabezpieczeń we wszystkich powiązań usługi są pięć tryby możliwe zabezpieczeń: 
-* Brak. Wyłącza zabezpieczeń. 
-* Transport. Używa transportu zabezpieczeń do wzajemnego uwierzytelniania i komunikat ochrony. 
+Tryb zabezpieczeń we wszystkich powiązań usługi są pięć tryby możliwych zabezpieczeniami: 
+* Brak. Wyłączenie zabezpieczeń. 
+* Transport. Zastosowań transportu zabezpieczeń do wzajemnego uwierzytelniania i komunikat ochrony. 
 * Komunikat. Używa zabezpieczeń wiadomości do wzajemnego uwierzytelniania i komunikat ochrony. 
-* Oba. Umożliwia określanie wartości ustawień dla transportu i zabezpieczenia na poziomie komunikatu (tylko usługi MSMQ obsługuje tę funkcję). 
-* TransportWithMessageCredential. Poświadczenia są przekazywane z komunikatu i ochrony wiadomości i uwierzytelniania serwera są udostępniane przez warstwę transportu. 
-* TransportCredentialOnly. Poświadczenia klienta są przekazywane z warstwy transportowej i stosowane jest Brak ochrony wiadomości. Użyć zabezpieczeń transportu i komunikat do ochrony integralności i poufności informacji. Konfiguracja poniżej informuje usługi, aby użyć zabezpieczeń transportu z poświadczeniami komunikatu.
+* Oba. Umożliwia określanie wartości ustawień transportu i zabezpieczenia na poziomie komunikatu (tylko usługi MSMQ obsługuje tę funkcję). 
+* TransportWithMessageCredential. Poświadczenia są przekazywane z komunikatem i ochrona wiadomości oraz uwierzytelnianie serwera są dostarczane przez warstwy transportowej. 
+* TransportCredentialOnly. Poświadczenia klienta są przekazywane z warstwy transportowej i ma zabezpieczenia wiadomości są stosowane. Użyj zabezpieczeń transportu i komunikat, aby chronić integralności i poufności informacji. Informuje usługę do korzystania z zabezpieczeń transportu przy użyciu poświadczeń wiadomości o konfiguracji poniżej.
 ```
 <system.serviceModel>
   <bindings>

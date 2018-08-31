@@ -1,44 +1,44 @@
 ---
-title: Migrowanie schemat do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące migrowania schemat Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+title: Migrowanie schematu w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące migracji schematu do usługi Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fb1085450a16acb0f9a06a9dea9d91fc5ca23363
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 51ad7eed0bf37194b1e5ff2c605b39246e9a1191
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525169"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301186"
 ---
-# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migracja z schematów SQL Data Warehouse
-Wskazówki dotyczące migrowania schematy programu SQL do SQL Data Warehouse. 
+# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migrowanie schematy usługi SQL Data Warehouse
+Wskazówki dotyczące migracji swoje schematy SQL w usłudze SQL Data Warehouse. 
 
-## <a name="plan-your-schema-migration"></a>Planowanie migracji do schematu
+## <a name="plan-your-schema-migration"></a>Planowanie migracji schematu
 
-Podczas planowania migracji, zobacz [omówienie tabeli] [ table overview] zapoznać się z tabeli projektowania, takich jak statystyka, dystrybucja, partycjonowanie i indeksowania.  Przedstawiono także niektóre [nieobsługiwane funkcje tabeli] [ unsupported table features] i ich obejścia.
+Podczas planowania migracji, zobacz [Omówienie tabel] [ table overview] zapoznać się z tabeli projektowania, takich jak statystyki, dystrybucja, partycjonowanie i indeksowania.  Wyświetla także niektóre [nieobsługiwane funkcje tabeli] [ unsupported table features] i ich obejścia.
 
-## <a name="use-user-defined-schemas-to-consolidate-databases"></a>Schematy użytkownika umożliwia konsolidowanie baz danych
+## <a name="use-user-defined-schemas-to-consolidate-databases"></a>Schematy definiowane przez użytkownika umożliwia konsolidowanie baz danych
 
-Obciążenie istniejących prawdopodobnie ma więcej niż jednej bazy danych. Na przykład magazynu danych programu SQL Server może obejmować tymczasowej bazy danych, bazy danych magazynu danych i niektóre bazy danych składnicy danych. W tej topologii każda baza danych jest uruchamiany jako oddzielny obciążenia przy użyciu zasad zabezpieczeń.
+Obciążenie istniejących prawdopodobnie ma więcej niż jednej bazy danych. Na przykład bazę danych programu SQL Server data warehouse może obejmować tymczasowej bazy danych, bazy danych magazynu danych i niektóre bazy danych składnicy danych. W tej topologii każda baza danych działa jako oddzielne obciążenia za pomocą zasad zabezpieczeń osobno.
 
-Z kolei SQL Data Warehouse uruchamia obciążeniu magazynu danych w ramach jednej bazy danych. Sprzężenia między bazy danych nie są dozwolone. W związku z tym usługa SQL Data Warehouse oczekuje, że wszystkie tabele używane przez Magazyn danych mają być przechowywane w ramach jednej bazy danych.
+Z drugiej strony usługa SQL Data Warehouse działa obciążenie magazynu danych w obrębie jednej bazy danych. Sprzężenia krzyżowego bazy danych nie są dozwolone. W związku z tym usługa SQL Data Warehouse oczekuje, że wszystkie tabele używane w magazynie danych mają być przechowywane w jednej bazie danych.
 
-Zalecamy używanie schematów zdefiniowane przez użytkownika na konsolidację istniejące obciążenia na jedną bazę danych. Przykłady można znaleźć [schematy zdefiniowane przez użytkownika](sql-data-warehouse-develop-user-defined-schemas.md)
+Zalecamy używanie schematy definiowane przez użytkownika do konsolidowania istniejące obciążenia w jednej bazie danych. Aby uzyskać przykłady, zobacz [schematy definiowane przez użytkownika](sql-data-warehouse-develop-user-defined-schemas.md)
 
 ## <a name="use-compatible-data-types"></a>Użyj kompatybilne typy danych
-Zmodyfikuj typów danych w celu zachowania zgodności z usługą Magazyn danych SQL. Dla listy typów obsługiwanych i nieobsługiwanych danych, zobacz [typy danych][data types]. Ten temat zawiera obejścia dla nieobsługiwane typy. Umożliwia także zapytania, aby zidentyfikować istniejące typy, które nie są obsługiwane w usłudze SQL Data Warehouse.
+Modyfikowanie typów danych, aby były zgodne z usługą SQL Data Warehouse. Aby uzyskać listę typów danych obsługiwanych i nieobsługiwanych zobacz [typy danych][data types]. Ten temat zawiera rozwiązania dla nieobsługiwane typy. Umożliwia także zapytanie, aby zidentyfikować istniejące typy, które nie są obsługiwane w usłudze SQL Data Warehouse.
 
 ## <a name="minimize-row-size"></a>Minimalizuj rozmiar wiersza
-Aby uzyskać najlepszą wydajność należy zminimalizować długość wiersza równą tabel. Ponieważ krótszą długości wiersza prowadzić do zapewnienia lepszej wydajności, należy użyć najmniejszą typy danych, które działają danych. 
+Aby uzyskać najlepszą wydajność należy zminimalizować długość wiersza tabel. Ponieważ krótszy długości wiersza prowadzić do zapewnienia lepszej wydajności, należy użyć najmniejszy typy danych, które działają dla swoich danych. 
 
-Szerokość wiersza tabeli PolyBase ma limit 1 MB.  Jeśli planujesz ładowanie danych do usługi SQL Data Warehouse przy użyciu programu PolyBase, zaktualizuj tabele mieć szerokość maksymalna wiersza mniej niż 1 MB. 
+Szerokość wiersza tabeli programu PolyBase obowiązuje limit 1 MB.  Jeśli planujesz ładowanie danych do usługi SQL Data Warehouse przy użyciu technologii PolyBase, zaktualizować tabele mieć szerokość maksimum, mniej niż 1 MB. 
 
 <!--
 - For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
@@ -48,22 +48,22 @@ Szerokość wiersza tabeli PolyBase ma limit 1 MB.  Jeśli planujesz ładowanie 
 -->
 
 ## <a name="specify-the-distribution-option"></a>Wybierz opcję dystrybucji
-Usługa SQL Data Warehouse to system rozproszoną bazę danych. Każda tabela jest dystrybuowane lub replikowane w węzłach obliczeniowych. Brak opcji tabeli, która umożliwia określenie sposobu dystrybucji danych. Dostępne są okrężnego, replikowane, albo rozproszone wyznaczania wartości skrótu. Każdy ma zalet i wad. Jeśli nie określisz opcję dystrybucji SQL Data Warehouse użyje okrężnego jako domyślny.
+Usługa SQL Data Warehouse to Rozproszony system baz danych. Każda tabela jest rozproszone lub replikowane w węzłach obliczeniowych. Brak opcji tabeli, która pozwala określić sposób dystrybucji danych. Dostępne są następujące mechanizmy działania okrężnego replikowane, lub rozproszonego wyznaczania wartości skrótu. Każdy ma zalety i wady. Jeśli nie określisz opcji dystrybucji, usługa SQL Data Warehouse użyje działanie okrężne jako domyślny.
 
-- Działanie okrężne jest ustawieniem domyślnym. Najprościej do użycia i obciążeń dane tak szybko, jak to możliwe, ale sprzęga wymaga przenoszenia danych, co zmniejsza szybkość działania zapytania.
-- Zreplikowane magazyny kopii tabeli w każdym węźle obliczeń. Zreplikowane tabele są wydajność, ponieważ nie wymaga przenoszenia danych do sprzęgania i agregacji. One wymagają dodatkowe miejsce do magazynowania, a w związku z tym najlepiej dla mniejszych tabel.
-- Skrót rozproszonych dystrybuuje wiersze we wszystkich węzłach za pomocą funkcji skrótu. Tabele hash rozproszone są Puls usługi SQL Data Warehouse, ponieważ są one przeznaczone do zapewniają wysoką wydajność zapytań na dużych tabel. Ta opcja wymaga niektórych planowanie Wybierz najlepsze kolumny, na których chcesz rozesłać danych. Jednak jeśli nie wybierzesz najlepsze kolumny po raz pierwszy, można łatwo ponownie dystrybuować dane na inną kolumnę. 
+- Działanie okrężne jest ustawieniem domyślnym. Jest najprostsze w użyciu i ładowania danych tak szybko, jak to możliwe, ale sprzęga wymaga przenoszenia danych, która zmniejsza wydajność zapytań.
+- Zreplikowane zapisuje kopię tabeli w każdym węźle obliczeniowym. Zreplikowane tabele są wydajne, ponieważ nie wymagają przenoszenia danych do sprzęgania i agregacji. One wymagają dodatkowego magazynu, a w związku z tym najlepiej działać dla mniejszych tabel.
+- Skrót rozproszonych dystrybuuje wiersze we wszystkich węzłach za pomocą funkcji skrótu. Tabele zbędnych danych rozproszonych są serce usługi SQL Data Warehouse, ponieważ są one przeznaczone do świadczenia wysoką wydajność zapytań w dużych tabel. Ta opcja wymaga pewnego planowania wybierz najlepsze kolumnę, w którym można rozpowszechnić danych. Jednak jeśli nie wybierzesz najlepsze kolumny po raz pierwszy, można łatwo ponownie dystrybuować dane na inną kolumnę. 
 
-Aby wybrać najlepszą opcją dystrybucji dla każdej tabeli, zobacz [rozproszonych tabel](sql-data-warehouse-tables-distribute.md).
+Aby wybrać najlepszą opcją dystrybucji dla każdej tabeli, zobacz [tabelach rozproszonych](sql-data-warehouse-tables-distribute.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Gdy schemat bazy danych zostały pomyślnie zmigrowane do magazynu danych SQL, przejdź do jednej z następujących artykułów:
+Gdy zostały pomyślnie zmigrowane schemat bazy danych w usłudze SQL Data Warehouse, przejdź do jednego z następujących artykułów:
 
 * [Migrowanie danych][Migrate your data]
 * [Migrowanie kodu][Migrate your code]
 
-Aby uzyskać więcej informacji o najlepszych rozwiązaniach SQL Data Warehouse, zobacz [najlepsze rozwiązania] [ best practices] artykułu.
+Aby uzyskać więcej informacji o najlepszych praktykach SQL Data Warehouse, zobacz [najlepsze praktyki] [ best practices] artykułu.
 
 <!--Image references-->
 

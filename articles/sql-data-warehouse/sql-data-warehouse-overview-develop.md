@@ -1,52 +1,52 @@
 ---
-title: Zasoby na potrzeby tworzenia magazynu danych na platformie Azure | Dokumentacja firmy Microsoft
-description: Pojęcia dotyczące programowania, decyzji projektowych i zalecenia dotyczące technik programowania dla usługi SQL Data Warehouse.
+title: Zasoby używane do tworzenia magazynu danych na platformie Azure | Dokumentacja firmy Microsoft
+description: Pojęcia dotyczące programowania, decyzji projektowych, zalecenia i technik kodowania dla usługi SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg-msft
+author: kevinvngo
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 08/29/2018
+ms.author: kevinvngo
 ms.reviewer: igorstan
-ms.openlocfilehash: d9a272b2f43e080cd44b7179fe6f9dc55507142b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5cb3b3b261bcb762187b165e297225080b0fee81
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31601808"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306062"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Decyzje dotyczące projektu i technik programowania dla usługi SQL Data Warehouse
-Zapoznaj się za pośrednictwem tych artykułach programowanie, aby lepiej zrozumieć kluczowych decyzji projektowych, zalecenia i technik programowania dla usługi SQL Data Warehouse.
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Decyzje dotyczące projektu i technik kodowania dla usługi SQL Data Warehouse
+Zapoznaj się za pośrednictwem tych artykuły dotyczące programowania, aby lepiej zrozumieć kluczowych decyzji projektowych, zalecenia i technik kodowania dla usługi SQL Data Warehouse.
 
 ## <a name="key-design-decisions"></a>Kluczowych decyzji projektowych
-Następujące artykuły Wyróżnij pojęcia i decyzje dotyczące projektu związane z opracowywaniem magazynu danych rozproszonych za pomocą usługi SQL Data Warehouse:
+Następujące artykuły, wyróżnij pojęć i decyzje projektowe dotyczące tworzenia magazynu danych rozproszonych przy użyciu SQL Data Warehouse:
 
 * [Połączenia][connections]
 * [Współbieżność][concurrency]
 * [Transakcje][transactions]
-* [Schematy zdefiniowane przez użytkownika][user-defined schemas]
-* [Dystrybucja tabeli][table distribution]
+* [schematy definiowane przez użytkownika][user-defined schemas]
+* [dystrybucji tabel][table distribution]
 * [indeksy tabel][table indexes]
-* [partycje tabeli][table partitions]
+* [Partycje tabel][table partitions]
 * [CTAS][CTAS]
-* [Statystyki][statistics]
+* [statystyki][statistics]
 
-## <a name="development-recommendations-and-coding-techniques"></a>Zalecenia dotyczące tworzenia i technik programowania
-Te artykuły wyróżnianie określonych technik programowania, wskazówki i zalecenia dotyczące Tworzenie magazynu danych SQL:
+## <a name="development-recommendations-and-coding-techniques"></a>Zalecenia dotyczące rozwoju i technik kodowania
+Te artykuły wyróżnienia określonych technik kodowania, wskazówki i zalecenia dotyczące tworzenia usługi SQL Data Warehouse:
 
 * [Procedury składowane][stored procedures]
 * [labels][labels]
 * [Widoki][views]
-* [tabele tymczasowe][temporary tables]
+* [Tabele tymczasowe][temporary tables]
 * [dynamic SQL][dynamic SQL]
 * [tworzenie pętli][looping]
-* [Grupuj według opcje][group by options]
+* [Grupuj według opcji][group by options]
 * [Przypisanie zmiennej][variable assignment]
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacje, zobacz [instrukcji SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
+Aby uzyskać więcej informacje, zobacz [instrukcje SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
 
 <!--Image references-->
 

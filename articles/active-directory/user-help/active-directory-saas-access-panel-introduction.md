@@ -1,6 +1,6 @@
 ---
-title: Co to jest panelu dostępu w usłudze Azure Active Directory? | Microsoft Docs
-description: Dowiedz się, jak używać odmiany panelu dostępu (przeglądarki sieci web, aplikacji dla systemu Android, aplikacji dla telefonu iPhone i iPad) dostęp do aplikacji SaaS.
+title: Co to jest portal MyApps, w usłudze Azure Active Directory? | Microsoft Docs
+description: Dowiedz się, jak używać odmiany portalu MyApps (przeglądarki sieci web, aplikacji dla systemu Android, aplikacji dla telefonu iPhone i iPad) dostęp do aplikacji SaaS.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054408"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302281"
 ---
-# <a name="what-is-the-access-panel"></a>Co to jest panelu dostępu?
+# <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
-Panel dostępu jest portalem sieci web. Jeśli masz służbowe konto w usłudze Azure Active Directory (Azure AD), można użyć panelu dostępu do wyświetlania i uruchamiania aplikacji opartych na chmurze, których administrator usługi Azure AD udzielił zyskujesz dostęp do. Można również użyć grupa samoobsługi i możliwości zarządzania aplikacjami za pomocą panelu dostępu.
+Jeśli masz służbowe konto w usłudze Azure Active Directory (Azure AD), można użyć portalu Moje aplikacje sieci web do wyświetlania i uruchamiania aplikacji opartych na chmurze, których administrator usługi Azure AD udzielił zyskujesz dostęp do. Można również użyć grupa samoobsługi i możliwości zarządzania aplikacjami za pośrednictwem portalu MyApps.
 
-Panel dostępu jest oddzielony od witryny Azure portal. Nie wymagają posiadania subskrypcji platformy Azure.
+Portalu MyApps różni się w witrynie Azure portal. Nie wymagają posiadania subskrypcji platformy Azure.
 
-![Panel dostępu][1] za pomocą panelu dostępu, można edytować niektórych ustawień profilu i wykonaj następujące czynności:
+![Portalu MyApps][1] za pomocą portalu MyApps, można edytować niektórych ustawień profilu i wykonaj następujące czynności:
 
 - Zmień hasło skojarzone z konta służbowego lub szkolnego.
 
@@ -39,12 +39,9 @@ Panel dostępu jest oddzielony od witryny Azure portal. Nie wymagają posiadania
 
 - Samodzielnie zarządzać grupami. Administratorzy mogą tworzyć i zarządzać grupami zabezpieczeń i żądanie członkostwa w grupach zabezpieczeń w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Samoobsługowe zarządzanie grupami dla użytkowników w usłudze Azure AD](../users-groups-roles/groups-self-service-management.md) i [Zarządzanie grupami](../fundamentals/active-directory-manage-groups.md).
 
+## <a name="access-the-myapps-portal"></a>Przejdź do portalu MyApps
 
-
-
-## <a name="access-the-access-panel"></a>Dostęp do panelu dostępu
-
-Dostęp do panelu dostępu, przechodząc do `http://myapps.microsoft.com`.
+Możesz uzyskać dostęp do portalu MyApps, przechodząc do `http://myapps.microsoft.com`.
 
 Jeśli masz niestandardowe znakowanie skonfigurowana dla strony logowania, należy załadować znakowanie, dodając domeny Twojej organizacji do adresu URL (na przykład `http://myapps.microsoft.com/<your domain>.com`).
 
@@ -54,7 +51,7 @@ Dystrybuuj adres URL, aby wszyscy użytkownicy logujący się do aplikacji, któ
 
 ## <a name="authentication"></a>Authentication
 
-Aby przejść do panelu dostępu, użytkownik musi zostać uwierzytelniony przy użyciu konta służbowego w usłudze Azure AD. Możesz zostać uwierzytelniony do usługi Azure AD bezpośrednio. Alternatywnie Jeśli organizacja skonfigurował Federacji przy użyciu usługi Active Directory Federation Services (AD FS) lub inne technologie, możesz zostać uwierzytelniony przez usługi Active Directory systemu Windows Server.
+Aby uzyskać dostęp do portalu MyApps, użytkownik musi zostać uwierzytelniony przy użyciu konta służbowego w usłudze Azure AD. Możesz zostać uwierzytelniony do usługi Azure AD bezpośrednio. Alternatywnie Jeśli organizacja skonfigurował Federacji przy użyciu usługi Active Directory Federation Services (AD FS) lub inne technologie, możesz zostać uwierzytelniony przez usługi Active Directory systemu Windows Server.
 
 Jeśli masz subskrypcję platformy Azure lub usługi Office 365 i masz doświadczenie z witryny Azure portal lub aplikacji usługi Office 365, można wyświetlić listę aplikacji, bez ponownego logowania. Jeśli nie jesteś uwierzytelniony, monit logowania przy użyciu nazwy użytkownika i hasła dla konta w usłudze Azure AD. Jeśli Twoja organizacja skonfigurowała Federacji, wpisując nazwę użytkownika jest wystarczająca.
 
@@ -62,12 +59,12 @@ Gdy użytkownik jest uwierzytelniony, możesz porozmawiać z aplikacji, które a
 
 ## <a name="web-browser-requirements"></a>Wymagania dotyczące przeglądarki sieci Web
 
-Co najmniej panelu dostępu wymaga przeglądarki, która obsługuje język JavaScript i CSS została włączona. Być zalogowani do aplikacji za pomocą opartego na hasłach logowania jednokrotnego (SSO), musi mieć rozszerzenie panelu dostępu, które są zainstalowane w przeglądarce. Rozszerzenie jest automatycznie pobierany po wybraniu aplikacji, która jest skonfigurowana na podstawie hasła logowania jednokrotnego.
+Co najmniej portalu MyApps wymaga przeglądarki, która obsługuje język JavaScript i CSS została włączona. Aby zarejestrować się w usłudze aplikacji za pomocą opartego na hasłach logowanie jednokrotne (SSO), musi mieć zainstalowane w przeglądarce rozszerzenie portalu MyApps. Rozszerzenie jest automatycznie pobierany po wybraniu aplikacji, która jest skonfigurowana na podstawie hasła logowania jednokrotnego.
 
 Instalator jest architektury. Jeśli klikniesz link do pobierania, tylko Pobierz instalatora dla architektury systemu operacyjnego, które są aktualnie uruchomione na. Jeśli jesteś administratorem wdrożenia aplikacji, upewnij się, skorzystaj z linku pobierania z 64-bitowe i 32-bitowe urządzenie, aby oba instalatory.
 
 
-Rozszerzenie panelu dostępu jest obecnie dostępna dla:
+Rozszerzenie portalu MyApps jest obecnie dostępna dla:
 - **Krawędź**: Windows 10 Anniversary Edition lub nowszy. 
 - **Dla programu Chrome**: Windows 7 lub nowszy i System MacOS x lub później.
 - **Firefox 26.0 lub nowsze**: na Windows XP z dodatkiem SP2 lub nowszym i Mac OS X 10.6 lub później.
@@ -77,7 +74,7 @@ Rozszerzenie panelu dostępu jest obecnie dostępna dla:
 Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć rozszerzenia. Po zainstalowaniu rozszerzenia użytkownik może zalogować się w niej włączyć dodatkowe funkcje, wybierając **Zaloguj się rozpocząć**. 
 
 - Zaloguj się do aplikacji bezpośrednio za pomocą aplikacji **adres URL logowania**. Korzystając z adresu URL aplikacji, rozszerzenie wykrywa akcji i zapewnia możliwość logowania z rozszerzenia.
-- Aby uruchomić aplikacji z poziomu panelu dostępu za pomocą *szybkie wyszukiwanie* funkcji rozszerzenia. 
+- Aby uruchomić aplikacji z poziomu portalu MyApps przy użyciu *szybkie wyszukiwanie* funkcji rozszerzenia. 
 - Rozszerzenie pokazuje ostatnie trzy aplikacje, które można uruchomić **ostatnio używane** sekcji.
 - Możesz użyć firmy wewnętrznych adresów URL, podczas pracy zdalnej za pośrednictwem [serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
@@ -111,7 +108,7 @@ Aby użyć wewnętrznego firmy adresy URL, podczas pracy zdalnej przy użyciu ro
 Zespół usługi Azure Active Directory publikuje aplikację mobilną Moje aplikacje. Po zainstalowaniu aplikacji, możesz zalogować się do hasła logowania jednokrotnego aplikacji na urządzeniach z systemem Android i iOS.
 
 > [!NOTE]
-> Możesz zalogować się do aplikacji, które obsługują federacji z usługą Azure AD (w tym Salesforce, Google Apps, Dropbox, Box, Concur, Workday, usługi Office 365 i ponad 70 innych) na obsługujących praktycznie dowolną przeglądarkę sieci web na dowolnym urządzeniu, bez konieczności używania aplikacji wtyczki lub urządzeniu przenośnym. Do użycia na urządzeniu przenośnym, druga [dostęp do panelu środowiska](https://myapps.microsoft.com/) również nie wymagają aplikacji mobilnej Moje aplikacje.
+> Możesz zalogować się do aplikacji, które obsługują federacji z usługą Azure AD (w tym Salesforce, Google Apps, Dropbox, Box, Concur, Workday, usługi Office 365 i ponad 70 innych) na obsługujących praktycznie dowolną przeglądarkę sieci web na dowolnym urządzeniu, bez konieczności używania aplikacji wtyczki lub urządzeniu przenośnym. Do użycia na urządzeniu przenośnym, druga [napotyka portalu MyApps](https://myapps.microsoft.com/) również nie wymagają aplikacji mobilnej Moje aplikacje.
 >
 >
 
@@ -145,22 +142,22 @@ Intune Managed Browser znajduje się w temacie [Apple App Store](https://itunes.
 
 ## <a name="tips-for-testing-the-user-experience"></a>Porady dotyczące testowania interfejsu użytkownika
 
-Jeśli jesteś administratorem platformy Azure, a użytkownik jest zalogowany do witryny Azure portal przy użyciu konta w katalogu, możesz automatycznie zalogowano do panelu dostępu jako bieżącego konta. Ten widok przedstawia wszystkie aplikacje, które są przypisane do użytkownika.
+Jeśli jesteś administratorem platformy Azure, a użytkownik jest zalogowany do witryny Azure portal przy użyciu konta w katalogu, użytkownik są automatycznie zalogowany do portalu MyApps jako bieżącego konta. Ten widok przedstawia wszystkie aplikacje, które są przypisane do użytkownika.
 
 Testowanie w *różnych* użytkownika konta, wykonaj następujące czynności:
 
-1. W prawym górnym rogu witryny Azure portal lub w panelu dostępu, wybierz **Wyloguj**. 
-2. Przejdź do [panelu dostępu](http://myapps.microsoft.com).
+1. W prawym górnym rogu witryny Azure portal lub portalu MyApps, wybierz **Wyloguj**. 
+2. Przejdź do [portalu MyApps](http://myapps.microsoft.com).
 3. Na stronie logowania wpisz nazwę użytkownika i hasło dla konta w katalogu, który ma zostać przetestowana.
 
 
 ## <a name="starting-applications"></a>Uruchamianie aplikacji
 
-W tej sekcji omówiono kilka typów aplikacji, które mogą być wyświetlane w panelu dostępu.
+W tej sekcji omówiono kilka typów aplikacji, które mogą być wyświetlane w portalu MyApps.
 
 ### <a name="office-365-applications"></a>Aplikacje usługi Office 365
 
-Jeśli organizacja korzysta z aplikacjami usługi Office 365, masz licencję dla nich aplikacje usługi Office 365 są wyświetlane na panel dostępu.
+Jeśli organizacja korzysta z aplikacjami usługi Office 365, a masz licencję dla nich aplikacje usługi Office 365 są wyświetlane w portalu MyApps.
 
 Po wybraniu kafelka aplikacji dla aplikacji usługi Office 365, są przekierowywane do aplikacji i zostanie automatycznie zalogowany.
 
@@ -174,7 +171,7 @@ Po wybraniu kafelka dla aplikacji, są przekierowywane i zostanie automatycznie 
 
 Administrator może dodać aplikacje w sekcji usługi Active Directory w witrynie Azure Portal przy użyciu trybu logowania jednokrotnego, ustaw **opartego na hasłach logowania jednokrotnego**. Wszyscy użytkownicy w katalogu widoczne wszystkie aplikacje, które zostały skonfigurowane w tym trybie.
 
-Wybierz Kafelek aplikacji po raz pierwszy monit Zainstaluj wtyczkę logowania jednokrotnego haseł dla programu Internet Explorer lub Chrome. Instalacja może wymagać ponownego uruchomienia przeglądarki sieci web. Po powrocie do panelu dostępu i ponownie wybierz Kafelek aplikacji, zostanie wyświetlony monit o nazwę użytkownika i hasło dla aplikacji. Po wprowadzeniu nazwy użytkownika i hasła, poświadczenia są bezpiecznie przechowywane i połączone z Twoim kontem w usłudze Azure AD.
+Wybierz Kafelek aplikacji po raz pierwszy monit Zainstaluj wtyczkę logowania jednokrotnego haseł dla programu Internet Explorer lub Chrome. Instalacja może wymagać ponownego uruchomienia przeglądarki sieci web. Gdy powróć do portalu MyApps i ponownie wybierz Kafelek aplikacji, zostanie wyświetlony monit o nazwę użytkownika i hasło dla aplikacji. Po wprowadzeniu nazwy użytkownika i hasła, poświadczenia są bezpiecznie przechowywane i połączone z Twoim kontem w usłudze Azure AD.
 
 Następnym razem, wybierz Kafelek aplikacji, możesz automatycznie zalogowano się w aplikacji.  
 
@@ -194,7 +191,7 @@ Administrator może dodać aplikacje w sekcji usługi Active Directory w witryni
 
 Wybierz Kafelek aplikacji po raz pierwszy monit Zainstaluj wtyczkę logowania jednokrotnego haseł dla programu Internet Explorer lub Chrome. Instalacja może wymagać ponownego uruchomienia przeglądarki sieci web.  
 
-Po powrocie do panelu dostępu i ponownie wybierz Kafelek aplikacji, możesz automatycznie zalogowano się w aplikacji.
+Gdy wróć do portalu MyApps i ponownie, wybierz Kafelek aplikacji jest automatycznie zalogowany do aplikacji.
 
 Niektóre aplikacje może być konieczna zmiana hasła podczas pierwszego logowania. Jeśli poświadczenia zostały zmienione w aplikacji docelowej innej firmy, należy również zaktualizować poświadczenia, które są przechowywane w usłudze Azure AD. 
 
@@ -206,9 +203,9 @@ Aby zaktualizować swoje poświadczenia, wykonaj następujące czynności:
 
 ### <a name="application-with-existing-sso-solutions"></a>Aplikacja z istniejącymi rozwiązaniami logowania jednokrotnego
 
-Aby skonfigurować logowanie Jednokrotne dla aplikacji, witryny Azure portal zapewnia trzecią opcję o nazwie istniejące logowanie jednokrotne. Ta opcja umożliwia administratorem, aby utworzyć link do aplikacji i umieść ją na panelu dostępu dla wybranych użytkowników.
+Aby skonfigurować logowanie Jednokrotne dla aplikacji, witryny Azure portal zapewnia trzecią opcję o nazwie istniejące logowanie jednokrotne. Ta opcja umożliwia administratorem, aby utworzyć link do aplikacji i umieścić go w portalu MyApps dla wybranych użytkowników.
 
-Na przykład jeśli aplikacja jest skonfigurowana do uwierzytelniania użytkowników za pomocą usług AD FS 2.0, administrator może opcja istniejące logowanie jednokrotne spowoduje utworzenie łącza do niego w panelu dostępu. Gdy uzyskujesz dostęp do łącza, są uwierzytelniane za pośrednictwem usług AD FS 2.0 lub niezależnie od istniejącej rejestracji Jednokrotnej rozwiązania przez aplikację.
+Na przykład jeśli aplikacja jest skonfigurowana do uwierzytelniania użytkowników za pomocą usług AD FS 2.0, administrator może opcja istniejących logowania jednokrotnego spowoduje utworzenie łącza do niego w portalu MyApps. Gdy uzyskujesz dostęp do łącza, są uwierzytelniane za pośrednictwem usług AD FS 2.0 lub niezależnie od istniejącej rejestracji Jednokrotnej rozwiązania przez aplikację.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

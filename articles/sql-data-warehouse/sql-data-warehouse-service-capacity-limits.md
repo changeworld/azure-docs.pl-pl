@@ -3,24 +3,24 @@ title: Limity pojemności — Azure SQL Data Warehouse | Dokumentacja firmy Micr
 description: Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: sachinpMSFT
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 07/26/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: df3220936673e508e0fa01a283270e1b4ca4753c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283439"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302047"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
 
-## <a name="workload-management"></a>Zarządzanie obciążeniami
+## <a name="workload-management"></a>Zarządzanie obciążeniem
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna liczba jednostek DWU w pojedynczej SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
@@ -39,7 +39,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Tabela |Kolumn w tabeli |1024 kolumn |
 | Tabela |Liczba bajtów na kolumnę |Zależne od kolumny [— typ danych](sql-data-warehouse-tables-data-types.md). Limit wynosi 8000 dla typów danych char, 4000 nvarchar, czy za 2 GB dla typów danych MAX. |
 | Tabela |Bajtów na wiersz, zdefiniowanego rozmiaru |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, podobnie jak w przypadku programu SQL Server przy użyciu kompresji strony. Podobnie jak SQL Server, SQL Data Warehouse obsługuje magazynu przepełnienie wierszy, które umożliwia **kolumn o zmiennej długości** ma zostać wypchnięty pozawierszową. Gdy o zmiennej długości wierszy są przekazywane pozawierszową, tylko 24-bajtowy główny znajduje się w głównym rekordzie. Aby uzyskać więcej informacji, zobacz [przepełnienie wiersza danych przekraczających rozmiarze 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tabela |Partycje na tabelę |15,000<br/><br/>Wydajna, firma Microsoft zaleca, minimalizując liczbę partycji potrzebne podczas przerywania obsługi wymagań biznesowych. Wraz z rozwojem liczby partycji koszty operacji języka definicji danych (DDL) i manipulowania języka DML (Data) zwiększa się i powoduje, że niższej wydajności. |
+| Tabela |Partycje na tabelę |15 000<br/><br/>Wydajna, firma Microsoft zaleca, minimalizując liczbę partycji potrzebne podczas przerywania obsługi wymagań biznesowych. Wraz z rozwojem liczby partycji koszty operacji języka definicji danych (DDL) i manipulowania języka DML (Data) zwiększa się i powoduje, że niższej wydajności. |
 | Tabela |Liczba znaków na wartość graniczna partycji. |4000 |
 | Indeks |Indeksy klastrowane inne niż na tabelę. |50<br/><br/>Dotyczy tylko tabele magazynu wierszy. |
 | Indeks |Indeksy klastrowane na tabelę. |1<br><br/>Ma zastosowanie do tabel zarówno magazynu wierszy, jak i magazynu kolumn. |

@@ -1,122 +1,122 @@
 ---
-title: Azure autoryzacji — narzędzie Microsoft Threat modelowania — | Dokumentacja firmy Microsoft
-description: środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń
+title: Autoryzacja — narzędzie do modelowania zagrożeń firmy Microsoft — Azure | Dokumentacja firmy Microsoft
+description: środki zaradcze dotyczące zagrożeń, widoczne w narzędziu do modelowania zagrożeń
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029496"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307660"
 ---
-# <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacji | Środki zaradcze 
-| Produktów i usług | Artykuł |
+# <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacja | Środki zaradcze 
+| Produkt/usługę | Artykuł |
 | --------------- | ------- |
-| **Granic zaufania maszyny** | <ul><li>[Upewnij się, że odpowiednie listy ACL są skonfigurowane do ograniczania nieautoryzowanego dostępu do danych na urządzeniu](#acl-restricted-access)</li><li>[Upewnij się, że zawartość poufnej aplikacji specyficzne dla użytkownika jest przechowywana w katalogu profilu użytkownika](#sensitive-directory)</li><li>[Upewnij się, że wdrożone aplikacje są uruchamiane z najmniejszymi uprawnieniami](#deployed-privileges)</li></ul> |
-| **Aplikacja sieci Web** | <ul><li>[Wymusić kolejności kolejny krok podczas przetwarzania przepływów logika biznesowa](#sequential-logic)</li><li>[Implementowanie tempa ograniczania mechanizm zapobiegania — wyliczenie](#rate-enumeration)</li><li>[Sprawdź, czy odpowiednie autoryzacji jest już na miejscu i następuje reguły najniższych uprawnień](#principle-least-privilege)</li><li>[Logika i zasobów dostępu autoryzacji decyzje biznesowe nie powinny być oparte na przychodzące parametry żądania](#logic-request-parameters)</li><li>[Upewnij się, że zawartość i zasoby nie są wyliczalny ani dostępne za pośrednictwem wymuszone przeglądania](#enumerable-browsing)</li></ul> |
-| **Baza danych** | <ul><li>[Upewnij się, że najmniej uprzywilejowane konta są używane do połączenia z serwerem bazy danych](#privileged-server)</li><li>[Implementowanie wiersza poziom zabezpieczeń zabezpieczenia na poziomie wiersza aby uniemożliwić dostęp do siebie nawzajem danych dzierżawcy](#rls-tenants)</li><li>[Rola administratora systemu powinien mieć tylko niezbędne użytkowników](#sysadmin-users)</li></ul> |
-| **Brama chmury IoT** | <ul><li>[Połączyć się z bramą chmury przy użyciu najmniej uprzywilejowane tokenów](#cloud-least-privileged)</li></ul> |
-| **Azure Event Hub** | <ul><li>[Użyj uprawnień tylko do wysyłania klucza sygnatury dostępu Współdzielonego do generowania tokenów urządzenia](#sendonly-sas)</li><li>[Nie używaj tokenów dostępu, które udostępniają bezpośredni dostęp do Centrum zdarzeń](#access-tokens-hub)</li><li>[Połącz do Centrum zdarzeń za pomocą kluczy SAS, które ma minimalne uprawnienia wymagane](#sas-minimum-permissions)</li></ul> |
-| **Dokumentów w usłudze Azure DB** | <ul><li>[Używaj tokenów zasobów do nawiązania połączenia DB rozwiązania Cosmos Azure, jeśli to możliwe](#resource-docdb)</li></ul> |
-| **Granic zaufania Azure** | <ul><li>[Włącz szczegółowe zarządzanie dostępem do subskrypcji platformy Azure przy użyciu funkcji RBAC](#grained-rbac)</li></ul> |
-| **Granic zaufania sieci szkieletowej usług** | <ul><li>[Ogranicz dostęp klienta do operacji klastra przy użyciu funkcji RBAC](#cluster-rbac)</li></ul> |
-| **Dynamics CRM** | <ul><li>[Wykonaj modelowania zabezpieczeń i używać zabezpieczeń na poziomie pola w przypadku, gdy wymagane](#modeling-field)</li></ul> |
-| **Portal programu Dynamics CRM** | <ul><li>[Wykonaj modelowania zabezpieczeń w portalu kont z uwzględnieniem, że model zabezpieczeń dla portalu różni się od reszty CRM](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Udziel uprawnień szczegółowych zakresu jednostek w magazynie tabel platformy Azure](#permission-entities)</li><li>[Włącz opartej na rolach kontroli dostępu (RBAC) na konto magazynu platformy Azure przy użyciu usługi Azure Resource Manager](#rbac-azure-manager)</li></ul> |
-| **Klientów urządzeń przenośnych** | <ul><li>[Implementowanie niejawne zdjęcia lub umieszczanie w katalogu głównym wykrywania](#rooting-detection)</li></ul> |
-| **WCF** | <ul><li>[Odwołanie słabe klasy w programie WCF](#weak-class-wcf)</li><li>[Formant autoryzacji wdrożenie usługi WCF](#wcf-authz)</li></ul> |
-| **Interfejs API sieci Web** | <ul><li>[Implementuje mechanizm właściwą autoryzację w interfejsie API sieci Web ASP.NET](#authz-aspnet)</li></ul> |
-| **Urządzenia IoT** | <ul><li>[Sprawdzanie autoryzacji w urządzeniu Jeśli obsługuje różne akcje, które wymagają różne poziomy uprawnień](#device-permission)</li></ul> |
-| **Pole IoT bramy** | <ul><li>[Wykonaj sprawdzanie autoryzacji w bramy pola, jeśli obsługuje różne akcje, które wymagają różne poziomy uprawnień](#field-permission)</li></ul> |
+| **Maszyny granicy zaufania** | <ul><li>[Upewnij się, że odpowiednie listy ACL są skonfigurowane do ograniczania nieautoryzowanego dostępu do danych na urządzeniu](#acl-restricted-access)</li><li>[Upewnij się, że zawartość poufnych aplikacji specyficzne dla użytkownika jest przechowywany w katalogu profilu użytkownika](#sensitive-directory)</li><li>[Upewnij się, że wdrożone aplikacje są uruchamiane z najmniejszymi uprawnieniami](#deployed-privileges)</li></ul> |
+| **Aplikacja sieci Web** | <ul><li>[Wymuszanie kolejny krok kolejności podczas przetwarzania przepływów logiki biznesowej](#sequential-logic)</li><li>[Implementuje mechanizm zapobiegania wyliczenie ograniczania szybkości](#rate-enumeration)</li><li>[Upewnij się, że odpowiednie zezwolenia są używane, i po niej reguły najniższych uprawnień](#principle-least-privilege)</li><li>[Business Logic Apps i zasobów dostępu decyzji dotyczących autoryzacji, nie powinna być oparta na parametry żądania przychodzące](#logic-request-parameters)</li><li>[Upewnij się, że zawartość i zasoby nie są wyliczalny ani dostępne za pośrednictwem wymuszone przeglądania](#enumerable-browsing)</li></ul> |
+| **Baza danych** | <ul><li>[Upewnij się, że najmniej uprzywilejowane konta są używane do łączenia się z serwerem bazy danych](#privileged-server)</li><li>[Implementowanie wiersz zabezpieczeń na poziomie aby uniemożliwić dostęp do siebie nawzajem danych dzierżaw](#rls-tenants)</li><li>[Rola administratora systemu powinien mieć tylko prawidłowych użytkowników wymagane](#sysadmin-users)</li></ul> |
+| **Brama chmury IoT** | <ul><li>[Połączenia z bramą chmury przy użyciu najmniej uprzywilejowane tokenów](#cloud-least-privileged)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Użyj uprawnień tylko do wysyłania klucza sygnatury dostępu Współdzielonego do generowania tokenów urządzeń](#sendonly-sas)</li><li>[Nie używaj tokenów dostępu, które udostępniają bezpośredni dostęp do Centrum zdarzeń](#access-tokens-hub)</li><li>[Łączenie z Centrum zdarzeń za pomocą kluczy sygnatury dostępu Współdzielonego, które ma minimalne uprawnienia wymagane](#sas-minimum-permissions)</li></ul> |
+| **Baza danych Documentdb platformy Azure** | <ul><li>[Nawiązywanie połączenia z usługi Azure Cosmos DB, jeśli to możliwe za pomocą tokenów zasobów](#resource-docdb)</li></ul> |
+| **Granicy zaufania platformy Azure** | <ul><li>[Włącz szczegółowe zarządzanie dostępem do subskrypcji platformy Azure przy użyciu funkcji RBAC](#grained-rbac)</li></ul> |
+| **Granicy zaufania usługi Service Fabric** | <ul><li>[Ogranicz dostęp klienta do operacji klastra przy użyciu funkcji RBAC](#cluster-rbac)</li></ul> |
+| **Dynamics CRM** | <ul><li>[Wykonaj bezpieczeństwa modelowania i użyć zabezpieczeń na poziomie pola w przypadku, gdy wymagane](#modeling-field)</li></ul> |
+| **Portal programu Dynamics CRM** | <ul><li>[Wykonaj modelowania zabezpieczeń w portalu konta, pamiętając o tym, który model zabezpieczeń dla portalu różni się od reszty systemu CRM](#portal-security)</li></ul> |
+| **Azure Storage** | <ul><li>[Udziel uprawnień szczegółowych dotyczących zakresu jednostek w usłudze Azure Table Storage](#permission-entities)</li><li>[Włącz opartej na rolach kontrola dostępu (RBAC) do konta usługi Azure storage za pomocą usługi Azure Resource Manager](#rbac-azure-manager)</li></ul> |
+| **Klientów urządzeń przenośnych** | <ul><li>[Implementowanie niejawne zdjęcia zabezpieczeń systemu lub zakorzenienia wykrywania](#rooting-detection)</li></ul> |
+| **WCF** | <ul><li>[Odwołania do klasy słabe w programie WCF](#weak-class-wcf)</li><li>[Kontrolki programu WCF — Implementowanie autoryzacji](#wcf-authz)</li></ul> |
+| **Interfejs API sieci Web** | <ul><li>[Implementuje mechanizm autoryzacji odpowiednie ASP.NET Web API](#authz-aspnet)</li></ul> |
+| **Urządzenia IoT** | <ul><li>[Kontrole autoryzacji na urządzeniu, gdy obsługuje różne akcje, które wymagają różnych poziomów uprawnień](#device-permission)</li></ul> |
+| **Bramy w terenie IoT** | <ul><li>[Wykonaj sprawdzanie autoryzacji w bramy w terenie, jeśli obsługuje ona różne akcje, które wymagają różnych poziomów uprawnień](#field-permission)</li></ul> |
 
 ## <a id="acl-restricted-access"></a>Upewnij się, że odpowiednie listy ACL są skonfigurowane do ograniczania nieautoryzowanego dostępu do danych na urządzeniu
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
 | **Kroki** | Upewnij się, że odpowiednie listy ACL są skonfigurowane do ograniczania nieautoryzowanego dostępu do danych na urządzeniu|
 
-## <a id="sensitive-directory"></a>Upewnij się, że zawartość poufnej aplikacji specyficzne dla użytkownika jest przechowywana w katalogu profilu użytkownika
+## <a id="sensitive-directory"></a>Upewnij się, że zawartość poufnych aplikacji specyficzne dla użytkownika jest przechowywany w katalogu profilu użytkownika
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, że zawartość poufnej aplikacji specyficzne dla użytkownika jest przechowywana w katalogu profilu użytkownika. To, aby uniemożliwić dostęp do siebie nawzajem danych przez wielu użytkowników maszyny.|
+| **Kroki** | Upewnij się, że zawartość poufnych aplikacji specyficzne dla użytkownika jest przechowywany w katalogu profilu użytkownika. To, aby uniemożliwić dostęp do siebie nawzajem danych przez wielu użytkowników.|
 
 ## <a id="deployed-privileges"></a>Upewnij się, że wdrożone aplikacje są uruchamiane z najmniejszymi uprawnieniami
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania maszyny | 
+| **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, że z najmniejszymi uprawnieniami uruchomieniu wdrożonej aplikacji. |
+| **Kroki** | Upewnij się, że uruchomieniu wdrożonej aplikacji, z najmniejszymi uprawnieniami. |
 
-## <a id="sequential-logic"></a>Wymusić kolejności kolejny krok podczas przetwarzania przepływów logika biznesowa
+## <a id="sequential-logic"></a>Wymuszanie kolejny krok kolejności podczas przetwarzania przepływów logiki biznesowej
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Aby sprawdzić, czy ten etap został uruchomiony za pośrednictwem przez oryginalnego użytkownika mają zostać wymuszone aplikacji tylko firm logiki przepływy procesu w kolejności kolejny krok wszystkich kroków przetwarzanych w czasie człowieka realistyczne i przetwarza poza kolejnością, pominięte kroki , przetwarzanych kroki od innego użytkownika lub zbyt szybko przesłać transakcji.|
+| **Kroki** | Aby sprawdzić, czy ten etap został uruchomiony za pośrednictwem przez użytkownika oryginalnego chcesz wymusić aplikacji tylko procesów biznesowych przepływów operacji logicznych w kolejności kolejny krok, wszystkie czynności trwa przetwarzanie w czasie przez ludzi realistyczne i przetwarza poza kolejnością, pominięte kroki , przetwarzane kroki od innego użytkownika lub zbyt szybko przesłane transakcji.|
 
-## <a id="rate-enumeration"></a>Implementowanie tempa ograniczania mechanizm zapobiegania — wyliczenie
+## <a id="rate-enumeration"></a>Implementuje mechanizm zapobiegania wyliczenie ograniczania szybkości
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, czy losowe identyfikatory poufnych. Wdrażanie kontroli CAPTCHA na stronach anonimowy. Upewnij się, że błędów i wyjątków nie powinny ujawniać określonych danych|
+| **Kroki** | Upewnij się, że poufne identyfikatory losowych. Implementowanie formantu CAPTCHA na stronach anonimowe. Upewnij się, że błędów i wyjątków nie powinno ujawnić określonych danych|
 
-## <a id="principle-least-privilege"></a>Sprawdź, czy odpowiednie autoryzacji jest już na miejscu i następuje reguły najniższych uprawnień
+## <a id="principle-least-privilege"></a>Upewnij się, że odpowiednie zezwolenia są używane, i po niej reguły najniższych uprawnień
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Zasada oznacza nadanie tych uprawnień, które są niezbędne do użytkownicy pracować konta użytkownika. Na przykład użytkownik kopii zapasowej nie trzeba instalować oprogramowanie: w związku z tym kopii zapasowej użytkownik ma uprawnienia tylko do uruchamiania aplikacji kopii zapasowej i związanych z kopii zapasowej. Inne uprawnienia, takie jak instalowanie nowego oprogramowania są zablokowane. Zasada ma zastosowanie również do użytkownika komputerów osobistych, który zwykle działa w normalne konto użytkownika i otwiera konta uprzywilejowanego, chroniony hasłem (superuser) tylko, gdy sytuacji wymaga go całkowicie. </p><p>Tej zasady można również będą stosowane do aplikacji sieci web. Zamiast wyłącznie w zależności od metody uwierzytelniania opartej na rolach przy użyciu sesji, a nie chcemy uprawnienia są przypisane do użytkowników za pomocą uwierzytelniania na podstawie bazy danych systemu. Używamy nadal sesji, aby ustalić, czy użytkownik był zalogowany poprawnie, tylko teraz zamiast przypisywać tego użytkownika z określoną rolę, które firma Microsoft przypisać mu z uprawnieniami, aby sprawdzić, jakie akcje, jest on uprzywilejowane do wykonania w systemie. Duży pro tej metody jest również, zawsze, gdy użytkownik musi zostać przypisany mniej uprawnienia, zmiany zostaną zastosowane na bieżąco, ponieważ przypisanie nie zależy od sesji, które w przeciwnym wypadku musieli najpierw wygaśnie.</p>|
+| **Kroki** | <p>Zasada oznacza, podając konto użytkownika z tych uprawnień, które są istotne dla użytkowników pracować. Na przykład użytkownika kopii zapasowej nie trzeba zainstalować oprogramowanie: z tego powodu kopii zapasowej użytkownik ma uprawnienia tylko do uruchamiania aplikacji kopii zapasowej i związane z kopii zapasowej. Inne uprawnienia, takie jak instalowanie nowego oprogramowania, są blokowane. Zasada ma zastosowanie także do użytkownika komputer osobisty, który zwykle działa w ramach konta zwykłego użytkownika i otwiera konta uprzywilejowanego, chronionych hasłem (administratora) tylko kiedy sytuacji absolutnie to uzasadnione. </p><p>Ta zasada można również będą stosowane do aplikacji sieci web. Zamiast wyłącznie zależnie od metody uwierzytelniania opartej na rolach za pomocą sesji, zamiast chcemy przypisywanie uprawnień do użytkowników za pomocą systemu uwierzytelniania opartego na bazie danych. Używamy nadal sesji, aby ustalić, czy użytkownik był zalogowany poprawnie, tylko teraz zamiast przypisywać tego użytkownika z określoną rolę, które firma Microsoft przypisać mu z uprawnieniami, aby sprawdzić, akcje, które użytkownik jest uprzywilejowany do wykonania w systemie. Big pro tej metody jest również, w każdym przypadku, gdy użytkownik musi zostać przypisany mniejszej liczby uprawnień, zmiany zostaną zastosowane na bieżąco, ponieważ przypisanie nie zależy od sesji, które w przeciwnym wypadku musiały wygasają najpierw.</p>|
 
-## <a id="logic-request-parameters"></a>Logika i zasobów dostępu autoryzacji decyzje biznesowe nie powinny być oparte na przychodzące parametry żądania
+## <a id="logic-request-parameters"></a>Business Logic Apps i zasobów dostępu decyzji dotyczących autoryzacji, nie powinna być oparta na parametry żądania przychodzące
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Zawsze, gdy są sprawdzanie, czy użytkownik jest ograniczony do sprawdzenia niektórych danych, ograniczenia dostępu powinny być przetworzone po stronie serwera. Nazwa użytkownika powinny być przechowywane w zmiennej sesji podczas logowania i powinien być używany do pobierania danych użytkownika z bazy danych |
+| **Kroki** | Zawsze, gdy podczas sprawdzania, czy użytkownik jest ograniczony do sprawdzenia niektórych danych, ograniczenia dostępu powinny być przetworzone po stronie serwera. Identyfikator userID ma być przechowywany w zmiennej sesji podczas logowania i powinien być używany do pobierania danych użytkownika z bazy danych |
 
 ### <a name="example"></a>Przykład
 ```SQL
@@ -124,7 +124,7 @@ SELECT data
 FROM personaldata 
 WHERE userID=:id < - session var 
 ```
-Teraz atakujący możliwe nie można modyfikować i zmienić operacji aplikacji, ponieważ identyfikator dla pobierania danych jest obsługiwana po stronie serwera.
+Teraz atakujący możliwe można manipulować i nie zmieniać operacji aplikacji, ponieważ identyfikator pobierania danych jest obsługiwane po stronie serwera.
 
 ## <a id="enumerable-browsing"></a>Upewnij się, że zawartość i zasoby nie są wyliczalny ani dostępne za pośrednictwem wymuszone przeglądania
 
@@ -132,67 +132,67 @@ Teraz atakujący możliwe nie można modyfikować i zmienić operacji aplikacji,
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Poufne pliki statyczne i konfiguracji nie powinny być przechowywane w katalogu sieci web. Dla zawartości, nie muszą być publiczne, powinny być stosowane albo odpowiednie właściwości kontroli dostępu lub usuwanie zawartości.</p><p>Ponadto przeglądanie wymuszone zwykle w połączeniu z siłowych technik w celu zebrania informacji przez próbujących uzyskać dostęp dowolną liczbę adresów URL, jak to możliwe wyliczanie katalogów i plików na serwerze. Osoby atakujące mogą sprawdzić wszystkie odmiany często istniejących plików. Na przykład wyszukiwania plików hasła może obejmować pliki w tym psswd.txt, password.htm password.dat i innych zmian.</p><p>Aby temu zaradzić, możliwości wykrywania atakami siłowymi powinny być włączone.</p>|
+| **Kroki** | <p>Poufne statycznej i plików konfiguracji nie powinny być przechowywane w folderze głównym w sieci web. Zawartość nie muszą być publiczne, powinny być stosowane albo odpowiednie właściwości kontroli dostępu lub usunięcie samej zawartości.</p><p>Ponadto wymuszone przeglądania jest zwykle w połączeniu z atak Siłowy techniki, aby zebrać informacje za pomocą próby uzyskania dostępu dowolną liczbę adresów URL możliwie wyliczanie katalogów i plików na serwerze. Osoby atakujące mogą wyszukać wszystkie odmiany często istniejących plików. Na przykład wyszukiwanie plików hasło będzie obejmować pliki w tym psswd.txt, password.htm, password.dat i inne różnice.</p><p>Aby rozwiązać ten problem, należy uwzględnić możliwości wykrywania ataków siłowych.</p>|
 
-## <a id="privileged-server"></a>Upewnij się, że najmniej uprzywilejowane konta są używane do połączenia z serwerem bazy danych
+## <a id="privileged-server"></a>Upewnij się, że najmniej uprzywilejowane konta są używane do łączenia się z serwerem bazy danych
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Baza danych SQL uprawnienia hierarchii](https://msdn.microsoft.com/library/ms191465), [zabezpieczanych obiektów bazy danych SQL](https://msdn.microsoft.com/library/ms190401) |
-| **Kroki** | Najmniej uprzywilejowane konta powinien służyć do łączenia z bazą danych. Logowania aplikacji powinny być ograniczone w bazie danych i mają być wykonywane tylko wybrane procedury składowane. Logowania aplikacji powinien mieć nie bezpośredniego dostępu do tabel. |
+| **Odwołania**              | [Hierarchia uprawnienia bazy danych SQL](https://msdn.microsoft.com/library/ms191465), [zabezpieczanych obiektów bazy danych SQL](https://msdn.microsoft.com/library/ms190401) |
+| **Kroki** | Najmniej uprzywilejowane konta powinny być używane do łączenia z bazą danych. Logowania aplikacji powinny być ograniczone w bazie danych i należy wykonywać tylko wybrane procedur składowanych. Logowanie do aplikacji nie powinny mieć tabeli bezpośredniego dostępu. |
 
-## <a id="rls-tenants"></a>Implementowanie wiersza poziom zabezpieczeń zabezpieczenia na poziomie wiersza aby uniemożliwić dostęp do siebie nawzajem danych dzierżawcy
-
-| Stanowisko                   | Szczegóły      |
-| ----------------------- | ------------ |
-| **Składnik**               | Database (Baza danych) | 
-| **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Sql Azure, OnPrem |
-| **Atrybuty**              | MsSQL2016 wersji — w wersji 12, wersja programu SQL — SQL |
-| **Odwołania**              | [Zabezpieczenia na poziomie wiersza serwera SQL (kontrola dostępu)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
-| **Kroki** | <p>Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (np. członkostwa w grupie lub kontekstu wykonania).</p><p>Wiersz poziom zabezpieczeń kontrola dostępu ułatwia projektu i kodowania zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Możliwe jest na przykład zapewnienie, że pracownicy mają dostęp tylko do tych wierszy danych, które są odpowiednie do ich działu, lub ograniczenie dostępu do danych klienta tylko do danych odpowiednich dla firmy.</p><p>Logika ograniczenie dostępu jest znajduje się w warstwie bazy danych zamiast od danych w innej warstwie aplikacji. System bazy danych ma zastosowanie ograniczenia dostępu za każdym razem, gdy nastąpiła by dostęp do danych z dowolnej wersji. To sprawia, że system zabezpieczeń bardziej niezawodne i niezawodne zmniejszając powierzchni systemu zabezpieczeń.</p><p>|
-
-Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy danych poza pole ma zastosowanie tylko do od 2016 programu SQL Server i bazy danych Azure SQL. Jeśli funkcja zabezpieczenia na poziomie wiersza poza pole nie jest zaimplementowana, należy zapewnić, że dostęp do danych jest ograniczony przy użyciu widoków i procedur
-
-## <a id="sysadmin-users"></a>Rola administratora systemu powinien mieć tylko niezbędne użytkowników
+## <a id="rls-tenants"></a>Implementowanie wiersz zabezpieczeń na poziomie aby uniemożliwić dostęp do siebie nawzajem danych dzierżaw
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Sql Azure, OnPrem |
+| **Atrybuty**              | MsSQL2016 wersja — wersja V12, wersja SQL — SQL |
+| **Odwołania**              | [SQL Server Row-Level Security (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
+| **Kroki** | <p>Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (np. członkostwa w grupie lub kontekstu wykonania).</p><p>Row-Level Security (RLS) upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Możliwe jest na przykład zapewnienie, że pracownicy mają dostęp tylko do tych wierszy danych, które są odpowiednie do ich działu, lub ograniczenie dostępu do danych klienta tylko do danych odpowiednich dla firmy.</p><p>Logika ograniczeń dostępu jest znajduje się w warstwie bazy danych, a nie od danych w innej warstwie aplikacji. Za każdym razem, gdy podejmowana jest próba tego dostępu do danych z dowolnej warstwy system bazy danych mają zastosowanie ograniczenia dostępu. Dzięki temu system zabezpieczeń bardziej niezawodne i niezawodne, zmniejszając prawdopodobieństwo system zabezpieczeń.</p><p>|
+
+Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy danych poza pole dotyczy tylko programu SQL Server od 2016 i Azure SQL database. Jeśli funkcja zabezpieczeń na poziomie wiersza poza pole nie jest zaimplementowana, należy zapewnić, że dostęp do danych jest ograniczony przy użyciu widoków i procedur
+
+## <a id="sysadmin-users"></a>Rola administratora systemu powinien mieć tylko prawidłowych użytkowników wymagane
+
+| Stanowisko                   | Szczegóły      |
+| ----------------------- | ------------ |
+| **Składnik**               | Database (Baza danych) | 
+| **Faza SDL**               | Kompilacja |  
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Baza danych SQL uprawnienia hierarchii](https://msdn.microsoft.com/library/ms191465), [zabezpieczanych obiektów bazy danych SQL](https://msdn.microsoft.com/library/ms190401) |
-| **Kroki** | Członkowie stałej roli serwera SysAdmin powinny być bardzo ograniczoną i nigdy nie zawiera konta używane przez aplikacje.  Przejrzyj listę użytkowników w roli i usunąć wszystkie zbędne konta|
+| **Odwołania**              | [Hierarchia uprawnienia bazy danych SQL](https://msdn.microsoft.com/library/ms191465), [zabezpieczanych obiektów bazy danych SQL](https://msdn.microsoft.com/library/ms190401) |
+| **Kroki** | Członkowie stałej roli serwera SysAdmin powinny być bardzo ograniczona i nigdy nie zawiera konta używane przez aplikacje.  Przejrzyj listę użytkowników w roli i usunąć wszelkie niepotrzebne konta|
 
-## <a id="cloud-least-privileged"></a>Połączyć się z bramą chmury przy użyciu najmniej uprzywilejowane tokenów
+## <a id="cloud-least-privileged"></a>Połączenia z bramą chmury przy użyciu najmniej uprzywilejowane tokenów
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Brama chmury IoT | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Wybór bramy - Centrum IoT Azure |
-| **Odwołania**              | [Kontrolę dostępu Centrum iot](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
-| **Kroki** | Podaj co najmniej poziomu uprawnień, aby różne składniki, które połączyć się z bramą chmury (Centrum IoT). Typowym przykładem jest — składnika zainicjowania/zarządzania urządzeniami używa registryread/zapisu, zdarzenie procesora (ASA) korzysta z połączenia usługi. Poszczególne urządzenia łączyć się przy użyciu poświadczeń urządzenia|
+| **Odpowiednich technologii** | Ogólny |
+| **Atrybuty**              | Wybór bramy — usługi Azure IoT Hub |
+| **Odwołania**              | [Kontrola dostępu w usłudze iot Hub](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
+| **Kroki** | Podaj co najmniej uprawnienia uprawnień do różnych składników, łączących się z bramy w chmurze (usługi IoT Hub). Typowym przykładem jest — składnik zarządzania/Inicjowanie obsługi administracyjnej urządzeń używa registryread/zapisu, zdarzenie procesora (ASA) używa, połączenie z usługą. Poszczególne urządzenia są połączone przy użyciu poświadczeń urządzenia|
 
-## <a id="sendonly-sas"></a>Użyj uprawnień tylko do wysyłania klucza sygnatury dostępu Współdzielonego do generowania tokenów urządzenia
+## <a id="sendonly-sas"></a>Użyj uprawnień tylko do wysyłania klucza sygnatury dostępu Współdzielonego do generowania tokenów urządzeń
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Uwierzytelnianie i zabezpieczenia modelu Omówienie usługi Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Kroki** | Klucz sygnatury dostępu Współdzielonego jest używane do generowania tokenów poszczególnych urządzeń. Użyj klucza sygnatury dostępu Współdzielonego uprawnienia tylko do wysyłania podczas generowania tokenu urządzenia dla danego wydawcy|
+| **Kroki** | Klucz sygnatury dostępu Współdzielonego jest używany do generowania tokenów poszczególnych urządzeń. Użyj klucza sygnatury dostępu Współdzielonego uprawnienia tylko do wysyłania podczas generowania tokenu urządzenia dla danego wydawcy|
 
 ## <a id="access-tokens-hub"></a>Nie używaj tokenów dostępu, które udostępniają bezpośredni dostęp do Centrum zdarzeń
 
@@ -200,40 +200,40 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Uwierzytelnianie i zabezpieczenia modelu Omówienie usługi Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Kroki** | Token, który daje bezpośredni dostęp do Centrum zdarzeń nie powinny być podawane na urządzeniu. Za pomocą tokenu najniższych uprawnieniach dla urządzenia, które umożliwia dostęp tylko do wydawcy może pomóc w identyfikacji i wyeliminować go, jeśli okaże się nieautoryzowanego lub naruszony urządzenia.|
+| **Kroki** | Token udzielający bezpośredni dostęp do Centrum zdarzeń nie powinien być podawany na urządzeniu. Za pomocą najniższych uprawnieniach tokenu dla urządzenia, który zapewnia dostęp tylko do wydawcy może pomóc w zidentyfikowaniu i utworzyć listę niedozwolonych Jeśli okaże się nieautoryzowanego lub naruszony urządzenia.|
 
-## <a id="sas-minimum-permissions"></a>Połącz do Centrum zdarzeń za pomocą kluczy SAS, które ma minimalne uprawnienia wymagane
+## <a id="sas-minimum-permissions"></a>Łączenie z Centrum zdarzeń za pomocą kluczy sygnatury dostępu Współdzielonego, które ma minimalne uprawnienia wymagane
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Uwierzytelnianie i zabezpieczenia modelu Omówienie usługi Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Kroki** | Podaj co najmniej poziomu uprawnień do różnych aplikacji zaplecza, które nawiązać połączenia z Centrum zdarzeń. Generowanie oddzielnych klucza sygnatury dostępu Współdzielonego dla każdej aplikacji zaplecza i zapewniają tylko wymagane uprawnienia — Wyślij i Odbierz lub Zarządzaj do nich.|
+| **Kroki** | Podaj co najmniej uprawnienia uprawnień do różnych aplikacji zaplecza, łączących się z Centrum zdarzeń. Generowanie oddzielne klucze sygnatur dostępu Współdzielonego dla każdej aplikacji zaplecza i zapewniają tylko wymagane uprawnienia — Wyślij i Odbierz lub Zarządzaj, aby je.|
 
-## <a id="resource-docdb"></a>Używaj tokenów zasobów do nawiązania połączenia rozwiązania Cosmos bazy danych, jeśli to możliwe
+## <a id="resource-docdb"></a>Nawiązywanie połączenia z usługi Cosmos DB, jeśli to możliwe za pomocą tokenów zasobów
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Dokumentów w usłudze Azure DB | 
+| **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Token zasobu jest skojarzony z zasobem uprawnienia bazy danych Azure rozwiązania Cosmos i przechwytywanie relacji między użytkownikiem bazy danych i uprawnień, które użytkownik ma dla określonego zasobu aplikacji bazy danych rozwiązania Cosmos Azure (np. kolekcji i dokumentów). Aby uzyskać dostęp do bazy danych rozwiązania Cosmos platformy Azure, jeśli klient nie może być zaufany za pomocą postępowania z kluczami głównego lub w trybie tylko do odczytu — podobnie jak aplikację użytkownika klienta przenośnego lub stacjonarnego zawsze używać token zasobu. Użyj klucza głównego lub tylko do odczytu klucze z wewnętrznej bazy danych aplikacji, które można bezpiecznie przechowywać klucze.|
+| **Kroki** | Token zasobu jest skojarzony z zasobem uprawnienia usługi Azure Cosmos DB i przechwytuje relację między użytkownikiem bazy danych i uprawnienia, które użytkownik ma dla określonego zasobu aplikacji usługi Azure Cosmos DB (np. kolekcji i dokumentów). Zawsze używaj token zasobu, można uzyskać dostęp do usługi Azure Cosmos DB, jeśli klient nie może być zaufany za pomocą postępowania z kluczami główny lub tylko do odczytu — takich jak takich jak klientów mobilnych i klasycznych aplikacji użytkownika końcowego. Użyj klucza głównego lub klucze tylko do odczytu z poziomu aplikacji zaplecza, które można bezpiecznie przechowywać klucze.|
 
 ## <a id="grained-rbac"></a>Włącz szczegółowe zarządzanie dostępem do subskrypcji platformy Azure przy użyciu funkcji RBAC
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania Azure | 
+| **Składnik**               | Granicy zaufania platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
 | **Kroki** | Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Korzystając z modelu RBAC, można udzielić użytkownikom tylko takiego dostępu, jakiego potrzebują do wykonania swoich zadań.|
@@ -242,81 +242,81 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Granic zaufania sieci szkieletowej usług | 
+| **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
-| **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Środowisko — Azure |
-| **Odwołania**              | [Kontrola dostępu oparta na rolach dla klientów sieci szkieletowej usług](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
-| **Kroki** | <p>Sieć szkieletowa usług Azure obsługuje dwa typy kontroli różny dostęp dla klientów, które są podłączone do klastra usługi sieć szkieletowa: administratora i użytkownika. Kontrola dostępu umożliwia administratora klastrów, aby ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników, co klaster bardziej bezpieczne.</p><p>Administratorzy mają pełny dostęp do funkcji zarządzania (w tym możliwości odczytu/zapisu). Użytkownicy, domyślnie mają tylko do odczytu możliwości zarządzania (na przykład możliwość wykonywania kwerend) i możliwość usuwania aplikacji i usług.</p><p>Role dwóch klienta (administratora i klient) określa się podczas tworzenia klastra, podając oddzielne certyfikaty dla każdego.</p>|
+| **Odpowiednich technologii** | Ogólny |
+| **Atrybuty**              | Środowisko — platformy Azure |
+| **Odwołania**              | [Kontrola dostępu oparta na rolach dla klientów usługi Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
+| **Kroki** | <p>Usługa Azure Service Fabric obsługuje dwa typy kontroli dostępu do różnych klientów, które są podłączone do klastra usługi Service Fabric: administratora i użytkownika. Kontrola dostępu pozwala administrator klastra ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników, dzięki czemu klaster jest bardziej bezpieczne.</p><p>Administratorzy mają pełny dostęp do możliwości zarządzania (w tym możliwości odczytu/zapisu). Użytkownicy, domyślnie mają tylko dostęp do odczytu do możliwości zarządzania (na przykład, zapytanie możliwości) i możliwość usuwania aplikacji i usług.</p><p>Należy określić role dwóch klientów (administratora i klientów) w czasie tworzenia klastra, podając oddzielnych certyfikatów dla każdego.</p>|
 
-## <a id="modeling-field"></a>Wykonaj modelowania zabezpieczeń i używać zabezpieczeń na poziomie pola w przypadku, gdy wymagane
+## <a id="modeling-field"></a>Wykonaj bezpieczeństwa modelowania i użyć zabezpieczeń na poziomie pola w przypadku, gdy wymagane
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Wykonaj modelowania zabezpieczeń i używać zabezpieczeń na poziomie pola w przypadku, gdy wymagane|
+| **Kroki** | Wykonaj bezpieczeństwa modelowania i użyć zabezpieczeń na poziomie pola w przypadku, gdy wymagane|
 
-## <a id="portal-security"></a>Wykonaj modelowania zabezpieczeń w portalu kont z uwzględnieniem, że model zabezpieczeń dla portalu różni się od reszty CRM
+## <a id="portal-security"></a>Wykonaj modelowania zabezpieczeń w portalu konta, pamiętając o tym, który model zabezpieczeń dla portalu różni się od reszty systemu CRM
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Portal programu Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Wykonaj modelowania zabezpieczeń w portalu kont z uwzględnieniem, że model zabezpieczeń dla portalu różni się od reszty CRM|
+| **Kroki** | Wykonaj modelowania zabezpieczeń w portalu konta, pamiętając o tym, który model zabezpieczeń dla portalu różni się od reszty systemu CRM|
 
-## <a id="permission-entities"></a>Udziel uprawnień szczegółowych zakresu jednostek w magazynie tabel platformy Azure
+## <a id="permission-entities"></a>Udziel uprawnień szczegółowych dotyczących zakresu jednostek w usłudze Azure Table Storage
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | StorageType - tabeli |
+| **Odpowiednich technologii** | Ogólny |
+| **Atrybuty**              | StorageType — tabela |
 | **Odwołania**              | [Jak delegować dostęp do obiektów na koncie magazynu platformy Azure przy użyciu sygnatury dostępu Współdzielonego](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **Kroki** | Magazyn tabel Azure niektórych scenariuszy biznesowych, może być konieczne do przechowywania poufnych danych przeznaczoną do różnych stron. Np. poufnych danych dotyczących różnych krajów. W takich przypadkach sygnatury SAS można konstruować określając zakresami kluczy partycji i wiersza, tak, aby użytkownik mógł korzystać z danych specyficznych dla danego kraju.| 
+| **Kroki** | W niektórych scenariuszach biznesowych usługa Azure Table Storage może być konieczne przechowywanie danych poufnych, który jest przeznaczony dla innej strony. Np. poufne dane dotyczące różnych krajów. W takich przypadkach można konstruować sygnatury SAS, określając zakresów kluczy partycji i wiersza tak, aby użytkownik mógł korzystać z danych specyficznych dla określonego kraju.| 
 
-## <a id="rbac-azure-manager"></a>Włącz opartej na rolach kontroli dostępu (RBAC) na konto magazynu platformy Azure przy użyciu usługi Azure Resource Manager
+## <a id="rbac-azure-manager"></a>Włącz opartej na rolach kontrola dostępu (RBAC) do konta usługi Azure storage za pomocą usługi Azure Resource Manager
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Jak zabezpieczyć konto magazynu z kontroli dostępu opartej na rolach (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
-| **Kroki** | <p>Podczas tworzenia nowego konta magazynu jest wybierz model wdrożenia klasycznego lub usługi Azure Resource Manager. Klasycznego modelu tworzenie zasobów na platformie Azure umożliwia tylko all-or-nothing dostępu do subskrypcji, a więc konta magazynu.</p><p>Model usługi Azure Resource Manager należy umieścić konta magazynu w zasobów grupy i kontroli dostępu do tego konta określonego magazynu przy użyciu usługi Azure Active Directory płaszczyzny zarządzania. Na przykład można udzielić określonym użytkownikom możliwość dostępu klucze konta magazynu, podczas gdy inni użytkownicy mogą wyświetlać informacje o koncie magazynu, ale nie ma dostępu do kluczy konta magazynu.</p>|
+| **Odwołania**              | [Jak zabezpieczyć swoje konto magazynu przy użyciu kontroli dostępu opartej na rolach (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **Kroki** | <p>Podczas tworzenia nowego konta magazynu, możesz wybrać modelu wdrożenia klasycznego lub usługi Azure Resource Manager. Klasyczny model tworzenia zasobów na platformie Azure umożliwia tylko sztywnego dostępu do subskrypcji, a w pozycji konta magazynu.</p><p>Przy użyciu modelu usługi Azure Resource Manager należy umieścić na koncie magazynu w zasobów grupy i kontroli dostępu do płaszczyzny zarządzania tym konkretnym kontem magazynu za pomocą usługi Azure Active Directory. Na przykład można udzielić określonym użytkownikom możliwość dostępu do kluczy konta magazynu, podczas gdy inni użytkownicy mogą wyświetlać informacje o koncie magazynu, ale nie dostęp do kluczy konta magazynu.</p>|
 
-## <a id="rooting-detection"></a>Implementowanie niejawne zdjęcia lub umieszczanie w katalogu głównym wykrywania
+## <a id="rooting-detection"></a>Implementowanie niejawne zdjęcia zabezpieczeń systemu lub zakorzenienia wykrywania
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Klientów urządzeń przenośnych | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Aplikacja powinna chronić własnych danych konfiguracji i użytkownika w przypadku, jeśli telefon jest ścieżką do katalogu głównego lub ma zdjęte zabezpieczenia systemu. Umieszczanie katalogu głównym/zdjęto zabezpieczeń fundamentalne oznacza nieautoryzowanym dostępem, normalnych użytkowników, którzy nie są na ich własnych telefonów. W związku z tym aplikacji powinien mieć logikę wykrywania niejawne podczas uruchamiania aplikacji, aby wykryć, czy telefonu został odblokowany dostęp.</p><p>Logika wykrywania można po prostu uzyskiwać dostęp do plików, które zwykle tylko główny użytkownik może uzyskać dostęp, na przykład:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/bin/su</li><li>/System/xbin/su</li><li>/Data/Local/xbin/su</li><li>/Data/local/bin/su</li><li>/System/SD/xbin/su</li><li>/System/bin/FailSafe/su</li><li>/Data/Local/su</li></ul><p>Aplikacja może uzyskać dostępu do żadnego z tych plików, oznacza, że aplikacja jest uruchomiona jako użytkownik root.</p>|
+| **Kroki** | <p>Aplikacja powinna zabezpieczenie własnych danych konfiguracji i użytkowników w przypadku, gdy telefon jest ścieżką lub złamanych. Zakorzenienia/umożliwiający istotne oznacza przed nieautoryzowanym dostępem, normalnych użytkowników, którzy nie na ich własnych telefonach. W związku z tym aplikacja powinna mieć logikę wykrywania niejawne podczas uruchamiania aplikacji, aby wykryć, jeśli numer telefonu został odblokowany dostęp.</p><p>Logika wykrywania można po prostu uzyskiwać dostęp do plików, które zwykle tylko główny użytkownik może uzyskać dostęp, na przykład:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/bin/su</li><li>/System/xbin/su</li><li>/Data/Local/xbin/su</li><li>/Data/local/bin/su</li><li>/System/SD/xbin/su</li><li>/System/bin/FailSafe/su</li><li>/Data/Local/su</li></ul><p>Aplikacja można uzyskać dostęp do dowolnego z tych plików, oznacza, że aplikacja działa jako użytkownik root.</p>|
 
-## <a id="weak-class-wcf"></a>Odwołanie słabe klasy w programie WCF
+## <a id="weak-class-wcf"></a>Odwołania do klasy słabe w programie WCF
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny, NET Framework 3 |
+| **Odpowiednich technologii** | Ogólna NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
-| **Kroki** | <p>System używa Odwołanie słabe klasy, które może umożliwić atakującemu wykonanie nieautoryzowanego kodu. Program odwołuje się do klasy zdefiniowanej przez użytkownika, która nie jest jednoznacznie zidentyfikować. Podczas ładowania tej klasy lekko zidentyfikowanych .NET modułu ładującego typu CLR wyszukuje klasy w następujących lokalizacjach w podanej kolejności:</p><ol><li>Jeśli zestawu typu jest znany, moduł ładujący wyszukuje plik konfiguracji przekierowania lokalizacjach, GAC, bieżącego zestawu przy użyciu informacji o konfiguracji i podstawowego katalogu aplikacji</li><li>Jeśli zestaw jest nieznany, moduł ładujący wyszukuje bieżącego zestawu, mscorlib i lokalizację zwrócony przez program obsługi zdarzeń TypeResolve</li><li>Ta kolejność wyszukiwania CLR może być modyfikowany z punkty zaczepienia, takich jak mechanizm przekazywania typu i zdarzenia AppDomain.TypeResolve</li></ol><p>Jeśli osoba atakująca wykorzystuje kolejność wyszukiwania CLR, tworząc klasę alternatywnych o takiej samej nazwie i umieszczenie go w lokalizacji alternatywnej czy CLR załaduje najpierw CLR zostanie przypadkowo wykonywania kodu dostarczone przez osobę atakującą</p>|
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Kroki** | <p>System używa Odwołanie słabe klasy, które mogą umożliwić osobie atakującej do wykonania nieautoryzowanego kodu. Program odwołuje się do klasy zdefiniowane przez użytkownika, który nie jest jednoznacznie identyfikowany. Podczas ładowania tej klasy słabo zidentyfikowanych .NET modułu ładującego typu CLR wyszukuje klasy w następujących lokalizacjach w podanej kolejności:</p><ol><li>Jeśli zestaw tego typu jest znany, moduł ładujący przeszukuje plik konfiguracji przekierowania lokalizacje, pamięci podręcznej GAC, bieżący zestaw przy użyciu informacji o konfiguracji i katalog podstawowy aplikacji</li><li>Jeśli zestaw jest nieznany, moduł ładujący przeszukuje bieżącego zestawu mscorlib i zwróconej przez program obsługi zdarzeń TypeResolve lokalizacji</li><li>CLR kolejności wyszukiwania mogą być modyfikowane przy użyciu punktów zaczepienia, takie jak mechanizm przekazywania dalej typów i zdarzeń AppDomain.TypeResolve</li></ol><p>Jeśli osoba atakująca wykorzystuje kolejność wyszukiwania CLR, tworząc klasę alternatywnych o takiej samej nazwie i umieszczenie go w lokalizacji alternatywnej, środowisko CLR załaduje najpierw CLR zostanie przypadkowo wykonywania kodu dostarczane przez osobę atakującą</p>|
 
 ### <a name="example"></a>Przykład
-`<behaviorExtensions/>` WCF, aby dodać klasę niestandardowe zachowanie określonego rozszerzenia WCF powoduje, że element Poniższy plik konfiguracji usługi WCF.
+`<behaviorExtensions/>` WCF, aby dodać klasę niestandardowe zachowanie określonego rozszerzenia WCF powoduje, że element pliku konfiguracji usługi WCF poniżej.
 ```
 <system.serviceModel>
     <extensions>
@@ -326,10 +326,10 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
     </extensions>
 </system.serviceModel>
 ```
-Przy użyciu w pełni kwalifikowane nazwy (silne) unikatowo identyfikuje typ i jeszcze bardziej podkreśla zabezpieczenia systemu. Podczas rejestrowania typów w pliku machine.config i app.config, należy użyć zestawu w pełni kwalifikowanej nazwy.
+Przy użyciu w pełni kwalifikowane nazwy (silną) unikatowo identyfikuje typ i jeszcze bardziej podkreśla zabezpieczenia systemu. Podczas rejestrowania typy w pliku machine.config i pliku app.config, należy użyć w pełni kwalifikowane nazwy zestawów.
 
 ### <a name="example"></a>Przykład
-`<behaviorExtensions/>` WCF, aby dodać klasę silnie odwołanie do niestandardowych zachowanie określonego rozszerzenia WCF powoduje, że element Poniższy plik konfiguracji usługi WCF.
+`<behaviorExtensions/>` WCF można dodać odwołanie do silnie niestandardowe zachowanie klasy do określonego rozszerzenia WCF powoduje, że element pliku konfiguracji usługi WCF poniżej.
 ```
 <system.serviceModel>
     <extensions>
@@ -341,16 +341,16 @@ Przy użyciu w pełni kwalifikowane nazwy (silne) unikatowo identyfikuje typ i j
 </system.serviceModel>
 ```
 
-## <a id="wcf-authz"></a>Formant autoryzacji wdrożenie usługi WCF
+## <a id="wcf-authz"></a>Kontrolki programu WCF — Implementowanie autoryzacji
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny, NET Framework 3 |
+| **Odpowiednich technologii** | Ogólna NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
-| **Kroki** | <p>Ta usługa korzysta z kontrolki autoryzacji. Kiedy klient wywołuje określonej usługi WCF, WCF zawiera różnych systemów autoryzacji, które pozwalają sprawdzić, czy element wywołujący ma uprawnienia do wykonania metody usługi na serwerze. Jeśli formanty autoryzacji nie są włączone dla usługi WCF, uwierzytelniony użytkownik może osiągnąć podwyższenie poziomu uprawnień.</p>|
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **Kroki** | <p>Ta usługa nie używa kontrolkę autoryzacji. Gdy klient wywołuje określonej usługi WCF, WCF zapewnia różnych systemów autoryzacji, które pozwalają sprawdzić, czy obiekt wywołujący ma uprawnienia do wykonania metody usługi na serwerze. Jeśli kontrolek autoryzacji nie są włączone dla usługi WCF, uwierzytelniony użytkownik może osiągnąć podwyższenie poziomu uprawnień.</p>|
 
 ### <a name="example"></a>Przykład
 Następująca konfiguracja powoduje, że usługi WCF do sprawdza poziom autoryzacji klienta podczas wykonywania usługi:
@@ -364,10 +364,10 @@ Następująca konfiguracja powoduje, że usługi WCF do sprawdza poziom autoryza
     </serviceBehaviors>
 </behaviors>
 ```
-Aby sprawdzić, czy element wywołujący metody usługi jest autoryzowany, aby to zrobić, należy użyć schemat autoryzacji usługi. Usługi WCF dostępne są dwa tryby i pozwala na określenie schematu niestandardowej autoryzacji. Tryb UseWindowsGroups korzysta role systemu Windows, a użytkownicy i tryb UseAspNetRoles dostawcy ról ASP.NET, takich jak SQL Server do uwierzytelniania.
+Aby sprawdzić, czy obiekt wywołujący metody usługi jest autoryzowany, aby to zrobić, należy użyć schemat autoryzacji usługi. Usługi WCF udostępnia dwa tryby i pozwala na określenie schematu autoryzacja niestandardowa. Tryb UseWindowsGroups używa Windows ról i użytkowników i tryb UseAspNetRoles używa dostawcy ról ASP.NET, takich jak SQL Server do uwierzytelniania.
 
 ### <a name="example"></a>Przykład
-Następująca konfiguracja powoduje, że usługi WCF, aby upewnić się, czy klient jest częścią grupy Administratorzy przed wykonaniem Dodaj usługi:
+Następująca konfiguracja powoduje, że usługi WCF, aby upewnić się, czy klient jest częścią grupy administratorów, przed wykonaniem usługi Dodaj:
 ```
 <behaviors>
     <serviceBehaviors>
@@ -378,7 +378,7 @@ Następująca konfiguracja powoduje, że usługi WCF, aby upewnić się, czy kli
     </serviceBehaviors>
 </behaviors>
 ```
-Usługa następnie jest zadeklarowany jako następujących czynności:
+Usługa następnie jest zadeklarowana następująco:
 ```
 [PrincipalPermission(SecurityAction.Demand,
 Role = ""Builtin\\Administrators"")]
@@ -389,16 +389,16 @@ return result;
 }
 ```
 
-## <a id="authz-aspnet"></a>Implementuje mechanizm właściwą autoryzację w interfejsie API sieci Web ASP.NET
+## <a id="authz-aspnet"></a>Implementuje mechanizm autoryzacji odpowiednie ASP.NET Web API
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Generic, MVC5 |
-| **Atrybuty**              | Brak dostawcy tożsamości dostawca — usługi AD FS, tożsamość — usługi Azure AD |
+| **Odpowiednich technologii** | Generic, MVC5 |
+| **Atrybuty**              | N/d, dostawca tożsamości dostawcę — usługi AD FS, tożsamości — usłudze Azure AD |
 | **Odwołania**              | [Uwierzytelnianie i autoryzacja w składniku ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
-| **Kroki** | <p>Informacje o rolach dla użytkowników aplikacji mogą być uzyskane z usługi Azure AD lub oświadczenia usług AD FS, jeśli aplikacja korzysta z ich jako dostawca tożsamości lub sama aplikacja może pod warunkiem, że. W żadnym z tych przypadkach implementacji niestandardowych autoryzacji należy zweryfikować informacje o rolach użytkownika.</p><p>Informacje o rolach dla użytkowników aplikacji mogą być uzyskane z usługi Azure AD lub oświadczenia usług AD FS, jeśli aplikacja korzysta z ich jako dostawca tożsamości lub sama aplikacja może pod warunkiem, że. W żadnym z tych przypadkach implementacji niestandardowych autoryzacji należy zweryfikować informacje o rolach użytkownika.</p>
+| **Kroki** | <p>Informacje o rolach dla użytkowników aplikacji mogą być uzyskane z usługi Azure AD lub oświadczenia usług AD FS, jeśli aplikacja zależy od ich jako dostawcy tożsamości lub może sama aplikacja, pod warunkiem, że. We wszystkich tych przypadkach implementacji autoryzacja niestandardowa, należy zweryfikować informacje o roli użytkownika.</p><p>Informacje o rolach dla użytkowników aplikacji mogą być uzyskane z usługi Azure AD lub oświadczenia usług AD FS, jeśli aplikacja zależy od ich jako dostawcy tożsamości lub może sama aplikacja, pod warunkiem, że. We wszystkich tych przypadkach implementacji autoryzacja niestandardowa, należy zweryfikować informacje o roli użytkownika.</p>
 
 ### <a name="example"></a>Przykład
 ```csharp
@@ -431,7 +431,7 @@ public bool ValidateRoles(actionContext)
 
 }
 ```
-Kontrolerów i metod akcji, które trzeba chronione powinny być dekorowane za powyżej atrybutu.
+Kontrolerów i metod akcji, które muszą chronione, powinny być dekorowane za pomocą powyżej atrybutu.
 ```csharp
 [ApiAuthorize]
 public class CustomController : ApiController
@@ -440,24 +440,24 @@ public class CustomController : ApiController
 }
 ```
 
-## <a id="device-permission"></a>Sprawdzanie autoryzacji w urządzeniu Jeśli obsługuje różne akcje, które wymagają różne poziomy uprawnień
+## <a id="device-permission"></a>Kontrole autoryzacji na urządzeniu, gdy obsługuje różne akcje, które wymagają różnych poziomów uprawnień
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Urządzenia należy zezwolić na obiekt wywołujący, aby sprawdzić, czy wywołującego ma wymaganych uprawnień do wykonania żądanej akcji. Dla pozwala na przykład załóżmy, że urządzenie jest blokady inteligentnej drzwi, które można monitorować z chmury, a także udostępnia funkcje, takie jak zdalne Blokowanie drzwi.</p><p>Blokady inteligentnej drzwi udostępnia funkcje odblokowywaniem tylko wtedy, gdy ktoś fizycznie wyposażony w pobliżu drzwi karty. W takim przypadku wykonania polecenia zdalnego i formantu ma się odbywać w taki sposób, że nie ma żadnej funkcji, aby odblokować drzwi jako brama chmury nie ma uprawnień do wysyłania polecenia, aby odblokować drzwi.</p>|
+| **Kroki** | <p>Urządzenie powinno zezwolić obiekt wywołujący, aby sprawdzić, czy obiekt wywołujący ma wymagane uprawnienia do wykonania żądanej akcji. Pozwala na przykład załóżmy, że urządzenie jest Smartlock drzwi biblioteki, które można monitorować z poziomu chmury, a także zawiera funkcje, takie jak zdalne Blokowanie drzwi biblioteki.</p><p>Smart Lock drzwi udostępnia funkcje odblokowywanie tylko wtedy, gdy ktoś fizycznie jest dostarczany w pobliżu drzwi biblioteki za pomocą karty. W tym przypadku implementacji zdalne sterowanie i kontrola powinno się odbywać w taki sposób, że nie zawiera żadnych funkcji, aby odblokować drzwi biblioteki jako bramy w chmurze nie ma uprawnień do wysyłania poleceń, aby odblokować drzwi biblioteki.</p>|
 
-## <a id="field-permission"></a>Wykonaj sprawdzanie autoryzacji w bramy pola, jeśli obsługuje różne akcje, które wymagają różne poziomy uprawnień
+## <a id="field-permission"></a>Wykonaj sprawdzanie autoryzacji w bramy w terenie, jeśli obsługuje ona różne akcje, które wymagają różnych poziomów uprawnień
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Pole IoT bramy | 
+| **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | Ogólny |
+| **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Pola bramy należy zezwolić obiekt wywołujący, aby sprawdzić, czy wywołującego ma wymaganych uprawnień do wykonania żądanej akcji. Np. powinna być różne uprawnienia dla użytkownika interfejsu/interfejsem API administratora używane do konfigurowania urządzeń v/s bramy pola, które się z nim połączyć.|
+| **Kroki** | Bramy w terenie, należy autoryzować obiekt wywołujący, aby sprawdzić, czy obiekt wywołujący ma wymagane uprawnienia do wykonania żądanej akcji. Np. powinny być różne uprawnienia dla użytkownika interfejsu/interfejsem API administratora używane do konfigurowania urządzenia bramy v/s pola, które nawiązać z nim.|

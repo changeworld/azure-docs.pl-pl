@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005479"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287825"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -30,27 +30,28 @@ ms.locfileid: "40005479"
 W tym artykule założono, że zostały już przeczytane [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Eksportowanie funkcji
-Wszystkie funkcje języka JavaScript należy wyeksportować pojedynczy `function` za pośrednictwem `module.exports` środowiska uruchomieniowego Znajdź funkcję i uruchomimy ją. Ta funkcja zawsze musi zawierać `context` obiektu.
+Każda funkcja JavaScript należy wyeksportować pojedynczy `function` za pośrednictwem `module.exports` środowiska uruchomieniowego Znajdź funkcję i uruchomimy ją. Ta funkcja zawsze należy wykonać `context` obiektu jako pierwszego parametru.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-Powiązania `direction === "in"` są przekazywane jako argumenty funkcji, co oznacza, że można użyć [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamicznie obsługi nowych danych wejściowych (na przykład za pomocą `arguments.length` Iterowanie wszystkich danych wejściowych). Ta funkcja jest wygodne, gdy masz tylko wyzwalacz oraz brak dodatkowych danych wejściowych, ponieważ dane wyzwalacza przewidywalny dostęp bez odwołania do usługi `context` obiektu.
+Powiązania danych wejściowych i wyzwalacza (vazby prvku `direction === "in"`) może być przekazywany do funkcji jako parametrów. Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. Dynamiczne mogą obsługiwać dane wejściowe, przy użyciu języka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) obiektu. Na przykład, jeśli masz `function(context, a, b)` i zmień go na `function(context, a)`, nadal można pobrać wartości `b` w kodzie funkcji, odwołując się do `arguments[2]`.
 
-Argumenty zawsze są przekazywane do funkcji w kolejności, w jakiej występują one w *function.json*, nawet jeśli nie określisz je w instrukcji eksportu. Na przykład, jeśli masz `function(context, a, b)` i zmień go na `function(context, a)`, nadal można pobrać wartości `b` w kodzie funkcji, odwołując się do `arguments[2]`.
-
-Wszystkie powiązania, niezależnie od tego, w kierunku, również są przekazywane `context` obiektu (zobacz poniższy skrypt). 
+Wszystkie powiązania, niezależnie od tego, w kierunku, również są przekazywane `context` przy użyciu `context.bindings` właściwości.
 
 ## <a name="context-object"></a>Obiekt kontekstu
 Środowisko wykonawcze używa `context` obiekt do przekazywania danych do i z funkcji i umożliwienie komunikowania się ze środowiskiem uruchomieniowym.
@@ -61,6 +62,7 @@ Wszystkie powiązania, niezależnie od tego, w kierunku, również są przekazyw
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 
@@ -96,7 +98,7 @@ context.done([err],[propertyBag])
 
 Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Jeśli korzysta z funkcji `async function` deklaracji (dostępne za pomocą środowiska Node 8 i nowsze w wersji funkcji 2.x), nie trzeba używać `context.done()`. `context.done` Wywołania zwrotnego jest wywoływany niejawnie.
 
-Jeśli funkcja nie jest funkcją async **musi wywołać `context.done` ** poinformować w czasie wykonywania, że funkcja została zakończona. Wykonanie przekroczy limit czasu w przypadku jej braku.
+Jeśli funkcja nie jest funkcją async **musi wywołać `context.done`**  poinformować w czasie wykonywania, że funkcja została zakończona. Wykonanie przekroczy limit czasu w przypadku jej braku.
 
 `context.done` Metoda umożliwia przesłać zarówno błędach zdefiniowane przez użytkownika do środowiska uruchomieniowego i zbioru właściwości właściwości, które zastąpienie właściwości na `context.bindings` obiektu.
 

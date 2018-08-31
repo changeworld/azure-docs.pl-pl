@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 7401355c7920729933d0fcc3dd4cc8ce610c399e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b51f0c1e0c6ef713bf8d3ff0a124300f446a9373
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199079"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306812"
 ---
-# <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Data Lake Store
+# <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w Data Lake Store
 
-Azure Data Lake Store udostępnia magazyn lokalnie nadmiarowy (LRS). W związku z tym dane na koncie usługi Azure Data Lake Store jest odporność na awarie sprzętowe przejściowej w obrębie regionu poprzez automatyczne replik. Zapewniają one trwałość i wysoką dostępność usługi Azure Data Lake Store oraz zgodność z warunkami jej umowy SLA. Ten artykuł zawiera wskazówki dotyczące sposobu dalszej ochronę danych przed rzadkich awarii całej region lub przypadkowym usunięciu.
+Azure Data Lake Store udostępnia magazyn lokalnie nadmiarowy (LRS). W związku z tym dane na Twoim koncie usługi Azure Data Lake Store są odporne na przejściowe awarie sprzętowe w centrum danych dzięki zautomatyzowanym replikom. Zapewniają one trwałość i wysoką dostępność usługi Azure Data Lake Store oraz zgodność z warunkami jej umowy SLA. Ten artykuł zawiera wskazówki na temat jeszcze lepiej chronić swoje dane z rzadko awariami lub przypadkowymi usunięciami.
 
 ## <a name="disaster-recovery-guidance"></a>Wskazówki dotyczące odzyskiwania po awarii
 Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Przeczytaj informacje w tym artykule, aby utworzyć plan odzyskiwania po awarii. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.

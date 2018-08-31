@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: d47c85d4197f45db50f1974b6faea270e6761237
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2283a12845a3b334e29e3f48cbadb99ad508e459
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628576"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301585"
 ---
 # <a name="manage-reservations-for-resources-in-azure"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
-Po możesz kupić rezerwację platformy Azure, warto zastosować rezerwacji do innej subskrypcji niż ta, które zostały określone podczas zakupu. Alternatywnie zgodnych maszyn wirtualnych, baz danych SQL lub inne zasoby są uruchomione w ramach wielu subskrypcji, możesz zmienić zakres rezerwacji udostępniony. Aby zmaksymalizować rabat związany z rezerwacją, upewnij się, że liczba wystąpień zakupiono odpowiada atrybuty i liczby zasobów, do których masz uruchomiony. Aby dowiedzieć się więcej, zobacz [Azure rezerwacje](https://go.microsoft.com/fwlink/?linkid=862121).
+Po możesz kupić rezerwację Azure, może być konieczne zastosowanie rezerwacji do innej subskrypcji, zmienić, kto może zarządzać rezerwacji lub zmienić zakres rezerwacji. Możesz również podzielić rezerwacji do dwóch rezerwacji do stosowania niektórych wystąpień, których używasz do innej subskrypcji.
+
+Jeśli zakupiono Azure Reserved Virtual Machine Instances, możesz zmienić ustawienie optymalizacji dla rezerwacji. Rabat związany z rezerwacją można zastosować do maszyn wirtualnych w tej samej serii, lub możesz zarezerwować pojemnością centrum danych dla określonego rozmiaru maszyny Wirtualnej.
 
 ## <a name="change-the-scope-for-a-reservation"></a>Zmień zakres dla rezerwacji
 
@@ -34,7 +36,11 @@ Aby zaktualizować zakresu rezerwacji:
 2. Wybierz **wszystkich usług** > **rezerwacje**.
 3. Wybierz rezerwacji.
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
-5. Zmień zakres. W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Można wybrać tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co Rezerwacja. Kontekstu rozliczeń jest określany przez subskrypcję, dla której wybrano podczas rezerwacji został kupiony. Zakres dotyczy tylko subskrypcji MS-AZR - 0003P oferty zgodnie z rzeczywistym użyciem i subskrypcji oferty MS-AZR - 0017P przedsiębiorstwa. Dla umów enterprise Agreement subskrypcji i testowania nie kwalifikują się uzyskać rabat związany z rezerwacją.
+5. Zmień zakres. 
+
+W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Można wybrać tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co Rezerwacja.
+
+Zakres ma zastosowanie tylko do oferty płatności MS-AZR - 0003P, MS-AZR - 0017P oferty dla przedsiębiorstw lub typów subskrypcji dostawcy CSP. Dla umów enterprise Agreement subskrypcji i testowania nie kwalifikują się uzyskać rabat związany z rezerwacją.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub modyfikowanie użytkowników, którzy mogą zarządzać rezerwacji
 
@@ -47,26 +53,14 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** > **rezerwacji** do listy rezerwacji, które mają dostęp do.
 3. Wybierz zastrzeżenie, którego chcesz delegować dostęp do innych użytkowników.
-4. Wybierz **kontrola dostępu (IAM)** w menu.
-5. Wybierz **Dodaj** > **roli** > **właściciela** (lub innej roli, jeśli chcesz nadać dostęp ograniczony).
-6. Wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela. 
+4. Wybierz **kontrola dostępu (IAM)**.
+5. Wybierz **Dodaj** > **roli** > **właściciela**. Lub, jeśli chcesz nadać dostęp ograniczony, wybierz inną rolę.
+6. Wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela.
 7. Wybierz użytkownika, a następnie wybierz polecenie **Zapisz**.
-
-## <a name="optimize-reserved-vm-instance-for-vm-size-flexibility-or-capacity-priority"></a>Optymalizowanie wystąpienia zarezerwowanego maszyny Wirtualnej dla priorytetu elastyczność lub pojemność rozmiar maszyny Wirtualnej
-
- Elastyczność wystąpienia maszyny Wirtualnej ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Domyślnie gdy zakresem rezerwacji jest udostępniony, elastyczność rozmiar wystąpienia jest włączone, i możliwości centrów danych nie są uszeregowane według priorytetów dla wdrożeń maszyn wirtualnych. Dla zastrzeżenia, których zakres jest pojedynczym można zoptymalizować Rezerwacja priorytet pojemności zamiast elastyczność rozmiaru wystąpienia maszyny Wirtualnej. Priorytet pojemności rezerwuje pojemnością centrum danych dla wdrożeń, oferując dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz.
-
-Aby zaktualizować zakresu rezerwacji:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** > **rezerwacje**.
-3. Wybierz rezerwacji.
-4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
-5. Zmień Optymalizuj pod kątem ustawienie.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Podziel pojedynczy rezerwacji do dwóch rezerwacji
 
- Po możesz kupić więcej niż jedno wystąpienie, możesz przypisać wystąpienia w ramach rezerwacji do różnych subskrypcji. Domyślnie wszystkie wystąpienia (określonego podczas zakupu ilość) mają jeden zakres - albo pojedynczej subskrypcji lub udostępniony. Na przykład nabyć 10 standardowych maszyn wirtualnych D2 i określony zakres do subskrypcji A. Teraz można zmienić zakresu dla rezerwacji siedem subskrypcji A i pozostałych 3 do subskrypcji B. podział zastrzeżenie umożliwia dystrybucji wystąpienia dla szczegółowego zakres zarządzania. Wybierając zakres udostępniony, można uprościć alokacji do subskrypcji. Jednak do celów zarządzania lub budżetowania koszt, można przydzielić ilości do określonej subskrypcji.
+ Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Domyślnie wszystkie wystąpienia mają jeden zakres - albo pojedynczej subskrypcji lub udostępniony. Na przykład nabyć 10 standardowych maszyn wirtualnych D2 i określony zakres do subskrypcji A. Teraz można zmienić zakresu dla rezerwacji 7 do subskrypcji A i pozostałych 3 do subskrypcji B. podział rezerwacji umożliwia dystrybucji wystąpienia dla szczegółowego zakres zarządzania. Wybierając zakres udostępniony, można uprościć alokacji do subskrypcji. Jednak do celów zarządzania lub budżetowania koszt, można przydzielić ilości do określonej subskrypcji.
 
  Możesz podzielić rezerwacji do dwóch rezerwacji do programu PowerShell, interfejsu wiersza polecenia lub przy użyciu interfejsu API.
 
@@ -96,14 +90,31 @@ Aby zaktualizować zakresu rezerwacji:
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
+## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Zmiana zoptymalizować ustawienie zarezerwowanych wystąpień maszyn wirtualnych
+
+ W przypadku dokonywania zakupu wystąpienia zarezerwowanego maszyny Wirtualnej, możesz wybrać elastyczność rozmiar wystąpienia lub priorytet pojemności. Elastyczność rozmiaru wystąpienia ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Priorytet pojemności rezerwuje pojemnością centrum danych wdrożeń. Ta opcja zapewnia dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz.
+
+Domyślnie gdy zakres rezerwacji jest udostępniony, elastyczność rozmiaru wystąpienia są. Możliwości Centrum danych nie są uszeregowane według priorytetów dla wdrożeń maszyn wirtualnych.
+
+Dla zastrzeżenia, których zakres jest pojedynczym można zoptymalizować Rezerwacja priorytet pojemności zamiast elastyczność rozmiaru wystąpienia maszyny Wirtualnej.
+
+Aby zaktualizować ustawienia optymalizacji dla rezerwacji:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz **wszystkich usług** > **rezerwacje**.
+3. Wybierz rezerwacji.
+4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
+5. Zmiana **Optymalizuj pod kątem** ustawienie.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
-- [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
+- [Zrozumienie, jak jest stosowany rabat związany z rezerwacją maszyny Wirtualnej](billing-understand-vm-reservation-charges.md)
+- [Zrozumienie sposobu stosowania rabatów rezerwacji](billing-understand-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)

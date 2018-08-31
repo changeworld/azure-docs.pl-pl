@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 0b84d7b0e7bbd2021ea4d3e3e804c739be59b48a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186883"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301400"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
 Usługa IoT Hub zapewnia możliwość wywoływanie metod bezpośrednich na urządzeniach z chmury. Metody bezpośrednie reprezentują interakcji "żądanie-odpowiedź", za pomocą urządzenia, które są podobne do wywołania HTTP, w tym ich powodzenie lub niepowodzenie natychmiast (po określonej przez użytkownika limit czasu). To podejście jest przydatne w scenariuszach, gdzie kurs natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało przygotowane.
@@ -105,7 +105,7 @@ Aplikacja wewnętrzna odbiera odpowiedź, która obejmuje:
     Zarówno `status` i `body` udostępnianym przez urządzenie oraz umożliwia odpowiedzi z kodem stanu dla urządzenia i/lub opis.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>Wywołania metody moduły usługi IoT Edge
-Wywoływanie metod bezpośrednich za pomocą modułu identyfikator jest obsługiwany w języku C# w wersji zapoznawczej zestawu SDK (dostępne [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+Wywoływanie metod bezpośrednich za pomocą modułu identyfikator jest obsługiwany w zestawie SDK C# (dostępne [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Devices/)).
 
 W tym celu należy użyć `ServiceClient.InvokeDeviceMethodAsync()` metody i przekaż `deviceId` i `moduleId` jako parametry.
 

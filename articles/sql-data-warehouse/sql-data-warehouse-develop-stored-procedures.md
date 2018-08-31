@@ -1,50 +1,50 @@
 ---
 title: Korzystanie z procedur składowanych w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące implementowania procedur przechowywanych w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+description: Porady dotyczące wykonywania procedur składowanych w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ad8a599065a44469a3151813972b3d2561782c6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4cd8394104c72e8df53fa0c44e60037b4dc05976
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774662"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301617"
 ---
-# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w magazynie danych SQL
-Wskazówki dotyczące implementowania procedur przechowywanych w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w usłudze SQL Data Warehouse
+Porady dotyczące wykonywania procedur składowanych w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
 
 ## <a name="what-to-expect"></a>Czego oczekiwać
 
-Magazyn danych SQL obsługuje wiele funkcji T-SQL, które są używane w programie SQL Server. Istnieją co ważniejsze, skalowalnych w poziomie określonych funkcji, które mogą używać w celu zwiększenia wydajności rozwiązania.
+Usługa SQL Data Warehouse obsługuje wiele funkcji języka T-SQL, które są używane w programie SQL Server. Co ważniejsze brak określonych funkcji skalowania w poziomie, które można użyć aby zmaksymalizować wydajność rozwiązania.
 
-Aby zachować skalowalność i wydajność usługi SQL Data Warehouse są jednak także niektóre funkcje i funkcje, które mają różnice funkcjonalne i inne osoby, które nie są obsługiwane.
+Aby zachować skalowalność i wydajność usługi SQL Data Warehouse są jednak także niektóre funkcje i możliwości, który ma różnice w zachowaniu i innym osobom, które nie są obsługiwane.
 
 
 ## <a name="introducing-stored-procedures"></a>Wprowadzenie do procedury składowane
-Procedury składowane są to dobry sposób na hermetyzując kodu SQL; zapisanie jej pobliżu danych w magazynie danych. Procedury składowane pomóc deweloperom modularyzacji ich rozwiązania hermetyzując kod w jednostki zarządzane; ułatwianie większa możliwość ponownego wykorzystania kodu. Każdej procedury składowanej również może przyjmować parametry, aby były bardziej elastyczne.
+Procedury składowane to doskonały sposób do enkapsulacji kodu SQL; zapisanie go w pobliżu danych w magazynie danych. Procedury składowane pomogą modularyzacji swoich rozwiązań poprzez hermetyzację kod w jednostki zarządzane; ułatwienie większa możliwość ponownego wykorzystania kodu. Każdej procedury składowanej mogą również akceptować parametry, aby były bardziej elastyczne.
 
-Magazyn danych SQL zawiera implementację uproszczony i zoptymalizowany procedury składowanej. Największych różnicę w porównaniu z programem SQL Server jest, że procedura składowana nie jest wstępnie skompilowanego kodu. W magazynie danych czas kompilacji jest mała, w odróżnieniu od czasu, jaki zajmuje do wykonywania kwerend do dużych ilości danych. Więcej koniecznie upewnij się, że kod procedury składowanej poprawnie jest zoptymalizowana pod kątem duże kwerendy. Celem jest zapisać godzin, minut i sekund, nie milisekund. Dlatego jest bardziej użyteczne do procedury składowane można traktować jako kontenery logiki SQL.     
+Usługa SQL Data Warehouse zapewnia wykonanie procedury składowanej uproszczony i zoptymalizowany. Największa różnica w porównaniu do programu SQL Server jest, że procedura składowana nie jest wstępnie skompilowany kod. W hurtowni danych czas kompilacji jest mały w porównaniu z czasu potrzebnego do uruchamiania zapytań względem dużych ilości danych. Jest to niezwykle ważne upewnić się, że kod procedury składowanej poprawnie została zoptymalizowana pod kątem dużych kwerend. Celem jest zapisanie godzin, minut i sekund, nie milisekund. Dlatego jest bardziej użyteczne do procedur składowanych należy traktować jako kontenery logiki SQL.     
 
-Magazyn danych SQL wykonuje procedury przechowywanej, instrukcje SQL są przeanalizować, translacji i zoptymalizowany w czasie wykonywania. W trakcie tego procesu każda instrukcja jest konwertowany na zapytań rozproszonych. Kod SQL, który jest wykonywany z danymi różni się od zapytania przesłane.
+Usługa SQL Data Warehouse jest wykonywana Twoja procedura składowana, instrukcje SQL są przeanalizować, przetłumaczone i zoptymalizowane pod kątem w czasie wykonywania. W trakcie tego procesu każda instrukcja jest konwertowany na zapytań rozproszonych. Kod SQL, który jest wykonywane względem danych jest inny niż przesłano zapytanie.
 
-## <a name="nesting-stored-procedures"></a>Procedury przechowywane zagnieżdżenia
-Procedury składowane wywołania innych procedur składowanych lub wykonać dynamicznej SQL, następnie wewnętrznej procedury składowanej lub wywołanie kodu jest uznawany za zagnieżdżony.
+## <a name="nesting-stored-procedures"></a>Zagnieżdżanie przechowywanych procedur
+Procedury składowane wywołania innych procedur składowanych lub wykonać dynamiczny język SQL, następnie procedurę składowaną wewnętrzny lub wywołania kodu jest uznawany za zagnieżdżony.
 
-Magazyn danych SQL obsługuje maksymalnie osiem poziomów zagnieżdżenia. Różni się nieco do programu SQL Server. Poziom zagnieździć w programie SQL Server to 32.
+Usługa SQL Data Warehouse obsługuje maksymalnie ośmiu poziomów zagnieżdżenia. To różni się nieco do programu SQL Server. Poziom zagnieżdżonych w programie SQL Server to 32.
 
 Wywołanie procedury składowanej najwyższego poziomu jest równa zagnieździć poziomu 1.
 
 ```sql
 EXEC prc_nesting
 ```
-Jeśli procedura składowana powoduje również EXEC innego wywołania, poziom zagnieżdżania zwiększa się do dwóch.
+Jeśli procedura składowana sprawia, że inny EXEC wywołania, poziom zagnieżdżonych zwiększa się do dwóch.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -53,7 +53,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-Jeśli drugiej procedury wykonywania niektórych dynamiczne SQL, poziom zagnieżdżania zwiększa się do trzech.
+Jeśli druga procedura wykonuje następnie niektóre dynamiczny język SQL, poziom zagnieżdżonych zwiększa się do trzech.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -63,28 +63,28 @@ GO
 EXEC prc_nesting
 ```
 
-Należy pamiętać, że SQL Data Warehouse nie obsługuje obecnie [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Należy śledzić poziom zagnieżdżania. Prawdopodobnie przekracza limit poziomu zagnieżdżania osiem, ale jeśli to zrobisz, należy przeanalizować swój kod, aby dopasować poziomów zagnieżdżenia w ramach tego limitu.
+Należy pamiętać, że usługa SQL Data Warehouse nie obsługuje obecnie [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Należy śledzić poziom zagnieżdżonych. Jest mało prawdopodobne, przekroczenie limitu poziomu osiem zagnieżdżonych, ale jeśli to zrobisz, musisz przerabiać swój kod, aby dopasować poziomów zagnieżdżenia w ramach tego limitu.
 
-## <a name="insertexecute"></a>INSERT... WYKONANIE
-Magazyn danych SQL nie pozwala na korzystanie z zestawu wyników procedury składowanej w instrukcji INSERT. Istnieje jednak alternatywne podejście, których można użyć. Na przykład, zobacz artykuł na [tabel tymczasowych](sql-data-warehouse-tables-temporary.md). 
+## <a name="insertexecute"></a>WSTAW... WYKONYWANIE
+Usługa SQL Data Warehouse pozwala na korzystanie z zestawu wyników procedury składowanej w instrukcji INSERT. Jednak to podejście alternatywne, których można użyć. Aby uzyskać przykład, zobacz artykuł [tabele tymczasowe](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Ograniczenia
-Brak niektórych aspektów procedury przechowywanej Transact-SQL, które nie są zaimplementowane w usłudze SQL Data Warehouse.
+Istnieją pewne aspekty procedury przechowywanej Transact-SQL, które nie są implementowane w usłudze SQL Data Warehouse.
 
 Oto one:
 
 * tymczasowych procedur składowanych
 * numerowane procedury składowane
-* rozszerzone procedury składowane
-* Procedur składowanych CLR
+* Rozszerzone procedury składowane
+* Procedury składowane CLR
 * Opcja szyfrowania
-* opcji replikacji
-* Parametry przechowywanymi w tabeli
+* Opcja replikacji
+* Parametry z wartościami przechowywanymi w tabeli
 * Parametry tylko do odczytu
 * domyślne parametry
 * Kontekst wykonywania
 * Return — instrukcja
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
 

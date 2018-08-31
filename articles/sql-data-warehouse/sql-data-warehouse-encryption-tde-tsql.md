@@ -1,25 +1,25 @@
 ---
-title: Przezroczystego szyfrowania danych w magazynie danych SQL (T-SQL) | Dokumentacja firmy Microsoft
-description: Przezroczystego szyfrowania danych (funkcji TDE) w magazynie danych SQL (T-SQL)
+title: Przezroczyste szyfrowanie danych w magazynie danych SQL (T-SQL) | Dokumentacja firmy Microsoft
+description: Transparent Data Encryption (TDE) w magazynie danych SQL (T-SQL)
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d10b8f751d782f00cbc58274e4b48c501cea6f70
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ccdba241a2921a59f7db9668ec2b6f0921aa9f44
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526016"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307691"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>Rozpoczynanie pracy z przezroczystym danych szyfrowania (funkcji TDE)
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Rozpoczynanie pracy z przezroczystego szyfrowania danych (TDE)
 > [!div class="op_single_selector"]
-> * [Przegląd zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
+> * [Omówienie zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
 > * [Uwierzytelnianie](sql-data-warehouse-authentication.md)
 > * [Szyfrowanie (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Szyfrowanie (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
@@ -27,38 +27,38 @@ ms.locfileid: "31526016"
 > 
 
 ## <a name="required-permssions"></a>Wymagane uprawnienia
-Aby włączyć funkcji przezroczystego szyfrowania danych (TDE), musi być administrator lub członek roli dbmanager:.
+Aby włączyć przezroczystego szyfrowania danych (TDE), musi być administratorem lub członkiem roli dbmanager.
 
-## <a name="enabling-encryption"></a>Włączenie szyfrowania
-Wykonaj następujące kroki, aby włączyć funkcji TDE dla magazynu danych SQL:
+## <a name="enabling-encryption"></a>Włączanie szyfrowania
+Wykonaj następujące kroki, aby włączyć funkcję TDE dla usługi SQL Data Warehouse:
 
-1. Połączyć się z *wzorca* bazy danych na serwerze hostującym bazę danych przy użyciu nazwy logowania, która jest administrator lub członek **dbmanager:** roli w bazie danych master
-2. Wykonaj następującą instrukcję do szyfrowania bazy danych.
+1. Połączyć się z *wzorca* bazy danych na serwerze hostującym bazę danych przy użyciu identyfikatora logowania, który jest administratorem lub członkiem **dbmanager** roli w bazie danych master
+2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Wyłączenie szyfrowania
-Wykonaj następujące kroki, aby wyłączyć funkcji TDE dla magazynu danych SQL:
+Wykonaj następujące kroki, aby wyłączyć funkcję TDE dla usługi SQL Data Warehouse:
 
-1. Połączyć się z *wzorca* bazy danych przy użyciu nazwy logowania, która jest administrator lub członek **dbmanager:** roli w bazie danych master
-2. Wykonaj następującą instrukcję do szyfrowania bazy danych.
+1. Połączyć się z *wzorca* bazy danych przy użyciu identyfikatora logowania, który jest administratorem lub członkiem **dbmanager** roli w bazie danych master
+2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Wstrzymanie magazynu danych SQL musi zostać wznowiony przed wprowadzeniem zmian w ustawieniach funkcji TDE.
+> Wstrzymanej usłudze SQL Data Warehouse musi zostać wznowiony przed wprowadzeniem zmian w ustawieniach funkcji TDE.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Weryfikowanie szyfrowania
-Aby sprawdzić, czy stan szyfrowania magazynu danych SQL, wykonaj następujące czynności:
+Aby sprawdzić, czy stan szyfrowania usłudze SQL Data Warehouse, wykonaj następujące czynności:
 
-1. Połączyć się z *wzorca* lub wystąpienie bazy danych przy użyciu nazwy logowania, która jest administrator lub członek **dbmanager:** roli w bazie danych master
-2. Wykonaj następującą instrukcję do szyfrowania bazy danych.
+1. Połączyć się z *wzorca* lub wystąpienie bazy danych przy użyciu identyfikatora logowania, który jest administratorem lub członkiem **dbmanager** roli w bazie danych master
+2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.
 
 ```sql
 SELECT
@@ -68,9 +68,9 @@ FROM
     sys.databases;
 ```
 
-W wyniku ```1``` wskazuje zaszyfrowanej bazy danych, ```0``` wskazuje niezaszyfrowane bazy danych.
+Wynikiem ```1``` wskazuje szyfrowanej bazy danych, ```0``` wskazuje niezaszyfrowane bazy danych.
 
-## <a name="encryption-dmvs"></a>Szyfrowanie widoków DMV
+## <a name="encryption-dmvs"></a>Szyfrowanie dynamiczne widoki zarządzania
 * [sys.Databases][sys.databases] 
 * [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 

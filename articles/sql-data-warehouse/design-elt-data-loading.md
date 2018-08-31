@@ -3,23 +3,25 @@ title: Zamiast ETL, projektowanie procesu ELT dla usługi Azure SQL Data Warehou
 description: Zamiast ETL projektowania procesu wyodrębniania, ładowania i przekształcania (ELT) do ładowania danych lub usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: facd9a98b2f2d866574dd1f9bf180fa2a9618f31
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057551"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301334"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, ładowania i transformacji (ELT) dla usługi Azure SQL Data Warehouse
 
 Zamiast wyodrębniania, przekształcania i ładowania (ETL) projektowania procesu wyodrębniania, ładowania i przekształcania (ELT) dotyczące ładowania danych do usługi Azure SQL Data Warehouse. W tym artykule przedstawiono sposoby Projektowanie procesu ELT, którego dane są przenoszone do magazynu danych platformy Azure.
+
+> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Co to jest ELT?
 

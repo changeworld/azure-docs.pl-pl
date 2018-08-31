@@ -1,5 +1,5 @@
 ---
-title: Analizy użycia rezerwacji Azure rozliczana według bieżącego użycia subskrypcji | Dokumentacja firmy Microsoft
+title: Analizy użycia rezerwacje Azure rozliczana według bieżącego użycia subskrypcji | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak odczytać Twojego użycia, aby zrozumieć sposób stosowania Azure rezerwacji dla Twojej subskrypcji zgodnie z rzeczywistym użyciem.
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: cf1d7c67fe6033bf41317e75a33349ae07ecf643
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1226b2f73d556da2ff7d73f6f322e0bd1590f915
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627887"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307062"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Opis rezerwacji platformy Azure dla Twojej subskrypcji zgodnie z rzeczywistym użyciem
 
@@ -93,12 +93,12 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
-- [Zarządzanie zastrzeżeniami na platformie Azure](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)

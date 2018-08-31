@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dec981ad750a49646916dbef40a4cc632ab71da2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856644"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288306"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Jak dystrybuować dane globalnie za pomocą usługi Azure Cosmos DB
 Platforma Azure jest powszechnie stosowana — jej zasięgu globalnym w regionach geograficznych ponad 50 i stale powiększający się. Za pomocą jego obecność jedną zróżnicowane możliwości, które platforma Azure oferuje deweloperom jest możliwość tworzenie, wdrażanie i łatwe zarządzanie globalnie rozproszonych aplikacji. 
@@ -34,11 +34,6 @@ W tym artykule zawiera omówienie funkcji dystrybucję globalną usługi Azure C
 
 ## <a id="EnableGlobalDistribution"></a>Włączanie kompleksowa dystrybucja globalna
 Usługa Azure Cosmos DB zapewnia następujące możliwości, aby umożliwić łatwe tworzenie aplikacji dystrybuowanych globalnie. Te możliwości są dostępne za pośrednictwem zasobów usługi Azure Cosmos DB, opartą na dostawcy [interfejsów API REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) oraz witryny Azure portal.
-
-Obejrzyj poniższy klip wideo, aby wyświetlić funkcję gotowej do użycia dystrybucję globalną w usłudze Azure Cosmos DB w działaniu.
-
-> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
->
 
 ### <a id="RegionalPresence"></a>Wszechobecne regionalne 
 Azure stale rośnie swojej obecności geograficznych, przenosząc [nowe regiony](https://azure.microsoft.com/regions/) online. Usługa Azure Cosmos DB jest klasyfikowana jako *usługi podstawowej* na platformie Azure i jest dostępny w wszystkich nowych regionów systemu Azure, domyślnie. Dzięki temu można skojarzyć z Twojego konta bazy danych Azure Cosmos DB region geograficzny, tak szybko, jak platforma Azure otworzy nowy region dla firm.

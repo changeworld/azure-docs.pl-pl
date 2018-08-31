@@ -1,45 +1,45 @@
 ---
-title: Poprawianie wydajności indeksu magazynu kolumn - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje do każdej grupy wierszy.
+title: Poprawianie wydajności indeksu magazynu kolumn — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje w każdej grupie wierszy.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188137"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306836"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i dla magazynu kolumn
+# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i magazynu kolumn
 
-Jakość i zależy od liczby wierszy w grupy wierszy. Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje do każdej grupy wierszy.  Użycia tych metod w celu zwiększenia kompresji i zbadać wydajność dla indeksów magazynu kolumn.
+Jakość i jest określana przez liczbę wierszy w grupie wierszy. Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje w każdej grupie wierszy.  Metody te można stosować do zwiększenia szybkości kompresji i wykonywania zapytań względem wydajności w indeksach magazynu kolumn.
 
-## <a name="why-the-rowgroup-size-matters"></a>Dlaczego rozmiar i ma znaczenie
-Ponieważ indeks magazynu kolumn skanowania tabeli za pomocą skanowania segmentów kolumny z poszczególnych rowgroups, maksymalizacja liczby wierszy w każdym i zwiększa wydajność zapytań. Gdy rowgroups ma dużą liczbę wierszy, kompresji danych zwiększa, co oznacza, że jest mniejsza ilość danych do odczytu z dysku.
+## <a name="why-the-rowgroup-size-matters"></a>Dlaczego jest ważna wielkości grupy wierszy:
+Ponieważ indeks magazynu kolumn skanowania tabeli za pomocą skanowania segmentów kolumny z poszczególnych rowgroups, maksymalizacja liczby wierszy w każdej grupie wierszy zwiększa wydajność zapytań. Gdy rowgroups ma dużą liczbę wierszy, kompresji danych zwiększa, co oznacza, że ilość danych odczytanych z dysku.
 
-Aby uzyskać więcej informacji o rowgroups, zobacz [przewodnik indeksy magazynu kolumn](https://msdn.microsoft.com/library/gg492088.aspx).
+Aby uzyskać więcej informacji na temat rowgroups zobacz [Przewodnik po indeksach magazynu kolumn](https://msdn.microsoft.com/library/gg492088.aspx).
 
 ## <a name="target-size-for-rowgroups"></a>Rozmiar docelowy rowgroups
-Aby uzyskać najlepszą wydajność zapytań celem jest zwiększenie liczby wierszy na grupy wierszy w indeksie magazynu kolumn. I może mieć maksymalnie 1 048 576 wierszy. Ma nic złego, nie ma maksymalną liczbę wierszy na grupy wierszy. Indeksy magazynu kolumn uzyskać dobrą wydajność, gdy rowgroups zawiera co najmniej 100 000 wierszy.
+Aby uzyskać najlepszą wydajność zapytań celem jest zwiększenie liczby wierszy na grupę wierszy w indeksie magazynu kolumn. Grupy wierszy nie może przekraczać 1 048 576 wierszy. To można ma maksymalną liczbę wierszy na grupę wierszy. Indeksy magazynu kolumn uzyskać wysoką wydajność, gdy rowgroups ma co najmniej 100 000 wierszy.
 
-## <a name="rowgroups-can-get-trimmed-during-compression"></a>Rowgroups można pobrać usuwane podczas kompresji
+## <a name="rowgroups-can-get-trimmed-during-compression"></a>Rowgroups można uzyskać obcięte podczas kompresji
 
-Podczas zbiorczego obciążenia lub magazynu kolumn odbudowywanie indeksu czasami nie ma wystarczającej ilości pamięci do skompresowania wszystkie wiersze, które są przeznaczone dla każdej grupy wierszy. W przypadku wykorzystania pamięci indeksy magazynu kolumn trim rozmiary i dlatego może się powieść kompresji do magazynu kolumn. 
+Podczas zbiorcze obciążenie lub magazynu kolumn indeksu ponownej kompilacji czasami nie ma wystarczającej ilości pamięci skompresować wszystkie wiersze wyznaczony w każdej grupie wierszy. W przypadku dużego wykorzystania pamięci indeksów magazynu kolumn przycina rozmiarów i aby pomyślnie przeprowadzić operację kompresji do magazynu kolumn. 
 
-Jeśli jest za mało pamięci do skompresowania co najmniej 10 000 wierszy do każdej grupy wierszy, SQL Data Warehouse generuje błąd.
+Usługa SQL Data Warehouse generuje błąd, w przypadku braku pamięci w celu skompresowania co najmniej 10 000 wierszy w każdej grupie wierszy.
 
-Aby uzyskać więcej informacji dotyczących ładowania zbiorczego, zobacz [ładowanie zbiorcze do klastrowanego indeksu magazynu kolumn](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Aby uzyskać więcej informacji na temat ładowania zbiorczego, zobacz [ładowanie zbiorcze do indeksu klastrowanego magazynu kolumn](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
 
-## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorować i jakość
+## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorować jakość grupy wierszy:
 
-Brak udostępnia przydatne informacje, takie jak liczba wierszy w rowgroups i przyczynę przycinanie, jeśli został przycinanie DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats). Można utworzyć następującego widoku jako wygodny sposób na zapytania DMV ten można pobrać informacji na temat przycinanie i.
+Brak DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats), który udostępnia przydatne informacje, takie jak liczba wierszy w grupy wierszy i przyczynę przycinania, jeśli został przycinania. Możesz utworzyć następujący widok jako wygodny sposób ten widok DMV, aby uzyskać informacje dotyczące przycinania i zapytania.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -66,63 +66,63 @@ select *
 from cte;
 ```
 
-Trim_reason_desc informuje, czy został przycięty grupy wierszy (trim_reason_desc = NO_TRIM oznacza nie było żadnych przycinanie i grupę wierszy jest jakość). Skutkiem przycinania oznaczać przedwczesny przycinanie grupy wierszy:
-- BULKLOAD: Z tego powodu przycinania jest używany, gdy przychodzący partii wierszy obciążenia ma mniej niż 1 milion wierszy. Aparat spowoduje utworzenie grupy wierszy skompresowany, jeśli jest większa niż 100 000 wierszy wstawiane (zamiast wstawianie do magazynu delta), ale ustawia przycinania Przyczyna BULKLOAD. W tym scenariuszu należy rozważyć zwiększenie obciążenia partii okna gromadzone więcej wierszy. Ponadto obliczyć ponownie Twoje schemat partycjonowania, aby upewnić się, że nie jest on zbyt szczegółowego jako grupy wierszy nie może obejmować granice partycji.
-- MEMORY_LIMITATION: Tworzenie grup wiersza o 1 milion wierszy, określoną ilość pamięci roboczej jest wymagana przez aparat. Gdy dostępna pamięć sesji ładowania jest mniejsza od wymaganej pamięci pracy, grupy wierszy przedwcześnie uzyskać usuwane. W poniższych sekcjach opisano sposób szacowania pamięci wymaganej i przydzielić więcej pamięci.
-- DICTIONARY_SIZE: Z tego powodu przycinania wskazuje, że przycinanie i wystąpił, ponieważ wystąpił co najmniej jednej kolumny typu string z ciągami Kardynalność szerokości i/lub wysokiego. Rozmiar słownika może zawierać maksymalnie 16 MB pamięci i jest skompresowany po osiągnięciu tego limitu grupę wierszy. Jeśli zostanie uruchomione w tej sytuacji, należy wziąć pod uwagę izolowanie kolumnie powodować problemy w osobnej tabeli.
+Trim_reason_desc informuje, czy została przycięta grupy wierszy (trim_reason_desc = NO_TRIM oznacza wystąpił brak przycinania i grupę wierszy jest optymalne jakości). Przyczyny przycinania wskazują przedwczesne przycinanie grupy wierszy:
+- BULKLOAD: Z tego powodu przycinania jest używany, gdy przychodzący partii wierszy dla obciążenia było mniej niż 1 milion wierszy. Aparat tworzenia skompresowanych grup wierszy, jeśli istnieje większa niż 100 000 wierszy, jest wstawiany (w przeciwieństwie do wstawiania do magazynu delta), ale ustawia BULKLOAD Przyczyna przycinania. W tym scenariuszu należy rozważyć zwiększenie okna obciążenia usługi batch do większej liczby wierszy. Ponadto to ponowne ocenienie schematu partycji w celu zapewnienia, że nie jest zbyt szczegółową jako granice partycji nie mogą rozciągać się grupy wierszy.
+- MEMORY_LIMITATION: Aby utworzyć grupy wierszy z 1 milion wierszy, pewna ilość pamięci pracy jest wymagany przez aparat. Gdy dostępna pamięć sesji ładowania jest mniejsza niż wymaganej ilości pamięci w pracy, grupy wierszy przedwcześnie Pobierz spacje. W poniższych sekcjach opisano sposób szacowania pamięci wymaganej i przydzielanie większej ilości pamięci.
+- DICTIONARY_SIZE: Z tego powodu przycinania wskazuje, że przycinania i wystąpił, ponieważ wystąpił co najmniej jedną kolumnę ciągu z szerokim lub wysokiej kardynalności ciągami. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu grupę wierszy jest skompresowany. Jeśli napotkasz ten problem, należy wziąć pod uwagę izolowanie problematyczne kolumny w osobnej tabeli.
 
-## <a name="how-to-estimate-memory-requirements"></a>Sposób oszacować wymagania dotyczące pamięci
+## <a name="how-to-estimate-memory-requirements"></a>Jak oszacować wymagania dotyczące pamięci
 
 <!--
 To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
 -->
 
-Maksymalna wymagana ilość pamięci do skompresowania i jeden wynosi około
+Maksymalna wymaganej ilości pamięci do kompresowania i jeden to około
 
 - 72 MB +
 - \#wiersze \* \#kolumn \* 8 bajtów +
-- \#wiersze \* \#krótki ciąg kolumn \* 32 bajtów +
-- \#długi ciąg kolumn \* 16 MB dla słownika kompresji
+- \#wiersze \* \#krótki ciąg kolumn \* 32 bajty +
+- \#Long ciągu columns \* 16 MB dla słownika kompresji
 
-gdzie krótki ciąg kolumn używać typów danych ciąg < = 32 bajtów i użyj długi ciąg kolumn danych typu ciąg > 32 bajtów.
+gdzie krótki ciąg kolumn użyć typów danych ciągu < = 32 bajtów i użyj long ciągu kolumny danych typu ciąg > 32-bitowej.
 
-Długie ciągi są kompresowane za pomocą metody kompresji przeznaczone do kompresowania tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorce tekstu. Maksymalny rozmiar słownik jest 16 MB. Istnieje tylko jeden słownika dla każdej kolumny i długi ciąg.
+Długie ciągi są kompresowane za pomocą metody kompresji przeznaczone do kompresowania tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorców tekstu. Maksymalny rozmiar słownik to 16 MB. Istnieje tylko jeden słownika dla każdej kolumny długi ciąg w grupy wierszy.
 
-Szczegółowe omówienie wymagań pamięci magazynu kolumn, zobacz wideo [skalowania usługi Azure SQL Data Warehouse: wskazówki i konfiguracji](https://myignite.microsoft.com/videos/14822).
+Szczegółowe omówienie wymagań dotyczących pamięci magazynu kolumn, można znaleźć w temacie wideo [skalowania usługi Azure SQL Data Warehouse: Konfiguracja i wskazówki dotyczące](https://myignite.microsoft.com/videos/14822).
 
-## <a name="ways-to-reduce-memory-requirements"></a>Sposoby Zmniejsz wymagania dotyczące pamięci
+## <a name="ways-to-reduce-memory-requirements"></a>Sposoby, aby zmniejszyć wymagania dotyczące pamięci
 
 Następujące techniki umożliwiają zmniejszyć wymagania dotyczące pamięci kompresowania rowgroups w indeksach magazynu kolumn.
 
 ### <a name="use-fewer-columns"></a>Użyj mniejszej liczby kolumn
-Jeśli to możliwe projektowanie tabeli z mniejszą liczbą kolumn. Podczas kompresowania i do magazynu kolumn, indeks magazynu kolumn kompresuje osobno każdy z segmentów kolumny. W związku z tym wymagania dotyczące pamięci do skompresowania i zwiększyć jako liczba wzrasta kolumn.
+Jeśli to możliwe Projektuj tabelę z mniejszą liczbę kolumn. Podczas kompresowania i do magazynu kolumn, indeks magazynu kolumn kompresuje osobno każdy z segmentów kolumny. W związku z tym wymagania dotyczące pamięci do kompresowania i zwiększyć jako liczba wzrasta kolumn.
 
 
-### <a name="use-fewer-string-columns"></a>Użyj mniejszej liczby kolumn ciągu
-Kolumny danych typu ciąg wymaga więcej pamięci niż liczbowych i typy danych Data. Aby zmniejszyć wymagania dotyczące pamięci, rozważ usunięcie kolumny ciągu z tabel faktów i umieszczania ich w mniejszych tabele wymiarów.
+### <a name="use-fewer-string-columns"></a>Użyj mniejszej liczby kolumn ciągów
+Kolumny danych typu ciąg wymaga więcej pamięci niż numerycznych i typów danych daty. Aby zmniejszyć wymagania dotyczące pamięci, rozważ usunięcie kolumny ciągu z tabel faktów i umieszczania ich w mniejszych tabele wymiarów.
 
-Wymagania dotyczące pamięci dodatkowe ciąg kompresji:
+Dodatkowa pamięć wymagania dotyczące ciągu kompresji:
 
-- Typy danych w ciągu maksymalnie 32 znaki może wymagać 32 bajtów dodatkowe na wartość.
-- Typy danych ciąg z więcej niż 32 znaki są kompresowane przy użyciu metod słownika.  Każda kolumna i może wymagać maksymalnie dodatkowe 16 MB do tworzenia słownika.
+- Danych typu ciąg, maksymalnie 32 znaki mogą wymagać 32 bajty dodatkowe na wartość.
+- Typy danych ciągu z więcej niż 32 znaki są kompresowane, przy użyciu metod słownika.  Każda kolumna w grupy wierszy może wymagać maksymalnie dodatkowe 16 MB do tworzenia słownika.
 
 ### <a name="avoid-over-partitioning"></a>Unikaj nadmiernego partycjonowania
 
-Indeksy magazynu kolumn utworzyć rowgroups co najmniej jednej partycji. W usłudze SQL Data Warehouse liczba partycji rozwoju szybko ponieważ dane są przesyłane i każdej dystrybucji jest podzielona na partycje. Jeśli tabela zawiera zbyt wiele partycji, może nie być wystarczająco dużo wierszy, aby wypełnić rowgroups. Brak wierszy nie tworzy wykorzystania pamięci podczas kompresji, ale prowadzi do rowgroups, który nie będzie najlepszą wydajność zapytań magazynu kolumn.
+Indeksy magazynu kolumn, utworzyć rowgroups co najmniej jednej partycji. W usłudze SQL Data Warehouse liczby partycji rośnie szybko, ponieważ dane są rozmieszczane i każdej dystrybucji są podzielone na partycje. Jeśli tabela ma zbyt wiele partycji, nie może być wystarczającą liczbę wierszy, aby wypełnić grupy wierszy. Brak wierszy nie powoduje utworzenia dużego wykorzystania pamięci podczas kompresji, ale prowadzi do grupy wierszy, które nie osiągnąć najlepszą wydajność zapytań magazynu kolumn.
 
-Kolejny powód, aby uniknąć nadmiernego partycjonowania jest pamięci w czasie ładowania wierszy do indeksu magazynu kolumn dla partycjonowanej tabeli. Podczas ładowania większej liczby partycji można odebrać przychodzącego wiersze, które są przechowywane w pamięci, dopóki każda partycja ma wystarczająco dużo wierszy do skompresowania. Zbyt wiele partycji mających tworzy wykorzystania pamięci dodatkowe.
+Kolejny powód, aby uniknąć nadmiernego partycjonowania jest pamięci w czasie ładowania wierszy do indeksu magazynu kolumn dla partycjonowanej tabeli. Podczas ładowania liczby partycji może odbierać przychodzące wiersze, które są przechowywane w pamięci, dopóki każda partycja zawiera wystarczającą liczbę wierszy do skompresowania. Zbyt duża liczba partycji presję dodatkowej pamięci.
 
 ### <a name="simplify-the-load-query"></a>Uprość zapytanie obciążenia
 
-Bazy danych może mieć przydział pamięci dla zapytania wśród wszystkich operatorów w zapytaniu. Jeśli zapytanie obciążenia sortowania złożonego i sprzężeń, zostanie zmniejszona pamięci dostępnej dla kompresji.
+Baza danych współużytkuje przydział pamięci dla zapytania wśród wszystkich operatorów w zapytaniu. Gdy zapytanie obciążenia ma sortowania złożonego i sprzężeń, zmniejszono ilość pamięci dostępnej dla kompresji.
 
-Projektowanie zapytania ładowania skupić się tylko na podczas ładowania zapytania. Jeśli musisz uruchomić przekształcenia danych, należy uruchomić je oddzielnie od zapytania obciążenia. Na przykład przemieszczanie danych w tabeli sterty, uruchom przekształceń, a następnie załadować do indeksu magazynu kolumn tabeli przemieszczania. Można również najpierw załadować dane, a następnie używać systemu MPP do przekształcania danych.
+Zaprojektuj zapytanie obciążenia, aby skoncentrować się tylko na podczas ładowania zapytania. Jeśli musisz uruchomić przekształcenia na danych, należy uruchomić je oddzielnie od zapytania obciążenia. Na przykład przemieszczanie danych w tabeli stosu, uruchamianie przekształceń i następnie załadować tabeli przejściowej do indeksu magazynu kolumn. Można również najpierw załadować dane, a następnie użyć systemu MPP do przekształcania danych.
 
 ### <a name="adjust-maxdop"></a>Dostosuj MAXDOP
 
-Każdy dystrybucji kompresuje rowgroups do magazynu kolumn równoległe, gdy jest dostępna więcej niż jednego rdzenia procesora CPU na dystrybucji. Równoległość wymaga dodatkowych zasobów pamięci, co może prowadzić do wykorzystania pamięci i przycinanie grupy wierszy.
+Każdej dystrybucji kompresuje grupy wierszy do magazynu kolumn w sposób równoległy, gdy jest dostępna więcej niż jednego rdzenia procesora CPU na dystrybucję. Równoległości wymaga dodatkowych zasobów pamięci, co może prowadzić do wykorzystania pamięci i przycinania grupy wierszy.
 
-Aby zmniejszyć wykorzystanie pamięci, wskazówkę zapytania MAXDOP służy do wymusić operacji ładowania do pracy w trybie serial w ramach poszczególnych dystrybucji.
+Aby zmniejszyć wykorzystanie pamięci, wskazówki zapytania MAXDOP służy również do wymuszenia operacji ładowania do pracy w trybie szeregowe w ramach każdej dystrybucji.
 
 ```
 CREATE TABLE MyFactSalesQuota
@@ -131,22 +131,22 @@ AS SELECT * FROM FactSalesQUota
 OPTION (MAXDOP 1);
 ```
 
-## <a name="ways-to-allocate-more-memory"></a>Sposoby przydzielenie większej ilości pamięci
+## <a name="ways-to-allocate-more-memory"></a>Sposoby przydzielanie większej ilości pamięci
 
-Rozmiar wartości DWU i klasa zasobów użytkownika razem określić ilość pamięci dostępnej dla zapytania użytkownika. Aby zwiększyć przydział pamięci dla zapytania obciążenia, należy zwiększyć liczbę jednostek dwu lub zwiększ klasy zasobów.
+Rozmiar jednostek DWU i klasa zasobów użytkownika razem określają ilość pamięci dostępnej dla zapytania użytkownika. Aby zwiększyć przydział pamięci dla zapytania, obciążenia, możesz zwiększyć liczbę jednostek dwu lub zwiększyć klasy zasobów.
 
-- Aby zwiększyć liczbę jednostek dwu, zobacz [sposób skalowania wydajności?](quickstart-scale-compute-portal.md)
+- Zwiększenie liczby jednostek dwu, zobacz [sposób skalować wydajność?](quickstart-scale-compute-portal.md)
 - Aby zmienić klasy zasobów dla zapytania, zobacz [zmienić przykład klasy zasobów użytkownika](resource-classes-for-workload-management.md#change-a-users-resource-class).
 
-Na przykład na DWU 100 użytkownika w klasie zasobu smallrc służy 100 MB pamięci dla poszczególnych dystrybucji. Aby uzyskać więcej informacji, zobacz [współbieżność w usłudze SQL Data Warehouse](resource-classes-for-workload-management.md).
+Na przykład na 100 jednostek DWU użytkownika do klasy zasobów smallrc służy 100 MB pamięci dla każdej dystrybucji. Aby uzyskać więcej informacji, zobacz [współbieżności w usłudze SQL Data Warehouse](resource-classes-for-workload-management.md).
 
-Załóżmy, że należy określić, czy potrzebujesz 700 MB pamięci można pobrać rozmiarów i wysokiej jakości. Poniższe przykłady pokazują, jak można uruchomić kwerendę obciążenia z wystarczającą ilość pamięci.
+Załóżmy, że należy określić, czy potrzebujesz 700 MB pamięci, można pobrać rozmiarów grupy wierszy wysokiej jakości. Poniższe przykłady pokazują, jak uruchomić zapytanie obciążenia z wystarczającą ilość pamięci.
 
-- Korzystając z DWU 1000 i mediumrc, Twoje przydział pamięci jest 800 MB
-- Korzystając z DWU 600 i largerc, Twoje przydział pamięci jest 800 MB.
+- Korzystając z 1000 jednostek DWU i mediumrc, Twoje udział pamięci to 800 MB
+- Korzystając z 600 jednostek DWU i largerc, z przydziałem pamięci to 800 MB.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby znaleźć więcej sposobów poprawy wydajności w usłudze SQL Data Warehouse, zobacz [wydajności — omówienie](sql-data-warehouse-overview-manage-user-queries.md).
+Aby znaleźć więcej sposobów na zwiększenie wydajności w usłudze SQL Data Warehouse, zobacz [wydajności — omówienie](sql-data-warehouse-overview-manage-user-queries.md).
 

@@ -10,21 +10,16 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9c1379cd457dcba37246985058b01e85633f968
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057537"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286989"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
 [Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to usługa globalnie dystrybuowanej, wielomodelowej bazy danych zaprojektowana, aby pomóc Ci osiągnąć wysoką i przewidywalną wydajność. Płynne skalowanie wraz z aplikacji. W tym artykule omówiono sposób partycjonowania działa w przypadku wszystkich danych modeli w usłudze Azure Cosmos DB. Również zawiera opis sposobu konfigurowania skutecznie skalowanie aplikacji kontenerów usługi Azure Cosmos DB.
-
-Partycjonowanie i klucze partycji są omówione w tym filmie pokazano:
-
-> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
-> 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB zapewnia kontenery do przechowywania danych o nazwie kolekcje (dla dokumentów), wykresy lub tabel. Kontenery są zasobami logicznymi i mogą znajdować się jeden lub więcej partycji fizycznych lub serwerów. Liczba partycji jest ustalana na podstawie rozmiaru magazynu usługi Azure Cosmos DB i przepływnością aprowizowaną dla kontenera lub zestaw kontenerów. 

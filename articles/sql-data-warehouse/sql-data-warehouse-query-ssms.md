@@ -1,23 +1,23 @@
 ---
-title: Połączyć się z magazynem danych Azure SQL - SSMS | Dokumentacja firmy Microsoft
-description: Użyj programu SQL Server Management Studio (SSMS) do nawiązania połączenia i wykonywać zapytania usługi Azure SQL Data Warehouse.
+title: Nawiązać połączenie z usługi Azure SQL Data Warehouse — SSMS | Dokumentacja firmy Microsoft
+description: Użyj programu SQL Server Management Studio (SSMS), aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: f4b960115da3d30d355768498ae95270acaef49b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182378"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307204"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Nawiązać połączenia SQL Data Warehouse przy użyciu programu SQL Server Management Studio (SSMS)
+# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Łączenie z usługą SQL Data Warehouse przy użyciu programu SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -27,18 +27,18 @@ ms.locfileid: "32182378"
 > 
 > 
 
-Użyj programu SQL Server Management Studio (SSMS) do nawiązania połączenia i wykonywać zapytania usługi Azure SQL Data Warehouse. 
+Użyj programu SQL Server Management Studio (SSMS), aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby użyć tego samouczka, potrzebne są następujące elementy:
 
 * Istniejący magazyn danych SQL. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
-* SQL Server Management Studio (SSMS) zainstalowany. [Zainstaluj narzędzia SSMS] [ Install SSMS] bezpłatnie, jeśli nie masz jeszcze go.
+* SQL Server Management Studio (SSMS) zainstalowane. [Instalacja narzędzia SSMS] [ Install SSMS] za darmo, jeśli nie jeszcze.
 * W pełni kwalifikowana nazwa serwera SQL. Aby ją znaleźć, zobacz [Nawiązywanie połączenia z usługą SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Nawiązywanie połączenia z usługą SQL Data Warehouse
 1. Otwórz program SSMS.
-2. Otwórz Eksplorator obiektów. Aby to zrobić, wybierz **pliku** > **połączyć Eksplorator obiektów**.
+2. Otwórz Eksplorator obiektów. Aby to zrobić, wybierz **pliku** > **Połącz z Eksploratorem obiektów**.
    
     ![Eksplorator obiektów SQL Server][1]
 3. Wypełnij pola w oknie łączenia z serwerem.

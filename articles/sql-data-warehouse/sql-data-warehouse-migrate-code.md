@@ -1,82 +1,82 @@
 ---
-title: Migrowanie kodu SQL do SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące migrowania kodu SQL Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+title: Migrowanie kodu SQL w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące migracji kodu SQL do usługi Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: b17e8e306c01bef4c58658b35f3a67d0e721633c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2f16f9448da2dab9670908f74935bb5fb31a0547
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527457"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301375"
 ---
-# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrowanie kodu SQL do SQL Data Warehouse
-W tym artykule opisano zmiany kodu, które mają być podczas migracji kodu z innej bazy danych do usługi SQL Data Warehouse. Niektóre funkcje usługi SQL Data Warehouse może znacznie poprawić wydajność, ponieważ są one przeznaczone do pracy w sposób rozproszonych. Jednak aby zachować wydajność i skalę, niektóre funkcje są również dostępne.
+# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrowanie kodu SQL w usłudze SQL Data Warehouse
+W tym artykule opisano zmiany kodu, które mają być upewnij się, migrując kodu z innej bazy danych SQL Data Warehouse. Niektóre funkcje SQL Data Warehouse może znacznie poprawić wydajność, ponieważ są one przeznaczone do pracy w sposób rozproszonych. Jednak aby zachować wydajność i skalę, niektóre funkcje są również dostępne.
 
-## <a name="common-t-sql-limitations"></a>Typowych ograniczeń T-SQL
-Poniższa lista zawiera podsumowanie najczęściej używane funkcje, których nie obsługuje usługi SQL Data Warehouse. Łącza prowadzą do obejścia nieobsługiwane funkcje:
+## <a name="common-t-sql-limitations"></a>Typowe ograniczenia języka T-SQL
+Poniższa lista zawiera podsumowanie najbardziej typowych funkcji, które nie obsługuje usługi SQL Data Warehouse. Linki prowadzą do obejścia nieobsługiwane funkcje:
 
-* [Sprzężenia ANSI na aktualizacje][ANSI joins on updates]
-* [Sprzężenia ANSI na usuwaniu][ANSI joins on deletes]
+* [Sprzężenia ANSI w aktualizacji][ANSI joins on updates]
+* [Sprzężenia ANSI w usuwaniu][ANSI joins on deletes]
 * [Instrukcja merge][merge statement]
-* sprzężenia między bazami danych
+* sprzężeń między bazami danych
 * [Kursory][cursors]
-* [INSERT... EXEC][INSERT..EXEC]
+* [WSTAW... EXEC][INSERT..EXEC]
 * klauzuli OUTPUT
 * wbudowane funkcje zdefiniowane przez użytkownika
-* wiele instrukcji funkcji
-* [wspólnych wyrażeniach tabel](#Common-table-expressions)
-* [cykliczne wspólnych wyrażeniach tabel (CTE)] (#Recursive-common-table-expressions-(CTE)
+* wieloinstrukcyjnych funkcji
+* [wspólnych wyrażeń tabel](#Common-table-expressions)
+* [cyklicznych wspólnych wyrażeń tabel (CTE)] (#Recursive-common-table-expressions-(CTE)
 * Funkcje środowiska CLR i procedury
-* Funkcja $partition
-* zmiennych tabel
+* $partition — funkcja
+* zmienne tabeli
 * Tabela wartości parametrów
 * Transakcje rozproszone
-* Commit / rollback Praca
+* Commit / rollback pracy
 * Zapisz transakcji
-* Kontekst wykonywania (EXECUTE AS)
+* kontekstami wykonywania (EXECUTE AS)
 * [Grupuj według klauzuli z pakietem zbiorczym / modułu / Ustawia opcje grupowania][group by clause with rollup / cube / grouping sets options]
-* [poziomów zagnieżdżenia niż 8][nesting levels beyond 8]
-* [aktualizowanie za pośrednictwem widoków][updating through views]
-* [Użycie wybierz przypisanie zmiennej][use of select for variable assignment]
+* [poziomów zagnieżdżenia poza 8][nesting levels beyond 8]
+* [aktualizowanie przy użyciu widoków][updating through views]
+* [użytek wybierz przypisanie zmiennej][use of select for variable assignment]
 * [Typ danych nie MAX dynamiczne ciągów SQL][no MAX data type for dynamic SQL strings]
 
-Na szczęście wokół można pracować większość tych ograniczeń. Wyjaśnienia dotyczące znajdują się w artykułów odpowiednich programowanie wymienionych powyżej.
+Na szczęście większość z tych ograniczeń możesz pracować nad wokół. Wyjaśnienie znajdują się w artykułach odpowiednich zmianach wyżej.
 
 ## <a name="supported-cte-features"></a>Obsługiwane funkcje CTE
-Wspólnych wyrażeniach tabel (wyrażeń CTE) są obsługiwane częściowo w usłudze SQL Data Warehouse.  Następujące funkcje CTE są obecnie obsługiwane:
+Wspólnych wyrażeń tabel (wyrażeń CTE) są obsługiwane częściowo w usłudze SQL Data Warehouse.  Następujące funkcje CTE są obecnie obsługiwane:
 
 * CTE można określić w instrukcji SELECT.
 * CTE można określić w instrukcji CREATE VIEW.
-* CTE można określić w instrukcji tworzenia tabeli jako wybierz (CTAS).
-* CTE można określić w instrukcji tworzenia zdalnego tabeli jako wybierz (CRTAS).
-* CTE można określić w instrukcji tworzenia zewnętrznego tabeli jako wybierz (CETAS).
+* CTE można określić w instrukcji CREATE TABLE AS SELECT (CTAS).
+* CTE można określić w instrukcji tworzenia zdalnej tabeli AS wybierz (CRTAS).
+* CTE można określić w instrukcji tworzenie zewnętrznej tabeli AS wybierz (CETAS).
 * Tabela zdalna mogą być przywoływane z CTE.
-* Tabeli zewnętrznej można odwoływać się z CTE.
+* Tabela zewnętrzna mogą być przywoływane z CTE.
 * Wiele definicji zapytania CTE można zdefiniować w CTE.
 
 ## <a name="cte-limitations"></a>Ograniczenia CTE
-Wspólnego wyrażenia tabeli mają następujące ograniczenia z magazynu danych SQL, w tym:
+Wspólnych wyrażeń tabeli mają pewne ograniczenia, w tym usługa SQL Data Warehouse:
 
-* CTE musi następować jednej instrukcji SELECT. INSERT, UPDATE, DELETE i instrukcjach MERGE nie są obsługiwane.
-* Wspólne wyrażenie tabeli, która zawiera odwołania do samego siebie (cykliczne wspólne wyrażenie tabeli) nie jest obsługiwany (patrz poniżej).
-* Określanie więcej niż jeden z klauzulą w CTE jest niedozwolone. Na przykład jeśli CTE_query_definition zawiera podzapytanie, że podzapytania nie może zawierać zagnieżdżoną z klauzulą definiujący CTE innego.
-* Nie można użyć klauzuli ORDER BY w CTE_query_definition, z wyjątkiem, gdy określono klauzulę TOP.
-* CTE jest używana w instrukcji, która jest częścią partii, instrukcję przed jego musi następować średnikiem.
-* Gdy jest używany w instrukcjach przygotowane przez sp_prepare, wspólnych wyrażeń tabel działają w taki sam sposób jak inne instrukcji SELECT w PDW. Jednak jeśli wspólnych wyrażeń tabel są używane jako część CETAS przygotowane przez sp_prepare, zachowanie może odroczyć z programu SQL Server i inne instrukcje PDW ze względu na sposób powiązania jest zaimplementowany dla sp_prepare. Wybierz OPCJĘ odwołania CTE wykorzystanie niewłaściwej kolumnie, która nie istnieje w CTE sp_prepare przechodzą bez wykrycia błędu, ale błąd zostanie zgłoszony podczas procedury składowanej sp_execute zamiast tego.
+* CTE musi następować pojedynczą instrukcję SELECT. INSERT, UPDATE, DELETE i MERGE instrukcje nie są obsługiwane.
+* Wspólne wyrażenie tabeli, który zawiera odwołania do samego siebie (cyklicznego wspólnego wyrażenia tabeli) nie jest obsługiwany (patrz poniżej).
+* Określanie więcej niż jeden z klauzulą w CTE jest niedozwolone. Na przykład, jeśli CTE_query_definition zawiera podzapytanie, tym podzapytanie nie może zawierać zagnieżdżoną przy użyciu klauzuli, która definiuje CTE innego.
+* Nie można użyć klauzuli ORDER BY w CTE_query_definition, z wyjątkiem sytuacji, gdy określono klauzulę TOP.
+* Stosowania CTE w instrukcji, która jest częścią partii instrukcji przed nią musi następować średnikiem.
+* W przypadku użycia w instrukcjach przygotowane przez sp_prepare, wyrażeń CTE działają w taki sam sposób jak inne instrukcji SELECT w PDW. Jednak jeśli wyrażeń CTE są używane jako część CETAS przygotowane przez sp_prepare, zachowanie może odroczyć z programu SQL Server i inne instrukcje PDW ze względu na sposób, w których wiązanie jest implementowana sp_prepare. Jeśli WYBIERZESZ że odwołania CTE korzysta z niewłaściwej kolumnie, który nie istnieje w CTE sp_prepare przekazują bez wykrycia błędu, ale zostanie zwrócony błąd podczas sp_execute zamiast tego.
 
-## <a name="recursive-ctes"></a>Cyklicznych wspólnych wyrażeń tabel
-Cyklicznych wspólnych wyrażeń tabel nie są obsługiwane w usłudze SQL Data Warehouse.  Migracja cykliczne CTE mogą być nieco złożone i proces najlepiej jest aby podzielić go na wiele kroków. Zwykle można skorzystać z pętli i wypełniania tabeli tymczasowej jako iteracja tymczasowe zapytania cyklicznego. Po zapełnieniu tabeli tymczasowej należy zwrócić dane jako pojedynczy zestaw wyników. Podejście podobne został użyty do rozwiązania `GROUP BY WITH CUBE` w [Grupuj według klauzuli z pakietem zbiorczym / modułu / Ustawia opcje grupowania] [ group by clause with rollup / cube / grouping sets options] artykułu.
+## <a name="recursive-ctes"></a>Wyrażeń CTE cykliczne
+Wyrażeń CTE cykliczne nie są obsługiwane w usłudze SQL Data Warehouse.  Migracja cyklicznego CTE może być dość złożony i najlepsze proces jest podzielenie go na wiele kroków. Zazwyczaj można użyć pętli i wypełnić tabelę tymczasową, jak iteracyjne tymczasowe kwerendy cykliczne. Po zapełnieniu tabeli tymczasowej można zwrócić dane jako pojedynczy zestaw wyników. Podejście podobne został użyty do rozwiązania `GROUP BY WITH CUBE` w [Grupuj według klauzuli z pakietem zbiorczym / modułu / Ustawia opcje grupowania] [ group by clause with rollup / cube / grouping sets options] artykułu.
 
 ## <a name="unsupported-system-functions"></a>Nieobsługiwany system funkcji
-Dostępne są także niektóre funkcje systemu, które nie są obsługiwane. Główne te, które zwykle można znaleźć używane w magazynowania danych, należą:
+Dostępne są także niektóre funkcje systemu, które nie są obsługiwane. Najważniejsze z nich, którą można zwykle znaleźć używanych w magazynie danych, należą:
 
 * NEWSEQUENTIALID()
 * @@NESTLEVEL()
@@ -85,10 +85,10 @@ Dostępne są także niektóre funkcje systemu, które nie są obsługiwane. Gł
 * ROWCOUNT_BIG
 * ERROR_LINE() —
 
-Niektóre z tych problemów można pracować wokół.
+Niektóre z tych problemów możesz pracować nad wokół.
 
-## <a name="rowcount-workaround"></a>@@ROWCOUNT obejście problemu
-Aby obejść Brak obsługi @@ROWCOUNT, Tworzenie procedury przechowywanej, która będzie pobrać liczbę ostatnich wierszy z sys.dm_pdw_request_steps, a następnie wykonaj `EXEC LastRowCount` po instrukcji DML.
+## <a name="rowcount-workaround"></a>@@ROWCOUNT obejście
+Aby obejść Brak obsługi @@ROWCOUNT, Utwórz procedurę składowaną, która pobrać liczbę ostatnich wierszy z sys.dm_pdw_request_steps, a następnie wykonaj `EXEC LastRowCount` po instrukcji DML.
 
 ```sql
 CREATE PROCEDURE LastRowCount AS
@@ -111,7 +111,7 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać pełną listę wszystkich obsługiwanych instrukcje T-SQL, zobacz [tematy języka Transact-SQL][Transact-SQL topics].
+Aby uzyskać pełną listę wszystkich obsługiwanych instrukcji języka T-SQL, zobacz [tematy języka Transact-SQL][Transact-SQL topics].
 
 <!--Image references-->
 

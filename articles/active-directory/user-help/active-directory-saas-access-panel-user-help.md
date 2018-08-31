@@ -1,5 +1,5 @@
 ---
-title: Uzyskaj pomoc dotyczącą dostęp i korzystania z portalu Moje aplikacje w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Uzyskaj pomoc dotyczącą dostęp i w usłudze Azure Active Directory za pomocą portalu MyApps | Dokumentacja firmy Microsoft
 description: Pomoc dotycząca logowania się w usłudze i wykonywanie typowych zadań w panelu dostępu.
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343614"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306414"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Rozwiązywanie problemów z usługą dostępu do i korzystania z portalu Moje aplikacje
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Rozwiązywanie problemów z usługą dostępu do i korzystania z portalu MyApps
 
-Jeśli masz problemy z logowaniem do lub korzystanie z portalu Moje aplikacje, wypróbuj te wskazówki dotyczące rozwiązywania problemów, zanim można skontaktuj się z pomocą techniczną lub administratorem, aby uzyskać pomoc.
+Jeśli masz problemy z logowaniem do lub korzystanie z portalu MyApps, wypróbuj te wskazówki dotyczące rozwiązywania problemów, zanim można skontaktuj się z pomocą techniczną lub administratorem, aby uzyskać pomoc.
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Występują problemy podczas logowania się do portalu Moje aplikacje
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>Występują problemy podczas logowania się do portalu MyApps
 
 Korzystając z poniższych ogólnych porad:
 
@@ -45,7 +45,7 @@ Można zresetować hasło lub odblokować konto bez konieczności Porozmawiaj z 
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mam problemy z zainstalowaniem Moje zabezpieczenia aplikacji logowania rozszerzenia
 
-W portalu Moje aplikacje wymaga przeglądarki, która obsługuje język JavaScript i CSS została włączona. W przypadku korzystania z opartego na hasłach pojedynczego logowania aplikacji towarzyszący rozszerzenia musi być zainstalowany także. To rozszerzenie jest automatycznie pobierany po uruchomieniu aplikacji, która jest skonfigurowana dla opartego na hasłach pojedynczego logowania aplikacji.
+Portalu MyApps wymaga przeglądarki, która obsługuje język JavaScript i CSS została włączona. W przypadku korzystania z opartego na hasłach pojedynczego logowania aplikacji towarzyszący rozszerzenia musi być zainstalowany także. To rozszerzenie jest automatycznie pobierany po uruchomieniu aplikacji, która jest skonfigurowana dla opartego na hasłach pojedynczego logowania aplikacji.
 
 Zaznacz, aby upewnić się, że spełniasz następujące wymagania dotyczące przeglądarki:
 
@@ -63,8 +63,8 @@ Możesz również pobrać rozszerzenia bezpośrednio z następujących witryn:
 Jeśli zainstalowano rozszerzenie i nadal występują problemy, spróbuj wykonać następujące czynności:
 
 - Sprawdź ustawienia rozszerzenia przeglądarki, aby upewnić się, że rozszerzenie jest włączona.
-- Uruchom ponownie przeglądarkę i zaloguj się do portalu Moje aplikacje.
-- Wyczyść pliki cookie w przeglądarce i zaloguj się do portalu Moje aplikacje.
+- Uruchom ponownie przeglądarkę i zaloguj się do portalu MyApps.
+- Wyczyść pliki cookie w przeglądarce i zaloguj się do portalu MyApps.
 - Aby uzyskać dostęp do narzędzia do diagnostyki i instrukcje krok po kroku dotyczące konfigurowania rozszerzenia dla programu Internet Explorer, zobacz [Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Użyj mojej aplikacji bezpiecznego logowania rozszerzenia
@@ -85,7 +85,7 @@ Jeśli zainstalowano rozszerzenie i nadal występują problemy, spróbuj wykona�
 * Aby uruchomić aplikację na podstawie rozszerzenia, wykonaj następujące czynności:
    1. Po zainstalowaniu rozszerzenia należy zalogować się w niej, wybierając **Zaloguj się rozpocząć**.
    2. Wybierz ikonę rozszerzenia, aby otworzyć jego menu.
-   3. Wyszukaj aplikację, która jest dostępna w portalu Moje aplikacje.
+   3. Wyszukaj aplikację, która jest dostępna w portalu MyApps.
    4. Na liście wyników wyszukiwania wybierz aplikację.  
        Ostatnie trzy aplikacje, które wykorzystano są wyświetlane na **ostatnio używane** listy skrótów.
 

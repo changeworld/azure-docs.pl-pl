@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 212de83a88f5a8114454761121ee3f22830d2448
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: e78a2c3492ebab2ac9f23f607e5bcaa0481003d9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055510"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287802"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge
 
@@ -88,7 +88,7 @@ W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych
 
 2. W palecie poleceń programu VS Code, należy wprowadzić, a następnie uruchom polecenie **Edge: Tworzenie usługi IoT Edge rozwiązania**.
 3. Wybierz `deployment.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
-4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla urządzenia usługi IoT Edge**. 
+4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla jednego urządzenia**. 
 5. Otwórz swoje rozwiązanie **config** folderu. Następnie wybierz pozycję `deployment.json` pliku. Wybierz **wybierz Manifest wdrożenia krawędzi**. 
 
 Zobaczysz wdrożenie z Identyfikatorem wdrożenia w terminalu programu VS Code, zintegrowane pomyślnie utworzona.

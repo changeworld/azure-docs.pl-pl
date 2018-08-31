@@ -6,21 +6,21 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/30/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125001"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307276"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Umożliwia również można wybrać generacji sprzętu:
 - 4. generacji — maksymalnie 24 logiczne procesory CPU oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów, pamięci rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
-- 5. generacji — maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.5. GB na rdzeń procesora, szybkie eNVM dysków SSD
+- 5. generacji — maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1. GB na rdzeń procesora, szybkie eNVM dysków SSD
 
 model rdzenia wirtualnego pozwala również na używanie [hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) uzyskanie oszczędności kosztów.
 
@@ -34,7 +34,7 @@ Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 |---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|
 |Wystąpienia obliczeniowe|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|4. generacji: — rdzeń wirtualny 1-24<br/>5. generacji: — rdzeń wirtualny 1 do 80|
-|Memory (Pamięć)|4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń | 4. generacji: 7 GB na rdzeń<br>5. generacji: 5.5 GB na rdzeń |
+|Memory (Pamięć)|4. generacji: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń | 4. generacji: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń |
 |Magazyn|[Usługa Premium storage zdalnego](../virtual-machines/windows/premium-storage.md),<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 8 TB |Lokalny magazyn SSD<br/>Pojedyncza baza danych: 5 GB – 1 TB<br/>Wystąpienie zarządzane: 32 GB – 4 TB |
 |Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienia zarządzanego: Zależy [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na każdy rdzeń za pomocą 200000 maksymalna liczba IOPS|
 |Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|

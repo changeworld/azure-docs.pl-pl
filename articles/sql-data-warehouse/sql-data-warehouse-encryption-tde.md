@@ -1,25 +1,25 @@
 ---
-title: Przezroczystego szyfrowania danych w usłudze SQL Data Warehouse (Portal) | Dokumentacja firmy Microsoft
-description: Przezroczystego szyfrowania danych (funkcji TDE) w magazynie danych SQL
+title: Przezroczyste szyfrowanie danych w usłudze SQL Data Warehouse (Portal) | Dokumentacja firmy Microsoft
+description: Transparent Data Encryption (TDE) w usłudze SQL Data Warehouse
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c4abb0416acc656a4cfae332377c398260191de
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e641ddb5360c18b5977fb79de41334d4216c2b90
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524231"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306191"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Rozpoczynanie pracy z przezroczystym danych szyfrowania (funkcji TDE) w magazynie danych SQL
+# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Rozpoczynanie pracy z przezroczystego szyfrowania danych (TDE) w usłudze SQL Data Warehouse
 > [!div class="op_single_selector"]
-> * [Przegląd zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
+> * [Omówienie zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
 > * [Uwierzytelnianie](sql-data-warehouse-authentication.md)
 > * [Szyfrowanie (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Szyfrowanie (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
@@ -27,30 +27,30 @@ ms.locfileid: "31524231"
 > 
 
 ## <a name="required-permssions"></a>Wymagane uprawnienia
-Aby włączyć funkcji przezroczystego szyfrowania danych (TDE), musi być administrator lub członek roli dbmanager:.
+Aby włączyć przezroczystego szyfrowania danych (TDE), musi być administratorem lub członkiem roli dbmanager.
 
-## <a name="enabling-encryption"></a>Włączenie szyfrowania
-Aby włączyć funkcji TDE dla magazynu danych SQL, wykonaj następujące czynności:
+## <a name="enabling-encryption"></a>Włączanie szyfrowania
+Aby włączyć funkcję TDE dla usługi SQL Data Warehouse, wykonaj następujące czynności:
 
-1. Otworzyć bazy danych w [portalu Azure](https://portal.azure.com)
-2. W bloku bazy danych, kliknij przycisk **ustawienia** przycisku
-3. Wybierz **przezroczystego szyfrowania danych** opcji ![][1]
+1. Otwórz bazę danych w [witryny Azure portal](https://portal.azure.com)
+2. W bloku bazy danych kliknij **ustawienia** przycisku
+3. Wybierz **technologii Transparent data encryption** opcji ![][1]
 4. Wybierz **na** ustawienie ![][2]
 5. Wybierz **Zapisz**
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Wyłączenie szyfrowania
-Aby wyłączyć funkcji TDE dla magazynu danych SQL, wykonaj następujące czynności:
+Aby wyłączyć funkcję TDE dla usługi SQL Data Warehouse, wykonaj następujące czynności:
 
-1. Otworzyć bazy danych w [portalu Azure](https://portal.azure.com)
-2. W bloku bazy danych, kliknij przycisk **ustawienia** przycisku
-3. Wybierz **przezroczystego szyfrowania danych** opcji ![][1]
+1. Otwórz bazę danych w [witryny Azure portal](https://portal.azure.com)
+2. W bloku bazy danych kliknij **ustawienia** przycisku
+3. Wybierz **technologii Transparent data encryption** opcji ![][1]
 4. Wybierz **poza** ustawienie ![][4]
 5. Wybierz **Zapisz**
    ![][5]  
 
-## <a name="encryption-dmvs"></a>Szyfrowanie widoków DMV
-Szyfrowanie może zostać potwierdzony z następujących widoków DMV:
+## <a name="encryption-dmvs"></a>Szyfrowanie dynamiczne widoki zarządzania
+Szyfrowanie może zostać potwierdzony przy użyciu następujących widoków DMV:
 
 * [sys.databases]
 * [sys.dm_pdw_nodes_database_encryption_keys]

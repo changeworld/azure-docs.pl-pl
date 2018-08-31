@@ -6,19 +6,19 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 329af89e52af6f3599e2d86e6ac6d28b8b63f333
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: f056bfa33e2a43af60357d6bf50a0b9cd8d7f254
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42062109"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286301"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
-Usługa Azure SQL Database to platforma jako usługa, która gwarantuje, że baza danych znajduje się i uruchomione działanie przez 99,99% czasu, nie martwiąc się o konserwację i przestoje wysoką dostępność bazy danych. Jest w pełni zarządzany proces aparatu bazy danych programu SQL Server hostowanych w chmurze platformy Azure, która zapewnia, że bazy danych programu SQL Server jest zawsze uaktualnione poprawkami bez wywierania wpływu na obciążenia. Usługa Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okoliczności, zapewniając, że Twoje dane są zawsze dostępne.
+Usługa Azure SQL Database to platforma jako usługa, która gwarantuje, że baza danych znajduje się i uruchomione działanie przez 99,99% czasu, nie martwiąc się o konserwację i przestoje wysoką dostępność bazy danych. Jest w pełni zarządzany proces aparatu bazy danych programu SQL Server hostowanych w chmurze platformy Azure, która zapewnia, że bazy danych programu SQL Server jest zawsze uaktualnione poprawkami bez wywierania wpływu na obciążenia. Gdy wystąpienie jest zastosowana poprawka lub w trybie Failover, przestój zwykle nie jest operacja Jeśli możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji. Jeśli czas wymagany do ukończenia pracy w trybie failover jest dłuższy niż 60 sekund, należy otworzyć zgłoszenie do pomocy technicznej. Usługa Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okoliczności, zapewniając, że Twoje dane są zawsze dostępne.
 
 Platforma Azure w pełni zarządza każdym usługi Azure SQL Database i gwarantuje bez utraty danych i wysoki odsetek dostępność danych. Azure automatycznie obsługuje stosowanie poprawek, kopii zapasowych, replikacji, wykrywanie awarii, bazowego sprzętu potencjalnych, awarii oprogramowania lub sieci, wdrażanie poprawek, pracy w trybie Failover, uaktualnienia bazy danych i innych zadań konserwacyjnych. Inżynierów programu SQL Server wdrożono najbardziej znanych sposobów postępowania, zapewniając, że wszystkie operacje konserwacji odbywa się w czasie krótszym niż 0,01% czas życia Twojej bazy danych. Ta architektura została zaprojektowana, aby upewnić się, że zatwierdzone dane nigdy nie zostaną utracone i że operacji konserwacji są wykonywane bez wywierania wpływu na obciążenia. Nie istnieją żadne okna konserwacyjne ani przestoje, wymagające należy zatrzymać obciążenia, gdy baza danych jest uaktualniony lub utrzymane. Wbudowana wysoka dostępność w usłudze Azure SQL Database gwarantuje, że ta baza danych nigdy nie będą pojedynczym punktem awarii w architekturze oprogramowania.
 

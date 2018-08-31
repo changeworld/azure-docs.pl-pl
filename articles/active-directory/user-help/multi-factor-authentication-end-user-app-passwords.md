@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056483"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300917"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 
@@ -38,11 +38,46 @@ Korzystanie z haseł aplikacji, to należy pamiętać:
 
 Podczas rejestracji weryfikacji dwuetapowej początkowej otrzymuje hasła aplikacji. Jeśli potrzebujesz więcej niż jeden hasło, można utworzyć dodatkowe haseł, w oparciu o sposobie korzystania z weryfikacji dwuetapowej:
 
-- **Weryfikacja dwuetapowa jest używany z konta usługi Microsoft Azure.** Tworzenie i usuwanie hasła aplikacji przy użyciu [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
+- **Weryfikacja dwuetapowa jest używany z pracy lub nauki i portalu MyApps.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu MyApps](#create-and-delete-app-passwords-using-the-myapps-portal) dalszej części tego artykułu. Aby uzyskać więcej informacji na temat portalu MyApps i jak z niej korzystać, zobacz [co to jest portal MyApps, w usłudze Azure Active Directory?](active-directory-saas-access-panel-introduction.md).
 
-- **Weryfikacja dwuetapowa jest używany z osobistego konta Microsoft.** Tworzenie i usuwanie hasła aplikacji przy użyciu [podstawy zabezpieczeń](https://account.microsoft.com/account/) strony z Twoim kontem Microsoft. Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
+- **Weryfikacja dwuetapowa jest używany z pracy lub konta służbowego i portalu usługi Office 365.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) dalszej części tego artykułu.
 
-- **Weryfikacja dwuetapowa jest używany z pracy lub konta służbowego i aplikacji usługi Office 365.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) dalszej części tego artykułu.
+- **Weryfikacja dwuetapowa jest używany z osobistego konta Microsoft.** Tworzenie i usuwanie hasła aplikacji przy użyciu [podstawy zabezpieczeń](https://account.microsoft.com/account/) strony za pomocą osobistego konta Microsoft. Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
+
+## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>Tworzenie i usuwanie hasła aplikacji przy użyciu portalu MyApps
+Można tworzyć i usuwanie hasła aplikacji za pośrednictwem portalu MyApps.
+
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Aby utworzyć hasła aplikacji przy użyciu portalu MyApps
+
+1. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+
+2. Wybierz nazwę w prawym górnym rogu, a następnie wybierz **profilu**.
+
+3. Wybierz **dodatkowej weryfikacji zabezpieczeń**.
+
+   ![Wybierz opcję dodatkowa weryfikacja zabezpieczeń — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+
+4. Wybierz **haseł aplikacji**.
+
+   ![Wybierz aplikację haseł — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+
+5. Kliknij pozycję **Utwórz**.
+
+6. Wpisz nazwę dla hasła aplikacji, a następnie wybierz **dalej**.
+
+7. Kopiuj hasło aplikacji do Schowka i wklej go w swojej aplikacji.
+   
+    ![Utwórz hasło aplikacji](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Aby usunąć hasła aplikacji przy użyciu portalu MyApps
+
+1. Przejdź do swojego profilu, a następnie wybierz **dodatkowa weryfikacja zabezpieczeń**.
+
+2. Wybierz **haseł aplikacji**, a następnie wybierz pozycję **Usuń** obok hasło aplikacji do usunięcia.
+
+   ![Usuwanie hasła aplikacji](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+
+3. Wybierz **tak** aby upewnić się, aby usunąć hasło, a następnie wybierz **Zamknij**.
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365
 
@@ -77,46 +112,6 @@ Jeśli używasz weryfikacji dwuetapowej za pomocą pracy lub konta służbowego 
     Usunięto hasło aplikacji.
 
 5. Wykonaj kroki tworzenia hasła aplikacji, aby utworzyć nowe hasło aplikacji.
-
-## <a name="manage-app-passwords-in-the-azure-portal"></a>Zarządzanie hasłami aplikacji w witrynie Azure portal
-
-Jeśli używasz weryfikacji dwuetapowej za pomocą platformy Azure, którą chcesz utworzyć hasła aplikacji w witrynie Azure portal.
-
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>Zarządzanie hasłami aplikacji za pomocą portalu MyApps
-
-Można również tworzenie i usuwanie hasła aplikacji w portalu Moje aplikacje.
-
-### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Aby utworzyć hasła aplikacji przy użyciu portalu Moje aplikacje
-
-1. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
-
-2. Wybierz nazwę w prawym górnym rogu, a następnie wybierz **profilu**.
-
-3. Wybierz **dodatkowej weryfikacji zabezpieczeń**.
-
-   ![Wybierz opcję dodatkowa weryfikacja zabezpieczeń — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
-
-4. Wybierz **haseł aplikacji**.
-
-   ![Wybierz aplikację haseł — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Kliknij pozycję **Utwórz**.
-
-6. Wpisz nazwę dla hasła aplikacji, a następnie wybierz **dalej**.
-
-7. Kopiuj hasło aplikacji do Schowka i wklej go w swojej aplikacji.
-   
-    ![Utwórz hasło aplikacji](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
-
-### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Aby usunąć hasła aplikacji przy użyciu portalu Moje aplikacje
-
-1. Przejdź do swojego profilu, a następnie wybierz **dodatkowa weryfikacja zabezpieczeń**.
-
-2. Wybierz **haseł aplikacji**, a następnie wybierz pozycję **Usuń** obok hasło aplikacji do usunięcia.
-
-   ![Usuwanie hasła aplikacji](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-
-3. Wybierz **tak** aby upewnić się, aby usunąć hasło, a następnie wybierz **Zamknij**.
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>Jeśli Twoje hasła aplikacji nie działają prawidłowo
 

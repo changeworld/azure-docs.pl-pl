@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9fc067c46828079f7369683b5edec682747cd5c7
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 65495893d93fddd6d8e13ae80720e002ac7d8efa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391456"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307492"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C dla usługi Azure IoT Edge
 
@@ -29,7 +29,7 @@ W tym artykule założono, że używasz komputera lub maszyny wirtualnej z syste
 Ponieważ w tym artykule używa programu Visual Studio Code, jako narzędzia programistyczne główny, zainstaluj program VS Code. Następnie dodaj rozszerzeniami niezbędnymi:
 * [Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [Rozszerzenie języka C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) dla programu Visual Studio Code.
+* [Rozszerzenie języka C/C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) dla programu Visual Studio Code.
 * [Rozszerzenia platformy docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Aby utworzyć moduł, potrzebne są platformy Docker, aby skompilować obraz modułu i rejestru kontenerów do przechowywania obrazu modułu:
@@ -85,7 +85,7 @@ W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych
 
     ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-c-module/image-debug.png)
 
-2. Zastąp Node.js modułu CreateOptions, można żądań w **deployment.template.json** z poniżej zawartości, a następnie zapisz ten plik: 
+2. Zastąp C modułu CreateOptions, można żądań w **deployment.template.json** z poniżej zawartości, a następnie zapisz ten plik: 
     
     ```json
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
@@ -93,7 +93,7 @@ W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych
 
 2. W palecie poleceń programu VS Code, należy wprowadzić, a następnie uruchom polecenie **Edge: Tworzenie usługi IoT Edge rozwiązania**.
 3. Wybierz `deployment.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
-4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla urządzenia usługi IoT Edge**. 
+4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla jednego urządzenia**. 
 5. Otwórz swoje rozwiązanie **config** folderu. Następnie wybierz pozycję `deployment.json` pliku. Wybierz **wybierz Manifest wdrożenia krawędzi**. 
 
 Zobaczysz wdrożenie z Identyfikatorem wdrożenia w terminalu programu VS Code, zintegrowane pomyślnie utworzona.
@@ -113,7 +113,7 @@ Informacje o konfiguracji w utrzymuje funkcji debugowania kodu programu VS `laun
 
 4. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie. 
 
-Poprzedni przykład pokazuje, jak można debugować moduły usługi IoT Edge w języku C w kontenerach. Ujawnionych portów on dodany do Twojego modułu kontenera CreateOptions, można żądań. Po zakończeniu debugowania moduły Node.js, zalecane jest usunięcie tych ujawnionych portów dla modułów usługi IoT Edge gotowe do produkcji.
+Poprzedni przykład pokazuje, jak można debugować moduły usługi IoT Edge w języku C w kontenerach. Ujawnionych portów on dodany do Twojego modułu kontenera CreateOptions, można żądań. Po zakończeniu debugowania moduły języka C, zalecane jest usunięcie tych ujawnionych portów dla modułów usługi IoT Edge gotowe do produkcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

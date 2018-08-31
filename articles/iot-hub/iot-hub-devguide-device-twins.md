@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: e94b023275f3992bea9595195688eebf42f0f229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b5e0a0caacab2413b640c58575673e555eeb76a4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186792"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288282"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
 
@@ -254,7 +254,7 @@ Tagi, żądanych właściwości i zgłaszane właściwości są obiektami JSON z
     }
     ```
 
-* Wszystkie ciągi mogą mieć maksymalnie 4 KB długości.
+* Wszystkie ciągi mogą mieć maksymalnie 512 bajtów długości.
 
 ## <a name="device-twin-size"></a>Rozmiar bliźniaczej reprezentacji urządzenia
 Usługa IoT Hub wymusza ograniczenie rozmiaru 8KB na wszystkich odpowiednich wartości całkowitej `tags`, `properties/desired`, i `properties/reported`, z wyłączeniem elementów tylko do odczytu.
@@ -354,6 +354,7 @@ Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki
 
 * [Jak używać bliźniaczej reprezentacji urządzenia][lnk-twin-tutorial]
 * [Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-properties]
+* [Zarządzanie urządzeniami za pomocą usługi Azure IoT Toolkit dla programu VS Code][lnk-twin-vscode]
 
 <!-- links and images -->
 
@@ -377,6 +378,7 @@ Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-properties]: tutorial-device-twins.md
+[lnk-twin-vscode]: iot-hub-device-management-iot-toolkit.md
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow

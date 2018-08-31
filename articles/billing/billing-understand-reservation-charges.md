@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie rabat związany z rezerwacją platformy Azure | Dokumentacja firmy Microsoft
+title: Zrozumienie rezerwacje platformy Azure z rabatami | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rabat związany z rezerwacją jest stosowany do uruchamiania bazy danych SQL.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 3a5339200309a50eace5b48dfbd9127b7eb1dae6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 923337291d297832e03892b505f4efa8d3bb3f36
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634687"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300718"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do bazy danych SQL
 
@@ -44,12 +44,12 @@ Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raport
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
-- [Zarządzanie zastrzeżeniami platformy Azure](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)

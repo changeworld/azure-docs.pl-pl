@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 9466f4178047a4927684a1fcfd80f661ea4aa7a5
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 523746153aa39f50d5c54c97a4f74352de04c27f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127706"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288042"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -491,7 +491,7 @@ Aby skopiować plik wyjściowy z poprzedniego kroku (KeyTransferPackage-ContosoF
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5: Przesłanie klucza do usługi Azure Key Vault
 
-W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
+W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-add-azurekeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
 
    ```powershell
         Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
