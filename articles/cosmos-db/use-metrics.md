@@ -11,21 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4bc8af7533b3d18f9e04f431d6c9f97e0982ae5
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858667"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286673"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorowanie i debugowaniu za pomocą metryk w usłudze Azure Cosmos DB
 
 Usługa Azure Cosmos DB zawiera metryki dotyczące przepływności, magazynu, spójnością, dostępnością i opóźnieniem. [Witryny Azure portal](https://portal.azure.com) zapewnia zagregowany widok z tych wskaźników; w przypadku bardziej szczegółowych metryk, klienckiego zestawu SDK i [dzienniki diagnostyczne](./logging.md) są dostępne.
-
-Zapoznaj się z omówieniem nowych metryk i Dowiedz się, Znajdź gorąca partycji w bazie danych, obejrzyj poniższy klip wideo z serii piątek z Azure:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Cosmos-DB-Get-the-Most-Out-of-Provisioned-Throughput/player]
-> 
 
 W tym artykule przedstawiono typowe przypadki użycia i jak metryki usługi Azure Cosmos DB umożliwia analizowanie i debugowanie tych problemów. Metryki są zbierane, co pięć minut i są przechowywane przez 7 dni.
 

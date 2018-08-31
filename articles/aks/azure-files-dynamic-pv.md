@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: ea77244d4b2e078c5eda716e94a97291350228f5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059592"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285689"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trwałe woluminów przy użyciu usługi Azure files
 
@@ -73,7 +73,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Klastry usługi AKS używają Kubernetes kontroli dostępu opartej na rolach (RBAC) do limitu akcji, które mogą być wykonywane. *Role* zdefiniować uprawnienia, aby przyznać użytkownikom, i *powiązania* zastosować je do odpowiednich użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub dla całego klastra. Aby uzyskać więcej informacji, zobacz [autoryzacji RBAC przy użyciu][kubernetes-rbac].
 
-Aby zezwolić na platformie Azure do utworzenia zasobów wymaganych magazynu, należy utworzyć *clusterrole* i *clusterrolebinding*. Utwórz plik o nazwie `azure-pvc-roles.yaml` i skopiuj do poniższego kodu YAML:
+Aby zezwolić na platformie Azure do utworzenia zasobów wymaganych magazynu, należy utworzyć *ClusterRole* i *ClusterRoleBinding*. Utwórz plik o nazwie `azure-pvc-roles.yaml` i skopiuj do poniższego kodu YAML:
 
 ```yaml
 ---

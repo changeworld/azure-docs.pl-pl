@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091828"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286336"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -22,8 +22,10 @@ ms.locfileid: "43091828"
 Bieżąca wersja bazy danych SQL jest wersja V12. W wersji V11 został wycofany.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Co to jest umowa SLA dla usługi SQL Database?
-Firma Microsoft gwarantuje dostępność przez 99,99% czasu, możesz korzystać z łączności między usługi Microsoft Azure SQL Database i bramą internetową firmy Microsoft niezależnie od tego, w warstwie usługi. Aby uzyskać więcej informacji, zobacz [SLA](http://azure.microsoft.com/support/legal/sla/).
+Firma Microsoft gwarantuje dostępność przez 99,99% czasu, możesz korzystać z łączności między usługi Microsoft Azure SQL Database i bramą internetową firmy Microsoft niezależnie od tego, w warstwie usługi. 0,01% jest zarezerwowana do poprawki, aktualizacje i przejścia w tryb failover. Aby uzyskać więcej informacji, zobacz [SLA](http://azure.microsoft.com/support/legal/sla/). Aby uzyskać informacje o architekturze dostępność usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md). 
 
+## <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować to sytuacji poprawek przestoju
+Nie. Zwykle wpływ poprawek nie jest operacja Jeśli możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji.
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co to jest nowy oparty na rdzeniach wirtualnych zakupu model usługi Azure SQL Database?
 
 Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji. 

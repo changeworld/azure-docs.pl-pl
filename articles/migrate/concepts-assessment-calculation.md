@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 092f0844854c13898fd7f07ce9b7ddea98ff01ed
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263013"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286277"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -40,7 +40,7 @@ Usługa Azure Migrate monitoruje następujące właściwości lokalnej maszyny W
 --- | --- | ---
 **Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa, jeśli typ rozruchu to UEFI.
 **Liczba rdzeni** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (32) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Gotowe, jeśli są mniejsze niż lub równe limitów.
-**Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (3892 GB dla serii Azure M Standard_M128m&nbsp;<sup>2</sup>) dozwolone na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Gotowe, jeśli komputer znajduje się w granicach.
+**Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (3892 GB dla serii Azure M Standard_M128m&nbsp;<sup>2</sup>) dozwolone na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Gotowe, jeśli komputer znajduje się w granicach.
 **Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, łącznie z dysku systemu operacyjnego. | Gotowe, jeśli komputer znajduje się w granicach.
 **Sieć** | Maszyna musi być 32 lub najwyżej dwie karty sieciowe podłączone do niego. | Gotowe, jeśli komputer znajduje się w granicach.
 
@@ -107,7 +107,7 @@ W przypadku ustalania rozmiaru na podstawie wydajności, usługi Azure Migrate r
 Jeśli kryterium ustalania rozmiaru to *jako lokalnego rozmiaru*, usługa Azure Migrate nie należy wziąć pod uwagę historię wydajności maszyn wirtualnych i dysków i przydziela SKU maszyny Wirtualnej na platformie Azure, w zależności od rozmiaru przydzielone lokalnie. Podobnie w przypadku dla rozmiaru dysku, sprawdza typ magazynu określona we właściwościach oceny (standardowa/Premium) i w związku z tym zaleca typ dysku. Domyślny typ magazynu jest dysków w warstwie Premium.
 
 ### <a name="confidence-rating"></a>Ocena zaufania
-Każda oparte na wydajności ocena w usłudze Azure Migrate jest skojarzona z oceną zaufania obejmującą zakres od 1 gwiazdki do 5 gwiazdek (1 gwiazdka to najniższa i 5 gwiazdek — najwyższa). Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny. Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate. Ocena zaufania nie stosuje się do oceny lokalne.
+Każda bazująca na wydajności ocena w usłudze Azure Migrate jest skojarzona z oceną zaufania obejmującą zakres od 1 gwiazdki do 5 gwiazdek (1 gwiazdka to najniższa ocena, 5 gwiazdek — najwyższa). Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny. Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate. Ocena zaufania nie ma przełożenia na oceny lokalne.
 
 W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate potrzebuje danych o użyciu procesora CPU i pamięci maszyny wirtualnej. Ponadto dla każdego dysku podłączonego do maszyny wirtualnej potrzebuje ona danych o liczbie operacji odczytu/zapisu na sekundę i przepływności. Analogicznie dla każdej karty sieciowej podłączonej do maszyny wirtualnej usługa Azure Migrate potrzebuje danych o ruchu wchodzącym/wychodzącym sieci do ustalenia rozmiaru na podstawie wydajności. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
 
