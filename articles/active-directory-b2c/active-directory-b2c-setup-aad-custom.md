@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cb70828960220bbc1e37321b77375fe2c42ee1b6
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: af97a85b4d5d9c38f0e2bf8947482a0585fa6ee1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060716"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338315"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Usługa Azure Active Directory B2C: Zaloguj się przy użyciu konta usługi Azure AD
 
@@ -54,7 +54,7 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
     >Wartość "yourtenant" musi być tylko małe litery w **adres URL logowania**.
 
     ```
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 8. Zapisz identyfikator aplikacji.

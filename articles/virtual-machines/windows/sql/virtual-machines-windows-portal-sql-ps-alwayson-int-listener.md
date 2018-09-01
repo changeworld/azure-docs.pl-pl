@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307990"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381799"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden Always On odbiorników grup dostępności — Resource Manager
 W tym temacie przedstawiono sposób:
@@ -42,6 +42,8 @@ Powiązane tematy obejmują:
 
 ## <a name="configure-the-windows-firewall"></a>Skonfiguruj zaporę Windows
 Skonfiguruj zaporę Windows, aby zezwolić na dostęp do programu SQL Server. Reguły zapory zezwalają na połączenia protokołu TCP do użycia portów w programie wystąpienia programu SQL Server i badania odbiornika. Aby uzyskać szczegółowe instrukcje, zobacz [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Utwórz regułę ruchu przychodzącego dla portu programu SQL Server i port sondy.
+
+Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Przykładowy skrypt: Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell
 > [!NOTE]
@@ -195,8 +197,9 @@ Należy pamiętać, że następujące wytyczne dotyczące odbiornika grupy dost�
 
 * Przy użyciu wewnętrznego modułu równoważenia obciążenia możesz uzyskać dostęp tylko do odbiornika z w ramach tej samej sieci wirtualnej.
 
+* Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
-## <a name="for-more-information"></a>Więcej informacji
+## <a name="for-more-information"></a>Aby uzyskać więcej informacji
 Aby uzyskać więcej informacji, zobacz [dostępności Konfigurowanie zawsze włączonej grupie w maszynie Wirtualnej platformy Azure ręcznie](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell

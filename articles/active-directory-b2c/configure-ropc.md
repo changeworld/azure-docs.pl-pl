@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4cfd11499efb5978359fd98204271477c52491b5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 519f13d668f09fb2d83e8f64767e195e2544fc1e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621994"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343290"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
 
@@ -46,10 +46,10 @@ Następujące przepływy nie są obsługiwane:
 
    Następnie zobaczysz punkt końcowy, np. w tym przykładzie:
 
-   `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
+   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Rejestrowanie aplikacji
+## <a name="register-an-application"></a>Zarejestruj aplikację
 
 1. W ustawieniach usługi B2C należy wybrać **aplikacje**, a następnie wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę aplikacji, taką jak *ROPC_Auth_app*.
@@ -64,14 +64,14 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 - Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasady poświadczeń hasła właściciela zasobu.
 - Zastąp  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z Twojej rejestracji.
 
-`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 | Klucz | Wartość |
 | --- | ----- |
 | nazwa użytkownika | leadiocl@outlook.com |
 | hasło | Passxword1 |
 | grant_type | hasło |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| zakres | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | id_token tokenu |
 
@@ -81,7 +81,7 @@ Rzeczywiste żądanie POST wygląda podobnie do poniższego:
 
 ```
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: login.microsoftonline.com
+Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -104,7 +104,7 @@ Pomyślnej odpowiedzi z dostęp w trybie offline będzie wyglądać następując
 
 Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniższej tabeli jako treść żądania:
 
-`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 | Klucz | Wartość |
 | --- | ----- |

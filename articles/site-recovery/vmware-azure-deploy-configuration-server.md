@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 02dc4657f6c594242d12e3eca270a3549b77bf02
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056763"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337762"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -81,7 +81,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 1. Kliknij prawym przyciskiem myszy maszynę wirtualną na liście w kliencie vSphere, a następnie wybierz pozycję **Edytuj ustawienia**.
 2. Na stronie **Hardware** (Sprzęt) wybierz pozycje **Add** > **Ethernet Adapter** (Dodaj, Karta Ethernet). Następnie wybierz przycisk **Dalej**.
-3. Wybierz typ karty i sieć. 
+3. Wybierz typ karty i sieć.
 4. Aby połączyć z wirtualnej karty Sieciowej, gdy maszyna wirtualna jest włączona, wybierz pozycję **Połącz po włączeniu**. Następnie wybierz pozycję **dalej** > **Zakończ** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Rejestrowanie serwera konfiguracji za pomocą usługi Azure Site Recovery
@@ -95,14 +95,14 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie.
 8. Ponownie zaloguj się do maszyny. Zostanie uruchomiony Kreator zarządzania serwerem konfiguracji **automatycznie** w ciągu kilku sekund.
 
-### <a name="configure-settings"></a>Konfigurowanie ustawień
+### <a name="configure-settings"></a>Konfiguruj ustawienia
 
 1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go.
 2. W **magazyn usługi Recovery Services zaznacz**, zaloguj się w usłudze Microsoft Azure, wybierz swoją subskrypcję platformy Azure i grupę zasobów i magazyn.
 
     > [!NOTE]
     > Po zarejestrowaniu, istnieje możliwość zmiany magazynu usługi recovery services.
-    
+
 3. W **instalowanie oprogramowania innych firm**,
 
     |Scenariusz   |Kroki do wykonania  |
@@ -144,6 +144,10 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
 Aby uaktualnić serwer konfiguracji do najnowszej wersji, przeczytaj kroki podane [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+
+## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
+
+Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

@@ -1,6 +1,6 @@
 ---
-title: Administrowanie usługi dla usługi Azure Search w portalu Azure
-description: Zarządzaj usługi Azure Search, Usługa wyszukiwania w hostowanej chmurze w systemie Microsoft Azure, przy użyciu portalu Azure.
+title: Administrowania usługami dla usługi Azure Search w witrynie Azure portal
+description: Zarządzanie wyszukiwaniem platformy Azure, Usługa wyszukiwania w chmurze hostowanych na Microsoft Azure, przy użyciu witryny Azure portal.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -9,115 +9,115 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 896a12db1ac196b6de1e57dde9b5910e11dcc8c7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6e751715146d0dfa5c89ae8c2e8cb23d8337432f
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797047"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371231"
 ---
-# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Administrowanie usługi dla usługi Azure Search w portalu Azure
+# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Administrowania usługami dla usługi Azure Search w witrynie Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [Program PowerShell](search-manage-powershell.md)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Usługa wyszukiwanie Azure to usługa wyszukiwania w pełni zarządzana, oparte na chmurze używaną do tworzenia zaawansowanych wyszukiwanie w aplikacje niestandardowe. W tym artykule omówiono *usługi administracyjnej* zadań, które można wykonywać w [portalu Azure](https://portal.azure.com) usługi wyszukiwania, która została już przydzielona. *Usługi administracyjnej* jest lekki zgodnie z projektem, ograniczone do następujących zadań:
+Usługa Azure Search to usługa wyszukiwania w pełni zarządzanej, oparte na chmurze używana do tworzenia zaawansowanych funkcji wyszukiwania w aplikacjach niestandardowych. W tym artykule opisano *usługi administracyjnej* zadań wykonywanych w [witryny Azure portal](https://portal.azure.com) usługi wyszukiwania, które zostały już aprowizowane. *Usługa administracji* ma uproszczoną konstrukcję zgodnie z projektem, ograniczone do następujących zadań:
 
-* Zarządzanie i zabezpieczanie dostępu do *klucze interfejsu api* używany do odczytu lub zapisu z usługą.
-* Dostosuj wydajność usługi, zmieniając Alokacja partycji i replik.
-* Monitorowanie użycia zasobów, względem maksymalną wartością warstwę usług.
+* Zarządzanie i zabezpieczanie dostępu do *klucze api Key* używany do odczytu lub zapisu do usługi.
+* Dostosuj pojemności usługi, zmieniając Alokacja partycje i repliki.
+* Monitorowanie użycia zasobów, względem maksymalnych limitów wybranej warstwie usługi.
 
-Zwróć uwagę, że *uaktualnienia* nie jest wymieniony jako zadania administracyjnego. Ponieważ zasoby są przydzielane po zainicjowaniu obsługi usługi, przejście z inną warstwą wymaga nowej usługi. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Azure Search](search-create-service-portal.md).
+Należy zauważyć, że *uaktualnienia* nie jest wymieniony jako zadań administracyjnych. Ponieważ zasoby są przydzielane, gdy usługa jest aprowizowana, przejście do innej warstwy wymaga nowej usługi. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Azure Search](search-create-service-portal.md).
 
 > [!Tip]
-> Szukasz informacji na temat analizowania wydajności ruchu lub zapytania wyszukiwania? Korzyści wgląd w informacje wolumin zapytania, które osoby warunki wyszukiwania, i jak pomyślne wyniki wyszukiwania są przeprowadzi klientów do określonych dokumentów w indeksie. Aby uzyskać instrukcje, zobacz [analizy ruchu wyszukiwania dla usługi wyszukiwanie Azure](search-traffic-analytics.md), [monitorowanie metryk użycia i zapytania](search-monitor-usage.md), i [wydajności i optymalizacji](search-performance-optimization.md).
+> Szukasz pomocy na temat sposobu analizowania wydajności ruchu sieciowego lub zapytanie wyszukiwania? Uzyskaj wgląd w zapytanie wolumin, który warunki wynikach wyszukiwania, i jak pomyślne wyniki wyszukiwania są informacjami klientów do określonych dokumentów w indeksie. Aby uzyskać wskazówki, zobacz [Search Traffic Analytics dla usługi Azure Search](search-traffic-analytics.md), [monitorować metryki użycia i zapytania](search-monitor-usage.md), i [wydajność i optymalizacja](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
-## <a name="administrator-rights"></a>Prawa administratora
-Inicjowanie obsługi administracyjnej lub likwidowanie sama usługa może odbywać się przez administratora subskrypcji platformy Azure lub współadministratorem.
+## <a name="administrator-rights"></a>Uprawnienia administratora
+Inicjowanie obsługi administracyjnej lub likwidowanie sama usługa może odbywać się przez administratora subskrypcji platformy Azure lub administrator współpracujący.
 
-W ramach usługi kto ma dostęp do adresu URL usługi i klucz interfejsu api administratora ma dostęp do odczytu i zapisu do usługi. Dostęp do odczytu zapisu zapewnia możliwość dodania, usunięcia lub zmodyfikowania obiektów serwera, w tym klucze interfejsu api, indeksów, indeksatorów, źródła danych, harmonogramów i przypisania ról, ponieważ implementowane za pośrednictwem [zdefiniowane RBAC ról](search-security-rbac.md).
+W ramach usługi każda osoba mająca dostęp do adresu URL usługi i klucza interfejsu api usługi Administrator ma dostęp do odczytu i zapisu do usługi. Dostęp do odczytu i zapisu zapewnia możliwość dodania, usunięcia lub zmodyfikowania obiektów serwera, w tym klucze api Key, indeksów, indeksatorów, źródła danych, harmonogramy i przypisania roli zaimplementowanego przy użyciu [role RBAC, zdefiniowane](search-security-rbac.md).
 
-Cała interakcja użytkownika z usługi Azure Search znajduje się w jeden z następujących trybów: dostęp do odczytu i zapisu do usługi (prawa administratora) lub dostęp tylko do odczytu do usługi (zapytania praw). Aby uzyskać więcej informacji, zobacz [zarządzanie kluczami interfejsu api](search-security-api-keys.md).
+Cała interakcja użytkownika z usługi Azure Search znajduje się w jednym z następujących trybów: dostęp do odczytu i zapisu do usługi (uprawnienia administratora) lub dostęp tylko do odczytu do usługi (prawa do zapytania). Aby uzyskać więcej informacji, zobacz [zarządzanie kluczami interfejsu api](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
 ## <a name="logging-and-system-information"></a>Informacje o rejestracji i system
-Usługa Azure Search nie ujawnia plików dziennika dla poszczególnych usług za pomocą portalu lub interfejsów programistycznych. W warstwie podstawowa i powyżej Microsoft monitoruje wszystkie usługi Azure Search dostępności 99,9% na umów dotyczących poziomu usług (SLA). Jeśli usługa jest powolne lub przepływności żądania spada poniżej progów umowy dotyczącej poziomu usług, zespoły pomocy technicznej, przejrzyj pliki dziennika dostępne dla nich i rozwiąż problem.
+Usługa Azure Search nie ujawnia plików dziennika dla poszczególnych usług za pośrednictwem portalu lub interfejsów programistycznych. W warstwie podstawowa i powyżej Microsoft monitoruje wszystkie usługi Azure Search przez 99,9% czasu według umowy dotyczące poziomu usług (SLA). Jeśli usługa jest powolne lub żądań spadnie poniżej progów umowy SLA, zespoły pomocy technicznej Przejrzyj pliki dziennika dostępne dla nich i rozwiązać problem.
 
-Pod względem ogólne informacje o usłudze informacje można uzyskać w następujący sposób:
+Pod względem ogólne informacje na temat usługi informacje można uzyskać w następujący sposób:
 
-* W portalu na pulpicie nawigacyjnym usługi za pomocą powiadomień, właściwości i komunikaty o stanie.
-* Przy użyciu [PowerShell](search-manage-powershell.md) lub [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) do [pobrać właściwości usługi](https://docs.microsoft.com/rest/api/searchmanagement/services), lub stan użycia zasobów indeksu.
-* Za pomocą [analizy ruchu wyszukiwania](search-traffic-analytics.md), jak podano wcześniej.
+* W portalu na pulpicie nawigacyjnym usługi za pośrednictwem powiadomienia, właściwości i komunikaty o stanie.
+* Za pomocą [PowerShell](search-manage-powershell.md) lub [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) do [pobrać właściwości usługi](https://docs.microsoft.com/rest/api/searchmanagement/services), lub stan użycia zasobów indeksu.
+* Za pomocą [analiza ruchu wyszukiwania](search-traffic-analytics.md), jak wspomniano wcześniej.
 
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>Monitorowanie użycia zasobów
-Na pulpicie nawigacyjnym monitorowania zasobów jest ograniczona do informacje wyświetlane na pulpicie nawigacyjnym usługi i kilka metryk, które można uzyskać przez wysyłanie zapytań usługi. Na pulpicie nawigacyjnym usługi w sekcji obciążenie może szybko określić, czy poziomy zasobów partycji są odpowiednie dla twojej aplikacji.
+Na pulpicie nawigacyjnym monitorowania zasobów jest ograniczona do informacje wyświetlane na pulpicie nawigacyjnym usługi i kilka metryk, które można uzyskać, badając usługę. Na pulpicie nawigacyjnym usługi w sekcji użycia może szybko określić, czy poziomy zasobów partycji są odpowiednie dla twojej aplikacji.
 
-Przy użyciu interfejsu API REST usługi wyszukiwania, możesz uzyskać liczbę dokumentów oraz indeksów programowo: 
+Przy użyciu interfejsu API REST usługi Search, możesz uzyskać liczby w indeksach i dokumentach programowe: 
 
-* [Uzyskać statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Pobieranie statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Liczba dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
-## <a name="disaster-recovery-and-service-outages"></a>Awarie awaryjnego odzyskiwania i usługi
+## <a name="disaster-recovery-and-service-outages"></a>Awarie awaryjnego odzyskiwania i usługa
 
-Mimo że firma Microsoft może odzyskana danych, usługi Azure Search nie zapewnia błyskawiczne pracy awaryjnej usługi, w przypadku awarii na poziomie Centrum klastra lub danych. Jeśli klaster nie powiedzie się w centrum danych, zespół operacyjny wykryje i współpracują w celu przywrócenia usługi. Podczas przywracania usługi wystąpi Przestój. Możesz poprosić o zniżki kompensacji niedostępności usługi na [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Mimo że firma Microsoft jest odzyskana danych, usługi Azure Search nie zapewnia błyskawiczne pracy awaryjnej usługi, w przypadku awarii na poziomie Centrum klastra lub danych. Jeśli klaster nie powiedzie się w centrum danych, zespół operacyjny wykryje i współpracują w celu przywrócenia usługi. Wystąpi przestój podczas przywracania usługi. Możesz poprosić o środki na usługi w celu kompensacji niedostępność usługi na [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Jeśli usługa ciągłego jest wymagana w przypadku poważnej awarii poza kontrolą firmy Microsoft, można [obsługi administracyjnej dodatkowych usług](search-create-service-portal.md) w innym regionie i wdrożenie strategii — replikacja geograficzna w celu zapewnienia indeksy są pełni nadmiarowe we wszystkich usługach.
+Jeśli usługa ciągłej jest wymagana w przypadku poważnej awarii poza kontrolą firmy Microsoft, można wykonać następujące akcje [obsługi administracyjnej dodatkowych usług](search-create-service-portal.md) w innym regionie i wdrożenie strategii replikacji geograficznej, aby upewnić się, indeksy są w pełni nadmiarowe we wszystkich usługach.
 
-Klienci korzystający z [indeksatory](search-indexer-overview.md) do wypełniania, a następnie Odśwież indeksów może obsłużyć odzyskiwania po awarii przy użyciu indeksatorów specyficzne dla magazynu geograficznie korzystania z tego samego źródła danych. Dwie usługi w różnych regionach, systemem indeksatora, można indeksu z tego samego źródła danych w celu osiągnięcia nadmiarowość geograficzna. Jeśli indeksujesz ze źródeł danych, które są również geograficznie nadmiarowego należy pamiętać, że usługi Azure Search indeksatory można wykonać tylko przyrostowe indeksowania z repliki podstawowej. W przypadku trybu failover należy ponownie wskaż indeksatora nowej repliki podstawowej. 
+Klienci, którzy używają [indeksatory](search-indexer-overview.md) do wypełniania i Odśwież indeksów może obsługiwać odzyskiwania po awarii przy użyciu indeksatorów specyficzne dla geograficznie korzystanie z tego samego źródła danych. Dwie usługi w różnych regionach, uruchamianie indeksatora, można indeksować z tego samego źródła danych w celu osiągnięcia nadmiarowość geograficzna. Jeśli indeksujesz ze źródeł danych, które są również magazynu geograficznie nadmiarowego należy pamiętać, że indeksatorów usługi Azure Search może wykonywać tylko przyrostowe indeksowanie z replikami podstawowymi. W przypadku pracy awaryjnej należy ponownie punkt indeksator do nowej repliki podstawowej. 
 
-Jeśli nie używasz indeksatorów, będą używać do wypychania obiekty kod aplikacji i danych do usługi wyszukiwania różnych równolegle. Aby uzyskać więcej informacji, zobacz [wydajności i optymalizacji w usłudze Azure Search](search-performance-optimization.md).
+Jeśli nie korzystać z indeksatorów, należy użyć kodu aplikacji do wypychania obiektów i danych do usługi wyszukiwania innym równolegle. Aby uzyskać więcej informacji, zobacz [wydajność i optymalizacja w usłudze Azure Search](search-performance-optimization.md).
 
-## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
-Ponieważ usługa Azure Search nie jest rozwiązanie magazynu danych podstawowych, nie udzielamy posiadanie mechanizmu samoobsługowego tworzenia kopii zapasowych i przywracania. Kod aplikacji używanych do tworzenia i wypełniania indeksu jest faktyczne opcja przywracania, jeśli przez pomyłkę usuwanie indeksu. 
+Ponieważ usługa Azure Search nie jest rozwiązanie magazynu danych podstawowych, nie są oferowane posiadanie mechanizmu samoobsługi kopii zapasowych i przywracania. Kod aplikacji używanych do tworzenia i wypełniania indeksu jest de facto opcja przywracania, jeśli przez pomyłkę usuwanie indeksu. 
 
-Do ponownego utworzenia indeksu, czy usunąć go (przy założeniu, że istnieje), ponownie utwórz indeks w usłudze i załaduj ponownie przez pobranie danych z magazynu danych podstawowych. Alternatywnie możesz może dotrzeć do [techniczną]() indeksów odzyskana w przypadku regionalnej awarii.
+Do ponownego utworzenia indeksu, czy usunąć go (przy założeniu, że istnieje), ponowne utworzenie indeksu w usłudze i ponownie załaduj przez pobranie danych z podstawowym magazynem danych. Alternatywnie możesz połączyć pracownikowi pomocy technicznej do indeksów odzyskana w przypadku regionalnej awarii.
 
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Skalowanie w górę lub w dół
-Każda usługa wyszukiwania rozpoczyna się od co najmniej jedna replika i jedną partycję. Jeśli użytkownik utworzył konto na [warstwy, która zapewnia zasobów dedykowanych](search-limits-quotas-capacity.md), kliknij przycisk **skali** kafelka na pulpicie nawigacyjnym usługi, aby dopasować użycia zasobów.
+Każda usługa wyszukiwania rozpoczyna się od co najmniej jedną replikę i jedną partycję. Jeśli rejestracja w programie [warstwę, która zapewnia zasoby dedykowane](search-limits-quotas-capacity.md), kliknij przycisk **SKALOWANIA** kafelka na pulpicie nawigacyjnym usługi dostosowania użycia zasobów.
 
-Po dodaniu pojemności za pośrednictwem albo zasób usługi używa je automatycznie. Nie są wymagane nie dalsze działania ze strony użytkownika, ale występuje niewielkie opóźnienie przed wpływ nowy zasób jest realizowana. Może zająć 15 minut lub dłużej zainicjowanie obsługi dodatkowych zasobów.
+Po dodaniu pojemność przy użyciu dowolnego zasobu, usługa korzysta z ich automatycznie. Ze strony użytkownika są wymagane żadne dalsze działania, ale występuje niewielkie opóźnienie, zanim wpływ nowy zasób jest wykonywane. Może potrwać 15 minut lub dłużej zainicjowanie obsługi dodatkowych zasobów.
 
  ![][10]
 
-### <a name="add-replicas"></a>Dodawanie repliki
-Zwiększenie zapytania na sekundę (QPS) lub osiągnięcia wysokiej dostępności polega na dodaniu repliki. Każdej repliki ma jedną kopię indeksu, dodawanie jedna replika więcej tłumaczy do jednego indeksu więcej dostępnych do obsługi żądań zapytań usługi. Co najmniej 3 repliki są wymagane w celu zapewnienia wysokiej dostępności (zobacz [planowania pojemności](search-capacity-planning.md) szczegółowe informacje).
+### <a name="add-replicas"></a>Dodawanie replik
+Zwiększenie zapytań na sekundę (QPS) i osiągnięcie wysokiej dostępności odbywa się przez dodanie replik. Każdej repliki ma jedną kopię indeksu, więc dodanie jednej replice więcej przekłada się na jednym więcej indeksu do obsługi żądań zapytań usługi. Co najmniej 3 replik są wymagane w celu zapewnienia wysokiej dostępności (zobacz [planowania pojemności](search-capacity-planning.md) Aby uzyskać szczegółowe informacje).
 
-Mając więcej repliki usługi wyszukiwania można równoważenia obciążenia zapytania żądań kierowanych przez większą liczbę indeksów. Podana na poziomie woluminu zapytania, przepływności zapytania będzie przebiegać szybciej w przypadku większej liczby kopii indeksu dostępnych do obsługi żądania. Jeśli występuje opóźnienie kwerendy, można oczekiwać pozytywny wpływ na wydajność, po dodatkowe repliki są w trybie online.
+Usługę wyszukiwania, w której większa liczba replik można załadować saldo żądań zapytań za pośrednictwem większej liczby indeksów. Biorąc pod uwagę na poziomie woluminu zapytania, przepustowości operacji zapytań będzie można szybciej w przypadku większej liczby kopii indeksu, które są dostępne do obsłużenia żądania. Jeśli występuje opóźnienie zapytań, można oczekiwać, że pozytywnie wpłyną na wydajność po dodatkowe repliki są w trybie online.
 
-Przepływność zapytania rośnie w miarę dodawania replik, go nie dokładnie dwukrotnie lub potrójne repliki podczas dodawania do usługi. Wszystkie aplikacje wyszukiwania podlegają czynnikami zewnętrznymi, które można wpływają na wydajność kwerend. Złożonych kwerend i opóźnienie sieci są dwa czynniki, które przyczyniają się do zmian w czas odpowiedzi na zapytania.
+Przepływności zapytań rośnie w miarę dodawania repliki, go nie precyzyjnie dwukrotnie lub potrójne repliki podczas dodawania do usługi. Wszystkie aplikacje wyszukiwania podlegają czynniki zewnętrzne, które można wpływają na wydajność zapytań. Złożone zapytania i opóźnienie sieci są dwa czynniki przyczyniające się do zmian w czas odpowiedzi na zapytania.
 
 ### <a name="add-partitions"></a>Dodawanie partycji
-Większość aplikacji usługi ma wbudowane potrzeba więcej repliki zamiast partycji. Dla tych przypadków, gdy wymagana jest liczba zwiększona dokumentu można dodać partycji, jeśli konta usługi — warstwa standardowa. Warstwa podstawowa nie zapewnia dodatkowych partycji.
+Większość aplikacji usługi ma wbudowane potrzebę replik więcej, a nie partycji. Dla tych przypadków, w których wymagane są liczby dokumentów zwiększona można dodać partycji, jeśli zostało utworzone konto dla usług w warstwie standardowa. Warstwa podstawowa udostępniają dodatkowe partycje.
 
-W warstwie standardowa partycje są dodawane w wielokrotności 12 (w szczególności 1, 2, 3, 4, 6 i 12). Jest to artefaktu dzielenia na fragmenty. Indeks jest tworzony w 12 fragmentów, których wszystkie można przechowywany na partycji 1 lub jednakowo podzielone na 2, 3, 4, 6 lub 12 partycji (jednego niezależnego fragmentu jednej partycji).
+W warstwie standardowa partycje są dodawane w wielokrotnościach 12 (w szczególności 1, 2, 3, 4, 6 lub 12). To jest pozostałością dzielenia na fragmenty. Indeks jest tworzony w 12 fragmentów, które można wszystkie przechowywane na partycji 1 lub dzielone równo między 2, 3, 4, 6 lub 12 partycjami (jednego fragmentu na partycję).
 
 ### <a name="remove-replicas"></a>Usuwanie repliki
-Po okresach woluminów wysokiej kwerendy można zmniejszyć replik po ładowania zapytań wyszukiwania ma znormalizowany (na przykład po sprzedaży świąteczne za pośrednictwem).
+Po okresach woluminy wysokiej zapytania można zmniejszyć repliki po obciążeń zapytaniami wyszukiwania mają znormalizowane (na przykład po sprzedaży w okresie świątecznym za pośrednictwem).
 
-Aby to zrobić, przesuń suwak repliki wstecz na mniejszą liczbę. Nie istnieją żadne dodatkowe czynności, wymagane ze strony użytkownika. Zmniejszenie liczby replik zwalnia maszyn wirtualnych w centrum danych. Wprowadzanie operacje zapytań i danych będzie uruchamiana na maszynach wirtualnych mniej niż przed. Minimalny limit to jedna replika.
+Aby to zrobić, ustaw repliki suwak z powrotem na niższą. Nie ma żadnych dalszych kroków wymagane ze strony użytkownika. Zmniejszenie liczby replik zwalnia maszyn wirtualnych w centrum danych. Pozyskiwanie operacji zapytań i danych teraz zostanie uruchomiona na maszynach wirtualnych mniej niż przed. Minimalny limit to jedna replika.
 
-### <a name="remove-partitions"></a>Usuń partycje
-W przeciwieństwie do usuwania repliki, który wymaga nie dodatkowych działań ze strony użytkownika, konieczne może być niektórych pracy zrobić, jeśli używasz więcej licencji, niż można zmniejszyć. Na przykład jeśli rozwiązanie używa trzech partycji, redukcję zatrudnienia na co najmniej dwie partycje wygeneruje błąd, jeśli nowego miejsca do magazynowania jest mniejsza niż jest to wymagane. Zgodnie z oczekiwaniami może wybrane opcje są Usuń indeksy lub dokumentów w ramach skojarzonego indeksu, aby zwolnić miejsce, lub zachować bieżącą konfigurację.
+### <a name="remove-partitions"></a>Usuwanie partycji
+W przeciwieństwie do usuwania repliki, co wymaga nie dodatkowych działań ze strony użytkownika, może mieć jakąś pracę, należy zrobić, jeśli używasz więcej miejsca niż można zmniejszyć. Na przykład jeśli Twoje rozwiązanie używa trzech partycji, redukcję zatrudnienia na co najmniej dwie partycje wygeneruje błąd, jeśli nowe miejsce do magazynowania jest mniejsza niż jest to wymagane. Zgodnie z oczekiwaniami, wybrane opcje są umożliwia usunięcie indeksów lub dokumentów w ramach skojarzonego indeksu, aby zwolnić miejsce lub zachować bieżącą konfigurację.
 
-Nie istnieje metoda wykrywania informujący o tym, które odłamków indeksu są przechowywane na określonej partycji. Każda partycja zawiera około 25 GB w magazynie, musisz zmniejszyć rozmiar, że są spełnione przez liczbę partycji, do których masz magazynu. Jeśli chcesz przywrócić jedną partycję, wszystkie odłamków 12 należy dopasować.
+Nie istnieje metoda wykrywania informujące o tym, które fragmenty indeksu są przechowywane na określone partycje. Każda partycja zawiera około 25 GB w magazynie, więc należy zmniejszyć magazyn do rozmiaru, że są spełnione przez liczbę partycji, do których masz. Jeśli chcesz powrócić do jednej partycji, wszystkich fragmentów 12 będzie konieczne jest dopasowanie.
 
-Aby pomóc w planowaniu w przyszłości, można sprawdzić magazynu (przy użyciu [uzyskać statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) aby zobaczyć, ile rzeczywiście używane. 
+Aby ułatwić planowanie w przyszłości, możesz chcieć sprawdzić magazynu (przy użyciu [pobieranie statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) aby zobaczyć, ile rzeczywiście używane. 
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment"></a>Najlepsze rozwiązania w skali i wdrażania
-Ten 30-minutowy film wideo przegląda najlepsze rozwiązania dotyczące wdrażania zaawansowanych scenariuszy, w tym rozproszona geograficznie obciążeń. Możesz również sprawdzić [wydajności i optymalizacji w usłudze Azure Search](search-performance-optimization.md) dla stron pomocy, które obejmują tych samych punktów.
+## <a name="best-practices-on-scale-and-deployment"></a>Najlepsze rozwiązania dotyczące skalowania i wdrażania
+W tym 30-minutowe wideo przeglądów najlepsze rozwiązania dotyczące zaawansowanych scenariuszach wdrożenia, w tym rozproszone geograficznie obciążenia. Można również wyświetlić [wydajność i optymalizacja w usłudze Azure Search](search-performance-optimization.md) dla stron pomocy, które obejmują tych samych punktów.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 
@@ -126,11 +126,11 @@ Ten 30-minutowy film wideo przegląda najlepsze rozwiązania dotyczące wdrażan
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po zrozumieniu pojęć dotyczących administracji usługi, rozważ użycie [PowerShell](search-manage-powershell.md) do automatyzowania zadań.
+Po zrozumieniu pojęć dotyczących administracji usługi, należy wziąć pod uwagę przy użyciu [PowerShell](search-manage-powershell.md) do automatyzowania zadań.
 
-Zalecamy również recenzowania [wydajności i optymalizacji artykułu](search-performance-optimization.md).
+Zalecamy również przeglądanie [wydajność i optymalizacja artykułu](search-performance-optimization.md).
 
-Inny zalecane jest aby obejrzeć wideo zanotowanym w poprzedniej sekcji. Zapewnia on lepszą pokrycia technik wymienionych w tej sekcji.
+Inny zalecane jest aby obejrzeć wideo, o których wspomniano w poprzedniej sekcji. Zawiera pokrycie głębiej techniki opisane w tej sekcji.
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

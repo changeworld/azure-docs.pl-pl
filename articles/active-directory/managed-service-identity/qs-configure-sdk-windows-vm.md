@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie tożsamości usługi zarządzanej włączono maszyny Wirtualnej platformy Azure przy użyciu zestawu Azure SDK
-description: Krok po kroku instrukcje dotyczące konfigurowania i używania tożsamości usługi zarządzanej na Maszynie wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
+title: Użyj zestawu SDK platformy Azure, aby skonfigurować Maszynę wirtualną z zarządzanych tożsamości dla zasobów platformy Azure
+description: Krok po kroku instrukcje dotyczące konfigurowania i korzystania z zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,39 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 2763c78d309f5a90d68429caa46581e50f8b4303
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 80368c6e6e879478df98d5c0740d60fa59703f2d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257664"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338389"
 ---
-# <a name="configure-a-vm-managed-service-identity-using-an-azure-sdk"></a>Konfigurowanie tożsamości usługi VM-Managed przy użyciu zestawu Azure SDK
+# <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurowanie maszyny Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure przy użyciu zestawu Azure SDK
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Tożsamość usługi zarządzanej udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (AD). Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
+Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (AD). Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
-W tym artykule dowiesz się, jak włączyć i usunąć tożsamości usługi zarządzanej dla maszyny Wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
+W tym artykule dowiesz się, jak włączyć i Usuń zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-## <a name="azure-sdks-with-managed-service-identity-support"></a>Zestawy SDK platformy Azure z obsługą tożsamości usługi zarządzanej 
+## <a name="azure-sdks-with-managed-identities-for-azure-resources-support"></a>Zestawy SDK platformy Azure z zarządzanych tożsamości dla zasobów platformy Azure obsługują 
 
-Platforma Azure obsługuje wiele platform programistycznych w kolejnych seriach [zestawami SDK Azure](https://azure.microsoft.com/downloads). Niektóre z nich zostały zaktualizowane do obsługi tożsamości usługi zarządzanej i podaj odpowiednie przykłady, aby zademonstrować użycie. Ta lista jest aktualizowana po dodaniu dodatkowej pomocy technicznej:
+Platforma Azure obsługuje wiele platform programistycznych w kolejnych seriach [zestawami SDK Azure](https://azure.microsoft.com/downloads). Niektóre z nich zostały zaktualizowane do obsługi tożsamości zarządzanej dla zasobów platformy Azure i podaj odpowiednie przykłady, aby zademonstrować użycie. Ta lista jest aktualizowana po dodaniu dodatkowej pomocy technicznej:
 
-| SDK | Sample |
+| SDK | Przykład |
 | --- | ------ | 
-| .NET   | [Zarządzanie zasobami z włączoną tożsamości usługi Zarządzanej maszyny Wirtualnej](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Zarządzanie magazynem z włączoną tożsamości usługi Zarządzanej maszyny Wirtualnej](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [Utwórz Maszynę wirtualną z włączoną tożsamością usługi Zarządzanej](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [Utwórz Maszynę wirtualną z włączoną tożsamością usługi Zarządzanej](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Tworzenie maszyny Wirtualnej platformy Azure przy użyciu pliku MSI](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Zarządzanie zasobami z maszyny Wirtualnej włączone z zarządzanych tożsamości dla zasobów platformy Azure, włączone](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [Zarządzanie magazynem za pomocą maszyny Wirtualnej z systemem włączone z zarządzanych tożsamości dla zasobów platformy Azure](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Tworzenie maszyny Wirtualnej za pomocą przypisany systemowo tożsamość zarządzaną włączone](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Tworzenie maszyny Wirtualnej za pomocą przypisany systemowo tożsamość zarządzaną włączone](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Tworzenie maszyny Wirtualnej platformy Azure przy użyciu tożsamości przypisanych przez system, włączone](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz powiązane artykuły w obszarze "Konfigurowanie zarządzanych usługi tożsamości dla maszyny Wirtualnej platformy Azure", aby dowiedzieć się, jak również używać szablonów platformy Azure portal, programu PowerShell, interfejsu wiersza polecenia i zasobów.
-
-W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
+- Zobacz pokrewne artykuły w obszarze **Konfigurowanie tożsamości dla maszyny Wirtualnej platformy Azure**, aby dowiedzieć się, jak również używać szablonów platformy Azure portal, programu PowerShell, interfejsu wiersza polecenia i zasobów.

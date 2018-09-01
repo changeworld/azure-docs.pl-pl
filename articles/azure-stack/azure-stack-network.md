@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617025"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340192"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
@@ -44,8 +44,8 @@ W poniższej tabeli przedstawiono sieci logiczne i skojarzone podsieci zakresy a
 | Publicznych adresów VIP | Korzysta z usługi Azure Stack daje w sumie 31 adresów z tą siecią. Osiem publiczne adresy IP są używane dla małej grupy usługi Azure Stack, a pozostałe są używane przez maszyny wirtualne dzierżawcy. Jeśli planujesz używać usługi App Service i dostawców zasobów SQL 7 większej liczby adresów są używane. Pozostałe 15 adresy IP są zastrzeżone dla przyszłych usług platformy Azure. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
 | Przełącznik infrastruktury | Point-to-Point adresów IP dla celów routingu dedykowanego przełącznika/interfejsów zarządzania i adresy sprzężenia zwrotnego przypisany do przełącznika. | /26 | 
 | Infrastruktura | Używane przez usługę Azure Stack wewnętrznych składników do komunikacji. | /24 |
-| Private | Używane dla sieci magazynu i prywatnych adresów VIP. | /24 | 
-| BMC | Używany do komunikacji ze składnikami bmc na hostach fizycznych. | /27 | 
+| Prywatne | Używane dla sieci magazynu i prywatnych adresów VIP. | /24 | 
+| BMC | Używany do komunikacji ze składnikami bmc na hostach fizycznych. | /26 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>Infrastruktura sieciowa

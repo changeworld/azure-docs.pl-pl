@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f26db8bcb50fa09a8d2829d477f90cac8c52533f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477453"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337578"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Usługi Azure Active Directory B2C: Wbudowane zasady
 
 
-Rozszerzalna struktura zasad usługi Azure Active Directory (Azure AD) B2C jest siły podstawowe usługi. Zasady pełni Opisuje funkcje tożsamości klientów takich jak rejestracji, logowania i edytowania profilu. Na przykład zasady rejestracji pozwala na kontrolowanie zachowania, konfigurując następujące ustawienia:
+Rozszerzalna struktura zasad usługi Azure Active Directory (Azure AD) B2C jest siły podstawowe usługi. Zasady pełni Opisuje funkcje tożsamości klientów takich jak rejestracji, logowania i edytowania profilu. Na przykład zasada rejestracji pozwala na kontrolowanie zachowania dzięki skonfigurowaniu następujących ustawień:
 
 * Typy kont (kont społecznościowych, takich jak Facebook) lub kont lokalnych, takich jak adresy e-mail, które klienci mogą korzystać w celu uzyskania aplikacji
 * Atrybuty (na przykład imię, kod pocztowy i rozmiar buta) mają być zbierane od użytkownika podczas rejestracji
@@ -34,7 +34,7 @@ Zasady są dostępne do użycia przy użyciu interfejsu dewelopera proste. Wyzwa
 
 ```
 
-https://login.microsoftonline.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
+https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
 &response_mode=form_post                            // 'query', 'form_post' or 'fragment'
@@ -48,7 +48,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ```
 
-https://login.microsoftonline.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
+https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
 &response_mode=form_post                            // 'query', 'form_post' or 'fragment'

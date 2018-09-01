@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055897"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382640"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora usługi Storage z programem Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ Aby uzyskać szczegółowe informacje w emulatorze magazynu, takie jak wymagania
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurowanie parametrów połączenia dla emulatora magazynu
-Aby uzyskać dostęp z emulatora magazynu, z kodu w ramach roli, należy skonfigurować parametry połączenia, który wskazuje na emulator magazynu i można to zmienić później, aby wskazać konto usługi Azure storage. Parametry połączenia to ustawienie konfiguracji, który może być odczytany przez Twoją rolę w czasie wykonywania, aby nawiązać połączenie z kontem magazynu. Aby uzyskać więcej informacji na temat tworzenia parametrów połączenia, zobacz [konfigurowania aplikacji na platformie Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+Aby uzyskać dostęp z emulatora magazynu, z kodu w ramach roli, należy skonfigurować parametry połączenia, który wskazuje na emulator magazynu i można to zmienić później, aby wskazać konto usługi Azure storage. Parametry połączenia to ustawienie konfiguracji, który może być odczytany przez Twoją rolę w czasie wykonywania, aby nawiązać połączenie z kontem magazynu. Aby uzyskać więcej informacji na temat tworzenia parametrów połączenia, zobacz [Konfigurowanie usługi Azure Storage, parametry połączenia](/azure/storage/common/storage-configure-connection-string).
 
 > [!NOTE]
 > Może zwrócić odwołanie do konta emulatora magazynu w kodzie za pomocą **DevelopmentStorageAccount** właściwości. Ta metoda działa prawidłowo, jeśli chcesz uzyskać dostęp do emulatora magazynu w kodzie, ale jeśli zamierzasz opublikować aplikację na platformie Azure, musisz utworzyć parametry połączenia można uzyskać dostępu do konta usługi Azure storage i modyfikować kodu, aby użyć tego połączenia ciąg przed jego opublikowaniem. Aby przełączyć się między kontem emulatora magazynu, a konto usługi Azure storage często, ciąg połączenia upraszcza ten proces.

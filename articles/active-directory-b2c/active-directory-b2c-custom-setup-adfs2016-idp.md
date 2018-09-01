@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a81baae553bbf9c58d42372e25e90cd7588f2952
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4380d21eded3f97e3b3107e78c9544a09d1b0bb2
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445079"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338534"
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Usługa Azure Active Directory B2C: Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych
 
@@ -55,12 +55,12 @@ Członkostwo w grupie **Administratorzy**, lub równoważnej na komputerze lokal
 
 5.  Na **Określ nazwę wyświetlaną** strony, wpisz nazwę w **nazwę wyświetlaną**w obszarze **uwagi** wpisz opis tego zaufania jednostki uzależnionej, a następnie kliknij przycisk **dalej** .
     ![Określ nazwę wyświetlaną i uwagi](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
-6.  Opcjonalny. Jeśli certyfikat szyfrowania tokenu opcjonalne, następnie na **konfigurowania certyfikatu** kliknij **Przeglądaj** zlokalizuj plik certyfikatu, a następnie kliknij przycisk **dalej**.
+6.  Opcjonalne. Jeśli certyfikat szyfrowania tokenu opcjonalne, następnie na **konfigurowania certyfikatu** kliknij **Przeglądaj** zlokalizuj plik certyfikatu, a następnie kliknij przycisk **dalej**.
     ![Konfigurowanie certyfikatu](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-5.png)
-7.  Na **Konfiguruj adres URL** wybierz opcję **włączyć obsługę protokołu SAML 2.0 websso** pole wyboru. W obszarze **URL usługi rejestracji Jednokrotnej 2.0 SAML strony Relying**, wpisz adres URL punktu końcowego usługi zabezpieczeń Assertion Markup Language (SAML) dla tego zaufania jednostki uzależnionej, a następnie kliknij przycisk **dalej**.  Aby uzyskać **URL usługi rejestracji Jednokrotnej 2.0 SAML strony Relying**, Wklej `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. Zamień na nazwę Twojej dzierżawy (na przykład contosob2c.onmicrosoft.com) {dzierżawa} i {zasady} Zamień na nazwę zasad rozszerzenia (na przykład B2C_1A_TrustFrameworkExtensions).
+7.  Na **Konfiguruj adres URL** wybierz opcję **włączyć obsługę protokołu SAML 2.0 websso** pole wyboru. W obszarze **URL usługi rejestracji Jednokrotnej 2.0 SAML strony Relying**, wpisz adres URL punktu końcowego usługi zabezpieczeń Assertion Markup Language (SAML) dla tego zaufania jednostki uzależnionej, a następnie kliknij przycisk **dalej**.  Aby uzyskać **URL usługi rejestracji Jednokrotnej 2.0 SAML strony Relying**, Wklej `https://(tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policy}`. Zamień na nazwę Twojej dzierżawy (na przykład contosob2c) {dzierżawa} i {zasady} Zamień na nazwę zasad rozszerzenia (na przykład B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >Nazwa zasad jest tą, która dziedziczy zasady signup_or_signin, w tym przypadku jest: `B2C_1A_TrustFrameworkExtensions`.
-    >Na przykład adres URL może być: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
+    >Na przykład może być adres URL: https://**contosob2c**.b2clogin.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![Jednostki uzależnionej adres URL usługi rejestracji Jednokrotnej 2.0 SAML strony](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Na **skonfiguruj identyfikatory** strony, należy określić ten sam adres URL co w poprzednim kroku, kliknij przycisk **Dodaj** dodać je do listy, a następnie kliknij przycisk **dalej**.

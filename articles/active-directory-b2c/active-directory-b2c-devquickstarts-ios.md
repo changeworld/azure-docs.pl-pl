@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d9be99278797911ce7b49a176861ce6a39c28a1d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443753"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339362"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
 
@@ -60,7 +60,7 @@ W tym przykładzie został utworzony zgodnie z instrukcjami w pliku README [iOS 
 > AppAuth obsługuje system iOS 7 i nowsze wersje.  Jednak, aby zapewnić obsługę społecznościowych nazw logowania w usłudze Google, SFSafariViewController jest potrzebny co wymaga systemu iOS 9 lub nowszą.
 >
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 Komunikację można skonfigurować za pomocą usługi Azure AD B2C, określając punkt końcowy autoryzacji i tokena identyfikatory URI punktów końcowych.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
 * Identyfikator dzierżawy (np. contoso.onmicrosoft.com)
@@ -69,13 +69,13 @@ Komunikację można skonfigurować za pomocą usługi Azure AD B2C, określając
 Punkt końcowy tokenu identyfikatora URI mogą być generowane przez zastąpienie dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
 
 ```objc
-static NSString *const tokenEndpoint = @"https://login.microsoftonline.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
+static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
 Punkt końcowy autoryzacji, które można wygenerować identyfikatora URI, zastępując dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
 
 ```objc
-static NSString *const authorizationEndpoint = @"https://login.microsoftonline.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
+static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
 ```
 
 Uruchom następujący kod, aby utworzyć obiekt AuthorizationServiceConfiguration:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885874"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382120"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpieczenia w usłudze Azure App Service i Azure Functions
 
@@ -29,7 +29,7 @@ Składniki platformy usługi App Service, w tym maszyn wirtualnych platformy Azu
 
 - Zasoby aplikacji są [zabezpieczonej](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) z zasobów platformy Azure innych klientów.
 - [Wystąpienia maszyn wirtualnych i oprogramowania środowiska uruchomieniowego są regularnie aktualizowane,](app-service-patch-os-runtime.md) na adres nowo odnalezione luki w zabezpieczeniach. 
-- Komunikacja z wpisy tajne (takie jak parametry połączenia) między aplikacją i innymi zasobami platformy Azure (takie jak [bazy danych SQL](/services/sql-database/)) pozostaje w obrębie platformy Azure i nie między wszystkie granice sieci. Klucze tajne są zawsze szyfrowane, gdy przechowywane.
+- Komunikacja z wpisy tajne (takie jak parametry połączenia) między aplikacją i innymi zasobami platformy Azure (takie jak [bazy danych SQL](https://azure.microsoft.com/services/sql-database/)) pozostaje w obrębie platformy Azure i nie między wszystkie granice sieci. Klucze tajne są zawsze szyfrowane, gdy przechowywane.
 - Cała komunikacja za pośrednictwem połączenia usługi App Service funkcje, takie jak [połączenia hybrydowego](app-service-hybrid-connections.md), są szyfrowane. 
 - Połączenia za pomocą narzędzi do zarządzania zdalnego programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, zestawy SDK platformy Azure, interfejsy API REST, wszystkie szyfrowane.
 - 24-godzinny zagrożeń, zarządzania zapewnia ochronę infrastruktury i platformy, przed złośliwym oprogramowaniem, distributed denial of service (DDoS), ataków typu man-in--middle (MITM) i innymi zagrożeniami.
@@ -82,9 +82,9 @@ Istnieją trzy typy zasobów zdalnych, które aplikacja może być konieczne dos
 
 W każdym z tych przypadków usługa App Service zapewnia sposób nawiązywanie bezpiecznych połączeń, ale nadal należy przestrzegać najlepszych rozwiązań dotyczących zabezpieczeń. Na przykład zawsze używać połączeń szyfrowanych nawet wtedy, gdy zasób zaplecza zezwala na połączenia nieszyfrowanego. Ponadto upewnij się, że zaplecza usługi Azure zezwala minimalny zestaw adresów IP. Wychodzące adresy IP można znaleźć Twoją aplikację [przychodzące i wychodzące adresy IP w usłudze Azure App Service](app-service-ip-addresses.md).
 
-### <a name="azure-resources"></a>Zasoby platformy Azure
+### <a name="azure-resources"></a>Zasoby Azure
 
-Gdy aplikacja łączy się z zasobami platformy Azure, takich jak [bazy danych SQL](/services/sql-database/) i [usługi Azure Storage](/azure/storage/), połączenie pozostaje w obrębie platformy Azure i nie cross wszystkie granice sieci. Jednak połączenie przechodzi przez udostępnionej sieci na platformie Azure, dlatego zawsze upewnij się, że połączenie jest szyfrowane. 
+Gdy aplikacja łączy się z zasobami platformy Azure, takich jak [bazy danych SQL](https://azure.microsoft.com/services/sql-database/) i [usługi Azure Storage](/azure/storage/), połączenie pozostaje w obrębie platformy Azure i nie cross wszystkie granice sieci. Jednak połączenie przechodzi przez udostępnionej sieci na platformie Azure, dlatego zawsze upewnij się, że połączenie jest szyfrowane. 
 
 Jeśli aplikacja jest hostowana w [środowiska App Service environment](environment/intro.md), należy [Połącz obsługiwane usługi platformy Azure za pomocą punktów końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md).
 
@@ -117,4 +117,4 @@ Z wyjątkiem **izolowany** warstwy cenowej, dla wszystkich warstw uruchamiaj swo
 - Obsługiwać wewnętrznej aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB), która zezwala na dostęp tylko z wewnątrz sieci wirtualnej platformy Azure. Wewnętrznego modułu równoważenia obciążenia ma adres IP z podsieci prywatnej, co zapewnia pełną izolację aplikacji z Internetu.
 - [Użyj wewnętrznego modułu równoważenia obciążenia za zaporą aplikacji sieci web (WAF)](environment/integrate-with-application-gateway.md). Zapora aplikacji sieci Web zapewnia ochronę klasy korporacyjnej w aplikacjach publicznego, takie jak ochrona przed atakami DDoS, filtrowanie identyfikatora URI i zapobiegania iniekcji SQL.
 
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do środowisk Azure App Service Environment](environment/intro.md).
+Aby uzyskać więcej informacji, zobacz [wprowadzenie do środowisk Azure App Service Environment](environment/intro.md). 

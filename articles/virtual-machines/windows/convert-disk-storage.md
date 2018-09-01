@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 7748cf41bb97e0136d7b619debcb60d460df5d8b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7e4a37e318bd45c5cc2dca4e085b2a112db65efe
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596583"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371359"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konwertuj Azure zarządzane dyski magazynu od planu standard do warstwy premium i odwrotnie
 
 Managed Disks oferuje trzy opcje magazynu: [dysku Premium SSD](../windows/premium-storage.md), standardowe SSD(Preview) i [standardowych dysków Twardych](../windows/standard-storage.md). Dzięki temu można łatwo przełączać się między opcjami przy minimalnych przestojach w oparciu o potrzeby związane z wydajnością. To nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [konwersji do usługi managed disks](convert-unmanaged-to-managed-disks.md) można łatwo przełączać się między typy dysków.
 
-W tym artykule pokazano, jak konwertować dysków zarządzanych warstwy standardowej na premium i odwrotnie przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić go, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
+W tym artykule pokazano, jak konwertować dysków zarządzanych warstwy standardowej na premium i odwrotnie przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić go, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

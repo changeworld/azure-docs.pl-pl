@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: caf290477a4fd4f03bb248cc89f91027dbe68f3e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054179"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382451"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
@@ -52,7 +52,7 @@ Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usłu
 >Jeśli masz już wdrożone w klastrze AKS, Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure lub podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta. 
 >
 
-## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Zaloguj się do witryny Azure Portal
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Włącz monitorowanie kondycji kontenera dla nowego klastra
@@ -226,7 +226,7 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
        "contentVersion": "1.0.0.0",
        "parameters": {
          "aksResourceId": {
-           "value": "/subscriptions/<SubscroptiopnId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
+           "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
        },
        "aksResourceLocation": {
          "value": "East US"
@@ -345,7 +345,7 @@ Po otwarciu kondycji kontenera, strony natychmiast przedstawia informacje o wyko
 - Klaster
 - Węzły 
 - Kontrolery  
-- Containers
+- Kontenery
 
 Na **klastra** karcie cztery wykresy wydajności wiersza zawierają kluczowe metryki wydajności klastra. 
 
@@ -386,11 +386,11 @@ W poniższej tabeli opisano informacje, które są prezentowane podczas wyświet
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa hosta. |
+| Nazwa | Nazwa hosta. |
 | Stan | Kubernetes widok stanu węzła. |
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Średni procent węzła, w oparciu o procentowy podczas wybranego okresu. |
 | Avg, Min, Max, 50., 90 | Węzły średnia wartość rzeczywista oparciu o procentowy podczas tego okresu czasu wybrany. Średnia wartość jest mierzony od limitu Procesora/pamięci dla węzła; dla zasobników i kontenerów to wartość średnia zgłaszaną przez hosta. |
-| Containers | Liczba kontenerów. |
+| Kontenery | Liczba kontenerów. |
 | Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
 | Kontrolery | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest we wszystkich. Nie wszystkie zasobników są w kontrolerze, więc niektóre może być wyświetlany **n/d**. | 
 | Trend Avg&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Trend wykres słupkowy prezentowanie percentyla metryk wartość procentowa kontrolera. |
@@ -410,11 +410,11 @@ W poniższej tabeli opisano informacje, które jest wyświetlane, gdy wyświetla
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa kontrolera.|
+| Nazwa | Nazwa kontrolera.|
 | Stan | Stan rozwinięcia kontenery po ukończeniu uruchomione o stanie, takie jak *OK*, *zwolniony*, *niepowodzenie* *zatrzymane*, lub *Wstrzymana*. Jeśli kontener jest uruchomiony, ale stan był albo nie zostało prawidłowo wyświetlane lub nie została pobrana przez agenta i nie odpowiedział ponad 30 minut, stan jest *nieznany*. W poniższej tabeli znajdują się dodatkowe szczegóły ikonę stanu.|
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Średnia zbiorczy średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Avg, Min, Max, 50., 90  | Zbiorcze średni wydajność użycia CPU millicore lub pamięci przez kontener dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
-| Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
+| Kontenery | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Zbiorcza liczba ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
@@ -443,7 +443,7 @@ W poniższej tabeli opisano informacje, który jest wyświetlany podczas przegl�
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa kontrolera.|
+| Nazwa | Nazwa kontrolera.|
 | Stan | Stan kontenerów, jeśli istnieje. Dodatkowe szczegóły ikona stanu znajdują się w następnej tabeli.|
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Roll-up średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Avg, Min, Max, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |

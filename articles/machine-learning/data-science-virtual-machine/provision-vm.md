@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444046"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344764"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:
@@ -59,14 +59,14 @@ Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o 
 * A [Linux CentOS](linux-dsvm-intro.md) obrazu.
 * [Wersji systemu Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) maszyny wirtualnej do nauki o danych. Niektóre narzędzia są dostępne tylko w wersji systemu Windows Server 2016. W przeciwnym razie ten artykuł dotyczy również do wersji Windows Server 2012.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 Aby utworzyć maszynę wirtualną do nauki o danych firmy Microsoft, musi mieć subskrypcję platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](http://azure.com/free).
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Tworzenie maszyny wirtualnej do nauki o danych firmy Microsoft
 Aby utworzyć wystąpienie programu Microsoft maszyny wirtualnej analizy danych, wykonaj następujące kroki:
 
-1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
+1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016). Może zostać wyświetlony monit można zalogować się do konta platformy Azure, jeśli użytkownik są nie już zalogowany.
 1. Wybierz **Utwórz** znajdujący się u dołu, aby uwzględnić kreatora.
 
   ![Konfigurowanie — — — maszyna wirtualna analizy danych](./media/provision-vm/configure-data-science-virtual-machine.png) 

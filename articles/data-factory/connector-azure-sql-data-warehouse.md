@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f444c75fb7a7bcd96a508fed337dfc32adccf665
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442243"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339019"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -44,7 +44,7 @@ W szczególności ten łącznik usługi Azure SQL Data Warehouse obsługuje te f
 > W przypadku kopiowania danych za pomocą usługi Azure Data Factory Integration Runtime, skonfiguruj [zapory serwera Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby usług platformy Azure mają dostęp do serwera.
 > W przypadku kopiowania danych przy użyciu własnego środowiska integration runtime, należy skonfigurować zaporę serwera Azure SQL, aby umożliwić odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP komputera, który jest używany do łączenia z usługą Azure SQL Database.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 > [!TIP]
 > Aby uzyskać najlepszą wydajność, ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. [Przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcja zawiera szczegółowe informacje. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -59,8 +59,8 @@ Następujące właściwości są obsługiwane dla usługi Azure SQL Data Warehou
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **AzureSqlDW**. | Yes |
-| Parametry połączenia | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Data Warehouse dla **connectionString** właściwości. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| typ | Właściwość type musi być równa **AzureSqlDW**. | Tak |
+| Parametry połączenia | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Data Warehouse dla **connectionString** właściwości. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
@@ -216,8 +216,8 @@ Aby skopiować dane z lub do usługi Azure SQL Data Warehouse, należy ustawić 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Yes |
-| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Data Warehouse, która połączona usługa przywołuje. | Yes |
+| typ | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Tak |
+| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Data Warehouse, która połączona usługa przywołuje. | Tak |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
 
@@ -248,7 +248,7 @@ Aby skopiować dane z usługi Azure SQL Data Warehouse, należy ustawić **typu*
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość źródła działania kopiowania musi być równa **SqlDWSource**. | Yes |
+| typ | **Typu** właściwość źródła działania kopiowania musi być równa **SqlDWSource**. | Tak |
 | sqlReaderQuery | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Przykład: `select * from MyTable`. | Nie |
 | sqlReaderStoredProcedureName | Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. | Nie |
 | storedProcedureParameters | Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie |
@@ -352,7 +352,7 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlDWSink**. | Yes |
+| typ | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlDWSink**. | Tak |
 | allowPolyBase | Wskazuje, czy przy użyciu technologii PolyBase, jeśli ma to zastosowanie, zamiast mechanizmu BULKINSERT. <br/><br/> Firma Microsoft zaleca, ładowanie danych do usługi SQL Data Warehouse przy użyciu programu PolyBase. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji ograniczeń i szczegółów.<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne).  | Nie |
 | Usługi | Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. | Nie |
 | rejectValue | Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej na temat opcji odrzucania w technologii PolyBase w sekcji argumenty [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Dozwolone wartości to 0 (domyślnie), 1, 2, itp. |Nie |
@@ -401,13 +401,14 @@ Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob pla
 Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia sprawdzenie ustawień i automatycznie powraca do przenoszenia danych przy użyciu mechanizmu BULKINSERT.
 
 1. **Źródła połączoną usługę** typ jest usługi Azure Blob storage (**usłudze Azure blob Storage**/**AzureStorage**) przy użyciu klucza uwierzytelniania konta lub usługi Azure Data Lake Gen1 magazynu (**AzureDataLakeStore**) przy użyciu uwierzytelniania jednostki usługi.
-1. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
+2. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
 
-   1. `rowDelimiter` musi być **\n**.
-   1. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślne, a `treatEmptyAsNull` nie jest ustawiony na wartość false.
-   1. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
-   1. `escapeChar`, `quoteChar` i `skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
-   1. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
+   1. `fileName` nie zawiera filtr z symbolami wieloznacznymi.
+   2. `rowDelimiter` musi być **\n**.
+   3. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślne, a `treatEmptyAsNull` nie jest ustawiony na wartość false.
+   4. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
+   5. `escapeChar`, `quoteChar` i `skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
+   6. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
 
     ```json
     "typeProperties": {
@@ -551,13 +552,13 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 
 | Typ danych w usłudze Azure SQL Data Warehouse | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| bigint | Int64 |
+| bigint | Całkowita 64-bitowa |
 | dane binarne | Byte[] |
 | Bitowe | Wartość logiczna |
 | Char | Ciąg, Char] |
-| data | DateTime |
-| Data/godzina | DateTime |
-| datetime2 | DateTime |
+| data | Data/godzina |
+| Data/godzina | Data/godzina |
+| datetime2 | Data/godzina |
 | Datetimeoffset | DateTimeOffset |
 | Dziesiętna | Dziesiętna |
 | Atrybut FILESTREAM (varbinary(max)) | Byte[] |
@@ -571,12 +572,12 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | nvarchar | Ciąg, Char] |
 | rzeczywiste | Pojedyncze |
 | ROWVERSION | Byte[] |
-| smalldatetime | DateTime |
+| smalldatetime | Data/godzina |
 | smallint | Int16 |
 | smallmoney | Dziesiętna |
 | sql_variant | Obiekt * |
 | tekst | Ciąg, Char] |
-| time | Przedział czasu |
+| czas | Przedział czasu |
 | sygnatura czasowa | Byte[] |
 | tinyint | Bajt |
 | uniqueidentifier | Identyfikator GUID |

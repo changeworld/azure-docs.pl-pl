@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeedes
-ms.openlocfilehash: f860036f1a69b2d1ab6ac8de763a49380f8fe4bf
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3a394c13092547991bf7f8ae98e5c69e92077701
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058796"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Samouczek: Integracja usługi Azure Active Directory z YouEarnedIt
 
@@ -139,7 +139,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfiguracja YouEarnedIt](./media/youearnedit-tutorial/tutorial_youearnedit_configure.png) 
 
-7. Aby skonfigurować logowanie jednokrotne na **YouEarnedIt** stronie, musisz wysłać pobrany **Certificate(Base64)** i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do swojej przypisanej Menedżer YouEarnedIt sukcesie klienta. Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+7. Aby skonfigurować logowanie jednokrotne na **YouEarnedIt** stronie, musisz wysłać pobrany ***Certificate(Base64)*** i ***SAML pojedynczego logowania jednokrotnego usługi adresu URL*** do swojej przypisanej **YouEarnedIt** Menedżer ds. sukcesu klientów. Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e4dbac4c8146b048d4d9b76544677a6111e2a5
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900833"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341087"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Microsoft, za pomocą usługi Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Aby użyć konta Microsoft jako dostawcy tożsamości w usłudze Azure Active Di
 3. Podaj **nazwa** aplikacji i kliknij pozycję **Utwórz**.
 4. Na stronie rejestracji należy skopiować wartość **identyfikator aplikacji**. Umożliwia ona skonfiguruj swoje konto Microsoft jako dostawcy tożsamości w dzierżawie.
 5. Wybierz **platformy Dodaj**, a następnie i wybierz polecenie **Web**.
-6. Wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **przekierowania adresów URL**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com).
+6. Wprowadź `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **przekierowania adresów URL**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c).
 7. Wybierz **wygenerować nowego hasła** w obszarze **wpisów tajnych aplikacji**. Skopiuj nowe hasło, które są wyświetlane na ekranie. Możesz go potrzebować, aby skonfigurować konto Microsoft jako dostawcy tożsamości w dzierżawie. To hasło jest ważnym poświadczeniem zabezpieczeń.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Konfigurowanie konta Microsoft jako dostawcy tożsamości

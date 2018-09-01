@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 88fffd28319101c112f848eebc6e8ee27f7f863e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 11f3f190c0f55e45c549a8bd1de35f78eb7b752d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952022"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337433"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta usługi GitHub za pomocą usługi Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Aby użyć konta usługi Github jako dostawcy tożsamości w usłudze Azure Acti
 1. Zaloguj się do [GitHub dla deweloperów](https://github.com/settings/developers) witryny sieci Web przy użyciu swoich poświadczeń usługi GitHub.
 2. Wybierz **aplikacji OAuth** , a następnie wybierz **zarejestrowania nowej aplikacji**.
 3. Wprowadź **Nazwa aplikacji** i **adres URL strony głównej**.
-4. Wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **adresów URL wywołania zwrotnego autoryzacji**. Zastąp **{dzierżawa}** nazwą dzierżawy usługi Azure AD B2C (na przykład contosob2c.onmicrosoft.com).
+4. Wprowadź `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **adresów URL wywołania zwrotnego autoryzacji**. Zastąp **{dzierżawa}** nazwą dzierżawy usługi Azure AD B2C (na przykład contosob2c).
 5. Kliknij przycisk **zarejestrować aplikację**.
 6. Skopiuj wartości z **identyfikator klienta** i **klucz tajny klienta**. Należy zarówno do dodawania dostawcy tożsamości z dzierżawą.
 

@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b84addf4c45e39e68dd22f6369553d397794f6b0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188924"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340516"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
@@ -34,59 +34,95 @@ Usługa Azure AD PIM można zarządzać ról wbudowanych zasobów platformy Azur
 >[!NOTE]
 Użytkownicy lub członkowie grupy przypisane do roli właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy mogą przypisać role, konfigurowanie ustawień roli i przegląd dostępu za pomocą usługi PIM dla zasobów platformy Azure. Wyświetl listę [wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
-## <a name="assign-roles"></a>Przypisywanie ról
+## <a name="assign-a-role"></a>Przypisywanie roli
 
-Aby przypisać użytkownika lub grupę do roli, podczas wyświetlania **role** okienku, wybierz rolę, a następnie wybierz **Dodaj użytkownika**. 
+Wykonaj następujące kroki, aby Ustaw użytkownika z uprawnieniami dla ról zasobów platformy Azure.
 
-![Okienko "Role" za pomocą przycisku "Dodaj użytkownika"](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) z użytkownikiem, który jest elementem członkowskim [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) roli.
 
-Możesz również wybrać **Dodaj użytkownika** z **członków** okienka.
+    Aby dowiedzieć się, jak udzielić innym dostęp administratora umożliwiający zarządzanie usługą PIM, zobacz [udzielić dostępu do innych administratorów do zarządzania usługą PIM](pim-how-to-give-access-to-pim.md).
 
-![Okienko "Członkowie" za pomocą przycisku "Dodaj użytkownika"](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
+    Jeśli jeszcze nie rozpoczęto jeszcze PIM w witrynie Azure portal, przejdź do strony [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
 
-W przypadku dodawania użytkownika lub grupy z **członków** okienko, musisz: 
+1. Kliknij przycisk **zasobów platformy Azure**.
 
-1. Wybierz rolę z **wybierz rolę** okienko, aby można było wybrać użytkownika lub grupy.
+1. Użyj **filtr zasobu** Aby filtrować listę zarządzanych zasobów.
 
-   ![Okienko "Wybierz rolę"](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+    ![Lista zasobów platformy Azure do zarządzania](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-2. Wybierz użytkownika lub grupy z katalogu.
+1. Kliknij zasób, który chcesz zarządzać, takich jak subskrypcję lub grupę zarządzania.
 
-3. Wybierz typ przypisania odpowiednich z menu rozwijanego: 
+1. W obszarze Zarządzanie, kliknij przycisk **role** Aby wyświetlić listę ról dla zasobów platformy Azure.
 
-   - **Dokładnie na czas**: zapewnia użytkownikowi lub grupie elementów członkowskich kwalifikujących się, ale nie jest trwały dostęp do roli na czas określony lub nieokreślony (jeśli jest skonfigurowane w ustawieniach roli). 
-   - **Bezpośrednie**: nie jest wymagane elementy członkowskie użytkownika lub grupy można aktywować przypisania roli (znanych jako trwały dostęp). Zalecamy używanie przypisania bezpośredniego użytku krótkoterminowej, gdzie dostęp nie być wymagane, jeśli zadanie zostało ukończone. Przykładami są zmiany na wywołanie i zależne od czasu działania.
+    ![Role zasobów platformy Azure](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-4. Jeśli przypisanie powinno być trwałe (trwałe kwalifikujące się przypisania just in time lub trwale aktywne przypisania bezpośredniego), zaznacz poniższe pole wyboru **typ przypisania** pole.
+1. Kliknij przycisk **Dodawanie elementu członkowskiego** otworzyć nowe okienko przypisania.
 
-   ![Okienko "Ustawienia członkostwa" pola "Typ przypisania" i powiązane pole wyboru](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+1. Kliknij przycisk **wybierz rolę** otworzyć wybierz w okienku roli.
 
-   >[!NOTE]
-   >Pole wyboru musi być niemodyfikowalnych, jeśli inny administrator ma określony czas trwania maksymalna przypisania dla każdego typu przydziału w ustawieniach roli.
+    ![Nowe okienko przypisania](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-   Aby określić czas trwania określone przypisanie, wyczyść pole wyboru, a następnie zmodyfikować początkowy lub końcowy pola daty i godziny.
+1. Kliknij rolę, którą chcesz przypisać, a następnie kliknij przycisk **wybierz**.
 
-   ![Okienko "Ustawienia członkostwa" za pomocą pola daty rozpoczęcia, godzinę rozpoczęcia, Data zakończenia i czas zakończenia](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+    Zostanie otwarty wybierz panel lub grupę.
 
+1. Kliknij element lub grupę, o których chcesz przypisać do roli, a następnie kliknij przycisk **wybierz**.
 
-## <a name="manage-role-assignments"></a>Zarządzanie przypisaniami ról
+    ![Wybierz panel lub grupę](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-Administratorzy mogą zarządzać przypisaniami ról, wybierając opcję **role** lub **członków** z okienka po lewej stronie. Wybieranie **role** umożliwia administratorom ograniczyć zakres ich zadań zarządzania do określonej roli. Wybieranie **członków** Wyświetla wszystkie przypisania ról użytkowników i grup dla zasobu.
+    Zostanie otwarte okienko ustawienia członkostwa.
 
-![Okienko "Role"](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+1. W **typ przypisania** listy wybierz **kwalifikujących się** lub **Active**.
 
-![Okienko "Członkowie"](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+    ![Okienko ustawień w grupach](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
->[!NOTE]
-W przypadku roli do czasu aktywacji transparent powiadomienia jest wyświetlany w górnej części okienka po przejrzeniu członkostwa.
+    Usługa PIM dla zasobów platformy Azure udostępnia dwa typy distinct przypisania:
 
+    - **Kwalifikujące się** przypisania wymagają członek roli do wykonania działania, aby korzystać z roli. Akcje mogą obejmować sprawdzanie uwierzytelniania wieloskładnikowego (MFA), zapewniając uzasadnienie biznesowe lub żądanie zatwierdzenia od wyznaczone osoby zatwierdzające.
 
-## <a name="modify-existing-assignments"></a>Modyfikuj istniejące przypisania
+    - **Aktywne** przypisania nie wymagają elementu członkowskiego do wykonywania dowolnych akcji, aby użyć roli. Członkowie przypisani jako aktywny mają uprawnienia przypisane do roli przez cały czas.
 
-Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz **zmiany ustawień** na pasku akcji. Zmień typ przypisania na **tylko w czasie** lub **bezpośredniego**.
+1. Jeśli przypisanie powinno być stałe (trwale zakwalifikowane lub trwale przypisanych), wybierz **trwale** pole wyboru.
 
-![Okienko "Szczegóły użytkownika" za pomocą przycisku "Zmień ustawienia"](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+    W zależności od ustawień roli pola wyboru mogą nie być wyświetlane lub może być niemodyfikowalnych.
+
+1. Aby określić czas trwania określone przypisanie, wyczyść pole wyboru, a następnie zmodyfikować początkowy lub końcowy pola daty i godziny.
+
+    ![Ustawienia członkostwa — Data i godzina](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. Na koniec kliknij przycisk **Gotowe**.
+
+    ![Nowe przypisanie — Dodawanie](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. Aby utworzyć nowe przypisanie roli, kliknij przycisk **Dodaj**. Wyświetlane jest powiadomienie o stanie.
+
+    ![Nowe przypisanie — powiadomienie](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizowanie lub usuwanie istniejącego przypisania roli
+
+Wykonaj następujące kroki, aby zaktualizować lub usunąć istniejące przypisania roli.
+
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
+
+1. Kliknij przycisk **zasobów platformy Azure**.
+
+1. Kliknij zasób, który chcesz zarządzać, takich jak subskrypcję lub grupę zarządzania.
+
+1. W obszarze Zarządzanie, kliknij przycisk **role** Aby wyświetlić listę ról dla zasobów platformy Azure.
+
+    ![Role zasobów platformy Azure — wybierz rolę](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+
+1. Kliknij rolę, którą chcesz zaktualizować lub usunąć.
+
+1. Znajdź przypisania roli na **kwalifikujące się role** lub **aktywnych ról** karty.
+
+    ![Aktualizowanie lub usuwanie przypisania roli](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. Kliknij przycisk **aktualizacji** lub **Usuń** zaktualizować lub usunąć przypisanie roli.
+
+    Aby uzyskać informacje o rozszerzaniu przypisania roli, zobacz [rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 7ef26dc5fa7676ca590d56978c735bf4a195440b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698054"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382743"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure
 W tym artykule opisano sposób tworzenia modułu równoważenia obciążenia dla grupy dostępności programu SQL Server Always On w maszynach wirtualnych platformy Azure, które działają z usługą Azure Resource Manager. Grupy dostępności wymaga modułu równoważenia obciążenia w przypadku wystąpienia programu SQL Server na maszynach wirtualnych platformy Azure. Moduł równoważenia obciążenia przechowuje adres IP dla odbiornika grupy dostępności. Jeśli grupy dostępności obejmuje wiele regionów, każdy region wymaga modułu równoważenia obciążenia.
@@ -75,7 +75,7 @@ Najpierw utwórz moduł równoważenia obciążenia.
    | **Grupa zasobów** |Wybierz grupę zasobów, które należą do wystąpienia programu SQL Server. |
    | **Lokalizacja** |Wybierz wystąpienia programu SQL Server znajdują się w lokalizacji platformy Azure. |
 
-6. Kliknij przycisk **Utwórz**. 
+6. Kliknij pozycję **Utwórz**. 
 
 Platforma Azure tworzy moduł równoważenia obciążenia. Moduł równoważenia obciążenia należy do określonej sieci, podsieci, grupy zasobów i lokalizacji. Sprawdź ustawienia usługi równoważenia obciążenia na platformie Azure, po ukończeniu zadania usługi Azure. 
 
@@ -246,7 +246,7 @@ Aby dodać adres IP do modułu równoważenia obciążenia za pomocą witryny Az
    |**Sonda kondycji** |Wybierz utworzoną przez sondy.
    |**Trwałość sesji** |Brak
    |**Limit czasu bezczynności (minuty)** |Domyślne (4)
-   |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
+   |**Pływający adres IP (bezpośredni zwrot serwera)** | Włączono
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurowanie grupy dostępności do korzystania z nowego adresu IP
 
@@ -295,9 +295,11 @@ Jeśli grupa dostępności uczestniczy w rozproszonej grupy dostępności, modu�
    |**Sonda kondycji** |Wybierz utworzoną przez sondy.
    |**Trwałość sesji** |Brak
    |**Limit czasu bezczynności (minuty)** |Domyślne (4)
-   |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
+   |**Pływający adres IP (bezpośredni zwrot serwera)** | Włączono
 
 Powtórz te czynności dla modułu równoważenia obciążenia na inne, które uczestniczą w grupach rozproszonych dostępności grupy dostępności.
+
+Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

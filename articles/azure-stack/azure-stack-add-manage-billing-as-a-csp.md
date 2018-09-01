@@ -3,7 +3,7 @@ title: Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca u
 description: Przewodnik rejestracji usługi Azure Stack jako dostawca chmury (CSP) i dodawania klientów na potrzeby rozliczeń.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/30/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9bb4a4ea81f2dc0fb11e2f7cae1b9d02b0edfdde
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715689"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341439"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze 
 
@@ -58,7 +58,7 @@ Subskrypcje chmury programu Service Provider (CSP) są preferowanych przez rejes
 
 ## <a name="register-azure-stack"></a>Rejestrowanie usługi Azure Stack
 
-Aby zarejestrować się przy użyciu usługi Azure Stack, zobacz [zarejestrować w usłudze Azure Stack z subskrypcją platformy Azure](azure-stack-registration.md).
+Użyj subskrypcji CSPSS utworzone następujące informacje w poprzedniej sekcji, aby rejestrowania usługi Azure Stack na platformie Azure. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z subskrypcją platformy Azure](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Dodaj klienta końcowego
 

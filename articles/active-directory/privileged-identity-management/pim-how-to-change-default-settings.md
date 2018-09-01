@@ -13,18 +13,20 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 20a704a0d5b61134a61b5cbf02a1c71dbc7039e1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189341"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338911"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM
 
 Administrator ról uprzywilejowanych, można dostosować usługi Azure AD Privileged Identity Management (PIM) w organizacji, w tym zmian środowiska dla użytkownika, który jest aktywacja kwalifikujące się przypisanie roli.
 
 ## <a name="open-role-settings"></a>Otwórz ustawienia roli
+
+Wykonaj następujące kroki, aby otworzyć ustawienia dla ról katalogu usługi Azure AD.
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
@@ -44,19 +46,19 @@ Administrator ról uprzywilejowanych, można dostosować usługi Azure AD Privil
 
 ## <a name="activations"></a>Uaktywnienia
 
-**Aktywacji** suwak jest maksymalny czas w godzinach, które rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 72 godzin.
+Użyj **aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 72 godzin.
 
 ## <a name="notifications"></a>Powiadomienia
 
-**Powiadomienia** przełącznik umożliwia wybranie, czy system wysyła wiadomości e-mail do administratorów potwierdzenie ich uaktywniono rolę. Może to być przydatne w przypadku wykrycia nieautoryzowanego lub nielegalne aktywacji.
+Użyj **powiadomienia** przełącznika, aby określić, czy system wysyła wiadomości e-mail do administratorów potwierdzenie ich uaktywniono rolę. Może to być przydatne w przypadku wykrycia nieautoryzowanego lub nielegalne aktywacji.
 
 ## <a name="incidentrequest-ticket"></a>Bilet zdarzenia/żądania
 
-**Bilet zdarzenia/żądania** przełącznik umożliwia wybranie, czy należy wymagać kwalifikujących się Administratorzy mogą obejmować numer biletu podczas aktywacji ich ról. Może to być przydatne, gdy wykonujesz inspekcje dostępu do roli.
+Użyj **bilet zdarzenia/żądania** przełącznika, aby określić, czy będą musieli kwalifikujących się Administratorzy mogą obejmować numer biletu podczas aktywacji ich ról. Może to być przydatne, gdy wykonujesz inspekcje dostępu do roli.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-**Uwierzytelnianie wieloskładnikowe** przełącznik umożliwia wybranie, czy wymagać od użytkowników zweryfikować swoją tożsamość za pomocą uwierzytelniania Wieloskładnikowego, zanim użytkownik może dokonać aktywacji ich ról. Mają tylko sprawdzić to raz dla sesji, nie za każdym razem, gdy ich aktywowania roli. Istnieją dwa wskazówki, aby mieć na uwadze, po włączeniu usługi MFA:
+Użyj **uwierzytelnianie wieloskładnikowe** przełącznik, aby określić, czy wymagać od użytkowników zweryfikować swoją tożsamość za pomocą uwierzytelniania Wieloskładnikowego, zanim użytkownik może dokonać aktywacji ich ról. Mają tylko sprawdzić to raz dla sesji, nie za każdym razem, gdy ich aktywowania roli. Istnieją dwa wskazówki, aby mieć na uwadze, po włączeniu usługi MFA:
 
 * Użytkownicy, którzy mają konta Microsoft dla swoich adresów e-mail (zazwyczaj @outlook.com, ale nie zawsze) nie można zarejestrować usługi Azure MFA. Jeśli chcesz przypisać role do użytkowników z kontami Microsoft, możesz zwiększyć ich administratorów trwałych lub wyłączanie usługi MFA dla tej roli.
 * Nie można wyłączyć uwierzytelnianie wieloskładnikowe dla ról o wysokim poziomie uprawnień dla usługi Azure AD i Office 365. Jest to funkcja bezpieczeństwa, ponieważ te role powinny być dokładnie chronione:  
@@ -84,9 +86,9 @@ Aby uzyskać więcej informacji o używaniu MFA za pomocą usługi PIM, zobacz [
 
 ## <a name="require-approval"></a>Wymagaj zatwierdzenia
 
-**Wymagają zatwierdzenia** przełącznik umożliwia wybranie, czy wymaga zatwierdzenia do aktywowania tej roli.
+Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następujące kroki.
 
-1. Po ustawieniu przełącznika na **włączone**, okienka rozwija się z opcjami, aby wybrać osób zatwierdzających.
+1. Ustaw **wymagają zatwierdzenia** przełączyć się do **włączone**. Okienka rozwija się z opcjami, aby wybrać osób zatwierdzających.
 
     ![Role katalogu usługi Azure AD - Settings - wymagają zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
@@ -107,5 +109,6 @@ Aby uzyskać więcej informacji o używaniu MFA za pomocą usługi PIM, zobacz [
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
 - [Wymagaj uwierzytelniania wieloskładnikowego dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-require-mfa.md)
 - [Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-configure-security-alerts.md)

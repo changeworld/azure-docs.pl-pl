@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988895"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340139"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Jak używać kontrolki mapy platformy Azure Maps
 Biblioteka języka Javascript po stronie klienta — formant mapa programu umożliwia renderowanie mapy i funkcji usługi Azure Maps osadzone w sieci web lub aplikacji mobilnej. 
@@ -62,4 +62,4 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
 W tym artykule pokazano, jak utworzyć mapę podstawową za pomocą klucza usługi Azure Maps. Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
 
 * [Tworzenie mapy](map-create.md)
-* [Dodawanie numeru pin](map-add-pin.md)
+* [Wybierz style mapy](choose-map-style.md)

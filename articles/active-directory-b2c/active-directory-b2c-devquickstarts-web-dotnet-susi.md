@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308035"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344501"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET za pomocą usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania haseł
 
@@ -95,7 +95,7 @@ Nasz przykład został skonfigurowany do używania zasad i identyfikatora klient
 * `ida:ResetPasswordPolicyId` nazwą zasady resetowania hasła
 
 ## <a name="launch-the-app"></a>Uruchom aplikację
-Z poziomu programu Visual Studio, uruchom aplikację. Przejdź do karty listy zadań do wykonania i zanotuj adres URl to: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
+Z poziomu programu Visual Studio, uruchom aplikację. Przejdź do karty listy zadań do wykonania i zwróć uwagę, adres URl: https://*YourTenantName*.b2clogin.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName* & client_id =*YourclientID*...
 
 Zarejestruj się w aplikacji przy użyciu nazwy użytkownika lub adres e-mail. Wyloguj się, a następnie zaloguj się ponownie i dokonać edycji profilu lub zresetować hasło. Wyloguj się i zaloguj się jako inny użytkownik. 
 

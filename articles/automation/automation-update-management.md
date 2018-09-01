@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 79c78da3ba3102f41a1bd623c6844f064699b30a
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247940"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382103"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -119,7 +119,7 @@ Jeśli grupa zarządzania programu System Center Operations Manager jest połąc
 Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
 > [!NOTE]
-> Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](/system-center/scom/deploy-upgrade-agents.md).
+> Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](/system-center/scom/deploy-upgrade-agents).
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Upewnij się, że maszyny spoza platformy Azure są dołączone
 
@@ -164,9 +164,9 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -215,7 +215,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 
 | Właściwość | Opis |
 | --- | --- |
-| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+| Nazwa |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|

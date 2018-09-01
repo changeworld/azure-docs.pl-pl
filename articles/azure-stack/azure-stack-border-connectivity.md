@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 260c58ad9099a4532c8a6558cfcf5c13f0fc8d52
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282012"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343557"
 ---
 # <a name="border-connectivity"></a>Łączność obramowania 
 Planowanie integracji sieci jest ważnego wymagania wstępnego pomyślne wdrożenie systemów zintegrowanych w usłudze Azure Stack, operacji i zarządzania. Planowanie łączności obramowania rozpoczyna się przez wybranie, czy nie używają routingu dynamicznego przy użyciu protokołu border gateway protocol (BGP). Wymaga to przypisanie 16-bitowy numer systemu autonomicznego BGP (publicznym lub prywatnym) lub przy użyciu routingu statycznego, gdy domyślnej trasy statycznej jest przypisany do urządzeń obramowania.
@@ -31,7 +31,7 @@ Planowanie integracji sieci jest ważnego wymagania wstępnego pomyślne wdroże
 ## <a name="bgp-routing"></a>Routing protokołu BGP
 Przy użyciu protokołu routingu dynamicznego takich jak Protokół BGP gwarantuje, że system jest zawsze pamiętać o zmiany w sieci i ułatwia administrowanie. 
 
-Jak pokazano na poniższym diagramie, anonsowanie z prywatnym adresem IP miejsca na przełączniku TOR jest ograniczony przy użyciu listę prefiksów. Wyświetla prefiks nie zezwala na prywatne podsieci IP i zastosowanie go jako mapę trasy dla połączenia między TOR i obramowanie.
+Jak pokazano na poniższym diagramie, anonsowanie z prywatnym adresem IP miejsca na przełączniku TOR jest ograniczony przy użyciu listę prefiksów. Listę prefiksów definiuje prywatne podsieci IP i zastosowanie go jako mapę trasy dla połączenia między TOR i obramowanie.
 
 Oprogramowanie modułu równoważenia obciążenia (SLB) uruchomionych elementów równorzędnych rozwiązania usługi Azure Stack na urządzeniach z sieci TOR tak dynamicznie można ogłaszać dłuższe adresów VIP.
 
@@ -44,13 +44,19 @@ Routing statyczny wymaga dodatkowej konfiguracji do urządzenia obramowania. Wym
 
 Aby zintegrować usługi Azure Stack w środowisku sieci przy użyciu routingu statycznego, wszystkie cztery łącza fizycznego między obramowania i urządzeniem sieci TOR musi być podłączony, i nie można zagwarantować wysoką dostępność ze względu na statyczne jak działa routing.
 
-Urządzenie obramowania musi być skonfigurowany przy użyciu tras statycznych, wskazując urządzeń TOR P2P ruch kierowany do sieci zewnętrznej lub publiczne adresy VIP i siecią infrastruktury. Wymaga to trasy statyczne w sieci kontrolera zarządzania płytą GŁÓWNĄ dla wdrożenia. Klienci mogą wybrać pozostawienie trasy statyczne w obramowania, aby uzyskać dostęp do niektórych zasobów, które znajdują się w sieci kontrolera zarządzania płytą GŁÓWNĄ.  Dodawanie tras statycznych do *infrastruktury przełącznika* i *przełącznika zarządzania* sieci jest opcjonalna.
+Urządzenie obramowania musi być skonfigurowany z trasy statyczne, które wskazuje urządzeniom TOR P2P, aby ruch skierowany do *zewnętrznych* sieci lub publicznych adresów VIP i *infrastruktury* sieci. Wymaga tras statycznych do *BMC* i *zewnętrznych* sieci dla wdrożenia. Operatory można pozostawić trasy statyczne w granicy do dostępu do zarządzania zasobami, które znajdują się na *BMC* sieci. Dodawanie tras statycznych do *infrastruktury przełącznika* i *przełącznika zarządzania* sieci jest opcjonalna.
 
 Urządzenia TOR dostarczane skonfigurowany z domyślnej trasy statycznej wysyłania całego ruchu do urządzeń obramowania. Jedynym wyjątkiem ruchu domyślna reguła dotyczy prywatnej przestrzeni jest zablokowane, za pomocą listy kontroli dostępu stosowane na TOR połączenia obramowania.
 
 Routing statyczny dotyczy tylko łącza nadrzędne między przełączniki TOR i obramowanie. Routingu dynamicznego BGP jest używany w stojaku, ponieważ niezbędnego narzędzia, usługi SLB i inne składniki i nie może być wyłączone lub usunięte.
 
 ![Routing statyczny](media/azure-stack-border-connectivity/static-routing.png)
+
+<sup>\*</sup> Sieci kontrolera zarządzania płytą GŁÓWNĄ jest opcjonalny po wdrożeniu.
+
+<sup>\*\*</sup> Sieć infrastruktury przełącznika jest opcjonalny, zgodnie z całej sieci mogą być zawarte w sieci przełącznika zarządzania.
+
+<sup>\*\*\*</sup> Sieć zarządzania przełącznik jest wymagany i można dodać oddzielnie od infrastruktury przełącznika sieci.
 
 ## <a name="transparent-proxy"></a>Przezroczystym serwerem proxy
 Jeśli centrum danych wymaga cały ruch do korzystania z serwera proxy, należy skonfigurować *przezroczystym serwerem proxy* do przetworzenia cały ruch z stojak, aby postępować zgodnie z zasadami oddzielania ruchu między strefami w sieci.

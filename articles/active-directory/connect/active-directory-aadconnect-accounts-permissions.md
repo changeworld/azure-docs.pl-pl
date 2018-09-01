@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a628e28e9e6bd603fb2a3789c3281bc2181c91fe
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 2283f55be1a17ec95c73878d42d3acf4d0503e07
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42059548"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371376"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 
@@ -42,7 +42,7 @@ Oprócz tych trzech kont używanych do uruchamiania usługi Azure AD Connect nal
 - **Konto administratora przedsiębiorstwa usług AD**: używane do instalowania programu Azure AD Connect
 - **Konta usługi Azure AD administratora globalnego**: używane do utworzenia konta łącznika usługi Azure AD i skonfigurować usługę Azure AD.
 
-- **(Opcjonalnie) dla konta SQL SA**: użyty do utworzenia bazy danych ADSync, korzystając z pełnej wersji programu SQL Server.  Serwer SQL może być lokalne lub zdalne do instalacji usługi Azure AD Connect.  To konto może być to samo konto jako Administrator przedsiębiorstwa.  Teraz inicjowania obsługi usługi bazy danych mogą być wykonywane poza pasmem administrator usługi SQL, a następnie przez administratora usługi Azure AD Connect z uprawnieniami właściciela bazy danych.  Aby uzyskać informacje na ten temat, zobacz [zainstalować program Azure AD Connect przy użyciu uprawnień administratora delegowanego SQL]()
+- **(Opcjonalnie) dla konta SQL SA**: użyty do utworzenia bazy danych ADSync, korzystając z pełnej wersji programu SQL Server.  Serwer SQL może być lokalne lub zdalne do instalacji usługi Azure AD Connect.  To konto może być to samo konto jako Administrator przedsiębiorstwa.  Teraz inicjowania obsługi usługi bazy danych mogą być wykonywane poza pasmem administrator usługi SQL, a następnie przez administratora usługi Azure AD Connect z uprawnieniami właściciela bazy danych.  Aby uzyskać informacje na ten temat, zobacz [zainstalować program Azure AD Connect przy użyciu uprawnień administratora delegowanego SQL](active-directory-aadconnect-sql-delegation.md)
 
 ## <a name="installing-azure-ad-connect"></a>Instalowanie programu Azure AD Connect
 Kreatora instalacji usługi Azure AD Connect oferuje dwie różne ścieżki:
@@ -76,7 +76,7 @@ Te poświadczenia są używane tylko podczas instalacji i nie są używane po za
 | Odczyt/zapis wszystkich właściwości iNetOrgPerson |Importowanie i Exchange hybrydowych |
 | Grupa wszystkich właściwości odczytu/zapisu |Importowanie i Exchange hybrydowych |
 | Skontaktuj się z wszystkich właściwości odczytu/zapisu |Importowanie i Exchange hybrydowych |
-| Resetowanie hasła |Przygotowanie do włączania funkcji zapisywania zwrotnego haseł |
+| Resetuj hasło |Przygotowanie do włączania funkcji zapisywania zwrotnego haseł |
 
 ### <a name="express-installation-wizard-summary"></a>Podsumowanie Kreatora instalacji ekspresowej
 
@@ -106,7 +106,7 @@ Oto Podsumowanie informacje na temat niestandardowych stron kreatora, poświadcz
 | ND |Uruchomienie Kreatora instalacji użytkownika |<li>Administrator serwera lokalnego</li><li>Jeśli przy użyciu pełnej wersji programu SQL Server, użytkownik musi być administratora systemu (SA) w tabeli SQL</li> |Domyślnie tworzy konta lokalnego, która jest używana jako [zsynchronizować konta usługi aparatu](#azure-ad-connect-sync-service-account). To konto jest tworzony tylko w sytuacji, gdy administrator określi określonego konta. |
 | Zainstaluj usługi synchronizacji i opcji konta usługi |Usługi AD lub poświadczenia konta użytkownika lokalnego |Użytkownik, uprawnienia są przyznawane przez Kreatora instalacji |Jeśli administrator określa konto, to konto jest używane jako konto usługi dla usługi synchronizacji. |
 | Łączenie z usługą Azure AD |Poświadczenia katalogu usługi Azure AD |Rola administratora globalnego w usłudze Azure AD |<li>Włączanie synchronizacji w katalogu usługi Azure AD.</li>  <li>Tworzenie [konta łącznika usługi Azure AD](#azure-ad-service-account) używanego przez operacje synchronizacji w toku w usłudze Azure AD.</li> |
-| Podłączanie katalogów |W środowisku lokalnym poświadczeń usługi Active Directory dla każdego lasu, która jest połączona z usługą Azure AD |Uprawnienia są zależne od funkcji, które można włączyć i znajdują się w [Tworzenie konta usługi AD DS łącznika](#create-the-ad-dso-connector-account) |To konto jest używane do odczytywania i zapisywania informacji o katalogu podczas synchronizacji. |
+| Łączenie katalogów |W środowisku lokalnym poświadczeń usługi Active Directory dla każdego lasu, która jest połączona z usługą Azure AD |Uprawnienia są zależne od funkcji, które można włączyć i znajdują się w [Tworzenie konta usługi AD DS łącznika](#create-the-ad-dso-connector-account) |To konto jest używane do odczytywania i zapisywania informacji o katalogu podczas synchronizacji. |
 | Serwery usług AD FS |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczenia logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator domeny |Instalacja i Konfiguracja roli serwera usług AD FS. |
 | Serwery proxy aplikacji sieci Web |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczenia logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator lokalny na komputerze docelowym |Instalacja i Konfiguracja roli serwera proxy aplikacji sieci Web. |
 | Poświadczenia relacji zaufania serwera proxy |Poświadczenia relacji zaufania usługi federacyjnej (poświadczenia serwera proxy używa do rejestrowania certyfikatu relacji zaufania z FS |Konto domeny, które jest lokalnym administratorem serwera usług AD FS |Wstępnej rejestracji certyfikatu zaufania FS WAP. |
@@ -119,13 +119,13 @@ Musi również mieć wymagane uprawnienia. Kreator instalacji nie Sprawdź, czy 
 
 Wymagane uprawnienia, które jest zależny od funkcji opcjonalnych można włączyć. Jeśli masz wiele domen, muszą mieć uprawnienia dla wszystkich domen w lesie. Jeśli nie włączysz żadnego z tych funkcji, wartość domyślna **użytkownika domeny** uprawnienia są wystarczające.
 
-| Cecha | Uprawnienia |
+| Funkcja | Uprawnienia |
 | --- | --- |
 | funkcja MS-DS-ConsistencyGuid |Uprawnienia do zapisu do atrybutu ms-DS-ConsistencyGuid udokumentowane w artykule [pojęć dotyczących projektowania — przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Synchronizacja skrótów haseł |<li>Replikuj zmiany katalogu</li>  <li>Replikacja katalogu zmienia wszystkie |
 | Wdrożenie hybrydowe programu Exchange |Uprawnienia do zapisu do atrybutów w [zapisywania zwrotnego hybrydowego programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontakty. |
 | Folder publiczne poczty programu Exchange |Odczyt atrybutów udokumentowane w artykule [folderu publicznego poczty Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
-| Zapisywanie zwrotne haseł |Uprawnienia do zapisu do atrybutów w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
+| Zapis zwrotny haseł |Uprawnienia do zapisu do atrybutów w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
 | Zapisywanie zwrotne urządzeń |Uprawnienia udzielone za pomocą skryptu programu PowerShell, zgodnie z opisem w [zapisywanie zwrotne urządzeń](active-directory-aadconnect-feature-device-writeback.md). |
 | Zapisywanie zwrotne grup |Przeczytaj, tworzenia, aktualizowania lub usuwania grupy obiektów zsynchronizowane **grup usługi Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](active-directory-aadconnect-feature-preview.md#group-writeback).|
 
@@ -178,7 +178,7 @@ Legenda:
 - autonomiczne zarządzane konta usług - [autonomicznego konta usługi zarządzanego](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA - [konta grupy usługi zarządzane](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowy | Zdalne usługi SQL</br>Niestandardowy |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowe | Zdalne usługi SQL</br>Niestandardowe |
 | --- | --- | --- | --- |
 | **komputer autonomicznego/Grupa robocza** | Nieobsługiwane | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne |  Nieobsługiwane |
 | **komputerze przyłączonym do domeny** | **VSA**</br>Konto lokalne (2008) | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>sMSA,gMSA | **gMSA**</br>Konto domeny |
@@ -233,7 +233,7 @@ Aby usunąć nieużywane usługi Azure AD konta usług, uruchom następujące po
 ## <a name="related-documentation"></a>Dokumentacja pokrewna
 Jeśli nie przeczytać dokumentację na [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory-aadconnect.md), Poniższa tabela zawiera linki do powiązanych tematów.
 
-|Temat |Link|  
+|Temat |Łącze|  
 | --- | --- |
 |Pobieranie programu Azure AD Connect | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)|
 |Instalowanie przy użyciu ustawień ekspresowych | [Ekspresowa instalacja programu Azure AD Connect](./active-directory-aadconnect-get-started-express.md)|

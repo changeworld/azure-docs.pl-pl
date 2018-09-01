@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: 2283a12845a3b334e29e3f48cbadb99ad508e459
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301585"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382154"
 ---
-# <a name="manage-reservations-for-resources-in-azure"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
+# <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
 Po możesz kupić rezerwację Azure, może być konieczne zastosowanie rezerwacji do innej subskrypcji, zmienić, kto może zarządzać rezerwacji lub zmienić zakres rezerwacji. Możesz również podzielić rezerwacji do dwóch rezerwacji do stosowania niektórych wystąpień, których używasz do innej subskrypcji.
 
@@ -60,7 +60,7 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Podziel pojedynczy rezerwacji do dwóch rezerwacji
 
- Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Domyślnie wszystkie wystąpienia mają jeden zakres - albo pojedynczej subskrypcji lub udostępniony. Na przykład nabyć 10 standardowych maszyn wirtualnych D2 i określony zakres do subskrypcji A. Teraz można zmienić zakresu dla rezerwacji 7 do subskrypcji A i pozostałych 3 do subskrypcji B. podział rezerwacji umożliwia dystrybucji wystąpienia dla szczegółowego zakres zarządzania. Wybierając zakres udostępniony, można uprościć alokacji do subskrypcji. Jednak do celów zarządzania lub budżetowania koszt, można przydzielić ilości do określonej subskrypcji.
+ Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Domyślnie wszystkie wystąpienia mają jeden zakres - albo pojedynczej subskrypcji lub udostępniony. Na przykład zakupiono 10 wystąpień rezerwacji i określony zakres do subskrypcji A. Teraz można zmienić zakresu dla rezerwacji 7 do subskrypcji A i pozostałych 3 do subskrypcji B. podział rezerwacji umożliwia dystrybucji wystąpienia dla szczegółowego zakres zarządzania. Wybierając zakres udostępniony, można uprościć alokacji do subskrypcji. Jednak do celów zarządzania lub budżetowania koszt, można przydzielić ilości do określonej subskrypcji.
 
  Możesz podzielić rezerwacji do dwóch rezerwacji do programu PowerShell, interfejsu wiersza polecenia lub przy użyciu interfejsu API.
 
@@ -86,6 +86,7 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
     Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 4. Można zaktualizować zakresu, uruchamiając następujące polecenie:
+
     ```powershell
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
@@ -113,7 +114,9 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
+- [Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Zrozumienie, jak jest stosowany rabat związany z rezerwacją maszyny Wirtualnej](billing-understand-vm-reservation-charges.md)
+- [Zrozumienie, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise](../billing/billing-understand-suse-reservation-charges.md)
 - [Zrozumienie sposobu stosowania rabatów rezerwacji](billing-understand-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)

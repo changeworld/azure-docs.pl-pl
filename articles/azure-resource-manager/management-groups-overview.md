@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2018
+ms.date: 08/31/2018
 ms.author: rithorn
-ms.openlocfilehash: edc57d146ccb034ac3fd627386000a1953b0e558
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: b95dba65a7ab89306844e48641aba584e3d6b175
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480326"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371520"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -38,7 +38,7 @@ Inny scenariusz, w którym będzie korzystać z grupy zarządzania jest aby udos
 
 ### <a name="important-facts-about-management-groups"></a>Ważne informacje o grupy zarządzania
 
-- 10 000 grupy zarządzania mogą być obsługiwane w jednym katalogu.
+- 10 000 grupy zarządzania mogą być obsługiwane w pojedynczym katalogu (dzierżawa usługi Azure Active Directory).
 - Drzewo grupy zarządzania może obsługiwać maksymalnie sześciu poziomach głębokości.
   - Ten limit nie zawiera poziomu głównego lub na poziomie subskrypcji.
 - Każda grupa zarządzania i subskrypcja może obsługiwać tylko jedną jednostkę nadrzędną.
@@ -80,7 +80,7 @@ Obsługa grup zarządzania platformy Azure [based kontroli dostępu (RBAC)](../r
 
 Poniższej tabeli przedstawiono listę ról i obsługiwane operacje na grupach zarządzania.
 
-| Nazwa roli RBAC             | Przycisk Utwórz | Zmiana nazwy | Move | Usuwanie | Przypisywanie dostępu | Przypisz zasady | Odczyt  |
+| Nazwa roli RBAC             | Tworzenie | Zmiana nazwy | Przenieś | Usuń | Przypisywanie dostępu | Przypisz zasady | Odczyt  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X    | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X    | X      |               |               | X     |

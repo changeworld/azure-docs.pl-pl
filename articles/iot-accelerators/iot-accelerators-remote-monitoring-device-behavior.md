@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5c05f2617025d5cb4f1328f04c8d71049e1efcc7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a983c7307308534140ab8999593ac4c8c6992a42
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284779"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338510"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementowanie zachowania modelu urządzenia
 
@@ -41,7 +41,7 @@ W tym artykule opisano sposób definiowania zachowania modelu niestandardowego s
 > * Zdefiniuj, jak symulowane urządzenie odpowiada na wywołanie metody rozwiązania do zdalnego monitorowania
 > * Debugowanie skryptów
 
-Teraz, gdy wyjaśniono sposób określić zachowanie symulowane urządzenie, sugerowane następnym krokiem jest Dowiedz się, jak [utworzyć symulowane urządzenie](iot-accelerators-remote-monitoring-test.md).
+Teraz, gdy wyjaśniono sposób określić zachowanie symulowane urządzenie, sugerowane następnym krokiem jest Dowiedz się, jak [utworzyć symulowane urządzenie](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 Aby uzyskać więcej informacji dla deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
 

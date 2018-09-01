@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5fb6289f75f0c98cc218233d8adb900484ee4a17
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c64b32656db2d3b821833450b4e866b9e33e44cd
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916500"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337349"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Amazon przy użyciu usługi Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Aby użyć konta Amazon jako dostawcy tożsamości w usłudze Azure Active Direc
 3. Wybierz **zarejestrować nową aplikację**.
 4. Wprowadź **nazwa**, **opis**, i **adres URL zasad zachowania powiadomienie**, a następnie kliknij przycisk **Zapisz**.
 5. W **ustawień sieci Web** sekcji, skopiuj wartości z **identyfikator klienta**. Wybierz **wyświetlić wpis tajny** można pobrać klucza tajnego klienta, a następnie skopiuj go. Należy dysponować je, aby skonfigurować konto usługi Amazon jako dostawcy tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
-6. W **ustawień sieci Web** zaznacz **Edytuj**, a następnie wprowadź `https://login.microsoftonline.com` w **dozwolone źródła JavaScript** i `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **dozwolone Zwraca adresy URL**. Zastąp **{dzierżawa}** nazwą dzierżawy (np. contoso.onmicrosoft.com). 
+6. W **ustawień sieci Web** zaznacz **Edytuj**, a następnie wprowadź `https://{tenant}.b2clogin.com` w **dozwolone źródła JavaScript** i `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **dozwolone Zwraca adresy URL**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c). 
 7. Kliknij pozycję **Zapisz**.
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurowanie konta Amazon jako dostawcy tożsamości

@@ -1,6 +1,6 @@
 ---
-title: Używać punktu końcowego prognozowania usługi wizji niestandardowe - kognitywnych usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak programowo testować obrazów za pomocą klasyfikatora z usługi wizji niestandardowych za pomocą interfejsu API.
+title: Użyj usługi Custom Vision Service endpoint prognoz - usług Azure Cognitive Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak programowo testować obrazów przy użyciu klasyfikatora usługi Custom Vision Service za pomocą interfejsu API.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,44 +9,44 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 54f9d9fec1f40c167341dec6a8699b6a558419da
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348153"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341797"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Umożliwia testowanie obrazów programowo z klasyfikatora niestandardowe wizji usługi punktu końcowego prognozowania
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Użyj endpoint prognoz, aby przetestować obrazy programowo przy użyciu klasyfikatora usługi Custom Vision Service
 
-Po nauczenia modelu, można przetestować obrazy programowo, poprzez przesłanie ich do prognozowania interfejsu API. 
+Po użytkownik nauczenia modelu, można przetestować obrazy programowo, przesyłając je do interfejsu API prognoz. 
 
 > [!NOTE]
-> W tym dokumencie przedstawiono przy użyciu języka C# przesyłanie obrazu do interfejsu API prognozowania. Aby uzyskać więcej informacji oraz przykłady korzystania z interfejsu API, zobacz [dokumentacja interfejsu API prognozowania](https://go.microsoft.com/fwlink/?linkid=865445).
+> W tym dokumencie przedstawiono przy użyciu języka C# przesyłanie obrazu do interfejsu API prognoz. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentacja interfejsu API prognoz](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i prognozowanie klucza
+## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i prognozowania klucza
 
-Z [wizji niestandardowe strony sieci web](https://customvision.ai), wybierz projekt, a następnie wybierz __wydajności__ kartę. Aby wyświetlić informacje dotyczące korzystania z interfejsu API prognozowania, wybierz __URL prognozowania__. Skopiuj następujące informacje do użycia w aplikacji:
+Z [strony sieci web Custom Vision](https://customvision.ai), wybierz swój projekt, a następnie wybierz __wydajności__ kartę. Do wyświetlania informacji o korzystaniu z interfejsu API prognoz, w tym __prognozowania klucz__, wybierz opcję __URL prognozowania__. Dla projektów dołączonych do zasobu platformy Azure Twoje __prognozowania klucz__ można także znaleźć w [witryny Azure Portal](https://portal.azure.com) strona skojarzonego zasobu platformy Azure w ramach __klucze__. Skopiuj następujące informacje do użycia w aplikacji:
 
-* __Adres URL__ dla przy użyciu __plik obrazu__.
+* __Adres URL__ używania __plik obrazu__.
 * __Klucz prognozowania__ wartość.
 
 > [!TIP]
-> Jeśli masz wiele iteracji, można kontrolować, które z nich jest używana przez ustawienie go jako domyślny. Wybierz iteracji z __iteracji__ sekcji, a następnie wybierz __domyślnym__ w górnej części strony.
+> Jeśli masz wiele iteracji, można kontrolować, które z nich jest używany przez ustawienie go jako domyślny. Wybierz iteracji z __iteracji__ sekcji, a następnie wybierz __Ustaw jako domyślny__ w górnej części strony.
 
-![Na karcie Wydajność jest wyświetlana z czerwonym prostokątem otaczającego prognozowania adres URL.](./media/use-prediction-api/prediction-url.png)
+![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego URL prognozowania.](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
 
-1. W programie Visual Studio Utwórz nową aplikację konsoli języka C#.
+1. Z programu Visual Studio Utwórz nową aplikację konsoli C#.
 
-2. Użyj następującego kodu jako treść __Program.cs__ pliku.
+2. Użyj poniższego kodu, treści __Program.cs__ pliku.
 
     > [!IMPORTANT]
     > Zmień następujące informacje:
     >
-    > * Ustaw __przestrzeni nazw__ nazwę projektu.
-    > * Ustaw __klucza prognozowania__ otrzymane wcześniej w wierszu, który rozpoczyna się od wartości `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Ustaw __adres URL__ otrzymane wcześniej w wierszu, który rozpoczyna się od wartości `string url =`.
+    > * Ustaw __przestrzeni nazw__ do nazwy projektu.
+    > * Ustaw __klucz prognozowania__ otrzymany wcześniej w wierszu, który rozpoczyna się od wartości `client.DefaultRequestHeaders.Add("Prediction-Key",`.
+    > * Ustaw __adresu URL__ otrzymany wcześniej w wierszu, który rozpoczyna się od wartości `string url =`.
 
     ```csharp
     using System;
@@ -103,9 +103,9 @@ Z [wizji niestandardowe strony sieci web](https://customvision.ai), wybierz proj
     }
     ```
 
-## <a name="use-the-application"></a>Korzystanie z aplikacji
+## <a name="use-the-application"></a>Użyj aplikacji
 
-Podczas uruchamiania aplikacji, możesz wprowadź ścieżkę do pliku obrazu. Obraz jest przesyłany do interfejsu API, a wyniki są zwracane jako dokument JSON. Następujący kod JSON jest przykładem odpowiedzi
+Podczas uruchamiania aplikacji, należy wprowadzić ścieżkę do pliku obrazu. Obraz, który jest przesyłany do interfejsu API, a wyniki są zwracane jako dokument JSON. Następujący kod JSON jest przykładem odpowiedzi
 
 ```json
 {
@@ -122,4 +122,4 @@ Podczas uruchamiania aplikacji, możesz wprowadź ścieżkę do pliku obrazu. Ob
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Eksportowanie modelu do użytku w przenośnych](export-your-model.md)
+[Eksportowanie modelu na potrzeby mobilnych](export-your-model.md)

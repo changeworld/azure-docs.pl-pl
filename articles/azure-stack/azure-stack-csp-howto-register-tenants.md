@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: d5f775761def1c06063cd02b4141c5de2a752cce
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089914"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382692"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodawanie dzierżawy za użycie i rozliczenia w usłudze Azure Stack
 
@@ -91,5 +91,5 @@ Po dodaniu nowego klienta do usługi Azure Stack lub dzierżawie klienta końcow
 ## <a name="next-steps"></a>Kolejne kroki
 
  - Aby przejrzeć komunikaty o błędach, jeśli są one wyzwalane w procesie rejestracji, zobacz [dzierżawy komunikaty o błędach rejestracji](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
- - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](azure-stack-billing-and-chargeback.md).
  - Aby sprawdzić, jak klienta końcowego może dodać użytkownika, jako dostawcy usług Kryptograficznych, Menedżer dla ich usługi Azure Stack dzierżawy, zobacz [włączenia dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack](user\azure-stack-csp-enable-billing-usage-tracking.md).

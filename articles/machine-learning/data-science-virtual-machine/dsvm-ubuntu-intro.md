@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057090"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338811"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -81,13 +81,14 @@ Przed utworzeniem maszyny wirtualnej do nauki o danych dla systemu Linux, musi m
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Tworzenie maszyny wirtualnej do nauki o danych dla systemu Linux
 Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej do nauki o danych dla systemu Linux:
 
-1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
+1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Może zostać wyświetlony monit można zalogować się do konta platformy Azure, jeśli użytkownik są nie już zalogowany. 
 1. Kliknij przycisk **Utwórz** (u dołu), aby wywołać Kreatora.![ Konfigurowanie — — — maszyna wirtualna analizy danych](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. Dane wejściowe dla każdej z czynności w Kreatorze (wyliczany na poprzednim rysunku po prawej stronie) użyty do utworzenia maszyny wirtualnej do nauki o danych firmy Microsoft można znaleźć w poniższych sekcjach. Poniżej przedstawiono dane wejściowe wymagane do skonfigurowania każdego z następujących czynności:
    
    a. **Podstawy**:
    
    * **Nazwa**: Nazwa serwera do nauki o danych tworzysz.
+   * **Typ dysku maszyny Wirtualnej**: Wybierz **dysku Premium SSD** Jeśli wolisz dysków półprzewodnikowych (SSD). W przeciwnym razie wybierz **standardowych dysków Twardych**. 
    * **Nazwa użytkownika**: pierwsze konto logowania w identyfikatorze.
    * **Hasło**: pierwsze hasło do konta (zamiast hasła można użyć klucza publicznego SSH).
    * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musi mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
@@ -96,23 +97,17 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej do n
    
    b. **Rozmiar**:
    
-   * Wybierz jeden z typów serwerów, które spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Wybierz **Wyświetl wszystko** Aby wyświetlić więcej opcji dotyczących rozmiarów maszyn wirtualnych. Wybierz kontroler sieci lub klasa ND maszyny Wirtualnej na potrzeby szkolenia procesora GPU. [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) strona zawiera listę regionów za pomocą procesorów GPU.
+   * Wybierz jeden z typów serwerów, które spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Wybierz kontroler sieci lub klasa ND maszyny Wirtualnej dla procesora GPU opartych na wystąpieniach maszyn wirtualnych. [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) strona zawiera listę regionów za pomocą procesorów GPU.
    
    c. **Ustawienia**:
    
-   * **Typ dysku**: Wybierz **Premium** Jeśli wolisz dysków półprzewodnikowych (SSD). W przeciwnym razie wybierz **standardowa**. Maszynach wirtualnych procesorów GPU wymaga dysku w warstwie standardowa.
-   * **Konto magazynu**: można utworzyć nowe konto magazynu platformy Azure w ramach subskrypcji lub użyć istniejącego w tej samej lokalizacji, która została wybrana na **podstawy** kroku kreatora.
-   * **Inne parametry**: W większości przypadków wystarczy użyć wartości domyślnych. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
+   * W większości przypadków można po prostu użyć wartości domyślne. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
    
    d. **Podsumowanie**:
    
-   * Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
+   * Sprawdź, czy wszystkie wprowadzone informacje jest poprawna. Link znajduje się na warunki użytkowania. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. Aby rozpocząć, aprowizacja, kliknij przycisk **Utwórz**. 
    
-   e. **Kup**:
-   
-   * Aby rozpocząć, aprowizacja, kliknij przycisk **Kup**. Link znajduje się na warunki transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku.
-
-Aprowizacja powinno zająć około 5 – 10 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
+Aprowizacja powinno zająć około 5 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak uzyskiwać dostęp do maszyny wirtualnej do nauki o danych dla systemu Linux
 
@@ -121,7 +116,7 @@ Aby uzyskać dostęp maszyny wirtualnej DSVM Ubuntu za pomocą trzech metod:
 1. X2Go graficzny sesji
 1. JupyterHub i JupyterLab dla notesów programu Jupyter
 
-### <a name="ssh"></a>Protokół SSH
+### <a name="ssh"></a>SSH
 
 Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. Na Windows, można pobrać narzędzia klienta SSH, takiego jak [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 
@@ -434,6 +429,6 @@ Poniżej przedstawiono, jak można kontynuować Twoją naukę oraz eksploracji:
 
 * [Do nauki o danych na maszyny wirtualnej analizy danych dla systemu Linux](linux-dsvm-walkthrough.md) instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z systemem Linux maszyna wirtualna do nauki o danych aprowizowane w tym miejscu. 
 * Eksplorowanie różnych narzędzi do analizy danych na maszyny Wirtualnej do analizy danych, korzystając z narzędzi opisanych w tym artykule. Można również uruchomić *dsvm więcej informacji o* Shell na maszynie wirtualnej wstęp i łącza do dodatkowych informacji na temat narzędzi zainstalowanych na maszynie Wirtualnej.  
-* Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-* Odwiedź stronę [Cortana Analytics — Galeria](http://gallery.cortanaanalytics.com) maszyny nauki i dane analizy przykładów korzystających z pakietu Cortana Analytics.
+* Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](http://aka.ms/tdsp).
+* Odwiedź stronę [galerii Azure AI](https://gallery.azure.ai/) maszyny nauki i dane analizy przykładów, które korzystają z usług Azure AI.
 

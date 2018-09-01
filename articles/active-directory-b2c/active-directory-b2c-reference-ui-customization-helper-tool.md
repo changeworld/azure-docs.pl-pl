@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445062"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336785"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Usługa Azure Active Directory B2C: Pomocnika narzędzie służące do zademonstrowania funkcji dostosowywania interfejsu użytkownika strony
 W tym artykule jest uzupełnieniem do [główny artykuł dostosowywania interfejsu użytkownika](active-directory-b2c-reference-ui-customization.md) w usłudze Azure Active Directory (Azure AD) B2C. Poniżej opisano sposób wykonywania funkcji dostosowywania interfejsu użytkownika strony za pomocą przykładowej zawartości do obsługi kodu HTML i CSS, udostępniliśmy.
@@ -26,7 +26,7 @@ Zanim będzie można dostosować niczego, konieczne będzie [Uzyskiwanie dzierż
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Tworzenie zasad rejestracji lub logowania
 Przykłady udostępniliśmy może służyć do customze dwóch stron w [zasad rejestracji lub logowania](active-directory-b2c-reference-policies.md): [ujednolicona strona logowania](active-directory-b2c-reference-ui-customization.md) i [strony samodzielnie atrybuty](active-directory-b2c-reference-ui-customization.md). Gdy [Tworzenie zasad rejestracji lub logowania](active-directory-b2c-reference-policies.md#create-a-sign-up-or-sign-in-policy), Dodaj konta lokalnego (adres e-mail), Facebook, Google i Microsoft jako **dostawców tożsamości**. Są to tylko dostawców tożsamości, które akceptują naszej przykładowej zawartości HTML.  Można również dodać podzbiór tych dostawców tożsamości, w razie potrzeby.
 
-## <a name="register-an-application"></a>Rejestrowanie aplikacji
+## <a name="register-an-application"></a>Zarejestruj aplikację
 Konieczne będzie [rejestrowania aplikacji](active-directory-b2c-app-registration.md) w dzierżawie B2C, który może służyć do wykonywania swoich zasad. Po zarejestrowaniu aplikacji, masz kilka opcji umożliwiających uruchamiany zasadach rejestracji:
 
 * Tworzenie jednej z aplikacji szybkiego startu wymienionych w sekcji "Wprowadzenie" usługi Azure AD B2C [Zaloguj się i logowanie użytkowników w aplikacjach](active-directory-b2c-overview.md).
@@ -55,7 +55,7 @@ Jeśli chcesz używać magazynu obiektów Blob Azure do hostowania zawartości s
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij przycisk **+ nowy** > **dane + magazyn** > **konta magazynu**. Konieczne będzie subskrypcji platformy Azure, aby utworzyć konto usługi Azure Blob Storage. Możesz utworzyć konto bezpłatnej wersji próbnej w [witryny sieci Web Azure](https://azure.microsoft.com/pricing/free-trial/).
-3. Podaj **nazwa** magazynu konta (na przykład "contoso") i wybierz odpowiednie opcje dla **warstwa cenowa**, **grupy zasobów** i  **Subskrypcja**. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij przycisk **Utwórz**.
+3. Podaj **nazwa** magazynu konta (na przykład "contoso") i wybierz odpowiednie opcje dla **warstwa cenowa**, **grupy zasobów** i  **Subskrypcja**. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij pozycję **Utwórz**.
 4. Wróć do tablicy startowej, a następnie kliknij konto magazynu, który został utworzony.
 5. W **Podsumowanie** kliknij **kontenery**, a następnie kliknij przycisk **+ Dodaj**.
 6. Podaj **nazwa** kontenera (na przykład "b2c") i wybierz **Blob** jako **dostęp typu**. Kliknij przycisk **OK**.
@@ -74,7 +74,7 @@ Możesz pobrać [usługi Azure Blob Storage pomocnicze narzędzie i przykładowe
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-To repozytorium zawiera `sample_templates\wingtip` katalogu, który zawiera przykład kodu HTML, CSS i obrazów. Szablony te można odwoływać się do konta usługi Azure Blob Storage należy edytować pliki HTML. Otwórz `unified.html` i `selfasserted.html` i Zamień wszystkie wystąpienia `https://localhost` adresem URL z własnego kontenera, zapisaną w poprzednich krokach. Należy użyć ścieżka bezwzględna plików HTML, ponieważ w tym przypadku będzie udostępniania HTML przez usługę Azure AD w domenie `https://login.microsoftonline.com`.
+To repozytorium zawiera `sample_templates\wingtip` katalogu, który zawiera przykład kodu HTML, CSS i obrazów. Szablony te można odwoływać się do konta usługi Azure Blob Storage należy edytować pliki HTML. Otwórz `unified.html` i `selfasserted.html` i Zamień wszystkie wystąpienia `https://localhost` adresem URL z własnego kontenera, zapisaną w poprzednich krokach. Należy użyć ścieżka bezwzględna plików HTML, ponieważ w tym przypadku będzie udostępniania HTML przez usługę Azure AD w domenie `tenantname.b2clogin.com`.
 
 ### <a name="upload-the-sample-files"></a>Przekazywanie plików przykładowych
 W tym samym repozytorium Rozpakuj `B2CAzureStorageClient.zip` i uruchom `B2CAzureStorageClient.exe` pliku w ciągu. Ten program będzie po prostu przekazać wszystkie pliki w katalogu, który określisz do swojego konta magazynu i włączyć dostęp CORS dla tych plików. Jeśli wykonano powyższe kroki plików HTML i CSS teraz będzie skierowana do swojego konta magazynu. Należy pamiętać, że nazwa konta magazynu części, które poprzedza `blob.core.windows.net`, na przykład `contoso`. Możesz sprawdzić, czy zawartość został przekazany poprawnie przez próby uzyskania dostępu do `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` w przeglądarce. Również użyć [ http://test-cors.org/ ](http://test-cors.org/) aby upewnić się, że zawartość jest teraz włączono mechanizm CORS. (Wyszukaj "stan XHR: 200" w wyniku.)

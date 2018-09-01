@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226530"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344174"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -34,9 +34,9 @@ Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 * [Jak skonfigurować aplikację do używania logowania za pomocą konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>Konfigurowanie wielu opcji logowania
+## <a name="use-multiple-sign-in-providers"></a>Korzystanie z wielu dostawców logowania
 
-Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wiele opcji logowania dla użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji sieci web. Kroki przedstawione poniżej:
+Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wielu dostawców logowania dla użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji sieci web. Kroki przedstawione poniżej:
 
 Pierwszy w **uwierzytelniania / autoryzacji** stronie w witrynie Azure portal, skonfiguruj każdy z dostawcy tożsamości, aby włączyć.
 
@@ -60,6 +60,50 @@ Aby przekierować użytkownika po-konta logowania do niestandardowego adresu URL
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
+## <a name="sign-out-of-a-session"></a>Wyloguj się z sesji
+
+Użytkownicy mogą inicjować wylogowania, wysyłając `GET` żądanie aplikacji `/.auth/logout` punktu końcowego. `GET` Żądania wykonuje następujące czynności:
+
+- Powoduje wyczyszczenie plików cookie uwierzytelniania z bieżącej sesji.
+- Usuwa tokenów bieżącego użytkownika z tokenu magazynu.
+- Dla usługi Azure Active Directory i Google dokonuje po stronie serwera wylogowania dostawcy tożsamości.
+
+Poniżej przedstawiono proste wylogowania łącze na stronie sieci Web:
+
+```HTML
+<a href="/.auth/logout">Sign out</a>
+```
+
+Domyślnie pomyślny wylogowania przekierowuje klienta do adresu URL `/.auth/logout/done`. Można zmienić na stronie przekierowania post-sign-out przez dodanie `post_logout_redirect_uri` parametr zapytania. Na przykład:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=/index.html
+```
+
+Zalecamy, aby użytkownik [kodowanie](https://wikipedia.org/wiki/Percent-encoding) wartość `post_logout_redirect_uri`.
+
+Korzystając z w pełni kwalifikowaną adresy URL, adres URL musi być hostowane w tej samej domenie albo skonfigurowane jako dozwolone zewnętrznym adresem URL przekierowania dla aplikacji. W poniższym przykładzie, aby przekierować do `https://myexternalurl.com` nie jest obsługiwany w tej samej domenie:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
+```
+
+Należy uruchomić następujące polecenie w [usługi Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
+```
+
+## <a name="preserve-url-fragments"></a>Zachowanie fragmentów adresu URL
+
+Po użytkownicy logują się do aplikacji, zwykle mają zostać przekierowane do tej samej sekcji w tej samej stronie, takich jak `/wiki/Main_Page#SectionZ`. Jednak ponieważ [fragmenty adresu URL](https://wikipedia.org/wiki/Fragment_identifier) (na przykład `#SectionZ`) nigdy nie są wysyłane do serwera, ich nie są zachowywane domyślnie po logowania OAuth kończy i przekierowuje wróć do aplikacji. Użytkownicy otrzymują nieoptymalne środowisko następnie, kiedy ich potrzebują przejść do żądanego zakotwiczenia ponownie. Powyższe ograniczenie ma zastosowanie do wszystkich rozwiązań po stronie serwera uwierzytelniania.
+
+W przypadku uwierzytelniania usługi App Service można zachować fragmenty adresu URL w logowania OAuth. Aby to zrobić, należy ustawić aplikacji nosi nazwę `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` do `true`. Możesz to zrobić [witryny Azure portal](https://portal.azure.com), lub po prostu uruchom następujące polecenie [usługi Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
+```
+
 ## <a name="access-user-claims"></a>Dostęp do oświadczenia użytkownika
 
 Usługa App Service przekazuje oświadczenia użytkownika do aplikacji za pomocą specjalnych nagłówków. Zewnętrzne żądania nie są dozwolone do ustawiania tych nagłówków, dzięki czemu są one obecne tylko wtedy, gdy ustawiony przez usługę App Service. Niektóre nagłówki przykład obejmują:
@@ -77,7 +121,7 @@ W kodzie serwera tokenów właściwe dla dostawcy są wprowadzane w nagłówku �
 
 | | |
 |-|-|
-| Usługa Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
+| Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Token usługi Facebook | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
 | Konto Microsoft | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |

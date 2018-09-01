@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 78956c8e9d9248708ec326fc07d46f48e51e0f83
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247649"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341264"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -85,12 +85,12 @@ Dane urządzenia, która przechowuje dane rozwiązanie IoT, zależy od konkretny
 
 ## <a name="device-heartbeat"></a>Urządzenie pulsu
 
-Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **element connectionState**. Używaj tylko **element connectionState** pola podczas opracowywania i debugowania. Pole nie powinno zapytania rozwiązania IoT w czasie wykonywania. Na przykład nie kwerendy **element connectionState** pola, aby sprawdzić, czy urządzenie jest połączony, zanim wyślesz wiadomość SMS lub wiadomości chmury do urządzenia. Firma Microsoft zaleca subskrybowanie [ **urządzenia odłączony** zdarzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) na usługi Event Grid, aby otrzymywać alerty i monitorowanie stanu połączenia urządzenia. Użyj tego [samouczek](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) dowiesz się, jak zintegrować zdarzenia z usługi IoT Hub w rozwiązaniu IoT.
+Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **element connectionState**. Używaj tylko **element connectionState** pola podczas opracowywania i debugowania. Pole nie powinno zapytania rozwiązania IoT w czasie wykonywania. Na przykład nie kwerendy **element connectionState** pola, aby sprawdzić, czy urządzenie jest połączony, zanim wyślesz wiadomość SMS lub wiadomości chmury do urządzenia. Firma Microsoft zaleca subskrybowanie [ **urządzenia odłączony** zdarzeń] [ lnk-devguide-evgrid-evtype] na usługi Event Grid, aby otrzymywać alerty i monitorowanie stanu połączenia urządzenia. Użyj tego [samouczek] [ lnk-howto-evgrid-connstate] dowiesz się, jak zintegrować zdarzenia podłączone urządzenia i odłączone urządzenia z usługi IoT Hub w rozwiązaniu IoT.
 
 Jeśli rozwiązanie IoT musi znać, jeśli urządzenie jest połączone, można zaimplementować *wzorzec pulsu*.
 We wzorcu pulsu urządzenie wysyła komunikaty z urządzenia do chmury co najmniej jeden raz każdego ustaloną ilość czasu (np. co najmniej raz na godzinę). W związku z tym nawet jeśli urządzenie nie ma żadnych danych do wysłania, nadal wysyła pustego komunikatu urządzenia do chmury (zazwyczaj z właściwością, która identyfikuje go jako pulsu). Po stronie usługi rozwiązania przechowuje mapę z ostatni Puls dla każdego urządzenia. Rozwiązania nie pojawi się komunikat pulsu w oczekiwanym czasie z urządzenia, założono, że występuje problem z urządzeniem.
 
-Bardziej złożone wdrożenia mogą obejmować informacje z [monitorowanie operacji] [ lnk-devguide-opmon] do identyfikowania urządzeń, które są próby połączenia lub komunikację, ale kończy się niepowodzeniem. Podczas implementowania wzorca pulsu, upewnij się sprawdzić [IoT Hub przydziały i ograniczenia][lnk-quotas].
+Bardziej złożone wdrożenia mogą obejmować informacje z [usługi Azure Monitor] [ lnk-AM] i [usługi Azure Resource Health] [ lnk-ARH] do identyfikowania urządzenia, które próbujesz się połączyć lub komunikację, ale kończy się niepowodzeniem, sprawdź [monitorowanie z diagnostyką] [ lnk-devguide-mon] przewodnik. Podczas implementowania wzorca pulsu, upewnij się sprawdzić [IoT Hub przydziały i ograniczenia][lnk-quotas].
 
 > [!NOTE]
 > Jeśli rozwiązania IoT używa stanu połączenia wyłącznie w celu ustalenia, czy do wysyłania komunikatów z chmury do urządzeń, a komunikaty nie są emitowane do dużych zestawach urządzeń, należy wziąć pod uwagę przy użyciu prostszej *krótki czas wygaśnięcia* wzorca. Ten wzorzec osiąga ten sam wynik w postaci przechowywanie rejestru stanu połączenia urządzenia przy użyciu wzorca pulsu, będąc bardziej wydajne. Jeśli żądania potwierdzeń komunikatów usługi IoT Hub może generować powiadomienia o tym, które urządzenia są mogące odbierać komunikaty, które nie są.
@@ -103,7 +103,7 @@ Właściwości: Właściwości systemu komunikat mają prefiks `'$'` symboli.
 
 Komunikat powiadomienia dla urządzenia:
 
-| Name (Nazwa) | Wartość |
+| Nazwa | Wartość |
 | --- | --- |
 |$content — typ | application/json |
 |$iothub-enqueuedtime |  Czas wysłania powiadomienia |
@@ -139,7 +139,7 @@ Treść: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczą reprezentacj
 ```
 Komunikat powiadomienia dla modułu:
 
-| Name (Nazwa) | Wartość |
+| Nazwa | Wartość |
 | --- | --- |
 $content — typ | application/json |
 $iothub-enqueuedtime |  Czas wysłania powiadomienia |
@@ -186,7 +186,7 @@ Tożsamości urządzeń są reprezentowane jako dokumenty JSON z następującymi
 | Element etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232][lnk-rfc7232]. |
 | uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
 | auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
-| status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
+| stan |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
 | Element connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: to pole powinno używane tylko do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
@@ -208,7 +208,7 @@ Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi wł
 | Element etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232][lnk-rfc7232]. |
 | uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
 | auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
-| status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
+| stan |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
 | Element connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: to pole powinno używane tylko do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
@@ -256,7 +256,7 @@ Aby zapoznać się z pomocą IoT Hub Device Provisioning Service do włączenia 
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-export]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-[lnk-devguide-opmon]: iot-hub-operations-monitoring.md
+[lnk-devguide-mon]: iot-hub-monitor-resource-health.md
 
 [lnk-devguide-security]: iot-hub-devguide-security.md
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
@@ -265,3 +265,8 @@ Aby zapoznać się z pomocą IoT Hub Device Provisioning Service do włączenia 
 
 [lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+
+[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-ARH]: ../service-health/resource-health-overview.md
+[lnk-devguide-evgrid-evtype]: iot-hub-event-grid.md#event-types
+[lnk-howto-evgrid-connstate]: iot-hub-how-to-order-connection-state-events.md

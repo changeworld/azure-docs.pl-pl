@@ -1,6 +1,6 @@
 ---
-title: Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
+title: Rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189654"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344089"
 ---
-# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM
+# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze PIM
 
 Privileged Identity Management (PIM) dla zasobów platformy Azure wprowadza nowe formanty do zarządzania cyklem życia dostępu i przypisania dla zasobów platformy Azure. Administratorzy mogą przypisywać członkostwa przy użyciu właściwości Data / Godzina rozpoczęcia i zakończenia. Gdy zbliża się zakończenie przypisania PIM wysyła powiadomienia e-mail do użytkowników lub grup. Wysyła również powiadomienia e-mail administratorom zasobu w celu zapewnienia utrzymania odpowiedni dostęp. Zadania mogą być odnawiane i będą one nadal widoczne wygasła przez maksymalnie 30 dni, nawet jeśli nie zostanie przedłużony dostęp.
 
@@ -113,7 +113,7 @@ Po przesłaniu żądania administratorom zasobów jest powiadamiany o oczekując
 
 Administratorom zasobów mogą uzyskiwać dostęp do żądania odnowienia z linku powiadomienia e-mail lub uzyskiwanie dostępu do usługi PIM w witrynie Azure portal i wybierając **zatwierdzanie żądań** z okienka po lewej stronie.
 
-![Zatwierdzanie żądań](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
+![Zatwierdź żądania](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
 Gdy administrator wybierze **Zatwierdź** lub **Odmów**, Szczegóły żądania są wyświetlane wraz z polem, aby podać uzasadnienie dla dzienników inspekcji.
 

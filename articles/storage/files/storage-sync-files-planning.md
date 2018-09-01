@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247399"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382258"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -88,7 +88,7 @@ Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodn
         Install-Module -Name AzureRM.StorageSync -AllowPrerelease
     ```
 
-#### <a name="usage"></a>Sposób użycia  
+#### <a name="usage"></a>Użycie  
 Narzędzie oceny można wywołać na kilka różnych sposobów: możesz wykonać testy systemu i/lub sprawdzenia zestawu danych. Aby wykonać testy systemu i zestaw danych: 
 
 ```PowerShell
@@ -111,8 +111,8 @@ Aby wyświetlić wyniki w formacie CSV:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Wymagania systemu
-- Serwer z systemem Windows Server 2012 R2 lub Windows Server 2016 
+### <a name="system-requirements"></a>Wymagania systemowe
+- Serwer z systemem Windows Server 2012 R2 lub Windows Server 2016:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
@@ -121,18 +121,18 @@ Aby wyświetlić wyniki w formacie CSV:
 
     Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu. Wcześniejszych wersjach systemu Windows mogą być dodawane w oparciu o opinie użytkowników.
 
-- Serwer z co najmniej 2GB pamięci
+    > [!Important]  
+    > Zaleca się pozostawienie wszystkich serwerów, które używają usługi Azure File Sync na bieżąco z najnowszymi aktualizacjami z witryny Windows Update. 
+
+- Serwer z co najmniej 2 GiB pamięci.
 
     > [!Important]  
-    > Jeśli serwer jest uruchomiony na maszynie wirtualnej z obsługą pamięci dynamicznej, maszyny Wirtualnej należy skonfigurować minimalną 2048MB pamięci.
+    > Jeśli serwer jest uruchomiony na maszynie wirtualnej z obsługą pamięci dynamicznej, minimalna MiB 2048 pamięci należy skonfigurować maszynę Wirtualną.
     
-- Podłączonych lokalnie woluminie sformatowanym w systemie plików NTFS
-
-> [!Important]  
-> Zaleca się pozostawienie wszystkich serwerów, które używają usługi Azure File Sync na bieżąco z najnowszymi aktualizacjami z witryny Windows Update. 
+- Podłączonych lokalnie woluminie sformatowanym w systemie plików NTFS.
 
 ### <a name="file-system-features"></a>Funkcje systemu plików
-| Cecha | Stan obsługi | Uwagi |
+| Funkcja | Stan obsługi | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy kontroli dostępu Windows są zachowywane przez usługę Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Windows list ACL nie są (jeszcze) obsługiwane przez usługi Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
 | Twarde linki | Pominięto | |
@@ -231,7 +231,7 @@ Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdzia
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
 Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
@@ -239,15 +239,15 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Australia Wschodnia | Stan Nowa Południowa Walia |
 | Australia Południowo-Wschodnia | Stan Wiktoria |
 | Kanada Środkowa | Toronto |
-| Kanada Wschodnia | Miasto Quebec |
+| Kanada Wschodnia | Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | Hongkong |
+| Azja Wschodnia | Hongkong SAR |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Europa Północna | Irlandia |
 | Indie Południowe | Chennai |
-| Azja Południowo-Wschodnia | Singapur |
+| Azja Południowo-wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
 | Europa Zachodnia | Holandia |
@@ -268,12 +268,12 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
 | Środkowe stany USA          | Wschodnie stany USA 2          |
-| Azja Wschodnia           | Azja Południowo-Wschodnia     |
+| Azja Wschodnia           | Azja Południowo-wschodnia     |
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Europa Północna        | Europa Zachodnia        |
 | Indie Południowe         | Indie Środkowe      |
-| Azja Południowo-Wschodnia      | Azja Wschodnia          |
+| Azja Południowo-wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
 | Europa Zachodnia         | Europa Północna       |

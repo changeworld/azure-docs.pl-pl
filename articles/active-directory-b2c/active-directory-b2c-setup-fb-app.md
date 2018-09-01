@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: de059e3875b5f15526cb176d43a019fd2d9ee9b9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 985285b463d66770f97a431705d5b9198b632592
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901385"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344610"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Facebook, za pomocą usługi Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w usłudze Azure
 5. Kliknij przycisk **utworzyć identyfikator aplikacji**. Może to wymagać zaakceptować zasady platformy usługi Facebook i ukończyć sprawdzania zabezpieczeń w trybie online.
 6. Wybierz **ustawienia** > **podstawowe**.
 7. W dolnej części strony wybierz **Dodaj platformy**, a następnie wybierz pozycję **witryny sieci Web**.
-8. Wprowadź `https://login.microsoftonline.com/` w **adres URL witryny**. Wprowadź adres URL dla **adres URL zasad zachowania poufności**, na przykład `http://www.contoso.com`.
+8. Wprowadź `https://{tenantname}.b2clogin.com/` w **adres URL witryny**. Wprowadź adres URL dla **adres URL zasad zachowania poufności**, na przykład `http://www.contoso.com`.
 9. Wybierz **Zapisz zmiany**.
 11. W górnej części strony, skopiuj wartość **Identyfikatora aplikacji**. 
 12. Kliknij przycisk **Pokaż** i skopiuj wartość **klucz tajny aplikacji**. Obie z nich służy do konfigurowania usługi Facebook jako dostawcy tożsamości w dzierżawie. **Klucz tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń.
 13. Wybierz **produktów**, a następnie wybierz pozycję **Konfigurowanie** w obszarze **logowania do usługi Facebook**.
 14. Wybierz **ustawienia** w obszarze **logowania do usługi Facebook**.
-15. Wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **identyfikatory URI przekierowania OAuth prawidłowe** . Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com). Kliknij przycisk **Zapisz zmiany** w dolnej części strony.
+15. Wprowadź `https://{tenantname}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **identyfikatory URI przekierowania OAuth prawidłowe** . Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c). Kliknij przycisk **Zapisz zmiany** w dolnej części strony.
 16. Aby udostępnić aplikację usługi Facebook do usługi Azure AD B2C wybierz **przeglądu aplikacji**ustaw **publicznego wprowadzić Moja aplikacja?** do **tak**, wybierz kategorię, na przykład `Business and Pages`a następnie kliknij przycisk **Potwierdź**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurowanie konta usługi Facebook jako dostawcy tożsamości

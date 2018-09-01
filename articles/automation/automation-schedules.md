@@ -1,6 +1,6 @@
 ---
-title: Harmonogramów w usłudze Automatyzacja Azure
-description: Harmonogramy automatyzacji służą do planowania elementów runbook automatyzacji Azure do automatycznego uruchamiania. Opisuje sposób tworzenia i zarządzania nimi harmonogramu w, dzięki czemu może automatycznie uruchomić element runbook o określonej godzinie lub zgodnie z harmonogramem cyklicznym.
+title: Harmonogramów w usłudze Azure Automation
+description: Harmonogramy automatyzacji służą do zaplanowania elementy runbook w usłudze Azure Automation do automatycznego uruchamiania. W tym artykule opisano, jak tworzyć i zarządzać nimi z harmonogramem na platformie, dzięki czemu może automatycznie uruchomić element runbook o określonej godzinie lub zgodnie z cyklicznym harmonogramem.
 services: automation
 ms.service: automation
 ms.component: shared-capabilities
@@ -9,23 +9,23 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c7bd4d4249d304ee7c1df4ae4b8fc0af476b99c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 211d79f387697ce850ac645ef65338c216e2bd76
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192075"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382199"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planowanie elementu Runbook w usłudze Azure Automation
 
-Aby zaplanować elementu runbook automatyzacji Azure można uruchomić w określonym czasie, łącze do co najmniej jeden harmonogram. Harmonogram można skonfigurować do uruchamiania raz lub pojawiał co godzinę lub codziennie harmonogramu dla elementów runbook w portalu Azure. Można również zaplanować je na co tydzień, co miesiąc, określone dni tygodnia lub dni miesiąca lub określony dzień miesiąca. Element runbook może odnosić się do wielu harmonogramów i harmonogram może mieć wielu elementów runbook z nim połączone.
+Aby zaplanować uruchamianie elementu runbook w usłudze Azure Automation można uruchomić w określonym czasie, należy go powiązać co najmniej jeden harmonogram. Harmonogram można skonfigurować do uruchamiania jednokrotnie lub na pojawiał co godzinę lub codziennie harmonogramu dla elementów runbook w witrynie Azure portal. Można także zaplanować je dla co tydzień, co miesiąc, określone dni tygodnia lub dni miesiąca lub określonego dnia miesiąca. Element runbook może być połączony z wieloma harmonogramami, a harmonogram może mieć wiele elementów runbook połączone z tym rekordem.
 
 > [!NOTE]
-> Harmonogramy aktualnie nie obsługuje konfiguracji DSC automatyzacji Azure.
+> Harmonogramy aktualnie nie obsługuje konfiguracji usługi Azure Automation DSC.
 
 ## <a name="windows-powershell-cmdlets"></a>Polecenia cmdlet programu Windows PowerShell
 
-Polecenia cmdlet w poniższej tabeli służą do tworzenia i zarządzania nimi harmonogramów z programu Windows PowerShell w automatyzacji Azure. One dostarczane jako część [modułu Azure PowerShell](/powershell/azure/overview).
+Polecenia cmdlet w poniższej tabeli służą do tworzenia i zarządzania nimi harmonogramów przy użyciu programu Windows PowerShell w usłudze Azure Automation. Są dostarczane jako część systemu [modułu Azure PowerShell](/powershell/azure/overview).
 
 | Polecenia cmdlet | Opis |
 |:--- |:--- |
@@ -33,30 +33,30 @@ Polecenia cmdlet w poniższej tabeli służą do tworzenia i zarządzania nimi h
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Tworzy nowy harmonogram. |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Usuwa harmonogram. |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Ustawia właściwości istniejącego harmonogramu. |
-| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/set-azurermautomationscheduledrunbook) |Pobiera zaplanowanego elementach runbook. |
+| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Pobiera elementy runbook. |
 | [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Kojarzy elementu runbook z harmonogramem. |
 | [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Dissociates elementu runbook z harmonogramem. |
 
 ## <a name="creating-a-schedule"></a>Tworzenie harmonogramu
 
-Można utworzyć nowy harmonogram dla elementów runbook w portalu Azure lub programu Windows PowerShell.
+W witrynie Azure portal lub za pomocą programu Windows PowerShell, można utworzyć nowy harmonogram dla elementów runbook.
 
 > [!NOTE]
-> Po uruchomieniu nowe zadanie zaplanowane usługi Automatyzacja Azure korzysta z modułów najnowszego na Twoim koncie automatyzacji.  Aby uniknąć wpływu na elementy runbook i ich automatyzacji procesów, należy najpierw przetestować wszystkie elementy runbook, które zostały połączone harmonogramy przy użyciu konta automatyzacji przeznaczonego do testowania.  To sprawdzenie poprawności zaplanowane elementy runbook w dalszym ciągu działać poprawnie, a jeśli nie, dalsze rozwiązywanie problemów z i zastosować zmiany wymagane do przeprowadzenia migracji do środowiska produkcyjnego runbook zaktualizowanej wersji.
-> Konta automatyzacji nie automatycznie pobrać wszystkich nowych wersji modułów, chyba że zaktualizowano je ręcznie, wybierając [modułów Azure aktualizacji](automation-update-azure-modules.md) opcję **modułów**.
+> Usługa Azure Automation używa najnowszych modułów na koncie usługi Automation, po uruchomieniu nowego zaplanowanego zadania.  Aby uniknąć wpływu na Twoje elementy runbook i procesy, które mogą zautomatyzować, należy najpierw sprawdzić wszelkie elementy runbook, które mają połączone harmonogramy przy użyciu konta usługi Automation do testowania w wersji dedykowanej.  To sprawdzenie poprawności zaplanowane elementy runbook będą nadal działać prawidłowo, a jeśli nie, można dodatkowo Rozwiązywanie problemów i zastosować zmiany wymagane do przeprowadzenia migracji z wersji zaktualizowanych elementów runbook do środowiska produkcyjnego.
+> Konto usługi Automation nie automatycznie pobrać wszelkich nowych wersji moduły, chyba że masz zaktualizowane je ręcznie, wybierając [aktualizowania modułów platformy Azure](automation-update-azure-modules.md) opcję **modułów**.
 
-### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Aby utworzyć nowy harmonogram w portalu Azure
+### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Aby utworzyć nowy harmonogram w witrynie Azure portal
 
-1. W portalu Azure, z Twojego konta automatyzacji wybierz **harmonogramy** w sekcji **udostępnione zasoby** po lewej stronie.
+1. W witrynie Azure portal na koncie usługi automation wybierz **harmonogramy** sekcji **zasoby udostępnione** po lewej stronie.
 1. Kliknij przycisk **Dodaj harmonogram** w górnej części strony.
 1. Na **nowy harmonogram** okienku wpisz **nazwa** i opcjonalnie **opis** nowego harmonogramu.
-1. Wybierz harmonogram jest uruchamiane jeden raz, czy reoccurring zgodnie z harmonogramem, wybierając **raz** lub **cyklu**. W przypadku wybrania **raz** określ **godzina rozpoczęcia**, a następnie kliknij przycisk **Utwórz**. W przypadku wybrania **cyklu**, określ **godzina rozpoczęcia** i częstotliwość Częstotliwość elementu runbook przez powtarzanie - **godzina**, **dzień**, **tygodnia**, lub **miesiąca**. W przypadku wybrania **tygodnia** lub **miesiąca** z listy rozwijanej **opcji cyklu** zostanie wyświetlona w okienku i na wybór, **opcji cyklu** okienku są prezentowane i można wybrać dzień tygodnia, w przypadku wybrania **tygodnia**. W przypadku wybrania **miesiąca**, aby wybrać **dni tygodnia** lub określone dni miesiąca w kalendarzu i na koniec ma Uruchom ostatniego dnia miesiąca lub nie, a następnie kliknij przycisk **OK**.
+1. Wybierz harmonogram jest uruchamiane jeden raz, czy zgodnie z harmonogramem cyklicznych, wybierając **raz** lub **cyklu**. Jeśli wybierzesz **raz** określ **czas rozpoczęcia**, a następnie kliknij przycisk **Utwórz**. Jeśli wybierzesz **cyklu**, określ **czas rozpoczęcia** oraz jak często chcesz elementu runbook powtórzyć - przy częstotliwości **godzinę**, **dzień**, **tydzień**, lub **miesiąca**. Po wybraniu **tydzień** lub **miesiąca** z listy rozwijanej **opcji cyklu** jest wyświetlana w okienku, a po ich wybraniu, **opcji cyklu** zostanie wyświetlony w okienku i można wybrać dzień tygodnia, w przypadku wybrania **tydzień**. W przypadku wybrania **miesiąca**, aby wybrać **dni tygodnia** lub określone dni miesiąca w kalendarzu i na koniec chcesz Uruchom ostatniego dnia miesiąca, czy nie, a następnie kliknij przycisk **OK**.
 
-### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Aby utworzyć nowy harmonogram za pomocą środowiska Windows PowerShell
+### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Aby utworzyć nowy harmonogram za pomocą programu Windows PowerShell
 
-Możesz użyć [AzureRmAutomationSchedule nowy](/powershell/module/azurerm.automation/new-azurermautomationschedule) polecenia cmdlet, aby utworzyć harmonogramów. Należy określić godzinę rozpoczęcia harmonogramu i częstotliwości, który ma być uruchamiany.
+Możesz użyć [polecenia New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) polecenie cmdlet do tworzenia harmonogramów. Należy określić godzinę rozpoczęcia, harmonogram i częstotliwość, z których ma być uruchamiany.
 
-W następujących przykładowych poleceniach pokazano, jak utworzyć harmonogram 15 i 30 co miesiąc, za pomocą polecenia cmdlet usługi Azure Resource Manager.
+Następujące przykładowe polecenia pokazują, jak utworzyć harmonogram 15 i 30 dnia każdego miesiąca za pomocą polecenia cmdlet usługi Azure Resource Manager.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -68,19 +68,19 @@ $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
 
 ## <a name="linking-a-schedule-to-a-runbook"></a>Powiązanie harmonogramu z elementem runbook
 
-Element runbook może odnosić się do wielu harmonogramów i harmonogram może mieć wielu elementów runbook z nim połączone. Jeśli element runbook ma parametry, można podać wartości dla nich. Należy podać wartości parametrów obowiązkowych i może podać wartości parametrów opcjonalnych. Te wartości są używane przy każdym uruchomieniu elementu runbook przez ten harmonogram. Możesz dołączyć ten sam element runbook do innego harmonogramu i wartości różnych parametrów.
+Element runbook może być połączony z wieloma harmonogramami, a harmonogram może mieć wiele elementów runbook połączone z tym rekordem. Jeśli element runbook ma parametry, można podać wartości dla nich. Należy podać wartości parametrów obowiązkowych i opcjonalnych parametrów może podać wartości. Te wartości są używane w każdym razem, gdy element runbook jest uruchamiany przez tego harmonogramu. Należy dołączyć ten sam element runbook do innego i określić różne wartości parametrów.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Aby połączyć harmonogramu do elementu runbook w portalu Azure
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>W celu powiązania harmonogramu z elementem runbook za pomocą witryny Azure portal
 
-1. W portalu Azure, z Twojego konta automatyzacji wybierz **Runbook** w sekcji **automatyzacji procesu** po lewej stronie.
+1. W witrynie Azure portal na koncie usługi automation wybierz **elementów Runbook** sekcji **automatyzacji procesów** po lewej stronie.
 1. Kliknij nazwę elementu runbook do zaplanowania.
-1. Jeśli element runbook nie jest obecnie połączony z harmonogramem, są oferowane opcję, aby utworzyć nowy harmonogram lub link do istniejącego harmonogramu.
-1. Jeśli element runbook ma parametry, można wybrać opcję **zmodyfikuj parametry uruchomieniowe (domyślne: Azure)** i **parametry** okienku są prezentowane, gdzie można wprowadzić informacje w związku z tym.
+1. Jeśli element runbook nie jest obecnie połączony z harmonogramem, są oferowane opcję utworzenia nowego harmonogramu lub Połącz z istniejącym harmonogramem.
+1. Jeśli element runbook ma parametry, można wybrać opcję **zmodyfikuj parametry uruchomieniowe (domyślne: Azure)** i **parametry** okienko zostanie wyświetlony, gdzie można wprowadzić informacje w związku z tym.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Aby połączyć harmonogramu do elementu runbook przy użyciu programu Windows PowerShell
+### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Powiązanie harmonogramu z elementem runbook za pomocą programu Windows PowerShell
 
-Można użyć [AzureRmAutomationScheduledRunbook rejestru](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) polecenia cmdlet w celu powiązania harmonogramu. Można określić wartości parametrów elementu runbook przy użyciu parametru parametrów. Aby uzyskać więcej informacji na temat określania wartości parametrów, zobacz [uruchamianie elementu Runbook automatyzacji Azure](automation-starting-a-runbook.md).
-Następujące przykładowe polecenia pokazują, jak połączyć harmonogramu do elementu runbook za pomocą polecenia cmdlet usługi Azure Resource Manager z parametrami.
+Możesz użyć [AzureRmAutomationScheduledRunbook rejestru](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) polecenia cmdlet w celu powiązania harmonogramu. Można określić wartości parametrów elementu runbook za pomocą parametru parametrów. Aby uzyskać więcej informacji na temat określania wartości parametrów, zobacz [uruchamianie elementu Runbook w usłudze Azure Automation](automation-starting-a-runbook.md).
+Następujące przykładowe polecenia pokazują, jak w celu powiązania harmonogramu z elementem runbook za pomocą polecenia cmdlet usługi Azure Resource Manager za pomocą parametrów.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -92,29 +92,29 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="scheduling-runbooks-more-frequently"></a>Planowanie częściej elementów runbook
+## <a name="scheduling-runbooks-more-frequently"></a>Planowanie elementów runbook częściej
 
-Najczęstsze Interwał harmonogramu automatyzacji Azure mogą być konfigurowane dla to jedna godzina. Jeśli potrzebujesz harmonogramów można wykonać częściej niż ta, dostępne są dwie opcje:
+Najczęstsze interwał, który można skonfigurować harmonogramu w usłudze Azure Automation dla to jedna godzina. Jeśli potrzebujesz harmonogramy można wykonać częściej niż ta, dostępne są dwie opcje:
 
-* Utwórz [webhook](automation-webhooks.md) dla elementu runbook i użyj [Harmonogram systemu Azure](../scheduler/scheduler-get-started-portal.md) do wywołania elementu webhook. Harmonogram systemu Azure zapewnia bardziej szczegółowo szczegółowości podczas definiowania zgodnie z harmonogramem.
+* Tworzenie [elementu webhook](automation-webhooks.md) dla elementu runbook i użyj [usługi Azure Scheduler](../scheduler/scheduler-get-started-portal.md) do wywoływania elementu webhook. Usługa Azure Scheduler zapewnia bardziej szczegółowo poziom szczegółowości, podczas definiowania zgodnie z harmonogramem.
 
-* Utwórz cztery harmonogramy wszystkich rozpoczynające się w ciągu 15 minut od siebie uruchomiona co godzinę. W tym scenariuszu zezwala na uruchomienie co 15 minut z różne harmonogramy elementu runbook.
+* Utwórz cztery harmonogramy uruchamiania wszystkich w ciągu 15 minut od siebie uruchamiania raz na godzinę. Ten scenariusz umożliwia przez element runbook uruchamiany co 15 minut z użyciem różnych harmonogramów.
 
 ## <a name="disabling-a-schedule"></a>Wyłączanie harmonogramu
 
-Po wyłączeniu harmonogramu dowolnym elemencie runbook nie jest już powiązany z działa zgodnie z tym harmonogramem. Można ręcznie wyłączyć harmonogram lub ustaw czas wygaśnięcia harmonogramów z częstotliwością po ich utworzeniu. Po osiągnięciu czas wygaśnięcia harmonogramie jest wyłączona.
+Po wyłączeniu harmonogramu każdego elementu runbook, które nie są już połączone z tym rekordem działa zgodnie z tym harmonogramem. Można ręcznie wyłączyć harmonogram lub ustaw czas wygaśnięcia, w przypadku harmonogramów z częstotliwością, podczas ich tworzenia. Po osiągnięciu czas wygaśnięcia, harmonogram jest wyłączony.
 
-### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Aby wyłączyć harmonogram z portalu Azure
+### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Aby wyłączyć harmonogram w witrynie Azure portal
 
-1. W portalu Azure, z Twojego konta automatyzacji wybierz **harmonogramy** w sekcji **udostępnione zasoby** po lewej stronie.
+1. W witrynie Azure portal na koncie usługi Automation wybierz **harmonogramy** sekcji **zasoby udostępnione** po lewej stronie.
 1. Kliknij nazwę harmonogramu, aby otworzyć okienko szczegółów.
-1. Zmień **włączone** do **nr**.
+1. Zmiana **włączone** do **nie**.
 
-### <a name="to-disable-a-schedule-with-windows-powershell"></a>Aby wyłączyć harmonogram przy użyciu programu Windows PowerShell
+### <a name="to-disable-a-schedule-with-windows-powershell"></a>Aby wyłączyć harmonogram za pomocą programu Windows PowerShell
 
-Można użyć [AzureRmAutomationSchedule zestaw](/powershell/module/azurerm.automation/set-azurermautomationschedule) polecenia cmdlet, aby zmienić właściwości istniejącego harmonogramu. Aby wyłączyć harmonogram, określ **false** dla **IsEnabled** parametru.
+Możesz użyć [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) polecenia cmdlet, aby zmienić właściwości istniejącego harmonogramu. Aby wyłączyć harmonogram, należy określić **false** dla **IsEnabled** parametru.
 
-W następujących przykładowych poleceniach pokazano, jak wyłączyć harmonogram dla elementu runbook za pomocą polecenia cmdlet usługi Azure Resource Manager.
+Następujące przykładowe polecenia pokazują, jak wyłączyć harmonogram dla elementu runbook za pomocą polecenia cmdlet usługi Azure Resource Manager.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -125,4 +125,4 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby rozpocząć pracę z elementami runbook w automatyzacji Azure, zobacz [uruchamianie elementu Runbook automatyzacji Azure](automation-starting-a-runbook.md)
+* Aby rozpocząć pracę z elementami runbook w usłudze Azure Automation, zobacz [uruchamianie elementu Runbook w usłudze Azure Automation](automation-starting-a-runbook.md)

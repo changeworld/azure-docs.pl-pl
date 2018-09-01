@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/30/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: cc1b89ff94b4d4dc0b191512b110521d5fa05a7a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445026"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344370"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -27,16 +27,16 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 |----|----------------------|--------------|------------------|
 | Pakiet zbiorczy aktualizacji z sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane (zalecana wersja) |
 | Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 r. | Obsługiwane |
-| Pakiet zbiorczy aktualizacji czerwca | 3.0.13.0 | 29 czerwca 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji kwietnia | 2.3.0.0 | 8 maja 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji z marca | 2.2.0.0 | 12 marca 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji z lutego | 2.1.0.0 | 28 lutego 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Odśwież 1 | 2.0.11.0 | 8 lutego 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji stycznia | 1.4.0.0 | 8 stycznia 2018 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji z listopada | 1.3.0.0 | 30 listopada 2017 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Pakiet zbiorczy aktualizacji października | 1.2.0.0 | 31 października 2017 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
-| Początkowa wersja zapoznawcza | 1.1.0.0 | 26 września 2017 r. | Wersja agenta wygaśnie w dniu 4 września 2018 r. |
+| Pakiet zbiorczy aktualizacji czerwca | 3.0.13.0 | 29 czerwca 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji kwietnia | 2.3.0.0 | 8 maja 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji z marca | 2.2.0.0 | 12 marca 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji z lutego | 2.1.0.0 | 28 lutego 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Odśwież 1 | 2.0.11.0 | 8 lutego 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji stycznia | 1.4.0.0 | 8 stycznia 2018 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji z listopada | 1.3.0.0 | 30 listopada 2017 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Pakiet zbiorczy aktualizacji października | 1.2.0.0 | 31 października 2017 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
+| Początkowa wersja zapoznawcza | 1.1.0.0 | 26 września 2017 r. | Wersja agenta wygaśnie w dniu 1 października 2018 r. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -49,6 +49,9 @@ Ta wersja zawiera następujące poprawki:
 
 ## <a name="agent-version-3100"></a>Wersja agenta 3.1.0.0
 Poniższe informacje o wersji dotyczą wersji 3.1.0.0 agenta usługi Azure File Sync (wydanej 19 lipca 2018 r.).
+
+### <a name="evaluation-tool"></a>Narzędzie oceny
+Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodny z systemu za pomocą narzędzia oceny usługi Azure File Sync. To narzędzie jest AzureRM PowerShell polecenia cmdlet, która sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. I instrukcje dotyczące instalacji, zobacz [uruchamiania narzędzia oceny](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#evaluation-tool) w przewodniku planowania. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
 Aby uzyskać więcej informacji na temat sposobu instalowania i konfigurowania agenta usługi Azure File Sync z systemem Windows Server, zobacz [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md).

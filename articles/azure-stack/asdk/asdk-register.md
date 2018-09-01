@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 95ab06685452f647884bf92f110e3ab56f3c2714
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c4fb8e1972286776a5fc7a13c5e9a8c91e370dd3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058782"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338623"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure Stack
 Instalacja usługi Azure Stack Development Kit (ASDK) można zarejestrować za pomocą platformy Azure, aby pobieranie elementów portalu marketplace z platformy Azure i Ustaw dane handlu odsyłanie do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnego funkcje usługi Azure Stack, w tym portalu marketplace syndykacji. Rejestracja jest zalecane, ponieważ umożliwia testowanie ważnych funkcji usługi Azure Stack, takich jak syndykacji portalu marketplace i raportowanie użycia. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, których użyto podczas rejestracji. Jednak użytkownicy ASDK nie są naliczane za dotychczasowe użycie raportowane.
@@ -84,6 +84,10 @@ Wykonaj następujące kroki, aby sprawdzić, czy rejestracji ASDK z platformą A
 3. Jeśli zobaczysz listę elementów dostępnych na platformie Azure, proces aktywacji zakończyło się pomyślnie.
 
     ![](media/asdk-register/3.PNG)
+
+## <a name="move-a-registration-resource"></a>Przenieś zasób rejestracji
+Przenoszenie zasobów rejestracji między grupami zasobów w ramach tej samej subskrypcji **jest** obsługiwane. Aby uzyskać więcej informacji na temat przenoszenia zasobów do nowej grupy zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dodawanie elementu portalu marketplace usługi Azure Stack](.\.\azure-stack-marketplace.md)

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: 6c3756e721847a8cb746f5dc755ccd90bfebe9f0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b518d86d5cb08f85beecd4afe30efc9e4f70e1f7
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008278"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371472"
 ---
 # <a name="indexing-in-azure-search"></a>Indeksowanie w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Indeksatory łączą indeks ze źródłem danych (zwykle tabelą, widokiem lub r
 
 ### <a name="how-to-pull-data-into-an-azure-search-index"></a>Jak ściągać dane do indeksu usługi Azure Search
 
-Funkcja indeksatora jest udostępniona w witrynie [Azure Portal](search-import-data-portal.md), interfejsie [API REST](/rest/api/searchservice/Indexer-operations) i zestawie [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperations). 
+Funkcja indeksatora jest udostępniona w witrynie [Azure Portal](search-import-data-portal.md), interfejsie [API REST](/rest/api/searchservice/Indexer-operations) i zestawie [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions). 
 
 Zaletą korzystania z portalu jest to, że usługa Azure Search zazwyczaj może wygenerować domyślny schemat indeksu, odczytując metadane zestawu źródła danych. Wygenerowany indeks można modyfikować, dopóki indeks jest przetwarzany, po czym dozwolone są tylko te zmiany schematu, które nie wymagają ponownego indeksowania. Jeśli żądane zmiany wpływają bezpośrednio na schemat, konieczne będzie odbudowanie indeksu. 
 

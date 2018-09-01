@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 33b0f5df57623f0b4433a4a09c7cd15688783485
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 04c8f43e3b484ceeb942ae13ea95baf7f0215b53
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191108"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344839"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Usługi Azure Maps obsługiwane style mapy
 Usługi Azure maps obsługuje cztery style różnych wbudowanych mapy. Poniżej przedstawiono style wraz z opisami.
@@ -22,7 +22,7 @@ Usługi Azure maps obsługuje cztery style różnych wbudowanych mapy. Poniżej 
 ## <a name="road"></a>Drogowa
 A **drogowej** mapa jest standardowa mapę, która wyświetla drogach naturalnych i sztucznych funkcji wraz z etykiety dla tych funkcji.
 
-![drogowa](./media/supported-map-styles/road.png)
+![Drogowa](./media/supported-map-styles/road.png)
 
 **Odpowiednie interfejsy API:**
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -52,4 +52,4 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript
+* Kontrolki mapy Javascript 

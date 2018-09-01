@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6d1daededcf8f0efdc6a3a5649aa830110192fef
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054681"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381844"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure Cosmos DB
 Aby zabezpieczyć dane przechowywane na koncie bazy danych usługi Azure Cosmos DB, Azure Cosmos DB udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości bazujących na skrótach silne (metoda HMAC). Oprócz modelu autoryzacji na podstawie tajnego usługi Azure Cosmos DB obsługuje teraz, zasad opartych na kontroli dostępu opartych na protokole IP, obsługi zapory dla ruchu przychodzącego. Ten model jest podobne do reguł zapory systemu tradycyjnych baz danych i zapewnia dodatkowy poziom zabezpieczeń do konta bazy danych Azure Cosmos DB. W tym modelu można teraz skonfigurować kontem bazy danych usługi Azure Cosmos DB, aby były dostępne tylko z zatwierdzonego zestawu maszyn i/lub usług w chmurze. Dostęp do zasobów usługi Azure Cosmos DB z tych zestawów zatwierdzone komputery i usługi nadal wymaga obiekt wywołujący, aby przedstawić prawidłowy token autoryzacji.
@@ -57,7 +57,12 @@ Dostęp do portalu Azure jest domyślnie włączona, gdy zmienią się w ustawie
 ![Zrzut ekranu pokazujący sposób umożliwić dostęp do portalu Azure](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Połączenia z centrami danych globalnej platformy Azure lub usług PaaS platformy Azure
-Na platformie Azure usług PaaS, takich jak Azure Stream analytics, usługi Azure Functions i Azure App Service są używane w połączeniu z usługą Azure Cosmos DB. Aby umożliwić dostęp do usługi Azure Cosmos DB konto bazy danych z tych usług, których adresy IP nie są łatwo dostępne, należy dodać adres IP 0.0.0.0 do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure Cosmos DB programowo. 
+
+"Usługi azure PaaS, takich jak Azure Stream analytics, Azure Functions itd są używane w połączeniu z usługą Azure Cosmos DB. Aby umożliwić aplikacjom z innymi usługami PaaS platformy Azure, nawiązać połączenia z zasobami usługi Azure Cosmos DB, należy włączyć ustawienie zapory. Aby włączyć to ustawienie zapory, należy dodać adres IP — 0.0.0.0 do listy dozwolonych adresów IP. Adres Ip — 0.0.0.0 wskazuje możliwość połączenia z wszystkich zakresu adresów IP centrum danych platformy Azure, nawiązać połączenia z zasobami usługi Azure Cosmos DB."
+
+> [!IMPORTANT]
+> Ta opcja konfiguruje zaporę w celu zezwalania na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika zezwalają na dostęp tylko uprawnionym użytkownikom.
+> 
 
 Dostęp do połączeń z w ramach globalnych centrów danych platformy Azure jest domyślnie włączona, gdy zmienią się w ustawieniach zapory, aby **wybrane sieci** w witrynie Azure portal. 
 

@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ddeee70d29f54a0691b0a13ad299003b3da338a1
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: af4a831c084ae10b381b8e08fd0ce4798b21b394
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345022"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382175"
 ---
 # <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Dowiedz się, jak wdrażać moduły oraz ustalenia tras za pomocą manifestów wdrożenia
 
@@ -125,10 +125,10 @@ Trasy są deklarowane w **$edgeHub** żądane właściwości przy użyciu nastę
 Każdy wymaga źródła i ujścia, ale warunek jest opcjonalne, można użyć do filtrowania wiadomości. 
 
 
-### <a name="source"></a>Element źródłowy
+### <a name="source"></a>Źródło
 Źródło Określa, skąd pochodzą komunikaty. Może być dowolną z następujących wartości:
 
-| Element źródłowy | Opis |
+| Źródło | Opis |
 | ------ | ----------- |
 | `/*` | Wszystkie komunikaty urządzenie chmura z każdego urządzenia lub modułu |
 | `/messages/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez urządzenie, czy moduł niektórych lub dane wyjściowe |
@@ -153,7 +153,7 @@ Przykłady o sposobach tworzenia zapytań dotyczących właściwości wiadomośc
 Przykładem, które są specyficzne dla usługi IoT Edge jest, jeśli chcesz filtrować pod kątem komunikatów, które dotarły urządzenie bramy z urządzenia typu liść. Komunikaty, które pochodzą z modułów zawierają właściwość systemu o nazwie **connectionModuleId**. Dlatego jeśli chcesz routing komunikatów z urządzeń liścia bezpośrednio do usługi IoT Hub umożliwia Następująca trasa wyłączenia modułu wiadomości:
 
 ```sql
-FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
+FROM /messages/\* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
 
 ### <a name="sink"></a>Ujście

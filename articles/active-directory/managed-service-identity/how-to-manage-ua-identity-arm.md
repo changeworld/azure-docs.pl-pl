@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć i usunąć użytkownika przypisane tożsamości usługi zarządzanej przy użyciu usługi Azure Resource Manager
-description: Krok po kroku instrukcje dotyczące sposobu tworzenia i usuwania użytkowników przypisane tożsamości usługi zarządzanej przy użyciu zasobów platformy Azure.
+title: Jak tworzyć i usuwać przypisane przez użytkownika tożsamości zarządzanej przy użyciu usługi Azure Resource Manager
+description: Krok po kroku instrukcje dotyczące sposobu tworzenia i usuwania przypisanych do użytkowników zarządzanych tożsamości za pomocą usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: adfa7ebfd911bfcbc88e01030777e91c48841784
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188135"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338349"
 ---
-# <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Tworzenie, wyświetlanie i usuwanie tożsamości przypisanych przez użytkownika, za pomocą usługi Azure Resource Manager
+# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Tworzenie, wyświetlanie i usuwanie przypisanych przez użytkownika tożsamości zarządzanej przy użyciu usługi Azure Resource Manager
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Tożsamość usługi zarządzanej udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
+Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
-W tym artykule utworzysz użytkownik, któremu przypisano tożsamość zarządzana przy użyciu usługi Azure Resource Manager.
+W tym artykule utworzysz przypisanych przez użytkownika tożsamości zarządzanej przy użyciu usługi Azure Resource Manager.
 
-Nie jest możliwe do wyświetlania i usuwania użytkownik, któremu przypisano tożsamość przy użyciu szablonu usługi Azure Resource Manager.  Zobacz następujące artykuły, aby tworzyć i wyświetlać listę tożsamości przypisanych przez użytkownika:
+Nie jest możliwe do wyświetlania i usuwania przypisanych przez użytkownika tożsamości zarządzanej przy użyciu szablonu usługi Azure Resource Manager.  Zobacz następujące artykuły, aby utworzyć i tożsamości zarządzanej listy przypisanych przez użytkownika:
 
-- [Lista tożsamości przypisanych przez użytkownika](how-to-manage-ua-identity-cli.md#list-user-assigned-identities)
-- [Usuwanie tożsamości przypisanych przez użytkownika](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-identity)
+- [Lista przypisanych przez użytkownika tożsamości zarządzanej](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
+- [Usuń przypisanych przez użytkownika z tożsamości zarządzanej](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
+- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Aby wykonać operacje, w tym artykule, Twoje konto musi następujące przypisania roli:
-    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli, aby utworzyć, odczytać (lista), aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika.
+    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli, aby utworzyć, odczytać (lista), aktualizowanie i usuwanie tożsamości zarządzanej przypisanych przez użytkownika.
 
 ## <a name="template-creation-and-editing"></a>Tworzenie szablonu i edytowanie
 
@@ -49,9 +49,9 @@ Zgodnie z platformą Azure portal i skryptów, szablony usługi Azure Resource M
 - Za pomocą lokalnego [edytora JSON (np. programu VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), a następnie przekazywanie i wdrażanie przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
 - Za pomocą programu Visual Studio [projekt grupy zasobów platformy Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) Aby utworzyć i wdrożyć szablon. 
 
-## <a name="create-a-user-assigned-identity"></a>Tworzenie tożsamości przypisanej przez użytkownika 
+## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie zarządzanych tożsamości przypisanych przez użytkownika 
 
-Aby utworzyć tożsamości przypisanych przez użytkownika, szablon. Zastąp `<USER ASSIGNED IDENTITY NAME>` wartości wybranymi samodzielnie wartościami:
+Aby utworzyć przypisanych przez użytkownika tożsamości zarządzanej, szablon. Zastąp `<USER ASSIGNED IDENTITY NAME>` wartości wybranymi samodzielnie wartościami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -83,9 +83,9 @@ Aby utworzyć tożsamości przypisanych przez użytkownika, szablon. Zastąp `<U
   }
 }
 ```
-## <a name="related-content"></a>Powiązana zawartość
+## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać informacje dotyczące sposobu przypisywania tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure przy użyciu usługi Azure Resource Manager szablon, zobacz temat [Konfigurowanie tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu szablonu](qs-configure-template-windows-vm.md).
+Aby uzyskać informacje dotyczące sposobu przypisywania użytkownik przypisany zarządzanych tożsamości na Maszynie wirtualnej platformy Azure przy użyciu usługi Azure Resource Manager szablon, zobacz temat [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu szablonów](qs-configure-template-windows-vm.md).
 
 
  

@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: article
-ms.date: 5/02/2018
+ms.date: 8/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: a514618713afe2306b6fb99b2f8c038aeac56009
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 71af2bcbf58279681bbea66d4f76e951a2efce59
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092207"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341490"
 ---
 # <a name="what-is-text-analytics"></a>Co to jest analiza tekstu?
 
@@ -25,11 +25,11 @@ Usługi Text Analytics oferuje zaawansowane przetwarzanie języka naturalnego w 
 [Dowiedz się,](how-tos/text-analytics-how-to-sentiment-analysis.md) co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, gdzie 1 oznacza najbardziej dodatnią.<br />
 Modele analizy są wstępnie przetrenowane przy użyciu rozbudowane treści, tekstu i języka naturalnego technologii firmy Microsoft. Aby uzyskać [wybrane języki](text-analytics-supported-languages.md), interfejs API można analizować i oceniać nieprzetworzony tekst, który należy podać.
 
-## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
+## <a name="extract-key-phrases"></a>Wyodrębnij frazy kluczowe
 
 Automatycznie [wyodrębnianie kluczowych fraz](how-tos/text-analytics-how-to-keyword-extraction.md) można szybko identyfikować jego główne punkty. Na przykład, biorąc pod uwagę tekst wejściowy "żywności został wyborna i wystąpiły personelu wspaniała", usługa analizy tekstu zwróci głównego najważniejsze punkty: "jedzenie" i "personel wspaniała".
 
-## <a name="detect-language"></a>Wykrywanie języka
+## <a name="detect-language"></a>Wykryj język
 
 W przypadku maksymalnie 120 języków [wykryć](how-tos/text-analytics-how-to-language-detection.md) które tekst wejściowy został napisany w języku i kod jeden język, dla każdego dokumentu Przesłano żądanie raportu. Kod języka jest powiązany z wynikiem wskazujący siłę wynik.
 

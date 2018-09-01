@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6f722afead39c8a0ba940d9e2cb54d1f197d143
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6cfa3e0cb23f13b50c0fb7cd4f07a8d53c0f3186
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442284"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340770"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Usługi Azure AD B2C: Protokoły uwierzytelniania
 Usługa Azure Active Directory B2C (Azure AD B2C) zapewnia usługi tożsamości dostępne jako usługa dla swoich aplikacji dzięki obsłudze dwa standardowe protokoły: OpenID Connect i OAuth 2.0. Usługa jest zgodny ze standardami, ale wszelkie dwie implementacje protokołów mogą występować niewielkie różnice. 
@@ -34,8 +34,8 @@ Każda aplikacja, która używa usługi Azure AD B2C należy zarejestrować w ka
 Po zarejestrowaniu aplikacji należy go komunikuje się z usługą Azure Active Directory (Azure AD), wysyłając żądania do punktu końcowego:
 
 ```
-https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
-https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize
+https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 ```
 
 W prawie wszystkie przepływy OAuth i OpenID Connect cztery strony są związane z programu exchange:

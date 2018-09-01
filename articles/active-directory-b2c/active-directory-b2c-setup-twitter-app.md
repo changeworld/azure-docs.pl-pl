@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927900"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337794"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta w serwisie Twitter przy użyciu usługi Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Aby użyć konta w serwisie Twitter jako dostawcy tożsamości w usłudze Azure 
 1. Zaloguj się do [aplikacji w usłudze Twitter](https://apps.twitter.com/) przy użyciu swoich poświadczeń usługi Twitter.
 2. Wybierz **Utwórz nową aplikację**.
 3. Wprowadź **nazwa**, **opis**, i **witryny sieci Web**.
-4. Wprowadź `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` w **adresów URL wywołania zwrotnego**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com) i **{policyId}** za pomocą Identyfikatora zasad (na przykład b2c_1_policy). Należy dodać adres URL wywołania zwrotnego dla wszystkich zasad, które używają konta w serwisie Twitter. Upewnij się, że używasz `b2clogin.com` zamiast ` login.microsoftonline.com` Jeśli używasz go w aplikacji.
+4. Wprowadź `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp` w **adresów URL wywołania zwrotnego**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c) i **{policyId}** za pomocą Identyfikatora zasad (na przykład b2c_1_policy). Należy dodać adres URL wywołania zwrotnego dla wszystkich zasad, które używają konta w serwisie Twitter. 
 5. Zgodę na **umowy deweloperskich** i wybierz **tworzenie aplikacji usługi Twitter**.
 7. Wybierz **klucze i tokeny dostępu** kartę.
 8. Skopiuj wartość **konsumenta** i **klucz tajny klienta**. Należy dysponować go o skonfigurowanie konta w serwisie Twitter jako dostawcy tożsamości w dzierżawie.

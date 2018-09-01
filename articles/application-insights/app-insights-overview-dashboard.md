@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970976"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344634"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -34,7 +34,7 @@ Nowy pulpit nawigacyjny przeglądu teraz uruchamia się domyślnie:
 
 Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jednym kliknięciem.
 
-![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![Zakres czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
@@ -50,7 +50,7 @@ Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji
 
 Jeśli jest to dostęp do pulpitu nawigacyjnego po raz pierwszy, program uruchamia domyślny widok:
 
-![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
+![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\0001-dashboard.png)
 
 Możesz zachować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego w sposób najlepiej odpowiadający potrzeb danego zespołu.
 

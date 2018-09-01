@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fbf8a0302ae8414f49a055ab260a52222425ab7c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287198"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382511"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Programowanie i debugowanie modułów Node.js z usługą Azure IoT Edge dla programu Visual Studio Code
 
@@ -35,9 +35,7 @@ Aby utworzyć moduł, potrzebne są Node.js, w tym tworzenie folderu projektu, D
 * [Node.js](https://nodejs.org)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Usługa Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [usługi Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   >[!TIP]
-   >Można użyć lokalnego rejestru platformy Docker prototypów i testowania, zamiast rejestru chmury. 
+   * Można użyć lokalnego rejestru platformy Docker prototypów i testowania, zamiast rejestru chmury. 
 
 Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy użyciu co najmniej jedno urządzenie usługi IoT Edge. Jeśli chcesz korzystać z komputera jako urządzenia usługi IoT Edge, możesz to zrobić, wykonując kroki opisane w samouczków dotyczących [Windows](quickstart.md) lub [Linux](quickstart-linux.md). 
 
@@ -60,7 +58,9 @@ Poniższe kroki przedstawiające utworzyć moduł usługi IoT Edge, oparty na j�
 6. Podaj nazwę dla swojego rozwiązania. 
 7. Wybierz **moduł Node.js** jako szablon dla pierwszego modułu w rozwiązaniu.
 8. Podaj nazwę dla modułu. Wybierz nazwę, która jest unikatowa w obrębie usługi container registry. 
-9. Podaj repozytorium obrazów w module. Program VS Code autopopulates moduł nazwy, dlatego należy po prostu zastąpić **localhost:5000** podając własne informacje do rejestru. Jeśli używasz lokalnego rejestru platformy Docker do testowania localhost funkcjonuje prawidłowo. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda  **\<nazwa rejestru\>. azurecr.io**.
+9. Podaj repozytorium obrazów w module. Program VS Code autopopulates moduł nazwy, dlatego należy po prostu zastąpić **localhost:5000** podając własne informacje do rejestru. Jeśli używasz lokalnego rejestru platformy Docker do testowania localhost funkcjonuje prawidłowo. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda  **\<nazwa rejestru\>. azurecr.io**. Zastąp tylko część localhost ciągu, nie usuwaj nazwy modułu.
+
+   ![Udostępnianie repozytorium obrazów platformy Docker](./media/how-to-develop-node-module/repository.png)
 
 Program VS Code przyjmuje informacje należy podać, tworzy rozwiązanie IoT Edge, a następnie ładuje go w nowym oknie.
 
@@ -76,7 +76,7 @@ W ramach rozwiązania znajdują się trzy elementy:
 
 ## <a name="develop-your-module"></a>Tworzenie modułu
 
-Domyślny kod Node.js, dołączoną do rozwiązania znajduje się w **modułów** > **\<swoją nazwę modułu\>** > **app.js** . W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
+Domyślny kod Node.js, dołączoną do rozwiązania znajduje się w **modułów** > [Nazwa modułu] > **app.js**. W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
 
 Gdy wszystko będzie gotowe dostosować szablon środowiska Node.js przy użyciu własnego kodu, należy użyć [zestawami SDK Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) do tworzenia modułów ten adres klucz dla rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodności. 
 

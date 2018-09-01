@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: mstewart
-ms.openlocfilehash: 62ae0bcfb30e39b3b2cfcf94b3877cce9cadf9d1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 701418c4c2f17d151061ffde704b5a7f05551d9c
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128007"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338465"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -204,7 +204,7 @@ Można utworzyć magazynu kluczy przy użyciu [szablonu usługi Resource Manager
 
 
 ## <a name="bkmk_ADapp"></a> Konfigurowanie aplikacji usługi Azure AD i usługę podmiotu zabezpieczeń 
-Jeśli potrzebujesz szyfrowania była włączona na uruchomionej maszyny Wirtualnej na platformie Azure, usługi Azure Disk Encryption generuje i zapisuje klucze szyfrowania w magazynie kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../active-directory/active-directory-certificate-based-authentication-get-started.md).
+Jeśli potrzebujesz szyfrowania była włączona na uruchomionej maszyny Wirtualnej na platformie Azure, usługi Azure Disk Encryption generuje i zapisuje klucze szyfrowania w magazynie kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 
 ### <a name="bkmk_ADappPSH"></a> Konfigurowanie aplikacji usługi Azure AD i usługi głównej przy użyciu programu Azure PowerShell 

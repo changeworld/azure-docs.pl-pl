@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego tożsamości zarządzanej maszyny Wirtualnej Windows
-description: Samouczek, w którym pokazano, jak użyć Windows VM tożsamości usługi zarządzanej dostępu do magazynu Azure, przy użyciu poświadczeń sygnatury dostępu Współdzielonego zamiast klucza dostępu do konta magazynu.
+title: Umożliwia dostęp do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego tożsamości zarządzanej przypisana przez system Windows VM
+description: Samouczek, w którym pokazano, jak za pomocą maszyny Wirtualnej Windows przypisany systemowo zarządzanych tożsamości w celu dostępu do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego zamiast klucza dostępu do konta magazynu.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7120e7356816fd5308aa7189f90176143742e342
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887067"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340718"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: Umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego Windows VM tożsamości usługi zarządzanej
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: Korzystanie z tożsamości zarządzanej przypisana przez system Windows VM na dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ten samouczek pokazuje, jak używać systemu tożsamości dla maszyny wirtualnej (VM) Windows przypisanej do uzyskania poświadczeń sygnatury dostępu współdzielonego (SAS) magazynu. W szczególności [poświadczeń SAS usługi](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+W tym samouczku dowiesz się, jak używać tożsamości przypisanych przez system Windows maszyny wirtualnej (VM) do uzyskania poświadczeń sygnatury dostępu współdzielonego (SAS) magazynu. W szczególności [poświadczeń SAS usługi](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 Sygnatury dostępu Współdzielonego usługi umożliwia przyznawanie ograniczonego dostępu do obiektów na koncie magazynu przez ograniczony czas i określonej usługi (w naszym przypadku na usługę blob service), bez narażania klucz dostępu konta. Możesz użyć poświadczeń SAS w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku pokażemy, przekazywanie i pobieranie obiektu blob przy użyciu programu PowerShell magazynu platformy Azure. Poznasz następujące czynności:
 
@@ -44,12 +44,12 @@ Sygnatury dostępu Współdzielonego usługi umożliwia przyznawanie ograniczone
 
 - [Utwórz maszynę wirtualną Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-- [Włącz system przypisane tożsamości na maszynie wirtualnej.](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
+- [Włączanie tożsamości przypisanych przez system na maszynie wirtualnej.](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
-Jeśli jeszcze nie masz konta magazynu, teraz je utworzysz. Można również pominąć ten krok i Udziel dostępu tożsamości usługi zarządzanej maszyny Wirtualnej do poświadczeń sygnatury dostępu Współdzielonego istniejącego konta magazynu. 
+Jeśli jeszcze nie masz konta magazynu, teraz je utworzysz. Można również pominąć ten krok i udzielić dostępu przypisany systemowo tożsamości zarządzanej maszyny Wirtualnej do poświadczeń sygnatury dostępu Współdzielonego istniejącego konta magazynu. 
 
 1. Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Kliknij opcję **Magazyn**, a następnie **Konto magazynu**. Zostanie wyświetlony nowy panel „Utwórz konto magazynu”.
@@ -58,7 +58,7 @@ Jeśli jeszcze nie masz konta magazynu, teraz je utworzysz. Można również pom
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.
 6. Kliknij pozycję **Utwórz**.
 
-    ![Tworzenie nowego konta magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Utwórz nowe konto magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Tworzenie kontenera obiektów blob na koncie magazynu
 
@@ -71,9 +71,9 @@ Później przekażemy i pobierzemy plik do nowego konta magazynu. Ponieważ plik
 
     ![Tworzenie kontenera magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny wirtualnej w celu korzystania z sygnatury dostępu współdzielonego magazynu 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>Udzielanie dostępu przypisany systemowo tożsamości zarządzanej maszyny Wirtualnej do używania magazynu SAS 
 
-Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Można jednak używać tożsamości usługi zarządzanej do pobierania magazynu sygnatur dostępu Współdzielonego usługi Resource Manager, wówczas dostępu do magazynu przy użyciu sygnatury dostępu Współdzielonego.  W tym kroku udzielasz tożsamości usługi zarządzanej maszyny wirtualnej dostępu do sygnatury SAS konta magazynu.   
+Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Jednak można użyć tożsamości zarządzanej można pobrać sygnatury dostępu Współdzielonego magazynu usługi Resource Manager, a następnie dostępu do magazynu przy użyciu sygnatury dostępu Współdzielonego.  W tym kroku udzielisz jej dostępu przypisany systemowo tożsamości zarządzanej maszyny Wirtualnej do swojego konta magazynu, sygnatury dostępu Współdzielonego.   
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.   
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
@@ -94,7 +94,7 @@ W tej części będzie wymagane użycie poleceń cmdlet programu PowerShell w us
 1. W witrynie Azure Portal przejdź do pozycji **Maszyny wirtualne**, przejdź do maszyny wirtualnej z systemem Windows, a następnie na stronie **Przegląd** kliknij opcję **Połącz** u góry.
 2. Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows. 
 3. Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program PowerShell w sesji zdalnej. 
-4. Używając polecenia Invoke-WebRequest programu PowerShell, wyślij żądanie do lokalnego punktu końcowego tożsamości usługi zarządzanej, aby uzyskać token dostępu na potrzeby usługi Azure Resource Manager.
+4. Przy użyciu programu Powershell Invoke-WebRequest, wysłać żądanie do lokalnego zarządzaną tożsamością dla punktu końcowego zasobów platformy Azure w celu uzyskania tokenu dostępu usługi Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
@@ -208,7 +208,7 @@ Name              : testblob
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób tworzenia tożsamości usługi zarządzanej dostępu do magazynu platformy Azure przy użyciu poświadczeń sygnatury dostępu Współdzielonego.  Aby dowiedzieć się więcej o sygnaturze dostępu współdzielonego usługi Azure Storage, zobacz:
+W tym samouczku przedstawiono sposób użycia maszyn wirtualnych Windows przypisany systemowo tożsamości zarządzanej dostępu do magazynu platformy Azure przy użyciu poświadczeń sygnatury dostępu Współdzielonego.  Aby dowiedzieć się więcej o sygnaturze dostępu współdzielonego usługi Azure Storage, zobacz:
 
 > [!div class="nextstepaction"]
 >[Używanie sygnatury dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

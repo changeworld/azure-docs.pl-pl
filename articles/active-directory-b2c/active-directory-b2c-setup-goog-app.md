@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dd0bf50d73b70e37195e8e5e45336b68e4e883e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915643"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337738"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Google przy użyciu usługi Azure Active Directory B2C
 
@@ -30,8 +30,8 @@ Aby użyć konta Google jako dostawcy tożsamości w usłudze Azure Active Direc
 4. Wybierz **ekranie wyrażania zgody Konfiguruj**.
 5. Wybierz lub Określ prawidłową **adres E-mail**, podaj **nazwa produktu pokazywana użytkownikom**i kliknij przycisk **Zapisz**.
 6. W obszarze **typ aplikacji**, wybierz opcję **aplikacji sieci Web**.
-7. Wprowadź **nazwa** dla aplikacji, wprowadź `https://login.microsoftonline.com` w **JavaScript autoryzowanych źródeł**, i `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **identyfikatory URI przekierowania autoryzowanych**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com).
-8. Kliknij przycisk **Utwórz**.
+7. Wprowadź **nazwa** dla aplikacji, wprowadź `https://{tenant}.b2clogin.com` w **JavaScript autoryzowanych źródeł**, i `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **identyfikatory URI przekierowania autoryzowanych**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c).
+8. Kliknij pozycję **Utwórz**.
 9. Skopiuj wartości z **identyfikator klienta** i **klucz tajny klienta**. Konieczne będzie, obie z nich, aby skonfigurować Google jako dostawcy tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Skonfiguruj konto Google jako dostawcy tożsamości

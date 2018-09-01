@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9de620c5e6a1698b70f25f91a744829548ad5af6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104701"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382335"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Zarządzanie usługi platformy Azure spisami dynamicznymi za pomocą rozwiązania Ansible
 Rozwiązanie Ansible może służyć do pobierania informacji o spisie z różnych źródeł (w tym źródeł w chmurze takich jak Azure) do *dynamiczny spis*. W tym artykule używasz [usługi Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurowanie rozwiązania Ansible Azure dynamiczne spisu w której opisano tworzenie dwóch maszyn wirtualnych, tag jednej z tych maszyn wirtualnych i zainstalować rozwiązanie Nginx otagowane maszyny wirtualnej.
@@ -136,20 +136,21 @@ Celem tagów jest umożliwiają szybko i łatwo pracować z podgrupami maszyn wi
 
 1. Wstaw następujący kod do nowo utworzonego `nginx.yml` pliku:
 
-    ```yml
-    - name: Install and start Nginx on an Azure virtual machine
-    hosts: azure
-    become: yes
-    tasks:
-    - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
+```yml
+---
+- name: Install and start Nginx on an Azure virtual machine
+  hosts: azure
+  become: yes
+  tasks:
+  - name: install nginx
+    apt: pkg=nginx state=installed
+    notify:
+    - start nginx
 
-    handlers:
-    - name: start nginx
-        service: name=nginx state=started
-    ```
+  handlers:
+  - name: start nginx
+    service: name=nginx state=started
+```
 
 1. Uruchom `nginx.yml` elementu playbook:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443733"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338642"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Usługi Azure Active Directory B2C: Zaloguj się przy użyciu konta usługi Azure AD za pomocą wbudowanych zasad
 
@@ -37,13 +37,13 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 1. Wprowadź nazwę aplikacji (na przykład `Azure AD B2C App`).
 1. Jako typ aplikacji wybierz pozycję **Interfejs API/aplikacja internetowa**.
-1. Aby uzyskać **adres URL logowania**, wprowadź następujący adres URL, gdzie `yourtenant` jest zastępowana nazwą dzierżawy usługi Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. Aby uzyskać **adres URL logowania**, wprowadź następujący adres URL, gdzie `yourtenant` jest zastępowana nazwą dzierżawy usługi Azure AD B2C (`fabrikamb2c`):
 
     >[!NOTE]
     >Wartość "yourtenant" musi być tylko małe litery w **adres URL logowania**.
 
     ```Console
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Zapisz identyfikator aplikacji, który będzie używany w następnej sekcji, jako identyfikator klienta.

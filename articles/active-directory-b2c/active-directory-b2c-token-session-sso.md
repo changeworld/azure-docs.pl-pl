@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444835"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337889"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Usługa Azure Active Directory B2C: Tokenów, sesji i konfiguracji rejestracji jednokrotnej
 
@@ -69,8 +69,8 @@ Poniżej przedstawiono kilka przypadków użycia, które można włączyć za po
 Wprowadziliśmy zmiany formatowania ważne oświadczenia w tokeny zabezpieczające emitowane przez usługę Azure AD B2C. Zostało to zrobione, aby poprawić obsługę standardowy protokół i lepsze współdziałanie z biblioteki tożsamości innych firm. Jednak aby uniknąć dzielenia istniejących aplikacji, utworzyliśmy następujące właściwości, aby umożliwić klientom na uczestnictwo zgodnie z potrzebami:
 
 * **Oświadczenie wystawcy (iss)**: identyfikuje dzierżawy usługi Azure AD B2C, który wystawił token.
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: To jest wartością domyślną.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i zasad stosowanych w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](http://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`: To jest wartością domyślną.
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i zasad stosowanych w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](http://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
 * **Oświadczenia podmiotu (pod)**: identyfikuje jednostkę, czyli użytkownik, dla której token określa informacje.
   * **Identyfikator obiektu**: jest to wartość domyślna. Wypełnia identyfikator obiektu użytkownika w katalogu do `sub` oświadczenia w tokenie.
   * **Nieobsługiwane**: jest to świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do **ObjectID** jak tylko można.
@@ -78,7 +78,7 @@ Wprowadziliśmy zmiany formatowania ważne oświadczenia w tokeny zabezpieczają
   * **tfp**: jest to wartość domyślna.
   * **rejestru Azure container Registry**: jest to świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do `tfp` jak tylko można.
 
-## <a name="session-behavior"></a>Zachowanie sesji
+## <a name="session-behavior"></a>Działanie sesji
 
 Usługa Azure AD B2C obsługuje [protokołu uwierzytelniania OpenID Connect](active-directory-b2c-reference-oidc.md) włączania bezpiecznego logowania do aplikacji sieci web. Poniżej przedstawiono właściwości, których można użyć do zarządzania sesji aplikacji sieci web:
 

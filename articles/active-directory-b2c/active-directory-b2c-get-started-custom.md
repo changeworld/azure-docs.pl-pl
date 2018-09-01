@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446745"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344566"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Usługa Azure Active Directory B2C: Wprowadzenie do zasad niestandardowych
 
@@ -77,7 +77,7 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch dodatkowych aplikacji, które
 4. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
    * Aby uzyskać **nazwa**, użyj `IdentityExperienceFramework`.
    * Aby uzyskać **typ aplikacji**, użyj **aplikacji/interfejs API sieci Web**.
-   * Aby uzyskać **adres URL logowania**, użyj `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` to nazwa domeny dzierżawy usługi Azure AD B2C.
+   * Aby uzyskać **adres URL logowania**, użyj `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` to nazwa domeny dzierżawy usługi Azure AD B2C.
 5. Wybierz pozycję **Utwórz**.
 6. Po jego utworzeniu wybierz nowo utworzoną aplikację **IdentityExperienceFramework**.<br>
    * Wybierz **właściwości**.<br>
@@ -89,14 +89,14 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch dodatkowych aplikacji, które
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
    * Aby uzyskać **nazwa**, użyj `ProxyIdentityExperienceFramework`.
    * Aby uzyskać **typ aplikacji**, użyj **natywnych**.
-   * Aby uzyskać **identyfikator URI przekierowania**, użyj `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.
+   * Aby uzyskać **identyfikator URI przekierowania**, użyj `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.
 1. Wybierz pozycję **Utwórz**.
 1. Od momentu utworzenia, wybierz aplikację **ProxyIdentityExperienceFramework**.<br>
    * Wybierz **właściwości**. <br>
    * Skopiuj identyfikator aplikacji i zapisz go na później.
 1. Wybierz **wymagane uprawnienia**.
 1. Wybierz pozycję **Dodaj**.
-1. Wybierz **wybierz interfejs API**.
+1. Wybierz pozycję **Wybierz interfejs API**.
 1. Wyszukaj nazwę IdentityExperienceFramework. Wybierz **IdentityExperienceFramework** wyniki, a następnie kliknij **wybierz**.
 1. Zaznacz pole wyboru obok pozycji **IdentityExperienceFramework dostępu**, a następnie kliknij przycisk **wybierz**.
 1. Wybierz pozycję **Done** (Gotowe).

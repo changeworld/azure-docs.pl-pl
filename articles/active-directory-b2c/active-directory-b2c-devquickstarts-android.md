@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 86ef621eccc7e6ba999318348f940a6a3931274e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442410"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344130"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu Android
 
@@ -64,7 +64,7 @@ Próbka jest modyfikacja przykładowym przez [AppAuth](https://openid.github.io/
 > AppAuth obsługuje Android API 16 (Jellybean) i nowszych. Firma Microsoft zaleca używanie interfejsu API 23 i nowsze wersje.
 >
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 Komunikację można skonfigurować w usłudze Azure AD B2C, określając odnajdywanie identyfikatora URI lub określając punkt końcowy autoryzacji i tokena identyfikatory URI punktów końcowych. W obu przypadkach są potrzebne następujące informacje:
 
@@ -74,7 +74,7 @@ Komunikację można skonfigurować w usłudze Azure AD B2C, określając odnajdy
 Jeśli zostanie wybrana opcja automatycznego wykrywania autoryzacji i tokena identyfikatory URI punktów końcowych, należy pobrać informacje z identyfikatora URI odnajdywania. Odnajdywanie identyfikatora URI mogą być generowane przez zastąpienie dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
 
 ```java
-String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
 Następnie można nabyć autoryzacji i tokena identyfikatory URI punktów końcowych i Utwórz obiekt AuthorizationServiceConfiguration, uruchamiając następujące:
@@ -101,9 +101,9 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
 Zamiast używania odnajdywania, aby uzyskać autoryzacji i tokena identyfikatory URI punktów końcowych, można również określić je jawnie, zastępując dzierżawy\_identyfikator i zasady\_nazwę w adresie URL poniżej:
 
 ```java
-String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
 
-String mTokenEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
 Uruchom następujący kod, aby utworzyć obiekt AuthorizationServiceConfiguration:

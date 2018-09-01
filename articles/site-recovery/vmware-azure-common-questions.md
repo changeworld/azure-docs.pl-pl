@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238812"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344427"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -45,7 +45,7 @@ Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, któ
 
 
 
-## <a name="on-premises"></a>Lokalnie 
+## <a name="on-premises"></a>Lokalne
 
 ### <a name="what-do-i-need-on-premises"></a>Co zrobić, należy w środowisku lokalnym?
 Lokalnie należy składniki usługi Site Recovery, instalowane na jednej maszynie Wirtualnej VMware. Należy również posiadanie infrastruktury VMware przy użyciu co najmniej jeden host ESXi, a firma Microsoft zaleca serwera vCenter. Ponadto należy co najmniej jeden maszyn wirtualnych programu VMware do replikowania. [Dowiedz się więcej](vmware-azure-architecture.md) o architektura VMware – Azure.
@@ -72,7 +72,7 @@ Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
-Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa. 
+Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
 
 
 
@@ -90,7 +90,7 @@ Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej fu
 Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczyć dysków?
-Tak, można wykluczyć dyski z replikacji. 
+Tak, można wykluczyć dyski z replikacji.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Maszyny wirtualne można replikować z dyskami dynamicznymi?
 Dyski dynamiczne mogą być replikowane. Dysk systemu operacyjnego musi być dyskiem podstawowym.
@@ -105,7 +105,7 @@ Potrzeby replikacji oprogramowania VMware do platformy Azure można zmodyfikowa�
 ## <a name="configuration-server"></a>Serwer konfiguracji
 
 ### <a name="what-does-the-configuration-server-do"></a>Do czego służy serwer konfiguracji?
-Serwer konfiguracji działa lokalnie składniki usługi Site Recovery, w tym: 
+Serwer konfiguracji działa lokalnie składniki usługi Site Recovery, w tym:
 - Serwer konfiguracji, który służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych.
 - Serwer przetwarzania, który działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła go do usługi Azure storage., serwer przetwarzania instaluje także usługę Mobility na maszynach wirtualnych, o których mają być replikowane i przeprowadza automatyczne odnajdywanie lokalnych maszyn wirtualnych programu VMware.
 - Serwer główny serwer docelowy, który służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
@@ -118,13 +118,13 @@ Potrzebujesz jednego o wysokiej dostępności lokalnych zasobów programu VMware
 Przegląd [wymagania wstępne](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Można ręcznie skonfigurować serwer konfiguracji, a nie przy użyciu szablonu?
-Zaleca się, że używasz najnowszej wersji szablonu pakietu OVF do [tworzenie maszyny Wirtualnej serwera konfiguracji](vmware-azure-deploy-configuration-server.md). Jeśli z jakiegoś powodu nie można na przykład nie masz dostępu do serwera VMware, możesz to zrobić [Pobierz plik instalacyjny ujednoliconego](physical-azure-set-up-source.md) z portalu, i uruchom go na maszynie Wirtualnej. 
+Zaleca się, że używasz najnowszej wersji szablonu pakietu OVF do [tworzenie maszyny Wirtualnej serwera konfiguracji](vmware-azure-deploy-configuration-server.md). Jeśli z jakiegoś powodu nie można na przykład nie masz dostępu do serwera VMware, możesz to zrobić [Pobierz plik instalacyjny ujednoliconego](physical-azure-set-up-source.md) z portalu, i uruchom go na maszynie Wirtualnej.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Serwer konfiguracji można replikować do więcej niż jednym regionie?
 Nie. Aby to zrobić, należy skonfigurować serwer konfiguracji w każdym regionie.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Czy można hostować serwer konfiguracji na platformie Azure?
-Ile jest to możliwe maszyna wirtualna Azure, które działają na serwerze konfiguracji musi komunikować się z lokalną infrastrukturą programu VMware i maszyn wirtualnych. Obciążenie prawdopodobnie nie jest możliwe.
+Ile jest to możliwe maszyna wirtualna Azure, które działają na serwerze konfiguracji musi komunikować się z lokalną infrastrukturą programu VMware i maszyn wirtualnych. To jest dodawanie opóźnienia i mieć wpływ na trwającą replikację.
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Gdzie można uzyskać najnowszą wersję szablonu serwera konfiguracji?
@@ -132,6 +132,9 @@ Pobierz najnowszą wersję z [Microsoft Download Center](https://aka.ms/asrconfi
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak zaktualizować serwer konfiguracji?
 Należy zainstalować pakiety zbiorcze aktualizacji. Można znaleźć informacje o najnowszych aktualizacji w [strona aktualizacji witryny typu wiki](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>Należy utworzyć kopię zapasową serwera wdrożonej konfiguracji?
+Zaleca się wykonywanie regularnych zaplanowanych kopii zapasowych serwera konfiguracji. Pomyślne powrotu po awarii powrót po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji, a serwer konfiguracji musi być uruchomiona w stanie połączonym. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
 
 ## <a name="mobility-service"></a>Usługa mobilności
 
@@ -143,7 +146,7 @@ Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomoc�
 
 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-servers"></a>Jakiego dostępu czy usługa Site Recovery należy serwery VMware?
 Usługa Site Recovery musi mieć dostęp do serwerów VMware w następujących celach:
@@ -191,7 +194,7 @@ Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokal
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Dlaczego muszę sieci VPN lub usługi ExpressRoute do powrotu po awarii?
 
-Podczas powrotu po awarii z platformy Azure, powrót do maszyny Wirtualnej w środowisku lokalnym są kopiowane dane z platformy Azure i dostęp prywatny jest wymagany. 
+Podczas powrotu po awarii z platformy Azure, powrót do maszyny Wirtualnej w środowisku lokalnym są kopiowane dane z platformy Azure i dostęp prywatny jest wymagany.
 
 
 

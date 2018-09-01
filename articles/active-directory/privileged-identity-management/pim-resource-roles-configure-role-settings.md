@@ -11,78 +11,110 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 901eb5ef43ddb2840ed7a3d83fc08f2f05849461
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9ad4965ccd86f88a61b5f6fb8f540d76e472ea69
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189739"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43345299"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM
 
-Podczas konfigurowania ustawień roli, należy zdefiniować ustawienia domyślne, które są stosowane do przypisania w środowisku Privileged Identity Management (PIM). Aby zdefiniować te ustawienia dla zasobu, wybierz **ustawień roli** karty w okienku po lewej stronie. Możesz również wybrać przycisk Ustawienia roli na pasku akcji (w dowolnej roli) aby wyświetlić bieżące opcje.
+Po skonfigurowaniu ustawienia roli zasobu platformy Azure, możesz zdefiniować ustawienia domyślne, które są stosowane do przypisania ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM). Poniższe procedury umożliwiają konfigurowanie przepływu pracy zatwierdzania, a następnie określ, kto może zatwierdzać lub odrzucać żądania.
 
-## <a name="overview"></a>Przegląd
+## <a name="open-role-settings"></a>Otwórz ustawienia roli
 
-Za pomocą przepływu pracy zatwierdzania w Privileged Identity Management (PIM) dla ról zasobów platformy Azure Administratorzy mogą dodatkowo ochrony lub ograniczyć dostęp do kluczowych zasobów. Oznacza to, że administratorzy mogą wymagać od zatwierdzenia do aktywowania przypisań ról. 
+Wykonaj następujące kroki, aby otworzyć ustawienia dla ról zasobów platformy Azure.
 
-Koncepcja hierarchii zasobu jest unikatowe dla ról zasobów platformy Azure. Taka hierarchia umożliwia dziedziczenia przypisań ról z obiektu zasobu nadrzędnego w dół do wszystkich zasobów podrzędnych w kontenerze nadrzędnym. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) z użytkownikiem, który jest elementem członkowskim [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) roli.
 
-Na przykład: Roberta, administratorem zasobów przypisuje Alicja jako kwalifikującego się elementu członkowskiego do roli właściciel, w ramach subskrypcji firmy Contoso przy użyciu usługi PIM. Z tym przypisaniem Alicja jest kwalifikujących się właścicielem wszystkich kontenerów grupy zasobów w ramach subskrypcji firmy Contoso. Alicja jest również właścicielem kwalifikujących się wszystkie zasoby (takie jak maszyny wirtualne) w każdej grupie zasobów subskrypcji. 
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-Załóżmy, że istnieją trzy grupy zasobów w subskrypcji firmy Contoso: testów firmy Fabrikam, deweloperów firmy Fabrikam i produkcyjne firmy Fabrikam. Każda z tych grup zasobów zawiera jedną maszynę wirtualną.
+1. Kliknij przycisk **zasobów platformy Azure**.
 
-Ustawień usługi PIM są skonfigurowane dla każdej roli zasobu. W przeciwieństwie do przypisania te ustawienia nie są dziedziczone i zastosować wyłącznie do roli zasobu. [Dowiedz się więcej o kwalifikującymi się przypisaniami i widoczność zasobów](pim-resource-roles-eligible-visibility.md).
+1. Kliknij zasób, który chcesz zarządzać, takich jak subskrypcję lub grupę zarządzania.
 
-Przykładzie: Robert korzysta z usługi PIM będą musieli wszystkich elementów członkowskich w roli właściciela zatwierdzenia żądania subskrypcji Contoso zostanie uaktywniony. Aby lepiej chronić zasoby w grupie zasobów Prod firmy Fabrikam, Robert wymaga zatwierdzenia dla członków roli właściciela tego zasobu. Role właściciela w firmie Fabrikam testowych i deweloperskich firmy Fabrikam nie wymagają zatwierdzenia aktywacji.
+    ![Lista zasobów platformy Azure do zarządzania](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-Gdy Alicja żądań aktywacji jej roli właściciela subskrypcji firmy Contoso, osoba zatwierdzająca musi zatwierdzić lub odrzucić swoje żądanie, zanim użytkownik staje się aktywny w roli. Jeśli Alicja zdecyduje się na [zakres jej aktywacji](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) do grupy zasobów Prod firmy Fabrikam, osoba zatwierdzająca musi Zatwierdź lub Odrzuć to żądanie zbyt. Ale jeśli Alicja zdecyduje się na zakres jej aktywacji do jednego lub obu tych testów Fabrikam lub deweloperów firmy Fabrikam, zatwierdzenia nie jest wymagane.
+1. Kliknij przycisk **ustawień roli**.
 
-Przepływ pracy zatwierdzania nie może być wymagane dla wszystkich członków roli. Rozważmy scenariusz, w których Twoja organizacja zatrudnia kilka kojarzy umowy, aby pomóc w rozwoju aplikacji, która jest uruchamiana w subskrypcji platformy Azure. Będąc administratorem zasobów pracownicy mają mieć dostępu uprawnionego bez wymagane zatwierdzenie, ale kojarzy kontraktu musi on zażądać zatwierdzenia. Aby skonfigurować przepływ pracy zatwierdzania dla tylko kojarzy kontraktu, utworzeniem roli niestandardowej takie same uprawnienia, jak rola przypisana do pracowników. Może wymagać zatwierdzenia do aktywowania tej roli niestandardowej. [Dowiedz się więcej o niestandardowych rolach](pim-resource-roles-custom-role-policy.md).
+    ![Ustawienia roli](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-Aby skonfigurować przepływ pracy zatwierdzania i określ, kto może zatwierdzać lub odrzucać żądania, należy użyć poniższych procedur.
+1. Kliknij rolę, którego ustawienia chcesz skonfigurować.
+
+    ![Szczegóły ustawienia roli](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+
+1. Kliknij przycisk **Edytuj** aby otworzyć okienko ustawienia roli.
+
+    ![Edytowanie ustawień ról](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+
+    W okienku ustawienia roli dla każdej roli istnieje kilka ustawień, które można skonfigurować.
+
+## <a name="assignment-duration"></a>Czas trwania przypisania
+
+Można wybierać spośród dwóch opcji czas trwania przypisania dla każdego typu przydziału (kwalifikujących się i aktywnych) podczas konfigurowania ustawień dla roli. Te opcje stają się domyślny maksymalny czas, gdy członek jest przypisany do roli w usłudze PIM.
+
+Można wybrać jedną z tych **kwalifikujących się** opcje czas trwania przypisania:
+
+| | |
+| --- | --- |
+| **Zezwalaj na trwałe kwalifikujące się przypisanie** | Administratorom zasobów można przypisywać trwałe kwalifikujące się członkostwa. |
+| **Wygaśnięcie kwalifikującego się przypisania po** | Administratorom zasobów może wymagać, że wszystkie kwalifikujące się przypisania mają określoną datę początkową i końcową. |
+
+Ponadto można wybrać jedną z tych **active** opcje czas trwania przypisania:
+
+| | |
+| --- | --- |
+| **Zezwalaj na trwałe aktywne przypisanie** | Administratorom zasobów można przypisywać trwałe aktywne członkostwo. |
+| **Wygaśnięcie aktywne przypisanie po** | Administratorom zasobów może wymagać, że wszystkie aktywne przypisania mają określoną datę początkową i końcową. |
+
+> [!NOTE] 
+> Wszystkie przydziały, które mają określonej daty zakończenia, można ją odnawiać każdorazowo administratorom zasobów. Ponadto członkowie mogą inicjować żądań samoobsługi, aby [rozszerzanie lub odnawianie przypisań ról](pim-resource-roles-renew-extend.md).
+
+## <a name="require-multi-factor-authentication"></a>Wymagaj uwierzytelniania wieloskładnikowego
+
+PIM udostępnia opcjonalne Wymuszanie usługi Azure Multi-Factor Authentication (MFA) dla dwóch różnych scenariuszy.
+
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Wymagaj uwierzytelniania wieloskładnikowego przy aktywnym przypisaniu
+
+W niektórych przypadkach można przypisać członka do roli przez krótki czas (jeden dzień, na przykład). W tym przypadku nie muszą przypisanymi członkami żądanie aktywacji. W tym scenariuszu usługi PIM nie wymuszanie uwierzytelniania Wieloskładnikowego, gdy element członkowski używa przypisania roli, ponieważ są one już aktywny w roli od chwili, które są przypisane.
+
+Aby upewnij się, że administrator zasobów spełniających przypisania kto mówią, że są one, można wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, sprawdzając **Wymagaj uwierzytelniania wieloskładnikowego przy aktywnym przypisaniu** pole.
+
+### <a name="require-multi-factor-authentication-on-activation"></a>Wymagaj usługi Multi-Factor Authentication przy uaktywnianiu
+
+Może wymagać uprawnionych członków roli do uruchamiania usługi MFA, zanim użytkownik może dokonać aktywacji. Ten proces zapewnia, że użytkownik, który żąda aktywacji jest kto mówią, że są one z pewnością uzasadnione. Wymuszanie ta opcja chroni zasoby o znaczeniu krytycznym w sytuacjach, gdy konto użytkownika może być zabezpieczenia mogły zostać naruszone.
+
+Aby wymagać kwalifikującego się elementu członkowskiego uruchomić usługę MFA przed aktywacji, sprawdź **Wymagaj uwierzytelniania wieloskładnikowego aktywacji** pole.
+
+## <a name="activation-maximum-duration"></a>Maksymalny czas trwania aktywacji
+
+Użyj **maksymalny czas trwania aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 24 godzin.
+
+## <a name="require-justification"></a>Wymagaj uzasadnienia
+
+Może wymagać, że elementy członkowskie wprowadzić uzasadnienia przy aktywnym przypisaniu lub podczas aktywacji. Aby wymaga uzasadnienia, zapoznaj się z **Wymagaj uzasadnienia przy aktywnym przypisaniu** pole lub **Wymagaj uzasadnienia przy aktywacji** pole.
 
 ## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia w celu aktywacji
 
-1. Przejdź do usługi PIM w witrynie Azure portal, a następnie wybierz zasób z listy.
+Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następujące kroki.
 
-   ![Okienko "Zasobów platformy azure" z wybranego zasobu](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+1. Sprawdź **Wymagaj zatwierdzenia do aktywowania** pole wyboru.
 
-2. W okienku po lewej stronie wybierz **ustawień roli**.
+1. Kliknij przycisk **wybierz osoby zatwierdzające** otworzyć wybierz panel lub grupę.
 
-3. Wyszukaj i wybierz rolę, a następnie wybierz **Edytuj** na modyfikowanie ustawień.
+    ![Wybierz członka lub grupę](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-   ![Przycisk "Edit" dla roli operatora](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+1. Wybierz co najmniej jeden element członkowski lub grupę, a następnie kliknij przycisk **wybierz**. Możesz dodać dowolną kombinację elementów członkowskich i grup. Należy wybrać co najmniej jedna osoba zatwierdzająca. Nie istnieją żadne osoby zatwierdzające domyślne.
 
-4. W **aktywacji** zaznacz **Wymagaj zatwierdzenia do aktywowania** pole wyboru.
+    Wybrane opcje pojawią się na liście wybranych osób zatwierdzających.
 
-   ![Sekcja "Aktywacja" Ustawienia roli](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
-
-## <a name="specify-approvers"></a>Określanie osób zatwierdzających
-
-Kliknij przycisk **wybierz osoby zatwierdzające** otworzyć **zaznacz użytkownika lub grupę** okienka.
-
->[!NOTE]
->Musisz wybrać co najmniej jednego użytkownika lub grupę, aby zaktualizować ustawienia. Nie istnieją żadne osoby zatwierdzające domyślne.
-
-Zasób Administratorzy mogą dodawać dowolną kombinację użytkowników i grup, do listy osób zatwierdzających. 
-
-![W okienku "Wybierz użytkownika lub grupy" przy użyciu wybranego przez użytkownika](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
-
-## <a name="request-approval-to-activate"></a>Żądania zatwierdzenia do aktywowania
-
-Żądanie zatwierdzenia nie ma wpływu na procedury, która członka należy wykonać, aby aktywować. [Przejrzyj procedurę, aby aktywować rolę](pim-resource-roles-activate-your-roles.md).
-
-Jeśli członek żądanie aktywacji roli wymagającej zatwierdzenia, rola nie jest już wymagany element członkowski może anulować żądanie w usłudze PIM.
-
-Aby anulować, przejdź do usługi PIM, a następnie wybierz pozycję **Moje żądania**. Zlokalizuj na żądanie i wybierz **anulować**.
-
-![Okienko "Moje żądania"](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+1. Po określeniu wszystkie Twoje ustawienia ról kliknij **aktualizacji** Aby zapisać zmiany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wymagaj uwierzytelniania wieloskładnikowego dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-require-mfa.md)
+- [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
 - [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-alerts.md)

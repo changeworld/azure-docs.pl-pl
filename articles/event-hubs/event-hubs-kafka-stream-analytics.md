@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e1903167911c07b968bae63714584f352bbca182
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a066d2a55f6949eea316eaf0a2956500667a996f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307864"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340275"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics 
 W tym artykule przedstawiono sposób przesyłanie strumieniowe danych do komputerów z obsługą platformy Kafka z usługi Event Hubs i przetworzyć te dane za pomocą usługi Azure Stream Analytics. Przeprowadza użytkownika przez następujące kroki: 
@@ -37,7 +37,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Zestaw Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Pobierz](http://maven.apache.org/download.cgi) i [zainstaluj](http://maven.apache.org/install.html) archiwum binarne Maven.
-* [Usługa Git](https://www.git-scm.com/)
+* [Git](https://www.git-scm.com/)
 * **Konta usługi Azure Storage**. Jeśli nie masz, [utworzyć](../storage/common/storage-create-storage-account.md#create-a-storage-account) przed kontynuacją. Zadanie usługi Stream Analytics, w tym przewodniku przechowuje dane wyjściowe w usłudze Azure blob storage. 
 
 
@@ -83,6 +83,7 @@ Teraz możesz przesyłać strumieniowo zdarzenia z aplikacji, które używają p
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
+
 5. Przejdź do `azure-event-hubs/samples/kafka/quickstart/producer/src/main/java/com/example/app`, a następnie otwórz **TestDataReporter.java** plik w wybranym edytorze. 
 6. Komentarz następujący wiersz kodu:
 

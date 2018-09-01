@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888104"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336808"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -100,7 +100,7 @@ Przepływ uwierzytelniania jest taka sama dla wszystkich dostawców, ale różni
 
 W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
 
-| Krok | Bez dostawcy zestawu SDK | Za pomocą dostawcy zestawu SDK |
+| Czynność | Bez dostawcy zestawu SDK | Za pomocą dostawcy zestawu SDK |
 | - | - | - |
 | 1. Logowanie użytkownika | Przekierowuje klienta do `/.auth/login/<provider>`. | Kod klienta loguje użytkownika bezpośrednio z zestawem SDK dostawcy i odbiera token uwierzytelniania. Aby uzyskać informacje Zobacz dokumentację dostawcy. |
 | 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta publikuje tokenu od dostawcy, aby `/.auth/login/<provider>` do sprawdzania poprawności. |
@@ -135,7 +135,7 @@ Po wybraniu tej opcji nie trzeba pisać kodu uwierzytelniania w aplikacji. Bardz
 
 Ta opcja jest **Zezwalaj na anonimowe żądania**. Ta opcja włącza opcję Uwierzytelnianie i autoryzacja w usłudze App Service, ale odracza decyzji dotyczących autoryzacji w kodzie aplikacji. Dla żądań uwierzytelnionych usługi App Service również przekazuje informacje o uwierzytelnianiu w nagłówkach HTTP. 
 
-Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na przykład, pozwala on [istnieje wiele opcji logowania](app-service-authentication-how-to.md#configure-multiple-sign-in-options) dla użytkowników. Jednak trzeba napisać kod. 
+Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na przykład, pozwala on [istnieje wielu dostawców logowania](app-service-authentication-how-to.md#use-multiple-sign-in-providers) dla użytkowników. Jednakże należy napisać kod. 
 
 ## <a name="more-resources"></a>Więcej zasobów
 

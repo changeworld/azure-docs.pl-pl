@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ebf10c7f0fb90d976062300854f69369dba946fa
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247827"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340170"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -58,7 +58,7 @@ Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz 
 
 ### <a name="powershell-language-mode"></a>Tryb języka programu PowerShell
 
-Aby pomyślnie zarejestrować usługi Azure Stack, tryb języka programu PowerShell musi być równa **FullLanguageMode**.  Aby sprawdzić, czy bieżący tryb języka jest ustawiony na pełne, Otwórz okno programu PowerShell z podwyższonym i uruchom następujące cmdlts programu PowerShell:
+Aby pomyślnie zarejestrować usługi Azure Stack, tryb języka programu PowerShell musi być równa **FullLanguageMode**.  Aby sprawdzić, czy bieżący tryb język jest ustawiony na pełne, Otwórz okno programu PowerShell z podwyższonym i uruchom następujące polecenia cmdlet programu PowerShell:
 
 ```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
@@ -100,7 +100,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 Środowisk sieciowych można uzyskać dostęp do Internetu i platformy Azure. Dla tych środowisk należy zarejestrować dostawcę zasobów usługi Azure Stack przy użyciu platformy Azure, a następnie skonfiguruj model rozliczeń.
 
-1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE jako administrator i użyj następujących cmdlts programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
+1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE z uprawnieniami administracyjnymi, a następnie użyj następujących poleceń cmdlet programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
 
 2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta administrator globalny usługi Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
@@ -160,7 +160,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 Środowisk sieciowych można uzyskać dostęp do Internetu i platformy Azure. Dla tych środowisk należy zarejestrować dostawcę zasobów usługi Azure Stack przy użyciu platformy Azure, a następnie skonfiguruj model rozliczeń.
 
-1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE jako administrator i użyj następujących cmdlts programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
+1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE z uprawnieniami administracyjnymi, a następnie użyj następujących poleceń cmdlet programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
 
 2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta administrator globalny usługi Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
@@ -213,7 +213,7 @@ W przypadku rejestracji usługi Azure Stack w środowisku bez połączenia (bez 
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. Aby uzyskać tokenu rejestracji, uruchom następujące cmdlts programu PowerShell:  
+2. Aby uzyskać tokenu rejestracji, uruchom następujące polecenia cmdlet programu PowerShell:  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
@@ -250,7 +250,7 @@ Opcjonalnie służy polecenie cmdlet Get-Content wskaż plik zawierający tokenu
 
 Następnie należy pobrać klucza aktywacji z zasobu rejestracji na platformie Azure utworzone podczas AzsEnvironment rejestru.
 
-Aby uzyskać klucz aktywacji, uruchom następujące cmdlts programu PowerShell:  
+Aby uzyskać klucz aktywacji, uruchom następujące polecenia cmdlet programu PowerShell:  
 
   ```Powershell
   $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
@@ -263,7 +263,7 @@ Aby uzyskać klucz aktywacji, uruchom następujące cmdlts programu PowerShell:
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>Utwórz zasób usługi aktywacji w usłudze Azure Stack
 
-Wróć do środowiska usługi Azure Stack, przy użyciu pliku lub wiadomości SMS z klucza aktywacji utworzone na podstawie Get AzsActivationKey. Następnie utwórz zasób usługi aktywacji w usłudze Azure Stack przy użyciu tego klucza aktywacji. Aby utworzyć zasób usługi aktywacji, uruchom następujące cmdlts programu PowerShell:  
+Wróć do środowiska usługi Azure Stack, przy użyciu pliku lub wiadomości SMS z klucza aktywacji utworzone na podstawie Get AzsActivationKey. Następnie utwórz zasób usługi aktywacji w usłudze Azure Stack przy użyciu tego klucza aktywacji. Aby utworzyć zasób usługi aktywacji, uruchom następujące polecenia cmdlet programu PowerShell:  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -329,13 +329,13 @@ Musisz zaktualizować lub odnowić rejestrację w następujących okolicznościa
 
 Najpierw należy usunąć zasób aktywacji z usługi Azure Stack, a następnie zasobu rejestracji na platformie Azure.  
 
-Aby usunąć zasób aktywacji w usłudze Azure Stack, uruchom następujące cmdlts programu PowerShell w środowisku usługi Azure Stack:  
+Aby usunąć zasób aktywacji w usłudze Azure Stack, uruchom następujące polecenia cmdlet programu PowerShell w środowisku usługi Azure Stack:  
 
   ```Powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-Następnie można usunąć zasobu rejestracji na platformie Azure, upewnij się, znajdują się na platformie Azure połączoną komputer, zaloguj się do poprawnego kontekstu programu Azure PowerShell i uruchom odpowiednie cmdlts programu PowerShell, zgodnie z poniższym opisem.
+Następnie można usunąć zasobu rejestracji na platformie Azure, upewnij się, znajdują się na platformie Azure połączoną komputer, zaloguj się do poprawnego kontekstu programu Azure PowerShell i uruchom odpowiednich poleceń cmdlet programu PowerShell, zgodnie z poniższym opisem.
 
 Możesz użyć tokenu rejestracji użyty do utworzenia zasobu:  
 
@@ -386,6 +386,8 @@ W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń poje
 
 2. Zapisz ten token rejestracji na platformie Azure do użytku połączonych maszyn. Możesz skopiować plik lub tekst z $FilePathForRegistrationToken.
 
+## <a name="move-a-registration-resource"></a>Przenieś zasób rejestracji
+Przenoszenie zasobów rejestracji między grupami zasobów w ramach tej samej subskrypcji **jest** obsługiwane we wszystkich środowiskach. Jednak przenoszenia zasobu rejestracji między subskrypcjami jest obsługiwana tylko dla dostawców usług kryptograficznych, gdy obie subskrypcje prowadzić do tego samego identyfikatora partnera. Aby uzyskać więcej informacji na temat przenoszenia zasobów do nowej grupy zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="registration-reference"></a>Dokumentacja rejestracji
 
