@@ -123,10 +123,6 @@
 #### [Używanie certyfikatów](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [Zarządzanie hasłami](authentication/concept-sspr-howitworks.md)
-### Dokumenty użytkowników
-#### [Resetowanie lub zmienianie hasła](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](user-help/active-directory-passwords-reset-register.md)
-
 
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)
@@ -338,10 +334,6 @@
 ### [Pobieranie wyników przeglądu dostępu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpieczanie tożsamości
-### Uwierzytelnianie oparte na certyfikatach
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Wprowadzenie](active-directory-certificate-based-authentication-get-started.md)
 
 ### Usługa Azure AD Identity Protection
 #### [Omówienie](identity-protection/overview.md)
