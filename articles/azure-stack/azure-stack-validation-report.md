@@ -1,6 +1,6 @@
 ---
-title: Raport weryfikacji stosu Azure | Dokumentacja firmy Microsoft
-description: Raport sprawdzania gotowości stosu Azure, aby przejrzeć wyniki sprawdzania poprawności.
+title: Raport weryfikacji dla usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Aby przejrzeć wyniki sprawdzania poprawności, należy użyć raportu narzędzie do sprawdzania gotowości usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -15,55 +15,55 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a0ca0ae3ed615f6bc2774364f7a443023b911b5d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 06b5660a9428e98d2e99b5d447a05700968ec884
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937820"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381917"
 ---
-# <a name="azure-stack-validation-report"></a>Raport weryfikacji stosu Azure
-Narzędzie sprawdzania gotowości stosu Azure jest sprawdzanie poprawności, które obsługuje wdrożenia i obsługę środowiska Azure stosu. Narzędzie zapisuje wyniki sprawdzania poprawności pliku raportu JSON. Raport przedstawia szczegółowe i podsumowują dane na temat wymagań wstępnych dotyczących wdrażania stosu Azure i obrotu kluczy tajnych istniejące wdrożenia stosu Azure.  
+# <a name="azure-stack-validation-report"></a>Raport weryfikacji usługi Azure Stack
+Można uruchomić operacji walidacji, które obsługują wdrażanie i obsługa środowiska Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack. Narzędzie zapisuje wyniki do pliku raportu JSON. Raport przedstawia szczegółowe i sumaryczne dane o stanie wymagania wstępne dotyczące wdrażania usługi Azure Stack. Przedstawia również informacje o rotacji kluczy tajnych dla istniejących wdrożeń programu Azure Stack.  
 
- ## <a name="where-to-find-the-report"></a>Gdzie można znaleźć raportu
-Po uruchomieniu narzędzia rejestruje ono wyniki w **AzsReadinessCheckerReport.json**. Narzędzie tworzy również dziennik o nazwie **AzsReadinessChecker.log**. Wyświetla lokalizację tych plików z wynikami weryfikacji w programie PowerShell.
+ ## <a name="where-to-find-the-report"></a>Gdzie można znaleźć w raporcie
+Po uruchomieniu narzędzia rejestruje ono wyniki do **AzsReadinessCheckerReport.json**. Narzędzie tworzy również dziennika o nazwie **AzsReadinessChecker.log**. Wyświetla lokalizację tych plików z wynikami weryfikacji w programie PowerShell.
 
-![Uruchom weryfikacji](./media/azure-stack-validation-report/validation.png)
+![Sprawdzanie poprawności na przebieg](./media/azure-stack-validation-report/validation.png)
 
-Oba pliki utrwalić wyniki sprawdzanie poprawności kolejne uruchomienia na tym samym komputerze.  Na przykład narzędzie można uruchomić sprawdzania poprawności certyfikatów, uruchom ponownie, aby zweryfikować tożsamość platformy Azure i następnie raz trzeci, aby zweryfikować rejestrację. Wyniki wszystkich trzech weryfikacji są dostępne w raporcie wynikowe JSON.  
+Oba pliki są zachowywane wyniki testów weryfikacyjnych kolejne, gdy są uruchomione na tym samym komputerze.  Na przykład narzędzie można uruchomić do sprawdzenia poprawności certyfikatów, uruchom ponownie, aby zweryfikować tożsamość w systemie Azure i następnie po raz trzeci do sprawdzania poprawności rejestracji. Wyniki wszystkich trzech operacji sprawdzania poprawności są dostępne w raporcie wynikowy JSON.  
 
-Domyślnie oba pliki są zapisywane w *C:\Users\<nazwa użytkownika > \AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json*.  
-- Użyj **- OutputPath** ***&lt;ścieżki&gt;*** parametru na końcu wiersza polecenia do określenia lokalizacji raportów.   
-- Użyj **- CleanReport** parametru po zakończeniu wykonywania polecenia, aby wyczyścić informacje z *AzsReadinessCheckerReport.json*. o poprzednim uruchamia narzędzia.
+Domyślnie oba pliki są zapisywane w *C:\Users\<username > \AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json*.  
+- Użyj **- OutputPath** ***&lt;ścieżki&gt;*** parametru na końcu wiersza polecenia do określenia lokalizacji inny raport.   
+- Użyj **- CleanReport** parametru na końcu polecenia uruchomienia, aby wyczyścić informacje z *AzsReadinessCheckerReport.json*. temat poprzednie uruchomienia tego narzędzia.
 
 ## <a name="view-the-report"></a>Wyświetl raport
-Aby wyświetlić raport w programie PowerShell, należy podać ścieżkę do raportu jako wartość **- ReportPath**. To polecenie wyświetla zawartość raportu i identyfikuje również operacji sprawdzania poprawności, które nie mają jeszcze wyników.
+Aby wyświetlić raport w programie PowerShell, należy podać ścieżkę do raportu jako wartość **- ReportPath**. To polecenie wyświetla zawartość raportu i identyfikuje sprawdzanie poprawności, które nie dysponują jeszcze wyników.
 
-Na przykład aby wyświetlić raport z wiersza programu PowerShell, która jest otwarta do lokalizacji, w którym znajduje się raport, uruchom polecenie: 
+Na przykład aby wyświetlić raport z wiersz polecenia programu PowerShell, która jest otwarta do lokalizacji, w którym znajduje się raport, uruchom polecenie: 
    > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json` 
 
-Dane wyjściowe podobne poniższej ilustracji:
+Dane wyjściowe podobny do poniższej ilustracji:
 
 ![Wyświetl raport](./media/azure-stack-validation-report/view-report.png)
 
-## <a name="view-the-report-summary"></a>Wyświetl raport podsumowania
+## <a name="view-the-report-summary"></a>Wyświetl podsumowanie raportu
 Aby wyświetlić podsumowanie raportu, można dodać **— Podsumowanie** przełączyć się na końcu wiersza polecenia programu PowerShell. Na przykład: 
  > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -summary`  
 
-Podsumowanie zawiera operacji sprawdzania poprawności, które nie mają wyników i wskazuje zakończone powodzeniem lub niepowodzeniem dla operacji sprawdzania poprawności, które są spełnione. Dane wyjściowe podobne poniższej ilustracji:
+Podsumowanie pokazuje operacji sprawdzania poprawności, które nie mają wyniki i wskazuje zakończone powodzeniem lub niepowodzeniem dla operacji sprawdzania poprawności, które zostaną zakończone. Dane wyjściowe podobny do poniższej ilustracji:
 
-![Raport Podsumowanie](./media/azure-stack-validation-report/report-summary.png)
+![Podsumowanie raportu](./media/azure-stack-validation-report/report-summary.png)
 
 
-## <a name="view-a-filtered-report"></a>Wyświetl raport filtrowane
-Aby wyświetlić raport przefiltrowane na jednym typie weryfikacji, należy użyć **- ReportSections** parametru i określić jedną z następujących wartości, które odpowiada typowi weryfikacji, który chcesz wyświetlić:
+## <a name="view-a-filtered-report"></a>Wyświetl filtrowanego raportu
+Aby wyświetlić raport, który jest filtrowana na jednym typie sprawdzania poprawności, należy użyć **- ReportSections** parametru przy użyciu jednego z następujących wartości:
 - Certyfikat
 - AzureRegistration
 - AzureIdentity
 - Zadania   
 - Wszyscy  
 
-Na przykład aby wyświetlić raport Podsumowanie dla certyfikatów tylko, użyj następującego polecenia programu PowerShell: 
+Na przykład aby wyświetlić raport podsumowania dla certyfikatów tylko wtedy, użyj następującego polecenia programu PowerShell: 
  > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`
 
 

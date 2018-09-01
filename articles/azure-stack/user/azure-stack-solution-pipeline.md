@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582144"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382616"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -108,7 +108,10 @@ W poniższych krokach opisano, co to są wymagane do skonfigurowania uwierzyteln
 
 ### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
-Zapoznaj się [tworzenia nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwę główną usługi, a następnie wybierz **aplikacji sieci Web/interfejsu API** dla typu aplikacji.
+Zapoznaj się [tworzenia nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwę główną usługi, a następnie wybierz **aplikacji sieci Web/interfejsu API** dla typu aplikacji lub [ten skrypt programu PowerShell](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)zgodnie z objaśnieniem [tutaj](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+
+ > [!Note]
+ > Jeśli skrypt będzie używać, aby utworzyć punkt końcowy usługi Azure Stack usługi Azure Resource Manager, należy przekazać w `-azureStackManagementURL` i `-environmentName` parametrów, które jest https://management.local.azurestack.external/ i *AzureStack*.
 
 ### <a name="create-an-access-key"></a>Utwórz klucz dostępu
 
@@ -261,7 +264,19 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 10. Wybierz **Zapisz zmiany**.
 
-Teraz, gdy informacje o punkcie końcowym istnieje, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+## <a name="create-azure-stack-endpoint"></a>Tworzenie punktu końcowego usługi Azure Stack
+
+Sprawdź [to](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) dokumentację, aby utworzyć połączenie usługi z istniejącej usługi głównej i użyj następującego mapowania:
+
+- Środowisko: AzureStack
+- Adres URL środowiska: Mniej więcej tak `https://management.local.azurestack.external`
+- Identyfikator subskrypcji: Identyfikator subskrypcji użytkownika na podstawie usługi Azure Stack
+- Nazwa subskrypcji: Nazwa subskrypcji użytkownika z usługi Azure Stack
+- Identyfikator klienta nazwy głównej usługi: identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule.
+- Klucz jednostki usługi: klucz z tego samego artykułu (lub hasło, jeśli używany jest skrypt).
+- Identyfikator dzierżawy: Identyfikator dzierżawy masz [tutaj](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+
+Teraz, gdy jest tworzony punkt końcowy, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
 ![Agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 

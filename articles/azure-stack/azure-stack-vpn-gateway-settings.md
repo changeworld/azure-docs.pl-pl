@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139363"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381871"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN dla usługi Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "42139363"
 
 Tworzenie bramy sieci VPN jest typem bramy sieci wirtualnej, który wysyła zaszyfrowany ruch sieciowy między siecią wirtualną w usłudze Azure Stack i zdalnego bramy sieci VPN. Zdalne bramy sieci VPN może być na platformie Azure, urządzenie w centrum danych lub urządzeń w innej lokacji.  Jeśli istnieje połączenie sieciowe między dwoma punktami końcowymi, można ustanowić bezpiecznego połączenia sieci VPN typu lokacja-lokacja (S2S) między dwiema sieciami.
 
-Połączenie bramy sieci VPN zależy od konfiguracji wielu zasobów, z których każdy zawiera konfigurowalnych ustawień. Sekcje w tym artykule omówiono, zasoby i ustawienia, które odnoszą się do bramy sieci VPN dla sieci wirtualnej utworzonej w modelu wdrażania usługi Resource Manager. Możesz znaleźć opisy i diagramy topologii dla każdego rozwiązania połączenia w [VPN Gateway — informacje dla usługi Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
+Połączenie bramy sieci VPN zależy od konfiguracji wielu zasobów, z których każdy zawiera konfigurowalnych ustawień. W tym artykule omówiono, zasoby i ustawienia, które odnoszą się do bramy sieci VPN dla sieci wirtualnej, który zostanie utworzony w modelu wdrażania usługi Resource Manager. Możesz znaleźć opisy i diagramy topologii dla każdego rozwiązania połączenia w [VPN Gateway — informacje dla usługi Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 ## <a name="vpn-gateway-settings"></a>Ustawień usługi VPN gateway
 
@@ -100,7 +100,7 @@ Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, nale�
 >
 > Ponadto usługi Azure Stack nie obsługuje korzystania z selektorów ruchu na podstawie zasad dla bram na podstawie tras w tej chwili, ponieważ konfiguracje niestandardowe zasady protokołu IPSec/IKE nie są obsługiwane.
 
-* **Oparte na zasadach**: sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej usługi Azure Stack. Zasady lub selektor ruchu są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN.
+* **Oparte na zasadach**: sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej usługi Azure Stack. Zasady lub selektor ruchu jest zwykle Lista dostępu w konfiguracji urządzenia sieci VPN.
 
   >[!NOTE]
   >Oparte na zasadach jest obsługiwane na platformie Azure, ale nie w usłudze Azure Stack.
@@ -163,7 +163,7 @@ Czasami zachodzi potrzeba modyfikowanie ustawień bramy sieci lokalnej. Na przyk
 
 ## <a name="ipsecike-parameters"></a>Parametry protokołu IPsec/IKE
 
-Po skonfigurowaniu połączenia sieci VPN w usłudze Azure Stack musisz skonfigurować połączenie obu końców.  Jeśli konfigurujesz połączenie sieci VPN między usługi Azure Stack i urządzenia sprzętowego, takie jak przełącznik lub router, który działa jako brama sieci VPN, urządzenie może zapytać o dodatkowe ustawienia.
+Po skonfigurowaniu połączenia sieci VPN w usłudze Azure Stack musisz skonfigurować połączenie obu końców.  Jeśli konfigurujesz połączenie sieci VPN między usługi Azure Stack i urządzenia sprzętowego, takie jak przełącznik lub router, który działa jako brama sieci VPN tego urządzenia może poprosić dodatkowe ustawienia.
 
 W przeciwieństwie do platformy Azure, który obsługuje wiele ofert zarówno jako inicjator i obiekt odpowiadający w trybie, usługa Azure Stack obsługuje tylko jedną ofertę.
 
@@ -184,14 +184,12 @@ W przeciwieństwie do platformy Azure, który obsługuje wiele ofert zarówno ja
 |Wersja IKE |IKEv2 |
 |Oferty szyfrowania i wyznaczania wartości skrótu algorytmy (szyfrowanie)     | GCMAES256|
 |Oferty szyfrowania i (uwierzytelnianie) algorytmy wyznaczania wartości skrótu | GCMAES256|
-|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27 000 sekund<sup>patrz Uwaga 1</sup> |
-|Okres istnienia skojarzeń zabezpieczeń (bajty) | 33,553,408<sup>patrz Uwaga 2</sup>     |
-|Doskonałe utajnienie przekazywania (PFS) |Brak<sup>patrz adnotacja 3</sup> |
+|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27 000 sekund  |
+|Okres istnienia skojarzeń zabezpieczeń (bajty) | 33,553,408     |
+|Doskonałe utajnienie przekazywania (PFS) |Brak<sup>patrz Uwaga 1</sup> |
 |Wykrywanie nieaktywnych elementów równorzędnych | Obsługiwane|  
 
-* *Uwaga 1:* przed wersji 1803 usługi Azure Stack używa wartości ona 14 400 okres istnienia skojarzeń zabezpieczeń (czas).
-* *Uwaga 2:* przed wersji 1803 usługi Azure Stack używa wartości 819,200 okres istnienia skojarzeń zabezpieczeń (w bajtach).
-* *Należy pamiętać, 3:* wcześniejszymi niż wersja 1807 usługi Azure Stack używa wartości PFS2048 dla Perfect Forward Secrecy przekazywania (PFS).
+* *Uwaga 1:* wcześniejszymi niż wersja 1807 usługi Azure Stack używa wartości PFS2048 dla Perfect Forward Secrecy przekazywania (PFS).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
