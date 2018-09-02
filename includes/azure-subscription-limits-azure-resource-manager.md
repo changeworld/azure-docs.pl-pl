@@ -5,15 +5,15 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 08cd67e86666cdc9c9fc1b0f4ef98cf3ea7a156c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348205"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "43435618"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "37348205"
 | Obliczenia unikatowych tagów na subskrypcję<sup>3</sup> | 10 000 | 10 000 |
 | [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |Nie dotyczy<sup>4</sup> |Nie dotyczy<sup>4</sup> |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |Nie dotyczy<sup>4</sup> |Nie dotyczy<sup>4</sup> |
+| [Subskrypcja wdrożeń poziomu](../articles/azure-resource-manager/deploy-to-subscription.md) według lokalizacji | 800 | 800 |
 
 <sup>1</sup>Domyślne limity zależą od typu kategorii oferty, na przykład „bezpłatna wersja próbna”, „płatność zgodnie z rzeczywistym użyciem” i serii, na przykład Dv2, F, G itd.
 

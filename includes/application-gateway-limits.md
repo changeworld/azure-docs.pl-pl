@@ -1,6 +1,6 @@
 | Zasób | Limit domyślny | Uwaga |
 | --- | --- | --- |
-| Application Gateway |50 na subskrypcję | Maksymalna 100 |
+| Application Gateway |50 na subskrypcję | Maksymalna 1000 |
 | Konfiguracja adresu IP frontonu |2 |1 publiczna i 1 prywatna |
 | Porty frontonu |20 | |
 | Pule adresów zaplecza |20 | |
