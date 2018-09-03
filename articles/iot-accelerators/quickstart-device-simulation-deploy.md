@@ -58,7 +58,7 @@ Możesz przejrzeć informacje o akceleratorze rozwiązania do symulacji urządze
 
 Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do symulacji urządzenia:
 
-[Pulpit nawigacyjny rozwiązania![](./media/quickstart-device-simulation-deploy/solutiondashboard-inline.png)](./media/quickstart-device-simulation-deploy/solutiondashboard-expanded.png#lightbox)
+[![Pulpit nawigacyjny rozwiązania](./media/quickstart-device-simulation-deploy/solutiondashboard-inline.png)](./media/quickstart-device-simulation-deploy/solutiondashboard-expanded.png#lightbox)
 
 ## <a name="configure-the-simulation"></a>Konfigurowanie symulacji
 
