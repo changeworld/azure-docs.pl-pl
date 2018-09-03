@@ -196,20 +196,22 @@ items:
         href: vmware-azure-deploy-configuration-server.md
       - name: Konfigurowanie środowiska docelowego dla maszyn wirtualnych VMware
         href: vmware-azure-set-up-target.md
-      - name: Konfigurowanie ustawień replikacji
+      - name: Konfigurowanie ustawień replikacji dla maszyn wirtualnych VMware
         href: vmware-azure-set-up-replication.md
-      - name: Włączanie replikacji maszyny wirtualnej VMware
+      - name: Włączanie replikacji dla maszyn wirtualnych VMware
         href: vmware-azure-enable-replication.md
-      - name: Wykluczanie dysków z replikacji
+      - name: Wykluczanie dysków z replikacji maszyn wirtualnych VMware
         href: vmware-azure-exclude-disk.md
-      - name: Wielodostępność w ramach programu CSP dla maszyn wirtualnych VMWare
+      - name: Konfigurowanie replikacji z wielodostępem i dostawcą usług kryptograficznych dla maszyn wirtualnych VMWare
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
-      - name: Konfigurowanie środowiska źródłowego dla serwerów fizycznych
-        href: physical-azure-set-up-source.md
-      - name: Konfigurowanie środowiska docelowego dla serwerów fizycznych
-        href: physical-azure-set-up-target.md
-      - name: Odzyskiwanie po awarii serwerów fizycznych na platformę Azure
+      - name: Konfigurowanie odzyskiwania po awarii serwerów fizycznych na platformę Azure
         href: physical-azure-disaster-recovery.md
+      - name: Konfigurowanie środowiska źródłowego pod kątem replikacji serwerów fizycznych
+        href: physical-azure-set-up-source.md
+      - name: Konfigurowanie środowiska docelowego pod kątem replikacji serwerów fizycznych
+        href: physical-azure-set-up-target.md
+      - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych usługi Azure Stack
+        href: azure-stack-site-recovery.md
     - name: Wdrażanie usługi mobilności
       items:
       - name: Omówienie usługi mobilności
@@ -390,9 +392,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 01f369aede31d44ff404c1ff5e7d2d1e9bb92950
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285110"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343977"

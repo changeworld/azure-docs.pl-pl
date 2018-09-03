@@ -55,6 +55,10 @@ items:
       href: how-to-use-map-control.md
     - name: Tworzenie mapy
       href: map-create.md
+    - name: Wybieranie stylu mapy
+      href: choose-map-style.md
+    - name: Dodawanie kontrolek mapy
+      href: map-add-controls.md
     - name: Dodawanie numeru PIN
       href: map-add-pin.md
     - name: Dodawanie menu podręcznego
@@ -153,9 +157,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: f8610bf75e5209f907bc5ab0c6b7ec436b5320ed
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9ff456a752ffecc3f4fa67fc8b85540833451fb5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189536"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339135"

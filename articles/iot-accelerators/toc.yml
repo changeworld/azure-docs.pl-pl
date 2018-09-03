@@ -1,245 +1,258 @@
+items:
 - name: Azure IoT Edge — podstawy
   href: ../iot-fundamentals/index.yml
 - name: Dokumentacja akceleratorów rozwiązań IoT
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to są akceleratory rozwiązań IoT
-      href: about-iot-accelerators.md
+  - name: Co to są akceleratory rozwiązań IoT
+    href: about-iot-accelerators.md
 - name: Przewodniki Szybki start
   items:
-    - name: Testowanie rozwiązania do zdalnego monitorowania
-      href: quickstart-remote-monitoring-deploy.md
-    - name: Testowanie rozwiązania połączonej fabryki
-      href: quickstart-connected-factory-deploy.md
-    - name: Testowanie rozwiązania do konserwacji predykcyjnej
-      href: quickstart-predictive-maintenance-deploy.md
-    - name: Testowanie rozwiązania do symulacji urządzeń
-      href: quickstart-device-simulation-deploy.md
+  - name: Testowanie rozwiązania do zdalnego monitorowania
+    href: quickstart-remote-monitoring-deploy.md
+  - name: Testowanie rozwiązania połączonej fabryki
+    href: quickstart-connected-factory-deploy.md
+  - name: Testowanie rozwiązania do konserwacji predykcyjnej
+    href: quickstart-predictive-maintenance-deploy.md
+  - name: Testowanie rozwiązania do symulacji urządzeń
+    href: quickstart-device-simulation-deploy.md
 - name: Samouczki
   items:
-    - name: Monitorowanie urządzeń IoT
-      href: iot-accelerators-remote-monitoring-monitor.md
-    - name: Wykrywanie problemów z urządzeniami
-      href: iot-accelerators-remote-monitoring-automate.md
-    - name: Konfigurowanie urządzeń i zarządzanie nimi
-      href: iot-accelerators-remote-monitoring-manage.md
-    - name: Korzystanie z alertów i rozwiązywanie problemów z urządzeniami
-      href: iot-accelerators-remote-monitoring-maintain.md
+  - name: Monitorowanie urządzeń IoT
+    href: iot-accelerators-remote-monitoring-monitor.md
+  - name: Wykrywanie problemów z urządzeniami
+    href: iot-accelerators-remote-monitoring-automate.md
+  - name: Konfigurowanie urządzeń i zarządzanie nimi
+    href: iot-accelerators-remote-monitoring-manage.md
+  - name: Korzystanie z alertów i rozwiązywanie problemów z urządzeniami
+    href: iot-accelerators-remote-monitoring-maintain.md
 - name: Pojęcia
   items:
-    - name: Zdalne monitorowanie
-      href: iot-accelerators-remote-monitoring-sample-walkthrough.md
-      items:
-        - name: Wybory dotyczące architektury
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-        - name: Schemat modelu urządzenia
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: Zachowanie modelu urządzenia
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: Konserwacja predykcyjna
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: Połączona fabryka
-      href: iot-accelerators-connected-factory-features.md
-      items:
-        - name: Architektura
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
-    - name: Symulacja urządzenia
-      items:
-        - name: Schemat modelu urządzenia
-          href: iot-accelerators-device-simulation-device-schema.md
-        - name: Zachowanie modelu urządzenia
-          href: iot-accelerators-device-simulation-device-behavior.md
-    - name: Uprawnienia w witrynie azureiotsolutions.com
-      href: iot-accelerators-permissions.md
+  - name: Zdalne monitorowanie
+    href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    items:
+    - name: Wybory dotyczące architektury
+      href: iot-accelerators-remote-monitoring-architectural-choices.md
+    - name: Schemat modelu urządzenia
+      href: iot-accelerators-remote-monitoring-device-schema.md
+    - name: Zachowanie modelu urządzenia
+      href: iot-accelerators-remote-monitoring-device-behavior.md
+  - name: Konserwacja predykcyjna
+    href: iot-accelerators-predictive-walkthrough.md
+  - name: Połączona fabryka
+    href: iot-accelerators-connected-factory-features.md
+    items:
+    - name: Architektura
+      href: iot-accelerators-connected-factory-sample-walkthrough.md
+  - name: Symulacja urządzenia
+    items:
+    - name: Schemat modelu urządzenia
+      href: iot-accelerators-device-simulation-device-schema.md
+    - name: Zachowanie modelu urządzenia
+      href: iot-accelerators-device-simulation-device-behavior.md
+  - name: Uprawnienia w witrynie azureiotsolutions.com
+    href: iot-accelerators-permissions.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zdalne monitorowanie
+  - name: Zdalne monitorowanie
+    items:
+    - name: Podłączanie urządzenia fizycznego
       items:
-        - name: Podłączanie urządzenia fizycznego
+      - name: C w systemie Windows
+        href: iot-accelerators-connecting-devices.md
+      - name: C w systemie Linux
+        href: iot-accelerators-connecting-devices-linux.md
+      - name: Node.js (ogólny)
+        href: iot-accelerators-connecting-devices-node.md
+      - name: Node.js na urządzeniu Raspberry Pi
+        href: iot-accelerators-connecting-pi-node.md
+      - name: C na urządzeniu Raspberry Pi
+        href: iot-accelerators-connecting-pi-c.md
+      - name: Zestaw deweloperski MX Chip AZ3166
+        href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+    - name: Integrowanie danych SIM
+      href: iot-accelerators-remote-monitoring-telefonica-sim.md
+    - name: Tworzenie symulowanego urządzenia
+      href: iot-accelerators-remote-monitoring-create-simulated-device.md
+    - name: Dodawanie symulowanego urządzenia
+      href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
+    - name: Dostosowywanie interfejsu użytkownika
+      href: iot-accelerators-remote-monitoring-customize.md
+    - name: Dostosowywanie i ponowne wdrażanie mikrousługi
+      href: iot-accelerators-microservices-example.md
+    - name: Wdrażanie przy użyciu interfejsu wiersza polecenia
+      href: iot-accelerators-remote-monitoring-deploy-cli.md
+    - name: Wdrażanie lokalne
+      href: iot-accelerators-remote-monitoring-deploy-local.md
+    - name: Wizualizowanie telemetrii za pomocą usługi Power BI
+      href: iot-accelerators-integrate-data-powerbi.md
+    - name: Wizualizowanie telemetrii za pomocą usługi Time Series Insights
+      href: iot-accelerators-time-series-insights.md
+    - name: Analizowanie telemetrii za pomocą usługi Data Lake
+      href: iot-accelerators-integrate-data-lake.md
+    - name: Konfigurowanie kontroli dostępu na podstawie ról
+      href: iot-accelerators-remote-monitoring-rbac.md
+  - name: Zdalne monitorowanie (poprzednia wersja)
+    items:
+    - name: Co to są wstępnie skonfigurowane rozwiązania?
+      href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
+    - name: Często zadawane pytania
+      href: ../iot-suite/iot-suite-v1-faq.md
+    - name: Rozpoczęcie pracy
+      items:
+      - name: Wprowadzenie do wstępnie skonfigurowanych rozwiązań
+        href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
+      - name: Uprawnienia w witrynie azureiotsuite.com
+        href: ../iot-suite/iot-suite-v1-permissions.md
+      - name: Przewodnik po rozwiązaniu do zdalnego monitorowania
+        href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
+      - name: Łączenie urządzenia Raspberry Pi
+        href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
+        items:
+        - name: Korzystanie z języka C
           items:
-            - name: C w systemie Windows
-              href: iot-accelerators-connecting-devices.md
-            - name: C w systemie Linux
-              href: iot-accelerators-connecting-devices-linux.md
-            - name: Node.js (ogólny)
-              href: iot-accelerators-connecting-devices-node.md
-            - name: Node.js na urządzeniu Raspberry Pi
-              href: iot-accelerators-connecting-pi-node.md
-            - name: C na urządzeniu Raspberry Pi
-              href: iot-accelerators-connecting-pi-c.md
-            - name: Zestaw deweloperski MX Chip AZ3166
-              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
-        - name: Integrowanie danych SIM
-          href: iot-accelerators-remote-monitoring-telefonica-sim.md
-        - name: Tworzenie symulowanego urządzenia
-          href: iot-accelerators-remote-monitoring-test.md
-        - name: Dostosowywanie interfejsu użytkownika
-          href: iot-accelerators-remote-monitoring-customize.md
-        - name: Dostosowywanie i ponowne wdrażanie mikrousługi
-          href: iot-accelerators-microservices-example.md
-        - name: Wdrażanie przy użyciu interfejsu wiersza polecenia
-          href: iot-accelerators-remote-monitoring-deploy-cli.md
-        - name: Wdrażanie lokalne
-          href: iot-accelerators-remote-monitoring-deploy-local.md
-        - name: Wizualizowanie telemetrii za pomocą usługi Power BI
-          href: iot-accelerators-integrate-data-powerbi.md
-        - name: Wizualizowanie telemetrii za pomocą usługi Time Series Insights
-          href: iot-accelerators-time-series-insights.md
-        - name: Analizowanie telemetrii za pomocą usługi Data Lake
-          href: iot-accelerators-integrate-data-lake.md
-        - name: Konfigurowanie kontroli dostępu na podstawie ról
-          href: iot-accelerators-remote-monitoring-rbac.md
-    - name: Zdalne monitorowanie (poprzednia wersja)
-      items:
-        - name: Co to są wstępnie skonfigurowane rozwiązania?
-          href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-        - name: Często zadawane pytania
-          href: ../iot-suite/iot-suite-v1-faq.md
-        - name: Rozpoczęcie pracy
+          - name: Symulowane dane
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
+          - name: Korzystanie z rzeczywistych czujników
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
+          - name: Implementowanie aktualizacji oprogramowania układowego
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
+        - name: Korzystanie ze środowiska Node.js
           items:
-            - name: Wprowadzenie do wstępnie skonfigurowanych rozwiązań
-              href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
-            - name: Uprawnienia w witrynie azureiotsuite.com
-              href: ../iot-suite/iot-suite-v1-permissions.md
-            - name: Przewodnik po rozwiązaniu do zdalnego monitorowania
-              href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
-            - name: Łączenie urządzenia Raspberry Pi
-              href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
-              items:
-                - name: Korzystanie z języka C
-                  items:
-                    - name: Symulowane dane
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
-                    - name: Korzystanie z rzeczywistych czujników
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
-                    - name: Implementowanie aktualizacji oprogramowania układowego
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
-                - name: Korzystanie ze środowiska Node.js
-                  items:
-                    - name: Symulowane dane
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
-                    - name: Korzystanie z rzeczywistych czujników
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
-                    - name: Implementowanie aktualizacji oprogramowania układowego
-                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
-            - name: Łączenie zestawu deweloperskiego IoT MXChip
-              href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
-        - name: Przewodniki z instrukcjami
-          items:
-            - name: Podłączanie symulowanego urządzenia
-              items:
-                - name: C w systemie Windows
-                  href: ../iot-suite/iot-suite-v1-connecting-devices.md
-                - name: C w systemie Linux
-                  href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
-                - name: Node.js
-                  href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
-            - name: Łączenie aplikacji logiki z rozwiązaniem do zdalnego monitorowania
-              href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
-            - name: Dostosowywanie akceleratora rozwiązań
-              href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
-            - name: Korzystanie z telemetrii dynamicznej z rozwiązaniem do zdalnego monitorowania
-              href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
-            - name: Tworzenie reguły niestandardowej w rozwiązaniu do zdalnego monitorowania
-              href: ../iot-suite/iot-suite-v1-custom-rule.md
-            - name: Informacje o urządzeniu w rozwiązaniu do zdalnego monitorowania
-              href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: Połączona fabryka
+          - name: Symulowane dane
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
+          - name: Korzystanie z rzeczywistych czujników
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
+          - name: Implementowanie aktualizacji oprogramowania układowego
+            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
+      - name: Łączenie zestawu deweloperskiego IoT MXChip
+        href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
+    - name: Przewodniki z instrukcjami
       items:
-        - name: Korzystanie z pulpitu nawigacyjnego
-          href: iot-accelerators-connected-factory-dashboard.md
-        - name: Wdrażanie bramy
-          href: iot-accelerators-connected-factory-gateway-deployment.md
-        - name: Korzystanie z wydawcy OPC
-          href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
-        - name: Konfigurowanie akceleratora rozwiązań
-          href: iot-accelerators-connected-factory-configure.md
-        - name: Dostosowywanie akceleratora rozwiązań
-          href: iot-accelerators-connected-factory-customize.md
-    - name: Symulacja urządzenia
-      items:
-        - name: Używanie istniejącego centrum IoT Hub
-          href: iot-accelerators-device-simulation-choose-hub.md
-        - name: Używanie niestandardowego modelu urządzenia
-          href: iot-accelerators-device-simulation-custom-model.md
+      - name: Podłączanie symulowanego urządzenia
+        items:
+        - name: C w systemie Windows
+          href: ../iot-suite/iot-suite-v1-connecting-devices.md
+        - name: C w systemie Linux
+          href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
+        - name: Node.js
+          href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
+      - name: Łączenie aplikacji logiki z rozwiązaniem do zdalnego monitorowania
+        href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
+      - name: Dostosowywanie akceleratora rozwiązań
+        href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+      - name: Korzystanie z telemetrii dynamicznej z rozwiązaniem do zdalnego monitorowania
+        href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
+      - name: Tworzenie reguły niestandardowej w rozwiązaniu do zdalnego monitorowania
+        href: ../iot-suite/iot-suite-v1-custom-rule.md
+      - name: Informacje o urządzeniu w rozwiązaniu do zdalnego monitorowania
+        href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
+  - name: Połączona fabryka
+    items:
+    - name: Korzystanie z pulpitu nawigacyjnego
+      href: iot-accelerators-connected-factory-dashboard.md
+    - name: Wdrażanie bramy
+      href: iot-accelerators-connected-factory-gateway-deployment.md
+    - name: Korzystanie z wydawcy OPC
+      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
+    - name: Konfigurowanie akceleratora rozwiązań
+      href: iot-accelerators-connected-factory-configure.md
+    - name: Dostosowywanie akceleratora rozwiązań
+      href: iot-accelerators-connected-factory-customize.md
+  - name: Symulacja urządzenia
+    items:
+    - name: Używanie istniejącego centrum IoT Hub
+      href: iot-accelerators-device-simulation-choose-hub.md
+    - name: Używanie niestandardowego modelu urządzenia
+      href: iot-accelerators-device-simulation-custom-model.md
+    - name: Tworzenie symulowanego urządzenia
+      href: iot-accelerators-device-simulation-create-simulated-device.md
+    - name: Dodawanie symulowanego urządzenia
+      href: iot-accelerators-device-simulation-deploy-simulated-device.md
 - name: Dokumentacja
   items:
-    - name: Zdalne monitorowanie
-      items:
-        - name: Przewodnik informacyjny dla deweloperów
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: Przewodnik po rozwiązywaniu problemów dla deweloperów
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-    - name: Symulacja urządzenia
-      items:
-        - name: Przewodnik informacyjny dla deweloperów
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-    - name: Bezpieczeństwo
-      items:
-        - name: Architektura zabezpieczeń
-          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-        - name: Najlepsze rozwiązania dotyczące zabezpieczeń
-          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-        - name: Zabezpieczanie wdrożenia IoT
-          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-        - name: Zabezpieczenia od podstaw
-          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+  - name: Zdalne monitorowanie
+    items:
+    - name: Przewodnik informacyjny dla deweloperów
+      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide
+    - name: Przewodnik po rozwiązywaniu problemów dla deweloperów
+      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide
+  - name: Symulacja urządzenia
+    items:
+    - name: Przewodnik informacyjny dla deweloperów
+      href: https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide
+  - name: Bezpieczeństwo
+    items:
+    - name: Architektura zabezpieczeń
+      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+    - name: Najlepsze rozwiązania dotyczące zabezpieczeń
+      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+    - name: Zabezpieczanie wdrożenia IoT
+      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+    - name: Zabezpieczenia od podstaw
+      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
 - name: Powiązane
   items:
-    - name: Rozwiązania
-      items:
-        - name: Akceleratory rozwiązań IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Usługi platformy
-      items:
-        - name: Usługa IoT Hub
-          href: /azure/iot-hub
-        - name: Usługa IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Zestawy SDK usługi IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks  azure-iot-service-sdks
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Brzeg
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Zestawy SDK urządzeń IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Stream Analytics
-      href: /azure/stream-analytics/
-    - name: Event Hubs
-      href: /azure/event-hubs/
-    - name: Usługa Machine Learning
-      href: /azure/machine-learning/
+  - name: Rozwiązania
+    items:
+    - name: Akceleratory rozwiązań IoT
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: Usługi platformy
+    items:
+    - name: Usługa IoT Hub
+      href: /azure/iot-hub
+    - name: Usługa IoT Hub Device Provisioning
+      href: /azure/iot-dps
+    - name: Zestawy SDK usługi IoT
+      href: /azure/iot-hub/iot-hub-devguide-sdks  azure-iot-service-sdks
+    - name: Maps
+      href: /azure/azure-maps
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Brzeg
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: Zestawy SDK urządzeń IoT
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+  - name: Stream Analytics
+    href: /azure/stream-analytics/
+  - name: Event Hubs
+    href: /azure/event-hubs/
+  - name: Usługa Machine Learning
+    href: /azure/machine-learning/
 - name: Zasoby
   items:
-    - name: Repozytoria usługi GitHub
-      items:
-        - name: Zdalne monitorowanie (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: Zdalne monitorowanie (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: Połączona fabryka
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Konserwacja predykcyjna
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-        - name: Symulacja urządzenia
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Często zadawane pytania
-      href: iot-accelerators-faq.md
-    - name: Zdalne monitorowanie — często zadawane pytania
-      href: iot-accelerators-faq-rm-v2.md
-    - name: Połączona fabryka — często zadawane pytania
-      href: iot-accelerators-faq-cf.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
-    - name: Ścieżka szkoleniowa dotycząca akceleratorów rozwiązań IoT
-      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-suite/'
+  - name: Repozytoria usługi GitHub
+    items:
+    - name: Zdalne monitorowanie (.NET)
+      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+    - name: Zdalne monitorowanie (Java)
+      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
+    - name: Połączona fabryka
+      href: https://github.com/Azure/azure-iot-connected-factory
+    - name: Konserwacja predykcyjna
+      href: https://github.com/Azure/azure-iot-predictive-maintenance
+    - name: Symulacja urządzenia
+      href: https://github.com/Azure/device-simulation-dotnet
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Często zadawane pytania
+    href: iot-accelerators-faq.md
+  - name: Zdalne monitorowanie — często zadawane pytania
+    href: iot-accelerators-faq-rm-v2.md
+  - name: Połączona fabryka — często zadawane pytania
+    href: iot-accelerators-faq-cf.md
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-iot-suite
+  - name: Ścieżka szkoleniowa dotycząca akceleratorów rozwiązań IoT
+    href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
+ms.openlocfilehash: 1770dbe5a88b4a8ac4dc036fb837c066291efb99
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339487"
