@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 06/27/2018
+ms.date: 08/30/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447340"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698778"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -37,7 +37,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 1. [Przekazywanie obrazu maszyny Wirtualnej Windows Azure dla wdrożeń usługi Resource Manager](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) lub obrazu systemu Linux, wykonaj instrukcje opisane w [wdrażanie maszyn wirtualnych systemu Linux w usłudze Azure Stack](azure-stack-linux.md). Przed przekazaniem obrazu, należy wziąć pod uwagę następujące czynniki:
 
-   - Usługa Azure Stack obsługuje stały format VHD dysków. Stały format konstrukcje dysku logicznego liniowo w pliku, tak że Przesunięcie X na dysku jest przechowywany w obiekcie blob z przesunięciem X. Małe stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Aby upewnić się, jeśli dysk jest stała, należy użyć [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) polecenia programu PowerShell.  
+   - Usługa Azure Stack, tylko obsługuje generowanie jeden (1) maszyna wirtualna w dysku stałego wirtualnego dysku twardego formatu. Stałym formacie struktury dysku logicznego liniowo w pliku, tak że Przesunięcie X na dysku jest przechowywany w obiekcie blob z przesunięciem X. Małe stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Aby upewnić się, jeśli dysk jest stała, należy użyć [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) polecenia programu PowerShell.  
 
     > [!IMPORTANT]
     >  Usługa Azure Stack nie obsługuje dysków dynamicznych wirtualnych dysków twardych. Zmiana rozmiaru dysku dynamicznego, który jest dołączony do maszyny Wirtualnej spowoduje, że maszyna wirtualna w stanie niepowodzenia. Aby rozwiązać ten problem, należy usunąć maszynę Wirtualną bez usuwania dysku maszyny Wirtualnej, obiektu blob dysku VHD na koncie magazynu. Konwertowania wirtualnego dysku twardego z dysk dynamiczny na dysk stały i ponownie utworzyć maszynę wirtualną.
@@ -48,7 +48,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    * Zanotuj identyfikator URI, gdzie możesz przekazać obraz magazynu obiektów blob. Identyfikator URI magazynu obiektów blob ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
-   * Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasad dostępu**. Opcjonalnie można zamiast niego wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob.
+   * Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasad dostępu**. Opcjonalnie można zamiast niego wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
 
    ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
 

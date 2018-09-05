@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382616"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697751"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -108,10 +108,11 @@ W poniższych krokach opisano, co to są wymagane do skonfigurowania uwierzyteln
 
 ### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
-Zapoznaj się [tworzenia nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwę główną usługi, a następnie wybierz **aplikacji sieci Web/interfejsu API** dla typu aplikacji lub [ten skrypt programu PowerShell](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)zgodnie z objaśnieniem [tutaj](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+Zapoznaj się [tworzenia nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwę główną usługi. Wybierz **aplikacji sieci Web/interfejsu API** dla typu aplikacji lub [używania skryptu programu PowerShell](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) zgodnie z opisem w artykule [tworzenia połączenia z usługą Azure Resource Manager za pomocą istniejącej usługi główna ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
 
- > [!Note]
- > Jeśli skrypt będzie używać, aby utworzyć punkt końcowy usługi Azure Stack usługi Azure Resource Manager, należy przekazać w `-azureStackManagementURL` i `-environmentName` parametrów, które jest https://management.local.azurestack.external/ i *AzureStack*.
+ > [!Note]  
+ > Jeśli skrypt umożliwia utworzenie punktu końcowego usługi Azure Stack usługi Azure Resource Manager, musisz przekazać **- azureStackManagementURL** parametru i **- environmentName** parametru. Na przykład:  
+> `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="create-an-access-key"></a>Utwórz klucz dostępu
 
@@ -204,7 +205,7 @@ Utwórz osobisty Token dostępu do dostępu do usługi VSTS.
 1. Zaloguj się do konta usługi VSTS, a następnie wybierz nazwę profilu konta.
 2. Wybierz **zarządzania zabezpieczeniami** do strony tworzenia tokenu dostępu.
 
-    ![Logowanie użytkownika](media\azure-stack-solution-hybrid-pipeline\000_17.png)
+    ![Logowanie użytkowników](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
     ![Wybierz projekt zespołowy](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
@@ -264,17 +265,17 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 10. Wybierz **Zapisz zmiany**.
 
-## <a name="create-azure-stack-endpoint"></a>Tworzenie punktu końcowego usługi Azure Stack
+## <a name="create-an-azure-stack-endpoint"></a>Tworzenie punktu końcowego usługi Azure Stack
 
-Sprawdź [to](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) dokumentację, aby utworzyć połączenie usługi z istniejącej usługi głównej i użyj następującego mapowania:
+Możesz wykonać instrukcje w [tworzenia połączenia z usługą Azure Resource Manager za pomocą istniejącej usługi głównej ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) artykuł, aby utworzyć połączenie usługi z istniejącej usługi głównej i użyj następującego mapowania:
 
 - Środowisko: AzureStack
 - Adres URL środowiska: Mniej więcej tak `https://management.local.azurestack.external`
 - Identyfikator subskrypcji: Identyfikator subskrypcji użytkownika na podstawie usługi Azure Stack
 - Nazwa subskrypcji: Nazwa subskrypcji użytkownika z usługi Azure Stack
-- Identyfikator klienta nazwy głównej usługi: identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule.
+- Identyfikator klienta nazwy głównej usługi: identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule.
 - Klucz jednostki usługi: klucz z tego samego artykułu (lub hasło, jeśli używany jest skrypt).
-- Identyfikator dzierżawy: Identyfikator dzierżawy masz [tutaj](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+- Identyfikator dzierżawy: Identyfikator dzierżawy możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
 
 Teraz, gdy jest tworzony punkt końcowy, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
@@ -316,7 +317,7 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 ### <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
 
 1. Zaloguj się do usługi VSTS przy użyciu konta, które można utworzyć definicję kompilacji.
-2. Przejdź do **kompilacji Web Distributed** strony dla projektu.
+2. Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
 
 3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
