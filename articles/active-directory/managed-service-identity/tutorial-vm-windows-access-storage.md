@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056178"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885497"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Samouczek: używanie tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ten samouczek przedstawia sposób włączania tożsamości zarządzanej dla maszyny wirtualnej z systemem Windows, a następnie użycia tej tożsamości do uzyskania dostępu do usługi Azure Storage.  Omawiane kwestie:
+W tym samouczku przedstawiono sposób używania tożsamości przypisanej przez system dla maszyny wirtualnej z systemem Windows w celu uzyskania dostępu do usługi Azure Storage. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów 
-> * Włączanie tożsamości zarządzanej na maszynie wirtualnej z systemem Windows
 > * Tworzenie kontenera obiektów blob na koncie magazynu
 > * Udzielenie tożsamości zarządzanej maszyny wirtualnej z systemem Windows dostępu do konta magazynu 
 > * Uzyskiwanie dostępu i używanie go do wywoływania usługi Azure Storage 
@@ -43,31 +41,11 @@ Ten samouczek przedstawia sposób włączania tożsamości zarządzanej dla masz
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+- [Zalogowanie się w witrynie Azure Portal](https://portal.azure.com)
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+- [Utworzenie maszyny wirtualnej z systemem Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
-
-W tej sekcji utworzysz maszynę wirtualną z systemem Windows, do której później przydzielisz tożsamość zarządzaną.
-
-1.  Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
-2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3.  Wprowadź informacje o maszynie wirtualnej. **Nazwa użytkownika** i **Hasło** utworzone w tym miejscu są poświadczeniami używanymi do logowania do maszyny wirtualnej.
-4.  Wybierz odpowiednią **Subskrypcję** dla maszyny wirtualnej z listy rozwijanej.
-5.  Aby wybrać nową **grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz opcję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
-6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
-
-    ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>Włączanie tożsamości zarządzanej na maszynie wirtualnej
-
-Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości zarządzanej na maszynie wirtualnej w witrynie Azure Portal powoduje wykonanie w niewidoczny sposób dwóch czynności: zarejestrowania maszyny wirtualnej przy użyciu usługi Azure AD w celu utworzenia tożsamości zarządzanej oraz skonfigurowania tożsamości na maszynie wirtualnej. 
-
-1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną utworzoną w poprzednim kroku.
-2. W kategorii **Ustawienia** kliknij pozycję **Konfiguracja**.
-3. Aby włączyć tożsamość zarządzaną, wybierz pozycję **Tak**.
-4. Kliknij przycisk **Zapisz**, aby zastosować konfigurację. 
+- [Włączenie tożsamości przypisanej przez system na maszynie wirtualnej](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
@@ -78,7 +56,7 @@ W tej sekcji utworzysz konto magazynu.
 3. W obszarze **Nazwa** wprowadź nazwę konta magazynu.  
 4. Opcje **Model wdrażania** i **Rodzaj konta** należy ustawić na **Resource Manager** i **Magazyn (ogólnego przeznaczenia, wersja 1)**. 
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.
-6. Kliknij przycisk **Utwórz**.
+6. Kliknij pozycję **Utwórz**.
 
     ![Tworzenie nowego konta magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

@@ -1,69 +1,62 @@
 ---
-title: Wykonania wiersza polecenia platformy Azure przy użyciu narzędzia Jenkins | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrażanie aplikacji sieci web Java na platformie Azure w potoku usługi Jenkins za pomocą wiersza polecenia platformy Azure
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
+title: Uruchamianie interfejsu wiersza polecenia platformy Azure za pomocą rozwiązania Jenkins
+description: Dowiedz się, jak przy użyciu interfejsu wiersza polecenia platformy Azure wdrożyć aplikację internetową Java na platformie Azure w potoku Jenkins
 ms.service: jenkins
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
+keywords: jenkins, azure, devops, usługa app service, cli
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 6/7/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 7d9565db8fe46ee26fafa7bd021d771e728e9a77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421308"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101616"
 ---
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie w usłudze Azure App Service z usługami Jenkins i interfejs wiersza polecenia platformy Azure
-Aby wdrożyć aplikację sieci web Java na platformie Azure, można użyć wiersza polecenia platformy Azure w [potoku Jenkins](https://jenkins.io/doc/book/pipeline/). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:
+# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie w usłudze Azure App Service za pomocą serwera Jenkins i interfejsu wiersza polecenia platformy Azure
+Aby wdrożyć aplikację internetową Java na platformie Azure, można użyć interfejsu wiersza polecenia platformy Azure w [potoku Jenkins](https://jenkins.io/doc/book/pipeline/). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej usługi Jenkins
 > * Konfigurowanie usługi Jenkins
-> * Tworzenie aplikacji sieci web na platformie Azure
-> * Przygotowanie repozytorium GitHub
-> * Instrukcje tworzenia potoku usługi Jenkins
-> * Uruchamianie potoku i zweryfikować aplikacji sieci web
+> * Tworzenie aplikacji internetowej na platformie Azure
+> * Przygotowywanie repozytorium GitHub
+> * Tworzenie potoku Jenkins
+> * Uruchamianie potoku i weryfikowanie aplikacji internetowej
 
 Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-and-configure-jenkins-instance"></a>Tworzenie i Konfigurowanie narzędzia Jenkins wystąpienia
-Jeśli nie masz jeszcze wzorca usługi Jenkins, skorzystaj z [szablon rozwiązania](install-jenkins-solution-template.md), która obejmuje wymagana [Azure Credentials](https://plugins.jenkins.io/azure-credentials) wtyczki domyślnie. 
+## <a name="create-and-configure-jenkins-instance"></a>Tworzenie i konfigurowanie wystąpienia serwera Jenkins
+Jeśli nie masz jeszcze wzorca serwera Jenkins, skorzystaj z [szablonu rozwiązania](install-jenkins-solution-template.md), który domyślnie zawiera wymaganą wtyczkę [poświadczeń platformy Azure](https://plugins.jenkins.io/azure-credentials). 
 
-Wtyczka poświadczeń platformy Azure umożliwia przechowywanie poświadczeń jednostki usługi Microsoft Azure w usłudze Jenkins. W wersji 1.2 Dodaliśmy obsługę tak to potoku Jenkins można uzyskać poświadczeń platformy Azure. 
+Wtyczka poświadczeń platformy Azure umożliwia przechowywanie poświadczeń jednostki usługi platformy Microsoft Azure na serwerze Jenkins. W wersji 1.2 dodaliśmy obsługę potoku Jenkins, aby mógł on uzyskiwać poświadczenia platformy Azure. 
 
-Upewnij się, że w wersji 1.2 lub nowszej:
-* Na pulpicie nawigacyjnym usługi Jenkins kliknij **Zarządzaj serwerem Jenkins -> Menedżer wtyczki ->** i wyszukaj **Azure Credential**. 
-* Należy zaktualizować wtyczkę, jeśli wersja jest wcześniejsza niż 1.2.
+Upewnij się, że masz wersję 1.2 lub nowszą:
+* Na pulpicie nawigacyjnym serwera Jenkins kliknij pozycję **Manage Jenkins -> Plugin Manager ->** (Zarządzaj serwerem Jenkins -> Menedżer wtyczek ->) i wyszukaj ciąg **Azure Credential** (Poświadczenia platformy Azure). 
+* Zaktualizuj wtyczkę, jeśli jej wersja jest starsza niż 1.2.
 
-Zestaw JDK języka Java i Maven, są również wymagane w wzorca usługi Jenkins. Aby zainstalować, zaloguj się do serwera głównego Jenkins przy użyciu protokołu SSH i uruchom następujące polecenia:
+Wzorzec serwera Jenkins wymaga również zestawu Java JDK i narzędzia Maven. Aby je zainstalować, zaloguj się do wzorca serwera Jenkins przy użyciu protokołu SSH i uruchom następujące polecenia:
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-## <a name="add-azure-service-principal-to-jenkins-credential"></a>Dodaj nazwę główną usługi Azure poświadczenia usługi Jenkins
+## <a name="add-azure-service-principal-to-jenkins-credential"></a>Dodawanie jednostki usługi platformy Azure do poświadczeń serwera Jenkins
 
-Poświadczeń platformy Azure jest potrzebny do wykonania wiersza polecenia platformy Azure.
+Poświadczenia platformy Azure są potrzebne do uruchomienia interfejsu wiersza polecenia platformy Azure.
 
-* Na pulpicie nawigacyjnym usługi Jenkins kliknij **poświadczeń -> System ->**. Kliknij przycisk **globalnego credentials(unrestricted)**.
-* Kliknij przycisk **Dodaj poświadczenia** dodać [nazwy głównej usługi Microsoft Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) , wypełniając Identyfikatora subskrypcji, identyfikator klienta, klucza tajnego klienta i punkt końcowy protokołu OAuth 2.0 Token. Podaj identyfikator do użycia w kolejnym kroku.
+* Na pulpicie nawigacyjnym serwera Jenkins kliknij pozycję **Credentials -> System ->** (Poświadczenia -> System ->). Kliknij pozycję **Global credentials(unrestricted)** (Poświadczenia globalne (bez ograniczeń)).
+* Kliknij pozycję **Add Credentials** (Dodaj poświadczenia), aby dodać [jednostkę usługi Microsoft Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json), wypełniając pola: Subscription ID (Identyfikator subskrypcji), Client ID (Identyfikator klienta), Client Secret (Klucz tajny klienta) i OAuth 2.0 Token Endpoint (Punkt końcowy tokenu OAuth 2.0). Podaj identyfikator w celu użycia go w kolejnym kroku.
 
-![Dodaj poświadczenia](./media/execute-cli-jenkins-pipeline/add-credentials.png)
+![Dodawanie poświadczeń](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Tworzenie usługi Azure App Service do wdrażania aplikacji sieci web Java
+## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Tworzenie usługi Azure App Service w celu wdrożenia aplikacji internetowej Java
 
-Utwórz plan usługi Azure App Service za pomocą **bezpłatna** ceny warstwy za pomocą [az appservice plan tworzenia](/cli/azure/appservice/plan#az-appservice-plan-create) interfejsu wiersza polecenia. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby, ograniczając koszt hostowania wielu aplikacji. 
+Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą polecenia [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) interfejsu wiersza polecenia. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby, ograniczając koszt hostowania wielu aplikacji. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -92,7 +85,7 @@ Gdy plan jest gotowy, interfejs wiersza polecenia platformy Azure zawiera dane w
 
 ### <a name="create-an-azure-web-app"></a>Tworzenie aplikacji internetowej platformy Azure
 
- Użyj [tworzenie az webapp](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) interfejsu wiersza polecenia Utwórz definicję aplikacji internetowej w `myAppServicePlan` planu usługi App Service. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
+ Za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) interfejsu wiersza polecenia utwórz definicję aplikacji internetowej w planie usługi App Service `myAppServicePlan`. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
 
 ```azurecli-interactive
 az webapp create \
@@ -122,7 +115,7 @@ Gdy definicja aplikacji internetowej jest gotowa, w interfejsie wiersza poleceni
 
 ### <a name="configure-java"></a>Konfigurowanie środowiska Java 
 
-Ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację za pomocą [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) polecenia.
+Ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update).
 
 Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
@@ -135,79 +128,79 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-## <a name="prepare-a-github-repository"></a>Przygotowanie repozytorium GitHub
-Otwórz [prostej aplikacji sieci Web Java na platformie Azure](https://github.com/azure-devops/javawebappsample) repozytorium. Aby utworzyć rozwidlenie repozytorium na koncie usługi GitHub, kliknij przycisk **rozwidlenia** przycisk w prawym górnym rogu.
+## <a name="prepare-a-github-repository"></a>Przygotowywanie repozytorium GitHub
+Otwórz repozytorium [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Aby utworzyć rozwidlenie repozytorium na koncie usługi GitHub, kliknij przycisk **Rozwidlenie** w prawym górnym rogu.
 
-* W witrynie GitHub interfejsu użytkownika sieci web, otwórz **pliku Jenkins** pliku. Kliknij ikonę ołówka, aby edytować ten plik, aby odpowiednio zaktualizować grupy zasobów i nazwę aplikacji sieci web w taki sposób, w wierszu 20 i 21.
+* W internetowym interfejsie użytkownika usługi GitHub otwórz plik **Jenkinsfile**. Kliknij ikonę ołówka, aby edytować ten plik w celu zaktualizowania grupy zasobów i nazwy aplikacji internetowej w wierszach 20 i 21.
 
 ```java
 def resourceGroup = '<myResourceGroup>'
 def webAppName = '<app_name>'
 ```
 
-* Zmień wiersz 23 można zaktualizować Identyfikatora poświadczeń do wystąpienia usługi Jenkins
+* Zmień wiersz 23, aby zaktualizować identyfikator poświadczeń w Twoim wystąpieniu serwera Jenkins
 
 ```java
 withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
-## <a name="create-jenkins-pipeline"></a>Instrukcje tworzenia potoku usługi Jenkins
-Otwórz narzędzia Jenkins w przeglądarce sieci web, kliknij pozycję **nowy element**. 
+## <a name="create-jenkins-pipeline"></a>Tworzenie potoku Jenkins
+Otwórz narzędzie Jenkins w przeglądarce internetowej i kliknij pozycję **New Item** (Nowy element). 
 
-* Podaj nazwę zadania, a następnie wybierz pozycję **potoku**. Kliknij przycisk **OK**.
-* Kliknij przycisk **potoku** obok karty. 
-* Dla **definicji**, wybierz opcję **potoku skrypt z SCM**.
-* Aby uzyskać **SCM**, wybierz opcję **Git**.
-* Wprowadź adres URL usługi GitHub do rozwidlonego repozytorium: https:\<rozwidlonego repozytorium\>.git
+* Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Kliknij przycisk **OK**.
+* Następnie kliknij kartę **Pipeline** (Potok). 
+* W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
+* W polu **SCM** wybierz wartość **Git**.
+* Wprowadź adres URL usługi GitHub dla rozwidlonego repozytorium: https:\<Twoje rozwidlone repozytorium\>.git
 * Kliknij pozycję **Zapisz**
 
 ## <a name="test-your-pipeline"></a>Testowanie potoku
-* Przejdź do utworzonego potoku, kliknij przycisk **Kompiluj teraz**
-* Kompilacja ma być pomyślnie wykonane w ciągu kilku sekund i można przejść do kompilacji i kliknij przycisk **dane wyjściowe konsoli** Aby wyświetlić szczegóły
+* Przejdź do utworzonego potoku i kliknij przycisk **Build Now** (Kompiluj teraz).
+* Kompilacja powinna zostać zakończona pomyślnie w ciągu kilku sekund. Następnie możesz przejść do kompilacji i kliknąć pozycję **Console Output** (Dane wyjściowe konsoli), aby wyświetlić szczegóły.
 
-## <a name="verify-your-web-app"></a>Sprawdź aplikację sieci web
-Aby sprawdzić WAR plik został wdrożony pomyślnie na aplikację sieci web. Otwórz przeglądarkę sieci web:
+## <a name="verify-your-web-app"></a>Weryfikowanie aplikacji internetowej
+Sprawdź, czy plik WAR został pomyślnie wdrożony w aplikacji internetowej. Otwórz przeglądarkę internetową:
 
-* Przejdź do http://&lt;nazwa_aplikacji >.azurewebsites.net/api/calculator/ping  
-Zobacz:
+* Przejdź do adresu http://&lt;nazwa_aplikacji>.azurewebsites.net/api/calculator/ping  
+Zobaczysz:
 
         Welcome to Java Web App!!! This is updated!
         Sun Jun 17 16:39:10 UTC 2017
 
-* Przejdź do http://&lt;nazwa_aplikacji >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;t > (Zastąp &lt;x > i &lt;y > z dowolnej liczby) do uzyskania sumy x i y
+* Przejdź do adresu http://&lt;nazwa_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (zastąp wartości &lt;x > i &lt;y > dowolnymi liczbami), aby uzyskać sumę wartości x i y.
 
-![Kalkulator: Dodaj](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+![Calculator: add (Kalkulator: dodawanie)](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-## <a name="deploy-to-azure-web-app-on-linux"></a>Wdrażanie aplikacji sieci Web platformy Azure w systemie Linux
-Teraz gdy wiesz, jak używać wiersza polecenia platformy Azure w potoku usługi Jenkins, możesz zmodyfikować skrypt, aby wdrożyć aplikację internetową platformy Azure w systemie Linux.
+## <a name="deploy-to-azure-web-app-on-linux"></a>Wdrażanie w usłudze Azure Web App on Linux
+Teraz, gdy wiesz już, jak używać interfejsu wiersza polecenia platformy Azure w potoku Jenkins, możesz zmodyfikować skrypt, aby przeprowadzić wdrożenie w usłudze Azure Web App on Linux.
 
-Usługa Web App on Linux obsługuje inny sposób na wdrożenie, które mają korzystać z aparatu Docker. Aby wdrożyć, musisz podać plik Dockerfile, które pakiety aplikacji sieci web ze środowiskiem uruchomieniowym usługi do obrazu platformy Docker. Wtyczka następnie utworzyć obraz, Wypchnij go do rejestru platformy Docker i wdrożenie obrazu do aplikacji sieci web.
+Usługa Web App on Linux obsługuje inny sposób wdrażania, który wykorzystuje platformę Docker. Aby wdrożyć, należy podać plik Dockerfile, który pakuje aplikację internetową wraz ze środowiskiem uruchomieniowym usługi do obrazu platformy Docker. Następnie wtyczka skompiluje ten obraz, wypchnie go do rejestru platformy Docker i wdroży obraz do aplikacji internetowej.
 
-* Postępuj zgodnie z instrukcjami [tutaj](../app-service/containers/quickstart-nodejs.md) utworzyć aplikację internetową platformy Azure z systemem Linux.
-* Zainstalować platformę Docker na wystąpienia usługi Jenkins, wykonując instrukcje podane w tym [artykułu](https://docs.docker.com/engine/installation/linux/ubuntu/).
-* Tworzenie rejestru kontenerów w witrynie Azure portal wykonując kroki [tutaj](/azure/container-registry/container-registry-get-started-azure-cli).
-* W tym samym [prostej aplikacji sieci Web Java na platformie Azure](https://github.com/azure-devops/javawebappsample) repozytorium utworzony rozwidlenie, Edytuj **Jenkinsfile2** pliku:
-    * Wiersz 18-21, odpowiednio zaktualizować nazwy grupy zasobów, aplikacji sieci web i usługi ACR. 
+* Postępuj zgodnie z instrukcjami opisanymi [tutaj](../app-service/containers/quickstart-nodejs.md), aby utworzyć aplikację internetową platformy Azure działającą w systemie Linux.
+* Zainstaluj platformę Docker na wystąpieniu serwera Jenkins, wykonując instrukcje opisane w tym [artykule](https://docs.docker.com/engine/installation/linux/ubuntu/).
+* Utwórz rejestr kontenerów w witrynie Azure Portal, używając procedury opisanej [tutaj](/azure/container-registry/container-registry-get-started-azure-cli).
+* W tym samym repozytorium [prostej aplikacji internetowej Java na platformie Azure](https://github.com/azure-devops/javawebappsample), które zostało przez Ciebie rozdzielone, edytuj plik **Jenkinsfile2**:
+    * Wiersze 18-21: odpowiednio zaktualizuj do nazw swojej grupy zasobów, aplikacji internetowej i usługi ACR. 
         ```
         def webAppResourceGroup = '<myResourceGroup>'
         def webAppName = '<app_name>'
         def acrName = '<myRegistry>'
         ```
 
-    * Wiersz 24, aktualizacja \<azsrvprincipal\> do Identyfikatora poświadczeń
+    * Wiersz 24: zaktualizuj ciąg \<azsrvprincipal\> do swojego identyfikatora poświadczeń.
         ```
         withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
         ```
 
-* Utwórz nowy potok Jenkins, jak w przypadku wdrażania aplikacji sieci web platformy Azure w Windows, tylko tym razem użyto **Jenkinsfile2** zamiast tego.
-* Uruchamianie nowego zadania.
-* Aby sprawdzić, w interfejsie wiersza polecenia platformy Azure, uruchom polecenie:
+* Utwórz nowy potok Jenkins, tak jak w przypadku wdrażania w aplikacji internetowej platformy Azure w systemie Windows, tylko tym razem użyj pliku **Jenkinsfile2**.
+* Uruchom nowe zadanie.
+* Aby zweryfikować, w interfejsie wiersza polecenia platformy Azure uruchom polecenie:
 
     ```
     az acr repository list -n <myRegistry> -o json
     ```
 
-    Możesz uzyskać następujące wyniki:
+    Uzyskasz następujący wynik:
     
     ```
     [
@@ -215,20 +208,20 @@ Usługa Web App on Linux obsługuje inny sposób na wdrożenie, które mają kor
     ]
     ```
     
-    Przejdź do http://&lt;nazwa_aplikacji >.azurewebsites.net/api/calculator/ping. Zostanie wyświetlony komunikat: 
+    Przejdź do adresu http://&lt;nazwa_aplikacji>.azurewebsites.net/api/calculator/ping. Zostanie wyświetlony komunikat: 
     
         Welcome to Java Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
-    Przejdź do http://&lt;nazwa_aplikacji >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;t > (Zastąp &lt;x > i &lt;y > z dowolnej liczby) do uzyskania sumy x i y
+    Przejdź do adresu http://&lt;nazwa_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (zastąp wartości &lt;x > i &lt;y > dowolnymi liczbami), aby uzyskać sumę wartości x i y.
     
-## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku skonfigurowano potok Jenkins, który wyewidencjonuje kod źródłowy w repozytorium GitHub. Uruchamia narzędzie Maven, aby utworzyć plik war, a następnie używa wiersza polecenia platformy Azure do wdrożenia w usłudze Azure App Service. W tym samouczku omówiono:
+## <a name="next-steps"></a>Następne kroki
+W tym samouczku skonfigurowaliśmy potok Jenkins, który wyewidencjonowuje kod źródłowy w repozytorium GitHub. Uruchamia narzędzie Maven, aby skompilować plik war, a następnie używa interfejsu wiersza polecenia platformy Azure w celu wdrożenia w usłudze Azure App Service. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej usługi Jenkins
 > * Konfigurowanie usługi Jenkins
-> * Tworzenie aplikacji sieci web na platformie Azure
-> * Przygotowanie repozytorium GitHub
-> * Instrukcje tworzenia potoku usługi Jenkins
-> * Uruchamianie potoku i zweryfikować aplikacji sieci web
+> * Tworzenie aplikacji internetowej na platformie Azure
+> * Przygotowywanie repozytorium GitHub
+> * Tworzenie potoku Jenkins
+> * Uruchamianie potoku i weryfikowanie aplikacji internetowej

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188169"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107109"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi
 
@@ -56,12 +56,27 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
 
 ## <a name="explore-the-template"></a>Eksplorowanie szablonu
 
+Podczas eksplorowania szablonu w tej sekcji spróbuj odpowiedzieć na następujące pytania:
+
+- Jak wiele zasobów platformy Azure zostało zdefiniowanych w tym szablonie?
+- Jednym z tych zasobów jest konto usługi Azure Storage.  Czy definicja przypomina tę użytą w poprzednim samouczku?
+- Czy możesz znaleźć dokumentację szablonów dla zasobów zdefiniowanych w tym szablonie?
+- Czy możesz znaleźć zależności zasobów?
+
 1. W programie Visual Studio Code zwiń elementy, aby wyświetlić tylko elementy pierwszego poziomu oraz elementy drugiego poziomu wewnątrz **zasobów**:
 
     ![Szablony usługi Azure Resource Manager w programie Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Istnieje pięć zasobów definiowanych przez szablon.
-2. Rozwiń czwarty element:
+2. Rozwiń pierwszy zasób. Jest to konto magazynu. Definicja powinna być identyczna, jak ta użyta na początku poprzedniego samouczka.
+
+    ![Definicja konta magazynu w szablonach usługi Resource Manager w programie Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. Rozwiń drugi zasób. Typ zasobu to **Microsoft.Network/publicIPAddresses**. Aby odnaleźć dokumentację szablonu, przejdź do [dokumentacji szablonów](https://docs.microsoft.com/azure/templates/) i wpisz **publiczny adres IP** lub **publiczne adresy IP** w polu **Filtruj według tytułu**. Porównaj definicję zasobu z dokumentacją szablonu.
+
+    ![Definicja publicznego adresu IP w szablonach usługi Resource Manager w programie Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. Powtórz ostatni krok, aby znaleźć dokumentację szablonów dla innych zasobów zdefiniowanych w tym szablonie.  Porównaj definicje zasobów z dokumentacją.
+5. Rozwiń czwarty zasób:
 
     ![Element dependsOn szablonów usługi Azure Resource Manager w programie Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
     * publicIPAddress
     * virtualNetwork
 
-3. Rozwiń piąty element. Ten zasób to maszyna wirtualna. Zależy on od dwóch innych zasobów:
+6. Rozwiń piąty zasób. Ten zasób to maszyna wirtualna. Zależy on od dwóch innych zasobów:
 
     * storageAccount
     * networkInterface

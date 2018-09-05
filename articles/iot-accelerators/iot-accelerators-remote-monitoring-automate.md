@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d94f8d38ef771bd5ab03f4d3cef25233c33e7546
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6759568a678394f7cec4ac9f0bdd99d8ed1db9de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282621"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886794"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
 
@@ -117,6 +117,18 @@ Aby tymczasowo wyłączyć regułę, możesz wyłączyć ją na liście reguł. 
 [![Wyłączanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Możesz włączać i wyłączać wiele reguł jednocześnie, wybierając wiele reguł na liście.
+
+## <a name="delete-a-rule"></a>Usuwanie reguły
+
+Aby trwale usunąć regułę, możesz usunąć ją na liście reguł. Wybierz regułę, którą chcesz usunąć, a następnie wybierz polecenie **Usuń**.
+
+[![Usuwanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+
+Po potwierdzeniu, że chcesz usunąć regułę, istnieje możliwość usunięcia wszelkich alertów skojarzonych z tą regułą ze strony **Konserwacja**.
+
+[![Usuwanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
+
+Jednocześnie można usunąć tylko jedną regułę.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

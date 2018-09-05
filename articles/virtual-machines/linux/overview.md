@@ -15,20 +15,20 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911322"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42820323"
 ---
 # <a name="azure-and-linux"></a>Azure i Linux
-Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący usługę Virtual Machines, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
+Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący maszyny wirtualne, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
 
 Jeśli znasz różne funkcje usług Amazon Web Services, możesz porównać platformę Azure z [dokumentem mapowania definicji](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) usług AWS.
 
 ## <a name="regions"></a>Regiony
-Zasoby na platformie Microsoft Azure są dystrybuowane w obrębie wielu regionów geograficznych na całym świecie.  „Region” oznacza wiele centrów danych w jednym obszarze geograficznym. Platforma Azure ma obecnie (stan na listopad 2017) 36 ogólnie dostępnych regionów. Ponadto ogłoszono plany dotyczące udostępnienia kolejnych 6 regionów. Zaktualizowaną listę istniejących i nowo zapowiedzianych regionów można znaleźć na następującej stronie:
+Zasoby na platformie Microsoft Azure są dystrybuowane w obrębie wielu regionów geograficznych na całym świecie.  „Region” oznacza wiele centrów danych w jednym obszarze geograficznym. Platforma Azure ma obecnie (stan na sierpień 2018) 42 ogólnie dostępne regiony. Ponadto ogłoszono plany dotyczące udostępnienia kolejnych 12 regionów — co będzie stanowić więcej globalnych regionów niż jakikolwiek inny dostawca chmury. Zaktualizowaną listę istniejących i nowo zapowiedzianych regionów można znaleźć na następującej stronie:
 
 * [Regiony platformy Azure](https://azure.microsoft.com/regions/)
 
@@ -73,7 +73,7 @@ Firma Microsoft blisko współpracuje z partnerami, aby zagwarantować, że dost
 
 * System Linux na platformie Azure — [zatwierdzone dystrybucje](endorsed-distros.md)
 * SUSE — [Azure Marketplace — SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* RedHat — [Azure Marketplace — RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Red Hat — [Azure Marketplace — Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical — [Azure Marketplace — Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian — [Azure Marketplace — Debian 8 „Jessie”](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
 * FreeBSD — [Azure Marketplace — FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
@@ -121,7 +121,7 @@ Maszyna wirtualna działa teraz na platformie Azure, a Ty możesz już się zalo
 * [Otwieranie portów dla maszyny wirtualnej systemu Linux na platformie Azure](nsg-quickstart.md)
 * [Tworzenie w pełni kwalifikowanej nazwy domeny w witrynie Azure Portal](portal-create-fqdn.md)
 
-## <a name="containers"></a>Kontenery
+## <a name="containers"></a>Containers
 * [Maszyny wirtualne i kontenery na platformie Azure](containers.md)
 * [Wprowadzenie do usługi Azure Container Service](../../container-service/container-service-intro.md)
 * [Wdrażanie klastra usługi Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md)

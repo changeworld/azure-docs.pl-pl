@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzanie urządzeniami może pomóc uzyskać kontrolę nad urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
+title: Co to jest zarządzanie urządzeniami w usłudze Azure Active Directory? | Microsoft Docs
+description: Dowiedz się, jak zarządzanie urządzeniami może pomóc w sprawowaniu kontroli nad urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -12,177 +12,177 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/21/2018
+ms.topic: overview
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: MT
+ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597697"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048866"
 ---
-# <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
+# <a name="what-is-device-management-in-azure-active-directory"></a>Co to jest zarządzanie urządzeniami w usłudze Azure Active Directory?
 
-W świecie urządzeń przenośnych i chmurze — Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Powszechne stosowanie urządzeń — w tym urządzenia (PRZYNIEŚ własne) specjalistów IT muszą stawiać dwa przeciwstawnym cele:
+W świecie zdominowanym przez urządzenia przenośne i rozwiązania chmurowe usługa Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne na urządzeniach oraz w usługach i aplikacjach z dowolnego miejsca. Powszechne stosowanie urządzeń — w tym modelu Przynieś własne urządzenie (BYOD, Bring Your Own Device) — stawia dwa przeciwstawne cele przed specjalistami IT:
 
-- Zwiększenie możliwości dostępnych dla użytkowników końcowych do wydajnej wszędzie tam, gdzie i kiedy
-- Ochrona zasobów firmowych w dowolnym momencie
+- Umożliwienie użytkownikom końcowym produktywnej pracy w dowolnym czasie i miejscu.
+- Ochrona zasobów firmowych przez cały czas.
 
-Za pomocą urządzeń użytkownicy otrzymują dostęp do zasobów firmowych. Aby chronić Twoje zasoby firmowe, administrator IT, chcesz mieć kontrolę nad tymi urządzeniami. Dzięki temu można się upewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. 
+Za pomocą urządzeń użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce mieć kontrolę nad tymi urządzeniami. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności. 
 
-Zarządzanie urządzeniami jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zagwarantować, że dostęp do zasobów w środowisku jest możliwe tylko przy użyciu zarządzanych urządzeń.   
+Zarządzanie urządzeniami stanowi również podstawę w przypadku [dostępu warunkowego opartego na urządzeniach](../conditional-access/require-managed-devices.md). Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.   
 
-W tym artykule opisano, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
+W tym artykule wyjaśniono, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
 
-## <a name="getting-devices-under-the-control-of-azure-ad"></a>Pobieranie urządzeń pod kontrolą programu Azure AD
+## <a name="getting-devices-under-the-control-of-azure-ad"></a>Rozpoczynanie kontrolowania urządzeń w usłudze Azure AD
 
-Aby uzyskać urządzenie pod kontrolą programu Azure AD, masz dwie opcje:
+Istnieją dwie możliwości rozpoczęcia kontrolowania urządzenia w usłudze Azure AD:
 
-- Rejestrowanie 
-- Sprzęganie
+- Zarejestrowanie 
+- Dołączenie
 
-**Rejestrowanie** urządzenia do usługi Azure AD umożliwia zarządzanie tożsamościami urządzeń. Po zarejestrowaniu urządzenia usługa rejestracja urządzeń w usłudze Azure AD Inicjuje obsługę urządzenia przy użyciu tożsamości, który jest używany do uwierzytelniania urządzenia, gdy użytkownik logowania do usługi Azure AD. Tożsamość można użyć, aby włączyć lub wyłączyć urządzenia.
+**Zarejestrowanie** urządzenia w usłudze Azure AD umożliwia zarządzanie tożsamością urządzenia. Po zarejestrowaniu urządzenia usługa rejestracji urządzeń w usłudze Azure AD zapewnia urządzeniu tożsamość, która jest używana do uwierzytelniania urządzenia podczas logowania użytkownika w usłudze Azure AD. Możesz użyć tożsamości, aby włączyć lub wyłączyć urządzenie.
 
-W przypadku połączenia urządzenia przenośnego z rozwiązaniem jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane z dodatkowymi informacjami o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w programie Microsoft Intune Zobacz rejestrowanie urządzeń do zarządzania w usłudze Intune.
+W przypadku połączenia z rozwiązaniem do zarządzania urządzeniami przenośnymi (MDM, mobile device management), takim jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w usłudze Microsoft Intune, zobacz artykuł Rejestrowanie urządzeń w usłudze Intune w celu zarządzania nimi.
 
-**Łączenie** urządzenia jest rozszerzeniem z rejestracją urządzenia. Oznacza to, że zapewnia ona wszystkie zalety rejestrowania urządzenia i oprócz tego zmienia także lokalne stan urządzenia. Zmiany lokalne stanu użytkownikom zalogować się do urządzenia przy użyciu pracy organizacji lub konta służbowego, a nie konta osobistego.
+**Dołączenie** urządzenia jest rozszerzeniem zarejestrowania urządzenia. Oznacza to zapewnienie wszystkich korzyści z rejestrowania urządzenia oraz zmianę stanu lokalnego urządzenia. Zmiana stanu lokalnego umożliwia użytkownikom logowanie do urządzenia przy użyciu konta służbowego w organizacji zamiast konta osobistego.
 
-## <a name="azure-ad-registered-devices"></a>Urządzeń zarejestrowanych w usłudze Azure AD   
+## <a name="azure-ad-registered-devices"></a>Urządzenia zarejestrowane w usłudze Azure AD   
 
-Celem usługi Azure AD, zarejestrowanych urządzeń jest umożliwiają obsługę **Przenieś swój własny urządzenia (BYOD)** scenariusza. W tym scenariuszu użytkownik mógł korzystać z zasobów usługi Azure Active Directory kontrolowane organizacji za pomocą urządzeń osobistych.  
+Celem stosowania urządzeń zarejestrowanych w usłudze Azure AD jest zapewnianie obsługi scenariusza **Przynieś własne urządzenie (BYOD)**. W tym scenariuszu użytkownik może uzyskać dostęp do zasobów kontrolowanych przez usługę Azure Active Directory w organizacji przy użyciu urządzenia osobistego.  
 
-![Urządzeń zarejestrowanych w usłudze Azure AD](./media/overview/03.png)
+![Urządzenia zarejestrowane w usłudze Azure AD](./media/overview/03.png)
 
-Dostępu opiera się na konto służbowe lub szkolne, który został wprowadzony na urządzeniu.  
-Na przykład systemu Windows 10 pozwala użytkownikom dodawanie konta firmowego lub szkolnego do komputerów osobistych, tabletu lub telefonu.  
-Po użytkownik został dodany pracy konta służbowego, urządzenie jest zarejestrowane w usłudze Azure AD i opcjonalnie zarejestrowane w systemie zarządzania (urządzeniami przenośnymi MDM) urządzenia przenośnego, które Twoja organizacja ma skonfigurowane. Użytkowników w organizacji może dodać konta służbowego do urządzenia osobistego wygodny sposób:
+Dostęp jest oparty na koncie służbowym wprowadzonym na urządzeniu.  
+Na przykład system Windows 10 umożliwia użytkownikom dodanie konta służbowego do komputera, tabletu lub telefonu osobistego.  
+Gdy użytkownik doda konto służbowe, urządzenie zostanie zarejestrowane w usłudze Azure AD oraz, opcjonalnie, w systemie zarządzania urządzeniami przenośnymi (MDM) skonfigurowanym przez organizację. Użytkownicy organizacji mogą wygodnie dodać konto służbowe do urządzenia osobistego:
 
-- Podczas uzyskiwania dostępu do aplikacji pracy, po raz pierwszy
-- Ręcznie za pośrednictwem **ustawienia** menu w przypadku systemu Windows 10 
+- Podczas uzyskiwania dostępu do aplikacji roboczej po raz pierwszy
+- Ręcznie za pośrednictwem menu **Ustawienia** w przypadku systemu Windows 10 
 
-Możesz skonfigurować urządzenia w usłudze Azure AD zarejestrowany dla systemu Windows 10, iOS, Android i macOS.
+Urządzenia zarejestrowane w usłudze Azure AD możesz skonfigurować dla systemów Windows 10, iOS, Android oraz macOS.
 
-## <a name="azure-ad-joined-devices"></a>Urządzenia przyłączone do usługi Azure AD
+## <a name="azure-ad-joined-devices"></a>Urządzenia dołączone do usługi Azure AD
 
-Celem urządzeń przyłączonych do usługi Azure AD jest uproszczenie:
+Celem urządzeń dołączonych do usługi Azure AD jest uproszczenie następujących kwestii:
 
-- Wdrożenia Windows urządzenia należące do pracy 
-- Dostęp do aplikacji i zasobów organizacji na dowolnym urządzeniu — Windows
-- Oparte na chmurze zarządzanie urządzeniami należącymi do pracy
+- Wdrożenia urządzeń należących do firmy w systemie Windows 
+- Uzyskiwanie dostępu do aplikacji i zasobów organizacji z dowolnego urządzenia z systemem Windows
+- Oparte na chmurze zarządzanie urządzeniami należącymi do firmy
 
-![Urządzeń zarejestrowanych w usłudze Azure AD](./media/overview/02.png)
+![Urządzenia zarejestrowane w usłudze Azure AD](./media/overview/02.png)
 
-Przyłączanie do usługi Azure AD można wdrożyć przy użyciu dowolnej z następujących metod: 
- - [Rozwiązania Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
- - [Wdrażanie zbiorcze](https://docs.microsoft.com/intune/windows-bulk-enroll)
- - [Samoobsługowe](azuread-joined-devices-frx.md) 
+Dołączenie do usługi Azure AD można wdrożyć przy użyciu dowolnej z następujących metod: 
+ - [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Wdrożenie zbiorcze](https://docs.microsoft.com/intune/windows-bulk-enroll)
+ - [Środowisko samoobsługowe](azuread-joined-devices-frx.md) 
 
-**Funkcja Azure AD Join** jest przeznaczona dla organizacji, które mają być przede (oznacza to przede wszystkim za pomocą usług w chmurze, której celem jest ograniczyć korzystanie z infrastruktury lokalnej) lub tylko w chmurze (nie infrastruktury lokalnej). Nie ma żadnych ograniczeń rozmiaru i rodzaju organizacje, które można wdrożyć w usłudze Azure AD Join. Azure AD Join działa dobrze nawet w środowisku hybrydowym, umożliwiając dostęp do aplikacji w chmurze i lokalnych i zasobów.
+**Dołączenie do usługi Azure AD** jest przeznaczone dla organizacji, które chcą głównie używać chmury (tj. głównie używają usług w chmurze, aby zredukować użycie infrastruktury lokalnej) lub które używają wyłącznie chmury (bez infrastruktury lokalnej). Nie ma żadnych ograniczeń w zakresie rozmiaru lub typu organizacji, które mogą wdrożyć dołączenie do usługi Azure AD. Dołączenie do usługi Azure AD działa dobrze nawet w środowiskach hybrydowych, zapewniając dostęp do aplikacji i zasobów przechowywanych w chmurze i lokalnie.
 
-Implementowanie urządzeń przyłączonych do usługi Azure AD zapewnia następujące korzyści:
+Zaimplementowanie urządzeń dołączonych do usługi Azure AD zapewnia następujące korzyści:
 
-- **Logowanie jednokrotne (SSO)** do subskrypcji platformy Azure zarządzanych usług i aplikacji SaaS. Użytkownicy nie zobaczą monity o dodatkowe uwierzytelnianie podczas uzyskiwania dostępu do zasobów służbowych. Funkcji logowania jednokrotnego jest nawet wtedy, gdy nie są połączeni z siecią domeny dostępne.
+- **Logowanie jednokrotne** do aplikacji i usług SaaS zarządzanych na platformie Azure. Użytkownicy nie zobaczą dodatkowych monitów o uwierzytelnienie podczas uzyskiwania dostępu do zasobów służbowych. Funkcja logowania jednokrotnego jest dostępna nawet wtedy, gdy użytkownicy nie są podłączeni do sieci z domeną.
 
-- **Roaming zgodne przedsiębiorstw** ustawień użytkownika w dołączonym do urządzenia. Użytkownicy nie muszą połączyć konto Microsoft (na przykład usługi Hotmail), aby wyświetlić ustawienia między urządzeniami.
+- **Roaming zgodny z wymaganiami przedsiębiorstwa** dla ustawień użytkowników na dołączonych urządzeniach. Użytkownicy nie muszą łączyć konta Microsoft (np. Hotmail), aby zobaczyć ustawienia na urządzeniach.
 
-- **Dostęp do Windows Store dla firm** przy użyciu konta usługi Azure AD. Użytkownicy mogą wybierać spis aplikacji wstępnie wybrana przez organizację.
+- **Dostęp do sklepu Windows Store dla firm** przy użyciu konta usługi Azure AD. Użytkownicy mogą wybrać ze spisu aplikacji wstępnie wybranych przez organizację.
 
-- **Windows Hello** Obsługa bezpieczny i wygodny dostęp do zasobów służbowych.
+- Obsługa funkcji **Windows Hello** na potrzeby bezpiecznego i wygodnego dostępu do zasobów służbowych.
 
-- **Ograniczenie dostępu** aby aplikacji tylko w przypadku urządzeń, które spełniają zasady zgodności.
+- **Ograniczenie dostępu** do aplikacji tylko do urządzeń spełniających zasady zgodności.
 
-- **Bezproblemowy dostęp do zasobów lokalnych** Jeśli urządzenie ma bezpośredni kontakt z kontrolerem domeny w środowisku lokalnym. 
-
-
-Podczas dołączania do usługi Azure AD jest przeznaczone głównie dla organizacji, które nie mają takiej infrastruktury, Windows Server Active Directory, możesz bez obaw można używać go w scenariuszach gdzie:
-
-- Aby przejść do infrastruktury opartej na chmurze, korzystając z usługi Azure AD i usługą MDM, takich jak usługi Intune.
-
-- Przyłączanie do domeny w środowisku lokalnym nie można użyć na przykład, jeśli zajdzie potrzeba przywrócenia urządzeń przenośnych, takich jak tablety i telefony pod kontrolą.
-
-- Użytkownicy są głównie potrzebują dostępu do usługi Office 365 lub innych aplikacji SaaS zintegrowanych z usługą Azure AD.
-
-- Chcesz zarządzać grupy użytkowników w usłudze Azure AD, a nie w usłudze Active Directory. Może to dotyczyć, na przykład pracownikom sezonowym, Zleceniobiorcami ani studentów.
-
-- Chcesz zapewnić możliwości przyłączany do pracowników w biurach oddziałów zdalnego przy użyciu ograniczone na infrastrukturę lokalną.
-
-Możesz skonfigurować urządzenia dołączone do usługi Azure AD dla urządzeń z systemem Windows 10.
+- **Bezproblemowy dostęp do zasobów lokalnych**, jeżeli urządzenie ma bezpośredni kontakt z kontrolerem domeny w środowisku lokalnym. 
 
 
-## <a name="hybrid-azure-ad-joined-devices"></a>Urządzenia przyłączone do hybrydowej usługi Azure AD
+Chociaż dołączanie do usługi Azure AD jest przeznaczone głównie dla organizacji, które nie mają lokalnej infrastruktury usługi Active Directory systemu Windows Server, możesz bez obaw użyć tej funkcji w następujących scenariuszach:
 
-Przez ponad dekadę wiele organizacji ma umożliwiają przyłączanie do domeny, aby ich w lokalnej usłudze Active Directory:
+- Chcesz przenieść zasoby do infrastruktury opartej na chmurze przy użyciu usługi Azure AD oraz funkcji zarządzania urządzeniami przenośnymi, np. usługi Intune.
 
-- Działy IT do zarządzania urządzeniami należącymi do pracy z centralnej lokalizacji.
+- Nie możesz zastosować dołączania do domeny lokalnej, np. jeśli potrzebujesz kontrolować urządzenia przenośne, takie jak tablety i telefony.
 
-- Użytkownicy mogą logować się do ich urządzeń z usługą Active Directory się kont służbowych. 
+- Użytkownicy przede wszystkim potrzebują dostępu do usługi Office 365 lub innych aplikacji SaaS zintegrowanych z usługą Azure AD.
 
-Zazwyczaj organizacjom zużycie lokalnych zależą od tego, metody, aby aprowizować urządzenia do tworzenia obrazów i często używają **programu System Center Configuration Manager (SCCM)** lub **zasad (zasad grupy) grupy** do zarządzania je.
+- Chcesz zarządzać grupą użytkowników w usłudze Azure AD zamiast w usłudze Active Directory. Może to mieć zastosowanie na przykład w przypadku pracowników sezonowych, podwykonawców lub uczniów.
 
-Jeśli w lokalnym środowisku zużycie AD, a także skorzystać z możliwości oferowane przez usługę Azure Active Directory, można zaimplementować urządzeń przyłączonych do usługi Azure AD hybrydowych. Są to urządzenia, które są zarówno do lokalnej usługi Active Directory i usługi Azure Active Directory.
+- Chcesz zapewnić możliwość dołączania pracownikom w odległych oddziałach z ograniczoną infrastrukturą lokalną.
 
-![Urządzeń zarejestrowanych w usłudze Azure AD](./media/overview/01.png)
+Funkcję urządzeń dołączonych do usługi Azure AD możesz skonfigurować w przypadku urządzeń z systemem Windows 10.
 
 
-Urządzenia przyłączone do hybrydowej usługi Azure AD należy używać, jeśli:
+## <a name="hybrid-azure-ad-joined-devices"></a>Urządzenia dołączone hybrydowo do usługi Azure AD
 
-- Masz wdrożonych na tych urządzeniach, które korzystają z usługi Active Directory, uwierzytelnianie komputera aplikacji Win32.
+Przez ponad dekadę wiele organizacji używało przyłączania do domeny lokalnej usługi Active Directory, aby umożliwić wykonywanie następujących czynności:
 
-- Wymagane jest zasad grupy do zarządzania urządzeniami.
+- Zarządzanie urządzeniami firmowymi z centralnej lokalizacji przez działy IT.
 
-- Chcesz kontynuować korzystanie z rozwiązań przetwarzania obrazów umożliwiają konfigurowanie urządzeń dla pracowników.
+- Logowanie się przez użytkowników na urządzeniach przy użyciu kont służbowych usługi Active Directory. 
 
-Można skonfigurować hybrydowych usługi Azure AD urządzenia przyłączone do systemu Windows 10 i urządzeń niskiego poziomu, takich jak Windows 8 i Windows 7.
+Zazwyczaj organizacje z dużą ilością zasobów lokalnych polegają na metodach obrazowania w przypadku aprowizacji urządzeń, a także często używają programu **System Center Configuration Manager (SCCM)** lub **zasad grupy** do zarządzania nimi.
+
+Jeśli środowisko ma lokalną infrastrukturę usługi AD i chcesz również wykorzystać możliwości zapewniane przez usługę Azure Active Directory, możesz wdrożyć urządzenia dołączone hybrydowo do usługi Azure AD. Są to urządzenia dołączone do lokalnej usługi Active Directory oraz usługi Azure Active Directory.
+
+![Urządzenia zarejestrowane w usłudze Azure AD](./media/overview/01.png)
+
+
+Urządzeń dołączonych hybrydowo do usługi Azure AD należy używać w następujących przypadkach:
+
+- Masz aplikacje Win32 wdrożone na tych urządzeniach, które polegają na uwierzytelnianiu maszynowym usługi Active Directory.
+
+- Potrzebujesz zasad grupy do zarządzania urządzeniami.
+
+- Chcesz nadal używać rozwiązań obrazowania do konfigurowania urządzeń dla pracowników.
+
+Funkcję urządzeń hybrydowo dołączonych do usługi Azure AD możesz skonfigurować dla urządzeń z systemem Windows 10 oraz starszymi systemami, np. Windows 8 i Windows 7.
 
 ## <a name="summary"></a>Podsumowanie
 
-Za pomocą zarządzania urządzeniami w usłudze Azure AD możesz wykonywać następujące czynności: 
+Zarządzanie urządzeniami w usłudze Azure AD zapewnia następujące korzyści: 
 
-- Upraszcza proces urządzeń znajdujących się pod kontrolą programu Azure AD
+- Uproszczenie procesu wdrażania kontroli nad urządzeniami w usłudze Azure AD
 
-- Zapewnić użytkownikom łatwy w użyciu dostęp do zasobów w chmurze w organizacji
+- Zapewnienie użytkownikom łatwego dostępu do zasobów organizacji opartych na chmurze
 
-Zgodnie z zasadą kciuka należy użyć:
+Ogólnie omówione typy urządzeń mają następujące zastosowania:
 
-- Urządzeń zarejestrowanych w usłudze Azure AD:
+- Urządzenia zarejestrowane w usłudze Azure AD:
 
-    - Dla urządzeń osobistych: 
+    - Urządzenia osobiste 
 
-    - Aby ręcznie zarejestrować urządzenia z usługą Azure AD
+    - Ręczne rejestrowanie urządzeń w usłudze Azure AD
 
-- Urządzenia przyłączone do usługi Azure AD: 
+- Urządzenia dołączone do usługi Azure AD: 
 
-    - W przypadku urządzeń, które są własnością Twojej organizacji
+    - Urządzenia, które są własnością organizacji
 
-    - W przypadku urządzeń, które są **nie** przyłączone do lokalnej usługi AD
+    - Urządzenia, które **nie** są dołączone do lokalnej usługi AD
 
-    - Aby ręcznie zarejestrować urządzenia z usługą Azure AD
+    - Ręczne rejestrowanie urządzeń w usłudze Azure AD
 
-    - Aby zmienić stan lokalnego urządzenia
+    - Zmiana stanu lokalnego urządzenia
 
-- Urządzenia dla urządzeń, które są przyłączone do lokalnej przyłączone do hybrydowej usługi Azure AD AD     
+- Urządzenia dołączone hybrydowo do usługi Azure AD, jeśli te urządzenia są dołączone do lokalnej usługi AD:     
 
-    - W przypadku urządzeń, które są własnością Twojej organizacji
+    - Urządzenia, które są własnością organizacji
 
-    - W przypadku urządzeń, które są przyłączone do lokalnej usługi AD
+    - Urządzenia, które są dołączone do lokalnej usługi AD
 
-    - Aby automatycznie zarejestrować urządzenia z usługą Azure AD
+    - Automatyczne rejestrowanie urządzeń w usłudze Azure AD
 
-    - Aby zmienić stan lokalnego urządzenia
+    - Zmiana stanu lokalnego urządzenia
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure portal, zobacz [zarządzania urządzeniami przy użyciu witryny Azure portal](device-management-azure-portal.md)
+- Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure Portal, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md)
 
-- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Aby dowiedzieć się więcej o dostępie warunkowym opartym na urządzeniach, zobacz [konfigurowanie zasad dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](../conditional-access/require-managed-devices.md).
 
-- Do instalacji:
-    - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md)
-    - Urządzenia przyłączone do usługi Azure Active Directory, zobacz [urządzeń przyłączonych do konfigurowania usługi Azure Active Directory](../user-help/device-management-azuread-joined-devices-setup.md)
-    - Hybrydowe urządzeń przyłączonych do usługi Azure AD, zobacz [jak planowanie implementacji hybrydowej usługi Azure Active Directory join](hybrid-azuread-join-plan.md).
+- Informacje o konfigurowaniu:
+    - Urządzenia z systemem Windows 10 zarejestrowane w usłudze Azure Active Directory — zobacz [sposób konfigurowania urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure Active Directory](../user-help/device-management-azuread-registered-devices-windows10-setup.md)
+    - Urządzenia dołączone do usługi Azure Active Directory — zobacz [sposób konfigurowania urządzeń dołączonych do usługi Azure Active Directory](../user-help/device-management-azuread-joined-devices-setup.md)
+    - Urządzenia dołączone hybrydowo do usługi Azure AD — zobacz [Jak planować implementację z dołączaniem hybrydowym do usługi Azure Active Directory](hybrid-azuread-join-plan.md).
 
 

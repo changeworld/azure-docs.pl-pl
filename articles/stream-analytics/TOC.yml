@@ -1,185 +1,194 @@
+items:
 - name: Dokumentacja usługi Stream Analytics
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest usługa Stream Analytics?
-      href: stream-analytics-introduction.md
+  - name: Co to jest usługa Stream Analytics?
+    href: stream-analytics-introduction.md
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie zadania — Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: Tworzenie zadania — PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: Tworzenie zadania — Visual Studio
-      href: stream-analytics-quick-create-vs.md
+  - name: Tworzenie zadania — Azure Portal
+    href: stream-analytics-quick-create-portal.md
+  - name: Tworzenie zadania — PowerShell
+    href: stream-analytics-quick-create-powershell.md
+  - name: Tworzenie zadania — Visual Studio
+    href: stream-analytics-quick-create-vs.md
 - name: Samouczki
   items:
-    - name: 1 — Tworzenie zadania i zarządzanie nim
-      href: stream-analytics-manage-job.md
-    - name: 2 — Uruchamianie funkcji usługi Azure Functions
-      href: stream-analytics-with-azure-functions.md
-    - name: 3 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze VSTS
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - name: 1 — Tworzenie zadania i zarządzanie nim
+    href: stream-analytics-manage-job.md
+  - name: 2 — Uruchamianie funkcji usługi Azure Functions
+    href: stream-analytics-with-azure-functions.md
+  - name: 3 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript
+    href: stream-analytics-javascript-user-defined-functions.md
+  - name: 4 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze VSTS
+    href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: Przykłady
   items:
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+  - name: Przykłady kodu
+    href: https://azure.microsoft.com/resources/samples/?service=stream-analytics
 - name: Pojęcia
   items:
-    - name: Typy wejść zadania
-      href: stream-analytics-add-inputs.md
-      items:
-        - name: Wejścia danych przesyłanych strumieniowo
-          href: stream-analytics-define-inputs.md
-        - name: Wejścia danych referencyjnych
-          href: stream-analytics-use-reference-data.md
-    - name: Typy wyjść zadania
-      href: stream-analytics-define-outputs.md
-      items:
-        - name: Wyjście do usługi Cosmos DB
-          href: stream-analytics-documentdb-output.md
-    - name: Funkcje okien
-      href: stream-analytics-window-functions.md
-    - name: Poziom zgodności
-      href: stream-analytics-compatibility-level.md
-    - name: Typowe wzorce zapytań
-      href: stream-analytics-stream-analytics-query-patterns.md
-    - name: Analizowanie danych JSON i AVRO
-      href: stream-analytics-parsing-json.md
-    - name: Zagadnienia do rozważenia dotyczące kolejności zdarzeń
-      href: stream-analytics-out-of-order-and-late-events.md
-    - name: Punkt kontrolny i powtarzanie
-      href: stream-analytics-concepts-checkpoint-replay.md
-    - name: Zasady dotyczące błędów
-      href: output-error-policy.md
+  - name: Typy wejść zadania
+    href: stream-analytics-add-inputs.md
+    items:
+    - name: Wejścia danych przesyłanych strumieniowo
+      href: stream-analytics-define-inputs.md
+    - name: Wejścia danych referencyjnych
+      href: stream-analytics-use-reference-data.md
+  - name: Typy wyjść zadania
+    href: stream-analytics-define-outputs.md
+    items:
+    - name: Wyjście do usługi Cosmos DB
+      href: stream-analytics-documentdb-output.md
+  - name: Funkcje okien
+    href: stream-analytics-window-functions.md
+  - name: Funkcje geoprzestrzenne
+    href: stream-analytics-geospatial-functions.md
+  - name: Poziom zgodności
+    href: stream-analytics-compatibility-level.md
+  - name: Typowe wzorce zapytań
+    href: stream-analytics-stream-analytics-query-patterns.md
+  - name: Analizowanie danych JSON i AVRO
+    href: stream-analytics-parsing-json.md
+  - name: Zagadnienia do rozważenia dotyczące kolejności zdarzeń
+    href: stream-analytics-out-of-order-and-late-events.md
+  - name: Punkt kontrolny i powtarzanie
+    href: stream-analytics-concepts-checkpoint-replay.md
+  - name: Zasady dotyczące błędów
+    href: output-error-policy.md
 - name: Podręczniki z instrukcjami
   items:
-    - name: Zarządzanie
+  - name: Zarządzanie
+    items:
+    - name: Aktualizowanie poświadczeń
+      href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: Konfigurowanie alertów
+      href: stream-analytics-set-up-alerts.md
+    - name: Testowanie zadania
+      href: stream-analytics-test-query.md
+    - name: Wyświetlanie wyników na pulpicie nawigacyjnym
+      href: stream-analytics-power-bi-dashboard.md
+    - name: Czyszczenie zadania
+      href: stream-analytics-clean-up-your-job.md
+    - name: Parowanie zadań w celu zwiększenia niezawodności
+      href: stream-analytics-job-reliability.md
+  - name: Tworzenie rozwiązań
+    items:
+    - name: Analiza tonacji w usłudze Twitter
+      href: stream-analytics-twitter-sentiment-analysis-trends.md
+    - name: Wykrywanie oszustw w czasie rzeczywistym
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Uruchamianie zadań na brzegowych urządzeniach IoT
+      href: stream-analytics-edge.md
+    - name: Analizowanie danych z czujników punktu poboru opłat
+      href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - name: Uruchamianie agregacji zdefiniowanej przez użytkownika w języku JavaScript
+      href: stream-analytics-javascript-user-defined-aggregates.md
+    - name: Transakcje o wysokiej częstotliwości
+      href: stream-analytics-high-frequency-trading.md
+    - name: Przetwarzanie danych strumienia IoT
+      href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+    - name: Reguły na podstawie progów
+      href: stream-analytics-threshold-based-rules.md
+  - name: Monitorowanie
+    items:
+    - name: Monitorowanie zadań — Azure Portal
+      href: stream-analytics-monitoring.md
+    - name: Monitorowanie zadań — PowerShell
+      href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - name: Monitorowanie zadań — Azure .Net SDK
+      href: stream-analytics-monitor-jobs.md
+    - name: Monitorowanie zadań — Visual Studio
+      href: stream-analytics-monitor-jobs-use-vs.md
+  - name: Skalowanie
+    items:
+    - name: Skalowanie za pomocą jednostek przesyłania strumieniowego
+      href: stream-analytics-streaming-unit-consumption.md
+    - name: Skalowanie za pomocą przetwarzania równoległego zapytań
+      href: stream-analytics-parallelization.md
       items:
-        - name: Aktualizowanie poświadczeń
-          href: stream-analytics-login-credentials-inputs-outputs.md
-        - name: Konfigurowanie alertów
-          href: stream-analytics-set-up-alerts.md
-        - name: Testowanie zadania
-          href: stream-analytics-test-query.md
-        - name: Wyświetlanie wyników na pulpicie nawigacyjnym
-          href: stream-analytics-power-bi-dashboard.md
-        - name: Czyszczenie zadania
-          href: stream-analytics-clean-up-your-job.md
-        - name: Parowanie zadań w celu zwiększenia niezawodności
-          href: stream-analytics-job-reliability.md
-    - name: Tworzenie rozwiązań
-      items:
-        - name: Analiza tonacji w usłudze Twitter
-          href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Wykrywanie oszustw w czasie rzeczywistym
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Uruchamianie zadań na brzegowych urządzeniach IoT
-          href: stream-analytics-edge.md
-        - name: Analizowanie danych z czujników punktu poboru opłat
-          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Uruchamianie agregacji zdefiniowanej przez użytkownika w języku JavaScript
-          href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: Transakcje o wysokiej częstotliwości
-          href: stream-analytics-high-frequency-trading.md
-        - name: Przetwarzanie danych strumienia IoT
-          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-        - name: Reguły na podstawie progów
-          href: stream-analytics-threshold-based-rules.md
-    - name: Monitorowanie
-      items:
-        - name: Monitorowanie zadań — Azure Portal
-          href: stream-analytics-monitoring.md
-        - name: Monitorowanie zadań — PowerShell
-          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-        - name: Monitorowanie zadań — Azure .Net SDK
-          href: stream-analytics-monitor-jobs.md
-        - name: Monitorowanie zadań — Visual Studio
-          href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Skalowanie
-      items:
-        - name: Skalowanie za pomocą jednostek przesyłania strumieniowego
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Skalowanie za pomocą przetwarzania równoległego zapytań
-          href: stream-analytics-parallelization.md
-          items:
-            - name: Zwiększanie przepływności
-              href: stream-analytics-scale-jobs.md
-        - name: Skalowanie za pomocą usługi ML
-          href: stream-analytics-scale-with-machine-learning-functions.md
-    - name: Automatyzacja
-      items:
-        - name: Korzystanie z zestawu SDK dla platformy .NET
-          href: stream-analytics-dotnet-management-sdk.md
-        - name: Korzystanie z programu Azure PowerShell
-          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
-    - name: Narzędzia programu Visual Studio
-      items:
-        - name: Instalowanie narzędzi
-          href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Lokalne testowanie zadania
-          href: stream-analytics-vs-tools-local-run.md
-        - name: Wyświetlanie zadań w programie Visual Studio
-          href: stream-analytics-vs-tools.md
-        - name: Tworzenie zadania usługi Edge
-          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
-        - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
-          href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Kroki rozwiązywania problemów
-          href: stream-analytics-troubleshooting-guide.md
-        - name: Typowe problemy
-          href: stream-analytics-common-troubleshooting-issues.md
-        - name: Diagram zadań
-          href: stream-analytics-job-diagram-with-metrics.md
-        - name: Dzienniki diagnostyczne
-          href: stream-analytics-job-diagnostic-logs.md
-        - name: Instrukcja SELECT INTO
-          href: stream-analytics-select-into.md
-        - name: Odbiorcy usługi Event Hubs
-          href: stream-analytics-event-hub-consumer-groups.md
-    - name: Integracja z uczeniem maszynowym
-      items:
-        - name: Analiza tonacji przy użyciu modeli usługi ML
-          href: stream-analytics-machine-learning-integration-tutorial.md
-        - name: Wykrywanie anomalii
-          href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: Używanie interfejsów API REST
-          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+      - name: Zwiększanie przepływności
+        href: stream-analytics-scale-jobs.md
+    - name: Skalowanie za pomocą usługi ML
+      href: stream-analytics-scale-with-machine-learning-functions.md
+  - name: Automatyzacja
+    items:
+    - name: Korzystanie z zestawu SDK dla platformy .NET
+      href: stream-analytics-dotnet-management-sdk.md
+    - name: Korzystanie z programu Azure PowerShell
+      href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
+  - name: Narzędzia programu Visual Studio
+    items:
+    - name: Instalowanie narzędzi
+      href: stream-analytics-tools-for-visual-studio-install.md
+    - name: Lokalne testowanie zadania
+      href: stream-analytics-vs-tools-local-run.md
+    - name: Wyświetlanie zadań w programie Visual Studio
+      href: stream-analytics-vs-tools.md
+    - name: Tworzenie zadania usługi Edge
+      href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
+      href: stream-analytics-tools-for-visual-studio-cicd.md
+  - name: Rozwiązywanie problemów
+    items:
+    - name: Kroki rozwiązywania problemów
+      href: stream-analytics-troubleshooting-guide.md
+    - name: Typowe problemy
+      href: stream-analytics-common-troubleshooting-issues.md
+    - name: Diagram zadań
+      href: stream-analytics-job-diagram-with-metrics.md
+    - name: Dzienniki diagnostyczne
+      href: stream-analytics-job-diagnostic-logs.md
+    - name: Instrukcja SELECT INTO
+      href: stream-analytics-select-into.md
+    - name: Odbiorcy usługi Event Hubs
+      href: stream-analytics-event-hub-consumer-groups.md
+  - name: Integracja z uczeniem maszynowym
+    items:
+    - name: Analiza tonacji przy użyciu modeli usługi ML
+      href: stream-analytics-machine-learning-integration-tutorial.md
+    - name: Wykrywanie anomalii
+      href: stream-analytics-machine-learning-anomaly-detection.md
+    - name: Używanie interfejsów API REST
+      href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
 - name: Dokumentacja
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.streamanalytics
-    - name: Język zapytań
-      href: 'https://msdn.microsoft.com/library/azure/dn834998'
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.streamanalytics
-    - name: REST
-      href: /rest/api/streamanalytics
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.streamanalytics
+  - name: Język zapytań
+    href: https://msdn.microsoft.com/library/azure/dn834998
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.streamanalytics
+  - name: REST
+    href: /rest/api/streamanalytics
 - name: Zasoby
   items:
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Blog
-      href: 'http://blogs.msdn.com/b/streamanalytics/'
-    - name: Forum z opiniami
-      href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizacje usług
-      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
-    - name: Filmy wideo
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
-    - name: Analizy przypadków klientów
-      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: Oficjalny dokument — przetwarzanie zdarzeń w czasie rzeczywistym
-      href: stream-analytics-real-time-event-processing-reference-architecture.md
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Blog
+    href: http://blogs.msdn.com/b/streamanalytics/
+  - name: Forum z opiniami
+    href: http://feedback.azure.com/forums/270577-azure-stream-analytics
+  - name: Forum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/stream-analytics/
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizacje usług
+    href: https://azure.microsoft.com/updates/?product=stream-analytics
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+  - name: Filmy wideo
+    href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
+  - name: Analizy przypadków klientów
+    href: https://azure.microsoft.com/case-studies/?service=stream-analytics
+  - name: Oficjalny dokument — przetwarzanie zdarzeń w czasie rzeczywistym
+    href: stream-analytics-real-time-event-processing-reference-architecture.md
+ms.openlocfilehash: 6598121e8405a60c64490fda179c22f34ac86455
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695324"

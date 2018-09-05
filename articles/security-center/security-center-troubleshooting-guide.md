@@ -3,7 +3,7 @@ title: Przewodnik rozwiązywania problemów z usługą Azure Security Center | M
 description: Ten dokument pomaga rozwiązywać problemy w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
-ms.author: yurid
-ms.openlocfilehash: 0cbc0db7e982ad85dd1e3514def8cf13be595f24
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 08/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: eebdff338454b1fb50b27d5b3d8c1c37d28f6b6f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779230"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121206"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, których organizacje używają usługi Azure Security Center i muszą rozwiązywać problemy związane z usługą Azure Security Center.
@@ -64,7 +64,7 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 > Aby uniknąć zachowania opisanego w drugim scenariuszu, upewnij się, że pobrano najnowszą wersję agenta.
 >
 
-## <a name="monitoring-agent-health-issues"></a>Monitorowanie problemów dotyczących kondycji agenta
+## Monitorowanie problemów dotyczących kondycji agenta <a name="mon-agent"></a>
 **Stan monitorowania** definiuje powód, dla którego usługa Security Center nie może prawidłowo monitorować maszyn wirtualnych i komputerów zainicjowanych do automatycznej aprowizacji. Poniższa tabela zawiera wartości, opisy i kroki związane z rozwiązywaniem problemów z opcją **Stan monitorowania**.
 
 | Stan monitorowania | Opis | Kroki rozwiązywania problemów |
@@ -81,7 +81,7 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 | Agent nie jest zainstalowany | Zbieranie danych jest wyłączone. | Włącz zbieranie danych w zasadach zabezpieczeń lub ręcznie zainstaluj program Microsoft Monitoring Agent. |
 
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Rozwiązywanie problemów z wymaganiami dotyczącymi sieci agenta monitorowania
+## Rozwiązywanie problemów z wymaganiami dotyczącymi sieci agenta monitorowania <a name="mon-network-req"></a>
 Aby agenci mogli nawiązać połączenie z usługą Security Center i zarejestrować się za jej pomocą, muszą mieć oni dostęp do zasobów sieciowych, w tym numerów portów i adresów URL domeny.
 
 - W przypadku serwerów proxy konieczne jest zapewnienie, że ich odpowiednie zasoby są skonfigurowane w ustawieniach agenta. Przeczytaj ten artykuł, aby uzyskać więcej informacji dotyczących [sposobu zmiany ustawień serwera proxy](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings).

@@ -103,6 +103,7 @@
 #### [Kierowanie dzienników aktywności do Centrum zdarzeń platformy Azure](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [Archiwizowanie dzienników aktywności na koncie usługi Azure Storage](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrowanie dzienników aktywności z rozwiązaniem Splunk przy użyciu usługi Azure Monitor](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [Integrowanie dzienników aktywności z rozwiązaniem SumoLogic przy użyciu usługi Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### Dokumentacja
 #### [Przechowywanie](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [Zarządzanie dostępem użytkowników i przeglądy](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Zarządzanie programami i kontrolami](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [Pobieranie wyników przeglądu dostępu](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [Warunki użytkowania](active-directory-tou.md)
 
 ## Zabezpieczanie tożsamości
 

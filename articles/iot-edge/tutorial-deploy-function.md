@@ -4,17 +4,17 @@ description: W tym samouczku funkcja platformy Azure jest wdrażana jako moduł 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: cf973899a6f56010c47588bdd506418a3d9a7cd8
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41920886"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744046"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Samouczek: wdrażanie funkcji Azure Functions jako modułów usługi IoT Edge (wersja zapoznawcza)
 
@@ -170,7 +170,7 @@ W poprzedniej sekcji utworzono rozwiązanie usługi IoT Edge i dodano kod do mod
 
 W tej sekcji dwa razy podasz poświadczenia dla rejestru kontenerów. Za pierwszym razem ma to na celu zalogowanie się lokalnie z maszyny deweloperskiej, aby program Visual Studio Code mógł wypchnąć obrazy do rejestru. Za drugim razem ma to miejsce w pliku **.env** rozwiązania usługi IoT Edge, co zapewnia urządzeniu usługi IoT Edge uprawnienia do ściągania obrazów z rejestru. 
 
-1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Integrated Terminal (Zintegrowany terminal)**. 
+1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Terminal**. 
 
 1. Zaloguj się do rejestru kontenerów, wprowadzając następujące polecenie w zintegrowanym terminalu. Następnie możesz wypchnąć obraz modułu do rejestru kontenerów platformy Azure: 
      
@@ -219,7 +219,7 @@ Do wdrożenia modułu funkcji na urządzeniu usługi IoT Edge możesz użyć wit
 
 5. W eksploratorze programu VS rozwiń sekcję **Urządzenia usługi Azure IoT Hub**. 
 
-6. Kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge, a następnie wybierz pozycję **Utwórz wdrożenie dla urządzenia usługi IoT Edge**. 
+6. Kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge, a następnie wybierz pozycję **Create Deployment for single device** (Utwórz wdrożenie dla pojedynczego urządzenia). 
 
 7. Przejdź do folderu rozwiązania, który zawiera moduł **CSharpFunction**. Otwórz folder config, wybierz plik deployment.json, a następnie wybierz pozycję **Wybierz manifest wdrożenia usługi Edge**.
 

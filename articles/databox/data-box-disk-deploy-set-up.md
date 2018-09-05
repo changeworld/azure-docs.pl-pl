@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7f382e3b6e70aadf8c6a090a3d5c049f6b5c0337
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6fcc7823a7e2f2f1e280622a1fa05d4417a71546
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010365"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143486"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk
 
@@ -41,7 +41,9 @@ Przed rozpoczęciem upewnij się, że:
 3. Masz komputer hosta, na którym możesz zainstalować narzędzie do odblokowywania dysków Data Box. Na komputerze hosta wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-disk-system-requirements.md).
     - [Zainstalowanie programu Windows PowerShell 4](https://www.microsoft.com/download/details.aspx?id=40855).
-    - [Zainstalowanie środowiska .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653).
+    - [Zainstalowanie środowiska .NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653).
+    - Włączona [funkcja BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server).
+    - Zainstalowana platforma [Windows Management Framework 4](https://www.microsoft.com/en-us/download/details.aspx?id=40855). 
 
 ## <a name="unpack-your-disks"></a>Rozpakowywanie dysków
 

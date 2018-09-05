@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969138"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812875"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -53,27 +53,20 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 
     ![Panel Wydajność](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. Wykres przedstawia obecnie średni czas trwania wszystkich operacji w czasie.  Dodaj operacje, które Cię interesują, przypinając je do wykresu.  To pokazuje, że istnieją wzrosty wartości warte zbadania.  Wyizoluj je jeszcze bardziej, zmniejszając przedział czasu wykresu.
+3. Wykres przedstawia obecnie średni czas trwania wybranych operacji w czasie. Możesz przełączyć się na 95. percentyl, aby znaleźć problemy z wydajnością. Dodaj operacje, które Cię interesują, przypinając je do wykresu.  To pokazuje, że istnieją wzrosty wartości warte zbadania.  Wyizoluj je jeszcze bardziej, zmniejszając przedział czasu wykresu.
 
-    ![Przypinanie wartości](media/app-insights-tutorial-performance/pin-operations.png)
+    ![Przypinanie operacji](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  Kliknij operację, aby wyświetlić jej panel wydajności z prawej strony. Spowoduje to pokazanie rozkładu czasów trwania dla innych żądań.  Użytkownicy zazwyczaj zauważają powolne działanie przy około połowie sekundy, więc zawęź przedział do żądań dłuższych niż 500 milisekund.  
+4.  Panel wydajności po prawej stronie pokazuje rozkład czasów trwania różnych żądań dla wybranej operacji.  Zmniejsz okno, aby rozpocząć w okolicy 95. percentyla. Z karty ze szczegółowymi informacjami „3 najważniejsze zależności” można szybko odczytać, że zależności zewnętrzne najprawdopodobniej wpływają na spowolnienie transakcji.  Kliknij przycisk z liczbą próbek, aby wyświetlić listę próbek. Następnie możesz wybrać dowolną próbkę, aby wyświetlić szczegóły transakcji.
 
     ![Rozkład czasów trwania](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  W tym przykładzie widać, że dla dużej liczby żądań przetwarzanie trwa ponad sekundę. Szczegóły tej operacji można wyświetlić, klikając pozycję **Szczegóły operacji**.
+5.  Na pierwszy rzut oka zobaczysz, że wywołanie tabeli Fabrikamaccount Azure Table najbardziej wpływa na całkowity czas trwania transakcji. Zobaczysz też, że wyjątek spowodował jego niepowodzenia. Możesz kliknąć dowolną pozycję na liście, aby wyświetlić jej szczegóły po prawej stronie. [Dowiedz się więcej o środowisku diagnostyki transakcji](app-insights-transaction-diagnostics.md)
 
     ![Szczegóły operacji](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    Włącz [środowisko podglądu](app-insights-previews.md) o nazwie „Ujednolicone szczegóły: diagnostyka transakcji E2E”, aby zobaczyć wszystkie powiązane dane telemetryczne po stronie serwera, takie jak żądania, zależności, wyjątki, ślady, zdarzenia itp. w pojedynczym widoku pełnoekranowym. 
-
-    Na włączonym podglądzie możesz sprawdzić czas potrzebny do wywołania zależności wraz z wszelkimi błędami i wyjątkami w ujednoliconym środowisku. W przypadku transakcji między składnikami wykres Gantta wraz z okienkiem szczegółów mogą pomóc w szybkim wykryciu składnika, zależności lub wyjątku będącego główną przyczyną problemu. Dolną sekcję można rozwinąć, aby zobaczyć sekwencję czasową wszelkich śladów lub zdarzeń zebranych dla wybranego komponentu i operacji. [Dowiedz się więcej na temat nowego środowiska](app-insights-transaction-diagnostics.md)  
-
-    ![Diagnostyka transakcji](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  Informacje zebrane do tej pory potwierdzają, że jest problem z niską wydajnością, ale niewiele przybliżają do głównej przyczyny tego problemu.  W tym pomoże narzędzie **Profiler**, które pokaże rzeczywisty kod uruchamiany dla operacji i czas wymagany przez każdy z kroków. Niektóre operacje mogą nie mieć śladu, ponieważ profiler jest uruchamiany okresowo.  Z upływem czasu coraz więcej operacji powinno mieć ślady.  Aby uruchomić profiler dla operacji, kliknij pozycję **Ślady narzędzia Profiler**.
+6.  Narzędzie **Profiler** pomaga zagłębić się w diagnostykę na poziomie kodu, wyświetlając rzeczywisty kod uruchamiany dla operacji i czas wymagany przez każdy z kroków. Niektóre operacje mogą nie mieć śladu, ponieważ profiler jest uruchamiany okresowo.  Z upływem czasu coraz więcej operacji powinno mieć ślady.  Aby uruchomić profiler dla operacji, kliknij pozycję **Ślady narzędzia Profiler**.
 5.  Ślad pokazuje indywidualne zdarzenia dla każdej operacji, więc można zdiagnozować główną przyczynę obecnego czasu trwania całej operacji.  Kliknij jeden z przykładów u góry, które mają najdłuższy czas trwania.
 6.  Kliknij pozycję **Pokaż ścieżkę aktywną**, aby wyróżnić konkretną ścieżkę zdarzeń, która najbardziej przyczynia się do całkowitego czasu trwania operacji.  W tym przykładzie widać, że najwolniejsze wywołanie pochodzi z metody *FabrikamFiberAzureStorage.GetStorageTableData*. Częścią zabierającą najwięcej czasu jest metoda *CloudTable.CreateIfNotExist*. Jeśli ten wiersz kodu jest wywoływany po każdym wywołaniu funkcji, niepotrzebnie używane będą wywołanie sieciowe i zasób procesora CPU. Najlepszym sposobem poprawienia kodu jest umieszczenie tego wiersza w jakiejś metodzie startowej, która jest wykonywana tylko raz. 
 

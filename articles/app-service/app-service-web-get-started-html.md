@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e48c2aceb2a8f45d01b922a186900780c1c5ef51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cee0bdffb99076903df988d30fcaa4f6cb2234c6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968760"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123194"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Tworzenie statycznej aplikacji internetowej w języku HTML na platformie Azure
 
-Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure Web Apps. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure Web Apps. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ![Strona główna przykładowej aplikacji](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -39,7 +39,7 @@ Aby wykonać ten przewodnik Szybki start, musisz dodać [rozszerzenie aplikacji 
 Aby zainstalować rozszerzenie aplikacji sieci Web, uruchom następujące polecenie:
 
 ```bash
-az extension add -n webapp
+az extension add --name webapp
 ```
 
 Po zainstalowaniu rozszerzenia usługa Cloud Shell wyświetla informacje podobne jak w poniższym przykładzie:
@@ -73,7 +73,7 @@ W poniższym przykładzie zastąp ciąg <nazwa_aplikacji> unikatową nazwą apli
 ```bash
 cd html-docs-hello-world
 
-az webapp up -n <app_name>
+az webapp up --location westeurope --name <app_name>
 ```
 
 Polecenie `az webapp up` wykonuje następujące akcje:
@@ -91,13 +91,13 @@ Wykonanie tego polecenia może potrwać kilka minut. Podczas wykonywania polecen
 ```json
 {
   "app_url": "https://<app_name>.azurewebsites.net",
-  "location": "Central US",
+  "location": "westeurope",
   "name": "<app_name>",
   "os": "Windows",
-  "resourcegroup": "appsvc_rg_Windows_CentralUS ",
-  "serverfarm": "appsvc_asp_Windows_CentralUS",
+  "resourcegroup": "appsvc_rg_Windows_westeurope",
+  "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/username/quickstart/html-docs-hello-world ",
+  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
   < JSON data removed for brevity. >
 }
 ```
@@ -116,16 +116,16 @@ Strona działa jako aplikacja internetowa usługi Azure App Service.
 
 ## <a name="update-and-redeploy-the-app"></a>Aktualizowanie i ponowne wdrażanie aplikacji
 
-W usłudze Cloud Shell wpisz `nano index.html`, aby otworzyć edytor tekstów nano. W nagłówku H1 zmień „Azure App Service - Sample Static HTML Site” na „Azure App Service”, jak pokazano poniżej.
+W usłudze Cloud Shell wpisz `nano index.html`, aby otworzyć edytor tekstów nano. W tagu nagłówka `<h1>` zmień tekst „Azure App Service - Sample Static HTML Site” na „Azure App Service”, jak pokazano poniżej.
 
 ![Plik index.html programu nano](media/app-service-web-get-started-html/nano-index-html.png)
 
-Zapisz zmiany i zakończ program nano. Użyj polecenia `^O` do zapisania i `^X`, aby zakończyć program.
+Zapisz zmiany i zamknij program nano. Użyj polecenia `^O` w celu zapisania i polecenia `^X` w celu zamknięcia programu.
 
 Wdrożysz teraz ponownie tę aplikację za pomocą tego samego polecenia `az webapp up`.
 
 ```bash
-az webapp up -n <app_name>
+az webapp up --location westeurope --name <app_name>
 ```
 
 Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w kroku **przechodzenia do aplikacji**, a następnie odśwież stronę.
@@ -151,7 +151,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Jeśli te zasoby nie będą raczej potrzebne w przyszłości, usuń grupę zasobów, uruchamiając następujące polecenie w usłudze Cloud Shell. Pamiętaj, że nazwa grupy zasobów została wygenerowana automatycznie w kroku [Tworzenie aplikacji internetowej](#create-a-web-app).
 
 ```bash
-az group delete --name appsvc_rg_Windows_CentralUS
+az group delete --name appsvc_rg_Windows_westeurope
 ```
 
 Wykonanie tego polecenia może potrwać około minutę.

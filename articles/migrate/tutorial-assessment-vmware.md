@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób odnajdowania lokalnych maszyn wirtua
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 08/20/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fab8e4f09062f671714dabd1dae86a1979e356d2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 65f1d6b448e6c0f16d51e1a4b8b897f52052ff15
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172351"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127634"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -151,7 +151,7 @@ Zaimportuj pobrany plik na serwer vCenter.
     - Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, kliknij pozycję **Proxy settings** (Ustawienia serwera proxy) i wprowadź adres serwera proxy oraz port nasłuchujący. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) na temat wymagań dotyczących łączności z Internetem i listy adresów URL, do których moduł zbierający uzyskuje dostęp.
 
     > [!NOTE]
-    > Adres serwera proxy musi zostać wprowadzony w postaci http://ProxyIPAddress lub http://ProxyFQDN. Obsługiwane są tylko serwery proxy HTTP.
+    > Adres serwera proxy musi zostać wprowadzony w postaci http://ProxyIPAddress lub http://ProxyFQDN. Obsługiwane są tylko serwery proxy HTTP. Jeśli masz przechwytujący serwer proxy, nawiązanie połączenia internetowego może początkowo się nie udać, jeśli nie zaimportowano certyfikatu serwera proxy; [dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy) na temat rozwiązywania tego problemu poprzez zaimportowanie certyfikatu serwera proxy jako zaufanego certyfikatu na maszynie wirtualnej modułu zbierającego.
 
     - Moduł zbierający sprawdzi, czy usługa modułu zbierającego jest uruchomiona. Jest ona instalowana domyślnie na maszynie wirtualnej modułu zbierającego.
     - Pobierz i zainstaluj program VMware PowerCLI.

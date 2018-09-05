@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 42f0781de5412310ecb5326f0384268aba9c53dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651673"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120688"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Samouczek: aktualizowanie magazynu przy użyciu interfejsu wiersza polecenia oraz tematów/subskrypcji
 
@@ -50,11 +50,11 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Każda [subskrypcja tematu](service-bus-messaging-overview.md#topics) może otrzymywać kopie wszystkich komunikatów. Tematy są w pełni protokołowane i semantycznie zgodne z kolejkami usługi Service Bus. Tematy usługi Service Bus obsługują najróżniejsze reguły wyboru z warunkami filtru, z użyciem opcjonalnych akcji, które ustawiają lub modyfikują właściwości komunikatów. Za każdym razem, gdy reguła pasuje, generuje komunikat. Aby dowiedzieć się więcej o regułach, filtrach i akcjach, kliknij ten [link](topic-filters.md).
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Po zainstalowaniu interfejsu wiersza polecenia otwórz go i uruchom następujące polecenia, aby się zalogować do platformy Azure. Te kroki nie są konieczne, jeśli używasz usługi Cloud Shell:
+Po zainstalowaniu interfejsu wiersza polecenia otwórz wiersz polecenia i uruchom następujące polecenia, aby zalogować się na platformie Azure. Te kroki nie są konieczne, jeśli używasz usługi Cloud Shell:
 
-1. Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, uruchom następujące polecenie, aby się zalogować do platformy Azure. Ten krok logowania nie jest konieczny, jeśli polecenia są uruchamiane w usłudze Cloud Shell:
+1. Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, uruchom następujące polecenie, aby zalogować się na platformie Azure. Ten krok logowania nie jest konieczny, jeśli polecenia są uruchamiane w usłudze Cloud Shell:
 
    ```azurecli-interactive
    az login
@@ -126,7 +126,7 @@ Po uruchomieniu ostatniego polecenia skopiuj i wklej parametry połączenia oraz
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Tworzenie reguł filtrowania dla subskrypcji
 
-Po aprowizowaniu przestrzeni nazw i tematu/subskrypcji i jeśli posiadasz niezbędne poświadczenia, możesz utworzyć reguły filtrowania w subskrypcji, a następnie wysyłać i odbierać komunikaty. Kod można zbadać w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/).
+Po aprowizowaniu przestrzeni nazw i tematu/subskrypcji i jeśli posiadasz niezbędne poświadczenia, możesz utworzyć reguły filtrowania w subskrypcji, a następnie wysyłać i odbierać komunikaty. Kod można analizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/).
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 

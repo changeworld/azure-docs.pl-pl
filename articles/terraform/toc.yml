@@ -16,23 +16,33 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: Tworzenie klastra Kubernetes z użyciem usługi AKS i programu Terraform
-    href: terraform-create-k8s-cluster-with-tf-and-aks.md
-  - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
-    href: terraform-slot-walkthru.md
-  - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
-    href: terraform-vm-msi.md
-  - name: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
-    href: terraform-create-vm-cluster-module.md
-  - name: Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
-    href: terraform-create-vm-cluster-with-infrastructure.md
-  - name: Aprowizowanie zestawu skalowania maszyn wirtualnych przy użyciu infrastruktury
-    href: terraform-create-vm-scaleset-network-disks-hcl.md
-  - name: Aprowizowanie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu usługi Packer
-    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: App Service
+    items:
+    - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
+      href: terraform-slot-walkthru.md
+  - name: Containers
+    items:
+    - name: Tworzenie klastra Kubernetes z użyciem usługi AKS i programu Terraform
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Infrastruktura
+    items:
+    - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
+      href: terraform-vm-msi.md
+    - name: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
+      href: terraform-create-vm-cluster-module.md
+    - name: Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: Aprowizowanie zestawu skalowania maszyn wirtualnych przy użyciu infrastruktury
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+    - name: Aprowizowanie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu usługi Packer
+      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Narzędzia
+    items:
+    - name: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
+      href: terraform-vscode-extension.md
 - name: Pojęcia
   items:
-  - name: Integracja z usługą Cloud Shell
+  - name: Integracja z usługą Azure Cloud Shell
     href: terraform-cloud-shell.md
 - name: Przykłady
   items:
@@ -44,17 +54,15 @@ items:
     href: https://registry.terraform.io/modules/Azure
   - name: Dokumentacja programu Terraform
     href: http://aka.ms/terraform
-  - name: Rozszerzenie Azure Terraform programu VS Code
-    href: terraform-vscode-extension.md
 - name: Zasoby
   items:
   - name: Platforma Azure i program Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e6c4637618d794f96db8ed9ca8eb063a62f704a1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927678"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663540"

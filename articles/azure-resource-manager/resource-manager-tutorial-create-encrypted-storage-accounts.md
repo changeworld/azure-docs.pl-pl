@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7c78636a210ae90c5bfe1d0bfd35e4e05633f5cd
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188203"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097889"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Samouczek: tworzenie szablonu usługi Azure Resource Manager na potrzeby wdrażania szyfrowanego konta magazynu
 
@@ -30,9 +30,7 @@ Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Otwieranie szablonu szybkiego startu
-> * Informacje o formacie szablonu
-> * Używanie parametrów w szablonie
-> * Korzystanie ze zmiennych w szablonie
+> * Informacje o szablonie
 > * Edytowanie szablonu
 > * Wdrożenie szablonu
 
@@ -111,10 +109,10 @@ Aby użyć zmiennej zdefiniowanej w szablonie:
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Aby znaleźć konfigurację konta magazynu związaną z szyfrowaniem, możesz zajrzeć do dokumentacji szablonu dla konta usługi Azure Storage.
+Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowanego konta magazynu.  Na podstawie przykładowego szablonu można utworzyć tylko podstawowe, niezaszyfrowane konto magazynu. Aby znaleźć konfigurację związaną z szyfrowaniem, możesz zajrzeć do dokumentacji szablonu dla konta usługi Azure Storage.
 
 1. Przejdź do pozycji [Szablony platformy Azure](https://docs.microsoft.com/azure/templates/).
-2. W spisie treści po lewej stronie wybierz pozycję **Dokumentacja**->**Magazyn**->**Konta magazynu**. Strona zawiera informacje umożliwiające zdefiniowanie informacji o koncie magazynu.
+2. W spisie treści po lewej stronie wybierz pozycję **Dokumentacja**->**Magazyn**->**Konta magazynu**. Możesz również wprowadzić ciąg **magazyn** w polu **Filtruj według tytułu**.  Strona zawiera schemat umożliwiający zdefiniowanie informacji o koncie magazynu.
 3. Przejrzyj informacje związane z szyfrowaniem.  
 4. Wewnątrz elementu properties w definicji zasobu konta magazynu dodaj następujący kod json:
 
@@ -130,59 +128,17 @@ Aby znaleźć konfigurację konta magazynu związaną z szyfrowaniem, możesz za
     ```
     Ta część włącza funkcję szyfrowania usługi magazynu obiektów blob.
 
-Ostateczny element resources wygląda następująco:
+Z poziomu programu Visual Studio Code zmodyfikuj szablon, aby ostateczny element resources wyglądał następująco:
 
 ![Zasoby szyfrowanego konta magazynu w szablonie usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Istnieje wiele metod wdrażania szablonów.  W tym samouczku zostanie użyta usługa Cloud Shell z poziomu witryny Azure Portal. Usługa Cloud Shell obsługuje zarówno wiersz polecenia platformy Azure, jak i program Azure PowerShell. W instrukcjach podanych w tym miejscu używany jest interfejs wiersza polecenia.
+Zapoznaj się z sekcją [Wdrażanie szablonu](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) przewodnika Szybki Start programu Visual Studio Code, aby uzyskać procedurę wdrażania.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-2. Wybierz pozycję **Cloud Shell** w prawym górnym rogu, jak pokazano na poniższym obrazie:
+Poniższy zrzut ekranu przedstawia polecenie interfejsu wiersza polecenia umożliwiające wyświetlanie nowo utworzonego konta magazynu, co oznacza, że dla magazynu obiektów blob zostało włączone szyfrowanie.
 
-    ![Usługa Cloud Shell w witrynie Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell.png)
-
-3. Wybierz strzałkę w dół, a następnie wybierz pozycję **Bash**, jeżeli wybrana powłoka jest inna niż Bash. W tym samouczku użyty zostanie interfejs wiersza polecenia platformy Azure.
-
-    ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-choose-cli.png)
-4. Wybierz pozycję **Uruchom ponownie**, aby ponownie uruchomić powłokę.
-5. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
-
-    ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-upload-file.png)
-6. Wybierz plik, który został zapisany wcześniej w ramach tego samouczka. Nazwa domyślna to **azuredeploy.json**.
-7. W usłudze Cloud shell uruchom polecenie **ls**, aby zweryfikować, czy plik został pomyślnie przekazany. Można również użyć polecenia **cat**, aby zweryfikować zawartość szablonu.
-
-    ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-list-file.png)
-8. W usłudze Cloud Shell uruchom następujące polecenia:
-
-    ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file azuredeploy.json
-    ```
-    Poniżej przedstawiono zrzut ekranu przedstawiający przykładowe wdrożenie:
-
-    ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-deploy-template.png)
-
-    Na zrzucie ekranu zostały użyte następujące wartości:
-
-    * **&lt;ResourceGroupName>**: myresourcegroup0719. Istnieją dwa wystąpienia tego parametru.  Pamiętaj, aby użyć tej samej wartości.
-    * **&lt;AzureLocation>**: eastus2
-    * **&lt;DeployName>**: mydeployment0719
-    * **&lt;TemplateFile>**: azuredeploy.json
-
-    W danych wyjściowych na zrzucie ekranu nazwa konta magazynu to *fhqbfslikdqdsstandardsa*. 
-
-9. Uruchom następujące polecenie programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
-
-    ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
-    ```
-
-    Wyświetlone dane wyjściowe powinny być podobne do poniższego zrzutu ekranu, co wskazuje na włączenie szyfrowania dla magazynu obiektów blob.
-
-    ![Szyfrowane konto magazynu usługi Azure Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
+![Szyfrowane konto magazynu usługi Azure Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -195,7 +151,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia dokumentacji szablonu w celu dostosowania istniejącego szablonu. Szablon używany w tym samouczku zawiera tylko jeden zasób platformy Azure.  W następnym samouczku zostanie utworzony szablon z wieloma zasobami.  Niektóre zasoby zawierają zasoby zależne.
+W tym samouczku przedstawiono sposób użycia dokumentacji szablonu w celu dostosowania istniejącego szablonu. Szablon używany w tym samouczku zawiera tylko jeden zasób platformy Azure.  W następnym samouczku zostanie utworzony szablon z wieloma zasobami. Niektóre zasoby zawierają zasoby zależne.
 
 > [!div class="nextstepaction"]
 > [Tworzenie wielu zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

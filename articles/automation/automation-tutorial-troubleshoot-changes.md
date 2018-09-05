@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: zmiana, śledzenie, automatyzacja
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866821"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120589"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -112,7 +112,8 @@ W oknie **Konfiguracja obszaru roboczego** dodaj klucze rejestru systemu Windows
 |Enabled (Włączony)     | Określa, czy ustawienie jest stosowane        |
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików        |
-|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\mojplik.txt”       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”         |
+|Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 ### <a name="add-a-linux-file"></a>Dodawanie pliku systemu Linux
@@ -133,7 +134,7 @@ W oknie **Konfiguracja obszaru roboczego** dodaj klucze rejestru systemu Windows
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołują<br>**Śledź** — śledzi linki symboliczne podczas rekursji i uwzględnia również pliki/katalogi, do których się odwołują<br>**Zarządzaj** — śledzi linki symboliczne i umożliwia obsługę zwracanej zawartości      |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
-   > [!NOTE]   
+   > [!NOTE]
    > Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.
 
 ## <a name="enable-activity-log-connection"></a>Włączanie połączenia dziennika aktywności

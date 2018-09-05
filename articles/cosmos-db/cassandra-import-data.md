@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: b53328875f2242faba369dea0df655bc78117009
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 55a6fec1b6ac018b4b24c0d27dcfdd5812455800
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920316"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189680"
 ---
-# <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: importowanie danych bazy danych Cassandra
+# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrowanie danych na konto interfejsu API Cassandra w usłudze Azure Cosmos DB
 
 Ten samouczek zawiera instrukcje dotyczące importowania danych bazy danych Cassandra do usługi Azure Cosmos DB przy użyciu polecenia COPY języka CQL (Cassandra Query Language). 
 
@@ -31,11 +31,13 @@ Ten samouczek obejmuje następujące zadania:
 
 # <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj bazę danych [Apache Cassandra](http://cassandra.apache.org/download/) i upewnij się, że zainstalowano też język *cqlsh*.
-* Zwiększ przepływność. Czas trwania migracji danych zależy od przepływności aprowizowanej dla tabel. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie [Azure Portal](https://portal.azure.com), zobacz [Set throughput for Azure Cosmos DB containers](set-throughput.md) (Ustawianie przepływności dla kontenerów usługi Azure Cosmos DB).
+* Zainstaluj bazę danych [Apache Cassandra](http://cassandra.apache.org/download/) i upewnij się, że zainstalowano też język *cqlsh*.  
+
+* Zwiększ przepływność. Czas trwania migracji danych zależy od przepływności aprowizowanej dla tabel. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie [Azure Portal](https://portal.azure.com), zobacz [Set throughput for Azure Cosmos DB containers](set-throughput.md) (Ustawianie przepływności dla kontenerów usługi Azure Cosmos DB).  
+
 * Włączenie protokołu SSL: usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Pamiętaj, aby włączyć protokół SSL w przypadku interakcji z kontem. W przypadku korzystania z języka CQL z protokołem SSH możesz udostępnić informacje wymagane przez protokół SSL. 
 
-## <a name="find-your-connection-string"></a>Znajdywanie parametrów połączenia
+## <a name="get-your-connection-string"></a>Pobieranie parametrów połączenia
 
 1. W witrynie [Azure Portal](https://portal.azure.com) na końcu z lewej strony kliknij pozycję **Azure Cosmos DB**.
 
@@ -45,14 +47,14 @@ Ten samouczek obejmuje następujące zadania:
 
     ![Strona z parametrami połączenia](./media/cassandra-import-data/keys.png)
 
-## <a name="use-cqlsh-copy"></a>Korzystanie z polecenia cqlsh COPY
+## <a name="migrate-data-by-using-cqlsh-copy"></a>Migrowanie danych przy użyciu polecenia cqlsh COPY
 
 Aby zaimportować dane bazy danych Cassandra do usługi Azure Cosmos DB do korzystania za pomocą interfejsu API Cassandra, użyj poniższych wskazówek:
 
 1. Zaloguj się do serwera cqhsh przy użyciu informacji o połączeniu z portalu.
 2. Użyj [polecenia CQL COPY](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh), aby skopiować dane lokalne do punktu końcowego interfejsu API Apache Cassandra. Aby zminimalizować problemy z opóźnieniem, upewnij się, że źródło i cel są w tym samym centrum danych.
 
-### <a name="guide-for-moving-data-with-cqlsh"></a>Przewodnik przenoszenia danych za pomocą poleceń cqlsh
+### <a name="steps-to-move-data-with-cqlsh"></a>Procedura przenoszenia danych przy użyciu poleceń cqlsh
 
 1. Wstępnie utwórz tabelę i przeprowadź jej skalowanie:
     * Domyślnie usługa Azure Cosmos DB aprowizuje nową tabelę interfejsu API Cassandra z szybkością 1000 jednostek żądań na sekundę (RU/s) (podczas tworzenia za pomocą języka CQL aprowizowanie zachodzi z szybkością 400 RU/s). Przed rozpoczęciem migracji za pomocą polecenia cqlsh utwórz wstępnie wszystkie tabele za pomocą witryny [Azure Portal](https://portal.azure.com) lub języka cqlsh. 
@@ -80,11 +82,11 @@ Aby zaimportować dane bazy danych Cassandra do usługi Azure Cosmos DB do korzy
 
 5. Uruchom końcowe polecenie migracji. Przed uruchomieniem tego polecenia należy uruchomić narzędzie cqlsh z użyciem informacji o parametrach połączenia.
 
-   ```
+   ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="use-spark-to-import-data"></a>Korzystanie z platformy Spark do importowania danych
+## <a name="migrate-data-by-using-spark"></a>Migrowanie danych przy użyciu platformy Spark
 
 Dane znajdujące się w istniejącym klastrze na maszynach wirtualnych platformy Azure można również zaimportować, korzystając z platformy Spark. Ta metoda wymaga skonfigurowania platformy Spark jako elementu pośredniczącego w jednorazowym lub regularnym pozyskiwaniu. 
 

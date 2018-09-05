@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920111"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247372"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Zarządzanie aktualizacjami systemu Windows przy użyciu usługi Azure Automation
 
@@ -82,9 +82,19 @@ Kliknij w dowolnym innym miejscu aktualizacji, aby otworzyć okno **Przeszukiwan
 
 ## <a name="configure-alerts"></a>Konfigurowanie alertów
 
-W tym kroku ustawisz alert z powiadomieniem o pomyślnym wdrożeniu aktualizacji. Działanie tworzonego alertu polega na zapytaniach kierowanych do usługi Log Analytics. Można napisać zapytanie niestandardowe dotyczące dodatkowych alertów, odpowiadające różnym scenariuszom. W witrynie Azure Portal przejdź do obszaru **Monitorowanie** i wybierz pozycję **Utwórz alert**. 
+W tym kroku nauczysz się konfigurować alert informujący za pośrednictwem zapytania usługi Log Analytics o pomyślnym wdrożeniu aktualizacji lub za pomocą śledzenia głównego elementu runbook dla funkcji Update Management o wdrożeniach, które się nie powiodły.
 
-W oknie **Tworzenie reguły** w obszarze **1. Zdefiniuj warunek alertu** wybierz pozycję **Wybierz element docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Log Analytics**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
+### <a name="alert-conditions"></a>Warunki alertu
+
+W przypadku każdego typu alertu istnieją różne warunki alertu, które należy zdefiniować.
+
+#### <a name="log-analytics-query-alert"></a>Alert zapytania usługi Log Analytics
+
+W przypadku pomyślnego wdrożenia można utworzyć alert na podstawie zapytania usługi Log Analytics. W przypadku wdrożeń zakończonych niepowodzeniem można wykonać kroki [alertu elementu runbook](#runbook-alert), aby wyzwolić alert, gdy główny element runbook, który koordynuje wdrożenia aktualizacji, zakończy się niepowodzeniem. Można napisać zapytanie niestandardowe dotyczące dodatkowych alertów, odpowiadające różnym scenariuszom.
+
+W witrynie Azure Portal przejdź do obszaru **Monitorowanie** i wybierz pozycję **Utwórz alert**.
+
+W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Log Analytics**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
 
 ![Tworzenie alertu](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ W obszarze **Logika alertu** w polu **Próg** wprowadź **1**. Po zakończeniu w
 
 ![Konfigurowanie logiki sygnału](./media/automation-tutorial-update-management/signal-logic.png)
 
-W obszarze **2. Zdefiniuj szczegóły alertu** wprowadź nazwę i opis alertu. W polu **Ważność** wybierz pozycję **Informacyjny (ważność 2)**, ponieważ alert dotyczy pomyślnego uruchomienia.
+#### <a name="runbook-alert"></a>Alert elementu runbook
+
+W przypadku wdrożeń zakończonych niepowodzeniem musisz wyzwolić alert niepowodzenia przebiegu głównego w witrynie Azure Portal, przejść do obszaru **Monitorowanie**, a następnie wybrać pozycję **Utwórz alert**.
+
+W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Konta usługi Automation**. Wybierz swoje konto usługi Automation, a następnie wybierz pozycję **Gotowe**.
+
+Dla opcji **Nazwa elementu Runbook** kliknij znak **\+**, a następnie wprowadź ciąg **Patch-MicrosoftOMSComputers** jako nazwę niestandardową. Dla opcji **Stan** wybierz **Niepowodzenie** lub kliknij znak **\+**, aby wprowadzić **Niepowodzenie**.
+
+![Konfigurowanie logiki sygnału dla elementów runbook](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+W obszarze **Logika alertu** w polu **Próg** wprowadź **1**. Po zakończeniu wybierz pozycję **Gotowe**.
+
+### <a name="alert-details"></a>Szczegóły alertu
+
+W obszarze **2. Zdefiniuj szczegóły alertu** wprowadź nazwę i opis alertu. Ustaw opcję **Ważność** na **Informacyjny (ważność 2)** w przypadku pomyślnego przebiegu lub **Informacyjny (ważność 1)** w przypadku nieudanego przebiegu.
 
 ![Konfigurowanie logiki sygnału](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
 * **System operacyjny**: wybierz docelowy system operacyjny do wdrażania aktualizacji.
 
-* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny jest wyświetlana w kolumnie **GOTOWOŚĆ AGENTA AKTUALIZACJI**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Computer groups in Log Analytics (Grupy komputerów w usłudze Log Analytics)](../log-analytics/log-analytics-computer-groups.md)
+* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md)
 
 * **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. W tym samouczku pozostaw wszystkie typy wybranymi.
 

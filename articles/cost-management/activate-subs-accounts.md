@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/29/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297975"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247240"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą usługi Azure Cost Management
 
@@ -103,7 +103,7 @@ Przed wygenerowaniem klucza interfejsu API umowy Azure Enterprise Agreement w ce
 
 Być może trzeba będzie również nadać administratorom działów, właścicielom kont i administratorom przedsiębiorstwa uprawnienia do _wyświetlania opłat_ przy użyciu interfejsu API rozliczeń.
 
-Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające. Można jednak obejść wymaganie uprawnień administratora. Można zażądać, aby administrator usługi Azure Active Directory przyznał uprawnienia do autoryzacji **CloudynAzureCollector** za pomocą skryptu programu PowerShell. Poniższy skrypt udziela uprawnień do rejestrowania jednostki usługi Azure Active Directory **CloudynAzureCollector**.
+Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające. Można jednak obejść wymaganie uprawnień administratora. Można zażądać, aby administrator usługi Azure Active Directory przyznał uprawnienia do autoryzacji **CloudynAzureCollector** za pomocą skryptu programu PowerShell. Poniższy skrypt udziela uprawnień do rejestrowania jednostki usługi Azure Active Directory **CloudynAzureCollector**. Po pomyślnym uruchomieniu operacja kończy się w przeglądarce zawierającej adres URL http://localhost:8080/CloudynJava.
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216312"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746022"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -288,7 +288,7 @@ Jeśli zadanie podrzędne uruchamiania w węźle obliczeniowym zakończy się ni
 W przypadku dodawania lub aktualizacji zadania podrzędnego uruchamiania do istniejącej puli należy ponownie uruchomić jego węzły obliczeniowe w celu zastosowania zadania podrzędnego uruchamiania do węzłów.
 
 >[!NOTE]
-> Całkowity rozmiar zadania podrzędnego uruchamiania musi wynosić 32 768 znaków, w tym pliki zasobów lub zmienne środowiskowe, lub być mniejszy. Aby upewnić się, że zadanie podrzędne uruchamiania spełnia to wymaganie, można użyć jednej z dwóch metod:
+> W usłudze Azure Batch wprowadzono ograniczenia dotyczące łącznego rozmiaru zadania uruchamiania, który obejmuje pliki zasobów oraz zmienne środowiskowe. Jeśli musisz zmniejszyć rozmiar zadania uruchomienia, masz do dyspozycji dwie metody:
 >
 > 1. Można użyć pakietów aplikacji do rozpowszechniania danych lub aplikacji w poszczególnych węzłach puli usługi Batch. Aby uzyskać więcej informacji na temat pakietów aplikacji, zobacz temat [Deploy applications to compute nodes with Batch application packages (Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji usługi Batch)](batch-application-packages.md).
 > 2. Możesz ręcznie utworzyć skompresowane archiwum zawierające pliki aplikacji. Przekaż skompresowane archiwum do usługi Azure Storage jako obiekt blob. Określ skompresowane archiwum jako plik zasobów dla zadania podrzędnego uruchamiania. Przed uruchomieniem wiersza polecenia zadania podrzędnego uruchamiania rozpakuj archiwum z wiersza polecenia. 

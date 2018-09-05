@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7bf3b5f8eb066428b382b9b2e742b919595bdffc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918953"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105003"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
@@ -96,7 +96,7 @@ Aby wyświetlić działającą aplikację, wprowadź adres http://localhost:8080
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Teraz, po zweryfikowaniu funkcjonalności aplikacji, uruchomione kontenery można zatrzymać i usunąć. Nie należy usuwać obrazów kontenerów — w następnym samouczku obraz *azure-vote-front* zostanie przekazany do wystąpienia usługi Azure Container Registry
+Teraz, po zweryfikowaniu funkcjonalności aplikacji, uruchomione kontenery można zatrzymać i usunąć. Nie należy usuwać obrazów kontenerów — w następnym samouczku obraz *azure-vote-front* zostanie przekazany do wystąpienia usługi Azure Container Registry.
 
 Zatrzymaj i usuń wystąpienia kontenerów i zasoby za pomocą polecenia [docker-compose down][docker-compose-down]:
 

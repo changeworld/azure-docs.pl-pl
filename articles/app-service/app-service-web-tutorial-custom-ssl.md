@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/19/2018
+ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6e3679a994a7340fc38bf98f370efd359785fd90
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2aca366e6a433e3e71cccb49a13638dedacc38d6
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214969"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887510"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -237,11 +237,11 @@ Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, któr
 - `http://contoso.com`
 - `http://www.contoso.com`
 
-## <a name="enforce-tls-1112"></a>Wymuszanie protokołu TLS 1.1/1.2
+## <a name="enforce-tls-versions"></a>Wymuszanie wersji protokołu TLS
 
-Aplikacja domyślnie umożliwia korzystanie z protokołu [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0, który nie jest już uznawany za bezpieczny przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Aby wymusić nowsze wersje protokołu TLS, wykonaj następujące kroki:
+Aplikacja domyślnie umożliwia korzystanie z protokołu [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2, który jest zalecanym poziomem protokołu TLS przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Aby wymusić inne wersje protokołu TLS, wykonaj następujące kroki:
 
-Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia.
+Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia. To ustawienie kontroluje tylko wywołania przychodzące. 
 
 ![Wymuszanie protokołu TLS 1.1 lub 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 

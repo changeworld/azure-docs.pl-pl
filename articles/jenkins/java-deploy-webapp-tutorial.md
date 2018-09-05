@@ -1,19 +1,19 @@
 ---
 title: Używanie serwera Jenkins do wdrażania aplikacji internetowych na platformie Azure
 description: Konfiguruj ciągłą integrację z usługi GitHub do usługi Azure App Service dla aplikacji internetowych Java za pomocą serwera Jenkins i platformy Docker.
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, app service, continuous integration, ci, continuous deployment, cd
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389946"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106801"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Konfigurowanie ciągłej integracji i wdrażania w usłudze Azure App Service za pomocą serwera Jenkins
 
@@ -102,7 +102,7 @@ Skonfiguruj serwer Jenkins, aby otrzymywać [elementy webhook usługi GitHub](ht
 ## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>Konfigurowanie wtyczki Jenkins dla usługi Azure App Service
 
 1. W konsoli internetowej serwera Jenkins wybierz utworzone zadanie **MyJavaApp**, a następnie wybierz pozycję **Configure** (Konfiguruj) w lewej części strony.
-2. Przewiń w dół do pozycji **Post-build Actions** (Akcje wykonywane po kompilacji), a następnie wybierz kolejno pozycje **Add post-build action** (Dodaj akcję wykonywaną po kompilacji) i **Publish an Azure Web App** (Publikuj aplikację internetową platformy Azure).
+2. Przewiń w dół do pozycji **Post-build Actions** (Akcje wykonywane po kompilacji), wybierz kolejno pozycje **Add post-build action** (Dodaj akcję wykonywaną po kompilacji) i **Publish an Azure Web App** (Publikuj aplikację internetową platformy Azure).
 3. W obszarze **Azure Profile Configuration** (Konfiguracja profilu platformy Azure) wybierz pozycję **Add** (Dodaj) obok pozycji **Azure Credentials** (Poświadczenia platformy Azure) i wybierz pozycję **Jenkins**.
 4. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz pozycję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).
 5. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
@@ -164,7 +164,7 @@ Skonfiguruj serwer Jenkins, aby otrzymywać [elementy webhook usługi GitHub](ht
 ## <a name="deploy-the-app-from-github"></a>Wdrażanie aplikacji z usługi GitHub
 
 1. W projekcie serwera Jenkins wybierz pozycję **Build Now** (Kompiluj teraz), aby wdrożyć przykładową aplikację na platformie Azure.
-2. Po zakończeniu kompilacji aplikacja działa na platformie Azure pod adresem URL publikowania, na przykład http://myjavaapp.azurewebsites.net.   
+2. Po zakończeniu kompilacji aplikacja będzie działała na platformie Azure pod adresem URL publikowania, na przykład http://myjavaapp.azurewebsites.net.   
    ![Wyświetlanie wdrożonej aplikacji na platformie Azure](media/jenkins-java-quickstart/hello_docker_world_unedited.png)
 
 ## <a name="push-changes-and-redeploy"></a>Wypychanie zmian i ponowne wdrażanie

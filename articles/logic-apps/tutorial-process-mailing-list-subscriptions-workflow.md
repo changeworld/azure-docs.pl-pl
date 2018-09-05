@@ -1,26 +1,21 @@
 ---
 title: Tworzenie przepływów pracy zatwierdzania w celu przetwarzania żądań listy adresowej — Azure Logic Apps | Microsoft Docs
-description: W tym samouczku przedstawiono sposób tworzenia zautomatyzowanych przepływów pracy zatwierdzania na potrzeby przetwarzania subskrypcji listy adresowej przy użyciu usługi Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: 'Samouczek: jak tworzyć zautomatyzowane przepływy pracy zatwierdzania na potrzeby przetwarzania subskrypcji listy adresowej przy użyciu usługi Azure Logic Apps'
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300678"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122873"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>Zarządzanie żądaniami listy adresowej za pomocą aplikacji logiki
 

@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 05c30504eb9b4440694f78ee979d4b25f30f65dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237968"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126555"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Samouczek: aktualizowanie magazynu przy użyciu programu PowerShell oraz tematów/subskrypcji
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przykładem tego scenariusza jest aktualizacja asortymentu magazynu na potrzeby wielu sklepów detalicznych. W tym scenariuszu każdy sklep, lub grupa sklepów, otrzymuje komunikaty o potrzebie aktualizacji swojego asortymentu. W tym samouczku przedstawiono, jak wdrożyć ten scenariusz przy użyciu subskrypcji i filtrów. Najpierw utwórz temat z 3 subskrypcjami, dodaj jakieś reguły i filtry, a następnie wysyłaj i odbieraj komunikaty z tematu i subskrypcji.
 
-![kolejka](./media/service-bus-quickstart-powershell/quick-start-queue.png)
+![temat](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][].
 
@@ -47,9 +47,9 @@ Ten samouczek wymaga używania najnowszej wersji programu Azure PowerShell. Jeś
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Uruchom następujące polecenia, aby zalogować się do platformy Azure. Te kroki nie są konieczne, jeśli używasz poleceń programu PowerShell w usłudze Cloud Shell: 
+Uruchom następujące polecenia, aby zalogować się na platformie Azure. Te kroki nie są konieczne, jeśli używasz poleceń programu PowerShell w usłudze Cloud Shell: 
 
 1. Zainstaluj moduł programu PowerShell usługi Service Bus:
 
@@ -57,7 +57,7 @@ Uruchom następujące polecenia, aby zalogować się do platformy Azure. Te krok
    Install-Module AzureRM.ServiceBus
    ```
 
-2. Uruchom następujące polecenie, aby zalogować się do platformy Azure:
+2. Uruchom następujące polecenia, aby zalogować się na platformie Azure:
 
    ```azurepowershell-interactive
    Login-AzureRmAccount
@@ -72,7 +72,7 @@ Uruchom następujące polecenia, aby zalogować się do platformy Azure. Te krok
 
 ## <a name="provision-resources"></a>Inicjowanie zasobów
 
-Po zalogowaniu do platformy Azure uruchom następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami:
+Po zalogowaniu na platformie Azure uruchom następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami:
 
 ```azurepowershell-interactive
 # Create a resource group 

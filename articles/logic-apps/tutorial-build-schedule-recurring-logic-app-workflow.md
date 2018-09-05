@@ -1,28 +1,23 @@
 ---
 title: Tworzenie zautomatyzowanych przepływów pracy z użyciem harmonogramu — Azure Logic Apps | Microsoft Docs
-description: Ten samouczek pokazuje, w jaki sposób utworzyć cykliczny, zautomatyzowany przepływ pracy z użyciem harmonogramu w usłudze Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: 'Samouczek: jak utworzyć cykliczny, zautomatyzowany przepływ pracy z użyciem harmonogramu w usłudze Azure Logic Apps'
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300773"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124022"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Sprawdzanie natężenia ruchu za pomocą aplikacji logiki z użyciem harmonogramu
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>Sprawdzanie ruchu za pomocą aplikacji logiki opartej na harmonogramie
 
 Usługa Azure Logic Apps umożliwia zautomatyzowanie przepływów pracy uruchamianych na podstawie harmonogramu. Ten samouczek pokazuje, jak utworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md) z wyzwalaczem harmonogramu, który jest uruchamiany codziennie rano i sprawdza, ile czasu zajmie podróż pomiędzy dwoma miejscami, z uwzględnieniem natężenia ruchu. Jeśli ten czas przekracza określony limit, aplikacja logiki wysyła wiadomość e-mail z informacją, ile zajmie podróż z uwzględnieniem dodatkowego czasu.
 

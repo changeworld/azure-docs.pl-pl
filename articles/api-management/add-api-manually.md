@@ -3,7 +3,7 @@ title: Ręczne dodawanie interfejsu API przy użyciu witryny Azure Portal | Micr
 description: Ten samouczek przedstawia sposób użycia usługi API Management (APIM) do ręcznego dodawania interfejsu API.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307452"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247906"
 ---
-# <a name="add-an-api-manually"></a>Ręczne dodawanie interfejsu API 
+# <a name="add-an-api-manually"></a>Ręczne dodawanie interfejsu API
 
 W tym artykule opisano kroki ręcznego dodawania interfejsu API do wystąpienia usługi API Management (APIM). Typowy scenariusz, w przypadku którego tworzysz pusty interfejs API i definiujesz go ręcznie, to pozorowanie interfejsu API. Aby uzyskać szczegółowe informacje na interfejsu API na temat pozorowania interfejsu API, zobacz [Pozorowanie odpowiedzi interfejsu API](mock-api-responses.md).
 
@@ -54,17 +54,16 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
     |**Produkty**|„*Nieograniczony*” |Opublikuj interfejs API przez skojarzenie go z produktem. Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.<br/><br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/><br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **Starter** i **Unlimited**.| 
 5. Wybierz pozycję **Utwórz**.
 
-W tym momencie w usłudze APIM nie ma żadnych operacji mapowanych na operacje w interfejsie API zaplecza. Jeśli wywołasz operację, która jest uwidaczniana za pośrednictwem zaplecza, a nie usługi APIM, może wystąpić błąd **404**. 
+W tym momencie w usłudze APIM nie ma żadnych operacji mapowanych na operacje w interfejsie API zaplecza. Jeśli wywołasz operację, która jest uwidaczniana za pośrednictwem zaplecza, a nie usługi APIM, może wystąpić błąd **404**.
 
 >[!NOTE] 
 > Domyślnie po dodaniu interfejsu API, nawet jeśli został on połączony z usługą zaplecza, usługa APIM nie uwidoczni żadnych operacji do momentu umieszczenia ich na liście dozwolonych. Aby umieścić operację usługi zaplecza na liście dozwolonych, utwórz operację APIM mapowaną na operację zaplecza.
->
 
 ## <a name="add-and-test-an-operation"></a>Dodawanie i testowanie operacji
 
 W tej sekcji przedstawiono sposób dodawania operacji „/ get” w celu mapowania jej na operację „http://httpbin.org/get” zaplecza.
 
-### <a name="add-the-operation"></a>Dodawanie operacji
+### <a name="add-an-operation"></a>Dodawanie operacji
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Kliknij przycisk **+ Dodaj operację**.
@@ -72,7 +71,7 @@ W tej sekcji przedstawiono sposób dodawania operacji „/ get” w celu mapowan
 4. Wprowadź ciąg „*FetchData*” w polu **Nazwa wyświetlana**.
 5. Wybierz pozycję **Zapisz**.
 
-### <a name="test-the-operation"></a>Testowanie operacji
+### <a name="test-an-operation"></a>Testowanie operacji
 
 Przetestuj operację w witrynie Azure Portal. Możesz również przetestować ją w **portalu deweloperów**.
 

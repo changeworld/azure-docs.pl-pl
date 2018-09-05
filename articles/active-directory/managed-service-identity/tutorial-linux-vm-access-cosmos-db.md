@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: c2c138e7064ae5f8bfb11d2f8d4c6b8e9e45760d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b38804a4450bfc76f5048f8049a7369d7ebebc30
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442007"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886239"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Samouczek: używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-Z tego samouczka dowiesz się, jak utworzyć tożsamość usługi zarządzanej maszyny wirtualnej z systemem Linux i z niej korzystać. Omawiane kwestie:
+W tym samouczku przedstawiono sposób używania tożsamości przypisanej przez system dla maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Cosmos DB. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny wirtualnej z systemem Linux z włączoną tożsamością usługi zarządzanej
 > * Tworzenie konta usługi Cosmos DB
 > * Tworzenie kolekcji w ramach konta usługi Cosmos DB
 > * Udzielanie dostępu tożsamości usługi zarządzanej do wystąpienia usługi Azure Cosmos DB
@@ -39,42 +38,20 @@ Z tego samouczka dowiesz się, jak utworzyć tożsamość usługi zarządzanej m
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com) przed kontynuowaniem.
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Zalogowanie się w witrynie Azure Portal](https://portal.azure.com)
+
+- [Utworzenie maszyny wirtualnej z systemem Linux](/azure/virtual-machines/linux/quick-create-portal)
+
+- [Włączenie tożsamości przypisanej przez system na maszynie wirtualnej](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 Aby uruchomić przykłady skryptów interfejsu wiersza polecenia w tym samouczku, masz dwie opcje:
 
 - Użyj usługi [Azure Cloud Shell](~/articles/cloud-shell/overview.md) w witrynie Azure Portal lub za pośrednictwem przycisku **Wypróbuj** znajdującego się w prawym górnym rogu każdego bloku kodu.
 - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia.
-
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
-
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Linux w nowej grupie zasobów
-
-Na potrzeby tego samouczka utwórz nową maszynę wirtualną z systemem Linux z włączoną obsługą tożsamości usługi zarządzanej.
-
-Aby utworzyć maszynę wirtualną z włączoną obsługą tożsamości usługi zarządzanej:
-
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az-login). Użyj konta skojarzonego z subskrypcją platformy Azure, w ramach której chcesz wdrożyć maszynę wirtualną:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
-
-   ```azurecli-interactive 
-   az group create --name myResourceGroup --location westus
-   ```
-
-3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az-vm-create). W poniższym przykładzie jest tworzona maszyna wirtualna o nazwie *myVM* z tożsamością usługi zarządzanej, zgodnie z żądaniem parametru `--assign-identity`. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
-
-   ```azurecli-interactive 
-   az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
-   ```
 
 ## <a name="create-a-cosmos-db-account"></a>Tworzenie konta usługi Cosmos DB 
 

@@ -1,6 +1,6 @@
 ---
 title: Używanie programu Visual Studio Code do tworzenia szablonu usługi Azure Resource Manager | Microsoft Docs
-description: Rozszerzenie Narzędzia usługi Azure Resource Manager służy do pracy z szablonami usługi Resource Manager.
+description: Program Visual Studio Code i rozszerzenie Narzędzia usługi Azure Resource Manager służą do pracy z szablonami usługi Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/24/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d50b84ac61210fc89665341ae0c2de3fc4ce0c11
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023172"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106053"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: Tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -89,32 +89,49 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki Start zostanie użyta usługa Cloud Shell z poziomu witryny Azure Portal. Usługa Cloud Shell obsługuje zarówno wiersz polecenia platformy Azure, jak i program Azure PowerShell. W instrukcjach podanych w tym miejscu używany jest interfejs wiersza polecenia.
+Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start zostanie użyta usługa Azure Cloud Shell z poziomu witryny Azure Portal. Usługa Cloud Shell obsługuje zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell. 
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Cloud Shell** w prawym górnym rogu, jak pokazano na poniższym obrazie:
 
     ![Usługa Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-3. Wybierz strzałkę w dół, a następnie wybierz pozycję **Bash**, aby przełączyć się do interfejsu wiersza polecenia z programu PowerShell.
+    Usługa Cloud Shell jest otwierana w dolnej części ekranu.
+
+3. W lewym górnym rogu okna usługi Cloud Shell jest wyświetlana opcja **PowerShell** lub **Bash**. Aby korzystać z interfejsu wiersza polecenia, musisz otworzyć sesję powłoki Bash. Aby uruchomić program PowerShell, musisz otworzyć sesję programu PowerShell. W celu przełączenia wybierz strzałkę w dół, a następnie wybierz interpreter. Poniższa ilustracja przedstawia przełączanie z programu PowerShell na powłokę Bash.
 
     ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-4. Wybierz pozycję **Uruchom ponownie**, aby ponownie uruchomić powłokę.
-5. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
+
+    Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
+4. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
 
     ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-4. Wybierz plik, który został wcześniej zapisany w ramach tego przewodnika Szybki start. Nazwa domyślna to **azuredeploy.json**.
-5. W usłudze Cloud shell uruchom polecenie **ls**, aby zweryfikować, czy plik został pomyślnie przekazany. Można również użyć polecenia **cat**, aby zweryfikować zawartość szablonu.
+
+    Zanim będzie możliwe wdrożenie pliku szablonu z poziomu powłoki, musisz go przekazać.
+5. Wybierz plik, który został wcześniej zapisany w ramach tego przewodnika Szybki start. Nazwa domyślna to **azuredeploy.json**.
+6. W usłudze Cloud shell uruchom polecenie **ls**, aby zweryfikować, czy plik został pomyślnie przekazany. Można również użyć polecenia **cat**, aby zweryfikować zawartość szablonu. Poniższa ilustracja przedstawia uruchamianie polecenia z poziomu powłoki Bash.  Tych samych poleceń używa się w sesji programu PowerShell.
 
     ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-6. W usłudze Cloud Shell uruchom następujące polecenia:
+7. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
 
+    # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```cli
     az group create --name <ResourceGroupName> --location <AzureLocation>
 
     az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
     ```
-    Poniżej przedstawiono zrzut ekranu przedstawiający przykładowe wdrożenie:
+   
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+    
+    ```powershell
+    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
+
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    ```
+    
+    ---
+
+    Poniższy zrzut ekranu przedstawia przykładowe wdrożenie interfejsu wiersza polecenia:
 
     ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
@@ -127,11 +144,20 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki Start zost
 
     W danych wyjściowych na zrzucie ekranu nazwa konta magazynu to *3tqebj3slyfyestandardsa*. 
 
-7. Uruchom następujące polecenie interfejsu wiersza polecenia, aby wyświetlić nowo utworzone konto magazynu:
+7. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
 
+    # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```cli
     az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
     ```
+   
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+    
+    ```powershell
+    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    ```
+    
+    ---
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -144,7 +170,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia szablonu za pomocą programu Visual Studio Code oraz sposób wdrażania szablonu przy użyciu witryny usługi Cloud Shell w witrynie Azure Portal. Z następnego samouczka dowiesz się więcej na temat sposobu tworzenia szablonu i używania odwołania do szablonu.
+Ten samouczek koncentruje się przede wszystkim na użyciu programu Visual Studio Code do edycji istniejącego szablonu spośród szablonów szybkiego startu platformy Azure. Przedstawiono w nim również sposób wdrażania szablonu przy użyciu interfejsu wiersza polecenia lub programu PowerShell z poziomu usługi Azure Cloud Shell. Szablony spośród szablonów szybkiego startu platformy Azure mogą nie zaspokajać wszystkich Twoich potrzeb. W kolejnym samouczku dowiesz się, jak znaleźć informacje w dokumentacji szablonów, aby utworzyć zaszyfrowane konto usługi Azure Storage.
 
 > [!div class="nextstepaction"]
-> [Create an encrypted Storage account (Tworzenie zaszyfrowanego konta usługi Storage)](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Tworzenie zaszyfrowanego konta usługi Storage](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/10/2017
+ms.date: 08/24/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 67ecb7c253d7968057b27c5b37b5ed4da12c8d05
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 729ed8ac4568f5f39fd62fadbc8d4d0e4595f7b8
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441497"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885293"
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Tworzenie aplikacji Ruby w usłudze App Service w systemie Linux
 
@@ -46,7 +46,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>Uruchamianie aplikacji lokalnie
 
-Serwer rails musi być uruchomiony, aby umożliwić działanie aplikacji. Zmień katalog na `hello-world` i użyj polecenia `rails server`, aby uruchomić serwer.
+Uruchom aplikację lokalnie, aby zobaczyć, jak powinna ona wyglądać, gdy wdrożysz ją na platformie Azure. Otwórz okno terminala, zmień katalog na `hello-world` i użyj polecenia `rails server`, aby uruchomić serwer.
 
 ```bash
 cd hello-world\bin

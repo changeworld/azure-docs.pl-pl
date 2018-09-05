@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 1009a7a1d9f354f7a41b0e3a0fbc49d57992bc31
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42023957"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916474"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
 
@@ -87,7 +87,7 @@ Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kro
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko w regionach Zachodnie stany USA 2 i Zachodnio-środkowe stany USA. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
 
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Storage** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę konta magazynu.
@@ -135,7 +135,7 @@ Następnie ponownie uruchom powłokę.
 Aby utworzyć nową grupę zasobów za pomocą programu PowerShell, użyj polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko w regionach Zachodnie stany USA 2 i Zachodnio-środkowe stany USA. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko w regionach Zachodnie stany USA 2 i Zachodnio-środkowe stany USA. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia w wersji 2
 

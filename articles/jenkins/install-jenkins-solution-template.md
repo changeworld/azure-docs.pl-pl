@@ -1,19 +1,19 @@
 ---
 title: Tworzenie serwera Jenkins na platformie Azure
 description: Zainstaluj usługę Jenkins na maszynie wirtualnej z systemem Linux platformy Azure za pomocą szablonu rozwiązania Jenkins i utwórz przykładową aplikację Java.
-ms.topic: quickstart
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, portal, virtual machine, solution template
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
-ms.date: 07/31/2018
-ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390432"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086578"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Tworzenie serwera Jenkins na maszynie wirtualnej z systemem Linux platformy Azure przy użyciu witryny Azure Portal
 
@@ -75,7 +75,7 @@ Wybierz kartę **Kompilacja**, a następnie wybierz pozycję **Dodaj krok kompil
 
 ![Kompilowanie przy użyciu otoki Gradle](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Wybierz pozycję **Zaawansowane**. Następnie wprowadź wartość `complete` w polu **Główny skrypt kompilacji**. Wybierz pozycję **Zapisz**.
+Wybierz pozycję **Zaawansowane**, a następnie wprowadź wartość `complete` w polu **Główny skrypt kompilacji**. Wybierz pozycję **Zapisz**.
 
 ![Konfigurowanie ustawień zaawansowanych w kroku dotyczącym kompilacji i otoki Gradle](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

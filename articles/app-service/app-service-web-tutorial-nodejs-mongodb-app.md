@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618958"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187849"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej środowiska Node.js i usługi MongoDB na platformie Azure
 
@@ -117,6 +117,9 @@ Przykładowa aplikacja MEAN.js przechowuje dane użytkowników w bazie danych. J
 Wybierz pozycję **Administrator -> Zarządzaj artykułami**, aby dodać artykuły.
 
 Aby w dowolnym momencie zatrzymać środowisko Node.js, naciśnij w terminalu klawisze `Ctrl+C`. 
+
+> [!NOTE]
+> W [przewodniku Szybki start dotyczący środowiska Node.js](app-service-web-get-started-nodejs.md) wspomniano o konieczności utworzenia pliku web.config w głównym katalogu aplikacji. Jednak w tym samouczku plik web.config jest automatycznie generowany przez usługę App Service w przypadku wdrażania plików za pomocą [lokalnego wdrożenia narzędzia Git](app-service-deploy-local-git.md) zamiast wdrożenia pliku ZIP. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: eafc05d825535fe1a0c13dd52823b4e59499fb91
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 02e60b3899280afde2927d40ad54cb514bf0fa0e
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113660"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246735"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: przykłady asynchronicznego kodu Java dla interfejsu API SQL
 
@@ -30,7 +30,7 @@ ms.locfileid: "37113660"
 > 
 > 
 
-Najnowsze przykładowe aplikacje do wykonywania operacji CRUD i innych typowych działań na zasobach usługi Azure Cosmos DB można znaleźć w repozytorium [azure-comsosdb-java](https://github.com/Azure/azure-cosmosdb-java) w witrynie GitHub. Ten artykuł zawiera:
+Najnowsze przykładowe aplikacje do wykonywania operacji CRUD i innych typowych działań na zasobach usługi Azure Cosmos DB można znaleźć w repozytorium [azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) w witrynie GitHub. Ten artykuł zawiera:
 
 * Linki do zadań w poszczególnych plikach projektów z przykładami asynchronicznego kodu w języku Java. 
 * Linki do powiązanej dokumentacji interfejsu API.
@@ -155,7 +155,7 @@ W pliku [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blo
 | Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Tworzenie kolekcji i ustawianie przepływności](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L106-L113) | [AsyncDocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._request_options.setofferthroughput) |
-| [Odczytywanie kolekcji w celu znalezienia powiązanej oferty](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L118-L130) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._offer.getcontent)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.queryoffers) |
+| [Odczytywanie kolekcji w celu znalezienia powiązanej oferty](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L118-L130) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._offer.getContent)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.queryoffers) |
 | [Aktualizowanie przepływności kolekcji poprzez zastąpienie jej oferty](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L101-L153) | [AsyncDocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Przykłady dotyczące procedur składowanych

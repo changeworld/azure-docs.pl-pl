@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi Azure AD Privileged Identity Management | Microsoft Docs
-description: W tym temacie wyjaśniono, co to jest usługa Azure AD Privileged Identity Management (PIM) i jak używać usługi PIM w celu zwiększenia poziomu bezpieczeństwa w chmurze.
+title: Co to jest usługa Azure AD Privileged Identity Management? | Microsoft Docs
+description: Omówienie usługi Azure Active Directory Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618856"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186215"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
@@ -51,6 +51,35 @@ W usłudze Azure AD usługa Azure AD Privileged Identity Management umożliwia z
 ## <a name="just-in-time-administrator-access"></a>Dostęp just in time administratora
 
 W przeszłości można było przypisać użytkownika do roli administratora za pomocą witryny Azure Portal, portali innych usług online firmy Microsoft lub poleceń cmdlet usługi Azure AD w programie Windows PowerShell. W efekcie użytkownik ten stawał się **administratorem trwałym**, zawsze aktywnym w przypisanej roli. Usługa Azure AD Privileged Identity Management wprowadza koncepcję **administratora uprawnionego**. Administratorami uprawnionymi powinni być użytkownicy, którzy potrzebują dostępu uprzywilejowanego co jakiś czas, ale nie codziennie przez całą dobę. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas. Coraz więcej organizacji wybiera taką metodę w celu ograniczenia lub wyeliminowania „stałego dostępu administratora” do ról uprzywilejowanych.
+
+
+## <a name="terminology"></a>Terminologia
+
+*Uprawniony użytkownik roli* — użytkownik w organizacji, który został przypisany do roli usługi Azure AD jako uprawniony (rola wymaga uaktywnienia).
+
+*Delegowana osoba zatwierdzająca* — co najmniej jedna osoba lub grupa w usłudze Azure AD odpowiedzialna za zatwierdzanie żądań uaktywniania ról.
+
+## <a name="scenarios"></a>Scenariusze
+
+Usługa Privileged Identity Management obsługuje następujące scenariusze:
+
+**Administrator ról uprzywilejowanych ma następujące możliwości:**
+
+- Włączanie zatwierdzeń dla określonych ról
+- Określanie osób i/lub grup zatwierdzających żądania zatwierdzenia
+- Wyświetlanie historii żądań i zatwierdzeń dla wszystkich ról uprzywilejowanych
+
+**Wyznaczona osoba zatwierdzająca ma następujące możliwości:**
+
+- Wyświetlanie oczekujących zatwierdzeń (żądań)
+- Zatwierdzanie lub odrzucanie żądań podniesienia uprawnień ról (pojedyncze i/lub zbiorcze)
+- Uzasadnianie zatwierdzeń/odrzuceń 
+
+**Uprawniony użytkownik roli ma następujące możliwości:**
+
+- Żądanie aktywacji roli wymagającej zatwierdzenia
+- Wyświetlanie stanu żądania uaktywnienia
+- Wykonywanie zadania w usłudze Azure AD w przypadku zatwierdzenia uaktywnienia
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>Włączanie usługi Privileged Identity Management w katalogu
 
@@ -157,4 +186,6 @@ Jeśli organizacja nie odnowi subskrypcji usługi Azure AD Premium P2 lub wersja
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [Wymagania dotyczące korzystania z usługi PIM w ramach subskrypcji](subscription-requirements.md)
+- [Role katalogu usługi Azure AD, którymi można zarządzać w usłudze PIM](pim-roles.md)
+- [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i wdrożeń w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

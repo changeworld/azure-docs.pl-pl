@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "27998053"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815117"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Znajdowanie i diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights
 
@@ -43,7 +43,7 @@ W celu ukończenia tego samouczka:
 - Samouczek śledzi identyfikowanie wyjątków w Twojej aplikacji, dlatego zmodyfikuj kod w środowisku deweloperskim lub testowym, aby wygenerować wyjątek. 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 
 ## <a name="analyze-failures"></a>Analizowanie błędów
@@ -62,20 +62,17 @@ Usługa Application Insights zbiera wszelkie błędy z Twojej aplikacji i pozwal
 
     ![Okno Żądania zakończone niepowodzeniem](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-5. Kliknij pozycję **Wyświetl szczegóły**, aby zobaczyć szczegóły operacji.  Obejmują one wykres Gantta z dwoma błędnymi zależnościami, które w sumie wymagają niemal pół sekundy na ukończenie.  Więcej na temat analizowania problemów z wydajnością możesz się dowiedzieć, kończąc samouczek [Find and diagnose performance issues with Azure Application Insights (Znajdowanie i diagnozowanie problemów z wydajnością w usłudze Azure Application Insights)](app-insights-tutorial-performance.md).
+5. Zapoznaj się z powiązanymi przykładami, klikając przycisk z liczbą odfiltrowanych wyników. „Sugerowane” przykłady zawierają powiązane dane telemetryczne wszystkich składników, nawet jeśli w którymś z nich zastosowano próbkowanie. Kliknij wynik wyszukiwania, aby wyświetlić szczegóły niepowodzenia.
 
-    ![Szczegóły żądań zakończonych niepowodzeniem](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
+    ![Przykłady żądań zakończonych niepowodzeniem](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. W szczegółach operacji widać również wyjątek FormatException, który wydaje się być przyczyną błędu.  Kliknij wyjątek lub licznik **Najważniejsze 3 typy wyjątków**, aby wyświetlić jego szczegóły.  Zobaczysz, że przyczyną jest nieprawidłowy kod pocztowy.
+6. Szczegóły żądań zakończonych niepowodzeniem zawierają wykres Gantta, który informuje, że podczas tej transakcji wystąpiły dwa niepowodzenia zależności, co odpowiadało ponad 50% całkowitego czasu transakcji. To środowisko zawiera wszystkie dane telemetryczne wszystkich składników rozproszonej aplikacji, które są powiązane z tym identyfikatorem operacji. [Dowiedz się więcej na temat nowego środowiska](app-insights-transaction-diagnostics.md). Możesz wybrać dowolny element, aby wyświetlić jego szczegóły po prawej stronie. 
+
+    ![Szczegóły żądania zakończonego niepowodzeniem](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
+
+7. W szczegółach operacji widać również wyjątek FormatException, który wydaje się być przyczyną błędu.  Zobaczysz, że przyczyną jest nieprawidłowy kod pocztowy. Możesz otworzyć migawkę debugowania, aby wyświetlić informacje dotyczące debugowania na poziomie kodu w programie Visual Studio.
 
     ![Szczegóły wyjątku](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
-
-> [!NOTE]
-Włącz [środowisko podglądu](app-insights-previews.md) o nazwie „Ujednolicone szczegóły: diagnostyka transakcji E2E”, aby zobaczyć wszystkie powiązane dane telemetryczne po stronie serwera, takie jak żądania, zależności, wyjątki, ślady, zdarzenia itp. w pojedynczym widoku pełnoekranowym. 
-
-Na włączonym podglądzie możesz sprawdzić czas potrzebny do wywołania zależności wraz z wszelkimi błędami i wyjątkami w ujednoliconym środowisku. W przypadku transakcji między składnikami wykres Gantta wraz z okienkiem szczegółów mogą pomóc w szybkim wykryciu składnika, zależności lub wyjątku będącego główną przyczyną problemu. Dolną sekcję można rozwinąć, aby zobaczyć sekwencję czasową wszelkich śladów lub zdarzeń zebranych dla wybranego komponentu i operacji. [Dowiedz się więcej na temat nowego środowiska](app-insights-transaction-diagnostics.md)  
-
-![Diagnostyka transakcji](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>Identyfikowanie błędnego kodu
 Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyjątków w Twojej aplikacji, aby pomóc Ci w diagnozowaniu głównej przyczyny problemu w środowisku produkcyjnym.  Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Następnie można debugować kod źródłowy, pobierając migawkę i otwierając ją w programie Visual Studio 2017.
@@ -104,15 +101,6 @@ Wszystkie dane zbierane przez usługę Application Insights są przechowywane w 
     ![Kod](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. Kliknij pozycję **Analiza wpływu**, aby otworzyć okno Application Insights — analiza.  Jest ono wypełnione kilkoma zapytaniami udostępniającymi szczegóły żądań zakończonych niepowodzeniem, takie jak użytkownicy, przeglądarki i regiony dotknięte niepowodzeniem.<br><br>![Analiza](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
-
-## <a name="add-work-item"></a>Dodawanie elementu roboczego
-Jeśli usługa Application Insights zostanie połączona z systemem śledzenia, takim jak Visual Studio Team Services lub GitHub, element roboczy można utworzyć bezpośrednio z usługi Application Insights.
-
-1. Wróć do panelu **Właściwości wyjątku** w usłudze Application Insights.
-2. Kliknij pozycję **Nowy element roboczy**.
-3. Zostanie otwarty panel **Nowy element roboczy** z już wypełnionymi informacjami na temat wyjątku.  Przed jego zapisaniem możesz dodać dowolne informacje dodatkowe.
-
-    ![Nowy element roboczy](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy już wiesz, jak identyfikować wyjątki czasu wykonywania, przejdź do następnego samouczka, aby dowiedzieć się, jak identyfikować i diagnozować problemy z wydajnością.

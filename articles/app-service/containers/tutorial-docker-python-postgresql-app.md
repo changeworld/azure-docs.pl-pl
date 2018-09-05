@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9a623156ad2a27abf7fa5e865f8b7452e2c70b3c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423083"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124522"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Tworzenie aplikacji internetowej platformy Docker przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 
@@ -169,7 +169,9 @@ Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersz
 
 ### <a name="create-a-firewall-rule-for-the-postgresql-server"></a>Tworzenie reguły zapory dla serwera PostgreSQL
 
-W usłudze Cloud Shell uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure, aby zezwolić na dostęp do bazy danych ze wszystkich adresów IP. Po ustawieniu początkowego i końcowego adresu IP na `0.0.0.0` zapora będzie otwierana tylko dla innych zasobów platformy Azure. 
+W usłudze Cloud Shell uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure, aby zezwolić na dostęp do bazy danych ze wszystkich adresów IP. 
+> [!Note]
+> Pozostawienie wszystkich portów do bazy danych otwartych, jak również ustawianie bazy danych jako dostępnej z Internetu, nie jest zalecane.  Zapoznaj się z innymi [artykułami dotyczącymi zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/), aby właściwie zabezpieczyć nową bazę danych, która ma być używana w środowisku produkcyjnym.  
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAzureIPs

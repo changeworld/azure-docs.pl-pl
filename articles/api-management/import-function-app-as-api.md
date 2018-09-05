@@ -1,9 +1,9 @@
 ---
-title: Importowanie aplikacji usługi Azure Functions jako interfejsu API w witrynie Azure Portal | Microsoft Docs
-description: Ten samouczek przedstawia sposób użycia usługi API Management do importowania aplikacji usługi Azure Functions jako interfejsu API.
+title: Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management | Microsoft Docs
+description: Ten samouczek przedstawia sposób importowania aplikacji funkcji platformy Azure do usługi Azure API Management jako interfejsu API.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,100 +11,168 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/15/2018
+ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: 670fa58de7155028b0f72f1f819b9f269e07b9eb
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: ea6078088417099045006f81dcaf1f769bbd64d7
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239056"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246819"
 ---
-# <a name="import-an-azure-functions-app-as-an-api"></a>Importowanie aplikacji usługi Azure Functions jako interfejsu API
+# <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
-W tym artykule przedstawiono sposób importowania aplikacji usługi Azure Functions jako interfejsu API. Artykuł przedstawia również sposób testowania interfejsu API usługi Azure API Management.
+Usługa Azure API Management obsługuje importowanie aplikacji funkcji platformy Azure jako nowych interfejsów API lub dodawanie ich do istniejących interfejsów API. Proces automatycznie generuje w aplikacji funkcji platformy Azure klucz hosta, który jest następnie przypisywany do nazwanej wartości w usłudze Azure API Management.
 
-W tym artykule omówiono sposób wykonywania następujących zadań:
+Ten artykuł przeprowadzi Cię przez proces importowania aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management. Omówiono w nim także proces testowania.
+
+Poznasz następujące czynności:
 
 > [!div class="checklist"]
-> * Importowanie aplikacji usługi Functions jako interfejsu API
+> * Importowanie aplikacji funkcji platformy Azure jako interfejsu API
+> * Dołączanie aplikacji funkcji platformy Azure do interfejsu API
+> * Wyświetlanie nowego klucza hosta aplikacji funkcji platformy Azure i nazwanej wartości usługi Azure API Management
 > * Testowanie interfejsu API w witrynie Azure Portal
 > * Testowanie interfejsu API w portalu dla deweloperów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Wykonaj procedury przedstawione w przewodniku Szybki start [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Upewnij się, że Twoja subskrypcja zawiera aplikację usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [Create a Functions App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) (Tworzenie aplikacji usługi Functions).
-+ [Utwórz definicję interfejsu OpenAPI](../azure-functions/functions-openapi-definition.md) aplikacji usługi Azure Functions.
+* Wykonaj procedury przedstawione w przewodniku Szybki start [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+* Upewnij się, że Twoja subskrypcja zawiera aplikację usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji funkcji platformy Azure](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Musi ona zawierać funkcje z wyzwalaczem HTTP oraz ustawienie poziomu autoryzacji *Anonimowe* lub *Funkcja*.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importowanie i publikowanie interfejsu API zaplecza
+## <a name="add-new-api-from-azure-function-app"></a> Importowanie aplikacji funkcji platformy Azure jako nowego interfejsu API
 
-1. W obszarze **API MANAGEMENT** wybierz pozycję **Interfejsy API**.
-2. Z listy **Dodaj nowy interfejs API** wybierz pozycję **Aplikacja usługi Functions**.
+Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wykonaj poniższe kroki.
 
-    ![Aplikacja usługi Functions](./media/import-function-app-as-api/function-app-api.png)
-3. Wybierz pozycję **Przeglądaj**, aby wyświetlić listę aplikacji usługi Functions w ramach subskrypcji.
-4. Wybierz aplikację. Usługa API Management znajduje program Swagger skojarzony z wybraną aplikacją, a następnie pobiera go i importuje. 
-5. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi API Management. Sufiks musi być unikatowy w tym wystąpieniu usługi API Management.
-6. Opublikuj interfejs API przez skojarzenie go z produktem. W takim przypadku jest używany produkt typu **Nieograniczony**. Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Interfejs API można dodać do produktu podczas tworzenia interfejsu API lub później.
+1. W Twoim wystąpieniu usługi **Azure API Management** wybierz pozycję **Interfejsy API** z menu po lewej stronie.
 
-    Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania deweloper otrzymuje klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi API Management, jesteś administratorem. Domyślnie administratorzy mają subskrypcję każdego produktu.
+2. Z listy **Dodaj nowy interfejs API** wybierz pozycję **Aplikacja funkcji**.
 
-    Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe:
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-01.png)
 
-    * **Starter (początkowy)**
-    * **Unlimited (nieograniczony)**   
-7. Wybierz pozycję **Utwórz**.
+3. Kliknij przycisk **Przeglądaj**, aby wybrać funkcje do zaimportowania.
 
-## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Wprowadzanie kluczy usługi Azure Functions w usłudze Azure API Management
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-02.png)
 
-Jeśli zaimportowane funkcje Azure Functions są chronione za pomocą kluczy, usługa API Management automatycznie tworzy *nazwane wartości* dla kluczy. Usługa API Management nie wprowadza wpisów tajnych. Wykonaj następujące kroki dla każdego wpisu:  
+4. Kliknij w sekcji **Aplikacja funkcji**, aby wybrać pozycję z listy dostępnych aplikacji funkcji.
 
-1. W wystąpieniu usługi API Management wybierz kartę **Nazwane wartości**.
-2. Wybierz wpis, a następnie wybierz pozycję **Pokaż wartość** na pasku bocznym.
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-03.png)
 
-    ![Nazwane wartości](./media/import-function-app-as-api/apim-named-values.png)
+5. Znajdź aplikację funkcji, z której chcesz zaimportować funkcje, kliknij ją i naciśnij przycisk **Wybierz**.
 
-3. Jeśli tekst wyświetlany w polu **Wartość** jest podobna do **kodu \<nazwy usługi Azure Functions\>**, przejdź do pozycji **Aplikacje usługi Functions**, a następnie przejdź do pozycji **Functions**.
-4. Wybierz pozycję **Zarządzaj**, a następnie skopiuj odpowiedni klucz na podstawie metody uwierzytelniania aplikacji.
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-04.png)
 
-    ![Aplikacje usługi Functions — kopiowanie kluczy](./media/import-function-app-as-api/azure-functions-app-keys.png)
+6. Wybierz funkcje, które chcesz zaimportować, a następnie kliknij przycisk **Wybierz**.
 
-5. Wklej klucz w polu **Wartość**, a następnie wybierz przycisk **Zapisz**.
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-05.png)
 
-    ![Aplikacje usługi Functions — wklejanie wartości klucza](./media/import-function-app-as-api/apim-named-values-2.png)
+    > [!NOTE]
+    > Możesz zaimportować tylko te funkcje, które są oparte na wyzwalaczu HTTP i mają ustawienie poziomu autoryzacji *Anonimowe* lub *Funkcja*.
 
-## <a name="test-the-new-api-management-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi API Management w witrynie Azure Portal
+7. Jeśli to konieczne, przeprowadź edycję wstępnie wypełnionych pól. Kliknij pozycję **Utwórz**.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-06.png)
+
+## <a name="append-azure-function-app-to-api"></a> Dołączanie aplikacji funkcji platformy Azure do istniejącego interfejsu API
+
+Aby dołączyć aplikację funkcji platformy Azure do istniejącego interfejsu API, wykonaj poniższe kroki.
+
+1. W Twoim wystąpieniu usługi **Azure API Management** wybierz pozycję **Interfejsy API** z menu po lewej stronie.
+
+2. Wybierz interfejs API, który chcesz zaimportować do aplikacji funkcji platformy Azure. Kliknij przycisk **...** i wybierz pozycję **Importuj** z menu kontekstowego.
+
+    ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-01.png)
+
+3. Kliknij kafelek **Aplikacja funkcji**.
+
+    ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-02.png)
+
+4. W oknie podręcznym kliknij przycisk **Przeglądaj**.
+
+    ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-03.png)
+
+5. Kliknij w sekcji **Aplikacja funkcji**, aby wybrać pozycję z listy dostępnych aplikacji funkcji.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-03.png)
+
+6. Znajdź aplikację funkcji, z której chcesz zaimportować funkcje, kliknij ją i naciśnij przycisk **Wybierz**.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-04.png)
+
+7. Wybierz funkcje, które chcesz zaimportować, a następnie kliknij przycisk **Wybierz**.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-05.png)
+
+8. Kliknij przycisk **Importuj**.
+
+    ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-04.png)
+
+## <a name="function-app-import-keys"></a> Wygenerowany klucz hosta aplikacji funkcji platformy Azure
+
+Zaimportowanie aplikacji funkcji platformy Azure powoduje automatyczne wygenerowanie:
+* klucza hosta w aplikacji funkcji o nazwie apim-{*nazwa Twojego wystąpienia usługi Azure API Management*};
+* nazwanej wartości wewnątrz wystąpienia usługi Azure API Management o nazwie {*nazwa Twojego wystąpienia aplikacji funkcji platformy Azure*}-key, które zawiera utworzony klucz hosta.
+
+> [!WARNING]
+> Usunięcie lub zmiana wartości klucza hosta aplikacji funkcji platformy Azure lub nazwanej wartości usługi Azure API Management spowoduje przerwanie komunikacji między usługami. Wartości nie są synchronizowane automatycznie.
+>
+> Jeśli musisz wymienić klucz hosta, upewnij się, że została zmodyfikowana także nazwana wartość w usłudze Azure API Management.
+
+### <a name="access-azure-function-app-host-key"></a>Uzyskiwanie dostępu do klucza hosta aplikacji funkcji platformy Azure
+
+1. Przejdź do Twojego wystąpienia aplikacji funkcji platformy Azure.
+
+2. Wybierz pozycję **Ustawienia aplikacji funkcji** z omówienia.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/keys-02-a.png)
+
+3. Klucz znajduje się w sekcji **Klucze hosta**.
+
+    ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/keys-02-b.png)
+
+### <a name="access-the-named-value-in-azure-api-management"></a>Uzyskiwanie dostępu do nazwanej wartości w usłudze Azure API Management
+
+Przejdź do Twojego wystąpienia usługi Azure API Management i wybierz pozycję **Nazwane wartości** z menu po lewej stronie. Tam jest przechowywany klucz aplikacji funkcji platformy Azure.
+
+![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/keys-01.png)
+
+## <a name="test-in-azure-portal"></a> Testowanie nowego interfejsu API usługi API Management w witrynie Azure Portal
 
 Operacje można wywoływać bezpośrednio w witrynie Azure Portal. Witryna Azure Portal to wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
 1. Wybierz interfejs API utworzony w poprzedniej sekcji.
+
 2. Wybierz kartę **Test**.
+
 3. Wybierz operację.
 
     Na stronie zostaną wyświetlone pola parametrów zapytania i pola nagłówków. Jeden z nagłówków to **Ocp-Apim-Subscription-Key** dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie API Management, oznacza to, że już jesteś administratorem, więc klucz zostanie uzupełniony automatycznie. 
+
 4. Wybierz pozycję **Wyślij**.
 
     Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
 
-## <a name="call-operation"></a>Wywoływanie operacji z portalu dla deweloperów
+## <a name="test-in-developer-portal"></a> Wywoływanie operacji z portalu dla deweloperów
 
 Operacje można również wywoływać z portalu dla deweloperów w celu przetestowania interfejsów API. 
 
 1. Wybierz interfejs API utworzony w kroku [Importowanie i publikowanie interfejsu API zaplecza](#create-api).
+
 2. Wybierz pozycję **Portal dla deweloperów**.
 
     Zostanie otwarta witryna portalu dla deweloperów.
+
 3. Wybierz utworzony **interfejs API**.
+
 4. Wybierz operację, którą chcesz przetestować.
+
 5. Wybierz pozycję **Wypróbuj**.
+
 6. Wybierz pozycję **Wyślij**.
     
     Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

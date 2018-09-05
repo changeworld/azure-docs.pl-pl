@@ -1,25 +1,25 @@
 ---
-title: Omówienie serwera Jenkins i platformy Azure | Microsoft Docs
+title: Omówienie serwera Jenkins i platformy Azure
 description: Hostuj serwer automatyzacji kompilacji i wdrażania Jenkins na platformie Azure i używaj zasobów obliczeniowych i magazynu platformy Azure w celu rozszerzania potoków ciągłej integracji i wdrażania (CI/CD).
-ms.topic: overview
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, omówienie
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281559"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105533"
 ---
 # <a name="azure-and-jenkins"></a>Platforma Azure i serwer Jenkins
 
 [Jenkins](https://jenkins.io/) to popularny serwer automatyzacji typu open-source używany do konfigurowania ciągłej integracji i dostarczania (CI/CD) dla projektów dotyczących oprogramowania. Można hostować swoje wdrożenie narzędzia Jenkins na platformie Azure lub rozszerzyć istniejącą konfigurację narzędzia Jenkins za pomocą zasobów platformy Azure. Są również dostępne wtyczki serwera Jenkins, które umożliwiają upraszczanie ciągłej integracji/ciągłego wdrażania aplikacji na platformie Azure.
 
-Ten artykuł stanowi wprowadzenie do zagadnień dotyczących używania platformy Azure z narzędziem Jenkins i zawiera szczegółowe informacje na temat podstawowych funkcji platformy Azure dostępnych dla użytkowników serwera Jenkins. Aby zacząć korzystać z własnego serwera Jenkins na platformie Azure, zapoznaj się z naszym [przewodnikiem Szybki start](install-jenkins-solution-template.md).
+Ten artykuł stanowi wprowadzenie do zagadnień dotyczących używania platformy Azure z narzędziem Jenkins i zawiera szczegółowe informacje na temat podstawowych funkcji platformy Azure dostępnych dla użytkowników serwera Jenkins. Aby uzyskać więcej informacji na temat rozpoczynania pracy z własnym serwerem Jenkins na platformie Azure, zobacz [Tworzenie serwera Jenkins na platformie Azure](install-jenkins-solution-template.md).
 
 ## <a name="host-your-jenkins-servers-in-azure"></a>Hostowanie serwerów Jenkins na platformie Azure
 

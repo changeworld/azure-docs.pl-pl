@@ -1,47 +1,41 @@
 ---
-title: Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure za pomocą rozwiązania Ansible
-description: Dowiedz się, jak utworzyć i skonfigurować maszyny wirtualnej zestawu skalowania w usłudze Azure za pomocą rozwiązania Ansible
+title: Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
+description: Dowiedz się, jak utworzyć i skonfigurować zestaw skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 ms.service: ansible
-keywords: rozwiązanie ansible, azure, devops, bash, elementu playbook, maszyny wirtualnej, zestawu skalowania maszyn wirtualnych, zestawu skalowania maszyn wirtualnych
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 5f915f7b1b425a3bd6e5d62eb70bb3f633b7eda8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009007"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918579"
 ---
-# <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure za pomocą rozwiązania Ansible
-Rozwiązanie Ansible pozwala zautomatyzować procesy wdrażania i konfiguracji zasobów w danym środowisku. Rozwiązanie Ansible służy do zarządzania zestaw skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych) na platformie Azure, takie same, jak będzie zarządzać innych zasobów platformy Azure. W tym artykule przedstawiono sposób tworzenia i skalowania w poziomie zestawu skalowania maszyn wirtualnych za pomocą rozwiązania Ansible. 
+# <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
+Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie zestawem skalowania maszyn wirtualnych na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu platformy Azure. W tym artykule przedstawiono sposób tworzenia i skalowania na zewnątrz zestawu skalowania maszyn wirtualnych za pomocą rozwiązania Ansible. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- **Subskrypcja platformy Azure** — Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przed przystąpieniem do wykonywania.
-- **Konfigurowanie rozwiązania Ansible** - [Azure Utwórz poświadczenia i konfigurowanie rozwiązania Ansible](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Rozwiązanie Ansible i moduły zestawu Azure Python SDK** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 Z DODATKIEM SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
+- **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ansible 2.6 jest wymagana do uruchamiania następujących przykładowych elementów playbook w ramach tego samouczka. 
+> Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. 
 
 ## <a name="create-a-vmss"></a>Tworzenie zestawu skalowania maszyn wirtualnych
-W tej sekcji przedstawiono przykładowy playbook rozwiązania Ansible, który definiuje następujące zasoby:
-- **Grupa zasobów** do którego zostaną wszystkie zasoby wdrożone
-- **Sieć wirtualna** przestrzeni adresów 10.0.0.0/16
-- **Podsieci** w ramach sieci wirtualnej
-- **Publiczny adres IP** tego wllows możesz uzyskać dostęp do zasobów w Internecie
-- **Sieciowa grupa zabezpieczeń** sterującą przepływem ruchu sieciowego i z zestawu skalowania maszyn wirtualnych
-- **Moduł równoważenia obciążenia** , rozkłada ruch na zestawu zdefiniowanych maszyn wirtualnych przy użyciu reguł usługi load balancer
-- **Zestaw skalowania maszyn wirtualnych** używającej utworzonych zasobów
+W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który definiuje następujące zasoby:
+- **Grupę zasobów**, do której zostaną wdrożone wszystkie zasoby
+- **Sieć wirtualną** w przestrzeni adresowej 10.0.0.0/16
+- **Podsieć** w ramach sieci wirtualnej
+- **Publiczny adres IP**, który pozwala uzyskać dostęp do zasobów w Internecie
+- **Sieciową grupę zabezpieczeń**, która kontroluje przepływ ruchu do i z zestawu skalowania maszyn wirtualnych
+- **Moduł równoważenia obciążenia**, który dystrybuuje ruch w ramach zestawu zdefiniowanych maszyn wirtualnych przy użyciu reguł modułu równoważenia obciążenia
+- **Zestaw skalowania maszyn wirtualnych**, który używa wszystkich utworzonych zasobów
 
-Wprowadź hasło dla *admin_password* wartości.
+Wprowadź własne hasło dla wartości *admin_password*.
 
   ```yaml
   - hosts: localhost
@@ -137,15 +131,15 @@ Wprowadź hasło dla *admin_password* wartości.
               caching: ReadOnly
   ```
 
-Aby utworzyć środowiska zestaw skali maszyny wirtualnej za pomocą rozwiązania Ansible, zapisać poprzedni element playbook jako `vmss-create.yml`, lub [Pobierz przykładowe playbook rozwiązania Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml).
+Aby utworzyć środowisko zestawu skalowania maszyn wirtualnych za pomocą rozwiązania Ansible, zapisz poprzedni podręcznik jako `vmss-create.yml` lub [pobierz przykładowy podręcznik rozwiązania Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml).
 
-Aby uruchomić element playbook rozwiązania Ansible, użyj **playbook rozwiązania ansible** polecenia w następujący sposób:
+Aby uruchomić podręcznik rozwiązania Ansible, użyj polecenia **ansible-playbook** w następujący sposób:
 
   ```bash
   ansible-playbook vmss-create.yml
   ```
 
-Po uruchomieniu elementu playbook, dane wyjściowe podobne do poniższego przykładu pokazuje, że skalowania maszyn wirtualnych została pomyślnie utworzona zestawu:
+Po uruchomieniu podręcznika dane wyjściowe podobne do poniższego przykładu pokazują, że zestaw skalowania maszyn wirtualnych został pomyślnie utworzony:
 
   ```bash
   PLAY [localhost] ***********************************************************
@@ -179,14 +173,14 @@ Po uruchomieniu elementu playbook, dane wyjściowe podobne do poniższego przyk�
 
   ```
 
-## <a name="scale-out-a-vmss"></a>Skalowanie zestawu skalowania maszyn wirtualnych
-Zestaw skalowania utworzono maszyn wirtualnych ma dwa wystąpienia. Jeśli przejdziesz do maszyny wirtualnej zestawu skalowania w witrynie Azure portal, zobacz **standardowa_ds1_v2 (2 wystąpienia)**. Można również użyć [usługi Azure Cloud Shell](https://shell.azure.com/) , uruchamiając następujące polecenie w usłudze Cloud Shell:
+## <a name="scale-out-a-vmss"></a>Skalowanie na zewnątrz zestawu skalowania maszyn wirtualnych
+Utworzony zestaw skalowania maszyn wirtualnych ma dwa wystąpienia. Jeśli przejdziesz do zestawu skalowania maszyn wirtualnych w witrynie Azure Portal, zobaczysz pozycję **Standardowa_DS1_v2 (2 wystąpienia)**. Można również użyć [usługi Azure Cloud Shell](https://shell.azure.com/), uruchamiając następujące polecenie w usłudze Cloud Shell:
 
   ```azurecli-interactive
   az vmss show -n myVMSS -g myResourceGroup --query '{"capacity":sku.capacity}' 
   ```
 
-Dane wyjściowe będą podobne do następujących:
+Zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
 
   ```bash
   {
@@ -194,7 +188,7 @@ Dane wyjściowe będą podobne do następujących:
   }
   ```
 
-Teraz możemy skalować z dwóch wystąpień do trzech wystąpień. Poniższy kod elementu playbook rozwiązania Ansible pobiera informacji na temat skalowania maszyn wirtualnych i zmienia jego pojemność od dwóch do trzech. 
+Teraz możemy przeprowadzić skalowanie z dwóch do trzech wystąpień. Poniższy kod podręcznika rozwiązania Ansible pobiera informacje na temat skalowania maszyn wirtualnych i zmienia jego pojemność z dwóch do trzech. 
 
   ```yaml
   - hosts: localhost
@@ -221,15 +215,15 @@ Teraz możemy skalować z dwóch wystąpień do trzech wystąpień. Poniższy ko
         azure_rm_virtualmachine_scaleset: "{{ body }}"
   ```
 
-Aby skalować zestaw skalowania maszyn wirtualnych, został utworzony, Zapisz poprzedni element playbook jako `vmss-scale-out.yml` lub [Pobierz przykładowe playbook rozwiązania Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml)). 
+Aby skalować w poziomie utworzony zestaw skalowania maszyn wirtualnych, zapisz poprzedni podręcznik jako `vmss-scale-out.yml` lub [pobierz przykładowy podręcznik rozwiązania Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml). 
 
-Następujące polecenie spowoduje uruchomienie elementu playbook:
+Następujące polecenie uruchomi podręcznik:
 
   ```bash
   ansible-playbook vmss-scale-out.yml
   ```
 
-Dane wyjściowe z uruchomieniu elementu playbook rozwiązania Ansible pokazuje, że zestaw skalowania maszyn wirtualnych została pomyślnie skalowanie:
+Dane wyjściowe z uruchomienia podręcznika rozwiązania Ansible pokazują, że zestaw skalowania maszyn wirtualnych został pomyślnie przeskalowany na zewnątrz:
 
   ```bash
   PLAY [localhost] **********************************************************
@@ -265,13 +259,13 @@ Dane wyjściowe z uruchomieniu elementu playbook rozwiązania Ansible pokazuje, 
   localhost                  : ok=5    changed=1    unreachable=0    failed=0
   ```
 
-Jeśli przejdź do zestawu skalowania maszyn wirtualnych, które są skonfigurowane w witrynie Azure portal, zostanie wyświetlony **standardowa_ds1_v2 (wystąpienia 3)**. Można również sprawdzić zmiany z [usługi Azure Cloud Shell](https://shell.azure.com/) , uruchamiając następujące polecenie:
+Jeśli przejdziesz do zestawu skalowania maszyn wirtualnych skonfigurowanego w witrynie Azure Portal, zobaczysz pozycję **Standardowa_DS1_v2 (3 wystąpienia)**. Możesz również zweryfikować zmianę za pomocą [usługi Azure Cloud Shell](https://shell.azure.com/), uruchamiając następujące polecenie:
 
   ```azurecli-interactive
   az vmss show -n myVMSS -g myResourceGroup --query '{"capacity":sku.capacity}' 
   ```
 
-Wyniki działania polecenia w usłudze Cloud Shell pokazuje, że trzy wystąpienia istnieją teraz. 
+Wynik uruchomienia polecenia w usłudze Cloud Shell pokazuje, że istnieją teraz trzy wystąpienia. 
 
   ```bash
   {
@@ -279,6 +273,6 @@ Wyniki działania polecenia w usłudze Cloud Shell pokazuje, że trzy wystąpien
   }
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Rozwiązanie Ansible przykładowe Podręcznik dla zestawu skalowania maszyn wirtualnych](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Przykładowy podręcznik rozwiązania Ansible dla zestawu skalowania maszyn wirtualnych](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)

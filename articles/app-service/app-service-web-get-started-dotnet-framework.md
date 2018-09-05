@@ -1,6 +1,6 @@
 ---
-title: Tworzenie aplikacji internetowej środowiska ASP.NET Framework na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak uruchamiać aplikacje internetowe w usłudze Azure App Service, wdrażając przykładową aplikację internetową ASP.NET.
+title: Tworzenie aplikacji internetowej środowiska C# ASP.NET Framework na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak uruchamiać aplikacje internetowe w usłudze Azure App Service, wdrażając przykładową aplikację internetową ASP.NET w języku C#.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,22 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/30/2017
+ms.date: 08/29/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f6f443dfe637e68b0e1e13f7c3b9e718ae48a85d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191309"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Tworzenie aplikacji internetowej środowiska ASP.NET Framework na platformie Azure
 
 Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  Ten przewodnik Szybki start zawiera informacje dotyczące sposobu wdrożenia pierwszej aplikacji internetowej ASP.NET w usłudze Azure App Service. Po zakończeniu będzie istnieć grupa zasobów składająca się z planu usługi App Service i aplikacji internetowej platformy Azure wraz z wdrożoną aplikacją internetową.
 
-Obejrzyj wideo, aby zobaczyć, jak działa ten przewodnik Szybki start, a następnie wykonaj kroki samodzielnie, aby opublikować swoją pierwszą aplikację .NET na platformie Azure.
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,25 +34,21 @@ Obejrzyj wideo, aby zobaczyć, jak działa ten przewodnik Szybki start, a nastę
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z następującymi pakietami roboczymi:
-    - **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**
-    - **Tworzenie aplikacji na platformie Azure**
-
-    ![Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych oraz tworzenie aplikacji na platformie Azure (w ramach Internetu i chmury)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+Zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
 
 Jeśli program Visual Studio został już zainstalowany, dodaj obciążenia w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
-## <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji sieci Web platformy ASP.NET
+## <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej platformy ASP.NET
 
 W programie Visual Studio utwórz nowy projekt, wybierając pozycję **Plik > Nowy > Projekt**. 
 
-W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C# > Sieć Web > Aplikacja sieci Web ASP.NET (program .NET Framework)**.
+W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C# &gt; Internet &gt; Aplikacja internetowa ASP.NET (program .NET Framework)**.
 
 Nadaj aplikacji nazwę _myFirstAzureWebApp_, a następnie kliknij przycisk **OK**.
    
 ![Okno dialogowe Nowy projekt](./media/app-service-web-get-started-dotnet-framework/new-project.png)
 
-Na platformie Azure można wdrożyć dowolny typ aplikacji sieci Web platformy ASP.NET. Do celów tego przewodnika Szybki start wybierz szablon **MVC** i upewnij się, że uwierzytelnianie jest ustawione na wartość **Bez uwierzytelniania**.
+Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej platformy ASP.NET. Do celów tego przewodnika Szybki start wybierz szablon **MVC** i upewnij się, że uwierzytelnianie jest ustawione na wartość **Bez uwierzytelniania**.
       
 Kliknij przycisk **OK**.
 
@@ -112,17 +107,17 @@ W oknie dialogowym **Konfiguruj plan usługi App Service** użyj ustawień znajd
 
 Kliknij przycisk **OK**.
 
-## <a name="create-and-publish-the-web-app"></a>Tworzenie i publikowanie aplikacji sieci Web
+## <a name="create-and-publish-the-web-app"></a>Tworzenie i publikowanie aplikacji internetowej
 
-W polu **Nazwa aplikacji sieci Web** wpisz unikatową nazwę aplikacji (dozwolone znaki to `a-z`, `0-9` i `-`) lub zaakceptuj automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji internetowej.
+W polu **Nazwa aplikacji internetowej** wpisz unikatową nazwę aplikacji (dozwolone znaki to `a-z`, `0-9` i `-`) lub zaakceptuj automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji internetowej.
 
 Wybierz pozycję **Utwórz**, aby rozpocząć tworzenie zasobów platformy Azure.
 
-![Konfigurowanie nazwy aplikacji sieci Web](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+![Konfigurowanie nazwy aplikacji internetowej](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
 
 Po zakończeniu działania kreatora aplikacja internetowa ASP.NET zostanie opublikowana na platformie Azure, a następnie uruchomiona w domyślnej przeglądarce.
 
-![Opublikowana aplikacja sieci Web platformy ASP.NET na platformie Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+![Opublikowana aplikacja internetowa platformy ASP.NET na platformie Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
 Nazwa aplikacji internetowej określona w [kroku tworzenia i publikowania](#create-and-publish-the-web-app) jest używana jako prefiks adresu URL w formacie `http://<app_name>.azurewebsites.net`.
 
@@ -144,24 +139,31 @@ Znajdź tag HTML `<div class="jumbotron">` u góry i zastąp cały element nast�
 Aby przeprowadzić ponowne wdrożenie na platformie Azure, kliknij prawym przyciskiem myszy projekt **myFirstAzureWebApp** w **Eksploratorze rozwiązań**, a następnie wybierz polecenie **Publikuj**.
 
 Na stronie publikowania wybierz pozycję **Publikuj**.
+![Strona publikowania podsumowania programu Visual Studio](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
 
 Po zakończeniu publikowania program Visual Studio otworzy w przeglądarce adres URL aplikacji internetowej.
 
-![Zaktualizowana aplikacja sieci Web platformy ASP.NET na platformie Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
+![Zaktualizowana aplikacja internetowa platformy ASP.NET na platformie Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
 ## <a name="manage-the-azure-web-app"></a>Zarządzanie aplikacją internetową platformy Azure
 
 Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać aplikacją internetową.
 
-W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swojej aplikacji sieci Web platformy Azure.
+W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
 Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. 
 
 ![Blok usługi App Service w witrynie Azure Portal](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
 Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji. 
+
+## <a name="video"></a>Połączenia wideo
+
+Obejrzyj wideo, aby zobaczyć, jak działa ten przewodnik Szybki start, a następnie wykonaj kroki samodzielnie, aby opublikować swoją pierwszą aplikację .NET na platformie Azure.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

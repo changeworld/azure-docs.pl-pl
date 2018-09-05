@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432443"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124984"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Samouczek: konfigurowanie środowiska Jenkins w celu włączenia ciągłej integracji/ciągłego wdrażania dla aplikacji Java w usłudze Service Fabric
 
@@ -53,10 +53,10 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
 
 1. Ściągnij obraz kontenera narzędzia Jenkins usługi Service Fabric: ``docker pull rapatchi/jenkins:v10``. Ten obraz jest dostarczany ze wstępnie zainstalowaną wtyczką narzędzia Jenkins usługi Service Fabric.
 
-1. Uruchom obraz kontenera z lokalizacji, w której zainstalowano certyfikaty na maszynie lokalnej
+1. Uruchom obraz kontenera z lokalizacji, w której przechowywane są certyfikaty platformy Azure na zainstalowanej maszynie lokalnej.
 
     ```bash
-    docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
     ```
 
 1. Uzyskaj identyfikator wystąpienia obrazu kontenera. Listę wszystkich kontenerów platformy Docker można wyświetlić za pomocą polecenia ``docker ps –a``
@@ -86,7 +86,7 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
 
 1. Najpierw — jeśli nie masz repozytorium, którego można użyć w celu hostowania projektu głosowania w usłudze GitHub — utwórz je. W pozostałej części tego samouczka repozytorium nosi nazwę **dev_test**.
 
-1. Utwórz **nowy element** na pulpicie nawigacyjnym narzędzia Jenkins.
+1. Utwórz **nowy element** na pulpicie nawigacyjnym narzędzia Jenkins w ``http://<HOST-IP>:8080``.
 
 1. Wprowadź nazwę elementu (na przykład **MyJob**). Wybierz pozycję **free-style project** (projekt w stylu dowolnym) i kliknij przycisk **OK**.
 
@@ -123,6 +123,8 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     > [!NOTE]
     > Określany w tym miejscu klaster może być tym samym klastrem, który hostuje aplikację kontenera narzędzia Jenkins, jeśli usługa Service Fabric jest używana do wdrożenia obrazu kontenera narzędzia Jenkins.
     >
+
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="update-your-existing-application"></a>Aktualizowanie istniejącej aplikacji
 
