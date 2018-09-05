@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 0b1eda89d2baaa54b17d8a7c73a2e9c987f0f8eb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413658"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665989"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: usługa Azure SQL Database (PaaS) lub program SQL Server na maszynach wirtualnych Azure (IaaS)
 
@@ -30,7 +30,7 @@ Na platformie Azure może mieć obciążeń programu SQL Server, działające w 
 
       Poniższa ilustracja przedstawia te opcje wdrażania:
 
-      ![Opcje wdrażania](./media/sql-database-technical-overview/deployment-options.png) 
+      ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
   - Można wdrożyć na [usługi Azure SQL wystąpieniach zarządzanych bazy danych (wersja zapoznawcza)](sql-database-managed-instance.md). 
 
       > [!NOTE]
@@ -133,7 +133,7 @@ Aby uzyskać **bazy danych SQL**, firma Microsoft oferuje umowę SLA ZAPEWNIAJĄ
 W przypadku **programu SQL Server uruchomionego na maszynach wirtualnych platformy Azure** firma Microsoft zapewnia dostępność na poziomie 99,95%, która obejmuje tylko maszyny wirtualne. Umowa SLA nie obejmuje procesów (np. programu SQL Server) uruchomionych na maszynie wirtualnej i wymaga obsługi przynajmniej dwóch wystąpień maszyny wirtualnej w zbiorze dostępności. Najnowsze informacje znajdują się w artykule [Maszyny wirtualne — umowa SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Dla bazy danych o wysokiej dostępności (HA) w ramach maszyn wirtualnych, należy skonfigurować jedną z obsługiwanych opcji wysokiej dostępności w programie SQL Server, takich jak [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Użycie obsługiwanej opcji wysokiej dostępności nie zapewnia dodatkowej umowy SLA, ale umożliwia osiągnięcie dostępności bazy danych na poziomie > 99,99%.
 
 ### <a name="market"></a>Czas na przeniesienie na platformę Azure
-**Serwery logiczne usługi SQL Database, pul elastycznych i pojedynczych baz danych** to właściwe rozwiązanie dla aplikacji projektowanych w chmurze, podczas pracy deweloperskiej i szybkie czas na rynek rozwiązań noew mają kluczowe znaczenie. Dzięki funkcjonalności przypominającej model DBA jest doskonała dla architektów i deweloperów chmury, ponieważ zmniejsza potrzebę zarządzania bazowym systemem operacyjnym i bazą danych. 
+**Serwery logiczne usługi SQL Database, pul elastycznych i pojedynczych baz danych** to właściwe rozwiązanie dla aplikacji projektowanych w chmurze, gdy wydajność deweloperów i krótki czas — na rynek nowe rozwiązania mają kluczowe znaczenie. Dzięki funkcjonalności przypominającej model DBA jest doskonała dla architektów i deweloperów chmury, ponieważ zmniejsza potrzebę zarządzania bazowym systemem operacyjnym i bazą danych. 
 
 **Wystąpienie zarządzane usługi SQL Database** znacznie upraszcza migrację istniejących aplikacji do usługi Azure SQL Database, co umożliwia przenoszenie zmigrowana baza danych aplikacji, aby szybko wprowadzać na rynek na platformie Azure.
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858810"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696823"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Bezserwerowa baza danych przetwarzanie za pomocą usługi Azure Functions
 
@@ -31,7 +31,7 @@ Usługa Azure Cosmos DB i Azure Functions umożliwiają integrowanie baz danych 
 * Powiązywanie kontenera usługi Azure Cosmos DB przy użyciu funkcji **powiązania danych wyjściowych**. Powiązania danych wyjściowych zapisu danych do kontenera, po zakończeniu funkcji.
 
 > [!NOTE]
-> W tej chwili wyzwalacz usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych współpracują tylko z kontami interfejsu API SQL i interfejsu API programu Graph.
+> W tej chwili wyzwalacz usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych pracować tylko konta interfejsu API SQL i interfejs API Gremlin.
 
 Poniższy diagram ilustruje każdą z tych trzech integracji: 
 
@@ -82,7 +82,7 @@ Na poniższych ilustracjach przedstawiono kod w witrynie Azure portal, w tym sce
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Gier przypadek użycia — wyzwalacz usługi Azure Cosmos DB i powiązania danych wyjściowych
 
-W gry, po utworzeniu nowego użytkownika można wyszukiwać innych użytkowników, którzy mogą znać je za pomocą [interfejsu API usługi Azure Cosmos DB wykresu](graph-introduction.md). Następnie możesz zapisywać wyniki [SQL usługi Azure Cosmos DB database] ułatwia ich odnalezienie.
+W gry, po utworzeniu nowego użytkownika można wyszukiwać innych użytkowników, którzy mogą znać je za pomocą [interfejsu API usługi Azure Cosmos DB Gremlin](graph-introduction.md). Następnie możesz zapisywać wyniki [SQL usługi Azure Cosmos DB database] ułatwia ich odnalezienie.
 
 **Implementacja:** wyzwalacza usługi Azure Cosmos DB i powiązania danych wyjściowych
 

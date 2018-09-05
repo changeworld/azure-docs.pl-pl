@@ -1,6 +1,6 @@
 ---
-title: Analiza aplikacji sieci Web w języku Java za pomocą usługi Application Insights | Microsoft Docs
-description: 'Monitorowanie wydajności aplikacji sieci Web w języku Java za pomocą usługi Application Insights. '
+title: Analiza aplikacji internetowej w języku Java za pomocą usługi Application Insights | Microsoft Docs
+description: 'Monitorowanie wydajności aplikacji internetowych w języku Java za pomocą usługi Application Insights. '
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43703846"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzalną usługą analizy dla deweloperów sieci Web, która ułatwia zrozumienie wydajności i użycia aktywnej aplikacji. Służy do [wykrywania i diagnozowania problemów z wydajnością i wyjątków](app-insights-detect-triage-diagnose.md) oraz [pisania kodu][api] do śledzenia korzystania z aplikacji przez użytkowników.
 
-![dane przykładowe](./media/app-insights-java-get-started/5-results.png)
+![Zrzut ekranu przedstawiający Przegląd przykładowych danych](./media/app-insights-java-get-started/overview-graphs.png)
 
 Usługa Application Insights obsługuje aplikacje w języku Java działające w systemach Linux, Unix lub Windows.
 
@@ -33,13 +34,15 @@ Potrzebne elementy:
 * Środowisko JRE w wersji 1.7 lub 1.8
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
 
-*Jeśli masz aplikację sieci Web, która już działa, możesz wykonać alternatywną procedurę, aby [dodać zestaw SDK w czasie wykonywania na serwerze sieci Web](app-insights-java-live.md). Ta alternatywa pozwala uniknąć ponownego kompilowania kodu, ale nie udostępnia opcji pisania kodu w celu śledzenia działań użytkownika.*
+*Jeśli masz aplikację internetową, która już działa, możesz wykonać alternatywną procedurę, aby [dodać zestaw SDK w czasie wykonywania na serwerze internetowym](app-insights-java-live.md). Ta alternatywa pozwala uniknąć ponownego kompilowania kodu, ale nie udostępnia opcji pisania kodu w celu śledzenia działań użytkownika.*
+
+Jeśli wolisz używać struktury Spring, spróbuj znaleźć potrzebne informacje w [przewodniku dotyczącym konfiguracji aplikacji inicjatora Spring Boot w celu korzystania z usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Uzyskiwanie klucza instrumentacji usługi Application Insights
 1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
-2. Utwórz zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja sieci Web Java.
+2. Utwórz zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.
 
-    ![Wypełnij nazwę, wybierz aplikację sieci Web Java i kliknij przycisk Utwórz](./media/app-insights-java-get-started/02-create.png)
+    ![Wypełnij nazwę, wybierz aplikację internetową Java i kliknij przycisk Utwórz](./media/app-insights-java-get-started/02-create.png)
 3. Znajdź klucz instrumentacji nowego zasobu. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
 
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/app-insights-java-get-started/03-key.png)
@@ -219,7 +222,9 @@ package devCamp.WebApp.configurations;
     }
 ```
 
-[!NOTE] Jeśli używasz aplikacji Spring Boot 1.3.8 lub starszej, zastąp element FilterRegistrationBean poniższym wierszem.
+> [!NOTE]
+> Jeśli używasz aplikacji Spring Boot 1.3.8 lub starszej, zastąp element FilterRegistrationBean poniższym wierszem.
+
 ```Java
     import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```
@@ -433,7 +438,7 @@ Uzyskasz wykresy czasów odpowiedzi oraz powiadomienia e-mail w razie wyłączen
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie wywołań zależności](app-insights-java-agent.md)
 * [Monitorowanie liczników wydajności sytemu Unix](app-insights-java-collectd.md)
 * Dodawanie [monitorowania do stron sieci Web](app-insights-javascript.md) w celu monitorowania czasów ładowania stron, wywołań AJAX i wyjątków przeglądarki

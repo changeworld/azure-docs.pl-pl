@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122891"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665584"
 ---
 # <a name="collector-appliance"></a>Urządzenie modułu zbierającego
 
@@ -212,17 +212,27 @@ Zalecamy również następujące kroki, aby zabezpieczyć urządzenie
 
 Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA jeszcze raz.
 
-1. Pobierz najnowszy [pakiet uaktualniający](https://aka.ms/migrate/col/upgrade_9_13) (wersja 1.0.9.13).
+1. Pobierz najnowszy [pakiet uaktualniający](https://aka.ms/migrate/col/upgrade_9_14) (wersja 1.0.9.14).
 2. Aby upewnij się, że poprawka pobrany bezpieczne, Otwórz okno wiersza polecenia administratora i uruchom następujące polecenie, aby wygenerować wartość skrótu dla pliku ZIP. Wygenerowany skrót powinien odpowiadać za pomocą skrótu wymienionych dla określonej wersji:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (przykład użycia C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
+    (przykład użycia C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)
 3. Skopiuj plik zip do usługi Azure Migrate collector maszyny wirtualnej (urządzenia modułu zbierającego).
 4. Kliknij prawym przyciskiem myszy w pliku zip, a następnie wybierz Wyodrębnij wszystkie.
 5. Kliknij prawym przyciskiem myszy na Setup.ps1 i wybierz polecenie Uruchom przy użyciu programu PowerShell, a następnie postępuj zgodnie z instrukcjami na ekranie, aby zainstalować aktualizację.
 
 ### <a name="list-of-updates"></a>Lista aktualizacji
+
+#### <a name="upgrade-to-version-10914"></a>Uaktualnienie do wersji 1.0.9.14
+
+Wartości dla uaktualnienie mieszania [pakietu 1.0.9.14](https://aka.ms/migrate/col/upgrade_9_14)
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | c5bf029e9fac682c6b85078a61c5c79c
+SHA1 | af66656951105e42680dfcc3ec3abd3f4da8fdec
+SHA256 | 58b685b2707f273aa76f2e1d45f97b0543a8c4d017cd27f0bdb220e6984cc90e
 
 #### <a name="upgrade-to-version-10913"></a>Uaktualnienie do wersji 1.0.9.13
 

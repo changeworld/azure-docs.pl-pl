@@ -1,10 +1,10 @@
 ---
-title: Azure Service Bus dzienników diagnostycznych | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania dzienników diagnostycznych dla usługi Service Bus na platformie Azure.
+title: Dzienniki diagnostyczne platformy Azure Service Bus | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne usługi Service Bus na platformie Azure.
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: banisadr
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -14,31 +14,31 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: 3c2528634dea5c75e4a0e35b7e1a6a30de8d96c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29122185"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696160"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Dzienniki diagnostyczne usługi Service Bus
 
-Dla usługi Azure Service Bus, można wyświetlić dwa typy dzienników:
-* **[Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Dzienniki te zawierają informacje o operacji wykonywanych w zadaniu. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Można skonfigurować dziennika diagnostycznego bardziej rozbudowane informacje o wszystko, co się stanie w ramach danego zadania. Dzienniki diagnostyczne obejmują działania, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działania, które są wykonywane, gdy zadanie jest uruchomione.
+Możesz wyświetlić dwa typy dzienników dla usługi Azure Service Bus:
+* **[Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Te dzienniki zawierają informacje dotyczące operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane informacje o wszystko, co się stanie, w ramach danego zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
 Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne, wykonaj następujące czynności:
 
-1.  W [portalu Azure](https://portal.azure.com)w obszarze **monitorowanie i zarządzanie**, kliknij przycisk **dzienników diagnostycznych**.
+1.  W [witryny Azure portal](https://portal.azure.com)w obszarze **monitorowanie + zarządzanie**, kliknij przycisk **dzienniki diagnostyczne**.
 
-    ![Nawigacja bloku do dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image1.png)
+    ![Nawigacja w bloku do dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image1.png)
 
 2. Kliknij zasób, który chcesz monitorować.  
 
-3.  Kliknij przycisk **Włącz diagnostykę**.
+3.  Kliknij pozycję **Włącz diagnostykę**.
 
     ![Włączanie dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image2.png)
 
@@ -46,34 +46,34 @@ Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki dia
 
     ![Zmień stan dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Ustaw element docelowy archiwum, które mają; na przykład konto magazynu, Centrum zdarzeń lub Analiza dzienników Azure.
+5.  Ustaw docelowy archiwum, który ma; na przykład konto magazynu, Centrum zdarzeń lub usługi Azure Log Analytics.
 
 6.  Zapisz nowe ustawienia diagnostyki.
 
-Nowe ustawienia zaczęły obowiązywać w ciągu około 10 minut. Po wykonaniu tej dzienników pojawia się w celu archiwizacji skonfigurowane, na **dzienników diagnostycznych** bloku.
+Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Po tym dzienników pojawia się w skonfigurowanym archiwizacji lokalizacji docelowej na **dzienniki diagnostyczne** bloku.
 
-Aby uzyskać więcej informacji na temat konfigurowania diagnostyki, zobacz [omówienie Azure dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-schema"></a>Dzienniki diagnostyczne schematu
 
-Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis ma pól ciągów, które używają formatu opisane w poniższej sekcji.
+Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis ma pola ciągów, w formacie opisane w poniższej sekcji.
 
-## <a name="operational-logs-schema"></a>Schemat operacyjne dzienniki
+## <a name="operational-logs-schema"></a>Dzienniki operacyjne schematu
 
-Loguje **OperationalLogs** kategorii przechwytywania, co się dzieje podczas operacji usługi Service Bus. W szczególności te dzienniki przechwytywania typ operacji, łącznie z tworzeniem kolejki, zasoby używane i stan operacji.
+Loguje się **OperationalLogs** kategorii przechwytywania, co się dzieje podczas operacji usługi Service Bus. W szczególności te dzienniki przechwytywania typ operacji, w tym tworzenie kolejek, zasoby używane i stan operacji.
 
-Dziennik operacyjny JSON ciągi zawierać elementy wymienione w poniższej tabeli:
+Dziennik operacyjny ciągów JSON obejmują elementy wymienione w poniższej tabeli:
 
 Name (Nazwa) | Opis
 ------- | -------
-Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia
+Identyfikator działania | Wewnętrzny identyfikator, używane do śledzenia
 EventName | Nazwa operacji           
 resourceId | Identyfikator zasobu usługi Azure Resource Manager
 SubscriptionId | Identyfikator subskrypcji
 EventTimeString | Czas operacji
 EventProperties | Właściwości operacji
 Stan | Stan operacji
-Obiekt wywołujący | Obiekt wywołujący operacji (Azure portalu lub zarządzania klienta)
+Obiekt wywołujący | Obiekt wywołujący operacji (klient usługi Azure portal lub zarządzania)
 category | OperationalLogs
 
 Poniżej przedstawiono przykładowy dziennik operacyjny ciągu JSON:
@@ -94,7 +94,7 @@ Poniżej przedstawiono przykładowy dziennik operacyjny ciągu JSON:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz poniższe łącza, aby dowiedzieć się więcej na temat magistrali usług:
+Zobacz poniższe linki, aby dowiedzieć się więcej na temat usługi Service Bus:
 
 * [Wprowadzenie do usługi Service Bus](service-bus-messaging-overview.md)
 * [Rozpoczynanie pracy z usługą Service Bus](service-bus-dotnet-get-started-with-queues.md)

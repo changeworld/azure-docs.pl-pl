@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 931cc628dccc77a026791b27a7a8159b37c585d4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919567"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669446"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replikowanie wielowarstwowej aplikacji Dynamics AX przy użyciu usługi Azure Site Recovery
 
@@ -99,7 +99,7 @@ Możesz wybrać maszynę Wirtualną w zreplikowanych elementów, aby skonfigurow
 
 * Jeśli używasz statycznych adresów IP, określ adres IP, który chcesz, aby maszyna wirtualna może zająć **docelowy adres IP** pola tekstowego.
 
-    ![Ustawienia sieci ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png).
+    ![Ustawienia sieci ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Tworzenie planu odzyskiwania
@@ -168,7 +168,7 @@ Aby uzyskać więcej informacji na temat wykonywania testu trybu failover, zobac
 
 Aby uzyskać więcej informacji na temat przełączeniem w tryb failover, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
 
-### <a name="perform-a-failback"></a>Wykonaj powrotu po awarii
+### <a name="perform-a-failback"></a>Wykonywanie powrotu po awarii
 
 Kwestie związane z określonym programem SQL Server podczas powrotu po awarii, zobacz [Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie limit wydatków na platformie Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób działania usługi Azure limit wydatków i sposobie jego usunięcia
+title: Omówienie limitu wydatków na platformie Azure | Dokumentacja firmy Microsoft
+description: Opisuje, jak działa platforma Azure limit wydatków i sposobach jego usuwania
 services: ''
 documentationcenter: ''
 author: genlin
@@ -12,44 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 6049e3614b63bfabee6721dcaa83008eb3306493
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069986"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669909"
 ---
-# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie wydatków limit i sposobie jego usunięcia na platformie Azure
+# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie limicie wydatków i sposobach jego usuwania
 
-Limit wydatków w Azure istnieje, aby uniknąć wydatków za pośrednictwem kwota środki. Wszystkich nowych klientów, którzy konta w wersji próbnej lub oferty, które obejmuje środki na korzystanie z wielu miesiącach ma limit wydatków, domyślnie włączona. Limit wydatków jest $0. Nie można zmienić. Limit wydatków jest niedostępny na przykład dla subskrypcji korzystających z płatności zgodnie z rzeczywistym użyciem i planów zobowiązań. Zobacz [pełną listę oferty Azure i dostępność limit wydatków](https://azure.microsoft.com/support/legal/offer-details/).
+Istnieje limit wydatków w usłudze Azure, aby uniknąć wydatków za pośrednictwem wynikające z kwoty kredytu. Wszyscy nowi klienci, którzy utworzą konto w wersji próbnej lub ofert obejmujących środki przez wiele miesięcy mają limit wydatków, domyślnie włączona. Limit wydatków wynosi 0 USD. Nie można zmienić. Limit wydatków jest niedostępny na przykład dla subskrypcji korzystających z płatności zgodnie z rzeczywistym użyciem i planów zobowiązań. Zobacz [pełną listę ofert platformy Azure i dostępność limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
 
-**Szukasz rozliczeń alerty?** Zobacz [skonfigurować rozliczeń lub środki alerty dotyczące subskrypcji platformy Azure](billing-set-up-alerts.md).
+**Szukasz alertów dotyczących rozliczeń?** Zobacz [Konfigurowanie alertów dotyczących rozliczeń lub środków dla subskrypcji platformy Azure](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Co się dzieje w przypadku osiągnięcia limitu wydatków?
 
-Wyniki użycia w wyczerpanie zasobów miesięcznej opłaty uwzględnionych w subskrypcji, usług, które można wdrożyć są wyłączone w pozostałej części tego okresu rozliczeniowego. 
+Wyniki użycia Naliczanie opłat, które wyczerpać miesięczne kwoty uwzględnione w ramach subskrypcji, wdrożone usługi są wyłączone w pozostałej części tego okresu rozliczeniowego. 
 
-Na przykład gdy spędzają na wszystkich środków uwzględnionych w subskrypcji usługi w chmurze, które zostanie wdrożone są usuwane z produkcyjnym i maszynach wirtualnych platformy Azure są zatrzymane i zwalnia przydzielone. Dane konta magazynu i bazy danych są dostępne w sposób tylko do odczytu.
+Na przykład gdy poświęcany wszystkie środki, które są dołączone do subskrypcji usług w chmurze, które zostanie wdrożone są usuwane ze środowiska produkcyjnego i maszynach wirtualnych platformy Azure są zatrzymane i ponownie alokowane. Dane na kontach magazynu i baz danych są dostępne w sposób tylko do odczytu.
 
-Na początku następnym okresie rozliczeniowym, jeśli ofertę subskrypcji zawiera środki na korzystanie z wielu miesiącach subskrypcji będzie ponownie włączona automatycznie. Następnie można ponownie wdrożyć usługi w chmurze i ma pełny dostęp do bazy danych i konta magazynu.
+Na początku następnego okresu rozliczeniowego, jeśli oferta Subskrypcja obejmuje środki przez wiele miesięcy Twoja subskrypcja będzie ponownie włączona automatycznie. Następnie można ponownie wdrożyć swoje usługi w chmurze i mają pełny dostęp do swoich kont magazynu i baz danych.
 
-Możemy wysyłać powiadomienia e-mail, gdy osiągnęła limit wydatków dla subskrypcji. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions), i widzieć powiadomień dotyczących subskrypcji, które osiągnęły limit wydatków.
+Po osiągnięciu limitu wydatków dla subskrypcji, wysyłanie powiadomień e-mail. Zaloguj się do [Centrum kont](https://account.windowsazure.com/Subscriptions), wyświetlić powiadomienia dotyczące subskrypcji, dla których osiągnięto limit wydatków.
 
-Jeśli korzystasz z bezpłatnej wersji próbnej i osiągnięcia limitu wydatków, możesz [uaktualnienia do płatność za rzeczywiste użycie](billing-upgrade-azure-subscription.md) Aby usunąć limit wydatków i automatycznie ponownie włączyć subskrypcję.
+Jeśli korzystasz z bezpłatnej wersji próbnej i osiągnięcia limitu wydatków, możesz to zrobić [Przeprowadź uaktualnienie do płatności](billing-upgrade-azure-subscription.md) Usuń limit wydatków i subskrypcja będzie automatycznie włączona ponownie dostępna.
 
 <a id="remove"></a>
 
 ## <a name="remove-the-spending-limit-in-account-center"></a>Usuń limit wydatków w Centrum konta
 
-Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją jest skojarzona prawidłowa metoda płatności. W przypadku ofert mających środki przez wiele miesięcy można także ponownie włączyć limit wydatków na początku z następnym okresie rozliczeniowym.
+Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją jest skojarzona prawidłowa metoda płatności. W przypadku ofert obejmujących środki przez wiele miesięcy możesz też ponownie włączyć limit wydatków na początku kolejnego okresu rozliczeniowego.
 
 Aby usunąć limit wydatków, wykonaj następujące czynności:
 
-1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
-1. Wybierz subskrypcję.
-. Jeśli subskrypcja jest wyłączona z powodu osiągnięcia limitu wydatków, kliknij to powiadomienie: "Subskrypcja osiągnęła Limit wydatków i została wyłączona, aby uniknąć naliczania opłat." W przeciwnym razie kliknij przycisk **Usuń limit wydatków** w **stan SUBSKRYPCJI** obszaru.
+1. Zaloguj się do [Centrum kont](https://account.windowsazure.com/Subscriptions).
+1. Wybierz subskrypcję. Jeśli subskrypcja jest wyłączona z powodu osiągnięcia limitu wydatków, kliknij to powiadomienie: "Subskrypcja osiągnęła Limit wydatków i została wyłączona, aby nie naliczono opłat". W przeciwnym razie kliknij przycisk **Usuń limit wydatków** w **stan SUBSKRYPCJI** obszaru.
 1. Wybierz odpowiednią opcję.
 
 ![Opcja Usuń limit wydatków](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -63,30 +62,30 @@ Aby usunąć limit wydatków, wykonaj następujące czynności:
 
 ### <a name="why-would-i-want-to-remove-the-spending-limit"></a>Dlaczego chcesz usunąć limit wydatków?
 
-Limit wydatków może uniemożliwiać wdrażania lub przy użyciu określonych innych firm i usług firmy Microsoft. Poniżej przedstawiono scenariusze, w których należy usunąć limit wydatków dla subskrypcji.
+Limit wydatków może uniemożliwić wdrażanie lub używanie niektórych usług firmy Microsoft i innych podmiotów. Poniżej przedstawiono scenariusze, w których należy usunąć limit wydatków dla subskrypcji.
 
 * Planujesz wdrożyć obrazy firmy Microsoft (np. Oracle) i usługi, takie jak Visual Studio Team Services. W tym scenariuszu powoduje przekroczenie limitu wydatków niemal natychmiast i powoduje, że Twoja subskrypcja jest wyłączona.
 * Masz usługi, których działania nie można przerwać.
-* Masz usługi i zasoby z takimi ustawieniami jak wirtualne adresy IP, których nie chcesz utracić. Te ustawienia zostaną utracone, jeśli usługi i zasoby są cofnąć przydziału.
+* Masz usługi i zasoby z takimi ustawieniami jak wirtualne adresy IP, których nie chcesz utracić. Te ustawienia zostaną utracone w przypadku usług i zasobów dezalokowany.
 
 ### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>Jak włączyć limit wydatków po usunięciu go?
 
-Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków został usunięty przez nieograniczony czas. Zmień, aby włączyć automatyczne na początku następnym okresie rozliczeniowym.
+Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków został usunięty przez czas nieokreślony. Zmień ją na automatyczne włączenie na początku następnego okresu rozliczeniowego.
 
-1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
-1. Kliknij żółty Baner, aby zmienić opcję limitu wydatków.
-1. Wybierz **Włącz limit wydatków w następnym okresie rozliczeniowym \<rozliczeń okres Data rozpoczęcia\>**
+1. Zaloguj się do [Centrum kont](https://account.windowsazure.com/Subscriptions).
+1. Kliknij przycisk żółty transparent, aby zmienić opcję limitu wydatków.
+1. Wybierz **włączyć funkcję limit wydatków w następnym okresie rozliczeniowym \<okres rozliczeniowy Data rozpoczęcia\>**
 
-### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak ustawić limit wydatków niestandardowych?
+### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak ustawić niestandardowe limitu wydatków?
 
-Nie mamy niestandardowe spędzają limity dzisiaj. Jednak można zgodzić się na [Użyj alerty dotyczące rozliczeń do formantu z spędzają](billing-set-up-alerts.md).
+Nie mamy już dziś możesz wydać limity niestandardowe. Jednak można zgodzić się na [Użyj alerty dotyczące rozliczeń do kontroli swoje wydatki](billing-set-up-alerts.md).
 
-### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Limit wydatków uniemożliwia wszelkich opłat z platformy Azure?
+### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Limit wydatków uniemożliwia wszystkie opłaty z platformy Azure?
 
-[Niektóre usługi zewnętrzne opublikowane w portalu Azure Marketplace](billing-understand-your-azure-marketplace-charges.md) nie można używać z Twojej kredytów subskrypcji i może spowodować naliczenie opłat oddzielne nawet wtedy, gdy ustawiono limit wydatków. Przykładami licencji programu Visual Studio, Azure Active Directory premium plany pomocy technicznej i większości firm marki usług. Podczas obsługi administracyjnej nowej usługi zewnętrzne jest wyświetlane ostrzeżenie z informacją, że usługi są rozliczane oddzielnie:
+[Niektóre usługi zewnętrzne opublikowane w witrynie Azure Marketplace](billing-understand-your-azure-marketplace-charges.md) nie można używać z kredytów subskrypcji i mogą być naliczane osobne opłaty nawet wtedy, gdy limit wydatków jest ustawiona. Przykłady obejmują licencji na program Visual Studio, usługi Azure Active Directory premium, plany pomocy technicznej i większość firm usług. Podczas aprowizacji nowej usługi zewnętrznej, zostanie wyświetlone ostrzeżenie z informacją, że usługi są rozliczane oddzielnie:
 
-![Ostrzeżenie zakupu Marketplace](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+![Portal Marketplace zakupu ostrzeżenie](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

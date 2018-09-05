@@ -1,6 +1,6 @@
 ---
-title: Usługa Komunikacja z platformy ASP.NET Core | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z platformy ASP.NET Core w bezstanowe i stanowe niezawodne usługi.
+title: Usługi komunikacji z platformą ASP.NET Core | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać platformy ASP.NET Core bezstanowych i stanowych usług Reliable Services.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -12,103 +12,104 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 11/01/2017
+ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: 7786e08e04d2ebce757b4c47b8ed599036c95958
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207863"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701538"
 ---
-# <a name="aspnet-core-in-service-fabric-reliable-services"></a>Platformy ASP.NET Core w niezawodnej usługi sieci szkieletowej usług
+# <a name="aspnet-core-in-service-fabric-reliable-services"></a>Platforma ASP.NET Core usług usługi Service Fabric Reliable Services
 
-Platformy ASP.NET Core to nowa open source i międzyplatformowa struktura do tworzenia nowoczesnych aplikacji działających w chmurze podłączonej do Internetu, takich jak aplikacje sieci web, aplikacji IoT i przenośnych zapleczy. 
+ASP.NET Core to nowe środowisko typu open source i dla wielu platform do tworzenia nowoczesnych aplikacji działających w chmurze podłączonej do Internetu, takich jak aplikacje sieci web, aplikacji IoT i zapleczy aplikacji mobilnych. 
 
-Ten artykuł zawiera szczegółowy przewodnik z usługami platformy ASP.NET Core za pomocą usługi sieć szkieletowa niezawodne usługi hostingu **Microsoft.ServiceFabric.AspNetCore.** * zestaw pakietów NuGet.
+Ten artykuł to podręcznik szczegółowe do udostępniania usług platformy ASP.NET Core przy użyciu usług Reliable Services usługi Service Fabric **Microsoft.ServiceFabric.AspNetCore.** * zestaw pakietów NuGet.
 
-Samouczek wprowadzający platformy ASP.NET Core w sieci szkieletowej usług i instrukcje dotyczące konfigurowania środowiska deweloperskiego, konfigurowanie, zobacz [utworzyć aplikację .NET](service-fabric-tutorial-create-dotnet-app.md).
+Aby uzyskać Samouczek wprowadzający programu ASP.NET Core w usłudze Service Fabric i instrukcje dotyczące konfigurowania ustawień środowiska programowania, zobacz [tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).
 
-Pozostała część w tym artykule przyjęto założenie, że już znasz platformy ASP.NET Core. Jeśli nie, firma Microsoft zaleca odczytu za pomocą [podstawowe informacje na temat platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/index).
+W pozostałej części tego artykułu przyjęto założenie, że już znasz platformy ASP.NET Core. Jeśli nie, zalecamy zapoznanie się za pośrednictwem [podstawy platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/index).
 
-## <a name="aspnet-core-in-the-service-fabric-environment"></a>Platformy ASP.NET Core w środowisku sieci szkieletowej usług
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>Platforma ASP.NET Core w środowisku usługi Service Fabric
 
-Gdy aplikacje platformy ASP.NET Core można uruchomić na .NET Core lub pełną .NET Framework, usług sieci szkieletowej usług obecnie można uruchamiać tylko na pełne .NET Framework. Oznacza to, podczas tworzenia usługi platformy ASP.NET Core Service Fabric, nadal muszą wskazywać z pełnego środowiska .NET Framework.
+Aplikacje platformy ASP.NET Core i usługi Service Fabric można uruchamiać na platformy .NET Core, a także pełny program .NET Framework. Platformy ASP.NET Core można używać na dwa różne sposoby, w usłudze Service Fabric:
+ - **Hostowany jako wykonywalnej gościa**. Służy to głównie uruchamianie istniejących aplikacji programu ASP.NET Core w usłudze Service Fabric, bez konieczności wprowadzania zmian kodu.
+ - **Uruchamiane wewnątrz niezawodnej usługi**. Zezwala na lepszą integrację ze środowiskiem uruchomieniowym usługi Service Fabric i umożliwia usług stanowych platformy ASP.NET Core.
 
-Platformy ASP.NET Core mogą być używane w sieci szkieletowej usług na dwa sposoby:
- - **Hostowany jako pliku wykonywalnego gościa**. Służy to głównie do uruchomienia aplikacji platformy ASP.NET Core w sieci szkieletowej usług bez zmian kodu.
- - **Uruchom wewnątrz niezawodnej usługi**. Umożliwia lepszą integrację z środowiska uruchomieniowego platformy Service Fabric i umożliwia stanowe platformy ASP.NET Core services.
+W pozostałej części tego artykułu opisano sposób korzystanie z platformy ASP.NET Core wewnątrz usługi Reliable Service za pomocą platformy ASP.NET Core składniki integracji, które są dostarczane z zestawem SDK usługi Service Fabric. 
 
-Pozostałe w tym artykule opisano sposób korzystania z platformy ASP.NET Core wewnątrz niezawodnej usługi za pomocą platformy ASP.NET Core składniki integracji, które są dostarczane przy użyciu zestawu SDK sieci szkieletowej usług. 
+## <a name="service-fabric-service-hosting"></a>Hosting usługi Service Fabric
 
-## <a name="service-fabric-service-hosting"></a>Hosting usług sieci szkieletowej usług
+W usłudze Service Fabric, jeden lub więcej wystąpień i/lub repliki usługi uruchamiane w *proces hosta usługi*, plik wykonywalny, który uruchamia kod usługi. Masz, jako autor usługi, proces hosta usługi i usługi Service Fabric aktywuje i monitorowanie go dla Ciebie.
 
-W sieci szkieletowej usług, jeden lub więcej wystąpień i/lub repliki usługi uruchamiane w *procesu hosta usługi*, plik wykonywalny, który uruchamia kodu usługi. Jako autor usługi, własnej procesu hosta usługi i usługi Service Fabric aktywuje i monitoruje go dla Ciebie.
+Tradycyjne ASP.NET (maksymalnie MVC 5) jest ściśle powiązany w usługach IIS za pomocą System.Web.dll. Platforma ASP.NET Core rozdzielenie między serwerem sieci web i aplikacji sieci web. Zezwala aplikacji sieci web można przenosić między inne serwery internetowe i umożliwia także jako serwery sieci web *może być samodzielnie hostowane*, co oznacza można uruchomić serwera sieci web w swoim własnym procesie, w przeciwieństwie do procesu, który jest własnością dedykowanej sieci web oprogramowanie serwerowe, takich jak usługi IIS. 
 
-Tradycyjny ASP.NET (maksymalnie MVC 5) jest ściśle powiązane do usług IIS za pomocą System.Web.dll. Platformy ASP.NET Core rozdzielenie między serwerem sieci web i aplikacji sieci web. Umożliwia aplikacji sieci web jako przenośny między serwerami innej witryny sieci web i umożliwia także serwery sieci web jako *hosta samodzielnego*, co oznacza, że można uruchomić serwera sieci web własne procesu, w przeciwieństwie do procesu, który jest właścicielem oprogramowanie serwera sieci web, takich jak usługi IIS w wersji dedykowanej. 
+Aby połączyć usługę Service Fabric i programu ASP.NET, jako wykonywalnej gościa lub w usługi Reliable Service musi być możliwe uruchomienie programu ASP.NET w procesie hosta usługi. Platforma ASP.NET Core hostingu samodzielnego umożliwia to zrobić.
 
-Aby można było połączyć usługi Service Fabric i ASP.NET, jako pliku wykonywalnego gościa lub w niezawodnej usługi, musi być możliwe jej uruchomienie ASP.NET wewnątrz procesu hosta usługi. Platformy ASP.NET Core hostingu samodzielnego można to zrobić.
+## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Hostingu platformy ASP.NET Core w usłudze Reliable Service
+Zazwyczaj własne aplikacje platformy ASP.NET Core tworzenie hostem sieci Web w punkcie wejścia aplikacji, takich jak `static void Main()` method in Class metoda `Program.cs`. W tym przypadku cyklu życia hostem sieci Web jest powiązana cyklu życia procesu.
 
-## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Hosting platformy ASP.NET Core w niezawodnej usługi
-Zazwyczaj własnym obsługiwanych aplikacji platformy ASP.NET Core tworzenie WebHost w punkcie wejścia aplikacji, takich jak `static void Main()` metoda `Program.cs`. W takim przypadku cyklem życia hostem sieci Web jest powiązany z cyklem życia procesu.
+![Hostingu platformy ASP.NET Core w procesie][0]
 
-![Hosting platformy ASP.NET Core w procesie][0]
+Jednak punkt wejścia aplikacji nie jest właściwym miejscem do tworzenia hostem sieci Web w usługi Reliable Service, ponieważ punkt wejścia aplikacji tylko służy do rejestrowania typ usługi ze środowiskiem uruchomieniowym usługi Service Fabric, dzięki czemu może utworzyć wystąpienia typu usługi. Hostem sieci Web powinny być tworzone w usłudze Reliable Service sam. W ramach procesu hosta usługi wystąpień usługi i/lub repliki można przejść przez wiele cykle życia. 
 
-Jednak punkt wejścia aplikacji nie jest odpowiednim miejscu, aby utworzyć WebHost w niezawodnej usługi, ponieważ punkt wejścia aplikacji tylko służy do rejestrowania typ usługi ze środowiskiem uruchomieniowym usługi sieć szkieletowa, dzięki czemu może utworzyć wystąpienia typu usługi. Hostem sieci Web należy utworzyć w niezawodnej usługi samej siebie. W ramach procesu hosta usługi wystąpień usługi i/lub repliki można przejść przez wiele cyklów. 
+Wystąpienie usługi Reliable Service jest reprezentowany przez pochodząca od klasy usługi `StatelessService` lub `StatefulService`. Stos komunikacji usługi znajduje się w `ICommunicationListener` implementacji w klasie usługi. `Microsoft.ServiceFabric.Services.AspNetCore.*` Pakiety NuGet zawiera implementacje `ICommunicationListener` , uruchom i zarządzanie hostem sieci Web platformy ASP.NET Core w usłudze Kestrel lub słowa kluczowego HttpSys w niezawodnej usługi.
 
-Wystąpienie usługi niezawodnego jest reprezentowana przez usługi klasy wywodzące się z `StatelessService` lub `StatefulService`. Stosu komunikacji usługi znajduje się w `ICommunicationListener` wdrażania w klasie usługi. `Microsoft.ServiceFabric.Services.AspNetCore.*` Pakietów NuGet zawiera implementacje `ICommunicationListener` czy start i zarządzać hostem sieci Web platformy ASP.NET Core dla Kestrel lub HttpSys w niezawodnej usługi.
-
-![Hosting platformy ASP.NET Core w niezawodnej usługi][1]
+![Hostingu platformy ASP.NET Core w usłudze Reliable Service][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListeners platformy ASP.NET Core
-`ICommunicationListener` Implementacje Kestrel i HttpSys w `Microsoft.ServiceFabric.Services.AspNetCore.*` mają podobne wzorce użycia pakietów NuGet, ale akcje nieco inne specyficzne dla każdego serwera sieci web. 
+`ICommunicationListener` Implementacje dla słowa kluczowego HttpSys w usługach Kestrel i `Microsoft.ServiceFabric.Services.AspNetCore.*` pakiety NuGet podobnych wzorców użycia, ale także wykonać nieco różne akcje specyficzne dla każdego serwera sieci web. 
 
-Zarówno odbiorników komunikacji zawierają konstruktora, który ma następujące argumenty:
- - **`ServiceContext serviceContext`**: `ServiceContext` Obiektu, który zawiera informacje dotyczące uruchomionej usługi.
- - **`string endpointName`**: nazwa `Endpoint` konfiguracji w pliku ServiceManifest.xml. To przede wszystkim których różnią się odbiorników komunikacji dwóch: HttpSys **wymaga** `Endpoint` konfiguracji, a nie Kestrel.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: lambda, który implementuje, w którym można utworzyć i zwracany `IWebHost`. Dzięki temu można skonfigurować `IWebHost` sposób zwykle w aplikacji platformy ASP.NET Core. Wyrażenie lambda zawiera Użyj adresu URL, który jest generowany, można w zależności od sieci szkieletowej usług integracji opcjach dostępnych i `Endpoint` konfiguracji należy podać. Adres URL następnie można zmodyfikować lub używane jako — jest uruchomienie serwera sieci web.
+Zarówno odbiorników komunikacji zapewniają konstruktora, który przyjmuje następujące argumenty:
+ - **`ServiceContext serviceContext`**`ServiceContext` Obiektu, który zawiera informacje dotyczące uruchomionej usługi.
+ - **`string endpointName`**: nazwa `Endpoint` konfiguracji w ServiceManifest.xml. Jest to głównie których różnią się odbiorników komunikacji dwa: słowa kluczowego HttpSys **wymaga** `Endpoint` konfiguracji, a nie Kestrel.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Wyrażenie lambda, który implementuje, w którym możesz utworzyć i zwracają `IWebHost`. Dzięki temu można skonfigurować `IWebHost` sposób zwykle w aplikacji ASP.NET Core. Wyrażenie lambda zawiera, używać adresu URL, który jest generowany dla opcje można w zależności od integracji usługi Service Fabric i `Endpoint` konfiguracji należy podać. Adres URL następnie można zmodyfikować lub używany jako — jest uruchomienie serwera sieci web.
 
-## <a name="service-fabric-integration-middleware"></a>Oprogramowanie pośredniczące integracji sieci szkieletowej usług
-`Microsoft.ServiceFabric.Services.AspNetCore` Zawiera pakiet NuGet `UseServiceFabricIntegration` — metoda rozszerzenia na `IWebHostBuilder` dodaje oprogramowanie pośredniczące obsługujący usługi sieci szkieletowej. To oprogramowanie pośredniczące konfiguruje Kestrel lub HttpSys `ICommunicationListener` można zarejestrować adresu URL usługi unikatowy usługi nazewnictwa sieci szkieletowej i sprawdza poprawność żądań klientów, aby upewnić się, klienci są połączenie z usługą prawo. Jest to konieczne w środowisku udostępnionych hosta, na przykład sieci szkieletowej usług, gdy wiele aplikacji sieci web można uruchamiać na takie same fizyczne lub maszyny wirtualnej, ale nie należy używać nazwy hosta unikatowy, aby uniemożliwić klientom przez pomyłkę połączenie z usługą niewłaściwy. Ten scenariusz jest opisany bardziej szczegółowo w następnej sekcji.
+## <a name="service-fabric-integration-middleware"></a>Oprogramowania pośredniczącego integracji usługi Service Fabric
+`Microsoft.ServiceFabric.Services.AspNetCore` Obejmuje pakiet NuGet `UseServiceFabricIntegration` metody rozszerzenia `IWebHostBuilder` , dodaje oprogramowanie pośredniczące obsługujących usługi Service Fabric. To oprogramowanie pośredniczące konfiguruje Kestrel lub słowa kluczowego HttpSys `ICommunicationListener` zarejestrować adres URL, unikatowa usługa, za pomocą usługi nazewnictwa Service Fabric i następnie weryfikuje żądań klientów, aby upewnić się, klienci nawiązywania odpowiednią usługę. Jest to konieczne w środowisku hosta udostępnione takich jak Usługa Service Fabric, gdzie wielu aplikacji sieci web można uruchamiać na takie same fizyczne lub maszyny wirtualnej, ale nie używaj nazw hostów unikatowy, aby uniemożliwić klientom przez pomyłkę połączenia z usługą problem. Ten scenariusz jest opisany bardziej szczegółowo w następnej sekcji.
 
-### <a name="a-case-of-mistaken-identity"></a>Przypadek omyłkowo wystąpiła tożsamości
-Repliki usługi, niezależnie od protokołu, nasłuchiwania IP:port unikatowych kombinacji. Po repliki usługi rozpoczął nasłuchiwanie na punkt końcowy IP:port, zgłasza go adres tego punktu końcowego usługi nazewnictwa sieci szkieletowej usług gdzie mogły być odnajdowane przez klientów lub innych usług. Użycie portów przypisywane dynamicznie aplikacji, usług repliki usługi przypadkowo może używać tego samego punktu końcowego IP:port innej usługi, która była wcześniej w tej samej fizycznej lub maszyny wirtualnej. Może to spowodować klientowi mistakely połączyć się z usługą niewłaściwy. Może się to zdarzyć, jeśli występuje następująca sekwencja zdarzeń:
+### <a name="a-case-of-mistaken-identity"></a>Przypadek omyłkowe tożsamości
+Repliki usługi, niezależnie od tego protokołu, nasłuchiwać IP:port unikatową kombinację. Po rozpoczęciu repliki service nasłuchiwania w punkcie końcowym IP:port zgłasza ten adres punktu końcowego do usługi Service Fabric Naming gdzie mogą być odnajdowane przez klientów lub innych usług. Użycie porty dynamicznie przypisany do aplikacji, usług repliki usługi przypadkowo może używać tego samego punktu końcowego IP:port innej usługi, która była wcześniej w tej samej fizyczne lub maszyny wirtualnej. Może to spowodować klientowi mistakely nawiązać połączenie z usługą problem. Może się to zdarzyć, jeśli ma miejsce następująca sekwencja zdarzeń:
 
- 1. Usługa A nasłuchuje 10.0.0.1:30000 za pośrednictwem protokołu HTTP. 
- 2. Klient rozpoznaje Service A i pobiera adres 10.0.0.1:30000
- 3. Usługa A są przenoszone do innego węzła.
- 4. B usługi jest umieszczona na 10.0.0.1 i przypadkowo używa tego samego portu 30000.
- 5. Klient próbuje nawiązać A service z 10.0.0.1:30000 adres pamięci podręcznej.
- 6. Klient jest teraz pomyślnie nawiązano połączenie usługi B wiedzy nie jest połączona z niewłaściwej usługi.
+ 1. A usługa nasłuchuje na 10.0.0.1:30000 za pośrednictwem protokołu HTTP. 
+ 2. Klient jest rozpoznawana jako usługa A i pobiera 10.0.0.1:30000 adresu
+ 3. Usługa A przenosi się do innego węzła.
+ 4. Usługa B jest umieszczany na 10.0.0.1 i przypadkowo używa tego samego portu 30000.
+ 5. Klient próbuje nawiązać połączenie z usługi A za pomocą 10.0.0.1:30000 adres pamięci podręcznej.
+ 6. Klient jest teraz pomyślnie nawiązano połączenie do usługi, B, które nie chcą korzystać jest podłączone do niewłaściwej usługi.
 
-Może to powodować błędy w losowych odstępach czasu, które mogą być trudne do diagnozowania. 
+Może to spowodować błędy w losowych odstępach czasu, które mogą być trudne do zdiagnozowania. 
 
-### <a name="using-unique-service-urls"></a>Przy użyciu usługi unikatowe adresy URL
-Aby tego uniknąć, usługi mogą ogłoszeniem punkt końcowy Naming Service z unikatowym identyfikatorem, a następnie zweryfikować Unikatowy identyfikator podczas żądania klienta. To jest akcją współpracy między usługami w zaufanym środowisku — dzierżawy szkodliwy. Zapewnia to usługa bezpiecznego uwierzytelniania w środowisku szkodliwy dzierżawy.
+### <a name="using-unique-service-urls"></a>Przy użyciu adresów URL, unikatowa usługa
+Aby temu zapobiec, usługi można wpis punktu końcowego w usłudze nazewnictwa o unikatowym identyfikatorze, a następnie zweryfikować tego unikatowego identyfikatora podczas żądania klienta. To wspólne działanie między usługami w zaufanym środowisku — dzierżawy szkodliwy. To zapewnia usługa bezpiecznego uwierzytelniania w środowisku szkodliwy dzierżawy.
 
-W zaufanym środowisku, który jest dodawany przez oprogramowanie pośredniczące `UseServiceFabricIntegration` metody automatycznie dołącza Unikatowy identyfikator adres, który jest przesyłana z usługą Naming i sprawdza poprawność identyfikator dla każdego żądania. Jeśli identyfikator nie jest zgodny, oprogramowanie pośredniczące natychmiast zwraca odpowiedź HTTP 410 — Przeniesiono.
+W zaufanym środowisku oprogramowania pośredniczącego, które jest dodawany przez `UseServiceFabricIntegration` metoda automatycznie dołącza identyfikator unikatowy adres, który jest opublikowany w usłudze nazewnictwa i sprawdza poprawność identyfikatora na każde żądanie. Jeśli identyfikator nie jest zgodny, oprogramowanie pośredniczące natychmiast zwraca odpowiedź HTTP 410 — Przeniesiono.
 
-Usługi używające należy się upewnić, port przypisywane dynamicznie używać tego oprogramowania pośredniczącego.
+Usługi używające dynamicznie przypisany port należy wprowadzić korzystanie z tego oprogramowania pośredniczącego.
 
-W środowisku współpracy usług korzystających z stały port unikatowy nie mają ten problem. Stały port unikatowy jest zwykle używany dla zewnętrznie połączonej usługi, które wymagają dobrze znanego portu dla aplikacji klienckich nawiązać połączenie. Na przykład większość aplikacji sieci web skierowane do Internetu będzie używać portu 80 i 443 dla połączeń przeglądarki sieci web. W takim przypadku Unikatowy identyfikator nie powinna być włączona.
+Usług korzystających z stały port unikatowy nie mają ten problem w środowisku współpracy. Zazwyczaj służy stały port unikatowy dla zewnętrznie połączonego z usługi, które wymagają dobrze znany port dla aplikacji klienckich nawiązać połączenie. Na przykład większość aplikacji sieci web dostępnym z Internetu użyje portu 80 i 443 dla połączeń w przeglądarce sieci web. W tym przypadku Unikatowy identyfikator nie powinna być włączona.
 
 Na poniższym diagramie przedstawiono przepływ żądania z oprogramowaniem pośredniczącym włączone:
 
-![Integracja usługi sieci szkieletowej platformy ASP.NET Core][2]
+![Integracja platformy ASP.NET Core w usłudze Service Fabric][2]
 
-Zarówno Kestrel i HttpSys `ICommunicationListener` implementacje Użyj ten mechanizm w taki sam sposób. Mimo że HttpSys wewnętrznie pozwala odróżnić żądań oparte na unikatowych ścieżki adresu URL za pomocą podstawowych *http.sys* funkcji, które są funkcji współużytkowania portów *nie* używane przez HttpSys `ICommunicationListener` Implementacja ponieważ skutkiem będzie HTTP 503 i HTTP 404 kodów stanu błędu w tym scenariuszu opisano wcześniej. Które z kolei utrudnia bardzo dla klientów w celu określenia celem tego błędu, jak HTTP 503 i 404 protokołu HTTP są już powszechnie używana do określenia inne błędy. W związku z tym zarówno Kestrel i HttpSys `ICommunicationListener` implementacje normalizacji na udostępniane przez oprogramowanie pośredniczące `UseServiceFabricIntegration` — metoda rozszerzenia, dzięki czemu klienci należy wykonywać tylko punkt końcowy usługi ponownego rozpoznania akcji na odpowiedzi HTTP 410.
+Kestrel i słowa kluczowego HttpSys `ICommunicationListener` implementacje używać tego mechanizmu w taki sam sposób. Mimo że słowa kluczowego HttpSys wewnętrznie pozwala odróżnić żądania, w oparciu o unikatowe ścieżki adresu URL przy użyciu podstawowych *http.sys* funkcja, która funkcja jest udostępniania portów *nie* posługują się słowa kluczowego HttpSys `ICommunicationListener` Implementacja ponieważ powodującymi HTTP 503 i HTTP 404 kody stanu błędu w scenariuszu opisano wcześniej. Który z kolei utrudnia dla klientów w celu określenia celem tego błędu, HTTP 503 i HTTP 404 są już powszechnie używane do wskazać inne błędy. W efekcie Kestrel i słowa kluczowego HttpSys `ICommunicationListener` implementacje standaryzuj udostępniane przez oprogramowanie pośredniczące `UseServiceFabricIntegration` metody rozszerzenia, aby klienci należy wykonywać tylko punkt końcowy usługi ponownie rozpoznawać akcji w odpowiedzi HTTP 410.
 
-## <a name="httpsys-in-reliable-services"></a>HttpSys w niezawodne usługi
-HttpSys mogą być używane w niezawodnej usługi przez importowanie **Microsoft.ServiceFabric.AspNetCore.HttpSys** pakietu NuGet. Ten pakiet zawiera `HttpSysCommunicationListener`, implementacja `ICommunicationListener`, który służy do tworzenia WebHost Core ASP.NET wewnątrz niezawodnej usługi za pomocą HttpSys jako serwera sieci web.
+## <a name="httpsys-in-reliable-services"></a>Słowa kluczowego HttpSys usług Reliable Services
+Słowa kluczowego HttpSys może służyć w niezawodnej usługi przez zaimportowanie **Microsoft.ServiceFabric.AspNetCore.HttpSys** pakietu NuGet. Ten pakiet zawiera `HttpSysCommunicationListener`, implementacja `ICommunicationListener`, który pozwala na tworzenie WebHost Core ASP.NET wewnątrz niezawodnej usługi przy użyciu słowa kluczowego HttpSys jako serwer sieci web.
 
-W oparciu HttpSys [interfejsu API serwera HTTP systemu Windows](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Ta metoda korzysta *http.sys* sterownik jądra używany przez usługi IIS do przetwarzania żądań HTTP i kierowania ich do procesów uruchomionych aplikacji sieci web. Dzięki temu wiele procesów w tej samej fizycznej lub maszyny wirtualnej do hosta aplikacji sieci web w tym samym porcie rozróżniane unikatowej ścieżki adresu URL lub nazwa hosta. Funkcje te są przydatne w sieci szkieletowej usług do obsługi wielu witryn sieci Web, w tym samym klastrze.
+Słowa kluczowego HttpSys jest oparta na [interfejsu API serwera HTTP Windows](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Ta metoda korzysta z *http.sys* sterownik jądra używany przez usługi IIS na potrzeby przetwarzania żądań HTTP i przekazywać je do procesów działających aplikacji sieci web. Dzięki temu wiele procesów w tej samej fizyczne lub maszyny wirtualnej do hosta aplikacji sieci web na tym samym porcie rozróżniane przez unikatową ścieżkę adresu URL lub nazwa hosta. Funkcje te są przydatne w usłudze Service Fabric do hostowania wielu witryn sieci Web, w tym samym klastrze.
 
-Na poniższym diagramie przedstawiono sposób używania HttpSys *http.sys* sterownik jądra w systemie Windows Udostępnianie portów:
+>[!NOTE]
+>Implementacja słowa kluczowego HttpSys działa tylko na platformy Windows.
+
+Na poniższym diagramie przedstawiono, jak używa słowa kluczowego HttpSys *http.sys* sterownik jądra na Windows współużytkowania portów:
 
 ![Sterownik HTTP.sys][3]
 
-### <a name="httpsys-in-a-stateless-service"></a>HttpSys usługi bezstanowej
-Do użycia `HttpSys` za pośrednictwem usługi bezstanowej, Zastąp `CreateServiceInstanceListeners` — metoda i przywracać `HttpSysCommunicationListener` wystąpienie:
+### <a name="httpsys-in-a-stateless-service"></a>Słowa kluczowego HttpSys usługi bezstanowej
+Aby użyć `HttpSys` w usługę bezstanową, należy zastąpić `CreateServiceInstanceListeners` metody i wróć `HttpSysCommunicationListener` wystąpienia:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -131,15 +132,15 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="httpsys-in-a-stateful-service"></a>HttpSys w usługi stanowej
+### <a name="httpsys-in-a-stateful-service"></a>Słowa kluczowego HttpSys w stanowej usłudze
 
-`HttpSysCommunicationListener` obecnie nie jest przeznaczony dla stanowych usług z powodu komplikacji z podstawową *http.sys* funkcji współużytkowania portów. Aby uzyskać więcej informacji zobacz następującą sekcję na alokacją portów dynamicznych z HttpSys. Dla stanowych usług Kestrel jest serwer sieci web zalecane.
+`HttpSysCommunicationListener` obecnie nie jest przeznaczony dla usług stanowych ze względu na kompilacji z bazowego *http.sys* funkcji udostępniania portów. Aby uzyskać więcej informacji zobacz następującą sekcję w alokacji port dynamiczny za pomocą słowa kluczowego HttpSys. W przypadku usług stanowych Kestrel jest serwer sieci web zalecane.
 
 ### <a name="endpoint-configuration"></a>Konfiguracja punktu końcowego
 
-`Endpoint` Konfiguracja jest wymagana dla serwerów sieci web, które używają API serwera HTTP systemu Windows, w tym HttpSys. Serwery sieci Web, które korzystają z interfejsu API serwera HTTP systemu Windows musi najpierw zarezerwować swojego adresu URL z *http.sys* (zwykle jest to realizowane przy użyciu [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) narzędzia). Ta akcja wymaga podniesione uprawnienia, które nie mają domyślnie usług. Opcje "http" lub "https" `Protocol` właściwość `Endpoint` konfiguracji w *ServiceManifest.xml* są używane w szczególności w celu poinstruowania środowiska uruchomieniowego platformy Service Fabric można zarejestrować adresu URL za *http.sys* na przy użyciu imieniu [ *silne symbolu wieloznacznego* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) prefiksu adresu URL.
+`Endpoint` Konfiguracja jest wymagana dla serwerów sieci web, korzystających z Windows API serwera HTTP, w tym słowa kluczowego HttpSys. Serwery sieci Web, które używają interfejsu API serwera HTTP Windows najpierw należy zarezerwować swój adres URL z *http.sys* (zwykle jest to realizowane przy [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) narzędzie). Ta akcja wymaga podniesionych uprawnień, które nie mają domyślnie usług. Opcje "http" lub "https" `Protocol` właściwość `Endpoint` konfiguracji w *ServiceManifest.xml* służą specjalnie w celu poinstruowania uruchomieniowe usługi Service Fabric, aby zarejestrować adres URL z  *Sterownik HTTP.sys* w Twoim imieniu za pomocą [ *silny symbol wieloznaczny* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) prefiks adresu URL.
 
-Na przykład, aby zarezerwować `http://+:80` w przypadku usługi, należy użyć następującej konfiguracji w pliku ServiceManifest.xml:
+Na przykład, aby zarezerwować `http://+:80` w przypadku usługi następującej konfiguracji powinny być używane w ServiceManifest.xml:
 
 ```xml
 <ServiceManifest ... >
@@ -153,7 +154,7 @@ Na przykład, aby zarezerwować `http://+:80` w przypadku usługi, należy uży�
 </ServiceManifest>
 ```
 
-I nazwa punktu końcowego muszą być przekazywane do `HttpSysCommunicationListener` konstruktora:
+I nazwa punktu końcowego muszą zostać przekazane do `HttpSysCommunicationListener` Konstruktor:
 
 ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -166,8 +167,8 @@ I nazwa punktu końcowego muszą być przekazywane do `HttpSysCommunicationListe
  })
 ```
 
-#### <a name="use-httpsys-with-a-static-port"></a>HttpSys za pomocą portu statycznego
-Aby używać portu statycznego z HttpSys, podaj numer portu w `Endpoint` konfiguracji:
+#### <a name="use-httpsys-with-a-static-port"></a>Należy użyć słowa kluczowego HttpSys z portu statycznego
+Aby korzystanie z portu statycznego za pomocą słowa kluczowego HttpSys, podaj numer portu w `Endpoint` konfiguracji:
 
 ```xml
   <Resources>
@@ -177,8 +178,8 @@ Aby używać portu statycznego z HttpSys, podaj numer portu w `Endpoint` konfigu
   </Resources>
 ```
 
-#### <a name="use-httpsys-with-a-dynamic-port"></a>Użyj HttpSys z portów dynamicznych
-Aby używać portu przypisywany dynamicznie z HttpSys, Pomiń `Port` właściwości w `Endpoint` konfiguracji:
+#### <a name="use-httpsys-with-a-dynamic-port"></a>Użyj słowa kluczowego HttpSys z portu dynamicznego
+Korzystanie z portu przypisywany dynamicznie za pomocą słowa kluczowego HttpSys, Pomiń `Port` właściwość `Endpoint` konfiguracji:
 
 ```xml
   <Resources>
@@ -188,17 +189,17 @@ Aby używać portu przypisywany dynamicznie z HttpSys, Pomiń `Port` właściwo�
   </Resources>
 ```
 
-Należy pamiętać, że port dynamiczny przydzielonej przez `Endpoint` konfiguracji zawiera tylko jeden port *na proces hosta*. Bieżący model hostingu sieci szkieletowej usług umożliwia wielu wystąpień usługi i/lub replik, które ma być obsługiwana w tym samym procesie, co oznacza każdego z nich udostępni tego samego portu, gdy przydzielane za pośrednictwem `Endpoint` konfiguracji. Wiele wystąpień HttpSys można współużytkować port przy użyciu odpowiadającego *http.sys* portu udostępniania funkcji, ale nie jest obsługiwana przez `HttpSysCommunicationListener` z powodu komplikacji wprowadza się ona do obsługi żądań klientów. Użycia portów dynamicznych Kestrel jest serwer sieci web zalecane.
+Port dynamiczny przydzielonej przez `Endpoint` konfiguracji zawiera tylko jeden port *na proces hosta*. Bieżący model hostingu usługi Service Fabric umożliwia wielu wystąpień usługi i/lub replik hostowane w tym samym procesie co oznacza każdy z nich współużytkują ten sam port, gdy przydzielane za pośrednictwem `Endpoint` konfiguracji. Wiele wystąpień słowa kluczowego HttpSys można współużytkować port przy użyciu podstawowych *http.sys* portu do udostępniania funkcji, ale nie jest obsługiwana przez `HttpSysCommunicationListener` ze względu na komplikacje wprowadza do obsługi żądań klientów. Użycie portu dynamicznego Kestrel jest serwer sieci web zalecane.
 
-## <a name="kestrel-in-reliable-services"></a>Kestrel w niezawodne usługi
-Kestrel mogą być używane w niezawodnej usługi przez importowanie **Microsoft.ServiceFabric.AspNetCore.Kestrel** pakietu NuGet. Ten pakiet zawiera `KestrelCommunicationListener`, implementacja `ICommunicationListener`, który służy do tworzenia WebHost Core ASP.NET wewnątrz niezawodnej usługi za pomocą Kestrel jako serwera sieci web.
+## <a name="kestrel-in-reliable-services"></a>Kestrel usług Reliable Services
+Kestrel może służyć w niezawodnej usługi przez zaimportowanie **Microsoft.ServiceFabric.AspNetCore.Kestrel** pakietu NuGet. Ten pakiet zawiera `KestrelCommunicationListener`, implementacja `ICommunicationListener`, który pozwala na tworzenie WebHost Core ASP.NET wewnątrz niezawodnej usługi przy użyciu Kestrel jako serwer sieci web.
 
-Kestrel to serwer sieci web i platform dla platformy ASP.NET Core oparta na libuv, biblioteki i platform asynchroniczne We/Wy. W odróżnieniu od HttpSys, Kestrel nie używa Menedżera scentralizowane punktu końcowego takich jak *http.sys*. I w przeciwieństwie do HttpSys, Kestrel nie obsługuje udostępniania portów między wiele procesów. Każde wystąpienie Kestrel musi używać portu unikatowy.
+Kestrel jest oparte na serwerze sieci web dla wielu platform dla platformy ASP.NET Core na libuv, bibliotekę asynchronicznych operacji We/Wy dla wielu platform. W odróżnieniu od słowa kluczowego HttpSys, Kestrel nie używać scentralizowane punktu końcowego Menedżera takich jak *http.sys*. I w przeciwieństwie do słowa kluczowego HttpSys, Kestrel nie obsługuje udostępniania portów między wiele procesów. Każde wystąpienie Kestrel należy użyć unikatowy port.
 
-![kestrel][4]
+![Kestrel][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>Kestrel usługi bezstanowej
-Do użycia `Kestrel` za pośrednictwem usługi bezstanowej, Zastąp `CreateServiceInstanceListeners` — metoda i przywracać `KestrelCommunicationListener` wystąpienie:
+Aby użyć `Kestrel` w usługę bezstanową, należy zastąpić `CreateServiceInstanceListeners` metody i wróć `KestrelCommunicationListener` wystąpienia:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -222,8 +223,8 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="kestrel-in-a-stateful-service"></a>Kestrel w usługi stanowej
-Aby użyć `Kestrel` w usługi stanowej, Zastąp `CreateServiceReplicaListeners` — metoda i wróć `KestrelCommunicationListener` wystąpienie:
+### <a name="kestrel-in-a-stateful-service"></a>Kestrel w stanowej usłudze
+Aby użyć `Kestrel` w stanowej usłudze, należy zastąpić `CreateServiceReplicaListeners` metody i wróć `KestrelCommunicationListener` wystąpienia:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -248,19 +249,19 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-W tym przykładzie pojedyncze wystąpienie `IReliableStateManager` został dostarczony do kontenera iniekcji zależności hosta sieci Web. To nie jest to niezbędne, ale pozwala używać `IReliableStateManager` i niezawodne kolekcji w metody akcji kontrolera MVC.
+W tym przykładzie, pojedyncze wystąpienie `IReliableStateManager` został dostarczony do kontenera iniekcji zależności hostem sieci Web. To nie jest to niezbędne, ale pozwala na używanie `IReliableStateManager` i elementów Reliable Collections w swojej metody akcji kontrolera MVC.
 
-Należy pamiętać, że `Endpoint` Nazwa konfiguracji jest **nie** dostarczony do `KestrelCommunicationListener` w usługi stanowej. Jest to wyjaśnić bardziej szczegółowo w następnej sekcji.
+`Endpoint` Nazwa konfiguracji jest **nie** udostępniane `KestrelCommunicationListener` w stanowej usłudze. Jest to wyjaśnione bardziej szczegółowo w następnej sekcji.
 
 ### <a name="endpoint-configuration"></a>Konfiguracja punktu końcowego
 `Endpoint` Do użycia Kestrel nie jest wymagana konfiguracja. 
 
-Kestrel jest prosty autonomiczny serwer sieci web; w odróżnieniu od HttpSys (lub HttpListener), nie musi `Endpoint` konfiguracji w *ServiceManifest.xml* , ponieważ nie wymaga adresu URL rejestracji przed rozpoczęciem. 
+Kestrel jest prosty autonomiczny serwer sieci web; w odróżnieniu od słowa kluczowego HttpSys (lub HttpListener), nie musi ona `Endpoint` konfiguracji w *ServiceManifest.xml* , ponieważ nie wymaga adresu URL rejestracji przed rozpoczęciem. 
 
 #### <a name="use-kestrel-with-a-static-port"></a>Kestrel za pomocą portu statycznego
-Można skonfigurować port statyczny w `Endpoint` konfiguracji ServiceManifest.xml do użytku z Kestrel. Chociaż nie jest to niezbędne, zawiera dwa potencjalnych korzyści:
- 1. Jeśli port nie należy do zakresu portów aplikacji, jest otwarty przez zaporę systemu operacyjnego przez sieć szkieletowa usług.
- 2. Adres URL udostępnionych za pośrednictwem `KestrelCommunicationListener` użyje tego portu.
+Można skonfigurować port statyczny w `Endpoint` konfiguracji ServiceManifest.xml do użytku z programem Kestrel. Chociaż nie jest to niezbędne, zawiera dwie potencjalne korzyści:
+ 1. Jeśli port nie należy do zakresu portów aplikacji, jest otwarty przez zaporę systemu operacyjnego przez usługę Service Fabric.
+ 2. Adres URL podany dla użytkownika za pośrednictwem `KestrelCommunicationListener` użyje tego portu.
 
 ```xml
   <Resources>
@@ -270,18 +271,18 @@ Można skonfigurować port statyczny w `Endpoint` konfiguracji ServiceManifest.x
   </Resources>
 ```
 
-Jeśli `Endpoint` jest skonfigurowany, jego nazwa muszą być przekazywane do `KestrelCommunicationListener` konstruktora: 
+Jeśli `Endpoint` jest skonfigurowany, nazwy muszą być przekazywane do `KestrelCommunicationListener` Konstruktor: 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-Jeśli `Endpoint` konfiguracji nie jest używany, pominąć nazwę w `KestrelCommunicationListener` konstruktora. W takim przypadku będzie używany port dynamiczny. Zobacz następną sekcję, aby uzyskać więcej informacji.
+Jeśli `Endpoint` konfiguracji nie jest używany, Pomiń nazwę w `KestrelCommunicationListener` konstruktora. W tym przypadku będzie używany port dynamiczny. Zobacz następną sekcję, aby uzyskać więcej informacji.
 
-#### <a name="use-kestrel-with-a-dynamic-port"></a>Użyj Kestrel z portów dynamicznych
-Kestrel nie można użyć przypisania automatyczne portu z `Endpoint` konfiguracji w pliku ServiceManifest.xml, ponieważ port automatyczne przypisanie z `Endpoint` konfiguracji przypisuje unikatowy portu na *proces hosta*, i procesem jednego hosta może zawierać wiele wystąpień Kestrel. Ponieważ Kestrel nie obsługuje udostępniania portów, to nie działa jako każde wystąpienie Kestrel muszą być otwarte na porcie unikatowy.
+#### <a name="use-kestrel-with-a-dynamic-port"></a>Kestrel za pomocą portu dynamicznego
+Kestrel nie można użyć przypisania portów automatycznego z `Endpoint` konfiguracji w ServiceManifest.xml, ponieważ port automatyczne przypisanie z `Endpoint` konfiguracji przypisuje unikatowy port na *proces hosta*, i Proces hosta może zawierać wiele wystąpień Kestrel. Ponieważ Kestrel nie obsługuje udostępniania portów, to nie działa zgodnie z każdego wystąpienia Kestrel muszą zostać otwarte na unikatowy port.
 
-Dynamiczne przypisywanie portów za pomocą Kestrel, po prostu pominąć `Endpoint` konfiguracji w pliku ServiceManifest.xml całkowicie i nie są przekazywane Nazwa punktu końcowego do `KestrelCommunicationListener` konstruktora:
+Dynamiczne przypisywanie portów za pomocą Kestrel, Pomiń `Endpoint` konfiguracji w ServiceManifest.xml całkowicie i nie są przekazywane do nazwy punktu końcowego `KestrelCommunicationListener` Konstruktor:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
@@ -289,32 +290,32 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 W tej konfiguracji `KestrelCommunicationListener` będzie automatycznie wybierać nieużywanego portu z zakresu portów aplikacji.
 
-## <a name="scenarios-and-configurations"></a>Scenariusze i konfiguracje
-W tej sekcji opisano w następujących scenariuszach i zawiera zalecane kombinację serwera sieci web, konfiguracji portów sieci szkieletowej usług integracji opcje i różne ustawienia do osiągnięcia usługi działa prawidłowo:
- - Zewnętrznie udostępnione usługi bezstanowej platformy ASP.NET Core
- - Tylko wewnętrznie usługi bezstanowej platformy ASP.NET Core
- - Tylko wewnętrznie usługi stanowej platformy ASP.NET Core
+## <a name="scenarios-and-configurations"></a>Scenariusze i konfiguracji
+W tej sekcji opisano następujące scenariusze i zapewnia zalecane kombinacja serwera sieci web, Konfiguracja portu, opcji integracji usługi Service Fabric i różne ustawienia, można osiągnąć usługi działają poprawnie:
+ - Udostępniane zewnętrznie bezstanowa usługa ASP.NET Core
+ - Bezstanowa usługa ASP.NET Core przeznaczony tylko do wewnętrznego
+ - Tylko wewnętrzne usługi stanowej platformy ASP.NET Core
 
-**Zewnętrznie udostępnione** usługi jest taki, który udostępnia punktu końcowego, które są dostępne z poza klastrem, zwykle za pośrednictwem usługi równoważenia obciążenia.
+**Udostępniane zewnętrznie** usługi to taki, który uwidacznia punkt końcowy dostępny z poza klastrem, zwykle za pośrednictwem modułu równoważenia obciążenia.
 
-**Wyłącznie wewnętrznym** usługi jest jednym których punkt końcowy tylko jest dostępny w ramach klastra.
+**Wyłącznie wewnętrznym** usługa jest jedną z którego punkt końcowy tylko jest osiągalny z w ramach klastra.
 
 > [!NOTE]
-> Punkty końcowe usługi stanowej zwykle nie należy uwidaczniać jej w Internecie. Klastry, które są za usługi równoważenia obciążenia, które znają rozpoznawania usługi sieć szkieletowa usług, takich jak równoważenia obciążenia Azure można do udostępnienia usług stanowych, ponieważ nie będzie mogła zlokalizować i kierować ruchem do repliki odpowiednie usługi stanowej Usługa równoważenia obciążenia. 
+> Punkty końcowe usługi stanowe zwykle nie należy uwidaczniać w Internecie. Klastrów znajdujących się za modułem równoważenia obciążenia, które znają rozwiązania usługi Service Fabric, takich jak usługi Azure Load Balancer, nie będzie można uwidocznić usług stanowych, ponieważ nie będzie mógł zlokalizować i kierowania ruchu do odpowiedniego modułu równoważenia obciążenia Replika usługi stanowej. 
 
-### <a name="externally-exposed-aspnet-core-stateless-services"></a>Zewnętrznie udostępnione usług bezstanowych platformy ASP.NET Core
-Kestrel jest serwerem sieci web zalecane dla usług frontonu, które udostępniają zewnętrznych, internetowy punktów końcowych HTTP. W systemie Windows HttpSys może służyć do zapewnienia możliwości udostępniania portów, dzięki czemu można hostować wiele usług sieci web na tym samym zestawie węzłów za pomocą tego samego portu zróżnicowanych według nazwy hosta i ścieżkę, bez polegania na zapewnienie routingu HTTP frontonu serwera proxy lub bramy.
+### <a name="externally-exposed-aspnet-core-stateless-services"></a>Udostępniane zewnętrznie bezstanowej usługi ASP.NET Core
+Kestrel jest serwer sieci web zalecane dla usług frontonu, które uwidaczniają punkty końcowe HTTP zewnętrznych, połączone z Internetem. W Windows słowa kluczowego HttpSys może służyć do zapewnienia możliwości udostępniania portów, dzięki czemu można hostować wiele usług sieci web na tym samym zestawie węzłów przy użyciu tego samego portu, zróżnicowane według nazwy hosta lub ścieżki, bez konieczności polegania na frontonu serwera proxy lub gateway zapewniają routing protokołu HTTP.
  
-Jeśli połączenie z Internetem, usługi bezstanowej należy używać punktu końcowego dobrze znanych i stabilny, który jest dostępny za pośrednictwem usługi równoważenia obciążenia. Jest to adres URL zostanie zapewnione użytkownikom aplikacji. Zaleca się użycie następującej konfiguracji:
+Gdy połączenie z Internetem, usługa bezstanowa należy używać dobrze znanych i stabilnych punktu końcowego, który jest dostępny za pośrednictwem modułu równoważenia obciążenia. Jest to adres URL podaje się użytkownicy twojej aplikacji. Zaleca się użycie następującej konfiguracji:
 
 |  |  | **Uwagi** |
 | --- | --- | --- |
-| Serwer sieci Web | Kestrel | Kestrel jest serwer preferowanych sieci web, ponieważ jest ona obsługiwana przez system Windows i Linux. |
-| Konfiguracja portów | statyczny | Dobrze znanego portu statycznego powinna być skonfigurowana w `Endpoints` konfiguracji ServiceManifest.xml, takie jak 80 dla protokołu HTTP i 443 dla protokołu HTTPS. |
-| ServiceFabricIntegrationOptions | Brak | `ServiceFabricIntegrationOptions.None` Opcja powinna być używana podczas konfigurowania sieci szkieletowej usług integracji w oprogramowaniu pośredniczącym, aby usługa próbuje zweryfikować przychodzącego żądania Unikatowy identyfikator. Użytkownicy zewnętrzni aplikacji nie będzie wiedzieć, unikatowe informacje identyfikacyjne używane przez oprogramowanie pośredniczące. |
-| Liczba wystąpień | -1 | W typowych przypadkach liczba wystąpień ustawienie powinna być równa "-1", aby wystąpienie jest dostępna we wszystkich węzłach, które odbierać dane z usługi równoważenia obciążenia. |
+| Serwer sieci Web | Kestrel | Kestrel jest serwer preferowanych sieci web, ponieważ jest on obsługiwany w Windows i Linux. |
+| Konfiguracja portu | statyczny | Dobrze znanego portu statycznego powinna być skonfigurowana w `Endpoints` konfiguracji ServiceManifest.xml, takie jak 80 dla protokołu HTTP i 443 dla protokołu HTTPS. |
+| ServiceFabricIntegrationOptions | Brak | `ServiceFabricIntegrationOptions.None` Opcja powinna być używana podczas konfigurowania oprogramowania pośredniczącego integracji usługi Service Fabric, dzięki czemu usługa nie jest podejmowana próba sprawdzania poprawności żądań przychodzących dla Unikatowy identyfikator. Użytkownicy zewnętrzni aplikacji nie będzie wiadomo unikatowe informacje identyfikujące używany przez oprogramowanie pośredniczące. |
+| Liczba wystąpień | -1 | W typowe przypadki użycia ustawiając liczbę wystąpień powinna być równa "-1", aby wystąpienie jest dostępna we wszystkich węzłach, odbierające ruch z modułu równoważenia obciążenia. |
 
-Jeśli wiele usług zewnętrznie narażonych współużytkować ten sam zestaw węzłów, można HttpSys ze ścieżką URL unikalny, ale stabilna. Można to zrobić, modyfikując adres URL podany podczas konfigurowania IWebHost. Należy zauważyć, że tylko dotyczy to HttpSys.
+Jeśli wiele zewnętrznie uwidocznionych usług mają ten sam zestaw węzłów, słowa kluczowego HttpSys może służyć unikatowy, ale stabilną ścieżkę adresu URL. Można to osiągnąć przez zmodyfikowanie adresu URL podanego podczas konfigurowania IWebHost. Należy pamiętać, że dotyczy to słowa kluczowego HttpSys tylko.
 
  ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -329,27 +330,27 @@ Jeśli wiele usług zewnętrznie narażonych współużytkować ten sam zestaw w
  })
  ```
 
-### <a name="internal-only-stateless-aspnet-core-service"></a>Tylko wewnętrznie usługi bezstanowej platformy ASP.NET Core
-Usługi bezstanowej, wywoływane tylko z klastra należy używać unikatowe adresy URL i dynamicznie przypisywane porty zapewnienie współpracy między wieloma usługami. Zaleca się użycie następującej konfiguracji:
+### <a name="internal-only-stateless-aspnet-core-service"></a>Tylko do wewnętrznego bezstanowa usługa ASP.NET Core
+Bezstanowej usługi, które są wywołana tylko z w ramach klastra należy używać unikatowe adresy URL i dynamicznie przypisywany portów w celu zapewnienie współpracy między wiele usług. Zaleca się użycie następującej konfiguracji:
 
 |  |  | **Uwagi** |
 | --- | --- | --- |
-| Serwer sieci Web | Kestrel | Mimo że HttpSys może służyć do wewnętrznych usług bezstanowych, Kestrel jest zalecane serwera, aby umożliwić wiele wystąpień usługi udostępnić hosta.  |
-| Konfiguracja portów | przypisywane dynamicznie | Wiele replik usługi stanowej może udostępnić procesu hosta lub systemu operacyjnego hosta i w związku z tym należy unikatowych portów. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Z dynamiczne przypisywanie portów to ustawienie zapobiega problem tożsamości błędny opisanych wcześniej. |
-| Wartość InstanceCount | dowolne | Liczba wystąpień ustawienie można ustawić dowolną wartość niezbędne do działania usługi. |
+| Serwer sieci Web | Kestrel | Mimo że słowa kluczowego HttpSys mogą być używane w przypadku usług bezstanowych wewnętrznego, Kestrel jest zalecane serwera, aby umożliwić wiele wystąpień usługi udostępnić hosta.  |
+| Konfiguracja portu | dynamicznie przypisany | Wiele replik stanowej usługi może udostępniać procesu hosta lub systemu operacyjnego hosta, a więc musi unikatowych portów. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Za pomocą dynamiczne przypisywanie portów to ustawienie zapobiega opisanego wcześniej problemu omyłkowe tożsamości. |
+| InstanceCount | dowolne | Liczba wystąpień ustawienia można ustawić dowolną wartość niezbędne w celu oferowania usługi. |
 
-### <a name="internal-only-stateful-aspnet-core-service"></a>Tylko wewnętrznie usługi stanowej platformy ASP.NET Core
-Stanowe usług, które są wywoływać tylko z wewnątrz klastra należy używać portów przypisywany dynamicznie zapewnienie współpracy między wieloma usługami. Zaleca się użycie następującej konfiguracji:
+### <a name="internal-only-stateful-aspnet-core-service"></a>Tylko do wewnętrznego stanowej usługi ASP.NET Core
+Usługi stanowe, które są wywołana tylko z w ramach klastra należy używać portów przypisywany dynamicznie zapewnienie współpracy między wiele usług. Zaleca się użycie następującej konfiguracji:
 
 |  |  | **Uwagi** |
 | --- | --- | --- |
-| Serwer sieci Web | Kestrel | `HttpSysCommunicationListener` Nie jest przeznaczony do użytku przez usługi stanowej w których replik udziału procesu hosta. |
-| Konfiguracja portów | przypisywane dynamicznie | Wiele replik usługi stanowej może udostępnić procesu hosta lub systemu operacyjnego hosta i w związku z tym należy unikatowych portów. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Z dynamiczne przypisywanie portów to ustawienie zapobiega problem tożsamości błędny opisanych wcześniej. |
+| Serwer sieci Web | Kestrel | `HttpSysCommunicationListener` Nie jest przeznaczony do użytku przez usługi stanowe, w których replik udostępnianie procesu hosta. |
+| Konfiguracja portu | dynamicznie przypisany | Wiele replik stanowej usługi może udostępniać procesu hosta lub systemu operacyjnego hosta, a więc musi unikatowych portów. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Za pomocą dynamiczne przypisywanie portów to ustawienie zapobiega opisanego wcześniej problemu omyłkowe tożsamości. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Debugowanie aplikacji sieci szkieletowej usług za pomocą programu Visual Studio](service-fabric-debugging-your-application.md)
+[Debug your Service Fabric application by using Visual Studio (Debugowanie aplikacji usługi Service Fabric przy użyciu programu Visual Studio)](service-fabric-debugging-your-application.md)
 
 <!--Image references-->
 [0]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-standalone.png

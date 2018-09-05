@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338911"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665438"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM
 
@@ -82,7 +82,7 @@ Użyj **uwierzytelnianie wieloskładnikowe** przełącznik, aby określić, czy 
   * Administrator programu Skype dla firm  
   * Administrator kont użytkowników  
 
-Aby uzyskać więcej informacji o używaniu MFA za pomocą usługi PIM, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-require-mfa.md).
+Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i PIM](pim-how-to-require-mfa.md).
 
 ## <a name="require-approval"></a>Wymagaj zatwierdzenia
 
@@ -110,5 +110,4 @@ Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następują
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
-- [Wymagaj uwierzytelniania wieloskładnikowego dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-require-mfa.md)
 - [Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-configure-security-alerts.md)

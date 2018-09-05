@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: a8d9704c48801b98800abb71769ba0954e727848
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190460"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702599"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -28,7 +28,7 @@ Jeśli masz konto interfejsu API usługi DocumentDB przed, masz teraz konto inte
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Co się stało z usługi Azure DocumentDB jako usługi?
 
-Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Ponadto usługa Azure Cosmos DB obsługuje interfejs API programu Graph, interfejs API tabel, interfejsu API usługi MongoDB i interfejsu API rozwiązania Cassandra (wersja zapoznawcza).
+Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Ponadto usługa Azure Cosmos DB obsługuje interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB i interfejsu API rozwiązania Cassandra (wersja zapoznawcza).
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jakie są typowe przypadki użycia usługi Azure Cosmos DB?
 Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gier, i aplikacji IoT, gdy automatyczne skalowanie, przewidywalną wydajność, szybkie kolejność czasy odpowiedzi w milisekundach oraz możliwość obsługi zapytań względem danych bez schematu jest ważne. Usługa Azure Cosmos DB pozwala na szybkie opracowywanie i obsługę ciągłej iteracji modeli danych aplikacji. Aplikacje zarządzające o zawartość wygenerowaną przez użytkowników i dane są [typowe przypadki użycia usługi Azure Cosmos DB](use-cases.md). 
@@ -36,11 +36,11 @@ Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gie
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak usługa Azure Cosmos DB zapewnia przewidywalną wydajność?
 A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1-RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
 
-Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera zobacz [szacowania związanym z przepływnością](request-units.md#estimating-throughput-needs) , a następnie spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do odwołuje się do kolekcji interfejs API SQL, wykres interfejsu API programu Graph, kolekcji interfejs API bazy danych MongoDB i interfejsu API tabeli w tabeli. 
+Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera zobacz [szacowania związanym z przepływnością](request-units.md#estimating-throughput-needs) , a następnie spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do odwołuje się do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak usługa Azure Cosmos DB obsługuje różne modele danych, takie jak klucz/wartość, kolumnowy, dokument i wykres?
 
-Klucz/wartość (tabela), kolumnowy, dokumentów i danych programu graph modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania tej usługi Azure Cosmos DB jest oparty na. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i interfejsów API programu Graph) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
+Klucz/wartość (tabela), kolumnowy, dokumentów i danych programu graph modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania tej usługi Azure Cosmos DB jest oparty na. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i interfejsów API rozwiązania Gremlin) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
 
 Usługa Azure Cosmos DB ma schemat niezależny od aparatu indeksowania która może automatycznie indeksować wszystkie dane, które które pozyska, bez wymagania żadnych schematów ani indeksów pomocniczych od dewelopera. Aparat opiera się na zestaw układów logicznych indeksu (odwrócona, kolumnowy, drzewo), które rozdzielenie układ magazynu z indeksem i podsystemy przetwarzania zapytań. Usługa cosmos DB ma również możliwość obsługi zestawu o komunikacji sieciowej protokołów i interfejsów API w sposób rozszerzalny i wydajnie tłumaczyć je do modelu danych podstawowych (1) i układów logicznych indeksu, (2) co jednoznacznie może obsługiwać wiele modeli danych natywnie.
 
@@ -57,7 +57,7 @@ Nie ma żadnego limitu, na łączną przepływność, które obsługują kontene
 Tak, oba tryby są zawsze w pełni zaszyfrowane. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Ile kosztuje usługa Azure Cosmos DB
-Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera. Termin *kontenery* odnosi się tutaj do kolekcji interfejs API SQL, wykres interfejsu API programu Graph, kolekcji interfejs API bazy danych MongoDB i tabel na interfejs API tabel. 
+Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera. Termin *kontenery* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin (Graf), kolekcji interfejs API bazy danych MongoDB i tabel na interfejs API tabel. 
 
 ### <a name="is-a-free-account-available"></a>Bezpłatne konto jest dostępny?
 Tak, możesz zasubskrybować konta ograniczonej czasowo, bez dodatkowych opłat, bez zobowiązań. Aby się zarejestrować, odwiedź stronę [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lub Przeczytaj więcej w [Wypróbuj usługi Azure Cosmos DB — często zadawane pytania](#try-cosmos-db).
@@ -87,7 +87,7 @@ Try Azure Cosmos DB subskrypcje będą widoczne w witrynie Azure portal obok inn
 
 Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następujące warunki:
 
-* Jeden kontener na subskrypcję dla konta programu SQL, Gremlin (Graph API) i tabeli.
+* Jeden kontener na subskrypcję dla konta programu SQL, interfejs API Gremlin i tabeli.
 * Maksymalnie 3 kolekcje w każdej subskrypcji dla kont bazy danych MongoDB.
 * 10 GB pojemności.
 * Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): środkowe stany USA, Europa Północna i Azja południowo-wschodnia
@@ -97,7 +97,7 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 
 ## <a name="set-up-azure-cosmos-db"></a>Konfigurowanie usługi Azure Cosmos DB
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Jak utworzyć konto usługi Azure Cosmos DB?
-Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure można dodać interfejs API SQL, interfejsu API programu Graph, interfejs API tabel, interfejsu API usługi MongoDB lub konto interfejsu API rozwiązania Cassandra.
+Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure można dodać interfejs API SQL, interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB lub konto interfejsu API rozwiązania Cassandra.
 
 ### <a name="what-is-a-master-key"></a>Co to jest klucz główny?
 Klucz główny jest tokenem zabezpieczającym dostęp do wszystkich zasobów dla konta. Osoby, które mają klucz ma uprawnienia odczytu i zapisu do wszystkich zasobów w ramach konta bazy danych. Podczas dystrybucji kluczy głównych należy zachować ostrożność. Podstawowy klucz główny i pomocniczy klucz główny są dostępne na **klucze** bloku [witryny Azure portal][azure-portal]. Aby uzyskać więcej informacji na temat kluczy, zobacz [wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-account.md#keys).
@@ -440,15 +440,15 @@ Usługa Azure Table storage i interfejsu API tabeli usługi Azure Cosmos DB uży
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Dlaczego mogę ograniczeni podczas próby utworzenia jeden po drugim wiele tabel w interfejsie API tabeli?
 Usługa Azure Cosmos DB jest oparte na umowie SLA udostępniającego opóźnienia, przepływności, dostępności i gwarancje spójności. Ponieważ jest to systemowy obiekt elastycznie, rezerwuje zasobów w celu zagwarantowania tych wymagań. Szybkim tempie tworzenia tabel jest wykrywany i ograniczenia. Firma Microsoft zaleca, spójrz na kurs tworzenia tabel i obniżyć go do mniej niż 5 na minutę. Pamiętaj, że interfejs API tabel ma elastycznie systemu. Obecnie możesz aprowizować, rozpocznie się płacić w. 
 
-## <a name="graph-api"></a>Interfejs API programu Graph
-### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Jak zastosować funkcje interfejsu API programu Graph do usługi Azure Cosmos DB?
-Biblioteka rozszerzeń można użyć do zastosowania funkcji interfejsu API programu Graph. Ta biblioteka jest nazywany wykresy Azure firmy Microsoft i jest dostępny na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
+## <a name="gremlin-api"></a>Interfejs API języka Gremlin
+### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Jak zastosować funkcje interfejsu API języka Gremlin do usługi Azure Cosmos DB?
+Biblioteka rozszerzeń można użyć do zastosowania funkcji interfejsu API języka Gremlin. Ta biblioteka jest nazywany wykresy Azure firmy Microsoft i jest dostępny na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Wygląda na to, obsługi języka przechodzenie grafu Gremlin. Masz zamiar dodać więcej formularzy zapytania?
 Tak, planujemy dodać inne mechanizmy dla zapytania w przyszłości. 
 
-### <a name="how-can-i-use-the-new-graph-api-offering"></a>Jak używać nowa oferta interfejsu API programu Graph? 
-Aby rozpocząć pracę, należy wykonać [interfejsu API programu Graph](../cosmos-db/create-graph-dotnet.md) artykuł szybki start.
+### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>Jak używać nowa oferta interfejsu API języka Gremlin? 
+Aby rozpocząć pracę, należy wykonać [interfejs API Gremlin](../cosmos-db/create-graph-dotnet.md) artykuł szybki start.
 
 
 ## <a id="cassandra"></a> Interfejs API rozwiązania Cassandra

@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128130"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669487"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -27,8 +27,7 @@ Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Window
 
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
-* Windows Server 2008 Service Pack 1 (SP1) lub nowszy
-* Windows 7 z dodatkiem SP1 lub nowszy.
+* Windows Server 2008 R2 lub nowszy
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 
@@ -47,8 +46,8 @@ Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta s
 Aby rozpocząć śledzenie zmian, należy włączyć rozwiązanie śledzenia zmian i spisu dla konta usługi Automation.
 
 1. W witrynie Azure portal przejdź do konta usługi Automation
-1. Wybierz **śledzenie zmian** w obszarze **konfiguracji**.
-1. Wybierz istniejący obszar roboczy Log analytics lub **Utwórz nowy obszar roboczy** i kliknij przycisk **Włącz**.
+2. Wybierz **śledzenie zmian** w obszarze **konfiguracji**.
+3. Wybierz istniejący obszar roboczy Log analytics lub **Utwórz nowy obszar roboczy** i kliknij przycisk **Włącz**.
 
 Dzięki temu rozwiązaniu dla konta usługi automation. Rozwiązanie może potrwać do 15 minut, aby włączyć. Niebieski Baner powiadamia użytkownika, gdy rozwiązanie jest włączone. Przejdź z powrotem do **Change Tracking** strony na zarządzanie rozwiązaniem.
 

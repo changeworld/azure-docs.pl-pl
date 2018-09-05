@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626859"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698761"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -142,7 +142,7 @@ Na poziomie firmowa Zapora należy skonfigurować następujące domeny i portów
 
 | Nazwy domen | Porty | Opis |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |Używany do komunikacji z zapleczem usługi Data Movement Service |
+| *.servicebus.windows.net |443 |Używany do komunikacji z zapleczem usługi Data Movement Service |
 | *.core.windows.net |443 |Używane z kopiowaniem przejściowa przy użyciu obiektów Blob platformy Azure (jeśli jest skonfigurowane)|
 | *.frontend.clouddatahub.net |443 |Używany do komunikacji z zapleczem usługi Data Movement Service |
 | *.servicebus.windows.net |9350-9354, 5671 |Opcjonalne usługi Service bus relay za pośrednictwem protokołu TCP używany przez kreatora kopiowania |

@@ -1,9 +1,9 @@
 ---
-title: Automatyczne przekazywanie jednostki do obsługi komunikatów usługi Azure Service Bus | Dokumentacja firmy Microsoft
-description: Jak tworzyć łańcuchy kolejki usługi Service Bus lub subskrypcję do innej kolejki lub tematu.
+title: Automatyczne przekazywanie jednostki obsługi komunikatów usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: Jak połączyć w łańcuch kolejki usługi Service Bus lub subskrypcji do innej kolejki lub tematu.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: sethm
-ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: spelluru
+ms.openlocfilehash: 563fa6f38bb5baffb9a4ae86f944b7597d325d30
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558096"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698999"
 ---
-# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Tworzenie łańcuchów jednostek usługi Service Bus z automatyczne przekazywanie
+# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Tworzenie łańcuchów jednostek usługi Service Bus z automatycznym przekazywaniem
 
-Magistrala usług *automatyczne przekazywanie* funkcja umożliwia łańcucha kolejki lub subskrypcję do innej kolejki lub temat, który jest częścią tego samego obszaru nazw. Gdy włączone jest automatyczne przekazywanie, usługi Service Bus automatycznie usuwa wiadomości, które są umieszczane w pierwszym kolejki lub subskrypcji (źródło) i umieszcza je w drugim kolejka lub temat (docelowy). Należy pamiętać, że jest nadal możliwe wysłać wiadomość bezpośrednio do jednostki docelowej. Ponadto nie jest możliwe łańcucha podkolejki, takich jak kolejki utraconych wiadomości, do innej kolejki lub tematu.
+Usługa Service Bus *automatycznym przekazywaniem* pozwala połączyć w łańcuch kolejki lub subskrypcji do innej kolejki lub tematu, który jest częścią tej samej przestrzeni nazw. Włączenie automatycznego przekazywania usługi Service Bus automatycznie usuwa wiadomości, które są umieszczane w pierwszej kolejki lub subskrypcji (źródło) i umieszcza je w drugim kolejki lub tematu (docelowy). Należy pamiętać, że jest nadal możliwe bezpośrednio wysyłać wiadomości do jednostki docelowej. Ponadto nie jest możliwe połączyć w łańcuch kolejki podrzędnej, takiego jak kolejka utraconych wiadomości, innej kolejki lub tematu.
 
-## <a name="using-auto-forwarding"></a>Przy użyciu automatycznego przekazywania
+## <a name="using-auto-forwarding"></a>Korzystanie z automatycznym przekazywaniem
 
-Aby umożliwić automatyczne przekazywanie przez ustawienie [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] lub [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] właściwości [QueueDescription] [ QueueDescription] lub [SubscriptionDescription] [ SubscriptionDescription] obiektów dla źródła, jak w programie Poniższy przykład:
+Aby umożliwić automatyczne przekazywanie przez ustawienie [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] lub [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] właściwości [QueueDescription] [ QueueDescription] lub [SubscriptionDescription] [ SubscriptionDescription] obiektów dla źródła, podobnie jak w Poniższy przykład:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,39 +35,39 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-Obiekt docelowy musi istnieć w momencie utworzenia jednostki źródłowej. Jeśli obiekt docelowy nie istnieje, Usługa Service Bus zwraca wyjątek po otrzymaniu monitu, aby utworzyć jednostki źródłowej.
+Jednostki docelowej musi istnieć w momencie utworzenia jednostki źródłowej. Usługa Service Bus, jeśli jednostki docelowej nie istnieje, zwraca wyjątek, po wyświetleniu monitu, aby utworzyć jednostki źródłowej.
 
-Automatyczne przekazywanie umożliwia skalowanie poszczególnych tematu. Limity usługi Service Bus [liczba subskrypcji danego tematu](service-bus-quotas.md) do 2000. Może obsłużyć dodatkowe subskrypcji, tworząc tematy drugiego poziomu. Nawet jeśli użytkownik nie są powiązane przez ograniczenia usługi Service Bus na liczbę subskrypcji, dodawanie drugiego poziomu tematy może zwiększyć ogólną przepustowość części tematu.
+Automatyczne przekazywanie umożliwia skalowanie w poziomie poszczególne tematy. Limity usługi Service Bus [liczba subskrypcji na dany temat](service-bus-quotas.md) do 2000. Może obsłużyć dodatkowych subskrypcji, tworząc tematy drugiego poziomu. Nawet wtedy, gdy użytkownik nie są powiązane przez ograniczenie usługi Service Bus na liczbę subskrypcji, dodawanie drugiego poziomu tematy może zwiększyć ogólną przepływność tematu.
 
-![Automatyczne przekazywanie scenariusza][0]
+![Scenariusz z automatycznym przekazywaniem][0]
 
-Umożliwia także automatyczne przekazywanie rozdzielenie nadawcy wiadomości z odbiorcy. Rozważmy na przykład system ERP, który składa się z trzech modułów: kolejność przetwarzania, Zarządzanie zapasami i zarządzania relacjami z klientami. Każdy z tych modułów generuje wiadomości, które są umieszczonych w kolejce do odpowiedniego tematu. Alicja i Robert są przedstawicieli handlowych, którzy chcą wszystkie komunikaty, które dotyczą klientów. Do otrzymywania tych wiadomości, Alicja, jak i Robert Utwórz kolejkę osobistych i subskrypcji na wszystkich tematów ERP, które automatycznie przekazywać komunikaty do ich kolejki.
+Automatyczne przekazywanie umożliwia również oddzielenie nadawców wiadomości z odbiorników. Rozważmy na przykład system ERP, który składa się z trzech modułów: kolejność przetwarzania, Zarządzanie zapasami i zarządzanie relacjami z klientami. Każda z tych modułów generuje wiadomości, które są umieszczonych w kolejce do odpowiedniego tematu. Alice i Bob są przedstawicieli handlowych, które są zainteresowane wszystkie komunikaty, które odnoszą się do swoich klientów. Do otrzymywania tych wiadomości, Alice i Bob każdego Utwórz kolejkę osobistych i subskrypcji na wszystkich tematów ERP, które automatycznie przesyła wszystkie komunikaty do kolejki, ich.
 
-![Automatyczne przekazywanie scenariusza][1]
+![Scenariusz z automatycznym przekazywaniem][1]
 
-Jeśli Alicja odbędzie się na urlopie, swoje osobiste kolejki, a nie w temacie ERP, wypełnia. W tym scenariuszu ponieważ przedstawiciel handlowy nie odebrał żadnych wiadomości Brak tematów ERP kiedykolwiek łączność przydziału.
+Jeśli Alicja przechodzi na urlopu, swojej osobistej kolejki, a nie tematu ERP, się zapełni. W tym scenariuszu ponieważ przedstawiciel handlowy nie odebrał żadnych komunikatów żaden z tematów ERP i przeniesieniu jej nigdy nie dotrzeć do limitu przydziału.
 
-## <a name="auto-forwarding-considerations"></a>Zagadnienia dotyczące automatyczne przekazywanie
+## <a name="auto-forwarding-considerations"></a>Zagadnienia dotyczące automatycznym przekazywaniem
 
-Jeśli obiekt docelowy akumuluje zbyt wiele komunikatów i przekracza limit przydziału lub jednostki docelowej jest wyłączona, jednostki źródłowej dodaje komunikaty do jego [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) miejsce w miejscu docelowym (lub jednostki ponownie jest włączona). Te komunikaty w dalszym ciągu na żywo w kolejce wiadomości utraconych, musisz jawnie odbierania i ich przetwarzania z kolejki utraconych wiadomości.
+Jeśli jednostki docelowej gromadzi zbyt wiele komunikatów i przekracza limit przydziału lub jednostki docelowej jest wyłączona, jednostki źródłowej dodaje komunikaty do jego [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) miejsce w miejscu docelowym (lub jednostki ponownie włączono). Te komunikaty w dalszym ciągu mieszka kolejki utraconych wiadomości, więc należy jawnie odbierać i przetwarzać je z kolejki utraconych wiadomości.
 
-Podczas łączenia ze sobą poszczególne tematy, aby uzyskać złożone temat o wielu subskrypcji, zaleca się, że masz umiarkowanej liczbie subskrypcje tematu pierwszego stopnia i subskrypcje wiele tematów drugiego poziomu. Na przykład tematu pierwszego stopnia, z subskrypcją 20, każde z nich umożliwia temat drugiego poziomu z subskrypcją 200, umożliwia wyższej przepustowości niż tematu pierwszego stopnia, z subskrypcją 200, każdy powiązany łańcuchem zależności z 20 subskrypcje tematu drugiego poziomu.
+Gdy Łączenie łańcuchowe poszczególnych tematów w celu uzyskania złożonych tematów z wieloma subskrypcjami, zaleca się, że masz umiarkowana liczba subskrypcji na temat pierwszego poziomu i wiele subskrypcji na tematy drugiego poziomu. Na przykład tematu pierwszego poziomu z subskrypcjami 20, każde z nich łańcuchowa tematu second-level 200 subskrypcji umożliwia wyższą przepływność niż tematu pierwszego poziomu z subskrypcjami 200, każdy powiązany z 20 subskrypcje tematu drugiego poziomu.
 
-Usługa Service Bus rachunków jedna operacja dla każdej przekazany dalej komunikat. Na przykład wysyłania komunikatu do tematu z subskrypcją 20, każde z nich jest skonfigurowany do automatycznego przekazywania wiadomości do innej kolejki lub tematu, jest on rozliczany jako operacje 21 wszystkie subskrypcje pierwszego stopnia otrzymania kopia wiadomości.
+Usługa Service Bus rozlicza jedną operację dla wszystkich wiadomości przesyłanych dalej. Na przykład wysyłania komunikatu do tematu z 20 subskrypcji, z których każdy z nich są skonfigurowane do automatycznego przekazywania dalej wiadomości do innej kolejki lub tematu jest rozliczane jako 21 operacje Jeśli wszystkie subskrypcje pierwszego poziomu otrzyma kopię wiadomości.
 
-Aby utworzyć subskrypcję, który jest powiązany łańcuchem zależności innego kolejka lub temat, twórca subskrypcji musi być **Zarządzaj** uprawnienia na serwerze źródłowym, jak i jednostki docelowej. Wysyłanie komunikatów do tematu źródła wymaga tylko **wysyłania** uprawnienia na temat źródła.
+Aby utworzyć subskrypcję, która jest powiązany innej kolejki lub tematu, twórca subskrypcji musi mieć **Zarządzaj** uprawnień na komputerze źródłowym, jak i jednostki docelowej. Wysyłanie komunikatów do tematu źródła wymaga jedynie **wysyłania** uprawnień na temat źródła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać szczegółowe informacje o przesyłaniu dalej automatycznego zobacz następujące tematy odwołania:
+Aby uzyskać szczegółowe informacje o automatycznym przekazywaniem zobacz następujące tematy odniesienia:
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Aby dowiedzieć się więcej na temat usprawnień wydajności usługi Service Bus, zobacz 
+Aby dowiedzieć się więcej o ulepszeniach wydajności usługi Service Bus, zobacz 
 
-* [Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu usługi magistrali komunikatów](service-bus-performance-improvements.md)
+* [Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus](service-bus-performance-improvements.md)
 * [Partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003321"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696143"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
 
 Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do ich bazy danych. Tworząc zasady unikatowych kluczy podczas tworzenia kontenera, możesz zapewnić unikatowość co najmniej jedną wartość na [klucza partycji](partition-data.md). Po utworzeniu kontenera za pomocą zasady unikatowych kluczy uniemożliwia tworzenie nowych lub zaktualizowanych elementów z wartościami, które duplikują wartości określonych przez unikatowe ograniczenie klucza.   
 
 > [!NOTE]
-> Unikatowe klucze są obsługiwane przez najnowsze wersje [.NET](sql-api-sdk-dotnet.md) i [platformy .NET Core](sql-api-sdk-dotnet-core.md) zestawy SQL SDK i [interfejsu API usługi MongoDB](mongodb-feature-support.md#unique-indexes). Interfejs API tabel i interfejsu API programu Graph nie obsługują unikatowe klucze w tej chwili. 
+> Unikatowe klucze są obsługiwane przez najnowsze wersje [.NET](sql-api-sdk-dotnet.md) i [platformy .NET Core](sql-api-sdk-dotnet-core.md) zestawy SQL SDK i [interfejsu API usługi MongoDB](mongodb-feature-support.md#unique-indexes). Interfejs API tabel i interfejs API Gremlin nie obsługują unikatowe klucze w tej chwili. 
 > 
 >
 

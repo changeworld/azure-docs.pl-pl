@@ -1,48 +1,48 @@
 ---
-title: Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu usługi Azure Service Bus | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania usługi Service Bus w celu zoptymalizowania wydajności podczas wymiany komunikatów obsługiwanych przez brokera.
+title: Najlepsze rozwiązania dotyczące zwiększania wydajności przy użyciu usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak używać usługi Service Bus do optymalizacji wydajności podczas wymiany komunikatów obsługiwanych przez brokera.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: spelluru
+ms.openlocfilehash: 9dd9150411b465d210c7e02dc52d6851f670845f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301805"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697639"
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu usługi magistrali komunikatów
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus
 
-W tym artykule opisano sposób użycia usługi Azure Service Bus w celu zoptymalizowania wydajności podczas wymiany komunikatów obsługiwanych przez brokera. Pierwsza część w tym artykule opisano różne mechanizmy, które są oferowane w celu zwiększenia wydajności. Druga sekcja zawiera wskazówki dotyczące sposobu używania usługi Service Bus w sposób, który można zaoferować najlepszą wydajność w danym scenariuszu.
+W tym artykule opisano sposób użycia usługi Azure Service Bus do optymalizacji wydajności podczas wymiany komunikatów obsługiwanych przez brokera. Pierwsza część w tym artykule opisano różne mechanizmy, które są oferowane w celu ułatwienia zwiększenia wydajności. Druga sekcja zawiera wskazówki dotyczące sposobu używania usługi Service Bus w sposób zapewniający najlepszą wydajność w danym scenariuszu.
 
-W tym artykule określenie "client" odnosi się do dowolnej jednostki, który uzyskuje dostęp do usługi Service Bus. Klient może zająć roli nadawcy i adresata. Termin "sender" jest używana dla usługi Service Bus kolejka lub temat klienta, który wysyła wiadomości do kolejki lub temat subskrypcji usługi Service Bus. Termin "odbiorcy" odnosi się do usługi Service Bus kolejki lub subskrypcji klienta, który odbiera komunikaty z kolejki usługi Service Bus lub subskrypcji.
+W tym artykule termin "klient" oznacza każda jednostka, która uzyskuje dostęp do usługi Service Bus. Klient może potrwać roli nadawcy i adresata. Termin "sender" jest używana dla usługi Service Bus kolejki lub tematu klienta, który wysyła wiadomości do kolejki lub tematu subskrypcji usługi Service Bus. Termin "odbiornik" odnosi się do usługi Service Bus kolejki lub subskrypcji klienta, który odbiera komunikaty z kolejki usługi Service Bus lub subskrypcji.
 
-Tych sekcjach przedstawiono kilka pojęcia, które używa usługi Service Bus, aby ułatwić wydajnością.
+Poniższe sekcje wprowadzić kilka koncepcji, które korzysta z usługi Service Bus ułatwia zwiększanie wydajności.
 
 ## <a name="protocols"></a>Protokoły
 
-Usługa Service Bus umożliwia klientom wysyłanie i odbieranie wiadomości za pomocą jednego z trzech protokołów:
+Usługa Service Bus umożliwia klientom wysyłanie i odbieranie wiadomości przy użyciu jednej z trzech protokołów:
 
-1. Zaawansowane kolejkowania wiadomości protokołu (protokół AMQP)
-2. Protokół (SBMP) do obsługi komunikatów usługi Service Bus
+1. Zaawansowane usługi kolejkowania Protocol (AMQP)
+2. Protokół (SBMP) komunikatów usługi Service Bus
 3. HTTP
 
-Protokół AMQP i SBMP są bardziej wydajne, ponieważ utrzymują one połączenia usługi Service Bus, tak długo, jak istnieje fabryki obsługi komunikatów. Implementuje również przetwarzanie wsadowe i Odczyt z wyprzedzeniem. Chyba że jawnie wspomniano, cała zawartość w tym artykule przyjęto założenie użycia protokołu AMQP lub SBMP.
+Protokół AMQP i SBMP są bardziej wydajne, ponieważ obsługa połączenia usługi Service Bus, tak długo, jak istnieje fabryki obsługi komunikatów. Implementuje również przetwarzanie wsadowe i pobieranie z wyprzedzeniem. Chyba że jawnie wymienione całej zawartości w tym artykule założono użycie połączeń AMQP lub SBMP.
 
-## <a name="reusing-factories-and-clients"></a>Ponowne wykorzystywanie fabryk i klientów
+## <a name="reusing-factories-and-clients"></a>Ponowne użycie fabryk i klientów
 
-Klient usługi Service Bus obiekty, takie jak [QueueClient] [ QueueClient] lub [MessageSender][MessageSender], są tworzone za pomocą [ MessagingFactory] [ MessagingFactory] obiektu, który udostępnia również wewnętrznego zarządzania połączenia. Zaleca się, że nie został zamknięty fabryki obsługi wiadomości i kolejki, tematu i subskrypcji klientów po wysłać wiadomość, a następnie utwórz je po wysłaniu następny komunikat. Zamykanie fabryki obsługi komunikatów Usuwa połączenie z usługą Service Bus i nawiązaniem nowego połączenia podczas odtwarzania fabryka. Ustanowienie połączenia jest kosztowna operacja, która można uniknąć przez ponowne użycie tej samej fabryki i obiektów klientów w wielu operacjach. Można bezpiecznie [QueueClient] [ QueueClient] obiekt do wysyłania wiadomości z równoczesnych operacji asynchronicznych i wiele wątków. 
+Klient usługi Service Bus obiekty, takie jak [QueueClient] [ QueueClient] lub [MessageSender][MessageSender], są tworzone za pomocą [ MessagingFactory] [ MessagingFactory] obiektu, który udostępnia również zarządzania wewnętrznych połączeń. Zaleca się, że nie zamkniesz fabryki obsługi komunikatów lub kolejki, tematu i subskrypcji klientów po wysłać wiadomość, a następnie ponownie utwórz je, podczas przesyłania komunikatu dalej. Zamykanie fabryki obsługi komunikatów usuwa połączenia z usługą Service Bus, a nowe połączenie zostanie nawiązane, podczas ponownego tworzenia fabryki. Nawiązując połączenie jest kosztowną operacją, który można uniknąć przez ponowne użycie tego samego fabryki i obiekty klienta dla wielu operacji. Możesz bezpiecznie użyć [QueueClient] [ QueueClient] obiekt do wysyłania wiadomości z jednoczesnych operacji asynchronicznych i wielu wątków. 
 
 ## <a name="concurrent-operations"></a>Równoczesne wykonywanie operacji
 
-Wykonywanie operacji (wysyłanie, odbierania, usuwanie, itp.) dopiero po pewnym czasie. Teraz obejmuje przetwarzanie operacji przez usługi Service Bus, oprócz opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, operacji musi być wykonywany współbieżnie. 
+Wykonanie operacji (wysyłanie, odbieranie, usunąć itp.) zajmuje trochę czasu. Teraz obejmuje przetwarzanie operacji w usłudze Service Bus, poza tym zwiększa opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, jednocześnie muszą wykonać operacje. 
 
-Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. Przy następnym żądaniu została uruchomiona przed zakończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem operacja asynchronicznego wysyłania:
+Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. Kolejne żądanie jest uruchamiane przed zakończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem operacja asynchronicznego wysyłania:
   
  ```csharp
   Message m1 = new BrokeredMessage(body);
@@ -60,7 +60,7 @@ Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. 
   Console.WriteLine("All messages sent");
   ```
   
-  Następujący kod jest przykładem asynchronicznej operacji odbioru. Zobacz pełną program [tutaj](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
+  Poniższy kod jest przykładem asynchronicznej operacji odbioru. Zobacz pełny program [tutaj](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
   var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -71,19 +71,19 @@ Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. 
 
 ## <a name="receive-mode"></a>Tryb odbierania
 
-Podczas tworzenia kolejki lub subskrypcji klienta, można określić tryb odbierania: *blokady Peek* lub *odbieranie i usuwanie*. Domyślny tryb odbierania jest [PeekLock][PeekLock]. Podczas działania w tym trybie, klient wysyła żądanie komunikat o błędzie z usługi Service Bus. Po odebraniu komunikatu klient wysyła żądanie do ukończenia wiadomości.
+Podczas tworzenia kolejki lub subskrypcji klienta, można określić tryb receive: *Odbierz* lub *odbieranie i usuwanie*. Domyślny tryb odbierania jest [PeekLock][PeekLock]. Podczas pracy w tym trybie, klient wysyła żądanie, aby komunikat o błędzie z usługi Service Bus. Po otrzymaniu komunikatu klient wysyła żądanie można zakończyć wiadomości.
 
-Po ustawieniu trybu receive na [ReceiveAndDelete][ReceiveAndDelete], oba kroki są łączone w ramach pojedynczego żądania. Czynności te zmniejszyć ogólną liczbę operacji i może zwiększyć ogólną wydajność obsługi wiadomości. Jest to bardziej wydajne ryzyko utraty wiadomości.
+Po ustawieniu trybu odbioru na [ReceiveAndDelete][ReceiveAndDelete], oba kroki są połączone w jedno żądanie. Te kroki zmniejszyć ogólną liczbę operacji i może zwiększyć ogólną przepływność komunikatów. Jest to bardziej wydajne ryzyko utraty wiadomości.
 
-Usługa Service Bus nie obsługuje transakcji dla operacji odbierania i usuwania. Ponadto semantyki peek blokady są wymagane dla wszelkie scenariusze, w których klient będzie chciał odroczenie lub [utraconych](service-bus-dead-letter-queues.md) wiadomości.
+Usługa Service Bus nie obsługuje transakcji dla operacji odbierania i usuwania. Ponadto semantyki Odbierz są wymagane przez wszystkie scenariusze, w których klient chce mają być odroczone lub [utraconych](service-bus-dead-letter-queues.md) wiadomość.
 
 ## <a name="client-side-batching"></a>Przetwarzanie wsadowe po stronie klienta
 
-Przetwarzanie wsadowe po stronie klienta umożliwia kolejka lub temat klientowi Opóźnij wysyłanie wiadomości w danym okresie czasu. Jeśli klient wysyła dodatkowe komunikaty w trakcie tego okresu, przesyłanie komunikatów w jednym zadaniu wsadowym. Przetwarzanie wsadowe po stronie klienta powoduje także, że kolejka lub subskrypcji klientowi partii wielu **Complete** żądań do pojedynczego żądania. Tworzenie plików wsadowych jest dostępna tylko dla asynchronicznego **wysyłania** i **Complete** operacji. Operacje synchroniczne są natychmiast wysyłane do usługi Service Bus. Przetwarzanie wsadowe nie nastąpić peek ani operacji pobrania nie jest przetwarzanie wsadowe wykonywane przez klientów.
+Przetwarzanie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu opóźnić wysyłanie wiadomości przez pewien czas. Jeśli klient wysyła dodatkowe komunikaty w trakcie tego okresu, przesyła wiadomości w jednej partii. Przetwarzanie wsadowe po stronie klienta również powoduje, że kolejki lub subskrypcji klienta partii wielu **Complete** żądań w pojedynczym żądaniu. Przetwarzanie wsadowe jest dostępna tylko dla asynchronicznego **wysyłania** i **Complete** operacji. Synchroniczne operacje są natychmiast wysyłane do usługi Service Bus. Przetwarzanie wsadowe nie wystąpi dla podglądu ani operacji odbioru nie jest przetwarzanie wsadowe wykonywane na klientach.
 
-Domyślnie klient używa przedział wsadowego w 20 ms. Można zmienić interwał partii ustawiając [BatchFlushInterval] [ BatchFlushInterval] właściwości przed utworzeniem fabryki obsługi komunikatów. To ustawienie dotyczy wszystkich klientów, które zostały utworzone przy użyciu tej fabryki.
+Domyślnie klient używa usługi batch interwał 20 ms. Można zmienić interwał przetwarzania wsadowego, ustawiając [BatchFlushInterval] [ BatchFlushInterval] właściwości przed utworzeniem fabryki obsługi komunikatów. To ustawienie dotyczy wszystkich klientów, które są tworzone przez tę fabrykę.
 
-Aby wyłączyć tworzenie plików wsadowych, ustaw [BatchFlushInterval] [ BatchFlushInterval] właściwości **TimeSpan.Zero**. Na przykład:
+Aby wyłączyć, przetwarzanie wsadowe, ustaw [BatchFlushInterval] [ BatchFlushInterval] właściwości **TimeSpan.Zero**. Na przykład:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -92,18 +92,18 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Przetwarzanie wsadowe nie wpływa na liczbę rozliczeniowy operacji obsługi wiadomości i jest dostępny tylko dla usługi Service Bus klienta protokołu za pomocą [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) biblioteki. Protokół HTTP nie obsługuje przetwarzanie wsadowe.
+Przetwarzanie wsadowe nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest dostępna tylko dla usługi Service Bus klienta protokołu za pomocą [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) biblioteki. Protokół HTTP nie obsługuje przetwarzanie wsadowe.
 
 ## <a name="batching-store-access"></a>Przetwarzanie wsadowe dostęp do sklepu
 
-W celu zwiększenia przepływności kolejki, tematu lub subskrypcji, usługi Service Bus partii wiele komunikatów, czy jest zapisywany do magazynu wewnętrznej. Jeśli jest włączona kolejka lub temat, zapisywania komunikatów w magazynie będzie można umieścić w partii. Jeśli włączona dla kolejki lub subskrypcji, usuwania komunikatów w sklepie będzie można umieścić w partii. Po włączeniu dostępu do sklepu wsadów dla jednostki usługi Service Bus opóźnienia dotyczące tej jednostki operacji zapisu magazynu przez maksymalnie 20 ms. 
+Aby zwiększyć przepływność kolejki, tematu lub subskrypcji, usługi Service Bus partii wiele wiadomości, czy zapisuje jego wewnętrznego magazynu. Jeśli włączona dla kolejki lub tematu, będzie wsadowej zapisywania komunikatów w magazynie. Jeśli włączone, w obrębie kolejki lub subskrypcji, usuwanie wiadomości ze sklepu będzie partii. Jeśli dostęp do sklepu wsadowej jest włączona dla jednostki, usługi Service Bus opóźnia dotyczące tej jednostki operacji zapisu magazynu przez maksymalnie 20 ms. 
 
 > [!NOTE]
-> Istnieje ryzyko utraty wiadomości z partii, nawet jeśli dostępny jest na końcu zakresu przetwarzanie wsadowe 20ms awarii usługi Service Bus. 
+> Istnieje ryzyko utraty komunikatów za pomocą adapterów przetwarzania wsadowego, nawet jeśli wystąpi awaria usługi Service Bus na końcu interwału do przetwarzania wsadowego 20 MS. 
 
-Operacji dodatkowego magazynu, które występują w danym przedziale czasu są dodawane do wykonywania zadania wsadowego. Umieścić w zadaniu wsadowym wpływa jedynie na dostęp do magazynu **wysyłania** i **Complete** operacji; odbierania nie wpływ na operacje. Dostęp do sklepu wsadów jest właściwością w jednostce. Przetwarzanie wsadowe występuje we wszystkich jednostek, które umożliwiają dostęp do sklepu wsadowej.
+Operacje magazynu dodatkowego, występujące w danym przedziale czasu są dodawane do usługi batch. Wsadowe wpływa tylko na dostęp do magazynu **wysyłania** i **Complete** operacji odbierania nie wpływają na operacje. Dostęp do sklepu wsadowej jest właściwością w jednostce. Przetwarzanie wsadowe odbywa się we wszystkich jednostek, które umożliwiają dostęp do sklepu wsadowej.
 
-Podczas tworzenia nowej kolejki, tematu lub subskrypcji, dostęp do sklepu wsadów jest domyślnie włączona. Aby wyłączyć dostęp do sklepu wsadów, ustaw [EnableBatchedOperations] [ EnableBatchedOperations] właściwości **false** przed utworzeniem jednostki. Na przykład:
+Podczas tworzenia nowej kolejki, tematu lub subskrypcji, dostęp do sklepu wsadowej jest domyślnie włączona. Aby wyłączyć dostęp do sklepu wsadowych, należy ustawić [EnableBatchedOperations] [ EnableBatchedOperations] właściwości **false** przed utworzeniem jednostki. Na przykład:
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -111,25 +111,25 @@ qd.EnableBatchedOperations = false;
 Queue q = namespaceManager.CreateQueue(qd);
 ```
 
-Dostęp do sklepu wsadów nie wpływa na liczbę rozliczeniowy operacji obsługi wiadomości i jest właściwością kolejki, tematu lub subskrypcji. Jest niezależna od trybu receive i protokół, który jest używany między klientem a usługi Service Bus.
+Dostęp do sklepu wsadowej nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest właściwością kolejki, tematu lub subskrypcji. Jest ono niezależne od trybu odbioru i protokół, który jest używany między klientem a usługą Service Bus.
 
-## <a name="prefetching"></a>Odczyt z wyprzedzeniem
+## <a name="prefetching"></a>Trwa pobieranie z wyprzedzeniem
 
-[Odczyt z wyprzedzeniem](service-bus-prefetch.md) umożliwia klienta kolejki lub subskrypcji, aby załadować dodatkowych komunikatów z usługi, podczas wykonywania operacji odbierania. Klient przechowuje te komunikaty w lokalnej pamięci podręcznej. Rozmiar pamięci podręcznej jest określany przez [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] lub [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] właściwości. Każdy klient, który umożliwia odczyt z wyprzedzeniem zachowuje własną pamięci podręcznej. Pamięć podręczna nie jest współużytkowana przez klientów. Jeśli klient inicjuje operacji odbierania i pamięci podręcznej jest pusta, usługa przesyła partia komunikatów. Rozmiar partii jest równe rozmiar pamięci podręcznej lub 256 KB, w zależności od jest mniejsza. Jeśli klient inicjuje operacji odbierania i pamięci podręcznej zawiera komunikat, wiadomość jest pobierana z pamięci podręcznej.
+[Trwa pobieranie z wyprzedzeniem](service-bus-prefetch.md) umożliwia klientowi kolejki lub subskrypcji, można załadować dodatkowych komunikatów z usługi podczas wykonywania operacji odbierania. Klient przechowuje te komunikaty w lokalnej pamięci podręcznej. Rozmiar pamięci podręcznej jest określany przez [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] lub [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] właściwości. Każdy klient, który umożliwia pobieranie z wyprzedzeniem zachowuje swój własny pamięci podręcznej. Pamięć podręczna nie są współdzielone przez klientów. Jeśli operacja odbioru inicjowania przez klienta i jego pamięci podręcznej jest pusta, usługa przesyła partię komunikatów. Rozmiar partii jest równe wielkości pamięci podręcznej lub 256 KB, w zależności jest mniejsze. Jeśli operacja odbioru inicjowania przez klienta i pamięć podręczna zawiera komunikat, komunikat jest pobierana z pamięci podręcznej.
 
-Gdy komunikat jest prefetched, usługa blokuje prefetched wiadomości. Z blokadą prefetched komunikat nie może zostać odebrany przez inny odbiornik. Jeśli odbiornik nie może ukończyć komunikatu przed upływem blokady, komunikat staną się dostępne dla innych odbiorców. Prefetched kopia wiadomości pozostaje w pamięci podręcznej. Odbiornik, który wykorzystuje wygasłe buforowanej kopii otrzyma Wystąpił wyjątek podczas próby wykonania tej wiadomości. Domyślnie blokady komunikat wygasa po 60 sekund. Ta wartość może zostać rozszerzony do 5 minut. Aby zapobiec wykorzystywaniu komunikaty wygasłe, rozmiar pamięci podręcznej zawsze powinna być krótsza niż liczba wiadomości, które mogą być używane przez klienta w ramach interwał limitu czasu blokady.
+Gdy komunikat jest pobieranych z wyprzedzeniem, usługa blokuje komunikat pobieranych z wyprzedzeniem. Z blokadą pobieranych z wyprzedzeniem komunikat nie może otrzymać inny odbiornik. Jeśli odbiornik nie może ukończyć komunikatu przed wygaśnięciem blokady, wiadomość zostaje udostępniony innym odbiornikom. Pobieranych z wyprzedzeniem kopię wiadomości pozostaje w pamięci podręcznej. Odbiornik zużywa wygasłe buforowana kopia otrzymasz wyjątek podczas próby wykonania tego komunikatu. Domyślnie wygaśnięciu blokady komunikat po 60 sekundach. Tę wartość można rozszerzyć na 5 minut. Aby uniknąć użycia wygasłe wiadomości, rozmiar pamięci podręcznej powinny zawsze być mniejszy niż liczba wiadomości, które mogą być wykorzystane przez klienta w ramach interwał limitu czasu blokady.
 
-Korzystając z okresu ważności blokady domyślne 60 sekund, wartość jest dobrą [PrefetchCount] [ SubscriptionClient.PrefetchCount] 20 razy maksymalną przetwarza stawki wszystkich odbiorników fabryki. Na przykład fabrykę tworzy odbiorniki trzy, a każdy odbiorca może przetwarzać maksymalnie 10 komunikatów na sekundę. Liczba pobierania z wyprzedzeniem nie może przekraczać 20 X 3 X 10 = 600. Domyślnie [PrefetchCount] [ QueueClient.PrefetchCount] jest ustawiona na 0, co oznacza, że pobrane żadnych dodatkowych komunikatów z usługi.
+Korzystając z domyślnego czasu wygaśnięcia blokady 60 sekund, wartość jest dobrą [PrefetchCount] [ SubscriptionClient.PrefetchCount] maksymalnie 20 razy przetwarza stawki wszystkich odbiorców fabryki. Na przykład fabrykę tworzy trzy odbiorców, a każdy odbiorca może przetwarzać do 10 komunikatów na sekundę. Liczba pobierania z wyprzedzeniem nie powinna przekraczać 20 X 3 X 10 = 600. Domyślnie [PrefetchCount] [ QueueClient.PrefetchCount] jest ustawiona na 0, co oznacza, że nie dodatkowe komunikaty pobrane z usługi.
 
-Odczyt z wyprzedzeniem wiadomości zwiększa ogólną przepustowość kolejki lub subskrypcji, ponieważ zmniejsza ogólną liczbę operacje dotyczące komunikatów lub rund. Pobieranie pierwszej wiadomości, jednak będzie trwało dłużej (ze względu na rozmiar komunikatu zwiększona). Odbieranie komunikatów prefetched będzie przebiegać szybciej, ponieważ komunikaty te zostały już pobrane przez klienta.
+Pobieranie z wyprzedzeniem wiadomości zwiększa ogólną przepływność kolejki lub subskrypcji, ponieważ zmniejsza ogólną liczbę operacji wiadomości lub wystąpień komunikacji dwustronnej. Pobieranie pierwszy komunikat, jednak będzie trwać dłużej (ze względu na rozmiar zwiększone komunikat). Odbieranie komunikatów pobieranych z wyprzedzeniem będzie przebiegać szybciej, ponieważ te komunikaty zostały już pobrane przez klienta.
 
-Czas wygaśnięcia (TTL) właściwość wiadomości jest sprawdzana przez serwer w momencie serwer wysyła wiadomość do klienta. Klient nie sprawdza właściwości czas wygaśnięcia wiadomości podczas odbioru wiadomości. Zamiast tego można można odebrać wiadomości, nawet jeśli czas wygaśnięcia wiadomości minęła, gdy komunikat był buforowany przez klienta.
+Time to live (TTL) właściwość wiadomości jest sprawdzana przez serwer w momencie serwer wysyła wiadomość do klienta. Klient nie sprawdza właściwości TTL wiadomości po odebraniu wiadomości. Zamiast tego może zostać odebrany komunikat, nawet, jeśli czas wygaśnięcia komunikatu został przekazany, gdy komunikat był buforowany przez klienta.
 
-Odczyt z wyprzedzeniem nie wpływa na liczbę rozliczeniowy operacji obsługi wiadomości i jest dostępna tylko dla protokołu klienta usługi Service Bus. Protokół HTTP nie obsługuje odczyt z wyprzedzeniem. Odczyt z wyprzedzeniem jest dostępna dla operacji odbioru synchroniczne i asynchroniczne.
+Trwa pobieranie z wyprzedzeniem nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest dostępna tylko dla protokołu klienta usługi Service Bus. Protokół HTTP nie obsługuje pobieranie z wyprzedzeniem. Trwa pobieranie z wyprzedzeniem jest dostępna dla operacji odbioru synchroniczne i asynchroniczne.
 
-## <a name="express-queues-and-topics"></a>Express kolejek i tematów
+## <a name="express-queues-and-topics"></a>Express, kolejek i tematów
 
-Jednostki ekspresowe włączyć uzyskać wysoką przepustowość i mniejsze opóźnienia scenariuszy i są obsługiwane tylko w warstwie standardowej obsługi wiadomości. Jednostki utworzone w [przestrzeniach nazw warstwy Premium](service-bus-premium-messaging.md) nie obsługują opcji express. Z jednostki ekspresowe Jeśli jest wysyłany komunikat do kolejki lub tematu, wiadomości nie są natychmiast przechowywane w magazynie obsługi komunikatów. Zamiast tego są buforowane w pamięci. Jeśli wiadomość pozostaje w kolejce przez więcej niż kilka sekund, są automatycznie zapisywane do stabilnego magazynu, w związku z tym ochrony przed utratą z powodu awarii. Zapisywanie wiadomości w pamięci podręcznej zwiększa przepustowość i zmniejsza opóźnienia, ponieważ nie ma dostępu do magazynu stanu stabilnego w czasie, który jest wysyłany komunikat. Komunikaty, które są używane w ciągu kilku sekund nie są zapisywane w magazynie obsługi komunikatów. Poniższy przykład tworzy express tematu.
+Jednostki ekspresowe włączyć scenariusze krótszym czasom oczekiwania i wysokiej przepływności i są obsługiwane tylko w warstwie standardowej obsługi komunikatów. Jednostek utworzonych w [przestrzeni nazw Premium](service-bus-premium-messaging.md) nie obsługują opcji express. Przy użyciu jednostek ekspresowych Jeśli komunikat jest wysyłany do kolejki lub tematu, wiadomości nie są natychmiast przechowywane w magazynie obsługi komunikatów. Zamiast tego należy ją w pamięci podręcznej. Komunikat pozostaje w kolejce przez więcej niż kilku sekund, są automatycznie zapisywane do magazynu, w związku z tym chroni przed utratą z powodu awarii stanu stabilnego. Zapisywanie komunikatu w pamięci podręcznej zwiększa przepływność i zmniejsza opóźnienia, ponieważ nie ma dostępu do stabilnego działania magazynu w momencie wysłania wiadomości. Komunikaty, które są używane w ciągu kilku sekund nie są zapisywane w magazynie komunikatów. Poniższy przykład tworzy temat usługi express.
 
 ```csharp
 TopicDescription td = new TopicDescription(TopicName);
@@ -137,17 +137,17 @@ td.EnableExpress = true;
 namespaceManager.CreateTopic(td);
 ```
 
-Jeśli wiadomość zawierającą krytyczne informacje, które nie mogą być utracone są wysyłane do jednostki ekspresowe, nadawca wymusić usługi Service Bus, aby natychmiast utrwalić komunikat do stabilnego magazynu przez ustawienie [ForcePersistence] [ ForcePersistence] właściwości **true**.
+Jeśli komunikat zawierający krytyczne informacje, które nie mogą być tracone zostanie wysłany do jednostki ekspresowe, nadawca może wymusić usługi Service Bus, można od razu utrwalić komunikat do czasu trwania stanu stabilnego magazynu, ustawiając [ForcePersistence] [ ForcePersistence] właściwości **true**.
 
 > [!NOTE]
 > Jednostki ekspresowe nie obsługuje transakcji.
 
-## <a name="partitioned-queues-or-topics"></a>Partycjonowane kolejki i tematy
+## <a name="partitioned-queues-or-topics"></a>Partycjonowanych kolejek lub tematów
 
-Wewnętrznie Usługa Service Bus używa tego samego węzła i magazynu do obsługi komunikatów do przetwarzania i przechowywania wszystkie komunikaty dla jednostki obsługi komunikatów (kolejki lub tematu). A [partycjonowanej kolejka lub temat](service-bus-partitioning.md), z drugiej strony, będzie rozmieszczona na wielu węzłach i wiadomości magazynów. Partycjonowane kolejek i tematów nie tylko uzyskanie wyższej przepustowości niż regularne kolejek i tematów, charakteryzują wysokiej dostępności. Aby utworzyć partycjonowane jednostki, ustaw [parametr EnablePartitioning] [ EnablePartitioning] właściwości **true**, jak pokazano w poniższym przykładzie. Aby uzyskać więcej informacji na temat partycjonowane jednostki, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
+Wewnętrznie Usługa Service Bus używa tego samego węzła i komunikatów magazynu do przetwarzania i przechowywania wszystkie komunikaty dla jednostki obsługi komunikatów (kolejki lub tematu). A [podzieleniu kolejki lub tematu](service-bus-partitioning.md), z drugiej strony, będzie rozmieszczona na wielu węzłach i magazynów komunikatów. Partycjonowane kolejki i tematy nie tylko uzyskanie wyższą przepływność niż regularne kolejek i tematów, charakteryzują najwyższej dostępności. Aby utworzyć jednostki podzielonej na partycje, ustaw [EnablePartitioning] [ EnablePartitioning] właściwości **true**, jak pokazano w poniższym przykładzie. Aby uzyskać więcej informacji na temat partycjonowane jednostki zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 > [!NOTE]
-> Partycjonowane jednostki są nieobsługiwane w [warstwy Premium](service-bus-premium-messaging.md). 
+> Partycjonowane jednostki nie są obsługiwane w [jednostki SKU Premium](service-bus-premium-messaging.md). 
 
 ```csharp
 // Create partitioned queue.
@@ -158,106 +158,106 @@ namespaceManager.CreateQueue(qd);
 
 ## <a name="multiple-queues"></a>Wielu kolejek
 
-Jeśli nie jest możliwe za pomocą partycjonowanego kolejki lub tematu lub spodziewane obciążenie nie mogą być obsługiwane przez partycjonowanej kolejka lub temat, należy użyć wiele jednostek obsługi komunikatów. Korzystając z wielu jednostek, Utwórz dedykowane klienta dla każdej jednostki, zamiast używać tego samego klienta dla wszystkich obiektów.
+Jeśli nie jest możliwe użycie podzieleniu kolejki lub tematu lub oczekiwanego obciążenia nie mogą być obsługiwane przez pojedynczy podzieleniu kolejki lub tematu, należy użyć wielu jednostek obsługi komunikatów. Korzystając z wielu jednostek, Utwórz dedykowane klienta dla każdej jednostki, zamiast korzystać z tego samego klienta dla wszystkich jednostek.
 
 ## <a name="development-and-testing-features"></a>Programowanie i testowanie funkcji
 
-Usługa Service Bus ma jedną funkcję używany specjalnie z myślą o programowanie, które **nie mogą być używane w konfiguracjach produkcji**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+Usługa Service Bus ma jedną funkcję, używana specjalnie dla rozwoju, który **nie mogą być używane w konfiguracjach produkcji**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
 
-Jeśli nowe reguły lub filtry są dodawane do tematu, możesz użyć [TopicDescription.EnableFilteringMessagesBeforePublishing][] Aby sprawdzić, czy nowe wyrażenie filtru działa zgodnie z oczekiwaniami.
+Gdy nowe reguły lub filtry są dodawane do tematu, można użyć [TopicDescription.EnableFilteringMessagesBeforePublishing][] Aby sprawdzić, czy nowe wyrażenie filtru działa zgodnie z oczekiwaniami.
 
 ## <a name="scenarios"></a>Scenariusze
 
-W poniższych sekcjach opisano typowe scenariusze obsługi wiadomości i przedstawiają preferowanych ustawień usługi Service Bus. Przepływności są sklasyfikowane jako mały (mniej niż 1 komunikatów na sekundę), średni (1 komunikatów na sekundę lub większą, ale mniej niż 100 komunikatów na sekundę) i wysoki (100 wiadomości/sekundę lub większą). Liczba klientów są sklasyfikowane jako mała liczba godzin (5 lub mniej), umiarkowany (więcej niż 5, ale mniej niż 20) i duże (więcej niż 20).
+W poniższych sekcjach opisano typowe scenariusze dotyczące przesyłania komunikatów i opisują preferowanych ustawień usługi Service Bus. Przepustowość są klasyfikowane jako małe (mniej niż 1 komunikatów na sekundę), średnie (1 komunikatów na sekundę lub większą, ale mniej niż 100 komunikatów na sekundę) i Wysoka (100 wiadomości/drugi lub nowszej). Liczba klientów są klasyfikowane jako mała liczba godzin (5 lub mniej), średni (więcej niż 5, ale mniej niż 20) i duże (więcej niż 20).
 
-### <a name="high-throughput-queue"></a>Kolejki wysokiej przepustowości
+### <a name="high-throughput-queue"></a>Kolejki o wysokiej przepływności
 
-Cel: Zmaksymalizować przepustowość pojedynczej kolejki. Liczba nadawcami a odbiornikami jest mała.
+Cel: Maksymalizuj przepływności pojedynczej kolejki. Liczba nadawców i odbiorców jest mały.
 
-* Aby zwiększyć ogólną szybkość wysyłania w kolejce, umożliwiają utworzenie nadawców wiele fabryk komunikatów. Dla każdego nadawcy użyj operacji asynchronicznych lub wiele wątków.
-* Aby zwiększyć ogólną szybkość odbierania z kolejki, umożliwiają utworzenie odbiorców wiele fabryk komunikatów.
-* Aby skorzystać z przetwarzanie wsadowe po stronie klienta, należy użyć operacji asynchronicznych.
-* Ustaw interwał przetwarzanie wsadowe 50 MS, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus. Jeśli wielu nadawców są używane, należy zwiększyć interwał przetwarzanie wsadowe 100 MS.
-* Pozostaw włączony dostęp do magazynu wsadowej. Dostęp zwiększa ogólną szybkość, w którym można pisać wiadomości do kolejki.
-* Ustaw liczbę pobierania z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
-* Użyj kolejki partycjonowanej większą wydajność i dostępność.
+* Aby zwiększyć ogólną szybkość wysyłania do kolejki, umożliwia tworzenie nadawców wiele fabryk komunikatów. Dla każdego nadawcy użyj operacji asynchronicznych lub wielu wątków.
+* Aby zwiększyć ogólną szybkość odbierania z kolejki, umożliwia tworzenie odbiorników wiele fabryk komunikatów.
+* Operacje asynchroniczne umożliwiają korzystanie z zalet przetwarzanie wsadowe po stronie klienta.
+* Ustaw interwał przetwarzania wsadowego do 50 ms, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus. Jeśli wiele nadawcy są używane, należy zwiększyć interwał przetwarzania wsadowego do 100 ms.
+* Pozostawienie włączonego dostępu do magazynu wsadowej. Ten dostęp, zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane w kolejce.
+* Ustaw liczbę pobieranie z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
+* Na użytek podzieleniu kolejki lepszą wydajność i dostępność.
 
-### <a name="multiple-high-throughput-queues"></a>Wielu kolejek wysokiej przepustowości
+### <a name="multiple-high-throughput-queues"></a>Wielu kolejek o wysokiej przepływności
 
-Cel: Zmaksymalizować ogólną przepustowość wielu kolejek. Przepływność pojedynczej kolejki jest średni czy wysoki.
+Cel: Maksymalizuj ogólną przepustowość wielu kolejek. Przepływności pojedynczej kolejki wynoszącej, średni lub wysoki.
 
-Aby uzyskać maksymalną przepływność wiele kolejek, użyj ustawienia opisane w celu zwiększenia przepływności pojedynczej kolejki. Ponadto użyj innego fabryki, aby utworzyć klientów, którzy wysłać lub odebrać z różnych kolejek.
+Aby uzyskać maksymalną przepływność wiele kolejek, należy użyć ustawienia opisane w celu zmaksymalizowania wydajności z pojedynczą kolejką. Ponadto Użyj różnych fabryk, aby utworzyć klientów, którzy wysłać lub odebrać z różnych kolejek.
 
 ### <a name="low-latency-queue"></a>Małe opóźnienia kolejki
 
-Cel: Zminimalizować czas oczekiwania na trasie kolejka lub temat. Liczba nadawcami a odbiornikami jest mała. Przepływność kolejki jest mała lub średniego.
+Cel: Zminimalizować opóźnienie end-to-end kolejki lub tematu. Liczba nadawców i odbiorców jest mały. Przepływność kolejki jest mały lub Średni.
 
-* Wyłącz przetwarzanie wsadowe po stronie klienta. Natychmiast wysyła wiadomość.
-* Wyłącz dostęp do sklepu wsadowej. Usługa natychmiast zapisuje komunikat w magazynie.
-* Jeśli przy użyciu jednego klienta, ustaw 20 razy szybkości przetwarzania odbiornika liczba pobierania z wyprzedzeniem. Jeśli wiele wiadomości do kolejki w tym samym czasie, protokół klienta usługi Service Bus umożliwiają przesyłanie wszystko na tym samym czasie. Gdy klient odbierze następny komunikat, ten komunikat jest już w lokalnej pamięci podręcznej. Pamięć podręczna powinna być niewielka.
-* Jeśli używasz wielu klientów, liczba pobierania z wyprzedzeniem wartości 0. Ustawiając wartość licznika, drugi klient może odbierać to drugi komunikat, gdy pierwszy klient nadal przetwarza pierwszego komunikatu.
-* Użyj kolejki partycjonowanej większą wydajność i dostępność.
+* Wyłącz przetwarzanie wsadowe po stronie klienta. Klient natychmiast wysyła wiadomość.
+* Wyłącz dostęp do sklepu wsadowej. Usługa od razu zapisuje komunikat w magazynie.
+* Jeśli używasz jednego klienta, ustaw 20 razy szybkości przetwarzania odbiornika liczba pobierania z wyprzedzeniem. Jeśli wiele wiadomości do kolejki w tym samym czasie, protokół klienta usługi Service Bus przesyła je wszystkie w tym samym czasie. Gdy klient odbierze następnej wiadomości, ten komunikat jest już w lokalnej pamięci podręcznej. Pamięć podręczna powinna być niewielka.
+* Jeśli używasz wielu klientów, należy ustawić na 0 liczba pobierania z wyprzedzeniem. Ustawiając liczbę, drugi klient może odbierać drugi komunikat, podczas gdy pierwszy klient jest nadal przetwarza pierwszego komunikatu.
+* Na użytek podzieleniu kolejki lepszą wydajność i dostępność.
 
-### <a name="queue-with-a-large-number-of-senders"></a>Kolejka z dużą liczbą nadawców
+### <a name="queue-with-a-large-number-of-senders"></a>Kolejki z dużą liczbą nadawców
 
-Cel: Zmaksymalizować przepustowość kolejka lub temat z dużą liczbą nadawcy. Każdy Nadawca wysyła komunikaty z wartością średnią. Liczba odbiorcy jest mała.
+Cel: Zmaksymalizować przepływność kolejki lub tematu z dużą liczbą nadawcy. Każdy Nadawca wysyła komunikaty z średni współczynnik. Numer odbiorcy jest mały.
 
-Usługa Service Bus umożliwia do 1000 równoczesnych połączeń jednostki obsługi komunikatów (lub 5000 za pomocą protokołu AMQP). Ten limit jest wymuszane na poziomie przestrzeni nazw i kolejek/tematy/subskrypcje są ograniczone przez limit równoczesnych połączeń na przestrzeni nazw. W przypadku kolejek ta liczba jest udostępniana między nadawcami a odbiornikami. Jeśli wszystkie połączenia 1000 są wymagane dla nadawców, Zamień kolejki tematu i jedną subskrypcją. Temat akceptuje do 1000 równoczesnych połączeń od nadawcy, natomiast subskrypcji akceptuje dodatkowych 1000 równoczesnych połączeń od odbiorcy. Jeśli wymaganych jest więcej niż 1000 równoczesnych nadawców nadawców powinien wysyłać wiadomości protokołu usługi Service Bus za pośrednictwem protokołu HTTP.
+Service Bus umożliwia maksymalnie 1000 równoczesnych połączeń jednostki obsługi komunikatów (lub 5000 za pomocą protokołu AMQP). Ten limit jest wymuszane na poziomie przestrzeni nazw i kolejek/tematów/subskrypcji są ograniczone przez limit jednoczesnych połączeń dla jednej przestrzeni nazw. W przypadku kolejek liczba ta jest udostępniana między nadawcami a odbiornikami. Jeśli wszystkie połączenia 1000 są wymagane do nadawców, Zamień kolejki tematu i jednej subskrypcji. Temat akceptuje do 1000 równoczesnych połączeń od nadawcy, podczas gdy subskrypcja akceptuje dodatkowe 1000 równoczesnych połączeń od odbiorcy. Jeśli więcej niż 1000 równoczesnych nadawcy są wymagane, nadawców powinien wysyłać wiadomości protokołu usługi Service Bus za pośrednictwem protokołu HTTP.
 
-Aby zmaksymalizować przepustowość, wykonaj następujące czynności:
+Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
-* Jeśli każdego nadawcy znajduje się w ramach innego procesu, należy użyć tylko jednej fabryki na proces.
-* Aby skorzystać z przetwarzanie wsadowe po stronie klienta, należy użyć operacji asynchronicznych.
-* Użyj domyślnej przetwarzanie wsadowe interwał 20 ms, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
-* Pozostaw włączony dostęp do magazynu wsadowej. Dostęp zwiększa ogólną szybkość, jaką można pisać wiadomości do kolejki lub temat.
-* Ustaw liczbę pobierania z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
-* Użyj kolejki partycjonowanej większą wydajność i dostępność.
+* Jeśli każdego nadawcy znajduje się w ramach innego procesu, należy użyć pojedynczej fabryki jednego procesu.
+* Operacje asynchroniczne umożliwiają korzystanie z zalet przetwarzanie wsadowe po stronie klienta.
+* Użyj domyślnego interwału wynoszącego 20 ms dzielenia na partie, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
+* Pozostawienie włączonego dostępu do magazynu wsadowej. Ten dostęp, zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane do kolejki lub tematu.
+* Ustaw liczbę pobieranie z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
+* Na użytek podzieleniu kolejki lepszą wydajność i dostępność.
 
-### <a name="queue-with-a-large-number-of-receivers"></a>Kolejka z wieloma odbiornikami
+### <a name="queue-with-a-large-number-of-receivers"></a>Kolejki z wieloma odbiornikami
 
-Cel: Maksymalizuj szybkość odbierania kolejki lub subskrypcji z dużą liczbą odbiorników. Każdy odbiorca odbiera komunikaty z umiarkowane szybkością. Liczba nadawców jest mała.
+Cel: Maksymalizuj szybkość odbierania kolejki lub subskrypcji z wieloma odbiornikami. Każdy odbiorca odbiera komunikaty z szybkością umiarkowane. Numer nadawcy jest mały.
 
-Usługa Service Bus umożliwia do 1000 równoczesnych połączeń z jednostką. Jeśli kolejka wymaga więcej niż 1000 odbiornikami, Zamień kolejki tematu i subskrypcji. Każda subskrypcja może obsługiwać maksymalnie 1000 równoczesnych połączeń. Alternatywnie odbiorcy mają dostęp do kolejki przy użyciu protokołu HTTP.
+Usługa Service Bus umożliwia maksymalnie 1000 równoczesnych połączeń do jednostki. Jeśli kolejka wymaga więcej niż 1000 odbiorników, Zamień kolejki tematu i wielu subskrypcji. Każda subskrypcja może obsługiwać maksymalnie 1000 równoczesnych połączeń. Alternatywnie odbiorniki mają dostęp do kolejki za pośrednictwem protokołu HTTP.
 
-Aby zmaksymalizować przepustowość, wykonaj następujące czynności:
+Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
-* Każdy odbiorca znajduje się w ramach innego procesu, należy użyć tylko jednej fabryki na proces.
-* Odbiorniki można używać operacji synchroniczna lub asynchroniczna. Biorąc pod uwagę szybkość odbierania umiarkowane poszczególnych odbiornika, wykonać żądanie przetwarzanie wsadowe po stronie klienta nie wpływa na przepływność odbiorcy.
-* Pozostaw włączony dostęp do magazynu wsadowej. Dostęp zmniejsza całkowite obciążenie jednostki. Zmniejsza ogólną szybkość, jaką można pisać wiadomości do kolejki lub temat.
-* Ustaw wyprzedzeniem liczbę małej wartości (na przykład PrefetchCount = 10). Ten licznik zapobiega odbiorniki bezczynności podczas innym odbiornikom ma dużą liczbę komunikatów w pamięci podręcznej.
-* Użyj kolejki partycjonowanej większą wydajność i dostępność.
+* Jeśli każdy odbiorca znajduje się w ramach innego procesu, należy użyć pojedynczej fabryki jednego procesu.
+* Odbiorniki można użyć operacji synchroniczna lub asynchroniczna. Biorąc pod uwagę szybkość odbierania umiarkowane odbiornika poszczególnych, przetwarzanie wsadowe kompletne żądanie po stronie klienta nie ma wpływu na przepływność odbiorcy.
+* Pozostawienie włączonego dostępu do magazynu wsadowej. Ten dostęp zmniejsza całkowite obciążenie jednostki. Zmniejsza to także ogólną szybkość jaką komunikaty mogą być zapisywane do kolejki lub tematu.
+* Ustaw liczbę pobierania z wyprzedzeniem małej wartości (na przykład PrefetchCount = 10). Ten licznik zapobiega odbiorniki ze stanu bezczynności, a innym odbiornikom dużej liczby komunikatów, pamięci podręcznej.
+* Na użytek podzieleniu kolejki lepszą wydajność i dostępność.
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Temat z małą liczbą subskrypcji
 
-Cel: Zmaksymalizować przepustowość tematu z mniejszą liczbą subskrypcji. Odebraniu komunikatu przez wiele subskrypcji, co oznacza, że szybkość odbierania połączonych za pośrednictwem wszystkie subskrypcje jest większa niż częstotliwość wysyłania. Liczba nadawców jest mała. Liczba odbiorcy dla subskrypcji jest mała.
+Cel: Zmaksymalizować przepływność tematu z niewielką liczbę subskrypcji. Wiadomość zostaje odebrana się przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
 
-Aby zmaksymalizować przepustowość, wykonaj następujące czynności:
+Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
-* Aby zwiększyć ogólną szybkość wysyłania do tematu, umożliwiają utworzenie nadawców wiele fabryk komunikatów. Dla każdego nadawcy użyj operacji asynchronicznych lub wiele wątków.
-* Aby zwiększyć ogólną szybkość odbierania z subskrypcji, umożliwiają utworzenie odbiorców wiele fabryk komunikatów. Dla każdego adresata użyj operacji asynchronicznych lub wiele wątków.
-* Aby skorzystać z przetwarzanie wsadowe po stronie klienta, należy użyć operacji asynchronicznych.
-* Użyj domyślnej przetwarzanie wsadowe interwał 20 ms, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
-* Pozostaw włączony dostęp do magazynu wsadowej. Dostęp zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane w temacie.
-* Ustaw liczbę pobierania z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
-* Skorzystaj z podzielonym na partycje tematu, aby uzyskać lepszą wydajność i dostępność.
+* Aby zwiększyć ogólną szybkość wysyłania w temacie, umożliwia tworzenie nadawców wiele fabryk komunikatów. Dla każdego nadawcy użyj operacji asynchronicznych lub wielu wątków.
+* Aby zwiększyć ogólną szybkość odbierania z subskrypcji, użyj wiele fabryk komunikatów, aby utworzyć odbiorników. Dla każdego adresata użyj operacji asynchronicznych lub wielu wątków.
+* Operacje asynchroniczne umożliwiają korzystanie z zalet przetwarzanie wsadowe po stronie klienta.
+* Użyj domyślnego interwału wynoszącego 20 ms dzielenia na partie, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
+* Pozostawienie włączonego dostępu do magazynu wsadowej. Ten dostęp, zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane w temacie.
+* Ustaw liczbę pobieranie z wyprzedzeniem do 20 razy maksymalnej szybkości przetwarzania wszystkich odbiorników fabryki. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
+* Aby uzyskać lepszą wydajność i dostępność kolejki użyć tematu podzielonym na partycje.
 
-### <a name="topic-with-a-large-number-of-subscriptions"></a>Temat z dużą liczbą subskrypcji
+### <a name="topic-with-a-large-number-of-subscriptions"></a>Temat z dużej liczby subskrypcji
 
-Cel: Zmaksymalizować przepustowość tematu z dużą liczbą subskrypcji. Komunikat jest odbierany przez wiele subskrypcji, co oznacza, że szybkość odbierania połączonych za pośrednictwem wszystkie subskrypcje jest znacznie większa niż częstotliwość wysyłania. Liczba nadawców jest mała. Liczba odbiorcy dla subskrypcji jest mała.
+Cel: Zmaksymalizować przepływność tematu z dużą liczbę subskrypcji. Komunikat jest odbierany przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest znacznie większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
 
-Tematy z dużą liczbą subskrypcji zwykle ujawnia niski ogólną przepustowość, jeśli wszystkie komunikaty są kierowane do wszystkich subskrypcji. Przyczyną jest fakt, że każdy komunikat jest odbierany tyle razy, a wszystkie komunikaty, które znajdują się w temacie i wszystkie jego subskrypcje są przechowywane w tym samym magazynie to niskiej przepustowości. Zakłada się, liczba nadawców i liczbę odbiorników dla subskrypcji jest mała. Usługa Service Bus obsługuje maksymalnie 2000 subskrypcji na temat.
+Tematy z dużą liczbą subskrypcje zazwyczaj ujawnić niski ogólną przepływność, ile wszystkie komunikaty są kierowane do wszystkich subskrypcji. Przyczyną jest fakt, że każdy komunikat jest odbierany wiele razy, a wszystkie komunikaty, które są zawarte w temacie i wszystkie jego subskrypcje są przechowywane w tym samym magazynie to niska przepływność. Zakłada się, czy liczba nadawców i liczbę odbiorców na subskrypcję jest mały. Usługa Service Bus obsługuje maksymalnie 2000 subskrypcji w temacie.
 
-Aby zmaksymalizować przepustowość, spróbuj wykonać następujące kroki:
+Aby zmaksymalizować przepływność, spróbuj wykonać następujące kroki:
 
-* Aby skorzystać z przetwarzanie wsadowe po stronie klienta, należy użyć operacji asynchronicznych.
-* Użyj domyślnej przetwarzanie wsadowe interwał 20 ms, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
-* Pozostaw włączony dostęp do magazynu wsadowej. Dostęp zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane w temacie.
-* Ustaw liczbę pobierania z wyprzedzeniem 20 razy szybkość odbierania oczekiwanego, w sekundach. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
-* Skorzystaj z podzielonym na partycje tematu, aby uzyskać lepszą wydajność i dostępność.
+* Operacje asynchroniczne umożliwiają korzystanie z zalet przetwarzanie wsadowe po stronie klienta.
+* Użyj domyślnego interwału wynoszącego 20 ms dzielenia na partie, aby zmniejszyć liczbę transmisji protokołu klienta usługi Service Bus.
+* Pozostawienie włączonego dostępu do magazynu wsadowej. Ten dostęp, zwiększa ogólną szybkość jaką komunikaty mogą być zapisywane w temacie.
+* Ustaw liczbę pobieranie z wyprzedzeniem do 20 razy szybkości odbioru oczekiwane w ciągu kilku sekund. Ten licznik zmniejsza liczbę transmisji protokołu klienta usługi Service Bus.
+* Aby uzyskać lepszą wydajność i dostępność kolejki użyć tematu podzielonym na partycje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat optymalizacji wydajności usługi Service Bus, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
+Aby dowiedzieć się więcej na temat optymalizowania wydajności usługi Service Bus, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender

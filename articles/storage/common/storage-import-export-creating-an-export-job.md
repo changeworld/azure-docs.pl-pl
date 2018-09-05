@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 889cedf555c8a9a86cc8a2101f27cafcb48376df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0066ec20c68d70fac9a6529f8f5b85855d6c5349
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523159"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666828"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Tworzenie zadania eksportu dla usługi Azure Import/Export
 Tworzenie zadania eksportu dla usługi Microsoft Azure Import/Export, za pomocą interfejsu API REST obejmuje następujące czynności:
@@ -48,7 +48,7 @@ Tworzenie zadania eksportu dla usługi Microsoft Azure Import/Export, za pomocą
  Aby uzyskać więcej informacji na temat określania obiekty BLOB do wyeksportowania, zobacz [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
-Przed utworzeniem przez zadanie eksportu, należy uzyskać nazwę lokalizacji wysyłki i adres, wywołując [Pobieranie lokalizacji](https://portal.azure.com) lub [listy lokalizacji](/rest/api/storageimportexport/listlocations) operacji. `List Locations` Spowoduje to zwrócenie listy lokalizacje i swoje adresy pocztowe. Można wybrać lokalizację z listy zwracane i wysłania dysków twardych do tego adresu. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
+Przed utworzeniem przez zadanie eksportu, należy uzyskać nazwę lokalizacji wysyłki i adres, wywołując [Pobieranie lokalizacji](https://portal.azure.com) lub [listy lokalizacji](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operacji. `List Locations` Spowoduje to zwrócenie listy lokalizacje i swoje adresy pocztowe. Można wybrać lokalizację z listy zwracane i wysłania dysków twardych do tego adresu. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
 
 Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 

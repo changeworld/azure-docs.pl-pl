@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009175"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698387"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorowanie rozwiązań usługi Batch przez liczenie zadania i węzły według stanu
 
-Aby monitorować i zarządzać nimi na dużą skalę rozwiązania usługi Azure Batch, należy dokładne liczby zasobów w różnych stanach. Usługa Azure Batch umożliwia wydajne operacje można pobrać tych liczb dla usługi Batch *zadania* i *węzłów obliczeniowych*. Użyj tych operacji zamiast potencjalnie czasochłonne wywołań interfejsu API, aby zwrócić szczegółowe informacje o dużych kolekcjach zadań lub węzłów.
+Aby monitorować i zarządzać nimi na dużą skalę rozwiązania usługi Azure Batch, należy dokładne liczby zasobów w różnych stanach. Usługa Azure Batch umożliwia wydajne operacje można pobrać tych liczb dla usługi Batch *zadania* i *węzłów obliczeniowych*. Użyj tych operacji, zamiast zapytań listy potencjalnie czasochłonne, które zwracają szczegółowe informacje o dużych kolekcjach zadań lub węzłów.
 
 * [Pobieranie liczby zadań] [ rest_get_task_counts] pobiera zagregowana liczba aktywnych, uruchamianie i zakończonych zadań w ramach zadania i zadania, które zakończonych powodzeniem lub niepowodzeniem. 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 Można użyć podobny wzorzec pozostałym i innych obsługiwanych języków można pobrać liczby zadań dla zadania. 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>Sprawdzanie liczby zadań spójności
+### <a name="counts-for-large-numbers-of-tasks"></a>Liczniki dla dużej liczby zadań
 
-Usługa Batch udostępnia dodatkowe sprawdzenie poprawności dla liczników stanu zadania, wykonując sprawdzania spójności względem wielu składników systemu. W mało prawdopodobnym przypadku, sprawdzania spójności znajduje błędy partii poprawia wynik operacji pobieranie liczby zadań, na podstawie wyników sprawdzania spójności.
+Operacja Pobierz liczby zadań zwraca liczby stanów podzadań w systemie w punkcie w czasie. Gdy zadanie ma dużą liczbę zadań, liczby, zwrócona przez pobieranie liczby zadań można opóźnione stany zadanie rzeczywiste przez maksymalnie kilka sekund. Batch zapewnia spójność między wyniki pobieranie liczby zadań i Stany zadanie rzeczywiste, (które można wykonać zapytanie za pomocą interfejsu API zadań listy). Jednak jeśli w zadaniu jest bardzo dużej liczby zadań (> 200 000), zalecane jest użycie interfejsu API listy zadań i [zapytania filtrowanego](batch-efficient-list-queries.md) zamiast tego, który zawiera więcej informacji na aktualne. 
 
-`validationStatus` Właściwości w odpowiedzi wskazuje, czy usługi Batch jest wykonywane sprawdzanie spójności. Jeśli usługi Batch czas nie meldowało liczby stanów są względem rzeczywistych stanów, przechowywanych w systemie, a następnie `validationStatus` właściwość jest ustawiona na `unvalidated`. Ze względu na wydajność przetwarzania wsadowego nie przeprowadzić sprawdzanie spójności, jeśli zadanie zawiera ponad 200 000 zadania, więc `validationStatus` właściwość jest ustawiona na `unvalidated` w tym przypadku. (Liczba zadań nie jest koniecznie problem w tym przypadku jako nawet ograniczony utrata danych jest mało prawdopodobne). 
-
-Po zmianie stanu zadania potoku agregacji przetwarza zmiany w ciągu kilku sekund. Operacja Pobierz liczby zadań odzwierciedla liczby zaktualizowane zadanie, w tym okresie. Jednak jeśli potok agregacji chybień zmianę stanu zadania, następnie ta zmiana nie została zarejestrowana aż do następnego przebiegu weryfikacji. W tym czasie liczby zadań może być nieprecyzyjny z powodu brakujących zdarzeń, ale są one usuwane na następny przebieg sprawdzania poprawności.
+Batch wersji interfejsu API usługi przed 2018-08-01.7.0 również zwracać `validationStatus` właściwości w odpowiedzi na pobieranie liczby zadań. Ta właściwość wskazuje, czy usługi Batch wyewidencjonować liczby stanów w celu zachowania spójności ze Stanami zgłoszone w interfejsie API listy zadań. Wartość `validated` wskazuje tylko, że usługi Batch zaznaczone pole wyboru w celu zachowania spójności w co najmniej raz dla zadania. Wartość `validationStatus` właściwości nie wskazuje, czy liczby elementów zwracanych pobieranie liczby zadań są obecnie aktualna.
 
 ## <a name="node-state-counts"></a>Liczby stanów węzłów
 

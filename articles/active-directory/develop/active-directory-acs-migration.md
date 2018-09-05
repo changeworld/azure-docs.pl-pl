@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115888"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698064"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrowanie z usługi Azure Access Control service
 
@@ -106,7 +106,7 @@ Program SharePoint 2013, 2016 i SharePoint Online klienci wykorzystali długo AC
 
 | Cecha | Wskazówki |
 | ------- | -------- |
-| Uwierzytelnianie użytkowników z usługi Azure AD | Wcześniej usługi Azure AD nie obsługuje tokeny SAML 1.1 wymaganych przez program SharePoint do uwierzytelniania i ACS został użyty jako format pośrednik zgłaszający tokenu compatibile programu SharePoint z usługą Azure AD. Teraz możesz [połączenia programu SharePoint bezpośrednio do usługi Azure AD przy użyciu zasad wystawiania tokenu](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| Uwierzytelnianie użytkowników z usługi Azure AD | Wcześniej usługi Azure AD nie obsługuje tokeny SAML 1.1 wymaganych przez program SharePoint do uwierzytelniania i ACS został użyty jako format pośrednik zgłaszający tokenu compatibile programu SharePoint z usługą Azure AD. Teraz możesz [połączenia programu SharePoint bezpośrednio do usługi Azure AD przy użyciu programu SharePoint w galerii aplikacji usługi Azure AD dla aplikacji lokalnych](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Uwierzytelnianie aplikacji & uwierzytelniania serwera z serwerem w programie SharePoint w lokalnej](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. | 
 | [Autoryzacja niski zaufania dla dodatków programu SharePoint (Dostawca obsługiwany i programu SharePoint hostowany)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. |
 | [Wyszukiwanie programu SharePoint chmury hybrydowej](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. |

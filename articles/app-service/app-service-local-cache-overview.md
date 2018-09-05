@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918020"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666118"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie lokalnej pamięci podręcznej App Service na platformie Azure
 
@@ -44,13 +44,15 @@ Funkcja lokalna pamięć podręczna Azure App Service udostępnia widok roli sie
 * Są one odporny na uaktualnienia planowane lub nieplanowane przestoje oraz innych zakłóceń z usługą Azure Storage, występujących na serwery, które obsługują udziału zawartości.
 * Mają one mniej aplikacji ponownego uruchomienia ze względu na zmiany udziału magazynu.
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>Jak lokalna pamięć podręczna zmienia działanie usługi App Service
-* Lokalna pamięć podręczna jest kopią /site i /siteextensions folderów aplikacji sieci web. Zostanie utworzony w lokalnym wystąpieniu maszyny Wirtualnej podczas uruchamiania aplikacji sieci web. Rozmiar lokalnej pamięci podręcznej dla aplikacji sieci web jest ograniczona do 300 MB domyślnie, ale można go zwiększyć do 2 GB.
-* Lokalna pamięć podręczna jest do odczytu i zapisu. Jednak wszelkie zmiany zostaną odrzucone podczas aplikacji sieci web do przenoszenia maszyn wirtualnych lub pobiera ponownego uruchomienia. Nie należy używać lokalnej pamięci podręcznej dla aplikacji, które przechowują dane o kluczowym znaczeniu w magazynie zawartości.
-* Aplikacje sieci Web można kontynuować do zapisania plików dziennika i danych diagnostycznych, tak samo, jak obecnie. Pliki dziennika i danych, jednak są przechowywane lokalnie na maszynie Wirtualnej. Następnie one są kopiowane okresowo do magazynu zawartości udostępnionej. Kopiuj do magazynu zawartości udostępnionej jest najlepszego przypadku wysiłku — zapisu, tworzy kopię może być utracone powodu nagłe awarię wystąpienia maszyny Wirtualnej.
-* Nastąpiła zmiana w strukturze folderów folderów LogFiles i dane dla aplikacji sieci web, korzystających z lokalnej pamięci podręcznej. Istnieją teraz podfoldery w magazynu danych i LogFiles foldery, które mają wzorzec nazewnictwa "Unikatowy identyfikator" + sygnaturę czasową. Wszystkich podfolderów odnosi się do wystąpienia maszyny Wirtualnej, w którym jest uruchomiona lub zostało uruchomione w aplikacji sieci web.  
-* Publikowanie zmian w aplikacji sieci web za pomocą dowolnego mechanizmu publikowania spowoduje opublikowanie do trwałego magazynu zawartości udostępnionej. Aby odświeżyć lokalną pamięć podręczną aplikacji sieci web, musi ona zostać ponownie uruchomione. Aby cyklu życia bezproblemowe, zobacz informacje w dalszej części tego artykułu.
-* D:\Home wskazuje lokalnej pamięci podręcznej. D:\Local w dalszym ciągu wskaż magazynu tymczasowego specyficznych dla maszyny Wirtualnej.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Jak lokalna pamięć podręczna zmienia działanie usługi App Service
+* _D:\home_ wskazuje lokalnej pamięci podręcznej, która jest tworzona na wystąpieniu maszyny Wirtualnej, podczas uruchamiania aplikacji. _D:\Local_ wskaż magazynu tymczasowego specyficznych dla maszyny Wirtualnej w dalszym ciągu.
+* Lokalna pamięć podręczna zawiera jednorazową kopię _/lokacji_ i _/siteextensions_ folderów magazynu zawartości udostępnionej w _D:\home\site_ i _D:\home\ siteextensions_, odpowiednio. Pliki są kopiowane do lokalnej pamięci podręcznej podczas uruchamiania aplikacji. Rozmiar dwa foldery dla każdej aplikacji jest ograniczona do 300 MB domyślnie, ale można go zwiększyć do 2 GB.
+* Lokalna pamięć podręczna jest do odczytu i zapisu. Jednak wszelkie zmiany zostaną odrzucone po aplikacji do przenoszenia maszyn wirtualnych lub pobiera ponownego uruchomienia. Nie należy używać lokalnej pamięci podręcznej dla aplikacji, które przechowują dane o kluczowym znaczeniu w magazynie zawartości.
+* _D:\home\LogFiles_ i _D:\home\Data_ zawiera pliki dziennika i danych aplikacji. Dwa podfoldery są przechowywane lokalnie w wystąpieniu maszyny Wirtualnej i są kopiowane do magazynu zawartości udostępnionej okresowo. Aplikacje można utrwalić plików dziennika i danych, zapisując je do tych folderów. Kopiuj do magazynu zawartości udostępnionej jest jednak staranności, więc istnieje możliwość, plików dziennika i danych zostanie utracone z powodu awarii nagłe wystąpienia maszyny Wirtualnej.
+* [Przesyłanie strumieniowe dzienników](web-sites-enable-diagnostic-log.md#streamlogs) jest zależna od kopiowania największej staranności. Można obserwować, maksymalnie jednej minucie w dziennikach przesyłane strumieniowo.
+* W przypadku magazynu zawartości udostępnionej powoduje zmianę struktury folderów _LogFiles_ i _danych_ folderów dla aplikacji korzystających z lokalnej pamięci podręcznej. Dostępne są teraz podfoldery w nich, które mają wzorzec nazewnictwa "Unikatowy identyfikator" + sygnaturę czasową. Wszystkich podfolderów odnosi się do wystąpienia maszyny Wirtualnej, w którym aplikacja jest uruchomiona lub zostało uruchomione.
+* Innych folderów w _D:\home_ pozostają w lokalnej pamięci podręcznej i nie są kopiowane do magazynu zawartości udostępnionej.
+* Wdrażanie aplikacji przy użyciu dowolnej obsługiwanej metody publikuje bezpośrednio do trwałego magazynu zawartości udostępnionej. Aby odświeżyć _D:\home\site_ i _D:\home\siteextensions_ folderów w lokalnej pamięci podręcznej, aplikacja musi zostać ponownie uruchomione. Aby cyklu życia bezproblemowe, zobacz informacje w dalszej części tego artykułu.
 * Domyślny widok zawartości witryny SCM jest nadal w przypadku magazynu zawartości udostępnionej.
 
 ## <a name="enable-local-cache-in-app-service"></a>Włącz lokalną pamięć podręczną w usłudze App Service

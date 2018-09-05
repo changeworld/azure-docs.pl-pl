@@ -5,25 +5,28 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a6ce07bfe641d9efdbe0eac841bb4f27f468b34
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161468"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669069"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy należy używać dostawcę usługi Azure Multi-Factor Authentication
 
 Weryfikacja dwuetapowa jest domyślnie dostępna dla administratorów globalnych, którzy zarządzają użytkownikami usług Azure Active Directory i Office 365. Jeśli jednak chcesz korzystać z [funkcji zaawansowanych](howto-mfa-mfasettings.md), musisz kupić pełną wersję usługi Azure Multi-Factor Authentication (MFA).
 
-Funkcje oferowane w pełnej wersji usługi Azure MFA są dostępne za pośrednictwem dostawcy usługi Azure Multi-Factor Authentication. Jest dla użytkowników, którzy **nie masz licencji za pośrednictwem usługi Azure MFA, Azure AD Premium lub pakiety, które obejmują usługi Azure AD Premium lub usługi Azure MFA**. Usługa Azure MFA i Azure AD Premium obejmują pełną wersję usługi Azure MFA, domyślnie.
+Dostawcy usługi Multi-Factor Authentication platformy Azure umożliwia korzystanie z zalet funkcji oferowanych przez usługę Azure Multi-Factor Authentication dla użytkowników, którzy **nie masz licencji**. 
 
 Jeśli masz licencje, które obejmuje wszystkich użytkowników w Twojej organizacji, nie potrzebujesz dostawcy usługi Multi-Factor Authentication platformy Azure. Utwórz dostawcę usługi Azure Multi-Factor Authentication, tylko wtedy, gdy należy również podać weryfikację dwuetapową dla niektórych użytkowników, którzy nie mają licencji.
+
+> [!NOTE]
+> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Zastrzeżenia związane z zestawem SDK usługi Azure MFA
 
@@ -62,7 +65,7 @@ Aby utworzyć dostawcę usługi Azure Multi-Factor Authentication w witrynie Azu
 
 Po utworzeniu dostawcy usługi MFA nie możesz zmienić modelu użycia (na włączonego użytkownika lub na uwierzytelnienie). Możesz jednak usunąć dostawcę usługi MFA, a następnie utworzyć dostawcę z innym modelem użycia.
 
-Jeśli bieżący dostawca usługi Multi-Factor Auth jest skojarzony z katalogiem usługi Azure AD (znanym również jako dzierżawa usługi Azure AD), możesz bezpiecznie usunąć dostawcę usługi MFA, a następnie utworzyć dostawcę połączonego z tą samą dzierżawą usługi Azure AD. Alternatywnie Jeśli zakupiono za mało MFA, Azure AD Premium lub pakiety, które zawierają licencje usługi Azure AD Premium lub usługi Azure MFA, aby objęły one wszystkich użytkowników, które są włączone dla usługi MFA, można usunąć dostawcę usługi MFA całkowicie.
+Jeśli bieżący dostawca usługi Multi-Factor Auth jest skojarzony z katalogiem usługi Azure AD (znanym również jako dzierżawa usługi Azure AD), możesz bezpiecznie usunąć dostawcę usługi MFA, a następnie utworzyć dostawcę połączonego z tą samą dzierżawą usługi Azure AD. Alternatywnie Jeśli zakupiono wystarczającą liczbę licencji, aby objęły one wszystkich użytkowników, które są włączone dla usługi MFA, można usunąć dostawcę usługi MFA całkowicie.
 
 Jeśli dostawca usługi MFA nie jest połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA z inną dzierżawą usługi Azure AD, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto należy ponownie aktywować istniejące serwery usługi Azure MFA przy użyciu poświadczeń aktywacji wygenerowanych za pośrednictwem nowego dostawcy usługi MFA. Ponowne aktywowanie serwerów usługi MFA w taki sposób, aby dołączyć je do nowego dostawcę usługi MFA nie ma wpływu na połączeń telefonicznych i uwierzytelniania wiadomości tekstowe, ale powiadomienia w aplikacji mobilnej przestają działać dla wszystkich użytkowników, dopóki aktywują aplikację mobilną.
 

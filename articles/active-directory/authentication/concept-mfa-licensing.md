@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056382"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669050"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 
@@ -32,7 +32,10 @@ W poniższej tabeli opisano różnice między trzy wersje usługi Multi-Factor a
 | --- | --- |
 | Usługa Multi-Factor Authentication dla usługi Office 365 |Ta wersja działa wyłącznie z aplikacjami usługi Office 365 i jest zarządzana z portalu usługi Office 365. Administratorzy mogą [zabezpieczanie zasobów usługi Office 365 za pomocą weryfikacji dwuetapowej](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ta wersja jest częścią subskrypcji usługi Office 365. |
 | Uwierzytelnianie wieloskładnikowe dla administratorów usługi Azure AD | Użytkownicy z przypisaną rolą administratora globalnego usługi Azure AD w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową, bez ponoszenia dodatkowych kosztów.|
-| Azure Multi-Factor Authentication | Często określane jako "pełnej" wersji, uwierzytelnianie wieloskładnikowe systemu Azure oferuje wizje możliwości. Zapewnia dodatkowe opcje konfiguracji za pomocą [witryny Azure portal](https://portal.azure.com), zaawansowane raportowanie i obsługuje szeroką gamę lokalnych i aplikacji w chmurze. Uwierzytelnianie wieloskładnikowe systemu Azure są objęte [planów usługi Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)i którą można wdrożyć w chmurze lub lokalnie. |
+| Azure Multi-Factor Authentication | Często określane jako "pełnej" wersji, uwierzytelnianie wieloskładnikowe systemu Azure oferuje wizje możliwości. Zapewnia dodatkowe opcje konfiguracji za pomocą [witryny Azure portal](https://portal.azure.com), zaawansowane raportowanie i obsługuje szeroką gamę lokalnych i aplikacji w chmurze. Usługa Azure Multi-Factor Authentication to funkcja [usługi Azure Active Directory — wersja Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)i którą można wdrożyć w chmurze lub lokalnie. |
+
+> [!NOTE]
+> Nowi klienci nie mogą kupować usługi Azure Multi-Factor Authentication jako autonomiczny oferty od 1 września 2018 r. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
 
 ## <a name="feature-comparison-of-versions"></a>Porównanie funkcji wersji
 
@@ -77,9 +80,12 @@ Jeśli używasz tej opcji, należy utworzyć dostawcę usługi Azure Multi-Facto
 
 ### <a name="option-2---mfa-consumption-based-model"></a>Opcja 2 — model na podstawie użycia usługi MFA
 
+> [!NOTE]
+> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
+
 Utwórz dostawcę usługi Azure Multi-Factor Authentication w ramach subskrypcji platformy Azure. Dostawcy usługi Azure MFA są zasobami platformy Azure, które są rozliczane przy użyciu Twojej umowy Enterprise Agreement, zobowiązań pieniężnych platformy Azure lub karty kredytowej, podobnie jak inne zasoby platformy Azure. Tych dostawców można tworzyć tylko w pełnej subskrypcje, nie tylko subskrypcji platformy Azure, które mają limit wydatków 0 USD. Ograniczone subskrypcje są tworzone podczas aktywacji licencji, podobnie jak w opcjach 1.
 
-Korzystając z dostawcę usługi Azure Multi-Factor Authentication, istnieją dwa modele użycia, dostępności, które są rozliczane w ramach subskrypcji platformy Azure: 
+Korzystając z dostawcę usługi Azure Multi-Factor Authentication, istnieją dwa modele użycia, dostępności, które są rozliczane w ramach subskrypcji platformy Azure:
 
 1. **Za każdego włączonego użytkownika** — dla przedsiębiorstw, które chcesz włączyć weryfikację dwuetapową dla stałej liczby pracowników, którzy będą regularnie uwierzytelniania. Rozliczanie za użytkownika opiera się na liczbie użytkowników korzystających usługi MFA w dzierżawie usługi Azure AD i usługi Serwer Azure MFA. Jeśli użytkownicy są włączone dla usługi MFA w usługi Azure AD i serwer Azure MFA, domen, synchronizacja (Azure AD Connect) jest włączona, a następnie zliczamy większy zbiór użytkowników. Jeśli synchronizacja domeny nie jest włączona, a następnie zliczamy sumę wszystkich użytkowników włączone dla usługi MFA w usłudze Azure AD i serwer Azure MFA. Opłata jest naliczana proporcjonalnie do liczby i zgłoszone w systemie handlu codziennie.
 
@@ -93,7 +99,7 @@ Korzystając z dostawcę usługi Azure Multi-Factor Authentication, istnieją dw
   > [!NOTE]
   > Przykład rozliczeń 3: dzisiaj usługi Azure MFA Odebrano 3,105 żądania weryfikacji dwuetapowej. Twoja subskrypcja platformy Azure jest naliczana za 310.5 pakiety uwierzytelniania.
 
-Należy zauważyć, że może mieć licencje usługi Azure MFA, ale nadal jest naliczana na podstawie użycia konfiguracji. Po skonfigurowaniu dostawcy usługi MFA Azure na uwierzytelnienie są rozliczenie dla każdego żądania weryfikacji dwuetapowej, nawet te, które wykonywane przez użytkowników, którzy mają licencje. Konfigurowanie dostawcy usługi MFA Azure na użytkownika w domenie, która nie jest połączony z dzierżawą usługi Azure AD możesz są naliczane opłaty za włączonego użytkownika, nawet jeśli użytkownicy będą mieli licencje na usługę Azure AD.
+Należy pamiętać może mieć licencje, ale nadal jest naliczana na podstawie użycia konfiguracji. Po skonfigurowaniu dostawcy usługi MFA Azure na uwierzytelnienie są rozliczenie dla każdego żądania weryfikacji dwuetapowej, nawet te, które wykonywane przez użytkowników, którzy mają licencje. Konfigurowanie dostawcy usługi MFA Azure na użytkownika w domenie, która nie jest połączony z dzierżawą usługi Azure AD możesz są naliczane opłaty za włączonego użytkownika, nawet jeśli użytkownicy będą mieli licencje na usługę Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 86e72787347cddd399fbdde4cd943b86ba48375f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049599"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697836"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych MySQL 
 
@@ -31,6 +31,7 @@ Nowe karty dostawcy zasobów programu SQL może być zwolnione po zaktualizowani
 >Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Aktualizowanie karty dostawcy zasobów MySQL (dotyczy tylko systemów zintegrowanych)
+
 Nowe karty dostawcy zasobów programu SQL może być zwolnione po zaktualizowaniu kompilacji usługi Azure Stack. Chociaż istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe.  
  
 Aby zaktualizować dostawcy zasobów, możesz użyć **UpdateMySQLProvider.ps1** skryptu. Proces jest podobny do procesu, który został użyty do zainstalowania dostawcy zasobów, zgodnie z opisem w [wdrażanie dostawcy zasobów](#deploy-the-resource-provider) dalszej części tego artykułu. Skrypt jest dostarczonego z pobranymi dostawcy zasobów. 
@@ -97,6 +98,7 @@ Te parametry można określić w wierszu polecenia. Jeśli nie istnieje lub dowo
 | **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, używane do wdrażania usługi Azure Stack. | _Wymagane_ | 
 | **VMLocalCredential** |Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ | 
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ | 
+| **AzureEnvironment** | Środowiska platformy azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko, jeśli nie jest usług AD FS. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure Active Directory, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Plik PFX certyfikatu należy umieścić w tym katalogu, jak również. | _Opcjonalnie_ (_obowiązkowe_ dla wielowęzłowymi) | 
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ | 
 | **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 | 

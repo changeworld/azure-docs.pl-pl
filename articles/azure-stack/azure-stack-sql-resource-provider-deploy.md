@@ -11,17 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: d33ca1a4ab08ab25855f8b3992157ad3d086a180
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c9efaeed05856f830a4f0cf699cb35ebc21966c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060663"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700714"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów programu SQL Server w usłudze Azure Stack
+
 Użyj dostawcy zasobów usługi Azure Stack programu SQL Server do udostępnienia baz danych SQL jako usługi Azure Stack. Dostawcy zasobów bazy danych SQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -30,13 +31,12 @@ Istnieje kilka wymagań wstępnych, które muszą zostać spełnione przed wdro�
 
 - Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
 - Moduły platformy Azure i usługi Azure Stack PowerShell należy zainstalować w systemie, w którym będzie uruchamiany tej instalacji. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
-- Dodaj wymagane core systemu Windows Server maszyny Wirtualnej w portalu Marketplace usługi Azure Stack, pobierając **systemu Windows Server 2016 Datacenter — instalacja Server Core** obrazu. 
-- Pobierz binarne dostawcy zasobów bazy danych SQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego. Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz:
+- Dodaj wymagane core systemu Windows Server maszyny Wirtualnej w portalu Marketplace usługi Azure Stack, pobierając **systemu Windows Server 2016 Datacenter — instalacja Server Core** obrazu.
+- Pobierz binarne dostawcy zasobów bazy danych SQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego. Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji.
 
-    |Wersja usługi Azure Stack|Wersja SQL RP|
+    |Minimalna wersja usługi Azure Stack|Wersja SQL RP|
     |-----|-----|
-    |W wersji 1804 (1.0.180513.1)|[SQL RP wersji 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
-    |W wersji 1802 (1.0.180302.1)|[SQL RP wersji 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |W wersji 1804 (1.0.180513.1)|[SQL RP wersji 1.1.24.0](https://aka.ms/azurestacksqlrp)
     |     |     |
 
 - Upewnij się, że zostały spełnione wymagania wstępne integrację centrum danych:
@@ -45,7 +45,7 @@ Istnieje kilka wymagań wstępnych, które muszą zostać spełnione przed wdro�
     |-----|-----|
     |Przesyłanie warunkowe DNS jest prawidłowo.|[Usługa Azure Stack Integracja z centrum danych — DNS](azure-stack-integrate-dns.md)|
     |Porty dla ruchu przychodzącego dla dostawców zasobów są otwarte.|[Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)<br>[Usługa Azure Stack PaaS certyfikatu wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)[wymagania wstępne dotyczące usługi Azure Stack wdrożenia PaaS certyfikatu](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### <a name="certificates"></a>Certyfikaty
@@ -80,6 +80,7 @@ Można określić następujące parametry, z poziomu wiersza polecenia. Jeśli n
 | **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
 | **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ |
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
+| **AzureEnvironment** | Środowiska platformy azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko, jeśli nie jest usług AD FS. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure Active Directory, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Tylko zintegrowane systemy plik PFX certyfikatu musi być umieszczane w tym katalogu. Opcjonalnie można skopiować jeden pakiet Windows Update MSU tutaj. | _Opcjonalnie_ (_obowiązkowe_ w ramach zintegrowanych systemów) |
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
 | **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190737"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695429"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -36,7 +36,7 @@ Typy dostępnych sond kondycji i sposób kondycji, które zachowują się sondy 
 > [!IMPORTANT]
 > Sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 i nie musi zostać zablokowany dla sondy do oznaczania wystąpienia usługi.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
 
-## <a name="types"></a>Typy sondy kondycji
+## <a name="types"></a>Typy sondy
 
 Sondy kondycji można obserwować dowolnego portu wystąpieniu wewnętrznej bazy danych, w tym port, na którym znajduje się nazwa rzeczywistej usługi. Protokół sondy kondycji można skonfigurować dla trzech różnych rodzajów sond kondycji:
 
@@ -161,7 +161,7 @@ Reguły równoważenia obciążenia sondę kondycji jednego zdefiniował puli od
 
 ## <a name="probedown"></a>Badanie zachowania w dół
 
-### <a name="tcp-connections"></a>Połączenia TCP
+### <a name="tcp-connections"></a>Połączenia protokołu TCP
 
 Nowe połączenia TCP zakończy się pomyślnie do wystąpienia wewnętrznej bazy danych, która jest w dobrej kondycji i ma systemu operacyjnego gościa i aplikacji, które akceptuje nowy przepływ.
 

@@ -1,9 +1,9 @@
 ---
 title: Biblioteki zarządzania usługi Azure Service Bus | Dokumentacja firmy Microsoft
-description: Zarządzanie przestrzeni nazw usługi Service Bus i jednostki z .NET do obsługi komunikatów.
+description: Zarządzaj przestrzeniami nazw magistrali usług i jednostki z .NET do obsługi komunikatów.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,40 +13,40 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 7946958bec8b2f444155b5a9701f1f7401fe4f3c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: a959687fbf6e296cab7e0d8ca49ae97a005622cf
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120900"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696579"
 ---
 # <a name="service-bus-management-libraries"></a>Biblioteki zarządzania usługi Service Bus
 
-Biblioteki zarządzania usługi Azure Service Bus można dynamicznie inicjują obsługę przestrzeni nazw usługi Service Bus i jednostek. Włącza scenariusze obsługi wiadomości i złożone wdrożenia i umożliwia programowo ustalić, jakie jednostki do udostępniania. Te biblioteki są obecnie dostępne dla platformy .NET.
+Biblioteki zarządzania usługi Azure Service Bus można dynamicznie aprowizować przestrzeni nazw usługi Service Bus i jednostki. Umożliwia to złożonych wdrożeń i scenariusze dotyczące przesyłania komunikatów oraz sprawia, że można programowo określić, jakich jednostek do aprowizowania. Te biblioteki są obecnie dostępne dla platformy .NET.
 
 ## <a name="supported-functionality"></a>Obsługiwane funkcje
 
-* Namespace tworzenia, aktualizacji, usuwania
-* Tworzenie kolejek, aktualizacji, usuwania
-* Tworzenie tematu, aktualizacji, usuwania
-* Tworzenie subskrypcji, aktualizacji i usuwania
+* Namespace tworzenia, aktualizacji, usunięcia
+* Tworzenie kolejki, aktualizowanie, usuwanie
+* Tworzenie tematu, aktualizowanie, usuwanie
+* Tworzenie subskrypcji, aktualizowanie, usuwanie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć korzystanie z bibliotek usługi Service Bus zarządzania musi uwierzytelniać się w usłudze Azure Active Directory (Azure AD). Usługa Azure AD wymaga uwierzytelniania jako nazwy głównej usługi, która zapewnia dostęp do zasobów platformy Azure. Informacji o tworzeniu usługę podmiotu zabezpieczeń zobacz następujące artykuły:  
+Aby rozpocząć pracę, przy użyciu biblioteki zarządzania usługi Service Bus, musi uwierzytelniać się przy użyciu usługi Azure Active Directory (Azure AD). Usługa Azure AD wymaga, aby uwierzytelniać się jako nazwy głównej usługi, która zapewnia dostęp do zasobów platformy Azure. Aby uzyskać informacji na temat tworzenia jednostki usługi Zobacz jedną z następujących artykułów:  
 
-* [Tworzenie aplikacji usługi Active Directory i nazwy głównej usługi, który ma dostęp do zasobów za pomocą portalu Azure](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Tworzenie aplikacji usługi Active Directory i jednostki usługi, które mogą uzyskiwać dostęp do zasobów za pomocą witryny Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Use Azure PowerShell to create a service principal to access resources (Tworzenie jednostki usługi używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell)](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Use Azure CLI to create a service principal to access resources (Tworzenie jednostki usługi używanej do uzyskiwania dostępu do zasobów przy użyciu interfejsu wiersza polecenia platformy Azure)](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Te samouczki oferuje `AppId` (identyfikator klienta), `TenantId`, i `ClientSecret` (klucz uwierzytelniania), które są używane do uwierzytelniania przez biblioteki zarządzania. Musi mieć **właściciela** uprawnienia dla grupy zasobów, na którym chcesz uruchomić.
+Te samouczki zawierają z `AppId` (identyfikator klienta), `TenantId`, i `ClientSecret` (klucz uwierzytelniania), które są używane do uwierzytelnienia za pomocą biblioteki zarządzania. Konieczne jest posiadanie **właściciela** uprawnienia dla grupy zasobów, na którym chcesz uruchomić.
 
 ## <a name="programming-pattern"></a>Wzorzec programowania
 
-Wzorzec do manipulowania wszystkich zasobów usługi Service Bus obejmuje wspólny protokół:
+Wzorzec do manipulowania dowolny zasób usługi Service Bus następujące wspólny protokół:
 
-1. Uzyskać token z usługi Azure AD przy użyciu **Microsoft.IdentityModel.Clients.ActiveDirectory** biblioteki:
+1. Uzyskaj token z usługi Azure AD przy użyciu **Microsoft.IdentityModel.Clients.ActiveDirectory** biblioteki:
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -61,7 +61,7 @@ Wzorzec do manipulowania wszystkich zasobów usługi Service Bus obejmuje wspól
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Ustaw `CreateOrUpdate` Twojego podanych wartości parametrów:
+3. Ustaw `CreateOrUpdate` parametry podane wartości:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -70,7 +70,7 @@ Wzorzec do manipulowania wszystkich zasobów usługi Service Bus obejmuje wspól
        EnablePartitioning = true
    };
    ```
-4. Wykonanie wywołania:
+4. Wykonaj następujące wywołanie:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
@@ -78,5 +78,5 @@ Wzorzec do manipulowania wszystkich zasobów usługi Service Bus obejmuje wspól
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przykładowe zarządzania .NET](https://github.com/Azure-Samples/service-bus-dotnet-management/)
-* [Odwołanie Microsoft.Azure.Management.ServiceBus interfejsu API](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+* [Przykład programu .NET zarządzania](https://github.com/Azure-Samples/service-bus-dotnet-management/)
+* [Dokumentacja interfejsu API Microsoft.Azure.Management.ServiceBus](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

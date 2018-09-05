@@ -15,20 +15,20 @@ ms.component: pim
 ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: bc60c0dbe6c609a08907feb243fe514badfe3e4e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288079"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665846"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM
 
-Za pomocą usługi Azure AD Privileged Identity Management (PIM) skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybrać jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających.
+Za pomocą usługi Azure AD Privileged Identity Management (PIM) skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybrać jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Wykonaj kroki opisane w tym artykule, akceptują lub odrzucają żądania dla ról katalogu usługi Azure AD.
 
 ## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
 
-Jako delegowany osoby zatwierdzającej będzie otrzymywał powiadomienia e-mail, kiedy żądanie oczekuje na zatwierdzenie. Możesz wyświetlić te oczekujących żądań w usłudze PIM.
+Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomieniem po oczekujące na zatwierdzenie żądania ról katalogu usługi Azure AD. Możesz wyświetlić te oczekujących żądań w usłudze PIM.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -74,5 +74,5 @@ Jako delegowany osoby zatwierdzającej będzie otrzymywał powiadomienia e-mail,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
 - [Powiadomienia e-mail w usłudze PIM](pim-email-notifications.md)
+- [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)

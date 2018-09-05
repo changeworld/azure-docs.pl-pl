@@ -1,9 +1,9 @@
 ---
-title: Odwołania do składni SQLRuleAction na platformie Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje o SQLRuleAction gramatyki.
+title: Dokumentacja składni elementu SQLRuleAction na platformie Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe informacje na temat elementu SQLRuleAction gramatyki.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 9ac9a2968adfdd8e1fb229ad744bc99914cdcd08
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: 01833a51425f6a02c5ed781f4b10b22dc292f45d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29125823"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696401"
 ---
-# <a name="sqlruleaction-syntax"></a>Składnia SQLRuleAction
+# <a name="sqlruleaction-syntax"></a>Składnia elementu SQLRuleAction
 
-A *SqlRuleAction* jest wystąpieniem [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) klasy i reprezentuje zestaw akcji napisane w języku SQL na podstawie składnię, która nie jest przeprowadzana [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
+A *elementu SqlRuleAction* jest wystąpieniem [elementu SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) klasy i reprezentuje zestaw akcji, napisane w języku SQL na podstawie składni, która nie jest przeprowadzana [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
   
 Ten artykuł zawiera szczegółowe informacje o gramatyki akcji reguły SQL.  
   
@@ -65,11 +65,11 @@ Ten artykuł zawiera szczegółowe informacje o gramatyki akcji reguły SQL.
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>`opcjonalny ciąg wskazujący zakres jest `<property_name>`. Prawidłowe wartości to `sys` lub `user`. `sys` Wartość wskazuje zakres systemu gdzie `<property_name>` jest nazwą właściwości publicznej [BrokeredMessage klasy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`Wskazuje zakres użytkowników gdzie `<property_name>` jest kluczem elementu [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) słownika. `user`zakres jest zakres domyślny, jeśli `<scope>` nie jest określona.  
+-   `<scope>` jest opcjonalny ciąg wskazujący zakres `<property_name>`. Prawidłowe wartości to `sys` lub `user`. `sys` Wartość wskazuje zakres systemu gdzie `<property_name>` jest nazwą właściwości publicznej [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` Określa zakres użytkowników gdzie `<property_name>` jest kluczem [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) słownika. `user` zakres jest domyślny zakres, jeśli `<scope>` nie zostanie określony.  
   
 ### <a name="remarks"></a>Uwagi  
 
-Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd podczas próby dostępu do właściwości nie istnieje użytkownik nie jest błąd. Zamiast tego właściwości użytkownika nieistniejącą wewnętrznie jest szacowana jako nieznaną wartość. Nieznana wartość jest traktowana specjalnie podczas obliczania operatora.  
+Próba dostępu do właściwości systemu nie istnieje, występuje błąd, podczas próby dostępu do właściwości nieistniejącego użytkownika nie jest błąd. Zamiast tego właściwość nieistniejącego użytkownika wewnętrznie zostanie ocenione jako Nieznana wartość. Nieznana wartość jest traktowany specjalnie podczas obliczania operatora.  
   
 ## <a name="propertyname"></a>property_name  
   
@@ -84,21 +84,21 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
 ```  
   
 ### <a name="arguments"></a>Argumenty  
- `<regular_identifier>`ciąg jest reprezentowana przez następującym wyrażeniem regularnym:  
+ `<regular_identifier>` ciąg reprezentowanego przez następujące wyrażenie regularne:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
- Oznacza to dowolny ciąg, który rozpoczyna się od litery i następuje co najmniej jeden znak podkreślenia/list/cyfr.  
+ Oznacza to, dowolny ciąg, który zaczyna się od litery i następuje co najmniej jeden znak podkreślenia/list/cyfr.  
   
- `[:IsLetter:]`oznacza dowolnych znaków Unicode, który jest skategoryzowany jako list Unicode. `System.Char.IsLetter(c)`Zwraca `true` Jeśli `c` to litera Unicode.  
+ `[:IsLetter:]` oznacza, że dowolny znak Unicode, który jest dzielony na kategorie litery Unicode. `System.Char.IsLetter(c)` Zwraca `true` Jeśli `c` to litera Unicode.  
   
- `[:IsDigit:]`oznacza dowolnych znaków Unicode, który jest skategoryzowany jako dziesiętną wartością cyfrową. `System.Char.IsDigit(c)`Zwraca `true` Jeśli `c` jest cyfrą Unicode.  
+ `[:IsDigit:]` oznacza, że dowolny znak Unicode, który jest dzielony na kategorie, wyświetlaną cyfrą dziesiętną. `System.Char.IsDigit(c)` Zwraca `true` Jeśli `c` jest cyfrą Unicode.  
   
- A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.  
+ Element `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.  
   
- `<delimited_identifier>`jest dowolny ciąg ujęty w lewo i prawo nawiasy kwadratowe ([]). Zamykający nawias kwadratowy jest reprezentowany jako dwa nawiasy kwadratowe prawo. Poniżej przedstawiono przykłady `<delimited_identifier>`:  
+ `<delimited_identifier>` jest dowolny ciąg, który jest ujęty w nawiasy kwadratowe ([]) lewa i prawa. Prawy nawias kwadratowy jest przedstawiana jako dwa prawo nawiasami kwadratowymi. Poniżej przedstawiono przykłady `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -106,13 +106,13 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ```  
   
- `<quoted_identifier>`jest dowolny ciąg, który jest ujęta w znaki podwójnego cudzysłowu. Podwójny cudzysłów w identyfikatorze jest reprezentowany jako podwójnego cudzysłowu. Nie zaleca się użyć identyfikatory w cudzysłowach, ponieważ można łatwo pomylić z stałą typu string. Jeśli to możliwe za pomocą rozdzielanej identyfikatora. Poniżej przedstawiono przykład `<quoted_identifier>`:  
+ `<quoted_identifier>` jest dowolny ciąg, który jest ujęty w cudzysłów. Podwójny cudzysłów w identyfikatorze jest przedstawiana jako dwa podwójne cudzysłowy. Nie zaleca się użyć identyfikatory w cudzysłowach, ponieważ można łatwo pomylić z stałą typu string. Jeśli to możliwe za pomocą rozdzielany identyfikatora. Oto przykład `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>wzorzec  
+## <a name="pattern"></a>Wzorzec  
   
 ```  
 <pattern> ::=  
@@ -121,7 +121,7 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ### <a name="remarks"></a>Uwagi
   
- `<pattern>`musi być wyrażeniem, której wartość jest szacowana jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
+ `<pattern>` musi być wyrażeniem, które jest oceniane jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
   
 -   `%`: Dowolny ciąg zawierający zero lub więcej znaków.  
   
@@ -136,11 +136,11 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ### <a name="remarks"></a>Uwagi
   
- `<escape_char>`musi być wyrażeniem, której wartość jest szacowana jako ciąg o długości 1. Jest używany jako znak ucieczki dla LIKE operator.  
+ `<escape_char>` musi być wyrażeniem, które jest oceniane jako ciąg o długości 1. Jest używany jako znak ucieczki LIKE operatora.  
   
  Na przykład `property LIKE 'ABC\%' ESCAPE '\'` odpowiada `ABC%` zamiast ciąg, który rozpoczyna się od `ABC`.  
   
-## <a name="constant"></a>Stała  
+## <a name="constant"></a>Stałe  
   
 ```  
 <constant> ::=  
@@ -149,27 +149,27 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>`to ciąg liczb, które nie są ujęte w cudzysłów i nie zawierają miejsc dziesiętnych. Wartości są przechowywane jako `System.Int64` wewnętrznie i postępuj zgodnie z tego samego zakresu.  
+-   `<integer_constant>` jest to ciąg liczb, które nie są ujęte w znaki cudzysłowu i nie zawiera punktu dziesiętnego. Wartości są przechowywane jako `System.Int64` wewnętrznie i postępuj zgodnie z tym samym zakresie.  
   
-     Poniżej przedstawiono przykłady długich stałe:  
+     Poniżej przedstawiono przykłady długie stałe:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>`to ciąg liczb, które nie są ujęte w cudzysłowy i zawierać separatorem dziesiętnym. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tego samego zakresu/dokładności.  
+-   `<decimal_constant>` jest to ciąg liczb, które nie są ujęte w znaki cudzysłowu i zawiera separator dziesiętny. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tym samym zakresem/dokładności.  
   
-     W przyszłych wersjach, ta liczba może być przechowywany w na inny typ danych do obsługi dokładne semantyki numer, nie należy polegać na fakcie odpowiadającego — typ danych jest `System.Double` dla `<decimal_constant>`.  
+     W przyszłych wersjach tego numeru mogą być przechowywane w różne typy danych do obsługi dokładnie semantykę liczb, więc nie należy polegać na fakcie bazowego typu danych jest `System.Double` dla `<decimal_constant>`.  
   
-     Poniżej przedstawiono przykłady dziesiętną stałe:  
+     Poniżej przedstawiono przykłady stałe dziesiętne:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>`jest numer napisanych w notacji naukowej. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tego samego zakresu/dokładności. Poniżej przedstawiono przykłady przybliżona number — stałe:  
+-   `<approximate_number_constant>` jest liczba napisanych w notacji naukowej. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tym samym zakresem/dokładności. Poniżej przedstawiono przykłady przybliżony number — stałe:  
   
     ```  
     101.5E5  
@@ -185,7 +185,7 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ### <a name="remarks"></a>Uwagi
   
-Stałe typu logicznego są reprezentowane przez słowa kluczowe `TRUE` lub `FALSE`. Wartości są przechowywane jako `System.Boolean`.  
+Wartość logiczna stałe są reprezentowane przez słowa kluczowe `TRUE` lub `FALSE`. Wartości są przechowywane jako `System.Boolean`.  
   
 ## <a name="stringconstant"></a>string_constant  
   
@@ -195,7 +195,7 @@ Stałe typu logicznego są reprezentowane przez słowa kluczowe `TRUE` lub `FALS
   
 ### <a name="remarks"></a>Uwagi
   
-Stałe typu String są ujęte w apostrofy i zawierać żadnych prawidłowych znaków Unicode. Znak pojedynczego cudzysłowu osadzone w stałą typu string jest przedstawiona w postaci dwóch pojedynczy znaki cudzysłowu.  
+Stałe typu String są ujęte w znaki pojedynczego cudzysłowu i zawierać żadnych prawidłowych znaków Unicode. Znak pojedynczego cudzysłowu osadzone w stałą typu string jest reprezentowany jako dwa pojedyncze cudzysłowy.  
   
 ## <a name="function"></a>funkcja  
   
@@ -209,18 +209,18 @@ Stałe typu String są ujęte w apostrofy i zawierać żadnych prawidłowych zna
 
 `newid()` Funkcja zwraca **System.Guid** generowane przez `System.Guid.NewGuid()` metody.  
   
-`property(name)` Funkcja zwraca wartość właściwości odwołuje się `name`. `name` Wartość może być prawidłowym wyrażeniem, która zwraca wartość typu ciąg.  
+`property(name)` Funkcja zwraca wartość właściwości odwołuje się `name`. `name` Wartość może być dowolne prawidłowe wyrażenie zwracające wartość ciągu.  
   
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-- ZESTAW jest używany do utworzenia nowej właściwości lub zaktualizuj wartości właściwości istniejącej.
-- Usuń służy do usuwania właściwości.
-- ZESTAW wykonuje niejawna konwersja Jeśli to możliwe, jeśli różni się od wyrażenia typu i istniejący typ właściwości.
-- Akcja zakończy się niepowodzeniem, jeśli właściwości systemu nieistniejącą pojawiały się odniesienia.
-- Akcja się niepowodzeniem, jeśli zostały odwołań do właściwości użytkownika nie istnieje.
-- Właściwość nieistniejącą użytkownika jest szacowana jako "Nieznana" wewnętrznie, po tej samej semantyki jako [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) podczas obliczania operatorów.
+- ZESTAW jest używany do tworzenia nowej właściwości lub zaktualizuj wartość istniejącej właściwości.
+- Usuń umożliwia usunięcie właściwości powoduje.
+- ZESTAW wykonuje niejawnej konwersji, jeśli jest to możliwe przy użyciu wyrażenia tego typu i istniejącego typu właściwości różnią się.
+- Akcja zakończy się niepowodzeniem, jeśli przywoływane właściwości systemu nie istnieje.
+- Działanie się nie powieść, jeśli przywoływane właściwości użytkownika nie istnieje.
+- Właściwość nieistniejącego użytkownika jest oceniane jako "Nieznana" wewnętrznie, zgodnie z tą samą semantyką jako [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) podczas obliczania operatorów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Klasa SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [Klasa elementu SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [Klasa SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)

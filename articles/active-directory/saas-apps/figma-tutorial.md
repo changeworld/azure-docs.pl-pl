@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeedes
-ms.openlocfilehash: c8613697481f642066bf1d5d5db7be3af81a6529
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4094de1a1c17e844d96ac789bb4bc1655fdc1546
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307763"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Samouczek: Integracja usługi Azure Active Directory z Figma
 
@@ -38,10 +38,10 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 Aby skonfigurować integrację usługi Azure AD za pomocą Figma, potrzebne są następujące elementy:
 
 - Subskrypcji usługi Azure AD
-- Figma logowanie jednokrotne włączone subskrypcji
+- Figma [logowanie jednokrotne włączone subskrypcji](https://www.figma.com/pricing/)
 
 > [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
+> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego. Nowych klientów i aktywni subskrybenci Figma Professional zespół może kontaktować się z Figma do [uaktualnić swoją subskrypcję](https://www.figma.com/pricing/) Figma warstwę organizacji.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
@@ -81,15 +81,14 @@ Aby skonfigurować integrację Figma w usłudze Azure AD, należy dodać Figma z
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Figma w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Figma do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Figma musi można ustanowić.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi być połączone z Figma.  Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Figma, wykonaj następujące czynności:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Figma, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Figma](#create-a-figma-test-user)**  — aby odpowiednikiem Britta Simon w Figma połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. [**Skontaktuj się z zespołem pomocy technicznej Figma** ](mailto:support@figma.com?subject=SAML+Config) do inicjowania konfiguracji SAML dla Twojej organizacji i Uzyskaj ORG_SAML_CONFIG_ID.
+2. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Tworzenie użytkownika testowego Figma](#create-a-figma-test-user)**  — aby odpowiednikiem Britta Simon w Figma połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -120,7 +119,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Figma]( mailto:services-404040@figma.com) do uzyskania tych wartości.
+    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej Figma](mailto:support@figma.com?subject=SAML+Config) do uzyskania tych wartości.
 
 5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
@@ -130,7 +129,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/figma-tutorial/tutorial_general_400.png)
 
-7. Aby skonfigurować logowanie jednokrotne na **Figma** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej Figma]( mailto:services-404040@figma.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+7. Aby skonfigurować logowanie jednokrotne na stronie Figma, Wypełnij ten formularz: [ https://goo.gl/forms/XkRB1z5ed4eVUzXn2 ](https://goo.gl/forms/XkRB1z5ed4eVUzXn2). Akceptował swoje **adres Url metadanych Federacji aplikacji** z kroku nr 5.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -167,9 +166,6 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 ### <a name="create-a-figma-test-user"></a>Tworzenie użytkownika testowego Figma
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Figma. Figma obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Figma, jeśli go jeszcze nie istnieje.
-
-> [!Note]
-> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Figma]( mailto:services-404040@figma.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

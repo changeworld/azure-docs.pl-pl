@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 87d7c39a9340a82813f4df971c03a10be56e8f94
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057393"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666063"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie i analizowanie dzienników przepływów grupy zabezpieczeń sieci na platformie Azure przy użyciu usługi Network Watcher i z narzędzia Graylog
 
@@ -32,7 +32,7 @@ Może mieć wiele grup zabezpieczeń sieci w sieci, z włączono rejestrowanie u
 
 Dzienniki przepływu sieciowych grup zabezpieczeń są włączane przy użyciu usługi Network Watcher. Przepływ dzienników przepływu w usłudze Azure blob storage. Dodatek Logstash służy do łączenia i przetwarzanie dzienników przepływu z usługi blob storage i wysyłać je do z narzędzia Graylog. Gdy dzienników przepływu są przechowywane w z narzędzia Graylog, mogą być analizowane i wizualizowane w dostosowanych pulpitów nawigacyjnych.
 
-! [Przepływu pracy z narzędzia Graylog]] (. / media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
+![Przepływ pracy z narzędzia Graylog](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>Etapy instalacji
 

@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188990"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666340"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Usługa Azure ról katalogu usługi AD, którymi można zarządzać w usłudze PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Dostęp do portalu Azure wymaga użytkownik być administratorem usługi lub adm
 Dostęp do Microsoft Online Services może wymagać użytkownika również posiadać licencję przed Otwórz portal usługi lub wykonywania zadań administracyjnych.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Przypisywanie licencji do użytkownika w usłudze Azure AD
+
 1. Zaloguj się do [witryny Azure portal](http://portal.azure.com) przy użyciu konta administratora globalnego lub administratora współpracującego konta.
-3. Wybieranie usługi Azure AD i katalogu w którym chcesz pracować z i który ma licencje skojarzonych z nim.
-4. Wybierz **licencji** po lewej stronie. Zostanie wyświetlona lista dostępnych licencji.
-5. Wybierz plan licencjonowania, który zawiera licencji, które chcesz rozesłać.
-6. Wybierz **przypisywać użytkowników**.
-7. Wybierz, którą chcesz przypisać licencję do użytkownika.
-8. Kliknij przycisk **przypisać** przycisku.  Użytkownik może teraz zalogować do platformy Azure.
+
+1. Wybierz katalog usługi Azure AD, którą chcesz pracować, i ma licencje skojarzonych z nim.
+
+1. Na lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**.
+
+1. Kliknij przycisk **licencji**. Zostanie wyświetlona lista dostępnych licencji.
+
+    ![Licencje usługi Azure Active Directory](./media/pim-roles/licenses-overview.png)
+
+1. Kliknij przycisk z **produktu**.
+
+1. Kliknij plan licencjonowania, który zawiera licencji, które chcesz rozesłać.
+
+    ![Licencje produktów](./media/pim-roles/licenses-products.png)
+
+1. Kliknij przycisk **przypisać** aby otworzyć okienko przypisywanie licencji.
+
+    ![Licencjonowani użytkownicy](./media/pim-roles/licenses-licensed-users.png)
+
+1. Wybierz użytkownika lub grupę, którą chcesz przypisać licencję.
+
+    ![Przypisywanie licencji](./media/pim-roles/licenses-assign-license.png)
+
+1. Kliknij przycisk **opcje przydziału** skonfigurować opcje przydziału.
+
+    ![Opcje przypisania](./media/pim-roles/licenses-assignment-options.png)
+
+1. Kliknij przycisk **przypisać** można przypisać licencji. Użytkownik ma teraz licencji.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki

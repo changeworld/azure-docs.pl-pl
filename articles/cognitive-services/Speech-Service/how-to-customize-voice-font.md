@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284891"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665089"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -22,7 +22,6 @@ Aby utworzyć czcionki głosowe, tworzenie nagrania studio i przekaż skojarzone
 
 Możesz rozpocząć pracę z małą ilością danych do weryfikacji koncepcji. Jednak im więcej danych podasz, tym bardziej naturalnych i professional brzmi Twojego głosu.
 
-Dostosowywanie głosu jest dostępna dla US English (en US) i kontynent, chiński (zh-CN).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,6 +44,9 @@ Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je]
      ![Dodaj subskrypcję](media/custom-voice/add-subscription.png)
 
 Jesteś gotowy!
+
+> [!IMPORTANT]
+> Na etapie prywatnej wersji zapoznawczej subskrypcji musi być umieszczona na białej liście, aby korzystać z funkcji głosowych niestandardowe. Postępuj zgodnie z instrukcjami na stronie można pobrać listy dozwolonych Twojej subskrypcji.
 
 ## <a name="prepare-recordings-and-transcripts"></a>Przygotowania, nagrania i transkrypcje
 
@@ -69,8 +71,6 @@ Pliki audio powinna być przygotowana w następujący sposób. Inne formaty są 
 | Format archiwum| Zip      |
 | Maksymalny rozmiar archiwum|200 MB|
 
-Umieść zbiór plików audio w pojedynczy folder bez podkatalogów i utworzyć pakiet całego zestawu jako pojedynczego pliku archiwum ZIP.
-
 > [!NOTE]
 > Pliki Wave przy użyciu mniejszej niż 16 000 Hz częstotliwości próbkowania zostanie odrzucone. W przypadkach, gdy plik zip zawiera poprzedzającym przy użyciu różnych współczynników pobierania próbek zostanie on zaimportowany tylko tych równą lub większą niż 16 000 Hz.
 > Portal aktualnie importuje ZIP archiwa do 200 MB. Jednak można przekazać wiele archiwów. Maksymalna liczba zestawów danych, dozwolone jest pliki 10 ZIP na bezpłatnie subskrypcji użytkowników i 50 dla użytkowników subskrypcji standardowej.
@@ -90,7 +90,7 @@ Na przykład:
 System niestandardowych voice normalizuje zapisy Konwertowanie tekstu na małe i usuwając nadmiarowe znaki interpunkcyjne. Należy pamiętać, że zapisy są w 100% dokładności do odpowiedniego nagrania audio.
 
 > [!TIP]
-> Podczas tworzenia produkcyjnych zamiany tekstu na mowę głosów, wybierz wypowiedzi (lub skryptów), biorąc pod uwagę fonetycznych pokrycia i wydajność.
+> Podczas tworzenia produkcyjnych zamiany tekstu na mowę głosów, wybierz wypowiedzi (lub skryptów), biorąc pod uwagę fonetycznych pokrycia i wydajność. Wystąpił problem podczas pobierania wyników chcesz? [Skontaktuj się z zespołem Custom Voice](mailto:tts@microsoft.com) można znaleźć poza więcej informacji na temat o nas zapoznaj się z.
 
 ## <a name="upload-your-datasets"></a>Przekazywanie swoich zestawów danych
 
@@ -102,8 +102,6 @@ Po przygotowaniu usługi archiwum plików audio i zapisy, przekazać je za pośr
 1. Zaloguj się do portalu.
 
 2. Wybierz **danych** w obszarze Custom Voice na stronie głównej. 
-
-    ![Moje projekty](media/custom-voice/my-projects.png)
 
     Zostanie wyświetlona tabela Moje danych głosowych. Jest puste, jeśli jeszcze nie przekazano żadnych zestawów danych głosowych.
 
@@ -224,13 +222,20 @@ Gdy stan wdrożenia to Powodzenie, punkt końcowy usługi czcionka głosowa wdro
 Testowanie online punktu końcowego jest również dostępna za pośrednictwem portalu niestandardowych voice. Aby przetestować punktu końcowego usługi, wybierz **testowania punktów końcowych** z menu rozwijanego Custom Voice. Punkt końcowy testowania strony pojawi się. Wybierz wdrożonej głosu niestandardowe, a następnie wprowadź tekst, który ma być używany (w postaci zwykłego tekstu lub SSML format) w polu tekstowym.
 
 > [!NOTE] 
-> Korzystając z SSML, `<voice>` tag należy określić nazwę nadaną swój głos niestandardowych podczas jego tworzenia.
+> Korzystając z SSML, `<voice>` tag należy określić nazwę nadaną swój głos niestandardowych podczas jego tworzenia. Jeśli prześlesz zwykłego tekstu, głosu niestandardowego jest zawsze używana.
 
 Kliknij przycisk **Odtwórz** poznać tekstu mówionego w swojej niestandardowej czcionki głosowej.
 
 ![Testowanie punktu końcowego](media/custom-voice/endpoint-testing.png)
 
 Niestandardowy punkt końcowy jest funkcjonalnie identyczny standardowy punkt końcowy, używany do żądania zamiany tekstu na mowę. Zobacz [interfejsu API REST](rest-apis.md) Aby uzyskać więcej informacji.
+
+## <a name="language-support"></a>Obsługa języków
+
+Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (zh-CN) i włoski (it-IT).
+
+> [!NOTE]
+> Szkolenia włoskojęzycznego rozpoczyna się od zestaw ponad 2000 wypowiedzi. Modele dwujęzyczny chiński angielski są również obsługiwane z zestawu danych w ponad 2000 wypowiedzi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b84addf4c45e39e68dd22f6369553d397794f6b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7b82be6cdc8b64595c11eef84e8071fad9c07191
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340516"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665467"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
@@ -126,5 +126,6 @@ Wykonaj następujące kroki, aby zaktualizować lub usunąć istniejące przypis
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
 - [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
 - [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)

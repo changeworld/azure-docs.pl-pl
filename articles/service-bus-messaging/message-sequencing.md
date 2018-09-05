@@ -1,6 +1,6 @@
 ---
-title: Azure sekwencjonowania komunikatów usługi Service Bus i sygnatury czasowe | Dokumentacja firmy Microsoft
-description: Zachowaj sekwencji komunikatów usługi Service Bus i kolejność z sygnaturami czasowymi
+title: Usługa Azure Service Bus komunikat sekwencjonowanie i sygnatury czasowe | Dokumentacja firmy Microsoft
+description: Zachowanie sekwencji komunikatów usługi Service Bus i kolejności z sygnaturami czasowymi
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,43 +12,43 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: a67a9d01f686c6aa8a569239667ae14d7bf087a9
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: 7f31adcd7ebdd51cf930fcaf0cd2f214c7566565
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200738"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699373"
 ---
-# <a name="message-sequencing-and-timestamps"></a>Komunikat sekwencjonowania i sygnatury czasowe
+# <a name="message-sequencing-and-timestamps"></a>Sekwencjonowanie i sygnatury czasowe komunikatów
 
-Sekwencjonowanie i sygnatura czasowa są dwie funkcje, które są zawsze włączona na wszystkich jednostek usługi Service Bus i powierzchni za pośrednictwem [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) i [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) właściwości odebranych lub przeglądanych komunikaty.
+Sekwencjonowanie i sygnatura czasowa to dwie funkcje, które są zawsze włączone dla wszystkich jednostek usługi Service Bus, a następnie publikować za pośrednictwem [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) i [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) właściwości odebranych lub przeglądanych komunikaty.
 
-Dla tych przypadków, w których wiadomości bezwzględną kolejność jest znacząca i/lub w którym konsument wymagań zaufanego Unikatowy identyfikator komunikaty, komunikaty sygnatury broker z przerwę wolne, zwiększenie liczby sekwencji względem kolejka lub temat. Dla partycjonowane jednostki numer sekwencji jest wystawiony względem partycji.
+Dla tych przypadków, w których bezwzględne kolejność komunikatów jest ważna i/lub w którym użytkownik potrzebuje zaufanego Unikatowy identyfikator komunikaty, komunikaty sygnatury brokera z odstępu bez, zwiększenie numeru sekwencyjnego względem kolejki lub tematu. Partycjonowane jednostki, aby uzyskać numer sekwencyjny wystawiono względem partycji.
 
-**SequenceNumber** wartość jest unikatowy 64-bitową liczbę całkowitą przypisany do komunikatu jako zaakceptowaniu i przechowywane przez broker i funkcji jako swój identyfikator wewnętrzny. W przypadku partycjonowane jednostki najwyższego poziomu 16 bitów odzwierciedlają identyfikator partycji. Numery sekwencji przerzucane do zera po wyczerpaniu zakresu 48/x 64.
+**SequenceNumber** wartość jest unikatowy 64-bitową liczbę całkowitą przypisany do wiadomości, jak jest akceptowane i przechowywane przez brokera i funkcje jako wewnętrzny identyfikator. W przypadku partycjonowane jednostki znajdujące się najwyżej 16 bitów odzwierciedlają identyfikatora partycji. Numery sekwencyjne przejdą do zera po wyczerpaniu zakresu 48/x 64.
 
-Numer sekwencji można ufać jako unikatowy identyfikator, ponieważ jest przypisany przez urząd centralnej i neutralnego, a nie przez klientów. On również reprezentuje kolejność true odbioru i jest bardziej dokładne niż sygnatura czasowa jako kryterium porządkowania, ponieważ sygnatury czasowe nie może mieć wystarczająco wysokiej rozdzielczości stawkami extreme wiadomości i mogą być regulowane (jednak minimalnego) zegara w sytuacjach, w którym brokera własność przejścia między węzłami.
+Numer sekwencyjny może być zaufane jako unikatowy identyfikator, ponieważ jest przypisany przez urząd Środkowa i neutralne a nie przez klientów. Ponadto reprezentuje wartość true, kolejności przybycia i jest bardziej precyzyjne niż sygnatura czasowa, jako kryterium zamówienia, ponieważ sygnatury czasowe nie może mieć wystarczająco wysoka rozdzielczość stawek extreme wiadomości i mogą paść ofiarą (ale minimalne) zegara w sytuacjach, w którym brokera własność przejścia między węzłami.
 
-Kolejność bezwzględną przyjęcia ma znaczenie, na przykład w firmie scenariusze, w których ograniczona liczba oferowanych towarów są udostępniane na podstawie pierwszego zgłoszeń podczas dostaw ostatnio; sprzedaży biletów porozumieniu są przykładem.
+Kolejności przyjazdu bezwzględna jest ważna, na przykład w firmie scenariusze, w których ograniczoną liczbę oferowanego segmentu żywności pakowanej są udostępniane na podstawie pierwszego zgłoszeń czasu wyczerpania ostatnio; Sprzedaż biletów koncert służą jako przykład.
 
-Możliwość stosowania sygnatur czasowych działa jako urząd neutralnych i godne zaufania, który przechwytuje dokładnie na czas UTC odbioru wiadomości, zostaną uwzględnione w **EnqueuedTimeUtc** właściwości. Wartość jest przydatne w przypadku scenariusza biznesowego zależy od terminy, takie jak czy elementu roboczego zostało przesłane w określonym dniu przed północy, ale przetwarzanie znajduje się do tej pory za zaległości kolejki.
+Oznaczanie sygnaturą czasową możliwości działa jako urząd neutralne i godna zaufania, który przechwytuje dokładnego czasu UTC nadejścia wiadomości zostaną uwzględnione w **EnqueuedTimeUtc** właściwości. Wartość jest przydatne w przypadku scenariusza biznesowego, który jest zależny od terminy, takie jak tego, czy element roboczy został przesłany w określonym dniu wcześniejszą niż północ, ale przetwarzanie jest daleko w tyle zaległości kolejki.
 
 ## <a name="scheduled-messages"></a>Zaplanowane komunikaty
 
-Można przesłać wiadomości do kolejki lub tematu do przetwarzania opóźnione; na przykład można zaplanować zadanie na udostępnienie do przetworzenia przez system w określonym czasie. Ta możliwość realizacji niezawodnej rozproszone na podstawie czasu harmonogramu.
+Możesz przesłać wiadomości do kolejki lub tematu do opóźnionego przetwarzania; na przykład, aby zaplanować zadanie, stanie się dostępny do przetworzenia przez system w określonym czasie. Ta funkcja zdaje sobie sprawę niezawodne rozproszonych harmonogramu opartego na czasie.
 
-Zaplanowane wiadomości nie zmaterializowania w kolejce do czasu zdefiniowanego umieścić w kolejce. Przed upływem tego czasu można anulować zaplanowanego wiadomości. Anulowanie usuwa komunikat.
+Zaplanowane komunikaty nie zmaterializowania w kolejce do czasu zdefiniowanego umieścić w kolejce. Przed upływem tego czasu można anulować zaplanowane wiadomości. Unieważnieniu usuwa komunikat.
 
-Można zaplanować wiadomości, albo ustawiając [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) właściwości podczas wysyłania wiadomości na ścieżce wysyłania regularnych lub jawnie z [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) interfejsu API. Drugie natychmiast zwraca komunikat zaplanowane **SequenceNumber**, którym później można anulować zaplanowanego komunikatu w razie potrzeby. Zaplanowane wiadomości i ich numerów sekwencji. można również odnaleźć za pomocą [przeglądania wiadomości](message-browsing.md).
+Można zaplanować komunikaty, albo ustawiając [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) właściwości podczas wysyłania komunikatu za pośrednictwem ścieżki regularnego wysyłania lub jawnie przy użyciu [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) interfejsu API. Te ostatnie natychmiast zwraca zaplanowanych wiadomości **SequenceNumber**, który mógł później użyć do anulowania zaplanowanych wiadomości, jeśli to konieczne. Zaplanowane wiadomości i ich numerów sekwencji można również znaleźć przy użyciu [Przeglądanie komunikatów](message-browsing.md).
 
-**SequenceNumber** dla zaplanowanych wiadomości jest prawidłowe podczas tylko wiadomość jest w tym stanie. Jako wiadomości przejścia do stanu aktywnego, wiadomość jest dołączany do kolejki tak, jakby był umieszczonych w kolejce w bieżącej moment, w tym przypisywanie nowy **SequenceNumber**.
+**SequenceNumber** dla zaplanowanych wiadomości obowiązuje tylko podczas wiadomość znajduje się w tym stanie. Jako przejścia do wiadomości na stan aktywne wiadomości jest dołączany do kolejki tak, jakby była umieszczonych w kolejce u bieżącej moment, w tym Przypisywanie nowego **SequenceNumber**.
 
-Ponieważ funkcja jest zakotwiczona na poszczególne wiadomości i komunikaty mogą być tylko umieszczonych w kolejce raz, usługi Service Bus nie obsługuje cyklicznych harmonogramów dla wiadomości.
+Ta funkcja jest zakotwiczona na poszczególne wiadomości, a komunikaty mogą być tylko umieszczonych w kolejce raz, dlatego dla komunikatów usługi Service Bus nie obsługuje harmonogramów cyklicznych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o komunikatów usługi Service Bus, zobacz następujące tematy:
+Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 
 * [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)

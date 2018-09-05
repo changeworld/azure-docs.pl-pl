@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: b910b6cdf55ae7c2a220543bdb555d8e9bff59a0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: f4bc7724c0bc288ab269d1b3ec054bd1a6ba26e3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056497"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701198"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -58,7 +58,7 @@ Jeśli tworzysz zasoby przeznaczone do użycia z klastrem usługi AKS, takich ja
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w grupie zasobów MC_ *?
 
-Modyfikowanie i usuwanie tagów i innych właściwości zasobów w *MC_** grupy zasobów może prowadzić do nieoczekiwanych wyników, takich jak skalowanie i uaktualnianie błędy. Modyfikowanie zasobów w ramach *MC_** w usłudze AKS klastra przerywa poziomu usługi.
+Modyfikowanie i usuwanie tagi utworzone przez platformę Azure i innych właściwości zasobów w *MC_** grupy zasobów może prowadzić do nieoczekiwanych wyników, takich jak skalowanie i uaktualnianie błędy. Możliwe jest tworzenie i modyfikowanie dodatkowe znaczniki niestandardowe, takie jak przypisać centrum kosztu lub jednostki biznesowej. Modyfikowanie zasobów w ramach *MC_** w usłudze AKS klastra przerywa poziomu usługi.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery dopuszczenie Kubernetes obsługuje AKS? Można kontrolerów dopuszczenie dodane lub usunięte?
 

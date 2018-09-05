@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302132"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702316"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -122,7 +122,6 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Azure Maps
 * Azure Relay
 * Usługa Azure Stack — rejestracji
-* Azure Migrate
 * Batch
 * BizTalk Services
 * Bot Service
@@ -141,7 +140,7 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Event Grid
 * Event Hubs
 * Klastry HDInsight — zobacz [ograniczenia HDInsight](#hdinsight-limitations)
-* Iot Central
+* IoT Central
 * Centra IoT Hub
 * Usługa Key Vault
 * Moduły równoważenia obciążenia — zobacz [ograniczenia modułu równoważenia obciążenia](#lb-limitations)
@@ -188,6 +187,7 @@ Usługi, które aktualnie nie umożliwiają przenoszenia zasobu są:
 * Azure Database for PostgreSQL
 * Migracja bazy danych platformy Azure
 * Azure Databricks
+* Azure Migrate
 * Usługa Batch — sztuczna inteligencja
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Container Instances
@@ -237,8 +237,6 @@ Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasob�
 Aby przenieść równorzędnej sieci wirtualnej, należy najpierw wyłączyć komunikacji równorzędnej sieci wirtualnej. Po wyłączeniu można przenieść sieci wirtualnej. Po przeniesieniu ponownie włączyć komunikację równorzędną sieci wirtualnej.
 
 Nie można przenieść sieci wirtualnej do innej subskrypcji, jeśli sieć wirtualna zawiera podsieci za pomocą linków nawigacji zasobów. Na przykład jeśli zasób pamięci podręcznej redis Cache jest wdrożona w podsieci, tej podsieci ma linku nawigacji zasobu.
-
-Nie można przenieść sieci wirtualnej do innej subskrypcji, jeśli sieć wirtualna zawiera niestandardowego serwera DNS. Aby przenieść sieć wirtualną, należy ustawić go do serwera domyślnego (DNS platformy Azure). Po przeniesieniu skonfiguruj ponownie niestandardowego serwera DNS.
 
 ## <a name="app-service-limitations"></a>Ograniczenia usługi App Service
 

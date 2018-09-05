@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: e7a63167285c06fdfe632e7d45d9fddd3cca7842
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2c8978cfba8fc56d4dbc565cb3a91c75d9d54679
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248526"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700199"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent-issues"></a>Rozwiązywanie problemów dotyczących agenta usługi Microsoft Azure Recovery Services (MARS)
 ## <a name="recommended-steps"></a>Zalecane czynności
@@ -66,7 +66,10 @@ Wykonaj następujące czynności, jeśli zaplanowane kopie zapasowe nie wyzwalan
 <li>Kliknij dwukrotnie zadania "Microsoft OnlineBackup", a następnie przejdź do karty "Wyzwalaczy".
 <li>Upewnij się, że "Status" zadanie jest ustawiona na wartość "Włączony". W przeciwnym razie kliknij pozycję "Edytuj" i zaznacz pole wyboru "Enabled"
 <li>Przejdź do *opcje zabezpieczeń* części *ogólne* kartę
-<li>Upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest *systemu* lub grupy administratorów lokalnych na serwerze > [!TIP] zalecane jest ponowne uruchomienie serwera po wykonaniu kroków powyżej, aby upewnić się, które zmieniają się wykonywane są stosowane spójnie
+<li>Upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest *systemu* lub grupy administratorów lokalnych na serwerze
+
+> [!TIP]
+> Zalecane jest ponowne uruchomienie serwera po wykonaniu kroków powyżej, aby upewnić się, że zmiany są stosowane spójnie
 
 
 ## <a name="troubleshooting-restore-issues"></a>Rozwiązywanie problemów przywracania

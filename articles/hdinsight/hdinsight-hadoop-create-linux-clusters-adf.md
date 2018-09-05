@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: b8a177ad2bbd463d2dcb94a01ff2a29a95d86693
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 567bac8a12a841eed2df1467b94a2a91c86ff7b4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105287"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666155"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie klastrów usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,9 +37,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+- Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-* Jednostki usługi Azure Active Directory. Po utworzeniu nazwy głównej usługi, pamiętaj pobrać **identyfikator aplikacji** i **klucz uwierzytelniania** zgodnie z instrukcjami w artykule połączone. Te wartości będą potrzebne w dalszej części tego samouczka. Ponadto upewnij się, nazwa główna usługi jest członkiem *Współautor* roli subskrypcji lub grupy zasobów, w której został utworzony klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisać odpowiednie role, zobacz [Tworzenie jednostki usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+- Jednostki usługi Azure Active Directory. Po utworzeniu nazwy głównej usługi, pamiętaj pobrać **identyfikator aplikacji** i **klucz uwierzytelniania** zgodnie z instrukcjami w artykule połączone. Te wartości będą potrzebne w dalszej części tego samouczka. Ponadto upewnij się, nazwa główna usługi jest członkiem *Współautor* roli subskrypcji lub grupy zasobów, w której został utworzony klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisać odpowiednie role, zobacz [Tworzenie jednostki usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
@@ -148,18 +148,18 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 W usłudze Azure Data Factory fabryki danych może mieć jeden lub wiele potoków danych. Potok danych zawiera jeden lub więcej działań. Istnieją dwa typy działań:
 
-* [Działania przenoszenia danych](../data-factory/copy-activity-overview.md) -używasz działania przenoszenia danych do przenoszenia danych z magazynu danych źródłowych do docelowego magazynu danych.
-* [Działania przekształcania danych](../data-factory/transform-data.md). Działania przekształcania danych umożliwiają przekształcanie i przetwarzanie danych. Działanie usługi HDInsight Hive jest jednym z działania przekształcania, obsługiwane przez usługę Data Factory. Działanie przekształcania Hive są używane w tym samouczku.
+- [Działania przenoszenia danych](../data-factory/copy-activity-overview.md) -używasz działania przenoszenia danych do przenoszenia danych z magazynu danych źródłowych do docelowego magazynu danych.
+- [Działania przekształcania danych](../data-factory/transform-data.md). Działania przekształcania danych umożliwiają przekształcanie i przetwarzanie danych. Działanie usługi HDInsight Hive jest jednym z działania przekształcania, obsługiwane przez usługę Data Factory. Działanie przekształcania Hive są używane w tym samouczku.
 
 W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć klaster usługi HDInsight Hadoop na żądanie. Gdy działanie zostanie uruchomione do przetwarzania danych, Oto, co się dzieje:
 
 1. Klaster usługi HDInsight Hadoop jest tworzona automatycznie dla możesz just-in-time przetworzenie wycinka przez. 
 
 1. Dane wejściowe są przetwarzane przez uruchomienie skryptu HiveQL w klastrze. W tym samouczku skrypt HiveQL, skojarzone za pomocą działania hive wykonuje następujące czynności:
-
-    * Używa istniejącej tabeli (*hivesampletable*) do tworzenie innej tabeli **HiveSampleOut**.
-    * Wypełnia **HiveSampleOut** tabelę zawierającą tylko określone kolumny od oryginału *hivesampletable*.
-
+    
+    - Używa istniejącej tabeli (*hivesampletable*) do tworzenie innej tabeli **HiveSampleOut**.
+    - Wypełnia **HiveSampleOut** tabelę zawierającą tylko określone kolumny od oryginału *hivesampletable*.
+    
 1. Klaster usługi HDInsight Hadoop jest usuwany po zakończeniu przetwarzania i klastra jest w stanie bezczynności skonfigurowanym czasie (ustawienie timeToLive). Jeśli dalej wycinek danych jest dostępne do przetwarzania przy użyciu w tym okresie bezczynności timeToLive, tego samego klastra służy do przetwarzania wycinka.  
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
@@ -265,16 +265,16 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
     ![Podaj szczegóły klastra HDInsight w potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "szczegóły klastra HDInsight zapewniają potoku")
 
 1. Wybierz **skryptu** kartę i wykonaj następujące czynności:
-
-    a. Aby uzyskać **połączona usługa skryptu**, wybierz opcję **HDIStorageLinkedService**. Ta wartość jest połączonej usługi storage utworzonego wcześniej.
-
-    b. Aby uzyskać **ścieżka pliku**, wybierz opcję **Przeglądaj magazyn** i przejdź do lokalizacji, w którym znajduje się przykładowy skrypt programu Hive. Jeśli skrypt programu PowerShell został przeprowadzony wcześniej, ta lokalizacja powinna być `adfgetstarted/hivescripts/hivescript.hql`.
-
-    ![Podaj szczegóły skryptu programu Hive w potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive Podaj szczegóły skryptu dla potoku")
-
-    c. W obszarze **zaawansowane** > **parametry**, wybierz opcję **automatycznie Wypełniaj ze skryptu**. Ta opcja wyszukuje wszystkie parametry w skrypcie programu Hive, które wymagają wartości w czasie wykonywania. Skrypt używasz (**hivescript.hql**) ma **dane wyjściowe** parametru. Podaj wartość w formacie `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` wskaż istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, gdzie będą przechowywane dane wyjściowe skryptu.
-
-    ![Podaj parametry dla skryptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "podać parametry do skryptu programu Hive")
+    
+    1. Aby uzyskać **połączona usługa skryptu**, wybierz opcję **HDIStorageLinkedService**. Ta wartość jest połączonej usługi storage utworzonego wcześniej.
+    
+    1. Aby uzyskać **ścieżka pliku**, wybierz opcję **Przeglądaj magazyn** i przejdź do lokalizacji, w którym znajduje się przykładowy skrypt programu Hive. Jeśli skrypt programu PowerShell został przeprowadzony wcześniej, ta lokalizacja powinna być `adfgetstarted/hivescripts/hivescript.hql`.
+    
+        ![Podaj szczegóły skryptu programu Hive w potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive Podaj szczegóły skryptu dla potoku")
+    
+    1. W obszarze **zaawansowane** > **parametry**, wybierz opcję **automatycznie Wypełniaj ze skryptu**. Ta opcja wyszukuje wszystkie parametry w skrypcie programu Hive, które wymagają wartości w czasie wykonywania. Skrypt używasz (**hivescript.hql**) ma **dane wyjściowe** parametru. Podaj wartość w formacie `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` wskaż istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, gdzie będą przechowywane dane wyjściowe skryptu.
+    
+        ![Podaj parametry dla skryptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "podać parametry do skryptu programu Hive")
 
 1. Wybierz **weryfikacji** Aby zweryfikować potok. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć okno weryfikacji.
 

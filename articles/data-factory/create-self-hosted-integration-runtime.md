@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044734"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697768"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -219,7 +219,7 @@ W **zaporą firmową** poziomu, potrzebujesz konfigurowania następujących dome
 
 Nazwy domen | Porty | Opis
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Używany do komunikacji z zapleczem usługi Data Movement Service
+*.servicebus.windows.net | 443 | Używany do komunikacji z zapleczem usługi Data Movement Service
 *.core.windows.net | 443 | Używane z kopiowaniem przejściowa przy użyciu obiektów Blob platformy Azure (jeśli jest skonfigurowane)
 *.frontend.clouddatahub.net | 443 | Używany do komunikacji z zapleczem usługi Data Movement Service
 download.microsoft.com | 443 | Używane do pobierania aktualizacji

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 86cc1a71bb09ea465621d65f84d2b838cb169a62
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054604"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666271"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -187,10 +187,45 @@ Grupę będącą właścicielem może zmienić:
 
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
 
-Następująca ilustracja przedstawia algorytm kontroli dostępu dla kont usługi Data Lake Storage Gen1.
+Następujące psuedocode przedstawia algorytm kontroli dostępu dla kont usługi Data Lake Storage Gen1.
 
-![Algorytm list ACL Gen1 magazynu jeziora danych](./media/data-lake-store-access-control/data-lake-store-acls-algorithm.png)
+```
+def access_check( user, desired_perms, path ) : 
+  # access_check returns true if user has the desired permissions on the path, false otherwise
+  # user is the identity that wants to perform an operation on path
+  # desired_perms is a simple integer with values from 0 to 7 ( R=4, W=2, X=1). User desires these permissions
+  # path is the file or folder
+  # Note: the "sticky bit" is not illustrated in this algorithm
+  
+# Handle super users
+    if (is_superuser(user)) :
+      return True
 
+  # Handle the owning user. Note that mask is not used.
+    if (is_owning_user(path, user))
+      perms = get_perms_for_owning_user(path)
+      return ( (desired_perms & perms) == desired_perms )
+
+  # Handle the named user. Note that mask is used.
+  if (user in get_named_users( path )) :
+      perms = get_perms_for_named_user(path, user)
+      mask = get_mask( path )
+      return ( (desired_perms & perms & mask ) == desired_perms)
+
+  # Handle groups (named groups and owning group)
+  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
+  if (len(belongs_to_groups)>0) :
+    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
+    perms = 0
+    for p in group_perms : perms = perms | p # bitwise OR all the perms together
+    mask = get_mask( path )
+    return ( (desired_perms & perms & mask ) == desired_perms)
+
+  # Handle other
+  perms = get_perms_for_other(path)
+  mask = get_mask( path )
+  return ( (desired_perms & perms & mask ) == desired_perms)
+```
 
 ## <a name="the-mask-and-effective-permissions"></a>Maska i „czynne uprawnienia”
 

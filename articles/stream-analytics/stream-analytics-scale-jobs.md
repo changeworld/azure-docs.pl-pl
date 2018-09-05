@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4da97d708f8db2dcee406645a0eee409fa111012
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34652546"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696806"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności
 W tym artykule pokazano, jak dostosowywanie zapytania usługi Stream Analytics w celu zwiększenia przepływności zadania usługi Stream Analytics. Następującymi wskazówkami umożliwia skalowanie zadania do obsługi wyższe obciążenie i korzystać z zalet więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
@@ -70,7 +70,7 @@ Dla niektórych niezależnego dostawcy oprogramowania zastosowań, gdzie jest ba
 2.  Zmniejsz liczbę partycji danych wejściowych do najmniejszej możliwej wartości 2, korzystania z Centrum zdarzeń.
 3.  Uruchom zapytanie, za pomocą polecenia SU 6. Za pomocą oczekiwanego obciążenia dla każdej podzapytania należy dodać dowolną liczbę takich podzapytań jak to możliwe, dopóki zadanie jest osiągnięcia limitów zasobów systemowych. Zapoznaj się [przypadek 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) dla objawy w takiej sytuacji.
 4.  Po w przypadku osiągnięcia limitu podzapytania mierzony powyżej przystąpić do dodawania podzapytanie do nowego zadania. Liczba zadań do uruchomienia w zależności od liczby zapytań niezależnych powinna być dość liniowego, przy założeniu, że masz obciążenie pochylanie. Można następnie prognozy, ile 6 zadania polecenia SU, należy uruchomić w zależności od liczby dzierżawców, którą chcesz obsługiwać.
-5.  Jeśli sprzężenia danych odwołania z takich zapytań, należy Unii, których dane wejściowe ze sobą, przed dołączeniem do tych samych danych odwołania, następnie Podziel się zdarzenia w razie potrzeby. W przeciwnym razie każdego odwołania sprzężenia danych przechowuje kopie danych referencyjnych w pamięci, prawdopodobnie niepotrzebnie porotwórcze się użycia pamięci.
+5.  Jeśli sprzężenia danych odwołania z takich zapytań, union dane wejściowe razem przed dołączeniem o takiej samej odwołują się do danych. Następnie Podziel się zdarzenia, jeśli to konieczne. W przeciwnym razie każdego odwołania sprzężenia danych przechowuje kopie danych referencyjnych w pamięci, prawdopodobnie niepotrzebnie porotwórcze się użycia pamięci.
 
 > [!Note] 
 > Ilu dzierżawców do umieszczenia w poszczególnych zadaniach?

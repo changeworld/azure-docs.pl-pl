@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2f5661ddac16a3024335bd633623f7ada2fc5870
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058163"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696646"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -38,21 +38,20 @@ Istnieje kilka wymagań wstępnych, które muszą być spełnione przed wdrożen
   >[!NOTE]
   >Aby wdrożyć dostawcy bazy danych MySQL w systemie, który nie ma dostępu do Internetu, skopiuj [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) pliku na ścieżkę lokalną. Dostarcza przy użyciu nazwy ścieżki **DependencyFilesLocalPath** parametru.
 
-* Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz:
+* Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji.
 
-    | Wersja usługi Azure Stack | Wersja MySQL RP|
+    | Minimalna wersja usługi Azure Stack | Wersja MySQL RP|
     | --- | --- |
     | W wersji 1804 (1.0.180513.1)|[MySQL RP wersji 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | W wersji 1802 (1.0.180302.1) | [MySQL RP wersji 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
     |     |     |
 
-- Upewnij się, że zostały spełnione wymagania wstępne integrację centrum danych:
+* Upewnij się, że zostały spełnione wymagania wstępne integrację centrum danych:
 
     |Wymagania wstępne|Informacje ogólne|
     |-----|-----|
     |Przesyłanie warunkowe DNS jest prawidłowo.|[Usługa Azure Stack Integracja z centrum danych — DNS](azure-stack-integrate-dns.md)|
     |Porty dla ruchu przychodzącego dla dostawców zasobów są otwarte.|[Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)<br>[Usługa Azure Stack PaaS certyfikatu wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)[wymagania wstępne dotyczące usługi Azure Stack wdrożenia PaaS certyfikatu](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### <a name="certificates"></a>Certyfikaty
@@ -87,6 +86,7 @@ Można określić te parametry, z poziomu wiersza polecenia. Jeśli nie istnieje
 | **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
 | **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów MySQL maszyny Wirtualnej. | _Wymagane_ |
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
+| **AzureEnvironment** | Środowiska platformy azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko, jeśli nie jest usług AD FS. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure Active Directory, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Tylko zintegrowane systemy plik PFX certyfikatu musi być umieszczane w tym katalogu. Dla odłączonych enviroments pobrać [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tego katalogu. Opcjonalnie można skopiować jeden pakiet Windows Update MSU tutaj. | _Opcjonalnie_ (_obowiązkowe_ zintegrowanych systemów lub w środowiskach rozłączonych) |
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
 | **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f078cad95d39c18a8391bc32100d08accc53c37c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215207"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665726"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -41,7 +41,7 @@ Baza danych ClearDB MySQL z innej usługi hostingu jest i zarządza infrastruktu
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Czy muszę mieć kartę kredytową dla aplikacji sieci Web + szablon MySQL w witrynie Azure Marketplace?
 To zależy od typu Twojej subskrypcji, którego używasz. Poniżej przedstawiono niektóre typy powszechnie używane subskrypcji:
 
-* [Płatność zgodnie z rzeczywistym użyciem](/offers/ms-azr-0003p/): wymaga kart kredytowych, oraz przy zakupie płatnych bazy danych MySQL karta kredytowa jest obciążona.
+* [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/): wymaga kart kredytowych, oraz przy zakupie płatnych bazy danych MySQL karta kredytowa jest obciążona.
 * [Bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/): obejmuje środki na korzystanie z usług użycia z usługą Microsoft Azure, ale nie zezwala na zakup zasoby innych firm. Aby kupić usługi innych firm lub płatną bazy danych MySQL musisz używać karty kredytowej, włączone subskrypcji. W przypadku aplikacji sieci Web można utworzyć bazę danych ClearDB MySQL bezpłatne.
 * [Subskrypcja MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) i **MSDN: testowanie płatność zgodnie z rzeczywistym użyciem**: Podobnie jak w bezpłatnej wersji próbnej, subskrypcję MSDN wymaga posiadania karty kredytowej, aby kupić płatną rozwiązania MySQL firmy ClearDB.
 * [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): Klienci z umową EA, są rozliczane względem ich umowy EA każdego kwartału dla wszystkich zakupów (innej firmy) portalu Azure Marketplace w oddzielnych, skonsolidowanego faktury. Opłaty są naliczane poza zobowiązań pieniężnych dla zakupów w portalu marketplace. Należy pamiętać, że w tej chwili Azure Store nie jest dostępna dla klientów zarejestrowanych w Azerbejdżan, Chorwacja, Norwegia i Portoryko. 
@@ -109,5 +109,5 @@ Dostęp do portalu Azure Marketplace dla usługi innych firm może być zarządz
 Skontaktuj się z pomocą [pomoc techniczną dla przedsiębiorstw klienta](http://aka.ms/AzureEntSupport) w odniesieniu do rozliczeń w ramach rejestracji umowy EA. Zespół pomocy technicznej w portalu EA będą odpowiedź na Twoje pytanie lub pomóc w rozwiązaniu problemu.
 
 ## <a name="more-information"></a>Więcej informacji
-[Portal Azure Marketplace — często zadawane pytania](/marketplace/faq/)
+[Portal Azure Marketplace — często zadawane pytania](https://azure.microsoft.com/marketplace/faq/)
 

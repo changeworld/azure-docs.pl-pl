@@ -15,12 +15,12 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59d51ba8edadd1fd71255271623b144cab94fc97
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: fb52bc92c86261831d0e8d8e9e863a4863fe8fb9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344287"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666893"
 ---
 # <a name="eligible-assignments-and-resource-visibility-in-pim"></a>Kwalifikujące się przypisania i widoczność zasobów w usłudze PIM
 
@@ -31,7 +31,7 @@ Privileged Identity Management (PIM) dla ról zasobów platformy Azure zapewnia 
 Usługa PIM dla zasobów platformy Azure udostępnia dwa typy distinct przypisania:
 
 - Uprawniona
-- Aktywna
+- Aktywne
 
 Kwalifikującymi się przypisaniami wymagają członek roli do wykonania działania, aby korzystać z roli. Akcje mogą obejmować sukcesy wyboru usługi Multi-Factor authentication, zapewniając uzasadnienie biznesowe lub żądanie zatwierdzenia od wyznaczone osoby zatwierdzające.
 
@@ -82,7 +82,7 @@ Ustawień usługi PIM są skonfigurowane dla każdej roli zasobu. W przeciwieńs
 
 Przykładzie: Robert korzysta z usługi PIM będą musieli wszystkich elementów członkowskich w roli właściciela zatwierdzenia żądania subskrypcji Contoso zostanie uaktywniony. Aby lepiej chronić zasoby w grupie zasobów Prod firmy Fabrikam, Robert wymaga zatwierdzenia dla członków roli właściciela tego zasobu. Role właściciela w firmie Fabrikam testowych i deweloperskich firmy Fabrikam nie wymagają zatwierdzenia aktywacji.
 
-Gdy Alicja żądań aktywacji jej roli właściciela subskrypcji firmy Contoso, osoba zatwierdzająca musi zatwierdzić lub odrzucić swoje żądanie, zanim użytkownik staje się aktywny w roli. Jeśli Alicja zdecyduje się na [zakres jej aktywacji](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) do grupy zasobów Prod firmy Fabrikam, osoba zatwierdzająca musi Zatwierdź lub Odrzuć to żądanie zbyt. Ale jeśli Alicja zdecyduje się na zakres jej aktywacji do jednego lub obu tych testów Fabrikam lub deweloperów firmy Fabrikam, zatwierdzenia nie jest wymagane.
+Gdy Alicja żądań aktywacji jej roli właściciela subskrypcji firmy Contoso, osoba zatwierdzająca musi zatwierdzić lub odrzucić swoje żądanie, zanim użytkownik staje się aktywny w roli. Jeśli Alicja zdecyduje się na [zakres jej aktywacji](pim-resource-roles-activate-your-roles.md) do grupy zasobów Prod firmy Fabrikam, osoba zatwierdzająca musi Zatwierdź lub Odrzuć to żądanie zbyt. Ale jeśli Alicja zdecyduje się na zakres jej aktywacji do jednego lub obu tych testów Fabrikam lub deweloperów firmy Fabrikam, zatwierdzenia nie jest wymagane.
 
 Przepływ pracy zatwierdzania nie może być wymagane dla wszystkich członków roli. Rozważmy scenariusz, w których Twoja organizacja zatrudnia kilka kojarzy umowy, aby pomóc w rozwoju aplikacji, która jest uruchamiana w subskrypcji platformy Azure. Będąc administratorem zasobów pracownicy mają mieć dostępu uprawnionego bez wymagane zatwierdzenie, ale kojarzy kontraktu musi on zażądać zatwierdzenia. Aby skonfigurować przepływ pracy zatwierdzania dla tylko kojarzy kontraktu, utworzeniem roli niestandardowej takie same uprawnienia, jak rola przypisana do pracowników. Może wymagać zatwierdzenia do aktywowania tej roli niestandardowej. [Dowiedz się więcej o niestandardowych rolach](pim-resource-roles-custom-role-policy.md).
 

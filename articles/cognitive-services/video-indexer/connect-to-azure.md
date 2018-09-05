@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: df9d3f40b28f5b030f3d7e7a63b1b3e77caedb6c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744754"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700817"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -52,7 +52,7 @@ W tym artykule pokazano, jak utworzyć konto usługi Video Indexer, który jest 
 
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
 
-1. Zaloguj się przy użyciu tego użytkownika, a następnie kliknij przycisk na **Połącz z platformą Azure** przycisku:
+1. Zaloguj się do [ https://www.videoindexer.ai/ ](https://www.videoindexer.ai/) i kliknij pozycję **Połącz z platformą Azure** przycisku:
 
     ![Łączenie z platformą Azure](./media/create-account/connect-to-azure.png)
 
@@ -69,9 +69,21 @@ W tym artykule pokazano, jak utworzyć konto usługi Video Indexer, który jest 
     * Aby użyć istniejącego konta usługi Media Services, wybierz **Użyj istniejącego zasobu**. Z listy kont wybierz swoje konto.
 
         Konto usługi Media Services musi mieć w tym samym regionie co konto usługi Video Indexer. Aby zminimalizować czas trwania indeksowania i niska przepływność, dostosować typ i liczbę jednostek zarezerwowanych do **10 jednostki zarezerwowane S3** na Twoim koncie usługi Media Services.
-    * Aby ręcznie skonfigurować połączenie, kliknij przycisk **przejdź do Konfiguracja ręczna** połączyć, a następnie podaj wymagane informacje:
+    * Aby ręcznie skonfigurować połączenie, kliknij przycisk **przejdź do Konfiguracja ręczna**. 
+    
+        Można ręcznie skonfigurować połączenie, jeśli z jakiegoś powodu opcji automatycznego nie powiedzie się, czy Twoja instalacja i konfiguracja różni się od typowe przypadki lub chcesz mieć pełną widoczność i kontrolę nad ustawieniami. 
+        
+        W **połączyć indeksatora wideo z subskrypcją platformy Azure**, podaj następujące informacje.
 
-    ![Łączenie indeksatora wideo z platformą Azure](./media/create-account/connect-vi-to-azure-subscription-2.png)
+        |Ustawienie|Opis|
+        |---|---|
+        |Region konta usługi wideo indeksatora|Nazwa regionu konta Video Indexer. Aby uzyskać lepszą wydajność i obniżyć koszty zaleca do określenia nazwy regionu, w którym znajdują się zasobów usługi Azure Media Services i konto usługi Azure Storage. |
+        |Dzierżawa usługi Azure Active Directory (AAD)|Nazwa dzierżawy usługi Azure AD, na przykład "contoso.onmicrosoft.com". W witrynie Azure portal można pobrać informacji o dzierżawie. Umieść kursor na nazwie zalogowanego użytkownika w prawym górnym rogu.|
+        |Identyfikator subskrypcji|Subskrypcja platformy Azure, w którym można utworzyć tego połączenia. Identyfikator subskrypcji można pobrać z witryny Azure portal. Kliknij pozycję **wszystkich usług** w panelu po lewej stronie i wyszukaj "subskrypcje". Wybierz, **subskrypcje** i wybierz żądany identyfikator z listy subskrypcji.|
+        |Grupa zasobów platformy Azure nazwy|Nazwa nowej grupy zasobów, w której chcesz utworzyć połączenie.|
+        |Usługi Azure resource Name|Nazwa zasobu usługi Azure Media Services.|
+        |Identyfikator aplikacji|Identyfikator aplikacji usługi Azure AD z uprawnieniami określonego konta usługi Media Services. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie jednostki usługi użyj](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
+        |Klucz aplikacji|Aby uzyskać więcej informacji, zobacz [uwierzytelnianie jednostki usługi użyj](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 
 5. Gdy wszystko będzie gotowe, wybierz pozycję **Connect**. Ta operacja może potrwać kilka minut. 
 

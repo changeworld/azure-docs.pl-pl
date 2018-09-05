@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2018
+ms.date: 08/31/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 8c9d1ee51acdfff188e0d6483f723fbb08e17bd5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e5db7b9bed674011c2922f026c301172f347f53f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601955"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666312"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -45,11 +45,23 @@ Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania toż
 
 *  Klienci, którzy używają Standard SCIM można użyć, inicjowanie obsługi administracyjnej dla tej samej aplikacji.
 
-##  <a name="prerequisites-implement-federation-protocol"></a>Wymagania wstępne: Implementowanie federacyjnych protokołu
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Aplikacje Sfederowane (Open ID i SAML/WS-Fed) aplikacja musi obsługiwać ten model do umieszczenia w galerii usługi Azure AD. Aplikacje w przedsiębiorstwie galerii powinien obsługiwać wielu konfiguracji klienta i nie są ustawiane określonego klienta.
+
+- Dla Open ID Connect, aplikacja powinna być wielodostępnych i [platformy wyrażania zgody w usłudze Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) powinna być poprawnie zaimplementowany dla aplikacji. Użytkownika można wysyłać żądania logowania do endpoint wspólnego, tak, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie.
+
+- Dla protokołu SAML 2.0/WS-Fed aplikacja musi mieć możliwość celu integracja logowania jednokrotnego SAML/WS-Fed w trybie SP lub dostawcy tożsamości. Upewnij się, że to działa poprawnie przed przesłaniem żądania.
+
+- Hasło logowania jednokrotnego upewnij się, czy aplikacja obsługuje uwierzytelnianie formularzy tak, aby haseł może odbywać się uzyskać pracy rejestracji jednokrotnej, zgodnie z oczekiwaniami.
+
+- W przypadku żądań użytkownika automatyczne Inicjowanie obsługi administracyjnej aplikacji powinny figurować w galerii przy użyciu pojedynczego logowania jednokrotnego włączoną funkcję przy użyciu dowolnego protokołu federation opisanych powyżej. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
+
+##  <a name="implementing-sso-using-federation-protocol"></a>Implementowanie logowania jednokrotnego przy użyciu protokołu federation
 
 Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw wdrożyć jedną z następujących protokołów Federacji obsługiwane przez usługę Azure AD i Akceptuję warunki galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji usługi Azure AD z [tutaj](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
-*   **OpenID Connect**: tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [platformy wyrażania zgody w usłudze Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) dla aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie. Aby zintegrować aplikację z usługą Azure AD, wykonaj [instrukcje deweloperów](authentication-scenarios.md).
+*   **OpenID Connect**: Aby zintegrować aplikację z usługą Azure AD przy użyciu protokołu Open ID Connect, wykonaj [instrukcje deweloperów](authentication-scenarios.md).
 
     ![Oś czasu wyświetlanie OpenID Connect aplikacji w galerii](./media/howto-app-gallery-listing/openid.png)
 
@@ -57,21 +69,23 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
 
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **SAML 2.0** lub **WS-Fed**: aplikacja musi mieć możliwość czy integracja logowania jednokrotnego SAML/WS-Fed w trybie SP lub dostawcy tożsamości. Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
+*   **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
 
     ![Oś czasu wyświetlanie protokołu SAML 2.0 i WS-Fed aplikacji w galerii](./media/howto-app-gallery-listing/saml.png)
 
     * Jeśli chcesz dodać aplikację do listy w galerii, używając **SAML 2.0** lub **WS-Fed**, wybierz opcję **SAMl 2.0/WS-Fed** tak jak powyżej.
 
-    * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
-
-*   **Hasło logowania jednokrotnego**: Utwórz aplikację internetową, która zawiera strony logowania HTML do skonfigurowania [opartego na hasłach logowania jednokrotnego](../manage-apps/what-is-single-sign-on.md). Logowanie Jednokrotne oparte na hasłach, określane również jako hasło vaulting, pozwala na zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których kilka użytkownicy potrzebują do udostępnienia jednego konta, takie jak do kont aplikacji mediów społecznościowych w Twojej organizacji.
-
-    ![Oś czasu wyświetlanie hasło logowania jednokrotnego aplikacji w galerii](./media/howto-app-gallery-listing/passwordsso.png)
-
-    * Jeśli chcesz dodać aplikację do listy w galerii przy użyciu logowania jednokrotnego hasła, wybierz **hasło logowania jednokrotnego** tak jak powyżej.
-
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+## <a name="implementing-sso-using-password-sso"></a>Implementowanie logowania jednokrotnego przy użyciu hasła logowania jednokrotnego
+
+Utwórz aplikację internetową, która zawiera strony logowania HTML do skonfigurowania [opartego na hasłach logowania jednokrotnego](../manage-apps/what-is-single-sign-on.md). Logowanie Jednokrotne oparte na hasłach, określane również jako hasło vaulting, pozwala na zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których kilka użytkownicy potrzebują do udostępnienia jednego konta, takie jak do kont aplikacji mediów społecznościowych w Twojej organizacji.
+
+![Oś czasu wyświetlanie hasło logowania jednokrotnego aplikacji w galerii](./media/howto-app-gallery-listing/passwordsso.png)
+
+* Jeśli chcesz dodać aplikację do listy w galerii przy użyciu logowania jednokrotnego hasła, wybierz **hasło logowania jednokrotnego** tak jak powyżej.
+
+* Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Aktualizowanie/Usuwanie istniejącej listy
 
@@ -80,7 +94,7 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azur
 * Wybierz odpowiednią opcję z poniżej obrazu
 
     ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/updateorremove.png)
-    
+
     * Jeśli chcesz zaktualizować istniejącą aplikację, wybierz opcję **aktualizacji istniejącej listy aplikacji**.
 
     * Aby usunąć istniejącą aplikację z galerii usługi Azure AD, należy zaznaczyć **usunięcie istniejącej listy aplikacji**

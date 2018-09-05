@@ -1,5 +1,5 @@
 ---
-title: Partycjonowanie interfejsu API programu Graph | Dokumentacja firmy Microsoft
+title: Partycjonowanie interfejs API języka gremlin | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można użyć partycjonowane programu Graph w usłudze Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: 202c575a917cfb24436d86881e5368b61f216d42
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 7290687c62b0a500aef80bd8786df4cc1ece8ed4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861762"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698982"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Przy użyciu wykresu podzielonym na partycje w usłudze Azure Cosmos DB
 
-Jedną z kluczowych funkcji interfejsu API programu Graph w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą poziomy skalowalności. Ten proces odbywa się za pośrednictwem [partycjonowanie możliwości w usłudze Azure Cosmos DB](partition-data.md#how-does-partitioning-work), którego należy używać kontenerów, które można skalować niezależnie pod względem magazynu i przepływności. Usługa Azure Cosmos DB obsługuje następujące typy kontenerów wszystkich interfejsów API:
+Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą poziomy skalowalności. Ten proces odbywa się za pośrednictwem [partycjonowanie możliwości w usłudze Azure Cosmos DB](partition-data.md#how-does-partitioning-work), którego należy używać kontenerów, które można skalować niezależnie pod względem magazynu i przepływności. Usługa Azure Cosmos DB obsługuje następujące typy kontenerów wszystkich interfejsów API:
 
 - **Kontener stały**: te kontenery można przechowywać wykres bazy danych do 10 GB w rozmiarze maksymalnie 10 000 jednostek żądań na sekundę, przydzielone do niego. Aby utworzyć kontener stały nie jest konieczne określenie właściwości klucza partycji danych.
 
@@ -31,7 +31,7 @@ W tym dokumencie są opisane szczegółowych informacji o jak baz danych program
 
 Poniżej przedstawiono szczegółowe informacje, które należy zrozumieć podczas tworzenia kontenera grafu podzielonym na partycje:
 - **Konfigurowanie partycjonowanie konieczne będzie** Jeśli powinien być większy niż 10 GB, rozmiar kontenera i/lub jeśli przydzielanie ponad 10 000 jednostek żądań na sekundę (RU/s) ma być wymagane.
-- **Wierzchołki i krawędzie, które są przechowywane jako dokumenty JSON** w zapleczu kontenera usługi Azure Cosmos DB — interfejsu API programu Graph.
+- **Wierzchołki i krawędzie, które są przechowywane jako dokumenty JSON** w zapleczu kontenera usługi Azure Cosmos DB — interfejs API Gremlin.
 - **Wierzchołki wymagają klucza partycji**. Ten klucz określi, w której partycji będą przechowywane wierzchołka za pomocą algorytmu wyznaczania wartości skrótu. Nazwa tego klucza partycji jest jednowyrazowej ciągu bez spacji ani znaków specjalnych i jest zdefiniowany, tworząc nowy kontener przy użyciu formatu `/partitioning-key-name` w portalu.
 - **Krawędzie będą przechowywane przy użyciu ich wierzchołka źródłowego**. Innymi słowy dla każdego wierzchołka kluczu partycji określi, gdzie będą przechowywane wraz z jego krawędzi wychodzących. Ten sposób można uniknąć zapytań między partycjami, używając `out()` Kardynalność zapytania programu graph.
 - **Zapytania programu Graph, muszą określać klucz partycji**. Aby można było w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, klucza partycji należy podać w przypadku wybrania jednego wierzchołka, jeśli to możliwe. Zapytania do wybierania jednego lub wielu wierzchołków w grafie podzielonym na partycje są następujące:
@@ -69,8 +69,8 @@ Poniżej znajdują się wytyczne, które powinien być używany do zapewnienia n
 - **Optymalizowanie zapytań, aby uzyskać dane w granicach partycji, jeśli jest to możliwe**. Optymalnej strategii partycjonowania byłaby wyrównana do wzorców zapytań. Zapytania, które pobierają dane z jednej partycji zapewnia maksymalną wydajność.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule podano omówienie pojęć i najlepsze rozwiązania dotyczące partycjonowania przy użyciu interfejsu API programu Graph usługi Azure Cosmos DB. 
+W tym artykule podano omówienie pojęć i najlepsze rozwiązania dotyczące partycjonowania przy użyciu interfejsu API języka Gremlin usługi Azure Cosmos DB. 
 
 * Dowiedz się więcej o [partycji i skali w usłudze Azure Cosmos DB](partition-data.md).
-* Dowiedz się więcej o [Obsługa języka Gremlin w interfejsie API programu Graph](gremlin-support.md).
-* Dowiedz się więcej o [wprowadzenie do interfejsu API programu Graph](graph-introduction.md).
+* Dowiedz się więcej o [Obsługa języka Gremlin w interfejsie API języka Gremlin](gremlin-support.md).
+* Dowiedz się więcej o [wprowadzenie do interfejsu API języka Gremlin](graph-introduction.md).

@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7c990fc0d385af9527bf55339b2fa617e589ec0e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190590"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666006"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM
 
@@ -26,11 +26,11 @@ Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) u
 
 Jeśli użytkownik wprowadzono kwalifikuje się do roli administracyjnej, oznacza to, że możesz aktywować tej roli, gdy potrzebne do wykonania uprzywilejowanych akcji. Na przykład jeśli zarządzasz od czasu do czasu funkcje usługi Office 365, Administratorzy ról uprzywilejowanych w organizacji może nie mieć możesz stałe Administrator globalny, ponieważ ta rola ma wpływ na inne usługi, za. Zamiast tego są każą kwalifikuje się do ról usługi Azure AD, takich jak Exchange Online Administrator. Możesz poprosić o aktywowanie tej roli, gdy wymagane jego uprawnienia, a następnie będziesz mieć kontroli administratora w okresie wyznaczonym czasie.
 
-Ten artykuł jest przeznaczony dla administratorów, którzy muszą aktywować swoją rolę w usłudze PIM.
+Ten artykuł jest przeznaczony dla administratorów, którzy muszą aktywować swoją rolę katalogu usługi Azure AD w usłudze PIM.
 
 ## <a name="activate-a-role"></a>Uaktywnij rolę
 
-Gdy trzeba podjąć w roli może zażądać aktywacji przy użyciu **Moje role** opcji nawigacji w usłudze PIM.
+Gdy trzeba przełączyć w roli katalogu usługi Azure AD, możesz poprosić aktywacji przy użyciu **Moje role** opcji nawigacji w usłudze PIM.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 

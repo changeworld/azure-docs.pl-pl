@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 725f52e55795025671036095f209fd92636a4d9c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128681"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701503"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -39,7 +39,7 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tu
 * Maszyna wirtualna musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone 
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
 * Maszyny wirtualnej, dla której jesteś konsoli szeregowej uzyskiwanie dostępu musi również mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcjonalność maszyny Wirtualnej rozszerzenia dostępu — Zobacz poniższy zrzut ekranu.
 
@@ -77,7 +77,7 @@ Jeśli potrzebne SAC można włączyć w trybie offline
 
 Jeśli [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie włączono konsoli szeregowej nie wyświetli monit SAC. Widoczna informacji kondycja maszyny Wirtualnej w niektórych przypadkach, lub może być pusta.  
 
-### <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>Włączanie menu rozruchu do wyświetlenia w konsoli szeregowej 
+## <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>Włączanie menu rozruchu do wyświetlenia w konsoli szeregowej 
 
 Jeśli musisz włączyć moduł ładujący rozruchu Windows monituje o do wyświetlenia w konsoli szeregowej, można dodać następujące dodatkowe opcje, aby moduł ładujący rozruchu Windows.
 
@@ -149,6 +149,15 @@ Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomy
 >[!CAUTION] 
 Oznacza to, że użytkownik, który pobiera odłączony nie będą rejestrowane! Możliwość wymuszenia wylogowania po rozłączenia (za pośrednictwem SIGHUP lub podobny mechanizm) nadal działa w planach. Windows jest automatyczne limitu czasu włączone w SAC, jednak dla systemu Linux można skonfigurować ustawienia limitu czasu w terminalu. 
 
+## <a name="common-scenarios-for-accessing-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej 
+Scenariusz          | Akcje w konsoli szeregowej                
+:------------------|:-----------------------------------------
+Reguły zapory niepoprawne | Dostęp do serial konsoli i napraw zasady Windows w zapory. 
+System plików uszkodzenie/wyboru | Dostęp do konsoli szeregowej i odzyskiwanie systemu plików. 
+Problemy z konfiguracją protokołu RDP | Dostęp do konsoli szeregowej i zmienić ustawienia. Przejdź do [dokumentacji protokołu RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) na rozpoczęcie pracy.
+Blokowanie sieci w systemie| Dostęp do konsoli szeregowej za pośrednictwem portalu zarządzania systemem. Niektóre polecenia sieci są wymienione w [dokumentacji Serial konsoli CMD i programu PowerShell](./serial-console-cmd-ps-commands.md). 
+Interakcja z programu inicjującego | Dostęp do danych konfiguracji rozruchu za pośrednictwem konsoli szeregowej. Przejdź do [włączanie menu rozruchu do wyświetlenia w konsoli szeregowej](#enabling-boot-menu-to-show-in-the-serial-console) na rozpoczęcie pracy. 
+
 ## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Przy użyciu konsoli szeregowej dla NMI wywołuje na maszynach wirtualnych Windows
 Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które są zawieszone.
 
@@ -158,6 +167,14 @@ Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej plat
 
 Aby uzyskać informacje na temat konfigurowania Windows do utworzenia zrzutu awaryjnego, gdy odbierze NMI, zobacz: [sposób generowania pliku zrzutu awaryjnego pełną lub pliku zrzutu awaryjnego jądra za pomocą NMI na komputerze z systemem Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
+## <a name="accessibility"></a>Ułatwienia dostępu
+Dostępność jest kluczowym dla konsoli szeregowej platformy Azure. W tym celu firma Microsoft ma zapewnić, że konsoli szeregowej jest dostępny dla osób z wizualizacji i osoby niedosłyszące oraz osoby, które mogą okazać się niemożliwe przy użyciu myszy.
+
+### <a name="keyboard-navigation"></a>Nawigowanie przy użyciu klawiatury
+Użyj `tab` kluczowe na klawiaturze, aby nawigować interfejsu konsoli szeregowej, w portalu Azure. Twoja lokalizacja zostanie wyróżniony na ekranie. Aby opuścić fokus bloku konsoli szeregowej, naciśnij klawisz `Ctrl + F6` na klawiaturze.
+
+### <a name="use-serial-console-with-a-screen-reader"></a>Użyj konsoli szeregowej przy użyciu czytnika zawartości ekranu
+Konsola szeregowa ma wbudowaną obsługę czytników zawartości ekranu. Przemieszczać się przy użyciu czytnika zawartości ekranu włączone umożliwi tekst alternatywny dla aktualnie wybranego przycisku zostanie odczytany na głos przez czytnik zawartości ekranu.
 
 ## <a name="errors"></a>Błędy
 Większość błędów są przejściowe w rodzaju i ponawianie próby adres połączenia tych. W poniższej tabeli przedstawiono listę błędy i środki zaradcze

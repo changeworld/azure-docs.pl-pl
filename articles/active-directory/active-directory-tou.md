@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0171cd3e3a39d1fe70e7c97b618d854857a1c376
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125046"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695527"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -223,7 +223,7 @@ Odp.: obecnie nie można zaktualizować istniejący dokument z warunkami użytko
 Odp.: plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
 
 **Pyt. Czy warunki użytkowania obsługują wiele języków?**</br>
-Odp. Tak.  Obecnie istnieje 18 różnych języków, które administrator może skonfigurować na potrzeby pojedynczych warunków użytkowania. 
+Odp. Tak. Aktualnie nie istnieją ponad 100 różnych języków, administrator może skonfigurować dla pojedynczego warunki użytkowania.
 
 **Pyt. Kiedy są wyzwalane warunki użytkowania?**</br>
 Odp. Warunki użytkowania są wyzwalane podczas logowania.

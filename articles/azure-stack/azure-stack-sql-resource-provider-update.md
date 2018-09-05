@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie dostawcy zasobów usługi Azure SQL stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej, aktualizowania dostawcy zasobów usługi Azure SQL stosu.
+title: Aktualizowanie dostawcy zasobów usługi Azure Stack SQL | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można zaktualizować dostawcy zasobów usługi Azure Stack SQL.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,48 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: ac5073d1abc32b7598a869750f9c5a801559e9e6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 017ac3214046b812ce003ab7a190f2f2b3f4f2e2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264081"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697945"
 ---
-# <a name="update-the-sql-resource-provider"></a>Aktualizuj dostawcę zasobów SQL
+# <a name="update-the-sql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych SQL
 
-*Dotyczy: Azure stosu zintegrowanych systemów.*
+*Dotyczy: zintegrowane systemy usługi Azure Stack.*
 
-Nowego dostawcę zasobów programu SQL może być zwolnione po zaktualizowaniu stosu Azure do nowej kompilacji. Mimo że istniejącej karty w dalszym ciągu działać, zaleca się jak najszybciej aktualizacja do nowszej kompilacji.
+Nowego dostawcę zasobów programu SQL może być zwalniany, gdy usługi Azure Stack został zaktualizowany do nowej kompilacji. Mimo że istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe.
 
 >[!IMPORTANT]
->Należy zainstalować aktualizacji w kolejności, w których są one wydane. Nie można pominąć wersji. Można znaleźć na liście wersji w [dostawcy zasobów wymagania wstępne dotyczące wdrażania](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+>Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="overview"></a>Przegląd
 
-Aby zaktualizować dostawcy zasobów, użyj *UpdateSQLProvider.ps1* skryptu. Ten skrypt jest dołączona do pakietu instalacyjnego nowego dostawcę zasobów SQL. Proces aktualizacji jest podobny do procesu używane do [wdrażanie dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md). Skrypt aktualizacji używa te same argumenty co skrypt DeploySqlProvider.ps1 i musisz podać informacje o certyfikacie.
+Aby zaktualizować dostawcy zasobów, użyj *UpdateSQLProvider.ps1* skryptu. Ten skrypt jest dołączona do pakietu instalacyjnego nowego dostawcy zasobu języka SQL. Proces aktualizacji jest podobny do procesu umożliwiającego [wdrażanie dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md). Skrypt aktualizacji zawiera te same argumenty co skrypt DeploySqlProvider.ps1 i musisz podać informacje o certyfikacie.
 
-### <a name="update-script-processes"></a>Procesy skryptu aktualizacji
+### <a name="update-script-processes"></a>Zaktualizuj skrypt procesów
 
-*UpdateSQLProvider.ps1* skrypt tworzy nową maszynę wirtualną (VM) z kodem najnowsze dostawcy zasobów.
+*UpdateSQLProvider.ps1* skrypt umożliwia utworzenie nowej maszyny wirtualnej (VM) z najnowszym kodem dostawcy zasobów.
 
 >[!NOTE]
->Zalecamy pobranie najnowszych obrazu systemu Windows Server 2016 Core z witryny Marketplace zarządzania. Jeśli musisz zainstalować aktualizację, możesz umieścić **pojedynczego** MSU pakietu w ścieżce lokalnej zależności. Skrypt zakończy się niepowodzeniem, jeśli istnieje więcej niż jeden plik MSU w tej lokalizacji.
+>Firma Microsoft zaleca, Pobierz najnowszego obrazu systemu Windows Server 2016 Core z zarządzania przy użyciu portalu Marketplace. Jeśli musisz zainstalować aktualizację, możesz umieścić **pojedynczego** MSU pakietu w ścieżce lokalnej zależności. Skrypt zakończy się niepowodzeniem, jeśli istnieje więcej niż jeden plik MSU w tej lokalizacji.
 
-Po *UpdateSQLProvider.ps1* skrypt tworzy nową maszynę Wirtualną, skrypt migruje starego dostawcy maszyny Wirtualnej następujące ustawienia:
+Po *UpdateSQLProvider.ps1* skrypt umożliwia utworzenie nowej maszyny Wirtualnej, skrypt u starego dostawcy usług maszyny Wirtualnej jest migrowana następujące ustawienia:
 
-* Informacje o bazie danych
+* informacje o bazie danych
 * informacje o serwerze hostingu
-* wymagane rekord DNS
+* wymagane rekordu DNS
 
-### <a name="update-script-powershell-example"></a>Zaktualizuj przykładowy skrypt programu PowerShell
+### <a name="update-script-powershell-example"></a>Zaktualizuj skrypt przykładowy programu PowerShell
 
-Możesz edytować i uruchom następujący skrypt z podwyższonym poziomem uprawnień PowerShell ISE. Pamiętaj, aby zmienić informacje o koncie i hasła, zgodnie z wymaganiami środowiska.
+Można edytować i uruchom następujący skrypt z podwyższonym poziomem uprawnień ISE programu PowerShell. Pamiętaj, aby zmienić informacje o koncie i hasła, zgodnie z potrzebami w danym środowisku.
 
 > [!NOTE]
-> Ten proces aktualizacji ma zastosowanie tylko do stosu Azure zintegrowanych systemów.
+> Ten proces aktualizacji dotyczy tylko systemów zintegrowanych w usłudze Azure Stack.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module and set the profile.
@@ -97,21 +97,22 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 ## <a name="updatesqlproviderps1-parameters"></a>Parametry UpdateSQLProvider.ps1
 
-Po uruchomieniu skryptu można określić następujące parametry wiersza polecenia. Jeśli nie istnieje lub wszystkich parametrów sprawdzania poprawności zakończy się niepowodzeniem, zostanie wyświetlony monit o zapewnić wymagane parametry.
+Po uruchomieniu skryptu można określić następujące parametry, z poziomu wiersza polecenia. Jeśli nie istnieje lub dowolnym Walidacja parametru nie powiedzie się, zostanie wyświetlony monit zapewnić wymagane parametry.
 
-| Nazwa parametru | Opis | Wartość domyślna lub komentarz |
+| Nazwa parametru | Opis | Komentarz lub wartość domyślną |
 | --- | --- | --- |
-| **CloudAdminCredential** | Poświadczenia dla administratora chmury niezbędne do uzyskiwania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ |
-| **AzCredential** | Poświadczenia dla konta administratora usługi Azure stosu. Użyj tych samych poświadczeń, które używane do wdrożenia usługi Azure stosu. | _Wymagane_ |
-| **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów SQL maszyny Wirtualnej. | _Wymagane_ |
+| **CloudAdminCredential** | Poświadczenia dla administratora chmury, niezbędne do uzyskania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ |
+| **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
+| **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ |
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
-| **DependencyFilesLocalPath** | Możesz również umieścić plik .pfx certyfikatu w tym katalogu. | _Opcjonalne dla jednego węzła, ale obowiązkowe dla wieloma węzłami._ |
+| **AzureEnvironment** | Środowiska platformy azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko, jeśli nie jest usług AD FS. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure Active Directory, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | Możesz również umieścić plik PFX certyfikatu w tym katalogu. | _Opcjonalnie na potrzeby jednego węzła, lecz obowiązkowa w przypadku wielu węzłów_ |
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
-| **MaxRetryCount** | Ile razy chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
+| **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
 | **RetryDuration** |Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 |
-| **Dezinstalacja** | Usuwa dostawcy zasobów i wszystkie powiązane zasoby. | Nie |
-| **DebugMode** | Uniemożliwia automatyczne czyszczenie w przypadku awarii. | Nie |
+| **Dezinstalacja** | Usuwa dostawcę zasobów i wszystkie powiązane zasoby. | Nie |
+| **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Obsługa dostawcy zasobów SQL](azure-stack-sql-resource-provider-maintain.md)
+[Obsługa dostawcy zasobów bazy danych SQL](azure-stack-sql-resource-provider-maintain.md)

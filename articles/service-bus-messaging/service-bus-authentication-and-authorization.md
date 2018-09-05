@@ -1,9 +1,9 @@
 ---
-title: Azure Service Bus uwierzytelniania i autoryzacji | Dokumentacja firmy Microsoft
-description: Uwierzytelnianie aplikacji do usługi Service Bus za pomocą uwierzytelniania dostępu do sygnatury dostępu Współdzielonego.
+title: Usługa Azure Service Bus uwierzytelnianie i autoryzacja | Dokumentacja firmy Microsoft
+description: Uwierzytelnianie aplikacji do usługi Service Bus przy użyciu uwierzytelniania sygnatury dostępu współdzielonego (SAS).
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
@@ -13,46 +13,46 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
-ms.author: sethm
-ms.openlocfilehash: b8b5887f2003dd793ae7a50f066b893f685002a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: spelluru
+ms.openlocfilehash: e98d980747edfb9987430a635ff3118cdd455828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24813933"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702327"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Uwierzytelnianie i autoryzacja w usłudze Service Bus
 
-Aplikacje uzyskują dostęp do zasobów usługi Azure Service Bus przy użyciu uwierzytelniania tokenu dostępu sygnatury dostępu Współdzielonego. Z sygnatury dostępu Współdzielonego, aplikacje stanowią token do usługi Service Bus, który został podpisany z klucza symetrycznego znane zarówno do wystawcy tokenów i usługi Service Bus (stąd "shared") i tego klucza jest bezpośrednio skojarzony z regułą określonych praw dostępu, takich jak uprawnienia do udzielania odbieranie nasłuchiwania lub wysyłać wiadomości. Zasady sygnatury dostępu Współdzielonego są skonfigurowane albo w przestrzeni nazw lub bezpośrednio na jednostkach, takich jak kolejka lub temat, co pozwala na kontrolę dostępu szczegółowe.
+Aplikacje uzyskują dostęp do zasobów usługi Azure Service Bus przy użyciu uwierzytelniania tokenu sygnatury dostępu współdzielonego (SAS). Za pomocą sygnatury dostępu Współdzielonego, aplikacje obecne token do usługi Service Bus, który został podpisany za pomocą klucza symetrycznego znane zarówno do wystawcy tokenów i Service Bus (dlatego "udostępnione") i ten klucz jest bezpośrednio skojarzone z regułą określone prawa dostępu, takich jak uprawnienia do udzielania odbieranie nasłuchiwania lub wysyłać wiadomości. Zasady sygnatury dostępu Współdzielonego to albo skonfigurowany w przestrzeni nazw lub bezpośrednio na jednostki, takie jak kolejki lub tematu, co umożliwia kontrolę dostępu szczegółowe.
 
-Tokeny sygnatury dostępu Współdzielonego może zostać wygenerowany przez klienta usługi Service Bus bezpośrednio, lub mogą być generowane przez niektóre pośredniego token wystawianie punktu końcowego, z którym klient prowadzi interakcję. Na przykład system może wymagać klienta do wywołania usługi Active Directory autoryzacji chronione w sieci web usługi punktu końcowego tokenu potwierdzenia tożsamości i prawa dostępu do systemu i usługi sieci web, a następnie zwraca odpowiednie usługi Service Bus. Ten token sygnatury dostępu Współdzielonego można łatwo wygenerować za pomocą dostawcy tokenu usługi Service Bus dołączony do zestawu SDK platformy Azure. 
+Tokeny sygnatur dostępu Współdzielonego wygenerowany przez klienta usługi Service Bus bezpośrednio lub mogą być generowane przez niektóre pośrednich token wystawianie punktu końcowego, z którym klient wchodzi w interakcję. Na przykład system może wymagać klienta do wywołania usługi Active Directory chronionych w sieci web usługi punkt końcowy autoryzacji aby potwierdzić swoją tożsamość i prawa dostępu do systemu, a usługi sieci web, a następnie zwraca odpowiednie usługi Service Bus tokenu. Ten token sygnatury dostępu Współdzielonego można łatwo generować za pomocą dostawcy tokenu usługi Service Bus, dołączony do zestawu SDK platformy Azure. 
 
 > [!IMPORTANT]
-> Jeśli używasz usługi Azure Active Directory kontroli dostępu (znanej także jako usługa kontroli dostępu lub ACS) z usługą Service Bus, należy pamiętać, że do obsługi tej metody teraz ograniczona i możesz zmigrować aplikacji umożliwiająca użycie sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji, zobacz [ten wpis w blogu](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) i [w tym artykule](service-bus-migrate-acs-sas.md).
+> Jeśli używasz usługi Azure Active Directory Access Control (znany także jako usługa Access Control Service lub usługi ACS) usługi Service Bus, należy pamiętać, że obsługa ta metoda teraz ograniczone i należy zmigrować aplikacja korzysta z sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji, zobacz [ten wpis w blogu](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) i [w tym artykule](service-bus-migrate-acs-sas.md).
 
 ## <a name="shared-access-signature-authentication"></a>Uwierzytelniania sygnatury dostępu współużytkowanego
 
-[Uwierzytelniania sygnatury dostępu Współdzielonego](service-bus-sas.md) umożliwia udzielić użytkownikowi dostępu do zasobów usługi Service Bus, przy użyciu określonych praw. Skojarzenia zabezpieczeń uwierzytelniania w usłudze Service Bus obejmuje konfigurację klucza kryptograficznego ze skojarzonymi prawami do zasobu usługi Service Bus. Klienci mogą następnie uzyskać dostęp do tego zasobu z uwzględnieniem tokenu sygnatury dostępu Współdzielonego, który składa się z identyfikatora URI uzyskują dostęp do zasobu i wygaśnięcia podpisana za pomocą skonfigurowanego klucza.
+[Uwierzytelniania sygnatury dostępu Współdzielonego](service-bus-sas.md) umożliwia udzielenie użytkownikom dostępu do zasobów usługi Service Bus, przy użyciu określonych praw. Uwierzytelniania sygnatury dostępu Współdzielonego w usłudze Service Bus obejmuje konfigurację klucza kryptograficznego ze skojarzonymi prawami do zasobu usługi Service Bus. Klienci mogą zatem uzyskiwać dostęp do tego zasobu, prezentując tokenu sygnatury dostępu Współdzielonego, który składa się z identyfikatora URI, dostęp do zasobu i wygaśnięcia podpisany przy użyciu skonfigurowanego klucza.
 
-Na przestrzeni nazw usługi Service Bus, można skonfigurować klucze dla skojarzeń zabezpieczeń. Klucz ma zastosowanie do wszystkich jednostek obsługi komunikatów w ramach tego obszaru nazw. Klucze można również skonfigurować na tematów i kolejek usługi Service Bus. Sygnatury dostępu Współdzielonego jest również obsługiwany na [przekazywania Azure](../service-bus-relay/relay-authentication-and-authorization.md).
+Klucze sygnatur dostępu współdzielonego można skonfigurować w przestrzeni nazw usługi Service Bus. Klucz ma zastosowanie do wszystkich jednostek obsługi komunikatów w ramach tej przestrzeni nazw. Klucze można również skonfigurować na tematów i kolejek usługi Service Bus. Sygnatury dostępu Współdzielonego jest również obsługiwana na [usługi Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md).
 
-Aby użyć sygnatury dostępu Współdzielonego, można skonfigurować [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) obiektu w przestrzeni nazw, kolejka lub temat. Ta reguła zawiera następujące elementy:
+Aby korzystać z sygnatury dostępu Współdzielonego, można skonfigurować [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) obiektu w przestrzeni nazw, kolejki lub tematu. Ta reguła zawiera następujące elementy:
 
-* *KeyName*: identyfikuje reguły.
-* *PrimaryKey*: klucz kryptograficzny używany do logowania/sprawdzania poprawności tokeny sygnatury dostępu Współdzielonego.
-* *Klucz pomocniczy*: klucz kryptograficzny używany do logowania/sprawdzania poprawności tokeny sygnatury dostępu Współdzielonego.
-* *Prawa*: reprezentuje kolekcję **nasłuchiwania**, **wysyłania**, lub **Zarządzaj** przyznano prawa.
+* *Nazwa klucza*: określa reguły.
+* *PrimaryKey*: klucz kryptograficzny używany do logowania i weryfikacji tokenów sygnatur dostępu Współdzielonego.
+* *Klucz pomocniczy*: klucz kryptograficzny używany do logowania i weryfikacji tokenów sygnatur dostępu Współdzielonego.
+* *Prawa*: reprezentuje kolekcję **nasłuchiwania**, **wysyłania**, lub **Zarządzaj** prawa.
 
-Reguły autoryzacji skonfigurowana na poziomie przestrzeni nazw mogą udzielać dostępu do wszystkich jednostek w przestrzeni nazw dla klientów z tokenami podpisany przy użyciu odpowiedniego klucza. Można skonfigurować maksymalnie 12 takie zasady autoryzacji na przestrzeni nazw usługi Service Bus, kolejka lub temat. Domyślnie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z dowolnymi prawami jest konfigurowana dla każdej przestrzeni nazw podczas najpierw zostanie zainicjowana.
+Reguły autoryzacji konfigurowane na poziomie przestrzeni nazw można przyznać dostęp do wszystkich jednostek w przestrzeni nazw dla klientów z tokenami podpisany przy użyciu odpowiedniego klucza. Można skonfigurować maksymalnie 12 takie zasady autoryzacji w przestrzeni nazw, kolejki lub tematu usługi Service Bus. Domyślnie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z wszelkie prawa, które jest konfigurowana dla każdej przestrzeni nazw podczas najpierw jest zainicjowany.
 
-Aby uzyskać dostęp do jednostki, klient wymaga tokenu sygnatury dostępu Współdzielonego wygenerowanych przy użyciu określonego [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Tokenu sygnatury dostępu Współdzielonego jest generowany przy użyciu HMAC SHA256 do ciągu zasobu, która składa się z identyfikatora URI zasobu, do którego dostęp jest określona i wygaśnięcia za pomocą klucza kryptograficznego skojarzonych z regułą autoryzacji.
+Aby uzyskać dostęp do jednostki, klient wymaga tokenu sygnatury dostępu Współdzielonego, wygenerowane za pomocą określonego [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Token sygnatury dostępu Współdzielonego jest generowana z użyciem HMAC-funkcję skrótu SHA256 o ciągu zasobu, który składa się z identyfikatora URI zasobu, do której dostęp jest zgłoszone i utraty ważności za pomocą klucza kryptograficznego skojarzony z regułą autoryzacji.
 
-Obsługę uwierzytelniania sygnatury dostępu Współdzielonego dla usługi Service Bus jest częścią zestawu Azure .NET SDK w wersji 2.0 lub nowszej. Sygnatury dostępu Współdzielonego zapewnia obsługę [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Wszystkich interfejsów API, które przyjmują ciąg połączenia jako parametr obsługują parametry połączenia SAS.
+Obsługa uwierzytelniania sygnatury dostępu Współdzielonego dla usługi Service Bus jest dostępna w przypadku zestawu Azure .NET SDK w wersji 2.0 lub nowszej. Sygnatury dostępu Współdzielonego obejmuje obsługę [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Wszystkie interfejsy API, które akceptują parametry połączenia jako parametru obejmują obsługę parametrów połączenia sygnatury dostępu Współdzielonego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Materiały [uwierzytelniania usługi Service Bus za pomocą sygnatury dostępu współdzielonego](service-bus-sas.md) Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego.
-- Jak [migrację z usługi Azure Active Directory kontroli dostępu (ACS) do autoryzacji sygnatura dostępu współdzielonego](service-bus-migrate-acs-sas.md).
-- [Zmiany Aby włączyć usługi ACS przestrzenie nazw](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
-- Dla odpowiednich informacji na temat przekaźnika usługi Azure uwierzytelniania i autoryzacji, zobacz [Azure przekazywania uwierzytelniania i autoryzacji](../service-bus-relay/relay-authentication-and-authorization.md). 
+- Czytaj dalej [uwierzytelniania usługi Service Bus za pomocą sygnatur dostępu współdzielonego](service-bus-sas.md) Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego.
+- Jak [migracji z usługi Azure Active Directory Access Control (ACS) do autoryzacji sygnatura dostępu współdzielonego](service-bus-migrate-acs-sas.md).
+- [Zmiany można włączyć usługi ACS przestrzenie nazw](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+- Dla odpowiednich informacji na temat usługi Azure Relay uwierzytelniania i autoryzacji, zobacz [usługi Azure Relay uwierzytelnianie i autoryzacja](../service-bus-relay/relay-authentication-and-authorization.md). 
 

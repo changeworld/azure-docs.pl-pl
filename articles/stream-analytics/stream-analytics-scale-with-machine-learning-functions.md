@@ -1,6 +1,6 @@
 ---
-title: Skalowanie funkcji uczenia maszynowego w usłudze Azure Stream Analytics
-description: W tym artykule opisano sposób skalowania zadania usługi analiza strumienia, korzystających z funkcji Machine Learning, konfigurując jednostki partycjonowania i strumienia.
+title: Skalowanie funkcji usługi Machine Learning w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób skalować zadania usługi Stream Analytics, korzystających z funkcji usługi Machine Learning, konfigurując jednostki partycjonowania i strumienia.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,42 +9,42 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 115273086eeb88064c4b179f67d2d400d9f84692
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30909279"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696102"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalowanie zadania usługi analiza strumienia z funkcjami usługi Azure Machine Learning
-Jest wprost do przodu do ustawiania zadania usługi analiza strumienia i uruchamiania przykładowych danych przy jego użyciu. Co możemy zrobić, gdy będzie trzeba przeprowadzić to samo zadanie z większą ilość danych? Wymaga to nam zrozumieć, jak skonfigurować zadanie usługi Stream Analytics, aby go skaluje. W tym dokumencie możemy skupić się na specjalne aspektów skalowanie zadania usługi analiza strumienia z funkcjami usługi Machine Learning. Aby uzyskać informacje dotyczące skalowania zadania usługi analiza strumienia ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadania](stream-analytics-scale-jobs.md).
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning
+Jest bardzo proste zadanie usługi Stream Analytics i wykonaj przykładowe dane. Co możemy zrobić, jeśli zaistnieje taka potrzeba uruchomić to samo zadanie z większą ilość danych? Wymaga to nam dowiedzieć się, jak skonfigurować zadanie usługi Stream Analytics, dzięki czemu zostanie przeprowadzone skalowanie. W tym dokumencie skupimy się na specjalne aspektów skalowanie zadań usługi Stream Analytics przy użyciu funkcji usługi Machine Learning. Aby uzyskać informacje dotyczące skalowanie zadań usługi Stream Analytics ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadań](stream-analytics-scale-jobs.md).
 
-## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co to jest funkcja uczenie maszynowe Azure w Stream Analytics?
-Funkcja uczenia maszynowego w Stream Analytics może służyć jak wywołanie funkcji regularne w języku zapytań usługi Stream Analytics. Za sceny, wywołania funkcji są faktycznie Usługa sieci Web systemu Azure Machine Learning żądania. Usługi sieci web usługi Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, nazywanego w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepustowość minimalna partii. Zobacz następujące artykuły, aby uzyskać więcej informacji; [Funkcji uczenia maszynowego azure Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) i [usługi sieci Web systemu Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
+## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co to jest funkcja usługi Azure Machine Learning w usłudze Stream Analytics?
+Funkcji usługi Machine Learning, w usłudze Stream Analytics mogą być używane jak regularnym wywołaniu funkcji w języku zapytań usługi Stream Analytics. Za sceną, wywołania funkcji są faktycznie żądania usługi sieci Web Azure Machine Learning. Usługi sieci web Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, które jest wywoływane mini partii, w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepływność. Aby uzyskać więcej informacji, zobacz [funkcje usługi Azure Machine Learning w usłudze Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) i [usług sieci Web Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
 
-## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Skonfiguruj zadania usługi analiza strumienia z funkcjami uczenia maszynowego
-Podczas konfigurowania funkcji Machine Learning zadania usługi analiza strumienia, istnieją dwa parametry wziąć pod uwagę, wielkość partii wywołania funkcji uczenia maszynowego i jednostki przesyłania strumieniowego (SUs) udostępniane zadania usługi analiza strumienia. Aby określić odpowiednie wartości dla nich, najpierw należy podjąć decyzję między opóźnienia i przepływności, oznacza to, opóźnienie zadanie usługi Stream Analytics, a przepustowość każdej SU. SUs zawsze można dodać do zadania w celu zwiększenia przepływności również podzielone na partycje zapytań usługi Stream Analytics, mimo że dodatkowe SUs wzrost kosztów wykonywania zadania.
+## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurowanie zadania usługi Stream Analytics przy użyciu funkcji usługi Machine Learning
+Podczas konfigurowania funkcji usługi Machine Learning, zadania usługi Stream Analytics, istnieją dwa parametry należy wziąć pod uwagę, rozmiaru partii wywołania funkcji usługi Machine Learning i jednostek przesyłania strumieniowego (SUs) aprowizowaną dla zadania usługi Stream Analytics. Aby określić odpowiednie wartości dla tych, najpierw należy podjąć decyzję między opóźnienia i przepływności, oznacza to, czas oczekiwania na zadanie usługi Stream Analytics i przepływności każdy jednostka SU. SUs zawsze mogą być dodawane do zadania w celu zwiększenia przepływności również podzielone na partycje zapytań usługi Stream Analytics, mimo że dodatkowe SUs zwiększyć koszt uruchamiania zadania.
 
-Dlatego jest ważne jest określenie *tolerancji* opóźnienia w uruchomienia zadania usługi analiza strumienia. Rozmiar partii, co oznacza czas oczekiwania w zadaniu Stream Analytics naturalnie zwiększy się opóźnienie dodatkowych z żądaniami obsługi usługi Azure Machine Learning uruchomiony. Z drugiej strony, zwiększyć rozmiar partii umożliwia zadania usługi analiza strumienia do przetworzenia * więcej zdarzeń o *tego samego numeru* z usługi Machine Learning web żądania obsługi. Często wzrost opóźnienia usługi sieci web uczenie maszynowe jest sublinear do zwiększenia rozmiaru partii, dlatego należy wziąć pod uwagę najbardziej ekonomiczne rozmiar wsadu dla usługi sieci web uczenie maszynowe w danej sytuacji. Domyślny rozmiar wsadu dla usługi sieci web żądań wynosi 1000, a można modyfikować przy użyciu [interfejsu API REST usługi analiza strumienia](https://msdn.microsoft.com/library/mt653706.aspx "interfejsu API REST usługi analiza strumienia") lub [klienta programu PowerShell dla strumienia Analiza](stream-analytics-monitor-and-manage-jobs-use-powershell.md "klienta programu PowerShell dla usługi Stream Analytics").
+W związku z tym jest ważne określić *tolerancji* opóźnienia w uruchamianiu zadania usługi Stream Analytics. Naturalnie zwiększy się dodatkowe opóźnienie z uruchomionych żądań usługi Azure Machine Learning o rozmiarze usługi batch, co oznacza czas oczekiwania na zadanie usługi Stream Analytics. Z drugiej strony, zadanie usługi Stream Analytics, aby przetworzyć umożliwia zwiększenie rozmiaru partii * więcej zdarzeń za pomocą *ten sam numer* usługi Machine Learning web żądania obsługi. Zwiększenie opóźnienia usługi sieci web Machine Learning jest często sublinear wzrost o rozmiar partii, więc warto wziąć pod uwagę najbardziej efektywny kosztowo sposób rozmiar partii usługi sieci web Machine Learning w dowolnej sytuacji. Domyślny rozmiar wsadu dla usługi sieci web żądań to 1000, a następnie można zmodyfikować za pomocą [interfejsu API REST usługi Stream Analytics](https://msdn.microsoft.com/library/mt653706.aspx "interfejsu API REST usługi Stream Analytics") lub [klienta programu PowerShell dla Stream Analiza](stream-analytics-monitor-and-manage-jobs-use-powershell.md "klienta programu PowerShell dla usługi Stream Analytics").
 
-Po określeniu rozmiar partii liczbę przesyłania strumieniowego jednostki (SUs) jest to możliwe, na podstawie liczby zdarzeń, które funkcja musi procesów na sekundę. Aby uzyskać więcej informacji na temat jednostek przesyłania strumieniowego, zobacz [Stream Analytics skalowanie zadania](stream-analytics-scale-jobs.md).
+Po określeniu rozmiar partii liczbę przesyłania strumieniowego jednostki (SUs) jest to możliwe, na podstawie liczby zdarzeń, które funkcja musi procesu na sekundę. Aby uzyskać więcej informacji na temat jednostek przesyłania strumieniowego, zobacz [usługi Stream Analytics skalować zadania](stream-analytics-scale-jobs.md).
 
-Ogólnie rzecz biorąc są 20 równoczesnych połączeń z usługą sieci web uczenie maszynowe dla każdego 6 SUs z tą różnicą, że zadania SU 1 i 3 zadania SU pobrać 20 równoczesnych połączeń również.  Jeśli szybkość danych wejściowych jest 200 000 zdarzeń na sekundę i rozmiar partii pozostawiono domyślne 1000 wynikowy opóźnienia usługi sieci web z 1000 zdarzeń mini partii jest 200 ms. Oznacza to, że każdy połączenia mogą wysyłać żądania pięć z usługą sieci web Machine Learning na sekundę. W przypadku połączeń 20 zadania usługi analiza strumienia może przetwarzać 20 000 zdarzeń w 200 ms i w związku z tym 100 000 zdarzeń na sekundę. Tak aby przetwarzać 200 000 zdarzeń na sekundę, zadanie usługi analiza strumienia musi 40 równoczesnych połączeń, które do 12 SUs. Na poniższym diagramie przedstawiono żądania zadania usługi analiza strumienia z punktem końcowym usługi sieci web uczenie maszynowe — co 6 SUs ma 20 równoczesnych połączeń usługi sieci web uczenie maszynowe max.
+Ogólnie rzecz biorąc są 20 równoczesnych połączeń z usługą sieci web Machine Learning dla każdego 6 SUs z tą różnicą, że 1 zadania SU i 3 zadania SU uzyskać 20 równoczesnych połączeń również.  Na przykład jeśli współczynnik danych wejściowych wynosi 200 000 zdarzeń na sekundę, a rozmiar partii pozostanie domyślnie 1000 wynikłe opóźnienie usługi sieci web z usługą batch mini zdarzenia 1000 jest 200 ms. Oznacza to, że każde połączenie ułatwia pięciu żądań do usługi sieci web Machine Learning na sekundę. Przy użyciu 20 połączeń zadania usługi Stream Analytics może przetwarzać 20 000 zdarzeń w 200 ms i w związku z tym 100 000 zdarzeń na sekundę. Dlatego na potrzeby przetwarzania 200 000 zdarzeń na sekundę, zadanie usługi Stream Analytics musi 40 współbieżnych połączeń, które są oferowane do 12 SUs. Na poniższym diagramie przedstawiono żądania z zadania usługi Stream Analytics z punktem końcowym usługi sieci web Machine Learning — co 6 SUs ma 20 równoczesnych połączeń do usługi sieci web Machine Learning w max.
 
-![Skalowanie usługi Stream Analytics przykładu dwa zadania Machine Learning funkcji](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "skali Stream Analytics, Machine Learning funkcje dwa zadania przykładu")
+![Skalowanie usługi Stream Analytics przy użyciu przykładu dwa zadania Machine Learning funkcje](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "skalowania Stream Analytics za pomocą przykład dwa zadania Machine Learning funkcji")
 
-Ogólnie rzecz biorąc ***B*** dla rozmiaru partii ***L*** dla usługi sieci web opóźnienia na rozmiar partii B (w milisekundach), przepływności analiza strumienia zadania z ***N*** SUs jest:
+Ogólnie rzecz biorąc ***B*** rozmiaru partii ***L*** opóźnienia usługi sieci web na rozmiar partii B (w milisekundach), przepływności usługi Stream Analytics, zadania za pomocą ***N*** SUs jest:
 
-![Skalowanie usługi Stream Analytics formułą funkcji Machine Learning](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "skalowania usługi Stream Analytics formułą funkcji Machine Learning")
+![Stream Analytics z usługą Machine Learning funkcje formułę skalowania](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics z usługą Machine Learning funkcje formułę skalowania")
 
-Dodatkowego rozważenia może być "max równoczesnych wywołań" po stronie usługi sieci web uczenie maszynowe, zaleca się Ustaw tę opcję na wartość maksymalna (obecnie 200).
+Dodatkowe kwestia może być "max współbieżnych wywołań" po stronie usługi sieci web Machine Learning, zaleca się Ustaw tę opcję na wartość maksymalna (obecnie 200).
 
-Aby uzyskać więcej informacji na temat tego ustawienia Przejrzyj [artykułu skalowanie dla usługi sieci Web usługi Machine Learning](../machine-learning/studio/scaling-webservice.md).
+Aby uzyskać więcej informacji na temat tego ustawienia można znaleźć [artykułu skalowanie dla usługi sieci Web Machine Learning](../machine-learning/studio/scaling-webservice.md).
 
-## <a name="example--sentiment-analysis"></a>Przykład — analizy wskaźniki nastrojów klientów
-Poniższy przykład zawiera zadania usługi analiza strumienia z analizą wskaźniki nastrojów klientów funkcji Machine Learning, zgodnie z opisem w [samouczek integracji usługi Stream Analytics Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
+## <a name="example--sentiment-analysis"></a>Przykład — analiza tonacji
+Poniższy przykład zawiera zadania usługi Stream Analytics, za pomocą analizy opinii funkcji usługi Machine Learning, zgodnie z opisem w [samouczkiem integracji usługi Stream Analytics Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
-Zapytanie jest prostą pełni na partycje query następuje **wskaźniki nastrojów klientów** funkcji, jak pokazano poniżej:
+Zapytanie jest prosty w pełni na partycje zapytanie, a następnie **tonacji** funkcji, jak pokazano poniżej:
 
     WITH subquery AS (
         SELECT text, sentiment(text) as result from input
@@ -54,60 +54,60 @@ Zapytanie jest prostą pełni na partycje query następuje **wskaźniki nastroj�
     Into output
     From subquery
 
-Rozważmy poniższy scenariusz; o przepustowości 10 000 tweetów na sekundę zadanie usługi Stream Analytics należy utworzyć w celu przeprowadzania analizy wskaźniki nastrojów klientów tweetów (zdarzeń). Przy użyciu funkcji 1 SU, może to zadanie usługi Stream Analytics możliwe do obsługi ruchu? Przy użyciu domyślny rozmiar partii 1000 zadanie powinno być możliwe przeglądanie danych wejściowych. Dalsze funkcja dodana uczenia maszynowego powinna generować ma więcej niż 1 sekunda opóźnienia, czyli ogólne opóźnienie domyślne analizy wskaźniki nastrojów klientów usługi sieci web uczenie maszynowe (z domyślny rozmiar partii 1000). Zadanie Stream Analytics **ogólną** lub czas oczekiwania na trasie będzie zazwyczaj kilka sekund. Zapoznaj się z bardziej szczegółowe do tego zadania usługi analiza strumienia *szczególnie* wywołania funkcji Machine Learning. O rozmiar partii jako 1000, przepustowości 10 000 zdarzeń może potrwać około 10 żądań do usługi sieci web. Nawet w przypadku 1 SU Brak wystarczającej liczby równoczesnych połączeń obsłużyć ten ruch wejściowego.
+Rozważmy następujący scenariusz; przy przepływności 10 000 tweety na sekundę zadania usługi Stream Analytics należy utworzyć w celu przeprowadzania analizy tonacji tweetów (zdarzenia). Za pomocą polecenia SU 1, tego zadania usługi Stream Analytics, będzie mogła obsługiwać ruch? Korzystając z domyślnego rozmiaru partii 1000 zadanie powinno być możliwe na bieżąco z danymi wejściowymi. Dodatkowo dodano funkcji usługi Machine Learning będzie generował nie więcej niż 1 sekunda opóźnienia, czyli ogólnego domyślne opóźnienie analizy tonacji usługę internetową Machine Learning (domyślny rozmiar partii 1000). Zadanie usługi Stream Analytics **ogólną** lub opóźnienia end-to-end będzie zazwyczaj kilka sekund. Zapoznaj się z bardziej szczegółowe do tego zadania usługi Stream Analytics, *szczególnie* wywołania funkcji usługi Machine Learning. Rozmiar partii o 1000, przepływności 10 000 zdarzeń może zająć około 10 żądań do usługi sieci web. Nawet w przypadku 1 jednostka wyszukiwania Brak wystarczającej liczby jednoczesnych połączeń, aby uwzględnić ten ruch danych wejściowych.
 
-Ale co zrobić, jeśli występowania zdarzeń wejściowych zwiększa 100 x i zadania usługi analiza strumienia musi teraz przetworzyć 1 000 000 tweetów na sekundę? Dostępne są dwie opcje:
+Jeśli współczynnik zdarzeń wejściowych zwiększa się o 100 razy, zadanie usługi Stream Analytics musi przetwarzać 1 000 000 tweety na sekundę. Dostępne są dwie opcje w celu zwiększenia skali:
 
 1. Zwiększ rozmiar partii lub
-2. Strumień wejściowy do przetwarzania zdarzeń równolegle partycji
+2. Strumień wejściowy na potrzeby przetwarzania zdarzeń w sposób równoległy partycji
 
-Pierwsza opcja zadanie **opóźnienia** zwiększa.
+Pierwsza opcja zadania **opóźnienie** zwiększa się.
 
-Z drugiej opcji więcej SUs musi do obsługi administracyjnej i w związku z tym generowania więcej jednoczesnych żądań usług sieci web Machine Learning. Oznacza to, że zadanie **koszt** zwiększa.
+Z drugiej opcji więcej SUs należałoby do zainicjowania obsługi administracyjnej i w związku z tym generowania większą liczbę jednoczesnych żądań usług sieci web Machine Learning. Oznacza to, że zadanie **koszt** zwiększa się.
 
-Załóżmy, że opóźnienie analizy wskaźniki nastrojów klientów usługi sieci web uczenie maszynowe jest 200 ms dla partii zdarzeń 1000 lub poniżej 250 ms dla partii 5000 zdarzeń, 300 ms dla partii 10 000 zdarzeń lub 500 ms na partie 25 000 zdarzeń.
+Załóżmy, że opóźnienie analizę tonacji usługę internetową Machine Learning jest 200 ms dla partii zdarzeń 1000 lub poniżej 250 ms dla partii 5000 zdarzeń, 300 ms dla partii zdarzeń 10 000 lub 500 ms dla partii 25 000 zdarzeń.
 
-1. Przy użyciu opcji pierwszy (**nie** inicjowania obsługi administracyjnej SUs więcej), można zwiększyć rozmiar partii do **25 000**. To z kolei umożliwia zadania przetwarzania 1 000 000 zdarzeń o 20 równoczesnych połączeń z usługą sieci web uczenie maszynowe (z opóźnieniem 500 ms na wywołanie). Dlatego dodatkowe opóźnienia zadania usługi analiza strumienia z powodu żądania funkcji wskaźniki nastrojów klientów do żądania usługi sieci web uczenie maszynowe zostanie zwiększona z **200 ms** do **500 ms**. Jednakże rozmiar partii **nie** można zwiększyć nieograniczonej Machine Learning usług sieci web wymaga rozmiar ładunku żądania 4 MB lub mniejsze usługi sieci web żądania limitu czasu po 100 sekund operacji.
-2. Druga opcja, wielkość partii pozostawiono 1000, z opóźnieniem usługi sieci web 200 ms, co 20 równoczesnych połączeń z usługą sieci web będzie mogła zdarzeń procesu 1000 * 20 * 5 = 100 000 na sekundę. Tak aby przetwarzać 1 000 000 zdarzeń na sekundę, zadanie potrzebny 60 SUs. W porównaniu do pierwszej opcji zadanie usługi Stream Analytics spowodowałoby więcej żądania usługi sieci web usługi partia zadań, z kolei generowania zwiększenie kosztów.
+1. Przy użyciu pierwszej opcji (**nie** aprowizacji więcej SUs). Można zwiększyć rozmiar partii **25 000**. Z kolei pozwoliłoby to zadanie do przetworzenia 1 000 000 zdarzeń za pomocą 20 równoczesnych połączeń z usługą sieci web Machine Learning (z opóźnieniem równym 500 ms za wywołania). Dlatego dodatkowe opóźnienie zadania usługi Stream Analytics z powodu żądania funkcji wskaźniki nastrojów klientów dla żądania usługi sieci web Machine Learning zwiększyłoby się ze **200 ms** do **500 ms**. Jednak wielkość partii **nie** można zwiększyć, nieskończenie usługi Machine Learning w sieci web wymaga rozmiar ładunku żądania 4 MB lub mniejsze limit czasu żądania obsługi sieci web na 100 sekund działania.
+2. Druga opcja, rozmiar partii pozostanie ustawiony na 1000, przy opóźnieniu usługi sieci web 200 ms, co 20 równoczesnych połączeń z usługą sieci web będą mogli przesyłać zdarzenia procesu 1000 * 20 * 5 = 100 000 na sekundę. Dlatego na potrzeby przetwarzania 1 000 000 zdarzeń na sekundę, zadanie należałoby 60 SUs. W porównaniu do pierwszej opcji, zadanie usługi Stream Analytics czyniłyby więcej żądania usługi sieci web usługi batch, z kolei generowania zwiększenia kosztu.
 
-Poniżej znajduje się tabela dla zadania Stream Analytics przepustowość dla różnych SUs i rozmiary partii (w liczbie zdarzeń na sekundę).
+Poniżej znajduje się tabela przepływności zadania usługi Stream Analytics, dla różnych usług SUs i rozmiary usługi batch (w liczbie zdarzeń na sekundę).
 
-| rozmiar partii (ML opóźnienia) | 500 (200 ms) | 1000 (200 ms) | 5000 (250 ms) | 10 000 (300 ms) | 25 000 (500 ms) |
+| rozmiar partii (ML opóźnienie) | 500 (200 ms) | 1000 (200 ms) | 5000 (250 ms) | 10 000 (300 ms) | 25 000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUs** |5000 |10 000 |40,000 |60,000 |100,000 |
+| **12 SUs** |5000 |10 000 |40,000 |60,000 |100 000 |
 | **18 SUs** |7500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUs** |10 000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUs** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
-W razie ma już dobrą znajomość jak działają funkcje uczenia maszynowego w Stream Analytics. Prawdopodobnie również rozumiesz, że zadania usługi analiza strumienia "ściągania" danych ze źródeł danych i każdego "wypychania" zwraca partii zdarzenia dla zadania usługi analiza strumienia do przetworzenia. Jak wpływ model ściągania ten Machine Learning web żądania obsługi?
+W razie powinno mieć już dobrej znajomości sposobu działania funkcji usługi Machine Learning w usłudze Stream Analytics. Prawdopodobnie dodatkowo użytkownik rozumie, że zadania usługi Stream Analytics "pull" dane ze źródeł danych i każda "pull" zwraca partii zdarzeń dla zadania usługi Stream Analytics do przetworzenia. Jak wpływ modelu ściągania usługi Machine Learning internetowego żądań obsługi?
 
-Zwykle ustawione dla funkcji Machine Learning rozmiar partii nie będzie można dokładnie podzielna przez liczba zdarzeń zwróconych przez każde zadanie usługi analiza strumienia "ściągania". Gdy to występuje usługę sieci web uczenie maszynowe jest wywoływana z partii "częściowej". W tym celu nie nakładu dodatkowych zadań opóźnienia w zdarzeniach łączącego ściągania ściągania.
+Zwykle rozmiar partii, które możemy ustawić dla funkcji usługi Machine Learning nie będzie dokładnie podzielna przez liczbę zdarzeń, zwracany przez każde zadanie usługi Stream Analytics "pull". Gdy to występuje, usługę internetową Machine Learning jest wywoływana z partii "częściowej". W ten sposób nie pociągnąć za sobą dodatkowych zadań opóźnienie w zdarzeniach łączącego ściągnięcia ściągnięcia.
 
-## <a name="new-function-related-monitoring-metrics"></a>Nowe związanych z funkcji monitorowania metryki
-W obszarze monitora w zadaniu Stream Analytics zostały dodane trzy dodatkowe metryki dotyczące funkcji. Są one ŻĄDANIA funkcji, zdarzenia funkcji i ŻĄDANIA funkcji nie powiodło się, jak pokazano na poniższym rysunku.
+## <a name="new-function-related-monitoring-metrics"></a>Nowe metryki monitorowania dotyczące — funkcja
+W obszarze monitorowania zadań usługi Stream Analytics zostały dodane trzy dodatkowe metryki dotyczące funkcji. Są one ŻĄDANIA funkcji, zdarzenia funkcji i ŻĄDANIA funkcji nie powiodło się, jak pokazano na poniższym rysunku.
 
-![Skalowanie analizy strumienia w usłudze Machine Learning funkcje metryki](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "analizy strumienia w usłudze Machine Learning funkcje metryki skalowania")
+![Skalowanie Stream Analytics z usługą Machine Learning funkcji metryki](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "skalowanie Stream Analytics z usługą Machine Learning funkcji metryki")
 
 Są zdefiniowane w następujący sposób:
 
-**Funkcja ŻĄDANIA**: liczba żądań funkcji.
+**ŻĄDANIA funkcji**: liczba żądań funkcji.
 
-**ZDARZENIA funkcji**: liczba zdarzeń w żądaniach funkcji.
+**ZDARZENIA funkcji**: liczbę zdarzeń w żądaniach funkcji.
 
-**Liczba NIEUDANYCH ŻĄDAŃ funkcja**: liczba żądań funkcji zakończonych niepowodzeniem.
+**ŻĄDANIA funkcji zakończone NIEPOWODZENIEM**: liczba żądań zakończonych niepowodzeniem funkcji.
 
-## <a name="key-takeaways"></a>Takeaways klucza
-Podsumowując głównych punktów, aby skalować zadanie usługi Stream Analytics, Machine Learning funkcji, należy rozważyć następujące elementy:
+## <a name="key-takeaways"></a>Najważniejsze wnioski
+Aby podsumować główne punkty, aby można było skalować zadania usługi Stream Analytics, za pomocą funkcji usługi Machine Learning, należy rozważyć następujące elementy:
 
-1. Częstotliwość zdarzenia wejściowego
-2. Opóźnienie tolerowaną uruchomione zadanie usługi Stream Analytics (i w związku z tym rozmiar partii żądania usługi sieci web uczenie maszynowe)
-3. Udostępnione SUs analiza strumienia i liczba żądań usługi sieci web uczenie maszynowe (dodatkowych funkcji koszty związane z)
+1. Częstotliwość zdarzenia wejściowe
+2. Tolerowana opóźnienia dla uruchomionego zadania usługi Stream Analytics (i w związku z tym rozmiar partii żądań usług sieci web Machine Learning)
+3. Elastycznie Stream Analytics SUs i liczbę żądań usług sieci web Machine Learning (dodatkowych funkcji koszty związane z)
 
-Pełni partycjonowanej zapytań usługi Stream Analytics została użyta jako przykład. Jeśli potrzebna jest bardziej złożonego zapytania [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) jest doskonałą pomocą podczas pobierania uzyskać dodatkową pomoc od zespołu usługi Stream Analytics.
+W pełni podzielonym na partycje zapytań usługi Stream Analytics została użyta jako przykład. Jeśli potrzebne jest bardziej złożonego zapytania [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) jest doskonałym zasobem w celu uzyskania dodatkowej pomocy od zespołu usługi Stream Analytics.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat usługi Stream Analytics, zobacz:

@@ -1,9 +1,9 @@
 ---
-title: Ustawienia portów przekaźnika usługi Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje o wartości portu przekaźnika usługi Azure.
+title: Ustawienia portów w usłudze Azure Relay | Dokumentacja firmy Microsoft
+description: Szczegółowe informacje o wartości portów usługi Azure Relay.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 56688b6941d58c0ecc8d0ff4ba3c8a8392e71496
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: spelluru
+ms.openlocfilehash: 3ef08cfc94a029f97250578e9b0366a18770c809
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029377"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696746"
 ---
-# <a name="azure-relay-port-settings"></a>Ustawienia portów przekaźnika usługi Azure
+# <a name="azure-relay-port-settings"></a>Ustawienia portów w usłudze Azure Relay
 
-W poniższej tabeli opisano wymaganej konfiguracji dla wartości portu dla przekaźnika usługi Azure.
+W poniższej tabeli opisano wymaganej konfiguracji dla wartości portów dla usługi Azure Relay.
 
 ## <a name="hybrid-connections"></a>Połączenia hybrydowe
 
-Połączenia hybrydowe używa protokołu Websocket na porcie 443 przy użyciu protokołu SSL jako podstawowy mechanizm transportu, który używa **HTTPS** tylko. 
+Połączenia hybrydowe używa funkcji WebSockets na porcie 443 przy użyciu protokołu SSL jako podstawowy mechanizm transportu, która używa **HTTPS** tylko. 
 
 ## <a name="wcf-relays"></a>Przekaźniki WCF
   
@@ -39,7 +39,7 @@ Połączenia hybrydowe używa protokołu Websocket na porcie 443 przy użyciu pr
 |[Klasa NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (klient)|Yes|9351/HTTPS|  
 |" |Nie|9350/HTTP|  
 |[Klasa NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (usługa)|Albo|9351/HTTP|  
-|[Klasa NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klienta/usługa)|Albo|5671/9352/HTTP (9352/9353, jeśli przy użyciu hybrydowego)|  
+|[Klasa NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (usługa/klienta)|Albo|5671/9352/HTTP (9352/9353, jeśli za pomocą hybrydowych)|  
 |[Klasa NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (klient)|Yes|9351/HTTPS|  
 |" |Nie|9350/HTTP|  
 |[Klasa NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (usługa)|Albo|9351/HTTP|  
@@ -51,6 +51,6 @@ Połączenia hybrydowe używa protokołu Websocket na porcie 443 przy użyciu pr
 |[Klasa WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (usługa)|Albo|9351/HTTP|
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat przekaźnika usługi Azure, odwiedź te linki:
+Aby dowiedzieć się więcej na temat usługi Azure Relay, skorzystaj z następujących linków:
 * [Co to jest usługa Azure Relay?](relay-what-is-it.md)
 * [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)

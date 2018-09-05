@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 8bc04ba7c97447cdcc6eb07798e5f5b21e285de7
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0935867e835fe88568f1cdce1ea8dfcea14a451a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344713"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669319"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Zarządzanie serwerem konfiguracji dla maszyn wirtualnych VMware
 
@@ -88,6 +88,7 @@ Jeśli trzeba, można ponownie zarejestrować serwer konfiguracji, w tym samym m
           net stop obengine
           net start obengine
   ```
+  
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
 Możesz uruchamiać pakiety zbiorcze aktualizacji, aby zaktualizować serwer konfiguracji. Aktualizacje mogą być stosowane dla maksymalnie N-4 wersji. Na przykład:

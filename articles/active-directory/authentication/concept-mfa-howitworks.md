@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257855"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669011"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
 
@@ -39,11 +39,14 @@ Uwierzytelnianie Multi-Factor Authentication jest dostępna w ramach następują
 * **Uwierzytelnianie wieloskładnikowe dla usługi Office 365** — niektóre funkcje usługi Azure Multi-Factor Authentication są dostępne jako część Twojej subskrypcji. Aby uzyskać więcej informacji na temat usługi MFA dla usługi Office 365, zobacz artykuł [planowanie uwierzytelniania wieloskładnikowego dla pakietu Office 365 wdrożeń](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Azure Active Directory administratorzy globalni** — niektóre funkcje usługi Azure Multi-Factor Authentication są dostępne jako sposób na ochronę kont administratora globalnego.
 
+> [!NOTE]
+> Nowi klienci nie mogą kupować usługi Azure Multi-Factor Authentication jako autonomiczny oferty od 1 września 2018 r. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
+
 ### <a name="auth-provider-or-mfa-license"></a>Licencja dostawcy uwierzytelniania lub uwierzytelnianie wieloskładnikowe
 
-Jeśli masz usługi Azure AD Premium lub pakiet licencji, która obejmuje usługi Azure AD Premium, masz już usługę Azure MFA. Twoja organizacja nie musi nic więcej, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Musisz przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
+Jeśli masz usługi Azure AD Premium lub inny pakiet licencji, która obejmuje usługi Azure AD Premium, masz już usługę Azure MFA. Twoja organizacja nie musi nic więcej, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Musisz przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
 
-Jeśli nie masz licencji, które obejmują usługi Azure MFA lub nie masz wystarczającą liczbę licencji, aby obejmowały wszystkich użytkowników, możesz utworzyć [dostawcy usługi MFA](concept-mfa-authprovider.md) rozszerzenie pełnego zestawu funkcji uwierzytelniania Wieloskładnikowego dla użytkowników, którzy ich potrzebują. 
+Jeśli nie masz licencji, które obejmują usługi Azure MFA lub nie masz wystarczającą liczbę licencji, aby obejmowały wszystkich użytkowników, możesz utworzyć [dostawcy usługi MFA](concept-mfa-authprovider.md) rozszerzenie pełnego zestawu funkcji uwierzytelniania Wieloskładnikowego dla użytkowników, którzy ich potrzebują.
 
 > [!IMPORTANT]
 > Jeśli nie masz wystarczającą liczbę licencji dla wszystkich użytkowników, można utworzyć dostawcy usługi Multi-Factor Authentication na użytkownika, aby pokrywał pozostałej części organizacji. Nie należy tworzyć dostawcy usługi Multi-Factor Authentication na uwierzytelnienie. Jeśli to zrobisz, może wystąpić płacić za weryfikację żądań od użytkowników, które już masz licencje.

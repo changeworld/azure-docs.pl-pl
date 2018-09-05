@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528650"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665603"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdowanie i stosowanie zaleceń dotyczących wydajności
 
@@ -126,7 +126,7 @@ Stosowanie zalecenia nie może być realizowane natychmiast. Portal zawiera szcz
 |:--- |:--- |
 | Oczekujące |Stosowanie zalecenia polecenie zostało odebrane i jest zaplanowane do wykonania. |
 | Wykonywanie |Trwa stosowanie zalecenia. |
-| Weryfikowanie |Zalecenie zostało pomyślnie zastosowane i usługa jest mierzenie korzyści. |
+| Sprawdzanie poprawności |Zalecenie zostało pomyślnie zastosowane i usługa jest mierzenie korzyści. |
 | Powodzenie |Zalecenie zostało pomyślnie zastosowane i zostały zmierzone korzyści. |
 | Błąd |Wystąpił błąd w trakcie procesu stosowania zalecenia. Może to być przejściowy problem lub prawdopodobnie schematu zmiany do tabeli i skrypt nie jest już prawidłowy. |
 | Cofanie |Zalecenia zostały zastosowane, ale został uznany za wydajne niż i zostanie automatycznie przywrócona. |

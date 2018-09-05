@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 16d023a2f3abf0feb1f1c0478edb3de7a157d5a4
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 1f3a24cebe5061f7e3ca3897692b068531780431
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054358"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668125"
 ---
 # <a name="how-to-use-perfinsights"></a>Jak za pomocą programu PerfInsights
 
@@ -68,7 +68,7 @@ Ten scenariusz jest uruchamiany [narzędzia Diskspd](https://github.com/Microsof
 
 Ten scenariusz jest uruchamiany [licznika wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) śledzenia przy użyciu liczników, które są określone w pliku RuleEngineConfig.json. Jeśli maszyna wirtualna zostanie zidentyfikowana jako serwera, na którym działa program SQL Server, jest uruchamiana śledzenia licznika wydajności. Robi to przy użyciu liczników, które znajdują się w pliku RuleEngineConfig.json. Ten scenariusz obejmuje także dane dotyczące wydajności diagnostyki.
 
-### <a name="azure-files-analysis"></a>Analiza usługi Azure Files
+### <a name="azure-files-analysis"></a>Usługi Azure analysis plików
 
 Ten scenariusz jest uruchamiany przechwytywania wydajności specjalnych licznik wraz z śledzenia sieci. Przechwytywania zawiera wszystkie bloku komunikatów serwera (SMB) udziałów liczników klienta. Poniżej przedstawiono niektóre kluczowe klienta udziału liczniki wydajności protokołu SMB, które są częścią przechwytywania:
 
@@ -104,7 +104,7 @@ Rejestruje informacje o maszynie Wirtualnej Windows, dyski lub konfigurację pul
 
 |Zebrane dane                              |  |  | Scenariusze wydajności |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Analiza wydajności szybki | Benchmarking | Analiza wydajności | Analiza usługi Azure Files | Analiza wydajności Zaawansowane |
+|                               | Analiza wydajności szybki | Benchmarking | Analiza wydajności | Usługi Azure analysis plików | Analiza wydajności Zaawansowane |
 | Informacje z dzienników zdarzeń       | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Informacje o systemie                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Mapa woluminu                        | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
@@ -171,9 +171,9 @@ Testy obciążenia We/Wy narzędzia Diskspd ([zapisu]. dysk systemu operacyjnego
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Możliwe problemy po uruchomieniu narzędzia na maszynach wirtualnych w środowisku produkcyjnym
 
--  Scenariusz porównawczych lub scenariusz "Zaawansowane analizy wydajności", który jest skonfigurowany do używania narzędzia Xperf lub narzędzia Diskspd narzędzie może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej. Te scenariusze nie powinna być uruchamiana w środowisku produkcyjnym.
+-  Scenariusz porównawczych lub "Zaawansowana analiza wydajności" scenariusza, który jest skonfigurowany do używania narzędzia Xperf lub narzędzia Diskspd narzędzie może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej. Te scenariusze nie powinna być uruchamiana w środowisku produkcyjnym.
 
--  Scenariusz porównawczych lub scenariusz "Zaawansowane analizy wydajności", który jest skonfigurowany do używania narzędzia Diskspd upewnij się, że nie inne operacje w tle zakłóca obciążenia We/Wy.
+-  Scenariusz porównawczych lub "Zaawansowana analiza wydajności" scenariusza, który jest skonfigurowany do używania narzędzia Diskspd upewnij się, że nie inne operacje w tle zakłóca obciążenia We/Wy.
 
 -  Domyślnie narzędzie używa dysku magazynu tymczasowego do zbierania danych. Jeśli śledzenie pozostaje włączone przez dłuższy czas, ilość zbieranych danych mogą być istotne. Może ograniczać dostępność miejsca na dysku tymczasowym, a w związku z tym może mieć wpływ na dowolnej aplikacji, która opiera się na tym dysku.
 
@@ -245,11 +245,11 @@ Aby uruchomić narzędzie program PerfInsights, wykonaj następujące kroki:
     >
     >Jeśli przełącznik czas trwania **/d** nie zostanie określony, program PerfInsights spowoduje wyświetlenie monitu do odtworzenia problemu podczas uruchamiania vmslow, migracji i zaawansowanych scenariuszy. 
 
-Po ukończeniu śladów lub operacji w tym samym folderze, co program PerfInsights pojawi się nowy plik. Nazwa pliku jest **CollectedData\_RRRR MM-dd\_hh-mm-ss-fff.zip.** Można wysyłać ten plik z pracownikiem pomocy technicznej do analizy lub Otwórz raport w pliku zip, aby przejrzeć wyniki i zalecenia.
+Po ukończeniu śladów lub operacji w tym samym folderze, co program PerfInsights pojawi się nowy plik. Nazwa pliku jest **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip.** Można wysyłać ten plik z pracownikiem pomocy technicznej do analizy lub Otwórz raport w pliku zip, aby przejrzeć wyniki i zalecenia.
 
 ## <a name="review-the-diagnostics-report"></a>Przejrzyj raport diagnostyczny
 
-W ramach **CollectedData\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, można znaleźć raport HTML, która szczegółowo ustalenia program PerfInsights. Aby przejrzeć raport, należy rozwinąć **CollectedData\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, a następnie otwórz **Report.html program PerfInsights** pliku.
+W ramach **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, można znaleźć raport HTML, która szczegółowo ustalenia program PerfInsights. Aby przejrzeć raport, należy rozwinąć **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, a następnie otwórz **Report.html program PerfInsights** pliku.
 
 Wybierz **ustalenia** kartę.
 
@@ -314,4 +314,4 @@ Poniższy zrzut ekranu przedstawia komunikat podobny do może zostać wyświetlo
 
 Postępuj zgodnie z instrukcjami w komunikacie dostępu do obszaru roboczego transferu plików. Poziom zabezpieczeń musisz zmienić hasło przy pierwszym użyciu.
 
-Po zalogowaniu, można znaleźć okno dialogowe, aby przekazać **CollectedData\_RRRR MM-dd\_hh-mm-ss-fff.zip** plików, które zostały zebrane przez program PerfInsights.
+Po zalogowaniu, można znaleźć okno dialogowe, aby przekazać **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** plików, które zostały zebrane przez program PerfInsights.

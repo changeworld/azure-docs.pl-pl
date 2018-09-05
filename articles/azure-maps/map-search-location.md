@@ -3,18 +3,18 @@ title: Wyświetlanie wyników wyszukiwania za pomocą usługi Azure Maps | Dokum
 description: Jak wykonać żądanie wyszukiwania za pomocą usługi Azure Maps, a następnie wyświetlić wyniki na mapie kodu Javascript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 08/26/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 31ff57f8a933ac17c6dfaa1a1fb0cf2bab0b6557
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7d4eb5f9be4a6bcefe4b544d3f97a9b9391c0d81
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345275"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665781"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiono sposób wyszukiwania lokalizacji zainteresowania i 
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i tworzy wystąpienie usługi klienta. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Drugi blok kodu używa Wyszukiwanie rozmyte [interfejsu API wyszukiwania rozmytego usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych. Odpowiedź z usługi wyszukiwania rozmytego jest następnie przeanalizowany w formacie GeoJSON i numerów PIN są dodawane do mapę, aby pokazać punktów orientacyjnych na mapie. 
+Drugi blok kodu używa Wyszukiwanie rozmyte [interfejsu API wyszukiwania rozmytego usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych. Odpowiedź z usługi wyszukiwania rozmytego, następnie jest analizowany w formacie GeoJSON, używając [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metody. Numery PIN zostaną następnie dodane do mapy, aby pokazać punktów orientacyjnych na mapie.
 
 Ostatni blok kodu dodaje granice aparatu mapy za pomocą mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) właściwości.
 

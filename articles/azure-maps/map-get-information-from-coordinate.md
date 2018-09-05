@@ -3,35 +3,39 @@ title: Wyświetlanie informacji na temat współrzędnych przy użyciu usługi A
 description: Sposób wyświetlania informacji na temat adresu na mapie, gdy użytkownik wybierze Współrzędna
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e1cbed8995c0efbfb6010daaca5cd97ebec92dc6
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 331e687c40f21b0bf6074239969848c632682773
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746346"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667485"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
 
-W tym artykule przedstawiono sposób wyszukiwania wstecznego adresu, a po kliknięciu myszą Pokaż adres kliknięto lokalizacji, w okienku wyskakującym. 
+W tym artykule przedstawiono sposób wyszukiwania wstecznego adresu, a po kliknięciu myszą Pokaż adres kliknięto lokalizacji, w okienku wyskakującym.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-<iframe height='500' scrolling='no' title='Uzyskiwanie informacji na podstawie współrzędnych' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>uzyskać informacje na podstawie współrzędnych</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Uzyskiwanie informacji o współrzędnych (moduł usługi)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>uzyskać informacje na podstawie współrzędnych (moduł usługi)</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Drugi blok kodu aktualizuje styl kursor myszy na wskaźnik.
+Wiersz w drugim bloku kodu tworzy klienta usługi.
 
-Trzeci bloku kodu tworzy okno podręczne. Możesz zobaczyć [dodać okno podręczne na mapie](./map-add-popup.md) instrukcje.
+Trzeci bloku kodu aktualizuje styl kursor myszy na wskaźnik.
 
-Ostatni blok kodu dodaje odbiornika zdarzeń dla kliknięcia myszą. Po kliknięciu myszą, wysyła [XMLHttpRequest](https://xhr.spec.whatwg.org/) do [Azure Maps odwrotnego adres interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse). Pomyślnej odpowiedzi go zbiera adresów kliknięto lokalizacji, a następnie definiuje zawartość okna podręcznego i położenie za pośrednictwem [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkcji klasy okna podręcznego
+Czwarty blok kodu tworzy okno podręczne. Możesz zobaczyć [dodać okno podręczne na mapie](./map-add-popup.md) instrukcje.
+
+Ostatni blok kodu dodaje odbiornika zdarzeń dla kliknięcia myszą. Po kliknięciu myszą za pomocą współrzędne punktu klikniętego tworzy zapytania wyszukiwania. Następnie wykorzystuje mapy [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) zapytania adres współrzędne punktu końcowego.
+
+Pomyślnej odpowiedzi go zbiera adresów kliknięto lokalizacji, a następnie definiuje zawartość okna podręcznego i położenie za pośrednictwem [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkcji klasy okna podręcznego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -44,6 +48,6 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
     * [Otwórz](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)
     * [Zamknij](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#close)
 
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
 * [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)
 * [Wyświetlanie ruchu](./map-show-traffic.md)

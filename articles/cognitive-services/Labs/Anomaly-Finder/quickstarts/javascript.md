@@ -1,6 +1,6 @@
 ---
-title: Sposób użycia interfejsu API Finder anomalii JavaScript - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu anomalii wyszukiwania z użyciem języka Javascript w usługach kognitywnych.
+title: Jak używać interfejsu API wyszukiwania anomalii przy użyciu języka Javascript — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu narzędzie do wyszukiwania anomalii przy użyciu języka Javascript w usługach Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,37 +9,39 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 105da0219efd7bf7c9a105a018dda7ea5b084cfd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348177"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665026"
 ---
-# <a name="use-the-anomaly-finder-api-with-javascript"></a>Wyszukiwanie anomalii interfejsu API za pomocą języka Javascript
+# <a name="use-the-anomaly-finder-api-with-javascript"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka Javascript
 
-Ten artykuł zawiera informacje i przykłady kodu w celu szybkiego rozpoczęcie pracy przy użyciu interfejsu API wykrywania anomalii JavaScript do wykonania zadania pobierania wynik wykrywania anomalii czasu serii danych.
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu interfejsu API wykrywania anomalii przy użyciu języka Javascript do wykonania zadania pobierania wynik wykrywania anomalii w danych szeregów czasowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Pobieranie punktów anomalii z interfejsem API wykrywania anomalii w usłudze przy użyciu języka Javascript
+## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Pobieranie punktów anomalii przy użyciu interfejsu API wykrywania anomalii przy użyciu języka Javascript
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Przykład czasu danych w serii.
+### <a name="example-of-time-series-data"></a>Przykład danych szeregów czasowych
 
-Przykład czasu punktów danych serii wygląda następująco: [!INCLUDE [Request](../includes/request.md)]
+Przykład czasu punktów danych serii jest w następujący sposób:
 
-### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Analizowanie danych i uzyskać punkty anomalii przykład Javascript
+[!INCLUDE [Request](../includes/request.md)]
+
+### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Analizowanie danych otrzymasz odpowiednie punkty anomalii przykład Javascript
 
 Dostępne są następujące kroki w przykładzie.
 
 1. Utwórz nowy plik HTML.
 2. Zastąp plik HTML z następującym kodem.
-3. Zastąp `[YOUR_SUBSCRIPTION_KEY]` wartości z klucza ważnej subskrypcji.
-4. Zastąp dane w requestTextArea punkty.
+3. Zastąp `[YOUR_SUBSCRIPTION_KEY]` wartość kluczem ważnej subskrypcji.
+4. Zastąp dane w requestTextArea punktów danych.
 5. Otwórz plik HTML w przeglądarce sieci Web, a następnie kliknij przycisk `Anomaly Detection` przycisku.
 
 ```Javascript
@@ -304,7 +306,7 @@ Dostępne są następujące kroki w przykładzie.
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Odpowiedź oznaczająca Powodzenie jest zwracana w formacie JSON. Przykładowa odpowiedź ma następującą składnię.
+Pomyślnej odpowiedzi jest zwracany w formacie JSON. Przykładowa odpowiedź wygląda następująco:
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki

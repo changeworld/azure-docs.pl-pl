@@ -1,6 +1,6 @@
 ---
-title: Replikowanie danych do bazy danych Azure dla programu MySQL.
-description: W tym artykule opisano w danych replikacji bazy danych Azure dla programu MySQL.
+title: Replikuj dane do usługi Azure Database for MySQL.
+description: W tym artykule opisano danych replikacji dla usługi Azure Database for MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,38 +8,39 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/20/2018
-ms.openlocfilehash: 72f8211ecc0534b15402911de8fc0ec3d541a835
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 08/31/2018
+ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294908"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666080"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikowanie danych do bazy danych Azure dla programu MySQL
+# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikuj dane do usługi Azure Database for MySQL
 
-W danych replikacji umożliwia synchronizowanie danych z MySQL serwerem lokalnym, na maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców chmury do bazy danych Azure dla usługi MySQL. W danych replikacji jest oparta na dziennik binarny (binlog) na podstawie pozycji replikacji macierzysty MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Replikacji danych umożliwia synchronizowanie danych z serwera MySQL, działające w środowisku lokalnym, w maszyny wirtualne lub usługi bazy danych obsługiwanych przez innych dostawców chmury do usługi Azure Database for MySQL usługi. W danych replikacji jest oparty na dziennik binarny (binlog) na podstawie pozycji replikacji plików natywnej do bazy danych MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji usługi MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
-## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać w danych replikacji
-Główne scenariusze wziąć pod uwagę przy użyciu replikacji w danych są następujące:
+## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać replikacji danych
+Główne scenariusze, warto rozważyć użycie replikacji danych są następujące:
 
-- **Synchronizacja danych hybrydowego:** z replikacją danych, można zachować dane synchronizowane między serwerami lokalnymi i bazy danych platformy Azure dla programu MySQL. Synchronizacja jest przydatne w przypadku tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy istniejący serwer lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej dla użytkowników końcowych.
-- **Synchronizacja chmury wielu:** rozwiązań chmury złożonych, użyj replikacji danych w celu synchronizacji danych między bazą danych Azure dla programu MySQL i dostawców inną chmurę, w tym maszyny wirtualne i usługi bazy danych obsługiwane w tych chmurach.
+- **Synchronizacja danych hybrydowych:** z replikacją danych, można zachować dane synchronizowane między serwerami lokalnymi i usługi Azure Database for MySQL. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
+- **Synchronizacja wielu chmur:** złożonych rozwiązań w chmurze, użyj replikacji danych w celu synchronizacji danych między Azure Database for MySQL i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 
 ### <a name="data-not-replicated"></a>Dane nie są replikowane
-[ *Bazy danych mysql systemu* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) nie jest replikowany na serwerze podstawowym. Zmiany kont i uprawnień na serwerze podstawowym nie są replikowane. Jeśli utworzysz konto na serwerze podstawowym i to konto wymaga dostępu do serwera repliki, następnie utwórz ręcznie konto po stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [ręcznego MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+[ *Bazy danych mysql systemu* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) nie jest replikowany na serwerze głównym. Nie są replikowane zmiany konta i uprawnienia na serwerze głównym. Jeśli utworzysz konto na serwerze głównym, a to konto musi mieć dostęp do serwera repliki, następnie utwórz ręcznie tego samego konta po stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [MySQL manual](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
 
 ### <a name="requirements"></a>Wymagania
-- Wersja serwera podstawowego musi być co najmniej wersja 5.6 MySQL. 
-- Wersje serwera podstawowego i repliki muszą być takie same. Na przykład muszą mieć jednocześnie MySQL wersja 5.6 lub obie wartości muszą być MySQL wersji 5.7.
+- Wersja serwera głównego musi wynosić co najmniej MySQL w wersji 5.6. 
+- Wersje serwera głównego i replika musi być taka sama. Na przykład obie wartości muszą być MySQL w wersji 5.6 lub obie wartości muszą być MySQL w wersji 5.7.
 - Każda tabela musi mieć klucz podstawowy.
-- Podstawowy serwer powinien używać aparatu MySQL InnoDB.
-- Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania binarnego i tworzenia nowych użytkowników na serwerze podstawowym.
+- Główny serwer powinien używać aparat MySQL InnoDB.
+- Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania binarnego i tworzenia nowych użytkowników na serwerze głównym.
 
 ### <a name="other"></a>Inne
+- Replikacji danych jest tylko do ogólnie rzecz biorąc obsługiwana przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych
 - Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [replikacji danych w](howto-data-in-replication.md)
+- Dowiedz się, jak [Konfigurowanie replikacji danych](howto-data-in-replication.md)

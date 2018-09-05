@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162052"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666756"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -23,7 +23,7 @@ W tym artykule opisano zasady haseł i wymagań dotyczących złożoności skoja
 
 ## <a name="administrator-reset-policy-differences"></a>Administrator zresetować różnice zasad
 
-**Firma Microsoft wymusza silne domyślne *dwóch bram* zasady dla dowolnej roli administratora platformy Azure resetowania hasła** polciy ten może być inny niż ten, który zostały zdefiniowane dla użytkowników i nie można zmienić. Należy zawsze przetestować funkcji resetowania hasła jako użytkownik bez żadnych przypisanych ról administratora platformy Azure.
+**Firma Microsoft wymusza silne domyślne *dwóch bram* zasady dla dowolnej roli administratora platformy Azure resetowania hasła** te zasady mogą być inne niż ten, który zostały zdefiniowane dla użytkowników i nie można zmienić. Należy zawsze przetestować funkcji resetowania hasła jako użytkownik bez żadnych przypisanych ról administratora platformy Azure.
 
 Za pomocą zasad dwóch bram **administratorzy nie mają możliwość Użyj pytań zabezpieczających**.
 
@@ -76,7 +76,7 @@ Zasada jednej bramy wymaga jednego elementu danych uwierzytelniania, takich jak 
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zasady, które są stosowane do wszystkich kont użytkowników
 
-Każdego konta użytkownika, który musi się zalogować do usługi Azure AD musi mieć wartość atrybutu unikatowego użytkownika głównej nazwy (UPN) skojarzonych z ich kontem. W poniższej tabeli przedstawiono zasady dotyczą zarówno lokalnych kont użytkowników Active Directory, które są synchronizowane z chmurą oraz do kont użytkowników tylko w chmurze:
+Każdego konta użytkownika, który musi się zalogować do usługi Azure AD musi mieć wartość atrybutu unikatowego użytkownika głównej nazwy (UPN) skojarzonych z ich kontem. W poniższej tabeli przedstawiono zasady, które dotyczą zarówno lokalnych kont użytkowników Active Directory, które są synchronizowane z chmurą oraz do kont użytkowników tylko w chmurze:
 
 | Właściwość | Wymagania dotyczące UserPrincipalName |
 | --- | --- |

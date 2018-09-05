@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123158"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668584"
 ---
 # <a name="supported-languages-for-speech-service"></a>Obsługiwane języki dla usługi mowy
 
@@ -39,7 +39,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
-**Zamiany tekstu na mowę** interfejs API oferuje głosy następujące, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
+Interfejs API synteza mowy oferuje głosy następujące, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
 
 Ustawienia regionalne | Język | Płeć | Mapowanie nazwy usługi
 -------|----------|---------|--------------------
@@ -128,13 +128,16 @@ zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (z
 
 ### <a name="customization"></a>Dostosowywanie
 
-Niestandardowe **zamiany tekstu na mowę** czcionki głosowe pomocy technicznej US English (en US) i chiński (zh-CN).
+Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (zh-CN) i włoski (it-IT).
+
+> [!NOTE]
+> Szkolenia włoskojęzycznego rozpoczyna się od zestaw ponad 2000 wypowiedzi. Modele dwujęzyczny chiński angielski są również obsługiwane za pomocą początkowego zestawu danych z ponad 2000 wypowiedzi.
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
 **Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu.
 
-Można uzyskać listy języków albo programowo lub za pomocą punktu końcowego języków interfejsu API REST. Na liście przedstawiono każdy kod języka, a także nazwę języka w języku angielskim — lub w innych obsługiwanych języków. Ta lista jest aktualizowana przez usługę Microsoft Translator, zawsze wtedy, gdy nowy język staje się dostępna.
+Można uzyskać listy języków programowo przy użyciu punktu końcowego języków interfejsu API REST. Na liście przedstawiono każdy kod języka, a także nazwę języka w języku angielskim — lub w innych obsługiwanych języków. Ta lista jest aktualizowana przez usługę Microsoft Translator, zawsze wtedy, gdy nowy język staje się dostępna.
 
 ### <a name="speech-languages"></a>Języki mowy
 

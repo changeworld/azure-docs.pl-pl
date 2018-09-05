@@ -10,21 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 47896b681c2ba43d4ca41682ec51e0dfd167c9d5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480996"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700960"
 ---
+# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
+
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
-> 
-
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
 Usługa Azure Cosmos DB jest szybka i elastyczna rozproszonej bazy danych, która miało miejsce płynne skalowanie dzięki gwarancji opóźnień i przepływności. Nie trzeba wprowadzić zmiany architektury głównych lub pisania złożonego kodu do skalowania bazy danych za pomocą usługi Azure Cosmos DB. Skalowanie w górę i w dół jest łatwe jak tworzenie jednego wywołania interfejsu API lub [wywołania metody zestaw SDK](set-throughput.md#set-throughput-sdk). Ponieważ usługi Azure Cosmos DB jest dostępna za pośrednictwem wywołań sieci istnieją optymalizacje po stronie klienta, które można wprowadzić do osiągnięcia maksymalnej wydajności, korzystając z [zestawu .NET SDK SQL](documentdb-sdk-dotnet.md).
 

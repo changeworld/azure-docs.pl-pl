@@ -1,5 +1,5 @@
 ---
-title: Przeglądanie Azure komunikatów usługi Service Bus | Dokumentacja firmy Microsoft
+title: Usługa Azure Przeglądanie komunikatów usługi Service Bus | Dokumentacja firmy Microsoft
 description: Przeglądanie i wybieranie komunikatów usługi Service Bus
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,39 +12,39 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: 124c4592a41bf9f3e2a148ba5c3b928bb051d160
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: bafc08eae4a32f803f485097401a586a662f64e9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28196624"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700411"
 ---
-# <a name="message-browsing"></a>Przeglądanie wiadomości
+# <a name="message-browsing"></a>Przeglądanie komunikatów
 
-Komunikat przeglądanie ("wybierania") umożliwia klientowi usługi Service Bus wyliczyć wszystkie komunikaty znajdującej się w kolejce lub subskrypcji, zazwyczaj diagnostycznych i debugowania.
+Komunikat przeglądania ("wgląd") umożliwia klientowi usługi Service Bus można wyliczyć wszystkie komunikaty znajdujące się w kolejce lub subskrypcji, zwykle dla diagnostyki i celów debugowania.
 
-Operacje wglądu zwraca wszystkie wiadomości znajdujące się w dzienniku komunikat kolejki lub subskrypcji, nie tylko te dostępne do powstania natychmiastowego z `Receive()` lub `OnMessage()` pętli. `State` Właściwości każdy komunikat informuje, czy wiadomość jest aktywny (dostępne do odebrania) [odroczonego](message-deferral.md), lub [zaplanowane](message-sequencing.md).
+Operacje podglądu zwrócić wszystkie komunikaty, które istnieją w dzienniku komunikatów kolejki lub subskrypcji, nie tylko te dostępne do natychmiastowej pozyskiwaniem `Receive()` lub `OnMessage()` pętli. `State` Właściwość każdy komunikat informuje, czy komunikat jest aktywna (dostępne do odebrania) [odroczonego](message-deferral.md), lub [zaplanowane](message-sequencing.md).
 
-Zużywa i wygasłe komunikaty są czyszczone przez asynchronicznego "wyrzucanie elementów bezużytecznych" Uruchom i nie musi dokładnie wiadomości wygaśnięcia i w związku z tym `Peek` w rzeczywistości może zwrócić wiadomości, które już wygasł i zostanie usunięty lub gdy lettered wiadomości Operacja receive obok jest wywoływana kolejki lub subskrypcji.
+Użyte i wygasłe komunikaty są czyszczone, asynchronicznego "wyrzucania elementów bezużytecznych" Uruchom i nie musi być dokładnie po komunikaty wygasają i w związku z tym `Peek` w rzeczywistości może zwrócić wiadomości, które już wygasł i zostanie usunięty lub gdy dead lettered Operacja odbioru obok jest wywoływana w obrębie kolejki lub subskrypcji.
 
-Jest to szczególnie ważne, należy wziąć pod uwagę podczas próby odzyskania odroczonego wiadomości z kolejki. Komunikat, dla którego [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) przeszło błyskawicznych nie jest już kwalifikuje się do pobierania regularne w inny sposób, nawet wtedy, gdy zostały zwrócone przez podglądu. Zwracanie te komunikaty jest zamierzone, ponieważ Peek to narzędzie Diagnostyka aktualnym stanie dziennika.
+Jest to szczególnie ważne, o których należy pamiętać podczas próby odzyskania odroczonej wiadomości z kolejki. Komunikat, dla którego [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) przeszła natychmiastowe nie jest już kwalifikuje się do regularnych pobieranie w inny sposób, nawet wtedy, gdy jest on zwracany przez wgląd. Zwracanie te komunikaty jest zamierzone, ponieważ podglądu to narzędzie diagnostyczne odzwierciedlenie aktualnego stanu dziennika.
 
-Peek również zwraca wiadomości, które zostały zablokowane i są przetwarzane aktualnie przez innych odbiorców, ale nie zostało jeszcze zakończone. Jednak ponieważ Peek zwraca odłączonego migawki, stan blokady wiadomości nie mogą być obserwowane przybywającej komunikatów i [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) i [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) throw właściwości [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) gdy aplikacja próbuje odczytać je.
+Zobacz również: zwraca wiadomości, które zostały zablokowane są aktualnie przetwarzane przez inne odbiorniki, ale nie zostało jeszcze zakończone. Jednak ponieważ podglądu zwraca snapshot rozłączonych, stan blokady komunikatu nebyly nalezeny podejrzeć wiadomości, a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) i [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) throw właściwości [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) gdy aplikacja próbuje je odczytać.
 
-## <a name="peek-apis"></a>Wybieranie interfejsów API
+## <a name="peek-apis"></a>Wgląd do interfejsów API
 
-[Wglądu/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) i [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody istnieją w wszystkich usług .NET i Java bibliotek klienckich i na wszystkich obiektach odbiornik: **MessageReceiver**, **MessageSession**, **QueueClient**, i **SubscriptionClient**. Wybieranie działania na wszystkich kolejek i subskrypcje oraz ich odpowiednich kolejki utraconych wiadomości.
+[Wglądu/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) i [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody istnieją w bibliotekach klienta wszystkich .NET, Java i na wszystkich obiektach odbiorcy: **MessageReceiver**, **MessageSession**, **QueueClient**, i **SubscriptionClient**. Wgląd w działania na wszystkich kolejek i subskrypcji oraz ich odpowiednich kolejki utraconych wiadomości.
 
-Gdy wywołuje się wielokrotnie, metody Peek wylicza wszystkie komunikaty, które istnieją w dzienniku kolejki lub subskrypcji, w kolejności sekwencji, z najniższą dostępny numer porządkowy jako najwyższe. Jest to kolejność, w którym wiadomości były umieszczonych w kolejce; nie jest kolejność, w którym wiadomości po pewnym czasie może być pobierane.
+Gdy wywołuje się wielokrotnie, metody Peek wylicza wszystkie komunikaty, które istnieją w dzienniku kolejki lub subskrypcji, w kolejności numer sekwencji, od najniższego dostępny numer porządkowy jako najwyższe. Jest to kolejność, w jakiej komunikaty zostały umieszczonych w kolejce; nie jest kolejność, w której wiadomości po pewnym czasie mogą być pobierane.
 
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) pobiera wiele komunikatów i zwraca je jako wyliczenie. Jeśli nie ma wiadomości, obiekt wyliczenie jest pusta, nie jest pusty.
+[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) pobiera wiele wiadomości i zwraca je jako wyliczenie. Jeśli nie ma wiadomości, obiekt wyliczenia jest pusta, nie ma wartości null.
 
-Można również inicjatora przeciążenia metody z [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) w którym należy uruchomić, a następnie wywołać przeciążenie metody bez parametrów, dalsze wyliczyć. **PeekBatch** ekwiwalentnie działa, ale jednocześnie pobiera zestaw komunikatów.
+Możesz również umieścić początkowo jest przeciążenie metody z [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) w którym należy uruchomić, a następnie wywołać przeciążenie metody bez parametrów, można wyliczyć dalszych. **PeekBatch** ekwiwalentnie funkcji, ale jednocześnie pobiera zestaw komunikatów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o komunikatów usługi Service Bus, zobacz następujące tematy:
+Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 
 * [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)

@@ -1,9 +1,9 @@
 ---
-title: Odwołania do składni Azure Service Bus SQLFilter | Dokumentacja firmy Microsoft
+title: Dokumentacja składni w usłudze Azure Service Bus SQLFilter | Dokumentacja firmy Microsoft
 description: Szczegółowe informacje o SQLFilter gramatyki.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: ec9d728eb31eb979e82bfb53cf619f823750e65c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: c94ffed753ebf8fddbd553977c5d733f2306971d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29132171"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698336"
 ---
-# <a name="sqlfilter-syntax"></a>Składnia SQLFilter
+# <a name="sqlfilter-syntax"></a>Składnia elementu SQLFilter
 
-A *SqlFilter* obiektu jest wystąpieniem [klasy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)i reprezentuje wyrażenie filtru oparty na języku SQL, który jest porównywany [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). SqlFilter obsługuje standardu SQL 92.  
+A *SqlFilter* obiekt jest wystąpieniem [klasy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)i reprezentuje wyrażenie filtru opartego na języku SQL, które zostaną ocenione względem [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). Element SqlFilter obsługuje standard SQL 92.  
   
  Ten temat zawiera szczegółowe informacje o SqlFilter gramatyki.  
   
@@ -60,11 +60,11 @@ A *SqlFilter* obiektu jest wystąpieniem [klasy SqlFilter](/dotnet/api/microsoft
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>`opcjonalny ciąg wskazujący zakres jest `<property_name>`. Prawidłowe wartości to `sys` lub `user`. `sys` Wartość wskazuje zakres systemu gdzie `<property_name>` jest nazwą właściwości publicznej [BrokeredMessage klasy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`Wskazuje zakres użytkowników gdzie `<property_name>` jest kluczem elementu [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) słownika. `user`zakres jest zakres domyślny, jeśli `<scope>` nie jest określona.  
+-   `<scope>` jest opcjonalny ciąg wskazujący zakres `<property_name>`. Prawidłowe wartości to `sys` lub `user`. `sys` Wartość wskazuje zakres systemu gdzie `<property_name>` jest nazwą właściwości publicznej [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` Określa zakres użytkowników gdzie `<property_name>` jest kluczem [klasy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) słownika. `user` zakres jest domyślny zakres, jeśli `<scope>` nie zostanie określony.  
   
 ## <a name="remarks"></a>Uwagi
 
-Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd podczas próby dostępu do właściwości nie istnieje użytkownik nie jest błąd. Zamiast tego właściwości użytkownika nieistniejącą wewnętrznie jest szacowana jako nieznaną wartość. Nieznana wartość jest traktowana specjalnie podczas obliczania operatora.  
+Próba dostępu do właściwości systemu nie istnieje, występuje błąd, podczas próby dostępu do właściwości nieistniejącego użytkownika nie jest błąd. Zamiast tego właściwość nieistniejącego użytkownika wewnętrznie zostanie ocenione jako Nieznana wartość. Nieznana wartość jest traktowany specjalnie podczas obliczania operatora.  
   
 ## <a name="propertyname"></a>property_name  
   
@@ -80,21 +80,21 @@ Próba dostępu do właściwości systemu nieistniejącą jest wystąpił błąd
   
 ### <a name="arguments"></a>Argumenty  
 
- `<regular_identifier>`ciąg jest reprezentowana przez następującym wyrażeniem regularnym:  
+ `<regular_identifier>` ciąg reprezentowanego przez następujące wyrażenie regularne:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-Ta gramatyka oznacza dowolny ciąg, który rozpoczyna się od litery i następuje co najmniej jeden znak podkreślenia/list/cyfr.  
+Gramatyka to oznacza, że dowolny ciąg, który zaczyna się od litery i następuje co najmniej jeden znak podkreślenia/list/cyfr.  
   
-`[:IsLetter:]`oznacza dowolnych znaków Unicode, który jest skategoryzowany jako list Unicode. `System.Char.IsLetter(c)`Zwraca `true` Jeśli `c` to litera Unicode.  
+`[:IsLetter:]` oznacza, że dowolny znak Unicode, który jest dzielony na kategorie litery Unicode. `System.Char.IsLetter(c)` Zwraca `true` Jeśli `c` to litera Unicode.  
   
-`[:IsDigit:]`oznacza dowolnych znaków Unicode, który jest skategoryzowany jako dziesiętną wartością cyfrową. `System.Char.IsDigit(c)`Zwraca `true` Jeśli `c` jest cyfrą Unicode.  
+`[:IsDigit:]` oznacza, że dowolny znak Unicode, który jest dzielony na kategorie, wyświetlaną cyfrą dziesiętną. `System.Char.IsDigit(c)` Zwraca `true` Jeśli `c` jest cyfrą Unicode.  
   
-A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.  
+Element `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.  
   
-`<delimited_identifier>`jest dowolny ciąg ujęty w lewo i prawo nawiasy kwadratowe ([]). Zamykający nawias kwadratowy jest reprezentowany jako dwa nawiasy kwadratowe prawo. Poniżej przedstawiono przykłady `<delimited_identifier>`:  
+`<delimited_identifier>` jest dowolny ciąg, który jest ujęty w nawiasy kwadratowe ([]) lewa i prawa. Prawy nawias kwadratowy jest przedstawiana jako dwa prawo nawiasami kwadratowymi. Poniżej przedstawiono przykłady `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -102,13 +102,13 @@ A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 ```  
   
-`<quoted_identifier>`jest dowolny ciąg, który jest ujęta w znaki podwójnego cudzysłowu. Podwójny cudzysłów w identyfikatorze jest reprezentowany jako podwójnego cudzysłowu. Nie zaleca się użyć identyfikatory w cudzysłowach, ponieważ można łatwo pomylić z stałą typu string. Jeśli to możliwe za pomocą rozdzielanej identyfikatora. Poniżej przedstawiono przykład `<quoted_identifier>`:  
+`<quoted_identifier>` jest dowolny ciąg, który jest ujęty w cudzysłów. Podwójny cudzysłów w identyfikatorze jest przedstawiana jako dwa podwójne cudzysłowy. Nie zaleca się użyć identyfikatory w cudzysłowach, ponieważ można łatwo pomylić z stałą typu string. Jeśli to możliwe za pomocą rozdzielany identyfikatora. Oto przykład `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>wzorzec  
+## <a name="pattern"></a>Wzorzec  
   
 ```  
 <pattern> ::=  
@@ -117,7 +117,7 @@ A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 ### <a name="remarks"></a>Uwagi
   
-`<pattern>`musi być wyrażeniem, której wartość jest szacowana jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
+`<pattern>` musi być wyrażeniem, które jest oceniane jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
   
 -   `%`: Dowolny ciąg zawierający zero lub więcej znaków.  
   
@@ -132,11 +132,11 @@ A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 ### <a name="remarks"></a>Uwagi  
 
-`<escape_char>`musi być wyrażeniem, której wartość jest szacowana jako ciąg o długości 1. Jest używany jako znak ucieczki dla LIKE operator.  
+`<escape_char>` musi być wyrażeniem, które jest oceniane jako ciąg o długości 1. Jest używany jako znak ucieczki LIKE operatora.  
   
  Na przykład `property LIKE 'ABC\%' ESCAPE '\'` odpowiada `ABC%` zamiast ciąg, który rozpoczyna się od `ABC`.  
   
-## <a name="constant"></a>Stała  
+## <a name="constant"></a>Stałe  
   
 ```  
 <constant> ::=  
@@ -145,27 +145,27 @@ A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 ### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>`to ciąg liczb, które nie są ujęte w cudzysłów i nie zawierają miejsc dziesiętnych. Wartości są przechowywane jako `System.Int64` wewnętrznie i postępuj zgodnie z tego samego zakresu.  
+-   `<integer_constant>` jest to ciąg liczb, które nie są ujęte w znaki cudzysłowu i nie zawiera punktu dziesiętnego. Wartości są przechowywane jako `System.Int64` wewnętrznie i postępuj zgodnie z tym samym zakresie.  
   
-     Są to przykłady stałych długa:  
+     Poniżej przedstawiono przykłady długie stałe:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>`to ciąg liczb, które nie są ujęte w cudzysłowy i zawierać separatorem dziesiętnym. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tego samego zakresu/dokładności.  
+-   `<decimal_constant>` jest to ciąg liczb, które nie są ujęte w znaki cudzysłowu i zawiera separator dziesiętny. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tym samym zakresem/dokładności.  
   
-     W przyszłych wersjach, ta liczba może być przechowywany w na inny typ danych do obsługi dokładne semantyki numer, nie należy polegać na fakcie odpowiadającego — typ danych jest `System.Double` dla `<decimal_constant>`.  
+     W przyszłych wersjach tego numeru mogą być przechowywane w różne typy danych do obsługi dokładnie semantykę liczb, więc nie należy polegać na fakcie bazowego typu danych jest `System.Double` dla `<decimal_constant>`.  
   
-     Poniżej przedstawiono przykłady dziesiętną stałe:  
+     Poniżej przedstawiono przykłady stałe dziesiętne:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>`jest numer napisanych w notacji naukowej. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tego samego zakresu/dokładności. Poniżej przedstawiono przykłady przybliżona number — stałe:  
+-   `<approximate_number_constant>` jest liczba napisanych w notacji naukowej. Wartości są przechowywane jako `System.Double` wewnętrznie i postępuj zgodnie z tym samym zakresem/dokładności. Poniżej przedstawiono przykłady przybliżony number — stałe:  
   
     ```  
     101.5E5  
@@ -181,7 +181,7 @@ A `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 ### <a name="remarks"></a>Uwagi  
 
-Stałe typu logicznego są reprezentowane przez słowa kluczowe **TRUE** lub **FALSE**. Wartości są przechowywane jako `System.Boolean`.  
+Wartość logiczna stałe są reprezentowane przez słowa kluczowe **TRUE** lub **FALSE**. Wartości są przechowywane jako `System.Boolean`.  
   
 ## <a name="stringconstant"></a>string_constant  
   
@@ -191,7 +191,7 @@ Stałe typu logicznego są reprezentowane przez słowa kluczowe **TRUE** lub **F
   
 ### <a name="remarks"></a>Uwagi  
 
-Stałe typu String są ujęte w apostrofy i zawierać żadnych prawidłowych znaków Unicode. Znak pojedynczego cudzysłowu osadzone w stałą typu string jest przedstawiona w postaci dwóch pojedynczy znaki cudzysłowu.  
+Stałe typu String są ujęte w znaki pojedynczego cudzysłowu i zawierać żadnych prawidłowych znaków Unicode. Znak pojedynczego cudzysłowu osadzone w stałą typu string jest reprezentowany jako dwa pojedyncze cudzysłowy.  
   
 ## <a name="function"></a>funkcja  
   
@@ -205,47 +205,47 @@ Stałe typu String są ujęte w apostrofy i zawierać żadnych prawidłowych zna
   
 `newid()` Funkcja zwraca **System.Guid** generowane przez `System.Guid.NewGuid()` metody.  
   
-`property(name)` Funkcja zwraca wartość właściwości odwołuje się `name`. `name` Wartość może być prawidłowym wyrażeniem, która zwraca wartość typu ciąg.  
+`property(name)` Funkcja zwraca wartość właściwości odwołuje się `name`. `name` Wartość może być dowolne prawidłowe wyrażenie zwracające wartość ciągu.  
   
 ## <a name="considerations"></a>Zagadnienia do rozważenia
   
-Należy rozważyć [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) semantyka:  
+Należy wziąć pod uwagę następujące [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) semantyki:  
   
 -   Nazwy właściwości jest rozróżniana wielkość liter.  
   
--   Operatory wykonaj C# niejawna konwersja semantyki zawsze, gdy jest to możliwe.  
+-   Operatory postępuj zgodnie z C# niejawna konwersja semantyki zawsze, gdy jest to możliwe.  
   
--   Właściwości systemu są właściwości publiczne w [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) wystąpień.  
+-   Właściwości systemu są właściwości publiczne ujawnione w [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) wystąpień.  
   
-    Należy rozważyć `IS [NOT] NULL` semantyka:  
+    Należy wziąć pod uwagę następujące `IS [NOT] NULL` semantyki:  
   
-    -   `property IS NULL`jest szacowana jako `true` Jeśli właściwość nie istnieje lub jest wartość właściwości `null`.  
+    -   `property IS NULL` jest oceniane jako `true` Jeśli właściwość nie istnieje lub jest wartość właściwości `null`.  
   
 ### <a name="property-evaluation-semantics"></a>Semantyka oceny właściwości  
   
--   Próba oszacować właściwości nieistniejącego systemu powoduje [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) wyjątku.  
+-   Próba oceny właściwości systemu nieistniejącej zgłasza [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) wyjątku.  
   
--   Właściwość, która nie istnieje wewnętrznie jest szacowana jako **nieznany**.  
+-   Właściwość, która nie istnieje wewnętrznie jest oceniane jako **nieznany**.  
   
- Nieznany oceny w operatory arytmetyczne:  
+ Nieznane obliczanie w operatory arytmetyczne:  
   
--   Dla operatorów binarnych, jeśli po lewej lub prawej stronie argumentów jest szacowana jako **nieznany**, a następnie wynik jest **nieznany**.  
+-   Dla operatorów binarnych, jeśli lewej lub prawej operandów zostało ocenione jako **nieznany**, a następnie wynik jest **nieznany**.  
   
--   Dla operatory jednoargumentowe, jeśli argument jest szacowana jako **nieznany**, a następnie wynik jest **nieznany**.  
+-   Operatorów jednoargumentowych, jeśli argument jest oceniane jako **nieznany**, a następnie w wyniku **nieznany**.  
   
- Nieznany oceny w operatory binarne porównania:  
+ Nieznane obliczanie w operatory binarne porównania:  
   
--   Jeśli po lewej lub prawej stronie argumentów jest oceniana jako **nieznany**, a następnie wynik jest **nieznany**.  
+-   Jeśli po lewej stronie lub po prawej stronie operandów zostało ocenione jako **nieznany**, wynik jest **nieznany**.  
   
- Nieznany oceny w `[NOT] LIKE`:  
+ Nieznane obliczanie w `[NOT] LIKE`:  
   
--   Jeśli wszystkie operand jest szacowana jako **nieznany**, to znajdują się **nieznany**.  
+-   Jeśli wszystkie operand jest oceniany jako **nieznany**, wynik jest **nieznany**.  
   
- Nieznany oceny w `[NOT] IN`:  
+ Nieznane obliczanie w `[NOT] IN`:  
   
--   Jeśli lewy operand jest szacowana jako **nieznany**, a następnie wynik jest **nieznany**.  
+-   Jeśli lewy operand jest obliczany jako **nieznany**, a następnie wynik jest **nieznany**.  
   
- Nieznany oceny w **i** operator:  
+ Nieznane obliczanie w **i** operator:  
   
 ```  
 +---+---+---+---+  
@@ -259,7 +259,7 @@ Należy rozważyć [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfil
 +---+---+---+---+  
 ```  
   
- Nieznany oceny w **lub** operator:  
+ Nieznane obliczanie w **lub** operator:  
   
 ```  
 +---+---+---+---+  
@@ -275,12 +275,12 @@ Należy rozważyć [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfil
   
 ### <a name="operator-binding-semantics"></a>Semantyka powiązania — operator
   
--   Operatory porównania, takich jak `>`, `>=`, `<`, `<=`, `!=`, i `=` postępuj zgodnie z tej samej semantyki jako operator C# powiązanie w promocji typu danych i niejawne konwersje.  
+-   Operatory porównania, takie jak `>`, `>=`, `<`, `<=`, `!=`, i `=` postępuj zgodnie z tą samą semantyką jako operator języka C# powiązanie w promocji typu danych i niejawne konwersje.  
   
--   Operatory arytmetyczne, takie jak `+`, `-`, `*`, `/`, i `%` postępuj zgodnie z tej samej semantyki jako operator C# powiązanie w promocji typu danych i niejawne konwersje.
+-   Operatory arytmetyczne, takie jak `+`, `-`, `*`, `/`, i `%` postępuj zgodnie z tą samą semantyką jako operator języka C# powiązanie w promocji typu danych i niejawne konwersje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Klasa SQLFilter (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [Klasa SQLFilter (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
-- [Klasa SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [Klasa SQLFilter (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
+- [Klasa elementu SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
