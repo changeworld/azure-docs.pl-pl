@@ -3,19 +3,19 @@ title: Co to jest Azure SQL Data Warehouse? | Microsoft Docs
 description: Rozproszona baza danych klasy korporacyjnej, która może przetwarzać woluminy zawierające petabajty danych relacyjnych i nierelacyjnych. Jest to pierwszy magazyn danych w chmurze w branży, którym umożliwia powiększanie, zmniejszanie i wstrzymanie w ciągu kilku sekund.
 services: sql-data-warehouse
 author: igorstanko
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.component: design
 ms.date: 04/17/2018
 ms.author: igorstan
 ms.reviewer: igorstan
-ms.openlocfilehash: c8e6af4eabc96845ff6c237735cdb0da2ed24743
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ba1cb75b7e7c5a93438ea4f17bb563477837099
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185981"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301937"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Co to jest Azure SQL Data Warehouse?
 
@@ -40,7 +40,7 @@ Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, mo
 * [Historie sukcesu klientów]
 * [Blogi]
 * [Żądania funkcji]
-* [Filmy wideo]
+* [Wideo]
 * [Blogi zespołu doradczego klientów]
 * [Tworzenie biletu pomocy technicznej]
 * [Forum MSDN]
@@ -70,7 +70,7 @@ Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, mo
 [Forum MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

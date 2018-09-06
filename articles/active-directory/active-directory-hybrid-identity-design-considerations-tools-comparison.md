@@ -54,7 +54,7 @@ PZ = publiczna wersja zapoznawcza
 | Obsługuje reguły synchronizacji programu FIM i łączniki do aprowizowania dla systemów lokalnych | | | |● |● |
 
  
-& #42; Obecnie są obsługiwane dwie związane z tym opcje.  Oto one: 
+&#42; Obecnie są obsługiwane dwie związane z tym opcje.  Oto one: 
 
    1. Można użyć ogólnego łącznika LDAP i włączyć go poza usługą Azure AD Connect.  Jest to skomplikowane i wymaga partnera na potrzeby wdrażania oraz utrzymywania umowy pomocy technicznej Premium.  Ta opcja umożliwia obsługę zarówno pojedynczych, jak i wielu katalogów LDAP. 
 
