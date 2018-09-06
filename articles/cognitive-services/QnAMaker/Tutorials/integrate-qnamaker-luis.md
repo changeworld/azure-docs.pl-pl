@@ -1,7 +1,7 @@
 ---
-title: Integracja Maker — strona główna i LUIS - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Integracja usługi QnA Maker i LUIS - usług Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: samouczek krok po kroku dotyczące integrowania Maker — strona główna i LUIS
+description: samouczek krok po kroku dotyczące integrowania usługi QnA Maker i LUIS
 services: cognitive-services
 author: nstulasi
 manager: sangitap
@@ -10,42 +10,42 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348692"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781751"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integracja Maker — strona główna i LUIS rozpowszechniać bazy wiedzy
-Jak duże rozwojem Maker — strona główna bazy wiedzy staje się trudne w utrzymaniu go jako wbudowanymi jeden zestaw i zachodzi potrzeba podzielić na mniejsze fragmenty logicznej bazy wiedzy knowledge base.
+# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integracja usługi QnA Maker i LUIS, aby rozprowadzić bazy wiedzy
+Wraz z rozwojem dużej wiedzy usługi QnA Maker staje się trudne w utrzymaniu go jako monolityczny jeden zestaw i ma konieczności dzielenia bazy wiedzy knowledge base na mniejsze części logiczne.
 
-Jest prosta do utworzenia wielu baz wiedzy w programie — strona główna Maker, konieczne będzie logikę do kierowania przychodzące pytanie do odpowiedniej wiedzy. Można to zrobić za pomocą LUIS.
+Mimo że jest bardzo proste tworzenie wielu baz wiedzy w usługi QnA Maker, konieczne będzie logikę przekierowywać przychodzące pytanie do odpowiedniej bazy wiedzy. Można to zrobić za pomocą usługi LUIS.
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura luis Maker — strona główna](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Architektura usługi luis usługi QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-W powyższym scenariuszu Maker — strona główna najpierw pobiera celem zapytania przychodzącego z modelu LUIS, a następnie używać, aby go rozesłać do poprawne Maker — strona główna bazy wiedzy.
+W powyższym scenariuszu Usługa QnA Maker najpierw pobiera celem przychodzące zapytania z modelu usługi LUIS, a następnie użyj, przekazać go do poprawne usługi QnA Maker wiedzy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Zaloguj się do [LUIS](https://www.luis.ai/) portalu i [Utwórz aplikację](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
-- [Dodaj intencje](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) zgodnie z danego scenariusza.
-- [Train](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) i [publikowania](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) LUIS aplikacji.
-- Zaloguj się do [Maker — strona główna](https://qnamaker.ai) i [je tworzyć]() podstawowych zgodnie z danego scenariusza.
-- [Test]() i [publikowania]() bazy wiedzy.
+- Zaloguj się do [LUIS](https://www.luis.ai/) portalu i [tworzenie aplikacji](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
+- [Dodawanie intencji](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) zgodnie z danego scenariusza.
+- [Szkolenie](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) i [publikowania](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) aplikacją usługi LUIS.
+- Zaloguj się do [QnA Maker](https://qnamaker.ai) i [tworzenie](https://www.qnamaker.ai/Create) baz wiedzy zgodnie z danego scenariusza.
+- Testowanie i publikowanie bazy wiedzy.
 
-## <a name="qna-maker--luis-bot"></a>Maker — strona główna + LUIS Bot
-1. Najpierw utwórz bot aplikacji sieci Web przy użyciu szablonu LUIS, połączyć ją z aplikacją LUIS utworzoną wcześniej i modyfikowanie lokalizacji docelowych. Zobacz szczegółowe kroki [tutaj](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
+## <a name="qna-maker--luis-bot"></a>Usługa QnA Maker + Bot usługi LUIS
+1. Najpierw utwórz bota aplikacji sieci Web przy użyciu szablonu usługi LUIS, połączyć go z aplikacją usługi LUIS utworzoną wcześniej i modyfikowania intencji. Zobacz szczegółowy opis kroków [tutaj](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
 
-2. Dodaj zależności do górnej części pliku, z innych zależności:
+2. Dodaj zależności do górnej części pliku, przy użyciu innych zależności:
 
     ```
     using RestSharp;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     ```
-3. Dodaj poniżej klasy do wywoływania usługi Maker — strona główna:
+3. Dodaj poniższe klasy do wywoływania usługi QnA Maker:
 
     ```
         /// <summary>
@@ -121,11 +121,11 @@ W powyższym scenariuszu Maker — strona główna najpierw pobiera celem zapyta
         /* END - QnA Maker Response Class */
     ```
 
-3. Przejdź do https://qnamaker.ai -> Moje baz wiedzy -> Kod widoku odpowiednie bazy wiedzy. Uzyskaj następujące informacje:
+3. Przejdź do https://qnamaker.ai -> Moja baz wiedzy -> Wyświetl kod odpowiedniej bazy wiedzy. Uzyskaj następujące informacje:
 
-    ![Żądanie HTTP Maker — strona główna](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
+    ![Usługa QnA Maker HTTP żądania](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
-4. Utworzenie wystąpienia klasy QnAMakerService dla każdego z bazy wiedzy:
+4. Dla każdej z baz wiedzy, należy utworzyć wystąpienia klasy QnAMakerService:
     ```
             // Instantiate the knowledge bases
             public QnAMakerService hrQnAService = new QnAMakerService("https://hrkb.azurewebsites.net", "<HR knowledge base id>", "<HR endpoint key>");
@@ -133,7 +133,7 @@ W powyższym scenariuszu Maker — strona główna najpierw pobiera celem zapyta
             public QnAMakerService financeQnAService = new QnAMakerService("https://financekb.azurewebsites.net", "<Finance knowledge base id>", "<Finance endpoint key>");
     ```
 
-5. Wymaga odpowiedniej wiedzy celem.
+5. Wymaga odpowiedniej wiedzy intencji.
     ```
             // HR Intent
             [LuisIntent("HR")]
@@ -160,21 +160,21 @@ W powyższym scenariuszu Maker — strona główna najpierw pobiera celem zapyta
             }
     ```
 
-## <a name="build-the-bot"></a>Tworzenie bot
-1. W edytorze kodu, kliknij prawym przyciskiem myszy `build.cmd` i wybierz **uruchomić z konsoli**.
+## <a name="build-the-bot"></a>Tworzenie bota
+1. W edytorze kodu, kliknij prawym przyciskiem myszy `build.cmd` i wybierz **uruchamiane z poziomu konsoli**.
 
-    ![uruchomić z konsoli](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
+    ![Uruchamianie z poziomu konsoli](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. Widok kodu jest zastępowany terminali okna pokazującego postęp i wyniki kompilacji.
+2. Widok kodu jest zastępowany okno terminalu pokazujący postęp i wyniki kompilacji.
 
     ![Kompilacja konsoli](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>Testowanie bot
-W portalu Azure wybierz **testów w sieci Web rozmowę** do testowania bot. Wpisz komunikaty z różnych lokalizacji docelowych można pobrać odpowiedzi z odpowiedniej wiedzy.
+## <a name="test-the-bot"></a>Testowanie robota
+W witrynie Azure portal wybierz **testowania w czatów internetowych** do testowania robota. Typ wiadomości z różnymi intencjami, aby uzyskać odpowiedzi z odpowiedniej wiedzy.
 
 ![test rozmów w sieci Web](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie planu ciągłości biznesowej dla Maker — strona główna](../How-To/business-continuity-plan.md)
+> [Utwórz plan ciągłości działania dotyczące usługi QnA Maker](../How-To/business-continuity-plan.md)

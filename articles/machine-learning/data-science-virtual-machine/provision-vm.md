@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344764"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782658"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:
@@ -59,7 +59,7 @@ Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o 
 * A [Linux CentOS](linux-dsvm-intro.md) obrazu.
 * [Wersji systemu Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) maszyny wirtualnej do nauki o danych. Niektóre narzędzia są dostępne tylko w wersji systemu Windows Server 2016. W przeciwnym razie ten artykuł dotyczy również do wersji Windows Server 2012.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 Aby utworzyć maszynę wirtualną do nauki o danych firmy Microsoft, musi mieć subskrypcję platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](http://azure.com/free).
 
 
@@ -126,7 +126,7 @@ Do tworzenia aplikacji przy użyciu języka Python zostały zainstalowane dystry
 > 
 > 
 
-Anaconda Python 3.6 jest zainstalowany w ramach **C:\Anaconda**. Anaconda Python 2.7 jest zainstalowany w ramach **c:\Anaconda\envs\python2**. Aby uzyskać szczegółowe instrukcje, zobacz [dokumentacja narzędzi PTVS](/visualstudio/python/installing-python-interpreters.md). 
+Anaconda Python 3.6 jest zainstalowany w ramach **C:\Anaconda**. Anaconda Python 2.7 jest zainstalowany w ramach **c:\Anaconda\envs\python2**. Aby uzyskać szczegółowe instrukcje, zobacz [dokumentacja narzędzi PTVS](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters). 
 
 ### <a name="the-jupyter-notebook"></a>Notes Jupyter
 Dystrybucja pakietu anaconda również jest dostarczany z notesu programu Jupyter, środowisko, aby udostępniać kod i analizy. Serwer notesu programu Jupyter jest wstępnie skonfigurowana za pomocą języka Python 2.7 Python 3.x, PySpark, Julia i R jądra. Uruchom serwer Jupyter i uruchom przeglądarkę, aby uzyskać dostęp do serwera notesu istnieje ikony pulpitu nosi nazwę **notesu programu Jupyter**. 

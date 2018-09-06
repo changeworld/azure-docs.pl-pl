@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126429"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842626"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -184,7 +184,13 @@ Na przykład aby zgrupować wszystkich wyników z tych samych razem wykonywania 
 
 ## <a name="monitor-database-performance"></a>Monitorowanie wydajności bazy danych
 
-Poniższy przykład tworzy nowe zadanie do zbierania danych wydajności z wieloma bazami danych.  
+Poniższy przykład tworzy nowe zadanie do zbierania danych wydajności z wieloma bazami danych.
+
+Domyślnie będzie wyglądać agenta zadań, aby utworzyć tabelę do przechowywania wyników zwróconych w. W wyniku logowania skojarzone z poświadczeń używanych dla poświadczenia danych wyjściowych musisz mieć wystarczające uprawnienia do wykonania tej. Jeśli chcesz ręcznie utworzyć tabelę wcześniejsze następnie musi ona mieć następujące właściwości:
+1. Kolumny przy użyciu poprawnej nazwy i typy danych dla zestawu wyników.
+2. Dodatkowa kolumna internal_execution_id z typu danych uniqueidentifier.
+3. Indeksu nieklastrowanego na indeks o nazwie "IX_<TableName>_Internal_Execution_ID" w kolumnie internal_execution_id.
+
 Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenia:
 
 ```sql

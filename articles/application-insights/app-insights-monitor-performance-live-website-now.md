@@ -1,6 +1,6 @@
 ---
-title: "Monitorowanie działającej aplikacji sieci Web platformy ASP.NET za pomocą usługi Application Insights | Microsoft Docs"
-description: "Monitorowanie wydajności witryny sieci Web bez jej ponownego wdrażania. Działa z aplikacjami sieci Web platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure."
+title: Monitorowanie działającej aplikacji internetowej platformy ASP.NET za pomocą usługi Application Insights | Microsoft Docs
+description: Monitorowanie wydajności witryny sieci Web bez jej ponownego wdrażania. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,49 +10,49 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/05/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783602"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji sieci Web w czasie wykonywania za pomocą usługi Application Insights
+# <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji internetowych w czasie wykonywania za pomocą usługi Application Insights
 
+Możliwe jest instrumentowanie działającej aplikacji internetowej za pomocą usługi Azure Application Insights bez konieczności modyfikowania kodu ani jego ponownego wdrażania. Jeśli Twoje aplikacje są hostowane na lokalnym serwerze IIS, zainstaluj monitor stanu. Jeśli są to aplikacje internetowe platformy Azure lub jeśli działają one na maszynie wirtualnej platformy Azure, możesz włączyć monitorowanie usługi Application Insights z poziomu panelu sterowania platformy Azure. Istnieją także osobne artykuły na temat instrumentacji [działających aplikacji internetowych w technologii J2EE](app-insights-java-live.md) i [usług Azure Cloud Services](app-insights-cloudservices.md). Potrzebna jest subskrypcja platformy [Microsoft Azure](http://azure.com).
 
-Możliwe jest instrumentowanie działającej aplikacji sieci Web za pomocą usługi Azure Application Insights bez konieczności modyfikowania kodu ani jego ponownego wdrażania. Jeśli Twoje aplikacje są hostowane na lokalnym serwerze IIS, zainstaluj monitor stanu. Jeśli są to aplikacje sieci Web platformy Azure lub jeśli działają one na maszynie wirtualnej platformy Azure, możesz włączyć monitorowanie usługi Application Insights z poziomu panelu sterowania platformy Azure. Istnieją także osobne artykuły na temat instrumentacji [działających aplikacji sieci Web w technologii J2EE](app-insights-java-live.md) i [usług Azure Cloud Services](app-insights-cloudservices.md). Potrzebna jest subskrypcja platformy [Microsoft Azure](http://azure.com).
+![Zrzut ekranu usługi App Insights — Omówienie wykresów zawierających informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądań serwera](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
-![przykładowe wykresy](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+Dostępne są trzy trasy zastosowania usługi Application Insights do aplikacji internetowych platformy .NET:
 
-Dostępne są trzy trasy zastosowania usługi Application Insights do aplikacji sieci Web platformy .NET:
-
-* **W czasie kompilacji:** [dodaj zestaw Application Insights SDK][greenbrown] do kodu aplikacji sieci Web.
-* **W czasie wykonywania:** przeprowadź instrumentację aplikacji sieci Web na serwerze, jak opisano poniżej, bez konieczności ponownego kompilowania lub wdrażania kodu.
-* **W czasie kompilacji i w czasie wykonywania:** skompiluj zestaw SDK w kodzie aplikacji sieci Web, a także zastosuj rozszerzenia czasu wykonywania. Połącz korzyści z obu opcji.
+* **W czasie kompilacji:**[dodaj zestaw Application Insights SDK][greenbrown] do kodu aplikacji internetowej.
+* **W czasie wykonywania:** przeprowadź instrumentację aplikacji internetowej na serwerze, jak opisano poniżej, bez konieczności ponownego kompilowania lub wdrażania kodu.
+* **W czasie kompilacji i w czasie wykonywania:** skompiluj zestaw SDK w kodzie aplikacji internetowej, a także zastosuj rozszerzenia czasu wykonywania. Połącz korzyści z obu opcji.
 
 Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z danej trasy:
 
 |  | W czasie kompilacji | W czasie wykonywania |
 | --- | --- | --- |
-| Żądania i wyjątki |Tak |Tak |
-| [Bardziej szczegółowe wyjątki](app-insights-asp-net-exceptions.md) | |Tak |
+| Żądania i wyjątki |Yes |Yes |
+| [Bardziej szczegółowe wyjątki](app-insights-asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](app-insights-asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
-| [Liczniki wydajności sytemu](app-insights-performance-counters.md) |Tak |Tak |
-| [Interfejs API dla telemetrii niestandardowej][api] |Tak |Nie |
-| [Integracja dziennika śledzenia](app-insights-asp-net-trace-logs.md) |Tak |Nie |
-| [Widok strony i dane użytkownika](app-insights-javascript.md) |Tak |Nie |
-| Konieczność ponownej kompilacji kodu |Tak | Nie |
+| [Liczniki wydajności sytemu](app-insights-performance-counters.md) |Yes |Yes |
+| [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
+| [Integracja dziennika śledzenia](app-insights-asp-net-trace-logs.md) |Yes |Nie |
+| [Widok strony i dane użytkownika](app-insights-javascript.md) |Yes |Nie |
+| Konieczność ponownej kompilacji kodu |Yes | Nie |
 
 
-## <a name="monitor-a-live-azure-web-app"></a>Monitorowanie działającej aplikacji sieci Web platformy Azure
+## <a name="monitor-a-live-azure-web-app"></a>Monitorowanie działającej aplikacji internetowej platformy Azure
 
 Jeśli aplikacja działa jako usługa sieci Web platformy Azure, monitorowanie należy włączyć w następujący sposób:
 
 * Wybierz usługę Application Insights w panelu sterowania aplikacji na platformie Azure.
 
-    ![Konfigurowanie usługi Application Insights dla aplikacji sieci Web platformy Azure](./media/app-insights-monitor-performance-live-website-now/azure-web-setup.png)
+    ![Konfigurowanie usługi Application Insights dla aplikacji internetowej platformy Azure](./media/app-insights-monitor-performance-live-website-now/azure-web-setup.png)
 * Gdy zostanie otwarta strona podsumowania usługi Application Insights, kliknij link w dolnej części, aby otworzyć pełny zasób usługi Application Insights.
 
     ![Klikaj elementy, aż przejdziesz do usługi Application Insights](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
@@ -73,13 +73,13 @@ Po włączeniu usługi Application Insights na platformie Azure możesz dodać t
 
 Zestaw SDK języka JavaScript usługi Application Insights został teraz wprowadzony do każdej strony sieci Web.
 
-## <a name="monitor-a-live-iis-web-app"></a>Monitorowanie działającej aplikacji sieci Web usług IIS
+## <a name="monitor-a-live-iis-web-app"></a>Monitorowanie działającej aplikacji internetowej usług IIS
 
 Jeśli aplikacja jest hostowana na serwerze usług IIS, włącz usługę Application Insights przy użyciu monitora stanu.
 
 1. Zaloguj się na serwerze sieci Web usług IIS, używając poświadczeń administratora.
 2. Jeśli monitor stanu usługi Application Insights nie został jeszcze zainstalowany, pobierz i uruchom [Instalator monitora stanu](http://go.microsoft.com/fwlink/?LinkId=506648) (lub uruchom [Instalator platformy sieci Web](https://www.microsoft.com/web/downloads/platform.aspx) i wyszukaj w nim monitor stanu usługi Application Insights).
-3. W monitorze stanu wybierz zainstalowaną aplikację sieci Web lub witrynę sieci Web, którą chcesz monitorować. Zaloguj się przy użyciu poświadczeń platformy Azure.
+3. W monitorze stanu wybierz zainstalowaną aplikację internetową lub witrynę internetową, którą chcesz monitorować. Zaloguj się przy użyciu poświadczeń platformy Azure.
 
     Skonfiguruj zasób, w którym mają być wyświetlane wyniki w portalu usługi Application Insights. (Zazwyczaj najlepiej jest utworzyć nowy zasób. Wybierz istniejący zasób, jeśli masz już [testy sieci Web][availability] lub [monitorowanie klienta][client] dla tej aplikacji). 
 
@@ -93,7 +93,7 @@ Jeśli aplikacja jest hostowana na serwerze usług IIS, włącz usługę Applica
 
 ## <a name="customize-monitoring-options"></a>Dostosowywanie opcji monitorowania
 
-Włączenie usługi Application Insights powoduje dodanie plików DLL i pliku ApplicationInsights.config do aplikacji sieci Web. Możesz [edytować plik config](app-insights-configuration-with-applicationinsights-config.md), aby zmienić niektóre opcje.
+Włączenie usługi Application Insights powoduje dodanie plików DLL i pliku ApplicationInsights.config do aplikacji internetowej. Możesz [edytować plik config](app-insights-configuration-with-applicationinsights-config.md), aby zmienić niektóre opcje.
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Po ponownym opublikowaniu aplikacji ponownie włącz usługę Application Insights
 
@@ -103,7 +103,7 @@ Jeśli chcesz ponownie przeprowadzić publikację bez dodawania usługi Applicat
 
 1. Jeśli edytowano plik ApplicationInsights.config, utwórz jego kopię przed ponownym opublikowaniem aplikacji.
 2. Ponownie opublikuj aplikację.
-3. Ponownie włącz monitorowanie za pomocą usługi Application Insights. (Użyj odpowiedniej metody: panelu sterowania aplikacji sieci Web platformy Azure lub monitora stanu na hoście usług IIS).
+3. Ponownie włącz monitorowanie za pomocą usługi Application Insights. (Użyj odpowiedniej metody: panelu sterowania aplikacji internetowej platformy Azure lub monitora stanu na hoście usług IIS).
 4. Przywróć wszystkie zmiany wprowadzone w pliku config.
 
 
@@ -148,8 +148,8 @@ Dowiedz się, które aplikacje są monitorowane:
 
 `Get-ApplicationInsightsMonitoringStatus [-Name appName]`
 
-* `-Name` Nazwa aplikacji sieci Web (opcjonalnie).
-* Wyświetla stan monitorowania usługi Application Insights dla każdej (lub wskazanej z nazwy) aplikacji sieci Web na tym serwerze usług IIS.
+* `-Name` Nazwa aplikacji internetowej (opcjonalnie).
+* Wyświetla stan monitorowania usługi Application Insights dla każdej (lub wskazanej z nazwy) aplikacji internetowej na tym serwerze usług IIS.
 * Zwraca obiekt `ApplicationInsightsApplication` dla każdej aplikacji:
 
   * `SdkState==EnabledAfterDeployment`: aplikacja jest monitorowana, a instrumentacja została przeprowadzona w czasie wykonywania za pomocą narzędzia Monitor stanu lub polecenia `Start-ApplicationInsightsMonitoring`.
@@ -187,7 +187,7 @@ Dowiedz się, które aplikacje są monitorowane:
 
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
-* `-Name`: nazwa aplikacji sieci Web w usługach IIS.
+* `-Name`: nazwa aplikacji internetowej w usługach IIS.
 * `-InstrumentationKey` (opcjonalnie). umożliwia zmianę zasobu, do którego wysyłana jest telemetria aplikacji.
 * To polecenie cmdlet:
   * Uaktualnia wskazaną aplikację do ostatniej wersji zestawu SDK pobranej na ten komputer. (Działa tylko wtedy, gdy `SdkState==EnabledAfterDeployment`)
@@ -201,24 +201,24 @@ Dowiedz się, które aplikacje są monitorowane:
 
 ### <a name="what-is-status-monitor"></a>Co to jest monitor stanu?
 
-Aplikacja klasyczna, która jest instalowana na serwerze sieci Web usług IIS. Ułatwia ona instrumentację i konfigurowanie aplikacji sieci Web. 
+Aplikacja klasyczna, która jest instalowana na serwerze sieci Web usług IIS. Ułatwia ona instrumentację i konfigurowanie aplikacji internetowych. 
 
 ### <a name="when-do-i-use-status-monitor"></a>Kiedy należy używać monitora stanu?
 
-* Do instrumentacji dowolnej aplikacji sieci Web uruchamianej na serwerze usług IIS — nawet jeśli już działa.
-* Aby włączyć dodatkową telemetrię dla aplikacji sieci Web, które zostały [skompilowane przy użyciu zestawu SDK usługi Application Insights](app-insights-asp-net.md) w czasie kompilacji. 
+* Do instrumentacji dowolnej aplikacji internetowej uruchamianej na serwerze usług IIS — nawet jeśli już działa.
+* Aby włączyć dodatkową telemetrię dla aplikacji internetowych, które zostały [skompilowane przy użyciu zestawu SDK usługi Application Insights](app-insights-asp-net.md) w czasie kompilacji. 
 
 ### <a name="can-i-close-it-after-it-runs"></a>Czy można zamknąć go po uruchomieniu?
 
 Tak. Możesz zamknąć go po zakończeniu instrumentacji wybranych witryn sieci Web.
 
-Nie zbiera on telemetrii samodzielnie. Po prostu konfiguruje aplikacje sieci Web i ustawia niektóre uprawnienia.
+Nie zbiera on telemetrii samodzielnie. Po prostu konfiguruje aplikacje internetowe i ustawia niektóre uprawnienia.
 
 ### <a name="what-does-status-monitor-do"></a>Co robi monitor stanu?
 
-Po wybraniu aplikacji sieci Web do instrumentacji za pomocą monitora stanu:
+Po wybraniu aplikacji internetowej do instrumentacji za pomocą monitora stanu:
 
-* Pobiera i umieszcza zestawy usługi Application Insights i pliku config w folderze plików binarnych aplikacji sieci Web.
+* Pobiera i umieszcza zestawy usługi Application Insights i pliku config w folderze plików binarnych aplikacji internetowej.
 * Modyfikuje plik `web.config` w celu dodania modułu śledzenia protokołu HTTP usługi Application Insights.
 * Umożliwia profilowanie aparatu CLR w celu gromadzenia wywołań zależności.
 

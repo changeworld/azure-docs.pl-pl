@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818490"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783155"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ usługi Azure Files jest w pełni zarządzana, wdrażania jej w scenariuszach produkcyjnych jest znacznie prostsze niż we wdrażaniu oraz zarządzaniu nim serwera plików lub urządzeń NAS. W tym artykule opisano tematów, aby wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
@@ -41,7 +41,7 @@ ms.locfileid: "42818490"
 Usługa pliki Azure oferuje dwa, metody, że dostęp do danych można użyć oddzielnie lub w połączeniu ze sobą, dostępu do danych wbudowane, wygodną:
 
 1. **Bezpośredni dostęp do chmury**: udział plików platformy Azure dowolny mogą być instalowane przez [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), i/lub [Linux](storage-how-to-use-files-linux.md) z branży standardowego bloku komunikatów serwera (SMB) Protokół lub za pośrednictwem interfejsu API REST plików. Za pomocą protokołu SMB operacji odczytu i zapisu do plików w udziale są wykonywane bezpośrednio na udział plików na platformie Azure. Aby zainstalować przez maszynę Wirtualną na platformie Azure, klient SMB w systemie operacyjnym musi obsługiwać co najmniej protokół SMB 2.1. Aby zainstalować lokalnie, takich jak na stacji roboczej użytkownika, klient SMB, obsługiwane przez stacji roboczej musi obsługiwać co najmniej protokół SMB 3.0 (przy użyciu szyfrowania). Oprócz protokołu SMB nowych aplikacji lub usług może uzyskać bezpośredniego dostępu udziału plików za pośrednictwem interfejsu REST pliku, który udostępnia interfejs programowania proste i skalowalnych aplikacji do tworzenia oprogramowania.
-2. **Usługa Azure File Sync** (wersja zapoznawcza): za pomocą usługi Azure File Sync, mogą być replikowane udziałów na serwerach Windows w środowisku lokalnym lub na platformie Azure. Użytkownikom dostępu do udziału plików, za pośrednictwem systemu Windows Server, takich jak za pomocą protokołu SMB lub NFS w udziale. Jest to przydatne w scenariuszach, w których dane będą dostępne, a modyfikacji daleko od centrum danych platformy Azure, takie jak w przypadku oddziału firmy. Dane mogą być replikowane między wieloma punkty końcowe serwera systemu Windows, takich jak między wieloma biur oddziałów. Na koniec dane mogą warstwowe do usługi Azure Files, taki sposób, że wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełną kopię danych. Przeciwnie dane są bezproblemowo wywoływane po otwarciu przez użytkowników.
+2. **Usługa Azure File Sync**: za pomocą usługi Azure File Sync, mogą być replikowane udziałów na serwerach Windows w środowisku lokalnym lub na platformie Azure. Użytkownikom dostępu do udziału plików, za pośrednictwem systemu Windows Server, takich jak za pomocą protokołu SMB lub NFS w udziale. Jest to przydatne w scenariuszach, w których dane będą dostępne, a modyfikacji daleko od centrum danych platformy Azure, takie jak w przypadku oddziału firmy. Dane mogą być replikowane między wieloma punkty końcowe serwera systemu Windows, takich jak między wieloma biur oddziałów. Na koniec dane mogą warstwowe do usługi Azure Files, taki sposób, że wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełną kopię danych. Przeciwnie dane są bezproblemowo wywoływane po otwarciu przez użytkowników.
 
 W poniższej tabeli przedstawiono, jak usługi użytkownikom i aplikacjom dostęp do udziału plików platformy Azure:
 

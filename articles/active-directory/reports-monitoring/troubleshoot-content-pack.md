@@ -16,15 +16,19 @@ ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: eafbe25a5a0fa9182030304e9142a6013c9fb29b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: bf50dbf942dc7a82afbb60455be45b6c4b287ccd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060934"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782179"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Rozwiązywanie problemów z działanie usługi Azure Active Directory rejestruje błędy pakietu zawartości 
 
+|  |
+|--|
+|Obecnie pakiet zawartości usługi Azure AD w usłudze Power BI używa interfejsów API programu Graph usługi Azure AD do pobierania danych z dzierżawą usługi Azure AD. W rezultacie może zostać wyświetlony niektóre różnice między danymi, które są dostępne w pakiecie zawartości i dane pobrane przy użyciu [interfejsów API programu Microsoft Graph dla raportowania](concept-reporting-api.md). |
+|  |
 
 Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Directory w wersji zapoznawczej, jest możliwe, że wystąpiły następujące błędy: 
 

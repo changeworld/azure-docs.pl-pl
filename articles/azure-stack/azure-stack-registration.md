@@ -12,19 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: ebf10c7f0fb90d976062300854f69369dba946fa
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340170"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841934"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
 Rejestrowanie usługi Azure Stack przy użyciu platformy Azure umożliwia pobieranie elementów portalu marketplace z platformy Azure i skonfiguruj dane handlu odsyłanie do firmy Microsoft. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure i będzie widoczny w ramach subskrypcji, używane do rejestracji.
+
+Informacje przedstawione w tym artykule opisano rejestrowanie systemów usługi Azure Stack zintegrowane z platformą Azure. Aby uzyskać informacji na temat rejestrowania ASDK z platformą Azure, zobacz [rejestracji w usłudze Azure Stack](.\asdk\asdk-register.md) w dokumentacji ASDK.
 
 > [!IMPORTANT]  
 > Rejestracja jest wymagany do obsługi pełną funkcjonalność usługi Azure Stack, w tym elementy w portalu marketplace oferty. Ponadto można narusza postanowienia licencyjne, jeżeli nie zarejestrujesz się tak, gdy za pomocą modelu rozliczeniowego płatności za użycie w usłudze Azure Stack. Aby dowiedzieć się więcej o usłudze Azure Stack, modele licencjonowania, zobacz [jak strony zakupu](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).

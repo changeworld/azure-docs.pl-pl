@@ -1,25 +1,24 @@
 ---
 title: Instalowanie lokalnej bramy danych — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Jak pobrać i zainstalować lokalną bramę danych, przed uzyskujesz dostęp do danych lokalnych z aplikacji logiki
+description: Zanim uzyskujesz dostęp do danych w środowisku lokalnym, z usługi Azure Logic Apps, pobieranie i instalowanie lokalnej bramy danych
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503652"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842451"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
-Zanim będzie można połączyć aplikacji logiki do lokalnych źródeł danych, Pobierz i zainstaluj lokalną bramę danych na komputerze lokalnym. Brama działa jako mostek zapewniający szybki transfer i danych szyfrowania między źródłami danych w środowisku lokalnym (nie w chmurze) i aplikacji usługi logic apps. W tym artykule pokazano, jak można pobrać, zainstalować i skonfigurować bramę danych lokalnych. 
+Przed nawiązaniem połączenia ze źródłami danych lokalnych z usługi Azure Logic Apps, Pobierz i zainstaluj lokalną bramę danych na komputerze lokalnym. Brama działa jako mostek zapewniający szybki transfer i danych szyfrowania między źródłami danych w środowisku lokalnym (nie w chmurze) i aplikacji usługi logic apps. W tym artykule pokazano, jak można pobrać, zainstalować i skonfigurować bramę danych lokalnych. 
 
 Można użyć tego samego instalacji bramy z innymi usługami, takie jak Power BI, Microsoft Flow, PowerApps i usług Azure Analysis Services. Dowiedz się więcej o [sposobu działania bramy danych](#gateway-cloud-service).
 
@@ -52,7 +51,11 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* A [konto służbowe](../active-directory/fundamentals/sign-up-organization.md) zawierający [subskrypcji platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer). Podczas instalacji bramy możesz Zaloguj się do tego konta, dzięki czemu można skojarzyć instalacji bramy z subskrypcją platformy Azure. Później możesz również użyć tego samego konta podczas tworzenia zasobu platformy Azure dla instalacji bramy w witrynie Azure portal. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* A [konto służbowe](../active-directory/fundamentals/sign-up-organization.md) zawierający [subskrypcji platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) 
+
+  Podczas instalacji bramy możesz Zaloguj się do tego konta, dzięki czemu można skojarzyć instalacji bramy z subskrypcją platformy Azure. 
+  Później możesz również użyć tego samego konta podczas tworzenia zasobu platformy Azure dla instalacji bramy w witrynie Azure portal. 
+  Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
 
 * Poniżej przedstawiono wymagania dotyczące komputera lokalnego:
 
@@ -72,8 +75,7 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
     > [!TIP]
     > Aby zminimalizować czas oczekiwania, możesz zainstalować bramę jak najbliżej źródła danych lub na tym samym komputerze, przy założeniu, że masz uprawnienia.
 
-  * Zainstaluj bramę na komputerze, na który *nie* wyłączyć, przechodzi w tryb uśpienia lub połączyć się z Internetem. Bramy nie można uruchomić w tych warunkach. 
-  Wydajność bramy również może ulec pogorszeniu w sieci bezprzewodowej.
+  * Zainstaluj bramę na komputerze, który jest połączony z Internetem, zawsze włączone i *nie* Przejdź w tryb uśpienia. W przeciwnym razie nie można uruchomić bramy. Ponadto może to spowodować obniżenie wydajności w sieci bezprzewodowej.
 
   * Podczas instalacji, można się zarejestrować tylko przy użyciu [konto służbowe](../active-directory/sign-up-organization.md) zarządzanym usługi Azure Active Directory (Azure AD), a nie konta Microsoft. 
   Ponadto upewnij się, że to konto nie jest B2B w usłudze Azure konta (Gość). 

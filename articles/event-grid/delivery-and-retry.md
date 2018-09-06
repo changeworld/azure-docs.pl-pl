@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005399"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841596"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie 
 
@@ -35,19 +35,20 @@ Następujące kody odpowiedzi HTTP wskazują, że zdarzenia został pomyślnie d
 
 ### <a name="failure-codes"></a>Kody błędów
 
-Następujące kody odpowiedzi HTTP wskazują, że próby dostarczenia zdarzeń nie powiodło się. 
+Następujące kody odpowiedzi HTTP wskazują, że próby dostarczenia zdarzeń nie powiodło się.
 
 - 400 Niewłaściwe żądanie
 - 401 Brak autoryzacji
 - 404 — Nie odnaleziono
 - 408 Limit czasu żądania
+- Jednostka 413 żądania jest zbyt duża
 - Identyfikator URI 414 za długa
 - 429 zbyt wiele żądań
 - 500 — wewnętrzny błąd serwera
 - 503 — usługa niedostępna
 - 504 — limit czasu bramy
 
-Jeśli odbierze usługi Event Grid błąd, który wskazuje punkt końcowy jest tymczasowo niedostępna lub przyszłe żądania może się powieść, spróbuje ponownie wysłać zdarzenie. Jeśli usługi Event Grid odbiera komunikat o błędzie wskazujący dostarczanie nigdy nie powiedzie się, a jeśli tak, to a [utraconych punkt końcowy został skonfigurowany](manage-event-delivery.md), wysyła zdarzenie do endpoint utraconych wiadomości. 
+Jeśli masz [skonfigurowany punkt końcowy utraconych](manage-event-delivery.md) i Event Grid odbiera albo Stany typu 400 lub 413 kod odpowiedzi, usługa Event Grid natychmiast wysyła zdarzenia do punktu końcowego utraconych wiadomości. W przeciwnym razie usługi Event Grid ponawia próbę wszystkie błędy.
 
 ## <a name="retry-intervals-and-duration"></a>Interwałami ponawiania prób i czas trwania
 

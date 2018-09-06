@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665089"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842474"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -31,13 +31,11 @@ Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je]
 
 1. Zaloguj się do [portal Custom Voice](https://customvoice.ai) przy użyciu tego samego konta Microsoft, służy do zastosowania do uzyskiwania dostępu.
 
-2. Przejdź do "Subskrypcje" pod nazwą Twojego konta w prawym górnym rogu.
+2. Przejdź do wszystkich subskrypcji, pod nazwą Twojego konta w prawym górnym rogu.
 
     ![Subskrypcje](media/custom-voice/subscriptions.png)
 
 3. Na stronie "Subskrypcje" wybierz pozycję "Połącz istniejącą subskrypcję".
-
-     ![Łączenie istniejącej subskrypcji](media/custom-voice/connect-existing-sub.png)
 
 4. Wklej swój klucz subskrypcji do tabeli, jak pokazano poniżej. Każda subskrypcja ma dwa klucze i mogą korzystać z każdej z nich.
 
@@ -122,7 +120,7 @@ Po przygotowaniu usługi archiwum plików audio i zapisy, przekazać je za pośr
 > [!NOTE]
 > Użytkownicy bezpłatnej subskrypcji można przekazać dwa zestawy danych w danym momencie. Użytkownicy subskrypcji standardowej jednocześnie przekazać pięć zestawów danych. Jeśli przekroczysz limit, zaczekaj co najmniej jeden z zestawów danych zakończeniu importowania, spróbuj ponownie.
 
-Po zakończeniu przekazywania tabeli Moje danych głosowych pojawi się ponownie. Powinien zostać wyświetlony wpis, który odnosi się do zestawu danych po prostu przekazać. 
+Po zakończeniu przekazywania tabeli Moje danych głosowych pojawi się ponownie. Powinien zostać wyświetlony wpis, który odnosi się do zestawu danych po prostu przekazać.
 
 Zestawy danych są automatycznie zweryfikowana, po przekazywania. Sprawdzanie poprawności danych obejmuje szereg kontroli plików audio, aby sprawdzić ich format pliku, rozmiar i częstotliwość próbkowania. Kontroli nad plikami transkrypcji Sprawdź format pliku i wykonywania niektórych normalizacji tekstu. Wypowiedzi są zapisywane przy użyciu funkcji rozpoznawania mowy, a tekst wynikowy jest porównywana z transkrypcji, podane.
 
@@ -189,17 +187,11 @@ Szkolenie czasu różni się zależnie od ilości przetworzonych danych audio. T
 
 ## <a name="test-your-voice-font"></a>Testowanie czcionki głosowe
 
-Po pomyślnym utworzeniu czcionki głosowe mogli ją przetestować, przed jego wdrożeniem. Kliknij przycisk **testu** w kolumnie operacji. Strona testowa pojawia się dla czcionka głosowa wybrane. Tabela jest pusta, jeśli jeszcze nie przesłano żadnych żądań testu dla głosu.
-
-![Czcionki głosowe, część 2](media/custom-voice/my-voice-fonts2.png)
+Po pomyślnym utworzeniu czcionki głosowe mogli ją przetestować, przed jego wdrożeniem. Kliknij przycisk **testu** w kolumnie operacje tabeli Moje czcionki głosowe. Strona testowa pojawia się dla czcionka głosowa wybrane. Tabela jest pusta, jeśli jeszcze nie przesłano żadnych żądań testu dla głosu.
 
 Kliknij przycisk **testu z tekstem** pod tytuł tabeli, aby wyświetlić menu rozwijane do przesyłania żądań tekstu przycisku. Możesz przesłać żądanie testu w postaci zwykłego tekstu lub SSML. Maksymalny rozmiar danych wejściowych wynosi 1024 znaków, w tym wszystkie tagi SSML żądania. Język tekstu musi być taka sama jak język czcionki głosowe.
 
-![Głosu testowania czcionki](media/custom-voice/voice-font-testing.png)
-
 Po wypełniając pole tekstowe i potwierdzając tryb wprowadzania, kliknij przycisk **tak** przesłać żądanie testu, a następnie wróć do strony testowej. Tabela zawiera teraz wpis, który odnosi się do nowego żądania, a w kolumnie Stan znane obecnie. Może potrwać kilka minut, aby syntetyzowania mowy. Gdy w kolumnie Stan odczytuje zakończone powodzeniem, możesz pobrać wprowadzanie tekstu ( `.txt` pliku) i danych wyjściowych audio ( `.wav` pliku) i audition jego jakość.
-
-![Testowanie czcionki głosowe, część 2](media/custom-voice/voice-font-testing2.png)
 
 ## <a name="create-and-use-a-custom-endpoint"></a>Tworzenie i używanie niestandardowego punktu końcowego
 

@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886564"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782247"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitor Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
 ![Symbol usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności baz danych SQL Azure na dużą skalę z przekraczaniem wielu pul elastycznych i subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy wydajności, rozwiązywanie problemów z na górze. 
+Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności bazy danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę na dużą skalę i w ramach wielu subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
 
-Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics używa do prezentowania danych dotyczących wszystkich baz danych Azure SQL Database i elastycznych pul w jeden obszar roboczy usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
+Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Aby przedstawić dane dotyczące wszystkich usługi Azure SQL bazy danych, pul elastycznych i baz danych w wystąpieniach zarządzanych w jeden obszar roboczy usługi Log Analytics używa metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
 
-Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 150 000 baz danych SQL Azure i 5000 pule elastyczne SQL danego obszaru roboczego.
+Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 200 000 baz danych SQL Azure i 5000 pule elastyczne SQL danego obszaru roboczego.
 
 Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
 
@@ -39,9 +39,9 @@ Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i 
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Usługa Azure SQL Analytics to monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure i pul elastycznych w chmurze. Ponieważ agenci nie korzysta się z usługą Log Analytics, rozwiązanie nie obsługuje łączność z Windows, Linux lub zasobów programu SCOM, zobacz w poniższej tabeli zgodności.
+Usługa Azure SQL Analytics to tylko monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę w chmurze. Zgodnie z agentów nie korzysta się z usługą Log Analytics, rozwiązanie nie obsługują monitorowanie maszyn wirtualnych lub lokalnych serwerach SQL, zobacz w poniższej tabeli zgodności.
 
-| Połączone źródło | Pomoc techniczna | Opis |
+| Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
 | **[Diagnostyka Azure](log-analytics-azure-storage.md)** | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
 | [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |

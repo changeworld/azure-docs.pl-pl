@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a94c3a4c4b8ffb22b1d75ca064bd3e48a2e50141
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005682"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841866"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie serwerami logicznymi i pojedynczych baz danych w usłudze Azure SQL Database 
 
@@ -156,10 +156,7 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapór, 
 |[Serwery — aktualizacja](/rest/api/sql/servers/update)|Aktualizuje istniejący serwer.|
 |[Bazy danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
 |[Bazy danych — Get](/rest/api/sql/databases/get)|Pobiera bazy danych.|
-|[Bazy danych — uzyskać za pomocą elastycznej puli](/rest/api/sql/databases/getbyelasticpool)|Pobiera bazy danych w puli elastycznej.|
-|[Bazy danych — uzyskać za pomocą zalecanej puli elastycznej](/rest/api/sql/databases/getbyrecommendedelasticpool)|Pobiera bazy danych wewnątrz recommented puli elastycznej.|
 |[Bazy danych — listę według puli elastycznej](/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — listę według zalecanej puli elastycznej](/rest/api/sql/databases/listbyrecommendedelasticpool)|Zwraca listę baz danych w zalecanej puli elastycznej.|
 |[Bazy danych — lista przez serwer](/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
 |[Bazy danych — aktualizacja](/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
 |[Reguły - zapory Utwórz lub zaktualizuj](/rest/api/sql/firewallrules/createorupdate)|Tworzy lub aktualizuje reguły zapory.|

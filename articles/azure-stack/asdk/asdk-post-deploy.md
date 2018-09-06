@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057344"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840273"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -140,16 +140,6 @@ Testy potrwać kilka minut. Jeśli instalacja się powiodła, dane wyjściowe wy
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 Jeśli wystąpił błąd, wykonaj kroki rozwiązywania problemów w celu uzyskania pomocy.
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>Uaktywnianie portali administratora i dzierżawy
-Po wdrożenia, które używają usługi Azure AD możesz aktywować zarówno usługi Azure Stack administratora i dzierżawy portali. Aktywacja wyraża zgodę dające w portalu Azure Stack i Azure Resource Manager odpowiednie uprawnienia (na liście na stronie zgoda) do wszystkich użytkowników katalogu.
-
-- Portal administratora, przejdź do https://adminportal.local.azurestack.external/guest/signup, przeczytaj informacje, a następnie kliknij **Akceptuj**. Po zaakceptowaniu, możesz dodać administratorów usługi, którzy nie są również administratorami dzierżawy katalogu.
-
-- Przejdź do portalu dzierżawcy do https://portal.local.azurestack.external/guest/signup, przeczytaj informacje, a następnie kliknij **Akceptuj**. Po zaakceptowaniu, użytkownicy, w katalogu mogą logować się do portalu dzierżawcy. 
-
-> [!NOTE] 
-> Jeśli nie jest aktywowany portali, tylko administrator katalogu można Zaloguj się i używać portali. Jeśli inny użytkownik się zaloguje, zobaczą błąd, który informuje, że administrator nie ma przyznane uprawnienia do innych użytkowników. Administrator nie natywnie należy do katalogu, w którym usługi Azure Stack jest zarejestrowana w celu, w katalogu usługi Azure Stack musi być dołączany do adresem URL aktywacji. Na przykład, jeśli zarejestrowano fabrikam.onmicrosoft.com i administratora usługi Azure Stack jest admin@contoso.com, przejdź do https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com można aktywować w portalu. 
 
 ## <a name="reset-the-password-expiration-policy"></a>Resetuj zasady wygasania haseł 
 Po wdrożeniu ASDK, aby upewnić się, że hasło dla hosta kit rozwoju nie wygasa przed zakończeniem okresu Twojej oceny, wykonaj następujące kroki.

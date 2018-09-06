@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31b137cca55b1dd249368ba5e287496582152c9f
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382664"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781864"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Przywracanie usługi Azure SQL Data Warehouse 
-W tym artykule dowiesz się, jak wykonać następujące czynności:
+W tym artykule dowiesz się, jak wykonać następujące czynności w witrynie Azure portal i programu PowerShell:
 
 - Utwórz punkt przywracania
 - Przywróć z punktu przywracania automatyczne lub punkt przywracania zdefiniowanych przez użytkownika
@@ -33,12 +33,12 @@ W tym artykule dowiesz się, jak wykonać następujące czynności:
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 **Sprawdź wydajność jednostek DTU.** Każda usługa SQL Data Warehouse jest obsługiwana przez serwer SQL (np. myserver.database.windows.net), która ma domyślny limit przydziału jednostek DTU.  Zanim można przywrócić bazę danych SQL data warehouse, upewnij się, że program SQL server ma wystarczającą ilość pozostały limit przydziału jednostek DTU dla przywracana baza danych. Aby dowiedzieć się, jak obliczyć potrzebnych jednostek DTU lub zażądać więcej jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].
 
-# <a name="restore-through-powershell"></a>Przywracanie przy użyciu programu PowerShell
+## <a name="restore-through-powershell"></a>Przywracanie przy użyciu programu PowerShell
 
 ## <a name="install-powershell"></a>Instalowanie programu PowerShell
 Aby można było używać programu Azure PowerShell z usługą SQL Data Warehouse, należy zainstalować program Azure PowerShell w wersji 1.0 lub nowszej.  Wersję można sprawdzić, uruchamiając **Get-Module - ListAvailable-Name AzureRM**.  Najnowszą wersję można zainstalować z [Instalatora platformy sieci Web firmy Microsoft][Microsoft Web Platform Installer].  Aby uzyskać więcej informacji na temat instalowania najnowszej wersji, zobacz [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Jak zainstalować i skonfigurować program Azure PowerShell).
 
-## <a name="restore-an-active-or-paused-database"></a>Przywracanie bazy danych programu active lub wstrzymana
+## <a name="restore-an-active-or-paused-database-using-powershell"></a>Przywracanie aktywnych lub wstrzymania bazy danych przy użyciu programu PowerShell
 Aby przywrócić bazę danych przed użyciem punktu przywracania [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet programu PowerShell.
 
 1. Otwórz program Windows PowerShell.
@@ -94,7 +94,7 @@ $RestoredDatabase.status
 > Po zakończeniu przywracania odzyskanej bazy danych można skonfigurować, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
 >
 
-## <a name="copy-your-data-warehouse-with-user-defined-restore-points"></a>Skopiuj magazynowi danych punktów przywracania zdefiniowanych przez użytkownika
+## <a name="copy-your-data-warehouse-with-user-defined-restore-points-using-powershell"></a>Skopiuj magazyn danych z punktów przywracania zdefiniowanych przez użytkownika przy użyciu programu PowerShell
 Aby przywrócić bazę danych przed użyciem punktu przywracania użytkownika [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet programu PowerShell.
 
 1. Otwórz program Windows PowerShell.
@@ -102,10 +102,10 @@ Aby przywrócić bazę danych przed użyciem punktu przywracania użytkownika [R
 3. Wybierz subskrypcję, która zawiera bazę danych do przywrócenia.
 4. Utworzenie punktu przywracania dla Natychmiastowa kopia bazy danych
 5. Zmień nazwę bazy danych na nazwę tymczasową.
-5. Pobierz najnowszy punkt przywracania przez określony RestorePointLabel.
-6. Pobierz identyfikator zasobu bazy danych można zainicjować operacji przywracania
-6. Przywróć bazę danych do punktu przywracania żądaną.
-7. Sprawdź, czy przywróconej bazy danych jest w trybie online.
+6. Pobierz najnowszy punkt przywracania przez określony RestorePointLabel.
+7. Pobierz identyfikator zasobu bazy danych można zainicjować operacji przywracania
+8. Przywróć bazę danych do punktu przywracania żądaną.
+9. Sprawdź, czy przywróconej bazy danych jest w trybie online.
 
 ```Powershell
 
@@ -142,7 +142,7 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
+## <a name="restore-a-deleted-database-using-powershell"></a>Przywracanie usuniętej bazy danych przy użyciu programu PowerShell
 Aby przywrócić usuniętą bazę danych, należy użyć [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet.
 
 1. Otwórz program Windows PowerShell.
@@ -177,7 +177,7 @@ $RestoredDatabase.status
 > Po zakończeniu przywracania odzyskanej bazy danych można skonfigurować, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
 >
 
-## <a name="restore-from-an-azure-geographical-region"></a>Przywróć z regionu geograficznego platformy Azure
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Przywróć z regionu geograficznego platformy Azure przy użyciu programu PowerShell
 Aby odzyskać bazę danych, należy użyć [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] polecenia cmdlet.
 
 > [!NOTE]
@@ -212,9 +212,9 @@ $GeoRestoredDatabase.status
 
 Odzyskanej bazy danych będzie włączona funkcja TDE źródłowa baza danych jest włączona funkcja TDE.
 
-# <a name="restore-through-the-azure-portal"></a>Przywracanie w witrynie Azure Portal
+## <a name="restore-through-the-azure-portal"></a>Przywracanie w witrynie Azure portal
 
-## <a name="create-a-user-defined-restore-point"></a>Utwórz punkt przywracania zdefiniowanych przez użytkownika
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Utwórz punkt przywracania zdefiniowanych przez użytkownika przy użyciu witryny Azure portal
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 
 2. Przejdź do magazynu danych SQL, który chcesz utworzyć punkt przywracania dla.
@@ -222,37 +222,37 @@ Odzyskanej bazy danych będzie włączona funkcja TDE źródłowa baza danych je
 3. W górnej części bloku przeglądu, wybierz **+ nowy punkt przywracania**.
 
     ![Nowy punkt przywracania](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
-    
+
 4. Określ nazwę dla tego punktu przywracania.
 
     ![Nazwa punktu przywracania](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database"></a>Przywracanie bazy danych programu active lub wstrzymana
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Przywracanie aktywnych lub wstrzymania bazy danych przy użyciu witryny Azure portal
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 2. Przejdź do magazynu danych SQL, który chcesz przywrócić z.
 3. W górnej części bloku przeglądu, wybierz **przywrócić**.
 
     ![ Omówienie przywracania kopii zapasowych](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
-    
+
 4. Wybierz opcję **punkty przywracania na automatyczne** lub **zdefiniowanych przez użytkownika punktów przywracania**.
 
     ![Automatyczne punkty przywracania](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-    
+
 5. Dla punktów przywracania User-defined **wybierz punkt przywracania** lub **utworzyć nowy punkt przywracania użytkownika**.
 
     ![Punkty przywracania zdefiniowanych przez użytkownika](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Przywracanie usuniętej bazy danych przy użyciu witryny Azure portal
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 2. Przejdź do usuniętej bazy danych była hostowana na serwerze SQL.
 3. Wybierz ikonę bazy danych usunięto w spisie treści.
 
     ![Usunięte bazy danych](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_0.png)
-    
+
 4. Wybierz usuniętej bazy danych, który chcesz przywrócić.
 
     ![Wybierz usuniętych baz danych](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_1.png)
-    
+
 5. Określ nazwę nowej bazy danych.
 
     ![Określ nazwę bazy danych](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_2.png)

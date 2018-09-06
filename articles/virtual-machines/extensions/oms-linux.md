@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 09/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 58827e8abd6394b1c9359ecbabbee37193a34706
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 858c586151c8a0dd5378794a5057c22a423c43cf
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414298"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782743"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
 
@@ -36,18 +36,24 @@ Rozszerzenia Log Analytics Agent mogą być uruchamiane względem tych dystrybuc
 
 | Dystrybucja | Wersja |
 |---|---|
-| CentOS Linux | 5, 6 i 7 — x86/x64 64 |
-| Oracle Linux | 5, 6 i 7 — x86/x64 64 |
-| Red Hat Enterprise Linux Server | 5, 6 i 7 — x86/x64 64 |
-| Debian GNU/Linux | 6, 7, 8 i 9 — x86/x64 64 |
-| Ubuntu | 12.04 LTS, 14.04 LTS, 16.04 LTS — x86/x64 64 |
-| SUSE Linux Enterprise Server | 11 i 12 — x86/x64 64 |
+| CentOS Linux | 6 i 7 — x86/x64 64 |
+| Amazon Linux | 2017.09 | 
+| Oracle Linux | 6 i 7 — x86/x64 64 |
+| Red Hat Enterprise Linux Server | 6 i 7 — x86/x64 64 |
+| Debian GNU/Linux | 8 i 9 — x86/x64 64 |
+| Ubuntu | 14.04 LTS, 16.04 LTS i 18.04 LTS — x86/x64 64 |
+| SUSE Linux Enterprise Server | 12 — x86/x64 64 |
+
+>[!NOTE]
+>Niższa niż wersja biblioteki OpenSSL 1.x nie jest obsługiwane na dowolnej platformie i wersji 1.10 jest obsługiwana tylko na platformach x86_64 (64-bitowe).  
+>
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
 Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Log Analytics i Log Analytics Agent pakietu dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
 | Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dziennika | 
 |--------------------------------|--------------------------|
+| 1.7.7 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
@@ -84,7 +90,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -102,7 +108,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 | apiVersion | 2015-06-15 |
 | Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.6 |
+| typeHandlerVersion | 1.7 |
 | Identyfikator obszaru roboczego (np.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | klucz workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -127,7 +133,7 @@ W poniższym przykładzie założono, że rozszerzenie maszyny Wirtualnej jest z
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -152,7 +158,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +179,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.6 --protected-settings '{"workspaceKey": "omskey"}' \
+  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
   --settings '{"workspaceId": "omsid"}'
 ```
 
@@ -200,12 +206,11 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 | 9 | Wywołuje się przedwcześnie enable | [Aktualizacja agenta systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
 | 10 | Maszyna wirtualna jest już połączona z obszarem roboczym usługi Log Analytics | Aby połączyć maszynę Wirtualną do obszaru roboczego, określona w schemacie rozszerzenia, ustaw stopOnMultipleConnections na wartość false w ustawieniach publicznych tej właściwości lub Usuń. Ta maszyna wirtualna jest naliczana po dla każdego obszaru roboczego jest połączony. |
 | 11 | Nieprawidłowa konfiguracja dostarczane do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
-| 12 | Menedżer pakietów serwerach jest zablokowany. | Upewnij się, wszystkich serwerach operacje aktualizacji na komputerze została zakończona, a następnie spróbuj ponownie. |
 | 17 | Niepowodzenia instalacji pakietu OMS | 
 | 19 | Niepowodzenia instalacji pakietu OMI | 
 | 20 | Niepowodzenia instalacji pakietu SCX |
 | 51 | To rozszerzenie nie jest obsługiwane na system operacyjny maszyny Wirtualnej | |
-| 55 | Nie można nawiązać połączenia z usługą Microsoft Operations Management Suite | Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego. |
+| 55 | Nie można nawiązać połączenia do usługi OMS, wymagane pakiety, brak lub serwerach pakietu Menedżera jest zablokowany| Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego i sprawdź, czy są zainstalowane narzędzia programu curl i tar. |
 
 Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć na [przewodnik rozwiązywania problemów w pakiecie OMS Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 

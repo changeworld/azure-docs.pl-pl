@@ -1,6 +1,6 @@
 ---
-title: Kontrolę zasobów, ról i dostępu w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Właściciele, współautorzy i czytelnicy wgląd w organizacji.
+title: Zasoby, role i kontrolę dostępu w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Właściciele, współautorzy i czytelnicy wglądu w szczegółowe dane Twojej organizacji.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,72 +10,94 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2017
+ms.topic: conceptual
+ms.date: 09/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ea0879e9b67a27f437b1d59a1b0998c770f5f0
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842969"
 ---
-# <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, ról i kontroli dostępu w usłudze Application Insights
-Można kontrolować, kto ma odczytywanie i aktualizowanie dostępu do danych na platformie Azure [usługi Application Insights][start], za pomocą [kontroli dostępu opartej na rolach w systemie Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+# <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, role i kontrola dostępu w usłudze Application Insights
+
+Można kontrolować, kto ma do odczytu i aktualizacji dostępu do danych na platformie Azure [usługi Application Insights][start], za pomocą [kontroli dostępu opartej na rolach w systemie Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 
 > [!IMPORTANT]
-> Przypisywanie dostępu dla użytkowników w **grupy zasobów lub subskrypcji** do której należy zasób aplikacji — nie w zasobie samej siebie. Przypisz **współautora składników usługi Application Insights** roli. Dzięki temu uniform kontroli dostępu do testów sieci web i alerty wraz z zasobu aplikacji. [Dowiedz się więcej](#access).
-> 
-> 
+> Przypisywanie dostępu do użytkowników w **grupy zasobów lub subskrypcji** do której należy dany zasób aplikacji — nie w samym zasobem. Przypisz **współautora składników usługi Application Insights** roli. Dzięki temu jednolitego kontroli dostępu do testów sieci web i alerty wraz z dany zasób aplikacji. [Dowiedz się więcej](#access).
 
-## <a name="resources-groups-and-subscriptions"></a>Zasoby, grup i subskrypcji
+## <a name="resources-groups-and-subscriptions"></a>Zasoby, grupy i subskrypcje
+
 Pierwszy, definicje:
 
-* **Zasób** — wystąpienie usługi Microsoft Azure. Zasób usługi Application Insights gromadzi, analizuje i wyświetla danych telemetrycznych wysłanych z aplikacji.  Inne typy zasobów platformy Azure obejmują aplikacje sieci web, bazy danych i maszyn wirtualnych.
+* **Zasób** — wystąpienie usługi Microsoft Azure. Zasób usługi Application Insights zbiera, analizuje i wyświetla dane telemetryczne wysyłane z aplikacji.  Inne typy zasobów platformy Azure obejmują aplikacje sieci web, baz danych i maszyn wirtualnych.
   
-    Aby wyświetlić zasoby, otwórz [Azure Portal][portal], zaloguj się i kliknij pozycję wszystkie zasoby. Aby znaleźć zasobu, wpisz część nazwy w polu filtru.
+    Aby wyświetlić swoje zasoby, otwórz [witryny Azure portal][portal], zaloguj się i kliknij pozycję wszystkie zasoby. Aby odnaleźć zasób, wpisz część nazwy w polu filtru.
   
     ![Lista zasobów platformy Azure](./media/app-insights-resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**Grupa zasobów** ] [ group] — każdy zasób należy do jednej grupy. Grupa jest wygodnym sposobem zarządzania powiązane zasoby, szczególnie dla kontroli dostępu. Na przykład w jednej grupy zasobów można umieścić w aplikacji sieci Web, zasobu usługi Application Insights do monitorowania aplikacji i zasobów magazynu, należy wyeksportowane dane.
+* [**Grupa zasobów** ] [ group] — każdy zasób należy do jednej grupy. Grupa jest wygodny sposób zarządzać powiązanymi zasobami, szczególnie w przypadku kontroli dostępu. Na przykład w jednej grupie zasobów można umieścić aplikacji sieci Web, zasób usługi Application Insights do monitorowania aplikacji i zasobów magazynu, zapewnienie wyeksportowane dane.
 
-    ![Kliknij przycisk Przeglądaj, grupy zasobów, a następnie wybierz grupę](./media/app-insights-resources-roles-access-control/11-group.png)
+* [**Subskrypcja** ](https://portal.azure.com) — aby za pomocą usługi Application Insights lub innych zasobów platformy Azure, możesz zarejestrować się w ramach subskrypcji platformy Azure. Każda grupa zasobów należy do jednej subskrypcji platformy Azure, w którym wybierz pakiet cen i, jeśli subskrypcji organizacji, wybierz członków i uprawnień dostępu.
+* [**Konto Microsoft** ] [ account] — nazwa użytkownika i hasło, którego używasz do logowania się na Microsoft Azure subskrypcje, usługi XBox Live, Outlook.com i innych usług firmy Microsoft.
 
-* [**Subskrypcja** ](https://portal.azure.com) — Aby używać usługi Application Insights lub innych zasobów platformy Azure, zaloguj się do subskrypcji platformy Azure. Każda grupa zasobów należy do jednej subskrypcji platformy Azure, które wybierz pakiet ceny i, jeśli jest subskrypcji organizacji wybrać członków i uprawnień dostępu.
-* [**Konto Microsoft** ] [ account] — nazwa użytkownika i hasło, którego używasz do logowania się na Microsoft Azure subskrypcji, XBox Live, Outlook.com i innych usług firmy Microsoft.
+## <a name="access"></a> Kontrola dostępu w grupie zasobów
 
-## <a name="access"></a> Kontroli dostępu w grupie zasobów
-Należy zrozumieć, oprócz zasobów utworzonej dla aplikacji, czy też oddzielne zasoby ukryte alertów i testy sieci web. Są one dołączone do tej samej [grupy zasobów](#resource-group) jako aplikacji. Może również umieszczono innymi usługami Azure w nim, takich jak magazyny lub witryn sieci Web.
+Jest ważne dowiedzieć się, że oprócz zasób, który został utworzony dla aplikacji, istnieją także osobne zasoby ukryte alerty i testy sieci web. Są one dołączone do tej samej [grupy zasobów](#resource-group) jako aplikację. Może również umieszczono innymi usługami Azure tam, takich jak witryny sieci Web lub magazynu.
 
-![Zasoby w usłudze Application Insights](./media/app-insights-resources-roles-access-control/00-resources.png)
+Aby kontrolować dostęp do tych zasobów w związku z tym zalecane jest:
 
-Aby kontrolować dostęp do tych zasobów w związku z tym zaleca się:
+* Kontrola dostępu na **grupy zasobów lub subskrypcji** poziom.
+* Przypisz **Współautor składnika usługi Application Insights** ról do użytkowników. Uprawnienie pozwoli im edytować testy sieci web, alerty i zasoby usługi Application Insights bez podawania dostępu do innych usług, w grupie.
 
-* Kontrola dostępu w **grupy zasobów lub subskrypcji** poziom.
-* Przypisz **współautora Application Insights składnika** roli do użytkowników. Umożliwia im to edytować testy sieci web, alerty i zasobów usługi Application Insights, bez konieczności podawania dostępu do innych usług w grupie.
+## <a name="to-provide-access-to-another-user"></a>Aby uzyskać dostęp do innego użytkownika
 
-## <a name="to-provide-access-to-another-user"></a>Aby zapewnić dostęp do innego użytkownika
-Musi mieć prawa właściciela subskrypcji lub grupy zasobów.
+Musisz mieć uprawnienia właściciela do subskrypcji lub grupy zasobów.
 
-Użytkownik musi mieć [Account Microsoft][account], lub dostęp do ich [Account Microsoft organizacji](../active-directory/sign-up-organization.md). Można zapewnić dostęp do osób, a także do grup użytkowników zdefiniowanych w usłudze Azure Active Directory.
+Użytkownik musi mieć [Account Microsoft][account], lub dostęp do ich [Account organizacji Microsoft](../active-directory/fundamentals/sign-up-organization.md). Można zapewnić dostęp do osób i grup użytkowników zdefiniowanych w usłudze Azure Active Directory.
 
-#### <a name="navigate-to-the-resource-group"></a>Przejdź do grupy zasobów
-Dodaj użytkownika istnieje.
+#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Przejdź do grupy zasobów lub bezpośrednio z samego zasobu
 
-![W bloku zasobów aplikacji otwórz Essentials, otwórz grupę zasobów, a wybierz ustawienia/użytkowników. Kliknij pozycję Add (Dodaj).](./media/app-insights-resources-roles-access-control/01-add-user.png)
+Wybierz **kontrola dostępu (IAM)** z menu po lewej stronie.
 
-Lub może do góry innego poziomu i dodać użytkownika do subskrypcji.
+![Zrzut ekranu dostęp do przycisku sterowania w witrynie Azure portal](./media/app-insights-resources-roles-access-control/0001-access-control.png)
 
-#### <a name="select-a-role"></a>Wybieranie roli
-![Wybierz rolę dla nowego użytkownika](./media/app-insights-resources-roles-access-control/03-role.png)
+Wybierz **Dodaj**
+
+![Zrzut ekranu dostęp do menu sterowania za pomocą przycisku Dodaj wyróżniony czerwonym kolorem](./media/app-insights-resources-roles-access-control/0002-add.png)
+
+**Dodaj uprawnienia** widoku poniżej dotyczy przede wszystkim do zasobów usługi Application Insights, w przypadku był wyświetlany uprawnień kontroli dostępu z wyższego poziomu, takich jak grupy zasobów widział dodatkowe nienależącym do aplikacji Role skoncentrowane na szczegółowych informacji.
+
+Aby wyświetlić informacje o wszystkich kontroli dostępu opartej na rolach na platformie Azure, Użyj wbudowanych ról [zawartość dokumentacji oficjalnego](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+
+![Lista ról użytkownika kontroli zrzut ekranu z dostępu](./media/app-insights-resources-roles-access-control/0003-user-roles.png)
+
+#### <a name="select-a-role"></a>Wybierz rolę
+
+Gdy to stosowne, można przejść do skojarzonego dokumentacji oficjalnego.
 
 | Rola | W grupie zasobów |
 | --- | --- |
-| Właściciel |Można zmienić wszystko, w tym dostępu użytkownika |
-| Współautor |Można edytować wszystko, w tym wszystkie zasoby |
-| Współautor Insights składnika aplikacji |Można edytować zasobów usługi Application Insights, testy sieci web i alerty |
-| Czytelnik |Można wyświetlać, ale nie zmienia sytuacji |
+| [Właściciel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Mogą wprowadzać dowolne zmiany, łącznie z dostępem użytkownika. |
+| [Współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Można edytować żadnych wraz ze wszystkimi zasobami. |
+| [Współautor składników usługi Insights aplikacji](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Można edytować zasoby usługi Application Insights, testy sieci web i alerty. |
+| [Czytelnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Można wyświetlać, ale nie nastąpią żadne zmiany. |
+| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie korzystanie z funkcji Application Insights Snapshot Debugger. Należy pamiętać, że tej roli znajduje się w roli właściciela ani współautora. |
+| Współautor zarządzania wersjami wdrażania usługi platformy Azure | Roli współautora dla usług wdrażania za pomocą wdrażania usługi Azure. |
+| [Purger danych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Specjalne rola przeczyszczania danych osobowych. Zobacz nasze [wskazówki dotyczące danych osobowych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Aby uzyskać więcej informacji.   |
+| Administrator usługi ExpressRoute | Można tworzyć delete i Zarządzaj trasami platformy express.|
+| [Współautor usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure.  |
+| [Czytelnik usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
+| masterreader | Umożliwia użytkownikowi przeglądać wszystko, ale nie wprowadzać zmian. |
+| [Współautor monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Może odczytywać wszystkie dane monitorowania i aktualizować ustawienia monitorowania. |
+| [Monitorowanie metryk wydawcy](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Umożliwia publikowanie metryk dotyczących zasobów platformy Azure. |
+| [Czytelnik monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Może odczytywać wszystkie dane monitorowania. |
+| Współautor zasad zasobów (wersja zapoznawcza) | Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, Utwórz bilet pomocy technicznej i odczytu zasobów/hierarchii.  |
+| [Administrator dostępu użytkowników](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Umożliwia użytkownikowi zarządzanie dostępem dla innych użytkowników do zasobów platformy Azure.|
+| [Współautor witryny sieci Web](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Umożliwia zarządzanie witrynami sieci Web (nie planami sieci web), ale nie umożliwia uzyskiwania dostępu do nich...|
 
 "Edycja" obejmuje tworzenie, usuwanie i aktualizowanie:
 
@@ -86,10 +108,10 @@ Lub może do góry innego poziomu i dodać użytkownika do subskrypcji.
 
 #### <a name="select-the-user"></a>Wybierz użytkownika
 
-Jeśli użytkownik, który ma nie znajduje się w katalogu, możesz poprosić każda osoba z kontem Microsoft.
-(Jeśli korzystają z usług takich jak Outlook.com, OneDrive, Windows Phone lub XBox Live, mają konta Microsoft.)
+Jeśli użytkownik, który ma nie znajduje się w katalogu, możesz zaprosić każda osoba mająca konto Microsoft.
+(Jeśli korzystają z usług, takich jak Outlook.com, OneDrive, Windows Phone i XBox Live, mają konta Microsoft.)
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
 * [Oparta na rolach kontrola dostępu na platformie Azure](../role-based-access-control/role-assignments-portal.md)
 

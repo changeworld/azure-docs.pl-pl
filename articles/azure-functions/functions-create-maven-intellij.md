@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 317d8bf40ef152e5b7dae6406be29330feaaa8d3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002682"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842482"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i IntelliJ (wersja zapoznawcza)
 
@@ -80,11 +80,11 @@ Aby rozpocząć hosta funkcji w trybie debugowania, Dodaj **- DenableDebug** jak
 mvn azure-functions:run -DenableDebug
 ```
 
-Do debugowania w programie IntelliJ, **Uruchom** menu wybierz opcję **Edytuj konfiguracje**. Kliknij przycisk ** + ** dodać **zdalnego**. Wypełnij **nazwa** i **ustawienia**, a następnie kliknij przycisk **OK** Aby zapisać konfigurację. Po zakończeniu instalacji, kliknij przycisk **debugowania** "Your nazwy konfiguracji zdalnej" lub naciśnij klawisz **Shift + F9** można rozpocząć debugowania.
+Do debugowania w programie IntelliJ, **Uruchom** menu wybierz opcję **Edytuj konfiguracje**. Kliknij przycisk **+** dodać **zdalnego**. Wypełnij **nazwa** i **ustawienia**, a następnie kliknij przycisk **OK** Aby zapisać konfigurację. Po zakończeniu instalacji, kliknij przycisk **debugowania** "Your nazwy konfiguracji zdalnej" lub naciśnij klawisz **Shift + F9** można rozpocząć debugowania.
 
 ![Debugowanie funkcji w programie IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
-Po zakończeniu zatrzymanie debugera i uruchomionego procesu. Tylko jednej funkcji — host może być aktywności i działania lokalnie, w czasie.
+Po zakończeniu zatrzymanie debugera i uruchomionego procesu. Tylko jednej funkcji — host może być aktywny i działa lokalnie w danym momencie.
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 

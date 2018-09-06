@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058473"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782029"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Limity dysku Data Box platformy Azure (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania dysku systemu Mi
 
 ## <a name="data-box-service-limits"></a>Limity usługi pole danych
 
- - Usługa Data Box jest dostępna tylko w USA i UE we wszystkich regionach platformy Azure dla chmury publicznej platformy Azure.
+ - Usługa Data Box jest dostępna tylko w USA, Europa, Kanadzie i Australii we wszystkich regionach platformy Azure dla chmury publicznej platformy Azure.
  - Pojedynczego konta magazynu jest obsługiwana przy użyciu dysku Data Box.
 
 ## <a name="data-box-disk-performance"></a>Wydajność dysku pole danych
@@ -77,8 +77,8 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 
 | Typ obiektu platformy Azure | Limit domyślny                                             |
 |-------------------|-----------------------------------------------------------|
-| Blokowe obiekty Blob        | ~ 8 TB                                                 |
-| Obiekt blob typu Page         | 1 TB <br> (Każdy plik przekazany w formacie stronicowych obiektów Blob musi być 512 bajtów wyrównane (całkowitą wielokrotnością), w przeciwnym wypadku przekazywania nie powiedzie się. <br> VHD i VHDX są 512 bajtów wyrównane). |
+| Blokowy obiekt blob        | ~ 8 TB                                                 |
+| Stronicowy obiekt blob         | 1 TB <br> (Każdy plik przekazany w formacie stronicowych obiektów Blob musi być 512 bajtów wyrównane (całkowitą wielokrotnością), w przeciwnym wypadku przekazywania nie powiedzie się. <br> VHD i VHDX są 512 bajtów wyrównane). |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Usługa Azure blokowych obiektów blob i stronicowych obiektów blob, konwencje nazewnictwa

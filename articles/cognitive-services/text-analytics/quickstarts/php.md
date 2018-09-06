@@ -1,44 +1,44 @@
 ---
-title: PHP — Szybki Start usługi Azure kognitywnych, analiza tekstu interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API z analizy tekstu w kognitywnych usług Microsoft Azure.
+title: PHP Przewodnik Szybki start dotyczący usługi Azure Cognitive Services, interfejs API analizy tekstu | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
 author: ashmaka
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 837a9bab4a4b20be95f03bea0cc97b0b3f414d82
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2f654736e998652ecaf8825b308c7ff3bf84a924
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347756"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840774"
 ---
-# <a name="quickstart-for-text-analytics-api-with-php"></a>Szybki Start dla Analiza tekstu interfejsu API za pomocą języka PHP 
+# <a name="quickstart-for-text-analytics-api-with-php"></a>Przewodnik Szybki start dotyczący interfejsu API za pomocą języka PHP analizy tekstu 
 <a name="HOLTop"></a>
 
-W tym artykule opisano sposób do [wykrywać język](#Detect), [analizowanie wskaźniki nastrojów klientów](#SentimentAnalysis), [wyodrębnić klucza fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities) przy użyciu [interfejsów API Analytics tekst](//go.microsoft.com/fwlink/?LinkID=759711) za pomocą języka PHP.
+W tym artykule przedstawiono, jak do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) za pomocą języka PHP.
 
-Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna dla interfejsów API.
+Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna w przypadku interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API z analizy tekstu**. Można użyć **warstwę bezpłatna do 5000 miesięcznie transakcji** do ukończenia tego przewodnika Szybki Start.
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API analizy tekstu**. Możesz użyć **5000 transakcji miesięcznie w warstwie bezpłatna** aby ukończyć ten przewodnik Szybki Start.
 
-Musi mieć również [punktu końcowego i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany automatycznie podczas logowania się. 
+Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas logowania się. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Wykrywanie języka
 
-Interfejs API wykrywania języka wykrywa język tekstu dokumentu za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+Interfejs API wykrywania języka wykrywa język tekstu dokumentu, za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz nowy projekt PHP w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `host` (obecnie `westus`) w regionie zalogowano się.
+1. Utwórz nowy projekt języka PHP w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+4. Zastąp lokalizację w `host` (obecnie `westus`) do regionu, możesz w konkursie.
 5. Uruchom program.
 
 ```php
@@ -52,7 +52,7 @@ Interfejs API wykrywania języka wykrywa język tekstu dokumentu za pomocą [met
 // **********************************************
 
 // Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
+$accessKey = 'ENTER KEY HERE';
 
 // Replace or verify the region.
 
@@ -63,7 +63,7 @@ $accessKey = 'enter key here';
 // NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 // a free trial access key, you should not need to change this region.
 $host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/languages';
+$path = '/text/analytics/v2.0/';
 
 function DetectLanguage ($host, $path, $key, $data) {
 
@@ -82,7 +82,7 @@ function DetectLanguage ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'languages', false, $context);
     return $result;
 }
 
@@ -94,20 +94,18 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = DetectLanguage ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Język wykrywania odpowiedzi**
+**Odpowiedź wykrywanie języka**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
-
 {
    "documents": [
       {
@@ -145,45 +143,16 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
    ]
 }
-
-
 ```
 <a name="SentimentAnalysis"></a>
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Wskaźniki nastrojów klientów analizy API detexts wskaźniki nastrojów klientów zestawu rekordów tekstu, za pomocą [metody wskaźniki nastrojów klientów](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład wyników dwa dokumenty, jeden w języku angielskim i drugą w języku hiszpańskim.
+Interfejs API analizy tonacji detexts tonacji zestaw rekordów tekstowych, za pomocą [metoda tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład ocenia dwa dokumenty, jeden w języku angielskim, a drugi w języku hiszpańskim.
 
-1. Utwórz nowy projekt PHP w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `host` (obecnie `westus`) w regionie zalogowano się.
-5. Uruchom program.
+Dodaj następujący kod do kodu ze [poprzedniej sekcji](#Detect).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/sentiment';
-
 function GetSentiment ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -201,7 +170,7 @@ function GetSentiment ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'sentiment', false, $context);
     return $result;
 }
 
@@ -212,17 +181,16 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetSentiment ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Wskaźniki nastrojów klientów analizy odpowiedzi**
+**Odpowiedź analizy tonacji**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -244,38 +212,11 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
-Klucz frazy wyodrębniania wyodrębnia fraz klucza z tekstu dokumentów za pomocą [metody fraz klucza](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Poniższy przykład wyodrębnia klucza fraz dokumentów zarówno angielskim i hiszpańskim.
+Klucz frazy wyodrębniania wyodrębnia kluczowych fraz z tekstu dokumentu, za pomocą [metoda kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Poniższy przykład wyodrębnia frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz nowy projekt PHP w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `host` (obecnie `westus`) w regionie zalogowano się.
-5. Uruchom program.
+Dodaj następujący kod do kodu ze [poprzedniej sekcji](#SentimentAnalysis).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/keyPhrases';
-
 function GetKeyPhrases ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -293,7 +234,7 @@ function GetKeyPhrases ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'keyPhrases', false, $context);
     return $result;
 }
 
@@ -305,18 +246,16 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetKeyPhrases ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
-
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Wyrażenie klucza wyodrębniania odpowiedzi**
+**Odpowiedź wyodrębnianie kluczowych fraz**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -356,40 +295,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Identyfikowanie jednostek połączonego
+## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
 
-API łączenie jednostki identyfikuje dobrze znanych jednostek w tekście dokumentu za pomocą [łączenie jednostki — metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład identyfikuje jednostki dla dokumentów w języku angielskim.
+Interfejs API Entity Linking identyfikuje dobrze znanych jednostek w tekście dokumentu, za pomocą [łączenie podmiotów metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład określa jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz nowy projekt PHP w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `host` (obecnie `westus`) w regionie zalogowano się.
-5. Uruchom program.
+Dodaj następujący kod do kodu ze [poprzedniej sekcji](#KeyPhraseExtraction).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/entities';
-
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -407,7 +319,7 @@ function GetEntities ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'entities', false, $context);
     return $result;
 }
 
@@ -418,18 +330,17 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetEntities ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ?>
-
 ```
 
-**Odpowiedź łączenia jednostki**
+**Odpowiedź łączenia jednostek**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -498,5 +409,5 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 ## <a name="see-also"></a>Zobacz także 
 
- [Omówienie Analiza tekstu](../overview.md)  
- [Często zadawane pytania (FAQ)](../text-analytics-resource-faq.md)
+ [Omówienie analizy tekstu](../overview.md)  
+ [Często zadawane pytania](../text-analytics-resource-faq.md)

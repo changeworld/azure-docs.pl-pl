@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122580"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842259"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -80,7 +80,7 @@ W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu
 >[!IMPORTANT] 
 >Ten scenariusz ma zastosowanie również podczas __tylko__ wewnętrznego podstawowego modułu równoważenia obciążenia jest dołączony. Scenariusz 3 jest __nie jest dostępna__ podczas wewnętrznego standardowego modułu równoważenia obciążenia jest dołączony do maszyny Wirtualnej.  Należy jawnie utworzyć [scenariusz 1](#ilpip) lub [Scenariusz 2](#lb) oprócz używania wewnętrznego standardowego modułu równoważenia obciążenia.
 
-Platforma Azure używa SNAT przy użyciu portu maskaradę ([osobisty token dostępu](#pat)) do wykonywania tej funkcji. Ten scenariusz jest podobny do [Scenariusz 2](#lb), z wyjątkiem ma nie kontroluje adres IP używany. Jest to rezerwowego scenariusz dla sytuacji scenariusze 1 i 2, nie istnieje. Jeśli chcesz mieć kontrolę nad adresów ruchu wychodzącego nie zaleca tego scenariusza. W przypadku połączeń wychodzących krytycznych części aplikacji została wybrana opcja inny scenariusz.
+Platforma Azure używa SNAT przy użyciu portu maskaradę ([osobisty token dostępu](#pat)) do wykonywania tej funkcji. Ten scenariusz jest podobny do [Scenariusz 2](#lb), z wyjątkiem ma nie kontroluje adres IP używany. Jest to rezerwowego scenariusz dla sytuacji scenariusze 1 i 2, nie istnieje. Jeśli chcesz mieć kontrolę nad adresów ruchu wychodzącego nie zaleca tego scenariusza. Połączenia wychodzące są kluczową częścią aplikacji, należy wybrać inny scenariusz.
 
 Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji.  Liczba maszyn wirtualnych, udostępnianie zestawu dostępności Określa, która wstępnego przydzielania warstwa ma zastosowanie.  Autonomiczną maszynę Wirtualną bez zestawu dostępności jest skutecznie puli 1 na potrzeby określania wstępne przydzielanie (1024 SNAT porty). Porty SNAT są ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
@@ -165,7 +165,7 @@ W poniższej tabeli przedstawiono preallocations portu SNAT dla warstw rozmiary 
 | 1000 801 | 32 |
 
 >[!NOTE]
-> Gdy użycie standardowego modułu równoważenia obciążenia za pomocą [wiele frontonów](load-balancer-multivip-overview.md), [poszczególnych adresów IP frontonu mnoży liczbę dostępnych portów SNAT](#multivipsnat) w powyższej tabeli. Na przykład pula zaplecza 50 maszyn wirtualnych przy użyciu 2 reguły równoważenia obciążenia, każdy z adresów IP frontonu oddzielne użyje portów SNAT 2048 (2 x 1024) na konfigurację adresu IP. Zobacz szczegóły dotyczące [wiele frontonów](#multife).
+> Gdy użycie standardowego modułu równoważenia obciążenia za pomocą [wiele frontonów](load-balancer-multivip-overview.md), [poszczególnych adresów IP frontonu mnoży liczbę dostępnych portów SNAT](#multivipsnat) w powyższej tabeli. Na przykład pula zaplecza 50 maszyn wirtualnych przy użyciu 2 reguły równoważenia obciążenia, każdy z adresu IP frontonu oddzielne użyje portów SNAT 2048 (2 x 1024) na konfigurację adresu IP. Zobacz szczegóły dotyczące [wiele frontonów](#multife).
 
 Należy pamiętać, że liczba dostępnych portów SNAT nie przekłada się bezpośrednio do liczba przepływów. Pojedynczy port SNAT można ponownie wielu unikatowe miejsca docelowe. Porty są używane tylko wtedy, gdy jest to niezbędne do zapewnienia unikatowych przepływów. Aby uzyskać wskazówki dotyczące projektowania i ograniczania ryzyka, zapoznaj się z sekcją o [sposób zarządzać tym zasobem wyczerpującymi](#snatexhaust) i sekcji, która opisuje [osobisty token dostępu](#pat).
 
@@ -219,16 +219,16 @@ Przypisywanie ILPIP zmienia dany scenariusz [wystąpienia poziom publicznego adr
 
 #### <a name="multifesnat"></a>Użyj wiele frontonów
 
-Korzystając z publicznego standardowego modułu równoważenia obciążenia, Przypisz [wiele adresów IP frontonu dla połączeń wychodzących](#multife) i [należy pomnożyć liczbę dostępnych portów SNAT](#preallocatedports).  Musisz utworzyć konfigurację adresu IP frontonu, reguły i pulę zaplecza, aby wyzwolić programowanie SNAT na publiczny adres IP frontonu.  Reguła nie musi działać i sondę kondycji nie niezbędnych do osiągnięcia sukcesu.  Jeśli używasz wielu frontonów dla ruchu przychodzącego oraz (a nie tylko dla ruchu wychodzącego), należy użyć niestandardowych sond kondycji również, aby mieć pewność, niezawodności.
+Korzystając z publicznego standardowego modułu równoważenia obciążenia, Przypisz [wiele adresów IP frontonu dla połączeń wychodzących](#multife) i [należy pomnożyć liczbę dostępnych portów SNAT](#preallocatedports).  Musisz utworzyć konfigurację adresu IP frontonu, reguły i pulę zaplecza, aby wyzwolić programowanie SNAT na publiczny adres IP frontonu.  Reguła nie musi działać i sondę kondycji nie niezbędnych do osiągnięcia sukcesu.  Jeśli używasz wielu frontonów dla ruchu przychodzącego oraz (a nie tylko dla ruchu wychodzącego), należy użyć niestandardowych sond kondycji oraz w celu zapewnienia niezawodności.
 
 >[!NOTE]
 >W większości przypadków wyczerpanie portów SNAT jest znakiem zły projektu.  Upewnij się, że rozumiesz, dlaczego są porty wyczerpuje przed użyciem frontonów więcej, aby dodać porty SNAT.  Może być maskowanie problemu, co może prowadzić do awarii później.
 
 #### <a name="scaleout"></a>Skalowanie w poziomie
 
-[Wstępnie przydzielonych portów](#preallocatedports) są przypisywane w zależności od rozmiaru puli zaplecza i zgrupowane w warstwach, aby zminimalizować zakłócenia, gdy niektóre z portów, zostają przeniesione w celu uwzględnienia następnej warstwy rozmiar większych puli zaplecza.  Masz możliwość zwiększenia intensywności SNAT użycie portu dla danego serwera sieci Web, skalując w puli wewnętrznej bazy danych do maksymalnego rozmiaru dla danej warstwy.  Wymaga to aplikacja może efektywnie skalować w poziomie.
+[Wstępnie przydzielonych portów](#preallocatedports) są przypisywane w zależności od rozmiaru puli zaplecza i zgrupowane w warstwach, aby zminimalizować zakłócenia, gdy niektóre z portów, zostają przeniesione w celu uwzględnienia następnej warstwy rozmiar większych puli zaplecza.  Masz możliwość zwiększenia intensywności SNAT użycie portu dla danego serwera sieci Web przy użyciu skalowania puli wewnętrznej bazy danych do maksymalnego rozmiaru dla danej warstwy.  Wymaga to aplikacja może efektywnie skalować w poziomie.
 
-Na przykład 2 maszyny wirtualne w puli zaplecza musi 1024 SNAT portów dostępnych na konfiguracji IP, co daje w sumie 2048 SNAT portów dla wdrożenia.  Gdyby można zwiększyć do 50 wirtualnego wdrożenie maszyn, nawet wtedy, gdy liczba portów pozostaje stała na maszynę wirtualną, w sumie 51,200 (50 x 1024) wstępnie przydzielonych portów SNAT może służyć przez wdrożenie.  Jeśli chcesz skalować wdrożenie, sprawdź liczbę [wstępnie przydzielonych portów](#preallocatedports) na warstwę, aby upewnić się, że kształt usługi skalowania w poziomie do maksymalnej liczby odpowiedniej warstwy.  W przykładzie poprzedzającej, jeżeli wybrano skalowanie w poziomie do 51 zamiast 50 wystąpień usługi będzie przejść do następnej warstwy i na końcu się mniej SNAT liczba portów przypadająca na maszynie Wirtualnej również jak łączna liczba.
+Na przykład 2 maszyny wirtualne w puli zaplecza musi 1024 SNAT portów dostępnych na konfiguracji IP, co daje w sumie 2048 SNAT portów dla wdrożenia.  Gdyby można zwiększyć do 50 wirtualnego wdrożenie maszyn, nawet wtedy, gdy liczba portów pozostaje stała na maszynę wirtualną, w sumie 51,200 (50 x 1024) wstępnie przydzielonych portów SNAT może służyć przez wdrożenie.  Jeśli chcesz skalować wdrożenie, sprawdź liczbę [wstępnie przydzielonych portów](#preallocatedports) na warstwę, aby upewnić się, że kształt usługi skalowania w poziomie do maksymalnej liczby odpowiedniej warstwy.  W poprzednim przykładzie Jeżeli wybrano skalowanie w poziomie do 51 zamiast 50 wystąpień, czy postępy do następnej warstwy i na końcu się przy użyciu mniejszej liczby portów SNAT na maszynę Wirtualną oraz jak Suma.
 
 Skalowanie do następnej warstwy rozmiar większych puli wewnętrznej bazy danych czy potencjalną niektórych połączeń wychodzących przekroczenie limitu czasu Jeśli przydzielonych portów odbiorczego.  Jeśli używasz tylko niektóre z portów SNAT, skalowanie w poziomie na następny większy rozmiar puli wewnętrznej bazy danych nie jest istotny.  Połowa istniejących portów zostanie przesunięte na każdym razem, gdy przeniesiesz do następnej warstwy wewnętrznej bazy danych w puli.  Jeśli nie ma to miejsce, musisz kształt wdrożenia do warstwy o rozmiarze.  Lub aplikacji można wykryć i spróbuj ponownie gdy jest to konieczne.  TCP keepalives mogą pomóc w Wykryj, kiedy użyć funkcji SNAT względem porty nie są już funkcji z powodu przydzielany.
 
@@ -253,7 +253,7 @@ Gdy sieciowa grupa zabezpieczeń zostanie zastosowany do maszyn wirtualnych ze z
 Jeśli sieciowa grupa zabezpieczeń blokuje żądania sondy kondycji z tagu domyślnego AZURE_LOADBALANCER, sondy kondycji Twojej maszyny Wirtualnej nie powiedzie się i maszyna wirtualna jest oznaczana w dół. Moduł równoważenia obciążenia przestaje wysyłania nowych przepływów do tej maszyny Wirtualnej.
 
 ## <a name="limitations"></a>Ograniczenia
-- DisableOutboundSnat nie jest dostępny jako opcja, podczas konfigurowania reguły w portalu równoważenia obciążenia.  Zamiast tego użyj narzędzia REST, szablonu lub klienta.
+- DisableOutboundSnat nie jest dostępny jako opcja, podczas konfigurowania reguły w portalu usługi równoważenia obciążenia.  Zamiast tego użyj narzędzia REST, szablonu lub klienta.
 - Role procesów roboczych w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft może być dostępny, gdy tylko wewnętrznego standardowego modułu równoważenia obciążenia jest używana z powodu efekt uboczny z jak pre-sieć wirtualna usługi i innych platform services — funkcja. Należy nie polegać na ten efekt uboczny odpowiednio obsługi autonomiczną usługą Intune a bazowego platformy mogą ulec zmianie bez powiadomienia. Zawsze należy zakładać, że należy jawnie utworzyć łączności wychodzącej w razie potrzeby, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia tylko. [Domyślne SNAT](#defaultsnat) Scenariusz 3 opisane w tym artykule nie jest dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki

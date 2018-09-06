@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702316"
+ms.locfileid: "43783342"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -57,8 +57,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   * [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
   * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. Usługa musi mieć możliwość przenoszenia zasobów. Zobacz sekcje poniżej, w tym artykule [usługi umożliwiają przenoszenie zasobów](#services-that-can-be-moved) oraz tych, które [usługi nie umożliwiają przenoszenie zasobów](#services-that-cannot-be-moved).
-3. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten problem może wystąpić podczas przenoszenia zasobu do nowej subskrypcji, która nigdy nie była używana z tym typem zasobu.
+1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten problem może wystąpić podczas przenoszenia zasobu do nowej subskrypcji, która nigdy nie była używana z tym typem zasobu.
 
   W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:
 
@@ -86,14 +85,16 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   az provider register --namespace Microsoft.Batch
   ```
 
-4. Konto przenoszenia zasobów musi mieć co najmniej następujące uprawnienia:
+1. Konto przenoszenia zasobów musi mieć co najmniej następujące uprawnienia:
 
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na źródłową grupę zasobów.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** w docelowej grupie zasobów.
 
-5. Przed przeniesieniem zasoby, sprawdź limity przydziału subskrypcji dla subskrypcji, którą przenosisz zasoby. Jeśli przenoszenia zasobów oznacza, że subskrypcja przekroczy limit, należy przejrzeć, czy możesz poprosić o zwiększenie limitu przydziału. Aby uzyskać listę limitów i sposób poprosić o zwiększenie zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+1. Przed przeniesieniem zasoby, sprawdź limity przydziału subskrypcji dla subskrypcji, którą przenosisz zasoby. Jeśli przenoszenia zasobów oznacza, że subskrypcja przekroczy limit, należy przejrzeć, czy możesz poprosić o zwiększenie limitu przydziału. Aby uzyskać listę limitów i sposób poprosić o zwiększenie zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 
-5. Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast kończy prób przenosić ponad 800 zasoby w ramach jednej operacji. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem, przekroczeniem limitu czasu.
+1. Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast kończy prób przenosić ponad 800 zasoby w ramach jednej operacji. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem, przekroczeniem limitu czasu.
+
+1. Usługa musi mieć możliwość przenoszenia zasobów. Aby ustalić, czy przeniesienie kończy się pomyślnie, [zweryfikować Twoje żądanie przeniesienia](#validate-move). Zobacz sekcje poniżej, w tym artykule [usługi umożliwiają przenoszenie zasobów](#services-that-can-be-moved) oraz tych, które [usługi nie umożliwiają przenoszenie zasobów](#services-that-cannot-be-moved).
 
 ## <a name="when-to-call-support"></a>Kiedy z działem pomocy technicznej
 
@@ -106,6 +107,59 @@ Skontaktuj się z pomocą [obsługuje](https://portal.azure.com/#blade/Microsoft
 
 * Przenoszenie zasobów do nowego konta platformy Azure (i dzierżawy usługi Azure Active Directory) i potrzebujesz pomocy z instrukcjami w poprzedniej sekcji.
 * Przenoszenie zasobów klasycznych, ale występują problemy związane z ograniczeniami.
+
+## <a name="validate-move"></a>Waliduj przeniesienie
+
+[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Ta operacja umożliwia określenie, przeniesienie, zostanie wykonane pomyślnie. Aby wykonać tę operację, musisz mieć:
+
+* Nazwa źródłowa grupa zasobów
+* Identyfikator zasobu docelowa grupa zasobów
+* Identyfikator zasobu poszczególnych zasobów, aby przenieść
+* [token dostępu](/rest/api/azure/#acquire-an-access-token) dla swojego konta
+
+Wyślij żądanie następujące:
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+Z treści żądania:
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+Jeśli żądanie jest prawidłowo sformatowany, zwraca wartość operacji:
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+Kod stanu 202 wskazuje żądanie weryfikacji został zaakceptowany, ale nie zostało jeszcze nieustalona, operację przenoszenia, zostanie wykonana pomyślnie. `location` Wartość zawiera adres URL, którego używasz, aby sprawdzić stan operacji długotrwałej.  
+
+Aby sprawdzić stan, Wyślij następujące żądanie:
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+Podczas operacji jest nadal uruchomione, nadal jest wyświetlany kod stanu 202. Oczekiwania w sekundach `retry-after` wartość przed podjęciem ponownej próby. Jeśli sprawdzanie poprawności operacji przenoszenia przebiegnie pomyślnie, zostanie wyświetlony kod stanu 204. W przypadku niepowodzenia weryfikacji przeniesienia pojawi się komunikat o błędzie, takich jak:
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>Usługi, które mogą zostać przeniesione
 

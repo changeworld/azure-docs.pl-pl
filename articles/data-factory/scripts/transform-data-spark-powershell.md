@@ -1,6 +1,6 @@
 ---
-title: Dane transformacji skrypt programu PowerShell w chmurze przy użyciu fabryki danych | Dokumentacja firmy Microsoft
-description: Ten skrypt programu PowerShell przekształcenia danych w chmurze, uruchamiając Spark program w klastrze usługi Azure HDInsight Spark.
+title: PowerShell skryptu przekształcania danych w chmurze przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft
+description: Ten skrypt programu PowerShell przekształca dane w chmurze, uruchamiając program platformy Spark w klastrze usługi Azure HDInsight Spark.
 services: data-factory
 author: sharonlo101
 manager: craigg
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: shlo
-ms.openlocfilehash: 27458a48c04a6d4ec612252dc298d454a48cf009
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d885ffc531c24e8116da991f49ba5f8591e966d1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165794"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781601"
 ---
-# <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skrypt programu PowerShell - przekształcania danych w chmurze przy użyciu fabryki danych Azure
+# <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skrypt programu PowerShell — Przekształcanie danych w chmurze przy użyciu usługi Azure Data Factory
 
-Ten przykładowy skrypt programu PowerShell tworzy potok, który przekształca danych w chmurze, uruchamiając Spark program w klastrze usługi Azure HDInsight Spark. 
+Ten przykładowy skrypt programu PowerShell tworzy potok, który przekształca dane w chmurze, uruchamiając program platformy Spark w klastrze usługi Azure HDInsight Spark. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Konto usługi Azure Storage**. Utwórz python, skrypt i pliku wejściowego i przekazać je do magazynu Azure. Dane wyjściowe programu platformy Spark są przechowywane na tym koncie magazynu. Klaster platformy Spark na żądanie używa tego samego konta magazynu, jako swojego podstawowego magazynu.  
+* **Konto usługi Azure Storage**. Tworzenie języka python, skrypt i plik wejściowy i przekazać je do usługi Azure storage. Dane wyjściowe programu platformy Spark są przechowywane na tym koncie magazynu. Klaster platformy Spark na żądanie używa tego samego konta magazynu, jako swojego podstawowego magazynu.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Przekazywanie skryptu w języku Python do konta usługi Blob Storage
 1. Utwórz plik w języku Python o nazwie **WordCount_Spark.py** i następującej zawartości: 
@@ -63,23 +63,23 @@ Ten przykładowy skrypt programu PowerShell tworzy potok, który przekształca d
 
 ### <a name="upload-the-input-file"></a>Przekazywanie pliku wejściowego
 1. Utwórz plik o nazwie **minecraftstory.txt** zawierający tekst. Program platformy Spark zlicza liczbę słów w tym tekście. 
-2. Utwórz podfolder o nazwie `inputfiles` w `spark` folderu kontenera obiektów blob. 
+2. Utwórz podfolder o nazwie `inputfiles` w `spark` folderze kontenera obiektów blob. 
 3. Przekaż `minecraftstory.txt` do podfolderu `inputfiles`. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 > [!IMPORTANT]
-> Ten skrypt tworzy pliki w formacie JSON, które definiują jednostek fabryki danych (połączonej usługi, zestawu danych i potoku) na dysku twardym w folderze c:\.
+> Ten skrypt tworzy pliki w formacie JSON, które definiują jednostek usługi Data Factory (połączone usługi, zestaw danych i potok) na dysku twardym w folderze c:\.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/transform-data-using-spark/transform-data-using-spark.ps1 "Transform data using Spark")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
-Po uruchomieniu przykładowy skrypt służy następujące polecenie Usuń grupę zasobów i wszystkie zasoby skojarzone z nią:
+Po uruchomieniu przykładowy skrypt służy następujące polecenie do usunięcia grupy zasobów i wszystkie skojarzone z nią zasoby:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Aby usunąć fabryki danych z grupy zasobów, uruchom następujące polecenie: 
+Aby usunąć fabrykę danych z grupy zasobów, uruchom następujące polecenie: 
 
 ```powershell
 Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -92,11 +92,11 @@ W tym skrypcie użyto następujących poleceń:
 | Polecenie | Uwagi |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2) | Tworzenie fabryki danych. |
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedservice) | Tworzy połączonej usługi w fabryce danych. Połączona usługa łączy w magazynie danych lub obliczeniowych do fabryki danych. |
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactorv2ypipeline) | Tworzy potok w fabryce danych. Potok zawiera jeden lub więcej działań, które wykonuje określonej operacji. W tym potoku działania spark przekształcenia danych, uruchamiając program w klastrze usługi Azure HDInsight Spark. |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2pipelinerun) | Tworzy uruchomienia procesu. Innymi słowy jest uruchamiana potoku. |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Pobiera szczegóły uruchomienie działania (działanie Uruchom) w potoku. 
+| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Tworzenie fabryki danych. |
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2linkedservice) | Tworzy połączonej usługi w fabryce danych. Połączona usługa łączy magazyn danych lub obliczeniowych z fabryką danych. |
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2pipeline) | Tworzy potok w fabryce danych. Potok zawiera jedno lub więcej działań, które wykonuje określonej operacji. W tym potoku działania platformy spark przekształca dane, uruchamiając program w klastrze usługi Azure HDInsight Spark. |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/invoke-azurermdatafactoryv2pipeline) | Tworzy uruchomienia potoku. Innymi słowy uruchamia potok. |
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Pobiera szczegóły uruchomienia działania (działanie uruchamiania) w potoku. 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
@@ -104,4 +104,4 @@ W tym skrypcie użyto następujących poleceń:
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Dodatkowe przykłady skryptów PowerShell fabryki danych Azure można znaleźć w [przykłady środowiska PowerShell fabryki danych Azure](../samples-powershell.md).
+Więcej przykładowych skryptów programu PowerShell do fabryki danych platformy Azure można znaleźć w [przykładów programu Azure Data Factory PowerShell](../samples-powershell.md).

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8cab491a874094ee195f12ba6fe7f19a87f09ef2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522185"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841953"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -30,7 +30,7 @@ Usługa Azure Active Directory (Azure AD) bezproblemowe logowanie jednokrotne (b
 
 Aby wdrożyć bezproblemowe logowanie Jednokrotne, wykonaj następujące kroki.
 
-## <a name="step-1-check-the-prerequisites"></a>Krok 1: Sprawdzanie wymagań wstępnych
+## <a name="step-1-check-the-prerequisites"></a>Krok 1. Sprawdzanie wymagań wstępnych
 
 Upewnij się, że zostały spełnione następujące wymagania wstępne:
 
@@ -42,6 +42,9 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
     >Usługa Azure AD Connect w wersjach 1.1.557.0, 1.1.558.0, 1.1.561.0 i 1.1.614.0 ma problem związany z synchronizacją skrótów haseł. Jeśli użytkownik _nie_ zamierza się używać synchronizacji skrótów haseł w połączeniu z uwierzytelniania przekazywanego, przeczytaj [informacje o wersji usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) Aby dowiedzieć się więcej.
 
 * **Użyj obsługiwanej topologii program Azure AD Connect**: Upewnij się, że używasz jednego z obsługiwanych topologii Azure AD Connect, opisane [tutaj](active-directory-aadconnect-topologies.md).
+
+    >[!NOTE]
+    >Bezproblemowe logowanie Jednokrotne obsługuje wiele lasów usługi AD, czy istnieją AD relacji zaufania między nimi lub nie.
 
 * **Konfigurowanie poświadczeń administratora domeny**: musisz mieć poświadczenia administratora domeny, dla każdej usługi Active Directory lasu, który:
     * Można zsynchronizować z usługą Azure AD za pomocą usługi Azure AD Connect.
@@ -180,7 +183,7 @@ Mozilla Firefox automatycznie nie korzysta z uwierzytelniania Kerberos. Każdy u
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
-Upewnij się, że maszyny z systemem macOS jest przyłączony do usługi AD. Aby uzyskać instrukcje dotyczące dołączania AD, zobacz [najlepsze rozwiązania dotyczące integracji OS X z usługą Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Upewnij się, że maszyny z systemem macOS jest przyłączony do usługi AD. Instrukcje dotyczące przyłączania do usługi AD urządzenia z systemem macOS wykracza poza zakres tego artykułu.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (wszystkie platformy)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d64233883d2dd6fb174c55467fcfcd276b452775
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008379"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782994"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -37,10 +37,10 @@ Usługa jest dostępna w regionach platformy Azure jest ogólnie dostępna. Nie 
 
 Regiony                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępna   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępna | 2017-04-02,2017-08-01
-[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępna | 2017-04-02,2017-08-01
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępna | 2017-04-02,2017-08-01
+[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
 
 Ta tabela jest aktualizowany, gdy są dostępne aktualizacje usługi i/lub nowych wersji są dostępne
 
@@ -49,7 +49,7 @@ Aby wypróbować Instance Metadata Service, Utwórz Maszynę wirtualną z [usłu
 ## <a name="usage"></a>Sposób użycia
 
 ### <a name="versioning"></a>Obsługa wersji
-Instance Metadata Service jest wersjonowany. Wersje są obowiązkowe, a bieżąca wersja na platformie Azure globalne to `2017-12-01`. Bieżący obsługiwane wersje to (2017-04-02, 2017-08-01,2017-12-01)
+Instance Metadata Service jest wersjonowany. Wersje są obowiązkowe, a bieżąca wersja na platformie Azure globalne to `2018-04-02`. Bieżący obsługiwane wersje to (2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02)
 
 > [!NOTE] 
 > Poprzednich wersjach zapoznawczych zaplanowanych zdarzeń {najnowsza wersja} są obsługiwane jako parametru api-version. Ten format nie jest już obsługiwane i zostaną wycofane w przyszłości.
@@ -299,6 +299,8 @@ subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tags | [Tagi](../../azure-resource-manager/resource-group-using-tags.md) dla maszyny wirtualnej  | 2017-08-01
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) dla maszyny wirtualnej | 2017-08-01
 placementGroupId | [Grupy umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
+plan | [Plan] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w niej jest obraz z witryny Marketplace usługi Azure, zawiera nazwę, produktu i wydawcy | 2017-04-02
+publicKeys | Kolekcja kluczy publicznych [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey] przypisane do maszyny Wirtualnej i ścieżek | 2017-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyny wirtualnej](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zestawu skalowania maszyn wirtualnych | 2017-12-01
 strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny wirtualnej | 2017-12-01 
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02
@@ -379,6 +381,39 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
+
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>Wprowadzenie środowisko platformy Azure, w którym maszyna wirtualna jest uruchomiona 
+
+Platforma Azure oferuje różne chmury soverign, takich jak [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/) , czasami zachodzi potrzeba do środowiska Azure podjąć pewne decyzje dotyczące środowiska uruchomieniowego. Poniższy przykład przedstawia sposób można to osiągnąć
+
+**Żądanie**
+
+```
+  $metadataResponse = Invoke-WebRequest "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H @{"Metadata"="true"} -UseBasicParsing
+  $metadata = ConvertFrom-Json ($metadataResponse.Content)
+ 
+  $endpointsResponse = Invoke-WebRequest "https://management.azure.com/metadata/endpoints?api-version=2017-12-01" -UseBasicParsing
+  $endpoints = ConvertFrom-Json ($endpointsResponse.Content)
+ 
+  foreach ($cloud in $endpoints.cloudEndpoint.PSObject.Properties) {
+    $matchingLocation = $cloud.Value.locations | Where-Object {$_ -match $metadata.location}
+    if ($matchingLocation) {
+      $cloudName = $cloud.name
+      break
+    }
+  }
+ 
+  $environment = "Unknown"
+  switch ($cloudName) {
+    "public" { $environment = "AzureCloud"}
+    "usGovCloud" { $environment = "AzureUSGovernment"}
+    "chinaCloud" { $environment = "AzureChinaCloud"}
+    "germanCloud" { $environment = "AzureGermanCloud"}
+  }
+ 
+  Write-Host $environment
+```
+
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Przykłady wywoływania usługi metadanych przy użyciu różnych języków, wewnątrz maszyny Wirtualnej 
 
 Język | Przykład 
@@ -404,7 +439,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Obecnie Instance Metadata Service obsługuje tylko wystąpienia utworzone za pomocą usługi Azure Resource Manager. W przyszłości pomoc techniczna dla maszyn wirtualnych usługi w chmurze, które mogą być dodawane.
 3. Czas ponownie utworzony mojej maszyny wirtualnej za pomocą usługi Azure Resource Manager. Dlaczego mogę nie Zobacz compute informacji o metadanych?
    * W przypadku maszyn wirtualnych utworzonych po września 2016 roku, dodać [Tag](../../azure-resource-manager/resource-group-using-tags.md) do wykonywanych obliczeń metadanych. Starsze maszyn wirtualnych (utworzonych przed 2016 r. aplikacja Sep) dodawać i usuwać dyski rozszerzenia lub danych do maszyny Wirtualnej, aby odświeżyć metadane.
-4. Nie widzę wszystkich danych wypełnione dla nowej wersji 2017-08-01
+4. Nie widzę wszystkich danych wypełnione dla nowej wersji
    * W przypadku maszyn wirtualnych utworzonych po września 2016 roku, dodać [Tag](../../azure-resource-manager/resource-group-using-tags.md) do wykonywanych obliczeń metadanych. Starsze maszyn wirtualnych (utworzonych przed 2016 r. aplikacja Sep) dodawać i usuwać dyski rozszerzenia lub danych do maszyny Wirtualnej, aby odświeżyć metadane.
 5. Dlaczego otrzymuję błąd `500 Internal Server Error`?
    * Ponowić swoje żądanie, w oparciu o wykładniczego wycofywania systemu. Jeśli problem będzie się powtarzał skontaktuj się z działem pomocy technicznej platformy Azure.
@@ -414,6 +449,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * Tak Metadata service jest dostępna dla wystąpień zestawu skalowania. 
 8. Jak uzyskać pomoc techniczną dla usługi?
    * Aby uzyskać pomoc techniczną dla usługi, utworzyć problemu wymagającego pomocy technicznej w witrynie Azure portal dla maszyny Wirtualnej, której nie jesteś można uzyskać odpowiedź metadanych długie ponowne próby 
+9. Pojawia się dla mojego wywołania Przekroczono limit czasu żądania usługi?
+   * Wywołania metadanych musi nastąpić z podstawowego adresu IP przypisane do karty sieciowej maszyny wirtualnej, ponadto w przypadku, gdy zmieniono trasy musi być trasę dla adresu 169.254.0.0/16 poza karty sieciowej.
+10. Czy mogę zaktualizować Moje znaczniki w zestawie skalowania maszyny wirtualnej, ale nie są wyświetlane w przypadkach, w przeciwieństwie do maszyn wirtualnych?
+   * Obecnie dla ScaleSets tagi zawierają tylko do maszyny Wirtualnej na ponowne uruchomienie/odtworzenia z obrazu/lub dyskiem zmiany do wystąpienia. 
 
    ![Obsługa metadanych wystąpienia](./media/instance-metadata-service/InstanceMetadata-support.png)
     

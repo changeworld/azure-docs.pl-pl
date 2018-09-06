@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666756"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782539"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -80,7 +80,7 @@ Każdego konta użytkownika, który musi się zalogować do usługi Azure AD mus
 
 | Właściwość | Wymagania dotyczące UserPrincipalName |
 | --- | --- |
-| Dozwolona liczba znaków |<ul> <li>A-Z</li> <li>z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| Dozwolona liczba znaków |<ul> <li>A-Z</li> <li>z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
 | Znaki nie są dozwolone |<ul> <li>Wszelkie "\@ \" znak, który nie jest oddzielenie nazwy użytkownika z domeny.</li> <li>Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symboli</li></ul> |
 | Ograniczenia długości |<ul> <li>Łączna długość nie może zawierać znaków 113</li><li>Może to być maksymalnie 64 znaków przed "\@ \" symboli</li><li>Może istnieć maksymalnie 48 znaków po "\@ \" symboli</li></ul> |
 

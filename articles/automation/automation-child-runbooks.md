@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056954"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782236"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook w usłudze Azure Automation
 
@@ -72,7 +72,9 @@ Jeśli nie chcesz, nadrzędny element runbook do zablokowania w okresie oczekiwa
 
 Parametry dla podrzędnego elementu runbook, pracę za pośrednictwem polecenia cmdlet są przekazywane jako tablica skrótów, zgodnie z opisem w [parametry elementu Runbook](automation-starting-a-runbook.md#runbook-parameters). Mogą być używane tylko proste typy danych. Jeśli element runbook ma parametr o złożonym typie danych, następnie go musi być wywoływany śródwierszowo.
 
-Praca z wieloma subskrypcjami kontekstu subskrypcji może spowodować utratę podczas wywoływania podrzędnych elementów runbook. Aby upewnić się, że kontekstu subskrypcji jest przekazywany do podrzędnych elementów runbook, należy dodać `DefaultProfile` parametru do polecenia cmdlet i przekazać kontekst do niego.
+Kontekstu subskrypcji mogą zostać utracone podczas wywoływania podrzędnych elementów runbook jako osobne zadania. Aby dla podrzędnego elementu runbook do wywoływania polecenia cmdlet usługi Azure RM, względem odpowiedniej subskrypcji platformy Azure podrzędnego elementu runbook musi uwierzytelnić się do tej subskrypcji, niezależnie od nadrzędnego elementu runbook.
+
+Jeśli zadań w ramach tego samego konta usługi Automation działają z wieloma subskrypcjami, wybranie subskrypcji w ramach jednego zadania może zmienić kontekst aktualnie wybranej subskrypcji dla jak również inne zadania, które zwykle nie jest wymagana. Aby uniknąć tego problemu, należy zapisać wynik `Select-AzureRmSubscription` wywołania polecenia cmdlet i przekazać ten obiekt `DefaultProfile` parametru wszystkich kolejnych wywołań poleceń cmdlet Menedżera zasobów platformy Azure. Ten wzorzec musi zostać spójnie zastosowana dla wszystkich elementów runbook uruchomione na tym koncie usługi Automation.
 
 ### <a name="example"></a>Przykład
 

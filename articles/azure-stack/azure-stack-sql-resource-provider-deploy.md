@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9efaeed05856f830a4f0cf699cb35ebc21966c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08ab76e587c4e2c8b8afe9cb27e9df59a5924475
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700714"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842044"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów programu SQL Server w usłudze Azure Stack
 
 Użyj dostawcy zasobów usługi Azure Stack programu SQL Server do udostępnienia baz danych SQL jako usługi Azure Stack. Dostawcy zasobów bazy danych SQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
+
+> [!IMPORTANT]
+> Tworzenie elementów na serwerach tego hosta SQL lub MySQL jest obsługiwane tylko dostawcy zasobów. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może prowadzić do niezgodnego stanu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -144,8 +147,8 @@ Można użyć następujących kroków Sprawdź dostawcy zasobów bazy danych SQL
 2. Wybierz **grup zasobów**.
 3. Wybierz **systemu.\< Lokalizacja\>.sqladapter** grupy zasobów.
 4. Na stronie Podsumowanie dla grupy zasobów — omówienie powinno istnieć żadne wdrożenia nie powiodło się.
-
       ![Sprawdź wdrażanie dostawcy zasobów bazy danych SQL](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+5. Na koniec wybierz pozycję **maszyn wirtualnych** w portalu administracyjnym, aby sprawdzić dostawcy zasobów bazy danych SQL, maszyna wirtualna została pomyślnie utworzone i jest uruchomiona.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

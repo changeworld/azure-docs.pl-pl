@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 890c28601315a63e34c286289cd7378830afa9ba
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626596"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782057"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Rozwiązywanie problemów z usługi Azure Active Directory uwierzytelnianie przekazywane
 
@@ -97,7 +97,7 @@ Upewnij się, że używasz konta administratora globalnego tylko w chmurze Azure
 
 Jeśli masz uwierzytelniania przekazywanego włączona w dzierżawie usługi, można spróbować odinstalować program Azure AD Connect zawiera następujący komunikat ostrzegawczy: "użytkownicy nie będą mogli zalogować się do usługi Azure AD, chyba że masz inne agentów uwierzytelniania przekazywanego zainstalowanych na inne serwery."
 
-Upewnij się, że ustawienia są [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) przed odinstalowaniem usługi Azure AD Connect, aby uniknąć dzielenia logowania użytkownika.
+Upewnij się, że ustawienia są [o wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) przed odinstalowaniem usługi Azure AD Connect, aby uniknąć dzielenia logowania użytkownika.
 
 ## <a name="issues-with-enabling-the-feature"></a>Problemy z włączaniem funkcji
 
@@ -129,7 +129,7 @@ Aby uzyskać szczegółowe analizy Włącz dziennik "Sesja". Nie uruchamiaj agen
 
 ### <a name="detailed-trace-logs"></a>Dzienniki śledzenia szczegółowe
 
-Aby rozwiązać problemy użytkownika logowań, wyszukaj dzienniki śledzenia w **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\\**. Dzienniki te obejmują powodów dlaczego określonego użytkownika logowania nie powiodła się przy użyciu funkcji uwierzytelniania przekazywanego. Te błędy są również mapowana na podanych w poprzednim przyczyn niepowodzenia logowania [tabeli](#sign-in-failure-reasons-on-the-Azure-portal). Poniżej przedstawiono przykładowy wpis dziennika:
+Aby rozwiązać problemy użytkownika logowań, wyszukaj dzienniki śledzenia w **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\\**. Dzienniki te obejmują powodów dlaczego określonego użytkownika logowania nie powiodła się przy użyciu funkcji uwierzytelniania przekazywanego. Te błędy, również są mapowane na podanych w powyższej tabeli przyczyn niepowodzenia logowania przyczyn błąd logowania. Poniżej przedstawiono przykładowy wpis dziennika:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

@@ -14,26 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: f529459562ec10a7b9bbcca578d8998e545f3f4c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0007396ad6d5fc16177d76683f959591e9830ac3
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952617"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782080"
 ---
-# <a name="support-for-azure-marketplace"></a>Obsługa portalu Azure Marketplace  
-Opcje pomocy technicznej dla witryny Azure Marketplace.  
+# <a name="support-for-the-marketplace"></a>Obsługa portalu Marketplace  
+Opcje pomocy technicznej w portalu Marketplace.  
 
 ## <a name="onboarding"></a>Dołączanie
 
 [Otwórz bilet](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) rozwiązać wszystkie problemy z wprowadzenie dotyczących pomocy technicznej "Marketplace dołączania" z firmą Microsoft.
-
-## <a name="publishing"></a>Publikowanie  
-
-| Kanał obsługi | Opis | Dostępność |  
-|:--- |:--- |:--- |  
-| Adres e-mail: [azurecertified@microsoft.com](mailto:azurecertified@microsoft.com) | Obsługuje publikowanie aplikacji w portalu Azure Marketplace. | Godziny pracy znajdują się w strefie czasu pacyficznego. |  
-| Adres e-mail: [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) | Dołączanie do dostępu do wersje testowe. | Godziny pracy znajdują się w strefie czasu pacyficznego. |  
 
 ## <a name="cloud-partner-portal"></a>Portal Cloud Partner  
 
@@ -48,7 +41,7 @@ Opcje pomocy technicznej dla witryny Azure Marketplace.
 | Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack środowisko do obsługi partnerom kwestiach technicznych. Tam o 350 + partnerów pracujących w tym środowisku. |  
 | Fora MSDN: Marketplace znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum sieci Microsoft Developer Network. |  
 | Witrynie Stack Overflow: Azure znajdujący się [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z portalu Azure Marketplace.<ul> <li>Witrynie Stack Overflow: Portal Azure Marketplace znajdującym się [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Witrynie Stack Overflow: Usługa Azure Resource Manager znajdującym się [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Witrynie Stack Overflow: maszyny wirtualne na platformie Azure znajdujący się [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Witrynie Stack Overflow: Kontenery na platformie Azure znajdujący się [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-
+| Pomoc techniczna dla usługi AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Obsługa publikowania w aplikacjach systemu Dynamics |
 ## <a name="marketing-resources"></a>Materiały marketingowe  
 
 | Kanał obsługi | Opis | Dostępność |  
@@ -57,14 +50,6 @@ Opcje pomocy technicznej dla witryny Azure Marketplace.
 | Adres e-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Obsługa GTM korzyści i pytania dotyczące programu. | Godziny pracy znajdują się w strefie czasu pacyficznego. |  
 | Adres e-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpowiedzi na pytania dotyczące użycia platformy Azure logo i znakowanie. |  |  
 
-# <a name="support-for-appsource"></a>Obsługa usługi AppSource  
-Opcje pomocy technicznej dla usługi AppSource.  
-
-## <a name="technical"></a>Techniczna  
-
-| Kanał obsługi | Opis |  
-|:--- |:--- |  
-| Adres e-mail: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Obsługa publikowania aplikacji Dynamics |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  

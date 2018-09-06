@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398822"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782012"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
 Można włączyć anonimowego, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów, bez udostępniania klucz konta, a także bez konieczności sygnatury dostępu współdzielonego (SAS).
@@ -39,7 +39,7 @@ Następujące służy do ustawiania uprawnień kontenera:
 Aby ustawić uprawnienia do kontenera w [witryny Azure portal](https://portal.azure.com), wykonaj następujące kroki:
 
 1. Otwórz swoje **konta magazynu** bloku w portalu. Konta usługi storage można znaleźć, wybierając **kont magazynu** w bloku menu głównego portalu.
-1. W obszarze **usługę BLOB SERVICE** w bloku menu, wybierz **kontenery**.
+1. W obszarze **usługę BLOB SERVICE** w bloku menu, wybierz **obiektów blob**.
 1. Kliknij prawym przyciskiem myszy w wierszu, kontenera lub wybierz przycisk wielokropka, aby otworzyć kontenera **menu kontekstowe**.
 1. Wybierz **zasady dostępu** w menu kontekstowym.
 1. Wybierz **dostęp typu** z menu rozwijanego.

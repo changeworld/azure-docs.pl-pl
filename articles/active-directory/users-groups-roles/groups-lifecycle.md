@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861770"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841738"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -43,9 +43,9 @@ Rola | Uprawnienia
 Administrator globalny lub Administrator kont użytkowników | Można utworzyć, odczytu, aktualizacji lub usunięcia ustawień zasad wygasania grup usługi Office 365<br>Można odnowić żadnej grupy usługi Office 365
 Użytkownik | Można odnowić grupy usługi Office 365, do której jest właścicielem<br>Można przywrócić grupy usługi Office 365, do której jest właścicielem<br>Czas wygaśnięcia może odczytać ustawienia zasad
 
-Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte grupy, zobacz [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte grupy, zobacz [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md).
 
-## <a name="set-group-expiration"></a>Ustaw czas wygaśnięcia z grupy
+## <a name="set-group-expiration"></a>Ustawianie czasu wygaśnięcia grup
 
 1. Otwórz [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym w swojej dzierżawie usługi Azure AD.
 
@@ -71,7 +71,7 @@ Po wygaśnięciu grupy Grupa została usunięta jeden dzień po dacie wygaśnię
 
 ![Powiadomienie e-mail usunięcie grupy](./media/groups-lifecycle/deletion-notification.png)
 
-Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przywracanie grupy** lub za pomocą poleceń cmdlet programu PowerShell, zgodnie z opisem w [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przywracanie grupy** lub za pomocą poleceń cmdlet programu PowerShell, zgodnie z opisem w [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md).
     
 Jeśli grupy, do której są przywracane zawiera dokumentów, witryn programu SharePoint lub inne obiekty trwałe, może upłynąć do 24 godzin potrzeba pełnego przywrócenia grupy i jego zawartość.
 
@@ -146,8 +146,8 @@ Następujące polecenia cmdlet, można skonfigurować zasady bardziej szczegół
 ## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje na temat grup usługi Azure AD.
 
-* [Zobacz istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Zarządzanie elementami członkowskimi grupy](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Zarządzanie członkostwami grup](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Dynamiczne reguły dla użytkowników w grupie zarządzania](groups-dynamic-membership.md)
+* [Zarządzanie członkami grupy](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-dynamic-membership.md)

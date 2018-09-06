@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 06/27/2018
+ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a4d6d7bfe259e8616a51100162594315a5d37546
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: b1c6209c4d589093d7a29cd8a883d3e5d4ca12f9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382431"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782306"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge
 
 Logikę biznesową można przekształcić w moduły, dla usługi Azure IoT Edge. W tym artykule pokazano, jak używać programu Visual Studio Code (VS Code) jako głównego narzędzia do tworzenia i debugowania języka C# modułów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenia usługi IoT Edge może być inny urządzenia fizycznego. Lub można symulować urządzenia usługi IoT Edge na komputerze deweloperskim.
+W tym artykule założono, że używasz komputera lub maszyny wirtualnej z systemem Windows, macOS lub Linux jako komputerze deweloperskim. Urządzenia usługi IoT Edge może być inny urządzenia fizycznego.
 
 > [!NOTE]
-> W tym artykule debugowania pokazuje, jak dołączyć procesu w kontenerze modułu i debugować ją z programem VS Code. Można debugować tylko moduły języka C# w kontenerach amd64 systemu Linux. Jeśli nie znasz możliwości debugowania programu Visual Studio Code, przeczytaj temat [debugowanie](https://code.visualstudio.com/Docs/editor/debugging). 
+> W tym artykule debugowania przedstawiono dwie typowe sposoby debugowania modułu C# w programie VS Code. Jednym ze sposobów jest dołączanie procesu w kontenerze modułu, a drugi do lanuch kod modułu w trybie debugowania. Jeśli nie znasz możliwości debugowania programu Visual Studio Code, przeczytaj temat [debugowanie](https://code.visualstudio.com/Docs/editor/debugging).
 
 Ponieważ w tym artykule używa programu Visual Studio Code, jako narzędzia programistyczne główny, zainstaluj program VS Code. Następnie dodaj rozszerzeniami niezbędnymi:
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -38,9 +38,15 @@ Aby utworzyć moduł, potrzebne są .NET do tworzenia folderu projektu, Docker, 
 * [Usługa Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [usługi Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Można użyć lokalnego rejestru platformy Docker prototypów i testowania zamiast rejestru chmury. 
 
+Można skonfigurować lokalne Środowisko deweloperskie, debugowanie, uruchamianie i testowanie rozwiązania usługi IoT Edge należy [narzędzia deweloperskiego EdgeHub IoT Azure](https://pypi.org/project/iotedgehubdev/). Zainstaluj [języka Python (w wersji 2.7/3.6) i narzędzie Pip](https://www.python.org/). Następnie zainstaluj **iotedgehubdev** uruchamiając poniższe polecenie w terminalu.
+
+   ```cmd
+   pip install --upgrade iotedgehubdev
+   ```
+
 Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy użyciu co najmniej jedno urządzenie usługi IoT Edge. Aby użyć komputera jako urządzenia usługi IoT Edge, postępuj zgodnie z instrukcjami w przewodniku Szybki Start dla [Windows](quickstart.md) lub [Linux](quickstart-linux.md). 
 
-## <a name="create-a-new-solution-template"></a>Utwórz nowy szablon rozwiązania
+## <a name="create-a-new-solution-with-c-module"></a>Utwórz nowe rozwiązanie za pomocą modułu C#
 
 Wykonaj następujące czynności, aby utworzyć moduł usługi IoT Edge, oparte na programie .NET Core 2.0 przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge. Najpierw należy utworzyć rozwiązanie, a następnie wygenerować pierwszego modułu w ramach tego rozwiązania. Każdy roztwór może zawierać więcej niż jeden moduł. 
 
@@ -74,39 +80,96 @@ Istnieją cztery elementy w ramach rozwiązania:
 
 ## <a name="develop-your-module"></a>Tworzenie modułu
 
-Domyślny kod funkcji platformy Azure w rozwiązaniu znajduje się w **modułów** > [Nazwa modułu] > **Program.cs**. W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
+Domyślny kod C# modułu dołączoną do rozwiązania znajduje się w **modułów** > ** [Nazwa modułu] ** > **Program.cs**. W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
 
 Gdy wszystko będzie gotowe dostosować szablon języka C# przy użyciu własnego kodu, należy użyć [zestawami SDK Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) do tworzenia modułów ten adres klucz dla rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodności. 
 
-## <a name="build-and-deploy-your-module-for-debugging"></a>Tworzenie i wdrażanie modułu do debugowania
+Obsługa języka C# w programie VS Code jest zoptymalizowany pod kątem projektowania na różne platformy .NET Core. Dowiedz się więcej o [sposób pracy w języku C# w programie VS Code](https://code.visualstudio.com/docs/languages/csharp).
 
-W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych typów. Użyć dowolnej z tych plików, które kończą się rozszerzeniem **.debug** do tworzenia modułu do testowania. Obecnie modułów języka C# obsługuje debugowanie tylko w kontenerach amd64 systemu Linux.
+## <a name="launch-and-debug-module-code-without-container"></a>Uruchamianie i debugowanie kodu modułu bez kontenera
+Moduł IoT Edge C# jest.Net Core z aplikacji. I zależy od języka C# urządzenia zestawu SDK Azure IoT. W kodzie modułu domyślne, należy zainicjować **ModuleClient** z ustawieniami środowiska i wprowadź nazwę, co oznacza, że moduł IoT Edge C# wymaga ustawienia środowiska uruchomić i przeprowadzić i trzeba będzie również wysłać lub kierowanie komunikatów kanały danych wejściowych. Domyślnego języka C# modułu zawiera tylko jeden kanał wejściowy, a nazwa to **wejście1**.
 
-1. W programie VS Code przejdź do `deployment.template.json` pliku. Zaktualizuj adres URL obrazu funkcję, dodając **.debug** na końcu.
+### <a name="setup-iot-edge-simulator-for-single-module-app"></a>Konfigurowanie usługi IoT Edge symulator modułu pojedynczej aplikacji
 
-   ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-csharp-module/image-debug.png)
+1. Aby skonfigurować i uruchomić symulator, program VS Code paletę poleceń, wpisz i wybierz **usługi Azure IoT Edge: Start IoT Edge Hub symulatora dla jednego modułu**. Należy także określić nazw wejściowych dla aplikacji jednej modułu, typu **wejście1** i naciśnij klawisz Enter. Polecenie spowoduje wyzwolenie **iotedgehubdev** interfejsu wiersza polecenia i uruchom symulator usługi IoT Edge i kontener modułu narzędzia testowania. Symulator został uruchomiony w trybie jednego modułu pomyślnie można wyświetlić dane wyjściowe poniżej w zintegrowanym terminalu. Można również wyświetlić `curl` polecenie, aby ułatwić wysłać. Użyjesz jej później.
 
-2. W palecie poleceń programu VS Code, należy wprowadzić, a następnie uruchom polecenie **Edge: Tworzenie usługi IoT Edge rozwiązania**.
-3. Wybierz `deployment.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
-4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla jednego urządzenia**. 
-5. Otwórz swoje rozwiązanie **config** folderu. Następnie wybierz pozycję `deployment.json` pliku. Wybierz **wybierz Manifest wdrożenia krawędzi**. 
+   ![Konfigurowanie usługi IoT Edge symulator modułu pojedynczej aplikacji](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
-Zobaczysz wdrożenie z Identyfikatorem wdrożenia w terminalu programu VS Code, zintegrowane pomyślnie utworzona.
+   Można przenieść do Eksploratora platformy Docker i zobacz Moduł stan działania.
 
-Sprawdź stan kontenera w Eksploratorze programu VS Code Docker lub uruchamiając `docker ps` polecenia w terminalu.
+   ![Stan modułu symulatora](media/how-to-develop-csharp-module/simulator-status.png)
 
-## <a name="start-debugging-c-module-in-vs-code"></a>Rozpocznij debugowanie modułu C# w programie VS Code
-Informacje o konfiguracji w utrzymuje funkcji debugowania kodu programu VS `launch.json` plik znajdujący się w `.vscode` folder w obszarze roboczym. To `launch.json` plik został wygenerowany podczas tworzenia nowego rozwiązania usługi IoT Edge. Aktualizuje po dodaniu każdego nowego modułu, który obsługuje debugowanie. 
+   **EdgeHubDev** kontener jest podstawowy symulatora lokalnego usługi IoT Edge. Można uruchomić na komputerze deweloperskim bez demona zabezpieczeń usługi IoT Edge i podaj ustawienia środowiska dla aplikacji modułu macierzystego lub kontenery modułu. **Wejściowych** kontenera widoczne restAPIs ułatwiające Mostek wiadomości pod kątem kanał wejściowy w module.
 
-1. Przejdź do widoku debugowania programu VS Code. Wybierz plik konfiguracji debugowania dla modułu. Nazwa opcji debugowania powinny być podobne do **ModuleName zdalnego debugowania (.NET Core)**
+2. W palecie poleceń programu VS Code, wpisz i wybierz **usługi Azure IoT Edge: Ustawianie poświadczeń modułu do ustawień użytkownika** ustawienia modułu środowiska do `azure-iot-edge.EdgeHubConnectionString` i `azure-iot-edge.EdgeModuleCACertificateFile` do ustawień użytkownika. Możesz znaleźć te ustawienia środowiska są wywoływane w **.vscode** > **launch.json** i [ustawień użytkownika w programie VS Code](https://code.visualstudio.com/docs/getstarted/settings).
 
-   ![Wybierz opcję debugowania konfiguracji](./media/how-to-develop-csharp-module/debug-config.png).
+### <a name="build-module-app-and-debug-in-launch-mode"></a>Tworzenie aplikacji w module i debugowanie w trybie uruchamiania
+
+1. W zintegrowanym terminalu, zmień katalog na **CSharpModule** folder, uruchom następujące polecenie, aby skompilować.Net Core z aplikacji.
+
+    ```cmd
+    dotnet build
+    ```
+
+   > [!TIP]
+   > Można również użyć [PostMan](https://www.getpostman.com/) lub innych narzędzi interfejsu API, aby wysyłać komunikaty za pośrednictwem zamiast `curl`.
 
 2. Przejdź do adresu `program.cs`. Dodaj punkt przerwania w tym pliku.
 
-3. Wybierz **Rozpocznij debugowanie** lub wybierz **F5**. Wybierz proces do dołączenia.
+3. Przejdź do widoku debugowania programu VS Code. Wybierz konfigurację debugowania **ModuleName lokalnego debugowania (.NET Core)**. 
 
-4. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie. 
+4. Kliknij przycisk **Rozpocznij debugowanie** lub naciśnij **F5**. Rozpocznie się sesji debugowania.
+
+5. W zintegrowanym terminalu programu VS Code, uruchom następujące polecenie, aby wysłać **Witaj, świecie** komunikatu do modułu. To polecenie pokazano w poprzednich krokach podczas instalacji usługi IoT Edge symulator pomyślnie.
+
+    ```cmd
+    curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
+    ```
+
+   > [!NOTE]
+   > Jeśli używasz Windows, upewnij się, że powłoka zintegrowanym terminalu programu VS Code jest **powłoki Git Bash** lub **WSL Bash**. Nie można uruchomić `curl` polecenia w programie PowerShell lub wierszu polecenia. 
+   
+   > [!TIP]
+   > Można również użyć [PostMan](https://www.getpostman.com/) lub innych narzędzi interfejsu API, aby wysyłać komunikaty za pośrednictwem zamiast `curl`.
+
+6. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie. 
+
+    ![Obserwuj zmienne](media/how-to-develop-csharp-module/single-module-variables.png)
+
+7. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator**.
+
+## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>Tworzenie kontenera modułu do debugowania i debugowania w dołączyć tryb
+
+Rozwiązanie domyślny zawiera dwa moduły, jeden z nich jest moduł czujnika temperatury symulowane, a drugi to modułu potoku C#. Czujnik temperatury symulowane utrzymuje wysyłanie komunikatów do potoku modułu C#, a następnie komunikaty są potokiem do usługi IoT Hub. W folderze modułu, który został utworzony istnieje kilka plików Docker dla kontenera różnych typów. Użyć dowolnej z tych plików, które kończą się rozszerzeniem **.debug** do tworzenia modułu do testowania. Obecnie C# modułów obsługę debugowania tylko w kontenerach amd64 systemu Linux w dołączyć trybu. 
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>Konfigurowanie usługi IoT Edge symulatora dla rozwiązania IoT Edge
+
+W komputerze deweloperskim można uruchomić symulatora usługi IoT Edge, zamiast instalować ją z demona zabezpieczeń usługi IoT Edge do uruchomienia rozwiązania usługi IoT Edge. 
+
+1. W Eksploratorze urządzenia po lewej stronie, kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge, wybierz **Instalatora IoT Edge symulator** można uruchomić symulatora przy użyciu parametrów połączenia urządzenia.
+
+2. Widać, że symulator IoT Edge została pomyślnie skonfigurowana w zintegrowanym terminalu.
+
+### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Kompilowanie i uruchamianie kontenerów do debugowania i debugowania w dołączyć tryb
+
+1. W programie VS Code przejdź do `deployment.template.json` pliku. Aktualizacja usługi C# modułu obraz adresu URL, dodając **.debug** na końcu.
+
+   ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-csharp-module/image-debug.png)
+
+2. Przejdź do adresu `program.cs`. Dodaj punkt przerwania w tym pliku.
+3. W Eksploratorze programu VS Code, wybierz `deployment.template.json` pliku dla danego rozwiązania, w menu kontekstowym kliknij **rozwiązanie kompilacji i uruchomienia usługi IoT Edge w symulatorze**. Możesz obejrzeć dzienniki kontenera modułu, w tym samym oknie. Możesz także przejść do Eksploratora platformy Docker, aby obserwować stan kontenera.
+
+   ![Obserwuj zmienne](media/how-to-develop-csharp-module/view-log.png)
+
+5. Przejdź do widoku debugowania programu VS Code. Wybierz plik konfiguracji debugowania dla modułu. Nazwa opcji debugowania powinny być podobne do **ModuleName zdalnego debugowania (.NET Core)**
+
+   ![Wybierz konfigurację](media/how-to-develop-csharp-module/debug-config.png)
+
+6. Wybierz **Rozpocznij debugowanie** lub wybierz **F5**. Wybierz proces do dołączenia.
+
+7. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie.
+
+8. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator**.
 
 > [!NOTE]
 > W tym przykładzie pokazano, jak można debugować modułów programu .NET Core IoT Edge w kontenerach. Jest on oparty na wersji debugowania `Dockerfile.debug`, w tym VSDBG debuger wiersza polecenia platformy .NET Core w obrazie kontenera podczas jego tworzenia. Po debugowaniu modułów języka C#, firma Microsoft zaleca, aby bezpośrednio użyć lub dostosować `Dockerfile` bez VSDBG dla modułów usługi IoT Edge gotowe do produkcji.

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ff023812acd5e30bfec34254379431b3e620dac9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627648"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781846"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory uwierzytelnianie przekazywane: Bieżące ograniczenia
 
@@ -47,7 +47,7 @@ Poniższe scenariusze są _nie_ obsługiwane:
 - Uwierzytelnianie przekazywane nie jest zintegrowany z [programu Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 >[!IMPORTANT]
->Jako obejście dla nieobsługiwanych scenariuszy _tylko_ (z wyjątkiem integracji usługi Azure AD Connect Health) Włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora Azure AD Connect. Gdy użytkownik zaloguje się do aplikacji na liście w "nieobsługiwane scenariusze" sekcji, te określone żądania logowania są _nie_ obsługiwany przez agentów uwierzytelniania przekazywanego i dlatego nie będą rejestrowane w [ Uwierzytelnianie przekazywane dzienniki](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
+>Jako obejście dla nieobsługiwanych scenariuszy _tylko_ (z wyjątkiem integracji usługi Azure AD Connect Health) Włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora Azure AD Connect.
 
 >[!NOTE]
 Włączanie synchronizacji skrótów haseł z opcją uwierzytelnianie trybu failover w przypadku infrastruktury lokalnej jest zakłócona. Tego rodzaju tryb failover z uwierzytelniania przekazywanego do synchronizacji skrótów haseł nie jest automatyczna. Musisz przełączyć metodę logowania ręcznie za pomocą usługi Azure AD Connect. Jeśli serwer z programem Azure AD Connect ulegnie awarii, potrzebujesz pomocy z Microsoft Support wyłączyć uwierzytelnianie przekazywane.

@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 722df244135d045e18b9f2d0dd88066ba00b7d49
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696646"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841883"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
 Dostawcy zasobów MySQL Server umożliwia udostępnianie baz danych MySQL jako usługi Azure Stack. Dostawcy zasobów MySQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
+
+> [!IMPORTANT]
+> Tworzenie elementów na serwerach tego hosta SQL lub MySQL jest obsługiwane tylko dostawcy zasobów. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może prowadzić do niezgodnego stanu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -150,6 +153,7 @@ Po zakończeniu działania skryptu instalacji dostawcy zasobów, Odśwież przeg
 2. Wybierz **grup zasobów**
 3. Wybierz **systemu.\< Lokalizacja\>.mysqladapter** grupy zasobów.
 4. Na stronie Podsumowanie dla grupy zasobów — omówienie powinno istnieć żadne wdrożenia nie powiodło się.
+5. Na koniec wybierz pozycję **maszyn wirtualnych** w portalu administracyjnym, aby sprawdzić dostawcy zasobów MySQL maszyna wirtualna została pomyślnie utworzone i jest uruchomiona.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411937"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842027"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 
@@ -104,17 +104,11 @@ Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w p
 |[Elastyczne pule — Get](/rest/api/sql/elasticpools/get)|Pobiera puli elastycznej.|
 |[Elastyczne pule — lista przez serwer](/rest/api/sql/elasticpools/listbyserver)|Zwraca listę pule elastyczne na serwerze.|
 |[Elastyczne pule — aktualizacja](/rest/api/sql/elasticpools/update)|Aktualizuje istniejący puli elastycznej.|
-|[Zalecane elastyczne pule — Get](/rest/api/sql/recommendedelasticpools/get)|Pobiera zalecanej puli elastycznej.|
-|[Zalecane elastyczne pule — lista przez serwer](/rest/api/sql/recommendedelasticpools/listbyserver)|Zwraca zalecane pule elastyczne.|
-|[Zalecane elastyczne pule — listy metryk](/rest/api/sql/recommendedelasticpools/listmetrics)|Zwraca zalecane metryki elastycznej puli.|
 |[Działania puli elastycznej](/rest/api/sql/elasticpoolactivities)|Zwraca działania puli elastycznej.|
 |[Działania bazy danych w puli elastycznej](/rest/api/sql/elasticpooldatabaseactivities)|Zwraca działania baz danych w puli elastycznej.|
 |[Bazy danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
 |[Bazy danych — Get](/rest/api/sql/databases/get)|Pobiera bazy danych.|
-|[Bazy danych — uzyskać za pomocą elastycznej puli](/rest/api/sql/databases/getbyelasticpool)|Pobiera bazy danych w puli elastycznej.|
-|[Bazy danych — uzyskać za pomocą zalecanej puli elastycznej](/rest/api/sql/databases/getbyrecommendedelasticpool)|Pobiera bazy danych wewnątrz zalecanej puli elastycznej.|
 |[Bazy danych — listę według puli elastycznej](/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — listę według zalecanej puli elastycznej](/rest/api/sql/databases/listbyrecommendedelasticpool)|Zwraca listę baz danych w zalecanej puli elastycznej.|
 |[Bazy danych — lista przez serwer](/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
 |[Bazy danych — aktualizacja](/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
 

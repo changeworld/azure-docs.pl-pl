@@ -7,14 +7,14 @@ author: luiscabrer
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 42a682898303b742a17b0a6d4d98c2b9fedf9003
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41987607"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841698"
 ---
 # <a name="quickstart-for-the-text-analytics-api-with-c"></a>Przewodnik Szybki start dotyczący usługi Text Analytics interfejsu API w języku C# 
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text
 1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
 1. Wybierz **Uwzględnij wydania wstępne** pole wyboru.
 1. Wybierz **Przeglądaj** kartę i wyszukaj **Microsoft.Azure.CognitiveServices.Language**.
-1. Wybierz pakiet NuGet i zainstaluj go.
+1. Wybierz **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** NuGet pakiet i zainstaluj go.
 
 > [!Tip]
 > Mimo że można wywołać [punktów końcowych HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) bezpośrednio z kodu C#, zestaw SDK Microsoft.Azure.CognitiveServices.Language sprawia, że łatwiej do wywołania tej usługi bez konieczności martwienia się o serializację i deserializację formatu JSON.
@@ -57,6 +57,7 @@ using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
 using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
 using System.Collections.Generic;
 using Microsoft.Rest;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -87,7 +88,13 @@ namespace ConsoleApp1
             };
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+```
 
+## <a name="detect-language"></a>Wykrywanie języka
+
+Interfejs API wykrywania języka wykrywa język tekstu dokumentu, za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+
+```csharp
             // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
@@ -104,7 +111,13 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
+```
 
+## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
+
+Klucz frazy wyodrębniania wyodrębnia kluczowych fraz z tekstu dokumentu, za pomocą [metoda kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
+
+```csharp
             // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
@@ -129,8 +142,14 @@ namespace ConsoleApp1
                     Console.WriteLine("\t\t" + keyphrase);
                 }
             }
+```
 
-            // Extracting sentiment.
+## <a name="analyze-sentiment"></a>Analiza tonacji
+
+Interfejs API analizy tonacji wykrywa tonację zestaw rekordów tekstowych przy użyciu [metoda tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9).
+
+```csharp
+            // Analyzing sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -149,6 +168,29 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
             }
+```
+
+## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
+
+Interfejs API Entity Linking identyfikuje dobrze znanych jednostek w tekście dokumentu, za pomocą [łączenie podmiotów metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634).
+
+```csharp
+            // Linking entities
+            Console.WriteLine("\n\n===== ENTITY LINKING ======");
+
+            EntitiesBatchResult result4 = client.EntitiesAsync(
+                    new MultiLanguageBatchInput(
+                        new List<MultiLanguageInput>()
+                        {
+                            new MultiLanguageInput("en", "0", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."),
+                            new MultiLanguageInput("en", "1", "The Seattle Seahawks won the Super Bowl in 2014."),
+                        })).Result;
+
+            // Printing entity results.
+            foreach (var document in result4.Documents)
+            {
+                Console.WriteLine("Document ID: {0} , Entities: {1}", document.Id, String.Join(", ", document.Entities.Select(entity => entity.Name)));
+            }
         }
     }
 }
@@ -163,4 +205,3 @@ namespace ConsoleApp1
 
  [Omówienie analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)
-

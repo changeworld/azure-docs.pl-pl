@@ -14,14 +14,19 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 090e7419f80bc734ee2b1cb4f976911792046a9c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054407"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782168"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Korzystanie z pakietu zawartości usługi Power BI dla usługi Azure Active Directory
+
+|  |
+|--|
+|Obecnie pakiet zawartości usługi Azure AD w usłudze Power BI używa interfejsów API programu Graph usługi Azure AD do pobierania danych z dzierżawą usługi Azure AD. W rezultacie może zostać wyświetlony niektóre różnice między danymi, które są dostępne w pakiecie zawartości i dane pobrane przy użyciu [interfejsów API programu Microsoft Graph dla raportowania](concept-reporting-api.md). |
+|  |
 
 Zrozumienie, jak użytkownicy korzystają z funkcji usługi Azure Active Directory, jest bardzo ważne dla Ciebie jako administratora IT. Dzięki temu można zaplanować infrastrukturę IT oraz komunikację w celu zwiększenia użycia i maksymalnego wykorzystania funkcji usługi AAD. Pakiet zawartości usługi Power BI dla usługi Azure Active Directory umożliwia pogłębioną analizę danych, ułatwiającą zrozumienie sposobu działania usługi Azure Active Directory w przypadku różnych funkcji, na których polegasz.  Dzięki integracji interfejsów API usługi Azure Active Directory z usługą Power BI można łatwo pobrać gotowe pakiety zawartości i uzyskać informacje o wszystkich działaniach usługi Azure Active Directory za pomocą rozbudowanego środowiska wizualizacji oferowanego przez usługę Power BI. Możesz utworzyć własny pulpit nawigacyjny i w prosty sposób udostępnić go innym osobom w organizacji. 
 

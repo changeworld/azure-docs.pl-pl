@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: ab2a05c55ee248d8a74f70d36b06277db3a0f38a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058189"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782968"
 ---
 # <a name="use-service-management-from-python"></a>Użyj usługi zarządzania za pomocą języka Python
 Ten przewodnik pokazuje, jak programowo wykonywać typowe zadania zarządzania usługą za pomocą języka Python. **ServiceManagementService** klasy w [zestawu Azure SDK dla języka Python](https://github.com/Azure/azure-sdk-for-python) obsługuje dostęp programistyczny do większości funkcji związanych z zarządzaniem usługi, które są dostępne w [platformy Azure Portal][management-portal]. Ta funkcja umożliwia tworzenie, aktualizowanie i usuwanie usług w chmurze, wdrożeń, usług zarządzania danymi i maszyn wirtualnych. Ta funkcja może być przydatne w przypadku tworzenia aplikacji, które wymagają dostęp programistyczny do zarządzania usługami.
@@ -426,4 +426,4 @@ Więcej informacji możesz znaleźć w [Centrum deweloperów języka Python](htt
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[cloud service]:/services/cloud-services/
+[cloud service]:/azure/cloud-services/
