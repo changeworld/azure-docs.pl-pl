@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952896"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285231"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Programowanie i testowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB
 
@@ -51,12 +51,6 @@ W tym artykule opisano następujące zadania:
 > * Uruchamianie emulatora w aplikacji Docker for Windows
 > * Zbieranie plików śledzenia
 > * Rozwiązywanie problemów
-
-Na początku zalecamy obejrzenie poniższego klipu wideo, w którym Kirill Gavrylyuk wyjaśnia, jak rozpocząć pracę z emulatorem usługi Azure Cosmos DB. W filmie jest używana nazwa „emulator usługi DocumentDB”, ale obecnie to narzędzie nosi nazwę „emulator usługi Azure Cosmos DB”. Wszystkie informacje pozostają aktualne w odniesieniu do emulatora usługi Azure Cosmos DB. 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
-> 
-> 
 
 ## <a name="how-the-emulator-works"></a>Jak działa emulator
 
@@ -289,7 +283,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
   <td></td>
 </tr>
 <tr>
-  <td>Consistency</td>
+  <td>Spójność</td>
   <td>Ustawia domyślny poziom spójności dla konta.</td>
   <td>CosmosDB.Emulator.exe /Consistency=&lt;spójność&gt;</td>
   <td>&lt;spójność&gt;: wartość musi być jednym z następujących [poziomów spójności](consistency-levels.md): Sesja, Silne, Ostateczne lub Powiązana nieaktualność.  Wartość domyślna to Sesja.</td>

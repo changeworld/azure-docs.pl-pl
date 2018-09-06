@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 3a5978603ae57a6975b76a0736dc4e2d1f133d30
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022759"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43283030"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Wprowadzenie do usługi Azure Cosmos DB: interfejs API usługi MongoDB
 
@@ -49,11 +49,6 @@ Bazy danych usługi Azure Cosmos DB mogą służyć jako magazyn danych dla apli
 **Automatyczne indeksowanie:** domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie właściwości w dokumentach w bazie danych MongoDB i nie oczekuje ani nie wymaga żadnego schematu lub tworzenia indeksów pomocniczych. Ponadto funkcja indeksu unikatowego umożliwia ograniczenie unikatowości w dowolnych polach dokumentu, które zostały już automatycznie poindeksowane w usłudze Azure Cosmos DB.
 
 **Klasa korporacyjna**: usługa Azure Cosmos DB obsługuje wiele lokalnych replik, aby zapewnić 99,99% dostępności oraz ochrony danych na wypadek awarii lokalnej lub regionalnej. Usługa Azure Cosmos DB ma [certyfikaty zgodności](https://www.microsoft.com/trustcenter) i funkcje zabezpieczeń klasy korporacyjnej. 
-
-Dowiedz się więcej z wideo, w którym występuje starszy menedżer programu ds. usługi Azure Cosmos DB Aleksey Savateyev.
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T136/player]
-> 
 
 ## <a name="how-to-get-started"></a>Jak zacząć
 

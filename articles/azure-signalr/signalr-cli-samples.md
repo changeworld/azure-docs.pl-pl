@@ -3,7 +3,7 @@ title: Przykłady interfejsu wiersza polecenia platformy Azure — usługa Azure
 description: Przykłady interfejsu wiersza polecenia platformy Azure — usługa Azure SignalR Service
 services: signalr
 documentationcenter: signalr
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: signalr
 ms.date: 04/20/2018
-ms.author: wesmc
+ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 6e76ee89160c84ff0f1033590d14c288f023f201
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a1ca02a5e058816c133accf3027f0a951db42cf2
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779858"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664007"
 ---
 # <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 

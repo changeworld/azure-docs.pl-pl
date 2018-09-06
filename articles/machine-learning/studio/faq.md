@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024729"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782934"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning — często zadawane pytania: rozliczenia, możliwości, ograniczenia i pomoc techniczna
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
@@ -312,7 +312,7 @@ Szkolenia można również znaleźć w witrynie [Microsoft Virtual Academy](http
 
 **Jak uzyskać pomoc techniczną dotyczącą usługi Azure Machine Learning?**
 
-Aby uzyskać pomoc techniczną dotyczącą usługi Azure Machine Learning, przejdź do witryny [Pomoc techniczna platformy Azure](/support/options/) i wybierz pozycję **Machine Learning**.
+Aby uzyskać pomoc techniczną dotyczącą usługi Azure Machine Learning, przejdź do witryny [Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Machine Learning**.
 
 Dla usługi Azure Machine Learning udostępniono również forum społeczności w witrynie MSDN, gdzie można zadawać pytania dotyczące usługi Azure Machine Learning. Zespół ds. usługi Azure Machine Learning monitoruje forum. Przejdź do [Forum platformy Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 

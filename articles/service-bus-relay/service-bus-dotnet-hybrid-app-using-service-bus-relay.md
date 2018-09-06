@@ -3,7 +3,7 @@ title: Hybrydowa aplikacja lokalna/w chmurze usługi Azure WCF Relay (platforma 
 description: Dowiedz się, jak utworzyć hybrydową aplikację lokalną/w chmurze platformy .NET przy użyciu przekaźnika WCF platformy Azure.
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: fe13de5f83fe18a85f8d46d0eee039159e1a60e9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: spelluru
+ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29346445"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697472"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Tworzenie hybrydowej aplikacji lokalnej/w chmurze platformy .NET przy użyciu przekaźnika WCF platformy Azure
 
@@ -219,11 +219,11 @@ W tej sekcji utworzysz prostą aplikację ASP.NET, która będzie wyświetlać d
 
 1. Upewnij się, że program Visual Studio jest uruchomiony z uprawnieniami administratora.
 2. W menu **Plik** programu Visual Studio kliknij pozycję **Nowy**, a następnie kliknij pozycję **Projekt**.
-3. W sekcji **Zainstalowane szablony** w obszarze **Visual C#** kliknij pozycję **Aplikacja sieci Web programu ASP.NET (.NET Framework)**. Nazwij projekt **ProductsPortal**. Następnie kliknij przycisk **OK**.
+3. W sekcji **Zainstalowane szablony** w obszarze **Visual C#** kliknij pozycję **Aplikacja internetowa programu ASP.NET (.NET Framework)**. Nazwij projekt **ProductsPortal**. Następnie kliknij przycisk **OK**.
 
    ![][15]
 
-4. Na liście **Szablony ASP.NET** w oknie dialogowym **Nowa aplikacja sieci Web programu ASP.NET** kliknij pozycję **MVC**.
+4. Na liście **Szablony ASP.NET** w oknie dialogowym **Nowa aplikacja internetowa programu ASP.NET** kliknij pozycję **MVC**.
 
    ![][16]
 
@@ -231,13 +231,13 @@ W tej sekcji utworzysz prostą aplikację ASP.NET, która będzie wyświetlać d
 
     ![][18]
 
-7. W oknie dialogowym **Nowa aplikacja sieci Web platformy ASP.NET** kliknij przycisk **OK**, aby utworzyć aplikację MVC.
-8. Teraz musisz skonfigurować zasoby platformy Azure dla nowej aplikacji sieci Web. Postępuj zgodnie z instrukcjami znajdującymi się w [sekcji Publikowanie na platformie Azure tego artykułu](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure). Następnie wróć do tego samouczka i przejdź do następnego kroku.
+7. W oknie dialogowym **Nowa aplikacja internetowa platformy ASP.NET** kliknij przycisk **OK**, aby utworzyć aplikację MVC.
+8. Teraz musisz skonfigurować zasoby platformy Azure dla nowej aplikacji internetowej. Postępuj zgodnie z instrukcjami znajdującymi się w [sekcji Publikowanie na platformie Azure tego artykułu](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure). Następnie wróć do tego samouczka i przejdź do następnego kroku.
 10. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Modele** i kliknij polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**. W polu **Nazwa** wpisz nazwę **Product.cs**. Następnie kliknij pozycję **Dodaj**.
 
     ![][17]
 
-### <a name="modify-the-web-application"></a>Modyfikowanie aplikacji sieci Web
+### <a name="modify-the-web-application"></a>Modyfikowanie aplikacji internetowej
 
 1. W pliku Product.cs w programie Visual Studio zastąp istniejącą definicję przestrzeni nazw następującym kodem.
 
@@ -406,7 +406,7 @@ Naciśnij przycisk **Odśwież** na stronie **ProductsPortal**. Przy każdym od�
 
 Zamknij obie aplikacje przed przejściem do następnego kroku.
 
-## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Wdrażanie projektu ProductsPortal w aplikacji sieci Web platformy Azure
+## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Wdrażanie projektu ProductsPortal w aplikacji internetowej platformy Azure
 
 Następny krok polega na ponownym opublikowaniu frontonu projektu **ProductsPortal** aplikacji internetowej platformy Azure. Wykonaj następujące czynności:
 
@@ -417,19 +417,19 @@ Następny krok polega na ponownym opublikowaniu frontonu projektu **ProductsPort
 >
 >
 
-2. Skopiuj adres URL wdrożonej aplikacji sieci Web, ponieważ będzie potrzebny w kolejnym kroku. Ten adres URL możesz również uzyskać w oknie Działanie usługi Azure App Service w programie Visual Studio:
+2. Skopiuj adres URL wdrożonej aplikacji internetowej, ponieważ będzie potrzebny w kolejnym kroku. Ten adres URL możesz również uzyskać w oknie Działanie usługi Azure App Service w programie Visual Studio:
 
   ![][9]
 
 3. Zamknij okno przeglądarki, aby zatrzymać działającą aplikację.
 
-### <a name="set-productsportal-as-web-app"></a>Ustawianie projektu ProductsPortal jako aplikacji sieci Web
+### <a name="set-productsportal-as-web-app"></a>Ustawianie projektu ProductsPortal jako aplikacji internetowej
 
-Przed uruchomieniem aplikacji w chmurze musisz się upewnić, że aplikacja **ProductsPortal** jest uruchamiana z poziomu programu Visual Studio jako aplikacja sieci Web.
+Przed uruchomieniem aplikacji w chmurze musisz się upewnić, że aplikacja **ProductsPortal** jest uruchamiana z poziomu programu Visual Studio jako aplikacja internetowa.
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt **ProductsPortal**, a następnie kliknij pozycję **Właściwości**.
 2. W lewej kolumnie kliknij pozycję **Sieć Web**.
-3. W sekcji **Akcja uruchamiania** kliknij przycisk **Początkowy adres URL** i w polu tekstowym wprowadź adres URL wcześniej wdrożonej aplikacji sieci Web, na przykład `http://productsportal1234567890.azurewebsites.net/`.
+3. W sekcji **Akcja uruchamiania** kliknij przycisk **Początkowy adres URL** i w polu tekstowym wprowadź adres URL wcześniej wdrożonej aplikacji internetowej, na przykład `http://productsportal1234567890.azurewebsites.net/`.
 
     ![][27]
 
@@ -438,7 +438,7 @@ Przed uruchomieniem aplikacji w chmurze musisz się upewnić, że aplikacja **Pr
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Naciśnij klawisz F5, aby skompilować i uruchomić aplikację. Serwer lokalny (aplikacja konsolowa **ProductsServer**) powinien uruchomić się jako pierwszy, a następnie aplikacja **ProductsPortal** powinna uruchomić się w oknie przeglądarki, jak pokazano na poniższym zrzucie ekranu. Ponownie pojawi się spis produktów zawierający dane pobrane z lokalnego systemu usługi produktów, a dane zostaną wyświetlone w aplikacji sieci Web. Sprawdź adres URL, aby upewnić się, że aplikacja **ProductsPortal** działa w chmurze jako aplikacja sieci Web platformy Azure.
+1. Naciśnij klawisz F5, aby skompilować i uruchomić aplikację. Serwer lokalny (aplikacja konsolowa **ProductsServer**) powinien uruchomić się jako pierwszy, a następnie aplikacja **ProductsPortal** powinna uruchomić się w oknie przeglądarki, jak pokazano na poniższym zrzucie ekranu. Ponownie pojawi się spis produktów zawierający dane pobrane z lokalnego systemu usługi produktów, a dane zostaną wyświetlone w aplikacji internetowej. Sprawdź adres URL, aby upewnić się, że aplikacja **ProductsPortal** działa w chmurze jako aplikacja internetowa platformy Azure.
 
    ![][1]
 
