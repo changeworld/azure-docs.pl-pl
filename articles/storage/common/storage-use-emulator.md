@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888087"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052547"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -68,7 +68,7 @@ Można zainicjować z emulatora magazynu, aby wskazywała wystąpienie bazy dany
 
   Umożliwia także następujące polecenie, które określa, że emulator, aby użyć domyślnego wystąpienia programu SQL Server:
 
-  `AzureStorageEmulator.exe init /server .\\`
+  `AzureStorageEmulator.exe init /server .`
 
   Lub służy następujące polecenie, które ponownie inicjuje bazę danych do domyślnego wystąpienia LocalDB:
 
@@ -93,10 +93,10 @@ Niektóre biblioteki klienta usługi Azure storage, takich jak biblioteka Xamari
 Można również wygenerować token sygnatury dostępu Współdzielonego, za pomocą programu Azure PowerShell. Poniższy przykład generuje token SAS z pełnymi uprawnieniami do kontenera obiektów blob:
 
 1. Instalacja programu Azure PowerShell, jeśli nie jest jeszcze (przy użyciu najnowszej wersji programu Azure PowerShell, poleceń cmdlet zaleca się). Aby uzyskać instrukcje dotyczące instalacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
-2. Otwórz program Azure PowerShell i uruchom następujące polecenia, zastępując `ACCOUNT_NAME` i `ACCOUNT_KEY==` przy użyciu własnych poświadczeń i `CONTAINER_NAME` o nazwie wybrane:
+2. Otwórz program Azure PowerShell i uruchom następujące polecenia, zastępując `CONTAINER_NAME` o nazwie wybrane:
 
 ```powershell
-$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+$context = New-AzureStorageContext -Local
 
 New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
@@ -108,7 +108,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 Wynikowy sygnatury dostępu współdzielonego identyfikator URI dla nowego kontenera powinny wyglądać podobnie do:
 
 ```
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
+http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
 Sygnatura dostępu współdzielonego utworzonych za pomocą w tym przykładzie jest ważny przez jeden dzień. Podpis daje pełny dostęp (odczytu, zapisu, usuwanie, lista), do obiektów blob w kontenerze.

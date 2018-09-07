@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b5bcd12d3ead3fa99f80355e02a068246d7bcfa8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091384"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052820"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- Przed rozpoczęciem instalacji aktualizacji 1807 Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) Aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji.
+- Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) Aby zweryfikować stan usługi Azure Stack i rozwiąż wszystkie problemy operacyjne znaleziono, w tym wszystkie ostrzeżenia i błędy. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji.
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 

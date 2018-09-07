@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6de1832dde1764b2655d4c34643d6a026e198f64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968795"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052228"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku ciągłej integracji na platformie Azure przy użyciu platformy Docker i Kubernetes
 Dla aplikacji sztucznej Inteligencji są często dwóch strumieni pracy analityków danych, tworzenie modeli uczenia maszynowego i deweloperów aplikacji, tworzenie aplikacji i ujawnienie go użytkownikom końcowym z. W tym artykule pokażemy, jak do zaimplementowania ciągłej integracji (CI) / ciągłe dostarczanie (CD) potoku dla aplikacji sztucznej Inteligencji. Aplikacji sztucznej Inteligencji składa się z kodu aplikacji, wbudowane z modelu uczenia (ML) wstępnie przetrenowane maszyny. W tym artykule firma Microsoft pobiera pretrained modelu z konta magazynu prywatnego obiektu blob platformy Azure, może to być także konta usług AWS S3. Będziemy używać aplikacji internetowej platformy flask prostego języka python do tego artykułu.
@@ -65,7 +65,7 @@ Architektura potoku są podane poniżej.
 11. Serwer DNS przekazuje żądanie do modułu równoważenia obciążenia i wysyła odpowiedź z powrotem do użytkownika.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zapoznaj się [samouczek]((https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)) wykonaj szczegółowe informacje i zaimplementować własny potoku ciągłej integracji/ciągłego Dostarczania dla aplikacji.
+* Zapoznaj się [samouczek](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) wykonaj szczegółowe informacje i zaimplementować własny potoku ciągłej integracji/ciągłego Dostarczania dla aplikacji.
 
 ## <a name="references"></a>Dokumentacja
 * [Zespołowe przetwarzanie danych naukowych (TDSP)](https://aka.ms/tdsp)

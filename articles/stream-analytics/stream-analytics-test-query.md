@@ -10,12 +10,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: d699d69362b2d28c205aab14a4bfb26570a68a4e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 63f9b98bcd70378ae02769298f0ffcd796378612
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060230"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027269"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testowanie zapytania usługi Stream Analytics z przykładowymi danymi
 
@@ -29,7 +29,7 @@ Za pomocą usługi Azure Stream Analytics, możesz przekazać przykładowe dane 
 
 3. W usłudze Stream Analytics zadania stronie w obszarze **topologia zadań** nagłówka, wybierz **zapytania** otwarte okno edytora zapytań. 
 
-4. Aby przetestować zapytanie za pomocą przykładowych danych wejściowych, kliknij prawym przyciskiem myszy dowolne dane wejściowe.  Następnie wybierz pozycję **Przekaż dane przykładowe z pliku**. Dane muszą być zserializowane w formacie JSON, CSV lub AVRO.
+4. Aby przetestować zapytanie za pomocą przykładowych danych wejściowych, kliknij prawym przyciskiem myszy dowolne dane wejściowe.  Następnie wybierz pozycję **Przekaż dane przykładowe z pliku**. Dane muszą być zserializowane w formacie JSON, CSV lub AVRO. Przykładowe dane wejściowe musi być zakodowany w formacie UTF-8 i nie skompresowany. Tylko przecinek (,) ogranicznik jest obsługiwana dla testowanie danych wejściowych CSV, w portalu.
 
     ![Zapytanie testowe edytora zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 48e04d3bdd783d1dc04ac5cc77c4183ef5f87865
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ac6d3a23e3afcc3a4c17798db7f63d846b123fba
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818443"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022117"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -70,6 +70,9 @@ Bieżące wersje:
 * Visual Studio 2017 w wersji 15.7 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.3.10710.1 
 
 Listę obsługiwanych wersji można znaleźć na stronie [pomocy technicznej usługi Service Fabric](service-fabric-support.md)
+
+> [!NOTE]
+> Uaktualnia jednej maszynie klastry (OneBox) nie są obsługiwane dla aplikacji lub klastra; Usuwanie klastra OneBox i utworzyć ją ponownie, jeśli chcesz przeprowadzić uaktualnienie klastra lub jakichkolwiek problemów w przypadku uaktualniania aplikacji. 
 
 ## <a name="enable-powershell-script-execution"></a>Włączanie wykonywania skryptów programu PowerShell
 Platforma Service Fabric korzysta ze skryptów programu Windows PowerShell do tworzenia lokalnego klastra projektowego i do wdrażania aplikacji z programu Visual Studio. Domyślnie system Windows blokuje uruchamianie tych skryptów. Aby je włączyć, należy zmienić zasady wykonywania w programie PowerShell. Uruchom program PowerShell jako administrator i wprowadź następujące polecenie:

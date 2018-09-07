@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: d7ed440ba794bcdfab4744e0ac4864aab6896ca8
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6743d03b623084675f5043a7e158fa99e8aa39d2
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055990"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054009"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -65,9 +65,9 @@ Aby Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych met
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
 | StorageAccountId |Yes |Identyfikator zasobu konta magazynu, do którego powinny być zapisywane dzienniki aktywności. |
-| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionów dla subskrypcji przy użyciu `(Get-AzureRmLocation).Location`. |
+| Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionów dla subskrypcji przy użyciu `(Get-AzureRmLocation).Location`. |
 | RetentionInDays |Nie |Liczba dni dla zdarzenia, które powinny zostać zachowane, od 1 do 2147483647. Wartość zero zapisuje dzienniki na czas nieokreślony (nieskończoność). |
-| Kategorie |Nie |Rozdzielana przecinkami lista kategorie zdarzeń, które powinny być zbierane. Możliwe wartości to zapis, usuwanie i akcji.  Jeśli nie zostanie podana, następnie wszystkie możliwe wartości są uznawane za |
+| Kategoria |Nie |Rozdzielana przecinkami lista kategorie zdarzeń, które powinny być zbierane. Możliwe wartości to zapis, usuwanie i akcji.  Jeśli nie zostanie podana, następnie wszystkie możliwe wartości są uznawane za |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archiwizowanie dziennika aktywności przy użyciu interfejsu wiersza polecenia
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: edaff86531a9c40064d25a046bbbb70f48b75c84
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521442"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027133"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
@@ -119,7 +119,7 @@ Podczas przygotowywania dysków twardych do zadania importu, miejsce docelowe je
 Jest zależna. Podczas przygotowywania dysku, możesz określić, czy pliki docelowe powinny być zastąpione, czy ignorowane za pomocą pola w pliku CSV zestaw danych o nazwie dyspozycji: < Zmień nazwę | zastąpić nie | zastąpić >. Domyślnie usługa zmienia nazwę nowych plików zamiast zastępowania istniejących obiektów blob lub plików.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Narzędzie WAImportExport jest zgodny z 32-bitowych systemach operacyjnych?
-Nie. Narzędzie WAImportExport jest zgodna tylko z 64-bitowych systemach operacyjnych Windows. Aby uzyskać pełną listę obsługiwanych systemów operacyjnych, przejdź do [obsługiwane systemy operacyjne](). 
+Nie. Narzędzie WAImportExport jest zgodna tylko z 64-bitowych systemach operacyjnych Windows. Aby uzyskać pełną listę obsługiwanych systemów operacyjnych, przejdź do [obsługiwane systemy operacyjne](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaka jest maksymalna blokowych obiektów Blob i rozmiar stronicowego obiektu Blob, obsługiwane przez usługi Azure Import/Export?

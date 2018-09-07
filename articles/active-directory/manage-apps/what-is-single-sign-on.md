@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494129"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052772"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
@@ -46,7 +46,7 @@ Usługa Azure AD obsługuje trzy różne sposoby, aby zalogować się do aplikac
 
 * **Federacyjne logowanie jednokrotne** umożliwia aplikacjom przekierowanie do usługi Azure AD do uwierzytelniania użytkowników zamiast monitowania o własne hasło. Federacyjne logowanie jednokrotne jest obsługiwana w przypadku aplikacji, które obsługują protokoły, takie jak SAML 2.0, WS-Federation i OpenID Connect i jest najszerszym tryb logowania jednokrotnego.
 * **Na podstawie hasła logowania jednokrotnego** umożliwia bezpieczne przechowywanie haseł aplikacji i oparte na metodzie powtórzeń przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Oparte na hasłach logowania jednokrotnego wykorzystuje istniejący proces udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami i wymaga aby użytkownik znał hasło.
-* **Istniejące logowanie jednokrotne** umożliwia usłudze Azure AD i wykorzystać wszystkie istniejące logowanie jednokrotne zostało skonfigurowane dla aplikacji, ale umożliwia te aplikacje, być połączone z portali panelu dostępu usługi Office 365 lub Azure AD i umożliwia również dodatkowe Raportowanie w usłudze Azure AD, gdy istnieje uruchomienia aplikacji.
+* **Połączone logowanie jednokrotne** umożliwia usłudze Azure AD i wykorzystać wszystkie istniejące logowanie jednokrotne zostało skonfigurowane dla aplikacji, ale umożliwia te aplikacje, być połączone z portali panelu dostępu usługi Office 365 lub Azure AD i umożliwia również dodatkowe Raportowanie w usłudze Azure AD, gdy istnieje uruchomienia aplikacji.
 
 Po użytkownik został uwierzytelniony przy użyciu aplikacji, muszą mieć rekord konta zainicjowane w aplikacji, która informuje aplikację, w których uprawnienia i poziom dostępu wewnątrz aplikacji. Aprowizacja ten rekord konta może mieć miejsce, automatycznie lub może być wykonywane ręcznie przez administratora przed dostępu rejestracji jednokrotnej jest podany przez użytkownika.
 
@@ -79,10 +79,10 @@ W przypadku logowania jednokrotnego opartego na hasłach może być przeglądark
 * Chrome — W systemie Windows 7 lub nowszy i System MacOS x lub nowszym
 * Firefox 26.0 lub później — w Windows XP z dodatkiem SP2 lub nowszy oraz w systemie Mac OS X 10,6 lub nowszej
 
-### <a name="existing-single-sign-on"></a>Istniejące logowanie jednokrotne
-Podczas konfigurowania logowania jednokrotnego dla aplikacji, witryny Azure portal zapewnia trzecią opcję z "istniejące logowanie jednokrotne". Ta opcja umożliwia po prostu administratorem, aby utworzyć link do aplikacji i umieść ją na panelu dostępu dla wybranych użytkowników.
+### <a name="linked-single-sign-on"></a>Połączone logowanie jednokrotne
+Podczas konfigurowania logowania jednokrotnego dla aplikacji, witryny Azure portal zapewnia trzecią opcję z "połączone logowanie jednokrotne". Ta opcja umożliwia po prostu administratorem, aby utworzyć link do aplikacji i umieść ją na panelu dostępu dla wybranych użytkowników.
 
-Na przykład w przypadku aplikacji, która jest skonfigurowana do uwierzytelniania użytkowników za pomocą Active Directory Federation Services 2.0, administrator może użyć opcji "istniejące logowanie jednokrotne" Aby utworzyć link do niego w panelu dostępu. Gdy użytkownicy uzyskują dostęp do łącza, są uwierzytelniani, za pomocą Active Directory Federation Services 2.0 lub dowolnego istniejącego pojedynczego logowania jednokrotnego rozwiązania jest udostępniany przez aplikację.
+Na przykład w przypadku aplikacji, która jest skonfigurowana do uwierzytelniania użytkowników za pomocą Active Directory Federation Services 2.0, administrator może użyć opcji "połączone logowanie jednokrotne" Aby utworzyć link do niego w panelu dostępu. Gdy użytkownicy uzyskują dostęp do łącza, są uwierzytelniani, za pomocą Active Directory Federation Services 2.0 lub dowolnego istniejącego pojedynczego logowania jednokrotnego rozwiązania jest udostępniany przez aplikację.
 
 ### <a name="user-provisioning"></a>Inicjowanie obsługi użytkowników
 Wybierz aplikacje usługi Azure AD umożliwia automatyczne użytkownika aprowizację i anulowanie obsługi kont w innych aplikacji SaaS pochodzących od w witrynie Azure portal przy użyciu informacji o tożsamości systemu Windows Server Active Directory lub Azure AD. Po użytkownik otrzyma uprawnienia w usłudze Azure AD dla jednego z tych aplikacji, konta mogą być automatycznie tworzone (udostępnione) w lokalizacji docelowej aplikacji SaaS.
@@ -172,7 +172,7 @@ Większość aplikacji federacyjnych obsługuje SAML 2.0, WS-Federation i OpenID
 ![](./media/what-is-single-sign-on/workdaymobile.png)
 
 ### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Łącza bezpośrednie logowania federacyjnego, opartego na hasłach lub istniejących aplikacji
-Usługa Azure AD obsługuje również pojedynczego logowania jednokrotnego łączy bezpośrednich do poszczególnych aplikacji, które obsługują opartego na hasłach logowanie jednokrotne, istniejące logowanie jednokrotne i jakiejkolwiek formy federacyjnego logowania jednokrotnego.
+Usługa Azure AD obsługuje również pojedynczego logowania jednokrotnego łączy bezpośrednich dla poszczególnych aplikacji, które obsługują opartego na hasłach logowanie jednokrotne połączonej logowania jednokrotnego i jakiejkolwiek formy federacyjnego logowania jednokrotnego.
 
 Te łącza są specjalnie przygotowane adresów URL, które wysyłają użytkownika przez proces logowania w usłudze Azure AD dla określonej aplikacji bez konieczności uruchamiania użytkownik je z usługi Azure AD dostęp do panelu lub usługi Office 365. Te pojedynczego logowania jednokrotnego adresy URL można znaleźć w obszarze karty Pulpit nawigacyjny wstępnie zintegrowanych aplikacji w sekcji usługi Active Directory w witrynie Azure Portal, jak pokazano na poniższym zrzucie ekranu.
 

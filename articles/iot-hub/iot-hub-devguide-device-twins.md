@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: b5e0a0caacab2413b640c58575673e555eeb76a4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: dfdffaad63d23ecf9968292cd2a8075b9cd374bc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288282"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022357"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
 
@@ -90,7 +90,7 @@ W bliźniaczej reprezentacji urządzenia dokument JSON można znaleźć w poniż
             "telemetryConfig": {
                 "sendFrequency": "5m",
                 "status": "success"
-            }
+            },
             "batteryLevel": 55,
             "$metadata" : {...},
             "$version": 4

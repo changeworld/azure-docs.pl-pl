@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: dfe584532efeab1dbc0d2928b7afb0a6695a21ee
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39184949"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027014"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
 
@@ -42,9 +42,15 @@ Powstała architektury chmury, ponieważ firma Microsoft wydała pierwszą akcel
 
 Rozwiązanie obejmuje następujące składniki w części łączności urządzeń logiczną architekturę:
 
-### <a name="simulated-devices"></a>Symulowane urządzenia
+### <a name="physical-devices"></a>Urządzenia fizyczne
 
-Rozwiązanie obejmuje mikrousług, która pozwala na zarządzanie pulą symulowanych urządzeń w celu przetestowania przepływu end-to-end w rozwiązaniu. Symulowane urządzenia:
+Fizyczne urządzenia można podłączyć do rozwiązania. Możesz zaimplementować zachowanie symulowanego urządzenia za pomocą zestawów SDK urządzeń Azure IoT.
+
+Można udostępnić fizyczne urządzenia z poziomu pulpitu nawigacyjnego w portalu rozwiązania.
+
+### <a name="device-simulation-microservice"></a>Mikrousługi symulacji urządzenia
+
+Rozwiązanie obejmuje [mikrousług symulacji urządzenia](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) to pozwala zarządzać pulę symulowane urządzenia z poziomu pulpitu nawigacyjnego rozwiązania w celu przetestowania przepływu end-to-end w rozwiązaniu. Symulowane urządzenia:
 
 * Generowania danych telemetrycznych z urządzenia do chmury.
 * Odpowiadanie na wywołania metody chmury do urządzenia z usługi IoT Hub.
@@ -53,24 +59,24 @@ Mikrousługi udostępnia punkt końcowy usługi RESTful umożliwiające tworzeni
 
 Możesz aprowizować symulowane urządzenia z poziomu pulpitu nawigacyjnego w portalu rozwiązania.
 
-### <a name="physical-devices"></a>Urządzenia fizyczne
+### <a name="iot-hub"></a>Usługa IoT Hub
 
-Fizyczne urządzenia można podłączyć do rozwiązania. Możesz zaimplementować zachowanie symulowanego urządzenia za pomocą zestawów SDK urządzeń Azure IoT.
-
-Można udostępnić fizyczne urządzenia z poziomu pulpitu nawigacyjnego w portalu rozwiązania.
-
-### <a name="iot-hub-and-the-iot-manager-microservice"></a>Mikrousługi Menedżera IoT i usługi IoT Hub
-
-[Usługi IoT hub](../iot-hub/index.yml) pozyskuje dane wysyłane z urządzenia do chmury i udostępnia je zadaniom `telemetry-agent` mikrousług.
+[Usługi IoT hub](../iot-hub/index.yml) pozyskuje dane telemetryczne wysyłane z fizycznych i symulowanych urządzeń do chmury. Usługa IoT hub udostępnia dane telemetryczne do usług zaplecza rozwiązania IoT dla przetwarzania.
 
 Usługa IoT Hub w rozwiązaniu wykonuje ponadto następujące czynności:
 
-* Obsługuje rejestr tożsamości, w którym są przechowywane identyfikatory i klucze uwierzytelniania wszystkich urządzeń, może łączyć się z portalu. Za pomocą rejestru tożsamości możesz włączać i wyłączać urządzenia.
-* Wywołuje metody na Twoich urządzeniach w imieniu portalu rozwiązania.
+* Obsługuje rejestr tożsamości, w którym są przechowywane identyfikatory i klucze uwierzytelniania wszystkich urządzeń, może łączyć się z portalu.
+* Wywołuje metody na Twoich urządzeniach w imieniu akcelerator rozwiązań.
 * Obsługuje bliźniacze reprezentacje wszystkich zarejestrowanych urządzeń. W bliźniaczej reprezentacji urządzenia są przechowywane wartości właściwości zgłaszanych przez urządzenie. W bliźniaczej reprezentacji urządzenia są także przechowywane żądane właściwości ustawione w portalu rozwiązania, które mają zostać pobrane przez urządzanie podczas nawiązywania następnego połączenia.
 * Planuje zadania ustawiania właściwości dla wielu urządzeń lub wywoływania metod na wielu urządzeniach.
 
-Rozwiązanie obejmuje `iot-manager` mikrousług do obsługi interakcji z Centrum IoT, takich jak:
+## <a name="data-processing-and-analytics"></a>Przetwarzanie danych i analiza
+
+Rozwiązanie obejmuje następujące składniki przetwarzania danych i analizy część logiczną architekturę:
+
+### <a name="iot-hub-manager-microservice"></a>Mikrousługi Menedżer usłudze IoT Hub
+
+Rozwiązanie obejmuje [mikrousług Menedżer usłudze IoT Hub](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) do obsługi interakcji z Centrum IoT, takich jak:
 
 * Tworzenie i zarządzanie urządzeniami IoT.
 * Zarządzanie bliźniaczych reprezentacji urządzeń.
@@ -81,36 +87,45 @@ Ta usługa jest również uruchamiane usługi IoT Hub zapytania, aby pobrać urz
 
 Mikrousługi udostępnia punkt końcowy usługi RESTful do zarządzania urządzeniami i bliźniacze reprezentacje urządzeń, wywoływanie metod i uruchamianie zapytań usługi IoT Hub.
 
-## <a name="data-processing-and-analytics"></a>Przetwarzanie danych i analiza
+### <a name="telemetry-microservice"></a>Mikrousługi telemetrii
 
-Rozwiązanie obejmuje następujące składniki przetwarzania danych i analizy część logiczną architekturę:
+[Mikrousług telemetrii](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) udostępnia punkt końcowy usługi RESTful dostępu do danych telemetrycznych z urządzenia, wykonywanie operacji CRUD na reguły i odczytu/zapisu dla definicje alarmowego odczytu z magazynu.
 
-### <a name="device-telemetry"></a>Danych telemetrycznych z urządzenia
+### <a name="storage-adapter-microservice"></a>Mikrousługi adapter magazynu
 
-Rozwiązanie zawiera dwa mikrousług do obsługi danych telemetrycznych z urządzenia.
+[Mikrousług adapter magazynu](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/storage-adapter) zarządza pary klucz wartość, abstrakcyjność semantyki usługi storage i prezentowanie prosty interfejs do przechowywania danych o dowolnym formacie za pomocą usługi Azure Cosmos DB.
 
-[Agenta telemetrii](https://github.com/Azure/telemetry-agent-dotnet) mikrousług:
+Wartości są uporządkowane w kolekcjach. Można pracować na osobne wartości lub pobrania całej kolekcji. Złożone struktury danych są serializowane przez klientów i zarządzane jako ładunek zwykłego tekstu.
 
-* Dane telemetryczne są przechowywane w usłudze Azure Cosmos DB.
-* Analizuje strumień danych telemetrycznych z urządzeń.
-* Generuje alarmy zgodnie ze zdefiniowanymi regułami.
+Usługa zapewnia punkt końcowy usługi RESTful dla operacji CRUD na parach klucz wartość. Wartości
 
-Alarmy są przechowywane w usłudze Azure Cosmos DB.
+### <a name="cosmos-db"></a>Cosmos DB
 
-[Agenta telemetrii](https://github.com/Azure/telemetry-agent-dotnet) mikrousług umożliwia portalu rozwiązania odczytujące dane telemetryczne wysyłane z urządzeń. W portalu rozwiązania zostanie również korzysta z tej usługi, aby:
+Standardowe wdrożenie akcelerator rozwiązań używa [usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) jako jego Usługa magazynu głównego.
 
-* Definiowanie reguł monitorowania, takie jak progi wyzwalające alarmów
-* Pobranie listy ostatnich alarmy.
+### <a name="azure-stream-analytics-manager-microservice"></a>Mikrousługi Menedżera usługi Azure Stream Analytics
 
-Umożliwia zarządzanie telemetrii, reguł i alarmów punktem końcowym RESTful udostępniane przez ten mikrousług.
+[Mikrousług Menedżer usłudze Azure Stream Analytics](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) zarządza zadaniami na platformie Azure Stream Analytics (ASA), wraz z ustawieniem ich konfiguracji, uruchamianie i zatrzymywanie je oraz monitorowanie ich stanu.
 
-### <a name="storage"></a>Magazyn
+Zadanie ASA jest obsługiwana przez dwa zestawy danych referencyjnych. Jeden zestaw danych określa reguły i definiuje jedną grup urządzeń. Dane referencyjne reguły jest generowany na podstawie informacji o zarządzanych przez mikrousług telemetrii. Mikrousługi Menedżer usłudze Azure Stream Analytics przekształca dane telemetryczne reguły w logikę przetwarzania strumieni.
 
-[Adapter magazynu](https://github.com/Azure/pcs-storage-adapter-dotnet) mikrousług jest karta przed Usługa magazynu głównego używany do akceleratora rozwiązań. Zapewnia ona prostych kolekcji i magazyn kluczy i wartości.
+Dane referencyjne grup urządzeń jest używany do identyfikowania grupy reguł do zastosowania do wiadomości przychodzących danych telemetrycznych. Grupy urządzeń są zarządzane przez mikrousług konfiguracji i używać zapytań bliźniaczych reprezentacji urządzeń w usłudze Azure IoT Hub.
 
-Standardowe wdrażanie akceleratora rozwiązań używa usługi Azure Cosmos DB jako jego usługi magazynu głównego.
+### <a name="azure-stream-analytics"></a>Usługa Azure Stream Analytics
 
-Baza danych usługi Azure Cosmos DB przechowuje dane w akcelerator rozwiązań. **Adapter magazynu** mikrousług działa jako karty dla innych mikrousług w rozwiązaniu do dostępu do usług magazynu.
+[Usługa Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) to aparat przetwarzania zdarzeń, który można badać duże ilości danych przesyłanych strumieniowo z urządzeń.
+
+### <a name="configuration-microservice"></a>Mikrousługi konfiguracji
+
+[Mikrousług konfiguracji](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config) udostępnia punkt końcowy usługi RESTful dla operacji CRUD na grupy urządzeń, ustawieniach rozwiązania oraz ustawienia użytkownika w akcelerator rozwiązań. Działa z mikrousług adapter magazynu, który można utrwalić danych konfiguracji.
+
+### <a name="authentication-and-authorization-microservice"></a>Uwierzytelnianie i autoryzacja w mikrousługach
+
+[Uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) zarządza użytkownikom uprawnień do dostępu do akceleratora rozwiązań. Zarządzanie użytkownikami można zrobić za pomocą dowolnego dostawcy usługi tożsamości, która obsługuje [OpenId Connect](http://openid.net/connect/).
+
+### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+
+Standardowe wdrożenie akcelerator rozwiązań używa [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako dostawcy OpenID Connect. Usługa Azure Active Directory są przechowywane informacje o użytkowniku i zapewnia, że certyfikaty do weryfikacji tokenów JWT token sygnatury. 
 
 ## <a name="presentation"></a>Prezentacja
 
@@ -122,16 +137,16 @@ Rozwiązanie obejmuje następujące składniki w prezentacji części logiczną 
 * Jest styl CSS.
 * Współdziała z publicznych mikrousług umożliwiający dostęp do Internetu za pośrednictwem wywołania AJAX.
 
-Interfejs użytkownika przedstawia wszystkie funkcje akcelerator rozwiązań i współdziała z innymi usługami, takie jak:
+Interfejs użytkownika przedstawia wszystkie funkcje akcelerator rozwiązań i korzysta z innych mikrousług, takich jak:
 
-* [Uwierzytelniania](https://github.com/Azure/pcs-auth-dotnet) mikrousług, aby chronić dane użytkownika.
-* [Iothub-manager](https://github.com/Azure/iothub-manager-dotnet) mikrousług, aby wyświetlić listę i zarządzanie urządzeniami IoT.
+* Mikrousługi uwierzytelniania i autoryzacji, aby chronić dane użytkownika.
+* Mikrousługi Menedżera usługi IoT Hub do listy i zarządzanie urządzeniami IoT.
 
-[Interfejsu użytkownika konfiguracji](https://github.com/Azure/pcs-config-dotnet) mikrousług zapewnia interfejs użytkownika do przechowywania i pobierania ustawień konfiguracji.
+Mikrousługi konfiguracji umożliwia interfejsu użytkownika do przechowywania i pobierania ustawień konfiguracji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Chcąc zapoznaj się z dokumentacją źródłowych kodu i dla deweloperów, uruchom za pomocą jednego dwóch głównych repozytoriów GitHub:
+Jeśli chcesz, zapoznaj się z dokumentacją źródłowych kodu i dla deweloperów, Rozpocznij od jednego z dwóch repozytoriów GitHub:
 
 * [Akcelerator rozwiązań do monitorowania zdalnego za pomocą usługi Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [Akcelerator rozwiązań do zdalnego monitorowania za pomocą usługi Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).

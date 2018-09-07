@@ -1,9 +1,9 @@
 ---
-title: Dostosowywanie systemu operacyjnego konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób dostosowywania oceny Centrum zabezpieczeń
+title: Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: W tym artykule pokazano, jak dostosować oceny Centrum zabezpieczeń
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,117 +12,111 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2018
-ms.author: terrylan
-ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 18/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 91a77902e03b4240e00f40dfdb15b6c854f5a29d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200014"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027116"
 ---
-# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie systemu operacyjnego konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure (wersja zapoznawcza)
+# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
-W tym przewodniku pokazano, jak dostosować oceny konfiguracji zabezpieczeń systemu operacyjnego w Centrum zabezpieczeń Azure.
+W tym instruktażu pokazano, jak dostosować oceny konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center.
 
-## <a name="what-are-os-security-configurations"></a>Co to są konfiguracji zabezpieczeń systemu operacyjnego?
+## <a name="what-are-os-security-configurations"></a>Co to są konfiguracje zabezpieczeń systemu operacyjnego?
 
-Centrum zabezpieczeń Azure monitoruje konfiguracji zabezpieczeń, stosując zestaw [zalecane reguły kodu ponad 150](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) do wzmacniania systemu operacyjnego, w tym reguły związane z zapory, inspekcji, zasad haseł i innych. Jeśli maszyna zostanie znaleziony konfiguracji narażony, Centrum zabezpieczeń generuje zalecana ze względów bezpieczeństwa.
+Usługa Azure Security Center monitoruje konfiguracji zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) dotyczących wzmacniania ochrony systemu operacyjnego, w tym reguł dotyczących zapór, inspekcji, zasady dotyczące haseł i inne. Maszyny w przypadku konfiguracji na ataki, usługa Security Center generuje zalecenie dotyczące zabezpieczeń.
 
-Dostosowując zasady organizacji można kontrolować, które opcje konfiguracji są bardziej odpowiednie dla swojego środowiska. Można ustawić zasady niestandardowe oceny i zastosować je na wszystkich komputerach stosowane w ramach subskrypcji.
+Dostosowując reguły, organizacje można kontrolować, które opcje konfiguracji są bardziej odpowiednie dla swojego środowiska. Można ustawić zasady niestandardowe oceny i zastosować je na wszystkich komputerach stosowane w ramach subskrypcji.
 
 > [!NOTE]
-> - Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest obecnie dostępne dla systemu Windows Server w wersji 2008, 2008 R2, 2012 i 2012 R2 w systemach operacyjnych.
-> - Zastosowanie tej konfiguracji do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach wybranej subskrypcji.
-> - Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępna tylko w warstwie standardowa Centrum zabezpieczeń.
+> - Obecnie Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępny dla systemów operacyjnych w wersji 2008, 2008 R2, 2012 i 2012 R2 systemu Windows Server tylko.
+> - Konfiguracja stosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach wybranej subskrypcji.
+> - Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępna tylko w warstwie standardowa usługi Security Center.
 >
 >
 
-Włączanie i wyłączanie określonej reguły, zmieniając odpowiednie ustawienie do istniejącej reguły lub dodając nową regułę, która jest oparta na obsługiwanych typów reguł (rejestru, zasady inspekcji i zasady zabezpieczeń), można dostosować zasady konfiguracji zabezpieczeń systemu operacyjnego. Obecnie odpowiednie ustawienie musi być dokładną wartość.
+Włączanie i wyłączanie określonej reguły, zmieniając odpowiednie ustawienie do istniejącej reguły lub dodając nową regułę, która opiera się na obsługiwanych typów reguł (rejestr, zasady inspekcji i zasady zabezpieczeń), można dostosować reguły konfiguracji zabezpieczeń systemu operacyjnego. Obecnie odpowiednie ustawienie musi być dokładną wartość.
 
-Nowe zasady musi być w tym samym formacie i struktury jako innych istniejących reguł tego samego typu.
+Nowe reguły należy w tym samym formacie, a struktura innymi istniejącymi zasadami tego samego typu.
 
 > [!NOTE]
-> Aby dostosować konfiguracji zabezpieczeń systemu operacyjnego, musi mieć przypisaną rolę z *właściciel subskrypcji*, *Współautor subskrypcji*, lub *Administrator zabezpieczeń*.
+> Aby dostosować konfiguracji zabezpieczeń systemu operacyjnego, musi mieć przypisaną rolę *właściciela subskrypcji*, *współautora subskrypcji*, lub *Administrator zabezpieczeń*.
 >
 >
 
 ## <a name="customize-the-default-os-security-configuration"></a>Dostosowywanie domyślna konfiguracja zabezpieczeń systemu operacyjnego
 
-Aby dostosować domyślna konfiguracja zabezpieczeń systemu operacyjnego w Centrum zabezpieczeń, wykonaj następujące czynności:
+Aby dostosować domyślna konfiguracja zabezpieczeń systemu operacyjnego w usłudze Security Center, wykonaj następujące czynności:
 
 1.  Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-2.  W okienku po lewej stronie wybierz **zasady zabezpieczeń**.  
-    **Centrum zabezpieczeń — zasady zabezpieczeń** zostanie otwarte okno.
+2.  W okienku po lewej stronie wybierz **zasady zabezpieczeń**.      
 
-    ![Lista zasad zabezpieczeń](media/security-center-customize-os-security-config/open-security-policy.png)
+    ![Lista zasad zabezpieczeń](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  Wybierz subskrypcję, którą chcesz wykonać dostosowania dla.
+3.  W wierszu subskrypcji, który chcesz dostosować, kliknij przycisk **edytować ustawienia**.
 
-4. W obszarze **składniki zasad**, wybierz pozycję **Edycja konfiguracji zabezpieczeń**.  
-    **Edycja konfiguracji zabezpieczeń** zostanie otwarte okno.
+4. Wybierz **edytowanie konfiguracji zabezpieczeń**.  
+    
+    ![W oknie "Edytowanie konfiguracji zabezpieczeń"](media/security-center-customize-os-security-config/blade.png)
 
-    ![Okno "Edytuj konfiguracje zabezpieczeń"](media/security-center-customize-os-security-config/blade.png)
-
-5. W okienku po prawej stronie wykonaj kroki pobierania, edytowania i przekazywania zmodyfikowany plik.
+5. Wykonaj kroki, aby pobrać, edytować i przekazać zmodyfikowany plik.
 
    > [!NOTE]
-   > Domyślnie pobrany plik konfiguracji jest w *json* format. Aby uzyskać instrukcje na temat modyfikowania tego pliku, przejdź do [dostosować plik konfiguracji](#customize-the-configuration-file).
+   > Domyślnie pobrany plik konfiguracji jest w *json* formatu. Aby uzyskać instrukcje dotyczące modyfikowania tego pliku, przejdź do [dostosować plik konfiguracji](#customize-the-configuration-file).
    >
 
-   Po plik został pomyślnie zapisany, konfiguracja zostanie zastosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach subskrypcji. Proces zazwyczaj zajmuje kilka minut, ale może trwać dłużej, w zależności od wielkości infrastruktury.
+   Po plik został pomyślnie zapisany, konfiguracja zostanie zastosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach subskrypcji. Ten proces zwykle zajmuje kilka minut, ale może trwać dłużej, w zależności od rozmiaru infrastruktury.
 
-6. Aby zatwierdzić zmiany, wybierz **zapisać**. W przeciwnym razie wartość zasad nie są przechowywane.
+6. Aby zatwierdzić zmiany, wybierz **Zapisz**. W przeciwnym razie zasady nie są przechowywane.
 
-    ![Przycisk Zapisz](media/security-center-customize-os-security-config/save-successfully.png)
+W dowolnym momencie możesz zresetować bieżącej konfiguracji zasad do stanu domyślnego. Aby to zrobić w **reguł konfiguracji zabezpieczeń Edycja systemu operacyjnego** wybierz **resetowania**. Potwierdź tę opcję, wybierając **tak** w wyskakującym oknie potwierdzenia.
 
-W dowolnym momencie można zresetować bieżącej konfiguracji zasad do stanu domyślnego. Aby to zrobić, w **reguły konfiguracji zabezpieczeń edycji systemu operacyjnego** wybierz **zresetować**. Potwierdzić tę opcję, wybierając **tak** w wyskakującym oknie potwierdzenia.
-
-![Resetuj okno potwierdzenia](media/security-center-customize-os-security-config/edit-alert.png)
+![W oknie potwierdzenia resetowania](media/security-center-customize-os-security-config/edit-alert.png)
 
 ## <a name="customize-the-configuration-file"></a>Dostosowywanie pliku konfiguracji
 
-W pliku dostosowania wszystkie obsługiwane wersje systemu operacyjnego ma zestaw reguł lub zestaw reguł. Każdy zestaw reguł ma własną nazwę i unikatowy identyfikator, jak pokazano w poniższym przykładzie:
+W pliku dostosowania każdej obsługiwanej wersji systemu operacyjnego ma zestaw reguł lub zestaw reguł. Każdy zestaw reguł ma własną nazwę i unikatowy identyfikator, jak pokazano w poniższym przykładzie:
 
 ![Zestaw reguł nazwy i Identyfikatora](media/security-center-customize-os-security-config/custom-file.png)
 
 > [!NOTE]
-> Ten przykładowy plik był edytowany w programie Visual Studio, ale można również użyć programu Notatnik, jeśli masz Podgląd JSON wtyczki zainstalowane.
+> Ten przykładowy plik był edytowany w programie Visual Studio, ale można również użyć programu Notatnik, jeśli masz przeglądarka JSON wtyczki zainstalowane.
 >
 >
 
-Podczas edytowania pliku dostosowania można zmodyfikować jedną regułę lub wszystkie z nich. Każdy zestaw reguł zawiera *reguły* sekcja, która jest podzielone na trzy kategorie: rejestru, zasady inspekcji i zasady zabezpieczeń, jak pokazano poniżej:
+Podczas edycji pliku dostosowywania, można zmodyfikować reguły jeden lub wszystkie z nich. Każdy zestaw reguł zawiera *reguły* sekcja, która jest podzielone na trzy kategorie: rejestr, zasady inspekcji i zasady zabezpieczeń, jak pokazano poniżej:
 
-![Trzy kategorie zestaw reguł](media/security-center-customize-os-security-config/rules-section.png)
+![Trzy kategorie reguł](media/security-center-customize-os-security-config/rules-section.png)
 
 Każda kategoria ma swój własny zestaw atrybutów. Można zmienić następujące atrybuty:
 
-- **expectedValue**: typ danych pola tego atrybutu musi być zgodna obsługiwane wartości na *typ reguły*, na przykład:
+- **expectedValue**: typ danych pola tego atrybutu musi odpowiadać obsługiwane wartości dla każdego *typ reguły*, na przykład:
 
   - **baselineRegistryRules**: wartość powinna być zgodna [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) zdefiniowanego w tej regule.
 
   - **baselineAuditPolicyRules**: użyj jednej z następujących wartości ciągu:
 
-    - *Sukces i niepowodzenie*
+    - *Sukcesów i niepowodzeń*
 
     - *Powodzenie*
 
   - **baselineSecurityPolicyRules**: użyj jednej z następujących wartości ciągu:
 
-    - *Nikt nie*
+    - *Nikt*
 
     - Lista dozwolonych grup użytkowników, na przykład: *Administratorzy*, *Operatorzy kopii zapasowych*
 
--   **Stan**: ciąg może zawierać opcji *wyłączone* lub *włączone*. W tej wersji prywatnej wersji zapoznawczej ciąg jest rozróżniana wielkość liter.
+-   **Stan**: ciąg może zawierać odpowiednie opcje *wyłączone* lub *włączone*. W tej wersji prywatnej wersji zapoznawczej ciąg jest rozróżniana wielkość liter.
 
-Są to jedyne pola, które można skonfigurować. Jeśli użytkownik narusza format pliku lub rozmiar, nie można zapisać zmiany. Następujący komunikat o błędzie występuje, gdy nie można przetworzyć pliku:
+Są to tylko pola, które można skonfigurować. Jeśli możesz naruszyć format pliku lub rozmiaru, nie można zapisać zmiany. Zostanie wyświetlony błąd informujący, że należy przekazać prawidłowy plik konfiguracji JSON.
 
-![Komunikat o błędzie konfiguracji zabezpieczeń](media/security-center-customize-os-security-config/invalid-json.png)
+Aby uzyskać listę innych potencjalnych błędów, zobacz [kody błędów](#error-codes).
 
-Lista innych potencjalne błędy, zobacz [kody błędów](#error-codes).
-
-Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i *stanu* można zmienić atrybutów.
+Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i *stanu* atrybuty mogą być zmieniane.
 
 **baselineRegistryRules**
 ```
@@ -182,35 +176,35 @@ Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i
     }
 ```
 
-Niektóre reguły są duplikowane dla różnych typów systemu operacyjnego. Zduplikowane reguły mają takie same *originalId* atrybutu.
+Niektóre reguły są duplikowane dla różnych typów systemów operacyjnych. Zduplikowane reguły mają taką samą *originalId* atrybutu.
 
 ## <a name="create-custom-rules"></a>Tworzenie niestandardowych reguł
 
-Można również utworzyć nowe reguły. Przed utworzeniem nowej reguły, mieć na uwadze następujące ograniczenia:
+Można również utworzyć nowe zasady. Przed utworzeniem nowej reguły, pamiętać o następujących ograniczeniach:
 
--   Wersja schematu *baselineId* i *baselineName* nie można zmienić.
+-   Wersja schematu *baselineId* i *baselineName* nie można jej zmienić.
 
--   Nie można usunąć zestaw reguł.
+-   Nie można usunąć zestawu reguł.
 
--   Nie można dodać zestaw reguł.
+-   Nie można dodać zestawu reguł.
 
--   Maksymalna liczba reguł niedozwolonych (w tym reguły domyślne) wynosi 1000.
+-   Maksymalna liczba dozwolonych (w tym reguły domyślne) reguł wynosi 1000.
 
-Nowe reguły niestandardowe są oznaczone ikoną z nowego źródła niestandardowego (! = "Microsoft"). *RuleId* pole może być zerowa ani pusta. Jeśli jest pusty, Microsoft generuje go. Jeśli nie jest pusta, musi mieć prawidłowy identyfikator GUID, który jest unikatowy w całej wszystkie reguły (domyślne i niestandardowe). Przejrzyj następujące ograniczenia dla pól rdzeni:
+Nowe reguły niestandardowe są oznaczone jako nowe źródło niestandardowe (! = "Microsoft"). *RuleId* pole może być zerowa lub pusta. Jeśli jest on pusty, Microsoft generuje go. Jeśli nie jest pusta, musi być prawidłowym identyfikatorem GUID, która jest unikatowa dla wszystkich reguł (domyślne i niestandardowe). Przejrzyj następujące ograniczenia dla pól podstawowych:
 
--   **originalId**: może być zerowa ani pusta. Jeśli *originalId* jest nie jest pusty, powinno być prawidłowym identyfikatorem GUID.
+-   **originalId**: może to być wartość null lub jest pusty. Jeśli *originalId* jest nie jest pusty, powinno być prawidłowym identyfikatorem GUID.
 
--   **cceId**: może być zerowa ani pusta. Jeśli *cceId* jest nie jest pusty, musi być unikatowa.
+-   **cceId**: może to być wartość null lub jest pusty. Jeśli *cceId* jest nie jest pusty, musi być unikatowa.
 
--   **Typ**: (Wybierz jeden) rejestru, AuditPolicy lub SecurityPolicy.
+-   **Typ ruleType**: (wybierz jedną opcję) rejestru, AuditPolicy lub SecurityPolicy.
 
--   **Ważność**: (Wybierz jeden) nieznany, krytyczne, ostrzeżenie lub komunikat informacyjny.
+-   **Ważność**: (wybierz jedną opcję) nieznany, krytyczne, ostrzeżenie lub komunikat o charakterze informacyjnym.
 
--   **analyzeOperation**: musi być *jest równe*.
+-   **analyzeOperation**: musi być *jest równa*.
 
 -   **auditPolicyId**: musi być prawidłowym identyfikatorem GUID.
 
--   **regValueType**: (Wybierz jeden) Int, Long, ciągu lub MultipleString.
+-   **regValueType**: (wybierz jedną opcję) Int, Long, String lub MultipleString.
 
 > [!NOTE]
 > Gałąź musi być *LocalMachine*.
@@ -219,7 +213,7 @@ Nowe reguły niestandardowe są oznaczone ikoną z nowego źródła niestandardo
 
 Przykład nową regułę niestandardową:
 
-**Rejestru**:
+**Rejestr**:
 ```
     {
     "hive": "LocalMachine",
@@ -265,11 +259,9 @@ Przykład nową regułę niestandardową:
    }
 ```
 
-## <a name="file-upload-failures"></a>Plik operacji przekazywania zakończonych niepowodzeniem
+## <a name="file-upload-failures"></a>Błędy przekazywania plików
 
-Jeśli plik konfiguracji przesłanych jest nieprawidłowa z powodu błędów w wartości lub formatowania, zostanie wyświetlony błąd awarii. Można pobrać raportu CSV szczegóły błędów można skorygować i naprawić błędy, zanim zostanie ponownie prześlij plik konfiguracji poprawiony.
-
-!["Zapisz akcja nie powiodła się" komunikat o błędzie](media/security-center-customize-os-security-config/invalid-configuration.png)
+Jeśli plik konfiguracyjny przesłane jest nieprawidłowa z powodu błędów w wartości lub formatowania, błąd jest wyświetlany, takich jak **Zapisz akcja nie powiodła się**. Możesz pobrać raport CSV szczegółowe informacje o błędach w celu korygowania i naprawiać błędy, zanim zostanie ponownie prześlij plik konfiguracji poprawiony.
 
 Przykład pliku błędu:
 
@@ -277,49 +269,49 @@ Przykład pliku błędu:
 
 ## <a name="error-codes"></a>Kody błędów
 
-Wszelkie potencjalne błędy są wymienione w poniższej tabeli:
+Wszystkie potencjalne błędy są wymienione w poniższej tabeli:
 
-| **Błąd**                                | **Opis**                                                                                                                              |
+| **Error**                                | **Opis**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Musi mieć ustawioną wartość *{0}*.                                                         |
-| BaselineInvalidStringError               | Właściwość *{0}* nie może zawierać  *\\ n* .                                                                                                         |
-| BaselineNullRuleError                    | Listę reguł linii bazowej konfiguracji zawiera reguły z wartością *null*.                                                                         |
+| BaselineConfiguratiohSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Wartość musi być równa *{0}*.                                                         |
+| BaselineInvalidStringError               | Właściwość *{0}* nie może zawierać  *\\n*.                                                                                                         |
+| BaselineNullRuleError                    | Lista reguł linii bazowej konfiguracji zawiera reguły z wartością *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Identyfikator CCE *{0}* nie jest unikatowa.                                                                                                                  |
 | BaselineRuleEmptyProperty                | Właściwość *{0}* lub jest nieprawidłowy.                                                                                                       |
-| BaselineRuleIdNotInDefault               | Reguła ma właściwości source *Microsoft* , ale nie został znaleziony w domyślny zestaw reguł firmy Microsoft.                                                   |
+| BaselineRuleIdNotInDefault               | Reguła ma właściwości source *Microsoft* , ale nie został znaleziony w zestawie reguł domyślna firmy Microsoft.                                                   |
 | BaselineRuleIdNotUniqueError             | Identyfikator reguły nie jest unikatowa.                                                                                                                       |
 | BaselineRuleInvalidGuid                  | Właściwość *{0}* jest nieprawidłowy. Wartość nie jest prawidłowym identyfikatorem GUID.                                                                             |
 | BaselineRuleInvalidHive                  | Gałąź musi być LocalMachine.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Nazwa reguły nie jest unikatowa.                                                                                                                 |
-| BaselineRuleNotExistInConfigError        | Zasada nie została odnaleziona w nowej konfiguracji. Nie można usunąć reguły.                                                                     |
-| BaselineRuleNotFoundError                | Reguły nie został znaleziony w domyślnym zestaw reguł linii bazowej.                                                                                        |
-| BaselineRuleNotInPlace                   | Reguła zgodny z regułą domyślnego o typ {0} i wymienionej na liście {1}.                                                                       |
-| BaselineRulePropertyTooLong              | Właściwość *{0}* jest zbyt długa. Maksymalna dozwolona długość: {1}.                                                                                        |
-| BaselineRuleRegTypeInvalidError          | Oczekiwana wartość *{0}* nie pasuje do typu wartość rejestru, która jest zdefiniowana.                                                              |
+| BaselineRuleNotExistInConfigError        | Reguła nie została odnaleziona w nowej konfiguracji. Nie można usunąć reguły.                                                                     |
+| BaselineRuleNotFoundError                | Reguła nie została odnaleziona w domyślnych reguł odniesienia.                                                                                        |
+| BaselineRuleNotInPlace                   | Reguła domyślna reguła z typem {0} i wyświetlony na liście {1} listy.                                                                       |
+| BaselineRulePropertyTooLong              | Właściwość *{0}* jest za długa. Maksymalna dozwolona długość: {1}.                                                                                        |
+| BaselineRuleRegTypeInvalidError          | Oczekiwana wartość *{0}* jest niezgodny z typem wartości rejestru, który jest zdefiniowany.                                                              |
 | BaselineRulesetAdded                     | Zestaw reguł z Identyfikatorem *{0}* nie został znaleziony w konfiguracji domyślnej. Nie można dodać zestaw reguł.                                               |
 | BaselineRulesetIdMustBeUnique            | Zestaw reguł jednej linii bazowej *{0}* muszą być unikatowe.                                                                                           |
-| BaselineRulesetNotFound                  | Zestaw reguł o identyfikatorze *{0}* i nazwy *{1}* nie został znaleziony w danej konfiguracji. Nie można usunąć zestaw reguł.                                |
+| BaselineRulesetNotFound                  | Zestaw reguł z identyfikatorem *{0}* i nazwy *{1}* nie został znaleziony w danej konfiguracji. Nie można usunąć zestaw reguł.                                |
 | BaselineRuleSourceNotMatch               | Reguła o identyfikatorze *{0}* jest już zdefiniowany.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Domyślny typ reguły jest *{0}*.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Rzeczywisty typ reguły to *{0}*, ale *typ* właściwość jest *{1}*.                                                                          |
+| BaselineRuleTypeDoesntMatch              | Domyślny typ reguły to *{0}*.                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | Rzeczywisty typ reguły to *{0}*, ale *typ ruleType* właściwość *{1}*.                                                                          |
 | BaselineRuleUnpermittedChangesError      | Tylko *expectedValue* i *stanu* właściwości mogą zostać zmienione.                                                                       |
-| BaselineTooManyRules                     | Maksymalna liczba dozwolonych niestandardowych reguł jest reguły {0}. Danej konfiguracji zawiera reguły {1}, {2} domyślnych reguł i {3} dostosowanej reguły. |
-| ErrorNoConfigurationStatus               | Stan konfiguracji, nie został znaleziony. Stan konfiguracji żądanego stanu: *domyślne* lub *niestandardowy*.                                    |
-| ErrorNonEmptyRulesetOnDefault            | Stan konfiguracji jest ustawiony na wartość domyślną. *BaselineRulesets* listy musi być zerowa ani pusta.                                                          |
-| ErrorNullRulesetsPropertyOnCustom        | Jest w stanie danej konfiguracji *niestandardowy* , ale *baselineRulesets* właściwość ma wartość null lub pusty.                                             |
+| BaselineTooManyRules                     | Maksymalna liczba dozwolonych niestandardowych reguł to {0} reguły. Zawiera daną konfigurację {1} reguł, {2} domyślne reguły, a {3} dostosowanej reguły. |
+| ErrorNoConfigurationStatus               | Brak stanu konfiguracji został znaleziony. Stan konfiguracji żądanego stanu: *domyślne* lub *niestandardowe*.                                    |
+| ErrorNonEmptyRulesetOnDefault            | Stan konfiguracji jest ustawiona jako domyślna. *BaselineRulesets* listy musi być wartość null lub jest pusty.                                                          |
+| ErrorNullRulesetsPropertyOnCustom        | Jest w stanie danej konfiguracji *niestandardowe* ale *baselineRulesets* właściwość ma wartość null lub jest pusty.                                             |
 | ErrorParsingBaselineConfig               | Danej konfiguracji jest nieprawidłowy. Przynajmniej jedna z wartości zdefiniowanych ma wartość null lub nieprawidłowego typu.                                  |
-| ErrorParsingIsDefaultProperty            | Podany *configurationStatus* wartość *{0}* jest nieprawidłowy. Wartość może być tylko *domyślne* lub *niestandardowy*.                                         |
-| InCompatibleViewVersion                  | Wyświetlanie wersji *{0}* jest *nie* obsługiwane w tym typie obszaru roboczego.                                                                                   |
-| InvalidBaselineConfigurationGeneralError | Jednej linii bazowej konfiguracji znaleziono z co najmniej jeden błąd sprawdzania poprawności typu.                                                          |
-| ViewConversionError                      | Widok jest w starszej wersji niż obszar roboczy obsługuje. Wyświetl konwersja nie powiodła się: {0}.                                                                 |
+| ErrorParsingIsDefaultProperty            | Dany *configurationStatus* wartość *{0}* jest nieprawidłowy. Wartość może być tylko *domyślne* lub *niestandardowe*.                                         |
+| InCompatibleViewVersion                  | Wyświetlanie wersji *{0}* jest *nie* obsługiwane w przypadku tego typu obszaru roboczego.                                                                                   |
+| InvalidBaselineConfigurationGeneralError | Konfiguracja jednej linii bazowej został znaleziony z co najmniej jeden błąd sprawdzania poprawności typu.                                                          |
+| ViewConversionError                      | Widok jest w starszej wersji niż obsługuje obszaru roboczego. Wyświetl konwersja nie powiodła się: {0}.                                                                 |
 
-Jeśli nie masz wystarczających uprawnień, można otrzymać błąd ogólny błąd, jak pokazano poniżej:
+Jeśli nie masz wystarczających uprawnień, może uzyskać ogólny błąd, jak pokazano poniżej:
 
 !["Zapisz akcja nie powiodła się" komunikat o błędzie](media/security-center-customize-os-security-config/general-failure-error.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule opisano sposób dostosowywania oceny konfiguracji zabezpieczeń systemu operacyjnego w Centrum zabezpieczeń. Aby dowiedzieć się więcej na temat zasad konfiguracji i korygowania, zobacz:
+W tym artykule omówiono sposób dostosowywania oceny konfiguracji zabezpieczeń systemu operacyjnego w usłudze Security Center. Aby dowiedzieć się więcej na temat zasad konfiguracji i korygowania, zobacz:
 
-- [Wspólne identyfikatory konfiguracji Centrum zabezpieczeń i reguły linii bazowej](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
-- Centrum zabezpieczeń używane typowych konfiguracji wyliczenie (CCE) do przypisywania unikatowych identyfikatorów do reguły konfiguracji. Aby uzyskać więcej informacji, zobacz [CCE](https://nvd.nist.gov/config/cce/index).
-- Aby rozwiązać luk w zabezpieczeniach, podczas konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń, zobacz [skorygować konfiguracjach zabezpieczeń](security-center-remediate-os-vulnerabilities.md).
+- [Identyfikatory typowych konfiguracji Centrum zabezpieczeń i reguły linii bazowych](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
+- Usługa Security Center używa typowych konfiguracji wyliczenie (CCE) do przypisywania unikatowych identyfikatorów dla reguły konfiguracji. Aby uzyskać więcej informacji, zobacz [CCE](https://nvd.nist.gov/config/cce/index).
+- Aby rozwiązać luk w zabezpieczeniach, podczas konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń, zobacz [skoryguj konfiguracje zabezpieczeń](security-center-remediate-os-vulnerabilities.md).

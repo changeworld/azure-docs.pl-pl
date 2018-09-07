@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 56e7467443cb91f73a6b48f318d576345000a0e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248169"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023101"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
-Usługa Azure Storage udostępnia rozszerzenia (wersja zapoznawcza) dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj się i uruchamianie poleceń skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości usługi zarządzanej](../../active-directory/managed-service-identity/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Usługa Azure Storage udostępnia rozszerzenia (wersja zapoznawcza) dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj się i uruchamianie poleceń skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości usługi zarządzanej](../../active-directory/managed-identities-azure-resources/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 
 Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, token dostępu jest zwracany do uzyskiwania dostępu do usługi Azure Storage w ramach tej tożsamości. Ten token jest następnie automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell można autoryzować operacji dotyczących usługi Azure Storage. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
 
