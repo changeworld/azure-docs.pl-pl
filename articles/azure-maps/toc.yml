@@ -23,15 +23,15 @@ items:
   items:
   - name: Poziomy powiększenia i siatka kafelków
     href: zoom-levels-and-tile-grid.md
-  - name: Zakres usług
+  - name: Pokrycie
     items:
-    - name: Geokodowanie
+    - name: Pokrycie geokodowaniem
       href: geocoding-coverage.md
-    - name: Ruch
+    - name: Pokrycie ruchem
       href: traffic-coverage.md
-    - name: Renderowanie
+    - name: Pokrycie renderowaniem
       href: render-coverage.md
-    - name: Routing
+    - name: Pokrycie routingiem
       href: routing-coverage.md
   - name: Obsługiwane języki
     href: supported-languages.md
@@ -67,12 +67,14 @@ items:
       href: map-add-shape.md
     - name: Dodawanie niestandardowego kodu HTML
       href: map-add-custom-html.md
-    - name: Wyświetlanie wyników wyszukiwania
-      href: map-search-location.md
-    - name: Uzyskiwanie informacji na podstawie współrzędnych
-      href: map-get-information-from-coordinate.md
-    - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
-      href: map-route.md
+    - name: Usługi
+      items:
+      - name: Wyświetlanie wyników wyszukiwania
+        href: map-search-location.md
+      - name: Uzyskiwanie informacji na podstawie współrzędnych
+        href: map-get-information-from-coordinate.md
+      - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
+        href: map-route.md
     - name: Wyświetlanie ruchu
       href: map-show-traffic.md
     - name: Interakcja ze zdarzeniami myszy
@@ -157,9 +159,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 9ff456a752ffecc3f4fa67fc8b85540833451fb5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0cf84e9b73831c1ead82f7cd01efb94ac312883d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339135"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022819"

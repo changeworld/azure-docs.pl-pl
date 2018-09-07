@@ -9,15 +9,27 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: Przewodniki Szybki start
   items:
-  - name: Tworzenie bazy danych — portal
-    href: sql-database-get-started-portal.md
-  - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
-    href: sql-database-get-started-cli.md
-  - name: Tworzenie bazy danych — program Azure PowerShell
-    href: sql-database-get-started-powershell.md
-  - name: Tworzenie wystąpienia zarządzanego
-    href: sql-database-managed-instance-get-started.md
-  - name: Nawiązywanie połączeń i wykonywanie zapytań
+  - name: Przycisk Utwórz
+    items:
+    - name: Pojedyncza baza danych
+      href: sql-database-get-started-portal.md
+    - name: Wystąpienie zarządzane
+      href: sql-database-managed-instance-get-started.md
+  - name: Konfigurowanie
+    items:
+    - name: Reguła zapory serwera logicznego
+      href: sql-database-get-started-portal-firewall.md
+    - name: Połączenie maszyny wirtualnej klienta z wystąpieniem zarządzanym
+      href: sql-database-managed-instance-configure-vm.md
+    - name: Połączenie punkt-lokacja z wystąpieniem zarządzanym
+      href: sql-database-managed-instance-configure-p2s.md
+  - name: Ładowanie danych
+    items:
+    - name: Importowanie pliku BACPAC do pojedynczej bazy danych
+      href: sql-database-import.md
+    - name: Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego
+      href: sql-database-managed-instance-get-started-restore.md
+  - name: Zapytanie
     href: sql-database-connect-query.md
     items:
     - name: SSMS
@@ -59,13 +71,9 @@ items:
     href: sql-database-security-tutorial.md
   - name: 5 — Implementowanie rozproszonej geograficznie bazy danych
     href: sql-database-implement-geo-distributed-database.md
-  - name: 6 — Tworzenie wystąpienia zarządzanego
-    href: sql-database-managed-instance-create-tutorial-portal.md
-  - name: 7 — Przywracanie kopii zapasowej do wystąpienia zarządzanego
-    href: sql-database-managed-instance-restore-from-backup-tutorial.md
-  - name: 8 — Migracja do wystąpienia zarządzanego przy użyciu usługi DMS
+  - name: 6 — Migracja do wystąpienia zarządzanego przy użyciu usługi DMS
     href: ../dms/tutorial-sql-server-to-managed-instance.md
-  - name: 9 — Konfigurowanie usługi Azure SQL Data Sync
+  - name: 7 — Konfigurowanie usługi Azure SQL Data Sync
     href: sql-database-get-started-sql-data-sync.md
 - name: Przykłady
   items:
@@ -606,9 +614,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 1cd65f1f3ee3907324bdb17be61dcfb5d0a747f1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e44c2d461f35098e20e50c776ca37b932566c4a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245915"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050483"

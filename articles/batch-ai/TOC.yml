@@ -1,43 +1,72 @@
+items:
 - name: Dokumentacja usługi Batch AI
-  href: index.md
+  href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest Batch AI?
-      href: overview.md
-- name: Rozpoczęcie pracy
-  expanded: true
+  - name: Co to jest Batch AI?
+    href: overview.md
+- name: Przewodniki Szybki start
   items:
-    - name: Uruchamianie zadania szkolenia — interfejs wiersza polecenia
-      href: quickstart-cli.md
-    - name: Uruchamianie zadania szkolenia — język Python
-      href: quickstart-python.md
+  - name: Tworzenie klastra — interfejs wiersza polecenia
+    href: quickstart-create-cluster-cli.md
+  - name: Tworzenie klastra — portal
+    href: quickstart-create-cluster-portal.md
+  - name: Uczenie modelu sztucznej inteligencji — interfejs wiersza polecenia
+    href: quickstart-tensorflow-training-cli.md
+  expanded: true
+- name: Samouczki
+  items:
+  - name: Uczenie rozproszone przy użyciu struktury Horovod
+    href: tutorial-horovod-tensorflow.md
+- name: Przykłady
+  items:
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: cli-samples.md
+- name: Pojęcia
+  items:
+  - name: Zasoby usługi Batch AI
+    href: resource-concepts.md
+  - name: Limity przydziału i ograniczenia usługi Batch AI
+    href: quota-limits.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Migracja do zaktualizowanego interfejsu API
-      href: migrate-to-new-api.md
+  - name: Praca z klastrami
+    href: clusters.md
+  - name: Korzystanie z usługi Azure Storage
+    href: use-azure-storage.md
+  - name: Uczenie modelu przy użyciu zestawu SDK języka Python
+    href: cntk-training-python.md
+  - name: Migracja do zaktualizowanego interfejsu API
+    href: migrate-to-new-api.md
 - name: Dokumentacja
   items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: /cli/azure/batchai
-    - name: .NET
-      href: /dotnet/api/overview/azure/batchai
-    - name: Java
-      href: /java/api/overview/azure/batchai
-    - name: Node.js
-      href: /javascript/api/overview/azure/batchai
-    - name: Python
-      href: /python/api/overview/azure/batchai
-    - name: REST
-      href: /rest/api/batchai
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: /cli/azure/batchai
+  - name: .NET
+    href: /dotnet/api/overview/azure/batchai
+  - name: Java
+    href: /java/api/overview/azure/batchai
+  - name: Node.js
+    href: /javascript/api/overview/azure/batchai
+  - name: Python
+    href: /python/api/overview/azure/batchai
+  - name: REST
+    href: /rest/api/batchai
 - name: Zasoby
   items:
-    - name: Przepisy na szkolenie
-      href: 'https://github.com/Azure/BatchAI'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/batch-ai'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/regions/services/'
+  - name: Przepisy na szkolenie
+    href: https://github.com/Azure/BatchAI
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/batch-ai
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Dostępność regionalna
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: ad3ffb48dd035f189054c40c9c1a3466230ac11d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051694"

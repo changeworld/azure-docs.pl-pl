@@ -1,0 +1,67 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 0443553b72d414695ff96a4aeb2a9dd21531f1da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44058049"
+documentType: LandingData
+title: Dokumentacja usługi Azure Batch AI (wersja zapoznawcza)
+metadata:
+  title: Dokumentacja usługi Azure Batch AI (wersja zapoznawcza)
+  meta.description: Azure Batch AI is a managed service to help data scientists and AI researchers train and test machine learning and AI models at scale in Azure - without having to manage complex infrastructure. Learn how to use Batch AI with our quickstarts, tutorials, and samples.
+  services: batch-ai
+  author: dlepow
+  manager: jeconnock
+  layout: LandingPage
+  ms.service: batch-ai
+  ms.topic: landing-page
+  ms.date: 08/16/2018
+  ms.author: danlep
+abstract:
+  description: Azure Batch AI to zarządzana usługa, która ułatwia analitykom danych i badaczom SI uczenie i testowanie modeli SI oraz uczenia maszynowego na dużą skalę na platformie Azure bez konieczności zarządzania złożoną infrastrukturą. Dowiedz się, jak używać usługi Batch AI, korzystając z przewodników Szybki start, samouczków i przykładów.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak utworzyć pierwszy klaster usługi Batch AI.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Interfejs wiersza polecenia platformy Azure
+      href: quickstart-create-cluster-cli.md
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: quickstart-create-cluster-portal.md
+  - type: paragraph
+    text: Dowiedz się, jak nauczyć pierwszy model uczenia głębokiego.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Interfejs wiersza polecenia platformy Azure
+      href: quickstart-tensorflow-training-cli.md
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak używać usługi Batch AI do uczenia modeli przy użyciu różnych struktur.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="tutorial-horovod-tensorflow.md">Uczenie rozproszone przy użyciu struktury Horovod</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Wiersz polecenia
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/batchai?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+    - title: Języki
+      html: <p><a href="https://docs.microsoft.com/en-us/dotnet/api/overview/azure/batchai?view=azure-dotnet">.NET</a></p><p><a href="https://docs.microsoft.com/en-us/java/api/overview/azure/batchai?view=azure-java-stable">Java</a></p><p><a href="https://docs.microsoft.com/en-us/javascript/api/overview/azure/batchai?view=azure-node-latest">Node.js</a></p><p><a href="https://docs.microsoft.com/en-us/python/api/overview/azure/batchai?view=azure-python">Python</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/en-us/rest/api/batchai/">Dokumentacja interfejsu API REST</a></p>
