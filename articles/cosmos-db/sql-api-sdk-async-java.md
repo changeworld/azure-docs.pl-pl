@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059922"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023566"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Async zestawu Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Dodano obsługę serwera Proxy.
+* Dodano obsługę tokenu autoryzacji zasobów.
+* Usunięto usterkę w Obsługa kluczy dużych partycji ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
+* Dokumentacja ulepszone.
+* Zestaw SDK restrukturyzacji na bardziej szczegółowym moduły.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * Usunięto usterkę dla ustawień regionalnych innych niż angielski ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
@@ -103,6 +110,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |5 września 2018 r.|--- |
 | [2.0.1](#2.0.1) |16 sierpnia 2018 r.|--- |
 | [2.0.0](#2.0.0) |20 czerwca 2018 r.|--- |
 | [1.0.2](#1.0.2) |18 maja 2018 r.|--- |

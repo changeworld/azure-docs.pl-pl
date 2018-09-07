@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f79926d0d4729c6ad939bc604e9eb885dbe9f03
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b742f3eb9124093bcf0c3c912bbae0367cdcce56
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421264"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Samouczek: Integracja usługi Azure Active Directory z Slack
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Slack, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Slack logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację programu Slack w usłudze Azure AD, należy doda�
 
 **Aby dodać Slack z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -114,11 +114,8 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.slack.com`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL: `https://slack.com`
+    b. W **identyfikator** pola tekstowego, zaktualizuj wartość za pomocą logowania na adres URL. Jest to domenę obszaru roboczego. Na przykład: `https://contoso.slack.com`
 
-    > [!NOTE] 
-    > Wartość nie jest prawdziwe. Musisz zaktualizować wartości z rzeczywistych na adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Slack](https://slack.com/help/contact) można uzyskać wartość.
-     
 1. Slack aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
     ![Konfigurowanie logowania jednokrotnego](./media/slack-tutorial/tutorial_slack_attribute.png)

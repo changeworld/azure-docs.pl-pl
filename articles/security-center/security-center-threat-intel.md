@@ -3,7 +3,7 @@ title: Analiza zagrożeń w usłudze Azure Security Center | Microsoft Docs
 description: Dowiedz się, jak wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerach przy użyciu funkcji analizy zagrożeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
@@ -12,60 +12,62 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: 34474892d35c2c0bc299bbc4a2fb6507ffb24ee9
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434194"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022224"
 ---
-# <a name="threat-intelligence-in-azure-security-center"></a>Analiza zagrożeń w usłudze Azure Security Center
-Ten artykuł ułatwia korzystanie z analizy zagrożeń usługi Azure Security Center w celu rozwiązywania problemów związanych z zabezpieczeniami.
+# <a name="security-alerts-map-azure-security-center"></a>Alerty zabezpieczeń mapy usługi Azure Security Center
+Ten artykuł ułatwia korzystanie Mapa alertów zabezpieczeń usługi Azure Security Center i Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń do rozwiązania problemów związanych z zabezpieczeniami.
 
-## <a name="what-is-threat-intelligence"></a>Czym jest analiza zagrożeń?
-Używając opcji Analiza zagrożeń dostępnej w usłudze Security Center, administratorzy IT mogą identyfikować zagrożenia dla bezpieczeństwa środowiska. Na przykład mogą zidentyfikować, czy określony komputer jest częścią botnetu. Komputery mogą stać się węzłami w botnecie, gdy osoby atakujące bezprawnie zainstalują złośliwe oprogramowanie, które potajemnie łączy komputer z centrum sterowania. Analiza zagrożeń może też identyfikować potencjalne zagrożenia pochodzące z tajnych kanałów komunikacji, takich jak podziemny Internet.
+## <a name="how-the-security-alerts-map-works"></a>Sposób mapowania alerty zabezpieczeń działania
+Usługa Security Center zapewnia, że Ci mapę, która pomoże Ci identyfikować zagrożenia bezpieczeństwa środowiska. Na przykład można zidentyfikować, czy dany komputer jest częścią botnetu, a w przypadku, gdy zagrożenia pochodzi z. Komputerów może stać się węzłami w botnecie, gdy osoby atakujące bezprawnie zainstalują złośliwe oprogramowanie, które potajemnie wchodzi w interakcję z poleceń i kontroli, która zarządzać botnetem. 
 
-Aby umożliwić używanie analizy zagrożeń, usługa Security Center korzysta z danych, które pochodzą z wielu źródeł firmy Microsoft. Usługa Security Center używa tych danych do wykrywania potencjalnych zagrożeń dla Twojego środowiska. Okienko **Analiza zagrożeń** zawiera trzy główne opcje:
+Aby utworzyć to mapowanie, Security Center korzysta z danych pochodzących z wielu źródeł firmy Microsoft. Usługa Security Center używa tych danych, aby zamapować potencjalnych zagrożeń dla środowiska. 
 
-- Typy wykrytych zagrożeń
-- Pochodzenie zagrożeń
-- Mapa analizy zagrożeń
-
-
-## <a name="when-should-you-use-threat-intelligence"></a>Kiedy należy używać analizy zagrożeń?
 Jeden z etapów [procesu reagowania na incydenty związane z zabezpieczeniami](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response) polega na określeniu dotkliwości danego incydentu dla systemów. Etap ten powinien obejmować następujące działania:
 
 - Określenie natury ataku.
-- Określenie źródła ataku.
+- Określ punkt początkowy ataku.
 - Określenie celu ataku Czy atak miał charakter przypadkowy czy był skierowany przeciwko Twojej organizacji w celu uzyskania konkretnych informacji?
 - Zidentyfikowanie systemów, których zabezpieczenia zostały naruszone.
 - Zidentyfikowanie plików, do których nastąpił dostęp, aby ustalić istotność tych plików.
 
-Informacji dotyczących analizy zagrożeń możesz użyć w usłudze Security Center, aby ułatwić te zadania.
+Mapa alertów zabezpieczeń w usłudze Security Center umożliwia ułatwić wykonanie tych zadań.
 
-## <a name="access-the-threat-intelligence"></a>Uzyskiwanie dostępu do analizy zagrożeń
-Aby wyświetlić bieżącą analizę zagrożeń dla środowiska, musisz najpierw wybrać obszar roboczy, gdzie są przechowywane informacje. Jeśli masz tylko jeden obszar roboczy, pomiń selektor obszarów roboczych i od razu przejdź do pulpitu nawigacyjnego **Analiza zagrożeń**. Aby uzyskać dostęp do pulpitu nawigacyjnego:
+## <a name="access-the-security-alerts-map"></a>Dostęp do mapy alerty zabezpieczeń
+Aby wyświetlić bieżące zagrożenia w swoim środowisku, otwórz mapę alerty zabezpieczeń:
+
+1. Otwórz pulpit nawigacyjny usługi **Security Center**.
+2. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **Mapa alertów zabezpieczeń**. Zostanie otwarty mapy.
+3. Aby uzyskać więcej informacji na temat alertu i odbierać rekomendowania czynności naprawczych, kliknij Alert kropki (.) na mapie i postępuj zgodnie z instrukcjami. 
+ 
+Mapa alertów zabezpieczeń jest na podstawie alertów. Te alerty są oparte na działania dla sieci, w której został skojarzony z adresu IP, która została pomyślnie rozpoznana, czy adres IP jest znane ryzykownego adresu IP (na przykład znanych cryptominer) lub adres IP, który nie jest rozpoznawany komunikacji wcześniej jako ryzykowne. Mapy zawiera alertów w subskrypcjach, wszystkie wcześniej wybrane na platformie Azure. 
+
+Alerty na mapie są wyświetlane według lokalizacji geograficznej, gdzie one są wykrywane jako pochodzące z komputera i są one kolorami według ważności. 
+ 
+## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Wyświetlanie pulpitu nawigacyjnego oparty na zdarzeniach analizy zagrożeń
+Aby wyświetlić Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń nieprzetworzone, można wykonać tę procedurę. Ta mapa wyświetla tylko te zdarzenia, które obejmują adres IP, który jest uważany za zagrożenie, na przykład adres IP znanego botnetu.
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-1. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **analiza zagrożeń**. Zostanie otwarty mapy.
+1. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **Mapa alertów zabezpieczeń**. Zostanie otwarty mapy.
+2. W prawym górnym rogu, kliknij przycisk **przejdź do mapy zdarzeń zabezpieczeń**.
+3. Wybierz obszar roboczy, dla którego chcesz wyświetlić pulpit nawigacyjny.
+4. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
 
-    ![Mapa analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel.png)
-
-1. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
-
-    ![Pulpit nawigacyjny analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
-
-    > [!NOTE]
-    > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
-    >
-1. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
+   > [!NOTE]
+   > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
+   >
+5. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
 
     ![Informacje dotyczące analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-1. Pulpit nawigacyjny jest podzielony na cztery kafelki:
+6. Pulpit nawigacyjny jest podzielony na cztery kafelki:
 
     a.  **Typy zagrożeń**. Zawiera podsumowanie typów zagrożeń, które zostały wykryte w wybranym obszarze roboczym.
 

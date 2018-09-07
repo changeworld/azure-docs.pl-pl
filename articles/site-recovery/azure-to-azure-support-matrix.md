@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c3852f4055b5afe84aaa233c50f50732f98537a2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444830"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022896"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -38,8 +38,8 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 --- | --- | ---
 **Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane<br/><br/> Magazyn usługi Recovery services nie można przenosić między grupami zasobów.
 **Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Jeśli po replikuje, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć replikację i ponownie włączyć replikację dla maszyny Wirtualnej.
-**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
-**Migrowanie maszyn wirtualnych w subskrypcjach** | Nieobsługiwane.
+**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory dla maszyn wirtualnych "Modelu wdrażania usługi Resource manager". Nieobsługiwane w przypadku klasycznego modelu wdrażania maszyn wirtualnych.
+**Migrowanie maszyn wirtualnych między regionami w ramach obsługiwanej klastrów geograficznych (wewnątrz i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory dla maszyn wirtualnych "Modelu wdrażania usługi Resource manager". Nieobsługiwane w przypadku klasycznego modelu wdrażania maszyn wirtualnych.
 **Migrowanie maszyn wirtualnych w tym samym regionie** | Nieobsługiwane.
 
 
@@ -147,6 +147,7 @@ Dodaj dysk do zreplikowanej maszyny Wirtualnej | Nieobsługiwane. Użytkownik mu
 --- | --- | ---
 Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Zapoznaj się [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md)
 Zestawy dostępności | Obsługiwane | Jeśli używasz opcji domyślnej, podczas wykonywania kroku "Włącz replikację" w portalu, zestaw dostępności jest automatycznie utworzona w oparciu o konfigurację region źródła. Można zmienić docelowy zestaw dostępności w "zreplikowany element > Ustawienia > obliczenia i sieć > zestaw dostępności" dowolnym momencie.
+Strefy dostępności | Nieobsługiwane | Maszyny wirtualne wdrożone w strefach dostępności nie są obecnie obsługiwane.
 Maszyn wirtualnych z hybrydowego użycia korzyści (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma licencję Centrum włączone, Test trybu failover lub maszyny Wirtualnej w tryb Failover korzysta również licencji KONCENTRATORA.
 Zestawy skalowania maszyn wirtualnych | Nieobsługiwane |
 Obrazy galerii platformy Azure — Microsoft opublikowane | Obsługiwane | Obsługiwane tak długo, jak maszyna wirtualna działa na system operacyjny obsługiwany przez usługę Site Recovery

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 20d0f4736d3aa5f23d9061b4482da7a623862344
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0f4c0243c09fd7a6b8d221d6c077775f83d82b8b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128225"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024547"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku C# na platformie .NET Framework na Windows przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -31,8 +31,6 @@ Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zest
 * **Programowanie aplikacji klasycznych dla platformy .NET** obciążenia w programie Visual Studio. Możesz ją włączyć w **narzędzia** \> **Pobierz narzędzia i funkcje**.
 
   ![Włącz programowanie aplikacji klasycznych dla platformy .NET](media/sdk/vs-enable-net-desktop-workload.png)
-
-  ![Włącz programowanie dla wielu platform .NET Core](media/sdk/vs-enable-net-desktop-workload.png)
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: c9004e776488006d563fd4de791cade69736a5b8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054976"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024373"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -42,8 +42,9 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | Metody bezpośrednie<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
 | (Urządzenia i moduł) odczytów bliźniaczej reprezentacji<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Bliźniacza reprezentacja aktualizacji (urządzenia i moduł)<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
-| Operacje zadania<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
-| Operacje dotyczące urządzenia zadania<sup>1</sup> <br/> (aktualizacji bliźniaczej reprezentacji, wywoływanie metody bezpośredniej) | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
+| Zadania Tworzenie, aktualizowanie, listy i operacje usuwania | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
+| Bliźniacza reprezentacja zadania aktualizacji, wywoływanie metody bezpośredniej operacji | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
+| Zadania zbiorczej operacji importu/eksportu | 1 aktywne zadanie na Centrum | 1 aktywne zadanie na Centrum | 1 aktywne zadanie na Centrum |
 | Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) |
 
 

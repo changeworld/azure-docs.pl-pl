@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 09/06/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: jlu, annaba, hirsin
+ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698064"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055298"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrowanie z usługi Azure Access Control service
 
-Azure Access Control, usługi Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
-
+Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
 
 ## <a name="overview"></a>Przegląd
 
@@ -73,7 +72,6 @@ Oto harmonogram wycofano składniki kontroli dostępu:
 - **2 kwietnia 2018 r.**: klasyczny portal Azure całkowicie został wycofany, co oznacza, zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
 - **7 listopada 2018**: kontrola dostępu do wszystkich składników stałe są zamykane. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
 
-
 ## <a name="migration-strategies"></a>Strategie migracji
 
 W poniższych sekcjach opisano ogólne zalecenia dotyczące migrowania z kontroli dostępu do innych technologii firmy Microsoft.
@@ -98,7 +96,6 @@ Każda usługa chmury firmy Microsoft, który akceptuje tokeny wystawione przez 
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
-
 
 ### <a name="sharepoint-customers"></a>Klienci programu SharePoint
 
@@ -175,26 +172,14 @@ Aby korzystać z protokołu WS-Federation lub programu WIF do integracji z usłu
 - Możesz uzyskać pełną elastyczność dostosowywania tokenu usługi Azure AD. Można dostosować oświadczenia, które są wydawane przez zgodne oświadczenia, które są wydawane przez kontrolę dostępu w usłudze Azure AD. Dotyczy to zwłaszcza identyfikator lub identyfikator nazwy oświadczenia użytkownika. Nadal wyświetlany użytkownikom spójne identyfikatory dla użytkowników po zmianie technologii, upewnij się, że identyfikatory użytkowników wystawiony przez usługę Azure AD jest zgodny tymi wystawionymi przez kontrolę dostępu.
 - Można skonfigurować certyfikat podpisywania tokenu, która zależy od aplikacji i możesz kontrolować okres istnienia.
 
-<!--
-
-Possible nameIdentifiers from Access Control (via AAD or AD FS):
-- AD FS - Whatever AD FS is configured to send (email, UPN, employeeID, what have you)
-- Default from AAD using App Registrations, or Custom Apps before ClaimsIssuance policy: subject/persistent ID
-- Default from AAD using Custom apps nowadays: UPN
-- Kusto can't tell us distribution, it's redacted
-
--->
-
 > [!NOTE]
 > Takie podejście wymaga licencji usługi Azure AD Premium. Jeśli korzystasz z kontroli dostępu i wymaga licencji premium do konfigurowania logowania jednokrotnego dla aplikacji, skontaktuj się z nami. Będziemy wszystkiego zapewnienie licencji dewelopera do użycia.
 
 Alternatywnym podejściem jest wykonanie czynności opisanych [ten przykładowy kod](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), co daje nieco inne instrukcje dotyczące konfigurowania protokołu WS-Federation. Ten przykładowy kod nie używa programu WIF, ale raczej oprogramowania pośredniczącego OWIN 4.5 programu ASP.NET. Jednak z instrukcjami dotyczącymi rejestracji aplikacji są prawidłowe dla aplikacji przy użyciu programu WIF i nie wymaga licencji usługi Azure AD Premium. 
 
-Jeśli wybierzesz tę opcję, musisz zrozumieć [Przerzucanie klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa usługi Azure AD, globalne, podpisywania klucza do wydawania tokenów. Domyślnie program WIF nie będzie odświeżana automatycznie klucze podpisywania. W przypadku usługi Azure AD obraca się jego globalne klucze podpisywania, implementacji programu WIF trzeba przygotować, aby zatwierdzić zmiany.
+Jeśli wybierzesz tę opcję, musisz zrozumieć [Przerzucanie klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa usługi Azure AD, globalne, podpisywania klucza do wydawania tokenów. Domyślnie program WIF nie będzie odświeżana automatycznie klucze podpisywania. W przypadku usługi Azure AD obraca się jego globalne klucze podpisywania, implementacji programu WIF trzeba przygotować, aby zatwierdzić zmiany. Aby uzyskać więcej informacji, zobacz [ważne informacje na temat Przerzucanie klucza podpisywania w usłudze Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
 
 Można zintegrować z usługą Azure AD za pomocą protokołów uwierzytelniania OpenID Connect lub OAuth, zaleca się temu. Mamy obszerną dokumentację i wskazówki dotyczące sposobu integracji usługi Azure AD w aplikacji sieci web dostępnych w naszej [przewodnik dewelopera usługi Azure AD](https://aka.ms/aaddev).
-
-<!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrowanie do usługi Azure Active Directory B2C
 
@@ -237,7 +222,6 @@ Jeśli zdecydujesz, że usługi Azure AD B2C jest najlepszej ścieżki migracji 
 - [Niestandardowe zasady usługi Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Cennik usługi Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Przenoszonych do oprogramowania lub Auth0 Ping Identity
 
 W niektórych przypadkach może stwierdzisz, że usługa Azure AD i Azure AD B2C nie są wystarczające do zastąpienia kontroli dostępu w aplikacji sieci web bez wprowadzania zmian w kodzie głównych. Typowe przykłady mogą być następujące:
@@ -249,8 +233,6 @@ W niektórych przypadkach może stwierdzisz, że usługa Azure AD i Azure AD B2C
 - Wielodostępnych aplikacji sieci web, które umożliwia centralne zarządzanie Federację wielu dostawców tożsamości z innej usługi ACS
 
 W takich przypadkach warto rozważyć migrowanie aplikacji sieci web w taki sposób, aby inna usługa uwierzytelniania w chmurze. Firma Microsoft zaleca Eksplorowanie następujące opcje. Każdy z poniższych opcji, oferuje funkcje podobne do kontroli dostępu:
-
-
 
 |     |     | 
 | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości — tworzenie przeglądami wykaz wideo przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Jak utworzyć wykaz wideo przegląda przy użyciu zestawu SDK moderatora zawartości platformy Azure dla platformy .NET
+title: Usługa Azure Content Moderator — tworzenie przeglądy transkrypcji wideo przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Jak utworzyć transkrypcji wideo przeglądy dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,61 +9,72 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sajagtap
-ms.openlocfilehash: 3286da6e38f0fba02386d877a835fb694ed0fdec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5b4ae96b8a0505123bc6f518d85702d58bad892b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35347584"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024032"
 ---
-# <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądami wykaz wideo przy użyciu platformy .NET
+# <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądy transkrypcji wideo przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady kodu w celu szybkiego rozpoczęcie pracy przy użyciu zawartości SDK moderatora w języku C# do:
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu [Content Moderator zestawu SDK przy użyciu języka C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
 
-- Utwórz opinię wideo dla człowieka moderatorów
-- Dodaj moderowane zapis do przeglądu
+- Utwórz Przegląd wideo dla moderatorów ludzi
+- Dodaj moderowanych transkrypcji do przeglądu
 - Publikowanie przeglądu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto założenie, że masz [moderowane wideo](video-moderation-api.md) i [utworzone wideo przeglądu](video-reviews-quickstart-dotnet.md) w narzędziu przeglądu ułatwiającym podejmowanie decyzji człowieka. Chcesz teraz dodać moderowane zapisy rozmów wideo w narzędziu przeglądu.
+W tym artykule założono, że masz [moderowane wideo](video-moderation-api.md) i [utworzony Przegląd wideo](video-reviews-quickstart-dotnet.md) w narzędzie do przeglądu do podejmowania decyzji przez ludzi. Teraz należy dodać moderowanych transkrypcji wideo w narzędzie do przeglądu.
 
-W artykule założono również, że znasz już program Visual Studio i C#.
+W tym artykule założono również, że znasz już program Visual Studio i języka C#.
 
-### <a name="sign-up-for-content-moderator-services"></a>Załóż moderatora zawartości usług
+## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
 
-Zanim użyjesz usługi moderatora zawartości za pośrednictwem interfejsu API REST lub zestawu SDK, należy klucza subskrypcji.
+Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
 
-Na pulpicie nawigacyjnym moderatora zawartości, można znaleźć klucza subskrypcji w **ustawienia** > **poświadczenia** > **interfejsu API**  >   **Wersja próbna Ocp Apim subskrypcji klucza**. Aby uzyskać więcej informacji, zobacz [omówienie](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
 
-### <a name="prepare-your-video-for-review"></a>Przygotowanie wideo do przeglądu
+Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
 
-Dodaj zapis do przeglądu wideo. Wideo musi zostać opublikowany w trybie online. Konieczne jest jego punktu końcowego przesyłania strumieniowego. Punkt końcowy przesyłania strumieniowego umożliwia przegląd narzędzia odtwarzacza wideo do odtwarzania wideo.
+## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejsu API przeglądu (Tworzenie zadania)
 
-![Pokaz wideo miniatur](images/ams-video-demo-view.PNG)
+Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
 
-- Kopiuj **adres URL** na tym [pokaz usługi Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) strony dla manifest adresu URL.
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+
+Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
+
+## <a name="prepare-your-video-for-review"></a>Przygotowywanie filmu wideo do przeglądu
+
+Dodaj transkrypcji do wideo przeglądu. Wideo musi być opublikowane w trybie online. Konieczne jest jej punkt końcowy przesyłania strumieniowego. Punkt końcowy przesyłania strumieniowego umożliwia przegląd narzędzie odtwarzacza wideo do odtwarzania wideo.
+
+![Pokaz wideo, miniatury](images/ams-video-demo-view.PNG)
+
+- Kopiuj **adresu URL** na tym [pokaz usługi Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stronę o adresie URL manifestu.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **aplikacji konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
 
-1. Nazwij projekt **VideoTranscriptReviews**.
+1. Nadaj projektowi nazwę **VideoTranscriptReviews**.
 
-1. Wybierz ten projekt jako projekt startowy pojedynczego dla rozwiązania.
+1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
-Zainstaluj następujące pakiety NuGet dla projektu TermLists.
+Zainstaluj następujące pakiety NuGet projektu TermLists.
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu użytkownika za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
 
-Zmodyfikuj program użytkownika przy użyciu instrukcji w następujący sposób.
+Modyfikowanie programu za pomocą instrukcji w następujący sposób.
 
     using System;
     using System.Collections.Generic;
@@ -75,9 +86,9 @@ Zmodyfikuj program użytkownika przy użyciu instrukcji w następujący sposób.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Dodaj właściwości prywatnych
+### <a name="add-private-properties"></a>Dodawanie właściwości prywatne
 
-Dodaj następujące prywatne właściwości do przestrzeni nazw VideoTranscriptReviews, klasy Program.
+Dodaj następujące właściwości prywatnej do przestrzeni nazw VideoTranscriptReviews, klasy programu.
 
 W przypadku, gdy wskazane, Zastąp przykładowe wartości tych właściwości.
 
@@ -122,9 +133,9 @@ W przypadku, gdy wskazane, Zastąp przykładowe wartości tych właściwości.
             private const int throttleRate = 2000;
 
 
-### <a name="create-content-moderator-client-object"></a>Utworzenie obiektu klienta moderatora zawartości
+### <a name="create-content-moderator-client-object"></a>Utworzenie obiektu klienta usługi Content Moderator
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy Program.
+Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu.
 
     /// <summary>
     /// Returns a new Content Moderator client for your subscription.
@@ -141,24 +152,24 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReview
         };
     }
 
-## <a name="create-a-video-review"></a>Utwórz wideo przeglądu
+## <a name="create-a-video-review"></a>Utwórz Przegląd wideo
 
-Utwórz opinię wideo z **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
-1. Nazwę zespołu moderatora zawartości.
-1. **IList<CreateVideoReviewsBodyItem>**  obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ta opcja szybkiego startu tworzy jeden przeglądu w czasie.
+1. Nazwa zespołu usługi Content Moderator.
+1. **IList<CreateVideoReviewsBodyItem>**  obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
-**CreateVideoReviewsBodyItem** ma kilka właściwości. Co najmniej można ustawić następujące właściwości:
-- **Zawartości**. Adres URL wideo, należy sprawdzić.
-- **ContentId**. Identyfikator można przypisać do przeglądu wideo.
-- **Stan**. Ustaw wartość na "Unpublished." Jeśli nie zostanie ustawiony, domyślnie jako "Oczekujące", co oznacza, że przegląd wideo został opublikowany i oczekiwania ludzi przeglądu. Po opublikowaniu wideo przeglądu klatek, zapisu lub wynik łagodzenia wykaz można już dodać do niego.
+**CreateVideoReviewsBodyItem** ma kilka właściwości. Jako minimum można ustawić następujące właściwości:
+- **Zawartość**. Adres URL filmu wideo do przeglądu.
+- **ContentId**. Identyfikator, aby przypisać do przeglądu wideo.
+- **Stan**. Ustaw wartość na "Nieopublikowane." Jeśli nie zostanie zdefiniowany, wartość domyślna, jako "Oczekujące", co oznacza, że przegląd wideo został opublikowany i oczekujące przeglądu przez ludzi. Po opublikowaniu wideo przeglądu klatki wideo, transkrypcji lub wynik Moderowanie transkrypcji można już dodać do niego.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca IList<string>. Każdy z tych ciągów zawiera identyfikator wideo przeglądu. Te identyfikatory są identyfikatorami GUID i nie są takie same jak wartości **ContentId** właściwości. 
+> **CreateVideoReviews** zwraca interfejs IList<string>. Każdy z tych ciągów zawiera identyfikator wideo przeglądu. Te identyfikatory są identyfikatory GUID i nie są takie same jak wartość **ContentId** właściwości. 
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy Program.
+Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
 
     /// <summary>
     /// Create a video review. For more information, see the API reference:
@@ -192,23 +203,23 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy P
     }
 
 > [!NOTE]
-> Klucz usługi moderatora zawartości ma żądań na drugi limit szybkości (RPS). Jeśli przekroczysz limit zestawu SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych). Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz warstwa bezpłatna ma limit szybkości jeden RPS.
+> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
 
-## <a name="add-transcript-to-video-review"></a>Dodaj zapis do przeglądu wideo
+## <a name="add-transcript-to-video-review"></a>Dodaj transkrypcji do wideo przeglądu
 
-Dodaj zapisu do przeglądu wideo z **ContentModeratorClient.Reviews.AddVideoTranscript**. **AddVideoTranscript** ma następujące wymagane parametry:
-1. Identyfikator zawartości moderatora zespołu.
-1. Identyfikator wideo przeglądu zwrócony przez **CreateVideoReviews**.
-1. A **strumienia** obiekt, który zawiera wykaz.
+Dodaj transkrypcji do wideo weryfikacji z **ContentModeratorClient.Reviews.AddVideoTranscript**. **AddVideoTranscript** ma następujące wymagane parametry:
+1. Identyfikator zespołu pakietu Content Moderator.
+1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
+1. A **Stream** obiekt, który zawiera transkrypcję.
 
-Wykaz musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżek tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
+Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżki tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
-> Wykaz próbki jest używana w formacie VTT. W rozwiązaniu rzeczywistych korzystania z usługi Azure Media indeksatora do [Generowanie zapisu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z wideo.
+> Zapis próbki jest używana w formacie VTT. W rozwiązaniu do świata rzeczywistego, użyj usługi Azure Media Indexer [Generowanie transkrypcji](https://docs.microsoft.com/azure/media-services/media-services-index-content) z filmu wideo.
 
-Dodaj następującą definicję metody do przestrzeni nazw VideotranscriptReviews, klasy Program.
+Dodaj następującą definicję metody do przestrzeni nazw VideotranscriptReviews, klasy programu.
 
     /// <summary>
     /// Add a transcript to the indicated video review.
@@ -226,23 +237,23 @@ Dodaj następującą definicję metody do przestrzeni nazw VideotranscriptReview
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-a-transcript-moderation-result-to-video-review"></a>Dodanie wyniku łagodzenia zapis do przeglądu wideo
+## <a name="add-a-transcript-moderation-result-to-video-review"></a>Dodaj wynik Moderowanie transkrypcji do wideo przeglądu
 
-Oprócz dodania zapisu do przeglądu wideo, można też dodać wynik Moderowanie ten wykaz. Możesz to zrobić z **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Moderowanie tej transkrypcji. Możesz to zrobić za pomocą **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
 **AddVideoTranscriptModerationResult** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
-1. Nazwę zespołu moderatora zawartości.
-1. Identyfikator wideo przeglądu zwrócony przez **CreateVideoReviews**.
+1. Nazwa zespołu usługi Content Moderator.
+1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 1. IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** ma następujące właściwości:
 - **Warunki**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
-- **Indeks**. Liczony od zera indeks terminu.
+- **Indeks**. Liczony od zera indeks termin.
 - **Termin**. Ciąg, który zawiera wyrażenie.
-- **Sygnatura czasowa**. Ciąg zawierający w sekundach czas w wykazie, w którym znajdują się warunki.
+- **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w transkrypcji, w którym znajdują się warunki.
 
-Wykaz musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżek tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
+Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżki tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy Program. Ta metoda przesyła zapis do **ContentModeratorClient.TextModeration.ScreenText** metody. Również przekształca wynik w interfejsie IList<TranscriptModerationBodyItem>i przekazuje do **AddVideoTranscriptModerationResult**.
+Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Ta metoda przesyła transkrypcję, aby **ContentModeratorClient.TextModeration.ScreenText** metody. Również tłumaczy wynik na IList<TranscriptModerationBodyItem>i przekazuje do **AddVideoTranscriptModerationResult**.
 
     /// <summary>
     /// Add the results of moderating a video transcript to the indicated video review.
@@ -290,11 +301,11 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReview
 
 ## <a name="publish-video-review"></a>Publikowanie wideo przeglądu
 
-Publikowanie Przegląd wideo z **ContentModeratorClient.Reviews.PublishVideoReview**. **PublishVideoReview** ma następujące wymagane parametry:
-1. Nazwę zespołu moderatora zawartości.
-1. Identyfikator wideo przeglądu zwrócony przez **CreateVideoReviews**.
+Publikowanie wideo weryfikacji z **ContentModeratorClient.Reviews.PublishVideoReview**. **PublishVideoReview** ma następujące wymagane parametry:
+1. Nazwa zespołu usługi Content Moderator.
+1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy Program.
+Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
 
     /// <summary>
     /// Publish the indicated video review. For more information, see the reference API:
@@ -309,12 +320,12 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy P
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Składanie wszystkiego razem
+## <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
 
-Dodaj **Main** definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy Program. Na koniec Zamknij klasy Program i VideoTranscriptReviews przestrzeni nazw.
+Dodaj **Main** definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Na koniec można zamknąć, klasę Program i VideoTranscriptReviews przestrzeni nazw.
 
 > [!NOTE]
-> Wykaz próbki jest używana w formacie VTT. W rozwiązaniu rzeczywistych korzystania z usługi Azure Media indeksatora do [Generowanie zapisu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z wideo. 
+> Zapis próbki jest używana w formacie VTT. W rozwiązaniu do świata rzeczywistego, użyj usługi Azure Media Indexer [Generowanie transkrypcji](https://docs.microsoft.com/azure/media-services/media-services-index-content) z filmu wideo. 
 
     static void Main(string[] args)
     {
@@ -348,7 +359,7 @@ Dodaj **Main** definicję metody do przestrzeni nazw VideoTranscriptReviews, kla
 
 ## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
 
-Po uruchomieniu aplikacji pojawić się dane wyjściowe na następujące wiersze:
+Po uruchomieniu aplikacji, zobaczysz dane wyjściowe w następujących wierszach:
 
     Creating a video review.
     Adding a transcript to the review with ID 201801v5b08eefa0d2d4d64a1942aec7f5cacc3.
@@ -357,21 +368,21 @@ Po uruchomieniu aplikacji pojawić się dane wyjściowe na następujące wiersze
     Open your Content Moderator Dashboard and select Review > Video to see the review.
     Press any key to close the application.
 
-## <a name="navigate-to-your-video-transcript-review"></a>Przejdź do zapoznania się z nimi wykaz wideo
+## <a name="navigate-to-your-video-transcript-review"></a>Przejdź do zapoznania się z nimi transkrypcji wideo
 
-Przejdź do strony Przegląd wykaz wideo w narzędzie przeglądu moderatora zawartości w **Przejrzyj**>**wideo**>**wykaz** ekranu.
+Przejdź do strony Przegląd transkrypcji wideo w narzędzie do przeglądu usługi Content Moderator w **Przejrzyj**>**wideo**>**transkrypcji** ekranu.
 
 Zostaną wyświetlone następujące funkcje:
-- Dwa wiersze wykaz dodane
-- Termin niestosownych wyrażeń znaleziono i wyróżnione przez usługę łagodzenia tekstu
-- Wybór tekstu przekształcania rozpoczyna się od tego znacznika czasu wideo
+- Dwa wiersze transkrypcji, którą dodałeś
+- Termin wulgaryzmów znalezione i wyróżniony przez usługę Moderowanie tekstu
+- Zaznaczanie tekstu transkrypcji wideo jest uruchamiany z tej sygnatury czasowej
 
-![Przejrzyj wykaz wideo dla człowieka moderatorów](images/ams-video-transcript-review.PNG)
+![Przegląd transkrypcji wideo dla moderatorów ludzi](images/ams-video-transcript-review.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak Generowanie [przegląda wideo](video-reviews-quickstart-dotnet.md) w narzędziu przeglądu.
+Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET.
 
-Zapoznaj się z szczegółowy samouczek dotyczący tworzenia [ukończyć rozwiązania wideo łagodzenia](video-transcript-moderation-review-tutorial-dotnet.md).
+Dowiedz się, jak wygenerować [przeglądy wideo](video-reviews-quickstart-dotnet.md) w narzędzie do przeglądu.
 
-[Pobierz rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) to i inne elementy zawartości moderatora szybkiego startu dla platformy .NET.
+Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md).

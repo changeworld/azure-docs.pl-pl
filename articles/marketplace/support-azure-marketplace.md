@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0007396ad6d5fc16177d76683f959591e9830ac3
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 55f66203c7d84a41e6c060dd6ae5241b4a719f1c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782080"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049035"
 ---
 # <a name="support-for-the-marketplace"></a>Obsługa portalu Marketplace  
 Opcje pomocy technicznej w portalu Marketplace.  
@@ -41,7 +41,8 @@ Opcje pomocy technicznej w portalu Marketplace.
 | Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack środowisko do obsługi partnerom kwestiach technicznych. Tam o 350 + partnerów pracujących w tym środowisku. |  
 | Fora MSDN: Marketplace znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum sieci Microsoft Developer Network. |  
 | Witrynie Stack Overflow: Azure znajdujący się [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z portalu Azure Marketplace.<ul> <li>Witrynie Stack Overflow: Portal Azure Marketplace znajdującym się [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Witrynie Stack Overflow: Usługa Azure Resource Manager znajdującym się [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Witrynie Stack Overflow: maszyny wirtualne na platformie Azure znajdujący się [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Witrynie Stack Overflow: Kontenery na platformie Azure znajdujący się [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-| Pomoc techniczna dla usługi AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Obsługa publikowania w aplikacjach systemu Dynamics |
+| Pomoc techniczna dla usługi AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Obsługa publikowania dla aplikacji Dynamics |
+
 ## <a name="marketing-resources"></a>Materiały marketingowe  
 
 | Kanał obsługi | Opis | Dostępność |  

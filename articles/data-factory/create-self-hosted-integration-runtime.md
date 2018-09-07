@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697768"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051344"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -30,16 +30,16 @@ Ten dokument stanowi wprowadzenie, jak utworzyć i skonfigurować własne IR.
 1. Tworzenie własnego środowiska integration runtime. Interfejs użytkownika usługi ADF można użyć do tworzenia Self-Hosted IR Oto przykład programu PowerShell:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2. Pobierz i zainstaluj własne środowisko integration runtime (na komputer lokalny).
 3. Pobierz klucz uwierzytelniania i zarejestrowania własnego środowiska integration runtime przy użyciu klucza. Oto przykład programu PowerShell:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
-## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Konfigurowanie własne środowisko IR na maszynie Wirtualnej platformy Azure przy użyciu szablonu Azure Resource Manager (automatation)
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automation"></a>Konfigurowanie własne środowisko IR na maszynie Wirtualnej platformy Azure przy użyciu szablonu Azure Resource Manager (automation)
 Można zautomatyzować instalacja Self-Hosted IR na maszynie Wirtualnej platformy Azure przy użyciu [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Zapewnia to prosty sposób mają pełnej funkcjonalności własne środowisko IR () wewnątrz sieci wirtualnej platformy Azure z funkcją wysokiej Avalaibility i skalowalności (tak długo, jak ustawić jest liczba węzłów, 2 lub nowszej).
 
 ## <a name="command-flow-and-data-flow"></a>Polecenie przepływu i przepływu danych

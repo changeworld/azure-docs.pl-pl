@@ -1,6 +1,6 @@
 ---
-title: Obciążenia równoważenia na wielu konfiguracji adresów IP przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu wiersza polecenia platformy Azure.
+title: Równoważenia obciążenia na wielu konfiguracji adresu IP przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisać wiele adresów IP do maszyny wirtualnej przy użyciu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: f9cd6405f5c3c87cdf004f8a71b9e72d58532a12
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4080e4e3e274d64046f46d24b34959542e0ad304
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108930"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049596"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Obciążenia równoważenia na wielu konfiguracji adresów IP przy użyciu wiersza polecenia platformy Azure
+# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP przy użyciu wiersza polecenia platformy Azure
 
-W tym artykule opisano sposób korzystania z wielu adresów IP na pomocniczym interfejsie sieciowym (NIC) usługi równoważenia obciążenia Azure. W tym scenariuszu będziemy mieć dwie maszyny wirtualne z systemami Windows, każdy z podstawowym i pomocniczym karty sieciowej. Każda dodatkowej kart sieciowych ma dwie konfiguracje adresów IP. Każda maszyna wirtualna obsługuje zarówno contoso.com witryn sieci Web, jak i fabrikam.com. Każda witryna sieci Web jest powiązana z jedną konfiguracją IP dodatkowej karty sieciowej. Możemy użyć modułu równoważenia obciążenia Azure do udostępnienia dwa adresy IP frontonu, po jednym dla każdej witryny sieci Web, aby dystrybuować ruch do odpowiednich konfigurację adresu IP dla witryny sieci Web. W tym scenariuszu używa tego samego numeru portu na zarówno frontends, jak i oba adresy IP do puli wewnętrznej bazy danych.
+W tym artykule opisano sposób użycia usługi Azure Load Balancer z wieloma adresami IP na pomocniczego interfejsu sieciowego (NIC). W tym scenariuszu mamy dwóch maszyn wirtualnych z systemem Windows, każdy z podstawowej i pomocniczej karty sieciowej Każda z dodatkową kartą sieciową ma dwie konfiguracje adresów IP. Każda maszyna wirtualna jest hostem witryny sieci Web contoso.com i fabrikam.com. Każda witryna sieci Web jest powiązana z jedną konfiguracją IP pomocniczej karty sieciowej Usługa Azure Load Balancer są używane do udostępnienia dwóch adresów IP frontonu, po jednym dla każdej witryny sieci Web, aby dystrybuować ruch do odpowiednich konfiguracji IP witryny sieci Web. W tym scenariuszu użyto tego samego numeru portu dla zarówno frontonów, jak i adresy IP puli zaplecza.
 
-![Obraz scenariusz równoważeniem obciążenia](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+![Obraz scenariusz modułu równoważenia obciążenia](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Kroki, aby załadować saldo wielu konfiguracji adresów IP
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Kroki, aby zrównoważyć obciążenie na wiele konfiguracji adresów IP
 
-Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
+Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące czynności:
 
-1. [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure]((https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)) , wykonując kroki opisane w artykule połączonych i dziennika do konta platformy Azure.
+1. [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) wykonując czynności opisane w artykule połączone i dziennika na koncie platformy Azure.
 2. [Utwórz grupę zasobów](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) o nazwie *contosofabrikam* w następujący sposób:
 
     ```azurecli
     az group create contosofabrikam westcentralus
     ```
 
-3. [Tworzenie zestawu dostępności](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) do dwóch maszyn wirtualnych. W tym scenariuszu należy użyć następującego polecenia:
+3. [Tworzenie zestawu dostępności](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) do dla dwóch maszyn wirtualnych. W tym scenariuszu należy użyć następującego polecenia:
 
     ```azurecli
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
@@ -52,13 +52,13 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
 
     ```
 
-5. [Tworzenie usługi równoważenia obciążenia](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) o nazwie *mylb*:
+5. [Tworzenie modułu równoważenia obciążenia](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) o nazwie *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Utwórz dwa dynamiczne publiczne adresy IP, w przypadku konfiguracji IP frontonu z usługi równoważenia obciążenia:
+6. Utwórz dwa dynamiczne publiczne adresy IP, dla konfiguracji adresów IP frontonu modułu równoważenia obciążenia:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -66,14 +66,14 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Utwórz dwie konfiguracje adresów IP frontonu *contosofe* i *fabrikamfe* odpowiednio:
+7. Utwórz dwie konfiguracje adresu IP frontonu *contosofe* i *fabrikamfe* odpowiednio:
 
     ```azurecli
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Tworzenie zaplecza pule adresów - *contosopool* i *fabrikampool*, [sondowania](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*i obciążenia reguły - równoważenia *HTTPc* i *HTTPf*:
+8. Utwórz wewnętrzną bazą danych, pule adresów - *contosopool* i *fabrikampool*, [sondy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*i obciążenia reguły - równoważenia *HTTPc* i *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -85,13 +85,13 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
     az network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Sprawdź dane wyjściowe do [Sprawdź przez moduł równoważenia obciążenia](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) została poprawnie utworzona, uruchamiając następujące polecenie:
+9. Sprawdź dane wyjściowe do [Sprawdź modułu równoważenia obciążenia](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) została poprawnie utworzona, uruchamiając następujące polecenie:
 
     ```azurecli
     az network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. [Tworzenie publicznego adresu IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp*, i [konta magazynu](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* dla pierwszej maszyny wirtualnej VM1 w następujący sposób:
+10. [Tworzenie publicznego adresu IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp*, i [konta magazynu](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* dla pierwszej maszyny wirtualnej maszyny VM1 w następujący sposób:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -99,7 +99,7 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
     az storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Tworzenie interfejsów sieciowych](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) dla VM1 i dodać drugi konfiguracji adresów IP, *VM1 ipconfig2*, i [utworzyć maszynę Wirtualną](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) w następujący sposób:
+11. [Tworzenie interfejsów sieciowych](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) maszyny vm1 i Dodaj druga Konfiguracja protokołu IP *VM1 ipconfig2*, i [utworzyć maszynę Wirtualną](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) w następujący sposób:
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -108,7 +108,7 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
     az vm create --resource-group contosofabrikam --name VM1 --location westcentralus --os-type linux --nic-names VM1Nic1,VM1Nic2  --vnet-name VNet1 --vnet-subnet-name Subnet1 --availability-set myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount1 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-12. Powtórz kroki od 10 11 dla drugiej maszyny Wirtualnej:
+12. Powtórz kroki 10-11 dla drugiej maszyny Wirtualnej:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP2 --domain-name-label mypublicdns785 --allocation-method Dynamic
@@ -119,8 +119,8 @@ Aby osiągnąć scenariusz opisany w tym artykule, wykonaj następujące kroki:
     az vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availability-set myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Na koniec należy skonfigurować rekordy zasobów DNS, aby wskazywał adres IP frontonu odpowiedniej usługi równoważenia obciążenia. Może hostować domen w usłudze Azure DNS. Aby uzyskać więcej informacji o korzystaniu z usługi Azure DNS z usługi równoważenia obciążenia, zobacz [przy użyciu usługi Azure DNS z innymi usługami Azure](../dns/dns-for-azure-services.md).
+13. Na koniec należy skonfigurować rekordy zasobów DNS, aby wskazywał adresu IP odpowiedniego frontonu modułu równoważenia obciążenia. Może być hostowanie domen w usłudze Azure DNS. Aby uzyskać więcej informacji o korzystaniu z usługi Azure DNS przy użyciu modułu równoważenia obciążenia, zobacz [przy użyciu usługi Azure DNS z innymi usługami Azure](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o sposobie łączenia usługi na platformie Azure w równoważenia obciążenia [przy użyciu usługi równoważenia obciążenia w Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Dowiedz się, jak używasz różne typy dzienników na platformie Azure do zarządzania i rozwiązywania problemów z usługi równoważenia obciążenia w [dziennika analizy dla usługi równoważenia obciążenia Azure](../load-balancer/load-balancer-monitor-log.md).
+- Dowiedz się więcej o sposobie łączenia usług na platformie Azure w równoważenia obciążenia [przy użyciu usługi równoważenia obciążenia na platformie Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Dowiedz się, jak używać różnych typów dzienników na platformie Azure do zarządzania i rozwiązywanie problemów z modułu równoważenia obciążenia w [Analiza dzienników na potrzeby usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

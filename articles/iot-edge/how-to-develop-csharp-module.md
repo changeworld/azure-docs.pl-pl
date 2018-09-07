@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b1c6209c4d589093d7a29cd8a883d3e5d4ca12f9
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a66a17a0f8daed5f61753dd7c20ed5d9987c0b15
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782306"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053904"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge
 
@@ -44,7 +44,7 @@ Można skonfigurować lokalne Środowisko deweloperskie, debugowanie, uruchamian
    pip install --upgrade iotedgehubdev
    ```
 
-Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy użyciu co najmniej jedno urządzenie usługi IoT Edge. Aby użyć komputera jako urządzenia usługi IoT Edge, postępuj zgodnie z instrukcjami w przewodniku Szybki Start dla [Windows](quickstart.md) lub [Linux](quickstart-linux.md). 
+Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy użyciu co najmniej jeden identyfikator urządzenia usługi IoT Edge utworzone. Jeśli demon usługi IoT Edge są uruchomione na komputerze deweloperskim, może być konieczne zatrzymanie EdgeHub i EdgeAgent przed przejściem do następnego kroku. 
 
 ## <a name="create-a-new-solution-with-c-module"></a>Utwórz nowe rozwiązanie za pomocą modułu C#
 
@@ -111,9 +111,6 @@ Moduł IoT Edge C# jest.Net Core z aplikacji. I zależy od języka C# urządzeni
     dotnet build
     ```
 
-   > [!TIP]
-   > Można również użyć [PostMan](https://www.getpostman.com/) lub innych narzędzi interfejsu API, aby wysyłać komunikaty za pośrednictwem zamiast `curl`.
-
 2. Przejdź do adresu `program.cs`. Dodaj punkt przerwania w tym pliku.
 
 3. Przejdź do widoku debugowania programu VS Code. Wybierz konfigurację debugowania **ModuleName lokalnego debugowania (.NET Core)**. 
@@ -136,7 +133,7 @@ Moduł IoT Edge C# jest.Net Core z aplikacji. I zależy od języka C# urządzeni
 
     ![Obserwuj zmienne](media/how-to-develop-csharp-module/single-module-variables.png)
 
-7. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator**.
+7. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator** zatrzymać i oczyścić symulatora.
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>Tworzenie kontenera modułu do debugowania i debugowania w dołączyć tryb
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 12b383267cb90d9305043b52450572add0c1c202
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527494"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053271"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Przy użyciu wiersza polecenia platformy Azure 2.0 za pomocą usługi Azure Storage
 
@@ -105,7 +105,7 @@ Następnie możemy będziesz pracować skrypt powłoki małe, który wystawia ki
 # A simple Azure Storage example script
 
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
-export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+export AZURE_STORAGE_KEY=<storage_account_key>
 
 export container_name=<container_name>
 export blob_name=<blob_name>
@@ -210,7 +210,7 @@ Teraz, gdy klucz, jako zmienne środowiskowe można zdefiniować ją i nazwy kon
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
-export AZURE_STORAGE_ACCESS_KEY=<key>
+export AZURE_STORAGE_KEY=<key>
 ```
 
 Innym sposobem, aby ustawić domyślne konto magazynu jest przy użyciu parametrów połączenia. Najpierw Pobierz parametry połączenia o `show-connection-string` polecenia:
@@ -228,7 +228,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Wszystkie przykłady w poniższych sekcjach tego artykułu przyjęto założenie, że ustawiono `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_ACCESS_KEY` zmiennych środowiskowych.
+> Wszystkie przykłady w poniższych sekcjach tego artykułu przyjęto założenie, że ustawiono `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_KEY` zmiennych środowiskowych.
 
 ## <a name="create-and-manage-blobs"></a>Tworzenie i zarządzanie obiektami blob
 Usługa Azure Blob storage jest usługą służącą do przechowywania dużych ilości danych niestrukturalnych, takich jak dane tekstowe lub binarne, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. W tej sekcji założono, że znasz już pojęcia magazynu obiektów Blob platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../blobs/storage-dotnet-how-to-use-blobs.md) i [pojęcia dotyczące usługi Blob](/rest/api/storageservices/blob-service-concepts).
@@ -257,6 +257,8 @@ az storage blob upload \
     --container-name <container_name> \
     --name <blob_name>
 ```
+
+Jeśli chcesz przekazać bezpośrednio do folderu w kontenerze na koncie magazynu, należy zastąpić `--name <blob_name>` z `--name <folder/blob_name>`.
 
  Domyślnie `blob upload` polecenia przekazuje pliki *.vhd do stronicowych obiektów blob lub blokowych obiektów blob w przeciwnym razie. Aby określić inny typ, jeśli przekażesz obiekt blob, można użyć `--type` — dozwolone wartości należą `append`, `block`, i `page`.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616848"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054152"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -392,7 +392,7 @@ ADFV2 emituje następujące metryki
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Powodzenie metryki uruchomienia potoku | Licznik    | Łącznie                | Łączna liczba potoków jest uruchamiany zakończyło się pomyślnie w ramach minutowym oknie |
 | PipelineFailedRuns   | Nie powiodło się metryki uruchomienia potoku    | Licznik    | Łącznie                | Potoki łączna liczba przebiegów zakończonych niepowodzeniem w minutowym oknie    |
-| ActiviySucceededRuns | Powodzenie metryki uruchomień działań | Licznik    | Łącznie                | Łączna liczba działanie uruchamia zakończyło się pomyślnie w minutowym oknie  |
+| ActivitySucceededRuns | Powodzenie metryki uruchomień działań | Licznik    | Łącznie                | Łączna liczba działanie uruchamia zakończyło się pomyślnie w minutowym oknie  |
 | ActivityFailedRuns   | Nie powiodło się metryki uruchomień działań    | Licznik    | Łącznie                | Całkowita aktywność przebiegów zakończonych niepowodzeniem w minutowym oknie     |
 | TriggerSucceededRuns | Powodzenie metryki uruchomień wyzwalacza  | Licznik    | Łącznie                | Łączna liczba wyzwalacz jest uruchamiany zakończyło się pomyślnie w ciągu minuty okna   |
 | TriggerFailedRuns    | Nie powiodło się metryki uruchomień wyzwalacza     | Licznik    | Łącznie                | Wyzwalacz łączna liczba przebiegów zakończonych niepowodzeniem w minutowym oknie      |

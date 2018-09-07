@@ -12,12 +12,12 @@ ms.date: 08/16/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 56a1e7038515a64f1dfe3fda639213bcfcde63d6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177682"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053435"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia 
 
@@ -73,7 +73,7 @@ Usługi zarządzania i wdrażania nawiązać wystąpienia zarządzanego przy uż
 - Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md) 
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md). 
 - Aby uzyskać szybki Start zobacz sposób tworzenia wystąpienia zarządzanego: 
-  - z [witryny Azure Portal](sql-database-managed-instance-create-tutorial-portal.md) 
+  - Z [witryny Azure portal](sql-database-managed-instance-get-started.md) 
   - za pomocą [programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) 
   - za pomocą [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/) 
   - za pomocą [szablonu usługi Azure Resource Manager (Rampa za pomocą programu SSMS uwzględnione)](https://portal.azure.com/) 

@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 20039c32ed7bb740ba5d1185d195d7590cff39e2
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841866"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051259"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie serwerami logicznymi i pojedynczych baz danych w usłudze Azure SQL Database 
 
@@ -38,7 +38,7 @@ Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://p
 > [!IMPORTANT]
 > Więcej informacji o dobieraniu warstwy cenowej bazy danych, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
-Aby utworzyć wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-create-tutorial-portal.md)
+Aby utworzyć wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Zarządzanie istniejącego serwera SQL
 
@@ -85,7 +85,7 @@ Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomoc
 Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą [wiersza polecenia platformy Azure](/cli/azure), należy użyć następującego [bazy danych SQL interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/db) poleceń. Używaj usługi [Cloud Shell](/azure/cloud-shell/overview), aby uruchamiać interfejs wiersza polecenia w przeglądarce, albo [zainstaluj](/cli/azure/install-azure-cli) go w systemie macOS, Linux lub Windows. Tworzenie i zarządzanie elastycznymi pulami, zobacz [pul elastycznych](sql-database-elastic-pool.md).
 
 > [!TIP]
-> W przewodniku Szybki Start wiersza polecenia platformy Azure, zobacz [tworzenie pojedynczej bazy danych Azure SQL przy użyciu wiersza polecenia platformy Azure](sql-database-get-started-cli.md). W przypadku skryptów przykład wiersza polecenia platformy Azure, zobacz [użycia interfejsu wiersza polecenia do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-cli.md) i [użycia interfejsu wiersza polecenia do monitorowania i skalowania pojedynczej bazy danych SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
+> W przewodniku Szybki Start wiersza polecenia platformy Azure, zobacz [tworzenie pojedynczej bazy danych Azure SQL przy użyciu wiersza polecenia platformy Azure](sql-database-cli-samples.md). W przypadku skryptów przykład wiersza polecenia platformy Azure, zobacz [użycia interfejsu wiersza polecenia do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-cli.md) i [użycia interfejsu wiersza polecenia do monitorowania i skalowania pojedynczej bazy danych SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 | Polecenie cmdlet | Opis |

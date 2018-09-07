@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 578bb864f56b788db77d1201533e73d3b9616669
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a11de2a4580515f6a358438a706e5be3f5543e28
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054684"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025314"
 ---
 # <a name="back-up-azure-stack"></a>Tworzenie kopii zapasowych usługi Azure Stack
 
@@ -81,7 +81,7 @@ Wynik powinien wyglądać następujące dane wyjściowe:
 Użyj portalu administracyjnego usługi Azure Stack, aby upewnij się, że tej kopii zapasowej została ukończona pomyślnie, wykonując następujące czynności:
 
 1. Otwórz [portalu administratora usługi Azure Stack](azure-stack-manage-portals.md).
-2. Wybierz **więcej usług** > **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
+2. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** wybierz kategorię > **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
 3. Znajdź **nazwa** i **Data ukończenia** kopii zapasowej w **dostępnych kopii zapasowych** listy.
 4. Sprawdź **stanu** jest **Powodzenie**.
 

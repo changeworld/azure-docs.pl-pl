@@ -18,12 +18,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: a80bec460fffcc7c7170204d541d578428980394
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223953"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022802"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -71,7 +71,7 @@ Roaming stanu dla przedsiębiorstw wymaga urządzenia do zarejestrowania w usłu
 **Potencjalny problem**: **WamDefaultSet** i **AzureAdJoined** zarówno "NO" w wartości pola, urządzenie zostało zarejestrowane w usłudze Azure AD i przyłączone do domeny i nie synchronizuje urządzenia. Jeśli jest on wyświetlany, urządzenie może być konieczne poczekanie, aż zasady, które mają być stosowane lub uwierzytelniania dla tego urządzenia nie powiodła się podczas nawiązywania połączenia z usługą Azure AD. Użytkownik może być konieczne Poczekaj kilka godzin, zasad, które mają być stosowane. Pozostałe kroki rozwiązywania problemów może obejmować ponawianie próby rejestracji automatycznej przy wylogowaniu i z powrotem w lub uruchamianie zadań w harmonogramie zadań. W niektórych przypadkach uruchamianie "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
 
 
-**Potencjalny problem**: pole **AzureAdSettingsUrl** jest pusta i nie synchronizuje urządzenia. Użytkownik może ostatnio zalogowali się do urządzenia przed Roaming stanu dla przedsiębiorstw została włączona w portalu Azure Active Directory. Uruchom ponownie urządzenie i mieć dane logowania użytkownika. Opcjonalnie w portalu, spróbuj o administratora IT, wyłącz i ponownie Włącz ustawienia synchronizacji może użytkowników i danych aplikacji przedsiębiorstwa. Po włączeniu ponownie, uruchom ponownie urządzenie i mieć dane logowania użytkownika. Jeśli to nie rozwiąże problemu, **AzureAdSettingsUrl** może być pusty w przypadku certyfikatu zły urządzenia. W przypadku uruchamiania "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
+**Potencjalny problem**: pole **SettingsUrl** jest pusta i nie synchronizuje urządzenia. Użytkownik może ostatnio zalogowali się do urządzenia przed Roaming stanu dla przedsiębiorstw została włączona w portalu Azure Active Directory. Uruchom ponownie urządzenie i mieć dane logowania użytkownika. Opcjonalnie w portalu, spróbuj o administratora IT, wyłącz i ponownie Włącz ustawienia synchronizacji może użytkowników i danych aplikacji przedsiębiorstwa. Po włączeniu ponownie, uruchom ponownie urządzenie i mieć dane logowania użytkownika. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być pusty w przypadku certyfikatu zły urządzenia. W przypadku uruchamiania "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Roaming stanu dla przedsiębiorstw i uwierzytelniania wieloskładnikowego 
 W pewnych okolicznościach Roaming stanu dla przedsiębiorstw może zakończyć się niepowodzeniem na synchronizowanie danych, jeśli skonfigurowano uwierzytelnianie wieloskładnikowe systemu Azure. Więcej informacji na temat tych objawów, zobacz dokument pomocy technicznej [KB3193683](https://support.microsoft.com/kb/3193683). 
@@ -81,7 +81,7 @@ W pewnych okolicznościach Roaming stanu dla przedsiębiorstw może zakończyć 
 **Potencjalny problem**: synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego uwierzytelniania Multi-Factor Authentication usług federacyjnych Active Directory i wygaśnięcia ważności tokenu dostępu na urządzeniu. Upewnij się, zaloguj się, a następnie się wylogować, przy użyciu Microsoft Passport pracy numeru PIN lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
 ### <a name="event-viewer"></a>Podgląd zdarzeń
-Do zaawansowanego rozwiązywania problemów, aby znaleźć określone błędy może służyć podglądu zdarzeń. Te są opisane w poniższej tabeli. Zdarzenia można znaleźć w Podglądzie zdarzeń > Dzienniki aplikacji i usług > **Microsoft** > **Windows** > **SettingSync** i problemy z synchronizacją podczas tożsamości **Microsoft** > **Windows** > **AAD**.
+Do zaawansowanego rozwiązywania problemów, aby znaleźć określone błędy może służyć podglądu zdarzeń. Te są opisane w poniższej tabeli. Zdarzenia można znaleźć w Podglądzie zdarzeń > Dzienniki aplikacji i usług > **Microsoft** > **Windows** > **SettingSync Azure** i związanych z tożsamościami problemów z synchronizacją **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Znane problemy
@@ -174,14 +174,6 @@ W Podglądzie zdarzeń w obszarze dzienniki usługi AAD/Operational tego błędu
 
 **Zalecana akcja**  
 Wykonaj kroki wymienione [KB3196528](https://support.microsoft.com/kb/3196528).  
-
-
-
-## <a name="next-steps"></a>Kolejne kroki
-
-- Użyj [forum User Voice](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming) Aby przekazać opinie i sugestie dotyczące sposobów poprawić Roaming stanu dla przedsiębiorstw.
-
-- Aby uzyskać więcej informacji, zobacz [omówienie roamingu stanu przedsiębiorstwa](active-directory-windows-enterprise-state-roaming-overview.md). 
 
 ## <a name="related-topics"></a>Powiązane tematy
 * [Omówienie roamingu stanu przedsiębiorstwa](active-directory-windows-enterprise-state-roaming-overview.md)

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7eb82457d8c8d7e306dcbdac39510ce328cd925b
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 30cdb07f8e0d5481f34148b99fa86f2a1bb85e0b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056757"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022200"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych w usłudze Azure Stack
 
@@ -36,7 +36,7 @@ Maszyny wirtualne w usłudze Azure Stack zapewnia zasoby obliczeniowe na żądan
 | Limity przydziału maszyny wirtualnej | [Limity przydziału](../../azure-subscription-service-limits.md#service-specific-limits) są ustawiane przez firmę Microsoft | Administrator usługi Azure Stack w chmurze należy przypisać limity przydziału, zanim oferują one maszyny wirtualne do użytkowników. |
 | Rozszerzenia maszyny wirtualnej |Platforma Azure obsługuje szeroką gamę rozszerzenia maszyny wirtualnej. Aby dowiedzieć się więcej na temat dostępnych rozszerzeń, zobacz [rozszerzeniach i funkcjach maszyn wirtualnych](../../virtual-machines/windows/extensions-features.md) artykułu.| Usługa Azure Stack obsługuje podzbiór rozszerzeń, które są dostępne na platformie Azure i rozszerzenia mają określonych wersji. Administrator usługi Azure Stack w chmurze można wybrać które rozszerzenia w celu udostępnienia użytkownikom. Aby wyświetlić listę rozszerzeń obsługiwanych, zapoznaj się [rozszerzenia maszyny wirtualnej](#virtual-machine-extensions) dalszej części tego artykułu. |
 | Sieć maszyn wirtualnych | Publiczne adresy IP przypisane do maszyny wirtualnej dzierżawcy, są dostępne za pośrednictwem Internetu.<br><br><br>Maszyny wirtualne platformy Azure o nazwie stałych DNS | Publiczne adresy IP przypisane do maszyny wirtualnej dzierżawy są dostępne w tym środowisku usługi Azure Stack Development Kit. Użytkownik musi mieć dostęp do usługi Azure Stack Development Kit za pośrednictwem [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) lub [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) nawiązać połączenia z maszyną wirtualną, który jest tworzony w usłudze Azure Stack.<br><br>Maszyny wirtualne utworzone w ramach określonego wystąpienia usługi Azure Stack ma nazwy DNS na podstawie wartości, który został skonfigurowany przez administratora chmury. |
-| Magazyn maszyny wirtualnej | Obsługuje [dysków zarządzanych.](../../virtual-machines/windows/managed-disks-overview.md) | Dyski zarządzane nie są jeszcze obsługiwane w usłudze Azure Stack. |
+| Magazyn maszyny wirtualnej | Obsługuje [dysków zarządzanych.](../../virtual-machines/windows/managed-disks-overview.md) | Dyski zarządzane są obsługiwane w usłudze Azure Stack w wersji 1808 lub nowszy. |
 | Wersje interfejsu API | Platforma Azure ma zawsze najnowsze wersje interfejsu API dla wszystkich funkcji maszyny wirtualnej. | Usługa Azure Stack obsługuje określonych usług platformy Azure i określonych wersji interfejsu API w przypadku tych usług. Aby wyświetlić listę obsługiwanych wersji interfejsu API, zapoznaj się [wersji interfejsu API](#api-versions) dalszej części tego artykułu. |
 |Zestawy dostępności maszyny wirtualnej|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji<br>Obsługa dysku zarządzanego|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji (maksymalnie 20)<br>Brak obsługi dysku zarządzanego|
 |Zestawy skalowania maszyn wirtualnych|Możliwości skalowania automatycznego|Automatyczne skalowanie nie jest obsługiwane.<br>Dodaj więcej wystąpień zestawu skalowania przy użyciu witryny portal, szablonów usługi Resource Manager lub programu PowerShell.

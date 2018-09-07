@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056854"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022920"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -84,7 +84,7 @@ Nie, usługa Application Gateway obsługuje tylko statyczne publiczne adresy IP,
 
 Tylko jeden publiczny adres IP jest obsługiwany w bramie aplikacji.
 
-**PYTANIA I ODPOWIEDZI. Jak duże utworzyć mojej podsieci dla bramy Application Gateway?**
+**PYTANIA I ODPOWIEDZI. Jak duże powinny utworzyć mojej podsieci dla bramy Application Gateway?**
 
 Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia.
 Na przykład, jeśli usługa Application Gateway jest ustawiona na trzy wystąpienia i nie adresu IP frontonu prywatnych, następnie wartość/29 podsieć, rozmiar lub nowszej jest wymagana. W takim przypadku usługa Application Gateway używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla prywatnych konfiguracji adresu IP frontonu, następnie o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagany, ponieważ cztery adresy IP są wymagane.
@@ -93,7 +93,7 @@ Na przykład, jeśli usługa Application Gateway jest ustawiona na trzy wystąpi
 
 Tak, usługa Application Gateway wstawia nagłówków x-forwarded dla x-forwarded-proto i x-forwarded-port na żądanie przekazywane do zaplecza. Format dla nagłówka x-forwarded dla jest IP:Port listę rozdzielonych przecinkami. Prawidłowe wartości dla x-forwarded-proto są http lub https. X-forwarded-port Określa port, w którym żądanie osiągnięty w usłudze Application Gateway.
 
-Usługa Application Gateway są wstawiane nagłówka X-oryginalny-Host, który zawiera oryginalnego nagłówka hosta, z którym odebrano żądanie. Tego pliku nagłówkowego jest przydatne w scenariuszach, takich jak integracja z witryny internetowej platformy Azure, gdzie przychodzącego nagłówka hosta jest modyfikowany, zanim ruch jest kierowany do wewnętrznej bazy danych.
+Usługa Application Gateway są wstawiane nagłówek X-oryginalny-Host, zawierający oryginalnego nagłówka hosta, z którym odebrano żądanie. Tego pliku nagłówkowego jest przydatne w scenariuszach, takich jak integracja z witryny internetowej platformy Azure, gdzie przychodzącego nagłówka hosta jest modyfikowany, zanim ruch jest kierowany do wewnętrznej bazy danych.
 
 **PYTANIA I ODPOWIEDZI. Jak długo trwa wdrażanie bramy aplikacji? Moje bramy Application Gateway nadal działa podczas aktualizowania?**
 
@@ -211,8 +211,8 @@ W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla
 
 | Średni rozmiar odpowiedź strony zaplecza | Small | Medium | Large |
 | --- | --- | --- | --- |
-| 6KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
-| 100KB |35 Mb/s |100 Mb/s |200 Mb/s |
+| 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
 
 > [!NOTE]
 > Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
@@ -333,7 +333,7 @@ Zapora aplikacji sieci Web obsługuje obecnie CRS [2.2.9](application-gateway-cr
 
 **PYTANIA I ODPOWIEDZI. Zapora aplikacji sieci Web również obsługuje zapobiegania przed atakami DDoS?**
 
-Nie, zapory aplikacji sieci Web nie zapewnia zapobiegania przed atakami DDoS.
+Tak. Można włączyć ochrony przed atakami DDos w sieci wirtualnej wdrożonym bramy aplikacji. Gwarantuje to, że brama aplikacji, który adres VIP jest również chroniony za pomocą usługi Azure DDos Protection.
 
 ## <a name="diagnostics-and-logging"></a>Rejestrowanie i Diagnostyka
 

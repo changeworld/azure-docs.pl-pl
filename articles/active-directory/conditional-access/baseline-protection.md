@@ -2,7 +2,7 @@
 title: Co to jest ochrona linii bazowej dostępu warunkowego usługi Azure Active Directory? -preview | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak ochronę gwarantuje, że masz co najmniej poziomu linii bazowej zabezpieczeń włączone w danym środowisku usługi Azure Active Directory.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003176"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024077"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -51,7 +51,7 @@ Użytkownicy z dostępem do kont uprzywilejowanych mają nieograniczony dostęp 
 
 ![Usługa Azure Active Directory](./media/baseline-protection/01.png)
 
-Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup. Możesz chcieć wykluczyć jeden * [konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md) * zapewnienie dzierżawy nie są zablokowane.
+Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup. Możesz chcieć wykluczyć jeden *[konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md)* zapewnienie dzierżawy nie są zablokowane.
 
 
 ## <a name="enable-a-baseline-policy"></a>Włącz zasady linii bazowej 
@@ -86,7 +86,7 @@ Podczas zarządzania niestandardowe zasady dostępu warunkowego wymaga licencji 
 
 Role katalogu, które znajdują się w zasadach linii bazowej są najbardziej uprzywilejowanych ról usługi Azure AD. 
 
-Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [tożsamości usługi zarządzanej (MSI)](../managed-service-identity/overview.md) lub [jednostki przy użyciu certyfikatów usług](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
+Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [tożsamości usługi zarządzanej (MSI)](../managed-identities-azure-resources/overview.md) lub [jednostki przy użyciu certyfikatów usług](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
 
 Plan bazowy zasady mają zastosowanie do przepływów uwierzytelniania starszej wersji, takich jak POP, IMAP, starsze kliencie komputerowym pakietu Office. 
 

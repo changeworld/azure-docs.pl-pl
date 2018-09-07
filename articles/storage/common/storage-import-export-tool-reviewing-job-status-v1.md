@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 51a73a4466f3460beead0ce03ddbf011a0b9cc3b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c5b9d1993c9e90411c7b05d9874721a159275f22
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527665"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021832"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Sprawdzanie stanu zadania usługi Azure Import/Export, za pomocą plików dziennika kopiowania
-Kiedy usługa Microsoft Azure Import/Export przetwarza dyski skojarzone z zadaniem importowania lub eksportowania, zapisuje kopiowania plików dziennika do konta magazynu do lub z którego są importowanie lub eksportowanie obiektów blob. Plik dziennika zawiera szczegółowe informacje o każdym z plików, który został zaimportować lub wyeksportować. Kiedy wykonujesz zapytanie o stan ukończonego zadania; zwracany jest adres URL do każdego pliku dziennika kopiowania zobacz [pobrania zadania](/rest/api/storageservices/Get-Job3) Aby uzyskać więcej informacji.  
+Kiedy usługa Microsoft Azure Import/Export przetwarza dyski skojarzone z zadaniem importowania lub eksportowania, zapisuje kopiowania plików dziennika do konta magazynu do lub z którego są importowanie lub eksportowanie obiektów blob. Plik dziennika zawiera szczegółowe informacje o każdym z plików, który został zaimportować lub wyeksportować. Kiedy wykonujesz zapytanie o stan ukończonego zadania; zwracany jest adres URL do każdego pliku dziennika kopiowania zobacz [pobrania zadania](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) Aby uzyskać więcej informacji.  
 
 ## <a name="example-urls"></a>Adresy URL
 

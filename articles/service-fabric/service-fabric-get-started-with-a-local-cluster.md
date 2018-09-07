@@ -1,5 +1,5 @@
 ---
-title: Lokalne wdrażanie i uaktualnianie mikrousług platformy Azure | Microsoft Docs
+title: Wdrażanie i uaktualnianie usługi Azure Service Fabric lokalnie | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować lokalny klaster usługi Service Fabric, wdrożyć w nim istniejącą aplikację, a następnie uaktualnić tę aplikację.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 244a26df25e39fd4000a8a2692edd8205e354582
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643247"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053367"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Pierwsze kroki wdrażania i aktualizowania aplikacji w klastrze lokalnym
 Zestaw SDK usługi Azure Service Fabric zawiera pełne lokalne środowisko deweloperskie, którego można użyć, aby szybko rozpocząć wdrażanie aplikacji i zarządzanie nimi w klastrze lokalnym. Z tego artykułu dowiesz się, jak utworzyć klaster lokalny, wdrożyć w nim istniejącą aplikację, a następnie uaktualnić ją do nowej wersji — a wszystko to z programu Windows PowerShell.

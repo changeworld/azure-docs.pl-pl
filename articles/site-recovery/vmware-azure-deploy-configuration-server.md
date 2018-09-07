@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666436"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025280"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -42,7 +42,7 @@ Wymagania w zakresie rozmiaru serwera konfiguracji zależą od potencjalnych wsp
 | 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) |18 GB |600 GB |Od 500 GB do 1 TB |Replikowanie maszyn 100 150. |
 | 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) |32 GB |1 TB |1 TB do 2 TB |Replikowanie maszyn 150 – 200. |
 
-Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się z [zagadnienia dotyczące planowania pojemności](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Uruchom [narzędzie planista wdrażania](site-recovery-deployment-planner.md) potrzeby replikacji oprogramowania VMWare.
+Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się z [zagadnienia dotyczące planowania pojemności](site-recovery-plan-capacity-vmware.md). Uruchom [narzędzie planista wdrażania](site-recovery-deployment-planner.md) potrzeby replikacji oprogramowania VMWare.
 
 ## <a name="download-the-template"></a>Pobierz szablon
 
@@ -119,9 +119,9 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ## <a name="faq"></a>Często zadawane pytania
 
-1. Czy można używać maszyny Wirtualnej, w którym zainstalowany serwer konfiguracji do różnych celów?
+1. Czy można używać maszyny Wirtualnej, w którym zainstalowano serwer konfiguracji do różnych celów?
 
-    **Nie**, firma Microsoft zaleca na potrzeby maszyny Wirtualnej wyłącznie do celów serwera konfiguracji. Upewnij się, że należy wykonać wszystkich specyfikacji wymienionej w [poprzedniej sekcji](vmware-azure-deploy-configuration-server.md#Prerequisites) efektywne zarządzanie odzyskiwania po awarii.
+    **Nie**, firma Microsoft zaleca na potrzeby maszyny Wirtualnej wyłącznie do celów serwera konfiguracji. Należy przestrzegać wszystkich specyfikacji wymienionej w [wymagania wstępne](#prerequisites) efektywne zarządzanie odzyskiwania po awarii.
 2. Można przełączyć magazyn już jest zarejestrowany na serwerze konfiguracji przy użyciu nowo utworzonego magazynu?
 
     **Nie**, po zarejestrowaniu magazynu z serwera konfiguracji nie można zmienić.
@@ -130,10 +130,10 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
     **Tak**, tego samego serwera konfiguracji może służyć do replikowania maszyn fizycznych i wirtualnych. Jednak można maszyny fizycznej kopii tylko do maszyny Wirtualnej VMware.
 4. Jakie jest przeznaczenie serwera konfiguracji i gdzie jest używany?
 
-    Odnoszą się do naszej architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md) Aby dowiedzieć się więcej na temat serwera konfiguracji i jego funkcje.
+    Zapoznaj się [architektura Azure replikacji VMware –](vmware-azure-architecture.md) Aby dowiedzieć się więcej na temat serwera konfiguracji i jego funkcje.
 5. Gdzie można znaleźć najnowszą wersję serwera konfiguracji?
 
-    Zapoznaj się z artykułem na temat kroków, aby uaktualnić serwer konfiguracji [za pośrednictwem portalu](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Można również bezpośrednio pobrać go z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Można również bezpośrednio pobrać go z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 6. Gdzie można pobrać hasła dla serwera konfiguracji?
 
     Zapoznaj się [w tym artykule](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) można pobrać hasło.
@@ -143,7 +143,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, przeczytaj kroki podane [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 

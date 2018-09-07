@@ -1,22 +1,23 @@
 ---
-title: Batch test aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
-description: Użyj opcji testowania partii Language Understanding (LUIS), aby znaleźć wypowiedzi z niepoprawne intencje i podmioty.
+title: Test usługi Batch za pomocą wypowiedzi przykład 1000
+titleSuffix: Azure Cognitive Services
+description: Użyj partii Language Understanding (LUIS), zestawy testów, aby znaleźć wypowiedzi z niepoprawne intencje i podmioty.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 07c38aa5f66fc8c38392c5407449ec6911e80d47
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e5820b7d65cb989411657670ae19ef1bdca2122d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888630"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054778"
 ---
-# <a name="batch-testing"></a>Testowanie wsadowe
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Testowanie za pomocą zestawu wypowiedzi przykład usługi Batch
  Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. 
 
 <a name="batch-testing"></a>
@@ -27,8 +28,6 @@ ms.locfileid: "42888630"
     ![Link testowanie usługi Batch](./media/luis-how-to-batch-test/batch-testing-link.png)
 
 2. Wybierz **Importowanie zestawu danych**. **Nowy zestaw danych importu** pojawi się okno dialogowe. Wybierz **wybierz plik** i zlokalizuj plik JSON z prawidłowymi [formatu JSON](luis-concept-batch-test.md#batch-file-format) zawierający *nie więcej niż 1000* wypowiedzi do testowania.
-
-    ![Importuj plik zestawu danych](./media/luis-how-to-batch-test/batchtest-importset.png)
 
     Importuj błędy są zgłaszane na pasku powiadomień czerwony u góry strony w przeglądarce. Podczas importowania zawiera błędy, jest tworzony żaden zestaw danych. Aby uzyskać więcej informacji, zobacz [typowych błędów](luis-concept-batch-test.md#common-errors-importing-a-batch).
 

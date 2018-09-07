@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: carlrab
-ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e66bc77894b417b80d51b9b7e87ef61a654b3b2e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306473"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054499"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
-Oszczędzaj pieniądze dzięki usłudze Azure SQL Database przez prepaying za zasoby obliczeniowe usługi Azure SQL Database, w porównaniu z cenami zgodnie z rzeczywistym użyciem. Pojemność usługi Azure SQL Database, zarezerwowana możesz składają zobowiązanie w bazie danych SQL w danym okresie rok lub trzy lata na uzyskanie znacznych rabatów na kosztach obliczeń. Aby kupić pojemność zastrzeżone bazy danych SQL, należy określić region platformy Azure, typ wdrożenia, usługi i czas trwania. 
+Oszczędzaj pieniądze dzięki usłudze Azure SQL Database przez prepaying za zasoby obliczeniowe usługi Azure SQL Database, w porównaniu z cenami zgodnie z rzeczywistym użyciem. Pojemność usługi Azure SQL Database, zarezerwowana możesz składają zobowiązanie w bazie danych SQL w danym okresie rok lub trzy lata na uzyskanie znacznych rabatów na kosztach obliczeń. Aby kupić pojemność zastrzeżone bazy danych SQL, należy określić region platformy Azure, typ wdrożenia, warstwa wydajności i termin. 
 
 Nie trzeba przypisać rezerwacji wystąpień bazy danych SQL. Dopasowywanie wystąpienia bazy danych SQL, które zostały już uruchomione lub tych, które są nowo wdrożone, będą automatycznie korzystać. Po zakupie rezerwacji, jesteś góry za koszty obliczeniowe dla wystąpień baz danych SQL w danym okresie rok lub trzy lata. Tak szybko, jak można kupić rezerwację, bazy danych SQL, opłaty za zasoby obliczeniowe, które odpowiadają atrybuty rezerwacji nie jest już wynoszą płatności — jako — można przejść stawki. Rezerwacja nie obejmuje opłaty za oprogramowanie, sieci lub magazynu skojarzonego z wystąpieniem bazy danych SQL. Na koniec okresu rezerwacji korzyściami dotyczącymi rozliczeń wygasa, a bazy danych SQL są naliczane płatności — jako — możesz Przejdź opłaty. Rezerwacji nie automatycznego odnawiania. Aby uzyskać informacje o cenach, zobacz [bazy danych SQL zastrzeżone oferty pojemności](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
@@ -52,7 +52,7 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
     |Zakres       |Zakres rezerwacji pamięci rdzeń wirtualny może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Subskrypcja pojedyncza — rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpienia bazy danych SQL w ramach tej subskrypcji. </li><li>Czy rabat związany z rezerwacją pamięci rdzeń wirtualny w warstwie współdzielona — są stosowane do wystąpień bazy danych SQL w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
     |Region      |Region platformy Azure, który pasuje do żadnego z bazą danych SQL zastrzeżone rezerwacji wydajności.|    
     |Typ wdrożenia|Typ wdrożenia SQL, który chcesz kupić rezerwację dla.|
-    |Warstwy usług|Warstwy usług dla wystąpień baz danych SQL.
+    |Warstwa wydajności|Warstwa wydajności dla wystąpień baz danych SQL.
     |Termin        |Jeden rok lub trzy lata.|
     |Ilość    |Liczba wystąpień, które zostały zakupione w ramach bazy danych SQL zastrzeżone rezerwacji wydajności. Ilość jest liczby uruchomionych wystąpień bazy danych SQL, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 wystąpień bazy danych SQL w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
 
@@ -60,7 +60,14 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
 6. Wybierz pozycję **Kup**.
 7. Wybierz **Wyświetl tę rezerwację** Aby wyświetlić stan zakupu.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="cancellations-and-exchanges"></a>Anulowanie i wymiany
+
+Jeśli potrzebujesz anulować bazy danych SQL zastrzeżone rezerwację zdolności produkcyjnych, może być 12% zakończenia opłatę za wcześniejsze zakończenie. Zwroty zależą od najniższej ceny zakupu cen lub bieżąca cena zastrzeżenia. Zwroty są ograniczone do 50 000 USD rocznie. Zwrot kosztów, które otrzymujesz jest pozostałe saldo proporcjonalnie pomniejszona o 12% zakończenia opłatę za wcześniejsze zakończenie. Aby zażądać anulowania, przejdź do rezerwacji w witrynie Azure portal i wybierz pozycję **zwrot** do utworzenia żądania obsługi.
+
+Jeśli musisz zmienić rezerwacji wydajności bazy danych SQL zastrzeżone do innego regionu, typu wdrożenia, warstwa wydajności lub termin mogą wymieniać go do innej rezerwacji, która jest większa lub równa wartości. Data rozpoczęcia okresu dla nowej rezerwacji nie jest przenoszone z wymiana rezerwacji. Wartość 1 lub 3 lat. rozpoczyna się podczas tworzenia nowej rezerwacji. Aby zażądać programu exchange, przejdź do rezerwacji w witrynie Azure portal i wybierz **Exchange** do utworzenia żądania obsługi.
+
+## <a name="next-steps"></a>Kolejne kroki
+
 Rabat związany z rezerwacją pamięci rdzeń wirtualny jest automatycznie stosowany do wystąpień bazy danych SQL, które odpowiadają zakresem rezerwacji wydajności bazy danych SQL zastrzeżone i atrybutów. Można zaktualizować zakresu rezerwacji wydajności bazy danych SQL zastrzeżone za pośrednictwem [witryny Azure portal](https://portal.azure.com), PowerShell, interfejsu wiersza polecenia lub przy użyciu interfejsu API. 
 
 Aby dowiedzieć się, jak zarządzać bazą danych SQL zastrzeżone rezerwacji pojemności, zobacz [wydajności rezerwowej Zarządzanie usługą SQL Database](../billing/billing-manage-reserved-vm-instance.md).

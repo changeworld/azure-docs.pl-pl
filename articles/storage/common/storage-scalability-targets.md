@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 1db7219beead4d7ee228baff4c802c105419ba1c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 248ec73b09c25c162c5bdc77ceb18e610d604b77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524607"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052177"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Cele usługi Azure Storage dotyczące skalowalności i wydajności
 ## <a name="overview"></a>Przegląd
@@ -46,6 +46,8 @@ Aby uzyskać więcej informacji na temat cele skalowalności i wydajności dla u
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
+Za pomocą usługi Azure File Sync mają próbowaliśmy jak najszerzej się projektowania pod kątem użycia nieograniczone, jednak nie zawsze jest to możliwe. Poniższa tabela wskazuje granice Nasze testy i które elementy docelowe są faktycznie stałych limitów:
+
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ## <a name="azure-queue-storage-scale-targets"></a>Skalowanie magazynu platformy Azure kolejki elementów docelowych

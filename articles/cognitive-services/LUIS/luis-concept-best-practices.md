@@ -1,5 +1,6 @@
 ---
-title: Omówienie usługi LUIS najlepszych rozwiązań — Azure | Dokumentacja firmy Microsoft
+title: Najlepsze rozwiązania dotyczące tworzenia aplikacji z użyciem usługi LUIS — Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, usługa LUIS najlepsze rozwiązania w celu uzyskania najlepszych wyników.
 services: cognitive-services
 author: diberry
@@ -9,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: diberry
-ms.openlocfilehash: 81a2523f37cac926d9f498953a831c2d877a7528
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2c844aa9dbaa1b228558e9cee80565cdc95650b7
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224011"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025622"
 ---
-# <a name="best-practices"></a>Najlepsze praktyki
+# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
 
 * Tworzenie modelu językowego

@@ -1,24 +1,25 @@
 ---
-title: Wstępnie utworzone jednostki w LUIS | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera listę wstępnie utworzonych jednostek, które są zawarte w Language Understanding Intelligent Services (LUIS).
+title: Wstępnie utworzonych jednostek Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, liczby, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f62c078a023d9ee7ca535cb5e02623df7a568e8a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248241"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052877"
 ---
-# <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek
+# <a name="prebuilt-entities-to-recognize-common-data-types"></a>Wstępnie utworzonych jednostek, rozpoznawał standardowe typy danych
 
-Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, liczby, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS. Aby uzyskać pełną listę wstępnie utworzone jednostki, które obsługuje usługi LUIS, w tym pomoc od kultury, zobacz [odwołania do wstępnie utworzone jednostki](./luis-reference-prebuilt-entities.md).
+Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, numery, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS. Aby uzyskać pełną listę wstępnie utworzone jednostki, które obsługuje usługi LUIS, w tym pomoc od kultury, zobacz [odwołania do wstępnie utworzone jednostki](./luis-reference-prebuilt-entities.md).
 
 > [!NOTE]
 > **BUILTIN.DateTime** jest przestarzała. Zastępuje się wyrazami [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), która umożliwia rozpoznawanie daty i zakresy czasu, a także Rozpoznawanie niejednoznacznych daty i godziny.
@@ -28,7 +29,6 @@ Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe
 1. Otwórz aplikację, klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **jednostek** po lewej stronie. 
 2. Na **jednostek** kliknij **Zarządzanie ze wstępnie utworzonych jednostek**.
 
-    ![Strona jednostek — Zarządzanie ze wstępnie utworzonych jednostek](./media/luis-use-prebuilt-entity/add-prebuilt-entity-button.png)
 3. W **Dodaj ze wstępnie utworzonych jednostek** okno dialogowe, kliknij przycisk wstępnie utworzone jednostki, które chcesz dodać (na przykład "datetimeV2"). Następnie kliknij przycisk **Save** (Zapisz).
 
     ![Dodaj wstępnie utworzone jednostki, okno dialogowe](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
@@ -42,7 +42,7 @@ Gdy wstępnie utworzone jednostki znajduje się w aplikacji, jej prognozy są uw
 
     ![Wypowiedź w przeglądarce, zawierającą numer jednostki](./media/luis-use-prebuilt-entity/browser-query.png)
 
-Usługa LUIS inteligentnie może rozpoznawać numery, które nie są w formie inny niż standardowy. Wypróbuj różne wyrażeń liczbowych w swoje wypowiedzi i sprawdzić LUIS zwraca.
+Usługa LUIS inteligentnie może rozpoznawać numery, które nie są w postaci niestandardowych. Wypróbuj różne wyrażeń liczbowych w swoje wypowiedzi i sprawdzić LUIS zwraca.
 
 Poniższy kod przedstawia odpowiedź JSON, Luis, zawierającej rozpoznawanie wartości 24, wypowiedź "dwadzieścia".
 
@@ -73,7 +73,7 @@ Poniższy kod przedstawia odpowiedź JSON, Luis, zawierającej rozpoznawanie war
 2. Kliknij adres URL punktu końcowego w **publikowania aplikacji** strony, aby otworzyć punkt końcowy usługi LUIS w przeglądarce sieci web. 
 3. Adres URL, który zawiera zakres dat, Dołącz wypowiedź. Na przykład można wpisać w `book a flight tomorrow`i zobaczyć, który identyfikuje LUIS `tomorrow` jako `builtin.datetimeV2.date` jednostki i identyfikuje jutrzejszą datę jako wartość w `resolution` pola. 
 
-Poniższy przykład pokazuje, co może wyglądać odpowiedź JSON z usługi LUIS gdyby dzisiaj października 2017 r. 31.
+Poniższy przykład pokazuje, co może wyglądać odpowiedź JSON z usługi LUIS gdyby bieżącą datę 31 października 2017 r.
 
 ```json
 {

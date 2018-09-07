@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: c1332679af57a4994f4337e241845a87bf16b341
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 25daca5d1654e97684098c0f1a394b126e4e5391
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055218"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023810"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Omówienie roamingu stanu przedsiębiorstwa
-W systemie Windows 10 [usługi Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) użytkownicy zyskują możliwość bezpiecznego zsynchronizować swoje ustawienia użytkownika i dane ustawień aplikacji w chmurze. Roaming stanu dla przedsiębiorstw udostępnia użytkownikom na ich urządzeniach Windows ujednoliconego środowiska i skraca czas potrzebny do konfigurowania nowego urządzenia. Roaming stanu dla przedsiębiorstw działa podobnie do standardowych [synchronizację ustawień odbiorcy](http://windows.microsoft.com/windows-8/sync-settings-pcs) która została wprowadzona w systemie Windows 8. Ponadto Roaming stanu dla przedsiębiorstw oferuje:
+W systemie Windows 10 [usługi Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) użytkownicy zyskują możliwość bezpiecznego zsynchronizować swoje ustawienia użytkownika i dane ustawień aplikacji w chmurze. Roaming stanu dla przedsiębiorstw udostępnia użytkownikom na ich urządzeniach Windows ujednoliconego środowiska i skraca czas potrzebny do konfigurowania nowego urządzenia. Roaming stanu dla przedsiębiorstw działa podobnie do standardowych [synchronizację ustawień odbiorcy](https://go.microsoft.com/fwlink/?linkid=2015135) która została wprowadzona w systemie Windows 8. Ponadto Roaming stanu dla przedsiębiorstw oferuje:
 
 * **Rozdzielenie firmowych i dane klienta** — organizacje są kontrolę nad ich danymi i nie ma żadnych mieszanie danych firmowych konsumenta koncie w chmurze lub odbiorcy danych na koncie usługi enterprise cloud.
 * **Zwiększone zabezpieczenia** — dane są automatycznie szyfrowane przed opuszczeniem urządzenia z systemem Windows 10 użytkownika za pomocą usługi Azure Rights Management (Azure RMS) i danych pozostaje zaszyfrowany magazynowanych w chmurze. Cała zawartość pozostaje zaszyfrowany magazynowanych w chmurze, z wyjątkiem przestrzeni nazw, takich jak ustawienia nazwy i nazwy aplikacji Windows.  

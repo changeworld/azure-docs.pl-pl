@@ -1,6 +1,6 @@
 ---
-title: Określ ustawienia metryki i umieszczanie w Azure mikrousług | Dokumentacja firmy Microsoft
-description: Opisujące usługi Service Fabric, określając metryki, ograniczenia umieszczania i inne zasady umieszczania.
+title: Określ ustawienia metryki i umieszczanie w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak opisano usługę Service Fabric, określając metryki, ograniczeniami dotyczącymi umieszczania i inne zasady umieszczania.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 16e19a02bf12e30e81eb1743fc637bce435df914
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210583"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054795"
 ---
-# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurowanie ustawień Menedżera zasobów klastra dla usługi sieci szkieletowej usług
-Menedżer zasobów klastra sieci szkieletowej usług umożliwia szczegółową kontrolę nad zasady każdego użytkownika, nazwę usługi. Każda usługa o nazwie można określić zasady jak powinna zostać przydzielona w klastrze. Każda usługa o nazwie również zdefiniować zestaw metryki, którą chce do raportu, w tym, jak ważne są do tej usługi. Konfigurowanie usług dzieli na trzy różne zadania:
+# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurowanie ustawień Menedżer zasobów klastra usługi Service Fabric
+Menedżer zasobów klastra usługi Service Fabric umożliwia szczegółową kontrolę nad tym reguły rządzące każda osoba, o nazwie usługi. Każda usługa o nazwie można określić zasady jak powinna zostać przydzielona w klastrze. Każda usługa o nazwie można również zdefiniować zestaw metryk, którą chce do raportu, w tym jak ważne są one do tej usługi. Konfigurowanie usług dzieli się na trzy różne zadania:
 
 1. Konfigurowanie ograniczeń umieszczania
-2. Konfigurowanie metryki
-3. Konfigurowanie zasad umieszczania zaawansowane i innymi regułami (mniej typowe)
+2. Konfigurowanie metryk
+3. Konfigurowanie zasady umieszczania zaawansowane i innymi regułami (mniej typowe)
 
-## <a name="placement-constraints"></a>Ograniczenia dotyczące umieszczania
-Ograniczenia dotyczące umieszczania są używane do węzłów w klastrze usługi faktycznie można uruchamiać na sterowanie. Zwykle określonego nazwane wystąpienie usługi lub wszystkich usług danego typu ograniczone do uruchamiania na określony typ węzła. Ograniczenia dotyczące umieszczania są rozszerzalne. Można określić dowolny zbiór właściwości dla węzła typu, a następnie wybierz dla nich z ograniczeniami podczas tworzenia usługi. Można również zmienić ograniczenia umieszczania usług jest uruchomiona. Dzięki temu można odpowiadanie na zmiany w klastrze lub wymagania dotyczące usługi. Właściwości danego węzła można również aktualizowany dynamicznie w klastrze. Więcej informacji na temat ograniczeń umieszczania i sposobach ich konfigurowania znajduje się w [w tym artykule](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
+## <a name="placement-constraints"></a>Ograniczeniami dotyczącymi umieszczania
+Ograniczeniami dotyczącymi umieszczania są używane do kontroli, które węzły w klastrze usługi faktycznie mogą być uruchamiane na. Zazwyczaj określonego nazwane wystąpienie usługi lub wszystkich usług danego typu ograniczone do uruchamiania na określonym typie węzła. Ograniczeniami dotyczącymi umieszczania są rozszerzalne. Można określić dowolny zbiór właściwości, według typu węzła, a następnie wybierz dla nich z ograniczeniami podczas tworzenia usługi. Można również zmienić ograniczeniami dotyczącymi umieszczania usługa jest uruchomiona. Pozwala na reagowanie na zmiany w klastrze lub wymagań usługi. Właściwości danego węzła można również aktualizowane dynamicznie w klastrze. Więcej informacji na temat ograniczeń umieszczania i sposobach ich konfigurowania można znaleźć w [w tym artykule](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 
 ## <a name="metrics"></a>Metryki
-Metryki są zestaw zasobów, które wymaga dana usługa o nazwie. Konfiguracja metryki usługi obejmuje ilość tego zasobu każdej repliki stanowego lub bezstanowego wystąpienie tej usługi wykorzystuje domyślnie. Metryki obejmują również wagi, która wskazuje, jak ważna równoważenia tego metryka jest do tej usługi, w przypadku wady i zalety są niezbędne.
+Metryki są zestawu zasobów, których potrzebuje danego nazwaną usługę. Konfiguracja metryki usługi zawiera ilość zasobu każdego stanowych replik lub bezstanowych wystąpienie tej usługi używa domyślnie. Metryki zawierają również wagi, która wskazuje, jak ważne jest równoważenia tej metryki dla danej usługi, w przypadku stosowania kompromisów są niezbędne.
 
 ## <a name="advanced-placement-rules"></a>Reguły umieszczania zaawansowane
-Istnieją inne typy zasad umieszczania, które są przydatne w mniej typowych scenariuszy. Przykłady to:
-- Ograniczenia, które pomagają w geograficznie rozproszonej klastrów
+Istnieją inne typy reguły umieszczania, które są przydatne w mniej typowych scenariuszy. Przykłady to:
+- Ograniczenia, które pomagają klastry rozproszone geograficznie
 - Niektóre architektury aplikacji
 
-Inne zasady umieszczania są skonfigurowane za pośrednictwem korelacji lub zasad.
+Inne reguły umieszczania są konfigurowane za pośrednictwem korelacji lub zasady.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Metryki są zarządzaniu Menedżer zasobów klastra sieci szkieletowej usług konsumenckich i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryki i sposobach ich konfigurowania, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)
-- Koligacja jest jeden tryb, które można skonfigurować dla usług. Nie jest często, ale jeśli potrzebne informacje na temat jego [tutaj](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-- Istnieje wiele reguł różnych umieszczania skonfigurowane w usłudze do obsługi dodatkowych scenariuszach. Można znaleźć informacje dotyczące tych zasad umieszczania różnych [tutaj](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-- Rozpocznij od początku i [wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów](service-fabric-cluster-resource-manager-introduction.md)
-- Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
-- Menedżer zasobów klastra ma wiele opcji opisujące klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md)
+- Metryki są, jak Menedżer zasobów usługi Service Fabric klaster zarządza użycia i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryk i sposobach ich konfigurowania, zapoznaj się z [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)
+- Koligacja jest jeden tryb, w którym można skonfigurować dla usługi. Nie jest powszechne, ale jeśli potrzebujesz jej możesz dowiedzieć się o nim [tutaj](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+- Istnieje wiele reguł umieszczania różnych, które można skonfigurować na usługi w celu obsługi dodatkowych scenariuszy. Możesz dowiedzieć się o tych zasadach rozmieszczania różnych [tutaj](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+- Zacznij od początku i [zapoznaj się z wprowadzeniem do usługi Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md)
+- Aby dowiedzieć się o zarządza Menedżer zasobów klastra i równoważy obciążenie w klastrze, zapoznaj się z artykułem na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
+- Menedżer zasobów klastra ma wiele opcji do opisywania klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się z tego artykułu na [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)

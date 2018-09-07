@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431644"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050004"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej ze sterownikiem ODBC
 
@@ -173,7 +173,7 @@ Można definiować i tworzyć widoki w ramach procesu pobierania próbek. Widoki
 
 Aby utworzyć widok dla swoich danych w **Edytor schematów** okna w **definicji widoku** kolumny, kliknij przycisk **Dodaj** w wierszu kolekcji do przykładu. Następnie w **definicji widoku** okna, wykonaj następujące czynności:
 1. Kliknij przycisk **New**, wprowadź nazwę dla widoku, na przykład EmployeesfromSeattleView, a następnie kliknij przycisk **OK**.
-1. W **Edytowanie widoku** oknie wprowadź zapytanie usługi Azure Cosmos DB. Musi to być zapytania SQL usługi Azure Cosmos DB, na przykład`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`, a następnie kliknij przycisk **OK**.
+1. W **Edytowanie widoku** oknie wprowadź zapytanie usługi Azure Cosmos DB. Musi to być zapytania SQL usługi Azure Cosmos DB, na przykład`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = "Seattle"`, a następnie kliknij przycisk **OK**.
 
 Można utworzyć wiele widoków, jak chcesz. Po zakończeniu definiowania widoków, możesz następnie próbkowanie danych. 
 

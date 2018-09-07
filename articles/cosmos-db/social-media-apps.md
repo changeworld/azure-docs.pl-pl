@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 7925ef15dc7b3ce25ae919810a5ed2220184fe6e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a67d0a6387201362199c0f96fba3f338d906bbda
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700847"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052097"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 Mieszkających w wysoce wzajemnie połączonych społeczeństwa oznacza, że w pewnym momencie w życiu staje się częścią **sieci społecznościowej**. Używasz sieci społecznościowych, Utrzymuj znajomych, współpracowników, rodziny lub czasami udostępniać swoją pasję osoby o wspólnych zainteresowaniach.

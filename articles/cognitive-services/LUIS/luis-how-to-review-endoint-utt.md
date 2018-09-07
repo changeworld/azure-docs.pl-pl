@@ -1,20 +1,21 @@
 ---
-title: Etykieta sugerowane wypowiedzi z użyciem usługi LUIS | Dokumentacja firmy Microsoft
-description: Language Understanding (LUIS) umożliwia etykietowanie sugerowane wypowiedzi i ułatwić uczenia maszynowego active boost.
+title: Przegląd punktu końcowego wypowiedzi Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Funkcja przełomowe LUIS jest koncepcji aktywne uczenie. Gdy usługi LUIS ma punkt końcowy zapytań, aktywne uczenie zwiększa jakość wyników, wypowiedzi wybiera jest nieznany. Jeśli etykiety te wypowiedzi uczenie i publikowanie, a następnie LUIS identyfikuje wypowiedzi dokładniej.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3ec791d534fb73a9d88f2dcdb81e445d6c26ab69
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224555"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44057362"
 ---
 # <a name="review-endpoint-utterances"></a>Przeglądanie wypowiedzi punktu końcowego
 
@@ -24,8 +25,6 @@ Funkcja przełomowe usługi Luis jest [koncepcji](luis-concept-review-endpoint-u
 1. Otwórz aplikację (na przykład TravelAgent), wybierając jego nazwę na **Moje aplikacje** stronie, a następnie wybierz **kompilacji** na górnym pasku.
 
 2. W obszarze **lepsza wydajność aplikacji**, wybierz opcję **Przejrzyj wypowiedzi punktu końcowego**.
-
-    ![Przejrzyj wypowiedzi](./media/label-suggested-utterances/review.png)
 
 3. Na **Przejrzyj wypowiedzi punktu końcowego** wybierz opcję w **lista filtrów przeznaczenie lub jednostki** pola tekstowego. Tej listy rozwijanej zawiera wszystkie opcje w obszarze **INTENCJI** a wszystkimi jednostkami w obszarze **jednostek**.
 

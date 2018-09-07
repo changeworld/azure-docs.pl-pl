@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f74a4ad0507f1c1f029befff88d733ffa719a763
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054275"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023515"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 
@@ -38,9 +38,10 @@ Istnieją dwa typy pakietów aktualizacji w ramach zintegrowanych systemów:
 Firma Microsoft planuje wersji pakietów aktualizacji oprogramowania w erze miesięcznych. Jednak istnieje możliwość mają wiele lub nie aktualizacji przeprowadzanych w danym miesiącu. Dostawcy sprzętu OEM ich aktualizacje na zgodnie z potrzebami. 
 
 Znajdź dokumentację na temat planowania i zarządzania aktualizacjami i jak określić bieżącej wersji w [Zarządzaj aktualizuje Przegląd](azure-stack-updates.md). Informacje o konkretnej aktualizacji w tym jak ją pobrać, zobacz informacje o wersji dla tej aktualizacji: 
+- [Aktualizacja usługi Azure Stack 1808](azure-stack-update-1808.md)
 - [Aktualizacja usługi Azure Stack 1807](azure-stack-update-1807.md)
 - [Aktualizacja usługi Azure Stack 1805](azure-stack-update-1805.md)
-- [Aktualizacja usługi Azure Stack w wersji 1804](azure-stack-update-1804.md)
+
 
 ## <a name="hotfixes"></a>Poprawki
 Od czasu do czasu firma Microsoft oferuje poprawki dla usługi Azure Stack ten adres konkretny problem, który jest często zapobiegawczych lub zależne od czasu.  Każda poprawka jest zwolniony z odpowiednie artykuły bazy wiedzy Microsoft Knowledge Base, ze szczegółami problemu, przyczynę i rozwiązanie. 

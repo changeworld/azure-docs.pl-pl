@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526389"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021867"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Uwierzytelnianie za pomocą usługi Azure AD z tożsamości usługi zarządzanej platformy Azure (wersja zapoznawcza)
 
-Usługa Azure Storage obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [tożsamości usługi zarządzanej](../../active-directory/managed-service-identity/overview.md). Tożsamość usługi zarządzanej (MSI) zapewnia automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Przy użyciu pliku MSI i możliwości usługi uwierzytelniania usługi Azure AD, możesz uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
+Usługa Azure Storage obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [tożsamości usługi zarządzanej](../../active-directory/managed-identities-azure-resources/overview.md). Tożsamość usługi zarządzanej (MSI) zapewnia automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Przy użyciu pliku MSI i możliwości usługi uwierzytelniania usługi Azure AD, możesz uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
 
 Aby udzielić uprawnień do tożsamości usługi zarządzanej dla kontenerów magazynów lub kolejek, Przypisz rolę RBAC obsługę magazynu uprawnienia do pliku MSI. Aby uzyskać więcej informacji na temat ról RBAC w magazynie, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md). 
 
@@ -33,14 +33,14 @@ W tym artykule przedstawiono sposób uwierzytelniania usługi Azure Storage przy
 Zanim przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z maszyny Wirtualnej, należy najpierw włączyć tożsamości usługi Zarządzanej maszyny wirtualnej. Aby dowiedzieć się, jak włączyć tożsamości usługi Zarządzanej, zobacz jeden z następujących artykułów:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
-- [Interfejs wiersza polecenia platformy Azure](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
-- [Szablon usługi Azure Resource Manager](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
-- [Zestawy SDK platformy Azure](../../active-directory/managed-service-identity/qs-configure-sdk-windows-vm.md)
+- [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Interfejs wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Szablon usługi Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Zestawy SDK platformy Azure](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="get-an-msi-access-token"></a>Uzyskiwanie tokenu dostępu tożsamości usługi Zarządzanej
 
-Aby uwierzytelniać się przy użyciu pliku MSI, aplikacji lub skryptu należy uzyskać token dostępu tożsamości usługi Zarządzanej. Aby dowiedzieć się więcej o tym, jak można uzyskać tokenu dostępu, zobacz [jak używać usługi Azure VM tożsamość usługi zarządzanej (MSI) dla tokenu](../../active-directory/managed-service-identity/how-to-use-vm-token.md).
+Aby uwierzytelniać się przy użyciu pliku MSI, aplikacji lub skryptu należy uzyskać token dostępu tożsamości usługi Zarządzanej. Aby dowiedzieć się więcej o tym, jak można uzyskać tokenu dostępu, zobacz [jak używać usługi Azure VM tożsamość usługi zarządzanej (MSI) dla tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>Przykładowy kod platformy .NET: Utwórz blokowy obiekt blob
 

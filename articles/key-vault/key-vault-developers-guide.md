@@ -7,14 +7,14 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: b4522d9eb2e9af782918f021c79bbcb155c5c383
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058793"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053625"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera usługi Azure Key Vault
 
@@ -53,11 +53,9 @@ Zasoby w powyższym wideo:
 
 ## <a name="creating-and-managing-key-vaults"></a>Tworzenie i Zarządzanie magazynami kluczy
 
-Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie. 
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Zarządzanych tożsamości dla zasobów platformy Azure sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie. 
 
-Aby uzyskać więcej informacji na temat tożsamości usługi Zarządzanej, zobacz [tożsamość usługi zarządzanej (MSI) dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
-
-Aby uzyskać więcej informacji na temat pracy z usługą AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+Aby uzyskać więcej informacji na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [Przegląd zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/overview.md). Aby uzyskać więcej informacji na temat pracy z usługą AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Przed rozpoczęciem pracy z kluczy, wpisów tajnych lub certyfikatów w magazynie kluczy, możesz utworzyć i zarządzania magazynem kluczy przy użyciu interfejsu wiersza polecenia, programu PowerShell, szablony usługi Resource Manager lub REST, zgodnie z opisem w następujących artykułach:
 
@@ -110,14 +108,14 @@ W języku Node.js interfejs API zarządzania usługi Key Vault i interfejsu API 
 ### <a name="quick-start-guides"></a>Przewodniki Szybki start
 
 - [Tworzenie magazynu kluczy](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Wprowadzenie do usługi Key Vault w środowisku Node.js](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
+- [Wprowadzenie do usługi Key Vault w środowisku Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>Przykłady kodu
 
 Aby uzyskać kompletny przykład za pomocą usługi Key Vault z aplikacjami Zobacz:
 
-- [Przykłady kodu usługi Azure Key Vault](http://www.microsoft.com/download/details.aspx?id=45343) — .NET przykładowej aplikacji *HelloKeyVault* i przykłady usług sieci web platformy Azure. 
-- [Użyj usługi Azure Key Vault z aplikacji sieci Web](key-vault-use-from-web-application.md) -samouczka, aby dowiedzieć się, jak używać usługi Azure Key Vault z aplikacji sieci web na platformie Azure. 
+- [Przykłady kodu usługi Azure Key Vault](https://azure.microsoft.com/resources/samples/?service=key-vault) — przykłady kodu usługi Azure Key Vault. 
+- [Użyj usługi Azure Key Vault z aplikacji sieci Web](quick-create-net.md) -samouczka, aby dowiedzieć się, jak używać usługi Azure Key Vault z aplikacji sieci web na platformie Azure. 
 
 ## <a name="how-tos"></a>Poradniki
 

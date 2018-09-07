@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 38806b3dbf47b21885ef704cfec8be3c491a66a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143814"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055390"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -184,7 +184,7 @@ Jeśli zdecydujesz się używać tej funkcji przy użyciu konta magazynu, który
 Program PolyBase jest najczęściej używany do ładowania danych w usłudze Azure SQLDW z konta magazynu. Jeśli konto magazynu, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Ma ograniczenia dla tej i pomocy technicznej firmy Microsoft może skontaktować się, aby uzyskać więcej informacji.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Obiekt Blob platformy Azure SQLDB inspekcji
-Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu używa funkcji punktów końcowych usługi DARZENIE spowoduje przerwanie łączności z SQLDB platformy Azure na koncie magazynu.
+Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu używa funkcji punktów końcowych usługi sieci wirtualnej spowoduje przerwanie łączności z SQLDB platformy Azure na koncie magazynu.
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci Wirtualnej do serwera bez włączania na sieć Wirtualną punktów końcowych usługi
 
@@ -254,7 +254,7 @@ Musi już mieć podsieci, który jest oznaczony za pomocą określonego punktu k
 
 ### <a name="azure-portal-steps"></a>Kroki w portalu Azure
 
-1. Zaloguj się do [witryny Azure portal][http-azure-portal-link-ref-477t].
+1. Zaloguj się w witrynie [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Następnie przejdź w portalu w celu **serwerów SQL** &gt; **Zapora / sieci wirtualnej**.
 

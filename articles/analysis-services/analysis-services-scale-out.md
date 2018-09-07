@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: ecf56f3172ebeab54757d7cbd164b92ca1470ce5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840993"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051174"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -27,7 +27,7 @@ Za pomocą skalowalnego w poziomie można utworzyć pulę zapytania przy użyciu
 
 Niezależnie od liczby replik zapytań, znajdującym się w puli zapytania obciążeń przetwarzania nie są dystrybuowane między replikami zapytań. Pojedynczy serwer służy jako serwer przetwarzania. Repliki zapytania służyć tylko zapytania względem modeli synchronizowane między każdej repliki zapytania w puli zapytania. 
 
-Podczas skalowania w poziomie, nowe replikami zapytania są dodawane do puli zapytania przyrostowo. Może upłynąć do pięciu minut, zanim nowe zasoby repliki zapytania mają zostać uwzględnione w puli zapytania; gotowe do odbierania połączeń klientów i zapytań. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między wszystkich zasobów w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni.  Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Są one ponownie podłączane do pozostałych zapytania puli zasobów po ukończeniu skalowanie w operacji.
+Podczas skalowania w poziomie, nowe replikami zapytania są dodawane do puli zapytania przyrostowo. Może upłynąć do pięciu minut, zanim nowe zasoby repliki zapytania mają zostać uwzględnione w puli zapytania; gotowe do odbierania połączeń klientów i zapytań. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między wszystkich zasobów w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni.  Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Ich ponowne łączenie się pozostały zasób puli zapytania po zakończeniu skalowanie w operacji, który może zająć maksymalnie pięć minut.
 
 Podczas przetwarzania modeli, po ukończeniu operacji przetwarzania, należy wykonać synchronizację między serwerem przetwarzania a replikami zapytania. Automatyzacja operacji przetwarzania, należy skonfigurować operacji synchronizacji po pomyślnym zakończeniu operacji przetwarzania. Można przeprowadzić synchronizację ręcznie w portalu lub przy użyciu programu PowerShell lub interfejsu API REST. 
 

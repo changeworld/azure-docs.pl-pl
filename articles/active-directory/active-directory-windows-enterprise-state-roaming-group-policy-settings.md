@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9db0fa29f6af0053d45f9f0238b52ac34fdb464a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f1bbbecf1f40b110614b3da9874d5d2c560f9e58
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223265"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024639"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania (urządzeniami przenośnymi MDM) dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do całego urządzenia użytkownika. Stosowanie zasad zarządzania urządzeniami Przenośnymi, aby wyłączyć synchronizację ustawień do użytku osobistego, urządzenia należące do użytkownika zostanie negatywny wpływ na korzystanie z tego urządzenia. Ponadto innych kont użytkowników na urządzeniu będą również mieć wpływ na przez zasady.
@@ -30,7 +30,7 @@ Przedsiębiorstwa, które mają być zarządzane, roamingu dla urządzeń osobis
 W poniższych tabelach opisano dostępne ustawienia zasad.
 
 ## <a name="mdm-settings"></a>Ustawienia zarządzania urządzeniami Przenośnymi
-Ustawienia zasad zarządzania urządzeniami Przenośnymi dotyczą zarówno systemu Windows 10 i Windows 10 Mobile.  Obsługa systemu Windows 10 Mobile istnieje tylko w przypadku konta Microsoft na podstawie mobilnych za pomocą konta usługi OneDrive użytkownika.  Można znaleźć sekcji "Urządzeń i punkty końcowe", aby uzyskać szczegółowe informacje, na jakie urządzenia są obsługiwane w przypadku synchronizacji usługi Azure AD na podstawie.
+Ustawienia zasad zarządzania urządzeniami Przenośnymi dotyczą zarówno systemu Windows 10 i Windows 10 Mobile.  Obsługa systemu Windows 10 Mobile istnieje tylko w przypadku konta Microsoft na podstawie mobilnych za pomocą konta usługi OneDrive użytkownika.  Zapoznaj się [urządzenia i punktów końcowych](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) szczegółowe informacje na temat urządzeń, które są obsługiwane w przypadku synchronizowania opartych na usłudze Azure AD.
 
 | Name (Nazwa) | Opis |
 | --- | --- |

@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9108d9e1b230fe2267f0195bd2c33c5a4c57d956
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390657"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021944"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Container Instances, zoba
 
    ![Dodatkowe ustawienia wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mieć [tożsamości usługi zarządzanej w usłudze Azure] [ managed-service-identity] automatycznie utworzyć tożsamością uwierzytelniania dla serwera Jenkins wystąpienie. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
+4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mieć [tożsamości usługi zarządzanej platformy Azure] [zarządzanych tożsamości azure zasobów] automatycznie utworzyć tożsamością uwierzytelniania dla wystąpienia usługi Jenkins. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
 
 5. Agentów w chmurze skonfiguruj platformy z opartych na chmurze dla zadań kompilacji usługi Jenkins. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każdego zadania kompilacji usługi Jenkins jest uruchamiane w wystąpienia kontenera.
 
@@ -128,9 +128,9 @@ Aby przetestować zadanie kompilacji i sprawdź usługi Azure Container Instance
 
    ![Grupa zasobów, usługa container instances usunięte](./media/container-instances-jenkins/jenkins-aci-none.png)
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczki narzędzia Jenkins
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
 
-Jeśli występują jakiekolwiek z wtyczek Jenkins, Prześlij zgłoszenie do [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

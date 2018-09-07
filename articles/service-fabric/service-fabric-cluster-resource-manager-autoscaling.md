@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 55feb64f06c2d67f85f230cb92e84dfe8fd3ada2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782393"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053299"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
 Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
@@ -117,7 +117,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 Drugi wyzwalacz zależy od obciążenia wszystkich partycji w jednej usłudze. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdej repliki lub wystąpienie partycji. Dla usług stanowych obciążenia partycji jest uważana obciążenie związane z repliką podstawową, gdy w przypadku usług bezstanowych obciążenia partycji jest średnie obciążenie wszystkie wystąpienia partycji. Te wartości są we wszystkich partycjach usługi, a ta wartość jest używana do wyzwolenia automatycznego skalowania. Takie same jak w poprzednim mechanizmu, istnieją trzy czynniki, które określają, w przypadku skalowania usługi:
 
 * _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **przeskalować w pionie**. Jeśli średnie obciążenie wszystkich partycji usługi jest niższa niż ta wartość, usługa będzie skalowana w.
-* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest niższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
+* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest wyższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
 * _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
 
 Tego wyzwalacza można używać zarówno usługi stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedParitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaje się nową partycję i podczas skalowania usługi w jednej z istniejących partycji jest usuwany. Ma ograniczeń, które będą sprawdzane, gdy usługa jest tworzony lub aktualizowany i tworzenia/aktualizacji usługi zakończy się niepowodzeniem, jeśli te warunki nie są spełnione:

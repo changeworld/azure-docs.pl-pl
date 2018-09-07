@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 112586d3ee5f49eab9adb72d41a210e2dd9828d8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b58118a3ed4fba5017e0eb630d822ec59f04aa16
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054141"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024780"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegowanie ofert w usłudze Azure Stack
 
@@ -128,7 +128,7 @@ Zaloguj się do portalu użytkownika jako dostawca delegowanego, a następnie ut
 
 4. Publiczne delegowane oferty są teraz widoczne wyłącznie za pośrednictwem portalu delegowanego. Aby znaleźć i zmienić tego adresu URL:
 
-    a.  Wybierz **Przeglądaj** > **więcej usług** > **subskrypcje**. Następnie wybierz subskrypcję dostawcy delegowane. Na przykład **DPSubscription** > **właściwości**.
+    a.  Wybierz **Przeglądaj** > **wszystkich usług**, a następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**. Wybierz delegowaną subskrypcję dostawcy. Na przykład **DPSubscription** > **właściwości**.
 
     b.  Skopiuj portalu adres URL do innej lokalizacji, takiego jak Notatnik.
 

@@ -1,6 +1,6 @@
 ---
-title: Zmień ustawienia FabricTransport w Azure mikrousług | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o konfigurowaniu ustawień komunikacji aktora sieci szkieletowej usług Azure.
+title: Zmień ustawienia FabricTransport aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania ustawień komunikacji usługi Azure Service Fabric aktora.
 services: Service-Fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021416"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052143"
 ---
-# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Skonfiguruj ustawienia FabricTransport Reliable Actors
+# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurowanie ustawień FabricTransport struktury Reliable actors
 
 Poniżej przedstawiono ustawienia, które można skonfigurować:
 - C#: [FabricTransportRemotingSettings](
 https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
-Można zmodyfikować domyślną konfigurację FabricTransport w następujący sposób.
+Domyślna konfiguracja FabricTransport można zmodyfikować w następujący sposób.
 
-## <a name="assembly-attribute"></a>Atrybut zestawu
+## <a name="assembly-attribute"></a>Atrybutu zestawu
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) atrybutu musi zostać zastosowana na kliencie aktora i zestawy usługi aktora.
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) atrybutu musi zostać zastosowana na urządzeniu klienckim aktora i zestawy usługi aktora.
 
-Poniższy przykład przedstawia sposób zmienić domyślną wartość ustawienia FabricTransport OperationTimeout:
+Poniższy przykład pokazuje, jak zmienić domyślną wartość FabricTransport OperationTimeout ustawienia:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
@@ -50,17 +50,17 @@ Poniższy przykład przedstawia sposób zmienić domyślną wartość ustawienia
 
 ## <a name="config-package"></a>Pakiet konfiguracji
 
-Można użyć [pakietu konfiguracji](service-fabric-application-and-service-manifests.md) Aby zmodyfikować domyślną konfigurację.
+Możesz użyć [pakiet konfiguracji](service-fabric-application-and-service-manifests.md) Aby zmodyfikować domyślną konfigurację.
 
 > [!IMPORTANT]
-> W węzłach Linux certyfikaty muszą być sformatowane PEM. Aby uzyskać więcej informacji o lokalizacji i konfigurowanie certyfikatów dla systemu Linux, zobacz [Konfigurowanie certyfikatów w systemie Linux](./service-fabric-configure-certificates-linux.md). 
+> W węzłach systemu Linux certyfikaty muszą być w formacie PEM. Aby dowiedzieć się więcej na temat znajdowania i konfigurowanie certyfikatów dla systemu Linux, zobacz [Konfigurowanie certyfikatów w systemie Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Skonfiguruj ustawienia FabricTransport dla usługi aktora
+### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurowanie ustawień FabricTransport usługi aktora
 
 Dodaj sekcję TransportSettings w pliku settings.xml.
 
-Domyślnie kod aktora szuka SectionName jako "&lt;ActorName&gt;TransportSettings". Jeśli nie zostanie znaleziony, sprawdza SectionName jako "TransportSettings".
+Domyślnie aktora kodu szuka parametrami SectionName jako "&lt;ActorName&gt;TransportSettings". Jeśli nie zostanie znaleziony, sprawdzane są parametrami SectionName jako "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -77,9 +77,9 @@ Domyślnie kod aktora szuka SectionName jako "&lt;ActorName&gt;TransportSettings
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Skonfiguruj ustawienia FabricTransport dla zestawu klienta aktora
+### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Skonfiguruj ustawienia FabricTransport zestaw klienta aktora
 
-Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt;nazwa Exe klienta&gt;. settings.xml" pliku w tej samej lokalizacji co plik .exe klienta. Następnie dodaj sekcję TransportSettings w tym pliku. SectionName powinien być "TransportSettings".
+Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt;nazwa Exe klienta&gt;. settings.xml" pliku w tej samej lokalizacji co plik .exe klienta. Następnie należy dodać sekcję TransportSettings w tym pliku. Parametrami SectionName powinien być "TransportSettings".
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -99,9 +99,9 @@ Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt
   </Settings>
    ```
 
-  * Konfigurowanie ustawień FabricTransport dla klienta usługi aktora bezpiecznego za pomocą dodatkowego certyfikatu.
-  Informacje o certyfikacie dodatkowej można dodać, dodając parametr CertificateFindValuebySecondary.
-  Poniżej znajduje się przykład dla TransportSettings odbiornika.
+  * Konfigurowanie ustawień FabricTransport dla klienta usługi aktora bezpiecznego przy użyciu certyfikatu pomocniczego.
+  Informacje o certyfikacie pomocniczych można dodać przez dodanie parametru CertificateFindValuebySecondary.
+  Poniżej przedstawiono przykład dla TransportSettings odbiornika.
 
     ```xml
     <Section Name="TransportSettings">
@@ -115,7 +115,7 @@ Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-     Poniżej znajduje się przykład dla TransportSettings klienta.
+     Poniżej przedstawiono przykład dla TransportSettings klienta.
 
     ```xml
    <Section Name="TransportSettings">
@@ -129,9 +129,9 @@ Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-    * Konfigurowanie ustawień FabricTransport zabezpieczania aktora/klient usługi za pomocą nazwy podmiotu.
-    Użytkownik musi podać findType jako FindBySubjectName, dodać CertificateIssuerThumbprints i CertificateRemoteCommonNames wartości.
-  Poniżej znajduje się przykład dla TransportSettings odbiornika.
+    * Konfigurowanie ustawień FabricTransport do zabezpieczania aktora/klient usługi przy użyciu nazwy podmiotu.
+    Użytkownik musi podać findType jako FindBySubjectName, należy dodać CertificateIssuerThumbprints i CertificateRemoteCommonNames wartości.
+  Poniżej przedstawiono przykład dla TransportSettings odbiornika.
 
      ```xml
     <Section Name="TransportSettings">
@@ -145,7 +145,7 @@ Jeśli klient nie jest uruchomiony jako część usługi, możesz utworzyć "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Poniżej znajduje się przykład dla TransportSettings klienta.
+  Poniżej przedstawiono przykład dla TransportSettings klienta.
 
     ```xml
      <Section Name="TransportSettings">

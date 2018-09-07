@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 808ee3637d67ff4874c5d4837d5c53cbe7b18680
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41987574"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024594"
 ---
 # <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, korzystanie z Content Moderator zestawu SDK przy użyciu języka C# do:
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu [Content Moderator zestawu SDK przy użyciu języka C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
 
 - Utwórz Przegląd wideo dla moderatorów ludzi
 - Dodaj ramek do przeglądu
@@ -32,11 +32,22 @@ W tym artykule założono, że masz [moderowane wideo (zobacz Przewodnik Szybki 
 
 W tym artykule założono również, że znasz już program Visual Studio i języka C#.
 
-### <a name="sign-up-for-content-moderator-services"></a>Załóż konto usługi Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
 
 Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
 
-Na pulpicie nawigacyjnym Content Moderator możesz znaleźć klucz subskrypcji w **ustawienia** > **poświadczenia** > **API**  >  **Wersji próbnej Ocp-Apim-Subscription-Key**. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
+
+Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejs API przeglądu tworzenia przeglądu
+
+Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
+
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+
+Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Przygotowanie wideo i klatki wideo do przeglądu
 
@@ -536,8 +547,8 @@ Na koniec zostanie wyświetlony przegląd wideo w usługi Content Moderator, zap
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET.
+
 Dowiedz się, jak dodać [Moderowanie transkrypcji](video-transcript-moderation-review-tutorial-dotnet.md) do przeglądu wideo. 
 
 Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md).
-
-[Pobierz rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET.

@@ -1,9 +1,9 @@
 ---
-title: Połączenie bramy aplikacji Microsoft Azure do Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować bramy aplikacji i Centrum zabezpieczeń Azure, aby zwiększyć ogólne bezpieczeństwo Twoich zasobów.
+title: Łączenie usługi Microsoft Azure Application Gateway do usługi Azure Security Center | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować Application Gateway oraz Azure Security Center w celu ulepszenia ogólnego stanu zabezpieczeń zasobów.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
@@ -12,52 +12,52 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2018
-ms.author: terrylan
-ms.openlocfilehash: 7c15e5a86df7ff2a374aa9b62d2775b1eb035fc6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 588932e10e0e0d95feaa4bc8d889249ebebeb766
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854493"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026623"
 ---
-# <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Połączenie bramy aplikacji Microsoft Azure do Centrum zabezpieczeń Azure
-Ten dokument pomaga skonfigurować integrację z Centrum zabezpieczeń i zapory aplikacji sieci web Application Gateway (WAF).
+# <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Łączenie usługi Microsoft Azure Application Gateway do usługi Azure Security Center
+Ten dokument pomoże Ci skonfigurować integrację z Centrum zabezpieczeń i zapory aplikacji sieci web Application Gateway (WAF).
 
-## <a name="why-connect-application-gateway"></a>Dlaczego łączyć bramy aplikacji?
-Zapory aplikacji sieci Web w aplikacji bramy chroni aplikacje sieci web przed wspólnej ataków opartych na sieci web takich jak iniekcja kodu SQL, ataki skryptów między witrynami i hijacks sesji. Centrum zabezpieczeń jest zintegrowany z bramy aplikacji, aby zapobiec i wykrywanie zagrożeń dla aplikacji sieci web niechronione w środowisku.
+## <a name="why-connect-application-gateway"></a>Dlaczego łączy się usługa Application Gateway?
+Zapora aplikacji sieci Web w usłudze Application Gateway chroni aplikacje sieci web z typowych ataków opartych na sieci web, takimi jak iniekcja SQL, ataki z użyciem skryptów między witrynami i przechwytywanie sesji. Usługa Security Center integruje się z usługą Application Gateway, aby zapobiec i wykrywanie zagrożeń dla niechronionych aplikacji internetowych w danym środowisku.
 
-## <a name="how-do-i-configure-this-integration"></a>Jak skonfigurować tej integracji?
-Centrum zabezpieczeń wykryje wdrożonej wcześniej wystąpień zapory aplikacji sieci Web w subskrypcji. Te rozwiązania nawiązać połączenia z Centrum zabezpieczeń, które umożliwiają integrację alertów.
+## <a name="how-do-i-configure-this-integration"></a>Jak skonfigurować tę integrację?
+Usługa Security Center odnajduje wdrożonego wcześniej wystąpienia zapory aplikacji sieci Web w ramach subskrypcji. Połącz te rozwiązania do usługi Security Center, które umożliwiają integrację alertów.
 
 > [!NOTE]
-> Można też udostępnić WAF bramy aplikacji z Centrum zabezpieczeń **zalecenia** zgodnie z opisem w [Dodawanie zapory aplikacji sieci web](security-center-add-web-application-firewall.md).
+> Brama aplikacji zapory aplikacji internetowych, także mogą być udostępniane w usłudze Security Center **zalecenia** zgodnie z opisem w [Dodaj zaporę aplikacji sieci web](security-center-add-web-application-firewall.md).
 >
 >
 
 1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
-2. Na **menu Microsoft Azure**, wybierz pozycję **Centrum zabezpieczeń**. Zostanie otwarte okno **Security Center — Przegląd**.
+2. W **menu platformy Microsoft Azure** wybierz pozycję **Security Center**.
 
-3. W obszarze **omówienie**, wybierz pozycję **rozwiązań zabezpieczeń**.
+3. W obszarze **higieny zabezpieczeń ZASOBU**, wybierz opcję **rozwiązania w zakresie bezpieczeństwa**.
 
-  ![Omówienie Centrum zabezpieczeń](./media/security-center-connect-application-gateway/overview.png)
+  ![Security Center — Przegląd](./media/security-center-connect-application-gateway/overview.png)
 
-4. W obszarze **odnalezione rozwiązań** Microsoft zapory aplikacji sieci Web na podstawie SaaS Znajdź i zaznacz pozycję **CONNECT**.
+4. W obszarze **rozwiązania odnalezione** Znajdź firmy Microsoft opartych na rozwiązaniach SaaS zapory aplikacji sieci Web i wybierz **CONNECT**.
 
   ![Rozwiązania odnalezione](./media/security-center-connect-application-gateway/connect.png)
 
-5. **Połącz rozwiązania zapory aplikacji sieci Web** otwiera.  Wybierz **Connect** do integracji z Centrum zabezpieczeń i zapory aplikacji sieci Web.
+5. **Łączenie rozwiązania zapory aplikacji sieci Web** zostanie otwarty.  Wybierz **Connect** integracji zapory aplikacji sieci Web i usługi Security Center.
 
   ![Łączenie rozwiązania zapory aplikacji internetowych](./media/security-center-connect-application-gateway/waf-solution.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób integracji WAF brama aplikacji w Centrum zabezpieczeń. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób zintegrowania Application Gateway zapory aplikacji sieci Web w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
-* [Zintegrowanie rozwiązań zabezpieczeń w Centrum zabezpieczeń](security-center-partner-integration.md)
-* [Łączącego Microsoft Advanced Threat Analytics do Centrum zabezpieczeń](security-center-ata-integration.md)
-* [Łączenie ochrony tożsamości usługi Azure Active Directory z Centrum zabezpieczeń](security-center-aadip-integration.md)
+* [Integracja rozwiązań zabezpieczeń w usłudze Security Center](security-center-partner-integration.md)
+* [Połączenie Microsoft Advanced Threat Analytics do usługi Security Center](security-center-ata-integration.md)
+* [Proces łączenia usługi Azure Active Directory Identity Protection do usługi Security Center](security-center-aadip-integration.md)
 * [Monitorowanie kondycji zabezpieczeń w usłudze Security Center](security-center-monitoring.md).
 * [Monitorowanie rozwiązań partnerskich w usłudze Security Center](security-center-partner-solutions.md).
 * [Azure Security Center — często zadawane pytania](security-center-faq.md).

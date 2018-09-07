@@ -9,18 +9,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 28ea6c58eed110cfb57f3feaa6b828289bd20e64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172242"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054550"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Użyj usługi Azure Site Recovery, aby chronić Active Directory i DNS
 
 Aplikacje dla przedsiębiorstw, takich jak SharePoint, Dynamics AX i SAP są zależne od usługi Active Directory i infrastruktury DNS, aby działo poprawnie. Podczas konfigurowania odzyskiwania po awarii dla aplikacji często trzeba odzyskać Active Directory i DNS, przed odzyskaniem inne składniki aplikacji w celu zapewnienia ich funkcjonalności właściwej aplikacji.
 
-Możesz użyć [Site Recovery](site-recovery-overview.md) utworzyć plan odzyskiwania po awarii dla usługi Active Directory. W przypadku przerwy w działaniu można zainicjować trybu failover. Może mieć usługi Active Directory w górę i uruchamiania w ciągu kilku minut. Jeśli w lokacji głównej zostały wdrożone usługi Active Directory dla wielu aplikacji, na przykład dla programu SharePoint i SAP, możesz zechcieć do pracy awaryjnej w całej lokacji. Można najpierw przejścia w tryb failover przy użyciu element odzyskiwania z usługi Active Directory. Następnie w tryb failover inne aplikacje, korzystając z planów odzyskiwania specyficzne dla aplikacji.
+Możesz użyć [Site Recovery](site-recovery-overview.md) utworzyć plan odzyskiwania po awarii dla usługi Active Directory. W przypadku przerwy w działaniu można zainicjować trybu failover. Może mieć usługi Active Directory w górę i uruchamiania w ciągu kilku minut. Jeśli w lokacji głównej zostały wdrożone usługi Active Directory dla wielu aplikacji, na przykład dla programu SharePoint i SAP, możesz zechcieć do pracy awaryjnej w całej lokacji. Można najpierw przejścia w tryb failover do usługi Active Directory przy użyciu Site Recovery. Następnie w tryb failover inne aplikacje, korzystając z planów odzyskiwania specyficzne dla aplikacji.
 
 W tym artykule wyjaśniono, jak utworzyć rozwiązanie odzyskiwania po awarii dla usługi Active Directory. Zawiera wymagania wstępne i instrukcje trybu failover. Należy zapoznać się z usługi Active Directory i usługi Site Recovery, przed przystąpieniem do wykonywania.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a79c09df7d5fec5884a6810b82b7c174042a4c93
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669011"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054567"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
 
@@ -35,7 +35,7 @@ Uwierzytelnianie Multi-Factor Authentication jest dostępna w ramach następują
 
 * **Licencje usługi Azure Active Directory Premium** — w pełni funkcjonalne korzystania z usługi Azure Multi-Factor Authentication (chmura) lub serwer usługi Azure Multi-Factor Authentication (lokalnie).
    * **Usługa Azure MFA (chmura)** - **ta opcja jest zalecana ścieżki o nowych wdrożeniach**. Usługa Azure MFA w chmurze wymaga nie infrastruktury lokalnej i mogą być używane z użytkowników federacyjnych lub tylko w chmurze.
-   * **Serwer usługi Azure MFA** — Jeśli Twoja organizacja chce, aby zarządzać elementami powiązaną infrastrukturą i wdrożeniu usług AD FS w danym środowisku lokalnej w ten sposób może być opcją.
+   * **Serwer usługi Azure MFA** — Jeśli Twoja organizacja chce, aby zarządzać elementami powiązaną infrastrukturą i wdrożeniu usług AD FS w środowisku lokalnych w ten sposób może być opcją.
 * **Uwierzytelnianie wieloskładnikowe dla usługi Office 365** — niektóre funkcje usługi Azure Multi-Factor Authentication są dostępne jako część Twojej subskrypcji. Aby uzyskać więcej informacji na temat usługi MFA dla usługi Office 365, zobacz artykuł [planowanie uwierzytelniania wieloskładnikowego dla pakietu Office 365 wdrożeń](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Azure Active Directory administratorzy globalni** — niektóre funkcje usługi Azure Multi-Factor Authentication są dostępne jako sposób na ochronę kont administratora globalnego.
 

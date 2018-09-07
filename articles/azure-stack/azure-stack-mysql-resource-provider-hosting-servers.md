@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aacf99afef344564d028e78892091c6618c7d495
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302317"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026693"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych MySQL
 
@@ -32,8 +32,8 @@ MySQL w wersji 5.6, 5.7 i 8.0 mogą być używane do hostowania serwerów. MySQL
 Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora systemu. Aby dodać serwer hostingu, wykonaj następujące kroki:
 
 1. Zaloguj się do portalu usługi Azure Stack operatora jako administratora usługi.
-2. Wybierz **więcej usług**.
-3. Wybierz **zasoby administracyjne** > **hostowania serwerów MySQL** > **+ Dodaj**. Spowoduje to otwarcie **dodawania serwera hostingu MySQL** okno dialogowe, co pokazano na poniższym zrzucie ekranu.
+2. Wybierz pozycję **Wszystkie usługi**.
+3. W obszarze **zasoby administracyjne** wybierz kategorię **serwerów do hostingu MySQL** > **+ Dodaj**. Spowoduje to otwarcie **dodawania serwera hostingu MySQL** okno dialogowe, co pokazano na poniższym zrzucie ekranu.
 
    ![Konfigurowanie serwera hostingu](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 

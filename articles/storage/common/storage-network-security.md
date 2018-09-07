@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523261"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023396"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
 
 > [!IMPORTANT]
-> Włączenie reguły zapory dla konta usługi Storage zablokuje dostęp do żądań przychodzących danych, łącznie z innymi usługami platformy Azure.  W tym za pomocą portalu, zapisywanie dzienników itp.  Dla usług uczestniczących w programie można ponownie włączyć funkcje za pośrednictwem [wyjątki](#Exceptions) poniższej sekcji.  Aby uzyskać dostęp do portalu, trzeba to zrobić z komputera w obrębie granicy zaufanych (IP lub sieci wirtualnej), które zostały skonfigurowane.
+> Włączenie reguły zapory dla konta usługi Storage zablokuje dostęp do żądań przychodzących danych, łącznie z innymi usługami platformy Azure.  W tym za pomocą portalu, zapisywanie dzienników itp.  Dla usług uczestniczących w programie można ponownie włączyć funkcje za pośrednictwem [wyjątki](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) poniższej sekcji.  Aby uzyskać dostęp do portalu, trzeba to zrobić z komputera w obrębie granicy zaufanych (IP lub sieci wirtualnej), które zostały skonfigurowane.
 >
 
 ## <a name="scenarios"></a>Scenariusze
@@ -35,7 +35,7 @@ Ruch dyskowy maszyny wirtualnej (w tym instalacji i odinstalować operacje i we/
 
 Klasyczne konta magazynu **nie** obsługi zapory i sieci wirtualne.
 
-Tworzenia kopii zapasowych i przywracania z maszyn wirtualnych przy użyciu dysków niezarządzanych na kontach magazynu z regułami sieciowej stosowany jest obsługiwana przy utworzeniu wyjątku, zgodnie z opisem w [wyjątki](/storage/common/storage-network-security#exceptions) dalszej części tego artykułu.  Wyjątki zapory nie są stosowane z usługą Managed Disks, ponieważ są one już zarządzane przez platformę Azure.
+Tworzenia kopii zapasowych i przywracania z maszyn wirtualnych przy użyciu dysków niezarządzanych na kontach magazynu z regułami sieciowej stosowany jest obsługiwana przy utworzeniu wyjątku, zgodnie z opisem w [wyjątki](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) dalszej części tego artykułu.  Wyjątki zapory nie są stosowane z usługą Managed Disks, ponieważ są one już zarządzane przez platformę Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Zmień domyślną regułę dostępu do sieci
 Domyślnie konta magazynu akceptują połączenia z klientami za pośrednictwem sieci.  Aby ograniczyć dostęp do wybranych sieci, należy najpierw zmienić domyślnej akcji.

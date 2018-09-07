@@ -1,5 +1,6 @@
 ---
-title: Znajdź region usługi LUIS w języku C# w granicach Language Understanding (LUIS) | Dokumentacja firmy Microsoft
+title: Znajdowanie punktu końcowego w regionie za pomocą języka C# w usługi LUIS
+titleSuffix: Azure Cognitive Services
 description: Programowe wyszukiwanie publikowania w regionie za pomocą klucza punktu końcowego i aplikacji identyfikator usługi LUIS.
 services: cognitive-services
 author: diberry
@@ -7,16 +8,16 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6f2688e492dbba718dc55825de164c189a9b46c9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7af58f141730557f103c61a6c591908cc7ec69d0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225112"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44057371"
 ---
-# <a name="region-can-be-determined-from-api-call"></a>Można określić region z wywołania interfejsu API 
+# <a name="find-endpoint-region-with-c"></a>Znajdź region punktu końcowego w języku C# 
 W przypadku usługi LUIS Identyfikatora aplikacji i identyfikator subskrypcji usługi LUIS można znaleźć który region należy używać dla punktu końcowego zapytań.
 
 > [!NOTE] 

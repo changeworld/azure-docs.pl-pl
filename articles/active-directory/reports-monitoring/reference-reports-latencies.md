@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 12/15/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f0de2f8700bef83b5a8a9303e90c97aab29722a3
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 66e974e80fa6f5e002b1f54584ea48e22a7b13ce
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055696"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053191"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Usługa Azure Active Directory reporting opóźnienia
 
@@ -39,10 +39,10 @@ Istnieją dwa obszary raportowania działania:
 
 W poniższej tabeli wymieniono opóźnienie dotycząca raporty aktywności.
 
-| Raport | Czas oczekiwania (P95) |Czas oczekiwania (w poziomie P99)|
+| Raport | Czas oczekiwania (95%) |Opóźnienie (99%)|
 | :-- | --- | --- | 
-| Dzienniki inspekcji | 2 minuty  | 5 minut.  |
-| Logowania | 2 minuty  | 5 minut. |
+| Dzienniki inspekcji | 2 min  | 5 min  |
+| Logowania | 2 min  | 5 min |
 
 
 

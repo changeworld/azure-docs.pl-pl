@@ -1,6 +1,6 @@
 ---
-title: Asystowane maszyny łagodzenia zawartości i ludzkich recenzje w zawartości moderatora | Dokumentacja firmy Microsoft
-description: Jak maszyn i ludzi razem zapewniają najlepsze wyniki dla łagodzenia zawartości
+title: Wspomaganego maszynowo moderowania zawartości i ludziom dokonywanie w pakiet Content Moderator | Dokumentacja firmy Microsoft
+description: Jak maszyn i ludzi razem zapewniają najlepsze rezultaty moderowanie zawartości
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,25 +9,25 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: da657404e4cb8b86d67f56084a6f5a261bad4de2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346985"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023937"
 ---
-# <a name="human-in-the-loop"></a>Ludzkich w pętli
+# <a name="human-in-the-loop"></a>Człowieka w pętli
 
-Możesz uzyskać najlepsze wyniki, gdy maszyny i ludzi współpracować nad łagodzenia zawartości. Maszyny efektywnie rozszerzyć człowieka recenzji, gdy zaufania prognozowania musi wspierać lub ograniczony w kontekście rzeczywistych. Wynik jest procesem zawartości łagodzenia hybrydowego lepszą wydajność niż Jeśli ludzi lub maszyny pracy samodzielnie.
+Można uzyskać najlepsze wyniki, gdy ludzie i maszyny współpracują ze sobą na moderowanie zawartości. Maszyny efektywnie rozszerzać ludziom dokonywanie gdy ufności prognoz musi wspierać lub UFNOŚĆ w kontekście świata rzeczywistego. Wynik jest proces moderowania zawartości hybrydowego, który działa lepiej niż Jeśli ludzi lub maszynach pracowano samodzielnie.
 
-## <a name="how-the-review-tool-helps"></a>Jak pomaga narzędzie przeglądu ##
+## <a name="how-the-review-tool-helps"></a>Jak ułatwia narzędzie do przeglądu ##
 
-Narzędzie człowieka przeglądu, w połączeniu z łagodzenia wspierana maszyny interfejsów API umożliwia wykonanie tych zadań ważne w odniesieniu do zawartości łagodzenia cyklu życia.
+Narzędzie do przeglądu przez ludzi w połączeniu z wspomaganego maszynowo moderowania interfejsów API umożliwia wykonywania tych zadań ważne w odniesieniu do cyklu życia moderowanie zawartości.
 
-1. Zautomatyzować tworzenie człowieka przeglądami z podstawowej wyników łagodzenia interfejsu API
-2. Średnie wiele formatów (tekstu, obrazów i video - wkrótce) za pomocą jednego narzędzia (narzędzie przeglądu i interfejsu API)
-3. Przypisz lub eskalować recenzji zawartości do wielu zespoły uporządkowane według kategorii lub środowisko poziom.
-4. Użyj domyślnej przepływy pracy lub Zdefiniuj niestandardowe przepływy pracy z zasadami elastyczne i bez pisania żadnego kodu.
-5. Dodać człowieka Przegląd interfejsu API lub business proces po prostu Tworzenie łącznika.
-6. Aby przejrzeć wyniki z PhotoDNA firmy Microsoft, analiza tekstu i interfejsy API rozpoznawania twarzy, należy użyć łączników domyślne.
-7. Pobrać kluczowe metryki wydajności dla procesów łagodzenia zawartości.
+1. Aby zautomatyzować tworzenie ludziom dokonywanie z bazowego wyników interfejs API moderowania
+2. Użyj jednego narzędzia (narzędzie do przeglądu i interfejsu API) do umiarkowanego wiele formatów (tekstu, obrazów i wideo)
+3. Przypisz lub Eskalowanie recenzji zawartości do wielu zespołów przeglądu zorganizowane według zawartości poziomu kategorii lub środowiska.
+4. Użyj domyślnych przepływów pracy, lub zdefiniować niestandardowe przepływy pracy za pomocą elastycznych zasad i bez pisania żadnego kodu.
+5. Dodawanie przeglądu przez ludzi do dowolnego interfejsu API lub business procesu po prostu tworząc łącznik.
+6. Używanie łączników domyślne, aby przejrzeć wyniki z PhotoDNA firmy Microsoft, analiza tekstu i interfejsy API rozpoznawania twarzy.
+7. Uzyskaj kluczowe metryki wydajności na procesy moderowanie zawartości.

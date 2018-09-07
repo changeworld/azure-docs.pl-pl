@@ -1,5 +1,6 @@
 ---
-title: Zrozumienie pojęcia dotyczące zmian danych usługi LUIS — Azure | Dokumentacja firmy Microsoft
+title: Pojęcia dotyczące zmian danych usługi LUIS — dodatkowy opis
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak można zmienić danych przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: diberry
-ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2949f7afa5d04d9f7ea738ad6f7b9333bfaf958f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223987"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023021"
 ---
 # <a name="data-alterations"></a>Zmiany danych
 Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. 

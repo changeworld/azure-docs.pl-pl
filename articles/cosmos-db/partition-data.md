@@ -10,20 +10,25 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: d53106efa4e3761a497e67181546c8ec09fd880c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286989"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055509"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
 [Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to usługa globalnie dystrybuowanej, wielomodelowej bazy danych zaprojektowana, aby pomóc Ci osiągnąć wysoką i przewidywalną wydajność. Płynne skalowanie wraz z aplikacji. W tym artykule omówiono sposób partycjonowania działa w przypadku wszystkich danych modeli w usłudze Azure Cosmos DB. Również zawiera opis sposobu konfigurowania skutecznie skalowanie aplikacji kontenerów usługi Azure Cosmos DB.
 
+Usługa Azure Cosmos DB obsługuje następujące typy kontenerów wszystkich interfejsów API:
+
+- **Kontener stały**: te kontenery można przechowywać wykres bazy danych do 10 GB w rozmiarze maksymalnie 10 000 jednostek żądań na sekundę, przydzielone do niego. Aby utworzyć kontener stały nie jest konieczne określenie właściwości klucza partycji danych.
+
+- **Nieograniczonego kontenera**: tych kontenerów może automatycznie skalować do przechowywania wykresu powyżej limitu 10 GB za pośrednictwem partycjonowanie poziome. Każda partycja będzie przechowywać 10 GB i dane zostaną automatycznie rozmieszczane na podstawie **klucza partycji określonym**, który będzie wymagany parametr, korzystając z nieograniczonego kontenera. Tego typu kontener może przechowywać rozmiar danych praktycznie nieograniczonych możliwości korzystania i umożliwia maksymalnie 100 000 jednostek żądań na sekundę lub więcej [, kontaktując się z pomocą techniczną](https://aka.ms/cosmosdbfeedback?subject=Cosmos%20DB%20More%20Throughput%20Request).
+
 ## <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB zapewnia kontenery do przechowywania danych o nazwie kolekcje (dla dokumentów), wykresy lub tabel. Kontenery są zasobami logicznymi i mogą znajdować się jeden lub więcej partycji fizycznych lub serwerów. Liczba partycji jest ustalana na podstawie rozmiaru magazynu usługi Azure Cosmos DB i przepływnością aprowizowaną dla kontenera lub zestaw kontenerów. 
-
 
 ### <a name="physical-partition"></a>Partycję fizyczną
 
@@ -72,7 +77,7 @@ Jeśli fizyczną partycję osiągnie limit przestrzeni dyskowej i danych na part
 Wybór klucza partycji tak, aby:
 
 * Dystrybucja magazynu jest nawet w przypadku wszystkich kluczy.  
-* Rozkład wolumin żądań w danym punkcie w czasie jest nawet w przypadku wszystkich kluczy.  
+* Wybierz klucz partycji służący do równomiernego dystrybuowania danych między partycjami.
 
   To dobry pomysł, aby sprawdzić, jak Twoje dane są rozproszone na partycje. Aby sprawdzić dystrybucję danych w portalu, przejdź na swoje konto usługi Azure Cosmos DB, a następnie kliknij pozycję **metryki** w **monitorowanie** sekcji, a następnie kliknij polecenie **magazynu** kartę, aby zobaczyć, jak usługi dane są partycjonowane na różne partycje fizyczne.
 
@@ -80,13 +85,13 @@ Wybór klucza partycji tak, aby:
 
   Po lewej stronie powyższy obraz pokazuje wynik klucza partycji zły i odpowiednie powyższy obraz pokazuje wynik, gdy wybrano stanowi dobry klucz partycji. W obrazie po lewej stronie widać, że dane nie jest równomiernie rozłożona na partycje. Należy dążyć do wybór klucza partycji, który rozdziela dane, dzięki czemu będzie on podobny do właściwy obraz.
 
-* Zapytania, które są wywoływane ze współbieżnością wysokiej można skutecznie kierować przez uwzględnienie klucza partycji w predykacie filtru.  
+* Optymalizowanie zapytań, aby uzyskać dane w granicach partycji, jeśli jest to możliwe. Optymalnej strategii partycjonowania byłaby wyrównana do wzorców zapytań. Zapytania, które pobierają dane z jednej partycji zapewnia maksymalną wydajność. Zapytania, które są wywoływane ze współbieżnością wysokiej można skutecznie kierować przez uwzględnienie klucza partycji w predykacie filtru.  
+
 * Wybór klucza partycji o wyższych kardynalności ogólnie metoda preferowana — utrudniłoby zazwyczaj daje większą dystrybucji i skalowalność. Na przykład syntetycznych klucz mogą powstawać przez złączenie wartości z wiele właściwości, aby zwiększyć kardynalność.  
 
 Wybór klucza partycji przy użyciu powyższe zagadnienia, nie trzeba martwić się o liczbie partycji lub ile przepływność jest przydzielany na partycję fizyczną zgodnie z usługi Azure Cosmos DB umożliwia skalowanie liczby partycji fizycznych, gdy można również skalować poszczególne partycje zgodnie z potrzebami.
 
-<a name="prerequisites"></a>
-## <a name="prerequisites-for-partitioning"></a>Wymagania wstępne dotyczące partycjonowania
+## <a name="prerequisites"></a>Wymagania wstępne dotyczące partycjonowania
 
 Kontenery usługi Azure Cosmos DB można utworzyć ustalona lub wartością nieograniczoną w witrynie Azure portal. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć kontener jako bez ograniczeń, należy określić klucz partycji i minimalnej przepustowości 1000 jednostek RU/s. Kontenery usługi Azure Cosmos DB można również konfigurować udostępnianie przepływności między zestaw kontenerów, w których każdy kontener musi występowaniem partycję kluczy oraz można rozwijać bez ograniczeń. Poniżej przedstawiono wymagania wstępne dotyczące należy wziąć pod uwagę, partycjonowanie i skalowanie:
 
@@ -98,16 +103,49 @@ Kontenery usługi Azure Cosmos DB można utworzyć ustalona lub wartością nieo
 
 Jeśli utworzono **stałe** kontenera bez partycji klucza lub przepływności, mniej niż 1000 jednostek RU/s, kontenera będzie nie automatycznego skalowania. Aby przeprowadzić migrację danych z kontener stały do nieograniczonego kontenera, musisz użyć [narzędzia migracji danych](import-data.md) lub [kanału informacyjnego zmian biblioteki](change-feed.md). 
 
-## <a name="partitioning-and-provisioned-throughput"></a>Partycjonowania i aprowizowanej przepływności.
-Usługa Azure Cosmos DB zaprojektowano w celu uzyskania przewidywalnej wydajności. Po utworzeniu kontenera lub zestaw kontenerów, możesz zarezerwować przepływność w kategoriach  *[jednostek żądań](request-units.md) (RU) na sekundę*. Każde żądanie sprawia, że opłaty RU, który jest proporcjonalny do ilość zasobów systemowych, takich jak procesor CPU, pamięci i używane przez operację We/Wy. Odczytu dokumentu o rozmiarze 1 KB z spójność sesji zużywa 1 jednostka Żądania. Odczyt jest 1 jednostka Żądania niezależnie od tego, czy liczba przechowywanych lub liczby równoczesnych żądań uruchomione w tym samym czasie. Większe elementy wymagają wyższych (RUS), w zależności od rozmiaru. Jeśli znasz rozmiaru jednostek i liczba odczytów, czego potrzebujesz do obsługi aplikacji, można udostępnić dokładne zalecenia dotyczące ilości przepływności wymaganej do potrzeb aplikacji. 
+## <a name="PartitionedGraph"></a>Wymagania dotyczące partycjonowane wykresu
 
-> [!NOTE]
-> Aby w pełni wykorzystać przepływnością aprowizowaną dla kontenera lub zestaw kontenerów, musisz wybrać klucz partycji, umożliwiająca równomiernie rozłożyć żądania dla wszystkich wartości kluczy w oddzielnej partycji.
-> 
-> 
+Podczas tworzenia kontenera grafu podzielonym na partycje, należy wziąć pod uwagę następujące informacje:
 
-<a name="designing-for-partitioning"></a>
-## <a name="create-partition-key"></a>Tworzenie klucza partycji 
+- **Niezbędne jest skonfigurowanie partycjonowanie** Jeśli powinien być większy niż 10 GB, rozmiar kontenera i/lub jeśli przydzielanie ponad 10 000 jednostek żądań na sekundę (RU/s) ma być wymagane.
+
+- **Wierzchołki i krawędzie, które są przechowywane jako dokumenty JSON** w zapleczu interfejsu API języka Gremlin usługi Azure Cosmos DB.
+
+- **Wierzchołki wymagają klucza partycji**. Tego klucza określa, której partycji służy do przechowywania wierzchołka i tego procesu jest używany algorytm wyznaczania wartości skrótu. Nazwa tego klucza partycji jest jednowyrazowej ciągu bez spacji ani znaków specjalnych i jest zdefiniowany, tworząc nowy kontener przy użyciu formatu `/partitioning-key-name`.
+
+- **Krawędzie są przechowywane z ich źródła wierzchołka**. Innymi słowy dla każdego wierzchołka kluczu partycji określa, gdzie są przechowywane wierzchołka i jego krawędzi wychodzących. Ten sposób można uniknąć zapytań między partycjami, używając `out()` Kardynalność zapytania programu graph.
+
+- **Zapytania programu Graph powinien określać klucz partycji**. Aby w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, jeśli to możliwe, wykres zapytania powinien zawierać klucza partycji. Na przykład jeśli zaznaczono jednego wierzchołka. Następujące przykładowe zapytania pokazują, jak dołączyć klucz partycji, po wybraniu jednego lub wielu wierzchołków w grafie podzielonym na partycje:
+
+    - Wybraniu wierzchołka według identyfikatorów, a następnie **użyj `.has()` krok, aby określić właściwości klucza partycji**: 
+    
+        ```
+        g.V('vertex_id').has('partitionKey', 'partitionKey_value')
+        ```
+    
+    - Wybieranie wierzchołka przez **Określanie krotki wartości klucza partycji i Identyfikatora**: 
+    
+        ```
+        g.V(['partitionKey_value', 'vertex_id'])
+        ```
+        
+    - Wybieranie wierzchołek, określając **tablicy krotek, który zawiera wartości klucza partycji i identyfikatory**:
+    
+        ```
+        g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
+        ```
+        
+    - Wybierając zestaw wierzchołki przez **określania listy wartości klucza partycji**: 
+    
+        ```
+        g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
+        ```
+
+* **Zawsze określać wartości klucza partycji podczas wykonywania zapytań dotyczących wierzchołek**. Uzyskiwanie wierzchołek z znanych partycji jest najbardziej wydajny sposób pod względem wydajności.
+
+* **Użyj kierunku wychodzącego, podczas wykonywania zapytań dotyczących krawędzie** zawsze, gdy jest to możliwe. Krawędzie są przechowywane z ich źródła wierzchołki, w kierunku wychodzącego. Oznacza to, że prawdopodobieństwo konieczności uciekania się do zapytań między partycjami są zminimalizowane, gdy danych i zapytania, które są skonstruowane z tego wzorca należy pamiętać.
+
+## <a name="designing-for-partitioning"></a> Tworzenie klucza partycji 
 Tworzenie kontenerów i skalować je w dowolnym momencie można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. W tej sekcji pokazano, jak tworzyć kontenery i określ klucz aprowizowanej przepływności i partycji przy użyciu każdego interfejsu API.
 
 
@@ -225,8 +263,7 @@ Jedną z opcji jest ustawiona partitionKey /deviceId lub /date. Jeśli chcesz tw
 
 W scenariuszach w czasie rzeczywistym może mieć tysiące dokumentów, więc należy zdefiniować logikę po stronie klienta, aby połączyć wartości na klucz syntetycznych, wstawić syntetycznych klucza do dokumentów, a następnie używania jej było określenie klucza partycji.
 
-<a name="designing-for-scale"></a>
-## <a name="design-for-scale"></a>Projektowanie pod kątem skalowania
+## <a name="designing-for-scale"></a> Projektowanie pod kątem skalowania
 Aby Skaluj efektywnie za pomocą usługi Azure Cosmos DB, musisz wybrać stanowi dobry klucz partycji podczas tworzenia kontenera. Istnieją dwa główne kwestie dotyczące wybierania stanowi dobry klucz partycji:
 
 * **Zapytania granic i transakcje**. Wybór klucza partycji należy zrównoważyć potrzebę na potrzeby transakcji wymaganiem rozdystrybuować jednostek wiele kluczy partycji, aby upewnić się, skalowalne rozwiązanie. W skrajnej jeden ten sam klucz partycji można ustawić dla wszystkich elementów, ale ta opcja może ograniczać skalowalność rozwiązania. Y. można przypisać unikatowego klucza partycji dla każdego elementu. Ten wybór jest o wysokim stopniu skalowalności, ale uniemożliwia za pomocą transakcji dla wielu dokumentów za pomocą procedur składowanych i wyzwalaczy. Klucz partycji idealne umożliwia wydajne zapytania i ma wystarczające Kardynalność, aby upewnić się, że Twoje rozwiązanie jest skalowalna. 

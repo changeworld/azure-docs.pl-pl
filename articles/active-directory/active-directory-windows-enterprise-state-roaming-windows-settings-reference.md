@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223671"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023355"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10. 
@@ -44,10 +44,11 @@ Następujące grupy ustawienia są dostępne dla użytkowników końcowych włą
 
 * Motyw: tło pulpitu, Kafelek użytkownika, położenie paska zadań itd. 
 * Ustawień programu Internet Explorer: Historia przeglądania wpisane adresy URL, Ulubione, itp. 
-* Hasła: [skrytki na poświadczenia Windows](https://technet.microsoft.com/library/jj554668.aspx), łącznie z profilami sieci Wi-Fi 
+* Hasła: Menedżera poświadczeń Windows, w tym profile sieci Wi-Fi 
 * Preferencje językowe: słownika, ustawień języka systemu 
 * Ułatwienia dostępu: narrator, program Klawiatura ekranowa, program Lupa 
 * Inne ustawienia Windows: Zobacz szczegóły ustawień Windows
+* Ustawienia przeglądarki krawędzi: Ulubione Microsoft Edge, przeczytania i inne ustawienia
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,20 +74,20 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Dane aplikacji**: poszczególnych aplikacji można zsynchronizować danych |Kopia zapasowa synchronizacji |Kopia zapasowa synchronizacji |Wewnętrzne |
 | **Lista aplikacji**: lista zainstalowanych aplikacji |X |kopia zapasowa |Inne |
 | **Bluetooth**: wszystkie ustawienia połączeń Bluetooth |X |X | |
-| **Wiersz polecenia**: ustawienia "Domyślne" wiersz polecenia |Synchronizacja |X | |
+| **Wiersz polecenia**: ustawienia "Domyślne" wiersz polecenia |Synchronizacja |X |Wewnętrzne |
 | **Poświadczenia**: poświadczeń skrytki |Synchronizacja |Synchronizacja |hasło |
-| **Daty, godziny i regionu**: automatyczne czasu (Synchronizacja czasowa Internet) |Synchronizacja |Synchronizacja |Język |
-| **Daty, godziny i regionu**: 24-godzinny |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: Data i godzina |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: strefa czasowa | |X |Język |
-| **Daty, godziny i regionu**: czasu letniego |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: kraj/region |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: pierwszy dzień tygodnia |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: format region (ustawienia regionalne) |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: Data krótka |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: Data długa |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: krótki czas |Synchronizacja |X |Język |
-| **Daty, godziny i regionu**: godzina długa |Synchronizacja |X |Język |
+| **Daty, godziny i regionu**: automatyczne czasu (Synchronizacja czasowa Internet) |Synchronizacja |Synchronizacja |język |
+| **Daty, godziny i regionu**: 24-godzinny |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: Data i godzina |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: strefa czasowa | |X |język |
+| **Daty, godziny i regionu**: czasu letniego |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: kraj/region |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: pierwszy dzień tygodnia |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: format region (ustawienia regionalne) |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: Data krótka |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: Data długa |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: krótki czas |Synchronizacja |X |język |
+| **Daty, godziny i regionu**: godzina długa |Synchronizacja |X |język |
 | **Personalizacja pulpitu**: motyw pulpitu (tła kolorów systemu, dźwięki systemu domyślnego, wygaszacz ekranu) |Synchronizacja |X |Motyw |
 | **Personalizacja pulpitu**: Pokaz slajdów tapety |Synchronizacja |X |Motyw |
 | **Personalizacja pulpitu**: ustawienia paska zadań (pozycja, automatyczne ukrywanie itp.) |Synchronizacja |X |Motyw |

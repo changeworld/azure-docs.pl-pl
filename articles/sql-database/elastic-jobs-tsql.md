@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: d524f7756c8dd394d8651839a1f6426c512d6a73
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842626"
+ms.locfileid: "44023532"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -482,7 +482,7 @@ musi być uruchamiane sp_add_job baza danych agenta zadań, które zostały okre
 Po wykonaniu sp_add_job można dodać zadania sp_add_jobstep może służyć do dodawania kroków, które wykonują działania zadania. Zadanie drukowania numer wersji początkowej to 0, co zostanie zwiększony do 1, po dodaniu pierwszy krok.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 
 - jobs_reader
 
@@ -544,7 +544,7 @@ Data zadania, które można zatrzymać wykonywanie. schedule_end_time jest DATET
 Po wykonaniu sp_add_job można dodać zadania sp_add_jobstep może służyć do dodawania kroków, które wykonują działania zadania. Zadanie drukowania numer wersji początkowej to 0, co zostanie zwiększony do 1, po dodaniu pierwszy krok.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -576,7 +576,7 @@ Określa, czy chcesz usunąć, jeśli zadanie ma żadnych wykonań w toku i anul
 Historia zadań zostanie usunięta automatycznie, gdy zadanie zostanie usunięte.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -701,7 +701,7 @@ Maksymalny poziom równoległości dla puli elastycznej. Zestaw, a następnie et
 Po pomyślnym zakończeniu sp_add_jobstep, bieżący numer wersji zadania jest zwiększany. Następnym razem, zadanie jest wykonywane, nowa wersja będzie używany. Jeśli zadanie jest w trakcie wykonywania, wykonanie tego nie będzie zawierać nowy krok.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:  
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:  
 
 - jobs_reader
 
@@ -825,7 +825,7 @@ Maksymalny poziom równoległości dla puli elastycznej. Zestaw, a następnie et
 Nie ma wpływu na dowolnym wykonań w toku zadania. Po pomyślnym zakończeniu sp_update_jobstep, zadanie drukowania numer wersji jest zwiększany. Następnym razem, zadanie jest wykonywane, nowa wersja będzie używany.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 
 - jobs_reader
 
@@ -870,7 +870,7 @@ Nie ma wpływu na dowolnym wykonań w toku zadania. Po pomyślnym zakończeniu s
 Pozostałe kroki zadania zostaną automatycznie oznaczenie do wypełnienia lukę po kroku usuniętego zadania.
  
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -906,7 +906,7 @@ Dane wyjściowe parametru, który zostanie przypisany identyfikator wykonywania 
 Brak.
  
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -934,7 +934,7 @@ Numer identyfikacyjny wykonywania zadań, aby zatrzymać. job_execution_id jest 
 Brak.
  
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -966,7 +966,7 @@ Nazwa grupy docelowej do utworzenia. target_group_name jest nvarchar(128) bez wa
 Grupy docelowe umożliwiają łatwe pod kątem zadanie w kolekcji baz danych.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -994,7 +994,7 @@ Nazwa grupy docelowej, można usunąć. target_group_name jest nvarchar(128) bez
 Brak.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -1050,7 +1050,7 @@ Wartości zwracane kod 0 (Powodzenie) lub 1 (niepowodzenie)
 Dla wszystkich baz danych w ramach serwera wykonuje zadania lub puli elastycznej w czasie wykonywania, gdy serwer logiczny lub puli elastycznej jest uwzględniona w grupie docelowej.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -1106,7 +1106,7 @@ Argumenty [ @target_group_name =] "target_group_name"
 Nazwa grupy docelowej, z którego chcesz usunąć członka grupy docelowej. target_group_name jest nvarchar(128) bez wartości domyślnej.
 
 [ @target_id =] target_id  
- Docelowy numer identyfikacyjny przypisane do członka grupy docelowej, do usunięcia. target_id jest uniqueidentifier z domyślną wartością NULL.
+ Docelowy numer identyfikacyjny przypisane do członka grupy docelowej, do usunięcia. target_id jest uniqueidentifier, z domyślną wartością NULL.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
 0 (Powodzenie) lub 1 (niepowodzenie)
@@ -1115,7 +1115,7 @@ Nazwa grupy docelowej, z którego chcesz usunąć członka grupy docelowej. targ
 Grupy docelowe umożliwiają łatwe pod kątem zadanie w kolekcji baz danych.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -1166,7 +1166,7 @@ Nazwa zadania, dla której chcesz usunąć rekordy historii. Parametr job_name j
 0 (Powodzenie) lub 1 (niepowodzenie) uwagi docelowych grup umożliwiają łatwe pod kątem zadanie w kolekcji baz danych.
 
 #### <a name="permissions"></a>Uprawnienia
-Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Ogranicz użytkownikowi tylko można było monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
+Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
 - jobs_reader
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
@@ -1336,7 +1336,7 @@ Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.
 
 ## <a name="resources"></a>Zasoby
 
- - ![Ikona łącza do tematu](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "ikona łącza do tematu") [Konwencji składni języka Transact-SQL](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+ - ![Ikona łącza do tematu](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "ikona łącza do tematu") [Konwencji składni języka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>Kolejne kroki

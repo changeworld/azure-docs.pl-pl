@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości - Start łagodzenia zadania przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Inicjowanie zadania łagodzenia przy użyciu zestawu SDK moderatora zawartości platformy Azure dla platformy .NET
+title: Azure Content Moderator — początek Moderowanie zadania przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Jak zainicjować Moderowanie zadań dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,45 +9,57 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/06/2018
 ms.author: sajagtap
-ms.openlocfilehash: a103875607355993e216ce1ddea02009fc8fa1c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d936ff91cd2b7db6a88c4adb0a6f332205b814bb
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347080"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022070"
 ---
-# <a name="start-moderation-jobs-using-net"></a>Rozpocznij zadania łagodzenia przy użyciu platformy .NET
+# <a name="start-moderation-jobs-using-net"></a>Rozpoczynanie zadań Moderowanie przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady ułatwiające rozpoczęcie pracy korzystać z zawartości moderatora zestawu SDK dla platformy .NET:
+Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczęcie korzystania z [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
  
-- Uruchomić zadanie łagodzenia do skanowania i utworzyć przeglądami dla człowieka moderatorów
+- Uruchamianie zadania Moderowanie do skanowania i utworzyć przeglądy dla moderatorów ludzi
 - Pobierz stan oczekujący
-- Śledzenie i Pobierz stan końcowy przeglądu
-- Przedstawia wynik do wywołania zwrotnego adresu Url
+- Śledzenie i Uzyskaj ostateczny stan przeglądu
+- Przesyłanie wyników do adresu Url wywołania zwrotnego
 
-W tym artykule przyjęto założenie, że znasz już program Visual Studio i C#.
+W tym artykule założono, że znasz już program Visual Studio i języka C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż moderatora zawartości usług
+## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
 
-Zanim użyjesz usługi moderatora zawartości za pośrednictwem interfejsu API REST lub zestawu SDK, należy klucza subskrypcji.
-Zapoznaj się [szybkiego startu](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
 
-## <a name="define-a-custom-moderation-workflow"></a>Zdefiniuj niestandardowe łagodzenia przepływu pracy
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
 
-Zadanie łagodzenia skanuje zawartości przy użyciu interfejsów API i używa **przepływu pracy** do ustalenia, czy można utworzyć recenzji, czy nie.
-Podczas umożliwia domyślny przepływ pracy zawiera narzędzie przeglądu [zdefiniowanie niestandardowego przepływu pracy](Review-Tool-User-Guide/Workflows.md) dla tego przewodnika Szybki Start.
+Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
 
-Nazwa przepływu pracy programu swój kod, który uruchamia zadanie łagodzenia.
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejs API przeglądu tworzenia przeglądu
+
+Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
+
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+
+Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
+
+## <a name="define-a-custom-moderation-workflow"></a>Definiowanie niestandardowego Moderowanie przepływu pracy
+
+Zadanie Moderowanie skanuje zawartością za pomocą interfejsów API i używa **przepływu pracy** do ustalenia, czy należy utworzyć recenzje, czy nie.
+Gdy narzędzie do przeglądu zawiera domyślny przepływ pracy umożliwia [zdefiniować niestandardowe przepływ pracy](Review-Tool-User-Guide/Workflows.md) dla tego przewodnika Szybki Start.
+
+Nazwa przepływu pracy jest użyć w kodzie, który uruchamia zadanie moderowania.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **aplikacji konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
 
-   W przykładowym kodzie nazwij projekt **CreateReviews**.
+   W przykładowym kodzie, nadaj projektowi nazwę **CreateReviews**.
 
-1. Wybierz ten projekt jako projekt startowy pojedynczego dla rozwiązania.
+1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
-1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [szybkiego startu pomocnika klienta moderatora zawartości](content-moderator-helper-quickstart-dotnet.md).
+1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [pakietu Content Moderator klienta pomocnika Przewodnik Szybki Start](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
@@ -57,9 +69,9 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu użytkownika za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
 
-Zmodyfikuj program użytkownika przy użyciu instrukcji.
+Modyfikowanie programu za pomocą instrukcji.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -72,13 +84,13 @@ Zmodyfikuj program użytkownika przy użyciu instrukcji.
 
 ### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawienia specyficzne dla aplikacji
 
-Dodaj następujące ograniczenia i pola statyczne do **Program** klasy w pliku Program.cs.
+Dodaj następujące stałe i pola statyczne do **Program** klasy w pliku Program.cs.
 
 > [!NOTE]
-> Stała TeamName jest ustawiona na nazwę, która zostanie użyta podczas tworzenia subskrypcji moderatora zawartości. Pobrać TeamName z [moderatora zawartości witryny sieci web](https://westus.contentmoderator.cognitive.microsoft.com/).
+> Stała TeamName jest ustawiona na nazwę użytą podczas tworzenia subskrypcji usługi Content Moderator. Możesz pobrać TeamName z [witryny sieci web pakietu Content Moderator](https://westus.contentmoderator.cognitive.microsoft.com/).
 > Po zalogowaniu wybierz **poświadczenia** z **ustawienia** menu (koło zębate).
 >
-> Twoja nazwa zespołu jest wartość **identyfikator** w **interfejsu API** sekcji.
+> Twoja nazwa zespołu jest wartość **identyfikator** pole **API** sekcji.
 
 
     /// <summary>
@@ -122,12 +134,12 @@ Dodaj następujące ograniczenia i pola statyczne do **Program** klasy w pliku P
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "";
 
-## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Dodaj kod, aby automatycznie umiarkowany, Utwórz opinię i Pobierz szczegóły zadania
+## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Dodaj kod do auto średni, utworzy Przegląd i uzyskać szczegółów zadania
 
 > [!Note]
-> W praktyce, należy ustawić adres URL wywołania zwrotnego **CallbackEndpoint** do adresu URL, który odbiera wyniki ręczne przeglądu (za pomocą żądania HTTP POST).
+> W praktyce należy ustawić adres URL wywołania zwrotnego **CallbackEndpoint** do adresu URL, który otrzymuje wyniki ręcznego przeglądu (za pośrednictwem żądania HTTP POST).
 
-Najpierw dodaj następujący kod, aby **Main** metody.
+Rozpocznij, dodając następujący kod, aby **Main** metody.
 
     using (TextWriter writer = new StreamWriter(OutputFile, false))
     {
@@ -181,9 +193,9 @@ Najpierw dodaj następujący kod, aby **Main** metody.
     }
 
 > [!NOTE]
-> Klucz usługi moderatora zawartości ma żądań na drugi limit szybkości (RPS). Jeśli przekroczysz limit zestawu SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych). Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz warstwa bezpłatna ma limit szybkości jeden RPS.
+> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
 
 ## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
 
@@ -192,16 +204,16 @@ Następujące przykładowe dane wyjściowe w konsoli zostanie wyświetlony:
     Perform manual reviews on the Content Moderator site.
     Then, press any key to continue.
 
-Zaloguj się do zawartości moderatora Przejrzyj narzędzia, aby wyświetlić obraz oczekujące przejrzeć.
+Zaloguj się do pakietu Content Moderator Przegląd narzędzia, aby zobaczyć oczekujące obrazu, zapoznaj się.
 
-Użyj **dalej** przycisk przesyłania.
+Użyj **dalej** przycisk Prześlij.
 
-![Przejrzyj obrazu dla człowieka moderatorów](images/ocr-sample-image.PNG)
+![Przegląd obrazu dla moderatorów ludzi](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>Zobacz przykładowe dane wyjściowe w pliku dziennika
 
 > [!NOTE]
-> W pliku danych wyjściowych ciągi **Teamname**, **ContentId**, **CallBackEndpoint**, i **WorkflowId** odzwierciedlają użyto wartości wcześniej.
+> W pliku danych wyjściowych, ciągi **Teamname**, **ContentId**, **CallBackEndpoint**, i **WorkflowId** odzwierciedlają wartości użyto wcześniej.
 
     Create moderation job for an image.
     {
@@ -235,12 +247,12 @@ Użyj **dalej** przycisk przesyłania.
     }
 
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Adres Url wywołania zwrotnego, jeśli zostanie podana, otrzymuje tej odpowiedzi.
+## <a name="your-callback-url-if-provided-receives-this-response"></a>Adres Url wywołania zwrotnego, jeśli podana, otrzymuje tej odpowiedzi.
 
-Zostanie wyświetlony odpowiedzi, jak w następującym przykładzie:
+Zostanie wyświetlony odpowiedzi, jak w poniższym przykładzie:
 
 > [!NOTE]
-> Do wywołania zwrotnego odpowiedzi ciągi **ContentId** i **WorkflowId** wartości użyte wcześniej.
+> W odpowiedzi wywołania zwrotnego, ciągi **ContentId** i **WorkflowId** odzwierciedlał odpowiednie wartości, które było wcześniej używane.
 
     {
         "JobId": "2018014caceddebfe9446fab29056fd8d31ffe",
@@ -260,4 +272,4 @@ Zostanie wyświetlony odpowiedzi, jak w następującym przykładzie:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Pobierz rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) to i inne elementy zawartości moderatora szybkiego startu dla platformy .NET i rozpocząć pracę na integracją.
+Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.

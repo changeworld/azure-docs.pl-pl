@@ -1,6 +1,6 @@
 ---
-title: Ponownego rozpoczęcia w podstawie aktora Azure mikrousług | Dokumentacja firmy Microsoft
-description: Wprowadzenie do ponownego rozpoczęcia dla elementów Reliable Actors sieci szkieletowej usług
+title: Współużytkowania wątkowości w aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Wprowadzenie do współużytkowania wątkowości dla elementów Reliable Actors usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 40f52cb399f2d7391657ce4356a0c30921d46e5f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c7a4066a949ad6e66c45dff67f1e80801f2fa4cd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207098"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055264"
 ---
-# <a name="reliable-actors-reentrancy"></a>Niezawodne wielobieżność złośliwych użytkowników
-Środowisko uruchomieniowe Reliable Actors, domyślnie umożliwia wywołanie logiczną na podstawie kontekstu wielobieżność. Dzięki temu podmiotów być współużytkowane, jeśli są w tym samym łańcuchu kontekstu wywołania. Na przykład aktora A wysyła komunikat do aktora B, który wysyła wiadomość do aktora. Podczas przetwarzania komunikatu C aktora wywołuje aktora A, wiadomość jest współużytkowane, więc może być. Komunikaty, które są częścią kontekstu wywołania różnych zostaną zablokowane na aktora A zakończenie przetwarzania.
+# <a name="reliable-actors-reentrancy"></a>Reliable Actors współużytkowania wątkowości
+Środowisko uruchomieniowe elementów Reliable Actors, domyślnie umożliwia wielobieżność oparte na kontekście wywołań logicznych. Dzięki temu Aktorzy stanowią współużytkowane, gdy mają one ten sam łańcuch wywołań w kontekście. Na przykład A Aktor wysyła komunikat do aktora B, który wysyła wiadomość do aktora. W ramach przetwarzania wiadomości Jeśli C aktora wywołuje aktora A, komunikat jest współużytkowane, dzięki czemu będzie można. Inne komunikaty, które są częścią kontekstu wywołań różnych zostaną zablokowane na A Aktor, do momentu zakończenia przetwarzania.
 
-Dostępne są dwie opcje do ponownego rozpoczęcia aktora zdefiniowane w `ActorReentrancyMode` wyliczenia:
+Dostępne są dwie opcje współużytkowania wątkowości aktora zdefiniowane w `ActorReentrancyMode` wyliczenia:
 
-* `LogicalCallContext` (domyślnie)
-* `Disallowed` — Wyłącza ponowne wejście
+* `LogicalCallContext` (zachowanie domyślne)
+* `Disallowed` — Wyłącza współużytkowania wątkowości
 
 ```csharp
 public enum ActorReentrancyMode
@@ -43,9 +43,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Wielobieżność można skonfigurować w `ActorService`tego ustawienia podczas rejestracji. Ustawienie ma zastosowanie do wszystkich wystąpień aktora utworzone w usłudze aktora.
+Można skonfigurować współużytkowania wątkowości w `ActorService`tego ustawienia podczas rejestracji. To ustawienie ma zastosowanie do wszystkich wystąpień aktora utworzone w usłudze aktora.
 
-W poniższym przykładzie przedstawiono usługi aktora, która ustawia tryb wielobieżność `ActorReentrancyMode.Disallowed`. W tym przypadku aktora wysyła komunikat współużytkowane do innego aktora, wyjątek typu `FabricException` zostanie wygenerowany.
+Poniższy przykład pokazuje usługi aktora, który ustawia tryb współużytkowania wątkowości `ActorReentrancyMode.Disallowed`. W tym przypadku Aktor wysyła komunikat współużytkowane do innego aktora, wyjątek typu `FabricException` zostanie zgłoszony.
 
 ```csharp
 static class Program
@@ -111,4 +111,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej na temat ponownego rozpoczęcia w [dokumentacji interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* Dowiedz się więcej na temat współużytkowania wątkowości w [dokumentacji interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)

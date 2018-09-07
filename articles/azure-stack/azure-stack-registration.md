@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 52d0706177482e162d1f4bc038c967a4596fd3b3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841934"
+ms.locfileid: "44024862"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -45,7 +45,7 @@ Będą potrzebne następujące elementy w miejscu, przed zarejestrowaniem:
 
 Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz mieć:
 
-- Identyfikator subskrypcji dla subskrypcji platformy Azure. Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **więcej usług** > **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć Identyfikator subskrypcji.
+- Identyfikator subskrypcji dla subskrypcji platformy Azure. Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć identyfikatora subskrypcji.
 
   > [!Note]  
   > Subskrypcje w chmurze (Niemcy) nie są obecnie obsługiwane.
@@ -284,7 +284,7 @@ Opcjonalnie służy polecenie cmdlet Get-Content wskaż plik zawierający tokenu
 Wykonaj następujące kroki, aby sprawdzić, usługi Azure Stack po pomyślnym zarejestrowaniu za pomocą platformy Azure.
 
 1. Zaloguj się do usługi Azure Stack [portal administratora](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;region >. &lt;fqdn >*.
-2. Wybierz **więcej usług** > **zarządzania Marketplace** > **Dodaj na platformie Azure**.
+2. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace** > **DodajplatformyAzure**.
 
 Jeśli zobaczysz listę dostępnych na platformie Azure (takich jak WordPress) elementów, proces aktywacji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie zobaczysz elementów portalu Azure marketplace w witrynie marketplace usługi Azure Stack.
 

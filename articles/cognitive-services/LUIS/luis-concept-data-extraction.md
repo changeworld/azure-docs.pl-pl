@@ -1,5 +1,6 @@
 ---
-title: Zrozumienie pojęcia związane z wyodrębniania danych z usługi LUIS — Azure | Dokumentacja firmy Microsoft
+title: Pojęcia związane z wyodrębniania danych z usługi LUIS — Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225686"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023464"
 ---
 # <a name="data-extraction"></a>Wyodrębnianie danych
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podjąć działania.
@@ -46,7 +47,7 @@ Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Za pomocą `M
 
 |Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|
-|Przeznaczenie|Ciąg|topScoringIntent.intent|"GetStoreInfo"|
+|Intencja|Ciąg|topScoringIntent.intent|"GetStoreInfo"|
 
 Jeśli swoją aplikacją usługi LUIS wywołania lub chatbot podejmuje decyzję oparciu o więcej niż jeden wynik konwersji, zwracają wyniki wszystkich intencji, ustawiając parametr querystring `verbose=true`. Odpowiedź na punkt końcowy jest:
 
@@ -75,8 +76,8 @@ Intencji są uporządkowane od najwyższego do najniższego wyniku.
 
 |Obiekt danych|Typ danych|Lokalizacja danych|Wartość|Wynik|
 |--|--|--|--|:--|
-|Przeznaczenie|Ciąg|.intent intencji [0]|"GetStoreInfo"|0.984749258|
-|Przeznaczenie|Ciąg|.intent intencji [1]|"None"|0.0168218873|
+|Intencja|Ciąg|.intent intencji [0]|"GetStoreInfo"|0.984749258|
+|Intencja|Ciąg|.intent intencji [1]|"None"|0.0168218873|
 
 Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, takich jak `Utilties` lub `Communication` oraz zamiar:
 
@@ -104,11 +105,11 @@ Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, ta
 }
 ```
     
-|Domena|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
+|Domain|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|--|
-|Usługi użyteczności publicznej|Przeznaczenie|Ciąg|.intent intencji [0]|"<b>Narzędzia</b>. ShowNext"|
-|Komunikacja|Przeznaczenie|Ciąg|.intent intencji [1]|<b>Komunikacja</b>. StartOver"|
-||Przeznaczenie|Ciąg|.intent intencji [2]|"None"|
+|Usługi użyteczności publicznej|Intencja|Ciąg|.intent intencji [0]|"<b>Narzędzia</b>. ShowNext"|
+|Komunikacja|Intencja|Ciąg|.intent intencji [1]|<b>Komunikacja</b>. StartOver"|
+||Intencja|Ciąg|.intent intencji [2]|"None"|
 
 
 ## <a name="data-from-entities"></a>Dane z jednostki

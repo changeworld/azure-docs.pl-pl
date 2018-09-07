@@ -1,6 +1,7 @@
 ---
-title: Często zadawane pytania dotyczące zamiana mowy na tekst usługi na platformie Azure
-description: Poniżej przedstawiono odpowiedzi na najpopularniejsze pytania dotyczące zamiana mowy na tekst.
+title: Często zadawane pytania dotyczące usługi zamiany tekstu na mowę na platformie Azure
+description: Uzyskaj odpowiedzi na najpopularniejsze pytania dotyczące usługi zamiany tekstu na mowę.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,48 +9,52 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 8d70c4a359c713d6c5f46423193e9c9e7e1f3baf
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4e08abedf9b60f229865bf935d50443782bd928c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282861"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024469"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Zamiana tekstu na mowę — często zadawane pytania
 
-Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYTAŃ, zapoznaj się z inne opcje pomocy technicznej [tutaj](support.md).
+Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYTAŃ, zapoznaj się z [inne opcje pomocy technicznej](support.md).
 
 ## <a name="general"></a>Ogólne
 
-**Pytanie**: jaka jest różnica między modelami standardowych i niestandardowych voice?
+**P: jaka jest różnica między modelu standardowego głosu i modelu niestandardowego głosu?**
 
-**Odpowiedź**: standardowego głosu modeli (zwane) czcionki głosowe) przeszkoleni należące do danych firmy Microsoft i są już wdrożone w chmurze. Modeli usługi Custom voice umożliwia użytkownikom adaptowanie model średni i przesyłanie timbre i sposób wyrażenia zgodnie z style głosowej osoby mówiącej lub do nauczenia pełnej nowy model na podstawie danych szkolenia przygotowane przez użytkownika. Obecnie coraz więcej klienci chcą mieć jeden z rodzajem, marki głosu dla ich botów. Platforma tworzenia głosów niestandardowych voice jest właściwym wyborem dla tego.
+**A**: model głosowy standardowego (nazywanego również *czcionka głosowa*) przeszkoleni przy użyciu danych należącymi do firmy Microsoft i została już wdrożona w chmurze. Aby dostosować model średni i Przenieś timbre i wyrażenia stylu głosu głośnika lub wytrenuj pełne, nowy model na podstawie danych szkolenia przygotowane przez użytkownika, można użyć modelu niestandardowego głosu. Obecnie coraz więcej klientów mają głosu jednego z rodzajem, marki dla ich botów. Niestandardowe platforma tworzenia głosowych jest dobrym wyborem dla tej opcji.
 
-**Pytanie**: gdzie rozpocząć jeśli chcę korzystać z modelu standardowego głosu?
+**Pyt.: gdzie rozpocząć, jeśli chcę korzystać z modelu standardowego głosu?**
 
-**Odpowiedź**: więcej niż 80 modeli standardowego głosu w ponad 45 języków są dostępne za pośrednictwem żądania HTTP. Najpierw trzeba pobrać [klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started). Aby wywołania REST do modeli głosowych wstępnie wdrożone, zapoznaj się z [szczegółowych informacji w tym miejscu](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: więcej niż 80 modeli standardowego głosu w ponad 45 języków są dostępne za pośrednictwem żądania HTTP. Najpierw pobierz [klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started). Aby wprowadzić wywołania REST do modeli głosowych predeployed, zobacz [interfejsu API REST](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-**Pytanie**: Aby użyć dostosowany model głosowy, jest interfejs API taka sama jak standardowy głosów?
+**P: Chcę użyć dostosowany model głosowy, czy interfejsu API taka sama jak ta, która jest używana do standardowego głosów?**
 
-**Odpowiedź**: w przypadku modelu głosowego niestandardowych, utworzeniu i wdrożeniu otrzymasz unikatowych punktów końcowych dla modelu. Należy określić punkt końcowy w żądaniach HTTP, mowy w aplikacjach za pomocą głosu. Te same funkcje dostępne za pośrednictwem interfejsu API REST usługi zamiany tekstu na mowę jest również dostępna dla niestandardowego punktu końcowego. Zobacz jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: po utworzeniu i wdrożeniu modelu niestandardowego głosu uzyskasz unikatowych punktów końcowych dla modelu. Aby za pomocą głosu głosu w aplikacjach, należy określić punkt końcowy w żądaniach HTTP. Te same funkcje, które są dostępne w interfejsie API REST usługi zamiany tekstu na mowę, jest dostępna dla niestandardowego punktu końcowego. Dowiedz się, jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
 
-**Pytanie**: należy przygotować danych szkoleniowych do tworzenia modeli usługi custom voice na własną rękę?
+**P: czy należy przygotować danych szkoleniowych do tworzenia modeli usługi custom voice na własną rękę?**
 
-**Odpowiedź**: musisz przygotować dane szkoleniowe dla siebie. Kolekcja danych mowy jest wymagana do utworzenia dostosowany model głosowy. Ta kolekcja składa się z zestawu plików audio, nagrań mowy i plik tekstowy w transkrypcji każdy plik dźwiękowy. Wynik Twojego głosu cyfrowego silnie zależy od jakości danych szkoleniowych. Aby wygenerować dobre głos TTS, ważne jest, nagrania są wykonywane w pokoju cichy z mikrofonu stałego wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi pomysłu, nawet and consistency in i ekspresyjny mannerisms mowy są niezbędne do kompilowania doskonały cyfrowy głosu. Firma Microsoft zdecydowanie zaleca się mają głosy zapisane w studio rejestrowania.
-W tej chwili firma Microsoft nie zapewniają obsługę rejestrowania w trybie online i nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts)
- 
-**Pytanie**: jakie skryptów należy używać do rejestrowania danych mowy do trenowania niestandardowych voice? 
+**A**: tak, należy przygotować dane szkoleniowe samodzielnie modelu niestandardowego głosu.
 
-**Odpowiedź**: skrypty do nagrywanie głosu nie jest ograniczona. Aby zarejestrować mowy, można użyć własnych skryptów. Po prostu upewnij się, że mają wystarczającą ilość fonetycznych pokrycia w Twoich danych mowy. To w opracowywaniu niestandardowych voice, można zacząć od małej ilości danych mowy, który może być 50 różnych zdań (o 3 – 5 minut mowy). Podaj większej ilości danych, stosować bardziej naturalne Twojego głosu. Możesz rozpocząć szkolenie czcionki głosowe pełną po podaniu nagrania zdania ponad 2000 (około 3 – 4 godziny mowy). Aby uzyskać pełne głosu wysokiej jakości, należy przygotować nagrania ponad 6000 zdań (około 8 – 10 godzin mowy).  
+Kolekcja danych mowy jest wymagana do utworzenia dostosowany model głosowy. Ta kolekcja składa się z zestawu plików audio, nagrań mowy i tekst pliku transkrypcji każdy plik dźwiękowy. Wynik Twojego głosu cyfrowego rolę odgrywa jakość danych szkoleniowych. Aby uzyskać dobre głosu zamiany tekstu na mowę, jest ważne, czy nagrania są przekazywane w pokoju cichy przy użyciu mikrofonu stałego wysokiej jakości. Wolumin spójne wypowiedzi szybkości i wypowiedzi pomysłu, nawet and consistency in i ekspresyjny mannerisms mowy są niezbędne do tworzenia wspaniałych głosu cyfrowych. Zdecydowanie zaleca się zapisywania głosy w studio rejestrowania.
+
+Obecnie firma Microsoft nie zapewniają obsługę rejestrowania w trybie online ani nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+
+**P: jakie skryptów należy używać do rejestrowania danych mowy do trenowania niestandardowych voice?**
+
+**A**: skrypty do nagrywanie głosu nie jest ograniczona. Aby zarejestrować mowy, można użyć własnych skryptów. Po prostu upewnij się, że masz wystarczające pokrycie fonetycznych w Twoich danych mowy. To w opracowywaniu niestandardowych voice, można uruchomić przy użyciu małych ilości danych mowy, która może być 50 różnych zdań (około 3 – 5 minut mowy). Podaj większej ilości danych, stosować bardziej naturalne Twojego głosu. Możesz rozpocząć szkolenie czcionki głosowe pełną po podaniu nagrania zdania ponad 2000 (około 3 – 4 godziny mowy). Aby uzyskać pełne głos, wysokiej jakości, należy przygotować nagrania ponad 6000 zdań (około 8 – 10 godzin mowy).
+
 Firma Microsoft oferuje dodatkowe usługi, które ułatwiają przygotowanie skryptów do rejestrowania. Skontaktuj się z pomocą [Custom Voice techniczną](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) dla zapytania.
 
-**Pytanie**: co zrobić, jeśli konieczne zapewnienie większej współbieżności niż domyślna wartość lub treści oferowanych w portalu?
+**P: co mogę zrobić, jeśli potrzebne jest zapewnienie większej współbieżności niż wartość domyślna lub treści oferowanych w portalu?**
 
-**Odpowiedź**: można zwiększać z przyrostem równym 20 równoczesnych żądań modelu. Skontaktuj się z pomocą [Custom Voice techniczną](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) dla zapytania o wyższych skalowania.
+**A**: można zwiększać z przyrostem równym 20 równoczesnych żądań modelu. Skontaktuj się z pomocą [Custom Voice techniczną](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) dla zapytania o wyższych skalowania.
 
-**Pytanie**: można pobrać swój model i uruchomić go lokalnie?
+**P: czy mogę Pobierz swój model i uruchomić go lokalnie?**
 
-**Odpowiedź**: modeli nie mogą być pobierane i wykonywany lokalnie.
+**A**: modeli nie mogą być pobierane i wykonywany lokalnie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

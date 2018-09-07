@@ -1,6 +1,6 @@
 ---
 title: Często zadawane pytania dotyczące wykorzystania interfejsu API | Dokumentacja firmy Microsoft
-description: Lista liczników Azure stosu, porównanie Azure użycia interfejsu API, czas użytkowania i zgłoszony czas kody błędów.
+description: Lista liczników usługi Azure Stack, porównanie interfejs API użycia platformy Azure, czas użycia i podać godzinę kody błędów.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,244 +12,345 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ac22ba34bff1d5321c05bc0a0a1b14ca742079a7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 76953f14744196306d0274882e8ec3b454fa99e3
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051507"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051191"
 ---
-# <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania w stosie Azure użycia interfejsu API
+# <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania dotyczące usługi Azure Stack użycia interfejsu API
 
-Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące interfejsu API Azure stosu użycia.
+Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące użycia interfejsu API usługi Azure Stack.
 
-## <a name="what-meter-ids-can-i-see"></a>Jakie miernika identyfikatorów może wyświetlać?
+## <a name="what-meter-ids-can-i-see"></a>Jakie miernika identyfikatory widzi?
 Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 
-**Sieć**  
+### <a name="network"></a>Sieć
   
-**Pomiarowe identyfikator**: F271A8A388C44D93956A063E1D2FA80B  
-**Nazwa licznika**: statyczne użycia adresów IP  
+**Identyfikator licznika**: F271A8A388C44D93956A063E1D2FA80B  
+**Nazwa miernika**: statyczne użycie adresu IP  
 **Jednostka**: adresy IP  
-**Uwagi dotyczące**: adresy IP liczba używane. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca adres IP pomnożona przez liczbę godzin.  
+**Informacje o**: liczba adresów IP adresy używane. Jeśli chcesz wywołać interfejs API użycia z dokładnością co do dnia, licznik zwracany jest adres IP pomnożona przez liczbę godzin.  
   
-**Pomiarowe identyfikator**: 9E2739BA86744796B465F64674B822BA  
-**Nazwa licznika**: dynamiczne użycie adresu IP  
+**Identyfikator licznika**: 9E2739BA86744796B465F64674B822BA  
+**Nazwa miernika**: dynamiczne użycie adresu IP  
 **Jednostka**: adresy IP  
-**Uwagi dotyczące**: adresy IP liczba używane. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca adres IP pomnożona przez liczbę godzin.  
+**Informacje o**: liczba adresów IP adresy używane. Jeśli chcesz wywołać interfejs API użycia z dokładnością co do dnia, licznik zwracany jest adres IP pomnożona przez liczbę godzin.  
   
-**Storage**  
+### <a name="storage"></a>Magazyn
   
-**Pomiarowe identyfikator**: B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
-**Nazwa licznika**: TableCapacity  
-**Jednostka**: GB\*godziny  
-**Uwagi dotyczące**: łączna pojemność używane przez tabel.  
+**Identyfikator licznika**: B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
+**Nazwa miernika**: TableCapacity  
+**Jednostka**: GB\*godzin  
+**Informacje o**: łączna pojemność zajętą przez tabele.  
   
-**Pomiarowe identyfikator**: B5C15376-6C94-4FDD-B655-1A69D138ACA3  
-**Nazwa licznika**: PageBlobCapacity  
-**Jednostka**: GB\*godziny  
-**Uwagi dotyczące**: łączna pojemność używane przez stronicowych obiektów blob.  
+**Identyfikator licznika**: B5C15376-6C94-4FDD-B655-1A69D138ACA3  
+**Nazwa miernika**: PageBlobCapacity  
+**Jednostka**: GB\*godzin  
+**Informacje o**: łączna pojemność zajętą przez stronicowych obiektów blob.  
   
-**Pomiarowe identyfikator**: B03C6AE7-B080-4BFA-84A3-22C800F315C6  
-**Nazwa licznika**: QueueCapacity  
-**Jednostka**: GB\*godziny  
-**Uwagi dotyczące**: łączna pojemność używane przez kolejkę.  
+**Identyfikator licznika**: B03C6AE7-B080-4BFA-84A3-22C800F315C6  
+**Nazwa miernika**: QueueCapacity  
+**Jednostka**: GB\*godzin  
+**Informacje o**: łączna pojemność zajętą przez kolejkę.  
   
-**Pomiarowe identyfikator**: 09F8879E-87E9-4305-A572-4B7BE209F857  
-**Nazwa licznika**: BlockBlobCapacity  
-**Jednostka**: GB\*godziny  
-**Uwagi dotyczące**: łączna pojemność używane przez blokowych obiektów blob.  
+**Identyfikator licznika**: 09F8879E-87E9-4305-A572-4B7BE209F857  
+**Nazwa miernika**: BlockBlobCapacity  
+**Jednostka**: GB\*godzin  
+**Informacje o**: łączna pojemność zajętą przez blokowych obiektów blob.  
   
-**Pomiarowe identyfikator**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
-**Nazwa licznika**: TableTransactions  
-**Jednostka**: żądanie zliczania, 10, 000's  
-**Uwagi dotyczące**: Tabela żądania usług (w 10 000).  
+**Identyfikator licznika**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
+**Nazwa miernika**: TableTransactions  
+**Jednostka**: liczba w 10 żądań, 000's  
+**Informacje o**: tabelę żądań obsługi (w 10 000).  
   
-**Pomiarowe identyfikator**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
-**Nazwa licznika**: TableDataTransIn  
-**Jednostka**: danych wejściowych w GB  
-**Uwagi dotyczące**: Tabela usługi danych wejściowych w GB.  
+**Identyfikator licznika**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
+**Nazwa miernika**: TableDataTransIn  
+**Jednostka**: danych przychodzących w GB  
+**Informacje o**: tabeli Usługa transferu danych przychodzących w GB.  
   
-**Pomiarowe identyfikator**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
-**Nazwa licznika**: TableDataTransOut  
-**Jednostka**: wyjście w GB  
-**Uwagi dotyczące**: Tabela wyjście danych usługi w GB  
+**Identyfikator licznika**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
+**Nazwa miernika**: TableDataTransOut  
+**Jednostka**: ruch wychodzący w GB  
+**Informacje o**: Table service wyjście danych w GB  
   
-**Pomiarowe identyfikator**: 43DAF82B-4618-444A-B994-40C23F7CD438  
-**Nazwa licznika**: BlobTransactions  
-**Jednostka**: żądań liczba 10, 000's  
-**Uwagi dotyczące**: żądań obsługi obiektu Blob (w 10 000).  
+**Identyfikator licznika**: 43DAF82B-4618-444A-B994-40C23F7CD438  
+**Nazwa miernika**: BlobTransactions  
+**Jednostka**: żądania count w 10 000's  
+**Informacje o**: żądaniami obsługi usługi Blob (w 10 000).  
   
-**Pomiarowe identyfikator**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
-**Nazwa licznika**: BlobDataTransIn  
-**Jednostka**: danych wejściowych w GB  
-**Uwagi dotyczące**: obiektów Blob usługi danych wejściowych w GB.  
+**Identyfikator licznika**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
+**Nazwa miernika**: BlobDataTransIn  
+**Jednostka**: danych przychodzących w GB  
+**Informacje o**: obiektów Blob usługi transferu danych przychodzących w GB.  
   
-**Pomiarowe identyfikator**: 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8  
-**Nazwa licznika**: BlobDataTransOut  
-**Jednostka**: wyjście w GB  
-**Uwagi dotyczące**: obiektów Blob usługi wyjście danych w GB.  
+**Identyfikator licznika**: 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8  
+**Nazwa miernika**: BlobDataTransOut  
+**Jednostka**: ruch wychodzący w GB  
+**Informacje o**: obiektów Blob usługi wyjście danych w GB.  
   
-**Pomiarowe identyfikator**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
-**Nazwa licznika**: QueueTransactions  
-**Jednostka**: żądań liczba 10, 000's  
-**Uwagi dotyczące**: kolejka żądań usług (w 10 000).  
+**Identyfikator licznika**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
+**Nazwa miernika**: QueueTransactions  
+**Jednostka**: żądania count w 10 000's  
+**Informacje o**: żądania obsługi w kolejce (w 10 000).  
   
-**Pomiarowe identyfikator**: E518E809-E369-4A45-9274-2017B29FFF25  
-**Nazwa licznika**: QueueDataTransIn  
-**Jednostka**: danych wejściowych w GB  
-**Uwagi dotyczące**: kolejka usługi danych wejściowych w GB.  
+**Identyfikator licznika**: E518E809-E369-4A45-9274-2017B29FFF25  
+**Nazwa miernika**: QueueDataTransIn  
+**Jednostka**: danych przychodzących w GB  
+**Informacje o**: kolejki usługi transferu danych przychodzących w GB.  
   
-**Pomiarowe identyfikator**: DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
-**Nazwa licznika**: QueueDataTransOut  
-**Jednostka**: wyjście w GB  
-**Uwagi dotyczące**: kolejka usługi wyjście danych w GB  
+**Identyfikator licznika**: DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
+**Nazwa miernika**: QueueDataTransOut  
+**Jednostka**: ruch wychodzący w GB  
+**Informacje o**: Queue service wyjście danych w GB  
+
+### <a name="compute"></a>Wystąpienia obliczeniowe 
   
-**SQL RP**  
+**Identyfikator licznika**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
+**Nazwa miernika**: godziny rozmiar maszyny Wirtualnej bazy  
+**Jednostka**: godziny rdzeni wirtualnych  
+**Informacje o**: liczba rdzeni wirtualnych pomnożona przez godziny uruchomienia maszyny Wirtualnej.  
   
-**Pomiarowe identyfikator**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
-**Nazwa licznika**: DatabaseSizeHourSqlMeter  
-**Jednostka**: MB\*godziny  
-**Uwagi dotyczące**: DB całkowita pojemność podczas tworzenia. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca MB pomnożona przez liczbę godzin.  
+**Identyfikator licznika**: 9CD92D4C-BAFD-4492-B278-BEDC2DE8232A  
+**Nazwa miernika**: godziny rozmiar maszyn wirtualnych Windows  
+**Jednostka**: godziny rdzeni wirtualnych  
+**Informacje o**: liczba rdzeni wirtualnych pomnożona przez godziny uruchomienia maszyny Wirtualnej.  
   
-**MySql RP**  
+**Identyfikator licznika**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
+**Nazwa miernika**: godziny rozmiar maszyn wirtualnych  
+**Jednostka**: godziny dla maszyn wirtualnych  
+**Informacje o**: przechwytuje zarówno podstawowy, jak i Windows maszyny Wirtualnej. Nie może dopasować liczby rdzeni.  
   
-**Pomiarowe identyfikator**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
-**Nazwa licznika**: DatabaseSizeHourMySqlMeter  
-**Jednostka**: MB\*godziny  
-**Uwagi dotyczące**: DB całkowita pojemność podczas tworzenia. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca MB pomnożona przez liczbę godzin.  
+### <a name="managed-disks"></a>Managed Disks
+
+**Identyfikator licznika**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
+**Nazwa miernika**: S4   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku – 32 GB 
+
+**Identyfikator licznika**: dc9fc6a9-0782-432a-b8dc-978130457494   
+**Nazwa miernika**: S6   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku – 64 GB 
+
+**Identyfikator licznika**: e5572fce-9f58-49d7-840c-b168c0f01fff   
+**Nazwa miernika**: S10   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku — 128 GB 
+
+**Identyfikator licznika**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
+**Nazwa miernika**: S15   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku — 256 GB 
+
+**Identyfikator licznika**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
+**Nazwa miernika**: S20   
+**Jednostka**: liczba dysków      
+**Informacje o**: standardowa zarządzana dysku — 512 GB 
+
+**Identyfikator licznika**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
+**Nazwa miernika**: S30   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku – 1024 GB 
+
+**Identyfikator licznika**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
+**Nazwa miernika**: S40   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysku — 2048 GB 
+
+**Identyfikator licznika**: a54899dd-458e-4a40-9abd-f57cafd936a7   
+**Nazwa miernika**: S50   
+**Jednostka**: liczba dysków   
+**Informacje o**: standardowa zarządzana dysk — 4096 GB 
+
+**Identyfikator licznika**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
+**Nazwa miernika**: P4   
+**Jednostka**: liczba dysków   
+**Informacje o**: zarządzane w warstwie Premium dysku – 32 GB 
+
+**Identyfikator licznika**: 518b412b-1927-4f25-985f-4aea24e55c4f   
+**Nazwa miernika**: P6   
+**Jednostka**: liczba dysków   
+**Informacje o**: dysk – 64 GB zarządzane w warstwie Premium 
+
+**Identyfikator licznika**: 5cfb1fed-0902-49e3-8217-9add946fd624   
+**Nazwa miernika**: P10   
+**Jednostka**: liczba dysków   
+**Informacje o**: zarządzane dysku — 128 GB w warstwie Premium  
+
+**Identyfikator licznika**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
+**Nazwa miernika**: P15  
+**Jednostka**: liczba dysków   
+**Informacje o**: dysk — 256 GB zarządzane w warstwie Premium 
+
+**Identyfikator licznika**: c7e7839c-293b-4761-ae4c-848eda91130b   
+**Nazwa miernika**: P20   
+**Jednostka**: liczba dysków   
+**Informacje o**: dysk — 512 GB zarządzane w warstwie Premium 
+
+**Identyfikator licznika**: 9f502103-adf4-4488-b494-456c95d23a9f   
+**Nazwa miernika**: P30   
+**Jednostka**: liczba dysków   
+**Informacje o**: zarządzane w warstwie Premium dysku – 1024 GB 
+
+**Identyfikator licznika**: 043757fc-049f-4e8b-8379-45bb203c36b1   
+**Nazwa miernika**: P40   
+**Jednostka**: liczba dysków    
+**Informacje o**: dysk — 2048 GB zarządzane w warstwie Premium 
+
+**Identyfikator licznika**: c0342c6f-810b-4942-85d3-6eaa561b6570   
+**Nazwa miernika**: P50   
+**Jednostka**: liczba dysków   
+**Informacje o**: dysk — 4096 GB zarządzane w warstwie Premium 
+
+**Identyfikator licznika**: 8a409390-1913-40ae-917b-08d0f16f3c38   
+**Nazwa miernika**: ActualStandardDiskSize   
+**Jednostka**: bajtów      
+**Informacje o**: rzeczywisty rozmiar na dysku dysku zarządzanego w warstwie standardowa  
+
+**Identyfikator licznika**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
+**Nazwa miernika**: ActualPremiumDiskSize   
+**Jednostka**: bajtów      
+**Informacje o**: dysk zarządzany rzeczywisty rozmiar na dysku premium 
+
+**Identyfikator licznika**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
+**Nazwa miernika**: ActualStandardSnapshotSize   
+**Jednostka**: bajtów   
+**Informacje o**: rzeczywisty rozmiar na dysku zarządzanego standardową migawkę.  
+
+**Identyfikator licznika**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
+**Nazwa miernika**: ActualPremiumSnapshotSize   
+**Jednostka**: bajtów   
+**Informacje o**: rzeczywisty rozmiar na dysku zarządzanego w warstwie premium.   
+
+### <a name="sql-rp"></a>SQL RP
   
-**Obliczanie**  
+**Identyfikator licznika**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
+**Nazwa miernika**: DatabaseSizeHourSqlMeter  
+**Jednostka**: MB\*godzin  
+**Informacje o**: DB łączna pojemność podczas tworzenia. Wartość licznika, jeśli chcesz wywołać interfejs API użycia z dokładnością co do dnia, zwraca MB pomnożona przez liczbę godzin.  
   
-**Pomiarowe identyfikator**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
-**Nazwa licznika**: godziny rozmiar dla podstawowej maszyny Wirtualnej  
-**Jednostka**: wirtualnego podstawowe godziny  
-**Uwagi dotyczące**: liczba rdzeni wirtualnego pomnożona przez godziny uruchomienia maszyny Wirtualnej.  
+### <a name="mysql-rp"></a>MySql RP   
   
-**Pomiarowe identyfikator**: 9CD92D4C-BAFD-4492-B278-BEDC2DE8232A  
-**Nazwa licznika**: godziny rozmiar maszyny Wirtualnej systemu Windows  
-**Jednostka**: wirtualnego podstawowe godziny  
-**Uwagi dotyczące**: liczba rdzeni wirtualnego pomnożona przez godziny uruchomienia maszyny Wirtualnej.  
+**Identyfikator licznika**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
+**Nazwa miernika**: DatabaseSizeHourMySqlMeter  
+**Jednostka**: MB\*godzin  
+**Informacje o**: DB łączna pojemność podczas tworzenia. Wartość licznika, jeśli chcesz wywołać interfejs API użycia z dokładnością co do dnia, zwraca MB pomnożona przez liczbę godzin.    
+### <a name="key-vault"></a>Usługa Key Vault   
   
-**Pomiarowe identyfikator**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
-**Nazwa licznika**: godziny rozmiar maszyny Wirtualnej  
-**Jednostka**: godziny dla maszyny Wirtualnej  
-**Uwagi dotyczące**: przechwytuje zarówno podstawowy, jak i systemu Windows maszyny Wirtualnej. Nie dostosowywać rdzeni.  
+**Identyfikator licznika**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
+**Nazwa miernika**: transakcje usługi Key Vault  
+**Jednostka**: liczba w 10 żądań, 000's  
+**Informacje o**: numer interfejsu API REST żądań odebranych przez płaszczyzny danych usługi Key Vault.  
   
-**Usługa Key Vault**  
+**Identyfikator licznika**: 2C354225-B2FE-42E5-AD89-14F0EA302C87  
+**Nazwa miernika**: Zaawansowane klucze transakcji  
+**Jednostka**: 10 tys. transakcji  
+**Informacje o**: RSA 3 K/4 K, transakcje klucza ECC. (wersja zapoznawcza).  
   
-**Pomiarowe identyfikator**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
-**Nazwa licznika**: transakcji magazynu kluczy  
-**Jednostka**: żądanie zliczania, 10, 000's  
-**Uwagi dotyczące**: numer REST API żądań odebranych przez płaszczyzna danych magazynu kluczy.  
+### <a name="app-service"></a>App Service   
   
-**Pomiarowe identyfikator**: 2C354225-B2FE-42E5-AD89-14F0EA302C87  
-**Nazwa licznika**: Zaawansowane klucze transakcji  
-**Jednostka**: 10 tys transakcji  
-**Uwagi dotyczące**: RSA 3 K/4 K, transakcje klucza ECC. (wersja zapoznawcza).  
+**Identyfikator licznika**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
+**Nazwa miernika**: Usługa App Service  
+**Jednostka**: godziny rdzeni wirtualnych  
+**Informacje o**: liczba rdzeni wirtualnych, używane do uruchamiania usługi app service. Uwaga: Firma Microsoft używa ten licznik do obciążenia usługi App Service w usłudze Azure Stack. Dostawców usług w chmurze można użyć App Service liczniki (poniżej). Aby obliczyć obciążenie dla swoich dzierżaw.  
   
-*Usługi aplikacji**  
-  
-**Pomiarowe identyfikator**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
-**Nazwa licznika**: usługi aplikacji  
-**Jednostka**: wirtualnego podstawowe godziny  
-**Uwagi dotyczące**: liczba rdzeni wirtualnego używane do uruchamiania usługi aplikacji. Uwaga: Firma Microsoft używa tego miernika do obciążania usługi aplikacji Azure stosu. Dostawcy usług w chmurze można użyć usługi App Service liczników (poniżej) można obliczyć obciążenie dla swoich dzierżaw.  
-  
-**Pomiarowe identyfikator**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
-**Nazwa licznika**: żądania funkcji  
+**Identyfikator licznika**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
+**Nazwa miernika**: żądania funkcji  
 **Jednostka**: 10 żądań  
-**Uwagi dotyczące**: łączna liczba wykonań żądanego (na 10 wykonaniami). Wykonaniami zliczane są zawsze funkcji jest uruchamiany w odpowiedzi na zdarzenie lub jest wyzwalany przez powiązanie.  
+**Informacje o**: całkowitej liczby zażądanych wykonań (za 10 wykonań). Wykonania są liczone za każdym razem funkcji jest uruchamiany w odpowiedzi na zdarzenie lub jest wyzwalany przez powiązanie.  
   
-**Pomiarowe identyfikator**: D1D04836-075C-4F27-BF65-0A1130EC60ED  
-**Nazwa licznika**: funkcje — obliczeniowe  
-**Jednostka**: GB s  
-**Uwagi dotyczące**: zużycie zasobów mierzony w sekundach gigabajtów (GB/s). **Obserwowanych zużycie zasobów** jest obliczany przez pomnożenie pamięci średni rozmiar w GB przez czas w milisekundach potrzebny do wykonania funkcji. Pamięci używanej przez funkcję jest podawana przez zaokrąglenie do najbliższej 128 MB, zgodnie z rozmiarem maksymalna ilość pamięci 1,536 MB, z czasem wykonywania obliczana na podstawie zaokrąglenie do najbliższej 1 ms. Minimalny czas wykonywania i pamięci do wykonania jednej funkcji jest 100 ms i 128 mb odpowiednio.  
+**Identyfikator licznika**: D1D04836-075C-4F27-BF65-0A1130EC60ED  
+**Nazwa miernika**: funkcje - Compute  
+**Jednostka**: gigabajta pamięci  
+**Informacje o**: użycia zasobów mierzonego gigabajtosekundach (GB/s). **Zaobserwowane użycie zasobów** jest obliczany przez pomnożenie średniego rozmiaru pamięci w GB przez czas w milisekundach potrzebny na wykonanie funkcji. Pamięć użyta przez funkcję jest zaokrąglana do najbliższej 128 MB, maksymalnie przy maksymalnym rozmiarze pamięci 1,536 MB, z czasem wykonywania obliczonym przez zaokrąglenie do najbliższej 1 ms. Minimalny czas wykonywania i pamięć dla pojedynczego wykonania funkcji to 100 ms i 128 mb odpowiednio.  
   
-**Pomiarowe identyfikator**: 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
-**Nazwa licznika**: udostępnione godziny usługi aplikacji  
+**Identyfikator licznika**: 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
+**Nazwa miernika**: udostępnione aplikacji godzin korzystania z usługi  
 **Jednostka**: 1 godzina  
-**Uwagi dotyczące**: na godzinę użycia niezależnego fragmentu planu usługi App Service. Plany są naliczane na podstawie poszczególnych aplikacji.  
+**Informacje o**: za godzinę użytkowania fragmentów planu usługi App Service. Plany są naliczane na podstawie aplikacji.  
   
-**Pomiarowe identyfikator**: 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
-**Nazwa licznika**: wolnego godziny korzystania z usługi aplikacji  
+**Identyfikator licznika**: 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
+**Nazwa miernika**: bezpłatne godzin korzystania z usługi aplikacji  
 **Jednostka**: 1 godzina  
-**Uwagi dotyczące**: na użycie godziny wolne planu usługi App Service. Plany są naliczane na podstawie poszczególnych aplikacji.  
+**Informacje o**: za godzinę użytkowania bezpłatnego planu usługi App Service. Plany są naliczane na podstawie aplikacji.  
   
-**Pomiarowe identyfikator**: 88039D51-A206-3A89-E9DE-C5117E2D10A6  
-**Nazwa licznika**: mały standardowe godziny usługi aplikacji  
+**Identyfikator licznika**: 88039D51-A206-3A89-E9DE-C5117E2D10A6  
+**Nazwa miernika**: mały standardowych aplikacji godzin korzystania z usługi  
 **Jednostka**: 1 godzina  
-**Uwagi dotyczące**: obliczana na podstawie rozmiaru i liczby wystąpień.  
+**Informacje o**: obliczana na podstawie rozmiaru i liczby wystąpień.  
   
-**Pomiarowe identyfikator**: 83A2A13E-4788-78DD-5D55-2831B68ED825  
-**Nazwa licznika**: średni standardowe godziny usługi aplikacji  
+**Identyfikator licznika**: 83A2A13E-4788-78DD-5D55-2831B68ED825  
+**Nazwa miernika**: średni standardowych aplikacji godzin korzystania z usługi  
 **Jednostka**: 1 godzina  
-**Uwagi dotyczące**: obliczana na podstawie rozmiaru i liczby wystąpień.  
+**Informacje o**: obliczana na podstawie rozmiaru i liczby wystąpień.  
   
-**Pomiarowe identyfikator**: 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
-**Nazwa licznika**: duże standardowe godziny usługi aplikacji  
+**Identyfikator licznika**: 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
+**Nazwa miernika**: duże standardowych aplikacji godzin korzystania z usługi  
 **Jednostka**: 1 godzina  
-**Uwagi dotyczące**: obliczana na podstawie rozmiaru i liczby wystąpień.  
+**Informacje o**: obliczana na podstawie rozmiaru i liczby wystąpień.  
   
-**Niestandardowe procesu roboczego warstw**  
+### <a name="custom-worker-tiers"></a>Warstwy niestandardowego procesu roboczego   
   
-**Pomiarowe identyfikator**: *warstw niestandardowego procesu roboczego*  
-**Nazwa licznika**: niestandardowy proces roboczy warstw  
+**Identyfikator licznika**: *warstwy niestandardowego procesu roboczego*  
+**Nazwa miernika**: niestandardowe warstwy procesu roboczego  
 **Jednostka**: godziny  
-**Uwagi dotyczące**: identyfikator deterministyczne miernika jest tworzony na podstawie jednostki SKU i nazwa warstwy worker niestandardowych. Ten licznik identyfikator jest unikatowy dla każdej warstwy niestandardowego procesu roboczego.  
+**Informacje o**: Identyfikator miernika deterministyczne jest tworzony na podstawie jednostki SKU i nazwa warstwy niestandardowego procesu roboczego. Ten identyfikator miernika jest unikatowy dla każdej warstwy niestandardowego procesu roboczego.  
   
-**Pomiarowe identyfikator**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
-**Nazwa licznika**: SNI SSL  
+**Identyfikator licznika**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
+**Nazwa miernika**: SNI SSL  
 **Jednostka**: na powiązanie SNI SSL  
-**Uwagi dotyczące**: App Service obsługuje dwa typy połączeń SSL: połączeń SSL oznaczenia nazwy serwera (SNI) i połączeń SSL adresów IP. Połączenie SSL oparte na SNI działa w nowoczesnych przeglądarkach, natomiast połączenie SSL oparte na adresie IP działa we wszystkich przeglądarkach.  
+**Informacje o**: Usługa App Service obsługuje dwa typy połączeń SSL: połączenia SSL z oznaczaniem nazwy serwera (SNI) oraz połączenia SSL z adresem IP. Połączenie SSL oparte na SNI działa w nowoczesnych przeglądarkach, natomiast połączenie SSL oparte na adresie IP działa we wszystkich przeglądarkach.  
   
-**Pomiarowe identyfikator**: 60B42D72-DC1C-472C-9895-6C516277EDB4  
-**Nazwa licznika**: SSL z adresu IP  
+**Identyfikator licznika**: 60B42D72-DC1C-472C-9895-6C516277EDB4  
+**Nazwa miernika**: połączenie IP SSL  
 **Jednostka**: według adresu IP na podstawie powiązania SSL  
-**Uwagi dotyczące**: App Service obsługuje dwa typy połączeń SSL: połączeń SSL oznaczenia nazwy serwera (SNI) i połączeń SSL adresów IP. Połączenie SSL oparte na SNI działa w nowoczesnych przeglądarkach, natomiast połączenie SSL oparte na adresie IP działa we wszystkich przeglądarkach.  
+**Informacje o**: Usługa App Service obsługuje dwa typy połączeń SSL: połączenia SSL z oznaczaniem nazwy serwera (SNI) oraz połączenia SSL z adresem IP. Połączenie SSL oparte na SNI działa w nowoczesnych przeglądarkach, natomiast połączenie SSL oparte na adresie IP działa we wszystkich przeglądarkach.  
   
-**Pomiarowe identyfikator**: 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
-**Nazwa licznika**: proces sieci Web  
+**Identyfikator licznika**: 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
+**Nazwa miernika**: proces sieci Web  
 **Jednostka**:  
-**Uwagi dotyczące**: obliczone dla każdej witryny aktywny na godzinę.  
+**Informacje o**: obliczane na aktywną witrynę na godzinę.  
   
-**Pomiarowe identyfikator**: 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
-**Nazwa licznika**: przepustowości wyjście zewnętrzne  
+**Identyfikator licznika**: 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
+**Nazwa miernika**: zewnętrzne przepustowość danych wychodzących  
 **Jednostka**: GB  
-**Uwagi dotyczące**: łączna żądania przychodzącego, jeśli odpowiedź bajty + całkowita żądania wychodzącego bajty + całkowita FTP przychodzące żądanie odpowiedzi bajty + całkowita przychodzący sieci web wdrażanie bajtów odpowiedzi żądania.  
+**Informacje o**: łączna liczba przychodzące żądanie bajtów odpowiedzi + całkowite żądanie Wychodzące bajty + całkowita FTP przychodzące żądania bajtów odpowiedzi i łączna liczba przychodzących sieci web wdrażanie bajtów odpowiedzi żądania.  
   
 
-## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Jak wykorzystanie stosu Azure, interfejsy API porównania [użycia usługi Azure API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (obecnie w publicznej wersji zapoznawczej)?
-* Interfejs API użycia dzierżawcy jest zgodna z interfejsu API platformy Azure, z jednym wyjątkiem: *showDetails* flagi obecnie nie jest obsługiwana w stosie Azure.
-* Interfejs API użycia dostawcy dotyczy tylko stosu Azure.
-* Obecnie [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) czyli dostępnej na platformie Azure nie jest dostępna w stosie Azure.
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>W jaki sposób użycie usługi Azure Stack, porównaj interfejsów API [interfejs API użycia platformy Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (obecnie dostępna w publicznej wersji zapoznawczej)?
+* Interfejs API użycia dzierżawy jest zgodne z interfejsem API platformy Azure, z jednym wyjątkiem: *showDetails* flagi obecnie nie jest obsługiwana w usłudze Azure Stack.
+* Interfejs API użycia dostawcy ma zastosowanie tylko do usługi Azure Stack.
+* Obecnie [interfejsu API RateCard](https://msdn.microsoft.com/library/azure/mt219004.aspx) oznacza to dostępne na platformie Azure nie jest dostępna w usłudze Azure Stack.
 
-## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Jaka jest różnica między czasem użycia i zgłoszony czas?
-Raporty danych użycia są dwie wartości czasu głównego:
+## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Jaka jest różnica między czasem użycia i uwzględnionego w raporcie?
+Raporty danych użycia ma dwie wartości czasu głównego:
 
-* **Zgłoszony czas**. Czasu wprowadzenia systemu użycia zdarzenia użycia
-* **Czas użytkowania**. Gdy zasobów Azure stos został wykorzystany czas
+* **Zgłoszony czas**. Czas ostatniego zdarzenia użycia wprowadzenia systemu użycia
+* **Czas użycia**. Czas, kiedy został wykorzystany zasobów usługi Azure Stack
 
-Można napotkać rozbieżności w wartości do użycia czas i czas zgłoszone zdarzenia użycia określonego. Opóźnienie może być tak długo, jak wiele godzin, w każdym środowisku.
+Możesz zobaczyć niezgodności wartości dla godzinę użycia i zgłaszane w przypadku użycia określonego zdarzenia. Opóźnienie może być tak długo, jak wiele godzin, w każdym środowisku.
 
-Obecnie można wysyłać zapytania tylko przez *zgłoszony czas*.
+Obecnie można tworzyć zapytania tylko przez *zgłaszane czasu*.
 
-## <a name="what-do-these-usage-api-error-codes-mean"></a>Co oznaczają one użycia interfejsu API?
+## <a name="what-do-these-usage-api-error-codes-mean"></a>Co oznaczają te kody błędów interfejsu API użycia?
 | **Kod stanu HTTP** | **Kod błędu:** | **Opis** |
 | --- | --- | --- |
-| 400/Niewłaściwe żądanie |*NoApiVersion* |*Wersja interfejsu api* brakuje parametru zapytania. |
-| 400/Niewłaściwe żądanie |*InvalidProperty* |Właściwość nie istnieje lub ma nieprawidłową wartość. Komunikat w kodzie błędu w treści odpowiedzi identyfikuje brakuje właściwości. |
-| 400/Niewłaściwe żądanie |*RequestEndTimeIsInFuture* |Wartość *ReportedEndTime* przypada w przyszłości. Wartości w przyszłości nie są dozwolone dla tego argumentu. |
-| 400/Niewłaściwe żądanie |*SubscriberIdIsNotDirectTenant* |Wywołanie interfejsu API dostawcy został użyty identyfikator subskrypcji, która nie jest prawidłową dzierżawy obiektu wywołującego. |
-| 400/Niewłaściwe żądanie |*SubscriptionIdMissingInRequest* |Brak Identyfikatora subskrypcji obiektu wywołującego. |
-| 400/Niewłaściwe żądanie |*InvalidAggregationGranularity* |Zażądano szczegółowości nieprawidłowy agregacji. Prawidłowe wartości to dzienne i co godzinę. |
-| 503 |*ServiceUnavailable* |Wystąpił błąd powtarzający operację, ponieważ usługa jest zajęta lub wywołanie jest ograniczane. |
+| / 400 — Nieprawidłowe żądanie |*NoApiVersion* |*Parametru api-version* brakuje parametru zapytania. |
+| / 400 — Nieprawidłowe żądanie |*InvalidProperty* |Brak właściwości lub ma nieprawidłową wartość. Komunikat w kodzie błędu w treści odpowiedzi identyfikuje brakuje właściwości. |
+| / 400 — Nieprawidłowe żądanie |*RequestEndTimeIsInFuture* |Wartość *ReportedEndTime* przypada w przyszłości. Wartości w przyszłości nie są dozwolone dla tego argumentu. |
+| / 400 — Nieprawidłowe żądanie |*SubscriberIdIsNotDirectTenant* |Wywołania interfejsu API dostawcy został użyty identyfikator subskrypcji, który nie jest prawidłową dzierżawę obiektu wywołującego. |
+| / 400 — Nieprawidłowe żądanie |*SubscriptionIdMissingInRequest* |Brak Identyfikatora subskrypcji obiektu wywołującego. |
+| / 400 — Nieprawidłowe żądanie |*InvalidAggregationGranularity* |Zażądano agregacji nieprawidłowy poziom szczegółowości. Prawidłowe wartości to codziennie i co godzinę. |
+| 503 |*ServiceUnavailable* |Błąd umożliwiający ponowienie próby wystąpił, ponieważ usługa jest zajęta lub wywołanie jest ograniczane. |
 
 ## <a name="next-steps"></a>Następne kroki
-[Odbiorcy rozliczeń i obciążenia zwrotnego w stosie Azure](azure-stack-billing-and-chargeback.md)
+[Klient, rozliczeń i obciążeń zwrotnych w usłudze Azure Stack](azure-stack-billing-and-chargeback.md)
 
-[Użycie zasobów dostawcy interfejsu API](azure-stack-provider-resource-api.md)
+[Interfejs API użycia zasobów dostawcy](azure-stack-provider-resource-api.md)
 
-[Interfejs API użycia zasobów dzierżawcy](azure-stack-tenant-resource-usage-api.md)
+[Interfejs API użycia zasobów dzierżawy](azure-stack-tenant-resource-usage-api.md)

@@ -1,3 +1,21 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 09/06/2018
+ms.author: raynew
+ms.custom: include file
+ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058346"
+---
 1. Uruchom plik instalacyjny ujednoliconego instalatora.
 2. W **przed rozpoczęciem**, wybierz opcję **Zainstaluj serwer konfiguracji i serwer przetwarzania**.
 
@@ -21,10 +39,7 @@
 7. W obszarze **Konfiguracja programu MySQL** utwórz poświadczenia do logowania się do zainstalowanego wystąpienia serwera programu MySQL.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. W obszarze **Szczegóły środowiska** wybierz, czy zamierzasz replikować maszyny wirtualne programu VMware. Jeśli jesteś, Instalator sprawdza, czy interfejs PowerCLI 6.0 jest zainstalowany.
-
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
-
+8. W **szczegóły środowiska**, wybierz opcję nie, Jeśli replikujesz maszyny wirtualne platformy Azure Stack lub serwerów fizycznych. 
 9. W obszarze **Lokalizacja instalacji** wybierz, gdzie mają zostać zainstalowane pliki binarne i gdzie ma być przechowywana pamięć podręczną. Na wybranym dysku musi być co najmniej 5 GB dostępnego miejsca, ale zalecamy dysk pamięci podręcznej z co najmniej 600 GB wolnego miejsca.
 
     ![Lokalizacja instalacji](./media/site-recovery-add-configuration-server/combined-wiz8.png)

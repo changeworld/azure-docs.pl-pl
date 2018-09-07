@@ -1,6 +1,6 @@
 ---
-title: Konwertowanie aplikacji usługi w chmurze Azure do mikrousług | Dokumentacja firmy Microsoft
-description: Ten przewodnik zawiera porównanie bezstanowych usługi sieci Web usługi w chmurze i roli proces roboczy i sieci szkieletowej usług ułatwia migrację z usług chmury do sieci szkieletowej usług.
+title: Konwertuj Azure Cloud Services, aplikacje do usługi Service Fabric | Dokumentacja firmy Microsoft
+description: Ten przewodnik zawiera porównanie usług sieci Web i ról procesów roboczych i chmury usługi Service Fabric usług bezstanowych pomocnych w migracji z usług Cloud Services w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c6bdd6f88c9008a8d9c15d22bdcf263190424649
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206686"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049953"
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji sieci Web i proces roboczy usług bezstanowych sieci szkieletowej usług
-W tym artykule opisano sposób migracji z usług chmury w sieci Web i proces roboczy do usługi sieć szkieletowa usług bezstanowych. Jest to najprostsza ścieżka migracji z usług w chmurze sieci szkieletowej usług dla aplikacji, których ogólna architektura ma około pozostają takie same.
+# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji w sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric
+W tym artykule opisano sposób migracji z usług sieci Web i chmury ról procesów roboczych do usługi bezstanowej usługi Service Fabric. Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric dla aplikacji, w których ogólna architektura ma około pozostają takie same.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Projekt usługi w chmurze do projektu aplikacji sieci szkieletowej usług
- Projektu usługi w chmurze i projektu aplikacji sieci szkieletowej usług mają podobną strukturę i reprezentuje zarówno jednostki wdrożenia aplikacji — czyli każdy z nich zdefiniuj pełny pakiet, który jest wdrażany do uruchamiania aplikacji. Projekt usługi w chmurze zawiera co najmniej jednej sieci Web lub roli proces roboczy. Podobnie projektu aplikacji sieci szkieletowej usług zawiera co najmniej jedna usługa. 
+## <a name="cloud-service-project-to-service-fabric-application-project"></a>Projekt usługi w chmurze do projektu aplikacji usługi Service Fabric
+ Projekt usługi w chmurze i projektu aplikacji usługi Service Fabric mają podobną strukturę i oba reprezentują jednostki wdrożenia dla aplikacji — oznacza to, że ich zdefiniować pełny pakiet, który jest wdrażany do uruchamiania aplikacji. Projekt usługi w chmurze zawiera co najmniej jednej sieci Web lub ról procesów roboczych. Podobnie projekt aplikacji usługi Service Fabric zawiera co najmniej jednej usługi. 
 
-Różnica polega na tym że projektu usługi w chmurze couples wdrożenie aplikacji z wdrożenia maszyny Wirtualnej, a w związku z tym zawiera ustawienia konfiguracji maszyny Wirtualnej w ramach tego projektu aplikacji sieci szkieletowej usług określa tylko aplikację, która zostanie wdrożona do zestawu istniejące maszyny wirtualne w klastrze usługi sieć szkieletowa usług. Samego klastra usługi sieć szkieletowa jest wdrożona tylko raz, za pomocą szablonu usługi Resource Manager lub za pośrednictwem portalu Azure i można do niego wdrożyć wielu aplikacji sieci szkieletowej usług.
+Różnica polega na tym że projektu usługi w chmurze couples wdrożenie aplikacji z wdrożenia maszyny Wirtualnej i dlatego zawiera ustawienia konfiguracji maszyny Wirtualnej, projekt aplikacji usługi Service Fabric określa tylko aplikacji, która zostanie wdrożona na zestaw istniejące maszyny wirtualne w klastrze usługi Service Fabric. Sam klaster usługi Service Fabric jest wdrożyć tylko raz, za pomocą szablonu usługi Resource Manager lub za pośrednictwem witryny Azure portal i można do niego wdrożyć wiele aplikacji usługi Service Fabric.
 
-![Porównanie projektu usługi Service Fabric i usług w chmurze][3]
+![Porównanie projekt usługi Service Fabric i Cloud Services][3]
 
-## <a name="worker-role-to-stateless-service"></a>Rola proces roboczy do usługi bezstanowej
-Koncepcyjnie rolę procesu roboczego reprezentuje bezstanowego obciążenia, co oznacza każde wystąpienie obciążenie jest identyczne i żądania mogą być kierowane do dowolnego wystąpienia w dowolnym momencie. Każde wystąpienie nie jest oczekiwany do zapamiętania poprzedniego żądania. Stan, który obciążenie działa na jest zarządzana przez Magazyn stanów zewnętrzne, takie jak magazyn tabel Azure lub bazy danych dokumentów platformy Azure. W sieci szkieletowej usług tego rodzaju obciążenia jest reprezentowany przez usługę bezstanową. Najprostsza metoda migrowania roli procesu roboczego platformy Service Fabric może odbywać się konwertując kod roli proces roboczy usług bezstanowych.
+## <a name="worker-role-to-stateless-service"></a>Rola procesu roboczego do usługi bezstanowej
+Koncepcyjnie rolę procesu roboczego reprezentuje obciążenia bezstanowego, co oznacza, każde wystąpienie obciążenie jest identyczny i żądania mogą zostać skierowane do dowolnego wystąpienia w dowolnym momencie. Każde wystąpienie jest nieoczekiwane zapamiętywać poprzednie żądanie. Stan, który przetwarza obciążenie jest zarządzane przez Magazyn stanów zewnętrznych, takich jak Azure Table Storage lub baza danych Documentdb Azure. W usłudze Service Fabric tego rodzaju obciążenia jest reprezentowany przez usługę bezstanową. Najprostszą metodą, jak w przypadku migracji roli proces roboczy w usłudze Service Fabric może odbywać się przez przekonwertowanie kod roli proces roboczy na usługę bezstanową.
 
-![Rola proces roboczy do usługi bezstanowej][4]
+![Rola procesu roboczego do usługi bezstanowej][4]
 
 ## <a name="web-role-to-stateless-service"></a>Rola sieci Web do usługi bezstanowej
-Podobnie jak rola proces roboczy, rolę sieci Web również reprezentuje bezstanowego obciążenia, a więc koncepcyjnie on zbyt mogą być mapowane na usługę bezstanową sieci szkieletowej usług. Jednak w przeciwieństwie do ról sieci Web, usługi Service Fabric nie obsługuje usług IIS. Aby przeprowadzić migrację sieci web aplikacji z roli sieci Web do usługi bezstanowej wymaga przenoszenia najpierw do platforma sieci web, która może być hostowana samodzielnie i nie zależą od usług IIS lub System.Web, takich jak ASP.NET Core 1.
+Podobnie jak w roli proces roboczy, roli sieci Web również reprezentuje bezstanowego obciążenia, a więc koncepcyjnie on zbyt mogą zostać zmapowane do usługi bezstanowej usługi Service Fabric. Jednak w przeciwieństwie do ról sieci Web usługi Service Fabric nie obsługuje usług IIS. Aby przeprowadzić migrację sieci web aplikacji z roli sieci Web do usługi bezstanowej wymaga przenoszenia najpierw do struktury sieci web, który może być samodzielnie hostowane i nie zależy od usług IIS lub System.Web, takich jak ASP.NET Core 1.
 
-| **Aplikacji** | **Obsługiwane** | **Ścieżki migracji** |
+| **Aplikacja** | **Obsługiwane** | **Ścieżki migracji** |
 | --- | --- | --- |
-| Formularze sieci Web ASP.NET |Nie |Konwertuj na MVC ASP.NET Core 1 |
-| ASP.NET MVC |Z migracją |Uaktualnienie do platformy ASP.NET Core 1 MVC |
-| Składnik Web API platformy ASP.NET |Z migracją |Użyj serwera siebie lub platformy ASP.NET Core 1 |
+| ASP.NET Web Forms |Nie |Konwertuj na MVC platformy ASP.NET Core 1 |
+| ASP.NET MVC |Z migracją |Uaktualnianie do platformy ASP.NET Core 1 MVC |
+| Składnik Web API platformy ASP.NET |Z migracją |Użyj własnego serwera lub ASP.NET Core 1 |
 | ASP.NET Core 1 |Yes |ND |
 
-## <a name="entry-point-api-and-lifecycle"></a>Interfejs API punktu wejścia i cykl życia
-Rola proces roboczy i sieci szkieletowej usług usługi interfejsów API oferta podobne punkty wejścia: 
+## <a name="entry-point-api-and-lifecycle"></a>Interfejs API punktu wejścia i cyklu życia
+Punkty wejścia podobne oferty interfejsów API dla usługi roli procesu roboczego i usługi Service Fabric: 
 
-| **Entry Point** | **Rola procesu roboczego** | **Usługa sieci szkieletowej usług** |
+| **Entry Point** | **Rola procesu roboczego** | **Usługa Service Fabric** |
 | --- | --- | --- |
 | Przetwarzanie |`Run()` |`RunAsync()` |
 | Początek maszyny Wirtualnej |`OnStart()` |ND |
-| Zatrzymanie maszyny Wirtualnej |`OnStop()` |ND |
-| Otwórz odbiornika dla żądań klientów |ND |<ul><li> `CreateServiceInstanceListener()` Aby uzyskać bezstanowych</li><li>`CreateServiceReplicaListener()` dla stateful</li></ul> |
+| Zatrzymywanie maszyny Wirtualnej |`OnStop()` |ND |
+| Otwórz odbiornika do obsługi żądań klientów |ND |<ul><li> `CreateServiceInstanceListener()` Aby uzyskać bezstanowe</li><li>`CreateServiceReplicaListener()` Aby uzyskać stanowe</li></ul> |
 
 ### <a name="worker-role"></a>Rola procesu roboczego
 ```csharp
@@ -81,7 +81,7 @@ namespace WorkerRole1
 
 ```
 
-### <a name="service-fabric-stateless-service"></a>Usługa sieci szkieletowej usług bezstanowych
+### <a name="service-fabric-stateless-service"></a>Usługi bezstanowej usługi Service Fabric
 ```csharp
 
 using System.Collections.Generic;
@@ -106,38 +106,38 @@ namespace Stateless1
 
 ```
 
-Mają zastąpienie podstawowego "Uruchom", w którym na przetworzenie. Łączenie usługi sieć szkieletowa usług `Run`, `Start`, i `Stop` na jeden punkt wejścia, `RunAsync`. Podczas pracy z usługą powinny one zacząć `RunAsync` uruchamia i ma zostać zatrzymana, gdy praca `RunAsync` zostanie zasygnalizowane metody CancellationToken. 
+Mają zastąpienie podstawowy "Uruchom", w której chcesz rozpocząć przetwarzanie. Łączenie usługi Service Fabric `Run`, `Start`, i `Stop` do pojedynczego punktu wejścia, `RunAsync`. Usługa ma się zacząć pracę, gdy `RunAsync` rozpoczyna się i ma zostać zatrzymana, gdy praca `RunAsync` zasygnalizowania CancellationToken metody. 
 
-Istnieje kilka podstawowych różnic między cykl życia i okresem istnienia usług roli proces roboczy i sieci szkieletowej usług:
+Istnieje kilka podstawowych różnic między cyklu życia i okresem istnienia usługi ról procesów roboczych i usługi Service Fabric:
 
-* **Cykl życia:** największych różnica polega na roli proces roboczy jest maszyny Wirtualnej, a więc cykl życia jest związany z maszyny Wirtualnej, która obejmuje zdarzenia podczas uruchamiania i zatrzymywania w Maszynie wirtualnej. Usługa Service Fabric ma cykl życia, która jest oddzielona od maszyny Wirtualnej cykl życia, więc nie zawiera zdarzenia po hosta maszyny Wirtualnej lub maszyny uruchamia i zatrzymać, ponieważ nie są powiązane.
-* **Okres istnienia:** odtwarzana wystąpienia roli proces roboczy, jeśli `Run` wyjścia metody. `RunAsync` Metody usługi sieci szkieletowej usług jednak można uruchomić w celu ukończenia i wystąpienie usługi będą przechowywane w górę. 
+* **Cykl życia:** największych różnica polega na tym, rola procesu roboczego jest maszyną Wirtualną i dlatego jej cyklu projektowania jest powiązany z maszyną wirtualną, która obejmuje zdarzenia uruchamia i zatrzymuje maszyny Wirtualnej. Usługi Service Fabric zawiera cykl życia, który jest oddzielony od cyklu życia maszyny Wirtualnej, więc nie zawiera zdarzeń hosta maszyny Wirtualnej lub komputerze rozpoczyna się i zatrzymać, ponieważ nie są powiązane.
+* **Okres istnienia:** wystąpienia roli procesu roboczego będą Kosza, jeśli `Run` wyjścia metody. `RunAsync` Metody w usłudze Service Fabric można jednak uruchomić ukończone i wystąpienie usługi będzie nadal działać. 
 
-Sieć szkieletowa usług udostępnia punkt wejścia instalacji komunikacji opcjonalne dla usług, które nasłuchuje żądań klienta. Punkt wejścia zarówno RunAsync, jak i komunikacji są opcjonalne zastąpień w - usługi wybrać nasłuchiwał tylko na żądania klientów, lub uruchomić tylko w pętli przetwarzania i/lub - usługi sieć szkieletowa usług, które dlatego metodzie RunAsync będzie mógł zamknąć bez ponownego uruchamiania Usługa wystąpienia, ponieważ mogą nadal nasłuchuje żądań klienta.
+Usługa Service Fabric udostępnia punkt wejścia komunikacji opcjonalne ustawienia dla usług, które nasłuchują żądań klientów. Punkt wejścia RunAsync i komunikacji są opcjonalne przesłonięć w usługi Service Fabric — usługi mają możliwość nasłuchiwał tylko na żądania klienta lub uruchomić tylko pętli przetwarzania i / lub -, co jest dlaczego metodzie RunAsync jest dozwolone, aby zakończyć pracę bez ponownego uruchamiania wystąpienie usługi, ponieważ może nadal nasłuchuje żądań klienta.
 
-## <a name="application-api-and-environment"></a>Interfejs API aplikacji i środowiska
-Interfejs API środowiska usługi w chmurze zawiera informacje oraz funkcje dla bieżącego wystąpienia maszyny Wirtualnej, a także informacje o innych wystąpień roli maszyny Wirtualnej. Usługi Service Fabric zawiera informacje dotyczące jego środowiska uruchomieniowego i niektóre informacje o węźle usługi jest obecnie uruchomiony w. 
+## <a name="application-api-and-environment"></a>Aplikacja interfejsu API i środowiska
+Środowisko usługi w chmurze interfejs API zawiera informacje i funkcje dla bieżącego wystąpienia maszyny Wirtualnej, a także informacje o innych wystąpień roli maszyny Wirtualnej. Usługa Service Fabric udostępnia informacje dotyczące jego środowiska uruchomieniowego i pewne informacje o węźle usługi są uruchomione. 
 
 | **Zadania środowiska** | **Cloud Services** | **Service Fabric** |
 | --- | --- | --- |
 | Ustawienia konfiguracji i powiadomienia o zmianie |`RoleEnvironment` |`CodePackageActivationContext` |
 | Magazyn lokalny |`RoleEnvironment` |`CodePackageActivationContext` |
-| Informacje o punkcie końcowym |`RoleInstance` <ul><li>Bieżące wystąpienie: `RoleEnvironment.CurrentRoleInstance`</li><li>Inne role i wystąpienie: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` dla bieżącego adresu węzła</li><li>`FabricClient` i `ServicePartitionResolver` do odnajdywania punktu końcowego usługi</li> |
+| Informacje o punkcie końcowym |`RoleInstance` <ul><li>Bieżące wystąpienie: `RoleEnvironment.CurrentRoleInstance`</li><li>Inne role i wystąpienia: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` dla bieżącego adresu węzła</li><li>`FabricClient` i `ServicePartitionResolver` do odnajdywania punktu końcowego usługi</li> |
 | Emulacja środowiska |`RoleEnvironment.IsEmulated` |ND |
-| Zdarzenie zmiany jednoczesnych |`RoleEnvironment` |ND |
+| Zdarzenia zmiany jednoczesnych |`RoleEnvironment` |ND |
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
-Ustawienia konfiguracji usług w chmurze są ustawiane dla roli maszyny Wirtualnej i dotyczą wszystkich wystąpień tej roli maszyny Wirtualnej. Te ustawienia są pary klucz wartość ustawiona w plikach ServiceConfiguration.*.cscfg i jest dostępny bezpośrednio za pomocą RoleEnvironment. W sieci szkieletowej usług ustawienia stosowane osobno do każdej usługi i dla każdej aplikacji, a nie do maszyny Wirtualnej, ponieważ maszyna wirtualna może obsługiwać wiele usług i aplikacji. Usługa składa się z trzech pakietów:
+Ustawienia konfiguracji w usługach Cloud Services są ustawiane dla roli maszyny Wirtualnej i dotyczą wszystkich wystąpień tej roli maszyny Wirtualnej. Te ustawienia są pary klucz wartość ustawiona w plikach ServiceConfiguration.*.cscfg i dostępne bezpośrednio przez RoleEnvironment. W usłudze Service Fabric ustawienia stosowane osobno do poszczególnych usług i do każdej aplikacji, a nie do maszyny Wirtualnej, ponieważ maszyna wirtualna może obsługiwać wiele usług i aplikacji. Usługa składa się z trzech pakietów:
 
-* **Kod:** zawiera pliki wykonywalne usługi, plików binarnych biblioteki dll i inne pliki wymagane do uruchomienia usługę.
-* **Config:** wszystkich plików konfiguracji i ustawień usługi.
-* **Dane:** plików statycznych danych skojarzony z usługą.
+* **Kod:** zawiera pliki wykonywalne usługi, pliki binarne, biblioteki dll i innych plików, usługa musi zostać uruchomiony.
+* **Config:** wszystkie pliki konfiguracji i ustawień usługi.
+* **Dane:** pliki danych statycznych, związane z usługą.
 
-Każdy z tych pakietów można niezależnie określonej wersji, jak i uaktualnionych. Podobnie jak usługi w chmurze, pakietu konfiguracji można uzyskać programistycznie przy użyciu interfejsu API i zdarzenia są dostępne do powiadamiania usługi o zmianie konfiguracji pakietu. Pliku Settings.xml może służyć do kluczy i wartości konfiguracji i dostęp programistyczny podobne w sekcji Ustawienia aplikacji w pliku App.config. Jednak w przeciwieństwie do usługi w chmurze, pakiet konfiguracji sieci szkieletowej usług może zawierać pliki konfiguracji w dowolnym formacie XML, JSON, yaml programu lub niestandardowy format binarny. 
+Każda z tych pakietów może być niezależnie wersjonowana i uaktualniana. Podobnie jak usługi w chmurze, pakiet konfiguracji można uzyskać programistycznie przy użyciu interfejsu API i zdarzenia są dostępne do powiadamiania usługi zmianie pakietu konfiguracji. Plik Settings.xml może służyć do konfiguracji klucz wartość i dostęp programowy, podobna do sekcji Ustawienia aplikacji w pliku App.config. Jednak w przeciwieństwie do usług w chmurze, pakiet konfiguracji usługi Service Fabric może zawierać wszystkie pliki konfiguracji, w dowolnym formacie XML, JSON, YAML lub niestandardowy format binarny. 
 
 ### <a name="accessing-configuration"></a>Uzyskiwanie dostępu do konfiguracji
 #### <a name="cloud-services"></a>Cloud Services
-Ustawienia konfiguracji z ServiceConfiguration.*.cscfg jest możliwy za pośrednictwem `RoleEnvironment`. Te ustawienia są ogólnie dostępna dla wszystkich wystąpień roli w ramach tego samego wdrożenia usługi w chmurze.
+Ustawienia konfiguracji z ServiceConfiguration.*.cscfg jest możliwy za pośrednictwem `RoleEnvironment`. Te ustawienia są ogólnie dostępna dla wszystkich wystąpień roli w tym samym wdrożeniu usługi w chmurze.
 
 ```csharp
 
@@ -146,9 +146,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Każda usługa ma własny pakiet konfiguracji poszczególnych. Nie istnieje wbudowany mechanizm dla globalne ustawienia konfiguracji dostępne przez wszystkie aplikacje w klastrze. Podczas korzystania z usługi Service Fabric specjalne Settings.xml konfiguracji pliku w ramach pakietu konfiguracji wartości w pliku Settings.xml można zastąpić na poziomie aplikacji, umożliwiając ustawień konfiguracji na poziomie aplikacji.
+Każda usługa ma swój własny pakiet poszczególnych konfiguracji. Nie istnieje wbudowany mechanizm dla globalne ustawienia konfiguracji dostępne przez wszystkie aplikacje w klastrze. Podczas korzystania z usługi Service Fabric specjalne Settings.xml konfiguracji pliku w ramach pakietu konfiguracyjnego wartości Settings.xml można zastąpić na poziomie aplikacji, umożliwiając ustawień konfiguracji na poziomie aplikacji.
 
-Ustawienia konfiguracji są dostępu w ramach każdego wystąpienia usługi za pośrednictwem usługi `CodePackageActivationContext`.
+Ustawienia konfiguracji są dostępu w ramach każde wystąpienie usługi za pośrednictwem usługi `CodePackageActivationContext`.
 
 ```csharp
 
@@ -167,9 +167,9 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ```
 
-### <a name="configuration-update-events"></a>Zdarzenia aktualizacji konfiguracji
+### <a name="configuration-update-events"></a>Zdarzeń aktualizacji konfiguracji
 #### <a name="cloud-services"></a>Cloud Services
-`RoleEnvironment.Changed` Zdarzeń jest używana do powiadamiania wszystkich wystąpień roli w przypadku zmiany w środowisku, np. o zmianie konfiguracji. Służy to użycie konfiguracji aktualizacji bez odtwarzania wystąpień roli lub ponowne uruchomienie procesu roboczego.
+`RoleEnvironment.Changed` Zdarzeń służy do Powiadom wszystkich wystąpień roli, gdy nastąpi zmiana w środowisku, takie jak zmiana konfiguracji. Umożliwia używanie aktualizacji konfiguracji bez odtwarzania wystąpień roli lub ponowne uruchomienie procesu roboczego.
 
 ```csharp
 
@@ -188,9 +188,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Poszczególnych typów pakietu trzy usługi kodu, konfiguracji i danych - ma zdarzeń, które powiadamiają o wystąpieniu usługi, gdy pakiet zostanie zaktualizowany, dodany lub usunięty. Usługa może zawierać wielu pakietów każdego typu. Na przykład usługa może mieć wielu pakietów konfiguracji każdego indywidualnie numerów wersji i możliwej. 
+Każdy z typów trzech pakietów w usłudze — kodu, konfiguracji i danych — ma zdarzenia, które powiadamiają o wystąpienie usługi, gdy pakiet zostanie zaktualizowany, dodany lub usunięty. Usługa może zawierać wiele pakietów każdego typu. Na przykład usługa może być wiele pakietów konfiguracji każdego indywidualnie numerów wersji oraz możliwość uaktualnienia. 
 
-Te zdarzenia są dostępne zużyje zmiany pakietów usług bez konieczności ponownego uruchamiania wystąpienie usługi.
+Te zdarzenia są dostępne z zmiany w pakietach usług bez konieczności ponownego uruchamiania wystąpienie usługi.
 
 ```csharp
 
@@ -206,16 +206,16 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ```
 
 ## <a name="startup-tasks"></a>Zadania uruchamiania
-Uruchamianie zadania są działaniach wykonywanych przed uruchomieniem aplikacji. Zadanie uruchamiania jest zwykle używany do uruchamiania skryptów instalacji, korzystając z podwyższonym poziomem uprawnień. Usługa Service Fabric i usług w chmurze obsługuje zadania uruchamiania. Główna różnica polega na tym, że usług w chmurze, zadanie uruchamiania jest związany z maszyny Wirtualnej, ponieważ jest ona częścią wystąpienia roli, natomiast w sieci szkieletowej usług zadanie uruchamiania jest związany z usługą, które nie są powiązane do żadnej określonej maszyny Wirtualnej.
+Zadania uruchamiania to akcje, które są wykonywane przed uruchomieniem aplikacji. Zadanie uruchamiania jest zazwyczaj używany do uruchamiania skryptów instalacji przy użyciu podniesionych przywilejów. Cloud Services i Service Fabric obsługuje zadań uruchamiania. Główną różnicą jest to, czy w usługach w chmurze, zadanie uruchamiania jest powiązany z maszyny Wirtualnej, ponieważ jest on częścią wystąpienia roli, natomiast w usłudze Service Fabric zadanie uruchamiania jest powiązany z usługą, która nie jest związany z dowolnej maszyny Wirtualnej z określonego.
 
 | Service Fabric | Cloud Services |
 | --- | --- | --- |
 | Lokalizacja konfiguracji |ServiceDefinition.csdef |
-| Przywileje |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
-| Sekwencjonowanie |"prosty", "tła", "narzędzia" |
+| Uprawnienia |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
+| Sekwencyjne |"prosty", "tła", "narzędzia" |
 
 ### <a name="cloud-services"></a>Cloud Services
-Usług w chmurze punktu wejścia uruchamiania jest skonfigurowany dla każdej roli w ServiceDefinition.csdef. 
+W usługach w chmurze punktu wejścia uruchamiania jest konfigurowana w ramach roli w ServiceDefinition.csdef. 
 
 ```xml
 
@@ -233,7 +233,7 @@ Usług w chmurze punktu wejścia uruchamiania jest skonfigurowany dla każdej ro
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-W sieci szkieletowej usług punktu wejścia uruchamiania jest skonfigurowany dla usługi w pliku ServiceManifest.xml:
+W usłudze Service Fabric punktu wejścia uruchamiania jest konfigurowana w ramach usługi w ServiceManifest.xml:
 
 ```xml
 
@@ -249,14 +249,14 @@ W sieci szkieletowej usług punktu wejścia uruchamiania jest skonfigurowany dla
 
 ``` 
 
-## <a name="a-note-about-development-environment"></a>Uwagi dotyczące środowiska deweloperskiego
-Usługi Service Fabric i usług w chmurze są zintegrowane z programem Visual Studio z szablonów projektu i obsługę debugowania, konfigurowanie i wdrażanie, zarówno lokalnie, jak i na platformie Azure. Usługa Service Fabric i usług w chmurze udostępniają rozwoju lokalnego środowiska uruchomieniowego. Różnica polega na podczas rozwoju środowiska uruchomieniowego usługi w chmurze emuluje środowiska platformy Azure, na którym jest uruchomiony, Service Fabric nie korzysta z emulatora — używa pełne środowisko uruchomieniowe usługi sieć szkieletowa usług. Środowisko sieci szkieletowej usług uruchomionych na komputerze deweloperskim lokalnego jest tym samym środowisku, który jest uruchamiany w środowisku produkcyjnym.
+## <a name="a-note-about-development-environment"></a>Uwaga dotycząca środowiska deweloperskiego
+Usługi Service Fabric i Cloud Services są zintegrowane z programem Visual Studio przy użyciu szablonów projektu i obsługę debugowania, konfigurowania i wdrażania zarówno lokalnie, jak i na platformie Azure. Zarówno usług w chmurze, jak i usługi Service Fabric udostępniają również lokalne środowisko uruchomieniowe Środowisko deweloperskie. Różnica polega na podczas środowiska uruchomieniowego rozwoju usługi w chmurze emuluje środowiska platformy Azure, na którym jest uruchomione, usługi Service Fabric nie korzysta z emulatora — używa ona pełne środowisko uruchomieniowe usługi Service Fabric. Środowisko usługi Service Fabric, których uruchamianie na lokalnej maszynie do programowania jest środowisko, w którym jest uruchamiany w środowisku produkcyjnym.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przeczytaj więcej na temat usługi sieci szkieletowej usług niezawodnych i podstawowe różnice między usługi w chmurze i architektury aplikacji usługi Service Fabric, zrozumienie, jak korzystać z pełnego zestawu funkcji usługi sieć szkieletowa usług.
+Przeczytaj więcej na temat usług Reliable Services usługi Service Fabric i podstawowe różnice między usługami w chmurze i Architektura aplikacji usługi Service Fabric, aby zrozumieć, jak korzystać z pełnego zestawu funkcji usługi Service Fabric.
 
-* [Wprowadzenie do korzystania z usługi sieć szkieletowa niezawodne usługi](service-fabric-reliable-services-quick-start.md)
-* [Przewodnik koncepcyjny różnice między usługami w chmurze i sieci szkieletowej usług](service-fabric-cloud-services-migration-differences.md)
+* [Wprowadzenie do usług Reliable Services usługi Service Fabric](service-fabric-reliable-services-quick-start.md)
+* [Przewodnik koncepcyjny różnice między usługami w chmurze i usługi Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

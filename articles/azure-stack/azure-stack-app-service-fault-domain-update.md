@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: acadd1adec93d10d64712a2fbedb89e098998294
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440155"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025966"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak wykonać ponowną dystrybucję usługi Azure App Service w usłudze Azure Stack w domenach błędów
 
@@ -48,8 +48,8 @@ Aby rozpowszechniać zestawów skalowania, wdrożone dla dostawcy zasobów usłu
 Aby skalować zestawy skalowania, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny Azure Portal Administrator stosu.
-1. Wybierz **więcej usług**.
-1. W obszarze obliczeń, wybierz **zestawy skalowania maszyn wirtualnych**. Istniejące zestawy skalowania wdrożenia w ramach wdrożenia usługi App Service będzie wyświetlane z informacjami o liczbę wystąpień. Poniższy zrzut ekranu przedstawia przykład zestawów skalowania.
+1. Wybierz pozycję **Wszystkie usługi**.
+2. W **obliczenia** kategorii, wybierz opcję **zestawy skalowania maszyn wirtualnych**. Istniejące zestawy skalowania wdrożenia w ramach wdrożenia usługi App Service będzie wyświetlane z informacjami o liczbę wystąpień. Poniższy zrzut ekranu przedstawia przykład zestawów skalowania.
 
       ![Azure App Service Scale Sets UX zestawów skalowania maszyn wirtualnych na liście][1]
 

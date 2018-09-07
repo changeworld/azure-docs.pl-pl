@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144042"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055543"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. W przypadku autonomicznych klastrów możesz dostosować ustawienia aktualizowania pliku ClusterConfig.json, a następnie wykonać uaktualnienie konfiguracji w klastrze. 
@@ -624,10 +624,13 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="security"></a>Bezpieczeństwo
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
+|AADCertEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD certyfikat punktu końcowego formatu, domyślnej wersji Azure Commercial określonego środowiska innych niż domyślne, takie jak Azure dla instytucji rządowych "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|ciąg, domyślna to ""|Statyczny|Nazwa klienta natywnego w aplikacji lub identyfikator reprezentujący klientów sieci szkieletowej |
 |AADClusterApplication|ciąg, domyślna to ""|Statyczny|Nazwa aplikacji interfejsu API sieci Web lub identyfikator reprezentujący klastra |
+|AADLoginEndpoint|ciąg, domyślna to ""|Statyczny|Usługi AAD punkt końcowy logowania, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https://login.microsoftonline.us" |
 |AADTenantId|ciąg, domyślna to ""|Statyczny|Identyfikator dzierżawy (GUID) |
 |AdminClientCertThumbprints|ciąg, domyślna to ""|Dynamiczny|Odciski palców certyfikatów używanych przez klientów w roli administratora. Jest to lista rozdzielonych przecinkami nazw. |
+|AADTokenEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD punktu końcowego tokenu, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https://login.microsoftonline.us/{0}" |
 |AdminClientClaims|ciąg, domyślna to ""|Dynamiczny|Wszystkie oświadczenia można oczekiwać od klientów administratora. tym samym formacie co ClientClaims; Ta lista pobiera wewnętrznie dodane do ClientClaims; więc nie trzeba również dodać ten sam wpisy do ClientClaims. |
 |AdminClientIdentities|ciąg, domyślna to ""|Dynamiczny|Windows tożsamości klientów w sieci szkieletowej w roli administratora; używane do autoryzowania operacje uprzywilejowane sieci szkieletowej. Jest to rozdzielana przecinkami lista; Każdy wpis jest nazwa konta domeny lub nazwę grupy. Dla wygody; konto, na którym uruchomiono fabric.exe automatycznie przypisano rolę administratora; Dlatego jest grupy ServiceFabricAdministrators. |
 |CertificateExpirySafetyMargin|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromMinutes(43200)|Statyczny|Określ przedział czasu w sekundach. Margines bezpieczeństwa do wygaśnięcia certyfikatu; certyfikat kondycji raportu zmiany stanu z OK na ostrzeżenie, jeśli czas wygaśnięcia jest bliżej niż to. Domyślny to 30 dni. |

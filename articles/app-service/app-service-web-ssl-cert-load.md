@@ -1,5 +1,5 @@
 ---
-title: Użyj przekazano certyfikat SSL w kodzie aplikacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Użyj przekazanego certyfikatu SSL w kodzie aplikacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: ''
 services: app-service\web
 documentationcenter: ''
@@ -13,49 +13,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047700"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051480"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Użyj certyfikatu SSL w kodzie aplikacji w usłudze Azure App Service
+# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service
 
-Ten przewodnik przedstawia sposób użycia jednej z certyfikatów SSL, masz przekazany lub zaimportować do aplikację usługi aplikacji w kodzie aplikacji. Przykład przypadek użycia to, czy aplikacja uzyskuje dostęp do zewnętrznej usługi, który wymaga uwierzytelniania certyfikatu. 
+Ten poradnik pokazuje jak użyć jednego z certyfikatów SSL, które zostały przekazane lub zaimportowane do aplikacji usługi app Service w kodzie aplikacji. Przykładem przypadek użycia jest, że Twoja aplikacja uzyskuje dostęp do usługi zewnętrznej, która wymaga uwierzytelniania certyfikatu. 
 
-Takie podejście do korzystania z certyfikatów SSL w kodzie, korzysta z protokołu SSL funkcji w usłudze App Service, która wymaga aplikacji w **podstawowe** warstwy lub nowszej. Alternatywą jest obejmują plik certyfikatu w katalogu aplikacji i załaduj go bezpośrednio (zobacz [alternatywne: obciążenia certyfikat jako plik](#file)). Jednak ta alternatywa nie zezwala na ukrywanie klucz prywatny w certyfikacie z kodu aplikacji lub dewelopera. Ponadto jeśli kod aplikacji znajduje się w repozytorium typu open source, utrzymywanie certyfikatu z kluczem prywatnym w repozytorium nie jest opcją.
+Takie podejście do korzystania z certyfikatów SSL w kodzie, korzysta z protokołu SSL funkcji w usłudze App Service, co wymaga aplikacji w **podstawowe** warstwy lub nowszej. Alternatywą jest dołączenie pliku certyfikatu w katalogu aplikacji i załadować je bezpośrednio (zobacz [alternatywnych: obciążenia certyfikat jako plik](#file)). Jednak ta alternatywa pozwala ukryć klucz prywatny w certyfikacie z kodu aplikacji lub dewelopera. Ponadto jeśli kod aplikacji znajduje się w repozytorium "open source", utrzymywanie certyfikatu z kluczem prywatnym w repozytorium nie jest opcją.
 
-Jeśli umożliwisz Zarządzaj certyfikatami SSL usługi aplikacji można osobno Obsługa certyfikatów i kod aplikacji i ochronie poufnych danych.
+Jeśli umożliwisz Zarządzaj certyfikatami SSL w usłudze App Service, możesz oddzielnie zachować certyfikaty i kodu aplikacji i chronić poufne dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik:
+Aby ukończyć ten poradnik:
 
-- [Utwórz aplikację usługi aplikacji](/azure/app-service/)
-- [Mapowanie niestandardową nazwę DNS do aplikacji sieci web](app-service-web-tutorial-custom-domain.md)
-- [Przekaż certyfikat SSL](app-service-web-tutorial-custom-ssl.md) lub [zaimportuj certyfikat usługi aplikacji](web-sites-purchase-ssl-web-site.md) do aplikacji sieci web
+- [Utwórz aplikację usługi App Service](/azure/app-service/)
+- [Mapuj niestandardową nazwę DNS na swoją aplikację internetową](app-service-web-tutorial-custom-domain.md)
+- [Przekaż certyfikat SSL](app-service-web-tutorial-custom-ssl.md) lub [Importowanie certyfikatu usługi App Service](web-sites-purchase-ssl-web-site.md) do aplikacji sieci web
 
 
-## <a name="load-your-certificates"></a>Ładowanie certyfikaty
+## <a name="load-your-certificates"></a>Ładowanie certyfikatów
 
-Aby korzystać z certyfikatu, który jest przekazywane do lub zaimportować do usługi aplikacji, najpierw go udostępnić w kodzie aplikacji. W tym z `WEBSITE_LOAD_CERTIFICATES` ustawienia aplikacji.
+Aby korzystać z certyfikatu, który jest przekazywane do lub zaimportować do usługi App Service, najpierw go udostępnić w kodzie aplikacji. W tym z `WEBSITE_LOAD_CERTIFICATES` ustawienia aplikacji.
 
-W <a href="https://portal.azure.com" target="_blank">portalu Azure</a>, otwórz stronę sieci web w aplikacji.
+W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, otwórz stronę aplikacji sieci web.
 
-W obszarze nawigacji po lewej stronie, kliknij przycisk **certyfikaty SSL**.
+Na lewym pasku nawigacyjnym kliknij **certyfikaty SSL**.
 
-![Przekazany certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Przekazano certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
-Wszystkie przekazane i importowanie certyfikatów SSL dla tej aplikacji sieci web są wyświetlane tutaj z ich odciski palców. Skopiuj odcisk palca certyfikatu, którego chcesz użyć.
+Wszystkie przekazane i importowanie certyfikatów SSL dla tej aplikacji sieci web są wyświetlane w tym miejscu przy użyciu ich odciski palców. Skopiuj odcisk palca certyfikatu, którego chcesz użyć.
 
-W obszarze nawigacji po lewej stronie, kliknij przycisk **ustawienia aplikacji**.
+Na lewym pasku nawigacyjnym kliknij **ustawienia aplikacji**.
 
-Dodaj aplikację nosi nazwę `WEBSITE_LOAD_CERTIFICATES` i ustaw dla niego wartość odcisku palca certyfikatu. Aby udostępnić wielu certyfikatów, należy użyć wartości rozdzielanych przecinkami odcisk palca. Aby udostępnić wszystkie certyfikaty, ustaw wartość na `*`. 
+Dodawanie aplikacji nosi nazwę `WEBSITE_LOAD_CERTIFICATES` i ustawić jej wartość na odcisk palca certyfikatu. Aby udostępnić wiele certyfikatów, należy użyć wartości rozdzielanych przecinkami odcisku palca. Aby udostępnić wszystkie certyfikaty, ustaw wartość `*`. Take należy pamiętać, że spowoduje to umieszczenie certyfikatu w `CurrentUser\My` przechowywania.
 
 ![Skonfiguruj ustawienia aplikacji](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
-Gdy skończysz, kliknij przycisk **zapisać**.
+Po zakończeniu kliknij przycisk **Zapisz**.
 
 Skonfigurowany certyfikat jest teraz gotowa do użycia w kodzie.
 
@@ -89,9 +89,9 @@ certStore.Close();
 <a name="file"></a>
 ## <a name="alternative-load-certificate-as-a-file"></a>Alternatywa: załadować certyfikat jako plik
 
-W tej sekcji przedstawiono sposób i załaduj plik certyfikatu, który znajduje się w katalogu aplikacji. 
+W tej sekcji pokazano, jak i załaduj plik certyfikatu, który znajduje się w katalogu aplikacji. 
 
-W poniższym przykładzie C# ładuje certyfikat nazywany `mycert.pfx` z `certs` katalogu repozytorium aplikacji.
+W poniższym przykładzie C# ładuje certyfikatu o nazwie `mycert.pfx` z `certs` katalogu repozytorium aplikacji.
 
 ```csharp
 using System;

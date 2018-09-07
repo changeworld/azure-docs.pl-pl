@@ -1,5 +1,6 @@
 ---
-title: Zrozumienie współpracy aplikacji usługi LUIS — Azure | Dokumentacja firmy Microsoft
+title: Współpracy aplikacji usługi LUIS — Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Usługa LUIS aplikacje wymagają jednego właściciela i współpracowników opcjonalne.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd4955cb2d7ea76e8d0fd6c60027740b64bd8b24
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399575"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026251"
 ---
 # <a name="collaborating"></a>Współpraca
 
@@ -41,7 +42,7 @@ Jeśli chcesz udostępnić wiele aplikacji wraz ze współpracownikami, każda a
 ## <a name="managing-multiple-authors"></a>Zarządzanie wieloma autorów
 [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web obecnie nie oferuje poziomu transakcji tworzenia. Umożliwia autorom działają w wersjach niezależne od podstawowej wersji. W poniższych sekcjach opisano dwie różne metody.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Zarządzanie wieloma wersjami wewnątrz tej samej aplikacji
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Zarządzanie wieloma wersjami wewnątrz tej samej aplikacji
 Rozpocznij od [klonowania](luis-how-to-manage-versions.md#clone-a-version), z wersji podstawowy, dla każdego autora. 
 
 Każdego autora sprawia, że zmiany do jego własnej wersji aplikacji. Po każdego autora jest zadowolony z modelu, należy wyeksportować nowe wersje plików JSON.  
@@ -50,7 +51,7 @@ Wyeksportowane aplikacje są w formacie JSON — pliki, które można porównać
 
 Ta metoda umożliwia jednej wersji aktywnej, jednej wersji etapu i jeden opublikowanej wersji. Możesz porównać wyniki w okienku testowania interakcyjnego w trzech wersjach.
 
-### <a name="manage-multiple-versions-as-apps"></a>Zarządzanie wieloma wersjami jako aplikacje
+## <a name="manage-multiple-versions-as-apps"></a>Zarządzanie wieloma wersjami jako aplikacje
 [Eksportuj](luis-how-to-manage-versions.md#export-version) wersja podstawowa. Każdego autora importuje wersji. Osoby, które importuje aplikacja jest właścicielem wersji. Po ich zakończeniu modyfikowania aplikacji, eksportowanie wersji. 
 
 Wyeksportowane aplikacje są sformatowanego JSON pliki, które można porównać z podstawowej eksportu dla zmian. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji.

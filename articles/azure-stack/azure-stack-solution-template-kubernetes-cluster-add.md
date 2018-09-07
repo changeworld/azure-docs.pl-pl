@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9287eb0925556d382410f95caf16a9ca478ca2da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060796"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054421"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Dodaj klaster Kubernetes w portalu Marketplace usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
-> Rozwiązanie Kubernetes usługi Azure Kubernetes usługi (AKS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
+> Aparat AKS (usługi Azure Kubernetes Service) w usłudze Azure Stack jest w prywatnej wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
 
 Klaster usługi Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownikom można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 
@@ -66,7 +66,7 @@ Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-1. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace**.
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
@@ -89,7 +89,7 @@ Dodaj klaster Kubernetes z witryny Marketplace:
 
 1. Otwórz [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-1. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **wszystkich usług** a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace**.
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
@@ -110,7 +110,7 @@ Dodaj klaster Kubernetes z witryny Marketplace:
 
 1. Otwórz [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-1. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **A; usług** a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace**.
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 

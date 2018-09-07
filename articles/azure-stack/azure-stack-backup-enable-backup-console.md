@@ -12,14 +12,14 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 6231ee760902618afedf64443690be0b02c4d0eb
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1373e98b8edac81ebdb15aaf36d8bbfc910029fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054805"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026189"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączanie tworzenia kopii zapasowej z portalu administratora usługi Azure Stack
 Włącz usługi Backup infrastrukturę, za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](.\azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu i limitów przydziałów sieci.
@@ -36,7 +36,7 @@ Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych 
 ## <a name="enable-or-reconfigure-backup"></a>Włącz lub zmienić konfigurację kopii zapasowej
 
 1. Otwórz [portalu administratora usługi Azure Stack](azure-stack-manage-portals.md).
-2. Wybierz **więcej usług** > **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
+2. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** wybierz kategorię **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
 3. Wpisz ścieżkę do **lokalizacja magazynu kopii zapasowej**. Dla ścieżki do udziału plików hostowane na oddzielnym urządzeniu, należy użyć ciągu Universal Naming Convention (UNC). Ciąg UNC Określa lokalizację zasobów, takich jak udostępnione pliki lub urządzeń. W przypadku usługi można użyć adresu IP. Aby zapewnić dostępność kopii zapasowych danych po awarii, urządzenia powinny być w innej lokalizacji.
 
     > [!Note]  

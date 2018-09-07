@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości — tworzenie przeglądami przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Jak utworzyć przegląda przy użyciu zestawu SDK moderatora zawartości platformy Azure dla platformy .NET
+title: Usługa Azure Content Moderator — tworzenie przeglądy przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Jak utworzyć przeglądy dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,38 +9,50 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6a0ff48f4ea17f9c800f3e6c096df2492699f87a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5a4d6383f0ee7e8db6ceee0997e53afa1e9dd93c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347177"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026469"
 ---
-# <a name="create-reviews-using-net"></a>Utwórz przeglądami przy użyciu platformy .NET
+# <a name="create-reviews-using-net"></a>Utwórz przeglądy przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady ułatwiające rozpoczęcie pracy korzystać z zawartości moderatora zestawu SDK dla platformy .NET:
+Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczęcie korzystania z [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
  
-- Tworzenie zestawu przeglądami dla człowieka moderatorów
-- Pobierz stan istniejących przeglądów dla człowieka moderatorów
+- Utwórz zestaw przeglądy dla moderatorów ludzi
+- Pobierz stan istniejących przeglądy dla moderatorów ludzi
 
-Ogólnie rzecz biorąc zawartość przechodzi przez niektóre automatyczne łagodzenia przed zaplanowanym człowieka przeglądu. Ten artykuł opisuje tylko sposób tworzenia przeglądu dla człowieka łagodzenia. Dla scenariusza bardziej szczegółowy [łagodzenia zawartości Facebook](facebook-post-moderation.md) i [handlu elektronicznego katalogu łagodzenia](ecommerce-retail-catalog-moderation.md) samouczki.
+Ogólnie rzecz biorąc zawartość przechodzi przez kilka zalet zautomatyzowanego moderowania przed zaplanowanym przeglądu przez ludzi. W tym artykule opisano tylko sposób tworzenia Przegląd dla człowieka moderowania. Bardziej kompletny scenariusz można znaleźć [moderowanie zawartości serwisu Facebook](facebook-post-moderation.md) i [Moderowanie katalogu handlu elektronicznego](ecommerce-retail-catalog-moderation.md) samouczków.
 
-W tym artykule przyjęto założenie, że znasz już program Visual Studio i C#.
+W tym artykule założono, że znasz już program Visual Studio i języka C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż moderatora zawartości usług
+## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
 
-Zanim użyjesz usługi moderatora zawartości za pośrednictwem interfejsu API REST lub zestawu SDK, należy klucza subskrypcji.
-Zapoznaj się [szybkiego startu](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
+
+Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejs API przeglądu tworzenia przeglądu
+
+Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
+
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+
+Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **aplikacji konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
 
-   W przykładowym kodzie nazwij projekt **CreateReviews**.
+   W przykładowym kodzie, nadaj projektowi nazwę **CreateReviews**.
 
-1. Wybierz ten projekt jako projekt startowy pojedynczego dla rozwiązania.
+1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
-1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [szybkiego startu pomocnika klienta moderatora zawartości](content-moderator-helper-quickstart-dotnet.md).
+1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [pakietu Content Moderator klienta pomocnika Przewodnik Szybki Start](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
@@ -50,9 +62,9 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu użytkownika za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
 
-Zmodyfikuj program użytkownika przy użyciu instrukcji.
+Modyfikowanie programu za pomocą instrukcji.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -63,10 +75,10 @@ Zmodyfikuj program użytkownika przy użyciu instrukcji.
     using System.IO;
     using System.Threading;
 
-## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Utwórz klasę, aby skojarzyć zawartości informacji wewnętrznych o identyfikatorze przeglądu
+## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Utwórz klasę, aby skojarzyć wewnętrzne informacje o zawartości o identyfikatorze przeglądu
 
-Dodaj następujące klasy **Program** klasy.
-Ta klasa umożliwia kojarzenie identyfikator recenzji do sieci wewnętrznej Identyfikatora zawartości dla elementu.
+Dodaj poniższą klasę do **Program** klasy.
+Klasa jest używana do kojarzenia identyfikator przeglądu do wewnętrznego Identyfikatora zawartości dla elementu.
 
     /// <summary>
     /// Associates the review ID (assigned by the service) to the internal
@@ -98,11 +110,11 @@ Ta klasa umożliwia kojarzenie identyfikator recenzji do sieci wewnętrznej Iden
 ### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawienia specyficzne dla aplikacji
 
 > [!NOTE]
-> Klucz usługi moderatora zawartości ma żądań na drugi limit szybkości (RPS), a Jeśli przekroczysz limit zestawu SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych), a Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz warstwa bezpłatna ma limit szybkości jeden RPS.
+> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Dodaj następujące ograniczenia, aby **Program** klasy w pliku Program.cs.
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Dodaj następujące stałe do **Program** klasy w pliku Program.cs.
     
     /// <summary>
     /// The minimum amount of time, in milliseconds, to wait between calls
@@ -122,14 +134,14 @@ Ta klasa umożliwia kojarzenie identyfikator recenzji do sieci wewnętrznej Iden
     /// <remarks>Relative paths are ralative the execution directory.</remarks>
     private const string OutputFile = "OutputLog.txt";
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące ograniczenia i pola statyczne do **Program** klasy w pliku Program.cs.
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące stałe i pola statyczne do **Program** klasy w pliku Program.cs.
 
-Zaktualizować te wartości zawiera informacje specyficzne dla subskrypcji i zespołu.
+Zaktualizuj te wartości, które zawiera informacje specyficzne dla Twojej subskrypcji i zespół.
 
 > [!NOTE]
-> Wartość stała TeamName nazwa użyta podczas tworzenia Twojej [narzędzie przeglądu zawartości moderatora](https://contentmoderator.cognitive.microsoft.com/) subskrypcji. Pobrać TeamName z **poświadczenia** sekcji **ustawienia** menu (koło zębate).
+> Stała TeamName jest ustawiona na nazwę używaną podczas tworzenia usługi [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/) subskrypcji. Możesz pobrać TeamName z **poświadczenia** sekcji **ustawienia** menu (koło zębate).
 >
-> Twoja nazwa zespołu jest wartość **identyfikator** w **interfejsu API** sekcji.
+> Twoja nazwa zespołu jest wartość **identyfikator** pole **API** sekcji.
 
     /// <summary>
     /// The name of the team to assign the review to.
@@ -177,7 +189,7 @@ Zaktualizować te wartości zawiera informacje specyficzne dla subskrypcji i zes
     /// </summary>
     private const string MetadataValue = "true";
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące pola statycznego do **Program** klasy w pliku Program.cs.
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące pola statyczne do **Program** klasy w pliku Program.cs.
 
 Użyj tych pól do śledzenia stanu aplikacji.
 
@@ -193,7 +205,7 @@ Użyj tych pól do śledzenia stanu aplikacji.
     private static List<ReviewItem> reviewItems =
         new List<ReviewItem>();
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Tworzenie metody, które mają być zapisywane w pliku dziennika
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Utwórz metodę, aby zapisywać komunikaty w pliku dziennika
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -212,9 +224,9 @@ Dodaj następującą metodę do klasy **Program**.
         }
     }
 
-## <a name="create-a-method-to-create-a-set-of-reviews"></a>Tworzenie metody, aby utworzyć zestaw przeglądów
+## <a name="create-a-method-to-create-a-set-of-reviews"></a>Utwórz metodę, aby utworzyć zestaw przeglądów
 
-Zwykle niektóre logiki biznesowej do identyfikacji obrazy, tekst, można też wideo, która musi zostać sprawdzone. Jednak w tym miejscu wystarczy użyć listy obrazów.
+Zwykle mają niektóre logiki biznesowej do identyfikowania przychodzących obrazów, tekstu, lub wideo, które wymaga przejrzenia. Jednak w tym miejscu po prostu użyć listy obrazów.
 
 Dodaj następującą metodę do klasy **Program**.
 
@@ -279,13 +291,13 @@ Dodaj następującą metodę do klasy **Program**.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>Tworzenie metody, stan istniejących przeglądów
+## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>Utwórz metodę, aby wyświetlić stan istniejących przeglądów
 
 Dodaj następującą metodę do klasy **Program**. 
 
 > [!Note]
-> W praktyce, należy ustawić adres URL wywołania zwrotnego `CallbackEndpoint` do adresu URL, który otrzyma wyniki ręczne przeglądu (za pomocą żądania HTTP POST).
-> Można zmodyfikować tę metodę, aby sprawdzić stan oczekującego recenzje.
+> W praktyce należy ustawić adres URL wywołania zwrotnego `CallbackEndpoint` do adresu URL, który będzie otrzymywać wyniki ręcznego przeglądu (za pośrednictwem żądania HTTP POST).
+> Możesz zmodyfikować tę metodę, aby sprawdzić stan oczekujących przeglądów.
 
     /// <summary>
     /// Gets the review details from the server.
@@ -310,11 +322,11 @@ Dodaj następującą metodę do klasy **Program**.
         }
     }
 
-## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Dodaj kod, aby utworzyć zbiór przeglądy i sprawdzenie jego stanu
+## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Dodaj kod, aby utworzyć zestaw przeglądów i sprawdź jej stan
 
 Dodaj następujący kod do **Main** metody.
 
-Ten kod symuluje wielu operacji wykonywanych w definiowanie i zarządzanie listy, a także korzystanie z listy obrazów ekranu. Funkcje rejestrowania umożliwiają wyświetlanie obiektów odpowiedzi generowane przez wywołania SDK do usługi moderatora zawartości.
+Ten kod symuluje wielu operacji wykonywanych w definiowanie i zarządzanie listy, a także korzystanie z listy obrazów do ekranu. Funkcje rejestrowania umożliwiają wyświetlanie obiektów odpowiedzi generowane przez wywołania SDK do usługi Content Moderator.
 
     using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
     {
@@ -347,7 +359,7 @@ Ten kod symuluje wielu operacji wykonywanych w definiowanie i zarządzanie listy
 
 ## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
 
-Zostanie wyświetlony następujący przykładowe dane wyjściowe:
+Zobaczysz następujące przykładowe dane wyjściowe:
 
     Creating reviews for the following images:
         - https://moderatorsampleimages.blob.core.windows.net/samples/sample1.jpg; with id = 0.
@@ -355,11 +367,11 @@ Zostanie wyświetlony następujący przykładowe dane wyjściowe:
     Getting review details:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 
-Zaloguj się do zawartości moderatora Przegląd narzędzia, aby wyświetlić obraz oczekujące, zapoznaj się z **sc** etykieta ustawiona **true**. Zobacz też domyślnie **i** **r** tagów i niestandardowych znaczników, które zostały zdefiniowane w narzędziu przeglądu. 
+Zaloguj się do pakietu Content Moderator Przegląd narzędzia, aby zobaczyć oczekujące obrazu, zapoznaj się z **sc** etykieta ustawiona **true**. Zobacz też domyślnie **i** **r** tagów i niestandardowych znaczników, które zostały zdefiniowane w narzędziu przeglądu. 
 
-Użyj **dalej** przycisk przesyłania.
+Użyj **dalej** przycisk Prześlij.
 
-![Przejrzyj obrazu dla człowieka moderatorów](images/moderation-reviews-quickstart-dotnet.PNG)
+![Przegląd obrazu dla moderatorów ludzi](images/moderation-reviews-quickstart-dotnet.PNG)
 
 Naciśnij dowolny klawisz, aby kontynuować.
 
@@ -370,12 +382,12 @@ Naciśnij dowolny klawisz, aby kontynuować.
 
     Press any key to exit...
 
-## <a name="check-out-the-following-output-in-the-log-file"></a>Zapoznaj się z następujących danych wyjściowych w pliku dziennika.
+## <a name="check-out-the-following-output-in-the-log-file"></a>Sprawdź następujące dane wyjściowe w pliku dziennika.
 
 > [!NOTE]
-> W pliku danych wyjściowych ciągi "\{teamname}" i "\{callbackUrl}" wartości dla `TeamName` i `CallbackEndpoint` pola odpowiednio.
+> W pliku danych wyjściowych, ciągi "\{teamname}" i "\{callbackUrl}" wartości dla odzwierciedlenia `TeamName` i `CallbackEndpoint` pola, odpowiednio.
 
-Przegląd identyfikatorów i obrazu zawartości, adresy URL są różne za każdym razem, uruchom aplikację i ukończyć po dokonaniu przeglądu, `reviewerResultTags` pole określa, jak recenzenta oznakowane elementu.
+Przegląd identyfikatorów i obrazu zawartości, adresy URL są różne za każdym razem, uruchom aplikację i ukończyć po przeglądu, `reviewerResultTags` pole określa, jak recenzenta tagiem elementu.
 
     Creating reviews for the following images:
         - https://moderatorsampleimages.blob.core.windows.net/samples/sample1.jpg; with id = 0.
@@ -436,9 +448,9 @@ Przegląd identyfikatorów i obrazu zawartości, adresy URL są różne za każd
         "callbackEndpoint": "{callbackUrl}"
     }
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Adres Url wywołania zwrotnego, jeśli zostanie podana, odbiera odpowiedź
+## <a name="your-callback-url-if-provided-receives-this-response"></a>Adres Url wywołania zwrotnego, jeśli podana, odbiera odpowiedź
 
-Zostanie wyświetlony odpowiedzi, jak w następującym przykładzie:
+Zostanie wyświetlony odpowiedzi, jak w poniższym przykładzie:
 
     {
         "ReviewId": "201801i48a2937e679a41c7966e838c92f5e649",
@@ -459,4 +471,4 @@ Zostanie wyświetlony odpowiedzi, jak w następującym przykładzie:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Pobierz rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) to i inne elementy zawartości moderatora szybkiego startu dla platformy .NET i rozpocząć pracę na integracją.
+Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.

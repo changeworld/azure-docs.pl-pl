@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667861"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025068"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Zrozumienie wykorzystania maszyn wirtualnych platformy Azure
-Analizując dane użycia platformy Azure, można uzyskać wgląd w użycie zaawansowanych — szczegółowe informacje, które można włączyć lepiej koszty zarządzania i alokacji w całej organizacji. Ten dokument zawiera szczegółowo omówi informacje dotyczące użycia usługi Azure Compute. Aby uzyskać szczegółowe informacje na temat ogólnego użycia platformy Azure, przejdź do [informacje o rachunku](/billing/billing-understand-your-bill.md).
+Analizując dane użycia platformy Azure, można uzyskać wgląd w użycie zaawansowanych — szczegółowe informacje, które można włączyć lepiej koszty zarządzania i alokacji w całej organizacji. Ten dokument zawiera szczegółowo omówi informacje dotyczące użycia usługi Azure Compute. Aby uzyskać szczegółowe informacje na temat ogólnego użycia platformy Azure, przejdź do [informacje o rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
 ## <a name="download-your-usage-details"></a>Pobieranie szczegółów użycia
 Aby rozpocząć, [pobierania szczegółów użycia](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Poniższa tabela zawiera wartości definicji oraz przykład użycia dla maszyn wirtualnych wdrożonych za pośrednictwem usługi Azure Resource Manager. Ten dokument zawiera szczegółowe informacje dotyczące maszyn wirtualnych wdrożonych za pośrednictwem naszego opartych na modelu klasycznym.
@@ -143,5 +143,6 @@ W modelu klasycznym opłaty za zasoby są agregowane na poziomie usługi w chmur
 Usługa Premium storage zdolne do maszyn wirtualnych są rozliczane według stawki takie same, jak inne niż premium storage zdolne do maszyn wirtualnych. Różnią się tylko koszty magazynowania. Odwiedź stronę [magazynu stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat szczegółów użycia, zobacz [opis zawartości rachunku dla systemu Microsoft Azure.](/billing/billing-understand-your-bill.md)
+Aby dowiedzieć się więcej na temat szczegółów użycia, zobacz [opis zawartości rachunku dla systemu Microsoft Azure.](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+)
 

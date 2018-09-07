@@ -1,6 +1,6 @@
 ---
-title: Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights
+title: Śledzenie operacji niestandardowych za pomocą zestawu SDK usługi Azure Application Insights platformy .NET | Dokumentacja firmy Microsoft
+description: Śledzenie niestandardowych operacji przy użyciu zestawu SDK usługi Azure Application Insights platformy .NET
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,43 +9,45 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: sergkanz;mbullwin
-ms.openlocfilehash: e66d5e8674d6564d3910daddb1119c22a8b8bd9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 8295fb58bdf92ca8688f5f7b6270dc1b48632a73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44057257"
 ---
-# <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie działań niestandardowych z zestawu SDK .NET usługi Application Insights
+# <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights
 
-Zestawy Azure SDK Insights aplikacji automatycznie śledzić przychodzących żądań HTTP i wywołania usługi zależne, takie jak żądań HTTP i zapytania SQL. Śledzenie i korelacja żądań i zależności zapewniają wgląd w całą aplikację elastyczność i niezawodność we wszystkich mikrousług, które łączą tę aplikację. 
+Zestawy Azure Application Insights SDK automatycznie śledzić przychodzących żądań HTTP i wywołań usługi zależne, takie jak żądania HTTP i zapytania SQL. Śledzenie i korelacja żądań i zależności dają wgląd w całą aplikację czas reakcji i niezawodności we wszystkich mikrousług, które łączą tę aplikację. 
 
-Brak klasy wzorców aplikacji, których nie można używać objęty. Zapewnienia odpowiedniego monitorowania tych wzorców wymaga ręcznego kodu instrumentacji. W tym artykule opisano kilka wzorców, które mogą wymagać ręcznego instrumentacji, takie jak niestandardowe kolejki przetwarzania i uruchamianie długotrwałe zadania w tle.
+Brak klasy wzorców aplikacji, które nie są obsługiwane w ogólnej. Właściwe monitorowanie tych wzorców wymaga Instrumentacji kodu. W tym artykule omówiono kilka wzorców, które mogą wymagać ręcznej instrumentacji, takie jak niestandardowe kolejki przetwarzania i uruchamiania długotrwałych zadań w tle.
 
-Ten dokument zawiera wskazówki dotyczące sposobu śledzenia działań niestandardowych z zestawu SDK usługi Application Insights. Niniejsza dokumentacja jest odpowiednie dla:
+Ten dokument zawiera wskazówki na temat sposobu śledzenie operacji niestandardowych za pomocą zestawu SDK usługi Application Insights. Ta dokumentacja dotyczy:
 
-- Application Insights dla platformy .NET (znanej także jako podstawowy zestaw SDK) w wersji 2.4 +.
-- Application Insights dla usługi sieci web aplikacji (ASP.NET działających) wersji 2.4.
-- Application Insights dla platformy ASP.NET Core w wersji 2.1 +.
+- Usługa Application Insights dla platformy .NET (znany także jako podstawowy zestaw SDK) w wersji 2.4 +.
+- Usługa Application Insights dla sieci web działających (ASP.NET) wersji 2.4 +.
+- Usługa Application Insights dla platformy ASP.NET Core w wersji 2.1 +.
 
 ## <a name="overview"></a>Przegląd
-Operacja jest logiczną pracy wykonywane przez aplikację. Ma on nazwę, godzinę rozpoczęcia, czas trwania, wynik oraz kontekst wykonywania, takie jak nazwa użytkownika, właściwości i wyników. Jeśli operacja A została zainicjowana przez operację B, następnie operacji B ustawiono jako element nadrzędny a. Operacja może mieć tylko jeden obiekt nadrzędny, ale może mieć wiele działań podrzędnych. Aby uzyskać więcej informacji o operacjach i dane telemetryczne korelacji, zobacz [korelacji telemetrii usługi Application Insights Azure](application-insights-correlation.md).
+Operacja jest logiczną pracy wykonywane przez aplikację. Ta kolumna ma nazwę, godzinę rozpoczęcia, czas trwania, wynik oraz kontekstu wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A zostało zainicjowane przez operację B, następnie działanie B jest ustawiony jako element nadrzędny dla A. Operacja może mieć tylko jedną jednostkę nadrzędną, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat operacji i korelacja telemetrii, zobacz [korelacja telemetrii usługi Azure Application Insights](application-insights-correlation.md).
 
-W zestawie SDK .NET Application Insights operacji jest opisany przez klasy abstrakcyjnej [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jego elementy podrzędne [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
+W zestawie SDK platformy .NET Application Insights operacji jest opisana przez klasy abstrakcyjnej [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jego elementy potomne [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
-## <a name="incoming-operations-tracking"></a>Przychodzące operacji śledzenia 
-Automatycznie zestawu SDK sieci web usługi Application Insights zbiera żądania HTTP dla aplikacji ASP.NET, które są uruchamiane w potoku usług IIS i wszystkich aplikacji platformy ASP.NET Core. Są obsługiwane przez społeczność rozwiązań dla innych platform i struktur. Jednak jeśli aplikacja nie jest obsługiwany przez żaden z rozwiązań standard lub obsługiwane społeczności, należy mogą dodawać go ręcznie.
+## <a name="incoming-operations-tracking"></a>Przychodzące operacje śledzenia 
+Zestaw SDK sieci web usługi Application Insights automatycznie zbiera żądania HTTP dla aplikacji ASP.NET, które są uruchamiane w potoku usługi IIS i wszystkie aplikacje platformy ASP.NET Core. Są obsługiwane przez społeczność rozwiązania dla innych platform i struktur. Jednakże jeśli aplikacja nie jest obsługiwana przez żaden z rozwiązań standardowe lub obsługiwane przez społeczność, możliwe jest instrumentowanie go ręcznie.
 
-Innym przykładem wymagającego niestandardowych śledzenia jest proces roboczy, który odbiera elementy z kolejki. W przypadku niektórych kolejek wywołanie do dodania do tej kolejki wiadomość jest śledzony jako zależność. Jednak operacja wysokiego poziomu, opisujący przetwarzanie komunikatu nie jest automatycznie zebrane.
+Inny przykład, która wymaga śledzenia niestandardowego to proces roboczy, który odbiera elementy z kolejki. W przypadku niektórych kolejek wywołanie do dodania komunikatu do tej kolejki jest śledzona jako zależność. Jednak operacji wysokiego poziomu, która opisuje przetwarzanie komunikatu nie są automatycznie zbierane.
 
-Zobaczmy, jak można śledzić takie operacje.
+Zobaczmy, jak takich operacji może być śledzone.
 
-Na wysokim poziomie zadania jest utworzenie `RequestTelemetry` i znanych właściwości. Po zakończeniu operacji śledzić telemetrii. W poniższym przykładzie pokazano to zadanie.
+Na wysokim poziomie, zadanie jest utworzenie `RequestTelemetry` i ustaw znanych właściwości. Po zakończeniu tej operacji możesz śledzić dane telemetryczne. W poniższym przykładzie pokazano to zadanie.
 
-### <a name="http-request-in-owin-self-hosted-app"></a>Żądania HTTP w aplikacji siebie Owin
-W tym przykładzie kontekst śledzenia jest propagowana zgodnie z [protokołu HTTP dla korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Należy oczekiwać na odbieranie nagłówków, których opisano.
+### <a name="http-request-in-owin-self-hosted-app"></a>Żądania HTTP w aplikacji Self-Hosted Owin
+W tym przykładzie kontekst śledzenia są propagowane zgodnie z opisem w [protokołu HTTP na potrzeby korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Należy się spodziewać otrzymywać nagłówki, które są opisane istnieje.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -118,16 +120,16 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 }
 ```
 
-Protokół HTTP dla korelacji również deklaruje `Correlation-Context` nagłówka. Jednak zostanie pominięty tutaj dla uproszczenia.
+Protokół HTTP dla korelacji deklaruje również `Correlation-Context` nagłówka. Jednak zostanie pominięty w tym miejscu dla uproszczenia.
 
 ## <a name="queue-instrumentation"></a>Instrumentacja kolejki
-Gdy istnieje [protokołu HTTP dla korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) do przekazania korelacji szczegóły żądania HTTP, każdego protokołu kolejki ma zdefiniuj, jak sam szczegółowe informacje są przekazywane komunikat z kolejki. Niektóre protokoły kolejki (na przykład protokołu AMQP) zezwala na przekazywanie dodatkowe metadane i inne (takie kolejki magazynu Azure) wymagają kontekstu, które mają być kodowane w ładunek komunikatu.
+Choć [protokołu HTTP na potrzeby korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) do przekazania szczegóły korelacji z żądania HTTP, każdy protokół kolejki ma do zdefiniowania, jak ten sam szczegółowe informacje są przekazywane komunikatu w kolejce. Niektóre protokoły kolejki (na przykład protokół AMQP) zezwala na przekazywanie dodatkowych metadanych i inne (takie usługi Azure Storage Queue) wymaga kontekstu, który ma być zdekodowany do ładunku komunikatu.
 
 ### <a name="service-bus-queue"></a>Kolejka usługi Service Bus
-Usługa Application Insights śledzi wywołania usługi magistrali komunikatów z nowym [klienta magistrali usług Microsoft Azure dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) wersji 3.0.0 i wyższych.
-Jeśli używasz [obsługi komunikatów](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) do przetwarzania komunikatów, wszystko będzie gotowe: wszystkie wywołania usługi Service Bus wykonywane przez usługę automatycznie są śledzone i powiązane z innych elementów telemetrii. Zapoznaj się [klienta usługi Service Bus śledzenie za pomocą usługi Microsoft Application Insights](../service-bus-messaging/service-bus-end-to-end-tracing.md) Jeśli ręcznie przetwarzania komunikatów.
+Usługa Application Insights śledzi wywołania komunikatów usługi Service Bus przy użyciu nowego [klienta magistrali usług Microsoft Azure dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) wersji 3.0.0 lub nowszej.
+Jeśli używasz [wzorzec procedury obsługi komunikatów](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) do przetwarzania komunikatów, wszystko będzie gotowe: wszystkie wywołania usługi Service Bus, wykonywane przez usługę są automatycznie śledzone i skorelowane z innych elementów telemetrii. Zapoznaj się [śledzenie za pomocą Microsoft Application Insights klienta usługi Service Bus](../service-bus-messaging/service-bus-end-to-end-tracing.md) Jeśli ręcznie przetwarzać komunikatów.
 
-Jeśli używasz [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) pakietu, dalsze — przeczytaj następujące przykłady przedstawiają sposób śledzenia (i skorelowania) wywołuje do magistrali usługi jako kolejki usługi Service Bus używa protokołu AMQP, a nie usługi Application Insights automatyczne śledzenie operacji kolejki.
+Jeśli używasz [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) pakietu, zapoznaj się z — następujące przykłady przedstawiają sposób śledzenia (i korelowanie) wywołań do usługi Service Bus, kolejki usługi Service Bus używa protokołu AMQP, a nie usługi Application Insights automatyczne śledzenie operacji kolejki.
 Identyfikatory korelacji są przekazywane we właściwościach komunikatu.
 
 #### <a name="enqueue"></a>Umieścić w kolejce
@@ -202,11 +204,11 @@ public async Task Process(BrokeredMessage message)
 }
 ```
 
-### <a name="azure-storage-queue"></a>Kolejki magazynu systemu Azure
-Poniższy przykład przedstawia sposób śledzenia [kolejki usługi Azure Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) operacje oraz korelowanie telemetrii między producenta, użytkownika i usługi Azure Storage. 
+### <a name="azure-storage-queue"></a>Usługi Azure queue Storage
+Poniższy przykład pokazuje, jak śledzić [kolejki usługi Azure Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) operacje i korelowanie danych telemetrycznych od producenta, klienta i usługi Azure Storage. 
 
-Kolejki magazynu jest interfejs API protokołu HTTP. Wszystkie wywołania do kolejki są śledzone przez moduł zbierający Application Insights zależności żądań HTTP.
-Upewnij się, że masz `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` w `applicationInsights.config`. Jeśli nie masz, dodaj ją programowo, zgodnie z opisem w [filtrowanie i przetwarzania wstępnego w zestawie SDK Azure Application Insights](app-insights-api-filtering-sampling.md).
+Kolejka magazynu ma interfejsu API protokołu HTTP. Wszystkie wywołania do kolejki są śledzone przez moduł zbierający Application Insights zależności żądań HTTP.
+Upewnij się, że masz `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` w `applicationInsights.config`. Jeśli nie masz, dodać je programowo, zgodnie z opisem w [filtrowanie i wstępne przetwarzanie w zestaw SDK usługi Azure Application Insights](app-insights-api-filtering-sampling.md).
 
 Jeśli ręcznie skonfigurować usługi Application Insights, upewnij się, Utwórz i zainicjuj `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` podobnie do:
  
@@ -221,17 +223,17 @@ module.Initialize(TelemetryConfiguration.Active);
 // Do not forget to dispose of the module during application shutdown.
 ```
 
-Możesz też służące do skorelowania identyfikator operacji usługi Application Insights o identyfikatorze magazynu żądania. Aby uzyskać informacje na temat Ustawianie i pobieranie magazynu żądania klienta i identyfikator żądania serwera, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
+Możesz również chcieć skorelować identyfikator operacji usługi Application Insights za pomocą identyfikatora magazynu żądania. Aby uzyskać informacje na temat sposobu ustawiania i pobierania magazynu żądania klienta, jak i identyfikator żądania serwera, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynem Azure](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
 #### <a name="enqueue"></a>Umieścić w kolejce
-Ponieważ magazyn kolejek obsługuje API protokołu HTTP, wszystkie operacje z kolejką automatycznie są śledzone przez usługę Application Insights. W wielu przypadkach ta Instrumentacji powinny być wystarczające. Jednak aby korelowanie śladów po stronie klienta z producentów danych śledzenia, należy podać niektóre kontekstu korelacji podobnie jak możemy to zrobić w protokole HTTP dla korelacji. 
+Ponieważ magazyn kolejek obsługuje interfejsu API protokołu HTTP, wszystkie operacje kolejki są automatycznie śledzone przez usługę Application Insights. W wielu przypadkach ta Instrumentacji powinny wystarczyć. Jednak do skorelowania ślady po stronie klienta za pomocą producenta ślady, musi przekazać określony kontekst korelacji podobnie jak możemy to zrobić za pomocą protokołu HTTP dla korelacji. 
 
 W tym przykładzie pokazano, jak śledzić `Enqueue` operacji. Możesz:
 
- - **Korelowanie ponownych prób (jeśli istnieją)**: wszystkie mają jeden wspólny nadrzędnego, który ma `Enqueue` operacji. W przeciwnym razie jest śledzony jako elementy podrzędne żądania przychodzącego. Jeśli istnieje wiele żądań logicznych do kolejki, może być trudne wywołania, które spowodowało ponownych prób.
- - **Skorelowania dzienników magazynu (Jeśli wymagane)**: są one powiązane z telemetrii usługi Application Insights.
+ - **Korelowanie ponownych prób (jeśli istnieje)**: wszystkie one mają jednej wspólnej nadrzędnego, który ma `Enqueue` operacji. W przeciwnym razie jest śledzona jako elementy podrzędne żądania przychodzącego. W przypadku wielu żądań logiczne do kolejki, może być trudne do znalezienia, która wywołuje metodę spowodowało ponownych prób.
+ - **Korelowanie dzienniki magazynu (Jeśli wymagane)**: one są skorelowane z telemetrii usługi Application Insights.
 
-`Enqueue` Operacji jest elementem podrzędnym działania nadrzędnego (na przykład przychodzące żądanie HTTP). Wywołanie zależności HTTP jest elementem podrzędnym `Enqueue` operacji i podwójnym przychodzącego żądania:
+`Enqueue` Operacji jest elementem podrzędnym elementu operacji nadrzędnej (na przykład z przychodzącym żądaniem HTTP). Wywołania zależności HTTP jest elementem podrzędnym elementu `Enqueue` operacji i podwójnym postać przychodzącego żądania:
 
 ```csharp
 public async Task Enqueue(CloudQueue queue, string message)
@@ -274,18 +276,18 @@ public async Task Enqueue(CloudQueue queue, string message)
 }  
 ```
 
-Aby zmniejszyć ilość danych telemetrycznych aplikacji raportów lub jeśli nie chcesz śledzić `Enqueue` operacji z innych przyczyn, użyj `Activity` bezpośrednio interfejsu API:
+Aby zmniejszyć ilość danych telemetrycznych aplikacji raportów lub jeśli nie chcesz śledzić `Enqueue` operacji z innych przyczyn, użyj `Activity` API bezpośrednio:
 
-- Utwórz (i uruchom) nowy `Activity` zamiast uruchamiania operacji usługi Application Insights. Jak *nie* konieczne jest przypisanie żadnych właściwości na nim, oprócz nazwy operacji.
-- Serializować `yourActivity.Id` do ładunku komunikatu zamiast `operation.Telemetry.Id`. Można również użyć `Activity.Current.Id`.
+- Tworzenie (i uruchamianie) nową `Activity` zamiast uruchamiania operacji usługi Application Insights. Możesz zrobić *nie* trzeba przypisać wszystkie właściwości w nim, z wyjątkiem nazwy operacji.
+- Serializowanie `yourActivity.Id` do ładunku komunikatu zamiast `operation.Telemetry.Id`. Można również użyć `Activity.Current.Id`.
 
 
-#### <a name="dequeue"></a>Usuwania z kolejki
-Podobnie do `Enqueue`, rzeczywistego żądania HTTP do kolejki magazynu jest automatycznie śledzony przez usługę Application Insights. Jednak `Enqueue` operację prawdopodobnie dzieje się w kontekście nadrzędne, takie jak kontekst żądania przychodzące. Application Insights SDK automatycznie skorelowania takie działanie (i jego części HTTP) z żądania nadrzędnego i inne dane telemetryczne zgłoszone w tym samym zakresie.
+#### <a name="dequeue"></a>Usuń z kolejki
+Podobnie jak `Enqueue`, rzeczywistego żądania HTTP do kolejki usługi Storage są automatycznie śledzone przez usługę Application Insights. Jednak `Enqueue` Operacja prawdopodobnie odbywa się w kontekście nadrzędny, np. przychodzące kontekst żądania. Zestawy SDK usługi Application Insights automatycznie skorelować taka operacja (i jej części HTTP) z żądania nadrzędnego i inne dane telemetryczne zgłoszone w tym samym zakresie.
 
-`Dequeue` Operacja jest istotne znaczenie. Zestaw SDK usługi Application Insights automatyczne śledzenie żądań HTTP. Jednak go nie może ustalić kontekst korelacji dopóki przeanalizować komunikatu. Nie jest możliwe do skorelowania komunikat z resztą dane telemetryczne żądania HTTP.
+`Dequeue` Operacja jest trudne. Zestaw SDK usługi Application Insights automatycznie śledzi żądania HTTP. Jednak nie ma informacji kontekstu korelacji, dopóki nie zostanie przeanalizowany komunikat. Nie jest możliwe do skorelowania żądania HTTP, jest wyświetlany komunikat z pozostałą częścią danych telemetrycznych.
 
-W wielu przypadkach mogą być przydatne do skorelowania żądania HTTP do kolejki z również innych śladów. W poniższym przykładzie pokazano, jak to zrobić:
+W wielu przypadkach może być przydatne do skorelowania żądania HTTP do kolejki za pomocą innych śladów, jak również. Poniższy przykład pokazuje, jak to zrobić:
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -336,7 +338,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 #### <a name="process"></a>Proces
 
-W poniższym przykładzie wiadomości przychodzącej jest śledzony w sposób, podobnie do przychodzące żądanie HTTP:
+W poniższym przykładzie wiadomości przychodzących jest śledzona w sposób podobny sposób na przychodzące żądania HTTP:
 
 ```csharp
 public async Task Process(MessagePayload message)
@@ -366,24 +368,24 @@ public async Task Process(MessagePayload message)
 }
 ```
 
-Podobnie można instrumentowany innych operacji kolejki. Operacja peek powinien instrumentowany w podobny sposób jako operacja kolejki. Instrumentacja kolejki operacji zarządzania nie jest konieczne. Usługa Application Insights śledzi operacji, takich jak HTTP, i w większości przypadków jest wystarczające.
+Podobnie inne operacje kolejkowania można go zinstrumentować. Operacja podglądu powinien Instrumentacji w podobny sposób, jako operacja usuwania z kolejki. Instrumentacja kolejki operacje zarządzania nie jest konieczne. Usługa Application Insights śledzi operacje, takie jak HTTP i w większości przypadków jest wystarczająca.
 
-Gdy Instrumentacja usuwania komunikatów, upewnij się, że ustawisz operacji identyfikatorów (korelacji). Alternatywnie można użyć `Activity` interfejsu API. Nie należy ustawić identyfikatorów operacji na elementach telemetrii, ponieważ zestaw SDK usługi Application Insights jest dla Ciebie:
+Podczas usuwania komunikatów instrumentacji, upewnij się, że ustawisz operacji identyfikatorów (korelacja). Alternatywnie, można użyć `Activity` interfejsu API. Nie musisz ustawić identyfikatory operacji na elementach danych telemetrycznych, ponieważ zestaw SDK usługi Application Insights zrobi to za Ciebie:
 
 - Utwórz nową `Activity` po skonfigurowaniu elementu z kolejki.
-- Użyj `Activity.SetParentId(message.ParentId)` służące do skorelowania dzienników klienta i producenta.
-- Uruchom `Activity`.
-- Śledź usuwania z kolejki, przetwarzania i operacji usunięcia przy użyciu `Start/StopOperation` pomocników. To robić z takim samym przepływie sterowania asynchroniczne (kontekstu wykonywania). W ten sposób ich są skorelowane poprawnie.
+- Użyj `Activity.SetParentId(message.ParentId)` do skorelowania dzienników konsumentów i producentów.
+- Rozpocznij `Activity`.
+- Śledź usuwania z kolejki, przetwarzania i operacje usuwania przy użyciu `Start/StopOperation` pomocników. To robić z tego samego asynchronicznego przepływu sterowania (kontekstu wykonania). W ten sposób są one skorelowane prawidłowo.
 - Zatrzymaj `Activity`.
 - Użyj `Start/StopOperation`, lub zadzwoń `Track` telemetrii ręcznie.
 
 ### <a name="batch-processing"></a>Przetwarzanie wsadowe
-W przypadku niektórych kolejek można usuwania z kolejki wielu komunikatów z jednego żądania. Przetwarzanie takich wiadomości jest prawdopodobnie niezależna i należy do różnych operacji logicznej. W takim przypadku nie jest możliwe do skorelowania `Dequeue` na przetwarzanie komunikatów określonej operacji.
+W przypadku niektórych kolejek można kolejki wielu komunikatów za pomocą jednego żądania. Przetwarzanie takich komunikatów jest prawdopodobnie niezależna i należy do różnych operacji logicznej. W tym przypadku nie jest możliwe do skorelowania `Dequeue` na przetwarzanie komunikatów określonej operacji.
 
-Każdy komunikat powinien zostać przetworzony w przepływ sterowania asynchronicznego. Aby uzyskać więcej informacji, zobacz [zależności wychodzące śledzenia](#outgoing-dependencies-tracking) sekcji.
+Każdy komunikat powinien zostać przetworzony w swój własny przepływ sterowania asynchronicznego. Aby uzyskać więcej informacji, zobacz [wychodzące zależności śledzenia](#outgoing-dependencies-tracking) sekcji.
 
 ## <a name="long-running-background-tasks"></a>Długotrwałe zadania w tle
-Niektóre aplikacje uruchamiają długotrwałe operacje, które mogą być spowodowane przez żądania użytkownika. Z perspektywy śledzenie/Instrumentacja nie jest inny niż Instrumentacji żądania lub zależności: 
+Niektóre aplikacje uruchomić operacji długotrwałych, które mogą być spowodowane przez żądania użytkownika. Z punktu widzenia śledzenia/Instrumentacji nie jest inny niż Instrumentacji żądania lub zależności: 
 
 ```csharp
 async Task BackgroundTask()
@@ -413,20 +415,20 @@ async Task BackgroundTask()
 }
 ```
 
-W tym przykładzie `telemetryClient.StartOperation` tworzy `RequestTelemetry` i wypełnia kontekstu korelacji. Załóżmy, że masz operacji nadrzędnego, który został utworzony przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tej samej asynchronicznej sterowania przepływem jako przychodzącego żądania, jest skorelowany z tym operacja nadrzędnej. `BackgroundTask` i wszystkie elementy zagnieżdżone dane telemetryczne są automatycznie skorelowane z żądania, który spowodował, nawet po zakończeniu żądania.
+W tym przykładzie `telemetryClient.StartOperation` tworzy `RequestTelemetry` i wypełnień kontekstu korelacji. Załóżmy, że masz operacji nadrzędnej, która została utworzona przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tym samym asynchronicznego sterowania przepływem jako przychodzącego żądania, jest skorelowana z tym operacja nadrzędnej. `BackgroundTask` i wszystkie elementy zagnieżdżone telemetrii automatycznie są powiązane z tym żądaniem, który spowodował nieoczekiwane, nawet po zakończeniu żądania.
 
-Po uruchomieniu zadania z wątku w tle, który nie ma żadnej operacji (`Activity`) skojarzone z nią `BackgroundTask` nie ma żadnych nadrzędnej. Jednak go można mieć zagnieżdżonych działań. Wszystkie elementy dane telemetryczne zgłoszone zadania są korelowane z `RequestTelemetry` utworzone w `BackgroundTask`.
+Podczas uruchamiania zadania z wątku w tle, który nie ma żadnych operacji (`Activity`) skojarzony z nim, `BackgroundTask` nie ma żadnych nadrzędnej. Jednak go można zagnieżdżać operacji. Wszystkie elementy dane telemetryczne zgłoszone zadanie skorelowanych z `RequestTelemetry` utworzone w `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Wychodzące zależności śledzenia
-Możliwe jest śledzenie własnych rodzaj zależności lub operacja nie jest obsługiwana przez usługę Application Insights.
+Możesz śledzić własne rodzaju zależności lub operacją, która nie jest obsługiwana przez usługę Application Insights.
 
-`Enqueue` Metody kolejki usługi Service Bus lub kolejek magazynu może służyć jako przykłady takich niestandardowych śledzenia.
+`Enqueue` Metody w kolejce usługi Service Bus lub kolejki magazynu może służyć jako przykłady takich niestandardowe śledzenia.
 
-Ogólne podejście do śledzenia niestandardowych zależności jest:
+Ogólne podejście do śledzenia zależności niestandardowej jest:
 
-- Wywołanie `TelemetryClient.StartOperation` — metoda (rozszerzenie), które wypełnia `DependencyTelemetry` właściwości, które są potrzebne dla korelacji i niektórych innych właściwości (czas rozpoczęcia sygnatury, czas trwania).
-- Ustaw właściwości niestandardowe na `DependencyTelemetry`, takie jak nazwa i innych kontekstu należy.
-- Należy zależność wywołań i poczekaj na jej.
+- Wywołaj `TelemetryClient.StartOperation` — metoda (rozszerzenia), który wypełnia `DependencyTelemetry` właściwości, które są wymagane do korelacji i niektóre inne właściwości (czas rozpoczęcia sygnatury, czas trwania).
+- Ustaw właściwości niestandardowe na `DependencyTelemetry`, takie jak nazwa i wszystkich innych kontekstach, które należy.
+- Należy zależności wywołań i poczekaj na jej.
 - Zatrzymaj operację, podając `StopOperation` po zakończeniu.
 - Obsługa wyjątków.
 
@@ -448,16 +450,15 @@ public async Task RunMyTaskAsync()
 }
 ```
 
-Operacji usuwania powoduje, że operacja ma zostać zatrzymany, więc można go wykonać zamiast wywoływać metodę `StopOperation`.
+Operacja usuwania powoduje, że operacja ma zostać zatrzymany, więc może zrobić, zamiast wywoływać metodę `StopOperation`.
 
-*Ostrzeżenie*: w niektórych przypadkach może wyjątek unhanded [zapobiec](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` wywoływanie, nie mogą być śledzone operacji.
+*Ostrzeżenie*: w niektórych przypadkach może być unhanded wyjątek [zapobiec](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` wywołane, dzięki czemu operacje nie mogą być śledzone.
 
-### <a name="parallel-operations-processing-and-tracking"></a>Równoległe przetwarzanie operacji i śledzenia
+### <a name="parallel-operations-processing-and-tracking"></a>Równoległe przetwarzanie operacji i śledzenie
 
-`StopOperation` tylko zatrzymuje operację, która została uruchomiona. Jeśli chcesz zatrzymać, nie jest zgodna bieżącej operacji uruchomione `StopOperation` nie działają. Taka sytuacja może się zdarzyć, uruchomić wiele operacji równolegle w tym samym kontekście wykonywania:
+`StopOperation` tylko zatrzymuje operację, która została uruchomiona. Jeśli bieżąca operacja uruchomionej nie pasować do którego ma zostać zatrzymane, `StopOperation` nic nie robi. Taka sytuacja może się zdarzyć, jeśli uruchamia się wiele operacji równolegle w tym samym kontekście wykonania:
 
 ```csharp
-var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstTask = RunMyTaskAsync();
 
@@ -473,7 +474,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-Upewnij się, że wywoływanie zawsze `StartOperation` i przetwarzanie operacji w tym samym **async** metody do izolowania operacji uruchomione jednocześnie. Jeśli operacja jest synchroniczne (lub nie async), zawijać procesu i śledzenia z `Task.Run`:
+Upewnij się, że zawsze wywołuj `StartOperation` i przetwarzanie operacji w tym samym **async** metodę, aby odizolować działań uruchamianych równolegle. W przypadku operacji synchronicznych (lub nie async), proces opakowywania i śledzenie za pomocą `Task.Run`:
 
 ```csharp
 public void RunMyTask(string name)
@@ -496,8 +497,8 @@ public async Task RunAllTasks()
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Poznaj podstawy z [korelacji telemetrii](application-insights-correlation.md) w usłudze Application Insights.
-- Zobacz [modelu danych](application-insights-data-model.md) dla modelu danych i typów usługi Application Insights.
-- Raport niestandardowy [zdarzenia i metryki](app-insights-api-custom-events-metrics.md) do usługi Application Insights.
-- Zapoznaj się z standard [konfiguracji](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) dla zbioru właściwości kontekstu.
-- Sprawdź [Podręcznik użytkownika System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) aby zobaczyć, jak firma Microsoft skorelowania danych telemetrycznych.
+- Poznaj podstawy [korelacja telemetrii](application-insights-correlation.md) w usłudze Application Insights.
+- Zobacz [modelu danych](application-insights-data-model.md) dla usługi Application Insights typów i danych modelu.
+- Raport niestandardowy [zdarzeń i metryk](app-insights-api-custom-events-metrics.md) do usługi Application Insights.
+- Zapoznaj się z standard [konfiguracji](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) dla kontekstu właściwości kolekcji.
+- Sprawdź [Podręcznik użytkownika System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) aby zobaczyć, jak firma Microsoft korelowanie danych telemetrycznych.

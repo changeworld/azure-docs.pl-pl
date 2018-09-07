@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2f18840802a39f03659792a4d5b33ad3a73c5961
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702599"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051446"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -441,15 +441,132 @@ Usługa Azure Table storage i interfejsu API tabeli usługi Azure Cosmos DB uży
 Usługa Azure Cosmos DB jest oparte na umowie SLA udostępniającego opóźnienia, przepływności, dostępności i gwarancje spójności. Ponieważ jest to systemowy obiekt elastycznie, rezerwuje zasobów w celu zagwarantowania tych wymagań. Szybkim tempie tworzenia tabel jest wykrywany i ograniczenia. Firma Microsoft zaleca, spójrz na kurs tworzenia tabel i obniżyć go do mniej niż 5 na minutę. Pamiętaj, że interfejs API tabel ma elastycznie systemu. Obecnie możesz aprowizować, rozpocznie się płacić w. 
 
 ## <a name="gremlin-api"></a>Interfejs API języka Gremlin
-### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Jak zastosować funkcje interfejsu API języka Gremlin do usługi Azure Cosmos DB?
-Biblioteka rozszerzeń można użyć do zastosowania funkcji interfejsu API języka Gremlin. Ta biblioteka jest nazywany wykresy Azure firmy Microsoft i jest dostępny na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
-### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Wygląda na to, obsługi języka przechodzenie grafu Gremlin. Masz zamiar dodać więcej formularzy zapytania?
-Tak, planujemy dodać inne mechanizmy dla zapytania w przyszłości. 
+### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Dla języka C# / programowanie na platformie .NET, należy używać pakietu Microsoft.Azure.Graphs lub Gremlin.NET? 
 
-### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>Jak używać nowa oferta interfejsu API języka Gremlin? 
-Aby rozpocząć pracę, należy wykonać [interfejs API Gremlin](../cosmos-db/create-graph-dotnet.md) artykuł szybki start.
+Interfejs API usługi Azure Cosmos DB Gremlin wykorzystuje sterowników open source jako główny łączniki dla usługi. Dlatego zalecaną opcją jest użycie [sterowniki, które są obsługiwane przez przez witrynę Apache Tinkerpop](http://tinkerpop.apache.org/).
 
+### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak są rozliczane jednostek RU/s podczas uruchamiania zapytań w bazie danych programu graph? 
+
+Wszystkie obiekty programu graph, wierzchołki i krawędzie, są reprezentowane jako dokumenty JSON w wewnętrznej bazie danych. Ponieważ jednego zapytania języka Gremlin można zmodyfikować jedną lub wiele grafu obiektów w danym momencie, kosztów skojarzonych z nim isbe bezpośrednio związane z obiektami krawędzie, które są przetwarzane przez zapytanie. Jest to ten sam proces, który korzysta z usługi Azure Cosmos DB dla innych interfejsów API. Aby uzyskać więcej informacji, zobacz [jednostek żądań w usłudze Azure Cosmos DB](request-units.md).
+
+Opłata za RU opiera się na zestawie roboczym danych podczas przechodzenia i ustaw nie wynik. Na przykład jeśli zapytanie ma na celu uzyskanie poszczególnych wierzchołków w wyniku, ale musi przechodzić przez wiele innych obiektów w taki sposób, następnie koszt będzie opierać się na wszystkie obiekty programu graph, które spowoduje przejście do obliczenia wierzchołka jeden wynik.
+
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaka jest maksymalna skala, który grafowej bazy danych może mieć w usłudze Azure Cosmos DB — interfejs API Gremlin? 
+
+Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określany przez ilość partycje, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji i najlepszych rozwiązań, zobacz [najlepszymi rozwiązaniami dotyczącymi partycjonowania](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
+
+### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki? 
+
+Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net]() i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: nie można odnaleźć dowolną metodę" Błąd?
+
+Interfejs API usługi Azure Cosmos DB Gremlin implementuje podzbiór funkcji zdefiniowane w obszarze powierzchni języka Gremlin. Obsługiwane kroki i dodatkowe informacje można znaleźć [Obsługa języka Gremlin](gremlin-support.md) artykułu.
+
+Najlepszym obejściem tego problemu jest przepisaniu wymaganych kroków języka Gremlin z obsługiwanych funkcji, ponieważ wszystkie niezbędne kroki Gremlin są obsługiwane przez usługę Azure Cosmos DB.
+
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Dlaczego otrzymuję "WebSocketException: serwer zwrócił kod stanu"200", gdy oczekiwany kod stanu:"101"" Błąd?
+
+Ten błąd prawdopodobnie jest zgłaszany, gdy jest używany nieprawidłowy punkt końcowy. Punkt końcowy, który generuje ten błąd ma następującego wzorca:
+
+`https:// YOUR_DATABASE_ACCOUNT.documents.azure.com:443/` 
+
+To jest punkt końcowy dokumentów, bazy danych programu graph.  Prawidłowy punkt końcowy do użycia jest punkt końcowy języka Gremlin, który ma następujący format: 
+
+`https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
+
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>Dlaczego otrzymuję błąd "RequestRateIsTooLarge"?
+
+Ten błąd oznacza, że przydzielone jednostek żądań na sekundę nie są wystarczająco, aby obsługiwać zapytanie. Ten błąd występuje zazwyczaj, po uruchomieniu zapytania, który uzyskuje wszystkie wierzchołki:
+
+```
+// Query example:
+g.V()
+```
+
+To zapytanie będzie podejmować próby pobrania wszystkich wierzchołków z wykresu. Tak koszt tego zapytania będzie równy co najmniej liczby wierzchołków pod względem jednostek RU. Aby rozwiązać tego zapytania należy dostosować ustawienie jednostek RU/s.
+
+### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Dlaczego Moje połączenia sterownika Gremlin porzucane po pewnym czasie?
+
+Za pośrednictwem połączenia protokołu WebSocket nawiązywane jest połączenie z języka Gremlin. Mimo że nie ma określonego czasu wygaśnięcia połączeń protokołu WebSocket, Azure Cosmos DB — interfejs API Gremlin utracą ważność bezczynnych połączeń po 30 minutach braku aktywności. 
+
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Dlaczego nie można użyć wywołania interfejsu API fluent w sterowników natywnych języka Gremlin?
+
+Wywołania interfejsu API Fluent nie są jeszcze obsługiwane przez interfejs API języka Gremlin usługi Azure Cosmos DB. Wywołania interfejsu API Fluent wymagają wewnętrznych funkcji formatowania, znany jako kod bajtowy pomocy technicznej, który nie jest obecnie obsługiwane przez usługi Azure Cosmos DB — interfejs API Gremlin. Z powodu tego samego powodu najnowszy sterownik języka Gremlin JavaScript również nie jest obecnie obsługiwane. 
+
+### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Jak można ocenić wydajność zapytań w języku Gremlin?
+
+**ExecutionProfile()** kroku (wersja zapoznawcza) może służyć do zapewnienia analizy planu wykonania zapytania. Ten krok musi być umieszczona na końcu dowolnego zapytania języka Gremlin, jak pokazano w poniższym przykładzie:
+
+**Przykład zapytania**
+
+```
+g.V('mary').out('knows').executionProfile()
+```
+
+**Przykładowe dane wyjściowe**
+
+```json
+[
+  {
+    "gremlin": "g.V('mary').out('knows').executionProfile()",
+    "totalTime": 8,
+    "metrics": [
+      {
+        "name": "GetVertices",
+        "time": 3,
+        "annotations": {
+          "percentTime": 37.5
+        },
+        "counts": {
+          "resultCount": 1
+        }
+      },
+      {
+        "name": "GetEdges",
+        "time": 5,
+        "annotations": {
+          "percentTime": 62.5
+        },
+        "counts": {
+          "resultCount": 0
+        },
+        "storeOps": [
+          {
+            "partitionsAccessed": 1,
+            "count": 0,
+            "size": 0,
+            "time": 0.6
+          }
+        ]
+      },
+      {
+        "name": "GetNeighborVertices",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      },
+      {
+        "name": "ProjectOperator",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      }
+    ]
+  }
+]
+```
+
+Dane wyjściowe powyższych profilu pokazują, jak dużo czasu na uzyskiwanie obiektów wierzchołków i krawędzi, a także rozmiar zestawu roboczego danych. Odnosi się do pomiarów ewidencyjnych dla zapytań usługi Azure Cosmos DB.
 
 ## <a id="cassandra"></a> Interfejs API rozwiązania Cassandra
 

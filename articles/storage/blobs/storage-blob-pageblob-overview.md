@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265902"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022692"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Unikatowe funkcje Azure stronicowych obiektów blob
 
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Tworzenie stron do stronicowych obiektów blob
-Aby napisać stron, użyj [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) metody.  Dzięki temu zapisu sekwencyjnego zestaw stron maksymalnie 4MBs. Przesunięcie zapisywana muszą zaczynać się na granicy 512-bajtowego (startingOffset % 512 == 0) i na końcu na granicy 512 - 1.  Poniższy przykład kodu pokazuje sposób wywoływania **WritePages** dla obiektu blob:
+Aby napisać stron, użyj [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metody.  Dzięki temu zapisu sekwencyjnego zestaw stron maksymalnie 4MBs. Przesunięcie zapisywana muszą zaczynać się na granicy 512-bajtowego (startingOffset % 512 == 0) i na końcu na granicy 512 - 1.  Poniższy przykład kodu pokazuje sposób wywoływania **WritePages** dla obiektu blob:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -116,8 +116,6 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>Dzierżawa stronicowych obiektów blob
 Operacja dzierżawienie obiektu Blob ustanawia i zarządza blokadę obiektu blob dla zapisu operacji i usuwania. Ta operacja jest przydatne w scenariuszach, gdzie stronicowych obiektów blob jest uzyskiwany z wielu klientów, aby upewnić się, że tylko jeden klient może zapisać obiektu blob w danym momencie. Dyskami platformy Azure, na przykład wykorzystuje to mechanizm, aby upewnić się, że dysk zarządza tylko jednej maszyny Wirtualnej dzierżawy. Czas trwania blokady może być 15 do 60 sekund lub mogą być nieskończone. Zobacz dokumentację [tutaj](/rest/api/storageservices/lease-blob) Aby uzyskać więcej informacji.
-
-> Użyj następującego linku, aby uzyskać [przykłady kodu](/resources/samples/?service=storage&term=blob&sort=0 ) dla innych scenariuszy aplikacji. 
 
 Oprócz zaawansowanych interfejsów API REST stronicowe obiekty BLOB oferują także dostępu współdzielonego, trwałość i lepsze zabezpieczenia. Omówimy te korzyści bardziej szczegółowo w następnych akapitach. 
 

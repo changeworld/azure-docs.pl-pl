@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie niezawodnych mikrousług platformy Azure | Dokumentacja firmy Microsoft
+title: Konfigurowanie usług Reliable Services usługi Azure Service Fabric | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o konfigurowaniu stanowych usług Reliable Services w usłudze Azure Service Fabric.
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ee8010fbbadc011e04d6d43599d671a1f926bb5f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249023"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049660"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurowanie stanowych usług reliable services
 Istnieją dwa rodzaje ustawień konfiguracji dla usług reliable services. Jeden zestaw jest globalne dla wszystkich usług reliable services w klastrze, a drugi zestaw zależy od określonej usługi reliable service.

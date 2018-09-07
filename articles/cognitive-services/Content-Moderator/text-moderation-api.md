@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości - łagodzenia tekstu | Dokumentacja firmy Microsoft
-description: Użyć łagodzenia tekstu w przypadku możliwości niechciane tekstu, dane osobowe, listy warunków niestandardowe.
+title: Usługa Azure Content Moderator — Moderowanie tekstu | Dokumentacja firmy Microsoft
+description: Użyj Moderowanie tekstu dla możliwości niechciane tekst, dane osobowe, listy i niestandardowe warunków.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,31 +9,31 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b2edaa145650ea3c9fe3c0e9fd5e496ec7d30b99
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085763"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025485"
 ---
 # <a name="text-moderation"></a>Moderowanie tekstu
 
-Użyj łagodzenia tekst pomocy maszyny moderatora zawartości i [człowieka przeglądu](Review-Tool-User-Guide/human-in-the-loop.md) możliwości na średni zawartości tekstowej.
+Użyj Content Moderator tekstu wspomagane maszynowo Moderowanie i [przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md) możliwości moderowanie zawartości tekstowej.
 
-Możesz zablokować, Zatwierdź albo przejrzyj zawartość, w oparciu o progi i zasady. Użyj, aby rozszerzyć człowieka łagodzenia środowisk gdzie partnerów, pracowników i konsumentów Generowanie zawartości tekstowej. Obejmują one pokoje rozmów, tablice dyskusyjne chatbots, katalogi handlu elektronicznego i dokumenty. 
+Możesz zablokować, Zatwierdź albo przejrzyj zawartość, na podstawie zasad i progów. Dzięki niemu rozszerzyć ludzi Moderowanie środowisk których partnerów, pracowników i klientów generują zawartości tekstowej. Obejmują one, pokoje rozmów, dyskusyjnymi, czatbotów, wykazy handlu elektronicznego i dokumentów. 
 
 Odpowiedź usługi zawiera następujące informacje:
 
-- Niestosownych wyrażeń: na podstawie terminu dopasowywanie wbudowanej listy profanujących warunki w różnych językach
-- Klasyfikacja: wspierana maszyny klasyfikacji na trzy kategorie
-- Dane osobowe (dane osobowe)
+- Wulgaryzmów: termin, na podstawie dopasowania z wbudowanej listy obsceniczne warunki w różnych językach
+- Klasyfikacja: wspomagane maszynowo klasyfikacji na trzy kategorie
+- Dane osobowe (PII)
 - Poprawił tekstu
 - Oryginalny tekst
 - Język
 
 ## <a name="profanity"></a>Niestosownych wyrażeń
 
-W przypadku wykrycia przez interfejs API wszelkie warunki profanujących w żadnym z [obsługiwanych języków](Text-Moderation-API-Languages.md), te zasady są uwzględnione w odpowiedzi. Odpowiedź zawiera również ich lokalizacji (`Index`) w oryginalny tekst. `ListId` w następującym przykładowym JSON, który odwołuje się do warunków w [termin niestandardowych list](try-terms-list-api.md) Jeśli jest dostępna.
+Jeśli interfejs API wykryje postanowieniami obsceniczne w żadnym z [obsługiwane języki](Text-Moderation-API-Languages.md), te zasady znajdują się w odpowiedzi. Odpowiedź zawiera również ich lokalizacji (`Index`) w oryginalny tekst. `ListId` w następującym przykładzie JSON, który odwołuje się do warunków w [listy terminów niestandardowe](try-terms-list-api.md) Jeśli jest dostępny.
 
     "Terms": [
     {
@@ -44,15 +44,15 @@ W przypadku wykrycia przez interfejs API wszelkie warunki profanujących w żadn
     }
 
 > [!NOTE]
-> Dla **języka** parametru, Przypisz `eng` lub pozostaw to pole puste, aby zobaczyć wspierana maszyny **klasyfikacji** odpowiedzi (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
+> Dla **języka** parametru, Przypisz `eng` lub pozostaw to pole puste, aby zobaczyć wspomagane maszynowo **klasyfikacji** odpowiedzi (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
 >
-> Dla **warunki niestosownych wyrażeń** wykrywania, użyj [kod ISO 639 3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostaw puste.
+> Dla **warunki wulgaryzmów** wykrywania, użyj [kod ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostawić je puste.
 
 ## <a name="classification"></a>Klasyfikacja
 
-Moderatora zawartości elementu wspierana maszyny **funkcji klasyfikacji tekst** obsługuje **tylko angielski**, co ułatwia wykrywanie potencjalnie niepożądane zawartości. Oflagowane zawartość może zostać oceniona jako nieodpowiednie w zależności od kontekstu. Przekazuje prawdopodobieństwo wystąpienia każdej kategorii, a może zalecić człowieka przeglądu. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, derogacyjnego lub porównawczego języka. W tym żargon, skróconej wyrazy, obraźliwe i celowo błędnie wpisane słowa do przeglądu. 
+Pakietu Content Moderator użytkownika wspomagane maszynowo **funkcji Klasyfikacja tekstu** obsługuje **tylko w języku angielskim**, co ułatwia wykrywanie potencjalnie niepożądane zawartości. Oflagowane zawartość może zostać oceniona jako niestosowny w zależności od kontekstu. On wywołuje prawdopodobieństwo wystąpienia każdej kategorii i może zalecić przeglądu przez ludzi. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, uwłaczającej lub porównawczego języka. W tym żargonu, skróconej słów, obraźliwych i celowo błędnie napisanych wyrazów do przeglądu. 
 
-Następujące wyodrębniania w wyodrębniania JSON przedstawiono przykładowe dane wyjściowe:
+Następujące wyodrębniania w instrukcji extract JSON przedstawiono przykładowe dane wyjściowe:
 
     "Classification": {
         "ReviewRecommended": true,
@@ -69,24 +69,24 @@ Następujące wyodrębniania w wyodrębniania JSON przedstawiono przykładowe da
 
 ### <a name="explanation"></a>Wyjaśnienie
 
-- `Category1` odnosi się do potencjalnych obecności język, który można uznać za płciowo jawne lub dla dorosłych w niektórych sytuacjach.
-- `Category2` odnosi się do potencjalnych obecności język, który można uznać za płciowo sugerujących lub dojrzałe w niektórych sytuacjach.
-- `Category3` odnosi się do potencjalnych obecności język, który może zostać uznany za obraźliwy w niektórych sytuacjach.
-- `Score` to od 0 do 1. Im wyższa jest ocena wyższa modelu jest prognozowanie kategorii można stosować. Ta wersja zapoznawcza zależy od statystyczne modelu zamiast wyników kodowane ręcznie. Zaleca się testowanie na własną zawartość, aby określić, jak każda kategoria wyrównuje do własnych potrzeb.
-- `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ w zależności od wewnętrznego wynik progów. Klienci powinna ocenić, czy ta wartość lub zdecydować o progami niestandardowymi na podstawie ich zawartości zasad.
+- `Category1` odnosi się do potencjalnego obecności języka, który może być uznawany za przekleństwa jawne lub treści dla dorosłych w niektórych sytuacjach.
+- `Category2` odnosi się do potencjalnego obecności języka, który może być uznawany za przekleństwa dwuznaczne lub dla dorosłych w niektórych sytuacjach.
+- `Category3` odnosi się do potencjalnego obecności język, który może być uznane za obraźliwe w niektórych sytuacjach.
+- `Score` to od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta funkcja opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
+- `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
 
-## <a name="personally-identifiable-information-pii"></a>Dane osobowe (dane osobowe)
+## <a name="personally-identifiable-information-pii"></a>Dane osobowe (PII)
 
 Funkcja dane osobowe wykrywa potencjalne obecności te informacje:
 
-- Adres e-mail
-- Adres wysyłkowy stany USA
+- Email address (Adres e-mail)
+- Adres wysyłkowy Stanów Zjednoczonych
 - Adres IP
-- Amerykański numer telefonu
-- Numer telefonu UK
+- Numer telefonu w Stanach Zjednoczonych
+- Numer telefonu Zjednoczone Królestwo
 - Numer ubezpieczenia społecznego (SSN)
 
-W poniższym przykładzie przedstawiono przykładowa odpowiedź:
+Poniższy przykład pokazuje przykładowa odpowiedź:
 
     "PII": {
         "Email": [{
@@ -134,25 +134,25 @@ W poniższym przykładzie przedstawiono przykładowa odpowiedź:
             }]
         }
 
-## <a name="auto-correction"></a>Automatyczne naprawianie
+## <a name="auto-correction"></a>Korekta automatyczna
 
 Załóżmy, że tekst wejściowy jest ("lzay" i "f0x" są zamierzone):
 
     The qu!ck brown f0x jumps over the lzay dog.
 
-Jeśli zadajesz dla korekty automatycznej odpowiedzi zawiera poprawiony wersję tekst:
+Jeśli poprosisz o Autokorektę, odpowiedź zawiera poprawionej wersji tekst:
 
     The quick brown fox jumps over the lazy dog.
 
-## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Tworzenie i zarządzanie nimi z listy warunków
+## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Tworzenie i zarządzanie nimi z list niestandardowych warunków
 
-Gdy domyślne, globalnej listy warunków działa dobrze w większości przypadków, warto ekranu względem warunki, które są specyficzne dla potrzeb biznesowych. Na przykład można odfiltrować żadnych konkurencyjnych firmowe z wpisów przez użytkowników.
+Gdy ustawienie domyślne, globalne listy warunków działa doskonale nadaje się do większości przypadków, możesz chcieć ekranu względem warunki, które są specyficzne dla potrzeb biznesowych. Na przykład można odfiltrować wszelkie konkurencyjne nazw marek z wpisy według użytkowników.
 
 > [!NOTE]
-> Istnieje limit maksymalny wynoszący **wymieniono 5 termin** z każdej listy **przekracza 10 000 warunki**.
+> Istnieje maksymalny limit wynoszący **Wyświetla 5 termin** z każdej listy **nie może przekraczać 10 000 warunki**.
 >
 
-W poniższym przykładzie przedstawiono pasujących identyfikator listy:
+Dopasowania Identyfikatora listy można znaleźć w poniższym przykładzie:
 
     "Terms": [
     {
@@ -162,8 +162,8 @@ W poniższym przykładzie przedstawiono pasujących identyfikator listy:
         "Term": "crap"
     }
 
-Udostępnia zawartości moderatora [interfejsu API listy termin](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) z operacjami zarządzania termin niestandardowe zawiera listę. Rozpoczynać [termin wymieniono interfejsu API konsoli](try-terms-list-api.md) i użyj przykłady kodu interfejsu API REST. Sprawdź również [szybkiego startu .NET wymieniono termin](term-lists-quickstart-dotnet.md) Jeśli znasz program Visual Studio i C#.
+Content Moderator oferuje [API listy terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) z operacjami zarządzania termin niestandardowej listy. Rozpoczynać [Konsola interfejsu API listy terminów](try-terms-list-api.md) i przykłady kodu interfejsu API REST. Sprawdź również [termin .NET zawiera przewodnik Szybki Start](term-lists-quickstart-dotnet.md) osoby znające program Visual Studio w języku C#.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przetestuj [tekst łagodzenia interfejsu API konsoli](try-text-api.md) i użyj przykłady kodu interfejsu API REST. Sprawdź również [szybkiego startu .NET łagodzenia tekst](text-moderation-quickstart-dotnet.md) Jeśli znasz program Visual Studio i C#.
+Wersja testowa [konsoli interfejs API moderowania tekstu](try-text-api.md) i przykłady kodu interfejsu API REST. Również szybko sprawdzić wydajność [Szybki Start .NET Moderowanie tekstu](text-moderation-quickstart-dotnet.md) Jeśli znasz program Visual Studio w języku C#.

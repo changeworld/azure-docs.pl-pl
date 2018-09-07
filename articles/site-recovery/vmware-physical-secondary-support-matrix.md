@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 2ea1c337b4193997039876a05e71fb0088d455b1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921493"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021997"
 ---
 # <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi replikacji maszyn wirtualnych programu VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -112,7 +112,7 @@ Usługa mobilności koordynuje replikację między lokalnymi serwerami VMware lu
 
 **Aktualizacja** | **Szczegóły** 
 --- | --- 
-Aktualizacje programu Scout | [Dowiedz się więcej o i Pobierz](/vmware-physical-secondary-disaster-recovery.md#updates) najnowsze aktualizacje programu Scout | Aktualizacje programu Scout kumulują się.
+Aktualizacje programu Scout | [Dowiedz się więcej o i Pobierz](vmware-physical-secondary-disaster-recovery.md#updates) najnowsze aktualizacje programu Scout | Aktualizacje programu Scout kumulują się.
 Aktualizacje składników | Aktualizacje programu Scout obejmują aktualizacje dla wszystkich składników, w tym RX serwera, serwer konfiguracji, proces i główne serwery docelowe, vContinuum serwerów i serwerów źródłowych, które chcesz chronić.<br/><br/> [Dowiedz się więcej](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).
 
 

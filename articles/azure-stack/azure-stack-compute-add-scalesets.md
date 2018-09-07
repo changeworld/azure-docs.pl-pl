@@ -7,20 +7,20 @@ manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3fbc3047688fed877280ca2d0f079ddea66bceb8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411910"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024735"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnianie zestawów skalowania maszyn wirtualnych w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
-
+  
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowych usługi Azure Stack. Umożliwia ich wdrożenie zestawu identycznych maszyn wirtualnych oraz zarządzanie. Za pomocą wszystkich maszyn wirtualnych skonfigurowane tak samo, zestawów skalowania nie wymagają wstępnego inicjowania obsługi administracyjnej maszyn wirtualnych. Jest łatwiejsze tworzenie wielkoskalowych usług, przeznaczonych dla dużych wystąpień obliczeniowych, danych big data i obciążenia konteneryzowane.
 
 Ten artykuł przeprowadzi Cię przez proces, aby udostępnić zestawy skalowania w witrynie Azure Marketplace stosu. Po wykonaniu tej procedury, użytkownicy mogą dodawać, czy zestawy skalowania maszyn wirtualnych do swojej subskrypcji.
@@ -36,9 +36,31 @@ W usłudze Azure Stack zestawów skalowania maszyn wirtualnych nie obsługuje au
 - **Portal Marketplace**  
     Zarejestruj usługę Azure Stack globalnej platformy Azure, aby włączyć dostępność elementów w portalu Marketplace. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
 - **Obraz systemu operacyjnego**  
-    Jeśli nie dodano obrazu systemu operacyjnego, w portalu Azure Marketplace stosu, zobacz [Dodawanie elementu portalu marketplace usługi Azure Stack z platformy Azure](asdk/asdk-marketplace-item.md).
+  Przed utworzeniem zestawu skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych), należy pobrać obrazów maszyn wirtualnych do użycia w zestawu skalowania maszyn wirtualnych z [usługi Azure Stack w portalu Marketplace](azure-stack-download-azure-marketplace-item.md). Obrazy muszą być już dostępne, zanim użytkownik może utworzyć nowego zestawu skalowania maszyn wirtualnych. 
 
-## <a name="add-the-virtual-machine-scale-set"></a>Dodaj zestaw skalowania maszyn wirtualnych
+
+## <a name="use-the-azure-stack-portal"></a>Używaj portalu Azure Stack 
+
+>[!NOTE]  
+> Informacje przedstawione w tej sekcji ma zastosowanie, gdy używasz usługi Azure Stack w wersji 1808 lub nowszej. Jeśli używana wersja jest 1807 lub starszym, zobacz [Dodaj zestaw skalowania maszyn wirtualnych (przed 1808)](#add-the-virtual-machine-scale-set-(prior-to-version-1808)).
+
+1. Zaloguj się do portalu usługi Azure Stack. Następnie przejdź do **wszystkich usług** > **zestawy skalowania maszyn wirtualnych**, a następnie w obszarze *obliczenia*, wybierz opcję **zestawówskalowaniamaszynwirtualnych**. 
+   ![Zestawy skalowania maszyn wirtualnych wybierz](media/azure-stack-compute-add-scalesets/all-services.png)
+
+2. Wybierz pozycję Utwórz ***zestawy skalowania maszyn wirtualnych***.
+   ![Tworzenie zestawu skalowania maszyn wirtualnych](media/azure-stack-compute-add-scalesets/create-scale-set.png)
+
+3. Wypełnij puste pola, wybierz z menu rozwijane na potrzeby *obraz dysku systemu operacyjnego*, *subskrypcji*, i *rozmiaru wystąpienia*. Wybierz **tak** dla *Użyj usługi managed disks*. Następnie wybierz przycisk **Create** (Utwórz).
+    ![Konfigurowanie i tworzenie](media/azure-stack-compute-add-scalesets/create.png)
+
+4. Aby zobaczyć nowe skalowania maszyn wirtualnych zestawu, przejdź do **wszystkie zasoby**, wyszukaj nazwę zestawu skalowania maszyn wirtualnych, a następnie wybierz jego nazwę w wyszukiwaniu. 
+   ![Wyświetlanie zestawu skalowania](media/azure-stack-compute-add-scalesets/search.png)
+
+
+
+## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Dodaj zestaw skalowania maszyn wirtualnych (wcześniejszymi niż wersja 1808)
+>[!NOTE]  
+> Informacje przedstawione w tej sekcji ma zastosowanie, gdy używasz usługi Azure Stack wersji wcześniejszej niż 1808. Jeśli używasz wersji 1808 lub nowszej, zobacz [za pomocą portalu usługi Azure Stack](#use-the-azure-stack-portal).
 
 1. Otwórz w portalu Azure Marketplace stosu i łączenie z platformą Azure. Wybierz **zarządzania Marketplace**> **+ Dodaj na platformie Azure**.
 
@@ -56,7 +78,7 @@ Po utworzeniu zestawu skalowania maszyn wirtualnych, użytkownicy mogą zaktuali
 
    Gdy *wersji* jest ustawiony jako **najnowsze** w *imageReference* części szablonu skalowania ustawiona, skalowanie operacji przy użyciu zestawu skalowania najnowszej dostępnej wersji Obraz skali zestawu wystąpień. Po zakończeniu skalowania w górę, możesz usunąć starsze wystąpień zestawów skalowania maszyn wirtualnych.  (Wartości *wydawcy*, *oferują*, i *jednostki sku* pozostają bez zmian). 
 
-   Oto przykład określenia *najnowsze*:  
+   W poniższym przykładzie JSON *najnowsze*:  
 
     ```Json  
     "imageReference": {
@@ -81,6 +103,17 @@ Po utworzeniu zestawu skalowania maszyn wirtualnych, użytkownicy mogą zaktuali
     Jeśli pobierzesz obraz za pomocą nowszej wersji (co powoduje zmianę dostępnej wersji), zestaw skalowania nie można skalować w górę. Jest to celowe wersję obrazu określonego w szablonie zestawu skalowania muszą być dostępne.  
 
 Aby uzyskać więcej informacji, zobacz [dyski systemu operacyjnego i obrazy](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+
+
+## <a name="scale-a-virtual-machine-scale-set"></a>Skalowanie zestawu skalowania maszyn wirtualnych
+Możesz skalować rozmiar *zestawu skalowania maszyn wirtualnych* być większy lub mniejszy.  
+
+1. W portalu, wybierz zestaw skalowania, a następnie wybierz pozycję **skalowanie**.
+2. Użyj paska suwaka, aby ustawić nowy poziom skalowania dla tego zestawu skalowania maszyn wirtualnych, a następnie wybierz **Zapisz**.
+     ![Zestaw skalowania](media/azure-stack-compute-add-scalesets/scale.png)
+
+
+
 
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Usuń zestaw skalowania maszyn wirtualnych

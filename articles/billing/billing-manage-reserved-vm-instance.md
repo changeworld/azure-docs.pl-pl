@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3e5316ac0ca20c58a0960818d3151c238927df0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382154"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054601"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -91,9 +91,17 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
+## <a name="cancellations-and-exchanges"></a>Anulowanie i wymiany
+
+W zależności od typu rezerwację można anulować lub wymiany rezerwacji. Aby uzyskać więcej informacji zobacz anulowania i wymiany sekcje w następujących tematach:
+
+- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
+- [Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
+- [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Zmiana zoptymalizować ustawienie zarezerwowanych wystąpień maszyn wirtualnych
 
- W przypadku dokonywania zakupu wystąpienia zarezerwowanego maszyny Wirtualnej, możesz wybrać elastyczność rozmiar wystąpienia lub priorytet pojemności. Elastyczność rozmiaru wystąpienia ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Priorytet pojemności rezerwuje pojemnością centrum danych wdrożeń. Ta opcja zapewnia dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz.
+ W przypadku dokonywania zakupu wystąpienia zarezerwowanego maszyny Wirtualnej, możesz wybrać elastyczność rozmiar wystąpienia lub priorytet pojemności. Elastyczność rozmiaru wystąpienia ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Priorytet pojemności priorytet pojemności centrum danych wdrożeń. Ta opcja zapewnia dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz.
 
 Domyślnie gdy zakres rezerwacji jest udostępniony, elastyczność rozmiaru wystąpienia są. Możliwości Centrum danych nie są uszeregowane według priorytetów dla wdrożeń maszyn wirtualnych.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666023"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021850"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
@@ -97,7 +97,7 @@ Należy dostarczyć dysków na adres, który został uzyskany z poprzedniego kro
 >  Należy dostarczyć dysków za pośrednictwem usługi obsługiwane operatora, który dostarczy numer śledzenia dla pakietu.
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>Trwa aktualizowanie zadania importu o informacje dotyczące wysyłki
-Po umieszczeniu numeru śledzenia wywołań [Aktualizuj właściwości zadania](/api/storageimportexport/jobs#Jobs_Update) operację, aby zaktualizować wysyłki Nazwa operatora, numer śledzenia dla zadania i numer konta operatora dla wysyłki zwrotnej. Opcjonalnie możesz określić liczbę dysków i także data wysyłki.
+Po umieszczeniu numeru śledzenia wywołań [Aktualizuj właściwości zadania](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Update) operację, aby zaktualizować wysyłki Nazwa operatora, numer śledzenia dla zadania i numer konta operatora dla wysyłki zwrotnej. Opcjonalnie możesz określić liczbę dysków i także data wysyłki.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

@@ -1,20 +1,21 @@
 ---
-title: Szkolenie z aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
-description: Language Understanding (LUIS) umożliwia uczenie modelu.
+title: Szkolenie z aplikacją usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Szkolenie to proces uczenia aplikacji Language Understanding (LUIS), aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 42cff3dd8237598da5aa71ed1a4d6462c5b4c25d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223188"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049135"
 ---
 # <a name="train-your-luis-app"></a>Szkolenie z aplikacją usługi LUIS
 
@@ -32,11 +33,7 @@ Aby rozpocząć proces iteracyjny, należy najpierw szkolenie aplikacją usługi
 
 2. W swojej aplikacji, wybierz **Train** w górnym panelu. 
 
-    ![Przycisk Train (Ucz)](./media/luis-how-to-train/train-button.png)
-
 3. Po zakończeniu szkolenia na pasku powiadomień zielony pojawia się u góry strony w przeglądarce.
-
-    ![Strona szkolenie i testowanie aplikacji](./media/luis-how-to-train/train-success.png)
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 

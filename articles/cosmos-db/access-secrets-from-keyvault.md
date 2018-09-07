@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42748063"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053088"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Przechowywanie i dostęp do kluczy usługi Azure Cosmos DB za pomocą usługi Key Vault
 
@@ -56,7 +56,7 @@ Poniższe kroki są wymagane do przechowywania i klucze dostępu usługi Azure C
 
 ## <a name="create-an-azure-web-application"></a>Tworzenie aplikacji sieci web platformy Azure
 
-1. Tworzenie aplikacji sieci web platformy Azure można również pobrać aplikację z [repozytorium GitHub](https://github.com/rsarosh/CosmosDB-KeyVault). Jest prostą aplikację MVC.  
+1. Tworzenie aplikacji sieci web platformy Azure można również pobrać aplikację z [repozytorium GitHub](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Jest prostą aplikację MVC.  
 
 2. Rozpakuj pobraną aplikację, a następnie otwórz **HomeController.cs** pliku. Zaktualizuj identyfikator wpisu tajnego w następującym wierszu:
 
@@ -87,11 +87,9 @@ Teraz po uruchomieniu aplikacji, możesz przeczytać wpisu tajnego usługi Key V
 
 ![Aplikacja wdrożona za pomocą klucza tajnego](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-Podobnie można dodać użytkownika do uzyskania dostępu do klucza magazynu. Należy dodać użytkownika do usługi Key Vault, klikając polecenie "Zasady dostępu", a następnie nadaj wszystkich uprawnień, które są potrzebne do uruchomienia aplikacji w programie Visual studio. Ta aplikacja jest uruchomiona z pulpitu, zajmuje się Twoją tożsamość.
+Podobnie można dodać użytkownika do uzyskania dostępu do klucza magazynu. Musisz samodzielnie dodać do usługi Key Vault, wybierając **zasady dostępu** a następnie przyznać wszystkie uprawnienia potrzebne do uruchomienia aplikacji w programie Visual studio. Ta aplikacja jest uruchomiona z pulpitu, zajmuje się Twoją tożsamość.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Konfigurowanie zapory dla usługi Azure Cosmos DB, zobacz [zapory pomocy technicznej](firewall-support.md) artykułu.
 * Aby skonfigurować punkt końcowy usługi sieci wirtualnej, zobacz [zabezpieczyć dostęp przy użyciu punktu końcowego usługi sieci wirtualnej](vnet-service-endpoint.md) artykułu.
-
-

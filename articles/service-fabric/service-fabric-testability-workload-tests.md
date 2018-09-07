@@ -1,6 +1,6 @@
 ---
-title: Symulowanie błędów w Azure mikrousług | Dokumentacja firmy Microsoft
-description: Jak zabezpieczyć przed awariami bezpieczne i nieprawidłowego usług.
+title: Symulowanie błędów w aplikacjach usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Jak zabezpieczyć usługi przed awariami łagodne i nieprawidłowego.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208900"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051918"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
-Scenariusze testowania w sieci szkieletowej usług Azure umożliwiają deweloperom nie martw się dotyczące poszczególnych błędów. Istnieją scenariusze, jednak gdzie jawne przeplataniem obciążenie klienta i błędy mogą być wymagane. Z przeplotem obciążenie klienta i błędy gwarantuje, że usługa rzeczywistego wykonania akcji w przypadku awarii. Podany poziom formant, który umożliwia zmianę, mogą to być punktach dokładne wykonywania obciążenia. To wywoływanie błędów w innych stanów w aplikacji można znaleźć usterek i poprawy jakości.
+Scenariusze testowania w usłudze Azure Service Fabric umożliwia deweloperom nie martw się o obsłudze poszczególne błędy. Istnieją scenariusze, jednak gdy jawne z przeplotem obciążenia klienta i błędy mogą być wymagane. Z przeplotem obciążenia klienta i błędy gwarantuje, że usługa wykonuje rzeczywistą operację niektóre akcje, gdy awaria. Określony poziom formant, który udostępnia możliwości testowania, mogą to być momentach dokładne wykonywania obciążenia. Ten indukowana usterek w różnych stanach w aplikacji można znaleźć błędy i poprawić jakość.
 
-## <a name="sample-custom-scenario"></a>Przykładowy scenariusz niestandardowych
-Ten test przedstawiono scenariusz, w którym przeplata obciążeń biznesowych o [awarii bezpieczne i nieprawidłowego](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Powinien zostać wywołane usterek w środku operacji usługi lub obliczeniowych w celu uzyskania najlepszych wyników.
+## <a name="sample-custom-scenario"></a>Przykładowy scenariusz niestandardowe
+Ten test przedstawiono scenariusz, w którym przeplatają obciążeń biznesowych za pomocą [błędy łagodne i nieprawidłowego](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Błędy powinny zostać wywołane w środku operacji usługi lub obliczeniowych w celu uzyskania najlepszych wyników.
 
-Przejdźmy przykład to usługa, która udostępnia cztery obciążeń: A, B, C i D. każde zestawowi przepływów pracy i może być obliczeniowych, pamięci masowej lub mieszane. Dla uproszczenia będzie abstrakcji pozwoliło obciążeń w naszym przykładzie. Różne błędy, wykonane w tym przykładzie są:
+Przejdźmy przykładowej usługi, który udostępnia cztery obciążeń: A, B, C i D. Każda zestawowi przepływów pracy i może być obliczeń, magazynu lub mieszane. Dla uproszczenia będzie abstrakcji obciążeń w naszym przykładzie. Są różne błędy, wykonywane na w tym przykładzie:
 
 * RestartNode: Błąd nieprawidłowego Aby zasymulować ponowne uruchomienie komputera.
-* RestartDeployedCodePackage: Błąd nieprawidłowego symulowanie procesu hosta usługi ulega awarii.
-* RemoveReplica: Błąd łagodne symulowanie usuwania repliki.
-* MovePrimary: Błąd łagodne symulowanie przenosi repliki wyzwalane przez moduł równoważenia obciążenia sieci szkieletowej usług.
+* RestartDeployedCodePackage: Nieprawidłowego błędów, aby zasymulować proces hosta usługi kończy się niepowodzeniem.
+* RemoveReplica: Łagodne błędów, aby zasymulować usuwania repliki.
+* MovePrimary: Łagodne błędów, aby zasymulować repliki przenosi wyzwalane przez moduł równoważenia obciążenia usługi Service Fabric.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

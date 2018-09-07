@@ -3,17 +3,16 @@ title: Uaktualnij rejestr kontenerów klasycznej platformie Azure
 description: Skorzystaj z zalet rozszerzonej zestawu funkcji komponentu Basic, Standard i Premium zarządzane rejestry kontenerów, uaktualniając niezarządzanych Classic rejestru kontenerów.
 services: container-registry
 author: mmacy
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 951866c1c74cb14536ea341d80c06e0fcfe0e4fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189025"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025592"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Uaktualnianie rejestru klasycznego kontenera
 
@@ -23,7 +22,7 @@ Klasyczne jednostki SKU jest wycofywany, a będzie niedostępna po marca 2019 r.
 
 ## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
 
-Rejestru klasycznego jest jednostka SKU **przestarzałe**i będzie niedostępny z **marca 2019**. Wszystkie istniejące rejestrów Classic powinna być uaktualnienia przed marca 2019 r.
+Rejestru klasycznego jest jednostka SKU **przestarzałe**i będzie niedostępny z **marca 2019**. Wszystkie istniejące rejestrów Classic powinny zostać uaktualnione przed marca 2019 r.
 
 Z powodu planowanej obsługi i ograniczone możliwości rejestrów Classic niezarządzanych wszystkich rejestrów klasyczny być został uaktualniony do podstawowa, standardowa lub Premium rejestrów zarządzanych. Te wyższego poziomu jednostki SKU głębiej zintegrować rejestru możliwości platformy Azure.
 

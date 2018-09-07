@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: bb2210619e481189fc88ca3bb6b8044a8f5d7e14
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: aa14563966e028716d8e18c3228f026af983561f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262952"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024113"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji za pomocą usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcję usługi Azure AD, zobacz [strona produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -32,16 +32,17 @@ Po włączeniu roamingu stanu przedsiębiorstwa organizacji jest automatycznie p
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/).
 
-2. Wybierz **usługi Azure Active Directory** &gt; **urządzeń** &gt; **ustawienia urządzenia**.
+2. Wybierz **usługi Azure Active Directory** &gt; **urządzeń** &gt; **Roaming stanu przedsiębiorstwa**.
 
 3. Wybierz **użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach**. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ustawienia urządzenia](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
   ![Obraz ustawień urządzeń z etykietą użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
-Dla urządzeń systemu Windows 10 do korzystania z usługi Roaming stanu dla przedsiębiorstw urządzenie musi uwierzytelniać przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń, które są przyłączone do usługi Azure AD podstawowego znak w tożsamość użytkownika jest swojej tożsamości usługi Azure AD, więc żadna dodatkowa konfiguracja jest wymagana. W przypadku urządzeń korzystających z usługi Active Directory w środowisku lokalnym, administrator IT musi [Podłącz urządzenia przyłączone do domeny do usługi Azure AD dla środowisk systemu Windows 10](active-directory-azureadjoin-devices-group-policy.md).
+Dla urządzeń systemu Windows 10 do korzystania z usługi Roaming stanu dla przedsiębiorstw urządzenie musi uwierzytelniać przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń, które są przyłączone do usługi Azure AD podstawowego znak w tożsamość użytkownika jest swojej tożsamości usługi Azure AD, więc żadna dodatkowa konfiguracja jest wymagana. W przypadku urządzeń korzystających z usługi Active Directory w środowisku lokalnym, administrator IT musi [urządzenia przyłączone do hybrydowej Konfigurowanie usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
 ## <a name="data-storage"></a>Magazyn danych
 Roaming stanu dla przedsiębiorstw danych znajduje się w jednej lub kilku [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) , najlepiej wyrównać kraju/regionu ma wartość w wystąpieniu usługi Azure Active Directory. Roaming stanu dla przedsiębiorstw danych jest podzielona na partycje oparte na trzech głównych regionów geograficznych: Ameryka Północna, EMEA i Azja i PACYFIK. Roaming stanu dla przedsiębiorstw danych dla dzierżawy znajduje się lokalnie przy użyciu region geograficzny, a nie są replikowane między regionami.  Na przykład:
+
 Wartość kraj/region | ma ich dane są obsługiwane w
 ---------------------|-------------------------
 Kraj EMEA, takie jak "Francja" lub "Zambia" | co najmniej regionów świadczenia usługi Azure w Europie 
@@ -69,7 +70,7 @@ Wykonaj następujące kroki, aby wyświetlić raport o stanie synchronizacji urz
   ![Obraz danych kolumnowych synchronizacji urządzeń](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Przechowywanie danych
-Dane synchronizowane z usługą platformy Azure przy użyciu Roaming stanu dla przedsiębiorstw jest zachowywana do momentu został ręcznie usunięty lub danych w danym zostanie uznane za przestarzałe. 
+Zsynchronizowane z chmurą Microsoft za pomocą Roaming stanu dla przedsiębiorstw dane są przechowywane do momentu został ręcznie usunięty lub danych w danym zostanie uznane za przestarzałe. 
 
 ### <a name="explicit-deletion"></a>Jawne usuwanie
 Jawne usuwanie jest, gdy administrator platformy Azure spowoduje usunięcie użytkownika lub w katalogu lub w przeciwnym razie żądania je jawnie danych ma zostać usunięty.
@@ -79,14 +80,14 @@ Jawne usuwanie jest, gdy administrator platformy Azure spowoduje usunięcie uży
 * **Na żądanie usunięcia**: Jeśli administrator usługi Azure AD chce ręcznie usunąć dane lub ustawienia danych określonego użytkownika, administrator może bilet [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Usunięcie nieaktualnych danych
-Dane, które nie była używana przez jeden rok ("okres przechowywania") będzie traktowane jako nieaktualne i mogą zostać usunięte z systemu Azure. Okres przechowywania może ulec zmianie, ale nie będzie mniejszy niż 90 dni. Nieaktualnych danych może być określony zbiór ustawień Windows/aplikacji i wszystkich ustawień dla użytkownika. Na przykład:
+Dane, które nie była używana przez jeden rok ("okres przechowywania") będzie traktowane jako nieaktualne i mogą zostać usunięte z chmury firmy Microsoft. Okres przechowywania może ulec zmianie, ale nie będzie mniejszy niż 90 dni. Nieaktualnych danych może być określony zbiór ustawień Windows/aplikacji i wszystkich ustawień dla użytkownika. Na przykład:
 
 * Jeśli żadne urządzenia dostępu do kolekcji określonego ustawienia (na przykład, aplikacja zostanie usunięty z urządzenia lub grupy ustawień, takich jak "Kompozycji" jest wyłączona dla wszystkich urządzeń użytkownika), a tej kolekcji staje się przestarzałe po upływie okresu przechowywania mogą zostać usunięte . 
 * Jeśli użytkownik wyłączył ustawienia synchronizacji na wszystkich swoich urządzeniach, następnie żadne dane ustawienia będą uzyskiwać dostęp, a wszystkie dane ustawienia dla tego użytkownika staną się nieaktualne i mogą zostać usunięte po upływie okresu przechowywania. 
 * Jeśli administrator usługi Azure AD directory wyłącza Roaming stanu dla przedsiębiorstw na cały katalog, a następnie wszyscy użytkownicy w tym katalogu zostanie zatrzymane, synchronizowanie ustawień, a wszystkie dane ustawienia dla wszystkich użytkowników staną się nieaktualne i mogą zostać usunięte po upływie okresu przechowywania. 
 
 ### <a name="deleted-data-recovery"></a>Odzyskiwanie usuniętych danych
-Zasady przechowywania danych nie jest konfigurowany. Gdy dane zostaną trwale usunięte, nie jest możliwe do odzyskania. Jednak dane ustawienia są usuwane tylko z platformy Azure, nie z urządzenia przez użytkownika końcowego. Jeśli na dowolnym urządzeniu później ponownie nawiąże połączenie usługi Roaming stanu dla przedsiębiorstw, ustawienia są ponownie zsynchronizowane i przechowywanych na platformie Azure.
+Zasady przechowywania danych nie jest konfigurowany. Gdy dane zostaną trwale usunięte, nie jest możliwe do odzyskania. Jednak dane ustawienia są usuwane tylko w chmurze firmy Microsoft, nie z urządzenia przez użytkownika końcowego. Jeśli na dowolnym urządzeniu później ponownie nawiąże połączenie usługi Roaming stanu dla przedsiębiorstw, ustawienia są ponownie zsynchronizowane i przechowywane w chmurze firmy Microsoft.
 
 ## <a name="related-topics"></a>Powiązane tematy
 * [Omówienie roamingu stanu przedsiębiorstwa](active-directory-windows-enterprise-state-roaming-overview.md)

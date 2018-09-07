@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie obciążenia mikrousług platformy Azure przy użyciu metryk | Dokumentacja firmy Microsoft
+title: Zarządzanie obciążenia aplikacji usługi Azure Service Fabric przy użyciu metryk | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu konfigurowania i używania metryki w usłudze Service Fabric do użycia zasobów usługi zarządzania.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e16f1ae28f2212d0cec61368a2fba946d48fd811
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006288"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053316"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk
 *Metryki* są zasoby, które swoje najważniejsze usługi informacje, które są dostarczane przez węzły w klastrze. Metryka to wszystkich elementów, które mają być zarządzane, aby zwiększyć lub monitorowanie wydajności usługi. Na przykład może obserwować zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążony. Innym zastosowaniem jest ustalenie, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczonego w celu uzyskania lepszej wydajności.

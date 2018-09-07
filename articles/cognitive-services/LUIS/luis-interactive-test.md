@@ -1,5 +1,6 @@
 ---
-title: Uczenie i testowanie aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
+title: Przetestuj aplikację usługi LUIS w portalu usługi LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) umożliwia ciągłe prace w swojej aplikacji, aby dostosować go i zwiększyć jej interpretacji języka.
 services: cognitive-services
 author: diberry
@@ -7,18 +8,18 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 925b96b61de876d40105c89556fd6dcb600d1b1a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f697e55e095baf113b7e622c4e7447b78444d4ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223654"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054750"
 ---
 # <a name="test-your-luis-app"></a>Przetestuj aplikację usługi LUIS
 <a name="train-your-app"></a>
-[Szkolenie](luis-how-to-train.md) i [testowania](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po szkolenia aplikacją usługi LUIS, należy ją przetestować przy użyciu wypowiedzi próbki, aby sprawdzić, czy intencje i podmioty są rozpoznawane prawidłowo. Jeśli nie jesteś, aktualizowanie aplikacją usługi LUIS, szkolenie i test ponownie. 
+[Testowanie](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po szkolenia aplikacją usługi LUIS, należy ją przetestować przy użyciu wypowiedzi próbki, aby sprawdzić, czy intencje i podmioty są rozpoznawane prawidłowo. Jeśli nie jesteś, aktualizowanie aplikacją usługi LUIS, szkolenie i test ponownie. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>

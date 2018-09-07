@@ -1,6 +1,6 @@
 ---
-title: Tworzenie pierwszego niezawodnej mikrousługi Azure w języku Java | Dokumentacja firmy Microsoft
-description: Wprowadzenie do tworzenia aplikacji usługi sieć szkieletowa usług Microsoft Azure z usług bezstanowych i stanowych.
+title: Tworzenie pierwszej niezawodnej usługi Azure Service Fabric w języku Java | Dokumentacja firmy Microsoft
+description: Wprowadzenie do tworzenia aplikacji usługi Microsoft Azure Service Fabric za pomocą usługi stanowe i bezstanowe.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019699"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049698"
 ---
 # <a name="get-started-with-reliable-services"></a>Wprowadzenie do usług Reliable Services
 > [!div class="op_single_selector"]
@@ -28,30 +28,30 @@ ms.locfileid: "37019699"
 >
 >
 
-W tym artykule opisano podstawy niezawodne usługi sieci szkieletowej usług Azure i przeprowadzi użytkownika przez proces tworzenia i wdrażania prostą aplikację niezawodnej usługi napisane w języku Java. Microsoft Virtual Academy wideo przedstawiono również sposób tworzenia bezstanowej niezawodnej usługi: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+W tym artykule wyjaśniono podstawowe informacje dotyczące usług Reliable Services usługi Azure Service Fabric i prowadzi użytkownika przez tworzenie i wdrażanie prostej aplikacji usługi Reliable Service napisaną w języku Java. To wideo Microsoft Virtual Academy przedstawiono również sposób tworzenia bezstanowej usługi Reliable service: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="installation-and-setup"></a>Instalacja i Konfiguracja
-Przed rozpoczęciem upewnij się, że masz środowisko projektowe sieci szkieletowej usług na komputerze.
-Jeśli musisz je skonfigurować, przejdź do [wprowadzenie dla komputerów Mac](service-fabric-get-started-mac.md) lub [wprowadzenie w systemie Linux](service-fabric-get-started-linux.md).
+Przed rozpoczęciem upewnij się, że masz na swojej maszynie środowiska programistycznego usługi Service Fabric.
+Jeśli musisz je skonfigurować, przejdź do strony [wprowadzenie na komputerze Mac](service-fabric-get-started-mac.md) lub [wprowadzenie w systemie Linux](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
-Aby rozpocząć pracę z usługami Reliable Services, tylko musisz poznać kilka podstawowych pojęć:
+Aby rozpocząć pracę z usługami Reliable Services, należy tylko poznać kilka podstawowych pojęć:
 
-* **Typ usługi**: jest to implementacji usługi. Jest on zdefiniowany przez klasę pisania, rozszerzający `StatelessService` i innego kodu lub zależności używany, oraz nazwę i numer wersji.
-* **Nazwane wystąpienie usługi**: Aby uruchomić usługę, tworzenia nazwanego wystąpienia danego typu usługi znacznie tak, jak utworzyć wystąpienia obiektu typu klasy. Wystąpienie usługi są w istocie wystąpieniami klasie usługi, który można zapisać obiektu.
-* **Host usługi**: tworzenia wystąpień usługi o nazwie trzeba uruchamiać wewnątrz hosta. Host usługi jest właśnie procesu, których można uruchomić wystąpienia usługi.
-* **Usługa rejestracji**: rejestracji, połączono wszystko. Typ usługi musi być zarejestrowana ze środowiskiem uruchomieniowym usługi sieć szkieletowa w umożliwia sieci szkieletowej usług do tworzenia wystąpień usługi hosta do uruchomienia.  
+* **Typ usługi**: jest to Twoja implementacja usługi. Jest definicją klasy pisania, która rozszerza `StatelessService` i innego kodu lub zależności razem z nim, nazwę i numer wersji.
+* **Nazwane wystąpienie usługi**: Aby uruchomić usługę, należy utworzyć nazwanych wystąpień danego typu usługi znacznie jak tworzenia wystąpienia obiektu typu klasy. Wystąpienia usługi są w rzeczywistości wystąpieniami obiektu w klasie usługi, które piszesz.
+* **Host usługi**: utworzonych wystąpień usługi o nazwie trzeba uruchomić program wewnątrz hosta. Host usługi jest po prostu procesu, gdzie można uruchomić wystąpienia usługi.
+* **Usługa rejestracji**: Rejestracja łączy wszystkie elementy. Typ usługi musi być zarejestrowany ze środowiskiem uruchomieniowym usługi Service Fabric na hoście usługi, aby umożliwić usługi Service Fabric utworzyć jego wystąpienia do uruchomienia.  
 
 ## <a name="create-a-stateless-service"></a>Tworzenie usługi bezstanowej
-Rozpocznij od utworzenia aplikacji sieci szkieletowej usług. Zestaw SDK sieci szkieletowej usług dla systemu Linux zawiera narzędzia Yeoman generatora, aby zapewnić szkieletów dla aplikacji sieci szkieletowej usług za pomocą usługi bezstanowej. Uruchom, uruchamiając następujące narzędzia Yeoman polecenia:
+Rozpocznij od utworzenia aplikacji usługi Service Fabric. Service Fabric SDK dla systemu Linux zawiera narzędzia Yeoman generator zapewnienie funkcją szkieletów dla aplikacji usługi Service Fabric o bezstanowa usługa. Uruchom, uruchamiając następujące narzędzia Yeoman polecenia:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Postępuj zgodnie z instrukcjami, aby utworzyć **usługi bezstanowej niezawodnej**. W tym samouczku, nazwa aplikacji "HelloWorldApplication" i "HelloWorld" usługi. Wynik zawiera katalogów `HelloWorldApplication` i `HelloWorld`.
+Postępuj zgodnie z instrukcjami, aby utworzyć **niezawodnej usługi bezstanowej**. W tym samouczku Nazwa aplikacji "HelloWorldApplication" i usługi "nazwę HelloWorld". Wynik zawiera katalogi, aby `HelloWorldApplication` i `HelloWorld`.
 
 ```bash
 HelloWorldApplication/
@@ -78,7 +78,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Rejestracja usługi
-Środowisko uruchomieniowe usługi sieć szkieletowa usług musi być zarejestrowany typów usług. Typ usługi jest zdefiniowany w `ServiceManifest.xml` i klasie usługi, który implementuje `StatelessService`. Rejestracja usługi jest wykonywane w procesie główny punkt wejścia. W tym przykładzie jest proces główny punkt wejścia `HelloWorldServiceHost.java`:
+Typy usług musi być zarejestrowany w środowisku uruchomieniowym usługi Service Fabric. Typ usługi jest zdefiniowany w `ServiceManifest.xml` i klasie usługi, który implementuje `StatelessService`. Rejestracja usługi jest wykonywane w procesie główny punkt wejścia. W tym przykładzie jest proces główny punkt wejścia `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -94,11 +94,11 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-## <a name="implement-the-service"></a>Wdrożenie usługi
+## <a name="implement-the-service"></a>Implementuje usługi
 
-Otwórz **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ta klasa definiuje typ usługi, a następnie można uruchomić dowolny kod. Interfejs API usługi zawiera dwa punkty wejścia kodu:
+Otwórz **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ta klasa definiuje typ usługi, a następnie może uruchomić dowolny kod. Interfejs API usługi zawiera dwa punkty wejścia w kodzie:
 
-* Metoda punktu wejścia otwarty, nazywany `runAsync()`, w którym można rozpocząć wykonywania dowolnych zadań, w tym obciążeń obliczeniowych długotrwałe.
+* Metody punktu wejścia nieograniczony, o nazwie `runAsync()`, w którym możesz rozpocząć wykonywanie obciążeń, w tym obciążeń obliczeniowych długoterminowych.
 
 ```java
 @Override
@@ -107,7 +107,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* Punkt wejścia komunikacji, gdzie można podłączyć stosu komunikacji wyboru. Jest to, gdzie można uruchomić odbieranie żądań od użytkowników i innych usług.
+* Punkt wejścia komunikacji, gdzie możesz podłączyć w wybranym stosie komunikacji. Jest to, gdzie można uruchomić odbieranie żądań od użytkowników i innych usług.
 
 ```java
 @Override
@@ -116,22 +116,22 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Ten samouczek koncentruje się na `runAsync()` metoda punktu wejścia. Jest to, gdzie natychmiast można rozpocząć uruchamianie kodu.
+Ten samouczek koncentruje się na `runAsync()` metody punktu wejścia. Jest to, gdzie można natychmiast rozpocząć wykonywanie Twojego kodu.
 
 ### <a name="runasync"></a>RunAsync
-Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowa do wykonania. Dla usługi bezstanowej oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania został dostarczony do koordynowania, gdy wystąpienie usługi musi zostać zamknięty. W sieci szkieletowej usług ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całość. Może się to zdarzyć z różnych powodów, w tym:
+Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowe do wykonania. Usługi bezstanowej oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania jest udostępniane na koordynowanie czasu wystąpienia usługi musi zostać zamknięty. W usłudze Service Fabric ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całości. Może się to zdarzyć różnych powodów, takich jak:
 
-* System przeniesie swoich wystąpień usługi dla równoważenia zasobów.
+* System przenosi wystąpień usługi dla równoważenia zasobów.
 * Błędy występują w kodzie.
-* Uaktualnianie aplikacji lub systemu.
-* Sprzętu źródłowego ulegnie awarii.
+* Uaktualnieniu aplikacji lub systemu.
+* Używany sprzęt, wystąpi awaria.
 
-Aranżacja jest zarządzana przez sieci szkieletowej usług do zachowania usługi wysokiej dostępności i nieprawidłowo zrównoważone.
+Takie ograniczenia jest zarządzany przez usługę Service Fabric do zachowania usługi o wysokiej dostępności i prawidłowo o zrównoważonym obciążeniu.
 
-`runAsync()` nie zablokować synchronicznie. Implementacji runAsync powinien zwrócić CompletableFuture umożliwia środowiska wykonawczego kontynuować. Jeśli obciążenie należy zaimplementować długotrwała zadanie, które należy wykonać wewnątrz CompletableFuture.
+`runAsync()` należy nie blokuje synchronicznie. Implementacja runAsync powinien zwrócić CompletableFuture, aby umożliwić środowiska uruchomieniowego kontynuować. Jeśli obciążenie należy zaimplementować długotrwałe zadanie, które ma być rozpoczynane wewnątrz CompletableFuture.
 
-#### <a name="cancellation"></a>Anulowanie
-Anulowanie obciążenie jest współpraca wysiłku, zorkiestrowana przez token anulowania podanego. System oczekuje na zadanie zakończenia (przez pomyślne zakończenie anulowania lub fault), zanim przesyłane w. Ważne jest, aby uwzględnić token anulowania, Zakończ pracę i zamknąć `runAsync()` tak szybko jak to możliwe, gdy system żąda anulowania. W poniższym przykładzie pokazano sposób obsługi zdarzenia anulowania:
+#### <a name="cancellation"></a>Unieważnieniu
+Anulowanie obciążenia jest wspólnego nakładu pracy, zorganizowanych według podanego tokenu anulowania. System oczekuje na zadanie zakończenia (za pomyślne wykonanie, anulowania lub błędu), zanim przemieszczał się. Jest ważne uwzględnić token anulowania, Zakończ wszelkie prace i zamknąć `runAsync()` tak szybko, jak to możliwe, gdy system zażąda anulowania. Poniższy przykład pokazuje jak obsłużyć zdarzenie anulowania:
 
 ```java
 @Override
@@ -155,20 +155,20 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-W tym przykładzie usługi bezstanowej licznika są przechowywane w zmiennej lokalnej. Ale jest usługi bezstanowej, dlatego wartość przechowywana istnieje tylko dla bieżącego cyklu życia jego wystąpienia usługi. Gdy usługa przenosi lub ponownego uruchomienia, wartość jest utracone.
+W tym przykładzie Usługa bezstanowa liczby są przechowywane w zmiennej lokalnej. Ale ponieważ usługę bezstanową, wartość, która jest przechowywana istnieje tylko dla bieżącego cyklu życia wystąpienia usługi. Gdy usługa przejdzie lub ponowne uruchomienie, wartość jest utracone.
 
-## <a name="create-a-stateful-service"></a>Tworzenie usługi stanowej
-Sieć szkieletowa usług wprowadzono nowy rodzaj usługi, który jest obiektem stanowym. Usługa stanowa można zachować stanie niezawodnie w ramach usługi, wspólnie z kodem, który go używa. Stan dokonuje wysokiej dostępności sieci szkieletowej usług bez konieczności utrwalić stanu do magazynu zewnętrznego.
+## <a name="create-a-stateful-service"></a>Tworzenie stanowej usługi
+Usługa Service Fabric wprowadza nowy rodzaj usługi stanowej. Usługa stanowa może zachowywać stan, niezawodne w ramach usługi, wspólnie z kodem, który jest używany. Stan dokonuje wysokiej dostępności usługi Service Fabric bez konieczności utrwalanie stanu do magazynu zewnętrznego.
 
-Aby przekonwertować wartość licznika z bezstanowej wysokiej dostępności i trwałe, nawet wtedy, gdy usługi są przenoszone lub ponownego uruchomienia, należy usługi stanowej.
+Aby przekonwertować wartość licznika z bezstanową wysoko dostępnych i trwałych, nawet wtedy, gdy usługa przejdzie lub ponowne uruchomienie, potrzebujesz usługi stanowej.
 
-W tym samym katalogu co aplikacja HelloWorld, można dodać nową usługę, uruchamiając `yo azuresfjava:AddService` polecenia. Wybierz pozycję "Niezawodnej Stateful Usługa" dla Twojej platformy i nazwę usługi "HelloWorldStateful". 
+W tym samym katalogu co aplikacja HelloWorld można dodać nowej usługi, uruchamiając `yo azuresfjava:AddService` polecenia. Wybierz pozycję "Reliable Stateful Usługa" dla Twojej struktury i nazwij usługę "HelloWorldStateful". 
 
-Aplikacja powinna mieć teraz dwie usługi: usługi bezstanowej HelloWorld i stateful usługi HelloWorldStateful.
+Twoja aplikacja powinna mieć teraz dwie usługi: HelloWorldStateful usługi bezstanowej usługi HelloWorld i stateful.
 
-Usługa stanowa ma tego samego punkty wejścia jako usługę bezstanową. Główna różnica polega na dostępności niezawodnie przechowywanie stanu dostawcy stanu. Implementacja dostawcy stanu wywołuje niezawodnej kolekcje, które umożliwia tworzenie struktury replikowanych danych za pośrednictwem niezawodnych menedżera stanu zawiera sieci szkieletowej usług. Domyślnie usługa stanowa niezawodnej używa tego dostawcy stanu.
+Usługa stanowa ma ten sam punkty wejścia jako bezstanowej usługi. Główna różnica polega na dostępność dostawcy stanu, który niezawodnego przechowywania stanu. Usługa Service Fabric jest powiązana z implementacja dostawcy stanu o nazwie elementów Reliable Collections, które umożliwia tworzenie struktur danych replikowanych za pośrednictwem Reliable State Manager. Domyślnie stanowej usługi Reliable Service używa tego dostawcy stanu.
 
-Otwórz HelloWorldStateful.java w **src -> HelloWorldStateful**, który zawiera następujące metodzie RunAsync:
+Otwórz HelloWorldStateful.java w **HelloWorldStateful -> src**, który zawiera następujące metody RunAsync:
 
 ```java
 @Override
@@ -194,23 +194,23 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` działa podobnie, w usługach stanowe i bezstanowe. Jednak w usługi stanowej, platforma wykonuje dodatkowych działań w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Te działania mogą obejmować zapewnienie, że Menedżer niezawodnej stanu i niezawodne kolekcji są gotowe do użycia.
+`RunAsync()` działa podobnie w usługi stanowe i bezstanowe. Jednak w stanowej usłudze platformy wykonuje dodatkowej pracy w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Ta praca może obejmować zapewnienie, że Reliable State Manager i elementów Reliable Collections są gotowe do użycia.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Kolekcje niezawodnych i niezawodne Menedżer stanu
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Niezawodne kolekcje i niezawodne Menedżer stanu
 ```java
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) jest implementacji słownik, który umożliwia niezawodne przechowywanie stanu usługi. Z sieci szkieletowej usług i niezawodne HashMaps można przechowywać dane bezpośrednio w usłudze bez konieczności zewnętrznych magazynu trwałego. Niezawodne HashMaps danych wysokiej dostępności. Sieć szkieletowa usług rozwiązanie to tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który abstracts optymalizacji złożoności Zarządzanie tych replik, a ich przejścia stanu.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) stanowi implementację słownika, która służy do niezawodnego przechowywania stanu usługi. Usługa Service Fabric i niezawodne HashMaps dane można przechowywać bezpośrednio w usłudze bez konieczności dla zewnętrznego magazynu trwałego. Niezawodne HashMaps danych wysokiej dostępności. Usługa Service Fabric to w ramach przez tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który pozwala zmniejszyć wagę komplikacje związane z zarządzaniem tych replik oraz ich stanami.
 
-Kolekcje niezawodnej może przechowywać dowolnego typu Java, łącznie z niestandardowych typów, za pomocą paru ostrzeżenia:
+Elementy Reliable Collections może przechowywać dowolnego typu języka Java, łącznie z typów niestandardowych przy użyciu kilku ostrzeżenia:
 
-* Usługa sieci szkieletowej udostępnia swój stan wysokiej przez *replikowanie* stanu między węzły i niezawodne HashMap przechowuje dane na dysku lokalnym na każdej repliki. To oznacza, że wszystkie zasoby, które są przechowywane w niezawodnej HashMaps muszą zostać *serializacji*. 
-* Obiekty są replikowane wysokiej dostępności po zatwierdzeniu transakcji na HashMaps wiarygodne. Obiekty przechowywane w niezawodnej HashMaps są przechowywane w lokalnej pamięci w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
+* Usługa Service Fabric zapewnia wysoce dostępny stan programu *replikowanie* stanu między węzłami oraz niezawodnej HashMap przechowuje dane na dysku lokalnym na każdej repliki. Oznacza to wszystko, co jest przechowywany w niezawodnej HashMaps musi być *serializacji*. 
+* Obiekty są replikowane w celu zapewnienia wysokiej dostępności podczas zatwierdzania transakcji na niezawodne HashMaps. Obiekty przechowywane w niezawodnej HashMaps są przechowywane w pamięci lokalnej w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
   
-   Należy pamiętać, że nie zmodyfikować lokalnych wystąpień tych obiektów, bez wykonywania operacji update na niezawodne kolekcji w transakcji. Jest to spowodowane zmiany do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Musisz ponownie obiekt do słownika lub użyj jednej z *aktualizacji* metody w słowniku.
+   Należy pamiętać, że mutuje lokalnych wystąpień tych obiektów bez przeprowadzania operacji aktualizacji w niezawodnej kolekcji w ramach transakcji. Jest to spowodowane zmian do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Należy ponownie obiekt do słownika lub użyj jednego z *aktualizacji* metod w słowniku.
 
-Menedżer niezawodnej stanu zarządza HashMaps wiarygodne. Poproś niezawodnej Menedżer stanu dla kolekcji niezawodnej według nazwy w dowolnym momencie i w dowolnym miejscu w usłudze. Niezawodne Menedżer stanu zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisywania odwołań do kolekcji niezawodnej instancji w zmiennych Członkowskich klas lub właściwości. Szczególną uwagę należy upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usługi. Niezawodne Menedżer stanu obsługuje tę pracę za Ciebie i jest zoptymalizowany do powtarzania wizytach.
+Reliable State Manager zarządza HashMaps niezawodne. Możesz poprosić Reliable State Manager for reliable collection według nazwy w dowolnym czasie i w dowolnym miejscu w usłudze. Reliable State Manager zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisać odwołania do niezawodnej kolekcji wystąpień w zmiennych elementu członkowskiego klasy lub właściwości. Specjalne należy uważać, aby upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usług. Reliable State Manager obsługuje tę pracę za Ciebie, i jest zoptymalizowany do powtarzania wizyty.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Operacje transakcyjne i asynchroniczne
@@ -231,20 +231,20 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Operacje na niezawodne HashMaps są asynchroniczne. Jest to spowodowane operacji zapisu z kolekcjami niezawodne wykonywanie operacji We/Wy do replikacji i utrwalić danych na dysku.
+Operacje na niezawodne HashMaps są asynchroniczne. Jest to spowodowane operacji zapisu z elementami Reliable Collections wykonywać operacje We/Wy do replikacji i utrwalić dane na dysku.
 
-Niezawodne operacji HashMap *transakcyjnych*, dzięki czemu można zachować stanu spójności między wieloma HashMaps niezawodnych i operacji. Na przykład może pobrać elementu roboczego z jednego słownika niezawodnej, wykonaj operację i zapisać wynik w innym HashMap niezawodne, wszystkie w ramach pojedynczej transakcji. Jest ona traktowana jako operacją niepodzielną i gwarantuje, że cała operacja zostanie wykonana pomyślnie lub całej operacji cofnie. Jeśli błąd wystąpi po dequeue elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana i element pozostaje w kolejce do przetworzenia.
+Niezawodne operacje HashMap *transakcyjnych*, dzięki czemu można zachować stan spójny między wieloma HashMaps niezawodne i operacji. Na przykład może pobrać elementu roboczego z jednego niezawodnego słownika, wykonaj operację i zapisać wynik w innym HashMap niezawodne, wszystkie w ramach jednej transakcji. Jest ona traktowana jako operację niepodzielną i gwarantuje, że cała operacja powiedzie się lub cała operacja spowoduje przywrócenie. Jeśli błąd wystąpi po usuwania z kolejki elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana, a element pozostaje w kolejce do przetworzenia.
 
 
 ## <a name="build-the-application"></a>Kompilowanie aplikacji
 
-Narzędzia Yeoman szkieletów zawiera skrypt narzędzia gradle do tworzenia aplikacji i skryptów służących do wdrażania i Usuń aplikację bash. Aby uruchomić aplikację, należy najpierw utworzyć aplikację z narzędziem gradle:
+Narzędzia Yeoman tworzenia szkieletów zawiera skrypt gradle do kompilowania aplikacji i skryptów do wdrażania i usunąć aplikację powłoki bash. Aby uruchomić aplikację, należy najpierw utworzyć aplikację za pomocą narzędzia gradle:
 
 ```bash
 $ gradle
 ```
 
-Daje to pakiet aplikacji sieci szkieletowej usług, które można wdrożyć przy użyciu interfejsu wiersza polecenia usługi sieci szkieletowej.
+Daje to pakiet aplikacji usługi Service Fabric, który można wdrożyć przy użyciu interfejsu wiersza polecenia usługi Service Fabric.
 
 ## <a name="deploy-the-application"></a>Wdrażanie aplikacji
 
@@ -269,7 +269,7 @@ Parametry tych poleceń można znaleźć w manifestach wygenerowanych w pakiecie
 Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pod adresem [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 > [!IMPORTANT]
-> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby zweryfikować Twojej aplikacji ze środowiskiem uruchomieniowym usługi sieć szkieletowa usług. Umożliwi to usługi niezawodne usługi, aby komunikować się z podstawowego środowiska uruchomieniowego platformy Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację niezawodne usługi, do uruchamiania na systemie Linux klastrów](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Aby wdrożyć aplikację do zabezpieczonego klastra systemu Linux na platformie Azure, musisz skonfigurować certyfikat na potrzeby weryfikacji aplikacji w środowisku uruchomieniowym usługi Service Fabric. Umożliwi to usług Reliable Services do komunikowania się z podstawowego środowiska uruchomieniowego usługi Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
