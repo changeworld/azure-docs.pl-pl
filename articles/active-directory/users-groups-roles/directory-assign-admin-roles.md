@@ -14,12 +14,12 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 384afb36f2a63fcbf290fa96ed15db2a1f469f55
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c49f15ddde60513be47feb264da0e35f4e8b3a0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337855"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055577"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -44,6 +44,8 @@ Dostępne są następujące role administratora:
 * **[Administrator rozliczeń](#billing-administrator)**: dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
 
 * **[Administrator aplikacji w chmurze](#cloud-application-administrator)**: użytkownicy w tej roli mają takie same uprawnienia, jak roli administratora aplikacji z wyjątkiem możliwości zarządzania serwera proxy aplikacji. Ta rola umożliwia tworzenie i zarządzanie nimi wszystkie aspekty aplikacji dla przedsiębiorstw i rejestracje aplikacji. Ta rola daje również możliwość wyrazić zgodę na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem programu Microsoft Graph i Azure AD Graph. Członkowie tej roli nie są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
+
+* **[Administrator urządzenia w chmurze](#cloud-device-administrator)**: użytkownicy w tej roli można włączyć, wyłączyć, usuwać urządzenia w usłudze Azure AD i klucze do odczytu funkcją BitLocker systemu Windows 10 (jeśli istnieje) w witrynie Azure portal. Rola nie powoduje przyznania uprawnień do zarządzania innych właściwości, na urządzeniu.
 
 * **[Administrator do spraw zgodności](#compliance-administrator)**: użytkownicy z tą rolą mają uprawnienia do zarządzania w ramach zabezpieczeń usługi Office 365 i Centrum zgodności i Centrum administracyjnego programu Exchange. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -97,7 +99,7 @@ Dostępne są następujące role administratora:
 
 * **[Czytnik raportów](#reports-reader)**: użytkownicy z tą rolą mogą wyświetlać użycia raportowania danych i raporty pulpitu nawigacyjnego w Centrum administracyjnym usługi Office 365 i kontekstu przyjęcia pakietu w usłudze Power BI. Ponadto zapewnia dostęp do logowania jednokrotnego w roli raporty i działania w usłudze Azure AD i interfejsu API raportowania danych zwróconych przez program Microsoft Graph. Użytkownik przypisany do roli czytelnika raportów dostęp tylko odpowiednie użycia i metryk przyjęcia. Nie mają żadnych uprawnień administratora do skonfigurowania ustawień lub dostępu do Centrum administracyjnego określonych produktów, takich jak program Exchange. 
 
-* **[Administrator zabezpieczeń](#security-administrator)**: użytkownicy z tą rolą mają wszystkie uprawnienia tylko do odczytu roli czytelnika zabezpieczeń oraz możliwość zarządzania konfiguracją usług związanych z zabezpieczeniami: Azure Active Directory Identity Protection Usługa Azure Information Protection, Privileged Identity Management i usługi Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji na temat usługi Office 365 uprawnień znajduje się w temacie [uprawnienia w Centrum zgodności i zabezpieczeń usługi Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **[Administrator zabezpieczeń](#security-administrator)**: użytkownicy z tą rolą mają wszystkie uprawnienia tylko do odczytu roli czytelnika zabezpieczeń oraz możliwość zarządzania konfiguracją usług związanych z zabezpieczeniami: Azure Active Directory Identity Protection Usługa Azure Information Protection i usługi Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji na temat usługi Office 365 uprawnień znajduje się w temacie [uprawnienia w Centrum zgodności i zabezpieczeń usługi Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
   
   | W | Można zrobić |
   | --- | --- |
@@ -117,7 +119,7 @@ Dostępne są następujące role administratora:
 
 * **[Administrator usługi SharePoint](#sharepoint-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft SharePoint Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype dla firm / Administrator usługi Lync](#lync-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Katalog. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5).
+* **[Skype dla firm / Administrator usługi Lync](#lync-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Katalog. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi i uzyskać dostęp do zespołów i Skype dla firm Centrum administracyjnego. Konto musi mieć również licencję dla zespołów lub nie można uruchomić polecenia cmdlet programu PowerShell zespołów. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów, informacje o licencjonowaniu na [Skype dla firm i Microsoft Teams dodatek licencjonowania](https://docs.microsoft.com/en-us/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Lync". "Usługi Skype dla firm Administrator usługi" jest w [witryny Azure portal](https://portal.azure.com/).
@@ -145,6 +147,7 @@ Nie można używać następujących ról. One zostały przestarzały i zostanie 
 ## <a name="detailed-azure-active-directory-permissions"></a>Szczegółowe uprawnienia usługi Azure Active Directory
 W poniższych tabelach opisano określone uprawnienia w usłudze Azure Active Directory do każdej roli. Niektóre role, takie jak Administrator globalny może mieć dodatkowe uprawnienia w outide usług Microsoft Azure Active Directory.
 
+
 ### <a name="adhoc-license-administrator"></a>Administrator licencji ad hoc
 Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębiorstwa oraz zarządzać nimi.
 
@@ -155,26 +158,26 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft.AAD.Directory/Domains/default/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Domains/Basic/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Odczytaj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/groups/default/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Odczytaj właściwość groups.memberOf w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Read | Odczytaj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/owners/Read | Odczytaj właściwość groups.owners w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Settings/Read | Odczytaj właściwość groups.settings w usłudze Azure Active Directory. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Przeczytaj podstawowe właściwości oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Przeczytaj podstawowe właściwości oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Zaktualizuj oAuth2PermissionGrants w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Organization/default/Read | Przeczytaj podstawowe właściwości w organizacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Organization/Basic/Read | Przeczytaj podstawowe właściwości w organizacji w usłudze Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Odczytaj właściwość organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Odczytaj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Odczytaj właściwość users.directReports w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Odczytaj właściwość users.invitedBy w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Odczytaj właściwość users.invitedUsers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Read | Odczytaj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Odczytaj właściwość users.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Odczytaj właściwość users.ownedDevices w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Odczytaj właściwość users.ownedObjects w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Odczytaj właściwość users.registeredDevices w usłudze Azure Active Directory. |
@@ -189,24 +192,28 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| Microsoft.AAD.Directory/Applications/Audience/Update | Zaktualizuj właściwość applications.audience w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Authentication/Update | Zaktualizuj właściwość applications.authentication w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Basic/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/Create | Tworzenie aplikacji w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Applications/default/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Credentials/Update | Zaktualizuj właściwość applications.credentials w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/DELETE | Usuwanie aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/owners/Update | Zaktualizuj właściwość applications.owners w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/permissions/Update | Zaktualizuj właściwość applications.permissions w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/policies/Update | Zaktualizuj właściwość applications.policies w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/create | Utwórz appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/read | Przeczytaj appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Zaktualizuj appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Usuń appRoleAssignments w usłudze Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Tworzenie zasad w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Usuń zasady w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Utwórz servicePrincipals w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Usuń servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
@@ -249,7 +256,7 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft.AAD.Directory/Organization/default/Update | Zaktualizuj właściwości podstawowe w organizacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Organization/Basic/Update | Zaktualizuj właściwości podstawowe w organizacji w usłudze Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Zaktualizuj właściwość organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
@@ -268,25 +275,29 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| Microsoft.AAD.Directory/Applications/Audience/Update | Zaktualizuj właściwość applications.audience w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Authentication/Update | Zaktualizuj właściwość applications.authentication w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Basic/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/Create | Tworzenie aplikacji w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Applications/default/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Credentials/Update | Zaktualizuj właściwość applications.credentials w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/DELETE | Usuwanie aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/owners/Update | Zaktualizuj właściwość applications.owners w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/permissions/Update | Zaktualizuj właściwość applications.permissions w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/policies/Update | Zaktualizuj właściwość applications.policies w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/create | Utwórz appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Zaktualizuj appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Usuń appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Tworzenie zasad w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Usuń zasady w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Zaktualizuj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Odczytaj właściwość policies.applicationConfiguration w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Utwórz servicePrincipals w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Usuń servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Zaktualizuj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Zaktualizuj właściwość servicePrincipals.policies w usłudze Azure Active Directory. |
@@ -296,6 +307,22 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej platformy Azure. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+
+### <a name="cloud-device-administrator"></a>Administrator urządzenia w chmurze
+Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft.AAD.Directory/Devices/DELETE | Usuwanie urządzeń w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/Update | Zaktualizuj właściwość accountEnabled na urządzeniach w usłudze Azure Active Directory |
+| microsoft.aad.reports/allEntities/read | Odczytywanie raportów usługi Azure AD. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 
 ### <a name="company-administrator"></a>Administrator firmy
 Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystających z tożsamości usługi Azure AD.
@@ -347,9 +374,9 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 | microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej platformy Azure. |
 | microsoft.commerce.billing/allEntities/allTasks | Zarządzaj wszystkimi aspektami rozliczeń usługi Office 365. |
+| microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
 | Microsoft.office365.complianceManager/allEntities/allTasks | Zarządzać wszystkimi aspektami Office 365 kierownikiem ds. |
 | Microsoft.office365.Exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
-| microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
 | Microsoft.office365.lockbox/allEntities/allTasks | Zarządzać wszystkimi aspektami skrytki klienta programu Office 365 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Power BI. |
 | Microsoft.office365.protectionCenter/allEntities/allTasks | Zarządzaj wszystkimi aspektami Centrum ochrony usługi Office 365. |
@@ -394,9 +421,9 @@ Może zarządzać możliwościami dostępu warunkowego.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| microsoft.aad.directory/policies/conditionalAccess/basic/read | Odczytaj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
+| microsoft.aad.directory/policies/conditionalAccess/basic/update | Zaktualizuj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/create | Tworzenie zasad w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/conditionalAccess/default/read | Odczytaj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
-| microsoft.aad.directory/policies/conditionalAccess/default/update | Zaktualizuj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/delete | Usuń zasady w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Odczytaj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Zaktualizuj właściwość policies.conditionalAccess w usłudze Azure Active Directory. |
@@ -452,8 +479,8 @@ Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeni
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| microsoft.aad.directory/groupSettings/default/read | Przeczytaj podstawowe właściwości groupSettings w usłudze Azure Active Directory. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Przeczytaj podstawowe właściwości groupSettingTemplates w usłudze Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/read | Przeczytaj podstawowe właściwości groupSettings w usłudze Azure Active Directory. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Przeczytaj podstawowe właściwości groupSettingTemplates w usłudze Azure Active Directory. |
 
 ### <a name="device-managers"></a>Menedżerowie urządzenia
 Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzyskania dostępu do danych organizacyjnych klienta.
@@ -470,8 +497,8 @@ Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzysk
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft.AAD.Directory/Devices/default/Read | Przeczytaj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Devices/default/Update | Zaktualizuj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/Basic/Read | Przeczytaj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/Basic/Update | Zaktualizuj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/memberOf/read | Odczytaj właściwość devices.memberOf w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/read | Odczytaj właściwość devices.registeredOwners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/update | Zaktualizuj właściwość devices.registeredOwners w usłudze Azure Active Directory. |
@@ -488,49 +515,54 @@ Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do a
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| microsoft.aad.directory/administrativeUnits/default/read | Przeczytaj podstawowe właściwości administrativeUnits w usłudze Azure Active Directory. |
+| microsoft.aad.directory/administrativeUnits/basic/read | Przeczytaj podstawowe właściwości administrativeUnits w usłudze Azure Active Directory. |
 | microsoft.aad.directory/administrativeUnits/members/read | Odczytaj właściwość administrativeUnits.members w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Applications/default/Read | Przeczytaj podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Audience/Read | Odczytaj właściwość applications.audience w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Authentication/Read | Odczytaj właściwość applications.authentication w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Basic/Read | Przeczytaj podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Credentials/Read | Odczytaj właściwość applications.credentials w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/owners/Read | Odczytaj właściwość applications.owners w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Contacts/default/Read | Przeczytaj podstawowe właściwości dla kontaktów w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/permissions/Read | Odczytaj właściwość applications.permissions w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/policies/Read | Odczytaj właściwość applications.policies w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Contacts/Basic/Read | Przeczytaj podstawowe właściwości dla kontaktów w usłudze Azure Active Directory. |
 | microsoft.aad.directory/contacts/memberOf/read | Odczytaj właściwość contacts.memberOf w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/contracts/default/Read | Przeczytaj podstawowe właściwości dotyczące zamówień w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Devices/default/Read | Przeczytaj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/contracts/Basic/Read | Przeczytaj podstawowe właściwości dotyczące zamówień w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/Basic/Read | Przeczytaj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/memberOf/read | Odczytaj właściwość devices.memberOf w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/read | Odczytaj właściwość devices.registeredOwners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredUsers/read | Odczytaj właściwość devices.registeredUsers w usłudze Azure Active Directory. |
-| microsoft.aad.directory/directoryRoles/default/read | Przeczytaj podstawowe właściwości directoryRoles w usłudze Azure Active Directory. |
+| microsoft.aad.directory/directoryRoles/basic/read | Przeczytaj podstawowe właściwości directoryRoles w usłudze Azure Active Directory. |
 | microsoft.aad.directory/directoryRoles/eligibleMembers/read | Odczytaj właściwość directoryRoles.eligibleMembers w usłudze Azure Active Directory. |
 | microsoft.aad.directory/directoryRoles/members/read | Odczytaj właściwość directoryRoles.members w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Domains/default/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Domains/Basic/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Odczytaj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/groups/default/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Odczytaj właściwość groups.memberOf w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Read | Odczytaj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/owners/Read | Odczytaj właściwość groups.owners w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Settings/Read | Odczytaj właściwość groups.settings w usłudze Azure Active Directory. |
-| microsoft.aad.directory/groupSettings/default/read | Przeczytaj podstawowe właściwości groupSettings w usłudze Azure Active Directory. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Przeczytaj podstawowe właściwości groupSettingTemplates w usłudze Azure Active Directory. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Przeczytaj podstawowe właściwości oAuth2PermissionGrants w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Organization/default/Read | Przeczytaj podstawowe właściwości w organizacji w usłudze Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/read | Przeczytaj podstawowe właściwości groupSettings w usłudze Azure Active Directory. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Przeczytaj podstawowe właściwości groupSettingTemplates w usłudze Azure Active Directory. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Przeczytaj podstawowe właściwości oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Organization/Basic/Read | Przeczytaj podstawowe właściwości w organizacji w usłudze Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Odczytaj właściwość organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Odczytaj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Odczytaj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Odczytaj właściwość servicePrincipals.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Odczytaj właściwość servicePrincipals.ownedObjects w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Odczytaj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/read | Odczytaj właściwość servicePrincipals.policies w usłudze Azure Active Directory. |
-| microsoft.aad.directory/subscribedSkus/default/read | Przeczytaj podstawowe właściwości subscribedSkus w usłudze Azure Active Directory. |
+| microsoft.aad.directory/subscribedSkus/basic/read | Przeczytaj podstawowe właściwości subscribedSkus w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Odczytaj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Odczytaj właściwość users.directReports w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Odczytaj właściwość users.invitedBy w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Odczytaj właściwość users.invitedUsers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Read | Odczytaj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Odczytaj właściwość users.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Odczytaj właściwość users.ownedDevices w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Odczytaj właściwość users.ownedObjects w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Odczytaj właściwość users.registeredDevices w usłudze Azure Active Directory. |
@@ -548,8 +580,8 @@ Używane tylko przez usługę Azure AD Connect.
 | microsoft.aad.directory/organization/dirSync/update | Zaktualizuj właściwość organization.dirSync w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/Create | Tworzenie zasad w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/DELETE | Usuń zasady w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/policies/default/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/policies/default/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/policies/Basic/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/policies/Basic/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/owners/Read | Odczytaj właściwość policies.owners w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/owners/Update | Zaktualizuj właściwość policies.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/policies/policiesAppliedTo/read | Odczytaj właściwość policies.policiesAppliedTo w usłudze Azure Active Directory. |
@@ -557,11 +589,11 @@ Używane tylko przez usługę Azure AD Connect.
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Odczytaj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Utwórz servicePrincipals w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Odczytaj właściwość servicePrincipals.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Odczytaj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Zaktualizuj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Odczytaj właściwość servicePrincipals.ownedObjects w usłudze Azure Active Directory. |
@@ -582,16 +614,16 @@ Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania do
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Tworzenie grup w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Zaktualizuj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/groups/default/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Update | Zaktualizuj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/owners/Update | Zaktualizuj właściwość groups.owners w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Settings/Update | Zaktualizuj właściwość groups.settings w usłudze Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/update | Aktualizacja właściwości podstawowe groupSettings w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groupSettings/create | Utwórz groupSettings w usłudze Azure Active Directory. |
-| microsoft.aad.directory/groupSettings/default/update | Aktualizacja właściwości podstawowe groupSettings w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groupSettings/delete | Usuń groupSettings w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Zaktualizuj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Update | Zaktualizuj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/userPrincipalName/update | Zaktualizuj właściwość users.userPrincipalName w usłudze Azure Active Directory. |
@@ -628,11 +660,16 @@ Rolą domyślną dla użytkowników-gości. Może odczytywać ograniczony zestaw
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft.AAD.Directory/Applications/default/Read | Przeczytaj podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Audience/Read | Odczytaj właściwość applications.audience w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Authentication/Read | Odczytaj właściwość applications.authentication w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Basic/Read | Przeczytaj podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Credentials/Read | Odczytaj właściwość applications.credentials w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/owners/Read | Odczytaj właściwość applications.owners w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Domains/default/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/permissions/Read | Odczytaj właściwość applications.permissions w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/policies/Read | Odczytaj właściwość applications.policies w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Domains/Basic/Read | Przeczytaj podstawowe właściwości na temat domen w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Odczytaj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/groups/default/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Odczytaj właściwość groups.memberOf w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Read | Odczytaj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/owners/Read | Odczytaj właściwość groups.owners w usłudze Azure Active Directory. |
@@ -640,23 +677,23 @@ Rolą domyślną dla użytkowników-gości. Może odczytywać ograniczony zestaw
 | microsoft.aad.directory/organization/basicProfile/read | Przeczytaj informacje o profilu podstawowego organizacji w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Odczytaj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Odczytaj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Przeczytaj podstawowe właściwości servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Odczytaj właściwość servicePrincipals.memberOf w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/members/read | Odczytaj właściwość servicePrincipals.members w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Odczytaj właściwość servicePrincipals.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Odczytaj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Odczytaj właściwość servicePrincipals.ownedObjects w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/read | Odczytaj właściwość servicePrincipals.policies w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/basicProfile/read | Odczytaj właściwość users.basicProfile w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Odczytaj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Odczytaj właściwość users.directReports w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/eligibleMemberOf/read | Odczytaj właściwość users.eligibleMemberOf w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Odczytaj właściwość users.invitedBy w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Odczytaj właściwość users.invitedUsers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Read | Odczytaj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Odczytaj właściwość users.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Odczytaj właściwość users.ownedDevices w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Odczytaj właściwość users.ownedObjects w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Password/Update | Zaktualizuj hasła dla wszystkich użytkowników w usłudze Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
@@ -675,14 +712,14 @@ Można zaproszenia użytkowników-gości niezależnie od elementów członkowski
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Odczytaj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Read | Przeczytaj podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Odczytaj właściwość users.directReports w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Odczytaj właściwość users.invitedBy w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/inviteGuest | Zapraszanie użytkowników-gości w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Odczytaj właściwość users.invitedUsers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Read | Odczytaj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Odczytaj właściwość users.memberOf w usłudze Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Odczytaj właściwość users.oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Odczytaj właściwość users.ownedDevices w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Odczytaj właściwość users.ownedObjects w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Odczytaj właściwość users.registeredDevices w usłudze Azure Active Directory. |
@@ -741,18 +778,18 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| Microsoft.AAD.Directory/Contacts/Basic/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/Create | Utwórz kontakty w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Contacts/default/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/DELETE | Usuwanie kontaktów w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/Basic/Update | Zaktualizuj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Devices/Create | Tworzenie urządzenia w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Devices/default/Update | Zaktualizuj podstawowe właściwości urządzeń w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Devices/DELETE | Usuwanie urządzeń w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/update | Zaktualizuj właściwość devices.registeredOwners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredUsers/update | Zaktualizuj właściwość devices.registeredUsers w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Zaktualizuj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Tworzenie grup w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
-| Microsoft.AAD.Directory/groups/default/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/DELETE | Usuwanie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Odczytaj właściwość groups.hiddenMembers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Update | Zaktualizuj właściwość groups.members w usłudze Azure Active Directory. |
@@ -760,7 +797,7 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 | Microsoft.AAD.Directory/groups/Restore | Przywracanie grupy w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Settings/Update | Zaktualizuj właściwość groups.settings w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Zaktualizuj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Update | Zaktualizuj właściwość users.manager w usłudze Azure Active Directory. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej platformy Azure. |
 | microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
@@ -837,8 +874,8 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| Microsoft.AAD.Directory/Contacts/Basic/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/Create | Utwórz kontakty w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Contacts/default/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/DELETE | Usuwanie kontaktów w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Tworzenie grup w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
@@ -846,7 +883,7 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 | Microsoft.AAD.Directory/groups/owners/Update | Zaktualizuj właściwość groups.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Zaktualizuj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/DELETE | Usuwanie użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Update | Zaktualizuj właściwość users.manager w usłudze Azure Active Directory. |
@@ -874,19 +911,19 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| Microsoft.AAD.Directory/Contacts/Basic/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/Create | Utwórz kontakty w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Contacts/default/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/DELETE | Usuwanie kontaktów w usłudze Azure Active Directory. |
 | microsoft.aad.directory/domains/allTasks | Tworzenie i usuwanie domen i odczytywanie i aktualizowanie właściwości standardowych w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/DELETE | Usuwanie grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Update | Zaktualizuj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Restore | Przywracanie grupy w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Organization/default/Update | Zaktualizuj właściwości podstawowe w organizacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Organization/Basic/Update | Zaktualizuj właściwości podstawowe w organizacji w usłudze Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Zaktualizuj właściwość organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Zaktualizuj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/DELETE | Usuwanie użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Update | Zaktualizuj właściwość users.manager w usłudze Azure Active Directory. |
@@ -975,8 +1012,8 @@ Może odczytywać informacje o zabezpieczeniach i raporty
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/Applications/policies/Update | Zaktualizuj właściwość applications.policies w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/policies/Basic/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/Create | Tworzenie zasad w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/policies/default/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/DELETE | Usuń zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/owners/Update | Zaktualizuj właściwość policies.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Zaktualizuj właściwość servicePrincipals.policies w usłudze Azure Active Directory. |
@@ -1067,13 +1104,13 @@ Może zarządzać wszystkimi aspektami użytkowników i grup
 | microsoft.aad.directory/appRoleAssignments/create | Utwórz appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Usuń appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Zaktualizuj appRoleAssignments w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Contacts/Basic/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/Create | Utwórz kontakty w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Contacts/default/Update | Aktualizacja właściwości podstawowe kontakty w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Contacts/DELETE | Usuwanie kontaktów w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Zaktualizuj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Tworzenie grup w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
-| Microsoft.AAD.Directory/groups/default/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/DELETE | Usuwanie grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Odczytaj właściwość groups.hiddenMembers w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Update | Zaktualizuj właściwość groups.members w usłudze Azure Active Directory. |
@@ -1082,8 +1119,8 @@ Może zarządzać wszystkimi aspektami użytkowników i grup
 | Microsoft.AAD.Directory/groups/Settings/Update | Zaktualizuj właściwość groups.settings w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Zaktualizuj właściwość users.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Users/Basic/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Create | Tworzenie użytkowników w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Users/Default/Update | Aktualizacja podstawowe właściwości użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/DELETE | Usuwanie użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Manager/Update | Zaktualizuj właściwość users.manager w usłudze Azure Active Directory. |
@@ -1107,34 +1144,38 @@ Rolą domyślną dla użytkowników. Może odczytywać wszystkie i zapisywać og
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Tworzenie aplikacji w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
+| Microsoft.AAD.Directory/groups/Basic/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Tworzenie grup w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
-| Microsoft.AAD.Directory/groups/default/Read | Przeczytaj podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/create | Utwórz oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/delete | Usuń oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Zaktualizuj oAuth2PermissionGrants w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Utwórz servicePrincipals w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
 | microsoft.aad.directory/users/activateServicePlan | Activateserviceplan użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/inviteGuest | Zapraszanie użytkowników-gości w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Audience/Update | Zaktualizuj właściwość applications.audience w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Authentication/Update | Zaktualizuj właściwość applications.authentication w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Basic/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Credentials/Update | Zaktualizuj właściwość applications.credentials w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/DELETE | Usuwanie aplikacji w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Applications/Restore | Przywracanie aplikacji w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Applications/default/Update | Aktualizacja podstawowe właściwości aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/owners/Update | Zaktualizuj właściwość applications.owners w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/permissions/Update | Zaktualizuj właściwość applications.permissions w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Applications/policies/Update | Zaktualizuj właściwość applications.policies w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Applications/Restore | Przywracanie aplikacji w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Devices/disable | Wyłącz urządzenia w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Zaktualizuj właściwość groups.appRoleAssignments w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/groups/Basic/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/DELETE | Usuwanie grup w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/groups/default/Update | Aktualizacja podstawowe właściwości grup w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/dynamicMembershipRule/update | Zaktualizuj właściwość groups.dynamicMembershipRule w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/members/Update | Zaktualizuj właściwość groups.members w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/owners/Update | Zaktualizuj właściwość groups.owners w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Restore | Przywracanie grupy w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/groups/Settings/Update | Zaktualizuj właściwość groups.settings w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/policies/Basic/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/DELETE | Usuń zasady w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/policies/default/Update | Aktualizacja właściwości podstawowe zasady w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/policies/owners/Update | Zaktualizuj właściwość policies.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignedTo w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj właściwość servicePrincipals.appRoleAssignments w usłudze Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizacja właściwości podstawowe servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Usuń servicePrincipals w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Zaktualizuj właściwość servicePrincipals.owners w usłudze Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Zaktualizuj właściwość servicePrincipals.policies w usłudze Azure Active Directory. |
@@ -1143,6 +1184,7 @@ Rolą domyślną dla użytkowników. Może odczytywać wszystkie i zapisywać og
 | microsoft.aad.directory/users/basicProfile/update | Zaktualizuj właściwość users.basicProfile w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Users/Mobile/Update | Zaktualizuj właściwość users.mobile w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/searchableDeviceKey/update | Zaktualizuj właściwość users.searchableDeviceKey w usłudze Azure Active Directory. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

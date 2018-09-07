@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 02b722feece5458a31e89e4041d51104b94e52c6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505869"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023209"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Usługa Azure Active Directory Domain Services: Często zadawane pytania (FAQ)
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Wracaj aktualizacje.
@@ -96,6 +96,9 @@ Ta usługa znajduje się w bezpłatnej wersji próbnej platformy Azure. Możesz 
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Czy można wstrzymać domeny zarządzanej usług domenowych Azure AD? 
 Nie. Po włączeniu domeny zarządzanej usług domenowych Azure AD, usługa jest dostępne w wybranej sieci wirtualnej, dopóki nie zostanie zdezaktywuj lub Usuń domeny zarządzanej. Nie ma możliwości wstrzymania usługi. W systemie godzinowym nadal rozliczeń, dopóki nie usuniesz domeny zarządzanej.
+
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Czy mogę trybu failover w usługach domenowych Azure AD do innego regionu dla zdarzenia odzyskiwania po awarii?
+Nie.  Azure AD Domain Services nie jest aktualnie dostępny model wdrożenia geograficznie nadmiarowy. Jest ograniczona do jednej sieci wirtualnej w regionie platformy Azure. Korzystanie z wielu regionach platformy Azure, musisz uruchomić kontrolerów domeny usługi Active Directory na maszynach wirtualnych IaaS platformy Azure.  Znajdują się wskazówki dotyczące architektury [tutaj](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Czy można uzyskać usług domenowych Azure AD w ramach Enterprise Mobility Suite (EMS)? Czy muszę mieć usługi Azure AD Premium do korzystania z usług domenowych Azure AD?
 Nie. Azure AD Domain Services jest rozliczana według bieżącego użycia usług platformy Azure i nie jest częścią pakietu EMS. Usługi domenowe Azure AD mogą być używane z wszystkie wersje usługi Azure AD (bezpłatna, podstawowa i, Premium). Opłaty są naliczane godzinowo, w zależności od użycia.
