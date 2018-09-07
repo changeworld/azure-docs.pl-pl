@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139477"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026522"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Aprowizuj Magazyn dyskowy maszyny wirtualnej w usłudze Azure Stack
 
@@ -30,9 +30,13 @@ W tym artykule opisano sposób aprowizacji magazynu dyskowego maszyny wirtualnej
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure Stack obsługuje korzystanie z [niezarządzane dyski](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na maszynach wirtualnych, zarówno jako systemu operacyjnego (OS) i dysk z danymi.
+Począwszy od wersji 1808, usługa Azure Stack obsługuje korzystanie z dysków zarządzanych i niezarządzanych dysków na maszynach wirtualnych, zarówno jako systemu operacyjnego (OS) i dysk z danymi. Przed wersją 1808 obsługiwane są tylko dyski niezarządzane. 
 
-Aby korzystać z dysków niezarządzanych, musisz utworzyć [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski które tworzysz są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
+**[Usługa Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  upraszcza zarządzanie dyskami maszyn wirtualnych IaaS platformy Azure dzięki zarządzaniu kontami magazynu skojarzone z dyskami maszyn wirtualnych. Wystarczy określić rozmiar dysku należy i usługi Azure Stack, tworzy i zarządza dysku.
+
+**[Niezarządzane dyski](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, wymaga utworzenia [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski które tworzysz są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
+
+ 
 
 ### <a name="best-practice-guidelines"></a>Najlepsze rozwiązania przyjęte
 

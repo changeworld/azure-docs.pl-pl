@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698778"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022768"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -54,7 +54,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    ![Określ dostęp do obiektów blob na publiczną](./media/azure-stack-add-vm-image/image2.png)
 
-2. Zaloguj się do usługi Azure Stack jako operator. Wybierz z menu **więcej usług**. Następnie wybierz **obliczenia** > **obrazów maszyn wirtualnych** > **Dodaj**.
+2. Zaloguj się do usługi Azure Stack jako operator. Wybierz z menu **wszystkich usług**. Następnie w obszarze **administracji** wybierz kategorię **obliczenia** > **obrazów maszyn wirtualnych** > **Dodaj**.
 
 3. W obszarze **Dodawanie obrazu maszyny Wirtualnej**, wprowadź wydawcy, oferty, jednostki SKU i wersji obrazu maszyny wirtualnej. Te segmenty nazwy odnoszą się do obrazu maszyny Wirtualnej w szablonach usługi Resource Manager. Upewnij się, że wybrano **osType** wartość poprawnie. Aby uzyskać **identyfikator URI obiektu Blob dysku systemu operacyjnego**, wprowadź identyfikator URI obiektu Blob, których obraz został przekazany. Następnie wybierz **Utwórz** umożliwiającą utworzenie obrazu maszyny Wirtualnej.
 
@@ -115,7 +115,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
     Aby uzyskać więcej informacji, zobacz informacje dotyczące w programie PowerShell [AzsPlatformimage Dodaj](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) polecenia cmdlet i [New DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) polecenia cmdlet.
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Dodawanie niestandardowego obrazu maszyny Wirtualnej w portalu Marketplace przy użyciu programu PowerShell
-
+ 
 1. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 
   ```PowerShell  

@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 89f6a0c1adaded724f159ffbf33aae98969ab9fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139667"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027173"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Magazyn usługi Azure stack: różnice i zagadnienia
+# <a name="azure-stack-storage-differences-and-considerations"></a>Magazyn usługi Azure Stack: różnice i zagadnienia
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Magazyn usługi Azure stack to zestaw usług magazynu w chmurze w usłudze Microsoft Azure Stack. Magazyn usługi Azure stack oferuje, obiektów blob, tabela, kolejka i funkcji zarządzania konta z semantyką spójnych z platformą Azure.
+Magazyn usługi Azure Stack to zestaw usług magazynu w chmurze w usłudze Microsoft Azure Stack. Magazyn usługi Azure Stack zapewnia obiektów blob, tabela, kolejka i funkcji zarządzania konta z semantyką spójnych z platformą Azure.
 
-Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z usługi Azure Storage. Zawiera również listę rzeczy, które należy wziąć pod uwagę podczas wdrażania usługi Azure Stack. Aby poznać Ogólne różnice między globalnej platformy Azure i usługi Azure Stack, zobacz temat [kluczowe zagadnienia](azure-stack-considerations.md) tematu.
+Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z usługi Azure Storage. Zawiera również listę rzeczy, które należy wziąć pod uwagę podczas wdrażania usługi Azure Stack. Aby poznać Ogólne różnice między globalnej platformy Azure i usługi Azure Stack, zobacz temat [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
 
 ## <a name="cheat-sheet-storage-differences"></a>Ściągawka: różnice magazynu
 
@@ -38,7 +38,7 @@ Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z 
 |Typ konta magazynu|Konta magazynu ogólnego przeznaczenia i platforma Azure obiektów blob|Ogólnego przeznaczenia tylko.
 |Opcje replikacji|Magazyn lokalnie nadmiarowy, Magazyn geograficznie nadmiarowy, Magazyn geograficznie nadmiarowy geograficznie nadmiarowy i Magazyn strefowo nadmiarowy|Magazyn lokalnie nadmiarowy.
 |Premium Storage|W pełni obsługiwane|Mogą być udostępniane, ale bez ograniczeń wydajności lub gwarancji.
-|Dyski zarządzane|Premium i standardowa obsługiwane|Nie jest jeszcze obsługiwany.
+|Dyski zarządzane|Premium i standardowa obsługiwane|Obsługiwane w przypadku używania wersji 1808 lub nowszej.
 |Nazwa obiektu blob|1024 znaków (2048 bajtów)|880 znaków (1,760 w bajtach)
 |Maksymalny rozmiar obiektu blob bloku|4.75 TB (100 MB X 50 000 bloków)|4.75 TB (100 MB x 50 000 bloków) dla aktualizacji 1802 lub nowszej wersji. 50 000 x 4 MB (około 195 GB) dla wcześniejszych wersji.
 |Kopiowanie migawki obiektu blob strony|Kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych dołączony do uruchomionej maszyny Wirtualnej obsługiwane|Nie jest jeszcze obsługiwany.

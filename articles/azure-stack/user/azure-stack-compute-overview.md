@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139439"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025777"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Wprowadzenie do maszyn wirtualnych usługi Azure Stack
 
@@ -99,7 +99,7 @@ W poniższej tabeli przedstawiono zasoby są używane przez maszynę Wirtualną 
 |Zasób|Wymagane|Opis|
 |---------|---------|---------|
 |Grupa zasobów|Yes|Maszyna wirtualna musi być zawarta w grupie zasobów.|
-|Konto magazynu|Yes|Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych.|
+|Konto magazynu|Nie|Maszyna wirtualna jest nie mieć konto magazynu do przechowywania wirtualnych dysków twardych, jeśli korzystają z dysków zarządzanych. <br>Maszyna wirtualna wymagane jest konto magazynu do przechowywania wirtualnych dysków twardych, jeśli przy użyciu dysków niezarządzanych.|
 |Sieć wirtualna|Yes|Maszyna wirtualna musi należeć do sieci wirtualnej.|
 |Publiczny adres IP|Nie|Maszyna wirtualna może mieć przypisany publiczny adres IP umożliwiający uzyskiwanie do niej dostępu zdalnego.|
 |Interfejs sieciowy|Yes|Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci.|

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 418b2f6b156853c1a2820271808bdba922d41a87
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412903"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024804"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -151,7 +151,7 @@ Istnieją dwie części do tego scenariusza:
 2. Korzystać z portalu administratora, aby przekazać pakiet elementu portalu marketplace (plik .azpkg) do magazynu obiektów Blob platformy Azure Stack. Przekazywanie pakietu udostępnia je zadaniom usługi Azure Stack Aby później można opublikować elementu portalu Marketplace usługi Azure Stack.
 
    Przekazywanie wymaga posiadania konta magazynu przy użyciu publicznie kontenera (patrz wymagania wstępne dotyczące tego scenariusza)   
-   1. W portalu administracyjnym usługi Azure Stack, przejdź do **więcej usług** > **kont magazynu**.  
+   1. W portalu administracyjnym usługi Azure Stack, przejdź do **wszystkich usług** a następnie w obszarze **dane + magazyn** kategorii, wybierz opcję **kont magazynu**.  
    
    2. Wybierz konto magazynu z subskrypcji, a następnie w obszarze **usługę BLOB SERVICE**, wybierz opcję **kontenery**.  
       ![Usługi obiektów blob](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
@@ -198,7 +198,7 @@ Istnieją dwie części do tego scenariusza:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. Po opublikowaniu elementu w galerii, można wyświetlić z **więcej usług** > **Marketplace**.  Jeżeli pobieranie jest szablon rozwiązania, upewnij się, że możesz dodać wszelkie zależne obraz wirtualnego dysku twardego dla tego szablonu rozwiązania.  
+5. Po opublikowaniu elementu w galerii, go, przechodząc do **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **Marketplace**.  Jeżeli pobieranie jest szablon rozwiązania, upewnij się, że możesz dodać wszelkie zależne obraz wirtualnego dysku twardego dla tego szablonu rozwiązania.  
   ![Wyświetl w portalu marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

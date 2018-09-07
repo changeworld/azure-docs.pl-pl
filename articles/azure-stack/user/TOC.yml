@@ -98,6 +98,13 @@ items:
         href: azure-stack-kv-push-secret-into-vm.md
       - name: Przykładowa aplikacja usługi KeyVault
         href: azure-stack-kv-sample-app.md
+    - name: Monitorowanie usługi Azure Stack
+      href: azure-stack-metrics-azure-data.md
+      items:
+      - name: Obsługiwane metryki
+        href: azure-stack-metrics-supported.md
+      - name: Używanie danych monitorowania platformy Azure
+        href: azure-stack-metrics-monitor.md
     - name: Szablony rozwiązań
       items:
       - name: Wdrażanie klastra usługi Service Fabric
@@ -181,9 +188,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Szkolenia i certyfikacja
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 343847c800ce888cd211f6d2314af71c45189b50
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 7bf5ef3ab2270d059a6d426cba3551cf21ce16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915376"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026717"

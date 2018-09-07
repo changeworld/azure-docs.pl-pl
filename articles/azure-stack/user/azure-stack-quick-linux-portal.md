@@ -7,16 +7,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: c692bc461c116b4c0497c2378ae4e21e1b841c8f
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139625"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025414"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej z systemem Linux server za pomocą portalu usługi Azure Stack
 
@@ -27,6 +27,10 @@ Za pomocą portalu usługi Azure Stack, można utworzyć maszynę wirtualną Ubu
 * Łączenie z maszyną wirtualną za pomocą zdalnego klienta.
 * Zainstaluj serwer internetowy NGINX.
 * Czyszczenie zasobów.
+
+> [!NOTE]  
+> Obrazy ekranu, w tym artykule zostaną zaktualizowane w celu zmiany wprowadzone przy użyciu usługi Azure Stack w wersji 1808. 1808 dodaje obsługę za pomocą *usługi managed disks* oprócz dysków niezarządzanych. Jeśli używasz starszej wersji, niektóre obrazy, zadań, takich jak wybranego dysku będzie różnić się od wyświetlanych w tym artykule.  
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -66,7 +70,9 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 1. Kliknij przycisk **Utwórz zasób** w lewym górnym rogu portalu usługi Azure Stack.
 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Ubuntu Server 16.04 LTS**.
-3. Kliknij pozycję **Utwórz**.
+   
+   ![Wybierz serwer z systemem Linux](media/azure-stack-quick-linux-portal/select.png)
+1. Kliknij pozycję **Utwórz**.
 
 4. Wpisz informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH**. Wklej klucz publiczny SSH, zapisać, a następnie kliknij przycisk **OK**.
 
@@ -75,24 +81,28 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 
    ![Podstawowe informacje dotyczące panelu — Konfigurowanie maszyny wirtualnej](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-5. Wybierz **D1_V2** dla maszyny wirtualnej.
+5. Wybierz **D1** dla maszyny wirtualnej.
 
    ![Rozmiar panelu — wybierz rozmiar maszyny wirtualnej](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
-6. Na **ustawienia** strony, Zachowaj ustawienia domyślne i kliknij przycisk **OK**.
+6. Na **ustawienia** strony, wprowadź potrzebne zmiany do ustawień domyślnych.
+   
+    - Począwszy od wersji usługi Azure Stack 1808, można skonfigurować **magazynu** której użytkownik może użyć *usługi managed disks*. Przed wersją 1808 można tylko dyski niezarządzane.    
+      ![Skonfiguruj magazyn dla dysków zarządzanych](media/azure-stack-quick-linux-portal/linux-03.PNG)
+    
+    Jeśli konfiguracje są gotowe, wybierz **OK** aby kontynuować.
 
-7. Na **Podsumowanie** kliknij **OK** rozpocząć wdrażanie maszyny wirtualnej.
+7. Na **Podsumowanie** kliknij **OK** rozpocząć wdrażanie maszyny wirtualnej.  
+   ![Wdrażanie](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-1. Kliknij przycisk **Connect** na stronie maszyny wirtualnej. Spowoduje to wyświetlenie parametry połączenia SSH, który chcesz połączyć z maszyną wirtualną.
-
-   ![Połączenia z maszyną wirtualną](media/azure-stack-quick-linux-portal/linux-03.PNG)
+1. Kliknij przycisk **Connect** na stronie maszyny wirtualnej. Spowoduje to wyświetlenie parametry połączenia SSH, który chcesz połączyć z maszyną wirtualną. 
 
 2. Otwórz program PuTTY.
-3. Na **Konfiguracja programu PuTTY** ekranu będzie używać **kategorii** okna, aby przewijać w górę lub w dół. Przewiń w dół do **SSH**, rozwiń węzeł **SSH**, a następnie kliknij przycisk **uwierzytelniania**. Kliknij przycisk **Przeglądaj** i wybierz plik klucza prywatnego, który został zapisany.
 
-   ![Wybieranie klucza prywatnego PuTTY](media/azure-stack-quick-linux-portal/Putty03.PNG)
+3. Na **Konfiguracja programu PuTTY** ekranu będzie używać **kategorii** okna, aby przewijać w górę lub w dół. Przewiń w dół do **SSH**, rozwiń węzeł **SSH**, a następnie kliknij przycisk **uwierzytelniania**. Kliknij przycisk **Przeglądaj** i wybierz plik klucza prywatnego, który został zapisany.
+   ![Połączenia z maszyną wirtualną](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Przewiń w górę **kategorii** okna, a następnie kliknij przycisk **sesji**.
 5. W **nazwy hosta (lub adres IP)** pole, Wklej parametry połączenia, wyświetlana w portalu usługi Azure Stack. W tym przykładzie ciąg jest ```asadmin@192.168.102.34```.
@@ -136,7 +146,7 @@ Dzięki po zainstalowaniu serwera NGINX i otwarciu na maszynie wirtualnej portu 
 
 Otwórz przeglądarkę internetową i przejdź do ```http://<public IP address>```.
 
-![Strona powitalna serwera sieci web NGINX](media/azure-stack-quick-linux-portal/linux-04.PNG)
+![Strona powitalna serwera sieci web NGINX](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
