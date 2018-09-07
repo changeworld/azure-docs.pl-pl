@@ -38,8 +38,8 @@
 ### [Zarządzanie serwerem](analysis-services-manage.md)
 ### [Monitorowanie metryk serwera](analysis-services-monitor.md)
 ### [Setup diagnostic logging (Konfigurowanie rejestrowania diagnostycznego)](analysis-services-logging.md)
-### [Tworzenie jednostki usługi — witryna Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Tworzenie jednostki usługi — program PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Tworzenie jednostki usługi — Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Tworzenie jednostki usługi — PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 ### [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md)
 
 ## Modelowanie
