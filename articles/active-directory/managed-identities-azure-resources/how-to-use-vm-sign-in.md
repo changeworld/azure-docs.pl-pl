@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: a61dca8332a613176b01eb85b44cd743ff8b4085
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0f8789d64b550d9f0a45aa65728fbc1db64d6def
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028429"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094930"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure dotyczące logowania 
 
@@ -89,7 +89,7 @@ Odpowiedzi na następujące może wskazywać, że tożsamości zarządzanej masz
 Jeśli zostanie wyświetlony jeden z tych błędów, wróć do maszyny Wirtualnej platformy Azure w [witryny Azure portal](https://portal.azure.com) oraz:
 
 - Przejdź do **tożsamości** strony i upewnij się, **przypisanej w systemie** jest ustawiona na "Yes".
-- Przejdź do **rozszerzenia** strony i upewnij się, zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure zostało pomyślnie wdrożone.
+- Przejdź do **rozszerzenia** strony i upewnij się, zarządzanych tożsamości dla zasobów platformy Azure rozszerzenia **(zaplanowane do wycofania z użycia w styczniu 2019)** zostało pomyślnie wdrożone.
 
 Jeśli jest albo nieprawidłowa, może być konieczne ponowne wdrażanie zarządzanych tożsamości dla zasobów platformy Azure w swoim zasobie, ponownie lub Rozwiązywanie problemów z błędu wdrożenia. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.
 

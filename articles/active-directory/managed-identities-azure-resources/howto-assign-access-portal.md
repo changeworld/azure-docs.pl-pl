@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: b6423a80b0405bcaabd4f1fc8e26dc3be0adadb0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c2048583cde397ac3325fd149982b3a3db475566
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028370"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157283"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisywanie dostępu tożsamości usługi zarządzanej do zasobów przy użyciu witryny Azure portal
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Po skonfigurowaniu zasobu platformy Azure przy użyciu tożsamość usługi zarządzanej (MSI), można zapewnić dostęp MSI do innego zasobu, podobnie jak podmiot zabezpieczeń. W tym artykule pokazano, jak przyznać maszynie wirtualnej platformy Azure lub dostępu tożsamości usługi Zarządzanej zestaw skalowania maszyn wirtualnych do konta usługi Azure storage przy użyciu witryny Azure portal.
 

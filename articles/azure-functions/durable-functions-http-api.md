@@ -3,23 +3,19 @@ title: Interfejsy API protokołu HTTP w funkcje trwałe - Azure
 description: Dowiedz się, jak implementować interfejsy API protokołu HTTP w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3fa4f230f5e2d15e815c47792c3955aa93d29fc4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264889"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094743"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -131,7 +127,7 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 | Pole           | Typ danych | Opis |
 |-----------------|-----------|-------------|
 | runtimeStatus   | ciąg    | Stan środowiska uruchomieniowego wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
-| wejście           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
+| Dane wejściowe           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
 | customStatus    | JSON      | Dane JSON, używane na potrzeby stan niestandardowej aranżacji. To pole jest `null` Jeśli nie zostanie ustawiona. |
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | wartością createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |

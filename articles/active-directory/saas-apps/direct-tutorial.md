@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: e9003df88e8ed330e0344c63ee0516bc24a7eaad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433905"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą bezpośrednich
 
@@ -27,7 +27,7 @@ W tym samouczku dowiesz się, jak zintegrować bezpośrednio z usługą Azure Ac
 
 Integrowanie bezpośrednio z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do bezpośredniego
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do kierowania
 - Można włączyć użytkowników, aby automatycznie uzyskać zalogowanych do kierowania (logowanie jednokrotne) przy użyciu konta usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
@@ -35,9 +35,9 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD bezpośrednio, potrzebne są następujące elementy:
+Do konfigurowania integracji z usługą Azure AD za pomocą bezpośrednich, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Bezpośrednie logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -49,50 +49,50 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie bezpośrednio z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-direct-from-the-gallery"></a>Dodawanie bezpośrednio z galerii
+
 Aby skonfigurować integrację bezpośrednie w usłudze Azure AD, należy dodać bezpośrednio z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać bezpośrednio z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-1. W polu wyszukiwania wpisz **bezpośredniego**.
-
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/tutorial_direct_search.png)
-
-1. W panelu wyników wybierz **bezpośredniego**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **bezpośredniego**. Wybierz **bezpośredniego** z panel wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/tutorial_direct_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą bezpośrednich oparte na użytkownika testu o nazwie "Britta Simon."
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w bezpośrednio do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w bezpośrednim musi można ustanowić.
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne bezpośrednio w oparciu o użytkownika testu o nazwie "Britta Simon."
+
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w bezpośrednio do użytkownika w usłudze Azure AD. Innymi słowy łącze relację między użytkownika usługi Azure AD i powiązanych użytkownika w bezpośrednich powinien być określony.
 
 W bezpośrednim, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne bezpośrednio, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego bezpośredniego](#creating-a-direct-test-user)**  — aby odpowiednikiem Britta Simon w bezpośrednich, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego bezpośredniego](#creating-a-direct-test-user)**  — aby mają odpowiednika w pozycji Britta simon w bezpośrednim, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,37 +104,34 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_direct_samlbase.png)
 
-1. Na **bezpośrednie domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+3. Na **bezpośrednie domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_direct_url.png)
 
     W **identyfikator** pole tekstowe, wpisz adres URL: `https://direct4b.com/`
 
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_direct_url1.png)
 
      W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://direct4b.com/sso` 
-    
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+
+5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_direct_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **bezpośredniego** stronie, musisz wysłać pobrany **XML metadanych** do [zespołu bezpośredniej pomocy technicznej](https://direct4b.com/ja/support.html#inquiry). 
-
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+7. Aby skonfigurować logowanie jednokrotne na **bezpośredniego** stronie, musisz wysłać pobrany **XML metadanych** do [zespołu bezpośredniej pomocy technicznej](https://direct4b.com/ja/support.html#inquiry).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
@@ -145,16 +142,16 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/create_aaduser_01.png) 
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/create_aaduser_02.png) 
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/create_aaduser_03.png) 
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/direct-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
@@ -164,41 +161,41 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-direct-test-user"></a>Tworzenie użytkownika Direct — test
+
+### <a name="creating-a-direct-test-user"></a>Tworzenie użytkownika direct — test
 
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon w bezpośrednim. Praca z [bezpośredniej pomocy technicznej zespół](https://direct4b.com/ja/support.html#inquiry) Aby dodać użytkowników do bezpośredniego platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do bezpośredniego.
+W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udzielenie dostępu do kierowania.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Britta Simon Direct, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do kierowania, wykonaj następujące czynności:**
 
 1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-1. Na liście aplikacji wybierz **bezpośredniego**.
+2. Na liście aplikacji wybierz **bezpośredniego**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/direct-tutorial/tutorial_direct_app.png) 
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
@@ -207,12 +204,12 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
     Po kliknięciu **bezpośredniego** kafelka w panelu dostępu, należy pobrać automatycznie zalogowanych do sieci **bezpośredniego** aplikacji.
 
-1. Jeśli chcesz przetestować w **SP zainicjowano tryb**:
-    
+2. Jeśli chcesz przetestować w **SP zainicjowano tryb**:
+
     a. Kliknij pozycję **bezpośredniego** kafelka w panelu dostępu, a następnie nastąpi przekierowanie do strony logowania jednokrotnego w aplikacji.
 
     b. Dane wejściowe użytkownika `subdomain` w wyświetlana w polu tekstowym i naciśnij klawisz "次へ (dalej)" i pobieraj automatycznie zalogowanych do usługi **bezpośrednie** aplikacji.
-    
+
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
@@ -233,4 +230,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/direct-tutorial/tutorial_general_201.png
 [202]: ./media/direct-tutorial/tutorial_general_202.png
 [203]: ./media/direct-tutorial/tutorial_general_203.png
-

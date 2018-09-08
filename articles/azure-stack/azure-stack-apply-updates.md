@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: ca07c3aca106f6c92187fea5a3ebf7bf172cddcc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026206"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091904"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Stosowanie aktualizacji w usłudze Azure Stack
 
@@ -65,7 +65,7 @@ Poniższa procedura pokazuje, jak zaimportować, a następnie zainstaluj pakiety
 6. W obszarze **przekazywanie obiektu blob**, kliknij ikonę folderu, wskaż lokalizację pakietu aktualizacji plik .exe, a następnie kliknij przycisk **Otwórz** w oknie Eksploratora plików.
   
 7. W obszarze **przekazywanie obiektu blob**, kliknij przycisk **przekazywanie**. 
- 
+  
     ![Wskazuje, gdzie w celu przekazania wszystkich plików pakietu](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. Powtórz kroki 6 i 7 dla *Nazwa_pakietu*bin i pliki Metadata.xml. Nie należy importować plik uzupełniające plik Notice.txt, jeśli uwzględniony.
@@ -74,6 +74,8 @@ Poniższa procedura pokazuje, jak zaimportować, a następnie zainstaluj pakiety
 11. Aby zainstalować aktualizację, wybierz pakiet, który jest oznaczony jako **gotowe** a albo kliknij prawym przyciskiem myszy pakiet i wybierz **teraz zaktualizować**, lub kliknij przycisk **teraz zaktualizować** akcji w prawym górnym .
 12. Po kliknięciu instalowania pakietu aktualizacji, można wyświetlić stan w **szczegóły przebiegu aktualizacji** obszaru. W tym miejscu możesz również kliknąć **Pobierz pełne dzienniki** do pobierania plików dziennika.
 13. Po zakończeniu aktualizacji, Aktualizuj Kafelek zawiera zaktualizowaną wersję usługi Azure Stack.
+
+Można ręcznie usunąć aktualizacje z konta magazynu, po ich zainstalowaniu w usłudze Azure Stack. Usługa Azure Stack okresowo sprawdza dostępność starszych pakietów aktualizacji i usuwa je z magazynu. Może upłynąć usługi Azure Stack dwa tygodnie, aby usunąć stare pakiety.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

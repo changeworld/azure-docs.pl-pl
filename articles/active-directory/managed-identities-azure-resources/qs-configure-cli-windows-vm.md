@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: eb30fc16145bb8fedba4760bbab4ef0ab0800bc9
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: aa0811e05fc1d7069cb55314381f3b4b4acc0937
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028247"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157841"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
@@ -110,7 +110,7 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości przypisanych prze
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Aby usunąć tożsamość zarządzana rozszerzenia maszyny Wirtualnej zasoby platformy Azure, użytkownik `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` przełącznik (w zależności od typu maszyny Wirtualnej) z [Usuń rozszerzenie maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+Aby usunąć zarządzaną tożsamością dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure (planowana do wycofania z użycia w styczniu 2019), użytkownik `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` przełącznik (w zależności od typu maszyny Wirtualnej) z [Usuń rozszerzenie maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -132,7 +132,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie maszyny wirtualnej za pomocą przydz
 
 2. Tworzenie przy użyciu przypisanych przez użytkownika z tożsamości zarządzanej [Utwórz tożsamość az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupę zasobów zarządzanych tożsamości przypisanych przez użytkownika jest tworzona, i `-n` parametr określa jej nazwę.    
     
-   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
    ```azurecli-interactive
    az identity create -g myResourceGroup -n myUserAssignedIdentity

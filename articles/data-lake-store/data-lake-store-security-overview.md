@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3b836859dd2af45e84d0f53db06d2c7ab2828253
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 4ecc94f4ab5e9091db1705e99d4a5df6abbaf350
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057167"
+ms.locfileid: "44161088"
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpieczenia w usłudze Azure Data Lake Store
 Wiele przedsiębiorstw są się korzystanie z analizy danych big data, aby uzyskać szczegółowe informacje biznesowe pomóc im inteligentne decyzje. Organizacja może być skomplikowane i podlegających regulacjom środowiska z coraz większą liczbę różnych użytkowników. Ważne jest dla przedsiębiorstw upewnić się, że kluczowe dane biznesowe są przechowywane w bardziej bezpiecznie z odpowiedniego poziomu dostępu przyznane dla poszczególnych użytkowników. Azure Data Lake Store ułatwia spełnienie tych wymagań dotyczących zabezpieczeń. Ten artykuł zawiera informacje na temat możliwości zabezpieczeń Data Lake Store, w tym:
@@ -80,7 +80,7 @@ Azure Data Lake Store zapewnia ochronę danych w całym cyklu życia. Do przesy�
 
 Usługa Data Lake Store umożliwia także szyfrowanie danych przechowywanych w ramach konta. Możesz wybrać szyfrowanie danych lub jego brak. Jeśli postanowisz w przypadku szyfrowania danych przechowywanych w Data Lake Store są szyfrowane przed zapisaniem na nośniku trwałym. W takim przypadku Data Lake Store automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem, dzięki czemu jest całkowicie niewidoczne dla klienta, dostęp do danych. Nie nastąpiła żadna zmiana kodu, wymagane po stronie klienta do szyfrowania/odszyfrowywania danych.
 
-Do zarządzania kluczami Data Lake Store udostępnia dwa tryby zarządzania kluczami szyfrowania głównego (głównymi kluczami szyfrowania), które są wymagane w celu odszyfrowania żadnych danych, która jest przechowywana w Data Lake Store. Można albo pozwolić Data Lake Store zarządzania głównymi kluczami szyfrowania lub zachowanych własności głównymi kluczami szyfrowania za pomocą konta usługi Azure Key Vault. Tryb zarządzania kluczami należy określić, gdy podczas tworzenia konta Data Lake Store. Aby uzyskać więcej informacji na temat sposobu zapewnienia konfiguracji odnoszącej się do szyfrowania, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md).
+Do zarządzania kluczami Data Lake Store udostępnia dwa tryby zarządzania kluczami szyfrowania głównego (głównymi kluczami szyfrowania), które są wymagane w celu odszyfrowania żadnych danych, która jest przechowywana w Data Lake Store. Można albo pozwolić Data Lake Store zarządzania głównymi kluczami szyfrowania lub zachowanych własności głównymi kluczami szyfrowania za pomocą konta usługi Azure Key Vault. Tryb zarządzania kluczami należy określić podczas tworzenia konta Data Lake Store. Aby uzyskać więcej informacji na temat sposobu zapewnienia konfiguracji odnoszącej się do szyfrowania, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="activity-and-diagnostic-logs"></a>Aktywności i dzienników diagnostycznych
 Można użyć działania lub dzienniki diagnostyczne, w zależności od tego, czy szukasz dzienniki działań związanych z zarządzaniem konta lub działań związanych z danymi.

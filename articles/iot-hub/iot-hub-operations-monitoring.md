@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186200"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160052"
 ---
 # <a name="iot-hub-operations-monitoring"></a>Monitorowanie operacji usługi IoT Hub
 
@@ -29,7 +29,7 @@ Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 * Komunikaty z chmury do urządzenia
 * Połączenia
 * Operacje przekazywania plików
-* Kierowanie komunikatów
+* Routing wiadomości
 
 > [!IMPORTANT]
 > Monitorowanie operacji usługi IoT Hub nie gwarantuje niezawodne lub są uporządkowane dostarczenia zdarzeń. W zależności od podstawowej infrastruktury usługi IoT Hub niektóre zdarzenia mogą utracone lub dostarczony poza kolejnością. Użyj operacji na monitorowanie w celu generowania alertów w oparciu o sygnały błędu, takie jak próby nawiązania połączenia nie powiodło się lub odłączenia o wysokiej częstotliwości dla określonych urządzeń. Nie należy polegać na operacje monitorowania zdarzeń, aby utworzyć magazyn spójnego stanu urządzenia, np. store, śledzenie połączone lub odłączona stan urządzenia. 
@@ -167,7 +167,7 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 }
 ```
 
-### <a name="message-routing"></a>Kierowanie komunikatów
+### <a name="message-routing"></a>Routing wiadomości
 
 Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria zawiera zdarzenia, np. gdy reguła zwraca "undefined", gdy usługi IoT Hub oznacza punktu końcowego jako martwe i inne błędy otrzymane od punktu końcowego. Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
 
@@ -185,26 +185,6 @@ Kategoria routingu wiadomości do śledzenia błędów występujących podczas o
     "details": "ExternalEndpointDisabled"
 }
 ```
-
-## <a name="view-events"></a>Wyświetlanie zdarzeń
-
-Możesz użyć *narzędzia iothub-explorer* narzędzie, aby szybko przetestować, czy Centrum IoT hub jest generowanie zdarzenia monitorowania. Aby zainstalować narzędzie, zobacz instrukcje w [narzędzia iothub-explorer] [ lnk-iothub-explorer] repozytorium GitHub.
-
-1. Upewnij się, że **połączeń** monitorowania kategorii jest ustawiona na **pełne** w portalu.
-
-1. W wierszu polecenia Uruchom następujące polecenie, aby odczytać z monitorowania punktu końcowego:
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. W innego wiersza polecenia Uruchom następujące polecenie, aby zasymulować urządzenie, wysyłanie komunikatów z urządzenia do chmury:
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. Pierwszy wiersz polecenia zawiera zdarzenia monitorowania, jak symulowane urządzenie łączy się z Centrum IoT.
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Nawiązać połączenie z monitorowania punktu końcowego
 
@@ -303,5 +283,4 @@ Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

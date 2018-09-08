@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: yurid
-ms.openlocfilehash: 1d6fee9cb46fcfec32c0ecdb91eec09a56063c4e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: b9040158679b99ca71a6b973dec9804869351938
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779281"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158300"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu reagowania na zdarzenia związane z zabezpieczeniami.
@@ -96,7 +96,7 @@ Istniejący element playbook możesz zmienić w usłudze Security Center, aby do
 > Aby uzyskać więcej informacji na temat tworzenia własnego elementu playbook przy użyciu aplikacji logiki platformy Azure, zobacz [Tworzenie pierwszego przepływu pracy aplikacji logiki w celu automatyzacji procesów między aplikacjami w chmurze a usługami w chmurze](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app#add-an-action-that-responds-to-your-trigger).
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym dokumencie omówiono korzystanie z elementów playbook w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.

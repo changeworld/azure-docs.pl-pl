@@ -1,6 +1,6 @@
 ---
-title: Podstawowe raporty from Verizon | Dokumentacja firmy Microsoft
-description: 'Możesz wyświetlić wzorców użycia sieci CDN za pomocą następujących raportów: przepustowości, dane przesyłane, trafień, stany pamięci podręcznej, Stosunek trafień w pamięci podręcznej, przesłanych danych IPV4 i IPV6.'
+title: Podstawowe raporty z usługi Verizon | Dokumentacja firmy Microsoft
+description: 'Można wyświetlić wzorców użycia dla sieci CDN, za pomocą następujących raportów: przepustowości, przetransferowane dane, trafienia, stany pamięci podręcznej, Współczynnik trafień w pamięci podręcznej, przetransferowane dane IPV4 i IPV6.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,123 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: fa828bfa736d677fb4881e5cc2628c0e03eb8749
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26345251"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162074"
 ---
-# <a name="core-reports-from-verizon"></a>Raporty Core from Verizon
+# <a name="core-reports-from-verizon"></a>Raporty podstawowe z usługi Verizon
 
-[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Za pomocą raportów Core Verizon za pośrednictwem portalu zarządzania dla profilów Verizon, można wyświetlić wzorców użycia sieci CDN następujące raporty:
+Za pomocą Verizon podstawowych raportów za pośrednictwem portalu zarządzania dla profilów Verizon, można wyświetlić wzorców użycia dla sieci CDN za pomocą następujących raportów:
 
 * Przepustowość
-* Przesyłane dane
+* Przetransferowane dane
 * Trafienia
 * Stany pamięci podręcznej
 * Stosunek trafień w pamięci podręcznej
-* Przesyłane dane IPv4 i IPV6
+* Przesyłane dane IPv4/IPV6.
 
-## <a name="accessing-verizon-core-reports"></a>Uzyskiwanie dostępu do raportów Verizon Core
-1. Blok profilu CDN, kliknij **Zarządzaj** przycisku.
+## <a name="accessing-verizon-core-reports"></a>Uzyskiwanie dostępu do Raporty podstawowe z usługi Verizon
+1. Z poziomu bloku profil CDN kliknij **Zarządzaj** przycisku.
    
-    ![Przycisk Zarządzaj profil CDN](./media/cdn-reports/cdn-manage-btn.png)
+    ![Przycisk Zarządzaj w profilu CDN](./media/cdn-reports/cdn-manage-btn.png)
    
     Zostanie otwarty w portalu zarządzania usługi CDN.
-2. Umieść kursor nad **Analytics** , a następnie umieść kursor nad **raporty Core** wysuwane okno. Kliknij raport, w menu.
+2. Umieść kursor nad **Analytics** kartę, a następnie umieść kursor nad **Raporty podstawowe** okno wysuwane. Kliknij raport, w menu.
    
-    ![Portal zarządzania CDN — menu Raporty podstawowe](./media/cdn-reports/cdn-core-reports.png)
+    ![Portal zarządzania usługi CDN — menu Raporty podstawowe](./media/cdn-reports/cdn-core-reports.png)
 
-3. Dla każdego raportu, wybierz zakres dat z **zakres dat** listy. Możesz wybrać zakres dat wstępnie zdefiniowane, takich jak **dzisiaj** lub **ten tydzień**, lub wybrać **niestandardowy** i ręcznie wprowadź zakres dat, klikając ikony kalendarza. 
+3. Dla każdego raportu, wybierz zakres dat z **zakres dat** listy. Można albo wybierz zakres dat wstępnie zdefiniowane, takich jak **już dziś** lub **ten tydzień**, lub wybrać **niestandardowe** i ręcznie wprowadź zakres dat, klikając ikony kalendarza. 
 
-4. Po wybraniu zakresu dat, kliknij przycisk **Przejdź** do wygenerowania raportu. 
+4. Po wybraniu zakresu dat kliknij **Przejdź** podczas generowania raportu. 
 
-4. Jeśli chcesz eksportować dane w formacie programu Excel, kliknij ikonę programu Excel powyżej **Przejdź** przycisku.
+4. Jeśli chcesz wyeksportować dane w formacie programu Excel, kliknij ikonę programu Excel powyżej **Przejdź** przycisku.
 
 ## <a name="bandwidth"></a>Przepustowość
-Raport przepustowości składa się z tabeli wykresu i danych, która wskazuje użycie przepustowości sieci CDN dla protokołu HTTP i HTTPS w określonym przedziale czasu, w MB/s. Możesz wyświetlić użycie przepustowości we wszystkich punktów POP lub dla określonego punktu obecności. Ten raport umożliwia wyświetlenie nagłego ruchu i dystrybucję POP.
+Raport przepustowości składa się z tabeli programu graph i danych, która wskazuje wykorzystanie przepustowości sieci CDN dla protokołu HTTP i HTTPS za pośrednictwem w danym okresie, w MB/s. Można wyświetlić użycie przepustowości, we wszystkich punktów POP, lub dla określonego punktu obecności. Ten raport służy do wyświetlania, wzrostów ruchu i rozpowszechniania POP.
 
-Z **węzłów krawędzi** listy, wybierz **wszystkie węzły krawędzi** widoczny ruch ze wszystkich węzłów lub wybierz określonego regionu.
+Z **węzłów brzegowych** listy wybierz **wszystkich węzłów brzegowych** widoczny ruch z wszystkich węzłów lub wybrania określonego regionu.
 
 Raport jest aktualizowany co pięć minut.
 
 ![Raport przepustowości](./media/cdn-reports/cdn-bandwidth.png)
 
-## <a name="data-transferred"></a>Przesyłane dane
-Ten raport zawiera wykres i danych tabeli, która wskazuje obciążenie ruchu w sieci CDN dla protokołu HTTP i HTTPS w określonym przedziale czasu, w GB. Możesz wyświetlić obciążenie ruchu między wszystkich punktów POP lub dla określonego punktu obecności. Ten raport umożliwia wyświetlenie impulsy ruchu i dystrybucji między POP.
+## <a name="data-transferred"></a>Przetransferowane dane
+Ten raport zawiera wykres i tabelę danych wskazującą obciążenie ruchu w sieci CDN dla protokołu HTTP i HTTPS za pośrednictwem w danym okresie, w GB. Można wyświetlić użycie ruchu, we wszystkich punktów POP, lub dla określonego punktu obecności. Ten raport służy do wyświetlania wzrostów ruchu i dystrybucji w lokalizacji POP.
 
-Z **węzłów krawędzi** listy, wybierz **wszystkie węzły krawędzi** widoczny ruch ze wszystkich węzłów lub wybierz określonego regionu.
+Z **węzłów brzegowych** listy wybierz **wszystkich węzłów brzegowych** widoczny ruch z wszystkich węzłów lub wybrania określonego regionu.
 
 Raport jest aktualizowany co pięć minut.
 
-![Dane przesyłane raportu](./media/cdn-reports/cdn-data-transferred.png)
+![Przetransferowane dane raportu](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>Trafienia (kodów stanu)
-Ten raport zawiera opis dystrybucji kodów stanu żądania dla zawartości. Każde żądanie zawartości generuje kod stanu HTTP. Kod stanu w tym artykule opisano sposób POP krawędzi obsługi żądania. Na przykład kod stanu 2xx oznacza, że żądanie zostało pomyślnie obsłużył operację na kliencie, podczas kod stanu 4xx oznacza, że wystąpił błąd. Aby uzyskać więcej informacji o kodach stanu HTTP, zobacz [kody stanu listy HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+## <a name="hits-status-codes"></a>Trafienia (kody stanu)
+W tym raporcie przedstawiono dystrybucję kodów stanu żądania dla zawartości. Każde żądanie zawartości generuje kod stanu HTTP. Kod stanu w tym artykule opisano sposób granicznych punktów obecności obsługi żądania. Na przykład kod stanu 2xx wskazuje, że żądanie zostało pomyślnie obsłużone do klienta, podczas kod stanu 4xx oznacza, że wystąpił błąd. Aby uzyskać więcej informacji na temat kodów stanu HTTP, zobacz [kodów stanu listy HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
 
-![Liczba raportów](./media/cdn-reports/cdn-hits.png)
+![Trafienia w raporcie](./media/cdn-reports/cdn-hits.png)
 
 ## <a name="cache-statuses"></a>Stan pamięci podręcznej
-Ten raport zawiera opis dystrybucji trafień w pamięci podręcznej i Chybienia w pamięci podręcznej do obsługi żądań klientów. Ponieważ największą wydajność wynikiem trafień w pamięci podręcznej, aby zoptymalizować szybkości dostarczania danych minimalizując Chybienia pamięci podręcznej i trafień w pamięci podręcznej wygasła. 
+Ten raport zawiera opis rozkład trafień w pamięci podręcznej i Chybienia pamięci podręcznej do obsługi żądań klientów. Ponieważ największą wydajność wynika z trafień w pamięci podręcznej, można zoptymalizować szybkości dostarczania danych, minimalizując Chybienia pamięci podręcznej i trafień w pamięci podręcznej wygasła. 
 
 Aby zmniejszyć Chybienia pamięci podręcznej, należy skonfigurować serwer pochodzenia w celu zminimalizowania użycia z następujących czynności: 
- * `no-cache`nagłówki odpowiedzi
+ * `no-cache` Nagłówki odpowiedzi
  * Buforowanie ciągu zapytania, chyba że niezbędnych  
- * Kody odpowiedzi non buforowalnej
+ * Kody odpowiedzi nie podlega buforowaniu
 
-Aby ograniczyć liczbę trafień w pamięci podręcznej wygasłe, ustaw zasobów `max-age` do długiego okresu, aby zminimalizować liczbę żądań do serwera pochodzenia.
+Aby zmniejszyć trafień w pamięci podręcznej wygasłe, ustaw zasobów `max-age` na długi okres, aby zminimalizować liczbę żądań do serwera pochodzenia.
 
 ![Raport stany pamięci podręcznej](./media/cdn-reports/cdn-cache-statuses.png)
 
-### <a name="main-cache-statuses-include"></a>Stany głównej pamięci podręcznej obejmują:
-* TCP_HIT: Udostępniane przez serwer graniczny. Obiekt został w pamięci podręcznej i nie przekroczył jego maksymalny wiek.
-* TCP_MISS: Pochodzący z serwera źródłowego. Nie znaleziono w pamięci podręcznej i odpowiedź była powrotem do źródła.
-* TCP_EXPIRED _MISS: pochodzący z serwera źródłowego po ponowna Walidacja ze źródła. Obiekt był w pamięci podręcznej, ale przekroczył jego maksymalny wiek. Ponowna Walidacja ze źródła spowodowała obiektu pamięci podręcznej, zostanie zastąpiony nową odpowiedź od źródła.
-* TCP_EXPIRED _HIT: pochodzący z krawędzi po ponowna Walidacja ze źródła. Obiekt się w pamięci podręcznej, ale przekroczył jego maksymalny wiek. Ponowna Walidacja w serwerze źródłowym w wyniku obiektu pamięci podręcznej jest nie mają być modyfikowane.
+### <a name="main-cache-statuses-include"></a>Stany pamięci podręcznej głównego obejmują:
+* TCP_HIT: Są udostępniane przez serwer graniczny. Obiekt w pamięci podręcznej i nie przekroczył jego max-age.
+* TCP_MISS: Obsługiwane z serwera źródłowego. Obiekt nie był w pamięci podręcznej, a odpowiedź była do źródła.
+* TCP_EXPIRED _MISS: udostępniana z serwera źródłowego po ponownej weryfikacji za pomocą źródła. Obiekt był w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego przy użyciu źródła spowodowała obiektu pamięci podręcznej, jest zastępowany przez nową odpowiedź od źródła.
+* TCP_EXPIRED _HIT: obsługiwane z przeglądarki Edge po ponownej weryfikacji za pomocą źródła. Obiekt w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego w serwerze źródłowym w wyniku obiektu pamięci podręcznej są modyfikowane.
 
-### <a name="full-list-of-cache-statuses"></a>Pełna lista stanów pamięci podręcznej
-* TCP_HIT — ten stan jest zgłaszany, gdy żądanie jest udostępniane bezpośrednio z punktu obecności klienta. Zasób jest udostępniany z punktu obecności natychmiast, kiedy są buforowane na POP najbliżej klienta i ma prawidłową time to live (TTL). Czas wygaśnięcia jest określany przez następujące nagłówki odpowiedzi:
+### <a name="full-list-of-cache-statuses"></a>Pełna lista stany pamięci podręcznej
+* TCP_HIT — ten stan jest zgłaszany, gdy żądanie jest obsługiwany bezpośrednio w punkcie POP do klienta. Element zawartości natychmiast są dostarczane z punktu POP, gdy jest buforowana na POP najbliżej danego klienta, a ma nieprawidłowy czas wygaśnięcia (TTL). Czas wygaśnięcia jest określany przez następujące nagłówki odpowiedzi:
   
   * Cache-Control: s-maxage
-  * Cache-Control: Maksymalna liczba wieku
+  * Cache-Control: max-age
   * Wygasa
-* TCP_MISS: Ten stan wskazuje, że wersja buforowana żądanego zasobu nie został znaleziony na POP najbliżej klienta. Element zawartości zażąda serwera pochodzenia lub serwer tarczy pochodzenia. Jeśli serwer pochodzenia lub serwer tarczy pochodzenia zwraca zasób, jest udostępniane przez klienta i w pamięci podręcznej na kliencie i serwerze krawędzi. W przeciwnym razie kod stanu – 200 (na przykład 403 zabronione lub 404 Nie znaleziono) jest zwracany.
-* TCP_EXPIRED_HIT: Ten stan jest zgłaszany, gdy przeznaczonego dla zasobu TTL wygasłe żądanie zostało obsłużone bezpośrednio z punktu obecności do klienta. Na przykład, jeśli element zawartości elementu maksymalny wiek wygasła. 
+* TCP_MISS: Ten stan wskazuje, że zbuforowaną wersję żądany zasób nie został odnaleziony w obecności najbliżej danego klienta. Element zawartości jest wymagany serwer pochodzenia lub serwer pochodzenia tarczy. Jeśli serwer pochodzenia lub serwera tarczy pochodzenia zwraca element zawartości, jest obsługiwane dla klienta i buforowana na kliencie i serwerze granicznym. W przeciwnym razie kod stanu – 200 (na przykład 403 zabronione lub 404 Nie znaleziono) jest zwracany.
+* TCP_EXPIRED_HIT: Ten stan jest zgłaszany podczas obsługi żądania, który jest przeznaczony dla zasobu z wygasłych TTL bezpośrednio w punkcie POP do klienta. Na przykład, jeśli element zawartości przez max-age wygasł. 
   
-   Wygasłe żądanie zwykle powoduje żądanie ponownego sprawdzania poprawności do serwera pochodzenia. Stan TCP_EXPIRED_HIT nastąpić serwerze źródłowym musi wskazywać nowsza wersja zasobów nie istnieje. Ta sytuacja zwykle powoduje aktualizację Cache-Control i Expires headers elementu zawartości.
-* TCP_EXPIRED_MISS: Ten stan jest zgłaszany po nowszej wersji elementu wygasłe zawartości pamięci podręcznej jest udostępniane przez punkt obecności klienta. Ten stan występuje, jeśli wygasł czas TTL buforowanych zasobów (na przykład wygasł maksymalny wiek) i serwera pochodzenia zwraca nowsza wersja tego zasobu. Nowa wersja zasobu jest udostępniany klienta, a nie wersja buforowana. Ponadto są buforowane na serwerze granicznym i klienta.
-* CONFIG_NOCACHE: Ten stan wskazuje klienta konfiguracyjne krawędzi POP uniemożliwił elementu zawartości z pamięci podręcznej.
-* Brak — ten stan wskazuje, czy Sprawdzanie aktualności zawartości pamięci podręcznej nie została wykonana.
-* TCP_CLIENT_REFRESH_MISS: Ten stan jest zgłaszany, gdy klient HTTP, takie jak przeglądarki, wymusza POP, aby pobrać nową wersję starych zasobów z serwera pochodzenia krawędzi. Domyślnie serwery zapobiega HTTP klienta wymuszania serwerów krawędzi, aby pobrać nową wersję elementu zawartości z serwera pochodzenia.
-* TCP_PARTIAL_HIT: Ten stan jest zgłaszany, gdy żądanie zakresu bajtów powoduje trafień dla częściowo buforowane zasobów. Żądany zakres bajtów jest natychmiast udostępniane przez punkt obecności klienta.
-* UNCACHEABLE: Ten stan jest zgłaszany po zasobów `Cache-Control` i `Expires` nagłówki wskazują, że go mają nie być buforowane punktu obecności lub przez klienta HTTP. Te typy żądań są obsługiwane z serwera pochodzenia.
+   Wygasłe żądanie zwykle powoduje żądanie ponownego sprawdzania poprawności do serwera pochodzenia. Stanu TCP_EXPIRED_HIT występują serwer pochodzenia musi wskazywać, nie istnieje nowsza wersja elementu zawartości. Ta sytuacja zwykle powoduje aktualizację Cache-Control zasobów i plików nagłówkowych Expires.
+* TCP_EXPIRED_MISS: Ten stan jest zgłaszany, gdy nowszą wersję elementu wygasłe zawartości pamięci podręcznej jest obsługiwany w punkcie POP do klienta. Ten stan występuje, jeśli wygasł czas wygaśnięcia pamięci podręcznej zasobów (na przykład wygasła max-age) i serwer pochodzenia zwraca nowszą wersję tego zasobu. Nowa wersja elementu zawartości są dostarczane do klienta, a nie w pamięci podręcznej wersji. Ponadto jest ona buforowana na serwerze granicznym, jak i klienta.
+* CONFIG_NOCACHE: Ten stan wskazuje, konfiguracji specyficznych dla klientów punktów obecności krawędzi zablokowaną zasób z pamięci podręcznej.
+* Brak — ten stan wskazuje, czy nie było wykonywane sprawdzanie aktualności zawartości pamięci podręcznej.
+* TCP_CLIENT_REFRESH_MISS: Ten stan jest zgłaszany, gdy klient HTTP, takie jak przeglądarki, wymusza krawędź POP, aby pobrać nową wersję starych zasobów z serwera pochodzenia. Domyślnie serwery uniemożliwić klienta HTTP wymuszanie serwerów brzegowych, aby pobrać nową wersję elementu zawartości z serwera pochodzenia.
+* TCP_PARTIAL_HIT: Ten stan jest zgłaszany, gdy żądania zakresu bajtów powoduje trafień dla częściowo pamięci podręcznej elementu zawartości. Żądany zakres bajtów natychmiast jest obsługiwany w punkcie POP do klienta.
+* UNCACHEABLE: Ten stan jest zgłaszany po zasobów `Cache-Control` i `Expires` nagłówki wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. Te typy żądań, które są obsługiwane z serwera pochodzenia.
 
 ## <a name="cache-hit-ratio"></a>Stosunek trafień w pamięci podręcznej
-Ten raport wskazuje procent żądań z pamięci podręcznej, które były przekazywane bezpośrednio z pamięci podręcznej.
+Ten raport wskazuje procent żądań, które były przekazywane bezpośrednio z pamięci podręcznej z pamięci podręcznej.
 
 Raport zawiera następujące informacje:
 
-* Żądana zawartość została buforowane na POP najbliżej obiektu żądającego.
+* Żądanej zawartości był buforowany w najbardziej zbliżony do osoby żądającej POP.
 * Żądanie zostało obsłużone bezpośrednio z krawędzią naszej sieci.
 * Żądanie nie wymagało ponownego sprawdzania poprawności w serwerze źródłowym.
 
 Raport nie zawiera:
 
-* Żądań odrzuconych z powodu kraju opcje filtrowania.
-* Żądania dotyczące zasobów, których nagłówki wskazują, że nie powinny one zapisywane. Na przykład `Cache-Control: private`, `Cache-Control: no-cache`, lub `Pragma: no-cache` nagłówki zabrania buforowania zasobów.
-* Żądania zakresu bajtów częściowo buforowane zawartości.
+* Żądania, które zostaną odrzucone z powodu opcji filtrowania kraju.
+* Żądania zasobów, w których nagłówki wskazują, że nie powinny one zapisywane. Na przykład `Cache-Control: private`, `Cache-Control: no-cache`, lub `Pragma: no-cache` nagłówki zabrania buforowania zasobów.
+* Żądania zakresu bajtów dla częściowo buforowanej zawartości.
 
 Formuła jest: (TRAFIEŃ TCP_ / (TCP_ TRAFIEŃ + TCP_MISS)) * 100
 
 ![Raport Stosunek trafień w pamięci podręcznej](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>Przesyłane dane IPv4 i IPV6
-Ten raport przedstawia rozkład użycia ruchu IPV4 vs IPV6.
+## <a name="ipv4ipv6-data-transferred"></a>Przetransferowane dane IPv4/IPV6.
+Ten raport przedstawia rozkład użycia ruchu sieciowego w programie vs IPV4 IPV6.
 
-![Przesyłane dane IPv4 i IPV6](./media/cdn-reports/cdn-ipv4-ipv6.png)
+![Przetransferowane dane IPv4/IPV6.](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Raporty mogą być generowane tylko w ciągu ostatnich 18 miesięcy.

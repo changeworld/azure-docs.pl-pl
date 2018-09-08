@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178827"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159592"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -268,7 +268,7 @@ W poniższej tabeli wymieniono nazwy operacji operationName i odpowiadające im 
 Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent. Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../log-analytics/log-analytics-azure-key-vault.md). Artykuł ten zawiera również instrukcje w razie potrzeby migracji ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, w której najpierw należało skierować dzienniki do konta usługi Azure Storage, a następnie skonfigurować usługę Log Analytics do odczytu z tego konta.
 
 ## <a id="next"></a>Następne kroki
-Aby zapoznać się z samouczkiem, w którym użyto usługi Azure Key Vault w aplikacji sieci Web, zobacz [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Używanie usługi Azure Key Vault za pośrednictwem aplikacji sieci Web).
+Aby zapoznać się z samouczkiem, w którym użyto usługi Azure Key Vault w aplikacji internetowej, zobacz [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Używanie usługi Azure Key Vault za pośrednictwem aplikacji internetowej).
 
 Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).
 

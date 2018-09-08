@@ -3,23 +3,19 @@ title: Dokumentacja pliku host.JSON dla usługi Azure Functions
 description: Dokumentacja pliku host.json usługi Azure Functions.
 services: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9043add91022c2829c305425dba9c8f11b224fcf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 11bf136897b5d5b8140fc7ff1bb259c657a71921
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345518"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092194"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions
 
@@ -334,7 +330,7 @@ Ustawienia konfiguracji dla dzienników, które tworzysz przy użyciu `TraceWrit
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|consoleLevel|informacje|Poziom śledzenia dla rejestrowania konsoli. Opcje to: `off`, `error`, `warning`, `info`, i `verbose`.|
+|consoleLevel|Informacje o|Poziom śledzenia dla rejestrowania konsoli. Opcje to: `off`, `error`, `warning`, `info`, i `verbose`.|
 |fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania w pliku. Dostępne są opcje `never`, `always`, `debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories

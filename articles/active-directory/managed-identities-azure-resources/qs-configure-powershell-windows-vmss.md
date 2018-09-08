@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: c34e858f3dc798310778877ce282fbed2788c7ea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 93ca9cd55d89b87f8436a632fb5a25657a4bfca6
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028240"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157740"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na zestawach skalowania maszyn wirtualnych przy użyciu programu PowerShell
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
@@ -128,7 +128,7 @@ Aby przypisać tożsamości zarządzanej użytkownik przypisany do istniejącego
 
 2. Pierwszy pobierania właściwości za pomocą zestawu skalowania maszyn wirtualnych `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać tożsamości zarządzanej użytkownik przypisany do zestawu skalowania maszyn wirtualnych, należy użyć `-IdentityType` i `-IdentityID` Włącz [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) polecenia cmdlet. Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` własnymi wartościami.
 
-   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
    ```powershell
    Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME> -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"

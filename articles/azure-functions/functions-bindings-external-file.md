@@ -1,40 +1,36 @@
 ---
-title: Zewnętrznego powiązania pliku dla usługi Azure Functions (eksperymentalne)
-description: Przy użyciu powiązań zewnętrznych plików w usługi Azure Functions
+title: Zewnętrznego powiązania w pliku dla usługi Azure Functions (wersja eksperymentalna)
+description: W usłudze Azure Functions przy użyciu powiązania pliku zewnętrznego
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 4e9c2c336df465d7488de84bd2a02cc5d9e42f30
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27607925"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093774"
 ---
-# <a name="azure-functions-external-file-bindings-experimental"></a>Azure powiązania funkcji zewnętrzny plik (eksperymentalne)
-W tym artykule przedstawiono sposób manipulowanie plikami od różnych dostawców SaaS (na przykład skrzynki lub dysk Google) w funkcji platformy Azure. Usługi Azure Functions obsługuje wyzwolenia, danych wejściowych i wyjściowych powiązań zewnętrznych plików. Tych powiązań utworzyć interfejsu API połączeń z dostawcami SaaS lub użyć istniejącego połączenia interfejsu API z grupy zasobów aplikacji funkcji.
+# <a name="azure-functions-external-file-bindings-experimental"></a>Usługa Azure powiązania pliku zewnętrznego Functions (wersja eksperymentalna)
+W tym artykule pokazano, jak do manipulowania plikami z różnych dostawców SaaS (np. usługi Dropbox lub dysk Google) w usłudze Azure Functions. Usługi Azure Functions obsługuje wyzwalanie, dane wejściowe i wyjściowe powiązania dla plików zewnętrznych. Te powiązania utworzyć połączenia interfejsu API z dostawcami SaaS lub użyć istniejącego połączenia interfejsu API z poziomu grupy zasobów aplikacji funkcji.
 
 > [!IMPORTANT]
-> Powiązania zewnętrznego pliku są eksperymentalne i nigdy nie może osiągnąć stanu ogólnie dostępna (GA). Są one uwzględnione tylko na platformie Azure funkcje 1.x i nie ma żadnych planów, aby dodać je do usługi Azure Functions 2.x. W przypadku scenariuszy, które wymagają dostępu do danych w modelu SaaS dostawców, rozważ zastosowanie [logikę aplikacji, które wywołują funkcje](functions-twitter-email.md). Zobacz [łącznika systemu plików aplikacji logiki](../logic-apps/logic-apps-using-file-connector.md).
+> Powiązania pliku zewnętrznego są eksperymentalne i nigdy nie może osiągnąć stan jest ogólnie dostępna (GA). Są one uwzględnione tylko na platformie Azure funkcji 1.x i nie ma żadnych planów, aby dodać je do usługi Azure Functions 2.x. W przypadku scenariuszy, które wymagają dostępu do danych w modelu SaaS dostawców należy wziąć pod uwagę przy użyciu [aplikacje logiki, które wywołują funkcje](functions-twitter-email.md). Zobacz [łącznika systemu plików usługi Logic Apps](../logic-apps/logic-apps-using-file-connector.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="available-file-connections"></a>Połączenia dostępnych plików
+## <a name="available-file-connections"></a>Połączenia plików
 
 |Łącznik|Wyzwalacz|Dane wejściowe|Dane wyjściowe|
 |:-----|:---:|:---:|:---:|
-|[Pole](https://www.box.com)|x|x|x
-|[Skrzynki](https://www.dropbox.com)|x|x|x
+|[Box](https://www.box.com)|x|x|x
+|[Dropbox](https://www.dropbox.com)|x|x|x
 |[FTP](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)|x|x|x
 |[Usługi OneDrive](https://onedrive.live.com)|x|x|x
 |[OneDrive dla Firm](https://onedrive.live.com/about/business/)|x|x|x
@@ -42,24 +38,24 @@ W tym artykule przedstawiono sposób manipulowanie plikami od różnych dostawc�
 |[Dysk Google](https://www.google.com/drive/)||x|x|
 
 > [!NOTE]
-> Połączenia zewnętrzne pliku można również w [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
+> Połączenia zewnętrzne pliku można również w [usługi Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
 ## <a name="trigger"></a>Wyzwalacz
 
-Wyzwalacza zewnętrznego pliku umożliwia monitorowanie folderu zdalnego i uruchomić kod funkcja, gdy zostaną wykryte zmiany.
+Wyzwalacza zewnętrznego pliku umożliwia monitorowanie folderu zdalnego i uruchomić kod funkcji, gdy zostaną wykryte zmiany.
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C#](#trigger---c-script-example)
+* [Skrypt języka C#](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono wyzwalacz pliku zewnętrznego powiązania w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja rejestruje zawartość każdego pliku, który zostanie dodany do folderu monitorowane.
+W poniższym przykładzie pokazano wyzwalacz pliku zewnętrznego powiązania w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja rejestruje zawartość każdego pliku, który zostanie dodany do folderu monitorowane.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -76,7 +72,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 }
 ```
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 public static void Run(string myFile, TraceWriter log)
@@ -87,9 +83,9 @@ public static void Run(string myFile, TraceWriter log)
 
 ### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
-W poniższym przykładzie przedstawiono wyzwalacz pliku zewnętrznego powiązania w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja rejestruje zawartość każdego pliku, który zostanie dodany do folderu monitorowane.
+W poniższym przykładzie pokazano wyzwalacz pliku zewnętrznego powiązania w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja rejestruje zawartość każdego pliku, który zostanie dodany do folderu monitorowane.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -106,7 +102,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function(context) {
@@ -117,14 +113,14 @@ module.exports = function(context) {
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku.
 
 |Właściwość Function.JSON | Opis|
 |---------|---------|----------------------|
-|**Typ** | należy wybrać opcję `apiHubFileTrigger`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
-|**Kierunek** | należy wybrać opcję `in`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
-|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzeń w kodzie funkcji. | 
-|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracji interfejsu użytkownika w portalu Azure.|
+|**type** | Musi być równa `apiHubFileTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
+|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracja interfejsu użytkownika w witrynie Azure portal.|
 |**Ścieżka** | Folder do monitorowania i opcjonalnie wzorzec nazwy.|
 
 ### <a name="name-patterns"></a>Wzorce nazw
@@ -137,7 +133,7 @@ Przykłady:
 "path": "input/original-{name}",
 ```
 
-Ta ścieżka znajdował się plik o nazwie *więc Plik1.txt oryginalne* w *wejściowych* folderu, a wartość `name` byłoby zmiennej w kodzie funkcja `File1.txt`.
+Ta ścieżka może znaleźć pliku o nazwie *więc Plik1.txt oryginalny* w *wejściowych* folder, a wartość `name` będzie zmiennej w kodzie funkcji `File1.txt`.
 
 Inny przykład:
 
@@ -145,37 +141,37 @@ Inny przykład:
 "path": "input/{filename}.{fileextension}",
 ```
 
-Ta ścieżka będzie również znaleźć w pliku o nazwie *więc Plik1.txt oryginalne*i wartość `filename` i `fileextension` będzie zmienne w kodzie funkcja *plik1 oryginalne* i *txt*.
+Ta ścieżka może również znaleźć w pliku o nazwie *więc Plik1.txt oryginalny*i wartość `filename` i `fileextension` będzie zmiennych w kodzie funkcji *plik1 oryginalny* i *txt* .
 
-Typ pliku plików można ograniczyć przy użyciu wartości stałej dla rozszerzenia pliku. Na przykład:
+Typ pliku plików, można ograniczyć za pomocą wartości stałej dla rozszerzenia pliku. Na przykład:
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-W takim przypadku tylko *.png* plików *przykłady* folderu wyzwalanie funkcji.
+W tym przypadku tylko *.png* pliki *przykłady* folderu spowoduje wyzwolenia funkcji.
 
-Nawiasy klamrowe są znaki specjalne w wzorce nazw. Aby określić nazwy plików, które mają nawiasy klamrowe w nazwie, dwukrotnie nawiasów klamrowych.
+Nawiasy klamrowe są znaki specjalne w wzorce nazw. Do określenia nazw plików, które mają nawiasów klamrowych w nazwie, dwukrotnie nawiasów klamrowych.
 Na przykład:
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-Ta ścieżka znajdował się plik o nazwie *{20140101}-soundfile.mp3* w *obrazów* folderu i `name` będzie wartość zmiennej w kodzie funkcja *soundfile.mp3*.
+Ta ścieżka może znaleźć pliku o nazwie  *{20140101}-soundfile.mp3* w *obrazów* folderu i `name` będzie wartość zmiennej w kodzie funkcji *soundfile.mp3*.
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-W języku C# funkcji, można powiązać z danymi pliku wejściowego przy użyciu nazwanego parametru w podpisu funkcji tak samo, jak `<T> <name>`.
-Gdzie `T` jest typ danych chcesz danych do deserializacji i `paramName` jest nazwa określona w [wyzwolenia JSON](#trigger). W przypadku funkcji Node.js dostęp przy użyciu danych pliku wejściowego `context.bindings.<name>`.
+W funkcji języka C#, można powiązać z danymi pliku wejściowego przy użyciu nazwany parametr w podpisie funkcji, takie jak `<T> <name>`.
+Gdzie `T` jest typ danych, który chcesz wykonać deserializacji danych, a `paramName` jest nazwa określona w [JSON wyzwalacza](#trigger). W funkcji Node.js, uzyskujesz dostęp do danych plików wejściowych przy użyciu `context.bindings.<name>`.
 
-Plik może zostać przeprowadzona deserializacja żadnego z następujących typów:
+Plik może zostać przeprowadzona deserializacja dowolne z następujących typów:
 
 * Wszelkie [obiektu](https://msdn.microsoft.com/library/system.object.aspx) — jest to przydatne w przypadku danych pliku serializacji JSON.
-  W przypadku niestandardowy typ danych wejściowych (np. `FooType`), usługi Azure Functions próbuje deserializowanie danych JSON w sieci określonego typu.
-* Parametry - przydatne w przypadku danych pliku tekstowego.
+  Jeśli zadeklarujesz niestandardowy typ danych wejściowych (np. `FooType`), usługi Azure Functions próbuje deserializowanie danych JSON do określonego typu.
+* Parametry - przydatne w przypadku danych z plików tekstowych.
 
-W języku C# funkcji można również wiązać z dowolnej z następujących typów, a środowisko uruchomieniowe Functions podejmuje próbę deserializacji danych plików za pomocą tego typu:
+Możesz również powiązać dowolny z następujących typów funkcji języka C# i środowisko uruchomieniowe usługi Functions próbuje wykonać deserializacji danych plików przy użyciu tego typu:
 
 * `string`
 * `byte[]`
@@ -201,10 +197,10 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 
 ## <a name="trigger---poison-files"></a>Wyzwalacz - skażone plików
 
-W przypadku awarii funkcja wyzwalacza zewnętrznego pliku usługi Azure Functions ponowi próbę tej funkcji do 5 razy domyślnie (w tym pierwszej próby) dla danego pliku.
-Jeśli nie wszystkie próby 5, funkcje dodaje komunikat do kolejki magazynu o nazwie *webjob apihubtrigger-poison*. Komunikat z kolejki skażone plików jest obiekt JSON, który zawiera następujące właściwości:
+W przypadku awarii funkcję wyzwalacza zewnętrznego pliku usługi Azure Functions ponawia próbę tej funkcji do 5 razy domyślnie (łącznie z pierwszym) dla danego pliku.
+W przypadku awarii wszystkich prób 5, funkcje dodaje komunikat do kolejki magazynu o nazwie *webjobs-apihubtrigger-poison*. Komunikat w kolejce dla plików poison to obiekt JSON, który zawiera następujące właściwości:
 
-* FunctionId (w formacie  *&lt;funkcja Nazwa aplikacji >*. Funkcje.  *&lt;nazwy funkcji >*)
+* FunctionId (w formacie  *&lt;nazwę aplikacji funkcji >*. Funkcje.  *&lt;nazwa funkcji >*)
 * Typ pliku
 * Nazwa folderu
 * Nazwa pliku
@@ -212,20 +208,20 @@ Jeśli nie wszystkie próby 5, funkcje dodaje komunikat do kolejki magazynu o na
 
 ## <a name="input"></a>Dane wejściowe
 
-Powiązania wejściowego pliku zewnętrznego Azure pozwala na użycie pliku z zewnętrznego folderu w funkcji.
+Powiązania danych wejściowych plików zewnętrznych platformy Azure umożliwia użycie pliku z folderu zewnętrzne w funkcji.
 
 ## <a name="input---example"></a>Dane wejściowe — przykład
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C#](#input---c-script-example)
+* [Skrypt języka C#](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>Dane wejściowe — przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono pliku zewnętrznego powiązania wejściowe i wyjściowe *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja kopiuje plik wejściowy do pliku wyjściowego.
+W poniższym przykładzie pokazano pliku zewnętrznego powiązania danych wejściowych i wyjściowych w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja kopiuje plik wejściowy do pliku wyjściowego.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -256,7 +252,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 }
 ```
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)
@@ -268,9 +264,9 @@ public static void Run(string myQueueItem, string myInputFile, out string myOutp
 
 ### <a name="input---javascript-example"></a>Dane wejściowe — przykład JavaScript
 
-W poniższym przykładzie przedstawiono pliku zewnętrznego powiązania wejściowe i wyjściowe *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja kopiuje plik wejściowy do pliku wyjściowego.
+W poniższym przykładzie pokazano pliku zewnętrznego powiązania danych wejściowych i wyjściowych w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja kopiuje plik wejściowy do pliku wyjściowego.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -301,7 +297,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function(context) {
@@ -313,27 +309,27 @@ module.exports = function(context) {
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku.
 
 |Właściwość Function.JSON | Opis|
 |---------|---------|----------------------|
-|**Typ** | należy wybrać opcję `apiHubFile`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
-|**Kierunek** | należy wybrać opcję `in`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
-|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzeń w kodzie funkcji. | 
-|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracji interfejsu użytkownika w portalu Azure.|
-|**Ścieżka** | Musi zawierać nazwę folderu i nazwę pliku. Na przykład, jeśli masz [wyzwalacza kolejki](functions-bindings-storage-queue.md) w funkcji, można użyć `"path": "samples-workitems/{queueTrigger}"` wskaż plik w `samples-workitems` folder o nazwie, która jest zgodna z nazwą pliku podane w komunikacie wyzwalacza.   
+|**type** | Musi być równa `apiHubFile`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
+|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracja interfejsu użytkownika w witrynie Azure portal.|
+|**Ścieżka** | Musi zawierać nazwę folderu i nazwę pliku. Na przykład, jeśli masz [wyzwalacz kolejki](functions-bindings-storage-queue.md) w funkcji, można użyć `"path": "samples-workitems/{queueTrigger}"` wskaż plik w `samples-workitems` folder o nazwie, która jest zgodna z nazwą pliku określony w komunikacie wyzwalacza.   
 
 ## <a name="input---usage"></a>Dane wejściowe — użycie
 
-W języku C# funkcji, można powiązać z danymi pliku wejściowego przy użyciu nazwanego parametru w podpisu funkcji tak samo, jak `<T> <name>`. `T`jest typ danych chcesz danych do deserializacji i `name` jest nazwa określona w powiązania wejściowego. W przypadku funkcji Node.js dostęp przy użyciu danych pliku wejściowego `context.bindings.<name>`.
+W funkcji języka C#, można powiązać z danymi pliku wejściowego przy użyciu nazwany parametr w podpisie funkcji, takie jak `<T> <name>`. `T` to typ danych, który chcesz wykonać deserializacji danych, a `name` określono powiązania danych wejściowych. W funkcji Node.js, uzyskujesz dostęp do danych plików wejściowych przy użyciu `context.bindings.<name>`.
 
-Plik może zostać przeprowadzona deserializacja żadnego z następujących typów:
+Plik może zostać przeprowadzona deserializacja dowolne z następujących typów:
 
 * Wszelkie [obiektu](https://msdn.microsoft.com/library/system.object.aspx) — jest to przydatne w przypadku danych pliku serializacji JSON.
-  W przypadku niestandardowy typ danych wejściowych (np. `InputType`), usługi Azure Functions próbuje deserializowanie danych JSON w sieci określonego typu.
-* Parametry - przydatne w przypadku danych pliku tekstowego.
+  Jeśli zadeklarujesz niestandardowy typ danych wejściowych (np. `InputType`), usługi Azure Functions próbuje deserializowanie danych JSON do określonego typu.
+* Parametry - przydatne w przypadku danych z plików tekstowych.
 
-W języku C# funkcji można również wiązać z dowolnej z następujących typów, a środowisko uruchomieniowe Functions podejmuje próbę deserializacji danych plików za pomocą tego typu:
+Możesz również powiązać dowolny z następujących typów funkcji języka C# i środowisko uruchomieniowe usługi Functions próbuje wykonać deserializacji danych plików przy użyciu tego typu:
 
 * `string`
 * `byte[]`
@@ -343,35 +339,35 @@ W języku C# funkcji można również wiązać z dowolnej z następujących typ�
 
 ## <a name="output"></a>Dane wyjściowe
 
-Azure pliku zewnętrznego powiązania danych wyjściowych umożliwia zapisu plików do zewnętrznego folderu w funkcji.
+Azure pliku zewnętrznego powiązania danych wyjściowych pozwala zapisywać pliki do folderu zewnętrzne w funkcji.
 
-## <a name="output---example"></a>OUTPUT — przykład
+## <a name="output---example"></a>Dane wyjściowe — przykład
 
-Zobacz [przykład powiązania wejściowego](#input---example).
+Zobacz [przykładowe powiązania danych wejściowych](#input---example).
 
-## <a name="output---configuration"></a>OUTPUT — Konfiguracja
+## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku.
 
 |Właściwość Function.JSON | Opis|
 |---------|---------|----------------------|
-|**Typ** | należy wybrać opcję `apiHubFile`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
-|**Kierunek** | należy wybrać opcję `out`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
-|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzeń w kodzie funkcji. | 
-|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracji interfejsu użytkownika w portalu Azure.|
-|**Ścieżka** | Musi zawierać nazwę folderu i nazwę pliku. Na przykład, jeśli masz [wyzwalacza kolejki](functions-bindings-storage-queue.md) w funkcji, można użyć `"path": "samples-workitems/{queueTrigger}"` wskaż plik w `samples-workitems` folder o nazwie, która jest zgodna z nazwą pliku podane w komunikacie wyzwalacza.   
+|**type** | Musi być równa `apiHubFile`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
+|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia w integracja interfejsu użytkownika w witrynie Azure portal.|
+|**Ścieżka** | Musi zawierać nazwę folderu i nazwę pliku. Na przykład, jeśli masz [wyzwalacz kolejki](functions-bindings-storage-queue.md) w funkcji, można użyć `"path": "samples-workitems/{queueTrigger}"` wskaż plik w `samples-workitems` folder o nazwie, która jest zgodna z nazwą pliku określony w komunikacie wyzwalacza.   
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-W języku C# funkcji, możesz powiązać do pliku wyjściowego przy użyciu nazwanego `out` parametru w podpisu funkcji, takich jak `out <T> <name>`, gdzie `T` jest mają do serializowania danych do typów danych i `name` jest nazwa określona w Wiązanie danych wyjściowych. W przypadku funkcji Node.js dostęp przy użyciu pliku wyjściowego `context.bindings.<name>`.
+W funkcji języka C#, możesz powiązać plik wyjściowy przy użyciu nazwanego `out` parametru w swój podpis funkcji, takich jak `out <T> <name>`, gdzie `T` jest typ danych, który chcesz serializowania danych, a `name` jest nazwa określona w powiązania danych wyjściowych. W przypadku funkcji Node.js dostęp przy użyciu pliku wyjściowego `context.bindings.<name>`.
 
-Możesz zapisywać do pliku wyjściowego przy użyciu dowolnego z następujących typów:
+Można napisać do pliku wyjściowego przy użyciu dowolnej z następujących typów:
 
 * Wszelkie [obiektu](https://msdn.microsoft.com/library/system.object.aspx) — jest to przydatne w przypadku serializacji JSON.
-  W przypadku typu danych wyjściowych niestandardowego (np. `out OutputType paramName`), usługi Azure Functions podejmuje próbę serializacji obiektu do postaci JSON. Jeśli parametr wyjściowy ma wartość null, gdy funkcja kończy, środowisko uruchomieniowe Functions tworzy plik jako obiekt null.
-* Parametry - (`out string paramName`) przydatne w przypadku danych pliku tekstowego. środowisko uruchomieniowe Functions tworzy plik tylko wtedy, gdy parametr ciągu jest różna od null, gdy funkcja jest kończona.
+  Jeśli deklaracja typu danych wyjściowych niestandardowego (np. `out OutputType paramName`), usługi Azure Functions próby serializacji obiektu do postaci JSON. Jeśli parametr wyjściowy ma wartość null, jeśli funkcja kończy działanie, środowisko uruchomieniowe funkcji utworzy plik jako obiekt o wartości null.
+* Ciąg — (`out string paramName`) przydatne w przypadku danych z plików tekstowych. środowisko uruchomieniowe funkcji utworzy plik tylko wtedy, gdy parametr ciągu jest różna od null, jeśli funkcja kończy działanie.
 
-W języku C# funkcji można również dane wyjściowe do żadnego z następujących typów:
+W funkcji języka C# można również danych wyjściowych do dowolnego z następujących typów:
 
 * `TextWriter`
 * `Stream`
@@ -383,4 +379,4 @@ W języku C# funkcji można również dane wyjściowe do żadnego z następując
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

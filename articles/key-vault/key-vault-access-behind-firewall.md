@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 6bb757fe072f0fc3ecbda5ae125aa2bf928479fb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: 4d342efb88d3c6e560fe4d0a1c3629bf84548c73
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41917973"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157906"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Uzyskiwanie dostępu do usługi Azure Key Vault za zaporą
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Pyt. Moja aplikacja kliencka magazynu kluczy musi znajdować się za zaporą. Które porty, hosty lub adresy IP należy otworzyć, aby umożliwić dostęp do magazynu kluczy?
@@ -63,6 +63,6 @@ We wszystkich przypadkach operacji kryptograficznych na obiektach (kluczach i wp
 ## <a name="ip-address-ranges"></a>Zakresy adresów IP
 Usługa Key Vault używa innych zasobów platformy Azure, takich jak infrastruktura PaaS. W związku z tym nie jest możliwe podanie konkretnego zakresu adresów IP, których będą używać punkty końcowe usługi Key Vault w określonym czasie. Jeśli zapora obsługuje tylko zakresy adresów IP, zapoznaj się z dokumentem [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (Zakresy adresów IP centrów danych platformy Microsoft Azure). Authentication and Identity (w ramach usługi Azure Active Directory) to usługa globalna, która może przeprowadzić przełączenie w tryb failover do innych regionów lub przenieść ruch bez powiadomienia. W tym scenariuszu wszystkie zakresy IP znajdujące się na liście [Adresy IP usługi Authentication and Identity](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) należy dodać do zapory.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli masz pytania dotyczące usługi Key Vault, odwiedź [forum usługi Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 196882cf4515be8afd129128402e9eaee322cb4b
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782417"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093587"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -75,7 +75,7 @@ Jeśli potrzebne SAC można włączyć w trybie offline
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak sprawdzić, czy włączono SAC?
 
-Jeśli [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie włączono konsoli szeregowej nie wyświetli monit SAC. W niektórych przypadkach pojawią się informacje o kondycji maszyny Wirtualnej, a w innych przypadkach będzie pusta.  
+Jeśli [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie włączono konsoli szeregowej nie wyświetli monit SAC. W niektórych przypadkach pojawią się informacje o kondycji maszyny Wirtualnej, a w innych przypadkach będzie pusta. Jeśli używasz obrazu systemu Windows Server, utworzone przed lutym 2018 roku SAC prawdopodobnie nie zostaną włączone.
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>Włącz Menu Windows rozruchowego w konsoli szeregowej 
 
@@ -194,7 +194,7 @@ Nie ma opcji za pomocą konsoli szeregowej wystąpienia zestawu skalowania maszy
 Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To może się zdarzyć, jeśli używasz niestandardowej maszyny Wirtualnej wzmocnione urządzenia lub CHODNIKÓW konfiguracji tego Windows causers niepowodzenie prawidłowo połączenia do portu szeregowego.
 Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Spowoduje to wyświetlenie Jeśli specjalnej konsoli administracyjnej nie został włączony dla obrazu systemu Windows. Zobacz [dostęp szeregowy konsoli dla Windows](#access-serial-console-for-windows) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Więcej informacji znajduje się w temacie [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu RDP można zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go podczas podłączyć jako dysku danych przy użyciu `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienić ponownie dysk.
-Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby pierwotną wersją zawartości powtarzające się znaki | Obejście polega na usunięcie modułu PSReadLine. `Remove-Module PSReadLine` spowoduje usunięcie modułu PSReadLine z bieżącej sesji.
+Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby pierwotną wersją zawartości powtarzające się znaki | Obejście tego problemu jest zwolnienie modułu PSReadLine z bieżącej sesji. Uruchom `Remove-Module PSReadLine` wyładować modułu PSReadLine z bieżącej sesji — to będzie nie usuwać ani odinstalowania modułu.
 Niektóre dane wejściowe z klawiatury generuje dziwne SAC danych wyjściowych (np. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) sekwencje ucieczki nie są obsługiwane przez wiersz SAC.
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 

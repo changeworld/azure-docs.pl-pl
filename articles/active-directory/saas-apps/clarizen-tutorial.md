@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438090"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracja usługi Azure Active Directory z Clarizen
 
@@ -39,7 +39,7 @@ Jeśli chcesz więcej szczegółów na temat oprogramowania jako usługi (SaaS) 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby skonfigurować integrację usługi Azure AD za pomocą Clarizen, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Subskrypcja Clarizen, w którym włączono obsługę logowania jednokrotnego
 
 Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
@@ -188,7 +188,7 @@ W witrynie Azure portal Utwórz użytkownika testowego o nazwie Britta Simon.
 
 ### <a name="create-a-clarizen-test-user"></a>Tworzenie użytkownika testowego Clarizen
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Clarizen. Clarizen obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](clarizen-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Clarizen.
 
 **Jeśli potrzebujesz ręcznie utworzyć użytkownika, wykonaj poniższe czynności:**
 
@@ -196,11 +196,11 @@ Aby umożliwić użytkownikom usługi Azure AD do logowania się Clarizen w, uak
 
 1. Zaloguj się do witryny firmy Clarizen jako administrator.
 
-1. Kliknij przycisk **osób**.
+2. Kliknij przycisk **osób**.
 
     ![Klikając pozycję "Osoby"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
 
-1. Kliknij przycisk **zaprosić użytkownika**.
+3. Kliknij przycisk **zaprosić użytkownika**.
 
     ![Przycisk "Zaproś użytkownika"](./media/clarizen-tutorial/create_aaduser_002.png "zaprosić użytkowników")
 
@@ -251,7 +251,6 @@ Po kliknięciu kafelka Clarizen w panelu dostępu, powinien zostać automatyczni
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

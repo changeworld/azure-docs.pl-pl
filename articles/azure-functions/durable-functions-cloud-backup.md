@@ -1,44 +1,40 @@
 ---
-title: Fan-wyjściowego/fan-w scenariuszach w funkcjach trwałe - Azure
-description: Dowiedz się, jak wdrożyć scenariusz dla fan-wyjściowego wentylator — ruch przychodzący w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
+title: Fan-wyjściowego/fan-w scenariuszach w funkcje trwałe - Azure
+description: Dowiedz się, jak implementować scenariusza fan-wyjściowego fan w w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e7b7b6af1f41eb0077d8a8605eb2a553c251f8e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eec75ad9cf0f568e674b2a4f12d962982f84294f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763852"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092669"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-wyjściowego/fan-w scenariuszu w funkcjach trwałe — przykład kopii zapasowej chmury
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-wyjściowego/fan-w scenariuszu w funkcje trwałe — przykład tworzenia kopii zapasowych w chmurze
 
-*Fan-wyjściowego/fan-w* odwołuje się do struktury wykonywane jednocześnie wiele funkcji, a następnie wykonuje niektóre agregacji na wyniki. W tym artykule opisano przykładu korzystającego z [trwałe funkcje](durable-functions-overview.md) do zaimplementowania scenariusza fan-w/fan-wyjściowego. Próbka jest trwałe funkcję, która tworzy kopię zapasową wszystkich lub niektórych zawartości aplikacji do magazynu Azure.
+*Fan-wyjściowego/fan-w* odwołuje się do wzorca wykonywane jednocześnie wiele funkcji, a następnie wykonuje niektóre agregacji na wyniki. W tym artykule opisano przykładowy, który używa [funkcje trwałe](durable-functions-overview.md) do zaimplementowania fan-w/fan-wyjściowego scenariusza. Próbka jest trwałe funkcja, która tworzy kopię zapasową wszystkich lub niektórych zawartość witryny aplikacji do usługi Azure Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Instalowanie funkcji trwałe](durable-functions-install.md).
-* Zakończenie [Hello sekwencji](durable-functions-sequence.md) wskazówki.
+* [Zainstaluj funkcje trwałe](durable-functions-install.md).
+* Wykonaj [Hello sekwencji](durable-functions-sequence.md) wskazówki.
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-W tym przykładzie funkcji przekazywania wszystkich plików w katalogu rekursywnie określony katalog do magazynu obiektów blob. One również liczba całkowita liczba bajtów, które zostały przekazane.
+W tym przykładzie funkcji przekazywania wszystkich plików w obszarze rekursywnie określonego katalogu do magazynu obiektów blob. Liczone są także całkowita liczba bajtów, które zostały przekazane.
 
-Istnieje możliwość zapisu pojedynczą funkcję, która zajmuje się wszystko. Główny problem, należy uruchomić w jest **skalowalność**. Wykonanie jednej funkcji można uruchomić tylko na jednej maszynie Wirtualnej, więc ogranicza przepływność przepływność tej jednej maszyny Wirtualnej. Inny problem jest **niezawodności**. W przypadku połowie awarii, za pośrednictwem lub cały proces wymaga więcej niż 5 minut, kopia zapasowa może nie działać w stanie częściowo ukończone. Następnie może zaistnieć ponownego uruchomienia.
+Istnieje możliwość zapisu jednej funkcji, która dba o wszystkie elementy. Główny problem, należy uruchomić następujące polecenie w polega na **skalowalność**. Pojedynczego wykonania funkcji można uruchamiać tylko na jednej maszynie Wirtualnej, więc przepływność jest ograniczona przez przepływność tego pojedynczej maszyny Wirtualnej. Jest innym problemem **niezawodność**. W przypadku awarii w połowie drogi za pośrednictwem lub cały proces wymaga więcej niż 5 minut, tworzenie kopii zapasowej może nie działać w stanie częściowo ukończone. Następnie będzie wymagać ponownego uruchomienia.
 
-Bardziej niezawodne rozwiązanie będzie można zapisać dwie funkcje regularnych: jeden czy wyliczania plików i Dodaj nazwy plików do kolejki, a inny może odczytywać z kolejki i przekazać pliki do magazynu obiektów blob. Jest to lepszą wydajność i niezawodność, ale użytkownik musi obsługiwać i zarządzać nim kolejki. Co ważniejsze, wprowadzono znaczące złożoności w zakresie **stanu zarządzania** i **koordynacji** Chcąc żadne czynności, jak raport całkowita liczba bajtów przekazany.
+Będzie to bardziej niezawodne podejście do zapisania dwóch funkcji regularnych: jeden czy Wyliczanie plików i Dodaj nazwy plików do kolejki, a inny odczytany z kolejki i przekaż pliki do magazynu obiektów blob. Jest to lepszą przepustowość i niezawodność, ale wymaga ona obsługi administracyjnej i Zarządzanie kolejką. Co ważniejsze, wprowadzono znaczące złożoności w zakresie **stanu zarządzania** i **koordynacji** Jeśli chcesz wykonywać żadnych innych, jak raport całkowita liczba bajtów przekazany.
 
-Podejście trwałe funkcji daje wszystkich wymienionych korzyści z bardzo niskie obciążenie.
+Trwałe funkcje podejście zapewnia wszystkich wymienionych korzyści z bardzo niskie obciążenie.
 
 ## <a name="the-functions"></a>Funkcje
 
@@ -48,15 +44,15 @@ W tym artykule opisano następujące funkcje w przykładowej aplikacji:
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-W poniższych sekcjach opisano konfigurację i kodu, które są używane dla języka C# skryptów. Kod dla tworzenia Visual Studio jest wyświetlany na końcu tego artykułu.
+W poniższych sekcjach opisano konfigurację i kod, które są używane dla języka C# skryptów. Kod dla rozwoju programu Visual Studio jest wyświetlany na końcu tego artykułu.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestration kopii zapasowych w chmurze (Visual Studio Code i Azure portal przykładowy kod)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Aranżacji kopii zapasowych w chmurze (kod przykładowy portal programu Visual Studio Code i platformy Azure)
 
-`E2_BackupSiteContent` Funkcja korzysta ze standardu *function.json* dla funkcji programu orchestrator.
+`E2_BackupSiteContent` Funkcja używa standardowych *function.json* dla funkcji programu orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Oto kod, który implementuje funkcję programu orchestrator:
+Poniżej przedstawiono kod, który implementuje funkcję programu orchestrator:
 
 ### <a name="c"></a>C#
 
@@ -66,27 +62,27 @@ Oto kod, który implementuje funkcję programu orchestrator:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Ta funkcja orchestrator zasadniczo wykonuje następujące czynności:
+Ta funkcja programu orchestrator zasadniczo wykonuje następujące czynności:
 
 1. Trwa `rootDirectory` wartość jako parametr wejściowy.
-2. Wywołania funkcji, aby uzyskać listę plików w obszarze cykliczne `rootDirectory`.
-3. Wielu wywołań funkcji równoległych do przekazania każdego pliku do magazynu obiektów Blob Azure.
-4. Czeka na wszystkich przekazywania zakończyć.
-5. Zwraca sumę całkowitą liczbę bajtów, które zostały przekazane do magazynu obiektów Blob Azure.
+2. Wywołuje funkcję w celu uzyskania cyklicznego listę plików w obszarze `rootDirectory`.
+3. Wielu wywołań funkcji równoległego do przekazywania wszystkich plików w usłudze Azure Blob Storage.
+4. Czeka, aż wszystkie przekazywania zakończyć.
+5. Zwraca sumę całkowitą liczbę bajtów, które zostały przekazane do usługi Azure Blob Storage.
 
-Powiadomienie `await Task.WhenAll(tasks);` (C#) i `yield context.df.Task.all(tasks);` wiersza (Javascript). Wszystkie wywołania do `E2_CopyFileToBlob` zostały funkcja *nie* oczekiwane. Jest to zamierzone, aby umożliwić ich równolegle. Jeśli przekazywana tej tablicy zadań w celu `Task.WhenAll`, uzyskujemy ponownie zadanie, które nie zakończyć *ukończenie wszystkich operacji kopiowania ma*. Jeśli wiesz z zadań równoległych biblioteki (TPL) w środowisku .NET, a następnie nie jest to nowe dla Ciebie. Różnica polega na te zadania mogą być wykonywane na wiele maszyn wirtualnych jednocześnie, czy rozszerzenie funkcji trwałe zapewnia, że wykonanie end-to-end jest odporność na odtwarzanie procesów.
+Zwróć uwagę `await Task.WhenAll(tasks);` (C#) i `yield context.df.Task.all(tasks);` wiersza (JS). Wszystkie wywołania do `E2_CopyFileToBlob` funkcji zostały *nie* oczekiwane. Jest to zamierzone, aby umożliwić im do równoległego uruchamiania. Gdy przekazanie tej tablicy zadań `Task.WhenAll`, uzyskujemy ponownie zadanie, które nie będą ukończone *mają zakończenie wszystkich operacji kopiowania*. Jeśli znasz z Biblioteka zadań równoległych (TPL) na platformie .NET, a następnie nie jest to dla Ciebie nowe. Różnica polega na że te zadania można równolegle będzie działać na wielu maszynach wirtualnych i rozszerzenia funkcji trwałych gwarantuje, że wykonanie end-to-end jest odporna na odtwarzanie procesów.
 
-Zadania są bardzo podobne do koncepcji JavaScript ze zobowiązania. Jednak `Promise.all` ma pewne różnice z `Task.WhenAll`. Pojęcie `Task.WhenAll` systemie w ramach `durable-functions` modułu JavaScript i jest na wyłączność do niego.
+Zadania są bardzo podobne do koncepcji JavaScript obietnic. Jednak `Promise.all` ma pewne różnice z `Task.WhenAll`. Pojęcie `Task.WhenAll` ma wydajnej za pośrednictwem jako część `durable-functions` modułu języka JavaScript i jest dostępna wyłącznie do niego.
 
-Po oczekiwanie na z `Task.WhenAll` (lub reaguje z `context.df.Task.all`), wiemy, że wszystkie wywołania funkcji zakończył pracę i zwrócić wartości z powrotem do nas. Każde wywołanie `E2_CopyFileToBlob` zwraca liczbę bajtów przekazać dzięki obliczaniu sum liczba całkowita liczba bajtów jest dodanie wszystkich tych wartości zwracane razem.
+Po oczekujące na z `Task.WhenAll` (lub którego można z `context.df.Task.all`), gdy wiemy, że wszystkie wywołania funkcji zostały wykonane i zostały zwrócone wartości z powrotem do nas. Każde wywołanie `E2_CopyFileToBlob` zwraca liczbę bajtów przekazany, obliczanie liczba bajtów łączna suma jest kwestią Dodawanie zwrócić wszystkie te wartości razem.
 
-## <a name="helper-activity-functions"></a>Funkcje działalności pomocy
+## <a name="helper-activity-functions"></a>Pomocnik działania funkcji
 
-Funkcje działalności pomocy, podobnie jak w przypadku innych próbek są po prostu regularne funkcje programu wykorzystujące `activityTrigger` wyzwolenia powiązania. Na przykład *function.json* plik `E2_GetFileList` wygląda podobnie do następującego:
+Działanie funkcji pomocnika, podobnie jak w przypadku innych przykłady są funkcji po prostu regularnych, które używają `activityTrigger` wyzwolić powiązania. Na przykład *function.json* plik `E2_GetFileList` wygląda podobnie do następującego:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
-A Oto implementacji:
+A Oto wdrożenia:
 
 ### <a name="c"></a>C#
 
@@ -96,16 +92,16 @@ A Oto implementacji:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-Implementacja JavaScript `E2_GetFileList` używa `readdirp` moduł rekursywnie odczytać struktury katalogów.
+Implementację JavaScript `E2_GetFileList` używa `readdirp` moduł rekursywnie odczytać struktury katalogów.
 
 > [!NOTE]
-> Użytkownik może się zastanawiać, dlaczego właśnie nie umieść ten kod bezpośrednio do funkcji programu orchestrator. Było to możliwe, ale spowoduje to przerwanie jeden z podstawowych reguł funkcji programu orchestrator, które jest, że nigdy nie powinni zrobić we/wy, takie jak pliku lokalnego dostępu do systemu.
+> Użytkownik może się zastanawiać, dlaczego po prostu nie można umieścić ten kod bezpośrednio do funkcji programu orchestrator. Można wykonać następujące akcje, ale spowoduje to przerwanie jedną z podstawowych reguł funkcje programu orchestrator, co stanowi, że nigdy nie powinni zrobić operacji We/Wy, takie jak dostęp do systemu plików lokalnych.
 
-*Function.json* plik `E2_CopyFileToBlob` jest podobnie prosty:
+*Function.json* plik `E2_CopyFileToBlob` jest podobnie proste:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-Implementacja C# również jest dość proste. Zdarza się, aby korzystać z niektórych zaawansowanych funkcji usługi Azure Functions powiązań (oznacza to, że użycie `Binder` parametru), ale nie trzeba martwić się o te szczegóły na potrzeby tego przewodnika.
+Implementacja języka C# jest również całkiem proste. Zdarza się, aby korzystać z niektórych zaawansowane funkcje usługi Azure Functions powiązania (czyli użytkowania `Binder` parametru), ale nie trzeba już martwić się o te informacje na potrzeby tego przewodnika.
 
 ### <a name="c"></a>C#
 
@@ -113,18 +109,18 @@ Implementacja C# również jest dość proste. Zdarza się, aby korzystać z nie
 
 ### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
 
-Implementacja JavaScript nie ma dostępu do `Binder` funkcji usługi Azure functions, więc [zestawu SDK usługi Magazyn Azure dla węzła](https://github.com/Azure/azure-storage-node) odbywa się jej. Należy pamiętać, że zestaw SDK wymaga `AZURE_STORAGE_CONNECTION_STRING` ustawienia aplikacji.
+Implementacja języka JavaScript nie ma dostępu do `Binder` funkcji usługi Azure Functions, więc [zestawu SDK usługi Azure Storage dla węzła](https://github.com/Azure/azure-storage-node) odbywa się jej. Należy zauważyć, że zestaw SDK wymaga `AZURE_STORAGE_CONNECTION_STRING` ustawienia aplikacji.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-Implementacja ładuje plik z dysku i asynchronicznie prześle strumieniowo zawartość do obiektu blob o takiej samej nazwie w kontenerze "kopie zapasowe". Wartość zwracana jest liczba bajtów skopiowane do magazynu, który jest następnie używany przez funkcję programu orchestrator do obliczenia agregacji sum.
+Wdrożenie ładuje plik z dysku i asynchronicznie strumieniowo zawartość do obiektu blob o takiej samej nazwie w kontenerze "kopie zapasowe". Zwracana wartość jest liczbą bajtów skopiowanych w magazynie, który jest następnie używany przez funkcję programu orchestrator do obliczenia sum agregacji.
 
 > [!NOTE]
-> To jest przykład doskonałe przenoszenia operacji We/Wy do `activityTrigger` funkcji. Nie tylko mogą pracy być rozproszone na wielu różnych maszyn wirtualnych, ale można również uzyskać korzyści wynikające z użycia punktów kontrolnych postęp. Jeśli proces hosta pobiera zakończone jakiejkolwiek przyczyny, wiadomo, przekazywania, które zostały już wykonane.
+> To idealny przykład przenoszenia operacji We/Wy do `activityTrigger` funkcji. Nie tylko można rozpowszechniać prace na wielu różnych maszyn wirtualnych, ale możesz także uzyskać korzyści wynikające z tworzenia punktów kontrolnych postęp. Jeśli proces hosta pobiera zakończone jakiegokolwiek powodu, wiesz, przekazywania, które zostały już wykonane.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Orchestration można uruchomić poprzez wysłanie następujące żądania HTTP POST.
+Możesz rozpocząć aranżacji, wysyłając następujące żądanie HTTP POST.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -135,9 +131,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> `HttpStart` Funkcja, która jest działa tylko w przypadku zawartości w formacie JSON. Z tego powodu `Content-Type: application/json` nagłówka jest wymagany i ścieżkę katalogu jest zakodowany jako ciąg w formacie JSON.
+> `HttpStart` Funkcja, która jest działa tylko z zawartości w formacie JSON. Z tego powodu `Content-Type: application/json` nagłówka jest wymagana, a ścieżka katalogu jest zakodowane jako ciąg JSON.
 
-HTTP tego żądania wyzwalaczy `E2_BackupSiteContent` orchestrator i przekazuje ciąg `D:\home\LogFiles` jako parametr. Odpowiedź zawiera łącze do pobrania stanu operacji tworzenia kopii zapasowej:
+Żądanie to HTTP wyzwalaczy `E2_BackupSiteContent` orchestrator i przekazuje ciąg `D:\home\LogFiles` jako parametr. Odpowiedź zawiera również link do pobrania stanu operacji tworzenia kopii zapasowej:
 
 ```
 HTTP/1.1 202 Accepted
@@ -148,7 +144,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 (...trimmed...)
 ```
 
-W zależności od liczby plików dziennika w aplikacji funkcji tej operacji może potrwać kilka minut. Można pobrać najnowszy stan badając adres URL w `Location` nagłówka HTTP 202 poprzedniej odpowiedzi.
+W zależności od liczby plików dziennika w aplikacji funkcji ta operacja może potrwać kilka minut, aby zakończyć. Można uzyskać najnowszy stan, badając adresu URL w `Location` nagłówka poprzedniej odpowiedzi HTTP 202.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -163,7 +159,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
 ```
 
-W takim przypadku funkcja nadal działa. Jest możliwe wyświetlić dane wejściowe, który został zapisany w stanie orchestrator i godzina ostatniej aktualizacji. Można nadal używać `Location` wartości nagłówka do sondowania ukończenia. Gdy jest w stanie "ukończone", zostanie wyświetlony wartość odpowiedzi HTTP podobny do następującego:
+W takim przypadku funkcja jest nadal uruchomiona. Jesteś w stanie wyświetlić dane wejściowe, który został zapisany w stan programu orchestrator i godzina ostatniej aktualizacji. Będzie można kontynuować używanie `Location` wartości nagłówka do sondowania pod kątem ukończenia. Gdy stan to "ukończone", zobaczysz wartość odpowiedzi HTTP podobny do następującego:
 
 ```
 HTTP/1.1 200 OK
@@ -173,17 +169,17 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
 ```
 
-Teraz widać, że orchestration została zakończona i zajęło około ile czasu do ukończenia. Zobacz też wartość `output` pola, co oznacza, że około 450 KB Dzienniki zostały przekazane.
+Teraz widać, że aranżacji została ukończona, a około ile czasu zajęło do ukończenia. Zobacz też wartość `output` pola, co oznacza, że około 450 KB dzienników zostały przekazane.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio przykładowy kod
+## <a name="visual-studio-sample-code"></a>Kod przykładowy w usłudze Visual Studio
 
-Oto aranżacji jako pojedynczy plik C# w projektu programu Visual Studio:
+Oto aranżacji jako pojedynczy plik języka C# w projekcie programu Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten przykład pokazuje, jak implementują wzorzec fan-wyjściowego/fan-w. Następna próbka pokazuje, jak wdrożyć przy użyciu wzorca monitor [trwałe czasomierze](durable-functions-timers.md).
+Ten przykład pokazuje, jak zaimplementować wzorzec fan-wyjściowego/fan-w. Następny przykład pokazuje, jak zaimplementować za pomocą wzorca monitor [trwałe czasomierzy](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [Uruchom monitor próbki](durable-functions-monitor.md)
+> [Uruchom aplikację przykładową monitora](durable-functions-monitor.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041334"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Samouczek: Integracja usługi Azure Active Directory z Replicon
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Replicon, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Replicon logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację Replicon w usłudze Azure AD, należy dodać Repl
 
 **Aby dodać Replicon z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -173,11 +173,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-a-replicon-test-user"></a>Tworzenie użytkownika testowego Replicon
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Replicon. Replicon obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](replicon-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Replicon.
 
 **Jeśli potrzebujesz ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
@@ -248,8 +248,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](replicon-provisioning-tutorial.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

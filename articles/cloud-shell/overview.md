@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: ff50ea8c49d35306ccb48ec703de39c27c24bf7b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258929"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160680"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -35,6 +35,7 @@ Spróbuj z witryny Azure portal za pomocą ikony usługi Cloud Shell.
 ![Uruchamianie portalu](media/overview/portal-launch-icon.png)
 
 ## <a name="features"></a>Funkcje
+
 ### <a name="browser-based-shell-experience"></a>Oparte na przeglądarce środowisko powłoki
 Usługi cloud Shell umożliwia dostęp do opartego na przeglądarce środowisko wiersza polecenia utworzonych za pomocą zadań zarządzania platformy Azure na uwadze.
 Wykorzystaj Cloud Shell, aby pracować autonomiczne z komputera lokalnego w sposób tylko chmura może zapewnić.
@@ -65,33 +66,11 @@ Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:
 * [Rozszerzenie kodu Azure Account programu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Połącz magazyn plików pakietu Microsoft Azure
-Cloud Shell maszyn są tymczasowe i wymagają udziału plików platformy Azure ma zostać zainstalowany jako `clouddrive` do utrwalania plików.
+Cloud Shell maszyn są tymczasowe i wymagają nowego lub istniejącego udziału plików platformy Azure ma zostać zainstalowany jako `clouddrive` do utrwalania plików.
 
 Przy pierwszym uruchomieniu usługi Cloud Shell monituje o utworzenie zasobu grupy, konto magazynu i usługi Azure Files udział w Twoim imieniu. Jest to jednorazowy krok i zostanie automatycznie dołączone do wszystkich sesji. Jeden udział pliku można zamapować i będą używane przez zarówno w przypadku powłoki Bash, jak i programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza).
 
-#### <a name="create-new-storage"></a>Tworzenie nowego magazynu
-![](media/overview/basic-storage.png)
-
-Konto magazynu lokalnie nadmiarowego (LRS) i udział plików platformy Azure można tworzyć w Twoim imieniu. Udział plików platformy Azure będą używane w przypadku środowisk zarówno powłoki Bash, jak i programu PowerShell, jeśli zdecydujesz się używać ich obu. Obowiązują koszty związane z regularnych magazynu.
-
-Trzy zasoby zostaną utworzone w Twoim imieniu:
-1. Grupa zasobów o nazwie: `cloud-shell-storage-<region>`
-2. Konto magazynu o nazwie: `cs<uniqueGuid>`
-3. Udział plików o nazwie: `cs-<user>-<domain>-com-<uniqueGuid>`
-
-> [!Note]
-> Powłoka bash w usłudze Cloud Shell tworzy również domyślny obraz dysku 5 GB, aby utrwalić `$Home`. Wszystkie pliki w katalogu $Home takie jak klucze SSH są zachowywane w obrazie dysku użytkownika przechowywanych w udziale plików platformy Azure zainstalowany. Podczas zapisywania plików w katalogu $Home i udziału plików platformy Azure zainstalowany, należy stosować najlepsze rozwiązania.
-
-#### <a name="use-existing-resources"></a>Korzystać z istniejących zasobów
-![](media/overview/advanced-storage.png)
-
-Zaawansowana opcja znajduje się do skojarzenia z istniejących zasobów do usługi Cloud Shell.
-Kliknij pozycję "Pokaż zaawansowane ustawienia" w wierszu polecenia instalacji magazynu, aby wyświetlić dodatkowe opcje.
-
-> [!Note]
-> Listy rozwijane są filtrowane wstępnie przypisanych regionu usługi Cloud Shell i kont magazynu LRS/GRS/ZRS.
-
-[Informacje na temat magazynowania usługi Cloud Shell, aktualizowanie udziałów plików platformy Azure i Trwa przekazywanie/pobieranie plików.](persisting-shell-storage.md)
+Dowiedz się więcej na temat sposobu instalacji [konta magazynu do nowego lub istniejącego](persisting-shell-storage.md).
 
 ## <a name="concepts"></a>Pojęcia
 * Usługi cloud Shell jest uruchamiane na hoście tymczasowe na sesji, konkretnych użytkowników

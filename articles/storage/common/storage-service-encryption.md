@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5b676bbc764cb5689a6c80e81f597776fe80413e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c6001b0c95186dff53f33c73833b4cea30688db2
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520728"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094896"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
-Szyfrowanie usługi Azure Storage dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Dzięki tej funkcji platformy Azure storage automatycznie szyfruje dane przed utrwaleniem go do usługi Azure Managed Disks, usługi Azure Blob storage, Azure Files lub Azure Queue storage i odszyfrowuje je przed pobierania. Obsługa szyfrowania, szyfrowanie nieużywanych danych, odszyfrowywania i zarządzania kluczami w programie Storage Service Encryption jest niewidoczne dla użytkowników. Wszystkie dane zapisane na platformę Azure storage są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
+Szyfrowanie usługi Azure Storage dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Dzięki tej funkcji platformy Azure storage automatycznie szyfruje dane przed utrwaleniem go do usługi Azure Managed Disks, magazynu obiektów Blob platformy Azure, kolejką lub tabelą lub usługi Azure Files i odszyfrowuje je przed pobierania. Obsługa szyfrowania, szyfrowanie nieużywanych danych, odszyfrowywania i zarządzania kluczami w programie Storage Service Encryption jest niewidoczne dla użytkowników. Wszystkie dane zapisane na platformę Azure storage są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
 
 Szyfrowanie usługi Storage jest włączona dla wszystkich kont magazynu z nowymi i istniejącymi i nie może być wyłączony. Ponieważ Twoje dane są zabezpieczane domyślnie, nie trzeba modyfikować kodu lub aplikacji, aby móc korzystać z szyfrowania usługi Storage.
 

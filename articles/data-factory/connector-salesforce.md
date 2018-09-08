@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442058"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158845"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,7 +293,7 @@ Podczas kopiowania danych z usług Salesforce, można użyć SOQL zapytania lub 
 | Wybór kolumn | Należy wyliczyć pola, które mają zostać skopiowane do zapytania, np. `SELECT field1, filed2 FROM objectname` | `SELECT *` jest obsługiwane, oprócz kolumnę zaznaczenia. |
 | Znaki cudzysłowu | Nazwy wprowadzone obiektów nie może być ujmowane w cudzysłów. | Nazwy pól/obiektów mogą być ujmowane w cudzysłów, np. `SELECT "id" FROM "Account"` |
 | Format daty/godziny |  Zobacz szczegóły dotyczące [tutaj](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) i przykłady w następnej sekcji. | Zobacz szczegóły dotyczące [tutaj](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) i przykłady w następnej sekcji. |
-| Wartości logiczne | Reprezentowana jako `False` i `Ture`, np. `SELECT … WHERE IsDeleted=True`. | Reprezentowana jako 0 lub 1, np. `SELECT … WHERE IsDeleted=1`. |
+| Wartości logiczne | Reprezentowana jako `False` i `True`, np. `SELECT … WHERE IsDeleted=True`. | Reprezentowana jako 0 lub 1, np. `SELECT … WHERE IsDeleted=1`. |
 | Zmiana nazwy kolumny | Nieobsługiwane. | Obsługiwane, np.: `SELECT a AS b FROM …`. |
 | Relacja | Obsługiwane, np. `Account_vod__r.nvs_Country__c`. | Nieobsługiwane. |
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 75b7ecac465fa12b1e19ca409d1535d89c755801
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7dde80d8134a6f30f4f32086a2dd030712051256
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021891"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093146"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)
 
@@ -34,10 +34,7 @@ Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla us
 
 Można również definiować role niestandardowe do użycia z kontenerami i kolejek. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
-> [!IMPORTANT]
-> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
->
-> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Przypisywanie roli do podmiotu zabezpieczeń
 

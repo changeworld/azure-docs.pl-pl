@@ -3,26 +3,28 @@ title: Ustawianie zasad zabezpieczeń w usłudze Azure Security Center | Microso
 description: Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756995"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161292"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Ustawianie zasad zabezpieczeń w usłudze Azure Security Center
 Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń w usłudze Security Center.
+
+Aby uzyskać instrukcje na temat sposobu ustawiania zasad przy użyciu programu PowerShell, zobacz [Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu modułu Azure RM PowerShell](../azure-policy/assign-policy-definition-ps.md).
 
 ## <a name="how-security-policies-work"></a>Jak działają zasady zabezpieczeń
 Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. W usłudze Security Center możesz edytować zasady i monitorować ich zgodność.
@@ -37,13 +39,12 @@ W usłudze Security Center możesz edytować domyślne zasady zabezpieczeń dla 
 
 1. Zaloguj się do Portalu Azure.
 
-2. Na pulpicie nawigacyjnym usługi **Security Center** w obszarze **Ogólne** wybierz pozycję **Zasady zabezpieczeń**.
+2. Na pulpicie nawigacyjnym usługi **Security Center** w obszarze **ZASADY I ZGODNOŚĆ** wybierz pozycję **Zasady zabezpieczeń**.
 
 3. Wybierz subskrypcję, dla której chcesz włączyć zasady zabezpieczeń.
 
-4. W sekcji **Składniki zasad** kliknij pozycję **Zasady zabezpieczeń**.  
-    Są to domyślne zasady przypisane przez usługę Security Center. Możesz wyłączyć lub włączyć dostępne zalecenia dotyczące zabezpieczeń.
-
+4. Włącz zasady, które chcesz włączyć dla subskrypcji. Zostanie wyświetlone zalecenia w zależności od każdej zasady, którą wybierzesz. 
+  ![Lista zasad](./media/security-center-policies/policies.png)
 5. Po zakończeniu edycji wybierz pozycję **Zapisz**.
 
 ## <a name="available-security-policy-definitions"></a>Dostępne definicje zasad zabezpieczeń
@@ -66,7 +67,7 @@ Aby uzyskać informacje o definicjach zasad dostępnych w ramach domyślnych zas
 | Dostęp do sieci JIT |Gdy zostanie włączony dostęp do sieci typu „dokładnie na czas” (JIT, just-in-time), usługa Security Center zablokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie wirtualnej, do których ruch przychodzący powinien zostać zablokowany. Aby uzyskać więcej informacji, zobacz [Manage virtual machine access using just in time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) (Zarządzanie dostępem maszyny wirtualnej przy użyciu funkcji „dokładnie na czas”). |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md) — informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.

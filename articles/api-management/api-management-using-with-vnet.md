@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187387"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093196"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 | Źródło / porty docelowe | Kierunek | Protokół transportowy | Źródłowy / docelowy | Cel (*) | Typ sieci wirtualnej |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Komunikacja klienta z usługi API Management|Zewnętrzne |
-| * / 3443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Wewnętrzny |
+| * / 3443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Zewnętrzne i wewnętrzne |
 | * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|**Zależność od usługi Azure Storage**, usługi Azure Service Bus i Azure Active Directory (jeśli dotyczy).|Zewnętrzne i wewnętrzne |
 | * / 1433 |Wychodzący |TCP |VIRTUAL_NETWORK / SQL|**Dostęp do punktów końcowych usługi Azure SQL** |Zewnętrzne i wewnętrzne |
 | * / 5672 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania |Zewnętrzne i wewnętrzne |

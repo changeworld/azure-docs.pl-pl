@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 240bc114350d8464f234200d0ea972224114212f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577708"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095151"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji usługi Azure Storage (wersja zapoznawcza)
 
@@ -25,10 +25,7 @@ Zanim podmiot zabezpieczeń można uwierzytelnić aplikację usługi Azure Stora
 
 Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/v1-protocols-oauth-code.md).
 
-> [!IMPORTANT]
-> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
->
-> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Zarejestruj swoją aplikację z dzierżawy usługi Azure AD
 
@@ -176,7 +173,7 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
-- Aby zapoznać się z usługą Azure Storage przy użyciu tożsamości usługi zarządzanej, zobacz [uwierzytelnianie w usłudze Azure AD z usługi Azure tożsamości usługi zarządzanej (wersja zapoznawcza)](storage-auth-aad-msi.md).
+- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
 - Aby dowiedzieć się, jak zalogować się do wiersza polecenia platformy Azure i programu PowerShell przy użyciu tożsamości usługi Azure AD, zobacz [tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)](storage-auth-aad-script.md).
 - Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kolejek i obiektów blob platformy Azure, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
 

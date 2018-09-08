@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527368"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157858"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Samouczek: Ulepszaniu aplikacji z jednostką pattern.any
 
@@ -26,7 +26,7 @@ W tym samouczku Użyj jednostki pattern.any, aby zwiększyć prognozowania inten
 * Tworzenie wzorca, który używa pattern.any
 * Jak zweryfikować ulepszenia prognoz
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [ról wzorca](luis-tutorial-pattern-roles.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) repozytorium GitHub.
@@ -108,7 +108,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia dowolnych danych
 1. Wybierz **Test** z paskiem górnym, aby otworzyć panel testu. 
@@ -125,7 +125,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

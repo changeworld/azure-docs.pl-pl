@@ -3,23 +3,19 @@ title: Zarządzanie wystąpieniami w funkcje trwałe - Azure
 description: Informacje o sposobie zarządzania jego wystąpieniami w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb3ccbc949f8250101fab6cb7899b859149fdfd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 72ea5e54bf86ce408700c0456f6d37f5f3c29924
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341096"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091786"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcje trwałe (usługi Azure Functions)
 
@@ -224,7 +220,7 @@ Systemy zewnętrzne mogą się komunikować trwałe funkcje za pomocą adresów 
 
 [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) ma jeden parametr:
 
-* **Identyfikator instanceId**: Unikatowy identyfikator wystąpienia.
+* **Identyfikator InstanceId**: Unikatowy identyfikator wystąpienia.
 
 Metoda ta zwraca wystąpienie [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) z następującymi właściwościami ciąg:
 

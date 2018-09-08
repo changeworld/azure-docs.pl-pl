@@ -1,36 +1,33 @@
 ---
-title: Uwierzytelnianie za pomocą usługi Azure AD z maszyny Wirtualnej platformy Azure zarządzanych tożsamości usługi (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Uwierzytelnianie za pomocą usługi Azure AD z maszyny Wirtualnej platformy Azure zarządzanych tożsamości usługi (wersja zapoznawcza).
+title: Uwierzytelnianie dostępu do obiektów blob i kolejki przy użyciu tożsamości usługi Azure Active Directory zarządzane dla zasobów platformy Azure (wersja zapoznawcza) — usługi Azure Storage | Dokumentacja firmy Microsoft
+description: Magazynu obiektów Blob i kolejek platformy Azure obsługuje uwierzytelnianie usługi Azure Active Directory za pomocą tożsamości zarządzanych zasobów platformy Azure. Zarządzanych tożsamości dla zasobów platformy Azure służy do uwierzytelniania dostępu do obiektów blob i kolejki z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Korzystając z zarządzanych tożsamości dla zasobów platformy Azure i możliwości usługi uwierzytelniania usługi Azure AD, można uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 09/05/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021867"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090359"
 ---
-# <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Uwierzytelnianie za pomocą usługi Azure AD z tożsamości usługi zarządzanej platformy Azure (wersja zapoznawcza)
+# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>Uwierzytelnianie dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)
 
-Usługa Azure Storage obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [tożsamości usługi zarządzanej](../../active-directory/managed-identities-azure-resources/overview.md). Tożsamość usługi zarządzanej (MSI) zapewnia automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Przy użyciu pliku MSI i możliwości usługi uwierzytelniania usługi Azure AD, możesz uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
+Usługa Azure storage Blob i kolejki obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Zarządzanych tożsamości dla zasobów platformy Azure służy do uwierzytelniania dostępu do obiektów blob i kolejki z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure (maszyny wirtualne), aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Korzystając z zarządzanych tożsamości dla zasobów platformy Azure i możliwości usługi uwierzytelniania usługi Azure AD, można uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
 
-Aby udzielić uprawnień do tożsamości usługi zarządzanej dla kontenerów magazynów lub kolejek, Przypisz rolę RBAC obsługę magazynu uprawnienia do pliku MSI. Aby uzyskać więcej informacji na temat ról RBAC w magazynie, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md). 
+Aby udzielić uprawnień do tożsamości zarządzanej do kontenera obiektów blob i kolejki, możesz przypisać rolę kontroli dostępu opartej na rolach do tożsamości zarządzanej, który obejmuje uprawnienia dla tego zasobu w zakresie odpowiednie. Aby uzyskać więcej informacji na temat ról RBAC w magazynie, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md). 
 
-> [!IMPORTANT]
-> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
->
-> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
+W tym artykule przedstawiono sposób uwierzytelniania do magazynu obiektów Blob platformy Azure lub kolejki przy użyciu tożsamości zarządzanej maszyny wirtualnej platformy Azure.  
 
-W tym artykule przedstawiono sposób uwierzytelniania usługi Azure Storage przy użyciu pliku MSI w Maszynie wirtualnej platformy Azure.  
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
-## <a name="enable-msi-on-the-vm"></a>Włączanie tożsamości usługi Zarządzanej maszyny wirtualnej
+## <a name="enable-managed-identities-on-a-vm"></a>Włącz zarządzanych tożsamości na maszynie Wirtualnej
 
-Zanim przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z maszyny Wirtualnej, należy najpierw włączyć tożsamości usługi Zarządzanej maszyny wirtualnej. Aby dowiedzieć się, jak włączyć tożsamości usługi Zarządzanej, zobacz jeden z następujących artykułów:
+Zanim zarządzanych tożsamości dla zasobów platformy Azure można użyć do uwierzytelniania dostępu do obiektów blob i kolejki z maszyny Wirtualnej, należy najpierw włączyć zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej. Aby dowiedzieć się, jak włączyć zarządzanych tożsamości dla zasobów platformy Azure, zobacz jeden z następujących artykułów:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
@@ -38,20 +35,20 @@ Zanim przy użyciu pliku MSI do uwierzytelniania usługi Azure Storage z maszyny
 - [Szablon usługi Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Zestawy SDK platformy Azure](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="get-an-msi-access-token"></a>Uzyskiwanie tokenu dostępu tożsamości usługi Zarządzanej
+## <a name="get-a-managed-identity-access-token"></a>Uzyskiwanie tokenu dostępu tożsamości zarządzanej
 
-Aby uwierzytelniać się przy użyciu pliku MSI, aplikacji lub skryptu należy uzyskać token dostępu tożsamości usługi Zarządzanej. Aby dowiedzieć się więcej o tym, jak można uzyskać tokenu dostępu, zobacz [jak używać usługi Azure VM tożsamość usługi zarządzanej (MSI) dla tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+Aby uwierzytelniać się za pomocą tożsamości zarządzanej, aplikacji lub skryptu należy uzyskać token dostępu tożsamość zarządzaną. Aby dowiedzieć się więcej o tym, jak można uzyskać tokenu dostępu, zobacz [jak uzyskiwanie tokenu dostępu, za pomocą tożsamości zarządzanych zasobów platformy Azure na Maszynie wirtualnej platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>Przykładowy kod platformy .NET: Utwórz blokowy obiekt blob
 
-W przykładzie kodu założono, że token dostępu tożsamości usługi Zarządzanej. Token dostępu jest używany do autoryzowania tożsamości usługi zarządzanej, aby utworzyć blokowego obiektu blob.
+W przykładzie kodu założono, że token dostępu tożsamość zarządzaną. Token dostępu jest używany do autoryzowania tożsamości zarządzanej, aby utworzyć blokowego obiektu blob.
 
 ### <a name="add-references-and-using-statements"></a>Dodaj odwołania i przy użyciu instrukcji  
 
 W programie Visual Studio należy zainstalować wersję zapoznawczą biblioteki klienta usługi Azure Storage. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**. W konsoli, należy wpisać następujące polecenie:
 
 ```
-Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
+Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 
 Dodaj następujące instrukcje using do kodu:
@@ -60,13 +57,13 @@ Dodaj następujące instrukcje using do kodu:
 using Microsoft.WindowsAzure.Storage.Auth;
 ```
 
-### <a name="create-credentials-from-the-msi-access-token"></a>Utwórz poświadczenia z tokenu dostępu tożsamości usługi Zarządzanej
+### <a name="create-credentials-from-the-managed-identity-access-token"></a>Utwórz poświadczenia z tożsamości zarządzanej tokenu dostępu
 
-Aby utworzyć blokowego obiektu blob, użyj **TokenCredentials** klasy dostarczane przez pakiet (wersja zapoznawcza). Utworzyć nowe wystąpienie klasy **TokenCredentials**, przekazując plik MSI token dostępu uzyskany wcześniej:
+Aby utworzyć blokowego obiektu blob, użyj **TokenCredentials** klasy dostarczane przez pakiet (wersja zapoznawcza). Utworzyć nowe wystąpienie klasy **TokenCredentials**, przekazując tożsamość zarządzaną token dostępu uzyskany wcześniej:
 
 ```dotnet
-// Create storage credentials from your MSI access token.
-TokenCredential tokenCredential = new TokenCredential(msiAccessToken);
+// Create storage credentials from your managed identity access token.
+TokenCredential tokenCredential = new TokenCredential(accessToken);
 StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
 // Create a block blob using the credentials.

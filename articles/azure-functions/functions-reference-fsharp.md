@@ -1,41 +1,37 @@
 ---
-title: 'Azure dokumentacja dla deweloperów funkcje F # | Dokumentacja firmy Microsoft'
-description: 'Zrozumienie sposobu tworzenia usługi Azure Functions przy użyciu języka F #.'
+title: 'Dokumentacja usługi Azure Functions F # dla deweloperów | Dokumentacja firmy Microsoft'
+description: 'Dowiedz się, jak tworzenie usługi Azure Functions przy użyciu języka F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: ''
-tags: ''
-keywords: 'Azure funkcji, funkcji, zdarzenia przetwarzania elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, F #'
+keywords: 'Azure functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowa, F #'
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ec4260363aa0af3062a6d61db44a75d9ebd599db
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515598"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090748"
 ---
-# <a name="azure-functions-f-developer-reference"></a>Azure Functions dokumentacja dla deweloperów języka F #
+# <a name="azure-functions-f-developer-reference"></a>Odwołanie do usługi Azure Functions dla deweloperów F #
 
-F # dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Przepływy danych w funkcji F # za pomocą argumentów funkcji. Argument nazwy zostały określone w `function.json`, i jest wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, jak funkcja tokenów rejestratora i anulowania.
+F # dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Dane płyną do funkcji F # za pomocą argumentów funkcji. Argument nazwy zostały określone w `function.json`, wiąże się z wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, takich jak funkcja rejestratora i anulowania tokeny.
 
-W tym artykule przyjęto założenie, że został już przeczytany [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
+W tym artykule założono, że zostały już przeczytane [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
 
 ## <a name="how-fsx-works"></a>Jak działa fsx
-`.fsx` Plik jest skryptu języka F #. Go można traktować jako projekt F #, który jest zawarty w jednym pliku. Plik zawiera kod programu (w tym przypadku funkcji Azure) i wytyczne dotyczące zarządzania zależności.
+`.fsx` Plik znajduje się skrypt F #. Jego można traktować jako projektu języka F #, która znajduje się w jednym pliku. Plik zawiera kod dla Twojego programu (w tym przypadku funkcji platformy Azure) oraz dyrektywy do zarządzania zależnościami.
 
-Jeśli używasz `.fsx` dla funkcji platformy Azure, zwykle wymagane zestawy są automatycznie dołączane do Ciebie, co pozwala skupić się na kodzie funkcji, a nie "standardowy".
+Kiedy używasz `.fsx` dla funkcji platformy Azure, często wymagane zestawy są automatycznie dołączane do Ciebie, co pozwala skupić się na kod funkcji, a nie "standardowy".
 
-## <a name="binding-to-arguments"></a>Powiązanie z argumentów
-Każdego powiązania obsługuje niektóre zestaw argumentów, zgodnie z opisem w [dokumentacja dla deweloperów usługi Azure Functions wyzwalaczy i powiązań](functions-triggers-bindings.md). Na przykład jest jednym z powiązań argument wyzwalacza obiektu blob obsługiwanych przez POCO, które można wyrazić przy użyciu rekordu języka F #. Na przykład:
+## <a name="binding-to-arguments"></a>Powiązanie z argumentami
+Każde powiązanie obsługuje niektóre argumenty, zgodnie z opisem w [dokumentacja dla deweloperów usługi wyzwalaczy i powiązań usługi Azure Functions](functions-triggers-bindings.md). Na przykład jedno z powiązań argument, który obsługuje wyzwalacz obiektu blob jest POCO, które mogą być wyrażone za pomocą rekordu F #. Na przykład:
 
 ```fsharp
 type Item = { Id: string }
@@ -45,11 +41,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Funkcja Azure F # potrwa co najmniej jeden argument. Przy omawianiu usługi Azure Functions argumenty zwane *wejściowych* argumentów i *dane wyjściowe* argumentów. Argument wejściowy jest dokładnie wydaje takich jak: dane wejściowe do funkcji Azure F #. *Dane wyjściowe* argument jest modyfikowalna danych lub `byref<>` argumentu, który służy jako sposób przekazywania danych z powrotem *limit* funkcji.
+Spowoduje to przejście funkcji platformy Azure F # jeden lub więcej argumentów. Gdy mówimy o argumenty usługi Azure Functions, nazywamy *wejściowych* argumentów i *dane wyjściowe* argumentów. Argument wejściowy jest dokładnie, co wydaje się to np.: dane wejściowe do funkcji Azure F #. *Dane wyjściowe* argument jest modyfikowalną danych lub `byref<>` argument, który służy jako sposób przekazywania danych z powrotem *się* funkcji.
 
-W powyższym przykładzie `blob` jest argument wejściowy i `output` jest argumentem danych wyjściowych. Należy zauważyć, że użyliśmy `byref<>` dla `output` (nie musi, aby dodać `[<Out>]` adnotacji). Przy użyciu `byref<>` typ umożliwia funkcji zmiany które rekordu lub argument odwołuje się do obiektu.
+W powyższym przykładzie `blob` jest argument wejściowy i `output` jest argumentem danych wyjściowych. Należy zauważyć, że użyliśmy `byref<>` dla `output` (nie ma potrzeby można dodać `[<Out>]` adnotacji). Za pomocą `byref<>` typ umożliwia funkcji do zmiany, które rekord lub argumentu, który odwołuje się do obiektu.
 
-Gdy rekordu języka F # jest używany jako typ danych wejściowych, muszą być oznaczone definicji rekordu `[<CLIMutable>]` w celu umożliwienia framework usługi Azure Functions można ustawić pola odpowiednio przed przekazaniem rekordu do funkcji. Pod maską `[<CLIMutable>]` generuje metody ustawiające właściwości rekordu. Na przykład:
+Gdy rekord F # jest używany jako typ danych wejściowych, muszą być oznaczone definicji rekordu `[<CLIMutable>]` parzysta w ramach usługi Azure Functions odpowiednie ustawienie pola przed przekazaniem rekord do funkcji. Kulisy `[<CLIMutable>]` generuje metod ustawiających właściwości rekordu. Na przykład:
 
 ```fsharp
 [<CLIMutable>]
@@ -61,7 +57,7 @@ let Run(req: TestObject, log: TraceWriter) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Można także klasy F # dla wejściowe i wyjściowe argumentów. Dla klasy właściwości należy zwykle ustawiających i pobierających. Na przykład:
+Klasa F # można również dla obu in i out argumenty. Klasy właściwości będzie zwykle na potrzeby metod pobierających i ustawiających. Na przykład:
 
 ```fsharp
 type Item() =
@@ -74,7 +70,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Rejestrowanie
-Aby rejestrować dane wyjściowe do Twojej [Podgląd dzienników przesyłanych strumieniowo](../app-service/web-sites-enable-diagnostic-log.md) w języku F #, funkcja powinno zająć argumentu typu `TraceWriter`. W celu zachowania spójności, firma Microsoft zaleca, nosi nazwę tego argumentu `log`. Na przykład:
+Do logowania się dane wyjściowe do usługi [przesyłanie strumieniowe dzienników](../app-service/web-sites-enable-diagnostic-log.md) w języku F #, funkcji powinno przyjmować argument typu `TraceWriter`. W celu zachowania spójności, firma Microsoft zaleca, nosi nazwę tego argumentu `log`. Na przykład:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -82,8 +78,8 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     output <- input
 ```
 
-## <a name="async"></a>Asynchroniczne
-`async` Przepływu pracy mogą być używane, ale musi zwracać wynik `Task`. Można to zrobić z `Async.StartAsTask`, na przykład:
+## <a name="async"></a>asynchroniczne
+`async` Przepływ pracy może być używany, ale wynik musi zwracać `Task`. Można to zrobić za pomocą `Async.StartAsTask`, na przykład:
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -93,7 +89,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Token anulowania
-Jeśli funkcja trzeba bezpiecznie obsłużyć zamknięcia, można nadać [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argumentu. Może to być łączone z `async`, na przykład:
+Jeśli funkcja musi bezpiecznie obsłużyć zamykania, możesz nadać mu [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argumentu. Może to być łączone z `async`, na przykład:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -104,7 +100,7 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
     Async.StartAsTask(f, token)
 ```
 
-## <a name="importing-namespaces"></a>Importowanie przestrzenie nazw
+## <a name="importing-namespaces"></a>Importowanie przestrzeni nazw
 Przestrzenie nazw mogą być otwierane w zwykły sposób:
 
 ```fsharp
@@ -115,7 +111,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-Następujących przestrzeni nazw są automatycznie otwierane:
+Następujące przestrzenie nazw są automatycznie otwierane:
 
 * `System`
 * `System.Collections.Generic`
@@ -126,8 +122,8 @@ Następujących przestrzeni nazw są automatycznie otwierane:
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`.
 
-## <a name="referencing-external-assemblies"></a>Zewnętrzne zestawy odwołujące
-Podobnie można dodać odwołania do zestawów framework z `#r "AssemblyName"` dyrektywy.
+## <a name="referencing-external-assemblies"></a>Odwoływanie się do zestawów zewnętrznych
+Podobnie, można dodać odwołania do zestawów framework z `#r "AssemblyName"` dyrektywy.
 
 ```fsharp
 #r "System.Web.Http"
@@ -140,7 +136,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-Następujące zestawy są automatycznie dodawane przez usługi Azure Functions Środowisko hostingu:
+Następujące zestawy są automatycznie dodawane przez środowisko hostingu usługi Azure Functions:
 
 * `mscorlib`,
 * `System`
@@ -153,7 +149,7 @@ Następujące zestawy są automatycznie dodawane przez usługi Azure Functions �
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Ponadto następujące zestawy są specjalne z uwzględnieniem wielkości liter i odwołuje simplename (np. `#r "AssemblyName"`):
+Ponadto następujące zestawy są specyficzne, z uwzględnieniem wielkości liter i mogą być przywoływane przez simplename (np. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -161,10 +157,10 @@ Ponadto następujące zestawy są specjalne z uwzględnieniem wielkości liter i
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Jeśli chcesz odwołać zestaw prywatny, możesz przekazać plik zestawu do `bin` folderu względem Twojej funkcji i odwołanie go przy użyciu pliku (np. nazwy  `#r "MyAssembly.dll"`). Aby uzyskać informacje na temat przekazywania plików do folderu funkcji zobacz sekcję poniżej pakietu zarządzania.
+Jeśli potrzebujesz odwołać zestaw prywatny, możesz przekazać plik zestawu do `bin` folderu względem Twojej funkcji i odwołania za pomocą pliku nazwa (np.  `#r "MyAssembly.dll"`). Aby uzyskać informacje na temat przekazywania plików do folderu funkcji zobacz następującą sekcję pakietu zarządzania.
 
 ## <a name="editor-prelude"></a>Edytor Prelude
-Edytor, który obsługuje usługi kompilatora F # nie będą świadomi obszary nazw i zestawy, które automatycznie uwzględnia usługi Azure Functions. W efekcie może być przydatne, obejmują prelude, pomocne w edytorze odnaleźć zestawów, którego używasz i otwierać przestrzeni nazw. Na przykład:
+Edytor który obsługuje usługi kompilatora języka F #, nie będzie korzystają z przestrzeni nazw i zestawów, które automatycznie uwzględnia usługi Azure Functions. W efekcie może być przydatne, obejmują prelude, ułatwiające edytora Znajdź zestawy, które są używane i otwierać przestrzeni nazw. Na przykład:
 
 ```fsharp
 #if !COMPILED
@@ -179,12 +175,12 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     ...
 ```
 
-Azure Functions wykonuje kodu, przetwarza źródło o `COMPILED` zdefiniowane, więc prelude edytora zostanie zignorowany.
+Usługi Azure Functions wykonuje kod, przetwarza źródło o `COMPILED` zdefiniowane, więc prelude edytora zostanie zignorowany.
 
 <a name="package"></a>
 
-## <a name="package-management"></a>Pakiet zarządzania
-Aby używać pakietów NuGet w funkcji F #, Dodaj `project.json` plik do folderu funkcji w systemie plików aplikacji funkcji. Oto przykład `project.json` pliku, który dodaje odwołanie do pakietu NuGet, aby `Microsoft.ProjectOxford.Face` wersji 1.1.0:
+## <a name="package-management"></a>Zarządzanie pakietami
+Do korzystania z pakietów NuGet funkcja języka F #, należy dodać `project.json` plik do folderu funkcji w systemie plików aplikacji funkcji. Oto przykład `project.json` pliku, który dodaje odwołanie do pakietu NuGet, aby `Microsoft.ProjectOxford.Face` wersji 1.1.0:
 
 ```json
 {
@@ -198,16 +194,16 @@ Aby używać pakietów NuGet w funkcji F #, Dodaj `project.json` plik do folderu
 }
 ```
 
-Obsługiwane jest tylko .NET Framework 4.6, upewnij się, że Twoje `project.json` Określa plik `net46` w sposób pokazany poniżej.
+Tylko .NET Framework 4.6 jest obsługiwane, dlatego upewnij się, że Twoje `project.json` plik Określa `net46` jak pokazano poniżej.
 
-Po przekazaniu `project.json` plików, środowisko uruchomieniowe pobiera pakiety i automatycznie dodaje odwołania do zestawów pakietu. Nie trzeba dodać `#r "AssemblyName"` dyrektywy. Po prostu Dodaj wymagane `open` instrukcje do Twojej `.fsx` pliku.
+Podczas przekazywania `project.json` plik, środowisko uruchomieniowe pobiera pakiety i automatycznie dodaje odwołania do zestawów pakietu. Nie trzeba dodawać `#r "AssemblyName"` dyrektywy. Wystarczy dodać wymagane `open` instrukcje, aby Twoje `.fsx` pliku.
 
-Możesz umieścić automatycznie zestawów odwołań w Twojej prelude edytora, zwiększające w edytorze interakcji z F # kompilacji usługi.
+Możesz umieścić automatycznie zestawów odwołań w Twojej prelude edytora, aby poprawić swoim edytorze interakcji z F # kompilacji usług.
 
-### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Jak dodać `project.json` plik, aby z funkcji platformy Azure
-1. Rozpocznij od upewnić się, że funkcja aplikacji jest uruchomiony, co można zrobić, otwierając funkcji w portalu Azure. To również udostępnia dzienniki przesyłania strumieniowego gdzie zostaną wyświetlone dane wyjściowe instalacji pakietu.
-2. Aby przekazać `project.json` plików, użyj jednej z metod opisanych w [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate). Jeśli używasz [ciągłego wdrażania usługi Azure Functions](functions-continuous-deployment.md), możesz dodać `project.json` plików do tymczasowej gałąź celu eksperymentować przed dodaniem jej do swojej gałęzi wdrożenia.
-3. Po `project.json` zostanie dodany plik, zostanie wyświetlone dane wyjściowe podobne do poniższego przykładu w funkcji do przesyłania strumieniowego dzienników:
+### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Jak dodać `project.json` plików do funkcji platformy Azure
+1. Rozpocznij, upewniając się, aplikacja funkcji jest uruchomiona, co można zrobić, otwierając funkcji w witrynie Azure portal. To daje dostęp do dzienników przesyłania strumieniowego gdzie zostaną wyświetlone dane wyjściowe instalacji pakietu.
+2. Aby przekazać `project.json` pliku, użyj jednej z metod opisanych w [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate). Jeśli używasz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md), możesz dodać `project.json` pliku gałęzi tymczasowej, aby eksperymentować z tym przed dodaniem go do swojej gałęzi z wdrożenia.
+3. Po `project.json` plik zostanie dodany, widoczne będą dane wyjściowe podobne do poniższego przykładu w funkcji użytkownika przesyłania strumieniowego dziennika:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -227,7 +223,7 @@ Możesz umieścić automatycznie zestawów odwołań w Twojej prelude edytora, z
 ```
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
-Aby uzyskać wartość zmiennej środowiskowej lub wartość ustawienia aplikacji, należy użyć `System.Environment.GetEnvironmentVariable`, na przykład:
+Aby uzyskać zmiennej środowiskowej lub wartość ustawienia aplikacji, użyj `System.Environment.GetEnvironmentVariable`, na przykład:
 
 ```fsharp
 open System.Environment
@@ -237,8 +233,8 @@ let Run(timer: TimerInfo, log: TraceWriter) =
     log.Info("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-fsx-code"></a>Ponowne wykorzystywanie kodu fsx
-Można użyć kodu z innych `.fsx` plików za pomocą `#load` dyrektywy. Na przykład:
+## <a name="reusing-fsx-code"></a>Ponowne użycie kodu fsx
+Możesz użyć kodu z innych `.fsx` plików za pomocą `#load` dyrektywy. Na przykład:
 
 `run.fsx`
 
@@ -256,21 +252,21 @@ let mylog(log: TraceWriter, text: string) =
     log.Verbose(text);
 ```
 
-Zawiera ścieżki do `#load` dyrektywy są powiązane z lokalizacją użytkownika `.fsx` pliku.
+Zapewnia ścieżki `#load` dyrektywy są powiązane z lokalizacją usługi `.fsx` pliku.
 
-* `#load "logger.fsx"` ładuje plik znajduje się w folderze funkcji.
-* `#load "package\logger.fsx"` ładuje plik znajduje się w `package` folderu w folderze funkcji.
-* `#load "..\shared\mylogger.fsx"` ładuje plik znajduje się w `shared` folderu na tym samym poziomie co folder funkcji, bezpośrednio pod `wwwroot`.
+* `#load "logger.fsx"` ładuje plik znajdujący się w folderze funkcji.
+* `#load "package\logger.fsx"` ładuje plik znajdujący się w `package` folderu w folderze funkcji.
+* `#load "..\shared\mylogger.fsx"` ładuje plik znajdujący się w `shared` folderu na tym samym poziomie jak folderze funkcji, znajdującą się pod `wwwroot`.
 
-`#load` Dyrektywy działa tylko z `.fsx` plików (F # skrypt), a nie z `.fs` plików.
+`#load` Dyrektywa działa tylko z `.fsx` plików (skrypt F #), a nie z `.fs` plików.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji zawierają następujące zasoby:
 
-* [Przewodnik F #](/dotnet/articles/fsharp/index)
+* [Podręcznik języka F #](/dotnet/articles/fsharp/index)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Azure funkcje wyzwalaczy i powiązań](functions-triggers-bindings.md)
-* [Środowisko Azure Functions testowania](functions-test-a-function.md)
-* [Środowisko Azure Functions skalowania](functions-scale.md)
+* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
+* [Testowanie usługi Azure Functions](functions-test-a-function.md)
+* [Skalowanie usługi Azure Functions](functions-scale.md)
 

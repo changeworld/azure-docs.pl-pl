@@ -11,20 +11,20 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f20bcb4245a2870d8eaa442c6f747ee533b362db
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e5edfc92fc23c3235e4d4b9ca23f83c7adc3accf
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348393"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158415"
 ---
 # <a name="set-up-security-info-to-use-text-messaging-preview"></a>Skonfiguruj informacje zabezpieczające do używania tekstu wiadomości (wersja zapoznawcza)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego konta firmowego lub szkolnego, a następnie ukończ proces rejestracji. Jeśli użytkownik nigdy nie skonfigurowano swoje informacje zabezpieczające, użytkownik zostanie zapytany to zrobić teraz.
 
-## <a name="set-up-text-messaging"></a>Skonfiguruj wiadomości tekstowe
+## <a name="set-up-text-messaging"></a>Konfigurowanie wiadomości SMS
 
 W zależności od ustawień organizacji może być monitu o dodanie tekst wiadomości do swoich informacji zabezpieczających, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie tekst wiadomości zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 

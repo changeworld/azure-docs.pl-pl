@@ -8,18 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
-ms.openlocfilehash: 9f87edc0717631775acec315dda61323b8fa5909
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: 22e42037e2db65a107ef64bcf0c01b75d09f2f9b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777547"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157875"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center
 Klasyfikowanie i badanie alertów zabezpieczeń może być czasochłonne nawet dla najbardziej doświadczonego analityka bezpieczeństwa, a wielu nie wie nawet od czego zacząć. Używając [analizy](security-center-detection-capabilities.md) w celu powiązania informacji z różnych [alertów zabezpieczeń](security-center-managing-and-responding-alerts.md), usługa Security Center może dostarczyć pojedynczego widoku kampanii ataku i wszystkich powiązanych alertów — dzięki temu można szybko dowiedzieć się, jakie akcje zostały podjęte przez osobę atakującą i na jakie zasoby miały wpływ.
@@ -53,7 +53,7 @@ Informacje w tym bloku będą się różnić w zależności od alertu. Więcej i
 * Nowy filtr pozwala na dostosowanie widoku tak, aby wyświetlane były tylko zdarzenia, tylko alerty albo zdarzenia i alerty jednocześnie.
 * Ten sam alert może istnieć w ramach zdarzenia (jeśli go dotyczy), ale może też być wyświetlany jako samodzielny alert.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym dokumencie przedstawiono sposób użycia funkcji zdarzeń naruszenia zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)

@@ -1,45 +1,41 @@
 ---
-title: Użyj usługi Azure Functions do wykonania zadania oczyszczania bazy danych | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Functions można zaplanować zadanie, które łączy się z bazą danych SQL Azure, aby okresowo wyczyszczenia wierszy.
+title: Wykonaj zadania oczyszczania bazy danych za pomocą usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Functions, aby zaplanować zadanie, który nawiązuje połączenie z usługi Azure SQL Database, aby okresowo oczyszczać wierszy.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30231280"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092873"
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Nawiązywanie połączenia z bazy danych SQL Azure za pomocą usługi Azure Functions
-W tym temacie przedstawiono sposób użycia usługi Azure Functions można utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja skryptu C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowane w portalu Azure. Aby zapewnić obsługę tego scenariusza, należy także ustawić parametry połączenia bazy danych jako ustawienie aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Łączenie z bazą danych SQL Azure za pomocą usługi Azure Functions
+W tym temacie dowiesz się, jak używać usługi Azure Functions, aby utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja skryptu języka C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowanych w witrynie Azure portal. Aby zapewnić obsługę tego scenariusza, należy ustawić parametry połączenia bazy danych jako ustawienia aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
 
-Aby z funkcji poszczególnych procesu tworzenia, odczytu, aktualizacji i operacji usuwania (CRUD) w tabeli Mobile Apps, zamiast tego należy używać [powiązania Mobile Apps](functions-bindings-mobile-apps.md).
+Zapewnienie swojego osobistego procesu funkcji tworzenia, odczytu, aktualizacji i operacje usuwania (CRUD) w tabeli funkcji Mobile Apps, należy w zamian użyć [powiązania funkcji Mobile Apps](functions-bindings-mobile-apps.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ W tym temacie funkcja czasomierza wyzwolone. Wykonaj kroki w temacie [Tworzenie funkcji platformy Azure, która jest wyzwalany przez czasomierz](functions-create-scheduled-function.md) tworzenia wersji języka C# tej funkcji.   
++ Ten temat używa funkcji wyzwalanej czasomierzem. Wykonaj kroki opisane w temacie [Tworzenie funkcji na platformie Azure, który jest wyzwalany przez czasomierz](functions-create-scheduled-function.md) tworzenia wersji języka C# tej funkcji.   
 
-+ W tym temacie przedstawiono polecenie języka Transact-SQL, które wykonuje operację czyszczenia zbiorczego w **SalesOrderHeader** tabeli w bazie danych AdventureWorksLT. Aby utworzyć przykładową bazę danych AdventureWorksLT, wykonaj czynności opisane w temacie [tworzenie bazy danych Azure SQL w portalu Azure](../sql-database/sql-database-get-started-portal.md). 
++ W tym temacie przedstawiono polecenie języka Transact-SQL, które wykonuje operację czyszczenia zbiorczego w **SalesOrderHeader** tabeli w bazie danych AdventureWorksLT. Aby utworzyć przykładowej bazy danych AdventureWorksLT, wykonaj kroki opisane w temacie [utworzyć bazę danych Azure SQL database w witrynie Azure portal](../sql-database/sql-database-get-started-portal.md). 
 
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
 
-Należy pobrać parametry połączenia dla bazy danych utworzonej po wykonaniu [tworzenie bazy danych Azure SQL w portalu Azure](../sql-database/sql-database-get-started-portal.md).
+Musisz pobrać parametry połączenia dla bazy danych utworzonej po zakończeniu [utworzyć bazę danych Azure SQL database w witrynie Azure portal](../sql-database/sql-database-get-started-portal.md).
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
  
-3. Wybierz **baz danych SQL** z menu po lewej stronie i wybierz bazę danych na **baz danych SQL** strony.
+3. Wybierz **baz danych SQL** z menu po lewej stronie i wybierz swoją bazę danych na **baz danych SQL** strony.
 
 4. Wybierz **Pokaż parametry połączenia bazy danych** i skopiować pełną **ADO.NET** parametry połączenia. 
 
@@ -47,49 +43,49 @@ Należy pobrać parametry połączenia dla bazy danych utworzonej po wykonaniu [
 
 ## <a name="set-the-connection-string"></a>Ustawianie parametrów połączenia 
 
-Aplikacja funkcji obsługuje wykonywanie funkcji na platformie Azure. Jest najlepszym rozwiązaniem jest przechowywanie parametrów połączenia i innych informacji poufnych w ustawieniach funkcji aplikacji. Używanie ustawień aplikacji uniemożliwia przypadkowego ujawnienia parametrów połączenia w kodzie. 
+Aplikacja funkcji obsługuje wykonywanie funkcji na platformie Azure. Jest najlepszym rozwiązaniem do przechowywania parametrów połączeń i innych wpisów tajnych w ustawieniach aplikacji funkcji. Używanie ustawień aplikacji uniemożliwia przypadkowego ujawnienia parametry połączenia w kodzie. 
 
-1. Przejdź do tworzenia aplikacji funkcji [Tworzenie funkcji platformy Azure, która jest wyzwalany przez czasomierz](functions-create-scheduled-function.md).
+1. Przejdź do usługi utworzonej aplikacji funkcji [Tworzenie funkcji na platformie Azure, który jest wyzwalany przez czasomierz](functions-create-scheduled-function.md).
 
-2. Wybierz **funkcji platformy** > **ustawienia aplikacji**.
+2. Wybierz **funkcje platformy** > **ustawienia aplikacji**.
    
-    ![Ustawienia aplikacji dla aplikacji funkcja.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+    ![Ustawienia aplikacji dla aplikacji funkcji.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
 
 2. Przewiń w dół do **parametry połączenia** i dodaj ciąg połączenia przy użyciu ustawień określonych w tabeli.
    
-    ![Dodaj parametry połączenia w ustawieniach aplikacji funkcji.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+    ![Dodaj parametry połączenia do ustawień aplikacji funkcji.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
 
     | Ustawienie       | Sugerowana wartość | Opis             | 
     | ------------ | ------------------ | --------------------- | 
     | **Nazwa**  |  sqldb_connection  | Umożliwia dostęp do parametrów połączenia przechowywanych w kodzie funkcji.    |
-    | **Wartość** | Ciąg skopiowany  | Wklej parametry połączenia skopiowane z poprzedniej sekcji i Zastąp `{your_username}` i `{your_password}` symbole zastępcze wartości rzeczywistych. |
+    | **Wartość** | Ciąg skopiowany  | Wklej parametry połączenia skopiowaną w poprzedniej sekcji i Zastąp `{your_username}` i `{your_password}` symbole zastępcze wartości rzeczywistych. |
     | **Typ** | SQL Database | Użyj domyślnego połączenia bazy danych SQL. |   
 
 3. Kliknij pozycję **Zapisz**.
 
-Teraz można dodać kod funkcji języka C#, który nawiązuje połączenie z bazą danych SQL.
+Teraz możesz dodać kod funkcji języka C#, który nawiązuje połączenie z bazą danych SQL.
 
-## <a name="update-your-function-code"></a>Zaktualizuj kod — funkcja
+## <a name="update-your-function-code"></a>Aktualizacja kodu funkcji
 
-1. W funkcji aplikacji w portalu wybierz funkcję wyzwalany przez czasomierz.
+1. W aplikacji funkcji w portalu wybierz funkcji wyzwalanej przez czasomierz.
  
-3. Dodaj następujące odwołania do zestawów w górnej części istniejący kod C# skrypt funkcji:
+3. Dodaj następujące odwołania zestawów w górnej części istniejącego kodu C# script funkcji:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
     >[!NOTE]
-    >Kod w tym przykładzie są skryptu C# z portalu. Podczas tworzenia prekompilowanego C# funkcję lokalnie, należy zamiast tego dodać odwołania do tych składana w projekcie lokalnego.  
+    >Kod w tych przykładach przedstawiono skrypt języka C# z poziomu portalu. Podczas tworzenia prekompilowanego funkcji C# lokalnie, należy zamiast tego dodać odwołania do tych składa się w projekcie lokalnym.  
 
-3. Dodaj następujące `using` instrukcje funkcji:
+3. Dodaj następujący kod `using` instrukcje do funkcji:
     ```cs
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-4. Zastąp istniejące `Run` funkcja następującym kodem:
+4. Zastąp istniejące `Run` funkcji następującym kodem:
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -110,18 +106,18 @@ Teraz można dodać kod funkcji języka C#, który nawiązuje połączenie z baz
     }
     ```
 
-    To przykładowe polecenie aktualizuje `Status` kolumna jest oparta na daty. Należy ją zaktualizować 32 wierszy danych.
+    Następujące przykładowe polecenie aktualizuje `Status` kolumny według daty dostawy. Należy go zaktualizować 32 wiersze danych.
 
-5. Kliknij przycisk **zapisać**, obejrzyj **dzienniki** windows Następna funkcja wykonywania, a następnie zanotuj liczbę wierszy zaktualizowane w **SalesOrderHeader** tabeli.
+5. Kliknij przycisk **Zapisz**, obejrzyj **dzienniki** systemu windows dla następnej funkcji wykonywania, a następnie zanotuj liczbę wiersz zaktualizowany w **SalesOrderHeader** tabeli.
 
-    ![Wyświetlać dzienniki funkcji.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
+    ![Wyświetlanie dzienników funkcji.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Następnie Dowiedz się, jak za pomocą funkcji aplikacji logiki do integracji z innymi usługami.
+Dowiedz się, jak za pomocą funkcji Logic Apps do integracji z innymi usługami.
 
 > [!div class="nextstepaction"] 
-> [Tworzy funkcję, która integruje się z usługą Logic Apps](functions-twitter-email.md)
+> [Tworzenie funkcji integrującej się z usługą Logic Apps](functions-twitter-email.md)
 
 Aby uzyskać więcej informacji na temat funkcji zobacz następujące tematy:
 

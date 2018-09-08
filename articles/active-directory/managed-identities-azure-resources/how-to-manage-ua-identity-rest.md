@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 72f098cac32422ddbd2632336dd82cfc09a8bc93
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: dc7abd4bdec30ae870ff6add33d4b9b1c08b5bbd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028362"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159643"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Utwórz listę lub usunąć przypisanych przez użytkownika tożsamości zarządzanej przy użyciu wywołań interfejsu API REST
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Zarządzane tożsamości dla zasobów platformy Azure umożliwia usług platformy Azure do usługi uwierzytelniania to uwierzytelnianie pomocy technicznej usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
@@ -47,7 +47,7 @@ W tym artykule dowiesz się, jak utworzyć, listy i Usuń przypisanych przez uż
 
 Aby utworzyć przypisanych przez użytkownika tożsamości zarządzanej, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
 
-[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+[!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747000"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095542"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -125,6 +125,16 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
+<a id="server-endpoint-noactivity"></a>**Punkt końcowy serwera ma stan kondycji "No Activity" lub "Pending" i stanu serwera w bloku zarejestrowane serwery "Pojawia się w trybie offline"**  
+
+Ten problem może wystąpić, jeśli proces Monitor synchronizacji magazynu nie działa lub serwer nie może komunikować się z usługą Azure File Sync z powodu serwera proxy lub zapory.
+
+Aby rozwiązać ten problem, wykonaj następujące czynności:
+
+1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, odinstaluj i ponownie zainstaluj agenta usługi Azure File Sync (Uwaga: ustawienia serwera są zachowywane po odinstalowanie i ponowne zainstalowanie agenta).
+2. Sprawdź, czy ustawienia zapory i serwera Proxy zostały prawidłowo skonfigurowane:
+    - Jeśli serwer znajduje się za zaporą, sprawdź, czy jest dozwolony przez port 443 wychodzących. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
+    - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dla komputera lub specyficzne dla aplikacji, wykonując kroki na serwerze proxy [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Jeśli utworzono plik bezpośrednio w mojej udziału plików platformy Azure za pośrednictwem protokołu SMB lub za pośrednictwem portalu, jak długo trwa dla pliku, aby zsynchronizować z serwerów w grupie synchronizacji?**  
@@ -506,7 +516,7 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
 | **Wymagana korekta** | Yes |
 
-Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy ani istniejącym punktem końcowym serwera.
+Upewnij się, ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy lub istniejący punkt końcowy serwera.
 
 <a id="-2134376373"></a>**Usługa jest obecnie niedostępna.**  
 | | |

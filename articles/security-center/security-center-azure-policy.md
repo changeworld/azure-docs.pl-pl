@@ -1,6 +1,6 @@
 ---
-title: Integracja zasad zabezpieczeń w usłudze Azure Security Center z usługą Azure Policy | Microsoft Docs
-description: Ten dokument zawiera informacje pomocne podczas konfigurowania integracji zasad zabezpieczeń w usłudze Azure Security Center z usługą Azure Policy.
+title: Zasady zabezpieczeń w usłudze Azure Security Center można ustawić indywidualnie lub jako część zasad platformy Azure | Dokumentacja firmy Microsoft
+description: Ten dokument ułatwia do ustawiania zasad w usłudze Azure Security Center lub usługi Azure Policy.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,20 +9,27 @@ editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: b3d6d15d41fece613290deb2c77e980caa5dcfef
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: HT
+ms.openlocfilehash: bc6226d462bac7e9c50ce3f348007023bf861ec3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018567"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162295"
 ---
-# <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integracja zasad zabezpieczeń w usłudze Security Center z usługą Azure Policy
-Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń obsługiwanych przez usługę [Azure Policy](../azure-policy/azure-policy-introduction.md) w usłudze Azure Security Center.
+# <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Ustawianie zasad zabezpieczeń w usłudze Security Center lub usługa Azure Policy
+
+Ten artykuł pomoże Ci skonfigurować zasady zabezpieczeń w usłudze Azure Security Center. Zasady Centrum zabezpieczeń Azure integracji z zasad platformy Azure, dzięki czemu możesz je ustawić w usłudze Security Center w określonej subskrypcji lub w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md), co umożliwia ustawianie zasad w grupach zarządzania oraz między wieloma Subskrypcje...
+
+## <a name="what-are-security-policies"></a>Czym są zasady zabezpieczeń?
+Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń oraz pomagają zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy. W usłudze Azure Security Center można zdefiniować zasady dla subskrypcji platformy Azure i dostosowuj je do danego typu obciążenia lub wrażliwości danych. Na przykład aplikacje wykorzystujące dane podlegające ochronie, takie jak dane osobowe, mogą wymagać wyższego poziomu zabezpieczeń niż innych obciążeń. Aby ustawić zasady dla subskrypcji lub grupy zarządzania, należy ustawić je w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md).
+
+> [!NOTE]
+> Jeśli wcześniej skonfigurowano zasady zabezpieczeń na subskrypcję, która jest częścią grupy zarządzania lub ma wiele zasad przydziały, te zasady są wyświetlane na szarym w usłudze Security Center tak, aby można było zarządzać zasadami na poziomie grupy zarządzania za pośrednictwem platformy Azure Strona zasad. 
 
 ## <a name="how-security-policies-work"></a>Jak działają zasady zabezpieczeń
 Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. Możesz edytować zasady w usłudze Security Center lub wykonywać poniższe czynności przy użyciu usługi Azure Policy:
@@ -40,8 +47,17 @@ Zasady platformy Azure zawierają następujące składniki:
 
 Zasób jest oceniany pod kątem zasad, które zostały do niego przypisane, i otrzymuje współczynnik zgodności w zależności od liczby zasad, z którymi jest zgodny.
 
+## <a name="who-can-edit-security-policies"></a>Kto może edytować zasady zabezpieczeń?
+Usługa Security Center korzysta z opartej na rolach kontrola dostępu (RBAC), który zapewnia wbudowane role, które można przypisać do użytkowników, grup i usług na platformie Azure. Po otwarciu Centrum zabezpieczeń, widzą tylko informacje związane z zasobami, które mają dostęp do. Co oznacza, że użytkownicy przypisano rolę właściciela, współautora lub czytelnika subskrypcji lub grupy zasobów, której należy zasób. Oprócz tych ról istnieją dwie określone role usługi Security Center:
+
+- Czytelnik zabezpieczeń: ma widoku praw do usługi Security Center, który zawiera zalecenia, alerty, zasady i kondycję, ale one nie może wprowadzać zmian.
+- Administrator zabezpieczeń: ma te same prawa widok jako rola Czytelnik zabezpieczeń, a można również możliwość aktualizowania zasad zabezpieczeń oraz odrzucania zaleceń i alertów.
+
 ## <a name="edit-security-policies"></a>Edytowanie zasad zabezpieczeń
 W usłudze Security Center możesz edytować domyślne zasady zabezpieczeń dla każdej Twojej grupy zarządzania i subskrypcji platformy Azure. Aby zmodyfikować zasady zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń tej subskrypcji lub zawierającej ją grupy zarządzania. Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
+
+> [!NOTE]
+> Żadnych zasad zabezpieczeń ustawionych na subskrypcję, która jest częścią grupy zarządzania lub ma wiele zasad przydziały, pojawi się szare w usłudze Security Center. Możesz edytować te zasady w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md). 
 
 1. Na pulpicie nawigacyjnym usługi **Security Center** w obszarze **ZASADY I ZGODNOŚĆ** wybierz pozycję **Zasady zabezpieczeń**. Zostanie otwarte okienko **Zarządzanie zasadami**.
 
@@ -100,7 +116,7 @@ Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na w
 >
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md) — informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.

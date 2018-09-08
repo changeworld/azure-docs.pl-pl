@@ -6,14 +6,14 @@ keywords: rozwiązania ansible, azure, omówienie, modułów rozwiązania ansibl
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: e710770131c844598762feebe09ba50dc120de0c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 977fef390c0efecd47ec5e19b1a82c05e2ecfd0f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106904"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160749"
 ---
 # <a name="ansible-with-azure"></a>Rozwiązanie Ansible na platformie Azure
 
@@ -37,13 +37,17 @@ Po rozwiązaniu Ansible używanych do definiowania infrastruktury, można zastos
 
 ## <a name="automate-cloud-native-application-in-azure"></a>Automatyzacja aplikacji natywnych dla chmury na platformie Azure
 
-Rozwiązanie Ansible umożliwia automatyzację aplikacjom natywnym dla chmury na platformie Azure przy użyciu mikrousług platformy Azure, takich jak [usługi Azure Functions](https://azure.microsoft.com//services/functions/) i [Kubernetes na platformie Azure](https://azure.microsoft.com/services/container-service/kubernetes/)).  
+Rozwiązanie Ansible umożliwia automatyzację aplikacjom natywnym dla chmury na platformie Azure przy użyciu mikrousług platformy Azure, takich jak [usługi Azure Functions](https://azure.microsoft.com//services/functions/) i [Kubernetes na platformie Azure](https://azure.microsoft.com/services/container-service/kubernetes/).  
 
 ## <a name="manage-deployments-with-dynamic-inventory"></a>Zarządzanie wdrożeniami przy użyciu magazynu dynamicznego
 Za pomocą jego [dynamiczny spis](http://docs.ansible.com/ansible/intro_dynamic_inventory.html) funkcji rozwiązania Ansible zapewnia możliwość ściągania spisu z zasobów platformy Azure. Możesz następnie tagów istniejących wdrożeń platformy Azure i zarządzać tym wdrożeniom oznakowane za pomocą rozwiązania Ansible.
 
 ## <a name="additional-azure-marketplace-options"></a>Dodatkowe opcje w witrynie Azure Marketplace
 [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) obrazu portalu Azure Marketplace, by Red Hat ułatwia organizacjom skalowanie automatyzacji struktury informatycznej oraz zarządzanie złożonymi wdrożeniami w infrastrukturach fizycznych, wirtualnych i infrastruktury chmury. Ansible Tower obejmuje funkcje, które zapewniają dodatkowe poziomy widoczności, kontroli, bezpieczeństwa i wydajności niezbędne dla współczesnych przedsiębiorstw. Ansible Tower szyfruje poświadczenia, takie jak klucze platformy Azure i SSH, dzięki czemu możesz delegować zadania dla mniej doświadczonych pracowników, bez ryzyka ujawnienia poświadczeń.
+
+## <a name="ansible-module-and-version-matrix-for-azure"></a>Macierz modułu i wersji rozwiązania Ansible na platformie Azure
+Ansible jest dostarczany z modułów, które mogą być wykonywane bezpośrednio na hostach zdalnych lub za pomocą elementów playbook.
+[Macierzy modułu i wersji rozwiązania Ansible](./ansible-matrix.md) Wyświetla listę modułów Ansible na platformie Azure, które można udostępnić zasoby platformy Azure w chmurze, takie jak maszyny wirtualnej, sieci i usługi kontenerów. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Konfigurowanie rozwiązania Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 90868961475c2e9d0ac7d28c5d9a50c8eb281675
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 78df10f3b6062a157e1ec5a057e9f39fc40193e5
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525209"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091769"
 ---
 # <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Należy pamiętać o następujących kwestiach dotyczących korzystania z wersji
 - Autoryzacja dostępu do zasobów w ramach kont magazynu w warstwie standardowa w usłudze Azure AD jest obecnie obsługiwane. Autoryzacja dostępu do stronicowych obiektów blob na kontach magazynu premium będzie obsługiwane wkrótce.
 - Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Można przypisać role ograniczone do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki.
 - Bibliotek klienta usługi Azure Storage, które obecnie obsługują integracji z usługą Azure AD obejmują:
-    - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0)
+    - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage)
     - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) (Użyj 7.1.x-Preview)
     - Python
         - [Obiekt blob](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-blob)
@@ -40,18 +40,13 @@ Należy pamiętać o następujących kwestiach dotyczących korzystania z wersji
     - [Node.js](https://www.npmjs.com/package/azure-storage)
     - [JavaScript](https://aka.ms/downloadazurestoragejs))
 
-> [!IMPORTANT]
-> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach.
->
-> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
->
-> Integracja usługi Azure AD z usługą Azure Storage wymaga używania protokołu HTTPS dla operacji usługi Azure Storage.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="get-started-with-azure-ad-for-storage"></a>Rozpoczynanie pracy z usługą Azure AD pod kątem magazynu
 
-Pierwszym krokiem przy użyciu integracji z usługą Azure AD z usługą Azure Storage jest przypisanie ról RBAC dla magazynu danych do nazwy głównej usługi (użytkownika, grupy lub nazwy głównej usługi aplikacji) lub tożsamości usługi zarządzanej (MSI). Role RBAC obejmują typowe zestawy uprawnień dla kontenerów i kolejek. Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure Storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Pierwszym krokiem przy użyciu integracji z usługą Azure AD z usługą Azure Storage jest przypisywanie ról RBAC dla magazynu danych do nazwy głównej usługi, (użytkownika, grupy lub aplikacji jednostki usługi) lub zarządzanych tożsamości dla zasobów platformy Azure. Role RBAC obejmują typowe zestawy uprawnień dla kontenerów i kolejek. Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure Storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 
-Aby użyć usługi Azure AD do autoryzowania dostępu do zasobów magazynu w swoich aplikacjach, musisz żądania tokenu dostępu OAuth 2.0 w kodzie. Aby dowiedzieć się, jak żądania tokenu dostępu i użyć go w celu autoryzowania żądania do usługi Azure Storage, zobacz [uwierzytelnianie w usłudze Azure AD z poziomu aplikacji usługi Azure Storage (wersja zapoznawcza)](storage-auth-aad-app.md). Jeśli używasz usługi Azure tożsamość usługi zarządzanej (MSI), zobacz [uwierzytelnianie w usłudze Azure AD z usługi Azure VM tożsamości usługi zarządzanej (wersja zapoznawcza)](storage-auth-aad-msi.md).
+Aby użyć usługi Azure AD do autoryzowania dostępu do zasobów magazynu w swoich aplikacjach, musisz żądania tokenu dostępu OAuth 2.0 w kodzie. Aby dowiedzieć się, jak żądania tokenu dostępu i użyć go w celu autoryzowania żądania do usługi Azure Storage, zobacz [uwierzytelnianie w usłudze Azure AD z poziomu aplikacji usługi Azure Storage (wersja zapoznawcza)](storage-auth-aad-app.md). Jeśli używasz tożsamości zarządzanej, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
 
 Program PowerShell i interfejsu wiersza polecenia platformy Azure obsługują teraz zalogować się przy użyciu tożsamości usługi Azure AD. Po zalogowaniu się przy użyciu tożsamości usługi Azure AD, sesja działa w ramach tej tożsamości. Aby dowiedzieć się więcej, zobacz [tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)](storage-auth-aad-script.md).
 

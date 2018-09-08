@@ -1,6 +1,6 @@
 ---
-title: Podwyższ poziom firmy Microsoft | Azure
-description: Podwyższ poziom firmy przy użyciu portalu Azure Marketplace oraz AppSource dla wydawcy aplikacji i usług
+title: Wypromuj swoją firmę Microsoft | Azure
+description: 'Wypromuj swoją firmę za pomocą portalu Azure Marketplace i AppSource dla: wydawcy aplikacji i usługi'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b2b0a0bbc91115de22eda98df91fb104eb5972ed
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825227"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094947"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Podwyższ poziom firmy Microsoft  
-Firma Microsoft ma cel obsługuje partnerów (użytkownik) i uprościć sprzedaży aplikacji lub ofert w sklepy w witrynie marketplace. Przez listę w witrynie marketplace, możesz uzyskać dostęp, programów i zasoby w witrynie marketplace. 
+# <a name="promote-your-business-with-microsoft"></a>Wypromuj swoją firmę z firmą Microsoft  
+Firma Microsoft ma cel partnerzy (ty) pomocy technicznej, a także uprościć sprzedaż aplikacji lub ofertę w sklepów w witrynie marketplace. Przez listę w witrynie marketplace, możesz uzyskać dostęp do programów i zasobów, w portalu marketplace. 
 
-Jeśli użytkownik nie już przystąpił do sieci partnera firmy Microsoft (MPN), a następnie znaku przed kontynuowaniem.  
-*   Aby uzyskać więcej informacji na temat MPN, odwiedź stronę znajdujący się w sieci Microsoft Partner Network [partner.microsoft.com](https://partner.microsoft.com).  
+Jeśli użytkownik nie już przystąpił do programu Microsoft Partner Network (MPN), następnie to zrobić przed kontynuowaniem.  
+*   Aby uzyskać więcej informacji na temat programu MPN, odwiedź strony znajdujący się w sieci Microsoft Partner Network [partner.microsoft.com](https://partner.microsoft.com).  
 
-MPN znajdują się wskazówki dotyczące następujące tematy.  
+W poniższych tematach znajdują się wskazówki MPN.  
 *   Nowe możliwości biznesowe  
-*   Łączenie z zespołów lub partnerów  
-*   Rozwiązania i szkolenia, aby zwiększyć ich skillset Twojego  
+*   Łączenie z partnerami lub zespołów  
+*   Rozwiązania i szkoleń, aby pomóc w rozwijaniu Twojego zestawu umiejętności  
 
-Wspieranie aplikacji lub oferty, skorzystaj z poniższej tabeli można korzystać więcej korzyści i zasobów. 
+Aby promować oferty sieci Web lub aplikacji, skorzystaj z poniższej tabeli, dostęp do więcej korzyści i zasobów. 
 
-| Korzyści | zasoby |  
+| Korzyści | — zasoby |  
 |:--- |:--- |  
-| Użyj korzyści programu Core | W ramach sieci Microsoft Partner Network pojawi się zestaw podstawowe korzyści, które mogą pomóc zaoszczędzić czas i pieniądze. Zalety może również ułatwić wzmocnienie możliwości, lepiej obsługiwać klientów i tworzenie połączenia do firmy.<ul> <li>Aby uzyskać więcej informacji na temat korzyści core, odwiedź Core korzyści i wymagania strony znajduje się w [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
-| Zdobyć kompetencja platformy z chmury | Kompetencja zdobywanie pomaga samodzielnie rozróżnianie między innymi partnerami firmy Microsoft. Kompetencja zdobywanie pomaga również pokazują wiedzy technicznej i klienta powodzenia na rynku. Kompetencja jest wymaganiem wstępnym dla wielu programy klucza partnera, takie jak sprzedaż wspólnej.<ul> <li>Aby uzyskać więcej informacji na temat kompetencja platformy w chmurze, odwiedź stronę kompetencja platformy chmury strony znajduje się w [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
-| Stają się wspólnej sprzedaje gotowe | Gotowe wspólnej sprzedaje program umożliwia współpracować bezpośrednio z sprzedawców firmy Microsoft i innych partnerów na możliwości odbiorcy docelowego i planowania konta. Rozwiązanie będzie widoczny dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. Microsoft sprzedających są nagrodę współpraca i zastosowanie Tobie.<ul> <li>Aby uzyskać więcej informacji na temat wspólnej sprzedaje gotowości odwiedź wspierania firmy strony znajduje się w [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
+| Zrealizujcie swoje korzyści Core | W ramach programu Microsoft Partner Network zyskujesz zestaw podstawowych korzyści, które mogą pomóc Ci zaoszczędzić czas i pieniądze. Korzyści może również ułatwić zwiększanie możliwości, lepiej obsługiwać klientów i tworzyć relacje, aby dotrzeć do firmy.<ul> <li>Aby uzyskać więcej informacji na temat głównych korzyści, odwiedź stronę głównych korzyści i stronę wymagań znajduje się w [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
+| Zdobądź również z kompetencją Cloud Platform | Zarabiać kompetencją pomaga odróżnić samodzielnie między innymi partnerami firmy Microsoft. Zarabiać kompetencją pomaga też prezentację wiedzy technicznej i sukces klientów na rynku. Kompetencja jest wymaganiem wstępnym dla wielu programów kluczowy partner, takich jak wspólnej sprzedaży.<ul> <li>Aby uzyskać więcej informacji na temat kompetencję Cloud Platform odwiedź stronę kompetencji Cloud Platform strony znajduje się w [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
+| Zostań gotowości do wspólnej sprzedaży | Program współpracy sprzedażowej można współpracować bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami, na docelowy potencjalnymi klientami i planowania konta. Rozwiązanie staje się widoczna dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. Sprzedawcami firmy Microsoft są przez współpracy i zdobywania Tobie.<ul> <li>Aby uzyskać więcej informacji o gotowości do wspólnej sprzedaży, odwiedź stronę podwyższanie poziomu firmy Your strony znajduje się w [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
 
 ---  

@@ -1,28 +1,21 @@
 ---
-title: 'Konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja, które mogą współistnieć: usługa Resource Manager: Azure | Microsoft Docs'
-description: Ten artykuł zawiera instrukcje dotyczące konfigurowania połączeń usługi ExpressRoute oraz sieci VPN typu lokacja-lokacja, które mogą współistnieć, dla modelu usługi Resource Manager.
-documentationcenter: na
+title: 'Konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja, które mogą współistnieć: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono konfigurowanie usługi ExpressRoute i połączeń sieci VPN typu lokacja-lokacja, które mogą współistnieć, dla modelu usługi Resource Manager przy użyciu programu PowerShell
 services: expressroute
 author: charwen
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/17/2018
-ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 09/07/2018
+ms.author: charwen
+ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41917625"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162346"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Program PowerShell — model usługi Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell — model klasyczny](expressroute-howto-coexist-classic.md)
@@ -34,7 +27,7 @@ Konfigurowanie sieci VPN typu lokacja-lokacja i współistniejących połączeń
 * Możesz skonfigurować sieć VPN typu lokacja-lokacja jako ścieżkę pracy w trybie failover dla usługi ExpressRoute. 
 * Alternatywnie możesz użyć sieci VPN typu lokacja-lokacja w celu nawiązania połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. 
 
-Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. 
+Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. Te scenariusze, w witrynie Azure Portal, można również skonfigurować, mimo że dokumentacja nie jest jeszcze dostępna.
 
 >[!NOTE]
 >Jeśli chcesz utworzyć sieć VPN typu lokacja-lokacja za pośrednictwem obwodu usługi ExpressRoute, zobacz [ten artykuł](site-to-site-vpn-over-microsoft-peering.md).
@@ -236,5 +229,5 @@ Możesz wykonać poniższe kroki, aby dodać konfigurację typu punkt-lokacja do
 
 Więcej informacji na temat sieci VPN typu punkt-lokacja znajduje się w artykule [Configure a Point-to-Site connection](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) (Konfigurowanie połączenia typu punkt-lokacja).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).

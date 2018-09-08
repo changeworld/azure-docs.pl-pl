@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
-ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1c9fe9fb63b45233ed1a11bb63c0763c6103bc6d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365943"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095185"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -173,7 +173,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |**Źródło** wartość do zaktualizowania. |
+| **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
 
 - - -
 ### <a name="switch"></a>Przełącznik
@@ -185,7 +185,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |**Źródło** wartość do zaktualizowania. |
+| **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
 | **defaultValue** |Optional (Opcjonalność) |Ciąg |Wartość domyślna ma być używany, gdy źródło nie jest zgodna żadnych kluczy. Może być pustym ciągiem (""). |
 | **Klucz** |Wymagane |Ciąg |**Klucz** do porównania **źródła** wartością. |
 | **value** |Wymagane |Ciąg |Wartość zastąpienia dla **źródła** pasujący do klucza. |
@@ -207,7 +207,7 @@ Na przykład jeśli domena "contoso.com", następnie można użyć następujące
 Jeśli używasz piaskownicy usługi Salesforce, może być konieczne dołączyć dodatkowe sufiks do nazw użytkowników przed ich zsynchronizowaniem.
 
 **Wyrażenie:** <br>
-`Append([userPrincipalName], ".test"))`
+`Append([userPrincipalName], ".test")`
 
 **Przykładowe dane wejściowe/wyjściowe:** <br>
 

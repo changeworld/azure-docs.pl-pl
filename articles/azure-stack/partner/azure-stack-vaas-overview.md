@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c96e7385356354d398108ad69492603d38667e46
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 56251245a23df031f3bc8fe3d36de43e194fbcc7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235038"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159677"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co to jest weryfikacja jako usługa dla usługi Azure Stack?
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Sprawdzanie poprawności jako usługa (VaaS) jest natywny usługi platformy Azure, przeznaczony dla partnerów rozwiązań, którzy są wspólnie inżynierów firmy Microsoft w ofercie usługi Azure Stack. Rozwiązanie partnerzy mogą używać usługi, aby sprawdzić, czy swoich rozwiązań spełniały wymagania firmy Microsoft i działają zgodnie z oczekiwaniami z usługą Azure Stack.
 

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2018
+ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918805"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162312"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -272,6 +272,11 @@ Istnieje kilka najlepszych rozwiązań, które spowodowało poza setki wdrożeń
 - Maszyny wirtualne w sieci wirtualnej mają statyczny przydziału prywatnego adresu IP. Zapoznaj się z artykułem [typy adresów IP i metody alokacji na platformie Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) jako odwołanie.
 - Ograniczenia routingu do i z maszyn wirtualnych z systemem DBMS **nie** zestawu przy użyciu zapór zainstalowanych na lokalnych maszynach wirtualnych z systemem DBMS. Zamiast tego routing ruchu jest zdefiniowana za pomocą [grup zabezpieczeń platformy Azure w sieci (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - Na potrzeby oddzielenie i izolowania ruchu sieciowego do maszyny Wirtualnej systemu DBMS, możesz przypisać różne karty sieciowe z maszyną wirtualną. Gdzie co karta sieciowa ma inny adres IP, a każdej karty Sieciowej jest przypisany do innej podsieci sieci wirtualnej, która ponownie ma różne reguły sieciowej grupy zabezpieczeń. Należy pamiętać, izolacja i rozdzielania ruchu sieciowego jest po prostu miarą routingu i nie zezwala na ustawianie limitów dla przepustowość sieci.
+
+> [!NOTE]
+> Należy przypisać statyczne adresy IP za pośrednictwem platformy Azure oznacza, że do poszczególnych kart sieciowych. Nie należy przypisywać statyczne adresy IP w ramach systemu operacyjnego gościa do wirtualnej karty sieciowej. Niektórych usług platformy Azure, takich jak usługa Kopia zapasowa Azure opierają się na fakcie, że w co najmniej podstawowego wirtualnej karty sieciowej jest ustawiony, DHCP, a nie statycznych adresów IP. Zobacz też dokumentu [kopii zapasowej maszyny wirtualnej Azure Rozwiązywanie problemów z](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Musisz przypisać wiele statycznych adresów IP do maszyny Wirtualnej, należy przypisać wiele kart sieciowych do maszyny Wirtualnej.
+>
+>
 
 Używa dwóch maszyn wirtualnych do wdrażania systemu DBMS, w ramach zestawu dostępności platformy Azure, a także osobne routingu dla warstwy aplikacji SAP i zarządzanie i operacje ruchu do dwóch maszyn wirtualnych z systemem DBMS w środowisku produkcyjnym, diagram nierównej będzie wyglądać:
 

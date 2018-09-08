@@ -1,55 +1,51 @@
 ---
-title: Zewnętrznego powiązania tabeli dla usługi Azure Functions (eksperymentalne)
-description: Przy użyciu powiązań zewnętrznych tabeli w funkcji Azure
+title: Zewnętrzne powiązanie tabeli dla usługi Azure Functions (wersja eksperymentalna)
+description: Za pomocą powiązania tabeli zewnętrznej w usłudze Azure Functions
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 8a4358fa67e45d0b7a2df1519d649099b5ef5850
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 24728414747d8ad8a8d7ee0d8a21be2177a15ddd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27613285"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093816"
 ---
-# <a name="external-table-binding-for-azure-functions-experimental"></a>Zewnętrznego powiązania tabeli dla usługi Azure Functions (eksperymentalne)
+# <a name="external-table-binding-for-azure-functions-experimental"></a>Zewnętrzne powiązanie tabeli dla usługi Azure Functions (wersja eksperymentalna)
 
-W tym artykule opisano sposób pracy z tabelarycznego na dostawców w modelu SaaS, takich jak Sharepoint i Dynamics w usługi Azure Functions. Azure Functions obsługuje wejściowa i wyjściowa powiązania dla tabel zewnętrznych.
+W tym artykule opisano sposób pracy z danymi tabelarycznymi na dostawców SaaS, takich jak Sharepoint i Dynamics w usłudze Azure Functions. Usługi Azure Functions obsługuje danych wejściowych i wyjściowych powiązania dla tabel zewnętrznych.
 
 > [!IMPORTANT]
-> Powiązania tabeli zewnętrznej jest eksperymentalna i nigdy nie może osiągnąć stanu ogólnie dostępna (GA). Znajduje się tylko na platformie Azure funkcje 1.x i nie ma żadnych planów, aby dodać go do usługi Azure Functions 2.x. W przypadku scenariuszy, które wymagają dostępu do danych w modelu SaaS dostawców, rozważ zastosowanie [logikę aplikacji, które wywołują funkcje](functions-twitter-email.md).
+> Powiązania tabeli zewnętrznej jest eksperymentalny i nigdy nie może osiągnąć stan jest ogólnie dostępna (GA). Znajduje się tylko na platformie Azure funkcji 1.x i nie ma żadnych planów, aby dodać go do usługi Azure Functions 2.x. W przypadku scenariuszy, które wymagają dostępu do danych w modelu SaaS dostawców należy wziąć pod uwagę przy użyciu [aplikacje logiki, które wywołują funkcje](functions-twitter-email.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="api-connections"></a>Połączenia interfejsu API
 
-Powiązania tabeli korzystać z połączeń zewnętrznych interfejsu API do uwierzytelniania za pomocą dostawcy SaaS. 
+Powiązania tabeli wykorzystać zewnętrzne połączenia interfejsu API do uwierzytelniania przy użyciu dostawców SaaS innych firm. 
 
-Podczas przypisywania powiązanie możesz utworzyć nowe połączenie interfejsu API lub użyć istniejącego połączenia interfejsu API w tej samej grupie zasobów.
+Podczas przypisywania powiązanie możesz utworzyć nowe połączenie interfejsu API lub użyć istniejącego połączenia interfejsu API w ramach tej samej grupie zasobów.
 
 ### <a name="available-api-connections-tables"></a>Dostępne połączenia interfejsu API (tabele)
 
 |Łącznik|Wyzwalacz|Dane wejściowe|Dane wyjściowe|
 |:-----|:---:|:---:|:---:|
 |[DB2](https://docs.microsoft.com/azure/connectors/connectors-create-api-db2)||x|x
-|[Dynamics 365 dla operacji](https://ax.help.dynamics.com/wiki/install-and-configure-dynamics-365-for-operations-warehousing/)||x|x
+|[Dynamics 365 for Operations](https://ax.help.dynamics.com/wiki/install-and-configure-dynamics-365-for-operations-warehousing/)||x|x
 |[Dynamics 365](https://docs.microsoft.com/azure/connectors/connectors-create-api-crmonline)||x|x
 |[Dynamics NAV](https://msdn.microsoft.com/library/gg481835.aspx)||x|x
 |[Arkusze Google](https://docs.microsoft.com/azure/connectors/connectors-create-api-googledrive)||x|x
 |[Informix](https://docs.microsoft.com/azure/connectors/connectors-create-api-informix)||x|x
-|[Dynamics 365 dla Finanse](https://docs.microsoft.com/azure/connectors/connectors-create-api-crmonline)||x|x
+|[Dynamics 365 for Financials](https://docs.microsoft.com/azure/connectors/connectors-create-api-crmonline)||x|x
 |[MySQL](https://docs.microsoft.com/azure/store-php-create-mysql-database)||x|x
 |[Baza danych Oracle](https://docs.microsoft.com/azure/connectors/connectors-create-api-oracledatabase)||x|x
-|[Wspólne usługi danych](https://docs.microsoft.com/common-data-service/entity-reference/introduction)||x|x
+|[Common Data Service](https://docs.microsoft.com/common-data-service/entity-reference/introduction)||x|x
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||x|x
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||x|x
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||x|x
@@ -58,11 +54,11 @@ Podczas przypisywania powiązanie możesz utworzyć nowe połączenie interfejsu
 |Zendesk||x|x
 
 > [!NOTE]
-> Połączenia zewnętrzne tabeli można również w [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
+> Połączenia zewnętrzne tabeli można również w [usługi Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
 ## <a name="creating-an-api-connection-step-by-step"></a>Tworzenie połączenia interfejsu API: krok po kroku
 
-1. Na stronie portalu platformy Azure dla aplikacji funkcji, kliknij znak plus (**+**) można utworzyć funkcji.
+1. W witrynie Azure portal strona dla aplikacji funkcji, wybierz znak plus (**+**) aby utworzyć funkcję.
 
 1. W **scenariusza** wybierz opcję **eksperymentalne**.
 
@@ -70,19 +66,19 @@ Podczas przypisywania powiązanie możesz utworzyć nowe połączenie interfejsu
 
 1. Wybierz język.
 
-2. W obszarze **połączenia tabeli zewnętrznej**, wybrać istniejące połączenie, lub wybierz **nowe**.
+2. W obszarze **połączenie zewnętrzne z tabelą**, wybierz istniejące połączenie lub **nowe**.
 
-1. Nowe połączenie, skonfiguruj ustawienia, a następnie wybierz **autoryzacji**.
+1. Nowe połączenie, skonfiguruj ustawienia, a następnie wybierz pozycję **Autoryzuj**.
 
-1. Wybierz **Utwórz** można utworzyć funkcji.
+1. Wybierz **Utwórz** Aby utworzyć funkcję.
 
-1. Wybierz **integracji > tabeli zewnętrznej**.
+1. Wybierz **integracja > tabeli zewnętrznej**.
 
-1. Skonfiguruj połączenie z tabeli docelowej. Te ustawienia będą się różnić od dostawców w modelu SaaS. Przykłady znajdują się w poniższej sekcji.
+1. Skonfiguruj połączenie do użycia w tabeli docelowej. Te ustawienia będą się różnić między dostawcami SaaS. Przykłady znajdują się w poniższej sekcji.
 
 ## <a name="example"></a>Przykład
 
-W tym przykładzie łączy do tabeli z kolumnami Identyfikator, nazwisko i imię o nazwie "Skontaktuj się z". Kod wyświetla jednostkami kontaktowymi w tabeli i dzienniki imiona i nazwiska.
+W tym przykładzie łączy do tabeli o nazwie "Contact" z kolumnami Identyfikator, nazwisko i imię. Kod zawiera listę jednostek kontaktu w tabeli i rejestruje imiona i nazwiska.
 
 Oto *function.json* pliku:
 
@@ -108,7 +104,7 @@ Oto *function.json* pliku:
 }
 ```
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 #r "Microsoft.Azure.ApiHub.Sdk"
@@ -149,7 +145,7 @@ public static async Task Run(string input, ITable<Contact> table, TraceWriter lo
 
 ### <a name="sql-server-data-source"></a>Źródło danych programu SQL Server
 
-Aby utworzyć tabelę w programie SQL Server do użycia z tym przykładem, w tym miejscu jest skrypt. `dataSetName`to "domyślny".
+Aby utworzyć tabelę w programie SQL Server do korzystania z tego przykładu, w tym polu to skrypt. `dataSetName` to "default".
 
 ```sql
 CREATE TABLE Contact
@@ -168,33 +164,33 @@ INSERT INTO Contact(Id, LastName, FirstName)
 GO
 ```
 
-### <a name="google-sheets-data-source"></a>Źródło danych Google arkuszy
+### <a name="google-sheets-data-source"></a>Źródło danych w arkuszach Google
 
-Aby utworzyć tabelę do użycia z tym przykładem w Google Docs, należy utworzyć arkusz kalkulacyjny w arkuszu o nazwie `Contact`. Łącznik nie można użyć Nazwa wyświetlana arkusza kalkulacyjnego. Potrzeb wewnętrzna nazwa (pogrubione) ma być używany jako dataSetName, na przykład: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  dodać nazwy kolumn `Id`, `LastName`, `FirstName` do pierwszego wiersza, następnie wypełnij dane na kolejne wiersze.
+Aby utworzyć tabelę do użycia z tym przykładem w witrynie Docs Google, należy utworzyć arkusz kalkulacyjny z arkusza o nazwie `Contact`. Łącznik nie można użyć nazwy wyświetlanej w arkuszu kalkulacyjnym. Potrzeb nazwa wewnętrzna (pogrubiony), który ma być używany jako dataSetName, na przykład: `docs.google.com/spreadsheets/d/` **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** dodać nazwy kolumn `Id`, `LastName`, `FirstName` do pierwszego wiersza, a następnie wypełnimy danych na kolejnych wierszy.
 
 ### <a name="salesforce"></a>SalesForce
 
-Aby użyć tego przykładu z usług Salesforce, `dataSetName` jest "domyślny".
+W tym przykładzie za pomocą usługi Salesforce, `dataSetName` jest "default".
 
 ## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku.
 
 |Właściwość Function.JSON | Opis|
 |---------|----------------------|
-|**Typ** | należy wybrać opcję `apiHubTable`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
-|**Kierunek** | należy wybrać opcję `in`. Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
-|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzeń w kodzie funkcji. | 
-|**połączenia**| Określa ustawienie aplikacji, które są przechowywane w parametrach połączenia interfejsu API. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia interfejsu API w integracji interfejsu użytkownika.|
+|**type** | Musi być równa `apiHubTable`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
+|**połączenia**| Określa ustawienia aplikacji, która przechowuje parametry połączenia interfejsu API. Ustawienia aplikacji jest tworzona automatycznie podczas dodawania połączenia interfejsu API w integracja interfejsu użytkownika.|
 |**dataSetName**|Nazwa zestawu danych, który zawiera tabelę do odczytu.|
-|**tableName**|Nazwa tabeli|
-|**Identyfikator jednostki**|Może być puste dla powiązania tabeli.
+|**Właściwość TableName**|Nazwa tabeli|
+|**Identyfikator jednostki**|Musi być pusta dla powiązania tabeli.
 
-Łącznik tabelarycznych zawiera zestawy danych, a każdy zestaw danych zawiera tabele. Nazwa domyślnego zestawu danych to "domyślny". Poniżej wymieniono tytułów dla zestawu danych i tabeli w różnych dostawców SaaS:
+Tabelaryczne łącznik udostępnia zestawy danych, a każdy zestaw danych zawiera tabele. Nazwa domyślny zestaw danych to "default". Poniżej wymieniono tytułów do zestawu danych i tabelę w różnych dostawców SaaS:
 
 |Łącznik|Zestaw danych|Tabela|
 |:-----|:---|:---| 
-|**SharePoint**|Witryna|Listy programu SharePoint
+|**SharePoint**|Witryna|Lista programu SharePoint
 |**SQL**|Database (Baza danych)|Tabela 
 |**Arkusz Google**|Arkusz kalkulacyjny|Arkusz 
 |**Excel**|Plik programu Excel|Arkusz 
@@ -202,4 +198,4 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

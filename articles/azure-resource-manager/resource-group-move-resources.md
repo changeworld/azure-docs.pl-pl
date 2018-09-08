@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 09/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: e0a2e26fb3dd0afeb4d1f3d030cb42bdc181e63c
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783342"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094964"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -210,7 +210,7 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
-* Pamięć podręczna Redis
+* Pamięć podręczna redis — skonfigurowanie wystąpienia usługi Redis Cache za pomocą sieci wirtualnej wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie
 * Service Bus

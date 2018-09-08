@@ -16,12 +16,12 @@ ms.date: 08/20/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 039edd45381670a8fa97fb9025933b28d291d511
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: b0e6e764fe44dc5216a6b75453f0be6c35af2d11
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371393"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161598"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integracja aplikacji SaaS w usłudze Azure Active Directory
 
@@ -144,7 +144,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco platformy Spark — Inicjowanie obsługi użytkowników](cisco-spark-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex — Inicjowanie obsługi użytkowników](cisco-webex-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Usługa Citrix ShareFile](sharefile-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen — Inicjowanie obsługi użytkowników](clarizen-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)||
 | ![logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Wyczyść przeglądu](clearreview-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clearcompany-tutorial.png)| [ClearCompany](clearcompany-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clever-tutorial.png)| [Inteligentne](clever-tutorial.md)|
@@ -299,6 +299,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
 | :---: | :--- | :--- |
 | ![logo](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Narzędzie Jamf Pro](jamfprosamlconnector-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-jdacloud-tutorial.png)| [JDA chmury](jdacloud-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML logowania jednokrotnego przez firmę Microsoft](jiramicrosoft-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [JIRA SAML logowania jednokrotnego przez firmę Microsoft (w wersji 5.2)](jira52microsoft-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-jitbit-helpdesk-tutorial.png)| [Jitbit Helpdesk](jitbit-helpdesk-tutorial.md)|
@@ -459,7 +460,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-redbrickhealth-tutorial.png)| [RedBrick kondycji](redbrickhealth-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-redvector-tutorial.png)| [RedVector](redvector-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-reflektive-tutorial.png)| [Reflektive](reflektive-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-replicon-tutorial.png)| [Replicon](replicon-tutorial.md)|[Replicon — Inicjowanie obsługi użytkowników](replicon-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-replicon-tutorial.png)| [Replicon](replicon-tutorial.md)||
 | ![logo](./media/tutorial-list/active-directory-saas-reviewsnap-tutorial.png)| [Reviewsnap](reviewsnap-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-reward-gateway-tutorial.png)| [Brama nagrody](reward-gateway-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-rfpio-tutorial.png)| [RFPIO](rfpio-tutorial.md)|
@@ -515,6 +516,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-showpad-tutorial.png)| [Showpad](showpad-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-signalfx-tutorial.png)| [SignalFx](signalfx-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-silkroad-life-suite-tutorial.png)| [Pakiet SilkRoad życia](silkroad-life-suite-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-silverback-tutorial.png)| [Silverback](silverback-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-simplenexus-tutorial.png)| [SimpleNexus](simplenexus-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-skilljar-tutorial.png)| [Skilljar](skilljar-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-skillport-tutorial.png)| [Skillport](skillport-tutorial.md)|
@@ -616,7 +618,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-workteam-tutorial.png)| [Workteam](workteam-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-workstars-tutorial.png)| [Workstars](workstars-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters na żądanie](xmatters-ondemand-tutorial.md)|[xMatters OnDemand - aprowizacji użytkowników](xmatters-ondemand-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters na żądanie](xmatters-ondemand-tutorial.md)||
 | ![logo](./media/tutorial-list/active-directory-saas-yardielearning-tutorial.png)| [Aktualne Yardi](yardielearning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-yardione-tutorial.png)| [YardiOne](yardione-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|

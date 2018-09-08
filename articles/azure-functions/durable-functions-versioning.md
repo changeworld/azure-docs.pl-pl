@@ -1,39 +1,35 @@
 ---
-title: Przechowywanie wersji w funkcjach trwałe - Azure
-description: Dowiedz się, jak do implementacji przechowywania wersji w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
+title: Przechowywanie wersji w funkcje trwałe - Azure
+description: Dowiedz się, jak wdrożyć przechowywanie wersji w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0a86e4a87f5ec23c284aa4e5cfb2c67622b3ebe9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d628f48f4958e4e763ed0064462a5fb2ed398bf
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23838555"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094336"
 ---
-# <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcji trwałe (funkcje platformy Azure)
+# <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcje trwałe (usługa Azure Functions)
 
-Jest nieuniknione, że funkcje zostaną dodane, usunięte i zmianie w okresie istnienia aplikacji. [Funkcje trwałe](durable-functions-overview.md) umożliwia tworzenie łańcuchów razem działa w sposób, w którym nie zostały wcześniej możliwe i łańcucha tej wpływa na sposób może obsłużyć przechowywanie wersji.
+Jest nieuniknione, że funkcje będzie można dodać, usunął i zmienił w okresie istnienia aplikacji. [Trwałe funkcje](durable-functions-overview.md) umożliwia tworzenie łańcuchów funkcji razem w sposób, który nie był wcześniej możliwe i ten łańcuch ma wpływ na sposób może obsługiwać przechowywanie wersji.
 
-## <a name="how-to-handle-breaking-changes"></a>Jak obsługiwać zmiany podziału
+## <a name="how-to-handle-breaking-changes"></a>Jak obsługiwać zmiany powodujące niezgodność
 
-Brak zmian, które psuły pod uwagę kilka przykładów. W tym artykule opisano najbardziej typowe. Motywu głównego za wszystkich z nich jest zarówno orchestrations nowych i istniejących funkcji mają wpływ zmiany kodu funkcji.
+Istnieje kilka przykładów przełomowe zmiany, których trzeba pamiętać. W tym artykule omówiono najbardziej typowe źródła. Główne motywu za wszystkie z nich jest zarówno aranżacji nowych i istniejących funkcji mają wpływ zmiany kodu funkcji.
 
-### <a name="changing-activity-function-signatures"></a>Zmiana sygnatury funkcji działania
+### <a name="changing-activity-function-signatures"></a>Zmiana sygnatury funkcji działań
 
-Zmiana podpisu odwołuje się do zmiany nazwy, danych wejściowych lub wyjściowych funkcji. Tego rodzaju zmiany dotyczące funkcji działania, może spowodować przerwanie funkcji programu orchestrator, która zależy od niego. Po zaktualizowaniu funkcji programu orchestrator w celu uwzględnienia tej zmiany może spowodować przerwanie istniejących wystąpień locie.
+Zmień podpis odnosi się do zmiany nazwy, dane wejściowe lub danych wyjściowych przez funkcję. Tego rodzaju zmiany należy do działania funkcji może spowodować przerwanie funkcja orkiestratora, która zależy od niego. Jeśli zaktualizujesz funkcji programu orchestrator w celu uwzględnienia tej zmiany, może spowodować przerwanie istniejące locie wystąpienia.
 
-Na przykład załóżmy, że mamy następująca funkcja.
+Na przykład załóżmy, że mamy następującą funkcję.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -44,7 +40,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Ta funkcja simplistic przyjmuje wyniki **Foo** i przekazuje je do **paska**. Załóżmy, że należy zmienić wartość zwracaną **Foo** z `bool` do `int` do obsługi różnych wartości wyników. Wynik wygląda następująco:
+Ta funkcja uproszczony pobiera wyniki **Foo** i przekazuje go do **pasek**. Załóżmy, że trzeba zmienić wartość zwracaną przez **Foo** z `bool` do `int` do obsługi szerszy zakres wartości dla wyników. Wynik wygląda następująco:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -55,15 +51,15 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Ta zmiana działa prawidłowo dla wszystkich wystąpień nowych funkcji programu orchestrator, ale dzieli wystąpienia locie. Rozważmy na przykład sytuacji, gdy wywołuje wystąpienie aranżacji **Foo**, pobiera ponownie wartość logiczną, a następnie punkty kontrolne. Jeśli zmiana podpisu jest wdrażana w tym momencie, użyciu wystąpienia zakończy się niepowodzeniem, natychmiast po wznowieniu działania i odtwarzaniem wywołanie `context.CallActivityAsync<int>("Foo")`. Jest to spowodowane jest wynik w tabeli historii `bool` , ale nowy kod spróbuje go do deserializacji `int`.
+Ta zmiana działa prawidłowo dla wszystkich wystąpień nowych funkcji programu orchestrator, ale Dzieli aktywne wystąpienia. Na przykład, rozważmy przypadek, gdzie wystąpienie aranżacji wywołuje **Foo**, otrzymuje wartość logiczną, a następnie punktów kontrolnych. Jeśli zmiana podpisu jest wdrażana w tym momencie, wystąpienie utworzono punkt kontrolny nie powiedzie się natychmiast po wznowieniu działania i odtwarza wywołanie `context.CallActivityAsync<int>("Foo")`. Jest to spowodowane wynik w tabeli historii jest `bool` , ale nowy kod próbuje wykonać deserializacji go do `int`.
 
-Jest to tylko jeden wiele różnych sposobów, że zmiana podpisu mogą być dzielone istniejących wystąpień. Ogólnie rzecz biorąc Jeśli trzeba zmienić sposób orchestrator wywołuje funkcję, a następnie ta zmiana jest przyczyną problemów.
+Jest to tylko jedna wiele różnych sposobów, Zmień podpis może uszkodzić istniejące wystąpienia. Ogólnie rzecz biorąc gdy trzeba zmienić sposób koordynatora wywołuje funkcję, a następnie ta zmiana jest przyczyną problemów.
 
 ### <a name="changing-orchestrator-logic"></a>Zmiana logiki programu orchestrator
 
-Klasa problemom z wersjami pochodzą z zmiana kodu funkcji programu orchestrator w taki sposób, aby confuses logikę powtarzania locie wystąpień.
+Klasa problemy z wersjonowaniem pochodzą zmiana kodu funkcji programu orchestrator w sposób zapewniający confuses logikę powtarzania śledząc wystąpień.
 
-Należy wziąć pod uwagę następujące funkcji programu orchestrator:
+Rozważmy następującą funkcję programu orchestrator:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -74,7 +70,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Teraz załóżmy, że chcesz dokonania zmiany pozornie nieszkodliwie, aby dodać inne wywołanie funkcji.
+Teraz załóżmy, że chcesz próbę dokonania zmiany pozornie nieszkodliwie, aby dodać inne wywołanie funkcji.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -90,40 +86,40 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Ta zmiana dodaje nowe wywołanie funkcji w celu **SendNotification** między **Foo** i **paska**. Nie wprowadzono żadnych zmian podpisu. Problem występuje, gdy istniejące wystąpienie zostanie wznowione po wywołaniu **paska**. Podczas powtarzania, jeśli oryginalny wywołanie **Foo** zwrócił `true`, a następnie zostanie wywołany powtarzania orchestrator **SendNotification** który nie znajduje się w jego historii wykonywania. W związku z tym trwałe Framework zadań kończy się niepowodzeniem z `NonDeterministicOrchestrationException` ponieważ napotkała wywołanie **SendNotification** po oczekuje Zobacz wywołanie **paska**.
+Ta zmiana dodaje nowe wywołanie funkcji **SendNotification** między **Foo** i **pasek**. Nie wprowadzono żadnych zmian podpisu. Problem pojawia się po istniejącego wystąpienia wznowieniu działania z wywołania **pasek**. Podczas powtórzeń, jeśli oryginalne wywołanie **Foo** zwrócił `true`, a następnie powtarzanie orchestrator będzie wywoływać **SendNotification** która znajduje się w historię jej wykonywania. W rezultacie trwałe Framework zadań kończy się niepowodzeniem z `NonDeterministicOrchestrationException` ponieważ napotkał wywołanie **SendNotification** gdy oczekuje się wywołanie **pasek**.
 
-## <a name="mitigation-strategies"></a>Środki zaradcze strategie
+## <a name="mitigation-strategies"></a>Strategii ograniczania ryzyka
 
-Oto kilka strategii zajmujących się wyzwania przechowywanie wersji:
+Oto kilka strategii radzenia sobie z wersji wyzwania:
 
 * Nic nie rób
-* Zatrzymaj wszystkie wystąpienia aktywny
-* Side-by-side wdrożenia
+* Zatrzymaj wszystkie wystąpienia w locie
+* Side-by-side wdrożeń
 
 ### <a name="do-nothing"></a>Nic nie rób
 
-Najprostszym sposobem obsługi na istotne zmiany jest aby umożliwić locie aranżacji, niepowodzenia wystąpień. Nowe wystąpienia, pomyślny zmienionego kodu.
+Jest najprostszym sposobem obsługi istotnej zmiany umożliwiające śledząc aranżacji, wystąpień się nie powieść. Nowe wystąpienia pomyślnie uruchomić zmiany kodu.
 
-Czy jest to problem, zależy od ważności wystąpień locie. Jeśli w rozwoju aktywne i nie zależy Ci na zachowaniu locie wystąpień, może to być wystarczająca. Jednak należy uwzględniać wyjątków i błędów w potoku diagnostyki sieci. Aby uniknąć tych problemów, należy rozważyć inne opcje przechowywania wersji.
+Czy jest to problem, zależy od znaczenie śledząc wystąpień. Jeśli jesteś w aktywnie i nie dba o śledząc wystąpień, może to być wystarczające. Należy jednak wyjątki i błędy w potoku diagnostyki. Jeśli chcesz uniknąć tych elementów, należy wziąć pod uwagę innych opcji przechowywania wersji.
 
-### <a name="stop-all-in-flight-instances"></a>Zatrzymaj wszystkie wystąpienia aktywny
+### <a name="stop-all-in-flight-instances"></a>Zatrzymaj wszystkie wystąpienia w locie
 
-Innym rozwiązaniem jest zatrzymanie wszystkich wystąpień w locie. Można to zrobić przez wyczyszczenie zawartości wewnętrznego **kolejki kontroli** i **kolejki elementów roboczych** kolejek. Wystąpienia zostanie trwale zablokowane, gdy są one, ale nie będą one zajmowały telemetrii z komunikatów o błędach. Jest to idealne rozwiązanie w prototypu szybkie programowanie.
+Innym rozwiązaniem jest zatrzymanie wszystkich wystąpień w locie. Można to zrobić przez wyczyszczenie zawartości, wewnętrznego **kolejki kontroli** i **kolejki elementów roboczych** kolejek. Wystąpienia będzie zawsze zablokowany, gdzie znajdowały, ale ich nie będzie zaśmiecać telemetrii za pomocą komunikatów o błędach. Jest to idealne rozwiązanie w prototypu szybkiego rozwoju.
 
 > [!WARNING]
-> Szczegóły te kolejki mogą ulec zmianie w czasie, dlatego nie należy polegać na tej techniki w przypadku obciążeń produkcyjnych.
+> Szczegółowe informacje o tych kolejkach mogą ulec zmianie wraz z upływem czasu, dlatego nie należy polegać na tej techniki w przypadku obciążeń produkcyjnych.
 
-### <a name="side-by-side-deployments"></a>Side-by-side wdrożenia
+### <a name="side-by-side-deployments"></a>Side-by-side wdrożeń
 
-Sposobem najbardziej dowód błędów upewnij się, że istotne zmiany są wdrażane bezpiecznie jest wdrożenie ich side-by-side Twojej starszych wersji. Można to zrobić przy użyciu dowolnej z następujących metod:
+Najbardziej Niepowodzenie weryfikacji sposób zapewnienia przełomowe zmiany wdrożonych bezpiecznie jest przez wdrażanie ich side-by-side przy użyciu usługi starszych wersji. Można to zrobić przy użyciu dowolnej z następujących technik:
 
 * Wdrażanie wszystkich aktualizacji jako całkowicie nowe funkcje (nowe nazwy).
-* Wszystkie aktualizacje należy wdrożyć jako nową aplikację funkcji z innego konta magazynu.
-* Wdrażanie nowej kopii aplikacji funkcji, ale zaktualizowaną `TaskHub` nazwy. Jest to zalecana metoda.
+* Wszystkie aktualizacje należy wdrożyć jako nową aplikację funkcji przy użyciu innego konta magazynu.
+* Wdrażanie nowej kopii aplikacji funkcji, ale zaktualizowaną `TaskHub` nazwy. Jest to zalecana technika.
 
-### <a name="how-to-change-task-hub-name"></a>Jak zmienić nazwę Centrum zadań
+### <a name="how-to-change-task-hub-name"></a>Jak zmienić nazwę Centrum zadania
 
-Centrum zadań można skonfigurować w *host.json* plików w następujący sposób:
+Centrum zadania można skonfigurować w *host.json* pliku w następujący sposób:
 
 ```json
 {
@@ -135,14 +131,14 @@ Centrum zadań można skonfigurować w *host.json* plików w następujący spos�
 
 Wartość domyślna to `DurableFunctionsHub`.
 
-Wszystkie jednostki usługi Azure Storage są nazywane na podstawie `HubName` wartości konfiguracji. Podając nową nazwę koncentratora zadań, sprawdź, są tworzone oddzielne kolejek oraz tabela historii dla nowej wersji aplikacji.
+Wszystkie jednostki usługi Azure Storage są nazywane na podstawie `HubName` wartości konfiguracji. Dając Centrum zadań nową nazwę, możesz upewnij się, oddzielne kolejek i tabel historii są tworzone dla nowej wersji aplikacji.
 
-Firma Microsoft zaleca wdrożenia nowej wersji aplikacji funkcji na nowy [miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Miejsca wdrożenia umożliwiają uruchamianie wielu kopii z funkcji aplikacji po stronie by-side tylko jeden z nich jako aktywne *produkcji* miejsca. Gdy wszystko będzie gotowe do udostępnienia nowej logiki aranżacji w istniejącej infrastrukturze, może być tak proste, jak wymiany nowej wersji do miejsca produkcji.
+Firma Microsoft zaleca Wdrażanie nowej wersji aplikacji funkcji na nowe [miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Miejsca wdrożenia umożliwiają uruchamianie wielu kopii Twojej funkcji aplikacji side-by-side przy użyciu tylko jeden z nich jako aktywny *produkcji* miejsca. Gdy wszystko jest gotowe do udostępnienia nowej logiki aranżacji w istniejącej infrastrukturze, może być proste i polega na zamianę nowej wersji do miejsca produkcji.
 
 > [!NOTE]
-> Ta strategia działa najlepiej, gdy używasz wyzwalacze HTTP i elementu webhook dla funkcji programu orchestrator. Wyzwalaczy protokołu HTTP, takie jak kolejki i usługi Event Hubs definicję wyzwalacza powinien pochodzić z ustawienia aplikacji, która jest aktualizowana w ramach operacji wymiany.
+> Ta strategia sprawdza się najlepiej, korzystając z wyzwalaczami HTTP i elementy webhook dla funkcji programu orchestrator. Wyzwalaczy protokołu HTTP, takich jak kolejki i usługi Event Hubs do definicji wyzwalacza powinien pochodzić od ustawienia aplikacji, która zostanie zaktualizowany w ramach operacji wymiany.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak obsługiwać wydajności i skalowania problemów](durable-functions-perf-and-scale.md)
+> [Dowiedz się, jak obsługiwać wydajność i skalowanie problemów](durable-functions-perf-and-scale.md)

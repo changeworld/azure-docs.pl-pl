@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 8726aae7545809573b63f29cd8ef568c34aee5b4
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: 73ed6976450ef89fb87dd054147325c8b250d1a7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109175"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161513"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -109,7 +109,7 @@ Artykuły
 * [Podręcznik dotyczący zaleceń zapory aplikacji internetowej (WAF) w usłudze Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Podręcznik dotyczący usługi Azure Security Center: alerty zabezpieczeń](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Strona dokumentacji usługi Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Strona dokumentacji interfejsu API REST usługi Security Center](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Często zadawane pytania dotyczące usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)

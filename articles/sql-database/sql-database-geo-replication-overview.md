@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 71268c07f7e653e1f7cf545f373717fd2760fee9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 026b9147bf6f0f5ab4732d1937bd61d803967854
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918239"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159524"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -30,7 +30,7 @@ Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciąg�
 > Aktywna replikacja geograficzna nie jest dostępny w wystąpieniu zarządzanym.
 >  
 
-Automatyczny tryb failover grupy jest rozszerzeniem aktywnej replikacji geograficznej. Jest przeznaczona do zarządzania w tryb failover wielu sumultaneously baz danych z replikacją geograficzną za pomocą aplikacji zainicjować trybu failover lub przez delegowanie trybu failover do wykonania przez usługę SQL Database, w oparciu o użytkownika określonych kryteriów. Te ostatnie umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
+Automatyczny tryb failover grupy jest rozszerzeniem aktywnej replikacji geograficznej. Jest przeznaczony do zarządzanie trybem failover wielu baz replikowanej geograficznie danych, jednocześnie przy użyciu aplikacji zainicjować trybu failover lub przez delegowanie trybu failover do wykonania przez usługę SQL Database, w oparciu o użytkownika określonych kryteriów. Te ostatnie umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
 
 > [!NOTE]
 > Użyj aktywnej replikacji geograficznej, jeśli wymaganych jest wiele replik pomocniczych.

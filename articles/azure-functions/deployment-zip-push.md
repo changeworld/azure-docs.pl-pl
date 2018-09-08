@@ -5,21 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 06124a0a0db47d76552ddf2172a7f656c6d869cf
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 53a5de98ccdae4d4a73d8dc7b150c8e333024b33
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818471"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095168"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Wdrażanie pliku ZIP dla usługi Azure Functions
 

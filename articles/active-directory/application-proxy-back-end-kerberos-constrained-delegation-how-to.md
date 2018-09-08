@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ad2140d9d94cc4655043625200d42485b03c719b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 258df8f784cf673d628e3e70874a89c8ade692bd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364295"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093689"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -117,42 +117,42 @@ Użytkownik biletu protokołu Kerberos, dostarczone przez łącznik. Na tym etap
 
 3.  Uruchom DevTools (**F12**) w programie Internet Explorer lub użyj [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) z hosta łącznika. Przejdź do aplikacji przy użyciu wewnętrznego adresu URL. Zbadaj oferowane nagłówki autoryzacji WWW zwracany w odpowiedzi z aplikacji, aby upewnić się, że albo negocjowania lub protokołu Kerberos jest obecny. 
 
-    a. Dalej blob protokołu Kerberos, który jest zwracany w odpowiedzi z przeglądarki do aplikacji, który rozpoczyna się od **YII**. Te litery informujące, że protokół Kerberos jest uruchomiona. Microsoft NT LAN Manager (NTLM), z drugiej strony, zawsze zaczyna się od **TlRMTVNTUAAB**, która odczytuje NTLM zabezpieczeń pomocy technicznej dostawcy (NTLMSSP) podczas zdekodować z formatu Base64. Jeśli widzisz **TlRMTVNTUAAB** na początku tego obiektu blob, protokołu Kerberos nie jest dostępna. Jeśli nie widzisz **TlRMTVNTUAAB**, protokół Kerberos jest prawdopodobnie niedostępne.
-
+    - Dalej blob protokołu Kerberos, który jest zwracany w odpowiedzi z przeglądarki do aplikacji, który rozpoczyna się od **YII**. Te litery informujące, że protokół Kerberos jest uruchomiona. Microsoft NT LAN Manager (NTLM), z drugiej strony, zawsze zaczyna się od **TlRMTVNTUAAB**, która odczytuje NTLM zabezpieczeń pomocy technicznej dostawcy (NTLMSSP) podczas zdekodować z formatu Base64. Jeśli widzisz **TlRMTVNTUAAB** na początku tego obiektu blob, protokołu Kerberos nie jest dostępna. Jeśli nie widzisz **TlRMTVNTUAAB**, protokół Kerberos jest prawdopodobnie niedostępne.
+   
        > [!NOTE]
        > Jeśli używasz programu Fiddler, ta metoda wymaga tymczasowo wyłączyć ochrony rozszerzonej konfiguracji aplikacji w usługach IIS.
-
-       ![Inspekcja sieci przeglądarce](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
-
-    b. Obiekt blob na tym rysunku nie zaczyna się od **TIRMTVNTUAAB**. W tym przykładzie protokół Kerberos jest dostępne i obiektów blob protokołu Kerberos nie zaczyna się od **YII**.
+      
+      ![Inspekcja sieci przeglądarce](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
+   
+    - Obiekt blob na tym rysunku nie zaczyna się od **TIRMTVNTUAAB**. W tym przykładzie protokół Kerberos jest dostępne i obiektów blob protokołu Kerberos nie zaczyna się od **YII**.
 
 4.  Tymczasowe usunięcie NTLM, z listy dostawców w lokacji usług IIS. Dostęp do aplikacji bezpośrednio z programu Internet Explorer na hoście łącznika. Uwierzytelnianie NTLM nie jest już na liście dostawców. Aby dostęp do aplikacji, tylko przy użyciu protokołu Kerberos. Jeśli występuje błąd dostępu, może to być problem z konfiguracją aplikacji. Uwierzytelnianie Kerberos nie działa.
 
-    a. Jeśli protokół Kerberos nie jest dostępny, sprawdź ustawienia uwierzytelniania aplikacji w usługach IIS. Upewnij się, że **Negotiate** znajduje się na liście u góry strony, przy użyciu protokołu NTLM tuż poniżej. Jeśli widzisz **Negocjuj**, **protokołu Kerberos lub Negotiate**, lub **PKU2U**, kontynuować tylko wtedy, jeżeli protokół Kerberos jest funkcjonalności.
+    - Jeśli protokół Kerberos nie jest dostępny, sprawdź ustawienia uwierzytelniania aplikacji w usługach IIS. Upewnij się, że **Negotiate** znajduje się na liście u góry strony, przy użyciu protokołu NTLM tuż poniżej. Jeśli widzisz **Negocjuj**, **protokołu Kerberos lub Negotiate**, lub **PKU2U**, kontynuować tylko wtedy, jeżeli protokół Kerberos jest funkcjonalności.
 
        ![Dostawcy uwierzytelniania Windows](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
-    b. Przy użyciu protokołu Kerberos i NTLM w miejscu tymczasowo wyłączyć wstępnego uwierzytelniania dla aplikacji w portalu. Spróbuj uzyskać do niego dostęp z Internetu za pomocą zewnętrznego adresu URL. Zostanie wyświetlony monit uwierzytelnienia. Możesz to zrobić za pomocą tego samego konta, które są używane w poprzednim kroku. W przeciwnym razie występuje problem z aplikacją zaplecza, nie ograniczonego delegowania protokołu Kerberos.
+    - Przy użyciu protokołu Kerberos i NTLM w miejscu tymczasowo wyłączyć wstępnego uwierzytelniania dla aplikacji w portalu. Spróbuj uzyskać do niego dostęp z Internetu za pomocą zewnętrznego adresu URL. Zostanie wyświetlony monit uwierzytelnienia. Możesz to zrobić za pomocą tego samego konta, które są używane w poprzednim kroku. W przeciwnym razie występuje problem z aplikacją zaplecza, nie ograniczonego delegowania protokołu Kerberos.
 
-    c. Włącz ponownie wstępnego uwierzytelniania w portalu. Uwierzytelnianie za pośrednictwem platformy Azure, próbując nawiązać połączenia z aplikacji za pośrednictwem jego zewnętrznego adresu URL. Jeśli logowania jednokrotnego nie powiedzie się, zostanie wyświetlony błąd "niedozwolone" wiadomości w przeglądarce i zdarzenie 13022 w dzienniku:
+    - Włącz ponownie wstępnego uwierzytelniania w portalu. Uwierzytelnianie za pośrednictwem platformy Azure, próbując nawiązać połączenia z aplikacji za pośrednictwem jego zewnętrznego adresu URL. Jeśli logowania jednokrotnego nie powiedzie się, zostanie wyświetlony błąd "niedozwolone" wiadomości w przeglądarce i zdarzenie 13022 w dzienniku:
 
        *Łącznik serwera Proxy aplikacji usługi AAD firmy Microsoft nie może uwierzytelnić użytkownika, ponieważ serwer zaplecza odpowiada prób uwierzytelnienia Kerberos z powodu błędu HTTP 401.*
 
        ![401 HTTTP zabronione błąd](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
-
-    d. Sprawdź aplikacji usług IIS. Upewnij się, że pulę skonfigurowaną aplikację i nazwy SPN są skonfigurowane do używania tego samego konta w usłudze Azure AD. Przejdź w usługach IIS, jak pokazano na poniższej ilustracji:
-
+   
+    - Sprawdź aplikacji usług IIS. Upewnij się, że pulę skonfigurowaną aplikację i nazwy SPN są skonfigurowane do używania tego samego konta w usłudze Azure AD. Przejdź w usługach IIS, jak pokazano na poniższej ilustracji:
+      
        ![Okno konfiguracji aplikacji usług IIS](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
-
+      
        Po określeniu tożsamości, upewnij się, że to konto jest skonfigurowane przy użyciu tej nazwy SPN. Może to być na przykład `setspn –q http/spn.wacketywack.com`. Wprowadź następujący tekst w wierszu polecenia:
-
+      
        ![Okno polecenia SetSPN](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
-
-    e. Sprawdź nazwę SPN, zdefiniowane w odniesieniu do ustawień aplikacji w portalu. Upewnij się, że tej samej nazwy SPN skonfigurowane w odniesieniu do obiektu docelowego konta usługi Azure AD jest używany przez puli aplikacji.
+      
+    - Sprawdź nazwę SPN, zdefiniowane w odniesieniu do ustawień aplikacji w portalu. Upewnij się, że tej samej nazwy SPN skonfigurowane w odniesieniu do obiektu docelowego konta usługi Azure AD jest używany przez puli aplikacji.
 
        ![Konfiguracja główna nazwa usługi w witrynie Azure portal](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
    
-    f. Przejdź do usług IIS i wybierz pozycję **edytora konfiguracji** opcja dla aplikacji. Przejdź do **system.webServer/security/authentication/windowsAuthentication**. Upewnij się, że wartość **UseAppPoolCredentials** jest **True**.
+    - Przejdź do usług IIS i wybierz pozycję **edytora konfiguracji** opcja dla aplikacji. Przejdź do **system.webServer/security/authentication/windowsAuthentication**. Upewnij się, że wartość **UseAppPoolCredentials** jest **True**.
 
        ![Pule aplikacji programu IIS konfiguracji poświadczeń — opcja](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 

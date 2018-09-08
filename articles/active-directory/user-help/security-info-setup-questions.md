@@ -11,20 +11,20 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b4913d55ee3d254f197512d9251ae750d8896f53
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389637"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160442"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Skonfiguruj informacje zabezpieczające na użycie tych pytań zabezpieczających wstępnie zdefiniowane (wersja zapoznawcza)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego konta firmowego lub szkolnego, a następnie ukończ proces rejestracji. Jeśli użytkownik nigdy nie skonfigurowano swoje informacje zabezpieczające, użytkownik zostanie zapytany to zrobić teraz.
 
-## <a name="set-up-security-questions"></a>Skonfiguruj pytania zabezpieczające
+## <a name="set-up-security-questions"></a>Konfigurowanie pytań zabezpieczających
 
 W zależności od ustawień organizacji może monit dodać pytania zabezpieczające do swoich informacji zabezpieczających, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie zabezpieczeń pytań zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 

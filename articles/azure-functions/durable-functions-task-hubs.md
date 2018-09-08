@@ -1,49 +1,45 @@
 ---
-title: Koncentratory zadania w funkcje trwałe - Azure
-description: Dowiedz się z Centrum zadań znajduje się w funkcji trwałe rozszerzenie dla usługi Azure Functions. Dowiedz się, jak skonfigurować skonfigurować zadanie koncentratorów.
+title: Koncentratory zadań w funkcje trwałe - Azure
+description: Dowiedz się, jakie Centrum zadanie trwa rozszerzenia funkcji trwałych dla usługi Azure Functions. Dowiedz się, jak skonfigurować konfigurowanie koncentratory zadań.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 563667684accf8b434052cd412bf6e93c77ea63a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 53c70d4407222a80a9bc948db51294cd3e4e1bb4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762330"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092839"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Koncentratory zadań w funkcji trwałe (funkcje platformy Azure)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Koncentratory zadań w funkcje trwałe (usługi Azure Functions)
 
-A *Centrum zadań* w [trwałe funkcji](durable-functions-overview.md) jest kontenerem logicznym dla zasobów usługi Azure Storage, które są używane dla orchestrations. Funkcje programu orchestrator i działania tylko mogą współdziałać ze sobą, jeśli należą do tego samego Centrum zadań.
+A *Centrum zadań* w [funkcje trwałe](durable-functions-overview.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
 
-Każda aplikacja funkcji ma koncentratora osobnym zadaniem. Wiele aplikacji funkcji udostępniania konta magazynu, konto magazynu zawiera wiele zadań koncentratorów. Na poniższym diagramie przedstawiono zadania koncentratorze każdej funkcji aplikacji na kontach magazynu udostępnionego i dedykowanych.
+Każda aplikacja funkcji ma Centrum osobne zadanie. Jeśli wiele aplikacji funkcyjnych udostępniać konta magazynu, konto magazynu zawiera wiele centrów zadania. Na poniższym diagramie przedstawiono koncentratorze zadania na aplikację funkcji w ramach kont magazynu udostępnione i dedykowane.
 
-![Diagram przedstawiający udostępnionego i kont magazynu w wersji dedykowanej.](media/durable-functions-task-hubs/task-hubs-storage.png)
+![Diagram przedstawiający udostępnione i dedykowane konta magazynu.](media/durable-functions-task-hubs/task-hubs-storage.png)
 
 ## <a name="azure-storage-resources"></a>Zasoby usługi Azure Storage
 
-Koncentrator zadań składa się z następującymi zasobami magazynu: 
+Koncentrator zadanie składa się z następującymi zasobami magazynu: 
 
-* Jeden lub więcej kolejek formantu.
+* Jedną lub więcej kolejek kontroli.
 * Jedna kolejka elementu roboczego.
 * Historia jednej tabeli.
 * Jedna tabela wystąpień.
-* Jeden kontener magazynu zawierające jeden lub więcej obiektów blob dzierżawy.
+* Jeden kontener magazynu zawierające co najmniej jednego obiektu blob dzierżawy.
 
-Wszystkie te zasoby są tworzone automatycznie w domyślne konto magazynu Azure Uruchom lub zaplanowane do uruchomienia programu orchestrator lub działania funkcji. [Wydajności i skalowania](durable-functions-perf-and-scale.md) artykule wyjaśniono, jak te zasoby są używane.
+Wszystkie te zasoby są tworzone automatycznie w domyślne konto usługi Azure Storage uruchamiania lub zaplanowane do uruchomienia programu orchestrator lub działanie funkcji. [Wydajności i skali](durable-functions-perf-and-scale.md) artykule wyjaśniono, jak te zasoby są używane.
 
-## <a name="task-hub-names"></a>Nazwy Centrum dla zadań
+## <a name="task-hub-names"></a>Nazwy Centrum zadań
 
-Koncentratory zadania są identyfikowane przez nazwę, która jest zadeklarowana w *host.json* plików, jak pokazano w poniższym przykładzie:
+Koncentratory zadań są identyfikowane przez nazwę, która jest zadeklarowana w *host.json* pliku, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -53,10 +49,10 @@ Koncentratory zadania są identyfikowane przez nazwę, która jest zadeklarowana
 }
 ```
 
-Nazwy Centrum dla zadań musi zaczynać się literą i zawierać tylko litery i cyfry. Jeśli nie zostanie określony, nazwa domyślna to **DurableFunctionsHub**.
+Nazwy Centrum zadań musi rozpoczynać się literą i składać się wyłącznie z liter i cyfr. Jeśli nie zostanie określony, domyślną nazwą jest **DurableFunctionsHub**.
 
 > [!NOTE]
-> Nazwa jest, co odróżnia koncentratorze zadań z innej w przypadku wielu centrów zadań w ramach konta magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji udostępniania konta magazynu udostępnionego, należy skonfigurować różne nazwy dla każdego zadania Centrum w *host.json* plików.
+> Nazwa to, co odróżnia koncentratorze zadania z innego gdy wiele centrów zadań znajduje się na koncie magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji udostępniania na koncie magazynu udostępnionego, należy skonfigurować różne nazwy dla każdego zadania Centrum *host.json* plików.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

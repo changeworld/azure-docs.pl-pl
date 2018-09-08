@@ -1,35 +1,31 @@
 ---
-title: Obsługa błędów w funkcjach trwałe - Azure
-description: Informacje o sposobie obsługi błędów w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
+title: Obsługa błędów w funkcje trwałe - Azure
+description: Informacje o sposobie obsługi błędów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763309"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092721"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcjach trwałe (usługi Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcje trwałe (usługi Azure Functions)
 
-Trwałe orchestrations funkcja zaimplementowano w kodzie i skorzystać z możliwości obsługi błędów języka programowania. Pamiętając o tym że naprawdę nie ma nowych pojęć, które należy poznać, gdy włączenie obsługi błędów i kompensacji orchestrations Twojego. Istnieje jednak kilka zachowania, które należy zwrócić uwagę.
+Trwałe aranżacji funkcji są implementowane w kodzie i skorzystać z możliwości obsługi błędów języka programowania. Pamiętając o tym tak naprawdę nie ma żadnych nowych pojęć, czego potrzebujesz, aby dowiedzieć się, gdy opakowując swoje mechanizmów obsługi błędów i rekompensaty. Istnieją jednak kilka zachowań, które trzeba wiedzieć.
 
-## <a name="errors-in-activity-functions"></a>Błędy w funkcjach działania
+## <a name="errors-in-activity-functions"></a>Błędy w funkcji działań
 
-Każdy wyjątek zgłaszany w funkcji działania jest skierowany do funkcji programu orchestrator i zgłoszony jako `FunctionFailedException`. Można napisać kod i obsługi kompensacji błąd, który odpowiada Twoim potrzebom w funkcji programu orchestrator.
+Każdy wyjątek, który jest generowany w funkcji działania jest skierowany do funkcji programu orchestrator i zgłoszony jako `FunctionFailedException`. Można napisać kod obsługi i Kompensacja błędu, który odpowiada Twoim potrzebom w funkcji programu orchestrator.
 
-Rozważmy na przykład następująca funkcja programu orchestrator, który przenosi funduszy z jednego konta:
+Na przykład rozważmy następującą funkcję programu orchestrator, który przenosi środków z jednego konta:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -68,11 +64,11 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-Jeśli wywołanie **CreditAccount** funkcji nie powiedzie się dla docelowego konta, funkcja orchestrator istotne to kredytowanie funduszy konta źródła.
+Jeśli wywołanie **CreditAccount** funkcja kończy się niepowodzeniem dla konta docelowego, funkcja orkiestratora kompensuje to przez dobro środków do konta źródłowego.
 
-## <a name="automatic-retry-on-failure"></a>Automatyczne ponowienie dotyczące błędu
+## <a name="automatic-retry-on-failure"></a>Automatyczne ponawiania prób w przypadku niepowodzenia
 
-Podczas wywołania funkcji działania lub funkcji podrzędnych orchestration można określić automatyczne zasady ponawiania. Podejmuje próbę wywołania funkcji maksymalnie 3 razy, oczekuje 5 sekund między kolejnymi próbami w następującym przykładzie:
+Po wywołaniu aranżacji podrzędne lub działanie funkcji, można określić zasady automatycznego ponawiania. Poniższy przykład próbuje wywołać funkcję maksymalnie trzy razy i czeka na 5 sekund między kolejnymi próbami:
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -87,20 +83,20 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-`CallActivityWithRetryAsync` Przyjmuje interfejsu API `RetryOptions` parametru. Wywołuje aranżacji podrzędnych za pomocą `CallSubOrchestratorWithRetryAsync` interfejs API może korzystać te same zasady ponawiania.
+`CallActivityWithRetryAsync` Przyjmuje API `RetryOptions` parametru. Suborchestration wywołań przy użyciu `CallSubOrchestratorWithRetryAsync` interfejsu API można używać tych tych samych zasad ponawiania prób.
 
 Dostępnych jest kilka opcji dostosowywania zasady automatycznego ponawiania. Te kraje to:
 
-* **Maksymalna liczba prób**: Maksymalna liczba ponownych prób.
-* **Pierwszy interwał ponawiania próby**: ilość czasu oczekiwania przed pierwszym ponawiania próby.
+* **Maksymalna liczba prób**: maksymalną liczbę ponownych prób.
+* **Pierwszy interwał ponawiania próby**: ilość czasu oczekiwania przed pierwszym ponowieniem próby.
 * **Współczynnik wycofywania**: współczynnik używany do określenia tempo wzrostu wycofywania. Wartość domyślna to 1.
-* **Maksymalny interwał ponawiania prób**: maksymalną ilość czasu oczekiwania między ponownymi próbami.
-* **Ponów limitu czasu**: maksymalną ilość czasu poświęcanego na wykonanie tej ponownych prób. Domyślnym zachowaniem jest aby ponowić próbę nieskończoność.
+* **Maksymalny interwał ponawiania**: maksymalną ilość czasu oczekiwania między ponownymi próbami.
+* **Limitu czasu ponawiania próby**: maksymalną ilość czasu, które możesz wydać to ponawia próbę. Domyślnym zachowaniem jest aby ponowić próbę przez czas nieokreślony.
 * **Niestandardowe**: można określić wywołanie zwrotne użytkownika określa, czy należy wykonać ponownie wywołania funkcji.
 
-## <a name="function-timeouts"></a>Funkcja limitów czasu
+## <a name="function-timeouts"></a>Limity czasu — funkcja
 
-Można porzucić wywołanie funkcji w funkcji programu orchestrator, jeśli to trwa za długo. Jest właściwy sposób, w tym celu dzisiaj, tworząc [trwałe czasomierza](durable-functions-timers.md) przy użyciu `context.CreateTimer` w połączeniu z `Task.WhenAny`, jak w poniższym przykładzie:
+Możesz chcieć abandon wywołania funkcji w ramach funkcji orkiestratora, jeśli trwa zbyt długo. Właściwy sposób, w tym celu już dziś jest utworzenie [trwałe czasomierza](durable-functions-timers.md) przy użyciu `context.CreateTimer` w połączeniu z `Task.WhenAny`, jak w poniższym przykładzie:
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -130,11 +126,11 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Ten mechanizm nie faktycznie kończy wykonywanie funkcja działania w toku. Zamiast po prostu umożliwia funkcja orchestrator zignorować wynik i przenieść na. Zobacz [czasomierze](durable-functions-timers.md#usage-for-timeout) dokumentacji, aby uzyskać więcej informacji.
+> Ten mechanizm faktycznie kończy działanie w trakcie wykonywania funkcji. Przeciwnie po prostu umożliwia funkcję programu orchestrator, aby zignorować wynik i przejść. Aby uzyskać więcej informacji, zobacz [czasomierzy](durable-functions-timers.md#usage-for-timeout) dokumentacji.
 
 ## <a name="unhandled-exceptions"></a>Nieobsługiwane wyjątki
 
-Jeśli funkcja programu orchestrator nie powiedzie się z powodu nieobsługiwanego wyjątku, szczegóły wyjątku są rejestrowane i zakończeniu wystąpienia z `Failed` stanu.
+Jeśli funkcja orkiestratora zakończy się niepowodzeniem z powodu nieobsługiwanego wyjątku, szczegóły wyjątku są rejestrowane i zakończy się wystąpieniem `Failed` stanu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

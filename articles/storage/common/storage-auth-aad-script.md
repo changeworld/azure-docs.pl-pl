@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 56e7467443cb91f73a6b48f318d576345000a0e0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b90050291a936027f66a76c14458e717b63c7257
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023101"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090731"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
@@ -21,12 +21,7 @@ Usługa Azure Storage udostępnia rozszerzenia (wersja zapoznawcza) dla wiersza 
 
 Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, token dostępu jest zwracany do uzyskiwania dostępu do usługi Azure Storage w ramach tej tożsamości. Ten token jest następnie automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell można autoryzować operacji dotyczących usługi Azure Storage. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
 
-> [!IMPORTANT]
-> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
->
-> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
->
-> Integracja usługi Azure AD z usługą Azure Storage wymaga używania protokołu HTTPS dla operacji usługi Azure Storage.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
@@ -95,6 +90,6 @@ Get-AzureStorageBlob -Container $sample-container -Context $ctx
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
-- Aby zapoznać się z usługą Azure Storage przy użyciu tożsamości usługi zarządzanej, zobacz [uwierzytelnianie w usłudze Azure AD z usługi Azure tożsamości usługi zarządzanej (wersja zapoznawcza)](storage-auth-aad-msi.md).
+- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
 - Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z magazynu aplikacji](storage-auth-aad-app.md).
 - Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kolejek i obiektów blob platformy Azure, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).

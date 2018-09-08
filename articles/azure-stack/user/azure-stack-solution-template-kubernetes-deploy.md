@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5df8104907e30337cdf47e5a9489ffdb50451a94
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c0c625852ff131aaa26e424ded75fbe51f94f23d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055220"
+ms.locfileid: "44159303"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Wdrażanie klastra Kubernetes w usłudze Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "44055220"
 > [!Note]  
 > Aparat AKS (usługi Azure Kubernetes Service) w usłudze Azure Stack jest w prywatnej wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule.
 
-Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury.
+Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury. Należy pamiętać, że szablon nie jest taka sama zarządzana usługa AKS, oferowana w globalnej platformy Azure, ale bliżej usługi ACS.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes i kontenery
 

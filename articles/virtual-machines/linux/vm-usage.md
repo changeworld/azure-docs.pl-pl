@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025068"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094259"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Zrozumienie wykorzystania maszyn wirtualnych platformy Azure
 Analizując dane użycia platformy Azure, można uzyskać wgląd w użycie zaawansowanych — szczegółowe informacje, które można włączyć lepiej koszty zarządzania i alokacji w całej organizacji. Ten dokument zawiera szczegółowo omówi informacje dotyczące użycia usługi Azure Compute. Aby uzyskać szczegółowe informacje na temat ogólnego użycia platformy Azure, przejdź do [informacje o rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
@@ -101,9 +101,9 @@ Nazwa regionu, w polu Lokalizacja zasobu w szczegóły użycia różni się od n
 |    ukwest                |    Zachodnie Zjednoczone Królestwo                               |
 |    USDoDCentral          |    US DoD — środkowe stany                        |
 |    USDoDEast             |    US DoD — wschodnie stany                           |
-|    USGovArizona          |    Administracja USA — Arizona                         |
+|    USGovArizona          |    USGov — Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    Administracja USA — Texas                           |
+|    USGovTexas            |    USGov Teksas                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    Zachodnio-środkowe stany USA                       |
 |    westeurope            |    Europa Zachodnia                           |
@@ -128,7 +128,7 @@ Tylko wypełnianie pola ImageType dla podzbioru obrazów. Jeśli nie zostały wd
 ### <a name="why-is-the-vmname-blank-in-the-additional-info"></a>Nazwy jest puste w dodatkowe informacje
 Nazwy tylko zapełnieniu pola dodatkowe informacje dla maszyn wirtualnych w zestawie skalowania. Pole Identyfikator wystąpienia zawiera nazwę maszyny Wirtualnej dla maszyn wirtualnych w zestawie skalowania nie.
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>Co oznacza ComputeHR w polu UsageType w dodatkowe informacje?
-Koszt godzin obliczeniowych, który reprezentuje zdarzenia użycia podstawowej cenie infrasturcture oznacza ComputeHR. W przypadku UsageType ComputeHR\_SW reprezentuje zdarzenia użycia oprogramowania premium opłata za maszynę Wirtualną.
+ComputeHR oznacza godziny obliczeń, który reprezentuje zdarzenia użycia dla podstawowych kosztów infrastruktury. W przypadku UsageType ComputeHR\_SW reprezentuje zdarzenia użycia oprogramowania premium opłata za maszynę Wirtualną.
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Jak sprawdzić, jeśli I jest naliczana za oprogramowanie premium?
 Podczas eksplorowania obrazu maszyny Wirtualnej, która najlepiej spełnia Twoje potrzeby, należy koniecznie zapoznaj się z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Obraz, który ma stawkę plan oprogramowania. Jeśli widzisz "Bezpłatny" szybkość istnieje bez dodatkowych kosztów oprogramowania. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaka jest różnica między Microsoft.ClassicCompute i Microsoft.Compute w usłudze zużyto?

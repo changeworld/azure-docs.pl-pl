@@ -8,17 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: d187d24725084296078f58447c19bda1ace13a69
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: b180acfb74f503447212044f0b6be5589e2dd452
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158793"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -125,7 +126,7 @@ Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń ora
 
 Zasady usługi Security Center zawierają następujące składniki:
 - [Zbieranie danych](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): ustawienia agenta aprowizacji i zbierania danych.
-- [Zasady zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-policies): usługa [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction), która określa, które kontrolki są monitorowane i zalecane przez usługę Security Center, lub używa usługi Azure Policy do tworzenia nowych definicji, definiowania dodatkowych zasad i przypisywania zasad w grupach zarządzania.
+- [Zasady zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-policies): [usługi Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) określający, które kontrolki są monitorowane i zalecane przez Centrum zabezpieczeń oraz korzystanie z usługi Azure Policy do utworzenia nowych definicji, zdefiniowania dodatkowych zasad i przypisywanie zasad w grupach zarządzania.
 - [Wiadomości e-mail z powiadomieniami](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): ustawienia kontaktów i powiadomień dotyczących zabezpieczeń.
 - [Warstwa cenowa](https://docs.microsoft.com/azure/security-center/security-center-pricing): wybór wersji bezpłatnej lub ceny standardowej, który określa, które funkcje usługi Security Center są dostępne dla zasobów w zakresie (można określić dla subskrypcji, grupy zasobów i obszarów roboczych).
 
@@ -254,7 +255,7 @@ Na filmie [How to Leverage the Azure Security Center & Microsoft Operations Mana
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie omówiono, jak zaplanować wykorzystanie usługi Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)

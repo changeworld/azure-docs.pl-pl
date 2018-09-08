@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 618180f9cbd1c65863e3e039bac40d1cc493bc37
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918504"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160477"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurowanie środowiska projektowego w systemie Mac OS X
 > [!div class="op_single_selector"]
@@ -157,14 +157,16 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
     ```bash
     npm install -g yo
     ```
-3. Zainstaluj generator Yeoman, którego chcesz używać, zgodnie z instrukcjami podanymi w [dokumentacji](service-fabric-get-started-linux.md) wprowadzającej. Aby utworzyć aplikacje usługi Service Fabric za pomocą narzędzia Yeoman, wykonaj następujące czynności:
+3. Zainstaluj generator Yeoman, którego chcesz używać, zgodnie z instrukcjami podanymi w [dokumentacji](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables) wprowadzającej. Aby utworzyć aplikacje usługi Service Fabric za pomocą narzędzia Yeoman, wykonaj następujące czynności:
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. Aby można było skompilować aplikację Java usługi Service Fabric na komputerze Mac, na maszynie hosta muszą być zainstalowane zestaw JDK 1.8 i narzędzie Gradle. Oprogramowanie można zainstalować za pomocą rozwiązania [HomeBrew](https://brew.sh/) w następujący sposób: 
+4. Po zainstalowaniu generatorów utwórz plik wykonywalny gościa lub usługi kontenera, uruchamiając odpowiednio polecenie `yo azuresfguest` lub `yo azuresfcontainer`.
+
+5. Aby można było skompilować aplikację Java usługi Service Fabric na komputerze Mac, na maszynie hosta muszą być zainstalowane zestaw JDK 1.8 i narzędzie Gradle. Oprogramowanie można zainstalować za pomocą rozwiązania [HomeBrew](https://brew.sh/) w następujący sposób: 
 
     ```bash
     brew update

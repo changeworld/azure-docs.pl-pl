@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: a50f91d5cbbc0eac7080437c96144014dad651ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055221"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161769"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Korzystanie z szablonów usługi Azure Resource Manager w usłudze Azure Stack
 
@@ -30,11 +30,11 @@ Szablony usługi Azure Resource Manager umożliwia wdrażanie i Inicjowanie obs�
 
 Szablony te można wdrożyć z portalu Microsoft Azure Stack, programu PowerShell, wiersz polecenia i programu Visual Studio.
 
-Następujące szablony szybkiego startu są dostępne na [GitHub](http://aka.ms/azurestackgithub).
+Następujące szablony szybkiego startu są dostępne na [GitHub](http://aka.ms/azurestackgithub):
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Wdrażanie programu SharePoint Server (bez — wysokiej dostępności wdrożenia)
 
-Użyj rozszerzenia DSC programu PowerShell do utworzenia farmy programu SharePoint Server 2013, która zawiera następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [utworzyć farmę programu SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Trzy konta magazynu
@@ -45,7 +45,7 @@ Użyj rozszerzenia DSC programu PowerShell do utworzenia farmy programu SharePoi
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>Wdrażanie AD (inne niż wysokiej — dostępność — wdrożenia)
 
-Użyj rozszerzenia DSC programu PowerShell, aby utworzyć serwer kontrolera domeny usługi AD, która zawiera następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie serwera kontrolera domeny usługi AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Jedno konto magazynu
@@ -54,7 +54,7 @@ Użyj rozszerzenia DSC programu PowerShell, aby utworzyć serwer kontrolera dome
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Wdrażanie AD/SQL (inne niż wysokiej — dostępność — wdrożenia)
 
-Rozszerzenie DSC programu PowerShell umożliwia utworzenie autonomicznego serwera SQL Server 2014 i zawiera następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie autonomicznego serwera SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Dwa konta magazynu
@@ -68,15 +68,15 @@ Konfigurowanie istniejącej maszyny wirtualnej lokalnego Configuration Manager (
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika
 
-Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika niestandardowego. Ten szablon wdraża również sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
+[Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika niestandardowego](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image). Ten szablon wdraża również sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
 
 ## <a name="basic-virtual-machine"></a>Podstawowa maszyna wirtualna
 
-Wdróż maszynę Wirtualną Windows, zawierająca sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
+[Wdrażanie maszyny Wirtualnej z systemem Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm) zawierającej sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
 
 ## <a name="cancel-a-running-template-deployment"></a>Anuluj uruchomione wdrożenie szablonu
 
-Aby anulować bieżącym wdrożeniu szablonu, należy użyć `Stop-AzureRmResourceGroupDeployment` polecenia cmdlet programu PowerShell.
+Aby anulować bieżącym wdrożeniu szablonu, należy użyć [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) polecenia cmdlet programu PowerShell.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,35 +1,31 @@
 ---
-title: Stan niestandardowych aranżacji w funkcjach trwałe - Azure
-description: Dowiedz się, jak skonfigurować i używać niestandardowych aranżacji stanu trwałego funkcji.
+title: Stan niestandardowej aranżacji w funkcje trwałe - Azure
+description: Dowiedz się, jak skonfigurować i stan niestandardowej aranżacji na użytek funkcje trwałe.
 services: functions
 author: kadimitr
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 840b96b9cfdb28ca1b17f54698677f4d491342c8
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310351"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093095"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stan niestandardowych aranżacji w funkcji trwałe (funkcje platformy Azure)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stan niestandardowej aranżacji w funkcje trwałe (usługi Azure Functions)
 
-Stan niestandardowych aranżacji pozwala ustawić wartość stanu niestandardowych dla funkcji programu orchestrator. Ten stan jest dostępne za pośrednictwem interfejsu API GetStatus HTTP lub `DurableOrchestrationClient.GetStatusAsync` interfejsu API.
+Stan niestandardowej aranżacji pozwala ustawić wartość stanu niestandardowych dla funkcji programu orchestrator. Ten stan jest oferowana w ramach interfejsu API GetStatus protokołu HTTP lub `DurableOrchestrationClient.GetStatusAsync` interfejsu API.
 
 ## <a name="sample-use-cases"></a>Przykładowe przypadki użycia 
 
-### <a name="visualize-progress"></a>Wizualizowanie postępu
+### <a name="visualize-progress"></a>Wizualizacja postępu
 
-Klientów można sondować punktu końcowego stanu i postępu interfejsu użytkownika, który wizualizuje bieżący etap wykonywania. W poniższym przykładzie pokazano, udostępnianie postępu:
+Klienci mogą sondować stan punktu końcowego i wyświetlanie postępu interfejsu użytkownika, która wizualizuje bieżący etap wykonywania. W poniższym przykładzie pokazano udostępnianie postępu:
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -56,7 +52,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-A następnie klient otrzyma dane wyjściowe orchestration tylko wtedy, gdy `CustomStatus` pole jest ustawione na "Londynie":
+A następnie klient otrzyma dane wyjściowe aranżacji tylko wtedy, gdy `CustomStatus` pole jest ustawione na "Londyn":
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -91,7 +87,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ### <a name="output-customization"></a>Dostosowywanie danych wyjściowych 
 
-Inny scenariusz interesujące jest segmentowania użytkowników, zwracając dostosowane dane wyjściowe na podstawie unikatowych parametrów lub interakcji. Za pomocą niestandardowych aranżacji stan ogólny pozostanie kod po stronie klienta. Wszystkie główne modyfikacje nastąpi po stronie serwera, jak pokazano w poniższym przykładzie:
+Inny scenariusz interesujące jest segmentacji użytkowników, zwracając dostosowanych danych wyjściowych na podstawie unikatowych cechach systemu operacyjnego lub interakcji. Za pomocą stan niestandardowej aranżacji pozostaną ogólny kod po stronie klienta. Wszystkie modyfikacje głównego nastąpi po stronie serwera, jak pokazano w następującym przykładzie:
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -131,7 +127,7 @@ public static void Run(
 
 ### <a name="instruction-specification"></a>Specyfikacja instrukcji 
 
-Orchestrator można dostarczyć unikatowy instrukcje do klientów za pośrednictwem niestandardowych stanu. Instrukcje niestandardowe stanu zostaną zmapowane do kroków w kodzie orchestration:
+Koordynatora może zapewnić instrukcje unikatowy dla klientów za pośrednictwem stanów niestandardowych. Instrukcje stan niestandardowego będą mapowane z procedury opisanej w kodzie orchestration:
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -161,7 +157,7 @@ public static async Task<bool> Run(
 
 ## <a name="sample"></a>Sample
 
-W poniższym przykładzie niestandardowe stan jest ustawiony jako pierwsze;
+W poniższym przykładzie ustawiono najpierw; stan niestandardowego
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
@@ -176,7 +172,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-Po uruchomieniu orchestration klientów zewnętrznych można pobrać ten stan niestandardowy:
+Po uruchomieniu aranżacji klientów zewnętrznych można pobrać ten stan niestandardowy:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
@@ -197,12 +193,12 @@ Klienci otrzymają następującą odpowiedź:
 ```
 
 > [!WARNING]
->  Stan niestandardowy ładunek jest ograniczony do 16 KB tekst JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie magazynu tabel platformy Azure. Deweloperzy mogą używać magazynu zewnętrznego, jeśli potrzebna jest większy ładunek.
+>  Stan niestandardowy ładunek jest ograniczony do 16 KB tekstu JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie Azure Table Storage. Deweloperzy mogą używać magazynu zewnętrznego, gdy potrzebują większych ładunku.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o interfejsy API protokołu HTTP w funkcjach trwałych](durable-functions-http-api.md)
+> [Więcej informacji na temat interfejsów API protokołu HTTP w funkcje trwałe](durable-functions-http-api.md)
 
 

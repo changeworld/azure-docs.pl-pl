@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 4fd2a26d9119e52fc75918abc1ca97e6f9888169
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028357"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160425"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: Różnice i zagadnienia dotyczące
 Ten artykuł zawiera podsumowanie znane różnice między stosu usługi Azure Managed Disks i dysków Managed Disks na platformie Azure. Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
@@ -28,7 +28,7 @@ Ten artykuł zawiera podsumowanie znane różnice między stosu usługi Azure Ma
 Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS dzięki zarządzaniu [kont magazynu](/azure/azure-stack/azure-stack-manage-storage-accounts) skojarzone z dyskami maszyn wirtualnych.
   
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Ściągawka: różnice maszyny wirtualnej
+## <a name="cheat-sheet-managed-disk-differences"></a>Ściągawka: różnice dysku zarządzanego
 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |

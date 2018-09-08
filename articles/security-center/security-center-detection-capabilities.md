@@ -8,18 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: 699903ff874ace4991c5c4b0584d4661d3e45f33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: a0a218fc18c1c9ede71de590179b0c93221eb80c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894258"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161037"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkcje wykrywania usługi Azure Security Center
 W tym dokumencie omówiono zaawansowane funkcje wykrywania usługi Azure Security Center, która ułatwia identyfikację aktywnych zagrożeń atakujących zasoby platformy Microsoft Azure i udostępnia potrzebne informacje w celu szybkiego reagowania.
@@ -27,7 +27,7 @@ W tym dokumencie omówiono zaawansowane funkcje wykrywania usługi Azure Securit
 Funkcje zaawansowanego wykrywania są dostępne w warstwie Standardowa usługi Azure Security Center. Dostępna jest bezpłatna 60-dniowa wersja próbna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](security-center-policies.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen. 
 
 > [!NOTE]
-> Usługa Security Center została wydana w ograniczonej wersji zapoznawczej z nowym zestawem funkcji wykrywania, które wykorzystują rekordy inspekcji, czyli wspólną platformę inspekcji, do wykrywania złośliwych zachowań na maszynach z systemem Linux. Wyślij [nam](mailto:ASC_linuxdetections@microsoft.com) wiadomość e-mail ze swoim identyfikatorem subskrypcji, aby dołączyć do tej wersji zapoznawczej.
+> Usługa Security Center została wydana ograniczonej wersji zapoznawczej w nowy zestaw wykrywania, które wykorzystują rekordy inspekcji, wspólną platformę inspekcji do wykrywania złośliwych zachowań na maszynach z systemem Linux. Wyślij [nam](mailto:ASC_linuxdetections@microsoft.com) wiadomość e-mail ze swoim identyfikatorem subskrypcji, aby dołączyć do tej wersji zapoznawczej.
 
 ## <a name="responding-to-todays-threats"></a>Odpowiadanie na nowe rodzaje zagrożeń
 W ciągu ostatnich 20 lat miały miejsce istotne zmiany dotyczące charakteru występujących zagrożeń. W przeszłości firmy martwiły się tylko atakami skutkującymi zmianą zawartości witryny internetowej, a sami atakujący chcieli przede wszystkim przekonać się, co potrafią zrobić. Obecnie osoby atakujące są bardziej wyrafinowane i zorganizowane. Często mają określone cele finansowe i strategiczne. Ponadto dysponują większą ilością zasobów, ponieważ mogą być finansowane przez państwa lub zorganizowane grupy przestępcze.
@@ -80,7 +80,7 @@ Usługa Azure Security Center obsługuje zespoły zajmujące się zabezpieczenia
 
 Wszystkie te połączone wysiłki skutkują nowymi i ulepszonymi sposobami wykrywania zagrożeń, z których można korzystać od razu — użytkownik nie musi w tym kierunku nic robić.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym dokumencie omówiono, na czym polegają funkcje wykrywania w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)

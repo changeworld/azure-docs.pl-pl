@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d5c285f13ce45047619b327b9440fbd69c18267e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2ec52adec85cc209cee07225cc753a2c40d874c0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028414"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157637"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
@@ -109,7 +109,7 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości zarządzanej przy
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Aby usunąć zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, użyj [Usuń az vmss tożsamości](/cli/azure/vmss/identity/#az-vmss-remove-identity) polecenie, aby usunąć przypisany systemu tożsamości zarządzanej z zestawu skalowania maszyn wirtualnych:
+Aby usunąć zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure (planowana do wycofania z użycia w styczniu 2019), użyj [Usuń az vmss tożsamości](/cli/azure/vmss/identity/#az-vmss-remove-identity) polecenie, aby usunąć przypisany systemu tożsamości zarządzanej z zestawu skalowania maszyn wirtualnych:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -131,7 +131,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnyc
 
 2. Tworzenie przy użyciu przypisanych przez użytkownika z tożsamości zarządzanej [Utwórz tożsamość az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupę zasobów zarządzanych tożsamości przypisanych przez użytkownika jest tworzona, i `-n` parametr określa jej nazwę. Upewnij się, że parametry `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami:
 
-   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
    ```azurecli-interactive
    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>

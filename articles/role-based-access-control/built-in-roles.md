@@ -1,6 +1,6 @@
 ---
-title: Wbudowane role na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Wyświetla listę akcji, NotActions, elementy DataActions i NotDataActions.
+title: Wbudowane role zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano wbudowane role kontroli dostępu opartej na rolach (RBAC) i zasobów platformy Azure. Wyświetla listę akcji, NotActions, elementy DataActions i NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,18 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/19/2018
+ms.date: 09/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44b32746c43569705b445ac5df0a5727463acbe0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048372"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095338"
 ---
-# <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
+# <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
 
 Wbudowane role zawsze wciąż ewoluuje. Aby uzyskać najnowsze definicje ról, użyj [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) lub [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list).
@@ -43,7 +43,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Rola Operator usługi API Management](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Rola czytnik usługi API Management](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Współautor składników usługi Application Insights](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie, aby wyświetlić i pobrać migawki debugowania zebranych za pomocą Application Insights Snapshot Debugger. Należy pamiętać, że ta rola jest uwzględniony w ani [właściciela](#owner) ani [Współautor](#contributor) ról. |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie, aby wyświetlić i pobrać migawki debugowania zebranych za pomocą Application Insights Snapshot Debugger. Należy zauważyć, że te uprawnienia nie są uwzględnione w [właściciela](#owner) lub [Współautor](#contributor) ról. |
 | [Operator zadań usługi Automation](#automation-job-operator) | Twórz zadania i zarządzaj nimi za pomocą elementów runbook usługi Automation. |
 | [Operator usługi Automation](#automation-operator) | Operatorzy automatyzacji mogą uruchamiać, zatrzymywać, wstrzymywać i wznawiać zadania |
 | [Operator elementów Runbook usługi Automation](#automation-runbook-operator) | Odczytuj właściwości elementu runbook, aby móc tworzyć zadania tego elementu. |
@@ -62,10 +62,11 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor klasycznej sieci](#classic-network-contributor) | Umożliwia zarządzanie klasycznymi sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor klasycznego konta magazynu](#classic-storage-account-contributor) | Umożliwia zarządzanie kontami klasycznego magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator kluczy kont magazynu Classic](#classic-storage-account-key-operator-service-role) | Operatorzy kluczy klasycznych kont magazynu mogą wyświetlać listę kluczy dla klasycznych kont magazynu i ponownie je generować |
-| [Współautor klasycznej maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone.|
+| [Współautor klasycznej maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
+| [Użytkownik usług cognitive Services](#cognitive-services-user) | Umożliwia odczyt i wyświetlać listę kluczy usług Cognitive Services. |
 | [Rola czytelnika konta usługi cosmos DB](#cosmos-db-account-reader-role) | Może odczytywać dane z konta usługi Azure Cosmos DB. Zobacz [Współautor konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami usługi Azure Cosmos DB. |
 | [Współautora usługi Data Box](#data-box-contributor) | Umożliwia zarządzanie wszystkim, w obszarze usługa Data Box, z wyjątkiem przyznawania dostępu innym osobom. |
-| [Operator pole danych](#data-box-operator) | Pozwala zarządzać usługa Data Box, z wyjątkiem tworzenia kolejności lub edytowania szczegółów zamówienia i przyznawania dostępu innym osobom. |
+| [Czytnik pole danych](#data-box-reader) | Pozwala zarządzać usługa Data Box, z wyjątkiem tworzenia kolejności lub edytowania szczegółów zamówienia i przyznawania dostępu innym osobom. |
 | [Współautor Data Factory](#data-factory-contributor) | Umożliwia zarządzanie fabrykami danych, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Data Lake Analytics dewelopera](#data-lake-analytics-developer) | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
 | [Purger danych](#data-purger) | Może czyścić dane analizy |
@@ -80,6 +81,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor aplikacji logiki](#logic-app-contributor) | Umożliwia zarządzanie aplikacjami logiki, lecz nie dostęp do nich. |
 | [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
 | [Rola Operator aplikacji zarządzanej](#managed-application-operator-role) | Umożliwia odczytywanie i wykonywać akcje na zasobach zarządzanej aplikacji |
+| [Czytnik zarządzanych aplikacji](#managed-applications-reader) | Umożliwia odczyt zasobów zarządzanych aplikacji i żądanie dostępu JIT. |
 | [Współautor tożsamości zarządzanych](#managed-identity-contributor) | Tworzenie, odczytywanie, aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika |
 | [Operator tożsamości zarządzanych](#managed-identity-operator) | Odczytaj i przypisz tożsamość przypisaną przez użytkownika |
 | [Współautor grupy zarządzania](#management-group-contributor) | Rola współautora grupy zarządzania |
@@ -259,7 +261,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Nadaje użytkownikowi uprawnienie do korzystania z rozszerzenia Snapshot Debugger usługi Application Insights |
+> | **Opis** | Nadaje użytkownikowi uprawnienie, aby wyświetlić i pobrać migawki debugowania zebranych za pomocą Application Insights Snapshot Debugger. Należy zauważyć, że te uprawnienia nie są uwzględnione w [właściciela](#owner) lub [Współautor](#contributor) ról. |
 > | **Identyfikator** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
@@ -653,6 +655,27 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
+## <a name="cognitive-services-user"></a>Użytkownik usług cognitive Services
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczyt i wyświetlać listę kluczy usług Cognitive Services. |
+> | **Identyfikator** | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **Akcje** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | Microsoft.CognitiveServices/accounts/listkeys/action | Wylicz klucze |
+> | Microsoft.Insights/metricdefinitions/read | Przeczytaj definicje metryk |
+> | Microsoft.Insights/metrics/read | Odczytaj metryki |
+> | Microsoft.Insights/alertRules/read | Odczytaj alert dotyczący metryki klasycznej |
+> | Microsoft.Insights/diagnosticSettings/read | Odczytaj ustawienie diagnostyczne zasobu |
+> | Microsoft.Insights/logDefinitions/read | Przeczytaj definicje dzienników |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
+> | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
+> | Microsoft.Resources/subscriptions/operationresults/read | Pobiera wyniki operacji subskrypcji. |
+> | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+
 ## <a name="cosmos-db-account-reader-role"></a>Rola czytelnika konta usługi Cosmos DB
 > [!div class="mx-tableFixed"]
 > | | |
@@ -682,7 +705,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Databox/* |  |
 
-## <a name="data-box-operator"></a>Operator pole danych
+## <a name="data-box-reader"></a>Czytnik pole danych
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -690,9 +713,11 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.Databox/*/read |  |
+> | Microsoft.Databox/jobs/listsecrets/action | Wyświetla listę niezaszyfrowanych wpisów tajnych związanych z zamówieniem. |
+> | Microsoft.Databox/locations/availableSkus/action | Ta metoda zwraca listę dostępnych jednostek SKU. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
-> | Microsoft.Databox/jobs/listsecrets/action | Wyświetla listę niezaszyfrowanych wpisów tajnych związanych z zamówieniem. |
 
 ## <a name="data-factory-contributor"></a>Współautor Data Factory
 > [!div class="mx-tableFixed"]
@@ -865,6 +890,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Tworzenie laboratorium na koncie laboratorium. |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiar skonfigurowany w ramach konta laboratorium |
+> | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiar skonfigurowany w ramach konta laboratorium |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
@@ -964,6 +990,17 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.Solutions/applications/read | Pobiera listę aplikacji. |
 
+## <a name="managed-applications-reader"></a>Czytnik zarządzanych aplikacji
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczyt zasobów zarządzanych aplikacji i żądanie dostępu JIT. |
+> | **Identyfikator** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
+> | **Akcje** |  |
+> | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
+> | Microsoft.Solutions/jitRequests/* |  |
+
 ## <a name="managed-identity-contributor"></a>Współautor tożsamości zarządzanych
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1045,7 +1082,8 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Pobiera klucze wspólne dla obszaru roboczego. Te klucze są używane do łączenia agentów usługi Microsoft Operational Insights z obszarem roboczym. |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfiguracje szczegółowe informacje o odczytu/zapisu/usuwanie magazynu usługi Log Analytics. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
-> | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/monitors/* |  |
+> | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Monitorowanie metryk wydawcy

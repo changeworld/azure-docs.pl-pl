@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112143"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161309"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Szybki Start: Instalacja ręczna jednego wystąpienia środowiska SAP Hana na maszynach wirtualnych platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -45,7 +45,9 @@ W tym przewodniku założono również, że znasz:
    * Szczegółowe informacje na temat sposobu poprawy efektywności dzięki wykorzystaniu instalacji — wiele identyfikatorów SID ASCS/SCS na platformie Azure. Zobacz [tworzenia konfiguracji — wiele identyfikatorów SID oprogramowanie SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
    * Zasady z oprogramowaniem SAP NetWeaver na podstawie opartych na systemie Linux maszyn wirtualnych na platformie Azure. Zobacz [z oprogramowaniem SAP NetWeaver na maszynach wirtualnych systemu Linux SUSE platformy Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Ten przewodnik zawiera konkretne ustawienia dla systemu Linux w maszynach wirtualnych platformy Azure i uzyskać szczegółowe informacje na temat prawidłowo dołączyć dyski usługi Azure storage do maszyn wirtualnych systemu Linux.
 
-W tej chwili maszyn wirtualnych platformy Azure są certyfikowane przez firmę SAP tylko konfiguracje skalowanie w górę platformy SAP HANA. Konfiguracje skalowalnego w poziomie przy użyciu oprogramowania SAP HANA obciążenia nie są jeszcze obsługiwane. SAP HANA wysoką dostępność w przypadku konfiguracji skalowania w górę, zobacz [wysoką dostępność środowiska SAP HANA na maszynach wirtualnych Azure (maszyny wirtualne)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+Typy maszyn wirtualnych platformy Azure, których można użyć na potrzeby scenariuszy produkcyjnych są wymienione w [dokumentacji SAP IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). W przypadku scenariuszy nieprodukcyjnych szerszy zakres natywnych typów maszyn wirtualnych platformy Azure jest dostępna.
+Aby uzyskać szczegółowe informacje na temat maszyny Wirtualnej konfiguracji i operacje zapoznaj się z dokumentem [konfiguracje infrastruktury SAP HANA i operacji na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+SAP HANA wysoką dostępność, zobacz [platformy SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
 Jeśli są zamierzających uzyskać wystąpienie SAP HANA lub S/4HANA lub BW/4HANA system wdrożone w bardzo krótki czas, należy rozważyć użycie [SAP Cloud Appliance Library](http://cal.sap.com). Można znaleźć dokumentację na temat wdrażania, na przykład systemu S/4HANA, za pośrednictwem SAP CAL na platformie Azure w [tego przewodnika](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). To wszystko, co musisz mieć subskrypcję platformy Azure i użytkownik oprogramowania SAP, który może być zarejestrowane przy użyciu biblioteki SAP Cloud Appliance Library.
 

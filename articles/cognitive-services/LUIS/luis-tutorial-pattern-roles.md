@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090530"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161938"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Samouczek: Ulepszaniu aplikacji przy użyciu ról wzorca
 
@@ -27,7 +27,7 @@ W tym samouczku Użyj prostego jednostki przy użyciu ról w połączeniu z wzor
 * Tworzenie wzorca dla wypowiedzi przy użyciu prostego jednostki przy użyciu ról
 * Jak zweryfikować ulepszenia prognozowania wzorzec
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [wzorzec](luis-tutorial-pattern.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) repozytorium GitHub.
@@ -126,15 +126,15 @@ Etykietowanie jednostek w ramach tej procedury może być łatwiejsze, jeśli ke
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-without-pattern"></a>Punkt końcowy bez wzorzec zapytania
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Wayne Berry from Miami to Mount Vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -382,7 +382,7 @@ Wynik konwersji jest teraz znacznie wyższa i nazwy ról są częścią odpowied
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

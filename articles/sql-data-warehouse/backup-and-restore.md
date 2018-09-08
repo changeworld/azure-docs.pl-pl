@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/24/2018
+ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9b5005fad1eeb13314e1fb6a5708bb02b96cbf9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248668"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092482"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -28,7 +28,7 @@ A *przywracania z magazynu danych* nowego magazynu danych, który jest tworzony 
 ## <a name="automatic-restore-points"></a>Automatyczne punkty przywracania
 Migawki to wbudowana funkcja usług, co powoduje utworzenie punktów przywracania. Nie masz umożliwiających włączenie tej funkcji. Obecnie automatyczne punkty przywracania nie można usunąć przez użytkowników, których używa usługi, przywracania wskazuje Obsługa umowy SLA dla odzyskiwania.
 
-Usługa SQL Data Warehouse tworzy migawki magazynu danych w ciągu dnia, tworzenie punktów przywracania, które są dostępne przez siedem dni. Nie można zmienić tego okresu przechowywania. Usługa SQL Data Warehouse obsługuje osiem godzin cel punktu odzyskiwania (RPO). Możesz przywrócić magazyn danych w regionie głównym, z jednego z migawki wykonane w ciągu ostatnich siedmiu dni.
+Usługa SQL Data Warehouse tworzy migawki magazynu danych w ciągu dnia, tworzenie punktów przywracania, które są dostępne przez siedem dni. Nie można zmienić tego okresu przechowywania. Usługa SQL Data Warehouse obsługuje cel punktu odzyskiwania ośmiu godzin (RPO). Możesz przywrócić magazyn danych w regionie głównym, z jednego z migawki wykonane w ciągu ostatnich siedmiu dni.
 
 Aby sprawdzić, podczas uruchamiania Ostatnia migawka, należy uruchomić to zapytanie w trybie online SQL Data Warehouse. 
 
@@ -40,19 +40,20 @@ order by run_id desc
 ```
 
 ## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
-Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywracania z magazynu danych, przed i po duże zmiany. Ta funkcja zapewnia, że punkty przywracania są logicznie spójnego zapewniającą dodatkowej ochrony danych w przypadku dowolnego obciążenia przerw i błędy użytkowników dla czasu Szybkie odzyskiwanie. Punkty przywracania na zdefiniowanych przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okres przechowywania punktów przywracania zdefiniowanych przez użytkownika. Tylko 42 punkty przywracania na zdefiniowanych przez użytkownika są obsługiwane w dowolnym momencie w czasie, więc muszą być [usunięte](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki do utworzenia punktów przywracania zdefiniowanych przez użytkownika za pośrednictwem [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) lub w witrynie Azure Portal.
+Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywracania z magazynu danych, przed i po duże zmiany. Ta funkcja zapewnia, że punkty przywracania są logicznie spójnego zapewniającą dodatkowej ochrony danych w przypadku dowolnego obciążenia przerw i błędy użytkowników dla czasu Szybkie odzyskiwanie. Punkty przywracania na zdefiniowanych przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okres przechowywania punktów przywracania zdefiniowanych przez użytkownika. **punkty przywracania 42 zdefiniowanych przez użytkownika** jest gwarantowana w dowolnym momencie w czasie, więc muszą być [usunięte](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki do utworzenia punktów przywracania zdefiniowanych przez użytkownika za pośrednictwem [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) lub witrynie Azure portal.
 
 
 > [!NOTE]
 > Jeśli potrzebujesz więcej niż 7 dni punktów przywracania, należy głosowania dla tej funkcji [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i Przywróć z punktu przywracania nowo utworzony do nowego magazynu danych. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. Aktywna kopia magazynu przywróconych danych, należy można wznowić, które powinny zająć tylko kilka minut.
 >
 
-### <a name="snapshot-retention-when-a-data-warehouse-is-paused"></a>Migawki przechowywania, gdy magazyn danych jest wstrzymany
-Usługa SQL Data Warehouse nie powoduje utworzenia migawki, a nie wygasa punktów przywracania, gdy magazyn danych jest wstrzymany. Przywróć punkty nie należy zmieniać, gdy magazyn danych jest wstrzymany. Przywracanie punktu przechowywania opiera się na liczbę dni, przez które Magazyn danych jest w trybie online, nie w dni kalendarzowe.
-
-Na przykład jeśli migawka rozpoczyna się 1 października od 16: 00 i magazyn danych jest wstrzymany 3 października o 16: 00, punkty przywracania są maksymalnie dwa dni. Gdy magazyn danych powróci do trybu online punkt przywracania jest dwa dni. Jeśli w magazynie danych powróci do trybu online 5 października o 16: 00, punkt przywracania jest dwa dni i pozostaje pięć dni.
-
-Gdy magazyn danych powróci do trybu online, usługa SQL Data Warehouse wznawia, tworząc nowe punkty przywracania i wygasa je, gdy mają więcej niż siedem dni danych.
+### <a name="restore-point-retention"></a>Czas przechowywania punktu przywracania
+Poniżej przedstawiono szczegółowe informacje na okresy przechowywania punkt przywracania:
+1. Usługa SQL Data Warehouse spowoduje usunięcie punktu przywracania w przypadku trafienia 7-dniowy okres przechowywania **i** gdy istnieją co najmniej 42 łączna liczba punktów przywracania (w tym zarówno zdefiniowanych przez użytkownika i automatycznie)
+2. Migawki nie są wykonywane, gdy magazyn danych jest wstrzymany
+3. Wiek punkt przywracania jest zaokrąglana w dni kalendarzowe bezwzględny, od chwili, gdy punkt przywracania jest pobierana, łącznie z, gdy magazyn danych jest wstrzymany
+4. W dowolnym momencie w czasie magazyn danych jest gwarantowane jest można przechowywać maksymalnie 42 punkty przywracania na zdefiniowanych przez użytkownika i 42 automatyczne punkty przywracania tak długo, jak te punkty przywracania nie osiągnęły 7-dniowy okres przechowywania
+5. Jeśli wykonywana jest migawka, Magazyn danych jest następnie wstrzymany w okresie dłuższym niż 7 dni, a następnie wznawia, możliwe jest punkt przywracania i utrzymany do chwili istnieją 42 łączna liczba punktów przywracania (w tym zarówno zdefiniowanych przez użytkownika i automatycznie)
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Migawki przechowywania po upuszczeniu magazynu danych
 Gdy upuścisz suszarkę hurtowni danych, usługa SQL Data Warehouse tworzy migawkę końcowe i zapisuje go przez siedem dni. Magazyn danych można przywrócić do punktu końcowego przywracania utworzone na usunięcie. 
@@ -72,7 +73,7 @@ Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych je
 
 
 ## <a name="backup-and-restore-costs"></a>Koszty i przywracania kopii zapasowych
-Zauważ, że rachunku za platformę Azure zawiera element wiersza dla magazynu i element wiersza dla magazynu odzyskiwania po awarii. Opłata za magazyn jest całkowity koszt przechowywania danych w regionie podstawowym oraz zmiany przyrostowe przechwycone przez migawki. Bardziej szczegółowy opis w sposób migawki są obecnie pobierane, można znaleźć na stronie to [dokumentacji](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficznie nadmiarowy opłaty po awarii obejmuje koszt do przechowywania kopii zapasowych geograficznie.  
+Zauważ, że rachunku za platformę Azure zawiera element wiersza dla magazynu i element wiersza dla magazynu odzyskiwania po awarii. Opłata za magazyn jest całkowity koszt przechowywania danych w regionie podstawowym oraz zmiany przyrostowe przechwycone przez migawki. Aby uzyskać bardziej szczegółowy opis w sposób migawki aktualnie są wykonywane, zapoznaj się z tym [dokumentacji](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficznie nadmiarowy opłaty po awarii obejmuje koszt do przechowywania kopii zapasowych geograficznie.  
 
 Łączny koszt magazynu danych podstawowych i siedmiu dni zmian migawki jest zaokrąglana do najbliższego TB. Na przykład jeśli magazyn danych to 1,5 TB, a migawki przechwytuje 100 GB, są rozliczane za 2 TB danych według stawek usługi Azure Premium Storage. 
 

@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056079"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157994"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Sposób użycia procesora GPU w usłudze Azure Machine Learning
 Graficzny przetwarzania jednostki (GPU) powszechnie używanych przetwarzania zadań wymaga dużej mocy obliczeniowej, które zazwyczaj mogą wystąpić podczas uczenia modeli niektórych sieci neuronowej. Za pomocą procesorów GPU, można znacznie zmniejszyć czas szkolenie modeli. W tym dokumencie, dowiesz się, jak skonfigurować aplikację Azure ML Workbench, aby użyć [DSVM (maszyna wirtualna do nauki o danych)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) wyposażone w procesory GPU jako element docelowy wykonywania. 
@@ -86,7 +86,7 @@ C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "m
 ### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Konfigurowanie usługi Azure ML Workbench dostęp do procesora GPU
 Wróć do projektu i Otwórz **widok pliku**i kliknij przycisk **Odśwież** przycisku. Teraz możesz zobaczyć dwa nowe pliki konfiguracji `my_dsvm.compute` i `my_dsvm.runconfig`.
  
-Otwórz `my_dsvm.compute`. Zmiana `baseDockerImage` do `microsoft/mmlspark:plus-gpu-0.7.9` i Dodaj nowy wiersz `nvidiaDocker: true`. Więc ten plik powinien zawierać następujące dwa wiersze:
+Otwórz `my_dsvm.compute`. Zmiana `baseDockerImage` do `microsoft/mmlspark:plus-gpu-0.9.9` i Dodaj nowy wiersz `nvidiaDocker: true`. Więc ten plik powinien zawierać następujące dwa wiersze:
  
 ```yaml
 ...

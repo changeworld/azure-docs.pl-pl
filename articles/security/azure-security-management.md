@@ -9,17 +9,17 @@ editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857484"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159337"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -220,7 +220,7 @@ Minimalizacja liczby zadań, które administratorzy mogą wykonywać na stacji r
 ## <a name="summary"></a>Podsumowanie
 Użycie konfiguracji stacji roboczej ze wzmocnionymi zabezpieczeniami do administrowania usługami w chmurze, usługą Virtual Machines i aplikacjami platformy Azure może pomóc w uniknięciu licznych zagrożeń związanych ze zdalnym zarządzaniem newralgiczną infrastrukturą informatyczną. Zarówno platforma Azure, jak i system Windows zapewniają mechanizmy, które można wdrożyć w celu ochrony i kontrolowania komunikacji, uwierzytelniania i zachowania klientów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dostępne są następujące zasoby zawierające bardziej ogólne informacje dotyczące platformy Azure i powiązanych usług firmy Microsoft, oprócz szczegółowych zagadnień omówionych w tym dokumencie:
 
 * [Securing Privileged Access (Zabezpieczanie uprzywilejowanego dostępu)](https://technet.microsoft.com/library/mt631194.aspx) — szczegółowe informacje techniczne dotyczące projektowania i konfigurowania bezpiecznej administracyjnej stacji roboczej do zarządzania platformą Azure

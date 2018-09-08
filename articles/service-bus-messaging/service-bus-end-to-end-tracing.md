@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e30c6b9ef8f593f2fea3f6e3f5ccf22734ca5bee
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054191"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092177"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Rozproszonego śledzenia i korelacji, za pomocą komunikatów usługi Service Bus
 
@@ -83,10 +83,10 @@ async Task ProcessAsync(Message message)
 W tym przykładzie `RequestTelemetry` jest zgłaszana dla każdego komunikatu przetworzone, timestamp, czas trwania i wynik (Powodzenie). Dane telemetryczne ma również zbiór właściwości korelacji.
 Zagnieżdżone ślady i wyjątki zgłoszone podczas przetwarzania komunikatu również sygnaturę z właściwościami korelacji reprezentujący je jako "podrzędne" `RequestTelemetry`.
 
-W przypadku, gdy utworzysz wywołania obsługiwanych składników zewnętrznych podczas przetwarzania komunikatu, są one również automagically śledzone i skorelowane. Zapoznaj się [śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights](../application-insights/application-insights-custom-operations-tracking.md) do ręcznego śledzenia i korelacji.
+W przypadku, gdy utworzysz wywołania obsługiwanych składników zewnętrznych podczas przetwarzania komunikatu, są automatycznie śledzone i skorelowane. Zapoznaj się [śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights](../application-insights/application-insights-custom-operations-tracking.md) do ręcznego śledzenia i korelacji.
 
 ### <a name="tracking-without-tracing-system"></a>Śledzenie bez śledzenia systemu
-W przypadku, gdy system śledzenia nie obsługuje połączeń usługi Service Bus automagical śledzenia użytkownik może przyjrzeć Dodawanie takich obsługi w systemie śledzenia lub w aplikacji. W tej sekcji opisano zdarzenia diagnostyczne wysłane przez klienta usługi Service Bus .NET.  
+W przypadku, gdy system śledzenia nie obsługuje automatycznego wywołań usługi Service Bus, śledzenie zostanie może przyjrzeć Dodawanie takich obsługi w systemie śledzenia lub w aplikacji. W tej sekcji opisano zdarzenia diagnostyczne wysłane przez klienta usługi Service Bus .NET.  
 
 Klient modelu .NET magistrali usługi został zinstrumentowany przy użyciu platformy .NET śledzenia podstawowych [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) i [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 

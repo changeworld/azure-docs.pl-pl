@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie środowiska Azure PowerShell stosu | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania środowiska Azure PowerShell stosu.
+title: Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć się z usługi Azure Stack przy użyciu programu PowerShell, operator
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,32 +11,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 74a5a9408a78dd0da12fb3f8ed721774030cc438
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e6e1ffdf4384080649a769b2fdf6877ea744ec51
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749865"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162176"
 ---
-# <a name="configure-the-azure-stack-powershell-environment"></a>Konfigurowanie środowiska Azure PowerShell stosu
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Można skonfigurować stosu Azure przy użyciu programu PowerShell do zarządzania zasobami, takich jak tworzenie oferty, planów, przydziały i alerty. Ten temat ułatwia skonfigurowanie środowiska operatora.
+Można skonfigurować usługi Azure Stack przy użyciu programu PowerShell do zarządzania zasobami, takimi jak tworzenie oferty, planów, limity przydziału i alerty. W tym temacie pomaga skonfigurować środowisko operatora.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Uruchom następujące wymagania wstępne, albo z [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klienta zewnętrznych w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+Uruchom następujące wymagania wstępne, albo z [deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
- - Zainstaluj [modułów programu Azure PowerShell platformy Azure zgodnego stosu](azure-stack-powershell-install.md).  
- - Pobierz [narzędzia niezbędne do pracy z stosu Azure](azure-stack-powershell-download.md).  
+ - Zainstaluj [modułów programu Azure PowerShell dla usługi Azure Stack zgodnego](azure-stack-powershell-install.md).  
+ - Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md).  
 
-## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Skonfiguruj środowisko operatora i zaloguj się do stosu Azure
+## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Skonfiguruj środowisko operatora i zaloguj się do usługi Azure Stack
 
-Skonfiguruj środowisko operatora stosu Azure przy użyciu programu PowerShell. Uruchom jedno z poniższych skryptów: Zastąp wartości ArmEndpoint tenantName usługi Azure AD, GraphAudience punktu końcowego i konfiguracji środowiska.
+Za pomocą programu PowerShell, należy skonfigurować środowisko operatora usługi Azure Stack. Uruchom jedno z następujących skryptów: Zastąp wartości ArmEndpoint tenantName usługi Azure AD, GraphAudience punktu końcowego i konfiguracji środowiska.
 
 ````PowerShell  
     # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external.
@@ -54,7 +54,7 @@ Skonfiguruj środowisko operatora stosu Azure przy użyciu programu PowerShell. 
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 
-Teraz, gdy masz wszystkie elementy konfiguracji, zasobów w stosie Azure za pomocą programu PowerShell. Można na przykład utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Użyj następującego polecenia, aby utworzyć grupę zasobów o nazwie **MyResourceGroup**.
+Teraz, gdy masz wszystkie elementy konfiguracji, za pomocą programu PowerShell do tworzenia zasobów w ramach usługi Azure Stack. Na przykład można utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Użyj następującego polecenia, aby utworzyć grupę zasobów o nazwie **MyResourceGroup**.
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -62,5 +62,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - [Tworzenie szablonów dla stosu Azure](user/azure-stack-develop-templates.md)
+ - [Tworzenie szablonów usługi Azure Stack](user/azure-stack-develop-templates.md)
  - [Wdrażanie szablonów za pomocą programu PowerShell](user/azure-stack-deploy-template-powershell.md)

@@ -11,46 +11,45 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 09/06/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 2619f959dbefba84ea1a4d5aa974055998b78b5a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b563117f4d4b0e3859f0478a66610b0238f265dd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057019"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092563"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Należy zainstalować usługi Azure Stack zgodne modułów programu PowerShell do pracy z chmurą. Zgodność jest włączana za pomocą funkcji zwanej *profilami interfejsu API*.
+Aby pracować z chmurą, należy zainstalować zgodne modułów programu PowerShell usługi Azure Stack. Zgodność jest włączana za pomocą funkcji zwanej *profilami interfejsu API*.
 
 Profilami interfejsu API umożliwiają zarządzanie wersją różnice między platformą Azure i usługi Azure Stack. Profilu wersji interfejsu API to zbiór modułów Azure PowerShell Resource Manager przy użyciu określonych wersji interfejsu API. Każda platforma w chmurze ma zestaw obsługiwanych profilami wersji interfejsu API. Na przykład usługi Azure Stack obsługuje wersji określonego profilu Legitymacja, takie jak **2017-03-09-profile**, a platforma Azure obsługuje **najnowsze** profilu wersji interfejsu API. Po zainstalowaniu profilu, są zainstalowane moduły usługi Azure Resource Manager w programie PowerShell, które odpowiadają określony profil.
 
-W Internet połączone, częściowo połączonych lub rozłączonych scenariuszy, można zainstalować zgodne modułów programu PowerShell usługi Azure Stack. W tym artykule przedstawiono szczegółowe instrukcje, aby zainstalować program PowerShell dla usługi Azure Stack dla tych scenariuszy.
+Można zainstalować usługi Azure Stack zgodne modułów programu PowerShell w programie Internet połączenia, częściowo połączone lub rozłączonych scenariuszy. W tym artykule przedstawiono szczegółowe instrukcje, aby zainstalować program PowerShell dla usługi Azure Stack dla tych scenariuszy.
 
 ## <a name="1-verify-your-prerequisites"></a>1. Sprawdź swoje wymagania wstępne
 
-Zanim Twoje get pracę z usługą Azure Stack i programu PowerShell, musisz mieć kilka wymagań w miejscu.
+Przed rozpoczęciem pracy z usługi Azure Stack i programu PowerShell, musisz mieć następujące wymagania wstępne:
 
 - **Wersja programu PowerShell 5.0**  
-Aby sprawdzić swoją wersję, uruchom $PSVersionTable.PSVersion i porównaj **głównych** wersji. Jeśli nie masz programu PowerShell w wersji 5.0, postępuj zgodnie z [łącze](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) uaktualnienia do programu PowerShell w wersji 5.0.
+Aby sprawdzić swoją wersję, uruchom **$PSVersionTable.PSVersion** i porównaj **głównych** wersji. Jeśli nie masz programu PowerShell w wersji 5.0, postępuj zgodnie z [łącze](/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) uaktualnienia do programu PowerShell w wersji 5.0.
 
   > [!Note]  
   > PowerShell 5.0 wymaga maszyny Windows.
 
-- **Uruchom program Powershell z podwyższonym poziomem uprawnień wiersza**  
-  Musisz mieć możliwość uruchamiania programu PowerShell z uprawnieniami administracyjnymi.
+- **Uruchom program Powershell w wierszu polecenia z podwyższonym poziomem uprawnień**  
+  Należy uruchomić program PowerShell z uprawnieniami administracyjnymi.
 
 - **Dostęp do galerii programu PowerShell**  
-  Musisz mieć dostęp do [galerii programu PowerShell](https://www.powershellgallery.com). Galeria jest centralnym repozytorium zawartość programu PowerShell. **PowerShellGet** moduł zawiera polecenia cmdlet na potrzeby odnajdywania, instalowania, aktualizowania i publikowania programu PowerShell artefaktów, takich jak moduły, zasoby DSC, możliwości roli i skryptów z galerii programu PowerShell i innych prywatne repozytoriów. W przypadku odłączonych, czy przy użyciu programu PowerShell, należy pobrać zasoby z komputera z połączeniem z Internetem i przechowywać je w lokalizacji dostępnej dla komputera bez połączenia.
-
+  Musisz mieć dostęp do [galerii programu PowerShell](https://www.powershellgallery.com). Galeria jest centralnym repozytorium zawartość programu PowerShell. **PowerShellGet** moduł zawiera polecenia cmdlet na potrzeby odnajdywania, instalowania, aktualizowania i publikowania programu PowerShell artefaktów, takich jak moduły, zasoby DSC, możliwości roli i skryptów z galerii programu PowerShell i innych prywatne repozytoriów. Jeśli używasz programu PowerShell w przypadku odłączony, należy pobrać zasoby z komputera z połączeniem z Internetem i przechowywać je w lokalizacji dostępnej dla komputera bez połączenia.
 
 <!-- Nuget? -->
 
-## <a name="2-validate-if-the-powershell-gallery-is-accessible"></a>2. Sprawdź, czy w galerii programu PowerShell jest dostępny
+## <a name="2-validate-the-powershell-gallery-accessibility"></a>2. Weryfikowanie dostępności galerii programu PowerShell
 
 Sprawdź, czy galerii programu PowerShell jest zarejestrowany jako repozytorium.
 
@@ -130,7 +129,7 @@ Jeśli instalacja się powiodła, moduł AzureRM i AzureStack są wyświetlane w
 
 W przypadku odłączonych należy najpierw pobrać modułów programu PowerShell na komputerze, który ma łączność z Internetem, a następnie przenieść je do usługi Azure Stack Development Kit dla instalacji.
 
-Zaloguj się na komputerze, na którym ma łączność z Internetem i pobrać pakiety usługi Azure Resource Manager i AzureStack na komputerze lokalnym, w zależności od używanej wersji usługi Azure Stack za pomocą następujących skryptów.
+Zaloguj się na komputerze z łącznością z Internetem i pobierania pakietów usługi Azure Resource Manager i AzureStack, w zależności od używanej wersji programu Azure Stack za pomocą następujących skryptów:
 
 
   - **Wersja 1.3.0** (usługi Azure Stack 1804 lub nowszej)
@@ -157,11 +156,11 @@ Zaloguj się na komputerze, na którym ma łączność z Internetem i pobrać pa
       Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
     ````
 
-2. Skopiuj pakietów do pobrania z urządzeniem USB.
+2. Kopiowanie pakietów do pobrania na urządzenie USB.
 
 3. Zaloguj się do stacji roboczej, a następnie skopiuj pakiety z urządzenia USB do lokalizacji na stacji roboczej.
 
-4. Teraz musisz zarejestrować tę lokalizację jako repozytorium domyślne i zainstaluj moduł AzureRM i AzureStack z tego repozytorium:
+4. Teraz zarejestrować tę lokalizację jako repozytorium domyślne i zainstaluj moduł AzureRM i AzureStack z tego repozytorium:
 
    ```PowerShell
    #requires -Version 5
@@ -181,19 +180,18 @@ Zaloguj się na komputerze, na którym ma łączność z Internetem i pobrać pa
 
 ## <a name="6-configure-powershell-to-use-a-proxy-server"></a>6. Konfigurowanie programu PowerShell do korzystania z serwera proxy
 
-W scenariuszach, które wymagają serwera proxy, aby uzyskać dostęp do Internetu należy najpierw skonfigurować programu PowerShell, aby użyć istniejącego serwera proxy.
+W scenariuszach, które wymagają serwera proxy, aby uzyskać dostęp do Internetu należy najpierw skonfigurować programu PowerShell, aby korzystał z istniejącego serwera proxy:
 
 1. Otwórz wiersz PowerShell z podwyższonym poziomem uprawnień.
 2. Uruchom następujące polecenia:
 
-````PowerShell  
-  #To use Windows credentials for proxy authentication
-  [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
+   ```PowerShell  
+   #To use Windows credentials for proxy authentication
+   [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 
-  #Alternatively, to prompt for separate credentials that can be used for #proxy authentication
-
-  [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
-````
+   #Alternatively, to prompt for separate credentials that can be used for #proxy authentication
+   [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
+   ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

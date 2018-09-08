@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 09/07/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 89b21af5303afc2082d3d56ddb9e894f3ae4c4b8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054152"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158433"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie, łączenie ze źródłami danych w środowisku lokalnym. Aby dowiedzieć się więcej na temat bramy, zobacz [lokalnej bramy danych](analysis-services-gateway.md).
@@ -35,6 +35,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
 * Podczas instalacji, podczas rejestracji bramy przy użyciu platformy Azure wybrano domyślnego regionu dla Twojej subskrypcji. Możesz wybrać inny region. W przypadku serwerów w więcej niż jednym regionie, należy zainstalować bramę dla każdego regionu. 
 * Nie można zainstalować bramy na kontrolerze domeny.
 * Na jednym komputerze można zainstalować tylko jedną bramę.
+* Domyślnie brama używa konta NT SERVICE\PBIEgwService logowania. Inne konto można określić podczas instalacji lub w usługach. Upewnij się, że zasady grupy Zezwalaj na konto usługi ma dziennika jako uprawnienia usługi.
 * Instalowanie bramy na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
 * Nie należy instalować bramy na komputerze bezprzewodowo podłączonej do sieci. Wydajność może być mniejsza.
 * Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) co subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
@@ -111,7 +112,7 @@ Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu br
     > [!NOTE]
     > Jeśli na liście nie ma bramy, serwer, prawdopodobnie nie w tym samym regionie, co region określone podczas rejestracji bramy. 
 
-To już wszystko. Jeśli potrzebujesz otwarcie portów lub wykonaj rozwiązywania wszelkich problemów, koniecznie zapoznaj się z [lokalnej bramy danych](analysis-services-gateway.md).
+Gotowe. Jeśli potrzebujesz otwarcie portów lub wykonaj rozwiązywania wszelkich problemów, koniecznie zapoznaj się z [lokalnej bramy danych](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie usług Analysis Services](analysis-services-manage.md)   

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434116"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Samouczek: Integracja usługi Azure Active Directory z xMatters na żądanie
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą xMatters OnDemand, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - XMatters OnDemand logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację xMatters na żądanie w usłudze Azure AD, należ
 
 **Aby dodać xMatters na żądanie w galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -202,7 +202,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Tworzenie użytkownika testowego OnDemand xMatters
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w xMatters OnDemand. xMatters OnDemand obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](xmatters-ondemand-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w xMatters OnDemand.
 
 **Jeśli potrzebujesz ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
@@ -269,7 +269,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

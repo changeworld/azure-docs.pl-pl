@@ -1,141 +1,137 @@
 ---
-title: Azure Functions instalacji środowiska uruchomieniowego | Dokumentacja firmy Microsoft
-description: Jak zainstalować środowisko uruchomieniowe Functions Azure preview 2
+title: Instalacja środowiska uruchomieniowego usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Jak zainstalować środowisko uruchomieniowe usługi Azure Functions korzystania z wersji zapoznawczej 2
 services: functions
-documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: ''
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: f8ce27bf28f73818932f2ac9056d4fdd573679e8
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
-ms.locfileid: "26290661"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093672"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>Zainstaluj środowisko uruchomieniowe Functions Azure preview 2
+# <a name="install-the-azure-functions-runtime-preview-2"></a>Zainstaluj środowisko uruchomieniowe usługi Azure Functions preview 2
 
-Jeśli chcesz zainstalować środowisko uruchomieniowe Functions Azure preview 2, wykonaj następujące kroki:
+Jeśli chcesz zainstalować Podgląd środowiska uruchomieniowego usługi Azure Functions, 2, wykonaj następujące kroki:
 
-1. Upewnij się, że komputer przekazuje wymagania minimalne.
-1. Pobierz [Azure Functions środowiska wykonawczego w wersji zapoznawczej Instalatora](https://aka.ms/azafrv2).
-1. Odinstaluj Podgląd środowisko uruchomieniowe Functions Azure 1.
-1. Zainstaluj środowisko uruchomieniowe Functions Azure preview 2.
-1. Zakończ konfigurację środowiska uruchomieniowego funkcji Azure Preview 2.
-1. Tworzenie pierwszej funkcji w wersji zapoznawczej środowiska uruchomieniowego funkcji platformy Azure
+1. Upewnij się, że komputer przekazuje minimalne wymagania.
+1. Pobierz [Instalatora w wersji zapoznawczej środowiska uruchomieniowego usługi Azure Functions](https://aka.ms/azafrv2).
+1. Odinstaluj Podgląd środowiska uruchomieniowego usługi Azure Functions 1.
+1. Zainstaluj środowisko uruchomieniowe usługi Azure Functions preview 2.
+1. Zakończ konfigurację programu środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej 2.
+1. Tworzenie pierwszej funkcji w usłudze Azure Functions Runtime — wersja zapoznawcza
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zainstalować środowisko uruchomieniowe Functions Azure w wersji zapoznawczej, musi mieć następujące zasoby dostępne:
+Przed zainstalowaniem wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions, konieczne jest posiadanie dostępne następujące zasoby:
 
-1. Maszynie z systemem Microsoft Windows Server 2016 lub Microsoft Windows 10 twórców aktualizacji (Professional lub Enterprise Edition).
-1. Wystąpienie programu SQL Server działających w sieci.  Minimalna wersja wymagana jest programu SQL Server Express.
+1. Maszyny z systemem Microsoft Windows Server 2016 lub Microsoft Windows 10 Creators Update (Edycja Enterprise lub Professional).
+1. Wystąpienie programu SQL Server uruchomiony w ramach sieci użytkownika.  Minimalna wymagana wersja to SQL Server Express.
 
-## <a name="uninstall-previous-version"></a>Odinstaluj poprzednią wersję
+## <a name="uninstall-previous-version"></a>Odinstalowywanie poprzedniej wersji
 
-Jeśli wcześniej zainstalowano środowisko uruchomieniowe Functions Azure w wersji zapoznawczej, należy odinstalować przed zainstalowaniem najnowszej wersji.  Odinstaluj Podgląd środowisko uruchomieniowe Functions Azure przez usunięcie programu w aplecie Dodaj lub usuń programy w systemie Windows.
+Jeśli wcześniej zainstalowano środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej, należy odinstalować przed zainstalowaniem najnowszej wersji.  Odinstaluj środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej, usuwając program w aplecie Dodaj/Usuń programy w Windows.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>Zainstaluj usługę Azure Functions podglądu środowiska wykonawczego
+## <a name="install-the-azure-functions-runtime-preview"></a>Instalowanie środowiska uruchomieniowego usługi Azure Functions w wersji zapoznawczej
 
-Instalator podglądu środowiska uruchomieniowego funkcji Azure przeprowadzi Cię przez instalację środowisko uruchomieniowe Functions Azure w wersji zapoznawczej zarządzania i roli proces roboczy.  Istnieje możliwość zainstalowania roli zarządzania i proces roboczy na tym samym komputerze.  Jednak podczas dodawania więcej funkcji aplikacji, należy wdrożyć jedną rolę procesu roboczego na dodatkowych komputerach możliwość skalowania funkcji na wielu pracowników.
+Instalator w wersji zapoznawczej środowiska uruchomieniowego funkcji Azure przeprowadzi Cię przez instalację środowiska uruchomieniowego usługi Azure Functions w wersji zapoznawczej zarządzania i ról procesów roboczych.  Istnieje możliwość zainstalować rolę zarządzania i proces roboczy na tym samym komputerze.  Jednak w miarę dodawania większej liczby aplikacji funkcji, należy wdrożyć większej liczby ról procesów roboczych na dodatkowe maszyny, aby można było skalować funkcji na wielu procesów roboczych.
 
 ## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Zainstaluj na tym samym komputerze zarządzania i roli procesu roboczego
 
-1. Uruchom Instalatora programu Azure Functions środowiska wykonawczego w wersji zapoznawczej.
+1. Uruchom Instalatora w wersji zapoznawczej środowiska uruchomieniowego usługi Azure Functions.
 
-    ![Azure Instalatora w wersji zapoznawczej funkcji środowiska uruchomieniowego][1]
+    ![Usługa Azure Instalatora w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][1]
 
 1. Kliknij przycisk **Dalej**.
-1. Po przeczytaniu warunki **umowy licencyjnej**, **zaznacz pole wyboru** Akceptuję postanowienia, a następnie kliknij przycisk **dalej** można poprawić.
-1. Wybierz role, którą chcesz zainstalować na tym komputerze **funkcje zarządzania roli** i/lub **roli procesu roboczego funkcji** i kliknij przycisk **dalej**.
+1. Po zapoznaniu się z postanowieniami **Umowa licencyjna EULA**, **zaznacz pole wyboru** Zaakceptuj warunki, a następnie kliknij przycisk **dalej** Aby awansować.
+1. Wybierz role, którą chcesz zainstalować na tym komputerze **roli zarządzania funkcje** i/lub **roli procesu roboczego funkcji** i kliknij przycisk **dalej**.
 
-    ![Instalator Azure w wersji zapoznawczej funkcji środowiska uruchomieniowego — Wybór roli][3]
-
-    > [!NOTE]
-    > Można zainstalować **roli procesu roboczego funkcji** na innych komputerach. Aby to zrobić, wykonaj te instrukcje, a jedynie opcję **roli procesu roboczego funkcji** w Instalatorze.
-
-1. Kliknij przycisk **dalej** mają **Kreatora instalacji programu Azure funkcji środowiska uruchomieniowego** rozpocząć proces instalacji na tym komputerze.
-1. Po wykonaniu tych czynności kreatora instalacji uruchamia **środowisko uruchomieniowe Functions Azure** narzędzia do konfiguracji.
-
-    ![Zakończenie Azure Instalatora w wersji zapoznawczej funkcji środowiska uruchomieniowego][6]
+    ![Instalator platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions — Wybór roli][3]
 
     > [!NOTE]
-    > Jeśli instalujesz na **systemu Windows 10** i **kontenera** funkcji nie został wcześniej włączony, **instalacja środowiska uruchomieniowego funkcji Azure** wyświetli monit o ponowny rozruch komputera Aby zakończyć instalację.
+    > Możesz zainstalować **roli procesu roboczego funkcji** na innych komputerach. Aby to zrobić, wykonaj te instrukcje, a następnie wybrać tylko **roli procesu roboczego funkcji** w Instalatorze.
 
-## <a name="configure-the-azure-functions-runtime"></a>Skonfiguruj usługę Azure Functions środowiska uruchomieniowego
+1. Kliknij przycisk **dalej** mieć **Kreatora instalacji środowiska uruchomieniowego funkcji Azure** rozpocząć proces instalacji na komputerze.
+1. Po wykonaniu tych czynności, zostanie uruchomiony Kreator instalacji **środowisko uruchomieniowe usługi Azure Functions** narzędzie konfiguracji.
 
-Aby ukończyć instalację środowisko uruchomieniowe Functions Azure, należy wykonać konfigurację.
+    ![Wykonaj Azure Instalatora w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][6]
 
-1. **Środowisko uruchomieniowe Functions Azure** zawiera narzędzia do konfiguracji role są zainstalowane na tym komputerze.
+    > [!NOTE]
+    > Jeśli instalujesz na **systemu Windows 10** i **kontenera** funkcja nie została wcześniej włączona, **konfiguracji środowiska uruchomieniowego funkcji usługi Azure** wyświetli monit o ponowne uruchomienie komputera Aby zakończyć instalację.
 
-    ![Narzędzia do konfiguracji Azure w wersji zapoznawczej funkcji środowiska uruchomieniowego][7]
+## <a name="configure-the-azure-functions-runtime"></a>Konfigurowanie środowiska uruchomieniowego usługi Azure Functions
 
-1. Kliknij przycisk **bazy danych** wprowadź szczegóły połączenia dla wystąpienia programu SQL Server, łącznie z określeniem [klucz główny bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)i kliknij przycisk **Zastosuj**.  Łączność z wystąpieniem programu SQL Server jest wymagany w celu obsługi funkcji Azure utworzenie bazy danych obsługuje środowisko uruchomieniowe.
+Aby ukończyć instalację środowiska uruchomieniowego usługi Azure Functions, należy wykonać konfigurację.
 
-    ![Azure środowisko uruchomieniowe Functions Podgląd bazy danych konfiguracji][8]
+1. **Środowisko uruchomieniowe usługi Azure Functions** narzędzie konfiguracji pokazuje, które role są zainstalowane na tym komputerze.
 
-1. Kliknij przycisk **poświadczenia** kartę.  W tym miejscu należy utworzyć dwa nowe poświadczenia do użycia z udziałem plików do obsługi wszystkich funkcji aplikacji.  Określ **nazwy użytkownika** i **hasło** kombinacji dla **właściciela udziału pliku** i **użytkownika udziału pliku**, kliknij przycisk **Zastosuj**.
+    ![Narzędzia do konfiguracji platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][7]
 
-    ![Poświadczenia Azure w wersji zapoznawczej funkcji środowiska uruchomieniowego][9]
+1. Kliknij przycisk **bazy danych** wprowadź szczegóły połączenia dla wystąpienia programu SQL Server, łącznie z określeniem [klucz główny bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)i kliknij przycisk **Zastosuj**.  Aby środowisko uruchomieniowe usługi Azure Functions utworzyć bazę danych do obsługi środowiska uruchomieniowego, wymagana jest łączność z wystąpieniem programu SQL Server.
 
-1. Kliknij przycisk **udziału plików** kartę.  W tym miejscu podaj szczegóły lokalizację udziału plików.  Można utworzyć udziału plików dla Ciebie lub można użyć istniejącego udziału plików i kliknij przycisk **Zastosuj**.  Wybierz nową lokalizację udziału plików, należy określić katalog do użycia przez środowisko uruchomieniowe Functions Azure.
+    ![Konfiguracja bazy danych (wersja zapoznawcza) w usłudze Azure środowisko uruchomieniowe usługi Functions][8]
 
-    ![Azure udziału plików w wersji zapoznawczej funkcji środowiska uruchomieniowego][10]
+1. Kliknij przycisk **poświadczenia** kartę.  W tym miejscu należy utworzyć dwa nowe poświadczenia do użycia z udziałem plików do hostowania aplikacji funkcji.  Określ **nazwy użytkownika** i **hasło** kombinacje w celach **właściciela udziału plików** i **użytkownika udziału plików**, następnie kliknij przycisk **Zastosuj**.
 
-1. Kliknij przycisk **IIS** kartę.  Ta karta przedstawia szczegóły witryn sieci Web w usługach IIS tworzonego przez środowisko uruchomieniowe Functions Azure narzędzie konfiguracji.  Można określić niestandardowe nazwy DNS tutaj dla portalu środowisko uruchomieniowe Functions Azure w wersji zapoznawczej.  Kliknij przycisk **Zastosuj** do wykonania.
+    ![Poświadczenia platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][9]
 
-    ![Azure podglądu środowiska uruchomieniowego funkcje usług IIS][11]
+1. Kliknij przycisk **udziału plików** kartę.  W tym miejscu podaj szczegółowe informacje o lokalizację udziału plików.  Można utworzyć udziału plików dla Ciebie, lub możesz użyć istniejącego udziału plików i kliknij **Zastosuj**.  Jeśli wybierzesz nową lokalizację udziału plików, należy określić katalog do użycia przez środowisko uruchomieniowe usługi Azure Functions.
 
-1. Kliknij przycisk **usług** kartę.  Ta karta przedstawia stan usługi narzędzia konfiguracji programu obsługi funkcji Azure.  Jeśli **usługi aktywacji hosta funkcji Azure** jest nie działa po wykonaniu konfiguracji początkowej, kliknij przycisk **Uruchom usługę**.
+    ![Udział plików w wersji zapoznawczej w usłudze platformy Azure środowiska uruchomieniowego usługi Functions][10]
 
-    ![Środowisko uruchomieniowe Functions Podgląd Konfiguracja programu Azure ukończone][12]
+1. Kliknij przycisk **IIS** kartę.  Ta karta przedstawia szczegółowe informacje o witrynach sieci Web w usługach IIS, który tworzy za pomocą narzędzia konfiguracji środowiska uruchomieniowego usługi Azure Functions.  Można określić niestandardową nazwę DNS w tym miejscu dla portalu w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions.  Kliknij przycisk **Zastosuj** do ukończenia.
 
-1. Przejdź do **Azure Functions portalu środowiska uruchomieniowego** jako `https://<machinename>.<domain>/`.
+    ![Azure Functions Runtime — wersja zapoznawcza usług IIS][11]
 
-    ![Portal Azure w wersji zapoznawczej funkcji środowiska uruchomieniowego][13]
+1. Kliknij przycisk **usług** kartę.  Ta karta przedstawia stan usługi w narzędziu konfiguracji środowiska uruchomieniowego usługi Azure Functions.  Jeśli **usługi aktywacji hosta funkcji Azure** jest nie działa po wykonaniu konfiguracji początkowej, kliknij przycisk **Uruchom usługę**.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Tworzenie pierwszej funkcji w środowisku uruchomieniowym funkcji Azure w wersji zapoznawczej
+    ![Środowisko uruchomieniowe usługi Functions (wersja zapoznawcza) konfiguracji ukończone][12]
 
-Aby utworzyć swoją pierwszą funkcję w środowisku uruchomieniowym funkcji Azure w wersji zapoznawczej
+1. Przejdź do **Portal środowiska uruchomieniowego usługi Azure Functions** jako `https://<machinename>.<domain>/`.
 
-1. Przejdź do **Azure Functions portalu środowiska uruchomieniowego** jako https://<machinename>.<domain> na przykład https://mycomputer.mydomain.com
-1. Zostanie wyświetlony monit o **Zaloguj**, w przypadku wdrażania w Użyj domeny, nazwę domeny konta użytkownika i hasło, w przeciwnym razie użyj nazwę lokalnego konta użytkownika i hasło, aby zalogować się do portalu.
+    ![Azure portal w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][13]
 
-![Środowisko uruchomieniowe Functions wersji zapoznawczej portalu logowania do systemu Azure][14]
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Tworzenie pierwszej funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
 
-1. Do tworzenia aplikacji dla funkcji, należy utworzyć subskrypcję.  W lewym górnym rogu portalu kliknij  **+**  opcję obok subskrypcji
+Tworzenie pierwszej funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
 
-![Subskrypcje platformy Azure środowiska uruchomieniowego funkcje wersji zapoznawczej portalu][15]
+1. Przejdź do **Portal środowiska uruchomieniowego usługi Azure Functions** jako https://<machinename>.<domain> Na przykład https://mycomputer.mydomain.com
+1. Zostanie wyświetlony monit o **Zaloguj**, jeśli wdrożono używane domeny, nazwę domeny konta użytkownika i hasło, w przeciwnym razie użyj nazwę lokalnego konta użytkownika i hasło, aby zalogować się do portalu.
+
+![Środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu logowanie do platformy Azure][14]
+
+1. Aby utworzyć aplikację funkcji, należy utworzyć subskrypcję.  W lewym górnym rogu portalu kliknij **+** opcję obok subskrypcje
+
+![Subskrypcje platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej portalu][15]
 
 1. Wybierz **DefaultPlan**, wprowadź nazwę dla Twojej subskrypcji i kliknij przycisk **Utwórz**.
 
-![Azure funkcje środowiska wykonawczego w wersji zapoznawczej portalu subskrypcji i nazwy][16]
+![Plan subskrypcji w portalu w wersji zapoznawczej w usłudze Azure środowisko uruchomieniowe usługi Functions i nazwa][16]
 
-1. Wszystkich funkcji aplikacji są wyświetlane w okienku po lewej stronie portalu.  Aby utworzyć nową aplikację funkcji, wybierz nagłówek **aplikacji funkcji** i kliknij przycisk  **+**  opcji.
+1. Wszystkie Twoje aplikacje funkcji są wyświetlane w okienku po lewej stronie portalu.  Aby utworzyć nową aplikację funkcji, wybierz nagłówek **aplikacje funkcji** i kliknij przycisk **+** opcji.
 
-1. Wprowadź nazwę dla aplikacji funkcja wybierz poprawną subskrypcję, wybrać wersję środowiska uruchomieniowego usługi Azure Functions do programów przed, a następnie kliknij przycisk **Utwórz**
+1. Wprowadź nazwę aplikacji funkcji, wybierz poprawną subskrypcję, którą wersję środowiska uruchomieniowego usługi Azure Functions, aby programować przy użyciu, a następnie kliknij przycisk Wybierz **Create**
 
-![Środowisko uruchomieniowe Functions Podgląd portalu nowych funkcji aplikacji Azure][17]
+![Usługa Azure środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu nowej aplikacji funkcji][17]
 
-1. Nowej aplikacji funkcji znajduje się w okienku po lewej stronie portalu.  Wybierz funkcje, a następnie kliknij przycisk **nową funkcję** u góry w środkowym okienku w portalu.
+1. Nową aplikację funkcji znajduje się w okienku po lewej stronie portalu.  Wybierz funkcje, a następnie kliknij przycisk **nową funkcję** w górnej części okienka Centrum w portalu.
 
-![Szablony usługi Azure w wersji zapoznawczej funkcji środowiska uruchomieniowego][18]
+![Szablony platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][18]
 
-1. Wybierz funkcję wyzwalacza czasomierza, w wysuwane po prawej stronie nazwy funkcji i Zmień harmonogram `*/5 * * * * *` (tego wyrażenia cron powoduje, że funkcja czasomierza wykonanie co pięć sekund) i kliknij przycisk **Utwórz**
+1. Wybierz funkcję wyzwalacza czasomierza, w menu po prawej stronie wysuwane nadaj nazwę funkcji i Zmień harmonogram `*/5 * * * * *` (to wyrażenie cron powoduje, że funkcję czasomierza, aby wykonać co pięć sekund) i kliknij przycisk **Create**
 
-![Konfiguracji platformy Azure środowisko uruchomieniowe Functions Podgląd nowego czasomierza — funkcja][19]
+![Konfiguracji platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej nowego czasomierza — funkcja][19]
 
-1. Funkcja została utworzona.  Dziennik wykonywania aplikacji funkcji można wyświetlić, rozwijając **dziennika** okienko w dolnej części portalu.
+1. Funkcja została utworzona.  Dziennik wykonywania aplikacji funkcji można wyświetlić, rozwijając **dziennika** okienku u dołu portalu.
 
-![Wykonywanie funkcji podglądu środowisko uruchomieniowe Functions Azure][20]
+![Wykonywanie funkcji w wersji zapoznawczej środowiska uruchomieniowego usługi Functions platformy Azure][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

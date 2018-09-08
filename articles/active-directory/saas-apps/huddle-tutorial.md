@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 09/05/2018
 ms.author: jeedes
-ms.openlocfilehash: d67dbcef1b287ed9552d96338a2591b5f8319532
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 08114fc52665eb336844a1072df8bd3f2591dd07
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434785"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Samouczek: Integracja usługi Azure Active Directory z zbijają się
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą zbijają się, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Zbijają się logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -53,30 +53,30 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie zbijają się za pomocą galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-huddle-from-the-gallery"></a>Dodawanie zbijają się za pomocą galerii
 Aby skonfigurować integrację zbijają się w usłudze Azure AD, należy dodać zbijają się za pomocą galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać zbijają się z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-1. W polu wyszukiwania wpisz **zbijają się**.
+4. W polu wyszukiwania wpisz **zbijają się**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/tutorial_huddle_search.png)
 
-1. W panelu wyników wybierz **zbijają się**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+5. W panelu wyników wybierz **zbijają się**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
@@ -92,13 +92,13 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 
-1. **[Tworzenie użytkownika testowego zbijają się](#creating-a-huddle-test-user)**  — aby odpowiednikiem Britta Simon w zbijają się połączonego z usługi Azure AD reprezentacja użytkownika.
+3. **[Tworzenie użytkownika testowego zbijają się](#creating-a-huddle-test-user)**  — aby odpowiednikiem Britta Simon w zbijają się połączonego z usługi Azure AD reprezentacja użytkownika.
 
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -110,41 +110,63 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
 
-1. Na **zbijają się domena i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na **zbijają się domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_url.png)
+    ![Zbijają się domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/huddle-tutorial/tutorial_huddle_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `http://<company name>.huddle.com`
+    a. W **identyfikator** polu tekstowym wpisz dowolny adres URL, za pomocą następującego wzorca:
+
+    | | |
+    |--|--|
+    | `https://<customsubdomain>.huddle.com`|
+    | `https://us.huddle.com` |
+    | |
+
+    b. W **adres URL odpowiedzi** polu tekstowym wpisz dowolny adres URL, za pomocą następującego wzorca:
+
+    | | |
+    |--|--|
+    | `https://<customsubdomain>.huddle.com/saml/idp-initiated-sso`|
+    | `https://us.huddle.com/saml/idp-initiated-sso`|
+    | |
+
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+
+    ![Zbijają się domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/huddle-tutorial/tutorial_huddle_url1.png)
+
+    W **adres URL logowania** polu tekstowym wpisz dowolny adres URL, za pomocą następującego wzorca:
+    
+    | | |
+    |--|--|
+    | `https://<customsubdomain>.huddle.com`|
+    | `https://us.huddle.com`|
+    | |
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) aby zyskać tę wartość. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) do uzyskania tych wartości. 
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+5. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_general_400.png)
 
-1. Na **zbijają się konfiguracji** , kliknij przycisk **skonfigurować zbijają się** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.** 
+7. Na **zbijają się konfiguracji** , kliknij przycisk **skonfigurować zbijają się** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.** 
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_configure.png) 
     
-1. Aby skonfigurować logowanie jednokrotne zbijają się po stronie, musisz wysłać pobrany **certyfikatu**, **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, i **identyfikator jednostki SAML** do [ Zbijają się z zespołem pomocy technicznej klienta](https://huddle.zendesk.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.  
+8. Aby skonfigurować logowanie jednokrotne zbijają się po stronie, musisz wysłać pobrany **certyfikatu**, **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, i **identyfikator jednostki SAML** do [ Zbijają się z zespołem pomocy technicznej klienta](https://huddle.zendesk.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.  
    
     >[!NOTE]
     > Logowania jednokrotnego musi być włączona przez zespół pomocy technicznej zbijają się. Otrzymasz powiadomienie po zakończeniu konfiguracji. 
     > 
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-   
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
@@ -157,15 +179,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/create_aaduser_01.png) 
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/create_aaduser_02.png) 
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/create_aaduser_03.png) 
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/create_aaduser_04.png) 
 
@@ -184,20 +206,22 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do zbijają się, m
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **zbijają się** witryny firmy jako administrator.
-1. Kliknij przycisk **obszaru roboczego**.
-1. Kliknij przycisk **osób \> zapraszać inne osoby**.
-   
-   ![Osoby](./media/huddle-tutorial/IC787838.png "osoby")
 
-1. W **Tworzenie nowego zaproszenia** sekcji, wykonaj następujące czynności:
-   
-   ![Nowe zaproszenie](./media/huddle-tutorial/IC787839.png "nowe zaproszenie")
-   
-   a. W **wybierz zespół, aby zapraszać inne osoby do dołączenia do** listy wybierz **zespołu**.
+2. Kliknij przycisk **obszaru roboczego**.
 
-   b. Typ **adres E-mail** prawidłowe platformy Azure konto usługi AD, w którym chcesz udostępnić w celu **wprowadź adres e-mail osoby, które chcesz zaprosić** pola tekstowego.
+3. Kliknij przycisk **osób \> zapraszać inne osoby**.
+   
+    ![Osoby](./media/huddle-tutorial/IC787838.png "osoby")
 
-   c. Kliknij przycisk **zaprosić**.   
+4. W **Tworzenie nowego zaproszenia** sekcji, wykonaj następujące czynności:
+   
+    ![Nowe zaproszenie](./media/huddle-tutorial/IC787839.png "nowe zaproszenie")
+   
+    a. W **wybierz zespół, aby zapraszać inne osoby do dołączenia do** listy wybierz **zespołu**.
+
+    b. Typ **adres E-mail** prawidłowe platformy Azure konto usługi AD, w którym chcesz udostępnić w celu **wprowadź adres e-mail osoby, które chcesz zaprosić** pola tekstowego.
+
+    c. Kliknij przycisk **zaprosić**.   
    
     >[!NOTE]
     > Właściciel konta usługi Azure AD zostanie wysłana wiadomość e-mail, w tym link do potwierdzenia konta, zanim stanie się aktywny. 
@@ -219,23 +243,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-1. Na liście aplikacji wybierz **zbijają się**.
+2. Na liście aplikacji wybierz **zbijają się**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_app.png) 
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
