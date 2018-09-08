@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9a22b14df18e10342bb2a872b82b94ab4ea62d0a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859871"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163281"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -42,9 +42,7 @@ Przy użyciu programu Bash w usłudze Cloud Shell, można uruchomić polecenie o
 #### <a name="prerequisites-for-manual-mounting"></a>Wymagania wstępne dotyczące ręcznego instalowania
 Można zaktualizować udziału plików który jest skojarzony z usługi Cloud Shell przy użyciu `clouddrive mount` polecenia.
 
-W przypadku instalowania istniejący udział plików, kont magazynu muszą być:
-* Magazyn lokalnie nadmiarowy lub magazyn geograficznie nadmiarowy do obsługi udziałów plików.
-* Znajduje się w Twoim regionie przypisane. Kiedy dołączania, region, są przypisane do znajduje się w nazwę grupy zasobów `cloud-shell-storage-<region>`.
+W przypadku instalowania istniejący udział plików, konta magazynu musi znajdować się w regionie wybierz usługę Cloud Shell. Pobieranie lokalizacji, uruchamiając `env` z powłoki Bash i sprawdzanie `ACC_LOCATION`.
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` Polecenia
 

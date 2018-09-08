@@ -15,19 +15,21 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: a7060f9204690e5e7b84693042cecb164c36b45b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e90ffa0a7b5eb9e622a666fdcfa956763abd7633
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366341"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162805"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrowanie usługi Azure Active Directory z aplikacjami Wprowadzenie przewodnik wprowadzenie
-## <a name="overview"></a>Przegląd
-W tym temacie jest przeznaczona do umożliwiają mapę do integrowania aplikacji za pomocą usługi Azure Active Directory (AD). Każdy z poniższych sekcjach zawierają krótkie podsumowanie bardziej szczegółowych tematów, więc można zidentyfikować, które części w tym przewodniku z wprowadzeniem są istotne dla Ciebie.  Wykonaj linki do bardziej zgłębić temat na poszczególne tematy.
 
-## <a name="before-you-begin-take-inventory"></a>Przed przystąpieniem do wykonywania spis
-Zanim można przejść do Integrowanie aplikacji z usługą Azure AD, należy wiedzieć, gdzie się znajdujesz i gdzie chcesz przejść.  Poniższe pytania mają na celu pomóc myśleć o projekcie integracji aplikacji usługi Azure AD.
+Ten temat zawiera podsumowanie procesu Integrowanie aplikacji za pomocą usługi Azure Active Directory (AD). Każdy z poniższych sekcjach zawierają krótkie podsumowanie bardziej szczegółowych tematów, więc można zidentyfikować, które części w tym przewodniku z wprowadzeniem są istotne dla Ciebie.
+
+Aby pobrać szczegóły wdrożenia planów, zobacz [następne kroki](#next-steps).
+
+## <a name="take-inventory"></a>Spis
+Przed Integrowanie aplikacji z usługą Azure AD, jest ważne, aby wiedzieć, gdzie się znajdujesz i gdzie chcesz przejść.  Poniższe pytania mają na celu pomóc myśleć o projekcie integracji aplikacji usługi Azure AD.
 
 ### <a name="application-inventory"></a>Spis aplikacji
 * Gdzie są wszystkie swoje aplikacje? Kto jest właścicielem je?
@@ -57,12 +59,16 @@ Zanim można przejść do Integrowanie aplikacji z usługą Azure AD, należy wi
 
 Być może w przypadku braku odpowiedzi na wszystkie pytania na początku, ale jest to OK.  Ten przewodnik może pomóc w odpowiedzi na niektóre z tych pytań, a niektóre podejmowaniu świadomych wyborów.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-* Subskrypcja platformy Azure i katalogu usługi Azure Active Directory.  Jeśli nie masz jeszcze subskrypcji platformy Azure, Azure można wypróbować bezpłatnie przez 30 dni. [Wypróbuj!](https://azure.microsoft.com/trial/get-started-active-directory/)
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Wyszukaj aplikacje niezaakceptowane oficjalnie chmury z rozwiązaniem Cloud Discovery
 
-## <a name="application-integration-with-azure-ad"></a>Integracja aplikacji z usługą Azure AD
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>Znajdowanie niezaakceptowane oficjalnie aplikacje w chmurze z rozwiązaniem Cloud Discovery
 Jak wspomniano powyżej, może to być aplikacje, które jeszcze nie zostało zarządzane przez Twoją organizację, do chwili obecnej.  W ramach procesu spisu istnieje możliwość znaleźć aplikacje niezaakceptowane oficjalnie chmury. Zobacz [konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+
+## <a name="integrating-applications-with-azure-ad"></a>Integrowanie aplikacji z usługą Azure AD
+Następujące artykuły omówiono różne sposoby aplikacji integracji z usługą Azure AD i zapewnia wskazówki.
+
+* [Określanie, które usługi Active Directory do użycia](../fundamentals/active-directory-administer.md)
+* [Za pomocą aplikacji w galerii aplikacji platformy Azure](what-is-single-sign-on.md)
+* [Integrowanie listę samouczki aplikacji SaaS](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>Typy uwierzytelniania
 Poszczególnych aplikacji mogą mieć różne uwierzytelniania wymagania. Za pomocą usługi Azure AD certyfikaty podpisywania może służyć za pomocą aplikacji, które używają protokołu SAML 2.0, WS-Federation, lub OpenID Connect protokołów oraz hasło logowania jednokrotnego. Aby uzyskać więcej informacji na temat aplikacji Zobacz typy uwierzytelniania do użycia z usługą Azure AD [zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) i [logowanie na podstawie hasła](what-is-single-sign-on.md).
@@ -70,12 +76,10 @@ Poszczególnych aplikacji mogą mieć różne uwierzytelniania wymagania. Za pom
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Włączanie logowania jednokrotnego przy użyciu serwera Proxy aplikacji usługi Azure AD
 Dzięki serwerowi Proxy aplikacji usługi AD Azure firmy Microsoft można zapewnić dostęp do aplikacji znajdujących się w sieci prywatnej bezpiecznie z dowolnego miejsca i na dowolnym urządzeniu. Po zainstalowaniu łącznika serwera proxy aplikacji w danym środowisku, można je łatwo konfigurować za pomocą usługi Azure AD.
 
-### <a name="integrating-applications-with-azure-ad"></a>Integrowanie aplikacji z usługą Azure AD
-Następujące artykuły omówiono różne sposoby aplikacji integracji z usługą Azure AD i zapewnia wskazówki.
+### <a name="integrating-custom-applications"></a>Integrowanie aplikacji niestandardowych
+Jeśli piszesz nowej aplikacji i chcesz, aby pomóc deweloperom w wykorzystaniu możliwości usługi Azure AD, zobacz [deweloperów Guiding](../active-directory-applications-guiding-developers-for-lob-applications.md).
 
-* [Określanie, które usługi Active Directory do użycia](../fundamentals/active-directory-administer.md)
-* [Za pomocą aplikacji w galerii aplikacji platformy Azure](what-is-single-sign-on.md)
-* [Integrowanie listę samouczki aplikacji SaaS](../saas-apps/tutorial-list.md)
+Jeśli chcesz dodać niestandardową aplikację do galerii aplikacji Azure, zobacz ["Przynieś własną aplikację" za pomocą konfiguracji usługi Azure AD Self-Service SAML](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 
 ## <a name="managing-access-to-applications"></a>Zarządzanie dostępem do aplikacji
 Następujące artykuły opis sposobów zarządzać dostępem do aplikacji po zostały zintegrowane za pomocą usługi Azure AD przy użyciu łączników usługi Azure AD i Azure AD.
@@ -86,11 +90,12 @@ Następujące artykuły opis sposobów zarządzać dostępem do aplikacji po zos
 * [Assigning groups to an application](../active-directory-applications-guiding-developers-assigning-groups.md) (Przypisywanie grup do aplikacji)
 * [Udostępnianie kont](../active-directory-sharing-accounts.md)
 
-## <a name="integrating-custom-applications"></a>Integrowanie aplikacji niestandardowych
-Jeśli piszesz nowej aplikacji i chcesz, aby pomóc deweloperom w wykorzystaniu możliwości usługi Azure AD, zobacz [deweloperów Guiding](../active-directory-applications-guiding-developers-for-lob-applications.md).
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać szczegółowe informacje, można pobrać planów wdrożenia usługi Azure Active Directory z [GitHub](https://aka.ms/deploymentplans). Galeria aplikacji, można pobrać planów wdrożenia logowania jednokrotnego dostępu warunkowego i aprowizacji za pośrednictwem użytkowników [witryny Azure portal](https://portal.azure.com). 
 
-Jeśli chcesz dodać niestandardową aplikację do galerii aplikacji Azure, zobacz ["Przynieś własną aplikację" za pomocą konfiguracji usługi Azure AD Self-Service SAML](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Aby pobrać planu wdrożenia w witrynie Azure portal:
 
-## <a name="see-also"></a>Zobacz także
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz **aplikacje dla przedsiębiorstw** | **wybierz aplikację** | **planu wdrożenia**.
 
+Prześlij opinię na temat planów wdrożenia, wykonując [wdrożenia planu badań](https://aka.ms/DeploymentPlanFeedback).

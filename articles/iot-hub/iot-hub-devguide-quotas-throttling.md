@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: c9004e776488006d563fd4de791cade69736a5b8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 3989ff6e8ef600500f1c3dcc292d4385d6fb4a8b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024373"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162567"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -25,7 +25,7 @@ Każde Centrum IoT hub jest aprowizowany z określoną liczbą jednostek w okre�
 Warstwa określa również limity ograniczania, które usługi IoT Hub wymusza na wszystkie operacje.
 
 ## <a name="operation-throttles"></a>Ograniczenia operacji
-Ograniczenia operacji są ograniczenia szybkości, które są stosowane w zakresach minutę i mają na celu zapobiec nadużyciu. Usługa IoT Hub próbuje należy unikać cofania się błędy, jeśli to możliwe, ale rozpoczyna się, zwracając wyjątki, jeśli dławienie jest naruszona zbyt długo.
+Ograniczenia operacji są ograniczenia szybkości, które są stosowane w zakresach minutę i mają na celu zapobiec nadużyciu. Usługa IoT Hub próbuje należy unikać cofania się błędy, jeśli to możliwe, ale rozpoczyna się, zwracając `429 ThrottlingException` Jeśli dławienie jest naruszona za długo.
 
 W dowolnym momencie można zwiększyć przydziały i limity ograniczania, zwiększając liczbę aprowizowane jednostki w usłudze IoT hub.
 
@@ -42,15 +42,14 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | Metody bezpośrednie<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
 | (Urządzenia i moduł) odczytów bliźniaczej reprezentacji<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Bliźniacza reprezentacja aktualizacji (urządzenia i moduł)<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
-| Zadania Tworzenie, aktualizowanie, listy i operacje usuwania | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
-| Bliźniacza reprezentacja zadania aktualizacji, wywoływanie metody bezpośredniej operacji | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
-| Zadania zbiorczej operacji importu/eksportu | 1 aktywne zadanie na Centrum | 1 aktywne zadanie na Centrum | 1 aktywne zadanie na Centrum |
+| Operacje zadania<sup>1,3</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
+| Operacje dotyczące urządzenia zadania<sup>1</sup> <br/> (aktualizacji bliźniaczej reprezentacji, wywoływanie metody bezpośredniej) | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) |
 
 
-<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika wynosząca 8 KB.
+<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika wynosząca 8 KB. <br/><sup>3</sup>w danym momencie może mieć tylko jedno zadanie importu/eksportu aktywnych urządzeń.
 
-*Połączenia urządzenia* ograniczania decyduje szybkość, w którym można nawiązać nowego połączenia urządzenia z usługą IoT hub. *Połączenia urządzenia* ograniczania nie kontroluje maksymalna liczba równocześnie połączonych urządzeń. Ograniczenie zależy od liczby jednostek, które są udostępniane dla Centrum IoT hub.
+*Połączenia urządzenia* ograniczania decyduje szybkość, w którym można nawiązać nowego połączenia urządzenia z usługą IoT hub. *Połączenia urządzenia* ograniczania nie kontroluje maksymalna liczba równocześnie połączonych urządzeń. *Połączenia urządzenia* współczynnik przepustowości jest zależna od liczby jednostek, które są udostępniane dla Centrum IoT hub.
 
 Na przykład jeśli kupisz pojedyncza jednostka S1, otrzymasz ograniczania 100 połączeń na sekundę. W związku z tym aby połączyć 100 000 urządzeń, może potrwać co najmniej 1 000 sekund (około 16 minut). Jednak może mieć dowolną liczbę równocześnie połączonych urządzeń, jeśli masz urządzenia zarejestrowane w rejestrze tożsamości.
 

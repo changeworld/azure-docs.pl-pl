@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b24860aaf10ba483aeab54d215816314a7d0bc36
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697673"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162856"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
@@ -84,7 +84,7 @@ Dlaczego warto mieć mikrousług stanowych wraz z tymi o bezstanowa? Dwie głów
 Usługa Service Fabric oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi mogą używać interfejsów API usługi Service Fabric, w pełni wykorzystać funkcje platformy i struktury aplikacji. Usługi mogą być również wszelkie skompilowany program wykonywalny napisane w dowolnym języku i hostowanych w klastrze usługi Service Fabric. Aby uzyskać więcej informacji, zobacz [obsługiwane modele programowania](service-fabric-choose-framework.md).
 
 ### <a name="containers"></a>Containers
-Domyślnie Usługa Service Fabric wdraża i aktywuje usługi jako procesów. Usługa Service Fabric można także wdrożyć usługi w [kontenery](service-fabric-containers-overview.md). Co ważniejsze można łączyć usługi w procesach i usługi w kontenerach w tej samej aplikacji. Usługa Service Fabric obsługuje wdrażanie kontenerów systemu Linux kontenery Windows w systemie Windows Server 2016. Możesz wdrożyć istniejących aplikacji, usług bezstanowych lub stanowych usługi w kontenerach. 
+Domyślnie Usługa Service Fabric wdraża i aktywuje usługi jako procesów. Usługa Service Fabric można także wdrożyć usługi w [kontenery](service-fabric-containers-overview.md). Co ważniejsze można łączyć usługi w procesach i usługi w kontenerach w tej samej aplikacji. Usługa Service Fabric obsługuje wdrażanie kontenerów systemu Linux i kontenerów Windows w systemie Windows Server 2016. Możesz wdrożyć istniejących aplikacji, usług bezstanowych lub stanowych usługi w kontenerach. 
 
 ### <a name="reliable-services"></a>Reliable Services
 [Usług Reliable Services](service-fabric-reliable-services-introduction.md) to uproszczone środowisko do tworzenia usług, które integrują się z platformy usługi Service Fabric oraz korzystać z pełnego zestawu funkcji platformy. Usług Reliable Services może być bezstanowe (podobny do większości platform usług, takich jak serwery sieci web lub role proces roboczy w usługach Azure Cloud Services), gdzie stan są utrwalane w rozwiązaniu zewnętrznych, takich jak baza danych Azure lub usługi Azure Table Storage. Usług Reliable Services może być również stanowa, których stan jest zachowywany bezpośrednio w usłudze, używając elementów Reliable Collections. Wykonano stanu [o wysokiej dostępności](service-fabric-availability-services.md) przez funkcję replikacji i rozprowadzane za pośrednictwem [partycjonowanie](service-fabric-concepts-partitioning.md), wszystkie zarządzane automatycznie przez usługę Service Fabric.
