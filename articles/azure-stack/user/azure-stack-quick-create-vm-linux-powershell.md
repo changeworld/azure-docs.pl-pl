@@ -1,6 +1,6 @@
 ---
-title: Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell w stosie Azure | Dokumentacja firmy Microsoft
-description: Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell w stosie Azure.
+title: Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,39 +12,41 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 9d3c063dab11f31b10762e8399a1f11f2c28c3cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bb356a8b485817daae803d14b30832e7b1322f29
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227000"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158912"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Linux serwera przy użyciu programu PowerShell w stosie Azure
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: Tworzenie maszyny wirtualnej z systemem Linux server przy użyciu programu PowerShell w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Można utworzyć maszyny wirtualnej systemu Ubuntu Server 16.04 LTS przy użyciu programu PowerShell usługi Azure stosu. Wykonaj kroki opisane w tym artykule do utworzenia i użycia maszyny wirtualnej.  Ten artykuł zawiera także zapoznać się z procedurą:
+Za pomocą usługi Azure Stack PowerShell, można utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną.  Ten artykuł zawiera również kroki, aby:
 
-* Połączenie z maszyną wirtualną za pomocą zdalnego klienta.
-* Zainstaluj serwer sieci web NGINX i wyświetlić domyślną stronę główną.
-* Wyczyścić zasoby nieużywane.
+* Łączenie z maszyną wirtualną za pomocą zdalnego klienta.
+* Zainstaluj serwer internetowy NGINX i wyświetlić domyślną stronę główną.
+* Wyczyść nieużywane zasoby.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Obraz systemu Linux w stosie Azure marketplace**
+* **Obraz systemu Linux w witrynie marketplace usługi Azure Stack**
 
-   Domyślnie, stos Azure marketplace nie zawiera obrazu systemu Linux. Pobierz operatora stosu Azure, aby zapewnić **Ubuntu Server 16.04 LTS** obrazu należy. Operator można użyć procedury opisanej w [pobieranie elementów marketplace z platformy Azure do stosu Azure](../azure-stack-download-azure-marketplace-item.md) artykułu.
+   W portalu marketplace usługi Azure Stack nie zawiera obraz systemu Linux, domyślnie. Pobierz operatora infrastruktury Azure Stack, aby zapewnić **Ubuntu Server 16.04 LTS** obrazu potrzebujesz. Operator może użyć procedury opisanej w [pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack](../azure-stack-download-azure-marketplace-item.md) artykułu.
 
-* Stos Azure wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie jest skonfigurowany do stosu Azure PowerShell, zaloguj się do [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrzny w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) i wykonaj kroki, aby [ Zainstaluj](azure-stack-powershell-install.md) i [skonfigurować](azure-stack-powershell-configure-user.md) środowiska PowerShell.
+* Usługa Azure Stack wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie masz skonfigurowany dla usługi Azure Stack PowerShell, wykonaj kroki, aby [zainstalować](azure-stack-powershell-install.md) programu PowerShell.
 
-* Klucz publiczny SSH z id_rsa.pub nazwa zapisany w katalogu .ssh profilu użytkownika systemu Windows. Aby uzyskać szczegółowe informacje na temat tworzenia kluczy SSH, zobacz [klucze tworzenie SSH w systemie Windows](../../virtual-machines/linux/ssh-from-windows.md).
+* W programie Azure PowerShell stosu skonfigurować należy połączyć się z środowiskiem usługi Azure Stack. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z usługi Azure Stack przy użyciu programu PowerShell jako użytkownik](azure-stack-powershell-configure-user.md).
+
+* Publiczny klucz SSH przy użyciu id_rsa.pub nazwa zapisany w katalogu SSH profilu użytkownika Windows. Aby uzyskać szczegółowe informacje na temat tworzenia kluczy SSH, zobacz [kluczy tworzenia SSH w Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów jest kontenerem logicznym, w której można wdrożyć aplikację i zarządzania zasobami Azure stosu. W zestawie rozwoju lub system Azure stosu zintegrowane Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Wartości są przypisywane do wszystkich zmiennych w tym dokumencie, można użyć tych wartości lub przypisać nowe wartości.
+Grupa zasobów to logiczny kontener, w której można wdrożyć aplikację i zarządzanie zasobami usługi Azure Stack. Z Twojego zestawu SDK lub system zintegrowany z usługi Azure Stack Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Wartości są przypisywane do wszystkich zmiennych w tym dokumencie, można użyć tych wartości lub przypisać nowe wartości.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -56,9 +58,9 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Utwórz zasoby magazynu
+## <a name="create-storage-resources"></a>Tworzenie zasobów magazynu
 
-Utwórz konto magazynu, a następnie utworzyć kontenera magazynu, Ubuntu Server 16.04 LTS obrazu.
+Tworzenie konta magazynu, a następnie utwórz kontener magazynu dla obrazu systemu Ubuntu Server 16.04 LTS.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -113,7 +115,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i reguły sieciowej grupy zabezpieczeń
 
-Grupy zabezpieczeń sieci zabezpiecza maszyny wirtualnej za pomocą reguł ruchu przychodzącego i wychodzącego. Utwórz regułę ruchu przychodzącego dla portu 3389 przychodzących połączeń usług pulpitu zdalnego i regułę ruchu przychodzącego dla portu 80, aby zezwolić na ruch przychodzący sieci web.
+Sieciowa grupa zabezpieczeń chroni maszynę wirtualną za pomocą reguł ruchu przychodzącego i wychodzącego. Utwórz regułę ruchu przychodzącego dla portu 3389, aby zezwolić na połączenia przychodzące pulpitu zdalnego i regułę ruchu przychodzącego dla portu 80, aby zezwolić na przychodzący ruch sieci web.
 
 ```powershell
 # Create variables to store the network security group and rules names.
@@ -154,7 +156,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia używane podczas wdrażania maszyny wirtualnej. Na przykład: poświadczenia użytkownika, rozmiar i obraz maszyny wirtualnej.
+Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia używane podczas wdrażania maszyny wirtualnej. Na przykład: poświadczenia użytkownika, rozmiar i obrazu maszyny wirtualnej.
 
 ```powershell
 # Define a credential object.
@@ -211,10 +213,10 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="quick-create-virtual-machine---full-script"></a>Szybkie tworzenie maszyny wirtualnej — pełna skryptu
+## <a name="quick-create-virtual-machine---full-script"></a>Szybkie tworzenie maszyny wirtualnej — pełny skrypt
 
 > [!NOTE]
-> Więcej lub mniej jest powyższym kodzie scalić, ale z hasła zamiast SSH klucz dla uwierzytelniania.
+> Więcej lub mniej jest powyższy kod scalane, ale przy użyciu hasła zamiast SSH klucza uwierzytelniania.
 
 ```powershell
 ## Create a resource group
@@ -382,23 +384,23 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-Po wdrożeniu maszyny wirtualnej, skonfiguruj połączenie SSH dla maszyny wirtualnej. Wróć do publicznego adresu IP maszyny wirtualnej za pomocą polecenia [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1).
+Po wdrożeniu maszyny wirtualnej należy skonfigurować połączenie SSH dla maszyny wirtualnej. Wróć do publicznego adresu IP maszyny wirtualnej za pomocą polecenia [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1).
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Z systemu klienta przy użyciu protokołu SSH, zainstalowane Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Jeśli pracujesz w systemie Windows, możesz użyć [Putty](http://www.putty.org/) do utworzenia połączenia.
+W systemie klienta przy użyciu protokołu SSH jest zainstalowany Użyj następującego polecenia, połączyć się z maszyną wirtualną. Jeśli pracujesz w Windows, możesz użyć [Putty](http://www.putty.org/) do utworzenia połączenia.
 
 ```
 ssh <Public IP Address>
 ```
 
-Po wyświetleniu monitu wprowadź azureuser jako użytkownik logowania. Jeśli hasło użyte podczas tworzenia kluczy SSH, należy podać hasło.
+Po wyświetleniu monitu wprowadź azureuser jako użytkownik logowania. Jeśli podczas tworzenia kluczy SSH użyto hasła, musisz podać hasło.
 
-## <a name="install-the-nginx-web-server"></a>Zainstaluj serwer sieci web NGINX
+## <a name="install-the-nginx-web-server"></a>Instalowanie serwera internetowego NGINX
 
-Aby zaktualizować zasoby pakietu i zainstalować najnowszy pakiet NGINX, uruchom następujący skrypt:
+Aby zaktualizować pakiet zasobów i zainstalowania najnowszego pakietu NGINX, uruchom następujący skrypt:
 
 ```bash
 #!/bin/bash
@@ -412,13 +414,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>Wyświetlanie strony powitalnej serwera NGINX
 
-Z NGINX zainstalowane, a port 80 jest otwarty na maszynie wirtualnej można uzyskać dostępu do serwera sieci web przy użyciu publicznego adresu IP maszyny wirtualnej. Otwórz przeglądarkę sieci web i przejdź do ```http://<public IP address>```.
+Dzięki po zainstalowaniu serwera NGINX i otwarciu na maszynie wirtualnej portu 80 możesz uzyskać dostęp do serwera sieci web przy użyciu publicznego adresu IP maszyny wirtualnej. Otwórz przeglądarkę internetową i przejdź do ```http://<public IP address>```.
 
 ![Strona powitalna serwera sieci web NGINX](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Oczyszczanie zasobów, które nie jest już konieczne. Można użyć [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) polecenie, aby usunąć te zasoby. Aby usunąć grupę zasobów i wszystkie jego zasoby, uruchom następujące polecenie:
+Wyczyść zasoby, których nie potrzebujesz już. Możesz użyć [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) polecenie, aby usunąć te zasoby. Aby usunąć grupę zasobów i wszystkie jej zasoby, uruchom następujące polecenie:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -426,4 +428,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ta opcja szybkiego startu wdrożono podstawowej maszyny wirtualnej systemu Linux serwera. Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, przejdź do [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](azure-stack-vm-considerations.md).
+W tym przewodniku Szybki Start wdrożono maszynę wirtualną serwera podstawowego systemu Linux. Aby dowiedzieć się więcej o maszynach wirtualnych usługi Azure Stack, przejdź do [uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](azure-stack-vm-considerations.md).

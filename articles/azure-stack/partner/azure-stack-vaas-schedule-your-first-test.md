@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 0f681070df4b4b3384171c05edb3851abec2ab5c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8ff78f46283d3ee4baa7310aa56bcdabde85f2cc
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235513"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159626"
 ---
 # <a name="quickstart-use-the-validation-as-a-service-portal-to-schedule-your-first-test"></a>Szybki Start: Użyj weryfikacji jako portal usługi do zaplanowania Twojego pierwszego testu
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Dowiedz się, jak zaplanować pierwszy test z weryfikacji jako portal usługi (VaaS), aby sprawdzić sprzętu. Agent lokalny należy wdrożyć rozwiązania usługi Azure Stack, weryfikowany przed uruchomieniem testów sprawdzania poprawności.
 

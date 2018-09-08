@@ -1,6 +1,6 @@
 ---
-title: Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell w stosie Azure | Dokumentacja firmy Microsoft
-description: Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell w stosie Azure.
+title: Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,38 +12,40 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/20/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 9f5752a969ff6a191ec60e175494316aea4abcaf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aaeed9c86f340d2eda2524922c7af9a8285a1782
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152123"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162670"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: Utwórz maszynę wirtualną systemu Windows Server przy użyciu programu PowerShell w stosie Azure
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Windows Server przy użyciu programu PowerShell w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Za pomocą programu PowerShell stosu Azure można utworzyć maszyny wirtualnej systemu Windows Server 2016. Wykonaj kroki opisane w tym artykule do utworzenia i użycia maszyny wirtualnej. Ten artykuł zawiera także zapoznać się z procedurą:
+Można utworzyć maszynę wirtualną systemu Windows Server 2016 za pomocą usługi Azure Stack PowerShell. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną. Ten artykuł zawiera również kroki, aby:
 
-* Połączenie z maszyną wirtualną za pomocą zdalnego klienta.
+* Łączenie z maszyną wirtualną za pomocą zdalnego klienta.
 * Zainstaluj serwer sieci web usług IIS i wyświetlić domyślną stronę główną.
-* Oczyszczanie zasobów.
+* Czyszczenie zasobów.
 
 >[!NOTE]
- Można wykonać kroki opisane w tym artykule z Development Kit stosu Azure lub klient zewnętrznych z systemem Windows, po nawiązaniu połączenia za pośrednictwem sieci VPN.
+ Można wykonać kroki opisane w tym artykule, Azure Stack Development Kit lub z klienta zewnętrznego z systemem Windows, jeśli są połączone za pośrednictwem sieci VPN.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Upewnij się, operatorem Azure stos został dodany obrazu "Windows Server 2016" do stosu Azure marketplace.
+* Upewnij się, że operator usługi Azure Stack został dodany **systemu Windows Server 2016** obrazu portalu Marketplace usługi Azure Stack.
 
-* Stos Azure wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie jest skonfigurowany do stosu Azure PowerShell, wykonaj kroki, aby [zainstalować](azure-stack-powershell-install.md) i [skonfigurować](azure-stack-powershell-configure-user.md) środowiska PowerShell.
+* Usługa Azure Stack wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie masz skonfigurowany dla usługi Azure Stack PowerShell, wykonaj kroki, aby [zainstalować](azure-stack-powershell-install.md) programu PowerShell.
+
+* W programie Azure PowerShell stosu skonfigurować należy połączyć się z środowiskiem usługi Azure Stack. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z usługi Azure Stack przy użyciu programu PowerShell jako użytkownik](azure-stack-powershell-configure-user.md).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów jest kontenerem logicznym, do których stosu Azure wdrożone i zarządzane zasoby. W zestawie rozwoju lub system Azure stosu zintegrowane Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Wartości są przypisywane do wszystkich zmiennych w tym dokumencie, można użyć tych wartości lub przypisać nowe wartości.
+Grupa zasobów to logiczny kontener, do której usługa Azure Stack zasoby są wdrażane i zarządzane. Z Twojego zestawu SDK lub system zintegrowany z usługi Azure Stack Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Wartości są przypisywane do wszystkich zmiennych w tym dokumencie, można użyć tych wartości lub przypisać nowe wartości.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -55,7 +57,7 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Utwórz zasoby magazynu
+## <a name="create-storage-resources"></a>Tworzenie zasobów magazynu
 
 Utwórz konto magazynu i kontener magazynu do przechowywania obrazu systemu Windows Server 2016.
 
@@ -111,7 +113,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i reguły sieciowej grupy zabezpieczeń
 
-Grupy zabezpieczeń sieci zabezpiecza maszyny wirtualnej za pomocą reguł ruchu przychodzącego i wychodzącego. Pozwala utworzyć regułę ruchu przychodzącego dla portu 3389 przychodzących połączeń usług pulpitu zdalnego i regułę ruchu przychodzącego dla portu 80, aby zezwolić na ruch przychodzący sieci web.
+Sieciowa grupa zabezpieczeń chroni maszynę wirtualną za pomocą reguł ruchu przychodzącego i wychodzącego. Pozwala utworzyć regułę ruchu przychodzącego dla portu 3389, aby zezwolić na połączenia przychodzące pulpitu zdalnego i regułę ruchu przychodzącego dla portu 80, aby zezwolić na przychodzący ruch sieci web.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -163,7 +165,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia używane podczas wdrażania maszyny wirtualnej. Na przykład: poświadczeń, rozmiar i obraz maszyny wirtualnej.
+Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia używane podczas wdrażania maszyny wirtualnej. Na przykład: poświadczenia, rozmiaru i obrazu maszyny wirtualnej.
 
 ```powershell
 # Define a credential object to store the username and password for the virtual machine
@@ -214,14 +216,14 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-Aby zdalnego do maszyny wirtualnej, który został utworzony w poprzednim kroku musisz mieć publicznego adresu IP. Uruchom następujące polecenie, aby pobrać publicznego adresu IP maszyny wirtualnej:
+Zdalny do maszyny wirtualnej, który został utworzony w poprzednim kroku potrzebujesz publicznego adresu IP. Uruchom następujące polecenie, aby pobrać publiczny adres IP maszyny wirtualnej:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Użyj następującego polecenia, aby utworzyć sesję pulpitu zdalnego z maszyną wirtualną. Zamień adres IP na publiczny adres IP Twojej maszyny wirtualnej. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło użyte podczas tworzenia maszyny wirtualnej.
+Użyj następującego polecenia, aby utworzyć sesję usług pulpitu zdalnego z maszyną wirtualną. Zamień adres IP na publiczny adres IP Twojej maszyny wirtualnej. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło, których użyto podczas tworzenia maszyny wirtualnej.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -237,13 +239,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Wyświetlanie strony powitalnej usług IIS
 
-Z zainstalowanymi usługami IIS oraz port 80 jest otwarty na maszynie Wirtualnej można użyć wybraną przeglądarkę sieci web, aby wyświetlić domyślna strona powitalna usług IIS. Użyj *publicznego adresu IP* opisane w poprzedniej sekcji, aby odwiedzić stronę domyślną.
+Z zainstalowanymi usługami IIS oraz port 80 jest otwarty na maszynie Wirtualnej można użyć wybranej przeglądarki sieci web, aby wyświetlić domyślną stronę powitalną usług IIS. Użyj *publicznego adresu IP* opisane w poprzedniej sekcji w celu odwiedzenia strony domyślnej.
 
 ![Domyślna witryna usług IIS](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
 ## <a name="delete-the-virtual-machine"></a>Usuń maszynę wirtualną
 
-Gdy nie są już potrzebne, użyj następującego polecenia, aby usunąć grupę zasobów, która zawiera maszynę wirtualną i powiązane zasoby:
+Gdy nie będą już potrzebne, użyj następującego polecenia, aby usunąć grupę zasobów, która zawiera maszynę wirtualną i powiązane zasoby:
 
 ```powershell
 Remove-AzureRmResourceGroup `
@@ -252,4 +254,4 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym szybkiego startu wdrożeniu prostą maszynę wirtualną systemu Windows. Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, nadal [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](azure-stack-vm-considerations.md).
+W tym przewodniku Szybki Start wdrożono prostą maszynę wirtualną Windows. Aby dowiedzieć się więcej o maszynach wirtualnych usługi Azure Stack, w dalszym ciągu [uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](azure-stack-vm-considerations.md).
