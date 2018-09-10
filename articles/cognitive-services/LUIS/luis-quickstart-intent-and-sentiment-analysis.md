@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: baa449bb9e78a5c6437b0a9528e5d1f10dfa519f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a89755bcc0ed5ef8bee4ed00b99c73993a57bcb9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520456"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163026"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>Samouczek: 9.  Dodawanie analizy tonacji
 W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi.
@@ -27,7 +27,7 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytyw
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS 
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [wstępnie skompilowanej jednostki keyPhrase](luis-quickstart-intent-and-key-phrase.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) usługi Github.
@@ -80,7 +80,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji pod kątem analizy tonacji
 Analiza tonacji jest konfigurowana na stronie **Publish** (Publikowanie). 
@@ -93,11 +93,11 @@ Analiza tonacji jest konfigurowana na stronie **Publish** (Publikowanie).
 
 ## <a name="publish-app-to-endpoint"></a>Publikowanie aplikacji w punkcie końcowym
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą wypowiedzi
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
 
@@ -204,7 +204,7 @@ Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

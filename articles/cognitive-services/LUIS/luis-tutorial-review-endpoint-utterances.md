@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527708"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160085"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Samouczek: przeglądanie wypowiedzi punktu końcowego
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS. 
@@ -27,7 +27,7 @@ W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając w
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [opinii](luis-quickstart-intent-and-sentiment-analysis.md), zaimportuj ją z repozytorium GitHub [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json). Jeśli w tym samouczku używasz nowej, zaimportowanej aplikacji, musisz także przeprowadzić uczenie i opublikować ją, a następnie dodać wypowiedzi do punktu końcowego za pomocą [skryptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) lub z poziomu punktu końcowego w przeglądarce. Należy dodać następujące wypowiedzi:
@@ -104,19 +104,19 @@ Na bieżąco aktualizuj listę fraz, dodając do niej wszelkie nowo odnalezione 
 
 Usługa LUIS nie wie o zmianach, dopóki nie zostanie nauczona. 
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
 
 Jeśli zaimportowano tę aplikację, musisz wybrać pozycję **Sentiment analysis** (Analiza tonacji).
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą wypowiedzi
 
 Spróbuj użyć wypowiedzi podobnej do poprawionej wypowiedzi. 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Are there any natural language processing jobs in my department right now?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -230,7 +230,7 @@ Dokładność przewidywania aplikacji została zwiększona przez przejrzenie wyp
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
