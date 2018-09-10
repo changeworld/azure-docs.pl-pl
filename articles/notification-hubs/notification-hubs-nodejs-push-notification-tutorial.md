@@ -1,7 +1,7 @@
 ---
-title: Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i Node.js
-description: Dowiedz się, jak wysyłać powiadomienia wypychane z poziomu aplikacji Node.js przy użyciu usługi Notification Hubs.
-keywords: powiadomienia wypychane, wypychanie notifications,node.js wypychania, wypychanych systemu ios
+title: Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i środowiska Node.js
+description: Dowiedz się, jak używać usługi Notification Hubs wysyłać powiadomienia wypychane z poziomu aplikacji Node.js.
+keywords: powiadomienie wypychane, wypychanie notifications,node.js wypychania, wypychania dla systemu ios
 services: notification-hubs
 documentationcenter: nodejs
 author: dimazaid
@@ -15,14 +15,14 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 7463d41382c59e4f7f03b58dbcbc3f5c45e9d15c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778362"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091734"
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i Node.js
+# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i środowiska Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 ## <a name="overview"></a>Przegląd
@@ -31,7 +31,7 @@ ms.locfileid: "33778362"
 > 
 > 
 
-Ten przewodnik przedstawia, jak wysyłać powiadomienia wypychane za pomocą usługi Azure Notification Hubs bezpośrednio z poziomu aplikacji Node.js. 
+Ten przewodnik pokazuje, jak wysyłać powiadomienia wypychane za pomocą usługi Azure Notification hubs bezpośrednio z poziomu aplikacji Node.js. 
 
 Omówione scenariusze obejmują wysyłanie powiadomień wypychanych do aplikacji na następujących platformach:
 
@@ -40,69 +40,69 @@ Omówione scenariusze obejmują wysyłanie powiadomień wypychanych do aplikacji
 * Windows Phone
 * Platforma uniwersalna systemu Windows 
 
-Aby uzyskać więcej informacji dotyczących usługi notification hubs, zobacz [następne kroki](#next) sekcji.
+Aby uzyskać więcej informacji na temat usługi notification hubs, zobacz [następne kroki](#next) sekcji.
 
 ## <a name="what-are-notification-hubs"></a>Co to jest Notification Hubs?
-Centra powiadomień Azure zapewnia łatwy w użyciu, obejmującego wiele platform, skalowalna infrastrukturę do wysyłania powiadomień wypychanych do urządzeń przenośnych. Aby uzyskać szczegółowe informacje na infrastrukturę usług, zobacz [usługi Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) strony.
+Usługa Azure Notification Hubs zapewnia łatwe w użyciu, wieloplatformową skalowalne infrastrukturę umożliwiającą wysyłanie powiadomień wypychanych do urządzeń przenośnych. Szczegółowe informacje na temat infrastruktury usługi, [usługi Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) strony.
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji Node.js
-Pierwszym krokiem w tym samouczku jest utworzenie nowej aplikacji Node.js puste. Aby uzyskać instrukcje dotyczące tworzenia aplikacji Node.js, zobacz [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure][nodejswebsite], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell lub [witryny sieci Web za pomocą programu WebMatrix].
+Pierwszym krokiem w ramach tego samouczka jest utworzenie nowej pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js można znaleźć [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure][nodejswebsite], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell, lub [witryny sieci Web za pomocą programu WebMatrix][webmatrix].
 
-## <a name="configure-your-application-to-use-notification-hubs"></a>Skonfigurować aplikację tak, aby używać usługi Notification Hubs
-Aby korzystać z usługi Azure Notification Hubs, konieczne pobranie i użycie Node.js [pakiet azure](https://www.npmjs.com/package/azure), która zawiera zestaw wbudowanych pomocnika bibliotek, które komunikują się z usługami REST powiadomień wypychanych.
+## <a name="configure-your-application-to-use-notification-hubs"></a>Skonfiguruj aplikację, aby używać usługi Notification Hubs
+Za pomocą usługi Azure Notification Hubs, musisz pobrać i używać narzędzia Node.js [pakiet azure](https://www.npmjs.com/package/azure), który zawiera zestaw wbudowanych bibliotek pomocnika, które komunikują się z usług REST powiadomień wypychanych.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Umożliwia uzyskanie pakietu węzeł Menedżera pakietów (NPM)
-1. Użyj interfejsu wiersza polecenia, takich jak **PowerShell** (system Windows), **terminali** (Mac), lub **Bash** (Linux) i przejdź do folderu, w którym została utworzona pusta aplikacja.
-2. Typ **azure sb instalacji narzędzia npm** w oknie wiersza polecenia.
-3. Możesz ręcznie uruchomić **ls** lub **dir** polecenie, aby sprawdzić, czy **węzła\_modułów** folder został utworzony. W tym folderze, Znajdź **azure** pakiet, który zawiera biblioteki, musisz mieć dostęp do Centrum powiadomień.
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Uzyskiwanie pakietu przy użyciu Node Package Manager (NPM)
+1. Korzystanie z interfejsu wiersza polecenia takich jak **PowerShell** (Windows), **terminalu** (Mac) lub **Bash** (Linux) i przejdź do folderu, w której została utworzona pusta aplikacja.
+2. Typ **npm zainstalować azure sb** w oknie wiersza polecenia.
+3. Można ręcznie uruchomić **ls** lub **dir** polecenie, aby sprawdzić, czy **węzła\_modułów** folder został utworzony. Wewnątrz tego folderu Znajdź **azure** pakiet, który zawiera biblioteki, musisz mieć dostęp do Centrum powiadomień.
 
 > [!NOTE]
-> Dowiedz się więcej na temat instalowania NPM w oficjalnym [NPM blog](http://blog.npmjs.org/post/85484771375/how-to-install-npm). 
+> Dowiedz się więcej na temat instalowania NPM na official będzie przydatna dla [NPM blog](http://blog.npmjs.org/post/85484771375/how-to-install-npm). 
 > 
 > 
 
 ### <a name="import-the-module"></a>Zaimportuj moduł
-Za pomocą edytora tekstu, Dodaj następujący element do góry **server.js** pliku aplikacji:
+Za pomocą edytora tekstów, Dodaj następujący kod do górnej części **server.js** pliku aplikacji:
 
     var azure = require('azure');
 
-### <a name="set-up-an-azure-notification-hub-connection"></a>Skonfiguruj połączenie z Centrum powiadomień Azure
-**NotificationHubService** obiektu umożliwia pracę z usługą notification hubs. Poniższy kod tworzy **NotificationHubService** obiektu dla Centrum powiadomień o nazwie **hubname**. Dodaj ją w górnej części **server.js** pliku po instrukcji, aby zaimportować moduł azure:
+### <a name="set-up-an-azure-notification-hub-connection"></a>Konfigurowanie połączenia usługi Azure Notification Hubs
+**NotificationHubService** obiekt umożliwia pracę z usługą notification hubs. Poniższy kod tworzy **NotificationHubService** obiektu dla Centrum powiadomień o nazwie **hubname**. Dodaj ją w górnej części **server.js** pliku po instrukcji, aby zaimportować moduł platformy azure:
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-Połączenie **connectionstring** wartość można uzyskać z [portalu Azure] , wykonując następujące czynności:
+Połączenie **connectionstring** wartość można uzyskać z [Azure Portal] , wykonując następujące czynności:
 
 1. W okienku nawigacji po lewej stronie kliknij **Przeglądaj**.
-2. Wybierz **usługi Notification Hubs**, a następnie znajdź chcesz użyć przykładowej koncentratora. Można to sprawdzić [samouczka systemu Windows wprowadzenie magazynu](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu nowego centrum powiadomień.
+2. Wybierz **usługi Notification Hubs**, a następnie znajdź koncentratora, o których chcesz użyć na potrzeby przykładu. Możesz zapoznać się z [Windows Store wprowadzenie do samouczka](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu nowego centrum powiadomień.
 3. Wybierz **ustawienia**.
-4. Polecenie **zasady dostępu**. Możesz sprawdzić parametry połączenia udostępnionego i pełny dostęp.
+4. Kliknij pozycję **zasady dostępu**. Zostanie wyświetlony oba parametry połączenia udostępnionego i pełny dostęp.
 
-![Portal Azure — centra powiadomień](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
+![Witryna Azure portal — usługa Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Można również pobrać parametry połączenia za pomocą **Get-AzureSbNamespace** udostępniane przez polecenia cmdlet [programu Azure PowerShell](/powershell/azureps-cmdlets-docs) lub **Pokaż przestrzeni nazw azure sb** z [(Azure CLI) interfejsu wiersza polecenia azure](../cli-install-nodejs.md).
+> Możesz również pobrać parametry połączenia za pomocą **Get AzureSbNamespace** udostępniane przez polecenia cmdlet [programu Azure PowerShell](/powershell/azureps-cmdlets-docs) lub **Pokaż przestrzeni nazw azure sb** polecenia [Interfejs wiersza polecenia platformy (Azure CLI)](../cli-install-nodejs.md).
 > 
 > 
 
 ## <a name="general-architecture"></a>Architektura ogólna
-**NotificationHubService** obiekt udostępnia następujące wystąpienia obiektu do wysyłania powiadomień wypychanych do konkretnych urządzeń i aplikacji:
+**NotificationHubService** obiekt udostępnia następujące wystąpienia obiektu umożliwiającą wysyłanie powiadomień wypychanych do konkretnych urządzeń i aplikacji:
 
-* **Android** -użyj **GcmService** obiektu, który jest dostępny na **notificationHubService.gcm**
-* **iOS** -użyj **ApnsService** obiektu, który jest dostępny pod **notificationHubService.apns**
-* **Windows Phone** -użyj **MpnsService** obiektu, który jest dostępny na **notificationHubService.mpns**
-* **Platforma uniwersalna systemu Windows** -użyj **WnsService** obiektu, który jest dostępny na **notificationHubService.wns**
+* **Android** — użyj **GcmService** obiektu, który znajduje się w temacie **notificationHubService.gcm**
+* **iOS** — użyj **ApnsService** obiektu, który jest dostępny pod adresem **notificationHubService.apns**
+* **Windows Phone** — użyj **MpnsService** obiektu, który znajduje się w temacie **notificationHubService.mpns**
+* **Universal Windows Platform** — użyj **WnsService** obiektu, który znajduje się w temacie **notificationHubService.wns**
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Porady: wysyłanie powiadomień wypychanych do aplikacji systemu Android
-**GcmService** zawiera obiekt **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji systemu Android. **Wysyłania** metoda przyjmuje następujące parametry:
+**GcmService** obiektu **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji systemu Android. **Wysyłania** metoda przyjmuje następujące parametry:
 
-* **Tagi** — identyfikator tagu. Jeśli znacznik nie jest podany, powiadomienie jest wysyłane do wszystkich klientów.
-* **Ładunek** -JSON lub nieprzetworzony ciąg ładunek komunikatu.
+* **Tagi** — identyfikator tagu. Jeśli zostanie podany żaden tag, powiadomienie jest wysyłane do wszystkich klientów.
+* **Ładunek** -JSON lub nieprzetworzonego ciągu ładunek komunikatu.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać więcej informacji na format ładunku, zobacz **ładunku** sekcji [Implementowanie serwera GCM](http://developer.android.com/google/gcm/server.html#payload) dokumentu.
+Aby uzyskać więcej informacji o formacie ładunek, zobacz **ładunku** części [Implementowanie serwera GCM](http://developer.android.com/google/gcm/server.html#payload) dokumentu.
 
-Poniższy kod używa **GcmService** wystąpienia udostępnianych przez **NotificationHubService** do wysyłania powiadomień wypychanych do wszystkich klientów w zarejestrowany.
+Poniższy kod używa **GcmService** wystąpienia udostępnianych przez **NotificationHubService** do wysyłania powiadomień wypychanych do wszystkich zarejestrowanych klientów.
 
     var payload = {
       data: {
@@ -116,15 +116,15 @@ Poniższy kod używa **GcmService** wystąpienia udostępnianych przez **Notific
     });
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>Porady: wysyłanie powiadomień wypychanych do aplikacji systemu iOS
-Taki sam jak z aplikacji systemu Android opisano powyżej, **ApnsService** zawiera obiekt **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji systemu iOS. **Wysyłania** metoda przyjmuje następujące parametry:
+Taki sam, jak za pomocą aplikacji dla systemu Android opisanych powyżej, **ApnsService** obiektu **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji systemu iOS. **Wysyłania** metoda przyjmuje następujące parametry:
 
-* **Tagi** — identyfikator tagu. Jeśli znacznik nie jest podany, powiadomienie jest wysyłane do wszystkich klientów.
-* **Ładunek** -ładunek JSON lub ciąg komunikatu.
+* **Tagi** — identyfikator tagu. Jeśli zostanie podany żaden tag, powiadomienie jest wysyłane do wszystkich klientów.
+* **Ładunek** -ładunku JSON lub ciąg komunikatu.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać więcej informacji na format ładunku, zobacz **ładunek powiadomienia** sekcji [lokalnych i wypychanych Podręcznik programowania powiadomień](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
+Aby uzyskać więcej informacji na format ładunku zobacz **ładunek powiadomienia** części [lokalnych i wypychanych Podręcznik programowania powiadomień](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
 
-Poniższy kod używa **ApnsService** wystąpienia udostępnianych przez **NotificationHubService** do wysyłania alertów wiadomości do wszystkich klientów:
+Poniższy kod używa **ApnsService** wystąpienia udostępnianych przez **NotificationHubService** Aby wysłać komunikat ostrzegawczy do wszystkich klientów:
 
     var payload={
         alert: 'Hello!'
@@ -136,18 +136,18 @@ Poniższy kod używa **ApnsService** wystąpienia udostępnianych przez **Notifi
     });
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Porady: wysyłanie powiadomień wypychanych do aplikacji Windows Phone
-**MpnsService** zawiera obiekt **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji Windows Phone. **Wysyłania** metoda przyjmuje następujące parametry:
+**MpnsService** obiektu **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji Windows Phone. **Wysyłania** metoda przyjmuje następujące parametry:
 
-* **Tagi** — identyfikator tagu. Jeśli znacznik nie jest podany, powiadomienie jest wysyłane do wszystkich klientów.
-* **Ładunek** -ładunek XML wiadomości.
-* **TargetName**  -  `toast` dla wyskakujące powiadomienia. `token` Kafelek powiadomień.
-* **NotificationClass** -priorytet powiadomienia. Zobacz **elementów nagłówka HTTP** sekcji [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu prawidłowe wartości.
-* **Opcje** — opcjonalne nagłówki żądań.
+* **Tagi** — identyfikator tagu. Jeśli zostanie podany żaden tag, powiadomienie jest wysyłane do wszystkich klientów.
+* **Ładunek** -ładunek XML komunikatu.
+* **TargetName**  -  `toast` powiadomienia wyskakującego powiadomienia. `token` Kafelek powiadomienia.
+* **NotificationClass** — priorytet zawiadomienia. Zobacz **elementów nagłówka HTTP** części [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu prawidłowych wartości.
+* **Opcje** — jest to opcjonalne nagłówki żądania.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Lista prawidłową **TargetName**, **NotificationClass** i opcje nagłówka, zapoznaj się z [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) strony.
+Aby uzyskać listę prawidłowe **TargetName**, **NotificationClass** i opcje nagłówka, zapoznaj się z [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) strony.
 
-Poniższy przykładowy kod używa **MpnsService** wystąpienia udostępnianych przez **NotificationHubService** do wysyłania wyskakujących powiadomień wypychanych:
+Poniższy przykładowy kod używa **MpnsService** wystąpienia udostępnianych przez **NotificationHubService** wysyłać powiadomienia wypychane wyskakujące:
 
     var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
     notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
@@ -156,18 +156,18 @@ Poniższy przykładowy kod używa **MpnsService** wystąpienia udostępnianych p
       }
     });
 
-### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Porady: wysyłanie powiadomień wypychanych do aplikacji uniwersalnych platformy systemu Windows (UWP)
-**WnsService** zawiera obiekt **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji platformy uniwersalnej systemu Windows.  **Wysyłania** metoda przyjmuje następujące parametry:
+### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Porady: wysyłanie powiadomień wypychanych do aplikacji platformy uniwersalnej Windows (UWP)
+**WnsService** obiektu **wysyłania** metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji uniwersalnych platformy Windows.  **Wysyłania** metoda przyjmuje następujące parametry:
 
-* **Tagi** — identyfikator tagu. Jeśli znacznik nie jest podany, powiadomienie jest wysyłane do wszystkich klientów w zarejestrowany.
+* **Tagi** — identyfikator tagu. Jeśli zostanie podany żaden tag, powiadomienie jest wysyłane do wszystkich zarejestrowanych klientów.
 * **Ładunek** -XML ładunek komunikatu.
 * **Typ** — typ powiadomienia.
-* **Opcje** — opcjonalne nagłówki żądań.
+* **Opcje** — jest to opcjonalne nagłówki żądania.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać listę prawidłowych typów i nagłówków żądań, zobacz [nagłówki żądań i odpowiedzi usługi powiadomień wypychanych](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Aby uzyskać listę prawidłowych typów i nagłówków żądań, zobacz [nagłówki żądania i odpowiedzi usługi powiadomień wypychanych](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
-Poniższy kod używa **WnsService** wystąpienia udostępnianych przez **NotificationHubService** do wysyłania wyskakujących powiadomień wypychanych do aplikacji platformy uniwersalnej systemu Windows:
+Poniższy kod używa **WnsService** wystąpienia udostępnianych przez **NotificationHubService** wysyłać wyskakujące powiadomienia wypychane do aplikacji platformy uniwersalnej systemu Windows:
 
     var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
     notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
@@ -177,12 +177,12 @@ Poniższy kod używa **WnsService** wystąpienia udostępnianych przez **Notific
     });
 
 ## <a name="next-steps"></a>Następne kroki
-Przykładowe fragmenty kodu powyżej umożliwiają łatwe tworzenie infrastruktury usługi dostarczać powiadomienia wypychane do szerokiej gamy urządzeń. Teraz, kiedy znasz już podstawy przy użyciu usługi Notification Hubs za pomocą języka node.js, skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat sposobu można rozszerzyć te dodatkowe możliwości.
+Przykładowe fragmenty kodu powyżej umożliwiają łatwe tworzenie infrastruktury usługi do dostarczania powiadomień wypychanych do szerokiej gamy urządzeń. Teraz, kiedy znasz już podstawy używania usługi Notification Hubs przy użyciu środowiska node.js, skorzystaj z poniższych linków, aby dowiedzieć się więcej o jak rozszerzyć możliwości dalszego.
 
-* Zobacz odwołanie MSDN [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
-* Odwiedź stronę [zestawu Azure SDK dla węzła] repozytorium w usłudze GitHub więcej przykładów i szczegóły implementacji.
+* Zobacz dokumentacja MSDN [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
+* Odwiedź stronę [Zestaw Azure SDK dla węzła] repozytorium w serwisie GitHub, aby uzyskać więcej przykładów i szczegółów implementacji.
 
-[zestawu Azure SDK dla węzła]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Zestaw Azure SDK dla węzła]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
 [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
 [Create a Service Namespace]: #create-a-service-namespace
@@ -205,10 +205,11 @@ Przykładowe fragmenty kodu powyżej umożliwiają łatwe tworzenie infrastruktu
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[witryny sieci Web za pomocą programu WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
+[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

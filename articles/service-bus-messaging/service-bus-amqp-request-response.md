@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0299b05517629740576c562effaa41658f28532f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700522"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163247"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Protokołu AMQP 1.0 w usłudze Microsoft Azure Service Bus: operacje na podstawie odpowiedzi żądań
 
@@ -142,6 +142,10 @@ Komunikat żądania musi zawierać następujące właściwości aplikacji:
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|Tablica identyfikator uuid|Yes|Tokeny blokady komunikatu do odnowienia.|  
+
+> [!NOTE]
+> Tokeny blokady są `DeliveryTag` właściwość Odebrane komunikaty. Zobacz poniższy przykład w [zestawu .NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) która pobiera je. Token może być również wyświetlane w DeliveryAnnotations jako "x-opt —-token blokady" jednak, to nie jest gwarantowana i `DeliveryTag` powinny być preferowane. 
+> 
   
 #### <a name="response"></a>Odpowiedź  
 
