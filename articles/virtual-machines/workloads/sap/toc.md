@@ -16,14 +16,21 @@
 ### [Architektura sieci](hana-network-architecture.md)
 ### [Architektura magazynu](hana-storage-architecture.md)
 ### [Obsługiwane scenariusze oprogramowania HANA — duże wystąpienia](hana-supported-scenario.md)
-## [Infrastruktura i łączność](hana-overview-infrastructure-connectivity.md)
-## [Instalowanie platformy SAP HANA](hana-installation.md)
+## Infrastruktura i łączność
+### [Wdrażanie funkcji HANA — duże wystąpienia](hana-overview-infrastructure-connectivity.md)
+### [Łączenie maszyn wirtualnych platformy Azure z funkcją HANA — duże wystąpienia](hana-connect-azure-vm-large-instances.md)
+### [Łączenie sieci wirtualnej z usługą ExpressRoute funkcji HANA — duże wystąpienie](hana-connect-vnet-express-route.md)
+### [Dodatkowe wymagania dotyczące sieci](hana-additional-network-requirements.md)
+## Instalowanie platformy SAP HANA
+### [Weryfikowanie konfiguracji](hana-installation.md)
+### [Przykładowa instalacja platformy HANA](hana-example-installation.md)
 ## [Wysoka dostępność i odzyskiwanie po awarii](hana-overview-high-availability-disaster-recovery.md)
 ## [Rozwiązywanie problemów i monitorowanie](troubleshooting-monitoring.md)
 ## Instrukcje
 ### [Konfiguracja wysokiej dostępności za pomocą metody STONITH](ha-setup-with-stonith.md)
 ### [Kopia zapasowa systemu operacyjnego dla jednostek SKU typu II](os-backup-type-ii-skus.md)
 ### [Uaktualnianie systemu operacyjnego dla dużych wystąpień HANA](os-upgrade-hana-large-instance.md)
+### [Konfigurowanie serwera SMT dla serwera z systemem SUSE Linux](hana-setup-smt.md)
 # Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
 ## [Instalacja SAP HANA z jednym wystąpieniem](hana-get-started.md)
 ## [Rozwiązanie S/4 HANA lub BW/4 HANA SAP CAL — podręcznik wdrażania](cal-s4h.md)

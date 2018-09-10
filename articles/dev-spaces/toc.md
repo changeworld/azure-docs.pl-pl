@@ -2,11 +2,15 @@
 ## [Omówienie](azure-dev-spaces.md)
 
 ## Przewodniki Szybki start
+### [Java (VS Code i interfejs wiersza polecenia)](quickstart-java.md)
 ### [.NET Core (VS Code oraz interfejs wiersza polecenia)](quickstart-netcore.md)
 ### [.NET Core (Visual Studio 2017)](quickstart-netcore-visualstudio.md)
 ### [Node.js (VS Code oraz interfejs wiersza polecenia)](quickstart-nodejs.md)
 
 ## Samouczki
+### Java (VS Code i interfejs wiersza polecenia)
+#### [1 — Wprowadzenie](get-started-java.md)
+#### [2 — Programowanie zespołowe](team-development-java.md)
 ### .NET Core (VS Code oraz interfejs wiersza polecenia)
 #### [1 — Wprowadzenie](get-started-netcore.md)
 #### [2 — Programowanie zespołowe](team-development-netcore.md)
