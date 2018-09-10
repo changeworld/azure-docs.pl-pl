@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 56d207dc47b9e055782568f1c4a4cedc4d19a288
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e527a0eaec433b96b5c37c5ec22f392a7166dfe8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348682"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162448"
 ---
 # <a name="manage-app-passwords-using-security-info-preview"></a>Zarządzanie hasłami aplikacji przy użyciu informacji zabezpieczających (wersja zapoznawcza)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Niektóre aplikacje korzystające z przeglądarki, takich jak Outlook 2010, nie obsługuje weryfikację dwuetapową. Ten brak obsługi oznacza, że jeśli używasz weryfikacji dwuetapowej, aplikacja nie będzie działać. Aby obejść ten problem, można utworzyć hasło wygenerowane automatycznie za pomocą każdej aplikacji niekorzystających z przeglądarki, niezależnie od normalnych hasła.
 
