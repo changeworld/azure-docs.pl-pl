@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 20cc91a1754c3d68b447430abf21a3aad5925e05
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365352"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347651"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -67,7 +67,7 @@ W tej tabeli opisano bardziej typowych błędów, które pochodzą z protokołu 
 | 13016 — usługa azure AD nie można pobrać biletu protokołu Kerberos w imieniu użytkownika, ponieważ nie istnieje żadne nazwy UPN w tokenie krawędzi lub w pliku cookie dostępu. | Występuje problem z konfiguracją usługi STS. Napraw Konfiguracja oświadczenia nazwy UPN w usłudze STS. |
 | 13019 — usługa azure AD nie można pobrać biletu protokołu Kerberos w imieniu użytkownika z powodu następującego błędu API ogólne. | To zdarzenie może wskazywać niepoprawną konfigurację między usługą Azure AD i serwera kontrolera domeny lub problem w konfiguracji datę i godzinę na obu komputerach. Kontroler domeny odrzucił biletu Kerberos utworzone przez usługę Azure AD. Sprawdź przez usługę Azure AD i serwera aplikacji zaplecza są skonfigurowane poprawnie, szczególnie konfiguracji nazwę SPN. Upewnij się, że usługa Azure AD jest przyłączony do tej samej domenie co kontroler domeny, aby upewnić się, że kontroler domeny ustanawia relację zaufania z usługą Azure AD. Upewnij się, że data i godzina konfigurację w usłudze Azure AD i kontrolera domeny są zsynchronizowane. |
 | 13020 — usługa azure AD nie można pobrać biletu protokołu Kerberos w imieniu użytkownika, ponieważ nazwa SPN serwera wewnętrznej bazy danych nie jest zdefiniowana. | To zdarzenie może wskazywać niepoprawną konfigurację między usługą Azure AD i serwera kontrolera domeny lub problem w konfiguracji datę i godzinę na obu komputerach. Kontroler domeny odrzucił biletu Kerberos utworzone przez usługę Azure AD. Sprawdź przez usługę Azure AD i serwera aplikacji zaplecza są skonfigurowane poprawnie, szczególnie konfiguracji nazwę SPN. Upewnij się, że usługa Azure AD jest przyłączony do tej samej domenie co kontroler domeny, aby upewnić się, że kontroler domeny ustanawia relację zaufania z usługą Azure AD. Upewnij się, że data i godzina konfigurację w usłudze Azure AD i kontrolera domeny są zsynchronizowane. |
-| 13022 — usługa azure AD nie może uwierzytelnić użytkownika, ponieważ serwer zaplecza odpowiada prób uwierzytelnienia Kerberos z powodu błędu HTTP 401. | To zdarzenie może wskazywać niepoprawną konfigurację między usługą Azure AD i serwera aplikacji wewnętrznej bazy danych lub problem w konfiguracji datę i godzinę na obu komputerach. Serwer zaplecza odrzucone biletu Kerberos utworzone przez usługę Azure AD. Sprawdź przez usługę Azure AD i serwera aplikacji zaplecza są skonfigurowane poprawnie. Upewnij się, że data i godzina konfigurację w usłudze Azure AD i serwera aplikacji zaplecza są zsynchronizowane. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z protokołu Kerberos ograniczone delegowanie konfiguracji dla serwera Proxy aplikacji](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
+| 13022 — usługa azure AD nie może uwierzytelnić użytkownika, ponieważ serwer zaplecza odpowiada prób uwierzytelnienia Kerberos z powodu błędu HTTP 401. | To zdarzenie może wskazywać niepoprawną konfigurację między usługą Azure AD i serwera aplikacji wewnętrznej bazy danych lub problem w konfiguracji datę i godzinę na obu komputerach. Serwer zaplecza odrzucone biletu Kerberos utworzone przez usługę Azure AD. Sprawdź przez usługę Azure AD i serwera aplikacji zaplecza są skonfigurowane poprawnie. Upewnij się, że data i godzina konfigurację w usłudze Azure AD i serwera aplikacji zaplecza są zsynchronizowane. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z protokołu Kerberos ograniczone delegowanie konfiguracji dla serwera Proxy aplikacji](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
 
 ## <a name="end-user-errors"></a>Błędy użytkowników końcowych
 

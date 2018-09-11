@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264151"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348909"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
 
@@ -32,7 +32,7 @@ Celem tego samouczka jest Wam kroki należy wykonać w Slack i usługi Azure AD,
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawy usługi Azure Active Directory
+*   Dzierżawa usługi Azure Active Directory
 *   Slack dzierżawy z [oraz plan](https://aadsyncfabric.slack.com/pricing) lub lepiej nie są włączone 
 *   Konto użytkownika Slack z uprawnieniami administratora zespołu 
 
@@ -111,7 +111,7 @@ Opcjonalnie można włączyć, aprowizacja obiekty grupy z usługi Azure AD w ce
 
 Ten wynik w wszystkie obiekty grupy przypisane do Slack w **użytkowników i grup** sekcji, w pełni są synchronizowane z usługi Azure AD do Slack. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Slack.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby

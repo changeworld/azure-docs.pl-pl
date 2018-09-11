@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951145"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302864"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Projekty zespołowe platformami i narzędziami do analizy danych
+# <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
 Firma Microsoft udostępnia pełnego zakresu danych i analiz usług i zasobów dla platform zarówno w chmurze, jak i lokalnie. Mogą one wdrażane, umożliwiają wykonywanie swoje projekty do nauki o danych, wydajność i skalowalność. Wskazówki dla zespołów, implementowanie projekty do nauki o danych na słupkowych, wersja kontrolowane i sposób współpracy są dostarczane przez [zespołu danych dla celów naukowych](overview.md) (TDSP).  Konspekt ról pracowników i ich skojarzonych zadań, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu można zobaczyć [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
@@ -126,7 +126,7 @@ Uruchom poniższe polecenie powłoki bash, aby zainstalować program Git na masz
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generuj klucz publiczny SSH na maszynach z systemem Linux (CentOS)
 
-Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usługi git, należy dodać publiczny klucz SSH maszyny z serwerem usługi VSTS, więc, że ten komputer jest rozpoznawany przez serwer usługi VSTS. Po pierwsze należy wygenerować publiczny klucz SSH i Dodaj klucz do kluczy publicznych SSH na stronie Ustawienia zabezpieczeń usługi VSTS. 
+Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usługi git, należy dodać publiczny klucz SSH maszyny do usługi Azure DevOps, aby ta maszyna jest rozpoznawany przez usługom DevOps platformy Azure. Po pierwsze należy wygenerować publiczny klucz SSH i Dodaj klucz do kluczy publicznych SSH na stronie Ustawienia zabezpieczeń usługom DevOps platformy Azure. 
 
 - Aby wygenerować klucz SSH, uruchom dwa poniższe polecenia: 
 
@@ -136,7 +136,7 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usłu
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Skopiuj cały ssh w tym klucza *ssh-rsa*. 
-- Zaloguj się do serwera usługi VSTS. 
+- Zaloguj się do usługi Azure DevOps. 
 - Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91ed29b100e0fab0f0e386f771dc6f71d7b424c6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163417"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349266"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1921,6 +1921,7 @@ Następujące konstrukcje platformy Azure są używane w systemie SAP NetWeaver 
 * Kompletny system jest uruchamiany w ramach jednej subskrypcji platformy Azure (wymagane).
 * Kompletny system jest uruchamiany w ramach jednej sieci wirtualnej platformy Azure (wymagane).
 * Rozdzielenie maszyn wirtualnych z jednego systemu SAP w trzech zestawach dostępności jest możliwe nawet w przypadku wszystkich maszyn wirtualnych należących do tej samej sieci wirtualnej.
+* Każda warstwa (na przykład system DBMS, ASCS, serwery aplikacji), należy użyć dedykowanego zestawu dostępności.
 * Wszystkie maszyny wirtualne uruchomione wystąpienia jednego systemu SAP DBMS znajdują się w jednym zestawie dostępności. Przyjęto założenie, że istnieje więcej niż jednej maszyny Wirtualnej z systemem wystąpień systemu DBMS na system od natywnych DBMS wysokiej dostępności, które są używane funkcje, takie jak AlwaysOn programu SQL Server lub środowiska Oracle Data Guard.
 * Wszystkie maszyny wirtualne uruchomione wystąpienia systemu DBMS na korzystanie z tego konta magazynu. System DBMS dane i pliki dziennika są replikowane z jednego konta magazynu do innego konta magazynu przy użyciu funkcji wysokiej dostępności systemu DBMS, które synchronizują dane. Niedostępność jedno konto magazynu spowoduje niedostępność jednego węzła klastra programu SQL, Windows, ale nie całą usługę programu SQL Server.
 * Wszystkie maszyny wirtualne uruchomione wystąpienia (A) SCS jednego systemu SAP znajdują się w jednym zestawie dostępności. Windows Server Failover klastra (WSFC) jest skonfigurowana wewnątrz tych maszyn wirtualnych w celu ochrony (A) SCS wystąpienia.

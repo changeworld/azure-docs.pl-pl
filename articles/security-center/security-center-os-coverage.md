@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: terrylan
-ms.openlocfilehash: b82b152ae4f44e475b5c3e9bda9d604f405503e0
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 54d173caa0e3eb4bbd8bda7c924e56d546a99662
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123735"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297506"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Obsługiwane platformy w usłudze Azure Security Center
 Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualnych (VM) utworzone za pomocą zarówno klasyczny i modelem wdrażania usługi Resource Manager i komputery.

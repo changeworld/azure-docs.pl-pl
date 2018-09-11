@@ -1,6 +1,6 @@
 ---
-title: Wydajności aplikacji sieci Web monitorowania - Azure Application Insights | Dokumentacja firmy Microsoft
-description: Jak zastosowań usługi Application Insights w cyklu opracowywania oprogramowania
+title: Wydajności aplikacji sieci Web — monitorowanie usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Jak usługa Application Insights dopasowuje się do cyklu devOps
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,156 +13,156 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a9a6e513d95df5dafba82556f74ec209529ff58d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294915"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298646"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
-Usługa Application Insights monitoruje uruchomionej aplikacji sieci web. Informuje o awarii i problemy z wydajnością i pomaga analizować, jak klienci korzystają z aplikacji. Ponieważ działa aplikacji działających na wiele platform (ASP.NET, J2EE, Node.js,...) i znajduje się w chmurze lub lokalnie. 
+Usługa Application Insights monitoruje uruchomionej aplikacji sieci web. Informuje o awarii i problemów z wydajnością i pomaga analizować, jak klienci korzystają z Twojej aplikacji. Dla aplikacji działających na wielu platformach (ASP.NET, J2EE, Node.js,...) i lepiej jest hostowana w chmurze lub lokalnie. 
 
 ![Aspekty złożoności opracowywania aplikacji sieci web](./media/app-insights-devops/010.png)
 
-Jest to niezbędne do monitorowania aplikacji modern jest uruchomiona. Najważniejsze który chcesz wykryć błędów zanim większość klientów. Chce również odnaleźć i rozwiązać problemy z wydajnością, gdy nie krytyczny, może to spowolnić rzeczy lub powodować pewne niedogodności dla użytkowników. I przy system działa zgodnie z oczekiwaniami, należy znać, co robią użytkownicy z nim: są one przy użyciu najnowszych funkcji? Są one pomyślne z nim?
+Jest to niezbędne do monitorowania nowoczesnych aplikacji, gdy jest on uruchomiony. Co najważniejsze chcesz wykrywanie błędów, zanim większość klientów. Także odnajdywać i rozwiązuj problemy z wydajnością, gdy nie krytycznego, być może spowolnić lub powodować pewne niedogodności dla użytkowników. A gdy system działa zgodnie z oczekiwaniami, chcesz wiedzieć, co użytkownicy robią z nią: ich używania najnowszych funkcji? One powiodły się z nim?
 
-Nowoczesnych aplikacji sieci web są tworzone w cyklu ciągłego dostarczania: wydania nowej funkcji lub ulepszenia; Sprawdź, jak działa dla użytkowników. Zaplanuj kolejny krok Programowanie oparte na wiedzy. Część klucza cyklu jest na etapie obserwacji. Usługa Application Insights udostępnia narzędzia do monitorowania wydajności i użycia aplikacji sieci web.
+Nowoczesnych aplikacji sieci web są tworzone w cyklu ciągłe dostarczanie: zwolnić nową funkcję lub ulepszenie; Sprawdź, jak dobrze działa w przypadku użytkowników; Zaplanuj kolejny krok w rozwoju, w oparciu o tę wiedzę. Kluczowym elementem tego cyklu jest w fazie obserwacji. Application Insights udostępnia narzędzia umożliwiające monitorowanie aplikacji sieci web, wydajność i użycie.
 
-Najważniejszym aspektem tego procesu jest diagnostyki i diagnostyki. W przypadku niepowodzenia aplikacji biznesowych jest trwa utracone. Podstawową rolą platformy monitorowania w związku z tym jest niezawodnie wykrywanie błędów, powiadomienie zostanie natychmiast i wyświetlane informacje potrzebne do zdiagnozowania problemu. Jest to dokładnie, czego usługi Application Insights.
+Najważniejszych aspektów tego procesu jest diagnostyki i diagnostyki. Jeśli aplikacja ulegnie awarii, biznesowe są są tracone. Podstawową rolą monitorowania Framework jest w związku z tym wykrywanie błędów w niezawodny sposób będą, powiadomienie natychmiast, aby przedstawić informacje potrzebne do zdiagnozowania problemu. Jest to dokładnie, jak działa usługa Application Insights.
 
 ### <a name="where-do-bugs-come-from"></a>Skąd pochodzą usterki?
-Awarie w sieci web systemów wynikają zwykle z powodu problemów z konfiguracją lub zły interakcje między ich wiele składników. Pierwszym zadaniem podczas działania zdarzenia na żywo lokacji w związku z tym jest ustalenie locus problemu: które składnika lub relacji jest przyczyną?
+Błędy w internetowych systemach zwykle wynikają z problemy z konfiguracją lub zły interakcje między ich wiele składników. Pierwsze zadanie, gdy co dzień do czynienia ze zdarzeniem aktywnej witryny jest w związku z tym zidentyfikowanie locus problemu: które składnik lub relacji jest przyczyną?
 
-Niektórzy, z szarym włosów do zapamiętania ery prostsze, w którym program komputerowy były uruchamiane w jednym komputerze. Deweloperzy może przetestować jej starannie przed wysłaniem i o wysłane, czy Zobacz lub rzadko traktować go ponownie. Użytkownicy musieliby wystawione przez wiele lat z pozostałych usterki. 
+Niektóre z NAS, obejmujących szarego włosów Pamiętaj, aby prostsze ery, w którym program komputerowy uruchomiono w jednym komputerze. Deweloperzy będą ją dokładnie przetestuj przed dostarczeniem go; i konieczności wysłane, czy rzadko Zobacz lub zastanów się go ponownie. Użytkownicy będą musiały wystawione przez wiele lat z pozostałych usterkami. 
 
-Dlatego bardzo różnią się teraz rzeczy. Aplikacja ma nadmiar różnych urządzeń do uruchamiania na i może być trudne do zagwarantowania dokładnie takie samo zachowanie na każdej z nich. Hosting aplikacji w chmurze oznacza fast można naprawić błędy, ale oznacza to również ciągłego konkurencji i oczekuje nowe funkcje w częstych odstępach czasu. 
+Teraz są tak bardzo różne rzeczy. Twoja aplikacja ma mnóstwo różnych urządzeń z systemem i może być trudne w celu zagwarantowania dokładnie takie samo zachowanie na każdym z nich. Hostowanie aplikacji w chmurze oznacza szybko można naprawić błędy, ale oznacza to również ciągłe konkurencji i przy założeniu, nowych funkcji w krótkich odstępach czasu. 
 
-W tych warunkach jedynym sposobem na kontrolowanie przedsiębiorstwa na liczbę usterek jest automatyczne testy jednostkowe. Byłoby niemożliwe ręcznie ponownie przetestuj wszystkie elementy w każdym dostarczania. Testu jednostkowego jest teraz popularne część procesu kompilacji. Narzędzia, takie jak chmury testowej Xamarin pomaga, zapewniając automatyczne interfejsu użytkownika, testów na wielu wersji przeglądarki. Te systemy testowania umożliwiają nadzieję, że częstotliwość błędów znajduje się w aplikacji można ograniczone do minimum.
+W tych warunkach jedynym sposobem na kontrolowanie firmy na podstawie liczby usterek jest zautomatyzowane testy jednostkowe. Nie można wysyłać do ręcznie ponownie przetestuj wszystkie elementy na dostarczaniu wartości, co. Test jednostkowy jest teraz powszechnie używane część procesu kompilacji. Narzędzi, takich jak Xamarin Test Cloud pomaga, zapewniając automatyczne interfejsu użytkownika, testy w wielu wersjach przeglądarki. Tych metod badań umożliwiają nam mamy nadzieję, że współczynnik błędów znalezionych wewnątrz aplikacji można ograniczyć do minimum.
 
-Aplikacje sieci web typowe ma wiele składników na żywo. Oprócz klienta (w aplikacji przeglądarki lub urządzenia) i serwera sieci web jest prawdopodobnie przetwarzania znacznej wewnętrznej bazy danych. Prawdopodobnie wewnętrznej bazy danych jest potoku składników lub zbiór im brać części. I wiele z nich nie będzie formantu — są one usług zewnętrznych, na których jest zależna.
+Typowych aplikacji internetowych ma wiele składników na żywo. Oprócz klienta (w aplikacji przeglądarki lub urządzenia) i serwera sieci web prawdopodobnie można przetwarzania znacznej wewnętrznej bazy danych. Być może wewnętrznej bazy danych jest potok składników lub im kolekcję współpracujących fragmentów. I wiele z nich nie będzie w kontrolce — są one usługami zewnętrznymi, na których polegasz.
 
-W konfiguracji, takich jak te może być trudne i uneconomical do testowania lub przewiduje się, co trybu awaryjnego możliwe innych niż system na żywo. 
+W konfiguracji, takie jak te może być trudne i uneconomical do testowania lub przewiduje się, co trybu awaryjnego innych niż sam system na żywo. 
 
-### <a name="questions-"></a>Pytania...
-Pytaniami poprosimy, gdy jest tworzenie system sieci web:
+### <a name="questions-"></a>Pytania dotyczące...
+Kilka pytań prosimy gdy pracujemy nad systemem internetowym:
 
-* Moja aplikacja awarii 
-* Dokładnie naturę? — Jeśli go nie powiodło się żądanie warto wiedzieć, jak uzyskano istnieje. Potrzebujemy śledzenia zdarzeń...
-* Czy Moja aplikacja tyle szybko? Jak długo trwa odpowiadać na żądania typowe?
-* Serwer może obsłużyć obciążenie? Gdy to liczba żądań wzrośnie, ma czas odpowiedzi praw stałą?
-* Stopień reakcji są moje zależności - interfejsów API REST, baz danych i innymi składnikami, które wywołuje Moja aplikacja. W szczególności jeśli system jest powolne, jest mój składnik lub otrzymuję powolne odpowiedzi od kogoś innego?
-* Jest Moja aplikacja w górę lub w dół? Go wynika z całego świata? Powiadom mnie, jeśli zatrzymuje...
-* Co to jest główną przyczynę? Został błąd w składniku Moje lub zależności? Jest to problem komunikacji?
-* Wpływ na ilu użytkowników? Mając więcej niż jeden problem do rozwiązania problemu, który jest najważniejsze?
+* Moja aplikacja uległa awarii? 
+* Co dokładnie tak się stało? — Jeśli go nie powiodło się żądanie chcę wiedzieć, jak masz istnieje. Potrzebujemy śledzenia zdarzeń...
+* Czy Moja aplikacja wystarczająco szybko? Jak długo trwa odpowiadanie na żądania typowe?
+* Czy serwer może obsłużyć obciążenia? Gdy wzrośnie liczba żądań, czas odpowiedzi przechowywania stałego?
+* Jak szybko są moich zależnościach — interfejsy API REST, baz danych i inne składniki, które wywołuje aplikację. W szczególności jeśli system jest powolne, to jest mój składnik lub otrzymuję powolne odpowiedzi od kogoś innego?
+* Jest moją aplikację w górę lub w dół? Jego wynika z całego świata? Powiadom mnie, jeśli go nie będzie możliwy...
+* Co to jest główną przyczynę? Był błąd w składniku Moje lub zależności? Jest to problem komunikację?
+* Ilu użytkowników dotyczy problem? Jeśli mam więcej niż jeden problem do rozwiązania, które są najbardziej istotne?
 
 ## <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
-![Podstawowy przepływ pracy z usługi Application Insights](./media/app-insights-devops/020.png)
+![Podstawowy przepływ pracy usługi Application Insights](./media/app-insights-devops/020.png)
 
-1. Usługa Application Insights instruments aplikacji i wysyła dane telemetryczne dotyczące go, gdy aplikacja jest uruchomiona. Możesz utworzyć zestaw SDK usługi Application Insights do aplikacji albo można zastosować Instrumentacji w czasie wykonywania. Pierwszej metody jest bardziej elastyczne, ponieważ można dodać własne dane telemetryczne do regularnych modułów.
-2. Dane telemetryczne są wysyłane do portalu usługi Application Insights, w którym są przechowywane i przetwarzane. (Mimo że usługi Application Insights jest hostowana na platformie Microsoft Azure, może monitorować wszystkich aplikacji sieci web — nie tylko Azure aplikacji).
+1. Usługa Application Insights umożliwia Instrumentację aplikacji i wysyła dane telemetryczne na jego temat, gdy aplikacja jest uruchomiona. Możesz tworzyć zestaw SDK usługi Application Insights do aplikacji lub zastosować Instrumentację w czasie wykonywania. Pierwszej metody jest bardziej elastyczna, podczas dodawania własnych danych telemetrycznych do regularnego modułów.
+2. Dane telemetryczne są wysyłane do portalu usługi Application Insights, gdzie są przechowywane i przetwarzane. (Mimo że usługa Application Insights jest hostowany na platformie Microsoft Azure, może monitorować wszystkie aplikacje sieci web — aplikacje nie tylko platforma Azure).
 3. Dane telemetryczne są prezentowane w postaci wykresów i tabel zdarzeń.
 
-Istnieją dwa główne rodzaje danych telemetrii: wystąpień zagregowane i raw. 
+Istnieją dwa główne rodzaje danych telemetrycznych: wystąpienia zagregowane i raw. 
 
-* Na przykład dane wystąpienia obejmuje raportu żądania, które zostały odebrane przez aplikację sieci web. Można znaleźć i sprawdzić szczegóły żądania przy użyciu narzędzia wyszukiwania w portalu usługi Application Insights. Wystąpienie obejmuje dane, takie jak jak długo trwało aplikacji odpowiadanie na żądanie, a także żądanego adresu URL, przybliżona lokalizacji klienta i innych danych.
-* Zagregowane dane obejmuje liczby zdarzeń na jednostkę czasu, aby porównać liczbę żądań w czasie odpowiedzi. Obejmuje on też średnie metryk, takich jak czas odpowiedzi na żądanie.
+* Dane wystąpienia obejmuje na przykład raportu żądania, które zostały odebrane przez aplikację sieci web. Można znaleźć i sprawdzić szczegóły żądania za pomocą narzędzia Search w portalu Application Insights. Wystąpienie obejmuje dane, takie jak czas jaką przebyła aplikacja odpowiadanie na żądania, a także żądanego adresu URL, zbliżenie lokalizacji klienta oraz innych danych.
+* Zagregowane dane zawiera liczby zdarzeń na jednostkę czasu, aby można było porównać to liczba żądań z czasem odpowiedzi. Zawiera on również średnie metryki, takie jak czasy odpowiedzi żądania.
 
 Główne kategorie danych są:
 
-* Żądania do aplikacji (zwykle żądań HTTP), z danymi na adres URL, czas odpowiedzi i powodzenie lub niepowodzenie.
-* Zależności - SQL i REST wywołań przez aplikację, a także z identyfikatora URI, czas reakcji i Powodzenie
-* Wyjątki, w tym śladów stosu.
-* Dane wyświetleń strony, które pochodzą z przeglądarek użytkowników.
-* Metryki, np. liczniki wydajności, a także metryki pisania samodzielnie. 
-* Niestandardowe zdarzenia, których można śledzić zdarzenia biznesowe
-* Ślady dziennika używane do debugowania.
+* Żądania do aplikacji (zwykle żądania HTTP) z danymi na adres URL, czas reakcji i powodzenie lub niepowodzenie.
+* Zależności - wywołania REST i SQL przez aplikację, także z identyfikatora URI, czasy reakcji i Powodzenie
+* Wyjątki, ślady stosu w tym.
+* Dane widoku strony, które pochodzą z przeglądarek użytkowników.
+* Metryki, takie jak liczniki wydajności, a także metryki, napisane samodzielnie przez Ciebie. 
+* Zdarzenia niestandardowe, które służą do śledzenia zdarzeń biznesowych
+* Ślady dzienników używana do debugowania.
 
-## <a name="case-study-real-madrid-fc"></a>— Analiza przypadków: F.C. rzeczywistych Madrycie
-Usługa sieci web [rzeczywistych klub Football Madrycie](http://www.realmadrid.com/) służy wentylatory około 450 milionów na świecie. Wentylatory dostępny zarówno za pośrednictwem przeglądarki sieci web i aplikacji mobilnych klub. Wentylatory można nie tylko zarezerwować biletów, ale także uzyskać dostęp do informacji i wideo klipy na wyniki, odtwarzaczach i gry nadchodzących. Mogą one wyszukiwania z filtrami, takie jak numery celów oceny. Dostępne są także łącza do mediów społecznościowych. Środowisko użytkownika jest bardzo spersonalizowanych i został zaprojektowany jako komunikacja dwukierunkowa nawiązanie wentylatory.
+## <a name="case-study-real-madrid-fc"></a>Analiza przypadku: Real Madryt F.C.
+Usługa sieci web [Real Madryt Football Club](http://www.realmadrid.com/) służy około 450 milionom fanów z całego świata. Fanów uzyskać do niego dostęp zarówno za pośrednictwem przeglądarki sieci web i aplikacje mobilne Club. Fanów można nie tylko Zarezerwuj biletów, ale również dostęp do klipów informacji i wideo na wyniki, graczy i nadchodzących gry. Za pomocą filtrów można wyszukiwania, takie jak liczby celów oceniane. Dostępne są także łącza do mediów społecznościowych. Środowisko użytkownika jest wysoce spersonalizowanych i został zaprojektowany jako komunikacja dwukierunkowa, dzięki którym można zaangażować fanów.
 
-Rozwiązanie [to system usług i aplikacji w systemie Microsoft Azure](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Skalowalność to decydujące znaczenie: ruch jest zmienną i mogą dotrzeć bardzo dużej ilości, podczas i wokół dopasowań.
+Rozwiązanie [system usług i aplikacji w systemie Microsoft Azure to](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Skalowalność to kluczowe: ruch jest zmienna i mogą dotrzeć bardzo dużej ilości danych, podczas i wokół dopasowań.
 
-Rzeczywiste madryckiego jest niezbędne do monitorowania wydajności systemu. Azure Application Insights udostępnia obszerne przez system, zapewniając niezawodne i wysoki poziom usług. 
+Rzeczywiste Madryt, ważne jest do monitorowania wydajności systemu. Usługa Azure Application Insights oferuje kompleksowy wgląd w systemie, zapewniając niezawodne i wysoki poziom usługi. 
 
-Klub również pobiera szczegółowy opis jego wentylatorów: gdy są one (w Hiszpanii są tylko % 3), jakie odsetek mają w odtwarzaczy, historycznych wyniki i gry nadchodzących i jak odpowiadać do dopasowania wyników.
+Klub zapewnia również szczegółowe informacje dotyczące jego fanów: gdy są one (w Hiszpanii są tylko 3%), jaki odsetek mają w graczy, wyniki historyczne i kolejnych gier i sposobach reagowania do dopasowania wyników.
 
-Większość tych danych telemetrycznych automatycznie są zbierane z nie dodano kod, który uproszczone rozwiązanie i zmniejszyć złożoność działania.  Rzeczywiste Madryt, usługi Application Insights zajmuje się punkty telemetrii MLD 3.8 każdego miesiąca.
+Większość z tych danych telemetrycznych są automatycznie zbierane z nie dodano kod, który uproszczone rozwiązanie i zmniejszyć złożoność operacyjną.  Przypadku Real Madryt, Application Insights zajmuje się punktów danych telemetrycznych MLD 3.8 każdego miesiąca.
 
-Rzeczywiste Madrycie używa modułu usługi Power BI można wyświetlić ich telemetrii.
+Real Madryt używa modułu usługi Power BI, aby wyświetlić ich dane telemetryczne.
 
-![Power BI widok telemetrii usługi Application Insights](./media/app-insights-devops/080.png)
+![Power BI widok danych telemetrycznych usługi Application Insights](./media/app-insights-devops/080.png)
 
 ## <a name="smart-detection"></a>Wykrywanie inteligentne
-[Proaktywna Diagnostyka](app-insights-proactive-diagnostics.md) jest funkcją ostatnie. Bez żadnej specjalnej konfiguracji przez użytkownika usługi Application Insights automatycznie wykrywa i ostrzega o nietypowych wzrostu w awariami w aplikacji. Jest inteligentne ignorowania tła sporadycznych błędów i wzrostu, które są po prostu proporcjonalny do wzrost żądania. Tak na przykład jeśli awarii w jednym z usługi, które zależą od lub nowej kompilacji, można wdrożyć tylko nie działa tak dobrze, a następnie będzie wiadomo o nim, jak przyjrzeć się poczty e-mail. (I istnieją elementów webhook, dzięki czemu możesz wyzwolić innych aplikacji.)
+[Diagnostyka proaktywna](app-insights-proactive-diagnostics.md) jest najnowszych funkcji. Bez żadnej specjalnej konfiguracji przez Ciebie usługi Application Insights automatycznie wykrywa i ostrzega o tym nietypowe wzrostami współczynniki błędów w aplikacji. Jest to inteligentny zignorować tła okazjonalnych awarii i wzrostu, które są po prostu proporcjonalny do wzrost liczby żądań. Na przykład jeśli wystąpi awaria w jednej z usług, których zależysz lub nową kompilację, po prostu wdrożonych nie działa tak dobrze, a następnie będziesz wiedzieć o nim, jak najszybciej Przyjrzyj się swój adres e-mail. (I istnieją elementy webhook, dzięki czemu można wyzwalać inne aplikacje)
 
-Innym aspektem tej funkcji wykonuje codzienne dokładnych analiz telemetrii, wyszukiwanie nietypowe wzorce wydajności, które są trudne do odnajdywania. Na przykład może znaleźć wydajności skojarzonego z określonym obszarze geograficznym lub w wersji przeglądarki.
+Innym aspektem ta funkcja wykonuje codzienne szczegółowej analizy telemetrii, wyszukiwanie nietypowe wzorce wydajności, które są trudne do odnajdywania. Na przykład prowadzą spadek wydajności związany z określonym obszarze geograficznym lub przy użyciu wersji przeglądarki.
 
-W obu przypadkach alert nie tylko informuje objawy zostanie odnaleziony, ale również zapewnia dane, które należy do zdiagnozowania problemu, takie jak raporty odpowiedni wyjątek.
+W obu przypadkach ten alert nie tylko informuje objawy został odnaleziony, ale również zapewnia dane, których potrzebujesz, aby pomóc w zdiagnozowaniu problemu, takie jak raporty odpowiedni wyjątek.
 
-![Wiadomości e-mail z proaktywna Diagnostyka](./media/app-insights-devops/030.png)
+![Wyślij wiadomość e-mail z aktywną diagnostykę](./media/app-insights-devops/030.png)
 
-Samtec klienta powiedzieć: "podczas ostatnie funkcji cutover znaleziono-skalowania bazy danych naciśnięcie limit zasobów i powoduje przekroczeń limitu czasu. Alerty o wykryciu aktywnego dostarczone dosłownie anonsowanej możemy zostały klasyfikowane problem, bardzo blisko czasu rzeczywistego. Ten alert w połączeniu z platformą Azure alerty pomogły niemal natychmiast rozwiązać problem. Łączny czas przestojów spowodowanych < 10 minut."
+Samtec klienta powiedział: "podczas najnowszych funkcji powoduje uruchomienie produkcyjne znaleźliśmy-scaled bazy danych, który osiągnięcia limitów zasobów, jego przyczyną przekroczenia limitu czasu. Alerty proaktywne wykrywanie dostarczone za pośrednictwem dosłownie anonsowanej możemy zostały sklasyfikowaniu problem, bardzo w czasie rzeczywistym. Ten alert, w połączeniu z alertów platformy Azure pomógł nam niemal natychmiast rozwiązać ten problem. Łączny czas przestoju < 10 minut."
 
 ## <a name="live-metrics-stream"></a>Live Metrics Stream
-Można w trosce środowisko wdrażania ostatniej kompilacji. Jeśli występują problemy, chcesz od razu wiedzieć o je tak, aby można Wycofaj w razie potrzeby. Strumień na żywo metryk umożliwia kluczowych metryk z opóźnieniem około jednej sekundy.
+Wdrażanie najnowszych kompilacji może być środowisko zaniepokojonym wyrazem. Jeśli wystąpią jakiekolwiek problemy, chcesz wiedzieć o nich natychmiast, tak aby kopi, jeśli to konieczne. Live Stream metryki zapewnia kluczowe metryki z czasem oczekiwania wynoszącym około 1 sekundy.
 
 ![Metryki na żywo](./media/app-insights-devops/040.png)
 
-I pozwala bezpośrednio sprawdzić przykładowe jakiekolwiek błędy lub wyjątki.
+I pozwala natychmiast Zbadaj próbkę z wszelkimi błędami i wyjątkami.
 
-![Zdarzenia błędów na żywo](./media/app-insights-devops/live-stream-failures.png)
+![Zdarzenia awarii na żywo](./media/app-insights-devops/live-stream-failures.png)
 
 ## <a name="application-map"></a>Mapa aplikacji
-Mapowanie aplikacji automatycznie odnajduje topologii aplikacji r. informacje o wydajności na nim, aby można było łatwo zidentyfikować wąskich gardeł zmniejszających wydajność i przepływów powodować problemy w środowisku rozproszonym. Umożliwia ona odnajdywanie zależności aplikacji w usługach Azure. Problem może klasyfikowanie zrozumienie, jeśli powiązane kodu lub zależności powiązane i z jednego miejsca Przechodzenie do szczegółów w powiązanych diagnostyki wystąpić. Na przykład aplikacji może być się niepowodzeniem z powodu spadek wydajności w warstwie SQL. Mapowanie aplikacji możesz od razu zobacz temat i przejść do szczegółów w Doradcę w zakresie indeksowania SQL lub wystąpić szczegółowe informacje o zapytań.
+Mapa aplikacji automatycznie odnajduje topologię aplikacji, rozmieszczania informacje o wydajności powstałej, co pozwala łatwo identyfikować wąskie gardła wydajności i problematyczne przepływy w środowisku rozproszonym. Umożliwia ona odnajdywanie zależności aplikacji w usługach platformy Azure. Zrozumienie można sklasyfikowanie problemu, jeśli jest związane z kodem lub zależności powiązane i z jednego miejsca przechodzenia do szczegółów w powiązanych Diagnostyka środowiska. Na przykład aplikacji może być się niepowodzeniem z powodu obniżenie wydajności w warstwie SQL. Za pomocą mapy aplikacji można natychmiast zobaczyć i przejść do SQL Index Advisor lub szczegółowe informacje o zapytaniach środowiska.
 
 ![Mapa aplikacji](./media/app-insights-devops/050.png)
 
-## <a name="application-insights-analytics"></a>Application Insights analityka
-Z [Analytics](app-insights-analytics.md), możesz pisać zapytania dowolnego zaawansowanych języka przypominającego SQL.  Diagnozowanie w stosie całą aplikację staje się łatwe zgodnie z różnych perspektyw nawiązywanie połączeń i należy zadać odpowiednie pytania do skorelowania wydajność usługi z metryki biznesowe i obsługi klienta. 
+## <a name="application-insights-analytics"></a>Analiza usługi Application Insights
+Za pomocą [Analytics](app-insights-analytics.md), możesz pisać zapytania dowolnego w zaawansowanym językiem podobnego do SQL.  Diagnozowanie w stosie całej aplikacji staje się proste zgodnie z różnych perspektyw nawiązywanie połączeń i można zadać odpowiednie pytania do skorelowania wydajność usługi za pomocą metryki biznesowe i środowiskiem pracy klienta. 
 
-Umożliwia wysyłanie zapytań wystąpienia telemetrii i metryki nieprzetworzone dane przechowywane w portalu. Język obejmuje filtr sprzężenia, agregacji i innych operacji. Można obliczyć pola i wykonywać analizy statystycznej. Brak wizualizacji zarówno tabelarycznej i graficznej.
+Można tworzyć zapytania, wszystkie wystąpienia dane telemetryczne i metryki nieprzetworzonych danych przechowywanych w portalu. Język zawiera filtr sprzężenia, agregacji i innych operacji. Można obliczyć pola i przeprowadzania analizy statystycznej. Ma graficznego i tabelaryczne wizualizacje.
 
-![Wykres zapytania i wyniki analizy](./media/app-insights-devops/025.png)
+![Wykres zapytań i wyniki analizy](./media/app-insights-devops/025.png)
 
 Na przykład jest łatwe:
 
-* Segmentu danych wydajności aplikacji żądania przez klienta warstw zrozumienie ich obsługi.
-* Wyszukiwanie określonych kodów błędów lub nazwy niestandardowe zdarzenie podczas badania działającą witrynę.
-* Przechodzenie do użycia aplikacji określonych odbiorców, aby zrozumieć sposób uzyskać i przyjęte funkcji.
-* Śledzenie sesji i czasy odpowiedzi dla określonych użytkowników umożliwiają zespołom operacji i pomocy technicznej zapewnić obsługę błyskawicznych klienta.
-* Określ funkcje najczęściej używanych aplikacji odpowiedzi na pytania priorytetyzacji funkcji.
+* Segmentowanie danych wydajności żądania aplikacji według warstwy klienta, aby zrozumieć ich środowisko pracy.
+* Wyszukiwanie nazw zdarzenie niestandardowe lub konkretnych kodach błędów podczas badań działającej witryny.
+* Przejść do szczegółów w użycie aplikacji w konkretnych klientów, aby zrozumieć sposób nabyte i przyjętych funkcji.
+* Śledzenie sesji i najlepsze czasy odpowiedzi dla określonych użytkowników, zespoły pomocy technicznej i operacji do świadczenia błyskawicznej pomocy technicznej.
+* Ustal, często używanej aplikacji funkcji w odpowiedzi na pytania priorytetyzacji funkcji.
 
-Dana klienta DNN: "usługi Application Insights podał Brak częścią równości jest możliwe do zestawienia, sortowania, kwerendy i filtrowanie danych zgodnie z potrzebami. Stosowanie naszego zespołu, aby znaleźć dane z językiem zaawansowanych zapytań pozwoliło nam można znaleźć szczegółowe informacje i rozwiązywania problemów za pomocą ich własnych ingenuity i środowisko nie został jeszcze wiemy, że było. Wiele odpowiedzi interesujące pochodzą z pytania, począwszy od *"I swoje if...".*"
+Klient DNN powiedział: "Application Insights podał Brak częścią Równanie jest możliwe do łączenia, sortowanie, zapytania i filtrowanie danych zgodnie z potrzebami. Co nasz zespół do znalezionych danych za pomocą zaawansowanego języka zapytań ma umożliwiło nam uzyskiwanie przydatnego wglądu i rozwiązywanie problemów za pomocą ich własnych ingenuity i środowisko nie zostało jeszcze wiemy, boss Said WE had. Wiele ciekawych odpowiedzi udzielane przez firmę pytania, począwszy od *"I wonder if...".*"
 
-## <a name="development-tools-integration"></a>Programowanie narzędzia integracji
+## <a name="development-tools-integration"></a>Integracja narzędzia tworzenia
 ### <a name="configuring-application-insights"></a>Konfigurowanie usługi Application Insights
-Visual Studio i Eclipse mieć narzędzia do konfigurowania poprawne pakietów SDK dla projektu, które tworzysz. Brak polecenia menu, aby dodać usługi Application Insights.
+Program Visual Studio i Eclipse ma narzędzia, aby skonfigurować poprawną pakiety zestawu SDK dla projektu, które tworzysz. Brak polecenia menu, aby dodać usługę Application Insights.
 
-Jeśli wystąpi używa struktury rejestrowania śledzenia, takie jak Log4N, NLog lub System.Diagnostics.Trace, następnie możesz uzyskać możliwość wysyłania dzienników do usługi Application Insights oraz inne dane telemetryczne, dzięki czemu można łatwo skorelować śladów z żądaniami, zależności wywołania i wyjątki.
+Jeśli masz się przy użyciu struktury rejestrowania śledzenia, takie jak narzędzia Log4N, NLog lub System.Diagnostics.Trace, wówczas masz do dyspozycji możliwość wysyłania dzienników do usługi Application Insights wraz z innymi telemetrii tak, aby umożliwi łatwe korelowanie śladów przy użyciu żądania, zależności wywołania i wyjątków.
 
-### <a name="search-telemetry-in-visual-studio"></a>Wyszukaj dane telemetryczne w programie Visual Studio
-Podczas opracowywania i debugowania funkcji, można wyświetlać i wyszukaj dane telemetryczne bezpośrednio w programie Visual Studio przy użyciu tej samej funkcji wyszukiwania w portalu sieci web.
+### <a name="search-telemetry-in-visual-studio"></a>Wyszukaj telemetrię w programie Visual Studio
+Podczas tworzenia i debugowania funkcji, można przeglądać i przeszukiwać dane telemetryczne bezpośrednio w programie Visual Studio przy użyciu tych samych obiektach wyszukiwania, tak jak w portalu sieci web.
 
-I po zalogowaniu się wyjątku usługi Application Insights, można wyświetlić punktu danych w programie Visual Studio i przejść bezpośrednio do odpowiedni kod.
+A gdy usługa Application Insights rejestruje wyjątek, można wyświetlić punkt danych w programie Visual Studio i przejść bezpośrednio do odpowiedniego kodu.
 
-![Visual Studio wyszukiwania](./media/app-insights-devops/060.png)
+![Wyszukiwania usługi Visual Studio](./media/app-insights-devops/060.png)
 
-Podczas debugowania, masz opcję, aby zachować dane telemetryczne w komputerze deweloperskim, wyświetlając go w programie Visual Studio, ale bez wysyłania go do portalu. Ta opcja lokalnego pozwala uniknąć mieszanie debugowania o telemetrii produkcji.
+Podczas debugowania, masz opcję, aby zachować dane telemetryczne w komputerze deweloperskim, wyświetlając go w programie Visual Studio, ale bez wysyłania go do portalu. Ta opcja lokalnego unika mieszanie debugowanie przy użyciu telemetrii produkcji.
 
-### <a name="build-annotations"></a>Tworzenie adnotacji
-Jeśli używasz programu Visual Studio Team Services do tworzenia i wdrażania aplikacji, wdrożenie adnotacje wyświetlane na wykresach w portalu. Jeśli z najnowszej wersji miała wpływu na podstawie metryk, staje się oczywiste.
+### <a name="build-annotations"></a>Twórz adnotacje
+Jeśli używasz DevOps platformy Azure do tworzenia i wdrażania aplikacji adnotacji dotyczących wdrażania jest wyświetlane na wykresach w portalu. Jeśli Twoje najnowsze wydanie żadnego wpływu na metryki, staje się oczywiste.
 
-![Tworzenie adnotacji](./media/app-insights-devops/070.png)
+![Twórz adnotacje](./media/app-insights-devops/070.png)
 
 ### <a name="work-items"></a>Elementy robocze
-Gdy zostanie zgłoszony alert, usługi Application Insights może automatycznie tworzyć elementu roboczego pracy śledzenia systemu.
+Gdy zostanie zgłoszony alert, Application Insights może automatycznie tworzyć element roboczy w systemie śledzenia pracy.
 
-## <a name="but-what-about"></a>Ale co zrobić...?
-* [Prywatność i magazynu](app-insights-data-retention-privacy.md) -telemetrii jest przechowywana na serwerach Azure bezpieczne.
-* Wydajność — wpływ jest bardzo niskie. Dane telemetryczne jest umieścić w zadaniu wsadowym.
-* [Cennik](app-insights-pricing.md) — możesz rozpocząć pracę bezpłatnie i który będzie kontynuowane, podczas pracy w niskim poziomie.
+## <a name="but-what-about"></a>Ale co...?
+* [Prywatność i przechowywanie](app-insights-data-retention-privacy.md) -telemetrii jest przechowywana na serwerach bezpiecznej platformy Azure.
+* Wydajność — wpływ jest bardzo niskie. Telemetria jest partii.
+* [Cennik](app-insights-pricing.md) — pracę można rozpocząć bezpłatnie i że nadal podczas pracy w małą liczbą.
 
 
 ## <a name="video"></a>Połączenia wideo
@@ -170,9 +170,9 @@ Gdy zostanie zgłoszony alert, usługi Application Insights może automatycznie 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
-Wprowadzenie do korzystania z usługi Application Insights jest bardzo proste. Główne dostępne opcje to:
+Rozpoczynanie pracy z usługą Application Insights jest łatwe. Dostępne są następujące główne opcje:
 
-* Instrumentacja aplikacji sieci web już uruchomiona. Dzięki temu wszystkie dane telemetryczne wbudowanych wydajności. Nie jest dostępny do [Java](app-insights-java-live.md) i [serwery IIS](app-insights-monitor-performance-live-website-now.md), a także do [aplikacje sieci web Azure](app-insights-azure.md).
-* Instrumentacja projektu w czasie projektowania. Można to zrobić [ASP.NET](app-insights-asp-net.md) lub [Java](app-insights-java-get-started.md) aplikacji, a także [Node.js](app-insights-nodejs.md) i hosta [innych typów](app-insights-platforms.md). 
-* Instrumentem [dowolną stronę sieci web](app-insights-javascript.md) przez dodanie fragment kodu krótki.
+* Instrumentacja aplikacji sieci web już działa. Dzięki temu wszystkie dane telemetryczne wbudowane wydajności. Jest ona dostępna dla [Java](app-insights-java-live.md) i [serwery IIS](app-insights-monitor-performance-live-website-now.md), a także [usługi Azure web apps](app-insights-azure.md).
+* Instrumentacja projektu podczas programowania. Można to zrobić [ASP.NET](app-insights-asp-net.md) lub [Java](app-insights-java-get-started.md) aplikacji, jak również [Node.js](app-insights-nodejs.md) i hostem [innych typów](app-insights-platforms.md). 
+* Instrument [dowolnej strony sieci web](app-insights-javascript.md) , dodając krótki wstawki.
 

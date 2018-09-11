@@ -11,28 +11,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190180"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303068"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
-Gdy zdarzenia klawiszy zachodzą w usłudze Azure AD Privileged Identity Management (PIM), powiadomienia e-mail są wysyłane do odpowiedniego administratora lub użytkownika. Na przykład PIM wysyła wiadomości e-mail do następujących zdarzeń:
+W przypadku zdarzenia klawiszy zachodzą w usłudze Azure AD Privileged Identity Management (PIM), powiadomienia e-mail będą wysyłane. Na przykład PIM wysyła wiadomości e-mail do następujących zdarzeń:
 
 - Po aktywacji ról uprzywilejowanych oczekuje na zatwierdzenie
-- Gdy zostanie zatwierdzony żądanie aktywacji roli uprzywilejowanej
+- Po wykonaniu żądania aktywacji roli uprzywilejowanej
 - Po aktywowaniu ról uprzywilejowanych
 - Po przypisaniu roli uprzywilejowanej
 - Po włączeniu usługi Azure AD PIM
 
-Od pod koniec lipca 2018 r. powiadomień e-mail wysłanych przez usługę PIM mają nowy adres e-mail nadawcy oraz nowe projektowania wizualnego. Ta aktualizacja będzie mieć wpływ na obie usługi PIM dla usługi Azure AD i usługi PIM dla zasobów platformy Azure. Wszystkie zdarzenia, które zostały wcześniej wyzwolone wiadomość e-mail z powiadomieniem, będą w dalszym ciągu Wyślij wiadomość e-mail. Niektóre wiadomości e-mail zostanie zaktualizowana zawartość dostarczanie bardziej informacji docelowej.
+Powiadomienia e-mail są wysyłane do następujących administratorów:
+
+- Administrator ról uprzywilejowanych
+- Administrator zabezpieczeń
+
+Powiadomienia e-mail również są wysyłane do użytkownika końcowego, który ma ról uprzywilejowanych dla następujących zdarzeń:
+
+- Po wykonaniu żądania aktywacji roli uprzywilejowanej
+- Po przypisaniu roli uprzywilejowanej
+
+Od pod koniec lipca 2018 r. powiadomień e-mail wysłanych przez usługę PIM mają nowy adres e-mail nadawcy i nowe projektowania wizualnego. Ta aktualizacja będzie mieć wpływ na obie usługi PIM dla usługi Azure AD i usługi PIM dla zasobów platformy Azure. Wszystkie zdarzenia, które zostały wcześniej wyzwolone wiadomość e-mail z powiadomieniem, będą w dalszym ciągu Wyślij wiadomość e-mail. Niektóre wiadomości e-mail zostanie zaktualizowana zawartość dostarczanie bardziej informacji docelowej.
 
 ## <a name="sender-email-address"></a>Adres e-mail nadawcy
 

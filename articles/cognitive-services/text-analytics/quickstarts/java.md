@@ -1,6 +1,7 @@
 ---
-title: Szybki Start Java dla usług Azure kognitywnych, analiza tekstu interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API z analizy tekstu w kognitywnych usług Microsoft Azure.
+title: 'Szybki Start: Przy użyciu języka Java do wywołania interfejsu API analizy tekstu | Dokumentacja firmy Microsoft'
+titleSuffix: Azure Cognitive Services
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
 author: ashmaka
@@ -9,35 +10,35 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: ashmaka
-ms.openlocfilehash: 720459f65b9572a0599205c631d7de1b4d39f30b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9c08536c8bf5fc4d27c896c7eed00999d14b8872
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348760"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300514"
 ---
-# <a name="quickstart-for-text-analytics-api-with-java"></a>Szybki Start dla Analiza tekstu interfejsu API z językiem Java 
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Szybki Start: Przy użyciu języka Java do wywoływania usług Cognitive analizy tekstu
 <a name="HOLTop"></a>
 
-W tym artykule opisano sposób do [wykrywać język](#Detect), [analizowanie wskaźniki nastrojów klientów](#SentimentAnalysis), [wyodrębnić klucza fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities) przy użyciu [interfejsów API Analytics tekst](//go.microsoft.com/fwlink/?LinkID=759711) z językiem Java.
+W tym artykule przedstawiono, jak do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) przy użyciu języka Java.
 
-Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna dla interfejsów API.
+Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna w przypadku interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API z analizy tekstu**. Można użyć **warstwę bezpłatna do 5000 miesięcznie transakcji** do ukończenia tego przewodnika Szybki Start.
-Musi mieć również [punktu końcowego i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany automatycznie podczas logowania się. 
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API analizy tekstu**. Możesz użyć **5000 transakcji miesięcznie w warstwie bezpłatna** aby ukończyć ten przewodnik Szybki Start.
+Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas logowania się. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Wykrywanie języka
 
-Interfejs API wykrywania języka wykrywa język tekstu dokumentu za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+Interfejs API wykrywania języka wykrywa język tekstu dokumentu, za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz nowy projekt języka Java w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `host` (obecnie `westus`) w regionie zalogowano się.
+1. Utwórz nowy projekt języka Java w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+4. Zastąp lokalizację w `host` (obecnie `westus`) do regionu, możesz w konkursie.
 5. Uruchom program.
 
 ```java
@@ -158,9 +159,9 @@ public class DetectLanguage {
 }
 ```
 
-**Język wykrywania odpowiedzi**
+**Odpowiedź wykrywanie języka**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 
@@ -206,12 +207,12 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Wskaźniki nastrojów klientów analizy API detexts wskaźniki nastrojów klientów zestawu rekordów tekstu, za pomocą [metody wskaźniki nastrojów klientów](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład wyników dwa dokumenty, jeden w języku angielskim i drugą w języku hiszpańskim.
+Interfejs API analizy tonacji detexts tonacji zestaw rekordów tekstowych, za pomocą [metoda tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład ocenia dwa dokumenty, jeden w języku angielskim, a drugi w języku hiszpańskim.
 
-1. Utwórz nowy projekt języka Java w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `uriBase` (obecnie `westus`) w regionie zalogowano się.
+1. Utwórz nowy projekt języka Java w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+4. Zastąp lokalizację w `uriBase` (obecnie `westus`) do regionu, możesz w konkursie.
 5. Uruchom program.
 
 ```java
@@ -331,9 +332,9 @@ public class GetSentiment {
     }
 }
 ```
-**Wskaźniki nastrojów klientów analizy odpowiedzi**
+**Odpowiedź analizy tonacji**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -355,12 +356,12 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
-Klucz frazy wyodrębniania wyodrębnia fraz klucza z tekstu dokumentów za pomocą [metody fraz klucza](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Poniższy przykład wyodrębnia fraz klucz dla dokumentów zarówno angielskim i hiszpańskim.
+Klucz frazy wyodrębniania wyodrębnia kluczowych fraz z tekstu dokumentu, za pomocą [metoda kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Poniższy przykład wyodrębnianie kluczowych fraz dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz nowy projekt języka Java w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `uriBase` (obecnie `westus`) w regionie zalogowano się.
+1. Utwórz nowy projekt języka Java w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+4. Zastąp lokalizację w `uriBase` (obecnie `westus`) do regionu, możesz w konkursie.
 5. Uruchom program.
 
 ```java
@@ -481,9 +482,9 @@ public class GetKeyPhrases {
     }
 }
 ```
-**Wyrażenie klucza wyodrębniania odpowiedzi**
+**Odpowiedź wyodrębnianie kluczowych fraz**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -522,14 +523,14 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Identyfikowanie jednostek połączonego
+## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
 
-API łączenie jednostki identyfikuje dobrze znanych jednostek w tekście dokumentu za pomocą [łączenie jednostki — metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład identyfikuje jednostki dla dokumentów w języku angielskim.
+Interfejs API Entity Linking identyfikuje dobrze znanych jednostek w tekście dokumentu, za pomocą [łączenie podmiotów metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład określa jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz nowy projekt języka Java w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Zmienić lokalizację w `uriBase` (obecnie `westus`) w regionie zalogowano się.
+1. Utwórz nowy projekt języka Java w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+4. Zastąp lokalizację w `uriBase` (obecnie `westus`) do regionu, możesz w konkursie.
 5. Uruchom program.
 
 ```java
@@ -649,9 +650,9 @@ public class GetEntities {
     }
 }
 ```
-**Odpowiedź łączenia jednostki**
+**Odpowiedź łączenia jednostek**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -720,5 +721,5 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 ## <a name="see-also"></a>Zobacz także 
 
- [Omówienie Analiza tekstu](../overview.md)  
- [Często zadawane pytania (FAQ)](../text-analytics-resource-faq.md)
+ [Omówienie analizy tekstu](../overview.md)  
+ [Często zadawane pytania](../text-analytics-resource-faq.md)

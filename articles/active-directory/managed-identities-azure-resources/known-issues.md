@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 27f9e0a3875b8d7e9411517863f7d7c2f6982ab3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158640"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295585"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "44158640"
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
 > [!NOTE]
-> Zarządzane tożsamości dla zasobów platformy azure to nowa nazwa usługi, znana wcześniej jako tożsamość usługi zarządzanej (MSI).
+> Zarządzane tożsamości dla zasobów platformy Azure to nowa nazwa usługi, znana wcześniej jako tożsamość usługi zarządzanej (MSI).
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Zarządzanych tożsamości dla zasobów platformy Azure działa z usługami w chmurze platformy Azure?
 

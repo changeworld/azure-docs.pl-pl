@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446854"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303374"
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
 
@@ -136,7 +136,7 @@ Za pomocą zewnętrznego środowiska ASE te opcje publikowania wszystkich dział
 
 Główna różnica z publikowaniem jest względem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia publikowanie punktów końcowych są dostępne tylko za pośrednictwem wewnętrznego modułu równoważenia obciążenia. Wewnętrznego modułu równoważenia obciążenia znajduje się na prywatny adres IP w podsieci środowiska ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do wewnętrznego modułu równoważenia obciążenia nie można opublikować wszystkie aplikacje, w tym środowisku ASE. Jak wspomniano w [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE], należy skonfigurować usługę DNS dla aplikacji w systemie. Obejmuje to punkt końcowy SCM. Jeśli nie są prawidłowo zdefiniowane, nie można opublikować. Twojego środowiska IDE muszą mieć dostęp do wewnętrznego modułu równoważenia obciążenia sieci w celu publikowania bezpośrednio do niego.
 
-Oparty na Internecie systemy ciągłej integracji, takich jak GitHub i Visual Studio Team Services nie działają z ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
+Oparty na Internecie systemy ciągłej integracji, takich jak GitHub i DevOps platformy Azure, nie działają z ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
 
 Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Można to sprawdzić w profilu publikowania aplikacji i w bloku portalu aplikacji (w **Przegląd** > **Essentials** oraz w **właściwości**). 
 

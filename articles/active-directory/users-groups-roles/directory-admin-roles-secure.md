@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42062075"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346733"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -300,7 +300,7 @@ Integracja dzienników platformy Azure umożliwia integrowanie nieprzetworzonych
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Implementowanie aprowizacja użytkowników dla połączonych aplikacji
 
-Usługa Azure AD umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takie jak Dropbox, Salesforce, ServiceNow i tak dalej. Aby uzyskać więcej informacji, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS z usługą Azure AD](../active-directory-saas-app-provisioning.md).
+Usługa Azure AD umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takie jak Dropbox, Salesforce, ServiceNow i tak dalej. Aby uzyskać więcej informacji, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS z usługą Azure AD](../manage-apps/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Zintegrować information protection
 

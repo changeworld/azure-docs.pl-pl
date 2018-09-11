@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366684"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347835"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -135,12 +135,12 @@ Jeśli delegowana tożsamość logowania jest używany, wartość nie muszą by�
    * Nazwa konta SAM lokalnych (zależy od konfiguracji kontrolera domeny)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Rozwiązywanie problemów z logowania jednokrotnego dla różnych tożsamości
-Jeśli występuje błąd w procesie logowania jednokrotnego, pojawia się w dzienniku zdarzeń maszyny łącznik zgodnie z objaśnieniem w [Rozwiązywanie problemów](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
+Jeśli występuje błąd w procesie logowania jednokrotnego, pojawia się w dzienniku zdarzeń maszyny łącznik zgodnie z objaśnieniem w [Rozwiązywanie problemów](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
 Jednak w niektórych przypadkach żądanie zostanie pomyślnie wysłane do aplikacji zaplecza podczas tej aplikacji odpowiedzi w różnych odpowiedzi HTTP. Rozwiązywanie problemów z tych przypadkach na początek, sprawdzając numer zdarzenia 24029 na maszynie łącznika w dzienniku zdarzeń w sesji serwera Proxy aplikacji. Tożsamość użytkownika, którego użyto dla celów delegacji pojawią się w polu "user" w ramach szczegółów zdarzenia. Aby włączyć funkcję dziennika sesji, należy wybrać **Pokaż analityczne i debugowania dzienniki** w menu Widok Podgląd zdarzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Jak skonfigurować aplikację serwera Proxy aplikacji usługi do korzystania z ograniczonego delegowania protokołu Kerberos](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Jak skonfigurować aplikację serwera Proxy aplikacji usługi do korzystania z ograniczonego delegowania protokołu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
 
 

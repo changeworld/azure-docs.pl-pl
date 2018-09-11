@@ -1,20 +1,21 @@
 ---
-title: Przewodnik Szybki Start języka C# dla usługi Microsoft QnA Maker API (V4) — usługi Azure Cognitive Services | Dokumentacja firmy Microsoft
+title: 'Szybki Start: C# dla usługi QnA Maker API (V4)'
+titleSuffix: Azure Cognitive Services
 description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4bcc52547b5610bcb8dfa9b0cc56b2afc40e3c32
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3c0248b08dbaa1d81843474fcc65590c719e8170
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866087"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348314"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Przewodnik Szybki start dotyczący usługi QnA Maker API w języku C# dla firmy Microsoft 
 <a name="HOLTop"></a>
@@ -38,7 +39,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Bezpłatna wersja Community będzie działać.)
+Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
 
 Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API programu Microsoft QnA Maker**. Konieczne będzie klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

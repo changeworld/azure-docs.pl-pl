@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842502"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299461"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -38,13 +38,16 @@ Przed dodaniem jest hostem serwera SQL, sprawdź następujące wymagania obowią
 
 * Przydzielenie dedykowanego wystąpienia SQL do użycia przez zasób obciążeń dostawcy oraz użytkownika. Nie można użyć wystąpienia SQL, który jest używany przez innego konsumenta. To ograniczenie dotyczy także App Services.
 * Konto można skonfigurować z poziomami odpowiednich uprawnień dla dostawcy zasobów (opisanych poniżej).
-* Jesteś są odpowiedzialni za zarządzanie wystąpienia programu SQL i ich hostów.  Na przykład dostawca zasobów nie zastosowania aktualizacji, obsługi kopii zapasowych lub obsługi poświadczeń obrotu.
+* Odpowiedzialność za zarządzanie wystąpienia programu SQL i ich hostów.  Na przykład dostawca zasobów nie zastosowania aktualizacji, obsługi kopii zapasowych lub obsługi poświadczeń obrotu.
 
 ### <a name="sql-server-virtual-machine-images"></a>Obrazy maszyn wirtualnych programu SQL Server
 
 Obrazy maszyn wirtualnych SQL IaaS są dostępne za pośrednictwem funkcji zarządzania w portalu Marketplace. Te obrazy są takie same jak maszyn wirtualnych SQL, które są dostępne na platformie Azure.
 
 Upewnij się, że zawsze pobrać najnowszą wersję **SQL IaaS rozszerzenia** przed wdrożeniem maszyny Wirtualnej SQL przy użyciu elementu portalu Marketplace. Rozszerzenie IaaS i odpowiedniego portalu ulepszeń zapewniają dodatkowe funkcje, takie jak automatyczne stosowanie poprawek i tworzenia kopii zapasowych. Aby uzyskać więcej informacji na temat tego rozszerzenia, zobacz [automatyzacji zadań zarządzania na maszynach wirtualnych platformy Azure za pomocą rozszerzenia agenta programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+
+> [!NOTE]
+> Rozszerzenie SQL IaaS jest _wymagane_ SQL wszystkie Windows obrazów w portalu marketplace; na maszynie Wirtualnej zakończy się niepowodzeniem do wdrożenia, jeśli rozszerzenie nie został pobrany. Nie jest używana z obrazów maszyn wirtualnych SQL opartych na systemie Linux.
 
 Istnieją inne opcje wdrażania maszyn wirtualnych SQL, w tym szablony w [galerii Szybki Start usługi Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -125,7 +128,7 @@ Aby włączyć automatyczne wstępne wypełnianie we wszystkich wystąpieniach, 
   GO
   ```
 
-Należy pamiętać, że grupa dostępności muszą być ujęte w nawiasy kwadratowe.
+Grupa dostępności muszą być ujęte w nawiasy kwadratowe.
 
 Dodatkowych węzłów uruchom następujące polecenie SQL:
 

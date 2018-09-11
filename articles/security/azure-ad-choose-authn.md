@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: c6e82dfef55a49a8db70bdbefd0d7150b4fbac40
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c08dba56e3a7d9590ea95e7e4c569839f3a32100
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305186"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324856"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -171,7 +171,7 @@ Następujące diagramy przedstawiają składniki Architektura wysokiego poziomu 
 |Jakie są opcje dostępu warunkowego?|[Dostęp warunkowy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Dostęp warunkowy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Dostęp warunkowy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Reguł oświadczeń usług AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |Blokuje starszych protokołów obsługiwane?|[Tak](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Tak](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Tak](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Można dostosować logo, obrazu i opis na stronach logowania?|[Tak, za pomocą usługi Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Tak, za pomocą usługi Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Tak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
-|Jakie zaawansowane scenariusze są obsługiwane?|[Inteligentna blokada haseł](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Ujawnione poświadczenia raportów](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentna blokada haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|System wielu lokacjach uwierzytelniania o małych opóźnieniach<br><br>[Blokowanie ekstranetu w usługach AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integracja z systemami tożsamości innych firm](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
+|Jakie zaawansowane scenariusze są obsługiwane?|[Inteligentna blokada haseł](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Ujawnione poświadczenia raportów](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentna blokada haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|System wielu lokacjach uwierzytelniania o małych opóźnieniach<br><br>[Blokowanie ekstranetu w usługach AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integracja z systemami tożsamości innych firm](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 
 > [!NOTE] 
 > Niestandardowe formanty w dostępu warunkowego usługi Azure AD nie obsługuje obecnie rejestracji urządzeń.

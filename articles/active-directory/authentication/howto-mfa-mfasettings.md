@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 766f617f3534ffaccdc326e7de8155adb84a69ce
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: da5905af4a861502f190cd873033923d8fd0bfa7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162147"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349096"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -200,7 +200,7 @@ Niezależnie od tego, czy włączona jest funkcja zaufane adresy IP weryfikacji 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Włącz funkcję zaufane adresy IP przy użyciu ustawień usługi
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników i grup** > **wszyscy użytkownicy**.
+2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników**.
 3. Wybierz **uwierzytelnianie wieloskładnikowe**.
 4. W obszarze uwierzytelniania wieloskładnikowego wybierz **ustawienia usługi**.
 5. Na **ustawienia usługi** w obszarze **zaufane adresy IP**, wybierz jedną z następujących dwóch opcji:
@@ -346,7 +346,7 @@ Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authenti
 | Metoda | Opis |
 |:--- |:--- |
 | Połączenie z telefonem |Przełącza automatyczne połączenie głosowe. Użytkownik odbierze połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia. Numer telefonu nie są zsynchronizowane z usługą Active Directory w środowisku lokalnym. |
-| SMS na telefon |Wysyła wiadomość SMS zawierającą kod weryfikacyjny. Użytkownik jest monitowany o wprowadź kod weryfikacyjny w interfejsie logowania. Ten proces jest nazywany jednokierunkowa wiadomość SMS. Dwukierunkowa wiadomość SMS oznacza to, czy użytkownik musi ponownie tekstu określonego kodu. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwane po 14 listopada 2018 r. Użytkownicy, którzy są skonfigurowane do obsługi dwukierunkowa wiadomość SMS są automatycznie przełączone do _połączenie numerem telefonu_ weryfikacji, w tym czasie.|
+| Wiadomość SMS na telefon |Wysyła wiadomość SMS zawierającą kod weryfikacyjny. Użytkownik jest monitowany o wprowadź kod weryfikacyjny w interfejsie logowania. Ten proces jest nazywany jednokierunkowa wiadomość SMS. Dwukierunkowa wiadomość SMS oznacza to, czy użytkownik musi ponownie tekstu określonego kodu. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwane po 14 listopada 2018 r. Użytkownicy, którzy są skonfigurowane do obsługi dwukierunkowa wiadomość SMS są automatycznie przełączone do _połączenie numerem telefonu_ weryfikacji, w tym czasie.|
 | Powiadomienie przez aplikację mobilną |Wysyła powiadomienie wypychane na telefonie lub zarejestrowanym urządzeniu. Użytkownik przegląda powiadomienia i wybiera **Sprawdź** aby ukończyć weryfikację. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 | Kod weryfikacyjny z aplikacji mobilnej |Aplikacja Microsoft Authenticator generuje nowego kodu weryfikacyjnego OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny w interfejsie logowania. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190429"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296860"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -149,7 +149,7 @@ Jeden beneﬁts użycia platformy Azure jest wdrożenie aplikacji w różnych ce
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Azure portal to aplikacji sieci web, który może służyć do tworzenia, zarządzania i usuwać zasoby platformy Azure i usługi. Witryna Azure portal znajduje się w [Shell.Azure.com](https://portal.azure.com). Obejmuje dostosowywany pulpit nawigacyjny oraz narzędzia do zarządzania zasobami platformy Azure. Zawiera także informacje pomoc dotycząca rozliczeń i subskrypcji. Aby uzyskać więcej informacji, zobacz [omówienie portalu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) i [zarządzanie zasobami platformy Azure za pośrednictwem portalu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Azure portal to aplikacji sieci web, który może służyć do tworzenia, zarządzania i usuwać zasoby platformy Azure i usługi. Witryna Azure portal znajduje się w [portal.azure.com](https://portal.azure.com). Obejmuje dostosowywany pulpit nawigacyjny oraz narzędzia do zarządzania zasobami platformy Azure. Zawiera także informacje pomoc dotycząca rozliczeń i subskrypcji. Aby uzyskać więcej informacji, zobacz [omówienie portalu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) i [zarządzanie zasobami platformy Azure za pośrednictwem portalu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>Zasoby
 
@@ -185,7 +185,7 @@ Administratorzy mogą uzyskiwać dostęp do programu Azure PowerShell i wiersza 
 
 ## <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
-Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Wystąpieniu konta platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Subskrypcje platformy Azure ma administrator konta, który ma pełną kontrolę nad subskrypcji i administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach (RBAC).
+Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Jedno konto platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Subskrypcje platformy Azure ma Administrator konta, który ma pełną kontrolę nad subskrypcją, a Administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Aby uzyskać informacji na temat klasyczni Administratorzy, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Wybierz i Włącz subskrypcję platformy Azure
 
@@ -205,13 +205,9 @@ W przypadku przekroczenia kwoty kredytu usługi są wyłączone do momentu rozpo
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Przyznawaj dostęp administracyjny do subskrypcji platformy Azure
 
-Wiele ról administratora konta są dostępne i można zmienić w dowolnym momencie. Dostępne są następujące dwie role klucza:
+RBAC zawiera kilka wbudowanych ról, których można użyć, aby przypisać uprawnienia. Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypisać je [właściciela](../../role-based-access-control/built-in-roles.md#owner) rolę w zakresie subskrypcji. Rola właściciela zapewnia pełny dostęp użytkownika do wszystkich zasobów w ramach subskrypcji, łącznie z prawej strony można delegować dostępu do innych osób.
 
-- **Administrator usługi**: Ta rola jest autoryzowana do zarządzania usługami platformy Azure. Domyślnie udzielony dostęp do tego samego konta jako administratora konta.
-
-- **Administrator współpracujący**: Ta rola ma taki sam dostęp jak administrator usługi. Jednak ta rola nie można zmienić skojarzenia subskrypcji do katalogów platformy Azure.
-
-Aby uzyskać więcej informacji, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md).
+Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Wyświetlanie informacji dotyczących rozliczeń w witrynie Azure portal
 
@@ -307,7 +303,7 @@ Możesz udzielić operacyjnej dostępu do kont użytkowników w określonym zakr
 
 Aby udzielić dostępu, możesz przypisać rolę użytkownikowi lub grupie użytkowników. Istnieje wiele wstępnie zdefiniowanych ról. Można również definiować własne niestandardowe role.
 
-Poniżej przedstawiono kilka ról przykład wbudowane w platformę Azure:
+Poniżej przedstawiono przykład kilka [wbudowanych ról na platformie Azure](../../role-based-access-control/built-in-roles.md):
 
 - **Właściciel**: użytkownik z tą rolą mogą zarządzać wszystkim łącznie z dostępem.
 
@@ -321,7 +317,7 @@ Poniżej przedstawiono kilka ról przykład wbudowane w platformę Azure:
 
 - **Współautor konta magazynu**: użytkownik z tą rolą mogą zarządzać kontami magazynu, ale nie może zarządzać dostępem do konta magazynu.
 
-Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../../role-based-access-control/role-assignments-portal.md).
+Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

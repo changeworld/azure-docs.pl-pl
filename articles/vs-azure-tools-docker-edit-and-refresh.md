@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 07a7c1e11d8ca20ff4f42abcb84961cb7cd9e0e1
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42061364"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298220"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Debugowanie aplikacji w lokalnym kontenerze platformy Docker
 ## <a name="overview"></a>Przegląd
@@ -96,7 +96,7 @@ Dzięki obsłudze platformy Docker w programie Visual Studio 2017 możesz uzyska
 [Rozwiązywanie problemów z programowanie Docker programu Visual Studio](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>Więcej informacji na temat platformy Docker przy użyciu programu Visual Studio, Windows i platformy Azure
-* [Narzędzia aparatu docker dla programu Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) — umożliwia tworzenie i wdrażanie kontenerów aparatu docker
+* [Narzędzia aparatu docker dla usługi Azure DevOps](http://aka.ms/dockertoolsforvsts) — umożliwia tworzenie i wdrażanie kontenerów aparatu docker
 * [Narzędzia aparatu docker dla programu Visual Studio Code](http://aka.ms/dockertoolsforvscode) — usługi w języka do edycji plików docker przy użyciu scenariuszy e2e mieszczących się
 * [Informacje o kontenerze Windows](http://aka.ms/containers)— informacje o systemie Windows Server i serwera Nano Server
 * [Usługa Azure Container Service](https://azure.microsoft.com/services/container-service/) - [zawartości usługi kontenera platformy Azure](http://aka.ms/AzureContainerService)

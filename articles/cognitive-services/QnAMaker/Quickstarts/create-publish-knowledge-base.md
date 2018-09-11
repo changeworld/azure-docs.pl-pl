@@ -1,21 +1,20 @@
 ---
-title: Przewodnik Szybki Start dotyczące tworzenia KB — QnA Maker — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Samouczek krok po kroku dotyczące tworzenia wiedzy w usługi QnA Maker
-services: cognitive-services
-author: nstulasi
-manager: sangitap
+title: 'Szybki Start: Tworzenie KB — QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Z własnej zawartości, takich jak często zadawanych pytań lub podręczników, można utworzyć usługi QnA Maker bazy wiedzy (KB). KB QnA Maker, w tym przykładzie jest tworzony z prostą stronę często zadawane pytania dotyczące odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: saneppal
-ms.openlocfilehash: 49a21e8cf4e45fc4408f6c8039c3f0c7cc455e7a
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2b8573da6cc87af39a7681fa369940fa7a0b8eb3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028840"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345237"
 ---
 # <a name="create-train-and-publish-your-knowledge-base"></a>Tworzenie, uczenie i publikowanie bazy wiedzy
 

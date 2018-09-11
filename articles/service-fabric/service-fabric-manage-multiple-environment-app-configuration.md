@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie aplikacjami w wielu środowiskach, w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Aplikacje usługi sieć szkieletowa usług Azure może działać w klastrach tego zakresu o rozmiarze z jednego komputera do maszyn. W niektórych przypadkach należy skonfigurować aplikację inaczej w przypadku tych środowisk zróżnicowane. W tym artykule opisano sposób definiowania parametry różnych aplikacji dla środowiska.
+title: Zarządzanie aplikacjami dla wielu środowisk w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Aplikacje usługi Azure Service Fabric może działać w klastrach tego zakresu rozmiarze z jednego komputera do tysięcy maszyn. W niektórych przypadkach należy skonfigurować aplikację w różny sposób dla tych środowisk zróżnicowane. W tym artykule opisano sposób definiowania parametrów inną aplikacją na środowisko.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 15ad606578970290cef440ec4efdd967ca0c0b32
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205233"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298339"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Zarządzanie aplikacjami dla wielu środowisk
 
-Klastrów sieci szkieletowej usług Azure umożliwiają tworzenie klastrów za pomocą dowolnej lokalizacji z jednego do wielu tysięcy komputerów. W większości przypadków okaże się, że konieczności wdrażania aplikacji w konfiguracji klastra z wieloma: z lokalnego klastra projektowego klastra udostępnionego programowanie i klastra produkcyjnego. Wszystkie te klastry są traktowane jako kodu musi zostać uruchomione różnych środowisk. Pliki binarne aplikacji mogą działać bez żadnych modyfikacji w tym szerokie spektrum, ale często chcesz skonfigurować aplikację inaczej.
+Klastry usługi Service Fabric platformy Azure umożliwiają tworzenie klastrów za pomocą w dowolnym miejscu od jednej do tysięcy wiele maszyn. W większości przypadków okaże się konieczności wdrożenia aplikacji w konfiguracji klastra z wieloma: lokalnego klastra projektowego i klaster projektowy udostępnionego klastra produkcyjnego. Wszystkie klastry te są traktowane jako różnych środowiskach, w których Twój kod musi zostać uruchomione. Pliki binarne aplikacji można uruchomić bez modyfikacji w tym szerokie spektrum, ale często zachodzi potrzeba skonfigurować aplikację w różny sposób.
 
 Należy wziąć pod uwagę dwa proste przykłady:
-  - usługi nasłuchuje na porcie zdefiniowane, ale należy ten port różni się w środowiskach
-  - Musisz podać poświadczenia inne powiązanie dla bazy danych w środowiskach
+  - Usługa nasłuchuje na porcie zdefiniowanych, ale należy tego portu do różnić się między środowiskami
+  - należy podać poświadczenia inne powiązanie dla bazy danych w środowiskach
 
-## <a name="specifying-configuration"></a>Określenie konfiguracji
+## <a name="specifying-configuration"></a>Określanie konfiguracji
 
-Konfigurację, którą należy podać można podzielić na dwie kategorie:
+Konfiguracji, których udzielasz można podzielić na dwie kategorie:
 
-- Konfigurację, która ma zastosowanie do działanie usług
+- Konfigurację, która dotyczy działanie usługi
   - Na przykład numer portu dla punktu końcowego lub liczbę wystąpień usługi
-  - Ta konfiguracja jest określony w pliku manifestu usługi lub aplikacji
-- Konfigurację, która ma zastosowanie do kodu aplikacji
+  - Ta konfiguracja jest określona w pliku manifestu usługi lub aplikacji
+- Konfiguracja, która ma zastosowanie do kodu aplikacji
   - Na przykład informacje o powiązaniu dla bazy danych
-  - Tę konfigurację można podać przy użyciu plików konfiguracyjnych lub zmienne środowiskowe
+  - Tę konfigurację można podać za pomocą plików konfiguracji lub zmienne środowiskowe
 
 > [!NOTE]
-> Nie wszystkie atrybuty w aplikacji i usług manifestu parametry pliku pomocy technicznej.
-> W takich przypadkach trzeba polegać na zastępowanie ciągi jako część wdrożenia przepływ pracy. W programie Visual Studio Team Services, można użyć rozszerzenia takich jak zastąpić tokenów: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens lub w Wpięć można uruchomić zadania skryptu, aby zastąpić wartości.
+> Nie wszystkie atrybuty w aplikacji i usług manifestu parametry obsługi plików.
+> W takich przypadkach trzeba polegać na zastępując ciągi jako część przepływu pracy wdrażania. W metodyce DevOps platformy Azure można użyć rozszerzeń, takich jak zamienić tokeny: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens lub w usłudze Jenkins można uruchomić zadania skryptu, aby zastąpić wartości.
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>Określanie parametrów podczas tworzenia aplikacji
 
-Podczas tworzenia wystąpienia nazwanego aplikacji w sieci szkieletowej usług, istnieje możliwość do przekazania parametrów. Sposób odbywa się zależy od tego, jak utworzyć wystąpienie aplikacji.
+Podczas tworzenia wystąpienia nazwanego aplikacji w usłudze Service Fabric, masz możliwość przekazanie parametrów. Sposób to zrobić, zależy od tego, jak utworzyć wystąpienie aplikacji.
 
-  - W programie PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet przyjmuje parametry aplikacji jako tablica skrótów.
-  - Przy użyciu sfctl, [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) polecenie przyjmuje parametry jako ciągu JSON. Skrypt install.sh używa sfctl.
-  - Visual Studio zapewnia zbiór parametrów pliki w folderze parametrów w projekcie aplikacji. Te pliki parametrów są używane podczas publikowania z programu Visual Studio za pomocą programu Visual Studio Team Service lub Team Foundation Server. W programie Visual Studio pliki parametrów są są przekazywane do skryptu Deploy-FabricApplication.ps1.
+  - W programie PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenie cmdlet przyjmuje parametry aplikacji jako tablica skrótów.
+  - Za pomocą interfejsu sfctl, [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) polecenie pobiera parametry jako ciąg JSON. Skrypt install.sh używa interfejsu sfctl.
+  - Visual Studio udostępnia zestaw pliki parametrów w folderze parametrów w projekcie aplikacji. Te pliki parametrów są używane podczas publikowania z programu Visual Studio przy użyciu usługi Azure DevOps Services lub serwera Team Foundation Server. W programie Visual Studio pliki parametrów są jest przekazywane do skryptu wdrażania FabricApplication.ps1.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Następujące artykuły pokazują, jak korzystać z niektórych pojęcia opisane tutaj:
+Następujące artykuły pokazują, jak korzystać z niektórych pojęcia opisane w tym miejscu:
 
-- [Sposób określania zmiennych środowiskowych dla usług w sieci szkieletowej usług](service-fabric-how-to-specify-environment-variables.md)
-- [Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [Jak parametryzacja pliki konfiguracji](service-fabric-how-to-parameterize-configuration-files.md)
+- [Sposobu określania zmiennych środowiskowych dla usług w usłudze Service Fabric](service-fabric-how-to-specify-environment-variables.md)
+- [Jak określić numer portu usługi Service Fabric przy użyciu parametrów](service-fabric-how-to-specify-port-number-using-parameters.md)
+- [Jak zdefiniować parametry plików konfiguracji](service-fabric-how-to-parameterize-configuration-files.md)
 
-- [Odwołanie do zmiennej środowiskowej](service-fabric-environment-variables-reference.md)
+- [Odnośnik zmiennej środowiskowej](service-fabric-environment-variables-reference.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 1b52c64db29e17a0c52eb63721be81844e856b64
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: cd022677da59588eca910a508b2596aa513eff4b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058788"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302813"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów w usłudze Azure API Management przy użyciu protokołu OAuth 2.0
 
@@ -63,9 +63,9 @@ Ten przewodnik pokazuje, jak skonfigurować wystąpienia usługi API Management 
 
     ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Dla serwera usługi Azure Active Directory OAuth 2.0 **adresu URL punktu końcowego tokenu** będzie mieć następujący format, gdzie `<APPID>` ma format `yourapp.onmicrosoft.com`.
+    Dla serwera usługi Azure Active Directory OAuth 2.0 **adresu URL punktu końcowego tokenu** będzie mieć następujący format, gdzie `<TenantID>` ma format `yourapp.onmicrosoft.com`.
 
-    `https://login.microsoftonline.com/<APPID>/oauth2/token`
+    `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
     Ustawieniem domyślnym dla **metod uwierzytelniania klienta** jest **podstawowe**, i **Metoda wysyłania tokenu dostępu** jest **nagłówek autoryzacji**. Te wartości są skonfigurowane w tej części formularza, wraz z **zakresu domyślnego**.
 

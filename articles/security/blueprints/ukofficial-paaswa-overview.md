@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617253"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297559"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: PaaS Web Hosting aplikacji w przypadku obciążeń oficjalne UK
 
@@ -27,7 +27,7 @@ Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia wskazówki
 
 Ten plan został przejrzany, Zjednoczone Królestwo National Cybernetycznymi zabezpieczeń Centrum (NCSC) i zgodne z zasadami zabezpieczeń NCSC 14 chmury.
 
-Architektura korzysta z platformy Azure [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) składniki, aby dostarczać środowisko, które pozwala uniknąć kosztownego i skomplikowanego kupowania licencji na oprogramowanie, zarządzanie podstawowej infrastruktury aplikacji i oprogramowania pośredniczącego lub narzędzi deweloperskich i innych zasobów. Klienci zarządzać aplikacjami i usługami, które opracowują, skupiając się na dostarczaniu wartości biznesowej, podczas gdy Microsoft Azure zarządza innych zasobów platformy Azure, takie jak maszyny wirtualne, Magazyn i sieć, umieszczając jedną z [dzielenia odpowiedzialność za](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) dla zarządzanie infrastrukturą na platformie Azure. [Usługi Azure App Services](https://azure.microsoft.com/services/app-service/) oferuje automatyczne skalowanie, wysoka dostępność, obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, Visual Studio Team Services lub dowolnego repozytorium Git jako usług domyślnych. Za pomocą usług aplikacji, deweloperów może skupić się na dostarczaniu wartości biznesowej bez konieczności zarządzania infrastrukturą. Można tworzyć nowe aplikacje sieci web Java, PHP, Node.js, Python, HTML lub C# od podstaw lub migrację istniejącej chmurze lub lokalnych aplikacji sieci web do usług Azure App Services (mimo że dokładnego aby upewnić się, wydajność jest wymagany w należytą starannością i testowania).
+Architektura korzysta z platformy Azure [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) składniki, aby dostarczać środowisko, które pozwala uniknąć kosztownego i skomplikowanego kupowania licencji na oprogramowanie, zarządzanie podstawowej infrastruktury aplikacji i oprogramowania pośredniczącego lub narzędzi deweloperskich i innych zasobów. Klienci zarządzać aplikacjami i usługami, które opracowują, skupiając się na dostarczaniu wartości biznesowej, podczas gdy Microsoft Azure zarządza innych zasobów platformy Azure, takie jak maszyny wirtualne, Magazyn i sieć, umieszczając jedną z [dzielenia odpowiedzialność za](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) dla zarządzanie infrastrukturą na platformie Azure. [Usługi Azure App Services](https://azure.microsoft.com/services/app-service/) oferuje automatyczne skalowanie, wysoka dostępność, obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub dowolnego repozytorium Git jako usług domyślnych. Za pomocą usług aplikacji, deweloperów może skupić się na dostarczaniu wartości biznesowej bez konieczności zarządzania infrastrukturą. Można tworzyć nowe aplikacje sieci web Java, PHP, Node.js, Python, HTML lub C# od podstaw lub migrację istniejącej chmurze lub lokalnych aplikacji sieci web do usług Azure App Services (mimo że dokładnego aby upewnić się, wydajność jest wymagany w należytą starannością i testowania).
 
 Ten plan koncentruje się na aprowizacji od bezpiecznej podstawy [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) interfejs internetowy dla użytkowników usługi office również Wstecz i publicznych. Takiego scenariusza projektowego planu uważa, że korzystanie z platformy Azure, obsługiwana usług sieci web gdzie publiczny użytkownika mogą bezpiecznie przesyłać, wyświetlić oraz zarządzać poufnych danych; również czy wsteczny operator pakietu office lub dla instytucji rządowych bezpiecznie może przetwarzać dane poufne, które zostało przesłane przez użytkownika publicznego. Przypadki użycia, w tym scenariuszu mogą obejmować:
 
@@ -103,7 +103,7 @@ Dane są przesyłane z zewnątrz i między składnikami platformy Azure jest chr
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Usługa Azure Web Apps zapewnia w pełni zarządzane środowisko dla aplikacji sieci web opracowany w języku Java, PHP, Node.js, Python, HTML i języka C# bez konieczności zarządzania infrastrukturą hostingu w sieci web. Oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows, jak i Linux i umożliwia automatyczne wdrożeń z [Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) lub dowolnym repozytorium opartych o Git.
+Usługa Azure Web Apps zapewnia w pełni zarządzane środowisko dla aplikacji sieci web opracowany w języku Java, PHP, Node.js, Python, HTML i języka C# bez konieczności zarządzania infrastrukturą hostingu w sieci web. Oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows, jak i Linux i umożliwia automatyczne wdrożeń z [DevOps platformy Azure](https://azure.microsoft.com/services/visual-studio-team-services/) lub dowolnym repozytorium opartych o Git.
 
 App Service to [ISO, SOC i PCI](https://www.microsoft.com/TrustCenter/) i mogą uwierzytelniać użytkowników za pomocą [usługi Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) lub logowania z serwisów społecznościowych ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [wserwisieFacebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), i [uwierzytelnianie firmy Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
 

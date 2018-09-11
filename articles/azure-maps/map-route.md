@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 37323bacf47613c0faf7769701808ecef2645115
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: cb0d5d7239095b67235cc68233d9492377178362
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157957"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295537"
 ---
 # <a name="show-directions-from-a-to-b"></a>Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B 
 
 W tym artykule pokazano, jak utworzyć żądanie trasy i wyświetlania trasy na mapie.
 
-Istnieją dwa sposoby, aby to zrobić, jeden ze sposobów polega na, badając [interfejsu API usługi Azure Maps Route](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) za pośrednictwem usługi modułu, a drugi jest udostępniając [XMLHttpRequest](https://xhr.spec.whatwg.org/) do interfejsu API. Oba zostały podane poniżej.
+Istnieją dwa sposoby, aby to zrobić, jest jednym ze sposobów, badając [interfejsu API usługi Azure Maps Route](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) za pośrednictwem usługi modułu, a drugi jest udostępniając [XMLHttpRequest](https://xhr.spec.whatwg.org/) do interfejsu API. Oba zostały podane poniżej.
 
-## <a name="use-service-module-to-query-for-a-route"></a>Moduł usługi do wykonywania zapytań na użytek trasy
+## <a name="querying-the-route-via-service-module"></a>Wykonywanie zapytań tras za pomocą modułu usług
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
@@ -43,7 +43,7 @@ Szósty blok kodu tworzy zapytanie trasy.
 
 Ostatni blok kodu zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metodę, aby uzyskać trasy między punkt początkowy, jak i docelowym. Odpowiedź następnie jest analizowany w formacie GeoJSON, używając [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) metody. Dodaje te wiersze na mapę do renderowania trasy. Możesz zobaczyć [Dodaj wiersz na mapie](./map-add-shape.md#addALine) Aby uzyskać więcej informacji.
 
-## <a name="use-xmlhttprequest-to-query-for-a-route"></a>Korzystanie z XMLHTTPRequest do wykonywania zapytań dla trasy
+## <a name="querying-the-route-via-xmlhttprequest"></a>Wykonywanie zapytań tras za pomocą XMLHttpRequest
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 

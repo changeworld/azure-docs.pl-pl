@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782658"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298209"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:
@@ -40,7 +40,7 @@ Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wir
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Wyszukiwanie danych wizualnych i usługi machine learning oprogramowania w języku Java.
   * [Apache Drill](https://drill.apache.org/). Bez schematu aparatu zapytań SQL dla usługi Apache Hadoop, NoSQL i Magazyn w chmurze.  Obsługuje ona ODBC i sterownika JDBC interfejsy do wykonywania zapytań, NoSQL i pliki ze standardowych narzędzi analizy Biznesowej, takich jak Power BI, programie Microsoft Excel i Tableau.
 * Użyj bibliotek w języków R i Python, aby uzyskać w usłudze Azure Machine Learning i innymi usługami platformy Azure.
-* Git, w tym powłoki Git Bash, aby pracować z repozytoriów kodu źródłowego, które zawierają GitHub i Visual Studio Team Services. Usługa Git oferuje kilka popularnych Linux narzędzi wiersza polecenia, które są dostępne zarówno w Git Bash, jak i wiersza polecenia. Przykładami są awk, sed, perl, grep, wyszukiwanie, wget i narzędzie curl.
+* Git, w tym powłoki Git Bash, aby pracować z repozytoriów kodu źródłowego, które zawierają usługi GitHub i DevOps platformy Azure. Usługa Git oferuje kilka popularnych Linux narzędzi wiersza polecenia, które są dostępne zarówno w Git Bash, jak i wiersza polecenia. Przykładami są awk, sed, perl, grep, wyszukiwanie, wget i narzędzie curl.
 
 Do nauki o danych obejmuje iteracja w sekwencji zadań:
 

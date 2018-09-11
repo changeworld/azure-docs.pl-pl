@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0cc0ec79cf23d3bba01845ed64493df010c1ca66
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b324d0a68fde8f47072a087330f2e40a99378984
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161700"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299478"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono sposób wyszukiwania lokalizacji zainteresowania i 
 
 Istnieją dwa sposoby, aby wyszukiwać lokalizacja zainteresowania jeden ze sposobów jest przy użyciu modułu usługi się żądanie wyszukiwania, a druga, wprowadzając żądania wyszukiwania za pomocą [XMLHttpRequest](https://xhr.spec.whatwg.org/) do [Azure Maps wyszukiwanieminterfejsuAPI](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Omówimy zarówno poniżej.
 
-## <a name="use-service-module-to-make-a-search-request"></a>Moduł usługi użyj żądania wyszukiwania
+## <a name="making-a-search-request-via-service-module"></a>Żądania wyszukiwania za pomocą modułu usług
 
 ### <a name="understand-the-code"></a>Zrozumienie kodu
 
@@ -36,7 +36,7 @@ Drugi blok kodu używa Wyszukiwanie rozmyte [interfejsu API wyszukiwania rozmyte
 Ostatni blok kodu dostosowuje granice aparatu mapy za pomocą mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) właściwości.
 
 
-## <a name="search-by-xmlhttprequest"></a>Wyszukaj według XMLHttpRequest
+##  <a name="making-a-search-request-via-xmlhttprequest"></a>Żądania wyszukiwania za pomocą XMLHttpRequest
 
 ### <a name="understand-the-code"></a>Zrozumienie kodu
 

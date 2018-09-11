@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4d49b6c4fca668a6afe88ade5fbafb0ea9c02dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137375"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296163"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
@@ -133,13 +133,13 @@ Jeśli aplikacja generuje wiele danych telemetrycznych (i używasz zestawu SDK p
 [Więcej informacji na temat próbkowania](app-insights-sampling.md).
 
 ## <a name="create-work-item"></a>Utwórz element roboczy
-Szczegółowe informacje z każdego elementu telemetrii, można utworzyć usterkę w usłudze GitHub lub Visual Studio Team Services. 
+Można utworzyć usterkę w usłudze GitHub lub DevOps platformy Azure przy użyciu informacji z dowolnego elementu danych telemetrycznych. 
 
 ![Kliknij nowy element roboczy, Edytuj pola, a następnie kliknij przycisk OK.](./media/app-insights-diagnostic-search/42.png)
 
-Możesz to zrobić, po raz pierwszy, zostanie wyświetlony monit skonfigurować łącze do konta usługi Team Services i projektu.
+Możesz to zrobić, po raz pierwszy, zostanie wyświetlony monit skonfigurować łącze do organizacji DevOps platformy Azure i projektu.
 
-![Wprowadź adres URL serwera usługi Team Services i nazwę projektu, a następnie kliknij przycisk Autoryzuj](./media/app-insights-diagnostic-search/41.png)
+![Wprowadź adres URL usługi Azure DevOps i nazwę projektu, a następnie kliknij przycisk Autoryzuj](./media/app-insights-diagnostic-search/41.png)
 
 (Można również skonfigurować łącze w bloku elementów roboczych.)
 
@@ -159,7 +159,7 @@ Zobacz [podsumowanie ograniczeń](app-insights-pricing.md#limits-summary).
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak sprawdzić danych POST w Moje żądania serwera
 Firma Microsoft nie rejestruj danych POST automatycznie, ale można użyć [TrackTrace lub dziennik wywołań](app-insights-asp-net-trace-logs.md). Umieść dane POST w parametrze wiadomości. Nie można filtrować wiadomości w taki sam sposób, który można filtrować według właściwości, ale limit rozmiaru jest dłuższy.
 
-## <a name="video"></a>Video
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

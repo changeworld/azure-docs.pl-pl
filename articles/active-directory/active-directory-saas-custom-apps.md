@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3dafef052f181a961cdf30cb647328ee1b2db601
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056043"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299920"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
@@ -42,17 +42,17 @@ Te funkcje, nazywane również *szablony integracji aplikacji*, punkty połącze
 ## <a name="adding-an-unlisted-application"></a>Dodawanie aplikacji nieznajdujących się na liście
 Aby połączyć aplikację przy użyciu szablonu usługi integracji aplikacji, zaloguj się do witryny Azure portal przy użyciu konta administratora usługi Azure Active Directory. Przejdź do **usługi Active Directory > aplikacje dla przedsiębiorstw > Nowa aplikacja > Aplikacja spoza galerii** zaznacz **Dodaj**, a następnie **Dodawanie aplikacji z galerii** .
 
-  ![](./media/active-directory-saas-custom-apps/customapp1.png)
+  ![Dodawanie aplikacji](./media/active-directory-saas-custom-apps/customapp1.png)
 
 W galerii aplikacji nieznajdujących się na liście aplikacji można dodawać przez zaznaczenie **aplikacji spoza galerii** Kafelek, który jest wyświetlany w wynikach wyszukiwania, jeśli nie można znaleźć żądanej aplikacji. Po wpisaniu nazwy aplikacji, można skonfigurować opcje logowania jednokrotnego i zachowania. 
 
 **Szybkie porady**: najlepszym rozwiązaniem, należy użyć funkcji wyszukiwania, sprawdź, czy aplikacja już istnieje w galerii aplikacji. Jeśli aplikacja zostanie znaleziony, i jego opis wymienia logowanie jednokrotne, aplikacja jest już obsługiwane dla federacyjnego logowania jednokrotnego.
 
-  ![](./media/active-directory-saas-custom-apps/customapp2.png)
+  ![Wyszukiwanie](./media/active-directory-saas-custom-apps/customapp2.png)
 
 Dodawanie aplikacji w ten sposób zapewnia podobne do tego dostępne dla wstępnie zintegrowanych aplikacji. Aby rozpocząć, wybierz opcję **skonfigurować logowanie jednokrotne** lub kliknąć **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji. Następny ekran przedstawia opcje konfigurowania logowania jednokrotnego. Opcje są opisane w kolejnych sekcjach tego artykułu.
   
-![](./media/active-directory-saas-custom-apps/customapp3.png)
+![Opcje konfiguracji](./media/active-directory-saas-custom-apps/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>Logowanie jednokrotne oparte na języku SAML
 Wybierz tę opcję, aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji. Wymaga to, że aplikacja obsługuje SAML 2.0. Należy zbierać informacje dotyczące sposobu używania funkcji SAML aplikacji przed kontynuowaniem. Wykonaj poniższe sekcje, aby skonfigurować logowanie jednokrotne między aplikacją i usługi Azure AD.
@@ -98,7 +98,7 @@ Po użytkownik uwierzytelnia się do aplikacji, usługi Azure AD wystawi SAML to
 
 Umożliwia wyświetlenie i edytowanie oświadczenia wysyłane w tokenie SAML do aplikacji w ramach **atrybuty** kartę.
 
-  ![](./media/active-directory-saas-custom-apps/customapp7.png)
+  ![Atrybuty](./media/active-directory-saas-custom-apps/customapp7.png)
 
 Istnieją dwie przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
 
@@ -138,7 +138,7 @@ Gdy aplikacja została skonfigurowana do użycia usługi Azure AD jako dostawcy 
 
 Aby przypisać użytkownika lub grupy do aplikacji, kliknij przycisk **Przypisz użytkowników** przycisku. Wybierz użytkownika lub grupy, które chcesz przypisać, a następnie wybierz pozycję **przypisać** przycisku.
 
-  ![](./media/active-directory-saas-custom-apps/customapp6.png)
+  ![Przypisywanie użytkowników](./media/active-directory-saas-custom-apps/customapp6.png)
 
 Przypisanie użytkownika umożliwi usłudze Azure AD wystawić token dla użytkownika. Powoduje również kafelka dla tej aplikacji, które będą wyświetlane na panelu dostępu użytkownika. Kafelek aplikacji pojawi się także w module uruchamiania aplikacji usługi Office 365, jeśli użytkownik korzysta z usługi Office 365. 
 
@@ -175,5 +175,5 @@ Po wybraniu **dalej**, użytkownik jest monitowany o podanie adresu URL aplikacj
 
 - [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 - [Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md)
-- [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](active-directory-saml-debugging.md)
+- [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md)
 

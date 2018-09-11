@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0055968e4333f5ac7653a37fcd728b040024ee55
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 6010ea7f4997e4604e72cdf4a993956ab76b1ef2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629851"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296571"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -64,7 +64,7 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 
 - Microsoft Power BI 
 
-- Microsoft Visual Studio Team Services
+- Azure DevOps
 
 - Microsoft Teams
 
@@ -192,7 +192,7 @@ To ustawienie ma wpływ na dostęp podjętych następujące aplikacje mobilne i 
 |Aplikacja mobilna Outlook|Office 365 Exchange Online|Android, iOS|
 |Aplikacja usługi Power BI|Usługa Power BI|Windows 10, Windows 8.1, Windows 7, Android i iOS|
 |Skype dla firm|Office 365 Exchange Online|Android, IOS |
-|Visual Studio Team Services aplikacji|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS i Android|
+|Aplikacja Azure DevOps|Azure DevOps|Windows 10, Windows 8.1, Windows 7, iOS i Android|
 
 
 

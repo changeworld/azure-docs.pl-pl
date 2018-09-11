@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424555"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299104"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy usługi Azure Application Insights za pomocą łącznika usługi Microsoft Flow
 
@@ -25,7 +25,7 @@ Czy masz ochotę wielokrotnie systemem tego samego zapytania dane telemetryczne,
 
 Dzięki tej integracji możesz teraz zautomatyzować wiele procesów bez konieczności pisania nawet jednego wiersza kodu. Po utworzeniu przepływu za pomocą akcji usługi Application Insights, przepływ automatycznie uruchamia zapytania analizy usługi Application Insights. 
 
-Możesz dodać również dodatkowe akcje. Microsoft Flow jest udostępnienie kilkuset akcji. Na przykład można użyć Microsoft Flow automatycznie wysyłać wiadomość e-mail z powiadomieniem lub Utwórz usterkę w Visual Studio Team Services. Można także użyć jednego z wielu [szablony](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) dostępnych dla łącznika dla Microsoft Flow. Te szablony przyspieszyć proces tworzenia przepływu. 
+Możesz dodać również dodatkowe akcje. Microsoft Flow jest udostępnienie kilkuset akcji. Na przykład można użyć Microsoft Flow automatycznie wysyłać wiadomość e-mail z powiadomieniem lub Utwórz usterkę w DevOps platformy Azure. Można także użyć jednego z wielu [szablony](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) dostępnych dla łącznika dla Microsoft Flow. Te szablony przyspieszyć proces tworzenia przepływu. 
 
 <!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3892b546bb6873a802d85b30cd89801abc9a7424
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7653541a6a66ce5e94119dbb720213a4b40adc81
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162431"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303440"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -335,60 +335,22 @@ Następne kroki:
 
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
+Ten rozdział dokumentacji opisano różne aspekty platformy SAP HANA. Jako warunek wstępny należy zapoznać się z zasadą usługi Azure świadczące podstawowe usługi w modelu IaaS platformy Azure. więc przede wszystkim wiedzę na temat usługi Azure compute, magazynu i sieci. Wiele z tych tematów są obsługiwane w oprogramowanie SAP NetWeaver powiązane [Azure Planning Guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/planning-guide). 
 
-### <a name="getting-started-with-sap-hana-on-azure"></a>Wprowadzenie do platformy SAP HANA na platformie Azure
-Tytuł: Przewodnik Szybki start dotyczący ręcznej instalacji oprogramowania SAP Hana na maszynach wirtualnych platformy Azure
+Spoza tej listy, artykuły i artykułów podrzędnych spadkobiercy składa się z dokumentacją specyficzną dla platformy HANA na platformie Azure:
 
-Podsumowanie: Ten przewodnik Szybki Start pomaga skonfigurować jednego wystąpienia platformy SAP HANA na maszynach wirtualnych platformy Azure przy ręcznej instalacji SAP NetWeaver w wersji 7.5 i SAP HANA SP12. Przewodnik zakłada, że czytelnik jest zapoznać się z podstawy IaaS platformy Azure, takich jak wdrażanie maszyn wirtualnych lub sieciami wirtualnymi za pośrednictwem witryny Azure portal lub programu Powershell/interfejsu wiersza polecenia w tym możliwość użycia szablonów json. Ponadto oczekuje się, że czytelnik jest zapoznać się z oprogramowania SAP HANA, SAP NetWeaver i jak je zainstalować w środowisku lokalnym.
+- [Szybki Start: Instalacja ręczna jednego wystąpienia środowiska SAP Hana na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/cal-s4h)
+- [Konfiguracje infrastruktury SAP HANA i operacje na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [SAP HANA dostępności w obrębie jednego regionu platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
+- [Dostępność platformy SAP HANA w regionach platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
+- [Wysoka dostępność środowiska SAP HANA na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Przewodnik tworzenia kopii zapasowych dla oprogramowania SAP HANA na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA usługi Azure Backup na poziomie plików](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+- [Kopia zapasowa oprogramowania SAP HANA na podstawie migawek magazynu](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
-
-[Ten przewodnik można znaleźć tutaj](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="s4hana-sap-cal-deployment-on-azure"></a>S/4HANA, SAP CAL wdrożenia na platformie Azure
-Tytuł: Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure
-
-Podsumowanie: Ten Przewodnik ułatwia prezentacja wdrożenia SAP S/4HANA na platformie Azure przy użyciu biblioteki SAP Cloud Appliance Library. SAP Cloud Appliance Library to usługa, SAP, która umożliwia wdrażanie aplikacji SAP na platformie Azure. W tym przewodniku opisano krok po kroku wdrożenia.
-
-
-[Ten przewodnik można znaleźć tutaj](cal-s4h.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="high-availability-of-sap-hana-in-azure-virtual-machines"></a>Wysoka dostępność oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
-Tytuł: Wysoką dostępność środowiska SAP Hana na maszynach wirtualnych platformy Azure
-
-Podsumowanie: Ten przewodnik poprowadzą przez proces konfiguracji o wysokiej dostępności systemu operacyjnego 12 SUSE i SAP HANA, aby pomieścić replikacji systemu HANA przy użyciu automatycznej pracy awaryjnej. Przewodnik jest specyficzny dla maszyn wirtualnych platformy Azure i SUSE. Przewodnik nie dotyczy jeszcze firmy Red Hat lub bez systemu operacyjnego lub prywatnej chmury lub innych wdrożeń w chmurze publicznej spoza platformy Azure.
-
-
-
-[Ten przewodnik można znaleźć tutaj](sap-hana-high-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="sap-hana-backup-overview-on-azure-vms"></a>Omówienie tworzenia kopii zapasowych oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
-Tytuł: Kopia zapasowa przewodnik platformy SAP Hana na maszynach wirtualnych platformy Azure
-
-Podsumowanie: Ten przewodnik zawiera podstawowe informacje na temat tworzenia kopii zapasowej możliwości uruchamiania oprogramowania SAP HANA na maszynach wirtualnych platformy Azure.
-
-
-
-[Ten przewodnik można znaleźć tutaj](sap-hana-backup-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="sap-hana-file-level-backup-on-azure-vms"></a>SAP HANA poziomu kopia zapasowa plików na maszynach wirtualnych platformy Azure
-Tytuł: Oprogramowanie SAP HANA backup na podstawie migawek magazynu
-
-Podsumowanie: Ten przewodnik zawiera informacje o przy użyciu opartych na migawkach kopii zapasowych na maszynach wirtualnych platformy Azure, podczas uruchamiania oprogramowania SAP HANA na maszynach wirtualnych platformy Azure.
-
-
-
-[Ten przewodnik można znaleźć tutaj](sap-hana-backup-file-level.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-### <a name="sap-hana-snapshot-based-backups-on-azure-vms"></a>SAP HANA z migawką kopii zapasowych na maszynach wirtualnych platformy Azure
-Tytuł: Oprogramowanie SAP HANA usługi Azure Backup na poziomie plików
-
-Podsumowanie: Ten przewodnik zawiera informacje o korzystaniu z platformy SAP HANA plików kopia zapasowa na poziomie uruchamiania oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
-
-
-
-[Ten przewodnik można znaleźć tutaj](sap-hana-backup-storage-snapshots.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+ 
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Oprogramowanie SAP NetWeaver na maszynach wirtualnych Azure wdrożone
 

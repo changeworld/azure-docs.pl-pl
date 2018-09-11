@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 26715c6abb9c2c940090c84b64a30f7fb701d059
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445693"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346393"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawiają sposób automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure Active Directory (Azure AD) do usługi G Suite.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi G Suite, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - G Suite logowanie jednokrotne włączone subskrypcji
 - Google Apps subskrypcję lub Google Cloud Platform.
 
@@ -88,7 +88,7 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
     b. Wybierz **nazwy domeny** w okienku nawigacji po lewej stronie, a następnie wybierz **Dodaj**.
      
-     ![Domena](./media/google-apps-provisioning-tutorial/domain_1.png)
+     ![Domain](./media/google-apps-provisioning-tutorial/domain_1.png)
 
      ![Dodawanie domeny](./media/google-apps-provisioning-tutorial/domain_2.png)
 
@@ -100,7 +100,7 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
     
     Aby uzyskać bardziej szczegółowe instrukcje dotyczące sposobu zweryfikować nazwy domeny z usługą Azure AD, zobacz [Dodaj własną nazwę domeny do usługi Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
      
-     ![Domena](./media/google-apps-provisioning-tutorial/domain_4.png)
+     ![Domain](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Powtórz te czynności dla wszystkich domen, które mają zostać dodane do katalogu.
 
@@ -172,7 +172,7 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
 Ten proces jest uruchamiany początkowa synchronizacja jakichkolwiek użytkowników lub grup, które są przypisane do usługi G Suite w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które są wykonywane co około 40 minut w przypadku, gdy usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności. Te dzienniki opisano wszystkie akcje, które są wykonywane przez usługę aprowizacji w aplikacji.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

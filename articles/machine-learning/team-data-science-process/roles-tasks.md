@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8cec2c2b72b88a27c4a6c15b197e859b879bef43
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308528"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296707"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Zespół danych dla celów naukowych role i zadania
 
 Proces analizy danych zespołu jest opracowanym przez firmę Microsoft, który zawiera structured metodologii do wydajnego tworzenia rozwiązań analizy predykcyjnej i inteligentnych aplikacji. W tym artykule opisano role kluczy, personelu i ich skojarzonych zadań, które są obsługiwane przez usługę do nauki o danych zespołu, standaryzacji na temat tego procesu. 
 
-Ten zawiera wprowadzenie linki do samouczków, które zawierają instrukcje dotyczące sposobu konfigurowania środowiska TDSP dla grupy do nauki o danych, zespoły do nauki o danych i projektów. Zawiera on szczegółowe wskazówki, które przy użyciu programu Visual Studio Team Services (VSTS) w ramach samouczków.  Usługa VSTS zapewnia hosting kodu platformy, a narzędzie planowania agile do zarządzania zadaniami zespołu, kontroli dostępu i Zarządzaj repozytoriami. 
+Ten zawiera wprowadzenie linki do samouczków, które zawierają instrukcje dotyczące sposobu konfigurowania środowiska TDSP dla grupy do nauki o danych, zespoły do nauki o danych i projektów. Zawiera on szczegółowe wskazówki, które przy użyciu DevOps platformy Azure w ramach samouczków. Azure DevOps zapewnia hosting kodu platformy, a narzędzie planowania agile do zarządzania zadaniami zespołu, kontroli dostępu i Zarządzaj repozytoriami. 
 
 Można użyć tych informacji do zaimplementowania przetwarzania TDSP w własne narzędzie planowania agile i hosting kodu. 
 
@@ -64,7 +64,7 @@ Poniższy obraz przedstawia zadania najwyższego poziomu dla pracowników wedłu
 Ten schemat i zarys następujących, bardziej szczegółowe zadania, które są przypisane do każdej roli w przetwarzania TDSP powinien pomogą w wybraniu w odpowiednim samouczku, w oparciu o Twoje obowiązki w organizacji.
 
 > [!NOTE]
-> Poniżej przedstawiono kroki konfigurowania środowiska TDSP i wykonuj inne zadania do nauki o danych w Visual Studio Team Services (VSTS). Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą usługi VSTS, ponieważ używamy do zaimplementowania przetwarzania TDSP w firmie Microsoft. Usługi VSTS usprawnia współpracę dzięki integracji zarządzania elementów roboczych, które śledzą zadania i usługi hostingu kodu, używane do udostępniania programów narzędziowych, organizowanie wersji i zapewnienia opartej na rolach zabezpieczeń. Masz możliwość wybrania innych platform, jeśli wolisz, implementowanie zadań opisane przez przetwarzania TDSP. Jednak w zależności od platformy, niektóre funkcje, z której korzystać z usługi VSTS nie mogą być dostępne. 
+> Poniżej przedstawiono kroki konfigurowania środowiska TDSP i wykonuj inne zadania do nauki o danych w infrastrukturze DevOps platformy Azure. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ używamy do zaimplementowania przetwarzania TDSP w firmie Microsoft. Azure DevOps usprawnia współpracę dzięki integracji zarządzania elementów roboczych, które śledzą zadania i Usługa hostingu kod używany do udostępniania programów narzędziowych, organizowanie wersji i zapewnienia opartej na rolach zabezpieczeń. Masz możliwość wybrania innych platform, jeśli wolisz, implementowanie zadań opisane przez przetwarzania TDSP. Jednak w zależności od platformy, niektóre funkcje, z której korzystać z DevOps platformy Azure nie mogą być dostępne. 
 >
 >Instrukcje w tym miejscu jest również użyć [maszyny wirtualnej do nauki o danych (DSVM)](http://aka.ms/dsvm) na platformie Azure w chmurze jako pulpit analityczny za pomocą kilku narzędzi do analizy danych popularnych wstępnie skonfigurowanych i zintegrowane z różnymi oprogramowania firmy Microsoft i platformy Azure usługi. Maszyny DSVM lub dowolnym innym środowisku programowania można użyć do zaimplementowania przetwarzania TDSP. 
 
@@ -73,7 +73,7 @@ Ten schemat i zarys następujących, bardziej szczegółowe zadania, które są 
 
 Następujące zadania są wykonywane przez menedżera grupy (lub określonego administratora systemu przetwarzania TDSP) podjęcie przetwarzania TDSP:
 
-- Tworzenie **konta grupy** na kod hostingu platformy (takich jak Github, Git, VSTS i inne)
+- Tworzenie **konta grupy** na kod hostingu platformy (np. usługi Github, Git, DevOps platformy Azure lub inne)
 - Tworzenie **repozytorium szablonów projektu** na konto grupy i go z repozytorium szablonów projektu opracowany przez zespół Microsoft TDSP inicjatora. Repozytorium szablonów projektu przetwarzania TDSP od firmy Microsoft 
     - udostępnia **standaryzowane strukturę katalogów** katalogów dla danych, kodu i dokumenty, w tym 
     - zawiera zestaw **standardowych szablonów dokumentów** przeprowadzenie procesu do nauki o danych wydajne. 
@@ -86,10 +86,10 @@ Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [menedżera grupy za
 
 ## <a name="team-lead-tasks"></a>Zadania kierownik zespołu
 
-Lider zespołu (lub administratorem projektu zespołowego wyznaczonym) podjęcie przetwarzania TDSP wykonywane są następujące zadania:
+Lider zespołu (lub administratorem projektu wyznaczonym) podjęcie przetwarzania TDSP wykonywane są następujące zadania:
 
-- Jeśli usługi VSTS jest wybierany kod hostingu platforma umożliwiająca przechowywanie wersji i funkcji pracy zespołowej, Utwórz **projektu zespołowego** na serwerze usługi VSTS grupy. W przeciwnym razie można pominąć to zadanie.
-- Tworzenie **repozytorium szablonów projektu zespołowego** zgodnie z projektem zespołowym i inicjatora z repozytorium szablonów projektu grupy, o których tworzone przez menedżera grupy lub delegata menedżera. 
+- Zaznaczenie DevOps platformy Azure jako kod hostingu platforma współpracy i przechowywania wersji, należy utworzyć **projektu** w usługach infrastruktury DevOps platformy Azure w grupie. W przeciwnym razie można pominąć to zadanie.
+- Tworzenie **repozytorium szablonów projektu** w ramach projektu i inicjatora z repozytorium szablonów projektu grupy, o których tworzone przez menedżera grupy lub delegata menedżera. 
 - Tworzenie **repozytorium narzędzia zespołu**i Dodaj narzędzia specyficzne dla zespołu do repozytorium. 
 - (Opcjonalnie) Tworzenie **[usługi Azure file storage](https://azure.microsoft.com/services/storage/files/)** ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. Inni członkowie zespołu mogą zainstalować ten magazyn plików udostępnionych chmury na swoich komputerach stacjonarnych analizy.
 - (Opcjonalnie) Usługa Azure file storage, aby zainstalować **maszyny wirtualnej do nauki o danych** (DSVM) zespołu potencjalny klient i Dodaj zasoby danych na nim.
@@ -102,7 +102,7 @@ Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [lider zespołu zada
 
 Następujące zadania są wykonywane przez projekt prowadzić do przyjęcia przetwarzania TDSP:
 
-- Tworzenie **repozytorium projektu** zgodnie z projektem zespołowym i inicjatora z zespołu projektu repozytorium szablonów. 
+- Tworzenie **repozytorium projektu** w ramach projektu i umieszczenia go z repozytorium szablonów projektu. 
 - (Opcjonalnie) Tworzenie **usługi Azure file storage** ma być używany do przechowywania zasobów danych projektu. 
 - (Opcjonalnie) Usługa Azure file storage, aby zainstalować **maszyny wirtualnej do nauki o danych** (DSVM) projektu potencjalny klient i Dodaj zasoby danych projektu na nim.
 - Konfigurowanie **zabezpieczeniem** przez dodawanie członków projektu i skonfiguruj swoje uprawnienia. 
@@ -125,7 +125,7 @@ Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące wdrażania na pro
  
 Postępując zgodnie z odpowiednimi zestaw instrukcji, analityków danych, kierownika projektu i zespołów mogą tworzyć elementy robocze do śledzenia wszystkich zadań i etapów, które projekt wymaga od jego początku do końca. Ponadto za pomocą narzędzia git promuje współpracę między analitykami danych i zapewnia, że artefakty generowane podczas wykonywania projektów wersji kontrolowany i udostępnionych przez wszystkich członków projektu.
 
-Z instrukcjami dla wykonywanie projektu zostały opracowane na podstawie przy założeniu, oba elementy robocze i projekt usługi git, repozytoria są podawane w usłudze VSTS. Przy użyciu usługi VSTS dla obu pozwala połączyć elementy robocze z gałęziami usługi Git z repozytoriami projektu. W ten sposób można łatwo śledzić, co zostało zrobione dla elementu roboczego. 
+Z instrukcjami dla wykonywanie projektu zostały opracowane na podstawie przy założeniu, oba elementy robocze i projekt usługi git, które repozytoriów znajdują się w DevOps platformy Azure. Za pomocą usługi Azure DevOps dla obu pozwala połączyć elementy robocze z gałęziami usługi Git z repozytoriami projektu. W ten sposób można łatwo śledzić, co zostało zrobione dla elementu roboczego. 
 
 Poniższa ilustracja przedstawia ten przepływ pracy do wykonania projektu przy użyciu przetwarzania TDSP.
 

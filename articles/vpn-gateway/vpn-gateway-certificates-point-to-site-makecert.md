@@ -4,36 +4,20 @@ description: Utworzyć certyfikat główny z podpisem własnym, a następnie wye
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38651791"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297863"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja za pomocą narzędzia MakeCert
 
-Połączenia punkt-lokacja używają certyfikatów do uwierzytelniania. W tym artykule pokazano, jak utworzyć certyfikat główny z podpisem własnym i generowania certyfikatów klienta, za pomocą narzędzia MakeCert. Jeśli szukasz Point-to-Site czynności konfiguracyjne, takie jak przekazywanie certyfikatów głównych, wybierz jedną z tych artykułów "Konfiguracja punktu do lokacji" z następującej listy:
-
-> [!div class="op_single_selector"]
-> * [Tworzenie certyfikatów z podpisem własnym — PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Tworzenie certyfikatów z podpisem własnym — użycie narzędzia MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Skonfiguruj punkt-lokacja — Resource Manager — witryna Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Skonfiguruj punkt lokacja — Resource Manager — PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Skonfiguruj punkt-lokacja — Model Klasyczny — witryna Azure portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> 
-> 
+Połączenia punkt-lokacja używają certyfikatów do uwierzytelniania. W tym artykule pokazano, jak utworzyć certyfikat główny z podpisem własnym i generowania certyfikatów klienta, za pomocą narzędzia MakeCert. Jeśli potrzebujesz innego certyfikatu instrukcje, zobacz [certyfikatów — PowerShell](vpn-gateway-certificates-point-to-site.md) lub [certyfikaty — Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
 Gdy firma Microsoft zaleca używanie [kroki systemu Windows 10 PowerShell](vpn-gateway-certificates-point-to-site.md) do tworzenia certyfikatów, firma Microsoft zapewnia następujące instrukcje MakeCert jako opcjonalny metody. Certyfikaty, które są generowane za pomocą jednej z metod, które można zainstalować na [dowolnym systemie operacyjnym klienta obsługiwanych](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). Jednak użycie narzędzia MakeCert ma następujące ograniczenia:
 

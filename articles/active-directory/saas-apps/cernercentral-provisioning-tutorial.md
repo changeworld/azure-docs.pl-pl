@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie centralnego Cerner dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie udostępnić użytkownikom spisu w środkowej Cerner.
+title: 'Samouczek: Konfigurowanie centralnego Cerner dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługę Azure Active Directory, aby automatycznie aprowizować użytkowników do spisu, Indie środkowe Cerner.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -15,87 +15,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 694274abb9a762bc6ca6309cbd56b0eb65bb5a5e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228785"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346635"
 ---
-# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie centralnego Cerner dla użytkownika automatycznego inicjowania obsługi administracyjnej
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie centralnego Cerner dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest opisano czynności, które należy wykonać w środkowej Cerner i usługi Azure AD, aby automatycznie zapewnianie i usuwanie kont użytkowników z usługi Azure AD do spisu użytkownika, Indie środkowe Cerner. 
+Celem tego samouczka jest pokazanie czynności, które należy wykonać w regionie centralnym Cerner i usługi Azure AD do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do spisu użytkownika, Indie środkowe Cerner. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące elementy:
+Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawy usługi Azure Active Directory
-*   Dzierżawy Cerner środkowe 
+*   Dzierżawa usługi Azure Active Directory
+*   Dzierżawy Cerner środkowa 
 
 > [!NOTE]
-> Usługa Azure Active Directory integruje się z centralnego Cerner przy użyciu [SCIM](http://www.simplecloud.info/) protokołu.
+> Usługa Azure Active Directory integruje się z centralnego Cerner przy użyciu [Standard SCIM](http://www.simplecloud.info/) protokołu.
 
 ## <a name="assigning-users-to-cerner-central"></a>Przypisywanie użytkowników do centralnego Cerner
 
-Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu określenia, którzy użytkownicy powinien otrzymać dostęp do wybranej aplikacji. W kontekście użytkownika automatyczne Inicjowanie obsługi konta tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD są synchronizowane. 
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD. 
 
-Przed Skonfiguruj i włącz usługę inicjowania obsługi administracyjnej, należy podjąć decyzję dotyczącą jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do centralnego Cerner. Po decyzję, można przypisać tych użytkowników do centralnego Cerner, postępując zgodnie z instrukcjami poniżej:
+Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do centralnych Cerner. Po decyzję, możesz przypisać użytkowników do centralnego Cerner, zgodnie z instrukcjami w tym miejscu:
 
-[Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Ważne porady dotyczące przypisywania użytkowników do centralnego Cerner
+### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Ważne wskazówki dotyczące przypisywania użytkowników do centralnego Cerner
 
-*   Zalecane jest pojedynczego użytkownika usługi Azure AD można przypisać do centralnego Cerner do testowania konfiguracji inicjowania obsługi administracyjnej. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zalecane jest, że jeden użytkownik usługi Azure AD można przypisać do centralnego Cerner do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-* Po zakończeniu testowania początkowej dla pojedynczego użytkownika centralnego Cerner zaleca przypisywanie całą listę użytkownicy mają dostęp do wszelkich rozwiązań Cerner (nie tylko Cerner centralnego) być przygotowana do Cerner przez użytkownika spisu.  Inne rozwiązania Cerner korzystać z tej listy użytkowników w spisu użytkownika.
+* Po zakończeniu początkowej fazie testowania dla pojedynczego użytkownika centralnego Cerner zaleca się przypisywania całą listę użytkowników, którzy mają dostęp do wszelkich rozwiązań Cerner (nie tylko Cerner centralny) być przygotowana do spisu użytkownika Cerner firmy.  Inne rozwiązania Cerner korzystać z tej listy użytkowników w spisu użytkownika.
 
-*   Przypisanie użytkownika do centralnego Cerner, należy wybrać **użytkownika** roli w oknie dialogowym przypisania. Użytkownicy z rolą "Domyślnego dostępu" są wykluczone z inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkowników do centralnego Cerner, musisz wybrać **użytkownika** roli w oknie dialogowym przydział. Użytkownicy z rolą "Domyślnego dostępu" są wykluczane z inicjowania obsługi administracyjnej.
 
 
-## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurowanie do centralnego Cerner Inicjowanie obsługi użytkowników
+## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurowaniem aprowizowania użytkowników w centralnych Cerner
 
-Ta sekcja przeprowadzi użytkownika przez łączenie usługi Azure AD z centralnego Cerner spisu użytkownika przy użyciu konta użytkownika SCIM Cerner przez Inicjowanie obsługi interfejsu API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączania przypisany użytkownik, na podstawie kont w środkowej Cerner Przypisywanie użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez łączenie usługi Azure AD z centralnego Cerner użytkownika spisu przy użyciu konta użytkownika Standard SCIM firmy Cerner aprowizujący interfejs API oraz konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz przypisanych użytkowników, kont, Indie środkowe Cerner zależnie od Przypisywanie użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć na języku SAML logowania jednokrotnego dla siedziby Cerner, wykonując instrukcje podane w [portalu Azure (https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, że te dwie funkcje uzupełniają. Aby uzyskać więcej informacji, zobacz [Cerner centralnego pojedynczego logowania jednokrotnego samouczek](cernercentral-tutorial.md).
+> Można też włączyć opartej na SAML logowania jednokrotnego dla siedziby Cerner, wykonując instrukcje podane w [witrynie Azure portal (https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełniają się wzajemnie. Aby uzyskać więcej informacji, zobacz [centralnego Cerner pojedynczego logowania jednokrotnego samouczek](cernercentral-tutorial.md).
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Aby skonfigurować użytkownika automatyczne Inicjowanie obsługi konta do centralnego Cerner w usłudze Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do centralnego Cerner w usłudze Azure AD:
 
 
-Aby udostępnić konta użytkowników do centralnego Cerner, należy poprosić konta systemu centralnego Cerner Cerner oraz do generowania tokenu elementu nośnego OAuth używanego przez usługi Azure AD do nawiązania połączenia przez Cerner SCIM endpoint. Zalecane jest również, że integracji można wykonać w środowisku piaskownicy Cerner przed wdrożeniem w środowisku produkcyjnym.
+Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz poprosić konta system Cerner Central Cerner oraz do generowania tokenu elementu nośnego OAuth, używanego przez usługi Azure AD do łączenia z punktem końcowym Standard SCIM Cerner firmy. Zalecane jest również, że integracja wykonywanych w środowisku piaskownicy Cerner przed wdrożeniem w środowisku produkcyjnym.
 
-1.  Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, co jest wymagane, aby uzyskać dostęp do dokumentacji, które należy wykonać instrukcje. Jeśli to konieczne, umożliwiają utworzenie kont CernerCare w każdym środowisku dotyczy poniżej adresy URL.
+1.  Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, który jest wymagany do dostęp do dokumentacji, które są niezbędne do zakończenia z instrukcjami. Jeśli to konieczne, umożliwia tworzenie kont CernerCare w każdym środowisku zastosowanie poniższych adresów URL.
 
-   * Piaskownicy:  https://sandboxcernercare.com/accounts/create
+   * Piaskownica:  https://sandboxcernercare.com/accounts/create
 
-   * Produkcyjnym:  https://cernercare.com/accounts/create  
+   * Produkcyjne:  https://cernercare.com/accounts/create  
 
-2.  Następnie należy utworzyć konta systemu dla usługi Azure AD. Poniższe instrukcje umożliwiają żądania konto systemowe dla środowiska izolowanego i produkcji.
+2.  Następnie należy utworzyć konta systemowego dla usługi Azure AD. Żądanie konta systemowego dla środowiska izolowanego i produkcji, skorzystaj z poniższych instrukcji.
 
    * Instrukcje:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Piaskownicy: https://sandboxcernercentral.com/system-accounts/
+   * Piaskownica: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkcyjnym:  https://cernercentral.com/system-accounts/
+   * Produkcyjne:  https://cernercentral.com/system-accounts/
 
-3.  Następnie można wygenerować tokenu elementu nośnego OAuth dla każdego konta użytkownika systemu. Aby to zrobić, postępuj zgodnie z poniższymi instrukcjami.
+3.  Kolejny krok to Generowanie tokenu elementu nośnego OAuth dla każdego konta system. Aby to zrobić, postępuj zgodnie z poniższymi instrukcjami.
 
    * Instrukcje:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Piaskownicy: https://sandboxcernercentral.com/system-accounts/
+   * Piaskownica: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkcyjnym:  https://cernercentral.com/system-accounts/
+   * Produkcyjne:  https://cernercentral.com/system-accounts/
 
-4. Na koniec należy uzyskać identyfikatory obszaru spisu użytkownika dla środowisk zarówno piaskownicy, jak i produkcji w Cerner, aby zakończyć konfigurację. Aby uzyskać informacje dotyczące sposobu uzyskania to, zobacz: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Ponadto konieczne jest uzyskanie obszaru spisu identyfikatory dla środowisk zarówno piaskownicy, jak i produkcyjnych w Cerner, aby zakończyć konfigurację. Aby uzyskać informacje na temat sposobu uzyskania to, zobacz: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
-5. Teraz można skonfigurować usługi Azure AD do kont użytkowników należy Cerner. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie przejdź do **usługi Azure Active Directory > aplikacje przedsiębiorstwa > wszystkie aplikacje** sekcji.
+5. Teraz można skonfigurować usługi Azure AD do aprowizacji kont użytkowników do Cerner. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
 
-6. Środkowe Cerner został już skonfigurowany dla logowania jednokrotnego, wyszukaj wystąpienia środkowej Cerner przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **centralnego Cerner** w galerii aplikacji. Wybierz Cerner centralnego w wynikach wyszukiwania i dodaj ją do listy aplikacji.
+6. Środkowe Cerner została już skonfigurowana dla logowania jednokrotnego, wyszukaj wystąpienie Cerner środkowej za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **centralnego Cerner** w galerii aplikacji. Wybierz centralnego Cerner z wyników wyszukiwania i dodać go do listy aplikacji.
 
-7.  Wybierz wystąpienie Cerner środkowej, a następnie wybierz **inicjowania obsługi administracyjnej** kartę.
+7.  Wybierz wystąpienie usługi Cerner środkowej, a następnie wybierz **aprowizacji** kartę.
 
 8.  Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
@@ -103,36 +103,36 @@ Aby udostępnić konta użytkowników do centralnego Cerner, należy poprosić k
 
 9.  Wypełnij następujące pola w obszarze **poświadczeń administratora**:
 
-   * W **adres URL dzierżawy** wprowadź adres URL w formacie poniżej, zastępując "Użytkownik-spisu-obszaru-ID" z Identyfikatorem obszaru uzyskaną w kroku #4.
+   * W **adres URL dzierżawy** wprowadź adres URL w formacie poniżej, zastępując "User-spisu-obszaru-ID" o identyfikatorze obszaru uzyskaną w kroku #4.
 
-> Piaskownicy: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Piaskownica: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Produkcyjnym: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Produkcyjne: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * W **klucz tajny tokenu** wprowadź token elementu nośnego OAuth wygenerowany w kroku #3 i kliknij przycisk **Testuj połączenie**.
+   * W **klucz tajny tokenu** polu wprowadź tokenu elementu nośnego OAuth, które są generowane w kroku #3 a kliknij **Testuj połączenie**.
 
-   * Powiadomienie o Powodzenie powinna zostać wyświetlona po stronie upperright portalu usługi.
+   * Powiadomienie o powodzeniu powinien być widoczny po stronie upperright portalu.
 
-10. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru poniżej.
+10. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
 
 11. Kliknij pozycję **Zapisz**. 
 
-12. W **mapowań atrybutów** Przejrzyj atrybuty użytkowników i grup, które mają być synchronizowane z usługi Azure AD do centralnego Cerner. Atrybuty wybrany jako **pasujące** właściwości są używane do dopasowania kont użytkowników i grup w środkowej Cerner dla operacji update. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+12. W **mapowania atrybutów** Przejrzyj atrybuty użytkowników i grup, które mają być synchronizowane z usługi Azure AD do centralnego Cerner. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników i grup w środkowej Cerner operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-13. Aby włączyć usługi Azure AD usługi dla siedziby Cerner inicjowania obsługi administracyjnej, zmień **stan inicjowania obsługi administracyjnej** do **na** w **ustawienia** sekcji
+13. Aby włączyć usługi Azure AD, usługi dla siedziby Cerner inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
 
 14. Kliknij pozycję **Zapisz**. 
 
-Spowoduje to uruchomienie synchronizacji początkowej użytkowników i/lub grupy przypisane do centralnego Cerner w sekcji Użytkownicy i grupy. Synchronizacji początkowej zajmuje więcej czasu wykonywania niż kolejne synchronizacje, występujące co około 40 minut tak długo, jak działa usługi Azure AD, inicjowania obsługi usługi. Można użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej Dzienniki aktywności, które opisują wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej w aplikacji Cerner centralnego.
+Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do centralnego Cerner w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, zawierające wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji Cerner centralnego.
 
-Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi dzienników do odczytu, zobacz [raportowania na użytkownika automatyczne Inicjowanie obsługi konta](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Środkowe Cerner: Publikowania danych tożsamości za pomocą usługi Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [Samouczek: Konfigurowanie centralnego Cerner na potrzeby rejestracji jednokrotnej z usługą Azure Active Directory](cernercentral-tutorial.md)
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Środkowa Cerner: Publikowania danych tożsamości za pomocą usługi Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
+* [Samouczek: Konfigurowanie centralnego Cerner logowanie jednokrotne z usługą Azure Active Directory](cernercentral-tutorial.md)
+* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się, jak należy przejrzeć dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

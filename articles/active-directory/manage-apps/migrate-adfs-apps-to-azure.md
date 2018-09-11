@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577500"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346767"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migracja lokalnych aplikacji usług AD FS na platformę Azure 
 
@@ -55,7 +55,7 @@ W przypadku organizacji, która już korzysta z usług AD FS, Ping lub innego do
 - Usługa Azure AD jako dostawca tożsamości dla aplikacji SaaS obsługuje dodatkowe możliwości, takie jak:
   - Certyfikaty podpisywania tokenu dla poszczególnych aplikacji.
   - [Konfigurowalne daty wygaśnięcia certyfikatów](manage-certificates-for-federated-single-sign-on.md).
-  - [Automatyczna aprowizacja](../active-directory-saas-app-provisioning.md) kont użytkowników (w kluczowych aplikacjach z witryny Azure Marketplace) w oparciu o tożsamości usługi Azure AD.
+  - [Automatyczna aprowizacja](user-provisioning.md) kont użytkowników (w kluczowych aplikacjach z witryny Azure Marketplace) w oparciu o tożsamości usługi Azure AD.
 
 **Zachowanie korzyści oferowanych przez lokalnego dostawcę tożsamości**
 - Zyskujesz korzyści ze stosowania usługi Azure AD, a jednocześnie możesz nadal używać lokalnego rozwiązania do uwierzytelniania. Dzięki temu korzyści takie jak lokalne rozwiązania do uwierzytelniania wieloskładnikowego, rejestrowanie i inspekcja są nadal dostępne. 
@@ -232,7 +232,7 @@ Ze względu na konfigurację utworzoną wcześniej w obszarze **Identity (Tożsa
 ![Wybieranie usługi Azure AD jako usługi uwierzytelniania](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Opcjonalnie: konfigurowanie aprowizowania użytkowników w usłudze Azure AD
-Jeśli chcesz, aby usługa Azure AD bezpośrednio obsługiwała aprowizowanie użytkowników dla danej aplikacji SaaS, zobacz [Automatyzowanie aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Jeśli chcesz, aby usługa Azure AD bezpośrednio obsługiwała aprowizowanie użytkowników dla danej aplikacji SaaS, zobacz [Automatyzowanie aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](user-provisioning.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

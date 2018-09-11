@@ -1,10 +1,10 @@
 ---
 title: Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher — witryna Azure portal | Dokumentacja firmy Microsoft
-description: Ta strona wyjaśnia, jak zarządzać funkcji przechwytywania pakietów usługi Network Watcher przy użyciu witryny Azure portal
+description: Dowiedz się, jak zarządzać funkcji przechwytywania pakietów usługi Network Watcher w witrynie Azure portal.
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
@@ -12,154 +12,93 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 09/10/2018
 ms.author: jdial
-ms.openlocfilehash: 18e5f8eda51f8834f6346eef3d7ad31bc556290a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 827a3c2f831c8e8fb459e494dcad58e3661e78bd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090201"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348161"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu portalu
 
-> [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
-> - [Program PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [Interfejs wiersza polecenia platformy Azure](network-watcher-packet-capture-manage-cli.md)
-> - [Interfejs API REST platformy Azure](network-watcher-packet-capture-manage-rest.md)
+Przechwytywanie pakietów obserwatora sieci umożliwia tworzenie sesji przechwytywania, aby śledzić ruch do i z maszyny wirtualnej. Filtry są dostarczane dla sesji przechwytywania, aby upewnić się, że Przechwytywanie ruchu, który ma. Przechwytywanie pakietów ułatwia diagnozowanie anomalie sieci zarówno sposób reaktywny, jak i aktywne. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji na temat wtargnięcia sieci komunikacji klient serwer debugowania i wiele więcej. Możliwość zdalnie wyzwolić pakietów przechwytuje, minimalizuje nakład uruchomienia przechwytywania pakietów ręcznie na odpowiednią maszynę wirtualną, która zapisuje cenny czas.
 
-Przechwytywanie pakietów obserwatora sieci umożliwia tworzenie sesji przechwytywania, aby śledzić ruch do i z maszyny wirtualnej. Filtry są dostarczane dla sesji przechwytywania, aby upewnić się, że Przechwytywanie ruchu, który ma. Przechwytywanie pakietów ułatwia diagnozowanie anomalie sieci w sposób reaktywny i aktywnie. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji na temat włamań sieci, debugowanie komunikacja klient serwer i wiele więcej. Dzięki możliwości zdalnie wyzwalać Przechwytywanie pakietów, ta funkcja ułatwia obciążeń działających przechwytywania pakietów, ręcznie i tylko na odpowiednią maszynę, co pozwoli zaoszczędzić cenny czas.
-
-Ten artykuł przeprowadzi Cię przez zadania zarządzania różnych, które są aktualnie dostępne do przechwytywania pakietów.
-
-- [**Rozpocząć przechwytywania pakietu**](#start-a-packet-capture)
-- [**Zatrzymać przechwytywania pakietu**](#stop-a-packet-capture)
-- [**Usuwanie przechwycenia pakietu**](#delete-a-packet-capture)
-- [**Pobierz przechwytywania pakietów**](#download-a-packet-capture)
+W tym artykule dowiesz się uruchomić, zatrzymać, pobieranie i usuwanie przechwycenia pakietu. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz następujące zasoby:
+Przechwytywanie pakietów wymaga następujące połączenia:
+* Łączność wychodząca z kontem magazynu za pośrednictwem portu 443.
+* Łączność ruchu przychodzącego i wychodzącego 169.254.169.254
+* Łączność ruchu przychodzącego i wychodzącego z adresu 168.63.129.16
 
-- Wystąpienie usługi Network Watcher w regionie, w której chcesz utworzyć przechwytywania pakietów
-- Maszyna wirtualna o włączeniu rozszerzenia przechwytywania pakietów.
-
-> [!IMPORTANT]
-> Przechwytywanie pakietów wymaga rozszerzenia maszyny wirtualnej `AzureNetworkWatcherExtension`. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md).
-
-### <a name="packet-capture-agent-extension-through-the-portal"></a>Rozszerzenie agenta przechwytywania pakietów przy użyciu portalu
-
-Aby zainstalować agenta maszyny Wirtualnej przechwytywania pakietów, za pośrednictwem portalu, przejdź do maszyny wirtualnej, kliknij przycisk **rozszerzenia** > **Dodaj** i wyszukaj **sieci obserwatorów agenta dla Windows**
-
-![Widok agenta][agent]
-
-## <a name="packet-capture-overview"></a>Omówienie przechwytywania pakietów
-
-Przejdź do [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **sieć** > **usługi Network Watcher** > **przechwytywania pakietów**
-
-Na stronie Przegląd pokazuje, że przechwytuje listę wszystkich pakietów, które istnieją niezależnie od tego stanu.
-
-> [!NOTE]
-> Przechwytywanie pakietów wymaga następujących łączność.
-> * Łączność wychodząca z kontem magazynu za pośrednictwem portu 443.
-> * Łączność ruchu przychodzącego i wychodzącego 169.254.169.254
-> * Łączność ruchu przychodzącego i wychodzącego z adresu 168.63.129.16
-
-![ekran Przegląd przechwytywania pakietów][1]
+Jeśli sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym lub podsieci, który znajduje się interfejs sieciowy w, upewnij się, że reguły istnieje, dzięki czemu poprzednich portów. 
 
 ## <a name="start-a-packet-capture"></a>Rozpocząć przechwytywania pakietu
 
-Kliknij przycisk **Dodaj** utworzyć przechwytywania pakietów.
+1. W przeglądarce przejdź do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**, a następnie wybierz pozycję **usługi Network Watcher** w **sekcji sieci**.
+2. Wybierz **przechwytywania pakietów** w obszarze **narzędzia diagnostyczne sieci**. Wyświetlane są wszystkie istniejące przechwytywania pakietów niezależnie od ich stanu.
+3. Wybierz **Dodaj** utworzyć przechwytywania pakietów. Można wybrać wartości następujących właściwości:
+   - **Subskrypcja**: subskrypcją, w której chcesz utworzyć przechwytywania pakietów dla maszyny wirtualnej.
+   - **Grupa zasobów**: Grupa zasobów maszyny wirtualnej.
+   - **Docelowa maszyna wirtualna**: maszynę wirtualną, która ma zostać utworzona przechwytywania pakietów dla.
+   - **Nazwa przechwycenia pakietu**: nazwę przechwytywania pakietów.
+   - **Konto magazynu lub pliku**: Wybierz **konta magazynu**, **pliku**, lub obu. Jeśli wybierzesz **pliku**, przechwytywania są zapisywane do ścieżki na maszynie wirtualnej.
+   - **Ścieżka do pliku lokalnego**: ścieżkę lokalną na maszynie wirtualnej, w którym zostanie zapisany przechwytywania pakietów (prawidłowe tylko wtedy, gdy *pliku* jest zaznaczona). Ścieżka musi być prawidłową ścieżką. Jeśli używasz maszyny wirtualnej systemu Linux ścieżka musi zaczynać się */var/przechwytuje*.
+   - **Konta magazynu**: Wybierz istniejące konto magazynu, w przypadku wybrania *konta magazynu*. Ta opcja jest dostępna tylko jeśli wybrano **magazynu**.
+   
+     > [!NOTE]
+     > Konta usługi Premium storage obecnie nie są obsługiwane dla przechowywania pakietów przechwytuje.
 
-Dostępne są następujące właściwości, które mogą być definiowane na przechwycenie pakietu:
+   - **Maksymalna liczba bajtów na pakiet**: liczba bajtów z każdego pakietu, które są przechwytywane. Jeśli pole pozostanie puste, wszystkie wartości bajtowe są przechwytywane.
+   - **Maksymalna liczba bajtów na sesję**: Całkowita liczba bajtów, które są przechwytywane. Po zatrzymaniu przechwytywania pakietów jest osiągnięta wartość.
+   - **Limit czasu (w sekundach)**: limit czasu, zanim przechwytywania pakietów została zatrzymana. Wartość domyślna to 18,000 sekund.
+   - Filtrowanie (opcjonalne). Wybierz **+ Dodaj filtr**
+     - **Protokół**: protokołu, aby filtrować pod kątem przechwytywania pakietów. Dostępne wartości to TCP, UDP i dowolny.
+     - **Lokalny adres IP**: filtry przechwytywania pakietów dla pakietów, których lokalny adres IP odpowiada tej wartości.
+     - **Port lokalny**: filtry przechwytywania pakietów dla pakietów, jeśli port lokalny odpowiada tej wartości.
+     - **Zdalny adres IP**: filtry przechwytywania pakietów dla pakietów, gdzie adres IP zdalnego zgodna z tą wartością.
+     - **Port zdalny**: filtry przechwytywania pakietów dla pakietów, gdy port zdalny zgodna z tą wartością.
+    
+    > [!NOTE]
+    > Wartości adresów port i adres IP może być pojedynczą wartość, zakres wartości lub zakresu, takie jak 80 – 1024 dla portu. Można zdefiniować dowolną liczbę filtrów według potrzeb.
 
-**Ustawienia główne**
+4. Kliknij przycisk **OK**.
 
-- **Subskrypcja** — ta wartość jest subskrypcję, która jest używana, wystąpienie usługi network watcher jest niezbędna w ramach każdej subskrypcji.
-- **Grupa zasobów** — grupa zasobów maszyny wirtualnej, która jest celem.
-- **Docelowa maszyna wirtualna** -maszyny wirtualnej, która jest uruchomiona przechwycenie pakietu
-- **Nazwa przechwycenia pakietu** — ta wartość jest nazwa przechwycenia pakietu.
-
-**Przechwyć konfigurację**
-
-- **Ścieżka do pliku lokalnego** -ścieżkę lokalną na maszynie wirtualnej, w którym jest zapisany przechwytywania pakietów (prawidłowe tylko wtedy, gdy **[plik]** jest zaznaczona). Należy określić prawidłową ścieżkę. Jeśli używasz maszyny wirtualnej systemu Linux ścieżka musi zaczynać się / var / przechwytuje.
-- **Konto magazynu** — Określa, jeśli przechwycenie pakietu zostanie zapisana na koncie magazynu.
-- **Plik** -Określa, w przypadku przechwytywania pakietów jest zapisywany lokalnie na maszynie wirtualnej.
-- **Konta magazynu** — wybrane konto magazynu do zapisywania przechwytywania pakietów w. Domyślna lokalizacja to identyfikator name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription konta https://{storage} /resourcegroups/ {Nazwa maszyny name}/providers/microsoft.compute/virtualmachines/{virtual grupy zasobów} / {YY} / {MM} / {DD} / {HH} packetcapture__{MM}_.cap {XXX} _ {SS}. (Tylko przy włączonej **magazynu** jest zaznaczone)
-- **Ścieżka do pliku lokalnego** — ścieżka lokalna na maszynie wirtualnej, aby zapisać przechwytywania pakietów. (Tylko przy włączonej **pliku** jest zaznaczona). Należy podać prawidłową ścieżkę. Dla maszyny wirtualnej systemu Linux, ścieżka musi zaczynać się */var/przechwytuje*.
-- **Maksymalna liczba bajtów na pakiet** — liczba bajtów z każdego pakietu, które są przechwytywane, wszystkie wartości bajtowe są przechwytywane, jeśli pole pozostanie puste.
-- **Maksymalna liczba bajtów na sesję** — łączna liczba bajtów, które są przechwytywane, gdy wartość zostanie osiągnięty zatrzymuje przechwytywania pakietów.
-- **Limit czasu (w sekundach)** -ustawia limit czasu na przechwycenie pakietu zatrzymać. Domyślna to 18000 sekund.
-
-> [!NOTE]
-> Konta usługi Premium storage obecnie nie są obsługiwane dla przechowywania pakietów przechwytuje.
-
-**Filtrowanie (opcjonalne)**
-
-- **Protokół** -protokołu, aby filtrować pod kątem przechwytywania pakietów. Dostępne wartości to TCP, UDP i dowolny.
-- **Lokalny adres IP** -tę wartość filtry Przechwytywanie pakietów do pakietów, jeśli lokalny adres IP odpowiada tej wartości filtru.
-- **Port lokalny** -tę wartość filtry Przechwytywanie pakietów do pakietów, gdzie port lokalny zgodna z tą wartością filtru.
-- **Zdalny adres IP** -tę wartość filtry Przechwytywanie pakietów do pakietów, jeśli zdalny adres IP odpowiada tej wartości filtru.
-- **Port zdalny** -tę wartość filtry Przechwytywanie pakietów do pakietów, gdy port zdalny zgodna z tą wartością filtru.
+Po upływie limitu czasu, ustaw na przechwycenie pakietu przechwycenie pakietu zostanie zatrzymana, a następnie mogą być przeglądane. Można też ręcznie zatrzymać sesji przechwytywania pakietów.
 
 > [!NOTE]
-> Port i adres IP adres wartości mogą być pojedynczej wartości, zakres wartości lub zestaw. (to znaczy port 80 – 1024, aby uzyskać) Można zdefiniować dowolną liczbę filtrów, jak chcesz.
-
-Po wypełnieniu wartości kliknij przycisk **OK** utworzyć przechwytywania pakietów.
-
-![Utwórz przechwytywania pakietów][2]
-
-Po upływie limitu czasu, ustaw na przechwycenie pakietu przechwycenie pakietu zostanie zatrzymane, a mogą być przeglądane. Można też ręcznie zatrzymać sesji przechwytywania pakietów.
+> Portal automatycznie:
+>  * Tworzy usługi network watcher w tym samym regionie, co region, który maszynę wirtualną, którą wybrano istnieje, jeśli region nie ma jeszcze z usługi network watcher.
+>  * Dodaje *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) lub [Windows](../virtual-machines/windows/extensions-nwa.md) rozszerzenie maszyny wirtualnej do maszyny wirtualnej, jeśli jeszcze nie jest zainstalowany.
 
 ## <a name="delete-a-packet-capture"></a>Usuwanie przechwycenia pakietu
 
-W widoku przechwytywania pakietów, kliknij przycisk **menu kontekstowe** (...) lub kliknij prawym przyciskiem myszy i kliknij przycisk **Usuń** można zatrzymać przechwytywania pakietu
-
-![Usuwanie przechwycenia pakietu][3]
+1. W widoku przechwytywania pakietów, zaznacz **...**  po prawej stronie pakiet przechwytywania, lub kliknij prawym przyciskiem myszy istniejącego przechwycenia pakietu i wybierz **Usuń**.
+2. Zostanie wyświetlony monit o potwierdzenie, czy chcesz usunąć przechwycenie pakietu. Wybierz **tak**.
 
 > [!NOTE]
-> Usuwanie przechwycenia pakietu nie powoduje usunięcia plików na koncie magazynu.
-
-Zostanie wyświetlona prośba o potwierdzenie, aby usunąć przechwycenia pakietu, kliknij przycisk **tak**
-
-![Potwierdzenie][4]
+> Usuwanie przechwycenia pakietu nie powoduje usunięcia pliku przechwytywania na koncie magazynu lub na maszynie wirtualnej.
 
 ## <a name="stop-a-packet-capture"></a>Zatrzymać przechwytywania pakietu
 
-W widoku przechwytywania pakietów, kliknij przycisk **menu kontekstowe** (...) lub kliknij prawym przyciskiem myszy i kliknij przycisk **zatrzymać** można zatrzymać przechwytywania pakietu
+W widoku przechwytywania pakietów, zaznacz **...**  po prawej stronie pakiet przechwytywania, lub kliknij prawym przyciskiem myszy istniejącego przechwycenia pakietu i wybierz **zatrzymać**.
 
 ## <a name="download-a-packet-capture"></a>Pobierz przechwytywania pakietów
 
-Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia sesji. Wygodne narzędzie do nich dostęp pliki przechwytywania zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  http://storageexplorer.com/
+Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia przechwytywania pakietów. Wygodne narzędzie dostępu do przechwytywania plików na koncie magazynu jest Microsoft Azure Storage Explorer, które można [Pobierz](http://storageexplorer.com/).
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
+
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
+W przypadku wybrania **pliku** podczas tworzenia przechwytywania możesz wyświetlić lub pobrać go ze ścieżki skonfigurowane na maszynie wirtualnej.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów maszyny wirtualnej, wyświetlając [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md)
-
-Dowiedz się, czy niektóre jest dozwolony ruch do lub z maszyny Wirtualnej, odwiedzając [weryfikowanie przepływu protokołu IP z Sprawdź](diagnose-vm-network-traffic-filtering-problem.md)
-
-<!-- Image references -->
-[1]: ./media/network-watcher-packet-capture-manage-portal/figure1.png
-[2]: ./media/network-watcher-packet-capture-manage-portal/figure2.png
-[3]: ./media/network-watcher-packet-capture-manage-portal/figure3.png
-[4]: ./media/network-watcher-packet-capture-manage-portal/figure4.png
-[agent]: ./media/network-watcher-packet-capture-manage-portal/agent.png
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Aby dowiedzieć się, jak zautomatyzować przechwytywaniem pakietów przy użyciu alertów maszyny wirtualnej, zobacz [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md).
+- Aby określić, czy określony ruch jest dozwolone w lub poza nią maszynę wirtualną, zobacz [diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci](diagnose-vm-network-traffic-filtering-problem.md).

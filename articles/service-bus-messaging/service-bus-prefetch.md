@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: spelluru
-ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6dd30fc8da919995849ba818f608604a57a0b37
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702456"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346830"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Pobrana z wyprzedzeniem komunikatów usługi Azure Service Bus
 
@@ -44,7 +44,7 @@ Za pomocą [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receive
 
 W [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) tryb odbierania, komunikaty pobrane w buforze pobierania z wyprzedzeniem drogą kupna w buforze w stanie zablokowanym, a także mieć zegar limitu czasu odliczania blokady. Jeśli w buforze pobierania z wyprzedzeniem jest duża, a przetwarzanie trwa tak długo ten komunikat, że wygaśnięciem blokad podczas znajdujących się w buforze pobierania z wyprzedzeniem, lub nawet wtedy, gdy aplikacja jest przetwarzania komunikatu, może to być niektóre zdarzenia mylące dla aplikacji do obsługi.
 
-Aplikacja może uzyskać komunikat z blokadą wygasły lub imminently wygasające. Jeśli tak, aplikacja może przetworzyć komunikatu, ale następnie znajdź, że nie można wykonać ją z powodu wygaśnięcia blokady. Aplikacja może sprawdzać, czy [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) właściwości (która podlega zegara od broker i zegar komputera lokalnego). Po wygaśnięciu blokady komunikat aplikacji należy zignorować ten komunikat; Brak wywołania interfejsu API na lub z komunikatem należy uwzględnić. Jeśli komunikat jest ważny, ale czas wygaśnięcia jest bliska, blokady może być odnawiane i rozszerzone przez inny domyślny okres blokady przez wywołanie metody [wiadomości. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Aplikacja może uzyskać komunikat z blokadą wygasły lub imminently wygasające. Jeśli tak, aplikacja może przetworzyć komunikatu, ale następnie znajdź, że nie można wykonać ją z powodu wygaśnięcia blokady. Aplikacja może sprawdzać, czy [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) właściwości (która podlega zegara od broker i zegar komputera lokalnego). Po wygaśnięciu blokady komunikat aplikacji należy zignorować ten komunikat; Brak wywołania interfejsu API na lub z komunikatem należy uwzględnić. Jeśli komunikat jest ważny, ale czas wygaśnięcia jest bliska, blokady może być odnawiane i rozszerzone przez inny domyślny okres blokady przez wywołanie metody [wiadomości. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
 Jeśli blokada dyskretnie wygaśnie w buforze pobierania z wyprzedzeniem, komunikat jest traktowany jako porzucone i jest ponownie dostępne do pobrania z kolejki. Który może spowodować, że można pobrać w buforze pobierania z wyprzedzeniem; umieszczone na końcu. Jeśli w buforze pobierania z wyprzedzeniem nie zwykle odbywać się w czasie wygaśnięcia komunikatu, powoduje, że komunikaty, aby być wielokrotnie pobieranych z wyprzedzeniem, ale nigdy nie jest gwarantowane skutecznie się użytecznym stanie (identyfikatorom zablokowane) i po pewnym czasie zostaną przeniesione do kolejki utraconych wiadomości na raz Maksymalna liczba prób dostarczenia zostanie przekroczony.
 

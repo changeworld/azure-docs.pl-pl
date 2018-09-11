@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e0a2e26fb3dd0afeb4d1f3d030cb42bdc181e63c
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094964"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297761"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -163,7 +163,7 @@ Podczas operacji jest nadal uruchomione, nadal jest wyświetlany kod stanu 202. 
 
 ## <a name="services-that-can-be-moved"></a>Usługi, które mogą zostać przeniesione
 
-Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji są:
+Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mogą zostać przeniesione do nowej grupy zasobów i subskrypcji. Aby uzyskać więcej szczegółów, zobacz [przenoszenie obsługi operacji dla zasobów](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -173,6 +173,7 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Automatyzacja
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure DevOps — organizacjom przeprowadzającym platformy Azure z rozszerzeniem firmy Microsoft kupuje musi [anulować opłacenia zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.
 * Azure Maps
 * Azure Relay
 * Usługa Azure Stack — rejestracji
@@ -227,12 +228,11 @@ Usługi, które umożliwiają przejście do nowej grupy zasobów i subskrypcji s
 * Maszyny wirtualne (klasyczne) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Zestawy skalowania maszyn wirtualnych — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Sieci wirtualne — Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations)
-* Visual Studio Team Services — kont usługi VSTS z rozszerzeniem firmy Microsoft kupuje musi [anulować opłacenia zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Usługi, których nie można przenieść
 
-Usługi, które aktualnie nie umożliwiają przenoszenia zasobu są:
+Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których nie można przenieść do nowej grupy zasobów i subskrypcji. Aby uzyskać więcej szczegółów, zobacz [przenoszenie obsługi operacji dla zasobów](move-support-resources.md).
 
 * Usługi domenowe AD
 * Usługa kondycji AD hybrydowych

@@ -1,6 +1,6 @@
 ---
-title: Lista dozwolonych adresów ruch wychodzący ruch z klastra usługi Kubernetes Azure (AKS)
-description: Lista dozwolonych adresów ruch wychodzący ruch z klastra usługi Kubernetes Azure (AKS)
+title: Lista dozwolonych adresów ruchu wychodzącego ze klastra Azure Kubernetes Service (AKS)
+description: Lista dozwolonych adresów ruchu wychodzącego ze klaster Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -8,28 +8,28 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: iainfou
-ms.openlocfilehash: 2394b61fb84a2f22af036f35819b87074a1dbd2d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e2793a72fcbc20b79bdd564e331426fedf1ae34b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100149"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347804"
 ---
-# <a name="azure-kubernetes-service-aks-egress"></a>Azure wyjście usługi Kubernetes (AKS)
+# <a name="azure-kubernetes-service-aks-egress"></a>Ruch wychodzący w usłudze Azure Kubernetes Service (AKS)
 
-Domyślnie jest losowo przypisany adres wyjście z klastra usługi Kubernetes Azure (AKS). Ta konfiguracja nie jest idealne rozwiązanie w przypadku konieczności określenie adresu IP do uzyskiwania dostępu do usług zewnętrznych. Ten dokument zawiera szczegóły dotyczące sposobu tworzenia i zarządzania adresem IP statycznie przypisane wyjście AKS klastra.
+Domyślnie są losowo przydzielani adres ruchu wychodzącego z klastra usługi Azure Kubernetes Service (AKS). Ta konfiguracja nie jest idealnym rozwiązaniem, jeśli zachodzi potrzeba zidentyfikować adres IP do uzyskiwania dostępu do usług zewnętrznych. W tym dokumencie opisano, jak tworzyć i obsługiwać ruch wychodzący statycznie przypisanego adresu IP, w klastrze AKS.
 
-## <a name="egress-overview"></a>Transfer danych wychodzących — omówienie
+## <a name="egress-overview"></a>Wyjście — omówienie
 
-Ruch wychodzący z klastra AKS jest zgodna z konwencjami modułu równoważenia obciążenia Azure, które są udokumentowane [tutaj][outbound-connections]. Przed pierwszym usługi Kubernetes typu `LoadBalancer` utworzeniu agenta węzłów nie są częścią żadnej puli usługi równoważenia obciążenia Azure. W tej konfiguracji węzłów nie na poziomie wystąpienia publicznego adresu IP. Azure tłumaczy przepływu wychodzącego do publicznego źródłowy adres IP, który nie jest można skonfigurować lub jest deterministyczna.
+Ruch wychodzący z klastra usługi AKS jest zgodna z konwencjami modułu równoważenia obciążenia platformy Azure, które są udokumentowane [tutaj][outbound-connections]. Przed pierwszej usługi Kubernetes typu `LoadBalancer` utworzeniu agenta węzły nie są częścią żadnej puli usługi Azure Load Balancer. W tej konfiguracji węzłów nie na poziomie wystąpienia, publiczny adres IP. Azure tłumaczy przepływu wychodzącego do publicznych źródłowy adres IP, który nie jest konfigurowalne lub deterministyczna.
 
-Raz usługi Kubernetes typu `LoadBalancer` utworzeniu agenta węzły są dodawane do puli usługi równoważenia obciążenia Azure. Dla przepływu ruchu wychodzącego Azure tłumaczy je na publiczny adres IP skonfigurowany w usłudze równoważenia obciążenia.
+Gdy usługi Kubernetes typu `LoadBalancer` utworzeniu agenta dodawania węzłów w puli usługi Azure Load Balancer. Dla przepływu wychodzącego Azure tłumaczy to publiczny adres IP skonfigurowany w usłudze równoważenia obciążenia.
 
 ## <a name="create-a-static-public-ip"></a>Tworzenie statycznego publicznego adresu IP
 
-Aby uniemożliwić losowe adresy IP, należy utworzyć statyczny adres IP i upewnij się, że moduł równoważenia obciążenia używa tego adresu. Adres IP musi zostać utworzona w AKS **węzła** grupy zasobów.
+Aby uniemożliwić losowych adresów IP, Utwórz statyczny adres IP i upewnij się, że moduł równoważenia obciążenia używa tego adresu. Adres IP musi zostać utworzona w usłudze AKS **węzła** grupy zasobów.
 
-Pobierz nazwę grupy zasobów z [Pokaż zasobów az] [ az-resource-show] polecenia. Nazwa grupy zasobów i nazwa klastra do danego środowiska aktualizacji.
+Pobierz nazwę grupy zasobów przy użyciu [az resource show] [ az-resource-show] polecenia. Zaktualizuj nazwę grupy zasobów i nazwę klastra pod kątem danego środowiska.
 
 ```
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -37,7 +37,7 @@ $ az resource show --resource-group myResourceGroup --name myAKSCluster --resour
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Następnie użyj [utworzyć az sieci publicznej ip] [ public-ip-create] polecenie, aby utworzyć statycznego publicznego adresu IP. Zaktualizuj nazwę grupy zasobów, aby dopasować gatherred nazwy w ostatnim kroku.
+Następnie użyj [tworzenie sieci az public-ip] [ public-ip-create] polecenie, aby utworzyć statyczny publiczny adres IP. Zaktualizuj nazwę grupy zasobów, aby dopasować gatherred nazwy w ostatnim kroku.
 
 ```console
 $ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o table
@@ -47,11 +47,11 @@ Result
 23.101.128.81
 ```
 
-## <a name="create-a-service-with-the-static-ip"></a>Tworzenie usługi za pomocą statycznego adresu IP
+## <a name="create-a-service-with-the-static-ip"></a>Tworzenie usługi przy użyciu statycznego adresu IP
 
-Teraz, gdy masz adresu IP, Utwórz usługę Kubernetes z typem `LoadBalancer` i przypisać adres IP do usługi.
+Teraz, gdy adres IP, tworzenie usługi Kubernetes z typem `LoadBalancer` i przypisać adres IP do usługi.
 
-Utwórz plik o nazwie `egress-service.yaml` i skopiuj następujące yaml programu. Zaktualizuj adres IP do danego środowiska.
+Utwórz plik o nazwie `egress-service.yaml` i skopiuj do poniższego kodu YAML. Zaktualizuj adres IP, pod kątem danego środowiska.
 
 ```yaml
 apiVersion: v1
@@ -73,25 +73,25 @@ $ kubectl apply -f egress-service.yaml
 service "aks-egress" created
 ```
 
-Tworzenie tej usługi umożliwia skonfigurowanie nowego adresu IP frontonu modułu równoważenia obciążenia Azure. Jeśli nie masz żadnych innych adresów IP skonfigurowany, a **wszystkie** ruch wychodzący teraz użyć tego adresu. W przypadku wielu adresów są skonfigurowane w usłudze równoważenia obciążenia Azure, wyjście korzysta pierwszy adres IP w tej usługi równoważenia obciążenia.
+Tworzenie tej usługi Konfiguruje nowy adres IP frontonu modułu równoważenia obciążenia platformy Azure. Jeśli nie masz żadnych innych adresów IP skonfigurowane, następnie **wszystkich** ruch wychodzący teraz należy używać tego adresu. Gdy na usługi Azure Load Balancer skonfigurowano wiele adresów, ruch wychodzący używa pierwszy adres IP tego modułu równoważenia obciążenia.
 
-## <a name="verify-egress-address"></a>Sprawdź poprawność adresu wyjście
+## <a name="verify-egress-address"></a>Zweryfikuj adres ruchu wychodzącego
 
 Aby sprawdzić, czy publiczny adres IP jest używany, użyj usługi takie jak `checkip.dyndns.org`.
 
-Uruchom i Dołącz do pod:
+Uruchom i dołączyć do zasobnika:
 
 ```console
 $ kubectl run -it --rm aks-ip --image=debian
 ```
 
-W razie potrzeby zainstaluj narzędzie curl w kontenerze:
+Jeśli to konieczne, zainstaluj narzędzie curl w kontenerze:
 
 ```console
 $ apt-get update && apt-get install curl -y
 ```
 
-Curl `checkip.dyndns.org`, która zwraca wyjście adres IP:
+Curl `checkip.dyndns.org`, która zwraca adres IP ruchu wychodzącego:
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -99,19 +99,19 @@ $ curl -s checkip.dyndns.org
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 23.101.128.81</body></html>
 ```
 
-Powinny być widoczne czy adres IP odpowiada statyczny adres IP, dołączone do usługi równoważenia obciążenia Azure.
+Należy sprawdzić, czy adres IP odpowiada statyczny adres IP dołączony do równoważenia obciążenia platformy Azure.
 
-## <a name="ingress-controller"></a>Transfer danych przychodzących kontrolera
+## <a name="ingress-controller"></a>Kontroler danych przychodzących
 
-Aby uniknąć utrzymania wiele publicznych adresów IP w usłudze równoważenia obciążenia Azure, należy rozważyć użycie kontrolera wejściowych. Transfer danych przychodzących — kontrolery zapewniają obsługę korzyści, takich jak obciążenia równoważenia zakończenia SSL/TLS dla identyfikatora URI modyfikacji oprogramowania i nadrzędne szyfrowania SSL/TLS. Aby uzyskać więcej informacji na temat kontrolerów ruch przychodzący w AKS, zobacz [NGINX Konfigurowanie kontrolera ruch przychodzący w klastrze AKS] [ ingress-aks-cluster] przewodnik.
+Aby uniknąć, obsługa wielu publicznych adresów IP dla modułu równoważenia obciążenia platformy Azure, należy rozważyć użycie kontrolera danych przychodzących. Ruch przychodzący kontrolery zapewniają korzyści, takie jak Równoważenie obciążenia, kończenie żądań SSL/TLS, obsługę dla identyfikatora URI modyfikacji oprogramowania i nadrzędne szyfrowania SSL/TLS. Aby uzyskać więcej informacji na temat kontrolerów ruch przychodzący w usłudze AKS, zobacz [Konfigurowanie serwera NGINX kontrolera danych przychodzących w klastrze AKS] [ ingress-aks-cluster] przewodnik.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat oprogramowania zostało to pokazane w tym dokumencie.
+Dowiedz się więcej o oprogramowaniu, przedstawione w tym dokumencie.
 
-- [Helm interfejsu wiersza polecenia][helm-cli-install]
-- [NGINX wejściowych kontrolera][nginx-ingress]
-- [Połączenia wychodzące usługi równoważenia obciążenia Azure][outbound-connections]
+- [Interfejs wiersza polecenia narzędzia Helm][helm-cli-install]
+- [Kontroler danych przychodzących serwera NGINX][nginx-ingress]
+- [Połączenia wychodzące przez moduł równoważenia obciążenia platformy Azure][outbound-connections]
 
 <!-- LINKS - internal -->
 [az-resource-show]: /cli/azure/resource#az-resource-show
@@ -120,7 +120,7 @@ Dowiedz się więcej na temat oprogramowania zostało to pokazane w tym dokumenc
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [create-aks-cluster]: ./kubernetes-walkthrough.md
 [helm-cli-install]: ./kubernetes-helm.md#install-helm-cli
-[ingress-aks-cluster]: ./ingress.md
+[ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
 [public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 6de1832dde1764b2655d4c34643d6a026e198f64
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b0368e742c990feed626a1c4982bfedc35785b49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052228"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304292"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku ciągłej integracji na platformie Azure przy użyciu platformy Docker i Kubernetes
 Dla aplikacji sztucznej Inteligencji są często dwóch strumieni pracy analityków danych, tworzenie modeli uczenia maszynowego i deweloperów aplikacji, tworzenie aplikacji i ujawnienie go użytkownikom końcowym z. W tym artykule pokażemy, jak do zaimplementowania ciągłej integracji (CI) / ciągłe dostarczanie (CD) potoku dla aplikacji sztucznej Inteligencji. Aplikacji sztucznej Inteligencji składa się z kodu aplikacji, wbudowane z modelu uczenia (ML) wstępnie przetrenowane maszyny. W tym artykule firma Microsoft pobiera pretrained modelu z konta magazynu prywatnego obiektu blob platformy Azure, może to być także konta usług AWS S3. Będziemy używać aplikacji internetowej platformy flask prostego języka python do tego artykułu.
@@ -35,7 +35,7 @@ Możesz pobrać kod źródłowy z [GitHub](https://github.com/Azure/DevOps-For-A
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 Poniżej przedstawiono wymagania wstępne do korzystania z potoku CI/CD opisane poniżej:
-* [Konto programu Visual Studio Team Services](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)
+* [Organizacja DevOps platformy Azure](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Klaster usługi Azure Container Service (AKS) uruchamianie rozwiązania Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 * [Konto usługi Azure Container rejestru (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
@@ -53,12 +53,12 @@ Architektura potoku są podane poniżej.
 
 ## <a name="steps-of-the-cicd-pipeline"></a>Etapy potoku ciągłej integracji/ciągłego wdrażania
 1. Deweloper pracują nad IDE wybranych przez nich w kodzie aplikacji.
-2. Mogą oni zatwierdzać kod do kontroli źródła wybranych przez nich (usługa VSTS oferuje dobrego wsparcia dla różnych kontroli źródła)
+2. Mogą oni zatwierdzać kod do kontroli źródła wybranych przez nich (DevOps platformy Azure ma dobrą obsługę różnych kontroli źródła)
 3. Oddzielnie badacz danych działają na temat tworzenia modelu.
 4. Po wszystkiego, publikują modelu do repozytorium modelu, w tym przypadku użyto konta usługi blob storage. To może łatwo zastąpione Usługa Zarządzanie modelami w usłudze Azure ML Workbench za pośrednictwem swoich interfejsów API REST.
-5. Kompilacja rozpoczęła się w usłudze VSTS, w oparciu o zatwierdzenia w usłudze GitHub.
-6. Potok kompilacji usług VSTS pobiera najnowszy model z kontenera obiektów Blob i tworzy kontener.
-7. Usługa VSTS wypycha obraz do repozytorium prywatnego obrazu w usłudze Azure Container Registry
+5. Kompilacja rozpoczęła się w DevOps platformy Azure, w oparciu o zatwierdzenia w usłudze GitHub.
+6. Usługa Azure potoku metodyki DevOps kompilacji pobiera najnowszy model z kontenera obiektów Blob i tworzy kontener.
+7. Usługa Azure DevOps wypycha obraz do repozytorium prywatnego obrazu w usłudze Azure Container Registry
 8. Zgodnie z ustalonym harmonogramem (w godzinach nocnych) rozpocznie się kompilowanie potoku tworzenia wersji.
 9. Najnowsze obrazu z rejestru Azure container Registry jest pobierane i wdrożonych w klastrze Kubernetes w ACS.
 10. Żądania użytkowników dla aplikacji odbywa się przez serwer DNS.

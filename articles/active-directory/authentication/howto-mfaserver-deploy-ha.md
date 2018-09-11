@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2097ce5cf249e7ff895769142d63b6cf47eed06d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5d3833d3218a4b6252c9591bb67686ddc1c3cdf9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161011"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298579"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication wysokiej dostępności
 
@@ -29,9 +29,9 @@ Architektura usługi serwera Azure MFA obejmuje kilka składników, jak pokazano
 
 Serwer MFA jest systemu Windows Server, który ma zainstalowane oprogramowanie Azure Multi-Factor Authentication. Wystąpienie serwera MFA musi zostać aktywowany przez usługę MFA na platformie Azure do funkcji. Więcej niż jeden serwer usługi MFA może być zainstalowane w środowisku lokalnym.
 
-Pierwszy serwer usługi MFA, na którym jest zainstalowany jest główną aplikacją serwer usługi MFA podczas aktywacji przez usługę Azure MFA domyślnie. Główny serwer MFA ma zapisywalnego kopię PhoneFactor.pfdata bazy danych. Instalacje kolejnych wystąpień serwera MFA są określane jako elementy podrzędne. Elementy podrzędne usługi MFA mieć replikowane tylko do odczytu kopię bazy danych PhoneFactor.pfdata. Serwery usługi MFA replikować informacji za pomocą zdalnego wywołania procedury (RPC). Wszystkie serwery usługi MFA, musisz zbiorczo być przyłączone do domeny lub autonomiczny do replikowania informacji.
+Pierwszy serwer usługi MFA, na którym jest zainstalowany jest główną aplikacją serwer usługi MFA podczas aktywacji przez usługę Azure MFA domyślnie. Główny serwer MFA ma zapisywalnego kopię PhoneFactor.pfdata bazy danych. Instalacje kolejnych wystąpień serwera MFA są określane jako elementów podrzędnych. Uwierzytelnianie wieloskładnikowe podwładnych ma replikowane tylko do odczytu kopię bazy danych PhoneFactor.pfdata. Serwery usługi MFA replikować informacji za pomocą zdalnego wywołania procedury (RPC). Wszystkie serwery usługi MFA, musisz zbiorczo być przyłączone do domeny lub autonomiczny do replikowania informacji.
 
-Zarówno uwierzytelnianie wieloskładnikowe i podrzędna serwerów MFA komunikować się z usługą MFA, gdy jest wymagane uwierzytelnianie dwuskładnikowe. Na przykład gdy użytkownik próbuje uzyskać dostęp do aplikacji, która wymaga uwierzytelniania dwuskładnikowego, użytkownik zostanie najpierw uwierzytelnieni przez dostawcę tożsamości, takie jak Active Directory (AD).
+Zarówno węzła głównego usługi MFA, jak i serwery podrzędne MFA komunikować się z usługą MFA, gdy wymagane jest uwierzytelnianie dwuskładnikowe. Na przykład gdy użytkownik próbuje uzyskać dostęp do aplikacji, która wymaga uwierzytelniania dwuskładnikowego, użytkownik zostanie najpierw uwierzytelnieni przez dostawcę tożsamości, takie jak Active Directory (AD).
 
 Po pomyślnym uwierzytelnieniu z usługą Active Directory serwer MFA będą komunikować się z usługą MFA. Serwer MFA czeka na powiadomienie z usługi MFA, aby udzielić lub odmówić dostępu użytkownika do aplikacji.
 
@@ -42,7 +42,7 @@ Jeśli głównym serwerem MFA przejdzie do trybu offline, uwierzytelnień mogą 
 Należy wziąć pod uwagę następujące kwestie istotne dla równoważenia obciążenia serwera Azure MFA i jej składniki pokrewne.
 
 * **Przy użyciu standardu RADIUS w celu osiągnięcia wysokiej dostępności**. Jeśli używasz serwery usługi Azure MFA jako serwery usługi RADIUS, potencjalnie można skonfigurować jeden serwer usługi MFA jako podstawowy cel Uwierzytelnianie serwera RADIUS i inne serwery usługi Azure MFA jako elementy docelowe dodatkowego uwierzytelniania. Jednak nie może być przydatna tę metodę w celu uzyskania wysokiej dostępności, ponieważ musi czekać na limit czasu występuje w przypadku niepowodzenia uwierzytelniania w elemencie docelowym uwierzytelniania podstawowego, zanim mogą być uwierzytelniani względem obiektu docelowego uwierzytelniania pomocniczego. Jest bardziej wydajne w celu równoważenia ruchu usługi RADIUS między klientem RADIUS i serwery usługi RADIUS (w tym przypadku serwery usługi Azure MFA działających jako serwery usługi RADIUS), aby klienci usługi RADIUS można skonfigurować za pomocą pojedynczego adresu URL, który może wskazywać.
-* **Trzeba ręcznie podwyższyć poziom uwierzytelniania Wieloskładnikowego elementy podrzędne**. Jeśli serwer główny Azure MFA przejdzie do trybu offline, pomocnicze serwery usługi Azure MFA w dalszym ciągu przetwarzać żądań uwierzytelniania Wieloskładnikowego. Jednak dopóki głównym serwerem MFA jest dostępna, Administratorzy mogą dodawać użytkowników lub nie zmodyfikować ustawień usługi MFA i użytkownicy nie mogą wprowadzać zmiany przy użyciu portalu użytkowników. Promowanie podrzędny MFA do roli wzorca zawsze jest procesem wykonywanym ręcznie.
+* **Trzeba ręcznie podwyższyć poziom elementów podrzędnych MFA**. Jeśli serwer główny Azure MFA przejdzie do trybu offline, pomocnicze serwery usługi Azure MFA w dalszym ciągu przetwarzać żądań uwierzytelniania Wieloskładnikowego. Jednak dopóki głównym serwerem MFA jest dostępna, Administratorzy mogą dodawać użytkowników lub nie zmodyfikować ustawień usługi MFA i użytkownicy nie mogą wprowadzać zmiany przy użyciu portalu użytkowników. Podwyższanie poziomu usługi MFA w stosunku do roli wzorca jest zawsze procesem wykonywanym ręcznie.
 * **Odrębność składniki**. Serwer usługi Azure MFA obejmuje kilka składników, które mogą być instalowane na tym samym wystąpieniu systemu Windows Server lub w innych wystąpieniach. Te składniki obejmują portalu użytkowników, Mobile App Web Service i adaptera AD FS (agent). Ta odrębność sprawia, że można publikować portalu użytkowników i serwera sieci Web aplikacji mobilnej z sieci obwodowej za pomocą serwera Proxy aplikacji sieci Web. Taka konfiguracja dodaje się do ogólnego stanu zabezpieczeń z projektem, jak pokazano na poniższym diagramie. Ponadto można wdrażać portalu użytkowników usługi MFA i serwera sieci Web aplikacji mobilnej w konfiguracji równoważenia obciążenia o wysokiej dostępności.
 
    ![Serwer MFA z sieci obwodowej](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
@@ -62,7 +62,7 @@ Należy zauważyć następujące elementy dla odpowiednio ponumerowany obszar na
    ![Serwer Azure MFA — serwer aplikacji o wysokiej dostępności](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Ponieważ RPC używa portów dynamicznych, nie zaleca się otwarcie zapory do zakresu portów dynamicznych, które mogą za pomocą usługi RPC. Jeśli Zapora jest **między** MFA serwerów aplikacji, należy skonfigurować serwer usługi MFA do komunikowania się na portu statycznego dla ruchu replikacji między element podrzędny i serwerów głównych i otworzyć ten port zapory. Można wymusić port statyczny, tworząc wartość rejestru DWORD w ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` o nazwie ```Pfsvc_ncan_ip_tcp_port``` i ustawiając wartość do dostępnego portu statycznego. Połączenia są zawsze inicjowane przez element podrzędny serwerów MFA do poziomu głównego, portu statycznego jest wymagana tylko we wzorcu, ale ponieważ możesz podwyższyć poziom podrzędny jako główną w dowolnym momencie, należy ustawić portu statycznego na wszystkich serwerach usługi MFA.
+   > Ponieważ RPC używa portów dynamicznych, nie zaleca się otwarcie zapory do zakresu portów dynamicznych, które mogą za pomocą usługi RPC. Jeśli Zapora jest **między** MFA serwerów aplikacji, należy skonfigurować serwer usługi MFA do komunikowania się na portu statycznego dla ruchu replikacji między serwerami podrzędnego i głównego i otworzyć ten port zapory. Można wymusić port statyczny, tworząc wartość rejestru DWORD w ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` o nazwie ```Pfsvc_ncan_ip_tcp_port``` i ustawiając wartość do dostępnego portu statycznego. Połączenia są zawsze inicjowane przez podrzędne serwery uwierzytelniania Wieloskładnikowego do poziomu głównego, portu statycznego jest wymagana tylko we wzorcu, ale ponieważ możesz podwyższyć poziom podrzędny jako główną w dowolnym momencie, należy ustawić portu statycznego na wszystkich serwerach usługi MFA.
 
 2. Dwa serwery aplikacji mobilnej portalu/usługi MFA użytkownika (uwierzytelnianie wieloskładnikowe-UP-MAS1 i MFA-UP-MAS2) jest równoważone w **stanowa** konfiguracji (mfa.contoso.com). Pamiętaj, że trwałych sesji są wymagane w przypadku równoważenia obciążenia portalu użytkowników usługi MFA i usługą aplikacji mobilnej.
    ![Serwer usługi Azure MFA — Portal użytkowników i usługa Mobile App wysokiej dostępności](./media/howto-mfaserver-deploy-ha/mfaportal.png)

@@ -1,6 +1,6 @@
 ---
-title: Kodowanie współpracy z usługą Git — usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jak przeprowadzić programowanie zespołowe kodu dla projektów nauki danych z planowania elastycznego za pomocą narzędzia Git.
+title: Wspólne kodowanie przy użyciu narzędzia Git - usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jak przeprowadzić tworzenie współpracy kodu dla projektów do nauki o danych przy użyciu narzędzia Git przy użyciu elastycznego planowania.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: abb1c7a3f597804a84f06462b1e50bb5a63fb9b3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837365"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300073"
 ---
 # <a name="collaborative-coding-with-git"></a>Wspólne kodowanie przy użyciu narzędzia Git
 
-W tym artykule możemy wyjaśniają sposób wykonywania programowanie zespołowe kodu dla projektów analizy danych przy użyciu narzędzia Git jako platforma programistyczna udostępnionego kodu. Uwzględniono również sposób połączyć kodowania działań do pracy planowane w [elastyczne programowanie](agile-development.md) oraz sposób przeglądami kodu.
+W tym artykule opisano sposób wykonywania tworzenie współpracy kodu dla projektów do nauki o danych przy użyciu narzędzia Git jako architektura deweloperska udostępnionego kodu. Omówiono łączenie ich kodowania działań do pracy, planowane w [programowanie metodą Agile](agile-development.md) oraz sposób przeglądami kodu.
 
 
-## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Łączenie elementu roboczego z gałęzi Git 
+## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Łącze elementu roboczego z gałęzi Git 
 
-VSTS oferują wygodny sposób nawiązywania połączenia elementu pracy (wątku lub zadania) z gałęzi Git. Dzięki temu można połączyć z wątku lub zadanie bezpośrednio do kodu skojarzonego z nim. 
+Usługom DevOps platformy Azure zapewnia wygodny sposób łączenia elementu roboczego (wątku lub zadania) z gałęzi Git. Dzięki temu można połączyć z wątku lub zadania bezpośrednio w kodzie skojarzonych z nim. 
 
-Połącz się nowa gałąź z elementu roboczego, kliknij dwukrotnie element roboczy, a w wyskakującym oknie kliknij **utworzyć nową gałąź** w obszarze **+ Dodaj**.  
+Aby połączyć element roboczy do nowej gałęzi, kliknij dwukrotnie element roboczy, a następnie w oknie podręcznym kliknij **Utwórz nową gałąź** w obszarze **+ Dodaj link**.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Podaj informacje dotyczące nowej gałęzi, takie jak nazwa gałęzi, podstawowe repozytorium Git i oddziału. Repozytorium Git wybrany musi być repozytorium w ramach tego samego projektu zespołowego, należącego do elementu roboczego. Podstawowy gałęzi może być gałęzi głównej lub istniejących gałęzi.
+Podaj informacje w tej nowej gałęzi, takich jak nazwa gałęzi, podstawowy repozytorium Git i gałęzi. Repozytorium Git, wybierany musi być repozytorium, w tym samym projekcie, który należy do elementu roboczego. Podstawowy gałęzi może być głównej gałęzi lub istniejącej gałęzi.
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
-Dobrym rozwiązaniem jest tworzenie gałęzi Git dla każdego elementu roboczego wątku. Następnie dla każdego elementu roboczego zadania, utwórz gałąź oparte na gałąź wątku. Organizowanie gałęzie w ten sposób hierarchiczne, umożliwiająca relacje wątku zadanie jest przydatne, gdy masz wiele osób pracuje różnych scenariuszy tego samego projektu lub ma wiele osób pracuje różne zadania tego samego wątku. Podczas każdego członka zespołu działa w różnych gałęzi i każdy element członkowski działa w różnych kodów lub pozostałych artefaktów, podczas udostępniania gałąź, można zminimalizować konflikty. 
+Dobrym rozwiązaniem jest utworzenie gałęzi Git dla każdego elementu roboczego scenariusza. Następnie dla każdego elementu roboczego zadanie można utworzyć gałąź na podstawie historii gałęzi. Organizowanie gałęzie w ten sposób hierarchiczne, który odnosi się do relacji historii zadań jest przydatne w przypadku, gdy masz wiele osób pracuje z różnych wątków, z tym samym projekcie lub masz wiele osób pracuje z różnych zadań w tym samym wątku. Gdy każdy członek zespołu działa na inną gałąź i każdy element członkowski działa na różnych kodów lub inne artefakty, podczas udostępniania gałąź, można zminimalizować konflikty. 
 
-Poniższej ilustracji przedstawiono zalecane strategii rozgałęziania dla TDSP. Nie trzeba wiele gałęzi, jak przedstawiono poniżej, zwłaszcza jeśli masz tylko jedną lub dwie osoby działa na tym samym projekcie lub tylko jedna osoba działa we wszystkich zadaniach wątku. Ale rozdzielających gałęzi programowanie z gałęzi głównej jest zawsze dobrym rozwiązaniem. Może to zapobiec gałęzi wersji przez zadania programistyczne. Bardziej szczegółowy opis modelu gałęzi Git znajdują się w [A pomyślnie Git rozgałęzianie modelu](http://nvie.com/posts/a-successful-git-branching-model/).
+Poniższy obraz przedstawia zalecane strategii rozgałęziania dla przetwarzania TDSP. Nie trzeba wiele gałęzi, jak przedstawiono poniżej, szczególnie jeśli masz tylko jedną lub dwie osoby, które działa na tym samym projekcie lub tylko jedna osoba działa we wszystkich zadaniach wątku. Ale Programowanie gałęzi z gałęzią master jest zawsze dobrym rozwiązaniem. Może to pomóc zapobiec przez działań programistycznych w gałęzi wydania. Bardziej szczegółowy opis modelu gałęzi Git można znaleźć w [pomyślne Git rozgałęzianie modelu](http://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-Aby przejść do gałęzi, do której chcesz pracować na, uruchom następujące polecenie w polecenia powłoki (Windows lub Linux). 
+Aby przełączyć się do gałęzi, którą chcesz pracować, uruchom następujące polecenie w poleceniu powłoki (Windows lub Linux). 
 
     git checkout <branch name>
 
-Zmiana *< Nazwa gałęzi\>*  do **wzorca** przełączników z powrotem do **wzorca** gałęzi. Po przełączeniu do gałęzi roboczej, można rozpocząć pracy na dany element roboczy, tworzenie artefaktów kodu lub dokumentacji, wymaganego do ukończenia elementu. 
+Zmiana *< Nazwa gałęzi\>*  do **wzorca** przełączników z powrotem do **wzorca** gałęzi. Po przełączeniu się do gałęzi roboczej, możesz rozpocząć pracę na ten element roboczy, tworzenia artefaktów kodu lub dokumentacji, potrzebne do ukończenia elementu. 
 
-Możesz również połączyć elementu roboczego się na istniejącą. W **szczegółów** strony elementu roboczego, zamiast klikać **utworzyć nową gałąź**, możesz kliknąć przycisk **+ Dodaj**. Wybierz gałąź, który chcesz połączyć elementu roboczego do. 
+Można także połączyć element roboczy do istniejącej gałęzi. W **szczegółów** strony elementu roboczego, zamiast klikać **Utwórz nową gałąź**, możesz kliknąć pozycję **+ Dodaj link**. Wybierz gałąź, który chcesz połączyć element roboczy. 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-Można również utworzyć nową gałąź w Git Bash poleceń. Jeśli < Nazwa gałęzi podstawowej\> brakuje, < Nowa nazwa gałęzi\> opiera się na _wzorca_ gałęzi. 
+Można również utworzyć nowej gałęzi w Git Bash poleceń. Jeśli < nazwa podstawowa gałęzi\> brakuje, < Nowa nazwa gałęzi\> opiera się na _wzorca_ gałęzi. 
     
     git checkout -b <new branch name> <base branch name>
 
 
-## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Pracy w gałęzi i zatwierdzić zmiany 
+## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Praca w gałęzi i zatwierdzić zmiany 
 
-Teraz załóżmy, że niektóre zmiany do *danych\_wprowadzanie* gałęzi dla elementu roboczego, takie jak dodanie pliku R w gałęzi w komputerze lokalnym. Można zatwierdzić R pliku dodanego do gałęzi dla tego elementu roboczego, pod warunkiem jesteś w oddziale w powłoce programu Git za pomocą następujących poleceń Git:
+Teraz załóżmy, że niektóre zmiany do *danych\_pozyskiwania* gałęzi dla elementu roboczego, takie jak dodanie pliku języka R w gałęzi na komputerze lokalnym. Możesz zatwierdzić pliku R dodanego do gałęzi dla tego elementu roboczego, pod warunkiem znajdujesz się w tej gałęzi w powłoce Git przy użyciu następujących poleceń Git:
 
     git status
     git add .
@@ -70,39 +70,39 @@ Teraz załóżmy, że niektóre zmiany do *danych\_wprowadzanie* gałęzi dla el
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3. <a name='CreateapullrequestonVSTS-3'></a>Utwórz żądanie ściągnięcia na VSTS 
+## 3. <a name='CreateapullrequestonVSTS-3'></a>Utwórz żądanie ściągnięcia w usługach infrastruktury DevOps platformy Azure 
 
-Gdy wszystko będzie gotowe po kilku zatwierdzeniami i wypchnięć, do scalenia bieżącej gałęzi w swojej gałęzi podstawowej, można kierować **żądania ściągnięcia** na serwerze programu VSTS. 
+Gdy jesteś gotowy po kilku zatwierdzeń i wypchnięcia, można scalić gałąź bieżącą gałęzią podstawowy, możesz przesłać **żądania ściągnięcia** w usługach infrastruktury DevOps platformy Azure. 
 
-Przejdź do strony głównej projektu zespołowego, a następnie kliknij przycisk **kod**. Wybierz gałąź do scalenia i nazwę repozytorium Git do scalenia gałęzi do. Następnie kliknij przycisk **żądania ściągnięcia**, kliknij przycisk **nowe żądanie ściągnięcia** tworzenie Przegląd żądania ściągnięcia, przed scalonego pracy w gałęzi do jego podstawowej gałęzi.
+Przejdź na stronę główną projektu, a następnie kliknij przycisk **kodu**. Wybierz gałąź do scalenia i nazwę repozytorium Git, który chcesz scalić gałęzi do. Następnie kliknij przycisk **żądań ściągnięcia**, kliknij przycisk **nowe żądanie ściągnięcia** utworzyć recenzję żądania ściągnięcia, zanim do jego podstawowej gałęzi scaleniu pracy w gałęzi.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Wypełnij niektóre opis tego żądania ściągnięcia, dodawać recenzentów i wysłać go.
+Wypełnij niektóre opis tego żądania ściągnięcia, Dodaj recenzentów i wysłać go.
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## 4. <a name='ReviewandMerge-4'></a>Przejrzyj i dokonać scalania 
+## 4. <a name='ReviewandMerge-4'></a>Przegląd i scalanie 
 
-Po utworzeniu żądania ściągania recenzentów powiadomienie e-mail do przeglądania żądania ściągnięcia. Recenzentów, należy sprawdzić, czy zmiany pracy lub nie, a jeśli to możliwe testowanie zmian z obiektu żądającego. Na podstawie ich oceny, recenzentów można zatwierdzić lub odrzucić żądanie ściągnięcia. 
+Po utworzeniu żądania ściągnięcia recenzentów powiadomienie e-mail do przeglądania żądań ściągnięcia. Recenzenci konieczne Sprawdź, czy zmiany działają lub nie oraz przetestować zmiany, dodając osoby żądającej, jeśli jest to możliwe. Oparte na ich ocenę, recenzenci mogli zatwierdzać lub odrzucać żądania ściągnięcia. 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
 ![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
 
-Po wykonaniu czynności przeglądu gałąź roboczą scalonego jego podstawowej gałęzi, klikając **Complete** przycisku. Możesz usunąć gałąź roboczą, po jego został scalony. 
+Po wykonaniu czynności przeglądu gałęzi roboczej jest scalany jego podstawowej gałęzi, klikając **Complete** przycisku. Można usunąć gałęzi roboczej, po jego został scalony. 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-Upewnij się, w lewym górnym rogu, że żądanie jest oznaczony jako **UKOŃCZONO**. 
+Upewnij się, w lewym górnym rogu, żądanie jest oznaczony jako **UKOŃCZONO**. 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Jeśli możesz powrócić do repozytorium, w obszarze **kod**, pojawi się informacja, że użytkownik został przełączony do głównej gałęzi.
+Gdy wrócisz do repozytorium, w obszarze **kodu**, pojawi się informacja, że użytkownik został przełączony do głównej gałęzi.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Można także użyć następujących poleceń Git gałąź pracy do swojej gałęzi podstawowej i Usuń gałąź pracy po scaleniu:
+Następujące polecenia Git służy również do scalania gałęzi roboczej do jego podstawowej gałęzi i usuwania gałęzi roboczej po scaleniu:
 
     git checkout master
     git merge data_ingestion
@@ -114,7 +114,7 @@ Można także użyć następujących poleceń Git gałąź pracy do swojej gał�
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wykonywanie zadań nauki danych](execute-data-science-tasks.md) pokazano, jak wykonać kilka typowych danych nauki zadań, takich jak interakcyjną eksplorację, analizy danych raportowania i tworzenia modelu przy użyciu narzędzia.
+[Wykonywanie zadań do nauki o danych](execute-data-science-tasks.md) pokazuje, jak wykonać kilka typowych zadań do nauki o danych takich jak interaktywną eksplorację, analizę danych, raportowania i tworzenia modelu za pomocą narzędzi.
 
-Wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) artykułu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Wskazówki, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) artykułu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 

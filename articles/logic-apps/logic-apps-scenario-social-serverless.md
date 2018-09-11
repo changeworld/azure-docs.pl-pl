@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 9d6d74c4afb4d1cd62e5946b7e6f8c401e7ef2aa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6ba274bb3ff3679b4a44950db168215c54f3ade6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124648"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299750"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Utwórz pulpit nawigacyjny szczegółowych informacji z klientów przesyłania strumieniowego za pomocą usługi Azure Logic Apps i Azure Functions
 
@@ -103,7 +103,7 @@ Do wyświetlania poprzednich historie uruchamiania w programie Visual Studio lub
 
 ## <a name="create-automated-deployment-templates"></a>Tworzenie szablonów automatycznego wdrażania
 
-Po utworzeniu rozwiązania aplikacji logiki, można przechwytywać i wdrożyć aplikację jako [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment) do dowolnego regionu systemu Azure na całym świecie. Ta funkcja służy zarówno do potoku wydania i zmodyfikuj parametry do tworzenia różnych wersji aplikacji i integrowanie rozwiązania do kompilacji. Można także dodać usługi Azure Functions w szablonie wdrożenia, tak, aby można było zarządzać całe rozwiązanie ze wszystkimi zależnościami jako pojedynczy szablon. Dowiedz się, [jak utworzyć szablony wdrożenia aplikacji logiki](../logic-apps/logic-apps-create-deploy-template.md).
+Po utworzeniu rozwiązania aplikacji logiki, można przechwytywać i wdrożyć aplikację jako [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment) do dowolnego regionu systemu Azure na całym świecie. Ta możliwość zarówno umożliwia modyfikowanie parametrów do utworzenia różne wersje aplikacji i integrowanie rozwiązania Azure potoków. Można także dodać usługi Azure Functions w szablonie wdrożenia, tak, aby można było zarządzać całe rozwiązanie ze wszystkimi zależnościami jako pojedynczy szablon. Dowiedz się, [jak utworzyć szablony wdrożenia aplikacji logiki](../logic-apps/logic-apps-create-deploy-template.md).
 
 Szablon wdrożenia przykład za pomocą funkcji platformy Azure można znaleźć [repozytorium szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/09/2018
 ms.author: barbkess
-ms.openlocfilehash: 5236e9620d68d2ac4dcc544482d244c1e998be9d
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1e7b6c411fb834214c98e541343171e7ba226ca1
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365376"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325417"
 ---
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Jak wybrać typ aplikacji do użycia podczas dodawania aplikacji
 
@@ -65,7 +65,7 @@ Następujące funkcje są obsługiwane przez żaden z powyższych typów cztery 
 
 W poniższej tabeli opisano różne pojedynczego logowania jednokrotnego i aprowizacji tryby obsługiwanych przez każdą z powyższych typów aplikacji. Aby ułatwić zrozumienie aplikacji, które należy dodać do obsługi określonego celu, można użyć tej tabeli.
 
-  ![Tabela typów aplikacji](./media/application-tables/table1.png)
+  ![Tabela typów aplikacji](./media/application-config-add-app-problem-how-to-choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Jak wybrać jedno trybu logowania jednokrotnego
 

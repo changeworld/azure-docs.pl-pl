@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie podstawy OnDemand dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie zapewnianie i usuwanie kont użytkowników do podstawy OnDemand.
+title: 'Samouczek: Konfigurowanie OnDemand podstawy dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do OnDemand podstawy.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -15,156 +15,156 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 8e31400363800f557c6f7c81060c59ac3defb184
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6a6cfb2cb1fd6b70be0437c8b6fa62f50e76e53b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215158"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345417"
 ---
-# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie podstawy OnDemand dla użytkownika automatycznego inicjowania obsługi administracyjnej.
+# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie OnDemand podstawy dla automatycznej aprowizacji użytkowników
 
 
-Celem tego samouczka jest aby zademonstrować czynności wykonywanych w OnDemand podstawy i Azure Active Directory (Azure AD), aby skonfigurować usługi Azure AD automatycznie zapewnianie i usuwanie użytkowników i/lub grup w celu OnDemand podstawy.
+Celem tego samouczka jest pokazują kroki do wykonania w OnDemand podstawy i usługi Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD automatycznego aprowizowania lub cofania aprowizacji użytkowników i/lub grup w celu OnDemand podstawy.
 
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, rozszerzający usługi dostarczania użytkownika programu Azure AD. Uzyskać ważne szczegóły dotyczące tej usługi nie, jak to działa i często zadawane pytania, zobacz [zautomatyzować użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące wymagania wstępne:
 
 *   Dzierżawa usługi Azure AD
 *   Dzierżawy OnDemand podstawy
-*   Konto użytkownika w OnDemand podstawy z uprawnieniami administratora
+*   Konto użytkownika OnDemand podstawy z uprawnieniami administratora
 
 
 > [!NOTE]
-> Zależy od usługi Azure AD, inicjowania obsługi administracyjnej integracji [podstawy na żądanie usługi sieci Web](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), które są dostępne dla zespołów OnDemand podstawy.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [OnDemand Webservice podstawy](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), który jest dostępny dla zespołów OnDemand podstawy.
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie atrybutu podstawy z galerii
-Przed skonfigurowaniem OnDemand podstawy dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure AD, należy dodać OnDemand podstawy z galerii aplikacji Azure AD do listy zarządzanych aplikacji SaaS.
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie OnDemand podstawy z galerii
+Przed skonfigurowaniem OnDemand podstawy dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać OnDemand podstawy z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać OnDemand podstawy z galerii aplikacji Azure AD, wykonaj następujące czynności:**
+**Aby dodać OnDemand podstawy z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    ![Aplikacje przedsiębiorstwa sekcji][2]
+    ![Aplikacje w przedsiębiorstwie sekcji][2]
     
-3. Aby dodać podstawy na żądanie, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać OnDemand podstawy, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
 4. W polu wyszukiwania wpisz **OnDemand podstawy**.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/AppSearch.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/AppSearch.png)
 
-5. W panelu wyników wybierz **OnDemand podstawy**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać do listy aplikacji SaaS OnDemand podstawy.
+5. W panelu wyników wybierz **OnDemand podstawy**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać OnDemand podstawy do listy aplikacji SaaS.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/AppSearchResults.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/AppSearchResults.png)
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/AppCreation.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/AppCreation.png)
 
 ## <a name="assigning-users-to-cornerstone-ondemand"></a>Przypisywanie użytkowników do OnDemand podstawy
 
-Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu określenia, którzy użytkownicy powinien otrzymać dostęp do wybranej aplikacji. W kontekście użytkownika automatycznego inicjowania obsługi administracyjnej są synchronizowane tylko użytkowników i grupy, które zostały "przypisane" do aplikacji w usłudze Azure AD. 
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które "przypisano" do aplikacji w usłudze Azure AD. 
 
-Przed Konfigurowanie i włączanie automatycznej aprowizacji użytkowników, należy podjąć decyzję dotyczącą użytkowników i/lub grup w usłudze Azure AD będą potrzebować dostępu do podstawy OnDemand. Po decyzję, można przypisać użytkowników i/lub grup OnDemand podstawy postępując zgodnie z instrukcjami poniżej:
+Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do OnDemand podstawy. Po decyzję, możesz przypisać użytkownikom i/lub grup OnDemand podstawy zgodnie z instrukcjami w tym miejscu:
 
-*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](../manage-apps/assign-user-or-group-access-portal.md)
+*   [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Ważne porady dotyczące przypisywania użytkowników do OnDemand podstawy
+### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Ważne wskazówki dotyczące przypisywania użytkowników do OnDemand podstawy
 
-*   Zalecane jest pojedynczego użytkownika usługi Azure AD jest przypisana do OnDemand podstawy, aby przetestować użytkownika automatyczne Inicjowanie obsługi konfiguracji. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do OnDemand podstawy do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania podstawy na żądanie użytkownika, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przypisania. Użytkownicy z **domyślnego dostępu** roli są wykluczone z inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkowników do OnDemand podstawy, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
-## <a name="configuring-automatic-user-provisioning-to-cornerstone-ondemand"></a>Konfigurowanie użytkownika automatycznego inicjowania obsługi administracyjnej OnDemand podstawy
+## <a name="configuring-automatic-user-provisioning-to-cornerstone-ondemand"></a>Konfigurowanie automatycznej aprowizacji użytkowników do OnDemand podstawy
 
-W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczenie usługi do tworzenia, aktualizacji i wyłączyć użytkowników i/lub grup w OnDemand podstawy, w oparciu o użytkownika i/lub przypisania grupy w usłudze Azure AD.
-
-
-### <a name="to-configure-automatic-user-provisioning-for-cornerstone-ondemand-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla podstawy OnDemand w usłudze Azure AD:
+Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć użytkowników i/lub grup w OnDemand podstawy oparte na użytkownika i/lub przypisania grupy w usłudze Azure AD.
 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+### <a name="to-configure-automatic-user-provisioning-for-cornerstone-ondemand-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla OnDemand podstawy w usłudze Azure AD:
+
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
 
 2. Wybierz OnDemand podstawy z listy aplikacji SaaS.
  
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/Successcenter2.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/Successcenter2.png)
 
-3. Wybierz **inicjowania obsługi administracyjnej** kartę.
+3. Wybierz **aprowizacji** kartę.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
 4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. W obszarze **poświadczeń administratora** sekcji wejściowych **administratora**, **hasło administratora**, i **domeny** z Twojej OnDemand podstawy konto.
+5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **nazwa użytkownika administratora**, **hasło administratora**, i **domeny** z Twojej OnDemand podstawy konto.
 
-    *   W **administratora** pola, wypełnij domena azwa_użytkownika konta administratora dzierżawy OnDemand podstawy. Przykład: contoso\admin.
+    *   W **nazwa użytkownika administratora** pola, wypełnij domena\nazwa_użytkownika konta administratora w Twojej dzierżawie OnDemand podstawy. Przykład: contoso\admin.
 
-    *   W **hasło administratora** pola, wypełnij hasła odpowiadającego nazwa użytkownika.
+    *   W **hasło administratora** pola, wypełnij hasło odpowiadający nazwa użytkownika administratora.
 
-    *   W **domeny** pola, wypełnij dzierżawy OnDemand podstawy adres URL usługi sieci Web. Przykład: Usługa znajduje się w `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`domeny Contoso jest `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Aby uzyskać więcej informacji na temat sposobu pobierania adresu URL usługi sieci Web, zobacz [tutaj](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    *   W **domeny** pola, wypełnij dzierżawy OnDemand podstawy adres URL usługi sieci Web. Przykład: Usługa znajduje się w `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`dla domeny firmy Contoso jest `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Aby uzyskać więcej informacji na temat sposobu pobierania adresu URL usługi sieci Web, zobacz [tutaj](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
-6. Przy wprowadzaniu pola pokazane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD mogą łączyć się z OnDemand podstawy. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto OnDemand podstawy ma uprawnienia administratora i spróbuj ponownie.
+6. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z OnDemand podstawy. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto OnDemand podstawy ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
 
-7. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, które powinny odbierać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **wysłać wiadomość e-mail z powiadomieniem, gdy wystąpi błąd**.
+7. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
 8. Kliknij pozycję **Zapisz**.
 
-9. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do podstawy OnDemand**.
+9. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do OnDemand podstawy**.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
 
-10. Przejrzyj atrybuty użytkowników, które są synchronizowane z usługi Azure AD do podstawy OnDemand w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **pasujące** właściwości są używane do dopasowania kont użytkowników w OnDemand podstawy dla operacji update. Wybierz **zapisać** przycisk, aby zatwierdzić zmiany.
+10. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD OnDemand podstawy w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w OnDemand podstawy dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
-11. Do konfigurowania filtrów zakresu, zapoznaj się z następujących instrukcji podanych w [Scoping filtru samouczek](./../active-directory-saas-scoping-filters.md).
+11. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Aby włączyć usługi Azure AD usługi dla podstawy OnDemand inicjowania obsługi administracyjnej, zmień **stan inicjowania obsługi administracyjnej** do **na** w **ustawienia** sekcji.
+12. Aby włączyć usługi Azure AD, usługi dla OnDemand podstawy aprowizacji, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
 
-13. Zdefiniuj użytkowników i/lub grup, które chcesz aby obsługiwać OnDemand podstawy, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+13. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na OnDemand podstawy, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
 
-14. Gdy wszystko będzie gotowe, aby udostępnić, kliknij przycisk **zapisać**.
+14. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
 
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej.](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
 
 
-Ta operacja uruchamia synchronizacji początkowej wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacji początkowej zajmuje więcej czasu wykonywania niż kolejne synchronizacje, występujące co około 40 minut tak długo, jak działa usługi Azure AD, inicjowania obsługi usługi. Można użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej działania raport, który opisuje wszystkie akcje wykonywane przez usługę Azure AD, świadczenie usługi na OnDemand podstawy.
+Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na OnDemand podstawy aprowizacji.
 
-Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi dzienników do odczytu, zobacz [raportowania na użytkownika automatyczne Inicjowanie obsługi konta](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
-* Podstawy OnDemand **pozycji** atrybutu oczekuje wartość, która odpowiada ról w portalu OnDemand podstawy. Lista prawidłową **pozycji** można uzyskać wartości, przechodząc do **edytować rekord użytkownika > struktury organizacji > pozycji** w portalu OnDemand podstawy.
-    ![Podstawy OnDemand inicjowania obsługi administracyjnej Edytowanie użytkownika](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![OnDemand podstawy udostępniania pozycji](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![OnDemand podstawy udostępniania pozycji listy](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
+* OnDemand podstawy **pozycji** atrybut oczekuje, że wartość, która odnosi się do ról w portalu OnDemand podstawy. Lista prawidłowe **pozycji** będzie można uzyskać, przechodząc do wartości **edytowanie rekordu użytkownika > struktury organizacji > pozycja** w portalu OnDemand podstawy.
+    ![Inicjowanie obsługi administracyjnej OnDemand podstawy Edytowanie użytkownika](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![OnDemand podstawy aprowizacji pozycji](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![OnDemand podstawy aprowizacji pozycji listy](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
     
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się, jak należy przejrzeć dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../active-directory-saas-provisioning-reporting.md)
+* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

@@ -1,5 +1,6 @@
 ---
-title: PHP Przewodnik Szybki start dotyczący usługi Azure Cognitive Services, interfejs API analizy tekstu | Dokumentacja firmy Microsoft
+title: 'Szybki Start: Za pomocą języka PHP do wywołania interfejsu API analizy tekstu | Dokumentacja firmy Microsoft'
+titleSuffix: Azure Cognitive Services
 description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 2f654736e998652ecaf8825b308c7ff3bf84a924
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 602988747f54c3dbdfa933986d47b631b757db65
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840774"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298713"
 ---
-# <a name="quickstart-for-text-analytics-api-with-php"></a>Przewodnik Szybki start dotyczący interfejsu API za pomocą języka PHP analizy tekstu 
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Szybki Start: Za pomocą języka PHP do wywoływania usług Cognitive analizy tekstu
 <a name="HOLTop"></a>
 
 W tym artykule przedstawiono, jak do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) za pomocą języka PHP.

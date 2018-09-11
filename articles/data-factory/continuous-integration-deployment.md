@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060341"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300244"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
 
@@ -53,9 +53,9 @@ Wybierz **Załaduj plik** wybierz wyeksportowany szablon usługi Resource Manage
 ![Otwórz widok kodu, aby wyświetlić parametry połączenia](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Cykl życia ciągłej integracji
-Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, którego można używać po włączeniu integracji VSTS GIT w interfejs użytkownika usługi Data Factory:
+Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, którego można używać po włączeniu integrację z usługą Azure DevOps usługi GIT w interfejs użytkownika usługi Data Factory:
 
-1.  Konfigurowanie tworzenia fabryki danych za pomocą usługi VSTS, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
+1.  Konfigurowanie tworzenia fabryki danych dzięki usługom DevOps platformy Azure, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
 
 1.  Następnie deweloperzy mogą zmodyfikować zasoby, takie jak potoki. Ponieważ oni wprowadzić swoje zmiany, można wybrać **debugowania** aby zobaczyć, jak potok jest uruchamiany przy użyciu najnowszych zmian.
 
@@ -67,25 +67,25 @@ Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, któr
 
 1.  Wyeksportowany szablon usługi Resource Manager można wdrożyć z różnymi plikami parametrów fabryki testu i fabryki produkcji.
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi VSTS
+## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi DevOps platformy Azure
 
-Poniżej przedstawiono procedurę konfigurowania wersji usługi VSTS, więc można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
+Poniżej przedstawiono kroki, aby skonfigurować wydania usługi Azure DevOps, dzięki czemu można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
 
-![Diagram przedstawiający ciągłej integracji z usługą VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram przedstawiający ciągłej integracji z usługami DevOps platformy Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Wymagania
 
--   Subskrypcji platformy Azure, połączone z Team Foundation Server lub VSTS przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+-   Subskrypcji platformy Azure, połączone z Team Foundation Server lub usługom DevOps platformy Azure przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Data Factory przy użyciu narzędzia Git programu VSTS skonfigurowane.
+-   Fabrykę danych za pomocą usługi Git DevOps platformy Azure, skonfigurować.
 
 -   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
 
-### <a name="set-up-a-vsts-release"></a>Ustawianie wersji usługi VSTS
+### <a name="set-up-a-azure-devops-services-release"></a>Ustawianie wersji usługi Azure DevOps
 
-1.  Przejdź do strony usługi VSTS, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
+1.  Przejdź do strony usługi usługom DevOps platformy Azure, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
 
-1.  Kliknij menu u góry **kompilowania i wydawania** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
+1.  Kliknij menu u góry **potoki Azure** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -113,15 +113,15 @@ Poniżej przedstawiono procedurę konfigurowania wersji usługi VSTS, więc moż
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  Zapisz definicję wydania.
+1.  Zapisz potoku tworzenia wersji.
 
-1.  Tworzenie nowej wersji na podstawie tej definicji wydania.
+1.  Tworzenie nowej wersji, w tym potoku wydania.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Opcjonalnie — Pobierz wpisy tajne z usługi Azure Key Vault
 
-W przypadku wpisów tajnych, aby przekazać szablonu usługi Azure Resource Manager zaleca się wraz z wydaniem programu VSTS przy użyciu usługi Azure Key Vault.
+W przypadku wpisów tajnych, aby przekazać szablonu usługi Azure Resource Manager zaleca się wraz z wydaniem usługom DevOps platformy Azure przy użyciu usługi Azure Key Vault.
 
 Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
@@ -148,7 +148,7 @@ Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
     -   Plik parametrów musi znajdować się w w gałęzi publikowania.
 
-1.  Dodaj [zadania usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed przystąpieniem do wdrożenia usługi Resource Manager platformy Azure, które są opisane w poprzedniej sekcji:
+1.  Dodaj [zadania usługi Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) przed przystąpieniem do wdrożenia usługi Resource Manager platformy Azure, które są opisane w poprzedniej sekcji:
 
     -   Wybierz **zadania** kartę, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
 
@@ -156,13 +156,13 @@ Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>Udziel uprawnień do agenta usługi VSTS
-Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta usługi VSTS. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
+### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Udziel uprawnień do agenta usługom DevOps platformy Azure
+Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta usługom DevOps platformy Azure. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
 
 ### <a name="update-active-triggers"></a>Aktualizacja aktywnej wyzwalaczy
 Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta próba aktualizacji active wyzwalaczy. Aby zaktualizować active wyzwalaczy, musisz ręcznie je uruchamiać i zatrzymywać ich po wdrożeniu. W tym celu można dodać zadania programu Azure Powershell, jak pokazano w poniższym przykładzie:
 
-1.  Na karcie zadania w wersji usługi VSTS Wyszukaj **programu Azure Powershell** i dodaj go.
+1.  Na karcie zadania w tej wersji usługi Azure DevOps Wyszukaj **programu Azure Powershell** i dodaj go.
 
 1.  Wybierz **usługi Azure Resource Manager** jako połączenie typu, a następnie wybierz swoją subskrypcję.
 
@@ -180,7 +180,7 @@ Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV
 
 ## <a name="sample-deployment-template"></a>Przykładowy szablon wdrożenia
 
-Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w usłudze VSTS.
+Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w usługom DevOps platformy Azure.
 
 ```json
 {

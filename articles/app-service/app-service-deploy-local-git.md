@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060263"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303699"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -101,10 +101,10 @@ Może zostać wyświetlony automatyzacji specyficzne dla środowiska uruchomieni
 
 Przejdź do aplikacji, aby sprawdzić, czy zawartość jest wdrażana.
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>Wdrażanie z lokalnego repozytorium Git przy użyciu kompilacji usługi VSTS
+## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Wdrażanie z lokalnego repozytorium Git z kompilacjami usługom DevOps platformy Azure
 
 > [!NOTE]
-> Dla usługi App Service do tworzenia niezbędne kompilacji i wydania definicje na Twoim koncie usług VSTS, Twoje konto platformy Azure musi mieć rolę **właściciela** w subskrypcji platformy Azure.
+> Usługi App Service utworzyć niezbędne potoki usługi Azure w Twojej organizacji usługom DevOps platformy Azure, Twoje konto platformy Azure musi mieć rolę **właściciela** w subskrypcji platformy Azure.
 >
 
 Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serwer kompilacji Kudu, przejdź do aplikacji w [witryny Azure portal](https://portal.azure.com).
@@ -113,14 +113,14 @@ W lewym obszarze nawigacji strony aplikacji kliknij **Centrum wdrażania** > **l
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Kliknij przycisk **ciągłego dostarczania usługi VSTS** > **nadal**.
+Kliknij przycisk **ciągłe dostarczanie Services — Azure DevOps** > **nadal**.
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-W **Konfiguruj** strony, skonfigurować nowe konto usługi VSTS lub wybrać istniejące konto. Po zakończeniu kliknij przycisk **Kontynuuj**.
+W **Konfiguruj** strony, konfigurowania nowej organizacji usługom DevOps platformy Azure lub określ istniejącą organizację. Po zakończeniu kliknij przycisk **Kontynuuj**.
 
 > [!NOTE]
-> Jeśli chcesz użyć istniejącego konta usługi VSTS, którego nie ma na liście, musisz [łączenia konta usługi VSTS ze swoją subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Jeśli chcesz użyć istniejącej organizacji usługom DevOps platformy Azure, która nie ma na liście, musisz [łączenie organizacji usługom DevOps platformy Azure z subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 W **testu** stronie, wybierz, czy włączyć testów obciążenia, a następnie kliknij przycisk **Kontynuuj**.
 
@@ -128,7 +128,7 @@ W zależności od [warstwy cenowej](https://azure.microsoft.com/pricing/details/
 
 W **Podsumowanie** strony, sprawdź opcje i kliknij przycisk **Zakończ**.
 
-Trwa kilka minut, zanim konto usługi VSTS będzie gotowa. Gdy wszystko będzie gotowe, skopiuj adres URL repozytorium Git w Centrum wdrażania.
+Trwa kilka minut, aż gotowość organizacji usługom DevOps platformy Azure. Gdy wszystko będzie gotowe, skopiuj adres URL repozytorium Git w Centrum wdrażania.
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -138,7 +138,7 @@ W _lokalnym oknie terminala_ dodaj zdalną platformę Azure do lokalnego repozyt
 git remote add vsts <url>
 ```
 
-Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Po wyświetleniu monitu przez program Git Credential Manager, zaloguj się za pomocą użytkownika usługi Visual Studio. Aby uzyskać dodatkowe metody uwierzytelniania, zobacz [omówienie uwierzytelniania usługi VSTS](/vsts/git/auth-overview?view=vsts).
+Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Po wyświetleniu monitu przez program Git Credential Manager, zaloguj się za pomocą użytkownika usługi Visual Studio. Aby uzyskać dodatkowe metody uwierzytelniania, zobacz [usługom DevOps platformy Azure, omówienie uwierzytelniania](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master

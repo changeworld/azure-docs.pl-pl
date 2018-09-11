@@ -3,18 +3,18 @@ title: Wyświetlanie informacji na temat współrzędnych przy użyciu usługi A
 description: Sposób wyświetlania informacji na temat adresu na mapie, gdy użytkownik wybierze Współrzędna
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/07/2018
+ms.date: 09/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d1baa4adc555e65c4a25928d19f201dba6109142
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 993d1da4b2a99ec0f30a5a685835d9f6b6d35a9e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157688"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302898"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono sposób wyszukiwania wstecznego adresu, a po klikni
 
 Istnieją dwa sposoby utworzenia wyszukiwanie wsteczne adresu, on, badając [Azure zwrotny adres wyszukiwania interfejsu API usługi mapy](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) za pośrednictwem usługi modułu, a drugi jest udostępniając [XMLHttpRequest](https://xhr.spec.whatwg.org/) do interfejsu API, aby wykonać zapytanie adres. Omówimy zarówno poniżej.
 
-## <a name="use-the-service-module-to-make-a-reverse-address-search"></a>Używaj modułu service umożliwia wyszukiwanie wsteczne adresu
+## <a name="making-a-reverse-search-request-via-service-module"></a>Żądania wyszukiwania wstecznego za pomocą modułu usług
 
 ### <a name="understand-the-code"></a>Zrozumienie kodu
 
@@ -41,7 +41,7 @@ Ostatni blok kodu dodaje odbiornika zdarzeń dla kliknięcia myszą. Po kliknię
 
 Pomyślnej odpowiedzi go zbiera adresów kliknięto lokalizacji, a następnie definiuje zawartość okna podręcznego i położenie za pośrednictwem [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkcji klasy okna podręcznego.
 
-## <a name="use-xmlhttprequest-to-make-a-reverse-address-search"></a>Używaj XMLHTTPRequest umożliwia wyszukiwanie wsteczne adresu
+## <a name="making-a-reverse-search-request-via-xmlhttprequest"></a>Żądania wyszukiwania wstecznego za pośrednictwem XMLHttpRequest
 
 ### <a name="understand-the-code"></a>Zrozumienie kodu
 

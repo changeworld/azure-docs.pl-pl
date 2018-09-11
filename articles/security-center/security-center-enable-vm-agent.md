@@ -1,6 +1,6 @@
 ---
-title: Włącz agenta maszyny Wirtualnej w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć VM Agent **.
+title: Włącz agenta maszyny Wirtualnej w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: W tym dokumencie przedstawiono sposób realizacji zalecenia w usłudze Azure Security Center **Włącz agenta maszyny Wirtualnej**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 200ab53839811e20200534b7168d6b4fb368e42a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866310"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295687"
 ---
-# <a name="enable-vm-agent-in-azure-security-center"></a>Włącz agenta maszyny Wirtualnej w Centrum zabezpieczeń Azure
-Agent maszyny Wirtualnej musi być zainstalowany na maszynach wirtualnych (VM) w celu [Włącz zbieranie danych](security-center-enable-data-collection.md).  Centrum zabezpieczeń Azure umożliwia można zobaczyć, które maszyny wirtualne wymagają agenta maszyny Wirtualnej i zaleca włączenie agenta maszyny Wirtualnej na tych maszynach wirtualnych.
+# <a name="enable-vm-agent-in-azure-security-center"></a>Włącz agenta maszyny Wirtualnej w usłudze Azure Security Center
+Agent maszyny Wirtualnej musi być zainstalowany na maszynach wirtualnych (VM), w celu [Włącz zbieranie danych](security-center-enable-data-collection.md).  Usługa Azure Security Center umożliwia można sprawdzić, którą maszyny wirtualne wymagają agenta maszyny Wirtualnej i oferuje rekomendacje dotyczące włączenia agenta maszyny Wirtualnej na tych maszynach wirtualnych.
 
 Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Informacje na temat instalowania agenta maszyny wirtualnej można znaleźć w artykule [Agent maszyny wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).
 
@@ -31,13 +31,13 @@ Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualn
 >
 >
 
-## <a name="implement-the-recommendation"></a>Wykonania zalecenia
-1. W **bloku zalecenia**, wybierz pozycję **włączyć agenta maszyny Wirtualnej**.
+## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
+1. W **blok zalecenia**, wybierz opcję **Włącz agenta maszyny Wirtualnej**.
    ![Włącz agenta maszyny wirtualnej][1]
 2. Spowoduje to otwarcie bloku **VM Agent Brak lub nie odpowiada**. Ten blok zawiera listę maszyn wirtualnych, które wymagają agenta maszyny Wirtualnej. Postępuj zgodnie z instrukcjami w bloku, aby zainstalować agenta maszyny Wirtualnej.
    ![Brak agenta maszyny Wirtualnej][2]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.

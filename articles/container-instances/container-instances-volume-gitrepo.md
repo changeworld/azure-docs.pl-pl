@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86d85f9f84b8d3ae3c31ff59089ce264d5e3192e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112981"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304343"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Zainstalować woluminu gitRepo w usłudze Azure Container Instances
 
@@ -90,17 +90,17 @@ Na przykład interfejsu wiersza polecenia Azure `--gitrepo-url` parametr prywatn
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-Repozytorium Git programu VSTS należy określić w połączeniu z prawidłową osobisty token dostępu dowolną nazwę użytkownika (jak w poniższym przykładzie można użyć "vstsuser"):
+Repozytorium DevOps Git platformy Azure należy określić w połączeniu z prawidłową osobisty token dostępu dowolną nazwę użytkownika (jak w poniższym przykładzie można użyć "azuredevopsuser"):
 
 ```azurecli
---gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+--gitrepo-url https://azuredevopsuser:abcdef1234fdsa4321abcdef@azuredevopsorganizationname.visualstudio.com/_git/some-private-repository
 ```
 
-Aby uzyskać więcej informacji o osobiste tokeny dostępu GitHub i VSTS zobacz następujące tematy:
+Aby uzyskać więcej informacji o osobiste tokeny dostępu usługi GitHub i DevOps platformy Azure zobacz następujące tematy:
 
 GitHub: [Tworzenie osobistego tokenu dostępu dla wiersza polecenia][pat-github]
 
-Usługi VSTS: [tworzyć osobiste tokeny dostępu do uwierzytelniania dostępu][pat-vsts]
+Usługa Azure DevOps: [tworzyć osobiste tokeny dostępu do uwierzytelniania dostępu][pat-vsts]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

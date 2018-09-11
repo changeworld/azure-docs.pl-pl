@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055418"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348773"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Uaktualnianie aplikacji usługi Service Fabric przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Tworzenie i publikowanie aplikacji, klikając prawym przyciskiem myszy projekt a
 > 
 > 
 
-Po utworzeniu projektu w programie Visual Studio, można użyć polecenia programu PowerShell [ServiceFabricApplicationPackage kopiowania](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) można skopiować pakiet aplikacji do ImageStore. Jeśli chcesz zweryfikować pakietu aplikacji lokalnie, użyj [ServiceFabricApplicationPackage testu](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) polecenia cmdlet. Następnym krokiem jest, aby zarejestrować aplikację do środowiska uruchomieniowego usługi Service Fabric przy użyciu [ServiceFabricApplicationType rejestru](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) polecenia cmdlet. Następny krok to można uruchomić wystąpienia aplikacji przy użyciu [New ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet.  Te trzy kroki są analogiczne do korzystania z **Wdróż** element menu w programie Visual Studio.  Po ukończeniu inicjowania obsługi, należy wyczyścić pakiet aplikacji skopiowane z magazynu obrazów w celu zmniejszenia zasoby używane.  Jeśli aplikacja nie jest już wymagane, należy go wyrejestrować z tego samego powodu. Zobacz [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Aby uzyskać więcej informacji.
+Po utworzeniu projektu w programie Visual Studio, można użyć polecenia programu PowerShell [ServiceFabricApplicationPackage kopiowania](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) można skopiować pakiet aplikacji do ImageStore. Jeśli chcesz zweryfikować pakietu aplikacji lokalnie, użyj [ServiceFabricApplicationPackage testu](/powershell/module/servicefabric/test-servicefabricapplicationpackage) polecenia cmdlet. Następnym krokiem jest, aby zarejestrować aplikację do środowiska uruchomieniowego usługi Service Fabric przy użyciu [ServiceFabricApplicationType rejestru](/powershell/module/servicefabric/register-servicefabricapplicationtype) polecenia cmdlet. Następny krok to można uruchomić wystąpienia aplikacji przy użyciu [New ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet.  Te trzy kroki są analogiczne do korzystania z **Wdróż** element menu w programie Visual Studio.  Po ukończeniu inicjowania obsługi, należy wyczyścić pakiet aplikacji skopiowane z magazynu obrazów w celu zmniejszenia zasoby używane.  Jeśli aplikacja nie jest już wymagane, należy go wyrejestrować z tego samego powodu. Zobacz [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Aby uzyskać więcej informacji.
 
 Teraz, możesz użyć [narzędzia Service Fabric Explorer, aby wyświetlić klaster i aplikacja](service-fabric-visualizing-your-cluster.md). Aplikacja ma usługi sieci web, którego może być przejście w przeglądarce Internet Explorer, wpisując [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) na pasku adresu.  Niektóre obiekty visual przestawne poruszanie się na ekranie powinna być widoczna.  Ponadto można użyć [Get ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) można sprawdzić stanu aplikacji.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579524"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293732"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
 
@@ -48,7 +48,7 @@ Nazwy główne usług włączyć bezobsługowego łączność z rejestru w scena
 
   * *Czytnik*: wdrożeń kontenera z rejestru do aranżacji systemy, w tym Kubernetes, DC/OS i Docker Swarm. Możesz również ściągnąć z rejestrów kontenerów pokrewne usługi platformy takie jak [AKS](../aks/index.yml), [usługi App Service](../app-service/index.yml), [partii](../batch/index.yml), [usługi Service Fabric](/azure/service-fabric/), i inne osoby.
 
-  * *Współautor*: ciągłej integracji i ciągłego wdrażania rozwiązań, takich jak Visual Studio Team Services (VSTS) lub systemu Jenkins, który kompilowanie obrazów kontenerów i odesłać je do rejestru.
+  * *Współautor*: ciągłej integracji i ciągłego wdrażania rozwiązań, takich jak DevOps platformy Azure lub usługi Jenkins, który kompilowanie obrazów kontenerów i odesłać je do rejestru.
 
 > [!TIP]
 > Można ponownie wygenerować hasło jednostki usługi, uruchamiając [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) polecenia.

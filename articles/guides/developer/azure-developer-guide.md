@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424232"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297302"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -58,7 +58,7 @@ Można utworzyć aplikacji sieci web, zaplecza aplikacji mobilnych i aplikacji A
 
 Ponieważ wszystkie trzema typami aplikacji używają środowiska uruchomieniowego usługi App Service, można hostować witrynę sieci Web, obsługę klientów mobilnych i udostępnianie interfejsów API na platformie Azure wszystko z tego samego projektu lub rozwiązania. Aby dowiedzieć się więcej na temat usługi App Service, zobacz [co to jest Azure Web Apps](../../app-service/app-service-web-overview.md).
 
-Usługa App Service został zaprojektowany przy użyciu infrastruktury DevOps na uwadze. Obsługuje ona różne narzędzia wdrożeń publikowania i ciągłej integracji, takich jak GitHub elementów webhook, Jenkins, Visual Studio Team Services, TeamCity i inne.
+Usługa App Service został zaprojektowany przy użyciu infrastruktury DevOps na uwadze. Obsługuje ona różne narzędzia wdrożeń publikowania i ciągłej integracji, takich jak GitHub elementów webhook, Jenkins, DevOps platformy Azure, TeamCity i inne.
 
 Można migrować istniejące aplikacje do usługi App Service przy użyciu [narzędzia do migracji online](https://www.migratetoazure.net/).
 
@@ -186,7 +186,7 @@ Swoją aplikację wzwyż i działających na platformie Azure muszą mieć możl
 
 ### <a name="devops-integration"></a>Integracja metodyki DevOps
 
-Czy jest on aprowizowanie maszyn wirtualnych lub publikowania aplikacji sieci web dzięki ciągłej integracji, Azure integruje się z najbardziej popularnych narzędzi DevOps. Obsługa narzędzi, takich jak Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, VSTS i inne można pracować z narzędziami, które już masz i optymalnie wykorzystać istniejące.
+Czy jest on aprowizowanie maszyn wirtualnych lub publikowania aplikacji sieci web dzięki ciągłej integracji, Azure integruje się z najbardziej popularnych narzędzi DevOps. Obsługa narzędzi, takich jak Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, DevOps platformy Azure i innych użytkowników możesz pracować z narzędziami, które już masz i optymalnie wykorzystać istniejące.
 
 >**Wypróbuj je teraz:** [wypróbować niektóre z integracji metodyki DevOps](https://azure.microsoft.com/try/devops/).
 
@@ -269,19 +269,7 @@ Oprócz definiowania Azure indywidualne konta tożsamości, nazywany również *
 
 ### <a name="manage-your-subscriptions"></a>Zarządzanie subskrypcjami
 
-Subskrypcja stanowi jednostki logicznej usług platformy Azure, która jest połączona z kontem platformy Azure. Każde skojarzone konto ma rolę w ramach subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Aby uzyskać listę ofert dostępnych subskrypcji według typu, zobacz [szczegółach oferty Azure Microsoft](https://azure.microsoft.com/support/legal/offer-details/).
-
-#### <a name="administrator-roles"></a>Role administratorów
-
-Subskrypcja platformy Azure ma wiele ról administratora konta, które można przypisać w dowolnym momencie.
-
--   **Administrator konta**: Ta rola ma pełną kontrolę nad subskrypcji i to konto, które są odpowiedzialne za rozliczanie.
-
--   **Administrator usługi**: Ta rola ma kontrolę nad wszystkimi usługami w ramach subskrypcji. Domyślnie jest to to samo konto jako Administrator konta.
-
--   **Administrator współpracujący**: Ta rola ma takie same prawa dostępu jak Administrator usługi, z tą różnicą, że nie może zmieniać skojarzenia subskrypcji do katalogu platformy Azure.
-
-Aby dowiedzieć się więcej o rolach administratora, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription).
+Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Jedno konto platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Aby uzyskać listę ofert dostępnych subskrypcji według typu, zobacz [szczegółach oferty Azure Microsoft](https://azure.microsoft.com/support/legal/offer-details/). Subskrypcje platformy Azure ma Administrator konta, który ma pełną kontrolę nad subskrypcją, a Administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Aby uzyskać informacji na temat klasyczni Administratorzy, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Grupy zasobów
 
@@ -293,11 +281,11 @@ Usługi Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasoby,
 
 Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym rozwiązaniem, aby zapewnić użytkownikom najniższych uprawnień, które są wymagane do wykonywania danego zadania.
 
--   **Kontrola dostępu oparta na rolach (RBAC)**: W przypadku platformy Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Pozwalają on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role.
+-   **Kontrola dostępu oparta na rolach (RBAC)**: W przypadku platformy Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Pozwalają on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
 
-    >**Kiedy należy używać**: gdy będziesz potrzebować precyzyjne zarządzanie dostępem użytkowników i grup.
+    >**Kiedy należy używać**: gdy będziesz potrzebować precyzyjne zarządzanie dostępem dla użytkowników i grup, lub gdy należy wprowadzić użytkownik właściciela subskrypcji.
 
-    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [wprowadzenie do zarządzania dostępem w witrynie Azure portal](../../role-based-access-control/overview.md).
+    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 -   **Usługa obiekty główne**: Oprócz zapewniania dostępu do podmiotów zabezpieczeń użytkowników i grup, można przyznać taki sam dostęp do jednostki usługi.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340043"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349232"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -63,7 +63,7 @@ Przybliżony czas wykonania: dopiero po godzinie mniej niż 1000 użytkowników 
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Pobierz najnowszą wersję programu Azure AD Connect | [Pobierz platformy Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
 | Zainstaluj program Azure AD Connect z to najprostsza ścieżka: Express <br/>1. Filtruj do docelowej jednostki Organizacyjnej, aby zminimalizować czas cykl synchronizacji<br/>2. Wybierz docelowy zestaw użytkowników w grupie w środowisku lokalnym.<br/>3. Wdrażanie funkcji wymaganych przez inne motywy weryfikacji Koncepcji | [Usługa Azure AD Connect: Instalacja niestandardowa: domenę i jednostkę Organizacyjną filtrowania](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Usługa Azure AD Connect: Instalacja niestandardowa: filtrowaniu na podstawie grupy](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrowanie tożsamości lokalnych z usługą Azure Active Directory: Konfigurowanie funkcji synchronizacji](./connect/active-directory-aadconnect.md#configure-sync-features) |
@@ -97,7 +97,7 @@ Przybliżony czas wykonania: 15 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do portalu zarządzania usługi Azure AD | [Portal zarządzania usługi Azure AD — logo firmy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
 | Przekaż zasoby do strony logowania (hero logo, małe logo, etykiety, itp.). Opcjonalnie w przypadku usług AD FS wyrównywanie samej zasoby przy użyciu stron logowania usług AD FS | [Dodawanie znakowania firmowego do logowania i panelu dostępu do stron: elementy dostosowywalne](fundamentals/customize-branding.md) |
@@ -122,7 +122,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do bloku licencji w portalu zarządzania usługi Azure AD | [Portal zarządzania usługi Azure AD: Licencjonowanie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
 | Przypisać licencji do grupy zabezpieczeń, aby Zapewnić użytkownikom. | [Przypisywanie licencji do grupy użytkowników w usłudze Azure Active Directory](users-groups-roles/licensing-groups-assign.md) |
@@ -145,7 +145,7 @@ Przybliżony czas wykonania: 60 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Udostępniać w samouczku wszystkich uczestników z Microsoft Documentation  | [Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Ustaw na spotkanie pracy i wykonaj kroki samouczka z każdego aktora. | [Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
@@ -181,7 +181,7 @@ Przybliżony czas wykonania: 15 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -216,7 +216,7 @@ Przybliżony czas wykonania: 30 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -251,7 +251,7 @@ Przybliżony czas wykonania: 20 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Zainstaluj łącznik na serwerze | [Włącz serwer Proxy aplikacji w witrynie Azure portal: Instalowanie i rejestrowanie łącznika](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
 | Publikowanie aplikacji lokalnych w usłudze Azure AD jako aplikacje serwera Proxy aplikacji | [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md) |
@@ -282,7 +282,7 @@ Przybliżony czas wykonania: 60 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Dodaj ogólny łącznik LDAP | [Ogólny łącznik LDAP, dokumentacja techniczna: Utwórz nowy łącznik](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | Tworzenie profilów uruchamiania dla utworzonego łącznika (pełny import, importu zmian, pełną synchronizację, rozpoczynana jest synchronizacja przyrostowa, export) | [Tworzenie profilu przebiegu agenta zarządzania](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Za pomocą łączników za pomocą usługi Azure AD Connect synchronizacji Menedżera usług](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
@@ -313,7 +313,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Identyfikator grupy, która ma zostać przyznany dostęp do aplikacji i skonfigurować właścicielem danej grupy| [Zarządzaj ustawieniami dla grupy w usłudze Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Zaloguj się jako właściciel grupy, zobacz członkostwa w grupach w grupy na karcie panelu dostępu | [Strona zarządzania grupami w usłudze Active Directory Azure](https://account.activedirectory.windowsazure.com/r#/groups) |
@@ -337,10 +337,10 @@ Jeśli aplikacja ma aprowizacji, włączone, może być konieczne Poczekaj kilka
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Usuń użytkownika z grupy, w której aplikacja zostanie przypisana do | [Zarządzanie członkostwem w grupie użytkowników w dzierżawie usługi Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
-| Poczekaj kilka minut na anulowanie obsługi. | [Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD: jak działa automatyczne inicjowania obsługi administracyjnej?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| Poczekaj kilka minut na anulowanie obsługi. | [Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD: jak działa automatyczne inicjowania obsługi administracyjnej?](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
 | Na sesję przeglądarki oddzielne Zaloguj się jako pracownika przetwarzającego informacje portalu Moje aplikacje i upewnij się, brak tego kafelka | http://myapps.microsoft.com |
 
 
@@ -361,7 +361,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do bloku aplikacji dla przedsiębiorstw w portalu zarządzania usługi Azure AD | [Portalu zarządzania usługi Azure AD: Aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
 | Konfigurowanie aplikacji z warunków wstępnych przy użyciu samoobsługowego | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Konfigurowanie samoobsługowego dostępu do aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
@@ -387,7 +387,7 @@ Przybliżony czas wykonania: 15 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do portalu zarządzania usługi Azure AD: resetowanie hasła | [Portalu zarządzania usługi Azure AD: Resetowanie hasła](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
 | Określ zasady resetowania hasła. Do celów weryfikacji Koncepcji można użyć połączenia telefonicznego i pytań. Zalecane jest aby włączyć rejestrację, aby wymagać Zaloguj się do panelu dostępu |  |
@@ -417,7 +417,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do bloku "Użytkownicy i grupy" w portalu zarządzania usługi Azure AD | [Portal zarządzania usługi Azure AD: Użytkowników i grup](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | Wybierz bloku "Wszyscy użytkownicy" |  |
@@ -449,7 +449,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Przejdź do portalu zarządzania usługi Azure AD: bloku dostępu warunkowego | [Portalu zarządzania usługi Azure AD: Dostęp warunkowy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
 | Tworzenie zasad dostępu warunkowego:<br/>-Target użytkowników weryfikacji koncepcji, w obszarze "Użytkownicy i grupy"<br/>-Target PoC aplikacji w obszarze "Aplikacji w chmurze"<br/>-Docelowe lokalizacje wszystkie z wyjątkiem tych zaufanych pod "Warunki" -> "Lokalizacje" **Uwaga:** zaufane adresy IP są konfigurowane w [portalu usługi MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Wymagaj uwierzytelniania wieloskładnikowego w obszarze "Przydział" | [Utwórz zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
@@ -475,7 +475,7 @@ Przybliżony czas wykonania: 15 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Zaloguj się do https://portal.azure.com jako administrator globalny (GA), a następnie ładowania początkowego bloku usługi PIM. Administrator globalny, który wykonuje krok ten jest obsługiwany jako administrator zabezpieczeń.  Nadajmy tej GA1 aktora | [Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
 | Zidentyfikuj administratora globalnego i przenieść je z stałe na kwalifikujących. Powinna to być jako osobne administrator komentarzowi użytemu w kroku 1 w celu uściślenia. Nadajmy tej GA2 aktora | [Usługa Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
@@ -504,7 +504,7 @@ Przybliżony czas wykonania: 20 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Tor Otwieranie przeglądarki | [Pobierz przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Zaloguj się do https://myapps.microsoft.com przy użyciu konta użytkownika weryfikacji Koncepcji | [Podręcznik usługi Azure Active Directory Identity Protection: Symulowanie zdarzeń o podwyższonym ryzyku](identity-protection/playbook.md#simulating-risk-events) |
@@ -531,7 +531,7 @@ Przybliżony czas wykonania: 10 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Zaloguj się jako administrator globalny do https://portal.azure.com , a następnie otwórz blok Identity Protection | https://aka.ms/aadipgetstarted |
 | Włącz zasadę ryzyka logowania w następujący sposób:<br/>-Przypisane do: użytkownik weryfikacji Koncepcji<br/>-Warunki: Ryzyka logowania średniej lub nowszej (logowania z anonimowych lokalizacji jest uznawany za poziomu średniego ryzyka)<br/>-Kontrolki: Wymagaj uwierzytelniania Wieloskładnikowego | [Podręcznik usługi Azure Active Directory Identity Protection: ryzyka logowania](identity-protection/playbook.md) |
@@ -557,7 +557,7 @@ Przybliżony czas trwania: 20 minut
 
 ### <a name="steps"></a>Kroki
 
-| Czynność | Zasoby |
+| Krok | Zasoby |
 | --- | --- |
 | Włączyć "Uwierzytelnianie certyfikatu" w usługach ADFS | [Konfigurowanie zasad uwierzytelniania: Można skonfigurować uwierzytelniania podstawowego globalnie w systemie Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
 | Opcjonalnie: Włącz uwierzytelnianie certyfikatu w usłudze Azure AD dla klientów programu Exchange Active Sync | [Wprowadzenie do uwierzytelniania opartego na certyfikacie w usłudze Azure Active Directory](./authentication/active-directory-certificate-based-authentication-get-started.md) |

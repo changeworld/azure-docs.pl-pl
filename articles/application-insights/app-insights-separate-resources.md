@@ -1,8 +1,8 @@
 ---
-title: "Oddzielanie dane telemetryczne z programowania, testowania i wersji w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Bezpośrednie telemetrii do różnych zasobów dla rozwoju, testów i produkcji sygnatury."
+title: Oddzielanie danych telemetrycznych od etapu programowania, testowania i wersji w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Bezpośrednie dane telemetryczne do różnych zasobów dla sygnatury rozwoju, testowania i produkcji.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
@@ -10,38 +10,39 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d95958bce0597bfb16ef1c6b99b72ce9134e66f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303629"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych z programowanie, testowego i produkcyjnego
+# <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych z programowania, testowania i produkcji
 
-Podczas tworzenia następnej wersji aplikacji sieci web, użytkownik nie chce pomylone [usługi Application Insights](app-insights-overview.md) dane telemetryczne z nowej wersji i już wydanej wersji. Aby uniknąć pomyłek, należy wysłać dane telemetryczne z różnych etapach rozwoju do oddzielania zasobów usługi Application Insights z kluczami oddzielne Instrumentacji (ikeys). Aby ułatwić zmienić klucza instrumentacji, ponieważ wersja są przenoszone z jednego etapu do innego, może być ustalenie ikey w kodzie, a nie w pliku konfiguracji. 
+Podczas tworzenia następnej wersji aplikacji sieci web, użytkownik nie chce mieszały się [usługi Application Insights](app-insights-overview.md) dane telemetryczne z nowej wersji i już pełnej wersji. Aby uniknąć nieporozumień, Wyślij dane telemetryczne z różnych etapach rozwoju do oddzielnych zasobów usługi Application Insights przy użyciu kluczy Instrumentacji oddzielne (kluczy ikey). Aby ułatwić przemieszcza się nieco od jednego etapu do innego należy zmienić wartość klucza instrumentacji, może być warto ustawić klucz Instrumentacji w kodzie, a w pliku konfiguracji. 
 
-(Jeśli system jest usługi w chmurze Azure, Brak [innej metody ustawienia oddzielnych ikeys](app-insights-cloudservices.md).)
+(Jeśli system jest usługi Azure Cloud Service, ma [innej metody ustalania osobne kluczy ikey](app-insights-cloudservices.md).)
 
-## <a name="about-resources-and-instrumentation-keys"></a>Dotyczące zasobów i klucze Instrumentacji
+## <a name="about-resources-and-instrumentation-keys"></a>O zasobach i kluczy Instrumentacji
 
-Po skonfigurowaniu monitorowanie usługi Application Insights dla aplikacji sieci web, tworzenia usługi Application Insights *zasobów* platformie Microsoft Azure. Możesz otworzyć ten zasób w portalu Azure, aby wyświetlić i analizować dane telemetryczne zebrane z aplikacji. Zasób jest identyfikowany przez *klucza Instrumentacji* (ikey). Po zainstalowaniu pakietu usługi Application Insights do monitorowania aplikacji, możesz ją skonfigurować z klucza Instrumentacji tak, aby miejsce wysyłania danych telemetrycznych.
+Po skonfigurowaniu monitorowanie usługi Application Insights dla aplikacji sieci web, tworzenia usługi Application Insights *zasobów* w systemie Microsoft Azure. Możesz otworzyć tego zasobu w witrynie Azure portal, aby można było zobaczyć i analizować dane telemetryczne zebrane z aplikacji. Zasób jest identyfikowany przez *klucz Instrumentacji* (klucz Instrumentacji). Po zainstalowaniu pakietu usługi Application Insights do monitorowania aplikacji, skonfigurujesz go z kluczem instrumentacji, tak aby wie, gdzie wysyłać dane telemetryczne.
 
-Zwykle wybierzesz oddzielne zasoby lub pojedynczy zasób udostępniony w różnych scenariuszach:
+Zazwyczaj zdecydujesz się używać oddzielne zasoby lub pojedynczy zasób udostępniony w różnych scenariuszach:
 
-* Aplikacje innych, niezależnie od - używać oddzielnego zasobów i ikey dla każdej aplikacji.
-* Wiele składników lub role w aplikacji biznesowej jeden — użyj [pojedynczy zasób udostępniony](app-insights-monitor-multi-role-apps.md) dla wszystkich składników aplikacji. Można filtrować dane telemetryczne i segmentowanych przez właściwość cloud_RoleName.
-* Programowanie, testów i Release - Użyj oddzielnych zasobów i ikey dla wersji systemu w "sygnatury" etapie produkcji.
-* A | Testowanie B — użyj pojedynczego zasobu. Utwórz TelemetryInitializer można dodać właściwości do danych telemetrii, który identyfikuje wariantów.
+* Różne, niezależne aplikacje — użyć osobnego zasobu i klucz instrumentacji dla każdej aplikacji.
+* Wiele składników lub ról aplikacji biznesowej jeden — użyj [pojedynczy zasób udostępniony](app-insights-monitor-multi-role-apps.md) dla wszystkich składników aplikacji. Można filtrować i posegmentowana według właściwości cloud_RoleName telemetrii.
+* Rozwoju, testowania i wydanie — użyć osobnego zasobu i ikey wersji systemu w "sygnatury" lub etapu produkcji.
+* A | Testowanie B — użyć pojedynczego zasobu. Tworzenie parametru TelemetryInitializer, aby dodać właściwość do telemetrii, który identyfikuje wariantów.
 
 
-## <a name="dynamic-ikey"></a>Klucz Instrumentacji dynamiczne
+## <a name="dynamic-ikey"></a> Klucz Instrumentacji dynamiczne
 
-Aby ułatwić zmienić ikey, gdy kod przechodzi między etapami produkcji, ustaw go w kodzie zamiast w pliku konfiguracji.
+Aby ułatwić zmienić klucz Instrumentacji przemieszcza się w kodzie między etapami produkcji, ustaw go w kodzie, a w pliku konfiguracji.
 
-Ustaw klucz w metodzie inicjowania, takich jak pliku global.aspx.cs w usługi ASP.NET:
+Ustaw klucz w metodzie inicjalizacji, takich jak pliku global.aspx.cs usługi sieci Web platformy ASP.NET:
 
 *C#*
 
@@ -53,12 +54,12 @@ Ustaw klucz w metodzie inicjowania, takich jak pliku global.aspx.cs w usługi AS
           WebConfigurationManager.AppSettings["ikey"];
       ...
 
-W tym przykładzie ikeys dla różnych zasobów są umieszczane w różnych wersjach pliku konfiguracji sieci web. Plik konfiguracji sieci web — co można zrobić w ramach skryptu - wymiany będą wymiany zasobu docelowego.
+W tym przykładzie kluczy ikey dla różnych zasobów są umieszczane w różnych wersjach pliku konfiguracji sieci web. Zamiana pliku konfiguracji sieci web — które można zrobić w skrypcie release - będą zamieniać zasobu docelowego.
 
 ### <a name="web-pages"></a>Strony sieci Web
-IKey jest również używany na stronach sieci web aplikacji, w [skryptu pochodzący z bloku szybki start](app-insights-javascript.md). Zamiast kodowania go bezpośrednio do skryptu, wygenerowany na podstawie stanu serwera. Na przykład w aplikacji ASP.NET:
+Klucz Instrumentacji jest również używane na stronach sieci web aplikacji [skryptu, która jest wyświetlana w bloku szybki start](app-insights-javascript.md). Zamiast kodowania go dosłownie w skrypcie, wygenerowany na podstawie stanu serwera. Na przykład w aplikacji platformy ASP.NET:
 
-*Język JavaScript w Razor*
+*Język JavaScript w aparacie Razor*
 
     <script type="text/javascript">
     // Standard Application Insights web page script:
@@ -71,44 +72,44 @@ IKey jest również używany na stronach sieci web aplikacji, w [skryptu pochodz
     }) // ...
 
 
-## <a name="create-additional-application-insights-resources"></a>Tworzenie dodatkowych zasobów usługi Application Insights
-Aby rozdzielić telemetrii składników w innej aplikacji lub inny sygnatur (deweloperów testu/produkcja) tego składnika, następnie musisz utworzyć nowy zasób usługi Application Insights.
+## <a name="create-additional-application-insights-resources"></a>Utwórz dodatkowe zasoby usługi Application Insights
+Do oddzielania danych telemetrycznych dla składników innej aplikacji lub dla różnych sygnaturach (dev/testowania/produkcji) tego samego składnika, następnie musisz utworzyć nowy zasób usługi Application Insights.
 
 W [portal.azure.com](https://portal.azure.com), Dodaj zasób usługi Application Insights:
 
 ![Kliknij kolejno polecenia Nowy, Application Insights](./media/app-insights-separate-resources/01-new.png)
 
-* **Typ aplikacji** wpływa na informacje wyświetlane na bloku omówienie i właściwości, które są dostępne w [Eksploratora metryk](app-insights-metrics-explorer.md). Jeśli nie widzisz typ aplikacji, wybierz jeden z typów sieci web dla stron sieci web.
-* **Grupa zasobów** jest wygodne dla właściwości, takie jak zarządzanie [kontrola dostępu](app-insights-resources-roles-access-control.md). Można użyć oddzielnych grup zasobów dla rozwoju, testów i produkcji.
-* **Subskrypcja** Twojego konta płatności na platformie Azure.
-* **Lokalizacja** jest, gdzie możemy przechowywanie danych. Obecnie nie można zmienić. 
-* **Dodaj do pulpitu nawigacyjnego** umieszcza kafelka szybkiego dostępu dla zasobu na stronie głównej Azure. 
+* **Typ aplikacji** dotyczy, zostanie wyświetlony w bloku przeglądu i właściwości, które są dostępne w [Eksplorator metryk](app-insights-metrics-explorer.md). Jeśli nie widać danego typu aplikacji, wybierz jeden z typów sieci web dla stron sieci web.
+* **Grupa zasobów** jest wygoda dla właściwości, takie jak zarządzanie [kontroli dostępu](app-insights-resources-roles-access-control.md). Można użyć oddzielnych grupach zasobów dla rozwoju, testowania i produkcji.
+* **Subskrypcja** jest Twoje konto płatności na platformie Azure.
+* **Lokalizacja** jest, w którym przechowujemy Twoje dane. Obecnie nie można zmienić. 
+* **Dodaj do pulpitu nawigacyjnego** umieszcza kafelka szybkiego dostępu do zasobu na stronie głównej usługi Azure. 
 
-Trwa tworzenie zasobu zajmuje kilka sekund. Zostanie wyświetlony alert po jego zakończeniu.
+Tworzenie zasobu zajmuje kilka sekund. Gdy wszystko będzie gotowe, zostanie wyświetlony alert.
 
-(Można napisać [skrypt programu PowerShell](app-insights-powershell-script-create-resource.md) automatyczne tworzenie zasobu.)
+(Możesz napisać [skrypt programu PowerShell](app-insights-powershell-script-create-resource.md) automatycznego tworzenia zasobu.)
 
-### <a name="getting-the-instrumentation-key"></a>Wprowadzenie klucza Instrumentacji
-Klucz Instrumentacji identyfikatorem zasobu, który został utworzony. 
+### <a name="getting-the-instrumentation-key"></a>Uzyskiwanie klucza Instrumentacji
+Klucz Instrumentacji identyfikuje zasób, który został utworzony. 
 
-![Kliknij Essentials, kliknij przycisk klucza Instrumentacji klawisze CTRL + C](./media/app-insights-separate-resources/02-props.png)
+![Kliknij Essentials, kliknij przycisk klucz instrumentacji, CTRL + C](./media/app-insights-separate-resources/02-props.png)
 
-Należy klucze Instrumentacji wszystkich zasobów, do której aplikacja będzie wysyłać dane.
+Wymagane są klucze instrumentacji, zasobów, do którego Twoja aplikacja będzie wysyłać dane.
 
 ## <a name="filter-on-build-number"></a>Filtrowanie według numeru kompilacji
-Po opublikowaniu nowej wersji aplikacji chcesz mieć możliwość oddzielenia dane telemetryczne z różnych kompilacji.
+Po opublikowaniu nowej wersji aplikacji, chcesz mieć możliwość oddzielenia dane telemetryczne z różnych kompilacji.
 
-Można ustawić właściwości wersji aplikacji, dzięki czemu można filtrować [wyszukiwania](app-insights-diagnostic-search.md) i [Eksploratora metryk](app-insights-metrics-explorer.md) wyników.
+Można ustawić właściwości wersja aplikacji, dzięki czemu można filtrować [wyszukiwania](app-insights-diagnostic-search.md) i [Eksplorator metryk](app-insights-metrics-explorer.md) wyników.
 
 ![Filtrowanie według właściwości](./media/app-insights-separate-resources/050-filter.png)
 
-Istnieje kilka różnych metod ustawiania właściwości wersji aplikacji.
+Istnieje kilka różnych metod ustawienie dla właściwości wersja aplikacji.
 
 * Ustaw bezpośrednio:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Zawijaj tego wiersza w [inicjatora telemetrii](app-insights-api-custom-events-metrics.md#defaults) aby upewnić się, że wszystkie wystąpienia TelemetryClient są stale ustawione.
-* [ASP.NET] Ustaw wersję `BuildInfo.config`. Wersja w węźle BuildLabel przejmą moduł sieci web. Dołączyć ten plik do projektu i pamiętaj, aby ustawić właściwości zawsze Kopiuj w Eksploratorze rozwiązań.
+* OPAKOWYWANIE tę linię w [inicjatora telemetrii](app-insights-api-custom-events-metrics.md#defaults) do upewnij się, że wszystkie wystąpienia TelemetryClient są spójne.
+* [ASP.NET] Ustaw wersję `BuildInfo.config`. Wersja z węzła BuildLabel przejmą moduł sieci web. Uwzględnij ten plik w projekcie i pamiętaj, aby ustawić właściwość zawsze Kopiuj w Eksploratorze rozwiązań.
 
     ```XML
 
@@ -123,7 +124,7 @@ Istnieje kilka różnych metod ustawiania właściwości wersji aplikacji.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] BuildInfo.config ma być automatycznie wygenerowany w programie MSBuild. Aby to zrobić, dodaj kilka wierszy do Twojej `.csproj` pliku:
+* [ASP.NET] Generowanie BuildInfo.config automatycznie w programie MSBuild. Aby to zrobić, dodaj kilka wierszy do Twojej `.csproj` pliku:
 
     ```XML
 
@@ -132,11 +133,11 @@ Istnieje kilka różnych metod ustawiania właściwości wersji aplikacji.
     </PropertyGroup>
     ```
 
-    Spowoduje to wygenerowanie pliku o nazwie *yourProjectName*. BuildInfo.config. Proces publikowania zmienia ją BuildInfo.config.
+    Spowoduje to wygenerowanie pliku o nazwie *yourProjectName*. BuildInfo.config. Proces publikowania zmieni jego nazwę na BuildInfo.config.
 
-    Etykieta kompilacji zawiera symbol zastępczy (AutoGen_...), podczas kompilacji z programem Visual Studio. Jednak podczas tworzenia przy użyciu programu MSBuild, jest wypełniana numer poprawnej wersji.
+    Etykieta kompilacji zawiera symbolu zastępczego (AutoGen_...), gdy kompilujesz za pomocą programu Visual Studio. Jednak podczas kompilowania za pomocą narzędzia MSBuild, jest ono wypełnione numer poprawnej wersji.
 
-    Aby umożliwić MSBuild, aby wygenerować numery wersji, Ustaw wersję jak `1.0.*` w AssemblyReference.cs
+    Aby zezwolić na program MSBuild, aby wygenerować numerów wersji, należy ustawić wersję takich jak `1.0.*` w AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Śledzenie wersji i wydania
 Aby śledzić wersje aplikacji, upewnij się, że plik `buildinfo.config` jest generowany przez proces aparatu Microsoft Build Engine. W pliku .csproj dodaj ten kod:  
@@ -153,10 +154,10 @@ Jeśli plik zawiera informację o kompilacji, moduł sieci Web usługi Applicati
 Numer wersji kompilacji jest jednak generowany tylko przez aparat Microsoft Build Engine, a nie podczas kompilowania przez deweloperów w programie Visual Studio.
 
 ### <a name="release-annotations"></a>Adnotacje dotyczące wersji
-Jeśli korzystasz z usługi Visual Studio Team Services, możesz [uzyskać znacznik adnotacji](app-insights-annotations.md) dodawany do Twoich wykresów, za każdym razem, gdy wydasz nową wersję. Na następującej ilustracji pokazano sposób wyświetlania tego znacznika.
+Jeśli używasz DevOps platformy Azure, możesz to zrobić [uzyskać znacznik adnotacji](app-insights-annotations.md) dodawany do Twoich wykresów, zawsze wtedy, gdy wydasz nową wersję. Na następującej ilustracji pokazano sposób wyświetlania tego znacznika.
 
 ![Zrzut ekranu przedstawiający przykładową adnotację dotyczącą wersji widoczną na wykresie](./media/app-insights-asp-net/release-annotation.png)
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Udostępnione zasoby do wielu ról](app-insights-monitor-multi-role-apps.md)
-* [Utwórz inicjatora Telemetrii, aby odróżnić A | Wariantów B](app-insights-api-filtering-sampling.md#add-properties)
+* [Zasoby udostępnione dla wielu ról](app-insights-monitor-multi-role-apps.md)
+* [Utwórz inicjatora Telemetrii w celu odróżnienia A | Warianty B](app-insights-api-filtering-sampling.md#add-properties)

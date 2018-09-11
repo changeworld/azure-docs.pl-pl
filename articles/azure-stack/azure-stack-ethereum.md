@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446979"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298118"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Szablony rozwiązań łańcucha bloków w usłudze Azure Ethereum stosu
 
@@ -25,16 +25,14 @@ Za pomocą kliku dane wejściowe użytkownika i jednym kliknięciem za pośredni
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz następujące [z witryny Marketplace](azure-stack-download-azure-marketplace-item.md):
+Pobierz najnowsze elementy [z witryny Marketplace](azure-stack-download-azure-marketplace-item.md):
 
-* Ubuntu Server 16.04 LTS wersji 16.04.201802220
-* Windows Server 2016 
-* Niestandardowego skryptu dla systemu Linux w wersji 2.0 
-* Rozszerzenie niestandardowego skryptu 
+* Ubuntu Server 16.04 LTS
+* Windows Server 2016
+* Niestandardowego skryptu dla systemu Linux w wersji 2.0
+* Rozszerzenie niestandardowego skryptu dla Windows
 
-Aby uzyskać więcej informacji o scenariuszach łańcucha bloków na platformie Azure, zobacz [szablon rozwiązania konsorcjum dowód pracy Ethereum](../blockchain-workbench/ethereum-deployment-guide.md).
-
-Wymagana jest subskrypcja platformy Azure, obsługująca wdrażanie kilka maszyn wirtualnych. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Aby uzyskać więcej informacji o scenariuszach łańcucha bloków, zobacz [szablon rozwiązania konsorcjum dowód pracy Ethereum](../blockchain-workbench/ethereum-deployment-guide.md).
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
@@ -43,6 +41,7 @@ Ten szablon rozwiązania można wdrożyć jedno- lub wielowarstwowe sieci konsor
 ## <a name="deployment-use-cases"></a>Przypadki użycia wdrożenia
 
 Szablon można wdrożyć konsorcjum Ethereum lidera i element członkowski sprzężenia w na różne sposoby, w tym miejscu są tymi, które przetestowaliśmy:
+
 - W wielu węzłach usłudze Azure Stack przy użyciu usługi Azure AD lub AD FS, wdrażanie potencjalnych klientów i elementów członkowskich przy użyciu tej samej subskrypcji lub z różnych subskrypcji.
 - Na jednym węźle usługi Azure Stack (z usługą Azure AD) wdrażanie potencjalnych klientów i składową za pomocą tej samej subskrypcji.
 

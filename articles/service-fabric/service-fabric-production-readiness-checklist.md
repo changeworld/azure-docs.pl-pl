@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 5092bf377f6ab213a2db52e01fb7b89ff0c218ce
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127592"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295874"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -45,7 +45,7 @@ Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastr
 15. Ustanowić cel punktu odzyskiwania (RPO) dla usługi i konfigurowanie [proces odzyskiwania po awarii](service-fabric-disaster-recovery.md) i przetestować działanie.
 16. Planowanie [skalowanie](service-fabric-cluster-scaling.md) klastra ręcznie lub programowo.
 17. Planowanie [poprawek](service-fabric-patch-orchestration-application.md) węzły klastra. 
-18. Tak, aby najnowsze zmiany są testowane stale, należy ustanowić potoku CI/CD. Na przykład za pomocą [VSTS](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) lub [usługi Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+18. Tak, aby najnowsze zmiany są testowane stale, należy ustanowić potoku CI/CD. Na przykład za pomocą [DevOps platformy Azure](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) lub [usługi Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 19. Programowanie i przemieszczania klastrów w ramach obciążenia za pomocą testów [usługa analizy błędów](service-fabric-testability-overview.md) i wywoływać kontrolowanego [chaos](service-fabric-controlled-chaos.md). 
 20. Planowanie [skalowanie](service-fabric-concepts-scalability.md) aplikacji. 
 

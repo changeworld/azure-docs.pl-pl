@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8680a8fa9c460983b88aa4845adcbe72d3a43abf
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666271"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325519"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -121,19 +121,7 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 * W przypadku folderu do wyliczenia wywołujący musi mieć uprawnienia do **odczytu i wykonania**.
 * W przypadku wszystkich folderów nadrzędnych wywołujący musi mieć uprawnienia do **wykonania**.
 
-## <a name="viewing-permissions-in-the-azure-portal"></a>Wyświetlanie uprawnień w witrynie Azure Portal
 
-Z **Eksplorator danych** kliknij blok konta Data Lake Storage Gen1 **dostępu** aby zobaczyć listy ACL dla pliku lub folderu wyświetlanego w Eksploratorze danych. Kliknij przycisk **Dostęp**, aby zobaczyć listy ACL dla folderu **catalog** na koncie **mydatastore**.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-W tym bloku najwyższa sekcja wyświetla uprawnienia właściciela. (Na zrzucie ekranu właścicielem jest Bob). Następnie są wyświetlane przypisane listy ACL dostępu. 
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kliknij pozycję **Widok zaawansowany**, aby wyświetlić bardziej zaawansowany widok, w którym występują domyślne listy kontroli dostępu, maski i opis administratora.  Ten blok udostępnia również sposób rekursywnego ustawiania list ACL dostępu dla programu Access i domyślnych dla podrzędnych plików i folderów na podstawie uprawnień bieżącego folderu.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Administrator
 
@@ -227,30 +215,27 @@ def access_check( user, desired_perms, path ) :
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask-and-effective-permissions"></a>Maska i „czynne uprawnienia”
+## <a name="the-mask"></a>Maska
 
-**Maska** jest wartością RWX używaną do ograniczania dostępu dla **użytkowników nazwanych**, **grupy będącej właścicielem** i **grup nazwanych** w przypadku wykonywania algorytmu kontroli dostępu. Oto kluczowe założenia maski.
-
-* Maska tworzy „czynne uprawnienia”. Oznacza to, że modyfikuje ona uprawnienia w momencie przeprowadzania kontroli dostępu.
-* Maskę może edytować bezpośrednio właściciel pliku i dowolny administrator.
-* Maska może usuwać uprawnienia w celu tworzenia czynnych uprawnień. Maska *nie może* dodawać uprawnień do czynnych uprawnień.
-
-Przyjrzyjmy się kilku przykładom. W poniższym przykładzie maskę ustawiono na **RWX**, co oznacza, że ta maska nie usuwa żadnych uprawnień. Czynne uprawnienia dla użytkownika nazwanego, grupy będącej właścicielem i grupy nazwanej nie są modyfikowane podczas kontroli dostępu.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
-
-W poniższym przykładzie maska jest ustawiona na **R-X**. Oznacza to, że maska **wyłącza uprawnienie do zapisu** dla **użytkownika nazwanego**, **grupy będącej właścicielem** i **grupy nazwanej** w czasie kontroli dostępu.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
-
-Jest to miejsce, w którym maska dla pliku lub folderu pojawia się w witrynie Azure Portal.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do **użytkowników nazwanych**, **grupy będącej właścicielem**, i **nazwanych grup**.  
 
 > [!NOTE]
 > W przypadku nowego konta Data Lake Storage Gen1 maski dla listy ACL dostępu folderu głównego ("/") są domyślnie maskami RWX.
 >
 >
+
+### <a name="the-sticky-bit"></a>Atrybut sticky bit
+
+Sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen1 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny.
+
+Poniższej tabeli przedstawiono sposób działania atrybutu sticky bit w Data Lake Storage Gen1.
+
+| Grupa użytkowników         | Plik    | Folder |
+|--------------------|---------|-------------------------|
+| Sticky bit **WYŁ.** | Brak wpływu   | Brak wpływu.           |
+| Sticky bit **WŁ.**  | Brak wpływu   | Uniemożliwia wszystkich użytkownikom poza **administratorami** i **użytkownikiem będącym właścicielem** elementu podrzędnego usunięcie lub zmianę nazwy tego elementu podrzędnego.               |
+
+Atrybut sticky bit nie jest wyświetlany w witrynie Azure Portal.
 
 ## <a name="permissions-on-new-files-and-folders"></a>Uprawnienia do nowych plików i folderów
 
@@ -278,34 +263,37 @@ Gdy folder podrzędny jest tworzony w folderze nadrzędnym, domyślna lista ACL 
 
 Poniżej przedstawiono niektóre zaawansowane tematy, które pomagają zrozumieć, jak listy ACL są określane dla plików Data Lake Storage Gen1 lub folderów.
 
-### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>Rola maski umask w tworzeniu listy ACL dostępu do nowych plików i folderów
+### <a name="umask"></a>maska umask
 
-W systemie zgodnym z modelem POSIX ogólnym założeniem jest, że maska umask jest 9-bitową wartością w folderze nadrzędnym używaną do przekształcania uprawnień dla **użytkownika będącego właścicielem**, **grupy będącej właścicielem** i **innych** na liście ACL dostępu nowego pliku lub folderu podrzędnego. Bity mapy umask identyfikują bity, które zostaną wyłączone na liście ACL dostępu elementu podrzędnego. W związku z tym maski używa się selektywnie, aby zapobiegać propagacji uprawnień **użytkownika będącego właścicielem**, **grupy będącej właścicielem** i **innych**.
+Podczas tworzenia pliku lub folderu, maska umask jest używana do modyfikowania konfiguracji domyślnej listy ACL dla elementu podrzędnego. Maska umask jest 9-bitową 9-bitową wartością w foldery nadrzędne, które zawiera wartość RWX **użytkownika będącego właścicielem**, **grupy będącej właścicielem**, i **innych**.
 
-W systemie plików HDFS maska umask jest typową opcją konfiguracji obejmującą całą lokację, którą kontrolują administratorzy. Data Lake Storage Gen1 używa **maski umask obejmującej całe konto** nie można jej zmienić. W poniższej tabeli przedstawiono maskę umask for Data Lake Storage Gen1.
+Maska umask dla usługi Azure Data Lake Storage Gen1 stałą wartość, która jest równa 007. Ta wartość przekłada się na
 
-| Grupa użytkowników  | Ustawienie | Wpływ na listę ACL dostępu nowego elementu podrzędnego |
-|------------ |---------|---------------------------------------|
-| Użytkownik będący właścicielem | ---     | Brak wpływu                             |
-| Grupa będąca właścicielem| ---     | Brak wpływu                             |
-| Inne       | RWX     | Usuwanie uprawnień do odczytu, zapisu, wykonania         |
+* umask.owning_user = 0 #---
+* umask.owning_group = 0 #---
+* umask.Other = 7 # RWX
 
-Poniższa ilustracja przedstawia tę maskę umask w działaniu. Efektem sieciowym jest usunięcie uprawnień do **odczytu, zapisu i wykonania** dla **innego** użytkownika. Ponieważ maska umask nie określiła bitów dla **użytkownika będącego właścicielem** oraz **grupy będącej właścicielem**, uprawnienia te nie są przekształcane.
+Ta wartość maski umask skutecznie oznacza, że wartość dla innych nigdy nie są przesyłane domyślnie na nowe elementy podrzędne — niezależnie od tego, co wskazuje domyślną listę ACL. 
 
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
+Następujące psuedocode pokazuje, jak maska umask jest stosowane podczas tworzenia listy ACL dla elementu podrzędnego.
 
-### <a name="the-sticky-bit"></a>Atrybut sticky bit
+```
+def set_default_acls_for_new_child(parent, child):
+    child.acls = []
+    foreach entry in parent.acls :
+        new_entry = None
+        if (entry.type == OWNING_USER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))
+        elif (entry.type == OWNING_GROUP) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_group))
+        elif (entry.type == OTHER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.other))
+        else :
+            new_entry = entry.clone(perms = entry.perms )
+        child_acls.add( new_entry )
+```
 
-Sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen1 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny.
 
-Poniższej tabeli przedstawiono sposób działania atrybutu sticky bit w Data Lake Storage Gen1.
-
-| Grupa użytkowników         | Plik    | Folder |
-|--------------------|---------|-------------------------|
-| Sticky bit **WYŁ.** | Brak wpływu   | Brak wpływu.           |
-| Sticky bit **WŁ.**  | Brak wpływu   | Uniemożliwia wszystkich użytkownikom poza **administratorami** i **użytkownikiem będącym właścicielem** elementu podrzędnego usunięcie lub zmianę nazwy tego elementu podrzędnego.               |
-
-Atrybut sticky bit nie jest wyświetlany w witrynie Azure Portal.
 
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Często zadawane pytania dotyczące list ACL w Data Lake Storage Gen1
 
@@ -348,15 +336,6 @@ Identyfikator GUID jest wyświetlany w przypadku, gdy dany użytkownik nie istni
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Usługa Data Lake Storage Gen1 obsługuje dziedziczenie list ACL?
 
 Nie, ale domyślne listy kontroli dostępu mogą być używane do ustawienia list ACL dla podrzędnych plików i folderów, które zostały nowo utworzone w folderze nadrzędnym.  
-
-### <a name="what-is-the-difference-between-mask-and-umask"></a>Jaka jest różnica między maską i maską umask?
-
-| maska | maska umask|
-|------|------|
-| Właściwość **maski** jest dostępna dla każdego pliku i folderu. | **Umask** jest właściwością konta Data Lake Storage Gen1. Istnieje więc tylko jedna maska umask w Gen1 magazynu programu Data Lake.    |
-| Właściwość maski dla pliku lub folderu może zmienić użytkownik będący właścicielem lub grupa będąca właścicielem pliku, a także administrator. | Właściwości maski umask nie może zmodyfikować żaden użytkownik, nawet administrator. Jest to niezmienna, stała wartość.|
-| Właściwość maski jest używana podczas wykonywania algorytmu kontroli dostępu w momencie uruchomienia, aby określić, czy użytkownik ma prawo wykonać operację na pliku lub folderze. Rolą maski jest tworzenie „czynnych uprawnień” w momencie przeprowadzania kontroli dostępu. | Maska umask nie jest używana podczas kontroli dostępu. Maski umask używa się do określania listy ACL dostępu dla nowych elementów podrzędnych w folderze. |
-| Maska jest 3-bitową wartością RWX stosowaną do nazwanego użytkownika, grupy będącej właścicielem i nazwanej grupy w czasie przeprowadzania kontroli dostępu.| Umask jest 9-bitową wartością stosowaną do użytkownika będącego właścicielem, grupy będącej właścicielem i **innych** użytkowników nowego elementu podrzędnego.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Gdzie można dowiedzieć się więcej na temat modelu kontroli dostępu POSIX?
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie skrzynki dla użytkowników automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i skrzynki dla firm.
+title: 'Samouczek: Konfigurowanie usługi Dropbox do automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Dropbox dla firm.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: dcc11d9e1193f180390516e9dd75abbca0889b09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8e61fe4af83ee72df74027b2e52a3e81db486798
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214437"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347311"
 ---
-# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie skrzynki dla firm dla użytkownika automatycznego inicjowania obsługi administracyjnej.
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Dropbox dla firm dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest opisano czynności, które należy wykonać w Dropbox dla firm i Azure AD automatycznie zapewnianie i usuwanie kont użytkowników z usługi Azure AD do usługi Dropbox dla firm.
+Celem tego samouczka jest pokazanie czynności, które należy wykonać w usłudze Dropbox dla firm i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do usługi Dropbox dla firm.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące elementy:
+Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory.
-*   Dropbox dla firm jednokrotnego włączone subskrypcji.
-*   Konto użytkownika w Dropbox dla firm z uprawnieniami administratora zespołu.
+*   Dropbox dla firm logowania jednokrotnego włączonych subskrypcji.
+*   Konto użytkownika w usłudze Dropbox dla firm z uprawnieniami administratora zespołu.
 
 ## <a name="assigning-users-to-dropbox-for-business"></a>Przypisywanie użytkowników do usługi Dropbox dla firm
 
-Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu określenia, którzy użytkownicy powinien otrzymać dostęp do wybranej aplikacji. W kontekście użytkownika automatyczne Inicjowanie obsługi konta tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD jest zsynchronizowany.
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę inicjowania obsługi administracyjnej, należy zdecydować, jakie użytkownicy i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do Twojej skrzynki dla aplikacji biznesowych. Po decyzję, można przypisać tych użytkowników do Twojej skrzynki dla aplikacji biznesowych, postępując zgodnie z instrukcjami poniżej:
+Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do usługi Dropbox dla firm. Po decyzję, możesz przypisać użytkowników do usługi Dropbox dla firm, zgodnie z instrukcjami w tym miejscu:
 
-[Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Ważne porady dotyczące przypisywania użytkowników do usługi Dropbox dla firm
+### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Ważne wskazówki dotyczące przypisywania użytkowników do usługi Dropbox dla firm
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisany do skrzynki dla firm, aby przetestować konfigurację inicjowania obsługi administracyjnej. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zalecane jest, że jeden użytkownik usługi Azure AD jest przypisany do usługi Dropbox dla firm, aby przetestować konfigurację aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Przypisanie użytkownika do skrzynki dla firm, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkowników do usługi Dropbox dla firm, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi...
 
-## <a name="enable-automated-user-provisioning"></a>Włącz automatyczne Inicjowanie obsługi użytkowników
+## <a name="enable-automated-user-provisioning"></a>Włącz automatyczną Aprowizację użytkowników
 
-Ta sekcja przeprowadzi użytkownika przez nawiązywania połączenia z usługi Azure AD Dropbox dla konta użytkownika firmy inicjowania obsługi interfejsu API i konfigurowanie usługi inicjowania obsługi administracyjnej do tworzenia, aktualizacji i wyłączania konta użytkowników przypisane w Dropbox dla firm, w oparciu o użytkowników i grup przypisania w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do usługi Dropbox dla konta użytkownika firmy aprowizujący interfejs API i konfigurowanie usługi aprowizacji, aby utworzyć, zaktualizować, a następnie wyłącz konta użytkowników przypisane w usłudze Dropbox dla firm, w oparciu o użytkowników i grup przypisania w usłudze Azure AD.
 
 >[!Tip]
->Można też włączyć na języku SAML logowania jednokrotnego dla skrzynki dla firm, wykonując instrukcje podane w [portalu Azure](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, chociaż te dwie funkcje uzupełniania siebie nawzajem.
+>Można też włączyć opartej na SAML logowania jednokrotnego do usługi Dropbox dla firm, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Aby skonfigurować konto użytkownika automatycznego inicjowania obsługi administracyjnej:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Aby skonfigurować, aprowizacja kont użytkowników:
 
-1. W [portalu Azure](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje przedsiębiorstwa > wszystkie aplikacje** sekcji.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
 
-2. Jeśli skonfigurowano już program Dropbox dla firm dla logowania jednokrotnego, wyszukaj dla swojego wystąpienia usługi Dropbox dla firm przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Dropbox dla firm** w galerii aplikacji. Wybierz Dropbox dla firm z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Jeśli została już skonfigurowana usługa Dropbox dla firm dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi Dropbox dla firm przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **usługa Dropbox dla firm** w galerii aplikacji. Wybierz usługa Dropbox dla firm z listy wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
 
-3. Wybierz wystąpienie usługi Dropbox dla firm, a następnie wybierz **inicjowania obsługi administracyjnej** kartę.
+3. Wybierz wystąpienie usługi Dropbox dla firm, a następnie wybierz **aprowizacji** kartę.
 
 4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
     ![aprowizowanie](./media/dropboxforbusiness-provisioning-tutorial/provisioning.png)
 
-5. W obszarze **poświadczeń administratora** kliknij **autoryzacji**. Dropbox dla okna dialogowego logowania biznesowych zostanie otwarty w nowym oknie przeglądarki.
+5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj**. Dropbox dla okna dialogowego logowania firmy zostanie otwarty w nowym oknie przeglądarki.
 
-6. Na **logowania do usługi Dropbox, aby połączyć się z usługą Azure AD** okna dialogowego, zalogować się w usłudze Dropbox dla dzierżawy biznesowych.
+6. Na **logowania do usługi Dropbox, aby połączyć się z usługą Azure AD** okno dialogowe, zaloguj się do usługi Dropbox dla firm dzierżawy.
 
-     ![Inicjowanie obsługi użytkowników](./media/dropboxforbusiness-provisioning-tutorial/ic769518.png "Inicjowanie obsługi użytkowników")
+     ![Inicjowanie obsługi użytkowników](./media/dropboxforbusiness-provisioning-tutorial/ic769518.png "aprowizacji użytkowników")
 
-7. Upewnij się, czy chcesz zezwolić usłudze Azure Active Directory Aby wprowadzić zmiany w usłudze Dropbox dla dzierżawy biznesowych. Kliknij przycisk **Zezwalaj**.
+7. Upewnij się, że chcesz przyznać uprawnienia usługi Azure Active Directory, aby wprowadzić zmiany w usłudze Dropbox dla firm dzierżawy. Kliknij przycisk **Zezwalaj**.
     
-      ![Inicjowanie obsługi użytkowników](./media/dropboxforbusiness-provisioning-tutorial/ic769519.png "Inicjowanie obsługi użytkowników")
+      ![Inicjowanie obsługi użytkowników](./media/dropboxforbusiness-provisioning-tutorial/ic769519.png "aprowizacji użytkowników")
 
-8. W portalu Azure kliknij **Testuj połączenie** zapewniające usługi Azure AD mogą łączyć się z Twojej skrzynki dla aplikacji biznesowych. Jeśli połączenie nie powiedzie się, zapewnić usłudze Dropbox konto firmowe, ma uprawnienia administratora zespołu i spróbuj **"Autoryzuj"** krok ponownie.
+8. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z usługi Dropbox dla firm. Jeśli połączenie nie powiedzie się, upewnij się, usłudze Dropbox dla firm konto ma uprawnienia administratora zespołu i spróbuj **"Autoryzuj"** krok ponownie.
 
 9. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru.
 
-10. Kliknij przycisk **zapisać.**
+10. Kliknij przycisk **Zapisz.**
 
-11. W sekcji mapowania wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi Dropbox dla firm.**
+11. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi Dropbox dla firm.**
 
-12. W **mapowań atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD Dropbox dla firm. Atrybuty wybrany jako **pasujące** właściwości są używane do dopasowania kont użytkowników w Dropbox dla firm dla operacji update. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+12. W **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do usługi Dropbox dla firm. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze Dropbox dla firm dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-13. Aby włączyć usługi Azure AD, inicjowania obsługi usługi Dropbox dla firm, zmień **stan inicjowania obsługi administracyjnej** do **na** w sekcji Ustawienia
+13. Aby włączyć usługi Azure AD, inicjowania obsługi usługi Dropbox dla firm, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
 
-14. Kliknij przycisk **zapisać.**
+14. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępnej synchronizacji użytkowników i/lub grupy przypisane do skrzynki dla firm w sekcji Użytkownicy i grupy. Synchronizacji początkowej zajmuje więcej czasu wykonywania niż kolejne synchronizacje, występujące co około 40 minut tak długo, jak usługa jest uruchomiona. Można użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej Dzienniki aktywności, które opisują wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej w usłudze Dropbox dla aplikacji biznesowych.
+Rozpoczyna się wstępna synchronizacja użytkowników i/lub grupy przypisane do usługi Dropbox dla firm w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w usłudze Dropbox dla firm.
 
-Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi dzienników do odczytu, zobacz [raportowania na użytkownika automatyczne Inicjowanie obsługi konta](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie rejestracji jednokrotnej](dropboxforbusiness-tutorial.md)
+* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurowanie logowania jednokrotnego](dropboxforbusiness-tutorial.md)

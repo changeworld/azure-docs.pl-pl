@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5c5e41f1baad8bd49f4fa2889ef0677d69db10da
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413583"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299869"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą pakietu ACR Build
 
@@ -31,7 +31,7 @@ Obraz kontenera wyzwalacza opiera się automatycznie, gdy kod jest zaangażowana
 
 ## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Szybka kompilacja: wewnętrzny zdefiniowana pętla rozszerzony do chmury
 
-Początek zarządzania cyklem życia rozpoczyna się przed deweloperów zatwierdzić swoje pierwsze wiersze kodu. Tworzenie rejestru Azure container Registry [szybkie tworzenie](container-registry-tutorial-quick-build.md) funkcji zapewnia środowisko zintegrowane lokalnego wewnętrznej pętli tworzenia kodu, Odciążanie kompilacji na platformie Azure. Za pomocą szybkiego kompilacji można sprawdzić, definicje kompilacji automatycznych przed zatwierdzeniem kodu.
+Początek zarządzania cyklem życia rozpoczyna się przed deweloperów zatwierdzić swoje pierwsze wiersze kodu. Tworzenie rejestru Azure container Registry [szybkie tworzenie](container-registry-tutorial-quick-build.md) funkcji zapewnia środowisko zintegrowane lokalnego wewnętrznej pętli tworzenia kodu, Odciążanie kompilacji na platformie Azure. Za pomocą szybkiego kompilacji można sprawdzić potoków automatycznej kompilacji przed zatwierdzeniem kodu.
 
 Przy użyciu znanej `docker build` formacie [az acr build] [ az-acr-build] polecenie w interfejsie wiersza polecenia platformy Azure wymaga **kontekstu** (zestawu plików do kompilacji), wysyła do usługi kompilacji usługi ACR Ponadto domyślnie wypycha utworzony obraz do rejestru, jej po zakończeniu.
 

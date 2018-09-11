@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25773124fcd479489f5d2d544cc5b6e3b11e325a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718985"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301144"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawach skalowania maszyn wirtualnych
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skalowania zestawu lub skryptów instalacji automatycznie są uruchamiane w istniejących wystąpieniach maszyn wirtualnych. Poznasz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego w zestawie skalowania.
@@ -114,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Instalowanie aplikacji za pomocą aktualizacji systemu operacyjnego
 Po udostępnieniu nowej wersji systemu operacyjnego można użyć lub utworzyć obraz niestandardowy i [wdrażania uaktualnień systemu operacyjnego](virtual-machine-scale-sets-upgrade-scale-set.md) skalowania zestawu. Każde wystąpienie maszyny Wirtualnej została uaktualniona do najnowszego obrazu, który określisz. Za pomocą niestandardowego obrazu i aplikacji, wstępnie zainstalowane rozszerzenie niestandardowego skryptu lub programu PowerShell DSC aby aplikacja automatycznie dostępny podczas wykonywania uaktualnienia. Może być konieczne planowanie konserwacji aplikacji podczas wykonywania tego procesu, aby upewnić się, że nie istnieją żadne wersji problemy ze zgodnością.
 
-Jeśli używasz niestandardowego obrazu maszyny Wirtualnej z aplikacją wstępnie zainstalowane aktualizacje aplikacji może być zintegrowany z potoku wdrożenia w celu tworzenia nowych obrazów i wdrażania uaktualnień systemu operacyjnego w zestawie skalowania. Takie podejście umożliwia potoku, aby wczytać najnowsze kompilacje aplikacji, Utwórz i Zweryfikuj obrazu maszyny Wirtualnej, a następnie uaktualnić wystąpienia maszyny Wirtualnej w zestawie skalowania. Aby uruchomić potok wdrażania, który kompiluje i wdraża aktualizacje aplikacji w niestandardowych obrazów maszyn wirtualnych, można wykonać następujące akcje [Tworzenie obrazu usługi Packer i wdrażanie za pomocą programu Visual Studio Team Services](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset), lub użyj innej platformy, takie jak [rozwiązania Spinnaker ](https://www.spinnaker.io/) lub [Jenkins](https://jenkins.io/).
+Jeśli używasz niestandardowego obrazu maszyny Wirtualnej z aplikacją wstępnie zainstalowane aktualizacje aplikacji może być zintegrowany z potoku wdrożenia w celu tworzenia nowych obrazów i wdrażania uaktualnień systemu operacyjnego w zestawie skalowania. Takie podejście umożliwia potoku, aby wczytać najnowsze kompilacje aplikacji, Utwórz i Zweryfikuj obrazu maszyny Wirtualnej, a następnie uaktualnić wystąpienia maszyny Wirtualnej w zestawie skalowania. Aby uruchomić potok wdrażania, który kompiluje i wdraża aktualizacje aplikacji w niestandardowych obrazów maszyn wirtualnych, można wykonać następujące akcje [Tworzenie obrazu usługi Packer i wdrażanie dzięki usługom DevOps platformy Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), lub użyj innej platformy, takie jak [Spinnaker](https://www.spinnaker.io/) lub [Jenkins](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

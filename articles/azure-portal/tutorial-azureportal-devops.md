@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d0bf66a224a8a42f813bc817f78321167e309bdb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056966"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303527"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Samouczek: DevOps w witrynie Azure portal
 Platforma Azure zawiera wiele elastycznych przepływów pracy metodyki DevOps. W tym samouczku dowiesz się, jak korzystać z możliwości w witrynie Azure portal, programowanie, testowanie, wdrażanie, rozwiązywanie problemów, monitorowanie i zarządzanie uruchomionych aplikacji. W tym samouczku omówiono następujące kwestie:
@@ -82,7 +82,7 @@ Aplikacja internetowa zostanie utworzona za pomocą usługi [Azure App Service](
     
     ![image15][image15]
     
-    Włączanie ciągłego wdrażania za pomocą witryny Azure portal jest proste. Możesz również tworzyć bardziej złożone potoki tworzenia wersji i korzystać z wielu innych rozwiązań, takich jak systemy automatycznej kompilacji i zarządzania wersjami, umożliwiających wdrażanie na platformie Azure istniejących systemów kontroli źródła i ciągłej integracji.
+    Włączanie ciągłego wdrażania za pomocą witryny Azure portal jest proste. Możesz również tworzyć bardziej złożone potoki wydań i wielu innych rozwiązań za pomocą istniejących kontroli źródła i systemy ciągłej integracji do wdrożenia na platformie Azure, np. wykorzystując zautomatyzowane systemy zarządzania potoki usługi Azure.
 
 ## <a name="develop-and-test-an-app"></a>Tworzenie i testowanie aplikacji
 Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdrożone. Zostanie też skonfigurować niektóre testowania wydajnościowego na potrzeby aplikacji sieci Web.
@@ -99,7 +99,7 @@ Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdr
 4. Za pomocą okna konsoli możesz przesyłać aktywne polecenia do aplikacji. Wpisz polecenie dir i naciśnij klawisz Enter. Pamiętaj o tym, że polecenia wymagające podwyższonego poziomu uprawnień nie będą działać.
    
    ![image19][image19]
-5. Wróć do kategorii Tworzenie i wybierz pozycję Visual Studio Online. Uwaga: usługa Visual Studio Online nosi teraz nazwę Visual Studio Team Services.
+5. Wróć do kategorii Tworzenie i wybierz pozycję Visual Studio Online. Uwaga: Visual Studio Online nosi teraz nazwę usługom DevOps platformy Azure.
    
    ![image20][image20]
 6. Włącz opcję edytowania aplikacji w przeglądarce.
@@ -125,7 +125,7 @@ Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdr
 12. Wróć do bloku narzędzi i kliknij pozycję Test wydajnościowy w obszarze Tworzenie.
     
     ![image28][image28]
-13. Musisz skonfigurować konto usług Team Services. Więcej informacji można znaleźć tutaj: [Tworzenie konta usługi Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
+13. Należy ustawić organizacji usługom DevOps platformy Azure. Więcej informacji można znaleźć tutaj: [utworzyć organizację usługi Azure DevOps](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Kliknij pozycję Nowy, aby utworzyć test wydajnościowy.
     
     ![image29][image29]

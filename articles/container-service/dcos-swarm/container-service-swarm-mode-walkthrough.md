@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35b8ae347181d272dc899f41f07af36a611aa9f0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421937"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299155"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Wdrażanie klastra Docker CE
 
@@ -169,7 +169,7 @@ W tym przewodniku Szybki start wcześniej utworzone obrazy kontenera zostały u�
 
 W tym przewodniku Szybki start wdrożono klaster Docker Swarm oraz wdrożono w nim aplikację obsługującą wiele kontenerów.
 
-Aby dowiedzieć się więcej na temat integracji klastra Docker Swarm z usługą Visual Studio Team Services, przejdź do części „Ciągła integracja/ciągłe dostarczanie z usługami Swarm i VSTS”.
+Aby dowiedzieć się więcej na temat integracji klastra Docker swarm przy użyciu infrastruktury DevOps platformy Azure, nadal CI/CD przy użyciu rozwiązań Docker Swarm i DevOps platformy Azure.
 
 > [!div class="nextstepaction"]
-> [Ciągła integracja/ciągłe dostarczanie z usługami Swarm i VSTS](./container-service-docker-swarm-setup-ci-cd.md)
+> [Ciągła Integracja/ciągłe dostarczanie z usługami Docker Swarm i DevOps platformy Azure](./container-service-docker-swarm-setup-ci-cd.md)

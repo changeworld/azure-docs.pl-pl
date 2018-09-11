@@ -1,6 +1,6 @@
 ---
-title: Ciągła integracja w VS Team Services za pomocą projekty grupy zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera opis sposobu konfigurowania ciągłej integracji w programie Visual Studio Team Services za pomocą projekty wdrażania grup zasobów platformy Azure w programie Visual Studio.
+title: Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty grupy zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania ciągłej integracji w usługach infrastruktury DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure w programie Visual Studio.
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
@@ -14,74 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192948"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297846"
 ---
-# <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w programie Visual Studio Team Services za pomocą projekty wdrażania grup zasobów platformy Azure
-Do wdrożenia szablonu platformy Azure, możesz wykonać zadania w różnych etapach: kopiowania budowania, testowania na platformie Azure (zwane również "Tymczasowości") i wdrażania szablonu. Istnieją dwa różne sposoby wdrażania szablonów w programie Visual Studio Team Services (VS Team Services). Obie metody zapewniają te same wyniki, dlatego wybierz jedną, która najlepiej pasuje do przepływu pracy.
+# <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
+Do wdrożenia szablonu platformy Azure, wykonywania zadań w poszczególnych etapach: kopiowania kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
 
-1. Dodaj pojedynczy krok do definicji kompilacji, który uruchamia skrypt programu PowerShell, który jest zawarty w projekcie wdrożenia grupy zasobów platformy Azure (wdrażanie AzureResourceGroup.ps1). Skrypt kopiuje artefaktów, a następnie wdraża szablonu.
-2. Dodaj wiele VS Team Services kroki procesu kompilacji, każda z nich zrealizowane etapu.
+1. Dodaj pojedynczego kroku do potoku Twojej kompilacji, który uruchamia skrypt programu PowerShell, który znajduje się w projekcie wdrożenia grupy zasobów platformy Azure (wdrażanie AzureResourceGroup.ps1). Skrypt kopiuje artefakty, a następnie wdrażania szablonu.
+2. Dodaj wielu usługom DevOps platformy Azure kroków kompilacji, każdy z nich do wykonania zadania etapu.
 
-W tym artykule przedstawiono obie opcje. Pierwsza opcja ma zaletą używania tego samego skryptu, używany przez deweloperów w programie Visual Studio i udostępnienie spójności w całym cyklu życia. Drugą opcją można używać zamiast wbudowanego skryptu. Obu procedurach założono, że masz już Projekt wdrożenia programu Visual Studio w wersji programu VS Team Services.
+W tym artykule przedstawiono obie opcje. Pierwszym z nich ma tę zaletę przy użyciu tego samego skryptu, które są używane przez deweloperów w programie Visual Studio i zapewniając spójność w całym cyklu życia. Drugiej opcji można używać zamiast wbudowanego skryptu. Obie procedury przyjęto założenie, że masz już program Visual Studio Projekt wdrożenia sprawdzone w usługom DevOps platformy Azure.
 
 ## <a name="copy-artifacts-to-azure"></a>Kopiowanie artefaktów na platformie Azure
-Niezależnie od tego, w tym scenariuszu jeśli masz wszelkie artefakty, które są wymagane do wdrożenia szablonu należy przyznać dostęp do usługi Azure Resource Manager do ich. Tych artefaktów może zawierać pliki takie jak:
+Niezależnie od tego, w tym scenariuszu jeśli masz wszelkie artefakty, które są potrzebne do wdrożenia szablonu, musisz udzielić dostępu do usługi Azure Resource Manager do nich. Te artefakty mogą zawierać pliki takie jak:
 
 * Zagnieżdżone szablony
 * Konfiguracja i skryptów DSC
 * Pliki binarne aplikacji
 
-### <a name="nested-templates-and-configuration-scripts"></a>Zagnieżdżone szablony i skrypty do konfiguracji
-Jeśli używasz szablonów dostarczonych przez program Visual Studio (lub skompilowanej za pomocą wstawki kodu programu Visual Studio), skrypt programu PowerShell nie tylko przygotuje artefaktów, również parameterizes identyfikator URI dla zasobów dla różnych wdrożeń. Skrypt, a następnie kopiuje artefakty do bezpiecznego kontenera na platformie Azure, tworzy token SaS dla kontenera i następnie przekazuje informację do wdrażania szablonu. Zobacz [Utwórz wdrożenie szablonu](https://msdn.microsoft.com/library/azure/dn790564.aspx) Aby dowiedzieć się więcej na temat zagnieżdżone szablony.  Przy użyciu zadań w programie VS Team Services, należy wybrać odpowiedni zadań do wdrożenia szablonu i w razie potrzeby podać wartości parametrów z kroku przemieszczania do wdrożenia szablonu.
+### <a name="nested-templates-and-configuration-scripts"></a>Zagnieżdżone szablony i skryptami konfiguracyjnymi
+Jeśli używasz szablonu dostępnego w programie Visual Studio (lub skompilowane przy użyciu fragmentów kodu programu Visual Studio), skrypt programu PowerShell przygotowuje nie tylko artefakty, parametryzuje dane również identyfikator URI zasobów dla różnych wdrożeń. Skrypt, a następnie kopiuje artefakty do bezpiecznego kontenera na platformie Azure, tworzy token SaS dla kontenera i następnie przekazuje informację do wdrożenia szablonu. Zobacz [Utwórz wdrożenie szablonu](https://msdn.microsoft.com/library/azure/dn790564.aspx) Aby dowiedzieć się więcej na temat szablonów zagnieżdżonych.  Korzystając z zadań w usługom DevOps platformy Azure, należy wybrać odpowiednie zadania dla wdrożenia szablonu i jeśli to konieczne, przekazać wartości parametru z kroku przemieszczania do wdrożenia szablonu.
 
-## <a name="set-up-continuous-deployment-in-vs-team-services"></a>Konfigurowanie ciągłego wdrażania w programie VS Team Services
-Aby wywołać skrypt programu PowerShell w wersji programu VS Team Services, należy zaktualizować definicję kompilacji. Krótko mówiąc kroki są: 
+## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Skonfiguruj ciągłe wdrażanie w potokach platformy Azure
+Aby wywołać skrypt programu PowerShell w potokach platformy Azure, musisz zaktualizować swój potok kompilacji. Krótko mówiąc czynności są następujące: 
 
-1. Edytowanie definicji kompilacji.
-2. Konfigurowanie autoryzacji Azure w wersji programu VS Team Services.
+1. Edytuj proces kompilacji.
+2. Konfigurowanie autoryzacji platformy Azure w potokach platformy Azure.
 3. Dodaj krok kompilacji programu Azure PowerShell, który odwołuje się do skryptu programu PowerShell w projekcie wdrożenia grupy zasobów platformy Azure.
-4. Ustaw wartość *- ArtifactsStagingDirectory* parametru do pracy z projektem wbudowane VS Team Services.
+4. Ustaw wartość *- ArtifactsStagingDirectory* parametru, aby pracować z projektem, utworzone w potokach platformy Azure.
 
-### <a name="detailed-walkthrough-for-option-1"></a>Szczegółowy przewodnik dotyczący opcję 1
-Poniższe procedury prowadzą użytkownika przez kroki niezbędne do skonfigurowania ciągłe wdrażanie w VS Team Services za pomocą jednego zadania, które uruchamia skrypt programu PowerShell w projekcie. 
+### <a name="detailed-walkthrough-for-option-1"></a>Szczegółowy przewodnik dotyczący korzystania opcję 1
+Poniższe procedury opisują kroki niezbędne do skonfigurowania ciągłego wdrażania w usłudze Azure Services DevOps za pomocą pojedynczego zadania, które uruchamia skrypt programu PowerShell w projekcie. 
 
-1. Edytowanie definicji kompilacji programu VS Team Services i dodać kroku kompilacji programu Azure PowerShell. Wybierz definicję kompilacji w obszarze **definicje kompilacji** kategorii, a następnie wybierz **Edytuj** łącza.
+1. Edytuj swój potok kompilacji usługom DevOps platformy Azure i Dodaj krok kompilacji programu Azure PowerShell. Wybierz proces kompilacji w ramach **tworzyć potoki** kategorii, a następnie wybierz **Edytuj** łącza.
    
-   ![Edytowanie definicji kompilacji][0]
-2. Dodaj nową **programu Azure PowerShell** kompilacji krok do definicji kompilacji, a następnie wybierz pozycję **Dodaj krok kompilacji...** Dodaj...
+   ![Edytuj potoku kompilacji][0]
+2. Dodaj nową **programu Azure PowerShell** krok do potoku kompilacji kompilacji, a następnie wybierz **Dodaj krok kompilacji...** Dodaj...
    
-   ![Dodawanie kroku kompilacji][1]
-3. Wybierz **zadań Wdróż** kategorii, wybierz opcję **programu Azure PowerShell** zadań, a następnie wybierz pozycję jego **Dodaj** przycisku.
+   ![Dodaj krok kompilacji][1]
+3. Wybierz **zadania wdrażania** kategorii, wybierz opcję **programu Azure PowerShell** zadań, a następnie wybierz jego **Dodaj** przycisku.
    
-   ![Dodawanie zadań][2]
-4. Wybierz **programu Azure PowerShell** kroku kompilacji, a następnie wypełnij jego wartości.
+   ![Dodaj zadania][2]
+4. Wybierz **programu Azure PowerShell** krok kompilacji, a następnie wypełnij jego wartości.
    
-   1. Jeśli masz już dodany do programu VS Team Services punktu końcowego usługi Azure, wybierz subskrypcję w **subskrypcji Azure** pole listy rozwijanej, a następnie przejdź do następnej sekcji. 
+   1. Jeśli masz już dodany do usługi Azure DevOps Services punktu końcowego usługi platformy Azure, wybierz subskrypcję, w **subskrypcji platformy Azure** polu listy rozwijanej, a następnie przejdź do następnej sekcji. 
       
-      Jeśli nie masz punkt końcowy usługi Azure w wersji programu VS Team Services, musisz dodać jeden. W tej podsekcji przeprowadza użytkownika przez proces. Jeśli konto Azure korzysta z konta Microsoft (na przykład usługi Hotmail), należy wykonać następujące kroki, aby pobrać uwierzytelnianie nazwy głównej usługi.
-   2. Wybierz **Zarządzaj** znajdujący się obok podsekcji **subskrypcji Azure** pole listy rozwijanej.
+      Jeśli w usługom DevOps platformy Azure, nie ma punktu końcowego usługi platformy Azure, musisz dodać jeden. W tej podsekcji przeprowadzi Cię przez proces. Jeśli Twoje konto platformy Azure korzysta z konta Microsoft (np. usługi Hotmail), należy wykonać poniższe kroki, aby uzyskać uwierzytelnianie jednostki usługi.
+
+   2. Wybierz **Zarządzaj** łącze obok **subskrypcji platformy Azure** pole listy rozwijanej.
       
-      ![Zarządzać subskrypcjami platformy Azure][3]
+      ![Zarządzanie subskrypcjami platformy Azure][3]
    3. Wybierz **Azure** w **nowy punkt końcowy usługi** pole listy rozwijanej.
       
       ![Nowy punkt końcowy usługi][4]
    4. W **dodawania subskrypcji platformy Azure** okno dialogowe, wybierz opcję **nazwy głównej usługi** opcji.
       
-      ![Opcja głównej usługi][5]
-   5. Dodawanie informacji o subskrypcji platformy Azure do **dodawania subskrypcji platformy Azure** okno dialogowe. Należy podać następujące elementy:
+      ![Opcja nazwy głównej usługi][5]
+   5. Dodaj informacje o subskrypcji platformy Azure do **dodawania subskrypcji platformy Azure** okno dialogowe. Należy podać następujące elementy:
       
       * Identyfikator subskrypcji
       * Nazwa subskrypcji
-      * Identyfikator nazwy głównej usługi
-      * Klucz nazwy głównej usługi
+      * Identyfikator jednostki usługi
+      * Klucz jednostki usługi
       * Identyfikator dzierżawy
-   6. Dodaj nazwę wybór **subskrypcji** pole Nazwa. Ta wartość jest później wyświetlana w **subskrypcji Azure** listy rozwijanej w VS Team Services. 
-   7. Jeśli nie znasz identyfikator subskrypcji platformy Azure, można użyć jednej z poniższych poleceń, można go pobrać.
+   6. Dodaj nazwę wybranej do **subskrypcji** pola Nazwa podmiotu. Ta wartość znajduje się dalej w **subskrypcji platformy Azure** listy rozwijanej w usługom DevOps platformy Azure. 
+
+   7. Jeśli nie znasz Identyfikatora subskrypcji platformy Azure, można użyć jednej z poniższych poleceń, pobrać go.
       
       Dla skryptów programu PowerShell użyj polecenia:
       
@@ -90,33 +92,33 @@ Poniższe procedury prowadzą użytkownika przez kroki niezbędne do skonfigurow
       W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
       
       `azure account show`
-   8. Można pobrać Identyfikatora nazwy głównej usługi, klucz nazwy głównej usługi i identyfikator dzierżawy, postępuj zgodnie z procedurą w [aplikacji usługi Active Directory Utwórz i nazwę główną usługi za pomocą portalu](resource-group-create-service-principal-portal.md) lub [uwierzytelniania nazwy głównej usługi z usługą Azure Resource Manager](resource-group-authenticate-service-principal.md).
-   9. Dodawanie wartości Identyfikatora nazwy głównej usługi, klucz nazwy głównej usługi i identyfikator dzierżawcy do **dodawania subskrypcji platformy Azure** okna dialogowego polu, a następnie wybierz pozycję **OK** przycisku.
+   8. Aby uzyskać identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy, postępuj zgodnie z procedurą w [aplikacji Utwórz usługi Active Directory i jednostki usługi przy użyciu portalu](resource-group-create-service-principal-portal.md) lub [uwierzytelniania jednostki usługi przy użyciu platformy Azure Menedżer zasobów](resource-group-authenticate-service-principal.md).
+   9. Dodaj wartości identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy w **dodawania subskrypcji platformy Azure** okna dialogowego pole, a następnie wybierz **OK** przycisku.
       
-      Obecnie masz prawidłowe nazwy głównej usługi służące do uruchamiania skryptu programu PowerShell systemu Azure.
-5. Edytowanie definicji kompilacji, a następnie wybierz pozycję **programu Azure PowerShell** kroku kompilacji. Wybierz subskrypcję w **subskrypcji Azure** pole listy rozwijanej. (Jeśli nie ma subskrypcji, wybierz **Odśwież** obok przycisku **Zarządzaj** łącza.) 
+      Masz teraz prawidłowe nazwy głównej usługi można użyć, aby uruchomić skrypt programu Azure PowerShell.
+5. Edytuj potoku kompilacji, a następnie wybierz **programu Azure PowerShell** krok kompilacji. Wybierz subskrypcję, w **subskrypcji platformy Azure** pole listy rozwijanej. (Jeśli subskrypcja nie jest wyświetlany, wybierz opcję **Odśwież** obok przycisku **Zarządzaj** łącza.) 
    
-   ![Skonfiguruj zadania kompilacji programu Azure PowerShell][8]
-6. Podaj ścieżkę do skryptu programu PowerShell AzureResourceGroup.ps1 wdrażania. Aby to zrobić, wybierz przycisk wielokropka (...) **ścieżka skryptu** polu, przejdź do skryptu programu PowerShell AzureResourceGroup.ps1 Wdróż w **skryptów** folderu projektu, zaznacz go, a następnie wybierz **OK** przycisku.    
+   ![Konfigurowanie zadania kompilacji programu Azure PowerShell][8]
+6. Podaj ścieżkę do skryptu programu PowerShell AzureResourceGroup.ps1 wdrażania. Aby to zrobić, wybierz przycisk wielokropka (...) obok **ścieżka skryptu** , przejdź do skryptu środowiska PowerShell wdrażanie AzureResourceGroup.ps1 w **skrypty** folder projektu, wybierz go, a następnie Wybierz **OK** przycisku.    
    
    ![Wybierz ścieżkę do skryptu][9]
-7. Po wybraniu skryptu zaktualizuj ścieżkę do skryptu, dzięki czemu jest uruchamiany z Build.StagingDirectory (tym samym katalogu który *ArtifactsLocation* ma ustawioną wartość). Można to zrobić przez dodanie "$(Build.StagingDirectory)/"na początku ścieżka skryptu.
+7. Po zaznaczeniu skryptu zaktualizuj ścieżkę do skryptu, dzięki czemu jest uruchamiany z Build.StagingDirectory (tym samym katalogu, *ArtifactsLocation* jest równa). Można to zrobić, dodając "$(Build.StagingDirectory)/"do stanu sprzed ścieżka skryptu.
    
-    ![Edytuj ścieżka do skryptu][10]
-8. W **argumenty skryptu** wprowadź następujące parametry (w jednym wierszu). Po uruchomieniu skryptu w programie Visual Studio, możesz sprawdzić, jak VS używa parametrów w **dane wyjściowe** okna. Służy to jako punktu wyjścia do ustawiania wartości parametrów w Twojej kroku kompilacji.
+    ![Edytuj ścieżkę do skryptu][10]
+8. W **argumenty skryptu** wprowadź następujące parametry (w jednym wierszu). Po uruchomieniu skryptu w programie Visual Studio, można sprawdzić, jak VS używa parametrów w **dane wyjściowe** okna. Umożliwia to jako punktu wyjścia do ustawiania wartości parametrów w kroku Twojej kompilacji.
    
    | Parametr | Opis |
    | --- | --- |
-   | -ResourceGroupLocation |Wartość lokalizacja geograficzna, których grupa zasobów znajduje się, takich jak **eastus** lub **wschodnie stany USA**. (Dodaj apostrofy, jeśli jest spacja w nazwie). Zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/) Aby uzyskać więcej informacji. |
+   | -ResourceGroupLocation |Wartość lokalizacji geograficznej, gdy grupa zasobów znajduje się, takie jak **eastus** lub **wschodnie stany USA**. (Dodaj pojedynczego apostrofu, jeśli ma to miejsce w nazwie). Zobacz [regionów platformy Azure](https://azure.microsoft.com/regions/) Aby uzyskać więcej informacji. |
    | -ResourceGroupName |Nazwa grupy zasobów, użyty dla tego wdrożenia. |
-   | -UploadArtifacts |Tego parametru, jeśli jest obecny, określa, że artefakty, które należy przekazać do platformy Azure z systemu lokalnego. Należy ustawić ten przełącznik, jeśli wdrożenie szablonu wymaga artefakty dodatkowe, które mają być etap przy użyciu skryptu środowiska PowerShell (na przykład skrypty do konfiguracji lub zagnieżdżone szablony). |
-   | -StorageAccountName |Nazwa konta magazynu, użyty do etapu artefaktów dla tego wdrożenia. Ten parametr jest używany tylko, jeśli są przemieszczania artefakty do wdrożenia. Jeśli podano tego parametru, jeśli skrypt nie został utworzony podczas poprzedniego wdrożenia jest tworzone nowe konto magazynu. Jeśli parametr jest określony, konta magazynu musi już istnieć. |
-   | -StorageAccountResourceGroupName |Nazwa grupy zasobów, skojarzone z kontem magazynu. Ten parametr jest wymagany tylko wtedy, gdy Podaj wartość dla parametru StorageAccountName. |
-   | -TemplateFile |Ścieżka do pliku szablonu w projekcie wdrożenia grupy zasobów platformy Azure. Aby zwiększyć elastyczność, należy użyć ścieżki dla tego parametru, który względną wobec lokalizacji skrypt programu PowerShell, a nie ścieżką bezwzględną. |
-   | -TemplateParametersFile |Ścieżka do pliku parametrów w projekcie wdrożenia grupy zasobów platformy Azure. Aby zwiększyć elastyczność, należy użyć ścieżki dla tego parametru, który względną wobec lokalizacji skrypt programu PowerShell, a nie ścieżką bezwzględną. |
-   | -ArtifactStagingDirectory |Ten parametr umożliwia programu PowerShell skryptu znany folder, z którym powinny zostać skopiowane pliki binarne projektu. Ta wartość zastępuje wartości domyślne używane przez skrypt programu PowerShell. Użyć wersji programu VS Team Services, ustaw wartość: $(Build.StagingDirectory) - ArtifactStagingDirectory |
+   | -UploadArtifacts |Tego parametru, jeśli jest obecny, określa, że artefakty, które należy przekazać na platformę Azure z systemu lokalnego. Należy ustawić tego przełącznika, jeśli wdrożenie szablonu wymaga dodatkowego artefaktów, które mają zostać przygotowane za pomocą skryptu programu PowerShell (takich jak skrypty konfiguracji lub zagnieżdżone szablony). |
+   | -StorageAccountName |Nazwa konta magazynu używany do etapu artefaktów dla tego wdrożenia. Ten parametr jest używany tylko, jeśli są przemieszczania artefaktów dla wdrożenia. Jeśli parametr ten zostanie dostarczony, nowe konto magazynu zostanie utworzony, jeśli skrypt nie został utworzony w poprzednim wdrożeniu. Jeśli parametr jest określony, konto magazynu musi już istnieć. |
+   | -StorageAccountResourceGroupName |Nazwa grupy zasobów skojarzonych z kontem magazynu. Ten parametr jest wymagany tylko wtedy, gdy chcesz podać wartość dla parametru StorageAccountName. |
+   | -TemplateFile |Ścieżka do pliku szablonu w projekcie wdrożenia grupy zasobów platformy Azure. Aby zwiększyć elastyczność, należy użyć ścieżki dla tego parametru, która jest względem lokalizacji pliku skryptu programu PowerShell, a nie ścieżkę bezwzględną. |
+   | -TemplateParametersFile |Ścieżka do pliku parametrów w projekcie wdrożenia grupy zasobów platformy Azure. Aby zwiększyć elastyczność, należy użyć ścieżki dla tego parametru, która jest względem lokalizacji pliku skryptu programu PowerShell, a nie ścieżkę bezwzględną. |
+   | -ArtifactStagingDirectory |Ten parametr umożliwia programu PowerShell, skrypt znany folder, w której powinny zostać skopiowane pliki binarne projektu. Ta wartość zastępuje wartość domyślna używana przez skrypt programu PowerShell. Usługom DevOps platformy Azure do używania, ustaw wartość: - ArtifactStagingDirectory $(Build.StagingDirectory) |
    
-   Oto przykładowy skrypt argumentów (podzielone dla czytelności wiersz):
+   Oto przykład argumenty skryptu (linia jest uszkodzona czytelności):
    
    ```    
    -ResourceGroupName 'MyGroup' -ResourceGroupLocation 'eastus' -TemplateFile '..\templates\azuredeploy.json' 
@@ -124,62 +126,62 @@ Poniższe procedury prowadzą użytkownika przez kroki niezbędne do skonfigurow
    –StorageAccountResourceGroupName 'Default-Storage-EastUS' -ArtifactStagingDirectory '$(Build.StagingDirectory)'    
    ```
    
-   Po zakończeniu, **argumenty skryptu** pole powinno przypominać następujące listy:
+   Gdy skończysz, **argumenty skryptu** pole powinna przypominać przedstawioną poniżej:
    
    ![Argumenty skryptu][11]
-9. Po dodaniu wszystkie elementy wymagane do kroku kompilacji programu Azure PowerShell, wybierz **kolejki** kompilacji przycisk, aby skompilować projekt. **Kompilacji** ekranie zostaną wyświetlone dane wyjściowe skryptu programu PowerShell.
+9. Po dodaniu wymagane elementy do kroku kompilacji programu Azure PowerShell, wybierz **kolejki** kompilacji przycisk, aby skompilować projekt. **Kompilacji** ekran przedstawia dane wyjściowe skryptu programu PowerShell.
 
-### <a name="detailed-walkthrough-for-option-2"></a>Szczegółowy przewodnik dotyczący opcja 2
-Poniższe procedury przeprowadzenie czynności niezbędnych do skonfigurowania ciągłe wdrażanie w VS Team Services za pomocą wbudowanych zadań.
+### <a name="detailed-walkthrough-for-option-2"></a>Szczegółowy przewodnik dotyczący korzystania z opcji 2
+Poniższe procedury opisują czynności niezbędne do skonfigurowania ciągłego wdrażania w usłudze Azure Services DevOps za pomocą wbudowanych zadań.
 
-1. Edytuj definicję kompilacji programu VS Team Services, aby dodać dwie nowe kroki procesu kompilacji. Wybierz definicję kompilacji w obszarze **definicje kompilacji** kategorii, a następnie wybierz **Edytuj** łącza.
+1. Edytuj potoku kompilacji usługom DevOps platformy Azure, aby dodać dwa nowe kroki kompilacji. Wybierz proces kompilacji w ramach **definicje kompilacji** kategorii, a następnie wybierz **Edytuj** łącza.
    
    ![Edytowanie definicji kompilacji][12]
-2. Dodaj nowe kroki procesu kompilacji do definicji kompilacji przy użyciu **Dodaj krok kompilacji...** Dodaj...
+2. Dodaj nowe kroki kompilacji do potoku kompilacji przy użyciu **Dodaj krok kompilacji...** Dodaj...
    
-   ![Dodawanie kroku kompilacji][13]
-3. Wybierz **Wdróż** kategorii zadań, wybierz opcję **Azure File Copy** zadań, a następnie wybierz pozycję jego **Dodaj** przycisku.
+   ![Dodaj krok kompilacji][13]
+3. Wybierz **Wdróż** kategorii zadanie, wybierz opcję **kopiowania plików na platformę Azure** zadań, a następnie wybierz jego **Dodaj** przycisku.
    
    ![Dodaj zadanie kopiowania plików na platformę Azure][14]
-4. Wybierz **wdrożenie grupy zasobów Azure** zadań, a następnie wybierz jego **Dodaj** przycisk, a następnie **Zamknij** **katalogu zadania**.
+4. Wybierz **wdrożenie grupy zasobów Azure** zadań, a następnie wybierz jego **Dodaj** przycisku i następnie **Zamknij** **wykazu zadań**.
    
-   ![Zadanie wdrażania dodać grupy zasobów platformy Azure][15]
-5. Wybierz **Azure File Copy** zadań i podać jego wartości.
+   ![Dodaj zadanie wdrożenia grupy zasobów platformy Azure][15]
+5. Wybierz **kopiowania plików na platformę Azure** zadań, a następnie wypełnij jego wartości.
    
-   Jeśli masz już dodany do programu VS Team Services punktu końcowego usługi Azure, wybierz subskrypcję w **subskrypcji Azure** pole listy rozwijanej. Jeśli nie masz subskrypcji, zobacz [opcję 1](#detailed-walkthrough-for-option-1) instrukcje dotyczące konfigurowania co w usłudze VS Team Services.
+   Jeśli masz już dodany do usługi Azure DevOps Services punktu końcowego usługi platformy Azure, wybierz subskrypcję, w **subskrypcji platformy Azure** pole listy rozwijanej. Jeśli nie masz subskrypcji, zobacz [opcja 1](#detailed-walkthrough-for-option-1) instrukcje dotyczące konfigurowania w usługom DevOps platformy Azure.
    
-   * Źródło — wprowadź **$(Build.StagingDirectory)**
-   * Typ połączenia Azure - wybierz **usługi Azure Resource Manager**
-   * Subskrypcja platformy Azure RM — Wybierz subskrypcję dla konta magazynu, którego chcesz użyć w **subskrypcji Azure** pole listy rozwijanej. Jeśli nie ma subskrypcji, wybierz **Odśwież** obok przycisku **Zarządzaj** łącza.
-   * Typ docelowy — wybierz **obiektów Blob platformy Azure**
-   * RM konta magazynu — wybierz konto magazynu, ma zostać użyta do przemieszczania artefaktów
-   * Nazwa kontenera — wprowadź nazwę kontenera chcesz użyć dla przemieszczania; go może być dowolną nazwę prawidłowego kontenera, ale użyj jednej tej definicji kompilacji w wersji dedykowanej
+   * Source — naciśnij klawisz enter **$(Build.StagingDirectory)**
+   * Typ połączenia platformy Azure — wybierz **usługi Azure Resource Manager**
+   * Subskrypcja platformy Azure RM - Wybierz subskrypcję dla konta magazynu, które mają być używane w **subskrypcji platformy Azure** pole listy rozwijanej. Jeśli subskrypcja nie jest wyświetlany, wybierz opcję **Odśwież** obok przycisku **Zarządzaj** łącza.
+   * Typ docelowy — umożliwia wybór **obiektów Blob platformy Azure**
+   * Menedżer zasobów konta magazynu — wybierz konto magazynu ma być używana do przemieszczania artefaktów
+   * Nazwa kontenera — wprowadź nazwę kontenera, o których chcesz użyć dla przemieszczania; go może być dowolną nazwę prawidłowego kontenera, ale użyj jednej przeznaczonych dla tego potoku kompilacji
    
-   Wartości danych wyjściowych:
+   W przypadku wartości danych wyjściowych:
    
    * Wprowadź kontenera magazynu URI - **artifactsLocation**
    * Token sygnatury dostępu Współdzielonego kontenera magazynu — wprowadź **artifactsLocationSasToken**
    
-   ![Skonfiguruj zadania kopiowania plików na platformę Azure][16]
-6. Wybierz **wdrożenie grupy zasobów Azure** kroku kompilacji, a następnie wypełnij jego wartości.
+   ![Konfigurowanie zadania kopiowania plików na platformę Azure][16]
+6. Wybierz **wdrożenie grupy zasobów Azure** krok kompilacji, a następnie wypełnij jego wartości.
    
-   * Typ połączenia Azure - wybierz **usługi Azure Resource Manager**
-   * Subskrypcja platformy Azure RM — Wybierz subskrypcję do wdrożenia w **subskrypcji Azure** pole listy rozwijanej. Są to zazwyczaj tej samej subskrypcji, które są używane w poprzednim kroku
-   * Akcja — wybierz **tworzenia lub aktualizacji grupy zasobów**
-   * Grupa zasobów — wybierz grupę zasobów lub wprowadź nazwę nowej grupy zasobów dla wdrożenia
-   * Lokalizacja — wybierz lokalizację dla grupy zasobów
-   * Szablon — wprowadź ścieżkę i nazwę szablonu, aby wdrożyć dołączanie **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
-   * Parametry szablonu — wprowadź ścieżkę i nazwę parametrów, które mają być używane, dołączanie **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
-   * Zastąp parametrów szablonu — wprowadź lub skopiuj i wklej następujący kod:
+   * Typ połączenia platformy Azure — wybierz **usługi Azure Resource Manager**
+   * Subskrypcja platformy Azure RM - Wybierz subskrypcję do użycia we wdrożeniach **subskrypcji platformy Azure** pole listy rozwijanej. Są to zazwyczaj tej samej subskrypcji, które są używane w poprzednim kroku
+   * Akcja — wybierz **tworzenia lub zaktualizować grupy zasobów**
+   * Grupy zasobów — wybierz grupę zasobów lub wprowadź nazwę nowej grupy zasobów dla wdrożenia
+   * Lokalizacja — wybierz lokalizację grupy zasobów
+   * Szablon — wprowadź ścieżkę i nazwę szablonu do wdrożenia AS **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
+   * Parametry szablonu — wprowadź ścieżkę i nazwę parametrów, które ma być używany, AS **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
+   * Przesłanianie parametrów szablonu — wpisz lub skopiuj i wklej następujący kod:
      
      ```    
      -_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken (ConvertTo-SecureString -String "$(artifactsLocationSasToken)" -AsPlainText -Force)
      ```
-     ![Skonfiguruj zadania wdrażania grupy zasobów platformy Azure][17]
-7. Po dodaniu wszystkich wymaganych elementów, zapisać definicję kompilacji i wybierz polecenie **nowej kompilacji w kolejce** u góry.
+     ![Konfigurowanie zadania wdrożenia grupy zasobów platformy Azure][17]
+7. Po dodaniu wymagane elementy Zapisz potoku kompilacji i wybierz polecenie **nową kompilację w kolejce** u góry.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Odczyt [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md) Aby dowiedzieć się więcej na temat usługi Azure Resource Manager i grup zasobów platformy Azure.
+Odczyt [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md) Aby dowiedzieć się więcej na temat usługi Azure Resource Manager i grupy zasobów platformy Azure.
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
 [1]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough2.png

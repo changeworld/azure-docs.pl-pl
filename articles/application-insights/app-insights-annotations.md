@@ -13,50 +13,50 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 660080a629e00884dd61a49bc0950ebe25b6a0c5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f943f0e371b3092717a62a2e83a98211723e5302
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059574"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304411"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresy metryk w usłudze Application Insights
-Adnotacje na [Eksploratora metryk](app-insights-metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [system kompilacji Visual Studio Team Services](https://docs.microsoft.com/vsts/pipelines/tasks/). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez [ich tworzenia za pomocą programu PowerShell](#create-annotations-from-powershell).
+Adnotacje na [Eksploratora metryk](app-insights-metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [usługom DevOps platformy Azure, system kompilacji](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez [ich tworzenia za pomocą programu PowerShell](#create-annotations-from-powershell).
 
 ![Przykład adnotacje z korelacją widoczne z czas odpowiedzi serwera](./media/app-insights-annotations/00.png)
 
 
 
-## <a name="release-annotations-with-vsts-build"></a>Adnotacji dotyczących wersji kompilacji usługi VSTS
+## <a name="release-annotations-with-azure-devops-services-build"></a>Adnotacje dotyczące dzięki usługom DevOps platformy Azure kompilacji wersji
 
-Adnotacji dotyczących wersji to funkcja oparta na chmurze kompilacji i wersji usługi Visual Studio Team Services. 
+Adnotacji dotyczących wersji są funkcją usługi Azure potoki oparte na chmurze usługom DevOps platformy Azure. 
 
 ### <a name="install-the-annotations-extension-one-time"></a>Zainstaluj rozszerzenie adnotacji (raz)
-Aby można było utworzyć adnotacji dotyczących wersji, należy zainstalować jedną z wielu rozszerzeń Team Service dostępnych w witrynie Visual Studio Marketplace.
+Aby można było utworzyć adnotacji dotyczących wersji, należy zainstalować jedną z wielu rozszerzeń usługom DevOps platformy Azure dostępnych w witrynie Visual Studio Marketplace.
 
-1. Zaloguj się do Twojej [Visual Studio Team Services](https://visualstudio.microsoft.com/vso/) projektu.
-2. W witrynie Visual Studio Marketplace [Pobierz rozszerzenie adnotacji dotyczących wersji](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)i dodaj go do konta usługi Team Services.
+1. Zaloguj się do Twojej [usługom DevOps platformy Azure](https://visualstudio.microsoft.com/vso/) projektu.
+2. W witrynie Visual Studio Marketplace [Pobierz rozszerzenie adnotacji dotyczących wersji](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)i dodaj go do swojej organizacji usługom DevOps platformy Azure.
 
-![W prawym górnym rogu strony sieci web usługi Team Services, Otwórz w portalu Marketplace. Wybierz Visual Team Services, a następnie w obszarze kompilacji i wydania wybierz Zobacz więcej.](./media/app-insights-annotations/10.png)
+![W prawym górnym rogu strony sieci web usługom DevOps platformy Azure, Otwórz w portalu Marketplace. Wybierz usługom DevOps platformy Azure i w obszarze Azure potoki, wybierz Zobacz więcej.](./media/app-insights-annotations/10.png)
 
-Wystarczy zrobić to raz dla swojego konta programu Visual Studio Team Services. Teraz można skonfigurować adnotacji dotyczących wersji dla każdego projektu w ramach Twojego konta. 
+Wystarczy zrobić to raz dla swojej organizacji usługom DevOps platformy Azure. Teraz można skonfigurować adnotacji dotyczących wersji dla każdego projektu w Twojej organizacji. 
 
 ### <a name="configure-release-annotations"></a>Konfigurowanie adnotacji dotyczących wersji
 
-Należy uzyskać osobne klucz interfejsu API dla każdego szablonu wydania usługi VSTS.
+Należy uzyskać osobne klucz interfejsu API dla każdego szablonu wydania usługom DevOps platformy Azure.
 
 1. Zaloguj się do [portalu Microsoft Azure](https://portal.azure.com) , a następnie otwórz zasób usługi Application Insights monitoruje aplikację. (Lub [utwórz ją teraz](app-insights-overview.md), jeśli nie zostało to zrobione jeszcze.)
 2. Otwórz **dostęp do interfejsu API**, **Application Insights identyfikator**.
    
     ![W witrynie portal.azure.com otwórz zasób usługi Application Insights, a następnie wybierz pozycję Ustawienia. Otwórz dostęp do interfejsu API. Skopiuj identyfikator aplikacji](./media/app-insights-annotations/20.png)
 
-4. W osobnym oknie przeglądarki Otwórz (lub Utwórz) szablon wydania, która zarządza wdrożeń z programu Visual Studio Team Services. 
+4. W osobnym oknie przeglądarki Otwórz (lub Utwórz) szablon wydania, który zarządza wdrożeń z usługom DevOps platformy Azure. 
    
     Dodaj zadanie, a następnie wybierz zadanie adnotację dotyczącą wersji widoczną Application Insights z menu.
    
     Wklej **identyfikator aplikacji** skopiowany z bloku dostęp do interfejsu API.
    
-    ![W programie Visual Studio Team Services otwórz wersji, wybierz definicję wydania, a następnie wybierz edycji. Kliknij przycisk Dodaj zadanie, a następnie wybierz adnotację dotyczącą wersji widoczną Application Insights. Wklej identyfikator aplikacji szczegółowych informacji.](./media/app-insights-annotations/30.png)
+    ![W usługach infrastruktury DevOps platformy Azure Otwórz wersji, wybierz potok tworzenia wersji, a następnie wybierz edycji. Kliknij przycisk Dodaj zadanie, a następnie wybierz adnotację dotyczącą wersji widoczną Application Insights. Wklej identyfikator aplikacji szczegółowych informacji.](./media/app-insights-annotations/30.png)
 4. Ustaw **APIKey** pola do zmiennej `$(ApiKey)`.
 
 5. W oknie platformy Azure Utwórz nowy klucz interfejsu API, a następnie utwórz jego kopię.
@@ -69,19 +69,19 @@ Należy uzyskać osobne klucz interfejsu API dla każdego szablonu wydania usłu
    
     Wklej swój klucz interfejsu API, aby ApiKey definicji zmiennej.
    
-    ![W oknie Team Services wybierz kartę Konfiguracja, a następnie kliknij przycisk Dodaj zmienną. Ustaw nazwę, aby ApiKey i do wartości, Wklej klucz, który został wygenerowany, a następnie kliknij ikonę blokady.](./media/app-insights-annotations/50.png)
-7. Na koniec **Zapisz** definicji wydania.
+    ![W oknie usługom DevOps platformy Azure wybierz kartę Konfiguracja, a następnie kliknij przycisk Dodaj zmienną. Ustaw nazwę, aby ApiKey i do wartości, Wklej klucz, który został wygenerowany, a następnie kliknij ikonę blokady.](./media/app-insights-annotations/50.png)
+7. Na koniec **Zapisz** potoku tworzenia wersji.
 
 
 ## <a name="view-annotations"></a>Wyświetlaj adnotacje
 Teraz zawsze, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacja będą wysyłane do usługi Application Insights. Adnotacje będą wyświetlane na wykresach w Eksploratorze metryk.
 
-Kliknięcie dowolnego znacznik adnotacji, aby otworzyć szczegółowe informacje o wersji, m.in. obiekt żądający, gałęzi kontroli źródła, wersji definicji, środowiska i nie tylko.
+Kliknięcie dowolnego znacznik adnotacji, aby otworzyć szczegółowe informacje o wersji, m.in. obiekt żądający, gałęzi kontroli źródła, zwolnij potoku, środowiska i nie tylko.
 
 ![Kliknij znacznik adnotacji w dowolnej wersji.](./media/app-insights-annotations/60.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>Tworzenie niestandardowych adnotacje za pomocą programu PowerShell
-Adnotacje można również utworzyć z żaden proces, który chcesz (bez użycia programu VS Team System). 
+Adnotacje można również utworzyć z żaden proces, który chcesz (bez użycia usługom DevOps platformy Azure). 
 
 
 1. Utwórz lokalne kopie z [skrypt programu Powershell z serwisu GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).

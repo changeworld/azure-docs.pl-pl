@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 57109848bf78311ea4d601b135c5dd304d613aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008131"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303714"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak utworzyć i wdrożyć usługę w chmurze
 Azure portal udostępnia dwa sposoby tworzenia i wdrażania usługi w chmurze: *szybkie tworzenie* i *tworzenie niestandardowe*.
@@ -27,7 +27,7 @@ Azure portal udostępnia dwa sposoby tworzenia i wdrażania usługi w chmurze: *
 W tym artykule wyjaśniono, jak szybkie tworzenie umożliwia tworzenie nowej usługi w chmurze, a następnie użyj **przekazywanie** Aby przekazać i wdrożyć pakiet usługi w chmurze na platformie Azure. Gdy ta metoda portalu Azure sprawia, że dostępne wygodne linki do ukończenia wszystkich wymagań, zgodnie z rzeczywistym. Jeśli wszystko będzie gotowe do wdrożenia usługi w chmurze, podczas jego tworzenia, możesz to zrobić zarówno w tym samym czasie za pomocą tworzenie niestandardowe.
 
 > [!NOTE]
-> Jeśli planujesz publikować usługi w chmurze z programu Visual Studio Team Services (VSTS), korzystając z funkcji Szybkie tworzenie, a następnie skonfigurować publikowanie usługi VSTS z szybkiego startu platformy Azure lub do pulpitu nawigacyjnego. Aby uzyskać więcej informacji, zobacz [ciągłego dostarczania na platformie Azure przy użyciu programu Visual Studio Team Services][TFSTutorialForCloudService], lub zobacz Pomoc dotyczącą **— Szybki Start** strony.
+> Jeśli planujesz publikować usługi w chmurze z DevOps platformy Azure, korzystając z funkcji Szybkie tworzenie, a następnie skonfigurować publikowanie DevOps platformy Azure z szybkiego startu platformy Azure lub do pulpitu nawigacyjnego. Aby uzyskać więcej informacji, zobacz [ciągłego dostarczania na platformie Azure przy użyciu DevOps platformy Azure][TFSTutorialForCloudService], lub zobacz Pomoc dotyczącą **— Szybki Start** strony.
 >
 >
 

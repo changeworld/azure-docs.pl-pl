@@ -1,5 +1,5 @@
 ---
-title: Kod do nauki o danych, testowanie na platformie Azure za pomocą UCI treści dla dorosłych dochodu prognozowania zestawu danych — zespołu danych dla celów naukowych i Visual Studio Team Services
+title: Kod do nauki o danych, testowanie na platformie Azure za pomocą UCI treści dla dorosłych dochodu prognozowania zestawu danych — zespołu danych dla celów naukowych i usługom DevOps platformy Azure
 description: Testowanie za pomocą danymi przewidywań treści dla dorosłych dochodu UCI kod do nauki o danych
 services: machine-learning, team-data-science-process
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439501"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294699"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Testowanie z zestawem danych Prognozowanie przychodów treści dla dorosłych UCI kod do nauki o danych
 Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Używamy Team Data Science naukowych [projektu, który używa zestawu danych na rachunku treści dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , opublikowaliśmy wcześniej pokazanie sposobu testowania kodu może odbywać się. 
@@ -37,8 +37,8 @@ W tym artykule zastępuje termin "testów jednostkowych" z "Testowanie kodu." Od
 
 Ten artykuł zawiera odwołania, jak przydatne zasoby.
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>Visual Studio Team Services dla struktury testowania
-W tym artykule opisano sposób wykonywania i zautomatyzować testowanie za pomocą programu Visual Studio Team Services (VSTS). Można zdecydować się za pomocą narzędzi alternatywne. Ponadto przedstawiono, jak skonfigurować automatyczne kompilacji za pomocą usługi VSTS i agentów kompilacji. Agenci kompilacji używamy maszyn wirtualnych do nauki o danych platformy Azure (maszyny).
+## <a name="azure-devops-for-the-testing-framework"></a>Usługa Azure DevOps dla struktury testowania
+W tym artykule opisano sposób wykonywania i zautomatyzować testowanie za pomocą usługi Azure DevOps. Można zdecydować się za pomocą narzędzi alternatywne. Ponadto przedstawiono, jak skonfigurować automatyczne kompilacji za pomocą DevOps platformy Azure i agentów kompilacji. Agenci kompilacji używamy maszyn wirtualnych do nauki o danych platformy Azure (maszyny).
 
 ## <a name="flow-of-code-testing"></a>Przepływ testowania kodu
 Ogólny przepływ pracy testowania kodu w projekcie do nauki o danych wygląda następująco: 
@@ -48,7 +48,7 @@ Ogólny przepływ pracy testowania kodu w projekcie do nauki o danych wygląda n
     
 ## <a name="detailed-steps"></a>Szczegółowe procedury
 
-Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za pomocą agenta kompilacji i usługi VSTS, wykonaj następujące kroki:
+Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za pomocą agenta kompilacji i DevOps platformy Azure, wykonaj następujące kroki:
 
 1. Utwórz projekt w aplikacji klasycznej w programie Visual Studio:
 
@@ -60,7 +60,7 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
     ![Eksplorator rozwiązań](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Źródła danych projektu kodu do repozytorium kodu projektu usługi VSTS: 
+1. Źródła danych projektu kodu do repozytorium kodu projektu DevOps platformy Azure: 
 
     ![Repozytorium kodu projektu](./media/code-test/create_repo.PNG)
 
@@ -108,13 +108,13 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
     ![Uruchamianie testów](./media/code-test/run_tests.PNG)
 
-1. Zaewidencjonuj kod do repozytorium projektu przy użyciu poleceń usługi Git. Najbardziej aktualną pracy zostaną odzwierciedlone wkrótce w usłudze VSTS.
+1. Zaewidencjonuj kod do repozytorium projektu przy użyciu poleceń usługi Git. Najbardziej aktualną pracy zostaną odzwierciedlone wkrótce w DevOps platformy Azure.
 
     ![Polecenia usługi Git, sprawdzania kodu pod kątem](./media/code-test/git_check_in.PNG)
 
-    ![Najbardziej aktualną pracy w usłudze VSTS](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Najbardziej aktualną pracy w DevOps platformy Azure](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Skonfiguruj automatyczne kompilację i testowanie w usłudze VSTS:
+1. Skonfiguruj automatyczne kompilację i testowanie w metodyce DevOps platformy Azure:
 
     a. W repozytorium projektu wybierz **kompilowania i wydawania**, a następnie wybierz pozycję **+ nowy** można utworzyć nowego procesu kompilacji.
 
@@ -128,7 +128,7 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
-    d. Nadaj nazwę kompilacji i wybierz agenta. Domyślne, w tym miejscu można wybrać, jeśli chcesz użyć nauki, aby zakończyć proces kompilacji. Aby uzyskać więcej informacji na temat ustawień agentów, zobacz [Build and release agents i](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Nadaj nazwę kompilacji i wybierz agenta. Domyślne, w tym miejscu można wybrać, jeśli chcesz użyć nauki, aby zakończyć proces kompilacji. Aby uzyskać więcej informacji na temat ustawień agentów, zobacz [Build and release agents i](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
@@ -142,17 +142,17 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. Wybierz **Zapisz k & olejką** aby zakończyć proces definicji kompilacji.
+    g. Wybierz **Zapisz k & olejką** na zakończenie procesu kompilacji w potoku.
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Teraz za każdym razem, gdy nowe zatwierdzenia są wypychane do repozytorium kodu, proces kompilacji rozpocznie się automatycznie. (W tym miejscu użyjemy wzorca jako repozytorium, ale można zdefiniować dowolnej innej gałęzi). Uruchamia proces **test1.py** pliku na maszynie agenta, aby upewnić się, że wszystko, co jest zdefiniowana w kodzie działa poprawnie. 
 
-Jeśli alerty są prawidłowo skonfigurowane, zostanie wyświetlone powiadomienie w wiadomości e-mail po zakończeniu kompilacji. Możesz również sprawdzić stan kompilacji w usłudze VSTS. Jeśli nie powiedzie się, można sprawdzić szczegóły kompilacji i Dowiedz się, które jest uszkodzona.
+Jeśli alerty są prawidłowo skonfigurowane, zostanie wyświetlone powiadomienie w wiadomości e-mail po zakończeniu kompilacji. Możesz również sprawdzić stan kompilacji w DevOps platformy Azure. Jeśli nie powiedzie się, można sprawdzić szczegóły kompilacji i Dowiedz się, które jest uszkodzona.
 
 ![Powiadomienia e-mail o powodzeniu kompilacji](./media/code-test/email_build_succeed.PNG)
 
-![Powiadomienia usługi VSTS o sukcesie kompilacji](./media/code-test/vs_online_build_succeed.PNG)
+![Powiadomienie usługi Azure DevOps sukcesu kompilacji](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [repozytorium Prognozowanie przychodów UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkretne przykłady testów jednostkowych dla scenariuszy analizy danych.
@@ -161,5 +161,5 @@ Jeśli alerty są prawidłowo skonfigurowane, zostanie wyświetlone powiadomieni
 ## <a name="references"></a>Dokumentacja
 * [Zespołowe przetwarzanie danych dla celów naukowych](https://aka.ms/tdsp)
 * [Narzędzia testowania programu Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
-* [Zasoby testowania usługi VSTS](https://www.visualstudio.com/team-services/)
+* [Zasoby testowania DevOps platformy Azure](https://www.visualstudio.com/team-services/)
 * [Maszyny wirtualne do analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

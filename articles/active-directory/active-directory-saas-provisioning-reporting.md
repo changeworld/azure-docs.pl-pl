@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 47ce9729e25fdfe3b72f45b3090473bb7dbeaa7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055223"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296333"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie aprowizacja kont użytkowników
 
@@ -30,11 +30,11 @@ W tym artykule opisano, jak sprawdzić stan zadań inicjowania obsługi administ
 
 ## <a name="overview"></a>Przegląd
 
-Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), postępując zgodnie z [podano dokumentację](saas-apps/tutorial-list.md) dla obsługiwanych aplikacji. Po skonfigurowaniu i uruchomiona, inicjowanie obsługi administracyjnej zadania mogą zostać zgłoszone przy użyciu jednej z dwóch metod:
+Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), postępując zgodnie z [podano dokumentację](./saas-apps/tutorial-list.md) dla obsługiwanych aplikacji. Po skonfigurowaniu i uruchomiona, inicjowanie obsługi administracyjnej zadania mogą zostać zgłoszone przy użyciu jednej z dwóch metod:
 
 * **Portal zarządzania systemu Azure** — w tym artykule opisano przede wszystkim, trwa pobieranie informacji w raporcie z [witryny Azure portal](https://portal.azure.com), co zapewnia zarówno aprowizacji raportu podsumowania jak i udostępniania szczegółowych dzienniki inspekcji dla danej aplikacji.
 
-* **Interfejs API inspekcji** — Azure Active Directory oferuje także inspekcji interfejsu API, który umożliwia programowe pobieranie szczegółowe dzienniki inspekcji inicjowania obsługi administracyjnej. Zobacz [inspekcji usługi Azure Active Directory, dokumentacja interfejsu API](active-directory-reporting-api-audit-reference.md) dokumentacji dotyczące korzystania z tego interfejsu API. Chociaż w tym artykule nie szczegółowo opisano, jak za pomocą interfejsu API, szczegółowo opisują rodzaje inicjowania obsługi zdarzeń, które są rejestrowane w dzienniku inspekcji.
+* **Interfejs API inspekcji** — Azure Active Directory oferuje także inspekcji interfejsu API, który umożliwia programowe pobieranie szczegółowe dzienniki inspekcji inicjowania obsługi administracyjnej. Zobacz [inspekcji usługi Azure Active Directory, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) dokumentacji dotyczące korzystania z tego interfejsu API. Chociaż w tym artykule nie szczegółowo opisano, jak za pomocą interfejsu API, szczegółowo opisują rodzaje inicjowania obsługi zdarzeń, które są rejestrowane w dzienniku inspekcji.
 
 ### <a name="definitions"></a>Definicje
 
@@ -131,7 +131,7 @@ Najlepsze czytelności w witrynie Azure portal, wybierz **kolumn** przycisk, a n
 
 Inicjowania obsługi administracyjnej podsumowania raport i dzienniki inspekcji odgrywają kluczową rolę pomaga rozwiązać problemy dotyczące aprowizacji różne konta administratorów.
 
-Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](active-directory-application-provisioning-content-map.md).
+Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](application-provisioning-config-problem.md).
 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby

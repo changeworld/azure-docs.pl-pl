@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure IoT krawędzi ciągłej integracji i ciągłe wdrażanie | Dokumentacja firmy Microsoft
-description: Omówienie ciągłej integracji i ciągłe wdrażanie Edge IoT Azure
+title: Usługa Azure IoT Edge, ciągła integracja i ciągłe wdrażanie | Dokumentacja firmy Microsoft
+description: Omówienie ciągłą integrację i ciągłe wdrażanie dla usługi Azure IoT Edge
 author: shizn
 manager: ''
 ms.author: xshi
@@ -8,38 +8,38 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047459"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302575"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągłej integracji i ciągłe wdrażanie krawędzią IoT Azure
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
-W tym artykule przedstawiono sposób korzystania z funkcji ciągłego wdrażania programu Visual Studio Team Services (VSTS) i Microsoft Team Foundation Server (TFS) i ciągłej integracji do tworzenia, testowania i wdrażania aplikacji szybkie i skuteczne do platformy Azure Krawędź IoT. 
+W tym artykule przedstawiono sposób korzystania z funkcji ciągłego wdrażania usługom DevOps platformy Azure i programu Microsoft Team Foundation Server (TFS) i ciągłej integracji do tworzenia, testowania i wdrażania aplikacji, szybko i skutecznie do usługi Azure IoT Edge. 
 
-W tym artykule przedstawiono sposób:
-* Tworzenie i sprawdź w przykładowym zawierającego jednostki rozwiązania IoT krawędzi testy.
-* Zainstaluj rozszerzenie Azure IoT krawędzi dla Twojej usługi VSTS.
-* Konfigurowanie ciągłej integracji (CI), aby skompilować rozwiązanie i uruchom testy jednostkowe.
-* Konfigurowanie ciągłego wdrażania (CD) do wdrożenia rozwiązania i przeglądania odpowiedzi.
+W tym artykule dowiesz się jak:
+* Tworzenie i sprawdź w przykładzie jednostki zawierającej rozwiązania usługi IoT Edge testów.
+* Zainstaluj rozszerzenie Azure IoT Edge dla usługi DevOps platformy Azure.
+* Skonfiguruj ciągłą integrację (CI), aby skompilować rozwiązanie i uruchomić testy jednostkowe.
+* Skonfiguruj ciągłe wdrażanie (CD) na wdrożeniu rozwiązania i przeglądania odpowiedzi.
 
-Potrwa 30 minut, aby wykonać kroki opisane w tym artykule.
+Potrwa 30 minut na wykonanie czynności opisanych w tym artykule.
 
-![CI i dysku CD](./media/how-to-ci-cd/cd.png)
+![Ciągła Integracja i ciągłe dostarczanie](./media/how-to-ci-cd/cd.png)
 
-## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Tworzenie rozwiązań Azure IoT Edge próbki przy użyciu programu Visual Studio Code
+## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Utwórz przykładowe rozwiązanie Azure IoT Edge, przy użyciu programu Visual Studio Code
 
-W tej sekcji utworzysz próbkę krawędzi IoT rozwiązania zawierającego testy jednostkowe które mogą być wykonywane jako część procesu kompilacji. Przed wykonaniem wskazówki zawarte w tej sekcji, wykonaj kroki [opracowywania rozwiązań IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
+W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego testy jednostkowe, które można wykonać w ramach procesu kompilacji. Przed zgodnie ze wskazówkami w tej sekcji, wykonaj kroki opisane w [tworzenia rozwiązań usługi IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
 
-1. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązanie graniczne IoT nowe**. Następnie wybierz folder roboczy, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Utwórz moduł C# (**FilterModule**) jako pierwszego modułu użytkownika w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślna jest oparta na lokalnym rejestrze Docker (`localhost:5000/filtermodule`). Należy je zmienić w rejestrze kontenera platformy Azure (`<your container registry address>/filtermodule`) lub Centrum Docker dla dalszego ciągłej integracji.
+1. W palecie poleceń programu VS Code, typ, a następnie uruchom polecenie **Edge: rozwiązanie nowej usługi IoT Edge**. Następnie wybierz folder obszaru roboczego, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Tworzenie modułu C# (**FilterModule**) jako pierwszego modułu, w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślne opiera się na lokalnych rejestru platformy Docker (`localhost:5000/filtermodule`). Należy je zmienić w usłudze Azure Container Registry (`<your container registry address>/filtermodule`) lub usługi Docker Hub dalsze ciągłej integracji.
 
-    ![Instalator ACR](./media/how-to-ci-cd/acr.png)
+    ![Ustawienia rejestru Azure container Registry](./media/how-to-ci-cd/acr.png)
 
-2. Okno kodzie VS załaduje rozwiązania IoT krawędzi obszaru roboczego. Opcjonalnie możesz wpisać i uruchomić **krawędzi: Dodaj krawędzi IoT modułu** można dodać więcej modułów. Brak `modules` folderu, `.vscode` folderu i pliku manifestu szablonu wdrażania w folderze głównym. Wszystkie kody modułu użytkownika będzie podfolderów w folderze `modules`. `deployment.template.json` Jest manifestu szablonu wdrożenia. Niektóre parametry w tym pliku zostaną wydzielone z `module.json`, który istnieje w folderze co moduł.
+2. Okna programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. Możesz opcjonalnie wpisać i uruchomić **Edge: Dodaj moduł IoT Edge** można dodać więcej modułów. Brak `modules` folderze `.vscode` folder i plik manifestu szablonu wdrożenia w folderze głównym. Wszystkie kody modułu użytkownika będzie podfolderów w folderze `modules`. `deployment.template.json` Jest szablon manifestu wdrożenia. Niektóre parametry w tym pliku, zostanie przetworzona z `module.json`, który istnieje w folderze każdego modułu.
 
-3. Teraz przykładu rozwiązań IoT Edge jest gotowa. Domyślny C# moduł działa jako moduł komunikat potoku. W `deployment.template.json`, pojawi się to rozwiązanie zawiera dwa moduły. Wiadomość zostanie wygenerowane z `tempSensor` modułu i będzie można bezpośrednio przetwarzana potokowo za pośrednictwem `FilterModule`, następnie wysyłane do Centrum IoT. Zastąp całą **Program.cs** pliku z poniżej zawartości. Aby uzyskać więcej informacji na temat następujący fragment kodu może odwoływać się do [utworzyć projekt modułu IoT krawędzi C#](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project).
+3. Przykład rozwiązania usługi IoT Edge jest teraz gotowy. Domyślnego języka C# modułu działa jako moduł potok komunikatów. W `deployment.template.json`, zostanie wyświetlony, to rozwiązanie zawiera dwa moduły. Komunikat zostanie wygenerowane z `tempSensor` moduł i zostanie bezpośrednio przekazać w potoku za pomocą `FilterModule`, następnie wysyłane do usługi IoT hub. Zastąp całą **Program.cs** plików za pomocą poniżej zawartości. Aby uzyskać więcej informacji na temat ten fragment kodu mogą odwoływać się do [utworzyć projekt moduł IoT Edge C#](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project).
 
     ```csharp
     namespace FilterModule
@@ -183,7 +183,7 @@ W tej sekcji utworzysz próbkę krawędzi IoT rozwiązania zawierającego testy 
     }
     ```
 
-4. Utwórz .net Core jednostkowy projekt testowy. W Eksploratorze plików kodu programu VS, Utwórz nowy folder **tests\FilterModuleTest** w obszarze roboczym. Następnie w kodzie VS zintegrowane terminali (**Ctrl + "**), uruchom następujące polecenia, aby utworzyć projekt testowy xunit i Dodaj odwołanie do **FilterModule** projektu.
+4. .Net Core utworzyć projekt testów jednostkowych. W Eksploratorze plików programu VS Code, Utwórz nowy folder **tests\FilterModuleTest** w obszarze roboczym. Następnie w zintegrowanym terminalu programu VS Code (**Ctrl + '**), uruchom następujące polecenia, aby utworzyć projekt testu xunit i Dodaj odwołanie do **FilterModule** projektu.
 
     ```cmd
     cd tests\FilterModuleTest
@@ -193,7 +193,7 @@ W tej sekcji utworzysz próbkę krawędzi IoT rozwiązania zawierającego testy 
 
     ![Struktura folderów](./media/how-to-ci-cd/add-test-project.png)
 
-5. W **FilterModuleTest** folderu, zaktualizuj nazwę pliku **UnitTest1.cs** do **FilterModuleTest.cs**. Wybierz i Otwórz **FilterModuleTest.cs**, Zamień poniższy fragment kodu, który zawiera testy jednostkowe dla projektów FilterModule cały kod z.
+5. W **FilterModuleTest** folderu, zaktualizuj nazwę pliku **UnitTest1.cs** do **FilterModuleTest.cs**. Wybierz i Otwórz **FilterModuleTest.cs**, Zastąp poniższy fragment kodu, który zawiera testy jednostkowe z projektem FilterModule cały kod z.
 
     ```csharp
     using Xunit;
@@ -270,60 +270,60 @@ W tej sekcji utworzysz próbkę krawędzi IoT rozwiązania zawierającego testy 
     }
     ```
 
-6. W terminalu zintegrowanego możesz wprowadzić następujące polecenia, aby uruchomić testy jednostkowe lokalnie. 
+6. W zintegrowanym terminalu możesz wprowadzić następujące polecenia, aby uruchomić testy jednostkowe lokalnie. 
     ```cmd
     dotnet test
     ```
 
-    ![Testu jednostkowego](./media/how-to-ci-cd/unit-test.png)
+    ![Test jednostkowy](./media/how-to-ci-cd/unit-test.png)
 
-7. Zapisz te projekty, a następnie sprawdź go do repozytorium VSTS lub TFS.
+7. Zapisz te projekty, a następnie zaewidencjonować je w repozytorium DevOps platformy Azure lub na serwerze TFS.
     
 
 > [!NOTE]
-> Aby uzyskać więcej informacji o korzystaniu z programu VSTS kodu repozytoriów, zobacz [udostępnianie kodu programu Visual Studio i VSTS Git](https://docs.microsoft.com/vsts/git/share-your-code-in-git-vs?view=vsts).
+> Aby uzyskać więcej informacji o korzystaniu z repozytoriów platformy Azure, zobacz [udostępnić swój kod za pomocą programu Visual Studio i repozytoria, Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-continuous-integration"></a>Konfigurowanie ciągłej integracji
-W tej sekcji utworzysz definicję kompilacji, która jest skonfigurowana do automatycznego uruchamiania podczas ewidencjonowania zmiany przykładowe rozwiązanie graniczne IoT, i automatycznie wykona testy jednostek, które zawiera.
+## <a name="configure-continuous-integration"></a>Skonfiguruj ciągłą integrację
+W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do automatycznego uruchamiania podczas ewidencjonowania zmiany przykładowe rozwiązanie IoT Edge, a jego automatycznie powoduje uruchomienie testów jednostkowych, które zawiera.
 
-1. Zaloguj się do konta usługi VSTS (**https://**_Twoje konto_**. visualstudio.com**) i otworzyć projekt, w którym zaznaczono w przykładowej aplikacji.
+1. Zaloguj się do Twojej organizacji DevOps platformy Azure (**https://**_— konta_**. visualstudio.com**), a następnie otwórz projekt, gdzie sprawdzane w przykładowej aplikacji.
 
-    ![Sprawdź w kodzie](./media/how-to-ci-cd/init-project.png)
+    ![Kod ewidencjonowania](./media/how-to-ci-cd/init-project.png)
 
-1. Odwiedź stronę [Azure IoT krawędzi VSTS](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) w witrynie Marketplace programu VSTS. Kliknij przycisk **uzyskać bezpłatne** i użyj kreatora, aby zainstalować to rozszerzenie do konta usługi VSTS lub pobierania do programu TFS.
+1. Odwiedź stronę [usługi Azure IoT Edge dla usługi Azure DevOps](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) w witrynie Azure Marketplace metodyki DevOps. Kliknij przycisk **Pobierz bezpłatnie** i wykonaj instrukcje kreatora, aby zainstalować to rozszerzenie Twojej organizacji DevOps platformy Azure lub pobrać do TFS.
 
     ![Instalowanie rozszerzenia](./media/how-to-ci-cd/install-extension.png)
 
-1. W programu VSTS Otwórz **kompilacji &amp; wersji** Centrum i w **kompilacje** , wybierz pozycję **+ nową definicję**. Lub, jeśli masz już definicje kompilacji, wybierz **+ nowy** przycisku. 
+1. W swojej DevOps platformy Azure, otwórz **kompilacji &amp; wersji** Centrum i w **kompilacje** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki kompilacji, wybierz opcję **+ nowy** przycisku. 
 
     ![Nowej kompilacji](./media/how-to-ci-cd/add-new-build.png)
 
-1. Po wyświetleniu monitu wybierz **VSTS Git** typ źródła; następnie wybierz projekt, repozytorium i oddziału, w którym znajduje się kod. Wybierz **kontynuować**.
+1. Po wyświetleniu monitu wybierz **DevOps Git platformy Azure** typ źródła; następnie wybierz projekt, repozytorium i gałąź, na którym znajduje się kod. Wybierz **nadal**.
 
-    ![Wybierz VSTS git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Wybierz git DevOps platformy Azure](./media/how-to-ci-cd/select-vsts-git.png)
 
-1. W **wybierz szablon** okna, wybierz **rozpoczynać pusty procesu**.
+1. W **wybierz szablon** oknie Wybierz **Rozpocznij z pustym procesem**.
 
     ![Rozpocznij pusty](./media/how-to-ci-cd/start-with-empty.png)
 
-1. Kliknij przycisk **+** prawej strony **fazy 1** można dodać zadania do fazy. Następnie wyszukaj i wybierz **.Net Core**i kliknij przycisk **Dodaj** można dodać zadania do fazy.
+1. Kliknij przycisk **+** na prawej krawędzi **fazy 1** Aby dodać zadanie do fazy. Następnie wyszukaj i wybierz **.Net Core**i kliknij przycisk **Dodaj** zostać dodane to zadanie do fazy.
 
-    ![DotNet test](./media/how-to-ci-cd/add-dot-net-core.png)
+    ![polecenia DotNet test](./media/how-to-ci-cd/add-dot-net-core.png)
 
-1. Aktualizacja **Nazwa wyświetlana** do **testu dotnet**i w **polecenia** listy rozwijanej wybierz **testu**. Dodaj poniżej ścieżkę do **ścieżkę do projektów**.
+1. Aktualizacji **nazwę wyświetlaną** do **polecenia dotnet test**, a następnie w **polecenia** listy rozwijanej wybierz **testu**. Dodać pod ścieżką do **ścieżka do projektów**.
 
     ```
     tests/FilterModuleTest/*.csproj
     ```
 
-    ![Skonfiguruj dotnet test](./media/how-to-ci-cd/dotnet-test.png)
+    ![Konfigurowanie polecenia dotnet test](./media/how-to-ci-cd/dotnet-test.png)
 
-1. Kliknij przycisk **+** prawej strony **fazy 1** można dodać zadania do fazy. Następnie wyszukaj i wybierz **Azure IoT krawędzi**i kliknij przycisk **Dodaj** przycisk **dwukrotnie** do dodania do fazy te zadania.
+1. Kliknij przycisk **+** na prawej krawędzi **fazy 1** Aby dodać zadanie do fazy. Następnie wyszukaj i wybierz **usługi Azure IoT Edge**i kliknij przycisk **Dodaj** przycisk **dwukrotnie** można dodać te zadania do fazy.
 
     ![IoT Edge](./media/how-to-ci-cd/add-azure-iot-edge.png)
 
-1. W pierwszym zadaniem Azure IoT krawędzi aktualizacji **Nazwa wyświetlana** do **moduł kompilacji i wypychania**i w **akcji** listy rozwijanej wybierz **kompilacji i Wypchnij**. W **pliku Module.json** pole tekstowe, Dodaj poniżej ścieżkę do niego. Następnie wybierz pozycję **Typ rejestru kontenera**, upewnij się, że należy skonfigurować i wybrać tej samej rejestru w kodzie. To zadanie zostanie kompilacji i push wszystkie moduły w rozwiązaniu i opublikuj wskazanej rejestru kontenera. Jeśli moduły zostanie przekazany do różnych rejestrów, może mieć wielu **moduł kompilacji i wypychania** zadania.
+1. Pierwsze zadanie usługi Azure IoT Edge, zaktualizować **nazwę wyświetlaną** do **moduł kompilacji i wypychania**, a następnie w **akcji** listy rozwijanej wybierz **Zbuduj i Wypchnij**. W **pliku Module.json** pola tekstowego, dodać pod ścieżką do niego. Następnie wybierz **Typ rejestru kontenerów**, upewnij się, możesz skonfigurować i wybrać ten sam rejestru w kodzie. Tego zadania utworzysz i Wypchnij wszystkie moduły w rozwiązaniu i publikowania w rejestrze kontenerów, wskazana. Jeśli moduły zostaną wypchnięte do różnych rejestrów, może mieć wiele **moduł kompilacji i wypychania** zadania.
 
     ```
     **/module.json
@@ -331,42 +331,42 @@ W tej sekcji utworzysz definicję kompilacji, która jest skonfigurowana do auto
 
     ![Moduł kompilacji i wypychania](./media/how-to-ci-cd/module-build-push.png)
 
-1. W drugim zadaniem Azure IoT krawędzi aktualizacji **Nazwa wyświetlana** do **wdrażanie do urządzenia IoT**, a następnie w **akcji** listy rozwijanej wybierz pozycję **wdrażanie na krawędzi IoT urządzenie**. Wybierz subskrypcję platformy Azure i wprowadź nazwę Centrum IoT. Można określić identyfikator wdrożenia krawędzi IoT i priorytet wdrożenia. Można także wdrożyć do jednej lub wielu urządzeń. Jeśli są wdrażane na wielu urządzeniach, należy określić warunek docelowy urządzenia. Na przykład jeśli chcesz użyć znaczników urządzenia jako warunek, musisz zaktualizować urządzenia odpowiednie tagi przed przystąpieniem do wdrożenia. 
+1. Drugie zadanie usługi Azure IoT Edge, zaktualizować **nazwę wyświetlaną** do **wdrażanie na urządzeniu usługi IoT Edge**, a następnie w **akcji** listy rozwijanej wybierz **wdrażanie do usługi IoT Edge urządzenie**. Wybierz swoją subskrypcję platformy Azure, a następnie wprowadź nazwę Centrum IoT Hub. Możesz określić identyfikator wdrożenia usługi IoT Edge i priorytetem wdrożenia. Możesz również wdrożyć na jednym lub wielu urządzeń. Jeśli są wdrażane na wielu urządzeniach, należy określić warunek docelowy urządzenia. Na przykład jeśli chcesz użyć znaczników urządzenia jako warunek, należy zaktualizować urządzenie odpowiednie tagi przed przystąpieniem do wdrożenia. 
 
-    ![Wdrażanie na krawędzi](./media/how-to-ci-cd/deploy-to-edge.png)
+    ![Wdrażanie na urządzenia brzegowe](./media/how-to-ci-cd/deploy-to-edge.png)
 
-1. Kliknij przycisk **procesu** i upewnij się, że Twoje **kolejki agenta** jest **Podgląd Linux hostowanych**.
+1. Kliknij przycisk **procesu** i upewnij się, że Twoje **kolejki agentów** jest **(wersja zapoznawcza) systemu Linux hostowanych**.
 
     ![Konfigurowanie](./media/how-to-ci-cd/configure-env.png)
 
-1. Otwórz **wyzwalaczy** karcie i Włącz **ciągłej integracji** wyzwalacza. Upewnij się, że gałąź zawierającą kod jest dołączony.
+1. Otwórz **wyzwalaczy** kartę, a następnie Włącz **ciągłej integracji** wyzwalacza. Upewnij się, że gałąź z kodem jest dołączony.
 
     ![Wyzwalacz](./media/how-to-ci-cd/configure-trigger.png)
 
-1. Zapisz nową definicję kompilacji i nowej kompilacji w kolejce. Kliknij przycisk **Zapisz & kolejka** przycisku.
+1. Zapisz nowy potok kompilacji i nową kompilację w kolejce. Kliknij przycisk **Zapisz k & olejką** przycisku.
 
-1. Na pasku komunikatów, który pojawia się, wybierz link do kompilacji. Lub przejdź do definicji, aby wyświetlić zadania najnowszych kompilacji w kolejce kompilacji.
+1. Wybierz łącze do kompilacji, na pasku komunikatów, który pojawia się. Lub przejdź do tworzenia potoku, aby wyświetlić zadania najnowszych kompilacji w kolejce.
 
     ![Kompilacja](./media/how-to-ci-cd/build-def.png)
 
-1. Po zakończeniu kompilacji, wyświetlane jest podsumowanie dla każdego zadania i wyniki w pliku dziennika na żywo. 
+1. Po zakończeniu kompilacji, zobaczysz podsumowanie dla każdego zadania oraz wyniki w pliku dziennika na żywo. 
     
     ![Zakończ](./media/how-to-ci-cd/complete.png)
 
-1. Można wracać do kodu VS i sprawdzić explorer urządzenia IoT Hub. Urządzenie brzegowe z modułem powinien rozpocząć uruchamianie (Upewnij się, że rejestru poświadczenia zostały dodane do środowiska wykonawczego krawędzi).
+1. Możesz wrócić do programu VS Code i sprawdzić Eksplorator urządzeń w usłudze IoT Hub. Urządzenie brzegowe za pomocą modułu powinien rozpocząć uruchamianie (Upewnij się, że poświadczenia rejestru zostały dodane do środowiska uruchomieniowego Edge).
 
-    ![Krawędź uruchomiona](./media/how-to-ci-cd/edge-running.png)
+    ![Uruchamianie usługi Edge](./media/how-to-ci-cd/edge-running.png)
 
-## <a name="continuous-deployment-to-iot-edge-devices"></a>Ciągłe wdrażanie do urządzenia brzegowe IoT
+## <a name="continuous-deployment-to-iot-edge-devices"></a>Ciągłe wdrażanie na urządzeniach usługi IoT Edge
 
-Umożliwiające ciągłe wdrażanie zasadniczo należy skonfigurować zadania CI z prawidłowego urządzenia brzegowe IoT, włączanie **wyzwalaczy** dla gałęzie w projekcie. W klasycznym rozwiązaniem DevOps projekt zawiera dwa główne rozgałęzienia. Gałęzi głównej powinny być stabilna wersja kodu i opracowanie gałęzi zawiera najnowsze zmiany kodu. Każdy deweloper w zespole powinien rozwidlania gałęzi opracowanie ich lub własne gałęzi funkcji w przypadku uruchamiania aktualizowanie kodu, co oznacza, że wszystkie zatwierdza funkcję gałęzi poza gałęzi deweloperów. I każdym zatwierdzeniem wciśnięcia powinny być testowane za pośrednictwem elementu konfiguracji systemu. Po w pełni przetestowany kod lokalnie, w gałęzi funkcji powinny zostać scalone do gałęzi opracowanie przez żądanie ściągnięcia. Podczas testowania kodu w gałęzi developer za pośrednictwem elementu konfiguracji systemu, można by scalić do głównej gałęzi przy użyciu żądania ściągnięcia.
+Aby włączyć ciągłe wdrażanie, po prostu należy skonfigurować zadania ciągłej integracji przy użyciu odpowiedniego urządzenia usługi IoT Edge, włączanie **wyzwalaczy** dla gałęzi w projekcie. W klasycznej praktyki metodyki DevOps projekt zawiera dwie gałęzie główne. Gałąź główna powinna być stabilną wersję kodu, a gałąź artykułów zawiera najnowszych zmian w kodzie. Każdy deweloper w zespole należy przejrzeć Programowanie gałęzi w celu jego lub własnych gałęzi funkcji sytuacji Rozpoczynanie aktualizowania kodu, co oznacza, że wszystkie zatwierdzenia na temat funkcji gałęzie Programowanie gałęzi. A co wypchnięte zatwierdzenie, powinny być badane za pośrednictwem systemu ciągłej integracji. Po w pełni przetestowane kod lokalnie, gałęzi funkcji powinny zostać scalone z gałęzią rozwoju za pośrednictwem żądania ściągnięcia. Kod w gałęzi dla deweloperów jest testowana za pośrednictwem elementu konfiguracji systemu, można scalone gałęzi głównej za pośrednictwem żądania ściągnięcia.
 
-Tak podczas wdrażania urządzenia brzegowe IoT, istnieją trzy główne środowiska.
-- Funkcja gałęzi można użyć symulowane urządzenie brzegowe IoT na komputerze deweloperskim lub wdrożyć na fizyczne urządzenie brzegowe IoT.
-- Na opracowanie gałęzi, należy wdrożyć do fizycznego urządzenia IoT krawędzi.
-- W głównej gałęzi te urządzenia IoT krawędzi powinien być urządzeń produkcji.
+Dlatego podczas wdrażania aplikacji na urządzeniach usługi IoT Edge, istnieją trzy główne środowiska.
+- W gałęzi funkcji możesz użyć symulowane urządzenie usługi IoT Edge na komputerze deweloperskim lub wdrożyć na urządzeniu fizycznym usługi IoT Edge.
+- Na Programowanie gałęzi, należy wdrożyć na urządzeniu fizycznym usługi IoT Edge.
+- W gałęzi głównej urządzenia usługi IoT Edge docelowego powinien być urządzeń produkcyjnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zrozumienie wdrożenia IoT krawędzi w [wdrożeń zrozumieć IoT Edge dla urządzeń z jednego lub na dużą skalę](module-deployment-monitoring.md)
-* Szczegółowe kroki umożliwiające tworzenie, aktualizowanie lub usuwanie wdrożenia w [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę](how-to-deploy-monitor.md).
+* Omówienie wdrożenia usługi IoT Edge w [wdrożeń zrozumieć usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali](module-deployment-monitoring.md)
+* Przewodnik po krokach do utworzenia, aktualizacji lub usunięcia wdrożenia w [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).

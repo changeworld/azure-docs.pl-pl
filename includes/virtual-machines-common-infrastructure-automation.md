@@ -10,8 +10,7 @@ Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą
     - [Usługa Azure Automation](#azure-automation) może wykonywać akcje w infrastrukturze platformy Azure i lokalnie.
 
 - Automatyzowanie wdrażania aplikacji i dostarczanie
-    - Przykłady obejmują [Visual Studio Team Services](#visual-studio-team-services) i [Jenkins](#jenkins).
-
+    - Przykłady obejmują [usługom DevOps platformy Azure](#visual-studio-team-services) i [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Rozwiązanie Ansible](https://www.ansible.com/) to aparat automatyzacji zarządzania konfiguracją, tworzenia maszyny Wirtualnej lub wdrażania aplikacji. Rozwiązanie Ansible używają modelu bez agenta, zazwyczaj przy użyciu kluczy SSH do uwierzytelniania i zarządzania komputerami docelowymi. Zadania konfiguracji są definiowane w elementy playbook, wprowadzając szereg modułów Ansible dostępne do wykonywania określonych zadań. Aby uzyskać więcej informacji, zobacz [działa jak Ansible](https://www.ansible.com/how-ansible-works).
@@ -114,12 +113,12 @@ Instrukcje:
 - [Używanie usługi Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) to zestaw narzędzi ułatwiających udziału i ścieżki kodu, użyj zautomatyzowane kompilacje i Utwórz pełną ciągłej integracji i potoku tworzenia aplikacji (CI/CD). Usługi Team Services integruje się z programu Visual Studio i innych edytorów, aby uprościć użycia. Usługi Team Services można też utworzyć i skonfigurować maszyny wirtualne platformy Azure i następnie wdrażania kodu do nich.
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Usługi Azure DevOps](https://www.visualstudio.com/team-services/) to zestaw narzędzi ułatwiających udziału i ścieżki kodu, użyj zautomatyzowane kompilacje i Utwórz pełną ciągłej integracji i potoku tworzenia aplikacji (CI/CD). Usługi Azure DevOps integruje się z programu Visual Studio i innych edytorów, aby uprościć użycia. Usługom DevOps platformy Azure można również utworzyć i skonfigurować maszyny wirtualne platformy Azure i następnie wdrażania kodu do nich.
 
 Instrukcje:
 
-- [Tworzenie potoku ciągłej integracji z usługą Team Services](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
+- [Tworzenie potoku ciągłej integracji z usługami DevOps platformy Azure](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
 
 
 ## <a name="jenkins"></a>Jenkins

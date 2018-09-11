@@ -1,6 +1,6 @@
 ---
-title: Nie znaleziono żadnych subskrypcji błąd podczas próby Zaloguj się do portalu Azure lub Centrum konta platformy Azure | Dokumentacja firmy Microsoft
-description: Zapewnia rozwiązanie problemu, w którym subskrypcji nie znaleziono błąd występuje, gdy Zaloguj się do portalu Azure lub Centrum konta platformy Azure.
+title: Nie znaleziono żadnych subskrypcji błąd podczas próby Zaloguj się do witryny Azure portal lub Centrum konta platformy Azure | Dokumentacja firmy Microsoft
+description: Zawiera rozwiązanie problemu, w którym subskrypcji nie można odnaleźć wystąpienia błędu podczas Zaloguj się do witryny Azure portal lub Centrum konta platformy Azure.
 services: ''
 documentationcenter: ''
 author: genlin
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 475a4ad72a1c2fc2ebf99387e193713797cc2586
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b5fd1db06d13ce0c12a80752e64a6f5c64867761
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070621"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298255"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Nie znaleziono żadnych subskrypcji błąd w portalu Azure lub Centrum konta platformy Azure
+# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Nie znaleziono żadnych subskrypcji błąd w witrynie Azure portal lub w Centrum konta platformy Azure
 
-Może być pojawi się komunikat o błędzie "Nie można odnaleźć subskrypcji" podczas próby Zaloguj się do [portalu Azure](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). Ten artykuł zawiera rozwiązanie tego problemu.
+Można otrzymać komunikat o błędzie "Nie znaleziono żadnych subskrypcji", gdy próbuje zalogować się do [witryny Azure portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). Ten artykuł zawiera rozwiązanie tego problemu.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas próby Zaloguj się do [portalu Azure](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions), pojawi się następujący komunikat o błędzie: "Nie można odnaleźć subskrypcji".
+Podczas logowania się w [witryny Azure portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions), pojawi się następujący komunikat o błędzie: "Nie znaleziono żadnych subskrypcji".
 
 ## <a name="cause"></a>Przyczyna
 
-Ten problem występuje w przypadku wybrania niewłaściwego katalogu lub jeśli konto nie ma wystarczających uprawnień. 
+Ten problem występuje w przypadku wybrania niewłaściwego katalogu, czy Twoje konto nie ma wystarczających uprawnień. 
 
 ## <a name="solution"></a>Rozwiązanie
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenariusz 1: Odebrano komunikat o błędzie w [portalu Azure](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenariusz 1: Odebrano komunikat o błędzie w [witryny Azure portal](https://portal.azure.com)
 
 Aby rozwiązać ten problem:
 
-* Upewnij się, że wybrano poprawny katalog platformy Azure, klikając konto u góry po prawej.
+* Upewnij się, że wybrano prawidłowy katalog usługi Azure, klikając swoje konto w prawym górnym rogu.
 
-  ![Wybierz katalog u góry po prawej z portalu Azure](./media/billing-no-subscriptions-found/directory-switch.png)
-* Jeśli wybrano katalog prawo platformy Azure, ale nadal otrzymywać komunikat o błędzie [swoje konto jako właściciela](billing-add-change-azure-subscription-administrator.md).
+  ![Wybierz katalog, w prawym górnym rogu witryny Azure portal](./media/billing-no-subscriptions-found/directory-switch.png)
+* Jeśli wybrano katalogu bezpośrednio do platformy Azure, ale nadal otrzymywać komunikat o błędzie [przypisanie roli właściciela do swojego konta](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scenariusz 2: Odebrano komunikat o błędzie w [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions)
 
-Sprawdź, czy konto używane jest konto administratora. Aby sprawdzić, który jest administratorem konta, wykonaj następujące kroki:
+Sprawdź, czy konta, którego użyto jest administratora konta. Aby sprawdzić, kim jest Administrator konta, wykonaj następujące kroki:
 
-1. Zaloguj się do [subskrypcje wyświetlić w portalu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Wybierz subskrypcję, którą chcesz sprawdzić, a następnie sprawdź w obszarze **ustawienia**.
-1. Wybierz **właściwości**. Administratora konta subskrypcji jest wyświetlany w **administrator konta** pole.  
+1. Zaloguj się do [subskrypcje wyświetlić w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wybierz subskrypcję, aby sprawdzić, a następnie sprawdź w obszarze **ustawienia**.
+1. Wybierz **właściwości**. Administrator konta subskrypcji są wyświetlane w **administrator konta** pole.  
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) uzyskać szybkie rozwiązanie problemu. 
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) można szybko rozwiązać swój problem. 

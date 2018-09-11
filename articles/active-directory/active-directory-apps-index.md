@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cd95a1f1e0631340fa9844fd31c3d8c0af1168dd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057679"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347056"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -42,7 +42,7 @@ W tej sekcji zapewnia szybki dostęp do odpowiednich przewodniki dotyczące rozw
 | Obszar funkcji |  |
 |:---:| --- |
 | Federacyjne logowanie jednokrotne |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md) |
-| Na podstawie hasła logowania jednokrotnego |[Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
+| Na podstawie hasła logowania jednokrotnego |[Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](manage-apps/manage-access-panel-browser-extension.md) |
 | Serwer proxy aplikacji |[Przewodnik rozwiązywania problemów dla serwera Proxy aplikacji](manage-apps/application-proxy-troubleshoot.md) |
 | Logowanie jednokrotne między lokalnej usługi AD i Azure AD |[Rozwiązywanie problemów z synchronizacją skrótów haseł](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamiczne członkostwo w grupach |[Rozwiązywanie problemów z członkostwa w grupach dynamicznych](users-groups-roles/groups-troubleshooting.md) |
@@ -56,7 +56,7 @@ Logowanie jednokrotne umożliwia użytkownikom dostęp do różnych aplikacji i 
 | Wprowadzenie do Federacji i inne typy logowania jednokrotnego |[Logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md) |
 | Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD za pomocą uproszczonego czynności konfiguracyjnych rejestracji jednokrotnej |[Rozpoczęcie korzystania z galerii aplikacji usługi Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują Federacji](saas-apps/tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji usługi Azure AD](develop/howto-app-gallery-listing.md) |
 | Więcej niż 150 samouczki aplikacji dotyczące sposobu konfigurowania logowania jednokrotnego dla aplikacji takich jak [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)i wiele więcej |[Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](saas-apps/tutorial-list.md) |
-| Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
+| Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)<br /><br />[Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
 | Przewodnik rozwiązywania problemów dla aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md) |
 | Jak skonfigurować Data wygaśnięcia certyfikatu aplikacji i odnawianie certyfikatów |[Zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
@@ -70,7 +70,7 @@ Aby włączyć logowanie jednokrotne do aplikacji, które nie obsługują Federa
 | Wprowadzenie do sposobu opartego na hasłach działa usługa rejestracji Jednokrotnej i krótki opis techniczny |[Oparte na hasłach logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | Podsumowanie scenariuszy związanych z udostępnianiem konta i jak te problemy są rozwiązane przez usługę Azure AD |[Udostępnianie kont w usłudze Azure AD](active-directory-sharing-accounts.md) |
 | Automatyczna zmiana hasła w przypadku niektórych aplikacji w regularnych odstępach. |[Automatyczne przenoszenie haseł (wersja zapoznawcza)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Wdrażanie i rozwiązywanie problemów z przewodniki dotyczące rozszerzenie zarządzania haseł usługi Azure AD w wersji programu Internet Explorer |[Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy](active-directory-saas-ie-group-policy.md)<br /><br />[Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
+| Wdrażanie i rozwiązywanie problemów z przewodniki dotyczące rozszerzenie zarządzania haseł usługi Azure AD w wersji programu Internet Explorer |[Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy](manage-apps/deploy-access-panel-browser-extension.md)<br /><br />[Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](manage-apps/manage-access-panel-browser-extension.md) |
 
 Oparte na hasłach logowanie jednokrotne jest dostępna dla wszystkich wersji programu Azure AD dla maksymalnie 10 aplikacji na użytkownika. [Usługa Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje bez ograniczeń. Jeśli Twoja organizacja ma [usługi Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [usługi Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do udzielania dostępu do aplikacji](#managing-access-to-applications). Przenoszenie haseł automatyczne jest [usługi Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkcji.
 
@@ -130,11 +130,11 @@ Automatyzacja tworzenia, obsługi i usuwania tożsamości użytkowników w aplik
 
 | Artykuł przewodnik |  |
 |:---:| --- |
-| Dowiedz się więcej o tym, jak działa i odpowiedzi na często zadawane pytania |[Automatyzowanie użytkownik aprowizacji i anulowania obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md) |
-| Konfigurowanie odwzorowania informacji między usługą Azure AD i aplikacji SaaS |[Dostosowywanie mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
+| Dowiedz się więcej o tym, jak działa i odpowiedzi na często zadawane pytania |[Automatyzowanie użytkownik aprowizacji i anulowania obsługi do aplikacji SaaS](manage-apps/user-provisioning.md) |
+| Konfigurowanie odwzorowania informacji między usługą Azure AD i aplikacji SaaS |[Dostosowywanie mapowań atrybutów](manage-apps/customize-application-attributes.md)<br><br>[Pisanie wyrażeń do mapowania atrybutów](manage-apps/functions-for-customizing-application-data.md) |
 | Jak włączyć automatyczne Inicjowanie obsługi do wszystkich aplikacji, która obsługuje protokół Standard SCIM |[Skonfigurować dowolną aplikację SCIM-Enabled automatyczna Aprowizacja użytkowników](manage-apps/use-scim-to-provision-users-and-groups.md) |
-| Jak raportować i rozwiązywanie problemów z aprowizowaniem użytkowników |[Raporty dotyczące automatycznej aprowizacji użytkowników](active-directory-saas-provisioning-reporting.md)<br><br>[Rozwiązywanie problemów z aprowizowaniem użytkowników](active-directory-application-provisioning-content-map.md) |
-| Limit, który pobiera przygotowany do aplikacji na podstawie ich wartości atrybutu |[Filtrami zakresu](active-directory-saas-scoping-filters.md) |
+| Jak raportować i rozwiązywanie problemów z aprowizowaniem użytkowników |[Raporty dotyczące automatycznej aprowizacji użytkowników](manage-apps/check-status-user-account-provisioning.md)<br><br>[Rozwiązywanie problemów z aprowizowaniem użytkowników](active-directory-application-provisioning-content-map.md) |
+| Limit, który pobiera przygotowany do aplikacji na podstawie ich wartości atrybutu |[Filtrami zakresu](manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) |
 
 Inicjowanie obsługi użytkowników automatyczne jest dostępna dla wszystkich wersji programu Azure AD dla maksymalnie 10 aplikacji na użytkownika. [Usługa Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje bez ograniczeń. Jeśli Twoja organizacja ma [usługi Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [usługi Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do zarządzania, użytkowników, którzy aprowizowany](#managing-access-to-applications).
 

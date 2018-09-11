@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 53a5de98ccdae4d4a73d8dc7b150c8e333024b33
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095168"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347124"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Wdrażanie pliku ZIP dla usługi Azure Functions
 
@@ -93,7 +93,7 @@ Możesz również uruchamiać swoje funkcje bezpośrednio z pliku pakietu wdraż
 > [!NOTE]
 > Możliwość uruchamiania aplikacji funkcji z pakietu wdrożenia jest w wersji zapoznawczej.
 
-Wdrożenie zip współpracuje z tej funkcji, które można włączyć, konfigurując dla ustawienia aplikacji funkcji `WEBSITE_RUN_FROM_ZIP` wartości `1`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu wdrażania](run-functions-from-deployment-package.md).
+Wdrożenie zip współpracuje z tej funkcji, które można włączyć, konfigurując dla ustawienia aplikacji funkcji `WEBSITE_RUN_FROM_PACKAGE` wartości `1`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu wdrażania](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

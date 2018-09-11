@@ -1,6 +1,7 @@
 ---
-title: Szybki Start języka Python dla usług Azure kognitywnych, analiza tekstu interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API z analizy tekstu w kognitywnych usług Microsoft Azure.
+title: 'Szybki Start: Przy użyciu języka Python do wywoływania interfejsu API analizy tekstu | Dokumentacja firmy Microsoft'
+titleSuffix: Azure Cognitive Services
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: ashmaka
 ms.service: cognitive-services
@@ -8,31 +9,31 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: ashmaka
-ms.openlocfilehash: b4c02767320b71912050ad511811767e6b5decf4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8e570aac2c2d89a8147d179c4b0f9155497c5188
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347761"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298696"
 ---
-# <a name="quickstart-for-text-analytics-api-with-python"></a>Szybki Start dla Analiza tekstu interfejsu API za pomocą języka Python 
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Szybki Start: Przy użyciu języka Python do wywoływania usług Cognitive analizy tekstu
 <a name="HOLTop"></a>
 
-W tym przewodniku przedstawiono sposób do [wykrywać język](#Detect), [analizowanie wskaźniki nastrojów klientów](#SentimentAnalysis), i [wyodrębnić klucza fraz](#KeyPhraseExtraction) przy użyciu [tekst Analytics API](//go.microsoft.com/fwlink/?LinkID=759711)języka Python.
+W tym instruktażu przedstawiono sposób do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), i [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711)za pomocą języka Python.
 
-W tym przykładzie można uruchomić jako notesu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
+W tym przykładzie można uruchomić jako notesu programu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
 
 [![Obiekt wiążący](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
-Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna dla interfejsów API.
+Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna w przypadku interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API z analizy tekstu**. Można użyć **warstwę bezpłatna do 5000 miesięcznie transakcji** w tym przewodniku.
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API analizy tekstu**. Możesz użyć **5000 transakcji miesięcznie w warstwie bezpłatna** do przeprowadzenia tego instruktażu.
 
-Musi mieć również [punktu końcowego i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany automatycznie podczas tworzenia konta. 
+Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta. 
 
-Aby kontynuować, z tym przewodnikiem, Zastąp `subscription_key` z kluczem ważnej subskrypcji, który został uzyskany wcześniej.
+Aby kontynuować z tego przewodnika, Zastąp `subscription_key` z kluczem ważnej subskrypcji, który został uzyskany wcześniej.
 
 
 ```python
@@ -40,7 +41,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-Następnie upewnij się, że region w `text_analytics_base_url` odpowiada używany podczas konfigurowania usługi. Jeśli używasz bezpłatnej wersji próbnej klucza jest konieczne wprowadzanie zmian.
+Następnie upewnij się, że region w `text_analytics_base_url` odnosi się do używana podczas konfigurowania usługi. Jeśli używasz bezpłatnej wersji próbnej klucza nie musisz wprowadzić zmiany.
 
 
 ```python
@@ -49,9 +50,9 @@ text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/tex
 
 <a name="Detect"></a>
 
-## <a name="detect-languages"></a>Wykrycie języków
+## <a name="detect-languages"></a>Wykrywanie języków
 
-Interfejs API wykrywania języka wykrywa język tekstu dokumentu za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Punkt końcowy usługi wykrywania języka interfejsu API w Twoim regionie jest dostępna za pośrednictwem następującego adresu URL:
+Interfejs API wykrywania języka wykrywa język tekstu dokumentu, za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Punkt końcowy usługi wykrywania języka interfejsu API w Twoim regionie jest dostępna za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -62,9 +63,9 @@ print(language_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
 
 
-Ładunek do interfejsu API składa się z listy `documents`, każdy z kolei zawierającą `id` i `text` atrybutu. `text` Tekst, który ma zostać przeanalizowany magazyny atrybutów. 
+Ładunek do interfejsu API składa się z listy `documents`, każdy z którym z kolei zawiera `id` i `text` atrybutu. `text` Atrybut przechowuje tekst, który ma być analizowane. 
 
-Zastąp `documents` słownik z dowolny tekst do wykrywania języka. 
+Zastąp `documents` słownika przy użyciu wszelki inny tekst do wykrywania języka. 
 
 
 ```python
@@ -75,7 +76,7 @@ documents = { 'documents': [
 ]}
 ```
 
-Następny kilku wierszy kodu wyróżnienia do wykrywania interfejsu API języka przy użyciu `requests` biblioteki w języku Python można ustalić języka w dokumentach.
+Dalej kilku wierszy kodu, wyróżnienia za pomocą interfejsu API wykrywania języka `requests` biblioteki w języku Python, można ustalić języka w dokumentach.
 
 
 ```python
@@ -102,7 +103,7 @@ pprint(languages)
      'errors': []}
 
 
-Następujące wiersze kodu renderować dane JSON jako tabeli HTML.
+Następujące wiersze kodu dane JSON są renderowane jako tabela HTML.
 
 
 ```python
@@ -119,9 +120,9 @@ HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Wskaźniki nastrojów klientów analizy API detexts wskaźniki nastrojów klientów zestawu rekordów tekstu, za pomocą [metody wskaźniki nastrojów klientów](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład wyników dwa dokumenty, jeden w języku angielskim i drugą w języku hiszpańskim.
+Interfejs API analizy tonacji detexts tonacji zestaw rekordów tekstowych, za pomocą [metoda tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład ocenia dwa dokumenty, jeden w języku angielskim, a drugi w języku hiszpańskim.
 
-Punkt końcowy usługi dla analizy wskaźniki nastrojów klientów jest dostępny w Twoim regionie za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi do analizy tonacji jest niedostępna w Twoim regionie za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -132,7 +133,7 @@ print(sentiment_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
 
 
-Jako przykładu wykrywania języka, usługa jest udostępniona z słownika przy `documents` klucz, który składa się z listy dokumentów. Każdy dokument jest krotka składająca się z `id`, `text` do analizy i `language` tekstu. Wykrywanie języka interfejsu API z poprzedniej sekcji służy do wypełniania tego pola. 
+Jako przykład wykrywanie języka, usługa jest świadczona za pomocą słownika przy użyciu `documents` klucza, który składa się z listy dokumentów. Każdy dokument jest spójna kolekcja składająca się z `id`, `text` do analizy i `language` tekstu. Interfejs API wykrywania języka w poprzedniej sekcji służy do wypełnienia tego pola. 
 
 
 ```python
@@ -144,7 +145,7 @@ documents = {'documents' : [
 ]}
 ```
 
-Wskaźniki nastrojów klientów interfejsu API można teraz używać do analizowania w dokumentach ich opinie.
+Tonacji interfejsu API może teraz służyć do analizowania dokumentów dla jego tonacji.
 
 
 ```python
@@ -160,15 +161,15 @@ pprint(sentiments)
      'errors': []}
 
 
-Wynik wskaźniki nastrojów klientów dla dokumentu się pomiędzy 0 $$ i $ $1 więcej punktów wskazujący więcej dodatnią wskaźniki nastrojów klientów.
+Ocenę tonacji dla dokumentu jest między $ 0 USD i $ $1, z wyższą ocenę wskazująca, bardziej dodatnie wskaźniki nastrojów klientów.
 
 <a name="KeyPhraseExtraction"></a>
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
-Klucz frazy wyodrębniania wyodrębnia fraz klucza z tekstu dokumentów za pomocą [metody fraz klucza](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Ta część przewodnika wyodrębnia klucza fraz dokumentów zarówno angielskim i hiszpańskim.
+Klucz frazy wyodrębniania wyodrębnia kluczowych fraz z tekstu dokumentu, za pomocą [metoda kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Ta część przewodnika wyodrębnianie kluczowych fraz dla dokumentów w języku angielskim i hiszpańskim.
 
-Punkt końcowy usługi dla usługi wyodrębniania frazy klucza jest dostępna za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi dla usługi wyodrębnianie kluczowych fraz jest dostępna za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -179,7 +180,7 @@ print(key_phrase_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
 
 
-Kolekcja dokumentów jest taka sama jak której był używany do analizy wskaźniki nastrojów klientów.
+Kolekcja dokumentów jest taka sama jak użytymi do analizy tonacji.
 
 
 ```python
@@ -205,7 +206,7 @@ pprint(key_phrases)
     }
 
 
-Obiekt JSON renderowana ponownie tabeli HTML przy użyciu następujących wierszy kodu:
+Obiekt JSON ponownie może być renderowany jako tabela HTML przy użyciu następujące wiersze kodu:
 
 
 ```python
@@ -218,11 +219,11 @@ for document in key_phrases["documents"]:
 HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
-## <a name="identify-linked-entities"></a>Identyfikowanie jednostek połączonego
+## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
 
-API łączenie jednostki identyfikuje dobrze znanych jednostek w tekście dokumentu za pomocą [łączenie jednostki — metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład identyfikuje jednostki dla dokumentów w języku angielskim.
+Interfejs API Entity Linking identyfikuje dobrze znanych jednostek w tekście dokumentu, za pomocą [łączenie podmiotów metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład określa jednostki dla dokumentów w języku angielskim.
 
-Punkt końcowy usługi dla usługi połączeń jednostki jest dostępna za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi dla jednostki usługi łączenia jest dostępna za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -243,7 +244,7 @@ documents = {'documents' : [
 ]}
 ```
 
-Teraz dokumenty mogą być wysyłane do interfejsu API z analizy tekstu do otrzymania odpowiedzi.
+Teraz dokumenty mogą być wysyłane do interfejsu API analizy tekstu, aby otrzymać odpowiedź.
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -315,5 +316,5 @@ entities = response.json()
 
 ## <a name="see-also"></a>Zobacz także 
 
- [Omówienie Analiza tekstu](../overview.md)  
- [Często zadawane pytania (FAQ)](../text-analytics-resource-faq.md)
+ [Omówienie analizy tekstu](../overview.md)  
+ [Często zadawane pytania](../text-analytics-resource-faq.md)

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 36307c86332ac331e444d65ba27c044585379e68
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093406"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298016"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -67,13 +67,19 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Zwraca obiekt o nazwie, która zawiera wszystkie dane wejściowe i wyjściowe. Na przykład następująca definicja powiązania w swojej *function.json* umożliwia dostęp do zawartości kolejki z `context.bindings.myInput` obiektu. 
+Zwraca obiekt o nazwie, która zawiera wszystkie dane wejściowe i wyjściowe. Na przykład, następujące definicje powiązania w swojej *function.json* pozwala korzystać z zawartości kolejki z `context.bindings.myInput` i przypisz dane wyjściowe do kolejki za pomocą `context.bindings.myOutput`.
 
 ```json
 {
     "type":"queue",
     "direction":"in",
     "name":"myInput"
+    ...
+},
+{
+    "type":"queue",
+    "direction":"out",
+    "name":"myOutput"
     ...
 }
 ```
@@ -87,25 +93,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
+Należy pamiętać, że można zdefiniować przy użyciu danych powiązania danych wyjściowych `context.done` zamiast metody `context.binding` obiektu (patrz poniżej).
+
 ### <a name="contextdone-method"></a>Metoda context.Done
 ```
 context.done([err],[propertyBag])
 ```
 
-Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Jeśli korzysta z funkcji `async function` deklaracji (dostępne za pomocą środowiska Node 8 i nowsze w wersji funkcji 2.x), nie trzeba używać `context.done()`. `context.done` Wywołania zwrotnego jest wywoływany niejawnie.
+Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Jeśli korzysta z funkcji JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklaracji (dostępne za pomocą środowiska Node 8 i nowsze w wersji funkcji 2.x), nie trzeba używać `context.done()`. `context.done` Wywołania zwrotnego jest wywoływany niejawnie.
 
 Jeśli funkcja nie jest funkcją async **musi wywołać `context.done`**  poinformować w czasie wykonywania, że funkcja została zakończona. Wykonanie przekroczy limit czasu w przypadku jej braku.
 
-`context.done` Metoda umożliwia przesłać zarówno błędach zdefiniowane przez użytkownika do środowiska uruchomieniowego i zbioru właściwości właściwości, które zastąpienie właściwości na `context.bindings` obiektu.
+`context.done` Metoda umożliwia przesłać zarówno błędach zdefiniowane przez użytkownika do środowiska uruchomieniowego i obiektem JSON zawierającym dane wyjściowe powiązanie danych. Właściwości są przekazywane do `context.done` spowoduje zastąpienie niczego nastavit `context.bindings` obiektu.
 
 ```javascript
 // Even though we set myOutput to have:
-//  -> text: hello world, number: 123
+//  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 // the done method will overwrite the myOutput binding to be: 
-//  -> text: hello there, world, noNumber: true
+//  -> text: 'hello there, world', noNumber: true
 ```
 
 ### <a name="contextlog-method"></a>Metoda context.log  
@@ -113,7 +121,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 context.log(message)
 ```
-Pozwala na zapis w dziennikach konsoli przesyłania strumieniowego na domyślny poziom śledzenia. Na `context.log`, dodatkowe opcje rejestrowania metody są dostępne, które pozwalają na zapisywanie w dzienniku konsoli na innych poziomach śledzenia:
+Pozwala na zapis w dziennikach funkcji przesyłania strumieniowego na domyślny poziom śledzenia. Na `context.log`, dodatkowe opcje rejestrowania metody są dostępne, które pozwalają na zapisywanie dzienników funkcji na innych poziomach śledzenia:
 
 
 | Metoda                 | Opis                                |
@@ -123,12 +131,14 @@ Pozwala na zapis w dziennikach konsoli przesyłania strumieniowego na domyślny 
 | **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
 | **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
-Poniższy przykład zapisuje do konsoli, gdy poziom śledzenia Ostrzeżenie:
+Poniższy przykład zapisuje dziennik na poziom śledzenia Ostrzeżenie:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Możesz ustawić próg poziom śledzenia dla rejestrowania w pliku host.json lub go wyłączyć.  Aby uzyskać więcej informacji na temat zapisywać w dziennikach, zobacz następną sekcję.
+Możesz [skonfigurowania progu poziom śledzenia dla rejestrowania](#configure-the-trace-level-for-console-logging) w pliku host.json. Aby uzyskać więcej informacji na temat zapisywania dzienników, zobacz [zapisywania danych wyjściowych śledzenia](#writing-trace-output-to-the-console) poniżej.
+
+Odczyt [monitorowania usługi Azure Functions](functions-monitoring.md) Aby dowiedzieć się więcej na temat przeglądania i zapytania o dzienniki funkcji.
 
 ## <a name="binding-data-type"></a>Typ danych powiązania
 
@@ -143,11 +153,11 @@ Aby zdefiniować typ danych dla powiązania danych wejściowych, użyj `dataType
 }
 ```
 
-Inne opcje `dataType` są `stream` i `string`.
+Opcje dla `dataType` są: `binary`, `stream`, i `string`.
 
 ## <a name="writing-trace-output-to-the-console"></a>Zapisywanie danych wyjściowych śledzenia w konsoli programu 
 
-W przypadku funkcji używasz `context.log` metody można zapisywać dane wyjściowe śledzenia do konsoli. W tym momencie nie można użyć `console.log` do zapisu do konsoli.
+W przypadku funkcji używasz `context.log` metody można zapisywać dane wyjściowe śledzenia do konsoli. W funkcji v1.x, nie można użyć `console.log` do zapisu do konsoli. W v2.x funkcji śledzenia możesz za pomocą `console.log` są przechwytywane na poziomie aplikacji funkcji. Oznacza to, że dane wyjściowe z `console.log` nie są związane z wywołania określonych funkcji.
 
 Gdy wywołujesz `context.log()`, wiadomości są zapisywane do konsoli na domyślny poziom śledzenia, który jest _informacje_ poziom śledzenia. Poniższy kod zapisuje do konsoli, gdy poziom śledzenia informacje:
 
@@ -155,22 +165,21 @@ Gdy wywołujesz `context.log()`, wiadomości są zapisywane do konsoli na domyś
 context.log({hello: 'world'});  
 ```
 
-Powyższy kod jest równoważny z następującym kodem:
+Ten kod jest odpowiednikiem w powyższym kodzie:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-Poniższy kod, zapisuje się do konsoli na poziomie błędu:
+Ten kod zapisuje do konsoli na poziomie błędu:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Ponieważ _błąd_ znajduje się ślad najwyższego poziomu, to śledzenia są zapisywane dane wyjściowe na wszystkich poziomach śledzenia tak długo, jak rejestrowanie jest włączone.  
+Ponieważ _błąd_ znajduje się ślad najwyższego poziomu, to śledzenia są zapisywane dane wyjściowe na wszystkich poziomach śledzenia tak długo, jak rejestrowanie jest włączone.
 
-
-Wszystkie `context.log` metody obsługują ten sam format parametru, który jest obsługiwany przez Node.js [metoda util.format](https://nodejs.org/api/util.html#util_util_format_format). Rozważmy poniższy kod, który zapisuje je w konsoli przy użyciu domyślnego poziomu śledzenia:
+Wszystkie `context.log` metody obsługują ten sam format parametru, który jest obsługiwany przez Node.js [metoda util.format](https://nodejs.org/api/util.html#util_util_format_format). Należy wziąć pod uwagę następujący kod, który zapisuje dzienniki funkcji za pomocą domyślnego poziomu śledzenia:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -204,7 +213,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 ### <a name="request-object"></a>Obiekt "Request"
 
-`request` Obiekt ma następujące właściwości:
+`context.req` (Żądanie), po której obiekt ma następujące właściwości:
 
 | Właściwość      | Opis                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -219,7 +228,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 ### <a name="response-object"></a>Obiekt odpowiedzi
 
-`response` Obiekt ma następujące właściwości:
+`context.res` Obiektu (odpowiedź) ma następujące właściwości:
 
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
@@ -230,13 +239,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 ### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi 
 
-Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żądań i odpowiedzi HTTP w jednym z trzech sposobów:
-
-+ Nazwane danych wejściowych i powiązania danych wyjściowych. W ten sposób wyzwalacza HTTP i powiązania działać tak samo, jak inne powiązanie. W poniższym przykładzie ustawiono obiekt odpowiedzi za pomocą nazwane `response` powiązania: 
-
-    ```javascript
-    context.bindings.response = { status: 201, body: "Insert succeeded." };
-    ```
+Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żądań i odpowiedzi HTTP, kilka sposobów:
 
 + Z `req` i `res` właściwości `context` obiektu. W ten sposób można użyć wzorca konwencjonalne HTTP dostępu do danych z obiektu kontekstu, zamiast pełnego `context.bindings.name` wzorca. Poniższy przykład pokazuje, jak uzyskać dostęp do `req` i `res` obiektów na `context`:
 
@@ -247,7 +250,20 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żąd
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Przez wywołanie metody `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
++ Nazwane danych wejściowych i powiązania danych wyjściowych. W ten sposób wyzwalacza HTTP i powiązania działać tak samo, jak inne powiązanie. W poniższym przykładzie ustawiono obiekt odpowiedzi za pomocą nazwane `response` powiązania: 
+
+    ```json
+    {
+        "type": "http",
+        "direction": "out",
+        "name": "response"
+    }
+    ```
+    ```javascript
+    context.bindings.response = { status: 201, body: "Insert succeeded." };
+    ```
+
++ [Tylko odpowiedzi] Przez wywołanie metody `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
 
     ```json
     {
@@ -256,15 +272,13 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żąd
       "name": "$return"
     }
     ``` 
-    To powiązanie danych wyjściowych oczekuje, że trzeba będzie podać odpowiedzi, po wywołaniu `done()`, wykonując następujące czynności:
-
     ```javascript
      // Define a valid response object.
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Węzeł wersji i pakiet zarządzania
+## <a name="node-version"></a>Wersja węzła
 
 W poniższej tabeli przedstawiono wersja Node.js używana przez środowisko uruchomieniowe usługi Functions Każda główna wersja:
 
@@ -275,6 +289,7 @@ W poniższej tabeli przedstawiono wersja Node.js używana przez środowisko uruc
 
 Zobaczyć bieżącą wersję środowiska uruchomieniowego używanej przez usługę Drukowanie `process.version` z żadnej funkcji.
 
+## <a name="package-management"></a>Zarządzanie pakietami
 Poniższe kroki pozwalają na wybranie pakietów w aplikacji funkcji: 
 
 1. Przejdź do pozycji `https://<function_app_name>.scm.azurewebsites.net` (Plik > Nowy > Inny).

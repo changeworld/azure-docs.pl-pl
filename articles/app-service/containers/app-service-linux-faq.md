@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: cd107ddc5ac443daee592c40bbed451c913a8a3b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aba6a1f7028ac09cad8acf587fd56dcc2c16919b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444593"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295722"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -74,7 +74,7 @@ Tak, musisz ustawić aplikacji nosi nazwę `WEBSITE_WEBDEPLOY_USE_SCM` do *false
 
 W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w systemie Linux, należy wybrać jedną z następujących opcji wdrażania kodu aplikacji:
 
-- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): można przechowywać kodu źródłowego aplikacji w repozytorium Git usługi Team Services lub repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): można przechowywać kodu źródłowego aplikacji w repozytorium DevOps Git platformy Azure lub w repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH w aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć swój kod. Uruchom następujący kod:
 

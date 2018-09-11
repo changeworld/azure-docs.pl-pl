@@ -6,16 +6,16 @@ services: key-vault
 author: amitbapat
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: c58fc56742c0a11771bdd84e4195e6f476622a3b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6315434c1e8acc82e02f5c9e5ae8ab2d1cacc887
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345173"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302057"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Key Vault i sieciami wirtualnymi
 
@@ -35,7 +35,7 @@ W tym przewodniku opisano krok po kroku instrukcje dotyczące konfigurowania us�
 7. W obszarze **sieci IP**, można dodać zakresy adresów IPv4, wpisując zakresy adresów IPv4 [notacji CIDR (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) lub poszczególne adresy IP.
 8. Kliknij pozycję **Zapisz**.
 
-## <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
+## <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
 
 1. [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) i [logowania](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
@@ -70,7 +70,7 @@ az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypa
 az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
 ```
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 1. Zainstaluj najnowszą wersję [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
@@ -105,7 +105,7 @@ Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServic
 Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
 ```
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 
 * Poleceń interfejsu wiersza polecenia 2.0 platformy Azure — [reguły sieciowej az keyvault](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Polecenia cmdlet programu PowerShell systemu Azure — [Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault), [AzureRmKeyVaultNetworkRule Dodaj](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule), [AzureRmKeyVaultNetworkRule Usuń](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule), [ Aktualizacja AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)

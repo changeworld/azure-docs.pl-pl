@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3c0efe7fbeb3d3259d1e8505a965499cfb941e9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b1ab1381271391da9f4775488908af4eb1e47f5d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049392"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346274"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu .NET Core SDK interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -52,6 +52,15 @@ ms.locfileid: "44049392"
 ## <a name="release-notes"></a>Informacje o wersji
 
 Azure Cosmos DB platformy .NET Core SDK ma równoważności funkcji z najnowszej wersji [zestawu .NET SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Dodano żądanie anulowania obsługi.
+* Dodano SetCurrentLocation do ConnectionPolicy, który automatycznie wypełni preferowane lokalizacje, w oparciu o regionie.
+* Usunięto usterkę występującą w wielu zapytaniach partycji Min/Max i filtr, który pasuje do żadnych dokumentów w poszczególnych partycji.
+* Metody DocumentClient mają teraz zgodność z IDocumentClient.
+* Zaktualizowano TCP transportu stos funkcji bezpośrednie do zmniejszenia liczby połączeń.
+* Dodano obsługę bezpośredniego połączenia TCP w trybie dla klientów innych niż Windows.
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -186,8 +195,7 @@ Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](http:
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |26 lipca 2018 r. |--- |
-| [2.0.0-Preview](#2.0.0-preview) |11 maja 2018 r. |--- |
+| [2.0.0](#2.0.0) |07 września 2018 r. |--- |
 | [1.9.1](#1.9.1) |09 marca 2018 r. |--- |
 | [1.8.2](#1.8.2) |21 lutego 2018 r. |--- |
 | [1.8.1](#1.8.1) |05 lutego 2018 r. |--- |

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97bf33cb882d5a121b9811a8e36a1d26f9a954f8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 14ac23e6b69302ac412aac3ecab06345e5d722fd
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715373"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296350"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -89,7 +89,7 @@ Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia 
 
     ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/subscription-access-control.png)
 
-    Klasyczni administratorzy i współadministratorzy są traktowani jako właściciele subskrypcji w modelu kontroli dostępu opartej na rolach.
+    Klasyczni Administratorzy i współadministratorzy są traktowani jako właściciele subskrypcji w modelu RBAC.
 
 ### <a name="list-role-assignments-for-a-management-group"></a>Lista przypisań ról dla grupy zarządzania
 
@@ -109,9 +109,9 @@ Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia 
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
-Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Wykonaj następujące kroki, aby udzielić dostępu w różnych zakresach.
+W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę. Wykonaj następujące kroki, aby udzielić dostępu w różnych zakresach.
 
-### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>Tworzenie przypisania roli w zakresie grupy zasobów
+### <a name="assign-a-role-at-a-resource-group-scope"></a>Przypisz rolę w zakresie grupy zasobów
 
 1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
 
@@ -131,11 +131,11 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+1. Wybierz **Zapisz** Aby przypisać rolę.
 
    Po kilku chwilach podmiotowi zabezpieczeń zostanie przypisana dana rola w zakresie grupy zasobów.
 
-### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Tworzenie przypisania roli w zakresie subskrypcji
+### <a name="assign-a-role-at-a-subscription-scope"></a>Przypisz rolę w zakresie subskrypcji
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
@@ -155,11 +155,37 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+1. Wybierz **Zapisz** Aby przypisać rolę.
 
    Po kilku chwilach podmiotowi zabezpieczeń zostanie przypisana dana rola w zakresie subskrypcji.
 
-### <a name="create-a-role-assignment-at-a-management-group-scope"></a>Tworzenie przypisania roli w zakresie grupy zarządzania
+### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Przypisywanie użytkownika jako administratora subskrypcji
+
+Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypisać je [właściciela](built-in-roles.md#owner) rolę w zakresie subskrypcji. Rola właściciela zapewnia pełny dostęp użytkownika do wszystkich zasobów w ramach subskrypcji, łącznie z prawej strony można delegować dostępu do innych osób. Te kroki są takie same jak inne przypisania roli.
+
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
+
+1. Wybierz subskrypcję.
+
+1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
+
+   ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
+
+   Jeśli nie masz uprawnień do przypisywania ról, nie zobaczysz opcji **Dodaj**.
+
+   ![Okienko dodawania uprawnień](./media/role-assignments-portal/add-permissions.png)
+
+1. W **roli** listy rozwijanej wybierz **właściciela** roli.
+
+1. W **wybierz** , wybierz użytkownika na liście. Jeśli nie widzisz użytkownika na liście, należy wpisać w **wybierz** pole, aby przeszukać katalog nazw wyświetlanych i adresów e-mail.
+
+1. Wybierz **Zapisz** Aby przypisać rolę.
+
+   Po kilku chwilach użytkownik przypisany do roli właściciela w zakresie subskrypcji.
+
+### <a name="assign-a-role-at-a-management-group-scope"></a>Przypisz rolę w zakresie grupy zarządzania
 
 1. W witrynie Azure portal wybierz **wszystkich usług** i następnie **grup zarządzania**.
 
@@ -185,7 +211,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+1. Wybierz **Zapisz** Aby przypisać rolę.
 
    Po kilku chwilach podmiotu zabezpieczeń jest przypisana rola w zakresie grupy zarządzania.
 

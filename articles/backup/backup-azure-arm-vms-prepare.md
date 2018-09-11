@@ -7,14 +7,14 @@ manager: carmonm
 keywords: kopie zapasowe Tworzenie kopii zapasowej;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc9d7b924f51fb3a4e9662dfa7ad4b9557b481bc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445747"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347005"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -46,6 +46,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ograniczenia w przypadku tworzenia kopii zapasowych i przywracania maszyny Wirtualnej
 Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 
+* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu SSD w warstwie standardowa nie jest obecnie obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 16 dysków danych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.

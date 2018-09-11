@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric modelu hostingu | Dokumentacja firmy Microsoft
-description: Opisuje relację między repliki (lub wystąpień) wdrożonej usługi Service Fabric i procesu hosta usługi.
+title: Usługa Azure Service Fabric modelu hostingu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano relację między repliki (lub wystąpieniami) wdrożonej usługi Service Fabric i procesu hosta usługi.
 services: service-fabric
 documentationcenter: .net
 author: harahma
@@ -12,54 +12,54 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d56bb10041e3baffddf6fd4121a6e1f7ba8e0632
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206324"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348484"
 ---
-# <a name="azure-service-fabric-hosting-model"></a>Azure modelu hostingu sieci szkieletowej usług
-Ten artykuł zawiera omówienie modeli dostarczonych przez sieć szkieletowa usług Azure hosting aplikacji i opisano różnice między **udostępnionego procesu** i **wyłącznego procesu** modeli. Opisuje wygląd wdrożonej aplikacji na węzeł sieci szkieletowej usług i relacji między repliki (lub wystąpień), usługi i procesu hosta usługi.
+# <a name="azure-service-fabric-hosting-model"></a>Usługa Azure Service Fabric modelu hostingu
+Ten artykuł zawiera omówienie modele udostępniane przez usługi Azure Service Fabric do hostowania aplikacji i w tym artykule opisano różnice między **udostępnionego procesu** i **wyłączne procesu** modeli. Opisuje, jak wygląda wdrożonej aplikacji na węzła usługi Service Fabric i relacji między repliki (lub wystąpieniami), usługi i procesu hosta usługi.
 
-Przed kontynuacją, upewnij się, że różne pojęciami i relacje wyjaśniono w [modelu aplikacji w sieci szkieletowej usług][a1]. 
+Przed kontynuacją upewnij się, aby zapoznać się z pojęciami różnych i szczegółowo opisane relacje [modelu aplikacji w usłudze Service Fabric][a1]. 
 
 > [!NOTE]
-> W tym artykule chyba że jawnie wymieniony jako inny oznacza:
+> W tym artykule chyba że wyraźnie wymienione jako oznacza coś innego:
 >
-> - *Replika* odwołuje się do obu repliki usługi stanowej i wystąpienie usługi bezstanowej.
-> - *Elementu CodePackage* jest traktowane jako równoważne *ServiceHost* procesu, który rejestruje *ServiceType*i replik hostów usług tego *ServiceType*.
+> - *Replika* odwołuje się do zarówno repliki, usługi stanowe i wystąpienie usługi bezstanowej.
+> - *CodePackage* jest traktowane jako równoważne *ServiceHost* procesu, który rejestruje *ServiceType*i hosty repliki usług tego *ServiceType*.
 >
 
-Aby poznać hostingu modelu, Przejdźmy przykładem. Załóżmy, że mamy *atrybutów ApplicationType* "MyAppType", który ma *ServiceType* "MyServiceType". "MyServiceType" są dostarczane przez *ServicePackage* "MyServicePackage", który ma *elementu CodePackage* "MyCodePackage". Rejestruje "MyCodePackage" *ServiceType* "MyServiceType" po uruchomieniu.
+Aby poznać modelu hostingu, Przejdźmy przykładem. Załóżmy, że mamy *ApplicationType* "MyAppType", która ma *ServiceType* "MyServiceType". "MyServiceType" są dostarczane przez *pakiet ServicePackage* "MyServicePackage", która ma *CodePackage* "MyCodePackage". Rejestruje "MyCodePackage" *ServiceType* "MyServiceType", po jego uruchomieniu.
 
-Załóżmy, że mamy istnieją trzy węzły klastra, utworzymy *aplikacji* **fabric: / App1** typu "MyAppType". Wewnątrz tej aplikacji **fabric: / App1**, możemy utworzyć usługę **sieci szkieletowej: / App1/ServiceA** typu "MyServiceType". Ta usługa ma dwie partycje (na przykład **P1** i **P2**) i trzy replik jednej partycji. Na poniższym diagramie przedstawiono widoku tej aplikacji, w jakiej kończy się wdrożonej w węźle.
-
-
-![Diagram widoku węzła wdrożonej aplikacji][node-view-one]
+Załóżmy, że mamy klaster z trzema węzłami, możemy utworzyć *aplikacji* **Service fabric: / App1** typu "MyAppType". W tej aplikacji **Service fabric: / App1**, możemy utworzyć usługę **Service fabric: / App1/ServiceA** typu "MyServiceType". Ta usługa ma dwie partycje (na przykład **P1** i **P2**), a trzy repliki na partycję. Na poniższym diagramie przedstawiono widok tej aplikacji, ponieważ kończy się wdrożonej w węźle.
 
 
-Sieć szkieletowa usług aktywować "MyServicePackage", który rozpoczął "MyCodePackage", który jest hostem repliki z obu partycji. Wszystkie węzły w klastrze mają tego samego widoku, ponieważ wybrano liczba replik jednej partycji do być taka sama jak liczba węzłów w klastrze. Utwórz inną usługę **sieci szkieletowej: / App1/ServiceB**, w aplikacji **fabric: / App1**. Ta usługa ma jedną partycję (na przykład **P3**) i trzy replik jednej partycji. Na poniższym diagramie przedstawiono nowy widok w węźle:
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-one]
 
 
-![Diagram widoku węzła wdrożonej aplikacji][node-view-two]
+Usługa Service Fabric aktywowana "MyServicePackage", która została "MyCodePackage", który jest hostem repliki z obu partycji. Wszystkie węzły w klastrze mają tego samego widoku, ponieważ została wybrana liczba replik na partycję, aby być taka sama jak liczba węzłów w klastrze. Utwórzmy innej usługi, **Service fabric: / App1/ServiceB**, w aplikacji **Service fabric: / App1**. Ta usługa ma jedną partycję (na przykład **P3**), a trzy repliki na partycję. Na poniższym diagramie przedstawiono nowy widok w węźle:
 
 
-Sieć szkieletowa usług umieszczone nowej repliki dla partycji **P3** usługi **sieci szkieletowej: / App1/ServiceB** w istniejących aktywacji "MyServicePackage". Teraz. Utwórz inną aplikację **fabric: / App2** typu "MyAppType". Wewnątrz **fabric: / App2**, Utwórz usługę **fabric: / App2/ServiceA**. Ta usługa ma dwie partycje (**P4** i **5**) i trzy replik jednej partycji. Na poniższym diagramie przedstawiono nowy widok węzła:
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-two]
 
 
-![Diagram widoku węzła wdrożonej aplikacji][node-view-three]
+Usługa Service Fabric umieszczone nowej repliki dla partycji **P3** usługi **Service fabric: / App1/ServiceB** w istniejących aktywacji "MyServicePackage". Teraz. Utwórz inną aplikację **Service fabric: / App2** typu "MyAppType". Wewnątrz **Service fabric: / App2**, utworzyć usługę **Service fabric: / App2/ServiceA**. Ta usługa ma dwie partycje (**P4** i **P5**), a trzy repliki na partycję. Na poniższym diagramie przedstawiono nowy widok węzła:
 
 
-Usługa Service Fabric aktywuje nową kopię "MyServicePackage", która uruchamia nową kopię "MyCodePackage". Repliki z obu partycji usługi **fabric: / App2/ServiceA** (**P4** i **5**) są umieszczane w tej nowej kopii "MyCodePackage".
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-three]
 
-## <a name="shared-process-model"></a>Udostępnione modelu procesów
-Poprzedniej sekcji opisano domyślny model udostępniane przez usługi Service Fabric, określany jako model procesu udostępnionych hostowania. W tym modelu dla danej aplikacji, tylko jedna kopia danego *ServicePackage* została aktywowana w węźle (co spowoduje włączenie wszystkich *CodePackages* zawarte w niej). Wszystkie repliki wszystkich usług danego *ServiceType* są umieszczane w *elementu CodePackage* który który rejestruje *ServiceType*. Innymi słowy, wszystkich replik wszystkich usług w węźle danego *ServiceType* udostępniać ten sam proces.
 
-## <a name="exclusive-process-model"></a>Wyłączny modelu procesów
-Inne model hostingu udostępniane przez usługi sieć szkieletowa jest model procesu wyłącznego. W tym modelu w danym węźle każda replika znajduje się w dedykowanym procesie. Usługa Service Fabric aktywuje nową kopię *ServicePackage* (co spowoduje włączenie wszystkich *CodePackages* zawarte w niej). Repliki są umieszczane w *elementu CodePackage* zarejestrowanego *ServiceType* usługi, do której należy replika. 
+Usługa Service Fabric aktywuje nową kopię "MyServicePackage", który uruchamia nową kopię "MyCodePackage". Repliki z obu partycji usługi **Service fabric: / App2/ServiceA** (**P4** i **P5**) są umieszczane w tej nowej kopii "MyCodePackage".
 
-Jeśli używasz usługi sieć szkieletowa wersja 5.6 lub później, możesz wybrać model procesu wyłączności w czasie tworzenia usługi (za pomocą [PowerShell][p1], [REST] [ r1], lub [klienta fabricclient z rolą][c1]). Określ **ServicePackageActivationMode** jako "ExclusiveProcess".
+## <a name="shared-process-model"></a>Udostępnione model procesów
+W poprzedniej sekcji opisano domyślny model dostarczane przez usługę Service Fabric, określane jako model udostępnionego procesu hostingu. W tym modelu dla danej aplikacji, tylko jedna kopia danego *pakiet ServicePackage* została aktywowana w węźle (co spowoduje włączenie wszystkich *CodePackages* zawarte w nim). Wszystkie repliki wszystkich usług z danego *ServiceType* są umieszczane w *CodePackage* , który rejestruje *ServiceType*. Innymi słowy, wszystkich replik wszystkich usług w węźle danego *ServiceType* udostępnianie tego samego procesu.
+
+## <a name="exclusive-process-model"></a>Wyłączne model procesów
+Inne modelu hostingu udostępnianego przez usługę Service Fabric jest model procesu wyłączności. W tym modelu w danym węźle każda replika znajduje się w swoim własnym procesie dedykowanych. Usługa Service Fabric aktywuje nową kopię *pakiet ServicePackage* (co spowoduje włączenie wszystkich *CodePackages* zawarte w nim). Repliki są umieszczane w *CodePackage* zarejestrowanego *ServiceType* usługi, do której należy replika. 
+
+Jeśli używasz usługi Service Fabric w wersji 5.6 lub później, można wybrać model procesu wyłączności w czasie tworzenia usługi (za pomocą [PowerShell][p1], [REST] [ r1], lub [FabricClient][c1]). Określ **ServicePackageActivationMode** jako "ExclusiveProcess".
 
 ```powershell
 PS C:\>New-ServiceFabricService -ApplicationName "fabric:/App1" -ServiceName "fabric:/App1/ServiceA" -ServiceTypeName "MyServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1 -ServicePackageActivationMode "ExclusiveProcess"
@@ -80,7 +80,7 @@ var fabricClient = new FabricClient(clusterEndpoints);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Jeśli masz usługi domyślne w manifeście aplikacji, określając można wybrać model procesu wyłącznego **ServicePackageActivationMode** atrybutu:
+Jeśli masz usługi domyślnej w manifeście aplikacji, można wybrać model procesu wyłączny, określając **ServicePackageActivationMode** atrybutu:
 
 ```xml
 <DefaultServices>
@@ -91,95 +91,95 @@ Jeśli masz usługi domyślne w manifeście aplikacji, określając można wybra
   </Service>
 </DefaultServices>
 ```
-Teraz Utwórzmy innej usługi, **fabric: / App1/ServiceC**, w aplikacji **fabric: / App1**. Ta usługa ma dwie partycje (na przykład **P6** i **P7**) i trzy replik jednej partycji. Możesz ustawić **ServicePackageActivationMode** do "ExclusiveProcess". Na poniższym diagramie przedstawiono nowy widok w węźle:
+Teraz Utwórzmy innej usługi, **Service fabric: / App1/ServiceC**, w aplikacji **Service fabric: / App1**. Ta usługa ma dwie partycje (na przykład **P6** i **P7**) i trzech replik dla każdej partycji. Możesz ustawić **ServicePackageActivationMode** do "ExclusiveProcess". Na poniższym diagramie przedstawiono nowy widok w węźle:
 
 
-![Diagram widoku węzła wdrożonej aplikacji][node-view-four]
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-four]
 
 
-Jak widać, Service Fabric aktywowany dwóch nowych kopii "MyServicePackage" (po jednej dla każdej repliki z partycji **P6** i **P7**). Sieć szkieletowa usług umieszczone każdej repliki w jego dedykowanych kopii *elementu CodePackage*. Korzystając z modelem procesu wyłącznego dla danej aplikacji, wielu kopii danej *ServicePackage* może być aktywny w węźle. W powyższym przykładzie trzy kopie "MyServicePackage" są aktywne dla **fabric: / App1**. Każdy z tych active kopii "MyServicePackage" ma **ServicePackageActivationId** skojarzonych z nim. Ten identyfikator identyfikuje ją w aplikacji **fabric: / App1**.
+Jak widać, Usługa Service Fabric aktywowane dwóch nowych kopii "MyServicePackage" (jeden dla każdej repliki z partycji **P6** i **P7**). Usługi Service Fabric umieszczone każdej repliki w jego dedykowanych kopię *CodePackage*. Korzystając z modelem procesu wyłączny dla danej aplikacji, wiele kopii danej *pakiet ServicePackage* może być aktywny w węźle. W powyższym przykładzie trzy kopie "MyServicePackage" są aktywne dla **Service fabric: / App1**. Każda z tych kopii aktywnej "MyServicePackage" ma **ServicePackageActivationId** skojarzonych z nim. Ten identyfikator identyfikuje kopii aplikacji **Service fabric: / App1**.
 
-Korzystając z modelu procesu udostępnione dla aplikacji, jest tylko jedna kopia active *ServicePackage* w węźle. **ServicePackageActivationId** w przypadku tego aktywacji *ServicePackage* jest pustym ciągiem. Jest to, na przykład z **fabric: / App2**.
+Korzystając z modelem procesu udostępnione dla aplikacji, jest tylko jedna kopia active *pakiet ServicePackage* w węźle. **ServicePackageActivationId** to aktywacji *pakiet ServicePackage* jest ciągiem pustym. Jest to przypadek, na przykład za pomocą **Service fabric: / App2**.
 
 > [!NOTE]
->- Udostępnione procesu hostingu modelu odpowiada **ServicePackageActivationMode** jest równe **SharedProcess**. Jest to domyślny model hostowania, i **ServicePackageActivationMode** nie muszą być określane podczas tworzenia usługi.
+>- Proces udostępnione odnosi się do modelu hostowania **ServicePackageActivationMode** jest równa **SharedProcess**. Jest to domyślny model, hostingu i **ServicePackageActivationMode** nie muszą być określane podczas tworzenia usługi.
 >
->- Wyłączny procesu hostingu modelu odpowiada **ServicePackageActivationMode** jest równe **ExclusiveProcess**. Aby użyć tego ustawienia, należy określić go jawnie w czasie tworzenia usługi. 
+>- Proces wyłączne odnosi się do modelu hostowania **ServicePackageActivationMode** jest równa **ExclusiveProcess**. Aby użyć tego ustawienia, należy określić ją jawnie w czasie tworzenia usługi. 
 >
->- Aby wyświetlić hostingu modelu usługi, zapytania [opis usługi][p2]i przyjrzyj się wartość **ServicePackageActivationMode**.
+>- Aby wyświetlić modelu hostingu usługi, należy zbadać [opis usługi][p2]i przyjrzyj się wartość **ServicePackageActivationMode**.
 >
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>Praca z pakietem wdrożonej usługi
-Aktywne kopię *ServicePackage* w węźle jest określany jako [wdrożony pakiet usługi][p3]. Podczas korzystania z modelu procesu wyłączności do tworzenia usług dla danej aplikacji, może być wiele pakietów wdrożonej usługi dla tego samego *ServicePackage*. Jeśli są wykonywane operacje specyficzne dla pakietu wdrożonej usługi, należy podać **ServicePackageActivationId** do identyfikowania pakietu określonych wdrożonej usługi. Na przykład można podać identyfikator, jeśli jesteś [raportowania kondycji pakietu wdrożonej usługi] [ p4] lub [ponownego uruchamiania pakietu kodu pakietu wdrożonej usługi] [p5].
+Aktywna kopia *pakiet ServicePackage* w węźle jest określany jako [wdrożony pakiet usługi][p3]. Korzystając z modelu procesu wyłączności do tworzenia usług dla danej aplikacji, może być wiele pakietów wdrożonej usługi dla tego samego *pakiet ServicePackage*. W przypadku przeprowadzania operacji specyficzne dla pakietu wdrożonej usługi, należy podać **ServicePackageActivationId** do identyfikowania pakiet określonych wdrożonej usługi. Na przykład można podać identyfikator przypadku [raportowania kondycji wdrożony pakiet usługi] [ p4] lub [ponowne uruchomienie pakietu kodu wdrożony pakiet usługi] [p5].
 
-Można sprawdzić **ServicePackageActivationId** pakietu wdrożonej usługi, badając listę [wdrożonych pakietów usługi] [ p3] w węźle. Gdy są wykonywania zapytania dotyczącego [wdrożone typów usług][p6], [wdrożone replik][p7], i [wdrożone pakiety kodu ] [ p8] w węźle, zawiera także wynik zapytania **ServicePackageActivationId** pakiet z wdrożonej przez element nadrzędny.
+Możesz dowiedzieć się **ServicePackageActivationId** pakietu wdrożonej usługi, badając listy [wdrożonych pakietów usługi] [ p3] w węźle. Gdy jest wykonywane zapytanie dla [wdrożone typów usług][p6], [wdrożone replik][p7], i [wdrożone pakiety kodu ] [ p8] w węźle zawiera także wynik kwerendy **ServicePackageActivationId** pakiet z wdrożonej przez element nadrzędny.
 
 > [!NOTE]
->- W modelu udostępnionego procesu hostingu w danym węźle dla danej aplikacji, tylko jedną kopię *ServicePackage* jest aktywny. Ma ona **ServicePackageActivationId** równa *pusty ciąg*i nie muszą być określane podczas wykonywania operacji związanych z pakietem wdrożonej usługi. 
+>- W ramach modelu udostępnionego procesu hostingu w danym węźle dla danej aplikacji, tylko jedna kopia *pakiet ServicePackage* została aktywowana. Ma ona **ServicePackageActivationId** równa *pusty ciąg*i nie muszą być określane podczas wykonywania operacji związanych z pakietu wdrożonej usługi. 
 >
-> - W obszarze wyłącznego procesu hostingu modelu w danym węźle dla danej aplikacji, jednego lub większej liczby kopii *ServicePackage* mogą być aktywne. Każda aktywacja ma *niepustym* **ServicePackageActivationId**określone podczas wykonywania operacji związanych z pakietem wdrożonej usługi. 
+> - W obszarze wyłączne procesu hostingu modelu w danym węźle dla danej aplikacji, jednego lub większej liczby kopii *pakiet ServicePackage* może być aktywne. Każda aktywacja ma *niepuste* **ServicePackageActivationId**określone podczas wykonywania operacji związanych z pakietu wdrożonej usługi. 
 >
-> - Jeśli **ServicePackageActivationId** jest pominięty, domyślnie *pusty ciąg*. Jeśli pakiet wdrożonej usługi, który został aktywowany zgodnie z modelem procesu udostępnione, będzie można wykonać operacji na nim. W przeciwnym razie operacja zakończy się niepowodzeniem.
+> - Jeśli **ServicePackageActivationId** jest pominięty, jego wartość domyślna to *pusty ciąg*. Jeśli pakiet wdrożonej usługi, który został aktywowany w ramach modelu udostępnionego procesu jest obecny, będzie można wykonać operacji na nim. W przeciwnym razie operacja zakończy się niepowodzeniem.
 >
-> - Nie wykonać kwerendy raz i pamięci podręcznej **ServicePackageActivationId**. Identyfikator jest generowane dynamicznie i zmieniać z różnych przyczyn. Przed wykonaniem operacji, które należy **ServicePackageActivationId**, należy najpierw sprawdzić listę [wdrożonych pakietów usługi] [ p3] w węźle. Następnie użyj **ServicePackageActivationId** od wyniku kwerendy, aby wykonać operację.
+> - Nie wykonać kwerendy raz i pamięci podręcznej **ServicePackageActivationId**. Identyfikator jest generowana dynamicznie i mogą być zmieniane dla różnych powodów. Przed przystąpieniem do wykonywania operacji, która wymaga **ServicePackageActivationId**, należy najpierw kwerendy listy [wdrożonych pakietów usługi] [ p3] w węźle. Następnie użyj **ServicePackageActivationId** od wyniku kwerendy do wykonywania operacji pierwotnej.
 >
 >
 
-## <a name="guest-executable-and-container-applications"></a>Gość plik wykonywalny i kontenera aplikacji
-Sieć szkieletowa usług traktuje [pliku wykonywalnego gościa] [ a2] i [kontenera] [ a3] aplikacji jako usługi bezstanowej, które są niezależne. Brak nie środowiska uruchomieniowego platformy Service Fabric w *ServiceHost* (proces lub kontenera). Ponieważ te usługi są niezależne, liczba replik na *ServiceHost* nie ma zastosowania do tych usług. Konfiguracja najczęściej używane z tymi usługami jest jednej partycji, z [InstanceCount] [ c2] równy -1 (jedną kopię kodu usługi uruchomione w każdym węźle klastra). 
+## <a name="guest-executable-and-container-applications"></a>Gość plik wykonywalny i aplikacji kontenera
+Usługa Service Fabric traktuje [pliku wykonywalnego gościa] [ a2] i [kontenera] [ a3] aplikacji jako bezstanowej usługi, które są niezależne. Istnieje nie środowisko uruchomieniowe usługi Service Fabric w *ServiceHost* (procesu lub kontenera). Ponieważ te usługi są niezależne, liczba replik na *ServiceHost* nie ma zastosowania do tych usług. Najbardziej typowe konfiguracji, które są używane z tych usług jest jedną partycją, za pomocą [InstanceCount] [ c2] równy-1 (jedną kopię kodu usługi uruchomione w każdym węźle klastra). 
 
-Wartość domyślna **ServicePackageActivationMode** dla tych usług jest **SharedProcess**, w którym to przypadku usługi Service Fabric aktywuje tylko jedną kopię *ServicePackage* w węźle dla danej aplikacji.  Oznacza to, że tylko jedna kopia kodu usługi zostaną uruchomione węzła. Jeśli wiele kopii kodu usługi do uruchamiania w węźle, należy określić **ServicePackageActivationMode** jako **ExclusiveProcess** w czasie tworzenia usługi. Na przykład można to zrobić po utworzeniu wielu usług (*Service1* do *ServiceN*) z *ServiceType* (określony w *ServiceManifest*), lub gdy usługa jest podzielona na partycje wielu. 
+Wartość domyślna **ServicePackageActivationMode** dla tych usług jest **SharedProcess**, w którym to przypadku usługi Service Fabric aktywuje tylko jedną kopię *pakiet ServicePackage* w węźle dla danej aplikacji.  Oznacza to, że tylko jedna kopia kod obsługi zostanie uruchomiony węzeł. Jeśli chcesz, aby wiele kopii kodu usługi do uruchamiania w węźle, należy określić **ServicePackageActivationMode** jako **ExclusiveProcess** w czasie tworzenia usługi. Na przykład, można to zrobić podczas tworzenia wielu usług (*Service1* do *ServiceN*) z *ServiceType* (określony w *ServiceManifest*), lub gdy usługa jest podzielona na partycje wielu. 
 
-## <a name="change-the-hosting-model-of-an-existing-service"></a>Zmień model hostingu istniejącej usługi
-Obecnie nie można zmienić model hostingu istniejącą usługę z udostępnionego procesu wyłącznego procesu (lub odwrotnie).
+## <a name="change-the-hosting-model-of-an-existing-service"></a>Zmiana modelu hostingu istniejącej usługi
+W chwili obecnej nie można zmienić modelu hostingu istniejącej usługi z udostępnionego procesu do wyłącznego procesu (lub odwrotnie).
 
-## <a name="choose-between-the-hosting-models"></a>Wybierz między modelami hostingu
-Należy ocenić hostingu model, który najlepiej spełnia wymagania. Model procesu udostępnionych używa zasobów systemu operacyjnego lepsze, ponieważ procesy mniej jest zduplikowany, a wiele replik w tym samym procesie można udostępniać portów. Jednak jeśli jednej z replik zawiera błąd, w którym należy go zamknąć hosta usługi, dotyczy wszystkich replik w tym samym procesie.
+## <a name="choose-between-the-hosting-models"></a>Wybieranie między modelach hostingu
+Należy ocenić hostingu model, który najlepiej spełnia Twoje wymagania. Modelu udostępnionego procesu używa zasobów systemu operacyjnego lepiej, ponieważ mniejszej liczby procesów jest zduplikowany, a wiele replik w tym samym procesie można udostępniać portów. Jednak jeśli jednej z replik ma błąd, w którym należy obniżyć hosta usługi, wpłynie ona na wszystkie repliki w tym samym procesie.
 
- Model procesu wyłącznego zapewnia izolację lepsze, z każdej repliki w swoim własnym procesie. Jeśli jeden z repliki zawiera błąd, nie ma ona wpływu innych replik. Ten model jest przydatna w sytuacjach, w których udostępnianie portów nie jest obsługiwana przez protokół komunikacji. Ułatwia on możliwość stosowania ładu zasobów na poziomie repliki. Jednak proces wyłącznego wykorzystuje więcej zasobów systemu operacyjnego, zgodnie z jego spowoduje utworzenie jednego procesu dla każdej repliki na węźle.
+ Model procesów wyłączne zapewnia lepsze izolację, ze wszystkimi replikami we własnym procesie. Jeśli jednej z replik ma błąd, nie ma wpływu na pozostałe repliki. Ten model jest przydatne w sytuacjach, w którym współużytkowania portów nie jest obsługiwana przez protokół komunikacyjny. Ułatwia ono możliwość stosowania nadzór nad zasobami na poziomie repliki. Jednak wyłączne proces zużywa więcej zasobów systemu operacyjnego, zgodnie z jej spowoduje utworzenie jednego procesu dla każdej repliki w węźle.
 
-## <a name="exclusive-process-model-and-application-model-considerations"></a>Wyłączny modelu procesu i aplikacji zagadnienia dotyczące modelu
-W przypadku większości aplikacji można modelu aplikacji w sieci szkieletowej usług przy zachowaniu jedną *ServiceType* na *ServicePackage*. 
+## <a name="exclusive-process-model-and-application-model-considerations"></a>Wyłączne modelu procesu i aplikacji modelu zagadnienia
+W przypadku większości aplikacji może modelować aplikację w usłudze Service Fabric, zapewniając jeden *ServiceType* na *pakiet ServicePackage*. 
 
-W niektórych przypadkach usługi sieć szkieletowa umożliwia również więcej niż jeden *ServiceType* na *ServicePackage* (jeden *elementu CodePackage* można zarejestrować więcej niż jeden  *Typ ServiceType*). Poniżej przedstawiono niektóre scenariusze, w których te konfiguracje mogą być przydatne:
+W niektórych przypadkach usługa Service Fabric umożliwia również więcej niż jeden *ServiceType* na *pakiet ServicePackage* (jeden *CodePackage* może zarejestrować więcej niż jeden  *Typ ServiceType*). Poniżej przedstawiono niektóre scenariusze, w którym te konfiguracje mogą być przydatne:
 
-- Chcesz optymalizować wykorzystanie zasobów przez dochodzi do uruchamiania procesów mniej i po zwiększeniu repliki na proces.
-- Repliki z różnych *Serivcetype* wymagają udostępniania niektórych typowych danych o wysokiej inicjowania lub pamięci kosztów.
-- Masz darmowa oferty, i chcesz zawiesić limit wykorzystania zasobów przez umieszczenie wszystkich replik usługi, w tym samym procesie.
+- Chcesz optymalizować wykorzystanie zasobów podczas duplikowania mniejszą liczbę procesów, a także o zwiększenie gęstości repliki na proces.
+- Repliki za pośrednictwem różnych *ServiceTypes* potrzebne do udostępniania niektórych wspólnych danych o wysokiej inicjowania lub pamięci kosztów.
+- Masz bezpłatnej oferty usługi i chcesz umieścić limit na wykorzystanie zasobów przez umieszczenie wszystkich replik usługi w tym samym procesie.
 
-Wyłączny proces obsługujący modelu nie jest spójne z istnieniem wielu modelu aplikacji *Serivcetype* na *ServicePackage*. Jest to spowodowane wielu *Serivcetype* na *ServicePackage* zaprojektowano w celu osiągnięcia wyższej zasobów, udostępnianie między replikami i umożliwia zwiększeniu repliki na proces. Model procesu wyłącznego zaprojektowano w celu osiągnięcia różnych wyników.
+Wyłączne proces model hostingu nie jest spójny z modelem aplikacji, posiadanie wielu *ServiceTypes* na *pakiet ServicePackage*. Jest to spowodowane wieloma *ServiceTypes* na *pakiet ServicePackage* zaprojektowano w celu osiągnięcia wyższej zasobów współużytkowanie danych przez repliki i umożliwia zwiększenie gęstości repliki na proces. Model procesów wyłączne zaprojektowano w celu osiągnięcia różne wyniki.
 
-Należy wziąć pod uwagę w przypadku wielu *Serivcetype* na *ServicePackage*, z innym *elementu CodePackage* zarejestrowanie każdego *ServiceType*. Załóżmy, że mamy *ServicePackage* "MultiTypeServicePackge", która ma dwa *CodePackages*:
+Należy wziąć pod uwagę w przypadku wielu *ServiceTypes* na *pakiet ServicePackage*, z innym *CodePackage* zarejestrowanie każdego *ServiceType*. Załóżmy, że mamy *pakiet ServicePackage* "MultiTypeServicePackge", który ma dwa *CodePackages*:
 
 - "MyCodePackageA", która rejestruje *ServiceType* "MyServiceTypeA".
 - "MyCodePackageB", która rejestruje *ServiceType* "MyServiceTypeB".
 
-Teraz załóżmy, że utworzymy aplikację, **fabric: / SpecialApp**. Wewnątrz **fabric: / SpecialApp**, utworzymy następujące dwie usługi z modelem procesu wyłącznego:
+Teraz załóżmy, że możemy utworzyć aplikację, **Service fabric: / SpecialApp**. Wewnątrz **Service fabric: / SpecialApp**, możemy utworzyć następujące dwie usługi z modelem procesu wyłączne:
 
-- Usługi **fabric: / SpecialApp/ServiceA** typu "MyServiceTypeA" z dwóch partycji (na przykład **P1** i **P2**) i trzy replik jednej partycji.
-- Usługi **fabric: / SpecialApp/ServiceB** typu "MyServiceTypeB" z dwóch partycji (**P3** i **P4**) i trzy replik jednej partycji.
+- Usługa **Service fabric: / SpecialApp/ServiceA** typu "MyServiceTypeA" za pomocą dwóch partycji (na przykład **P1** i **P2**) i trzech replik dla każdej partycji.
+- Usługa **Service fabric: / SpecialApp/ServiceB** typu "MyServiceTypeB" za pomocą dwóch partycji (**P3** i **P4**) i trzech replik dla każdej partycji.
 
-W danym węźle usług mają dwie repliki. Ponieważ użyliśmy model procesu wyłączności do tworzenia usług platformy Service Fabric aktywuje nową kopię "MyServicePackage" dla każdej repliki. Każda aktywacja "MultiTypeServicePackge" uruchamia kopię "MyCodePackageA" i "MyCodePackageB". Jednak tylko jeden "MyCodePackageA" lub "MyCodePackageB" hosta repliki dla którego "MultiTypeServicePackge" został aktywowany. Na poniższym diagramie przedstawiono widok węzła:
-
-
-![Diagram widoku węzła wdrożonej aplikacji][node-view-five]
+W danym węźle usług mają dwie repliki. Ponieważ użyliśmy model procesu wyłączne trzeba utworzyć usługi Service Fabric aktywuje nową kopię "MyServicePackage" dla każdej repliki. Każda aktywacja "MultiTypeServicePackge" rozpoczyna się kopię "MyCodePackageA" i "MyCodePackageB". Jednak tylko jeden z "MyCodePackageA" lub "MyCodePackageB" obsługuje replikę, dla którego została aktywowana "MultiTypeServicePackge". Na poniższym diagramie przedstawiono widok węzła:
 
 
-Podczas aktywacji "MultiTypeServicePackge" dla replik partycji **P1** usługi **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" jest hostem repliki. "MyCodePackageB" jest uruchomiona. Podobnie w przypadku aktywacji "MultiTypeServicePackge" dla replik partycji **P3** usługi **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" jest hostem repliki. "MyCodePackageA" jest uruchomiona. W związku z tym im większa liczba *CodePackages* (rejestrowanie różnych *Serivcetype*) na *ServicePackage*, większego użycia zasobów nadmiarowe. 
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-five]
+
+
+W oknie Aktywacja systemu "MultiTypeServicePackge" dla repliki partycji **P1** usługi **Service fabric: / SpecialApp/ServiceA**, "MyCodePackageA" jest hostem repliki. "MyCodePackageB" jest uruchomiona. Podobnie, w przypadku aktywacji "MultiTypeServicePackge" dla repliki partycji **P3** usługi **Service fabric: / SpecialApp/ServiceB**, "MyCodePackageB" jest hostem repliki. "MyCodePackageA" jest uruchomiona. W związku z tym większa liczba *CodePackages* (rejestrowanie różnych *ServiceTypes*) na *pakiet ServicePackage*, tym większe obciążenie zasobów nadmiarowe. 
  
- Jednak jeśli utworzymy usługami **fabric: / SpecialApp/ServiceA** i **sieci szkieletowej: / SpecialApp/ServiceB** z modelem procesu udostępnione usługi Service Fabric aktywuje tylko jedną kopię " MultiTypeServicePackge "dla aplikacji **fabric: / SpecialApp**. "MyCodePackageA" obsługuje wszystkie repliki usługi **fabric: / SpecialApp/ServiceA**. "MyCodePackageB" obsługuje wszystkie repliki usługi **fabric: / SpecialApp/ServiceB**. Na poniższym diagramie przedstawiono widok węzła w tym ustawieniu: 
+ Jednak jeśli utworzymy usług **Service fabric: / SpecialApp/ServiceA** i **Service fabric: / SpecialApp/ServiceB** z modelem procesu udostępnionych usługi Service Fabric aktywuje tylko jedna kopia " MultiTypeServicePackge "dla aplikacji **Service fabric: / SpecialApp**. "MyCodePackageA" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceA**. "MyCodePackageB" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceB**. Na poniższym diagramie przedstawiono widok węzła, w tym ustawieniu: 
 
 
-![Diagram widoku węzła wdrożonej aplikacji][node-view-six]
+![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-six]
 
 
-W poprzednim przykładzie, może uważasz, że jeśli "MyCodePackageA" rejestruje zarówno "MyServiceTypeA" i "MyServiceTypeB" i "MyCodePackageB" nie istnieje, a następnie jest nadmiarowy nie *elementu CodePackage* uruchomiona. Mimo że jest poprawny, model tej aplikacji nie jest wyrównana z wyłącznych proces obsługujący modelu. Jeśli celem jest umieszczenie każdej repliki w dedykowanym procesie, nie trzeba zarejestrować obie *Serivcetype* z samej *elementu CodePackage*. Zamiast tego możesz po prostu zaznaczyć każdego *ServiceType* we własnym *ServicePackage*.
+W poprzednim przykładzie, może się wydawać, że jeśli rejestruje "MyCodePackageA", "MyServiceTypeA" i "MyServiceTypeB" i nie ma żadnych MyCodePackageB, a następnie jest nie nadmiarowe *CodePackage* uruchomione. Mimo że jest poprawny, ten model aplikacji nie jest zgodny z procesu wyłączne model hostingu. Jeśli celem jest umieszczenie każdej repliki w swoim własnym procesie dedykowanym, nie trzeba zarejestrować zarówno *ServiceTypes* z samej *CodePackage*. Zamiast tego możesz po prostu umieść każdy *ServiceType* we własnym *pakiet ServicePackage*.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Pakiet aplikacji] [ a4] i przygotowania do wdrożenia.
+[Tworzenie pakietu aplikacji] [ a4] i przygotowanie do wdrożenia.
 
-[Wdrażanie i usunąć aplikacje][a5]. W tym artykule opisano sposób zarządzania wystąpień aplikacji przy użyciu programu PowerShell.
+[Wdrażanie i usuwać aplikacje][a5]. W tym artykule opisano sposób używania programu PowerShell do zarządzania wystąpieniami aplikacji.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png
@@ -201,11 +201,11 @@ W poprzednim przykładzie, może uważasz, że jeśli "MyCodePackageA" rejestruj
 [c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
 [c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/servicefabric/vlatest/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/servicefabric/vlatest/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedcodepackage
+[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
+[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
+[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage

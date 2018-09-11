@@ -10,17 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.author: sdash ; mbullwin
-ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: 392abef7f92dce024ba6e4af091cf58fde5119b6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302395"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
-Po wdrożeniu aplikacji sieci Web lub witryny sieci Web na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
+Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
 
 Testy dostępności możesz skonfigurować dla dowolnego punktu końcowego protokołów HTTP lub HTTPS, który jest dostępny za pośrednictwem publicznej sieci Internet. Do testowanej witryny sieci Web nie trzeba niczego dodawać. Nie musi być to nawet Twoja witryna: możesz testować usługę interfejsu API REST, od której zależy Twoja praca.
 
@@ -39,7 +41,7 @@ Dla każdego zasobu aplikacji możesz utworzyć maksymalnie 100 testów dostępn
 
 ## <a name="create"></a>Otwieranie zasobu dla własnych raportów testów dostępności
 
-**Jeśli już skonfigurowano usługę Application Insights** dla aplikacji sieci Web, otwórz zasób usługi Application Insights w witrynie [Azure Portal](https://portal.azure.com).
+**Jeśli już skonfigurowano usługę Application Insights** dla aplikacji internetowej, otwórz zasób usługi Application Insights w witrynie [Azure Portal](https://portal.azure.com).
 
 **Lub jeśli chcesz zobaczyć raporty w nowym zasobie**, przejdź do witryny [Azure Portal](https://portal.azure.com) i utwórz zasób usługi Application Insights.
 
@@ -113,7 +115,7 @@ Na podstawie wyniku testu dostępności możesz:
 
 * Zbadać odpowiedź odebraną z serwera.
 * Diagnozować błędy przy użyciu danych telemetrycznych po stronie serwera, zebranych podczas przetwarzania wystąpienia żądania zakończonego niepowodzeniem.
-* Zarejestrować problem lub element roboczy w usłudze Git bądź VSTS w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
+* Zaloguj się problem lub elementu roboczego w usłudze Git bądź DevOps platformy Azure w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
 * Otworzyć wynik testu sieci Web w programie Visual Studio.
 
 *Test wygląda dobrze, ale jest raportowany jako błąd?* Zobacz [Często zadawane pytania](#qna), aby zapoznać się ze sposobami ograniczania szumu.
@@ -180,7 +182,9 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 
 Wyświetl wyniki testu i ewentualne błędy w taki sam sposób, jak w przypadku testów pojedynczego adresu URL.
 
-Ponadto możesz pobrać wyniki testów, aby wyświetlić je w programie Visual Studio.
+Można również pobrać wyniki testów, aby je wyświetlić w programie Visual Studio.
+
+Aby pobrać wyniki testu. Przejdź do Podsumowanie testu dostępności, kliknij wynik na wykresie, aby otworzyć okno wyniku testu dostępności, a następnie kliknij na **Otwórz w programie Visual Studio** można pobrać wyniku testu.
 
 #### <a name="too-many-failures"></a>Zbyt wiele niepowodzeń?
 
@@ -227,7 +231,7 @@ Użyj wtyczki SAML, która jest dostępna do testów sieci Web.
 ### <a name="client-secret"></a>Klucz tajny klienta
 Jeśli aplikacja ma trasę logowania, która obejmuje klucz tajny klienta, użyj tej trasy. Azure Active Directory (AAD) to przykład usługi, która umożliwia logowanie za pomocą klucza tajnego klienta. W usłudze AAD klucz tajny klienta jest kluczem aplikacji.
 
-Poniżej przedstawiono przykładowy test sieci Web aplikacji sieci Web platformy Azure przy użyciu klucza aplikacji:
+Poniżej przedstawiono przykładowy test internetowy aplikacji internetowej platformy Azure przy użyciu klucza aplikacji:
 
 ![Przykład klucza tajnego klienta](./media/app-insights-monitor-web-app-availability/110.png)
 
@@ -253,7 +257,7 @@ Jeśli w ramach testu należy zalogować się przy użyciu protokołu OAuth, og�
 ## <a name="performance-tests"></a>Testy wydajności
 Witrynę internetową możesz poddać testowi obciążeniowemu. Podobnie jak w przypadku testu dostępności można wysłać proste żądania lub żądania wieloetapowe z naszych punktów na całym świecie. W przeciwieństwie do testu dostępności wysyłanych jest wiele żądań symulujących wielu równoczesnych użytkowników.
 
-Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu będzie miało miejsce zaproszenie do połączenia się z kontem usługi Visual Studio Team Services lub utworzenia go.
+Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu zaproszono Cię do łączenia lub Utwórz organizację usługom DevOps platformy Azure.
 
 Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzenia.
 

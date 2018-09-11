@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366192"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349147"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
-W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują, szczególnie te, które zostały dodane z kategorii "proponowane" [ Galeria aplikacji w usłudze Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
+W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują, szczególnie te, które zostały dodane z kategorii "proponowane" [ Galeria aplikacji w usłudze Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 Wszystkie aplikacje, które są skonfigurowane dla logowania jednokrotnego w katalogu, administrator katalogu przy użyciu [galerii aplikacji usługi Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), można wyświetlać i zarządzać w [witryny Azure portal](https://portal.azure.com). Aplikacje można znaleźć w **wszystkich usług** &gt; **aplikacje dla przedsiębiorstw** sekcji w portalu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji.
@@ -46,7 +46,7 @@ Konto użytkownika, inicjowania obsługi ustawienia mogą być zarządzane przez
 Wybieranie **automatyczne** opcji powoduje wyświetlenie ekranu, który zawiera cztery sekcje:
 
 ### <a name="admin-credentials"></a>Poświadczenia administratora
-Ta sekcja dotyczy, gdzie wymagane poświadczenia dla usługi Azure AD connect do zarządzania użytkownikami aplikacji interfejsu API zostały wprowadzone. Wymagane dane wejściowe różni się w zależności od aplikacji. Aby dowiedzieć się więcej o typach poświadczeń i wymagania dotyczące określonych aplikacji, zobacz [samouczek konfigurowania aplikacji dla tej konkretnej aplikacji](../active-directory-saas-app-provisioning.md).
+Ta sekcja dotyczy, gdzie wymagane poświadczenia dla usługi Azure AD connect do zarządzania użytkownikami aplikacji interfejsu API zostały wprowadzone. Wymagane dane wejściowe różni się w zależności od aplikacji. Aby dowiedzieć się więcej o typach poświadczeń i wymagania dotyczące określonych aplikacji, zobacz [samouczek konfigurowania aplikacji dla tej konkretnej aplikacji](user-provisioning.md).
 
 Wybieranie **Testuj połączenie** przycisk umożliwia przetestowanie poświadczeń dzięki usłudze Azure AD próba nawiązania połączenia do aplikacji przez Inicjowanie obsługi administracyjnej aplikacji przy użyciu podanych poświadczeń.
 
@@ -60,7 +60,7 @@ Istnieje zestaw wstępnie skonfigurowanego mapowania między obiektami użytkown
 Obsługiwane dostosowania obejmują:
 
 * Włączanie i wyłączanie mapowania dla określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika dla aplikacji SaaS.
-* Edycja atrybutów, które będą działać z obiektu użytkownika w usłudze Azure AD do obiektu użytkownika w aplikacji. Aby uzyskać więcej informacji na temat Mapowanie atrybutów, zobacz [opis atrybutu mapowania typów](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Edycja atrybutów, które będą działać z obiektu użytkownika w usłudze Azure AD do obiektu użytkownika w aplikacji. Aby uzyskać więcej informacji na temat Mapowanie atrybutów, zobacz [opis atrybutu mapowania typów](customize-application-attributes.md#understanding-attribute-mapping-types).
 * Filtruj akcji aprowizacji, wykonywanych przez usługę Azure AD w aplikacji docelowej. Zamiast pełnej synchronizacji obiektów z usługi Azure AD, można ograniczyć akcje wykonywane. Na przykład, wybierając tylko **aktualizacji**, tylko aktualizacji usługi Azure AD istniejącego użytkownika konta w aplikacji, a nie tworzyć nowe. Tylko wybierając **Utwórz**, platforma Azure tylko powoduje utworzenie nowych kont użytkowników, ale nie aktualizuje już istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
 
 ### <a name="settings"></a>Ustawienia

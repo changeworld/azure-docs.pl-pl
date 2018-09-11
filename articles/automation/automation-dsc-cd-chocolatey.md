@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 100b3fa0e43be054a85ca9e32d9bb1b11033afb8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057302"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296265"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -182,7 +182,7 @@ Ten nuspec musi zostanie skompilowany i przechowywane na serwerze NuGet. Ten pro
 ## <a name="step-6-tying-it-all-together"></a>Krok 6: Łącząc je wszystkie razem
 
 Każdorazowo wersji przekazuje pytań i odpowiedzi, a zostanie zatwierdzona do wdrożenia, pakiet jest tworzony, nuspec i nupkg zaktualizowane i wdrożyć serwer NuGet. Ponadto należy zaktualizować musieli się zgodzić za pomocą nowego numeru wersji konfiguracji (krok 4 powyżej). Musi być wysyłane do serwera ściągania i skompilowany.
-Od tego momentu to maszyny wirtualne, które są zależne od tej konfiguracji w celu pobierania aktualizacji i zainstalowania go. Każda z tych aktualizacji jest proste — po prostu linię lub dwóch od programu PowerShell. W przypadku programu Visual Studio Team Services niektóre z nich są hermetyzowane w zadaniach kompilacji, które można łączyć w łańcuch w kompilacji. To [artykułu](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) zawiera więcej szczegółowych informacji. To [repozytorium GitHub](https://github.com/Microsoft/vso-agent-tasks) szczegółowo różne zadania dostępne kompilacji.
+Od tego momentu to maszyny wirtualne, które są zależne od tej konfiguracji w celu pobierania aktualizacji i zainstalowania go. Każda z tych aktualizacji jest proste — po prostu linię lub dwóch od programu PowerShell. W przypadku usługi Azure DevOps niektóre z nich są hermetyzowane w zadaniach kompilacji, które można łączyć w łańcuch w kompilacji. To [artykułu](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) zawiera więcej szczegółowych informacji. To [repozytorium GitHub](https://github.com/Microsoft/vso-agent-tasks) szczegółowo różne zadania dostępne kompilacji.
 
 ## <a name="notes"></a>Uwagi
 

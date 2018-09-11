@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666340"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300277"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Usługa Azure ról katalogu usługi AD, którymi można zarządzać w usłudze PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -63,21 +63,19 @@ Jeśli chcesz nadać inny dostęp użytkownika do zarządzania w usłudze PIM sa
 ## <a name="roles-not-managed-in-pim"></a>Role, które nie są zarządzane w usłudze PIM
 Role w usłudze Exchange Online lub SharePoint Online, z wyjątkiem tych wymienionych powyżej, nie są reprezentowane w usłudze Azure AD i dlatego nie są widoczne w usłudze PIM. Aby uzyskać więcej informacji na temat zmieniania przypisań ról szczegółowych w tych usługach Office 365, zobacz [uprawnień w usłudze Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Subskrypcje platformy Azure i grup zasobów również nie są reprezentowane w usłudze Azure AD. Aby zarządzać subskrypcjami platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md) i aby uzyskać więcej informacji na temat RBAC platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md).
-
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
 ## <a name="user-roles-and-signing-in"></a>Role użytkowników i logowanie
 Niektóre usługi firmy Microsoft i aplikacji przypisanie użytkownika do roli może nie być wystarczające, aby umożliwić użytkownikowi uprawnienia administratora.
 
-Dostęp do portalu Azure wymaga użytkownik być administratorem usługi lub administrator współpracujący dla subskrypcji platformy Azure, nawet wtedy, gdy użytkownik nie musi zarządzać subskrypcjami platformy Azure.  Na przykład aby zarządzać ustawieniami konfiguracji dla usługi Azure AD, użytkownik musi być administratorem globalnym w usłudze Azure AD i subskrypcji, administrator współpracujący dla subskrypcji platformy Azure.  Aby dowiedzieć się, jak dodać użytkowników do subskrypcji platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md).
+Dostęp do portalu Azure wymaga użytkownik jest właścicielem subskrypcji platformy Azure, nawet wtedy, gdy użytkownik nie musi zarządzać subskrypcjami platformy Azure.  Na przykład, aby zarządzać ustawieniami konfiguracji dla usługi Azure AD, użytkownik musi być zarówno administratora globalnego w usłudze Azure AD i właściciel subskrypcji platformy Azure.  Aby dowiedzieć się, jak dodać użytkowników do subskrypcji platformy Azure, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../..//role-based-access-control/role-assignments-portal.md).
 
 Dostęp do Microsoft Online Services może wymagać użytkownika również posiadać licencję przed Otwórz portal usługi lub wykonywania zadań administracyjnych.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Przypisywanie licencji do użytkownika w usłudze Azure AD
 
-1. Zaloguj się do [witryny Azure portal](http://portal.azure.com) przy użyciu konta administratora globalnego lub administratora współpracującego konta.
+1. Zaloguj się do [witryny Azure portal](http://portal.azure.com) z rolą administratora globalnego lub właściciela.
 
 1. Wybierz katalog usługi Azure AD, którą chcesz pracować, i ma licencje skojarzonych z nim.
 

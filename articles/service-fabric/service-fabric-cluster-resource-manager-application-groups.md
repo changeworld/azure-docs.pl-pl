@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2c641703547c391618d75fabfa181dff0b98f74f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918774"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346257"
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
 Menedżer zasobów klastra usługi Service Fabric zarządza zwykle zasobów klastra przez rozłożenie obciążenia (reprezentowane za pomocą [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza się pojemności węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajności działają doskonale nadaje się do wielu obciążeń, ale wzorce, które intensywnie korzystają z różnych wystąpieniach aplikacji Service Fabric Service czasami Przenieś dodatkowe wymagania. Na przykład możesz chcieć:
@@ -47,7 +47,7 @@ PowerShell
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MaximumNodes 3
-Update-ServiceFabricApplication –Name fabric:/AppName –MaximumNodes 5
+Update-ServiceFabricApplication –ApplicationName fabric:/AppName –MaximumNodes 5
 ```
 
 C#

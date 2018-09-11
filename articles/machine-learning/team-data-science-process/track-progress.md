@@ -1,6 +1,6 @@
 ---
-title: Wykonanie danych nauki projektów — usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jak naukowca danych można śledzić postęp projektu analizy danych.
+title: Wykonanie projekty do nauki o danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jak analitykiem danych, można śledzić postęp projektu nauki o danych.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: e50390a1b6385cabfd0e6b30340634860a062d8d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 32390b05d2ec258a68ed4f53135399675105a7e9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838946"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302089"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Śledź postęp projektów analizy danych
+# <a name="track-progress-of-data-science-projects"></a>Śledzenie postępu projekty do nauki o danych
 
-Dane nauki grupy Menedżerowie, zespołu potencjalnych klientów i projektu potencjalnych klientów należy śledzić postęp swoje projekty zespołowe, jakie pracy zostało wykonane na nich i przez kogo i pozostanie na liście zadań do wykonania. 
+Menedżerowie grupy do nauki o danych, zespołów i potencjalnych klientów projektu musisz śledzić postęp projektów, pracy, jaka została przeprowadzona na nich i przez kogo i pozostaje na listy zadań do wykonania. 
 
-## <a name="vsts-dashboards"></a>Pulpity nawigacyjne programu VSTS
-Jeśli używasz programu Visual Studio Team Services (VSTS), jest możliwość tworzenia pulpitów nawigacyjnych do śledzenia działań i elementów roboczych skojarzonych z danym projektem Zwinnego. 
+## <a name="azure-devops-dashboards"></a>Pulpitów nawigacyjnych DevOps platformy Azure
+Jeśli używasz DevOps platformy Azure jest możliwe do tworzenia pulpitów nawigacyjnych, aby śledzić działania i elementy robocze skojarzone z danym projektem Agile. 
 
-Aby uzyskać więcej informacji na temat sposobu tworzenia i dostosowywania pulpitów nawigacyjnych i widżetów na Visual Studio Team Services zobacz następujące zestawy instrukcji:
+Aby uzyskać więcej informacji na temat sposobu tworzenia i dostosowywania pulpitów nawigacyjnych i widżetów na DevOps platformy Azure zobacz następujące zestawy instrukcji:
 
-- [Dodawanie i zarządzanie pulpity nawigacyjne](https://docs.microsoft.com/vsts/report/dashboards/dashboards)
-- [Dodawać widżety do pulpitu nawigacyjnego](https://docs.microsoft.com/vsts/report/dashboards/add-widget-to-dashboard).
+- [Dodaj i Zarządzaj pulpitów nawigacyjnych](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
+- [Dodawanie widgetów do pulpitu nawigacyjnego](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard).
 
-## <a name="example-dashboard"></a>Przykład pulpitu nawigacyjnego
+## <a name="example-dashboard"></a>Przykładowy pulpit nawigacyjny
 
-Poniżej przedstawiono prosty przykład pulpit nawigacyjny, który jest oparty na śledzenie działania przebiegu projektu nauki Agile danych, a także liczbie zatwierdzeń skojarzonych repozytoriów. **Góry z lewej** panelu programy:
+Poniżej przedstawiono prosty przykład pulpitu nawigacyjnego, przeznaczonego do śledzenia działania sprintu projektu nauki o danych Agile, a także liczba zatwierdzeń repozytoriów skojarzone. **Góry z lewej** panelu pokazuje:
 
-- odliczania w dół bieżącego przebiegu 
+- Odliczanie do zera dla bieżącego sprintu 
 - Liczba zatwierdzeń dla każdego repozytorium w ciągu ostatnich 7 dni
-- element roboczy dla określonych użytkowników. 
+- element roboczy pod kątem określonych użytkowników. 
 
-Pozostałe panele Pokaż diagram przepływu zbiorczej (CFD), raport dotyczący wypalenia i burnup dla projektu:
+Pozostałe panele Pokaż zbiorczego diagramu przepływu (CFD), raport dotyczący wypalenia i burnup dla projektu:
 
-- **Lewym dolnym rogu okna**: CFD ilość pracy w danym stanie, przedstawiający zatwierdzone w kolorze szarym zostało zatwierdzone na niebiesko i wykonywane na zielono.
-- **Z góry po prawej**: postęp wykresu pracy pozostało do kompletne i pozostały czas).
-- **Prawy dolny róg**: burnup wykresu pracy, który został wykonany w porównaniu z łączną ilość pracy.
+- **Lewym dolnym**: CFD ilość pracy w danym stanie pokazujący zatwierdzonych w kolorze szarym zatwierdzone w kolorze niebieskim i wykonywane w kolorze zielonym.
+- **Górnego prawego**: raport dotyczący wypalenia wykresu pracy od lewej do kompletne i pozostały czas).
+- **Na dole z prawej**: burnup wykresu pracy, który został wykonany w porównaniu z łączną ilość pracy.
 
 ![pulpit nawigacyjny](./media/track-progress/dashboard.png)
 
-Opis sposobu tworzenia tych wykresy, zobacz poradniki Szybki Start i samouczki na [pulpity nawigacyjne](https://docs.microsoft.com/vsts/report/dashboards/).
+Opis sposobu tworzenia tych wykresach można zobaczyć przewodników Szybki Start i samouczków w [pulpity nawigacyjne](https://docs.microsoft.com/azure/devops/report/dashboards/).
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) artykułu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Wskazówki, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) artykułu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 

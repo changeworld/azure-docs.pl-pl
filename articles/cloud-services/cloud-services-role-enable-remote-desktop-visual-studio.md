@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056289"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304059"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Włączanie funkcji Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio
 
@@ -30,7 +30,7 @@ Pulpit zdalny zapewnia dostęp do pulpitu roli działających na platformie Azur
 
 Kreator publikowania, który program Visual Studio oferuje dla usług w chmurze zawiera opcję można włączyć pulpitu zdalnego w procesie publikowania za pomocą podanych poświadczeń. Przy użyciu tej opcji jest odpowiednia w przypadku korzystania z programu Visual Studio 2017 w wersji 15.4 lub starszym.
 
-Za pomocą programu Visual Studio 2017 w wersji 15.5 lub nowszej jednak zalecane jest włączenie pulpitu zdalnego za pomocą Kreatora publikacji, chyba że pracujesz tylko w postaci jednego dewelopera uniknąć. Dla każdej sytuacji, w którym projekt może zostać otwarty przez innych programistów zamiast tego włączyć Pulpit zdalny za pośrednictwem witryny Azure portal, za pośrednictwem programu PowerShell lub z definicją wydania w przepływie pracy ciągłego wdrażania. To zalecenie wynika z zmianę jak Visual Studio komunikuje się przy użyciu pulpitu zdalnego w usłudze w chmurze maszyny Wirtualnej, opisany w tym artykule.
+Za pomocą programu Visual Studio 2017 w wersji 15.5 lub nowszej jednak zalecane jest włączenie pulpitu zdalnego za pomocą Kreatora publikacji, chyba że pracujesz tylko w postaci jednego dewelopera uniknąć. Dla każdej sytuacji, w którym projekt może zostać otwarty przez innych programistów zamiast tego włączyć Pulpit zdalny za pośrednictwem witryny Azure portal, za pomocą programu PowerShell lub z potoku wersji w przepływie pracy ciągłego wdrażania. To zalecenie wynika z zmianę jak Visual Studio komunikuje się przy użyciu pulpitu zdalnego w usłudze w chmurze maszyny Wirtualnej, opisany w tym artykule.
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Konfigurowanie pulpitu zdalnego za pomocą programu Visual Studio 2017 w wersji 15.4 lub starszym
 
@@ -82,9 +82,9 @@ Jeśli udostępniasz aplikację z zespołem, następnie najlepiej wyczyść pole
 
 ### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Wdrażanie z serwera kompilacji za pomocą programu Visual Studio 2017 w wersji 15.5 lub nowszej
 
-Można wdrożyć projektu usługi w chmurze z serwera kompilacji (na przykład za pomocą programu Visual Studio Team Services), na których Visual Studio 2017 w wersji 15.5 lub nowszej jest zainstalowany w agencie kompilacji. Za pomocą to rozmieszczenie wdrożenie to następuje na tym samym komputerze, na którym jest dostępny certyfikat szyfrowania.
+Można wdrożyć projektu usługi w chmurze z serwera kompilacji (na przykład dzięki usługom DevOps platformy Azure), na których Visual Studio 2017 w wersji 15.5 lub nowszej jest zainstalowany w agencie kompilacji. Za pomocą to rozmieszczenie wdrożenie to następuje na tym samym komputerze, na którym jest dostępny certyfikat szyfrowania.
 
-Aby użyć rozszerzenia protokołu RDP z programu Visual Studio Team Services, podaj następujące informacje w definicji kompilacji:
+Aby użyć rozszerzenia protokołu RDP z usługom DevOps platformy Azure, podaj następujące informacje w potoku kompilacji:
 
 1. Obejmują `/p:ForceRDPExtensionOverPlugin=true` argumentach programu MSBuild, aby upewnić się, czy wdrożenie działa z rozszerzeniem RDP, a nie wtyczki protokołu RDP. Na przykład:
 

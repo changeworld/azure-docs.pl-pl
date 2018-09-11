@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023396"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296741"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
@@ -208,7 +208,7 @@ Reguły sieciowych adresów IP dla kont magazynu mogą być zarządzane za pośr
 2. Kliknij w menu Ustawienia o nazwie **zapory i sieci wirtualne**.
 3. Upewnij się, czy wybrano opcję Zezwalaj na dostęp z "Wybranych sieci".
 4. Aby udzielić dostępu do Internetu, zakres adresów IP, należy wprowadzić adres IP lub zakres adresów (w formacie CIDR) mocy zapory, zakresy adresów.
-5. Aby usunąć regułę sieci IP, kliknij przycisk "...", aby otworzyć menu kontekstowe dla tej reguły, a następnie kliknij przycisk "Usuń".
+5. Aby usunąć regułę sieci IP, kliknij ikonę Kosza obok reguł sieciowych.
 6. Kliknij przycisk *Zapisz* Aby zastosować zmiany.
 
 #### <a name="powershell"></a>PowerShell

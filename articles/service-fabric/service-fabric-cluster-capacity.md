@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617222"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348572"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -51,7 +51,7 @@ Każdy typ węzła jest różne skalowania zestawu i może być skalowana w lub 
 
 Klaster usługi Service Fabric może zawierać więcej niż jeden typ węzła. W takim przypadku klaster składa się z jednego typu węzła podstawowego i jeden lub więcej typów węzłów innych niż podstawowe.
 
-Typ jednego węzła po prostu nie może przekraczać 100 węzłów na zestaw skalowania maszyn wirtualnych. Musisz dodać zestawy skalowania maszyn wirtualnych w celu osiągnięcia skali docelowej i automatyczne skalowanie nie automagically Dodaj zestawy skalowania maszyn wirtualnych. Dodawanie zestawów skalowania maszyn wirtualnych w miejscu do klastra na żywo jest trudniejszym zadaniem i często skutkuje to użytkownikom inicjowanie obsługi administracyjnej nowych klastrów z typami odpowiedniego węzła, aprowizowane w czasie jego tworzenia. 
+Typ jednego węzła nie niezawodne skalowanie ponad 100 węzłów na zestaw aplikacji SF; skalowania maszyn wirtualnych osiągnięcia niezawodnie większa niż 100 węzłów, będą wymagać Dodawanie dodatkowych zestawów skalowania.
 
 ### <a name="primary-node-type"></a>Typ węzła podstawowego
 

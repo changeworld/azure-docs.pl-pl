@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449869"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301195"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatyzacja procesów usługi Application Insights za pomocą usługi Logic Apps
 
@@ -25,7 +25,7 @@ Czy masz ochotę wielokrotnie systemem tego samego zapytań dotyczących danych 
 
 Dzięki tej integracji można zautomatyzować wiele procesów, bez konieczności pisania nawet jednego wiersza kodu. Można utworzyć aplikację logiki, za pomocą łącznika usługi Application Insights, szybko zautomatyzować dowolny proces usługi Application Insights. 
 
-Możesz dodać również dodatkowe akcje. Funkcja Logic Apps w usłudze Azure App Service udostępnia setki akcji. Na przykład za pomocą aplikacji logiki, możesz automatycznie wysyłać wiadomość e-mail z powiadomieniem lub Utwórz usterkę w Visual Studio Team Services. Można także użyć jednego z wielu dostępnych [szablony](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) można przyspieszyć proces tworzenia aplikacji logiki. 
+Możesz dodać również dodatkowe akcje. Funkcja Logic Apps w usłudze Azure App Service udostępnia setki akcji. Na przykład za pomocą aplikacji logiki, możesz automatycznie wysyłać wiadomość e-mail z powiadomieniem lub Utwórz usterkę w DevOps platformy Azure. Można także użyć jednego z wielu dostępnych [szablony](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) można przyspieszyć proces tworzenia aplikacji logiki. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Tworzenie aplikacji logiki dla usługi Application Insights
 

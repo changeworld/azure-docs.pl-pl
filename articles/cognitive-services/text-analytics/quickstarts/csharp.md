@@ -1,5 +1,6 @@
 ---
-title: Przewodnik Szybki Start języka C# dla usług Cognitive Services, interfejs API analizy tekstu | Dokumentacja firmy Microsoft
+title: 'Szybki Start: Przy użyciu języka C# do wywołania interfejsu API analizy tekstu | Dokumentacja firmy Microsoft'
+titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje i przykłady kodu, które ułatwią Ci szybkie rozpoczęcie pracy przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42a682898303b742a17b0a6d4d98c2b9fedf9003
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b4d945b7495897caf1f4edd1e909581614798a23
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841698"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303025"
 ---
-# <a name="quickstart-for-the-text-analytics-api-with-c"></a>Przewodnik Szybki start dotyczący usługi Text Analytics interfejsu API w języku C# 
+# <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Szybki Start: Przy użyciu języka C# do wywoływania usług Cognitive analizy tekstu
 <a name="HOLTop"></a>
 
 W tym artykule pokazano, jak wykrywanie języka, analizowanie tonacji i wyodrębnianie kluczowych fraz przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) przy użyciu języka C#. Ten kod został zapisany do pracy w aplikacji .NET Core, z minimalnym odwołaniami do zewnętrznych bibliotekach, aby można było również uruchomić w systemie Linux lub MacOS.

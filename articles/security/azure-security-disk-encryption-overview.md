@@ -1,24 +1,18 @@
 ---
 title: Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS w — omówienie | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie programu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 30324adb-e24c-433a-9214-2d1465cbdf45
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 88500be4bae83049e8a7060719f4f85e7622c645
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886995"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348943"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS 
 Platforma Microsoft Azure jest zobowiązana do zapewnienia Twojej prywatności danych, niezależność danych, a umożliwiając kontroli platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzać kluczami szyfrowania, a kontrola i inspekcja dostępu do danych. Formant ten zapewnia klientom platformy Azure swobodę wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule przedstawiono rozwiązanie technologiczne "Dysku szyfrowanie dla Windows i Linux IaaS maszyn wirtualnych platformy Azure", aby chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
@@ -175,4 +169,4 @@ Aby poznać niektóre typowe terminy używane przez tę technologię, skorzystaj
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
-> [Wymagań wstępnych szyfrowania dysków Azure](azure-security-disk-encryption-prerequisites.md)
+> [Wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md)

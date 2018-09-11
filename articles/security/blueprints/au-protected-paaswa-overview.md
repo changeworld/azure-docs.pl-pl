@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ea9c9d773cb863c6ee2b052fcbd097275f00fc87
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818277"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300991"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla Australii CHRONIONA
 
@@ -101,7 +101,7 @@ Korzystanie z środowisk usługi App Service dla tej architektury zezwalanie na 
 - [Zapora aplikacji sieci Web — ograniczanie danych](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Zezwalaj na [ruch usługi Azure SQL Database](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Usługa Azure Web Apps**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) umożliwia klientom tworzenie i hostowanie wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git.
+**Usługa Azure Web Apps**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) umożliwia klientom tworzenie i hostowanie wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows, jak i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, usługom DevOps platformy Azure lub z dowolnym repozytorium Git.
 
 ### <a name="virtual-network"></a>Virtual Network
 Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adresowej 10.200.0.0/16.
@@ -202,7 +202,7 @@ Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.m
 
 **Usługa Azure Monitor**: [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów, umożliwiając organizacjom inspekcję, tworzyć alerty i archiwizować dane, w tym śledzenia wywołań interfejsu API w ich systemie Azure zasoby.
 
-Usługa Azure Network Watcher: [Azure Network Watcher] 9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlaj metryki oraz włączyć lub wyłączyć dzienników dla zasobów w sieci wirtualnej platformy Azure.  Wspólnota jednostek powinny implementować dzienniki przepływów usługi Network Watcher dla sieciowych grup zabezpieczeń i maszyn wirtualnych. Te dzienniki powinny być przechowywane w konto dedykowanych dla magazynu, które tylko dzienniki zabezpieczeń są przechowywane w i dostęp do konta magazynu powinny być zabezpieczone przy użyciu kontroli dostępu na podstawie ról.
+Usługa Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlaj metryki oraz włączyć lub wyłączyć dzienników dla zasobów w sieci wirtualnej platformy Azure.  Wspólnota jednostek powinny implementować dzienniki przepływów usługi Network Watcher dla sieciowych grup zabezpieczeń i maszyn wirtualnych. Te dzienniki powinny być przechowywane w konto dedykowanych dla magazynu, które tylko dzienniki zabezpieczeń są przechowywane w i dostęp do konta magazynu powinny być zabezpieczone przy użyciu kontroli dostępu na podstawie ról.
 
 ## <a name="threat-model"></a>Model zagrożeń
 

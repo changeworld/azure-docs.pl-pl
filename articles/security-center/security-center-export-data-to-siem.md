@@ -1,6 +1,6 @@
 ---
-title: Eksportowanie danych zabezpieczeń platformy Azure do SIEM potoku konfiguracji [Podgląd] | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera dokumentację produktu pobierania Azure security center dzienniki, aby używany system SIEM
+title: Eksportowanie Azure danych zabezpieczeń do rozwiązania SIEM — Konfiguracja potoku [wersja zapoznawcza] | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera dokumentację produktu pobierania zabezpieczeń platformy Azure, dzienniki Centrum do rozwiązania SIEM
 services: security-center
 documentationcenter: na
 author: Barclayn
@@ -9,65 +9,65 @@ editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: barclayn
-ms.openlocfilehash: 7a0a72a25010952f13eb190f0e0a1a65cc6d42d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29124837"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298237"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Eksportowanie danych zabezpieczeń platformy Azure do SIEM potoku konfiguracji [Podgląd]
+# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Usługa Azure eksportowanie danych zabezpieczeń do rozwiązania SIEM — Konfiguracja potoku [wersja zapoznawcza]
 
-Ten dokument zawiera szczegóły dotyczące procedury, aby wyeksportować dane zabezpieczeń w Centrum zabezpieczeń Azure do rozwiązania SIEM.
+W tym dokumencie przedstawiono procedurę eksportowania danych zabezpieczeń usługi Azure Security Center do rozwiązania SIEM.
 
-Przetworzone zdarzenia generowane przez Centrum zabezpieczeń Azure są publikowane do platformy Azure [dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), jeden dziennika typów dostępne za pośrednictwem Monitora Azure. Azure Monitor oferuje skonsolidowanych potoku dla routingu żadnych danych monitorowania do narzędzia SIEM. Jest to realizowane przez strumieniowe przesyłanie danych do Centrum zdarzeń, w którym go może następnie być pobierane do narzędzia partnera.
+Przetworzone zdarzenia generowane przez usługę Azure Security Center są publikowane na platformie Azure [dziennika aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), jeden z dziennika typów dostępnych za pośrednictwem usługi Azure Monitor. Usługa Azure Monitor udostępnia skonsolidowany potoku na potrzeby routingu jakichkolwiek danych monitorowania do narzędzia SIEM. Polega to na przesyłanie strumieniowe danych do Centrum zdarzeń, gdzie go może następnie zostać pobrane do narzędzia partnera.
 
-Używa tego potoku [monitorowania Azure pojedynczy potok](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) do uzyskiwania dostępu do danych monitorowania z Twoim środowiskiem platformy Azure. Dzięki temu można łatwo skonfigurować rozwiązań Siem i narzędzi do monitorowania danych.
+Ten potok używa [monitorowania platformy Azure w jeden potok](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) w celu uzyskania dostępu do danych monitorowania ze środowiska platformy Azure. Dzięki temu można łatwo skonfigurować rozwiązań Siem i narzędzi do monitorowania, korzystającą z danych.
 
-Kolejne sekcje opisują, jak można skonfigurować dane przesyłane strumieniowo do Centrum zdarzeń. W krokach założono, że masz już skonfigurowane w ramach subskrypcji platformy Azure Centrum zabezpieczeń Azure.
+W kolejnych sekcjach opisano, jak można skonfigurować dane przesyłane strumieniowo do Centrum zdarzeń. W krokach założono, że masz już usługę Azure Security Center skonfigurowane w ramach subskrypcji platformy Azure.
 
 Ogólne omówienie
 
 ![Ogólne omówienie](media/security-center-export-data-to-siem/overview.png)
 
-## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Co to jest narażony na SIEM danych zabezpieczeń platformy Azure?
+## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Co to jest udostępniane do rozwiązania SIEM dane zabezpieczeń platformy Azure?
 
-W tej wersji zapoznawczej uwidaczniamy [alertów zabezpieczeń.](../security-center/security-center-managing-and-responding-alerts.md) W kolejnych wersjach firma Microsoft będzie wzbogacić zestaw danych o zalecenia dotyczące zabezpieczeń.
+W tej wersji zapoznawczej uwidaczniamy [alertów zabezpieczeń.](../security-center/security-center-managing-and-responding-alerts.md) W następnych wersjach firma Microsoft będzie wzbogacić zestawu danych z zaleceniami dotyczącymi zabezpieczeń.
 
-## <a name="how-to-setup-the-pipeline"></a>Jak skonfigurować potoku? 
+## <a name="how-to-setup-the-pipeline"></a>Jak skonfigurować potok? 
 
 ### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń 
 
-Przed rozpoczęciem należy [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md). Ten obszar nazw i Centrum zdarzeń jest miejscem docelowym dla monitorowania danych.
+Przed rozpoczęciem należy [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md). Ten obszar nazw i Centrum zdarzeń jest miejsce docelowe dla wszystkich danych monitorowania.
 
-### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Strumień dziennika aktywności platformy Azure do usługi Event Hubs
+### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 
-Zapoznaj się z następującym artykułem [dziennik aktywności strumienia do usługi Event Hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+Zapoznaj się z następującym artykułem [strumieniowe przesyłanie dzienników aktywności do usługi Event Hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 
 ### <a name="install-a-partner-siem-connector"></a>Instalowanie łącznika SIEM partnera 
 
-Routing monitorowanych danych do Centrum zdarzeń z monitorem Azure pozwala łatwo zintegrować z partnerem SIEM i narzędzi do monitorowania.
+Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monitor pozwala łatwo zintegrować ją z partnerem rozwiązania SIEM i narzędzi do monitorowania.
 
-Zobacz następujące łącze, aby wyświetlić listę [obsługiwane rozwiązań Siem](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+Zapoznaj się z następującego linku, aby wyświetlić listę [obsługiwanych rozwiązań Siem](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
 
-## <a name="example-for-querying-data"></a>Przykład wykonywanie zapytania na danych 
+## <a name="example-for-querying-data"></a>Przykład wykonywanie zapytań o dane 
 
-Oto kilka zapytań Splunk, które służy do pobierania danych alertu:
+Poniżej przedstawiono kilka zapytań Splunk, które służy do pobierania danych alertu:
 
-| **Opis elementu zapytania**                                | **Zapytanie**                                                                                                                              |
+| **Opis kwerendy**                                | **Zapytanie**                                                                                                                              |
 |---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Wszystkie alerty                                              | index=main Microsoft.Security/locations/alerts                                                                                         |
-| Podsumuj liczba operacji według nazwy             | Indeks = głównego źródłowa = "amal: zabezpieczeń" \| operationName tabeli \| Statystyka liczba przez operationName                                |
-| Pobierz informacje dotyczące alertów: czas, nazwę stanu, identyfikator i subskrypcji | Indeks = głównego Microsoft.Security/locations/alerts \| tabeli \_czasu, properties.eventName, stan, properties.operationId, am_subscriptionId |
+| Wszystkie alerty                                              | Indeks = Microsoft.Security/locations/alerts głównego                                                                                         |
+| Podsumowanie łącznej liczby operacji według nazwy             | Indeks = głównego sourcetype = "amal: zabezpieczeń" \| operationName tabeli \| statystyki, liczba przez operationName                                |
+| Pobierz informacje dotyczące alertów: czas, nazwa, stan, identyfikator i subskrypcji | Indeks = głównego Microsoft.Security/locations/alerts \| tabeli \_czasu, properties.eventName, stan, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Obsługiwane rozwiązań Siem](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+- [Obsługiwanych rozwiązań Siem](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
 - [Strumieniowe przesyłanie dzienników aktywności do usługi Event Hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 - [Alerty zabezpieczeń.](../security-center/security-center-managing-and-responding-alerts.md)

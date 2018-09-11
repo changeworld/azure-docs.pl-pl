@@ -4,21 +4,19 @@ description: Zawiera omówienie urządzenia modułu zbierającego i sposobu ich 
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/10/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: dae6cc9a55049e2b44291eb105288b33a1db9e7b
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665584"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325536"
 ---
 # <a name="collector-appliance"></a>Urządzenie modułu zbierającego
 
 [Usługa Azure Migrate](migrate-overview.md) ocenia obciążenia lokalne pod kątem migracji na platformę Azure. Ten artykuł zawiera informacje o sposobie używania urządzenia modułu zbierającego.
-
-
 
 ## <a name="overview"></a>Przegląd
 
@@ -27,6 +25,17 @@ W usłudze Azure Migrate Collector to urządzenie uproszczone, który może słu
 Urządzenie modułu zbierającego jest pakietu OVF, który można pobrać z usługi Azure Migrate projektu. Metoda tworzy maszynę wirtualną VMware z 4 rdzenie, 8 GB pamięci RAM i jeden dysk 80 GB. System operacyjny urządzenia jest system Windows Server 2012 R2 (64-bitowy).
 
 Można utworzyć modułu zbierającego, wykonując kroki opisane w tym miejscu - [sposobu tworzenia maszyny Wirtualnej modułu zbierającego](tutorial-assessment-vmware.md#create-the-collector-vm).
+
+## <a name="discovery-methods"></a>Metody odnajdywania
+
+Istnieją dwie metody, w których odnaleźć w lokalnym środowisku:
+
+a. **Jednorazowe:** modułu zbierającego dla tego modelu, który komunikuje się z programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Do zbierania danych wydajności maszyn wirtualnych opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server i umożliwia zbieranie informacji o historii wydajności ostatni miesiąc. W tym modelu usługi Azure Migrate zbiera dane licznika średni (a licznik szczytu), dla każdego metryki, [Dowiedz się więcej] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o licznikach wydajności, zebranych przez usługę Azure Migrate. Ponieważ jest jednorazowe, urządzenie w tym przypadku nie jest stale podłączony do projektu. Dzięki temu zmiany w środowisku lokalnym nie są odzwierciedlane w usłudze Azure Migrate, po ukończeniu odnajdywania. Jeśli chcesz, aby odzwierciedlić zmiany, trzeba odnajdywanie tym samym środowisku, w tym samym projekcie.
+
+b. **Ciągłe odnajdywania:** urządzenia modułu zbierającego dla tego modelu stale jest podłączony do projektu Azure Migrate. Profiluje ciągle środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym na co 20 sekund. Urządzenie następnie ustala telefoniczny przykłady 20 sekund i tworzy pojedynczego punktu danych dla co 15 minut, wybierając wartość maksymalna, który jest wysyłany na platformie Azure. Ten model nie zależy od ustawienia statystyk programu vCenter Server na potrzeby zbierania danych o wydajności. Można zatrzymać ciągłe profilowania dowolnym przez urządzenie.
+
+> [!NOTE]
+> Funkcji ciągłego odnajdywania jest dostępna w wersji zapoznawczej.
 
 ## <a name="collector-communication-diagram"></a>Diagram komunikacji modułu zbierającego
 
@@ -39,13 +48,9 @@ Można utworzyć modułu zbierającego, wykonując kroki opisane w tym miejscu -
 | Moduł zbierający      | Program vCenter Server        | Domyślnie 443                             | Moduł zbierający powinno być możliwe do komunikacji z serwerem vCenter. Domyślnie nawiąże połączenie z vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, ten port powinno być dostępne jako port wychodzący w module zbierającym |
 | Moduł zbierający      | RDP|   | TCP 3389 | Aby uzyskać aby można było nawiązać połączenie RDP z maszyną modułu zbierającego |
 
-
-
-
-
 ## <a name="collector-pre-requisites"></a>Wymagania wstępne modułu zbierającego
 
-Moduł zbierający musi przekazać kilka wstępnych kontroli w celu zapewnienia można połączyć się z usługą Azure Migrate i przekaż odnalezione dane. Ten artykuł będzie wyglądać na każdym z wymagań wstępnych i zrozumieć, dlaczego jest wymagane.
+Moduł zbierający musi przekazać kilka wstępnych kontroli w celu zapewnienia można połączyć się z usługą Azure Migrate i przekaż odnalezione dane. Ten artykuł będzie wyglądać na każdym z wymagań wstępnych i zrozumienie, dlaczego jest wymagane.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
@@ -77,8 +82,8 @@ Jeśli serwer proxy, którego używasz do łączenia się z Internetem jest prze
 6. Wybierz opcję, aby **Umieść wszystkie certyfikaty w następującym magazynie**. Kliknij przycisk **Przeglądaj** i wybierz **zaufanych wydawców** certyfikaty, które pojawiają się na liście. Kliknij przycisk **Dalej**.
 
     ![Magazyn certyfikatów](./media/concepts-intercepting-proxy/certificate-store.png)
-    
-7. Kliknij przycisk **Zakończ**. Spowoduje to zaimportowanie certyfikatu. 
+
+7. Kliknij przycisk **Zakończ**. Spowoduje to zaimportowanie certyfikatu.
 8. Opcjonalnie możesz sprawdzić, czy certyfikat został zaimportowany przez otwarcie narzędzia certyfikatów, tak jak w kroku 1 i 2 powyżej.
 9. W aplikacji usługi Azure Migrate collector Sprawdź, czy sprawdzanie wymagań wstępnych połączenia internetowego zakończy się pomyślnie.
 
@@ -132,7 +137,7 @@ Moduł zbierający, należy nawiązać połączenie z serwerem vCenter i mieć m
 
     |Zadanie  |Wymagana rola/konto  |Uprawnienia  |
     |---------|---------|---------|
-    |Odnajdywanie urządzenia na podstawie modułów zbierających dane    | Potrzebujesz co najmniej użytkownik tylko do odczytu        |Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu         |
+    |Odnajdywanie oparte na urządzeniu modułów zbierających dane    | Potrzebujesz co najmniej użytkownik tylko do odczytu        |Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu         |
 
 2. Tylko tych centrów danych, które są dostępne na określone konto vCenter jest możliwy do odnajdywania.
 3. Należy określić serwer vCenter w pełni kwalifikowaną nazwę domeny/adres IP, aby połączyć się z serwerem vCenter. Domyślnie zostanie nawiązane za pośrednictwem portu 443. Jeśli skonfigurowano serwer vCenter do nasłuchiwania na inny numer portu, możesz je określić jako część adresu serwera w formie IPAddress:Port_Number lub FQDN:Port_Number.
@@ -166,7 +171,7 @@ Po uruchomieniu odnajdywania, maszyny wirtualne vCenter są odnajdywane i ich me
 
 ### <a name="what-data-is-collected"></a>Jakie dane są zbierane?
 
-Zadania odzyskiwania umożliwia odnalezienie następujących statyczne metadane dotyczące wybranych maszyn wirtualnych.
+Urządzenie modułu zbierającego umożliwia odnalezienie następujących statyczne metadane dotyczące wybranych maszyn wirtualnych.
 
 1. Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
 2. Ścieżka magazynu maszyny Wirtualnej (w programie vCenter hosta/folder)
@@ -177,7 +182,9 @@ Zadania odzyskiwania umożliwia odnalezienie następujących statyczne metadane 
 6. Rozmiar pamięci, rozmiary dysków
 7. Liczniki wydajności i maszyny Wirtualnej, dysku i sieci, zgodnie z opisem w poniższej tabeli.
 
-Poniższa tabela zawiera listę liczników wydajności, które są zbierane i zawiera również listę wyników oceny, które ma wpływ, jeśli nie ma określonego licznika.
+W przypadku modelu w czasie odnajdowania w poniższej tabeli wymieniono liczniki wydajności dokładnie, które są zbierane i zawiera również listę wyników oceny, które ma wpływ, jeśli określony licznik nie jest.
+
+Ciągłe odnajdywania tych samych liczników są zbierane w czasie rzeczywistym (interwał 20 sekund), więc nie ma żadnych zależności na poziom statystyki programu vCenter. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure.
 
 |Licznik                                  |Poziom    |Poziom na urządzenie  |Ocena wpływu                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
@@ -191,16 +198,20 @@ Poniższa tabela zawiera listę liczników wydajności, które są zbierane i za
 |net.transmitted.average                  | 2       |3                 |Koszt rozmiar i sieć maszyny Wirtualnej                        |
 
 > [!WARNING]
-> Jeśli właśnie zostały ustawione na wyższy poziom statystyk, potrwa na dzień wygenerowania liczników wydajności. Dlatego zaleca się, uruchom odnajdywanie po jednym dniu.
+> Jednorazowe odnajdywania jeśli zostały ustawione po prostu wyższy poziom statystyk, potrwa na dzień do generowania liczników wydajności. Dlatego zaleca się, uruchom odnajdywanie po jednym dniu. Poczekaj co najmniej jednego dnia po uruchomieniu odnajdywania dla urządzenia na potrzeby profilowania środowiska i następnie utworzyć oceny dla modelu ciągłego odnajdywania.
 
 ### <a name="time-required-to-complete-the-collection"></a>Czas wymagany do ukończenia kolekcji
 
-Moduł zbierający tylko umożliwia odnalezienie danych komputera i wysyła je do projektu. Projekt może zająć dodatkowy czas, zanim odnalezione dane jest wyświetlany w portalu i możesz rozpocząć tworzenie oceny.
+**Jednorazowe**
 
-Na podstawie liczby maszyn wirtualnych w wybranym zakresie, trwa maksymalnie 15 minut do wysyłania metadanych statycznej do projektu. Po statyczne metadanych jest dostępna w portalu, można zapoznać się z listą maszyn w portalu i zacznij tworzyć grupy. Nie można utworzyć oceny, do momentu ukończenia zadania odzyskiwania i projektu zostało przetworzone dane. Gdy zadanie kolekcji zostało ukończone w module zbierającym, może potrwać maksymalnie jedną godzinę, dane wydajności, które mogą być dostępne w witrynie portal, na podstawie liczby maszyn wirtualnych w wybranym zakresie.
+W tym modelu moduł zbierający gromadzi informacje o historii konfiguracji i wydajności maszyn wirtualnych z programu vCenter Server i wysyła je do projektu. Urządzenie w tym przypadku nie jest stale podłączony do projektu. Na podstawie liczby maszyn wirtualnych w wybranym zakresie, trwa maksymalnie 15 minut do wysyłania metadanych konfiguracji do projektu. Gdy metadanych konfiguracji będzie dostępna w portalu, możesz zapoznać się z listą maszyn w portalu i rozpocząć tworzenie grup. Po zebraniu danych konfiguracji może potrwać maksymalnie godzinę dane wydajności, które mogą być dostępne w witrynie portal, na podstawie liczby maszyn wirtualnych w wybranym zakresie.
+
+**Ciągłe odnajdywania**
+
+W tym modelu danych konfiguracji lokalnych maszyn wirtualnych jest dostępne po uruchomieniu 1 godzinę wyzwalania danych odnajdywania i wydajności, staje się dostępny po 2 godzinach. Ponieważ jest to ciągłe modelu, moduł zbierający stale utrzymuje wysyłania danych dotyczących wydajności do projektu Azure Migrate.
 
 ## <a name="locking-down-the-collector-appliance"></a>Blokowanie urządzenia modułu zbierającego
-Firma Microsoft zaleca systemem ciągłych aktualizacji Windows urządzenia modułu zbierającego. Jeśli moduł zbierający nie zostaną zaktualizowane przez 60 dni, moduł zbierający rozpocznie zamykanie maszyny automatycznie. Jeśli działa odnajdywanie, maszyny zostaną nie wyłączone, nawet jeśli jest on poza jego 60-dniowego okresu. Zadanie odnajdowania po zakończeniu maszyny zostaną wyłączone. Jeśli używasz modułu zbierającego ponad 45 dniach, zaleca się pozostawienie maszyny zaktualizować cały czas uruchomione Windows Update.
+Firma Microsoft zaleca systemem ciągłych aktualizacji Windows urządzenia modułu zbierającego. Jeśli moduł zbierający nie zostaną zaktualizowane przez 60 dni, moduł zbierający rozpocznie zamykanie maszyny automatycznie. Jeśli działa odnajdywanie, komputer będzie nie zostać wyłączony, nawet jeśli po upływie 60 dni. Zadanie odnajdowania po zakończeniu maszyny zostaną wyłączone. Jeśli używasz modułu zbierającego ponad 45 dniach, zaleca się pozostawienie maszyny zaktualizować cały czas uruchomione Windows Update.
 
 Zalecamy również następujące kroki, aby zabezpieczyć urządzenie
 1. Nie można udostępniać lub ze strony nieautoryzowanych zostanie zgubiony przez użytkownika hasła administratora.

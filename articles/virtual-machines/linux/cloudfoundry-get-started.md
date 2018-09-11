@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972295"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302473"
 ---
 # <a name="cloud-foundry-on-azure"></a>Usługa Cloud Foundry na platformie Azure
 
@@ -60,9 +60,9 @@ Jeśli używasz Pivotal Cloud Foundry programu service broker jest również [do
 
 ## <a name="related-resources"></a>Powiązane zasoby
 
-### <a name="visual-studio-team-services-plugin"></a>Wtyczka usługi Visual Studio Team Services
+### <a name="azure-devops-services-plugin"></a>Wtyczka usługom DevOps platformy Azure
 
-Cloud Foundry to dobrze nadaje się do tworzenia oprogramowania agile, łącznie z użyciem ciągłą integrację (CI) i ciągłe dostarczanie (CD). Jeśli używasz programu Visual Studio Team Services (VSTS) do zarządzania projektami i chcesz ustawić się ciągłej integracji/ciągłego wdrażania potoku przeznaczone dla usługi Cloud Foundry, możesz użyć [VSTS Cloud Foundry skompilowania rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Wtyczka pozwala w prosty sposób konfigurowania i automatyzacji wdrożeń do usługi Cloud Foundry czy uruchomiona na platformie Azure lub innego środowiska.
+Cloud Foundry to dobrze nadaje się do tworzenia oprogramowania agile, łącznie z użyciem ciągłą integrację (CI) i ciągłe dostarczanie (CD). Jeśli używasz usługi DevOps platformy Azure do zarządzania projektami i chcesz ustawić się ciągłej integracji/ciągłego wdrażania potoku przeznaczone dla usługi Cloud Foundry, możesz użyć [Azure DevOps usługi Cloud Foundry skompilowania rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Wtyczka pozwala w prosty sposób konfigurowania i automatyzacji wdrożeń do usługi Cloud Foundry czy uruchomiona na platformie Azure lub innego środowiska.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

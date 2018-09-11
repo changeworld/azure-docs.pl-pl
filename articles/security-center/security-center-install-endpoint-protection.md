@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów dotyczących ochrony punktu końcowego z Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywanie problemów dotyczących ochrony punktu końcowego w Centrum zabezpieczeń Azure.
+title: Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać problemy z ochroną punktu końcowego w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,104 +9,104 @@ editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23936294"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300007"
 ---
-# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Rozwiązywanie problemów dotyczących ochrony punktu końcowego z Centrum zabezpieczeń Azure
-Centrum zabezpieczeń Azure służy do monitorowania stanu ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy ochrony punktu końcowego. Centrum zabezpieczeń zawiera wyróżnione zagadnienia, takie jak wykrytych zagrożeń i niewystarczającą ochroną, co może uniemożliwić maszynach wirtualnych (VM), a komputery narażony na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji w obszarze **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
+# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
+Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
 
-Centrum zabezpieczeń zgłasza następujące problemy z ochroną punktu końcowego:
+Usługa Security Center raportów następujące problemy związane z ochroną punktu końcowego:
 
-- Program Endpoint protection nie jest zainstalowany na maszynach wirtualnych Azure — rozwiązanie obsługiwanych ochrony przed złośliwym oprogramowaniem nie jest zainstalowany na tych maszynach wirtualnych Azure.
-- Program Endpoint protection nie jest zainstalowany na komputerach z systemem innym niż Azure — obsługiwanych ochrony przed złośliwym oprogramowaniem nie jest zainstalowany na tych komputerach innych niż Azure.
+- Program Endpoint protection nie jest zainstalowany na maszynach wirtualnych platformy Azure — rozwiązania obsługiwanych ochrony przed złośliwym kodem nie jest zainstalowany na tych maszynach wirtualnych platformy Azure.
+- Program Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure — obsługiwane ochrony przed złośliwym kodem nie jest zainstalowany na tych komputerach nienależących do platformy Azure.
 - Kondycji programu Endpoint protection:
 
-   - Nieaktualny podpis — rozwiązanie chroniące przed złośliwym kodem jest zainstalowane na tych komputerach i maszyn wirtualnych, ale rozwiązanie nie ma najnowszej podpisy ochrony przed złośliwym oprogramowaniem.
-   - Brak ochrony w czasie rzeczywistym — rozwiązanie chroniące przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych lub komputerach, ale nie jest skonfigurowany do ochrony w czasie rzeczywistym.   Usługi mogą być wyłączone lub Centrum zabezpieczeń może być nie można uzyskać stanu, ponieważ rozwiązanie nie jest obsługiwany. Zobacz [partnera integracji](security-center-partner-integration.md) listę obsługiwanych rozwiązania.
-   - Raportowanie nie — rozwiązanie chroniące przed złośliwym kodem jest zainstalowany, ale nie zgłasza danych.
-   - Nieznana — rozwiązanie chroniące przed złośliwym kodem jest zainstalowany, ale jego stan jest nieznany lub wykonywania raportu wystąpił nieznany błąd.
+   - Nieaktualny podpis — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale to rozwiązanie nie ma najnowszych sygnatur złośliwego oprogramowania.
+   - Brak ochrony w czasie rzeczywistym — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale nie została ona skonfigurowana do ochrony w czasie rzeczywistym.   Usługi mogą być wyłączone lub Centrum zabezpieczeń może być nie można uzyskać stanu, ponieważ rozwiązania nie jest obsługiwany. Zobacz [Integracja z partnerami](security-center-partner-integration.md) Aby uzyskać listę obsługiwanych rozwiązań.
+   - Nie zgłasza — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale nie zgłasza danych.
+   - Nieznany — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale jego stan jest nieznany lub raportowania wystąpił nieznany błąd.
 
    > [!NOTE]
-   > Zobacz [zintegrowanie rozwiązań zabezpieczeń](security-center-partner-integration.md#integrated-azure-security-solutions) listę rozwiązań zabezpieczeń do ochrony punktu końcowego zintegrowana z Centrum zabezpieczeń.
+   > Zobacz [integracja rozwiązań zabezpieczeń](security-center-partner-integration.md#integrated-azure-security-solutions) listę rozwiązań zabezpieczeń ochrony punktów końcowych zintegrowane z usługą Security Center.
    >
    >
 
-## <a name="implement-the-recommendation"></a>Wykonania zalecenia
-Problemy z ochroną punktu końcowego jest przedstawiany jako zalecenia w Centrum zabezpieczeń.  Jeśli dane środowisko jest narażony na zagrożenia ochrony przed złośliwym kodem, tego zalecenia zostanie wyświetlony w obszarze **zalecenia** i w obszarze **obliczeniowe**. Aby wyświetlić **problemy z ochroną punktu końcowego pulpitu nawigacyjnego**, należy wykonać obliczeń przepływ pracy.
+## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
+Problemy z ochroną punktu końcowego jest przedstawiany jako zalecenia w usłudze Security Center.  Jeśli środowisko jest narażony na zagrożenia ochrony przed złośliwym oprogramowaniem, tego zalecenia zostanie wyświetlona w **zalecenia** i w obszarze **obliczenia**. Aby wyświetlić **programu Endpoint protection generuje pulpit nawigacyjny**, należy wykonać obliczeń przepływu pracy.
 
-W tym przykładzie używamy **obliczeniowe**.  Przedstawiono sposób instalowania ochrony przed złośliwym kodem na maszynach wirtualnych platformy Azure i na komputerach innych niż Azure.
+W tym przykładzie użyjemy **obliczenia**.  Przedstawiony zostanie sposób instalowania ochrony przed złośliwym oprogramowaniem na maszynach wirtualnych platformy Azure i na komputerach nienależących do platformy Azure.
 
-## <a name="install-antimalware-on-azure-vms"></a>Zainstaluj ochrony przed złośliwym kodem na maszynach wirtualnych platformy Azure
+## <a name="install-antimalware-on-azure-vms"></a>Instalowanie ochrony przed złośliwym oprogramowaniem na maszynach wirtualnych platformy Azure
 
-1. Wybierz **obliczeniowe** w menu głównym Centrum zabezpieczeń lub **omówienie**.
+1. Wybierz **obliczenia** menu głównym usługi Security Center lub **Przegląd**.
 
-   ![Wybierz obliczeń][1]
+   ![Wybierz opcję Oblicz][1]
 
-2. W obszarze **obliczeniowe**, wybierz pozycję **problemy z ochroną punktu końcowego**. **Problemy z ochroną punktu końcowego** otwiera pulpitu nawigacyjnego.
+2. W obszarze **obliczenia**, wybierz opcję **problemy z ochroną punktu końcowego**. **Problemy z ochroną punktu końcowego** zostanie otwarty pulpit nawigacyjny.
 
    ![Wybierz problemy z ochroną punktu końcowego][2]
 
    Udostępnia górnej części pulpitu nawigacyjnego:
 
-   - Zainstalowanych dostawców ochrony punktu końcowego - list różnych dostawców zidentyfikowane przez Centrum zabezpieczeń.
-   - Stan kondycji ochrony punktu końcowego zainstalowanych — przedstawia stan kondycji maszyn wirtualnych i komputerów, na których jest zainstalowane oprogramowanie ochrony punktu końcowego. Wykres pokazuje liczbę maszyn wirtualnych i komputerów, które są w dobrej kondycji i numer z niewystarczającą ochroną.
-   - Wykryto — złośliwy kod pokazuje liczbę maszyn wirtualnych i komputerów, którym Centrum zabezpieczeń jest raportowania wykryto złośliwe oprogramowanie.
-   - Zaatakowane komputery — pokazuje liczbę maszyn wirtualnych i komputerów, w którym Centrum zabezpieczeń jest raportowania ataków przez złośliwego.
+   - Zainstalowanych dostawców ochrony punktu końcowego — listy różnych dostawców identyfikowane przez usługę Security Center.
+   - Zainstalowano program endpoint protection kondycja — pokazuje stan kondycji maszyn wirtualnych i komputerów, na których jest zainstalowane oprogramowanie ochrony punktu końcowego. Wykres przedstawia liczbę maszyn wirtualnych i komputerów, które są w dobrej kondycji oraz numer z niewystarczającą ochroną.
+   - Wykryto — złośliwe oprogramowanie zawiera liczbę maszyn wirtualnych i komputerów, których usługa Security Center jest raportowanie wykrytego złośliwego oprogramowania.
+   - Zaatakowane komputery — pokazuje liczbę maszyn wirtualnych i komputerów, których usługa Security Center jest raportowanie ataków przez złośliwego oprogramowania.
 
    W dolnej części pulpitu nawigacyjnego znajduje się lista punktu końcowego problemy związane z ochroną, które zawiera następujące informacje:  
 
-   - **Całkowita liczba** — liczba maszyn wirtualnych i komputerów dotyczy problem.
-   - A paska agregowanie liczby maszyn wirtualnych i komputerów dotyczy problem. Kolory na pasku Określ priorytet:
+   - **Łączna liczba** — liczba maszyn wirtualnych i komputerów dotyczy problem.
+   - Element paska agregowania liczbę maszyn wirtualnych i komputerów dotyczy problem. Kolory na pasku określenie priorytetu:
 
-      - Czerwony - o wysokim priorytecie i powinny być kierowane natychmiast
-      - Kolor pomarańczowy — średni priorytet i powinny być kierowane jak najszybciej
+      - Czerwony - o wysokim priorytecie i powinien być kierowany od razu
+      - Pomarańczowy — średni priorytet i należy rozwiązać jak najszybciej
 
-3. Wybierz **programu Endpoint protection nie jest zainstalowany na maszynach wirtualnych Azure**.
+3. Wybierz **Endpoint protection nie jest zainstalowana na maszynach wirtualnych Azure**.
 
-   ![Wybierz program Endpoint protection nie jest zainstalowany na maszynach wirtualnych Azure][3]
+   ![Wybór ochrony punktu końcowego nie jest zainstalowany na maszynach wirtualnych platformy Azure][3]
 
-4. W obszarze **programu Endpoint protection nie jest zainstalowany na maszynach wirtualnych Azure** znajduje się lista maszyn wirtualnych platformy Azure, które nie mają ochrony przed złośliwym kodem, zainstalować.  Można zainstalować na wszystkich maszynach wirtualnych na liście ochrony przed złośliwym kodem lub wybrać poszczególnych maszyn wirtualnych do zainstalowania ochrony przed złośliwym kodem na klikając określonej maszyny Wirtualnej.
+4. W obszarze **Endpoint protection nie jest zainstalowana na maszynach wirtualnych Azure** znajduje się lista maszyn wirtualnych platformy Azure, bez ochrony przed złośliwym kodem zainstalowane.  Istnieje możliwość zainstalowania ochrony przed złośliwym kodem na wszystkich maszynach wirtualnych, na liście lub wybierz poszczególne maszyny wirtualne, aby zainstalować ochrony przed złośliwym kodem na, klikając określonej maszyny Wirtualnej.
 5. W obszarze **wybierz program Endpoint protection**, wybierz rozwiązanie ochrony punktu końcowego, którego chcesz użyć. W tym przykładzie wybierz **Microsoft Antimalware**.
-6. Dodatkowe informacje dotyczące funkcji ochrony punktów końcowych są wyświetlane. Wybierz pozycję **Utwórz**.
+6. Dodatkowe informacje na temat rozwiązania do ochrony punktu końcowego jest wyświetlany. Wybierz pozycję **Utwórz**.
 
-## <a name="install-antimalware-on-non-azure-computers"></a>Zainstaluj ochrony przed złośliwym kodem na komputerach z systemem innym niż Azure
+## <a name="install-antimalware-on-non-azure-computers"></a>Instalowanie ochrony przed złośliwym kodem na komputerach nienależących do platformy Azure
 
-1. Wróć do **problemy z ochroną punktu końcowego** i wybierz **programu Endpoint protection nie jest zainstalowany na komputerach z systemem innym niż Azure**.
+1. Wróć do **problemy z ochroną punktu końcowego** i wybierz **programu Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure**.
 
-   ![Wybierz program Endpoint protection nie jest zainstalowany na komputerach z systemem innym niż Azure][4]
+   ![Wybór ochrony punktu końcowego nie jest zainstalowany na komputerach nienależących do platformy Azure][4]
 
-2. W obszarze **programu Endpoint protection nie jest zainstalowany na komputerach z systemem innym niż Azure**, wybierz obszar roboczy. Filtrowane do obszaru roboczego analizy dzienników zapytania wyszukiwania zostanie otwarte i wyświetla listę komputerów bez ochrony przed złośliwym oprogramowaniem. Wybierz komputer z listy, aby uzyskać więcej informacji.
+2. W obszarze **programu Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure**, wybierz obszar roboczy. Zapytanie wyszukiwania usługi Log Analytics filtrowane do obszaru roboczego otwiera się i wyświetla komputery bez ochrony przed złośliwym oprogramowaniem. Wybierz komputer z listy, aby uzyskać więcej informacji.
 
-   ![Wyszukaj analizy dzienników][5]
+   ![Wyszukiwania usługi log Analytics][5]
 
-Otwiera inny wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
+Zostanie otwarty inny wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
 
-  ![Wyszukaj analizy dzienników][6]
+  ![Wyszukiwania usługi log Analytics][6]
 
 > [!NOTE]
-> Firma Microsoft zaleca udostępniane programu endpoint protection dla wszystkich maszyn wirtualnych i komputerów ułatwić identyfikację oraz usunięcie wirusów, programów szpiegujących i innego złośliwego oprogramowania.
+> Firma Microsoft zaleca udostępniane programu endpoint protection dla wszystkich maszyn wirtualnych i komputerów ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania.
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
-W tym artykule przedstawiono sposób wykonania zalecenia Centrum zabezpieczeń "Zainstaluj program Endpoint Protection". Aby dowiedzieć się więcej na temat włączania Antimalware firmy Microsoft na platformie Azure, zobacz następujący dokument:
+## <a name="next-steps"></a>Kolejne kroki
+W tym artykule pokazano sposób implementacji zalecenia usługi Security Center "Zainstaluj program Endpoint Protection". Aby dowiedzieć się więcej na temat włączania Microsoft Antimalware na platformie Azure, zobacz następujący dokument:
 
-* [Antimalware firmy Microsoft dla usługi w chmurze i maszyn wirtualnych](../security/azure-security-antimalware.md) — Dowiedz się, jak wdrożyć Antimalware firmy Microsoft.
+* [Microsoft Antimalware dla usług Cloud Services i Virtual Machines](../security/azure-security-antimalware.md) — informacje o wdrażaniu Microsoft Antimalware.
 
-Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, można znaleźć w następujących dokumentach:
+Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujące dokumenty:
 
-* [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.

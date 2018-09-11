@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0f053c0293488f19adcd058f1ba8304d8d238738
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128310"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296197"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Powolne sieci web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
 Ten artykuł ułatwia rozwiązywanie problemów z wydajnością aplikacji sieci web powolne w [usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -88,7 +88,7 @@ Można również monitorować wydajność aplikacji za pomocą *rozszerzenie wit
 
 Każda aplikacja sieci web usługi App Service zawiera punkt końcowy rozszerzonego zarządzania, który umożliwia korzystanie z zaawansowanego zestawu narzędzi wdrożonych jako rozszerzenia witryny. Rozszerzenia obejmują: 
 
-- Edytorów kodów źródłowych, takich jak [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Edytorów kodów źródłowych, takich jak [DevOps platformy Azure](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Narzędzia do zarządzania dla połączonych zasobów, takich jak bazy danych MySQL jest podłączony do aplikacji sieci web.
 
 [Usługa Azure Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzenie witryny, która jest również dostępna monitorowania wydajności. Aby korzystać z usługi Application Insights, możesz ponownie skompiluj kod, za pomocą zestawu SDK. Można także zainstalować rozszerzenia, które zapewnia dostęp do dodatkowych danych. Zestaw SDK pozwala napisać kod, aby monitorować użycie i wydajność Twojej aplikacji bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [monitorowania wydajności w aplikacjach sieci web](../application-insights/app-insights-web-monitor-performance.md).
@@ -158,7 +158,7 @@ Niektóre rzeczy, które zapewnia aparat Kudu, to:
 
 Inną przydatną cechą Kudu jest, że w przypadku, gdy aplikacja zgłasza wyjątki pierwszej szansy, można użyć narzędzia Kudu i zrzuty narzędzie SysInternals Procdump, aby utworzyć pamięci. Te zrzuty pamięci są migawki procesu i często może pomóc rozwiązać bardziej skomplikowanych problemów z aplikacją sieci web.
 
-Aby uzyskać więcej informacji na temat funkcji dostępnych w Kudu, zobacz [narzędzia usługi Azure Websites Team Services, należy wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Aby uzyskać więcej informacji na temat funkcji dostępnych w Kudu, zobacz [narzędzi DevOps platformy Azure należy wiedzieć o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 

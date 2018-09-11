@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 0df7c7680137be9a4b2c7c3cedb46330f4d3e5bd
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: dba0474e83c886edcad1101083e45ff39ee222dd
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061716"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300227"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Wyświetl zadania usługi Azure Stream Analytics przy użyciu programu Visual Studio
 
@@ -88,5 +88,5 @@ Połączenia wejściowe i wyjściowe mogą być testowane z **widok zadania** , 
 
 * [Monitorowanie i zarządzanie nimi zadań usługi Azure Stream Analytics przy użyciu programu Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
 * [Szybki Start: Tworzenie zadania usługi Stream Analytics za pomocą programu Visual Studio](stream-analytics-quick-create-vs.md)
-* [Samouczek: Wdrażanie zadania usługi Azure Stream Analytics przy użyciu ciągłej integracji/ciągłego wdrażania przy użyciu usługi VSTS](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Samouczek: Wdrażanie zadania usługi Azure Stream Analytics przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą potoków usługi Azure](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Ciągła integracja i ciągłe opracowywanie za pomocą narzędzi usługi Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

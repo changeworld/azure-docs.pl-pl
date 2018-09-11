@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: ae34355485f7d5081cc11ce4dd36df5ba81ae320
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 82ffcc6f891a64650375121b9418daad33dc2628
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041232"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301699"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testowanie kodu Azure Data Lake Analytics
 
@@ -111,11 +111,11 @@ Po wywołaniu funkcji operatora zdefiniowanego przez użytkownika można sprawdz
 
 Po skompilowaniu projektu testowego wszystkie przypadki testowe można uruchomić jednak **Eksploratora testów > Lista odtwarzania**, lub kliknij prawym przyciskiem myszy plik CS i wybierz pozycję **Uruchom testy**.
 
-## <a name="run-test-cases-in-visual-studio-team-service"></a>Uruchamianie przypadków testowych w Visual Studio Team Service
+## <a name="run-test-cases-in-azure-devops"></a>Uruchamianie przypadków testowych w DevOps platformy Azure
 
-Zarówno **projekty testowe skryptu U-SQL** i **projekty testowe w języku C# operatory zdefiniowane przez użytkownika** dziedziczą projektów testów jednostkowych języka C#. [Zadanie testowe programu Visual Studio](https://docs.microsoft.com/vsts/pipelines/test/getting-started-with-continuous-testing?view=vsts) w Visual Studio Team Services można uruchomić te przypadki testowe. 
+Zarówno **projekty testowe skryptu U-SQL** i **projekty testowe w języku C# operatory zdefiniowane przez użytkownika** dziedziczą projektów testów jednostkowych języka C#. [Zadanie testowe programu Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) DevOps platformy Azure można uruchamiać te przypadki testowe. 
 
-### <a name="run-u-sql-test-cases-in-visual-studio-team-service"></a>Uruchamianie przypadków testowych U-SQL w programie Visual Studio Team Service
+### <a name="run-u-sql-test-cases-in-azure-devops"></a>Uruchamianie przypadków testowych U-SQL w DevOps platformy Azure
 
 Dla testów języka U-SQL, upewnij się, należy załadować `CPPSDK` na komputerze kompilacji, a następnie przekaż `CPPSDK` ścieżkę do USqlScriptTestRunner (cppSdkFolderFullPath: @"").
 
@@ -126,16 +126,16 @@ CPPSDK jest pakiet Microsoft Visual C++ 14 i zestaw Windows SDK 10.0.10240.0. To
 - W przypadku programu Visual Studio 2015 jest w obszarze `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 - W przypadku programu Visual Studio 2017 jest w obszarze `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
 
-**Przygotowanie CPPSDK w agencie kompilacji programu Visual Studio Team Services**
+**Przygotowanie CPPSDK w agencie kompilacji DevOps platformy Azure**
 
-Najczęstszym sposobem przygotowanie zależności CPPSDK w Visual Studio Team Service jest w następujący sposób:
+Najczęstszym sposobem przygotowanie zależności CPPSDK w DevOps platformy Azure jest następująca:
 
 1.  ZIP folder, który zawiera biblioteki CPPSDK.
 2.  Sprawdź w pliku zip, aby system kontroli źródła. (Plik zip zapewnia zaewidencjonować wszystkie biblioteki w folderze CPPSDK tak, aby niektóre pliki nie są ignorowane przez ".gitignore").   
 3.  Rozpakuj plik zip w potoku kompilacji.
 4.  Punkt `USqlScriptTestRunner` do tego folderu rozpakowany na maszynie kompilacji.
 
-### <a name="run-c-udo-test-cases-in-visual-studio-team-services"></a>Uruchamianie przypadków testowych operatory zdefiniowane przez użytkownika języka C# w Visual Studio Team Services
+### <a name="run-c-udo-test-cases-in-azure-devops"></a>Uruchamianie przypadków testowych operatory zdefiniowane przez użytkownika języka C# w DevOps platformy Azure
 
 Dla testów języka C# operatory zdefiniowane przez użytkownika Upewnij się, że odwoływać się do następujących zestawów, które są niezbędne dla obiektów udo. Jeśli odwołujesz się je za pośrednictwem [pakietu Nuget Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), upewnij się, wystarczy dodać zadanie przywracania narzędzia NuGet w potoku kompilacji.
 

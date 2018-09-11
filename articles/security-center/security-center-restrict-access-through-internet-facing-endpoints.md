@@ -1,6 +1,6 @@
 ---
-title: Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure **ograniczyć dostęp za pośrednictwem punktu końcowego internetowy**.
+title: Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Internetu w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: W tym dokumencie przedstawiono sposób realizacji zalecenia w usłudze Azure Security Center **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,54 +9,54 @@ editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363057"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301161"
 ---
-# <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure
-Centrum zabezpieczeń Azure zaleca ograniczyć dostęp za pośrednictwem punkty końcowe skierowane do Internetu, jeśli jakakolwiek z grup zabezpieczeń sieci (NSG) ma co najmniej jednej reguły dla ruchu przychodzącego zezwalających na dostęp z "dowolny" źródłowy adres IP. Otwieranie dostępu do"" może umożliwić atakującemu dostęp do zasobów. Centrum zabezpieczeń zaleca edytowanie tych reguł ruchu przychodzącego, aby ograniczyć dostęp do źródła adresy IP, które faktycznie muszą mieć dostęp.
+# <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Internetu w usłudze Azure Security Center
+Usługa Azure Security Center zaleci, ograniczanie dostępu przez punkty końcowe dostępnego z Internetu, jeśli którakolwiek z sieciowymi grupami zabezpieczeń (NSG) z nich ma co najmniej jedną regułę ruchu przychodzącego zezwalające na dostęp z "Dowolna" źródłowy adres IP. Otwieranie dla "dowolnej" mogą umożliwić osobom atakującym dostęp do zasobów. Usługa Security Center oferuje rekomendacje dotyczące edytowania tych reguł dla ruchu przychodzącego, aby ograniczyć dostęp do źródłowych adresów IP, które faktycznie muszą mieć dostęp.
 
-To zalecenie jest generowany dla dowolnego portu sieci web zawierającej "dowolne" jako źródło.
+To zalecenie jest generowany dla dowolnego portu innego niż w sieci web zawierającej "dowolne" jako źródło.
 
 > [!NOTE]
 > Informacje na temat usługi przedstawiono w tym dokumencie za pomocą przykładowego wdrożenia. Nie jest to przewodnik krok po kroku.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Wykonania zalecenia
-1. W **bloku zalecenia**, wybierz pozycję **ograniczyć dostęp za pośrednictwem punktu końcowego internetowy**.
+## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
+1. W **blok zalecenia**, wybierz opcję **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**.
 
    ![Ogranicz dostęp za pośrednictwem punktu końcowego mającego połączenie z Internetem][1]
-2. Spowoduje to otwarcie bloku **ograniczyć dostęp za pośrednictwem punktu końcowego internetowy**. Ten blok list maszynach wirtualnych (VM) z reguł ruchu przychodzącego, które utworzyć potencjalny problem z zabezpieczeniami. Wybierz maszynę Wirtualną.
+2. Spowoduje to otwarcie bloku **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**. Ten blok zawiera listę maszyn wirtualnych (VM) za pomocą reguł ruchu przychodzącego, które tworzyć potencjalny problem z zabezpieczeniami. Wybierz maszynę Wirtualną.
 
    ![Wybierz maszynę Wirtualną][2]
-3. **NSG** bloku Wyświetla informacje, powiązanych reguł ruchu przychodzącego i skojarzonego VM grupy zabezpieczeń sieci. Wybierz **edytowanie reguły ruchu przychodzącego** kontynuować edytowanie reguły ruchu przychodzącego.
+3. **Sieciowej grupy zabezpieczeń** bloku wyświetlane są informacje, powiązane reguły dla ruchu przychodzącego sieciowej grupy zabezpieczeń i skojarzonej maszyny Wirtualnej. Wybierz **Edytuj reguły dla ruchu przychodzącego** kontynuować edytowanie reguły ruchu przychodzącego.
 
-   ![Blok grupy zabezpieczeń sieci][3]
-4. Na **reguły zabezpieczeń dla ruchu przychodzącego** bloku wybierz regułę ruchu przychodzącego do edycji. W tym przykładzie załóżmy wybierz **AllowWeb**.
+   ![Blok sieciowej grupy zabezpieczeń][3]
+4. Na **reguły zabezpieczeń dla ruchu przychodzącego** bloku Wybierz reguły dla ruchu przychodzącego do edycji. W tym przykładzie wybierzemy **AllowWeb**.
 
-   ![Reguły zabezpieczeń ruchu przychodzącego][4]
+   ![Reguły zabezpieczeń dla ruchu przychodzącego][4]
 
-   Uwaga: Możesz też wybrać **domyślne zasady** wyświetlić zestaw domyślnych reguł zawiera wszystkie grupy NSG. Nie można usunąć reguły domyślne, ale ponieważ mają przypisany o niższym priorytecie, mogą być zastąpione przez tworzone zasady. Dowiedz się więcej o [domyślne zasady](../virtual-network/security-overview.md#default-security-rules).
+   Należy pamiętać, że możesz również wybrać **domyślne reguły** aby zobaczyć zestaw reguł domyślnych zawarte przez wszystkie sieciowe grupy zabezpieczeń. Nie można usunąć reguł domyślnych, ale ponieważ mają przypisany o niższym priorytecie, mogą być zastąpione przez zasady, które tworzysz. Dowiedz się więcej o [domyślne reguły](../virtual-network/security-overview.md#default-security-rules).
 
    ![Reguły domyślne][5]
-5. Na **AllowWeb** bloku, Edytuj właściwości reguły ruchu przychodzącego, aby **źródła** jest adres IP lub blok adresów IP. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły NSG](../virtual-network/security-overview.md#security-rules).
+5. Na **AllowWeb** bloku Edycja właściwości reguły dla ruchu przychodzącego, aby **źródła** jest adres IP lub blok adresów IP. Aby dowiedzieć się więcej na temat właściwości reguły dla ruchu przychodzącego, zobacz [reguły sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules).
 
-   ![Edytowanie reguły ruchu przychodzącego][6]
+   ![Edytuj reguły dla ruchu przychodzącego][6]
 
 ## <a name="see-also"></a>Zobacz także
-W tym artykule przedstawiono sposób wykonania zalecenia Centrum zabezpieczeń "Ograniczanie dostępu za pośrednictwem Internetu połączonej punktu końcowego". Aby dowiedzieć się więcej na temat włączania grup NSG i reguł, zobacz następujące tematy:
+W tym artykule pokazano sposób implementacji zalecenia usługi Security Center "Ogranicz dostęp za pośrednictwem punktu końcowego dostępnego z Internetu". Aby dowiedzieć się więcej na temat włączania sieciowych grup zabezpieczeń i reguł, zobacz następujące tematy:
 
 * [Co to jest sieciowa grupa zabezpieczeń?](../virtual-network/security-overview.md)
-* [Zarządzanie grupy zabezpieczeń sieci](../virtual-network/manage-network-security-group.md)
+* [Zarządzanie sieciową grupę zabezpieczeń](../virtual-network/manage-network-security-group.md)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8ad587f7aa7aeb5b7176e63b52f6dea8286055a6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059225"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296895"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
 
 - Autor bezpośrednio z usługi Data Factory.
-- Tworzenie przy użyciu integrację z usługą Git programu Visual Studio Team Services (VSTS) do współpracy, kontroli źródła lub wersji.
+- Tworzenie przy użyciu integrację z usługą DevOps Git platformy Azure do współpracy, kontroli źródła lub wersji.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Tworzenie bezpośrednio za pomocą usługi Data Factory
-Tworzeniu wizualizacji przy użyciu usługi Data Factory różni się od tworzeniu wizualizacji przy użyciu usługi VSTS na dwa sposoby:
+Tworzeniu wizualizacji przy użyciu usługi Data Factory różni się od tworzeniu wizualizacji przy użyciu DevOps platformy Azure na dwa sposoby:
 
 - Usługa Data Factory nie obejmuje repozytorium do przechowywania obiektów JSON dla Twoich zmian.
 - Usługa Data Factory nie jest zoptymalizowana pod kątem współpracy lub kontroli wersji.
@@ -38,39 +38,39 @@ Jeśli używasz środowiska użytkownika **Kanwa tworzenia** można tworzyć bez
 
 ![Tryb publikowania](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-vsts-git-integration"></a>Tworzenie przy użyciu integracji VSTS Git
-Tworzeniu wizualizacji przy użyciu integracji VSTS Git obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium Git programu VSTS konta na potrzeby kontroli źródła, współpracy, przechowywanie wersji i tak dalej. Na jednym koncie usługi VSTS Git może mieć wiele repozytoriów, ale repozytorium Git usługi VSTS mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta usługi VSTS lub repozytorium, postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) do tworzenia zasobów.
+## <a name="author-with-azure-devops-git-integration"></a>Tworzenie przy użyciu integrację z usługą DevOps Git platformy Azure
+Tworzeniu wizualizacji przy użyciu integrację z usługą DevOps Git platformy Azure obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium organizacji DevOps Git platformy Azure na potrzeby kontroli źródła, współpracy, przechowywanie wersji i tak dalej. Jednej organizacji DevOps Git platformy Azure może mieć wiele repozytoriów, ale repozytorium DevOps Git platformy Azure może być skojarzony z tylko jedną fabryki danych. Jeśli nie masz DevOps platformy Azure organizacji lub repozytorium, postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) do tworzenia zasobów.
 
 > [!NOTE]
-> Skrypt i pliki danych można przechowywać w repozytorium Git usługi VSTS. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie przekazać skrypt lub pliki danych przechowywanych w repozytorium Git usługi VSTS, do usługi Azure Storage.
+> Skrypt i pliki danych można przechowywać w repozytorium DevOps Git platformy Azure. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie Przekaż skrypt lub pliki danych przechowywanych w repozytorium DevOps Git platformy Azure do usługi Azure Storage.
 
-### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium Git usługi VSTS przy użyciu usługi Azure Data Factory
-Repozytorium Git usługi VSTS można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
+### <a name="configure-an-azure-devops-git-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium DevOps Git platformy Azure przy użyciu usługi Azure Data Factory
+Repozytorium DevOps Git platformy Azure można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
 
-#### <a name="method1"></a> Metoda konfiguracji 1 (repozytorium Git programu VSTS): strona zaczynajmy
+#### <a name="method1"></a> Metoda konfiguracji 1 (repozytorium DevOps Git platformy Azure): strona zaczynajmy
 
 W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
 
-![Konfigurowanie repozytorium kodu platformy VSTS](media/author-visually/configure-repo.png)
+![Konfigurowanie repozytorium kodu DevOps platformy Azure](media/author-visually/configure-repo.png)
 
 **Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
 
 ![Konfigurowanie ustawień repozytorium kodu](media/author-visually/repo-settings.png)
 
-W okienku wyświetlana następujący kod usługi VSTS ustawień repozytorium:
+W okienku wyświetlana następujący kod DevOps platformy Azure ustawień repozytorium:
 
 | Ustawienie | Opis | Wartość |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu platformy VSTS.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwane. | Program Visual Studio Team Services i Git |
+| **Typ repozytorium** | Typ repozytorium kodu DevOps platformy Azure.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwane. | Usługa Azure Dev Ops Git |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | <your tenant name> |
-| **Konto programu Visual Studio Team Services** | Nazwa konta usługi VSTS. Możesz znaleźć nazwę swojego konta usługi VSTS w `https://{account name}.visualstudio.com`. Możesz [Zaloguj się do konta usługi VSTS](https://www.visualstudio.com/team-services/git/) dostęp do Twojego profilu programu Visual Studio i zobacz projektów i repozytoriów. | <your account name> |
-| **ProjectName** | Nazwa projektu usługi VSTS. Możesz znaleźć, jeśli nazwa projektu usługi VSTS w `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
-| **RepositoryName** | Nazwa repozytorium usługi VSTS kodu. Projekty usługi VSTS zawierają repozytoriów Git do zarządzania kodem źródłowym, wraz ze wzrostem natężenia projektu. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już w projekcie. | <your VSTS code repository name> |
-| **Gałąź współpracy** | Gałęzi współpracy usługi VSTS, które jest używane do publikowania. Domyślnie jest `master`. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | <your collaboration branch name> |
-| **Folder główny** | Folderem w gałęzi współpracy usługi VSTS. | <your root folder name> |
-| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium Git usługi VSTS. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
+| **Organizacja DevOps platformy Azure** | Nazwa organizacji DevOps platformy Azure. Możesz znaleźć, jeśli nazwa organizacji DevOps platformy Azure w `https://{organization name}.visualstudio.com`. Możesz [Zaloguj się do Twojej organizacji DevOps platformy Azure](https://www.visualstudio.com/team-services/git/) dostęp do Twojego profilu programu Visual Studio i zobacz projektów i repozytoriów. | <your organization name> |
+| **ProjectName** | Nazwa projektu DevOps platformy Azure. Możesz znaleźć, jeśli nazwa projektu DevOps platformy Azure w `https://{organization name}.visualstudio.com/{project name}`. | <your Azure DevOps project name> |
+| **RepositoryName** | Nazwę repozytorium kodu DevOps platformy Azure. Funkcja Azure DevOps projects zawierają repozytoriów Git do zarządzania kodem źródłowym, wraz ze wzrostem natężenia projektu. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już w projekcie. | <your Azure DevOps code repository name> |
+| **Gałąź współpracy** | Gałąź współpracy DevOps platformy Azure, który służy do publikowania. Domyślnie jest `master`. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | <your collaboration branch name> |
+| **Folder główny** | Folderem w gałęzi współpracy DevOps platformy Azure. | <your root folder name> |
+| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium DevOps Git platformy Azure. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 
-#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (repozytorium Git programu VSTS): UX Kanwa tworzenia
+#### <a name="configuration-method-2--azure-devops-git-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (repozytorium DevOps Git platformy Azure): UX Kanwa tworzenia
 W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
 
 Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w <a href="#method1">metody konfiguracji 1</a>.
@@ -79,7 +79,7 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 ## <a name="use-a-different-azure-active-directory-tenant"></a>Użyj innej dzierżawy usługi Azure Active Directory
 
-Repozytorium Git programu VSTS można utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
+Repozytorium DevOps Git platformy Azure można utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
 
 ## <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
 
@@ -92,11 +92,11 @@ Po usunięciu skojarzenia z bieżącego repozytorium, można skonfigurować usta
 ## <a name="use-version-control"></a>Korzystanie z kontroli wersji
 Systemy kontroli wersji (znany także jako _kontroli źródła_) umożliwiają deweloperom współpracować nad kodu i śledzenie zmian wprowadzonych do kodu podstawowego. Kontrola źródła jest niezbędnego narzędzia dla deweloperów wielu projektów.
 
-Każde repozytorium Git usługi VSTS, która jest skojarzona z fabryką danych ma gałąź pracy zespołowej. (`master` to gałąź domyślna współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając **+ nowa gałąź** i Programowanie w gałęzie funkcji.
+Każde repozytorium DevOps Git platformy Azure, która jest skojarzona z fabryką danych ma gałąź pracy zespołowej. (`master` to gałąź domyślna współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając **+ nowa gałąź** i Programowanie w gałęzie funkcji.
 
 ![Zmień kod, synchronizowanie i publikowania](media/author-visually/sync-publish.png)
 
-Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz kliknąć **Utwórz żądanie ściągnięcia**. Tej akcji wykonywanych VSTS Git, w którym można podnieść, żądaniach ściągnięcia, przeglądy kodu i scalania zmian w gałęzi współpracy. (`master` jest ustawieniem domyślnym). Tylko możesz opublikować w usłudze Data Factory ze swojej gałęzi współpracy. 
+Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz kliknąć **Utwórz żądanie ściągnięcia**. Tej akcji wykonywanych DevOps Git platformy Azure, w którym można podnieść, żądaniach ściągnięcia, przeglądy kodu i scalania zmian w gałęzi współpracy. (`master` jest ustawieniem domyślnym). Tylko możesz opublikować w usłudze Data Factory ze swojej gałęzi współpracy. 
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
@@ -140,11 +140,11 @@ W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konf
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image2.png)
 
-W okienku wyświetlana następujący kod usługi VSTS ustawień repozytorium:
+W okienku wyświetlana następujący kod DevOps platformy Azure ustawień repozytorium:
 
 | **Ustawienie**                                              | **Opis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wartość**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ repozytorium**                                      | Typ repozytorium kodu platformy VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **Typ repozytorium**                                      | Typ repozytorium kodu DevOps platformy Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi GitHub do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | Nazwa repozytorium usługi GitHub kodu. Konta usługi GitHub zawierają repozytoriów Git do zarządzania kodem źródłowym. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już na Twoim koncie.                                                                                                                                                                                                                              |                    |
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
@@ -172,11 +172,11 @@ W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konf
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image3.png)
 
-W okienku wyświetlana następujący kod usługi VSTS ustawień repozytorium:
+W okienku wyświetlana następujący kod DevOps platformy Azure ustawień repozytorium:
 
 | **Ustawienie**                                              | **Opis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wartość**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ repozytorium**                                      | Typ repozytorium kodu platformy VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **Typ repozytorium**                                      | Typ repozytorium kodu DevOps platformy Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Użyj GitHub Enterprise**                                | Pole wyboru, aby GitHub Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **Adres URL GitHub Enterprise**                                | GitHub Enterprise głównego adresu URL. Na przykład: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
 | **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi GitHub do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |

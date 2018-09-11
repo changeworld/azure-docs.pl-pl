@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7e555eb2618dbebf939fe0ab2f313b88299cd2d0
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931994"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346206"
 ---
 # <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
@@ -37,44 +37,44 @@ Istnieją trzy możliwe architektury dla dostawców usług dotyczących obszaró
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Rozproszone — dzienniki są przechowywane w obszarach roboczych znajdujących się w dzierżawie klienta 
 
-W ramach tej architektury obszar roboczy jest wdrażany w dzierżawie klienta, używany dla wszystkich dzienników z tego klienta. Administratorzy dostawcy usług mają dostęp do tego obszaru roboczego przy użyciu [użytkowników-gości usługi Azure Active Directory (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). Administrator dostawcy usług musi przełączyć się w witrynie Azure portal do katalogu swoich klientów, aby można było uzyskać dostęp z te obszary robocze.
+W ramach tej architektury obszar roboczy jest wdrażany w dzierżawie klienta, używany dla wszystkich dzienników z tego klienta. Administratorzy dostawcy usług mają dostęp do tego obszaru roboczego przy użyciu [użytkowników-gości usługi Azure Active Directory (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). Administratorzy dostawcy usług musi przełączyć się do katalogu swoich klientów w witrynie Azure portal, aby mieć możliwość dostępu do tych obszarów roboczych.
 
 Zalety tej architekturze są następujące:
 * Klient może zarządzać dostępem do dzienników przy użyciu ich własnych [dostępu opartej na rolach](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
 * Każdy klient może mieć różne ustawienia dla ich obszarze roboczym, takich jak przechowywanie i danych są takie same.
 * Izolację między klientów przepisów i zgodności.
 * Opłaty za każdy obszar roboczy zostanie wycofana do subskrypcji klienta.
-* Dzienniki mogą być zbierane z wszystkich typów zasobów, nie tylko oparte na agentach. Na przykład przeprowadzanie inspekcji platformy Azure.
+* Dzienniki mogą być zbierane z wszystkich typów zasobów, nie tylko oparte na agentach. Na przykład dzienników inspekcji platformy Azure.
 
 Dostępne są następujące wady tej architektury:
 * Jest trudniejsze dla dostawcy usług do zarządzania dużą liczbą dzierżaw klientów jednocześnie.
-* Administratorzy dostawcy usług mają być przygotowana do katalogu klienta.
+* Administratorzy dostawcy usług mają do udostępnienia w katalogu klienta.
 * Dostawca usług nie mogą analizować dane w swoim klientom.
 
-### <a name="2-central---logs-are-stored-in-workspace-located-in-the-service-provider-tenant"></a>2. Środkowo - dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie dostawca usługi
+### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Środkowo - dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie dostawca usługi
 
 W tej architekturze dzienniki nie są przechowywane w dzierżawach klienta, ale tylko w centralnej lokalizacji, w ramach jednej subskrypcji do dostawcy usług. Agenci, którzy są instalowane na maszynach wirtualnych klienta są skonfigurowane do wysyłania dzienników do tego obszaru roboczego za pomocą Identyfikatora obszaru roboczego i klucz tajny.
 
 Zalety tej architekturze są następujące:
 * To ułatwia zarządzanie dużą liczbą klientów i zintegrowanie ich do różnych systemów zaplecza.
 * Dostawcy usług mają pełne prawa własności w zakresie dzienników oraz różnych artefaktów, takich jak funkcje i zapisane kwerendy.
-* Usługodawcy mogą wykonywać analizy dla wszystkich klientów.
+* Usługodawcy mogą wykonywać analizy we wszystkich jej klientów.
 
 Dostępne są następujące wady tej architektury:
 * Ta architektura ma zastosowanie tylko do danych opartej o agentów maszyny Wirtualnej, nie zapewnią źródeł danych sieci szkieletowej PaaS i SaaS oraz platformy Azure.
 * Może być trudny do oddzielania danych od klientów, gdy są one scalane w jeden obszar roboczy. Jedynym dobrym metody, w tym celu jest użycie komputera w pełni kwalifikowaną nazwę domeny (FQDN) lub za pośrednictwem subskrypcji platformy Azure identyfikatora. 
 * Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie, z jednym rachunku i te same ustawienia przechowywania i konfiguracji.
-* Sieci szkieletowej platformy Azure i usług PaaS usług, takich jak usługi Azure Diagnostics i inspekcji platformy Azure wymaga obszar, aby być w tej samej dzierżawie, co zasób związku z tym nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
+* Sieci szkieletowej platformy Azure i usług PaaS usług, takich jak usługi Azure Diagnostics i dzienników inspekcji platformy Azure wymaga obszar, aby być w tej samej dzierżawie, co zasób, dlatego nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
 * Wszyscy agenci maszyn wirtualnych z wszystkich klientów będzie odbywać się przy użyciu tego samego Identyfikatora obszaru roboczego i klucz obszaru roboczego cental. Nie istnieje metoda blokowania dzienników z określonego klienta bez przerywania pracy innych klientów.
 
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybrydowe — dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie klienta, a niektóre z nich są pobierane w centralnej lokalizacji.
 
-Architektura trzeci łączyć się z dwóch opcji. Jest on oparty na pierwszym architektura rozproszona, gdzie dzienniki są lokalne w poszczególnych klientów, ale tworzenie centralne repozytorium dzienników przy użyciu mechanizmu. Część dzienników jest pobierane do centralnej lokalizacji w celu raportowania i analizy. Ta część może być małą liczbą typów danych lub podsumowanie działań, takich jak statystyka dzienny.
+Architektura trzeci łączyć się z dwóch opcji. Jest on oparty na pierwszym architektura rozproszona, gdzie dzienniki są lokalne w poszczególnych klientów, ale tworzenie centralne repozytorium dzienników przy użyciu mechanizmu. Część dzienników jest pobierane do centralnej lokalizacji w celu raportowania i analizy. Ta część może być małą liczbą typów danych lub podsumowanie działań, takich jak statystyki dzienny.
 
 Dostępne są dwie opcje do zaimplementowania centralnej lokalizacji w usłudze Log Analytics:
 
-1. Centralny obszar roboczy: dostawca usług można utworzyć obszaru roboczego w jego dzierżawie i użyć skryptu, który korzysta z [interfejsu API zapytań](https://dev.loganalytics.io/) z [interfejsu API zbierania danych](log-analytics-data-collector-api.md) do przenoszenia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu jest użycie [aplikacji logiki platformy Azure](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Centralny obszar roboczy: dostawca usług można utworzyć obszaru roboczego w jego dzierżawie i użyć skryptu, który korzysta z [interfejsu API zapytań](https://dev.loganalytics.io/) z [interfejsu API zbierania danych](log-analytics-data-collector-api.md) do przenoszenia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu, jest użycie [usługi Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
 
 2. Usługa Power BI jako centralnej lokalizacji: Usługa Power BI może działać jako centralnej lokalizacji, różne obszary robocze eksportowania danych do niego przy użyciu integrację między usługami Log Analytics i [usługi Power BI](log-analytics-powerbi.md). 
 

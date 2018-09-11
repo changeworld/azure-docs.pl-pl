@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445664"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347039"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi administracyjnej użytkowników (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ Celem tego samouczka jest Wam czynności, które należy wykonać, aby zaimporto
 
 ## <a name="overview"></a>Przegląd
 
-[Usługa aprowizowania użytkowników w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md) integruje się z [interfejsu API zarządzania zasobami ludzkimi Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) w celu dostarczania kont użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujący użytkownik przepływy pracy aprowizacji:
+[Usługa aprowizowania użytkowników w usłudze Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [interfejsu API zarządzania zasobami ludzkimi Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) w celu dostarczania kont użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujący użytkownik przepływy pracy aprowizacji:
 
 * **Inicjowanie obsługi administracyjnej użytkowników do usługi Active Directory** — Synchronizuj wybrane zestawy użytkowników z produktu Workday do przynajmniej jednej lasów usługi Active Directory.
 
@@ -39,13 +39,13 @@ Celem tego samouczka jest Wam czynności, które należy wykonać, aby zaimporto
 
 Dzień roboczy użytkownika inicjowania obsługi administracyjnej przepływów pracy obsługiwanych przez usługę aprowizacji użytkownika usługi Azure AD pozwalają na automatyzację następujących zasobów ludzkich i scenariuszy zarządzania cyklem życia tożsamości:
 
-* **Zatrudniania nowych pracowników** — po dodaniu nowego pracownika w produkcie Workday, konto użytkownika zostanie automatycznie utworzone w usłudze Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../active-directory-saas-app-provisioning.md), przy użyciu zapisywania zwrotnego adresu e-mail w produkcie Workday.
+* **Zatrudniania nowych pracowników** — po dodaniu nowego pracownika w produkcie Workday, konto użytkownika zostanie automatycznie utworzone w usłudze Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md), przy użyciu zapisywania zwrotnego adresu e-mail w produkcie Workday.
 
-* **Aktualizacje atrybutu i profilu pracownika** — po zaktualizowaniu rekordu pracownika w produkcie Workday (np. ich nazwy, tytułu lub Menedżer), ich konta użytkownika zostaną automatycznie zaktualizowane w usłudze Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../active-directory-saas-app-provisioning.md).
+* **Aktualizacje atrybutu i profilu pracownika** — po zaktualizowaniu rekordu pracownika w produkcie Workday (np. ich nazwy, tytułu lub Menedżer), ich konta użytkownika zostaną automatycznie zaktualizowane w usłudze Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
 
-* **Liczba przerwanych pracowników** — w przypadku zakończenia pracownika w produkcie Workday, ich konta użytkownika jest automatycznie wyłączana w usługi Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez platformę Azure Usługi AD](../active-directory-saas-app-provisioning.md).
+* **Liczba przerwanych pracowników** — w przypadku zakończenia pracownika w produkcie Workday, ich konta użytkownika jest automatycznie wyłączana w usługi Active Directory, Azure Active Directory i, opcjonalnie, usługi Office 365 i [innych aplikacji SaaS obsługiwane przez platformę Azure Usługi AD](../manage-apps/user-provisioning.md).
 
-* **Pracownik ponownie zatrudnienie** — gdy pracownik jest rehired w produkcie Workday, ich starego konta mogą zostać automatycznie ponownie uaktywnione lub ponownie zainicjowano obsługę administracyjną (w zależności od Twojego preferencji) do usługi Active Directory, Azure Active Directory i opcjonalnie usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../active-directory-saas-app-provisioning.md).
+* **Pracownik ponownie zatrudnienie** — gdy pracownik jest rehired w produkcie Workday, ich starego konta mogą zostać automatycznie ponownie uaktywnione lub ponownie zainicjowano obsługę administracyjną (w zależności od Twojego preferencji) do usługi Active Directory, Azure Active Directory i opcjonalnie usługi Office 365 i [innych aplikacji SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Kto jest ten użytkownik rozwiązanie do aprowizowania najlepsze dostosowane do?
 
@@ -327,7 +327,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
          * **Stałe** -zapisu wartość statyczne, stała ciągu atrybutu usługi AD
 
-         * **Wyrażenie** — pozwala na zapis niestandardową wartość do atrybutu usługi AD na podstawie co najmniej jeden dzień roboczy atrybutów. [Aby uzyskać więcej informacji znajduje się w artykule na wyrażeniach](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+         * **Wyrażenie** — pozwala na zapis niestandardową wartość do atrybutu usługi AD na podstawie co najmniej jeden dzień roboczy atrybutów. [Aby uzyskać więcej informacji znajduje się w artykule na wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
 
       * **Atrybut źródłowy** — atrybut użytkownika z produktu Workday. Jeśli nie ma atrybut, którego szukasz, zobacz [Dostosowywanie listy atrybutów użytkownika w produkcie Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -356,7 +356,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
 -   Atrybut userPrincipalName w usłudze Active Directory jest generowana przez połączenie Identyfikatora użytkownika Workday sufiksu domeny
 
--   [Dokumentacja na temat pisania wyrażeń w tym miejscu jest](../active-directory-saas-writing-expressions-for-attribute-mappings.md). Obejmuje to przykłady Usuń znaki specjalne.
+-   [Dokumentacja na temat pisania wyrażeń w tym miejscu jest](../manage-apps/functions-for-customizing-application-data.md). Obejmuje to przykłady Usuń znaki specjalne.
 
   
 | ATRYBUT WORKDAY | ATRYBUT USŁUGI ACTIVE DIRECTORY |  ZGODNYM IDENTYFIKATOREM? | TWORZENIE I AKTUALIZOWANIE |
@@ -490,7 +490,7 @@ Po ukończeniu części 1 – 3 można uruchomić usługi aprowizacji w witrynie
 
 3. Spowoduje to uruchomienie synchronizacji początkowej, co może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w produkcie Workday.
 
-4. W każdej chwili sprawdzić **dzienniki inspekcji** kartę w witrynie Azure portal, aby zobaczyć, jakie akcje przeprowadził usługi aprowizacji. Dzienniki inspekcji zawiera listę wszystkich zdarzeń indywidualnych synchronizacji, wykonywane przez usługę aprowizacji, np użytkowników ich odczytu z produktu Workday i następnie później dodane lub zaktualizowane w usłudze Active Directory. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../active-directory-saas-provisioning-reporting.md)**
+4. W każdej chwili sprawdzić **dzienniki inspekcji** kartę w witrynie Azure portal, aby zobaczyć, jakie akcje przeprowadził usługi aprowizacji. Dzienniki inspekcji zawiera listę wszystkich zdarzeń indywidualnych synchronizacji, wykonywane przez usługę aprowizacji, np użytkowników ich odczytu z produktu Workday i następnie później dodane lub zaktualizowane w usłudze Active Directory. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../manage-apps/check-status-user-account-provisioning.md)**
 
 1.  Sprawdź [dziennika zdarzeń Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) na komputerze z serwerem Windows uruchomiony jest agent pod kątem nowych błędów lub ostrzeżeń. Te zdarzenia są widoczne, uruchamiając **Eventvwr.msc** na serwerze i wybierając polecenie **Dzienniki Windows > Aplikacja**. Wszystkie wiadomości dotyczące inicjowania obsługi administracyjnej są rejestrowane w lokalizacji source **AADSyncAgent**.
 
@@ -581,7 +581,7 @@ W tej sekcji skonfigurujesz, jak użytkownik przepływu danych z produktu Workda
 
       * **Stałe** -zapisu wartość statyczne, stała ciągu atrybutu usługi AD
 
-      * **Wyrażenie** — pozwala na zapis niestandardową wartość do atrybutu usługi AD na podstawie co najmniej jeden dzień roboczy atrybutów. [Aby uzyskać więcej informacji znajduje się w artykule na wyrażeniach](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+      * **Wyrażenie** — pozwala na zapis niestandardową wartość do atrybutu usługi AD na podstawie co najmniej jeden dzień roboczy atrybutów. [Aby uzyskać więcej informacji znajduje się w artykule na wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
 
    * **Atrybut źródłowy** — atrybut użytkownika z produktu Workday. Jeśli nie ma atrybut, którego szukasz, zobacz [Dostosowywanie listy atrybutów użytkownika w produkcie Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -611,7 +611,7 @@ Po ukończeniu części 1 – 2 można uruchomić usługi aprowizacji.
 
 3. Spowoduje to uruchomienie synchronizacji początkowej, co może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w produkcie Workday.
 
-4. Synchronizuj poszczególne zdarzenia mogą być wyświetlane w **dzienników inspekcji** kartę. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../active-directory-saas-provisioning-reporting.md)**
+4. Synchronizuj poszczególne zdarzenia mogą być wyświetlane w **dzienników inspekcji** kartę. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Jeden ukończone, będą zapisywane podsumowania raport dotyczący inspekcji **aprowizacji** karty, jak pokazano poniżej.
 
@@ -669,7 +669,7 @@ Po ukończeniu części 1 – 2 można uruchomić usługi aprowizacji.
 
 3. Spowoduje to uruchomienie synchronizacji początkowej, co może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w produkcie Workday.
 
-4. Synchronizuj poszczególne zdarzenia mogą być wyświetlane w **dzienników inspekcji** kartę. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../active-directory-saas-provisioning-reporting.md)**
+4. Synchronizuj poszczególne zdarzenia mogą być wyświetlane w **dzienników inspekcji** kartę. **[Zobacz Przewodnik po raportowaniu inicjowania obsługi administracyjnej szczegółowe instrukcje dotyczące sposobu odczytywania dzienników inspekcji](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Jeden ukończone, będą zapisywane podsumowania raport dotyczący inspekcji **aprowizacji** karty, jak pokazano poniżej.
 
@@ -808,7 +808,7 @@ Workday, inicjowanie obsługi administracyjnej rozwiązania dla usługi Active D
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../active-directory-saas-provisioning-reporting.md)
+* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 * [Dowiedz się, jak skonfigurować logowanie jednokrotne między produktem Workday i Azure Active Directory](workday-tutorial.md)
 * [Dowiedz się, jak zintegrować innych aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 

@@ -9,13 +9,13 @@ manager: mbaldwin
 ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.openlocfilehash: fd3a16841e9d3c9b8bfd9b0f53c42ad1e08b3d80
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.topic: conceptual
+ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345055"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295008"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault
 
@@ -61,11 +61,11 @@ Oto lista zaufanych usług, które mogą uzyskać dostęp do magazynu kluczy, gd
 |Usługa wdrażania Azure Virtual Machines|[Wdrażanie certyfikatów na maszynach wirtualnych z zarządzanego przez klienta usługi Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)|
 |Usługa wdrażania szablonów Azure Resource Manager|[Przekazywanie bezpiecznych wartości podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md)|
 |Usługa szyfrowania woluminów Azure Disk Encryption|Zezwalaj na dostęp do klucza funkcji BitLocker (systemu Windows Windows VM) lub DM hasło (maszyny Wirtualnej systemu Linux), a także klucz szyfrowania klucza podczas wdrażania maszyny Wirtualnej, aby umożliwić [usługi Azure Disk Encryption](../security/azure-security-disk-encryption.md)|
-|Usługa Azure Backup|Zezwalaj na kopie zapasowe i przywracanie odpowiednich kluczy i wpisów tajnych podczas tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure, za pomocą [kopia zapasowa Azure](../backup/backup-introduction-to-azure-backup.md)|
+|Azure Backup|Zezwalaj na kopie zapasowe i przywracanie odpowiednich kluczy i wpisów tajnych podczas tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure, za pomocą [kopia zapasowa Azure](../backup/backup-introduction-to-azure-backup.md)|
 |Usługa Exchange Online i SharePoint Online|Zezwalaj na dostęp do klucz klienta dla usługi szyfrowania przy użyciu [klucz klienta](https://support.office.com/en-us/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|Zezwalaj na dostęp do klucza dzierżawy do [usługi Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |App Services|[Wdrażanie certyfikatu aplikacji sieci Web platformy Azure za pośrednictwem usługi Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)|
-|SQL Azure|[Transparent Data Encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database i Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|
+|Azure SQL|[Transparent Data Encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database i Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|
 |Azure Storage|[Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md)|
 |Azure Data Lake Store|[Szyfrowanie danych w usłudze Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) klientów zarządzanych klucza|
 

@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
+ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576189"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297251"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Przywracanie plików do maszyny z systemem Windows Server lub Client przy użyciu modelu wdrażania używającego usługi Resource Manager
 
@@ -54,6 +54,9 @@ Jeśli przypadkowo usunięty plik i ma zostać przywrócony na tym samym kompute
 > [!IMPORTANT]
 > Możliwość przywrócenia *pojedyncze pliki i foldery* wymaga programu .NET Framework 4.5.2 lub nowszej. Jeśli nie widzisz *pojedyncze pliki i foldery* opcji, należy uaktualnić .NET Framework w wersji 4.5.2 lub nowszej, a następnie spróbuj ponownie.
 
+> [!TIP]
+> *Pojedyncze pliki i foldery* opcja umożliwia szybkie uzyskiwanie dostępu do danych punktu odzyskiwania. Jest ona odpowiednia dla odzyskiwania pojedynczych plików o rozmiarze, co daje łącznie nie więcej niż 80 GB, rozmiar i ofert przenoszenia/kopiowania przyspiesza maksymalnie 6 MB/s, podczas odzyskiwania. *Woluminu* opcji odzyskuje wszystkie kopie zapasowe danych w danym woluminie. Ta opcja zapewnia szybkość transferu (maksymalnie 60 MB/s), co jest idealnym rozwiązaniem dla odzyskiwania dużych rozmiarach danych lub całe woluminy.
+
 5. Na **Wybierz wolumin i datę** okienku, wybierz wolumin, który zawiera pliki i/lub foldery, które mają zostać przywrócone.
 
     W kalendarzu wybierz punkt odzyskiwania. Dowolny punkt odzyskiwania można przywrócić w czasie. Daty **bold** wskazującą dostępność co najmniej jeden punkt odzyskiwania. Po wybraniu daty, jeśli dostępnych jest wiele punktów odzyskiwania, należy wybrać określony punkt odzyskiwania z **czasu** menu rozwijanego.
@@ -72,6 +75,7 @@ Jeśli przypadkowo usunięty plik i ma zostać przywrócony na tym samym kompute
 8. W Eksploratorze Windows skopiuj pliki i/lub foldery, które chcesz przywrócić i wklej je do dowolnej lokalizacji lokalnej na serwerze lub komputerze. Można otworzyć lub przesyłanie strumieniowe plików bezpośrednio z poziomu woluminu odzyskiwania i sprawdź, czy są odzyskiwane poprawne wersje.
 
     ![Skopiuj i Wklej pliki i foldery z zainstalowanego woluminu do lokalizacji lokalnej](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
 
 9. Po zakończeniu przywracania plików i/lub folderów, na **przeglądanie i odzyskiwanie plików** okienku kliknij **Odinstaluj**. Następnie kliknij przycisk **tak** aby upewnić się, że chcesz odinstalować wolumin.
 

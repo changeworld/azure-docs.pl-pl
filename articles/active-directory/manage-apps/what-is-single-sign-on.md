@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: d17b5967519bc51e4fb33a410149d17c82c28d10
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052772"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347991"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
@@ -89,7 +89,7 @@ Wybierz aplikacje usługi Azure AD umożliwia automatyczne użytkownika aprowiza
 
 Gdy użytkownik zostanie usunięty lub jego informacje zmian w usłudze Azure AD, tych zmian również są odzwierciedlane w aplikacji SaaS. Oznacza to, że zarządzanie cyklem życia tożsamości automatyczne konfigurowanie umożliwia administratorom sterować i zapewnić zautomatyzowaną aprowizację i cofanie aprowizacji w aplikacjach SaaS. W usłudze Azure AD ta Automatyzacja zarządzania cyklem życia tożsamości jest włączane przez Inicjowanie obsługi użytkowników.
 
-Aby dowiedzieć się więcej, zobacz [automatyczna Aprowizacja użytkowników i anulowania zastrzeżenia do aplikacji SaaS](../active-directory-saas-app-provisioning.md)
+Aby dowiedzieć się więcej, zobacz [automatyczna Aprowizacja użytkowników i anulowania zastrzeżenia do aplikacji SaaS](user-provisioning.md)
 
 ## <a name="get-started-with-the-azure-ad-application-gallery"></a>Rozpoczynanie pracy z galerii aplikacji usługi Azure AD
 Chcesz zacząć? Do wdrożenia logowania jednokrotnego między usługą Azure AD oraz aplikacje SaaS, które Twoja organizacja używa, przestrzegać następujących wytycznych.
@@ -109,7 +109,7 @@ Po znalezieniu aplikacji, możesz rozpocząć zgodnie z instrukcjami krok po kro
 ### <a name="application-not-in-the-gallery"></a>Aplikacja nie ma w galerii?
 Jeśli aplikacja nie zostanie znaleziony w galerii aplikacji usługi Azure AD, masz następujące opcje:
 
-* **Dodaj aplikację spoza listy używasz** — kategoria niestandardowe w galerii aplikacji w witrynie Azure portal umożliwia łączenie nieznajdujące się na liście aplikacji, które Twoja organizacja używa. Możesz dodać dowolnej aplikacji, który obsługuje SAML 2.0 jako aplikacji federacyjnych lub dowolnej aplikacji, który jest oparty na języku HTML strony logowania jako hasło logowania jednokrotnego aplikacji. Aby uzyskać więcej informacji znajduje się w artykule na [Dodawanie własnych aplikacji](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
+* **Dodaj aplikację spoza listy używasz** — kategoria niestandardowe w galerii aplikacji w witrynie Azure portal umożliwia łączenie nieznajdujące się na liście aplikacji, które Twoja organizacja używa. Możesz dodać dowolnej aplikacji, który obsługuje SAML 2.0 jako aplikacji federacyjnych lub dowolnej aplikacji, który jest oparty na języku HTML strony logowania jako hasło logowania jednokrotnego aplikacji. Aby uzyskać więcej informacji znajduje się w artykule na [Dodawanie własnych aplikacji](configure-federated-single-sign-on-non-gallery-applications.md).
 * **Dodaj własną aplikację, tworzysz** — Jeśli opracowano aplikację samodzielnie, postępuj zgodnie z wytycznymi podanymi w dokumentacji dla deweloperów usługi Azure AD, aby zaimplementować federacyjnego logowania jednokrotnego lub interfejs API programu graph aprowizacji przy użyciu usługi Azure AD. Aby uzyskać więcej informacji zobacz następujące zasoby:
   
   * [Scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md)

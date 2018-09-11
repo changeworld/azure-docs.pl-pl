@@ -11,15 +11,15 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 4561b343fa15346388572a70616840be0dd06679
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095491"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301552"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
-Usługa Azure Functions sprawia, że można łatwo wdrożyć aplikację funkcji przy użyciu ciągłej integracji usługi App Service. Functions można integrować z usług BitBucket, Dropbox, GitHub i Visual Studio Team Services (VSTS). Dzięki temu przepływu pracy gdzie kod funkcji aktualizacje wprowadzone przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, skorzystaj z [Azure Functions — omówienie](functions-overview.md).
+Usługa Azure Functions sprawia, że można łatwo wdrożyć aplikację funkcji przy użyciu ciągłej integracji usługi App Service. Functions można integrować z usług BitBucket, Dropbox, GitHub i DevOps platformy Azure. Dzięki temu przepływu pracy gdzie kod funkcji aktualizacje wprowadzone przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, skorzystaj z [Azure Functions — omówienie](functions-overview.md).
 
 Ciągłe wdrażanie to doskonałe rozwiązanie dla projektów, w których ma miejsce częste współtworzenie wielu treści. Umożliwia także Obsługa kontroli źródła nad kodem funkcji. Obecnie obsługiwane są następujące źródła wdrożenia:
 
@@ -29,7 +29,7 @@ Ciągłe wdrażanie to doskonałe rozwiązanie dla projektów, w których ma mie
 * [Lokalne repozytorium Git](../app-service/app-service-deploy-local-git.md)
 * [GitHub](https://github.com)
 * [Usługi OneDrive](https://onedrive.live.com/)
-* [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
+* [Usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/)
 
 Wdrożenia są konfigurowane dla poszczególnych funkcji aplikacji. Po włączeniu ciągłego wdrażania, dostęp do kodu funkcji w portalu jest ustawiona na *tylko do odczytu*.
 
@@ -39,10 +39,10 @@ Konieczne jest posiadanie źródła wdrożenia skonfigurowane, a kod funkcji w �
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Aby można było wdrożyć z poziomu usługi VSTS, najpierw trzeba połączyć konto usługi VSTS z subskrypcją platformy Azure. Aby uzyskać więcej informacji, zobacz [skonfiguruj rozliczenia dla konta usługi VSTS](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
+Aby można było wdrożyć z DevOps platformy Azure, musisz połączyć organizacji DevOps platformy Azure z subskrypcją platformy Azure. Aby uzyskać więcej informacji, zobacz [skonfiguruj rozliczenia dla Twojej organizacji DevOps platformy Azure](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Konfigurowanie ciągłego wdrażania
-Użyj tej procedury, aby skonfigurować ciągłe wdrażanie dla istniejącej aplikacji funkcji. Te kroki pokazują, integracja z repozytorium GitHub, ale podobne kroki mają zastosowanie dla Visual Studio Team Services lub innych usług wdrożenia.
+Użyj tej procedury, aby skonfigurować ciągłe wdrażanie dla istniejącej aplikacji funkcji. Te kroki pokazują, integracja z repozytorium GitHub, ale podobne kroki mają zastosowanie dla DevOps platformy Azure lub innych usług wdrożenia.
 
 1. W aplikacji funkcji w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **funkcje platformy** i **opcje wdrażania**. 
    
