@@ -1,116 +1,123 @@
+items:
 - name: Dokumentacja monitorowania na platformie Azure
   href: index.md
 - name: Omówienie
   items:
-    - name: Monitorowanie na platformie Azure
-      href: monitoring-overview.md
+  - name: Monitorowanie na platformie Azure
+    href: monitoring-overview.md
 - name: Usługi udostępnione
   items:
-    - name: Generowanie alertów
-      items:
-        - name: Alerty platformy Azure
-          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Grupy akcji
-          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Importowanie alertów programu Operations Manager
-          href: ../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Generowanie alertów
+    items:
+    - name: Alerty platformy Azure
+      href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Grupy akcji
+      href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Importowanie alertów programu Operations Manager
+      href: ../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Automatyczne skalowanie
+    items:
     - name: Automatyczne skalowanie
-      items:
-        - name: Automatyczne skalowanie
-          href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=%2fazure%2fmonitoring%2ftoc.json
+      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Metryki
+    items:
     - name: Metryki
-      items:
-        - name: Metryki
-          href: ../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Dzienniki
-      items:
-        - name: Dzienniki aktywności
-          href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Dzienniki diagnostyczne
-          href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Zbieranie dzienników z różnych subskrypcji platformy Azure
-          href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+      href: ../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Dzienniki
+    items:
+    - name: Dzienniki aktywności
+      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Dzienniki diagnostyczne
+      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Zbieranie dzienników z różnych subskrypcji platformy Azure
+      href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
 - name: Dane monitorowania
   items:
-    - name: Typy danych i narzędzia do analizy
-      href: monitoring-data-collection.md
-    - name: Źródła danych monitorowania platformy Azure
-      href: monitoring-data-sources.md
+  - name: Typy danych i narzędzia do analizy
+    href: monitoring-data-collection.md
+  - name: Źródła danych monitorowania platformy Azure
+    href: monitoring-data-sources.md
 - name: Monitorowanie zasobów
   items:
-    - name: Aplikacje
+  - name: Aplikacje
+    items:
+    - name: Application Insights
+      href: ../application-insights/app-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Łącznik usługi Application Insights
+      href: ../log-analytics/log-analytics-app-insights-connector.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Key Vault Analytics
+      href: ../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Service Fabric Analytics
+      href: ../service-fabric/service-fabric-diagnostics-oms-setup.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Azure Web Apps Analytics
+      href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Containers
+    items:
+    - name: Omówienie monitorowania kontenerów
+      href: monitoring-container-overview.md
+    - name: Kondycja kontenera usługi AKS
+      href: monitoring-container-health.md
+    - name: Platforma Docker i monitorowanie kontenerów systemu Windows
+      href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Monitorowanie aplikacji Docker
+      href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Bazy danych
+    items:
+    - name: Azure SQL
+      href: ../log-analytics/log-analytics-azure-sql.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Maszyny wirtualne
+    items:
+    - name: Kondycja agenta
+      href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Analiza oprogramowania VMWare
+      href: ../log-analytics/log-analytics-vmware.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Mapa usługi
       items:
-        - name: Application Insights
-          href: ../application-insights/app-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Łącznik usługi Application Insights
-          href: ../log-analytics/log-analytics-app-insights-connector.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Key Vault Analytics
-          href: ../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Service Fabric Analytics
-          href: ../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Azure Web Apps Analytics
-          href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Containers
+      - name: Użycie
+        href: monitoring-service-map.md
+      - name: Konfigurowanie
+        href: monitoring-service-map-configure.md
+      - name: Integracja z programem Operations Manager
+        href: monitoring-service-map-scom.md
+  - name: Inne zasoby
+    items:
+    - name: Ocena kondycji usługi AD
+      href: ../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Stan replikacji usługi AD
+      href: ../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Office 365
+      href: ../monitoring/monitoring-solution-office-365.md
+    - name: Surface Hub
+      href: ../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Rozwiązania do zarządzania
+    items:
+    - name: Użycie
       items:
-        - name: Omówienie monitorowania kontenerów
-          href: monitoring-container-overview.md
-        - name: Kondycja kontenera usługi AKS
-          href: monitoring-container-health.md
-        - name: Platforma Docker i monitorowanie kontenerów systemu Windows
-          href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Monitorowanie aplikacji Docker
-          href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Bazy danych
+      - name: Instalowanie i używanie rozwiązań
+        href: monitoring-solutions.md
+      - name: Spis rozwiązań
+        href: monitoring-solutions-inventory.md
+      - name: Rozwiązania docelowe
+        href: monitoring-solution-targeting.md
+    - name: Przycisk Utwórz
       items:
-        - name: Azure SQL
-          href: ../log-analytics/log-analytics-azure-sql.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Maszyny wirtualne
-      items:
-        - name: Kondycja agenta
-          href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Analiza oprogramowania VMWare
-          href: ../log-analytics/log-analytics-vmware.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Mapa usługi
-          items:
-            - name: Użycie
-              href: monitoring-service-map.md
-            - name: Konfigurowanie
-              href: monitoring-service-map-configure.md
-            - name: Integracja z programem Operations Manager
-              href: monitoring-service-map-scom.md
-    - name: Inne zasoby
-      items:
-        - name: Ocena kondycji usługi AD
-          href: ../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Stan replikacji usługi AD
-          href: ../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Office 365
-          href: ../monitoring/monitoring-solution-office-365.md
-        - name: Surface Hub
-          href: ../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Rozwiązania do zarządzania
-      items:
-        - name: Użycie
-          items:
-            - name: Instalowanie i używanie rozwiązań
-              href: monitoring-solutions.md
-            - name: Spis rozwiązań
-              href: monitoring-solutions-inventory.md
-            - name: Rozwiązania docelowe
-              href: monitoring-solution-targeting.md
-        - name: Przycisk Utwórz
-          items:
-            - name: Projektowanie i tworzenie
-              href: monitoring-solutions-creating.md
-            - name: Plik rozwiązania
-              href: monitoring-solutions-solution-file.md
-            - name: Zasoby automatyzacji
-              href: monitoring-solutions-resources-automation.md
-            - name: Wyszukiwania w dzienniku i alerty
-              href: monitoring-solutions-resources-searches-alerts.md
-            - name: Widoki
-              href: monitoring-solutions-resources-views.md
-            - name: Najlepsze praktyki
-              href: monitoring-solutions-best-practices.md
-            - name: Zbieranie danych monitorowania z elementu runbook
-              href: monitoring-runbook-datacollect.md
+      - name: Projektowanie i tworzenie
+        href: monitoring-solutions-creating.md
+      - name: Plik rozwiązania
+        href: monitoring-solutions-solution-file.md
+      - name: Zasoby automatyzacji
+        href: monitoring-solutions-resources-automation.md
+      - name: Wyszukiwania w dzienniku i alerty
+        href: monitoring-solutions-resources-searches-alerts.md
+      - name: Widoki
+        href: monitoring-solutions-resources-views.md
+      - name: Najlepsze praktyki
+        href: monitoring-solutions-best-practices.md
+      - name: Zbieranie danych monitorowania z elementu runbook
+        href: monitoring-runbook-datacollect.md
+ms.openlocfilehash: 190062c30d87628e9aba42c616815313c45b8623
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324703"

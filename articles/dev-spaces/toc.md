@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [Omówienie](azure-dev-spaces.md)
+## [Omówienie](index.yml)
 
 ## Przewodniki Szybki start
 ### [Java (VS Code i interfejs wiersza polecenia)](quickstart-java.md)
