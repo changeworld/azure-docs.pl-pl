@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f28c97fed2a5fa4990c1310e8389868c6b7dc20
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1da742f54a9a415c6078a6185a9605db700dffd5
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369086"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324958"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprowizacja aplikacji opartych na atrybutach z filtrami zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów określania zakresu do zdefiniowania reguł opartych na atrybutach, określające, którzy użytkownicy są udostępnione do aplikacji.
@@ -115,7 +115,7 @@ Filtrów określania zakresu są skonfigurowane jako część mapowań atrybutó
 * [Automatyzowanie użytkownika aprowizacji i cofania aprowizacji z aplikacjami SaaS](active-directory-saas-app-provisioning.md)
 * [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](active-directory-saas-customizing-attribute-mappings.md)
 * [Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Powiadomienia z aprowizacją kont](active-directory-saas-account-provisioning-notifications.md)
+* [Powiadomienia z aprowizacją kont](active-directory-saas-app-provisioning.md)
 * [Umożliwia włączenie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji Standard SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](saas-apps/tutorial-list.md)
 

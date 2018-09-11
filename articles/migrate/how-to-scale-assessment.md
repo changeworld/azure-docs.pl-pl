@@ -4,14 +4,14 @@ description: Opisuje sposób oceny dużej liczby maszyn lokalnych przy użyciu u
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 1f049b3e05ac17e416379762a0bced8340ae25d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666547"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325026"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -22,8 +22,7 @@ Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opis
 - **VMware**: maszyn wirtualnych, które mają być poddane migracji, musi być zarządzane przez program vCenter Server w wersji 5.5, 6.0 lub 6.5. Ponadto należy jeden host ESXi z wersją 5.0 lub nowszej, aby wdrożyć maszyny Wirtualnej modułu zbierającego.
 - **Konto vCenter**: musisz mieć konto tylko do odczytu do dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: W programie vCenter Server, są wymagane uprawnienia do tworzenia maszyny Wirtualnej, importując plik w formacie OVA.
-- **Ustawienia statystyk**: ustawieniach statystyk programu vCenter Server powinien być ustawiony na poziom 3, przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
-
+- **Ustawienia statystyk**: to wymaganie dotyczy tylko [modelu jednorazowe](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods). W przypadku modelu jednorazowe ustawieniach statystyk programu vCenter Server powinna być równa poziom 3 przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
 
 ### <a name="set-up-permissions"></a>Ustawianie uprawnień
 
@@ -32,26 +31,28 @@ Usługa Azure Migrate wymaga dostępu do serwerów VMware w celu automatycznego 
 - Typ użytkownika: co najmniej użytkownik tylko do odczytu
 - Uprawnienia: obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu
 - Szczegóły: użytkownik przypisany na poziomie centrum danych z dostępem do wszystkich obiektów w centrum danych.
-- Aby ograniczyć dostęp, przypisz rolę Bez dostępu z propagacją do obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).
+- Aby ograniczyć dostęp, Przypisz rolę bez dostępu z propagacją do obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).
 
 Jeśli jest wdrażane w środowisku dzierżawy, w tym miejscu jest jednym ze sposobów konfigurowania tego:
 
-1.  Tworzenie użytkownika na dzierżawę i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do dzierżawy tylko określonej maszyny Wirtualnej.
+1.  Tworzenie użytkownika na dzierżawę i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do maszyn wirtualnych tylko specyficznym dla dzierżawy.
 2. Konfigurowania funkcji RBAC dla użytkowników innej dzierżawy zgodnie z opisem w poniższym przykładzie dla użytkownika nr 1 i 2 użytkownika:
 
     - W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający ma użyć do odnalezienia maszyn wirtualnych w
-    - Datacenter1 - przyznać uprawnienia tylko do odczytu do 1 użytkownika i użytkownika nr 2. Nie propagować te uprawnienia do wszystkich obiektów podrzędnych, ponieważ uprawnienia zostanie ustawiona na poszczególnych maszyn wirtualnych.
+    - Datacenter1 - przyznać uprawnienia tylko do odczytu do 1 użytkownika i użytkownika nr 2. Nie propagować te uprawnienia do wszystkich obiektów podrzędnych, ponieważ uprawnienia zostanie ustawiona na poszczególnych maszynach wirtualnych.
 
-      - Maszyna VM1 (dzierżawy #1) (tylko uprawnienia do odczytu użytkownika nr 1)
-      - VM2 (dzierżawy #1) (tylko uprawnienia do odczytu użytkownika nr 1)
-      - Maszyna VM3 (dzierżawy nr 2) (tylko uprawnienia do odczytu użytkownika nr 2)
-      - VM4 (dzierżawy nr 2) (tylko uprawnienia do odczytu użytkownika nr 2)
+      - Maszyna VM1 (dzierżawy #1) (uprawnienia tylko do odczytu do 1 użytkownika)
+      - VM2 (dzierżawy #1) (uprawnienia tylko do odczytu do 1 użytkownika)
+      - Maszyna VM3 (dzierżawy nr 2) (uprawnienia tylko do odczytu do użytkownika nr 2)
+      - VM4 (dzierżawy nr 2) (uprawnienia tylko do odczytu do użytkownika nr 2)
 
    - Jeśli przeprowadzisz odnajdywanie przy użyciu poświadczeń użytkownika nr 1, następnie tylko maszyna VM1 i VM2 zostaną odnalezione.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Planowanie migracji projektów i odnajdywania
 
-Jeden moduł zbierający usługi Azure Migrate obsługuje odnajdywania z wielu serwerów programu vCenter, (jeden po drugim) i umożliwia wykrywanie do wielu projektów migracji (jeden po drugim). Moduł zbierający działa w pożar i zapomnij modelu, po zakończeniu odnajdowania, można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysyłać różne migrację.
+Jeden moduł zbierający usługi Azure Migrate obsługuje odnajdywania z wielu serwerów programu vCenter, (jeden po drugim) i umożliwia wykrywanie do wielu projektów migracji (jeden po drugim).
+
+Moduł zbierający, w przypadku jednorazowego odnajdywania działa w pożar i zapomnij modelu, po zakończeniu odnajdowania, można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysyłać różne migrację. W przypadku ciągłego odnajdywania jednego urządzenia jest podłączony do pojedynczego projektu, więc nie możesz użyć tego samego modułu zbierającego do wyzwolenia odnajdywania drugiego.
 
 Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 
@@ -70,20 +71,31 @@ Należy pamiętać następujące kwestie:
 Zależnie od scenariusza można podzielić czemu poszerzysz swoją wiedzę, jak określono poniżej:
 
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>VCenter wiele serwerów z mniej niż 1500 maszyn wirtualnych
+Jeśli masz wiele serwery vCenter w danym środowisku, a łączna liczba maszyn wirtualnych jest mniejszy niż 1500, można użyć następujących podejście, w zależności od danego scenariusza:
 
-Jeśli masz wiele serwery vCenter w danym środowisku, a łączna liczba maszyn wirtualnych jest mniejszy niż 1500, jeden moduł zbierający i projekt migracji można użyć do odnajdywania wszystkich maszyn wirtualnych na wszystkich serwerach vCenter. Ponieważ moduł zbierający odnajdzie jednego serwera vCenter w danym momencie, możesz uruchamiać tego samego modułu zbierającego wszystkie serwery vCenter, po kolei i punktu modułu zbierającego, w tym samym projekcie migracji. Po zakończeniu wszystkich odnalezionych danych dotyczących następnie można utworzyć oceny dla maszyn.
+**Jednorazowe:** jeden moduł zbierający i projekt migracji można użyć do odnajdywania wszystkich maszyn wirtualnych na wszystkich serwerach vCenter. Ponieważ moduł zbierający jednorazowe odnajdywania umożliwia odnalezienie jednego serwera vCenter w danym momencie, możesz uruchamiać tego samego modułu zbierającego wszystkie serwery vCenter, jeden po drugim i punktu modułu zbierającego, w tym samym projekcie migracji. Po zakończeniu wszystkich odnalezionych danych dotyczących następnie można utworzyć oceny dla maszyn.
+
+**Ciągłe odnajdywania:** w przypadku ciągłego odnajdywania jednego urządzenia można je podłączyć do pojedynczego projektu. Dlatego należy wdrożyć jeden urządzenie dla każdej serwery vCenter, a następnie utworzenie jednego projektu dla każdego urządzenia i operacje odnajdywania wyzwalacza odpowiednio.
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>VCenter wiele serwerów z więcej niż 1500 maszyn wirtualnych
 
-Jeśli masz wiele serwery vCenter z mniej niż 1500 maszyn wirtualnych na serwer vCenter, ale więcej niż 1500 maszyn wirtualnych na wszystkich serwerach vCenter, konieczne jest utworzenie kilku projektów migracji (jeden projekt migracji może zawierać tylko 1500 maszyn wirtualnych). Można to osiągnąć, tworząc projekt migracji na serwer vCenter i dzielenia odnajdywania. Jeden moduł zbierający służy do odnajdywania każdego serwera vCenter, (jeden po drugim). Jeśli chcesz, aby odnajdywania można uruchomić w tym samym czasie, możesz również wdrażanie wielu urządzeń i równoległego uruchamiania odnajdywania.
+Jeśli masz wiele serwery vCenter z mniej niż 1500 maszyn wirtualnych na serwer vCenter, ale więcej niż 1500 maszyn wirtualnych na wszystkich serwerach vCenter, konieczne jest utworzenie kilku projektów migracji (jeden projekt migracji może zawierać tylko 1500 maszyn wirtualnych). Można to osiągnąć, tworząc projekt migracji na serwer vCenter i dzielenia odnajdywania.
+
+**Jednorazowe:** jeden moduł zbierający służy do odnajdywania każdego serwera vCenter, (jeden po drugim). Jeśli chcesz, aby odnajdywania można uruchomić w tym samym czasie, możesz również wdrażanie wielu urządzeń i równoległego uruchamiania odnajdywania.
+
+**Ciągłe odnajdywania:** należy utworzyć wiele urządzenia modułu zbierającego (po jednym dla każdego serwera vCenter) i nawiązać połączenie z każdego urządzenia odnajdywania projektu i wyzwalacza odpowiednio.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Więcej niż 1500 maszyn w jednym programie vCenter Server
 
-Jeśli masz więcej niż 1500 maszyn wirtualnych w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pola zakresu w urządzeniu i określić hosta, klaster, folder lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli masz dwa foldery w programie vCenter Server, jednym z 1000 maszyn wirtualnych (Folder1), a drugie z 800 maszyn wirtualnych (Folder2), możesz użyć jeden moduł zbierający i wykonania dwóch operacji odnajdywania. W przypadku pierwszego odnajdywania można określić Folder1 jako zakres i wskazać na pierwszy projekt migracji po zakończeniu pierwszego odnajdywania, możesz używać tego samego modułu zbierającego, zmień jego zakres, Folder2 i migracji szczegółów projektu do drugiego projektu migracji i do drugiego odnajdywania.
+Jeśli masz więcej niż 1500 maszyn wirtualnych w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pola zakresu w urządzeniu i określić hosta, klaster, folder lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli masz dwa foldery w programie vCenter Server, jednym z 1000 maszyn wirtualnych (Folder1) i drugi z 800 maszyn wirtualnych (Folder2), można użyć pola zakresu do dzielenia odnajdywania między te foldery.
+
+**Jednorazowe:** można użyć tego samego modułu zbierającego do wyzwolenia odnajdywania obu. W przypadku pierwszego odnajdywania można określić Folder1 jako zakres i wskazać na pierwszy projekt migracji po zakończeniu pierwszego odnajdywania, możesz używać tego samego modułu zbierającego, zmień jego zakres, Folder2 i migracji szczegółów projektu do drugiego projektu migracji i do drugiego odnajdywania.
+
+**Ciągłe odnajdywania:** w takim przypadku należy utworzyć dwa urządzenia modułu zbierającego, pierwszy modułu zbierającego, określić zakres Folder1 i podłącz go do pierwszy projekt migracji. Możesz równolegle uruchomić odnajdywanie Folder2 przy użyciu drugiego urządzenia modułu zbierającego i podłącz go do drugiego projekt migracji.
 
 ### <a name="multi-tenant-environment"></a>Środowiska z wieloma dzierżawami
 
-Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywanie maszyn wirtualnych z jednej dzierżawy w innej dzierżawie subskrypcji, można użyć pola zakresu w urządzenia modułu zbierającego do określania zakresu odnajdywania. Jeśli dzierżawy współużytkują hostów, Utwórz poświadczenie, które ma dostęp tylko do odczytu do tylko maszyny wirtualne należące do określonej dzierżawy, a następnie korzystać z poświadczenia urządzenia modułu zbierającego i określ zakres jako hosta w celu odnajdywania. Alternatywnie można także utworzyć foldery, w programie vCenter Server (Załóżmy, że folder1 dla tenant1 folder2 dla tenant2), w obszarze udostępnionego hosta, Przenieś maszyny wirtualne dla tenant1 do folder1 i tenant2 do folder2 i zakres odnajdywania w module zbierającym w związku z tym określając odpowiedni folder.
+Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywanie maszyn wirtualnych z jednej dzierżawy w innej dzierżawie subskrypcji, można użyć pola zakresu w urządzenia modułu zbierającego do określania zakresu odnajdywania. Jeśli dzierżawy współużytkują hostów, Utwórz poświadczenie, które ma dostęp tylko do odczytu do tylko maszyny wirtualne należące do określonej dzierżawy, a następnie korzystać z poświadczenia urządzenia modułu zbierającego i określ zakres jako hosta w celu odnajdywania.
 
 ## <a name="discover-on-premises-environment"></a>Odnajdywanie w środowisku lokalnym
 
@@ -107,8 +119,16 @@ Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zb
 
 Jeśli masz wiele projektów, należy pobrać tylko raz za pomocą urządzenia modułu zbierającego programem vCenter Server. Po pobraniu i skonfiguruj urządzenie, należy uruchomić dla każdego projektu, a następnie określ unikatowy identyfikator i klucz projektu.
 
-1. W projekcie usługi Azure Migrate wybierz **wprowadzenie** > **Odnajdź i oceń** > **odnajdź maszyny**.
-2. W **odnajdź maszyny**, wybierz opcję **Pobierz**, aby pobrać plik OVA.
+1. W projekcie usługi Azure Migrate kliknij pozycję **Wprowadzenie** > **Odnajdź i oceń** > **Odnajdź maszyny**.
+2. W **odnajdź maszyny**, dostępne są dwie opcje dostępne dla urządzenia, kliknij przycisk **Pobierz** do pobierania odpowiedniego urządzenia, na podstawie preferencji użytkownika.
+
+    a. **Jednorazowe:** urządzenia dla tego modelu, który komunikuje się z programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Do zbierania danych wydajności maszyn wirtualnych opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server i umożliwia zbieranie informacji o historii wydajności ostatni miesiąc. W tym modelu usługi Azure Migrate zbiera dane licznika średni (a licznik szczytu), dla każdego metryki, [Dowiedz się więcej] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ponieważ jest jednorazowe, zmiany w środowisku lokalnym nie są odzwierciedlane po ukończeniu odnajdywania. Jeśli chcesz, aby odzwierciedlić zmiany, trzeba odnajdywanie tym samym środowisku, w tym samym projekcie.
+
+    b. **Ciągłe odnajdywania:** urządzenia dla tego modelu stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym dla każdej maszyny Wirtualnej. W tym modelu liczniki szczytowe są zbierane dla każdego metryki (użycie procesora CPU, użycie pamięci przez program itp.). Ten model nie zależy od ustawienia statystyk programu vCenter Server na potrzeby zbierania danych o wydajności. Można zatrzymać ciągłe profilowania dowolnym przez urządzenie.
+
+    > [!NOTE]
+    > Funkcji ciągłego odnajdywania jest dostępna w wersji zapoznawczej.
+
 3. W **skopiuj poświadczenia projektu**, skopiuj identyfikator i klucz projektu. Będą potrzebne do skonfigurowania modułu zbierającego.
 
 
@@ -126,53 +146,49 @@ Sprawdź, czy plik OVA jest bezpieczne, przed przystąpieniem do wdrażania:
 
 3. Upewnij się, że wygenerowanego skrótu odpowiada następujące ustawienia.
 
-    Ova w wersji 1.0.9.14
+#### <a name="one-time-discovery"></a>Jednorazowe
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
-    
-    OVA w wersji 1.0.9.12
+Ova w wersji 1.0.9.14
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | d0363e5d1b377a8eb08843cf034ac28a
-    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
-    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
+SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
+SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
 
-    OVA w wersji 1.0.9.8
+OVA w wersji 1.0.9.12
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | b5d9f0caf15ca357ac0563468c2e6251
-    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | d0363e5d1b377a8eb08843cf034ac28a
+SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
-    OVA w wersji 1.0.9.7
+OVA w wersji 1.0.9.8
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | b5d9f0caf15ca357ac0563468c2e6251
+SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
 
-    OVA w wersji 1.0.9.5
+OVA w wersji 1.0.9.7
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | fb11ca234ed1f779a61fbb8439d82969
-    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
-    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | d5b6a03701203ff556fa78694d6d7c35
+SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-    OVA w wersji 1.0.9.2
+#### <a name="continuous-discovery"></a>Ciągłe odnajdywania
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | 7326020e3b83f225b794920b7cb421fc
-    SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
-    SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
+Ova w wersji 1.0.10.4
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ### <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
 
@@ -199,25 +215,35 @@ Jeśli masz wiele projektów, pamiętaj zidentyfikować identyfikator i klucz dl
     ![Skopiuj poświadczenia projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ### <a name="set-the-vcenter-statistics-level"></a>Ustaw poziom statystyki programu vCenter
-Poniżej przedstawiono listę liczników wydajności, które są zbierane podczas odnajdywania. Te liczniki są domyślnie dostępne na różnych poziomach w programie vCenter Server.
 
-Zalecane ustawienie najwyższy poziom wspólnych (3) do poziomu statystyk, tak, aby wszystkie liczniki są poprawnie zbierane. Jeśli masz ustawiony na niższym poziomie vCenter, tylko kilka liczniki mogą być zbierane w całkowicie, z użyciem usług rest ustawione na 0. Ocena może następnie wyświetlać niepełne dane.
+Urządzenie modułu zbierającego umożliwia odnalezienie następujących statyczne metadane dotyczące wybranych maszyn wirtualnych.
 
-W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, jeśli nie ma określonego licznika.
+1. Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
+2. Ścieżka magazynu maszyny Wirtualnej (w programie vCenter hosta/folder)
+3. Adres IP
+4. Adres MAC
+5. System operacyjny
+5. Liczba rdzeni, dysków, kart sieciowych
+6. Rozmiar pamięci, rozmiary dysków
+7. Liczniki wydajności i maszyny Wirtualnej, dysku i sieci, zgodnie z opisem w poniższej tabeli.
 
-| Licznik                                 | Poziom | Poziom na urządzenie | Ocena wpływu                    |
-| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| cpu.usage.average                       | 1     | Nie dotyczy               | Zalecany rozmiar maszyny Wirtualnej i kosztów         |
-| mem.usage.average                       | 1     | Nie dotyczy               | Zalecany rozmiar maszyny Wirtualnej i kosztów         |
-| virtualDisk.read.average                | 2     | 2                | Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej |
-| virtualDisk.write.average               | 2     | 2                | Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej |
-| virtualDisk.numberReadAveraged.average  | 1     | 3                | Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej |
-| virtualDisk.numberWriteAveraged.average | 1     | 3                | Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej |
-| NET.RECEIVED.AVERAGE                    | 2     | 3                | Koszt rozmiar i sieć maszyny Wirtualnej             |
-| net.transmitted.average                 | 2     | 3                | Koszt rozmiar i sieć maszyny Wirtualnej             |
+Jednorazowe odnajdywania w poniższej tabeli wymieniono liczniki wydajności dokładnie, które są zbierane i zawiera również listę wyników oceny, które ma wpływ, jeśli nie ma określonego licznika.
+
+Ciągłe odnajdywania tych samych liczników są zbierane w czasie rzeczywistym (interwał 20 sekund), więc nie ma żadnych zależności na poziom statystyki programu vCenter. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure.
+
+|Licznik                                  |Poziom    |Poziom na urządzenie  |Ocena wpływu                               |
+|-----------------------------------------|---------|------------------|------------------------------------------------|
+|cpu.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
+|mem.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
+|virtualDisk.read.average                 | 2       |2                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
+|virtualDisk.write.average                | 2       |2                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
+|virtualDisk.numberReadAveraged.average   | 1       |3                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
+|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
+|NET.RECEIVED.AVERAGE                     | 2       |3                 |Koszt rozmiar i sieć maszyny Wirtualnej                        |
+|net.transmitted.average                  | 2       |3                 |Koszt rozmiar i sieć maszyny Wirtualnej                        |
 
 > [!WARNING]
-> Jeśli właśnie zostały ustawione na wyższy poziom statystyk, potrwa na dzień wygenerowania liczników wydajności. Dlatego zaleca się, uruchom odnajdywanie po jednym dniu.
+> Jednorazowe odnajdywania jeśli zostały ustawione po prostu wyższy poziom statystyk, potrwa na dzień do generowania liczników wydajności. Dlatego zaleca się, uruchom odnajdywanie po jednym dniu. Poczekaj co najmniej jednego dnia po uruchomieniu odnajdywania dla urządzenia na potrzeby profilowania środowiska i następnie utworzyć oceny dla modelu ciągłego odnajdywania.
 
 ### <a name="run-the-collector-to-discover-vms"></a>Uruchamianie modułu zbierającego w celu odnalezienia maszyn wirtualnych
 
@@ -249,9 +275,11 @@ Dla każdego odnajdywania, które należy wykonać możesz uruchomić moduł zbi
 
 #### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-Czas odnajdowania zależy od liczby odnajdowanych maszyn wirtualnych. Zazwyczaj do 100 maszyn wirtualnych, odnajdywanie zakończy się około godziny po zakończeniu modułu zbierającego.
+Jednorazowe odnajdywania czas odnajdowania zależy od ile maszyn wirtualnych odnajdywania. Zazwyczaj do 100 maszyn wirtualnych, po uruchomieniu modułu zbierającego wynosi około godziny do zbierania danych konfiguracji i wydajności zakończyć. Możesz utworzyć oceny (oparte na wydajności i jako oceny lokalnej) natychmiast po zakończeniu odnajdywania.
 
-1. W projekcie planowania migracji należy wybrać **Zarządzaj** > **maszyn**.
+Ciągłe odnajdywania (w wersji zapoznawczej) moduł zbierający będzie stale profilu w środowisku lokalnym i będą nadal wysyłać dane dotyczące wydajności z interwałem godzinę. Możesz przejrzeć maszyn w portalu po godzinie od rozpoczęciem odnajdywania. Zdecydowanie zaleca się poczekać co najmniej jeden dzień przed utworzeniem żadnych oceny na podstawie wydajności dla maszyn wirtualnych.
+
+1. W projekcie migracji kliknij **Zarządzaj** > **maszyn**.
 2. Sprawdź, czy maszyny wirtualne, które miały zostać odnalezione, są widoczne w portalu.
 
 

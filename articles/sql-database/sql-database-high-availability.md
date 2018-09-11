@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 7a60d800ce76f8ff9a903cc068fa7bc87cd33f3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1aab8dfd3a4bcc33cddb71dec08157ee7eb68f8d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700639"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324652"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -57,7 +57,7 @@ Ponadto klaster krytyczne dla działania firmy udostępnia wbudowanego węzła t
 
 ## <a name="zone-redundant-configuration-preview"></a>Nadmiarowe konfiguracji strefy (wersja zapoznawcza)
 
-Domyślnie repliki zestawu kworum w przypadku konfiguracji z magazynu lokalnego są tworzone w tym samym centrum danych. Wraz z wprowadzeniem [strefy dostępności platformy Azure](../availability-zones/az-overview.md), masz możliwość umieszczenia różnych replik w zestawach kworum różnych strefach dostępności w tym samym regionie. Aby wyeliminować pojedynczy punkt awarii, pierścień kontroli również występuje w wielu strefach jako trzy pierścienie bramy (GW). Routing do pierścienia daną bramę jest kontrolowana przez [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Ponieważ nadmiarowy konfiguracji strefy nie powoduje utworzenia nadmiarowość dodatkowa baza danych, użyj stref dostępności w warstwie Premium lub krytyczne dla działania firmy (wersja zapoznawcza) warstwy usług jest dostępna bez dodatkowych kosztów. Wybierając nadmiarowych strefy baz danych, możesz wprowadzić swoje Premium lub krytyczne dla działania firmy (wersja zapoznawcza) baz danych, odporne na znacznie większy zbiór awarii, w tym awarii krytycznego centrum danych bez wprowadzania żadnych zmian w logice aplikacji. Konfiguracja nadmiarowe strefy, można przekonwertować wszystkie istniejące bazy danych Premium lub krytyczne dla działania firmy lub pule (wersja zapoznawcza).
+Domyślnie repliki zestawu kworum w przypadku konfiguracji z magazynu lokalnego są tworzone w tym samym centrum danych. Wraz z wprowadzeniem [strefy dostępności platformy Azure](../availability-zones/az-overview.md), masz możliwość umieszczenia różnych replik w zestawach kworum różnych strefach dostępności w tym samym regionie. Aby wyeliminować pojedynczy punkt awarii, pierścień kontroli również występuje w wielu strefach jako trzy pierścienie bramy (GW). Routing do pierścienia daną bramę jest kontrolowana przez [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Ponieważ nadmiarowy konfiguracji strefy nie powoduje utworzenia nadmiarowości dodatkowa baza danych, użycia stref dostępności (wersja zapoznawcza) w warstwach Premium lub krytyczne dla działania firmy jest dostępna bez dodatkowych kosztów. Wybierając nadmiarowych strefy baz danych, możesz wprowadzić bazach danych Premium lub krytyczne dla działania firmy odporne na błędy dużo większego zbioru awarii, w tym awarii krytycznego centrum danych bez wprowadzania żadnych zmian w logice aplikacji. Możesz również przeprowadzić konwersję wszystkie istniejące bazy danych Premium lub krytyczne dla działania firmy lub pule nadmiarowe konfiguracji strefy.
 
 Strefy nadmiarowe kworum zestawie ma replik w różnych centrach danych z niektórych odległość między nimi, opóźnienie sieci zwiększone może zwiększyć czas zatwierdzenia i dlatego ma wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest rozmiar operacji na danych i jest podobna do aktualizacji poziomu (SLO) regularne usługi. Po zakończeniu procesu bazy danych lub puli jest migrowane z nadmiarowych pierścień strefy do pierścienia jedną strefę lub na odwrót.
 
@@ -69,13 +69,13 @@ Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej do
 ![Wysoka dostępność architektury strefowo nadmiarowe](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Odczyt skalowalnego w poziomie
-Zgodnie z opisem, Premium i krytyczne dla działania firmy (wersja zapoznawcza) usługi warstwy korzystanie z zestawów kworum i zawsze włączonej technologii wysokiej dostępności, zarówno w jednej strefie i konfiguracje nadmiarowe stref. Jedną z zalet funkcji AlwaysOn jest, że repliki są zawsze transakcyjnie spójne. Ponieważ repliki mają ten sam poziom wydajności jako podstawowy, aplikacji mogą korzystać z tej dodatkowej pojemności do obsługi obciążeń tylko do odczytu nie wymagają ponoszenia dodatkowych kosztów (odczytu skalowalnego w poziomie). Dzięki temu zapytania tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu i nie ma wpływu na jego wydajność. Przeczytaj funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza i w związku z tym może wykorzystać atak za tej dodatkowej pojemności bez konieczności nawiązywania połączenia podstawowego. 
+Zgodnie z opisem, warstw Premium i krytyczne dla działania firmy korzystać z zestawów kworum i zawsze włączonej technologii wysokiej dostępności, zarówno w jednej strefie i konfiguracje nadmiarowe stref. Jedną z zalet funkcji AlwaysOn jest, że repliki są zawsze transakcyjnie spójne. Ponieważ repliki mają ten sam poziom wydajności jako podstawowy, aplikacji mogą korzystać z tej dodatkowej pojemności do obsługi obciążeń tylko do odczytu nie wymagają ponoszenia dodatkowych kosztów (odczytu skalowalnego w poziomie). Dzięki temu zapytania tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu i nie ma wpływu na jego wydajność. Przeczytaj funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza i w związku z tym może wykorzystać atak za tej dodatkowej pojemności bez konieczności nawiązywania połączenia podstawowego. 
 
 Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, musisz jawnie aktywować go podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody.
 
 Po włączeniu odczytu skalowalnego w poziomie dla bazy danych aplikacji łączących się tej bazy danych z nastąpi przekierowanie do repliki odczytu i zapisu lub tylko do odczytu replik tej bazy danych zgodnie z opisem w `ApplicationIntent` właściwości skonfigurowane w aplikacji Parametry połączenia. Instrukcje dotyczące `ApplicationIntent` właściwości, zobacz [Określanie przeznaczenia aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
 
-Jeśli odczyt skalowalnego w poziomie jest wyłączony lub ustaw właściwość ReadScale w warstwie usługi z nieobsługiwanego, wszystkie połączenia są kierowane do repliki odczytu i zapisu, niezależnie od `ApplicationIntent` właściwości.  
+Jeśli odczyt skalowalnego w poziomie jest wyłączony lub ustaw właściwość ReadScale w warstwie usługi z nieobsługiwanego, wszystkie połączenia są kierowane do repliki odczytu i zapisu, niezależnie od `ApplicationIntent` właściwości.
 
 ## <a name="conclusion"></a>Podsumowanie
 Usługa Azure SQL Database jest ściśle zintegrowana z platformą Azure i zależy od wysoce usługi Service Fabric wykrywania awarii i odzyskiwania w obiektach blob magazynu Azure do ochrony danych i strefy dostępności wyższych odporności na uszkodzenia. W tym samym czasie bazy danych Azure SQL w pełni korzysta z technologii zawsze włączonej grupy dostępności z programu SQL Server gotowym produkcie podczas replikacji i trybu failover. Kombinacja tych technologii umożliwia aplikacjom w pełni korzystać z zalet modelu mieszane pamięci masowej i obsługuje najbardziej wymagające umowy SLA. 

@@ -1,24 +1,18 @@
 ---
 title: Wymagań wstępnych szyfrowania dysków Azure | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera wymagania wstępne dotyczące korzystania z systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 1b2daefc-1326-44dd-9c8b-10e413769af7
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 67c3591b0218beac6343b49ba7867294ebeb3f44
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.date: 09/10/2018
+ms.openlocfilehash: 0750ea0877d5f27a8ceb091f8c3904048c9314aa
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381984"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348280"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption 
  W tym artykule, wymagań wstępnych szyfrowania dysków Azure, opisano elementy, które muszą być spełnione, zanim użyjesz usługi Azure Disk Encryption. Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) pomagające w zarządzaniu kluczami szyfrowania. Możesz użyć [programu Azure PowerShell](/powershell/azure/overview), [wiersza polecenia platformy Azure](/cli/azure/), lub [witryny Azure portal](https://portal.azure.com) do konfigurowania usługi Azure Disk Encryption.
@@ -76,7 +70,7 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
         -  Zainstaluj program PowerShell Core, programu Azure PowerShell dla platformy .NET Core i ładowanie modułu AzureRM.Netcore.
 
 2. Sprawdź zainstalowane wersje modułu AzureRM. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
-    -  Wersja modułu AzureRM musi być 6.0.0 lub nowszej.
+    -  Moduł AzureRM musi być w wersji 6.0.0 lub nowszej.
     - Zaleca się korzystanie z najnowszej wersji modułu AzureRM.
 
      ```powershell

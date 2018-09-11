@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 294dea695f120ff47712e0ccf79072a41baca07b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b33c9246bef2ca22542e338a1ec1f91a92aa300e
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092822"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324839"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -26,11 +26,11 @@ Podstawowe narzędzia usługi Azure Functions umożliwia opracowywanie i testowa
 
 ## <a name="core-tools-versions"></a>Podstawowe narzędzia wersji
 
-Istnieją dwie wersje podstawowych narzędzi usługi Azure Functions. Wersji, którego używasz, zależy od swoje lokalne Środowisko deweloperskie, wybór języka, a poziom obsługi wymagane:
+Istnieją dwie wersje podstawowych narzędzi usługi Azure Functions. Lokalne Środowisko deweloperskie, zależy od używanej wersji [wyboru języka](supported-languages.md)i jest wymagana obsługa na poziomie:
 
-+ [W wersji 1.x](#v1): obsługuje wersję 1.x środowiska uruchomieniowego, która jest ogólnie dostępna (GA). Ta wersja narzędzia jest obsługiwana tylko na komputerach Windows i została zainstalowana ze [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm). Za pomocą tej wersji można tworzyć funkcje w języków eksperymentalnych, które nie są oficjalnie obsługiwane. Aby uzyskać więcej informacji, zobacz [obsługiwanych języków w usłudze Azure Functions](supported-languages.md)
++ [W wersji 1.x](#v1): obsługuje wersję 1.x środowiska uruchomieniowego, która jest ogólnie dostępna (GA). Ta wersja narzędzia jest obsługiwana tylko na komputerach Windows i została zainstalowana ze [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
-+ [W wersji 2.x](#v2): obsługuje [wersji 2.x środowiska uruchomieniowego](functions-versions.md). Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów pakietów określonych platform lub npm dla instalacji. Takich jak środowisko uruchomieniowe 2.x tę wersję narzędzi core jest obecnie w wersji zapoznawczej. 
++ [W wersji 2.x](#v2): obsługuje [wersji 2.x środowiska uruchomieniowego](functions-versions.md). Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów pakietów określonych platform lub npm dla instalacji. Takich jak środowisko uruchomieniowe 2.x tę wersję narzędzi core jest obecnie w wersji zapoznawczej. W wersji 2.x, wszystkie funkcje w aplikacji funkcji, należy użyć tego samego środowiska uruchomieniowego języka.
 
 Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 2.x. Do otrzymywania ważnych aktualizacji w wersji 2.x, łącznie z najważniejszych zmian anonsów, obejrzyj [anonsów w usłudze Azure App Service](https://github.com/Azure/app-service-announcements/issues) repozytorium.
 

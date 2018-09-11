@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620940"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347787"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -96,11 +96,11 @@ Aby naprawić błąd:
     - Oświadczeń wystawionych w tokenie
     - Certyfikat używany do podpisywania tokenu. Aby uzyskać informacji na temat sposobu przeglądania odpowiedzi SAML, zobacz [protokołu SAML rejestracji jednokrotnej](single-sign-on-saml-protocol.md).
 4. Aby uzyskać więcej informacji na temat odpowiedzi SAML, zobacz [protokołu SAML rejestracji jednokrotnej](single-sign-on-saml-protocol.md).
-5. Po przejrzeniu odpowiedzi SAML, zapoznaj się [błąd na stronie aplikacji po zalogowaniu się](../application-sign-in-problem-application-error.md) wskazówki dotyczące rozwiązywania problemu. 
+5. Po przejrzeniu odpowiedzi SAML, zapoznaj się [błąd na stronie aplikacji po zalogowaniu się](../manage-apps/application-sign-in-problem-application-error.md) wskazówki dotyczące rozwiązywania problemu. 
 6. Jeśli nadal nie możesz zalogować się pomyślnie, możesz poprosić z dostawcą aplikacji co to jest brak odpowiedzi SAML.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, logowania jednokrotnego działa do aplikacji, można wykonać następujące akcje [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../active-directory-saas-app-provisioning.md), lub [Rozpoczynanie pracy przy użyciu dostępu warunkowego](../conditional-access/app-based-conditional-access.md).
+Teraz, logowania jednokrotnego działa do aplikacji, można wykonać następujące akcje [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../manage-apps/user-provisioning.md), lub [Rozpoczynanie pracy przy użyciu dostępu warunkowego](../conditional-access/app-based-conditional-access.md).
 
 

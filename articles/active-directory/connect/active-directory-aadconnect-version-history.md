@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/21/2018
+ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6c080d44aed7c2b3db54a34f4b711db66681cbe9
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 5de5177db92e4069710e597a41c44287e5af90b2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056334"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325298"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -36,6 +36,16 @@ Kroki, aby uaktualnić program Azure AD Connect | Różne metody [uaktualnianie 
 Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+ 
+## <a name="118820"></a>1.1.882.0  
+
+9 7 2018: ogólnie dostępnych do pobrania, nie będą w wersji dla uaktualnienie automatyczne 
+
+### <a name="fixed-issues"></a>Rozwiązane problemy  
+
+Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsze na dostępności SQL jest skonfigurowana dla bazy danych ADSync. Ta poprawka rozwiązuje ten problem i umożliwia uaktualnienie zakończyło się sukcesem. 
 
 ## <a name="118800"></a>1.1.880.0
 
@@ -91,7 +101,7 @@ Nowe funkcje i ulepszenia
 - Konfiguracja zapisywania zwrotnego urządzeń jest teraz zarządzana wyłącznie w ramach usługi Azure AD Kreatora programu Connect.
 - Nowy moduł programu PowerShell o nazwie ADSyncTools.psm1 zostanie dodany używanym rozwiązywać problemy z połączeniem SQL i różnych innych narzędzi rozwiązywania problemów. Dowiedz się więcej o ADSyncTools module [tutaj](active-directory-aadconnect-tshoot-sql-connectivity.md). 
 - Dodano dodatkowe nowe zadanie "Konfiguruj opcje urządzenia". Zadania umożliwiają skonfigurowanie następujące dwie operacje: 
-    -   **Dołączenie do hybrydowej usługi Azure AD**: Jeśli w lokalnym środowisku zużycie AD, a także skorzystać z możliwości oferowane przez usługę Azure Active Directory, można zaimplementować urządzeń przyłączonych do usługi Azure AD hybrydowych. Są to urządzenia, które są zarówno do lokalnej usługi Active Directory i usługi Azure Active Directory.
+    -   **Dołączenie do hybrydowej usługi Azure AD**: Jeśli w lokalnym środowisku zużycie AD, a także skorzystać z możliwości oferowane przez usługę Azure Active Directory, można zaimplementować urządzeń przyłączonych do usługi Azure AD hybrydowych. Są to urządzenia dołączone do lokalnej usługi Active Directory oraz usługi Azure Active Directory.
     -   **Zapisywanie zwrotne urządzeń**: zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
 
    >[!NOTE] 

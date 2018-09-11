@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a65a0b8e054b1d0bb6cd4cbeb2daf9be2b132a9e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055404"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304537"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Azure Automation za pomocą elementu webhook
 
-A *elementu webhook* umożliwia uruchomienie określonego elementu runbook w usłudze Azure Automation za pośrednictwem pojedynczego żądania HTTP. Dzięki temu usług zewnętrznych, takich jak Visual Studio Team Services, GitHub, Azure Log Analytics lub niestandardowych aplikacji do uruchamiania elementów runbook bez implementacji pełnego rozwiązania przy użyciu interfejsu API usługi Azure Automation.  
+A *elementu webhook* umożliwia uruchomienie określonego elementu runbook w usłudze Azure Automation za pośrednictwem pojedynczego żądania HTTP. Dzięki temu usług zewnętrznych, takich jak usługom DevOps platformy Azure, GitHub, Azure Log Analytics lub niestandardowych aplikacji do uruchamiania elementów runbook bez implementacji pełnego rozwiązania przy użyciu interfejsu API usługi Azure Automation.  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Można porównać elementów webhook, uruchamianie elementu runbook inne sposoby [uruchamianie elementu runbook w usłudze Azure Automation](automation-starting-a-runbook.md)

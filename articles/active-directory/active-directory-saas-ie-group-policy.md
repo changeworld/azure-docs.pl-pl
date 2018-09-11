@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70552e982ff4c21d02b5f52ea48f108ce7f3b97e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce27f51dc5e80b4ce2bd83b5f9f6c75853a2ea73
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366813"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325281"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy
 W tym samouczku pokazano, jak za pomocą zasad grupy do zdalnej instalacji rozszerzenia Panelu dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logować się do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach logowania jednokrotnego](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
@@ -120,7 +120,7 @@ Rozszerzenie teraz powinna być włączona dla komputerów w wybranej jednostce 
 ## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (opcjonalnie): Wyłącz monit "Zapamiętaj hasło"
 Podczas logowania użytkownika do witryn sieci Web przy użyciu rozszerzenia Panelu dostępu, program Internet Explorer mogą być wyświetlane następujący wiersz zapytaniem "Czy chcesz zapisać hasło?"
 
-![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
+![Monit o hasło](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
 Jeśli chcesz uniemożliwić użytkownikom wyświetlanie ten monit, postępuj zgodnie z instrukcjami poniżej, aby uniknąć automatycznego uzupełniania z przypominania sobie haseł:
 

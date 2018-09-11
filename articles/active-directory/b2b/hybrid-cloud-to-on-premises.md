@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061025"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346342"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym
 
@@ -27,7 +27,7 @@ Jeśli aplikacji lokalnych korzysta z uwierzytelniania opartego na SAML, można 
 
 Należy wykonać obie z następujących czynności:
 
-- Integracja aplikacji SAML przy użyciu szablonu aplikacji spoza galerii, zgodnie z opisem w [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](../active-directory-saas-custom-apps.md). Upewnij się, że należy zwrócić uwagę na to, czego używasz dla **adres URL logowania** wartość.
+- Integracja aplikacji SAML przy użyciu szablonu aplikacji spoza galerii, zgodnie z opisem w [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Upewnij się, że należy zwrócić uwagę na to, czego używasz dla **adres URL logowania** wartość.
 -  Umożliwia publikowanie aplikacji w środowisku lokalnym przy użyciu serwera Proxy aplikacji usługi Azure AD **usługi Azure Active Directory** skonfigurowany jako źródło uwierzytelniania. Aby uzyskać instrukcje, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    Po skonfigurowaniu **wewnętrzny adres Url** ustawienia, użyj logowania jednokrotnego adres URL, który określono w szablonie aplikacji spoza galerii. W ten sposób użytkownicy mogą korzystać z aplikacji poza granicami organizacji. Serwer Proxy aplikacji wykonuje SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym.

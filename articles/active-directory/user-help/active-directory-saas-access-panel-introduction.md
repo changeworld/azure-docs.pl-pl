@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2e74e45761a2f21c522f80d453da48948e17de58
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302281"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347754"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -109,16 +109,6 @@ Zespół usługi Azure Active Directory publikuje aplikację mobilną Moje aplik
 
 > [!NOTE]
 > Możesz zalogować się do aplikacji, które obsługują federacji z usługą Azure AD (w tym Salesforce, Google Apps, Dropbox, Box, Concur, Workday, usługi Office 365 i ponad 70 innych) na obsługujących praktycznie dowolną przeglądarkę sieci web na dowolnym urządzeniu, bez konieczności używania aplikacji wtyczki lub urządzeniu przenośnym. Do użycia na urządzeniu przenośnym, druga [napotyka portalu MyApps](https://myapps.microsoft.com/) również nie wymagają aplikacji mobilnej Moje aplikacje.
->
->
-
-### <a name="my-apps-for-android"></a>Moje aplikacje dla systemu Android
-
-Moje aplikacje dla systemu Android jest obsługiwane na urządzeniu Android, która jest uruchomiona wersja systemu Android 4.1 lub nowszym.  
-
-Jest on dostępny w [sklepu Google Play](https://play.google.com/store/apps/details?id=com.microsoft.myapps).
-
-![Moje aplikacje dla systemu Android][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>Moje aplikacje dla urządzeń iPhone i tabletu iPad
 
@@ -129,13 +119,13 @@ Jest on dostępny w [Apple App Store](https://itunes.apple.com/us/app/my-apps-az
 ![Moje aplikacje dla systemu iOS][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>Programu Managed browser dla środowiska Moje aplikacje
+## <a name="intune-managed-browser-for-my-apps"></a>Intune Managed Browser dla mojej aplikacji
 
-Moje aplikacje jest także zintegrowana z aplikacji Intune Managed Browser. Intune Managed Browser dla systemu iOS i android odgrywa kluczową rolę w pomaganiu, upewnij się, że danych na urządzeniach przenośnych pozostanie bezpieczne. Przeglądarka umożliwia bezpieczne przeglądanie i przejdź do strony sieci Web, który może zawierać informacje o firmie, i pomaga zapewnić bezpieczne środowisko przeglądania sieci web.  
+Moje aplikacje jest także zintegrowana z aplikacji Intune Managed Browser. Intune Managed Browser dla systemu iOS i android ułatwia bezpieczniej przeglądać i przejdź do strony sieci Web, który może zawierać informacje o firmie, ułatwiając dostarczanie bardziej bezpieczne środowisko przeglądania sieci web.  
 
-Uzyskasz szybki dostęp do Moje aplikacje na stronie głównej Managed Browser oraz w zakładek, dzięki mniejszej liczbie kliknięć są wymagane, aby dotrzeć do dowolnej aplikacji, którą chcesz uzyskać dostęp do.
+Możesz uzyskać na Moje aplikacje z obie strony głównej Managed Browser i zakładek, co oznacza brak mniejszej liczbie kliknięć wymaganych do przejścia aplikacji.
 
-Intune Managed Browser znajduje się w temacie [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en).
+Intune Managed Browser znajduje się w temacie [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
 ![Programu Managed browser dla środowiska Moje aplikacje][5]    
 
@@ -216,11 +206,10 @@ Na przykład jeśli aplikacja jest skonfigurowana do uwierzytelniania użytkowni
  
 - Aby dowiedzieć się więcej o zarządzaniu aplikacjami w usłudze Azure AD, zobacz [wprowadzenie pojedynczego logowania jednokrotnego i zarządzanie nimi dostępu do aplikacji za pomocą usługi Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
  
-- Aby dowiedzieć się więcej na temat inicjowania obsługi użytkowników, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../active-directory-saas-app-provisioning.md).
+- Aby dowiedzieć się więcej na temat inicjowania obsługi użytkowników, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../manage-apps/user-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

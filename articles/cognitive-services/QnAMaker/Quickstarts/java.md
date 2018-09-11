@@ -1,20 +1,21 @@
 ---
-title: 'Szybki Start: Java Microsoft usługi QnA Maker API (v4) — usługi Azure Cognitive Services | Dokumentacja firmy Microsoft'
+title: 'Szybki Start: Java dla usługi QnA Maker API (v4)'
+titleSuffix: Azure Cognitive Services
 description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d8df77d43441331bdda38814e4bddfb29d1576c1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b436cbc1efde2e28b388e6bfc1843af1808ea993
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868402"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346677"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Przewodnik Szybki start dotyczący Microsoft usługi QnA Maker API za pomocą języka Java 
 <a name="HOLTop"></a>

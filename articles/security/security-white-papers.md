@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/17/2018
+ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b6953cc45305cf0812b185187c01149f0345756d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841551"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346071"
 ---
 # <a name="azure-security-white-papers"></a>Usługa Azure Security oficjalne dokumenty
 | | |
 |-|-|
 |[Wprowadzenie&nbsp;do&nbsp;Azure&nbsp;zabezpieczeń](azure-security.md)|W tym artykule wyjaśniono zbiór kontroli zabezpieczeń zastosowanych w systemie Azure z perspektywy operacji firmy Microsoft i klienta. Udostępnia kompleksowych informacji o dostępnych opcji zabezpieczeń przeznaczonych dla klientów z platformą Azure.|
+|[Najlepsze rozwiązania dotyczące rozwiązań platformy Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Kolekcja najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas projektowania, wdrażania i zarządzania rozwiązania w chmurze, korzystając z platformy Azure.|
 |[Zaawansowane wykrywanie zagrożeń](azure-threat-detection.md)|Przewodniki, które możesz za pomocą platformy Azure zbliża się do oceny luk w zabezpieczeniach przed zagrożeniami, diagnostyki i analizy. W tym artykule wyjaśniono, jak firma Microsoft stosuje mechanizmy wykrywania zaawansowanych zagrożeń do zabezpieczania platformy. Wyjaśniono również, jak firma Microsoft udostępnia te mechanizmy w publicznych funkcji umożliwiający dostęp do Internetu i usługi.|
 |[Usługa Azure data szyfrowanie w spoczynku](azure-security-encryption-atrest.md)|Koncentruje się na sposób ochrony danych przechowywanych na platformie Azure i różnych składników biorących udział w implementacji ochrony danych. Przeglądy dotyczące zalet i wad różnych zarządzania kluczami metod ochrony.|
 |[Rejestrowanie i przeprowadzanie inspekcji na platformie Azure](azure-log-audit.md)|Wprowadzenie do generowania, zbierania i analizowania dzienników zabezpieczeń z usług hostowanych na platformie Azure. Te dzienniki mogą pomóc uzyskać wgląd w zabezpieczenia do wdrożeń platformy Azure. |

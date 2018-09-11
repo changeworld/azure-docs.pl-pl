@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: cc9b5810085d3300861735a95a94e577bf61d70e
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061703"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346053"
 ---
 # <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -48,14 +48,13 @@ Usługi płatne Azure AD, takie jak Enterprise Mobility + Security, uzupełniaj�
 
 - - -
 
-**Pytanie: jaka jest różnica między administratorem subskrypcji a administratorem katalogu?**
+**Pytanie: jakie są różnice między właściciela i administratora globalnego?**
 
-**Odpowiedź:** domyślnie po utworzeniu konta na platformie Azure przypisywana jest do niego rola administratora subskrypcji. Administrator subskrypcji może używać konta Microsoft lub konta służbowego z katalogu, z którym została skojarzona subskrypcja platformy Azure.  Ta rola jest autoryzowana do zarządzania usługami w witrynie Azure Portal.
+**Odp.:** , osoby, która zarejestruje się w subskrypcji platformy Azure jest domyślnie przypisywany roli właściciela dla zasobów platformy Azure. Właściciel można użyć konta Microsoft lub konta służbowego z katalogu, w którym jest skojarzona subskrypcja platformy Azure, za pomocą.  Ta rola jest autoryzowana do zarządzania usługami w witrynie Azure Portal.
 
-Jeśli inni użytkownicy potrzebują logować się i uzyskiwać dostęp do usług za pomocą tej samej subskrypcji, możesz dodać ich jako współadministratorów. Ta rola ma takie same uprawnienia dostępu jak administrator usługi, ale nie może zmieniać skojarzenia subskrypcji z katalogami platformy Azure.  Aby uzyskać dodatkowe informacje na temat administratorów subskrypcji, zobacz [How to add or change Azure administrator roles](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator) (Jak dodać lub zmienić role administratora platformy Azure) i [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
+Jeśli inni użytkownicy potrzebują logować się i uzyskać dostęp do usług za pomocą tej samej subskrypcji, możesz przypisać im odpowiednie [wbudowana rola](../../role-based-access-control/built-in-roles.md). Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
-
-Usługa Azure AD ma inny zestaw ról administratora na potrzeby zarządzania katalogiem i funkcjami dotyczącymi tożsamości.  Ci administratorzy będą mieli dostęp do różnych funkcji w witrynie Azure Portal. Rola administratora określa, co może robić administrator, na przykład tworzyć lub edytować użytkowników, przypisywać role administracyjne innym osobom, resetować hasła użytkowników, zarządzać licencjami użytkowników oraz zarządzać domenami.  Aby uzyskać dodatkowe informacje na temat administratorów usługi Azure AD i ich ról, zobacz [Przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Domyślnie osoba, która zarejestruje się w subskrypcji platformy Azure przypisano rolę administratora globalnego dla katalogu. Administrator globalny ma dostęp do wszystkich funkcji katalogu usługi Azure AD. Usługa Azure AD ma inny zestaw ról administratora na potrzeby zarządzania katalogiem i funkcjami dotyczącymi tożsamości. Ci Administratorzy mają dostęp do różnych funkcji w witrynie Azure portal. Rola administratora Określa, co może zrobić, jak utworzyć lub edytować użytkowników, przypisywać role administracyjne innym osobom, resetować hasła użytkowników, zarządzać licencjami użytkowników lub zarządzać domenami.  Aby uzyskać dodatkowe informacje na temat administratorów usługi Azure AD i ich ról, zobacz [przypisać użytkownika do ról administratora w usłudze Azure Active Directory](active-directory-users-assign-role-azure-portal.md) i [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 Ponadto usługi płatne Azure AD, takie jak Enterprise Mobility + Security, uzupełniają inne usługi sieci Web, np. Office 365 i Microsoft Azure, zapewniając kompleksowe rozwiązania z zakresu skalowalnego zarządzania dla przedsiębiorstw i bezpieczeństwa.
 
@@ -163,7 +162,7 @@ Aby uzyskać pełną listę wstępnie zintegrowanych aplikacji, zobacz [Active D
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](../manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
@@ -208,7 +207,7 @@ Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usługi Offi
 
 **Odpowiedź:** usługa Azure AD umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w wielu popularnych aplikacjach SaaS w chmurze.
 
-Aby uzyskać więcej informacji, zobacz [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](../active-directory-saas-app-provisioning.md) (Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory).
+Aby uzyskać więcej informacji, zobacz [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](../manage-apps/user-provisioning.md) (Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory).
 
 - - -
 **Pytanie: czy mogę skonfigurować bezpieczne połączenie LDAP z usługą Azure AD?**

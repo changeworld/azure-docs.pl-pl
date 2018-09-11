@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 26f8880d01da00780317ee2a6f66ee5007576a50
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160425"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347668"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: Różnice i zagadnienia dotyczące
 Ten artykuł zawiera podsumowanie znane różnice między stosu usługi Azure Managed Disks i dysków Managed Disks na platformie Azure. Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
@@ -38,7 +38,7 @@ Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS
 |Opcje odzyskiwania po awarii |Obsługa usługi Azure Site Recovery |Nie jest jeszcze obsługiwany|
 |Typy dysków     |Dysk SSD w warstwie Premium SSD w warstwie standardowa (wersja zapoznawcza) i standardowych dysków Twardych |Premium SSD, HDD standardowe |
 |Dyski w warstwie Premium  |W pełni obsługiwane |Mogą być udostępniane, ale bez ograniczeń wydajności lub gwarancji  |
-|Dyski w warstwie Premium  |Operacje We/Wy  |Zależy od rozmiaru 2300 operacje We/Wy na dysk na dysku |
+|Dyski Premium operacje We/Wy  |Zależy od rozmiaru dysku  |2300 operacje We/Wy na dysk |
 |Przepływność dysków Premium |Zależy od rozmiaru dysku |145 MB na sekundę na dysk |
 |Maksymalny rozmiar dysku  |4 TB       |1 TB       |
 |Wydajność dysków analitycznych |Agregują metryki i metryki na dysk obsługiwane |Nie jest jeszcze obsługiwany |

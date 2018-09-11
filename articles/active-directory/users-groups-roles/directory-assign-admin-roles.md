@@ -14,12 +14,12 @@ ms.date: 09/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 9aa8e5e6e683da0cb95583979e96c1d315dffff9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2768ba4726ccaf5e2249e356e425aeafaaaf91f6
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094302"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349249"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -86,7 +86,7 @@ Dostępne są następujące role administratora:
 
 * **[Partner pomocy technicznej w warstwie 2](#partner-tier2-support)**: nie używaj. Ta rola jest przestarzała i zostanie usunięty z usługi Azure AD w przyszłości. Ta rola jest przeznaczony do użytku przez małą liczbę partnerów firmy Microsoft w odsprzedaży i nie jest przeznaczona do użytku ogólnego.
 
-* **[Administrator haseł / Administrator pomocy technicznej](#helpdesk-administrator)**: użytkownicy z tą rolą mogą zmienić hasła, zarządzać żądaniami obsługi i monitorowania kondycji usługi. Administratorzy pomocy technicznej mogą zmieniać hasła tylko dla użytkowników i innych administratorów pomocy technicznej. 
+* **[Administrator haseł / Administrator pomocy technicznej](#helpdesk-administrator)**: użytkownicy z tą rolą można zmienić hasła, unieważnienie tokeny odświeżania, zarządzanie żądaniami obsługi i monitorowania kondycji usługi. Administratorzy pomocy technicznej mogą zmieniać hasła i unieważnić tokenów odświeżania tylko dla użytkowników i innych administratorów pomocy technicznej. Unieważnienie token odświeżania wymusza na użytkowniku, aby zalogować się ponownie.
 
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator pomocy technicznej". Jest on "Administrator haseł" [witryny Azure portal](https://portal.azure.com/).
@@ -126,7 +126,7 @@ Dostępne są następujące role administratora:
   >
   >
 
-* **[Administrator kont użytkowników](#user-account-administrator)**: użytkownicy, z tą rolą mogą tworzyć i zarządzać wszystkimi aspektami użytkowników i grup. Ponadto ta rola obejmuje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Obowiązują pewne ograniczenia. Na przykład ta rola nie zezwala na usuwanie administratora globalnego. Administratorzy kont użytkowników można zmienić hasła dla użytkowników, Administratorzy pomocy technicznej i administratorów konta tylko innych użytkowników.
+* **[Administrator kont użytkowników](#user-account-administrator)**: użytkownicy, z tą rolą mogą tworzyć i zarządzać wszystkimi aspektami użytkowników i grup. Ponadto ta rola obejmuje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Obowiązują pewne ograniczenia. Na przykład ta rola nie zezwala na usuwanie administratora globalnego. Administratorzy kont użytkowników można zmienić hasła i unieważnić tokenów odświeżania dla użytkowników, Administratorzy pomocy technicznej i innych administratorów konta użytkownika. Unieważnienie token odświeżania wymusza na użytkowniku, aby zalogować się ponownie.
 
 | Można zrobić | Nie można wykonać |
 | --- | --- |
@@ -1176,6 +1176,6 @@ Rolą domyślną dla użytkowników. Może odczytywać wszystkie i zapisywać og
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [How to add or change Azure administrator roles](../../billing/billing-add-change-azure-subscription-administrator.md) (Jak dodać lub zmienić role administratora platformy Azure).
+* Aby dowiedzieć się więcej na temat sposobu przypisywania użytkownika jako administratora subskrypcji platformy Azure, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md)
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
 * Aby uzyskać więcej informacji dotyczących relacji między usługą Azure Active Directory i subskrypcją platformy Azure, zobacz [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

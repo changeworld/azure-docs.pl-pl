@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 90b5009b3b260a0f4245459467ae248f800ad818
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094539"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301487"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w witrynie Azure portal 
 
@@ -111,7 +111,7 @@ Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami usługi Ap
 
 | | |
 |-|-|
-| ![Opcje wdrażania aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions pozwala tworzyć kod funkcji na komputerze lokalnym. Następnie możesz przekazać swój projekt aplikacji funkcji lokalnej na platformę Azure. Oprócz tradycyjnych przekazywania FTP Functions umożliwia wdrażanie aplikacji funkcji przy użyciu rozwiązań popularnych ciągłej integracji, takich jak GitHub, programu VSTS, Dropbox, Bitbucket i inne. Aby uzyskać więcej informacji, zobacz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md). Aby przekazać ręcznie przy użyciu protokołu FTP i lokalnego narzędzia Git, również należy [skonfiguruj poświadczenia wdrożenia](functions-continuous-deployment.md#credentials). |
+| ![Opcje wdrażania aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions pozwala tworzyć kod funkcji na komputerze lokalnym. Następnie możesz przekazać swój projekt aplikacji funkcji lokalnej na platformę Azure. Oprócz tradycyjnych przekazywania FTP Functions umożliwia wdrażanie aplikacji funkcji przy użyciu rozwiązań popularnych ciągłej integracji, takich jak GitHub, DevOps platformy Azure, Dropbox, Bitbucket i inne. Aby uzyskać więcej informacji, zobacz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md). Aby przekazać ręcznie przy użyciu protokołu FTP i lokalnego narzędzia Git, również należy [skonfiguruj poświadczenia wdrożenia](functions-continuous-deployment.md#credentials). |
 
 
 ### <a name="cors"></a>CORS

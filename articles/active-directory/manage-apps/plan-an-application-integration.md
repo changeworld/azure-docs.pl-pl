@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: e90ffa0a7b5eb9e622a666fdcfa956763abd7633
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d52ec316f9f5540d4d0d0fe0bc4e4bf778e1daf7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162805"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345448"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrowanie usługi Azure Active Directory z aplikacjami Wprowadzenie przewodnik wprowadzenie
 
@@ -85,7 +85,7 @@ Jeśli chcesz dodać niestandardową aplikację do galerii aplikacji Azure, zoba
 Następujące artykuły opis sposobów zarządzać dostępem do aplikacji po zostały zintegrowane za pomocą usługi Azure AD przy użyciu łączników usługi Azure AD i Azure AD.
 
 * [Zarządzanie dostępem do aplikacji przy użyciu usługi Azure AD](what-is-access-management.md)
-* [Automatyzacja za pomocą łączników usługi Azure AD](../active-directory-saas-app-provisioning.md)
+* [Automatyzacja za pomocą łączników usługi Azure AD](user-provisioning.md)
 * [Assigning users to an application](../active-directory-applications-guiding-developers-assigning-users.md) (Przypisywanie użytkowników do aplikacji)
 * [Assigning groups to an application](../active-directory-applications-guiding-developers-assigning-groups.md) (Przypisywanie grup do aplikacji)
 * [Udostępnianie kont](../active-directory-sharing-accounts.md)

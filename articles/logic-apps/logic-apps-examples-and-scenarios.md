@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: f35822351a1ff5176548d67c8d94ada02f470421
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123712"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304428"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Typowe scenariusze, przykłady, samouczki i przewodniki dla usługi Azure Logic Apps
 
@@ -76,7 +76,7 @@ Aplikacje logiki zawierają wiele możliwości do przepływu sterowania zaawanso
 
 ## <a name="deploy-and-manage-logic-apps"></a>Wdrażanie i zarządzanie aplikacjami logiki
 
-Można w pełni tworzenia i wdrażania aplikacji logiki za pomocą programu Visual Studio, Visual Studio Team Services ani innych kontroli źródła i narzędzi automatycznej kompilacji. Do obsługi wdrożenia dla przepływów pracy i połączeń zależnych w szablonie zasobu, aplikacje logiki korzystanie z szablonów wdrażania zasobów platformy Azure. Narzędzia programu Visual Studio automatycznie generować tych szablonów, które można sprawdzić kontroli źródła pod kątem przechowywania wersji.
+Można w pełni tworzenia i wdrażania aplikacji logiki za pomocą programu Visual Studio, DevOps platformy Azure lub innych kontroli źródła i narzędzi automatycznej kompilacji. Do obsługi wdrożenia dla przepływów pracy i połączeń zależnych w szablonie zasobu, aplikacje logiki korzystanie z szablonów wdrażania zasobów platformy Azure. Narzędzia programu Visual Studio automatycznie generować tych szablonów, które można sprawdzić kontroli źródła pod kątem przechowywania wersji.
 
 * [Tworzenie i wdrażanie aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Włącz monitorowanie, rejestrowanie i alerty dla istniejących aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)

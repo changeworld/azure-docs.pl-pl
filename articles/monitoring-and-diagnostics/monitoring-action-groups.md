@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 441469e24de5324fb5bed40c75f9a6b26f85bcc5
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745711"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325060"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -83,6 +83,7 @@ Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablon�
 
 <dt>Element Runbook</dt>
 <dd>Może mieć maksymalnie 10 elementów Runbook akcji w grupy akcji</dd>
+<dd>Zapoznaj się [limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md) limity ładunków elementu Runbook</dd>
 
 <dt>WIADOMOŚCI SMS</dt>
 <dd>Może mieć maksymalnie 10 akcje programu SMS w grupy akcji</dd>

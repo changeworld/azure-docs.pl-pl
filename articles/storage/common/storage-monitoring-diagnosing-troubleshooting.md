@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528718"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304683"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ Praktyczny przewodnik dotyczący end-to-end Rozwiązywanie problemów w aplikacj
   * [Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]
   * [Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]
   * [Dodatek 4: Przy użyciu programu Excel, aby wyświetlić metryki i dane dziennika]
-  * [Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla programu Visual Studio Team Services]
+  * [Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure]
 
 ## <a name="introduction"></a>Wprowadzenie
 Ten przewodnik przedstawia sposób użycia funkcji, takich jak usługi Azure Storage Analytics, klienta logowania z biblioteki klienta usługi Azure Storage i innych narzędzi innych firm do identyfikacji, diagnozowanie i rozwiązywanie problemów z usługi Azure Storage problemy związane z usługą.
@@ -125,7 +125,7 @@ Możesz użyć [witryny Azure portal](https://portal.azure.com) umożliwiającyc
 [Witryny Azure portal](https://portal.azure.com) można również dołączyć powiadomienia zdarzenia mające wpływ na różne usługi platformy Azure.
 Uwaga: Te informacje wcześniej była dostępna, wraz z danych historycznych na [pulpitu nawigacyjnego usług systemu Azure](http://status.azure.com).
 
-Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla Visual Studio Team Services są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla Visual Studio Team Services, zobacz dodatku "[dodatek 5: monitorowanie za pomocą usługi Application Insights dla Visual Studio Team Services](#appendix-5)."
+Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla metodyki DevOps platformy Azure są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla metodyki DevOps platformy Azure, zobacz dodatku "[dodatek 5: monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure](#appendix-5)."
 
 ### <a name="monitoring-capacity"></a>Monitorowanie wydajności
 Ponieważ obiekty BLOB są zazwyczaj konto największą część danych przechowywanych metryk usługi Storage tylko przechowuje metryki pojemności dla usługi blob (w czasie pisania, nie jest możliwe monitorowanie pojemności, tabele i kolejki za pomocą metryk usługi Storage). Możesz znaleźć te dane w **$MetricsCapacityBlob** tabeli po włączeniu monitorowania usługi obiektów Blob. Metryki magazynu rejestruje następujące dane raz dziennie, a następnie można użyć wartości **RowKey** do określenia, czy wiersz zawiera jednostki, która odnosi się do danych użytkownika (wartość **danych**) lub dane analizy (wartość **analytics**). Każda jednostka przechowywanych zawiera informacje o wielkość wykorzystanego magazynu (**pojemności** mierzony w bajtach) i bieżącą liczbę kontenerów (**ContainerCount**) i obiektów blob (**ObjectCount** ) używane w ramach konta magazynu. Aby uzyskać więcej informacji na temat metryki pojemności, przechowywane w **$MetricsCapacityBlob** tabeli, zobacz [schemat tabeli metryk usługi Analytics magazynu](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -625,7 +625,7 @@ Jeśli ten problem występuje często, powinieneś zbadać, dlaczego klient jest
 ### <a name="the-client-is-receiving-409-messages"></a>Klient odbiera komunikaty HTTP 409 (konflikt)
 W poniższej tabeli przedstawiono wyciąg z dwóch operacji klienta w dzienniku po stronie serwera: **DeleteIfExists** a następnie natychmiast przez **CreateIfNotExists** przy użyciu tej samej nazwy kontenera obiektów blob. Każda operacja klienta powoduje dwa żądania wysyłane do serwera, najpierw **GetContainerProperties** żądania, aby sprawdzić, czy kontener istnieje, następuje **DeleteContainer** lub  **CreateContainer** żądania.
 
-| Sygnatura czasowa | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
+| Znacznik czasu | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -799,8 +799,8 @@ Aby zaimportować rejestrowania magazynu danych do programu Excel, po pobraniu g
 
 W kroku 1 **Kreatora importu tekstu**, wybierz opcję **średnik** jako ogranicznika tylko i wybierz podwójnego cudzysłowu jako **kwalifikator tekstu**. Następnie kliknij przycisk **Zakończ** i wybierz miejsce umieszczenia danych w skoroszycie.
 
-### <a name="appendix-5"></a>Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla Visual Studio Team Services
-Można również użyć funkcji usługi Application Insights dla Visual Studio Team Services, jako część swojej monitorowanie wydajności i dostępności. To narzędzie wykonywać następujące czynności:
+### <a name="appendix-5"></a>Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure
+Można również użyć funkcji usługi Application Insights dla metodyki DevOps platformy Azure, jako część swojej monitorowanie wydajności i dostępności. To narzędzie wykonywać następujące czynności:
 
 * Upewnij się, że usługi sieci web jest dostępna i działa prawidłowo. Czy Twoja aplikacja jest witryną sieci web lub aplikacji urządzenia, która korzysta z usługi sieci web, go Przetestuj adres URL co kilka minut z lokalizacji na całym świecie i powiadomienie Cię o tym, jeśli występuje problem.
 * Szybkie diagnozowanie problemów z wydajnością dowolnej wyjątków w usłudze sieci web. Dowiedz się, jeśli są rozciągnięcia procesora CPU lub innych zasobów, uzyskiwanie śladów stosu wyjątków i łatwo przeszukiwać dane dziennika śledzenia. Jeśli wydajność aplikacji spadnie poniżej wydatkami telekomunikacyjnymi, Microsoft może wysyłać wiadomości e-mail. Można monitorować usługi sieci web platformy .NET i Java.
@@ -865,7 +865,7 @@ Więcej informacji można znaleźć [co to jest usługa Application Insights](..
 [Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]: #appendix-2
 [Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]: #appendix-3
 [Dodatek 4: Przy użyciu programu Excel, aby wyświetlić metryki i dane dziennika]: #appendix-4
-[Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla programu Visual Studio Team Services]: #appendix-5
+[Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png
