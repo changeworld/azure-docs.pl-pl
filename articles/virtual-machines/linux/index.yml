@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c1bb364bfedb24349f2b0bc92f99d482027f709d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185353"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294378"
 documentType: LandingData
 title: Maszyny wirtualne z systemem Linux
 metadata:
@@ -71,7 +71,7 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitorowanie i aktualizowanie maszyn wirtualnych</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe dostarczanie za pomocą usług Team Services</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines</a>
     - html: Tworzenie stosu serwera internetowego z użyciem modelu <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> lub <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight

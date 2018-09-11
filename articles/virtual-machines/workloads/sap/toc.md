@@ -25,7 +25,9 @@
 ### [Weryfikowanie konfiguracji](hana-installation.md)
 ### [Przykładowa instalacja platformy HANA](hana-example-installation.md)
 ## [Wysoka dostępność i odzyskiwanie po awarii](hana-overview-high-availability-disaster-recovery.md)
-## [Rozwiązywanie problemów i monitorowanie](troubleshooting-monitoring.md)
+## Rozwiązywanie problemów i monitorowanie
+### [Monitorowanie funkcji HANA — duże wystąpienia](troubleshooting-monitoring.md)
+### [Monitorowanie i rozwiązywanie problemów ze strony oprogramowania HANA](hana-monitor-troubleshoot.md)
 ## Instrukcje
 ### [Konfiguracja wysokiej dostępności za pomocą metody STONITH](ha-setup-with-stonith.md)
 ### [Kopia zapasowa systemu operacyjnego dla jednostek SKU typu II](os-backup-type-ii-skus.md)

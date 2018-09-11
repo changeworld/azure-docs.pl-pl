@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697751"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300839"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -30,7 +30,7 @@ Dowiedz się, jak wdrożyć aplikację na platformę Azure i usługi Azure Stack
 W ramach tego samouczka utworzysz przykładowe środowisku:
 
 > [!div class="checklist"]
-> * Zainicjuj nowej kompilacji, w oparciu o zatwierdzenia kodu do repozytorium programu Visual Studio Team Services (VSTS).
+> * Zainicjuj nowej kompilacji, w oparciu o zatwierdzenia kodu do repozytorium usługi DevOps platformy Azure.
 > * Automatyczne wdrażanie aplikacji do globalnej platformy Azure dla testy odbiorcze użytkowników.
 > * Po kodzie przekazuje, testowanie, można automatycznie wdrażać aplikację do usługi Azure Stack.
 
@@ -81,30 +81,30 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
  * Tworzenie [planu/ofert](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) w usłudze Azure Stack.
  * Tworzenie [dzierżawy subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w usłudze Azure Stack.
  * Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj nowy adres URL aplikacji sieci Web dla później użyć.
- * Wdróż maszynę wirtualną usługi VSTS w ramach subskrypcji dzierżawy.
+ * Wdrażanie maszyny wirtualnej usługi DevOps platformy Azure w ramach subskrypcji dzierżawy.
 * Udostępnij obrazu systemu Windows Server 2016 platformy .NET 3.5 dla maszyny wirtualnej (VM). Ta maszyna wirtualna zostanie utworzona na usługi Azure Stack jako funkcja agentów kompilacji prywatnych.
 
 ### <a name="developer-tool-requirements"></a>Wymagania dotyczące narzędzi dla deweloperów
 
-* Tworzenie [obszar roboczy usługi VSTS](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces). Proces rejestracji tworzy projekt o nazwie **MyFirstProject**.
-* [Instalowanie programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do usługi VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* Tworzenie [usługom DevOps platformy Azure w obszarze roboczym](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). Proces rejestracji tworzy projekt o nazwie **MyFirstProject**.
+* [Instalowanie programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do usługi Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Połącz się z projektem i [go sklonować lokalnie](https://www.visualstudio.com/docs/git/gitquickstart).
 
  > [!Note]
  > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service.
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Przygotowanie prywatnej kompilacji i wersji agenta do integracji programu Visual Studio Team Services
+## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Przygotowanie agenta prywatnego potoki platformy Azure do integracji z usługami DevOps platformy Azure
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Visual Studio Team Services (VSTS) jest uwierzytelniany względem usługi Azure Resource Manager przy użyciu jednostki usługi. Usługi VSTS musi mieć **Współautor** roli inicjowania obsługi administracyjnej zasobów w subskrypcji usługi Azure Stack.
+Usługi Azure DevOps jest uwierzytelniany względem usługi Azure Resource Manager przy użyciu jednostki usługi. Musi mieć usługi platformy Azure DevOps **Współautor** roli inicjowania obsługi administracyjnej zasobów w subskrypcji usługi Azure Stack.
 
 W poniższych krokach opisano, co to są wymagane do skonfigurowania uwierzytelniania:
 
 1. Tworzenie jednostki usługi, lub użyj istniejącej nazwy głównej usługi.
 2. Utwórz klucze uwierzytelniania jednostki usługi.
 3. Sprawdzanie poprawności subskrypcji platformy Azure Stack za pośrednictwem roli-Based Access Control, aby zezwolić na główną nazwę usługi (SPN) jako część roli "Współautor".
-4. Utwórz nową definicję usługi w usłudze VSTS za pomocą punktów końcowych usługi Azure Stack i nazwę SPN informacji.
+4. Utwórz nową definicję usługi w usłudze Azure Services DevOps za pomocą punktów końcowych usługi Azure Stack i nazwę SPN informacji.
 
 ### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
@@ -122,7 +122,7 @@ Jednostki usługi wymaga klucza uwierzytelniania. Wykonaj następujące kroki, a
 
     ![Wybierz aplikację](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. Zanotuj wartość **identyfikator aplikacji**. Użyjesz tej wartości podczas konfigurowania punktu końcowego usługi w usłudze VSTS.
+2. Zanotuj wartość **identyfikator aplikacji**. Podczas konfigurowania punktu końcowego usługi w usługach infrastruktury DevOps platformy Azure, użyje tej wartości.
 
     ![Identyfikator aplikacji](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -144,7 +144,7 @@ Jednostki usługi wymaga klucza uwierzytelniania. Wykonaj następujące kroki, a
 
 ### <a name="get-the-tenant-id"></a>Pobieranie Identyfikatora dzierżawy
 
-W ramach konfiguracji punktu końcowego usługi, wymaga usługi VSTS **identyfikator dzierżawy** odnosi się do katalogu usługi AAD, który jest wdrażana sygnatury usługi Azure Stack. Wykonaj następujące kroki, aby uzyskać identyfikator dzierżawy.
+W ramach konfiguracji punktu końcowego usługi, usługom DevOps platformy Azure wymaga **identyfikator dzierżawy** odnosi się do katalogu usługi AAD, który jest wdrażana sygnatury usługi Azure Stack. Wykonaj następujące kroki, aby uzyskać identyfikator dzierżawy.
 
 1. Wybierz pozycję **Azure Active Directory**.
 
@@ -194,20 +194,21 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
 Usługa Azure opartej na rolach kontrola dostępu (RBAC) umożliwia szczegółowe zarządzanie dostępem dla platformy Azure. Za pomocą funkcji RBAC, można kontrolować poziom dostępu, których użytkownicy potrzebują do wykonywania ich zadań. Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach, zobacz [zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
-### <a name="vsts-agent-pools"></a>Pule agentów usługi VSTS
+### <a name="azure-devops-services-agent-pools"></a>Pule agentów Services — Azure DevOps
 
-Zamiast na zarządzaniu oddzielnie każdego agenta, możesz organizować agentów w pulach agentów. Pula agentów definiuje granicy udostępniania dla wszystkich agentów w puli. W usłudze VSTS pule agentów są ograniczone do konta usługi VSTS, co oznacza, że mogą udostępniać pulę agentów w projektach zespołowych. Aby dowiedzieć się więcej o pulach agentów, zobacz [Tworzenie pul agentów i kolejki](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
+Zamiast na zarządzaniu oddzielnie każdego agenta, możesz organizować agentów w pulach agentów. Pula agentów definiuje granicy udostępniania dla wszystkich agentów w puli. W usługach Azure DevOps pul agentów są ograniczone do organizacji usługom DevOps platformy Azure, co oznacza, że mogą udostępniać pulę agentów w projektach. Aby dowiedzieć się więcej o pulach agentów, zobacz [Tworzenie pul agentów i kolejki](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts).
 
 ### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Dodaj osobistego tokenu dostępu (PAT) dla usługi Azure Stack
 
-Utwórz osobisty Token dostępu do dostępu do usługi VSTS.
+Utwórz osobisty Token dostępu na dostęp do usług infrastruktury DevOps platformy Azure.
 
-1. Zaloguj się do konta usługi VSTS, a następnie wybierz nazwę profilu konta.
+1. Zaloguj się do Twojej organizacji usługom DevOps platformy Azure i wybierz nazwę profilu organizacji.
+
 2. Wybierz **zarządzania zabezpieczeniami** do strony tworzenia tokenu dostępu.
 
     ![Logowanie użytkowników](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![Wybierz projekt zespołowy](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Wybierz projekt](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
     ![Dodaj osobisty token dostępu](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
@@ -220,7 +221,7 @@ Utwórz osobisty Token dostępu do dostępu do usługi VSTS.
 
     ![Osobisty token dostępu](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Zainstaluj agenta kompilacji usługi VSTS w usłudze Azure Stack hostowany serwer kompilacji
+### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Zainstaluj agenta kompilacji usługom DevOps platformy Azure w usłudze Azure Stack hostowany serwer kompilacji
 
 1. Połącz na serwerze kompilacji, na którym została wdrożona na hoście usługi Azure Stack.
 2. Pobieranie i wdrażanie agenta kompilacji, jako usługa korzystająca z osobistej (PAT) token dostępu i uruchomiona za pomocą konta administratora maszyny Wirtualnej.
@@ -237,17 +238,17 @@ Utwórz osobisty Token dostępu do dostępu do usługi VSTS.
 
     ![Aktualizacja folder agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    Możesz zobaczyć agenta w folderze usługi VSTS.
+    Możesz zobaczyć agenta w folderze usługom DevOps platformy Azure.
 
 ## <a name="endpoint-creation-permissions"></a>Uprawnienia do tworzenia punktu końcowego
 
-Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Usługa VSTS umożliwia nawiązywanie agenta kompilacji, który jest połączony z usługą Azure Stack.
+Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Usługi Azure DevOps łączy się agenta kompilacji, który jest połączony z usługą Azure Stack.
 
 ![NorthwindCloud przykładową aplikację w VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
 1. Zaloguj się do narzędzi VSTO dla programów, a następnie przejdź do strony Ustawienia aplikacji.
 2. Na **ustawienia**, wybierz opcję **zabezpieczeń**.
-3. W **grupy usługi VSTS**, wybierz opcję **punktu końcowego dla twórców**.
+3. W **grup usługi DevOps platformy Azure**, wybierz opcję **punktu końcowego dla twórców**.
 
     ![Punkt końcowy NorthwindCloud dla twórców](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
@@ -257,7 +258,7 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 
 5. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 6. Wybierz **Zapisz zmiany**.
-7. W **grupy usługi VSTS** listy wybierz **Administratorzy punktu końcowego**.
+7. W **grup usługi DevOps platformy Azure** listy wybierz **Administratorzy punktu końcowego**.
 
     ![Administratorzy NorthwindCloud punktu końcowego](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
@@ -265,6 +266,7 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 10. Wybierz **Zapisz zmiany**.
 
+Teraz, gdy informacje o punkcie końcowym istnieje, usługom DevOps platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agenta kompilacji w usłudze Azure Stack pobiera instrukcje z usługom DevOps platformy Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 ## <a name="create-an-azure-stack-endpoint"></a>Tworzenie punktu końcowego usługi Azure Stack
 
 Możesz wykonać instrukcje w [tworzenia połączenia z usługą Azure Resource Manager za pomocą istniejącej usługi głównej ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) artykuł, aby utworzyć połączenie usługi z istniejącej usługi głównej i użyj następującego mapowania:
@@ -285,18 +287,18 @@ Teraz, gdy jest tworzony punkt końcowy, usługa VSTS do połączenia usługi Az
 
 W tej części samouczka należy:
 
-* Dodaj kod do projektu usługi VSTS.
+* Dodaj kod do projektu usługom DevOps platformy Azure.
 * Tworzenie wdrożenia aplikacji sieci web niezależna.
 * Skonfiguruj proces ciągłego wdrażania
 
 > [!Note]
  > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service. Przejrzyj dokumentację usługi App Service sekcji "Wymagania wstępne" dla usługi Azure Stack Operator wymagań.
 
-Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonami usługi Azure Resource Manager, takimi jak web ](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługi VSTS, aby wdrożyć w obu chmurach.
+Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonami usługi Azure Resource Manager, takimi jak web ](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługom DevOps platformy Azure można wdrażać w obu chmurach.
 
-### <a name="add-code-to-a-vsts-project"></a>Dodawanie kodu do projektu usługi VSTS
+### <a name="add-code-to-an-azure-devops-services-project"></a>Dodawanie kodu do projektu usługom DevOps platformy Azure
 
-1. Zaloguj się do usługi VSTS przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
+1. Zaloguj się do usługi Azure DevOps Services przy użyciu organizacji, która ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
 
     ![Połącz z projektem](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
@@ -310,37 +312,38 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
     ![Konfigurowanie Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
-2. Użyj programu Team Explorer, aby sprawdzić kod do usługi VSTS.
+2. Użyj programu Team Explorer, aby zaewidencjonować kod w usługom DevOps platformy Azure.
 
-3. Upewnij się, że zostało zaznaczone pole wyboru kodu aplikacji w Visual Studio Team Services.
+3. Upewnij się, że kod aplikacji zaewidencjonowaniu usługom DevOps platformy Azure.
 
-### <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
+### <a name="create-the-build-pipeline"></a>Tworzenie potoku kompilacji
 
-1. Zaloguj się do usługi VSTS przy użyciu konta, które można utworzyć definicję kompilacji.
-2. Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
+1. Zaloguj się do usługi Azure DevOps Services przy użyciu organizacji, w której można utworzyć potoku kompilacji.
+
+2. Przejdź do **kompilacji Web Distributed** strony dla projektu.
 
 3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
-    ![Dodaj definicję kompilacji argumentu](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![Dodaj argument kompilacji potoku](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
 4. Uruchom kompilację. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 
 ### <a name="use-an-azure-hosted-build-agent"></a>Użyj platformy Azure hostowanej agenta kompilacji
 
-Przy użyciu hostowanego agenta kompilacji w usłudze VSTS jest to wygodny sposób kompilowania i wdrażania aplikacji sieci web. Konserwacja agentów i uaktualnień, automatycznie są wykonywane przez Microsoft Azure, co umożliwia cyklu rozwoju ciągłe i nieprzerwany.
+Przy użyciu hostowanego agenta kompilacji w usługom DevOps platformy Azure jest to wygodny sposób kompilowania i wdrażania aplikacji sieci web. Konserwacja agentów i uaktualnień, automatycznie są wykonywane przez Microsoft Azure, co umożliwia cyklu rozwoju ciągłe i nieprzerwany.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Skonfiguruj proces ciągłego wdrażania (polecenie CD)
 
-Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) zapewniają potoku wysoce konfigurowalne i łatwe w zarządzaniu dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, zapewniania jakości (QA) i produkcyjnych. Ten proces może obejmować wymagające zatwierdzenia poszczególnych etapów cyklu życia aplikacji.
+Azure usługom DevOps i Team Foundation Server (TFS) zapewniają wysoce konfigurowalne i łatwe w zarządzaniu potoku wydań w wielu środowiskach programowania, przejściowe, zapewniania jakości (QA) i produkcja. Ten proces może obejmować wymagające zatwierdzenia poszczególnych etapów cyklu życia aplikacji.
 
-### <a name="create-release-definition"></a>Tworzenie definicji wydania
+### <a name="create-release-pipeline"></a>Tworzenie potoku tworzenia wersji
 
-Tworzenie definicji wydania jest procesu kompilacji w ostatnim kroku Twojej aplikacji. Ta definicja wydania służy do tworzenia wersji i wdrażania kompilacji.
+Tworzenie potoku tworzenia wersji jest procesu kompilacji w ostatnim kroku Twojej aplikacji. Ten potok wersji służy do tworzenia wersji i wdrażania kompilacji.
 
-1. Zaloguj się do usługi VSTS i przejdź do **kompilowania i wydawania** dla Twojego projektu.
+1. Zaloguj się do usługi DevOps platformy Azure i przejdź do **potoki Azure** dla Twojego projektu.
 2. Na **wersji** zaznacz  **\[ +]** a następnie wybierz **Tworzenie definicji wydania**.
 
-   ![Tworzenie definicji wydania](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Tworzenie potoku tworzenia wersji](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
 3. Na **wybierz szablon**, wybierz **wdrożenie usługi aplikacji Azure**, a następnie wybierz pozycję **Zastosuj**.
 
@@ -427,11 +430,11 @@ Tworzenie definicji wydania jest procesu kompilacji w ostatnim kroku Twojej apli
 23. Zapisz wszystkie zmiany.
 
 > [!Note]
-> Niektóre ustawienia dla zadań podrzędnych zwolnienia może automatycznie zdefiniowano jako [zmienne środowiskowe](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) podczas tworzenia definicji wydania z szablonu. Nie można zmodyfikować te ustawienia w obszarze Ustawienia zadania. Można jednak edytować te ustawienia w środowisku elementów nadrzędnych.
+> Niektóre ustawienia dla zadań podrzędnych zwolnienia może automatycznie zdefiniowano jako [zmienne środowiskowe](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) podczas tworzenia potoku tworzenia wersji z szablonu. Nie można zmodyfikować te ustawienia w obszarze Ustawienia zadania. Można jednak edytować te ustawienia w środowisku elementów nadrzędnych.
 
 ## <a name="create-a-release"></a>Tworzenie wydania
 
-Teraz, że zostały wykonane zmian do definicji wydania, nadszedł czas na rozpocząć wdrażanie. Aby to zrobić, należy utworzyć wersję z definicji wydania. Wydanie, które mogą zostać utworzone automatycznie. na przykład wyzwalacz ciągłego wdrażania znajduje się w definicji wydania. Oznacza to, że modyfikowania kodu źródłowego, rozpocznie nową kompilację i przy jego użyciu, nowa wersja. Jednak w tej sekcji utworzysz nową wersję ręcznie.
+Teraz, że zostały wykonane modyfikacje z potokiem wersji, jest czas, aby rozpocząć wdrażanie. Aby to zrobić, należy utworzyć wersję z potoku wersji. Wydanie, które mogą zostać utworzone automatycznie. na przykład wyzwalacz ciągłego wdrażania znajduje się w potoku tworzenia wersji. Oznacza to, że modyfikowania kodu źródłowego, rozpocznie nową kompilację i przy jego użyciu, nowa wersja. Jednak w tej sekcji utworzysz nową wersję ręcznie.
 
 1. Na **potoku** otwartą kartą **wersji** listy rozwijanej i wybierz polecenie **utworzyć wersję**.
 

@@ -32,12 +32,16 @@ items:
         href: csharp-tutorial.md
       - name: Samouczek w języku Python
         href: python-tutorial.md
+      - name: Samouczek w języku Java
+        href: java-tutorial.md
     - name: Wykrywanie obiektów
       items:
       - name: Samouczek w języku C#
         href: csharp-tutorial-od.md
       - name: Samouczek w języku Python
         href: python-tutorial-od.md
+      - name: Samouczek w języku Java
+        href: java-tutorial-od.md
 - name: Dokumentacja
   items:
   - name: Interfejs API szkolenia usługi Custom Vision
@@ -74,9 +78,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Limity przydziału i ograniczenia
     href: limits-and-quotas.md
-ms.openlocfilehash: 95cd346c2763a9d8ef8418b94a1f0b89fd738151
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 46b4bb681acf79086354f8c2d2991b416ba5cef2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43284966"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295986"

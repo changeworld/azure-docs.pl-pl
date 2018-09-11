@@ -8,15 +8,15 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0d4121bd68611c1f3c6a8c89a0d60251401d670a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172748"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301297"
 ---
 # <a name="app-service-documentation"></a>Dokumentacja usługi App Service
-Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
+Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje systemy Windows i Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Azure DevOps Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
 
 ## <a name="windows-linux-and-docker"></a>Windows, Linux i Docker
 [Web Apps](/app-service/app-service-web-overview) to główna oferta usługi App Service, która służy do tworzenia i hostowania aplikacji internetowych przy użyciu środowisk Windows. Deweloperzy, którzy wolą środowisko Linux, mogą wybrać usługę [App Service for Linux](/app-service/containers/app-service-linux-intro). Deweloperzy mogą także wdrażać obrazy usługi Docker bezpośrednio w usłudze App Service for Linux, aby wdrażać niestandardowe środowiska uruchomieniowego/platformy.

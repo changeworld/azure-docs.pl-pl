@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4d3967acc7c6dc3b2c94236cc53e8b45e09e6b6d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057000"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325383"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, Google Apps i innych. Jeśli aprowizacja użytkowników dla aplikacji SaaS innych firm, włączone, witryny Azure portal steruje jego wartości atrybutów w formie mapowania atrybutów.
@@ -33,18 +33,18 @@ Istnieje wstępnie skonfigurowany zestaw atrybutów i mapowania atrybutów międ
 W portalu usługi Azure AD możesz korzystać z tej funkcji, klikając **mapowania** Konfiguracja **aprowizacji** w **Zarządzaj** części  **Aplikacja dla przedsiębiorstw**.
 
 
-![SalesForce][5] 
+![SalesForce](media/active-directory-saas-customizing-attribute-mappings/21.png) 
 
 Klikając **mapowania** konfiguracji otwiera powiązane **mapowanie atrybutu** ekranu. Brak mapowań atrybutów, które są wymagane przez aplikację SaaS, aby działo poprawnie. W przypadku wymaganych atrybutów **Usuń** funkcja jest niedostępna.
 
 
-![SalesForce][6]  
+![SalesForce](media/active-directory-saas-customizing-attribute-mappings/22.png)
 
 W powyższym przykładzie widać **Username** atrybut zarządzanego obiektu w usłudze Salesforce jest wypełniana przy użyciu **userPrincipalName** wartość połączonej Azure obiektu usługi Active Directory.
 
 Można dostosować istniejący **mapowania atrybutów** , klikając mapowania. Spowoduje to otwarcie **Edytuj atrybut** ekranu.
 
-![SalesForce][7]  
+![SalesForce](media/active-directory-saas-customizing-attribute-mappings/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>Opis typów Mapowanie atrybutów
@@ -77,7 +77,7 @@ Oprócz tej właściwości mapowania atrybutów obsługują następujące atrybu
 
 Wybranej liczby aplikacji, takich jak usługi ServiceNow, Box i Google Apps obsługuje możliwość inicjowania obsługi grupy obiektów, oprócz obiektów użytkownika. Obiekty grupy może zawierać właściwości grupy, takie jak nazwy wyświetlane i wiadomości e-mail aliasy, oprócz członków grupy.
 
-![ServiceNow][8]  
+![ServiceNow](media/active-directory-saas-customizing-attribute-mappings/24.png)
 
 Grupy inicjowania obsługi można opcjonalnie włączać lub wyłączać, wybierając mapowania grup w ramach **mapowania**i ustawienie **włączone** na odpowiednią opcję w **mapowanie atrybutu** ekranu.
 
@@ -104,7 +104,7 @@ Aplikacje i systemy, które obsługują dostosowania listy atrybutów to:
 >[!NOTE]
 >Edytowanie listy atrybutów obsługiwane jest zalecane tylko dla administratorów, którzy dostosowali schematu swoich aplikacji i systemów i dysponują wiedzą pierwszej ręki na temat sposobu ich atrybuty niestandardowe zostały zdefiniowane. Czasami ta migracja wymaga znajomości narzędzia deweloperów i interfejsów API dostarczonych przez aplikację lub system. 
 
-![Edytor][9]  
+![Edytor](media/active-directory-saas-customizing-attribute-mappings/25.png) 
 
 Podczas edytowania listę obsługiwanych atrybutów, dostępne są następujące właściwości:
 
@@ -152,10 +152,4 @@ Wybranie tej opcji wymusi skutecznie ponownej synchronizacji wszystkich użytkow
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](saas-apps/tutorial-list.md)
 
-<!--Image references-->
-[5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png
-[6]: ./media/active-directory-saas-customizing-attribute-mappings/22.png
-[7]: ./media/active-directory-saas-customizing-attribute-mappings/23.png
-[8]: ./media/active-directory-saas-customizing-attribute-mappings/24.png
-[9]: ./media/active-directory-saas-customizing-attribute-mappings/25.PNG
 

@@ -96,7 +96,7 @@ items:
       href: resource-group-template-deploy-rest.md
     - name: Wiele grup zasobów lub subskrypcji
       href: resource-manager-cross-resource-group-deployment.md
-    - name: Ciągła integracja z usługą Visual Studio Team Services
+    - name: Ciągła integracja za pomocą usługi Azure DevOps
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
     - name: Przekazywanie bezpiecznych wartości podczas wdrażania
@@ -226,9 +226,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: a7f0c89d6e44696024fa0b724130cbaee4d10829
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a05049ad29f3f5fa01e08058cc8a1db5621724eb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159439"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302490"

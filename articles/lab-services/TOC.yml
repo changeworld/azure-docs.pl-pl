@@ -162,7 +162,7 @@ items:
       href: devtest-lab-scale-lab.md
     - name: Integrowanie z ciągłą integracją/ciągłym dostarczaniem
       items:
-      - name: Integrowanie laboratoriów z potokiem ciągłej integracji/ciągłego dostarczania usługi VSTS
+      - name: Integrowanie laboratoriów z potokiem ciągłej integracji/ciągłego wdrażania usługi Azure DevOps
         href: devtest-lab-integrate-ci-cd-vsts.md
     - name: Tworzenie lub modyfikowanie laboratoriów przy użyciu szablonu usługi Resource Manager
       href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
@@ -194,9 +194,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: Cennik
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: a3e6dcc959474c79aeb06d05e7f722695471fd9f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3beef6f5f955347459e30cc039fa78422a9902a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024452"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301122"
