@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 6dff2d1886a560e3a7e2758816a884782e33787f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 12023216575b08732f3ef2d04bac9e825621f720
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287974"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376973"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Czerwiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w czerwca 2018 r. 
@@ -23,7 +23,7 @@ Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisan
 ## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
 Usługa SQL Data Warehouse automatycznie tworzy migawki magazynu danych, co 8 godzin, gwarantując, że cel punktu odzyskiwania ośmiu godzin (RPO). Chociaż to automatyczne migawki łatwość zarządzaniem uruchamiania usługi data warehouse ma trzeba wykonać migawki w czasie krytycznych, zgodnie z potrzebami firmy. Na przykład robienie bezpośrednio poprzedzający obciążenia duża ilość danych lub wdrażania nowych skryptów do magazynu danych, aby włączyć punkt przywracania, bezpośrednio przed wykonaniem operacji. 
 
-Usługa SQL Data Warehouse obsługuje teraz [punkty przywracania na zdefiniowanych przez użytkownika](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) za pośrednictwem [New AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoin) polecenia cmdlet.
+Usługa SQL Data Warehouse obsługuje teraz [punkty przywracania na zdefiniowanych przez użytkownika](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) za pośrednictwem [New AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) polecenia cmdlet.
 
 ```PowerShell
 New-AzureRmSqlDatabaseRestorePoint
@@ -50,7 +50,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-[OBJECT_SCHEMA_NAME()]() funkcja zwraca nazwę schematu bazy danych dla obiektów o zakresie schematu. Ta funkcja stał się typowe w narzędziach ETL obiektu podczas sprawdzania poprawności schematu. 
+[OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) funkcja zwraca nazwę schematu bazy danych dla obiektów o zakresie schematu. Ta funkcja stał się typowe w narzędziach ETL obiektu podczas sprawdzania poprawności schematu. 
 
 ```sql
 SELECT

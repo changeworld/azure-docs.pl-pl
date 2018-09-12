@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057645"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378544"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -97,7 +97,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 8. Wprowadź informacje dotyczące udziału plików, a następnie wybierz pozycję **dalej**. Adres udziału plików należy użyć w pełni kwalifikowanej domeny nazwę (FQDN) lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.
 
    >[!NOTE]
-   >Instalator podejmuje próbę przetestuj łączność z udziałem plików przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, może być plik ten test łączności. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje o udziale plików jest poprawny, nadal wdrożenia.
+   >Instalator podejmuje próbę przetestuj łączność z udziałem plików przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, ten test łączności może się nie powieść. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje o udziale plików jest poprawny, nadal wdrożenia.
 
    ![Instalator usługi App Service][7]
 

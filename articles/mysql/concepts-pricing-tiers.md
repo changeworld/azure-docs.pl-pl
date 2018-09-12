@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 614ea0dd69c9bb07df20634298c1192e6ffee789
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173677"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380339"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -45,7 +45,7 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|
-| Środkowe stany USA | X |  |
+| Środkowe stany USA | X | X |
 | Wschodnie stany USA | X | X |
 | Wschodnie stany USA 2 | X | X |
 | Środkowo-północne stany USA | X | X |

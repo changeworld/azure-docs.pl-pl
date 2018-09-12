@@ -1,6 +1,6 @@
 ---
-title: Limity harmonogramu oraz wartości domyślnych
-description: Limity harmonogramu oraz wartości domyślnych
+title: Harmonogram limitów i ustawień domyślnych
+description: Harmonogram limitów i ustawień domyślnych
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4be0695402b66fdb2a027bfbada0e0b26e02d36f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867815"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378724"
 ---
-# <a name="scheduler-limits-and-defaults"></a>Limity harmonogramu oraz wartości domyślnych
-## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Przydziały harmonogramu, limity ustawień domyślnych i limity
+# <a name="scheduler-limits-and-defaults"></a>Harmonogram limitów i ustawień domyślnych
+## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Przydziały usługi Scheduler, limity, wartości domyślne i ograniczenia
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
 ## <a name="the-x-ms-request-id-header"></a>Nagłówek x-ms-request-id
-Każde żądanie dotyczące usługi harmonogramu zwraca nagłówka odpowiedzi o nazwie**x-ms-request-id**. Ten nagłówek zawiera wartości nieprzezroczystej, który unikatowo identyfikuje żądania.
+Każde żądanie dotyczące usługi Scheduler zwraca nagłówek odpowiedzi, o nazwie **x-ms-request-id**. Ten nagłówek zawiera nieprzezroczysta wartość, która jednoznacznie identyfikuje żądanie.
 
-Jeśli żądanie jest zawsze kończy się niepowodzeniem i upewnieniu się, że żądanie jest poprawnie sformułowany, można użyć tej wartości na raport o błędzie do firmy Microsoft. W raporcie zawiera wartość x-ms-request-id, przybliżony czas, który odebrał żądanie, identyfikator subskrypcji, kolekcji zadań i/lub zadania i typ operacji, które próbowało żądania.
+Jeśli żądanie stale kończy się niepowodzeniem i upewnieniu się, że wniosek jest poprawnie sformułowany, może używać tę wartość, aby zgłosić błąd do firmy Microsoft. W raporcie obejmują wartość x-ms-request-id, przybliżony czas, który odebrał żądanie, identyfikator subskrypcji, Kolekcja zadań i/lub zadania oraz typ operacji, które próbowało żądania.
 
 ## <a name="see-also"></a>Zobacz też
  [Co to jest Scheduler?](scheduler-intro.md)

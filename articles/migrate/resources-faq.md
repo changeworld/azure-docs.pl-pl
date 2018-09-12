@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: f4ce2130b18b183f633c649f98fc1add30753a27
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 16fce3eb5ab3874f7106d05bf99dc795cc22a528
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296011"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377549"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -48,13 +48,13 @@ Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planis
 
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Które regiony platformy Azure są obsługiwane przez usługę Azure Migrate?
 
-Usługa Azure Migrate obsługuje obecnie wschodnie stany USA i zachodnie stany USA jako lokalizacje projektu migracji. Należy pamiętać, że mimo, że projekty migracji można tworzyć tylko w zachodnio-środkowe stany USA i wschodnie stany USA, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Lokalizacja projektu jest używana wyłącznie do przechowywania odnalezione dane.
+Usługa Azure Migrate obsługuje obecnie wschodnie stany USA i zachodnie stany USA jako lokalizacje projektu migracji. Mimo że projekty migracji można tworzyć tylko w zachodnio-środkowe stany USA i wschodnie stany USA, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Lokalizacja projektu jest używana wyłącznie do przechowywania odnalezione dane.
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
 
 Połączenie może być za pośrednictwem Internetu lub korzystać z usługi ExpressRoute w publicznej komunikacji równorzędnej.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Z maszyny Wirtualnej można zabezpieczyć. OVA szablonu?
+### <a name="can-i-harden-the-vm-set-up-with-theova-template"></a>Z maszyny Wirtualnej można zabezpieczyć. OVA szablonu?
 
 Dodatkowe składniki (na przykład oprogramowanie antywirusowe) można dodać do. OVA tak długo, jak komunikacja i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jako jest szablon.   
 
@@ -90,7 +90,9 @@ Odnajdywanie oparte na agentach opcja jest dostępna na podstawie odnajdywania o
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Będzie mieć żadnego wpływu wydajności na przeanalizowany środowisko hosta ESXi?
 
-Ponieważ firma Microsoft zbiera informacje za pośrednictwem serwera vCenter, nie jest bez wpływu na wydajność na hostach ESXi. Nawet w przypadku serwera vCenter jest bliski zeru negatywny wpływ na wydajność.
+W przypadku właściwości [jednej metody odnajdywania czasu](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), aby zbierać dane dotyczące wydajności, poziomu statystyk na serwerze vCenter, musi być równa 3. Ustawienie tego poziomu będzie zbierać dużej ilości danych, które powinny być przechowywane w bazie danych serwera vCenter na rozwiązywanie problemów. Ten sposób może powodować pewne problemy z wydajnością na serwerze vCenter. Może być niewielki wpływ na hoście ESXi.
+
+Firma Microsoft wprowadza ciągłe profilowania danych dotyczących wydajności (czyli w wersji zapoznawczej). Za pomocą ciągłego profilowania nie ma już potrzeby zmieniania poziomu statystyk serwera, aby uzyskać ocenę na podstawie wydajności programu vCenter. Urządzenie modułu zbierającego będzie teraz profilować maszyn lokalnych do mierzenia dane dotyczące wydajności maszyn wirtualnych. Będzie to miało bliski zeru negatywny wpływ na wydajność, na hostach ESXi, a także w programie vcenter Server.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Gdzie jest zebranych danych przechowywanych i na jak długo?
 

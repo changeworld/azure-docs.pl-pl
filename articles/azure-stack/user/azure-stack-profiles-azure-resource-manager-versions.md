@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050653"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380220"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack
 
@@ -54,9 +54,9 @@ Objaśnienia dotyczące profilów interfejsu API i cykl wersji wersji dla usług
 | Resources_Locks | 2016-10-01 |
 | Subskrypcje | 2016-10-01 |
 
-Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2018-03-01-hybrydowego](#details-for-the-2018-03-01-hybrid) profilu.
+Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu API, zobacz [szczegóły 2018-03-01-hybrydowego](#details-for-the-2018-03-01-hybrid) profilu.
 
-## <a name="overview-of-2017-03-09-profile"></a>Omówienie 2017-03-09-profile
+## <a name="overview-of-2018-03-01-hybrid"></a>Omówienie 2018-03-01-hybrydowe
 
 | Dostawca zasobów | wersja interfejsu API |
 |------------------------------------------------|------------------------------|
@@ -76,7 +76,7 @@ Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w pr
 | Resources_Locks | 2016-09-01 |
 | Subskrypcje | 2016-06-1 |
 
-Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2017-03-09-profile](#details-for-the-2017-03-09-profile)
+Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2018-03-01-rozwiązania hybrydowego](#details-for-the-2018-03-01-hybrid)
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Szczegóły dotyczące 2018-03-01-rozwiązania hybrydowego
 
@@ -231,7 +231,7 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | StorageAccounts | 2016-01-01 |
 | Sposoby użycia | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>Szczegóły dotyczące 2017-03-09-profile
+## <a name="details-for-the-2018-03-01-hybrid"></a>Szczegóły dotyczące 2018-03-01-rozwiązania hybrydowego
 
 ### <a name="microsoft-authorization"></a>Autoryzacja Microsoft
 

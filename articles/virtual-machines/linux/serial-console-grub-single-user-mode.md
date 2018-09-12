@@ -3,7 +3,7 @@ title: Usługa Azure konsoli szeregowej CHODNIKÓW i trybie jednego użytkownika
 description: Za pomocą konsoli szeregowej dla chodników na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9952720e917dc9202630b2feda0fadd0402d9eb6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061067"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377874"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne w przypadku badanie problemy lub problemy z siecią mniejszą liczbę usług może działać w tle i, w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany. Dzięki takiemu grupowaniu można zbadać sytuacjach, takich jak system plików uszkodzony, fstab przerwany, lub (iptables niepoprawna konfiguracja) połączenia sieciowego.
+
+Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Można to zrobić za pomocą SysRq `'b'` polecenia lub przez kliknięcie przycisku ponownego uruchomienia znajdujący się w bloku Przegląd. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund, podczas rozruchu i Zezwalaj na dane wejściowe użytkownika anulować limitu czasu przy użyciu danych wprowadzonych z klawiatury. 
 
 Niektóre dystrybucje będzie automatycznie pomijać możesz w trybie jednego użytkownika lub w trybie awaryjnym, jeśli maszyna wirtualna jest nie do rozruchu. Innych osób, jednak wymagają dodatkowej konfiguracji, zanim one mogą porzucić możesz w trybie jednego użytkownika lub awaryjnego automatycznie.
 

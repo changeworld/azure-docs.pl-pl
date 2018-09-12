@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127483"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377398"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -77,7 +77,7 @@ To ustawienie można skonfigurować w ustawieniach aplikacji logiki:
 1. Kliknij przycisk **ustawienia przepływu pracy** elementu menu, w obszarze **ustawienia**
 1. Określ listę zakresów adresów IP do zaakceptowania przez wyzwalacz
 
-Prawidłowy zakres adresów IP przybiera format `192.168.1.1/255`. Jeśli chcesz, aby aplikację logiki, aby były uruchamiane tylko wtedy jako zagnieżdżoną aplikację logiki, wybierz opcję **tylko inne aplikacje logic apps** opcji. Ta opcja powoduje zapisanie pustą tablicę do zasobu, znaczenie tylko wywołania z usługi (aplikacje logiki nadrzędnego) uruchomiony pomyślnie.
+Prawidłowy zakres adresów IP przybiera format `192.168.1.1/32`. Jeśli chcesz, aby aplikację logiki, aby były uruchamiane tylko wtedy jako zagnieżdżoną aplikację logiki, wybierz opcję **tylko inne aplikacje logic apps** opcji. Ta opcja powoduje zapisanie pustą tablicę do zasobu, znaczenie tylko wywołania z usługi (aplikacje logiki nadrzędnego) uruchomiony pomyślnie.
 
 > [!NOTE]
 > Nadal można uruchomić aplikację logiki z wyzwalaczem żądania za pośrednictwem interfejsu API REST / zarządzania `/triggers/{triggerName}/run` niezależnie od adresów IP. Ten scenariusz wymaga uwierzytelniania przy użyciu interfejsu API REST platformy Azure, a wszystkie zdarzenia pojawią się w dzienniku inspekcji usługi Azure. Zestaw kontroli dostępu w zasad odpowiednio.

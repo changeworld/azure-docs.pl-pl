@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fa4f230f5e2d15e815c47792c3955aa93d29fc4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 29fd4e62c13852e23e15f89ab6b4e2976fc42b25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094743"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377144"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -45,6 +45,7 @@ Ta funkcja przykład generuje następujące dane JSON w odpowiedzi. Typ danych w
 | statusQueryGetUri |Adres URL stanu wystąpienia aranżacji. |
 | sendEventPostUri  |"Zgłoś zdarzenie" adres URL wystąpienia aranżacji. |
 | terminatePostUri  |"Terminate" adres URL wystąpienia aranżacji. |
+| rewindPostUri     |"Przewijanie" adres URL wystąpienia aranżacji. |
 
 Poniżej przedstawiono przykładową odpowiedź:
 
@@ -52,13 +53,14 @@ Poniżej przedstawiono przykładową odpowiedź:
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -110,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Format funkcje w wersji 2.0 ma te same parametry, ale ma nieco inny prefiks adresu URL:
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Odpowiedź
@@ -121,13 +123,14 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 * **HTTP 202 (zaakceptowano)**: określone wystąpienie jest w toku.
 * **HTTP 400 (nieprawidłowe żądanie)**: określone wystąpienie nie powiodło się lub został zakończony.
 * **HTTP 404 (nie znaleziono)**: określone wystąpienie nie istnieje lub nie rozpoczęło działanie.
+* **HTTP 500 (wewnętrzny błąd serwera)**: określone wystąpienie nie powiodło się z powodu nieobsługiwanego wyjątku.
 
 Ładunek odpowiedzi dla **HTTP 200** i **HTTP 202** przypadkach jest obiektem JSON przy użyciu następujących pól:
 
 | Pole           | Typ danych | Opis |
 |-----------------|-----------|-------------|
 | runtimeStatus   | ciąg    | Stan środowiska uruchomieniowego wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
-| Dane wejściowe           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
+| wejście           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
 | customStatus    | JSON      | Dane JSON, używane na potrzeby stan niestandardowej aranżacji. To pole jest `null` Jeśli nie zostanie ustawiona. |
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | wartością createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
@@ -206,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>Odpowiedź
@@ -281,7 +284,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Format funkcje w wersji 2.0 ma te same parametry, ale ma nieco inny prefiks adresu URL:
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 Żądania, że parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a także następujące parametry unikatowy:
@@ -321,13 +324,13 @@ Kończy uruchomionego wystąpienia aranżacji.
 Funkcje wersji 1.0 format żądania jest następująca:
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Format funkcje w wersji 2.0 ma te same parametry, ale ma nieco inny prefiks adresu URL:
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a także określić następujący parametr unikatowy żądań.
@@ -347,7 +350,47 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 Oto przykładowe żądanie, kończy uruchomionego wystąpienia, która określa przyczynę **buggy**:
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
+
+## <a name="rewind-instance-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
+
+Przywraca wystąpienia orchestration nie powiodło się, do stanu uruchomienia przez odtworzenie najnowszych operacje zakończone niepowodzeniem.
+
+#### <a name="request"></a>Żądanie
+
+Funkcje wersji 1.0 format żądania jest następująca:
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Format funkcje w wersji 2.0 ma te same parametry, ale ma nieco inny prefiks adresu URL:
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a także określić następujący parametr unikatowy żądań.
+
+| Pole       | Typ parametru  | Typ danych | Opis |
+|-------------|-----------------|-----------|-------------|
+| reason      | Ciąg zapytania    | ciąg    | Opcjonalny. Przyczyna przewijanie wystąpienia aranżacji. |
+
+#### <a name="response"></a>Odpowiedź
+
+Mogą być zwracane kilka wartości Kod stanu to możliwe.
+
+* **HTTP 202 (zaakceptowano)**: przewijanie żądanie zostało zaakceptowane do przetwarzania.
+* **HTTP 404 (nie znaleziono)**: nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (Gone)**: określone wystąpienie zostało ukończone lub został zakończony.
+
+Oto przykładowe żądanie, przechodzi zakończone niepowodzeniem wystąpienie, która określa przyczynę **stałej**:
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.

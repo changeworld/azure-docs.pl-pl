@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 857998c73abed76c9e20d5b3422ce607fb9f733d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ceaa61832212093ac52225fc34db1ed7f4571a18
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782885"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380302"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -73,7 +73,7 @@ Ubuntu      | Ubuntu obrazów dostępnych na platformie Azure mają domyślnie d
 CoreOS      | CoreOS obrazów dostępnych na platformie Azure mają domyślnie dostęp do konsoli.
 SUSE        | Nowsze obrazów SLES dostępnych na platformie Azure mają domyślnie dostęp do konsoli. Jeśli używasz starszych wersji w systemie SLES (10 lub starszej) na platformie Azure, postępuj zgodnie z [artykuł bazy wiedzy](https://www.novell.com/support/kb/doc.php?id=3456486) umożliwiające konsoli szeregowej. 
 Oracle Linux        | Obrazy oprogramowania Oracle Linux dostępnych na platformie Azure mają domyślnie dostęp do konsoli.
-Niestandardowych obrazów systemu Linux     | Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, należy włączyć dostęp do konsoli w /etc/inittab systemem terminalu ttyS0. Oto przykład, aby dodać to w pliku inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Aby uzyskać więcej informacji na temat prawidłowo tworzenia obrazów niestandardowych, zobacz [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd).
+Niestandardowych obrazów systemu Linux     | Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, Włącz dostęp do konsoli w `/etc/inittab` systemem terminalu `ttyS0`. Oto przykład, aby dodać to w pliku inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Aby uzyskać więcej informacji na temat prawidłowo tworzenia obrazów niestandardowych, zobacz [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd).
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej 
 Scenariusz          | Akcje w konsoli szeregowej                
@@ -87,6 +87,9 @@ Interakcja z programu inicjującego | Program GRUB dostęp za pośrednictwem kon
 
 ## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
+
+> [!Note] 
+> Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Obejmuje, ale nie jest ograniczona do ról administratora lub właściciela. Role niestandardowe mogą również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
 Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](https://aka.ms/disableserialconsoleapi). Może używać "Try It" Funkcje dostępne na stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swoje `subscriptionId`, "default" w `default` pola, a następnie kliknij przycisk Uruchom. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne i zostaną dostarczone w późniejszym terminie. [Spróbuj wywołania interfejsu API REST w tym miejscu](https://aka.ms/disableserialconsoleapi).
@@ -167,7 +170,6 @@ Jak My nadal w fazie (wersja zapoznawcza), aby uzyskać dostęp do konsoli szere
 
 Problem                           |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
-Nie ma opcji za pomocą konsoli szeregowej wystąpienia zestawu skalowania maszyn wirtualnych |  W okresie obowiązywania wersji zapoznawczej dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych nie jest obsługiwana.
 Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Może to nastąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji programu GRUB, powodujący systemu Linux nie można prawidłowo nawiązać portu szeregowego.
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 Tekst konsoli szeregowej trwa tylko część rozmiaru ekranu (często po nim za pomocą edytora tekstów) | Jest to znany problem z rozmiarem ekranu nieznany za pośrednictwem połączenia szeregowe. Firma Microsoft zaleca instaling xterm lub niektóre podobnej użyteczności, zapewniająca polecenia "Zmień rozmiar". Uruchamianie "rozmiar" Aby rozwiązać ten problem.
@@ -178,18 +180,32 @@ Tekst konsoli szeregowej trwa tylko część rozmiaru ekranu (często po nim za 
 
 A. Przekazać opinię jako problem, przechodząc do https://aka.ms/serialconsolefeedback. Alternatywnie mniej (preferowane) wysyłanie opinii za pośrednictwem azserialhelp@microsoft.com lub w kategorii maszyny wirtualnej http://feedback.azure.com
 
-**PYTANIA I ODPOWIEDZI. Nie mogę uzyskać dostęp do konsoli szeregowej, gdzie plik zgłoszenia do pomocy technicznej?**
+**PYTANIA I ODPOWIEDZI. Konsola szeregowa obsługuje kopiowania/wklejania?**
 
-A. Tę funkcję wersji zapoznawczej jest objęte za pośrednictwem dodatkowym postanowieniom dotyczącym wersji platformy Azure. Obsługa tej najlepiej odbywa się za pośrednictwem kanałów, o których wspomniano powyżej. 
+A. Tak samo. Użyj klawiszy Ctrl + Shift + C i Ctrl + Shift + V do kopiowania i wklejania w terminalu.
 
 **PYTANIA I ODPOWIEDZI. Czy można użyć konsoli szeregowej, zamiast połączenia SSH?**
 
 A. A to może wydawać się to technicznie możliwe, konsoli szeregowej ma służyć przede wszystkim podczas rozwiązywania problemów w sytuacjach, gdy łączność za pośrednictwem protokołu SSH nie jest możliwe. Zaleca się przy użyciu konsoli szeregowej jako zamiennika SSH dwóch powodów:
 
-1. Konsola szeregowa nie ma przepustowości, takiej jak ssh - jest połączenie tylko do tekstu, dlatego więcej interakcje ciężkich graficznego interfejsu użytkownika będzie trudne w konsoli szeregowej.
+1. Konsola szeregowa nie ma przepustowości, takiej jak SSH - jest połączenie tylko do tekstu, dlatego więcej interakcje ciężkich graficznego interfejsu użytkownika będzie trudne w konsoli szeregowej.
 1. Dostęp do konsoli szeregowej jest obecnie tylko przez użytkownika i hasło. Klucze SSH są znacznie bezpieczniejsze niż kombinacji nazwy użytkownika/hasła, więc z punktu widzenia zabezpieczeń logowania SSH firma Microsoft zaleca za pośrednictwem konsoli szeregowej.
 
+**PYTANIA I ODPOWIEDZI. Kto może włączyć lub wyłączyć konsoli szeregowej dla mojej subskrypcji?**
 
+A. Aby włączyć lub wyłączyć konsoli szeregowej na poziomie całej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Role, które mają uprawnienia do zapisu obejmują, ale nie są ograniczone do ról administratora lub właściciela. Role niestandardowe mogą również mieć uprawnienia do zapisu.
+
+**PYTANIA I ODPOWIEDZI. Kto ma dostęp do konsoli szeregowej dla mojej maszyny Wirtualnej?**
+
+A. Konieczne jest posiadanie dostępu na poziomie współautora lub nowszej, aby maszyna wirtualna w celu uzyskania dostępu do konsoli szeregowej maszyny Wirtualnej. 
+
+**PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie widać niczego, co należy zrobić?**
+
+A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [dostępu do konsoli szeregowej dla systemu Linux](#Access-Serial-Console-for-Linux) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
+
+**PYTANIA I ODPOWIEDZI. Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych?**
+
+A. Dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych w tej chwili nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj konsoli szeregowej [rozruch CHODNIKÓW, a następnie wprowadź w trybie jednego użytkownika](serial-console-grub-single-user-mode.md)

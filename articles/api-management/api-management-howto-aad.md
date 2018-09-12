@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056676"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391882"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory w usłudze Azure API Management
 
@@ -79,7 +79,10 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
 
     ![Pola wyboru dla uprawnień](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. Wybierz **udzielić uprawnień** zgody uprawnień aplikacji.
+
     Aby uzyskać więcej informacji o uprawnieniach aplikacji i uprawnień delegowanych, zobacz [uzyskiwania dostępu do interfejsu API programu Graph][Accessing the Graph API].
+    
 1. W okienku po lewej stronie, skopiuj **identyfikator aplikacji** wartość.
 
     ![Wartość "Identyfikator aplikacji"](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
     > Zanotuj ten klucz. Po zamknięciu okienko konfiguracji usługi Azure AD, klucz nie może ponownie wyświetlone.
     > 
     > 
+
 1. Przejdź z powrotem do aplikacji interfejsu API zarządzania. 
 
     W **dostawcy tożsamości Dodaj** okna, Wklej klucz w **klucz tajny klienta** pola tekstowego.
@@ -106,6 +110,7 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
     > Upewnij się zaktualizować **klucz tajny klienta** przed wygaśnięciem klucza. 
     >  
     >
+
 1. **Dostawcy tożsamości Dodaj** okno zawiera również **dozwolone dzierżaw** pola tekstowego. Określ domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usługi API Management. Możesz oddzielić wiele domen tabulacji, spacjami lub przecinkami.
 
     Można określić wiele domen w **dozwolone dzierżaw** sekcji. Zanim każdy użytkownik może zalogować się w innej domenie niż oryginalną domenę, w którym aplikacja została zarejestrowana, tylko administrator globalny innej domeny musi udzielić uprawnień do dostępu do danych katalogu aplikacji. Aby udzielić uprawnień, powinien administratora globalnego:

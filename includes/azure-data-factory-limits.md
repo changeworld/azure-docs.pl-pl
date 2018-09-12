@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 67144407b078a30c521201cbc31c6087c839fa26
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4aa4809c57eaf26b10053d432f9191580ec143a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030009"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44381101"
 ---
 Data factory to usługa dla wielu dzierżawców, który ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Wiele limity można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu, kontaktując się z pomocą techniczną.
 
@@ -28,7 +28,7 @@ Data factory to usługa dla wielu dzierżawców, który ma następujące domyśl
 | Potok równoczesny przebiegów na usługi data factory | 10 000  | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maksymalna liczba działań na potok (w tym wewnętrznego działania dla kontenerów) | 40 | 40 |
 | Maksymalna liczba parametrów dla potoku | 50 | 50 |
-| Elementy ForEach | 100,000 | 100,000 |
+| Elementy ForEach | 100 000 | 100 000 |
 | Równoległość ForEach | 20 | 50 |
 | Liczba znaków w wyrażeniu | 8192 | 8192 |
 | Minimalny interwał zarówno wyzwalacz okna wirowania | 15 min | 15 min |
@@ -38,6 +38,8 @@ Data factory to usługa dla wielu dzierżawców, który ma następujące domyśl
 | Jednostki integracji danych według uruchomienia działania kopiowania <sup>3</sup> | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Zapis wywołań interfejsu API | 2500/godz.<br/><br/> Ten limit są nakładane przez usługi Azure Resource Manager, nie usługi Azure Data Factory. | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Odczyt interfejsu API | 12 500/godz.<br/><br/> Ten limit są nakładane przez usługi Azure Resource Manager, nie usługi Azure Data Factory. | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Monitorowanie zapytania na minutę: | 1000 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Jednostki operacji CRUD na minutę | 50 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
 
 ### <a name="version-1"></a>Wersja 1

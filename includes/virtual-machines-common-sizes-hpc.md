@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ac8686d0ea5704492bfc2e08972a2f70c9b34c43
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 16e2a9cfbd9f08428fddade290117b27bc3401f7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37906823"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369290"
 ---
-Maszyn wirtualnych serii H są najnowsze obliczenia o wysokiej wydajności, że w przypadku najwyższych potrzeb obliczeniowych, takich jak modelowanie molekularne i analizy obliczeniowe dynamiki płynów, której jest maszyn wirtualnych. Te 8 i 16 procesorów wirtualnych maszyny wirtualne są zbudowane na Intel Haswell E5-2667 V3 procesora technologii są w pamięć DDR4 i oparte na dyskach SSD magazynu tymczasowego. 
+Maszyn wirtualnych serii H są najnowsze o wysokiej wydajności obliczeniowej zmierzające do obsługi obciążeń, takich jak przetwarzanie wsadowe, analizy, modelowanie molekularne i analizy dynamiki płynów maszyn wirtualnych. Te 8 i 16 procesorów wirtualnych maszyny wirtualne są zbudowane na Intel Haswell E5-2667 V3 procesora technologii są w pamięć DDR4 i oparte na dyskach SSD magazynu tymczasowego. 
 
 Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci obsługujących technologię RDMA i niskie opóźnienia, korzystając z sieci InfiniBand o przepustowości FDR wraz z kilkoma konfiguracjami pamięci do obsługi obliczeń wymagających znacznego wykorzystania pamięci.
 

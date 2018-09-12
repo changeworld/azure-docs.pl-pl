@@ -8,21 +8,24 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026521"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369370"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepływności rozmiary w tej metodzie grupowania. 
 
-- Maszyny wirtualne z serii Av2 można wdrożyć na różnych typach sprzętu i procesorach. Rozmiar jest ograniczany w zależności od sprzętu, aby zapewnić spójną wydajność procesora dla uruchomionego wystąpienia niezależnie od sprzętu, na którym jest ono wdrożone. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
+- Maszyny wirtualne z serii Av2 można wdrożyć na różnych typach sprzętu i procesorach. Maszyny wirtualne serii A zapewniają wydajność procesora CPU i konfiguracje pamięci, które są najlepsze w przypadku obciążeń podstawowych, takich jak tworzenie i testowanie aplikacji. Rozmiar jest ograniczany w zależności od sprzętu, aby zapewnić spójną wydajność procesora dla uruchomionego wystąpienia niezależnie od sprzętu, na którym jest ono wdrożone. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
 
-- Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jego są oparte na najnowszej generacji Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) lub E5-2673 v4 2,3 GHz (broadwell z zegarem) procesorów, a przy użyciu technologii Intel Turbo Boost Technology 2.0, można przejść do 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
+  Przykładowe przypadki użycia obejmują tworzenie i testowanie serwery, serwery sieci web o niewielkim ruchu, małych do średnich baz danych, weryfikacja koncepcji i repozytoriów kodu.
+
+- Seria Dv2, kontynuacja oryginalnej serii D, funkcjami bardziej wydajne procesora CPU i optymalną konfigurację procesora CPU w stosunku do pamięci, dzięki czemu jest odpowiedni dla większości obciążeń produkcyjnych. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jego są oparte na najnowszej generacji Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) lub E5-2673 v4 2,3 GHz (broadwell z zegarem) procesorów, a przy użyciu technologii Intel Turbo Boost Technology 2.0, można przejść do 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
 - Seria Dv3 funkcji procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesora lub najnowsza wersja 4 2,3 GHz Intel XEON® E5-2673 procesora (Broadwell) w funkcji hyper Threading konfiguracji, zapewniając lepsze korzyści, w przypadku większości obciążeń przeznaczenia.  Pamięci została rozwinięta (z ~3.5 GiB/procesora wirtualnego vCPU do 4 GiB/vCPU), gdy zostały dostosowane limity dysku i sieci na podstawie za rdzeń w celu zapewnienia zgodności z przejścia na wielowątkowość.  Dv3 nie ma już duża ilość pamięci rozmiarów maszyny Wirtualnej z rodzin D/Dv2, te zostały przeniesione do nowej rodziny Ev3.
 
+  Przykładowe przypadki użycia serii D obejmują aplikacji przeznaczonych dla przedsiębiorstw, relacyjne bazy danych, buforowanie w pamięci i analizy. 
 
 ## <a name="b-series"></a>Seria B
 
@@ -31,6 +34,8 @@ Usługa Premium Storage: obsługiwane
 Buforowanie Premium Storage: Nieobsługiwane
 
 Seria B z możliwością zwiększania wydajności maszyny wirtualne są idealne dla obciążeń, które nie potrzebujesz pełnej wydajności procesora CPU w sposób ciągły, takich jak serwery sieci web, małych baz danych i rozwoju i środowisk testowych. Te obciążenia mają zwykle wymagań dotyczących wydajności z możliwością zwiększania wydajności. Seria B zapewnia Ci klienci umożliwiają zakup rozmiar maszyny Wirtualnej za pomocą ceny świadome linii bazowej wydajności, umożliwiająca wystąpienia maszyny Wirtualnej do zbudowania środków w przypadku maszyny Wirtualnej jest mniejsza niż jej wydajność bazy. Gdy maszyna wirtualna zgromadzonych środków, maszyna wirtualna może serii powyżej linii bazowej maszyny Wirtualnej przy użyciu maksymalnie 100% Procesora, gdy aplikacja wymaga wyższej wydajności procesorów CPU.
+
+Przykładowe przypadki użycia obejmują tworzenia i testowania, serwery sieci web o małym natężeniu ruchu, małych baz danych, mikrousługi, serwerów na potrzeby weryfikacji koncepcji, serwery kompilacji.
 
 
 | Rozmiar             | Procesor wirtualny  | Pamięć: GiB | Lokalne dyski SSD: GiB | Podstawowej wydajności rdzenia | Środki na korzystanie z wpłaty / godzinę | Maksymalna liczba wpłaty środki na korzystanie z | Maks. liczba dysków danych | Maksymalna liczba dysków lokalnych danych o wydajności: operacje We/Wy / MB/s | Maksymalna liczba niebuforowanych dysków danych o wydajności: operacje We/Wy / MB/s | Maksymalna liczba kart sieciowych |          

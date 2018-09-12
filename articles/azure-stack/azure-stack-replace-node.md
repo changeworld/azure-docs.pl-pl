@@ -1,6 +1,6 @@
 ---
-title: Zastąp węzeł jednostki skali w systemie Azure stosu zintegrowane | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zamienić węzła jednostki skali fizycznych w systemie Azure stosu zintegrowany.
+title: Zastąp węzeł jednostki skalowania w zintegrowanym systemie Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zastąpić węzła jednostki fizyczne skalowania w zintegrowanym systemie Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,61 +12,61 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1b37b150dad4951a4ade81f226b515ce9cae9053
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27598777"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377058"
 ---
-# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Zastąp węzeł jednostki skali w systemie Azure stosu zintegrowane
+# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Zastąp węzeł jednostki skalowania w zintegrowanym systemie Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-W tym artykule opisano ogólny proces Zastąp komputera fizycznego (zwaną także *węzła jednostki skali*) na stosie Azure zintegrowany system. Wymiana węzła rzeczywiste skali przez kroki będą się różnić w oparciu z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji udostępnianej przez dostawcę pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu.
+W tym artykule opisano ogólny proces w celu zastąpienia komputera fizycznego (nazywane także *węzła jednostki skalowania*) w usłudze Azure Stack zintegrowany system. Rzeczywiste skalowanie jednostek węzeł zastępczy, który kroki będą się różnić na podstawie z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji dostawcy pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu.
 
-Poniższy diagram przepływu przedstawia ogólny proces FRU Zastąp węzeł jednostki skali całego.
+Poniższy diagram przepływu przedstawia ogólny proces FRU, Zastąp węzeł jednostki skali całego.
 
-![Schemat blokowy procesu węzła Zamień](media/azure-stack-replace-node/replacenodeflow.png)
+![Schemat blokowy Zastąp węzła procesu](media/azure-stack-replace-node/replacenodeflow.png)
 
-* Tej akcji nie może być wymagany na podstawie warunku fizycznego sprzętu.
+* Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
 
-## <a name="review-alert-information"></a>Przeglądanie informacji o alertach
+## <a name="review-alert-information"></a>Przejrzyj informacje o alertach
 
-Jeśli węzeł jednostki skalowania nie działa, otrzymasz następujący alerty krytyczne:
+W przypadku węzła jednostki skalowania w dół, otrzymasz następujący alerty krytyczne:
 
 - Węzeł nie jest podłączony do kontrolera sieci
 - Węzeł jest niedostępny do umieszczania maszyny wirtualnej
-- Węzeł jednostki skalowania jest w trybie offline
+- Węzeł jednostka skalowania jest w trybie offline
 
-![Lista alertów dla jednostki skali w dół](media/azure-stack-replace-node/nodedownalerts.png)
+![Lista alertów dla jednostki skalowania w dół](media/azure-stack-replace-node/nodedownalerts.png)
 
-Po otwarciu **węzeł jednostki skalowania jest w trybie offline** alertu, opis alertu zawiera węzeł jednostki skalowania, który jest niedostępny. Dodatkowe alerty może zostać wyświetlony w specyficzne dla producenta OEM rozwiązanie monitorowania, która jest uruchomiona na hoście cyklu życia sprzętu.
+Jeśli otworzysz **węzła jednostki skalowania jest w trybie offline** alertu, opis alertu zawiera węzeł jednostki skalowania, który jest niedostępny. Może zostać wyświetlony dodatkowych alertów w rozwiązaniu monitorowania specyficzne dla producenta OEM, która została uruchomiona na hoście cyklu życia sprzętu.
 
 ![Szczegóły alertu w trybie offline węzła](media/azure-stack-replace-node/nodeoffline.png)
 
-## <a name="scale-unit-node-replacement-process"></a>Proces zmiany węzła jednostki skalowania
+## <a name="scale-unit-node-replacement-process"></a>Proces zastępczy węzła jednostki skalowania
 
-Następujące kroki służą jako ogólne omówienie procesu wymiany węzła jednostki skalowania. W dokumentacji dostawcy sprzętu OEM FRU szczegółowy opis kroków, które są specyficzne dla systemu. Bez odwołujących się do dokumentacji przez producentów OEM nie wykonaj następujące kroki.
+Poniższe kroki są dostarczane jako ogólne omówienie procesu wymiany węzła jednostki skalowania. W dokumentacji dostawcy sprzętu OEM FRU szczegółowy opis kroków, które są specyficzne dla systemu. Nie wykonuj następujące czynności bez odwołujące się do dokumentacji dostarczonego przez producenta OEM.
 
-1. Użyj [opróżnienia](azure-stack-node-actions.md#scale-unit-node-actions) akcji w celu uruchomienia trybu konserwacji węzła jednostki skalowania. Ta akcja nie może być wymagany na podstawie warunku fizycznego sprzętu.
+1. Użyj [opróżnić](azure-stack-node-actions.md#scale-unit-node-actions) akcji, aby przełączyć węzeł jednostki skalowania w trybie konserwacji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
 
    > [!NOTE]
-   > W każdym przypadku tylko jeden węzeł można opróżnione i odłączony od zasilania w tym samym czasie bez przerywania S2D (bezpośrednie miejsca do magazynowania).
+   > W każdym przypadku, tylko jeden węzeł można opróżniane i wyłączona w tym samym czasie, bez przerywania S2D (bezpośrednimi miejscami do magazynowania).
 
-2. Jeśli węzeł nadal jest włączona, należy użyć [wyłączenie](azure-stack-node-actions.md#scale-unit-node-actions) akcji. Ta akcja nie może być wymagany na podstawie warunku fizycznego sprzętu.
+2. Jeśli węzeł jest nadal włączony, należy użyć [Wyłącz zasilanie](azure-stack-node-actions.md#scale-unit-node-actions) akcji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
  
    > [!NOTE]
-   > W rzadkich przypadkach wyłączy akcji nie działa w zamian użyj interfejsu sieci web uzyskiwania informacji na temat kontrolera zarządzania płytą główną.
+   > W rzadkich przypadkach wyłączanie akcji nie rozwiąże problemu należy zamiast tego użyj interfejsu sieci web uzyskiwania informacji na temat kontrolera zarządzania płytą główną.
 
-1. Zamień na komputerze fizycznym. Zazwyczaj jest to realizowane przez producenta OEM komputera.
+1. Zastąp komputera fizycznego. Zazwyczaj jest to realizowane przez dostawcę sprzętu OEM.
 2. Użyj [naprawy](azure-stack-node-actions.md#scale-unit-node-actions) akcji, aby dodać nowy komputer fizyczny do jednostki skalowania.
-3. Użyj uprzywilejowanych punktu końcowego [sprawdzić stan naprawy dysku wirtualnego](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Nowe dyski danych zadania naprawy pełne magazynu może zająć kilka godzin w zależności od obciążenia systemu i zużytego miejsca.
+3. Użyj uprzywilejowanych punktu końcowego do [sprawdzić stan naprawy dysku wirtualnego](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Za pomocą nowych dysków z danymi zadanie naprawy pełną magazynu może potrwać kilka godzin w zależności od obciążenia systemu i używane miejsce.
 4. Akcja naprawy zakończy działanie, aby zweryfikować, że wszystkie aktywne alerty zostało automatycznie zamknięte.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Uzyskać informacji dotyczących zastępowania wyłączania dysku fizycznego, zobacz [wymienić dysk](azure-stack-replace-disk.md). 
-- Aby dowiedzieć się, jak wymiana sprzętu z systemem innym niż wyłączania składnika, zobacz [Zastąp składnik sprzętowy](azure-stack-replace-component.md).
+- Aby dowiedzieć się, jak zastąpienie wyłączania dysku fizycznego, zobacz [wymienić dysk](azure-stack-replace-disk.md). 
+- Aby dowiedzieć się, jak zastąpienie składnik sprzętowy bez wyłączania, zobacz [wymienić składnik sprzętowy](azure-stack-replace-component.md).

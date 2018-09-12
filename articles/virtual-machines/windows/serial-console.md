@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 196882cf4515be8afd129128402e9eaee322cb4b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093587"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378333"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -98,7 +98,10 @@ Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej plat
 Aby uzyskać informacje na temat konfigurowania Windows do utworzenia zrzutu awaryjnego, gdy odbierze NMI, zobacz: [sposób generowania pliku zrzutu awaryjnego pełną lub pliku zrzutu awaryjnego jądra za pomocą NMI na komputerze z systemem Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
-Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
+Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej. 
+
+> [!Note] 
+> Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Obejmuje, ale nie jest ograniczona do ról administratora lub właściciela. Role niestandardowe mogą również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
 Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](https://aka.ms/disableserialconsoleapi). Może używać "Try It" Funkcje dostępne na stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swoje `subscriptionId`, "default" w `default` pola, a następnie kliknij przycisk Uruchom. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne i zostaną dostarczone w późniejszym terminie. [Spróbuj wywołania interfejsu API REST w tym miejscu](https://aka.ms/disableserialconsoleapi).
@@ -190,7 +193,6 @@ Jak My nadal w fazie (wersja zapoznawcza), aby uzyskać dostęp do konsoli szere
 
 Problem                             |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
-Nie ma opcji za pomocą konsoli szeregowej wystąpienia zestawu skalowania maszyn wirtualnych | W okresie obowiązywania wersji zapoznawczej dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych nie jest obsługiwana.
 Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To może się zdarzyć, jeśli używasz niestandardowej maszyny Wirtualnej wzmocnione urządzenia lub CHODNIKÓW konfiguracji tego Windows causers niepowodzenie prawidłowo połączenia do portu szeregowego.
 Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Spowoduje to wyświetlenie Jeśli specjalnej konsoli administracyjnej nie został włączony dla obrazu systemu Windows. Zobacz [dostęp szeregowy konsoli dla Windows](#access-serial-console-for-windows) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Więcej informacji znajduje się w temacie [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu RDP można zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go podczas podłączyć jako dysku danych przy użyciu `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienić ponownie dysk.
@@ -203,9 +205,25 @@ Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta 
 
 A. Przekazać opinię jako problem, przechodząc do https://aka.ms/serialconsolefeedback. Alternatywnie mniej (preferowane) wysyłanie opinii za pośrednictwem azserialhelp@microsoft.com lub w kategorii maszyny wirtualnej http://feedback.azure.com
 
-**PYTANIA I ODPOWIEDZI. Nie mogę uzyskać dostęp do konsoli szeregowej, gdzie plik zgłoszenia do pomocy technicznej?**
+**PYTANIA I ODPOWIEDZI. Konsola szeregowa obsługuje kopiowania/wklejania?**
 
-A. Tę funkcję wersji zapoznawczej jest objęte za pośrednictwem dodatkowym postanowieniom dotyczącym wersji platformy Azure. Obsługa tej najlepiej odbywa się za pośrednictwem kanałów, o których wspomniano powyżej. 
+A. Tak samo. Użyj klawiszy Ctrl + Shift + C i Ctrl + Shift + V do kopiowania i wklejania w terminalu.
+
+**PYTANIA I ODPOWIEDZI. Kto może włączyć lub wyłączyć konsoli szeregowej dla mojej subskrypcji?**
+
+A. Aby włączyć lub wyłączyć konsoli szeregowej na poziomie całej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Role, które mają uprawnienia do zapisu obejmują, ale nie są ograniczone do ról administratora lub właściciela. Role niestandardowe mogą również mieć uprawnienia do zapisu.
+
+**PYTANIA I ODPOWIEDZI. Kto ma dostęp do konsoli szeregowej dla mojej maszyny Wirtualnej?**
+
+A. Konieczne jest posiadanie dostępu na poziomie współautora lub nowszej, aby maszyna wirtualna w celu uzyskania dostępu do konsoli szeregowej maszyny Wirtualnej. 
+
+**PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie widać niczego, co należy zrobić?**
+
+A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#Enable-Serial-Console-in-custom-or-older-images) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
+
+**PYTANIA I ODPOWIEDZI. Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych?**
+
+A. Dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych w tej chwili nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać szczegółowy przewodnik poleceń programu PowerShell i CMD, można użyć w Windows SAC, kliknij [tutaj](serial-console-cmd-ps-commands.md).

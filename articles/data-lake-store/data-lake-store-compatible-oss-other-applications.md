@@ -1,6 +1,6 @@
 ---
-title: Dane big data aplikacji zgodnych z Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft
-description: Lista aplikacji typu open source, które współpracują z usługi Azure Data Lake magazynu Gen1 (wcześniej znana jako Azure Data Lake Store)
+title: Aplikacje danych big data jest zgodne z usługą Data Lake Storage Gen1 | Dokumentacja firmy Microsoft
+description: Lista aplikacji typu open source, działające z usługą Azure Data Lake Storage Gen1 (wcześniej znane jako usługi Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,32 +10,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4a0b3272bc0e4711c555bec17411960aad5a3f16
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029642"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391204"
 ---
-# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Otwarte aplikacje źródła danych Big Data, które współpracują z usługi Azure Data Lake magazynu Gen1
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Otwieranie aplikacji źródła danych big Data, współpracujących z usługi Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-W tym artykule wymieniono aplikacji danych big data typu open source, które współpracują z usługą Azure Data Lake Store. Dla aplikacji w poniższej tabeli obsługiwane są dostępne z rozkładem wymienionych wersji. Aby uzyskać informacje na jakie wersje te aplikacje są dostępne z usługą HDInsight, zobacz [przechowywanie wersji składnika usługi HDInsight](../hdinsight/hdinsight-component-versioning.md).
+W tym artykule wymieniono aplikacje danych big data typu open source, które działają z usługi Azure Data Lake Storage Gen1. Dla aplikacji w poniższej tabeli obsługiwane są tylko wersje dostępne z listy dystrybucyjnej. Aby uzyskać informacji o jakie wersje tych aplikacji są dostępne za pomocą HDInsight, zobacz [przechowywanie wersji składnika HDInsight](../hdinsight/hdinsight-component-versioning.md).
 
 | Oprogramowanie typu Open Source | Dystrybucja |
 | --- | --- |
-| [Apache Sqoop](http://sqoop.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Storm](https://storm.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Hive](http://hive.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Mahout](http://mahout.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Pig/Pig Latin](http://pig.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Oozie](http://oozie.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Zookeeper](http://zookeeper.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Tez](http://tez.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3,6 |
-| [Apache Spark](http://spark.apache.org/) |HDInsight 3.4, 3.5 i 3,6 |
+| [Apache Sqoop](http://sqoop.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Storm](https://storm.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Hive](http://hive.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Mahout](http://mahout.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Pig/Pig Latin](http://pig.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Oozie](http://oozie.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Zookeeper](http://zookeeper.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Tez](http://tez.apache.org/) |HDInsight 3.2, 3.4, 3.5 i 3.6 |
+| [Apache Spark](http://spark.apache.org/) |HDInsight 3.4, 3.5 i 3.6 |
 
 
 ## <a name="see-also"></a>Zobacz także

@@ -1,6 +1,6 @@
 ---
-title: Porównanie usługi Azure Data Lake Store za pomocą usługi Azure Blob Storage | Dokumentacja firmy Microsoft
-description: Porównanie usługi Azure Data Lake Store za pomocą usługi Azure Storage Blob
+title: Porównanie usług Azure Data Lake Storage Gen1 za pomocą usługi Azure Blob Storage | Dokumentacja firmy Microsoft
+description: Porównanie usług Azure Data Lake Storage Gen1 za pomocą usługi Azure Storage Blob
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b374e92a1e1d9828bc8c095e29e1dfdfd13275b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 3cc38e7ede9882e78e509738351696a64c938c40
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492915"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391423"
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Store i Azure Blob Storage
-W tabeli w tym artykule przedstawiono różnice w usłudze Azure Data Lake Store i Azure Blob Storage wzdłuż niektórych kluczowych aspektów przetwarzania danych big Data. Usługa Azure Blob Storage jest ogólnego przeznaczenia, skalowalny magazyn obiektów przeznaczony do szerokiej gamy scenariuszy magazynowania. Azure Data Lake Store to ogromne repozytorium, które jest zoptymalizowane pod kątem obciążeń analizy danych big data.
+# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Storage Gen1 i usługi Azure Blob Storage
+Tabela, w tym artykule zawiera podsumowanie różnic między usługi Azure Data Lake Storage Gen1 i Azure Blob Storage, które wzdłuż niektórych kluczowych aspektów przetwarzania danych big Data. Usługa Azure Blob Storage jest ogólnego przeznaczenia, skalowalny magazyn obiektów przeznaczony do szerokiej gamy scenariuszy magazynowania. Azure Data Lake Storage Gen1 to ogromne repozytorium, które jest zoptymalizowane pod kątem obciążeń analizy danych big data.
 
-|  | Azure Data Lake Store | Azure Blob Storage |
+|  | Usługa Azure Data Lake Storage 1. generacji | Azure Blob Storage |
 | --- | --- | --- |
 | Przeznaczenie |Magazyn zoptymalizowany pod kątem na potrzeby obciążeń analizy danych big data |Magazyn obiektów ogólnego przeznaczenia dla szerokiej gamy scenariuszy magazynu, w tym analizy danych big data |
 | Przypadki użycia |Wsadowe, interakcyjne, przesyłanie strumieniowe analytics i machine learning danych takich jak pliki dzienników, danych IoT kliknij pozycję strumieni dużych zestawów danych |Dowolnego typu dane tekstowe lub binarne, takie jak aplikacja kopii zakończenia, tworzenia kopii zapasowej danych, magazynu multimediów do przesyłania strumieniowego i ogólnego przeznaczenia — dane. Ponadto pełną pomoc techniczną na potrzeby obciążeń analizy; wsadowe, interakcyjne, przesyłanie strumieniowe analytics i machine learning danych takich jak pliki dzienników, danych IoT kliknij pozycję strumieni dużych zestawów danych |
-| Kluczowe pojęcia |Konta Data Lake Store zawiera foldery, które z kolei zawiera dane przechowywane jako pliki |Konto magazynu ma kontenerów, co z kolei zawiera dane w postaci obiektów blob |
+| Kluczowe pojęcia |Konto usługi Data Lake Storage Gen1 zawiera foldery, który z kolei zawiera dane przechowywane jako pliki |Konto magazynu ma kontenerów, co z kolei zawiera dane w postaci obiektów blob |
 | Struktura |Hierarchiczny system plików |Magazyn obiektów przy użyciu prosty obszar nazw |
 | Interfejs API |Interfejs API REST przy użyciu protokołu HTTPS |Interfejs API REST za pośrednictwem protokołu HTTP/HTTPS |
 | Interfejs API po stronie serwera |[Interfejs API REST zgodnych z WebHDFS](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Interfejs API REST magazynu obiektów Blob platformy Azure](https://msdn.microsoft.com/library/azure/dd135733.aspx) |

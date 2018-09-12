@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5d988e8a8a32924b8424a07cf20c75f0e8f8cf4d
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465747"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391078"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Szybkie rozpoczynanie pracy przy użyciu programu PowerShell w usłudze Azure Stack
 
@@ -27,12 +26,14 @@ ms.locfileid: "38465747"
 
 Ten przewodnik Szybki Start pomaga zainstalować i skonfigurować środowisko usługi Azure Stack przy użyciu programu PowerShell. Skrypt, który firma Microsoft zapewnia, że w tym artykule jest ograniczone do **operatora infrastruktury Azure Stack** tylko.
 
-Ten artykuł jest skrócona wersja kroków, które są opisane w [Instalowanie programu PowerShell]( azure-stack-powershell-install.md), [Pobierz narzędzia]( azure-stack-powershell-download.md), i [konfigurowania środowiska PowerShell operatora infrastruktury Azure Stack]( azure-stack-powershell-configure-admin.md) artykułów. Za pomocą skryptów, w tym temacie, można skonfigurować programu PowerShell dla usługi Azure Stack środowisk, w których są wdrażane przy użyciu usługi Azure Active Directory lub usługi Active Directory Federation Services (AD FS).  
+Ten artykuł jest skrócona wersja kroków, które są opisane w [Instalowanie programu PowerShell]( azure-stack-powershell-install.md), [Pobierz narzędzia]( azure-stack-powershell-download.md), i [konfigurowania środowiska PowerShell operatora infrastruktury Azure Stack]( azure-stack-powershell-configure-admin.md) artykułów. Za pomocą skryptów, w tym artykule, można skonfigurować programu PowerShell dla usługi Azure Stack środowisk, w których są wdrażane przy użyciu usługi Azure Active Directory lub usługi Active Directory Federation Services (AD FS).  
 
 
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Konfigurowanie programu PowerShell dla wdrożenia oparte na usłudze Azure Active Directory
 
-Zaloguj się do usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. Upewnij się zaktualizować **TenantName**, **ArmEndpoint**, i **GraphAudience** zmienne jako niezbędne do konfiguracji środowiska:
+<a name="sign-in-to-your-azure-stack-development-kit-or-a-windows-based-external-client-if-you-are-connected-through-vpn-open-an-elevated-powershell-ise-session-and-then-run-the-following-script"></a>Zaloguj się do usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. 
+-  
+- Upewnij się zaktualizować **TenantName**, **ArmEndpoint**, i **GraphAudience** zmienne jako niezbędne do konfiguracji środowiska:
 
 ```powershell
 # Specify Azure Active Directory tenant name.

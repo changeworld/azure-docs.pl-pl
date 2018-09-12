@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 55a271e49977feb6d8e5c188f1724b66db4cb4f5
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a7d77df4d6be1572d2076684cfa4702cb32b5ed6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055406"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Samouczek: Integracja usługi Azure Active Directory z wieloma kontami usług Amazon Web Services (AWS)
 
@@ -317,6 +317,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 27. Po utworzeniu grupy wybierz grupę i przypisz do aplikacji.
 
     ![Konfigurowanie logowania jednokrotnego Dodaj](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+
+> [!Note]
+> Grupy zagnieżdżone nie są obsługiwane podczas przypisywania grup.
 
 28. Aby przypisać rolę do grupy, wybierz rolę, a następnie kliknij pozycję **przypisać** przycisk w dolnej części strony.
 

@@ -8,16 +8,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c6dfb8ac36f3b5d51cc1d6126449b458f8f4946c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057690"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377433"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
-Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagować na tworzenie i usuwanie obiektów blob za pomocą nowoczesnych architektur bez użycia serwera. Robi to bez konieczności skomplikowanego kodu lub sondowania kosztowne i nieefektywna usług.  Zamiast tego zdarzenia są przekazywane za pośrednictwem [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) dla subskrybentów, takie jak [usługi Azure Functions](https://azure.microsoft.com/services/functions/), [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), lub nawet własne odbiornika http niestandardowego, a tylko płatność za rzeczywiste użycie. 
+Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagować na tworzenie i usuwanie obiektów blob za pomocą nowoczesnych architektur bez użycia serwera. Robi to bez konieczności skomplikowanego kodu lub sondowania kosztowne i nieefektywna usług.  Zamiast tego zdarzenia są przekazywane za pośrednictwem [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) dla subskrybentów, takie jak [usługi Azure Functions](https://azure.microsoft.com/services/functions/), [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), lub nawet własne odbiornika http niestandardowego, a tylko płatność za rzeczywiste użycie.
+
+Zdarzenia usługi blob storage niezawodnie są wysyłane do usługi siatki zdarzeń, która zapewnia niezawodne dostarczanie usług do aplikacji za pośrednictwem zasad ponawiania rozbudowane i dostarczania wiadomości utraconych.
 
 Typowe scenariusze zdarzenia magazynu obiektów Blob obejmują przetwarzanie obrazu lub filmu wideo, indeksowanie wyszukiwania lub przepływ pracy korzystający z pliku.  Przekazywanie plików asynchroniczne są doskonałe rozwiązanie dla zdarzenia.  Gdy zmiany są rzadkie, ale dany scenariusz wymaga natychmiastowej reakcji, oparte na zdarzeniach architektury może być szczególnie wydajne.
 

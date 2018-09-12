@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 72ea5e54bf86ce408700c0456f6d37f5f3c29924
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 70ea13c1badf79c86bed53a34d9036706dbbac6a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091786"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378159"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcje trwałe (usługi Azure Functions)
 
@@ -145,8 +145,6 @@ Parametry [RaiseEventAsync](https://azure.github.io/azure-functions-durable-exte
 * **EventData**: ładunek do serializacji JSON do wysłania do wystąpienia.
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
 [FunctionName("RaiseEvent")]
 public static Task Run(
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -207,7 +205,8 @@ Zależnie od godziny, do uzyskania odpowiedzi z wystąpienia aranżacji wymagane
             "id": "d3b72dddefce4e758d92f4d411567177",
             "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
             "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "rewindPostUri": "https://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/rewind?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
         }
     ```
 
@@ -228,12 +227,12 @@ Metoda ta zwraca wystąpienie [HttpManagementPayload](https://azure.github.io/az
 * **StatusQueryGetUri**: adres URL stanu wystąpienia aranżacji.
 * **SendEventPostUri**: adres URL "Zgłoś zdarzenie" wystąpienia aranżacji.
 * **TerminatePostUri**: adres URL wystąpienia aranżacji "terminate".
+* **RewindPostUri**: adres URL "przewijanie" wystąpienia aranżacji.
 
 Działanie funkcji można wysłać wystąpienia [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) z systemami zewnętrznymi, do monitorowania lub wywoływać zdarzenia do organizowania:
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
+[FunctionName("SendInstanceInfo")]
 public static void SendInstanceInfo(
     [ActivityTrigger] DurableActivityContext ctx,
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -246,6 +245,29 @@ public static void SendInstanceInfo(
 
     // send the payload to Cosmos DB
     document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
+
+## <a name="rewinding-instances-preview"></a>Przewijanie instances (wersja zapoznawcza)
+
+Wystąpienie aranżacji zakończonych niepowodzeniem może być *przewinięta* w uprzednio dobrej kondycji, używając [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) interfejsu API. To działa, umieszczając aranżacji do *systemem* stanu i ponowne uruchomienie działania i/lub podrzędną aranżacji błędy wykonania, które spowodowały błąd aranżacji.
+
+> [!NOTE]
+> Ten interfejs API nie jest przeznaczony do zastąpienia obsługi błędów właściwe i zasad ponawiania. Przeciwnie jest przeznaczona do użycia tylko w przypadkach, gdzie wystąpień aranżacji się nie powieść nieoczekiwany powodów. Aby uzyskać szczegółowe informacje na temat zasad ponawiania prób i obsługi błędów, zobacz [obsługi błędów](durable-functions-error-handling.md) tematu.
+
+Przykładem użycia w przypadku *rewind* jest przepływ pracy obejmujące serię [ludzi zatwierdzenia](durable-functions-overview.md#pattern-5-human-interaction). Załóżmy, że istnieje szereg funkcji działań, które powiadamiają o kogoś, że zatwierdzenie jest wymagane i zaczekaj na poziomie odpowiedzi w czasie rzeczywistym. Gdy wszystkie zatwierdzenia działań otrzymane odpowiedzi lub przekroczyło limit czasu, innego działania zakończy się niepowodzeniem z powodu błędnej konfiguracji aplikacji (np. nieprawidłowe parametry połączenia bazy danych). Wynikiem jest błąd aranżacji szczegółowo przepływ pracy. Za pomocą `RewindAsync` interfejsu API, administrator aplikacji może naprawić ten błąd konfiguracji i *rewind* orchestration nie powiodło się z powrotem do stanu bezpośrednio przed awarią. Żaden z kroków interakcji człowieka muszą być ponownie zatwierdzone i organizowania może teraz zostać pomyślnie ukończony.
+
+> [!NOTE]
+> *Rewind* funkcja nie obsługuje przetwarzania aranżacji wystąpieniom używaj czasomierzy trwałe.
+
+```csharp
+[FunctionName("RewindInstance")]
+public static Task Run(
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [ManualTrigger] string instanceId)
+{
+    string reason = "Orchestrator failed and needs to be revived.";
+    return client.RewindAsync(instanceId, reason);
 }
 ```
 

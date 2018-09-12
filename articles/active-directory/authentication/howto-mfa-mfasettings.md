@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: da5905af4a861502f190cd873033923d8fd0bfa7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349096"
+ms.locfileid: "44391848"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -180,7 +180,7 @@ Niezależnie od tego, czy włączona jest funkcja zaufane adresy IP weryfikacji 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **dostępu warunkowego** > **lokalizacje z nazwą**.
 3. Wybierz **skonfigurować uwierzytelnianie wieloskładnikowe zaufane adresy IP**.
-4. Na **ustawienia usługi** w obszarze **zaufane adresy IP**, wybierz jedną z następujących dwóch opcji:
+4. Na **ustawienia usługi** w obszarze **zaufane adresy IP**, wybrać dowolny z poniższych dwóch opcji:
    
    * **W przypadku żądań od użytkowników federacyjnych pochodzące z moim intranecie**: Aby wybrać tę opcję, zaznacz pole wyboru. Federacyjna wszystkich użytkowników, którzy logowania z sieci firmowej pominięciu weryfikacji dwuetapowej za pomocą wydanego przez usługi AD FS oświadczenia. Upewnij się, że usług AD FS ma regułę Dodaj oświadczenie sieci intranet na odpowiedni ruch. Jeśli zasada nie istnieje, utwórz następującą regułę w usługach AD FS:<br/>
 
@@ -203,7 +203,7 @@ Niezależnie od tego, czy włączona jest funkcja zaufane adresy IP weryfikacji 
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników**.
 3. Wybierz **uwierzytelnianie wieloskładnikowe**.
 4. W obszarze uwierzytelniania wieloskładnikowego wybierz **ustawienia usługi**.
-5. Na **ustawienia usługi** w obszarze **zaufane adresy IP**, wybierz jedną z następujących dwóch opcji:
+5. Na **ustawienia usługi** w obszarze **zaufane adresy IP**, wybierz jeden lub oba następujące dwie opcje:
    
    * **W przypadku żądań od użytkowników federacyjnych w moim intranecie**: Aby wybrać tę opcję, zaznacz pole wyboru. Federacyjna wszystkich użytkowników, którzy logowania z sieci firmowej pominięciu weryfikacji dwuetapowej za pomocą wydanego przez usługi AD FS oświadczenia. Upewnij się, że usług AD FS ma regułę Dodaj oświadczenie sieci intranet na odpowiedni ruch. Jeśli zasada nie istnieje, utwórz następującą regułę w usługach AD FS:<br/>
 

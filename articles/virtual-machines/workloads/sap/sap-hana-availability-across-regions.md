@@ -1,6 +1,6 @@
 ---
-title: Dostępność SAP HANA w regionach platformy Azure | Dokumentacja firmy Microsoft
-description: Omówienie zagadnienia dotyczące dostępności podczas uruchamiania na maszynach wirtualnych Azure w wielu regionach platformy Azure SAP HANA.
+title: Dostępność platformy SAP HANA w regionach platformy Azure | Dokumentacja firmy Microsoft
+description: Ogólne omówienie zagadnień dostępności podczas uruchamiania oprogramowania SAP HANA na maszynach wirtualnych platformy Azure w wielu regionach platformy Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -13,67 +13,72 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2018
+ms.date: 09/11/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: edbd1885dd529e4ccd38f2012d56865a2147f64d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c12a8d342e2fec41cb2318ac7abfe1d3fce31cef
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842275"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391695"
 ---
-# <a name="sap-hana-availability-across-azure-regions"></a>Dostępność SAP HANA w regionach platformy Azure
+# <a name="sap-hana-availability-across-azure-regions"></a>Dostępność platformy SAP HANA w regionach platformy Azure
 
-W tym artykule opisano scenariusze związanych z dostępnością SAP HANA w różnych regionach platformy Azure. Ze względu na odległość między regiony platformy Azure Konfigurowanie dostępności SAP HANA w wielu regionach platformy Azure wymaga uwagi.
+W tym artykule opisano scenariuszy związanych z dostępnością platformy SAP HANA w różnych regionach platformy Azure. Ze względu na odległość między regionami platformy Azure Konfigurowanie dostępność oprogramowania SAP HANA w wielu regionach platformy Azure obejmuje uwagi.
 
 ## <a name="why-deploy-across-multiple-azure-regions"></a>Dlaczego warto wdrożyć w wielu regionach platformy Azure
 
-Regiony platformy Azure często są oddzielone duże odległości. W zależności od regionu geograficznymi odległość między regiony platformy Azure może być setki milach lub nawet kilka mil tysięcy, podobnie jak w Stanach Zjednoczonych. Ze względu na odległość ruch sieciowy między zasoby, które zostały wdrożone w dwóch różnych regionach platformy Azure występować znaczne opóźnienie komunikacji dwukierunkowej. Opóźnienie jest istotne wykluczyć synchroniczna wymiana danych między dwoma wystąpieniami SAP HANA w typowych obciążeń SAP. 
+Regiony platformy Azure często są oddzielone duże odległości. W zależności od regionu geopolitycznego odległości między regionami platformy Azure może być setek mil lub nawet kilku mil tysięcy, podobnie jak w Stanach Zjednoczonych. Z powodu odległość ruch sieciowy między zasobami, które zostały wdrożone w dwóch różnych regionach platformy Azure wystąpić znaczne opóźnienie w obie strony. Opóźnienie jest istotne wykluczyć synchroniczna wymiana danych między dwoma wystąpieniami platformy SAP HANA w ramach typowych obciążeń SAP. 
 
-Z drugiej strony organizacje często mają wymagania odległości między lokalizacją podstawowego centrum danych i dodatkowego centrum danych. Wymaganie odległość pomaga zapewnić dostępność, jeśli występuje klęski żywiołowej w szerszej lokalizacji geograficznej. Przykładami huragany, które trafień Karaibów i Florida września i października 2017 r. Twoja organizacja może mieć co najmniej minimalną odległość wymaganiem. W przypadku klientów najbardziej platformy Azure, definicji minimalną odległość wymaga można projektować pod kątem dostępności w [regiony platformy Azure](https://azure.microsoft.com/regions/). Odległość między dwoma regiony platformy Azure jest za duży do używania trybu Replikacja synchroniczna HANA, wymagania dotyczące RTO i cel punktu odzyskiwania może wymusić na wdrażanie konfiguracji dostępności w jeden region, a następnie dodatkowo z dodatkowe wdrożenia na sekundę region.
+Z drugiej strony organizacje często mają wymagania odległości między lokalizacją podstawowym centrum danych i dodatkowego centrum danych. Wymaganie odległość pomaga zapewnić dostępność w przypadku klęski żywiołowej w szerszej lokalizacji geograficznej. Przykłady obejmują hurricanes, które trafień Karaiby i Floryda w września do października 2017 r. Twoja organizacja może mieć co najmniej minimalną odległość wymogiem. Dla klientów większość platformy Azure, definicja minimalną odległość wymaga się projektowania pod kątem dostępności w [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/). Odległość między dwoma regionami platformy Azure jest za duży, aby użyć trybu replikacji synchronicznej HANA, wymagania RTO i RPO może wymusić wdrażanie konfiguracji dostępności w jednym regionie, a następnie uzupełniają dodatkowe w przypadku wdrożeń na sekundę region.
 
-Innym aspektem do uwzględnienia w tym scenariuszu jest trybu failover i przekierowanie klienta. Zakłada się, że tryb failover między wystąpieniami SAP HANA w dwóch różnych regionach platformy Azure zawsze jest ręcznego przełączania trybu failover. Ponieważ tryb replikacji replikacji systemu SAP HANA ustawiono asynchroniczne, istnieje możliwość, że dane w głównej wystąpienia HANA nie jeszcze stają się on do dodatkowej wystąpienia HANA. W związku z tym automatycznej pracy awaryjnej nie jest opcją w przypadku konfiguracji replikacji w przypadku asynchronicznego. Nawet w przypadku ręcznie trybu failover, tak jak wykonywania pracy awaryjnej należy podjąć środki, aby zapewnić, że wszystkie dane przekazane na głównej stronie go do dodatkowej wystąpienia przed należy ręcznie przenieść do innego regionu systemu Azure.
+Innym aspektem do uwzględnienia w tym scenariuszu jest trybu failover i przekierowania klienta. Zakłada się, że pracę awaryjną między wystąpieniami platformy SAP HANA w dwóch różnych regionach platformy Azure zawsze jest ręcznej pracy awaryjnej. Ponieważ replikacja systemu SAP HANA tryb replikacji jest równa asynchronicznego, istnieje ryzyko, że danych w podstawowej wystąpienie oprogramowania HANA nie zostało jeszcze dotarło do dodatkowej wystąpienie oprogramowania HANA. W związku z tym automatycznej pracy awaryjnej nie jest dostępną opcją w przypadku konfiguracji replikacji w przypadku asynchronicznej. Nawet w przypadku ręcznie kontrolowanego przejścia w tryb failover jak w poniższym ćwiczeniu trybu failover należy podjąć środki, aby zapewnić, że wszystkie zatwierdzone dane po stronie podstawowej go do dodatkowej wystąpienia przed można ręcznie przenieść do innego regionu platformy Azure.
  
-Sieć wirtualna platformy Azure korzysta z różnych zakresów adresów IP. Adresy IP są wdrażane w drugim region platformy Azure. Tak, albo musisz zmienić konfigurację klienta SAP HANA lub najlepiej, trzeba utworzyć kroki, aby zmienić rozpoznawania nazw. Dzięki temu klienci są przekierowywani do nowej lokacji dodatkowej adresu IP. Aby uzyskać więcej informacji, zobacz artykuł SAP [odzyskiwania połączenia klienta po przejęciu](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html).   
+Usługa Azure Virtual Network używa różnych zakresów adresów IP. Adresy IP są wdrażane w drugim regionie platformy Azure. Tak, albo musisz zmienić konfigurację klienta SAP HANA, lub najlepiej, trzeba utworzyć kroki, aby zmienić rozpoznawania nazw. Dzięki temu klienci są przekierowywani do nowej lokacji dodatkowej adresu IP. Aby uzyskać więcej informacji, zobacz artykuł SAP [odzyskiwania połączenia klienta po przejęciu](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html).   
 
-## <a name="simple-availability-between-two-azure-regions"></a>Proste dostępności między dwóch regionach platformy Azure
+## <a name="simple-availability-between-two-azure-regions"></a>Proste dostępności między dwoma regionami platformy Azure
 
-Możesz wybrać nie można wprowadzić żadnych konfiguracji dostępności w jednym regionie, ale nadal mają żądanie ma obciążeń obsługiwanych w przypadku awarii. Typowe przypadki dla systemów, takich jak to to systemy nieprodukcyjnym. Mimo że o systemie w dół do połowy lub nawet dziennie stałego, nie może dopuścić system będzie dostępny do 48 godzin lub dłużej. Aby wprowadzić ustawienia mniej kosztowne, systemem innego nawet mniej ważne w maszynie Wirtualnej. Inny system działa jako miejsca docelowego. Można również rozmiar maszyny Wirtualnej w regionie pomocniczym, może być mniejszy i nie chce wstępnego ładowania danych. Ponieważ przejście w tryb failover jest ręczne i pociąga za sobą wielu więcej czynności stosu kompletna aplikacja trybu failover, dopuszczalne jest dodatkowy czas zamykania maszyny Wirtualnej, rozmiar, a następnie ponownie uruchomić maszyny Wirtualnej.
+Może nie chcesz umieścić konfiguracji wszelkie dostępności w miejscu w obrębie jednego regionu, ale nadal mają żądanie ma obciążenia obsługiwane w przypadku wystąpienia awarii. Typowe przypadki dla systemów, takich jak ta to systemy obniżenia. Mimo że system w dół do połowy lub nawet jeden dzień to zrównoważone, nie może dopuścić system będzie dostępny przez 48 godzin lub dłużej. Aby ułatwić instalację mniej kosztowne, należy uruchomić inny system, który jest nawet mniej ważne w maszynie Wirtualnej. Inny system działa jako miejsce docelowe. Można również rozmiaru maszyny Wirtualnej w regionie pomocniczym, może być mniejszy i nie chcesz wstępnego ładowania danych. Dodatkowy czas zamykania maszyny Wirtualnej, zmień jego rozmiar i ponownie uruchom maszynę Wirtualną jest dopuszczalne, ponieważ tryb failover jest ręcznie i pociąga za sobą wiele więcej kroków do trybu failover stosu kompletnej aplikacji.
 
-> [!NOTE]
-> Nawet jeśli nie używasz wstępnego ładowania danych w celu replikacji HANA systemu należy co najmniej 64 GB pamięci. Należy również wystarczającej ilości pamięci, oprócz 64 GB do przechowywania danych magazynu wierszy w pamięci obiektu docelowego.
+Jeśli używasz scenariusza udostępniania docelowym odzyskiwania po awarii w systemie odpowiedzi na pytania w jednej maszyny Wirtualnej, należy wykonać te zagadnienia pod uwagę:
 
-![Diagram dwóch maszyn wirtualnych za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
+- Istnieją dwa [tryby działania](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) delta_datashipping i logreplay, które są dostępne dla takich scenariuszy
+- Oba tryby działania mają wymagania dotyczące pamięci różnych bez wstępnego ładowania danych
+- Delta_datashipping może wymagać znacznie mniej pamięci bez opcji wstępnego ładowania, niż może wymagać logreplay. Zobacz rozdział 4.3 dokumentu SAP [jak do wykonania replikacji systemu dla oprogramowania SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)
+- Wymagania pamięci logreplay tryb działania bez preload nie jest jednoznaczny i zależy od załadować struktury magazynu kolumn
 
-> [!NOTE]
-> W tej konfiguracji nie może dostarczyć RPO = 0, ponieważ tryb replikacji HANA systemu jest asynchroniczne. Jeśli musisz podać RPO = 0, ta konfiguracja nie jest konfiguracji wybór.
 
-Niewielkie zmiany wprowadzone w konfiguracji można skonfigurować jako wstępnego ładowania danych. Jednak charakter ręcznej pracy awaryjnej i fakt, że warstwy aplikacji również trzeba przenosić do drugiego regionu, może nie być uzasadnione wstępnie danych. 
-
-## <a name="combine-availability-within-one-region-and-across-regions"></a>Łączenie dostępności w ramach jednego regionu i w regionach 
-
-Te czynniki mogą być wynikiem kombinację dostępności w obrębie regionów oraz:
-
-- Wymaganie RPO = 0 w obrębie regionu platformy Azure.
-- Organizacja nie jest chce lub mogą mieć globalne operacje wpływ głównych katastrofy fizycznych wpływającym na większych regionu. To w przypadku niektórych huragany, które trafień Karaibów w ciągu kilku ostatnich lat.
-- Przepisy dotyczące żądanie odległości między lokacjami podstawowych i pomocniczych, które są poza jakiego dostępności Azure zapewniają strefy.
-
-W takim przypadku można skonfigurować jakie wywołania SAP [konfiguracji replikacji wielowarstwowa systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) za pomocą replikacji systemu HANA. Architektura będzie wyglądać następująco:
-
-![Diagram trzech maszyn wirtualnych za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
-
-Ta konfiguracja zapewnia RPO = 0, z niskim RTO, w obrębie regionu podstawowego. Konfiguracja także zadowalający RPO przypadku przenoszenia do drugiego regionu. Czasy RTO w regionie drugi są zależne od tego, czy dane są wstępnie ładowane. Aby uruchomić system testowy wielu klientów użyj maszyny Wirtualnej w regionie pomocniczym. W tym przypadku użycia, danych nie może być załadowane.
+![Diagram przedstawiający dwóch maszyn wirtualnych za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
 
 > [!NOTE]
-> Ponieważ używasz **logreplay** trybu operacji dla replikacji systemu HANA przejście od 1 do warstwy 2 (Replikacja synchroniczna w regionie podstawowym), warstwa replikacji między warstwy 2 i warstwy 3 (replikacji do lokacji dodatkowej) nie może być w **delta_datashipping** tryb działania. Szczegółowe informacje na temat trybów pracy i pewne ograniczenia, zobacz artykuł SAP [tryby działania dla replikacji systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
+> W tej konfiguracji nie może dostarczyć cel punktu odzyskiwania = 0, ponieważ Twoje tryb replikacji systemu HANA jest asynchroniczna. Jeśli konieczne będzie podanie cel punktu odzyskiwania = 0, ta konfiguracja nie jest od wybranej konfiguracji.
+
+Aby skonfigurować dane jako wstępne ładowanie musi być niewielkie zmiany wprowadzone w konfiguracji. Jednak ze względu na charakter ręcznej pracy awaryjnej i fakt, że warstwy aplikacji również konieczne przeniesienie do drugiego regionu, może nie mieć sensu wstępnego ładowania danych. 
+
+## <a name="combine-availability-within-one-region-and-across-regions"></a>Połącz dostępności w ramach jednego regionu i regionami 
+
+Kombinacja dostępność oferowaną w wielu regionach mogą opierać się przez te czynniki:
+
+- Wymagania celu punktu odzyskiwania = 0 w regionie platformy Azure.
+- Organizacja nie zechce lub mogą mieć globalne operacje wpływ głównych klęskami fizycznych, który wpływa na większych region. Jest to w przypadku niektórych hurricanes, które trafień Karaiby w ciągu ostatnich kilku lat.
+- Przepisy żądanie odległości od lokacji głównych i dodatkowych, które są wyraźnie, poza jakie dostępności platformy Azure może zapewnić strefy.
+
+W takich przypadkach można ustawić jakie wywołania SAP [konfiguracji replikacji wielowarstwowa systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) za pomocą replikacji systemu HANA. Architektura będzie wyglądać następująco:
+
+![Diagram przedstawiający trzy maszyny wirtualne za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
+
+Przy użyciu logreplay jako tryb działania, ta konfiguracja zapewnia cel punktu odzyskiwania = 0, z niską wartość, w regionie podstawowym. Konfiguracja także znośnego cel punktu odzyskiwania, jeśli chodzi o przeniesienie do drugiego regionu. Czasy RTO, w drugim regionie są zależne od tego, czy dane są wstępnie ładowane. Wielu klientów używa maszyny Wirtualnej w regionie pomocniczym, aby uruchomić system testowy. W tym przypadku użycia, nie może zostać wstępnie załadowane dane.
+
+> [!IMPORTANT]
+> Tryby działania między różne warstwy trzeba jednolite. Możesz **nie** Użyj logreply jako tryb operacji między warstwami 1 i 2 oraz delta_datashipping umożliwiają określanie wartości warstwy 3. Można wybrać tylko jeden lub inny tryb operacji, która musi być spójny dla wszystkich warstw. Ponieważ delta_datashipping nie nadaje się umożliwiają cel punktu odzyskiwania = 0, tryb tylko uzasadnione działania, dla takiej konfiguracji warstwy multi pozostaje logreplay. Aby uzyskać szczegółowe informacje o trybach operacji i pewne ograniczenia, zobacz artykuł SAP [tryby operacji replikacji systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania tych konfiguracji na platformie Azure zobacz:
+Aby uzyskać wskazówki krok po kroku dotyczące konfigurowania tych konfiguracji na platformie Azure zobacz:
 
-- [Konfigurowanie replikacji systemu SAP HANA w maszynach wirtualnych platformy Azure](sap-hana-high-availability.md)
-- [Wysoka dostępność dla programu SAP HANA za pomocą replikacji systemu](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
+- [Konfigurowanie replikacji systemu SAP HANA na maszynach wirtualnych Azure](sap-hana-high-availability.md)
+- [Wysoka dostępność dla oprogramowania SAP HANA przy użyciu replikacji systemu](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
 
  
 

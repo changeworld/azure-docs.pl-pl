@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e4b6d115aebfd96d127e0d72c0c99188bedd93e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057191"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391814"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Limity i przydziały usługi Batch AI
 
@@ -33,22 +33,7 @@ Jeśli planujesz uruchamiania obciążeń produkcji na sztucznej Inteligencji us
 
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
-Usługa Batch AI ma domyślny limit przydziału liczby klastrów dozwolone na region w ramach subskrypcji i liczby rdzeni.
-
-| **Zasób** | **Limit domyślny** | **Maksymalny limit** |
-| --- | --- | --- |
-| Liczba rdzeni dedykowanych na region | 10 - 24 | Nie dotyczy<sup>1</sup> |
-| Liczba rdzeni o niskim priorytecie, na region | 10 - 24 | N/D<sup>2</sup> |
-| Klastry na region | 20 | 200<sup>3</sup> |
-
-> [!NOTE]
-> Domyślne limity zależą od rodzaju posiadanej subskrypcji.
-
-<sup>1</sup> Liczba dedykowanych rdzeni na subskrypcję usługi Batch AI można zwiększyć, ale maksymalna liczba jest nieokreślona. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
-
-<sup>2</sup> można zwiększyć liczbę rdzeni o niskim priorytecie na subskrypcję usługi Batch AI, ale maksymalna liczba jest nieokreślona. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
-
-<sup>3</sup> pomocy technicznej systemu Azure kontaktu, jeśli chcesz poprosić o zwiększenie wykraczające poza ten limit.
+[!INCLUDE [azure-batch-ai-limits](../../includes/azure-batch-ai-limits.md)]
 
 ## <a name="other-limits"></a>Inne limity
 

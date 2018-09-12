@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie monitorowania za pomocą usługi Analiza dzienników Azure Service Fabric — | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować analizy dzienników dla wizualizacji i analizowania zdarzeń do monitorowania klastrów sieci szkieletowej usług Azure.
+title: Usługa Azure Service Fabric — skonfiguruj monitorowanie za pomocą usługi Log Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować usługi Log Analytics umożliwiające wizualizowanie i analizowanie zdarzeń do monitorowania klastrów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -12,185 +12,90 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/03/2018
+ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5fa7b7ebfb1495a737a6d037566101df632764aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301040"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377755"
 ---
-# <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie analizy dzienników dla klastra
+# <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie usługi Log Analytics dla klastra
 
-Analiza dzienników jest nasze zalecenie, aby monitorować zdarzenia na poziomie klastra. Można skonfigurować obszaru roboczego analizy dzienników za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli obsługa zaktualizowany szablon usługi Resource Manager wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu do konfigurowania środowiska analizy dzienników. Wdrożenia za pośrednictwem portalu Marketplace jest łatwiejsze, jeśli masz już wdrożone z włączoną diagnostykę klastra. Jeśli nie masz dostępu na poziomie subskrypcji w ramach wdrażania do konta, wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
+Usługa log Analytics jest nasze zalecenie, aby monitorować zdarzenia poziomu klastra. Można skonfigurować obszar roboczy usługi Log Analytics, za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli zachowasz zaktualizowany szablon usługi Resource Manager, który wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu można skonfigurować środowisko usługi Log Analytics. Wdrożenia za pośrednictwem witryny Marketplace jest łatwiejsze, jeśli masz już klaster, który został wdrożony z włączoną diagnostyką. Jeśli nie masz dostępu na poziomie subskrypcji na koncie, do której jest wdrażany z, należy wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
 
 > [!NOTE]
-> Można skonfigurować analizy dzienników, aby monitorować klastra, należy mieć włączone, aby wyświetlić zdarzenia klastra platformy poziomie lub diagnostyki. Zapoznaj się [sposobu konfigurowania diagnostyki w klastrach z systemem Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposobu konfigurowania diagnostyki w systemie Linux klastrów](service-fabric-diagnostics-event-aggregation-lad.md) Aby uzyskać więcej informacji
+> Aby skonfigurować usługi Log Analytics do monitorowania klastra, musisz mieć włączone, aby wyświetlić zdarzenia z poziomu klastra lub poziom platformy diagnostyki. Zapoznaj się [jak konfigurowanie diagnostyki w klastrach Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposób konfigurowania diagnostyki w klastrach systemu Linux](service-fabric-diagnostics-event-aggregation-lad.md) Aby uzyskać więcej informacji
 
-## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Wdrażanie obszaru roboczego analizy dzienników przy użyciu portalu Azure Marketplace
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Wdrażanie obszaru roboczego usługi Log Analytics przy użyciu portalu Azure Marketplace
 
-Jeśli chcesz dodać obszaru roboczego analizy dzienników po wdrożeniu klastra, przejdź do portalu Azure Marketplace w portalu i poszukaj **usługi sieć szkieletowa Analytics**. To rozwiązanie niestandardowe w przypadku wdrożeń usługi sieć szkieletowa zawierającą dane specyficzne dla platformy Service Fabric. W tym procesie można tworzyć rozwiązania (pulpit nawigacyjny, aby wyświetlić szczegółowe informacje) oraz obszaru roboczego (agregacja danych klastra).
+Jeśli chcesz dodać obszar roboczy usługi Log Analytics, po wdrożeniu klastra, przejdź do portalu Azure Marketplace w portalu i poszukaj **analiza usługi Service Fabric**. To niestandardowe rozwiązanie w przypadku wdrożeń usługi Service Fabric zawiera dane specyficzne dla usługi Service Fabric. W ramach tego procesu możesz tworzyć rozwiązania (pulpit nawigacyjny, aby wyświetlić szczegółowe informacje) oraz obszaru roboczego (agregacji danych bazowych klastra).
 
-1. Wybierz **nowy** w menu nawigacji po lewej stronie. 
+1. Wybierz **New** w menu nawigacji po lewej stronie. 
 
-2. Wyszukaj **usługi Analytics sieci szkieletowej**. Wybierz zasób, który jest wyświetlany.
+2. Wyszukaj **usługi Service Fabric Analytics**. Wybierz zasób, który pojawia się.
 
 3. Wybierz pozycję **Utwórz**.
 
-    ![Usługa sieci szkieletowej Analytics w portalu Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Analiza usługi Service Fabric w witrynie Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. W oknie tworzenia analiz sieci szkieletowej usług wybierz **wybierz obszar roboczy** dla **obszarem roboczym pakietu OMS** pola, a następnie **Utwórz nowy obszar roboczy**. Wypełnij odpowiednie wpisy. Jedynym wymaganiem jest subskrypcji dla klastra usługi sieć szkieletowa usług oraz obszaru roboczego jest taki sam. Po sprawdzeniu poprawności wpisy rozpocznie wdrażanie obszaru roboczego. Wdrożenie zajmuje tylko kilka minut.
+4. W oknie tworzenia analiza usługi Service Fabric, wybierz **wybierz obszar roboczy** dla **obszaru roboczego pakietu OMS** pola, a następnie **Utwórz nowy obszar roboczy**. Wypełnij wymagane wpisy. Jedynym wymaganiem jest, czy subskrypcja dla klastra usługi Service Fabric i obszaru roboczego jest taki sam. Po sprawdzeniu poprawności wpisy rozpocznie wdrażanie obszaru roboczego. Przeprowadzenie wdrożenia zajmuje tylko kilka minut.
 
-5. Po zakończeniu wybierz **Utwórz** ponownie w dolnej części okna Tworzenie usługi Analytics sieci szkieletowej. Upewnij się, że nowy obszar roboczy zostaną wyświetlone w obszarze **obszarem roboczym pakietu OMS**. Ta akcja dodaje rozwiązania do obszaru roboczego, który został utworzony.
+5. Po zakończeniu wybierz pozycję **Utwórz** ponownie w dolnej części okna Tworzenie analiza usługi Service Fabric. Upewnij się, że nowy obszar roboczy będzie wyświetlane w **obszaru roboczego pakietu OMS**. Ta akcja dodaje rozwiązania do obszaru roboczego, który został utworzony.
 
-Jeśli korzystasz z systemu Windows, wykonaj następujące kroki, aby połączyć do konta magazynu analizy dzienników przechowywania zdarzeń klastra. 
+Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z usługi Log Analytics na koncie magazynu przechowywania zdarzenia klastra. 
 
 >[!NOTE]
->Włączenie tej czynności w przypadku klastrów systemu Linux nie jest jeszcze dostępna. 
+>Włączenie tego środowiska, w przypadku klastrów systemu Linux nie jest jeszcze dostępna. 
 
-### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połączyć się z klastrem obszaru roboczego analizy dzienników 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połącz obszar roboczy usługi Log Analytics z klastrem 
 
-1. Obszar roboczy musi być połączona z danych diagnostycznych z klastra. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i dostęp do obszaru roboczego analizy dzienników.
+1. Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra. Przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca możesz zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i dostęp do obszaru roboczego usługi Log Analytics.
 
-2. W menu nawigacji po lewej stronie w obszarze **źródeł danych obszaru roboczego**, wybierz pozycję **dzienników kont magazynu**.
+2. W menu nawigacji po lewej stronie w obszarze **źródła danych obszaru roboczego**, wybierz opcję **dzienniki kont magazynu**.
 
-3. Na **dzienniki konta magazynu** wybierz pozycję **Dodaj** u góry, aby dodać dzienników z klastra do obszaru roboczego.
+3. Na **dzienniki konta magazynu** wybierz opcję **Dodaj** u góry, aby dodać dzienniki klastra do obszaru roboczego.
 
-4. Wybierz **konta magazynu** można dodać odpowiednie konta tworzone w klastrze. Jeśli zostanie użyta domyślna nazwa, konto magazynu jest **sfdg\<resourceGroupName\>**. Można również potwierdzić to przy użyciu szablonu usługi Azure Resource Manager używane do wdrażania klastra, sprawdzając wartość używaną do **applicationDiagnosticsStorageAccountName**. Jeśli nazwa nie jest wyświetlany, przewiń w dół i wybierz **załadować więcej**. Wybierz nazwę konta magazynu.
+4. Wybierz **konta magazynu** dodać odpowiednie konto utworzone w klastrze. Jeśli używana jest domyślna nazwa, konto magazynu jest **sfdg\<resourceGroupName\>**. Można również to potwierdzić, przy użyciu szablonu usługi Azure Resource Manager umożliwia wdrażanie klastra, sprawdzając wartość **applicationDiagnosticsStorageAccountName**. Jeśli nazwa nie jest widoczne, przewiń w dół i wybierz **Załaduj więcej**. Wybierz nazwę konta magazynu.
 
-5. Określ typ danych. Ustaw ją na **zdarzenia sieci szkieletowej usług**.
+5. Określ typ danych. Ustaw ją na **usługi Service Fabric zdarzenia**.
 
-6. Upewnij się, że źródło jest automatycznie ustawiana **WADServiceFabric\*EventTable**.
+6. Upewnij się, że źródłem jest automatycznie ustawiana na **WADServiceFabric\*EventTable**.
 
-7. Wybierz **OK** nawiązać obszaru roboczego dzienników z klastra.
+7. Wybierz **OK** nawiązać obszaru dzienniki usługi klastra.
 
-    ![Dodaj dzienniki konta magazynu do analizy dzienników](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Dodaj dzienniki konta magazynu do usługi Log Analytics](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
-Konto teraz wyświetlone jako część konta magazynu dzienniki w źródłach danych obszaru roboczego.
+Konto teraz wyświetlane jako część konta magazynu dzienników w źródłach danych obszaru roboczego.
 
-W obszarze roboczym analizy dzienników, która jest teraz prawidłowo podłączone do sieci klastra platformy oraz tabeli dziennika aplikacji dodano rozwiązania analizy sieci szkieletowej usług. Możesz dodać dodatkowe źródła do obszaru roboczego w taki sam sposób.
+Rozwiązania analiza usługi Service Fabric zostały dodane, w obszarze roboczym usługi Log Analytics, która jest teraz prawidłowo podłączone do klastra platformy oraz tabeli dziennika aplikacji. W ten sam sposób, można dodać dodatkowe źródła do obszaru roboczego.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Wdrażanie usługi Analiza dzienników przy użyciu szablonu usługi Resource Manager
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Wdrażanie usługi Log Analytics przy użyciu szablonu usługi Resource Manager
 
-W przypadku wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy analizy dzienników, dodaje rozwiązania sieci szkieletowej usług do obszaru roboczego i skonfiguruje je odczytać danych z tabel odpowiedniego magazynu.
+Podczas wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy usługi Log Analytics, dodająca rozwiązanie usługi Service Fabric do obszaru roboczego i konfiguruje go do odczytywania danych z tabel odpowiedniego magazynu.
 
-Można użyć i modyfikować [ten przykładowy szablon](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) zgodnie z wymaganiami.
+Możesz użyć i zmodyfikuj [ten przykładowy szablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) zgodnie z wymaganiami. Ten szablon wykonuje następujące czynności
 
-Wprowadź następujące zmiany:
-1. Dodaj `omsWorkspaceName` i `omsRegion` do parametry, dodając następujący fragment kodu do parametrów zdefiniowanych w Twojej *template.json* pliku. Możesz zmodyfikować wartości domyślne, zgodnie z własnymi potrzebami. Ponadto Dodaj dwa nowe parametry w Twojej *parameters.JSON następującym kodem* pliku, aby określić ich wartości dla wdrażania zasobów:
-    
-    ```json
-    "omsWorkspacename": {
-        "type": "string",
-        "defaultValue": "sfomsworkspace",
-        "metadata": {
-            "description": "Name of your Log Analytics Workspace"
-        }
-    },
-    "omsRegion": {
-        "type": "string",
-        "defaultValue": "East US",
-        "allowedValues": [
-            "West Europe",
-            "East US",
-            "Southeast Asia"
-        ],
-        "metadata": {
-            "description": "Specify the Azure Region for your Log Analytics workspace"
-        }
-    }
-    ```
+* Tworzy klaster usługi Service Fabric z 5 węzłami
+* Tworzy obszar roboczy usługi Log Analytics i rozwiązania usługi Service Fabric
+* Konfiguruje agenta pakietu OMS do zbierania i wysyłania 2 próbki liczników wydajności do obszaru roboczego
+* Konfiguruje WAD do zbierania usługi Service Fabric, a następnie wysyła je do tabel usługi Azure storage (WADServiceFabric * EventTable)
+* Konfiguruje obszaru roboczego usługi Log Analytics do odczytywania zdarzeń z tych tabel
 
-    `omsRegion` Wartości muszą być zgodne z określonego zestawu wartości. Wybierz jedną, która jest najbardziej zbliżony do wdrożenia klastra.
 
-2. Jeśli wszystkie dzienniki aplikacji zostanie wysłana do analizy dzienników, najpierw upewnij się, że `applicationDiagnosticsStorageAccountType` i `applicationDiagnosticsStorageAccountName` są dołączone jako parametry w szablonie. Jeśli nie są uwzględnione, dodaj je do sekcji zmiennych i Edytuj ich wartości zgodnie z potrzebami. Można również uwzględnić je jako parametry, postępując w poprzednim formacie.
+Można wdrożyć tego szablonu jako uaktualniania przy użyciu usługi Resource Manager z klastrem przy użyciu `New-AzureRmResourceGroupDeployment` interfejsu API w moduł AzureRM PowerShell. Przykładowe polecenie będzie następująca:
 
-    ```json
-    "applicationDiagnosticsStorageAccountType": "Standard_LRS",
-    "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
-    ```
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+``` 
 
-3. Dodaj rozwiązanie sieci szkieletowej usług do zmiennych do szablonu:
+Usługa Azure Resource Manager wykryje, że to polecenie aktualizacji istniejącego zasobu. Przetwarza tylko zmiany między szablonu zachęcanie istniejącego wdrożenia i nowy szablon, pod warunkiem.
 
-    ```json
-    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
-    "solutionName": "ServiceFabric"
-    ```
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Wdrażanie usługi Log Analytics przy użyciu programu Azure PowerShell
 
-4. Dodaj następującą wartość do końca sekcji zasobów, po którym jest zadeklarowany jako zasób klastra usługi sieć szkieletowa usług:
-
-    ```json
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[parameters('omsWorkspacename')]",
-        "type": "Microsoft.OperationalInsights/workspaces",
-        "properties": {
-            "sku": {
-                "name": "Free"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2015-11-01-preview",
-                "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
-                "type": "storageinsightconfigs",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
-                    "[concat('Microsoft.Storage/storageAccounts/', parameters('applicationDiagnosticsStorageAccountName'))]"
-                ],
-                "properties": {
-                    "containers": [ ],
-                    "tables": [
-                        "WADServiceFabric*EventTable",
-                        "WADWindowsEventLogsTable",
-                        "WADETWEventTable"
-                    ],
-                    "storageAccount": {
-                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', parameters('applicationDiagnosticsStorageAccountName'))]",
-                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[variables('solution')]",
-        "type": "Microsoft.OperationsManagement/solutions",
-        "id": "[resourceId('Microsoft.OperationsManagement/solutions/', variables('solution'))]",
-        "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('OMSWorkspacename'))]"
-        ],
-        "properties": {
-            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
-        },
-        "plan": {
-            "name": "[variables('solution')]",
-            "publisher": "Microsoft",
-            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
-            "promotionCode": ""
-        }
-    }
-    ```
-    
-    > [!NOTE]
-    > Jeśli dodano `applicationDiagnosticsStorageAccountName` jako zmienną, upewnij się, że każde odwołanie do jej modyfikowania `variables('applicationDiagnosticsStorageAccountName')` zamiast `parameters('applicationDiagnosticsStorageAccountName')`.
-
-5. Wdrażanie szablonu jako uaktualniania programu Menedżer zasobów do klastra przy użyciu `New-AzureRmResourceGroupDeployment` interfejsu API w module środowiska AzureRM PowerShell. Należy na przykład polecenie:
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName "sfcluster1" -TemplateFile "<path>\template.json" -TemplateParameterFile "<path>\parameters.json"
-    ``` 
-
-    Usługa Azure Resource Manager wykryje, że to polecenie aktualizacji do istniejącego zasobu. Przetwarza tylko zmiany między szablonu zwiększają istniejącego wdrożenia i nowy szablon, pod warunkiem.
-
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Wdrażanie usługi Analiza dzienników przy użyciu programu Azure PowerShell
-
-Można także wdrożyć zasobu analizy dzienników za pośrednictwem programu PowerShell przy użyciu `New-AzureRmOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Użyj tego skryptu do tworzenia nowego obszaru roboczego analizy dzienników i Dodaj do niej rozwiązania sieci szkieletowej usług: 
+Można także wdrożyć zasobie usługi Log Analytics za pośrednictwem programu PowerShell przy użyciu `New-AzureRmOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Użyj tego skryptu, aby utworzyć nowy obszar roboczy usługi Log Analytics i Dodawanie rozwiązania do usługi Service Fabric do niego: 
 
 ```PowerShell
 
@@ -216,11 +121,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji do nawiązania połączenia z kontem magazynu odpowiednie analizy dzienników.
+Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji, konto magazynu odpowiednie nawiązać połączenia usługi Log Analytics.
 
-Można także dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego analizy dzienników przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [analizy dzienników zarządzania przy użyciu programu PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Można również dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego usługi Log Analytics przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Zarządzanie Log Analytics przy użyciu programu PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie agenta analizy dziennika](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk docker i dzienniki dla kontenerów
-* Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
-* [Projektant widoków umożliwia tworzenie niestandardowych widoków w analizy dzienników](../log-analytics/log-analytics-view-designer.md)
+* [Wdrażanie agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk platformy docker i dzienniki kontenerów
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
+* [Tworzenie niestandardowych widoków w usłudze Log Analytics za pomocą projektanta widoku](../log-analytics/log-analytics-view-designer.md)

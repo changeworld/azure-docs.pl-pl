@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 136316feab5a08308a9f10e499f645aaee0c90d3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d6160f8c66fd749942be581cb2992977da82911
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093247"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377993"
 ---
 # <a name="durable-functions-overview"></a>Trwałe Functions — omówienie
 
@@ -334,7 +334,7 @@ W tle, rozszerzenia funkcji trwałych jest wbudowana w górnej części [trwałe
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Określanie źródła zdarzeń, punkt kontrolny i powtarzanie
 
-Funkcje programu orchestrator w sposób niezawodny utrzymać ich stan wykonywania przy użyciu wzorca projektowego chmury, znane jako [określania źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Zamiast bezpośredniego przechowywania *bieżącego* stanu aranżacji, trwałe rozszerzenie używa magazynu tylko do dołączania do rejestrowania *pełnych szeregów działań* analizowaniem aranżacji funkcji. To ma wiele zalet, w tym poprawy wydajność, skalowalność i elastyczność w porównaniu do "zrzucanie" stan pełnego środowiska uruchomieniowego. Inne zalety, zapewniając spójność danych transakcyjnych i zachowaniu pełnego dziennika inspekcji i historii. Inspekcyjne, samodzielnie włączyć niezawodne akcje kompensacyjne.
+Funkcje programu orchestrator w sposób niezawodny utrzymać ich stan wykonywania przy użyciu wzorca projektowego, znane jako [określania źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Zamiast bezpośredniego przechowywania *bieżącego* stanu aranżacji, trwałe rozszerzenie używa magazynu tylko do dołączania do rejestrowania *pełnych szeregów działań* analizowaniem aranżacji funkcji. To ma wiele zalet, w tym poprawy wydajność, skalowalność i elastyczność w porównaniu do "zrzucanie" stan pełnego środowiska uruchomieniowego. Inne zalety, zapewniając spójność danych transakcyjnych i zachowaniu pełnego dziennika inspekcji i historii. Inspekcyjne, samodzielnie włączyć niezawodne akcje kompensacyjne.
 
 Użycie określania źródła zdarzeń przez to rozszerzenie jest przezroczysty. Dzieje się w tle `await` operatora w funkcji orkiestratora daje kontrolę nad wątek programu orchestrator do dyspozytora trwałe Framework zadania. Dyspozytor następnie zatwierdza nowe akcje, które funkcja orkiestratora zaplanowane (takich jak wywoływanie jedną lub więcej funkcji podrzędnych lub planowania trwałe czasomierza) do magazynu. Ta akcja zatwierdzenia przezroczyste dołącza do *historię wykonywania* wystąpienia aranżacji. Historia jest przechowywana w tabeli magazynu. Następnie za pomocą akcji zatwierdzenia komunikaty są dodawane do kolejki, aby zaplanować faktyczną pracę. W tym momencie funkcja orkiestratora, może być zwolniony z pamięci. Karta dla niego zatrzymuje, jeśli jest używany Plan zużycie funkcji platformy Azure.  Po więcej pracy do wykonania funkcji jest uruchomiona ponownie oraz zostać odtworzone jest jego stan.
 
@@ -369,6 +369,8 @@ Rozszerzenia funkcji trwałych używa kolejek usługi Azure Storage, tabel i obi
 Funkcje programu orchestrator zaplanować działania funkcji i otrzymywać odpowiedzi za pomocą wewnętrznej kolejki komunikatów. Po uruchomieniu aplikacji funkcji w planie użycia funkcji platformy Azure, te kolejki są monitorowane przez [Azure funkcji skalowania kontrolera](functions-scale.md#how-the-consumption-plan-works) i nowe obliczenie wystąpienia zostaną dodane zgodnie z potrzebami. Podczas skalowania do wewnątrz na wielu maszynach wirtualnych funkcję programu orchestrator mogą być uruchamiane w jednej maszyny Wirtualnej, natomiast wywoływanych funkcji działania są uruchamiane na kilka różnych maszyn wirtualnych. Więcej szczegółów można znaleźć na zachowanie skalowania funkcje trwałe w [wydajności i skali](durable-functions-perf-and-scale.md).
 
 Magazyn tabel jest używany do przechowywania historii wykonywania dla kont usługi orchestrator. Zawsze, gdy wystąpienie rehydrates na konkretnej maszyny Wirtualnej, narzędzie pobiera informacje o historię jej wykonywania z usługi table storage, dzięki czemu można odtworzyć, jego stan lokalnego. Jedną z rzeczy wygodne o dostępnej w usłudze Table storage historii jest można zapoznaj się z i wyświetlić historię z mechanizmów przy użyciu narzędzi takich jak [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+
+Magazyn obiektów blob są używane przede wszystkim jako mechanizm dzierżawienia do koordynowania skalowanie wystąpień aranżacji na wielu maszynach wirtualnych. Służą one również do przechowywania danych dla dużych komunikatów, które nie mogą być przechowywane bezpośrednio tabele i kolejki.
 
 ![Zrzut ekranu Eksploratora usługi Storage platformy Azure](media/durable-functions-overview/storage-explorer.png)
 

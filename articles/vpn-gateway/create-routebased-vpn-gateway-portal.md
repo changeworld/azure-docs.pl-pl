@@ -1,6 +1,6 @@
 ---
-title: 'Tworzenie bramy sieci VPN opartej na trasach: portalu Azure | Dokumentacja firmy Microsoft'
-description: Szybko utworzyć bramę sieci VPN opartej na trasach przy użyciu portalu Azure
+title: 'Tworzenie bramy sieci VPN opartej na trasach: witryna Azure portal | Dokumentacja firmy Microsoft'
+description: Szybkie tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,76 +15,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 550f655f6eac5a114636978255578eb3753e0d4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918136"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391797"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Utwórz bramę sieci VPN opartej na trasach przy użyciu portalu Azure
+# <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
 
-Ten artykuł pomaga szybko utworzyć bramę sieci VPN platformy Azure opartej na trasach przy użyciu portalu Azure.  Brama sieci VPN jest używany podczas tworzenia połączenia sieci VPN do sieci lokalnej. Aby połączyć sieci wirtualnych umożliwia także bramy sieci VPN. 
+Ten artykuł ułatwia szybkie tworzenie bramy sieci VPN platformy Azure opartej na trasach przy użyciu witryny Azure portal.  Tworzenie bramy sieci VPN jest używany podczas tworzenia połączenia sieci VPN z siecią lokalną. Łączenie sieci wirtualnych umożliwia także tworzenie bramy sieci VPN. 
 
-Kroki opisane w tym artykule spowoduje utworzenie sieci wirtualnej, podsieci, podsieć bramy i bramy sieci VPN opartej na trasach (bramy sieci wirtualnej). Po zakończeniu tworzenia bramy następnie można utworzyć połączenia. Kroki te wymagają subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Kroki opisane w tym artykule spowoduje utworzenie sieci wirtualnej, podsieci, podsieć bramy i bramy sieci VPN opartej na trasach (Brama sieci wirtualnej). Po zakończeniu tworzenia bramy będzie można utworzyć połączenia. Te kroki wymagają subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="vnet"></a>Tworzenie sieci wirtualnej
 
 1. Przejdź w przeglądarce do witryny [Azure Portal](http://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 2. Kliknij pozycję **Utwórz zasób**. W polu **Szukaj w witrynie Marketplace** wpisz „Sieć wirtualna”. Znajdź pozycję **Sieć wirtualna** na liście wyników i kliknij, aby otworzyć stronę **Sieć wirtualna**.
-3. W dolnej części strony sieci wirtualnej z **wybierz model wdrożenia** listy, upewnij się, że **Resource Manager** wybrany z listy rozwijanej, a następnie kliknij przycisk **Utwórz**. Spowoduje to otwarcie **Utwórz sieć wirtualną** strony.
+3. W dolnej części strony sieć wirtualna z **wybierz model wdrożenia** listy, upewnij się, że **usługi Resource Manager** wybrania z listy rozwijanej, a następnie kliknij przycisk **Utwórz**. Spowoduje to otwarcie **Utwórz sieć wirtualną** strony.
 4. Na stronie **Tworzenie sieci wirtualnej** skonfiguruj ustawienia sieci wirtualnej. Po wypełnieniu pól czerwony wykrzyknik zmieni się na zielony znacznik wyboru, jeśli znaki wprowadzone w polu są prawidłowe. Wprowadź następujące wartości:
 
   - **Nazwa**: TestVNet1
   - **Przestrzeń adresowa**: 10.1.0.0/16
-  - **Subskrypcja**: Sprawdź, czy wymienionej subskrypcji, którego chcesz użyć. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
+  - **Subskrypcja**: Sprawdź, czy subskrypcji wymienionej jest ten, którego chcesz użyć. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
   - **Grupa zasobów**: TestRG1
   - **Lokalizacja**: wschodnie stany USA
-  - **Podsieci**: frontonu
+  - **Podsieci**: Frontend
   - **Zakres adresów**: 10.1.0.0/24
 
   ![Strona Tworzenie sieci wirtualnej](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "Strona Tworzenie sieci wirtualnej")
-5. Po wprowadzeniu wartości, wybierz **Przypnij do pulpitu nawigacyjnego** ułatwia znajdowanie sieci wirtualnej na pulpicie nawigacyjnym, a następnie kliknij przycisk **Utwórz**. Po kliknięciu przycisku **Utwórz**, zobacz kafelka na pulpicie nawigacyjnym, które odzwierciedla postęp Twojej sieci wirtualnej. Wygląd kafelka zmienia się w trakcie tworzenia sieci wirtualnej.
+5. Po wprowadzeniu wartości, wybierz **Przypnij do pulpitu nawigacyjnego** ułatwia znajdowanie sieci wirtualnej na pulpicie nawigacyjnym, a następnie kliknij przycisk **Utwórz**. Po kliknięciu przycisku **Utwórz**, zobaczysz Kafelek na pulpicie nawigacyjnym, który będzie odzwierciedlać postęp Twojej sieci wirtualnej. Wygląd kafelka zmienia się w trakcie tworzenia sieci wirtualnej.
 
-## <a name="gwsubnet"></a>Dodaj podsieć bramy
+## <a name="gwsubnet"></a>Dodawanie podsieci bramy
 
-Podsieć bramy zawiera zastrzeżone adresy IP, które używają usługi bramy sieci wirtualnej. Utwórz podsieć bramy.
+Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi bramy sieci wirtualnej. Tworzenie podsieci bramy.
 
 1. W portalu przejdź do sieci wirtualnej, dla której chcesz utworzyć bramę sieci wirtualnej.
-2. Na stronie sieci wirtualnej, kliknij przycisk **podsieci** rozszerzenia **VNet1 - podsieci** strony.
-3. Kliknij przycisk **+ podsieci bramy** u góry, aby otworzyć **Dodaj podsieć** strony.
-
-  ![Dodawanie podsieci bramy](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Dodawanie podsieci bramy")
-4. **Nazwa** dla podsieci jest automatycznie wypełniane wymagana wartość "GatewaySubnet". Dostosuj automatycznie wypełnianej **zakres adresów** wartości odpowiadające następujące wartości:
-
-  **Zakres (blok CIDR) adresów**: 10.1.255.0/27
+2. Na stronie sieci wirtualnej, kliknij przycisk **podsieci** rozszerzania **VNet1 - podsieci** strony.
+3. Kliknij przycisk **+ podsieć bramy** u góry, aby otworzyć **Dodaj podsieć** strony.
 
   ![Dodawanie podsieci bramy](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Dodawanie podsieci bramy")
+4. **Nazwa** dla podsieci zostanie automatycznie wypełniona wymagane wartością "GatewaySubnet". Dostosuj automatycznie wypełniane **zakres adresów** wartości, aby dopasować następujące wartości:
+
+  **Zakres adresów (blok CIDR)**: 10.1.255.0/27
+
+  ![Dodawanie podsieci bramy](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Dodawanie podsieci bramy")
 5. Aby utworzyć podsieć bramy, kliknij przycisk **OK** w dolnej części strony.
 
 ## <a name="gwvalues"></a>Konfigurowanie ustawień bramy
 
-1. W lewej części strony portalu kliknij **+ Utwórz zasób** i typu "Brama sieci wirtualnej" w polu wyszukiwania, następnie naciśnij klawisz **Enter**. W obszarze **Wyniki** zlokalizuj i kliknij pozycję **Brama sieci wirtualnej**.
-2. W dolnej części strony "Brama sieci wirtualnej", kliknij przycisk **Utwórz** otworzyć **Utwórz bramę sieci wirtualnej** strony.
+1. W lewej części strony portalu kliknij pozycję **+ Utwórz zasób** i wpisz "Brama sieci wirtualnej" w polu wyszukiwania, następnie naciśnij klawisz **Enter**. W obszarze **Wyniki** zlokalizuj i kliknij pozycję **Brama sieci wirtualnej**.
+2. W dolnej części strony "Brama sieci wirtualnej" kliknij **Utwórz** otworzyć **Tworzenie bramy sieci wirtualnej** strony.
 3. Na stronie **Tworzenie bramy sieci wirtualnej** określ wartości dla swojej bramy sieci wirtualnej.
 
   - **Nazwa**: Vnet1GW
   - **Typ bramy**: sieci VPN 
-  - **Typ sieci VPN**: opartej na trasach
+  - **Typ sieci VPN**: oparta na trasach
   - **Jednostka SKU**: VpnGw1
   - **Lokalizacja**: wschodnie stany USA
-  - **Sieć wirtualna**: kliknij **wirtualnej sieci/wybierz sieć wirtualną** otworzyć **wybierz sieć wirtualną** strony. Wybierz **VNet1**.
+  - **Sieć wirtualna**: kliknij **sieci wirtualnej/wybierz sieć wirtualną** otworzyć **wybierz sieć wirtualną** strony. Wybierz **VNet1**.
 
   ![Konfigurowanie ustawień bramy](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "Konfigurowanie ustawień bramy")
 
-## <a name="pip"></a>Utwórz publiczny adres IP
+## <a name="pip"></a>Tworzenie publicznego adresu IP
 
-Brama sieci VPN musi mieć dynamicznie przydzielonego publicznego adresu IP. Podczas tworzenia połączenia z bramą sieci VPN jest adres IP, który łączy się z urządzenia lokalnego.
+Brama sieci VPN musi mieć dynamicznie przydzielanego publicznego adresu IP. Podczas tworzenia połączenia bramy sieci VPN jest to adres IP, który łączy się z urządzenia w środowisku lokalnym.
 
-1. Wybierz **konfiguracji IP bramy pierwszy adres IP konfiguracji Utwórz** żądania publicznego adresu IP.
+1. Wybierz **pierwszy adres IP konfiguracji Utwórz konfigurację protokołu IP bramy** żądanie publicznego adresu IP.
 
-  ![Pierwszy konfiguracji IP](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "konfiguracji pierwszy adres IP")
-2. Na **wybierz publicznego adresu IP strony**, kliknij przycisk **+ Utwórz nowy** otworzyć **tworzenie publicznego adresu IP** strony.
+  ![Konfiguracja pierwszego adresu IP](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "Konfiguracja pierwszego adresu IP")
+2. Na **wybierz publicznego adresu IP strony**, kliknij przycisk **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
 3. Skonfiguruj ustawienia, z następującymi wartościami:
 
   - **Nazwa**: **VNet1GWIP**
@@ -95,28 +95,28 @@ Brama sieci VPN musi mieć dynamicznie przydzielonego publicznego adresu IP. Pod
 
 ## <a name="creategw"></a>Tworzenie bramy sieci VPN
 
-1. Sprawdź ustawienia na **Utwórz bramę sieci wirtualnej** strony. Dostosuj wartości, jeśli to konieczne.
+1. Sprawdź ustawienia na **Tworzenie bramy sieci wirtualnej** strony. Dostosuj wartości, jeśli to konieczne.
 
-  ![Utwórz bramę sieci VPN](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "bramy tworzenie sieci VPN")
+  ![Tworzenie bramy sieci VPN](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "tworzenie VPN gateway")
 2. Kliknij przycisk **Utwórz** w dolnej części strony.
 
-Po kliknięciu **Utwórz**, ustawienia zostaną sprawdzone i **Brama sieci wirtualnej wdrażanie** na pulpicie nawigacyjnym pojawi się Kafelek. Brama sieci VPN może potrwać do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
+Po kliknięciu **Utwórz**, ustawienia zostaną zweryfikowane i **wdrażanie bramy sieci wirtualnej** pojawi się Kafelek na pulpicie nawigacyjnym. Tworzenie bramy sieci VPN może zająć do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
 
-## <a name="viewgw"></a>Widok bramy sieci VPN
+## <a name="viewgw"></a>Wyświetl bramy sieci VPN
 
-1. Po utworzeniu bramy, przejdź do VNet1 w portalu. Brama sieci VPN zostanie wyświetlony na stronie Przegląd jako urządzenie podłączone.
+1. Po utworzeniu bramy, przejdź do sieci VNet1, w portalu. Bramy sieci VPN jest wyświetlana na stronie Przegląd jako urządzenie podłączone.
 
-  ![Połączone urządzenia](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "podłączone urządzenia")
+  ![Połączone urządzenia](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "połączone urządzenia")
 
 2. Na liście urządzeń kliknij **VNet1GW** Aby wyświetlić więcej informacji.
 
-  ![Brama sieci VPN widoku](./media/create-routebased-vpn-gateway-portal/view-gateway.png "bramy sieci VPN widoku")
+  ![Wyświetl bramy sieci VPN](./media/create-routebased-vpn-gateway-portal/view-gateway.png "bramy sieci VPN widoku")
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zakończeniu bramy podczas tworzenia, można utworzyć połączenie między sieci wirtualnej i innej sieci wirtualnej. Lub Utwórz połączenie między sieci wirtualnej i lokalizacji lokalnej.
+Po zakończeniu bramy podczas tworzenia, można utworzyć połączenie między siecią wirtualną a inną siecią wirtualną. Lub Utwórz połączenie między siecią wirtualną a lokalizacją lokalną.
 
 > [!div class="nextstepaction"]
 > [Utwórz połączenie lokacja lokacja](vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br><br>
 > [Utwórz połączenie punkt lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md)<br><br>
-> [Utwórz połączenie do innej sieci wirtualnej](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> [Utwórz połączenie z inną siecią wirtualną](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

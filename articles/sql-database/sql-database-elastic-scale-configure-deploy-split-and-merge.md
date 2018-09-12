@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 10ba369c9627f7492f9776a757d4bccb74013b5f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c7682b63689d9b47fce5fa65a3c0a2301d53502a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349198"
+ms.locfileid: "44379201"
 ---
 # <a name="deploy-a-split-merge-service"></a>Wdrażanie usługi z podziałem i scalaniem
 Narzędzie do dzielenia i scalania umożliwia przenoszenie danych między bazami danych podzielonych na fragmenty. Zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -143,7 +143,7 @@ Jeśli swojej roli procesu roboczego nie przechodzi do trybu online, ale roli si
 
 ## <a name="test-the-service-deployment"></a>Testowanie wdrażania usługi
 ### <a name="connect-with-a-web-browser"></a>Łączenie z przeglądarką sieci web
-Określ internetowego punktu końcowego usługi dzielenia i scalania. Możesz znaleźć tego w klasycznej witrynie Azure portal, przechodząc do **pulpit nawigacyjny** usługi w chmurze i wyszukiwanie w obszarze **adres URL witryny** po prawej stronie. Zastąp **http://** z **https://** ponieważ domyślne ustawienia zabezpieczeń wyłączenie punktu końcowego HTTP. Załadowanie strony dla tego adresu URL do przeglądarki.
+Określ internetowego punktu końcowego usługi dzielenia i scalania. Możesz znaleźć to w portalu, przechodząc do **Przegląd** usługi w chmurze i wyszukiwanie w obszarze **adres URL witryny** po prawej stronie. Zastąp **http://** z **https://** ponieważ domyślne ustawienia zabezpieczeń wyłączenie punktu końcowego HTTP. Załadowanie strony dla tego adresu URL do przeglądarki.
 
 ### <a name="test-with-powershell-scripts"></a>Testowanie za pomocą skryptów programu PowerShell
 Wdrożenie i środowiska można przetestować, uruchamiając uwzględnione przykładowych skryptów programu PowerShell.

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092721"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377909"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcje trwałe (usługi Azure Functions)
 
@@ -92,7 +92,7 @@ Dostępnych jest kilka opcji dostosowywania zasady automatycznego ponawiania. Te
 * **Współczynnik wycofywania**: współczynnik używany do określenia tempo wzrostu wycofywania. Wartość domyślna to 1.
 * **Maksymalny interwał ponawiania**: maksymalną ilość czasu oczekiwania między ponownymi próbami.
 * **Limitu czasu ponawiania próby**: maksymalną ilość czasu, które możesz wydać to ponawia próbę. Domyślnym zachowaniem jest aby ponowić próbę przez czas nieokreślony.
-* **Niestandardowe**: można określić wywołanie zwrotne użytkownika określa, czy należy wykonać ponownie wywołania funkcji.
+* **Obsługa**: można określić wywołanie zwrotne użytkownika określa, czy należy wykonać ponownie wywołania funkcji.
 
 ## <a name="function-timeouts"></a>Limity czasu — funkcja
 

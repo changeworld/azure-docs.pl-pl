@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/10/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ff30ec90427f16ebd82259c17ee8cbb2644be2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 90d9c22ab1ad06a101c58a85f7b2f7c701772c88
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071598"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377738"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z usług Azure Analysis Services
 
@@ -34,8 +34,8 @@ Biblioteki klienckie usług Analysis Services Management Objects (AMO) i ADOMD s
 
 |Pakiet  | Wersja produktu  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.3.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.3.1     |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.5.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.5.0     |
 
 Zestawy pakietów NuGet AssemblyVersion wykonaj versioning semantyczne: główne. POMOCNICZA. POPRAWKI. Odwołania do NuGet obciążenia oczekiwanej wersji, nawet jeśli dostępny jest inna wersja w globalnej pamięci podręcznej zestawów (wynikające z instalacji MSI). POPRAWKI są zwiększane dla każdej wersji. Wersje AMO i ADOMD są utrzymywane w synchronizacji.
 

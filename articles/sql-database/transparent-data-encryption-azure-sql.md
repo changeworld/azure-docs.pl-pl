@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043857"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380203"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -128,7 +128,7 @@ Aby skonfigurować przezroczyste szyfrowanie danych za pomocą interfejsu API RE
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać ogólny opis technologii transparent data encryption, zobacz [technologii Transparent data encryption] ((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption).
+- Aby uzyskać ogólny opis technologii transparent data encryption, zobacz [technologii Transparent data encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Aby dowiedzieć się więcej na temat technologii transparent data encryption z obsługą własnego klucza dla bazy danych SQL Database i Data Warehouse, zobacz [technologii Transparent data encryption z obsługą Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).
 - Aby rozpocząć korzystanie z technologii transparent data encryption z obsługą własnego klucza, zobacz Przewodnik z instrukcjami dotyczącymi [Włączanie technologii transparent data encryption przy użyciu własnego klucza z usługi Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
 - Aby uzyskać więcej informacji na temat usługi Key Vault, zobacz [stronę z dokumentacją dotyczącą usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).

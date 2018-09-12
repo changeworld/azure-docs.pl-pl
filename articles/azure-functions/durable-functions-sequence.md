@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ea8c275e5cc37f8c5ecd7c29491b7146669d00fb
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c84977dacddcf9ccca7fde735ad4acb8a1523fa9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092907"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378707"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkcja łańcucha w funkcje trwałe — przykładowy sekwencja Hello
 
@@ -104,6 +104,9 @@ Aby wykonać `E1_HelloSequence` aranżacji, Wyślij żądanie następujących HT
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+> [!NOTE]
+> W poprzednim fragmencie kodu HTTP przyjęto założenie, istnieje wpis w `host.json` pliku, co spowoduje usunięcie domyślnie `api/` prefiks z wszystkie adresy URL funkcji wyzwalacza HTTP. Znaczniki można znaleźć w tej konfiguracji w `host.json` pliku w przykładach.
 
 Na przykład jeśli korzystasz z przykładu w aplikacji funkcji o nazwie "myfunctionapp", Zamień "{host}" "myfunctionapp.azurewebsites.net".
 

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 48d64873f0a8c3754ac5c3ecda2294c0f337b9d5
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094608"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380118"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Zalecenia dotyczące usługi SQL Data Warehouse
 
@@ -37,6 +37,6 @@ Niesymetryczność danych może spowodować wąskie gardła przenoszenia lub zas
 
 Prowadząc statystyki suboptymalny może poważnie obniżyć wydajność zapytań, ponieważ może to spowodować Optymalizator zapytań SQL Data Warehouse można wygenerować planów zapytań suboptymalny. Poniższa dokumentacja zawiera opis najlepszych rozwiązań dotyczących tworzenia i aktualizowania statystyk:
 
-- [Tworzenie i aktualizowanie statystyk tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
+- [Tworzenie i aktualizowanie statystyk tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
 Aby wyświetlić listę tabel, których to dotyczy, według tych zaleceń, uruchom następujące polecenie [skryptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Doradcy nieprzerwanie wykonuje ten sam skrypt języka T-SQL do wygenerowania tych zaleceń.

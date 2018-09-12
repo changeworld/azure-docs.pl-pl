@@ -6,25 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
-ms.openlocfilehash: 55fc1bf9d59c82abc76e40e834f67aa49942db44
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4c72a58cdc6082a40fe80b7a3cf8cf964199371e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056702"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391780"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Testowanie trybu failover na platformie Azure w usłudze Site Recovery
 
 
 W tym artykule opisano sposób uruchamiania próbnego odzyskiwania po awarii na platformie Azure przy użyciu testowego trybu failover Usługa Site Recovery.  
 
-Możesz uruchomić testowy tryb failover do zweryfikowania Twojej replikacji i strategii odzyskiwania po awarii, bez przestoju lub utraty danych. Testowanie trybu failover nie ma wpływu na trwającą replikację lub w środowisku produkcyjnym. Można uruchomić testowy tryb failover na określonej maszyny wirtualnej (VM) lub na [planu odzyskiwania](site-recovery-create-recovery-plans.md) zawierające wiele maszyn wirtualnych. 
+Możesz uruchomić testowy tryb failover do zweryfikowania Twojej replikacji i strategii odzyskiwania po awarii, bez przestoju lub utraty danych. Testowanie trybu failover nie ma wpływu na trwającą replikację lub w środowisku produkcyjnym. Można uruchomić testowy tryb failover na określonej maszyny wirtualnej (VM) lub na [planu odzyskiwania](site-recovery-create-recovery-plans.md) zawierające wiele maszyn wirtualnych.
 
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
-Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. 
+Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. Jeśli chcesz uruchomić test trybu failover dla pojedynczej maszyny Wirtualnej, wykonaj czynności opisane [tutaj](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)
 
 ![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
@@ -32,10 +32,10 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania.
 1. W usłudze Site Recovery w witrynie Azure portal, kliknij przycisk **plany odzyskiwania** > *recoveryplan_name* > **testowy tryb Failover**.
 2. Wybierz **punkt odzyskiwania** do którego ma zostać w trybie Failover. Możesz użyć jednej z następujących opcji:
     - **Najnowszy przetworzony**: Ta opcja wprowadza tryb failover wszystkie maszyny wirtualne w planie do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Aby zobaczyć najnowszy punkt dla określonej maszyny Wirtualnej odzyskiwania, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny Wirtualnej. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
-    - **Najnowszy spójny na poziomie aplikacji**: Ta opcja wprowadza tryb failover wszystkie maszyny wirtualne w planie, aby najnowszy spójnych z aplikacją punkt przywracania przetworzone przez usługę Site Recovery. Aby zobaczyć najnowszy punkt dla określonej maszyny Wirtualnej odzyskiwania, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny Wirtualnej. 
+    - **Najnowszy spójny na poziomie aplikacji**: Ta opcja wprowadza tryb failover wszystkie maszyny wirtualne w planie, aby najnowszy spójnych z aplikacją punkt przywracania przetworzone przez usługę Site Recovery. Aby zobaczyć najnowszy punkt dla określonej maszyny Wirtualnej odzyskiwania, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny Wirtualnej.
     - **Najnowsze**: Ta opcja najpierw przetwarza wszystkie dane, które została wysłana do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny Wirtualnej przed przechodzenie w tryb failover do niego. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania), ponieważ maszyna wirtualna utworzona po pracy awaryjnej, będzie miał wszystkie dane, które są replikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
     - **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne z włączone ustawienie przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie wielu maszyn wirtualnych wspólnej. Inne maszyny wirtualne przełączyć w tryb failover do najnowszego punktu odzyskiwania przetworzonego.  
-    - **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne, które są częścią grupy replikacji przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego z aplikacją wspólnej wielu maszyn wirtualnych. Inne maszyny wirtualne Failover ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji. 
+    - **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne, które są częścią grupy replikacji przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego z aplikacją wspólnej wielu maszyn wirtualnych. Inne maszyny wirtualne Failover ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
     - **Niestandardowe**: Ta opcja służy do określonej maszyny Wirtualnej do określonego punktu odzyskiwania w trybie Failover.
 3. Wybierz opcję Usługa Azure virtual network, w której zostanie utworzony test maszyn wirtualnych.
 
@@ -44,9 +44,9 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania.
     - Jeśli ten sam adres IP jest niedostępna w tej podsieci, następnie maszyna wirtualna otrzyma kolejny dostępny adres IP w podsieci. [Dowiedz się więcej](#create-a-network-for-test-failover).
 4. Jeśli użytkownik przechodzenia w tryb failover na platformie Azure i szyfrowanie danych jest włączone, w **klucza szyfrowania**, wybierz certyfikat, który został wystawiony, gdy włączone jest szyfrowanie podczas instalacji dostawcy. Możesz zignorować ten krok nie jest włączone szyfrowanie.
 5. Śledzić postęp trybu failover na **zadań** kartę. Można wyświetlić testową maszynę repliki w witrynie Azure portal.
-6. Aby zainicjować połączenie RDP z maszyny Wirtualnej platformy Azure, musisz [dodać publiczny adres IP](https://aka.ms/addpublicip) interfejsu sieciowego w trybie Failover maszyny Wirtualnej. 
+6. Aby zainicjować połączenie RDP z maszyny Wirtualnej platformy Azure, musisz [dodać publiczny adres IP](https://aka.ms/addpublicip) interfejsu sieciowego w trybie Failover maszyny Wirtualnej.
 7. Gdy wszystko działa zgodnie z oczekiwaniami, kliknij przycisk **wyczyść test pracy awaryjnej**. Spowoduje to usunięcie maszyn wirtualnych, które zostały utworzone podczas testowania trybu failover.
-8. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover. 
+8. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover.
 
 
 ![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
@@ -88,7 +88,7 @@ Zalecane do testowania trybu failover, wybranie sieci, która jest odizolowana o
 
 ## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Testowanie trybu failover do produkcyjnego środowiska sieciowego w lokacji odzyskiwania
 
-Mimo że firma Microsoft zaleca się używanie sieci testowej, niezależnie od sieci produkcyjnej, jeśli chcesz przetestować odzyskiwanie po awarii w sieci produkcyjnej, pamiętaj o następujących kwestiach: 
+Mimo że firma Microsoft zaleca się używanie sieci testowej, niezależnie od sieci produkcyjnej, jeśli chcesz przetestować odzyskiwanie po awarii w sieci produkcyjnej, pamiętaj o następujących kwestiach:
 
 - Upewnij się, że podstawowa maszyna wirtualna jest zamknięty po uruchomieniu testu trybu failover. W przeciwnym razie nastąpi dwóch maszyn wirtualnych o tej samej tożsamości, uruchomione w tej samej sieci, w tym samym czasie. Może to prowadzić do nieoczekiwanych konsekwencji.
 - Wszelkie zmiany maszyny wirtualne utworzone do testowania trybu failover zostaną utracone podczas czyszczenia przełączenie w tryb failover. Te zmiany nie są replikowane z powrotem do podstawowej maszyny Wirtualnej.
@@ -102,16 +102,16 @@ Aby uruchomić testowy tryb failover do testowania aplikacji, potrzebujesz kopii
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
-Jeśli chcesz nawiązać połączenie przy użyciu protokołu RDP po włączeniu trybu failover maszyny wirtualne platformy Azure, postępuj zgodnie z wymagań podsumowanych w tabeli.
+Jeśli chcesz połączyć się z maszyn wirtualnych platformy Azure przy użyciu protokołu RDP/SSH po włączeniu trybu failover, postępuj zgodnie z wymagań podsumowanych w tabeli.
 
 **Tryb failover** | **Lokalizacja** | **Akcje**
 --- | --- | ---
-**Maszyny Wirtualnej platformy Azure z systemem Windows** | Na komputerze lokalnym przed włączeniem trybu failover | Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem Internetu, Włącz protokół RDP i upewnij się, że reguły TCP i UDP zostały dodane do **publicznych**, oraz że protokołu RDP jest dozwolona dla wszystkich profilów w **zapory Windows**  >  **Dozwolone aplikacje**.<br/><br/> Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem połączenia lokacja lokacja, Włącz protokół RDP na maszynie i upewnij się, że protokołu RDP jest dozwolona w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **Domena i prywatne** sieci.<br/><br/>  Upewnij się, że zasady sieci SAN systemu operacyjnego ustawiono **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135).<br/><br/> Upewnij się, że nie ma żadnych oczekujących aktualizacji Windows na maszynie Wirtualnej podczas wyzwalania trybu failover. Windows update może uruchomić po przełączeniu w tryb failover, a nie będzie można zalogować się na maszynie Wirtualnej, do momentu ukończenia aktualizacji. 
+**Maszyny Wirtualnej platformy Azure z systemem Windows** | Na komputerze lokalnym przed włączeniem trybu failover | Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem Internetu, Włącz protokół RDP i upewnij się, że reguły TCP i UDP zostały dodane do **publicznych**, oraz że protokołu RDP jest dozwolona dla wszystkich profilów w **zapory Windows**  >  **Dozwolone aplikacje**.<br/><br/> Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem połączenia lokacja lokacja, Włącz protokół RDP na maszynie i upewnij się, że protokołu RDP jest dozwolona w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **Domena i prywatne** sieci.<br/><br/>  Upewnij się, że zasady sieci SAN systemu operacyjnego ustawiono **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135).<br/><br/> Upewnij się, że nie ma żadnych oczekujących aktualizacji Windows na maszynie Wirtualnej podczas wyzwalania trybu failover. Windows update może uruchomić po przełączeniu w tryb failover, a nie będzie można zalogować się na maszynie Wirtualnej, do momentu ukończenia aktualizacji.
 **Maszyny Wirtualnej platformy Azure z systemem Windows** | Maszyna wirtualna platformy Azure po włączeniu trybu failover |  [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu RDP.<br/><br/> Sprawdź **diagnostykę rozruchu** Aby sprawdzić, zrzut ekranu maszyny wirtualnej.<br/><br/> Jeśli nie możesz się połączyć, sprawdź, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Maszyna wirtualna platformy Azure z systemem Linux** | Na komputerze lokalnym przed włączeniem trybu failover | Upewnij się, że Usługa Secure Shell na maszynie Wirtualnej jest ustawiona na automatyczne uruchomienie przy rozruchu systemu.<br/><br/> Sprawdź, czy reguły zapory zezwalają na połączenie SSH.
 **Maszyna wirtualna platformy Azure z systemem Linux** | Maszyna wirtualna platformy Azure po włączeniu trybu failover | Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu SSH.<br/><br/> [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Sprawdź **diagnostykę rozruchu** dla zrzut ekranu maszyny wirtualnej.<br/><br/>
 
-
+Wykonaj kroki opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md) rozwiązywać problemy z łącznością wszelkie problemy po pracy awaryjnej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po ukończeniu odzyskiwania po awarii, więcej informacji na temat innych rodzajów [trybu failover](site-recovery-failover.md).

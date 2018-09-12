@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 8680a8fa9c460983b88aa4845adcbe72d3a43abf
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 114413d65bb8b1d70bad21badb9508c5f942845c
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325519"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391117"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
-Azure Data Lake Storage Gen1 wdraża model kontroli dostępu pochodzący z systemu plików HDFS, który z kolei pochodzi z modelu kontroli dostępu POSIX. Ten artykuł zawiera podsumowanie podstaw modelu kontroli dostępu dla programu Data Lake Storage Gen1. Aby dowiedzieć się więcej o modelu kontroli dostępu systemu plików HDFS, zobacz [Przewodnik po uprawnieniach systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
+Azure Data Lake Storage Gen1 wdraża model kontroli dostępu pochodzący z systemu plików HDFS, który z kolei pochodzi z modelu kontroli dostępu POSIX. Ten artykuł zawiera podsumowanie podstaw modelu kontroli dostępu dla programu Data Lake Storage Gen1. 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>Listy kontroli dostępu do plików i folderów
 
@@ -31,11 +31,8 @@ Istnieją dwa typy list kontroli dostępu (ACL) — **Listy ACL dostępu** i **D
 
 * **Domyślne listy ACL**: „szablon” list ACL skojarzonych z folderem, który określa listy ACL dostępu dla wszelkich elementów podrzędnych, które zostały utworzone w tym folderze. Pliki nie mają domyślnych list ACL.
 
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-1.png)
 
 Zarówno listy ACL dostępu, jak i domyślne listy ACL mają tę samą strukturę.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-2.png)
 
 
 
@@ -86,27 +83,15 @@ W modelu stylu POSIX używanym przez Data Lake Storage Gen1 uprawnienia dla elem
 
 Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, jakie uprawnienia są wymagane do wykonania operacji na koncie Data Lake Storage Gen1.
 
-### <a name="permissions-needed-to-read-a-file"></a>Uprawnienia wymagane do odczytu pliku
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-3.png)
-
-* W przypadku pliku, który będzie odczytywany, wywołujący musi mieć uprawnienia do **odczytu**.
-* W przypadku wszystkich folderów w strukturze folderów, które zawierają plik, wywołujący musi mieć uprawnienia do **wykonania**.
-
-### <a name="permissions-needed-to-append-to-a-file"></a>Uprawnienia wymagane do dołączania do pliku
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-4.png)
-
-* W przypadku pliku, do którego będzie dołączana zawartość, wywołujący musi mieć uprawnienia do **zapisu**.
-* W przypadku wszystkich folderów, które zawierają plik, wywołujący musi mieć uprawnienia do **wykonania**.
-
-### <a name="permissions-needed-to-delete-a-file"></a>Uprawnienia wymagane do usunięcia pliku
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-5.png)
-
-* W przypadku folderu nadrzędnego wywołujący musi mieć uprawnienia do **zapisu i wykonania**.
-* W przypadku innych folderów w ścieżce pliku wywołujący musi mieć uprawnienia do **wykonania**.
-
+|    Operacja             |    /    | Seattle / | Portland / | Data.txt     |
+|--------------------------|---------|----------|-----------|--------------|
+| Przeczytaj Data.txt            |   --X   |   --X    |  --X      | R--          |
+| Dołącz do Data.txt       |   --X   |   --X    |  --X      | RW-          |
+| Usuń Data.txt          |   --X   |   --X    |  -WX      | ---          |
+| Utwórz Data.txt          |   --X   |   --X    |  -WX      | ---          |
+| Lista /                   |   R-X   |   ---    |  ---      | ---          |
+| Lista /Seattle/           |   --X   |   R-X    |  ---      | ---          |
+| Lista /Seattle/Portland /  |   --X   |   --X    |  R-X      | ---          |
 
 
 > [!NOTE]
@@ -122,10 +107,21 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 * W przypadku wszystkich folderów nadrzędnych wywołujący musi mieć uprawnienia do **wykonania**.
 
 
+Z **Eksplorator danych** kliknij blok konta Data Lake Storage Gen1 **dostępu** aby zobaczyć listy ACL dla pliku lub folderu wyświetlanego w Eksploratorze danych. Kliknij przycisk **dostępu** aby zobaczyć listy ACL dla **katalogu** folderze **mydatastorage** konta.
+
+![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
+
+W tym bloku najwyższa sekcja wyświetla uprawnienia właściciela. (Na zrzucie ekranu właścicielem jest Bob). Następnie są wyświetlane przypisane listy ACL dostępu. 
+
+![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
+
+Kliknij pozycję **Widok zaawansowany**, aby wyświetlić bardziej zaawansowany widok, w którym występują domyślne listy kontroli dostępu, maski i opis administratora.  Ten blok udostępnia również sposób rekursywnego ustawiania list ACL dostępu dla programu Access i domyślnych dla podrzędnych plików i folderów na podstawie uprawnień bieżącego folderu.
+
+![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Administrator
 
-Administrator ma najwięcej uprawnień spośród wszystkich użytkowników usługi Data Lake Store. Administrator:
+Administrator ma najwięcej uprawnień spośród wszystkich użytkowników w ramach konta Data Lake Storage Gen1. Administrator:
 
 * ma uprawnienia RWX do **wszystkich** plików i folderów;
 * może zmieniać uprawnienia do dowolnego pliku lub folderu;
@@ -157,14 +153,11 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 ## <a name="the-owning-group"></a>Grupa będąca właścicielem
 
-Na listach ACL w modelu POSIX każdy użytkownik jest skojarzony z „grupą główną”. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”.
+Na listach ACL w modelu POSIX każdy użytkownik jest skojarzony z „grupą główną”. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
-Po utworzeniu nowego elementu systemu plików Data Lake Storage Gen1 przypisuje wartość grupie będącej właścicielem.
-
+Assiging grupa będąca właścicielem dla nowego pliku lub folderu:
 * **Przypadek 1**: folder główny „/”. Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył konto.
 * **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
-
-Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
 Grupę będącą właścicielem może zmienić:
 * każdy administrator;
@@ -173,9 +166,10 @@ Grupę będącą właścicielem może zmienić:
 > [!NOTE]
 > Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.  Gdy grupa będąca właścicielem zostanie ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego (**Przypadek 1** powyżej), jedno konto użytkownika nie może zapewnić uprawnień za pośrednictwem grupy będącej właścicielem.  Możesz przypisać te uprawnienia do prawidłowej grupy użytkowników, jeśli ma to zastosowanie.
 
+
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
 
-Następujące psuedocode przedstawia algorytm kontroli dostępu dla kont usługi Data Lake Storage Gen1.
+Poniższym pseudokodzie przedstawia algorytm kontroli dostępu dla kont usługi Data Lake Storage Gen1.
 
 ```
 def access_check( user, desired_perms, path ) : 
@@ -215,7 +209,7 @@ def access_check( user, desired_perms, path ) :
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask"></a>Maska
+### <a name="the-mask"></a>Maska
 
 Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do **użytkowników nazwanych**, **grupy będącej właścicielem**, i **nazwanych grup**.  
 
@@ -224,44 +218,18 @@ Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do **użytko
 >
 >
 
-### <a name="the-sticky-bit"></a>Atrybut sticky bit
+#### <a name="the-sticky-bit"></a>Atrybut sticky bit
 
-Sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen1 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny.
-
-Poniższej tabeli przedstawiono sposób działania atrybutu sticky bit w Data Lake Storage Gen1.
-
-| Grupa użytkowników         | Plik    | Folder |
-|--------------------|---------|-------------------------|
-| Sticky bit **WYŁ.** | Brak wpływu   | Brak wpływu.           |
-| Sticky bit **WŁ.**  | Brak wpływu   | Uniemożliwia wszystkich użytkownikom poza **administratorami** i **użytkownikiem będącym właścicielem** elementu podrzędnego usunięcie lub zmianę nazwy tego elementu podrzędnego.               |
+Sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen1 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny. Podsumowując Jeśli atrybut sticky bit jest włączona na folder, element podrzędny tylko można usunąć lub zmieniona przez użytkownika będącego właścicielem elementu podrzędnego.
 
 Atrybut sticky bit nie jest wyświetlany w witrynie Azure Portal.
 
-## <a name="permissions-on-new-files-and-folders"></a>Uprawnienia do nowych plików i folderów
+## <a name="default-permissions-on-new-files-and-folders"></a>Uprawnienia domyślne dla nowych plików i folderów
 
 Gdy nowy plik lub folder jest tworzony w istniejącym folderze, domyślna lista ACL w folderze nadrzędnym określa:
 
 - domyślną listę ACL i listę ACL dostępu folderu podrzędnego;
 - listę ACL dostępu pliku podrzędnego (pliki nie mają domyślnej listy ACL);
-
-### <a name="the-access-acl-of-a-child-file-or-folder"></a>listę ACL dostępu pliku lub folderu podrzędnego.
-
-Gdy tworzony jest plik lub folder podrzędny, domyślna lista ACL lokalizacji nadrzędnej jest kopiowana jako lista ACL dostępu pliku lub folderu podrzędnego. Ponadto, jeśli **inny** użytkownik ma uprawnienia RWX w domyślnej liście ACL lokalizacji nadrzędnej, zostaje usunięty z listy ACL dostępu elementu podrzędnego.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-child-items-1.png)
-
-W większości przypadków poprzednie informacje są wszystkim, co należy wiedzieć o sposobie określania listy ACL dostępu elementu podrzędnego. Niemniej jednak jeśli znasz systemy POSIX i chcesz lepiej zrozumieć sposób działania tej transformacji, zapoznaj się z sekcją [Rola maski umask w tworzeniu listy ACL dostępu do nowych plików i folderów](#umasks-role-in-creating-the-access-acl-for-new-files-and-folders) poniżej w tym artykule.
-
-
-### <a name="a-child-folders-default-acl"></a>Domyślna lista ACL folderu podrzędnego
-
-Gdy folder podrzędny jest tworzony w folderze nadrzędnym, domyślna lista ACL folderu nadrzędnego jest kopiowana bez zmian do domyślnej listy ACL folderu podrzędnego.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-child-items-2.png)
-
-## <a name="advanced-topics-for-understanding-acls-in-data-lake-storage-gen1"></a>Zaawansowane tematy związane z listami ACL w Data Lake Storage Gen1
-
-Poniżej przedstawiono niektóre zaawansowane tematy, które pomagają zrozumieć, jak listy ACL są określane dla plików Data Lake Storage Gen1 lub folderów.
 
 ### <a name="umask"></a>maska umask
 
@@ -269,13 +237,15 @@ Podczas tworzenia pliku lub folderu, maska umask jest używana do modyfikowania 
 
 Maska umask dla usługi Azure Data Lake Storage Gen1 stałą wartość, która jest równa 007. Ta wartość przekłada się na
 
-* umask.owning_user = 0 #---
-* umask.owning_group = 0 #---
-* umask.Other = 7 # RWX
+| Maska umask składnika     | Forma liczbowa | Forma krótka | Znaczenie |
+|---------------------|--------------|------------|---------|
+| umask.owning_user   |    0         |   ---      | Dla użytkownika będącego właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
+| umask.owning_group  |    0         |   ---      | Dla grupy będącej właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
+| umask.Other         |    7         |   RWX      | Dla pozostałych Usuń wszystkie uprawnienia dla listy ACL dostępu elementu podrzędnego |
 
-Ta wartość maski umask skutecznie oznacza, że wartość dla innych nigdy nie są przesyłane domyślnie na nowe elementy podrzędne — niezależnie od tego, co wskazuje domyślną listę ACL. 
+Wartość maski umask, używane przez usługi Azure Data Lake Storage Gen1 skutecznie oznacza, że wartość dla innych nigdy nie są przesyłane domyślnie na nowe elementy podrzędne — niezależnie od tego, co wskazuje domyślną listę ACL. 
 
-Następujące psuedocode pokazuje, jak maska umask jest stosowane podczas tworzenia listy ACL dla elementu podrzędnego.
+Poniższym pseudokodzie pokazuje, jak maska umask jest stosowane podczas tworzenia listy ACL dla elementu podrzędnego.
 
 ```
 def set_default_acls_for_new_child(parent, child):
@@ -293,11 +263,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-
-
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Często zadawane pytania dotyczące list ACL w Data Lake Storage Gen1
-
-Poniżej zamieszczono kilka pytań, które często zadawanych dotyczące list ACL w Data Lake Storage Gen1.
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Czy muszę włączyć obsługę list ACL?
 
@@ -340,19 +306,12 @@ Nie, ale domyślne listy kontroli dostępu mogą być używane do ustawienia lis
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Gdzie można dowiedzieć się więcej na temat modelu kontroli dostępu POSIX?
 
 * [Listy kontroli dostępu w modelu POSIX w systemie Linux](https://www.linux.com/news/posix-acls-linux)
-
 * [Przewodnik po uprawnieniach systemu plików HDFS](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-
 * [POSIX — często zadawane pytania](http://www.opengroup.org/austin/papers/posix_faq.html)
-
 * [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
-
 * [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
-
 * [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
-
 * [Listy ACL modelu POSIX w systemie Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
-
 * [Listy ACL korzystające z list kontroli dostępu w systemie Linux](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>Zobacz także

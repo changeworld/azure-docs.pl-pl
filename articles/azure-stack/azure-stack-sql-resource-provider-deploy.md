@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 08ab76e587c4e2c8b8afe9cb27e9df59a5924475
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: d063e4b79819a881dbf018979654d4d7d96b904a
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842044"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390931"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów programu SQL Server w usłudze Azure Stack
 
@@ -93,7 +93,10 @@ Można określić następujące parametry, z poziomu wiersza polecenia. Jeśli n
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Wdrażanie dostawcy zasobów bazy danych SQL przy użyciu niestandardowego skryptu
 
-Aby wyeliminować żadnej ręcznej konfiguracji podczas wdrażania dostawcy zasobów, można dostosować poniższy skrypt. Zmień domyślne informacje konta i hasła dla danego wdrożenia usługi Azure Stack.
+<a name="to-eliminate-any-manual-configuration-when-deploying-the-resource-provider-you-can-customize-the-following-script"></a>Aby wyeliminować żadnej ręcznej konfiguracji podczas wdrażania dostawcy zasobów, można dostosować poniższy skrypt.  
+-  
+- Zmień domyślne informacje konta i hasła dla danego wdrożenia usługi Azure Stack.
+
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module

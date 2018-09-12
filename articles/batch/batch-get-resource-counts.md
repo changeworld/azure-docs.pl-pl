@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698387"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391763"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorowanie rozwiązań usługi Batch przez liczenie zadania i węzły według stanu
 
@@ -53,11 +53,9 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 
 Można użyć podobny wzorzec pozostałym i innych obsługiwanych języków można pobrać liczby zadań dla zadania. 
 
-### <a name="counts-for-large-numbers-of-tasks"></a>Liczniki dla dużej liczby zadań
-
-Operacja Pobierz liczby zadań zwraca liczby stanów podzadań w systemie w punkcie w czasie. Gdy zadanie ma dużą liczbę zadań, liczby, zwrócona przez pobieranie liczby zadań można opóźnione stany zadanie rzeczywiste przez maksymalnie kilka sekund. Batch zapewnia spójność między wyniki pobieranie liczby zadań i Stany zadanie rzeczywiste, (które można wykonać zapytanie za pomocą interfejsu API zadań listy). Jednak jeśli w zadaniu jest bardzo dużej liczby zadań (> 200 000), zalecane jest użycie interfejsu API listy zadań i [zapytania filtrowanego](batch-efficient-list-queries.md) zamiast tego, który zawiera więcej informacji na aktualne. 
-
-Batch wersji interfejsu API usługi przed 2018-08-01.7.0 również zwracać `validationStatus` właściwości w odpowiedzi na pobieranie liczby zadań. Ta właściwość wskazuje, czy usługi Batch wyewidencjonować liczby stanów w celu zachowania spójności ze Stanami zgłoszone w interfejsie API listy zadań. Wartość `validated` wskazuje tylko, że usługi Batch zaznaczone pole wyboru w celu zachowania spójności w co najmniej raz dla zadania. Wartość `validationStatus` właściwości nie wskazuje, czy liczby elementów zwracanych pobieranie liczby zadań są obecnie aktualna.
+> [!NOTE]
+> Batch wersji interfejsu API usługi przed 2018-08-01.7.0 również zwracać `validationStatus` właściwości w odpowiedzi na pobieranie liczby zadań. Ta właściwość wskazuje, czy usługi Batch wyewidencjonować liczby stanów w celu zachowania spójności ze Stanami zgłoszone w interfejsie API listy zadań. Wartość `validated` wskazuje tylko, że usługi Batch zaznaczone pole wyboru w celu zachowania spójności w co najmniej raz dla zadania. Wartość `validationStatus` właściwości nie wskazuje, czy liczby elementów zwracanych pobieranie liczby zadań są obecnie aktualna.
+>
 
 ## <a name="node-state-counts"></a>Liczby stanów węzłów
 

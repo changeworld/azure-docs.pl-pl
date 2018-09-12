@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 18/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: f43ebff65cf32dce1dae6bb9a592b491e56c8810
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295399"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378367"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
@@ -69,9 +69,11 @@ Aby dostosować domyślna konfiguracja zabezpieczeń systemu operacyjnego w usł
    > Domyślnie pobrany plik konfiguracji jest w *json* formatu. Aby uzyskać instrukcje dotyczące modyfikowania tego pliku, przejdź do [dostosować plik konfiguracji](#customize-the-configuration-file).
    >
 
-   Po plik został pomyślnie zapisany, konfiguracja zostanie zastosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach subskrypcji. Ten proces zwykle zajmuje kilka minut, ale może trwać dłużej, w zależności od rozmiaru infrastruktury.
-
 6. Aby zatwierdzić zmiany, wybierz **Zapisz**. W przeciwnym razie zasady nie są przechowywane.
+
+    ![Przycisk Zapisz](media/security-center-customize-os-security-config/save-successfully.png)
+
+   Po plik został pomyślnie zapisany, konfiguracja zostanie zastosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do obszarów roboczych w ramach subskrypcji. Ten proces zwykle zajmuje kilka minut, ale może trwać dłużej, w zależności od rozmiaru infrastruktury.
 
 W dowolnym momencie możesz zresetować bieżącej konfiguracji zasad do stanu domyślnego. Aby to zrobić w **reguł konfiguracji zabezpieczeń Edycja systemu operacyjnego** wybierz **resetowania**. Potwierdź tę opcję, wybierając **tak** w wyskakującym oknie potwierdzenia.
 

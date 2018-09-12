@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 8c50930404b12f37c709af87ff7def99dcd5100d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004331"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378877"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Macierz obsługi dla oprogramowania VMware oraz replikacji serwera fizycznego do platformy Azure
 
@@ -64,7 +64,7 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
 System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. </br></br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
-System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1, 6,9<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: od 5.2 do 5.11<b>\*\*</b>, 6.1, 6,9<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) <br/><br/></br>* *Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.*</br></br><b>\*\*</b> *Zapoznaj się [pomocy technicznej dla maszyn wirtualnych systemu Linux na platformie Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) uzyskiwania pomocy technicznej dla systemu Linux i technologii open source na platformie Azure. Usługa Azure Site Recovery umożliwia trybu failover i uruchamianie serwerów z systemem Linux na platformie Azure, jednak dostawcy systemu Linux może ograniczyć obsługę tylko te wersje programu ich dystrybucji, które nie osiągnęły koniec cyklu życia.*
+System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: od 5.2 do 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) <br/><br/></br>* *Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.*</br></br><b>\*\*</b> *Zapoznaj się [pomocy technicznej dla maszyn wirtualnych systemu Linux na platformie Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) uzyskiwania pomocy technicznej dla systemu Linux i technologii open source na platformie Azure. Usługa Azure Site Recovery umożliwia trybu failover i uruchamianie serwerów z systemem Linux na platformie Azure, jednak dostawcy systemu Linux może ograniczyć obsługę tylko te wersje programu ich dystrybucji, które nie osiągnęły koniec cyklu życia.*
 
 
 >[!NOTE]
@@ -80,15 +80,15 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1
 
 **Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
 --- | --- | --- |
+14.04 LTS | 9.19 | 3.13.0-24-Generic do 3.13.0-153-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-Generic do 3.13.0-153-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-130-generic |
 14.04 LTS | 9.17 | 3.13.0-24-Generic do 3.13.0-149-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-127-generic |
 14.04 LTS | 9.16 | 3.13.0-24-Generic do 3.13.0-144-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-119-generic |
-14.04 LTS | 9.15. | 3.13.0-24-Generic do 3.13.0-144-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-119-generic |
 |||
+16.04 LTS | 9.19 | 4.4.0-21-Generic do 4.4.0-131-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-30-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-Generic do 4.4.0-130-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic |
 16.04 LTS | 9.17 | 4.4.0-21-Generic do 4.4.0-127-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-43-generic |
 16.04 LTS | 9.16 | 4.4.0-21-Generic do 4.4.0-119-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-38-generic |
-16.04 LTS | 9.15. | 4.4.0-21-Generic do 4.4.0-119-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-38-generic |
 
 
 ### <a name="debian-kernel-versions"></a>Wersje jądra systemu debian
@@ -96,12 +96,12 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1
 
 **Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | 9.17, 9.18 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.15., 9.16 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17,9.18,9.19 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.16 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.19 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.17, 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.16 | 3.16.0-4-AMD64 do 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.15. | 3.16.0-4-AMD64 do 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.5-amd64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12. obsługiwane wersje jądra
 
@@ -245,7 +245,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
 
-**Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji** 
+**Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
 --- | --- | --- | --- | ---
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-deploy-configuration-server.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-set-up-process-server-scale.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).

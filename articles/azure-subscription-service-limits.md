@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6a514abf9c34335e1665ca0fd221d2399fddd039
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782594"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390830"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -56,6 +56,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
+* [Usługa Batch — sztuczna inteligencja](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
@@ -210,6 +211,9 @@ Następujące limity usługi App Service obejmują limity dla aplikacji sieci We
 
 ### <a name="batch-limits"></a>Limity usługi Batch
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
+
+### <a name="batch-ai-limits"></a>Limity usługi Batch AI
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>Limity usługi BizTalk Services
 W poniższej tabeli przedstawiono limity usługi Azure Biztalk Services.

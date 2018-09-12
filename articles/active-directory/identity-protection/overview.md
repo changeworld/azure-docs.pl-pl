@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 06e3a596b60bf96319071fff68b0bf1655869559
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 791abd52ff4c016fe873288008e9d9b6adec6480
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003801"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378500"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
@@ -83,7 +83,7 @@ Aby zrównoważyć obciążenie działań z zakresu zarządzania całym implemen
 | :--                          | ---                                |  ---   |
 | Administrator globalny         | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection| |
 | Administrator zabezpieczeń       | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |
-| Czytelnik zabezpieczeń              | Dostęp tylko do odczytu do usługi Identity Protection | Dołączanie Identity Protection, użytkownicy remidiate skonfigurować zasady, resetowania haseł |
+| Czytelnik zabezpieczeń              | Dostęp tylko do odczytu do usługi Identity Protection | Korygowanie użytkowników dołączanie Identity Protection, konfigurowanie zasad, resetowania haseł |
 
 
 

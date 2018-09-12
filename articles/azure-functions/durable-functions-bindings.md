@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 32cf0ad791a8b36d6a90519d428df0b21d542a31
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6a9ecbcc5161f47a192d5bf3a893a42b3ee9ce2f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092805"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379506"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla funkcje trwałe (usługa Azure Functions)
 
@@ -121,7 +121,7 @@ module.exports = df(function*(context) {
 
 Wyzwalacz działanie umożliwia tworzenie funkcji, które są wywoływane przez funkcje programu orchestrator.
 
-Jeśli używasz programu Visual Studio wyzwalacza działania jest skonfigurowany przy użyciu [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atrybut platformy .NET. 
+Jeśli używasz programu Visual Studio wyzwalacza działania jest skonfigurowany przy użyciu [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atrybut platformy .NET. 
 
 Jeśli używasz witryny Azure portal do tworzenia aplikacji, wyzwalacz działania jest definiowany przez następujący obiekt JSON w `bindings` tablicę *function.json*:
 

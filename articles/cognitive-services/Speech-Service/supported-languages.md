@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668584"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377892"
 ---
 # <a name="supported-languages-for-speech-service"></a>Obsługiwane języki dla usługi mowy
 
@@ -29,13 +29,22 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
  ar EG | Arabski (Egipt), standard nowoczesne | Nie | Yes | Nie
  IT-IT | Włoski (Włochy) | Nie | Yes | Nie 
  de-DE. | Niemiecki (Niemcy) | Nie | Yes | Yes
- ja-JP | Japoński (Japonia) | Nie | Yes | Nie
- pl-PL | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
- pt-BR | Portugalski (Brazylia) | Nie | Yes | Nie
- es-ES | Hiszpański (Hiszpania) | Nie | Yes | Nie
- ru-RU | Rosyjski (Rosja) | Nie | Yes | Nie
  fr-FR | Francuski (Francja) | Nie | Yes | Nie
+ pl-PL | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
+ en-GB | Angielski (Wielka Brytania) | Nie | Yes | Nie
+ EN-CA | Angielski (Kanada) | Nie | Yes | Nie
+ EN-AU | Angielski (Australia) | Nie | Yes | Nie
+ es-ES | Hiszpański (Hiszpania) | Nie | Yes | Nie
+ NL-NL | Holenderski (Holandia) | Nie | Yes | Nie
+ pt-PT | Portoguese (Portogal) | Nie | Yes | Nie
+ tr-TR | Turecki (Turcja) | Nie | Yes | Nie
+ pt-BR | Portugalski (Brazylia) | Nie | Yes | Nie
+ ru-RU | Rosyjski (Rosja) | Nie | Yes | Nie
  zh-CN | Chiński (mandaryński uproszczony) | Nie | Yes | Nie
+ zh-HK | Chiński (mandaryński, tradycyjny) | Nie | Yes | Nie
+ zh-TW | Chiński (mandaryński tajwańskie) | Nie | Yes | Nie
+ ja-JP | Japoński (Japonia) | Nie | Yes | Nie
+ ko-KR | Koreański (Korea) | Nie | Yes | Nie
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 

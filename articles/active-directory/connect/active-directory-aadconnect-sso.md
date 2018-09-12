@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: bc3b5cfc106fdb90e99fb918113f4f371f928b26
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285361"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377959"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co to jest Azure Active Directory bezproblemowego logowania jednokrotnego?
 
-Azure Active Directory bezproblemowe logowanie jednokrotne (Azure AD bezproblemowe logowanie Jednokrotne) automatycznie zaloguje się użytkowników, gdy są one na urządzeniach firmowych połączonych z siecią firmową. Po włączeniu użytkownicy nie muszą wpisać hasła, aby zalogować się do usługi Azure AD, a nawet są zazwyczaj wpisz w ich nazw użytkowników. Ta funkcja zapewnia użytkownikom łatwy dostęp do aplikacji w chmurze bez żadnych dodatkowych lokalnych składników.
+Bezproblemowe logowanie jednokrotne w usłudze Azure Active Directory zapewnia automatyczne logowanie użytkowników, gdy ich urządzenia są połączone z siecią firmową. Po włączeniu użytkownicy nie muszą wpisać hasła, aby zalogować się do usługi Azure AD, a nawet są zazwyczaj wpisz w ich nazw użytkowników. Ta funkcja zapewnia użytkownikom łatwy dostęp do aplikacji w chmurze bez konieczności używania dodatkowych składników lokalnych.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
@@ -62,13 +62,15 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 
 | OS\Browser |Internet Explorer|Brzeg|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Yes|Nie|Yes|Tak\*|ND
-|Windows 8.1|Yes|ND|Yes|Tak\*|ND
-|Windows 8|Yes|ND|Yes|Tak\*|ND
-|Windows 7|Yes|ND|Yes|Tak\*|ND
-|Mac OS X|ND|ND|Tak\*|Tak\*|Tak\*
+|Windows 10|Tak\*|Nie|Yes|Tak\*\*|ND
+|Windows 8.1|Tak\*|ND|Yes|Tak\*\*|ND
+|Windows 8|Tak\*|ND|Yes|Tak\*\*|ND
+|Windows 7|Tak\*|ND|Yes|Tak\*\*|ND
+|Mac OS X|ND|ND|Tak\*\*|Tak\*\*|Tak\*
 
-\*Wymaga [dodatkowej konfiguracji](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
+\*Wymaga programu Internet Explorer w wersji 10 lub nowszy
+
+\*\*Wymaga [dodatkowej konfiguracji](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >Dla systemu Windows 10, zaleca się użycie [Azure AD Join](../active-directory-azureadjoin-overview.md) dla optymalnej logowanie jednokrotne z usługą Azure AD.

@@ -1,25 +1,24 @@
 ---
-title: "Zestaw SDK platformy .NET: operacje systemu plików w usłudze Azure Data Lake Store | Microsoft Docs"
-description: "Użyj zestawu SDK platformy .NET usługi Azure Data Lake Store w celu wykonania takich operacji systemu plików w usłudze Data Lake Store, jak tworzenie folderów itp."
+title: 'Zestaw SDK platformy .NET: Operacje systemu plików w usługi Azure Data Lake Storage Gen1 | Dokumentacja firmy Microsoft'
+description: Użyj usługi Azure Storage Gen1 .NET zestawu SDK Data Lake można wykonywać operacje systemu plików w Data Lake Storage Gen1, takie jak tworzenie folderów itp.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/30/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1094a5ea3c000707aa7736d22d4df0558da32b5e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
+ms.openlocfilehash: 71ddbc2363075b721bfbd418bd29e5154baba866
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391491"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake Store przy użyciu zestawu SDK platformy .NET
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
 > * [Zestaw SDK platformy .NET](data-lake-store-data-operations-net-sdk.md)
 > * [Zestaw SDK Java](data-lake-store-get-started-java-sdk.md)
@@ -28,16 +27,16 @@ ms.lasthandoff: 02/27/2018
 >
 >
 
-Z tego artykułu dowiesz się, jak wykonywać operacje systemu plików w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET. Operacje systemu plików obejmują tworzenie folderów w ramach konta usługi Data Lake Store, przekazywanie plików, pobieranie plików itp.
+W tym artykule dowiesz się, jak wykonywać operacje systemu plików na Data Lake Storage Gen1 przy użyciu zestawu .NET SDK. Operacje systemu plików obejmują tworzenie folderów na koncie usługi Data Lake Storage Gen1, przekazywanie plików, pobieranie plików itp.
 
-Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania kontem w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET, zobacz [Account management operations on Data Lake Store using .NET SDK (Operacje zarządzania kontem w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET)](data-lake-store-get-started-net-sdk.md).
+Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK, zobacz [operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Program Visual Studio w wersji 2013, 2015 lub 2017**. Poniższe instrukcje korzystają z programu Visual Studio 2017.
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje dotyczące tworzenia konta, zobacz artykuł [Rozpoczynanie pracy z usługą Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Konto usługi Azure Data Lake Storage Gen1**. Aby uzyskać instrukcje dotyczące sposobu tworzenia konta, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 
 ## <a name="create-a-net-application"></a>Tworzenie aplikacji .NET
 Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) przeprowadzi Cię przez proces tworzenia plików w magazynie, łączenia plików, pobierania pliku i usuwania niektórych plików z magazynu. Ta część artykułu przeprowadzi Cię przez najważniejsze fragmenty kodu.
@@ -85,7 +84,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
         {
             class Program
             {
-                private static string _adlsAccountName = "<DATA-LAKE-STORE-NAME>.azuredatalakestore.net";        
+                private static string _adlsg1AccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net";        
             }
         }
 
@@ -93,21 +92,21 @@ Z pozostałych akapitów tego artykułu możesz dowiedzieć się, w jaki sposób
 
 ## <a name="authentication"></a>Authentication
 
-* Aby dowiedzieć się więcej o uwierzytelnianiu użytkowników końcowych w aplikacji, zobacz [End-user authentication with Data Lake Store using .NET SDK (Uwierzytelnianie użytkowników końcowych w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET)](data-lake-store-end-user-authenticate-net-sdk.md).
-* Aby dowiedzieć się więcej o uwierzytelnianiu „usługa-usługa” w aplikacji, zobacz [Service-to-service authentication with Data Lake Store using .NET SDK (Uwierzytelnianie „usługa-usługa” w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET)](data-lake-store-service-to-service-authenticate-net-sdk.md).
+* Do uwierzytelniania użytkownika końcowego dla aplikacji, zobacz [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+* Do uwierzytelniania service to service dla aplikacji, zobacz [Service to service uwierzytelnianie za pomocą programu Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 
 ## <a name="create-client-object"></a>Tworzenie obiektu klienta
-Poniższy fragment kodu tworzy obiekt klienta systemu plików usługi Data Lake Store, który jest używany do wysyłania żądań do usługi.
+Poniższy fragment kodu tworzy obiekt klienta systemu plików Data Lake Storage Gen1, który jest używany do wysyłania żądań do usługi.
 
     // Create client objects
-    AdlsClient client = AdlsClient.CreateClient(_adlsAccountName, adlCreds);
+    AdlsClient client = AdlsClient.CreateClient(_adlsg1AccountName, adlCreds);
 
 ## <a name="create-a-file-and-directory"></a>Tworzenie plików i katalogów
 Dodaj poniższy fragment kodu do aplikacji. Ten fragment kodu dodaje plik, a także dowolny katalog nadrzędny, który nie istnieje.
 
     // Create a file - automatically creates any parent directories that don't exist
-    // The AdlsOuputStream preserves record boundaries - it does not break records while writing to the store
+    // The AdlsOutputStream preserves record boundaries - it does not break records while writing to the store
     using (var stream = client.CreateFile(fileName, IfExists.Overwrite))
     {
         byte[] textByteArray = Encoding.UTF8.GetBytes("This is test data to write.\r\n");
@@ -118,7 +117,7 @@ Dodaj poniższy fragment kodu do aplikacji. Ten fragment kodu dodaje plik, a tak
     }
 
 ## <a name="append-to-a-file"></a>Dołączanie do pliku
-Poniższy fragment kodu dołącza dane do istniejącego pliku na koncie usługi Data Lake Store.
+Poniższy fragment kodu dołącza dane do istniejącego pliku na koncie usługi Data Lake Storage Gen1.
 
     // Append to existing file
     using (var stream = client.GetAppendStream(fileName))
@@ -128,7 +127,7 @@ Poniższy fragment kodu dołącza dane do istniejącego pliku na koncie usługi 
     }
 
 ## <a name="read-a-file"></a>Odczytywanie pliku
-Poniższy fragment kodu odczytuje zawartość z pliku w usłudze Data Lake Store.
+Poniższy fragment kodu odczytuje zawartość pliku w Data Lake Storage Gen1.
 
     //Read file contents
     using (var readStream = new StreamReader(client.GetReadStream(fileName)))
@@ -150,14 +149,14 @@ Poniższy fragment kodu zwraca właściwości skojarzone z plikiem lub katalogie
 Definicja metody `PrintDirectoryEntry` jest dostępna w ramach przykładu [w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
 
 ## <a name="rename-a-file"></a>Zmienianie nazwy pliku
-Poniższy fragment kodu zmienia nazwę istniejącego pliku na koncie usługi Data Lake Store.
+Poniższy fragment kodu zmienia nazwę istniejącego pliku w ramach konta Data Lake Storage Gen1.
 
     // Rename a file
     string destFilePath = "/Test/testRenameDest3.txt";
     client.Rename(fileName, destFilePath, true);
 
 ## <a name="enumerate-a-directory"></a>Wyliczanie katalogu
-Poniższy fragment kodu wylicza katalogi na koncie usługi Data Lake Store.
+Poniższy fragment kodu wylicza katalogi na koncie usługi Data Lake Storage Gen1
 
     // Enumerate directory
     foreach (var entry in client.EnumerateDirectory("/Test"))
@@ -170,17 +169,17 @@ Definicja metody `PrintDirectoryEntry` jest dostępna w ramach przykładu [w ser
 ## <a name="delete-directories-recursively"></a>Rekursywne usuwanie katalogów
 Poniższy fragment kodu rekursywnie usuwa katalog i wszystkie jego podkatalogi.
 
-    // Delete a directory and all it's subdirectories and files
+    // Delete a directory and all its subdirectories and files
     client.DeleteRecursive("/Test");
 
 ## <a name="samples"></a>Przykłady
-Oto kilka przykładów na temat korzystania z zestawu SDK systemu plików Data Lake Store.
+Poniżej przedstawiono kilka przykładów na temat korzystania z zestawu SDK systemu plików Gen1 usługi Data Lake Storage.
 * [Podstawowy przykład w witrynie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Zaawansowany przykład w witrynie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>Zobacz też
-* [Account management operations on Data Lake Store using .NET SDK (Operacje zarządzania kontem w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET)](data-lake-store-get-started-net-sdk.md)
-* [Dokumentacja zestawu SDK .NET usługi Data Lake Store](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+## <a name="see-also"></a>Zobacz także
+* [Operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Dokumentacja zestawu SDK .NET Gen1 Lake magazynu danych](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>Następne kroki
-* [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
+## <a name="next-steps"></a>Kolejne kroki
+* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)

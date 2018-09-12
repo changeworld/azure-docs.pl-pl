@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ba46223f0d0a4db7615bc94fe8a1bbfa18e57f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ed2614969952eab90dfec572d9b61071981c4bf
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442342"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391627"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Nawiązywanie połączenia z lokalnymi źródłami danych za pomocą bramy danych lokalnych platformy Azure
-Lokalna brama danych działa jako most, zapewniając bezpieczny transfer danych między lokalnymi źródłami danych i serwerami usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współpracuje również z usługi Azure Logic Apps, usługa Power BI, Power Apps i Microsoft Flow. Można skojarzyć wiele usług, w tym samym regionie za pośrednictwem jednej bramy. 
+Lokalna brama danych działa jako most, zapewniając bezpieczny transfer danych między lokalnymi źródłami danych i serwerami usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współpracuje również z usługi Azure Logic Apps, usługa Power BI, Power Apps i Microsoft Flow. Można skojarzyć wiele usług w tej samej subskrypcji i tym samym regionie za pośrednictwem jednej bramy. 
 
 Pobieranie Instalatora bramy po raz pierwszy jest procesem czteroczęściową:
 
@@ -26,7 +26,7 @@ Pobieranie Instalatora bramy po raz pierwszy jest procesem czteroczęściową:
 
 - **Tworzenie zasobu bramy na platformie Azure** — w tym kroku tworzenia zasobu bramy w ramach subskrypcji platformy Azure.
 
-- **Połącz serwery z zasobu bramy** — po utworzeniu zasobu bramy w ramach subskrypcji, możesz rozpocząć łączenie serwerów z nim. Możesz połączyć wiele serwerów i innych zasobów do niego.
+- **Połącz serwery z zasobu bramy** — po utworzeniu zasobu bramy w ramach subskrypcji, możesz rozpocząć łączenie serwerów z nim. Można połączyć wiele serwerów i innych zasobów, pod warunkiem znajdują się w tej samej subskrypcji i tym samym regionie.
 
 Aby natychmiast rozpocząć pracę, zobacz [zainstalować i skonfigurować lokalną bramę danych](analysis-services-gateway-install.md).
 

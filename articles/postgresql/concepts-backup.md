@@ -1,83 +1,83 @@
 ---
-title: Kopia zapasowa i przywracanie bazy danych Azure dla PostgreSQL
-description: Więcej informacji na temat automatycznego tworzenia kopii zapasowych i przywracanie bazy danych Azure, PostgreSQL serwera.
+title: Kopia zapasowa i przywracanie w usłudze Azure Database for PostgreSQL
+description: Więcej informacji na temat automatycznego tworzenia kopii zapasowej i przywracanie usługi Azure Database for postgresql w warstwie serwera.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0f7ec38d2c271ebaa15e681a71eb32be7151921f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: aafe474ef23d499f505f0e1dab7623e5d032cc84
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29693361"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391712"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Kopia zapasowa i przywracanie bazy danych Azure dla PostgreSQL
+# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Kopia zapasowa i przywracanie w usłudze Azure Database for PostgreSQL
 
-Bazy danych platformy Azure dla PostgreSQL automatycznie tworzy kopii zapasowych serwera i przechowuje je w magazynie użytkownika skonfigurowane lokalnie nadmiarowego lub geograficznie nadmiarowy. Tworzenie kopii zapasowych może służyć do przywrócenia serwera do punktu w czasie. Kopii zapasowej i przywracania są integralną część każdej strategii ciągłości biznesowej, ponieważ ich ochronę danych przed przypadkowym uszkodzenia lub usunięcia.
+Usługa Azure Database for postgresql w warstwie automatycznie tworzy kopie zapasowe serwera i przechowuje je w magazynie lokalnie nadmiarowego lub magazynu geograficznie nadmiarowego skonfigurowane przez użytkownika. Tworzenie kopii zapasowych można przywrócić serwer do punktu w czasie. Kopia zapasowa i przywracanie są integralną część każdej strategii ciągłości biznesowej, ponieważ ich ochronę danych przed przypadkowym uszkodzeniem lub usunięciem.
 
 ## <a name="backups"></a>Tworzenie kopii zapasowych
 
-Bazy danych platformy Azure dla PostgreSQL przyjmuje pełnej, różnicowej i kopie zapasowe dziennika transakcji. Te kopie zapasowe umożliwiają przywrócenie serwera do dowolnego punktu w czasie w okresie przechowywania kopii zapasowych skonfigurowany. Domyślny okres przechowywania kopii zapasowych wynosi siedem dni. Opcjonalnie można skonfigurować go się do 35 dni. Wszystkie kopie zapasowe są szyfrowane za pomocą szyfrowania AES 256-bitowego.
+Usługa Azure Database for postgresql w warstwie przyjmuje pełnej, różnicowej i kopie zapasowe dziennika transakcji. Te kopie zapasowe umożliwiają przywrócenie serwera do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowych skonfigurowany. Domyślny okres przechowywania kopii zapasowych wynosi siedem dni. Opcjonalnie można skonfigurować go się do 35 dni. Wszystkie kopie zapasowe są szyfrowane za pomocą 256-bitowym szyfrowaniem AES.
 
 ### <a name="backup-frequency"></a>Częstotliwość wykonywania kopii zapasowych
 
-Ogólnie rzecz biorąc, pełne kopie zapasowe są wykonywane co tydzień, różnicowe kopie zapasowe występują dwa razy dziennie, oraz kopie zapasowe dziennika transakcji co pięć minut. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast po utworzeniu serwera. Na serwerze przywróconej dużych początkowa kopia zapasowa może trwać dłużej. Najbliższy punkt w czasie, którą można przywrócić do nowego serwera to czas, jaką zakończeniu wstępnej pełnej kopii zapasowej.
+Ogólnie rzecz biorąc, pełne kopie zapasowe są wykonywane co tydzień, różnicowe kopie zapasowe występują dwa razy dziennie, oraz kopie zapasowe dziennika transakcji co pięć minut. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast, po utworzeniu serwera. Tworzenie początkowej kopii zapasowej może trwać dłużej dużych przywróconego serwera. Najwcześniejszy punkt w czasie, który można przywrócić do nowego serwera to czas, w którym zakończeniu początkowej pełnej kopii zapasowej.
 
-### <a name="backup-redundancy-options"></a>Opcje tworzenia kopii zapasowej redundancji
+### <a name="backup-redundancy-options"></a>Opcje nadmiarowości kopii zapasowej
 
-Bazy danych platformy Azure dla PostgreSQL zapewnia elastyczność wyboru między lokalnie nadmiarowego lub geograficznie nadmiarowego magazynu kopii zapasowych w warstwach ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci. Gdy kopie zapasowe są przechowywane w geograficznie nadmiarowego magazynu kopii zapasowych, ich nie tylko znajdują się w regionie, w którym znajduje się serwer, ale również są replikowane do [centrum danych sparowanego](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Zapewnia to lepszą ochronę i możliwość przywracania w przypadku awarii serwera w innym regionie. Podstawowa warstwa oferuje tylko lokalnie nadmiarowego magazynu kopii zapasowej.
+Usługa Azure Database for PostgreSQL zapewnia elastyczność wyboru między lokalnie nadmiarowego lub magazynu geograficznie nadmiarowego magazynu kopii zapasowych w warstwach ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Podczas tworzenia kopii zapasowych są przechowywane w geograficznie nadmiarowego magazynu kopii zapasowych, nie są one tylko przechowywane w regionie, w którym znajduje się serwer, ale również są replikowane do [sparowanym centrum danych](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Zapewnia to lepszą ochronę i możliwość przywracania serwera w innym regionie, w przypadku awarii. Warstwa podstawowa oferuje tylko lokalnie nadmiarowy magazyn kopii zapasowych.
 
 > [!IMPORTANT]
-> Konfigurowanie lokalnie nadmiarowego lub geograficznie nadmiarowego magazynu dla kopii zapasowej jest dozwolone tylko podczas server Utwórz. Po zainicjowaniu obsługi serwera, można zmienić opcji nadmiarowość magazynu kopii zapasowej.
+> Konfigurowanie lokalnie nadmiarowego lub magazynu geograficznie nadmiarowego magazynu dla kopii zapasowej jest dozwolone tylko podczas server Utwórz. Gdy serwer zostanie zaaprowizowana, nie można zmienić opcji nadmiarowości magazynu kopii zapasowych.
 
-### <a name="backup-storage-cost"></a>Koszt magazynowania kopii zapasowej
+### <a name="backup-storage-cost"></a>Koszt magazynu kopii zapasowych
 
-Bazy danych platformy Azure dla PostgreSQL zawiera maksymalnie 100% magazynu elastycznie serwera jako magazynu kopii zapasowej bez ponoszenia dodatkowych kosztów. Zazwyczaj jest to odpowiednie do przechowywania kopii zapasowych siedmiu dni. Wszelkie dodatkowe magazynu kopii zapasowej jest pobierana w miesiącu GB.
+Usługa Azure Database for PostgreSQL zapewnia do 100% swoje zaprowizowanej pojemności magazynu serwera jako magazyn kopii zapasowych bez dodatkowych kosztów. Zazwyczaj jest to odpowiednie dla przechowywania kopii zapasowych siedmiu dni. Dodatkowy magazyn kopii zapasowych używany jest naliczana opłata w GB na miesiąc.
 
-Na przykład jeśli po uprzednim udostępnieniu serwera z 250 GB, masz 250 GB miejsca do magazynowania kopii zapasowej bez dodatkowych opłat. Rozliczany magazynu ponad 250 GB.
+Na przykład jeśli aprowizowaniu serwer o rozmiarze 250 GB, masz 250 GB magazynu kopii zapasowych bez dodatkowych opłat. Magazynu przewyższającą 250 GB, jest naliczana opłata.
 
 ## <a name="restore"></a>Przywracanie
 
-W bazie danych Azure PostgreSQL wykonywanie przywracania tworzy nowy serwer z oryginalnego serwera kopii zapasowych.
+W usłudze Azure Database for PostgreSQL wykonanie przywracania tworzy nowy serwer z kopii zapasowych oryginalnego serwera.
 
-Dostępne są dwa typy przywracania:
+Dostępne są dwa rodzaje przywracania:
 
-- **W momencie przywracania** jest dostępny z obu opcji tworzenia kopii zapasowej nadmiarowości i tworzy nowy serwer, w tym samym regionie co oryginalny serwer.
-- **Geograficzne** jest dostępna tylko wtedy, gdy skonfigurowano serwer dla magazynu geograficznie nadmiarowego i umożliwia przywracanie serwera w innym regionie.
+- **W momencie przywracania** jest dostępna niezależnie od wybranej opcji nadmiarowości kopii zapasowej i tworzy nowy serwer w tym samym regionie co oryginalny serwer.
+- **Przywracanie geograficzne** jest dostępna tylko wtedy, gdy skonfigurowano serwera na potrzeby magazynu geograficznie nadmiarowego umożliwia przywracanie serwera do innego regionu.
 
-Szacowany czas odzyskiwania zależy od wielu czynników, takich jak bazy danych o rozmiarach, rozmiar dziennika transakcji, przepustowości sieci i liczba baz danych odzyskiwania w tym samym regionie, w tym samym czasie. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin.
+Szacowany czas odzyskiwania zależy od kilku czynników, w tym rozmiary baz danych, rozmiaru dziennika transakcji, przepustowości sieci i łączna liczba baz danych odzyskiwania w tym samym regionie, w tym samym czasie. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin.
 
 > [!IMPORTANT]
-> W przypadku usunięcia serwera, wszystkie bazy danych, które należą do tego serwera, również zostaną usunięte i nie może zostać odzyskany. Nie można przywrócić usuniętego serwera.
+> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-Niezależnie od z opcji tworzenia kopii zapasowej nadmiarowość, można wykonać przywracanie do dowolnego punktu w czasie w okresie przechowywania kopii zapasowych. Serwer jest tworzony w tym samym regionie Azure co oryginalny serwer. Jest tworzony z oryginalnego serwera konfiguracji dla warstwy cenowej, obliczeniowe generacji, liczba vCores, rozmiar magazynu okres przechowywania kopii zapasowych i opcję tworzenia kopii zapasowej nadmiarowości.
+Niezależnie od swoją opcję nadmiarowości kopii zapasowej, można wykonać przywracanie do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowych. Nowy serwer jest tworzony w tym samym regionie platformy Azure na podstawie oryginalnego serwera. Jest tworzona przy użyciu oryginalnego serwera konfiguracji dla warstwy cenowej, generacji obliczeń i liczbę rdzeni, rozmiaru magazynu, okres przechowywania kopii zapasowej i wybranej opcji nadmiarowości kopii zapasowej.
 
-W momencie przywracania jest przydatne w wielu scenariuszach. Na przykład, jeśli użytkownik przypadkowo usunął danych, porzuca ważne tabeli lub bazy danych, lub jeśli aplikacja przypadkowo zastępuje danych nieprawidłowych danych z powodu wada aplikacji.
+W momencie przywracania jest przydatne w wielu scenariuszach. Na przykład, gdy użytkownik przypadkowo usunął dane, spada ważną tabelę lub bazy danych, czy aplikacja zastępuje przypadkowo poprawnych danych błędnymi danymi wady aplikacji.
 
-Może być konieczne odczekanie dla następnej kopii zapasowej dziennika transakcji do wykonania, zanim będzie można przywrócić do punktu w czasie w ciągu ostatnich pięciu minut.
+Konieczne może czekać na następnej kopii zapasowej dziennika transakcji można podjąć przed przywróceniem do punktu w czasie w ciągu ostatnich pięciu minut.
 
 ### <a name="geo-restore"></a>Przywracanie geograficzne
 
-Jeśli skonfigurowano serwer z magazynu geograficznie nadmiarowego kopii zapasowych, można przywrócić serwer do innego regionu Azure, w którym usługa jest dostępna. Geograficzne jest domyślną opcją odzyskiwania, gdy serwer jest niedostępny z powodu zdarzenia w regionie, w którym znajduje się serwer. Jeśli na dużą skalę zdarzenia w wynikach regionu w niedostępności aplikacji bazy danych, można przywrócić serwer z magazynu geograficznie nadmiarowego kopii zapasowych na serwerze w innym regionie. Istnieje opóźnienie między gdy wykonywana jest kopia zapasowa i kiedy są replikowane do innego regionu. To opóźnienie może trwać do godziny, tak, w przypadku awarii można się do godzinę utraty danych.
+Po skonfigurowaniu serwera na potrzeby geograficznie nadmiarowych kopii zapasowych, można przywrócić serwer do innego regionu platformy Azure, w którym ta usługa jest dostępna. Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy serwer będzie niedostępny z powodu zdarzenia w regionie, w którym jest hostowany serwer. Jeśli na dużą skalę zdarzenia w regionie skutkuje brakiem dostępu aplikacji bazy danych, można przywrócić serwer z geograficznie nadmiarowych kopii zapasowych na serwerze w każdym innym regionie. Występuje opóźnienie między podczas tworzenia kopii zapasowej i kiedy są replikowane do innego regionu. To opóźnienie może trwać do godziny, więc w przypadku poważnej awarii, może wystąpić do utraty danych jedną godzinę.
 
 ### <a name="perform-post-restore-tasks"></a>Wykonaj zadania wykonywane po przywróceniu
 
-Po przywróceniu z dowolnego z tych mechanizmów odzyskiwania należy wykonać następujące zadania w celu pobrania użytkowników i aplikacje kopii działa:
+Po przywróceniu z dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania, aby zachęcić użytkowników i aplikacje kopii pracę:
 
-- Jeśli nowy serwer należy zamienić na oryginalnym serwerze, przekierowywać klientów i aplikacje klienckie na nowym serwerze
-- Upewnij się, że reguły zapory poziomu serwera odpowiednie w przypadku użytkownikom łączenie z
-- Upewnij się, odpowiednie logowania i uprawnień na poziomie bazy danych znajdują się w miejscu
+- Jeśli nowy serwer ma zastąpić oryginalnego serwera, należy przekierować klientów i aplikacji klienckich na nowy serwer
+- Upewnij się, że reguły zapory na poziomie serwera odpowiednie są stosowane dla użytkowników nawiązujących połączenie
+- Upewnij się, odpowiednich danych logowania i uprawnienia na poziomie bazy danych znajdują się w miejscu
 - W razie potrzeby skonfiguruj alerty
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat ciągłość prowadzenia działalności biznesowej, zobacz [omówienie ciągłości działalności biznesowej](concepts-business-continuity.md).
-- Aby przywrócić do punktu w czasie przy użyciu portalu Azure, zobacz [przywrócenie bazy danych do punktu w czasie przy użyciu portalu Azure](howto-restore-server-portal.md).
-- Aby przywrócić do punktu w czasie przy użyciu wiersza polecenia platformy Azure, zobacz [przywrócenie bazy danych do punktu w czasie przy użyciu interfejsu wiersza polecenia](howto-restore-server-cli.md).
+- Aby dowiedzieć się więcej o ciągłości działania, zobacz [omówienie ciągłości działania](concepts-business-continuity.md).
+- Aby przywrócić do punktu w czasie za pomocą witryny Azure portal, zobacz [przywrócić bazę danych do punktu w czasie za pomocą witryny Azure portal](howto-restore-server-portal.md).
+- Aby przywrócić do punktu w czasie za pomocą wiersza polecenia platformy Azure, zobacz [przywrócić bazę danych do punktu w czasie za pomocą interfejsu wiersza polecenia](howto-restore-server-cli.md).

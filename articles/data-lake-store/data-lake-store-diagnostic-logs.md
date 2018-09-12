@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie dzienników diagnostycznych dla usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
-description: 'Zrozumienie, jak skonfigurować i dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store '
+title: Wyświetlanie dzienników diagnostycznych usługi Azure Data Lake Storage Gen1 | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak skonfigurować, a dostęp do dzienników diagnostycznych do usługi Azure Data Lake Storage Gen1 '
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,84 +12,84 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ed401b1d68463bc03f7931e80e2bfb18d9449970
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199062"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390800"
 ---
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Uzyskiwanie dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store
-Dowiedz się włączyć diagnostyczne dla konta usługi Data Lake Store i sposób wyświetlania dzienników zbierane dla Twojego konta.
+# <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Storage Gen1
+Dowiedz się włączyć diagnostyczne dla Twojego konta usługi Azure Data Lake Storage Gen1 i jak wyświetlić dzienniki zebrane dla swojego konta.
 
-Organizacje mogą włączyć rejestrowanie diagnostyczne dla swojego konta usługi Azure Data Lake Store zbierać zapisy inspekcji dostępu do danych, która udostępnia informacje, takie jak listy użytkowników uzyskujących dostęp do danych, jak często jest uzyskiwany dostęp do danych, jak dużo danych jest przechowywany w konta itp. Po włączeniu diagnostyki i/lub żądania są rejestrowane w sposób optymalny. Zarówno żądań i Diagnostyka wpisy dziennika są tworzone tylko w przypadku żądań wysyłanych do punktu końcowego usługi.
+Organizacje mogą włączyć rejestrowania diagnostycznego dla swojego konta usługi Azure Data Lake Storage Gen1 zbierać ślady inspekcji dostępu do danych, który zawiera informacje, takie jak listy użytkowników uzyskujących dostęp do danych, jak często uzyskać dostępu do danych, jak dużo danych znajduje się w konta itp. Po włączeniu diagnostyki i/lub żądania są rejestrowane na zasadzie największej staranności. Maksymalny rozmiar żądań i Diagnostyka wpisy dziennika są tworzone tylko wtedy, gdy żądania skierowanego do punktu końcowego usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Data Lake Store**. Postępuj zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md).
+* **Konto usługi Azure Data Lake Storage Gen1**. Postępuj zgodnie z instrukcjami w artykule [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-get-started-portal.md).
 
-## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Włączanie rejestrowania diagnostyki dla konta usługi Data Lake Store
+## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Włączanie rejestrowania diagnostycznego dla konta usługi Data Lake Storage Gen1
 1. Zaloguj się w nowej witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz konto usługi Data Lake Store, a w bloku konta usługi z usługą Data Lake Store, kliknij przycisk **dzienniki diagnostyczne**.
-3. W **dzienników diagnostycznych** bloku, kliknij przycisk **Włącz diagnostykę**.
+2. Otwórz konto usługi Data Lake Storage Gen1, a następnie w bloku konta usługi Data Lake Storage Gen1 kliknij **ustawień diagnostycznych**.
+3. W **ustawień diagnostycznych** bloku kliknij **Włącz diagnostykę**.
 
-    ![Włączanie rejestrowania diagnostyki](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Włączanie dzienników diagnostycznych")
+    ![Włączanie rejestrowania diagnostycznego](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Włączanie dzienników diagnostycznych")
 
-3. W **diagnostycznych** bloku, wprowadź następujące zmiany, aby skonfigurować rejestrowanie diagnostyczne.
+3. W **ustawień diagnostycznych** bloku, należy wprowadzić następujące zmiany, aby skonfigurować rejestrowanie diagnostyczne.
    
-    ![Włączanie rejestrowania diagnostyki](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Włączanie dzienników diagnostycznych")
+    ![Włączanie rejestrowania diagnostycznego](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Włączanie dzienników diagnostycznych")
    
-   * Aby uzyskać **nazwa**, wprowadź wartość dla konfiguracji dziennika diagnostycznego.
-   * Istnieje możliwość magazynu/procesu dane w różny sposób.
+   * Aby uzyskać **nazwa**, wprowadź wartość dla konfiguracji dzienniki diagnostyczne.
+   * Istnieje możliwość magazyn i przetwarzanie tych danych na różne sposoby.
      
-        * Wybierz opcję **archiwum na konto magazynu** do przechowywania dzienników do konta usługi Azure Storage. Użyj tej opcji, jeśli chcesz zarchiwizować dane, które będą przetwarzane wsadowe w późniejszym terminie. Po wybraniu tej opcji należy podać konto magazynu Azure dzienniki, aby zapisać.
+        * Wybierz opcję, aby **Zarchiwizuj na koncie magazynu** do przechowywania dzienników do konta usługi Azure Storage. Użyj tej opcji, jeśli chcesz zarchiwizować dane, które będą przetwarzane wsadowe w późniejszym terminie. Jeśli wybierzesz tę opcję, musisz podać konto usługi Azure Storage, aby zapisać dzienniki.
         
-        * Wybierz opcję **strumienia do Centrum zdarzeń** strumienia danych dziennika do usługi Azure Event Hub. Prawdopodobnie użyjesz tę opcję, jeśli masz potoku przetwarzania podrzędnego do analizowania przychodzących dzienniki w czasie rzeczywistym. Jeśli wybierzesz tę opcję, podaj szczegóły w Centrum zdarzeń platformy Azure, którego chcesz użyć.
+        * Wybierz opcję, aby **Stream do usługi event hub** przesyłanie strumieniowe dzienników danych do usługi Azure Event Hub. Prawdopodobnie użyjesz tej opcji w przypadku potoku przetwarzania transmisji dla klientów w celu analizowania przychodzącej dzienników w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla usługi Azure Event Hub, którego chcesz użyć.
 
-        * Wybierz opcję **wysyłać do analizy dzienników** do analizowania danych dziennika wygenerowanych przy użyciu usługi Analiza dzienników Azure. Jeśli wybierzesz tę opcję, podaj szczegóły dla obszaru roboczego analizy dzienników użyje przeprowadzanie analizy dziennika. Zobacz [widoku lub analizowania danych zebranych przez wyszukiwania dziennika analizy dzienników](../log-analytics/log-analytics-tutorial-viewdata.md) szczegółowe informacje na temat używania analizy dzienników.
+        * Wybierz opcję, aby **wysyłanie do usługi Log Analytics** analizować dane dzienników wygenerowane za pomocą usługi Azure Log Analytics. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla obszaru roboczego usługi Log Analytics zostanie wykorzystany wykonaj analizę dziennika. Zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics.
      
-   * Określ, czy chcesz pobrać dzienniki inspekcji Dzienniki żądań i/lub.
-   * Określ liczbę dni, dla których dane muszą zostać zachowane. Przechowywania dotyczy tylko jeśli używasz konta magazynu Azure do archiwum danych dziennika.
+   * Określ, czy chcesz pobrać dzienniki inspekcji, dzienniki żądania lub obu.
+   * Określ liczbę dni, dla których dane muszą zostać zachowane. Przechowywanie ma zastosowanie tylko jeśli używasz konta magazynu platformy Azure pod kątem archiwizowania danych dziennika.
    * Kliknij pozycję **Zapisz**.
 
-Po włączeniu ustawienia diagnostyki można obejrzeć dzienniki w **dzienników diagnostycznych** kartę.
+Po włączeniu ustawienia diagnostyczne, możesz obejrzeć dzienniki w **dzienniki diagnostyczne** kartę.
 
-## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Wyświetlanie dzienników diagnostycznych dla Twojego konta usługi Data Lake Store
-Istnieją dwa sposoby, aby wyświetlić dane dziennika dla konta usługi Data Lake Store.
+## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>Wyświetlanie dzienników diagnostycznych dla konta usługi Data Lake Storage Gen1
+Istnieją dwa sposoby, aby wyświetlić dane dziennika dla konta usługi Data Lake Storage Gen1.
 
-* W widoku ustawienia konta usługi Data Lake Store
-* Z konta magazynu Azure, gdzie są przechowywane dane
+* Na Data Lake Storage Gen1 wyświetlić ustawienia konta
+* Z kontem usługi Azure Storage, w którym przechowywane są dane
 
-### <a name="using-the-data-lake-store-settings-view"></a>Używanie widoku ustawień magazynu Data Lake
-1. Z konta usługi Data Lake Store **ustawienia** bloku, kliknij przycisk **dzienników diagnostycznych**.
+### <a name="using-the-data-lake-storage-gen1-settings-view"></a>Korzystając z widoku Data Lake Gen1 miejsca do magazynowania
+1. Z konta usługi Data Lake Storage Gen1 **ustawienia** bloku kliknij **dzienniki diagnostyczne**.
    
-    ![Widok rejestrowania diagnostycznego](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "wyświetlania dziennika diagnostycznego") 
-2. W **dzienników diagnostycznych** bloku, powinien zostać wyświetlony dziennik skategoryzowany przez **dzienników inspekcji** i **żądania dzienniki**.
+    ![Wyświetlanie dzienników diagnostycznych](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Przeglądaj dzienniki diagnostyki") 
+2. W **dzienniki diagnostyczne** bloku, powinien zostać wyświetlony dzienników, pogrupowane według **dzienników inspekcji** i **Dzienniki żądań**.
    
-   * Dzienniki żądań przechwytywania każdego żądania interfejsu API na koncie usługi Data Lake Store.
-   * Dzienniki inspekcji są podobne do żądania dzienniki, ale zapewnia bardziej szczegółowego podziału wykonywania operacji na koncie usługi Data Lake Store. Na przykład wywołanie interfejsu API przekazywanych w dziennikach żądanie może spowodować wiele operacji "Dołącz" w dziennikach inspekcji.
-3. Aby pobrać dzienniki, kliknij przycisk **Pobierz** łącze dla każdego wpisu dziennika.
+   * Dzienniki na żądanie przechwytywać każde żądanie interfejsu API dla konta Data Lake Storage Gen1.
+   * Dzienniki inspekcji są podobne do żądania dzienników, ale zapewnia bardziej szczegółowy podział operacje wykonywane na konta Data Lake Storage Gen1. Na przykład wywołanie interfejsu API przekazywanych w dziennikach żądanie może spowodować wiele operacji "Dołącz" w dziennikach inspekcji.
+3. Aby pobrać dzienniki, kliknij **Pobierz** łącza względem każdego wpisu dziennika.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Z konta magazynu Azure, która zawiera dane dziennika
-1. Otwarcie bloku konto magazynu Azure skojarzony z usługą Data Lake Store dla rejestrowania, a następnie kliknij przycisk obiektów blob. **Usługa Blob** blok zawiera dwa kontenery.
+### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Z kontem usługi Azure Storage, która zawiera dane dziennika
+1. Otwórz blok konta usługi Azure Storage skojarzonych z Data Lake Storage Gen1 do rejestrowania, a następnie kliknij przycisk obiektów blob. **Usługi Blob service** blok zawiera listę dwóch kontenerów.
    
-    ![Widok rejestrowania diagnostycznego](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "wyświetlania dziennika diagnostycznego")
+    ![Rejestrowanie diagnostyczne widoku](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Przeglądaj dzienniki diagnostyki")
    
-   * Kontener **insights dzienniki inspekcji** zawiera dzienników inspekcji.
-   * Kontener **insights dzienniki żądania** zawiera dzienniki żądania.
-2. W tych kontenerach dzienniki są przechowywane w następującej struktury.
+   * Kontener **insights — dzienniki inspekcji** zawiera dzienniki inspekcji.
+   * Kontener **insights Dzienniki żądań** zawiera dzienniki żądania.
+2. W tych kontenerach dzienniki są przechowywane w obszarze następującej strukturze.
    
-    ![Widok rejestrowania diagnostycznego](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "wyświetlania dziennika diagnostycznego")
+    ![Rejestrowanie diagnostyczne widoku](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Przeglądaj dzienniki diagnostyki")
    
-    Na przykład może być pełną ścieżką do dziennika inspekcji `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Na przykład może być pełną ścieżką do dziennika inspekcji `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Podobnie może być pełną ścieżką do dziennika żądań `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Podobnie może być pełną ścieżką do Dziennik żądań `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## <a name="understand-the-structure-of-the-log-data"></a>Należy poznać strukturę dane dziennika
-Dzienniki inspekcji i żądania są w formacie JSON. W tej sekcji możemy Spójrz na strukturze JSON dla żądania i dzienniki inspekcji.
+## <a name="understand-the-structure-of-the-log-data"></a>Zrozumienie struktury danych dziennika
+Dzienniki inspekcji i żądania są w formacie JSON. W tej sekcji możemy przyjrzeć się strukturze JSON dla żądania i dzienników inspekcji.
 
-### <a name="request-logs"></a>Dzienniki żądań
-Oto przykładowy wpis w dzienniku żądania w formacie JSON. Każdy obiekt blob ma jeden obiekt głównego o nazwie **rekordów** zawiera tablicę obiektów dziennika.
+### <a name="request-logs"></a>Dziennik żądań
+Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika.
 
     {
     "records": 
@@ -98,7 +98,7 @@ Oto przykładowy wpis w dzienniku żądania w formacie JSON. Każdy obiekt blob 
         ,
         {
              "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
              "category": "Requests",
              "operationName": "GETCustomerIngressEgress",
              "resultType": "200",
@@ -116,27 +116,27 @@ Oto przykładowy wpis w dzienniku żądania w formacie JSON. Każdy obiekt blob 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
 | time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, na którym została wykonana operacja umieść na |
+| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
 | category |Ciąg |Kategoria dziennika. Na przykład **żądań**. |
-| operationName |Ciąg |Nazwa operacji, które są rejestrowane. Na przykład getfilestatus. |
+| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
 | resultType |Ciąg |Stan operacji, na przykład 200. |
-| callerIpAddress |Ciąg |Adres IP klienta zgłoszenia żądania |
-| correlationId |Ciąg |Identyfikator dziennika, który można używane do grupowania zbiór wpisów dziennika pokrewne |
-| identity |Obiekt |Tożsamości, który wygenerował dziennika |
-| properties |JSON |Wymienione poniżej, aby uzyskać więcej informacji |
+| callerIpAddress |Ciąg |Adres IP klienta wysyłającego żądanie |
+| correlationId |Ciąg |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
+| identity |Obiekt |Tożsamość, która wygenerowała dziennika |
+| properties |JSON |Poniżej znajdują się szczegółowe informacje |
 
 #### <a name="request-log-properties-schema"></a>Schemat właściwości dziennika żądania
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| HttpMethod |Ciąg |Metoda HTTP używana dla tej operacji. Na przykład GET. |
-| Ścieżka |Ciąg |Ścieżka operacja została wykonana na |
-| RequestContentLength |int |Długość treści żądania HTTP |
+| HttpMethod |Ciąg |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
+| Ścieżka |Ciąg |Ścieżka operacja została wykonana w |
+| RequestContentLength |Int |Długość zawartości żądania HTTP |
 | ClientRequestId |Ciąg |Identyfikator, który unikatowo identyfikuje tego żądania |
 | Godzina rozpoczęcia |Ciąg |Czas, w którym serwer odebrał żądanie |
 | Godzina zakończenia |Ciąg |Czas wysłanego przez serwer odpowiedzi |
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
-Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob ma jeden obiekt głównego o nazwie **rekordów** zawiera tablicę obiektów dziennika
+Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika
 
     {
     "records": 
@@ -145,14 +145,14 @@ Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob 
         ,
         {
              "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
              "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
+             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
         }
         ,
         . . . .
@@ -163,22 +163,22 @@ Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
 | time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, na którym została wykonana operacja umieść na |
+| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
 | category |Ciąg |Kategoria dziennika. Na przykład **inspekcji**. |
-| operationName |Ciąg |Nazwa operacji, które są rejestrowane. Na przykład getfilestatus. |
+| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
 | resultType |Ciąg |Stan operacji, na przykład 200. |
 | resultSignature |Ciąg |Więcej informacji na temat operacji. |
-| correlationId |Ciąg |Identyfikator dziennika, który można używane do grupowania zbiór wpisów dziennika pokrewne |
-| identity |Obiekt |Tożsamości, który wygenerował dziennika |
-| properties |JSON |Wymienione poniżej, aby uzyskać więcej informacji |
+| correlationId |Ciąg |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
+| identity |Obiekt |Tożsamość, która wygenerowała dziennika |
+| properties |JSON |Poniżej znajdują się szczegółowe informacje |
 
 #### <a name="audit-log-properties-schema"></a>Schemat właściwości dziennika inspekcji
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| StreamName |Ciąg |Ścieżka operacja została wykonana na |
+| StreamName |Ciąg |Ścieżka operacja została wykonana w |
 
-## <a name="samples-to-process-the-log-data"></a>Przykłady do przetwarzania danych dziennika
-Podczas wysyłania dzienników z usługi Azure Data Lake Store Analiza dzienników Azure (zobacz [widoku lub analizowania danych zebranych przez wyszukiwania dziennika analizy dzienników](../log-analytics/log-analytics-tutorial-viewdata.md) szczegółowe informacje na temat używania analizy dzienników), następujące zapytanie zwraca tabelę zawierającą listę użytkowników Wyświetlanie nazw, czas zdarzenia, a liczba zdarzeń czasu dla zdarzeń oraz visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub innych atrybutów:
+## <a name="samples-to-process-the-log-data"></a>Przykłady, aby przetwarzać dane dziennika
+Podczas wysyłania dzienników z usługi Azure Data Lake Storage Gen1 do usługi Azure Log Analytics (zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics), następujące zapytanie zwróci tabelę zawierającą listę użytkownika nazw wyświetlanych, czas zdarzenia, a liczba zdarzeń czasu dla zdarzenia wraz z visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub inne atrybuty:
 
 ```
 search *
@@ -187,9 +187,9 @@ search *
 ```
 
 
-Azure Data Lake Store zapewnia próbkę na temat przetwarzanie i analizowanie danych dziennika. Na przykład można znaleźć [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+Azure Data Lake Storage Gen1 zawiera przykładowy na temat sposobu przetwarzania i analizowania danych dziennika. Można znaleźć przykład w [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Zobacz także
-* [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)
-* [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
+* [Omówienie usługi Azure Data Lake Storage Gen1](data-lake-store-overview.md)
+* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
 

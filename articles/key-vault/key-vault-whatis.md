@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d7357dc7e8fa473bd8517dd80ede749b9d8e3f07
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 580ebbf219daa4c22034ffbf9ee3abbbdd0c8130
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162839"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378767"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
 Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
-- Usługa Azure Key Vault może służyć do bezpiecznego przechowywania i ścisłego kontrolowania dostępu do tokenów, haseł, certyfikatów, kluczy interfejsu API i innych wpisów tajnych.
-- Usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
-- Usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
-- Wpisy tajne i klucze mogą być chronione przez oprogramowanie lub moduły HSM zweryfikowane w trybie FIPS 140-2 poziom 2.
+- **Zarządzanie wpisami tajnymi** — usługi Azure Key Vault pozwala bezpiecznie przechowywać i ściśle kontrolować dostęp do tokenów, hasła, certyfikaty, klucze interfejsu API i innych wpisów tajnych
+- **Zarządzanie kluczami** — usługi Azure Key Vault umożliwia także jako rozwiązania do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
+- **Zarządzanie certyfikatami** — usługi Azure Key Vault jest również usługa, która pozwala na łatwe aprowizowanie, zarządzanie i wdrażanie prywatnych i publicznych certyfikatów Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użytku z platformą Azure i wewnętrznych połączone zasoby. 
+- **Sprzętowe moduły zabezpieczeń** — klucze tajne i klucze mogą być chronione przez oprogramowanie lub ze standardem FIPS 140-2 Level 2 weryfikuje sprzętowych modułów zabezpieczeń
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
 

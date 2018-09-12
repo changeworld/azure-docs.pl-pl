@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 274f9d89113f583cc7b65ae01f3132d35b82b920
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349266"
+ms.locfileid: "44380424"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -511,7 +511,7 @@ Usługa Azure Resource Manager pozwala inicjować obsługę aplikacji za pomocą
 
 Więcej informacji na temat przy użyciu szablonów usługi Resource Manager można znaleźć tutaj:
 
-* [Wdrażania i zarządzania maszynami wirtualnymi przy użyciu szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia Azure][../../linux/create-ssh-secured-vm-from-template.md]
+* [Wdrażanie i zarządzanie maszynami wirtualnymi przy użyciu szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure](../../linux/create-ssh-secured-vm-from-template.md)
 * [Zarządzanie maszynami wirtualnymi przy użyciu usługi Azure Resource Manager i programu PowerShell][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 

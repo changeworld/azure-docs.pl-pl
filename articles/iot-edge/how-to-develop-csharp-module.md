@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a66a17a0f8daed5f61753dd7c20ed5d9987c0b15
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7fec050f43ed6facef548ea19d1d67030458fbb1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053904"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380254"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge
 
@@ -116,6 +116,9 @@ Moduł IoT Edge C# jest.Net Core z aplikacji. I zależy od języka C# urządzeni
 3. Przejdź do widoku debugowania programu VS Code. Wybierz konfigurację debugowania **ModuleName lokalnego debugowania (.NET Core)**. 
 
 4. Kliknij przycisk **Rozpocznij debugowanie** lub naciśnij **F5**. Rozpocznie się sesji debugowania.
+
+   > [!NOTE]
+   > Jeśli Twoje.Net Core `TargetFramework` nie jest spójna ze swojej ścieżka programu w `launch.json`. Musisz ręcznie zaktualizować ścieżkę programu w `launch.json` przestrzegać `TargetFramework` w pliku csproj. Więc tego programu VS Code można pomyślnie uruchomić ten program.
 
 5. W zintegrowanym terminalu programu VS Code, uruchom następujące polecenie, aby wysłać **Witaj, świecie** komunikatu do modułu. To polecenie pokazano w poprzednich krokach podczas instalacji usługi IoT Edge symulator pomyślnie.
 

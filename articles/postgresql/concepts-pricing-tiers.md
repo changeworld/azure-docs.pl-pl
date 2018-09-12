@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173711"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379546"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -46,7 +46,7 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|
-| Środkowe stany USA | X |  |
+| Środkowe stany USA | X | X |
 | Wschodnie stany USA | X | X |
 | Wschodnie stany USA 2 | X | X |
 | Środkowo-północne stany USA | X | X |

@@ -1,6 +1,6 @@
 ---
-title: Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Demonstracja używania parametrów, aby określić port dla aplikacji w sieci szkieletowej usług
+title: Jak określić numer portu usługi Azure Service Fabric przy użyciu parametrów | Dokumentacja firmy Microsoft
+description: Dowiesz się, jak określić port dla aplikacji w usłudze Service Fabric za pomocą parametrów
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
@@ -12,28 +12,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 06cfb375c6c18082a0d0316cfcb742a7779fc8a8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206382"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391338"
 ---
-# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług
+# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak określić numer portu usługi Service Fabric przy użyciu parametrów
 
-W tym artykule przedstawiono sposób określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług za pomocą programu Visual Studio.
+W tym artykule pokazano, jak określić numer portu usługi przy użyciu parametrów w usłudze Service Fabric przy użyciu programu Visual Studio.
 
-## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Procedury do określenia numeru portu usługi przy użyciu parametrów
+## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Procedura do określania numeru portu usługi przy użyciu parametrów
 
 W tym przykładzie należy ustawić numer portu dla platformy asp.net core interfejsu API sieci web za pomocą parametru.
 
-1. Otwórz program Visual Studio i utworzyć nową aplikację usługi sieć szkieletowa usług.
-1. Wybierz szablon bezstanowych platformy ASP.NET Core.
+1. Otwórz program Visual Studio i Utwórz nową aplikację usługi Service Fabric.
+1. Wybierz szablon o bezstanowa ASP.NET Core.
 1. Wybierz interfejs API sieci Web.
 1. Otwórz plik ServiceManifest.xml.
-1. Zanotuj nazwę punktu końcowego określona dla usługi. Wartość domyślna to `ServiceEndpoint`.
-1. Otwieranie pliku ApplicationManifest.xml
-1. W `ServiceManifestImport` elementu, Dodaj nową `RessourceOverrides` elementu z odwołaniem do punktu końcowego w pliku ServiceManifest.xml.
+1. Zanotuj nazwę punktu końcowego określonego dla Twojej usługi. Wartość domyślna to `ServiceEndpoint`.
+1. Otwórz plik ApplicationManifest.xml
+1. W `ServiceManifestImport` elementu Dodawanie nowej `RessourceOverrides` elementu z odwołaniem do endpoint w pliku ServiceManifest.xml.
 
     ```xml
       <ServiceManifestImport>
@@ -47,7 +47,7 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
       </ServiceManifestImport>
     ```
 
-1. W `Endpoint` elementu, można teraz zmienić dowolny atrybut za pomocą parametru. W tym przykładzie należy określić `Port` i ustaw ją na nazwę parametru za pomocą nawiasów kwadratowych — na przykład `[MyWebAPI_PortNumber]`
+1. W `Endpoint` elementu, możesz teraz zastąpić za pomocą parametru atrybutu. W tym przykładzie należy określić `Port` i ustaw go na nazwę parametru za pomocą nawiasami kwadratowymi — na przykład `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -61,7 +61,7 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
       </ServiceManifestImport>
     ```
 
-1. Następnie nadal w pliku ApplicationManifest.xml, możesz określić parametr w `Parameters` — element
+1. Następnie w pliku ApplicationManifest.xml możesz określić parametr w `Parameters` — element
 
     ```xml
       <Parameters>
@@ -78,17 +78,17 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
     ```
 
 1. Otwórz ApplicationParameters folder i `Cloud.xml` pliku
-1. Aby określić inny port do użycia podczas publikowania do zdalnego klastra, Dodaj parametr numer portu do tego pliku.
+1. Aby określić inny port do użycia podczas publikowania w klastrze zdalnym, należy dodać parametr numer portu do tego pliku.
 
     ```xml
       <Parameters>
-        <Parameter Name="MyWebAPI_PortNumber" DefaultValue="80" />
+        <Parameter Name="MyWebAPI_PortNumber" Value="80" />
       </Parameters>
     ```
 
-Podczas publikowania aplikacji w programie Visual Studio przy użyciu Cloud.xml profilu publikowania usługi jest skonfigurowany do używania portu 80. W przypadku wdrożenia aplikacji bez określenia parametru MyWebAPI_PortNumber, usługa korzysta z portu 8080.
+Podczas publikowania aplikacji w programie Visual Studio przy użyciu Cloud.xml profil publikowania usługi jest skonfigurowany do używania portu 80. Jeśli wdrożysz aplikację bez określenia parametru MyWebAPI_PortNumber usługa korzysta z portu 8080.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat niektórych podstawowych pojęciach, które zostały omówione w tym artykule, zobacz [zarządzania aplikacjami dla wielu artykułach środowisk](service-fabric-manage-multiple-environment-app-configuration.md).
+Aby dowiedzieć się więcej na temat niektóre podstawowe pojęcia, które zostały omówione w tym artykule, zobacz [Zarządzanie aplikacjami dla wielu środowisk artykułach](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Aby uzyskać informacje o inne funkcje zarządzania aplikacjami, które są dostępne w programie Visual Studio, zobacz [Zarządzaj aplikacjami sieci szkieletowej usług w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Aby uzyskać informacji na temat innych funkcji zarządzania aplikacji, które są dostępne w programie Visual Studio, zobacz [Zarządzanie aplikacjami usługi Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).

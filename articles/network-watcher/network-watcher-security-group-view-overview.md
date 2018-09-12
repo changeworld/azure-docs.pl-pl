@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do widoku grupy zabezpieczeń w obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera przegląd możliwości widoku zabezpieczeń obserwatora sieciowego
+title: Wprowadzenie do widoku grupy zabezpieczeń w usłudze Azure Network Watcher | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie funkcji widoku zabezpieczeń usługi Network Watcher
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: jdial
-ms.openlocfilehash: f4175875b68c52e68588b8d0debd003ab73427ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15f6bd0d7da63924e52db8ec7e2cbb0ee7483f82
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23864210"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391542"
 ---
-# <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Wprowadzenie do widoku grupy zabezpieczeń sieci w obserwatora sieciowego Azure
+# <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Wprowadzenie do widok sieciowych grup zabezpieczeń w usłudze Azure Network Watcher
 
-Na poziomie podsieci lub na poziomie karty Sieciowej skojarzonych grup zabezpieczeń sieci. Gdy skojarzony na poziomie podsieci, dotyczy wszystkich wystąpień maszyn wirtualnych w podsieci. Widok grupy zabezpieczeń sieci zwraca wszystkich skonfigurowanych grup NSG i reguł, które są skojarzone na poziomie podsieci i karty na maszynie wirtualnej, zapewniając wgląd w konfiguracji. Ponadto zasady efektywnym elementem systemu zabezpieczeń są zwracane dla każdej z kart sieciowych w maszynie Wirtualnej. Widok przy użyciu grup zabezpieczeń sieci można ocenić maszyny Wirtualnej dla luk w zabezpieczeniach sieci takich jak otwartych portów. Można również sprawdzić czy grupy zabezpieczeń sieci działa zgodnie z oczekiwaniami, na podstawie [porównanie skonfigurowanego i reguły zabezpieczeń skuteczne](network-watcher-nsg-auditing-powershell.md).
+Sieciowe grupy zabezpieczeń są skojarzone na poziomie podsieci lub na poziomie karty Sieciowej. Gdy skojarzone na poziomie podsieci, ma zastosowanie do wszystkich wystąpień maszyn wirtualnych w podsieci. Widok grupy zabezpieczeń sieci zwraca wszystkie skonfigurowane sieciowe grupy zabezpieczeń i reguły skojarzone na poziomie karty Sieciowej i podsieci dla maszyny wirtualnej, zapewniając wgląd w konfiguracji. Ponadto zwracane są obowiązujących reguł zabezpieczeń dla każdej z kart sieciowych na maszynie wirtualnej. Widok przy użyciu sieciowej grupy zabezpieczeń można ocenić maszyny Wirtualnej dla luk w zabezpieczeniach sieci, takich jak otwieranie portów. Możesz również walidować Jeśli sieciowej grupy zabezpieczeń działają zgodnie z oczekiwaniami, na podstawie [porównanie skonfigurowanych i reguły zabezpieczeń zatwierdzonych](network-watcher-nsg-auditing-powershell.md).
 
-Przypadek użycia dłuższy jest zabezpieczeń, zgodności i inspekcji. Przetestowanego zestaw reguł zabezpieczeń można zdefiniować jako model ładu zabezpieczeń w organizacji. Inspekcja okresowe zgodności można zaimplementować w sposób programowy porównując przetestowanego reguł za pomocą skuteczne reguł dla poszczególnych maszyn wirtualnych w sieci.
+Dłuższy przypadek użycia jest zgodności zabezpieczeń i inspekcji. Narzucony zestaw reguł zabezpieczeń można zdefiniować jako model zabezpieczeń nadzoru w Twojej organizacji. Inspekcja zgodności okresowe można zaimplementować w sposób programowy, porównując normatywne reguły z aktywne reguły dla poszczególnych maszyn wirtualnych w sieci.
 
-W portalu, do którego zasady są podzielone według obowiązującej, podsieci interfejsu sieciowego i domyślne. Zapewnia to prosty widok do zasady zastosowane do maszyny wirtualnej. Można łatwo pobrać wszystkie reguły zabezpieczeń bez względu na karcie do pliku CSV znajduje się przycisk Pobierz.
+W portalu, do którego reguły są podzielone według obowiązywać, podsieci, interfejs sieciowy i domyślne. Zapewnia to prosty wgląd w zasady zastosowane do maszyny wirtualnej. Łatwe pobieranie wszystkich reguł zabezpieczeń, niezależnie od tego, w karcie ich do pliku CSV znajduje się przycisk Pobierz.
 
-![Widok grupy zabezpieczeń][1]
+![Widok grup zabezpieczeń][1]
 
-Zasady można wybrać i otwiera nowy blok do wyświetlenia grupy zabezpieczeń sieci i prefiksy źródłowym i docelowym. Z tego bloku można przejść bezpośrednio do tego zasobu grupy zabezpieczeń sieci.
+Można wybrać zasady, a nowy blok zostanie otwarty do wyświetlenia grupy zabezpieczeń sieci i prefiksy źródłowym i docelowym. Z tego bloku można przejść bezpośrednio do zasobu sieciowej grupy zabezpieczeń.
 
 ![Przechodzenie do szczegółów][2]
 
-### <a name="next-steps"></a>Następne kroki
+### <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak inspekcji ustawienia sieciowej grupy zabezpieczeń, odwiedzając [ustawienia inspekcji, grupy zabezpieczeń sieci przy użyciu programu PowerShell](network-watcher-nsg-auditing-powershell.md)
+Dowiedz się, jak i Przeprowadź inspekcję ustawienia sieciowej grupy zabezpieczeń, odwiedzając [ustawienia inspekcji sieciową grupę zabezpieczeń przy użyciu programu PowerShell](network-watcher-nsg-auditing-powershell.md)
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png

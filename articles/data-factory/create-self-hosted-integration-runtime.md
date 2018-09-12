@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051344"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380373"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -134,7 +134,6 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 
 - Certyfikat musi być publicznie zaufany X509 certyfikatu v3. Firma Microsoft zaleca użycie certyfikatów wystawionych przez publiczny (innej firmy) urząd certyfikacji (CA).
 - Każdy węzeł środowiska integration runtime, muszą ufać temu certyfikatowi.
-- Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć ***. domain.contoso.com** jako nazwę podmiotu certyfikatu.
 - Certyfikaty SAN nie są zalecane, ponieważ tylko ostatni element nazwy alternatywnej podmiotu, który będzie używany, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia. Na przykład mieć certyfikat sieci SAN, w których SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć wyłącznie tego certyfikatu na komputerze, którego nazwa FQDN jest **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikat przy użyciu CNG klucze nie są obsługiwane.  

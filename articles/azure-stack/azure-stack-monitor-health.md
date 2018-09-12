@@ -1,89 +1,88 @@
 ---
-title: Monitorowanie kondycji i alertów w stosie Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie monitorowania kondycji i alertów w stosie Azure.
+title: Monitorowanie kondycji i alertów w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorowanie kondycji i alertów w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 9/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69ed08e8f6c820790c432bfa25988e038fd0efbd
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047245"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379693"
 ---
-# <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitorowanie kondycji i alertów w stosie Azure
+# <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitorowanie kondycji i alertów w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Stos Azure obejmuje monitorowanie możliwości, które umożliwiają wyświetlanie kondycji i alerty dla regionu Azure stosu infrastruktury. **Zarządzania Region** kafelka, przypięty domyślnie w portalu administratora subskrypcji dostawcy domyślnego, zawiera listę wszystkich wdrożonych regionów stosu Azure. Kafelek pokazuje liczbę aktywnych alertów krytycznego i ostrzeżenia dla każdego regionu i jest punktem wejścia do kondycji i alertów funkcji Azure stosu.
+Usługa Azure Stack obejmuje funkcje, które umożliwiają wyświetlanie kondycji i alertów dla regionu Azure Stack do monitorowania infrastruktury. **Zarządzanie regionami** Kafelek przypięty domyślnie w portalu administratora subskrypcji dostawcy domyślnego, wyświetla listę wszystkich wdrożonych regionów usługi Azure Stack. Kafelek pokazuje liczbę aktywnych alertów krytycznego i ostrzeżenia dla każdego regionu, a jest punktem wejścia do kondycji i alertów funkcje usługi Azure Stack.
 
- ![Na kafelku zarządzania regionu](media/azure-stack-monitor-health/image1.png)
+ ![Kafelek zarządzanie regionami](media/azure-stack-monitor-health/image1.png)
 
- ## <a name="understand-health-in-azure-stack"></a>Zrozumienie kondycji w stosie Azure
+ ## <a name="understand-health-in-azure-stack"></a>Zrozumienie kondycji w usłudze Azure Stack
 
- Kondycja i alerty są zarządzane przez dostawcę zasobów kondycji. Składniki infrastruktury w usłudze Azure stosu zarejestrować u dostawcy zasobów kondycji podczas wdrażania stosu Azure i konfiguracji. Rejestracja Umożliwia wyświetlanie kondycji i alertów dla poszczególnych składników. Kondycji w stosie Azure to pojęcie proste. Jeśli istnieją alerty dotyczące zarejestrowanych wystąpienia składnika, kondycja tego składnika odzwierciedla najgorszy active ważność alertu; Ostrzeżenie, lub krytyczne.
+ Kondycji i alertów są zarządzane przez dostawcę zasobów kondycji. Składniki infrastruktury usługi Azure Stack zarejestrować za pomocą dostawcy zasobów kondycji podczas wdrażania usługi Azure Stack i konfiguracji. Rejestracja Umożliwia wyświetlanie kondycji i alertów dla każdego składnika. Kondycja usługi Azure Stack jest prosta koncepcja. Jeśli istnieją alerty dotyczące zarejestrowanych wystąpienia składnika, stan kondycji tego składnika odzwierciedla najgorszy active ważność alertu; Ostrzeżenie, lub krytyczne.
 
 ## <a name="alert-severity-definition"></a>Definicja ważność alertu
 
-W stosie Azure pojawienia się alertów tylko dwa ważności: **ostrzeżenie** i **krytyczne**.
+W usłudze Azure Stack alerty są wywoływane przy użyciu tylko dwa poziomy ważności: **ostrzeżenie** i **krytyczne**.
 
-**Ostrzeżenie**  
-Operator może zająć alert ostrzeżenia w zaplanowanym czasie. Alert zwykle nie wpływa na obciążenia użytkownika.
+- **Ostrzeżenie**  
+  Operator może zająć alert ostrzeżenia, w sposób, według harmonogramu. Alert zwykle nie ma wpływu na obciążenia użytkownika.
 
-**Krytyczne**  
-Operator powinna uwzględniać alert krytyczny o pilność. Są to problemów, które obecnie wpływ lub wkrótce będzie miało wpływ stosu Azure użytkowników. 
+- **Krytyczne**  
+  Operator powinien adresów alert krytyczny o pilność. Są to problemy, które obecnie wpływ lub wkrótce będzie miało wpływ na użytkowników usługi Azure Stack. 
 
  
- ## <a name="view-and-manage-component-health-state"></a>Wyświetl i zarządzaj nimi stan kondycji składników
+ ## <a name="view-and-manage-component-health-state"></a>Wyświetlanie i zarządzanie nimi stan kondycji składników
  
- Jako operator stosu Azure można wyświetlić stan kondycji składników, w portalu administratora i za pośrednictwem interfejsu API REST i programu PowerShell.
+ Jako operatorów usługi Azure Stack można wyświetlić stan kondycji składników, w portalu administratora i za pośrednictwem interfejsu API REST i PowerShell.
  
-Aby wyświetlić stan kondycji w portalu, kliknij obszar, który chcesz wyświetlić w **zarządzania Region** kafelka. Można wyświetlić stan kondycji ról infrastruktury i dostawców zasobów.
+Aby wyświetlić stan kondycji w witrynie portal, kliknij go, którą chcesz wyświetlić w **zarządzanie regionami** kafelka. Można wyświetlić stan kondycji infrastruktury ról i dostawców zasobów.
 
 ![Lista ról infrastruktury](media/azure-stack-monitor-health/image2.png)
 
-Możesz kliknąć dostawcy zasobów lub rolę infrastruktury, aby wyświetlić bardziej szczegółowe informacje.
+Możesz kliknąć dostawcy zasobów lub roli infrastruktury, aby wyświetlić bardziej szczegółowe informacje.
 
-> [!WARNING]
->Jeśli kliknij rolę infrastruktury, a następnie kliknij wystąpienia roli, istnieją opcje, aby rozpocząć, ponowne uruchomienie lub zamknięcie. Nie należy używać tych działań, podczas stosowania aktualizacji do zintegrowany system. Ponadto należy **nie** korzystać z tych opcji w środowisku Azure stosu Development Kit. Te opcje są przeznaczone tylko dla systemów zintegrowanego środowiska, gdy istnieje więcej niż jedno wystąpienie roli dla każdej roli infrastruktury. Ponowne uruchomienie wystąpienia roli (szczególnie Xrp01 AzS) w zestawie powoduje niestabilność systemu. Do rozwiązywania problemów pomocy, post problem do [forum Azure Stack](https://aka.ms/azurestackforum).
+> [!WARNING]  
+> Kliknij rolę infrastruktury, a następnie kliknij wystąpienie roli, czy opcje uruchamianie, ponowne uruchomienie lub zamknięcie. Nie należy używać tych akcji, po zastosowaniu aktualizacji do system zintegrowany. Ponadto wykonaj **nie** użyć tych opcji w środowisku usługi Azure Stack Development Kit. Te opcje są przeznaczone tylko dla środowiska zintegrowane systemy, w przypadku, gdy istnieje więcej niż jedno wystąpienie roli dla roli infrastruktury. Ponowne uruchamianie wystąpienia roli (szczególnie AzS-Xrp01) w zestawie powoduje niestabilność systemu. Rozwiązaniu tego problemu, Opublikuj problemu do [forum usługi Azure Stack](https://aka.ms/azurestackforum).
 >
  
 ## <a name="view-alerts"></a>Wyświetlanie alertów
 
-Lista aktywnych alertów dla każdego regionu Azure stosu jest dostępny bezpośrednio z **zarządzania Region** bloku. Pierwszy Kafelek w domyślnej konfiguracji jest **alerty** kafelka, który zawiera podsumowanie krytyczne i ostrzeżenia alerty dla tego obszaru. Można przypiąć Kafelek alerty, podobnie jak inne kafelka na ten blok do pulpitu nawigacyjnego, aby uzyskać szybki dostęp.   
+Lista aktywnych alertów dla każdego regionu Azure Stack jest dostępna bezpośrednio z **zarządzanie regionami** bloku. Pierwszy Kafelek w domyślnej konfiguracji jest **alerty** Kafelek, który zawiera podsumowanie krytycznych i alerty ostrzegawcze dla regionu. Można przypiąć kafelka alerty, podobnie jak inne kafelka, w tym bloku do pulpitu nawigacyjnego, aby uzyskać szybki dostęp.   
 
-![Alerty kafelka, który wyświetla ostrzeżenie](media/azure-stack-monitor-health/image3.png)
+![Alerty Kafelek, który wyświetla ostrzeżenie](media/azure-stack-monitor-health/image3.png)
 
-Po wybraniu w górnej części **alerty** kafelka, przejdź do listy wszystkich aktywnych alertów dla tego obszaru. Jeśli zostanie wybrana **krytyczny** lub **ostrzeżenie** wiersza elementu w obrębie fragmentu, przejdź do listy filtrowane alertów (krytyczny lub ostrzeżenie). 
+Wybierając w górnej części **alerty** kafelka, przejdź do listy wszystkich aktywnych alertów dla regionu. Jeśli wybierzesz opcję **krytyczny** lub **ostrzeżenie** element wiersza we fragmencie, przejdź do filtrowana lista alertów (krytyczny lub ostrzegawczy). 
 
 ![Filtrowane alerty ostrzegawcze](media/azure-stack-monitor-health/image4.png)
   
-**Alerty** bloku obsługuje możliwość filtrowania zarówno na stan (aktywny lub zamknięte) i ważności (krytyczna lub ostrzeżenie). Domyślny widok przedstawia wszystkie aktywne alerty. Wszystkie zamknięte alerty zostaną usunięte z systemu po upływie siedmiu dni.
+**Alerty** bloku obsługuje możliwość filtrowania zarówno na stan (aktywne lub zamknięte) i ważności (krytyczny lub ostrzegawczy). Domyślny widok przedstawia wszystkie aktywne alerty. Wszystkie zamknięte alerty zostaną usunięte z systemu po upływie siedmiu dni.
 
-![Okienko filtru do filtrowania według krytyczny lub stan ostrzeżenia](media/azure-stack-monitor-health/image5.png)
+![Okienko filtru, aby filtrować według krytyczny lub stan ostrzeżenia](media/azure-stack-monitor-health/image5.png)
 
-**API widoku** akcji wyświetla interfejsu API REST, który został użyty do generowania widoku listy. Ta akcja umożliwia szybkie zapoznać się z składnię interfejsu API REST, która służy do alertów zapytania. Można użyć tego interfejsu API w usłudze Automatyzacja lub w celu integracji z istniejących centrum danych monitorowania, raportowania i tworzenia biletów rozwiązania. 
+**API widoku** akcja wyświetla interfejsu API REST, który został użyty do wygenerowania widoku listy. Ta akcja umożliwia szybkie zapoznanie się ze składnią interfejsu API REST używanego do kwerendy alertów. Można użyć tego interfejsu API w usłudze automation lub integracji, za pomocą swojego istniejącego centrum danych monitorowania, raportowania i tworzenia biletów rozwiązania. 
 
-![Opcja interfejsu API widok pokazujący interfejsu API REST](media/azure-stack-monitor-health/image6.png)
+![Opcję Widok interfejsu API, która wyświetla interfejsu API REST](media/azure-stack-monitor-health/image6.png)
 
-Możesz kliknąć określony alert, aby wyświetlić szczegóły alertu. Szczegóły alertu zawierają wszystkie pola, które są skojarzone z alertem i Włącz szybkie nawigacji składnik i źródła alertu. Na przykład następujący alert występuje, jeśli jedno wystąpienie roli infrastruktury przejdzie do trybu offline lub jest niedostępny.  
+Możesz kliknąć określony alert, aby wyświetlić szczegóły alertu. Szczegóły alertu pokazują wszystkie pola, które są skojarzone z alertem i umożliwiają szybkie nawigowanie do źródła alertu i składnik. Na przykład następujący alert występuje, jeśli jedno z wystąpień roli infrastruktury przejdzie do trybu offline lub jest niedostępny.  
 
-![Blok szczegółów alertu](media/azure-stack-monitor-health/image7.png)
+![W bloku szczegóły alertu](media/azure-stack-monitor-health/image7.png)
 
-Po powrocie do trybu online wystąpienia roli infrastruktury ten alert jest automatycznie zamykany. Wiele, ale nie każdy alert zamyka automatycznie, gdy problem zostanie rozwiązany. Zaleca się, że wybrano **Zamknij Alert** po wykonaniu czynności korygujące. Jeśli problem będzie się powtarzać, stos Azure generuje nowy alert. Jeśli ten problem można rozwiązać, alert pozostanie zamknięty i nie wymaga dodatkowych czynności.
+Po powrocie do trybu online wystąpienia roli infrastruktury ten alert jest automatycznie zamyka. Wiele, ale nie każdy alert automatycznie zamyka się, gdy problem zostanie rozwiązany. Zaleca się, że wybrano **Zamknij Alert** po wykonaniu czynności zaradczych. Jeśli problem będzie się powtarzać, usługi Azure Stack generuje nowy alert. Jeśli możesz rozwiązać ten problem, alert pozostanie zamknięte i nie wymaga dodatkowych czynności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zarządzanie aktualizacjami w stosie Azure](azure-stack-updates.md)
+[Zarządzanie aktualizacjami w usłudze Azure Stack](azure-stack-updates.md)
 
-[Zarządzanie regionu Azure stosu](azure-stack-region-management.md)
+[Zarządzanie regionami w usłudze Azure Stack](azure-stack-region-management.md)
