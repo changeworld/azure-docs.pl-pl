@@ -24,7 +24,11 @@
 ## Instalowanie platformy SAP HANA
 ### [Weryfikowanie konfiguracji](hana-installation.md)
 ### [Przykładowa instalacja platformy HANA](hana-example-installation.md)
-## [Wysoka dostępność i odzyskiwanie po awarii](hana-overview-high-availability-disaster-recovery.md)
+## Wysoka dostępność i odzyskiwanie po awarii
+### [Opcje i zagadnienia](hana-overview-high-availability-disaster-recovery.md)
+### [Tworzenie kopii zapasowej i przywracanie](hana-backup-restore.md)
+### [Reguły i przygotowanie](hana-concept-preparation.md)
+### [Procedura przechodzenia w tryb failover odzyskiwania po awarii](hana-failover-procedure.md)
 ## Rozwiązywanie problemów i monitorowanie
 ### [Monitorowanie funkcji HANA — duże wystąpienia](troubleshooting-monitoring.md)
 ### [Monitorowanie i rozwiązywanie problemów ze strony oprogramowania HANA](hana-monitor-troubleshoot.md)

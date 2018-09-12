@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391576"
 documentType: LandingData
 title: Dokumentacja usługi Azure IoT Central (wersja zapoznawcza)
 metadata:
@@ -11,15 +17,13 @@ metadata:
   ms.service: iot-central
   services: iot-central
   manager: timlt
-  ms.openlocfilehash: df6acc821183e7336d8079895c7494eed397eea1
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628576"
 abstract:
   description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
 sections:
+- title: Nadchodząca zmiana
+  items:
+  - type: paragraph
+    text: Za kilka tygodni usługa Azure IoT Central zacznie używać usługi Azure IoT Hub Device Provisioning Service (DPS) dla wszystkich połączeń urządzeń. Po wprowadzeniu tej zmiany trzeba będzie zaktualizować kod urządzenia w celu rejestrowania i łączenia urządzeń przy użyciu zestawu SDK usługi DPS. Konieczne będą zmiana docelowego kontenera magazynu i utworzenie nowego szablonu rozwiązania dla wszystkich aplikacji używających funkcji ciągłego eksportowania danych i/lub szablonu rozwiązania usługi Power BI. <a href="https://aka.ms/iotcentral-create-technical-support-ticket">Aby dowiedzieć się więcej, skontaktuj się z pomocą techniczną.</a>
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph

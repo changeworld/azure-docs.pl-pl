@@ -197,6 +197,7 @@
 #### [Ograniczenia dzierżawy](manage-apps/tenant-restrictions.md)
 #### [Aprowizacja użytkowników przy użyciu standardu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [Opis środowisk zgody dla aplikacji usługi Azure AD](application-consent-experience.md)
 
 ### Rozwiązywanie problemów
 
