@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/23/2018
+ms.date: 08/10/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d47981042fc13a96bdf5cb9690e4dc83a6aa0162
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: ae29108aad2a538bb90484a048742be0b5c4764a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932555"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094913"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą programu Azure PowerShell
 
@@ -40,7 +40,7 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten 
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). 
+Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed maszyną wirtualną. W poniższym przykładzie grupa zasobów o nazwie *myResourceGroupVM* zostanie utworzona w regionie *EastUS*:
 
@@ -94,11 +94,11 @@ W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a
 
 ## <a name="understand-vm-images"></a>Omówienie obrazów maszyny wirtualnej
 
-Witryna Azure Marketplace udostępnia wiele obrazów maszyn wirtualnych, które mogą służyć do tworzenia nowej maszyny wirtualnej. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 Datacenter. W tym kroku moduł PowerShell jest używany do wyszukiwania w witrynie Marketplace innych obrazów systemu Windows, które mogą być również używane jako podstawa nowych maszyn wirtualnych. Proces ten składa się z wyszukiwania wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji w celu [zidentyfikowania](cli-ps-findimage.md#terminology) obrazu. 
+Witryna Azure Marketplace udostępnia wiele obrazów maszyn wirtualnych, które mogą służyć do tworzenia nowej maszyny wirtualnej. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 Datacenter. W tym kroku moduł PowerShell jest używany do wyszukiwania w witrynie Marketplace innych obrazów systemu Windows, które mogą być również używane jako podstawa nowych maszyn wirtualnych. Proces ten składa się z wyszukiwania wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji w celu [zidentyfikowania](cli-ps-findimage.md#terminology) obrazu.
 
 Użyj polecenia [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), aby uzyskać listę wydawców obrazów:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
@@ -110,10 +110,10 @@ Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServe
 
 ```azurepowershell-interactive
 Offer             PublisherName          Location
------             -------------          -------- 
-Windows-HUB       MicrosoftWindowsServer EastUS 
-WindowsServer     MicrosoftWindowsServer EastUS   
-WindowsServer-HUB MicrosoftWindowsServer EastUS   
+-----             -------------          --------
+Windows-HUB       MicrosoftWindowsServer EastUS
+WindowsServer     MicrosoftWindowsServer EastUS
+WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
 Polecenie [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) spowoduje następnie odfiltrowanie według nazwy wydawcy i oferty w celu uzyskania listy nazw obrazów.
@@ -159,7 +159,6 @@ New-AzureRmVm `
 
 Parametr `-AsJob` umożliwia tworzenie maszyny wirtualnej w tle, co powoduje powrót do wiersza polecenia programu PowerShell. Możesz wyświetlić szczegóły zadań w tle, używając polecenia cmdlet `Get-Job`.
 
-
 ## <a name="understand-vm-sizes"></a>Omówienie rozmiarów maszyn wirtualnych
 
 Rozmiar maszyny wirtualnej określa ilość zasobów obliczeniowych, takich jak procesor CPU, procesor GPU i pamięć, które są dostępne dla maszyny wirtualnej. Tworzone maszyny wirtualne powinny mieć rozmiar odpowiadający oczekiwanemu obciążeniu. Jeśli obciążenie zwiększy się, można zmienić rozmiar istniejącej maszyny wirtualnej.
@@ -174,8 +173,7 @@ W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypa
 | [Optymalizacja pod kątem pamięci](sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
 | [Optymalizacja pod kątem magazynu](sizes-storage.md)      | Ls                | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
 | [Procesor GPU](sizes-gpu.md)          | NV, NC            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
-| [Wysoka wydajność](sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
-
+| [Wysoka wydajność](sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). |
 
 ### <a name="find-available-vm-sizes"></a>Wyszukiwanie dostępnych rozmiarów maszyn wirtualnych
 
@@ -189,7 +187,7 @@ Get-AzureRmVMSize -Location "EastUS"
 
 Po wdrożeniu maszyny wirtualnej można zmienić jej rozmiar w celu zwiększenia lub zmniejszenia alokacji zasobów.
 
-Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest dostępny w bieżącym klastrze maszyny wirtualnej. Polecenie [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) zwraca listę rozmiarów. 
+Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest dostępny w bieżącym klastrze maszyny wirtualnej. Polecenie [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) zwraca listę rozmiarów.
 
 ```azurepowershell-interactive
 Get-AzureRmVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
@@ -203,7 +201,7 @@ $vm.HardwareProfile.VmSize = "Standard_D4"
 Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroupVM"
 ```
 
-Jeśli żądany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Pamiętaj, że gdy maszyna wirtualna zostanie ponownie włączona, wszystkie dane na dysku tymczasowym zostaną usunięte, a publiczny adres IP zmieni się, chyba że używany jest statyczny adres IP. 
+Jeśli żądany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Pamiętaj, że gdy maszyna wirtualna zostanie ponownie włączona, wszystkie dane na dysku tymczasowym zostaną usunięte, a publiczny adres IP zmieni się, chyba że używany jest statyczny adres IP.
 
 ```azurepowershell-interactive
 Stop-AzureRmVM -ResourceGroupName "myResourceGroupVM" -Name "myVM" -Force
@@ -215,7 +213,7 @@ Start-AzureRmVM -ResourceGroupName "myResourceGroupVM"  -Name $vm.name
 
 ## <a name="vm-power-states"></a>Stany zasilania maszyny wirtualnej
 
-Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów zasilania. Ten stan reprezentuje bieżący stan maszyny wirtualnej z punktu widzenia funkcji hypervisor. 
+Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów zasilania. Ten stan reprezentuje bieżący stan maszyny wirtualnej z punktu widzenia funkcji hypervisor.
 
 ### <a name="power-states"></a>Stany zasilania
 
@@ -223,7 +221,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 |----|----|
 | Uruchamianie | Wskazuje, że maszyna wirtualna jest uruchamiana. |
 | Działanie | Wskazuje, że maszyna wirtualna działa. |
-| Zatrzymywanie | Wskazuje, że maszyna wirtualna jest zatrzymywana. | 
+| Zatrzymywanie | Wskazuje, że maszyna wirtualna jest zatrzymywana. |
 | Zatrzymano | Wskazuje, że maszyna wirtualna została zatrzymana. Pamiętaj, że opłaty za operacje obliczeniowe są także naliczane w przypadku maszyn wirtualnych w stanie Zatrzymano.  |
 | Cofanie przydziału | Wskazuje, że przydział maszyny wirtualnej jest cofany. |
 | Cofnięto przydział | Wskazuje, że maszyna wirtualna została całkowicie usunięta z funkcji hypervisor, ale jest nadal dostępna na płaszczyźnie kontroli. Opłaty za operacje obliczeniowe nie są naliczane w przypadku maszyn wirtualnych w stanie Cofnięto przydział. |
@@ -231,7 +229,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 
 ### <a name="find-power-state"></a>Znajdowanie stanu zasilania
 
-Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
+Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów.
 
 ```azurepowershell-interactive
 Get-AzureRmVM `

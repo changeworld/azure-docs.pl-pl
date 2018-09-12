@@ -9,12 +9,12 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ed2d4654163881b3258c4a98632d48acd0e80fb5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091547"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055373"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Samouczek: projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS
 
@@ -41,7 +41,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następują
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 
@@ -131,7 +131,7 @@ Teraz można połączyć się z serwerem usługi SQL Database i jego bazami dany
 
 Pobierz w pełni kwalifikowaną nazwę serwera dla serwera Azure SQL Database w witrynie Azure Portal. W pełni kwalifikowanej nazwy serwera używa się do nawiązywania połączenia z serwerem przy użyciu programu SQL Server Management Studio.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Wybierz pozycję **Bazy danych SQL** z menu po lewej stronie, a następnie kliknij bazę danych na stronie **Bazy danych SQL**. 
 3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**.
 

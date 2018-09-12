@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8fe343587336ff22f82ed0d1ef700fc56c86f577
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19ffb1043317cf7e7ce4c00fd85d21274dab7c0a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561098"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055526"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
 
@@ -27,7 +27,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Reguła zapory poziomu serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) dla publicznego adresu IP komputera, który będzie używany w tym przewodniku Szybki start.
+- [Reguła zapory poziomu serwera](sql-database-get-started-portal-firewall.md) dla publicznego adresu IP komputera, który będzie używany w tym przewodniku Szybki start.
 
 - W systemie operacyjnym zainstalowano język PHP i związane z nim oprogramowanie:
 

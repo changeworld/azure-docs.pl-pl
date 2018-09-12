@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3500754c7e9cb14ea86e9c0e562ec5f98fc1fc94
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307251"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377772"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
-Ten temat zawiera listę często zadawane pytania dotyczące rozwiązywania problemów.
+W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 
 ## <a name="connecting"></a>Łączenie
 | Problem | Rozwiązanie |
@@ -27,7 +27,7 @@ Ten temat zawiera listę często zadawane pytania dotyczące rozwiązywania prob
 | Serwer nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń podmiotu zabezpieczeń "Moja_nazwa_użytkownika". Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Nie można zalogować użytkownika "Moja_nazwa_użytkownika". (Program Microsoft SQL Server, błąd: 916) |Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
 | Błąd CTAIP |Ten błąd może wystąpić po utworzeniu nazwy logowania na główna baza danych SQL, ale nie w bazie danych SQL Data Warehouse.  Jeśli wystąpi ten błąd, Przyjrzyj się [Przegląd zabezpieczeń] [ Security overview] artykułu.  W tym artykule wyjaśniono, jak utworzyć identyfikator logowania i użytkownika na wzorzec, a następnie utworzyć użytkownika w bazie danych SQL Data Warehouse. |
 | Blokowane przez zaporę |Baz danych SQL Azure są chronione przez zapory poziomu serwera i bazy danych zapewniające tylko znane adresy IP, które mają dostęp do bazy danych. Zapory są zabezpieczone przez domyślne, co oznacza, że musisz jawnie włączyć i adres IP lub zakres adresów, zanim będzie można połączyć.  Aby skonfigurować zaporę w taki sposób, aby uzyskać dostęp, wykonaj kroki opisane w [skonfigurować dostęp do zapory serwera na Twój adres IP klienta] [ Configure server firewall access for your client IP] w [aprowizacji instrukcje] [Provisioning instructions]. |
-| Nie można nawiązać połączenia przy użyciu narzędzia lub sterownika |Usługa SQL Data Warehouse zaleca używanie [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd] [ sqlcmd] wykonywać zapytania o swoje dane. Aby uzyskać szczegółowe informacje na temat sterowników i łączenie z usługą SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługi Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] artykułów. |
+| Nie można nawiązać połączenia przy użyciu narzędzia lub sterownika |Usługa SQL Data Warehouse zaleca używanie [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd] [ sqlcmd] wykonywać zapytania o swoje dane. Aby uzyskać więcej informacji na temat sterowników i łączenie z usługą SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługi Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] artykułów. |
 
 ## <a name="tools"></a>Narzędzia
 | Problem | Rozwiązanie |
@@ -102,7 +102,7 @@ Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono ni
 [Unsupported data types]: sql-data-warehouse-tables-data-types.md#unsupported-data-types
 [Overview]: sql-data-warehouse-tables-overview.md
 [Data types]: sql-data-warehouse-tables-data-types.md
-[Distribute]:/sql-data-warehouse-tables-distribute.md
+[Distribute]: sql-data-warehouse-tables-distribute.md
 [Index]: sql-data-warehouse-tables-index.md
 [Partition]: sql-data-warehouse-tables-partition.md
 [Statistics]: sql-data-warehouse-tables-statistics.md

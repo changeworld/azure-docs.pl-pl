@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 1756ac4ddbbc6d93307839e8447da84deb0716f7
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2537e7cd6d59dfd38cac6b18009ce7d6a311ed10
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398731"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027150"
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Przekazywanie danych obrazu do chmury za pomocą usługi Azure Storage
 
@@ -77,9 +77,9 @@ Pobierz klucz konta magazynu przy użyciu polecenia [az storage account keys lis
 W tym przypadku `<blob_storage_account>` jest nazwą utworzonego konta usługi Blob Storage. Dostęp publiczny do kontenera _images_ został ustawiony na wartość `off`, a do kontenera _thumbnails_ — na wartość `container`. Ustawienie dostępu publicznego na wartość `container` pozwala na wyświetlanie miniatur przez osoby odwiedzające stronę internetową.
  
 ```azurecli-interactive 
-$blobStorageAccount="<blob_storage_account>"
+blobStorageAccount=<blob_storage_account>
 
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container create -n images --account-name $blobStorageAccount \

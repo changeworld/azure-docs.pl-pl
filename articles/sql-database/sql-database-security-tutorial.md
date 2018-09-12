@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193465"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054074"
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpieczanie usługi Azure SQL Database
 
@@ -46,11 +46,11 @@ Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elem
 
 - Zainstalowanie najnowszej wersji programu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
 - Zainstalowany program Microsoft Excel
-- Utworzony serwer i baza danych usługi Azure SQL — zobacz [Tworzenie bazy danych usługi Azure SQL w witrynie Azure Portal](sql-database-get-started-portal.md), [Tworzenie pojedynczej bazy danych usługi Azure SQL przy użyciu interfejsu wiersza polecenia platformy Azure](sql-database-get-started-cli.md) oraz [Tworzenie pojedynczej bazy danych usługi Azure SQL przy użyciu programu PowerShell](sql-database-get-started-powershell.md). 
+- Utworzony serwer i baza danych usługi Azure SQL — zobacz [Tworzenie bazy danych usługi Azure SQL w witrynie Azure Portal](sql-database-get-started-portal.md), [Tworzenie pojedynczej bazy danych usługi Azure SQL przy użyciu interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md) oraz [Tworzenie pojedynczej bazy danych usługi Azure SQL przy użyciu programu PowerShell](sql-database-powershell-samples.md). 
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Tworzenie reguły zapory na poziomie serwera w witrynie Azure Portal
 

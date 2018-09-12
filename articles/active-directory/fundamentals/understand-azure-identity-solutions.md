@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398368"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346920"
 ---
 # <a name="understand-azure-identity-solutions"></a>Omówienie rozwiązań do obsługi tożsamości na platformie Azure
 Usługa Microsoft Azure Active Directory (Azure AD) to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze, które oferuje usługi katalogowe, nadzór nad tożsamościami i zarządzanie dostępem do aplikacji. Usługa Azure AD umożliwia [szybkie logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do tysięcy wstępnie zintegrowanych aplikacji komercyjnych i niestandardowych w [galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wielu z tych aplikacji najprawdopodobniej już używasz, np. Office 365, Salesforce.com, Box, ServiceNow i Workday.
@@ -110,10 +110,10 @@ Mamy mnóstwo przydatnych zasobów online, dzięki którym dowiesz się wszystki
 
 * [Włączanie katalogu do zarządzania hybrydowego przy użyciu programu Azure AD Connect](../connect/active-directory-aadconnect.md)
 * [Dodatkowe zabezpieczenia dla połączonego świata](../authentication/multi-factor-authentication.md)
-* [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](../active-directory-saas-app-provisioning.md)
+* [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Zarządzanie hasłami z dowolnego miejsca](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](../active-directory-saas-app-provisioning.md)
+* [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](../manage-apps/application-proxy.md)
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](active-directory-manage-groups.md)
 * [Co to jest licencjonowanie usługi Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)

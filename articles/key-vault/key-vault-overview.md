@@ -14,22 +14,21 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: a55c99764cf9d77ab3ee269e3f5b0c2a13ec1ac7
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b509bf9575c3fdeedd1673d4ffe1395d46e3d919
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023590"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051616"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
-Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych.
+Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
+- Usługa Azure Key Vault może służyć do bezpiecznego przechowywania i ścisłego kontrolowania dostępu do tokenów, haseł, certyfikatów, kluczy interfejsu API i innych wpisów tajnych.
+- Usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
+- Usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
+- Wpisy tajne i klucze mogą być chronione przez oprogramowanie lub moduły HSM zweryfikowane w trybie FIPS 140-2 poziom 2.
 
-Korzystasz z haseł, parametrów połączenia i innych rodzajów informacji, które są konieczne do działania Twoich aplikacji. Chcesz mieć pewność, że te informacje są dostępne, lecz także zabezpieczone. W tym może pomóc usługa Azure Key Vault. Usługa Azure Key Vault ułatwia bezpieczne przechowywanie wpisów tajnych aplikacji i zarządzanie nimi.
-
-Usługa Key Vault umożliwia utworzenie wielu zabezpieczonych kontenerów nazywanych magazynami. Te magazyny są wspierane przez sprzętowe moduły zabezpieczeń. Magazyny zmniejszają prawdopodobieństwo przypadkowej utraty danych zabezpieczeń, stanowiąc centrum przechowywania wpisów tajnych aplikacji. Magazyny usługi Key Vault umożliwiają także kontrolowanie i rejestrowanie dostępu do wszelkich elementów, które są w nich przechowywane. Usługa Azure Key Vault obsługuje żądania i odnawianie certyfikatów protokołu TLS (Transport Layer Security), udostępniając funkcje wymagane przez niezawodne rozwiązania do zarządzania cyklem życia certyfikatu.
-
- Usługę Azure Key Vault zaprojektowano pod kątem obsługi wpisów tajnych. Oznacza to, że usługa Key Vault może służyć do przechowywania haseł, poświadczeń bazy danych, kluczy interfejsu API i certyfikatów, które mogą być chronione za pomocą oprogramowania lub sprzętowego modułu HSM.
 ## <a name="why-use-azure-key-vault"></a>Jakie są zalety korzystania z usługi Azure Key Vault?
 
 ### <a name="centralize-application-secrets"></a>Scentralizowana obsługa wpisów tajnych aplikacji

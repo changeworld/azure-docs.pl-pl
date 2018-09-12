@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: f729a7972a36d53cb8f4f3769aedde4ca2005d80
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 77953884253002c6da7b0151151d97bb65a6c659
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346135"
+ms.locfileid: "44377092"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal
 
@@ -34,8 +34,10 @@ W tym artykule dowiesz się, jak włączyć i wyłączyć systemu i tożsamości
 - Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujące przypisania kontroli dostępu opartej na rolach platformy Azure:
+
     > [!NOTE]
     > Nie dodatkowych Azure przypisań ról katalogu usługi AD wymagane.
+
     - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) włączyć i Usuń przypisany systemowo tożsamości zarządzanej maszyny wirtualnej platformy Azure.
 
 ## <a name="system-assigned-managed-identity"></a>Przypisana przez system tożsamości zarządzanej

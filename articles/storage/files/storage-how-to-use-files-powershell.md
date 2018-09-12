@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a69e8946c050cc69411f843b07e907a119c6edea
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72f320279d23dc701f045ee6db1681a355f98808
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522933"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022290"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Zarządzanie udziałami plików platformy Azure przy użyciu programu Azure PowerShell 
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu programu PowerShell. W tym artykule omówiono sposób wykonywania następujących zadań:
@@ -55,7 +55,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
-Teraz możesz utworzyć swój pierwszy udział plików platformy Azure. Udział plików możesz utworzyć za pomocą polecenia cmdlet [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare). W tym przykładzie tworzony jest udział o nazwie `myshare`.
+Teraz możesz utworzyć swój pierwszy udział plików platformy Azure. Udział plików możesz utworzyć za pomocą polecenia cmdlet [New-AzureStorageShare](https://docs.microsoft.com/powershell/module/servicemanagement/azure.storage/new-azurestorageshare). W tym przykładzie tworzony jest udział o nazwie `myshare`.
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -75,7 +75,7 @@ Po utworzeniu udziału plików platformy Azure możesz zainstalować ten udział
 
 
 ### <a name="create-directory"></a>Tworzenie katalogu
-Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia cmdlet [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory).
+Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia cmdlet [New-AzureStorageDirectory](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragedirectory).
 
 
 ```azurepowershell-interactive

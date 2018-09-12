@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 9eea0cabebb67095d4c6c813e7d13c885a447db4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114010"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378894"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
 
-Niniejszy samouczek jest drugą częścią serii i umożliwia przeprowadzenie konfiguracji usługi Log Analytics na potrzeby monitorowania kontenerów systemu Windows zorganizowanych w usłudze Service Fabric.
+Niniejszy samouczek jest trzecią częścią serii i umożliwia przeprowadzenie konfiguracji usługi Log Analytics na potrzeby monitorowania kontenerów systemu Windows zorganizowanych w usłudze Service Fabric.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

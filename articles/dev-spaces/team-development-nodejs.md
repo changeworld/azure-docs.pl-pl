@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 1bdc0b450a0d36c5de00050559750ded61edd7e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b4c355c864f83bcd76c310fecb0f26dd3372e760
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188898"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162754"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -76,7 +76,7 @@ Gotowe! Teraz masz aplikację z wieloma kontenerami, z których każdy może by�
 
 ## <a name="learn-about-team-development"></a>Więcej informacji na temat programowania zespołowego
 
-[!INCLUDE[](includes/team-development-1.md)]
+[!INCLUDE [](includes/team-development-1.md)]
 
 Teraz zobacz, jak to działa:
 1. Przejdź do okna programu VS Code, aby uzyskać dostęp do aplikacji `mywebapi`, i zmodyfikuj kod, aby uzyskać domyślną procedurę obsługi GET `/`, na przykład:
@@ -87,11 +87,11 @@ Teraz zobacz, jak to działa:
     });
     ```
 
-[!INCLUDE[](includes/team-development-2.md)]
+[!INCLUDE [](includes/team-development-2.md)]
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]
 
 
 

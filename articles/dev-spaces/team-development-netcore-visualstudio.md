@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 1b603db552edd14dab2c86e6b005184eb88e74bb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154819"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158470"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -163,6 +163,6 @@ Aby przetestować nową wersję aplikacji `mywebapi` w połączeniu z aplikacją
 
 Teraz dodaj część „scott.s.” do adresu URL, aby wyglądał on mniej więcej tak: http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io i odśwież przeglądarkę. Powinien zostać osiągnięty punkt przerwania ustawiony w Twoim projekcie `mywebapi`. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji `mywebapi` jest uruchomiona w miejscu `default/scott`.
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]

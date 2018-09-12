@@ -17,11 +17,11 @@ ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: bde05b4e50d270a685b986ddf52e7707d545b2d9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932242"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055339"
 ---
 # <a name="create-an-operations-management-suite-monitored-vm-with-powershell"></a>Tworzenie maszyny wirtualnej monitorowanej przez pakiet Operations Management Suite za pomocą programu PowerShell
 
